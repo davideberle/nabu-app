@@ -1,0 +1,109 @@
+{
+  "id": "kadala-curry",
+  "name": "KADALA CURRY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This traditional Kerala breakfast item is served either with puttu or appams. Made with black chickpeas or kala chana in a tomato gravy, kadala curry is heavy on fragrant spices and thickened with coconut milk or paste.",
+  "ingredients": [
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "6"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "piece mace",
+      "amount": "1"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "8-9"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "Madras onion (sliced)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "black chickpeas (boiled)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "1½ cups"
+    }
+  ],
+  "method": [
+    "In a pan, roast the grated coconut for 3-4 minutes on medium flame until it is golden brown, stirring continuously. Transfer it to a plate and keep aside.",
+    "In the same pan, roast the fennel seeds, cinnamon sticks, cloves, pepper and mace.",
+    "Add the turmeric powder, red chilli powder and coriander powder, and roast them for 1 minute, stirring continuously. Once done, take the pan off the heat and add the nutmeg powder.",
+    "In a blender, combine the roasted coconut and spices with ½ cup of water and blend the mixture into a smooth paste.",
+    "In a pan, heat the coconut oil and add the mustard seeds and curry leaves. Once they begin to crackle, add the green chillies and ginger and stir.",
+    "Add both varieties of onion and sauté them for 8-9 minutes on low flame until they turn translucent.",
+    "Add the tomato purée and cook for 3-4 minutes. Now stir in 1 cup of water and let the curry simmer for 2 minutes.",
+    "Add the coconut–spice paste and cook for 6-7 minutes.",
+    "Add the chickpeas and ½ cup of water. Allow the curry to simmer for 5-6 minutes on medium flame.",
+    "Add the coconut milk and allow it to simmer for 2-3 minutes.",
+    "Season and serve hot."
+  ],
+  "image": "/recipes/kadala-curry.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

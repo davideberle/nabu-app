@@ -1,0 +1,35 @@
+{
+  "id": "almond-milk",
+  "name": "ALMOND MILK",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This one is my milk of choice for my daily coffee fix. Almond milk takes on flavours easily, unlike coconut or cashew milk that have distinct flavour notes of their own. Almond milk is adaptable and goes from sweets to savoury dishes effortlessly.",
+  "ingredients": [
+    {
+      "item": "raw almonds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "deseeded medjool date (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a bowl, soak the almonds overnight. Drain and rinse with filtered water.",
+    "Add 1 cup filtered water to the drained almonds and blend them in a high-speed blender until the mixture emulsifies.",
+    "Add the remaining ingredients and blend once again.",
+    "Using a fine cheesecloth, strain the milk out. Reserve the leftovers; you can add them to tikkis and kebabs, use it in fillings and to thicken gravies.",
+    "This milk will stay fresh for 2 days in the refrigerator."
+  ],
+  "image": "/recipes/almond-milk.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

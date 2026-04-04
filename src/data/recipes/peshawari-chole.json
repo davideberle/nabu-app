@@ -1,0 +1,155 @@
+{
+  "id": "peshawari-chole",
+  "name": "PESHAWARI CHOLE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "The richness of protein in this dish is what draws me to this Punjabi classic. This recipe is so well-spiced, you don’t miss the ghee at all. The evolution of chole in my kitchen was a gradual one. I started off with a dish that was mild and which my Punjabi friends often said was ‘too Gujju’. It has now become a robust main course dish that is smartly darkened with black tea extract.",
+  "ingredients": [
+    {
+      "item": "chickpeas (soaked overnight)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tea or 1 black tea bag",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "baking soda (optional)",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "black cardamoms",
+      "amount": "2"
+    },
+    {
+      "item": "green cardamoms",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "4"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "roasted pomegranate seed powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rock salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "kasuri methi",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dry ginger powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion (grated)",
+      "amount": "1"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "roasted cumin powder",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "garlic (sliced)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chillies (sliced)",
+      "amount": "2"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "In a pressure cooker, add the chickpeas, tea bags, salt, baking soda, bay leaf, cinnamon stick, black and green cardamoms and cloves and cover it with 3 cups of water. Cook on medium flame for 4 whistles, then turn off the heat. You can also slow-boil the mixture until the chickpeas are done. This should take about 30 minutes.",
+    "Drain the chickpeas and save the water.",
+    "In a bowl, mix all the ingredients for the chole masala and keep aside.",
+    "In a pan, heat 1 tbsp of the oil and add the onion. Cook it for 3-4 minutes on medium flame.",
+    "Add the ginger–garlic paste and cook thoroughly. • Add the tomato paste and sauté the mixture for 3-4 minutes, covered.",
+    "Add the coriander powder, 2 tsp of red chilli powder, 2 tsp of cumin powder and 2 tbsp of the prepared chole masala. Cook for 10-12 minutes on low flame until the oil begins to separate.",
+    "Add the boiled chickpeas along with 1 cup of the reserved black tea water.",
+    "In a separate pan, heat the remaining oil and add the garlic, leftover roasted cumin powder, green chillies, garam masala and leftover red chilli powder. Allow this tempering to sizzle and pour it on top of the prepared chole.",
+    "Finish with salt and coriander leaves and serve hot."
+  ],
+  "image": "/recipes/peshawari-chole.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

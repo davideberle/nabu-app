@@ -1,0 +1,110 @@
+{
+  "id": "bajra-rotla-pockets",
+  "name": "BAJRA ROTLA POCKETS",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This recipe belongs to what I call my ‘urban Gujarati kitchen’. A clean swap for flour-ey pita bread, these millet-based bread pockets are something I learnt from my maharaj. I love the way it’s made homely by the addition of a green pea bullet which is actually just a cooler version of the vatana pattice.",
+  "ingredients": [
+    {
+      "item": "carrots (julienned)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lettuce (thinly sliced)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cabbage (thinly sliced)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vegan cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and pepper as per taste",
+      "amount": ""
+    },
+    {
+      "item": "pearl millet flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "5 tsp"
+    },
+    {
+      "item": "green peas (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cornflour",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cloves of garlic (minced)",
+      "amount": "3"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix all the ingredients for the slaw and keep the mixture refrigerated until use.",
+    "For the rotla, mix the flour and salt in a bowl. Add water and knead the mixture into a semi-soft dough. Divide the dough equally into 5 small portions.",
+    "Press each portion with your fingertips in a circular motion to make the disc larger with every press. Keep stretching the dough until you get the thinnest sheet that doesn’t break. You can moisten your palms with water.",
+    "Dust the rotlas with sesame seeds.",
+    "On a hot pan, cook each rotla for 4-5 minutes on both sides. Once cooked, using a kitchen tong, lift the rotla and place it directly on the flame. This will help them fluff up.",
+    "Once done, cut them into half in a way that each semicircle becomes a pocket.",
+    "To make the stuffing, mix all the ingredients other than the oil in a bowl. Using a spoon, make roundels of the filling and deep fry them in hot oil.",
+    "To make the bajra pocket, place 2 green pea roundels in each pocket and stuff them with the vegan cream slaw. Serve immediately."
+  ],
+  "image": "/recipes/bajra-rotla-pockets.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

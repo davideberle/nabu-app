@@ -1,0 +1,99 @@
+{
+  "id": "beetroot-tikki-with-orange-zested-almond-yoghurt",
+  "name": "BEETROOT TIKKI WITH ORANGE-ZESTED ALMOND-YOGHURT",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I am not a big fan of plain boiled potato patties so I came up with this recipe for a Diwali dinner. I feel that beetroot as an ingredient is not used enough despite the beautiful colour and flavour it adds to any dish. When served with my rich almond yoghurt that I generously flavour with orange zest, this dish starts a party better than Chandon.",
+  "ingredients": [
+    {
+      "item": "beetroot (boiled and shredded)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "potato (boiled and shredded)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "semolina",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "almond yoghurt",
+      "amount": "1 cup"
+    },
+    {
+      "item": "black salt",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "roasted cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "orange zest",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Coriander leaves for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the beetroot with potato, coriander leaves, mint leaves, red chilli powder, chaat masala, cumin powder, coriander powder, dry mango powder and salt.",
+    "Mix well and make patties. Roll them in semolina.",
+    "In a pan, heat oil and shallow fry the beetroot patties until both sides are well cooked.",
+    "In another bowl, mix all the ingredients for the topping and whisk thoroughly.",
+    "Serve the spiced yoghurt along with the beetroot patties."
+  ],
+  "image": "/recipes/beetroot-tikki-with-orange-zested-almond-yoghurt.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

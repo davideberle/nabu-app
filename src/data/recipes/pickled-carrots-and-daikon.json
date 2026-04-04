@@ -1,0 +1,40 @@
+{
+  "id": "pickled-carrots-and-daikon",
+  "name": "PICKLED CARROTS AND DAIKON",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "medium carrots, peeled and shredded or cut into sticks",
+      "amount": "2"
+    },
+    {
+      "item": "medium daikon radishes, shredded or cut into sticks",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "white distilled or rice vinegar",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a medium bowl, toss carrots and daikon with the salt, and then let sit for 15 minutes. Rinse well and squeeze out all excess water.",
+    "Return the carrots and daikon to the bowl, add the sugar and vinegar, and toss well. Let sit for at least 30 minutes.",
+    "Store in a 16-ounce (480 ml) sterlized glass jar (here) or airtight container for up to 2 weeks in the refrigerator."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

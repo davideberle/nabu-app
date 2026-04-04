@@ -1,0 +1,76 @@
+{
+  "id": "pick-up-salt-fish-and-pressed-green-plantain",
+  "name": "PICK-UP ‘SALT FISH’ AND PRESSED GREEN PLANTAIN",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "time": "7 MINUTE",
+  "intro": "As I was growing up, my mother would always make this on a weekend. I’m normally a hardcore sweet plantain person, but when I get the craving for it, fried green plantain really hits the spot. There’s something about the raw, almost ceviche-like texture of the heart of palm with the hot, crispy and salty plantain. The recipe is very simple but so insanely delicious. The pick-up ‘salt fish’ is even better the second day, too!",
+  "ingredients": [
+    {
+      "item": "small red onion, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "hearts of palm, rinsed, drained and sliced into half-moons",
+      "amount": "220 g (7¾ oz)"
+    },
+    {
+      "item": "cherry tomatoes, quartered",
+      "amount": "100 g (3½ oz)"
+    },
+    {
+      "item": "garlic clove, very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful of flat-leaf parsley, roughly chopped, plus extra to serve",
+      "amount": ""
+    },
+    {
+      "item": "nori sheet",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "glug of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "avocado, sliced, to serve",
+      "amount": "1"
+    },
+    {
+      "item": "green plantains",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "flaky sea salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the onion into a bowl and cover with cold water. Leave to sit while you prepare everything else.",
+    "In a separate bowl, combine the hearts of palm with the tomatoes, garlic, parsley, nori, lemon juice, olive oil and salt and pepper to taste. Drain and pat dry the onions and add to the mix. Taste and adjust the seasoning. Set aside.",
+    "Top and tail the green plantains and remove the peel by running a sharp knife along it and then peeling back to separate it from the flesh. Cut on the diagonal into 6–8 big chunks.",
+    "In a frying pan (skillet), heat enough vegetable oil to coat the bottom of the pan over a medium-high heat. Fry the plantain slices for 3–4 minutes, flipping to cook on both sides. Remove and drain briefly on paper towels, then transfer to a board and use a mug or bowl to flatten the pieces. Fry again for a further 2–3 minutes until crispy. Drain again on paper towels and hit immediately with some flaky sea salt.",
+    "Sprinkle the ‘salt fish’ with a little more parsley, then serve with the green plantain and avocado."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

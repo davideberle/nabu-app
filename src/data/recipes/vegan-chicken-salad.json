@@ -1,0 +1,67 @@
+{
+  "id": "vegan-chicken-salad",
+  "name": "VEGAN CHICKEN SALAD",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil, divided",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "store-bought or homemade seitan",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "leek (white part only), thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Vietnamese mint, stems removed and roughly chopped",
+      "amount": "1¾ ounces (50 g)"
+    },
+    {
+      "item": "makrut lime leaves, cut into fine threads",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder (optional)",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "In a medium skillet, heat 2 tablespoons of vegetable oil over low heat. When hot, add seitan and cook until golden brown on all sides (3 to 5 minutes). Remove and place on a paper towel–lined plate to drain and let cool.",
+    "Tear seitan into thin strips along fiber grain, place in a medium bowl, and set aside.",
+    "In a medium skillet, heat remaining 3 tablespoons of vegetable oil over medium heat. When hot, add leek and cook and stir until golden brown (1 to 2 minutes). Remove from heat and let cool.",
+    "In a small bowl, combine sugar, lime juice, soy sauce, salt, and stock powder (if using). Stir well until all solids are dissolved.",
+    "Pour half of the dressing into the bowl of shredded seitan and mix well so seitan will absorb it.",
+    "Add fried leek, pepper, Vietnamese mint, lime leaves, and the rest of the dressing. Mix well and serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "onion-pakoda-curry",
+  "name": "ONION PAKODA CURRY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Largely inspired by the classic Odia piaja tarkari or the Punjabi pakoda kadhi, this dish of hot onion fritters tossed in gravy is a unique and intrinsically vegan recipe that you’ll want to eat on repeat.",
+  "ingredients": [
+    {
+      "item": "onions",
+      "amount": "½ cup"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "7-8"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red chilli (roughly chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "chickpeas",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "water to bind",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "potatoes (cut into wedges)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "oil for tempering",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "green cardamom",
+      "amount": "3-4"
+    },
+    {
+      "item": "stick cinnamon",
+      "amount": "1"
+    },
+    {
+      "item": "cloves",
+      "amount": "2"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onions (sliced)",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "ginger-garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomatoes (sliced)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Deep fry the potato wedges and keep them aside. Reserve the oil.",
+    "In a bowl, combine all the ingredients for the dumplings, add a few spoons of water and make a thick paste.",
+    "Deep fry the dumplings in the reserved oil. Drain and place them on the kitchen towel.",
+    "To make the tarkari, heat the oil in a pan and add the bay leaf, cardamoms, cinnamon, cloves and cumin seeds.",
+    "When the spices begin to crackle, add the onions and sauté for 2-3 minutes until they turn translucent.",
+    "Add the ginger-garlic paste, turmeric powder and red chilli powder and continue sautéing for 2-3 minutes on low flame.",
+    "Add the tomatoes and season with salt. Let the gravy simmer until the tomatoes are thoroughly cooked.",
+    "Add the deep-fried potatoes, dumplings and coriander leaves and stir well. Adjust the seasoning if required. Serve hot."
+  ],
+  "image": "/recipes/onion-pakoda-curry.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

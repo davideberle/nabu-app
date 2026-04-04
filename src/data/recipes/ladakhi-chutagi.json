@@ -1,0 +1,70 @@
+{
+  "id": "ladakhi-chutagi",
+  "name": "LADAKHI CHUTAGI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Kev, skyu, bhatsa marku—my introduction to the lesser-known world of Indian pasta began on a trip to Ladakh when I discovered these home-made varieties. We seldom associate pasta with Indian cuisine, but chutagi, for me, forms an integral part of classic Indian cooking. It has a mixed lineage of Indian and Himalayan-Tibetan-style cooking and flavours.",
+  "ingredients": [
+    {
+      "item": "refined flour",
+      "amount": "1½ cup"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tomato (grated)",
+      "amount": "1"
+    },
+    {
+      "item": "pepper powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped assorted vegetables (French beans, carrots, cauliflower florets, mushrooms)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the flour with water, add a pinch of salt, and knead it into a soft dough.",
+    "Roll the dough into a thin sheet, but ensure it’s not transparent.",
+    "Using a cookie cutter, cut small circles out of the pasta sheet. Wind the circle around your index finger and pinch to join the edges. It should look like a tube. Remove your finger and pinch the open ends of this tube closed to resemble two cones joined together.",
+    "In a pan, heat the mustard oil and add the onion. Sauté until it turns translucent. Add the turmeric, red chilli powder and garlic and cook for 3-4 minutes on low flame.",
+    "Add the tomato and sauté until it is thoroughly cooked.",
+    "Add the salt, pepper and garam masala and sauté for 1-2 minutes. Add the vegetables with 1 cup of water.",
+    "Allow the mixture to simmer until the vegetables are completely cooked. This should take 5–7 minutes.",
+    "Add the pasta. Once cooked, around 4-5 minutes on low flame, it will float to the top."
+  ],
+  "image": "/recipes/ladakhi-chutagi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

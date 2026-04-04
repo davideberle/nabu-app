@@ -1,0 +1,38 @@
+{
+  "id": "chao-dipping-sauce",
+  "name": "CHAO DIPPING SAUCE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "cubes store-bought or homemade chao, finely mashed",
+      "amount": "2"
+    },
+    {
+      "item": "large clove garlic, finely crushed",
+      "amount": "1"
+    },
+    {
+      "item": "bird’s eye chili pepper, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "kumquat or lime juice",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "In a small bowl, combine the mashed chao, garlic, chili pepper, sugar, and kumquat juice, and mix well until sugar is dissolved."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

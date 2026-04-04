@@ -1,0 +1,91 @@
+{
+  "id": "garhwali-kafuli",
+  "name": "GARHWALI KAFULI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I first ate this dish on a trip to Uttarakhand. A combination of two mountain greens and a special variety of spice known as jakhya seeds, which add an important flavour note in Garhwali food, this dish is an excellent example of veganism in Indian cuisine.",
+  "ingredients": [
+    {
+      "item": "spinach (finely chopped)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fenugreek leaves (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "jakhya seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "onions (finely chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato (grated)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, boil the spinach and fenugreek leaves until soft. Drain and squeeze out the water. Purée the greens and keep aside.",
+    "In another pan, heat the oil and add the jakhya seeds, asafoetida, cumin powder and green chilli and sauté for 1 minute.",
+    "Add the onions and sauté until they are cooked, about 3-4 minutes on medium flame.",
+    "Once the onions are translucent, add the ginger–garlic paste and sauté for 3 minutes.",
+    "Add the tomato, coriander powder, red chilli powder, turmeric powder and garam masala and sauté for 4-5 minutes on low flame until the spices are cooked.",
+    "In a bowl, mix the rice flour with ¼ cup of water to form a thick slurry. Add it to the pan and let the gravy simmer for 2 minutes on medium flame.",
+    "Add the puréed greens and cook the kafuli to cook for 3-4 minutes on low flame.",
+    "Stir in ½ cup of water, cover and let the kafuli simmer on low flame for 9-10 minutes.",
+    "Season and serve hot."
+  ],
+  "image": "/recipes/garhwali-kafuli.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

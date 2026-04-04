@@ -1,0 +1,41 @@
+{
+  "id": "cauli-jeera-rice",
+  "name": "CAULI JEERA ‘RICE’",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I am fully team ‘cauliflower for president’ and that’s why my cookbook would be incomplete without this dish. Cauli rice is cauliflower grated and cooked like rice. It tastes spectacular with most curries in this book.",
+  "ingredients": [
+    {
+      "item": "cauliflower florets",
+      "amount": "3 cups"
+    },
+    {
+      "item": "oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "spring onions (finely chopped)",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a food processor, coarsely blitz the cauliflower and transfer it into a bowl.",
+    "In a pan, heat the oil and add the cumin seeds. Once they begin to crackle, add the cauliflower. Allow it to cook on low flame for 4-5 minutes, stirring continuously so it doesn’t stick to the bottom of the pan.",
+    "Add the spring onions and stir one final time. Turn off the flame and adjust the salt. Serve hot."
+  ],
+  "image": "/recipes/cauli-jeera-rice.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

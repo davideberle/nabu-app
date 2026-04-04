@@ -1,0 +1,73 @@
+{
+  "id": "clear-mung-bean-dumplings",
+  "name": "CLEAR MUNG BEAN DUMPLINGS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "shallot or leek, minced",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "mashed mung beans",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "tapioca starch, divided",
+      "amount": "3 cups (390 g)"
+    },
+    {
+      "item": "plus 2 teaspoons (250 ml) boiling water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "scallion oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "cilantro, roughly chopped",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "croutons",
+      "amount": "½ cup (42 g)"
+    },
+    {
+      "item": "vegan fish dipping sauce",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "In a medium skillet, heat oil over medium-low heat. When hot, add the shallot and cook and stir until fragrant (about 1 minute). Add mashed mung beans and stir for 1 minute. Add sugar, stock powder, and salt, and keep stirring until mixture comes together in a solid mass (about 2 minutes). Remove from heat and set aside to cool.",
+    "Take about ½ tablespoon of the filling, shape into a small ball, and repeat until you’ve used it all.",
+    "Put 2 cups (260 g) of the tapioca starch in a medium bowl and set aside. In another medium bowl, combine the remaining 1 cup (130 g) tapioca starch and boiling water, and stir briskly with a wooden spoon until starch is translucent. Let cool for about 30 seconds, and then, using a rubber spatula, scrape the sticky paste into the other bowl that contains the tapioca starch and mix well.",
+    "Knead with your hands until you have a nice smooth dough (about 5 minutes). Cover bowl with a towel or plastic wrap and set aside",
+    "Pinch off a small portion of dough (about 1 tablespoon) and roll between your palms to shape into a ball. Press with your fingers to flatten it into a disc about 2½ inches (6 cm) in diameter. Try to avoid making your dumplings too large, as they will then be too chewy and difficult to swallow.",
+    "Place a filling ball in the center of each disc, and then fold it in half. Pinch the edges together to form a crescent-moon shape. Repeat with remaining dough and filling.",
+    "Fill a large saucepan halfway with water and bring to a boil. Gently drop in dumplings and cook them over low heat until they float to the surface (about 5 minutes). Remove from heat, cover, and let sit for 2 minutes. Prepare a large bowl of ice water. When the edges of the dumplings turn translucent (you should be able to see the yellow filling inside at this point), transfer them with a slotted spoon to the bowl of ice water.",
+    "Toss the boiled dumplings in the scallion oil, sprinkle with cilantro and croutons, and serve with vegan fish dipping sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

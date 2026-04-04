@@ -1,0 +1,67 @@
+{
+  "id": "ulli-theeyal",
+  "name": "ULLI THEEYAL",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A Kerala speciality, this curry has a soupy consistency. Tiny Madras onions bob in a delicious gravy of red chillies, tamarind and fresh coconut.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "15"
+    },
+    {
+      "item": "dry red chillies",
+      "amount": "4-5"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Madras onions (peeled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat 1 tbsp of the coconut oil and add 10 curry leaves and the red chillies. Once they begin to crackle, add the coriander seeds. Add the turmeric powder and stir fry it for 2 minutes on medium flame.",
+    "Add the coconut and continue stirring for 7-8 minutes. Blend this mixture into a smooth paste. If the mixture is too dry, add a little coconut water.",
+    "In another pan, heat 2 tbsp of the coconut oil and add the Madras onions to it. Fry until the onions turn golden brown. Add the tamarind paste followed by the coriander– coconut paste. Add 1 cup of water and allow the dish to simmer on medium flame.",
+    "In another pan, heat 1 tbsp of the oil and add the mustard seeds and split black gram. Once they begin to crackle, add the remaining curry leaves and fry for 30 seconds.",
+    "Add the tempering to the Madras onions mixture and stir well. Adjust the seasoning and serve hot."
+  ],
+  "image": "/recipes/ulli-theeyal.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

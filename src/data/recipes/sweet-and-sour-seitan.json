@@ -1,0 +1,73 @@
+{
+  "id": "sweet-and-sour-seitan",
+  "name": "SWEET-AND-SOUR SEITAN",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "store-bought or homemade seitan or vegan protein of choice",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ketchup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sriracha sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetarian oyster sauce (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "freshly ground black pepper, for garnish",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "roasted sesame seeds, for garnish",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "In a medium skillet, heat oil over low heat. When hot, add seitan and cook until golden brown on all sides (3 to 5 minutes). Remove and place on a paper towel–lined plate to drain and let cool. Cut into ½-inch (1 cm) thick slices.",
+    "In a small bowl, whisk together vinegar, ketchup, brown sugar, stock powder, sesame oil, soy sauce, sriracha, and vegetarian oyster sauce (if using) until solids are dissolved.",
+    "Simmer seitan slices, prepared sauce, and water in a large skillet over medium-low heat until sauce thickens (about 15 minutes). Remove from heat.",
+    "Transfer to a platter, dust with pepper, sprinkle with sesame seeds, and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

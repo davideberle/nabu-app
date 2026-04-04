@@ -1,0 +1,61 @@
+{
+  "id": "gluten-free-kuttu-pancakes",
+  "name": "GLUTEN-FREE KUTTU PANCAKES",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I love a good Sunday pancake, but my no-egg and no-milk routine limited me until I concocted this no-fail recipe. These pancakes are dense, can be loaded with blueberries, strawberries, bananas or any fruit and are apt for a quick weekday breakfast. No need to wait for weekends to enjoy food!",
+  "ingredients": [
+    {
+      "item": "buckwheat flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "orange zest",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Coconut oil for cooking",
+      "amount": ""
+    },
+    {
+      "item": "fruits (chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Maple syrup to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the flours, baking powder, caster sugar, almond milk, cinnamon powder and orange zest, and whisk it into a thick pancake batter.",
+    "Brush a pan with 1 tsp coconut oil and pour a ladleful of the batter.",
+    "Cook the pancake on both sides, until golden brown and serve with fruits and maple syrup."
+  ],
+  "image": "/recipes/gluten-free-kuttu-pancakes.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

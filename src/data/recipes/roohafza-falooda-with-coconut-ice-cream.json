@@ -1,0 +1,59 @@
+{
+  "id": "roohafza-falooda-with-coconut-ice-cream",
+  "name": "ROOHAFZA FALOODA WITH COCONUT ICE CREAM",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This childhood staple gets a plant-based spin. I love a good falooda and I created this recipe to satisfy that craving. It’s coupled with a homemade coconut ice cream that becomes creamier as you churn it.",
+  "ingredients": [
+    {
+      "item": "vanilla pod (seeds extracted)",
+      "amount": "1"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sea salt",
+      "amount": "½ pinch"
+    },
+    {
+      "item": "sugar (powdered)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Roohafza (plus extra)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "basil seeds (soaked in water for 1 hour)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "rose jelly (optional)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pistachios (roughly chopped)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a pan over low heat, combine the ingredients for the ice cream.",
+    "Stir for 2-3 minutes until the sugar has fully dissolved into the cream and take it off the heat. Do not heat the mixture too much, it should simply be lukewarm.",
+    "Transfer it into an ice cream box and freeze it for 4-5 hours. Once the ice cream has set, take it out of the freezer, and churn it. Let it set again, this may take about 4-5 hours. Take it out and churn it again. Put the box in the freezer until ready to use.",
+    "In a glass, pour the Roohafza and top it with the basil seeds. Pour the coconut milk on top. Add the rose jelly, if using.",
+    "Finish with a scoop of coconut ice cream and pistachios. Add a glaze of some more Roohafza and serve immediately."
+  ],
+  "image": "/recipes/roohafza-falooda-with-coconut-ice-cream.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

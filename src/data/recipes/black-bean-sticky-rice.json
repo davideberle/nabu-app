@@ -1,0 +1,67 @@
+{
+  "id": "black-bean-sticky-rice",
+  "name": "BLACK BEAN STICKY RICE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dried black beans, rinsed, soaked for 8 hours, and drained",
+      "amount": "1 cup (180 g)"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "sticky rice, rinsed",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pandan leaves (optional)",
+      "amount": "3"
+    },
+    {
+      "item": "crushed roasted peanuts",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "shredded coconut",
+      "amount": "2 ounces (56 g)"
+    }
+  ],
+  "method": [
+    "In a medium saucepan, combine soaked black beans and water and bring to a boil over high heat. Simmer over low heat until beans are soft but still holding their shape (about 45 minutes). (To save time, you can also cook the beans in a pressure cooker for 25 minutes). Drain beans, reserving the cooking water in a bowl.",
+    "Soak the rinsed sticky rice in the reserved bean cooking water for 4 to 8 hours. Drain rice in a colander and shake off excess water.",
+    "In a medium bowl, toss soaked sticky rice with the drained cooked beans, salt, and vegetable oil.",
+    "Fill a large pot that can hold an 8- to 10-inch (20 to 25.5 cm) steamer basket with water until it is just 1 inch (2.5 cm) below the base of the basket, and bring to a boil over medium-high heat. Line steamer basket with a piece of banana leaf or parchment paper to prevent rice from falling through the grates and sticking. Spread sticky rice–beans mixture in an even layer in the steamer basket, and then poke a few holes through the layer. Tie pandan leaves into knots (if using), place on rice, and then wrap the steamer lid in a large kitchen towel and tie the corners of the fabric over the handle. This will absorb excess steam and prevent it from dropping back down in the rice. Cover the steamer basket, place on top of the boiling pot, and steam until rice becomes tender, sticky, and slightly chewy (35 to 40 minutes).",
+    "In a small bowl, combine peanuts, sesame seeds, sugar, and salt and mix well.",
+    "Fluff cooked sticky rice and black beans with chopsticks and divide among serving plates. Top with peanut–sesame seed mixture and shredded coconut. Serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

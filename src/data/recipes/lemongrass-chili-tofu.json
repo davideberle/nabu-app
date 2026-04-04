@@ -1,0 +1,115 @@
+{
+  "id": "lemongrass-chili-tofu",
+  "name": "LEMONGRASS CHILI TOFU",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "4 servings",
+  "intro": "There are two different ways to make this dish (đậu phụ sả ớt): you can coat deep-fried tofu with fried lemongrass and chili peppers, or you can stuff it with lemongrass and chili peppers before you deep-fry it. I prefer the former (below) for weeknight meals, as it’s much quicker and simpler to prepare. The latter method (see here) takes a bit more time and skill (especially for stuffing), but it’s totally worth the effort for special occasions or when you want to impress someone.",
+  "ingredients": [
+    {
+      "item": "firm tofu",
+      "amount": "28 ounces (794 g)"
+    },
+    {
+      "item": "vegetable oil, plus more for deep frying",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced lemongrass",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "minced bird's eye chili pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "bird’s eye chili pepper, sliced on the bias, for garnish",
+      "amount": "1"
+    },
+    {
+      "item": "or 3 sprigs of cilantro, for garnish",
+      "amount": "2"
+    },
+    {
+      "item": "large cucumber, sliced, for serving",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable oil, plus more for deep-frying",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced lemongrass",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "minced leek or scallion (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "minced bird's eye chili pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "firm tofu",
+      "amount": "28 ounces (794 g)"
+    },
+    {
+      "item": "vegetable oil, for deep-frying",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "bird’s eye chili pepper, sliced, for garnish",
+      "amount": "1"
+    },
+    {
+      "item": "or 3 sprigs of cilantro, for garnish",
+      "amount": "2"
+    },
+    {
+      "item": "large cucumber, sliced, for serving",
+      "amount": "1"
+    },
+    {
+      "item": "soy sauce, for serving",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Fill the bottom of a small or medium saucepan with about 1 inch (2.5 cm) of oil and heat over low heat. After about 3 minutes, check with a cooking thermometer to see if oil has reached 320°F (160°C). (You can also dip the pointy end of a wooden chopstick in the oil, and if a steady stream of bubbles appears around it, the oil is ready.) Carefully drop in tofu cubes, cooking in batches if necessary, and fry until golden brown (about 8 minutes).",
+    "With a slotted spoon, transfer tofu to a paper towel–lined plate to drain.",
+    "In a medium skillet, heat 2 tablespoons of oil over low heat. When hot, add lemongrass and chili pepper, and cook and stir until golden brown (1 to 2 minutes). Add stock powder, salt, sugar, and turmeric powder, and stir well.",
+    "Add fried tofu and drizzle with soy sauce. Toss until well-coated, and then remove from heat.",
+    "Arrange tofu on a platter, garnish with chili slices and cilantro, and serve with cucumber slices.",
+    "Cut tofu into 2 by 3-inch (5 by 7.5 cm) pieces that are ½ inch (1 cm) thick. Being careful not to cut all the way through, use a knife to slice into one side of each tofu piece and create space for the filling.",
+    "Stuff about 1 teaspoon of the filling into the created space of one of the tofu pieces. Repeat with the remaining tofu and filling.",
+    "Fill the bottom of a large skillet with about 1 inch (2.5 cm) of oil and heat over low heat. After about 3 minutes, check with a cooking thermometer to see if the oil has reached 320°F (160°C). (You can also dip the pointy end of a wooden chopstick in the oil, and if a steady stream of bubbles appears around it, the oil is ready.) Carefully drop in tofu and fry until golden brown on both sides (about 8 minutes). With a slotted spoon, transfer tofu to a paper towel–lined plate to drain.",
+    "Arrange tofu on a platter, garnish with chili slices and cilantro, and serve with cucumber slices and a bowl of soy sauce for dipping."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "vegan-cream",
+  "name": "VEGAN CREAM",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I always have a box full of vegan cream in my refrigerator. This cream can be used the same way real dairy cream is used. Eat it with fruit or add a dollop to breakfast porridge, or use it to make dal makhani and other full-bodied Indian gravies.",
+  "ingredients": [
+    {
+      "item": "whole cashew nuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "filtered water (plus extra)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "deseeded medjool date (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a bowl, soak cashew nuts for 5 hours.",
+    "Drain and transfer the nuts into a blender.",
+    "Add just enough water to the blender to allow the nuts to turn. Blend at high speed.",
+    "Once the mixture becomes creamy, blend it for 30 seconds.",
+    "Store the cream in a jar for up to 2 days in the refrigerator."
+  ],
+  "image": "/recipes/vegan-cream.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "id": "vegan-crab-soup",
+  "name": "VEGAN CRAB SOUP",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "firm tofu, finely crumbled with a fork",
+      "amount": "5½ ounces (150 g)"
+    },
+    {
+      "item": "silken tofu, finely crumbled with a fork",
+      "amount": "5½ ounces (150 g)"
+    },
+    {
+      "item": "vegetable or mushroom stock powder, divided",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt, plus more if needed",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cube store-bought or homemade chao, finely crushed",
+      "amount": "1"
+    },
+    {
+      "item": "fermented soybean sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "annatto oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable oil, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "plum tomatoes, cubed",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups (1 L)"
+    },
+    {
+      "item": "minced enoki mushrooms, stems trimmed and rinsed with salted water",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "sawtooth herb or cilantro, finely chopped, for garnish",
+      "amount": "1 ounce (28 g)"
+    }
+  ],
+  "method": [
+    "In a large bowl, combine both types of tofu, 1 teaspoon of the stock powder, salt, sugar, chao, fermented soybean sauce, annatto oil, and pepper, and mix well. Cover and let sit for 15 minutes to allow the flavor to develop.",
+    "In a medium skillet, heat 1 tablespoon of the vegetable oil over low heat. When hot, add leek and cook and stir until fragrant (about 1 minute). Add the tofu mixture and flatten its surface with a spatula. Cook on low until the mixture is set (2 to 3 more minutes), and then remove from heat.",
+    "In a medium saucepan, heat the remaining 1 tablespoon vegetable oil over medium heat. Add tomatoes and cook and stir until soft (about 3 minutes). Add water and bring to a boil.",
+    "Add mushrooms and the remaining 1 teaspoon stock powder, taste, and add more salt if needed. Cook over medium heat until tomatoes are broken down and mushrooms are soft (about 2 more minutes), and then remove from heat.",
+    "Transfer to a large serving bowl or divide into smaller serving bowls.",
+    "Add the tofu mixture (riêu) to the hot soup, garnish with sawtooth herb or cilantro, and serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

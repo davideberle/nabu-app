@@ -1,0 +1,111 @@
+{
+  "id": "dosa-wrap",
+  "name": "DOSA WRAP",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is my hero dish. If masala dosa went abroad, it would become this wrap. If sourdough can hold avocados beautifully, then so can a well-fermented dosa batter. And that is the premise of this dish. I always go for the Indian avocados, also known as butter fruit, from Coorg or Kodaikanal.",
+  "ingredients": [
+    {
+      "item": "split black gram",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "dosa rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "peanut or cashew nut pieces",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chilli–ginger paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion (sliced)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato (boiled and diced)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and sugar as per taste",
+      "amount": ""
+    },
+    {
+      "item": "beetroot (julienned)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as per taste",
+      "amount": ""
+    },
+    {
+      "item": "avocado (sliced)",
+      "amount": "½"
+    },
+    {
+      "item": "microgreens",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanut podi",
+      "amount": "5 tbsp"
+    }
+  ],
+  "method": [
+    "Soak the split black gram, dosa rice and fenugreek seeds in enough water to cover them for 3 hours. Drain the water and transfer the mixture into a grinder. Blend it into a paste and add salt.",
+    "Cover and allow it to ferment for 5-6 hours.",
+    "Meanwhile, to make the palya, heat the oil in a pan and add the mustard seeds. Once they begin to crackle, add the split black gram and the nuts and sauté until they turn golden brown.",
+    "Add the chilli–ginger paste and sauté it for 1 minute. Add the onion and sauté until it turns golden brown.",
+    "Add 1 cup of water. Once the onion has softened, about 3-4 minutes on medium flame, add the turmeric and potato pieces and cook until the water has evaporated and the mixture is dry. Adjust the seasoning.",
+    "In a bowl, toss the beetroot with the lemon juice, peanut podi, salt and pepper. Keep aside.",
+    "To make the dosa, heat a griddle and pour 1 tsp of oil. Pour a ladle of the dosa batter on the pan and spread it out in a circular motion to make thin crepes.",
+    "Once it is semi-crisp, take it off the flame and place it on a serving plate.",
+    "Place 2 spoonfuls of the palya on the dosa and top it with the beetroot mixture. Finish with the avocado and microgreens and fold the dosa. Serve hot."
+  ],
+  "image": "/recipes/dosa-wrap.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

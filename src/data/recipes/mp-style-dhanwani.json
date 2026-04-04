@@ -1,0 +1,94 @@
+{
+  "id": "mp-style-dhanwani",
+  "name": "MP-STYLE DHANWANI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I chanced upon this very rare curry from Madhya Pradesh through my friend Radhika Misra’s neighbour Vasundhara Jhunjhunwala. While most kadhis or curries from Rajasthan or Gujarat use yoghurt as a base, this dish relies on a base of red lentils. It tastes divine with white rice.",
+  "ingredients": [
+    {
+      "item": "red lentils (soaked for 2 hours)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (roughly chopped)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1-inch piece ginger",
+      "amount": ""
+    },
+    {
+      "item": "green chillies (finely chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Lemon juice (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the dumplings, grind the lentils into a fine paste. Take 2 tbsp of this paste and dilute it in 1 cup of water to make a slurry.",
+    "Transfer the remaining paste into a bowl and add the cumin powder, red chilli powder, turmeric powder, coriander powder and salt. Mix well.",
+    "In a large pan, heat the oil and deep fry spoonfuls of this lentil mixture till golden brown, then drain on a kitchen towel. The dumplings will bind well and won’t break while frying.",
+    "Soak them in bowl of water and allow them to soften and let out excess oil.",
+    "To make the curry, heat the oil in a pan and add the cumin seeds. Once they begin to crackle, add the asafoetida, cumin powder and stir well.",
+    "Add the lentil slurry and cover and cook for 3-4 minutes on low flame.",
+    "Meanwhile, grind the coriander leaves, ginger and green chillies. Add this mixture to the pan along with 2 cups of water. Stir well and adjust the salt. Finish with garam masala.",
+    "Squeeze out water from the dumpling and add them to the kadhi. Finish with lemon juice, if using, and serve hot."
+  ],
+  "image": "/recipes/mp-style-dhanwani.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

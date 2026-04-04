@@ -1,0 +1,114 @@
+{
+  "id": "dhoka-r-dalna",
+  "name": "DHOKA’R DALNA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Trust Bengalis to be ahead of the times and be one of the first to introduce the concept of faux meat to Indian cuisine through this dish. The word ‘dhoka’ means betrayal, and this dish is prepared on days when you want to trick the family into thinking they are eating meat, when in fact they are eating protein-rich lentil cakes shaped like diamonds.",
+  "ingredients": [
+    {
+      "item": "split Bengal gram (soaked for an hour)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "green chilli (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Oil for frying (plus extra for greasing)",
+      "amount": ""
+    },
+    {
+      "item": "potato (cubed)",
+      "amount": "1"
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chillies",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato purée (optional)",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "To make the dhoka, blend the soaked Bengal gram, ginger, chilli and sugar into a coarse paste and keep aside.",
+    "In a pan, heat the mustard oil and add the nigella seeds. Once they begin to crackle, add the asafoetida and turmeric powder, then add the paste. Stir well and add salt and garam masala. Cook the paste on medium heat for 3-4 minutes until all the moisture has evaporated.",
+    "Transfer the mixture on to a clean kitchen surface which has been greased slightly with oil so that the mixture doesn’t stick. Flatten it out into a large square.",
+    "Cut it into large diamond-shaped squares and deep fry them in hot oil until golden brown. Drain on a kitchen towel and keep aside.",
+    "In the same pan, deep fry the potato, then drain and keep aside.",
+    "To make the gravy, heat the oil in a pan and add the cumin seeds, red chillies and bay leaf.",
+    "When the spices begin to crackle, add the turmeric powder, red chilli powder and cumin powder and stir.",
+    "Add the ginger paste and allow the mixture to cook for 1 minute on low flame.",
+    "Add the tomato purée (if using) and cook the mixture for 3-4 minutes, until the oil begins to separate.",
+    "Stir in 1 cup of water. Let the gravy simmer on medium heat for 4-5 minutes.",
+    "Add the fried potatoes and the dhoka squares.",
+    "Let the dalna simmer for a few more minutes so the dhoka can absorb the flavours. Serve hot."
+  ],
+  "image": "/recipes/dhoka-r-dalna.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

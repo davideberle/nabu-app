@@ -1,0 +1,45 @@
+{
+  "id": "red-chilli-garlic-chutney",
+  "name": "RED CHILLI–GARLIC CHUTNEY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Spread it in vada pav, mix it in sev puri or bhel or just serve it as a condiment with a fried snack, this zingy chutney never lets you down!",
+  "ingredients": [
+    {
+      "item": "garlic cloves (peeled)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, blitz together all the ingredients except the lemon juice.",
+    "Once you obtain a fine paste, transfer it into a bowl and stir in the lemon juice.",
+    "This chutney will stay fresh for 3 days in the refrigerator."
+  ],
+  "image": "/recipes/red-chilli-garlic-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

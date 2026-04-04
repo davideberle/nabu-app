@@ -1,0 +1,52 @@
+{
+  "id": "home-made-ketchup",
+  "name": "HOME-MADE KETCHUP",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I do not like eating ketchup with my food unless I know it is free of preservatives, colours and emulsifiers, and this homemade version is just that. I was invested in making this dip from scratch years before I wrote this cookbook and now it’s here for the world to try.",
+  "ingredients": [
+    {
+      "item": "tomato puree (home-made or store-bought)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chilli flakes",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, blend all the ingredients into a smooth paste.",
+    "Transfer into a jar and refrigerate for up to 2 days."
+  ],
+  "image": "/recipes/home-made-ketchup.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

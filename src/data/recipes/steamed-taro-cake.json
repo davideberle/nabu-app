@@ -1,0 +1,63 @@
+{
+  "id": "steamed-taro-cake",
+  "name": "STEAMED TARO CAKE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "small purple cabbage, rinsed and shredded",
+      "amount": "¼"
+    },
+    {
+      "item": "water, divided",
+      "amount": "1½ cups (360 ml)"
+    },
+    {
+      "item": "rice flour",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "full-fat, unsweetened coconut milk",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "taro, peeled and thinly sliced",
+      "amount": "1 pound (454 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Combine shredded cabbage with 1 cup (240 ml) of the water in a medium bowl, and let sit for 15 minutes.",
+    "Drain through a sieve into a large bowl and discard shredded leaves (or save for salads). Add rice flour, tapioca starch, sugar, coconut milk, salt, vanilla extract, and the remaining ½ cup water, and stir until smooth.",
+    "Separate taro slices and drop them into the batter.",
+    "Lightly grease an 8-inch (20 cm) round silicone or aluminum baking pan with oil. Pour batter into pan and even out until it covers the bottom.",
+    "Fill a steamer halfway with water and place baking pan in the basket. Wrap the steamer lid in a large kitchen towel and tie the corners of the fabric over the handle. This will absorb the excess steam and prevent it from dropping back down on the cake. Bring the water to a boil, cover, and steam until a chopstick inserted in the center comes out clean (35 to 40 minutes). Remove from steamer and let cool completely.",
+    "Run a knife along the edges of the pan to loosen and unmold the cake. Transfer to a platter or cake stand lined with parchment paper or banana leaf to prevent sticking. With a lightly oiled knife, cut the cake into 8 equal portions and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

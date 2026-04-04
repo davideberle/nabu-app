@@ -1,0 +1,129 @@
+{
+  "id": "spicy-noodle-soup",
+  "name": "SPICY NOODLE SOUP",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "medium chayote, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "medium corncob, cut into 1-inch (2.5 cm) thick rounds",
+      "amount": "1"
+    },
+    {
+      "item": "small jicama, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "medium apple or pear, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "gallon (4 L) water",
+      "amount": "1"
+    },
+    {
+      "item": "rock sugar",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable oil, divided",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "blocks (28 ounces/800 g) firm tofu",
+      "amount": "2"
+    },
+    {
+      "item": "minced lemongrass, plus 5 to 8 lemongrass stalks, trimmed and bruised",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "minced bird's eye chili pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chili flakes or powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried mock beef slices, soaked",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "mushrooms (straw, shiitake, enoki, or beech), stems trimmed and cut into bite-size pieces",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "dried rice vermicelli noodles or 2¼ pounds (1 kg) fresh rice vermicelli noodles",
+      "amount": "16 ounces (454 g)"
+    },
+    {
+      "item": "cilantro, finely chopped, for garnish",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "leaf or iceberg lettuce, shredded or torn, for serving",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "green herbs, (such as mint, perilla, cilantro, and/or Asian basil), chopped, for serving",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "bean sprouts, for serving",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "banana blossom, prepped and shredded, for serving",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "lime, cut into wedges, for serving",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place chayote, carrot, corn, jicama, and apple in a large stockpot, and then add the water, rock sugar, and salt. Bring to a boil, and then reduce the heat to medium-low and simmer, uncovered, until vegetables are sweet to the taste (about 1 hour).",
+    "Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain, and then cut into slices.",
+    "Heat the remaining ¼ cup (60 ml) oil in a medium skillet over low heat. When hot, add minced lemongrass, garlic, leek, chili pepper, bruised lemongrass stalks, chili flakes, sugar, and stock powder. Cook and stir until slightly golden (about 3 minutes). Remove from heat.",
+    "Using tongs or chopsticks, transfer lemongrass stalks to the large pot of vegetables. Reserve half of the cooked mixture in a small bowl to serve as a condiment with each bowl of soup.",
+    "Add the mock beef slices and mushrooms to the remaining half of mixture in the skillet and cook and stir over medium-low heat until tender (2 to 3 minutes). Add tofu slices, stir gently, and then remove from heat and set aside.",
+    "If using dried vermicelli, cook it following the package instructions. If using fresh, quickly blanch it in hot water if it has been refrigerated.",
+    "Fill one-third of each serving bowl with rice vermicelli noodles, and then top with mushrooms, tofu, and mock beef slices. Ladle hot broth over the top and garnish with chopped cilantro.",
+    "Serve with a platter of lettuce, herbs, bean sprouts, banana blossom, and lime wedges, along with the reserved condiment mixture."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

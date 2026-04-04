@@ -1,0 +1,93 @@
+{
+  "id": "makhana-and-peas-curry",
+  "name": "MAKHANA AND PEAS CURRY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I grew up eating this dish but it was always loaded with mawa or reduced milk solids. On my vegan journey, I ditched dairy and used soaked cashew nuts instead. The result is equally pleasing, making this a good weekday dish to eat with warm chapatis.",
+  "ingredients": [
+    {
+      "item": "onion",
+      "amount": "1"
+    },
+    {
+      "item": "cloves of garlic",
+      "amount": "5"
+    },
+    {
+      "item": "1-inch piece of ginger",
+      "amount": ""
+    },
+    {
+      "item": "cashew nuts (soaked in water for 1 hour)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green peas",
+      "amount": "½ cup"
+    },
+    {
+      "item": "makhana (toasted)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tofu (cubed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Blend all the ingredients mentioned under the paste section into a smooth paste.",
+    "In a pan, heat the oil and add the cumin seeds to it. Once they begin to crackle, add the turmeric powder, green chilli and red chilli powder and stir well.",
+    "Add the onion paste and sauté for 4-5 minutes on medium flame.",
+    "Add the tomato purée to this and sauté on medium heat until the gravy is well cooked.",
+    "Add the peas and allow the gravy to simmer until the peas are cooked, about 7-8 minutes on medium flame. Add the tofu half-way through.",
+    "Mix in the makhana and let them soak up the gravy.",
+    "Adjust the seasoning. Add the coriander leaves and lemon juice. Serve hot."
+  ],
+  "image": "/recipes/makhana-and-peas-curry.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

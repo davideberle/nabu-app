@@ -1,0 +1,81 @@
+{
+  "id": "kothimbir-vadi",
+  "name": "KOTHIMBIR VADI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Kothimbir vadi reminds me of the Cantonese lo bak go, or turnip cakes. They too are deep-fried, square-shaped savoury cakes. Like the Chinese cakes, I like topping my kothimbir vadis with lots of crunchy fried garlic and a spicy garlic chutney.",
+  "ingredients": [
+    {
+      "item": "ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green chilli",
+      "amount": "1"
+    },
+    {
+      "item": "peanut powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped, plus extra for garnish)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, blend the ginger, garlic and chilli into a fine paste.",
+    "Now, add the peanut powder, coriander leaves, turmeric powder, coriander powder, cumin powder, asafoetida, chickpea flour, sugar and salt.",
+    "Stir in ½ cup water and make a thick batter.",
+    "Pour this into a deep-bottomed plate and sprinkle white sesame seeds on top.",
+    "Steam it for a few minutes on low flame. Check if the kothimbir vadi is done by inserting a toothpick; it should come out clean.",
+    "Cut the kothimbir vadi into diamonds or squares and shallow fry them in hot oil.",
+    "Garnish with coriander leaves and serve hot with any chutney of your choice."
+  ],
+  "image": "/recipes/kothimbir-vadi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

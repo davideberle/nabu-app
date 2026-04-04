@@ -1,0 +1,91 @@
+{
+  "id": "my-leafy-khichdi",
+  "name": "MY LEAFY KHICHDI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I’m not a fan of plain khichdi, unless it is made just like this. It’s a supremely cleansing meal made of white rice cooked with a whole lot of healthy ingredients. The tadka of fennel seeds and the addition of salad leaves is a game-changer.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green chilli (minced)",
+      "amount": "½"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "whole green gram (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "orange sweet potato (diced and boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Basmati rice (parboiled)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "assorted lettuce leaves (roughly chopped)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat the coconut oil and add the cumin seeds and fennel seeds. Once they begin to crackle, add the ginger, garlic and green chilli, then sauté for 1-2 minutes on low flame.",
+    "Add the red chilli powder and coriander powder and cook for 30 seconds. Add the whole green gram and sweet potato and coat them well with the masala.",
+    "Add the parboiled rice and vegetable stock and allow the khichdi to bubble.",
+    "Once the rice is thoroughly cooked, about 5-6 minutes, add the salt and dry mango powder.",
+    "Finish with lemon juice, coriander leaves and lettuce leaves."
+  ],
+  "image": "/recipes/my-leafy-khichdi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

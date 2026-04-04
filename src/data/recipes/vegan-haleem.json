@@ -1,0 +1,94 @@
+{
+  "id": "vegan-haleem",
+  "name": "VEGAN HALEEM",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "One of the rare dishes in this book that tries to vegan-ize a hardcore meat dish, my vegan haleem is a hearty bowl that is ideal for a winter night’s dinner. It’s got whole grains, vegetables and a generous helping of birista, of which I cannot get enough.",
+  "ingredients": [
+    {
+      "item": "wholewheat grains (soaked overnight)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "onions (sliced)",
+      "amount": "2"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed lentils (soaked for 1 hour)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mixed vegetables (cauliflower, peas, carrots, French beans) (diced)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "birista",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Boil the wholewheat grains with a pinch of salt until tender. Drain and keep aside.",
+    "In a heavy-bottomed vessel, heat the oil and add the cumin seeds to it. Once they begin to crackle, add the ginger–garlic paste and green chilli. Sauté for 1 minute.",
+    "Add the onion and continue sautéing until it becomes golden brown.",
+    "Add the coriander powder, red chilli powder and turmeric powder. Cook for 2-3 minutes on medium flame.",
+    "Add the wholewheat grains and lentils and enough water to cover the ingredients. Allow this to cook on low flame for 40–45 minutes. Once it is done, take it off the heat and grind it into a coarse paste using a hand-blender.",
+    "Place the vessel back on the stove and add the vegetables to it. Allow this to simmer for 20 minutes on medium flame. If the haleem seems too dry, add a cup of warm water to it.",
+    "Finish with garam masala and salt. Stir well.",
+    "Garnish the haleem with mint leaves, coriander leaves, lemon juice and birista. Serve hot."
+  ],
+  "image": "/recipes/vegan-haleem.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

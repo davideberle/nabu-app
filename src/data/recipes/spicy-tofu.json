@@ -1,0 +1,86 @@
+{
+  "id": "spicy-tofu",
+  "name": "SPICY TOFU",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "minced shallot",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "minced bird's eye chili pepper, plus sliced chili pepper for garnish (optional)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried shiitake mushrooms, soaked and minced",
+      "amount": "½ ounce (14 g)"
+    },
+    {
+      "item": "chili jam or hot sauce (such as sriracha or Korean hot pepper paste)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetarian oyster sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "julienned ginger (see Note)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "silken tofu, cut into small cubes",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "chopped cilantro, for garnish",
+      "amount": "1 ounce (28 g)"
+    }
+  ],
+  "method": [
+    "In a large skillet or wok, heat oil over medium heat. Add garlic, shallot, and minced chili pepper, and cook and stir until garlic turns slightly golden on edges (about 30 seconds).",
+    "Add mushrooms, chili jam, soy sauce, and vegetarian oyster sauce, and mix well.",
+    "Stir in water and ginger.",
+    "Add tofu cubes, sugar, stock powder, and salt, and simmer until sauce slightly thickens (2 to 3 minutes).",
+    "Transfer to a platter, dust with ground pepper, garnish with chopped cilantro and sliced chili pepper (if using), and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

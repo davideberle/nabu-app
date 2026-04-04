@@ -1,0 +1,58 @@
+{
+  "id": "vegan-fish-sauce",
+  "name": "VEGAN FISH SAUCE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "½ ounce (14 g)"
+    },
+    {
+      "item": "sheet (4 by 8 inches/10 by 20 cm) dried kelp (kombu seaweed)",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "2½ cups (600 ml)"
+    },
+    {
+      "item": "pineapple, peeled and thinly sliced",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "rock sugar",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "In a medium saucepan, combine dried shiitake mushrooms, dried kelp, and water, and bring to a boil over medium heat.",
+    "Boil for 5 minutes, and then add pineapple, salt, rock sugar, cinnamon, star anise, and soy sauce.",
+    "Simmer on low heat until the sauce is reduced by half, about 30 minutes.",
+    "Strain to remove all solids, let cool, and then transfer to an airtight glass jar or bottle.",
+    "Store in the refrigerator for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

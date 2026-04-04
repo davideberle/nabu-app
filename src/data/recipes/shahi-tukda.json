@@ -1,0 +1,56 @@
+{
+  "id": "shahi-tukda",
+  "name": "SHAHI TUKDA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Before I wrote this book, I could not have imagined a world where this soaked-in-milk sweet bread dessert would be made without milk. But this recipe gets you so close to the real deal. For added effect, coat the slices with some edible silver or gold warq.",
+  "ingredients": [
+    {
+      "item": "slices of bread",
+      "amount": "5"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "cashew milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cardamom powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "saffron (diluted in 1 tbsp warm cashew milk)",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "almond meal",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "pistachios (cut into slivers)",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Cut each slice of bread into four small pieces and deep fry them.",
+    "In a pan, heat the cashew milk on low flame. Add the sugar and allow it to melt completely.",
+    "Add the cardamom powder and saffron and allow the mixture to simmer for 4-5 minutes.",
+    "Add the almond meal and let it cook for another 1-2 minutes.",
+    "Once the mixture is thick enough to coat the back of your spoon, take it off the flame and allow it to cool to room temperature.",
+    "Pour this over the pieces of fried bread, garnish with pistachios and serve warm."
+  ],
+  "image": "/recipes/shahi-tukda.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

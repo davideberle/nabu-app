@@ -1,0 +1,94 @@
+{
+  "id": "tangra-style-tofu-chilli",
+  "name": "TANGRA-STYLE TOFU CHILLI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "What’s a vegan cookbook without a tofu recipe? Another example of migrant Indian cuisine, Tangra cooking is the Indianized version of Chinese food that was born in and around Kolkata. While many times it is made with paneer, I’ve swapped it with the most accessible vegan ingredient, the tofu. This is also the only recipe in this cookbook that features it.",
+  "ingredients": [
+    {
+      "item": "cornflour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vinegar",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "+ ½ tbsp pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tofu (cubed)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "oil (plus extra for frying)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic (minced)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion (diced)",
+      "amount": "1"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "capsicum (diced)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chilli sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "ketchup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornflour",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "spring onion greens (finely chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "In a bowl, mix the cornflour with vinegar, ginger and garlic pastes, 1 tsp pepper and salt.",
+    "Toss the tofu in this mixture and add 2 tbsp of water so the flour sticks to the tofu. Allow it to rest for 15 minutes.",
+    "Deep fry the tofu pieces in hot oil till golden brown and drain on a kitchen towel.",
+    "In a pan, heat the oil and add the garlic. Add the onion and sauté for 2 minutes.",
+    "Add the red chilli powder and capsicum and continue sautéing for 2 minutes on medium flame.",
+    "Add the chilli sauce, soy sauce and tomato ketchup. Stir well and cook for 3-4 minutes on medium flame. The onion and capsicum should be cooked through, but still be crunchy.",
+    "Add the fried tofu and toss it well so that it absorbs the flavours.",
+    "Mix the cornflour with ½ cup of water to make a slurry. Add the slurry to the pan and stir. Cook for 3-4 minutes and finish with ½ tbsp pepper powder, salt and spring onion greens. Serve hot."
+  ],
+  "image": "/recipes/tangra-style-tofu-chilli.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

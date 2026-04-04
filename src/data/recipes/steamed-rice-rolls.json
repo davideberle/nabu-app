@@ -1,0 +1,92 @@
+{
+  "id": "steamed-rice-rolls",
+  "name": "STEAMED RICE ROLLS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "chopped leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried wood ear mushrooms, soaked and julienned (see Note)",
+      "amount": "2 ounces (50 g)"
+    },
+    {
+      "item": "medium carrot, peeled and julienned (see Note)",
+      "amount": "1"
+    },
+    {
+      "item": "jicama, peeled and julienned (see Note)",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "fried tofu, cut into strips",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "soy sauce or vegan fish sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "rice flour",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups (1 L)"
+    },
+    {
+      "item": "vegetable oil, plus more for greasing pan",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "medium cucumber, julienned (see Note)",
+      "amount": "1"
+    },
+    {
+      "item": "mung bean sprouts, blanched",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "vegan fish dipping sauce",
+      "amount": "1 cup (240 ml)"
+    }
+  ],
+  "method": [
+    "Heat ¼ cup (60 ml) of vegetable oil in a medium skillet over medium-low heat. When hot, add leek and cook and stir until golden brown (1 to 2 minutes). Transfer to a small bowl along with most of the oil (leave about 1 tablespoon of leek and oil in the skillet).",
+    "Return pan to heat and add mushrooms, carrot, jicama, fried tofu, salt, stock powder, and soy sauce. Cook and stir over high heat until vegetables have softened but still retain some crispness (about 3 minutes), and then transfer to a medium bowl to cool.",
+    "CRÊPES In a large bowl, combine rice flour, tapioca starch, water, 1 tablespoon of vegetable oil, and salt, and stir well until flour is dissolved. Let the batter rest for at least 1 hour or overnight.",
+    "Grease a large plate, tray, or cutting board with some of the remaining leek oil and grease an 8-inch (20 cm) nonstick pan with a very thin layer of vegetable oil.",
+    "Heat the nonstick pan over medium heat. When it's hot, stir the batter and pour about ¼ cup (60 ml) of it into the pan. While wearing oven mitts, tilt the pan in a circular motion to thoroughly coat the bottom with batter and create an evenly round crêpe. Cover and allow the crêpe to steam until it turns translucent (about 1 minute). Uncover, lift the pan, and flip the crêpe out onto your pre-greased plate, tray, or cutting board. (Use a spatula to loosen before flipping if some parts are sticking to the pan). Repeat with remaining batter.",
+    "While waiting for the next crêpe to steam, top the finished one with 2 tablespoons of the filling. Spread it across the crêpe until it is closer to the bottom end, and then lift up the bottom end and roll it over the filling. Secure the roll closed, gently but tightly.",
+    "Arrange the rolls on a platter and spoon the reserved fried leek and oil on top. Serve with julienned cucumbers, mung bean sprouts, and vegan fish dipping sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

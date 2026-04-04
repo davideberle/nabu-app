@@ -1,0 +1,76 @@
+{
+  "id": "beetroot-and-oats-tikki",
+  "name": "BEETROOT AND OATS TIKKI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "ingredients": [
+    {
+      "item": "boiled beetroot (grated)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oat pulp",
+      "amount": "½ cup"
+    },
+    {
+      "item": "amaranth flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "potato (boiled and mashed)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "roasted cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients, except for the oil, into a semi-hard paste.",
+    "Shape it into small tikkis and dust them with some amaranth flour.",
+    "Shallow fry the tikkis in a pan till golden brown. Serve hot with mint–coriander chutney."
+  ],
+  "image": "/recipes/beetroot-and-oats-tikki.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

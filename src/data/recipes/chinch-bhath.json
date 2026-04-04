@@ -1,0 +1,114 @@
+{
+  "id": "chinch-bhath",
+  "name": "CHINCH BHATH",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is a typical Saraswat Brahmin dish that is minimal on ingredients and maximum on subtle flavours. The Saraswat Brahmins are one of the rare communities from the west coast of India—especially Goa, which is known for its seafood—who have a massive repertoire of vegetarian dishes.",
+  "ingredients": [
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "split Bengal gram",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chillies",
+      "amount": "10"
+    },
+    {
+      "item": "whole coriander seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "5"
+    },
+    {
+      "item": "split Bengal gram",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chillies",
+      "amount": "2"
+    },
+    {
+      "item": "peanuts",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "rice (cooked)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split Bengal gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "8"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Heat a kadai and dry roast all the ingredients for the spice blend. Cool this mixture and transfer into a blender. Blitz into a coarse powder and keep aside.",
+    "To make the base, heat the sesame oil in a pan and add the mustard seeds and curry leaves. Once they begin to crackle, add the split Bengal gram and split black gram.",
+    "Once the dals have turned golden brown, add the red chillies, peanuts and turmeric powder. Stir well for 1 minute.",
+    "Add the tamarind paste and cook it for 2-3 minutes.",
+    "Add 1½ tbsp of the spice blend. Mix well and cook for 4-5 minutes.",
+    "Add the cooked rice and incorporate it into the tamarind gravy.",
+    "To prepare the tempering, heat the sesame oil in a small kadai and add the mustard seeds, split Bengal gram, curry leaves and turmeric powder. Once the spices crackle, pour the tempering over the rice.",
+    "Mix well, adjust the seasoning and serve hot."
+  ],
+  "image": "/recipes/chinch-bhath.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

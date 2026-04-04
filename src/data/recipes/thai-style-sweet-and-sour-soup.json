@@ -1,0 +1,79 @@
+{
+  "id": "thai-style-sweet-and-sour-soup",
+  "name": "THAI-STYLE SWEET-AND-SOUR SOUP",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "tamarind pulps (see Note), seeds removed",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "hot water",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "lemongrass stalks",
+      "amount": "2 to 3"
+    },
+    {
+      "item": "firm tofu",
+      "amount": "5 ounces (142 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "plum tomatoes, cut into wedges",
+      "amount": "5 ounces (142 g)"
+    },
+    {
+      "item": "salt, plus more if needed",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "or 5 makrut lime leaves, roughly torn into chunks, center stems removed",
+      "amount": "4"
+    },
+    {
+      "item": "vegan fish sauce (optional)",
+      "amount": "1 tablespoon (or to taste)"
+    },
+    {
+      "item": "straw or white button mushrooms, rinsed in salted water and halved",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "enoki mushrooms, stems trimmed and rinsed in salted water",
+      "amount": "3½ ounces (100 g)"
+    }
+  ],
+  "method": [
+    "Soak tamarind pulps in the hot water for about 15 minutes. Use a spoon to break up the pulps, press through a strainer to get a tamarind paste, and then discard the fibrous part. Set aside.",
+    "Trim off the green upper parts and lowest, toughest portions at the bases of the lemongrass stalks. Place on a cutting board and bruise the bulbous end with a pestle or meat tenderizer to release fragrance and flavor.",
+    "Cut tofu into 1-inch (2.5 cm) cubes and set aside.",
+    "Heat oil in a 2-quart (2 L) saucepan over medium-low heat. When hot, add the leeks and cook and stir until fragrant (about 30 seconds). Add lemongrass stalks, tomatoes, 4 cups (1 L) of water, salt, stock powder, sugar, and lime leaves to the pan and bring to a boil.",
+    "Stir in tamarind paste and tofu, and season with vegan fish sauce (if using) or more salt. Continue to boil until the tomatoes are tender (3 to 5 minutes). During the last minute of cooking, separate the mushrooms into bite-size bunches and stir them in. When soup returns to a boil, remove from heat.",
+    "Transfer soup to bowls and serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "rajgira-roti",
+  "name": "RAJGIRA ROTI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This underrated paratha is made on days when Hindus fast. Rajgira roti is as nutrition dense as it is delicious. While it can be eaten on just about any day with a good pickle or chutney on the side, it does taste best with a sattvic-style side dish.",
+  "ingredients": [
+    {
+      "item": "amaranth flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "potato (boiled and mashed)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pepper powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "oil (plus extra for frying)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a bowl, combine all the ingredients, add water and knead the mixture into a soft dough. Since this flour doesn’t have any gluten, it may not come together and stay bonded. Therefore it is important to knead it well.",
+    "Divide the dough into 5 roundels. Flatten a roundel with your palm. Dust a flat surface with more amaranth flour and place the roundel of dough on it. Using a rolling pin, roll it out into a small roti.",
+    "On a hot pan, heat some oil and cook the roti on both sides. This should take about 1-2 minutes per side. Serve hot. Repeat with the remaining dough."
+  ],
+  "image": "/recipes/rajgira-roti.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

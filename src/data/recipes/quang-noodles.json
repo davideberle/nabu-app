@@ -1,0 +1,118 @@
+{
+  "id": "quang-noodles",
+  "name": "QUANG NOODLES",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "6 cups (1.5 L)"
+    },
+    {
+      "item": "pumpkin, peeled and cut into cubes",
+      "amount": "12½ ounces (350 g)"
+    },
+    {
+      "item": "chayote or kohlrabi, peeled and half cubed and half diced",
+      "amount": "9 ounces (250 g)"
+    },
+    {
+      "item": "taro, diced",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "salt, divided",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "cold-pressed peanut or vegetable oil, divided",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu, cut into 1-inch (2.5 cm) thick steaks",
+      "amount": "1"
+    },
+    {
+      "item": "finger-size pieces fresh turmeric (see Note), peeled and roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "leek (white and green parts separated), roughly chopped, divided",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "mushrooms (straw, shiitake, or similar), cut into bite-size pieces",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "store-bought or homemade seitan, sliced",
+      "amount": "4¼ ounces (120 g)"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dried flat rice noodles or 2¼ pounds (1 kg) fresh mì Quảng or flat rice noodles",
+      "amount": "16 ounces (454 g)"
+    },
+    {
+      "item": "leaf or iceberg lettuce, shredded or torn",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "fresh green herbs (such as mint, perilla, cilantro, and/or Asian basil leaves), chopped",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "sesame rice crackers",
+      "amount": "2"
+    },
+    {
+      "item": "cilantro, chopped, for garnish",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "crushed roasted peanuts, for garnish",
+      "amount": "½ cup (72 g)"
+    },
+    {
+      "item": "limes, cut into wedges, for serving",
+      "amount": "2"
+    },
+    {
+      "item": "whole green serrano chili peppers. for serving",
+      "amount": "5"
+    },
+    {
+      "item": "banana blossom, prepped and shredded",
+      "amount": "3½ ounces (100 g)"
+    }
+  ],
+  "method": [
+    "Add the water to a medium saucepan and bring to a boil over medium-high heat. Add pumpkin and chayote cubes, cook until fork-tender (about 15 minutes), and then remove from heat. Purée the mixture with a hand blender. Add diced chayote and taro to saucepan with 1 teaspoon of the salt and cook over medium heat until fork-tender (about 7 minutes).",
+    "Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add tofu steaks and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain.",
+    "If using fresh turmeric, place it in a resealable plastic bag and crush it with a pestle (avoid using the mortar, as the turmeric may stain it and/or your hands) or meat tenderizer.",
+    "In a mortar and pestle, finely crush the white part of the leek with ½ teaspoon of the salt.",
+    "In a medium skillet, heat the remaining ¼ cup (60 ml) oil over medium-low heat. When hot, add leek and cook and stir until golden (about 2 minutes). If using fresh turmeric, add and quickly cook it for about 10 seconds.",
+    "Add mushrooms, tofu, and seitan to the skillet. Season with turmeric powder (if using), remaining 1 teaspoon salt, stock powder, and sugar. Toss well, cook over low heat until mushrooms are tender (2 to 3 minutes), and then turn off heat. Add green part of leek and ground pepper.",
+    "Follow the directions on the package to cook the dried flat rice noodles. If using fresh noodles, quickly blanch them in hot water if they have been refrigerated.",
+    "Fill serving bowls halfway with noodles, and then ladle soup over the top until it barely covers them. Add some lettuce and herbs to each bowl. Break a rice cracker into small pieces and add to bowl. Garnish with cilantro, crushed peanuts, and a full piece of sesame rice cracker.",
+    "Squeeze lime wedges over the top of the bowls and mix well. Serve with serrano chili peppers, banana blossom, and more lettuce and herbs."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

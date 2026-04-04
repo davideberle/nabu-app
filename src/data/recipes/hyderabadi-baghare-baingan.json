@@ -1,0 +1,93 @@
+{
+  "id": "hyderabadi-baghare-baingan",
+  "name": "HYDERABADI BAGHARE BAINGAN",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This recipe belongs to the royal kitchens of Hyderabad. This is a stunning vegan dish I found in their repertoire while researching my previous book on the history of Indian cuisine. To create a creamy texture, it makes use of an ingredient that is surely but sparingly used in the Indian kitchen—white sesame seeds.",
+  "ingredients": [
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "baby brinjals (slit from the top)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "peanuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "onion seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "birista",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "6-7"
+    },
+    {
+      "item": "green chillies",
+      "amount": "3"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "jaggery (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and deep fry the baby brinjals, then drain and keep them aside.",
+    "In another pan, dry roast the coriander seeds, peanuts, ½ tsp of the onion seeds, 1 tsp of the cumin seeds, ½ tsp of fenugreek seeds and the sesame seeds. Once done, powder and blend them with 1 tbsp of water into a fine paste.",
+    "Separately, blend the birista into a fine paste.",
+    "In a pan, heat 3 tbsp of oil and add the remaining onion seeds, cumin seeds and fenugreek seeds, and the green chilli. Allow them to crackle. Add the curry leaves and cook for 1 minute on medium flame.",
+    "Add the spice paste and the birista paste and cook for 4-5 minutes until the oil begins to separate.",
+    "Add the tamarind paste and the jaggery, if using, and stir well. Now add the brinjals and ½ cup of water if the dish seems too dry. Let it simmer until the oil begins to float on top.",
+    "Finish with salt and coriander leaves. Serve hot."
+  ],
+  "image": "/recipes/hyderabadi-baghare-baingan.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

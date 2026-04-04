@@ -1,0 +1,66 @@
+{
+  "id": "manipuri-kelli-chana",
+  "name": "MANIPURI KELLI CHANA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A popular snack from the streets of Manipur, this one is almost like a chaat—it’s tangy, textured and a toss-and-eat treat. Kelli chana gets most of its flavour from the usage of fragrant perilla seeds, so make sure you procure them from Northeast Indian food stores.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "onion (thinly sliced)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coriander seeds (coarsely crushed)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds (coarsely crushed)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder or chilli paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "dry yellow or green peas (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "perilla seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "In a pan, heat oil and add the bay leaves. Once they turn brown, about 30 seconds on medium flame, add the onions and sauté for 3-4 minutes until they are transparent.",
+    "Add the coriander seeds, cumin seeds, red chilli powder or paste and turmeric powder and cook for 3-4 minutes.",
+    "Add the boiled peas and adjust the salt.",
+    "Finish with a sprinkling of perilla seeds and garnish with coriander leaves before serving."
+  ],
+  "image": "/recipes/manipuri-kelli-chana.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

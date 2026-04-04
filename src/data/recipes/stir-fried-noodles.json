@@ -1,0 +1,104 @@
+{
+  "id": "stir-fried-noodles",
+  "name": "STIR-FRIED NOODLES",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "soy sauce, plus",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "for serving",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "vegetarian oyster sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ketchup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sriracha",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "filtered water",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "plus 3 tablespoons vegetable oil, divided",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu",
+      "amount": "1"
+    },
+    {
+      "item": "dried or 42 ounces (1.2 kg) fresh ramen noodles",
+      "amount": "21 ounces (600 g)"
+    },
+    {
+      "item": "thinly sliced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried shiitake mushrooms, soaked and sliced",
+      "amount": "1 ounce (30 g)"
+    },
+    {
+      "item": "carrot, peeled and shredded",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "garlic chives (or Chinese chives), cut into 2-inch (5 cm) lengths",
+      "amount": "¾ ounce (20 g)"
+    },
+    {
+      "item": "white or green cabbage, shredded",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "roughly chopped Chinese celery (optional)",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "mung bean sprouts",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "bird’s eye chili pepper, sliced, for garnish",
+      "amount": "1"
+    },
+    {
+      "item": "Soy sauce, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, whisk together sugar, soy sauce, vegetarian oyster sauce, ketchup, sriracha, stock powder, and filtered water until solids are dissolved. Set aside",
+    "STIR-FRY Heat ¼ cup (60 ml) of the vegetable oil in a small skillet over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain. When cool, cut into ½-inch (1 cm) thick slices.",
+    "Fill a large saucepan halfway with water and bring to a boil over high heat. Blanch fresh ramen noodles until loosened (1 to 2 minutes). For dried ramen, follow the directions on the package, and then drain through a colander. Rinse several times with cold tap water to eliminate excess starch, and then drain well and set aside.",
+    "In a large skillet or wok, heat the remaining 3 tablespoons oil over medium-low heat. When hot, add leek and cook and stir until slightly golden brown (about 1 minute). Add mushrooms, tofu, carrot, and 2 tablespoons of the prepared sauce. Cook and stir until mushrooms are tender (about 2 minutes).",
+    "Add noodles to the skillet and stir well, adding more sauce gradually (1 to 2 tablespoons at a time), adjusting the amount to taste.",
+    "Add garlic chives, cabbage, celery (if using), and mung bean sprouts and stir well. Cook until wilted (1 to 2 more minutes).",
+    "Transfer to plates, garnish with chili pepper slices, and serve hot with a side of soy sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

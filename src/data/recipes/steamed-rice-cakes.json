@@ -1,0 +1,100 @@
+{
+  "id": "steamed-rice-cakes",
+  "name": "STEAMED RICE CAKES",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "rice flour",
+      "amount": "3 cups (400 g)"
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "¾ cup (100 g)"
+    },
+    {
+      "item": "salt, divided",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups (1 L)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh shiitake mushrooms, stems trimmed and roughly chopped",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "fresh mushrooms (straw, button, king oyster, or similar), stems trimmed and roughly chopped",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "carrot, peeled and roughly chopped",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "vegetable oil, divided",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt, divided",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "mushroom or vegetable stock powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "peeled split mung beans, rinsed, soaked, and drained",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "full-fat, unsweetened coconut milk",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "crushed roasted peanuts",
+      "amount": "½ cup (72 g)"
+    },
+    {
+      "item": "croutons (optional)",
+      "amount": "1 cup (40 g)"
+    },
+    {
+      "item": "vegan fish dipping sauce",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "In a large bowl, combine rice flour, tapioca starch, ½ teaspoon of salt, and 4 cups (1 L) of water. Whisk until well combined and set aside for 1 hour. Whisk in 1 teaspoon of salt and 1 tablespoon of oil.",
+    "Fill a steamer halfway with water and arrange molds in the basket. Bring the water to a boil, cover, and steam until molds are hot (about 2 minutes). Uncover and pour batter about ⅔ inch (1.7 cm) deep into each mold. Wrap the steamer lid with a large kitchen towel by tying the corners of the fabric over the handle. This will absorb some of the excess steam. Steam the cakes until they are firm and a shallow hollow has formed in the centers (3 to 5 minutes). Remove molds with tongs and set aside to cool. Continue steaming in batches, stirring batter each time before adding to the molds.",
+    "Place mushrooms in a blender or food processor, pulse until they are finely chopped, and then transfer to a small bowl. Repeat with the carrot.",
+    "In a small skillet, heat 2 tablespoons of the oil over medium-low heat. Add the leek and cook and stir until fragrant (about 1 minute). Reserve 1 tablespoon of fried leek oil in a small bowl, then add mushrooms, ¼ teaspoon of the salt, and stock powder to the skillet. Cook and stir until mushrooms are fully cooked (3 to 5 minutes). Transfer to a bowl to cool.",
+    "Add the remaining 1 tablespoon oil to the same skillet, along with the carrot and ¼ teaspoon of the salt. Cook and stir until soft (about 2 minutes), and then transfer to a separate bowl to cool.",
+    "Combine ½ cup (120 ml) of water and mung beans in a small saucepan and stir. Bring water to a boil, and then cook over medium heat, uncovered, until water is mostly evaporated (about 5 minutes). Add coconut milk, sugar, and the remaining ½ teaspoon salt. Bring to a boil again and cook on low heat until all liquid is gone (3 to 5 more minutes). Transfer to a food processor and pulse until puréed.",
+    "Run the tip of a serving knife or spoon handle around the edges of the rice cakes to loosen and remove from the molds. Arrange them on a platter and drizzle with reserved fried leek oil. Spread some mung bean paste on top of each rice cake, followed by the carrot, mushrooms, roasted peanuts, and croutons (if using). Drizzle vegan fish dipping sauce on top and serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

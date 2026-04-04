@@ -1,0 +1,61 @@
+{
+  "id": "braised-ginger-mushrooms",
+  "name": "BRAISED GINGER MUSHROOMS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "king oyster mushrooms, rinsed and cut into bite-size pieces",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "freshly ground black pepper, plus more for garnish",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ginger, julienned (see Note), plus more for garnish",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "Sliced bird’s eye chili pepper, for garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, combine mushrooms, stock powder, soy sauce, leek, and pepper. Mix well and set aside for 15 minutes.",
+    "In a medium skillet, heat oil over low heat. When hot, add sugar and cook until melted and caramelized (1 to 2 minutes).",
+    "Add marinated mushrooms and ginger and stir well. Continue to cook over low heat until mushrooms are soft and sauce is reduced by half (about 10 minutes). Remove from heat.",
+    "Transfer to a platter; lightly dust with ground pepper; garnish with more ginger strips, sliced chili pepper (if using), and cilantro (if using); and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

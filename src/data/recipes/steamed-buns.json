@@ -1,0 +1,97 @@
+{
+  "id": "steamed-buns",
+  "name": "STEAMED BUNS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "lukewarm (104°F/40°C) almond or soy milk",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "instant dry yeast",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "plus 1 tablespoon sugar, divided",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "all-purpose flour, plus more for dusting",
+      "amount": "3½ cups (500 g)"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu, mashed",
+      "amount": "1"
+    },
+    {
+      "item": "dried shiitake mushrooms, soaked and minced",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "dried wood ear mushrooms, soaked and minced",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "peeled and diced carrot or water chestnuts",
+      "amount": "½ cup (65 g)"
+    },
+    {
+      "item": "vermicelli or glass noodles, finely chopped",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vegetarian oyster sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "char siu seasoning mix or ½ teaspoon turmeric powder",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a small bowl, combine lukewarm almond milk, yeast, salt, and 1 tablespoon of the sugar. Stir until yeast and sugar are completely dissolved, and then let sit for 5 minutes.",
+    "In a large bowl, combine flour, remaining ½ cup sugar, and baking powder. Make a hole in the center, add yeast mixture and vegetable oil, and then stir with a wooden spoon until well combined.",
+    "Turn out mixture on a floured work surface and knead until a smooth dough forms (10 to 15 minutes). Place dough back in bowl, cover with a damp kitchen towel, and let rest in a warm place (about 99°F/37°C) until it doubles in size (about 1 hour).",
+    "In a separate large bowl, combine mashed tofu, mushrooms, leek, carrot, noodles, tapioca starch, vegetarian oyster sauce, sesame oil, pepper, and char siu seasoning mix. Cover and leave to marinate for 30 minutes, and then divide into 8 equal-size portions.",
+    "Lightly dust work surface with flour, transfer dough, and knead again to remove air bubbles (about 2 minutes). Divide into 8 equal-size portions and shape each into a smooth ball. Cover dough balls with a kitchen towel and let rest for 10 minutes.",
+    "Flatten each dough ball into a round disc, about ½ inch (1 cm) thick. Pinch the edges so they are thinner than the centers, and then spoon filling into the center of each. Gather the edges and pinch to seal. As you finish each bun, slip it back under the damp kitchen towel and leave to rest for 15 minutes.",
+    "Fill a steamer halfway with water, and then place the buns in the steamer basket, leaving a generous amount of space between them so they have room to rise. Bring the water to a boil and then wrap the steamer lid in a towel and tie the corners of the fabric over the handle. This will absorb the excess steam. Steam until buns are dry and fluffy (20 to 25 minutes). Serve warm.",
+    "The buns will keep in the refrigerator for up to 1 week or the freezer for up to 3 months. To reheat buns, just steam them for 5 minutes or put them in the microwave on high for 2 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "tribute-to-hellshire",
+  "name": "TRIBUTE TO HELLSHIRE",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "time": "20 MINUTE",
+  "intro": "I grew up eating fish and bammy (cassava flatbreads) at the seafood restaurants at Hellshire Beach, on the south coast of Jamaica. This tribute isn’t fish and bammy, but it’s bammy fried and coated in a nori salt, which gives you that ocean flavour. Most vegetables taste better charred and aubergine (eggplant) is a true testament to that. This aubergine dip is truly something special and paired with the bammy, it’s a wonderful tribute indeed.",
+  "ingredients": [
+    {
+      "item": "bammy, cut it into 6 pieces each",
+      "amount": "2"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "400ml (13 fl oz/generous 1½ cups)"
+    },
+    {
+      "item": "coconut oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "flaky sea salt",
+      "amount": ""
+    },
+    {
+      "item": "aubergine",
+      "amount": "1"
+    },
+    {
+      "item": "tahini",
+      "amount": "50 g (2 oz)"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "nori sheets",
+      "amount": "2"
+    },
+    {
+      "item": "dried porcini or shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "MSG",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic granules",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Start by soaking the bammy. Combine the bammy with the coconut milk and a pinch or two of salt in a deep pan or bowl and leave to soak for 30 minutes.",
+    "Next, make the aubergine dip. Char the aubergine over an open flame on your hob (stovetop) for 10 minutes. Once charred, place in a bowl and cover with cling film (plastic wrap). Allow to sit for 5 minutes, then remove the charred skin and place the flesh in a food processor with the remaining ingredients. Blend until mostly smooth but with a few chunks.",
+    "To make the nori salt, put the nori sheets and mushrooms into a spice grinder or food processor and grind to a fine powder. Tip into a bowl and combine with the remaining ingredients.",
+    "Pat the bammy dry with paper towels and set aside. Melt enough coconut oil to coat in a frying pan (skillet) over a medium heat and fry the bammy pieces in batches for 3–4 minutes on each side until crispy. Transfer to a metal bowl and immediately hit with the nori salt, tossing to coat. Set aside on a wire rack.",
+    "Serve the dip in a bowl with the bammy placed around it."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

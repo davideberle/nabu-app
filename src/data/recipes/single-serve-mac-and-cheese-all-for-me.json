@@ -1,0 +1,65 @@
+{
+  "id": "single-serve-mac-and-cheese-all-for-me",
+  "name": "SINGLE SERVE MAC AND CHEESE, ALL FOR ME",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 1",
+  "time": "10 MINUTE",
+  "intro": "There are very few things that are more soothing than mac and cheese. This recipe hinges on a powerful umami bomb made with sun-dried tomato oil, miso and nutritional yeast. It is super satisfying and everything happens in one pot. The pasta is cooked in milk and water, which makes the most of the starch that is released as the pasta is cooking, making a silky and luxurious sauce.",
+  "ingredients": [
+    {
+      "item": "macaroni (or another small pasta shape like orzo)",
+      "amount": "75 g (2½ oz)"
+    },
+    {
+      "item": "non-dairy milk",
+      "amount": "200 ml (7 fl oz/scant 1 cup)"
+    },
+    {
+      "item": "water",
+      "amount": "50 ml (1 ¾ fl oz/3 tablespoons)"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "vegan sharp Cheddar, grated",
+      "amount": "30 g (1 oz)"
+    },
+    {
+      "item": "knob of vegan block butter (optional)",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "miso paste",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "sun-dried tomato oil",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "yellow or Dijon mustard",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Put the pasta, milk, water and salt in a saucepan and bring to the boil, then reduce the heat to medium-low, cover and simmer for 6–7 minutes until the pasta is cooked.",
+    "In a small bowl, stir together all the ingredients for the umami bomb. Add to the pasta and stir well. Add the vegan cheese and allow to melt, then add plenty of black pepper and, if you’re feeling indulgent, add a knob of vegan butter and allow to melt. Serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

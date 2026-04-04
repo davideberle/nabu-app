@@ -1,0 +1,108 @@
+{
+  "id": "mushroom-tahri",
+  "name": "MUSHROOM TAHRI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A tahri is a fragrant Awadhi-style pulao that I have come to love more than juicy biryani. The subtle notes of whole spices and the rich marinade that coats the mushrooms make plain Basmati rice shine in this dish.",
+  "ingredients": [
+    {
+      "item": "button mushrooms (halved)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vegan cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "whole spices",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion (sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes (finely chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "basmati rice (soaked in water for 20 minutes)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the mushrooms with remaining the ingredients for the marinade and keep aside for 20 minutes.",
+    "In a pan, heat the oil and add all the whole spices, cumin seeds and bay leaf. Once the spices begin to crackle, add the ginger–garlic paste and the onion and sauté until the onion turns golden brown.",
+    "Add the green chilli, tomato, turmeric powder and red chilli powder and cook for 4-5 minutes on medium flame.",
+    "Add the marinated mushrooms and stir well. Allow the mushrooms to cook for about 3-4 minutes.",
+    "Drain the soaked rice and add it to the pan along with 1¼ cups of water and salt. Let the rice simmer in this flavoured water for about 5-6 minutes.",
+    "Once the water has evaporated and the rice has cooked completely, finish the tehri with mint and coriander leaves. Serve hot."
+  ],
+  "image": "/recipes/mushroom-tahri.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "pumpkin-and-peanut-soup",
+  "name": "PUMPKIN AND PEANUT SOUP",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "mushrooms (straw, portobello, enoki, or white), stems trimmed and rinsed in salted water",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder, plus more if needed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "raw peanuts with skin, soaked in room-temperature water for a few hours",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups (1 L)"
+    },
+    {
+      "item": "salt, plus more if needed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pumpkin (see Note), peeled, seeds removed, and cut into 2-inch (5 cm) cubes",
+      "amount": "17½ ounces (500 g)"
+    },
+    {
+      "item": "Few sprigs sawtooth herb or cilantro, finely chopped, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut smaller mushrooms in half and larger ones into quarters.",
+    "In a small bowl, combine mushrooms, minced leek, stock powder, and pepper. Mix well and set aside for about 15 minutes.",
+    "Remove the silky skin of the raw peanuts and roughly crush them with a mortar and pestle. (Alternatively, you can put them in a resealable plastic bag and crush them with a rolling pin).",
+    "In a medium saucepan, heat oil over medium heat. Add the mushroom-leek mixture and cook and stir until tender (2 to 3 minutes). Transfer contents of saucepan to a bowl.",
+    "Add the water to the same saucepan, along with salt and peanuts, and cook, occasionally skimming off foam, until the peanuts are quite soft (about 15 minutes).",
+    "Add pumpkin cubes, cover, and cook over low heat until soft (about 15 minutes more). When you can easily break the cubes with a chopstick or fork, they are done.",
+    "Return the mushroom-leek mixture to the soup and season with salt and/or stock powder to taste.",
+    "Garnish with sawtooth herb or cilantro and serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

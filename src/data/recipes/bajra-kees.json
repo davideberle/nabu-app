@@ -1,0 +1,63 @@
+{
+  "id": "bajra-kees",
+  "name": "BAJRA KEES",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Warm bowls of kees make an appearance on winter and monsoon evenings in my house. This recipe has its roots in Rajasthani cuisine. The silken-textured millet mash has a meaty, haleem-like body, but is as light as a khichdi. I like eating it with crispy birista and fried garlic.",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "bajra (soaked overnight)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "split yellow gram (soaked for 20 minutes)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "In a pressure cooker, heat the oil. Add the cumin seeds and green chilli.",
+    "Once the spices begin to crackle, add the asafoetida and turmeric powder and stir well.",
+    "Drain the bajra and yellow gram and add them to the pressure cooker. Stir in 2 cups of water and close the lid.",
+    "Cook the kees on medium flame, for 5-6 whistles. Check doneness once the pressure is off. I like to run the dish through a hand blender once done.",
+    "Finish with salt, lemon juice and coriander leaves."
+  ],
+  "image": "/recipes/bajra-kees.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

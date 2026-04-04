@@ -1,0 +1,73 @@
+{
+  "id": "masala-chickpea-toast",
+  "name": "MASALA CHICKPEA TOAST",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "My go-to breakfast, this toast is something I heart more than an avocado toast. Protein-rich, spiced-up chickpea smash is smeared on toasted sourdough. The result is a dish that so delicious, you’ll want to have it for breakfast and lunch and dinner!",
+  "ingredients": [
+    {
+      "item": "slices of sourdough",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "roasted cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "chickpeas (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fried garlic (sliced)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped and with stems)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Toast the sourdough slices and brush them with 1 tsp each of olive oil.",
+    "In a bowl, mix all the other ingredients and smash them with the back of your spoon.",
+    "To serve, layer the toast with this chickpea smash and serve warm."
+  ],
+  "image": "/recipes/masala-chickpea-toast.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

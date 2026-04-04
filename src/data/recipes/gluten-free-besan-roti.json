@@ -1,0 +1,49 @@
+{
+  "id": "gluten-free-besan-roti",
+  "name": "GLUTEN-FREE BESAN ROTI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Every modern cookbook, international or Indian, needs an alternative bread source for gluten-free folks. And this is that recipe for me. This besan roti is a nutritional powerhouse with great vitamin, mineral and protein sources. It can be eaten for breakfast or with curries and veggies for dinner.",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "oat flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, combine all the ingredients, add water and knead the mixture into a semi-soft dough.",
+    "Divide the dough into 10 roundels. Roll each into a ball and flatten it with your palm. Then roll them out into medium-sized rotis.",
+    "Cook each roti on a hot pan for 2-3 minutes on both sides, with 1 tsp of oil. Serve hot."
+  ],
+  "image": "/recipes/gluten-free-besan-roti.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

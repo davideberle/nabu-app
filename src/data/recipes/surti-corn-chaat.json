@@ -1,0 +1,76 @@
+{
+  "id": "surti-corn-chaat",
+  "name": "SURTI CORN CHAAT",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "The only thing that stops me from calling this dish truly authentic is the fact that street food from Gujarat is heavily loaded with Amul cheese. But this is delicious nonetheless. Have it with your evening chai, take it in your snack box to work, put it in your kid’s tiffin or sneak some into the cinema—it’s perfect any time!",
+  "ingredients": [
+    {
+      "item": "corn",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tomato (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "½"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "spring onion (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chilli sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sev",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat water and boil the corn with 1 tsp chaat masala, 1 tsp sugar, 1 tsp cumin powder and 1 tsp red chilli powder for 7-8 minutes. Once done, drain and keep aside.",
+    "In a serving bowl, toss the remaining ingredients. Add the cooked corn and mix well. Serve hot."
+  ],
+  "image": "/recipes/surti-corn-chaat.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "moong-dal-samosa-chaat",
+  "name": "MOONG DAL SAMOSA CHAAT",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "For me, a chaat is the easiest snack to turn vegan. All you have to do is skip the cold pool of yoghurt and use the vegan yoghurt recipe from this book. The chaat itself is filled with lentils instead of potatoes and that’s what makes all the difference.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split green gram (boiled and coarsely ground)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "refined flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "almond yoghurt (whisked)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tomato (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "To make the filling, heat 1 tbsp oil in a pan and add the cumin seeds, fennel seeds and asafoetida to it.",
+    "Once the spices begin to crackle, add the turmeric powder, red chilli powder, cumin powder and coriander powder and stir well.",
+    "Add the coarsely ground split green gram and stir it into the spices. Adjust the seasoning, then finish with dry mango powder, chaat masala and coriander leaves and keep aside. Add a few spoons of water to this if the mixture is too dry.",
+    "To make the dough, mix all the ingredients in a bowl, add water and knead it into a tight dough.",
+    "Divide the dough into 7-8 roundels. Roll each roundel into a small circle and cut it into half.",
+    "Make a cone out of each semi-circle and place a spoonful of the filling inside the cone.",
+    "Seal the edges from the top to resemble a triangle and deep fry in hot oil till golden.",
+    "To prepare the chaat, gently smash the samosa and top it with a spoonful of almond yoghurt, onions and tomatoes. Finish with a pinch of cumin powder, chaat masala and red chilli powder. Sprinkle pomegranate seeds and serve immediately."
+  ],
+  "image": "/recipes/moong-dal-samosa-chaat.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "jackfruit-kosha-mangsho",
+  "name": "JACKFRUIT ‘KOSHA MANGSHO’",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This recipe is in my cookbook because I want to save it for posterity. I lucked out on a traditional kosha mangsho recipe from my Bengali friend and home chef Iti Misra and then she was generous enough to teach me how to make it with this genius swap. Her whole family and I swear by it.",
+  "ingredients": [
+    {
+      "item": "saffron soaked in hot water",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegan yoghurt",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw jackfruit (cubed)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "4"
+    },
+    {
+      "item": "green cardamoms",
+      "amount": "3"
+    },
+    {
+      "item": "onion (grated)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green chillies (chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "In a bowl, mix the saffron with the yoghurt and marinate the jackfruit in it for 5-6 hours.",
+    "In a pressure cooker, heat the oil and add the bay leaves and other whole spices and allow them to crackle.",
+    "Add the onion, green chillies and salt and fry till the onion is a light golden brown. Add the ginger and garlic pastes and red chilli powder and fry for 2-3 minutes.",
+    "Add the jackfruit along with the marinade and fry for 5-6 minutes.",
+    "Add 2 cups of water and stir well. Shut the pressure cooker and cook on medium heat for 4 whistles, then turn off the heat.",
+    "Allow the pressure cooker to cool to room temperature. Check the doneness of the jackfruit, then transfer it into another pan to cook further if needed. Adjust the seasoning and serve hot."
+  ],
+  "image": "/recipes/jackfruit-kosha-mangsho.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

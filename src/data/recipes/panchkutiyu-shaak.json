@@ -1,0 +1,114 @@
+{
+  "id": "panchkutiyu-shaak",
+  "name": "PANCHKUTIYU SHAAK",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A rare Gujarati dish which has grated fresh coconut as the heart of its flavour, panchkutiyu shaak is usually made using five basic veggies only. However, at home we add anything we can find in the pantry when making this dish. It’s a less luxurious version of an undhiyu.",
+  "ingredients": [
+    {
+      "item": "oil (plus extra for frying)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "purple yam (cubed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "brinjal (cubed)",
+      "amount": "1"
+    },
+    {
+      "item": "sweet potatoes (cubed)",
+      "amount": "2"
+    },
+    {
+      "item": "potato (cubed)",
+      "amount": "1"
+    },
+    {
+      "item": "onions (finely chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "ginger–chilli paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "4"
+    },
+    {
+      "item": "sticks of cinnamon",
+      "amount": "2"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "peanut (roasted)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white sesame",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "watermelon seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomatoes (chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "green peas (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coriander leaves (chopped)",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat some oil and separately fry the yam, brinjal, sweet potatoes and potatoes until golden brown. Drain on a kitchen towel and keep aside.",
+    "In a pan, heat 3 tbsp oil and add the onions to it. Sauté for 3-4 minutes until translucent.",
+    "Add the ginger–chilli paste and all the whole spices and continue frying. Add the turmeric, red chilli powder and coriander powder.",
+    "Meanwhile, in a blender, blend the peanuts, coconut, white sesame seeds and watermelon seeds. Add the tomatoes and churn the mixture into a coarse paste.",
+    "Add this mixture to the pan and sauté for 6-7 minutes on medium flame until the oil begins to separate.",
+    "Add all the fried vegetables and stir well. Add 1 cup of water, season with salt and cook for 7-8 minutes on low flame.",
+    "Add the green peas and let the shaak simmer for 2-3 minutes.",
+    "Garnish with coriander leaves and serve hot."
+  ],
+  "image": "/recipes/panchkutiyu-shaak.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

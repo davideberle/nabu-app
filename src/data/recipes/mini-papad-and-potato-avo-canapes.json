@@ -1,0 +1,70 @@
+{
+  "id": "mini-papad-and-potato-avo-canapes",
+  "name": "MINI PAPAD AND POTATO-AVO CANAPES",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I’ve pushed the envelope of Indian cuisine, slightly, with this recipe. I prefer using the Coorg or Kodaikanal avocados that are not as buttery as Californian ones, but are firm and textured enough for this recipe. They add a lot of body to the topping and the deep-fried potato adds to the richness. It’s the best pass-around in this book!",
+  "ingredients": [
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "potato (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "baby papads",
+      "amount": "7"
+    },
+    {
+      "item": "Indian avocado (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "¼"
+    },
+    {
+      "item": "tomato (finely chopped)",
+      "amount": "¼"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "½"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Black salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Coriander for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat oil and deep fry the chopped potato pieces and keep them aside.",
+    "Deep fry the papads and keep them aside.",
+    "In a bowl, mix the finely chopped avocado with the onion, tomato, green chilli, lemon juice, chaat masala and cumin powder. Season with black salt and add the potatoes to the mixture. Toss it well.",
+    "To serve, spoon the filling onto the papads and garnish with coriander leaves. Serve immediately."
+  ],
+  "image": "/recipes/mini-papad-and-potato-avo-canapes.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "laal-aloo-wai-wai",
+  "name": "LAAL ALOO WAI WAI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This dish is sold everywhere in Darjeeling, a hill station in West Bengal on the eastern side of India. ‘Lal aloo Wai Wai’ means red potato served with Wai Wai, a Nepalese brand of ready-to-eat noodles. Though it sounds simple, this dish is anything but! While Indian cuisine has very little to do with pasta or noodles, this creation is something to be proud of.",
+  "ingredients": [
+    {
+      "item": "potatoes (diced)",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tomatoes (roughly chopped)",
+      "amount": "5"
+    },
+    {
+      "item": "10–12 dry red chillies",
+      "amount": ""
+    },
+    {
+      "item": "cloves of garlic (peeled)",
+      "amount": "7"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "black cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "natural edible red colour (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "packet Wai Wai noodles (or any other instant noodles)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Boil the potatoes and keep them aside.",
+    "In a pan, heat 2 cups of water and add the tomatoes, dry chillies (save 2) and garlic. Once the tomatoes have softened, around 8-9 minutes, allow them to cool. Transfer the mixture into a blender and blend into a smooth paste.",
+    "In a pan, heat the mustard oil and add the black cumin and fennel seeds. Once they begin to crackle, add the saved chillies. Allow the tempering to cook for 30 seconds on medium flame.",
+    "Add the tomato paste and cook this for 8-10 minutes on medium heat.",
+    "In another bowl, mix the chickpea flour with just enough water to obtain a thick pancake-batter like consistency.",
+    "Pour this into the cooked tomato mixture and simmer the gravy for 7-8 minutes. Add water if it becomes too thick.",
+    "Add the boiled potatoes and season with salt. Cook this mixture for 3-4 minutes and add the natural edible colour (if using). Transfer into a serving bowl and get the noodles ready.",
+    "Before opening the noodle packet, crush it with your hands. Now open and transfer the noodles to a pan, then add the dry spice mix that comes with it (and any other seasoning or oil). Toast the noodles for 2-3 minutes on a low flame.",
+    "To serve, put some noodles in a bowl or back into the packet, and pour the tomato–potato gravy over it. Allow it to moisten the noodles for 2 minutes. Eat while it is hot."
+  ],
+  "image": "/recipes/laal-aloo-wai-wai.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

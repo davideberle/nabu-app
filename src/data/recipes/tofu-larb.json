@@ -1,0 +1,95 @@
+{
+  "id": "tofu-larb",
+  "name": "TOFU LARB",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 1",
+  "time": "20 MINUTE",
+  "intro": "I crave spicy and salty things. Larb is a type of Thai salad that packs a massive punch. Traditionally, it is made with minced (ground) pork and is vibrant with lime and mint. This dish comes together so quickly, making it very lunch-friendly, and a wonderful meal to make for yourself when you want something delicious without having to break a sweat. Grating the tofu creates a similar texture to the traditional minced meat and allows it to caramelise really well in the pan. Serve this up with any leftover grain, over noodles, or with crunchy vegetables!",
+  "ingredients": [
+    {
+      "item": "jasmine rice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "white mushrooms, sliced",
+      "amount": "4"
+    },
+    {
+      "item": "firm tofu, grated",
+      "amount": "100 g (3½ oz)"
+    },
+    {
+      "item": "small shallot, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "handful of coriander (cilantro), stalks finely chopped and leaves roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "Scotch bonnet, deseeded and very finely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "garlic cloves, very finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "mint leaves, torn",
+      "amount": "8"
+    },
+    {
+      "item": "roasted peanuts or cashews, roughly chopped",
+      "amount": "20 g (¾ oz)"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "Green Seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegan fish sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "brown sugar, coconut sugar or maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Little Gem lettuce",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, halved, deseeded and cut into matchsticks",
+      "amount": "¼"
+    },
+    {
+      "item": "carrot, cut into matchsticks",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat a dry frying pan (skillet) over a medium-high heat. Add the rice and toast for 8–10 minutes until golden. Place in a mortar or spice grinder and grind to a dust.",
+    "In a small bowl, whisk together the ingredients for the dressing.",
+    "In the same frying pan, heat the coconut oil, then add the mushrooms and the grated tofu. Fry for 3–4 minutes with a good pinch of salt until caramelized. Add the shallot, coriander stalks and Scotch bonnet, and continue to fry for a further 3–4 minutes until softened. Add the garlic and fry until fragrant. Add the dressing and allow to coat the tofu and mushrooms. Remove from the heat and add the chopped coriander and torn mint leaves. Add some of the nuts.",
+    "Transfer the larb to a bowl and scatter over the remaining nuts. Arrange the vegetables around the bowl and enjoy!"
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "raw-papaya-and-two-mangoes-salad-with-chilli-sesame-oil-dres",
+  "name": "RAW PAPAYA AND TWO MANGOES SALAD WITH CHILLI–SESAME OIL DRESSING",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is my take on the Thai som tam salad, which has a twist due to the addition of Indian mangoes. The texture of the peanuts, raw onions and sweet and sour mangoes takes it far away from the Southeast Asian staple. Toss just before serving.",
+  "ingredients": [
+    {
+      "item": "peanuts",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cloves of garlic",
+      "amount": "2"
+    },
+    {
+      "item": "red bird’s eye chilli",
+      "amount": "½"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "palm sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "raw papaya (julienned)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw mango (julienned)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ripe mango (cubed)",
+      "amount": "4 cups"
+    },
+    {
+      "item": "cherry tomatoes (halved)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "onions (sliced)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carrots (julienned)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Using a mortar and pestle, crush the peanuts, garlic cloves, bird’s eye chilli, lemon juice, palm sugar and sesame oil into a coarse dressing.",
+    "In a bowl, combine all the other ingredients and add the dressing on top.",
+    "Toss well and serve cold."
+  ],
+  "image": "/recipes/raw-papaya-and-two-mangoes-salad-with-chilli-sesame-oil-dres.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

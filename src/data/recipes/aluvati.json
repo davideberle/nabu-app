@@ -1,0 +1,59 @@
+{
+  "id": "aluvati",
+  "name": "ALUVATI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Made with alu leaves, colocasia in English, this Maharashtrian recipe hits home for me. It’s a main course dish filled with protein and other nutrients and is a beautiful example of how veganism can be found in every corner in India.",
+  "ingredients": [
+    {
+      "item": "tender colocasia leaves (deveined and finely chopped)",
+      "amount": "20"
+    },
+    {
+      "item": "tamarind",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coriander seeds (roasted)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dry red chillies",
+      "amount": "3"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "hog plums or ambade (roughly chopped)",
+      "amount": "2-3"
+    },
+    {
+      "item": "horse gram (boiled)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a pressure cooker, add the leaves and tamarind. Cook for 1 whistle and allow the cooker to cool. Transfer the leaves into another bowl.",
+    "In a blender, blend the coriander seeds with the coconut, turmeric powder, dry red chillies and salt. Add 2-3 spoons of water and blitz it into a fine paste.",
+    "In a pan, heat 2 cups of water and boil the ambade, then cover the pan and let the ambade simmer for 5–7 minutes on low flame.",
+    "Add the cooked colocasia leaves, the boiled horse gram and the coconut paste and stir well.",
+    "Season with salt and let the aluvati cook for 4-5 minutes on medium flame."
+  ],
+  "image": "/recipes/aluvati.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

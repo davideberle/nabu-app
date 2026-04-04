@@ -1,0 +1,98 @@
+{
+  "id": "tandoori-cauli-with-carrot-ginger-dressing",
+  "name": "TANDOORI CAULI WITH CARROT–GINGER DRESSING",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I’ll admit I miss eating tandoori paneer sometimes, but my commitment to this plant-based journey has taught me how to marinate and grill many other Indian ingredients. This dish is one such. Cauliflower marinates well. Ensure you gently char it for that smoky ‘tandoori’ flavour.",
+  "ingredients": [
+    {
+      "item": "roasted carrot paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli (finely minced)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt as per paste",
+      "amount": ""
+    },
+    {
+      "item": "cauliflower (florets separated)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "carrot (cut into batons)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seed powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per paste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients for the dressing. Strain and keep the dressing aside. You can discard the leftovers in the strainer.",
+    "In a separate bowl, mix the cauliflower with the remaining ingredients (except the salt and 1 tbsp oil). Toss well and allow it to marinate for 4-5 hours.",
+    "In a grilling pan, heat the remaining 1 tbsp of oil and cook the marinated cauliflower on medium heat for 25 minutes until it is well-charred and cooked through. You can even bake the cauliflower at 200°C for 30 minutes.",
+    "Season with salt and serve hot with the dressing."
+  ],
+  "image": "/recipes/tandoori-cauli-with-carrot-ginger-dressing.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

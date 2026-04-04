@@ -1,0 +1,63 @@
+{
+  "id": "malwa-style-amli-kadhi",
+  "name": "MALWA-STYLE AMLI KADHI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I found this recipe while writing my book Tiffin. The most beautiful recipes are those that are found on the cusp of two cuisines. This Malwa-style amli kadhi has influences pouring in from Rajasthan as well as Madhya Pradesh. It’s a rare kadhi that doesn’t make use of yoghurt, but is still tangy and full-bodied.",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "whole coriander seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "3"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "tamarind water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "jaggery",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and add the cumin seeds, fenugreek seeds, coriander seeds, curry leaves and green chilli.",
+    "When the spices begin to crackle, add the tamarind water and allow it to bubble with the spices for 1 minute.",
+    "In another bowl, mix the chickpea flour with ¼ cup of water and add this to the pan.",
+    "Add the jaggery and cook the kadhi for 7-8 minutes on medium flame.",
+    "Season with salt and serve hot."
+  ],
+  "image": "/recipes/malwa-style-amli-kadhi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

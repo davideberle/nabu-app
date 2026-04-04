@@ -1,0 +1,78 @@
+{
+  "id": "bhee-kebab",
+  "name": "BHEE KEBAB",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Lotus root is one of the most underrated Indian vegetables. And since I am obsessed with finding meaty-textured veggies and using them to make satisfying vegetarian dishes, it’s become a handy kitchen staple for me. Boiling and mashing gives it the perfect texture needed to make a dense kebab.",
+  "ingredients": [
+    {
+      "item": "lotus root (boiled)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "potato (boiled and mashed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "birista",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients except the oil and bring it together.",
+    "Take spoonfuls of the kebab mixture and roll them into patties.",
+    "In a pan, heat oil and shallow fry the kebabs until done, around 4-5 minutes per side.",
+    "Serve hot with date–tamarind chutney and vegan yoghurt."
+  ],
+  "image": "/recipes/bhee-kebab.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

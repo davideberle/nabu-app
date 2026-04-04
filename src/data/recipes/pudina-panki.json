@@ -1,0 +1,69 @@
+{
+  "id": "pudina-panki",
+  "name": "PUDINA PANKI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "If there is one dish in this cookbook that’s taken me a zillion attempts to perfect, it’s this one. Panki is a crêpe that’s steamed inside a banana leaf. It’s healthy, turmeric-tinted and makes for a perfect evening snack.",
+  "ingredients": [
+    {
+      "item": "rice flour",
+      "amount": "1½ cup"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "ginger (grated)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "almond yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "large banana leaves",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable oil (plus extra for greasing)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a bowl, combine the rice flour with the green chilli, ginger, cumin powder, turmeric powder, asafoetida and almond yoghurt. Mix it well.",
+    "Stir in enough water until the consistency resembles that of pancake batter.",
+    "Add salt and mint leaves and stir well.",
+    "Cut the banana leaves into 6-inch squares and grease them with vegetable oil.",
+    "Spread the batter on the banana leaf as if making a pancake—it should look like a big yellow circle. Place the second leaf on top of this.",
+    "Heat a pan on high flame and place the leaf parcel on the pan. Adjust the flame to low and allow the pankis to cook for 3-4 minutes on both sides.",
+    "Serve hot with mint–coriander chutney."
+  ],
+  "image": "/recipes/pudina-panki.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

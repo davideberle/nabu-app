@@ -1,0 +1,48 @@
+{
+  "id": "bengali-plastic-chutney",
+  "name": "BENGALI ‘PLASTIC’ CHUTNEY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Long before molecular gastronomy made edible plastic possible, Bengalis and their ahead-of-the-curve cuisine used raw papaya and processed it in a way that made it look like scraps of plastic. Tastes like scraps of sugar and lime though!",
+  "ingredients": [
+    {
+      "item": "raw (green) papaya",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "teaspoon salt",
+      "amount": "½"
+    },
+    {
+      "item": "raisins",
+      "amount": "5-6"
+    },
+    {
+      "item": "tablespoons lemon juice",
+      "amount": "1½"
+    },
+    {
+      "item": "teaspoon fresh turmeric/amba haldi (grated)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Peel the papaya and cut it into half. Scoop out the seeds and, using a mandoline, slice it into thin slices about 2 to 2½ inches long and ½-inch wide. Cut these into ½-inch squares using a knife until you have 1 cup papaya.",
+    "In a pan, heat ¾ cup of water along with the sugar and salt. Once the sugar has melted, allow the syrup to bubble for at least 1-2 minutes more over medium flame.",
+    "Remove any impurities or cloudiness that forms on the surface with a spoon to keep the liquid clear. This will contribute to a more translucent finish.",
+    "Add the papaya slices to the bubbling sugar syrup, cover, and cook for 7-8 minutes over a low flame. Once the fruit has softened (but isn’t mushy), add the raisins, amba haldi and lemon juice and give it a quick stir.",
+    "Allow the chutney to cook for another 5–7 minutes until some of the water has evaporated. It should have enough syrup to coat the papaya slices, and should not be too dry or too sticky. If too much water has evaporated in the process of boiling the liquid, or if it becomes too thick, add 1 tsp of water at a time into the pan.",
+    "Once you get the desired consistency, turn off the flame. The chutney will thicken as it cools. Transfer into sterilized jars, and store in the refrigerator for up to a week."
+  ],
+  "image": "/recipes/bengali-plastic-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

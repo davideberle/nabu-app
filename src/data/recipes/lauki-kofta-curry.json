@@ -1,0 +1,125 @@
+{
+  "id": "lauki-kofta-curry",
+  "name": "LAUKI KOFTA CURRY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Juicy koftas are a bit of a daydream for vegetarians and vegans. Even if you use paneer, tofu, tempeh or faux meat, it won’t have the moistness of well-sourced meat. But having tried out many alternatives, I can promise lauki does the trick. This is my most favourite way to cook with my least favourite vegetable.",
+  "ingredients": [
+    {
+      "item": "gourd (grated and water drained out)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "roasted cumin powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for deep frying",
+      "amount": ""
+    },
+    {
+      "item": "mustard oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ginger–garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "cardamom powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "fennel seed powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "clove powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "roasted cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegan cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "kasuri methi",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients for the kofta. Stir it into a thick paste.",
+    "In hot oil, fry the koftas and drain them on a kitchen towel. • In a pan, heat the mustard oil and add the ginger–garlic paste and chilli, and sauté for 1 minute on medium flame.",
+    "Add the cardamom powder, fennel seed powder, clove powder, garam masala, coriander powder, turmeric powder, red chilli powder and roasted cumin powder and stir well. Cook the spice for 1-2 minutes.",
+    "Add the tomato paste and cook the mixture for 3-4 minutes.",
+    "Add the ¾ cup of water and stir well. Let the gravy simmer on low flame for 5–7 minutes. Add the koftas and cook for 3-4 minutes.",
+    "Add the vegan cream and cook for 4-5 minutes.",
+    "Finish with coriander leaves and kasuri methi and season with salt. Serve hot."
+  ],
+  "image": "/recipes/lauki-kofta-curry.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

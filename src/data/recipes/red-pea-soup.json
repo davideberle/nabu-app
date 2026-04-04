@@ -1,0 +1,88 @@
+{
+  "id": "red-pea-soup",
+  "name": "RED PEA SOUP",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4–6",
+  "time": "1½ HOUR",
+  "intro": "Saturday soup is a ritual in most Jamaican households, and my favourite soup growing up was red pea soup. In fact, if I had to choose a last meal, this would be it. It’s a hug in a bowl, and when the weather dips and the seasons switch between autumn (fall) and winter, this is the soup that I make. It is finished with a type of simple dumpling called spinners. The most important ingredient here is the time to make it. Leaving the kidney beans to soak overnight creates a buttery texture in the final soup. Be sure to chop the yam, sweet potatoes and carrots to the same size so that they cook evenly.",
+  "ingredients": [
+    {
+      "item": "dried kidney beans",
+      "amount": "360 g (12½ oz/2 cups)"
+    },
+    {
+      "item": "2.5 litres (85 fl oz/10 cups) water",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock pots",
+      "amount": "2"
+    },
+    {
+      "item": "allspice berries",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "bunch of fresh thyme, leaves picked",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "Scotch bonnet",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions (scallions), chopped",
+      "amount": "3"
+    },
+    {
+      "item": "sweet potatoes, peeled and chopped into chunks",
+      "amount": "2"
+    },
+    {
+      "item": "large carrots, peeled and chopped into chunks",
+      "amount": "2"
+    },
+    {
+      "item": "large yam, peeled and chopped into chunks",
+      "amount": "½"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "250 g (9 oz/2 cups)"
+    },
+    {
+      "item": "water",
+      "amount": "250 ml (8½ fl oz/1 cup)"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the dried kidney beans in a bowl or saucepan, cover with water and leave to soak overnight. The beans will double in size.",
+    "The next day, start by preparing the spinners. In a bowl, mix together the flour, water and salt to form a smooth dough. Cover with cling film (plastic wrap) and set aside.",
+    "Rinse and drain the kidney beans and set aside. For the soup, combine the water and vegetable stock pots in a large saucepan and bring to the boil. Add the beans, allspice, thyme, garlic, onion and Scotch bonnet, cover and reduce to a simmer. Cook for 45–60 minutes, then add the remaining vegetables and coconut milk and allow to cook for a further 10 minutes.",
+    "Meanwhile, finish the spinners. Take a thumb-sized piece of the dough and form thin, tapered sausage shapes using the palms of your hands. Add the dumplings to the pan and cook for a further 10–15 minutes, until the dumplings are cooked.",
+    "Remove the Scotch bonnet before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

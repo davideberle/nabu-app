@@ -1,0 +1,58 @@
+{
+  "id": "homemade-chao",
+  "name": "HOMEMADE CHAO",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "4 (6-ounce/177-ml) glass jars",
+  "intro": "Chao, or fermented bean curd, is a popular ingredient in the central and southern regions of Vietnam and is widely used in many plant-based dishes. While the smell is quite strong, once you acquire a taste for it, this condiment can be quite addictive! Chao can be mashed and used to make marinades or a dipping sauce (here), but like other fermented foods, such as pickles or yogurt, it requires some experience to make correctly. Many factors, like the weather and the temperature of the room in which you store it, can all affect it, so make sure to read through this recipe before you begin.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu",
+      "amount": "1"
+    },
+    {
+      "item": "salt and pepper mix (1 part freshly ground black pepper to 12 parts kosher salt) or chili powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "salt",
+      "amount": "1¾ ounces (50 g)"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ ounce (15 g)"
+    },
+    {
+      "item": "Chinese rice wine",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "In a medium saucepan, combine water and salt and bring to a boil over high heat. Gently drop in block of tofu and cook over medium-low heat for about 3 minutes to sterilize it.",
+    "Remove pan from heat and, using a slotted spoon, carefully transfer tofu to a clean kitchen towel. Wrap tofu in towel and place something reasonably heavy (a serving plate, cutting board, soup cans, etc.) on top to squeeze out as much moisture as possible. Let sit for 10 minutes. (You can also place tofu on a pair of crossed chopsticks on a plate and microwave for 30 seconds to remove excess water. This will also sterilize it and give it a firmer texture, making it easier to ferment). Cut tofu block into 1-inch (2.5 cm) cubes.",
+    "Line a glass tray with a clean kitchen towel and arrange tofu cubes on it about ½ inch (1 cm) apart. Cover with a paper towel, and then cover everything with plastic wrap or cheesecloth to protect it from air and insects.",
+    "Leave the tray next to a window for 3 to 5 days, until a yellow or brown coating forms on the surface of the tofu (if you live in a hot climate, the tofu will ferment faster).",
+    "Lift the tofu cubes gently with a rubber spatula or chopsticks (they’ll be quite soft and delicate, about the consistency of cream cheese). Roll each cube in salt and pepper mixture (or chili powder if you prefer it to be a bit spicier), and then place in four 6-ounce (180 ml) sterilized glass jars (here).",
+    "Combine water, salt, and sugar in a small saucepan over medium heat and stir well until salt and sugar are dissolved. When it comes to a boil, remove from heat and allow to cool completely.",
+    "Gently pour brine into each jar until it covers tofu cubes, and then add 2 tablespoons of Chinese rice wine to each jar. Tightly close the lids and leave undisturbed at room temperature—between 70° and 79° F (22° and 26° C)—for about 5 days (leave for 10 days if you live in a colder climate).",
+    "When tofu consistency is rich and creamy, it’s done! Store in the refrigerator for up to 3 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

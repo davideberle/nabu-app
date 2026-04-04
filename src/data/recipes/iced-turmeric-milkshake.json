@@ -1,0 +1,52 @@
+{
+  "id": "iced-turmeric-milkshake",
+  "name": "ICED TURMERIC MILKSHAKE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This iced turmeric milkshake transforms your haldiwala doodh into a gentle cold drink filled with the goodness of desi kitchen staples.",
+  "ingredients": [
+    {
+      "item": "almond milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh turmeric (grated)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "dry ginger powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "of salt",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "cubes of ice",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "In a blender, combine the almond milk with the fresh turmeric, turmeric powder, sugar, cinnamon powder, dry ginger powder and salt.",
+    "Blend it well. Strain and pour it over ice cubes."
+  ],
+  "image": "/recipes/iced-turmeric-milkshake.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

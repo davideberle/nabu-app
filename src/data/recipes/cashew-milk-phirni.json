@@ -1,0 +1,48 @@
+{
+  "id": "cashew-milk-phirni",
+  "name": "CASHEW MILK PHIRNI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This sweet rice porridge tastes best when it’s eaten chilled. Serve it as the conclusion to your Indian-themed spread, your Sunday lunch or a special festive dinner—you are sure to impress.",
+  "ingredients": [
+    {
+      "item": "long grain rice (soaked for 3 hours)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "litre cashew milk",
+      "amount": "1"
+    },
+    {
+      "item": "A few strands of saffron",
+      "amount": ""
+    },
+    {
+      "item": "green cardamom powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "almonds and pistachio (sliced)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Drain and coarsely blend the rice. Do not make a paste; the texture should be grainy.",
+    "In a pan, roast the rice for 1 minute on medium heat.",
+    "Add the sugar and cashew milk to the pan and allow the mixture to cook for 15 minutes on low flame.",
+    "Once the sugar has dissolved and the rice is completely cooked, add the saffron and allow it to cook for 1 minute.",
+    "Transfer the phirni into a clay bowl. If you don’t have a clay bowl, you can use a glass bowl instead.",
+    "Refrigerate for 2 hours and garnish with pistachio and almonds."
+  ],
+  "image": "/recipes/cashew-milk-phirni.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

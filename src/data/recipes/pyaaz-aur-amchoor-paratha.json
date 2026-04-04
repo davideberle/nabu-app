@@ -1,0 +1,66 @@
+{
+  "id": "pyaaz-aur-amchoor-paratha",
+  "name": "PYAAZ AUR AMCHOOR PARATHA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "On days when your pantry stock is low and you’re feeling too lazy to shop for veggies, this take on the classic pyaaz ka paratha should be your go-to. It’s amply flavoured with dry mango powder and should be eaten with aam ka achaar.",
+  "ingredients": [
+    {
+      "item": "wholewheat flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "medium onion (thinly sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients for the dough, add water and knead the mixture into a soft dough.",
+    "In a separate bowl, combine the onion, green chilli, coriander powder, cumin powder and dry mango powder. Add salt and mix well.",
+    "Divide the dough into equal portions. Take each roundel, roll it out into a small chapati. Place a portion of the filling in the centre. Bring the edges of the dough together, seal and pat it flat with your palm. Roll it into a paratha.",
+    "Shallow fry the paratha on a tawa until cooked on both sides. Serve hot."
+  ],
+  "image": "/recipes/pyaaz-aur-amchoor-paratha.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

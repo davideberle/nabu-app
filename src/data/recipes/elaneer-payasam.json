@@ -1,0 +1,55 @@
+{
+  "id": "elaneer-payasam",
+  "name": "ELANEER PAYASAM",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Another traditional vegan Indian dessert, this recipe is from Tamil Nadu and one of the many payasams in this region. This has no rice, dal or tapioca—instead, it relies on the goodness of coconut milk for body and coconut flesh for texture. Prepare to fall in love.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cashew nuts (halved)",
+      "amount": "5"
+    },
+    {
+      "item": "almonds (halved)",
+      "amount": "5"
+    },
+    {
+      "item": "palm jaggery",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh coconut flesh (blended)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thick coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh coconut flesh (chopped)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil, fry the nuts till golden and keep aside.",
+    "In a pan, heat the palm jaggery and add 3 tbsp of water to it. Cook until the syrup thickens, about 3-4 minutes.",
+    "Filter the syrup and keep aside.",
+    "In a bowl, mix the blended coconut flesh with the coconut cream, coconut milk and chopped coconut flesh. Stir well and add the syrup to sweeten the mixture.",
+    "Refrigerate for 4–6 hours. Serve cold, topped with the fried nuts."
+  ],
+  "image": "/recipes/elaneer-payasam.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

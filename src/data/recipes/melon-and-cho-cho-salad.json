@@ -1,0 +1,51 @@
+{
+  "id": "melon-and-cho-cho-salad",
+  "name": "MELON AND CHO CHO SALAD",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "intro": "In lockdown I got hooked on melon, and that’s melon of all kinds. I’m not sure why, but as the supermarket was the event of the week, I took my time to walk around and got hooked in melon season. This is a salad to be eaten seasonally, as it uses so few ingredients, so it’s important that each one has the best opportunity to shine. The melon could be cold and crisp if that’s your vibe!",
+  "ingredients": [
+    {
+      "item": "small cantaloupe, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "chayote (cho cho), finely sliced on a mandoline",
+      "amount": "1"
+    },
+    {
+      "item": "shallot, sliced into half-moons",
+      "amount": "1"
+    },
+    {
+      "item": "mint leaves",
+      "amount": "30"
+    },
+    {
+      "item": "roasted and salted Marcona almonds",
+      "amount": "50 g (2 oz/⅓ cup)"
+    },
+    {
+      "item": "splash of coconut vinegar (or white wine vinegar)",
+      "amount": ""
+    },
+    {
+      "item": "glug of crème de la crème olive oil",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine all the ingredients in a large bowl and toss together. Plate up, then sprinkle with salt to taste."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

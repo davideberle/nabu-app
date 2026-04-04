@@ -1,0 +1,45 @@
+{
+  "id": "green-sticky-rice-with-coconut",
+  "name": "GREEN STICKY RICE WITH COCONUT",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dried green sticky rice flakes (see Note)",
+      "amount": "1 cup (128 g)"
+    },
+    {
+      "item": "full-fat, unsweetened coconut milk",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "shredded young coconut or 1 ounce (28 g) dried coconut flakes, rehydrated (see Note)",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "rice crackers, for serving",
+      "amount": "4"
+    },
+    {
+      "item": "toasted sesame seeds, for garnish",
+      "amount": "2 teaspoons (8 g)"
+    }
+  ],
+  "method": [
+    "In a medium bowl, combine dried green sticky rice with coconut milk, mix well, and let sit for 10 minutes.",
+    "In a medium skillet, combine shredded coconut and sugar, and cook over medium-low heat, stirring constantly, for about 2 minutes.",
+    "Add rice and cook and stir until all rice flakes come together to make one sticky gelatinous mass (3 to 5 minutes). Remove from heat.",
+    "Divide the mixture into 4 equal-size portions and spoon each onto the center of a rice cracker. Sprinkle with sesame seeds and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

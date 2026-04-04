@@ -1,0 +1,71 @@
+{
+  "id": "hard-dough-cherry-bostock",
+  "name": "HARD DOUGH CHERRY BOSTOCK",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "time": "25 MINUTE",
+  "intro": "This cherry bostock will make your friends and family feel like they’re in a fancy bakery. Essentially, bostock is a slice of stale brioche topped with frangipane and jam, and it’s very easy to put together. As this recipe has simple components, I urge you to buy a really good-quality jam that is loaded with cherry flavour.",
+  "ingredients": [
+    {
+      "item": "slices of hard dough bread",
+      "amount": "4"
+    },
+    {
+      "item": "good-quality cherry jam",
+      "amount": "50 g (2 oz/⅓ cup)"
+    },
+    {
+      "item": "flaked (slivered) almonds",
+      "amount": "50 g (2 oz/generous ½ cup)"
+    },
+    {
+      "item": "vegan block butter",
+      "amount": "100 g (3½ oz)"
+    },
+    {
+      "item": "caster (superfine) sugar",
+      "amount": "70 g (2¼ oz/scant ⅓ cup)"
+    },
+    {
+      "item": "soya milk",
+      "amount": "80 ml (3 fl oz/⅓ cup)"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "ground almonds (almond meal)",
+      "amount": "150 g (5 oz/1½ cups)"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "50 g (2 oz/scant ½ cup)"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1¼ teaspoons"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 170°C (375°F/gas 5) and line a baking sheet with baking parchment.",
+    "Start by making the frangipane. In a saucepan, brown the block butter over a medium heat for 4½ minutes. Transfer to a bowl and add the caster sugar, milk, vanilla extract and lemon zest. Whisk until combined. In a separate bowl, combine the ground almonds, plain flour, baking powder and salt. Whisk to combine. Then, fold the dry ingredients into the wet ingredients.",
+    "Spread out the slices of hard dough bread on the prepared baking sheet. Spread a generous tablespoon of cherry jam on each slice, then add two tablespoons of the frangipane mixture onto each piece of bread, gently spreading it over the jam with a palette knife (spatula).",
+    "Sprinkle the flaked almonds over the top, then bake in the oven for 15–20 minutes until golden brown. Serve immediately with coffee."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "tomato-salad-in-coconut-broth",
+  "name": "TOMATO SALAD IN COCONUT BROTH",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "The only things Indian about this side dish are the ingredients and the core flavour notes. The preparation is almost ceviche-like. The key to getting this dish perfect is to only use heirloom varieties of tomatoes that are predominantly luscious, have fewer seeds and a pulpy texture.",
+  "ingredients": [
+    {
+      "item": "coconut milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "goda masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "palm sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion (grated)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "heirloom tomato (thinly sliced)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "onion (thinly sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cucumber (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cabbage (thinly sliced)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "peanuts (crushed)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix together all the ingredients for the dressing and chill it in the refrigerator.",
+    "In another bowl, mix all the salad ingredients, except the peanuts, and toss well. Season with salt and allow it to rest for 20 minutes in the refrigerator.",
+    "To serve, pour some of the dressing into salad bowls and top it with the tomato salad. Serve chilled."
+  ],
+  "image": "/recipes/tomato-salad-in-coconut-broth.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

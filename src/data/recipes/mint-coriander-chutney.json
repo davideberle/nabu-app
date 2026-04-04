@@ -1,0 +1,56 @@
+{
+  "id": "mint-coriander-chutney",
+  "name": "MINT–CORIANDER CHUTNEY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "No Indian kitchen is complete without a jar of ‘green chutney’ as we call it at home. I have simplified the recipe so much that all you have to do is chop, blend and store. It’s the perfect spread, not only for chaats and snacks, but also to make the quintessential chutney-cheese sandwich.",
+  "ingredients": [
+    {
+      "item": "coriander leaves (roughly chopped)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mint leaves (roughly chopped)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green chillies",
+      "amount": "2"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "peanut powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, add all the ingredients and blend into a smooth paste.",
+    "This chutney will stay fresh for 3 days in the refrigerator."
+  ],
+  "image": "/recipes/mint-coriander-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

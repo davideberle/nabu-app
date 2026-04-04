@@ -1,0 +1,74 @@
+{
+  "id": "kanda-bhajiya-pav-slider",
+  "name": "KANDA BHAJIYA PAV SLIDER",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A no-fail snack, this one pairs best with my home-made ketchup. I’ve transformed it into a tidy party appetizer by turning it into a pass-around slider. The garlic chutney recipe within this one is a keeper—it’s the essential taste of Maharashtrian cuisine and I’m quite impressed with its robust flavour notes.",
+  "ingredients": [
+    {
+      "item": "gram flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "onion (thinly sliced)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "slider buns",
+      "amount": "5"
+    },
+    {
+      "item": "oil (plus extra for deep frying)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cloves of garlic (whole)",
+      "amount": "10"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "desiccated coconut",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the gram flour with red chilli powder and salt.",
+    "Add the onions and rub them into the flour mix such that the flour begins to stick to the onion.",
+    "Add 1 tsp of oil to the mixture and continue to mix well. The sticky flour mix will hold the slices of onion together.",
+    "In a skillet, heat the oil and deep fry spoonfuls of the onion mixture till they turn golden brown. Drain on a kitchen towel and keep aside.",
+    "Slit the slider buns and keep them aside.",
+    "To make the chutney, heat the oil in a pan and add the garlic to it. Sauté and add the sesame seeds. Take the mixture off the flame once it becomes fragrant.",
+    "Transfer the garlic mixture to a mortar and pestle, and add the remaining ingredients for the chutney. Grind the mixture for 2 minutes until it comes together. You can even use a blender but ensure you don’t overmix it, else the chutney will be dry and coarse.",
+    "To serve the sliders, apply the chutney on the buns and stuff them with the bhajiyas. Serve hot."
+  ],
+  "image": "/recipes/kanda-bhajiya-pav-slider.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

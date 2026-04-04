@@ -1,0 +1,44 @@
+{
+  "id": "kesar-pista-barfi",
+  "name": "KESAR-PISTA BARFI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I would never have attempted a milk-free barfi had it not been for this cookbook. This is a seriously addictive recipe that I make on loop now. You can also swap pistachio meal for any other nut meal like macadamia, walnut or cashew to make this barfi.",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "saffron strands",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pistachio meal",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "almond (finely chopped)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Line a tray with parchment paper.",
+    "In a pan, heat the sugar with ¼ cup of water until the sugar is fully dissolved. Add the saffron.",
+    "Add the pistachio meal to the pan and stir the mixture well for 3-4 minutes on medium flame.",
+    "Once it comes together, take the pan off the heat and add the coconut oil for the glaze. Immediately transfer the pistachio mixture to the parchment-lined tray. Do not let the mixture harden.",
+    "With the back of a spoon, flatten the barfi and allow it to cool to room temperature. While it is still soft, cut into squares and garnish with almonds.",
+    "You can store these for 2-3 days."
+  ],
+  "image": "/recipes/kesar-pista-barfi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

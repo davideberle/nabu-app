@@ -1,0 +1,76 @@
+{
+  "id": "mocha-r-ghonto",
+  "name": "MOCHA’R GHONTO",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "It takes me an hour to clean up one banana flower from the inside, but this dish makes it worthwhile every single time. From cutlets to curries, mocha, or banana flower, is used in several Bengali dishes. This recipe is a dry preparation that doesn’t disguise its floral flavour; in fact it lets it shine.",
+  "ingredients": [
+    {
+      "item": "banana flower (cleaned)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "turmeric powder (plus extra)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "dry red chillies",
+      "amount": "2"
+    },
+    {
+      "item": "potatoes (cubed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Chop the banana flower and pressure cook it with a pinch of turmeric. This should take about 2 whistles or 15 minutes.",
+    "In a bowl, mix the turmeric powder, red chilli powder, coriander powder and cumin powder with 1½ tbsp of water. Stir and keep aside.",
+    "In a pan, heat the mustard oil and add the cumin seeds, bay leaves and dry red chillies. Once the spices begin to crackle, add the potatoes. Stir and cook for 2-3 minutes.",
+    "Add the diluted spices and stir well. Season with salt and cook, covered, until the potatoes have softened. This should take about 10-12 minutes on low flame.",
+    "Add the cooked banana flower and coconut and mix well. Cook this for 7-8 minutes.",
+    "Finish with garam masala and allow the ghonto to cook for 3-4 minutes. Serve hot."
+  ],
+  "image": "/recipes/mocha-r-ghonto.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

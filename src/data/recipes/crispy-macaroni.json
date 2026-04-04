@@ -1,0 +1,53 @@
+{
+  "id": "crispy-macaroni",
+  "name": "CRISPY MACARONI",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "rice elbow macaroni or other twisty pasta (such as fusilli, rotini, cavatappi, or pipe rigate)",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "vegan butter or margarine",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "vegan fish sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "In a small saucepan, heat vegetable oil over medium heat until hot (about 3 minutes). To test, stick one end of a chopstick in the oil; if bubbles appear around it, it's ready.",
+    "Drop in the macaroni. They tend to pop up and brown fast (within a few seconds); when they do, use a slotted spoon to transfer quickly to a paper towel–lined plate to drain.",
+    "In a small pan melt the vegan butter and cook and stir the garlic over medium-low heat until slightly golden (about 30 seconds). Add the vegan fish sauce, sugar, and water, and simmer until sugar is dissolved and sauce has thickened slightly (about 1 minute).",
+    "Add the crispy macaroni and toss until coated with sauce (about 30 seconds). Remove from heat, sprinkle with chili flakes, and enjoy immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

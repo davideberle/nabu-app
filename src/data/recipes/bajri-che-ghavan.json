@@ -1,0 +1,75 @@
+{
+  "id": "bajri-che-ghavan",
+  "name": "BAJRI CHE GHAVAN",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is one of the 101 ways to add more millet to your diet. An easy Maharashtrian-style side dish, ghavan can be eaten at breakfast on its own, with chutney, or served with Indian gravies.",
+  "ingredients": [
+    {
+      "item": "cloves of garlic",
+      "amount": "10"
+    },
+    {
+      "item": "green chilli",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "pearl millet flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fenugreek leaves (roughly chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a blender, blitz the garlic with the chilli, cumin seeds, carom seeds and salt.",
+    "In a bowl, mix the flour with red chilli powder, turmeric powder, coriander powder, fenugreek leaves and coriander leaves and adjust the salt.",
+    "Add 1½ cups of water and whisk it into a thick batter.",
+    "In a pan, heat a little oil and sprinkle the sesame seeds over it.",
+    "Pour 2 ladles of the batter into the pan and cook the ghavan on both sides, about 4-5 minutes. Serve hot."
+  ],
+  "image": "/recipes/bajri-che-ghavan.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

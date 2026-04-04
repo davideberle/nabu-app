@@ -1,0 +1,109 @@
+{
+  "id": "thick-noodle-soup",
+  "name": "THICK NOODLE SOUP",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "12 cups (3 L)"
+    },
+    {
+      "item": "medium chayote, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot, peeled and cut into 1½-inch (4 cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "daikon radish (about 4 inches/10 cm), cut into 1-inch (2.5 cm) rounds",
+      "amount": "½"
+    },
+    {
+      "item": "medium corncob, cut into 1-inch (2.5 cm) rounds",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "package (15 ounces/425 g) fresh bánh canh noodles (see Note)",
+      "amount": "1"
+    },
+    {
+      "item": "OR (make your own noodles) 2 cups (320 g) rice flour, plus more for dusting",
+      "amount": ""
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "2 cups (310 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu",
+      "amount": "1"
+    },
+    {
+      "item": "annatto oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped leek (white part only)",
+      "amount": "2 ounces (56 g)"
+    },
+    {
+      "item": "mushrooms (shiitake, straw, white beech, or similar), stems trimmed and sliced",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "sponge gourd, peeled and cut into half-moon slices",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "vegan fish sauce or soy sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Vietnamese mint, finely chopped, for garnish",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "freshly ground black pepper, for garnish",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Add the water, chayote, carrot, daikon radish, corn, and 1 teaspoon of salt to a large saucepan, and bring to a boil over high heat. Reduce heat to medium-low and simmer until vegetables have lost their sweet flavor (about 1 hour).",
+    "If using store-bought noodles, simply follow the directions on the package. To make your own, combine the rice flour, tapioca starch, and 1 teaspoon of salt in a large bowl. Make a hole in the center, carefully pour in boiling water, and mix with a spatula until water is fully incorporated (3 to 5 minutes).",
+    "When it is cool enough to handle, either knead the dough in a stand mixer using a dough hook for 10 minutes on medium speed or with your hands until it is soft and non-sticky. Cover with plastic wrap and let rest for about 30 minutes.",
+    "Sprinkle some flour on a work surface and, using a rolling pin, roll out the dough until it is about ¼ inch (6 mm) thick. Cut into 3-inch (7.5 cm) noodle strips.",
+    "Fill a large saucepan halfway with water and bring to a boil over high heat. Add 1 tablespoon of vegetable oil and the homemade noodles and cook until al dente and the noodles float to the surface (about 5 minutes). Dump into a colander and rinse under cold water to remove excess starch.",
+    "Heat ¼ cup (60 mL) of vegetable oil in a small skillet over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer the tofu to a cooling rack or paper towel–lined plate to drain. When cool, cut into ½-inch (1 cm) thick slices.",
+    "In a medium skillet, heat annatto oil over medium-low heat. When hot, add leek and cook and stir until fragrant and slightly golden (about 1 minute). Add mushrooms, sponge gourd, and fried tofu slices. Season with vegan fish sauce and cook and stir until mushrooms and sponge gourd are tender (about 3 minutes). Remove from heat.",
+    "Fill a large serving bowl halfway with cooked noodles and top with tofu, mushrooms, and sponge gourd. Ladle hot broth over the top and garnish with chopped Vietnamese mint and ground pepper."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

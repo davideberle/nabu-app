@@ -1,0 +1,72 @@
+{
+  "id": "ackee-carbonara",
+  "name": "ACKEE CARBONARA",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 3–4",
+  "time": "10 MINUTE",
+  "intro": "Although I would never say that ackee is a replacement for eggs, it works so well in replacing the egg yolks in a carbonara. It is so wonderfully rich just blended on its own that it is the perfect ingredient to emulsify a sauce. Italians, please don’t come for me. But this just works on so many levels.",
+  "ingredients": [
+    {
+      "item": "rinsed and drained ackee",
+      "amount": "250 g (9 oz)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "miso paste",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "rigatoni",
+      "amount": "350 g (12 oz)"
+    },
+    {
+      "item": "vegan Parmesan, grated, plus extra to serve",
+      "amount": "50 g (2 oz)"
+    },
+    {
+      "item": "olive oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "smoked tofu, cut into lardons (thin strips)",
+      "amount": "100 g (3½ oz)"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic granules",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Put the ackee, nutritional yeast and miso paste into a pestle and mortar and pound together. Alternatively, you can blend them if you have a small enough bowl for your food processor. Once smooth, set aside.",
+    "Toss together all the ingredients for the tofu bacon in a small bowl. Set aside while you cook the pasta.",
+    "Bring a large saucepan of well-salted water to the boil and cook the rigatoni according to the packet instructions. When it’s almost al dente, add a couple of glugs of olive oil to a large frying pan (skillet) over a medium heat. Add the lardons and cook until crispy.",
+    "Once cooked, add the pasta to the lardons, allowing some of the pasta water to transfer, then add the ackee mixture. Stir over the heat to emulsify and cook for 2–3 minutes until glossy. Remove from the heat, add the Parmesan and season with salt and pepper. Stir well.",
+    "Serve in bowls with extra Parm grated on top."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

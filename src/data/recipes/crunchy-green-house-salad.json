@@ -1,0 +1,76 @@
+{
+  "id": "crunchy-green-house-salad",
+  "name": "CRUNCHY GREEN HOUSE SALAD",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "intro": "Everyone needs a good ‘house salad’ in their arsenal. House salads aren’t meant to be the heroes of the show, but most definitely shouldn’t be an afterthought. This salad embraces texture from pumpkin seeds, celery, sugar snap peas and creamy avo. For salads, texture and contrast is essential. I love the mellow, refreshing crunch of a cos (romaine) lettuce and the subtle sweetness of the pear. Fruit in salads can freak people out, but they can work so wonderfully. I would serve this salad with my roasted aubergine (eggplant)!",
+  "ingredients": [
+    {
+      "item": "large avocado, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "head of cos (romaine) lettuce, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalks, sliced diagonally",
+      "amount": "8"
+    },
+    {
+      "item": "sugar snap peas, trimmed and halved",
+      "amount": "200 g (7 oz)"
+    },
+    {
+      "item": "cucumber, sliced into half-moons",
+      "amount": "1"
+    },
+    {
+      "item": "Williams (Barlett) or D’Anjous pear, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "50 g (2 oz/⅓ cup)"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "juice and zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "garlic clove, very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful of chives, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, whisk together all the ingredients for the dressing apart from the chives. Stir through the chives, then set aside.",
+    "Put the avocado into a large bowl with a tablespoon of the dressing and stir to coat – this will stop it turning brown. Add the rest of the ingredients along with the remaining dressing and toss well before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

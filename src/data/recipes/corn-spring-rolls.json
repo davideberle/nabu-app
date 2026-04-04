@@ -1,0 +1,81 @@
+{
+  "id": "corn-spring-rolls",
+  "name": "CORN SPRING ROLLS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "20 spring rolls",
+  "intro": "Corn spring rolls (ram bắp) are a specialty of Quang Ngai, a town in Central Vietnam. They’re crispy on the outside but slimmer and longer than Crispy Spring Rolls.",
+  "ingredients": [
+    {
+      "item": "glutinous or sweet corncobs (see Note)",
+      "amount": "2"
+    },
+    {
+      "item": "dried wood ear mushrooms, soaked and finely chopped",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tofu (200 g), finely crumbled with a fork",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "leek (white part only), finely chopped",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "sugar, plus 1 tablespoon for soaking rice paper wrappers",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "rice paper or spring roll wrappers (6 inches/15 cm)",
+      "amount": "20"
+    },
+    {
+      "item": "lime juice, for soaking rice paper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water, to soften rice paper",
+      "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "Vegetable oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "vegan fish dipping sauce, for serving",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "Using a knife or mandoline, shave corn kernels off cobs into a bowl and set aside.",
+    "In a large bowl, combine mushrooms, cilantro, tofu, leek, 1 teaspoon of sugar, salt, stock powder, and pepper. Mix well and set aside for 15 minutes.",
+    "Prepare rice paper wrappers for rolling with the lime juice, water, and 1 tablespoon of sugar (here).",
+    "To assemble the rolls, scoop 1 tablespoon of filling on one end of a wrapper, and then spread until it covers about 4 inches (10 cm), leaving some room on the sides. Lift that end of the wrapper and fold it over the filling. Push the covered filling back a bit, and then fold in both sides. Continue to roll tightly to the other end. Repeat with the remaining wrappers and filling.",
+    "Cut a piece of parchment paper to line the bottom of a medium saucepan or skillet. Fill the bottom of the saucepan with 2 inches (5 cm) of oil and heat to 360°F (180°C). (You can check the temperature with a cooking thermometer or insert one end of a chopstick in the oil; if bubbles appear around it, the oil is ready for deep-frying.)",
+    "Drop rolls in the pan, seam sides down so that they remain sealed when they touch the hot oil. Deep-fry in batches until golden brown (5 to 8 minutes). When done, use a wire spider or slotted spoon to transfer rolls to a cooling rack or paper towel–lined plate to drain.",
+    "Serve warm with vegan fish dipping sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

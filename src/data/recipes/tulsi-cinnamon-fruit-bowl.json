@@ -1,0 +1,57 @@
+{
+  "id": "tulsi-cinnamon-fruit-bowl",
+  "name": "TULSI–CINNAMON FRUIT BOWL",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is as much a breakfast staple for me as it is a midday snack, or a meal on days when I want to eat clean. Fruit salads that come loaded with lugs of vanilla custard are legendary, but this bowl is my next favourite way to get fruit into my system. It’s fresh, it’s tangy and it’s a strong contender for a good breakfast.",
+  "ingredients": [
+    {
+      "item": "apple (cubed)",
+      "amount": "1"
+    },
+    {
+      "item": "pineapple (cubed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pomegranate gems",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "banana (sliced) (optional)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tulsi leaves (chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "heaped tsp peanut butter (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the fruits (except the banana) and pour the lemon juice on top.",
+    "Add the chaat masala and cinnamon powder and toss well. Place the bananas on top (if using).",
+    "Finish with tulsi and peanut butter (if using) and serve fresh."
+  ],
+  "image": "/recipes/tulsi-cinnamon-fruit-bowl.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

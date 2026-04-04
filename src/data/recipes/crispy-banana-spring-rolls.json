@@ -1,0 +1,48 @@
+{
+  "id": "crispy-banana-spring-rolls",
+  "name": "CRISPY BANANA SPRING ROLLS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "light or dark brown sugar",
+      "amount": "2½ tablespoons"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "ripe Asian dwarf bananas, cut lengthwise into 4 sticks, or 2 Cavendish bananas, cut into 4-inch (10 cm) lengths and then quartered lengthwise",
+      "amount": "4"
+    },
+    {
+      "item": "square spring roll pastry wrappers (7½ inches/19 cm) (here)",
+      "amount": "16"
+    },
+    {
+      "item": "vegetable oil, for deep-frying",
+      "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "vegan chocolate syrup, for serving (optional)",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "powdered sugar, for serving (optional)",
+      "amount": "¼ cup (28 g)"
+    }
+  ],
+  "method": [
+    "On a rimmed plate, combine brown sugar and cinnamon and mix well. Roll one piece of banana in the mixture and place on a wrapper, closer to one corner. Fold the sides of the wrapper over to cover the ends of the banana, and then lift up the corner with the banana and roll tightly until reaching the opposite corner to encase the filling. Using a pastry brush or your finger, brush the exposed edge of the wrapper with a bit of water, and then tightly roll the cylinder up to the end of the wrapper to seal it. Place the spring roll, seam side down, on a plate. Repeat with remaining banana pieces and wrappers.",
+    "Fill the bottom of a medium saucepan with about 2 inches (5 cm) of oil and heat over medium heat. When oil reaches 320°F (160°C) on a cooking thermometer, gently drop in a few rolls. (You can also dip the pointy end of a wooden chopstick into the oil; if a steady stream of tiny bubbles appears around it, it's ready.) Fry the rolls in batches to avoid overcrowding the pan until golden brown on all sides (3 to 5 minutes), and then transfer with a wire spider or slotted spoon to a cooling rack or paper towel–lined plate to drain.",
+    "Drizzle with chocolate syrup (if using) and dust with the powdered sugar (if using), and serve warm."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "vegan-fish-dipping-sauce",
+  "name": "VEGAN FISH DIPPING SAUCE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegan fish sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "bird’s eye chili pepper, minced",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "In a small bowl, combine vegan fish sauce, sugar, water, and lime juice, and stir well until sugar is completely dissolved.",
+    "Add garlic and chili pepper to float on top."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

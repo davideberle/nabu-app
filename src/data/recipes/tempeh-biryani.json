@@ -1,0 +1,115 @@
+{
+  "id": "tempeh-biryani",
+  "name": "TEMPEH BIRYANI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Tempeh is my go-to vegan protein and I prefer it to other plant-based meats. Tempeh isn’t made of soya or wheat chunks, but is derived from gut-friendly fermented soya instead. It’s an Indonesian kitchen staple that works perfectly in a biryani instead of meat.",
+  "ingredients": [
+    {
+      "item": "vegan cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ginger (grated)",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "biryani masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tempeh (cubed)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "basmati rice (washed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "onion (sliced)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "sticks of cinnamon (1-inch pieces)",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "green cardamoms",
+      "amount": "5"
+    },
+    {
+      "item": "tomato (grated)",
+      "amount": "1"
+    },
+    {
+      "item": "saffron soaked in 2 tbsp of almond milk",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "rose water (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mint leaves (chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "In a bowl, mix the vegan cream with the ginger, garlic, biryani masala, garam masala, red chilli powder, coriander powder, cumin powder and salt. Whisk well, then add the cubed tempeh, and toss to coat well. Allow it to marinate for 40 minutes.",
+    "Meanwhile, parboil the rice until it is two-thirds done (about 15 minutes), drain and set aside.",
+    "Heat 1 tbsp of the oil in a medium pan over medium heat, and cook the onions until well-browned, for about 20 minutes. Set aside.",
+    "Pull out the tempeh cubes (reserving the marinade) and grill them in a grill pan over medium heat for 20 minutes, until crispy on the outside.",
+    "In a heavy-bottomed vessel, heat the remaining 3 tbsp of oil over medium heat and add all the whole spices. Once they begin to crackle, add half of the browned onions and sauté for 1 minute. Add the tomato and sauté for 2-3 minutes over a low flame.",
+    "Add the reserved marinade and cook for 6-7 minutes. If the mixture is too dry, add a few tablespoons of water.",
+    "Add the grilled tempeh to this mixture and stir to coat them in the gravy. Cook for another minute on medium heat then remove them from the vessel.",
+    "Layer the pot with the parboiled rice and tempeh. Drizzle with the saffron milk and rose water (if using), and top with the reserved browned onions. Cover the pot with a heavy lid and allow the rice to cook thoroughly, about 5 minutes over a low flame.",
+    "Garnish with chopped mint and coriander and serve hot."
+  ],
+  "image": "/recipes/tempeh-biryani.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

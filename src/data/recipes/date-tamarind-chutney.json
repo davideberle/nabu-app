@@ -1,0 +1,55 @@
+{
+  "id": "date-tamarind-chutney",
+  "name": "DATE–TAMARIND CHUTNEY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A classic in every Indian kitchen, this ‘red chutney’ is a must-have to serve with deep-fried vegan snacks or to add to chaats.",
+  "ingredients": [
+    {
+      "item": "tamarind pulp",
+      "amount": "½ cup"
+    },
+    {
+      "item": "deseeded dates",
+      "amount": "1 cup"
+    },
+    {
+      "item": "jaggery",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seed powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dry ginger powder (optional)",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, add the tamarind pulp, dates, jaggery and ¾ cup water and let the mixture cook for 4-5 minutes over medium flame.",
+    "Once the dates have softened, add the cumin powder, red chilli powder, fennel seed powder and ginger powder.",
+    "Take the pan off the flame and allow the contents to cool to room temperature. Blend the mixture into a smooth puree and strain it. Discard the leftovers.",
+    "Season the chutney with salt.",
+    "This chutney will stay fresh for 3 days in the refrigerator."
+  ],
+  "image": "/recipes/date-tamarind-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

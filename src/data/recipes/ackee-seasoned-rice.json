@@ -1,0 +1,77 @@
+{
+  "id": "ackee-seasoned-rice",
+  "name": "ACKEE SEASONED RICE",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4–6",
+  "time": "30 MINUTE",
+  "intro": "This was my mother’s fridge-raid dinner. Ackee would always be involved, but otherwise the ingredients changed according to what was available. Somehow, though, every rendition still felt like home.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red (bell) peppers, diced",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove, very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "chopped coriander (cilantro) stalks",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "jasmine or basmati rice, rinsed",
+      "amount": "300 g (10½ oz/1½ cups)"
+    },
+    {
+      "item": "water",
+      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+    },
+    {
+      "item": "creamed coconut",
+      "amount": "50 g (2 oz)"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "rinsed and drained ackee",
+      "amount": "200 g (7 oz)"
+    },
+    {
+      "item": "salt and freshly ground black pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a heavy bottomed frying pan (skillet) or casserole dish (Dutch oven). Add the spices and toast for 1 minute, then add the onion with a pinch of salt and fry for 3–4 minutes until sweet and fragrant. Add the red peppers, garlic and chopped coriander stalks and fry for another minute.",
+    "Now add the rice and stir to coat with the oil and veggies. Add the water, creamed coconut, stock cube and ackee and season to taste with salt and pepper. Bring to the boil, then reduce the heat to low. Cover and allow to steam for 20 minutes, then remove from the heat and leave to sit, covered, for 10–15 minutes. It should be fluffy and full of flavour!"
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

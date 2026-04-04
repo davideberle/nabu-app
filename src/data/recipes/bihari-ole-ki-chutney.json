@@ -1,0 +1,60 @@
+{
+  "id": "bihari-ole-ki-chutney",
+  "name": "BIHARI OLE KI CHUTNEY",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "While this chutney tastes spectacular with the small plates in this book, it can also be spread on a slice of toasted sourdough and topped with finely chopped onions and tomatoes for delicious results.",
+  "ingredients": [
+    {
+      "item": "mustard oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "yellow mustard (roasted)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chilli (minced)",
+      "amount": "1"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "garlic (minced)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "yam (boiled and mashed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and add the carom seeds and mustard seeds. When the seeds begin to crackle, add the chilli, ginger and garlic and cook the mixture for 1 minute. Add the red chilli powder and mix well.",
+    "Pour this mixture on the mashed yam and season with salt and lemon juice before serving."
+  ],
+  "image": "/recipes/bihari-ole-ki-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

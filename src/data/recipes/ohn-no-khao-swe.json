@@ -1,0 +1,70 @@
+{
+  "id": "ohn-no-khao-swe",
+  "name": "OHN NO KHAO SWE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This recipe is a leaf out of Indian migrant history. My Marwari friend Ankit’s mother, who migrated from Burma to Mumbai, carried this khao swe recipe with her and adapted it to suit her vegetarian family’s tastes. This is what Indian food really means for me—an amalgamation of history, lineages and culture.",
+  "ingredients": [
+    {
+      "item": "roasted chickpea flour",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "peanuts",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "litre fresh coconut milk",
+      "amount": "1"
+    },
+    {
+      "item": "assorted vegetables (carrot, beans, baby corn, broccoli)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "noodles (boiled)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tomato (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "birista",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli–garlic oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, combine the chickpea flour, ¼ tsp of turmeric, peanuts and 1 cup of water and turn it into a thick paste.",
+    "In a pan, heat the coconut milk and add the chickpea– peanut paste. Add the remaining turmeric and let the mixture simmer for 4-5 minutes.",
+    "Add the vegetables and salt and cook for 2-3 minutes on medium flame.",
+    "Place the boiled noodles in a bowl. Top it with the tomato and coriander leaves, then pour the hot curry over it and garnish it with the birista, chilli–garlic oil and lemon juice."
+  ],
+  "image": "/recipes/ohn-no-khao-swe.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

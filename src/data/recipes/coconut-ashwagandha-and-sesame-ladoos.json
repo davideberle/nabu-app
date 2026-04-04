@@ -1,0 +1,58 @@
+{
+  "id": "coconut-ashwagandha-and-sesame-ladoos",
+  "name": "COCONUT, ASHWAGANDHA AND SESAME LADOOS",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Ever since I committed to my plant-based life, coconut has become a constant in my kitchen. I use it to make appetizers, my coffee, curries and desserts. This is my take on a traditional Indian ladoo, which tastes just like a raw-brownie bite.",
+  "ingredients": [
+    {
+      "item": "while sesame seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "desiccated coconut",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ashwagandha",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "date syrup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Coarsely blend the sesame seeds and desiccated coconut in a blender and set aside.",
+    "In a bowl, mix the coconut with lemon powder, vanilla extract, ashwagandha, date syrup, raw cacao powder and peanut butter and roll it into a dough.",
+    "Pull out spoonfuls of the dough and shape them into ladoos between your palms.",
+    "Roll them in the sesame-coconut mixture. You can store the ladoos for up to 2 days in the refrigerator."
+  ],
+  "image": "/recipes/coconut-ashwagandha-and-sesame-ladoos.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

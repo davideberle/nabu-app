@@ -1,0 +1,70 @@
+{
+  "id": "chok-wangun",
+  "name": "CHOK WANGUN",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This dish is also popularly known as khatte baingan. Partly charred eggplants lie in a spicy-sour sauce amply flavoured with tamarind paste. I learnt this recipe on a summer trip to Srinagar, when the host of our homestay and I enjoyed an afternoon of dolce far niente. This chok wangun tastes best with rice and Kashmiri-style greens.",
+  "ingredients": [
+    {
+      "item": "Mustard oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "long brinjals (sliced lengthwise)",
+      "amount": "7"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "green cardamoms",
+      "amount": "4"
+    },
+    {
+      "item": "black cardamoms",
+      "amount": "4"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dry ginger powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kashmiri red chilli powder (dissolved in 3 tbsp water)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tamarind water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and deep fry the brinjals until nicely browned. Drain them on a kitchen towel and keep aside.",
+    "In a pan, heat 1 tbsp of this mustard oil and add the cumin seeds and the whole spices to it. Once they begin to crackle, add the turmeric powder, dry ginger powder and the Kashmiri red chilli powder water and continue cooking for 4-5 minutes on low heat.",
+    "Add the brinjals and the tamarind water. Cover the pan and cook the brinjals for 9-10 minutes on low heat. Sprinkle the garam masala and cook for 1-2 minutes.",
+    "Season and serve hot."
+  ],
+  "image": "/recipes/chok-wangun.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

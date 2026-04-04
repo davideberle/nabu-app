@@ -1,0 +1,67 @@
+{
+  "id": "peanut-punch",
+  "name": "PEANUT PUNCH",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 6",
+  "time": "15 MINUTE",
+  "intro": "This peanut punch is a slightly more adult version of the traditional Jamaican drink. Roasting the peanuts adds an extra depth. There’s something that’s quite Christmassy about this drink, which is exactly why it’s in the special occasion chapter. Enjoy on its own, with lots of ice, a swig of rum and a slice of rum cake.",
+  "ingredients": [
+    {
+      "item": "blanched peanuts",
+      "amount": "160 g (5½ oz/1 cup)"
+    },
+    {
+      "item": "filtered water",
+      "amount": "375–500 ml (13–17 fl oz/1½–2 cups)"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "250 ml (8½ fl oz/1 cup)"
+    },
+    {
+      "item": "coconut sugar or brown sugar",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "black treacle (molasses)",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly grated nutmeg, to taste, plus extra to serve",
+      "amount": ""
+    },
+    {
+      "item": "plenty of ice",
+      "amount": ""
+    },
+    {
+      "item": "dark rum (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180°C (400°F/gas 6). Spread out the peanuts on a baking sheet – make sure they are in one layer, so if needed use two separate sheets. Toast in the oven for 13–15 minutes until deeply golden, checking after 10 minutes and shaking the tray to turn over the peanuts. Remove from the oven and leave to cool for 15 minutes.",
+    "Transfer the nuts to a high-speed blender along with the remaining ingredients and blend until totally smooth – it should be a milkshake consistency. Strain using a nut milk bag or muslin (cheesecloth).",
+    "Serve the peanut punch with lots of ice and a sprinkle of nutmeg on top – you can even add a shot of dark rum if you’re being extra indulgent.",
+    "Store in a jug (pitcher) or jar in the refrigerator for up to 1 week."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

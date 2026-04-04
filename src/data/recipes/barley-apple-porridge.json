@@ -1,0 +1,53 @@
+{
+  "id": "barley-apple-porridge",
+  "name": "BARLEY–APPLE PORRIDGE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "ingredients": [
+    {
+      "item": "barley (boiled)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond pulp",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "apple (peeled and grated)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "almond butter",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pistachios (finely chopped)",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "In a blender, blitz the barley coarsely.",
+    "In a pan, heat the almond milk and add the barley, almond pulp, maple syrup and apple.",
+    "Cook for 2 minutes on medium flame, stirring continuously. Add the cinnamon and almond butter and stir for 1 minute.",
+    "Top with pistachios. Serve hot."
+  ],
+  "image": "/recipes/barley-apple-porridge.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

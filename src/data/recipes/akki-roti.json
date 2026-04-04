@@ -1,0 +1,67 @@
+{
+  "id": "akki-roti",
+  "name": "AKKI ROTI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A flatbread from the state of Karnataka, akki roti has the goodness of wholewheat and rice. While it tastes great on its own, it’s nice to serve it on the side with a whole range of main courses from this book.",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "wheat flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "split Bengal gram",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dill leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "curry leaves (finely chopped)",
+      "amount": "6-7"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, combine all the ingredients, except the oil, add water and knead the mixture into a soft dough.",
+    "On the kitchen floor, place a banana leaf and press the dough on it, gently pressing it into a palm-sized circle. Continue pressing gently with your fingers till the roti is slightly thicker than a regular chapati.",
+    "With the end of a spoon or a chopstick, make 3 holes on the roti and transfer it carefully on to a hot pan.",
+    "Cook it on both sides, using oil to make it crispy and to ensure it doesn’t stick to the pan.",
+    "The akki roti should be ready in 4-5 minutes, when cooked over a medium flame. Serve hot."
+  ],
+  "image": "/recipes/akki-roti.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

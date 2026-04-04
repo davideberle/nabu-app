@@ -1,0 +1,51 @@
+{
+  "id": "pickled-cabbage",
+  "name": "PICKLED CABBAGE",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "6 cups (1.5 L)"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "rice rinse water",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "carrots, peeled and julienned (see Note)",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "small head white cabbage (about 1¾ pounds/800 g), thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "roughly chopped Vietnamese mint leaves",
+      "amount": "3 ounces (90 g)"
+    }
+  ],
+  "method": [
+    "In a large saucepan, combine all ingredients except the rice water, and bring to a boil over high heat. Once salt and sugar are dissolved, remove from heat and let cool.",
+    "Stir in the rice water and then pour into jars with the vegetables you want to pickle.",
+    "In a large bowl, combine all ingredients and mix well.",
+    "Place carrots, cabbage, and mint leaves in two 47-ounce (1.4 L) sterilized glass jars (see here) and cover with brine. Use two bamboo skewers to press the vegetables into the brine until completely submerged.",
+    "Close the lid tightly and leave jar undisturbed in a cool place for 2 to 3 days.",
+    "When pickled and sour enough to your liking, store in the refrigerator for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

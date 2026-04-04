@@ -1,0 +1,110 @@
+{
+  "id": "spicy-pineapple-juice-pani-puri",
+  "name": "SPICY PINEAPPLE-JUICE PANI PURI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "One dish that is mandatory on all my festive tables is this one. I love a good traditional pani puri, but this ananas juice-filled puchka has my heart. It has Thai flair, but at its core, lots of desi notes, texture and oomph.",
+  "ingredients": [
+    {
+      "item": "pineapple (sliced)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "black salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "basil leaves",
+      "amount": "½ cup"
+    },
+    {
+      "item": "kafir lime leaf",
+      "amount": "1"
+    },
+    {
+      "item": "lemongrass (grated)",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "ginger (minced)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "peanuts (crushed)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "moong beans (sprouted)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red chilli (minced)",
+      "amount": "½"
+    },
+    {
+      "item": "carrots (grated)",
+      "amount": "2"
+    },
+    {
+      "item": "coriander leaves (chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mint leaves (chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "packet puris",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Roast the pineapple in a pan over medium heat for 15 minutes. Once cooled, transfer it to a blender.",
+    "Add the cumin powder, ginger, mint leaves, green chilli, black salt, basil leaves, kaffir lime leaf, lemongrass and coriander leaves. Blend and strain the mixture. Chill this pani in the refrigerator for 2 hours before serving.",
+    "In a bowl, mix all the ingredients for the filling and adjust the seasoning.",
+    "To eat the pani puri, crack a puri, add a spoonful of the filling and dunk it in the pineapple water. Enjoy!"
+  ],
+  "image": "/recipes/spicy-pineapple-juice-pani-puri.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

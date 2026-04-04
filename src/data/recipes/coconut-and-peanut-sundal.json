@@ -1,0 +1,53 @@
+{
+  "id": "coconut-and-peanut-sundal",
+  "name": "COCONUT AND PEANUT SUNDAL",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Sundal is literally the first thing I eat whenever I reach Chennai. Tempered and coconut-coated peanuts are what fresh summer snacks should be like. This is one street food of India that needs more love and I decided to start that by sharing my recipe for sundal here.",
+  "ingredients": [
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "urad dal",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli (slit)",
+      "amount": "1"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "4-5"
+    },
+    {
+      "item": "peanuts (boiled)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fresh coconut (grated)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat oil and add the mustard seeds, urad dal, red chilli, asafoetida and curry leaves to it.",
+    "Once the spices begin to crackle, add the peanuts and toss well. Allow them to cook in the pan for 3-4 minutes over low flame.",
+    "Finish with grated coconut and serve hot."
+  ],
+  "image": "/recipes/coconut-and-peanut-sundal.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

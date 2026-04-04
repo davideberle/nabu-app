@@ -1,0 +1,48 @@
+{
+  "id": "dry-fruit-ladoo",
+  "name": "DRY FRUIT LADOO",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "ingredients": [
+    {
+      "item": "cashew pulp",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cashew powder",
+      "amount": "½ cup"
+    },
+    {
+      "item": "date paste",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "saffron",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "desiccated coconut powder (plus extra for rolling)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "roasted rajgira (powdered, plus extra for rolling)",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "In a pan, combine all the ingredients and cook them on medium heat for 5-6 minutes, stirring continuously.",
+    "Once the mixture begins to leave the sides of the pan, transfer it to a plate and roll it into ladoos.",
+    "Roll the ladoos in a mixture of extra rajgira powder and desiccated coconut powder so that it has a light dusting of both."
+  ],
+  "image": "/recipes/dry-fruit-ladoo.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

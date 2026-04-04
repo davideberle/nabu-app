@@ -1,0 +1,48 @@
+{
+  "id": "sukko-sambhar",
+  "name": "SUKKO SAMBHAR",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Sukko sambhar means to me what togarashi means to a Japanese. It’s that one dry spice mix that has to be frequently replenished in my kitchen. Sprinkle it on dal-rice or on a slice of toasted sourdough or use it to spice up salad dressings—it can be used in multiple ways and is delicious every single time.",
+  "ingredients": [
+    {
+      "item": "split mustard seeds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "split fenugreek seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1½ cup"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "mustard oil",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "In a blender, blend the split mustard seeds into a fine powder. Transfer to a bowl and add all the remaining ingredients except the mustard oil.",
+    "Warm the mustard oil and pour a spoonful at a time into the dry mixture. Mix well."
+  ],
+  "image": "/recipes/sukko-sambhar.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

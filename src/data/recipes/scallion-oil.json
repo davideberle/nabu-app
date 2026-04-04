@@ -1,0 +1,36 @@
+{
+  "id": "scallion-oil",
+  "name": "SCALLION OIL",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "finely chopped scallions (green parts only)",
+      "amount": "½ cup (80 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)"
+    }
+  ],
+  "method": [
+    "In a small, heatproof bowl, combine scallions, salt, and sugar.",
+    "In a small skillet cook oil over medium heat. When it starts to smoke, immediately remove from heat, pour over the scallions, and stir well. Alternatively, you can combine the scallions, salt, sugar, and oil in a small microwave-safe bowl and heat it on high for 15 seconds. Then, remove and stir well.",
+    "Store in an airtight glass container in the refrigerator for up to 1 week."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

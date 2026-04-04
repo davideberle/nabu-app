@@ -1,0 +1,97 @@
+{
+  "id": "quang-noodle-salad",
+  "name": "QUANG NOODLE SALAD",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "4 servings",
+  "intro": "This version of Quang-style noodles (mì Quảng chay trộn) is made without the broth, so it's easier to prepare than the traditional version (here). I recommend using enoki, oyster, and/or white beech mushrooms to create the best possible sauce.",
+  "ingredients": [
+    {
+      "item": "plus 3 tablespoons vegetable oil, divided",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu",
+      "amount": "1"
+    },
+    {
+      "item": "dried bean curd sheet, soaked and cut into 4-inch (10 cm) squares (optional)",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "minced leek (white part only)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh mushrooms (enoki, oyster, white beech, or similar), stems trimmed and separated",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "dried wood ear mushrooms, soaked and thinly sliced",
+      "amount": "¾ ounce (20 g)"
+    },
+    {
+      "item": "dried shiitake mushrooms, soaked and thinly sliced",
+      "amount": "¾ ounce (20 g)"
+    },
+    {
+      "item": "soy sauce, plus more to taste if needed",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetarian oyster sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dried flat rice noodles or 21 ounces (600 g) fresh mì Quảng or flat rice noodles",
+      "amount": "10 ounces (283 g)"
+    },
+    {
+      "item": "mung bean sprouts",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "green cabbage, shredded",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "round leaf mint or mint, roughly chopped if leaves are large",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "perilla leaves, chopped",
+      "amount": "10"
+    },
+    {
+      "item": "green chili pepper (serrano or jalapeño), sliced",
+      "amount": "1"
+    },
+    {
+      "item": "crushed roasted peanuts, for garnish",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Heat ¼ cup (60 ml) of the oil in a small saucepan over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain. When cool, cut into bite-size pieces.",
+    "Drop the dried bean curd (if using) into the remaining oil, cook until they puff up (5 to 10 seconds), and then immediately remove from oil with tongs and place on a cooling rack to drain excess oil.",
+    "In a large skillet, heat remaining 3 tablespoons vegetable oil over medium-low heat. When hot, add leek and cook and stir until slightly golden (about 1 minute). Transfer half of the fried leek oil to a small bowl and reserve for later.",
+    "Add all mushrooms, soy sauce, vegetarian oyster sauce, stock powder, and sugar to the remaining oil in the skillet. Cook and stir until mushrooms are tender and browned (4 to 5 minutes), and then add tofu. Cook and stir for about 30 seconds, and then remove pan from heat and set aside to cool.",
+    "Follow the directions on the package to cook the dried flat rice noodles.",
+    "In a large bowl, combine the cooked noodles with cooked mushrooms and tofu, along with juices from the skillet. Add the bean sprouts, cabbage, mint, perilla leaves, chili pepper, and reserved leek oil. Mix well and add more soy sauce to taste if needed.",
+    "Transfer salad to a platter, garnish with peanuts and fried bean curd (if using), and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

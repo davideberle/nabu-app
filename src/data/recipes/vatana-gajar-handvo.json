@@ -1,0 +1,92 @@
+{
+  "id": "vatana-gajar-handvo",
+  "name": "VATANA GAJAR HANDVO",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is the best savoury cake you’ll ever eat. Handvo is a Gujarati-style snack that is cooked in a regular pan on the stove instead of an oven. It cuts like a cake and, conventionally, dairy yoghurt is its most essential ingredient. However, even with store-bought or home-made almond yoghurt, the recipe turns out just as beautiful.",
+  "ingredients": [
+    {
+      "item": "rice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "split green gram",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pigeon peas",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "split black gram",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Bengal gram",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "almond yoghurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger–chilli paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "green peas (parboiled)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carrot (grated)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash the rice, split green gram, pigeon peas, split black gram and Bengal gram thoroughly. Combine them in a bowl and add just enough water to cover. Let the mixture soak for 4 hours.",
+    "Drain and grind the mixture into a smooth paste. Add almond yoghurt, red chilli powder, turmeric powder, ginger–chilli paste, carrot and green peas and season it with salt.",
+    "In a deep skillet, heat 1 tbsp oil and add 1 pinch mustard seeds, ½ tsp sesame seeds and 2-3 curry leaves. Once the tempering begins to crackle, pour 3-4 ladles of the handvo batter until it begins to resemble a thick cake.",
+    "Cover and cook the batter on medium heat for 8-9 minutes.",
+    "Flip and cook it on the other side for 4-5 minutes. Repeat the process until you have exhausted all your batter.",
+    "Serve hot with mint–coriander chutney."
+  ],
+  "image": "/recipes/vatana-gajar-handvo.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

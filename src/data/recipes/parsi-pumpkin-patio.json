@@ -1,0 +1,68 @@
+{
+  "id": "parsi-pumpkin-patio",
+  "name": "PARSI PUMPKIN PATIO",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I love handwritten recipe notes and I got this recipe just like that. Stylist Anaita Shroff Adajania and I worked together at a fashion magazine for a while. Apart from her impeccable style, Anaita was known for her stunning Parsi lunches. I could never partake in them because they were laden with the fresh catch of the day, or juicy pieces of meat. What I did get, instead, was a leaf from a hand-scribbled cookbook with the recipe for this amazing red pumpkin dish that is a great weekday fix with white rice.",
+  "ingredients": [
+    {
+      "item": "Kashmiri chillies",
+      "amount": "5"
+    },
+    {
+      "item": "cloves of garlic",
+      "amount": "4-5"
+    },
+    {
+      "item": "ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "birista",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pumpkin (diced)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "In a blender, blitz the Kashmiri chillies, garlic, ginger and cumin seeds. Add 1 tbsp of water to turn it into a fine paste.",
+    "In a pan, heat the oil and add the paste. Cook on medium heat for 3-4 minutes. Add the birista and sauté for 2 minutes.",
+    "Add the pumpkin and the tamarind paste.",
+    "Cover and cook it on low flame until the pumpkin is thoroughly cooked. This should take about 10–12 minutes.",
+    "Once done, add the sugar and season it.",
+    "Finish with coriander leaves and serve hot."
+  ],
+  "image": "/recipes/parsi-pumpkin-patio.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

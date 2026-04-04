@@ -1,0 +1,42 @@
+{
+  "id": "besan-ladoo",
+  "name": "BESAN LADOO",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "A five-ingredient recipe, this is a quick sugar fix. These ladoos are neatly rolled in squares of foil and rest in a box next to my work desk. I have a one-ladoo-a-day rule (but sometimes I end up eating two).",
+  "ingredients": [
+    {
+      "item": "coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "besan",
+      "amount": "3 cups"
+    },
+    {
+      "item": "cardamom powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "sugar",
+      "amount": "1½ cup"
+    },
+    {
+      "item": "nuts (finely sliced)",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat the coconut milk and add besan to it. Cook this mixture for 3-4 minutes on medium flame, stirring continuously.",
+    "Once it begins to leave the sides of the pan, transfer it to a plate.",
+    "Add the remaining ingredients, mix well and bind it into tight ladoos. You can add a spoon or two of coconut oil if the mixture is too loose.",
+    "Cool for 1 hour before serving."
+  ],
+  "image": "/recipes/besan-ladoo.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

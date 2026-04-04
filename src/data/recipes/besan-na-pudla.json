@@ -1,0 +1,60 @@
+{
+  "id": "besan-na-pudla",
+  "name": "BESAN NA PUDLA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is a healthy, wholesome and a neat side to serve with the gravies and main courses dishes in this book. Besan na pudla is the Gujarati version of the north Indian chilla and packs a punch with the combined flavours of carom seeds and fresh herbs.",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "carom seeds",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients with 1½ cups of water and whisk well. This should have the consistency of pancake batter.",
+    "In a pan, heat a little oil and pour a ladle full of the batter. Cook it on both sides and serve hot."
+  ],
+  "image": "/recipes/besan-na-pudla.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

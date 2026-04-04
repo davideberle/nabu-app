@@ -1,0 +1,88 @@
+{
+  "id": "jackfruit-thoran-stuffed-paratha",
+  "name": "JACKFRUIT THORAN-STUFFED PARATHA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is food without borders. North Indian and south Indian cuisines battle it out in my kitchen … and I end up as the winner with this paratha. Stuffed with the juiciest bits of jackfruit, this is spicy, coconut-y and makes a wholesome lunch idea.",
+  "ingredients": [
+    {
+      "item": "coconut (grated)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "garlic (minced)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "5"
+    },
+    {
+      "item": "shallots (finely chopped)",
+      "amount": "3"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "raw jackfruit",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "oil (plus extra for frying)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "split black gram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dry red chillies",
+      "amount": "2"
+    },
+    {
+      "item": "wholewheat flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 pinch"
+    }
+  ],
+  "method": [
+    "In a bowl, mix the coconut, garlic, green chilli, 2 of the curry leaves, shallots, a pinch of turmeric powder, cumin seeds and salt. Coarsely blend this mixture and keep aside.",
+    "In a pan, boil the jackfruit with a pinch each of turmeric and salt. This will take 30–35 minutes on medium heat. Drain and shred the jackfruit.",
+    "In a pan, heat the oil and add the split black gram, mustard seeds, red chillies and the remaining curry leaves. When the spices begin to crackle, add the coconut mixture and sauté over medium heat for 6-7 minutes.",
+    "Add the jackfruit and stir well. Adjust the seasoning and take it off the flame. Keep aside.",
+    "In a bowl, combine all the ingredients for the dough with ¾ cup of water and knead the mixture into a soft dough.",
+    "Break off small roundels and roll each out into a palm-sized circle. Put a spoonful of the thoran in the centre of the dough. Pull the edges towards the centre and pinch them together to seal the dough. Roll it out and cook the paratha on a pan, using 1 tsp oil for both sides."
+  ],
+  "image": "/recipes/jackfruit-thoran-stuffed-paratha.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

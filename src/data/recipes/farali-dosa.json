@@ -1,0 +1,49 @@
+{
+  "id": "farali-dosa",
+  "name": "FARALI DOSA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Fasting menus are quite limited, but with tremendous creativity, we came up with this version of a fast-friendly millet dosa that is equal parts healthy and delish. It’s typically eaten with yoghurt but you can go vegan and skip the yoghurt or have it with some home-made ground peanut chutney.",
+  "ingredients": [
+    {
+      "item": "sanwa millet (soaked overnight)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "potato (boiled)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, mix the sanwa with the potato and ¾ cup water and blend it into a smooth pancake-like batter.",
+    "Add the cumin seeds, chilli and coriander leaves and season with salt. Mix and keep aside.",
+    "In a pan, heat a spoonful of oil and pour a ladle of the batter on to it. Spread it in a circular motion and cook it on both sides until crispy."
+  ],
+  "image": "/recipes/farali-dosa.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

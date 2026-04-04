@@ -1,0 +1,76 @@
+{
+  "id": "lilwa-kachori",
+  "name": "LILWA KACHORI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Lilva is a winter bean that’s a staple in my house, but you can really make this dish with any fresh green beans or just green peas. These are best eaten with green chutney or ketchup.",
+  "ingredients": [
+    {
+      "item": "refined flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "oil (plus extra for deep frying)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "fresh lilva beans",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ginger–green chilli paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "mint leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Sugar as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients for the dough (except the oil for frying). Add water and knead it into a medium dough. Set aside.",
+    "In a blender, coarsely blend the lilva beans with the green peas and keep aside.",
+    "In a pan, heat the oil and add the ginger–green chilli paste. Sauté for 30 seconds and add the turmeric powder, followed by the ground mixture of lilva beans and peas. Cook for 5 minutes on medium flame until the mixture is thoroughly cooked, and the peas are soft.",
+    "Finish with the coriander leaves, mint leaves, lemon juice, sugar and salt.",
+    "To make the kachoris, divide the dough into 10 portions. Roll each ball out into small puris. Place a spoonful of the stuffing in the centre and bring the edge of the puri up to the centre and seal it neatly by pinching the top.",
+    "Deep fry in hot oil and serve hot."
+  ],
+  "image": "/recipes/lilwa-kachori.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "coconut-milk-and-lentil-soup",
+  "name": "COCONUT MILK AND LENTIL SOUP",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "I’m big on creamy soups, but it’s challenging to create that velvety mouthfeel without lugs of milk or cream. While coconut milk imparts that richness to this dish, it’s the lentil that gives body to the soup. Together they match like mint and chocolate—flawlessly.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cloves of garlic (grated)",
+      "amount": "3"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "tomato (grated)",
+      "amount": "1"
+    },
+    {
+      "item": "split green gram (boiled)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and add the garlic to it. Sauté for 1 minute and add the cumin powder, curry powder, paprika, cinnamon powder and salt.",
+    "Once the spices are fragrant, add the tomato and fry it for 3-4 minutes on medium heat.",
+    "Now add the split green gram and cook it until it is thoroughly mixed with the spices. Add a few spoonfuls of water if the mixture seems too dry.",
+    "Add the coconut milk and ½ cup water and allow the soup to bubble over low heat for 4-5 minutes.",
+    "Run a hand blender through this and bubble once more."
+  ],
+  "image": "/recipes/coconut-milk-and-lentil-soup.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

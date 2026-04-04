@@ -1,0 +1,68 @@
+{
+  "id": "summer-lentil-salad-with-spicy-dressing",
+  "name": "SUMMER LENTIL SALAD WITH SPICY DRESSING",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "My dal salad is incredibly delicious and healthy. I eat this dish at least three times a week. It’s a simple coming together of everyday ingredients from an Indian kitchen, but put together in a way that makes the ghar ki dal shine.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "red chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "pepper powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "kasundi",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "brown lentil (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "carrot (julienned)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cucumber (julienned)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "beetroot (julienned)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw mango (finely chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients for the dressing and refrigerate until use.",
+    "In a separate bowl, mix all the ingredients for the salad and toss well. Pour the dressing and serve immediately."
+  ],
+  "image": "/recipes/summer-lentil-salad-with-spicy-dressing.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

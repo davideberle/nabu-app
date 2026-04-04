@@ -1,0 +1,97 @@
+{
+  "id": "it-s-a-pizza-party",
+  "name": "IT’S A PIZZA PARTY",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 6",
+  "time": "1 HOUR",
+  "intro": "Not only did I reignite my sourdough journey in lockdown, I also bought a pizza oven. So I completed lockdown with flying colours. Pizza seems to be the ultimate gathering food. It’s universally liked and is a safe option to please multiple guests (despite the whole pineapple discourse … I promise you, liking or not liking pineapple on pizza doesn’t need to be attached to your personality or in your Hinge bio). This is coming from a pineapple on pizza advocate. Most people rarely seem to make pizza at home even though its actually quite easy. The dough uses minimal ingredients and the toppings can be totally customisable to your desired flavour combinations. This is a deep-dish style pizza, which for me gets the best results when baking in a home oven.",
+  "ingredients": [
+    {
+      "item": "room-temperature water",
+      "amount": "250 ml (8½ fl oz/1 cup)"
+    },
+    {
+      "item": "boiling water",
+      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "strong white bread flour",
+      "amount": "400 g (14 oz/3¼ cups)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "olive oil, plus extra for greasing",
+      "amount": "65 ml (2½ fl oz/scant ½ cup)"
+    },
+    {
+      "item": "onions, sliced into half-moons",
+      "amount": "2"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chilli flakes, plus extra to serve",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "150 g (5 oz)"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "drained and rinsed tinned callaloo",
+      "amount": "150 g (5 oz)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegan Parmesan",
+      "amount": "20 g (¾ oz)"
+    },
+    {
+      "item": "ball vegan mozzarella, sliced",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix the room-temperature water with the boiling water in a jug (pitcher). This will create the perfect temperature for the yeast. Add the maple syrup and yeast, mix to combine and then leave to activate for 4–5 minutes until foamy. Meanwhile, combine the flour and salt in the bowl of a stand mixer.",
+    "Add the yeast mixture to the flour along with 1 tablespoon of the olive oil and then knead with the dough hook on a medium speed for 5–6 minutes until elastic and smooth. You can also do this with your hands, kneading for 8–10 minutes. Lightly oil a bowl and transfer the dough to it. Cover with cling film (plastic wrap) and leave to rise at room temperature for 1½ hours, or until doubled in size.",
+    "As the dough is rising, get the toppings ready. Heat a generous glug of olive oil in a frying pan (skillet) over a medium heat and fry the onions, fennel seeds and chilli flakes with a big pinch of salt. Cook for 30 minutes until caramelised, then set aside.",
+    "Blend together the ingredients for the tofu garlic cream in a food processor until smooth and mix together the ingredients for the callaloo topping, apart from the vegan mozzarella, in a bowl.",
+    "Once the dough has risen, knock the air out of it. Pour the remaining olive oil into to a deep 23 cm (9 inch) rectangular baking tray (pan). Add the dough and stretch it to fit. Cover again with cling film and leave for a further 1 hour until doubled in size again. As it is rising, preheat the oven to as hot as it will go for at least 45 minutes.",
+    "Once ready, top the pizza. Start by adding three-quarters of the caramelised onions, then top with some of the tofu garlic cream. Add the callaloo and then the vegan mozzarella. Sprinkle with chilli flakes and a drizzle of olive oil and bake for 25 minutes until lovely and caramelised. Add the rest of the caramelised onions just before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

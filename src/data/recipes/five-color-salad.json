@@ -1,0 +1,91 @@
+{
+  "id": "five-color-salad",
+  "name": "FIVE-COLOR SALAD",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "vegetable oil, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "block (14 ounces/400 g) firm tofu",
+      "amount": "1"
+    },
+    {
+      "item": "leek (white part only), thinly sliced",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "cube store-bought or homemade chao",
+      "amount": "1"
+    },
+    {
+      "item": "fermented soybean sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sriracha",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sesame or olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "bird's eye chili pepper, minced, plus more sliced for garnish",
+      "amount": "1"
+    },
+    {
+      "item": "banana blossom, prepped and thinly sliced (optional)",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "cucumber, seeds removed and thinly sliced",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "carrot, peeled and shredded",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "red cabbage, shredded",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "mint",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "roasted peanuts, crushed",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a medium skillet, heat 1 tablespoon of vegetable oil over medium heat. When hot, add tofu and cook until golden brown on all sides (about 10 minutes). Place tofu on paper towel–lined plate to drain.",
+    "Cut tofu into thin strips and set aside.",
+    "In a clean skillet, heat remaining 3 tablespoons of vegetable oil, and then cook and stir sliced leek until golden brown (about 2 minutes). Using a slotted spoon, transfer leek to a paper towel–lined plate to drain.",
+    "In a small bowl, mash the chao into a smooth paste, and then add fermented soybean and sriracha sauces, sugar, lime juice, sesame oil, and minced chili pepper, and stir well.",
+    "Arrange banana blossom slices (if using), cucumber, carrot, cabbage, and mint on a platter. Top with tofu, and then sprinkle with fried leek, peanuts, and sesame seeds.",
+    "Drizzle dressing on top, garnish with chili slices, and toss well before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

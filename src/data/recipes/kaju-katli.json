@@ -1,0 +1,42 @@
+{
+  "id": "kaju-katli",
+  "name": "KAJU KATLI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This is a traditional mithai recipe. I haven’t tweaked it or created a vegan version of it; I have simply replicated how it is originally made. I learnt this recipe from the people at the wonderful Bombay Sweet Shop that specializes in traditional Indian sweets. I reserve this for festivities instead of having it as an everyday sweet bark.",
+  "ingredients": [
+    {
+      "item": "cashew nuts (soaked in water for 2 hours)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "cardamom powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "sheet edible silver",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Drain and blend the cashew nuts into a smooth paste. Adding water while blending is optional as the cashews will release their own fat and absorb the water.",
+    "Once the paste is ready, add the sugar and keep it aside for 30 minutes.",
+    "Stir once and transfer it into a deep-bottomed pan.",
+    "Over low heat, keep stirring this paste and cook it for about 20-25 minutes until the mass begins leaving the sides of the pan.",
+    "Now you should be able to roll it into a ball. Using a spatula or a stand mixer (paddle attachment), stir it until it cools to 50°C.",
+    "Transfer the paste to a sheet pan and spread it thinly (approximately 1 cm thick).",
+    "Sprinkle cardamom powder over it and finish with edible silver.",
+    "Cut it into diamonds and store."
+  ],
+  "image": "/recipes/kaju-katli.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

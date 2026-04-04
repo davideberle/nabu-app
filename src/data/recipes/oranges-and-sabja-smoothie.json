@@ -1,0 +1,44 @@
+{
+  "id": "oranges-and-sabja-smoothie",
+  "name": "ORANGES AND SABJA SMOOTHIE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "This plant-based smoothie is like drinking sunshine in a glass. Basil or sabja seeds puff up like chia seeds and lend this milk-and-sugar-free smoothie a textured body. It’s loaded with antioxidants and ideal for hydration pre- or post-workout.",
+  "ingredients": [
+    {
+      "item": "orange juice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "banana (frozen)",
+      "amount": "1"
+    },
+    {
+      "item": "coconut water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Ice cubes",
+      "amount": ""
+    },
+    {
+      "item": "basil seeds (soaked in water for 20 minutes)",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a blender, combine the orange juice, banana, coconut water, almond butter and ice cubes. Blend it into a thick shake.",
+    "Transfer the smoothie into serving glasses and top it with the puffed-up basil seeds. Serve chilled."
+  ],
+  "image": "/recipes/oranges-and-sabja-smoothie.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

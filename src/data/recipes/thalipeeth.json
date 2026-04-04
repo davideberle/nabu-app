@@ -1,0 +1,78 @@
+{
+  "id": "thalipeeth",
+  "name": "THALIPEETH",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Thalipeeth is one of the most underrated Indian breads, and making it is nothing short of an art. It’s not rolled out like regular rotis—instead, it is patted into shape on a plate, which is where it gets its name from: thali (plate), peeth (patting). I like an extra crusty and textured version of the thalipeeth instead of soft breads.",
+  "ingredients": [
+    {
+      "item": "wholewheat flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "jowar flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "rice flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "onion (grated)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander leaves (finely chopped)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix all the ingredients, except the oil. Add water and knead the mixture into a medium-soft dough.",
+    "Pull out a portion of the dough and flatten it with the palms of your hands.",
+    "Continue flattening it on an even surface until round and flat, yet thick.",
+    "Make impressions in the flattened dough with your index finger and cook the dough on a hot pan with a tsp of oil for 3-4 minutes on medium flame."
+  ],
+  "image": "/recipes/thalipeeth.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

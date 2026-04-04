@@ -1,0 +1,114 @@
+{
+  "id": "grilled-eggplant",
+  "name": "GRILLED EGGPLANT",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "Japanese eggplants or 1 medium globe eggplant (see Note)",
+      "amount": "3"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "bird’s eye chili pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "plus 1 teaspoon sugar, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vegan fish sauce",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3½ ounces (100 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "fried shallots (see step 1 on this page or store-bought), for garnish (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "crushed roasted peanuts, for garnish (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oyster mushrooms, rinsed with salted water",
+      "amount": "7 ounces (200 g)"
+    },
+    {
+      "item": "3-inch (7.5 cm) piece fresh turmeric, peeled, or 1 teaspoon turmeric powder (see Note)",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "store-bought or homemade seitan, cut into ¼-inch (6 mm) thick rings (optional)",
+      "amount": "3 ounces (90 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cilantro or Vietnamese mint leaves, for garnish",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "crushed peanuts, for garnish",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Sliced bird’s eye chili pepper, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Using a skewer or toothpick, poke holes all over the surface of each eggplant.",
+    "If using a gas grill, preheat it to 500°F (250°C). Using tongs, place each eggplant on the hot grill and close the lid. Check after 10 minutes and again after 15 minutes. If eggplants look deflated and their grilled sides are soft (use a toothpick to check), they’re ready to be flipped. Grill for another 10 minutes, or until all flesh has collapsed and turned soft. If using a charcoal grill, grease the grate, then heat to medium-high heat (that is, coals should be covered with ash and glowing red without any black remaining). Using tongs, place each eggplant on the hot grate and cook them uncovered, turning occasionally, until skin is blackened and flesh has collapsed (15 to 20 minutes). Remove from grill and allow to cool.",
+    "Carefully remove skin from eggplants, leaving the stems intact, and then arrange on a platter. Loosely drag a fork through the flesh to loosen so it will absorb the sauce.",
+    "In a food processor or mortar and pestle, combine the garlic, chili, and 1 teaspoon of the sugar, and grind into a coarse paste.",
+    "In a small bowl, mix remaining 2 tablespoons sugar and vegan fish sauce, and stir until sugar is dissolved. Add garlic-chili paste and mix well.",
+    "Place the scallions in a small, heatproof bowl. Heat oil in a small skillet over medium heat. When it starts to smoke, immediately remove from heat, pour the oil over the scallions, and stir well.",
+    "Drizzle sauce all over eggplants and top them off with some of the scallion oil.",
+    "Garnish with fried shallots (if using) and roasted peanuts (if using).",
+    "Tear mushrooms lengthwise into quarters, squeeze out excess water, and set aside.",
+    "Cut turmeric into smaller chunks, place in a resealable plastic bag, and crush finely with a pestle. Transfer to a bowl and set aside.",
+    "In a large skillet, heat vegetable oil over low heat. When hot, add garlic and cook and stir until slightly golden around the edges (about 30 seconds). Add crushed turmeric and cook and stir for about 1 minute. Add mushrooms and seitan (if using) and continue to cook and stir until everything is thoroughly tinted yellow by the turmeric (about 1 minute).",
+    "Stir in salt, sugar, stock powder, turmeric powder (if using), and ground pepper, and then remove from heat.",
+    "Transfer to a platter and garnish with cilantro or Vietnamese mint, crushed peanuts, and sliced chili pepper (if using)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

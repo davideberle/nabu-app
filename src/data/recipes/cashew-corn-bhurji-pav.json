@@ -1,0 +1,76 @@
+{
+  "id": "cashew-corn-bhurji-pav",
+  "name": "CASHEW–CORN BHURJI PAV",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Vegan bhurji is often made using tofu, but I’ve realized that tofu isn’t a handy Indian kitchen ingredient. That’s why I like to make my bhurji with corn and cashew nuts instead. This dish has a light body and tastes spectacular with crispy ladi pavs.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ladi pavs (slit)",
+      "amount": "4"
+    },
+    {
+      "item": "cashew nuts (soaked in water for 2 hours)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "corn (boiled)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cashew milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Finely chopped coriander leaves for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "On a hot pan, pour 1 tbsp of the oil. Toast the ladi pav until slightly charred and crispy.",
+    "Finely chop the soaked cashew nuts. Grind the corn coarsely and keep aside.",
+    "In a pan, heat the remaining 1 tbsp of vegetable oil and add the cumin seeds. Once they begin to crackle, add the green chilli and sauté for 30 seconds.",
+    "Add the red chilli powder, turmeric powder and garam masala and sauté for 2 minutes on medium flame.",
+    "Add the ground corn and the cashew nuts to the pan and stir the scramble well. This should take about 3-4 minutes on medium flame to cook.",
+    "Season with salt and finish with lemon juice and coriander."
+  ],
+  "image": "/recipes/cashew-corn-bhurji-pav.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

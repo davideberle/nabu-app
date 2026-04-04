@@ -1,0 +1,57 @@
+{
+  "id": "peas-and-coriander-smash-on-khari",
+  "name": "PEAS AND CORIANDER SMASH ON KHARI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "J’adore smashed peas. They introduce a lovely body to this topping and absorb the flavours of garlic, lemon juice and spices very well. I wanted to add a lot of Italian herbs and smoky paprika to this dish, but practised restraint. The result? A simple dish that packs a punch.",
+  "ingredients": [
+    {
+      "item": "green peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves (roughly chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "coriander leaves",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red chilli (finely chopped)",
+      "amount": "½"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "khari biscuits",
+      "amount": "5"
+    },
+    {
+      "item": "Fresh mint leaves, birista and fried garlic for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pot, boil water and add the green peas to it. Allow the peas to simmer in hot water for 3-4 minutes, then drain and cool them.",
+    "Transfer the cooled peas to a blender, and add the lemon juice, garlic, coriander leaves, red chilli, chaat masala, salt and pepper. Add a few spoons of water (if needed) and blend the mixture into a coarse paste.",
+    "Apply it on khari biscuits and garnish with fresh mint leaves, birista and fried garlic."
+  ],
+  "image": "/recipes/peas-and-coriander-smash-on-khari.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

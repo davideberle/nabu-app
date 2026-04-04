@@ -1,0 +1,72 @@
+{
+  "id": "tofu-wrapped-in-wild-betel-leaf",
+  "name": "TOFU WRAPPED IN WILD BETEL LEAF",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "25 to 30 rolls",
+  "intro": "This is a vegan version of beef wrapped in wild betel leaf (bò lá lốt), a popular and delicious street snack from Southern Vietnam. Wild betel leaves, or lá lốt, are not the same as piper betel, or lá trầu, which is commonly chewed to freshen the breath. These rolls can be served as an appetizer with some fresh greens and any vegan dipping sauce. You can also serve them with rice or on top of a bowl of vermicelli noodles with fresh greens, grilled seitan and mushrooms, some Pickled Carrots and Daikon, and a side of Vegan Fish Dipping Sauce.",
+  "ingredients": [
+    {
+      "item": "firm tofu",
+      "amount": "21 ounces (595 g)"
+    },
+    {
+      "item": "wild betel leaves (see Note), divided",
+      "amount": "30 to 35"
+    },
+    {
+      "item": "dried shiitake mushrooms, soaked and minced",
+      "amount": "1 ounce (28 g)"
+    },
+    {
+      "item": "dried wood ear mushrooms, soaked and minced",
+      "amount": "½ ounce (14 g)"
+    },
+    {
+      "item": "minced lemongrass",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "five-spice powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable or mushroom stock powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "vegetable oil, for brushing, plus more if needed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "crushed roasted peanuts, for garnish",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegan fish dipping sauce, for serving",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "In a large bowl, mash tofu blocks with a fork into fine crumbles.",
+    "Cut 5 wild betel leaves into fine strips and add to the tofu, along with mushrooms, lemongrass, five-spice powder, salt, stock powder, and sugar. Mix well and set aside for 15 minutes.",
+    "Place a wild betel leaf, shiny side down, on your work surface with the tip of the leaf at the top. Place 1 tablespoon of filling near the tip. Starting from the tip, roll tightly into a cigar shape. When you reach the stem end, use a toothpick to punch a hole in the middle of the roll. Insert the leaf stem into the hole to secure. Repeat with remaining leaves and filling.",
+    "Brush the rolls all over with vegetable oil. Place them on grilling skewers, 5 rolls per skewer, working with one roll at a time, with the skewer going through the stem in the center.",
+    "Grill on an outdoor charcoal grill until leaves start to wrinkle (about 10 minutes), flipping and brushing with more oil about halfway through. Alternatively, bake them in the oven at 350°F (175°C) until the leaves start to wrinkle (15 to 20 minutes, flipping and brushing with more oil about halfway through). You can also fry the rolls in 3 tablespoons of vegetable oil in a large skillet over medium heat until the leaves start to wrinkle (2 to 3 minutes per side).",
+    "Arrange on a platter, garnish with crushed roasted peanuts, and serve with vegan fish dipping sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

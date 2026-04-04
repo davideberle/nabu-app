@@ -1,0 +1,42 @@
+{
+  "id": "cold-filter-coffee",
+  "name": "COLD FILTER COFFEE",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "You can make this coffee using traditional filter coffee equipment, or you can make a decoction of filter coffee powder in a vessel along with some water. The coffee decoction is frozen in an ice tray and used for this recipe.",
+  "ingredients": [
+    {
+      "item": "filter coffee",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "thick coconut milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cubes of ice cubes",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Put the filter coffee on the top level of the filter coffee equipment.",
+    "Pour ¾ cup of hot water on it and allow it to rest for 5 minutes until the coffee decoction drips down to the lower level.",
+    "When the coffee is ready, pour it into an ice tray and freeze it into cubes.",
+    "In a drink shaker, add 5-6 coffee ice cubes, sugar, cinnamon, coconut milk and regular ice cubes. Shake it for 1 minute and serve cold."
+  ],
+  "image": "/recipes/cold-filter-coffee.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

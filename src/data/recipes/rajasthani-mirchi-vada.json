@@ -1,0 +1,75 @@
+{
+  "id": "rajasthani-mirchi-vada",
+  "name": "RAJASTHANI MIRCHI VADA",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Those not-so-spicy, not-so-mild chillies are just perfect for this dish that goes best with garam chai. This is a pakoda, but what makes it a little more mature is the vada-like potato stuffing that the slit chillies are filled with before being batter-fried.",
+  "ingredients": [
+    {
+      "item": "potato (boiled and mashed)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "spicy peanuts (roughly chopped)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dry mango powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seed powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "coriander leaves",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    },
+    {
+      "item": "large green chillies (slit lengthwise)",
+      "amount": "5"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix the potatoes with the spicy peanuts, coriander powder, red chilli powder, dry mango powder, fennel seed powder, chaat masala, lemon juice, coriander leaves and salt. Mash well.",
+    "Fill this mixture into the slit chillies; you may choose to keep the seeds, or discard them.",
+    "In a bowl, mix the chickpea flour with water and whisk to form a thick pancake-like batter.",
+    "Dip the stuffed chillies into this batter and deep fry the vadas in hot oil for 3-4 minutes.",
+    "Serve hot with any chutney."
+  ],
+  "image": "/recipes/rajasthani-mirchi-vada.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

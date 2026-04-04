@@ -1,0 +1,50 @@
+{
+  "id": "spicy-cassava-fritters",
+  "name": "SPICY CASSAVA FRITTERS",
+  "source": {
+    "cookbook": "Vegan Vietnamese",
+    "author": "Helen Le"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "cassava roots, peeled, soaked, and grated (see here), or frozen grated cassava, thawed",
+      "amount": "1 pound (454 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 to 2 teaspoons"
+    },
+    {
+      "item": "chopped scallion",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "all-purpose flour (see Note)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vegetable oil, for deep-frying",
+      "amount": "2 cups (480 ml)"
+    }
+  ],
+  "method": [
+    "In a large bowl, combine the grated cassava, salt, sugar, chili powder, scallion, and flour, and mix well.",
+    "Grab a pinch (about 1 tablespoon) of the paste and roll it between your palms to shape into an oval cocoon that is about 2 inches (5 cm) long and 1 inch (2.5 cm) thick in the middle. Repeat with remaining paste.",
+    "In a small saucepan or a wok, heat the oil over medium heat until it reaches 320°F (160°C) on a cooking thermometer. (You can also dip the pointy end of a wooden chopstick into the oil; if a steady stream of tiny bubbles appears around it, the oil is ready.)",
+    "Gently drop in the cassava cocoons and fry in batches, turning often, until golden brown (about 15 minutes). With a wire spider or slotted spoon, transfer fritters to a cooling rack or paper towel–lined plate to drain.",
+    "Serve within 1 hour after frying. You can store any leftovers in an airtight container and re-fry them whenever you are ready to serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

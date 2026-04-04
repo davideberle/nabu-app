@@ -1,0 +1,66 @@
+{
+  "id": "inji-puli",
+  "name": "INJI PULI",
+  "source": {
+    "cookbook": "The Indian Vegan",
+    "author": "Sonal Ved"
+  },
+  "intro": "Eat it with the gravies from the book and some fluffy rice or with rotis—either way, this Kerala-style side that falls somewhere between a chutney and a pickle is magical.",
+  "ingredients": [
+    {
+      "item": "gingelly oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried red chillies (cut into two)",
+      "amount": "2"
+    },
+    {
+      "item": "10–12 curry leaves",
+      "amount": ""
+    },
+    {
+      "item": "asafoetida",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "turmeric powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ginger (finely chopped)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green chillies (finely chopped)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "½ cup"
+    },
+    {
+      "item": "jaggery",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Salt as per taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan, heat the oil and add the mustard seeds. Once they begin to crackle, add the dried red chillies, curry leaves, asafoetida and turmeric powder and stir well.",
+    "Add the ginger and green chillies and sauté them for 2-3 minutes on low flame.",
+    "Add the tamarind paste and stir well.",
+    "Meanwhile, in another pan, melt the jaggery and add it to the tempered tamarind. Adjust the salt and allow the chutney to cool to room temperature."
+  ],
+  "image": "/recipes/inji-puli.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

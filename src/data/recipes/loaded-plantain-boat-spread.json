@@ -1,0 +1,78 @@
+{
+  "id": "loaded-plantain-boat-spread",
+  "name": "LOADED PLANTAIN BOAT SPREAD",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4",
+  "time": "35 MINUTE",
+  "intro": "I love a good spread. This plantain boat recipe gives everyone their own individual roasted plantain to load up, adding the combinations of flavours that they want. It’s stress-free as it all comes together on a single baking sheet, giving you time to enjoy a relaxed hosting experience.",
+  "ingredients": [
+    {
+      "item": "soy sauce",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "thyme leaves",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic clove, very finely chopped or 1 teaspoon of garlic granules",
+      "amount": "1"
+    },
+    {
+      "item": "oyster mushrooms, torn into shreds",
+      "amount": "400 g (14 oz)"
+    },
+    {
+      "item": "onion, sliced into half-moons",
+      "amount": "1"
+    },
+    {
+      "item": "plantains",
+      "amount": "4"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "grated vegan cheese",
+      "amount": ""
+    },
+    {
+      "item": "non-dairy sour cream",
+      "amount": ""
+    },
+    {
+      "item": "smashed avocado",
+      "amount": ""
+    },
+    {
+      "item": "hummus",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180°C (400°F/gas 6) and line a baking sheet with baking parchment.",
+    "In a bowl, mix together the soy sauce, balsamic vinegar, 2 tablespoons of the olive oil, the thyme leaves, smoked paprika, garlic and salt and pepper. Put the oyster mushrooms and onion on one half of the baking sheet and pour over the marinade. Mix to coat, then set aside.",
+    "Pierce the plantains with a knife or fork and place on the sheet alongside the mushrooms. Bake in the oven for 25 minutes, then slice the plantains through the skin down the middle, exposing the flesh. Brush with the remaining olive oil and cook for a further 10 minutes. Stuff the plantains with the mushrooms and onions and serve with the toppings of your choice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

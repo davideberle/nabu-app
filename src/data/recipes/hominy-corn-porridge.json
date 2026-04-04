@@ -1,0 +1,67 @@
+{
+  "id": "hominy-corn-porridge",
+  "name": "HOMINY CORN PORRIDGE",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore"
+  },
+  "servings": "serves 4–6",
+  "time": "1 HOUR 20 MINUTE",
+  "intro": "Jamaican porridge is one of my favourite things in the world. From polenta (cornmeal) porridge or green banana porridge to hominy corn, as soon as the winter months come by, I make myself a bowl of Jamaican porridge and I feel safe. Hominy corn porridge is my favourite. My grandma always made it for me when she lived in Sheﬃeld and the smell of it simply brings me back to her. In many ways, this is a homage to her. Except for the vegan dairy replacements, this recipe is very similar to how I remember her making it.",
+  "ingredients": [
+    {
+      "item": "dried yellow hominy corn",
+      "amount": "200 g (7 oz/generous 1 cup)"
+    },
+    {
+      "item": "1.5 litres (50 fl oz/6½ cups) water",
+      "amount": ""
+    },
+    {
+      "item": "generous pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "coconut sugar or brown sugar, plus extra to serve",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "400 ml (13 fl oz/1½ cups)"
+    },
+    {
+      "item": "soya milk",
+      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+    },
+    {
+      "item": "freshly grated nutmeg, to taste",
+      "amount": ""
+    },
+    {
+      "item": "condensed coconut milk, to sweeten",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "The day before, put the dried hominy into a bowl, cover with cold water and leave to soak overnight.",
+    "The next day, drain and rinse the hominy and put it in a saucepan with the water, salt and sugar. Bring to the boil, then add the cinnamon sticks, bay leaf and vanilla extract. Boil for 5 minutes then reduce the heat to a simmer and cover with a lid. Cook for about 65 minutes, stirring occasionally, until very soft.",
+    "Add the coconut milk and bring back to the boil, then boil for 5 minutes. Transfer a third of the mixture to a high-speed blender and blend until smotth. This is to thicken the porridge. Add back to the porridge, along with the soya milk. Simmer for 5 more minutes until thickened.",
+    "Grate a generous amount of nutmeg into the porridge and sweeten to taste with condensed coconut milk, coconut sugar or brown sugar. Serve in bowls with some more grated nutmeg on top."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
