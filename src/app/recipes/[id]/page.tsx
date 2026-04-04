@@ -27,11 +27,12 @@ export default async function RecipePage({
   let currentItems: typeof recipe.ingredients = [];
 
   for (const ing of recipe.ingredients) {
-    if (ing.group !== currentGroup) {
+    const group = ing.group || null;
+    if (group !== currentGroup) {
       if (currentItems.length > 0) {
         ingredientGroups.push({ name: currentGroup, items: currentItems });
       }
-      currentGroup = ing.group || null;
+      currentGroup = group;
       currentItems = [ing];
     } else {
       currentItems.push(ing);
@@ -42,7 +43,7 @@ export default async function RecipePage({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="min-h-screen bg-stone-100 dark:bg-stone-950">
       {/* Back button */}
       <div className="fixed top-4 left-4 z-10">
         <Link
@@ -53,41 +54,36 @@ export default async function RecipePage({
         </Link>
       </div>
 
-      {/* Hero image */}
+      {/* Hero image - full bleed, larger */}
       {recipe.image && (
-        <div className="relative h-[50vh] w-full">
+        <div className="relative h-[60vh] w-full">
           <Image
             src={recipe.image}
             alt={recipe.name}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
         </div>
       )}
 
-      <main className="relative max-w-2xl mx-auto px-6 -mt-32 pb-16">
-        <article className="bg-white dark:bg-stone-900 rounded-2xl shadow-xl overflow-hidden">
+      <main className="relative max-w-2xl mx-auto px-4 -mt-16 pb-16">
+        <article className="bg-white dark:bg-stone-900 rounded-t-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <header className="px-6 pt-8 pb-6 border-b border-stone-100 dark:border-stone-800">
+          <header className="px-6 pt-8 pb-6">
+            {/* Source line */}
+            <p className="text-sm text-stone-500 dark:text-stone-400 mb-2">
+              {recipe.source.author} · {recipe.source.cookbook}
+            </p>
+            
             <h1 className="text-2xl md:text-3xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-tight">
               {recipe.name}
             </h1>
-            <div className="flex items-center gap-2 mt-3 text-sm text-stone-500 dark:text-stone-400">
-              <span>{recipe.source.cookbook}</span>
-              {recipe.source.page && (
-                <>
-                  <span>•</span>
-                  <span>p. {recipe.source.page}</span>
-                </>
-              )}
-            </div>
             
             {/* Quick facts */}
             <div className="flex items-center gap-4 mt-4 text-sm text-stone-600 dark:text-stone-400">
-              <span>{recipe.servings}</span>
-              <span>•</span>
+              <span className="capitalize">{recipe.servings}</span>
+              <span className="text-stone-300 dark:text-stone-600">|</span>
               <span>{recipe.time.total} minutes</span>
             </div>
 
@@ -106,7 +102,7 @@ export default async function RecipePage({
 
           {/* Introduction - Chef's voice */}
           {recipe.introduction && (
-            <section className="px-6 py-6 bg-stone-50 dark:bg-stone-800/50">
+            <section className="px-6 py-6 bg-stone-50 dark:bg-stone-800/50 border-y border-stone-100 dark:border-stone-800">
               <p className="text-stone-600 dark:text-stone-400 font-serif italic leading-relaxed whitespace-pre-line">
                 {recipe.introduction}
               </p>
@@ -114,25 +110,30 @@ export default async function RecipePage({
           )}
 
           {/* Ingredients */}
-          <section className="px-6 py-6 border-b border-stone-100 dark:border-stone-800">
+          <section className="px-6 py-6">
             <h2 className="text-lg font-medium text-stone-900 dark:text-stone-100 mb-4">
               Ingredients
             </h2>
             
             {ingredientGroups.map((group, groupIndex) => (
-              <div key={groupIndex} className={groupIndex > 0 ? "mt-4" : ""}>
+              <div key={groupIndex} className={groupIndex > 0 ? "mt-5" : ""}>
                 {group.name && (
-                  <h3 className="text-sm font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-2">
+                  <h3 className="text-sm font-medium text-amber-700 dark:text-amber-400 uppercase tracking-wide mb-2">
                     {group.name}
                   </h3>
                 )}
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {group.items.map((ing, i) => (
                     <li
                       key={i}
-                      className="flex justify-between items-baseline text-stone-700 dark:text-stone-300"
+                      className="flex justify-between items-baseline py-1 border-b border-stone-100 dark:border-stone-800 last:border-0"
                     >
-                      <span className="font-serif">{ing.original}</span>
+                      <span className="text-stone-800 dark:text-stone-200">
+                        {ing.item}
+                      </span>
+                      <span className="text-stone-500 dark:text-stone-400 text-sm ml-4 whitespace-nowrap">
+                        {ing.amount}{ing.unit && ` ${ing.unit}`}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -141,17 +142,17 @@ export default async function RecipePage({
           </section>
 
           {/* Method */}
-          <section className="px-6 py-6 border-b border-stone-100 dark:border-stone-800">
+          <section className="px-6 py-6 border-t border-stone-100 dark:border-stone-800">
             <h2 className="text-lg font-medium text-stone-900 dark:text-stone-100 mb-4">
               Method
             </h2>
-            <ol className="space-y-6">
+            <ol className="space-y-5">
               {recipe.method.map((step, i) => (
                 <li key={i} className="flex gap-4">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 flex items-center justify-center text-sm font-medium">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 flex items-center justify-center text-sm font-medium">
                     {i + 1}
                   </span>
-                  <p className="text-stone-700 dark:text-stone-300 font-serif leading-relaxed pt-0.5">
+                  <p className="text-stone-700 dark:text-stone-300 leading-relaxed pt-0.5">
                     {step}
                   </p>
                 </li>
@@ -161,9 +162,10 @@ export default async function RecipePage({
 
           {/* Serving suggestions */}
           {recipe.serving && (
-            <section className="px-6 py-4 bg-amber-50/50 dark:bg-amber-900/10">
-              <p className="text-sm text-stone-600 dark:text-stone-400 font-serif italic">
-                <span className="font-medium not-italic">To serve:</span> {recipe.serving}
+            <section className="px-6 py-4 bg-amber-50/50 dark:bg-amber-900/10 border-t border-stone-100 dark:border-stone-800">
+              <p className="text-sm text-stone-600 dark:text-stone-400">
+                <span className="font-medium text-amber-700 dark:text-amber-400">To serve:</span>{" "}
+                {recipe.serving}
               </p>
             </section>
           )}
@@ -176,8 +178,7 @@ export default async function RecipePage({
                 {recipe.related_recipes.map((rel, i) => (
                   <span key={i}>
                     {i > 0 && ", "}
-                    {rel.name}
-                    {rel.page && <span className="text-stone-400"> (p. {rel.page})</span>}
+                    <span className="text-amber-700 dark:text-amber-400">{rel.name}</span>
                   </span>
                 ))}
               </p>
@@ -185,26 +186,25 @@ export default async function RecipePage({
           )}
 
           {/* Footer - dietary tags */}
-          <footer className="px-6 py-4 bg-stone-50 dark:bg-stone-800/30 flex items-center justify-between">
-            <div className="flex gap-2 flex-wrap">
-              {recipe.tags.dietary.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-2 py-0.5 bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400 rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <span className="text-xs text-stone-400 dark:text-stone-500">
-              {recipe.source.author}
-            </span>
-          </footer>
+          {recipe.tags.dietary.length > 0 && (
+            <footer className="px-6 py-4 bg-stone-50 dark:bg-stone-800/30 border-t border-stone-100 dark:border-stone-800">
+              <div className="flex gap-2 flex-wrap">
+                {recipe.tags.dietary.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-2 py-0.5 bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400 rounded"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </footer>
+          )}
         </article>
 
         {/* Actions */}
         <div className="mt-6 flex gap-3">
-          <button className="flex-1 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-xl text-center transition-colors">
+          <button className="flex-1 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-xl text-center transition-colors shadow-lg">
             Start Cooking
           </button>
         </div>

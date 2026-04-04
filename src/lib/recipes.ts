@@ -54,19 +54,16 @@ export const recipes: Recipe[] = [
     servings: "serves 4",
     time: { prep: 15, cook: 35, total: 50 },
     ingredients: [
-      { item: "saffron threads", amount: "1", unit: "small pinch", original: "a small pinch of saffron threads", group: "Saffron yogurt" },
-      { item: "hot water", amount: "45", unit: "ml", original: "3 tbsp hot water", group: "Saffron yogurt" },
+      { item: "saffron threads", amount: "a small pinch", unit: "", original: "a small pinch of saffron threads", group: "Saffron yogurt" },
+      { item: "hot water", amount: "3", unit: "tbsp", original: "3 tbsp hot water", group: "Saffron yogurt" },
       { item: "Greek yogurt", amount: "180", unit: "g", original: "¾ cup / 180 g Greek yogurt", group: "Saffron yogurt" },
-      { item: "garlic", amount: "1", unit: "clove", original: "1 clove garlic, crushed", group: "Saffron yogurt" },
-      { item: "lemon juice", amount: "2.5", unit: "tbsp", original: "2½ tbsp lemon juice", group: "Saffron yogurt" },
+      { item: "garlic, crushed", amount: "1", unit: "clove", original: "1 clove garlic, crushed", group: "Saffron yogurt" },
+      { item: "lemon juice", amount: "2½", unit: "tbsp", original: "2½ tbsp lemon juice", group: "Saffron yogurt" },
       { item: "olive oil", amount: "3", unit: "tbsp", original: "3 tbsp olive oil", group: "Saffron yogurt" },
-      { item: "coarse sea salt", amount: "", unit: "", original: "coarse sea salt", group: "Saffron yogurt" },
-      { item: "eggplants", amount: "3", unit: "medium", original: "3 medium eggplants, cut into slices ¾ inch / 2 cm thick, or into wedges" },
-      { item: "olive oil", amount: "", unit: "", original: "olive oil for brushing" },
-      { item: "pine nuts", amount: "2", unit: "tbsp", original: "2 tbsp toasted pine nuts" },
-      { item: "pomegranate seeds", amount: "1", unit: "handful", original: "a handful of pomegranate seeds" },
-      { item: "basil leaves", amount: "20", unit: "", original: "20 basil leaves" },
-      { item: "salt and pepper", amount: "", unit: "", original: "coarse sea salt and freshly ground black pepper" }
+      { item: "eggplants, sliced 2 cm thick", amount: "3", unit: "medium", original: "3 medium eggplants, cut into slices 2 cm thick", group: "Eggplant" },
+      { item: "pine nuts, toasted", amount: "2", unit: "tbsp", original: "2 tbsp toasted pine nuts", group: "To finish" },
+      { item: "pomegranate seeds", amount: "a handful", unit: "", original: "a handful of pomegranate seeds", group: "To finish" },
+      { item: "basil leaves", amount: "20", unit: "", original: "20 basil leaves", group: "To finish" }
     ],
     method: [
       "To make the sauce, infuse the saffron in the hot water in a small bowl for 5 minutes. Pour the infusion into a bowl containing the yogurt, garlic, lemon juice, olive oil, and some salt. Whisk well to get a smooth, golden sauce. Taste and adjust the salt, if necessary, then chill. This sauce will keep well in the fridge for up to 3 days.",
