@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auth, signOut } from "@/auth";
 
 const tiles = [
   {
@@ -35,7 +36,9 @@ const tiles = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       {/* Header */}
@@ -47,8 +50,23 @@ export default function Home() {
               Nabu
             </h1>
           </div>
-          <div className="text-sm text-zinc-500 dark:text-zinc-400">
-            David&apos;s Dashboard
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {session?.user?.name}
+            </span>
+            <form
+              action={async () => {
+                "use server";
+                await signOut({ redirectTo: "/login" });
+              }}
+            >
+              <button
+                type="submit"
+                className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                Sign out
+              </button>
+            </form>
           </div>
         </div>
       </header>
