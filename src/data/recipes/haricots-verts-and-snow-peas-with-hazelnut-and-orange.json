@@ -1,0 +1,89 @@
+{
+  "id": "haricots-verts-and-snow-peas-with-hazelnut-and-orange",
+  "name": "Haricots verts and snow peas with hazelnut and orange",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4 as a starter",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "pink peppercorns, plus extra to garnish",
+      "original": "1 tbsp pink peppercorns, plus extra to garnish",
+      "group": null
+    },
+    {
+      "amount": "125",
+      "unit": "ml",
+      "item": "white wine",
+      "original": "½ cup / 125 ml white wine",
+      "group": null
+    },
+    {
+      "amount": "60",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "4 tbsp / 60 ml olive oil",
+      "group": null
+    },
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "shelled fava beans",
+      "original": "1⅔ cups / 250 g shelled fava beans",
+      "group": null
+    },
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "shelled peas",
+      "original": "1⅔ cups / 250 g shelled peas",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "bunch flat-leaf parsley, coarsely chopped",
+      "original": "1 bunch flat-leaf parsley, coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C. Juice the lemons and discard all but 2 of the empty lemon halves.",
+    "To clean the artichokes, cut off most of the stalk and start removing the tough outer leaves by hand. Once you reach the softer leaves, take a sharp serrated knife and trim off 3/8 to ¾ inch / 1 to 2 cm from the top of the artichoke. Cut the artichoke in half lengthwise so you can reach the heart and scrape it clean. Use a small, sharp knife to remove all the “hairs.” Immediately rub the heart with a little lemon juice to prevent discoloring. Cut each artichoke half into slices ¼ inch / 5 mm thick. Place in cold water and stir in half the remaining lemon juice.",
+    "Drain the artichoke slices and spread them on a baking sheet. Add the remaining lemon juice, the 2 reserved lemon halves, bay leaves, thyme, garlic, peppercorns, wine, and oil. Cover with aluminum foil and bake for 45 to 60 minutes, or until the artichokes are tender. Remove from the oven, take off the foil, and let the artichokes cool.",
+    "Fill a large saucepan with plenty of cold water and bring to a boil. Add the fava beans and peas and blanch for 2 minutes, then drain in a colander and run under cold water to refresh. Leave in the colander to dry. If the fava beans are large and have tough skins, you may want to remove them. Simply press each one gently with your fingertips until the bean pops out.",
+    "Remove the lemon halves from the artichokes. Mix the artichokes with the beans, peas, and parsley and stir in the lemon slices. Taste for salt and pepper, sprinkle with peppercorns, and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/haricots-verts-and-snow-peas-with-hazelnut-and-orange.jpg"
+}

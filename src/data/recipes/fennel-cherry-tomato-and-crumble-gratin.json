@@ -1,0 +1,64 @@
+{
+  "id": "fennel-cherry-tomato-and-crumble-gratin",
+  "name": "Fennel, cherry tomato, and crumble gratin",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6 to 8",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "⅓",
+      "unit": "",
+      "item": "recipe Crumble",
+      "original": "⅓ recipe Crumble",
+      "group": null
+    },
+    {
+      "amount": "100",
+      "unit": "g",
+      "item": "Parmesan cheese, freshly grated",
+      "original": "3½ oz / 100 g Parmesan cheese, freshly grated",
+      "group": null
+    },
+    {
+      "amount": "300",
+      "unit": "g",
+      "item": "cherry tomatoes, on the vine",
+      "original": "10½ oz / 300 g cherry tomatoes, on the vine",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "1 tsp chopped flat-leaf parsley",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C. Trim off the fennel stalks and cut each bulb in half lengthwise. Cut each half into slices ⅔ inch / 1.5 cm thick. Place in a large bowl with the olive oil, thyme leaves, garlic, salt, and pepper and toss together. Transfer to an ovenproof dish and pour the cream over the fennel. Mix the crumble with the grated Parmesan and scatter evenly on top.",
+    "Cover the dish with aluminum foil and bake for 45 minutes. Remove the aluminum foil and arrange the tomatoes on top. You can leave some on the vine and scatter some loose. Scatter a few thyme sprigs on top. Return to the oven and bake for another 15 minutes. By now the fennel should feel soft when poked with a knife and the gratin should have a nice golden color. Remove from the oven and allow to rest for a few minutes. Sprinkle the chopped parsley over and serve hot or warm."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/fennel-cherry-tomato-and-crumble-gratin.jpg"
+}

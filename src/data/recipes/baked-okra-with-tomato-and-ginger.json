@@ -1,0 +1,69 @@
+{
+  "id": "baked-okra-with-tomato-and-ginger",
+  "name": "Baked okra with tomato and ginger",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "pomegranate molasses",
+      "original": "1½ tsp pomegranate molasses",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "3 tbsp lemon juice",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "coarsely chopped flat-leaf parsley",
+      "original": "1 tbsp coarsely chopped flat-leaf parsley",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 220°C. Trim the top and bottom off the butternut squash and cut it in half lengthwise. Remove the seeds using a small knife or a spoon. Cut each half into wedges ¾ to 1¼ inches / 2 to 3 cm thick. Arrange the wedges on a baking sheet, standing them up with the skin underneath if possible. Brush with half the olive oil and season generously with salt and pepper. Place in the oven for 25 to 30 minutes, by which time the wedges should be tender and slightly browned. Leave to cool.",
+    "Reduce the oven temperature to 180°C. Scatter the seeds and almonds on a baking sheet and toast for 8 to 10 minutes, until lightly browned. Leave to cool.",
+    "For the sauce, place the eggplant directly on a medium flame on a gas burner or your stove top (you might want to cover the base of the burner with aluminum foil before you begin). Burn the eggplant for 12 to 15 minutes, until the skin dries and cracks and smoky aromas are released. Turn it around occasionally, using metal tongs. Remove from the heat and leave to cool slightly. (Alternatively, you can place the eggplant under a very hot broiler for about an hour, turning it around occasionally; continue until well shriveled on the outside, even if it bursts.)",
+    "Make a long cut through the eggplant. Using a spoon, scoop out the soft flesh while avoiding most of the burnt skin. Drain in a colander for 10 minutes, then transfer to a board and chop coarsely.",
+    "In a mixing bowl, stir together the eggplant flesh, yogurt, oil, pomegranate molasses, lemon juice, parsley, and garlic. Taste and season with salt and pepper. It should be sweetly sharp and highly flavorful.",
+    "Arrange the squash wedges on a serving platter, piling them up on top of one another. Drizzle with the remaining olive oil, sprinkle the nuts and seeds over the top, and garnish with the basil. Serve the sauce on the side."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,99 @@
+{
+  "id": "sweet-potato-galettes",
+  "name": "Sweet potato galettes",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "puff pastry or ½ recipe Rough puff pastry",
+      "original": "9 oz / 250 g puff pastry or ½ recipe Rough puff pastry",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "free-range egg, lightly beaten",
+      "original": "1 free-range egg, lightly beaten",
+      "group": null
+    },
+    {
+      "amount": "100",
+      "unit": "ml",
+      "item": "sour cream",
+      "original": "6½ tbsp / 100 ml sour cream",
+      "group": null
+    },
+    {
+      "amount": "3½",
+      "unit": "tbsp",
+      "item": "/ 100 g aged goat cheese",
+      "original": "3½ tbsp / 100 g aged goat cheese",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "pumpkin seeds",
+      "original": "2 tbsp pumpkin seeds",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "medium",
+      "item": "-hot chile, finely chopped",
+      "original": "1 medium-hot chile, finely chopped",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "1 tbsp olive oil",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "2 tsp chopped flat-leaf parsley",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C. Bake the sweet potatoes in their skins for 35 to 45 minutes, until they soften up but are still slightly raw in the center (check by inserting a small knife). Leave until cool enough to handle, then peel and cut into slices ⅛ inch / 3 mm thick.",
+    "While the sweet potatoes are in the oven, roll out the puff pastry to about 0 cm / 2 mm thick on a lightly floured work surface. Cut out four 2¾ by 5½-inch / 7 by 14-cm rectangles and prick them all over with a fork. Line a small baking sheet with parchment paper, place the pastry rectangles on it, well spaced apart, and leave to rest in the fridge for at least half an hour.",
+    "Remove the pastry from the fridge and brush lightly with the beaten egg. Using an icing spatula, spread a thin layer of sour cream on the pastries, leaving a ¼-inch / 5-mm border all round. Arrange the potato slices on the pastry, slightly overlapping, keeping the border clear. Season with salt and pepper, crumble the goat cheese on top, and sprinkle with the pumpkin seeds and chile. Bake for 20 to 25 minutes, until the pastry is cooked through. Check underneath; it should be golden brown.",
+    "While the galettes are cooking, stir together the olive oil, garlic, parsley, and a pinch of salt. As soon as the pastries come out of the oven, brush them with this mixture. Serve warm or at room temperature."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/sweet-potato-galettes.jpg"
+}

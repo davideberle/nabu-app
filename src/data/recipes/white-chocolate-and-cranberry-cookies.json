@@ -1,0 +1,100 @@
+{
+  "id": "white-chocolate-and-cranberry-cookies",
+  "name": "White chocolate and cranberry cookies",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes about 20",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "220",
+      "unit": "g",
+      "item": "raspberry jam, store-bought or homemade",
+      "original": "¾ cup / 220 g raspberry jam, store-bought or homemade",
+      "group": null
+    },
+    {
+      "amount": "70",
+      "unit": "g",
+      "item": "sliced almonds",
+      "original": "¾ cup / 70 g sliced almonds",
+      "group": "Topping"
+    },
+    {
+      "amount": "70",
+      "unit": "g",
+      "item": "pecans, coarsely chopped",
+      "original": "¾ cup / 70 g pecans, coarsely chopped",
+      "group": "Topping"
+    },
+    {
+      "amount": "70",
+      "unit": "g",
+      "item": "hazelnuts, coarsely chopped",
+      "original": "½ cup / 70 g hazelnuts, coarsely chopped",
+      "group": "Topping"
+    },
+    {
+      "amount": "70",
+      "unit": "g",
+      "item": "Brazil nuts, coarsely chopped",
+      "original": "½ cup / 70 g Brazil nuts, coarsely chopped",
+      "group": "Topping"
+    },
+    {
+      "amount": "6½",
+      "unit": "tbsp",
+      "item": "/ 100 g unsalted butter",
+      "original": "6½ tbsp / 100 g unsalted butter",
+      "group": "Topping"
+    },
+    {
+      "amount": "6",
+      "unit": "tbsp",
+      "item": "/ 75 g superfine sugar",
+      "original": "6 tbsp / 75 g superfine sugar",
+      "group": "Topping"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "plus 2 tsp / 40 ml milk",
+      "original": "2 tbsp plus 2 tsp / 40 ml milk",
+      "group": "Topping"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "vanilla extract",
+      "original": "1 tsp vanilla extract",
+      "group": "Topping"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 170°C. Lightly grease an 8-inch / 20-cm square pan and line it with parchment paper.",
+    "To make the base, sift together the flour and baking powder. Add the butter, sugar, and salt and rub everything together with your fingertips to form crumbs. Stir in the oats. Spread this mixture over the bottom of the prepared pan; don’t press down too much, so the base remains light. Bake for 20 minutes, until light brown. Remove from the oven and allow to cool a little, then spread with the jam.",
+    "To make the topping, place all the nuts in a large bowl. In a small saucepan, heat the butter, sugar, milk, and vanilla. Stir until the sugar has dissolved, then pour the mixture over the chopped nuts and stir together. Pack the nut mix evenly over the jam and return the pan to the oven for 30 minutes, until the nuts have turned a nice golden brown.",
+    "Leave to cool, then remove from the pan and slice into bars or squares."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/white-chocolate-and-cranberry-cookies.jpg"
+}

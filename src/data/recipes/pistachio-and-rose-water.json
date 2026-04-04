@@ -1,0 +1,54 @@
+{
+  "id": "pistachio-and-rose-water",
+  "name": "Pistachio and rose water",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "rose water",
+      "original": "2 tsp rose water",
+      "group": null
+    },
+    {
+      "amount": "60",
+      "unit": "g",
+      "item": "pistachio nuts, finely chopped",
+      "original": "½ cup / 60 g pistachio nuts, finely chopped",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C. Spread the sugar evenly over a large baking sheet lined with parchment paper. Place the pan in the oven for about 8 minutes, until the sugar is hot (over 100°C). You should be able to see it beginning to dissolve at the edges.",
+    "While the sugar is in the oven, place the egg whites in the bowl of a stand mixer fitted with the whisk attachment. When the sugar is almost ready, start the machine on high speed and let it work for a minute or so, until the whites just begin to froth up.",
+    "Carefully pour the sugar slowly onto the whisking whites. Once it has all been added, add the rose water and continue whisking on high speed for 10 minutes, until the meringue is cold. At this point, it should keep its shape when you lift a bit from the bowl and look homogenously silky (you can now taste the mixture and fold in some more rose water if you want a more distinctive rose flavor).",
+    "Turn down the oven temperature to 110°C. To shape the meringues, line a baking sheet (or 2, depending on their size) with parchment paper, sticking it firmly to the pan with a bit of meringue. Spread the pistachios on a flat plate.",
+    "Have ready 2 large kitchen spoons. Use one of them to scoop up a big dollop of meringue, the size of a medium apple, then use the other spoon to scrape it off onto the plate of pistachios. Roll the meringue so it is covered with nuts on one side and then gently place it on the lined baking tray. Repeat to make more meringues, spacing them well apart on the tray. Remember, the meringues will almost double in size in the oven.",
+    "Place in the oven and leave there for about 2 hours. Check if they are done by lifting them from the pan and gently prodding to make sure the outside is completely firm and the center is still a little soft. Remove from the oven and leave to cool. The meringues will keep in a dry place, at room temperature, for quite a few days."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/pistachio-and-rose-water.jpg"
+}

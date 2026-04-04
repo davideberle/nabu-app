@@ -1,0 +1,109 @@
+{
+  "id": "grilled-broccoli-with-chile-and-garlic",
+  "name": "Grilled broccoli with chile and garlic",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4 as a starter",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "juice of 2½ lemons",
+      "unit": "",
+      "item": "juice of 2½ lemons",
+      "original": "juice of 2½ lemons",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "salsify (or scorzonera) roots",
+      "original": "4 salsify (or scorzonera) roots",
+      "group": null
+    },
+    {
+      "amount": "400",
+      "unit": "g",
+      "item": "trimmed purple sprouting broccoli (about 1⅓ lb / 600 g before trimming)",
+      "original": "14 oz / 400 g trimmed purple sprouting broccoli (about 1⅓ lb / 600 g before trimming)",
+      "group": null
+    },
+    {
+      "amount": "7",
+      "unit": "tbsp",
+      "item": "/ 100 g cold unsalted butter",
+      "original": "7 tbsp / 100 g cold unsalted butter",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "baby capers, drained",
+      "original": "2 tbsp baby capers, drained",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped chives",
+      "original": "2 tbsp finely chopped chives",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped flat-leaf parsley",
+      "original": "2 tbsp finely chopped flat-leaf parsley",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped tarragon",
+      "original": "2 tbsp finely chopped tarragon",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "coarsely chopped dill",
+      "original": "2 tbsp coarsely chopped dill",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "Bring a pan of salted water to a boil with 2 tablespoons of the lemon juice. Peel the salsify and cut each one into 3 batons. Add to the boiling water and simmer for 10 minutes, until al dente. Remove from the water with a slotted spoon and allow to cool a little. Cut each baton in half lengthwise and then the same way again.",
+    "Simmer the broccoli in the same water for 3 minutes, until slightly tenderized, then drain and keep warm. (You can stop at this stage and do the rest just before serving; if you choose to do this, you will need to refresh the broccoli under cold water after draining and then reheat it before serving by quickly tossing it with a little oil in a small pan.)",
+    "Heat half the butter in a frying pan over medium heat. When it is foaming, add the salsify and fry until golden brown. Season with salt and pepper, then remove from the pan and arrange on serving plates with the broccoli. Give it height by shaping it like a pyramid. Keep in a warm place.",
+    "To make the caper butter sauce, reheat the frying pan until nearly smoking. Throw in the remaining butter and cook it from gold to a nut brown. Be brave! When you reach the right color, take the pan off the heat and gently pour in the remaining lemon juice. Be careful; it will spit. Throw in the capers and herbs and season well.",
+    "Immediately pour the caper butter over the arranged vegetables and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/grilled-broccoli-with-chile-and-garlic.jpg"
+}

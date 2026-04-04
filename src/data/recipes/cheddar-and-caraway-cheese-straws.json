@@ -1,0 +1,65 @@
+{
+  "id": "cheddar-and-caraway-cheese-straws",
+  "name": "Cheddar and caraway cheese straws",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes 2 small loaves (serves 4 to 6)",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "300",
+      "unit": "g",
+      "item": "puff pastry, or ½ recipe Rough puff pastry",
+      "original": "10½ oz / 300 g puff pastry, or ½ recipe Rough puff pastry",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "free-range egg, lightly beaten",
+      "original": "1 free-range egg, lightly beaten",
+      "group": null
+    },
+    {
+      "amount": "100",
+      "unit": "g",
+      "item": "aged Cheddar cheese, finely grated",
+      "original": "3½ oz / 100 g aged Cheddar cheese, finely grated",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "caraway seeds",
+      "original": "1 tsp caraway seeds",
+      "group": null
+    }
+  ],
+  "method": [
+    "Dust a work surface lightly with flour and roll out the pastry into a rectangle 1/16 to ⅛ inch / 2 to 3 mm thick. Trim the edges with a sharp knife in order to get a perfect rectangle, about 12 by 20 cm / 30 by 20 cm. Place on a baking sheet dusted with flour and leave to rest in the fridge for 30 minutes.",
+    "Return the pastry sheet to the dusted work surface. Brush off any flour and then brush the top with the beaten egg and sprinkle over half the cheese. Press the cheese down lightly with your hands so it sticks to the pastry. Be brisk so that you don’t warm up the butter in the pastry. Carefully turn the pastry over, brush off any excess flour, and repeat this process on the other side.",
+    "Now cut strips about 1¼ inches / 3 cm wide across the width of the pastry. Pick up a strip holding one end in each hand. Place one end on the work surface and hold still. Twist the other end on the work surface to make a tight spiral form. You will need to pull as you twist to get a long, hollow straw shape.",
+    "Carefully transfer the straws to a baking sheet lined with parchment paper. Space them at least 1¼ inches / 3 cm apart and sprinkle with the caraway seeds. Let them rest in the fridge for at least 30 minutes.",
+    "Preheat the oven to 180°C. Place the pan of cheese straws in the oven and bake for 20 to 25 minutes. Make sure you do not open the oven door for the first 15 minutes. When ready, the straws should be a beautiful light brown. Let them cool slightly before serving."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/cheddar-and-caraway-cheese-straws.jpg"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "sardines-stuffed-with-bulgur-currants-and-pistachios",
+  "name": "Sardines stuffed with bulgur, currants, and pistachios",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "pomegranate molasses",
+      "original": "2 tbsp pomegranate molasses",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "superfine sugar",
+      "original": "1 tsp superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "90",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "6 tbsp / 90 ml olive oil",
+      "group": null
+    },
+    {
+      "amount": "8",
+      "unit": "",
+      "item": "fresh sardines, scaled, boned, and butterflied (see above)",
+      "original": "8 fresh sardines, scaled, boned, and butterflied (see above)",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "lemon wedges, for serving",
+      "original": "4 lemon wedges, for serving",
+      "group": null
+    }
+  ],
+  "method": [
+    "Start with some preparations for the stuffing. Put the bulgur in a bowl, cover it with cold water, and leave to soak for 15 to 20 minutes, until soft. Drain in a fine sieve and squeeze to remove excess moisture. Return to the bowl.",
+    "In a separate bowl, cover the currants with a little warm water and leave to soak for 5 minutes, then drain.",
+    "Preheat the oven to 150°C. Sprinkle the pistachios on a baking sheet and toast in the oven for 10 minutes, until lightly colored. Leave to cool and then chop coarsely.",
+    "Now add the drained currants and the pistachios to the bulgur, together with the lemon zest and juice and parsley (reserving a little parsley for garnish). Stir in the spices, mint, garlic, molasses, sugar, and 5 tablespoons of the olive oil, then season with salt and pepper to taste.",
+    "In a separate bowl, mix the prepared sardines with the remaining 1 tablespoon / 15 ml olive oil and season with a little salt and pepper.",
+    "Turn up the oven to 180°C. To stuff the sardines, lay them, skin side down and with the tail facing away from you, on a cutting board. Spoon a little bit of the bulgur stuffing onto the middle of each fish and fold first the head end over the stuffing and then the tail to form a roll. Carefully push a wooden cocktail pick down through the fish, catching both sides of the fillets. The tail should stick up in the air slightly. Gently press back any mix that is escaping from the sides.",
+    "Arrange the sardines on a baking sheet lined with parchment paper, place in the oven, and roast for 5 to 6 minutes, until just cooked through. Serve hot or at room temperature, accompanied by the lemon wedges and garnished with a little chopped parsley."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/sardines-stuffed-with-bulgur-currants-and-pistachios.jpg"
+}

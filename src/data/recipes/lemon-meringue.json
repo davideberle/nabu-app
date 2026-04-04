@@ -1,0 +1,65 @@
+{
+  "id": "lemon-meringue",
+  "name": "Lemon meringue",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "½",
+      "unit": "",
+      "item": "recipe Lemon curd chilled for at least 6 hours",
+      "original": "½ recipe Lemon curd chilled for at least 6 hours",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "",
+      "item": "prebaked tartlet shells",
+      "original": "6 prebaked tartlet shells",
+      "group": null
+    },
+    {
+      "amount": "½",
+      "unit": "cup",
+      "item": "plus 1½ tbsp / 120 g superfine sugar",
+      "original": "½ cup plus 1½ tbsp / 120 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range egg whites",
+      "original": "2 free-range egg whites",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C. Spoon the cold lemon curd into the tart shells, filling them three-quarters full. Leave aside, preferably in the fridge.",
+    "To make the meringue, spread the sugar on a baking sheet lined with parchment paper. Place in the hot oven for 5 to 6 minutes. The sugar should become very hot but mustn’t begin to dissolve. Remove from the oven and lower the temperature to 150°C.",
+    "At the last minute of heating up the sugar, place the egg whites in the bowl of a stand mixer fitted with the whisk attachment. Whip on high speed for a few seconds, until they begin to froth up. Now carefully pour the hot sugar onto the whisking whites in a slow stream. Once finished, continue whisking for a good 15 minutes, until the meringue is firm, shiny, and cold.",
+    "Use 2 spoons or a piping bag to dispense the meringue on top of the curd and create a pattern. At this point, you can either leave the meringue totally white or you can place it in the oven for 1 to 3 minutes to brown the top very lightly. Serve at once or chill for up to 12 hours."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

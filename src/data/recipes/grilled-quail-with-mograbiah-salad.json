@@ -1,0 +1,176 @@
+{
+  "id": "grilled-quail-with-mograbiah-salad",
+  "name": "Grilled quail with mograbiah salad",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4 generously, or makes 8 tapas-size portions",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "ground cinnamon",
+      "original": "1 tbsp ground cinnamon",
+      "group": "Marinade"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "ground cumin",
+      "original": "2 tbsp ground cumin",
+      "group": "Marinade"
+    },
+    {
+      "amount": "10",
+      "unit": "",
+      "item": "whole cardamom pods",
+      "original": "10 whole cardamom pods",
+      "group": "Marinade"
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "allspice berries",
+      "original": "4 allspice berries",
+      "group": "Marinade"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "ground turmeric",
+      "original": "1 tbsp ground turmeric",
+      "group": "Marinade"
+    },
+    {
+      "amount": "½",
+      "unit": "tbsp",
+      "item": "paprika",
+      "original": "½ tbsp paprika",
+      "group": "Marinade"
+    },
+    {
+      "amount": "pinch of salt",
+      "unit": "",
+      "item": "pinch of salt",
+      "original": "pinch of salt",
+      "group": "Marinade"
+    },
+    {
+      "amount": "4",
+      "unit": "cloves",
+      "item": "garlic, peeled",
+      "original": "4 cloves garlic, peeled",
+      "group": "Marinade"
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "knobs fresh ginger (about 1 oz / 30 g), peeled and coarsely chopped",
+      "original": "2 knobs fresh ginger (about 1 oz / 30 g), peeled and coarsely chopped",
+      "group": "Marinade"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "honey",
+      "original": "2 tbsp honey",
+      "group": "Marinade"
+    },
+    {
+      "amount": "180",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "¾ cup / 180 ml olive oil",
+      "group": "Marinade"
+    },
+    {
+      "amount": "8",
+      "unit": "large",
+      "item": "quail, butterflied (see above)",
+      "original": "8 large quail, butterflied (see above)",
+      "group": "Marinade"
+    },
+    {
+      "amount": "125",
+      "unit": "g",
+      "item": "mograbiah or fregola 2 tsp / 10 g unsalted butter",
+      "original": "¾ cup / 125 g mograbiah or fregola 2 tsp / 10 g unsalted butter",
+      "group": "Salad"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "1 tbsp olive oil",
+      "group": "Salad"
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "mild red chile",
+      "original": "1 mild red chile",
+      "group": "Salad"
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "green onion",
+      "original": "1 green onion",
+      "group": "Salad"
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "lemon",
+      "original": "1 lemon",
+      "group": "Salad"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "coarsely chopped flat-leaf parsley",
+      "original": "3 tbsp coarsely chopped flat-leaf parsley",
+      "group": "Salad"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "coarsely chopped cilantro",
+      "original": "3 tbsp coarsely chopped cilantro",
+      "group": "Salad"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "coarsely chopped mint",
+      "original": "3 tbsp coarsely chopped mint",
+      "group": "Salad"
+    }
+  ],
+  "method": [
+    "Trim the bases and tops of the fennel bulbs, then slice crosswise as thinly as you can. A mandoline would be useful here. In a large bowl, mix the fennel and red onion with the lime zest and juice, garlic, dill, parsley, chile, 2 tablespoons of the olive oil, and ½ teaspoon salt. Set aside.",
+    "To prepare the prawns, peel the shells away from the bodies, keeping the tail segment of the shell on. Cut a shallow slit along the back of each prawn and use the tip of a small knife to remove the dark vein.",
+    "Place a heavy cast-iron pan, preferably a ridged grill pan, over high heat and leave for a few minutes until piping hot. Meanwhile, mix the prawns and squid with the remaining 2 tablespoons oil and a pinch of salt. Grill them in small batches, turning them over after 1 minute and continuing until just done (about 1 more minute for the squid and 2 to 3 for the prawns). Transfer to a cutting board and slice the squid into thick rings. You can leave the prawns whole or cut them in half.",
+    "Add the seafood to the salad bowl and toss together. You can serve the salad immediately or leave it in the fridge for up to 1 day. To serve, stir in the sumac and cilantro, then taste and adjust the seasoning. When pomegranate seeds are available, they make a beautiful garnish."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/grilled-quail-with-mograbiah-salad.jpg"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "labneh",
+  "name": "Labneh",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Basics"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Basics"
+  },
+  "servings": "makes 1 pint / 600 ml",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "4½",
+      "unit": "cups",
+      "item": "/ 1 liter natural goat’s milk yogurt (or full-fat cow’s milk yogurt)",
+      "original": "4½ cups / 1 liter natural goat’s milk yogurt (or full-fat cow’s milk yogurt)",
+      "group": null
+    },
+    {
+      "amount": "¾",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "¾ tsp salt",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "to 1¼ cups / 200 to 300 ml olive oil",
+      "original": "1 to 1¼ cups / 200 to 300 ml olive oil",
+      "group": null
+    },
+    {
+      "amount": "⅓",
+      "unit": "",
+      "item": "to ½ cup / 10 to 15 g dried mint",
+      "original": "⅓ to ½ cup / 10 to 15 g dried mint",
+      "group": null
+    },
+    {
+      "amount": "good grind of black pepper",
+      "unit": "",
+      "item": "good grind of black pepper",
+      "original": "good grind of black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "Line a large bowl with a piece of cheesecloth or other fine cloth. In another bowl, mix the yogurt and salt well. Transfer the yogurt to the cheesecloth, pick up the edges of the cloth, and tie them together well to form a bundle. Hang this over your sink or over a large bowl and leave for 48 hours. By this time the yogurt will have lost most of its liquid and be ready to use as a spread.",
+    "To go the whole hog, leave it hanging for a day longer. Remove the cheese from the cloth and place in a sealed container in the fridge. Once it is thoroughly chilled, preferably after 24 hours, roll the cheese into balls, somewhere between the size of an olive and a walnut.",
+    "Take a sterilized jar about 2½ cups / 600 ml in capacity (see Preserved lemons, for how to sterilize jars). Pour some of the oil inside and gently lay the balls in the oil. Add some more oil and continue with the balls until all the cheese is in the jar and immersed in oil. Seal the jar and keep until needed.",
+    "Before serving, scatter the mint and pepper on a flat plate and roll the balls in it."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

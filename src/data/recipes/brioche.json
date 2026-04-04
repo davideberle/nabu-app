@@ -1,0 +1,86 @@
+{
+  "id": "brioche",
+  "name": "Brioche",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes one 1-lb / 500-g loaf",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "lukewarm water (not more than 86°F / 30°C)",
+      "original": "2 tbsp lukewarm water (not more than 86°F / 30°C)",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "active dry yeast or 1½ tsp (tightly packed) fresh yeast",
+      "original": "1 tsp active dry yeast or 1½ tsp (tightly packed) fresh yeast",
+      "group": null
+    },
+    {
+      "amount": "190",
+      "unit": "g",
+      "item": "bread flour, plus extra for dusting",
+      "original": "1⅓ cups / 190 g bread flour, plus extra for dusting",
+      "group": null
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "½ tsp salt",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "tsp",
+      "item": "/ 20 g superfine sugar",
+      "original": "5 tsp / 20 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range eggs, at room temperature, plus 1 egg, beaten, to glaze the loaf",
+      "original": "2 free-range eggs, at room temperature, plus 1 egg, beaten, to glaze the loaf",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "tbsp",
+      "item": "/ 75 g cold unsalted butter, cut into ¾-inch / 2-cm dice, plus extra melted butter for brushing the pan",
+      "original": "5 tbsp / 75 g cold unsalted butter, cut into ¾-inch / 2-cm dice, plus extra melted butter for brushing the pan",
+      "group": null
+    }
+  ],
+  "method": [
+    "Place the lukewarm water and yeast in the bowl of an electric mixer. If using dry yeast, leave for 10 minutes for the yeast to activate. Gently stir with your finger until the yeast dissolves. Add all the rest of the ingredients except the butter and start working them together with a spatula until the flour is incorporated.",
+    "Attach the bowl to the machine and work on a low speed for about 3 minutes. The dough should become smooth but will still stick to the bowl. Once it has reached this stage, scrape it off the sides of the bowl, increase the speed of the machine to medium-high, and start adding the diced butter. Do this gradually, making sure that the butter is more or less incorporated into the dough before adding more. Once all the butter is in, keep the machine working until the dough is shiny, has no lumps of butter, and comes away naturally from the sides of the bowl. This will take about 9 minutes, depending on your machine (the dough will be lukewarm; make sure it doesn’t get hot). Once or twice during the mixing process, you might need to stop the machine, scrape the sides of the bowl clean, and very(!) lightly dust with flour.",
+    "Remove the dough from the mixer and place in a lightly greased bowl or plastic container that is about twice as large as the dough. Cover with plastic wrap and leave at room temperature for 1 hour. Then transfer to the fridge and leave for 14 to 24 hours before using. During this time, the dough will not rise much or change significantly.",
+    "Have ready a 1-lb / 500-g loaf pan, lightly brushed with some melted butter. Take the dough out of the fridge, place it on a work surface, and dust very lightly with flour. Using your hands, knock the dough down and then shape it into a rectangle that is about the size of the pan base. Place it inside the pan, cover with plastic wrap, and leave somewhere warm for 2 to 3 hours, until almost doubled in height.",
+    "Preheat the oven to 170°C. Brush the dough lightly with beaten egg. Put the pan on a baking sheet and place in the hot oven. After about 15 minutes, the loaf should be dark brown and baked through. Stick a skewer inside to make sure it is completely dry. Remove from the oven and leave until cool enough to handle, then take out of the pan and leave to cool completely."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/brioche.jpg"
+}

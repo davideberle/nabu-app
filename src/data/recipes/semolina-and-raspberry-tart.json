@@ -1,0 +1,122 @@
+{
+  "id": "semolina-and-raspberry-tart",
+  "name": "Semolina and raspberry tart",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "Sweet pastry or store-bought pastry",
+      "original": "9 oz / 250 g Sweet pastry or store-bought pastry",
+      "group": null
+    },
+    {
+      "amount": "80",
+      "unit": "g",
+      "item": "unsalted butter",
+      "original": "⅓ cup / 80 g unsalted butter",
+      "group": null
+    },
+    {
+      "amount": "180",
+      "unit": "ml",
+      "item": "heavy cream",
+      "original": "¾ cup / 180 ml heavy cream",
+      "group": null
+    },
+    {
+      "amount": "345",
+      "unit": "ml",
+      "item": "milk",
+      "original": "1½ cups / 345 ml milk",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "tbsp",
+      "item": "/ 60 g superfine sugar",
+      "original": "5 tbsp / 60 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "½",
+      "unit": "",
+      "item": "vanilla bean",
+      "original": "½ vanilla bean",
+      "group": null
+    },
+    {
+      "amount": "60",
+      "unit": "g",
+      "item": "semolina",
+      "original": "⅓ cup / 60 g semolina",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "free-range egg",
+      "original": "1 free-range egg",
+      "group": null
+    },
+    {
+      "amount": "200",
+      "unit": "g",
+      "item": "raspberries",
+      "original": "1⅔ cups / 200 g raspberries",
+      "group": null
+    },
+    {
+      "amount": "2½",
+      "unit": "tbsp",
+      "item": "/ 50 g apricot jam (optional)",
+      "original": "2½ tbsp / 50 g apricot jam (optional)",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "water",
+      "original": "1 tbsp water",
+      "group": null
+    },
+    {
+      "amount": "confectioners’ sugar, for dusting",
+      "unit": "",
+      "item": "confectioners’ sugar, for dusting",
+      "original": "confectioners’ sugar, for dusting",
+      "group": null
+    }
+  ],
+  "method": [
+    "Lightly brush a 7-inch / 18-cm springform pan with a tiny amount of oil, then set aside.",
+    "Make sure you have a clean work surface and a bit of flour to dust it with. Using a rolling pin, roll out the pastry into a rough disk, 1/16 to ⅛ inch / 2 to 3 mm thick. Work quickly, turning the pastry around as you go. Once you have reached the right thickness, cut the pastry into a circle large enough to cover the pan and most of the sides comfortably. Carefully line the pan, patching up any holes with excess pastry if necessary. When the pastry is in place, use a sharp little knife to trim it so you have a neat edge, about 1¼ inches / 3 cm high. Place in the fridge to rest for 30 minutes.",
+    "Preheat the oven to 170°C. Cut out a circle of parchment paper large enough to cover the base and sides of the cake pan. Place it inside the pastry shell and fill with dried beans or rice so the sides of the pastry are totally supported by the beans and won’t collapse during baking. Blind bake the shell for 25 to 35 minutes, until it is very light brown. Remove from the oven and take out the beans or rice (you can keep them for future tarts).",
+    "To make the filling, put the butter, cream, milk, and sugar in a saucepan. Slit the vanilla bean open lengthwise with a sharp knife and scrape out all the flavorful seeds. Drop the seeds and the scraped pod into the pan. Place the pan on the stove and bring to a boil. Let it simmer while you whisk in the semolina in a slow stream. Continue whisking until the mix comes back to a boil and thickens up like porridge. Remove from the heat and whisk in the egg. Remove the vanilla pod.",
+    "Pour the semolina mixture into the pastry shell and level it with a wet icing spatula. Push half the raspberries inside, allowing them to show on the surface. Bake for 20 to 25 minutes, until the filling is slightly golden. Remove from the oven and let cool slightly before removing the tart from the pan.",
+    "Put the apricot jam in a small pan with the water and bring to a boil. Strain it through a sieve and brush it over the tart. Finish with the remaining raspberries piled over and a dusting of confectioners’ sugar."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,93 @@
+{
+  "id": "burnt-eggplant-with-yellow-pepper-and-red-onion",
+  "name": "Burnt eggplant with yellow pepper and red onion",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "To get a sublimely deep, smoky flavor from an eggplant you need to burn it. Literally. All other cooking methods pale in comparison. The messy but most effective way to do this is to burn it on a gas burner on your stove top. Otherwise, you can place the eggplant under a very hot broiler and allow it to cook well, until it is totally shriveled and the skin starts to crack and flake dry.\n\nIf you go for the first choice, you will need to protect your stove top from staining. So before starting, remove the grates from two burners, cover the base with aluminum foil, and then place the grates back on.\n\nThis salad is Sami’s mother’s recipe, a variation on a Tunisian salad. Serve alongside other meze salads, with large chunks of bread.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "medium",
+      "item": "eggplants",
+      "original": "2 medium eggplants",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "yellow or green peppers, cored and cut into ⅔ -inch / 1.5-cm dice",
+      "original": "2 yellow or green peppers, cored and cut into ⅔ -inch / 1.5-cm dice",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "medium",
+      "item": "red onion, coarsely chopped",
+      "original": "1 medium red onion, coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "24",
+      "unit": "",
+      "item": "cherry tomatoes, halved",
+      "original": "24 cherry tomatoes, halved",
+      "group": null
+    },
+    {
+      "amount": "40",
+      "unit": "g",
+      "item": "flat-leaf parsley, coarsely chopped",
+      "original": "1½ oz / 40 g flat-leaf parsley, coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "70",
+      "unit": "ml",
+      "item": "sunflower or nut oil",
+      "original": "4½ tbsp / 70 ml sunflower or nut oil",
+      "group": null
+    },
+    {
+      "amount": "90",
+      "unit": "ml",
+      "item": "cider vinegar",
+      "original": "6 tbsp / 90 ml cider vinegar",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "ground cumin",
+      "original": "1 tbsp ground cumin",
+      "group": null
+    }
+  ],
+  "method": [
+    "Place the eggplants directly on 2 separate moderate flames on the stove top and roast for 12 to 15 minutes, turning them occasionally with metal tongs, until the flesh is soft and the skin is burnt and flaky. By this stage your kitchen will have the most magnificent charred smell. (Alternatively, place the eggplants under a hot broiler for about an hour, turning them occasionally and continuing to cook even if they burst.) Leave to cool slightly.",
+    "Make a long cut through each warm eggplant. Using a spoon, scoop out the soft flesh while avoiding most of the burnt skin on the outside. If you don’t like the seeds, try to remove them as well. Leave the eggplant flesh to drain in a colander for at least 1 hour or overnight.",
+    "Coarsely chop the eggplant flesh. Mix all the remaining ingredients together, then taste and adjust the seasoning. It should be robust and pungent. Serve within 24 hours."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/burnt-eggplant-with-yellow-pepper-and-red-onion.jpg"
+}

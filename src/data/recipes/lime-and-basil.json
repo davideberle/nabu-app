@@ -1,0 +1,91 @@
+{
+  "id": "lime-and-basil",
+  "name": "Lime and basil",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes about 20",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "cup",
+      "item": "minus 4 tsp / 110 g confectioners’ sugar",
+      "original": "1 cup minus 4 tsp / 110 g confectioners’ sugar",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "g",
+      "item": "ground almonds",
+      "original": "½ cup / 50 g ground almonds",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "/ 12 g cocoa powder",
+      "original": "2 tbsp / 12 g cocoa powder",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range egg whites 3½ tbsp / 40 g superfine sugar",
+      "original": "2 free-range egg whites 3½ tbsp / 40 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "65",
+      "unit": "g",
+      "item": "dark chocolate",
+      "original": "2¼ oz / 65 g dark chocolate",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "/ 15 g unsalted butter",
+      "original": "1 tbsp / 15 g unsalted butter",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "heavy cream",
+      "original": "3½ tbsp / 50 ml heavy cream",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "dark rum",
+      "original": "2 tsp dark rum",
+      "group": "Ganache filling"
+    }
+  ],
+  "method": [
+    "To make the macarons, follow the instructions, using all the ingredients listed. Fold the basil and lime zest into the mix at the final stage, after the almonds and confectioners’ sugar are fully incorporated into the meringue.",
+    "To make the buttercream filling, place the butter and confectioners’ sugar in a mixing bowl and beat them together with a rubber spatula until pale in color and light in texture. Add the lime zest and juice and the basil and beat until fully incorporated. Cover the buttercream with plastic wrap and leave in a cool place (not the fridge) until ready to use."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

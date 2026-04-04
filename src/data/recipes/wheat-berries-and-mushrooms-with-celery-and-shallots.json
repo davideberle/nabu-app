@@ -1,0 +1,102 @@
+{
+  "id": "wheat-berries-and-mushrooms-with-celery-and-shallots",
+  "name": "Wheat berries and mushrooms with celery and shallots",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "Don’t be put off by the health-food-store connotations wheat berries may have. This is a highly refreshing salad. Its biting astringency and light sweetness make it a perfect companion to plainly grilled meat or fish. On its own, it makes a modest vegetarian main course.\n\nWheat berries need soaking for a good 14 to 18 hours. If you didn’t plan ahead, substitute pearled barley for the wheat berries, following the cooking instructions on the packet. Thanks to Helen for the inspiration.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "200",
+      "unit": "g",
+      "item": "wheat berries",
+      "original": "2 cups / 200 g wheat berries",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "light brown sugar",
+      "original": "3 tbsp light brown sugar",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "good-quality sherry vinegar",
+      "original": "3½ tbsp / 50 ml good-quality sherry vinegar",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "or 3 shallots, finely chopped",
+      "original": "2 or 3 shallots, finely chopped",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "",
+      "item": "celery stalks, finely chopped",
+      "original": "3 celery stalks, finely chopped",
+      "group": null
+    },
+    {
+      "amount": "200",
+      "unit": "g",
+      "item": "button mushrooms, sliced ¼ inch / 5 mm thick",
+      "original": "7 oz / 200 g button mushrooms, sliced ¼ inch / 5 mm thick",
+      "group": null
+    },
+    {
+      "amount": "40",
+      "unit": "g",
+      "item": "flat-leaf parsley leaves",
+      "original": "⅔ cup / 40 g flat-leaf parsley leaves",
+      "group": null
+    },
+    {
+      "amount": "10",
+      "unit": "g",
+      "item": "tarragon leaves",
+      "original": "¾ cup / 10 g tarragon leaves",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "3½ tbsp / 50 ml olive oil",
+      "group": null
+    }
+  ],
+  "method": [
+    "Wash the wheat berries in plenty of cold water, then transfer to a large bowl and cover with fresh water. Leave to soak overnight.",
+    "The next day, drain the wheat berries, put them in a large pan with plenty of fresh water to cover, and simmer for 45 to 60 minutes. They should have now softened up but still have a bite. Drain in a colander and leave to cool.",
+    "You need to make the dressing at least an hour before serving the salad. Whisk together the sugar and vinegar until the sugar has completely dissolved. Add the shallots and celery and leave to marinate.",
+    "To assemble the salad, put the mushrooms in a mixing bowl and toss with the dressing. Add the wheat berries and then tear in the parsley leaves. Add the whole tarragon leaves, plus the olive oil and some salt and pepper. Taste, adjust the seasoning accordingly, and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/wheat-berries-and-mushrooms-with-celery-and-shallots.jpg"
+}

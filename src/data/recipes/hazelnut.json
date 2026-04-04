@@ -1,0 +1,149 @@
+{
+  "id": "hazelnut",
+  "name": "Hazelnut",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes 2 small loaves (serves 4 to 6)",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "melted butter for greasing the pans",
+      "unit": "",
+      "item": "melted butter for greasing the pans",
+      "original": "melted butter for greasing the pans",
+      "group": null
+    },
+    {
+      "amount": "100",
+      "unit": "g",
+      "item": "(peeled weight) Granny Smith apple, peeled and cut into ⅔-inch / 1.5-cm dice (about ½ apple)",
+      "original": "3½ oz / 100 g (peeled weight) Granny Smith apple, peeled and cut into ⅔-inch / 1.5-cm dice (about ½ apple)",
+      "group": null
+    },
+    {
+      "amount": "150",
+      "unit": "g",
+      "item": "(peeled weight) pear, peeled and cut into ⅔-inch / 1.5-cm dice (about 1 pear)",
+      "original": "5¼ oz / 150 g (peeled weight) pear, peeled and cut into ⅔-inch / 1.5-cm dice (about 1 pear)",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "tbsp",
+      "item": "/ 30 g toasted walnuts, coarsely chopped",
+      "original": "5 tbsp / 30 g toasted walnuts, coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "grated zest of 1 lemon",
+      "unit": "",
+      "item": "grated zest of 1 lemon",
+      "original": "grated zest of 1 lemon",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "Amaretto liqueur",
+      "original": "2 tbsp Amaretto liqueur",
+      "group": null
+    },
+    {
+      "amount": "210",
+      "unit": "g",
+      "item": "all-purpose flour",
+      "original": "1⅔ cups / 210 g all-purpose flour",
+      "group": null
+    },
+    {
+      "amount": "¾",
+      "unit": "tsp",
+      "item": "baking powder",
+      "original": "¾ tsp baking powder",
+      "group": null
+    },
+    {
+      "amount": "¾",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "¾ tsp ground cinnamon",
+      "group": null
+    },
+    {
+      "amount": "scant ½ tsp ground cloves",
+      "unit": "",
+      "item": "scant ½ tsp ground cloves",
+      "original": "scant ½ tsp ground cloves",
+      "group": null
+    },
+    {
+      "amount": "6½",
+      "unit": "tbsp",
+      "item": "/ 45 g ground almonds",
+      "original": "6½ tbsp / 45 g ground almonds",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "",
+      "item": "free-range eggs",
+      "original": "3 free-range eggs",
+      "group": null
+    },
+    {
+      "amount": "180",
+      "unit": "ml",
+      "item": "sunflower oil",
+      "original": "¾ cup / 180 ml sunflower oil",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "cup",
+      "item": "plus 2½ tbsp / 230 g superfine sugar",
+      "original": "1 cup plus 2½ tbsp / 230 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "scant ½ tsp salt",
+      "unit": "",
+      "item": "scant ½ tsp salt",
+      "original": "scant ½ tsp salt",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "g",
+      "item": "Crumble",
+      "original": "4 oz / 120 g Crumble",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 170°C. Grease 2 small (1-pound / 500-g) loaf pans with melted butter and line the bottom and sides with parchment paper.",
+    "Mix the chopped apple and pear with the walnuts, lemon zest, and Amaretto. In a separate bowl, sift together the flour, baking powder, cinnamon, and cloves. Add the ground almonds.",
+    "Separate 2 of the eggs, keeping the whites separate while mixing the yolks with the third egg. Using an electric mixer, beat together the oil and sugar for about 1 minute (this can also be done by hand, mixing briskly with a whisk). On low speed, slowly add the yolk and egg mix. Quickly add the sifted dry ingredients, followed by the fruit mix. Stop the machine as soon as everything is incorporated.",
+    "Whisk the egg whites with the salt until they form firm peaks, then gently fold them into the cake mix, using a spatula or metal spoon. Again, be careful not to overmix. Streaks of white in the mixture are okay.",
+    "Divide the cake mix between the pans and scatter the crumble on top. Bake for 40 to 45 minutes, until a skewer inserted into the center comes out clean (it might take a bit longer, depending on the moisture content of the fruit). If the cakes start going dark before the center is cooked, cover them with aluminum foil. Remove from the oven and leave to cool, then remove the cakes from the pans."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/hazelnut.jpg"
+}

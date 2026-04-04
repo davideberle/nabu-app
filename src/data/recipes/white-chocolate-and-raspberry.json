@@ -1,0 +1,52 @@
+{
+  "id": "white-chocolate-and-raspberry",
+  "name": "White chocolate and raspberry",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "6",
+      "unit": "tsp",
+      "item": "raspberry jam, store-bought or homemade",
+      "original": "6 tsp raspberry jam, store-bought or homemade",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "",
+      "item": "prebaked tartlet shells",
+      "original": "6 prebaked tartlet shells",
+      "group": null
+    }
+  ],
+  "method": [
+    "Crush the fresh raspberries with a fork and then pass them through a fine sieve to remove the seeds. Set the smooth coulis aside.",
+    "Put the white chocolate and the butter in a heatproof bowl. Heat the cream in a small saucepan and bring to a boil, watching it constantly. As soon as it comes to a boil, pour it over the chocolate and butter and stir gently with a rubber spatula. Continue until all the chocolate has melted and you are left with a smooth, shiny ganache.",
+    "Immediately, before the ganache begins to set, spoon 1 teaspoon jam into each shell. Carefully pour in the ganache; it should almost reach to the rim (if the ganache does begin to set, heat it gently over a pan of hot water before pouring). Be very gentle now and don’t shake the shells.",
+    "Spoon a tiny amount of the raspberry coulis—not more than ½ teaspoon—into the center of each tartlet. Use the tip of a knife or a skewer to swirl the coulis around. Carefully transfer the tartlets to the fridge and leave them there to set. Remove at least 30 minutes before serving."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

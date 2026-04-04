@@ -1,0 +1,109 @@
+{
+  "id": "lima-beans-with-sweet-chile-sauce-and-fresh-herbs",
+  "name": "Lima beans with sweet chile sauce and fresh herbs",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "A colorful salad, both in appearance and in flavor. It is well worth planning ahead and soaking the butterbeans overnight. Freshly cooked, they have a silky, rich texture, just as the name implies. Serve at a weekend brunch, with grilled lamb for example.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "400",
+      "unit": "g",
+      "item": "dried lima beans",
+      "original": "14 oz / 400 g dried lima beans",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "6 cloves garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "70",
+      "unit": "ml",
+      "item": "sweet chile sauce",
+      "original": "4½ tbsp / 70 ml sweet chile sauce",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "sesame oil",
+      "original": "2 tbsp sesame oil",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "soy sauce",
+      "original": "3 tbsp soy sauce",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "3 tbsp lemon juice",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "red peppers, halved, seeded, and cut into ¾-inch / 2-cm squares",
+      "original": "2 red peppers, halved, seeded, and cut into ¾-inch / 2-cm squares",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "green onions, white and green parts, chopped",
+      "original": "4 green onions, white and green parts, chopped",
+      "group": null
+    },
+    {
+      "amount": "35",
+      "unit": "g",
+      "item": "cilantro, chopped",
+      "original": "2 cups / 35 g cilantro, chopped",
+      "group": null
+    },
+    {
+      "amount": "scant 6 tbsp / 30 g mint leaves, chopped",
+      "unit": "",
+      "item": "scant 6 tbsp / 30 g mint leaves, chopped",
+      "original": "scant 6 tbsp / 30 g mint leaves, chopped",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put the lima beans in a large bowl and fill with enough water to cover them by twice their volume. Leave to soak overnight at room temperature.",
+    "The next day, drain the beans and place in a large saucepan. Cover with plenty of cold water and bring to a simmer. Cook for 35 to 55 minutes, skimming froth from the surface and topping up with boiling water if necessary, until tender. The cooking time will vary according to the bean size and freshness, so try them a few times during cooking to make sure they don’t turn to a mush. In case they begin to overcook, remove from the heat and add plenty of cold water to the pan to stop the cooking. When they are done, drain in a colander and set aside.",
+    "While the beans are cooking, make the sauce. Place the crushed garlic in a bowl large enough to hold the beans. Add the sweet chile sauce, sesame oil, soy sauce, and lemon juice and mix well with a small whisk. Add the red peppers, season the mixture with salt and pepper, and set aside.",
+    "Once the beans have cooled down slightly but are still warm, add them to the sauce, together with the green onions, herbs, and plenty of seasoning. Mix gently with your hands. Taste and adjust the seasoning. Eat warm or cold—just remember to readjust the seasoning before serving."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/lima-beans-with-sweet-chile-sauce-and-fresh-herbs.jpg"
+}

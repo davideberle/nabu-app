@@ -1,0 +1,123 @@
+{
+  "id": "roasted-pepper-and-cannellini-bruschetta",
+  "name": "Roasted pepper and cannellini bruschetta",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": "The roasted peppers come from Tamar Shany, a multitalented chef who is equally at ease in both the pastry and the savory sections. She is the one who set up our Kensington kitchen, her “baby.”\n\nBoth the peppers and the cannellini bean paste are excellent fridge staples that keep well, so you can make this up quickly as a last-minute starter. The quantities below will give you enough bean spread for the toasts, plus extra for the fridge.",
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "150",
+      "unit": "g",
+      "item": "dried cannellini beans, soaked overnight in plenty of cold water",
+      "original": "¾ cup / 150 g dried cannellini beans, soaked overnight in plenty of cold water",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "red and 2 yellow bell peppers",
+      "original": "2 red and 2 yellow bell peppers",
+      "group": null
+    },
+    {
+      "amount": "½",
+      "unit": "cup",
+      "item": "plus 1 tbsp / 135 ml olive oil, plus extra for drizzling",
+      "original": "½ cup plus 1 tbsp / 135 ml olive oil, plus extra for drizzling",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "balsamic vinegar",
+      "original": "2 tbsp balsamic vinegar",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "water",
+      "original": "2 tbsp water",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "muscovado sugar",
+      "original": "1 tsp muscovado sugar",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "sprigs thyme",
+      "original": "4 sprigs thyme",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "cloves",
+      "item": "garlic, peeled",
+      "original": "5 cloves garlic, peeled",
+      "group": null
+    },
+    {
+      "amount": "juice of 1 lemon",
+      "unit": "",
+      "item": "juice of 1 lemon",
+      "original": "juice of 1 lemon",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "thick",
+      "item": "slices Crusty white Italian loaf or other rustic loaf",
+      "original": "4 thick slices Crusty white Italian loaf or other rustic loaf",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "green onions, coarsely sliced",
+      "original": "2 green onions, coarsely sliced",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "Drain the beans and place in a large saucepan with enough cold water to cover them by twice their volume. Bring to a boil and simmer for 80 to 90 minutes, until they are very soft. You will need to skim the froth from the surface a few times during the cooking and might have to add some more boiling water. Drain the beans but keep the cooking liquid.",
+    "Preheat the oven to 200°C. To prepare the peppers, cut them into quarters and shave off the white parts and the seeds. Put them on a baking sheet and toss with 2 tablespoons / 30 ml of the oil and a little salt. Roast in the oven for 35 minutes, until soft, then transfer the hot peppers to a bowl and cover it with plastic wrap; this will make them easier to peel. Once they are cool enough to handle, peel the peppers, place in a container with their cooking juices, and set aside. In a separate bowl, whisk 4 tablespoons / 60 ml of the olive oil with the balsamic vinegar, water, sugar, thyme, 2 sliced garlic cloves, and a pinch of salt. Pour this marinade over the peppers and leave for at least half an hour. If you are not using them on the day, keep the peppers refrigerated for up to a week, making sure they are well immersed in the marinade.",
+    "Put the warm beans in a food processor together with 1 crushed clove garlic, the lemon juice, the remaining 3 tablespoons / 45 ml oil, 1 teaspoon salt, a good grinding of black pepper, and 3½ tablespoons / 50 ml of the bean cooking liquid. Process to a smooth paste. Taste and see if you want to add any more salt, pepper, or lemon juice. Leave to cool and then taste again; you will probably need to add more salt.",
+    "Put the bread slices on a baking sheet, brush them with olive oil, and sprinkle with a little salt. Bake for 10 to 12 minutes, until golden brown. While they are still hot, rub the slices with 2 peeled cloves garlic, then leave them to cool on a wire rack.",
+    "Spread a good amount of the bean purée on each toast, top generously with the marinated peppers, then garnish with the green onions and a drizzle of olive oil."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/roasted-pepper-and-cannellini-bruschetta.jpg"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "orange-polenta-cake",
+  "name": "Orange polenta cake",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes 2 small loaves (serves 4 to 6)",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "orange blossom water",
+      "original": "2 tsp orange blossom water",
+      "group": null
+    },
+    {
+      "amount": "240",
+      "unit": "g",
+      "item": "ground almonds",
+      "original": "2½ cups / 240 g ground almonds",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "g",
+      "item": "quick-cooking polenta",
+      "original": "¾ cup / 120 g quick-cooking polenta",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "orange marmalade",
+      "original": "4 tbsp orange marmalade",
+      "group": "Glaze (optional)"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "water",
+      "original": "1 tbsp water",
+      "group": "Glaze (optional)"
+    }
+  ],
+  "method": [
+    "Lightly grease an 8-inch / 20-cm round cake pan and line the bottom and sides with parchment paper. If using a springform pan, make sure the paper circle you cut for the base is large enough to go some of the way up the sides as well, to prevent leaking.",
+    "To make the caramel, have ready by the stove a small pastry brush and a cup of water. Put the sugar for the caramel topping in a heavy-bottomed saucepan and add the 2 tablespoons water. Stir gently to dampen the sugar evenly and then place over medium-low heat. Slowly bring the sugar to a boil. While it bubbles away, brush the sides of the pan occasionally with a little of the water in the cup to get rid of any crystals that form close to the bubbling sugar. After a few minutes, the water should evaporate and the sugar will start to darken. Keep your eyes on the sugar at all times as it can easily burn. As soon as it reaches a nice golden color, remove the pan from the heat. With your face at a safe distance, add the butter. Stir with a wooden spoon and pour the caramel over the lined base of the cake pan. Carefully but quickly (so it doesn’t set) tilt it to spread evenly.",
+    "Grate the zest of the 2 oranges, making sure you don’t reach the white part of the skin. Set the grated zest aside. Using a small, sharp knife, slice off 1 cm / 1 cm from the top and bottom of each orange. Standing each orange up on a board, carefully follow the natural curves of the orange with the knife to peel off the remaining skin and all the white pith. Cut each orange horizontally into 6 slices. Remove the seeds and lay the slices tightly over the caramel. (You might need to peel and slice another orange to cover the whole space.)",
+    "Now move on to the cake batter. Preheat the oven to 170°C. Sift together the flour, baking powder, and salt and set aside.",
+    "In an electric mixer fitted with the paddle attachment, cream the butter and sugar together lightly. Make sure they are well combined but do not incorporate much air into the mixture. With the mixer on low speed, gradually add the eggs. Next add the reserved orange zest and the orange blossom water, followed by the almonds, polenta, and sifted dry ingredients. As soon as they are all mixed in, stop the machine.",
+    "Transfer the batter to the prepared cake pan, making sure the oranges underneath stay in a single neat layer. Level the mixture carefully with an icing spatula. Place the cake in the oven and bake for 40 to 45 minutes, until a skewer inserted into the center comes out dry. Remove from the oven and leave to cool for about 5 minutes.",
+    "While the cake is still hot (warm it up a little if you forgot, otherwise the caramel will stick to the paper), place a cardboard disk or a flat plate on top. Briskly turn over and then remove the pan and the lining paper. Leave the cake to cool completely.",
+    "To make the glaze, bring the marmalade and water to a boil in a small saucepan and then pass through a sieve. While the glaze is still hot, lightly brush the top of the cake with it."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/orange-polenta-cake.jpg"
+}

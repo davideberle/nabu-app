@@ -1,0 +1,103 @@
+{
+  "id": "marinated-eggplant-with-tahini-and-oregano",
+  "name": "Marinated eggplant with tahini and oregano",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "recipe Green tahini sauce made without the parsley",
+      "original": "1 recipe Green tahini sauce made without the parsley",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "mild red chile, seeded and finely chopped",
+      "original": "1 mild red chile, seeded and finely chopped",
+      "group": "Marinade"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped cilantro",
+      "original": "2 tbsp finely chopped cilantro",
+      "group": "Marinade"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped oregano, plus a few whole leaves for garnish",
+      "original": "2 tbsp finely chopped oregano, plus a few whole leaves for garnish",
+      "group": "Marinade"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Marinade"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "3 tbsp lemon juice",
+      "group": "Marinade"
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "4 tbsp olive oil",
+      "group": "Marinade"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "coarse sea salt",
+      "original": "1 tsp coarse sea salt",
+      "group": "Marinade"
+    },
+    {
+      "amount": "¼",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "¼ tsp freshly ground black pepper",
+      "group": "Marinade"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 220°C. Trim the stalk end off the eggplants, then cut each eggplant in half widthwise. Cut the fat lower piece lengthwise in half and then cut each half into 3 wedges. Do the same with the thinner piece, but cut each half into 2 wedges. You should end up with 10 similar-size pieces with skin on their curved side.",
+    "Place the eggplant pieces on a large baking sheet. Brush on all sides with plenty of olive oil and season with salt and pepper (if you want to get nice grill marks on the eggplants, place them on a very hot ridged grill pan at this stage and grill for 3 minutes on each side; return them to the baking sheet and continue with the next step). Place the sheet pan in the hot oven and roast the eggplants for 15 to 18 minutes, until they are golden brown and totally soft inside.",
+    "While the eggplants are roasting, make the marinade. Simply put all the ingredients in a bowl and mix well.",
+    "As soon as the eggplants come out of the oven, spoon the marinade over them and leave at room temperature for up to 2 hours before serving. You can store them in the fridge for up to 2 days at this stage. Make sure you don’t serve them cold, though; leave them out of the fridge for an hour at least.",
+    "To serve, arrange the eggplant wedges on a plate. Now, you can either spoon the tahini sauce on top and garnish with a few oregano leaves, or serve the tahini in a bowl on the side, topped with oregano leaves."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/marinated-eggplant-with-tahini-and-oregano.jpg"
+}

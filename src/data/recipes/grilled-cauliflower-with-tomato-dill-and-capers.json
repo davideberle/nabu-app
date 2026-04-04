@@ -1,0 +1,102 @@
+{
+  "id": "grilled-cauliflower-with-tomato-dill-and-capers",
+  "name": "Grilled cauliflower with tomato, dill, and capers",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "Like broccoli, cauliflower can be rather dull. So here we give it the classic Ottolenghi treatment of grilling and then drenching with vigorous flavors while still hot. The combination of ingredients in this recipe might sound unusual but it works wonderfully well. Try it with a plain roast chicken.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 2 to 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "capers, drained and coarsely chopped",
+      "original": "2 tbsp capers, drained and coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "French whole-grain mustard",
+      "original": "1 tbsp French whole-grain mustard",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "2 cloves garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "cider vinegar",
+      "original": "2 tbsp cider vinegar",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "½ cup / 120 ml olive oil",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "small",
+      "item": "cauliflower, divided into florets",
+      "original": "1 small cauliflower, divided into florets",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "chopped dill",
+      "original": "1 tbsp chopped dill",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "g",
+      "item": "baby spinach leaves",
+      "original": "1⅔ cups / 50 g baby spinach leaves",
+      "group": null
+    },
+    {
+      "amount": "20",
+      "unit": "",
+      "item": "cherry tomatoes, halved",
+      "original": "20 cherry tomatoes, halved",
+      "group": null
+    }
+  ],
+  "method": [
+    "First make the dressing, either by hand or in a food processor. Mix together the capers, mustard, garlic, vinegar, and some salt and pepper. Whisk vigorously or run the machine while adding half the oil in a slow trickle. You should get a thick, creamy dressing. Taste and adjust the seasoning.",
+    "Add the cauliflower florets to a large pan of boiling salted water and simmer for 3 minutes only. Drain in a colander and run under a cold tap to stop the cooking immediately. Leave in the colander to dry well. Once dry, place in a mixing bowl with the remaining olive oil and some salt and pepper. Toss well.",
+    "Place a ridged grill pan over the highest possible heat and leave it for 5 minutes, until very hot. Grill the cauliflower in a few batches—make sure the florets are not cramped. Turn them around as they grill, then once nicely charred, transfer to a bowl. While the cauliflower is still hot, add the dressing, dill, spinach, and tomatoes. Stir together well, then taste and adjust the seasoning.",
+    "Serve warm or at room temperature, adjusting the seasoning again at the last minute."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/grilled-cauliflower-with-tomato-dill-and-capers.jpg"
+}

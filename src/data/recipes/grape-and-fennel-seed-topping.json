@@ -1,0 +1,122 @@
+{
+  "id": "grape-and-fennel-seed-topping",
+  "name": "Grape and fennel seed topping",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes one 1-lb / 500-g loaf",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "recipe Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "original": "1 recipe Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "group": null
+    },
+    {
+      "amount": "600",
+      "unit": "g",
+      "item": "Jerusalem artichokes, peeled and cut into ¾-inch / 2-cm cubes",
+      "original": "1⅓ lb / 600 g Jerusalem artichokes, peeled and cut into ¾-inch / 2-cm cubes",
+      "group": "Filling"
+    },
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "Swiss chard (or spinach)",
+      "original": "9 oz / 250 g Swiss chard (or spinach)",
+      "group": "Filling"
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "4 tbsp olive oil",
+      "group": "Filling"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "chopped rosemary",
+      "original": "½ tsp chopped rosemary",
+      "group": "Filling"
+    },
+    {
+      "amount": "juice of ½ lemon",
+      "unit": "",
+      "item": "juice of ½ lemon",
+      "original": "juice of ½ lemon",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Filling"
+    },
+    {
+      "amount": "scant 1 cup / 220 ml heavy cream",
+      "unit": "",
+      "item": "scant 1 cup / 220 ml heavy cream",
+      "original": "scant 1 cup / 220 ml heavy cream",
+      "group": "Filling"
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "crème fraîche",
+      "original": "3½ tbsp / 50 ml crème fraîche",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range eggs",
+      "original": "2 free-range eggs",
+      "group": "Filling"
+    },
+    {
+      "amount": "150",
+      "unit": "g",
+      "item": "feta cheese, broken into pieces",
+      "original": "5 oz / 150 g feta cheese, broken into pieces",
+      "group": "Filling"
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": "Filling"
+    }
+  ],
+  "method": [
+    "Lightly oil a 9-inch / 23-cm tart pan with a removable bottom. On a lightly floured surface, roll out the pastry to 1/16 to ⅛ inch / 2 to 3 mm thick. Use the pastry to line the pan, pressing it well into the corners and the sides and allowing it to spill over the edge by at least ¾ inch / 2 cm. This excess will be trimmed later. Prick the base with a fork in a few places, then leave the tart shell to rest in the fridge for at least half an hour.",
+    "Preheat the oven to 170°C. Cut a circle of waxed paper greater in diameter than the base plus the sides of the tart pan. Tuck it in the pastry shell and fill with dried beans or rice. Blind bake the shell for 35 minutes, then remove the paper and the beans or rice (you can keep them and reuse indefinitely for baking blind). Return the pastry shell to the oven and bake for a further 5 to 10 minutes, until lightly golden and thoroughly cooked. Remove from the oven and leave to cool.",
+    "While your pastry is resting and baking, prepare the filling. Place the artichokes in a saucepan, cover with cold water, and bring to a boil with a little salt. Lower the heat and simmer for 15 minutes, until tender. Drain and leave to cool.",
+    "Cut the chard leaves off the stalks, then coarsely chop the leaves and stalks, keeping them separate. Heat the oil in a large frying pan, add the stalks, and fry for 2 minutes, then add the leaves and the rosemary. Sauté for 6 to 8 minutes, depending on how woody the chard is. It should wilt completely. Remove from the heat, stir in the lemon juice, garlic, and some salt and pepper and leave to cool.",
+    "Whisk together the heavy cream, crème fraîche, eggs, and a pinch of salt and pepper. Spread the artichokes, chard, and feta over the base of the pastry shell, arranging them so that all the ingredients are visible. Pour the custard mixture on top. Make sure that you don’t fill the tart to the rim. You want bits of the filling to show above the custard. Carefully transfer the tart to the hot oven and bake for 15 minutes. Then cover with aluminum foil, keeping it away from the tart’s surface, and bake for a further 45 minutes, until the filling is set. If the top is still pale at this point, remove the aluminum foil and leave the tart in the oven for a few extra minutes.",
+    "Remove from the oven and allow to cool slightly. Break off the excess pastry and take the tart out of the pan. Serve warm or at room temperature."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

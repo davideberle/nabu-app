@@ -1,0 +1,134 @@
+{
+  "id": "marinated-rack-of-lamb-with-cilantro-and-honey",
+  "name": "Marinated rack of lamb with cilantro and honey",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2¼",
+      "unit": "lb",
+      "item": "/ 1 kg rack of lamb, French trimmed (you can ask your butcher to do this)",
+      "original": "2¼ lb / 1 kg rack of lamb, French trimmed (you can ask your butcher to do this)",
+      "group": null
+    },
+    {
+      "amount": "20",
+      "unit": "g",
+      "item": "flat-leaf parsley, leaves and stalks",
+      "original": "⅔ oz / 20 g flat-leaf parsley, leaves and stalks",
+      "group": null
+    },
+    {
+      "amount": "30",
+      "unit": "g",
+      "item": "mint, leaves and stalks",
+      "original": "1 oz / 30 g mint, leaves and stalks",
+      "group": null
+    },
+    {
+      "amount": "30",
+      "unit": "g",
+      "item": "cilantro, leaves and stalks",
+      "original": "1 oz / 30 g cilantro, leaves and stalks",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "cloves",
+      "item": "garlic, peeled",
+      "original": "4 cloves garlic, peeled",
+      "group": null
+    },
+    {
+      "amount": "15",
+      "unit": "g",
+      "item": "fresh ginger, peeled and sliced",
+      "original": "½ oz / 15 g fresh ginger, peeled and sliced",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "",
+      "item": "chiles, seeded",
+      "original": "3 chiles, seeded",
+      "group": null
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "½ tsp salt",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "lemon juice",
+      "original": "3½ tbsp / 50 ml lemon juice",
+      "group": null
+    },
+    {
+      "amount": "60",
+      "unit": "ml",
+      "item": "soy sauce",
+      "original": "4 tbsp / 60 ml soy sauce",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "ml",
+      "item": "sunflower oil",
+      "original": "½ cup / 120 ml sunflower oil",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "honey",
+      "original": "3 tbsp honey",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "red wine vinegar",
+      "original": "2 tbsp red wine vinegar",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "water",
+      "original": "4 tbsp water",
+      "group": null
+    }
+  ],
+  "method": [
+    "Make sure most of the fat is trimmed off the lamb, leaving a uniform thin layer that will keep the meat moist and add to the flavor. Use a very sharp knife to separate the rack into portions of 2 or 3 chops. Place in a nonmetal container.",
+    "Blitz together all the remaining ingredients in a blender or food processor. Pour them over the lamb and make sure it is well covered in the marinade. Refrigerate overnight.",
+    "Preheat the oven to 200°C. Heat up a heavy cast-iron pan, preferably a ridged grill pan. Remove the meat from the marinade and shake off the excess. Sear well on all sides, about 5 minutes total. Transfer to a baking sheet and cook in the oven for about 15 minutes, depending on the size of the rack sections and how well you want them cooked.",
+    "Meanwhile, heat the marinade in a small saucepan and simmer for 5 minutes. Put the chops on serving plates and serve the sauce in a separate bowl. Both the chops and the sauce can be served hot or at room temperature."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/marinated-rack-of-lamb-with-cilantro-and-honey.jpg"
+}

@@ -1,0 +1,162 @@
+{
+  "id": "portobello-mushrooms-with-pearled-barley-and-preserved-lemon",
+  "name": "Portobello mushrooms with pearled barley and preserved lemon",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6 as a starter",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "sunflower oil",
+      "original": "1 tbsp sunflower oil",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "1",
+      "unit": "medium",
+      "item": "onion, finely chopped",
+      "original": "1 medium onion, finely chopped",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, finely chopped",
+      "original": "1 clove garlic, finely chopped",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "750",
+      "unit": "ml",
+      "item": "vegetable or chicken stock",
+      "original": "3 cups / 750 ml vegetable or chicken stock",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "heaping ½ cup / 110 g pearled barley",
+      "unit": "",
+      "item": "heaping ½ cup / 110 g pearled barley",
+      "original": "heaping ½ cup / 110 g pearled barley",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "¼",
+      "unit": "",
+      "item": "preserved lemon, flesh removed and skin finely chopped",
+      "original": "¼ preserved lemon, flesh removed and skin finely chopped",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "50",
+      "unit": "g",
+      "item": "feta cheese, crumbled",
+      "original": "1¾ oz / 50 g feta cheese, crumbled",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "1 tbsp chopped flat-leaf parsley",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "thyme leaves",
+      "original": "2 tsp thyme leaves",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "purple basil sprouts, radish sprouts, or purple basil leaves, shredded",
+      "original": "2 tbsp purple basil sprouts, radish sprouts, or purple basil leaves, shredded",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "1 tbsp olive oil",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "7",
+      "unit": "tbsp",
+      "item": "/ 100 g unsalted butter",
+      "original": "7 tbsp / 100 g unsalted butter",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "15",
+      "unit": "",
+      "item": "sprigs thyme",
+      "original": "15 sprigs thyme",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "6",
+      "unit": "large",
+      "item": "portobello mushrooms",
+      "original": "6 large portobello mushrooms",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "180",
+      "unit": "ml",
+      "item": "dry white wine",
+      "original": "¾ cup / 180 ml dry white wine",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "250",
+      "unit": "ml",
+      "item": "vegetable stock",
+      "original": "1 cup / 250 ml vegetable stock",
+      "group": "Pearled barley"
+    },
+    {
+      "amount": "2",
+      "unit": "cloves",
+      "item": "garlic, finely sliced",
+      "original": "2 cloves garlic, finely sliced",
+      "group": "Pearled barley"
+    }
+  ],
+  "method": [
+    "First cook the barley. Heat the sunflower oil in a heavy-based saucepan and sauté the onion and garlic until translucent. Add the stock and bring to a boil. Stir in the barley, lower the heat, then cover and simmer for 1 hour, until all the liquid has been absorbed and the barley is tender.",
+    "Meanwhile, preheat the oven to 180°C. Take a large baking sheet and grease it heavily with two-thirds of the butter. Scatter the thyme sprigs over it. Stem the mushrooms and place the mushroom caps, stem side up, on top of the thyme. Pour over the wine and stock and scatter the sliced garlic over. Dot each mushroom with a couple of knobs of the remaining butter, then season with salt and pepper. Cover the pan with aluminum foil and place in the oven for 15 to 20 minutes, until the mushrooms are tender. Leave them in their cooking juices until you are ready to serve.",
+    "When the barley is done, remove the pan from the heat and stir in the preserved lemon, feta, parsley, and thyme. Taste and add salt and pepper. To serve, reheat the mushrooms in the oven for a few minutes, if necessary. Place each mushroom, stem side up, on a serving plate. Scoop the barley on top and spoon some of the mushroom cooking juices over. Garnish with the basil sprouts and drizzle over the olive oil."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/portobello-mushrooms-with-pearled-barley-and-preserved-lemon.jpg"
+}

@@ -1,0 +1,101 @@
+{
+  "id": "fennel-and-feta-with-pomegranate-seeds-and-sumac",
+  "name": "Fennel and feta with pomegranate seeds and sumac",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "This salad is a little festival in itself. The fennel and tarragon, with their echoing flavors, form a solid base on which stronger colors and flavors—pomegranate, feta, sumac—manifest themselves without overwhelming the whole salad. It is distinctly fresh and goes well with roast meats and grilled fish. Crusty bread is almost obligatory to soak up the juices from the plate.\n\nTry substituting dried cranberries or sour cherries for the pomegranate. The fennel for this salad should be the round and bulky variety. It is crispier and sweeter than the long one.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "½",
+      "unit": "",
+      "item": "pomegranate",
+      "original": "½ pomegranate",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "medium",
+      "item": "fennel heads",
+      "original": "2 medium fennel heads",
+      "group": null
+    },
+    {
+      "amount": "1½",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "1½ tbsp olive oil",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "sumac, plus extra to garnish",
+      "original": "2 tsp sumac, plus extra to garnish",
+      "group": null
+    },
+    {
+      "amount": "juice of 1 lemon",
+      "unit": "",
+      "item": "juice of 1 lemon",
+      "original": "juice of 1 lemon",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "tarragon leaves",
+      "original": "4 tbsp tarragon leaves",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "coarsely chopped flat-leaf parsley",
+      "original": "2 tbsp coarsely chopped flat-leaf parsley",
+      "group": null
+    },
+    {
+      "amount": "70",
+      "unit": "g",
+      "item": "Greek feta cheese, sliced",
+      "original": "2½ oz / 70 g Greek feta cheese, sliced",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "Start by releasing the pomegranate seeds. The best way to do it is to halve the pomegranate along its “belly” (you only need half a pomegranate here), then hold the half firmly in your hand with the seeds facing your palm. Over a large bowl, start bashing the back of the fruit with a wooden spoon. Don’t hit too hard or you’ll bruise the seeds and break the skin. Magically, the seeds will just fall out. Pick out any white skin that falls in.",
+    "Remove the leaves of the fennel, keeping a few for garnish later, and trim the base, making sure you leave enough of it still attached to hold the slices together. Slice very thinly lengthwise (a mandoline would come in handy here).",
+    "In a bowl, mix the olive oil, sumac, lemon juice, herbs, and some salt and pepper. Add the fennel and toss well. Taste for seasoning but remember, the feta will add saltiness.",
+    "Layer the fennel, then the feta, and then the pomegranate seeds in individual serving dishes. Garnish with the reserved fennel leaves, sprinkle over some sumac, and serve immediately."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/fennel-and-feta-with-pomegranate-seeds-and-sumac.jpg"
+}

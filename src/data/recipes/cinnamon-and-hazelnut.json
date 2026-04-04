@@ -1,0 +1,51 @@
+{
+  "id": "cinnamon-and-hazelnut",
+  "name": "Cinnamon and hazelnut",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "¼",
+      "unit": "",
+      "item": "to ⅓ recipe Sweet pastry",
+      "original": "¼ to ⅓ recipe Sweet pastry",
+      "group": null
+    },
+    {
+      "amount": "all-purpose flour for dusting",
+      "unit": "",
+      "item": "all-purpose flour for dusting",
+      "original": "all-purpose flour for dusting",
+      "group": null
+    }
+  ],
+  "method": [
+    "Start by brushing your tartlet pans with a thin layer of melted butter, then leave to set in the fridge.",
+    "Meanwhile, prepare a wide, clean working surface and have ready a rolling pin and a small amount of flour. Lightly dust the work surface, place the pastry in the middle, and roll out the pastry thinly, turning it around as you go. Work quickly so it doesn’t get warm. Once the pastry is no more than 1/16 to ⅛ inch / 2 to 3 mm thick, cut out 6 circles using a pastry cutter or the rim of a bowl. Line the buttered pans by placing the circles inside and gently pressing them into the corners and sides. Leave to rest in the fridge for at least 30 minutes.",
+    "Preheat the oven to 150°C. Line each pastry shell with a circle of scrunched-up waxed paper or a piece of foil. It should come 1 cm / 1 cm above the edge of the pastry (paper muffin liners are another great solution). Fill them with rice or dried beans, then place in the oven and blind bake for about 25 minutes. By then they should have taken on a golden brown color. If they are not quite there yet, remove the beans and lining paper and continue baking for 5 to 10 minutes. Remove from the oven.",
+    "Keep the beans or rice and the paper holding them for future use. Remove the tart shells from the pans while they are still slightly warm and leave them to cool down completely."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": "/recipes/cinnamon-and-hazelnut.jpg"
+}

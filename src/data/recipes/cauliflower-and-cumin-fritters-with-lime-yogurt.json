@@ -1,0 +1,164 @@
+{
+  "id": "cauliflower-and-cumin-fritters-with-lime-yogurt",
+  "name": "Cauliflower and cumin fritters with lime yogurt",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "These addictive fritters are Sami’s mother’s recipe. She used to make them once a week and give them to the kids in a pita to take to school for lunch. They are not dissimilar to Indian pakoras. Best eaten hot or warm or taken on a picnic—in a pita, of course, with some hummus and tomato.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "300",
+      "unit": "g",
+      "item": "Greek yogurt",
+      "original": "1⅓ cups / 300 g Greek yogurt",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "finely chopped cilantro",
+      "original": "2 tbsp finely chopped cilantro",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "grated zest of 1 lime",
+      "unit": "",
+      "item": "grated zest of 1 lime",
+      "original": "grated zest of 1 lime",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "lime juice",
+      "original": "2 tbsp lime juice",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "2 tbsp olive oil",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "small",
+      "item": "cauliflower (about 11 oz / 320 g)",
+      "original": "1 small cauliflower (about 11 oz / 320 g)",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "scant 1 cup / 120 g all-purpose flour",
+      "unit": "",
+      "item": "scant 1 cup / 120 g all-purpose flour",
+      "original": "scant 1 cup / 120 g all-purpose flour",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "chopped flat-leaf parsley, plus a few extra leaves for garnish",
+      "original": "3 tbsp chopped flat-leaf parsley, plus a few extra leaves for garnish",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "shallots, finely chopped",
+      "original": "2 shallots, finely chopped",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "free-range eggs",
+      "original": "4 free-range eggs",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "ground cumin",
+      "original": "1½ tsp ground cumin",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1 tsp ground cinnamon",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "ground turmeric",
+      "original": "½ tsp ground turmeric",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "1½ tsp salt",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "1 tsp freshly ground black pepper",
+      "group": "Lime sauce"
+    },
+    {
+      "amount": "500",
+      "unit": "ml",
+      "item": "sunflower oil for frying",
+      "original": "2 cups / 500 ml sunflower oil for frying",
+      "group": "Lime sauce"
+    }
+  ],
+  "method": [
+    "To make the sauce, put all the sauce ingredients in a bowl and whisk well. Taste—looking for a vibrant, tart, citrusy flavor—and adjust the seasoning. Chill or leave out for up to an hour.",
+    "To prepare the cauliflower, trim off any leaves and use a small knife to divide the cauliflower into little florets. Add them to a large pan of boiling salted water and simmer for 15 minutes, until very soft. Drain into a colander.",
+    "While the cauliflower is cooking, put the flour, chopped parsley, garlic, shallots, eggs, spices, salt, and pepper in a bowl and whisk together well to make a batter. When the mixture is smooth and homogenous, add the warm cauliflower. Mix to break down the cauliflower into the batter.",
+    "Pour the sunflower oil into a wide pan to a depth of ⅔ inch / 1.5 cm and place over high heat. When it is very hot, carefully spoon in generous portions of the cauliflower mixture, 3 tablespoons per fritter. Take care with the hot oil! Space the fritters apart with a fish slicer, making sure they are not overcrowded. Fry in small batches, controlling the oil temperature so the fritters cook but don’t burn. They should take 3 to 4 minutes on each side.",
+    "Remove from the pan and drain well on a few layers of paper towels. Serve with the sauce on the side."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/cauliflower-and-cumin-fritters-with-lime-yogurt.jpg"
+}

@@ -1,0 +1,107 @@
+{
+  "id": "roasted-eggplant-with-saffron-yogurt",
+  "name": "Roasted eggplant with saffron yogurt",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": "This is probably the archetypal Ottolenghi salad: robust contrasting flavors, vibrant and vivacious colors, fresh herbs, and nuts. To create the most impact, we recommend that you serve it from a comunal plate brought out to the dining table. It makes an exciting starter and doesn’t need much else alongside it.",
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "a small pinch of saffron threads",
+      "unit": "",
+      "item": "a small pinch of saffron threads",
+      "original": "a small pinch of saffron threads",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "hot water",
+      "original": "3 tbsp hot water",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "180",
+      "unit": "g",
+      "item": "Greek yogurt",
+      "original": "¾ cup / 180 g Greek yogurt",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "2½",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "2½ tbsp lemon juice",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "3 tbsp olive oil",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "3",
+      "unit": "medium",
+      "item": "eggplants, cut into slices ¾ inch / 2 cm thick, or into wedges (see recipe for Marinated Eggplant)",
+      "original": "3 medium eggplants, cut into slices ¾ inch / 2 cm thick, or into wedges (see recipe for Marinated Eggplant)",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "toasted pine nuts",
+      "original": "2 tbsp toasted pine nuts",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "a handful of pomegranate seeds",
+      "unit": "",
+      "item": "a handful of pomegranate seeds",
+      "original": "a handful of pomegranate seeds",
+      "group": "Saffron yogurt"
+    },
+    {
+      "amount": "20",
+      "unit": "",
+      "item": "basil leaves",
+      "original": "20 basil leaves",
+      "group": "Saffron yogurt"
+    }
+  ],
+  "method": [
+    "To make the sauce, infuse the saffron in the hot water in a small bowl for 5 minutes. Pour the infusion into a bowl containing the yogurt, garlic, lemon juice, olive oil, and some salt. Whisk well to get a smooth, golden sauce. Taste and adjust the salt, if necessary, then chill. This sauce will keep well in the fridge for up to 3 days.",
+    "Preheat the oven to 220°C. Place the eggplant slices on a baking sheet, brush both sides with plenty of olive oil, and sprinkle with salt and pepper. Roast for 20 to 35 minutes, until the slices take on a beautiful light brown color. Let them cool down. The eggplants will keep in the fridge for 3 days; just let them come to room temperature before serving.",
+    "To serve, arrange the eggplant slices on a large plate, slightly overlapping. Drizzle the saffron yogurt over them, sprinkle with the pine nuts and pomegranate seeds, and lay the basil on top."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/roasted-eggplant-with-saffron-yogurt.jpg"
+}

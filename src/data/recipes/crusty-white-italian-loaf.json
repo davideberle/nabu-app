@@ -1,0 +1,124 @@
+{
+  "id": "crusty-white-italian-loaf",
+  "name": "Crusty white Italian loaf",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes one 1-lb / 500-g loaf",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "recipe Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "original": "1 recipe Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "group": null
+    },
+    {
+      "amount": "600",
+      "unit": "g",
+      "item": "Jerusalem artichokes, peeled and cut into ¾-inch / 2-cm cubes",
+      "original": "1⅓ lb / 600 g Jerusalem artichokes, peeled and cut into ¾-inch / 2-cm cubes",
+      "group": "Filling"
+    },
+    {
+      "amount": "250",
+      "unit": "g",
+      "item": "Swiss chard (or spinach)",
+      "original": "9 oz / 250 g Swiss chard (or spinach)",
+      "group": "Filling"
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "4 tbsp olive oil",
+      "group": "Filling"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "chopped rosemary",
+      "original": "½ tsp chopped rosemary",
+      "group": "Filling"
+    },
+    {
+      "amount": "juice of ½ lemon",
+      "unit": "",
+      "item": "juice of ½ lemon",
+      "original": "juice of ½ lemon",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Filling"
+    },
+    {
+      "amount": "scant 1 cup / 220 ml heavy cream",
+      "unit": "",
+      "item": "scant 1 cup / 220 ml heavy cream",
+      "original": "scant 1 cup / 220 ml heavy cream",
+      "group": "Filling"
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "crème fraîche",
+      "original": "3½ tbsp / 50 ml crème fraîche",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range eggs",
+      "original": "2 free-range eggs",
+      "group": "Filling"
+    },
+    {
+      "amount": "150",
+      "unit": "g",
+      "item": "feta cheese, broken into pieces",
+      "original": "5 oz / 150 g feta cheese, broken into pieces",
+      "group": "Filling"
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": "Filling"
+    }
+  ],
+  "method": [
+    "The day before you want to make your bread, you will need to make the biga starter. Using an electric mixer with the dough hook attached, knead together all the ingredients for the biga. Run the machine on low speed for about 7 minutes. This should create a very tight dough with no lumps. Place it in a bowl large enough to allow it to at least double in size, then cover the bowl with plastic wrap and leave at room temperature overnight—anything from 15 to 20 hours.",
+    "The starter should now have doubled in volume. Take it in your hands and cut it into small pieces with a pair of scissors. Put the pieces in the mixer bowl and add the flour, polenta, malt powder, and water. Run the mixer on a low speed for 5 minutes, then increase to a fast speed and knead for another 5 minutes. At this point the dough will look very wet and sticky. Add the salt and continue mixing on a fast speed for a further 5 minutes. The dough should now come together as a ball and appear shiny.",
+    "Take a large bowl and brush it with olive oil. Oil your hands and lift the dough from the mixer to the bowl. Cover with a damp cloth and leave in a warm place for 30 minutes.",
+    "Wet your hands with a little olive oil. While the dough is still in the bowl, pick it up from one edge and stretch it. Fold the stretched edge on top. Repeat this, stretching and folding the dough from all sides of the bowl. In the end you will get a few “flaps” gathered together on top of the dough. Now turn the dough over and place it back in the bowl, flaps on the bottom. Cover with the damp cloth and leave for another 30 minutes.",
+    "Repeat the same turning process once more and then leave to rest, covered, for about 10 minutes.",
+    "Now turn the dough out onto a floured work surface and gather the edges together on top of the dough to form a rustic ball shape. Lay out a clean kitchen towel on the work surface and dust it liberally with flour. Lift the ball gently and place it in the center of the towel, seam side down. Gently gather the edges of the towel and place them on top of the ball to cover it totally. Transfer the entire parcel to a bowl large enough to support its sides and leave to rise for about 30 minutes.",
+    "Place a small ovenproof dish with water in it in the bottom of your oven and preheat it to 230°C. Make sure it reaches this temperature! Take a heavy baking sheet and dust it with a little polenta. Very gently turn the dough out onto the baking sheet and remove the cloth. Try not to lose much air.",
+    "Bake the loaf in the oven for about 25 minutes, until a good dark brown color forms. When you tap it on its bottom, the bread should sound hollow. Leave upside down on a wire rack to cool."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

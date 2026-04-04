@@ -1,0 +1,142 @@
+{
+  "id": "watercress-and-mustard-sauce",
+  "name": "Watercress and mustard sauce",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "large",
+      "item": "organic or free-range chicken, divided into quarters: breast and wing, leg and thigh",
+      "original": "1 large organic or free-range chicken, divided into quarters: breast and wing, leg and thigh",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "red onions, thinly sliced",
+      "original": "2 red onions, thinly sliced",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "2 cloves garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil, plus extra for drizzling",
+      "original": "4 tbsp olive oil, plus extra for drizzling",
+      "group": null
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "ground allspice",
+      "original": "1½ tsp ground allspice",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1 tsp ground cinnamon",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "sumac",
+      "original": "1 tbsp sumac",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "lemon, thinly sliced",
+      "original": "1 lemon, thinly sliced",
+      "group": null
+    },
+    {
+      "amount": "scant 1 cup / 200 ml chicken stock or water",
+      "unit": "",
+      "item": "scant 1 cup / 200 ml chicken stock or water",
+      "original": "scant 1 cup / 200 ml chicken stock or water",
+      "group": null
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "salt, plus extra",
+      "original": "1½ tsp salt, plus extra",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "1 tsp freshly ground black pepper",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "za’atar",
+      "original": "2 tbsp za’atar",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tsp",
+      "item": "/ 20 g unsalted butter",
+      "original": "4 tsp / 20 g unsalted butter",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "tbsp",
+      "item": "/ 50 g pine nuts",
+      "original": "6 tbsp / 50 g pine nuts",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "4 tbsp chopped flat-leaf parsley",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 250°C or its highest setting. Place the herbs, garlic, and olive oil in a heavy-duty blender or food processor and purée them coarsely.",
+    "Lay the pork belly on a baking sheet, skin side down, and sprinkle lightly with salt and pepper. Use your hands to spread the herb mixture evenly all over the top, pressing it on so it sticks to the meat.",
+    "Turn the belly skin side up, wipe the skin dry with paper towels, and sprinkle sea salt evenly all over the skin (but don’t put too much on, as it might create a crust and prevent the crackling from forming). Put the pan in the oven and roast for 1 hour, turning the pan around every 20 minutes. Once the skin has formed some crackling, turn the oven down to 170°C, pour the white wine into the pan (avoiding the pork skin), and continue roasting for another hour. If the belly starts turning black, cover it with aluminum foil.",
+    "For the last cooking stage, turn the oven down to 110°C and continue roasting for another hour, until the skin has crackled completely and thoroughly dried.",
+    "Remove the pork from the oven. Use a sharp knife to divide it into segments of a few ribs, cutting between the rib bones. Give as many ribs per portion as the appetite demands. Serve with relish on the side."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,80 @@
+{
+  "id": "broiled-mackerel-with-green-olive-celery-and-raisin-salsa",
+  "name": "Broiled mackerel with green olive, celery, and raisin salsa",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "wedges preserved lemon, store-bought or homemade",
+      "original": "2 wedges preserved lemon, store-bought or homemade",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "sea bass fillets (about 1⅓ lb / 600 g total), pin bones removed and cut in half at an angle",
+      "original": "4 sea bass fillets (about 1⅓ lb / 600 g total), pin bones removed and cut in half at an angle",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "3 tbsp olive oil",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "large",
+      "item": "pita breads, cut into quarters",
+      "original": "2 large pita breads, cut into quarters",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "g",
+      "item": "labneh, store-bought or homemade at room temperature",
+      "original": "4 oz / 120 g labneh, store-bought or homemade at room temperature",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "pomegranate seeds (optional)",
+      "original": "2 tbsp pomegranate seeds (optional)",
+      "group": null
+    }
+  ],
+  "method": [
+    "To make the salsa, score a little shallow cross at the bottom of each tomato and then drop them into boiling water for about 30 seconds. Remove, refresh under plenty of cold water, and then peel. Grate them coarsely on a cheese grater and mix with the chile, red pepper flakes, herbs, and lemon juice. Add salt to taste, then set aside.",
+    "Remove and discard the flesh of the preserved lemon and slice the skin very finely. Set aside.",
+    "Now prepare the fish. First, heat the oven to 180°C. Then season the fillets with plenty of salt and pepper. Heat the oil in a nonstick frying pan large enough to hold all the fillets at once. Add the sea bass, skin side down, and fry over medium heat for 3 minutes, until the skin is crisp. Turn the fish over and continue to fry for about 2 minutes, until it is cooked through.",
+    "While the fish are frying, place the pitas in the oven for 2 minutes, just to warm them slightly. Put 2 pita quarters on each serving plate and spread a rough, thick layer of labneh over them.",
+    "Place the hot fish on top of the pitas and spoon some of the salsa over and around the fish. Finish with a few slices of preserved lemon and the pomegranate seeds, if using."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": "/recipes/broiled-mackerel-with-green-olive-celery-and-raisin-salsa.jpg"
+}

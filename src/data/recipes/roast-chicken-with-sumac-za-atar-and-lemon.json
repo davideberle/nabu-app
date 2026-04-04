@@ -1,0 +1,141 @@
+{
+  "id": "roast-chicken-with-sumac-za-atar-and-lemon",
+  "name": "Roast chicken with sumac, za’atar, and lemon",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "large",
+      "item": "organic or free-range chicken, divided into quarters: breast and wing, leg and thigh",
+      "original": "1 large organic or free-range chicken, divided into quarters: breast and wing, leg and thigh",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "red onions, thinly sliced",
+      "original": "2 red onions, thinly sliced",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "2 cloves garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil, plus extra for drizzling",
+      "original": "4 tbsp olive oil, plus extra for drizzling",
+      "group": null
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "ground allspice",
+      "original": "1½ tsp ground allspice",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1 tsp ground cinnamon",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "sumac",
+      "original": "1 tbsp sumac",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "lemon, thinly sliced",
+      "original": "1 lemon, thinly sliced",
+      "group": null
+    },
+    {
+      "amount": "scant 1 cup / 200 ml chicken stock or water",
+      "unit": "",
+      "item": "scant 1 cup / 200 ml chicken stock or water",
+      "original": "scant 1 cup / 200 ml chicken stock or water",
+      "group": null
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "salt, plus extra",
+      "original": "1½ tsp salt, plus extra",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "1 tsp freshly ground black pepper",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "za’atar",
+      "original": "2 tbsp za’atar",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tsp",
+      "item": "/ 20 g unsalted butter",
+      "original": "4 tsp / 20 g unsalted butter",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "tbsp",
+      "item": "/ 50 g pine nuts",
+      "original": "6 tbsp / 50 g pine nuts",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "4 tbsp chopped flat-leaf parsley",
+      "group": null
+    }
+  ],
+  "method": [
+    "In a large bowl, mix the chicken with the onions, garlic, olive oil, spices, lemon, stock, salt, and pepper. Leave in the fridge to marinate for a few hours or overnight.",
+    "Preheat the oven to 200°C. Transfer the chicken and its marinade to a baking sheet large enough to accommodate all the chicken pieces lying flat and spaced well apart. They should be skin side up. Sprinkle the za’atar over the chicken and onions and put the pan in the oven. Roast for 30 to 40 minutes, until the chicken is colored and just cooked through.",
+    "Meanwhile, melt the butter in a small frying pan, add the pine nuts and a pinch of salt, and cook over medium heat, stirring constantly, until they turn golden. Transfer to a plate lined with paper towels to absorb the fat.",
+    "Transfer the hot chicken and onions to a serving plate and finish with the chopped parsley, pine nuts, and a drizzle of olive oil. You can sprinkle on more za’atar and sumac, if you like."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/roast-chicken-with-sumac-za-atar-and-lemon.jpg"
+}

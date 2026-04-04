@@ -1,0 +1,67 @@
+{
+  "id": "peaches-and-speck-with-orange-blossom",
+  "name": "Peaches and speck with orange blossom",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "orange blossom water",
+      "original": "3 tbsp orange blossom water",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "good-quality balsamic vinegar",
+      "original": "1 tbsp good-quality balsamic vinegar",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "maple syrup",
+      "original": "1 tbsp maple syrup",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "3 tbsp olive oil",
+      "group": null
+    }
+  ],
+  "method": [
+    "Cut the peaches in half and remove the pits. Slice each half into 3 wedges, place in a bowl, and add the olive oil and some salt and pepper. Toss well to coat them.",
+    "Place a ridged grill pan over high heat and leave for a few minutes so it heats up well. Place the peach wedges on the pan and grill for a minute on each side. You want to get nice charcoal lines on all sides. Remove the peaches from the pan and leave to cool.",
+    "To make the dressing, place the orange blossom water, vinegar, and maple syrup in a bowl and whisk to combine. Drizzle the oil in slowly while you whisk to get a thick dressing. Season to taste.",
+    "On a serving platter, arrange layers of peach, endive, watercress, chard, and speck. Spoon over enough dressing to coat all the ingredients but not to drench them. Serve straight away."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/peaches-and-speck-with-orange-blossom.jpg"
+}

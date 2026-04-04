@@ -1,0 +1,113 @@
+{
+  "id": "brioche-galette",
+  "name": "Brioche galette",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "recipe Brioche dough",
+      "original": "1 recipe Brioche dough",
+      "group": null
+    },
+    {
+      "amount": "all-purpose flour for dusting",
+      "unit": "",
+      "item": "all-purpose flour for dusting",
+      "original": "all-purpose flour for dusting",
+      "group": null
+    },
+    {
+      "amount": "milk for brushing",
+      "unit": "",
+      "item": "milk for brushing",
+      "original": "milk for brushing",
+      "group": null
+    },
+    {
+      "amount": "⅓",
+      "unit": "",
+      "item": "recipe Mascarpone cream",
+      "original": "⅓ recipe Mascarpone cream",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "red plum, halved, pitted, and cut into slices about 1/16 inch / 2 mm thick",
+      "original": "1 red plum, halved, pitted, and cut into slices about 1/16 inch / 2 mm thick",
+      "group": null
+    },
+    {
+      "amount": "150",
+      "unit": "g",
+      "item": "mixed berries (such as raspberries, black currants, blueberries)",
+      "original": "1¼ cups / 150 g mixed berries (such as raspberries, black currants, blueberries)",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "/ 30 g lightly salted butter, melted",
+      "original": "2 tbsp / 30 g lightly salted butter, melted",
+      "group": null
+    },
+    {
+      "amount": "¼",
+      "unit": "",
+      "item": "recipe Crumble",
+      "original": "¼ recipe Crumble",
+      "group": null
+    },
+    {
+      "amount": "2½",
+      "unit": "tbsp",
+      "item": "/ 15 g sliced almonds",
+      "original": "2½ tbsp / 15 g sliced almonds",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1 tsp ground cinnamon",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "ripe",
+      "item": "passion fruit",
+      "original": "1 ripe passion fruit",
+      "group": null
+    }
+  ],
+  "method": [
+    "After the brioche dough has been in the fridge for 14 to 24 hours, transfer it to a lightly floured work surface and use a rolling pin to roll it into an oval about ¾ inch / 2 cm thick (it doesn’t need to be perfect). Transfer to a heavy-duty baking sheet lightly dusted with flour. Using a pastry brush, lightly brush the rim of the brioche with a small amount of water. Fold in the edge to form a border 1 cm / 1 cm thick. Prick the center of the dough all over with a fork. Cover loosely with plastic wrap and leave somewhere warm until it has risen by about half its volume.",
+    "Preheat the oven to 170°C. When the brioche has risen sufficiently, brush the edges with a little milk. Spread the center with the mascarpone cream, being careful not to press down too hard. Scatter the plum slices over the cream and then arrange the berries on top. Brush the berries with the melted butter. Mix the crumble with the almonds and cinnamon and sprinkle on top.",
+    "Bake for 25 to 30 minutes. Check the bottom by lifting with an icing spatula to make sure it is evenly colored. Transfer to a wire rack and leave to cool slightly.",
+    "Just before serving, scoop out the inside of the passion fruit and drizzle it over the fruits."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/brioche-galette.jpg"
+}

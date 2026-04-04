@@ -1,0 +1,146 @@
+{
+  "id": "lamb-rib-chops-with-walnut-fig-and-goat-cheese-salad",
+  "name": "Lamb rib chops with walnut, fig, and goat cheese salad",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat & Fish"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Meat & Fish"
+  },
+  "servings": "serves 4 to 6",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "150",
+      "unit": "ml",
+      "item": "tahini paste",
+      "original": "⅔ cup / 150 ml tahini paste",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "150",
+      "unit": "ml",
+      "item": "water",
+      "original": "⅔ cup / 150 ml water",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "70",
+      "unit": "ml",
+      "item": "white wine vinegar",
+      "original": "4½ tbsp / 70 ml white wine vinegar",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "clove",
+      "item": "garlic, crushed",
+      "original": "1 clove garlic, crushed",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "pinch of salt",
+      "unit": "",
+      "item": "pinch of salt",
+      "original": "pinch of salt",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "35",
+      "unit": "g",
+      "item": "stale white bread, crusts removed",
+      "original": "1¼ oz / 35 g stale white bread, crusts removed",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "300",
+      "unit": "g",
+      "item": "minced beef",
+      "original": "10½ oz / 300 g minced beef",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "300",
+      "unit": "g",
+      "item": "minced lamb",
+      "original": "10½ oz /300 g minced lamb",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "3",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "3 cloves garlic, crushed",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "35",
+      "unit": "g",
+      "item": "flat-leaf parsley, finely chopped, plus 1 tbsp for garnish",
+      "original": "⅔ cup / 35 g flat-leaf parsley, finely chopped, plus 1 tbsp for garnish",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "1 tsp salt",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "½ tsp freshly ground black pepper",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "2½",
+      "unit": "tsp",
+      "item": "ground allspice",
+      "original": "2½ tsp ground allspice",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "1½",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1½ tsp ground cinnamon",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "free-range egg",
+      "original": "1 free-range egg",
+      "group": "Tahini sauce"
+    },
+    {
+      "amount": "grated zest of ½ lemon, for garnish",
+      "unit": "",
+      "item": "grated zest of ½ lemon, for garnish",
+      "original": "grated zest of ½ lemon, for garnish",
+      "group": "Tahini sauce"
+    }
+  ],
+  "method": [
+    "To make the tahini sauce, in a bowl, mix together the tahini paste, water, vinegar, garlic, and salt. Whisk well until it turns smooth and creamy, with a thick, saucelike consistency. You might need to add some more water. Set the sauce aside while you make the meatballs.",
+    "Preheat the oven to 200°C. Soak the bread in cold water for 2 to 3 minutes, until it goes soft. Squeeze out most of the water and crumble the bread into a mixing bowl. Add the beef, lamb, garlic, ⅔ cup / 35 g parsley, salt, spices, and egg and mix well with your hands.",
+    "Shape the meat mixture into balls, about the size of golf balls. Pour olive oil to a depth of ¼ inch / 5 mm into a large frying pan. Heat it, being careful it doesn’t get too hot or it will spit all over when frying. Shallow-fry the meatballs in small batches for about 2 minutes, turning them around as you go, until they are uniformly brown on the outside.",
+    "Put the meatballs on paper towels to soak up the oil and then arrange them in a single layer in an ovenproof serving dish. Place in the oven for 5 minutes. Carefully remove from the oven, pour the tahini sauce over and around the meatballs, and return to the oven for another 10 minutes. The tahini will take on just a little bit of color and thicken up; the meatballs should be just cooked through. Transfer to individual plates, garnish liberally with the 1 tbsp parsley and lemon zest, and serve at once."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

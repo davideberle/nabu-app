@@ -1,0 +1,164 @@
+{
+  "id": "sweet-and-spicy-beef-and-pork-pie",
+  "name": "Sweet and spicy beef and pork pie",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes one 1-lb / 500-g loaf",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "quantity Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "original": "1 quantity Short-crust pastry or 1 lb / 500 g store-bought pastry",
+      "group": null
+    },
+    {
+      "amount": "6",
+      "unit": "tbsp",
+      "item": "/ 50 g pine nuts",
+      "original": "6 tbsp / 50 g pine nuts",
+      "group": "Filling"
+    },
+    {
+      "amount": "120",
+      "unit": "ml",
+      "item": "olive oil",
+      "original": "½ cup / 120 ml olive oil",
+      "group": "Filling"
+    },
+    {
+      "amount": "400",
+      "unit": "g",
+      "item": "ground beef",
+      "original": "14 oz / 400 g ground beef",
+      "group": "Filling"
+    },
+    {
+      "amount": "400",
+      "unit": "g",
+      "item": "sausage meat",
+      "original": "14 oz / 400 g sausage meat",
+      "group": "Filling"
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "tomato paste",
+      "original": "3 tbsp tomato paste",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "sugar",
+      "original": "2 tsp sugar",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "salt",
+      "original": "2 tsp salt",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "freshly ground black pepper",
+      "original": "1 tsp freshly ground black pepper",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "dried mint",
+      "original": "1 tbsp dried mint",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "ground allspice",
+      "original": "2 tsp ground allspice",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "1 tsp ground cinnamon",
+      "group": "Filling"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "ground nutmeg",
+      "original": "½ tsp ground nutmeg",
+      "group": "Filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tsp",
+      "item": "sweet paprika",
+      "original": "1 tsp sweet paprika",
+      "group": "Filling"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "cayenne pepper or red pepper flakes",
+      "original": "½ tsp cayenne pepper or red pepper flakes",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "onions, thinly sliced",
+      "original": "2 onions, thinly sliced",
+      "group": "Filling"
+    },
+    {
+      "amount": "7",
+      "unit": "",
+      "item": "free-range eggs",
+      "original": "7 free-range eggs",
+      "group": "Filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "chopped flat-leaf parsley",
+      "original": "2 tbsp chopped flat-leaf parsley",
+      "group": "Filling"
+    }
+  ],
+  "method": [
+    "Lightly oil a 9-inch / 23-cm tart pan with a removable bottom. On a lightly floured surface, roll out the pastry 1/16 to ⅛ inch / 2 to 3 mm thick. Use the pastry to line the pan, pressing it well into the corners and the sides and allowing it to spill over the edge by at least ¾ inch / 2 cm. This excess will be trimmed later. Prick the base with a fork in a few places, then leave the tart shell to rest in the fridge for at least half an hour.",
+    "Preheat the oven to 170°C. Cut a circle of waxed paper greater in diameter than the base plus the sides of the tart pan. Tuck it in the pastry shell and fill with dried beans or rice. Blind bake the shell for 35 minutes, then remove the paper and the beans or rice (you can keep them and reuse indefinitely for baking blind). Return the pastry shell to the oven and bake for a further 5 to 10 minutes, until lightly golden and thoroughly cooked. Remove from the oven and leave to cool.",
+    "To make the filling, you can toast the pine nuts at the same time you bake the pastry shell. Scatter them on a baking sheet and leave in the oven for 8 minutes, until golden.",
+    "Heat 4 tablespoons / 60 ml of the olive oil in a large, heavy saucepan, add the beef, and break it down with a fork. Cook over high heat for a few minutes, until colored. Add the sausage meat, mix well with your fork, and keep on cooking over medium heat for 15 minutes, until golden. Stir in the tomato paste and sugar and cook for another 3 minutes. Then add the salt, pepper, mint, and all the spices and cook for 10 minutes over low heat.",
+    "In the meantime, fry the onions in the remaining 4 tablespoons / 60 ml olive oil in a separate pan for about 10 minutes, until golden brown. Drain off most of the oil and add the onions to the cooked meat. Add the pine nuts and taste for salt and pepper.",
+    "Increase the oven to 190°C. To assemble the tart, spoon half the hot meat mixture into the pastry shell. Make 3 shallow holes in the mixture, then break 3 of the eggs, one by one, and pour them into the holes. Using a wooden spoon, stir the eggs gently into the meat—just enough to disperse them a little, while keeping areas with more egg and maintaining some distinction between white and yolk. Spoon the rest of the meat on top, create some holes in it, and break in the remaining 4 eggs, dispersing them as before.",
+    "Put the pie in the oven and bake for about 15 minutes, until the eggs are set. If the top begins to darken too much, cover it with aluminum foil for the remaining cooking period.",
+    "Remove from the oven and break off the excess pastry with your hands. Take the pie out of the pan and serve hot or warm, garnished with the parsley."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

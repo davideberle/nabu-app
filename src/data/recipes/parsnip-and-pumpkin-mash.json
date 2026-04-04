@@ -1,0 +1,158 @@
+{
+  "id": "parsnip-and-pumpkin-mash",
+  "name": "Parsnip and pumpkin mash",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "sweet potatoes (about scant 2 lb / 850 g in total)",
+      "original": "2 sweet potatoes (about scant 2 lb / 850 g in total)",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "3 tbsp olive oil",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "/ 35 g pecans",
+      "original": "4 tbsp / 35 g pecans",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "",
+      "item": "green onions, coarsely chopped",
+      "original": "4 green onions, coarsely chopped",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "coarsely chopped flat-leaf parsley",
+      "original": "4 tbsp coarsely chopped flat-leaf parsley",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "coarsely chopped cilantro",
+      "original": "2 tbsp coarsely chopped cilantro",
+      "group": null
+    },
+    {
+      "amount": "¼",
+      "unit": "tsp",
+      "item": "red pepper flakes",
+      "original": "¼ tsp red pepper flakes",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "/ 35 g golden raisins",
+      "original": "4 tbsp / 35 g golden raisins",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    },
+    {
+      "amount": "4",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "4 tbsp olive oil",
+      "group": "Dressing"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "maple syrup",
+      "original": "2 tbsp maple syrup",
+      "group": "Dressing"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "sherry vinegar",
+      "original": "1 tbsp sherry vinegar",
+      "group": "Dressing"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "1 tbsp lemon juice",
+      "group": "Dressing"
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "orange juice",
+      "original": "2 tbsp orange juice",
+      "group": "Dressing"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "grated fresh ginger",
+      "original": "2 tsp grated fresh ginger",
+      "group": "Dressing"
+    },
+    {
+      "amount": "½",
+      "unit": "tsp",
+      "item": "ground cinnamon",
+      "original": "½ tsp ground cinnamon",
+      "group": "Dressing"
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": "Dressing"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 190°C. Start with the sweet potatoes. Don’t peel them! Cut them into ¾-inch / 2-cm cubes, spread them out on a baking sheet, and drizzle with the olive oil. Sprinkle with some salt and pepper, mix well with your hands, and then roast in the oven for about 30 minutes, until just tender. Turn them over gently halfway through cooking.",
+    "On a separate baking sheet, toast the pecans for 5 minutes. Remove from the oven and chop coarsely.",
+    "To make the dressing, whisk together all the ingredients in a small bowl with some salt and pepper. Taste and adjust the seasoning, if necessary.",
+    "When the potatoes are ready, transfer them to a large bowl while still hot. Add the green onions, parsley, cilantro, pepper flakes, pecans, and raisins. Pour the dressing over and toss gently to blend, then season to taste. Serve at once or at room temperature."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

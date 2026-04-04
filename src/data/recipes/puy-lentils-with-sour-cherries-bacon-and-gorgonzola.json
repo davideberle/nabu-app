@@ -1,0 +1,86 @@
+{
+  "id": "puy-lentils-with-sour-cherries-bacon-and-gorgonzola",
+  "name": "Puy lentils with sour cherries, bacon, and Gorgonzola",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Vegetables"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4 to 6",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "3",
+      "unit": "large",
+      "item": "eggplants (about 3 lb / 1.4 kg in total)",
+      "original": "3 large eggplants (about 3 lb / 1.4 kg in total)",
+      "group": null
+    },
+    {
+      "amount": "120",
+      "unit": "ml",
+      "item": "sunflower oil",
+      "original": "½ cup / 120 ml sunflower oil",
+      "group": null
+    },
+    {
+      "amount": "4½",
+      "unit": "cups",
+      "item": "/ 1 liter chicken or vegetable stock",
+      "original": "4½ cups / 1 liter chicken or vegetable stock",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "lemon juice",
+      "original": "2 tbsp lemon juice",
+      "group": null
+    },
+    {
+      "amount": "70",
+      "unit": "ml",
+      "item": "heavy cream",
+      "original": "4½ tbsp / 70 ml heavy cream",
+      "group": null
+    },
+    {
+      "amount": "10",
+      "unit": "",
+      "item": "basil leaves",
+      "original": "10 basil leaves",
+      "group": null
+    },
+    {
+      "amount": "salt and freshly ground black pepper",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [
+    "First you need to grill 2 of the eggplants to impart the smoky flavor necessary for this soup. If you have a gas stove, cover your stove top with aluminum foil and place the whole eggplants directly on 2 separate open flames. Using a pair of metal tongs, turn the eggplants regularly until the skin becomes crisp and the eggplants are very soft—about 15 minutes. Remove to a bowl and leave to cool. (If you don’t have a gas stove, place the eggplants under a hot broiler for roughly an hour, turning them occasionally. Don’t worry if they burst slightly during the cooking.)",
+    "Cut the remaining eggplant into ¾-inch / 2-cm cubes. Put a large frying pan over medium heat and pour in half the oil. When it is hot, add half the eggplant cubes and fry, turning with a wooden spoon, until brown on all sides. Drain on paper towels and sprinkle with a little salt. Repeat the process with the rest of the eggplant cubes and the remaining oil.",
+    "When the grilled eggplants have cooled down a little, make an incision along each one and spoon out the cooked flesh, avoiding any black bits of skin. Chop the flesh coarsely with a large knife and place in a saucepan with the stock, lemon juice, 1½ teaspoons of salt, and 1 teaspoon of pepper. Bring to a boil, then lower the heat and simmer for 30 minutes. Add the fried eggplant cubes and cook for a further 5 minutes. Taste the soup and adjust the seasoning if needed.",
+    "To serve, mix the cream into the hot soup and ladle into warmed bowls. Tear the basil leaves and scatter them on top."
+  ],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

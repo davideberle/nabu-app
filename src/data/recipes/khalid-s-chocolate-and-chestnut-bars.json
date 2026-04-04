@@ -1,0 +1,94 @@
+{
+  "id": "khalid-s-chocolate-and-chestnut-bars",
+  "name": "Khalid’s chocolate and chestnut bars",
+  "source": {
+    "cookbook": "Ottolenghi: The Cookbook",
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baking & Patisserie"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Baking & Patisserie"
+  },
+  "servings": "makes about 20",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "amount": "1",
+      "unit": "cup",
+      "item": "minus 4 tsp / 110 g confectioners’ sugar",
+      "original": "1 cup minus 4 tsp / 110 g confectioners’ sugar",
+      "group": null
+    },
+    {
+      "amount": "50",
+      "unit": "g",
+      "item": "ground almonds",
+      "original": "½ cup / 50 g ground almonds",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "tbsp",
+      "item": "/ 12 g cocoa powder",
+      "original": "2 tbsp / 12 g cocoa powder",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "",
+      "item": "free-range egg whites 3½ tbsp / 40 g superfine sugar",
+      "original": "2 free-range egg whites 3½ tbsp / 40 g superfine sugar",
+      "group": null
+    },
+    {
+      "amount": "65",
+      "unit": "g",
+      "item": "dark chocolate",
+      "original": "2¼ oz / 65 g dark chocolate",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "1",
+      "unit": "tbsp",
+      "item": "/ 15 g unsalted butter",
+      "original": "1 tbsp / 15 g unsalted butter",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "50",
+      "unit": "ml",
+      "item": "heavy cream",
+      "original": "3½ tbsp / 50 ml heavy cream",
+      "group": "Ganache filling"
+    },
+    {
+      "amount": "2",
+      "unit": "tsp",
+      "item": "dark rum",
+      "original": "2 tsp dark rum",
+      "group": "Ganache filling"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 150°C. Lightly grease an 8-inch / 20-cm square pan and line it with aluminum foil or parchment paper.",
+    "To make the base, place the biscuits in a large bowl and crush with your hands or a rolling pin. Add the melted butter and mix together to make a sandy paste. Scatter this mixture in the pan and press hard onto the bottom until level. Leave in the fridge to set.",
+    "Meanwhile, put the dark chocolate and butter in a heatproof bowl set over a saucepan of simmering water and leave to melt. Stir occasionally with a wooden spoon and remove from the pan as soon as they melt so that they don’t get too hot.",
+    "Use an electric mixer to whisk together the eggs, yolk, and sugar until thick and pale (you could also do it with a hand whisk). Gently fold the chocolate mixture into the eggs, followed by the chopped chestnuts, figs, and white chocolate. Spread evenly over the biscuit base and bake on the middle rack of the oven for 15 to 20 minutes. A skewer inserted into the bar should come out with lots of gooey crumb attached, the same as when you make brownies (see Brownies for a full description). Make sure you don’t go beyond this point. Remove from the oven, leave to cool, then refrigerate for a few hours until set.",
+    "Take the bar out of the pan and peel off the aluminum foil or paper. Cut into bars or squares and dust lightly with cocoa powder. Let them come to room temperature before serving."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}
