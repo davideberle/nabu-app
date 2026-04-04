@@ -1,0 +1,53 @@
+{
+  "id": "arugula-and-pomegranate-salad",
+  "name": "Arugula & Pomegranate Salad",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "2 servings",
+  "time": "10 minutes",
+  "intro": "This salad is what I often throw together when I want a “no chopping” salad that I can make in just a few minutes. I first had it at an upscale restaurant in Kuwait, and I was pleasantly surprised by the combination of pomegranate and Parmesan cheese. The tartness and saltiness work so well together alongside the pepperiness of the arugula. Garnishing it with chopped pistachios adds texture and elevates it, but feel free to use any other seeds or nuts you have on hand.",
+  "ingredients": [
+    {
+      "item": "arugula",
+      "amount": "3½ cups (70 g)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "fresh mint leaves",
+      "amount": "¼ cup (10 g)"
+    },
+    {
+      "item": "1/3 cup (70 g) pomegranate arils",
+      "amount": ""
+    },
+    {
+      "item": "shredded Parmesan cheese",
+      "amount": "¼ cup (30 g)"
+    },
+    {
+      "item": "chopped pistachios",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Kosher salt and black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, massage the arugula with the oil.",
+    "Add the mint leaves, pomegranate arils, Parmesan, and pistachios to the bowl. Drizzle with the pomegranate molasses and season with salt and pepper.",
+    "Toss to combine well and serve."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

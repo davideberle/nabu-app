@@ -1,0 +1,80 @@
+{
+  "id": "rainbow-jeon",
+  "name": "RAINBOW JEON",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "jalapeno, seeded and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "russet potato, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "large carrot, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "leaves red cabbage, julienned",
+      "amount": "4"
+    },
+    {
+      "item": "green onions, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "1/2 cup JUSTEgg (or plant milk)",
+      "amount": ""
+    },
+    {
+      "item": "1/4 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "1/4 tsp black pepper",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup flour (can substitute in GF flour)",
+      "amount": ""
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oil, for frying",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black sesame seeds halved",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "After chopping up all the vegetables, add them to a large bowl. Add the liquid egg replacer (or plant milk), together with the flour, potato starch, salt, pepper, onion, powder, and garlic powder. Add soy sauce and mix everything together.",
+    "In a medium non-stick pan, add oil over medium high heat. When the oil begins to shimmer, pour the entire contents of the bowl into the pan. Cook for about 3 minutes, until the underside is golden brown. Flip using a large spatula. Sprinkle with sesame seeds. Cook for an additional 2 minutes and then flip once more.",
+    "Cook for 1 more minute and then remove from the pan. Cut into rectangular pieces.."
+  ],
+  "image": "/recipes/rainbow-jeon.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "pumpkin-peanut-fritters",
+  "name": "PUMPKIN-PEANUT FRITTERS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "PUMPKIN, PEANUTS",
+  "servings": "4 to 6 servings",
+  "intro": "PUMPKIN FRITTERS are eaten in South Africa at breakfast or for dessert, but I think these make a perfect afternoon snack. My version has ground peanuts, which give the fritters more depth. While it might be tempting to use canned pumpkin puree, I suggest making your own to give your fritters the freshest taste possible.",
+  "ingredients": [
+    {
+      "item": "skinless raw peanuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unbleached all-purpose flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "finely ground golden flaxseeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "pumpkin puree (see sidebar)",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "Coconut oil, for frying (about 3 cups)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the peanuts in a mortar or in a plastic bag. Pound or crush the peanuts until finely ground. Transfer to a small bowl and stir in the flour, baking powder, and salt.",
+    "In a medium bowl, combine the flaxseeds and water and stir with a fork until well blended. Add the pumpkin puree and mix well. Add the flour mixture and beat with a wooden spoon until well combined, being careful not to overmix. Refrigerate for 5 minutes.",
+    "Preheat the oven to 200°F. Line a plate with paper towels.",
+    "Warm 1 inch of oil in a heavy medium saucepan until hot but not smoking, about 375°F. Working in batches of 5 fritters, carefully drop heaping tablespoons of the batter into the oil and fry, until browned, about 2 minutes. If the fritters are browning more quickly, decrease the temperature to prevent overcooking. Using a slotted spoon, transfer the fritters to the lined plate to drain, then transfer to a baking sheet and put them in the oven to keep warm until all the fritters are cooked. Serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

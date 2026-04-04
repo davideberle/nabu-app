@@ -1,0 +1,75 @@
+{
+  "id": "korean-brased-potatoes",
+  "name": "KOREAN BRASED POTATOES",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1.5 pounds potatoes (about 3 medium size)",
+      "amount": ""
+    },
+    {
+      "item": "carrot (about 3 ounces)",
+      "amount": "1"
+    },
+    {
+      "item": "green chili peppers",
+      "amount": "2 to 3"
+    },
+    {
+      "item": "1/4 medium onion",
+      "amount": ""
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tbsps soy sauce",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rice wine (or mirin) You can omit it if unavailable",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "corn syrup (or oilgodang)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pinch black pepper",
+      "amount": ""
+    },
+    {
+      "item": "3/4 cup water",
+      "amount": ""
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 tsp roasted sesame seeds",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel and cut potatoes into about 1-inch cubes. Cut the carrot, peppers, and onion into big chunks.In a small bowl, combine all the braising liquid ingredients except the sesame oil and seeds. Stir well.",
+    "In a non-stick pan, sauté potatoes in cooking oil for 4 - 5 minutes, stirring occasionally.Add the sauce mix and bring it to a boil over high heat. Drop the carrot pieces in. Cover, and reduce the heat to medium and cook until the potatoes are almost cooked through (about 5 to 6 minutes, depending on the type or size of potatoes). The potatoes should be firm and not mushy."
+  ],
+  "image": "/recipes/korean-brased-potatoes.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

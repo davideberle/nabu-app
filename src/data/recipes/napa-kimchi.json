@@ -1,0 +1,67 @@
+{
+  "id": "napa-kimchi",
+  "name": "NAPA KIMCHI",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "large heads of napa cabbage (more if smaller)",
+      "amount": "4"
+    },
+    {
+      "item": "of coarse sea salt + Water to immerse the cabbage",
+      "amount": "2-4 cups"
+    },
+    {
+      "item": "1-inch slices of daikon/moo – Korean radish (to puree with the other ingredients)",
+      "amount": "2"
+    },
+    {
+      "item": "large bulbs of garlic",
+      "amount": "5"
+    },
+    {
+      "item": "small knob of ginger",
+      "amount": "1"
+    },
+    {
+      "item": "of steamed white/brown rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "half white onion",
+      "amount": ""
+    },
+    {
+      "item": "3/4 cup of red pepper powder (kochukaru)",
+      "amount": ""
+    },
+    {
+      "item": "big daikon/moo – Korean radish (cut into matchsticks)",
+      "amount": "2"
+    },
+    {
+      "item": "diagonally chopped large green onions (or 4-5 bunches of small green onions)",
+      "amount": "3-4"
+    },
+    {
+      "item": "of Asian pear or apple ground",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Wash the cabbage and cut in quarters lengthwise. (If desired, cut into smaller chunks (appropriate size to grab with your chopsticks). Put cabbage in a very large container and immerse it in salt water. Leave it overnight,",
+    "Puree the moo, garlic, ginger, white onion, rice and fruit and then matchsick the daikon. Mix all the sauce ingredients into the pureed ingredients. It shouldn’t be too dry, it should be a bit watery. If too dry, add some of salt water. If too watery, add more pepper powder.",
+    "Mix it well with hand. It should get If you don’t use gloves, you’re going to feel a serious tingle from the pepper powder and be sure to keep those fingers away from your eyes and nose! Taste it and add salt or other ingredients so it tastes good to your palate, it should be salty and spicy enough for you to think it’s tasty. Let it sit and then some water will be coming out from the Korean radish. At the end, the sauce consistency should be a paste with a underlying liquidy sauce.",
+    "If the salted cabbage is slightly wilted, take the cabbage and taste it. If it’s not too salty you do not need to rinse it and you can even keep the salted water to add it to your kimchi sauce.",
+    "Use your hands to mix the paste in very well with the cabbage. Get to every little section/piece of cabbage! The more paste to cabbage, the spicier/stronger flavor your kimchi will be.",
+    "Place your kimchi into your jar and fill close to the top. Really push in the kimchi so it doesn’t have any space in between. You should have the water come up at least up to the middle."
+  ],
+  "image": "/recipes/napa-kimchi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "spicy-bacon",
+  "name": "SPICY ‘BACON’",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/2 tbsp gochugaru",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tbsp garlic powder",
+      "amount": ""
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "brown rice syrup",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 tbsp rice vinegar",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tbsp smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tbsp flavorless oil e.g., canola oil",
+      "amount": ""
+    },
+    {
+      "item": "sheets rice paper",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat your oven to 400° F.",
+    "Mix together the gochugaru, garlic powder, black pepper, liquid smoke, soy sauce, brown rice syrup, rice vinegar, smoked paprika, and the oil in a container with a flat surface (i.e., medium sized rectangular glass storage container).",
+    "mixing together the ingredients for the marinade.",
+    "Take the two sheets of rice paper and place them on top of each other. Then, using kitchen shears, cut them into 5 strips (technically 10 strips on top of each other).",
+    "taking two sheets of rice paper together",
+    "Submerge the 2-ply strips in the liquid and place them on a baking sheet.",
+    "submerging 2-ply rice papers into marinade",
+    "Bake them in the oven for approximately 10 minutes, until they are crispy."
+  ],
+  "image": "/recipes/spicy-bacon.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

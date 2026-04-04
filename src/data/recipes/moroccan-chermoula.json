@@ -1,0 +1,66 @@
+{
+  "id": "moroccan-chermoula",
+  "name": "Moroccan Chermoula",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "1½ cups (360 g)",
+  "time": "10 minutes",
+  "intro": "There’s nothing that elevates a steak or grilled chicken dish quite like a zingy and herby chermoula. Chermoula is a North African condiment used across Morocco, Tunisia, Libya, and Algeria. It is similar to the Latin American chimichurri but distinguished by spices like cumin, coriander, and paprika, which turn it into more of a brownish-green sauce instead of bright green. It’s made slightly differently across these countries, with Libyan chermoula being very different, resembling more of a cucumber and tomato salad rather than a sauce. This recipe is closest to the Moroccan version, with parsley and cilantro forming the green backbone of the sauce. And if you’re not faint-hearted, feel free to kick up the heat by adding more cayenne (I’m still working on my heat tolerance). My favorite way to use chermoula is in Chermoula Meatballs (here).",
+  "ingredients": [
+    {
+      "item": "packed roughly chopped fresh parsley (about 1 bunch)",
+      "amount": "2 cups (100 g)"
+    },
+    {
+      "item": "packed roughly chopped fresh cilantro (about ½ bunch)",
+      "amount": "1 cup (40 g)"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2 large"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper, or more to taste",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Add the parsley, cilantro, and garlic to a small food processor and pulse until finely chopped.",
+    "Add the paprika, cumin, coriander, salt, cayenne, oil, lemon juice, and lemon zest and pulse a few more times to combine. The sauce texture should be rough, not smooth.",
+    "Store in an airtight container in the refrigerator and use within 1 to 2 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sweet-orange-blossom-cream",
+  "name": "SWEET ORANGE BLOSSOM CREAM",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "NAVEL ORANGE, ORANGE BLOSSOM WATER, BOURBON, AGAVE NECTAR",
+  "servings": "about 1 cup",
+  "intro": "I CAME UP with this recipe with sweet breakfast dishes and desserts in mind. It’s wonderful with Maple-Glazed Banana Johnnycakes, Date-Almond Cornbread Muffins, or Spiced Persimmon Bundt Cake with Orange Glaze.",
+  "ingredients": [
+    {
+      "item": "firm silken tofu",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Finely grated zest of 1 navel orange",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed navel orange juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "agave nectar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "bourbon",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "orange blossom water",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Put all the ingredients in a blender and process until smooth and creamy. Cover and refrigerate until chilled, at least 1 hour. Stored in the refrigerator, it will keep for up to 3 days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "ginger-pickled-green-beans",
+  "name": "GINGER-PICKLED GREEN BEANS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "GREEN BEANS, GINGER, WHITE VINEGAR, RAW CANE SUGAR",
+  "servings": "3 pints",
+  "intro": "PICKLED GREEN BEANS are a staple on Southern tables, but I rarely see them in Northern California. Then, out of nowhere, I saw them on the starter menu of a restaurant in San Francisco. Although I don’t recall the restaurant, I definitely recall the beans. They were so tasty that I had to come up with my own version. After seeing Hugh Acheson’s recipe for gingered pickled carrots in A New Turn in the South, I decided to add ginger to my pickled green beans for subtle spiciness. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "green beans, trimmed and cut into 4-inch pieces",
+      "amount": "1 pound"
+    },
+    {
+      "item": "minced fresh ginger",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Divide the green beans among three 1-pint canning jars and add 1 tablespoon of the ginger to each jar.",
+    "Put the vinegar, water, sugar, and salt in a medium saucepan. Cook over medium-high heat, stirring occasionally, until the sugar and salt have dissolved, about 3 minutes. Divide the liquid among the jars, leaving ½ inch of headspace in each jar. Cover tightly and refrigerate for at least 1 day before eating. Stored in the refrigerator, the beans will keep for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

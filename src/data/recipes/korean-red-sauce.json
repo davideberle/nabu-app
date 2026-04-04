@@ -1,0 +1,65 @@
+{
+  "id": "korean-red-sauce",
+  "name": "KOREAN RED SAUCE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "red onion diced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic minced",
+      "amount": "4"
+    },
+    {
+      "item": "carrots chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "gochujang*",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white wine can substitute vegetable stock",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ripe tomatoes chopped",
+      "amount": "6-7"
+    }
+  ],
+  "method": [
+    "Add olive oil to large sauce pot over medium high heat. Once oil begins to shimmer, add red onions and cook until they become translucent and soft. Next add garlic, carrots, Italian seasoning, pepper and salt.",
+    "When veggies begin to brown, add gochujang and stir until all veggies are evenly coated. Then, deglaze the pan with balsamic vinegar and 1/4 cup of white wine. Scrape up all the brown bits and cook over low heat untilliquid reduces.",
+    "Add tomatoes and remaining white wine. Season with salt and black pepper. Bring to boil and then reduce heat to allow the tomatoes to simmer for at least 45 minutes.",
+    "Once the tomatoes have broken down from cooking, remove from heat. Add contents of pot to a blender or blend with immersion blender to desired consistency. Season to taste with more salt and pepper. Add sauce to cooked pasta of choice, together with some fresh basil."
+  ],
+  "image": "/recipes/korean-red-sauce.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "mango-habanero-hot-sauce",
+  "name": "MANGO-HABANERO HOT SAUCE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "MANGO, HABANERO CHILE, CHAMPAGNE VINEGAR, LIME JUICE",
+  "servings": "about 1 cup",
+  "intro": "THIS THICK CONDIMENT provides a nice balance of sweet, savory, and spicy. The flavor is fantastic, and the combination of habanero, mango, and carrot gives the sauce a striking color. Although I made it specifically for Crunchy Bean and Okra Fritters, it would go well with all types of foods, from breakfast burritos to roasted russet potatoes. In the instructions I suggest adjusting the amount of habanero chile depending on the amount of heat you want. For even less heat, remove the seeds and veins before mincing the habanero (it’s a good idea to wear gloves to do this). Even if the sauce is quite hot initially, I find that it tends to mellow after a few days.",
+  "ingredients": [
+    {
+      "item": "peanut oil",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "finely diced yellow onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thinly sliced carrot",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cumin seeds, toasted and ground",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "large cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "habanero chile, minced",
+      "amount": "¼ to 1"
+    },
+    {
+      "item": "finely grated lime zest",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "diced ripe mango",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "champagne vinegar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "freshly squeezed lime juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "freshly ground white pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "minced flat-leaf parsley",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Warm the oil in a small saucepan over medium-low heat. Add the onion, carrot, cumin, salt, and cayenne and sauté until the onion just starts to brown, 8 to 10 minutes. Add the garlic, chile, and lime zest and sauté until the garlic is fragrant, 2 to 3 minutes. Add the mango, water, vinegar, lime juice, and white pepper and sauté until everything is warmed through, 2 to 3 minutes.",
+    "Transfer to a blender and puree until smooth. Taste and season with more salt if desired. Stir in the parsley. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "kimchi",
+  "name": "KIMCHI",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "head Napa cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup salt",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "8 cups"
+    },
+    {
+      "item": "radish or daikon, grated",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/4 cup scallions, chopped",
+      "amount": ""
+    },
+    {
+      "item": "gochugaru (Korean chili flakes)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ginger, grated",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Cut the cabbage into quarters and remove the core. Cut each quarter into bite-sized pieces.",
+    "In a large bowl, mix together the cabbage and 1/2 cup of salt. Let sit for 2 hours.",
+    "Rinse the cabbage with water and drain.",
+    "In a separate bowl, mix together the grated radish, scallions, gochugaru, garlic, ginger,",
+    "Add the cabbage to the bowl and mix everything together until well combined.",
+    "Pack the mixture tightly into a jar or container and let sit at room temperature for 1-2 days, until it starts to ferment. Then store in the refrigerator."
+  ],
+  "image": "/recipes/kimchi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

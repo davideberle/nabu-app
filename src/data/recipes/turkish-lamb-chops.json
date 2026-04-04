@@ -1,0 +1,60 @@
+{
+  "id": "turkish-lamb-chops",
+  "name": "Turkish Lamb Chops",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "5 minutes, plus 1 hour marinating",
+  "intro": "The preferred choice of protein in Iraq and across most of the Middle East is lamb. I grew up loving the smell and taste of lamb, so much so that when I realized some people don’t like how it smells and tastes, I was shocked! Lamb represents the protein of kings for us, and it’s served to guests as a way of honoring them. I find that lamb chops are probably the most accessible cut of lamb that almost everyone will love; they are known for their tenderness, succulence, and rich flavor. I would be happy to eat lamb chops simply seasoned with salt and pepper, but this Turkish-style marinade is easy to throw together and really elevates the chops. I serve them with a side of Turkish Bulgur Pilaf and a salad.",
+  "ingredients": [
+    {
+      "item": "lamb rib chops (about 2¼ pounds, or 1 kg) (or substitute loin chops)",
+      "amount": "12"
+    },
+    {
+      "item": "fresh lemon juice (about 2 lemons)",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "plus 2 tablespoons olive oil, divided",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "sweet red pepper paste (or substitute tomato paste)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Yogurt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, mix the lamb chops with the lemon juice, ¼ cup (60 ml) of the oil, Aleppo pepper, cumin, coriander, oregano, salt, and red pepper paste until well combined.",
+    "Cover the bowl with plastic wrap and let the lamb chops marinate in the refrigerator for at least 1 hour, or overnight. Let come to room temperature for at least 30 minutes before cooking them.",
+    "Heat a large cast-iron pan over medium heat. Add the remaining 2 tablespoons oil. Working in batches, add the lamb chops to the pan and cook for 2 to 3 minutes on each side for medium doneness.",
+    "Transfer the cooked chops to a plate and cover with aluminum foil. Let rest for 10 minutes before serving.",
+    "Serve the lamb chops over the bulgur pilaf with salad and yogurt."
+  ]
+}

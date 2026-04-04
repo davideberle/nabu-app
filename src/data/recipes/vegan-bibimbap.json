@@ -1,0 +1,117 @@
+{
+  "id": "vegan-bibimbap",
+  "name": "VEGAN BIBIMBAP",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "g / 7 oz firm non-GMO (cotton not silken) tofu, pressed",
+      "amount": "200"
+    },
+    {
+      "item": "soy sauce or tamari for GF version)",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "Gochujang (Korean chilli paste) this is the one I used",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "oil (I used rice bran oil)",
+      "amount": "2-4 tsp"
+    },
+    {
+      "item": "g / 3½ oz mushrooms (shiitake if you can get them)",
+      "amount": "100"
+    },
+    {
+      "item": "g / 3½ oz spinach",
+      "amount": "100"
+    },
+    {
+      "item": "carrot shredded",
+      "amount": "1"
+    },
+    {
+      "item": "g / 2 oz edamame beans",
+      "amount": "50"
+    },
+    {
+      "item": "rice, cooked (I used brown)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pickled daikon (see below)",
+      "amount": ""
+    },
+    {
+      "item": "long cucumber, finely sliced",
+      "amount": "½"
+    },
+    {
+      "item": "spring onion, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "g / 3½ oz daikon (or radishes)",
+      "amount": "100"
+    },
+    {
+      "item": "ml / ¼ cup rice wine vinegar + 60-120 ml / ¼-½ cup water",
+      "amount": "60"
+    },
+    {
+      "item": "sugar, adjust to taste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt, adjust to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Gochujang (Korean chilli paste)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "rice wine vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "soy sauce or tamari for GF version)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "toasted sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maple syrup (or sugar dissolved in soy sauce)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "small garlic clove, finely grated",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Cut a pressed block of tofu into equal size cubes – I got 12 out of mine.",
+    "Place the tofu in a shallow bowl and pour soy sauce (mixed in with 1 tsp of Gochujang) over it. Set the tofu aside for at least 30 minutes to allow the tofu to absorb the marinade, making sure you turn the pieces to the other side at least once, halfway through.",
+    "If you have a non-stick pan, you can pan-fry the tofu. Heat up 2 tsp of oil on a non-stick pan. Place the marinated tofu cubes into the hot oil. Fry, turning frequently until browned on all sides. Be careful as the tofu is likely to splatter a little bit initially.",
+    "If you don’t have a non-stick pan or want to reduce the amount of oil you consume, you can also bake the tofu. Set the oven to 180° C / 355° F and place the marinated cubes of tofu on a baking sheet. Bake for about 25-30 minutes, turning once, halfway through.",
+    "PICKLED DAIKON (make a day in advance if you can)",
+    "Slice the daikon into thin slices and place in a jar.",
+    "Bring rice vinegar, water (60-120 ml / ¼-½ cup, depending how sharp you like your pickles), sugar and salt to a gentle boil.",
+    "Pour the hot pickling liquid over the daikon. The pickles can be eaten straight away, but they are worth making a day in advance as their flavour develops with time. Store in an airtight jar in the fridge.",
+    "Whisk all of the dressing ingredients together in a medium size bowl.",
+    "Heat up 2 tsp of oil in a medium non-stick pan. Throw in the mushrooms and fry them gently until they are nicely browned on all sides. Season with salt and pepper once fried so that the mushrooms don’t release too much water during frying.",
+    "Remove the mushrooms from the pan, throw in the spinach and a splash of water. Cook on a low heat, stirring from time to time, until the spinach wilts and most of the excess water cooks out. Season with salt and pepper.",
+    "Divide all the veggies and cooked tofu between two bowls. Sprinkle with sesame seeds and top with the Gochujang dressing."
+  ],
+  "image": "/recipes/vegan-bibimbap.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

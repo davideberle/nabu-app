@@ -1,0 +1,53 @@
+{
+  "id": "bbq-sauce",
+  "name": "BBQ SAUCE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "of ginger (2 tsp grated)",
+      "amount": "1 inch"
+    },
+    {
+      "item": "dates",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "1.5 tbsp gochujang*",
+      "amount": ""
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "soy sauce (or tamari)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "corn starch + 1 tbsp water, mixed",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Add all ingredients into a blender except corn starch + water slurry until smooth.",
+    "Add the mixture into a sauce pan over medium high heat and allow it to come to a boil.",
+    "Once it begins to boil, reduce the temperature down to medium low and add in the corn starch slurry. Whisk quickly until it thickens.",
+    "Remove from heat and allow the sauce to cool. Transfer into an airtight jar and store in the fridge for up to 10 days."
+  ],
+  "image": "/recipes/bbq-sauce.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "creole-spice-blend",
+  "name": "CREOLE SPICE BLEND",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "GARLIC POWDER, PAPRIKA, ONION POWDER, CHILI POWDER, RED PEPPER FLAKES",
+  "servings": "about ⅓ cup",
+  "intro": "A COMBINATION OF African, Caribbean, and Native American flavors, this spice blend serves as a metaphor for the melding of cultures during the seventeenth century when the French and Spanish occupied New Orleans. It pops up in classic dishes like étouffée, gumbo, and boiled shrimp and can also be used to season grains, vegetables, and stews. I use it to enhance the flavor of my Stewed Tomatoes and Black-Eyed Peas with Cornbread Croutons. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "garlic powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "chili powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Combine all the ingredients in a mortar or spice grinder and grind into a fine powder. Transfer to a jar and seal tightly. Stored at room temperature, it will keep for 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

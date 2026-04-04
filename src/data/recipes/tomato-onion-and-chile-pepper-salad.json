@@ -1,0 +1,52 @@
+{
+  "id": "tomato-onion-and-chile-pepper-salad",
+  "name": "TOMATO, ONION, & CHILE PEPPER SALAD",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "CILANTRO, PARSLEY, LEMON JUICE, APPLE CIDER VINEGAR",
+  "servings": "4 to 6 servings",
+  "intro": "THIS DISH IS INSPIRED BY kachumbari, a mixture of fresh tomato and onion eaten as a side dish in East, Central, and southern Africa. It’s often served as an accompaniment to spicy dishes as a cooling counterpoint. This one calls for seeded jalapeño to make it interesting, but you can omit the chile if you want to keep your version completely cool. This recipe makes a small quantity because it’s intended as a condiment, but feel free to double the recipe.",
+  "ingredients": [
+    {
+      "item": "large ripe heirloom tomatoes, seeded and finely diced",
+      "amount": "2"
+    },
+    {
+      "item": "finely diced white onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large jalapeño chile, seeded and minced",
+      "amount": "½"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Put all the ingredients in a large bowl and toss gently to combine. Refrigerate until chilled, at least 1 hour. Serve cold."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

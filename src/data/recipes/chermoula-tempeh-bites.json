@@ -1,0 +1,43 @@
+{
+  "id": "chermoula-tempeh-bites",
+  "name": "CHERMOULA TEMPEH BITES",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "OLIVE OIL, VEGETABLE STOCK",
+  "servings": "8 to 12 servings as an hors d’oeuvre, or 4 to 6 servings as a main dish",
+  "intro": "CHERMOULA, an herb-filled sauce used in North African cooking, is a delicious marinade in which to bake tempeh. These tasty morsels can be eaten alone as an hors d’oeuvre, or serve them as a main dish, along with couscous or rice.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "tempeh, cut into ½-inch cubes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "vegetable stock, homemade or store-bought",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Chermoula",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Warm 1 tablespoon of the oil in a large nonstick skillet over medium-high heat until very hot but not smoking. Add the tempeh in a single layer and cook, tilting the pan to spread the oil evenly among the tempeh cubes, until golden on the bottom, 3 to 5 minutes. With a fork, turn the tempeh on the opposite side. Add another tablespoon of the oil and cook until the cubes are golden on the bottom, 3 to 5 minutes. Repeat this process until all 6 sides are golden. Transfer to a large bowl.",
+    "Put the stock, Chermoula, and salt in a medium saucepan and bring to a boil over high heat. Immediately pour three-fourths of the mixture over the tempeh, reserving the remainder. Stir gently until the tempeh is evenly coated, then immediately transfer to a 2-quart baking dish, spreading the tempeh in a single snug layer. Cover tightly with aluminum foil and bake for 1 hour, until much of the sauce has been absorbed.",
+    "Remove the foil, add the remaining Chermoula mixture, and stir gently until evenly incorporated. Bake for 10 minutes, until warmed though. Serve at room temperature."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

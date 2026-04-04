@@ -1,0 +1,70 @@
+{
+  "id": "sarra-s-saucy-skillet-trout",
+  "name": "Sarra’s Saucy Skillet Trout",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "10 minutes",
+  "intro": "My older sister, Sarra, is an amazing cook, and the one person (aside from my mom) whom I consult quite often regarding cookbook and blog recipes. With her living in the United States and me in Canada, we often call each other and talk for hours on end to catch up and discuss what’s for dinner. She gave me this recipe once when I was feeling uninspired. Ever since that day, it has been one of the main ways I make fish, and I keep referring to it as “Sarra’s Fish.” It’s very quick to make, perfectly seasoned with cumin and coriander, and super saucy, for serving alongside rice.",
+  "ingredients": [
+    {
+      "item": "ground coriander",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "avocado oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "yellow onion, finely chopped",
+      "amount": "½ large"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2 large"
+    },
+    {
+      "item": "red bell pepper, finely chopped",
+      "amount": "½ large"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "pomegranate molasses (see Note)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "boiling water",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "Salata",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "TO MAKE THE SPICE PASTE: In a small bowl, combine all the paste ingredients and mix well.",
+    "TO MAKE THE TROUT: Reserve 1 to 2 teaspoons of the spice paste, then slather the remaining paste all over the trout fillet.",
+    "In a large nonstick skillet, heat the 1 tablespoon avocado oil over medium-high heat. Add the trout and sear the pieces for 1 minute per side until golden. Transfer to a plate.",
+    "In the same skillet the trout was cooked in, add the onion, garlic, bell pepper, and reserved spice paste. Cook and stir for 3 to 4 minutes, until the onion is softened.",
+    "Add the tomato paste and pomegranate molasses and mix until well combined. Pour in the boiling water and stir to create a sauce. Cover the pan with the lid and reduce the heat to medium. Let simmer for 5 to 7 minutes. If you want a thicker sauce, uncover the pan and allow the water to bubble for 3 to 4 minutes to reduce.",
+    "Add the trout pieces back into the skillet, cover the pan again, and let simmer for 8 to 10 minutes. Check that the fish is cooked by inserting a fork at it thickest part; it should be nearly opaque, moist, and flake easily with the fork.",
+    "Spoon the pan sauce over the top of the fish and garnish with the chopped parsley. Serve with the rice and salad."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

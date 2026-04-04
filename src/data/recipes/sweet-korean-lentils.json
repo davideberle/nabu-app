@@ -1,0 +1,56 @@
+{
+  "id": "sweet-korean-lentils",
+  "name": "SWEET KOREAN LENTILS",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "dried red lentils",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "gluten-free tamari or lower sodium soy sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh ginger, minced",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey (for vegan use agave)",
+      "amount": "2 Tbsp"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "3"
+    },
+    {
+      "item": "white onion, chopped finely",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "Heat oil in a medium sized pot. Add chopped onion. When transleucent, add in all other ingredients.",
+    "Cover and simmer on low until lentils are cooked through, about 10 minutes.",
+    "Serve by spooning over sauteed cabbage or rice. Garnish (optional) with sesame seeds and green onion."
+  ],
+  "image": "/recipes/sweet-korean-lentils.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

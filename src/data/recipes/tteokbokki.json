@@ -1,0 +1,51 @@
+{
+  "id": "tteokbokki",
+  "name": "TTEOKBOKKI",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of vegetable broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/4 cup gochujang paste",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tbsp Korean red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tubular rice cakes",
+      "amount": "10"
+    },
+    {
+      "item": "scallions, cut into 2 inch long pieces",
+      "amount": "3"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "Instructions",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add vegetable broth to a skillet and bring to a boil. Once broth is boiling, add gochujang, red pepper flakes, and granulated sugar. Stir well and add in rice cakes and stir gently. Bring heat down to medium and sprinkle 1/3 of the scallion on top. Gently simmer for 7-10 minutes or until the sauce is thick and shiny. Stir gently every few minutes.",
+    "To serve, spoon into a bowl and sprinkle with the rest of the scallion and sesame seeds. Enjoy!"
+  ],
+  "image": "/recipes/tteokbokki.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

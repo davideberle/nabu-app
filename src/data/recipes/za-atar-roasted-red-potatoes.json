@@ -1,0 +1,56 @@
+{
+  "id": "za-atar-roasted-red-potatoes",
+  "name": "ZA’ATAR-ROASTED RED POTATOES",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "OLIVE OIL, THYME, OREGANO, LEMON JUICE",
+  "servings": "4 to 6 servings",
+  "intro": "THIS WAS ONE OF THE first recipes created for this book. Because I’ve gotten overwhelmingly positive feedback for my recipe Roasted Red Potato Salad with Parsley–Pine Nut Pesto, published in Vegan Soul Kitchen, I wanted to include a dish in this book that could also replace the drowned-in-mayo potato salads that often pop up at summer cookouts. The result: za’atar—a Middle Eastern blend of dried herbs and spices, sesame seeds, and dried sumac—combined with olive oil to make these savory and unctuous potatoes, which would be a fine addition to any table.",
+  "ingredients": [
+    {
+      "item": "small to medium red potatoes, cut into ½-inch chunks",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "za’atar, homemade or store-bought",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced fresh thyme",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "minced fresh oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F. Line a large, rimmed baking sheet with parchment paper.",
+    "Put the potatoes in a large bowl and drizzle with 1 tablespoon of the oil. Toss until the potatoes are evenly coated. Transfer to the lined baking sheet and spread, cut side down, in a single layer (no need to clean the bowl). Bake for 30 minutes.",
+    "Meanwhile, combine the za’atar, thyme, oregano, salt, and the remaining 2 tablespoons oil in the reserved bowl and stir well to combine.",
+    "Transfer the potatoes to the bowl (leave the oven on) and toss gently until evenly coated. Return the potatoes, cut side up, to the baking sheet and spread in a single layer. Bake for about 15 minutes, until fork-tender.",
+    "Transfer to a serving bowl. Sprinkle with the lemon juice and season with black pepper and, if desired, more salt. Serve at room temperature."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

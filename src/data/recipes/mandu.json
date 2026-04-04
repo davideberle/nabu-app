@@ -1,0 +1,50 @@
+{
+  "id": "mandu",
+  "name": "MANDU",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "tbls. vegetable oil",
+      "amount": "1-2"
+    },
+    {
+      "item": "tbls. soy sauce",
+      "amount": "2-3"
+    },
+    {
+      "item": "1/2 block of extra firm tofu (crumbled)",
+      "amount": ""
+    },
+    {
+      "item": "A couple handfuls of glass noodles, broken into small pieces",
+      "amount": ""
+    },
+    {
+      "item": "Vegetables of your choice (Minced).",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup water",
+      "amount": ""
+    },
+    {
+      "item": "frozen package of Mandu dough (Thawed)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "You can blend the ingredients in a food processor",
+    "First, boil the glass noodles and set them aside. Then, heat some oil in a frying pan until hot. Add the vegetables, tofu, and glass noodles to the pan and sauté them with soy sauce until they're cooked. Then turn off the heat and wait for the filling to cool down enough to handle.",
+    "Use a clean surface to lay out the mandu dough.",
+    "Then scoop spoonfuls of filling onto the dough.",
+    "Dip your fingers into some water and moisten half of the dough so it will stick to the other half. Fold the dough in half, make sure the dough is stuck together, and make any shape you want!To cook them, you can steam them or fry them..."
+  ],
+  "image": "/recipes/mandu.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

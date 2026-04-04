@@ -1,0 +1,72 @@
+{
+  "id": "grilled-corn-on-the-cob",
+  "name": "GRILLED CORN ON THE COB",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "SWEET CORN, SEA SALT, BLACK PEPPER",
+  "servings": "4 to 6 servings",
+  "intro": "ONE OF MY FAVORITE ways to eat grilled corn on the cob is coated with a mixture of olive oil and green Tabasco sauce, and I thought tangy Smoky Pili Pili Sauce would be equally satisfying. I was right! For a different twist, slather on Spicy Mustard Greens.\n\nWhen summer vegetables are at their freshest, I like to let them shine without interfering too much. This salad should be made with the freshest sweet corn, the crunch-iest bell peppers, and the juiciest heirloom tomatoes that you can find. You could sauté this mixture in olive oil, too.",
+  "ingredients": [
+    {
+      "item": "ears of sweet corn",
+      "amount": "6"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Smoky Pili Pili Sauce or Spicy Mustard Greens",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Kernels from 4 ears of sweet corn (store the cobs in the freezer to make Corn Broth)",
+      "amount": ""
+    },
+    {
+      "item": "finely diced green bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "finely diced seeded heirloom tomato",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "African bird’s eye chile, minced",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Freshly ground white pepper",
+      "amount": ""
+    },
+    {
+      "item": "very thinly sliced fresh basil",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Peel back the corn husks but leave them attached. Remove the corn silk, then wrap the husks back around the corn. Put the corn in a large pot and add the salt. Put a plate on the corn to weight it, then add cold water to cover the corn. Let soak for at least 2 hours.",
+    "Prepare a medium-high grill. Drain the corn. If necessary, tie the tops of the corn husks with kitchen twine to keep them closed.",
+    "Put the corn on the grill, cover, and cook, turning occasionally with tongs, until the husks are slightly charred and the kernels are tender, about 25 minutes. Let the ears cool until they can be handled, then fold back the husks.",
+    "Pour a little sauce over each ear, then, using your hands, rub the sauce evenly over the corn. Season with a few grinds of pepper and serve immediately.",
+    "Combine the corn, bell pepper, tomato, oil, chile, and salt in a medium bowl and stir to combine. Season with white pepper and, if desired, more salt. Serve garnished with the basil."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

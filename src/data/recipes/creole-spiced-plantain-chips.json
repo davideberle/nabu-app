@@ -1,0 +1,34 @@
+{
+  "id": "creole-spiced-plantain-chips",
+  "name": "CREOLE-SPICED PLANTAIN CHIPS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "GREEN PLANTAIN, PAPRIKA, CHILI POWDER, RED PEPPER FLAKES, CAYENNE",
+  "servings": "4 servings",
+  "intro": "KELEWELE, a classic Ghanaian snack of fried plantains that have been seasoned with spices, was the initial inspiration for this dish. But instead of cutting the plantains into chunks, I slice them as thinly as possible, more in the style of plantain chips, popular in other countries throughout West Africa and in the Caribbean. Coating the chips in a Creole spice mixture adds intense flavor and a little heat. Make sure you use green plantains, as ripe, yellow plantains won’t develop the crispy texture that makes this such a satisfying snack.",
+  "ingredients": [
+    {
+      "item": "large green plantains (about 2 pounds)",
+      "amount": "4"
+    },
+    {
+      "item": "Creole spice blend, homemade or store-bought",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Coconut or sunflower oil, for deep-frying (about 5 cups)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut off both ends of each plantain. With the tip of a sharp knife, slice the peel along the length of each plantain, avoiding cutting into the flesh. Repeat this in three different places on each plantain. Gently remove each section of peel. (Compost the peels and tips.) If the peels are difficult to remove, soak the plantains in hot water for a few minutes. Just be sure to dry them well with a clean kitchen towel before frying, to prevent splattering. With a sharp knife or a mandoline, slice each plantain as thinly as possible into rounds, ideally about 1/16 inch thick, keeping the slices of each plantain separate.",
+    "Put 1 tablespoon of the spice blend in a small paper bag. Line a plate with paper towels.",
+    "Warm about 2 inches of oil in a large, heavy pot over medium-high heat until hot but not smoking, about 375°F. Fry the slices of 1 plantain at a time, moving them around with a fork to ensure even cooking, until golden, about 1 minute. With a skimmer or slotted spoon, immediately transfer the slices to the paper bag with the spice mixture. Fold the top to seal, then shake vigorously to evenly coat. Transfer to the lined plate. Repeat this process with the remaining plantains and spice blend. Serve while they are hot and crispy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

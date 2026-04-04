@@ -1,0 +1,43 @@
+{
+  "id": "aish-el-saraya",
+  "name": "Aish El Saraya",
+  "subtitle": "BREAD PUDDING",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "20 minutes, plus 2 hours chilling",
+  "intro": "The name of this dessert translates to “palace bread” because of its decadence and beauty—it is often decorated with bright green pistachios and dried rosebuds. It consists of a layer of buttery bread soaked in syrup, topped with a rich ashta, which is a thickened cream. Any white bread can be used in this recipe, but my favorite bread to use is brioche, for an extra-rich flavor. It is a cold dessert, often served at celebrations or during Ramadan. It is usually made in a large dish, but individual servings are also a beautiful way to present it.",
+  "ingredients": [
+    {
+      "item": "slices brioche bread",
+      "amount": "6"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "½ cup (60 g)"
+    },
+    {
+      "item": "rose water",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "TO MAKE THE BREAD PUDDING: Preheat the oven to 400°F (205°C).",
+    "In a small saucepan, combine the sugar and lemon juice with 1 cup (240 ml) of water for a simple syrup, and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes. Remove the saucepan from the heat and let cool to room temperature.",
+    "MEANWHILE, MAKE THE ASHTA: In a medium saucepan, combine the cream, milk, sugar, and cornstarch and whisk until the cornstarch is dissolved. Place the pot over medium heat and cook for 10 minutes, whisking continuously, until the ashta thickens. Stir in the rose water, remove from the heat, and let cool.",
+    "Place the brioche slices on a large sheet pan and toast in the oven for 5 to 7 minutes, flipping halfway through, until golden. Let cool.",
+    "In a food processor, add the toasted brioche, a few slices at a time, and process to a fine consistency. Transfer the bread crumbs to a large bowl, then add ¾ cup (180 ml) of the simple syrup and mix to combine (reserve the remaining simple syrup for serving) into a wet, crumbly mixture.",
+    "Spoon 2 to 3 tablespoons of the bread crumbs into the base of each of 6 small parfait serving cups and pack them down. If using one baking dish, use a 9-inch (23 cm) square pan. Layer about ½ cup (120 ml) of ashta on top of the bread layer in each cup and smooth it out. Cover each serving cup with plastic wrap, making sure that the plastic is in contact with the ashta layer to help prevent a film from forming on the surface. Place in the refrigerator for at least 2 hours, or overnight.",
+    "When ready to serve, remove the plastic wrap, garnish with the crushed pistachios and rosebuds (if using), and serve with the remaining simple syrup."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

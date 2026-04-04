@@ -1,0 +1,67 @@
+{
+  "id": "quick-pickled-vegetable-salad",
+  "name": "QUICK-PICKLED VEGETABLE SALAD",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "GREEN CABBAGE, CARROT, VIDALIA ONION, AFRICAN BIRD’S EYE CHILE",
+  "servings": "4 to 6 servings",
+  "intro": "INSPIRED BY THE CABBAGE-BASED SIDE SALAD commonly eaten throughout eastern Africa, this tangy and intense salad goes well with richly flavored main dishes. It would taste good on Berbere-Spiced Black-Eyed Pea Sliders or any other sandwich that needs crunch and zing. It could also be served alongside Chermoula Tempeh Bites to provide a sweet, sour, and spicy contrast.",
+  "ingredients": [
+    {
+      "item": "green cabbage, very thinly sliced",
+      "amount": "1½ pounds"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "2¼ teaspoons"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large carrot, cut into ribbons with a vegetable peeler",
+      "amount": "1"
+    },
+    {
+      "item": "very thinly sliced Vidalia onion, in rings",
+      "amount": "½ cup"
+    },
+    {
+      "item": "African bird’s eye chiles, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Put the cabbage in a large bowl and sprinkle with 2 teaspoons of the salt. With clean hands, massage the cabbage until soft and wilted, about 3 minutes. Transfer to a colander and rinse the bowl. Put the colander in the sink, put a plate atop the cabbage, and weight it (a 28-ounce can of tomatoes works well). Let sit for 1 hour.",
+    "Meanwhile, put the vinegar, water, sugar, peppercorns, and the remaining ¼ teaspoon salt in a medium saucepan. Cook over low heat, stirring frequently, until the sugar is completely dissolved, about 3 minutes. Remove from the heat and let cool completely.",
+    "Rinse the cabbage under cold water, then squeeze with clean hands to extract as much liquid as possible. Return the cabbage to the large bowl and add the carrot, onion, and chiles. Pour in the vinegar mixture, set the plate and weight on top, and let sit for 1 hour.",
+    "Before serving, drain the vegetables and put them in a serving bowl. Add the parsley and cilantro and toss to combine."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

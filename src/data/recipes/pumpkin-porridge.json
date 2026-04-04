@@ -1,0 +1,46 @@
+{
+  "id": "pumpkin-porridge",
+  "name": "PUMPKIN PORRIDGE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "kabocha (danhobak, 단호박) or small pumpkin, about 2 pounds",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup sweet rice (aka glutinous rice), soaked in water for at least an hour or use 1/2 cup sweet rice flour (chapssal garu or mochiko), mixed in 1 cup of water",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "tbsps brown sugar adjust to taste or omit",
+      "amount": "1 to 2"
+    },
+    {
+      "item": "1/4 cup red beans, pat (팥), soaked and boiled - optional or use canned sweetened red beans (if using sweetened beans, omit sugar above",
+      "amount": ""
+    },
+    {
+      "item": "pine nuts, pumpkin seeds, jujubes, if available Walnuts or pecans will be great too",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Cut the squash into halves (or quarters). Remove the seeds. Place them in a large pot, the cut side up. Add water about one-third way up the squash, about 6 cups. Cover and boil over medium high heat until the squash turns fork tender, about 25 - 30 minutes. Discard the water and let the squash cool.",
+    "When the squash is cool enough to handle, scoop out the flesh (or peel the skin off).",
+    "You can purée the cooked squash at this point if you want, using a blender.",
+    "In a blender, grind the soaked glutinous rice with 1 cup of water as finely as possible.",
+    "Pour the ground sweet rice into the pot of the prepared squash. Add 3 cups of water. Cook over medium heat, stirring and mashing the chunks of squash, until the rice starts to turn translucent and the porridge becomes thick. Cover, and reduce the heat to low. Continue to simmer, stirring occasionally, for about 20 minutes. (Adjust the consistency of the porridge to your taste by adding more water.) Stir in the salt, sugar, and the optional cooked red beans. Cook for an additional 3 - 4 minutes."
+  ],
+  "image": "/recipes/pumpkin-porridge.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

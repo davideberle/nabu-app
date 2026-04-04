@@ -1,0 +1,52 @@
+{
+  "id": "egyptian-dukkah",
+  "name": "Egyptian Dukkah",
+  "subtitle": "NUT & SEED SPICE BLEND",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "½ cup (65 g)",
+  "time": "10 minutes",
+  "intro": "Dukkah is a condiment or spice blend that is commonly made in Egyptian households. Each family has its own unique blend, but the most common components are nuts, sesame seeds, and warm spices like coriander and cumin, which are toasted to intensify their flavor and then ground into a coarse mixture using a mortar and pestle. Dukkah will quite easily transform anything it is sprinkled on. Egyptians enjoy it simply by dipping a piece of bread in olive oil and then into the dukkah. But it is also used to season fish, chicken, and meats, as well as grilled vegetables, dips, and salads. Make a batch of dukkah and keep it in a tightly covered jar on your counter. You’re sure to find creative ways to use it throughout the week. One of my favorites is in Roasted Dukkah-Crusted Trout. You can also mix it with olive oil and use it as a dipping sauce or slather the spiced oil onto pita breads and crisp them up for dukkah-spiced pita chips.",
+  "ingredients": [
+    {
+      "item": "cumin seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped pistachios",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped hazelnuts",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper, or more to taste",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Place a small, dry skillet over medium heat and add the cumin and coriander. Toast for a few minutes, or until fragrant and slightly darker in color, stirring continuously. Transfer to a spice grinder or mortar and pestle. Toast the sesame seeds the same way, reserve 1 tablespoon, and add the rest to the spice grinder or mortar and pestle. Grind to a fine powder and place in a small bowl.",
+    "Add the pistachios and hazelnuts to the same skillet and toast over medium heat for a few minutes, or until fragrant, stirring often. Transfer the toasted nuts to a spice grinder and pulse a few times, maintaining a coarse texture. Add them to the bowl with the ground seeds.",
+    "Add the salt, cayenne, and reserved sesame seeds to the bowl with the seeds and nuts and mix well.",
+    "Store in an airtight container at room temperature and use within a few days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

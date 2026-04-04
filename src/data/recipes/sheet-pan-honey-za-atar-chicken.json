@@ -1,0 +1,61 @@
+{
+  "id": "sheet-pan-honey-za-atar-chicken",
+  "name": "Sheet-Pan Honey Za’atar Chicken",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "10 minutes",
+  "intro": "This was one of the first chicken dishes I created on my blog that went viral. And for good reason! It combines herby za’atar seasoning with honey and garlic to create a lip-smacking marinade that perfectly coats and flavors the chicken, carrots, and potatoes as they bake. This is the type of dish that doesn’t quite make it to the table before I’ve had a full portion just for testing purposes. My favorite part is mopping up the juices in the bottom of the pan with a piece of pita bread.",
+  "ingredients": [
+    {
+      "item": "carrots (2/3 pound, or 300 g), sliced in half lengthwise and cut into 2-inch-long (5 cm) pieces",
+      "amount": "7 small"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "za’atar",
+      "amount": "¼ cup (22 g)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "bone-in, skin-on chicken thighs (22/3 pounds, or 1.2 kg), patted dry",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F (220°C). Line a large, rimmed sheet pan with parchment paper.",
+    "TO MAKE THE VEGETABLES: Add the potatoes, onion, and carrots to a large bowl. Season with the ½ teaspoon salt, drizzle with the 1 tablespoon oil, and mix all the ingredients together. Transfer to the prepared sheet pan and spread in a single layer.",
+    "TO MAKE THE CHICKEN: In a small bowl, combine the garlic, ¼ cup (60 ml) oil, za’atar, 2 teaspoons salt, onion powder, pepper, honey, and vinegar and mix well.",
+    "Place the chicken thighs on the sheet pan with the vegetables. Pour all the marinade over the chicken and work it into each piece, ensuring both the fronts and backs of the thighs are coated. Work a few tablespoons of the marinade into the vegetables as well.",
+    "Bake for 35 to 40 minutes, until the thighs are golden brown and cooked through. (Check that the chicken is white on the inside and the juices run clear.)",
+    "Spoon the vegetables onto a platter and top with the chicken. Serve with pita bread and slaw or salad."
+  ]
+}

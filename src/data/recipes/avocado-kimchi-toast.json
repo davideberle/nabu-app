@@ -1,0 +1,53 @@
+{
+  "id": "avocado-kimchi-toast",
+  "name": "AVOCADO KIMCHI TOAST",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "small shallot",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 tbsp extra virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "slice bread",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "1/4 avocado",
+      "amount": ""
+    },
+    {
+      "item": "pinch salt",
+      "amount": "1"
+    },
+    {
+      "item": "cracked black pepper",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup vegan kimchi",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Slice the shallot into thin pieces. Add the oil to a nonstick pan over medium high heat. Add the oil and when it begins to shimmer (about 1 minute), add the sliced shallots. Cook until they start to brown (around 2 minutes). Set aside.",
+    "Toast your bread. Then take the clove of garlic and press it gently into the bread and spread it over your toast (it actually works!).",
+    "Slice your avocado into very thin slices and fan them across your toast. Season with salt and pepper.",
+    "Top the avocado with kimchi and garnish with shallots."
+  ],
+  "image": "/recipes/avocado-kimchi-toast.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

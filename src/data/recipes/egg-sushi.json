@@ -1,0 +1,64 @@
+{
+  "id": "egg-sushi",
+  "name": "EGG SUSHI",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/2 tbsp mirin",
+      "amount": ""
+    },
+    {
+      "item": "1/2 rice wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "strips roasted nori",
+      "amount": "10"
+    },
+    {
+      "item": "carrot (small dice)",
+      "amount": "1"
+    },
+    {
+      "item": "scallions (chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 jalapeño (small diced)",
+      "amount": ""
+    },
+    {
+      "item": "3/4 container justegg",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 tsp pepper",
+      "amount": ""
+    },
+    {
+      "item": "slice non-dairy cheese",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add mirin and rice wine vinegar to rice and mix to incorporate. Shape the rice into ovals, about the length of an egg, but not as wide. Cut approximately 10 strips of roasted nori, each roughly 1/3 inch thick. Add carrots, scallions, jalapeno, salt, and pepper to JUSTEgg and stir. Add oil to a nonstick pan (see notes below) over medium heat and pour approximately 1/2 of the mixture. Add 1/3 of a slice of cheese.",
+    "Once the JUSTEgg is nearly cooked, begin curling it (watch the video). When it is fully rolled up, push the roll back to the other end of the pan (the end you started rolling).Pour 1/2 of the remaining amount of JUSTEgg mixture and repeat (i.e., add cheese, roll, and push back).Pour the remaining amount of JUSTEgg mixture and repeat.",
+    "Slice the omelet into 1/4 inch slices. Place them on top of the rice ovals you made earlier in the recipe. Wrap them with the strips of nori."
+  ],
+  "image": "/recipes/egg-sushi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

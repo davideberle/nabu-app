@@ -1,0 +1,83 @@
+{
+  "id": "sticky-pomegranate-short-ribs",
+  "name": "Sticky Pomegranate Short Ribs",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "Beef short ribs are not commonly used in Middle Eastern cuisine. I wasn’t introduced to them until after I moved to Canada. When I first tried them, I was quite surprised that beef could yield such a meltingly delicious result resembling that of lamb. So naturally I loved experimenting with them. The key thing about great short ribs is to braise them at a low temperature for an extended period of time to allow the collagen to break down into gelatin, resulting in fall-off-the-bone texture. The marinade I use in this recipe is a mixture of ketchup and pomegranate molasses, a combination often used in Iraqi-style marinades, with a touch of soy sauce to balance the flavors. The result is sticky, sweet-and-sour short ribs that will please any crowd.",
+  "ingredients": [
+    {
+      "item": "bone-in short ribs",
+      "amount": "4½ pounds (2 kg)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1 large"
+    },
+    {
+      "item": "ketchup",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "6 large"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Tahini Cabbage Slaw (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Roz Asfar (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the short ribs: Preheat the oven to 300°F (150°C). Season each short rib with salt and black pepper.",
+    "In a large Dutch oven or oven-safe pot, heat the oil over medium-high heat. Add the short ribs, working in batches to avoid overcrowding, and sear on all sides until browned. Transfer to a plate. Remove any excess fat from the pot and discard it.",
+    "Add the onion to the same pot and cook, stirring often, until softened and translucent, 5 to 7 minutes.",
+    "While the onion cooks, combine the ketchup, pomegranate molasses, soy sauce, garlic, lemon juice, cumin, and paprika with 1 cup (240 ml) of water in a medium bowl and mix well. Pour this mixture into the pot with the onion and bring to a simmer. Taste and adjust for salt if necessary.",
+    "Place the short ribs back into the pot and stir to coat the ribs in the onions and sauce. Cover with the lid or aluminum foil, and bake for 3 hours, or until fork-tender, then uncover and return to the oven for another 10 to 15 minutes to brown the tops.",
+    "Transfer the short ribs to a serving dish. Remove excess fat from the pot by scooping it out or layering a paper towel on top to absorb it, then discard.",
+    "Let the sauce in the pot simmer for 10 to 15 minutes, until thickened, then brush it on top of the short ribs and serve the rest on the side.",
+    "Garnish with microgreens or fresh parsley and mint and pomegranate arils and serve with slaw (if using) and rice (if using)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

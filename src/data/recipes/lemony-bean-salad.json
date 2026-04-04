@@ -1,0 +1,39 @@
+{
+  "id": "lemony-bean-salad",
+  "name": "Lemony Bean Salad",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "10 minutes, plus 30 minutes chilling",
+  "intro": "This bean salad is a quick, filling, and nutritious lunch fix that I make quite regularly. Beans are a blank canvas for absorbing bright flavors. That’s why this lemony olive oil dressing works so well. I love using a medley of beans like red and white kidney beans, chickpeas, and black-eyed peas. Also, do not skip the onions; they are a necessary component. You can prepare the salad in advance, as it keeps quite well in the fridge and tastes even better the next day.",
+  "ingredients": [
+    {
+      "item": "Roma tomatoes, small diced",
+      "amount": "2"
+    },
+    {
+      "item": "red onion, small diced",
+      "amount": "½ large"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "1/8 teaspoon black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "TO MAKE THE BEAN SALAD: Place the beans in a medium salad bowl. Add the parsley, tomatoes, and onion.",
+    "TO MAKE THE DRESSING: In a small bowl, whisk together the lemon juice, oil, salt, and pepper.",
+    "Pour the dressing over the salad and toss to combine well. Taste and adjust for more salt and/or lemon juice if needed.",
+    "Refrigerate for at least 30 minutes before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "millet-and-sweet-potato-porridge",
+  "name": "MILLET & SWEET POTATO PORRIDGE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "ALMOND MILK, CASHEWS, MOLASSES, MAPLE SYRUP, PECANS",
+  "servings": "4 to 6 servings",
+  "intro": "WHEN COOKING SOAKED MILLET, if you stir it often while simmering and slightly overcook it, the seeds will burst and release starch, creating a creamy consistency that’s ideal for breakfast porridge. The addition of baked sweet potato, almond milk, and pureed cashews adds silky richness. Pecans provide depth and texture. Because whole grains are digested slowly, releasing their sugars into the bloodstream gradually, eating a hearty bowl of porridge in the morning will give you sustained energy and tide you over until lunch. Millet is high in vitamin B6, niacin, and folic acid and also has significant amounts of magnesium, zinc, iron, calcium, and potassium. Note that if you make almond milk for this recipe, you should omit the sweetener.",
+  "ingredients": [
+    {
+      "item": "small sweet potato (about 8 ounces)",
+      "amount": "1"
+    },
+    {
+      "item": "millet, soaked in water overnight and drained well",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "(2-inch) cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "unsweetened almond milk, homemade or store-bought, plus more for serving",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Creamed Cashews",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unsulfured molasses",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "maple syrup, plus more for serving",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "chopped pecans, toasted",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F. With a fork, pierce the sweet potato in about 10 different places. Wrap it in aluminum foil and bake for 45 to 60 minutes, until fork-tender.",
+    "Meanwhile, toast the millet in a small saucepan over medium-high heat, stirring often with a wooden spoon, until the millet starts to smell nutty, about 3 minutes. Add the water and cinnamon stick. Increase the heat to high and bring to a boil. Immediately decrease the heat to low, cover, and simmer until all of the liquid is absorbed, about 30 minutes. Remove from the heat and let sit, covered, for about 10 minutes.",
+    "When the sweet potato is cool enough to handle, split it down the middle and scoop the flesh into a medium bowl.(Compost the skin.) Mash the sweet potato a bit, then add the almond milk, cashew cream, molasses, maple syrup, and salt and whisk until well blended. Add to the saucepan with the millet and mix well.",
+    "Bring to a boil over medium-high heat. Immediately decrease the heat to low and simmer, stirring frequently, until the porridge has thickened, about 10 minutes. Serve garnished with the pecans, drizzled with maple syrup, and finished with a splash of almond milk."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

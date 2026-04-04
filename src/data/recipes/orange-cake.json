@@ -1,0 +1,57 @@
+{
+  "id": "orange-cake",
+  "name": "Orange Cake",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "10 to 12 servings",
+  "time": "15 minutes",
+  "intro": "This simple orange cake was tested six times before I was happy with the results. I was adamant about including a cake that was unfussy and perfectly delicious on its own—no need for any glaze or icing! I also don’t particularly enjoy baking, so the only cake I’ll bake is one that I can mix in a bowl using a whisk or spatula. I don’t want many steps, I don’t want to wait for anything to chill, and I don’t want to take out my stand mixer. This orange cake is the answer. It reminds me of the cakes we used to always have at the breakfast table or at teatime. We would often cut a slice of cake and top it with plain yogurt to enjoy. I recently asked a few Iraqi friends if they did this as well and was met with blank stares. Maybe it was just our family. But make this cake and try it! I do have to warn you though: zesting the oranges is a bit of a workout, so feel free to get someone else involved and pass it on to them while you do the “hard” part.",
+  "ingredients": [
+    {
+      "item": "plus 1 tablespoon vegetable oil, divided",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "plus 1 tablespoon all-purpose flour, divided",
+      "amount": "2 cups (240 g)"
+    },
+    {
+      "item": "oranges",
+      "amount": "3 large"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "ground cardamom (optional)",
+      "amount": "3 teaspoons"
+    },
+    {
+      "item": "eggs, at room temperature",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F (175°C) and position the rack in the middle. Grease a 10-cup (2.4 L) Bundt pan with 1 tablespoon of the oil, then dust it with 1 tablespoon of the flour. Tap the outside of the pan to circulate the flour so that it covers the inside surface.",
+    "Zest the oranges (avoiding the white pith) into a small bowl to yield roughly 4 to 5 tablespoons of orange zest. Juice the oranges into a separate small bowl to yield ¾ cup (180 ml) of juice.",
+    "In a large bowl, whisk together the remaining 2 cups (240 g) flour, the baking powder, salt, granulated sugar, and cardamom (if using). Whisk in the orange zest.",
+    "In a medium bowl, whisk the remaining 1 cup (240 ml) oil, the eggs, and orange juice until combined.",
+    "Gradually fold the wet ingredients into the dry ingredients using a silicone spatula until the wet and dry ingredients are just combined and you no longer see flour streaks. Do not overmix the batter. Pour the batter into the prepared Bundt pan.",
+    "Bake for 45 minutes, or until a toothpick inserted into the center comes out clean. Let cool for 10 minutes, then carefully flip onto a cake plate or stand. Let cool completely.",
+    "Dust with the powdered sugar, slice, and serve."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

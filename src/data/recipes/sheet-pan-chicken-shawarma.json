@@ -1,0 +1,86 @@
+{
+  "id": "sheet-pan-chicken-shawarma",
+  "name": "Sheet-Pan Chicken Shawarma",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "10 minutes, plus 1 hour marinating",
+  "intro": "Quite possibly the dish that has for so long defined Middle Eastern cuisine, chicken shawarma has a special place in every Arab household. Although so much of my work goes into showing people that there is a plethora of vibrant Middle Eastern recipes beyond just shawarma, I will never deny the true satisfaction a shawarma wrap smothered in Toum brings. Over the years, I have tweaked and perfected my shawarma marinade and cooking technique, optimizing for both efficiency and flavor. I’ve arrived at a few conclusions. Chicken thighs are the best cut of chicken to use to maintain moist and fatty shawarma. Also, the best way to cook large quantities quickly is using a pre-oiled and preheated sheet pan; spread the chicken out over the hot sheet pan, and twenty minutes later, you’ll have perfectly moist and tender chicken with dark crispy bits throughout. The most authentic way to enjoy shawarma is wrapped in Saj bread, a very thin flatbread. Smother the bread with toum, add the shawarma, followed by some pickles and french fries (yes, fries!), and then wrap it up and take a bite.",
+  "ingredients": [
+    {
+      "item": "ground cumin",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "paprika",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "12/3 pounds (750 g) boneless, skinless chicken thighs (about 7 large thighs)",
+      "amount": ""
+    },
+    {
+      "item": "yellow onion, thinly sliced",
+      "amount": "1 large"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2 large"
+    },
+    {
+      "item": "Assorted vegetables (such as sliced cucumber, sliced tomato, shredded lettuce, and sliced pickles)",
+      "amount": ""
+    },
+    {
+      "item": "Roz Asfar",
+      "amount": ""
+    },
+    {
+      "item": "Salata",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, combine the cumin, paprika, allspice, cinnamon, cloves, cardamom, cayenne, and salt. Add the lemon juice and 1 tablespoon of the oil and mix to create a paste.",
+    "Trim any excess fat from the chicken thighs, then cut them into thin strips, roughly ¼ to ½ inch (6 to 13 mm) wide.",
+    "Add the chicken, onion, and garlic to the marinade and mix well. Cover the bowl with plastic wrap and marinate in the refrigerator for 1 to 4 hours. (If you are short on time, you can use it right away.)",
+    "When ready to cook the shawarma, preheat the oven to 450°F (230°C).",
+    "Place the remaining 3 tablespoons oil on a large, rimmed sheet pan and spread it evenly. Heat the oiled sheet pan for 5 to 7 minutes in the preheated oven.",
+    "Carefully place the chicken in a single layer on the hot baking sheet and bake for 15 to 20 minutes, until fully cooked through. (Check that the chicken is white on the inside and the juices run clear.) The chicken should look charred and browned on the outside. You can broil for a few more minutes if you want additional color on the chicken.",
+    "Serve with toum, bread, and assorted vegetables to make wraps, or alongside rice and salad."
+  ]
+}

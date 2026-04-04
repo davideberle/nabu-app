@@ -1,0 +1,63 @@
+{
+  "id": "curried-corn-and-coconut-rice",
+  "name": "CURRIED CORN & COCONUT RICE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "SWEET CORN, CURRY POWDER, SHORT-GRAIN BROWN RICE, COCONUT MILK, DRIED COCONUT",
+  "servings": "4 to 6 servings",
+  "intro": "THE COCONUT RICE and curried corn in this recipe could very well be eaten separately, and they would make fine additions to lunch or dinner, but the combination of the two is truly special. I call for Jamaican Curry Powder, giving the corn a complexly spicy, sweet, and slightly sour flavor profile.",
+  "ingredients": [
+    {
+      "item": "coconut milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "water",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "short-grain brown rice, soaked in water overnight and drained well",
+      "amount": "1 cup"
+    },
+    {
+      "item": "unsweetened shredded dried coconut",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "1¼ teaspoons"
+    },
+    {
+      "item": "Kernels from 5 ears of sweet corn (store the cobs in the freezer to make Corn Broth)",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "Jamaican Curry Powder",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "To prepare the rice, combine the coconut milk, water, and salt in a medium saucepan and bring to a boil over high heat. Add the rice and dried coconut, stir well, and return to a boil. Immediately decrease the heat to low, cover, and simmer until all of the liquid is absorbed and the rice is tender, about 50 minutes. Remove from the heat and let sit, covered, for at least 10 minutes. Fluff with a fork before serving.",
+    "To prepare the corn, put about 8 cups of water in a medium pot and bring to a boil over high heat. Add 1 teaspoon of the salt, then add the corn. Immediately remove from the heat and let sit for 30 seconds. Drain well.",
+    "Warm the oil in a medium sauté pan over medium heat. Add the garlic, curry powder, and the remaing ¼ teaspoon salt and sauté until fragrant, about 2 minutes. Add the corn and sauté until heated through, 3 to 5 minutes.",
+    "To serve, spoon the corn over the rice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

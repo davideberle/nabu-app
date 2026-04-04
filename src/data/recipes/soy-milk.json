@@ -1,0 +1,45 @@
+{
+  "id": "soy-milk",
+  "name": "SOY MILK",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/2 cup dried soybeans",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup pine nuts",
+      "amount": ""
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "1/4 tsp sea salt",
+      "amount": ""
+    },
+    {
+      "item": "medjool dates",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Soak the dried soybeans overnight in 2 cups of filtered water.",
+    "After soaking for 24 hours, most of the liquid will be gone. Drain any excess water.",
+    "Place the soybeans in a medium pot over medium high heat, together with 2 cups of filtered water.",
+    "Bring the water to a boil and then let it simmer for approximately 15 minutes, uncovered.",
+    "Cover the pot and cook for an additional 2 or 3 minutes. At this point, the soybeans will be softer, but not tender.",
+    "Using a slotted spoon or a strainer, add the soybeans only to a blender (without any liquid). Then, add about 1/2 cup of the cooking liquid into the blender, as well, through a strainer.",
+    "Add the pine nuts, sesame seeds, salt, and dates (make sure to seed them), together with 2 1/2 cups filtered water.",
+    "Blend at medium speed for 1 minute and then raise to high speed until completely smooth and frothy (about 6 to 7 minutes, depending on your blender)."
+  ],
+  "image": "/recipes/soy-milk.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

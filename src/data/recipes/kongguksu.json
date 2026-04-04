@@ -1,0 +1,52 @@
+{
+  "id": "kongguksu",
+  "name": "KONGGUKSU",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "dried soybeans meju kong",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tbsps roasted pine nuts or any other nuts of your choosing",
+      "amount": "4"
+    },
+    {
+      "item": "tsps roasted sesame seeds more for garnish",
+      "amount": "2"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "small Kirby pickling cucumber, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "small tomato sliced (or watermelon) - optional",
+      "amount": "1"
+    },
+    {
+      "item": "somyeon/somen thin wheat flour noodles - about 4 ounces per serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse and soak 1 cup dried soybeans for 5 to 6 hours or overnight. (Yields about 2 to 2 1/4 cups soaked beans.)",
+    "Add enough water to cover the beans, bring to a boil and cook for an additional 3 – 4 minutes. (Do not overcook.) Drain and place the beans in cold water to cool. Rub the beans with your fingers to remove the skins. Pour out the skins that rise to the top. Add more water. Repeat this process to remove as much as possible.",
+    "In a blender, puree 1/2 of the cooked beans, 2 tbsps of nuts, and a tsp of sesame seeds, if using, in about 2 cups of cold water as fine as you can. (The finer it is, the creamier the result will be.) Repeat with the remaining beans. Add water (no more than a cup) to adjust the thickness of the liquid.",
+    "Run the puree through a fine strainer for a smooth milk-like texture, stirring with a spoon to force it through. (This step is optional.)",
+    "Lightly salt to taste. Stir well. Refrigerate to chill.",
+    "Bring a medium pot of water to a boil. Cook somyeon noodles according to the package instructions (about 3 minutes). Drain quickly and shock in cold water to stop cooking. Drain again and rinse in icy cold water. Make serving size mounds. Place the mounds in a colander to drain.",
+    "Stir up the solids settled on the bottom of the soy milk and pour over the noodles in a serving bowl. Garnish with the julienned cucumbers, tomato pieces and/or sesame seeds. Drop in a few ice cubes and serve very cold."
+  ],
+  "image": "/recipes/kongguksu.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

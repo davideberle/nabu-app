@@ -2,31 +2,38 @@
   "id": "labneh",
   "name": "Labneh",
   "source": {
-    "cookbook": "Jerusalem",
-    "author": "Yotam Ottolenghi & Sami Tamimi",
-    "chapter": "Condiments"
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
   },
-  "servings": "serves 4",
-  "tips": "Labneh is yogurt that has been drained of most of its liquid and is almost as thick as cream cheese. It has a sharp, intense flavor. You can make labneh with any yogurt, but we like mixing goat’s and cow’s milk yogurts for a good balance of flavors. You can keep the labneh for at least a week in a sealed tub in the fridge, ready to be spread over bread as a quick snack with some sliced cucumber. As part of a meze selection, spread it out on a small plate, drizzle with olive oil, and sprinkle with chopped oregano or some za’atar.",
+  "servings": "1¾ cups (380 g)",
+  "time": "10 minutes, plus 24 hours straining",
+  "intro": "If you see the refrigerator light on at midnight, I am likely standing there with the door open, pita bread in hand, scooping up labneh as my midnight snack of choice. It’s too hard to resist and so easy to eat. Labneh (pronounced “lab-naa” in other Arabic dialects) is tangy and creamy strained yogurt, resembling the texture of cream cheese. It’s surprisingly easy to make at home; just mix yogurt with salt and strain it! But this simple process, typically done using a cheesecloth, allows all the whey to drain away, leaving behind a thicker and creamier product. The most traditional way of enjoying labneh is spread onto a plate, drizzled generously with olive oil, and sprinkled with za’atar. But I also love spooning it into warm cooked pasta for my picky six-year-old or using it as a canvas for grilled or roasted veggies (see Roasted Eggplant with Labneh). Make sure you don’t discard the protein-rich whey left behind; throw it into a smoothie or a bowl of oatmeal.",
   "ingredients": [
     {
-      "item": "scant 2 cups / 450 g goat’s milk yogurt",
+      "item": "Garlic",
       "amount": ""
     },
     {
-      "item": "scant 2 cups / 450 g cow’s milk yogurt",
+      "item": "Chili flakes",
       "amount": ""
     },
     {
-      "item": "coarse sea salt",
-      "amount": "½ tsp"
+      "item": "Olives",
+      "amount": ""
+    },
+    {
+      "item": "Fresh herbs",
+      "amount": ""
     }
   ],
   "method": [
-    "Line a deep bowl with cheesecloth. In a separate bowl, stir the yogurts together with the salt, then pour into the cloth. Bring the edges together, form a tight bundle, and tie firmly with a string. Hang the bundle over the bowl and place in the fridge. Leave the yogurt to drain for 24 to 36 hours, emptying the bowl once or twice if needed. After this time, much of the liquid will be gone and the yogurt will have turned thick and quite dry; the center may still be creamy."
+    "In a medium bowl, mix together the yogurt and salt. (You can also add the salt directly to the yogurt tub to avoid dirtying another dish.)",
+    "In a separate medium bowl, place a fine-mesh strainer so that it is elevated and not touching the bottom of the bowl. Line the strainer with a cheesecloth. (If you do not have a cheesecloth, layer thick paper towels in the strainer instead.)",
+    "Transfer the yogurt into the cheesecloth and lift all corners of the cloth to tie it into a secure knot. (You can also rest a wooden spoon at the top of the bowl and tie the cheesecloth to the spoon with a trivet underneath to ensure it does not touch the bottom of the bowl.) Allow it to strain for 24 hours in the refrigerator, or up to 48 hours for an even thicker consistency.",
+    "Spread the labneh onto a plate and top with olive oil and your preferred toppings. Serve with pita bread."
   ],
-  "image": null,
   "dietary": [
+    "vegan",
     "vegetarian"
   ]
 }

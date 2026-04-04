@@ -1,0 +1,44 @@
+{
+  "id": "za-atar",
+  "name": "ZA’ATAR",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "THYME, OREGANO, SUMAC, CUMIN, SESAME, BLACK PEPPER",
+  "servings": "about ⅓ cup",
+  "intro": "ZA’ATAR is an old-world spice blend that is popular throughout the Middle East. Its usage dates back to ancient Egyptian and Levantine cultures. Typically, the blend includes toasted sesame seeds, thyme, sumac, oregano, marjoram, and salt. There are many variations and recipes, and blends can differ from region to region or even family to family. Thyme, one of the main ingredients, is often used medicinally. It’s loaded with antioxidants and is a natural anti-inflammatory and antiseptic. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "heaping tablespoons dried thyme",
+      "amount": "3"
+    },
+    {
+      "item": "heaping tablespoons dried oregano",
+      "amount": "2"
+    },
+    {
+      "item": "Scant 1 tablespoon ground sumac",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds, toasted",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "heaping tablespoon sesame seeds, toasted",
+      "amount": "1"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the thyme, oregano, sumac, and cumin seeds in a mortar or spice grinder and grind into a fine powder. Add the sesame seeds and a few grinds of black pepper and stir well to combine. Transfer to a jar and seal tightly. Stored at room temperature, it will keep for 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

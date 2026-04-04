@@ -1,0 +1,87 @@
+{
+  "id": "dirty-millet",
+  "name": "DIRTY MILLET",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "TEMPEH, PORCINI, CREMINI, AND SHIITAKE MUSHROOMS",
+  "servings": "4 to 6 servings",
+  "intro": "I IMAGINE THAT DIRTY RICE, a traditional Cajun rice pilaf, was created as a way to ensure that no parts of a bird went to waste and to add flavor to plain rice. Here I have reinvented dirty rice, replacing the white rice with millet and the giblets with a mixture of tempeh and porcini, cremini, and shiitake mushrooms. The tempeh and mushroom mixture adds depth, making this a filling main dish.",
+  "ingredients": [
+    {
+      "item": "sliced dried porcini mushrooms",
+      "amount": "½ cup"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "plus 1 teaspoon extra-virgin olive oil, plus more for drizzling",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "finely diced yellow onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "finely diced green bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced celery, strings removed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "tempeh, crumbled",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cremini mushrooms, stemmed and thinly sliced",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "shiitake mushrooms, stemmed and thinly sliced",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "millet, soaked in water overnight and drained well",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable stock, homemade or store-bought",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "minced flat-leaf parsley",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Put the porcini in a small heatproof bowl and pour in the boiling water, making sure it covers them (you may need to weight the mushrooms with another small bowl). Let soak for 20 minutes. Drain through a fine-mesh sieve, reserving the soaking liquid, and chop the porcini finely.",
+    "Warm 1 tablespoon of the oil in a medium sauté pan over medium heat. Add the onion, bell pepper, celery, cayenne, and ¼ teaspoon of the salt and sauté until the vegetables begin to soften, about 5 minutes. Add another tablespoon of the oil and the tempeh, increase the heat to medium-high, and cook, stirring occasionally, until the tempeh begins to brown and crisp, about 5 minutes. Drizzle in the tamari and add the cremini, shiitakes, porcini, and ¼ teaspoon of the salt. Decrease the heat to medium and sauté until the mushrooms release their liquid and begin to brown, about 5 minutes. Transfer to a bowl.",
+    "In the same sauté pan, toast the millet over medium heat, stirring often, until the millet starts to smell nutty, about 3 minutes. Transfer to a medium saucepan. Stir in the stock, 1 cup of the re-served porcini mushroom liquid, and the remaining ¼ teaspoon salt, 1 teaspoon oil, and the tempeh mixture. Bring to a boil over high heat. Immediately decrease the heat to low, cover, and simmer, until all the liquid is absorbed, about 15 minutes. Turn off the heat and let sit, covered, for 15 minutes.",
+    "Season to taste with black pepper and, if desired, more salt. Serve garnished with the parsley and drizzled with olive oil."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "chicken-and-freekeh-casserole",
+  "name": "Chicken & Freekeh Casserole",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "Freekeh (also referred to as “freek”) is a common grain used in Levantine and Egyptian cuisine. Known for its nutty and smoky flavor and chewy texture, it is a young green wheat that is roasted and cracked. It is often cooked as a pilaf, mixed into salads, or used to stuff seasoned and roasted chicken. This recipe is a nod to the traditional stuffed chicken dish but uses chicken leg quarters for quicker cooking. I can’t rave enough about how flavorful the freekeh ends up tasting.",
+  "ingredients": [
+    {
+      "item": "seven spice",
+      "amount": "4 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "bone-in, skin-on chicken leg quarters (5 leg quarters)",
+      "amount": "4½ pounds (2 kg)"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "whole or cracked freekeh, rinsed and drained (see Note)",
+      "amount": "2½ cups (350 g)"
+    },
+    {
+      "item": "seven spice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "chicken broth or water",
+      "amount": "4 cups (960 ml)"
+    }
+  ],
+  "method": [
+    "TO MAKE THE CHICKEN: Preheat the oven to 400°F (205°C).",
+    "In a large bowl, mix together the lemon juice, garlic, seven spice, 2½ teaspoons salt, and ½ teaspoon pepper.",
+    "Make three or four ½-inch (13 mm) slits on the bottom side of each chicken quarter. Add the chicken quarters to the bowl with the marinade and slather the chicken with the marinade, making sure to cover all sides and working it under the skin. Let sit for 10 to 15 minutes, or marinate, covered, in the refrigerator overnight.",
+    "MEANWHILE, PREP THE CARROTS: In a medium bowl, mix the carrots with the ½ teaspoon salt, ¼ teaspoon pepper, and 1 tablespoon oil.",
+    "TO MAKE THE FREEKEH: In a large roasting pan that is also stovetop safe, heat the 2 tablespoons oil over medium heat. (If you don’t have a stovetop-safe roaster, you can use a large skillet then transfer everything to a baking dish.) Sear the chicken leg quarters skin side down for 2 to 3 minutes until golden. Flip and sear the other side for a few minutes. Transfer to a plate.",
+    "Add the onion to the roasting pan and cook, stirring often, until softened, 2 to 3 minutes. Add the freekeh and toast while stirring for 2 to 3 minutes. Add the seven spice and 1½ teaspoons salt and cook, stirring often, for a few minutes. Add the broth and bring to a boil. Once the water is boiling, nestle the chicken quarters on top of the freekeh and scatter the carrots throughout.",
+    "Tightly cover the roasting pan with aluminum foil and bake for 1 hour. After 1 hour, uncover the pan and bake for another 30 minutes, or until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C) and the freekeh is tender. Broil for 3 to 5 minutes, until the chicken skin is golden brown.",
+    "Serve with salad."
+  ]
+}

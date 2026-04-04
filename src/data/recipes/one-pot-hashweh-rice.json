@@ -1,0 +1,74 @@
+{
+  "id": "one-pot-hashweh-rice",
+  "name": "One-Pot Hashweh Rice",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "Back in my dark, blurry days, which was when I was working a full-time engineering job, commuting to the office every day, and juggling two little kids at home, I’d get home and rush to the kitchen, still in my work clothes, and quickly make this recipe. It was a go-to meal because it had protein, carbs, and vegetables all in one pot and required very easy sides: a bowl of plain yogurt and maybe a quick chopped salad, if I could swing it. This dish is called hashweh rice, which translates to “filling,” because the seasoned ground beef is used as a filling, in many traditional dishes. If my mom had leftover hashweh, she would always turn it into this rice dish with peas and carrots.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "yellow onion, finely chopped",
+      "amount": "1 large"
+    },
+    {
+      "item": "lean ground beef",
+      "amount": "1 pound (454 g)"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt, divided",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "frozen peas (or a mix of peas and carrots)",
+      "amount": "2 cups (270 g)"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (400 g)"
+    },
+    {
+      "item": "raisins (optional)",
+      "amount": "¼ cup (35 g)"
+    },
+    {
+      "item": "fresh parsley leaves",
+      "amount": "¼ cup (13 g)"
+    },
+    {
+      "item": "Plain, whole-milk yogurt",
+      "amount": ""
+    },
+    {
+      "item": "Salata",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot, heat the 3 tablespoons oil over medium heat. Add the onion and cook, stirring often, until softened, about 5 minutes.",
+    "Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 7 to 10 minutes, until browned and the juices start to dry up.",
+    "Add the allspice, cinnamon, 1 teaspoon of the salt, the pepper, and peas. Stir to combine and continue to cook for 5 to 7 minutes, until the mixture looks dry and not much moisture is left.",
+    "Add the rice to the pot along with 3 cups (720 ml) of water and the remaining 1½ teaspoons salt. Mix well to combine and ensure the water completely covers the rice mixture. Increase the heat to medium-high and let the mixture come to a boil; this should take only a few minutes. As soon as it starts boiling, cover immediately with the lid and reduce the heat to low. Let cook for 20 minutes, undisturbed.",
+    "MEANWHILE, IF USING THE ALMONDS AND/OR RAISINS, MAKE THE GARNISH: Heat the 1 tablespoon oil in a small skillet over medium-low heat, then add the almonds and toast them for 4 to 5 minutes, until golden brown, stirring continuously. Transfer to a small bowl. Add the raisins to the skillet and warm them through, about 30 seconds.",
+    "After the rice has cooked for 20 minutes, turn off the heat and let the pot sit, covered, for 10 minutes more. Remove the lid and fluff the rice with a fork or wooden spoon,",
+    "Spoon into a serving dish and garnish with the almonds (if using), raisins (if using), and parsley. Serve with yogurt and salad."
+  ]
+}

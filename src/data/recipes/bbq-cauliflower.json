@@ -1,0 +1,93 @@
+{
+  "id": "bbq-cauliflower",
+  "name": "BBQ CAULIFLOWER",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "medium or large cauliflower, cut into small florets (about 7–8 cups)",
+      "amount": "1"
+    },
+    {
+      "item": "1/3 cup water",
+      "amount": ""
+    },
+    {
+      "item": "green onions, sliced thinly",
+      "amount": "4"
+    },
+    {
+      "item": "baby spinach (optional)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "up to 1/3 cup tamari *",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "white miso *",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "Tbsps organic maple syrup *",
+      "amount": "3"
+    },
+    {
+      "item": "molasses",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "minced ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "2 Tbsp"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "organic cornstarch (+ more, if needed) *",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "pinch black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Green onions, sliced",
+      "amount": ""
+    },
+    {
+      "item": "Toasted sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "Sriracha",
+      "amount": ""
+    },
+    {
+      "item": "Red pepper flakes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the Sauce Ingredients into a small bowl, whisk well, then set aside.",
+    "In a large ceramic/enamel lined Dutch oven/pot or similarly large stockpot, add the cauliflower florets and 1/3 cup water. Cover and steam over medium-high heat for approx. 4 minutes or just until all the water has evaporated. Then add the mixture above in Step 1. Stir constantly until the mixture thickens and evenly coats all the cauliflower.",
+    "Cook the cauliflower, stirring constantly until the cauliflower has reached your preference of tenderness. We cooked our approx. 3 to 4 minutes. Then stir in the green onions and baby spinach (optional) cook for another minute.",
+    "Serve immediately with rice of choice, and top with your favorite toppers like additional toasted sesame seeds and/or chopped green onions."
+  ],
+  "image": "/recipes/bbq-cauliflower.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

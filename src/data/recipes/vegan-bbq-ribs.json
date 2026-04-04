@@ -1,0 +1,54 @@
+{
+  "id": "vegan-bbq-ribs",
+  "name": "VEGAN BBQ ‘RIBS’",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "vital wheat gluten",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chipotle powder (smoked or not)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tbp lemon pepper",
+      "amount": "1"
+    },
+    {
+      "item": "tbp onion powder",
+      "amount": "1"
+    },
+    {
+      "item": "tbs garlic powder",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tbs tahini",
+      "amount": "2"
+    },
+    {
+      "item": "tbs low sodium tamari (soy sauce)",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Heat the oven to 350 degrees.",
+    "Mix the wet ingredients (water, tahini, tamari & liquid smoke) in a small bowl. Set aside.",
+    "In a larger bowl – mix the dry ingredients (wheat gluten & spices) and add the wet ingredients. Mix it up until that gooey hamburger-looking stuff comes together",
+    "Grease a loaf pan & press the seitan into the pan. Smooth it flat. Bake at 350 for about 30 minutes. Remove from oven & transfer the seitan to a plate & slather it with BBQ sauce",
+    "Put the seitan, BBQ sauce side down, onto the grill. Slather lots more BBQ sauce on the other side. Now just cook this until it looks the way you would want ribs to look."
+  ],
+  "image": "/recipes/vegan-bbq-ribs.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

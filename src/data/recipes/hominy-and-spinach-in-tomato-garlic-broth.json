@@ -1,0 +1,71 @@
+{
+  "id": "hominy-and-spinach-in-tomato-garlic-broth",
+  "name": "HOMINY & SPINACH in TOMATO-GARLIC BROTH",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "TOMATO, PARSLEY",
+  "servings": "4 to 6 servings",
+  "intro": "THIS SOUP IS PRIMARILY inspired by the ingredients and flavor profile of a version of efo riro, a traditional Yoruban stew eaten in Nigeria that I ate several years ago. It was loaded with fresh spinach and tomatoes and included a bit of pounded yam for starchiness. The base of this soup is a smooth tomato-garlic broth that’s combined with minced spinach and hominy, the latter a traditional Native American staple that shows up in both African-American and Afro-Caribbean cuisine.",
+  "ingredients": [
+    {
+      "item": "dried small hominy, soaked in water overnight and drained well",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "diced carrot",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "7 cloves"
+    },
+    {
+      "item": "(28-ounce) can plum tomatoes with juices, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock, homemade or store-bought",
+      "amount": "5 cups"
+    },
+    {
+      "item": "Sunflower oil, for deep-frying (about 4 cups)",
+      "amount": ""
+    },
+    {
+      "item": "packed minced spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Freshly ground white pepper",
+      "amount": ""
+    },
+    {
+      "item": "minced flat-leaf parsley",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Put the hominy in a medium saucepan and add enough water to cover by 2 inches. Bring to a boil over high heat. Decrease the heat to low, cover, and simmer until tender, 1½ to 2 hours. Drain well. Transfer ¾ cup of the cooked hominy to a clean kitchen towel and rub gently to dry more thoroughly.",
+    "To make the broth, warm the oil in a large saucepan over medium-low heat. Add the carrot, onion, and salt and sauté until the vegetables are soft but not browning, 5 to 7 minutes. Add the garlic and sauté until fragrant, 2 to 3 minutes. Stir in the tomatoes and stock. Increase the heat to medium-high and bring to a boil. Immediately decrease the heat to medium-low, partially cover, and simmer until starting to thicken, about 45 minutes.",
+    "Meanwhile, line a plate with paper towels. Warm about 2 inches of sunflower oil in a small saucepan until hot but not smoking (about 375°F), about 5 minutes. Gently add half of the dried ¾ cup hominy. Fry, stirring occasionally, until lightly golden, 4 to 5 minutes. Using a slotted spoon, transfer to the lined plate to drain. Repeat with the remaining dried hominy.",
+    "Strain the broth through a fine-mesh sieve, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Return the broth to the saucepan and stir in the unfried hominy. Place over medium-low heat, bring to a simmer, and cook for 10 minutes. Stir in the spinach, cover, and cook for 1 minute. Season with salt and pepper to taste. Serve topped with 2 heaping tablespoons of fried hominy and garnished with the parsley."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

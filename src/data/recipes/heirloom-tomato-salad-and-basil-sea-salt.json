@@ -1,0 +1,37 @@
+{
+  "id": "heirloom-tomato-salad-and-basil-sea-salt",
+  "name": "HEIRLOOM TOMATO SALAD & BASIL SEA SALT",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "OLIVE OIL, BLACK PEPPER",
+  "servings": "4 servings",
+  "intro": "IN AUGUST, heirloom tomatoes are at their peak, and you should be able to find them at your local farmers’ market, some natural food stores, and, increasingly, at conventional supermarkets.",
+  "ingredients": [
+    {
+      "item": "heirloom tomatoes of varying shapes, sizes, and colors",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "Best-quality extra-virgin olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "Basil Salt",
+      "amount": ""
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the tomatoes in various styles—a mix of halves, quarters, and slices—to enhance presentation.",
+    "Divide the tomatoes evenly among 4 plates, drizzle with oil, and sprinkle with Basil Salt and black pepper to taste."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

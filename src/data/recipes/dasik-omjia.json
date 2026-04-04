@@ -1,0 +1,36 @@
+{
+  "id": "dasik-omjia",
+  "name": "DASIK (OMJIA)",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "rice flour",
+      "amount": "3 Tbsp"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "2.5 tsp Omija (Five Flavor Berry) Tea",
+      "amount": ""
+    },
+    {
+      "item": "honey (light color)",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "In a bowl, add rice flour, powdered sugar, honey and Omija tea. Mix well with a spatula.",
+    "Once the omija tea dough start to clump together, gather it with your hand and form into a ball.",
+    "Cover with plastic wrap and set aside until ready to use in the Dasik mold."
+  ],
+  "image": "/recipes/dasik-omjia.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

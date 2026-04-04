@@ -1,0 +1,71 @@
+{
+  "id": "fried-chicken",
+  "name": "FRIED ‘CHICKEN’",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "soy milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 lemon",
+      "amount": ""
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pieces king oyster mushroom",
+      "amount": "5"
+    },
+    {
+      "item": "Oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "Spicy Dredging Mix",
+      "amount": ""
+    },
+    {
+      "item": "all purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/4 cup panko bread crumbs",
+      "amount": ""
+    },
+    {
+      "item": "gochugaru",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Squeeze half a lemon into your soy milk, along with the soy sauce. This is your vegan buttermilk. Clean your mushrooms. Place them in the vegan buttermilk and set it aside. Mix together all the dredging ingredients. Heat your oil to about 350°F. If you don't have a thermometer, drop a panko crumb into the oil and if it immediately bobs to the surface, your oil is ready to cook in.",
+    "When your oil is hot, take a mushroom piece covered in vegan buttermilk and drop it into the dredging bowl. Make sure to pack the dredging mix into the mushroom. Then gently shake off any excess before dropping it carefully into the hot oil. Add more pieces without crowding your pan. Cook each piece until both sides are deep golden brown, about 2 to 3 minutes on each side. Remove from oil and gently shake off any excess oil.."
+  ],
+  "image": "/recipes/fried-chicken.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

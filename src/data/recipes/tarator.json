@@ -1,0 +1,44 @@
+{
+  "id": "tarator",
+  "name": "Tarator",
+  "subtitle": "TAHINI SAUCE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "1 cup (240 ml)",
+  "time": "10 minutes",
+  "intro": "This is probably the most common sauce you’ll find in the Middle East, usually referred to as tarator. This tahini sauce is drizzled on wraps, salads, and grilled vegetables, and more specifically, it is always drizzled on falafel and beef shawarma wraps. To make it, all you need is high-quality tahini paste, lemon juice, and crushed garlic. Whisk them together and season with salt and pepper and some water, and you’re ready to drizzle. It’s very nutty and lemony and will brighten up anything you add it to.",
+  "ingredients": [
+    {
+      "item": "tahini",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1 large"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "1/8 teaspoon black pepper, or more to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the tahini and crushed garlic to a medium bowl and whisk to combine.",
+    "Slowly add the lemon juice and whisk; the mixture will start to seize up and look very dry.",
+    "Gradually add about ¾ cup (180 ml) of water, 2 to 3 tablespoons at a time, while whisking until the mixture is smooth.",
+    "Season with the salt and pepper and garnish with the chopped parsley."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

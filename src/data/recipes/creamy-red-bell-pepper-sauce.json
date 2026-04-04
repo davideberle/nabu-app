@@ -1,0 +1,72 @@
+{
+  "id": "creamy-red-bell-pepper-sauce",
+  "name": "CREAMY RED BELL PEPPER SAUCE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "LEMON JUICE, RED WINE VINEGAR, TAMARI",
+  "servings": "about 2 cups",
+  "intro": "I CREATED THIS SAUCE specifically for Lil’ Tofu Po’Boys, but it could be substituted for mayonnaise in almost any application.",
+  "ingredients": [
+    {
+      "item": "red bell pepper, roasted (see sidebar), seeded, and cut into a few large slices",
+      "amount": "1"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "freshly ground white pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "With a clean kitchen towel, pat the bell pepper slices dry. Put the pepper in a blender. Add the tofu, mayonnaise, oil, lemon juice, vinegar, tamari, garlic, paprika, salt, pepper, maple syrup, and mustard and process until smooth and creamy. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "mushroom-hotpot",
+  "name": "MUSHROOM HOTPOT",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/2 small onion cut into big chunks",
+      "amount": ""
+    },
+    {
+      "item": "ounces Korean radish cut into big chunks",
+      "amount": "3"
+    },
+    {
+      "item": "piece dried kelp (about 3 inch square), dashima",
+      "amount": "1"
+    },
+    {
+      "item": "a few mushroom stems",
+      "amount": ""
+    },
+    {
+      "item": "soup soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "ounces assorted mushrooms (button, shiitake, oyster, crimini, enoki, king, etc.)",
+      "amount": "12"
+    },
+    {
+      "item": "large napa cabbage leaves (or green cabbage or bok choy)",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 medium onion sliced into 1/2-inch thickness",
+      "amount": ""
+    },
+    {
+      "item": "small carrot thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "scallions cut into small pieces",
+      "amount": "2"
+    },
+    {
+      "item": "ounces ssukgat (쑥갓, crown daisies), watercress, or minari (미나리, water dropwort)",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 package tofu (about 8 ounces)",
+      "amount": ""
+    },
+    {
+      "item": "ounces dangmyeon (당면, sweet potato starch noodles)",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Add 5 cups water and the broth vegetables to a medium size pot. Bring it to a boil over high heat. Reduce the heat to medium and simmer for about 15 minutes. Discard the vegetables. Season with the soup soy sauce, salt and pepper to taste. Yields 3 to 4 cups.",
+    "Cut the mushrooms into bite size slices (about 1/4-inch thick). Mushrooms cook down quite a bit, so don’t cut too thin. If using oyster mushrooms, split lengthwise into bite size pieces.",
+    "Neatly arrange the mushrooms and scallions in clusters along with other vegetables, if using, in a shallow pot. Add 2 cups of broth. Boil over medium to medium high heat until mushrooms are softened, 4 – 5 minutes. You can add more broth and any remaining ingredients while eating if you’re cooking at the table.Sprinke with panko and gochugaru if using. Bake 20-25 minutes, or until lightly browned on top."
+  ],
+  "image": "/recipes/mushroom-hotpot.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

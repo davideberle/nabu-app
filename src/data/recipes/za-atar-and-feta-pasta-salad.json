@@ -1,0 +1,60 @@
+{
+  "id": "za-atar-and-feta-pasta-salad",
+  "name": "Za’atar & Feta Pasta Salad",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "10 minutes, plus 1 hour chilling",
+  "intro": "Pasta salads are not traditional to Middle Eastern cuisine, but like potato salad, my mom made them quite often when I was growing up. Her version would have chicken and a lot of mayonnaise, which I loved. But this version is the one I make the most often. The dressing has a base of olive oil and lemon juice combined with herby za’atar, Dijon mustard, and honey. You can use any pasta shape you like, but smaller ones work best, as they’ll be the same size as the other ingredients. I load it up with black olives, sun-dried tomatoes, herbs, and the most important component: salty feta cheese. This salad tastes even better after being refrigerated for a few hours.",
+  "ingredients": [
+    {
+      "item": "sliced black olives",
+      "amount": "½ cup (55 g)"
+    },
+    {
+      "item": "finely chopped green onions",
+      "amount": "½ cup (30 g)"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "chopped sun-dried tomatoes",
+      "amount": "½ cup (60 g)"
+    },
+    {
+      "item": "2/3 cup (100 g) crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "TO MAKE THE PASTA SALAD: Cook the pasta to al dente according to the package directions.",
+    "Meanwhile, add the cucumbers, olives, green onions, parsley, sun-dried tomatoes, and feta to a medium salad bowl.",
+    "When the pasta is cooked, drain and run under cold water to cool it, then add it to the salad bowl.",
+    "TO MAKE THE DRESSING: In a small bowl, whisk together the lemon juice, za’atar, oil, salt, Dijon mustard, and honey until well combined.",
+    "Pour the dressing over the salad and toss to combine well.",
+    "Refrigerate for at least 1 hour before serving."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "cumin-pickled-onions",
+  "name": "CUMIN-PICKLED ONIONS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "WHITE VINEGAR, RAW CANE SUGAR, CUMIN, BLACK PEPPERCORNS",
+  "servings": "about 2 cups",
+  "intro": "A SIMPLE RECIPE for sandwich-worthy onions. Try them on the Berbere-Spiced Black-Eyed Pea Sliders.",
+  "ingredients": [
+    {
+      "item": "apple cider vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cumin seeds toasted",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red onions, sliced into thin rings",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Put the vinegar, water, sugar, cumin, and peppercorns in a medium saucepan and bring to a boil over medium-high heat. Decrease the heat to medium and cook, stirring occasionally, until the sugar dissolves, about 5 minutes. Remove from the heat and let cool to room temperature.",
+    "Put the onions in a canning jar, then pour the vinegar mixture into the jar. Cover tightly and refrigerate for at least 1 day before eating. Stored in the refrigerator, the onions will keep for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,67 +1,78 @@
 {
   "id": "harissa",
-  "name": "Harissa",
+  "name": "HARISSA",
   "source": {
-    "cookbook": "Jerusalem",
-    "author": "Yotam Ottolenghi & Sami Tamimi",
-    "chapter": "Condiments"
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
   },
-  "servings": "makes 1 small jarabout a generous ¾ cup / 200 ml",
-  "tips": "Harissa, the basic flavoring agent in Tunisian cuisine, is extremely versatile. Use it as a condiment for grilled meat or fish, add it to roasted vegetables, or stir into stews and soups. We particularly like it with couscous or rice. Adjust the amount of heat by increasing or reducing the number of chiles. Just remember, it is meant to be hot!",
+  "subtitle": "PAPRIKA, CAYENNE, RED PEPPER FLAKES, CUMIN, CORIANDER, TOMATO SAUCE, TOMATO PASTE",
+  "servings": "about 1 cup",
+  "intro": "HARISSA, A HOT-CHILE PASTE commonly eaten in North Africa, is used in a range of dishes to add heat. I often make a saucier version with tomatoes to serves as a fiery dipping condiment, but here I present a thicker blend that can be used to flavor soups, stews, vegetables, and grain dishes.",
   "ingredients": [
     {
-      "item": "red pepper",
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cumin seeds, toasted and ground",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coriander seeds, toasted and ground",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "serrano chile, seeded and minced",
       "amount": "1"
     },
     {
-      "item": "coriander seeds",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "cumin seeds",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "caraway seeds",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "olive oil",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "small red onion, coarsely chopped (scant ⅔ cup / 90 g in total)",
-      "amount": "1"
-    },
-    {
-      "item": "cloves garlic, coarsely chopped",
+      "item": "large cloves garlic, minced",
       "amount": "3"
     },
     {
-      "item": "hot red chiles, seeded and coarsely chopped",
-      "amount": "3"
+      "item": "tomato sauce",
+      "amount": "¼ cup"
     },
     {
       "item": "tomato paste",
-      "amount": "1½ tsp"
+      "amount": "2 tablespoons"
     },
     {
-      "item": "freshly squeezed lemon juice",
-      "amount": "2 tbsp"
+      "item": "water",
+      "amount": "2 tablespoons"
     },
     {
-      "item": "salt",
-      "amount": "½ tsp"
+      "item": "freshly squeezed lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "freshly ground white pepper",
+      "amount": "¼ teaspoon"
     }
   ],
   "method": [
-    "Place the pepper under a very hot broiler, turning occasionally for about 25 minutes, until blackened on the outside and completely soft. Transfer to a bowl, cover with plastic wrap, and allow to cool. Peel the pepper and discard its skin and seeds.",
-    "Place a dry frying pan over low heat and lightly toast the coriander, cumin, and caraway seeds for 2 minutes. Remove them to a mortar and use a pestle to grind to a powder.",
-    "Heat the olive oil in a frying pan over medium heat, and fry the onion, garlic, and chiles for 10 to 12 minutes, until a dark smoky color and almost caramelized.",
-    "Now use a blender or a food processor to blitz together all of the paste ingredients until smooth, adding a little more oil if needed.",
-    "Store in a sterilized jar (SEE PRESERVED LEMONS) in the fridge for up to 2 weeks or even longer."
+    "Warm the oil in a small saucepan over low heat. Add the paprika, red pepper flakes, cumin, coriander, salt, and cayenne and stir to combine. Cook, stirring occasionally, until fragrant, about 3 minutes. Stir in the serrano and garlic and sauté for 2 minutes. Add the tomato sauce, tomato paste, water, lime juice, and maple syrup. Mix well and simmer, stirring occasionally, until the mixture starts to thicken, about 5 minutes. Stir in the white pepper. Taste and season with more salt if desired. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
-  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

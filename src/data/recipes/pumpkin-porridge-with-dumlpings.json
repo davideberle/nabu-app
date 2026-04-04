@@ -1,0 +1,71 @@
+{
+  "id": "pumpkin-porridge-with-dumlpings",
+  "name": "PUMPKIN PORRIDGE WITH DUMLPINGS",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/2 lb kabocha squash (without seeds and peel)",
+      "amount": "1"
+    },
+    {
+      "item": "1/4 cup sweet rice flour or glutinous rice flour",
+      "amount": ""
+    },
+    {
+      "item": "+ 3/4 cup water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "1/2 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "TB brown sugar or maple syrup",
+      "amount": "1"
+    },
+    {
+      "item": "(1/2-inch) rice dumplings (recipe below)",
+      "amount": "20-25"
+    },
+    {
+      "item": "1/4 cup adzuki beans, cooked (optional)",
+      "amount": ""
+    },
+    {
+      "item": "toasted pumpkin seeds (optional)",
+      "amount": ""
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup sweet rice flour (glutinous rice flour)",
+      "amount": ""
+    },
+    {
+      "item": "TB warm water + more if necessary",
+      "amount": "3"
+    },
+    {
+      "item": "1/4 tsp salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel and seed the kabocha squash. Place the kabocha squash in a steamer and steam for about 20 minutes until soft. Check for doneness by poking the pieces with a fork. Let them cool. Add the squash and 2 cups of water to a blender. Blend until smooth. Pour the contents into a pot. Add 2 more cups of water to a blender and pulse to get the bits of kabocha stuck to the blender. Pour the contents into the same pot.",
+    "Bring the contents of the pot to a boil over moderately high heat. Stir well and lower the heat to medium.",
+    "In a small bowl, stir together 1/4 cup of sweet rice flour and 3/4 cup of water. Slowly add this to the pot while stirring. Make sure to stir well to prevent the mixture from forming lumps. Once the contents come to a boil, lower the heat further and simmer for 10 minutes. Stir regularly to ensure nothing sticks to the bottom. The contents of the pot should now look thicker. Don’t be afraid to add water if it becomes too thick.",
+    "While the porridge is simmering, make the rice dumplings. Mix together 1/2 cup sweet rice flour and 3 TB of water. Knead until you achieve a dough that feels like soft play-doh. Form them into 1/2-inch balls. You may need extra flour to prevent the dumplings from sticking.",
+    "Stir in brown sugar (or maple syrup) and salt. Add the rice balls to the pot. Let them cook on low boil for about 5 minutes. Don’t overcook. The rice balls will become mushy. The rice dumplings should have the consistency of mochi. Stir in beans, if using, with about 1 minute left of cooking time.",
+    "If necessary, salt to taste. Remove from heat and serve immediately. Toasted pumpkin seeds and additional brown sugar or maple syrup can be added if desired.."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

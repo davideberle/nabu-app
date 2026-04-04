@@ -1,0 +1,80 @@
+{
+  "id": "syrian-muhammara",
+  "name": "Syrian Muhammara",
+  "subtitle": "ROASTED RED PEPPER & WALNUT DIP",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "2¼ cups (520 g); 6 servings",
+  "time": "10 minutes",
+  "intro": "Muhammara is an iconic Syrian mezze dip made primarily from roasted red peppers and walnuts. I find that it’s lesser known in the Western world but quite possibly one of the most delicious dips you’ll try. It is rich, sweet, tart, and slightly smoky, with a thick, spreadable consistency. It’s known for its vibrant red color, which is why it is called muhammara, meaning “reddened” in Arabic. Many versions will use bread crumbs to thicken the dip, as well as tomato paste for redness. I love to add a nontraditional ingredient to my recipe: sun-dried tomatoes. I find they add a concentrated and robust flavor, amping up the umami and sweetness. Make this dip ahead of time and store it in the fridge up to a week.",
+  "ingredients": [
+    {
+      "item": "red bell peppers, cut in half and seeds and stems removed (or use 10½ ounces, or 300 g, jarred roasted red peppers; see Note)",
+      "amount": "3 large"
+    },
+    {
+      "item": "bread crumbs",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "unsalted whole raw walnuts",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1 large"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute with ½ teaspoon chili flakes)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "4 small"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Finely chopped fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "Pita bread",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 450°F (230°C).",
+    "Place the peppers, skin sides down, in a large cast-iron pan over medium-high heat and char for 5 to 6 minutes, until the skins are blistered.",
+    "Cover the pan with aluminum foil and bake for 30 to 45 minutes, until the peppers are soft. Remove from the oven and let rest, still covered, for 10 minutes; this helps them to soften and makes removing the skins easier.",
+    "Carefully peel the peppers with tongs or your hands and discard the skins.",
+    "Lightly toast the bread crumbs in a medium, dry skillet over medium heat for 3 to 5 minutes, until they are slightly darker in color, stirring continuously, then remove from the pan.",
+    "Lightly toast the walnuts in the same skillet over medium heat for 3 to 5 minutes, until slightly darker and fragrant, stirring continuously, then remove from the pan.",
+    "Add the roasted peppers, toasted bread crumbs, toasted walnuts, pomegranate molasses, oil, garlic, Aleppo pepper, salt, sun-dried tomatoes, tomato paste, and lemon juice to a food processor. Process until a paste forms, stopping to scrape down the sides of the food processor as necessary. The final dip should be a bit lumpy.",
+    "Spread the muhammara onto a dish and garnish with pomegranate molasses, walnuts, and parsley. Serve with pita bread."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

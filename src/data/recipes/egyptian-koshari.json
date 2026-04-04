@@ -1,0 +1,103 @@
+{
+  "id": "egyptian-koshari",
+  "name": "Egyptian Koshari",
+  "subtitle": "LENTILS, RICE & PASTA",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "10 minutes",
+  "intro": "Koshari is Egypt’s national dish. And when I explain the components, you may be a bit perplexed, as I was when I first learned about it. How can one recipe have so many carbs? But once you get a taste, it will all make sense. This humble dish became widespread across Egypt due to its affordability. It combines lentils, rice, pasta, and chickpeas. The real magic happens when they are topped with a garlicky, tangy tomato sauce and then smothered with sweet and crispy fried onions. The oil that the onions are fried in is used to cook the other components, adding further flavor and depth. It is quite addictive! It’s also typically served with a side of dukkah, which in this case is a white vinegar sauce flavored with garlic, coriander, and cumin (as opposed to the nut, seed, and spice mix on this page). Most Egyptians also serve it with a spicier tomato sauce on the side for those who love additional heat. Although this dish has many components, it’s quite simple to make and truly unique. My obsession with koshari began when I had a taste of it at a local Egyptian restaurant. After that, it became a regular dish that I make at home, perfecting it over the years.",
+  "ingredients": [
+    {
+      "item": "cornstarch",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "brown lentils, rinsed and drained",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "chicken broth, divided",
+      "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "Calrose rice (or any medium-grain rice), rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (380 g)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Juice of ½ small lemon",
+      "amount": ""
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "tomato passata (puree)",
+      "amount": "2½ cups (600 ml)"
+    },
+    {
+      "item": "1/8 teaspoon kosher salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "TO MAKE THE CRISPY ONIONS: In a large bowl, combine the sliced onions with the flour and cornstarch and lightly coat them.",
+    "In a large skillet, heat enough oil over medium-high heat (at least ¾ cup, or 180 ml) to cover the onions. Add the onions so that they are immersed in the oil and not overcrowded, working in two batches, and cook until the edges start to turn golden. Gently bring the outer ones to the center and continue frying until they all turn golden brown; be careful not to burn them. With a slotted spoon, remove the onions to a paper towel–lined tray to absorb the excess oil. Sprinkle with the ¼ teaspoon salt.",
+    "Strain the remaining onion oil in the pan through a fine-mesh strainer and reserve.",
+    "TO MAKE THE LENTILS AND RICE: In a large pot, heat ½ cup (120 ml) of the reserved onion oil over medium heat. Add the chopped onion and cook, stirring often, until softened and translucent, 5 to 7 minutes. Add the 2 minced garlic cloves and cook, stirring constantly, for 1 minute.",
+    "Add the lentils to the pot along with 2 cups (480 ml) of the broth. Bring to a boil, then cover with the lid, reduce the heat to low, and let cook for 10 to 15 minutes, until the liquid has mostly disappeared.",
+    "Add the rice to the pot along with the remaining 1 cup (240 ml) broth and the 1½ teaspoons salt. Increase the heat to medium-high and bring to a boil. Cover with the lid, reduce the heat to low, and let cook for 20 minutes, undisturbed. Add 1 tablespoon of the reserved onion oil and gently mix it in.",
+    "MEANWHILE, MAKE THE PASTA: Fill a medium saucepan halfway with water, add the 2 teaspoons salt, and bring to a boil. Add the pasta and cook according to the package instructions for al dente. Drain.",
+    "TO MAKE THE DUKKAH: Add 1 tablespoon of the reserved onion oil and the 3 minced garlic cloves to a medium saucepan over medium heat. Cook, stirring constantly, for a few minutes, or until lightly golden and fragrant. Add the ½ cup (120 ml) vinegar, the coriander, ½ teaspoon cumin, ½ teaspoon salt, and chili flakes and stir together for a few seconds. Remove from the heat. Add the lemon juice and transfer to a small serving bowl.",
+    "TO MAKE THE TOMATO SAUCE: In the same pot the dukkah was cooked in, add 2 tablespoons of the reserved onion oil and the 7 minced garlic cloves over medium heat, cooking, stirring often, until the garlic is lightly golden and fragrant. Add the ¼ cup (60 ml) vinegar, coriander, 1 teaspoon cumin, chili flakes, ½ teaspoon salt, pepper, and passata. Stir the sauce for a few seconds, then simmer over medium-low for 5 to 7 minutes to thicken, stirring occasionally.",
+    "TO MAKE THE CHICKPEAS: Add the chickpeas to a small bowl with 1 tablespoon of the reserved onion oil, the ½ teaspoon cumin, and ⅛ teaspoon salt. Toss together.",
+    "Spoon the lentils and rice onto a large platter, followed by a layer of pasta and then the chickpeas (see Note). Spoon some of the tomato sauce on top, then garnish with the crispy onions. Serve the dukkah and remaining tomato sauce on the side."
+  ]
+}

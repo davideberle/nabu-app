@@ -1,0 +1,65 @@
+{
+  "id": "japchae",
+  "name": "JAPCHAE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sweet potato glass noodles (dangmyeon)",
+      "amount": "8 oz"
+    },
+    {
+      "item": "spinach, blanched and drained",
+      "amount": "1 cup"
+    },
+    {
+      "item": "carrots, julienned and sautéed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mushrooms, sautéed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "onion, thinly sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bell pepper, thinly sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the sweet potato noodles according to package instructions, then rinse with cold water and set aside.",
+    "In a large pan, sauté the garlic, onion, and bell pepper until softened. Add in the spinach, carrots, and mushrooms and sauté for a few more minutes.",
+    "Add in the noodles and stir until everything is well combined.",
+    "Mix together the soy sauce, sesame oil, sugar, salt, and pepper to make a sauce. 5. Drizzle the sauce over the noodles and vegetables, and mix everything together before serving.."
+  ],
+  "image": "/recipes/japchae.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

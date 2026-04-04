@@ -1,0 +1,42 @@
+{
+  "id": "classic-walnut-baklawa",
+  "name": "Classic Walnut Baklawa",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "90 pieces",
+  "time": "30 minutes, plus 1 hour cooling",
+  "intro": "I always think that I can have one piece of baklawa as a little sweet treat and then be done. But something just happens when you bite into it and immediately hear the crunch. I personally can never resist another piece—they’re so small, after all. When I was thinking of including this recipe in this book, I wanted to get creative with my classic recipe, but my family would not hear of it. They demanded that I stick to this classic recipe and declared that it cannot be topped. Well, I listened to them. Baklawa (otherwise known as baklava) is an ancient dessert that can be traced back to the eighth century BCE, when people in the Assyrian Empire arranged unleavened flatbread in layers with nuts in between, though its exact origins are often debated. It is the main attraction at every Middle Eastern dessert spread. In Iraq, if you want to honor guests, you serve a large tray of baklawa. It comes in various shapes and can also be stuffed with pistachios or a thick cream filling. Store-bought baklawa is often too rich and too sweet, so I recommend making it yourself. I do have to give credit to my sister Sarra for perfecting the ingredient ratios in this family recipe: the cardamom-to-nuts ratio, the nuts-to-pastry ratio, and the syrup-to-baklawa ratio—everything has been perfected! And if you feel like it is too intimidating, trust me when I say that it is one of the easiest desserts to make.",
+  "ingredients": [
+    {
+      "item": "2/3 cup (135 g) granulated sugar",
+      "amount": ""
+    },
+    {
+      "item": "egg (see Notes)",
+      "amount": "1 medium"
+    },
+    {
+      "item": "box (16 ounces, or 454 g) frozen phyllo dough (2 rolls; 18 sheets total), thawed for 1 hour",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F (175°C).",
+    "TO MAKE THE SIMPLE SYRUP: In a medium saucepan, combine the sugar and lemon juice with 1¼ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes; it should have a runny, syrupy consistency. Remove the pan from the heat and let cool.",
+    "MEANWHILE, MAKE THE WALNUT FILLING: Add the walnuts to a food processor and grind until a coarse consistency; each walnut should break up to about a fifth of its size.",
+    "Transfer the ground walnuts to a medium bowl and add the cardamom, sugar, and egg. Mix well using a spoon.",
+    "TO PREPARE THE PHYLLO PASTRY: In a small bowl, combine the butter and oil.",
+    "Unwrap the phyllo dough package, unroll it, and cover the dough with a kitchen towel to prevent it from drying out while you work. Measure the sheets’ dimensions against your pan (I used a 13 x 18-inch, or 33 x 46-cm, rimmed sheet pan) and snip any excess using scissors; the phyllo sheets should sit inside the pan up to the edges.",
+    "To assemble, generously brush the bottom of the pan with the butter-oil mixture, then layer 2 sheets of phyllo on top, ensuring you smooth them down and remove air bubbles as best you can every time you add a sheet. Brush the top sheet of phyllo generously with the butter-oil mixture, then continue layering 2 sheets at a time, brushing the top sheet with the butter-oil mixture, until you have 8 sheets (or half the phyllo dough) layered.",
+    "Spoon the walnut filling onto the phyllo pastry, covering it evenly and packing it down using the back of a spoon or your hand. Layer the remaining 8 phyllo sheets, brushing them with the butter-oil mixture, as you did in step 7.",
+    "Using a sharp knife, gently make straight cuts parallel to the long edge of the pan, roughly 1½ inches (4 cm) apart, all the way through to the bottom. Hold down the pastry gently as you cut and use a rocking motion so that the pastry does not get dragged out of place.",
+    "Make a diagonal cut from one corner of the pan, going all the way to the opposite corner, then make more diagonal cuts parallel to that, about 1 inch (2.5 cm) apart, to create diamond-shape pieces. Go over all the cuts twice to ensure you have cut through all the layers. (If it is easier, you can simply cut them into square shapes and adjust the size to your liking.)",
+    "Bake for 45 to 50 minutes, until the baklawa is a light golden color. Remove from the oven and immediately pour the cooled simple syrup over the top; you will hear a splashing sound as the cooled syrup hits the hot baklawa. Garnish with the crushed pistachios and rose petals (if using).",
+    "Let the baklawa cool for at least 1 hour in the pan before serving. If you plate it while hot, the baklawa will crumble."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

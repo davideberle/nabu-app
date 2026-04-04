@@ -1,0 +1,32 @@
+{
+  "id": "sugared-pecans",
+  "name": "SUGARED PECANS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "SUNFLOWER OIL, RAW CANE SUGAR",
+  "servings": "4 cups",
+  "intro": "SIMPLE AND SWEET, these nuts can be enjoyed as a snack or as a sugary bite after a meal. I also use them to add texture to other desserts. I really like pecans prepared this way, but I encourage you to experiment with other nuts to see what moves you.",
+  "ingredients": [
+    {
+      "item": "pecan halves, toasted (see sidebar)",
+      "amount": "4 cups"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Put the pecans in a large bowl. Drizzle with the oil and stir until thoroughly coated. Sprinkle with the sugar and stir until thoroughly coated. Warm a large, dry cast-iron skillet over medium-high heat until hot. Add the pecans, scraping the bowl to get everything into the skillet, and cook, stirring constantly, until the pecans are fragrant and most of the liquid has evaporated, about 1½ minutes. Transfer the pecans to a sheet of parchment paper and quickly spread them out, separating them with 2 forks. Let cool to room temperature. Stored in a sealed container at room temperature, the pecans will keep for a few weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

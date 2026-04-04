@@ -1,0 +1,107 @@
+{
+  "id": "creamy-ramen-noodles",
+  "name": "CREAMY RAMEN NOODLES",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "packet soup base from ramen noodles",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup julienned onions",
+      "amount": ""
+    },
+    {
+      "item": "shiitake mushrooms, stems removed, julienned",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "doenjang",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "1/2 cup water",
+      "amount": "1"
+    },
+    {
+      "item": "1/4 cup soy milk",
+      "amount": ""
+    },
+    {
+      "item": "packet ramen noodle",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup julienned carrots",
+      "amount": ""
+    },
+    {
+      "item": "julienned cabbage",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/4 cup chopped zucchini",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup cooked corn",
+      "amount": ""
+    },
+    {
+      "item": "dumplings",
+      "amount": "4"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "16 oz"
+    },
+    {
+      "item": "fresh spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "gyerranmari, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 Fresno chili, sliced",
+      "amount": ""
+    },
+    {
+      "item": "scallion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add both olive oil and sesame oil to a large, deep pan over medium high heat. Add the packet of soup base to the pan and begin stirring, to ensure the spices do not burn, for 1 minute.",
+    "Add the onions, mushrooms, garlic, and doenjang and stir until the vegetables are coated. Deglaze the pan with the soy sauce and then add water.",
+    "Add the soy milk and stir.",
+    "Next, add the ramen noodles, together with the carrots, cabbage, zucchini, corn, and dumplings.",
+    "Add the silken tofu and break up with a spoon.",
+    "Cook until the noodles are done, stirring as necessary, around 4 to 5 minutes. Garnish with gyerranmari slices, chili, and scallion."
+  ],
+  "image": "/recipes/creamy-ramen-noodles.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

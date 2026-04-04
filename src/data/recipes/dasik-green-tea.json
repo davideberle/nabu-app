@@ -1,0 +1,44 @@
+{
+  "id": "dasik-green-tea",
+  "name": "DASIK (GREEN TEA)",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "roasted rice flour",
+      "amount": "3 Tbsp"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "pinch sea salt",
+      "amount": "1"
+    },
+    {
+      "item": "Matcha (powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey (light color)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "1.5 tsp water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, add rice flour, powdered sugar, salt, Matcha powder, honey and water. Mix well with a spatula until evenly coated.",
+    "Once lumps start to form in the dough, gather dough with your hand and form into a ball.",
+    "Cover with plastic wrap and set aside until ready to use in the Dasik mold."
+  ],
+  "image": "/recipes/dasik-green-tea.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

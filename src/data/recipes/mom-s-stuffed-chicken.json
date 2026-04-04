@@ -1,0 +1,88 @@
+{
+  "id": "mom-s-stuffed-chicken",
+  "name": "Mom’s Stuffed Chicken",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "25 minutes",
+  "intro": "Along with Maqluba (here), Biryani (here), and Dolma (here), this is another one of my mom’s irresistible dishes. Stuffing chicken with a mixture of rice and ground beef and roasting it to perfection is a common way of presenting whole chicken across Middle Eastern countries. But this recipe is extra special because it has my mom’s specific blend of sauce and spices, and it really can’t be topped. My mom is a creative cook; she tends to stray every once in a while and do her own thing. Case in point: The addition of barbecue sauce to the marinade in this recipe. There’s no such thing as barbecue sauce in Middle Eastern cuisine! But it works so well here, along with an array of spices, including dried lime powder. While it may seem complex, this is a recipe I’d recommend for beginner cooks who want to make something impressive. It’s hard to mess up. The rice ends up absorbing all the chicken juices—I like it even more than the chicken. My mom would make this whenever we all gathered together, and we would be fighting over who gets more of the juicy rice from inside the chicken.",
+  "ingredients": [
+    {
+      "item": "onion powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried lime powder (or substitute 1 tablespoon fresh lemon juice)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "barbecue sauce",
+      "amount": "¾ cup (180 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "kosher salt, divided",
+      "amount": "4 teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "frozen peas",
+      "amount": "1 cup (135 g)"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup (145 g)"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (410 g)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (205°C); place a rack in the middle and remove any racks above it.",
+    "TO MAKE THE CHICKEN: Place the chicken on a large tray or platter and season it with the 4 teaspoons salt, covering the entire surface, inside and out.",
+    "In a small bowl, mix together the onion powder, garlic powder, curry powder, lime powder, allspice, cinnamon, 1½ teaspoons pepper, and barbecue sauce. Set aside 2 tablespoons of the marinade for the vegetables, then slather the rest all over the chicken, including inside and under the skin that covers the breast by gently placing your fingers under the skin, slowly pushing to slightly separate it, and adding the marinade in between.",
+    "TO MAKE THE VEGETABLES: Cut the potatoes into quarters to form 4 large wedges, then rotate the wedges 90 degrees and cut once across to create 8 large chunks. Repeat with the onion. Place the potatoes and onions in a large bowl and season with the 1 teaspoon salt and reserved marinade.",
+    "TO MAKE THE RICE STUFFING: Heat a medium nonstick pot or large skillet over medium heat. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 5 to 7 minutes, until browned. Add the allspice, cinnamon, 1 teaspoon of the salt, and the ½ teaspoon pepper and mix well. Continue to cook for 3 to 5 minutes, until all the meat juices dry up. Mix in the peas and raisins, then add the rice, the remaining 3 teaspoons salt, and 4 cups (960 ml) of water. Gently mix the rice into the meat mixture and bring to a boil over medium heat. Let cook, uncovered, at a gentle boil for about 7 minutes, or until all the water is absorbed but the rice looks moist. Remove from the heat. (The rice is only half-cooked at this point.) Let cool for a few minutes.",
+    "In a chicken roaster with a lid, place the potatoes and onions on the bottom in a single layer. (If you do not have a roaster with a lid, use a large enough baking dish and aluminum foil to cover it tightly.)",
+    "To stuff the chicken, spoon some of the rice-beef mixture into the cavity of the chicken until it is full. Use a few toothpicks to close the cavity by folding the skin flaps over each other and threading the toothpick through both layers of skin, then threading it back out to hold in place. Leave the remaining stuffing in the pot.",
+    "Place the stuffed chicken in the roaster on top of the vegetables. Cover with the lid, place on the middle rack in the oven, and bake for 1 hour. Remove the pan from the oven and open the lid. Spoon the rest of the rice stuffing inside the pan, trying your best to place it on the bottom with the vegetables on top. Close the pan, place it back into the oven, and bake for another 30 to 40 minutes, until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C).",
+    "Let the stuffed chicken sit for 10 to 15 minutes before serving. You can serve it right from the roaster or transfer to a platter."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

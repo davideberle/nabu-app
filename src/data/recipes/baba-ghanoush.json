@@ -1,0 +1,60 @@
+{
+  "id": "baba-ghanoush",
+  "name": "Baba Ghanoush",
+  "subtitle": "SMOKED EGGPLANT DIP",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "2 cups (470 g); 6 servings",
+  "time": "10 minutes",
+  "intro": "The name of this smoked eggplant dip has stumped many of us Arabs. When translated literally, the word baba means “daddy,” and the word ghanoush means “spoiled” or “indulged.” Put them together and you have “spoiled daddy,” which does very little to describe what this dip is. But, odd name aside, this dip has gained almost as much popularity as hummus, with its creamy texture and slightly smoked eggplant flavor. The eggplants are typically roasted on an open flame, either a gas stove or a grill. The charred skin is then peeled, and the soft flesh is scooped out and mixed with tahini, lemon juice, garlic, and seasoning. Many variations also add a bit of yogurt to the mix for extra creaminess and tartness. This is a dip that really doesn’t need precise measurements. You start adding your ingredients, mixing them up and tasting and adjusting until you reach your perfect flavor.",
+  "ingredients": [
+    {
+      "item": "eggplants (1 to 11/3 pounds, or 500 to 600 g, each)",
+      "amount": "2 large"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "kosher salt, or more to taste",
+      "amount": "½ to 1 teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1 small"
+    },
+    {
+      "item": "fresh lemon juice, or more to taste",
+      "amount": "3 to 4 tablespoons"
+    },
+    {
+      "item": "Pomegranate arils (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Finely chopped fresh parsley (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 450°F (230°C). Line a large baking sheet with aluminum foil.",
+    "Pierce the eggplants with a knife to create 4 or 5 slits all over; this helps the steam to escape.",
+    "If you have a gas stove, use tongs to char each eggplant’s skin all over on an open flame, rotating them carefully for a few minutes until the skin is blistered. If you have an electric or induction stove, you can char the eggplants’ skin in a hot cast-iron skillet without any oil. Rotate the eggplants for a few minutes until the skin is blistered, then proceed to baking.",
+    "Place the eggplants on the prepared baking sheet and bake for 45 minutes, or until they are soft and can be easily pierced with a fork.",
+    "Cut the eggplants in half lengthwise and scoop out the flesh using a fork or spoon. Place the flesh in a fine-mesh strainer over a small bowl and allow it to drain its liquid for a few minutes.",
+    "Transfer the drained flesh to a medium bowl with the tahini, salt, pepper, garlic, and lemon juice. Mash it using a fork; this will create a chunky consistency. (If you like it smooth, you can pulse it in a food processor or use an immersion blender.) Adjust the seasoning to your liking.",
+    "Toast the pine nuts in a small, dry skillet over medium heat, for 5 minutes, or until golden, stirring continuously.",
+    "Serve the baba ghanoush topped with oil, toasted pine nuts, pomegranate arils (if using), and parsley (if using)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

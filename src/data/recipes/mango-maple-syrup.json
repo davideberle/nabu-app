@@ -1,0 +1,48 @@
+{
+  "id": "mango-maple-syrup",
+  "name": "MANGO-MAPLE SYRUP",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "MANGO, LEMON ZEST, LEMON JUICE, APPLE CIDER VINEGAR",
+  "servings": "about 1 cup",
+  "intro": "I ORIGINALLY MADE this maple syrup with a tropical twist as an accompaniment for my Maple-Glazed Banana Johnnycakes and have since found that the syrup goes well with a number of bready breakfast treats. No need to use a lot, as it is deliciously sweet.",
+  "ingredients": [
+    {
+      "item": "Grade B maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced ripe mango",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "finely grated lemon zest",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of fine sea salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put all the ingredients in a small saucepan over low heat and bring to a simmer. Cook, stirring occasionally, until the mango is falling apart, about 15 minutes. Let cool, then transfer to a blender and process until creamy. Strain through a fine-mesh sieve into a 1-pint glass jar, pressing the solids to extract as much liquid as possible. Use immediately, or seal tightly and store in the refrigerator for up to 2 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

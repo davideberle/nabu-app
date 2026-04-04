@@ -1,0 +1,72 @@
+{
+  "id": "turkish-bulgur-pilaf",
+  "name": "Turkish Bulgur Pilaf",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "5 minutes",
+  "intro": "Bulgur is a type of cracked wheat that is parboiled, dried, and then ground into various sizes. Fine bulgur is used in salads like tabouli and requires no cooking; it is simply soaked in liquid. Medium and coarse bulgur are used to make dishes like this bulgur pilaf. Its cooking process is similar to that of rice, using a bulgur-to-liquid ratio of 1:2. When I was growing up, my mom cooked bulgur regularly instead of rice, often making “red bulgur” using tomato paste and adding chickpeas, and sometimes making “yellow bulgur” with onions and mushrooms (see One-Pot Chicken & Mushroom Bulgur). This Turkishstyle bulgur pilaf is one we grew accustomed to, as we frequented Turkish restaurants and always enjoyed it alongside grilled meat. The distinguishing features of Turkish pilaf are the use of red pepper paste along with tomato paste and the addition of dried mint, which gives it a unique and delicious flavor. This dish is very quick to make and versatile as a side to many meals.",
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1 large"
+    },
+    {
+      "item": "red bell pepper, finely chopped",
+      "amount": "1 large"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "4 large"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sweet red pepper paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse bulgur, rinsed and drained",
+      "amount": "2 cups (360 g)"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "4 cups (960 ml)"
+    },
+    {
+      "item": "Dried mint",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large saucepan or skillet, melt the butter along with the oil over medium heat.",
+    "Add the onion and cook, stirring often, until softened, 4 to 5 minutes. Add the bell pepper and cook for 2 to 3 minutes, until softened. Add the garlic and cook for 1 minute. Season with the salt and pepper, stir, and cook for 1 to 2 more minutes.",
+    "Add the tomato and red pepper pastes, cooking and stirring until combined, for 1 minute.",
+    "Add the dried mint, followed by the bulgur, mixing until well combined. Add the broth and bring to a boil for 3 minutes. Reduce the heat to low, cover with the lid, and let simmer for 25 minutes.",
+    "Fluff up the bulgur, garnish with mint leaves (if using) and serve with yogurt sprinkled with dried mint."
+  ]
+}

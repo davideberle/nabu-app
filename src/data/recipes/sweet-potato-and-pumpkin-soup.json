@@ -1,0 +1,56 @@
+{
+  "id": "sweet-potato-and-pumpkin-soup",
+  "name": "SWEET POTATO & PUMPKIN SOUP",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "PUMPKIN SEEDS, CINNAMON, CASHEWS",
+  "servings": "4 to 6 servings",
+  "intro": "THIS SILKY WINTER SOUP combines pumpkin—used in soups and stews throughout Africa—and sweet potatoes, which are emblematic of African-American foodways. It’s great hot or at room temperature, and the addition of toasted pumpkin seeds lends a nice textural accent.",
+  "ingredients": [
+    {
+      "item": "small pumpkin (about 2 pounds)",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "vegetable stock, homemade or store-bought",
+      "amount": "5 cups"
+    },
+    {
+      "item": "(2-inch) cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "sweet potatoes (about 1½ pounds total), peeled and cut into 1-inch pieces",
+      "amount": "2"
+    },
+    {
+      "item": "Creamed Cashews",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Freshly ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 275°F. Line a small, rimmed baking sheet with parchment paper.",
+    "Cut the top off the pumpkin and scoop out the seeds. (It is fine if the seeds have some remnants of squash on them.) Put the seeds in a small bowl, drizzle with the oil, and toss until evenly coated. Spread the seeds in a single layer on the lined baking sheet and bake for about 15 minutes, until lightly browned, stirring every 5 minutes for even cooking. Set aside.",
+    "Meanwhile, peel the pumpkin and cut it into 1-inch pieces. Put the stock, cinnamon stick, and salt in a large saucepan over medium heat and bring to a simmer. Cook for 5 minutes, then add the pumpkin and sweet potatoes. Increase the heat to high and bring to a boil. Immediately decrease the heat to medium-low, cover, and simmer, stirring occasionally, until the vegetables are fork-tender, about 35 minutes. Stir in the cashew cream.",
+    "Using a standard blender and working in batches, or using an immersion blender, blend the soup until smooth. Pour the soup back into the saucepan and cook, over medium-low heat, stirring occasionally, until warmed through. If necessary, thin with water so the soup pours easily from a spoon. Season with salt and pepper to taste. Serve garnished with the toasted pumpkin seeds.",
+    "NOTE: Toasted pumpkin seeds (and seeds of other winter squashes) can be eaten as a snack. If making them for that purpose, consider sprinkling with dried spices and herbs before toasting."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

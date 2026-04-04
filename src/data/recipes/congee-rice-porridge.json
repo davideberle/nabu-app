@@ -1,0 +1,81 @@
+{
+  "id": "congee-rice-porridge",
+  "name": "CONGEE RICE PORRIDGE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/2 tbsp sesame oil",
+      "amount": ""
+    },
+    {
+      "item": "white long-grain rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cloves of garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "8-10 cups"
+    },
+    {
+      "item": "tempeh, cut into cubes",
+      "amount": "6 oz"
+    },
+    {
+      "item": "paprika powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/2 cup cooked edamame",
+      "amount": ""
+    },
+    {
+      "item": "green onions, cut into rings",
+      "amount": "3"
+    },
+    {
+      "item": "small heads pak choi, cut into slices",
+      "amount": "2"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bamboo shoots",
+      "amount": "1 cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": ""
+    },
+    {
+      "item": "sriracha sauce",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the sesame oil in a medium pot and cook the rice and the garlic for 1-2 minutes. Then add the vegetable broth, bring to boil and turn down the heat to a simmer. Partially cover and continue to simmer for 1 to 1 1/2 hours. Stir occasionally with a wooden spoon. Towards the end stir more often to make it creamier. Add more vegetable broth or water if needed.",
+    "In the meantime, make the tempeh. Heat some more sesame oil in a pan, add the tempeh, the soy sauce, and the paprika powder and cook for 4 minutes or until crispy. Season with salt and pepper.",
+    "Then make the pak choi. Heat 1/2 a tbsp of water in a medium pan with a lid and steam the pak choi for about 3 minutes. Season with a splash of soy sauce.",
+    "Serve the congee (warm) with the toppings and top it off with a little bit of soy sauce and sriracha."
+  ],
+  "image": "/recipes/congee-rice-porridge.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

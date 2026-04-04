@@ -1,0 +1,111 @@
+{
+  "id": "crunch-gochujang",
+  "name": "CRUNCH GOCHUJANG",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "head cauliflower rough chopped",
+      "amount": "1"
+    },
+    {
+      "item": "plus 1 tsp “no chicken” vegetable base",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tbsps plant milk",
+      "amount": "3"
+    },
+    {
+      "item": "2 cups plus ½ tbsp corn starch",
+      "amount": "2"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "regular soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vegetarian oyster sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "gochujang",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tbsps maple syrup",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable oil for frying",
+      "amount": "4 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/4 cup onion chopped",
+      "amount": ""
+    },
+    {
+      "item": "cloves garlic minced",
+      "amount": "5-6"
+    },
+    {
+      "item": "leaves red cabbage chopped",
+      "amount": "2"
+    },
+    {
+      "item": "carrot chopped into very small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "whole scallions chopped",
+      "amount": "2"
+    },
+    {
+      "item": "1/3 cup vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "1/2 tbsp sesame oil",
+      "amount": ""
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place cauliflower chunks into a large bowl. Add 1 tbsp of the vegetable base,together with the plant milk. Mix the cauliflower so that they are evenly coated and set the bowl aside (you can also refrigerate it overnight).",
+    "To another large bowl, add 1 cup of corn starch (save the rest for later), ½ tbsp of garlic powder, and ½ tsp of black pepper. Stir everything together with a whisk and set it aside. Prepare the sauce by whisking together the 1 tsp of the vegetable base, regular soy sauce, light soy sauce, vegetarian oyster sauce, mustard, gochujang, maple syrup, and ½ tbsp of corn starch.",
+    "In a very large cast iron pan or deep fryer, bring the vegetable oil to350°F. While you are waiting for the oil to get hot, dredge some of the cauliflower in the corn starch + garlic powder mixture. Place the dredged cauliflower in the hot oil, ensuring not to crowd the pan.",
+    "Fry your cauliflower for approximately 3 to 5 minutes, until the edges begin to brown. Remove them from the oil and place them on a cooling rack to drain the excess oil. Repeat for the remaining cauliflower. Once all the cauliflower has been fried once, you can fry them all a second time(without worrying about over-crowding the pan) for extra crunch. Once you have completed frying all your cauliflower, begin making the sauce by adding extra virgin olive oil to a large pan over medium high heat. When the oil is hot, add the garlic, onion, carrot, cabbage, and scallions to the pan. Sautee the vegetables until the onion starts to turn translucent, about 2 minutes.",
+    "Add the vegetable broth and cook for another 30 seconds. Then, stir in the sauce you prepared earlier. Cook the sauce over medium high heat for about 1 minute, until it gets thick.",
+    "Turn off the heat and pour the fried cauliflower into the sauce. Stir the cauliflower gently until they are evenly coated. Drizzle them with a the sesame oil and sprinkle the sesame seeds. Serve immediately."
+  ],
+  "image": "/recipes/crunch-gochujang.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

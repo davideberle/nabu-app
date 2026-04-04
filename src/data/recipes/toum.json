@@ -1,0 +1,40 @@
+{
+  "id": "toum",
+  "name": "Toum",
+  "subtitle": "GARLIC SAUCE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "2 cups (480 ml)",
+  "time": "10 minutes",
+  "intro": "Toum is an Arabic word that translates to “garlic.” This addictive sauce comes from the Levantine region and has made its way across not just the Middle East, but most of the Western world. Simply put: you cannot have a shawarma without first smearing spoonfuls of this sauce on your bread. You can make it using an immersion blender or a food processor. When I have a large jar of toum in my fridge, it also makes its way into chicken or meat marinades, salad dressings, and dipping—basically, any recipe that uses the combination of garlic and oil!",
+  "ingredients": [
+    {
+      "item": "cloves garlic, peeled (pre-peeled works as long as they are fresh)",
+      "amount": "1 cup (155 g)"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "neutral oil (such as avocado oil)",
+      "amount": "2 cups (480 ml)"
+    }
+  ],
+  "method": [
+    "Cut the garlic cloves in half lengthwise and remove the green germ if necessary. (The germ will make the toum bitter.)",
+    "In a tall jug or jar that fits an immersion blender, place the garlic, lemon juice, and salt and blend until a paste forms and develops some foam, 20 to 30 seconds, depending on the power of your blender.",
+    "While the blender is still inside the container, add the oil. Start blending, keeping the blades at the bottom of the jar and slowly pulsing it up and down slightly. Do this for 3 to 5 minutes, until the oil and the garlic start to emulsify. (The emulsification will slowly work its way up the jar until the whole sauce is emulsified; see Notes.)",
+    "Store in an airtight jar in the refrigerator for 3 to 4 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

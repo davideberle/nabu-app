@@ -1,0 +1,69 @@
+{
+  "id": "easy-fried-rice",
+  "name": "EASY FRIED RICE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "kimchi",
+      "amount": "1 cup"
+    },
+    {
+      "item": "gochujang",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen vegetables",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/3 cup JUSTEgg (or any liquid egg replacer)",
+      "amount": ""
+    },
+    {
+      "item": "cooked rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "scallion (green party only)",
+      "amount": "2"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Using kitchen shears, cut up your kimchi (if you want).",
+    "Make the sauce by mixing together gochujang and soy sauce.",
+    "Add 1 tbsp of sesame oil and 1/2 tbsp of extra virgin olive oil to a non-stick pan over medium high heat. When the oil begins to shimmer, add the kimchi. Cook for about 2 minutes, until kimchi starts to change color (gets lighter).",
+    "Add frozen vegetables. Cook for about 1 minute. Then, create a well in the center of your cooked veggies and add the liquid egg replacer.",
+    "Allow the egg to cook a little, and then begin to scramble them within the well.",
+    "Incorporate the scrambled egg into the rest of your vegetables and cook for about 2 minutes (until the egg is cooked). Create another well in the center of your vegetables and add 1/2 tbsp of extra virgin olive oil. Add 2 cups of cooked rice.",
+    "Cook the rice in the well for about 1 minute. Then begin mixing together with the vegetables. Cook for about 1 additional minute. Then add sauce.",
+    "Add scallion greens, sesame seeds, and sesame oil. Mix together before eating."
+  ],
+  "image": "/recipes/easy-fried-rice.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

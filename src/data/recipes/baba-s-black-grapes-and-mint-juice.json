@@ -1,0 +1,39 @@
+{
+  "id": "baba-s-black-grapes-and-mint-juice",
+  "name": "Baba’s Black Grapes & Mint Juice",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "In Mosul, a city in northern Iraq where I was born, sharbat zbeeb is a very popular drink, made from plump black raisins and fragrant dried mint. The process is lengthy, usually requiring soaking of both the raisins and the mint for at least a day. My dad grew up with this drink, so he developed his own (very similar) version using fresh black grapes and fresh mint, simply blitzing them in a blender. He makes this drink for us often, especially during Ramadan. My kids absolutely love it. It needs no added sugar due to the natural sweetness of the grapes. He runs the blended juice through a fine-mesh strainer to get rid of all the grape peel bits. Black grapes are the preferred type for this drink due to their deeper flavor, but you can easily use purple grapes, since black ones are harder to find.",
+  "ingredients": [
+    {
+      "item": "seedless black grapes, plus more to taste",
+      "amount": "4 cups (400 g)"
+    },
+    {
+      "item": "filtered water",
+      "amount": "1½ cups (360 ml)"
+    },
+    {
+      "item": "packed fresh mint leaves",
+      "amount": "¾ cup (40 g)"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Add the grapes, water, and mint leaves to a high-powered blender and blend for a few seconds, or until the ingredients are juiced.",
+    "Add 1 cup ice cubes and blend for a few more seconds. Taste and adjust; if it is too watery, add more grapes and blend again.",
+    "Place a fine-mesh strainer over a large bowl or jug and pour the juice through it to strain out the large bits of grape skin.",
+    "Pour the strained juice into a pitcher and either refrigerate or serve immediately over more ice cubes. Garnish with fresh mint leaves."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

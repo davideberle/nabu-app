@@ -1,0 +1,63 @@
+{
+  "id": "spicy-breakfast-crepes",
+  "name": "SPICY BREAKFAST CREPES",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "Canola oil",
+      "amount": ""
+    },
+    {
+      "item": "ready-to-use 9½- to 10-inch French-style crepes (such as Frieda's)",
+      "amount": "8"
+    },
+    {
+      "item": "large eggs, room temperature, lightly beaten",
+      "amount": "4"
+    },
+    {
+      "item": "bunches green onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sesame seeds (black, regular or a combination)",
+      "amount": "2 Tbsp"
+    },
+    {
+      "item": "hoisin sauce, divided",
+      "amount": "8 tsp"
+    },
+    {
+      "item": "chile-garlic sauce, divided",
+      "amount": "8 tsp"
+    },
+    {
+      "item": "drained kimchi or other Asian-style pickled vegetables",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "(3.5-oz) package wonton strips (such as Fresh Gourmet)",
+      "amount": "1"
+    },
+    {
+      "item": "Sriracha hot sauce (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 200°F. Place a baking sheet in oven.",
+    "Heat a large nonstick skillet or griddle pan over medium heat. Lightly brush with oil. Stack 2 crepes and place in pan. Add one-quarter of eggs, spreading to cover surface of crepe. Sprinkle with one-quarter of onions, ¼ cup cilantro and 1½ tsp sesame seeds. Cook 2 minutes or until egg sets. Flip and press down with back of a spatula. Fold up bottom one-third. Spread with 2 tsp hoisin and 2 tsp chile-garlic sauce. Top with 3 Tbsp kimchi and about ⅓ cup wonton strips. Fold up (as you would folding a letter). Cut in half crosswise. Place in oven to keep warm. Repeat with remaining ingredients. Serve with Sriracha, if desired."
+  ],
+  "image": "/recipes/spicy-breakfast-crepes.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

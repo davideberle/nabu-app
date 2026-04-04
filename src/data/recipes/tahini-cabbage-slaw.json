@@ -1,0 +1,66 @@
+{
+  "id": "tahini-cabbage-slaw",
+  "name": "Tahini Cabbage Slaw",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "20 minutes",
+  "intro": "I love shredded cabbage salads, but I shied away from them for so long, simply because I found hand-slicing a head of cabbage too tedious. But once I started to use a mandoline, which changed my life, my cabbage intake saw a huge spike. Nowadays, you can even find ready-shredded cabbage at most grocery stores, which would make this salad a breeze to make. I make this often to serve alongside grilled chicken or steak as a welcome change from our normal chopped salad, Salata. The green yogurt and tahini dressing alone is worth making—you’ll want to drizzle it on everything.",
+  "ingredients": [
+    {
+      "item": "green onions, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup (145 g)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "fresh lemon juice (about 2 lemons), plus more if needed",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "honey",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1 large"
+    },
+    {
+      "item": "green onion, roughly chopped",
+      "amount": "1 large"
+    },
+    {
+      "item": "roughly chopped fresh parsley",
+      "amount": "¼ cup (13 g)"
+    }
+  ],
+  "method": [
+    "TO MAKE THE CABBAGE SLAW: In a medium salad bowl, combine the cabbage and carrots. Add the green onion, parsley, and raisins. Sprinkle with the ½ teaspoon salt.",
+    "TO MAKE THE DRESSING: Place the yogurt, tahini, lemon juice, honey, salt, pepper, garlic, green onion, and parsley in a small blender and process until smooth. You may need to add a few tablespoons of water to loosen the dressing to help it blend well. Taste and adjust for more salt and/or lemon juice if needed.",
+    "Drizzle the dressing over the salad. Toss to combine well and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

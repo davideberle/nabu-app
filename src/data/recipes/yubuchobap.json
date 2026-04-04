@@ -1,0 +1,62 @@
+{
+  "id": "yubuchobap",
+  "name": "YUBUCHOBAP",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/2 bag frozen veggies",
+      "amount": ""
+    },
+    {
+      "item": "salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "1/2 container JUSTEgg",
+      "amount": ""
+    },
+    {
+      "item": "servings cooked rice",
+      "amount": "3"
+    },
+    {
+      "item": "mirin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/2 tbsp rice wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "deep fried tofu pockets",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add olive oil to a large saute pan. When the oil is hot, add the frozen vegetables, together with some salt and pepper.",
+    "When the vegetables are soft, add the JUSTEgg and begin scrambling until eggs are cooked (around 2 minutes).",
+    "In a separate large bowl, add cooked rice, together with mirin and rice vinegar, as well as the scrambled eggs, and both kinds of toasted sesame seeds.",
+    "Place the rice in the refrigerator until it has cooled enough to handle. Then, roll the rice into golf balls.",
+    "Stuff the rice balls into the tofu pockets. Sprinkle with additional sesame seeds before serving."
+  ],
+  "image": "/recipes/yubuchobap.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

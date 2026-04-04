@@ -1,0 +1,91 @@
+{
+  "id": "lebanese-shish-tawook",
+  "name": "Lebanese Shish Tawook",
+  "subtitle": "CHICKEN SKEWERS",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "7 to 10 skewers",
+  "time": "10 minutes, plus 1 hour marinating",
+  "intro": "Shish tawook, although popularized as a classic Lebanese grilled chicken dish, actually gets its name from Turkish origins. The word shish comes from the Turkish word şiş, meaning “skewer,” and the word tawook comes from the Turkish word tavuk, meaning “chicken.” Grilled chicken skewers are another universal dish across the Middle East. In Iraq we call it chicken “tikka,” a word from Indian origin, and season it with more Eastern spices. The Lebanese marinade, which I make quite often, has a mix of tomato paste, yogurt, garlic, and lemon juice as the base, along with a few spices. These ingredients yield tender, juicy, and mild-flavored chicken, perfect for rolling into pita wraps. Although the skewers are typically grilled outdoors, don’t let winter stop you from enjoying it; it is perfectly delicious grilled on an indoor cast-iron pan. As with many Lebanese chicken dishes, it is often served with Toum or Tarator.",
+  "ingredients": [
+    {
+      "item": "metal or bamboo skewers",
+      "amount": "7 to 10"
+    },
+    {
+      "item": "plain, whole-milk yogurt",
+      "amount": "¾ cup (180 ml)"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "5"
+    },
+    {
+      "item": "Juice of 1 large lemon",
+      "amount": ""
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "chicken breasts (about 1½ pounds, or 700 g), cut into 2-inch (5 cm) cubes",
+      "amount": "4"
+    },
+    {
+      "item": "Olive oil, for greasing (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Assorted vegetables (such as sliced cucumber, sliced tomato, shredded lettuce, and sliced pickles)",
+      "amount": ""
+    },
+    {
+      "item": "Pita bread",
+      "amount": ""
+    },
+    {
+      "item": "Toum or Tarator",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "If using bamboo skewers for this recipe, start by soaking them in water for 15 minutes.",
+    "In a large bowl, mix together the yogurt, tomato paste, oil, garlic, lemon juice, salt, paprika, cinnamon, ginger, onion powder, and pepper until well combined.",
+    "Add the chicken cubes to the marinade and mix until all the chicken is thoroughly coated. Cover the bowl with plastic wrap and let the meat marinate in the refrigerator for at least 1 hour, or preferably overnight. Take out 30 minutes before cooking to bring the chicken to room temperature.",
+    "Skewer the marinated chicken cubes onto the skewers, using roughly 4 or 5 pieces per skewer, depending on the size of the skewers.",
+    "Meanwhile, preheat an outdoor grill to 400°F (205°C). If grilling indoors, preheat a large cast-iron grill pan over medium heat and grease it with oil.",
+    "Grill the skewers for 5 to 6 minutes per side, ensuring the chicken is white and cooked through on the inside and golden on the outside. Avoid grilling the chicken for too long or it will dry out.",
+    "Dust the onion slices with the sumac and serve alongside the skewers, assorted vegetables, pita bread, and toum or tarator to make wraps."
+  ]
+}

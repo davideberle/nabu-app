@@ -1,0 +1,49 @@
+{
+  "id": "fasolia-yabsa",
+  "name": "Fasolia Yabsa",
+  "subtitle": "WHITE BEAN STEW",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 to 8 servings",
+  "time": "10 minutes",
+  "intro": "My favorite memory from my childhood is walking home from school, excited to open the door and smell what was for dinner that day. It was usually stew with rice, because that’s typical Arab home cooking. But I enjoyed guessing which type of stew it was based on the aroma I was hit with when I walked in. It was a happy day if it was fasolia yabsa! This is the stew most known across Iraq, especially when made from dried beans and bone-in lamb and scooped over a bowl of Roz Bi Shaariya—my definition of the ultimate comfort food. I do, however, often take the shortcut of using canned beans; they really do get the job done, and I am not one to judge!",
+  "ingredients": [
+    {
+      "item": "bone-in lamb or veal shoulder pieces, cut into 2-inch (5 cm) pieces (see Notes)",
+      "amount": "18 ounces (500 g)"
+    },
+    {
+      "item": "kosher salt, divided, plus more if needed",
+      "amount": "2¼ teaspoons"
+    },
+    {
+      "item": "black pepper, divided, plus more if needed",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onions, finely chopped",
+      "amount": "2 large"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "dried white kidney beans (see Notes), soaked overnight and drained",
+      "amount": "2 cups (360 g)"
+    }
+  ],
+  "method": [
+    "Season the meat pieces with ½ teaspoon of the salt and ¼ teaspoon of the pepper.",
+    "In a large pot, heat the oil over medium heat. Add the meat and sear for 5 to 6 minutes, flipping until all sides are lightly browned.",
+    "Add the onions and ½ teaspoon of the salt and cook, stirring often, for 5 minutes, until softened. Stir in the tomato paste and continue to cook for 2 to 3 minutes.",
+    "Add the drained beans along with 5½ cups (1.3 L) of water, the remaining 1¼ teaspoons salt, and the remaining ¼ teaspoon pepper. Mix everything together. Increase the heat to high and bring to a boil, then reduce the heat to medium and cook for 1 to 1½ hours, until the veal and beans are tender. You may need to replenish the water as the level goes down; check every 20 minutes or so to adjust (the water should be enough to cover the beans and meat). Taste and adjust for salt and pepper if necessary. The stew will thicken slightly due to the beans but should still have enough liquid.",
+    "Ladle into bowls and serve with rice and salad."
+  ]
+}

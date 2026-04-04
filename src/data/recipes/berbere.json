@@ -1,0 +1,80 @@
+{
+  "id": "berbere",
+  "name": "BERBERE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "PAPRIKA, FENUGREEK, RED PEPPER FLAKES, CAYENNE, CHIPOTLE CHILE, BLACK PEPPER",
+  "servings": "about ⅓ cup",
+  "intro": "BERBERE, a key spice blend in Ethiopian and Eritrean cooking, is used to season everything from vegetables to stews. As with most mixtures of spices, berbere has many variations and recipes depending on whom you ask, but its key ingredients include paprika, fenugreek, and dried chiles. The word “berbere” literally means “hot” in Amharic, the official language of Ethiopia, so there should be palpable heat in your mixture. But you can always tone down the amount of chile peppers to suit your needs. Although I initially created this particular blend for the purpose of seasoning Berbere-Spiced Black-Eyed Pea Sliders, I find myself using it to flavor stews, coat baked tofu, and punch up sautéed vegetable dishes. Sometimes I keep a tiny bowl of it near my sea salt and pepper grinder and use it as an all-purpose condiment. Two words: berbere popcorn. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "cardamom pods",
+      "amount": "6"
+    },
+    {
+      "item": "paprika",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cumin seeds, toasted",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fenugreek seeds, toasted",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "allspice berries, toasted",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "dried chipotle chile, stemmed, and broken into pieces",
+      "amount": "1"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coriander seeds, toasted",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Put the cardamom pods in a medium, dry skillet over medium-low heat. Toast until fragrant, shaking the pan occasionally to prevent burning, 2 to 3 minutes. Transfer the pods to a small plate, and set aside to cool. Once cooled, crack open the cardamom pods with your fingers and add their seeds to a mortar or spice grinder, then add the paprika, salt, cumin seeds, fenugreek seeds, allspice berries, red pepper flakes, thyme, cloves, chipotle, peppercorns, coriander seeds, ginger, nutmeg, and cayenne. Grind into a fine powder. Transfer to a jar and seal tightly. Stored at room temperature, it will keep for 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

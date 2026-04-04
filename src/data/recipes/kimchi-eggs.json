@@ -1,0 +1,30 @@
+{
+  "id": "kimchi-eggs",
+  "name": "KIMCHI EGGS",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "tbsps vegetable oil",
+      "amount": "2"
+    },
+    {
+      "item": "kimchi, or to taste",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs, beaten",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Heat oil in a skillet or wok over medium heat. Cook kimchi in hot oil until softened, about 2 minutes; add eggs. Cook and stir eggs and kimchi together until eggs are set, 2 to 3 minutes."
+  ],
+  "image": "/recipes/kimchi-eggs.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

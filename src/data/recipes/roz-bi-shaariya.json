@@ -1,0 +1,41 @@
+{
+  "id": "roz-bi-shaariya",
+  "name": "Roz Bi Shaariya",
+  "subtitle": "VERMICELLI RICE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "10 minutes",
+  "intro": "When there are no guests over or special occasions, everyday Middle Eastern home cooking is usually rice with some sort of vegetable and meat stew (more on those in the Soups & Stews section on this page). The most popular type of rice served is long-grain basmati rice, dotted with short golden vermicelli noodles. Not to be confused with the Asian thin rice noodles, the vermicelli used in this rice pilaf is wheat-based. The vermicelli is first toasted in oil or butter until golden brown, then the rice, broth, and seasoning are added. This fluffy rice is quite addictive and delicious even on its own with a side of Salata.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "vermicelli noodles (see Note)",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "boiling chicken broth or water",
+      "amount": "3½ cups (840 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (400 g)"
+    }
+  ],
+  "method": [
+    "In a large pot, heat the oil over medium heat. Add the noodles and cook for 1 to 2 minutes, stirring continuously, until they turn golden brown.",
+    "Add the boiling broth or water and salt to the pot. (If using broth, taste the liquid after you add it to the pot and before adding the salt. Add as much salt as needed to ensure the broth tastes noticeably salty; alternatively, some broths have a high salt content, so you may need less salt.) Bring to a rolling boil, then add the rice. Wait for it to come back to a rolling boil, then reduce the heat to low and cover with a tight-fitting lid. Let cook for 20 minutes, undisturbed.",
+    "Remove the lid and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving.",
+    "If garnishing with the pine nuts or almonds, in a small dry skillet, toast the nuts for 2 to 3 minutes over medium heat, until golden, stirring continuously.",
+    "Serve the rice on a platter, topped with the toasted pine nuts or almonds (if using) and chopped parsley (if using)."
+  ]
+}

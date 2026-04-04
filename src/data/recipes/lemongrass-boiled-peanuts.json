@@ -1,0 +1,36 @@
+{
+  "id": "lemongrass-boiled-peanuts",
+  "name": "LEMONGRASS BOILED PEANUTS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "LEMONGRASS, SEA SALT",
+  "servings": "1 cup",
+  "intro": "BOILED PEANUTS are made by boiling raw “green” peanuts for a long time. Green peanuts are freshly harvested and have a higher moisture content. They are generally available from online retailers from May through November, and sometimes you can find them at Asian markets or farmers’ markets in the South during that period. Raw peanuts that have been dried can also be used for boiled peanuts, and they are generally easier to find than green ones. If using raw green peanuts, boil them for about 3 hours; dried peanuts will need 6 hours or longer. Note: Roasted peanuts should not be used for this recipe.",
+  "ingredients": [
+    {
+      "item": "raw green or dried peanuts in the shell",
+      "amount": "1 pound"
+    },
+    {
+      "item": "water",
+      "amount": "6 cups"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "lemongrass stalks, ends trimmed and thinly sliced",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Put the peanuts in a colander and rinse them thoroughly. Transfer to a stockpot and add the water, salt, and lemongrass. Bring to a boil over high heat. Decrease the heat to medium-low, cover, and simmer until soft, about 3 hours if using green peanuts or 6 hours if using dried peanuts. Remove from the heat and let soak for 2 hours. Drain well. Store in a refrigerator and eat within 3 days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

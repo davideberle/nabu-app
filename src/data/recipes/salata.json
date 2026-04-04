@@ -1,0 +1,56 @@
+{
+  "id": "salata",
+  "name": "Salata",
+  "subtitle": "EVERYDAY CHOPPED SALAD",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 servings",
+  "time": "15 minutes",
+  "intro": "Middle Eastern food is known to be rich in vegetables; we consume them quite abundantly both in raw and cooked forms. When I was growing up, there wasn’t a single dinner we had without a bowl of this freshly chopped salata as a regular accompaniment to every dish. My sisters and I used to love it simply scooped on top of my mom’s Roz Bi Shaariya. The dressing and the mix of vegetables varies from family to family; you can even make it with just cucumbers and tomatoes if that’s all you have on hand, along with a simple squeeze of lemon juice and a drizzle of pomegranate molasses. This dressing, however, is my go-to. I often prepare it in a large jar and keep it in the fridge to use throughout the week.",
+  "ingredients": [
+    {
+      "item": "red onion, small diced",
+      "amount": "½ small"
+    },
+    {
+      "item": "bell pepper (any color), small diced",
+      "amount": "1 medium"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "TO MAKE THE SALATA: In a medium salad bowl, combine the cucumbers, tomato, onion, bell pepper, and parsley. Sprinkle with the ¼ teaspoon salt.",
+    "TO MAKE THE DRESSING: Add the oil, lemon juice, pomegranate molasses, sumac, mint, and ½ teaspoon salt to a jar or container with a lid. Seal the jar or container and shake well until combined.",
+    "Drizzle ¼ cup (60 ml) of the dressing over the salad. Toss to combine well. Taste and adjust for more dressing as desired. Seal the jar or container, refrigerate, and use as needed.",
+    "Garnish with dried mint, then serve immediately, or let chill in the refrigerator for no more than 1 hour."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

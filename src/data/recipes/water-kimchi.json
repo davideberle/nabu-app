@@ -1,0 +1,68 @@
+{
+  "id": "water-kimchi",
+  "name": "WATER KIMCHI",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1.5 pound Korean radish,",
+      "amount": ""
+    },
+    {
+      "item": "ounces napa cabbage",
+      "amount": "12 - 16"
+    },
+    {
+      "item": "to 1.5 tbsps gochugaru (Korean red chili pepper flakes) Adjust to taste",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 Korean pear or apple",
+      "amount": ""
+    },
+    {
+      "item": "thin scallions",
+      "amount": "3"
+    },
+    {
+      "item": "stalks of minari - optional",
+      "amount": "8"
+    },
+    {
+      "item": "plump garlic cloves, thinly sliced",
+      "amount": "5"
+    },
+    {
+      "item": "thin ginger slices, about 1 inch rounds",
+      "amount": "5"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "gallon airtight container or jar",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Clean the radish by scrubbing with a brush and/or scratching off the stubborn impurities with a small knife. Do not peel the skin. Cut into about 1-inch thick discs. Cut each disc into 3 pieces, and then slice thinly into about 1-inch squares, placing in a large bowl.",
+    "Rinse the cabbage leaves a couple of times. Cut each leaf lengthwise into 1-inch wide pieces, and then crosswise into about 1-inch pieces. Add to the bowl with the radish. Sprinkle with 2 tbsps of salt, and toss well to evenly distribute the salt. Let it sit until wilted, about 30 minutes. Do not drain or rinse.",
+    "In a small bowl, soak the gochugaru in 1/2 cup of warm water.",
+    "To cut the carrot into flower shapes, cut 3 to 4 ”‘V” shape grooves lengthwise, and then cut into thin slices. Or simply slice crosswise into thin rounds. Cut the pear into about 1-inch squares. Cut other vegetables into about 1-inch lengths. Add to the bowl with the salted radish and cabbage.",
+    "In a large bowl, dissolve 2 tbsps of salt in 10 cups of water. Strain the soaked gochugaru into the water through a fine mesh.",
+    "Pour the broth over the salted radish and cabbage mix and stir well to combine everything. Adjust the seasoning to taste if necessary. The combined broth should taste slightly too salty to eat as is. The saltiness will reduce as the kimchi ferments. It will actually be easier to handle if you place the salted radish and cabbage along with its liquid in the container or jar first, and then add the broth with gochugaru.",
+    "Keep it in an airtight container or jar. Leave it out at room temperature for a day or two before storing in the fridge. The kimchi can be eaten within a few days. Stir to the bottom each time before taking some out to serve."
+  ],
+  "image": "/recipes/water-kimchi.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "hummus-with-beef",
+  "name": "Hummus with Beef",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 cups (1 kg); 6 to 8 servings",
+  "time": "10 minutes",
+  "intro": "Hummus is likely the gateway to Middle Eastern cuisine for many people. This chickpea and tahini dip needs no introduction, and you’ll likely find a tub of it at every supermarket. But let me state this: homemade hummus is always much better than anything you can buy, even if you follow my quick method below using canned chickpeas. You can make it extra lemony, or extra garlicky. My absolute favorite way to enjoy it is with seasoned and caramelized steak on top, which not only turns it into a satisfying meal but will also have you addicted. You can use ground beef or even throw leftover shawarma on top, as many restaurants do.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "canned chickpeas, drained and ¾ cup (180 ml) of the liquid (aquafaba) reserved",
+      "amount": "36 ounces (1 kg)"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "unsalted butter or ghee",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "pine nuts (30 g) or slivered almonds (35 g)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Pita bread",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "TO MAKE THE HUMMUS: Add the garlic, lemon juice, and oil to a food processor and process for a few seconds until combined. Add the salt, chickpeas, and tahini to the food processor and process for a few minutes, or until the hummus starts to come together. Add the ice cubes while the food processor is running and slowly drizzle in the reserved chickpea liquid. Process the mixture for at least 5 minutes to yield a creamy texture. Taste and adjust for more salt and lemon juice if needed. Place in the refrigerator to cool for a few minutes.",
+    "MEANWHILE, MAKE THE BEEF: Season the steak pieces with the salt, pepper, and allspice.",
+    "In a large cast-iron skillet, melt the butter over medium-high heat. Add the meat and cook for 5 to 7 minutes, until caramelized, working in batches to avoid overcrowding. Remove the beef from the pan.",
+    "Add the pine nuts to the same skillet and lightly toast them over low heat for 3 to 5 minutes, until golden, stirring continuously.",
+    "Assemble by spreading the hummus on a plate, topping with some of the beef and pine nuts, and garnishing with the parsley, pomegranate arils (if using), and a drizzle of oil. Serve with pita bread."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

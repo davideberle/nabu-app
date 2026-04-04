@@ -1,0 +1,59 @@
+{
+  "id": "dill-pickled-mustard-greens",
+  "name": "DILL-PICKLED MUSTARD GREENS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "APPLE CIDER VINEGAR, DILL SEEDS, BLACK PEPPERCORNS, FRESH DILL, SERRANO CHILE, GARLIC",
+  "servings": "about 2 cups",
+  "intro": "THESE MUSTARD GREENS are great for adding a tangy element to any meal. After creating a recipe for Quick-Pickled Mustard Greens for The Inspired Vegan for use as a sweet pickled condiment, I wanted to make a savory version. Use this on sandwiches, in stews, and in vegetables dishes that would benefit from a tangy and savory element.",
+  "ingredients": [
+    {
+      "item": "apple cider vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "plus 2 teaspoons coarse sea salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dill seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "mustard greens",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "serrano chiles, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    }
+  ],
+  "method": [
+    "Put the vinegar, water, 2 teaspoons of the salt, the dill seeds, and the peppercorns in a medium saucepan. Cook over high heat, stirring often, until the salt has dissolved, about 3 minutes. Remove from the heat.",
+    "Put about 12 cups of water in a large pot and bring to a boil over high heat. While the water is heating up, strip the leaves of the mustard greens from their stems. Thinly slice the stems and set aside. Coarsely chop the leaves.",
+    "When the water is boiling, add the remaining 1 tablespoon salt, then add the mustard stems and cook uncovered for 1 minute. Remove from the heat, add the mustard leaves, and let sit for 1 minute. Drain in a colander and rinse with cool water to stop the cooking. Press the greens to extract as much liquid as possible.",
+    "Transfer the greens and stems to a 1-pint or large canning jar and add the dill, chiles, and garlic. Pour in the vinegar mixture and let cool to room temperature. Cover tightly and refrigerate for at least 1 day before eating. Stored in the refrigerator, the greens will keep for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

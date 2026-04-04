@@ -1,0 +1,106 @@
+{
+  "id": "pyogobusut-tangsoo",
+  "name": "PYOGOBUSUT-TANGSOO",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sliced Shitake mushrooms",
+      "amount": "3 cups"
+    },
+    {
+      "item": "vegetable oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "Korean tempura mix",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2-3/4 cup water (see how you like the batter)",
+      "amount": ""
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "some black pepper",
+      "amount": ""
+    },
+    {
+      "item": "a sprinkle of salt",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "white vinegar (or more, to taste)",
+      "amount": "1-2 Tbsp"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "2-4 Tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red bell pepper or carrot (sliced or cubed)",
+      "amount": "1"
+    },
+    {
+      "item": "small Asian cucumber (halved and sliced) or 7 brussel sprouts (halved)",
+      "amount": "1"
+    },
+    {
+      "item": "pineapple or apple (cubed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/4 purple cabbage (sliced or cubed)",
+      "amount": ""
+    },
+    {
+      "item": "1/2 large onion (optional, cut into medium size blocks)",
+      "amount": ""
+    },
+    {
+      "item": "Korean peppers (optional, thinly sliced: can substitute with any spicy pepper)",
+      "amount": "2"
+    },
+    {
+      "item": "black mushrooms (optional, soaked and cut into small bite size pieces)",
+      "amount": "5"
+    }
+  ],
+  "method": [
+    "Soak Shitake mushroom in water overnight.",
+    "Squeeze out the water (squeeze REALLY WELL using paper towels, this is the secret to a good pyogobusut-tangsoo!) and keep the mushroom soaked water for making the sauce.",
+    "Mix all batter ingredients together well so it doesn’t have any lumps.",
+    "Add the squeezed mushrooms into the batter and coat.",
+    "Using a deep-fryer or a small saucepan, heat the oil over medium heat and fry the battered mushrooms. (You need to really fry it long enough so it’s very crisp, that is really the key to a yummy Pyogobusut-tangsoo. The textbook Korean way is to actually fry it twice!)",
+    "Let the mushrooms cool on a paper towel to drain excess oil. Optional: Once the mushrooms have cooled somewhat, fry them again and then return to fresh towels to drain oil (this makes them crispier).",
+    "Put all the sauce ingredients (except the sesame oil) into a large bowl and mix well.Heat a pan, put the sauce ingredients in, bring to boil and stir occasionally. Lower heat and let it simmer until the sauce thickens.",
+    "When the sauce thickens and you like the consistency, turn off heat.",
+    "Add the veggie ingredients and toss for 5 seconds do the veggies are slightly wilted. Pour sauce over fried mushroom and mix well. Serve with rice and other banchan!"
+  ],
+  "image": "/recipes/pyogobusut-tangsoo.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

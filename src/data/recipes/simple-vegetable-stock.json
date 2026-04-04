@@ -1,0 +1,52 @@
+{
+  "id": "simple-vegetable-stock",
+  "name": "SIMPLE VEGETABLE STOCK",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "CABBAGE, CARROT, CELERY, ONION, GARLIC",
+  "servings": "about 7 cups",
+  "intro": "A NUMBER OF RECIPES in this book call for homemade stock, but I would not be mad if you used the best-quality boxed stock you can find. I simply think you will get the most flavor from these recipes if you use fresh stock. It’s simple yet flavorful, and you can make a big batch and freeze it until you need it. In the past, I would cut the vegetables into chunks, but I find that thinly slicing and grating the vegetables makes for a much more flavorful stock.",
+  "ingredients": [
+    {
+      "item": "small head of green cabbage (about 1 pound), thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "large carrot, coarsely grated",
+      "amount": "1"
+    },
+    {
+      "item": "stalks celery, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "large yellow onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "head garlic, broken apart into cloves and unpeeled cloves smashed with the flat side of a knife",
+      "amount": "1"
+    },
+    {
+      "item": "sprigs thyme",
+      "amount": "3"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "9 cups"
+    }
+  ],
+  "method": [
+    "Combine all the ingredients in a large pot and bring to a boil over medium-high heat. Decrease the heat to medium-low and simmer uncovered for about 1 hour. Strain through a fine-mesh sieve, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Use immediately or let cool and store in the refrigerator for up to 3 days or the freezer for up to 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

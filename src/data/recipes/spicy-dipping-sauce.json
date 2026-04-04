@@ -1,0 +1,50 @@
+{
+  "id": "spicy-dipping-sauce",
+  "name": "SPICY DIPPING SAUCE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "1/4 cup Bragg’s liquid aminos",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup rice wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "1.5 T agave",
+      "amount": ""
+    },
+    {
+      "item": "t sugar",
+      "amount": "1"
+    },
+    {
+      "item": "T sesame oil",
+      "amount": "1"
+    },
+    {
+      "item": "T plus 1 t chili paste (or more if you want to up the spiciness!)",
+      "amount": "1"
+    },
+    {
+      "item": "T scallions, sliced thin",
+      "amount": "1"
+    },
+    {
+      "item": "t garlic powder",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix everything together and serve cold or at room temperature."
+  ],
+  "image": "/recipes/spicy-dipping-sauce.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

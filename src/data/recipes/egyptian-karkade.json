@@ -1,0 +1,37 @@
+{
+  "id": "egyptian-karkade",
+  "name": "Egyptian Karkade",
+  "subtitle": "HIBISCUS ICED TEA",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "5 minutes, plus 2 hours chilling",
+  "intro": "When you’re in Egypt and you think of iced tea, you won’t find the familiar North American version using black tea. Instead, you’ll find this bright pink hibiscus iced tea, with a tart and fruity flavor somewhat resembling cranberries. It’s said to have been the preferred drink of the pharaohs. I’m not quite sure how it made its way to Iraq, but I grew up drinking karkade regularly, especially during Ramadan. It’s served ice cold and usually sweetened with sugar to balance the tartness. It’s important to use high-quality dried hibiscus petals to get optimal flavor. It’s easy to make ahead and beautiful to serve to guests, garnished with fresh mint leaves. Just be careful you don’t get any of it on your countertops—it can easily stain them!",
+  "ingredients": [
+    {
+      "item": "filtered water",
+      "amount": "6 cups (1.4 L)"
+    },
+    {
+      "item": "dried hibiscus flowers",
+      "amount": "1 cup (33 g)"
+    },
+    {
+      "item": "granulated sugar (or more per preference)",
+      "amount": "½ cup (100 g)"
+    }
+  ],
+  "method": [
+    "Add the filtered water to a medium saucepan and bring to a boil.",
+    "Add the hibiscus flowers and sugar. Let boil for 5 minutes until the sugar is dissolved. Turn off the heat and allow the hibiscus to steep in the water for 20 minutes. You may taste and adjust for more sugar at this point. To add more, stir it into the tea while it is still hot until it dissolves.",
+    "Strain the tea into a pitcher, being careful not to spill any on easily stained counters (the hibiscus is highly pigmented).",
+    "Refrigerate for at least 2 hours. If the tea is too strong, feel free to dilute it with more cold water, but do not dilute too much if serving with ice cubes.",
+    "Serve with ice cubes (if using) and garnish with mint leaves."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

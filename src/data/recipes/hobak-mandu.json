@@ -1,0 +1,50 @@
+{
+  "id": "hobak-mandu",
+  "name": "HOBAK MANDU",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "dumpling wrappers",
+      "amount": "24"
+    },
+    {
+      "item": "zucchinis about 10 ounces each",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried pyogo beoseot, 표고버섯 (shiitake mushrooms) soaked (or use fresh) - optional",
+      "amount": "4"
+    },
+    {
+      "item": "1/2 tbsp soup soy sauce, 국간장 (or 1 tbsp regular soy sauce) or 1/4 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "sesame oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the zucchinis into thin disks and then into matchsticks. If the disks are big, cut in half before cutting into matchsticks. Lightly sprinkle with salt (about 1 tsp), and let sit for about 15 minutes until wilted and some liquid is released. Gently squeeze the liquid out from the zucchini.",
+    "Cut the mushrooms into thin strips. If the mushrooms are thick, slice them diagonally once or twice as if you are butterflying the mushrooms, and then cut into thin strips. Mix with the soup soy sauce (or salt) and a little bit (about ½ tsp) of sesame oil",
+    "Heat a pan over high heat, and add two tsps of sesame oil and the zucchini. Stir fry until the zucchini is cooked and dry. Transfer to a large plate and spread it around to cool.",
+    "Heat a pan over medium high heat, and stir fry the mushrooms for 2 minutes. Add a tbsp or two of water or mushroom soaked water if the pan gets too dry.",
+    "Combine the zucchini and mushrooms. Adjust the seasoning to taste if needed.",
+    "Place one heaping tspful of the filling on a wrapper placed on your palm. Wet the edges of the wrapper with water, fold the wrapper and seal tightly (pushing the air out with your fingers) into a half-moon shape. You can pinch one side of the wrapper to form pleats. Repeat this process until all the filling/wrappers are used.",
+    "Bring a pot of water to a boil. Add the dumplings a few at a time, stirring gently so they don’t stick to the bottom of the pot. Cook only until the dumplings come up to the surface. Prepare a bowl with cold water. Remove the dumplings quickly, and plunge in the cold water to cool.",
+    "Remove and serve cold with a dipping sauce (2 tsps soy sauce, 1 tsp vinegar, and 2 tsps water) if desired.",
+    "To make the square dumpling shape, wet the edges, bring up the opposite sides of the wrapper to the middle and pinch them together in the middle. Do the same with the other sides, creating 4 seams. Pinch the seams to close tightly all the way to the middle. Regardless of the shape, make sure to seal tightly as the dumplings will be boiled."
+  ],
+  "image": "/recipes/hobak-mandu.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "crispy-korean-poke-bowl",
+  "name": "CRISPY KOREAN POKE BOWL",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "ounces dried soba noodles*",
+      "amount": "9"
+    },
+    {
+      "item": "pineapple juice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tbsps maple syrup",
+      "amount": "2"
+    },
+    {
+      "item": "tbsps soy sauce",
+      "amount": "2"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "tbsps gochujang",
+      "amount": "3 to 4"
+    },
+    {
+      "item": "pineapple chunks",
+      "amount": "2 cups"
+    },
+    {
+      "item": "pound extra firm tofu, drained and pressed",
+      "amount": "1"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "¼ to ⅓ cup"
+    },
+    {
+      "item": "about ¼ cup vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "vegan kimchi, or more!",
+      "amount": "½ cup"
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a large pot of water to a boil. Add soba noodles and cook according to package directions. Drain into a colander.",
+    "Prepare sauce by stirring pineapple juice, maple syrup, soy sauce, sesame oil and garlic together in a small saucepan. Bring the mixture to a simmer and add 3 to 4 tbsps of gochujang, to taste. Stir until gochujang is completely mixed in, then stir in the pineapple chunks. Lower heat and allow to simmer for 10 to 15 minutes, while you prepare the tofu.",
+    "Coat the bottom of a large nonstick skillet generously with oil and place over medium heat. Place the cornstarch into a medium bowl and add tofu. Toss to coat. Working in batches if needed, add tofu cubes in an even layer to the skillet. Cook for about 10 minutes, flipping a couple of times, until crispy on multiple sides. Transfer tofu to a paper towel-lined plate.",
+    "Divide noodles into bowls. Top with tofu, sauce, kimchi, scallions and sesame seeds.",
+    "If you don't have soba noodles on hand, I'm sure you could substitute another variety of noodle, like udon, ramen, or even spaghetti."
+  ],
+  "image": "/recipes/crispy-korean-poke-bowl.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

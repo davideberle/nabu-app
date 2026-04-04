@@ -1,0 +1,48 @@
+{
+  "id": "roasted-dukkah-crusted-trout",
+  "name": "Roasted Dukkah-Crusted Trout",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "One of the best ways to use Egyptian Dukkah is to press it into a large fillet of trout and roast it in the oven. The toasted nuts, seeds, and warm spices elevate an ordinary weeknight fish dinner into a fancy treat. I have also recently been quite taken with roasted radish. Radishes are commonly consumed in the Middle East, but only when fresh, for their crunch and peppery flavor. Roasting them is a technique I picked up here in the West that completely transforms them, mellowing their sharpness and enhancing their natural sweetness.",
+  "ingredients": [
+    {
+      "item": "red radishes, trimmed and cut in half",
+      "amount": "1 pound (454 g)"
+    },
+    {
+      "item": "red onion, cut into ½-inch-thick (13 mm) slices",
+      "amount": "1"
+    },
+    {
+      "item": "asparagus, trimmed",
+      "amount": "¾ pound (350 g)"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "kosher salt, divided",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "skin-on rainbow trout fillets (2 large fillets) (or substitute with salmon), rinsed and patted dry",
+      "amount": "1½ pounds (650 g)"
+    },
+    {
+      "item": "recipe Egyptian Dukkah",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper.",
+    "Place the radishes, onion, and asparagus on the prepared sheet pan and toss with 2 tablespoons of the oil and 1 teaspoon of the salt. Bake for 10 minutes.",
+    "Meanwhile, place the trout fillets on a flat surface and drizzle each one with 1 tablespoon of oil, then sprinkle each one with ½ teaspoon of salt. Sprinkle each fillet with 4 or 5 teaspoons of the Egyptian dukkah, covering the whole surface and rubbing the seasoning into the fish.",
+    "After the vegetables have baked for 10 minutes, remove the sheet pan from the oven and add the trout fillets. Place back into the oven and bake for 15 minutes longer, or until the fish is flaky and cooked through.",
+    "Serve the fish with the asparagus, radishes, and onion."
+  ]
+}

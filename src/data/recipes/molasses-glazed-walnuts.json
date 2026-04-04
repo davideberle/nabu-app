@@ -1,0 +1,43 @@
+{
+  "id": "molasses-glazed-walnuts",
+  "name": "MOLASSES-GLAZED WALNUTS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "SUNFLOWER OIL, RAW CANE SUGAR, SALT",
+  "servings": "2 cups",
+  "intro": "I CREATED THESE FOR Sweet Potato Granola, but they are heavenly by themselves.",
+  "ingredients": [
+    {
+      "item": "walnut pieces",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "unsulfured molasses",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Line a large, rimmed baking sheet with parchment paper.",
+    "Spread the walnuts on the lined baking sheet and bake, stirring after 4 minutes, for 8 minutes, until fragrant and starting to toast. Set aside until cool enough to handle. Transfer to a sieve and, holding the sieve over the sink, rub the walnuts against the wire until their skins loosen and fall off.",
+    "Put the walnuts in a large bowl. Drizzle with the oil and stir until evenly coated. Drizzle with the molasses and stir until evenly coated, then sprinkle with the sugar and salt and stir until evenly coated.",
+    "Warm a large, dry cast-iron skillet over medium-high heat. Add the walnuts, scraping the bowl to get all of the seasonings into the skillet. Cook, stirring constantly, until the walnuts are fragrant, about 3 minutes. Transfer the walnuts to a sheet of parchment paper and quickly spread them out, separating them with two forks. Let cool to room temperature. Stored in a sealed container at room temperature, the walnuts will keep for a few weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

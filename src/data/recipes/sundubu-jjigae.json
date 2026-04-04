@@ -1,0 +1,120 @@
+{
+  "id": "sundubu-jjigae",
+  "name": "SUNDUBU JJIGAE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "small dried shiitake mushrooms",
+      "amount": "3-4"
+    },
+    {
+      "item": "0.5 oz dried kombu or dried kelp",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "1/2 tbsp cooking oil or sesame oil",
+      "amount": "1"
+    },
+    {
+      "item": "small onion diced",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup chopped scallion or green onions",
+      "amount": ""
+    },
+    {
+      "item": "gochugaru or korean hot pepper powder feel free to adjust according to desired spice",
+      "amount": "2-3 tbsp"
+    },
+    {
+      "item": "soy sauce or to taste",
+      "amount": "2-3 tbsp"
+    },
+    {
+      "item": "3/4 cup vegan kimchi (optional)",
+      "amount": ""
+    },
+    {
+      "item": "rice wine like mirin, sake, etc. (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium zucchini , sliced into small 1/4” thick quarters",
+      "amount": "1"
+    },
+    {
+      "item": "bundle fresh enoki mushrooms , 150 g",
+      "amount": "1"
+    },
+    {
+      "item": "sliced fresh king oyster or shiitake mushrooms , feel free to use rehydrated shiitake mushrooms",
+      "amount": "1 lb"
+    },
+    {
+      "item": "mushroom-kombu broth or vegetable broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 tsp salt or more to taste",
+      "amount": ""
+    },
+    {
+      "item": "sundubu or soft tofu or silken tofu (mine was in a tube)",
+      "amount": "1 lb"
+    },
+    {
+      "item": "More green onions or scallion for topping",
+      "amount": ""
+    },
+    {
+      "item": "Vegan kimchi or other banchan",
+      "amount": ""
+    },
+    {
+      "item": "Steamed short grain rice",
+      "amount": ""
+    },
+    {
+      "item": "Kimchi Jeon or Pancake",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Prepare the broth: I like to cut through the kombu using a pair of scissors. I fold mine in half and cut around five 1” (2.5 cm) cuts on each side.",
+    "This will yield around 3 cups of broth since the dried mushrooms and kombu will absorb some water.",
+    "Another option is to boil the mushrooms and kombu in water for 10-15 minutes and leave it to sit for another 10-15 minutes. Remove the mushrooms and kombu from the broth.",
+    "Do not discard the kombu and mushrooms. You can also cut the rehyrdrated mushrooms and mix it in your jjigae.",
+    "For the leftover rehydrated kombu, you can make this into Kombu Tsukudani or simmered kombu for a delicious dish with rice.",
+    "Slice the veggies and other mushrooms you're using.",
+    "Prepare your sundubu or soft tofu. If using sundubu in a tube, slice the tube in half (or follow the dotted lines), and slice the tofu into a few pieces.",
+    "If using a block of sudubu, carefully remove it from the tray of water and slice into a few pieces. Note that you can opt not to slice the tofu and simply break them into smaller pieces when placing in the stew later on.",
+    "Heat a medium sized pot or a Korean ttukbaegi over medium.",
+    "Once hot, add in the oil.",
+    "Sauté the onion and scallions. Sauté for 2-3 minutes until translucent and cooked through.",
+    "Add in the garlic, gochugaru and/or gochujang, and soy sauce. Cook for 2 minutes. Add in kimchi (if using) then saute for 2-3 minutes. Add in the rice wine (if using) over high heat until it slightly evaporates.",
+    "Afterwards, add in the king oyster or shiitake mushrooms, and some of the enoki mushrooms then sauté for a few minutes until lightly cooked through, around 3 minutes.",
+    "Add in the zucchini and mix well.",
+    "Pour in the vegetable broth or water.",
+    "Cover the pot and leave to boil over medium high heat, around 7 minutes.",
+    "Once the zucchini and mushrooms are cooked through, taste soup and season with more salt as needed.",
+    "Add in the soft tofu and remaining enoki mushrooms on top then leave to boil for 2-3 more minutes.",
+    "Enjoy while hot with some steamed rice, kimchi pancake and Korean banchan (side dishes) like kimchi and kongnamul (bean sprout salad)."
+  ],
+  "image": "/recipes/sundubu-jjigae.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

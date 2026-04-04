@@ -1,0 +1,63 @@
+{
+  "id": "apricot-chicken",
+  "name": "Apricot Chicken",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "4 to 6 servings",
+  "time": "10 minutes",
+  "intro": "This dish is a nod to an ancient Iraqi dish called torshana or qaysi, which is a sweet-and-sour stew made of apricots, prunes, and lamb. The stew is thick and jammy in consistency and served over rice. Growing up, I never really liked it because I always found it to be too sweet. But I am definitely in the minority; most Iraqis love this dish. I do, however, love the idea of using sweet and tangy apricots in savory applications, and given that chicken is a much quicker protein to cook than lamb, I developed this recipe. This dish is different and truly delicious.",
+  "ingredients": [
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried apricots, cut into quarters",
+      "amount": "2 cups (350 g)"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unsalted chopped raw walnuts",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Roz Bi Shaariya",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (205°C) and place a rack in the middle.",
+    "TO MAKE THE CHICKEN: Season the chicken thighs on both sides with the salt and pepper.",
+    "In a 12-inch (30 cm) oven-safe skillet (preferably cast iron), heat the oil over medium-high heat. Add the chicken thighs and sear them, skin sides down, for 1 to 2 minutes, until golden. Flip and sear the other side for another few minutes. Work in batches to avoid overcrowding. Transfer to a plate.",
+    "TO MAKE THE SAUCE: In the same skillet, add the onion and the salt. Reduce the heat to medium and cook, stirring often, for 4 to 5 minutes, until the onion is softened and golden. Add the apricots and cook for 1 to 2 minutes. Add the cardamom, cumin, and coriander and mix to combine. Cook for 1 to 2 minutes longer.",
+    "Add the sugar and 3 cups (720 ml) of water and bring to a boil over medium heat. Let boil for 5 to 7 minutes, until slightly reduced. Add the chicken thighs back into the skillet, skin sides up.",
+    "Place the skillet in the oven, uncovered, and bake for 30 to 40 minutes, until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C). Keep a close eye on the water level, adding more as needed to avoid the sauce drying up; the sauce should be a thick consistency. Remove from the oven and let rest for 10 minutes.",
+    "MEANWHILE, MAKE THE GARNISH: Toast the nuts in a small, dry skillet over low heat for a few minutes, or until fragrant, stirring continuously.",
+    "Garnish the chicken with the toasted nuts and serve with rice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

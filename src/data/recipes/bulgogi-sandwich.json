@@ -1,0 +1,69 @@
+{
+  "id": "bulgogi-sandwich",
+  "name": "BULGOGI SANDWICH",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "large or 4 small hamburger buns",
+      "amount": "3"
+    },
+    {
+      "item": "soy curls",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/2 medium white or yellow onion, sliced",
+      "amount": ""
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 Tbsp"
+    },
+    {
+      "item": "agave or sugar",
+      "amount": "2 Tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 Tbsp"
+    },
+    {
+      "item": "1/2 – 1 tsp ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 Tbsp white wine",
+      "amount": ""
+    },
+    {
+      "item": "clove garlic, minced or crushed",
+      "amount": "2"
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 Asian pear,",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Prepare soy curls as per the package directions. For Butler soy curls, this means soaking the curls in warm water for 10 minutes to rehydrate them.",
+    "Combine all of the marinade ingredients into a large bowl.",
+    "Squeeze out water from soy curls. Add the sliced onion and soy curls to the marinade and stir to coat the well.",
+    "Heat 1 Tbs of oil in a skillet over medium-high heat and pour in curls, onion slices, and marinade and cook for approximately 5 minutes until curls and onions are browned and marinade thickens. Toast buns divide bulgolgi mixture on buns"
+  ],
+  "image": "/recipes/bulgogi-sandwich.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

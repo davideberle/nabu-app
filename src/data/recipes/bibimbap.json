@@ -1,0 +1,60 @@
+{
+  "id": "bibimbap",
+  "name": "BIBIMBAP",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "cooked short-grain rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "spinach, blanched and drained",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bean sprouts, blanched and drained",
+      "amount": "1 cup"
+    },
+    {
+      "item": "carrots, julienned and sautéed - 1 cup mushrooms, sautéed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/4 cup gochujang (Korean chili paste)",
+      "amount": "1"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix together the gochujang, sesame oil, soy sauce, sugar, garlic, and salt to make a sauce.",
+    "Arrange the rice in a large bowl and top with the blanched spinach, bean sprouts, sautéed carrots, and mushrooms.",
+    "Drizzle the sauce over the vegetables and rice, and mix everything together before eating."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

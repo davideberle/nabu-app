@@ -1,0 +1,62 @@
+{
+  "id": "moroccan-ghriba",
+  "name": "Moroccan Ghriba",
+  "subtitle": "ALMOND COOKIES",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "20 cookies",
+  "time": "20 minutes",
+  "intro": "Moroccans serve an assortment of traditional cookies during celebrations like Eid, referred to as ghriba cookies. There are various types of ghriba: coconut, almond, pistachio, and rose-scented, among many others. They can be made with all-purpose flour or semolina, but this version uses only almond flour. The best part about this cookie is the crispiness on the outside and the chewiness on the inside, coupled with the hint of lemon. They are absolutely addictive. When my dad tasted one of my test batches, he immediately asked my mom to make a double batch and stash it in their freezer. They are one of the simplest cookies to make—just make sure you do not overbake them! Stick to the timing in this recipe, and they’ll be perfect.",
+  "ingredients": [
+    {
+      "item": "blanched almond flour",
+      "amount": "10½ ounces (300 g)"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "2/3 cup (135 g) granulated sugar",
+      "amount": ""
+    },
+    {
+      "item": "Grated zest of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter, softened",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "egg yolks",
+      "amount": "2 medium"
+    },
+    {
+      "item": "plus 1 teaspoon orange blossom water, divided",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "almond extract (optional)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 cup (120 g)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F (175°C) and position a rack on the bottom.",
+    "In a large bowl, mix together the almond flour and baking powder.",
+    "In a medium bowl, combine the sugar and lemon zest and use your hands to rub the zest into the sugar to extract the flavor. Add the almond flour to the bowl and whisk until the ingredients are well combined.",
+    "Add the butter and egg yolks to the dry ingredients and use your hands to work them in until a crumbly mixture forms; you should be able to form a ball when squeezing the mixture together. Add 1 teaspoon of the orange blossom water and the almond extract (if using) and mix well.",
+    "Place the powdered sugar in a small bowl and the remaining ¼ cup (60 ml) orange blossom water in a separate small bowl. Line two medium baking sheets with parchment paper, or use one baking sheet and bake the cookies in batches.",
+    "Scoop ¾ tablespoon of cookie dough. Dip your hands in the orange blossom water to wet your hands and roll the dough into a ball. Gently flatten the ball very slightly, then roll it in the powdered sugar until completely covered. Place on a prepared baking sheet, 1 inch (2.5 cm) apart. Repeat with the remaining dough, wetting your hands with the orange blossom water as you shape each cookie.",
+    "Bake on the bottom rack for 15 minutes; the cookies will start to develop cracks, which is normal. Do not overbake, even if they still seem soft; they will firm up as they cool. Cool on the baking sheet for 10 minutes before serving."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

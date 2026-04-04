@@ -1,0 +1,98 @@
+{
+  "id": "onion-dolmastuffed-onions",
+  "name": "Onion DolmaSTUFFED ONIONS",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "30 minutes",
+  "intro": "This dish is one I came up with as my “cheat dolma.” Authentic Iraqi dolma, the way my mom makes it, uses an array of vegetables, such as grape leaves, Swiss chard, eggplant, zucchini, tomatoes, and peppers. All these vegetables are cored and stuffed, which takes hours. As a way of enjoying dolma more often, I decided to start making it using only onions, because they are the easiest to stuff by far! The results are nothing short of amazing, with the onions turning sweet and melting in your mouth, the tangy filling creating a perfect contrast to the sweetness. You won’t find me making authentic dolma more than maybe twice a year, but this dish—this I make monthly, at least!",
+  "ingredients": [
+    {
+      "item": "cloves garlic, minced",
+      "amount": "4 large"
+    },
+    {
+      "item": "yellow onion, small diced",
+      "amount": "½"
+    },
+    {
+      "item": "red bell pepper, small diced",
+      "amount": "½ large"
+    },
+    {
+      "item": "short-grain white rice, rinsed until the water runs clear and drained completely",
+      "amount": "1½ cups (300 g)"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried dill",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "hot water",
+      "amount": "4 cups (960 ml)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 450°F (230°C) and position a rack on the bottom level.",
+    "TO MAKE THE DOLMA: Peel an onion without slicing off the ends, then, using a paring knife, dig around the end where the root is and carve it out slightly, about ¼ inch (6 mm) deep (this helps separate the layers). After doing this, discard the root and separate all the layers slightly at the end to expose them. Make a long cut along the length of the onion through all the layers to the center; do not cut past the center. Repeat with the remaining onions. Place the onions in a medium microwave-safe glass bowl and microwave for 1 minute to soften the layers slightly (you can also boil them on the stovetop for 1 minute). Let cool while you prepare the rest of the ingredients.",
+    "In a large bowl, combine the ground beef, garlic, chopped onion, red pepper, rice, parsley, 2 teaspoons salt, black pepper, cumin, allspice, dried dill, dried mint, pomegranate molasses, 3 tablespoons tomato paste, and 2 tablespoons lemon juice and mix well.",
+    "To stuff the onions, use your fingers to carefully dislodge every layer of each onion and pop them out, one by one. Gently pry the layers apart from both sides until you reach the center. Repeat with the remaining onions until you have them all in single layers. Place roughly 2 tablespoons of the stuffing inside each onion layer, then roll it closed. The ends of the onion should fold over one another by at least ½ inch (13 mm); if you cannot do this, it means you have stuffed it too much. Place the stuffed onions in a 9 x 13-inch (23 x 33 cm) baking dish, packed tightly side by side with the seam sides down, to help them stay closed; they should be snuggly packed in.",
+    "TO MAKE THE BAKING LIQUID: In a medium, heatproof glass bowl or measuring cup, combine the ½ cup (120 g) tomato paste, pomegranate molasses, ¼ cup (60 ml) lemon juice, 1½ teaspoons salt, and black pepper. Add the hot water and mix everything together.",
+    "Pour the sauce all over the onions. Tightly cover the dish with aluminum foil and bake for 1½ hours. After 1 hour, check the onions to ensure there is enough liquid for them to continue cooking. There should be at least 1 inch (2.5 cm) of liquid in the dish; if needed, add another ½ cup (120 ml) of water. Remove the stuffed onions when both the rice and onions are very soft. Let cool for 10 minutes before serving.",
+    "Serve with salad and yogurt."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

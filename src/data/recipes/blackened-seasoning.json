@@ -1,0 +1,60 @@
+{
+  "id": "blackened-seasoning",
+  "name": "BLACKENED SEASONING",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "PAPRIKA, CUMIN, CORIANDER, BLACK PEPPER, WHITE PEPPER, GARLIC POWDER, ONION POWDER",
+  "servings": "about ⅓ cup",
+  "intro": "BLACKENING is a Cajun cooking technique (that spread throughout the South) in which food is coated with a medley of spices and cooked over very high heat, usually in a cast-iron skillet. This is a recipe for a spice mixture that I typically use for such purposes. The piquant, smoky blend adds a mouthwatering layer of flavor to blank-canvas foods like tofu, potatoes, and cauliflower, as in Blackened Cauliflower with Plum Tomato Sauce. If you like fiery heat, add more cayenne to your blend. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "paprika",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cumin seeds, toasted (see sidebar)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coriander seeds, toasted (see sidebar)",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "white peppercorns",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cayenne pepper, or to taste",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Combine the paprika, cumin seeds, coriander seeds, black peppercorns, salt, garlic powder, white peppercorns, onion powder, thyme, and cayenne in a mortar or spice grinder and grind into a fine powder. Transfer to a jar and seal tightly. Stored at room temperature, it will keep for 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

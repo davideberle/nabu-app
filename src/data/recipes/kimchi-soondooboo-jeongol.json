@@ -1,0 +1,95 @@
+{
+  "id": "kimchi-soondooboo-jeongol",
+  "name": "KIMCHI SOONDOOBOO JEONGOL",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/2 tsp sesame oil",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup julienned onion",
+      "amount": ""
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "gochugaru use less if too spicy",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vegan kimchi",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 tbsp gochujang",
+      "amount": "1"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "1/2 cup chopped zucchini",
+      "amount": ""
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "kimchi juice liquid in kimchi jar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "container silken tofu",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup ricecakes",
+      "amount": ""
+    },
+    {
+      "item": "frozen dumplings",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "ounces fresh noodles can sub in ramen noodles",
+      "amount": "4"
+    },
+    {
+      "item": "handfuls enoki mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "chopped scallion greens",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Add 1 tbsp of olive oil and sesame oil in a large pan over medium high heat.",
+    "Add onions, scallions, and garlic and sautee until they become translucent, about 3 minutes. Add gochugaru and cook for 30 seconds.",
+    "Add kimchi, zucchini, and gochujang, and stir until vegetables are evenly coated with sauce. Add soy sauce and vegetable broth, together with kimchi juice.",
+    "Spoon the silken tofu into the broth in chunks.",
+    "Add the ricecakes, dumplings, noodles, and enoki mushrooms. Bring the soup up to a boil and continue cooking at a gentle boil until the ricecakes are soft and the noodles are cooked.",
+    "Garnish with scallion greens before serving."
+  ],
+  "image": "/recipes/kimchi-soondooboo-jeongol.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

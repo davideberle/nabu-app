@@ -1,0 +1,62 @@
+{
+  "id": "kimbap",
+  "name": "KIMBAP",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "short grain rice, cooked",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tsp. sesame oil",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 tsp. salt",
+      "amount": ""
+    },
+    {
+      "item": "portobello mushroom cap, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "carrot, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "spinach",
+      "amount": "2 cups"
+    },
+    {
+      "item": "pkg. dried seaweed sheets (gim)",
+      "amount": "1"
+    },
+    {
+      "item": "strips pickled daikon radish (danmuji)",
+      "amount": "5"
+    },
+    {
+      "item": "cucumber, sliced lengthwise",
+      "amount": "1"
+    },
+    {
+      "item": "block cooked tofu, cut into strips (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix the cooked rice with the sesame oil and salt. Set aside.",
+    "Sauté the mushroom slices, carrots, and spinach individually. Allow each to cool.",
+    "Place a seaweed sheet on a bamboo mat. Spread the rice mixture evenly over the seaweed, leaving a 1-inch border without rice.",
+    "Stack the carrots, spinach, mushroom, radish, cucumber, and cooked tofu and roll it up tightly.",
+    "Using a sharp knife, cut the roll into bite-size pieces. Repeat this process using the remaining ingredients."
+  ],
+  "image": "/recipes/kimbap.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "id": "cauliflower-wings",
+  "name": "CAULIFLOWER WINGS",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "head of cauliflower, cut into bite-sized florets",
+      "amount": "1"
+    },
+    {
+      "item": "soy milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "all-purpose flour*",
+      "amount": "½ cup"
+    },
+    {
+      "item": "gochugaru or red chilli flakes, optional",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "golden breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cloves of garlic, finely minced",
+      "amount": "4"
+    },
+    {
+      "item": "cm piece of ginger, grated",
+      "amount": "3"
+    },
+    {
+      "item": "gochujang",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "rice vinegar or lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "agave or rice syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "roasted peanuts, optional",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Sesame seeds and scallions for garnish",
+      "amount": ""
+    },
+    {
+      "item": "vegan yogurt",
+      "amount": "1 cup"
+    },
+    {
+      "item": "a cucumber, grated and squeezed to remove liquid",
+      "amount": "½"
+    },
+    {
+      "item": "scallions, finely sliced",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Position a rack in the centre of the oven and preheat the oven to 200C. Place a piece of parchment paper or silpat on two baking sheets, and set aside.Wash and cut cauliflower head into bite-sized pieces/florets. In a bowl, whisk together the soy milk, flour, gochugaru, salt and pepper. In a separate shallow bowl, toss the golden breadcrumbs and salt together",
+    "Dip a cauliflower floret in the flour batter, shake off excess batter, then dip into the breadcrumbs. Toss to coat then place the floret on the prepared tray.",
+    "Repeat for all florets and continue to arrange them in a single layer on the prepared baking sheets. Bake for 20-25 minutes or until the crust is crispy and golden.",
+    "Meanwhile, make the gochujang glaze. in a shallow bowl, mix the garlic, ginger, gochujang, vinegar, syrup and sesame oil together.",
+    "When the florets are golden and baked, remove from the oven, toss each in the prepared glaze (one by one), let excess glaze drip off before returning it to the tray. Repeat until all your florets are coated. You may have excess or not enough glaze, as this depends on the size of your cauliflower, but you can always whisk some more up if needed.",
+    "Sprinkle peanuts over the cauliflower on the tray, then bake for another 5-7 minutes.",
+    "To make the dip, just mix the last 5 ingredients together.",
+    "Serve the florets hot or warm, garnished with scallions and sesame seeds, with a side of scallion yogurt dipping sauce."
+  ],
+  "image": "/recipes/cauliflower-wings.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

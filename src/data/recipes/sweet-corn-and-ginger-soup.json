@@ -1,0 +1,73 @@
+{
+  "id": "sweet-corn-and-ginger-soup",
+  "name": "SWEET CORN & GINGER SOUP",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "subtitle": "COCONUT MILK, CARROT, CELERY, CILANTRO",
+  "servings": "4 to 6 servings",
+  "intro": "THE COMBINATION of fresh corn, ginger, and coconut milk gives this soothing and hydrating soup a Caribbean twist. A big bowl of it with a piece of cornbread or crusty bread makes a perfect light lunch on a hot day. Consider cutting the kernels off the corncobs a bit in advance so you can use the cobs to make the Corn Broth.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "finely diced yellow onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "diced carrot",
+      "amount": "½ cup"
+    },
+    {
+      "item": "finely diced celery (strings removed before dicing)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced fresh ginger",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Corn Broth",
+      "amount": "4½ cups"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Kernels from 6 ears of sweet corn",
+      "amount": ""
+    },
+    {
+      "item": "Freshly ground white pepper",
+      "amount": ""
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Warm the oil in a medium saucepan over medium heat. Add the onion, carrot, celery, and ginger and sauté until the vegetables are soft, 5 to 7 minutes. Add the garlic, paprika, and ½ teaspoon of salt and sauté, until fragrant, 2 to 3 minutes. Stir in the broth and coconut milk. Decrease the heat to low, cover, and simmer for 20 minutes.",
+    "Working in batches if need be, transfer to a blender and process until creamy. Strain through a fine-mesh sieve back into the saucepan, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Add the corn and cook, over medium-low heat stirring occasionally, for 5 minutes. Season with salt and pepper to taste. Garnish with the cilantro before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

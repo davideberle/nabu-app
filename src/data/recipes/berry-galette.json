@@ -1,0 +1,56 @@
+{
+  "id": "berry-galette",
+  "name": "BERRY GALETTE",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sheet vegan puff pastry (make sure it's thawed)",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "raspberries",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raspberry preserves",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberries",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1/2 cup vegan whipped cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat your oven to 425° F.",
+    "Place a sheet of puff pastry on a flat surface and begin rolling it out with your rolling pin. To avoid having the pastry stick to your surface, flip it at least once. You should have a 9 x 11 inch rectangle.",
+    "Sprinkle 1 tbsp of sugar over the puff pastry and impress them into the dough by using your rolling pin. Flip and repeat.",
+    "Using a sharp knife, score all around the dough, one inch from the edge (so that you have a rectangle within a rectangle–refer to photograph or video). Make sure not to actually cut the dough.",
+    "Place the puff pastry on a baking sheet lined with parchment paper and bake in the oven for 10 minutes.",
+    "While the puff pastry is baking, microwave the raspberry preserves for 30 seconds. They should be very runny.",
+    "Add the melted preserves to your fresh raspberries and stir until the berries are evenly coated.",
+    "Add 1 tbsp of sugar to your blueberries, together with lemon juice. Stir.",
+    "When the puff pastry is golden brown, remove from the oven. Gently tap the center of the sheet with the back of a spoon and press it down.",
+    "Pour the raspberries into the center and spread them out. Next, add the blueberries.",
+    "Top with a little whipped cream and serve."
+  ],
+  "image": "/recipes/berry-galette.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

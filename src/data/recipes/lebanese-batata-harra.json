@@ -1,0 +1,58 @@
+{
+  "id": "lebanese-batata-harra",
+  "name": "Lebanese Batata Harra",
+  "subtitle": "BAKED SPICY POTATOES",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "6 servings",
+  "time": "10 minutes",
+  "intro": "Who doesn’t love a side of crispy potatoes? But this recipe has you skipping the bland seasoning and spicing them up, Lebanese-style. Batata harra is a common mezze dish served as an appetizer at Lebanese restaurants. Some versions are spicier than others, so I will leave the spice level for you to decide by adding more or less chili flakes. These are best enjoyed straight out of the pan, and I often struggle to get a full portion over to the dinner table!",
+  "ingredients": [
+    {
+      "item": "yellow potatoes (about 2¼ pounds, or 1 kg), peeled, washed, patted dry, and cut into 1½-inch-long x ½-inch-thick (4 x 1.3 cm) pieces",
+      "amount": "4 large"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tablespoons (60 ml)"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "6 large"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Chili flakes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 450°F (230°C) and place a rack on the bottom.",
+    "Line a large, rimmed sheet pan with parchment paper and place the potatoes in the pan in a single layer. Drizzle with 2 tablespoons of the oil, then sprinkle with the paprika, salt, and coriander.",
+    "Bake for 25 minutes, then remove the pan from the oven and flip the potatoes. Place the pan back into the oven and bake for 10 to 15 minutes longer, until the potatoes are crispy.",
+    "In a small skillet, heat the remaining 2 tablespoons oil over medium heat. Add the garlic and chili flakes and cook, stirring continuously, for 1 minute, or until the garlic is golden and fragrant.",
+    "Pour the hot oil over the baked potatoes and toss to combine.",
+    "Garnish with the chopped parsley or cilantro, a squeeze of lemon, and more chili flakes. Serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "musabaha",
+  "name": "Musabaha",
+  "subtitle": "MASHED CHICKPEAS & TAHINI",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh"
+  },
+  "servings": "2½ cups (570 g); 6 servings",
+  "time": "10 minutes",
+  "intro": "If you love hummus and a chunky texture, then you’ll love musabaha. It is another classic Levantine dip, very similar to hummus, but with one main difference: the chickpeas are left whole or slightly mashed. It’s also more heavily seasoned with cumin and paprika.",
+  "ingredients": [
+    {
+      "item": "chickpeas, drained and half the liquid (aquafaba) reserved",
+      "amount": "18 ounces (510 g)"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2 large"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "Olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Pita bread",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the chickpeas and the reserved aquafaba in a medium saucepan over medium heat. Add 1 cup (240 ml) of water to cover the chickpeas, bring to a boil, and boil for 5 to 7 minutes.",
+    "In a medium bowl, combine the garlic, salt, cumin, and lemon juice.",
+    "Using a slotted spoon, remove all the hot chickpeas from the saucepan, reserving a few tablespoons for garnish, and place the rest of the chickpeas in the bowl with the lemon juice and garlic. Add ¼ cup (60 ml) of the boiling water from the saucepan to the bowl. Mix everything together, then add the tahini and continue to mix. As you are mixing, mash some of the chickpeas but leave most of them whole. If required, add a few more tablespoons of the chickpea cooking liquid to loosen the sauce. Taste and adjust for more salt if needed.",
+    "Spoon the musabaha into a serving bowl and garnish with the chopped parsley, paprika, oil, and reserved chickpeas. Serve with pita bread."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

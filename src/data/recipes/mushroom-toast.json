@@ -1,0 +1,89 @@
+{
+  "id": "mushroom-toast",
+  "name": "MUSHROOM TOAST",
+  "source": {
+    "cookbook": "The Vegan Korean",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "shallot sliced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic minced",
+      "amount": "2"
+    },
+    {
+      "item": "assorted mushrooms chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1/2 cup mushroom broth",
+      "amount": ""
+    },
+    {
+      "item": "slice bread toasted",
+      "amount": "1"
+    },
+    {
+      "item": "vegan ricotta cheese",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chives for garnish",
+      "amount": ""
+    },
+    {
+      "item": "cracked black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "packet ramen noodles",
+      "amount": "1"
+    },
+    {
+      "item": "homemade soy mik",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 tsp sea salt",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup julienned cucumber",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup vegan kimchi",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add olive oil to a medium sized pan over medium-high heat. When the oil gets hot, add the shallot and garlic. Cook the shallot and garlic until the edges turn brown, around 3 to 4 minutes.",
+    "Add the mushrooms and cook until they begin to turn brown, around 7 minutes.",
+    "Deglaze the pan with soy sauce and cook for about 1 minute. Next, add the mushroom broth and allow the mushrooms to cook until they are dark brown and the liquid has completely evaporated, around 1 minute.",
+    "Spread the vegan ricotta on the toast and spoon the mushroom mixture over the top.",
+    "Sprinkle with chives, cracked black pepper, and drizzle with extra virgin olive oil.",
+    "Bring 2 cups water to a boil and then add ramen noodles.",
+    "Add any dried vegetables that come with the package but NOT the soup mix.",
+    "Cook according to package instructions. In the meantime, heat your soy milk (on the stovetop or microwave) so that it is hot (not boiling).",
+    "Remove the noodles from the pot and add them to a large bowl.",
+    "Add about 1/2 cup of the noodle cooking liquid.",
+    "Next add soy milk and salt.",
+    "Garnish with julienned cucumber and kimchi.."
+  ],
+  "image": "/recipes/mushroom-toast.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
