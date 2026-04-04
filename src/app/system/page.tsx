@@ -1,5 +1,28 @@
 import Link from "next/link";
 
+const apiProviders = [
+  {
+    name: "Anthropic",
+    description: "Claude API (via OpenClaw)",
+    dashboardUrl: "https://console.anthropic.com/settings/billing",
+  },
+  {
+    name: "OpenAI",
+    description: "TTS for voice relay",
+    dashboardUrl: "https://platform.openai.com/usage",
+  },
+  {
+    name: "ElevenLabs",
+    description: "STT for voice relay",
+    dashboardUrl: "https://elevenlabs.io/app/subscription",
+  },
+  {
+    name: "Vercel",
+    description: "Companion app hosting",
+    dashboardUrl: "https://vercel.com/davideberle/nabu-app",
+  },
+];
+
 const services = [
   { name: "Voice Relay", status: "running", port: 8765, uptime: "2d 4h" },
   { name: "OpenClaw Gateway", status: "running", port: 3033, uptime: "5d 12h" },
@@ -70,6 +93,31 @@ export default function SystemPage() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* API Usage */}
+        <div className="mt-6">
+          <h3 className="font-medium text-zinc-900 dark:text-zinc-100 mb-3">
+            API Usage
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {apiProviders.map((provider) => (
+              <a
+                key={provider.name}
+                href={provider.dashboardUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
+              >
+                <div className="font-medium text-zinc-900 dark:text-zinc-100 text-sm">
+                  {provider.name}
+                </div>
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                  {provider.description}
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
