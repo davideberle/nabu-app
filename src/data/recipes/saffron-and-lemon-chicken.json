@@ -1,0 +1,57 @@
+{
+  "id": "saffron-and-lemon-chicken",
+  "name": "Saffron & Lemon Chicken",
+  "persianName": "Joojeh Kabab",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "One of the most popular poultry dishes of Iran, joojeh kabab probably features on the menu of every Persian restaurant in the world. Traditionally made using poussin, what really makes this dish so special is the way in which the chicken is marinated in yogurt and lemon juice, which breaks down the fibres and tenderizes the flesh beautifully. The addition of saffron and onions creates the signature flavour that makes this a much-loved dish. This is my simplified version of the recipe, which can be made at home in a conventional oven if, like me, you don’t have a barbecue or flame grill.",
+  "ingredients": [
+    {
+      "item": "onions, cut in half and thinly sliced into half moons",
+      "amount": "4"
+    },
+    {
+      "item": "juice of 5 lemons",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "generous pinch of saffron threads",
+      "amount": ""
+    },
+    {
+      "item": "boiling water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "large boneless, skinless chicken breasts, cut into 5cm (2in) pieces",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Put the onions, lemon juice, olive oil, turmeric, yogurt and sea salt into a large mixing bowl and mix well. Using a pestle and mortar, grind the saffron to a powder, then pour over the boiling water and leave to infuse for 5–10 minutes.",
+    "Add the chicken to the mixing bowl. Mix well to evenly coat the chicken pieces in the yogurt, then add the saffron water to the bowl and mix thoroughly. Cover the bowl with clingfilm and leave the chicken in the refrigerator to marinate for a minimum of 1 hour or preferably overnight.",
+    "Once the chicken has been marinated, preheat the oven or grill to the highest setting possible. Line a large baking sheet with nonstick baking paper.",
+    "Remove each piece of chicken from the marinade using a slotted spoon. Lay out all the pieces of chicken on the prepared baking sheet and bake or grill for 18–20 minutes maximum, or until the pieces have slightly charred edges but remain beautifully moist on the insides. Serve with flour tortilla wraps or basmati rice with a little salad and some yogurt."
+  ],
+  "image": null
+}

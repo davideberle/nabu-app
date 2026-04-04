@@ -1,0 +1,55 @@
+{
+  "id": "pistachio-honey-and-orange-blossom-ice-cream",
+  "name": "Pistachio, Honey & Orange Blossom Ice Cream",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–6",
+  "intro": "There is something wonderful about the process of making ice cream, especially when there is an ice cream maker involved. It makes life so easy and I am always astounded at how simple the process is. This particular ice cream captures all the flavours of the Middle East beautifully and is sweet and delicately floral with notes of orange blossom. The crunch of pistachios is delightful. What’s not to love? Served with or without a cone or – even better –wedged into a sweet brioche for the ultimate ice cream sandwich, this is heaven.",
+  "ingredients": [
+    {
+      "item": "pistachio nut slivers, plus extra to decorate",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "150g (5½oz)"
+    },
+    {
+      "item": "full-fat milk",
+      "amount": "600ml (20fl oz)"
+    },
+    {
+      "item": "double cream",
+      "amount": "600ml (20fl oz)"
+    },
+    {
+      "item": "clear honey",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "orange blossom water",
+      "amount": "200ml (1/3 pint)"
+    },
+    {
+      "item": "unsweetened evaporated milk",
+      "amount": "400ml (14fl oz)"
+    },
+    {
+      "item": "finely grated rind of 2 oranges",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Blitz 150g (5½oz) of the pistachios along with the sugar in a food processor until finely ground.",
+    "Put the milk into a saucepan, add the cream, honey, orange blossom water and the pistachio mixture and bring to a gentle boil. Over a period of 20–25 minutes, reduce the liquid by a quarter, stirring regularly to prevent it from bubbling over. The more you stir, the more the pistachios will release their oils and flavour into the ice cream base. Set aside to allow the mixture to cool.",
+    "Pour the evaporated milk into the pistachio-and-cream mixture and stir in the grated orange rind and the remaining pistachio slivers. Mix well, then chill in the refrigerator for at least 2 hours or overnight.",
+    "Once chilled, pour the mixture into an ice cream machine and churn for 25–30 minutes (or according to your manufacturer’s instructions). Alternatively, pour the mixture into a large shallow container and freeze for 2 hours. Remove the container from the freezer and fork through the mixture to break down the ice crystals, then freeze again until firm. Serve in scoops with a sprinking of pistachio slivers."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

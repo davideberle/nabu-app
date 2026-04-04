@@ -1,0 +1,62 @@
+{
+  "id": "persian-herb-rice",
+  "name": "Persian Herb Rice",
+  "persianName": "Sabzi Polow",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–6",
+  "intro": "This is a very special rice dish that, sadly, most Persians only eat once a year, at Persian New Year, coinciding with the spring equinox. It is fragrant and aromatic with an array of fresh herbs. As part of the New Year feast it is traditionally served with smoked dried fish, but any fish, such as salmon, cod or smoked mackerel (our family favourite), works just as well. Even without fish, it is really delicious and my only advice to you is this – don’t forget the butter! Butter really makes every rice dish so much better.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "packet of coriander, leaves picked",
+      "amount": "1 x 100g"
+    },
+    {
+      "item": "packet of flat leaf parsley, leaves picked",
+      "amount": "1 x 100g"
+    },
+    {
+      "item": "packets of chives",
+      "amount": "2 x 20g"
+    },
+    {
+      "item": "packets of dill, leaves picked",
+      "amount": "2 x 20g"
+    },
+    {
+      "item": "bunch of spring onions",
+      "amount": "1 x 125g"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "butter",
+      "amount": "150g (5½oz)"
+    }
+  ],
+  "method": [
+    "Wash the rice in cold water in a large bowl, then rinse and drain it. Repeat the process with more cold water until the water runs clear.",
+    "Cover the rice with cold water, add a generous fistful of crumbled sea salt to the water and allow the rice to soak for 2–3 hours. Soaking isn’t compulsory, but even 30 minutes soaking time will help elongate the grains, making for a more elegant rice dish.",
+    "If you don’t have a food processor, finely slice the herbs and spring onions. Don’t worry about getting them too finely chopped, but do make an effort to chop them as best as you can. If you have a food processor, life is a whole lot easier because you can add all your herbs (in 2 batches) to the processor and blitz them until finely chopped. Give them a little chop first to make it easier for the processor to break them down. Chop the spring onions into 4 or 5 pieces and blitz them in the processor, too, until finely sliced. Once done, add the herbs to the spring onions and set aside.",
+    "Preheat a cooking pot over a medium heat if using gas, or a medium-high heat if using electric. Fill the pan with boiling water, drain the rice and add it to the pan along with another generous fistful of crumbled sea salt and the chopped herbs and spring onions. Stir well and allow to boil for 6–8 minutes until the rice is parboiled (when the grains turn from the normal whiteish opaque to a more brilliant white, although they will not have become fluffy yet). Drain the rice and herbs in a colander and set aside (do not rinse).",
+    "Return your cooking pot to the hob and pour in the oil with a couple of generous knobs of the butter and 1 tablespoon crushed sea salt. Scatter the rice into the pan. Ensure you scatter it – don’t pack it, because you want the lightness of the falling rice to allow for steam to rise up. Add the remaining butter. Wrap the pan lid in a tea towel (to lock in the steam and make for a secure, tight seal), cover the pan and cook for 8 minutes on the same medium-high temperature. Then reduce the heat to low-medium and cook for a further 25–30 minutes.",
+    "Once the rice is cooked, remove it from the pan (I like to place a large serving dish over the pan and flip the rice on to the dish), then scrape out the tasty tahdig (meaning ‘bottom of the pan’ – this is the crusty bit every Persian fights over) and serve this on top of the rice."
+  ],
+  "image": "/recipes/persian-herb-rice.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

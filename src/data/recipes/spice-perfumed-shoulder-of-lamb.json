@@ -1,0 +1,52 @@
+{
+  "id": "spice-perfumed-shoulder-of-lamb",
+  "name": "Spice-Perfumed Shoulder of Lamb",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "Persian spices are aromatic and flavoursome, never harsh or abrasive. Spicing is used in a subtle way and this spice-perfumed lamb is made with my special blend of some of the most commonly used spices, fused with more unique ingredients such as rose petals and lime powder. This particular spice blend works very well with the fatty nature of the shoulder cut of lamb.",
+  "ingredients": [
+    {
+      "item": "shoulder of lamb",
+      "amount": "2.5kg (5lb 8oz)"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 heaped tbsp"
+    },
+    {
+      "item": "dried edible rose petals",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "dried lime powder (or add 1 extra tbsp sumac)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 160°C/fan 140°C/gas mark 3. Place the lamb shoulder in a roasting tin lined with nonstick baking paper.",
+    "Put the sumac, rose petals, cumin, cinnamon and lime powder into a spice grinder or small food processor and process until the rose petals are ground as finely as you can manage.",
+    "Drizzle a little oil on to the lamb and rub it all over the joint to create a surface for your spice mix to stick to, then season generously with the sea salt.",
+    "Roast in the oven for 4 hours, then remove the lamb, cover with kitchen foil and leave it to rest for 10 minutes before serving. To serve, you can literally take a fork and gently pull the lamb apart or be all fancy and rather unnecessarily use a knife to slice it. Serve with a green salad, potatoes or rice."
+  ],
+  "image": null
+}

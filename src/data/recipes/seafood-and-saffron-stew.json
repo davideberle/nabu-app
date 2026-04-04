@@ -1,0 +1,96 @@
+{
+  "id": "seafood-and-saffron-stew",
+  "name": "Seafood & Saffron Stew",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "This dish really reminds me of summer. I’m not really sure why, but I tend to make it when I need a little cheering up on a cold day. Seafood is a bit of a luxury these days, but a little goes a long way in this recipe and the sauce itself is incredibly simple and easy to make, so this is a great dish for entertaining. Not only does it look pretty spectacular but it delivers on the taste front, too. It has just a gentle chilli kick that really satisfies. And the best bit? Mopping up all the sauce with a big hunk of crusty bread. Absolute heaven.",
+  "ingredients": [
+    {
+      "item": "mussels in their shells",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "small clams in their shells",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "long French shallots, halved lengthways and thinly sliced into half moons",
+      "amount": "4"
+    },
+    {
+      "item": "garlic bulb, cloves peeled and bashed (but not crushed)",
+      "amount": "1"
+    },
+    {
+      "item": "good pinch of red chilli flakes",
+      "amount": ""
+    },
+    {
+      "item": "generous pinches of saffron threads, ground with a pestle and mortar",
+      "amount": "2"
+    },
+    {
+      "item": "turmeric",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "crushed sea salt, plus extra for soaking",
+      "amount": "2 heaped tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "passata",
+      "amount": "700g (1lb 9oz)"
+    },
+    {
+      "item": "can good-quality tomatoes",
+      "amount": "400g"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "raw tiger prawns (shell on or off)",
+      "amount": "12"
+    },
+    {
+      "item": "baby squid, cut into 1cm (½in) rings",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "scallops, roe discarded",
+      "amount": "8"
+    },
+    {
+      "item": "large bunch of flat leaf parsley, leaves picked and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "squeeze of lemon juice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak the mussels and clams in a big bowl of cold water with lots of sea salt in it. This will trick them into believing they are in the sea and they will open and close, expelling any sand or grit out of their shells into the water.",
+    "Preheat the biggest saucepan you can find over a medium-high heat, add the olive oil and sauté the shallots for a few minutes, then add the garlic and chilli flakes and stir well. Do not allow the garlic to burn. Add the saffron, turmeric, sea salt and black pepper and mix well until the spices and seasoning evenly coat the shallots and garlic. Pour in the passata and canned tomatoes and stir well, then add the sugar. Reduce the heat to low and cook the sauce for 45 minutes to an hour. You will need to stir the sauce a few times to prevent sticking.",
+    "Towards the end of the cooking time, drain and rinse the mussels and clams. Pull the beards off the mussels and give them a gentle scrub.",
+    "Once the sauce has reduced and concentrated somewhat, taste it to ensure the seasoning suits your preference. Now begin to add your seafood, starting with the mussels and clams. Give them a good stir to ensure they are well coated with sauce, cover the pan with a lid and cook for about 5 minutes to allow the shellfish to steam open. Throw in the prawns and squid, stir well and cook for 3–4 minutes, then add the scallops. Give the contents of the pan a final stir, then take the pan off the heat and stir in the chopped parsley, reserving just a little. Squeeze over the lemon juice, then serve immediately, garnished with the remaining parsley."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "pomegranate-cups",
+  "name": "Pomegranate Cups",
+  "persianName": "Tabbouleh",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "makes 15 cups as finger food or serves 5–6 as a side dish",
+  "intro": "Tabbouleh is a Levantine salad that has become a staple in so many cultures, and each variation seems to be a slightly tweaked version of the original dish. My version mirrors the authentic recipe, except for the addition of pomegranate seeds. I grew up eating tabbouleh, as it’s one of the only dishes my mum would make regularly. She taught me how to eat it – by using lettuce leaves to scoop up the salad. The addition of juicy pomegranate seeds gives it a sweet burst. I like to dish it up in Gem lettuce leaves and serve the ‘cups’ to guests. They look beautiful and taste wonderful, too.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "25g (1oz)"
+    },
+    {
+      "item": "large bunch of flat leaf parsley, leaves picked and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "plum tomatoes, deseeded and finely diced",
+      "amount": "3"
+    },
+    {
+      "item": "spring onions, thinly sliced right up to 7cm (3in) from the ends",
+      "amount": "4"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "100g (3½oz)"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Baby Gem lettuce leaves",
+      "amount": "15"
+    }
+  ],
+  "method": [
+    "Cook the bulgar wheat as per the packet instructions, then rinse well in cold water, drain and put into a large bowl.",
+    "Mix all your chopped ingredients into the bulgur wheat, along with the cinnamon and pomegranate seeds. Drizzle with the olive oil – add just enough to ensure the mixture is well coated, but not enough to make it greasy. Now add the lemon juice and sea salt and black pepper to taste.",
+    "Take a generous tablespoon of the tabbouleh and place it in the depression of a lettuce leaf. Put the ‘cup’ on a serving platter and repeat until all the tabbouleh has been used up. Serve the cups on the platter as a salad, or on plates alongside a main dish."
+  ],
+  "image": "/recipes/pomegranate-cups.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

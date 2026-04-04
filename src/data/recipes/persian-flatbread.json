@@ -1,0 +1,53 @@
+{
+  "id": "persian-flatbread",
+  "name": "Persian Flatbread",
+  "persianName": "Naan Barbari",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "makes 2 large loaves",
+  "intro": "This bread has a lovely pillowy texture, with the added nuttiness of nigella seeds – perfect for dips and mopping up sauces. I’m often put off by bread recipes that require machinery, but expert baker Dan Lepard once gave me a tip for easy kneading which I now use to make almost all my breads, and they are always successful and wonderfully light.",
+  "ingredients": [
+    {
+      "item": "sachet fast-action dried yeast",
+      "amount": "1 x 7g (1/6 oz)"
+    },
+    {
+      "item": "warm water",
+      "amount": "500ml (18fl oz)"
+    },
+    {
+      "item": "strong white bread flour",
+      "amount": "700g (1lb 9oz)"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 heaped tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "75ml (2¾fl oz)"
+    },
+    {
+      "item": "butter, melted",
+      "amount": "50g (1¾oz)"
+    },
+    {
+      "item": "nigella seeds, to scatter on top (or use sesame seeds)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Stir the yeast into 50ml (2fl oz) of the warm water, then allow it to sit for a few minutes until it has dissolved.",
+    "In a large bowl, combine the flour and sea salt, then make a well in the centre. Pour in the remaining warm water, 50ml (2fl oz) of the olive oil and the yeast dissolved in water and combine using your hands until you have a smooth dough. If the dough is a bit too sticky, just add a little extra flour and, if it is dry, an additional splash of warm water.",
+    "On a clean, floured surface, knead the dough for 5 minutes to activate the yeast and stretch the glutens within it. Allow the dough to rest for 10 minutes before kneading it again for 2 minutes. Repeat this process another 3 times and, on the second, incorporate the remaining 25ml (¾fl oz) olive oil. Return the dough to the bowl, cover it with a clean tea towel and leave it to rest for 3 hours.",
+    "Once the resting period is over, the dough will have tripled in size. Elongate the dough ball gently by stretching it from both ends and then cut the dough in half. To form the correct shape for the bread, you will need to stretch each piece of dough into a long flat shape, about 40cm (16in) long. Place each shaped piece of dough on a baking sheet lined with nonstick baking paper. Using a sharp knife or pizza cutter, make 2 lengthways incisions 5–8cm (2–3¼in) away from each end. Finally, cover each baking sheet with clean tea towels and leave the dough somewhere warm for a further 30 minutes to allow it to rise.",
+    "Preheat the oven to 220°C/fan 200°C/gas mark 7. Once the loaves have risen, brush with the melted butter and sprinkle with nigella seeds. Bake for 16–18 minutes, or until golden brown. The best way to check if they are cooked through is to tap them with cutlery – they should sound hollow. Allow to cool for at least 30 minutes before serving."
+  ],
+  "image": "/recipes/persian-flatbread.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

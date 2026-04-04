@@ -1,0 +1,51 @@
+{
+  "id": "tray-roasted-baby-courgettes-with-garlic-and-tomato",
+  "name": "Tray-Roasted Baby Courgettes with Garlic & Tomato",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8 as a side dish",
+  "intro": "I often struggle to think of interesting things to do with courgettes. I often use them grated in quiches and vegetable fritters, but roasting vegetables always makes life so much easier. You put everything into a roasting pan, season well, drizzle over olive oil, pop it into the oven and you’re done! If, however, you add some tomato, garlic and just a little spice, the vegetables come alive and are no longer a side dish but rather more of a main event.",
+  "ingredients": [
+    {
+      "item": "baby courgettes",
+      "amount": "600g (1lb 5oz)"
+    },
+    {
+      "item": "garlic bulb, cloves peeled and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "large ripe tomatoes, each cored and cut into 8 pieces",
+      "amount": "6"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C/fan 180°C/gas mark 6. Line a baking sheet with nonstick baking paper.",
+    "Place the baby courgettes on to the prepared baking sheet, scatter over the garlic slices, then squeeze the tomato pieces a little as you scatter them over the courgettes, too. Drizzle with olive oil and sprinkle over the cumin and a good seasoning of sea salt and black pepper.",
+    "Roast the courgettes for 15 minutes, or until they are cooked through. Serve immediately."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

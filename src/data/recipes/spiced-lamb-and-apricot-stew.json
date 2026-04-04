@@ -1,0 +1,55 @@
+{
+  "id": "spiced-lamb-and-apricot-stew",
+  "name": "Spiced Lamb & Apricot Stew",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "Persian stews can be made with absolutely any combination of meat or poultry married with any available vegetable, or even fruit. Combining meat and fruit is a very Persian thing and this influence has most famously extended to both Indian and North African cuisines. When I make it, I’ve noticed that anyone who is with me while I cook is likely to ask me if perhaps I am being heavy-handed in my use of spices. But then, as if by magic, it all melds together to make a perfectly balanced aromatic stew with mouthfuls of plumped and revitalized dried apricots that taste as if they were fresh once again.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "large onions, roughly diced",
+      "amount": "2"
+    },
+    {
+      "item": "lamb neck fillets (or use diced, boneless leg or 6 lamb shanks), cut into 2.5cm- (1in-) thick chunks",
+      "amount": "600–800g (1lb 5oz–1lb 12oz)"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 heaped tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 heaped tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 heaped tsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "generous tbsp clear honey",
+      "amount": "2"
+    },
+    {
+      "item": "dried apricots",
+      "amount": "250g (9oz)"
+    }
+  ],
+  "method": [
+    "Preheat a large saucepan over a medium heat if using gas, or a medium-high heat if cooking on electric. Drizzle in enough oil to cover the base of the pan, then add the onions and sauté them until they begin to brown slightly around the edges. Add the lamb to the pan and stir the meat into the onions, ensuring you keep the meat moving, so that it becomes nicely browned but does not stew.",
+    "Add the spices to the pan, season with sea salt and stir to coat the meat well, then add the honey and stir again. Pour in just enough boiling water to cover the ingredients, reduce the temperature to low and simmer for 1¼ hours, stirring every so often to prevent sticking.",
+    "After the cooking time has elapsed, add the apricots, stir well and cook for at least a further 45 minutes. Serve with either basmati rice or Persian Flatbread."
+  ],
+  "image": null
+}

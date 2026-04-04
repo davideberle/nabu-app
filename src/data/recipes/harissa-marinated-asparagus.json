@@ -1,0 +1,47 @@
+{
+  "id": "harissa-marinated-asparagus",
+  "name": "Harissa-Marinated Asparagus",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 2",
+  "intro": "Nothing beats asparagus in season and, paired with spicy harissa and zingy lemon, they make the perfect accompaniment to grilled meat, fish and haloumi.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "harissa",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "clear honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "grated rind and juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "generous pinches of sea salt",
+      "amount": "2"
+    },
+    {
+      "item": "asparagus spears, trimmed",
+      "amount": "250g (9oz)"
+    }
+  ],
+  "method": [
+    "Put the olive oil, harissa, honey, lemon rind and juice and sea salt in a small bowl and mix really well until the honey has dissolved properly into the mixture.",
+    "Place the asparagus in a shallow dish and pour over the marinade. Using your hands (you can wear plastic gloves, if you wish), coat each asparagus spear in the marinade, then cover the dish with clingfilm and allow the asparagus to marinate at room temperature for 30 minutes – but for no more than an hour.",
+    "Preheat a large heavy-based frying pan – or a griddle pan, if you prefer – over a medium-high heat and pan-fry the asparagus for 8–10 minutes, allowing 4–5 minutes per side. Serve hot or, cold as part of a salad."
+  ],
+  "image": "/recipes/harissa-marinated-asparagus.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

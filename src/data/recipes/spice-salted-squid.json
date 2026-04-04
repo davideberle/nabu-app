@@ -1,0 +1,57 @@
+{
+  "id": "spice-salted-squid",
+  "name": "Spice Salted Squid",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–6 as part of a mezze",
+  "intro": "No matter what form of squid I have eaten – whether in curries, chargilled, stuffed, baked or deep-fried – I adore the stuff. It is still relatively cheap to buy, especially when frozen, which is perfectly fine. I like to use the smaller squid tubes rather than the giant ones, which I find comparatively tough. In this dish, the squid is crunchy and delicious. The same cooking method and coating also works well with tiger prawns.",
+  "ingredients": [
+    {
+      "item": "vegetable oil, for frying",
+      "amount": "700ml (1¼ pints)"
+    },
+    {
+      "item": "baby squid (frozen works well)",
+      "amount": "750g (1lb 10oz)"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cornflour",
+      "amount": "70g (2½oz)"
+    }
+  ],
+  "method": [
+    "Put the oil in a large, preferably slightly deep, frying pan (or even in a cooking pot, if you prefer) over a high heat and allow it to get nice and hot, but do not let it smoke.",
+    "Meanwhile, cut the squid tubes into rings – up to about 1cm (½in) thick is ideal – and leave the tentacles whole. Dry them as best as possible using a clean tea towel or kitchen paper and set aside.",
+    "Using a pestle and mortar, crush the peppercorns as best you can, then add the sea salt and other spices and grind them until they are evenly combined. You don’t need to make a fine powder of the spices, so don’t worry about the odd chunks of broken peppercorns.",
+    "Combine the cornflour with the spice mix in a plastic sandwich or freezer bag and give the mixture a good shake to ensure the ingredients are evenly distributed. Add the squid and toss the flour and spices lightly over it without excessively handling the squid itself, as otherwise you will create a paste when the flour combines with the juice of the squid, which you want to avoid.",
+    "Shake off the excess flour from the squid pieces and fry them in batches, without overcrowding the pan too much. Cook each batch for about 1–1½ minutes, depending on the oil temperature, or until you can see them browning and becoming crispy. Using a slotted spoon, drain the squid on plates lined with kitchen paper and serve hot."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

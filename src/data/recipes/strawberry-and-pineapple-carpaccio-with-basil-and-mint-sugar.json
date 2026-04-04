@@ -1,0 +1,44 @@
+{
+  "id": "strawberry-and-pineapple-carpaccio-with-basil-and-mint-sugar",
+  "name": "Strawberry & Pineapple Carpaccio with Basil & Mint Sugars",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "Fruit is one of the most popular options after a rich and decadent meal. Inspired by Jamie Oliver’s recipe for pineapple carpaccio, I now make all kinds of herb or spice-flavoured sugars to go with many different fruits. I especially like basil with berries, and strawberries and pineapple always seem the favourite among my diners and friends.",
+  "ingredients": [
+    {
+      "item": "large pineapple",
+      "amount": "1"
+    },
+    {
+      "item": "strawberries",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "generous handful of mint leaves, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "caster sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "generous handful of basil leaves, roughly chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Top and tail the pineapple, ensuring you have a nice flat, sturdy base. Now cut away the pineapple skin using a sharp knife, starting at the top and sliding the knife down to the base. Cut in deep enough to remove any of the brown eyes around the flesh. Once peeled, halve the pineapple lengthways, then cut it lengthways again to make 4 quarters. There is a hard core in the centre of the pineapple that you will need to cut away, so lay each quarter on its side and cut away and discard about 1cm (½in) of the inner core. While the quarter is laying flat in the same position, cut wafer-thin slices of pineapple until all 4 quarters are sliced. Set aside.",
+    "Remove the green tops from the strawberries and then, using a small sharp knife, cut each berry into thin slices.",
+    "To make the herb sugars, put the chopped mint in a mortar with half the caster sugar and, using the pestle, grind down the leaves with the sugar until the sugar turns green. Decant the mint sugar, then repeat the process with the basil and remaining caster sugar.",
+    "Arrange the fruit on to a large platter (or divide it across individual platters, if preferred). Sprinkle the mint sugar over the pineapple carpaccio and the basil sugar over the strawberry carpaccio. Serve immediately."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

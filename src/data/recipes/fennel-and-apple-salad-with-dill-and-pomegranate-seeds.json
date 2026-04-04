@@ -1,0 +1,54 @@
+{
+  "id": "fennel-and-apple-salad-with-dill-and-pomegranate-seeds",
+  "name": "Fennel & Apple Salad with Dill & Pomegranate Seeds",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6 as a side dish",
+  "intro": "This is the fennel dish that has converted many a fennel hater. The lemon dressing softens the aniseed flavour of fennel, and the sweetness of both the apple and pomegranate seeds makes this a delicate and refreshing accompaniment to a meal. As well as pretty to look at it is also packed with flavour, and the addition of dill gives life to every mouthful.",
+  "ingredients": [
+    {
+      "item": "large fennel bulbs, trimmed of hard stalks and green skin removed",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "large apples (I use Braeburn or Cox, but any variety will do)",
+      "amount": "2"
+    },
+    {
+      "item": "packet of dill, leaves picked and roughly chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "100g (3½oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash your fennel bulbs and quarter them. Using a sharp knife, shave or thinly slice each quarter and put the slices into a large mixing bowl. Drizzle with a good glug of olive oil and half the lemon juice and give it all a good mix to prevent the fennel going brown.",
+    "Wash your apples and quarter them, removing the core and seeds as you do so. Thinly slice each quarter. Add the slices to the mixing bowl along with the chopped dill, pomegranate seeds and remaining lemon juice. Toss the ingredients well to ensure everything is generously coated in the dressing, then season with sea salt and a little black pepper to taste."
+  ],
+  "image": "/recipes/fennel-and-apple-salad-with-dill-and-pomegranate-seeds.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

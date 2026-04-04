@@ -1,0 +1,56 @@
+{
+  "id": "smoked-aubergine-salad",
+  "name": "Smoked Aubergine Salad",
+  "persianName": "Batinjan al Rahib",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8",
+  "intro": "Known as batinjan al rahib in the Arab world, this dish uses just a few ingredients but delivers a big impact. It is virtually identical to the Turkish patlican salad and it’s a dish I cannot get enough of. I love it, everyone I have made it for loves it and the use of smoked aubergines is what makes it so special. Simplicity rules in the Middle East and the humblest of dishes often make the biggest impression.",
+  "ingredients": [
+    {
+      "item": "large aubergines",
+      "amount": "4"
+    },
+    {
+      "item": "red pepper, cored, deseeded and finely diced",
+      "amount": "½"
+    },
+    {
+      "item": "green pepper, cored, deseeded and finely diced",
+      "amount": "½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4–5 tbsp"
+    },
+    {
+      "item": "garlic cloves, peeled and crushed",
+      "amount": "2"
+    },
+    {
+      "item": "juice of 1–1½ lemons",
+      "amount": ""
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small bunch of flat leaf parsley, leaves picked and roughly chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Blister and char the aubergines whole over an open flame (either on a barbecue or over a domestic gas hob) until blackened and the flesh has softened right through to the centre. Really blacken and char the skins until they are hardened and completely burnt. Then place the aubergines on a heatproof surface or tray and allow to cool until they are just warm and you are able to handle them.",
+    "Scoop out the flesh using a large spoon. Drain off any excess juices and roughly chop the flesh into smallish chunks. Place the flesh in a bowl along with the diced peppers and give the mixture a quick stir.",
+    "Pour the olive oil into a small bowl, add the crushed garlic, lemon juice and sea salt and black pepper to taste and give the dressing a good mix until all the ingredients are evenly blended. Pour the dressing over the aubergines, then add the parsley and mix everything together one final time before serving with Persian Flatbread."
+  ],
+  "image": "/recipes/smoked-aubergine-salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "turkish-adana-kebabs",
+  "name": "Turkish Adana Kebabs",
+  "persianName": "Köfte",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "This is one of my favourite Turkish kebabs, hailing from the city of Adana, which is famous for its kebabs. Delicious and spicy, it packs quite a punch, courtesy of the pul biber chilli flakes, and is utterly addictive. Traditionally, these are long kebabs but, for ease, I tend to make little elongated meatballs (köfte) out of the mixture and stuff them into flatbreads with some Greek yogurt or Cacik, sliced onions, a handful of coriander and, if you are very brave or are hardened to the heat of chillies, a little extra pul biber.",
+  "ingredients": [
+    {
+      "item": "minced lamb (fat is essential in this recipe, so do not opt for lean meat)",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "large onion, minced in a food processor or very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Turkish dried chilli flakes (pul biber)",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "packet of flat leaf parsley, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "red pepper, cored, deseeded and very finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "large free-range eggs",
+      "amount": "2"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 heaped tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil (if frying)",
+      "amount": ""
+    },
+    {
+      "item": "flour tortilla wraps or bread of your choice",
+      "amount": ""
+    },
+    {
+      "item": "sliced red onion",
+      "amount": ""
+    },
+    {
+      "item": "chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "Greek or Turkish or strained yogurt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put all the ingredients, except for the oil, into a large mixing bowl and mix them together well. Really work the mixture thoroughly with your hands, pummelling and kneading the meat like bread dough until the texture has broken down and the eggs and herbs are evenly distributed. Take a big fistful of meat and, in the flattened palm of your hand, mould it into a long sausage shape. Flatten the mixture and form a kebab about 15–20cm (6–8in) long and 5cm (2in) wide. Repeat until all the mixture is used up. You can make them longer if you wish, especially if you have the classic long, flat sword-like skewers, around which you can mould the mixture (but small kebabs are just as good). You can also make little patties or meatballs with this mixture.",
+    "If you have made mini patties or meatballs, fry them in a preheated frying pan over a medium heat for about 7–8 minutes on each side.",
+    "If you have opted for a long kebab shape, there are several cooking methods I could suggest to you. Of course, barbecuing the kebabs over coals is the proper way to do it. Avoid the hottest part of the barbecue and cook them for about 8 minutes on each side until they are nicely charred. Alternatively, cook the kebabs in a little vegetable oil in a frying pan over a medium-high heat if using gas, or on full blast on the highest setting if using electric, for approximately 8 minutes on each side until they are nice and brown.",
+    "Serve the kebabs in tortilla wraps or bread of your choice, sliced red onion and chopped parsley. A little yogurt tops the whole thing off very nicely."
+  ],
+  "image": null
+}

@@ -1,0 +1,83 @@
+{
+  "id": "lamb-biryani",
+  "name": "Lamb Biryani",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8",
+  "intro": "Biryani is a dish fit for a king and its origin is largely credited to Persia. The delicate layering of rice interspersed with spices and meat or poultry relies on a special Persian steaming method known as dam pokht (or dum pukht if you are from India), meaning ‘steam-cooked’. There are now so many variations of biryani from India to Pakistan, but authentic versions have no chilli in them whatsoever – just aromatic spices such as luxurious Persian saffron. My wonderful friend Asma Khan is the Queen of Biryani and nobody has a more delicate and expert hand than she does when it comes to making the best and most authentic. Asma very kindly shared some of her biryani wisdom with me, from which I am delighted to share a simplified version of this hugely popular dish with you.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "large onions",
+      "amount": "6"
+    },
+    {
+      "item": "boneless lamb neck fillets, cut into 2.5cm (1in) chunks",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "green cardamom pods",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black cardamom pods",
+      "amount": "6"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "4"
+    },
+    {
+      "item": "turmeric",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cinnamon sticks, each 7cm (3in) long",
+      "amount": "4"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "basmati rice",
+      "amount": "600g (1lb 5oz)"
+    },
+    {
+      "item": "generous pinches of saffron threads (optional)",
+      "amount": "2"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "butter",
+      "amount": "125g (4½oz)"
+    }
+  ],
+  "method": [
+    "Preheat a large saucepan over a medium-high heat and pour in 250ml (9fl oz) vegetable oil. Chop 4 of the onions in half, then thinly slice into 5mm- (¼in-) thick half moons. Fry the onion slices in the oil (there should be just enough oil to cover them, so add more oil if needed), stirring every few minutes, until they are golden brown and crispy. Using a slotted spoon, drain the onions on to a plate lined with kitchen paper and set aside.",
+    "Pour out the oil, leaving behind just enough to coat the base of the pan. Roughly dice the remaining 2 onions and fry them over a medium-high heat until they become translucent. Add the diced lamb and sear it until it begins to brown. Put in the green and black cardamom pods, bay leaves, turmeric, cumin seeds and cinnamon sticks and mix well. Pour in just enough boiling water to barely cover the meat, reduce the heat to medium and cook the lamb for about 1½ hours until just tender. Leave to cool. Once cooled, add the yogurt to the lamb, season generously with sea salt, stir well and set aside.",
+    "Preheat a large saucepan over a medium-high heat. Fill the pan with boiling water and add the rice with a generous handful of crumbled sea salt. Boil for 6–8 minutes until the rice is parboiled. You will know it is parboiled when the colour of the grains turns from the normal dullish white to a more brilliant white and the grains become slightly elongated and begin to soften.",
+    "Drain the rice and rinse it immediately under cold running water for a couple of minutes to wash off all the excess starch until it is cool. Line the bottom of the saucepan used to parboil the rice with some nonstick baking paper (see Tip) and set aside.",
+    "Grind the saffron (if using) with a pestle and mortar, then pour over the 2 tablespoons of boiling water and leave to infuse.",
+    "Back to the rice; return the paper-lined saucepan to the hob and pour in a generous drizzle of oil with a couple of good knobs of the butter. Add 1 tablespoon crushed sea salt. Scatter in just enough rice to cover the base of the pan with a good layer. Drizzle a little of the saffron water (if using) over this layer of rice. Take the yogurt-marinated pre-cooked lamb and divide it into two portions. Layer one portion over the rice, then cover with a thin layer of rice, sprinkle over some more saffron water (if using), then add a generous layer of crispy onions and dot more butter on top. Repeat the layers until the rice, lamb, crispy onions and butter are all used up.",
+    "Wrap the pan lid in a tea towel, cover the pan and cook the rice on the lowest temperature possible if using gas, or low-medium heat if using electric, for 30–45 minutes, or until the rice is cooked. When ready to serve, either flip the rice on to a serving dish or decant on to a serving platter, then scrape out the crispy tahdig from the base of the pan and serve it on top of the rice."
+  ],
+  "image": null
+}

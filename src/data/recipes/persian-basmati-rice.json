@@ -1,0 +1,39 @@
+{
+  "id": "persian-basmati-rice",
+  "name": "Persian Basmati Rice",
+  "persianName": "Chelo",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "Rice is the holy grail of Persian cuisine and the centre of every meal; how well you cook your rice defines how good a cook you are. This method is one of the few in the world that does not cook rice by water absorption; instead the rice is steamed to achieve elegant, separated grains. The two most important elements to strive for when cooking rice are the length of grain and its perfume or natural aroma. Once tried, it is hard to cook rice by any other method. You might even pull off a crispy tahdig crust, but don’t beat yourself up if not as it takes practise – and luck, at the best of times.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "light olive oil",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "60g (2¼oz)"
+    }
+  ],
+  "method": [
+    "Preheat a large saucepan over a medium heat if using gas, or a medium-high heat if using electric. Fill the pan with boiling water and add the rice with a generous handful of crumbled sea salt. Boil for 6–8 minutes until the rice is parboiled. You will know it is parboiled when the colour of the grains turns from the normal dullish white to a more brilliant white and the grains become slightly elongated and begin to soften.",
+    "Drain the rice and rinse it immediately under cold running water for a couple of minutes to wash off all the excess starch until it is cool. Line the bottom of the saucepan used to parboil the rice with some nonstick baking paper (see Tip).",
+    "Return the paper-line saucepan to the hob and pour in a generous drizzle of oil with a couple of good knobs of butter and 1 tablespoon crushed sea salt. Now scatter the rice into the pan. Ensure you scatter it – don’t pack it, because you want the lightness of the falling rice to allow for steam to rise up. Wrap the pan lid in a tea towel (to lock in the steam and make for a secure, tight seal), cover the pan and cook the rice on the lowest temperature possible if using gas, or a medium-low heat if using electric, for around 45 minutes on gas and up to 1½ hours if using electric. The grains should be puffed up when cooked. To serve, either flip the rice on to a serving dish or decant on to a serving platter, then scrape out the crispy tahdig and serve it on top of the rice."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

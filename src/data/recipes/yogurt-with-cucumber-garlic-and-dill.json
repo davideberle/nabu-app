@@ -1,0 +1,46 @@
+{
+  "id": "yogurt-with-cucumber-garlic-and-dill",
+  "name": "Yogurt with Cucumber, Garlic & Dill",
+  "persianName": "Cacik",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as part of a mezze",
+  "intro": "Pronounced ‘ja-jik’, this yogurt dish is a staple when ordering grilled meat in any Turkish restaurant. Much like the Greek tzatziki, the addition of garlic sets it apart from India’s raita and Iran’s maast o khiar, but the dill is authentic to Turkey alone. Traditionally made with thick and creamy strained Turkish yogurt, I would suggest you find good-quality yogurt to ensure the best results, although no matter what you use, it will be the perfect pairing to rich grilled meat dishes.",
+  "ingredients": [
+    {
+      "item": "large cucumber, coarsely grated or finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "500ml (18fl oz)"
+    },
+    {
+      "item": "fat garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "packet of dill, stalks and leaves finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra virgin olive oil, for drizzling",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Carefully squeeze out and discard the excess water from the grated cucumber – you can do this by hand or in a sieve. Place the cucumber in a mixing bowl and mix in the yogurt.",
+    "Add the garlic and dill, mix well and season to taste with sea salt and black pepper. Serve with a drizzle of extra virgin olive oil."
+  ],
+  "image": "/recipes/yogurt-with-cucumber-garlic-and-dill.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

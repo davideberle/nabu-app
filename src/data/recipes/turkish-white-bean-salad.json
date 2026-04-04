@@ -1,0 +1,68 @@
+{
+  "id": "turkish-white-bean-salad",
+  "name": "Turkish White Bean Salad",
+  "persianName": "Piyaz",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–5 as a side dish",
+  "intro": "Piyaz is a staple salad of Turkey. This is the Anatolyan version, which uses tahini to give the salad an added dimension. I can quite happily eat this as a meal in itself without any accompaniment. The dressing provides just the right amount of acidity to cut through the richness of the tahini, and lots of onions add great bite and flavour.",
+  "ingredients": [
+    {
+      "item": "cans cannellini beans, drained and rinsed",
+      "amount": "2 x 400g"
+    },
+    {
+      "item": "red onions, cut in half and thinly sliced into half moons",
+      "amount": "2"
+    },
+    {
+      "item": "Turkish dried chilli flakes (pul biber)",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "packets of flat leaf parsley, leaves picked and roughly chopped",
+      "amount": "2 x 20g"
+    },
+    {
+      "item": "fat garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1½ lemons",
+      "amount": ""
+    },
+    {
+      "item": "tahini",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the cannellini beans, red onion slices, Turkish chilli flakes and chopped flat leaf parsley into a large salad bowl and mix well.",
+    "To make your dressing, put the garlic into a separate bowl, then add the lemon juice and tahini and mix well until smooth. Lastly, incorporate the olive oil, red wine vinegar and a generous amount of crushed sea salt and black pepper and mix the dressing until smooth. If you need a little more liquid, add some cold water until you achieve a consistency that is sufficiently thin enough to dress the salad.",
+    "Pour the dressing over the salad, mix everything carefully so as not to smash or break up the beans, then taste the ingredients and adjust the seasoning if desired before serving."
+  ],
+  "image": "/recipes/turkish-white-bean-salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

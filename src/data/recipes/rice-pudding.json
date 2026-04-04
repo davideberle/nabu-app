@@ -1,0 +1,71 @@
+{
+  "id": "rice-pudding",
+  "name": "Rice Pudding",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–6",
+  "intro": "We call rice pudding sheer berenj, meaning ‘milky rice’. Although I was never very fond of it as a child, I have rediscovered it as an adult and have added my own flavours to it to create something that makes me happy and fills me with all the comfort that a good rice pudding should provide. I like adding citrus rind to my cooking – it gives things a zesty scent and flavour without the acidity. And nuts give this dish a lovely crunch.",
+  "ingredients": [
+    {
+      "item": "full-fat milk",
+      "amount": "650ml (1 pint 2fl oz)"
+    },
+    {
+      "item": "double cream",
+      "amount": "200ml (1/3 pint)"
+    },
+    {
+      "item": "rosewater",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "green cardamom pods, crushed, seeds ground with a pestle and mortar",
+      "amount": "4"
+    },
+    {
+      "item": "vanilla bean paste or the seeds scraped from 1 vanilla pod",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "clear honey, plus extra for drizzling",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pudding rice",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50g (1¾oz)"
+    },
+    {
+      "item": "grated rind of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "flaked almonds, toasted",
+      "amount": "50g (1¾oz)"
+    },
+    {
+      "item": "chopped shelled pistachio nuts",
+      "amount": "50g (1¾oz)"
+    },
+    {
+      "item": "handful of dried edible rose petals",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Set a large saucepan over a medium-low heat, pour in the milk, cream, rosewater, ground cardamom seeds, vanilla paste or seeds and the honey and stir well until the vanilla paste has dissolved into the liquid evenly. Without allowing the contents to boil, heat up the liquid, then increase the heat to medium and add the rice.",
+    "Once the rice is in, you will need to stir the mixture continuously for about 20 minutes or so to draw out the starch, which will enrich the dish. Should the rice dry out a little during the cooking process, add a little more milk.",
+    "Once the rice is cooked, add the butter and stir well until it melts. Turn off the heat and stir in the lime rind, to give the dish a burst of freshness.",
+    "In the Middle East, although we do occasionally eat rice puddings hot, we love to eat them chilled. So decant the pudding either into a large serving dish or as individual portions, decorate generously with the almonds and pistachios, scatter over a few dried rose petals and refrigerate for a couple of hours. Drizzle over a little clear honey just before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

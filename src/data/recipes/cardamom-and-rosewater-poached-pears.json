@@ -1,0 +1,43 @@
+{
+  "id": "cardamom-and-rosewater-poached-pears",
+  "name": "Cardamom & Rosewater Poached Pears",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "This dessert is simple, elegant and the perfect light pudding to serve after a dinner of many dishes. The pears infuse in the heavenly scent of Persian rosewater and cardamom whilst poaching, which makes for a very moreish dessert. I have converted many a hater of cardamom with this dish.",
+  "ingredients": [
+    {
+      "item": "rosewater",
+      "amount": "400ml (14fl oz)"
+    },
+    {
+      "item": "cardamom pods, bruised or crushed a little",
+      "amount": "12–16"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "300g (10½oz)"
+    },
+    {
+      "item": "smooth-skinned pears, preferably nice big ones",
+      "amount": "6"
+    },
+    {
+      "item": "chopped pistachio nuts, for scattering",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Fill a large saucepan almost to the brim with boiling water and bring to the boil over a medium-high heat. Add the rosewater, crushed cardamom pods and sugar, reduce the heat and simmer gently for 20 minutes.",
+    "Peel the pears carefully, leaving the stems intact. Remove the cores from the bases of the pears using a small sharp knife. Place the peeled and cored pears upright in the poaching liquid and poach for 30–35 minutes, or until tender – you should be able to pierce them with a cocktail stick with no resistance. Remove the pears from the poaching liquid and set aside.",
+    "Serve warm with a little of the poaching liquid and a scattering of chopped pistachios. I sometimes like to serve the pears on a bed of fresh pink rose petals (using thoroughly washed roses) to really capture the traditional Middle Eastern aromas on a plate. These pears are also good served with vanilla ice cream."
+  ],
+  "image": "/recipes/cardamom-and-rosewater-poached-pears.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

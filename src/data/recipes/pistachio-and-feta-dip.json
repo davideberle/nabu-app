@@ -1,0 +1,60 @@
+{
+  "id": "pistachio-and-feta-dip",
+  "name": "Pistachio & Feta Dip",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 8",
+  "intro": "I discovered this dip in a backstreet butcher’s shop-cum-restaurant in Istanbul. Naturally, they wouldn’t tell me what was in it, so I had to do the guesswork myself and came up with a surprisingly accurate version of it. It draws influences from the Balkan states and I just love the salty, nutty nature of it. A kick of chilli rounds it off beautifully and makes it impossible to resist with hunks of pillowy bread.",
+  "ingredients": [
+    {
+      "item": "shelled pistachio nuts",
+      "amount": "100g (3½oz)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "75ml (2½fl oz)"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "300g (10½oz)"
+    },
+    {
+      "item": "handful of dill, leaves picked and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "handfuls of coriander, leaves picked and roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove, peeled and crushed",
+      "amount": "1"
+    },
+    {
+      "item": "long red chilli (of medium heat), roughly chopaped",
+      "amount": "1"
+    },
+    {
+      "item": "large tbsp Greek yogurt",
+      "amount": "3"
+    },
+    {
+      "item": "finely grated rind of 1 lemon and juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "sea salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Blitz the pistachio nuts and oil in a food processor for 30 seconds. Add the feta, herbs, crushed garlic, chilli, yogurt and lemon rind and juice and blitz the ingredients for about 1 minute, or until the mixture has a nice rustic texture. Taste the dip and season with just a touch of sea salt, if desired. Remember that the feta is quite salty already, so you really won’t need much salt to season the dip. Serve with Eastern-Style Focaccia."
+  ],
+  "image": "/recipes/pistachio-and-feta-dip.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "id": "spicy-tomato-and-pepper-dip",
+  "name": "Spicy Tomato & Pepper Dip",
+  "persianName": "Ezme",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as a dip",
+  "intro": "Ezme is a wonderful Turkish dish made with the ripest of tomatoes, which give it a deep, sweet flavour to contrast with the fiery kick of chillies and the acidity given to the dish by vinegar and pomegranate molasses. Everyone seems to have their own recipe – some are spicier or less acidic than others, but this is my favourite version to eat with Cacik and bread. It is a staple when eating Turkish food.",
+  "ingredients": [
+    {
+      "item": "ripe tomatoes, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "onion, very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper, cored, deseeded and very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "green pepper, cored, deseeded and very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "red chillies, deseeded and finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "packet of flat leaf parsley, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "sumac, plus extra to garnish",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "extra virgin olive oil, plus extra for drizzling",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In all truthfulness, you could simply put all the ingredients into a food processor and blitz the whole lot together with great ease. If you do this, then start with the onion first and put in the tomatoes last but, whatever you do, pulse them – don’t blitz them to a purée or you will end up with a soup! And if you choose this method, add the dressing components after the vegetables are finely chopped.",
+    "To do things the old-fashioned and authentic way, chop the tomatoes, onion, peppers, chillies (if using) and parsley by hand, then put them into a large bowl. Add the sumac, pomegranate molasses, vinegar, olive oil, sea salt and black pepper to taste before giving everything a stir. Cover with clingfilm and put it in the refrigerator for 15 minutes to allow the dressing to macerate the vegetables.",
+    "Once ready to serve, arrange on a flat plate and flatten with a fork, drizzle with a little extra virgin olive oil and sprinkle with a couple of pinches of sumac."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

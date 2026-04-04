@@ -1,0 +1,78 @@
+{
+  "id": "spicy-prawn-rice",
+  "name": "Spicy Prawn Rice",
+  "persianName": "Maygoo Polow",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "This spicy and totally delicious dish is based on a spicy rice dish from the southern port of Bandar Abbas in Iran, and is not too dissimilar from a biryani. The spicing in this region is closer to that of the Arab states and Afghanistan, with a heavier use of spices and chilli. If it has any kind of seafood in it, then it’s a win-win situation as far as I’m concerned. This dish makes a great centrepiece on any dinner table and is a Sunday night favourite in my home. Although it’s not that spicy, it is quite common to serve yogurt on the side for those who might need a little help in cooling their palate while eating this dish.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "fat garlic cloves, bashed and thinly sliced",
+      "amount": "6"
+    },
+    {
+      "item": "7cm (3in) piece of fresh root ginger, peeled and finely grated",
+      "amount": ""
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dried fenugreek leaves",
+      "amount": "1 heaped tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried red chilli flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "large raw peeled prawns",
+      "amount": "600g (1lb 5oz)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "60g (2¼oz)"
+    }
+  ],
+  "method": [
+    "Preheat a large saucepan over a medium-high heat. Fill the pan with boiling water and add the rice with a generous handful of crumbled sea salt. Boil for 6–8 minutes until the rice is parboiled. You will know it is parboiled when the colour of the grains become a more brilliant white and the grains become slightly elongated and begin to soften.",
+    "Drain the rice and rinse it immediately under cold running water for a couple of minutes to wash off all the excess starch until it is cool. Line the bottom of the saucepan used to parboil the rice with some nonstick baking paper (see Tip and set aside.",
+    "Set a large frying pan over a medium heat, drizzle in a generous amount of oil and fry the garlic for about 30 seconds, then add the fresh and ground ginger, cumin, fenugreek leaves and chilli flakes and stir. Add the prawns and cook them for less than a minute, or until their colour begins to change to pink, then take the pan off the heat. Season well with sea salt and black pepper and stir the mixture one last time.",
+    "Return the paper-lined saucepan to the hob and pour in a generous drizzle of oil along with the butter. Sprinkle in a couple of pinches of crushed sea salt, then scatter in just enough rice to cover the base of the pan with a good layer.",
+    "Now layer the prawn mixture and rice into the pan, finishing with one final (albeit scant) layer of rice and, using the long handle end of a wooden spoon, poke 5 holes into the rice, all the way down to the base of the pan to allow the steam to rise. Wrap the pan lid in a tea towel (to lock in the steam and make for a secure, tight seal), cover the pan and cook the rice on the lowest temperature possible if using gas, or a medium-low heat if using electric, for around 40 minutes.",
+    "Once the rice is cooked, remove it from the pan (you can place a large serving dish over the pan and flip the rice on to the dish), then scrape out the crispy tahdig from the base of the pan and serve it on top of the rice."
+  ],
+  "image": "/recipes/spicy-prawn-rice.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

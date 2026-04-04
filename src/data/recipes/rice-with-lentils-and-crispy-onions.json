@@ -1,0 +1,69 @@
+{
+  "id": "rice-with-lentils-and-crispy-onions",
+  "name": "Rice with Lentils & Crispy Onions",
+  "persianName": "Mojardara",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8",
+  "intro": "Known as mojardara in Arab cuisine, versions of this rice dish appear in the cuisines of many countries. Growing up, the version we ate had no spicing but was abundant with lentils and raisins or dates. The Arab recipe has fried onions and, I must say, I do love fried onions, in anything, on anything and with anything … in fact, I don’t know many people who don’t like fried onions. The nature of this dish is very simple and simple food is always what becomes most popular in its place of origin. All I would say is that I usually double this recipe because I like to eat it for several days afterwards, so keep that in mind when making yours.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "400ml (14fl oz)"
+    },
+    {
+      "item": "large onions, cut in half and thinly sliced into half moons",
+      "amount": "4"
+    },
+    {
+      "item": "green lentils",
+      "amount": "275g (10oz)"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "basmati rice",
+      "amount": "300g (10½oz)"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "525ml (19fl oz)"
+    }
+  ],
+  "method": [
+    "Pour the oil into a large saucepan and preheat it over a high heat. Fry the onions (in 2–3 batches) for about 8 minutes, stirring once or twice, until golden brown and crispy. Remove them with a slotted spoon and drain on a plate lined with kitchen paper. Drain and discard the oil from the pan.",
+    "Bring a large saucepan of water to the boil, add the lentils and cook for about 15 minutes, or until they soften, but don’t let them turn to mush. Drain and rinse them in cold water to stop them cooking any further.",
+    "Put the pan you fried the onions in over a medium heat, add the cumin seeds and fry them for a minute or so before adding the rice and other spices and a generous amount of sea salt. Next, add the lentils (and raisins if using – see Variation), to the rice and stir well. Add the water, give the mixture one last stir, then cover with a lid, reduce the temperature to the lowest setting and cook for 20 minutes. Turn off the heat and leave to sit for 10 minutes with the lid on – this will allow the rice to cook through.",
+    "Use a fork to separate the grains, then mix three-quarters of the fried onions into the rice. Serve on a platter with the remaining fried onions scattered on top."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

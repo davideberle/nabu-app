@@ -1,0 +1,81 @@
+{
+  "id": "aubergine",
+  "name": "Aubergine",
+  "persianName": "Chermoula",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6 as part of a mezze",
+  "intro": "Originally a North African spice paste, chermoula can be used as a rub, seasoning or base to flavour many a dish. I use some of the key spices to make this dish and the end result is best described as tangy, sweet, fresh and chutney-like. It is quite similar to the Sicilian caponata, which I adore, but the spices in my Aubergine Chermoula give it added depth. For me, its distinct sweet and sour character makes this dish impossible to resist and highly moreish.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "aubergines, trimmed and cut into 2.5cm (1in) cubes",
+      "amount": "2"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "large onion, cut in half and thinly sliced into half moons",
+      "amount": "½"
+    },
+    {
+      "item": "garlic cloves, crushed into a paste with some salt",
+      "amount": "3"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red pepper, cored, deseeded and cut lengthways into thin strips, then halved",
+      "amount": "½"
+    },
+    {
+      "item": "handful of plump golden raisins",
+      "amount": ""
+    },
+    {
+      "item": "can chopped tomatoes",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "clear honey",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Heat a good glug of olive oil in a saucepan over a medium heat, then add the aubergine and sauté until golden brown. Season with salt half way through. Once browned but not blackened, remove the aubergine from the pan and set aside.",
+    "Put the pan back on the heat, reduce the temperature to low, add the onion slices and cook until caramelized, ensuring you stir them so that they cook and colour evenly. Just as they start to brown, add the garlic paste, cumin, cinnamon and paprika and stir, then add the pepper strips and continue to sauté until the vegetables soften and the peppers are no longer raw. Add the raisins and a touch more salt and fry for a further 5 minutes before adding the chopped tomatoes. Cook for another 5 minutes, then add the red wine vinegar, sugar and the honey.",
+    "Increase the temperature and stir-fry the mix for a minute or two (ensuring it doesn’t burn), then reduce the temperature to low and, using a potato masher, lightly mash the mixture and stir it to ensure it is evenly cooked.",
+    "Stir in the cooked aubergine and cook for about 8 minutes over a low heat, then turn off the heat, but leave the pan on the hob to cool slightly and allow the flavours to meld. Serve warm with Eastern-Style Focaccia or toasted bread."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

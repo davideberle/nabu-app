@@ -1,0 +1,90 @@
+{
+  "id": "chicken",
+  "name": "Chicken",
+  "persianName": "Bastilla",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "A bastilla is the pie equivalent of the Moroccan world and what a pie it is! Aromatic with the spices reminiscent of a souk and filled with chicken (or more traditionally pigeon), it is an opulent dish made for feasting. The meat filling is studded with a classic combination of fruit and nuts (a mixture that draws influence from Persian cuisine), and there are so many flavours and textures in each bite that every mouthful a real pleasure to savour. This is one of my favourite things to eat – rich and abundant in textures and tastes.",
+  "ingredients": [
+    {
+      "item": "onions, diced",
+      "amount": "1kg (2lb 4oz)"
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "7.5cm (3in) piece of fresh root ginger, peeled and finely grated",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon, plus ½ tsp extra to garnish",
+      "amount": "1 heaped tsp"
+    },
+    {
+      "item": "ground mace",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "large handful of dates, pitted and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "medium pre-roasted chicken (about 2kg/4lb 8oz), meat finely shredded",
+      "amount": "1"
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "75g (2¾oz)"
+    },
+    {
+      "item": "large eggs, 6 hard boiled and roughly chopped, 1 egg separated, the white lightly beaten",
+      "amount": "7"
+    },
+    {
+      "item": "packet of flat leaf parsley, stalks and leaves finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "packet of coriander, stalks and leaves finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "clear honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sheets (1 packet) of filo pastry, each measuring roughly 48 x 26cm (19in x 10in)",
+      "amount": "6"
+    },
+    {
+      "item": "icing sugar, to dust",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180°C/fan 160°C/gas mark 4. Line a large baking sheet with nonstick baking paper.",
+    "Fry the onions in a generous amount of olive oil in a large frying pan set over a medium heat, stirring regularly to encourage them to caramelize and prevent burning. Once they are brown (not burnt!) and sticky, add the ginger, dry spices, caster sugar, and dates and stir the mixture well. Cook until any liquid has been absorbed. Remove from the heat and set aside.",
+    "Put the shredded chicken into a large bowl with the pine nuts, chopped egg, parsley and coriander and mix together. Add the fried onion mixture and honey and give everything another good mix. Season generously with salt and pepper.",
+    "Cut each filo pastry sheet in half to make 2 squares. Take 2 squares and overlap them to create a star shape. Divide the mixture into 6 portions, then pile 1 portion into the centre of the pastry star. Pat it down to form a flat round disc (not too wide, so that you can still seal the pastry edges around the stuffing), then brush the exposed edges of pastry with the beaten egg white. Bring the points of the pastry in towards the centre one by one and brush each overlap of pastry with a little beaten egg white as you go to secure, until the final flap closes the pastry parcel. Brush with a little more egg white to seal the parcel. Turn the bastilla over and place it onto the prepared baking sheet. Repeat with the remaining pastry squares and stuffing to create 6 bastilla. Brush the tops and sides of the pastry with egg yolk, then bake for 20–22 minutes, or until golden brown.",
+    "Remove the bastilla from the oven and, while still hot, dust each with icing sugar and a sprinkling of cinnamon."
+  ],
+  "image": null
+}

@@ -1,0 +1,108 @@
+{
+  "id": "spiced-vegetable-soup",
+  "name": "Spiced Vegetable Soup",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as a starter",
+  "intro": "This dish is more than just a simple broth – it is a wonderfully hearty meal and offers a great way of using up vegetables. There are no rules when making it; the simple truth is that this soup should contain whatever you might find lying around the house and in your fridge.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "peeled, deseeded butternut squash, cut into 4cm (1½in) chunks",
+      "amount": "750g (1lb 10oz)"
+    },
+    {
+      "item": "large or 3 small onions, diced, plus 1 large onion, cut in half and thinly sliced into half moons",
+      "amount": "2"
+    },
+    {
+      "item": "fat garlic cloves, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "leeks, trimmed, cleaned and finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "potatoes, unpeeled, cut into 4cm (1½in) rough chunks",
+      "amount": "3"
+    },
+    {
+      "item": "ripe vine tomatoes, roughly chopped into chunks",
+      "amount": "5"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "4 heaped tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 heaped tsp"
+    },
+    {
+      "item": "smoked sweet paprika",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chilli paste",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "cans chickpeas (reserve the liquid, plus a couple of handfuls of chickpeas to garnish)",
+      "amount": "2 x 400g"
+    },
+    {
+      "item": "large courgette, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "100g (3½oz)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "good handful of flat leaf parsley",
+      "amount": ""
+    },
+    {
+      "item": "good handful of dill",
+      "amount": ""
+    },
+    {
+      "item": "good handful of coriander, plus extra, chopped, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "handful of pistachio nuts",
+      "amount": ""
+    },
+    {
+      "item": "squeeze of lemon juice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat a large saucepan over a medium heat and put in enough olive oil to generously coat the base of the pan. Add the butternut squash, diced onions, garlic, leeks and potatoes and sauté, without browning, until the vegetables soften slightly. Then add the tomatoes, spices and chilli paste and give it all a good stir to ensure the spices are evenly coating the vegetables. Cover the vegetables completely with freshly boiled water, add a generous amount of sea salt (I would suggest at least 4 heaped teaspoons, crushed) and a good amount of black pepper, stir once more and allow to cook for 30 minutes on a gentle boil.",
+    "Insert a knife into the squash and, when it is soft, purée the mixture in a food processor or blender until you get a lovely even, smooth soup. Once smooth, add the chickpeas and their liquid and stir well. At this stage you can add some more water to achieve your desired soup consistency, and check the seasoning to see if more salt or pepper is needed. Cook for a further 20 minutes, then add the courgette and cook for a final 20 minutes before serving.",
+    "Meanwhile, drizzle some olive oil into in a large frying pan set on a high heat and fry the sliced onion until brown and crispy. Add the reserved chickpeas and brown them along with the onions. Using a slotted spoon, remove the onions and chickpeas from the pan and set aside.",
+    "To make the herb oil, put the olive oil, parsley, dill and coriander in a bowl along with the pistachios, lemon juice and some sea salt and pepper and blitz with a hand blender until finely chopped and it has the consistency of pesto. If you need to slacken the mixture, add a bit more oil.",
+    "Pour the soup into large bowls (preferably wide, shallow ones), then generously crumble the feta into the bowls. Drizzle a couple of tablespoons of the herb oil into each bowl over the feta. Finally, add the reserved crispy fried onions and chickpeas. Finish with a little freshly chopped coriander (if using). Serve with some nice crusty bread."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

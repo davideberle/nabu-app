@@ -1,0 +1,68 @@
+{
+  "id": "lamb-and-pistachio-patties",
+  "name": "Lamb & Pistachio Patties",
+  "persianName": "Fistikli Kebap",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 10",
+  "intro": "Based on the Turkish fistikli kebap, this is my quick-and-easy version of the classic recipe. I add a few extra ingredients that work well with the pistachios. In the absence of a barbecue or flame grill, I like to shape the mixture into patties, which are easy to cook in a frying pan, but you can shape it into meatballs, larger patties or elongated kebabs if preferred. Serve this dish with Cacik or yogurt.",
+  "ingredients": [
+    {
+      "item": "shelled pistachio nuts",
+      "amount": "150g (5½oz)"
+    },
+    {
+      "item": "large free-range eggs",
+      "amount": "2"
+    },
+    {
+      "item": "minced lamb",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "onion, minced or very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 heaped tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "grated rind of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Blitz 100g (3½oz) of the pistachios in a food processor until they are finely ground. Lightly pulse the remaining pistachios, then give them just a little rough chop and put them into a large mixing bowl with the finely ground nuts. Add the remaining ingredients, except for the cooking oil, to the nuts and mix them together well using your hands. Really work the mixture thoroughly, pummelling and kneading the meat like bread dough until the texture has broken down and the egg and pistachio are evenly distributed.",
+    "Preheat a large nonstick frying pan over a medium heat and preheat the oven to its lowest setting.",
+    "Divide the mixture into 10 balls and shape them into flattened patties. Drizzle enough vegetable oil to coat the base of the preheated frying pan and fry several of the patties at a time without overcrowding the pan until the undersides form a nice brown crust, which should take about 6 minutes, then flip them over until both sides are done. Transfer the cooked batch to an ovenproof dish and keep warm in the oven while you fry the remaining patties. Serve with Cacik."
+  ],
+  "image": null
+}

@@ -1,0 +1,50 @@
+{
+  "id": "hummus",
+  "name": "Hummus",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 8",
+  "intro": "Hummus… who doesn’t love it? Although this recipe deviates from the authentic Lebanese version, it allows you to make a pretty great hummus at home with a little help from a food processor. I also make a great lemon and coriander variation for when you are in need of something a little different or if, like me, you have friends and family who are hummus addicts, so you need to offer up more than one version of the good stuff.",
+  "ingredients": [
+    {
+      "item": "cans chickpeas (reserve the liquid of 1¼ cans)",
+      "amount": "3 x 400g"
+    },
+    {
+      "item": "about 4 tbsp olive oil, plus extra for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "garlic oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "juice of 3 lemons",
+      "amount": ""
+    },
+    {
+      "item": "light tahini",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sprinkling of paprika, to garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First you need to mash the chickpeas, which I prefer to do by hand to give them a nice rough texture but, admittedly, it is a labour of love and whizzing them in a food processor gives them the smooth texture that we are more accustomed to. Use the chickpea liquid, a little at a time, and some olive oil to help the process and achieve an even texture. Add the garlic oil, lemon juice and tahini, followed by the bulk of the remaining olive oil and the sea salt. Mix (or blitz) thoroughly.",
+    "Add another thin drizzle of olive oil until you reach your desired consistency. Check the flavour to adjust the seasoning and/or add more lemon juice as required. Serve with a gentle drizzle of olive oil on top and a light sprinkling of paprika (if using) for colour."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "eastern-mess",
+  "name": "Eastern Mess",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "Having spent almost all of my life in England, I am no stranger to Eton Mess. I like to believe that it was first created as a happy accident in a failed attempt at strawberry Pavlova at Eton College, although this is largely believed to be a myth. Over the years, I have made versions using every fruit imaginable and have added a variety of flavours to the cream. I won’t mind admitting that some were less successful than others. This Eastern version is perfumed with Persian rosewater and combined with raspberries, basil and delicate pistachio slivers which give a little crunch to every bite.",
+  "ingredients": [
+    {
+      "item": "double cream",
+      "amount": "600ml (20fl oz)"
+    },
+    {
+      "item": "icing sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "vanilla bean paste or the seeds scraped from 1 vanilla pod",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rosewater",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ready-made meringues",
+      "amount": "6"
+    },
+    {
+      "item": "raspberries",
+      "amount": "450g (1lb)"
+    },
+    {
+      "item": "handful of Greek basil leaves or torn basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "pistachio nut slivers or chopped pistachio nuts (optional)",
+      "amount": "75g (2¾oz)"
+    },
+    {
+      "item": "raspberries",
+      "amount": "225g (8oz)"
+    },
+    {
+      "item": "icing sugar (you may need more if using raspberries out of season)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rosewater",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "squeeze of lemon juice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Using an electric hand whisk, whip the double cream, icing sugar, vanilla paste or seeds and rosewater together in a mixing bowl until soft peaks form. You don’t want the cream to be too loose or too stiff, so keep an eye on the consistency. With the whisk set on a high speed, it should take about 3 minutes or so.",
+    "To make the sauce, mash the the raspberries to a purée with the icing sugar, rose water and lemon juice in a bowl until the mixture is completely smooth. Pass the mixture through a sieve to remove the raspberry seeds.",
+    "Choose either a large platter or individual serving dishes. Now layer the cream, meringues and raspberries in the serving dish(es), drizzling on the sauce and scattering over the basil leaves and pistachios as you go. Decorate the top layer with a little drizzle of sauce and a final scattering of basil leaves and pistachios, if using. Serve immediately."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

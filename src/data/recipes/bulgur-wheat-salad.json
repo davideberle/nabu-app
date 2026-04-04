@@ -1,0 +1,80 @@
+{
+  "id": "bulgur-wheat-salad",
+  "name": "Bulgur Wheat Salad",
+  "persianName": "Kisir",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as a side dish",
+  "intro": "What the Turks can do with simple bulgur wheat is always pretty impressive to me. This dish makes a great cold accompaniment to a meal and is usually served as part of a big Turkish feast, but I like to serve it with grilled chicken to make a meal, or spooned into some flatbread or a tortilla wrap with a little feta cheese for a great sandwich. You can also serve it with Gem lettuce and use the leaves to scoop it up. Kisir can be spicy or not, but this version packs plenty of punch, so omit the chilli if you prefer.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "250g (9oz)"
+    },
+    {
+      "item": "boiling water",
+      "amount": "160ml (5½fl oz)"
+    },
+    {
+      "item": "chilli paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "tomato purée",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "ripe tomatoes, finely diced",
+      "amount": "5"
+    },
+    {
+      "item": "bunch of spring onions, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "packet of mint, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "packet of flat leaf parsley, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "100g (3½oz)"
+    }
+  ],
+  "method": [
+    "Tip the bulgur wheat into a shallow dish and pour the hot water over it. Once absorbed (this takes about 15 minutes), transfer to a large bowl.",
+    "Add the chilli paste, lemon juice, tomato purée, pomegranate molasses, extra virgin olive oil, sea salt and black pepper to the bulgur wheat and work them into the grains using your hands. Now stir in the tomatoes, spring onions, fresh herbs and the pomegranate seeds until everything is combined. Taste the dish and adjust the seasoning or add more lemon juice, if required.",
+    "Allow the dish to rest for about 10 minutes before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

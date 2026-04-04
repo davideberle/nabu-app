@@ -1,0 +1,62 @@
+{
+  "id": "chicken-walnut-and-pomegranate-stew",
+  "name": "Chicken, Walnut & Pomegranate Stew",
+  "persianName": "Khoresh-e-Fesenjan",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8",
+  "intro": "Khoresh is the Persian word for stew. Fesenjan is a rich, glossy stew of ground walnuts and pomegranate syrup, usually made with chicken, duck or delicate little lamb meatballs. The flavour is deep and rich, with a nutty texture and a wonderfully gentle acidity that cuts right through the richness of the dish. Fesenjan is a highly popular dish from Iran and its sweet yet tart character has made it one of the most revered stews in our repertoire. Like most stews, it’s best made the day before you need to serve it.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "large onions, diced",
+      "amount": "2"
+    },
+    {
+      "item": "plain flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "walnuts, finely ground in a food processor",
+      "amount": "600g (1lb 5oz)"
+    },
+    {
+      "item": "bone-in chicken thighs, skin removed",
+      "amount": "8"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "litres (2 pints) cold water",
+      "amount": "1.2"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "450ml (16fl oz)"
+    },
+    {
+      "item": "seeds from 1 pomegranate, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat two large saucepans over a medium heat and pour 3 tablespoons vegetable oil into one. Fry the onions in the oil until translucent and lightly browned.",
+    "In the other pan, toast the plain flour until it turns pale beige. Add the ground walnuts and cook the mixture through.",
+    "Once the onions are browned, season the chicken on both sides with salt and pepper and add them to the pan containing the onions. Increase the temperature and stir well to ensure you seal the thighs on both sides. Once they are gently browned, turn off the heat and set aside.",
+    "Add the water to the walnut pan, stir well and bring the mixture to a slow boil, then cover with a lid and allow to cook for 1 hour over a low-medium heat. This will cook the walnuts and soften their texture; once you see the natural oils of the walnuts rise to the surface, the mixture is cooked.",
+    "Add the sugar and pomegranate molasses to the walnuts and stir well for about 1 minute. Take your time to stir the pomegranate molasses well, as it takes a while to fully dissolve into the stew due to its thick consistency. Once this is done, add the chicken and onions to the walnut-and-pomegranate mixture, cover and cook for about 2 hours, stirring thoroughly every 30 minutes to ensure you lift the walnuts from the bottom of the pan so that they don’t burn. Once cooked, what initially looked beige will now have turned into a rich, dark, almost chocolaty-looking mixture. Serve sprinkled with pomegranate seeds and enjoy with a generous mound of basmati rice."
+  ],
+  "image": null
+}

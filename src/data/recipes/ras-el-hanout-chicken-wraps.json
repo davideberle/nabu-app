@@ -1,0 +1,68 @@
+{
+  "id": "ras-el-hanout-chicken-wraps",
+  "name": "Ras el Hanout Chicken Wraps",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4–6",
+  "intro": "I came up with this recipe as an alternative to a shawarma sandwich; it is less greasy and also such a crowd-pleaser. The key ingredient is the spice blend ras el hanout, which in Arabic means ‘head of spice’ – the name given to the signature blend of the best spices of the shop in which it was first made. It is made with a blend of over a dozen spices, including cumin, cubeb pepper, rose petals and fenugreek. It is so versatile that it works with meat, poultry, fish and vegetables. But beware – it packs a punch and is quite spicy, so don’t be too heavy-handed with it. A final dollop of yogurt adds the perfect finishing touch to make every mouthful of this dish utterly satisfying.",
+  "ingredients": [
+    {
+      "item": "ras el hanout",
+      "amount": "2 heaped tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "large boneless, skinless chicken breasts, chunkier side sliced and spread open for even cooking",
+      "amount": "4"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "flour tortilla wraps",
+      "amount": "4–6"
+    },
+    {
+      "item": "red onion, halved and thinly sliced into half moons",
+      "amount": "1"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": ""
+    },
+    {
+      "item": "rocket leaves and pomegranate seeds to garnish",
+      "amount": ""
+    },
+    {
+      "item": "small bunch of mint, leaves picked and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the ras el hanout with about 4–5 tablespoons of olive oil in a small bowl to create a paste. Smear this over the chicken breasts, ensuring they are well coated. Season each chicken breast with a pinch of sea salt and, if you have time, cover with clingfilm and leave the chicken in a refrigerator to marinate for as long as needed (but maximum overnight).",
+    "To make the yogurt sauce, put the mint into a bowl along with the yogurt, sumac, a generous pinch of sea salt and some black pepper and mix well until the sumac and mint are evenly incorporated.",
+    "Preheat a large frying pan over a medium heat if using gas, or a medium-high heat if cooking on electric (you may want to use 2 pans at a time if doing all 4 chicken breasts at once), then drizzle in a good amount of olive oil. Put in the chicken breasts and fry them for 8–10 minutes or so on one side and 6–8 minutes on the other side. To check if it is cooked, prod the fattest part of each chicken breast with your finger. If it feels very springy, it needs to cook for a bit longer, but if it feels firm, your chicken is cooked.",
+    "Place the chicken on a chopping board and allow it to rest for a few minutes so that the juices can flow back through the meat, ensuring it remains moist and tender. Slice into strips and put several into each wrap with some onion slices. Dollop some of the yogurt on top (about 3 teaspoons per wrap), drizzle with pomegranate molasses, garnish with rocket and serve."
+  ],
+  "image": null
+}

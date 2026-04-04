@@ -1,0 +1,63 @@
+{
+  "id": "cinnamon-and-citrus-almond-pastry-cigars",
+  "name": "Cinnamon & Citrus Almond Pastry Cigars",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 12",
+  "intro": "These crispy filo rolls make a great dessert or simple sweet treat. The filling is delicately spiced and perfumed with citrus rinds to cleanse the palate. It’s my take on a classic Moroccan Berber recipe for M’Hencha, meaning ‘coiled like a snake’. I love M’Hencha, but making these pastry cigars is infinitely less fiddly. They are kind of like baklava, but minus the heavy syrup and excess butter and utterly moreish.",
+  "ingredients": [
+    {
+      "item": "ground almonds",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "125g (4½oz)"
+    },
+    {
+      "item": "rosewater",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "orange extract",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "grated rind of 2 oranges",
+      "amount": ""
+    },
+    {
+      "item": "grated rind of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1½ heaped tsp"
+    },
+    {
+      "item": "butter, melted",
+      "amount": "100g (3½oz)"
+    },
+    {
+      "item": "sheets (1 packet) of filo pastry",
+      "amount": "6"
+    },
+    {
+      "item": "icing sugar, for dusting",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C/fan 180°C/gas mark 6 (preferably fan assisted for this recipe). Line a baking sheet with nonstick baking paper.",
+    "Combine the ground almonds, sugar, rosewater, orange extract, citrus zests, cinnamon and 50g (1¾oz) of the melted butter in a bowl until they form a thick paste.",
+    "Cut each of your 6 sheets of pastry in half and place them horizontally in front of you. Divide the almond paste into 12 equal portions. Shape one portion into a 2cm (¾in) sausage shape about 9cm (3½in) long and place it along the bottom edge of the pastry. Fold the bottom corners of the pastry up over the filling, then roll up the pastry from the bottom, tucking in the sides as you go. Brush the remaining flap of pastry with some of the leftover melted butter and finish rolling to secure.",
+    "Repeat this process until all 12 cigars are rolled, then place them on the prepared baking sheet. Brush the cigars all over with melted butter, then bake for 20–25 minutes, or until golden brown. Remove from oven and allow to cool slightly, then dust with icing sugar and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "lamb-and-vegetable-tagine",
+  "name": "Lamb & Vegetable Tagine",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "This delicious lamb tagine is not only rich with meat but also brimming with vegetables, which balance an otherwise heavy meat dish perfectly. In Moroccan culture, vegetables are every bit as valued as meat, and this particular dish is a meal in itself and can be eaten without any accompaniment. The lamb shoulder cut imparts masses of flavour to the dish through its high fat content and, with slow cooking, the meat is so tender it simply falls apart. I love mashing the vegetables on my plate and spooning the juices on to them … it’s the most decadent thing ever.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "large onion, roughly diced",
+      "amount": "1"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cubeb pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "boneless lamb shoulder, diced into 8–10 pieces",
+      "amount": "1kg (2lb 4oz)"
+    },
+    {
+      "item": "pinch of saffron threads",
+      "amount": ""
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small turnips, peeled and quartered",
+      "amount": "6"
+    },
+    {
+      "item": "carrots, each cut into 3",
+      "amount": "6"
+    },
+    {
+      "item": "shallots, peeled but kept whole",
+      "amount": "8–10"
+    },
+    {
+      "item": "courgettes, each cut into 3",
+      "amount": "5"
+    },
+    {
+      "item": "argan oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Set a large saucepan over a medium, add a good drizzle of olive oil and fry the onion for a couple of minutes. Add all the dry spices, except the saffon, then add the chunks of lamb and seal them for 5–6 minutes on each side to give them just a tiny bit of colour.",
+    "Grind the saffron with a pestle and mortar, then pour over the boiling water and leave to infuse for a minute or two. Add the saffron water to the pan and season with a generous amount of sea salt and black pepper. Add just enough water to barely cover the meat, place the lid on the pan and cook over a low-medium heat for 3 hours.",
+    "After the cooking time has elapsed, add the turnips, carrots and shallots and push them down slightly to semi-submerge them in liquid. Add more water if needed (but ensure you add just enough to barely cover the contents), then re-cover and cook for another 45 minutes.",
+    "Place the courgettes gently on top of the tagine contents (ensure they are not submerged), re-cover and cook for a further 30 minutes until the courgettes are just tender. Arrange the tagine on a large platter, drizzle with nutty argan oil and serve immediately with couscous, rice, potatoes or bread, or just enjoy it by itself."
+  ],
+  "image": null
+}

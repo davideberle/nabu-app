@@ -1,0 +1,45 @@
+{
+  "id": "persian-aubergines",
+  "name": "Persian Aubergines",
+  "persianName": "Kashk",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8",
+  "intro": "Remember the nursery rhyme ‘Little Miss Muffet sat on her tuffet, eating her curds and whey’…? Well, whey is exactly what kashk is –a thick, almost cheese-like substance that is now pasteurized and sold in jars in Persian and Middle Eastern shops. I absolutely love the stuff. It is salty enough to make your lips tingle, but when you combine it with aubergines and fried onions, the result is a thing of beauty. When I first introduced this dish to my supper club, I was scared that people wouldn’t like it but, much to my surprise, it is one of the most popular dishes I have ever put on my menus. Scoop it up with flatbread and I guarantee you it will be like nothing else you have ever tasted.",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "white onions, cut in half and thinly sliced into 5mm- (¼in-) thick half moons",
+      "amount": "750g (1lb 10oz)"
+    },
+    {
+      "item": "large aubergines",
+      "amount": "5"
+    },
+    {
+      "item": "Persian kashk (whey) (about ½ large jar), or labneh, or strained thick yogurt",
+      "amount": "340g (11¾oz)"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large cooking pot over a medium-high heat if using gas, or a high heat if using electric, add a good 5cm (2in) oil. Once the oil is hot, put in your onion slivers and deep-fry until dark brown and crispy. They may even look burnt, but this is fine, as long as they aren’t completely blackened. Once they are really crispy, remove them carefully with a metal slotted spoon and drain on kitchen paper. Take the pan off the heat, but do not throw out the remaining oil.",
+    "Remove the tops of the aubergines and peel them carefully using a small knife (tomato knives with a serrated edge are best for this job). Cut the aubergines into 2.5cm- (1in-) thick discs and roughly chop them into 4cm (1½in) cubes (you don’t need to be exact here).",
+    "Return the large pan to the hob over a medium heat if using gas, or a medium-high heat if using electric, and fry the aubergines pieces until they are cooked through. You may find they don’t all fit, in which case, keep adding more and more pieces slowly to the pan, as the aubergines will halve in volume once they begin to soften. You will most likely need to add a generous amount of oil to prevent the aubergines from sticking to the bottom of the pan, but don’t worry, as excess oil can later be drained from the finished aubergine mass. To speed up the cooking of the aubergines, cover the pot with a lid to allow them to part steam, but do keep an eye on them and keep stirring and moving them every so often to prevent them from sticking to the pan. Aubergines contain sugar and some will, inevitably, stick to the pan, but this isn’t a problem.",
+    "Once the aubergines have softened fully and gained a little colour, spoon off any excess oil, then break up some of the aubergine pieces with the back of a spoon so that some pieces are mashed and some are chunky. Don’t worry if some pieces are not fully mashed – it’s nice to have different textures. Reserving about 2 small handfuls of the fried onions, add the rest to the aubergine mixture and stir well, then add the kashk (whey) along with a few generous sprinklings of sea salt and ensure the kashk has been well incorporated. Take this time to scrape off any aubergine matter that may be stuck to the bottom of the pan and incorporate it into the mixture.",
+    "Reduce the heat to a low flame on gas, or a medium temperature on electric and cook the mixture slowly for 1½ hours, or until it changes from the creamy white mixture that it was when the kashk was added, to an intense khaki colour. Remove the pan from the heat and serve the dish with a generous garnish of the reserved crispy fried onions."
+  ],
+  "image": "/recipes/persian-aubergines.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

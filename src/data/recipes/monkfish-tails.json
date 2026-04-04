@@ -1,0 +1,83 @@
+{
+  "id": "monkfish-tails",
+  "name": "Monkfish Tails",
+  "persianName": "Bandari",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "The term Bandari signifies anything that comes from a port, but is usually a reference to the southern port of Bandar Abbas in Iran. When applied to food, Bandari indicates the use of spice in a dish. This simple fish dish is rubbed using a special spice mix made with fresh herbs and aromatics that permeates the fish with a wonderful heady flavour. Shirazi Salad is the perfect accompaniment to this dish.",
+  "ingredients": [
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "fat garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "5cm (2in) piece of fresh root ginger, peeled and minced",
+      "amount": ""
+    },
+    {
+      "item": "handful of coriander, leaves picked and finely chopped, plus extra to serve",
+      "amount": ""
+    },
+    {
+      "item": "handful of dill, leaves picked and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "finely grated rind and juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "monkfish tails or loins, about 175–200g (6–7oz) each, skinned and cleaned",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Mix all the dry spices together in a bowl and add the garlic, ginger, fresh herbs, lime rind and juice, yogurt and a couple of tablespoons of olive oil. Season with the sea salt and black pepper. Stir well using a fork to break up any clumps of spices. Cover the bowl with clingfilm and set aside for at least 30 minutes to allow the spice paste to rest.",
+    "Place the monkfish tails in a shallow dish. Give the spice paste a good stir and pour it over the fish. Use your hands to really work the paste into the fish, ensuring all sides get an even coating of the mixture. Cover the dish with clingfilm and place it in the refrigerator for a maximum of 1 hour. Once marinated, remove from the refrigerator and bring the fish to room temperature.",
+    "Preheat a frying pan over a medium-high heat. When the pan is nice and hot, drizzle a little olive oil into the pan. Gently lay the monkfish in the pan and cook for approximately 5 minutes on each side, or until opaque and firm. Transfer the monkfish tails from the pan to serving plates, leave to rest for 1–2 minutes, then serve with a little extra coriander sprinkled on top."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

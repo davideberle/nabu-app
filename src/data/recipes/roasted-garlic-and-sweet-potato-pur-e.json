@@ -1,0 +1,55 @@
+{
+  "id": "roasted-garlic-and-sweet-potato-pur-e",
+  "name": "Roasted Garlic & Sweet Potato Purée",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "I would choose sweet potatoes over regular potatoes any day. Roasted, fried or mashed, they are light, sweet and totally delicious. This recipe allows you to add a little flavour, which, for the sake of variety, is a good option. Although I love the natural flavour of sweet potatoes with just a little sea salt, roasted garlic imparts a mellow flavour to the sweet flesh that makes it very moreish. I prefer to serve this dish alongside lamb dishes – I find the combination so satisfying – although I have also been known to dip toasted ciabatta into it and eat it as a warm dip.",
+  "ingredients": [
+    {
+      "item": "large sweet potatoes (skin on)",
+      "amount": "6"
+    },
+    {
+      "item": "fat garlic cloves, unpeeled",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "25g (1oz)"
+    },
+    {
+      "item": "pomegranate molasses, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180°C/fan 160°C/gas mark 4. Roast the sweet potatoes whole for 1 hour, or until cooked through.",
+    "Place the unpeeled garlic cloves on a double layer of kitchen foil, drizzle with a little olive oil, then seal the foil around them. Roast for 30–35 minutes, or until the cloves are soft and squishy.",
+    "Once the sweet potatoes are cooked, allow them to cool slightly – just enough to allow you to handle them – and scoop out the flesh into a saucepan set over a low heat.",
+    "Peel the roasted garlic cloves and mash them into the sweet potatoes along with the cinnamon and some salt and pepper to taste. Cook the purée for a further 6–8 minutes, stirring it to prevent the mixture from sticking. Finish with the butter, stirring well to incorporate it and make the purée nice and smooth. Serve with a little drizzle of pomegranate molasses."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

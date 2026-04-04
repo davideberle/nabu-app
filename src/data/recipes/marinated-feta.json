@@ -1,0 +1,54 @@
+{
+  "id": "marinated-feta",
+  "name": "Marinated Feta",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6–8 as part of a mezze",
+  "intro": "Bread and cheese (or naan-o-paneer in Persian) are the opener to any classic Persian meal. We usually pair them with fresh herbs, fresh walnuts, radishes and spring onions. I came up with this dish as an alternative to the classic version and it has become a firm favourite with my diners and friends alike. It’s great in salads and the marinade makes a tasty salad dressing with just a little extra lemon juice. Or simply scoop up the chunks of feta with bread.",
+  "ingredients": [
+    {
+      "item": "feta cheese",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "olive oil (the quantity depends on the size of the dish used to marinate the cheese)",
+      "amount": "500–600ml (18–20fl oz)"
+    },
+    {
+      "item": "garlic oil",
+      "amount": "75ml (2½fl oz)"
+    },
+    {
+      "item": "finely grated rind of 2 lemons and juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "long banana shallots, peeled and thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "pickled chillies, thinly sliced (and 3 tbsp of the pickle brine)",
+      "amount": "10–12"
+    },
+    {
+      "item": "packets of coriander, stalks and leaves finely chopped",
+      "amount": "2 x 20g"
+    }
+  ],
+  "method": [
+    "You probably have 2 packets of feta. Cut each into chunks – I would suggest 12 per pack, but do as you wish. Put the chunks into a shallow bowl or airtight container.",
+    "Pour the olive oil, garlic oil, lemon rind and juice and salt to taste into a mixing bowl. Add the shallots, pickled chillies and coriander and mix well to ensure all the aromatics are evenly distributed in the marinade. Pour the pickle brine into the bowl and mix well.",
+    "Arrange the feta in your chosen container, leaving a little space between each cube. Pour over the marinade, shaking the container to ensure the marinade covers the feta. Cover with clingfilm and leave to marinate for a minimum of 3 hours before serving. This dish stores well overnight but keep it in an airtight container in the refrigerator and consume within a few days."
+  ],
+  "image": "/recipes/marinated-feta.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "tomato-bulgar-wheat",
+  "name": "Tomato Bulgar Wheat",
+  "persianName": "Bulgur Pilavi",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "intro": "This is the most traditional staple served alongside Turkish kebabs. While we prefer rice in Iran, Turks prepare this simple but delicious tomato and bulgur wheat dish, which I absolutely love either hot or cold, and even with or without kebabs, if I’m honest. Not only is it simple, it is cheap to make and is therefore popular all over Turkey. I like to eat it with lots of Cacik on the side, and if there are any kebabs going, then that’s a bonus.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper, cored, deseeded and finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "bulgur wheat",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "generous knob of butter",
+      "amount": ""
+    },
+    {
+      "item": "water or chicken or vegetable stock",
+      "amount": "500ml (18fl oz)"
+    }
+  ],
+  "method": [
+    "Place a large nonstick saucepan over a medium heat, drizzle in enough olive oil to coat the base of the pan and soften the onions, stirring to prevent them from colouring too much. Add the diced pepper and stir for a further minute, then add the tomato purée and a generous amount of sea salt and black pepper. Now cook out the tomato purée for a few minutes, stirring to ensure the mixture doesn’t burn. Add just a little more oil if you wish.",
+    "Add the bulgur wheat and butter to the pan, then pour in the water or stock and give the mixture a good stir until the tomato purée has dissolved into the liquid evenly. Cover the pan with a tight-fitting lid, reduce the heat to a low-medium heat and cook for 15–20 minutes, or until the water is fully absorbed. Once the bulgur wheat is cooked, use a fork to fluff up the grains. Serve immediately."
+  ],
+  "image": "/recipes/tomato-bulgar-wheat.jpg"
+}

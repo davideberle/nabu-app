@@ -1,0 +1,58 @@
+{
+  "id": "yogurt-cucumber-and-mint",
+  "name": "Yogurt, Cucumber & Mint",
+  "persianName": "Maast O Khiar",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6 as part of a mezze",
+  "intro": "For Iranians, this dish serves the purpose of cooling you down in the sweltering summers. As in Turkey, Greece and India, a yogurt dish of this sort is a staple on the table during every family meal. Iranians love to vary the content, often using beetroot or spinach in place of the cucumber. In the height of summer, this dish is virtually treated as a soup, so perhaps it is Iran’s answer to the Spanish gazpacho. It should be served chilled and, on the hottest of occasions, with ice cubes to help it stay cool.",
+  "ingredients": [
+    {
+      "item": "large cucumber, coarsely grated",
+      "amount": "1"
+    },
+    {
+      "item": "dried mint",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "generous handful of golden raisins",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "500ml (18fl oz)"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "chopped walnuts",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped fresh mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "dried edible rose petals",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Carefully squeeze out and discard the excess water from the grated cucumber – you can do this by hand or in a sieve. Put the drained cucumber pulp into a mixing bowl.",
+    "Add the dried mint and golden raisins to the bowl, followed by the yogurt, and mix well. Season to taste with sea salt and black pepper. Cover with clingfilm and chill in the refrigerator until ready to serve. To serve, drizzle with a little olive oil and scatter with chopped walnuts, finely chopped mint leaves and dried rose petals, if desired."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

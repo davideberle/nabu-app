@@ -1,0 +1,84 @@
+{
+  "id": "salad",
+  "name": "Salad",
+  "persianName": "Fattoush",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6",
+  "intro": "If you have ever been to a Lebanese restaurant, two salads always feature on the menu – tabbouleh and, of course, fattoush. While I love tabbouleh, fattoush feels more like a proper salad to me and has the added bonus of croutons or deep-fried pieces of bread. There is so much crunch to this salad and I believe that is what wins me over… plus the fact that the simple dressing cuts through a heavy Middle Eastern meal beautifully.",
+  "ingredients": [
+    {
+      "item": "large pittas or khobz flatbreads (or any flatbread you like)",
+      "amount": "2 (preferably stale)"
+    },
+    {
+      "item": "cherry or baby plum tomatoes, roughly chopped",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "heads of Baby Gem or romaine lettuce, halved lengthways and roughly chopped",
+      "amount": "4"
+    },
+    {
+      "item": "large cucumber, halved lengthways and cut into 1cm- (½in-) thick half moons",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper, cored, deseeded and cut into 2.5cm (1in) dice",
+      "amount": "1"
+    },
+    {
+      "item": "green pepper, cored, deseeded and cut into 2.5cm (1in) dice",
+      "amount": "1"
+    },
+    {
+      "item": "radishes, trimmed and cut into quarters",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "bunch of spring onions, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "packet of flat leaf parsley, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "packet of mint, leaves picked and finely chopped",
+      "amount": "1 x 20g"
+    },
+    {
+      "item": "sumac, plus extra to garnish",
+      "amount": "1 heaped tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "juice of 1½ lemons",
+      "amount": ""
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C/fan 180°C/gas mark 6. Line a baking sheet with nonstick baking paper.",
+    "Cut the pittas or flatbread roughly into 4cm (1½in) squares and lay them on the baking sheet. Toast them in the oven for 15 minutes, or until they are dry and completely crunchy.",
+    "Put all the salad ingredients into a large salad or mixing bowl and sprinkle over the sumac, olive oil, lemon juice and sea salt and black pepper to taste. Toss the salad well, ensuring everything gets a good coating of dressing. Serve it piled high, topped with the toasted croutons and an extra sprinkling of sumac."
+  ],
+  "image": "/recipes/salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

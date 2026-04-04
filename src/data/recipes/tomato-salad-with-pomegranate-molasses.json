@@ -1,0 +1,55 @@
+{
+  "id": "tomato-salad-with-pomegranate-molasses",
+  "name": "Tomato Salad with Pomegranate Molasses",
+  "persianName": "Gavurdagi Salatasi",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 6 as a side dish",
+  "ingredients": [
+    {
+      "item": "tomatoes",
+      "amount": "600g (1lb 5oz)"
+    },
+    {
+      "item": "green Turkish long peppers, cut into thin rings, or 1 green pepper, thinly sliced lengthways",
+      "amount": "2"
+    },
+    {
+      "item": "large red onion, cut in half and thinly sliced into half moons",
+      "amount": "1"
+    },
+    {
+      "item": "sumac, plus a little extra to garnish",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "walnut pieces, to garnish",
+      "amount": "100g (3½oz)"
+    }
+  ],
+  "method": [
+    "If using large tomatoes, chop them into rough 2cm (¾in) cubes, or, if using cherry or baby plum tomatoes, simply halve them. There is no science or precision to making this salad – you just chop the tomatoes as you like.",
+    "Arrange the tomatoes, pepper rings or strips and onion on a flat serving plate.",
+    "In another bowl combine the sumac, pomegranate molasses, crushed sea salt to taste and a little drizzle of extra virgin olive oil and give the ingredients a good mix. Drizzle the dressing evenly over the salad. Garnish with the walnuts and a little sprinkling of sumac and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
