@@ -1,0 +1,39 @@
+{
+  "id": "caramel-sauce",
+  "name": "CARAMEL sauce",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about ½ cup",
+  "time": "TAKES 15 MINUTES",
+  "intro": "This key Viet ingredient is simply nearly burnt sugar; it’s not at all the caramel sauce for topping ice cream. Vietnamese caramel sauce is stealthily employed in savory dishes to impart a lovely mahogany color and build savory-sweet depth. You’ve likely had caramel sauce in clay-pot (kho) dishes but didn’t know it. Like molasses, it can be added to grilled-meat marinades to enhance the appearance of the final dish.",
+  "ingredients": [
+    {
+      "item": "water, plus ¼ cup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unseasoned rice, apple, or distilled white vinegar (optional)",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "cane sugar",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Fill the sink (or a large bowl or pot) with enough water to come halfway up the sides of the saucepan.",
+    "In the saucepan, combine the 2 tablespoons water, vinegar (if using), and sugar. Set over medium heat and cook, stirring with a heatproof spatula or metal spoon; when the sugar has nearly or fully dissolved, stop stirring. Let the sugar syrup bubble vigorously for 5 to 6 minutes, until it takes on the shade of light tea. Turn the heat to medium-low to stabilize the cooking. Turn on the exhaust to vent the inevitable smoke. (Don’t worry if sugar crystallizes on the pan wall. But if things get crusty in the bubbling sugar syrup, add another drop of vinegar to correct it.) For even cooking, you may occasionally lift and swirl the saucepan.",
+    "Cook the syrup for about 2 minutes longer, until it is the color of dark tea. The next 1 to 2 minutes are critical because the sugar will darken by the second. Monitor the cooking and, to control the caramelization, frequently pick up the saucepan and slowly swirl the syrup. When a dark reddish cast sets in—think the color of Pinot Noir—let the sugar cook a few seconds longer to a color between Cabernet and black coffee. Remove from the heat and place the pan in the water to stop the cooking. Expect the pan bottom to sizzle upon contact.",
+    "Leaving the pan in the sink, add the remaining ¼ cup water. The sugar will seize up, which is okay. When the dramatic bubbling reaction stops, return the pan to medium-high heat, and cook briefly, stirring to loosen and dissolve the sugar.",
+    "Remove the pan from the heat and return to the water in the sink for about 1 minute, stirring, to stop the cooking process and cool the caramel sauce to room temperature.",
+    "Use the sauce immediately, or transfer to a small heatproof glass jar, let cool completely, and then cap and store in a cool, dark place indefinitely."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

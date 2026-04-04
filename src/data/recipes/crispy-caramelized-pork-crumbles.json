@@ -1,0 +1,49 @@
+{
+  "id": "crispy-caramelized-pork-crumbles",
+  "name": "CRISPY CARAMELIZED pork crumbles",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 25 MINUTES",
+  "intro": "My nephew Michael, currently a medical student, is more of an eater than a cook, but he loves these salty-sweet fried nubbins of pork so much that he mastered thịt heo băm to satisfy his cravings. It’s easy to make and great for a quick meal—simply put rice in a bowl, top with the crumbles, pickles (see this page), and stir-fried leafy greens (cook them in the pan after the pork is done).",
+  "ingredients": [
+    {
+      "item": "canola or other neutral oil, plus more as needed",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "finely chopped shallot or yellow onion",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ground pork (80 to 85% lean), coarsely chopped to loosen",
+      "amount": "1 pound"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Caramel Sauce (this page), or 1 teaspoon molasses mixed with 1 teaspoon water",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "green onions, green parts only, thinly sliced",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "In a large skillet over medium heat, warm the canola oil. Add the shallot and cook, stirring, for 3 to 4 minutes, until soft and no longer raw smelling. Add the pork and use a spatula or large slotted spoon to stir, poke, and press it into small pieces. After most of the meat has lost its pink color, 3 to 4 minutes, add the fish sauce, caramel sauce, and sugar and stir to combine.",
+    "Turn the heat to medium-high and continue cooking for 10 to 12 minutes, until richly browned. During cooking, stir and spread out the pork so it covers the bottom of the skillet. Mash any lingering large pieces into smaller ones (aim for shelled peanut size or smaller). While the pork cooks, it will release its juices, start browning, render a little fat, and eventually gently sizzle and fry. As the meat darkens, monitor it carefully and be patient, stirring rhythmically and constantly to avoid burning. During the last 3 or 4 minutes of cooking, lower the heat to medium to promote even browning, and splash in oil if the meat looks dry.",
+    "Remove the skillet from the heat and stir in the green onion. Using a slotted spoon, transfer to a serving dish or shallow bowl, leaving behind the excess fat. Let the meat rest for 5 minutes to darken some more, crisp up, and intensify in flavor.",
+    "Serve the crumbles warm."
+  ],
+  "image": null
+}

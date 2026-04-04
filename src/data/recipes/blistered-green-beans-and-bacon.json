@@ -1,0 +1,60 @@
+{
+  "id": "blistered-green-beans-and-bacon",
+  "name": "BLISTERED GREEN BEANS AND bacon",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 20 MINUTES",
+  "intro": "One of my favorite ways to stir-fry vegetables is to flavor them with Chinese sausage (lap cheung in Cantonese; lạp xưởng in Vietnamese). The dry, sweet sausage isn’t sold at regular supermarkets so I conjure up its flavors with smoky bacon, five-spice powder, and maple syrup.",
+  "ingredients": [
+    {
+      "item": "green beans, stem ends trimmed",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Chinese five-spice powder",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "maple syrup, or 1 teaspoon honey plus 1 teaspoon water",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "apple cider or distilled white vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "thick-cut slices smoked bacon, or 3 thin-cut slices smoked bacon, cut crosswise into ¼- to ⅓-inch-wide strips",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Line a baking sheet with a clean dish towel or a double layer of paper towels.",
+    "Bring a large pot of salted water to a boil over high heat. Add the green beans and cook for 1 to 1½ minutes (there’s no need to return to a boil), until they are a brilliant green and still crisp and snappy. Drain in a colander, then transfer to the prepared baking sheet and spread out to dry, finish cooking in their residual heat, and cool, about 10 minutes.",
+    "In a small bowl, stir together the five-spice powder, maple syrup, fish sauce, soy sauce, and vinegar. Set the seasoning liquid near the stove.",
+    "In a large skillet that holds heat well (such as cast iron, carbon steel, or stainless steel) over medium heat, cook the bacon. When the bacon is crisp and browned, use a slotted spoon to transfer it to a plate. Leave about 2 tablespoons of the bacon grease in the skillet.",
+    "Rewarm the pan over high heat. When it is just shy of smoking, add half of the green beans, spreading them out to fry and sear for 1 to 2 minutes, stirring occasionally, until lightly browned and blistered here and there; some dark brown patches are okay too. Transfer to the plate with the bacon and repeat with the remaining green beans.",
+    "Return the first batch of green beans and the bacon to the skillet, dump in the garlic, and cook, stirring, until hot, 30 to 60 seconds. Splash in the seasoning liquid and cook for about 30 seconds, until the liquid has evaporated.",
+    "Heap the green beans onto a serving plate and enjoy."
+  ],
+  "image": null
+}

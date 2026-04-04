@@ -1,0 +1,30 @@
+{
+  "id": "vietnamese-coffee",
+  "name": "VIETNAMESE coffee",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes a brimming ½ cup",
+  "time": "TAKES 5 MINUTES",
+  "intro": "Don’t feel obligated to buy a traditional Vietnamese, metal coffee filter to make authentic Viet coffee. The phin filter is charming but slow, and not everyone in Vietnam uses it. The important thing to focus on is making inky, slightly bitter, very strong-tasting coffee. Use your favorite method. For a quick daily cup, I employ the Aeropress, which some people compare to a French press but I see it as a high-tech cousin of the phin filter.",
+  "ingredients": [
+    {
+      "item": "ground medium-dark or dark roast coffee, such as Café Du Monde, or French, Italian, or Spanish roast",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "About ⅔ cup hot water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Assemble the Aeropress with a metal or paper filter in place and set over a coffee cup. Add the ground coffee, then shake the chamber to distribute. Pour in 3 tablespoons of the hot water to moisten and bloom the coffee. After the water passes through, about 30 seconds, add the remaining ½ cup hot water. Stir five times, then wait for the water to pass through until half of the original volume remains, 30 to 90 seconds. Slowly plunge to express the remaining coffee before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

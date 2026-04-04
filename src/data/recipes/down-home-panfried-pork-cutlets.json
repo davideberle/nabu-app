@@ -1,0 +1,58 @@
+{
+  "id": "down-home-panfried-pork-cutlets",
+  "name": "DOWN-HOME PANFRIED pork cutlets",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 45 MINUTES",
+  "intro": "This unpretentious recipe dates back to 1944, when my mom first had it in Hai Duong, the town where she grew up. The original, thịt cốt lết, was made with beef, but since beef was a luxury item, Mom’s brother-in-law taught her how to make the dish with affordable pork. He seasoned it just like a beefsteak and quickly fried it up. It was delicious, and when Mom came to America and discovered supermarket bread crumbs, she began breading pork cutlets and panfrying them, much to our family’s delight. (The term cốt lết comes from côtelette, which is French for “cutlet” or “chop.”)",
+  "ingredients": [
+    {
+      "item": "thin-cut boneless pork loin chops, each about ⅓ inch thick",
+      "amount": "1⅓ pounds"
+    },
+    {
+      "item": "large garlic cloves, put through a press or minced and mashed",
+      "amount": "2"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "recently ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "fish sauce or soy sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine yellow cornmeal or plain bread crumbs",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Canola or other neutral oil for panfrying",
+      "amount": ""
+    },
+    {
+      "item": "Chile garlic sauce (see this page) for serving",
+      "amount": ""
+    },
+    {
+      "item": "Bragg Liquid Aminos, Maggi Seasoning sauce, or soy sauce for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Use paper towel to blot excess moisture from the pork. Using a meat mallet or the spine of a knife, gently pound and tenderize each pork chop. Set aside.",
+    "In a small bowl, combine the garlic, salt, pepper, and fish sauce and mix to make a paste. Rub the paste all over the pork, then cover and set aside to marinate at room temperature for 30 minutes.",
+    "Put the cornmeal on a plate. Add the marinated pork chops to the cornmeal and coat each chop. Set aside.",
+    "In a large skillet over medium-high heat, add enough oil to film the bottom. In batches, panfry the pork for 4 to 5 minutes, turning at about the 2½-minute mark, when the first side is golden brown. The second side will not fry up evenly, so let your best efforts be on the first. Between batches, add a little more oil, if needed, and use a spoon to remove some of the dark cornmeal that inevitably accumulates. Transfer the cooked pieces to a rack to rest while you panfry the remaining pork.",
+    "Serve the pork with its more handsome side up, either hot or warm, with chile garlic sauce and liquid aminos for dipping and swiping. This is knife-and-fork food."
+  ],
+  "image": null
+}

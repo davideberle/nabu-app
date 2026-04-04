@@ -1,0 +1,62 @@
+{
+  "id": "pressure-cooker-vegetable-stock",
+  "name": "PRESSURE-COOKER vegetable stock",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 6 cups",
+  "time": "TAKES 1 HOUR",
+  "intro": "For excellent Viet dishes that require vegetable stock, make your own. The flavor of commercially sold vegetable stock or broth has been developed for Western dishes. You can use them in a pinch, but homemade stock yields clean, deep flavor. It’s easy to prepare and economical too. You can use vegetables that are past their prime. Flabby napa cabbage leaves boost flavor. I freeze asparagus trimmings and toss a handful into the pot to build umami depth. Using weight measurements for the vegetables ensures a good balance of flavors.",
+  "ingredients": [
+    {
+      "item": "canola or other neutral oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Chubby ¾-inch (¾-ounce) section ginger, unpeeled, cut into 3 or 4 slices",
+      "amount": ""
+    },
+    {
+      "item": "halved and thickly sliced",
+      "amount": "One 8-ounce yellow onion"
+    },
+    {
+      "item": "sliced (scrub and use unpeeled if you like)",
+      "amount": "One 4-ounce carrot"
+    },
+    {
+      "item": "coarsely chopped",
+      "amount": "One 3-ounce celery stalk"
+    },
+    {
+      "item": "large white mushrooms, stems included, coarsely chopped",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "napa or green cabbage leaves, coarsely chopped",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "small Fuji apple, peeled, cored, and coarsely chopped (optional)",
+      "amount": "½"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1½ teaspoons"
+    }
+  ],
+  "method": [
+    "In a 6-quart pressure cooker over medium-high heat, warm the oil, then add the ginger and onion and cook for 1 to 2 minutes, until fragrant. (If using a multicooker, select a high-heat function, such as Brown for the Fagor Lux, or adjust the Sauté function on the Instant Pot.) Add 5⅓ cups water to the cooker. (If using a multicooker, add 5 cups water.) Add the carrot, celery, mushrooms, cabbage, apple (if using), and salt.",
+    "Lock the lid in place. Bring to high pressure, adjust the heat to maintain pressure, and cook for 15 minutes. Then, remove from the heat, depressurize naturally for 15 minutes, and release the residual pressure. (If using a multicooker, program it to cook at high pressure for 15 minutes, turn it off or unplug it, and depressurize for 20 minutes before releasing residual pressure.)",
+    "Unlock the cooker and wait for any bubbling to subside, about 5 minutes.",
+    "Position a muslin-lined strainer over a 2- to 3-quart saucepan and then ladle or pour the stock through. Let cool briefly, then press or twist the fabric to get more stock from the solids.",
+    "Use the stock immediately, or transfer to airtight containers and refrigerate for up to 3 days or freeze for up to 3 months."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

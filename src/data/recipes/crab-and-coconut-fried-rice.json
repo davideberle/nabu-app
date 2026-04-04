@@ -1,0 +1,53 @@
+{
+  "id": "crab-and-coconut-fried-rice",
+  "name": "CRAB AND COCONUT fried rice",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as a side dish",
+  "time": "TAKES 10 MINUTES",
+  "intro": "I swooned the first time I tasted this rice, a specialty of Phu Quoc island, off the coast of Vietnam. It was presented as a dome of white grains seasoned with touches of garlic and crab. The dish had a mysterious tropical sweet note, which I later figured out was due to one stealth ingredient: Virgin coconut oil.",
+  "ingredients": [
+    {
+      "item": "cooked long-grain white rice, such as jasmine, at room temperature (or a few minutes out of the fridge)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "virgin coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "large garlic clove, minced",
+      "amount": "1"
+    },
+    {
+      "item": "packed cooked crabmeat, such as jumbo lump crabmeat",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Scant ¼ teaspoon recently ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "to 1½ teaspoons fish sauce",
+      "amount": "1"
+    },
+    {
+      "item": "green onion, white and green parts, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "to 3 cilantro sprigs",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Stir the rice to prevent lumps. Set with the remaining ingredients near the stove—this recipe comes together quickly.",
+    "In a large nonstick or well-seasoned carbon-steel skillet over medium-high heat, melt 1 tablespoon of the coconut oil. When the oil is hot, add the garlic and cook for 10 to 15 seconds, until aromatic. (Remove the pan from the heat if you fear the garlic will burn.) Add the crab and pepper, stir to combine, and toss in the fish sauce (use the smaller quantity if the crab is well salted). When fragrant in a funky-good sort of way, add the green onion and give things a stir, then remove from the heat and transfer to a plate.",
+    "In the same skillet over medium-high heat, melt the remaining 1 tablespoon coconut oil. Add the rice and cook, stirring, until the rice is hot and the grains are separate, about 1 minute, then return the crab and cook for 15 to 30 seconds to combine the flavors.",
+    "Transfer the rice to a serving plate, garnish with the cilantro, and serve."
+  ],
+  "image": null
+}

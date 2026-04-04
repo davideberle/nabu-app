@@ -1,0 +1,53 @@
+{
+  "id": "spicy-broccoli-and-herb-slaw",
+  "name": "SPICY BROCCOLI AND herb slaw",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 20 MINUTES",
+  "intro": "Mild-tasting, crunchy fruits and vegetables, such as unripe green papaya and kohlrabi, are often featured in popular Vietnamese salads. They’re cut into matchsticks and tossed with a protein of some sort, lots of fresh herbs, and a tangy dressing. Such salads dazzle with color, textures, and flavor.",
+  "ingredients": [
+    {
+      "item": "w",
+      "amount": "One 12-ounce package broccoli sla"
+    },
+    {
+      "item": "sugar",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "fresh lime juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "very small garlic clove, put through a press or minced and mashed",
+      "amount": "1"
+    },
+    {
+      "item": "Thai or small serrano chile, finely chopped, with seeds intact",
+      "amount": "1"
+    },
+    {
+      "item": "shredded cooked chicken, or 10 pieces Sriracha Tofu (this page), cut into narrow strips",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "coarsely chopped fresh cilantro, mint, or basil",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Put the slaw in a medium heatproof bowl and pour freshly boiled water over it to cover. In about 30 seconds, the slaw should have softened enough for you to easily bend a piece of broccoli so the ends touch. Drain in a colander, rinse with water, and set aside to cool and drain well.",
+    "In a small bowl, combine the sugar, lime juice, and fish sauce, stirring to dissolve the sugar. Taste to make sure it has a balanced tart-sweet-salty flavor. Stir in the garlic and chile, then set the dressing aside.",
+    "Transfer the drained slaw to a large bowl. Add the chicken, cilantro, and dressing and toss well, then let sit for 1 to 2 minutes to develop flavor and toss again.",
+    "Transfer the slaw to a serving plate, leaving most of the excess dressing behind. Serve immediately."
+  ],
+  "image": null
+}

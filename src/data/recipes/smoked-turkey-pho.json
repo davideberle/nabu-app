@@ -1,0 +1,197 @@
+{
+  "id": "smoked-turkey-pho",
+  "name": "SMOKED TURKEY pho",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES ABOUT 1¼ HOURS",
+  "intro": "Vietnam’s national dish, pho noodle soup, is surprisingly flexible and democratic. There are many great renditions, in addition to the classic beef and chicken. This version is terrific because it’s not just for Thanksgiving, it’s deliciously convenient—smoked turkey parts are sold year-round at many grocery stores. They are fully cooked, with big flavor, so there’s less of a time commitment and hassle involved in making a batch of fabulous pho. A pressure cooker speeds things along, but there’s a stockpot option in the Notes. Weigh the ingredients to dial in flavors.",
+  "ingredients": [
+    {
+      "item": "One 1⅓-pound smoked turkey thigh",
+      "amount": ""
+    },
+    {
+      "item": "peeled, cored, and cut into thumbnail-size chunks",
+      "amount": "One 4-ounce Fuji apple"
+    },
+    {
+      "item": "coarsely chopped",
+      "amount": "One 2-ounce celery stalk"
+    },
+    {
+      "item": "sliced (scrub and use unpeeled, if you like)",
+      "amount": "One 3-ounce carrot"
+    },
+    {
+      "item": "napa or regular green cabbage leaves, cut into large pieces",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "stems and leaves, coarsely chopped",
+      "amount": "One 1-ounce bunch fresh cilantro"
+    },
+    {
+      "item": "star anise (24 robust points total)",
+      "amount": "3"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "slender 3-inch cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "Chubby 2-inch (2-ounce) section ginger, peeled, thinly sliced, and bruised",
+      "amount": ""
+    },
+    {
+      "item": "halved and thickly sliced",
+      "amount": "One 10-ounce yellow onion"
+    },
+    {
+      "item": "Fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "About 1½ tablespoons fish sauce",
+      "amount": ""
+    },
+    {
+      "item": "About 2 teaspoons maple syrup, or 1 teaspoon sugar (optional)",
+      "amount": ""
+    },
+    {
+      "item": "dried narrow flat rice noodles (pad thai noodles), boiled in unsalted water until chewy-tender (cooking times vary with brand), rinsed under cool water, and drained",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "small yellow or red onion, very thinly sliced against the grain, soaked in water for 10 minutes, and drained",
+      "amount": "½"
+    },
+    {
+      "item": "green onions, green parts only, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped fresh cilantro, leafy tops only",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Recently ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "handfuls bean sprouts",
+      "amount": "4"
+    },
+    {
+      "item": "thinly sliced chile, such as jalapeño, serrano, or Fresno",
+      "amount": "1"
+    },
+    {
+      "item": "to 6 mint sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "lime, cut into wedges",
+      "amount": "1"
+    },
+    {
+      "item": "Hoisin sauce",
+      "amount": ""
+    },
+    {
+      "item": "Sriracha",
+      "amount": ""
+    },
+    {
+      "item": "large or 6 small dried shiitake mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "hot water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "medium-large green onions",
+      "amount": "2"
+    },
+    {
+      "item": "toasted sesame oil, plus more for drizzling",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Chubby 1-inch (1-ounce) section ginger, peeled, cut into 4 or 5 coins, and bruised",
+      "amount": ""
+    },
+    {
+      "item": "chicken stock (see this page) or store-bought chicken broth",
+      "amount": "6 cups"
+    },
+    {
+      "item": "deboned rotisserie chicken or roast chicken, cut into bite-size pieces, plus the leftover chicken carcass, bones, unwanted parts, pan juices, and skin",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "plus ⅛ teaspoon Chinese five-spice powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "maple syrup, or 1 teaspoon sugar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "dried Chinese wheat noodles, ramen, or soba, boiled according the package directions and drained",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "coarsely chopped fresh cilantro",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baby bok choy, halved lengthwise and cut diagonally into pieces about 1 inch wide and 2 inches long",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "Recently ground black or white pepper, or Japanese togarashi",
+      "amount": ""
+    },
+    {
+      "item": "Any Day Viet Pickle (this page; optional)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "To make the broth Give the smoked turkey a very quick spray or rinse of water to remove visible impurities. Set in a large bowl and add the apple, celery, carrot, cabbage, and cilantro. Keep near the stove.",
+    "In a 6-quart pressure cooker, combine the star anise, cloves, coriander seeds, and cinnamon stick and place over medium heat. Toast the spices for 3 to 4 minutes, shaking or stirring, until fragrant, then add the ginger and yellow onion and sear, stirring, for 45 to 60 seconds, until fragrant; a little browning is okay. (If using a multicooker, use a medium heat setting, such as Sauté on the Fagor Lux, or adjust the Sauté function to “normal” on the Instant Pot.)",
+    "Add 4 cups water to the cooker to arrest the cooking process. (If using a multicooker, add 3½ cups water.) Add the turkey, apple, vegetables, 1½ teaspoons salt, and another 4 cups water. If the ingredients, including the water, fill more than two-thirds of the pot (its maximum fill line), remove some of the water. You can add more later, after cooking and straining.",
+    "Lock the lid in place. Bring to high pressure, adjust the heat to maintain pressure, and cook for 15 minutes. Then, remove from the heat, depressurize naturally for 25 minutes, and release the residual pressure. (If using a multicooker, program it to cook at high pressure for 15 minutes, turn it off or unplug it, and depressurize for 30 minutes before releasing residual pressure.)",
+    "Unlock the lid and, once the bubbling stops, retrieve the turkey, rinsing with water to cool and prevent it from drying out. When cool enough to handle, remove the meat and discard the skin, if you like. Cut the meat into pieces that are small enough to manage with chopsticks, then set aside.",
+    "Place the mushrooms in a medium bowl, add 1 cup of the hot water, and let soak for 15 minutes. Strain the mushrooms, reserving the soaking liquid, and set aside.",
+    "Meanwhile, thinly slice the green parts of the green onions to get 3 tablespoons and set aside for garnish. Cut the remainder into pinkie-finger lengths and bruise them.",
+    "In a 4-quart saucepan over medium heat, warm the sesame oil. Add the bruised green onion and ginger and cook until aromatic, about 1 minute. Add the chicken stock, chicken bits, mushroom soaking liquid, and remaining 1 cup water. Partially cover, bring to a boil over high heat, then adjust the heat to a simmer. Skim off any scum that rises to the surface and add the five-spice powder, 1 teaspoon salt, maple syrup, and soy sauce. Simmer, uncovered, for 30 minutes, then remove from the heat and let rest for 5 minutes. If needed, skim off any fat.",
+    "Pour the broth through a mesh strainer into a clean pot. (Line the strainer with muslin for super-clear broth.) You should have 7 cups; if needed, return to the stove top and boil down to concentrate flavors or add water to dilute.",
+    "Stem and quarter the shiitake mushrooms, then add to the broth. (At this point, you can transfer the mushrooms and broth to an airtight container and refrigerate for up to 2 days.) Return the broth to a simmer over high heat, adjusting the heat to maintain a simmer.",
+    "Meanwhile, divide the noodles among four noodle-soup bowls. Arrange the chicken on top in one layer. If the noodles and chicken are cold, warm them in the microwave with 20-second blasts. Top with the sliced green onion and cilantro.",
+    "Add the bok choy to the simmering broth and cook for about 1 minute, until bright green and slightly soft. Taste and, if needed, season the broth with more salt, ¼ teaspoon at a time. Raise the heat and bring to a boil, then divide the broth and vegetables among the bowls. Drizzle with sesame oil and sprinkle with pepper. Serve, and have diners add the pickle to their bowls for bright flavor and crunch."
+  ],
+  "image": null
+}

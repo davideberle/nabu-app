@@ -1,0 +1,53 @@
+{
+  "id": "use-it-up-fried-rice",
+  "name": "USE-IT-UP fried rice",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 as a side dish",
+  "time": "TAKES ABOUT 20 MINUTES",
+  "intro": "Along with banh mi and tacos, fried rice is another go-to for repurposing leftovers. It’s easy to make a luxurious mound of cơm chiên, as long as you remember a few points: To ensure grains that don’t gum up, use dry-ish, cooked rice. Make the rice up to 5 days ahead, or prepare a fresh batch (see this page) and let it cool completely on a baking sheet.",
+  "ingredients": [
+    {
+      "item": "cooked long-grain rice, such as white or brown jasmine, at room temperature (or a few minutes out of the fridge)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "fat, such as canola oil, peanut oil, coconut oil, rendered lard, or European-style butter",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "to 1½ cups cooked leftovers, such as meat, seafood, vegetables, tofu, or tempeh (or a combination), cut or broken up into pieces the size of large peas",
+      "amount": "1"
+    },
+    {
+      "item": "egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "fish sauce, soy sauce, Bragg Liquid Aminos, or Maggi Seasoning sauce, plus more for serving",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "green onion, white and green parts, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Fine sea salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Stir the rice to prevent lumps. Set with the remaining ingredients near the stove—this recipe comes together quickly.",
+    "In a large nonstick or carbon-steel skillet over medium-high or high heat, warm 1 tablespoon of the fat. When the fat is nearly shimmering, add the garlic and stir-fry for 10 to 15 seconds, until aromatic. Add the leftovers and cook, stirring, for 1 to 2 minutes to reheat and refresh. Add the rice and stir-fry for about 2 minutes, until warm and slightly revived.",
+    "Push the rice to the skillet’s perimeter to create a 4-inch-well in the middle. Add the remaining 1 tablespoon fat to the well, pour in the egg, then pour the fish sauce around the rim of the well (onto the rice). Quickly stir-fry to break up, scramble, and work the golden egg bits into the rice. Add the green onion and cook for 10 to 15 seconds longer, until just wilted. Turn off the heat, taste, and season with salt, if needed.",
+    "Transfer the rice to a plate or shallow bowl. Serve with additional fish sauce, soy sauce, or Maggi Seasoning in case diners want an extra-savory punch."
+  ],
+  "image": null
+}

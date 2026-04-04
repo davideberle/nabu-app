@@ -1,0 +1,93 @@
+{
+  "id": "shaking-beef",
+  "name": "SHAKING beef",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 30 MINUTES",
+  "intro": "A deliciously quirky combo of warm cubes of seared steak atop a cool salad, this classic is traditionally considered a special-occasion dish in Vietnam, where beefsteak is a luxury. Given that, cooks cleverly cut the meat into smaller pieces to imbue it with flavor, cook it quickly, and serve it to a crowd. The name in Vietnamese, thịt bò lúc lắc, refers to the back-and-forth shaking (lúc lắc) of the skillet as the beef (thịt bò) cooks. Shaking beef is a Viet restaurant favorite, and a cinch to make at home.",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "recently ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic cloves, put through a press or minced and mashed",
+      "amount": "2"
+    },
+    {
+      "item": "to 2 tablespoons oyster sauce",
+      "amount": "1½"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "beefsteak, such as bottom sirloin (tri-tip) or New York strip, trimmed and cut into ¾- to 1-inch cubes",
+      "amount": "1½ pounds"
+    },
+    {
+      "item": "to 2 tablespoons canola oil",
+      "amount": "1"
+    },
+    {
+      "item": "thinly sliced red onion or shallot",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sugar or honey",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "pinches fine sea salt",
+      "amount": "2"
+    },
+    {
+      "item": "About 4 grinds black pepper",
+      "amount": ""
+    },
+    {
+      "item": "unseasoned rice vinegar",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "lightly packed watercress, baby arugula, or other salad greens",
+      "amount": "4 cups"
+    },
+    {
+      "item": "fresh mint, basil, or other herb leaves, torn (optional)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "to 8 cherry tomatoes, halved (optional)",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "To prepare the beef In a medium bowl, stir together the sugar, cornstarch, pepper, garlic, 1½ tablespoons of the oyster sauce, the soy sauce, and fish sauce. Taste and, if a saltier finish is needed, add up to 1½ teaspoons oyster sauce. Add the beef, toss to coat well, and let marinate for 20 minutes at room temperature. Keep the canola oil nearby.",
+    "To make the salad Rinse the onion in a strainer under cold running water for about 10 seconds, then set aside. In a large bowl (suitable for tossing the salad), whisk together the sugar, salt, pepper, vinegar, and water. Add the onion, top with the watercress, and, if you wish, add the mint and tomatoes, but don’t toss.",
+    "Set a large skillet that can get very hot (such as carbon steel or cast iron) over high heat and add enough of the canola oil to film the bottom. When the oil is shimmering, carefully add the beef, spreading it out in one layer, and cook for 3 to 4 minutes, shaking the pan every 30 to 60 seconds to sear the beef on all sides; it should be medium-rare. (If you want to minimize mess, cover the pan with a splatter guard, and flip the meat with a spatula.) Remove from the heat.",
+    "Quickly toss the salad and transfer everything, including the dressing, to a platter or serving dish. Pile the cooked beef and its juices on top, and serve immediately. At the table, ceremoniously combine all the ingredients and invite diners to dive in."
+  ],
+  "image": null
+}

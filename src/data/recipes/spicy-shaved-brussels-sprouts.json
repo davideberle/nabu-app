@@ -1,0 +1,52 @@
+{
+  "id": "spicy-shaved-brussels-sprouts",
+  "name": "SPICY SHAVED brussels sprouts",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 15 MINUTES",
+  "intro": "Brussels sprouts have a wonderful bittersweet edge that can take on big flavors. Here, the seasoning mixture of garlic, chile, and diluted vinegar echo a garlic vinegar that’s a popular condiment in Hanoi. After serving this mixture as a table condiment for pho, I began incorporating it into my repertoire to create a tangy-spicy-pungent undercurrent in sautés and stir-fries. The seasonings don’t hit you over the head but rather unite and synergize all the ingredients.",
+  "ingredients": [
+    {
+      "item": "or 3 garlic cloves, chopped (use the maximum if you like its boldness)",
+      "amount": "2"
+    },
+    {
+      "item": "Fresno or jalapeño chile, halved lengthwise and thinly sliced crosswise, with seeds intact",
+      "amount": "1"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unseasoned rice vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "brussels sprouts",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "to 2 tablespoons canola or other neutral oil (use the maximum for extra richness)",
+      "amount": "1½"
+    },
+    {
+      "item": "soy sauce, or 1½ teaspoons fish sauce",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "In a small bowl, combine the garlic, chile, salt, water, and vinegar. Let the seasonings sit for 5 minutes (or even overnight) to develop flavor.",
+    "Meanwhile, trim a bit of the dry-ish stem end from each brussels sprout, discarding any leaves that fall off. Halve the sprouts from stem to top and, with the cut side facing down, cut each half into ⅛-inch-thick pieces. (If you like, use a food processor fitted with the slicing blade to thinly cut the sprouts.) Set near the stove.",
+    "In a large skillet over medium-high heat, warm the canola oil. When the oil is hot, add the sprouts and cook, stirring, for about 1 minute, until glistening and slightly softened. Lower the heat to medium, pour in the seasonings, and continue to cook, stirring, until crisp-tender, about 3 minutes. (Splash in a little water if things look dry.) Raise the heat to high, then pour in the soy sauce, stirring to combine, and cook for 15 to 30 seconds, until the sprouts absorb the liquid. Remove from the heat, transfer to a serving dish or shallow bowl, and serve hot or warm. They aren’t bad at room temperature, either."
+  ],
+  "image": null
+}

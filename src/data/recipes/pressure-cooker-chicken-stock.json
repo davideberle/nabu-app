@@ -1,0 +1,47 @@
+{
+  "id": "pressure-cooker-chicken-stock",
+  "name": "PRESSURE-COOKER chicken stock",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 6 cups",
+  "time": "TAKES ABOUT 1½ HOURS",
+  "intro": "I keep canned chicken broth in my pantry, and I also make my own. The pressure cooker makes excellent stock quickly, but you can take the more traditional route and simmer the stock in a stockpot, which takes longer (see the Notes). Chicken backs alone don’t yield super-tasty stock because, although they may be fatty, they aren’t meaty enough. Given that, combine the backs (ask for them at the meat counter if you don’t keep a frozen stash) with meaty parts like drumsticks, which are often well priced; wings aren’t as flavorful. If backs are unavailable, use more meaty parts.",
+  "ingredients": [
+    {
+      "item": "to 1¾ pounds chicken backs",
+      "amount": "1½"
+    },
+    {
+      "item": "meaty chicken parts, such as drumsticks, thighs, or breast",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Chubby 1½-inch (1½-ounce) section ginger, unpeeled, cut into 3 pieces and bruised",
+      "amount": ""
+    },
+    {
+      "item": "small Fuji apple, peeled, cored, and coarsely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "medium yellow onion, halved and thickly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1¼ teaspoons"
+    }
+  ],
+  "method": [
+    "Put the chicken backs and parts in a 6-quart pressure cooker with enough water to just cover. Partially cover the pot with the lid (there’s no need to lock it in place) and bring to a vigorous simmer over high heat. (If using a multicooker, use a high heat setting, such as Brown on the Fagor Lux, or adjust the Sauté function on the Instant Pot.) Uncover and simmer for 1 to 2 minutes, then turn off the heat.",
+    "Set a colander in the sink, dump in the chicken and all the liquid, and quickly rinse and spray off the impurities. Transfer the chicken to a bowl and set aside. Give the pressure cooker a scrubbing and then return the chicken to it. Add 6⅓ cups water to the cooker. (If using a multicooker, add 6 cups water.) Drop in the ginger, apple, onion, and salt.",
+    "Lock the lid in place. Bring to high pressure, adjust the heat to maintain pressure, and cook for 45 minutes. Then, remove from the heat, depressurize naturally for 20 minutes, and release the residual pressure. (If using a multicooker, program it to cook at high pressure for 45 minutes, turn it off or unplug it, and depressurize for 25 minutes before releasing residual pressure.)",
+    "Unlock the cooker and wait for any bubbling to subside, about 5 minutes. Using a metal ladle, remove most of the fat on top, leaving some for flavor. (Or, remove the fat after straining and chilling the stock, when it’s easier.) Using a slotted spoon, remove the large solids.",
+    "Position a strainer over a medium or large saucepan (line the strainer with muslin for super-clear stock and easy straining) and ladle or pour the stock through.",
+    "Use the stock immediately, or transfer to airtight containers and refrigerate for up to 3 days or freeze for up to 3 months."
+  ],
+  "image": null
+}

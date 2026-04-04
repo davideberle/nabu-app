@@ -1,0 +1,37 @@
+{
+  "id": "pomegranate-molasses",
+  "name": "POMEGRANATE molasses",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes a scant ½ cup",
+  "time": "TAKES 30 MINUTES, PLUS ABOUT 1 HOUR TO COOL",
+  "intro": "Why is this recipe for a Middle Eastern ingredient in a Vietnamese cookbook? Because I needed an accessible substitute for tamarind liquid, a fruity-tart seasoning for southern Vietnamese–style seafood stir-fries and soups. Having spied pomegranates (lựu) being sold by Hanoi street vendors in 2015, I pondered its use in Viet cooking. Turns out the Middle Eastern fruit pairs well with fish sauce and other Viet flavors to create newish dishes such as Pomegranate Sriracha Shrimp (this page) and Tangy Seafood Stew (this page). If your supermarket doesn’t stock pomegranate molasses (check the sweeteners and international foods sections), use this recipe to make it from bottled juice, such as Pom brand. For cooks who want to go old-school, the Notes offer tamarind tips.",
+  "ingredients": [
+    {
+      "item": "pomegranate juice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "plus 1 teaspoon strained fresh lemon juice, plus more as needed",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "To make in the microwave In a 4-cup glass measuring cup (or similar microwave-safe container), combine the pomegranate juice, lemon juice, and sugar and microwave on high in 4- to 5-minute intervals, until the mixture has reduced to ½ cup of syrup, 20 to 25 minutes.",
+    "To make on the stove top In a 1½- or 2-quart saucepan over high heat, combine the pomegranate juice, lemon juice, and sugar and bring to a boil, stirring occasionally to dissolve the sugar. Turn the heat to medium-high to maintain a vigorous simmer or a low boil and let the liquid bubble for 25 to 30 minutes, swirling the pan now and then for even cooking, until it’s reduced by 75 percent; you should have ½ cup of syrup. (The syrup should easily coat the back of a spoon with a thickish cabernet-colored film. If you run your finger through, the line should hold; but be careful, because it’s hot.)",
+    "Regardless of your cooking method, let the hot syrup cool for 15 minutes, then transfer to a glass jar and let cool completely, uncovered, to further concentrate and thicken. Taste the molasses, and if a tart edge is needed, add more lemon juice, ½ teaspoon at a time, whisking or stirring well to combine.",
+    "Store the molasses, refrigerated, for up to 6 months. If it firms up, warm it to liquify before using."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

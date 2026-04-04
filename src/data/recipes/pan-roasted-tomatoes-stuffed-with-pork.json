@@ -1,0 +1,60 @@
+{
+  "id": "pan-roasted-tomatoes-stuffed-with-pork",
+  "name": "PAN-ROASTED TOMATOES stuffed with pork",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 45 MINUTES",
+  "intro": "Plucky Vietnamese cooks hybridized many French foods to create popular dishes. Called cà tô-mát farci (farci means “stuffed” in French, and tô-mát is a Vietnamese transliteration of the French tomate), this preparation of tomato halves filled with a piquant pork mixture is traditionally panfried—a sputtery and messy endeavor. Once I switched to stove-top searing, followed by oven roasting, there was less oil and effort involved for the same terrific results.",
+  "ingredients": [
+    {
+      "item": "medium-large slightly under-ripe tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "ground pork (about 85% lean) or ground chicken thigh",
+      "amount": "1 pound"
+    },
+    {
+      "item": "to 4 tablespoons cooked rice (use less for pork, more for chicken)",
+      "amount": "3"
+    },
+    {
+      "item": "finely chopped yellow onion",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "garlic clove, put through a press or minced and mashed",
+      "amount": "1"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "recently ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "canola or other neutral oil",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F.",
+    "Meanwhile, halve the tomatoes through the equator (not through the stem end) and use a metal measuring tablespoon, grapefruit spoon, or melon baller to remove the seeds and meaty centers to create tomato cups with sturdy walls; be gentle near the stem. (Reserve the insides for another use.)",
+    "In a medium bowl, combine the pork, rice, onion, garlic, fish sauce, salt, and pepper and use your fingertips or a fork to gently mix. Divide the stuffing into eight portions.",
+    "Use a paper towel to blot moisture from the inside of each tomato cup. Then, use a fork or spoon to stuff each cup, pressing gently to ensure that the stuffing reaches all the crevices. A little mounding is fine.",
+    "In a large ovenproof skillet or braiser over high heat, warm the canola oil. When the oil is barely shimmering, place each tomato cup, skin-side down, in the skillet and sear for about 1 minute, until there’s a dark brown circle in the center where the tomato touches the pan. Using tongs and a metal spoon, turn each tomato over and cook for 1 to 2 minutes, until the filling is well browned (when you shake the skillet, the tomato cups should move).",
+    "Slide the skillet into the oven and roast for 13 to 15 minutes, until the tomato skin is wrinkly and the meat mixture is cooked and hot throughout. Remove from the oven and let rest for 5 minutes.",
+    "Serve the tomatoes warm, with any pan juices."
+  ],
+  "image": null
+}

@@ -1,0 +1,48 @@
+{
+  "id": "streetside-corn-and-chile",
+  "name": "STREETSIDE CORN AND chile",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 15 MINUTES",
+  "intro": "Even though corn is a New World food, it is beloved in Vietnam. There it is often spotlighted in velvety soups, or grilled and coated with rich green onions and oil (see this page). But one of the best ways to eat it is as a spoon-able street food called bắp xào: corn kernels stir-fried in butter with chiles and tiny dried shrimp. It’s a Viet version of esquites (Mexican corn salad), and it’s super-easy.",
+  "ingredients": [
+    {
+      "item": "unsalted butter or virgin coconut oil",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "fresh corn kernels",
+      "amount": "2 cups"
+    },
+    {
+      "item": "seeded and chopped fresh chile, such as Fresno or jalapeño",
+      "amount": "1"
+    },
+    {
+      "item": "fish sauce, or 1½ teaspoons Bragg Liquid Aminos or Maggi Seasoning sauce plus ¼ teaspoon fine sea salt",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "Rounded ¼ teaspoon smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "green onion, white and green parts, thinly sliced and separated into rings",
+      "amount": "1"
+    },
+    {
+      "item": "furikake; 3 pieces Korean toasted seaweed, crumbled; or ½ sheet sushi nori, toasted and crumbled",
+      "amount": "1½ teaspoons"
+    }
+  ],
+  "method": [
+    "In a large skillet over medium-high heat, melt the butter. Add the corn and chile and cook for about 2 minutes, until heated through. Add the fish sauce and smoked paprika and cook, stirring frequently, for 1 to 2 minutes longer, until the corn has cooked through and developed a spicy and savory flavor. (In my carbon-steel skillet, when a couple of kernels jump and pop, it’s time to move on.)",
+    "Remove the pan from the heat, add the green onion, and stir until softened. Let cool for 3 to 5 minutes, then transfer to a bowl and top with the furikake.",
+    "Serve with spoons for each diner to mix things up, scoop, and eat."
+  ],
+  "image": null
+}

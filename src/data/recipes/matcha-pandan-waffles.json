@@ -1,0 +1,64 @@
+{
+  "id": "matcha-pandan-waffles",
+  "name": "MATCHA “PANDAN” waffles",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes 2 waffles, to serve 4",
+  "time": "TAKES 25 MINUTES",
+  "intro": "Grassy with hints of vanilla and tea, pandan (aka screw pine) is one of the most alluring ingredients in tropical Vietnam. Its vibrant color and flavor imbue a lot of foods, including the popular waffles sold at many Little Saigon bakeries. Crisp on the outside and tender on the inside, the waffles are eaten like a cookie (no syrup is used).",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Brimming ¼ cup sugar",
+      "amount": ""
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "matcha powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Rounded ¼ teaspoon fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "full-fat unsweetened coconut milk (shake or stir before using)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "virgin coconut oil, melted and cooled",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1¼ teaspoons"
+    }
+  ],
+  "method": [
+    "Preheat the waffle maker. Meanwhile, in a 4-cup measuring cup or a bowl, combine the flour, sugar, cornstarch, baking powder, matcha, and salt and whisk into a pale green mixture.",
+    "In a medium bowl, whisk together the egg, coconut milk, coconut oil, and vanilla. Pour the liquid ingredients into the dry ingredients and whisk vigorously until smooth, very thick, and sage green. Expect it to rise a bit. If you have time, let it rest for 5 minutes for a slightly smoother texture.",
+    "Pour the batter into the waffle maker, filling the wells until nearly overflowing (I use 1 cup for my Presto Belgian waffle maker). Cook for about 5 minutes, until the waffle is golden and verging on totally crisp. Remove the waffle with a fork or chopsticks and let cool on a wire rack for about 5 minutes to let it crisp up some more. Repeat with the remaining batter. When the waffles cool completely, they will lose a bit of their crispness. If the waffles aren’t as crisp as you like them by the time you eat (or if you prefer crunchy waffles), heat them in a 350°F toaster oven or regular oven for 3 to 4 minutes.",
+    "Leave the waffles whole, or break them up to share, and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

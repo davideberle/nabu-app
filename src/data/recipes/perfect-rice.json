@@ -1,0 +1,32 @@
+{
+  "id": "perfect-rice",
+  "name": "PERFECT rice",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 4½ cups, to serve 4",
+  "time": "TAKES 40 MINUTES",
+  "intro": "Fluffy grains of rice are essential to everyday Vietnamese eating, which is why rice was the first thing I learned to cook. You can prepare it in an electric rice cooker, a pressure cooker, or a multicooker, but you’re not going to get consistently good results or be able to troubleshoot unless you’ve practiced cooking rice in a pot on the stove top. Some people boil and drain rice like pasta, but to best express the grain’s flavor and texture, I stick with an easy, old-fashioned approach that involves a heavy saucepan and a gradual lowering of the heat. Make rice in the same pan on a regular basis, and soon, you’ll be eyeballing the level of the water instead of measuring it.",
+  "ingredients": [
+    {
+      "item": "long-grain rice, preferably white jasmine",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "plus 2 tablespoons water",
+      "amount": "1¾ cups"
+    }
+  ],
+  "method": [
+    "Put the rice in a medium saucepan and add water to cover by about 1 inch. Swish with your fingers to loosen surface starch. Pour off the water and repeat two or three times, or until the water is nearly clear (it will never be crystal clear). Dump the rice into a mesh strainer, shake to expel excess water, and return the rice to the pan.",
+    "Add the 1¾ cups plus 2 tablespoons water to the pan and bring to a boil over high heat, stirring occasionally to prevent clumping. Lower the heat slightly and let simmer briskly for 1 to 3 minutes, stirring occasionally, until glossy on top. A few craters may form, which is fine. Turn the heat to low, cover the pan, and cook for 10 minutes.",
+    "Turn off the heat and let the rice sit for 10 minutes. Uncover, fluff with chopsticks or a fork to circulate the grains, re-cover, and let rest again for 10 minutes to complete cooking. The rice will stay warm, covered, for 30 minutes. Fluff once more before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

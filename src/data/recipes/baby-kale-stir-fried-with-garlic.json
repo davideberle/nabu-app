@@ -1,0 +1,61 @@
+{
+  "id": "baby-kale-stir-fried-with-garlic",
+  "name": "BABY KALE STIR-FRIED with garlic",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 10 MINUTES",
+  "intro": "The go-to leafy green vegetable in Vietnam is water spinach (rau muống in Vietnamese; on choy in Cantonese). The spear-shaped leaves and tender stems have a delicate, grassy flavor and are often stir-fried with garlic and oyster sauce for a silky, earthy side dish reminiscent of creamed spinach.",
+  "ingredients": [
+    {
+      "item": "About 2 teaspoons oyster sauce, plus more as needed",
+      "amount": ""
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "canola or other neutral oil, plus 1 tablespoon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar (optional)",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Fresno, jalapeño, or serrano chile, seeded and chopped (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "large garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Two 5- to 6-ounce packages prewashed baby kale, spinach, or a blend of leafy greens",
+      "amount": ""
+    },
+    {
+      "item": "Recently ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, combine the oyster sauce, fish sauce, and 1 teaspoon canola oil. Taste and add additional oyster sauce if you like briny depth (I often need an extra 1 teaspoon when I use Dynasty brand); if you want some sweetness to balance the flavor, add the sugar. Add the chile (if using) and about one-third of the garlic and stir to mix. Set the flavoring sauce near the stove. Mix the cornstarch with the water, then set the slurry by the stove too, along with the kale.",
+    "In a 5- to 6-quart Dutch oven or a large sauté pan over high heat, warm the remaining 1 tablespoon canola oil. When the oil is shimmering, add the remaining garlic and stir-fry for 5 to 10 seconds, until fragrant. Add one-fourth of the greens and stir and fold a few times. As soon as they soften and collapse, add another one-fourth. Repeat until all the greens are in the pan. When the greens are about one-third of their original volume, stir the flavoring sauce and add to the pan. (The greens will collapse more.)",
+    "Quickly stir and fold to distribute the sauce evenly. When the greens have released their juices, add the cornstarch slurry and cook for 30 seconds, until the sauce thickens slightly and the greens take on a silky, shiny finish.",
+    "Transfer the kale to a plate, sprinkle with pepper, and serve."
+  ],
+  "image": null
+}

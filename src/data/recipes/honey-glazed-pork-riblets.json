@@ -1,0 +1,65 @@
+{
+  "id": "honey-glazed-pork-riblets",
+  "name": "HONEY-GLAZED pork riblets",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES ABOUT 45 MINUTES",
+  "intro": "Serving someone a whole slab of ribs is not a Viet thing. People love to nibble and gnaw on small riblets, which cook up fast and take on the seasonings well (there’s more surface area exposed).",
+  "ingredients": [
+    {
+      "item": "garlic cloves, coarsely chopped",
+      "amount": "5"
+    },
+    {
+      "item": "Brimming ⅓ cup coarsely chopped shallot",
+      "amount": ""
+    },
+    {
+      "item": "Chinese five-spice powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "packed light or dark brown sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Rounded ¼ teaspoon recently ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "One 2½- to 3-pound slab St. Louis–style pork ribs, sawed through the bone into 2 long strips",
+      "amount": ""
+    },
+    {
+      "item": "honey",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "sriracha",
+      "amount": "1½ teaspoons"
+    }
+  ],
+  "method": [
+    "Pour 1 cup water into a 6-quart pressure cooker or multicooker. Set a metal steamer basket (use a perforated metal insert designed for a pressure cooker or a large collapsible steamer basket) inside the cooker. Set aside.",
+    "In a small food processor, combine the garlic, shallot, five-spice powder, brown sugar, salt, pepper, and 1 tablespoon of the fish sauce and whirl together, pausing to scrape down the sides and add ½ teaspoon water if needed. (If you don’t have a processor, mince the garlic and shallot and then combine with the other ingredients.) Transfer the marinade to a large bowl.",
+    "Halve each rib strip between two bones so they’re more manageable. Add to the marinade and use your fingers to coat well.",
+    "Put the ribs in the prepared pressure cooker, arranging them in the steamer basket somewhat loosely to facilitate even cooking. (I stand the strips like a tepee or coil them.) Lock the lid in place. Bring to high pressure, adjust the heat to maintain pressure, and cook for 15 minutes. Then, remove from the heat, depressurize naturally for 10 minutes, and release the residual pressure. (If using a multicooker, program it to cook at high pressure for 15 minutes—do not use the steam function—then turn it off or unplug it and depressurize for 15 minutes before releasing residual pressure.)",
+    "While the cooker depressurizes, set an oven rack in the middle position and preheat the broiler, so it’s nice and hot. Line a rimmed baking sheet with aluminum foil and place a rack inside.",
+    "In a small bowl, stir together the honey, sriracha, and remaining 1½ teaspoons fish sauce. Set the glaze aside.",
+    "Unlock the cooker and, using tongs, place the ribs, bone-side up, on the prepared pan. Brush the ribs with some of the honey glaze, then broil for 4 to 5 minutes, until sizzling and browned here and there. Flip the ribs and repeat the glazing and broiling. Remove from the oven and let cool for a few minutes, then brush on any remaining glaze for extra shine. Cut between the bones.",
+    "Serve the ribs hot, warm, or at room temperature."
+  ],
+  "image": null
+}

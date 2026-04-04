@@ -1,0 +1,48 @@
+{
+  "id": "super-simple-overnight-rice-porridge",
+  "name": "SUPER-SIMPLE overnight rice porridge",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 30 MINUTES, PLUS OVERNIGHT SOAKING",
+  "intro": "Creamy and comforting Asian rice porridges are prepared by gently simmering rice in liquid, such as water or stock, until the starches release. These soups are generically called cháo in Vietnamese, but in America, they’re better known as porridge or congee. The thrifty, versatile soups soothe stomachaches, colds, and hangovers. They’re a breakfast and lunch food, but don’t let this stop you from enjoying them for dinner.",
+  "ingredients": [
+    {
+      "item": "packed cooked white rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "About 5 cups chicken stock (see this page), vegetable stock (see this page), or store-bought chicken or vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "water, plus more as needed",
+      "amount": "2 cups"
+    },
+    {
+      "item": "thick slices unpeeled ginger, bruised",
+      "amount": "3"
+    },
+    {
+      "item": "green onions, white parts kept whole, green parts cut into thin rings",
+      "amount": "2"
+    },
+    {
+      "item": "About ½ teaspoon fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Recently ground black pepper (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a 4-quart saucepan, combine the rice, chicken stock, and water. Cover and let sit overnight at cool room temperature (around or below 60°F) or in the refrigerator.",
+    "The next morning, add the ginger and the white parts of the green onions to the pot. Partially cover (a small gap is perfect to minimize evaporation and avoid a boil over) and bring to vigorous simmer over high heat. Lower the heat and gently simmer, partially covered, for 15 minutes, stirring occasionally and adjusting the heat as needed. When done, most of the liquid will have been absorbed (you’ll see little separation between the rice and liquid). Discard the ginger and green onions. Stir the pot, cover tightly, turn off the heat, and let rest for 10 minutes to finish thickening. The desired thickness of the porridge can vary according to taste; it can be rustic and thick, or elegant and thin, or somewhere in between. If needed, add a splash of water to thin or cook a little longer to thicken. Taste and season with the salt.",
+    "When ready to serve, reheat the porridge to a simmer, then ladle into individual bowls. Garnish with sliced green onions and pepper."
+  ],
+  "image": null
+}

@@ -1,0 +1,61 @@
+{
+  "id": "grilled-lemongrass-pork-chops",
+  "name": "GRILLED LEMONGRASS pork chops",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 45 MINUTES",
+  "intro": "Vietnamese cooks love thin pork chops because the chops pick up seasonings quickly, cook fast, and taste great—perfect for a weeknight meal. Sold at many supermarkets, the skinny chops have either a curved rib bone or T-shaped bone. An edge of fat and marbling signal good flavor. You can marinate the pork many ways, but lemongrass is a signature Viet flavor.",
+  "ingredients": [
+    {
+      "item": "garlic cloves, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "coarsely chopped shallot, or 3 tablespoons roughly chopped yellow onion",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "coarsely chopped fresh lemongrass (from 2 medium stalks)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "light or dark brown sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Rounded ¼ teaspoon recently ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "canola or other neutral oil",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1¼ teaspoons"
+    },
+    {
+      "item": "molasses, dark amber honey, or Caramel Sauce (this page)",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Nuoc Cham Dipping Sauce (this page; optional)",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "To make the marinade In a small food processor, combine the garlic, shallot, lemongrass, brown sugar, and pepper and whirl to a fine texture. Add the canola oil, fish sauce, soy sauce, and molasses and process until relatively smooth, like a wet paste. Transfer to a medium bowl.",
+    "Use paper towel to blot excess moisture from the pork. Add the pork to the marinade, turning to coat well, then cover and set aside to marinate at room temperature for 30 minutes. Or, refrigerate for up to 24 hours; let the meat sit out at room temperature for 30 minutes before grilling.",
+    "Warm a cast-iron stove-top grill pan over medium-high heat, prepare a medium-hot charcoal fire, or preheat a gas grill to medium-high (you can hold your hand 6 inches above the grill for 3 to 4 seconds). Grill the pork chops for 5 to 7 minutes, turning frequently, until firm and cooked through. Pierce with the sharp point of a knife to test (it’s okay if the center is faintly pink). Transfer to a plate and let rest for 5 to 10 minutes.",
+    "Serve the chops warm, passing the dipping sauce at the table, if desired."
+  ],
+  "image": null
+}

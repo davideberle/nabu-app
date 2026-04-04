@@ -1,0 +1,53 @@
+{
+  "id": "grilled-slashed-chicken",
+  "name": "GRILLED SLASHED chicken",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 45 MINUTES",
+  "intro": "When I first had this grilled chicken on Phu Quoc island (a hub for excellent fish sauce, located off the southern coast of Vietnam), a free-range chicken was chopped through the bone, marinated, and grilled as part of a feast of many dishes. About a dozen of us nibbled on the chicken with abandon as we guzzled cold beer. It was marvelous, and not because of the all the beer. Cutting up the chicken exposed more of it to the seasonings, which is what made it taste extra good. Plus, the small pieces cooked up quickly and evenly.",
+  "ingredients": [
+    {
+      "item": "garlic cloves, roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "roughly chopped shallot or yellow onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "recently ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "to 3 teaspoons fish sauce",
+      "amount": "2"
+    },
+    {
+      "item": "water (optional)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "small whole chicken legs (about 2 pounds total)",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "In a small food processor, combine the garlic, shallot, sugar, salt, pepper, and 2 teaspoons fish sauce. Whirl into a relatively smooth mixture, pausing to scrape down the sides and, if necessary, adding the water to facilitate things. Taste and add up to 1 teaspoon fish sauce to create a savory-sweet-pungent finish. (Or, use a mortar and pestle to render the solid ingredients into a paste and then stir in the fish sauce.) Transfer the marinade to a large bowl.",
+    "Pat the chicken legs with paper towels to remove excess moisture, then trim any excess skin flaps. Position each leg flatter-side down on your cutting board. Cut two slashes across each thigh and two slashes across each drumstick in their thicker parts, cutting down to the bone. Flip the legs and slash twice on the thigh and once on the drumstick.",
+    "Add the chicken to the marinade, rubbing the marinade into the crevices and under the skin. Cover with plastic wrap and marinate at room temperature for 20 minutes, or refrigerate overnight (return to room temperature before grilling).",
+    "Prepare a medium charcoal fire or preheat a gas grill to medium (you can hold your hand 6 inches above the grill for 4 to 5 seconds). Grill the chicken for 16 to 20 minutes, turning frequently, until cooked through (poke or cut into the thickest part, and the juices flowing out should be clear). Transfer to a platter and let rest for 5 to 10 minutes before serving."
+  ],
+  "image": null
+}

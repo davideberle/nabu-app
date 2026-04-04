@@ -1,0 +1,45 @@
+{
+  "id": "vibrant-turmeric-coconut-rice",
+  "name": "VIBRANT TURMERIC coconut rice",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 40 MINUTES",
+  "intro": "For decades I’ve been chasing this turmeric-stained rice perfumed with coconut, trying to figure out an unfussy way to make it well. Fancy versions of cơm nị call for frying the rice first and cooking it with coconut milk, clove, star anise, and cinnamon, but those additions tend to muddle the flavors. Plus, coconut milk can weigh down rice and turn it gummy.",
+  "ingredients": [
+    {
+      "item": "long-grain white rice, such as jasmine",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coconut water",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "grated peeled fresh turmeric, or ¼ teaspoon plus ⅛ teaspoon ground turmeric",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "virgin coconut oil",
+      "amount": "1½ tablespoons"
+    }
+  ],
+  "method": [
+    "Wash the rice in several changes of water (see this page) and drain well.",
+    "In a medium saucepan over high heat, combine the rice, coconut water, turmeric, and salt and bring to a boil, stirring occasionally to loosen the grains. Lower the heat slightly and let bubble for a few minutes, stirring occasionally. When the rice is glossy on top, turn the heat to low, cover, and cook for 10 minutes.",
+    "Turn off the heat and let the rice sit for 10 minutes. Uncover, add the coconut oil, and fluff with chopsticks or a fork to combine and to circulate the grains. Re-cover and let rest for 10 minutes, or up to 30 minutes to finish cooking. Before serving, fluff the rice again.",
+    "Transfer the rice to a serving bowl or platter and let diners help themselves."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

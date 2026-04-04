@@ -1,0 +1,38 @@
+{
+  "id": "charred-brussels-sprouts-with-coconut",
+  "name": "CHARRED BRUSSELS SPROUTS with coconut",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 15 MINUTES",
+  "intro": "The first time my family had brussels sprouts was in 1975 at the Camp Pendleton refugee resettlement facilities in Southern California. They were overcooked, sickly green, and gassy. We didn’t eat them again until the early 2000s, when I served farm-fresh ones during the holiday season. My parents and siblings initially recoiled but changed their minds after the first bite. They liked and welcomed them to our table.",
+  "ingredients": [
+    {
+      "item": "small to medium brussels sprouts",
+      "amount": "1 pound"
+    },
+    {
+      "item": "canola or other neutral oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "coconut water, plus more as needed",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "fish sauce, or 1 tablespoon soy sauce",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "Trim a bit of the dry-ish stem end from each brussels sprout, discarding any leaves that fall off. Halve the sprouts from stem to top, transfer to a large bowl, and toss with 1 tablespoon of the canola oil. Set near the stove.",
+    "In a large skillet that holds heat well (such as cast iron, carbon steel, or stainless steel) over high heat, warm the remaining 1 tablespoon canola oil. Add the brussels sprouts, then use chopsticks or tongs to arrange them, cut-side down, in one layer and cook, without stirring, for 3 to 5 minutes, until well browned in spots on the cut side.",
+    "Lower the heat to medium, add the coconut water, and cover the pan with a lid or aluminum foil to steam for 3 to 4 minutes, until the liquid has evaporated. Uncover and poke one or two sprouts with the tip of a paring knife; they should be just tender. If they are not, add a splash or two of coconut water, which will help them cook a bit more via a shot of hot moisture.",
+    "Add the fish sauce, shake the pan and stir to distribute, and cook, uncovered, for about 1 minute longer to further develop the flavor and caramelize the brussels sprouts. If needed, raise the heat to coax the cooking. When the sprouts are lightly glazed, remove from the heat. Let rest for 1 minute.",
+    "Serve the sprouts hot, warm, or at room temperature."
+  ],
+  "image": null
+}

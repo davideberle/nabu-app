@@ -1,0 +1,52 @@
+{
+  "id": "char-siu-chicken",
+  "name": "CHAR SIU chicken",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4",
+  "time": "TAKES 45 MINUTES",
+  "intro": "Savory-sweet and garlicky Chinese barbecued pork, called char siu in Cantonese and xá xíu in Vietnamese, is hard to resist. Since the classic porky version requires a good hour (better yet, overnight) to marinate, my weeknight approach is to make it with chicken thighs and grill it for a wonderful old-school flavor. You can use a stove-top grill pan as suggested here, or prepare a medium charcoal fire or preheat a gas grill to medium and cook the chicken for 10 to 12 minutes, basting during the last 3 minutes. Enjoy char siu chicken for dinner with rice and a quick stir-fried vegetable or a salad. Use leftovers (or make a double batch) for banh mi (see this page), a noodle soup, or fried rice (see this page).",
+  "ingredients": [
+    {
+      "item": "boneless, skinless chicken thighs",
+      "amount": "1¾ pounds"
+    },
+    {
+      "item": "large garlic clove, put through a press or minced and mashed",
+      "amount": "1"
+    },
+    {
+      "item": "Chinese five-spice powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "honey, preferably amber colored",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Brimming 2 tablespoons hoisin sauce",
+      "amount": ""
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "ketchup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Scant 2 teaspoons toasted sesame oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Pat the chicken thighs with paper towels to remove excess moisture, then trim and discard any big fat pads. If the thighs are large or super-uneven in thickness, butterfly each one. Lay the thigh, smooth-side down, on your cutting board. Wielding your knife horizontally, slash the big mound of flesh to create a flap of meat, stopping just shy of cutting all the way through. Fold back the meat flap that you just created. The thigh should now be about 50 percent longer and relatively even in thickness. If the result seems awkwardly large, cut it crosswise into two smaller, square-ish pieces. Set aside.",
+    "In a large bowl, stir together the garlic, five-spice powder, honey, hoisin, soy sauce, ketchup, and sesame oil. Remove 3 tablespoons and set aside for glazing the chicken. Add the chicken to the bowl, coating the pieces well. Cover with plastic wrap and marinate at room temperature for 30 minutes, or refrigerate up to 24 hours (return to room temperature before cooking).",
+    "Lightly oil a cast-iron stove-top grill pan and set over medium-high heat. Add the chicken and cook for 6 to 10 minutes, turning several times. To test for doneness, pierce the flesh with the tip of a knife; the chicken is cooked when clear juices flow out. During the last 2 minutes, when the chicken feels firmish, baste with the reserved marinade to freshen flavor and add sheen. Transfer to a platter and let rest for 5 to 10 minutes before serving."
+  ],
+  "image": null
+}
