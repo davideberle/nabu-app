@@ -24,7 +24,7 @@ const tiles = [
     emoji: "🍳",
     description: "Browse, search, cook mode",
     href: "/recipes",
-    stats: "47 recipes",
+    stats: "5 recipes",
   },
   {
     id: "music",
