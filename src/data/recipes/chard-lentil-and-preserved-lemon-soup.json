@@ -1,0 +1,133 @@
+{
+  "id": "chard-lentil-and-preserved-lemon-soup",
+  "name": "Chard, lentil, and preserved lemon soup",
+  "subtitle": "Shorbet adass w sliq",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c04"
+  },
+  "introduction": "If something is verging on the holier-than-thou in the kitchen, top with some crispy fried onions, we say. They work particularly well when paired with that most virtuous of all things—the lentil!—in something such as mjaddarat el burgul (see this page), rummaniyya (see this page), or, as here, this soup. For those happy feeling holy, though, the soup also works well as it is, without the onions. If you still want a crunch, then some pumpkin seeds (see this page for herb-salad ones or see this page for spicy ones), caramelized pistachios (this page), or croutons all go really well.\n\nGetting ahead: The soup can be made well ahead—up to three days if keeping in the fridge, or longer if you are going to freeze it—and the onions also keep well in a sealed container at room temperature for a couple of days. Make more of the onions than you need, if you like—they are lovely to have to sprinkle on all sorts of things: lentils and rice, oven-roasted veg, or grilled meat.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 cup/200g green or brown lentils",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/200g green or brown lentils",
+      "group": null
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "1 onion, finely chopped (1 cup/150g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, finely chopped (1 cup/150g)",
+      "group": null
+    },
+    {
+      "item": "3 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "1½ tsp cumin seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp cumin seeds",
+      "group": null
+    },
+    {
+      "item": "1 tsp coriander seeds, roughly crushed in a mortar and pestle",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp coriander seeds, roughly crushed in a mortar and pestle",
+      "group": null
+    },
+    {
+      "item": "½ tsp ground turmeric",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground turmeric",
+      "group": null
+    },
+    {
+      "item": "¼ tsp chile flakes",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp chile flakes",
+      "group": null
+    },
+    {
+      "item": "9 oz/250g Swiss chard, stalks removed and finely chopped, leaves roughly torn",
+      "amount": "",
+      "unit": "",
+      "original": "9 oz/250g Swiss chard, stalks removed and finely chopped, leaves roughly torn",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "3 cups/750ml chicken or vegetable stock",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups/750ml chicken or vegetable stock",
+      "group": null
+    },
+    {
+      "item": "1 preserved lemon, seeds discarded, skin and flesh finely chopped (2 tbsp/20g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 preserved lemon, seeds discarded, skin and flesh finely chopped (2 tbsp/20g)",
+      "group": null
+    },
+    {
+      "item": "½ recipe Crispy Onions (see this page)",
+      "amount": "",
+      "unit": "",
+      "original": "½ recipe Crispy Onions (see this page)",
+      "group": null
+    },
+    {
+      "item": "1 lemon, cut into wedges (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon, cut into wedges (optional)",
+      "group": null
+    }
+  ],
+  "method": [
+    "Rinse the lentils in plenty of cold water and place them in a medium saucepan. Cover with 1 qt/1L of water and bring to a boil over high heat. Decrease the heat to low and simmer for 30 minutes, or until the lentils are just soft. Drain and set aside.",
+    "Put the oil into a medium saucepan—about 8 inches/20cm wide—and place over medium heat. Once hot, add the onion and cook for 10 minutes, stirring occasionally, until soft and golden brown. Add the garlic, cumin seeds, and coriander seeds and cook for 1 minute, then add the turmeric, chile flakes, chard stalks, 1½ tsp of salt, and a good grind of black pepper. Mix well to combine, then add the lentils and stock. Bring to a boil, then decrease the heat to medium-low and simmer for 10 minutes before adding the chard leaves and preserved lemon. Cook for 4 minutes, then remove from the heat.",
+    "Transfer about half the soup to a countertop blender (or to a separate bowl, if using an immersion blender) and blitz until smooth. Return the blitzed soup to the un-blitzed soup in the pan and set aside until ready to serve.",
+    "Warm the soup through and divide among four bowls. Top with the crispy onions and a squeeze of lemon, if you like, and serve."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

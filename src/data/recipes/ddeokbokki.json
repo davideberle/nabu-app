@@ -1,0 +1,50 @@
+{
+  "id": "ddeokbokki",
+  "name": "DDEOKBOKKI",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_022"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_022"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3-5 Tbs pepper paste\n\t3-5 Tbs sugar\n\t1-2 tsp black bean sauce\n\t8-10 cloves garlic, minced\n\t1 tsp aged soy sauce\n\t1-2 tsp salt\n\t1/2-1 Tbs gochugaru",
+      "amount": "",
+      "unit": "",
+      "original": "3-5 Tbs pepper paste\n\t3-5 Tbs sugar\n\t1-2 tsp black bean sauce\n\t8-10 cloves garlic, minced\n\t1 tsp aged soy sauce\n\t1-2 tsp salt\n\t1/2-1 Tbs gochugaru"
+    },
+    {
+      "item": "4-5 cups tube shaped rice cake \n\t6 cabbage leaves, chopped\n\t1 onion, sliced\n\t2 carrots, sliced into matchsticks\n\t2 cups of large green onions, sliced on the angle into large chunks\n\tsome kombu broth\n\tsesame seeds",
+      "amount": "",
+      "unit": "",
+      "original": "4-5 cups tube shaped rice cake \n\t6 cabbage leaves, chopped\n\t1 onion, sliced\n\t2 carrots, sliced into matchsticks\n\t2 cups of large green onions, sliced on the angle into large chunks\n\tsome kombu broth\n\tsesame seeds"
+    },
+    {
+      "item": "1 package of Korean ramen noodles\n\tFried Mandu (Dumplings)\n\tFried Kim-mari (laver wraps, these are sweet potato noodles wraped in kim/nori seaweed)",
+      "amount": "",
+      "unit": "",
+      "original": "1 package of Korean ramen noodles\n\tFried Mandu (Dumplings)\n\tFried Kim-mari (laver wraps, these are sweet potato noodles wraped in kim/nori seaweed)"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

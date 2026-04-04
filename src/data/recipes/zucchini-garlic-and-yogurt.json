@@ -1,0 +1,91 @@
+{
+  "id": "zucchini-garlic-and-yogurt",
+  "name": "Zucchini, garlic, and yogurt",
+  "subtitle": "M’tawaneh",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c03"
+  },
+  "introduction": "M’tawaneh is traditionally made with the scooped-out flesh of zucchini after they’ve been hollowed in order to be stuffed. Here, however, we’re short-cutting the process by starting with the whole zucchini, skin and all. It has a bit more texture as a result, which we love, making it more of a veggie side or condiment than a completely smooth dip. The result is rich, light, and comforting all at once.\n\nServe this either as it is, scooped up with some warm pita for a light lunch with some black olives, or as a side to all sorts of things. Pan-fried fish, grilled chicken, or roasted beets, for example, all work particularly well.\n\nKeeping notes: This keeps well in the fridge for up to three days.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four as a dip or side",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 tbsp olive oil, plus more to serve",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil, plus more to serve",
+      "group": null
+    },
+    {
+      "item": "1 onion, finely chopped (1 cup/150g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, finely chopped (1 cup/150g)",
+      "group": null
+    },
+    {
+      "item": "4 large zucchini, chopped into ½-inch/1cm dice (6⅔ cups/800g)",
+      "amount": "",
+      "unit": "",
+      "original": "4 large zucchini, chopped into ½-inch/1cm dice (6⅔ cups/800g)",
+      "group": null
+    },
+    {
+      "item": "Salt",
+      "amount": "",
+      "unit": "",
+      "original": "Salt",
+      "group": null
+    },
+    {
+      "item": "⅔ cup/200g Greek yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup/200g Greek yogurt",
+      "group": null
+    },
+    {
+      "item": "3 large garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 large garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "½ tsp dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp dried mint",
+      "group": null
+    },
+    {
+      "item": "1 tsp dried pink peppercorns (not the kind in brine), roughly crushed in a mortar and pestle",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp dried pink peppercorns (not the kind in brine), roughly crushed in a mortar and pestle",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put the oil into a medium sauté pan and place over medium-high heat. Add the onion and cook for about 5 minutes, stirring from time to time, until it has started to soften. Add the zucchini and ½ tsp of salt, and cook for 10 minutes or so, stirring a few times, until the zucchini are soft. Remove the pan from the heat and set aside to cool.",
+    "Put the yogurt, garlic, and ¼ tsp of salt into a large bowl and mix to combine. Once the zucchini are cool, add to the yogurt and stir to combine. Transfer to either a serving platter with a lip or a shallow bowl. Sprinkle with the dried mint and peppercorns, drizzle with some olive oil, and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

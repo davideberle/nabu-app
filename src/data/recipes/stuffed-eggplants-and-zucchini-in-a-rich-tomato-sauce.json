@@ -1,0 +1,263 @@
+{
+  "id": "stuffed-eggplants-and-zucchini-in-a-rich-tomato-sauce",
+  "name": "Stuffed eggplants and zucchini in a rich tomato sauce",
+  "subtitle": "Baatingan w kusaa bil banadoura",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c07"
+  },
+  "introduction": "Stuffing vegetables is such an everyday event in the Palestinian kitchen that most cooks have a special knife to help them with the task. It’s called a manakra, with a thin blade curved into a semicircle and both sides serrated. You can get them online or in specialty shops but, for a good alternative, a swivel peeler (a straight one, as opposed to a Y-shaped one) or a corer both work very well. Sami and Tara were also shown how to use a power drill, by some ladies serving lunch out of a garage in a parking lot in Jerusalem, to core carrots and zucchini, but such a recommendation comes with obvious health and safety warnings!\n\nServe these either as a side or as a main, with a salad or some other cooked vegetables alongside. Some bread is also good, to mop up the juices.\n\nGetting ahead: The stuffing mixture can be made up to a day ahead. The tomato sauce keeps well in the fridge for up to three days, and also freezes well. Double the recipe for the sauce, if you can, so that you have a batch ready to go when you next need it.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves six as a main, or twelve as a side",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2½ tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp olive oil",
+      "group": "Sauce"
+    },
+    {
+      "item": "2 onions, finely diced (2½ cups/350g)",
+      "amount": "",
+      "unit": "",
+      "original": "2 onions, finely diced (2½ cups/350g)",
+      "group": "Sauce"
+    },
+    {
+      "item": "4 cups/1kg tomato puree",
+      "amount": "",
+      "unit": "",
+      "original": "4 cups/1kg tomato puree",
+      "group": "Sauce"
+    },
+    {
+      "item": "12¼ oz/350g ripe tomatoes (2 large), coarsely grated",
+      "amount": "",
+      "unit": "",
+      "original": "12¼ oz/350g ripe tomatoes (2 large), coarsely grated",
+      "group": "Sauce"
+    },
+    {
+      "item": "3¼ cups/750ml chicken stock or water",
+      "amount": "",
+      "unit": "",
+      "original": "3¼ cups/750ml chicken stock or water",
+      "group": "Sauce"
+    },
+    {
+      "item": "1 tbsp sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp sugar",
+      "group": "Sauce"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Sauce"
+    },
+    {
+      "item": "¾ cup plus 2 tbsp/175g Egyptian rice (see this page)",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup plus 2 tbsp/175g Egyptian rice (see this page)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "9 oz/250g ground lamb (or ground beef or a mixture of both)",
+      "amount": "",
+      "unit": "",
+      "original": "9 oz/250g ground lamb (or ground beef or a mixture of both)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¼ cup/60ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/60ml olive oil",
+      "group": "Stuffing"
+    },
+    {
+      "item": "½ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground cinnamon",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¾ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp ground allspice",
+      "group": "Stuffing"
+    },
+    {
+      "item": "½ tsp ground cumin",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground cumin",
+      "group": "Stuffing"
+    },
+    {
+      "item": "About 3 green onions, finely sliced (⅓ cup/35g)",
+      "amount": "",
+      "unit": "",
+      "original": "About 3 green onions, finely sliced (⅓ cup/35g)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¾ cup/15g mint leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g mint leaves, roughly chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¾ cup/15g parsley leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g parsley leaves, roughly chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1 cup/20g dill, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g dill, roughly chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1 red chile, seeded and finely diced (1 tbsp/10g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 red chile, seeded and finely diced (1 tbsp/10g)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1 lemon: finely grate the zest to get 1 tsp",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon: finely grate the zest to get 1 tsp",
+      "group": "Stuffing"
+    },
+    {
+      "item": "3 tbsp water",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp water",
+      "group": "Stuffing"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1½ lb/700g eggplants (between 3 and 6, depending on size)",
+      "amount": "",
+      "unit": "",
+      "original": "1½ lb/700g eggplants (between 3 and 6, depending on size)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1½ lb/700g zucchini (between 3 and 6, depending on size)",
+      "amount": "",
+      "unit": "",
+      "original": "1½ lb/700g zucchini (between 3 and 6, depending on size)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "7 tbsp/100ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "7 tbsp/100ml olive oil",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "6 garlic cloves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "6 garlic cloves, finely chopped",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "1 tbsp coriander seeds, lightly crushed in a mortar and pestle",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp coriander seeds, lightly crushed in a mortar and pestle",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "1 red chile, seeded and finely diced (1 tbsp/10g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 red chile, seeded and finely diced (1 tbsp/10g)",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "¼ cup/5g parsley leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g parsley leaves, roughly chopped",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "¼ cup/5g mint leaves, roughly torn",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g mint leaves, roughly torn",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "¼ cup/5g dill leaves",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g dill leaves",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "1 green onion, thinly sliced (2 tbsp/10g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 green onion, thinly sliced (2 tbsp/10g)",
+      "group": "Coriander adha"
+    },
+    {
+      "item": "1 cup/250g Greek yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/250g Greek yogurt",
+      "group": "Coriander adha"
+    }
+  ],
+  "method": [
+    "To make the sauce, put the oil into a saucepan or casserole pan with a lid—about 10 inches/25cm wide—and place over medium heat. Add the onions and cook for about 10 minutes, stirring frequently, until soft and caramelized. Add the rest of the sauce ingredients, along with 2½ tsp of salt and a good grind of black pepper. Simmer over medium heat for about 10 minutes, stirring from time to time, then remove from the heat and set aside.",
+    "To make the stuffing, while the sauce is cooking, place all the ingredients in a large bowl with 1½ tsp of salt and a good grind of black pepper. Mix well, using your hands to make sure that everything is well incorporated. If making in advance, keep in the fridge until ready to use.",
+    "Trim the stalks from the eggplants, then insert a manakra (or peeler or corer) into the eggplant; you want it to be very close to the skin—about ⅛ inch/3mm away—but not so close that it tears and won’t hold its shape when it’s stuffed. Scoop out the flesh to create a generous cavity. You don’t need the flesh anymore, but keep it for another recipe; it can be cut into cubes and steamed or added to your next omelette. If your eggplants are particularly large, slice them in half, crosswise, and scoop out the flesh using a regular small serrated knife—be sure to keep one end of each half intact, so that the stuffing does not fall out!",
+    "Use the manakra or a swivel peeler to scoop out the zucchini flesh. Keep about ⅛ inch/3mm of flesh attached to the skin inside the zucchini and about ½ inch/1cm from the end intact—they need to be robust enough to keep the stuffing inside. Again, keep the scooped-out flesh to use elsewhere.",
+    "Using your hands, so that you can push in a bit of stuffing at a time, fill all the eggplant and zucchini cavities. Stop filling them about ½ inch/1cm from the top of each vegetable; the stuffing needs some space to expand inside the vegetables when they are cooking.",
+    "Gently lower the stuffed vegetables into the sauce. They won’t fit in a single layer, but try to avoid too much overlap and submerge them in the sauce as much as you can. Return the sauce to medium heat and, once simmering, decrease the heat to low. Cover the pan and simmer very gently for 90 minutes, or until the rice is completely cooked through and soft—test if it is ready by sticking a knife into the middle of one of the vegetables; it should go in very easily. Don’t worry if some of the rice/stuffing spills into the tomato sauce, this can happen and it will be fine when served.",
+    "To make the adha, meanwhile, put the oil into a small frying pan and place over medium heat. After about 1 minute, add the garlic and decrease the heat to medium-low. Cook for about 5 minutes, stirring very often, until the garlic is golden and crispy. Keep a close eye on the pan here; you don’t want the oil to get too hot and for the garlic to burn. Reserving the oil as you pour, strain the garlic through a sieve. Set the garlic aside—it will crisp up as it cools down—and return the oil to the pan. Add the coriander seeds and chile and cook for about 1 minute, stirring a few times, until fragrant. Remove from the heat, transfer to a separate bowl, and set aside until needed.",
+    "When the vegetables are cooked and the sauce is thick and rich (but still pourable), use a slotted spoon to carefully lift the vegetables out of the pan. Pour the sauce onto a large serving platter (or individual serving plates) with a rim and top with the stuffed vegetables. Spoon on the adha—the coriander-chile oil first, followed by the fried garlic slices—then sprinkle with the fresh herbs and green onion. Serve warm or at room temperature, with the yogurt spooned alongside."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

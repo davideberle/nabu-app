@@ -1,0 +1,121 @@
+{
+  "id": "roasted-tofu-and-squash-with-green-peanut-sauced-noodles",
+  "name": "ROASTED TOFU AND SQUASH WITH GREEN PEANUT SAUCED NOODLES",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore",
+    "chapter": "chapter08"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "chapter08"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "60 g (2 oz) soba or udon noodles",
+      "amount": "",
+      "unit": "",
+      "original": "60 g (2 oz) soba or udon noodles"
+    },
+    {
+      "item": "2 stalks cavolo nero (lacinato kale), torn",
+      "amount": "",
+      "unit": "",
+      "original": "2 stalks cavolo nero (lacinato kale), torn"
+    },
+    {
+      "item": "100 g (3½ oz) extra-firm tofu",
+      "amount": "",
+      "unit": "",
+      "original": "100 g (3½ oz) extra-firm tofu"
+    },
+    {
+      "item": "1 tablespoon cornflour (cornstarch)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon cornflour (cornstarch)"
+    },
+    {
+      "item": "1 tablespoon soy sauce",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon soy sauce"
+    },
+    {
+      "item": "1 teaspoon garlic granules",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon garlic granules"
+    },
+    {
+      "item": "1 wedge of butternut squash, cut into chunks",
+      "amount": "",
+      "unit": "",
+      "original": "1 wedge of butternut squash, cut into chunks"
+    },
+    {
+      "item": "1½ teaspoons olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons olive oil"
+    },
+    {
+      "item": "100 ml (3½ fl oz/scant ½ cup) coconut milk",
+      "amount": "",
+      "unit": "",
+      "original": "100 ml (3½ fl oz/scant ½ cup) coconut milk"
+    },
+    {
+      "item": "1½ teaspoons Jamaican curry powder",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons Jamaican curry powder"
+    },
+    {
+      "item": "1 tablespoon soy sauce",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon soy sauce"
+    },
+    {
+      "item": "50 g (2 oz/3 tablespoons) smooth peanut butter",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/3 tablespoons) smooth peanut butter"
+    },
+    {
+      "item": "50 g (2 oz/1½ cups) coriander (cilantro) leaves",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/1½ cups) coriander (cilantro) leaves"
+    },
+    {
+      "item": "50 g (2 oz/1½ cups) flat-leaf parsley leaves",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/1½ cups) flat-leaf parsley leaves"
+    },
+    {
+      "item": "1 spring onion (scallion)",
+      "amount": "",
+      "unit": "",
+      "original": "1 spring onion (scallion)"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

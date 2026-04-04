@@ -1,0 +1,129 @@
+{
+  "id": "roasted-chicken-with-clementines-arak",
+  "name": "Roasted chicken with clementines & arak",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c05_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 lb / 450 g Jerusalem artichokes, peeled and cut lengthwise into 6 wedges ⅔ inch / 1.5 cm thick",
+      "amount": "",
+      "unit": "",
+      "original": "1 lb / 450 g Jerusalem artichokes, peeled and cut lengthwise into 6 wedges ⅔ inch / 1.5 cm thick",
+      "group": null
+    },
+    {
+      "item": "3 tbsp freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp freshly squeezed lemon juice",
+      "group": null
+    },
+    {
+      "item": "8 skin-on, bone-in chicken thighs, or 1 medium whole chicken, quartered",
+      "amount": "",
+      "unit": "",
+      "original": "8 skin-on, bone-in chicken thighs, or 1 medium whole chicken, quartered",
+      "group": null
+    },
+    {
+      "item": "12 banana or other large shallots, halved lengthwise",
+      "amount": "",
+      "unit": "",
+      "original": "12 banana or other large shallots, halved lengthwise",
+      "group": null
+    },
+    {
+      "item": "12 large cloves garlic, sliced",
+      "amount": "",
+      "unit": "",
+      "original": "12 large cloves garlic, sliced",
+      "group": null
+    },
+    {
+      "item": "1 medium lemon, halved lengthwise and then very thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium lemon, halved lengthwise and then very thinly sliced",
+      "group": null
+    },
+    {
+      "item": "1 tsp saffron threads",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp saffron threads",
+      "group": null
+    },
+    {
+      "item": "3½ tbsp / 50 ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3½ tbsp / 50 ml olive oil",
+      "group": null
+    },
+    {
+      "item": "¾ cup / 150 ml cold water",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup / 150 ml cold water",
+      "group": null
+    },
+    {
+      "item": "1¼ tbsp pink peppercorns, lightly crushed",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ tbsp pink peppercorns, lightly crushed",
+      "group": null
+    },
+    {
+      "item": "¼ cup / 10 g fresh thyme leaves",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup / 10 g fresh thyme leaves",
+      "group": null
+    },
+    {
+      "item": "1 cup / 40 g tarragon leaves, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup / 40 g tarragon leaves, chopped",
+      "group": null
+    },
+    {
+      "item": "2 tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp salt",
+      "group": null
+    },
+    {
+      "item": "½ tsp freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp freshly ground black pepper",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/roasted-chicken-with-clementines-arak.jpg"
+}

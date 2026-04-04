@@ -1,0 +1,44 @@
+{
+  "id": "pumpkin-porridge",
+  "name": "PUMPKIN PORRIDGE",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_012"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_012"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 kabocha (danhobak, 단호박) or small pumpkin, about 2 pounds\n\t1/2 cup sweet rice (aka glutinous rice), soaked in water for at least an hour or use 1/2 cup sweet rice flour (chapssal garu or mochiko), mixed in 1 cup of water\n\t1/2 tsp salt\n\t1 to 2 tbsps brown sugar adjust to taste or omit",
+      "amount": "",
+      "unit": "",
+      "original": "1 kabocha (danhobak, 단호박) or small pumpkin, about 2 pounds\n\t1/2 cup sweet rice (aka glutinous rice), soaked in water for at least an hour or use 1/2 cup sweet rice flour (chapssal garu or mochiko), mixed in 1 cup of water\n\t1/2 tsp salt\n\t1 to 2 tbsps brown sugar adjust to taste or omit"
+    },
+    {
+      "item": "1/4 cup red beans, pat (팥), soaked and boiled - optional or use canned sweetened red beans (if using sweetened beans, omit sugar above\n\t1 tbsp pine nuts, pumpkin seeds, jujubes, if available Walnuts or pecans will be great too",
+      "amount": "",
+      "unit": "",
+      "original": "1/4 cup red beans, pat (팥), soaked and boiled - optional or use canned sweetened red beans (if using sweetened beans, omit sugar above\n\t1 tbsp pine nuts, pumpkin seeds, jujubes, if available Walnuts or pecans will be great too"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

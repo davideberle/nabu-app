@@ -1,0 +1,103 @@
+{
+  "id": "curried-scalloped-potatoes-with-coconut-milk",
+  "name": "CURRIED SCALLOPED POTATOES with COCONUT MILK",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 tablespoons coconut oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons coconut oil"
+    },
+    {
+      "item": "1 leek, white and tender green parts, thinly sliced (about 1 cup)",
+      "amount": "",
+      "unit": "",
+      "original": "1 leek, white and tender green parts, thinly sliced (about 1 cup)"
+    },
+    {
+      "item": "1 large clove garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "1 large clove garlic, minced"
+    },
+    {
+      "item": "¼ to ½ teaspoon minced seeded habanero chile",
+      "amount": "",
+      "unit": "",
+      "original": "¼ to ½ teaspoon minced seeded habanero chile"
+    },
+    {
+      "item": "2 tablespoons Jamaican Curry Powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons Jamaican Curry Powder"
+    },
+    {
+      "item": "1¼ teaspoons coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ teaspoons coarse sea salt"
+    },
+    {
+      "item": "3 cups coconut milk",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups coconut milk"
+    },
+    {
+      "item": "1¼ cups vegetable stock, homemade or store-bought",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ cups vegetable stock, homemade or store-bought"
+    },
+    {
+      "item": "2¼ pounds Yukon gold potatoes, peeled and sliced into ¼-inch-thick rounds",
+      "amount": "",
+      "unit": "",
+      "original": "2¼ pounds Yukon gold potatoes, peeled and sliced into ¼-inch-thick rounds"
+    },
+    {
+      "item": "½ cup panko bread crumbs",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup panko bread crumbs"
+    },
+    {
+      "item": "2 tablespoons minced fresh tarragon",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons minced fresh tarragon"
+    },
+    {
+      "item": "Freshly ground white pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Freshly ground white pepper"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,131 @@
+{
+  "id": "sweet-and-sour-soup-with-seaweed",
+  "name": "◁ SWEET-AND-SOUR SOUP WITH SEAWEED",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "09_Part04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Part04"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3½ ounces (100 g) enoki mushrooms (see Note), rinsed with salted water and separated into bite-size bundles",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) enoki mushrooms (see Note), rinsed with salted water and separated into bite-size bundles"
+    },
+    {
+      "item": "3½ ounces (100 g) fresh pineapple, cut into triangular slices",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) fresh pineapple, cut into triangular slices"
+    },
+    {
+      "item": "1 medium plum tomato, cut into wedges",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium plum tomato, cut into wedges"
+    },
+    {
+      "item": "1 teaspoon salt, divided",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon salt, divided"
+    },
+    {
+      "item": "1 tablespoon tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water"
+    },
+    {
+      "item": "6 cups (1.5 L) water",
+      "amount": "",
+      "unit": "",
+      "original": "6 cups (1.5 L) water"
+    },
+    {
+      "item": "7 okras, sliced crosswise on the bias",
+      "amount": "",
+      "unit": "",
+      "original": "7 okras, sliced crosswise on the bias"
+    },
+    {
+      "item": "1 teaspoon vegetable or mushroom stock powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon vegetable or mushroom stock powder"
+    },
+    {
+      "item": "1 ounce (28 g) dried seaweed (wakame or dulse; see Note), soaked and roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) dried seaweed (wakame or dulse; see Note), soaked and roughly chopped"
+    },
+    {
+      "item": "7 ounces (200 g) silken tofu, cut into 1-inch (2.5 cm) cubes",
+      "amount": "",
+      "unit": "",
+      "original": "7 ounces (200 g) silken tofu, cut into 1-inch (2.5 cm) cubes"
+    },
+    {
+      "item": "2 ounces (56 g) rice paddy herb, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "2 ounces (56 g) rice paddy herb, chopped"
+    },
+    {
+      "item": "2 ounces (56 g) cilantro, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "2 ounces (56 g) cilantro, chopped"
+    },
+    {
+      "item": "1 bird’s eye chili pepper, sliced, for garnish (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 bird’s eye chili pepper, sliced, for garnish (optional)"
+    },
+    {
+      "item": "1. In a large saucepan, heat oil over medium-low heat. When hot, add leek and cook and stir until fragrant (about 1 minute). Add mushrooms, pineapple, tomato, and ½ teaspoon of the salt, and stir well.",
+      "amount": "",
+      "unit": "",
+      "original": "1. In a large saucepan, heat oil over medium-low heat. When hot, add leek and cook and stir until fragrant (about 1 minute). Add mushrooms, pineapple, tomato, and ½ teaspoon of the salt, and stir well."
+    },
+    {
+      "item": "2. Add tamarind paste and the water, and bring to a boil over high heat. Add okra, stock powder, remaining ½ teaspoon of salt, seaweed, and tofu, and bring to a boil again.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Add tamarind paste and the water, and bring to a boil over high heat. Add okra, stock powder, remaining ½ teaspoon of salt, seaweed, and tofu, and bring to a boil again."
+    },
+    {
+      "item": "3. Add rice paddy herb and cilantro, and cook for 1 more minute only (overcooked seaweed tends to develop an overly fishy taste and lose its color and crunchiness). Remove from heat.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Add rice paddy herb and cilantro, and cook for 1 more minute only (overcooked seaweed tends to develop an overly fishy taste and lose its color and crunchiness). Remove from heat."
+    },
+    {
+      "item": "4. Garnish with chili slices (if using) and serve hot.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Garnish with chili slices (if using) and serve hot."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

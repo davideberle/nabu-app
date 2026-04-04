@@ -1,0 +1,49 @@
+{
+  "id": "vegan-chicharr-n-sin-carne",
+  "name": "VEGAN CHICHARRÓN SIN CARNE",
+  "source": {
+    "cookbook": "Black Rican Vegan   Fire Plant Based Recipes from ",
+    "author": "Various",
+    "chapter": "p01-c10"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "p01-c10"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "COMPRA LIST\n2 (14-oz [400-g]) cans jackfruit in brine\n1 cup (240 ml) Mojo Sauce\n5 cups (625 g) all-purpose flour, divided\n1½ tsp (1 [4-g] packet) Sazón or my homemade Sazón\n1 tbsp (9 g) Adobo\n1 tbsp (3 g) dried oregano\n1 tbsp (9 g) garlic powder\n1 tbsp (7 g) onion powder\nSalt\n2 cups (475 ml) unsweetened nondairy milk\n½ cup (120 ml) hot sauce\n2 tbsp (30 ml) white vinegar\nOil, for frying\nFreshly squeezed lime juice",
+      "amount": "",
+      "unit": "",
+      "original": "COMPRA LIST\n2 (14-oz [400-g]) cans jackfruit in brine\n1 cup (240 ml) Mojo Sauce\n5 cups (625 g) all-purpose flour, divided\n1½ tsp (1 [4-g] packet) Sazón or my homemade Sazón\n1 tbsp (9 g) Adobo\n1 tbsp (3 g) dried oregano\n1 tbsp (9 g) garlic powder\n1 tbsp (7 g) onion powder\nSalt\n2 cups (475 ml) unsweetened nondairy milk\n½ cup (120 ml) hot sauce\n2 tbsp (30 ml) white vinegar\nOil, for frying\nFreshly squeezed lime juice"
+    },
+    {
+      "item": "For the dry batter, in one bowl, combine 3 cups (375 g) of the flour with the Sazón, adobo, oregano, garlic powder, onion powder and salt to taste.",
+      "amount": "",
+      "unit": "",
+      "original": "For the dry batter, in one bowl, combine 3 cups (375 g) of the flour with the Sazón, adobo, oregano, garlic powder, onion powder and salt to taste."
+    },
+    {
+      "item": "For the wet batter, in the other bowl, combine the remaining 2 cups (250 g) of flour, nondairy milk, hot sauce and vinegar, and mix. This batter shouldn’t be too thick or too loose. Add more flour or milk accordingly.",
+      "amount": "",
+      "unit": "",
+      "original": "For the wet batter, in the other bowl, combine the remaining 2 cups (250 g) of flour, nondairy milk, hot sauce and vinegar, and mix. This batter shouldn’t be too thick or too loose. Add more flour or milk accordingly."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

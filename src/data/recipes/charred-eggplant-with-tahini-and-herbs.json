@@ -1,0 +1,106 @@
+{
+  "id": "charred-eggplant-with-tahini-and-herbs",
+  "name": "Charred eggplant with tahini and herbs",
+  "subtitle": "M’tabbal",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c02"
+  },
+  "introduction": "If Tara were to take ten things to her desert island, to live off forever, this is what the list would look like: eggplants, tahini, garlic, lemons, olive oil, pomegranate seeds, fresh mint, dried mint, parsley, and salt. M’tabbal, then—quite literally a roll-call of her top ten—is one of Tara’s favorite dishes. Serve it either as a side to some pan-fried fish or grilled meat or as part of a larger spread.\n\nKeeping notes: This keeps well in the fridge for up to five days. As always, serve it at room temperature rather than fridge-cold.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four to six as part of a mezzeh spread",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "4 large eggplants, charred (see this page; 2 lb 2 oz/1kg)",
+      "amount": "",
+      "unit": "",
+      "original": "4 large eggplants, charred (see this page; 2 lb 2 oz/1kg)",
+      "group": null
+    },
+    {
+      "item": "3 tbsp tahini",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp tahini",
+      "group": null
+    },
+    {
+      "item": "2 large garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "2 large garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "¼ cup/60ml lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/60ml lemon juice",
+      "group": null
+    },
+    {
+      "item": "Salt",
+      "amount": "",
+      "unit": "",
+      "original": "Salt",
+      "group": null
+    },
+    {
+      "item": "2 tbsp pomegranate seeds",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp pomegranate seeds",
+      "group": null
+    },
+    {
+      "item": "¼ tsp dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp dried mint",
+      "group": null
+    },
+    {
+      "item": "About 10 mint leaves",
+      "amount": "",
+      "unit": "",
+      "original": "About 10 mint leaves",
+      "group": null
+    },
+    {
+      "item": "¼ cup/5g parsley leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g parsley leaves, roughly chopped",
+      "group": null
+    },
+    {
+      "item": "About 1 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "About 1 tbsp olive oil",
+      "group": null
+    }
+  ],
+  "method": [
+    "Scoop the flesh out of the charred eggplants; you should have about 1 lb 2 oz/500g. Set this aside in a colander in the sink or over a bowl for at least 1 hour (or overnight, in the fridge) to drain.",
+    "Put the drained eggplant flesh into a large mixing bowl and, using your hands, pull it apart; you want to create long, thin strands. Add the tahini, garlic, lemon juice, and 1 tsp of salt and mix to combine. Spoon the mixture onto a serving plate with a lip (or into a bowl) and sprinkle with the pomegranate seeds, dried mint, and fresh herbs. Finally, drizzle with the oil and serve.",
+    "Pictured on this page"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/charred-eggplant-with-tahini-and-herbs.jpg"
+}

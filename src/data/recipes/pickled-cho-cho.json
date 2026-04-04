@@ -1,0 +1,152 @@
+{
+  "id": "pickled-cho-cho",
+  "name": "PICKLED CHO CHO",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore",
+    "chapter": "chapter14"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "chapter14"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "400 ml (13 fl oz/generous 1½ cups) white wine vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "400 ml (13 fl oz/generous 1½ cups) white wine vinegar"
+    },
+    {
+      "item": "200 ml (7 fl oz/scant 1 cup) water",
+      "amount": "",
+      "unit": "",
+      "original": "200 ml (7 fl oz/scant 1 cup) water"
+    },
+    {
+      "item": "1 tablespoon allspice berries",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon allspice berries"
+    },
+    {
+      "item": "1 tablespoon black peppercorns",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon black peppercorns"
+    },
+    {
+      "item": "1 tablespoon fennel seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon fennel seeds"
+    },
+    {
+      "item": "2 tablespoons caster (superfine) sugar",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons caster (superfine) sugar"
+    },
+    {
+      "item": "3 chayote (cho cho), very finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "3 chayote (cho cho), very finely sliced"
+    },
+    {
+      "item": "2 cloves garlic",
+      "amount": "",
+      "unit": "",
+      "original": "2 cloves garlic"
+    },
+    {
+      "item": "1 onion, sliced into half-moons",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, sliced into half-moons"
+    },
+    {
+      "item": "2 Scotch bonnets, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "2 Scotch bonnets, finely sliced"
+    },
+    {
+      "item": "400 ml (13 fl oz/generous 1½ cups) white wine vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "400 ml (13 fl oz/generous 1½ cups) white wine vinegar"
+    },
+    {
+      "item": "200 ml (7 fl oz/scant 1 cup) water",
+      "amount": "",
+      "unit": "",
+      "original": "200 ml (7 fl oz/scant 1 cup) water"
+    },
+    {
+      "item": "1 tablespoon allspice berries",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon allspice berries"
+    },
+    {
+      "item": "2 tablespoons caster (superfine) sugar",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons caster (superfine) sugar"
+    },
+    {
+      "item": "1 red (bell) pepper, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 red (bell) pepper, finely sliced"
+    },
+    {
+      "item": "1 yellow (bell) pepper, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 yellow (bell) pepper, finely sliced"
+    },
+    {
+      "item": "1 orange (bell) pepper, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 orange (bell) pepper, finely sliced"
+    },
+    {
+      "item": "2 cloves garlic",
+      "amount": "",
+      "unit": "",
+      "original": "2 cloves garlic"
+    },
+    {
+      "item": "1 onion, sliced into half-moons",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, sliced into half-moons"
+    },
+    {
+      "item": "2 Scotch bonnets, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "2 Scotch bonnets, finely sliced"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

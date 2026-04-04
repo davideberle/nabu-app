@@ -1,0 +1,131 @@
+{
+  "id": "hummus-with-beef",
+  "name": "◁ Hummus with Beef",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "06_Chapter01"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "06_Chapter01"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "YIELD: 4 cups (1 kg); 6 to 8 servings",
+      "amount": "",
+      "unit": "",
+      "original": "YIELD: 4 cups (1 kg); 6 to 8 servings"
+    },
+    {
+      "item": "HUMMUS\n2 large cloves garlic\n¼ cup (60 ml) fresh lemon juice, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "HUMMUS\n2 large cloves garlic\n¼ cup (60 ml) fresh lemon juice, plus more if needed"
+    },
+    {
+      "item": "3 tablespoons olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons olive oil"
+    },
+    {
+      "item": "1 teaspoon kosher salt, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon kosher salt, plus more if needed"
+    },
+    {
+      "item": "36 ounces (1 kg) canned chickpeas, drained and ¾ cup (180 ml) of the liquid (aquafaba) reserved",
+      "amount": "",
+      "unit": "",
+      "original": "36 ounces (1 kg) canned chickpeas, drained and ¾ cup (180 ml) of the liquid (aquafaba) reserved"
+    },
+    {
+      "item": "½ cup (120 ml) tahini",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (120 ml) tahini"
+    },
+    {
+      "item": "2 ice cubes",
+      "amount": "",
+      "unit": "",
+      "original": "2 ice cubes"
+    },
+    {
+      "item": "BEEF\n18 ounces (500 g) boneless steak (ribeye, sirloin, or flank), cut into bite-size pieces\n1 teaspoon kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "BEEF\n18 ounces (500 g) boneless steak (ribeye, sirloin, or flank), cut into bite-size pieces\n1 teaspoon kosher salt"
+    },
+    {
+      "item": "1 tablespoon unsalted butter or ghee",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon unsalted butter or ghee"
+    },
+    {
+      "item": "¼ cup pine nuts (30 g) or slivered almonds (35 g)",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup pine nuts (30 g) or slivered almonds (35 g)"
+    },
+    {
+      "item": "FOR GARNISHING AND SERVING\n¼ cup (13 g) finely chopped parsley\n¼ cup (50 g) pomegranate arils (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "FOR GARNISHING AND SERVING\n¼ cup (13 g) finely chopped parsley\n¼ cup (50 g) pomegranate arils (optional)"
+    },
+    {
+      "item": "1 TO MAKE THE HUMMUS: Add the garlic, lemon juice, and oil to a food processor and process for a few seconds until combined. Add the salt, chickpeas, and tahini to the food processor and process for a few minutes, or until the hummus starts to come together. Add the ice cubes while the food processor is running and slowly drizzle in the reserved chickpea liquid. Process the mixture for at least 5 minutes to yield a creamy texture. Taste and adjust for more salt and lemon juice if needed. Place in the refrigerator to cool for a few minutes.",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE HUMMUS: Add the garlic, lemon juice, and oil to a food processor and process for a few seconds until combined. Add the salt, chickpeas, and tahini to the food processor and process for a few minutes, or until the hummus starts to come together. Add the ice cubes while the food processor is running and slowly drizzle in the reserved chickpea liquid. Process the mixture for at least 5 minutes to yield a creamy texture. Taste and adjust for more salt and lemon juice if needed. Place in the refrigerator to cool for a few minutes."
+    },
+    {
+      "item": "2 MEANWHILE, MAKE THE BEEF: Season the steak pieces with the salt, pepper, and allspice.",
+      "amount": "",
+      "unit": "",
+      "original": "2 MEANWHILE, MAKE THE BEEF: Season the steak pieces with the salt, pepper, and allspice."
+    },
+    {
+      "item": "3 In a large cast-iron skillet, melt the butter over medium-high heat. Add the meat and cook for 5 to 7 minutes, until caramelized, working in batches to avoid overcrowding. Remove the beef from the pan.",
+      "amount": "",
+      "unit": "",
+      "original": "3 In a large cast-iron skillet, melt the butter over medium-high heat. Add the meat and cook for 5 to 7 minutes, until caramelized, working in batches to avoid overcrowding. Remove the beef from the pan."
+    },
+    {
+      "item": "4 Add the pine nuts to the same skillet and lightly toast them over low heat for 3 to 5 minutes, until golden, stirring continuously.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Add the pine nuts to the same skillet and lightly toast them over low heat for 3 to 5 minutes, until golden, stirring continuously."
+    },
+    {
+      "item": "5 Assemble by spreading the hummus on a plate, topping with some of the beef and pine nuts, and garnishing with the parsley, pomegranate arils (if using), and a drizzle of oil. Serve with pita bread.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Assemble by spreading the hummus on a plate, topping with some of the beef and pine nuts, and garnishing with the parsley, pomegranate arils (if using), and a drizzle of oil. Serve with pita bread."
+    },
+    {
+      "item": "YIELD: 2 cups (470 g); 6 servings",
+      "amount": "",
+      "unit": "",
+      "original": "YIELD: 2 cups (470 g); 6 servings"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

@@ -1,0 +1,197 @@
+{
+  "id": "pho",
+  "name": "◁ PHO",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "09_Part04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Part04"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Originating from the Nam Dinh Province southeast of Hanoi in the early twentieth century, phở is one of the most famous traditional dishes in Vietnam. In fact, this is often the dish that introduces most people to Vietnamese cuisine.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n\nBROTH\n16 cups (4 L) water\n1 medium juicy red or Gala apple, peeled and cut into 2-inch (5 cm) cubes\n\n1 medium Asian or Bosc pear, peeled and cut into 2-inch (5 cm) cubes\n2 medium carrots, peeled and sliced into 1-inch (2.5 cm) thick rounds\n1 kohlrabi, chayote, or daikon radish, peeled and cut into 2-inch (5 cm) cubes\n1 medium yellow onion, peeled\n2 ounces (50 g) rock sugar\n2 to 3 tablespoons salt\n\nAROMA\n2 Asian shallots or 1 medium yellow onion\n2 pieces (2 ounces/55 g) ginger, thinly sliced\n\n3 star anise\n2 cinnamon sticks",
+      "amount": "",
+      "unit": "",
+      "original": "Originating from the Nam Dinh Province southeast of Hanoi in the early twentieth century, phở is one of the most famous traditional dishes in Vietnam. In fact, this is often the dish that introduces most people to Vietnamese cuisine.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n\nBROTH\n16 cups (4 L) water\n1 medium juicy red or Gala apple, peeled and cut into 2-inch (5 cm) cubes\n\n1 medium Asian or Bosc pear, peeled and cut into 2-inch (5 cm) cubes\n2 medium carrots, peeled and sliced into 1-inch (2.5 cm) thick rounds\n1 kohlrabi, chayote, or daikon radish, peeled and cut into 2-inch (5 cm) cubes\n1 medium yellow onion, peeled\n2 ounces (50 g) rock sugar\n2 to 3 tablespoons salt\n\nAROMA\n2 Asian shallots or 1 medium yellow onion\n2 pieces (2 ounces/55 g) ginger, thinly sliced\n\n3 star anise\n2 cinnamon sticks"
+    },
+    {
+      "item": "2 black cardamom pods (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "2 black cardamom pods (see Note)"
+    },
+    {
+      "item": "TOPPINGS\n¼ cup (60 ml) plus 2 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu, drained",
+      "amount": "",
+      "unit": "",
+      "original": "TOPPINGS\n¼ cup (60 ml) plus 2 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu, drained"
+    },
+    {
+      "item": "3½ ounces (100 g) dried bean curd stick or sheet, soaked, or dried mock beef slices, soaked",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) dried bean curd stick or sheet, soaked, or dried mock beef slices, soaked"
+    },
+    {
+      "item": "1 teaspoon salt, divided",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon salt, divided"
+    },
+    {
+      "item": "1 tablespoon granulated sugar, divided",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon granulated sugar, divided"
+    },
+    {
+      "item": "2 teaspoons vegetable or mushroom stock powder, divided",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons vegetable or mushroom stock powder, divided"
+    },
+    {
+      "item": "1 teaspoon five-spice powder, divided",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon five-spice powder, divided"
+    },
+    {
+      "item": "2 tablespoons soy sauce, divided",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons soy sauce, divided"
+    },
+    {
+      "item": "9 ounces (250 g) fresh mushrooms (straw, king oyster, or shiitake), stems trimmed and sliced",
+      "amount": "",
+      "unit": "",
+      "original": "9 ounces (250 g) fresh mushrooms (straw, king oyster, or shiitake), stems trimmed and sliced"
+    },
+    {
+      "item": "1 tablespoon minced leek (white part only)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon minced leek (white part only)"
+    },
+    {
+      "item": "FOR SERVING\n16 ounces (454 g) dried flat rice noodles or 2¼ pounds (1 kg) fresh pho noodles\n2 ounces (56 g) sawtooth herb, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "FOR SERVING\n16 ounces (454 g) dried flat rice noodles or 2¼ pounds (1 kg) fresh pho noodles\n2 ounces (56 g) sawtooth herb, chopped"
+    },
+    {
+      "item": "3½ ounces (100 g) Asian basil",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) Asian basil"
+    },
+    {
+      "item": "1 pound (454 g) mung bean sprouts, blanched",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound (454 g) mung bean sprouts, blanched"
+    },
+    {
+      "item": "1 lime, cut into wedges",
+      "amount": "",
+      "unit": "",
+      "original": "1 lime, cut into wedges"
+    },
+    {
+      "item": "1 bird's eye chili pepper, sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 bird's eye chili pepper, sliced"
+    },
+    {
+      "item": "¼ cup (60 ml) sriracha sauce (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (60 ml) sriracha sauce (optional)"
+    },
+    {
+      "item": "¼ cup (60 ml) hoisin sauce (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (60 ml) hoisin sauce (optional)"
+    },
+    {
+      "item": "1. TO MAKE THE BROTH Fill a large stockpot with the water, and add the apple, pear, carrot, kohlrabi, onion, rock sugar, and 2 to 3 tablespoons of salt. Bring to a boil, and then reduce heat to low. Simmer uncovered until the fruits and vegetables are tender (about 30 minutes).",
+      "amount": "",
+      "unit": "",
+      "original": "1. TO MAKE THE BROTH Fill a large stockpot with the water, and add the apple, pear, carrot, kohlrabi, onion, rock sugar, and 2 to 3 tablespoons of salt. Bring to a boil, and then reduce heat to low. Simmer uncovered until the fruits and vegetables are tender (about 30 minutes)."
+    },
+    {
+      "item": "2. CREATE THE AROMA Heat the shallots and ginger slices directly over an open flame on the stove until slightly charred on all sides. Toast the star anise, cinnamon sticks, and cardamom pods in a small skillet over medium-low heat for 2 to 3 minutes, until fragrant.",
+      "amount": "",
+      "unit": "",
+      "original": "2. CREATE THE AROMA Heat the shallots and ginger slices directly over an open flame on the stove until slightly charred on all sides. Toast the star anise, cinnamon sticks, and cardamom pods in a small skillet over medium-low heat for 2 to 3 minutes, until fragrant."
+    },
+    {
+      "item": "3. Peel the shallots, and then rinse with the ginger under warm running water. Scrape off all charred bits and place in large tea bags or wrap securely in cheesecloth with star anise, cinnamon sticks, and black cardamom. Add to stockpot, and then season broth with salt and stock powder.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Peel the shallots, and then rinse with the ginger under warm running water. Scrape off all charred bits and place in large tea bags or wrap securely in cheesecloth with star anise, cinnamon sticks, and black cardamom. Add to stockpot, and then season broth with salt and stock powder."
+    },
+    {
+      "item": "4. MAKE THE TOPPINGS In a small skillet, heat ¼ cup (60 ml) of the oil over medium-low heat. Once hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer the tofu to a cooling rack or paper towel–lined plate to drain. Once cool, cut the fried tofu and soaked bean curd into bite-size pieces.",
+      "amount": "",
+      "unit": "",
+      "original": "4. MAKE THE TOPPINGS In a small skillet, heat ¼ cup (60 ml) of the oil over medium-low heat. Once hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer the tofu to a cooling rack or paper towel–lined plate to drain. Once cool, cut the fried tofu and soaked bean curd into bite-size pieces."
+    },
+    {
+      "item": "5. Combine the fried tofu and bean curd slices in a large bowl and season with ½ teaspoon of the salt, ½ tablespoon of the granulated sugar, 1 teaspoon of the stock powder, ½ teaspoon of the five-spice powder, and 1 tablespoon of the soy sauce.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Combine the fried tofu and bean curd slices in a large bowl and season with ½ teaspoon of the salt, ½ tablespoon of the granulated sugar, 1 teaspoon of the stock powder, ½ teaspoon of the five-spice powder, and 1 tablespoon of the soy sauce."
+    },
+    {
+      "item": "6. In a separate large bowl, combine the mushrooms and season with the remaining ½ teaspoon salt, ½ tablespoon granulated sugar, 1 teaspoon stock powder, ½ teaspoon five-spice powder, and 1 tablespoon soy sauce.",
+      "amount": "",
+      "unit": "",
+      "original": "6. In a separate large bowl, combine the mushrooms and season with the remaining ½ teaspoon salt, ½ tablespoon granulated sugar, 1 teaspoon stock powder, ½ teaspoon five-spice powder, and 1 tablespoon soy sauce."
+    },
+    {
+      "item": "7. Heat 1 tablespoon of the vegetable oil in a large skillet over medium-low heat. When hot, add half of the minced leek, and cook and stir until fragrant (about 1 minute). Add the tofu–bean curd mixture and cook and stir until seasonings are well absorbed (about 3 minutes). Transfer to a clean bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Heat 1 tablespoon of the vegetable oil in a large skillet over medium-low heat. When hot, add half of the minced leek, and cook and stir until fragrant (about 1 minute). Add the tofu–bean curd mixture and cook and stir until seasonings are well absorbed (about 3 minutes). Transfer to a clean bowl."
+    },
+    {
+      "item": "8. Return skillet to medium-low heat and add remaining 1 tablespoon vegetable oil. Add remaining leek and cook and stir until fragrant (about 1 minute). Add mushroom mixture and cook and stir until soft and seasonings are well absorbed (about 3 minutes). Transfer to a separate clean bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "8. Return skillet to medium-low heat and add remaining 1 tablespoon vegetable oil. Add remaining leek and cook and stir until fragrant (about 1 minute). Add mushroom mixture and cook and stir until soft and seasonings are well absorbed (about 3 minutes). Transfer to a separate clean bowl."
+    },
+    {
+      "item": "9. FOR SERVING Follow the instructions on the package to cook the dried noodles.",
+      "amount": "",
+      "unit": "",
+      "original": "9. FOR SERVING Follow the instructions on the package to cook the dried noodles."
+    },
+    {
+      "item": "10. Fill each serving bowl about one-third with noodles, add tofu and mushroom toppings, top with sawtooth herb, and then ladle the hot broth over the top.",
+      "amount": "",
+      "unit": "",
+      "original": "10. Fill each serving bowl about one-third with noodles, add tofu and mushroom toppings, top with sawtooth herb, and then ladle the hot broth over the top."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

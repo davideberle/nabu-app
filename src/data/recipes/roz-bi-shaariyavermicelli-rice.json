@@ -1,0 +1,95 @@
+{
+  "id": "roz-bi-shaariyavermicelli-rice",
+  "name": "◁ Roz Bi ShaariyaVERMICELLI RICE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "07_Chapter02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Chapter02"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 tablespoons vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons vegetable oil"
+    },
+    {
+      "item": "½ cup (50 g) vermicelli noodles (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (50 g) vermicelli noodles (see Note)"
+    },
+    {
+      "item": "3½ cups (840 ml) boiling chicken broth or water",
+      "amount": "",
+      "unit": "",
+      "original": "3½ cups (840 ml) boiling chicken broth or water"
+    },
+    {
+      "item": "1½ teaspoons kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons kosher salt"
+    },
+    {
+      "item": "2 cups (400 g) long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups (400 g) long-grain white basmati rice, rinsed until the water runs clear and drained completely"
+    },
+    {
+      "item": "FOR GARNISHING (OPTIONAL)\n¼ cup pine nuts (35 g) or slivered almonds (30 g)\nHandful finely chopped fresh parsley",
+      "amount": "",
+      "unit": "",
+      "original": "FOR GARNISHING (OPTIONAL)\n¼ cup pine nuts (35 g) or slivered almonds (30 g)\nHandful finely chopped fresh parsley"
+    },
+    {
+      "item": "1 In a large pot, heat the oil over medium heat. Add the noodles and cook for 1 to 2 minutes, stirring continuously, until they turn golden brown.",
+      "amount": "",
+      "unit": "",
+      "original": "1 In a large pot, heat the oil over medium heat. Add the noodles and cook for 1 to 2 minutes, stirring continuously, until they turn golden brown."
+    },
+    {
+      "item": "2 Add the boiling broth or water and salt to the pot. (If using broth, taste the liquid after you add it to the pot and before adding the salt. Add as much salt as needed to ensure the broth tastes noticeably salty; alternatively, some broths have a high salt content, so you may need less salt.) Bring to a rolling boil, then add the rice. Wait for it to come back to a rolling boil, then reduce the heat to low and cover with a tight-fitting lid. Let cook for 20 minutes, undisturbed.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Add the boiling broth or water and salt to the pot. (If using broth, taste the liquid after you add it to the pot and before adding the salt. Add as much salt as needed to ensure the broth tastes noticeably salty; alternatively, some broths have a high salt content, so you may need less salt.) Bring to a rolling boil, then add the rice. Wait for it to come back to a rolling boil, then reduce the heat to low and cover with a tight-fitting lid. Let cook for 20 minutes, undisturbed."
+    },
+    {
+      "item": "3 Remove the lid and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Remove the lid and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving."
+    },
+    {
+      "item": "4 If garnishing with the pine nuts or almonds, in a small dry skillet, toast the nuts for 2 to 3 minutes over medium heat, until golden, stirring continuously.",
+      "amount": "",
+      "unit": "",
+      "original": "4 If garnishing with the pine nuts or almonds, in a small dry skillet, toast the nuts for 2 to 3 minutes over medium heat, until golden, stirring continuously."
+    },
+    {
+      "item": "5 Serve the rice on a platter, topped with the toasted pine nuts or almonds (if using) and chopped parsley (if using).",
+      "amount": "",
+      "unit": "",
+      "original": "5 Serve the rice on a platter, topped with the toasted pine nuts or almonds (if using) and chopped parsley (if using)."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

@@ -1,6 +1,6 @@
 {
-  "id": "labneh",
-  "name": "Labneh",
+  "id": "yogurt-with-cucumber",
+  "name": "Yogurt with cucumber",
   "source": {
     "cookbook": "Jerusalem",
     "author": "Yotam Ottolenghi & Sami Tamimi",
@@ -21,38 +21,17 @@
   },
   "ingredients": [
     {
-      "item": "½ red chile, chopped",
+      "item": "2 mini cucumbers (7 oz / 200 g in total)",
       "amount": "",
       "unit": "",
-      "original": "½ red chile, chopped",
+      "original": "2 mini cucumbers (7 oz / 200 g in total)",
       "group": null
     },
     {
-      "item": "3 tbsp freshly squeezed lemon juice",
+      "item": "2 cups / 500 g Greek yogurt",
       "amount": "",
       "unit": "",
-      "original": "3 tbsp freshly squeezed lemon juice",
-      "group": null
-    },
-    {
-      "item": "3 small-medium unwaxed lemons, halved lengthwise and sliced widthwise as thinly as possible",
-      "amount": "",
-      "unit": "",
-      "original": "3 small-medium unwaxed lemons, halved lengthwise and sliced widthwise as thinly as possible",
-      "group": null
-    },
-    {
-      "item": "3 tbsp / 35 g superfine sugar",
-      "amount": "",
-      "unit": "",
-      "original": "3 tbsp / 35 g superfine sugar",
-      "group": null
-    },
-    {
-      "item": "1½ tsp coarse sea salt",
-      "amount": "",
-      "unit": "",
-      "original": "1½ tsp coarse sea salt",
+      "original": "2 cups / 500 g Greek yogurt",
       "group": null
     },
     {
@@ -63,24 +42,45 @@
       "group": null
     },
     {
-      "item": "1 tsp sweet paprika",
+      "item": "pinch of cayenne pepper",
       "amount": "",
       "unit": "",
-      "original": "1 tsp sweet paprika",
+      "original": "pinch of cayenne pepper",
       "group": null
     },
     {
-      "item": "¼ tsp ground cumin",
+      "item": "1 tbsp dried mint",
       "amount": "",
       "unit": "",
-      "original": "¼ tsp ground cumin",
+      "original": "1 tbsp dried mint",
       "group": null
     },
     {
-      "item": "½ tsp ground turmeric",
+      "item": "2 tbsp chopped fresh mint",
       "amount": "",
       "unit": "",
-      "original": "½ tsp ground turmeric",
+      "original": "2 tbsp chopped fresh mint",
+      "group": null
+    },
+    {
+      "item": "2 tbsp freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp freshly squeezed lemon juice",
+      "group": null
+    },
+    {
+      "item": "½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp salt",
+      "group": null
+    },
+    {
+      "item": "½ tsp white pepper",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp white pepper",
       "group": null
     }
   ],
@@ -88,7 +88,6 @@
   "tags": {
     "dietary": [
       "vegetarian",
-      "vegan",
       "gluten-free"
     ]
   },

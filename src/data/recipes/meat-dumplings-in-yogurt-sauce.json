@@ -1,0 +1,180 @@
+{
+  "id": "meat-dumplings-in-yogurt-sauce",
+  "name": "Meat dumplings in yogurt sauce",
+  "subtitle": "Shush barak",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c07"
+  },
+  "introduction": "These ravioli-like dumplings, cooked in a rich yogurt sauce, go by a couple of other names: taqiyet elyahoodi, which means “Jew’s hat,” or dinein qtat, which means “cat’s ears.” Whichever their shape resembles more—hats or cats—few dishes take Sami so quickly back home. They’re his real madeleine moment. They’re a labor of love, but, as is often the case with the food that reminds us of home, the result is pure comfort and nurture.\n\nGetting ahead: You can make these in advance, as they freeze well. Put them straight into the yogurt from frozen; they’ll just need a couple more minutes in the pan.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp olive oil",
+      "group": "Filling"
+    },
+    {
+      "item": "½ onion, finely chopped (½ cup/70g)",
+      "amount": "",
+      "unit": "",
+      "original": "½ onion, finely chopped (½ cup/70g)",
+      "group": "Filling"
+    },
+    {
+      "item": "7 oz/200g ground beef (or lamb, or a combination of both)",
+      "amount": "",
+      "unit": "",
+      "original": "7 oz/200g ground beef (or lamb, or a combination of both)",
+      "group": "Filling"
+    },
+    {
+      "item": "½ tsp baharat (see this page)",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp baharat (see this page)",
+      "group": "Filling"
+    },
+    {
+      "item": "¼ tsp ground turmeric",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp ground turmeric",
+      "group": "Filling"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Filling"
+    },
+    {
+      "item": "¼ cup/5g cilantro leaves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g cilantro leaves, finely chopped",
+      "group": "Filling"
+    },
+    {
+      "item": "1¼ cups/150g all-purpose flour, plus more for dusting",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ cups/150g all-purpose flour, plus more for dusting",
+      "group": "Dough"
+    },
+    {
+      "item": "1 tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp sunflower oil",
+      "group": "Dough"
+    },
+    {
+      "item": "About ¼ cup/60ml lukewarm water",
+      "amount": "",
+      "unit": "",
+      "original": "About ¼ cup/60ml lukewarm water",
+      "group": "Dough"
+    },
+    {
+      "item": "¼ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp salt",
+      "group": "Dough"
+    },
+    {
+      "item": "4 cups plus 3 tbsp/1kg Greek yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "4 cups plus 3 tbsp/1kg Greek yogurt",
+      "group": "Yogurt sauce"
+    },
+    {
+      "item": "1 egg yolk",
+      "amount": "",
+      "unit": "",
+      "original": "1 egg yolk",
+      "group": "Yogurt sauce"
+    },
+    {
+      "item": "1 tbsp cornstarch",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp cornstarch",
+      "group": "Yogurt sauce"
+    },
+    {
+      "item": "1¼ cups/300ml chicken stock",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ cups/300ml chicken stock",
+      "group": "Yogurt sauce"
+    },
+    {
+      "item": "1½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp salt",
+      "group": "Yogurt sauce"
+    },
+    {
+      "item": "¼ cup/60ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/60ml olive oil",
+      "group": "Adha"
+    },
+    {
+      "item": "5 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "5 garlic cloves, crushed",
+      "group": "Adha"
+    },
+    {
+      "item": "1½ cups/30g cilantro leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups/30g cilantro leaves, roughly chopped",
+      "group": "Adha"
+    },
+    {
+      "item": "1 tsp Aleppo chile flakes (or ½ tsp regular chile flakes)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp Aleppo chile flakes (or ½ tsp regular chile flakes)",
+      "group": "Adha"
+    }
+  ],
+  "method": [
+    "To make the filling, put the olive oil into a medium frying pan and place over medium heat. Add the onion and cook for about 6 minutes, stirring a few times, until slightly golden. Add the meat, baharat, turmeric, ¼ tsp of salt, and a grind of black pepper and continue cooking for about 5 minutes, stirring and breaking up the meat with a wooden spoon so that it does not form into clumps, until the meat is cooked through and any liquid released has evaporated. Stir in the cilantro and set aside until completely cool.",
+    "To make the dough, put the flour, sunflower oil, water, and salt into a medium mixing bowl. Using your hands, gather the dough together into a shaggy and somewhat sticky ball. Transfer to a lightly floured work surface and knead for about 4 minutes, until the dough is elastic and smooth. Shape into a ball, cover, and let rest for about 10 minutes, at room temperature.",
+    "Line a baking sheet with parchment paper.",
+    "On a lightly floured surface, roll out the dough to form a 14 x 18-inch/35 x 45cm rectangle; it should be quite thin, about ⅛ inch/3mm. Using a 3-inch/7cm cookie cutter, cut the dough into circles—re-rolling the scraps three or four times, you should be able to make about 25 rounds. Working with one piece at a time, take a round of dough and flip it over so that the stickier underside, without any flour on it, is now facing upward. Doing this will make it easier to seal the dumplings. Spoon about ½ tsp of the meat filling into the center of each circle. Fold the dough in half and then pinch tightly around the outside to form a half-moon shape. Next, pinch together the edges so that they overlap slightly, resembling tortellini. To help you with this, either keep a bowl of water beside you, dipping your fingers once or twice as you go along, to prevent them from becoming sticky, or use a clean brush on the rim, dipped in water, to help with the seal. Arrange the dumplings on the prepared baking sheet while you continue with the remaining batch.",
+    "Once all the dumplings are shaped, broil them for 8 minutes—placing them in the middle of the oven rather than directly under the broiler, to prevent them from burning—or until slightly golden.",
+    "To make the yogurt sauce, meanwhile, put the yogurt, egg yolk, cornstarch, and stock into a countertop blender. Blend on medium speed for about 1 minute, until the mixture is smooth and runny, then transfer to a large saucepan, along with the salt, and place over medium-low heat. Cook for about 5 minutes, stirring often, until the yogurt comes to a gentle boil.",
+    "Add the dumplings to the sauce and continue cooking for about 18 minutes, stirring gently a few times and keeping an eye on the sauce to make sure it does not split, until the dumplings have cooked through and the sauce resembles a thin béchamel.",
+    "To make the adha, put the oil and garlic into a small frying pan and place over medium-high heat. Cook for about 4 minutes, stirring often, until the garlic is lightly golden. Remove from the heat, transfer to a bowl, and stir in the cilantro.",
+    "Divide the dumplings and sauce among four bowls and drizzle the adha on top. Sprinkle with the chile flakes and serve at once."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": "/recipes/meat-dumplings-in-yogurt-sauce.jpg"
+}

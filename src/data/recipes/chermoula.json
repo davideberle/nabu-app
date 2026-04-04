@@ -1,0 +1,122 @@
+{
+  "id": "chermoula",
+  "name": "CHERMOULA",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c01_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c01_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 tablespoons extra-virgin olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons extra-virgin olive oil"
+    },
+    {
+      "item": "½ cup finely chopped red onion",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup finely chopped red onion"
+    },
+    {
+      "item": "1 teaspoon coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon coarse sea salt"
+    },
+    {
+      "item": "3 large cloves garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "3 large cloves garlic, minced"
+    },
+    {
+      "item": "1½ teaspoons cumin seeds, toasted and ground",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons cumin seeds, toasted and ground"
+    },
+    {
+      "item": "½ teaspoon paprika",
+      "amount": "",
+      "unit": "",
+      "original": "½ teaspoon paprika"
+    },
+    {
+      "item": "¼ teaspoon freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "¼ teaspoon freshly ground black pepper"
+    },
+    {
+      "item": "⅛ teaspoon cayenne pepper",
+      "amount": "",
+      "unit": "",
+      "original": "⅛ teaspoon cayenne pepper"
+    },
+    {
+      "item": "3 tablespoons freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons freshly squeezed lemon juice"
+    },
+    {
+      "item": "1 tablespoon freshly squeezed orange juice",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon freshly squeezed orange juice"
+    },
+    {
+      "item": "2 tablespoons water",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons water"
+    },
+    {
+      "item": "¼ teaspoon minced seeded habanero chile",
+      "amount": "",
+      "unit": "",
+      "original": "¼ teaspoon minced seeded habanero chile"
+    },
+    {
+      "item": "Pinch of saffron threads, crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "Pinch of saffron threads, crumbled"
+    },
+    {
+      "item": "1½ cups packed minced cilantro",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups packed minced cilantro"
+    },
+    {
+      "item": "½ cup packed minced flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup packed minced flat-leaf parsley"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

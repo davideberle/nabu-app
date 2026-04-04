@@ -1,0 +1,67 @@
+{
+  "id": "tagliolini-al-tartufo-bianco-dell-oregon-tagliolini-with-ore",
+  "name": "Tagliolini al tartufo bianco dell’Oregon / Tagliolini with Oregon White Truffle",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Various",
+    "chapter": "Tart_9781632174284_epub3_c03_r1"
+  },
+  "introduction": "Very few culinary experiences can compare to the luscious flavor of Oregon white truffle freshly shaved on top of tagliolini pasta. These precious tubers can be found in Washington State from early fall through spring. Tartufo—nero and bianco—is a point of national pride in the Piedmont region where I grew up, and is the highlight of the autumn season on the hills of Langhe-Roero and Monferrato.\n\nWhen cooking with truffles, I apply the same approach as I have with oysters: I touch them as little as possible. To preserve their unique musky and garlicky taste, a little butter and Parmigiano-Reggiano are all that is needed.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Tart_9781632174284_epub3_c03_r1"
+  },
+  "servings": "makes 4 servings",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 Oregon white truffle (about 40 grams)",
+      "amount": "",
+      "unit": "",
+      "original": "1 Oregon white truffle (about 40 grams)"
+    },
+    {
+      "item": "6 tablespoons unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "6 tablespoons unsalted butter"
+    },
+    {
+      "item": "12 ounces tagliolini pasta",
+      "amount": "",
+      "unit": "",
+      "original": "12 ounces tagliolini pasta"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "Kosher salt"
+    },
+    {
+      "item": "⅓ cup grated Parmigiano-Reggiano",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup grated Parmigiano-Reggiano"
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "Extra-virgin olive oil"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

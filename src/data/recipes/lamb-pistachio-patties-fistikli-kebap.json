@@ -1,0 +1,41 @@
+{
+  "id": "lamb-pistachio-patties-fistikli-kebap",
+  "name": "Lamb & Pistachio Patties Fistikli Kebap",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "part0004_split_025"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0004_split_025"
+  },
+  "servings": "makes about 10",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "150g (5½oz) shelled pistachio nuts\n2 large free-range eggs\n500g (1lb 2oz) minced lamb\n1 onion, minced or very finely chopped\n2 tsp ground cumin\n2 heaped tsp sumac\n1 tsp ground coriander\n1 tsp dried oregano\ngrated rind of 1 lime\n3 tbsp crushed sea salt\nfreshly ground black pepper\n1 tbsp vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "150g (5½oz) shelled pistachio nuts\n2 large free-range eggs\n500g (1lb 2oz) minced lamb\n1 onion, minced or very finely chopped\n2 tsp ground cumin\n2 heaped tsp sumac\n1 tsp ground coriander\n1 tsp dried oregano\ngrated rind of 1 lime\n3 tbsp crushed sea salt\nfreshly ground black pepper\n1 tbsp vegetable oil"
+    },
+    {
+      "item": "Blitz 100g (3½oz) of the pistachios in a food processor until they are finely ground. Lightly pulse the remaining pistachios, then give them just a little rough chop and put them into a large mixing bowl with the finely ground nuts. Add the remaining ingredients, except for the cooking oil, to the nuts and mix them together well using your hands. Really work the mixture thoroughly, pummelling and kneading the meat like bread dough until the texture has broken down and the egg and pistachio are evenly distributed.",
+      "amount": "",
+      "unit": "",
+      "original": "Blitz 100g (3½oz) of the pistachios in a food processor until they are finely ground. Lightly pulse the remaining pistachios, then give them just a little rough chop and put them into a large mixing bowl with the finely ground nuts. Add the remaining ingredients, except for the cooking oil, to the nuts and mix them together well using your hands. Really work the mixture thoroughly, pummelling and kneading the meat like bread dough until the texture has broken down and the egg and pistachio are evenly distributed."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

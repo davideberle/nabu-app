@@ -1,6 +1,6 @@
 {
-  "id": "labneh",
-  "name": "Labneh",
+  "id": "raw-artichoke-herb-salad",
+  "name": "Raw artichoke & herb salad",
   "source": {
     "cookbook": "Jerusalem",
     "author": "Yotam Ottolenghi & Sami Tamimi",
@@ -11,7 +11,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Otto_9781607743958_epub_c09_r1"
+    "chapter": "Otto_9781607743958_epub_c01_r1"
   },
   "servings": "serves 4",
   "time": {
@@ -21,10 +21,10 @@
   },
   "ingredients": [
     {
-      "item": "½ red chile, chopped",
+      "item": "2 or 3 large globe artichokes (1½ lb / 700 g in total)",
       "amount": "",
       "unit": "",
-      "original": "½ red chile, chopped",
+      "original": "2 or 3 large globe artichokes (1½ lb / 700 g in total)",
       "group": null
     },
     {
@@ -35,52 +35,45 @@
       "group": null
     },
     {
-      "item": "3 small-medium unwaxed lemons, halved lengthwise and sliced widthwise as thinly as possible",
+      "item": "4 tbsp olive oil",
       "amount": "",
       "unit": "",
-      "original": "3 small-medium unwaxed lemons, halved lengthwise and sliced widthwise as thinly as possible",
+      "original": "4 tbsp olive oil",
       "group": null
     },
     {
-      "item": "3 tbsp / 35 g superfine sugar",
+      "item": "2 cups / 40 g arugula",
       "amount": "",
       "unit": "",
-      "original": "3 tbsp / 35 g superfine sugar",
+      "original": "2 cups / 40 g arugula",
       "group": null
     },
     {
-      "item": "1½ tsp coarse sea salt",
+      "item": "½ cup / 15 g torn mint leaves",
       "amount": "",
       "unit": "",
-      "original": "1½ tsp coarse sea salt",
+      "original": "½ cup / 15 g torn mint leaves",
       "group": null
     },
     {
-      "item": "1 clove garlic, crushed",
+      "item": "½ cup / 15 g torn cilantro leaves",
       "amount": "",
       "unit": "",
-      "original": "1 clove garlic, crushed",
+      "original": "½ cup / 15 g torn cilantro leaves",
       "group": null
     },
     {
-      "item": "1 tsp sweet paprika",
+      "item": "1 oz / 30 g pecorino toscano or romano cheese, thinly shaved",
       "amount": "",
       "unit": "",
-      "original": "1 tsp sweet paprika",
+      "original": "1 oz / 30 g pecorino toscano or romano cheese, thinly shaved",
       "group": null
     },
     {
-      "item": "¼ tsp ground cumin",
+      "item": "Maldon sea salt and freshly ground black pepper",
       "amount": "",
       "unit": "",
-      "original": "¼ tsp ground cumin",
-      "group": null
-    },
-    {
-      "item": "½ tsp ground turmeric",
-      "amount": "",
-      "unit": "",
-      "original": "½ tsp ground turmeric",
+      "original": "Maldon sea salt and freshly ground black pepper",
       "group": null
     }
   ],
@@ -88,9 +81,8 @@
   "tags": {
     "dietary": [
       "vegetarian",
-      "vegan",
       "gluten-free"
     ]
   },
-  "image": null
+  "image": "/recipes/raw-artichoke-herb-salad.jpg"
 }

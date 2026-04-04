@@ -1,0 +1,55 @@
+{
+  "id": "persian-flatbread-naan-barbari",
+  "name": "Persian Flatbread Naan Barbari",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "part0002_split_005"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0002_split_005"
+  },
+  "servings": "makes 2 large loaves",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 x 7g (1/6 oz) sachet fast-action dried yeast\n500ml (18fl oz) warm water\n700g (1lb 9oz) strong white bread flour\n2 heaped tbsp crushed sea salt\n75ml (2¾fl oz) olive oil\n50g (1¾oz) butter, melted\nnigella seeds, to scatter on top (or use sesame seeds)",
+      "amount": "",
+      "unit": "",
+      "original": "1 x 7g (1/6 oz) sachet fast-action dried yeast\n500ml (18fl oz) warm water\n700g (1lb 9oz) strong white bread flour\n2 heaped tbsp crushed sea salt\n75ml (2¾fl oz) olive oil\n50g (1¾oz) butter, melted\nnigella seeds, to scatter on top (or use sesame seeds)"
+    },
+    {
+      "item": "Stir the yeast into 50ml (2fl oz) of the warm water, then allow it to sit for a few minutes until it has dissolved.",
+      "amount": "",
+      "unit": "",
+      "original": "Stir the yeast into 50ml (2fl oz) of the warm water, then allow it to sit for a few minutes until it has dissolved."
+    },
+    {
+      "item": "In a large bowl, combine the flour and sea salt, then make a well in the centre. Pour in the remaining warm water, 50ml (2fl oz) of the olive oil and the yeast dissolved in water and combine using your hands until you have a smooth dough. If the dough is a bit too sticky, just add a little extra flour and, if it is dry, an additional splash of warm water.",
+      "amount": "",
+      "unit": "",
+      "original": "In a large bowl, combine the flour and sea salt, then make a well in the centre. Pour in the remaining warm water, 50ml (2fl oz) of the olive oil and the yeast dissolved in water and combine using your hands until you have a smooth dough. If the dough is a bit too sticky, just add a little extra flour and, if it is dry, an additional splash of warm water."
+    },
+    {
+      "item": "On a clean, floured surface, knead the dough for 5 minutes to activate the yeast and stretch the glutens within it. Allow the dough to rest for 10 minutes before kneading it again for 2 minutes. Repeat this process another 3 times and, on the second, incorporate the remaining 25ml (¾fl oz) olive oil. Return the dough to the bowl, cover it with a clean tea towel and leave it to rest for 3 hours.",
+      "amount": "",
+      "unit": "",
+      "original": "On a clean, floured surface, knead the dough for 5 minutes to activate the yeast and stretch the glutens within it. Allow the dough to rest for 10 minutes before kneading it again for 2 minutes. Repeat this process another 3 times and, on the second, incorporate the remaining 25ml (¾fl oz) olive oil. Return the dough to the bowl, cover it with a clean tea towel and leave it to rest for 3 hours."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

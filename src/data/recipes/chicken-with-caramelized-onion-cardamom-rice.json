@@ -1,0 +1,122 @@
+{
+  "id": "chicken-with-caramelized-onion-cardamom-rice",
+  "name": "Chicken with caramelized onion & cardamom rice",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c05_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2½ tbsp / 25 g barberries (or currants)",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp / 25 g barberries (or currants)",
+      "group": null
+    },
+    {
+      "item": "4 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "4 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "2 medium onions, thinly sliced (2 cups / 250 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "2 medium onions, thinly sliced (2 cups / 250 g in total)",
+      "group": null
+    },
+    {
+      "item": "2¼ lb / 1 kg skin-on, bone-in chicken thighs, or 1 whole chicken, quartered",
+      "amount": "",
+      "unit": "",
+      "original": "2¼ lb / 1 kg skin-on, bone-in chicken thighs, or 1 whole chicken, quartered",
+      "group": null
+    },
+    {
+      "item": "10 cardamom pods",
+      "amount": "",
+      "unit": "",
+      "original": "10 cardamom pods",
+      "group": null
+    },
+    {
+      "item": "rounded ¼ tsp whole cloves",
+      "amount": "",
+      "unit": "",
+      "original": "rounded ¼ tsp whole cloves",
+      "group": null
+    },
+    {
+      "item": "2 long cinnamon sticks, broken in two",
+      "amount": "",
+      "unit": "",
+      "original": "2 long cinnamon sticks, broken in two",
+      "group": null
+    },
+    {
+      "item": "1⅔ cups / 300 g basmati rice",
+      "amount": "",
+      "unit": "",
+      "original": "1⅔ cups / 300 g basmati rice",
+      "group": null
+    },
+    {
+      "item": "2¼ cups / 550 ml boiling water",
+      "amount": "",
+      "unit": "",
+      "original": "2¼ cups / 550 ml boiling water",
+      "group": null
+    },
+    {
+      "item": "1½ tbsp / 5 g flat-leaf parsley leaves, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp / 5 g flat-leaf parsley leaves, chopped",
+      "group": null
+    },
+    {
+      "item": "½ cup / 5 g dill leaves, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 5 g dill leaves, chopped",
+      "group": null
+    },
+    {
+      "item": "¼ cup / 5 g cilantro leaves, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup / 5 g cilantro leaves, chopped",
+      "group": null
+    },
+    {
+      "item": "⅓ cup / 100 g Greek yogurt, mixed with 2 tbsp olive oil (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup / 100 g Greek yogurt, mixed with 2 tbsp olive oil (optional)",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/chicken-with-caramelized-onion-cardamom-rice.jpg"
+}

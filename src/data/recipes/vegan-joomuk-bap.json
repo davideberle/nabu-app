@@ -1,0 +1,43 @@
+{
+  "id": "vegan-joomuk-bap",
+  "name": "VEGAN JOOMUK-BAP",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_050"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_050"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "5 cups cooked brown rice",
+      "amount": "",
+      "unit": "",
+      "original": "5 cups cooked brown rice"
+    },
+    {
+      "item": "1/8 cup soaked shitake mushrooms (diced\n\t1 large carrot (diced)\n\t1 large bunch broccoli florets (diced)\n\tother leftover veggies (optional, diced)\n\tflaxseed (or other vegetable) oil\n\t1 Tbsp soy sauce\n\t2 Tbsp lemon juice\n\tsalt and black pepper\n\t1/2 to 1 Tbsp sugar (to taste)\n\t1 Tbsp black sesame seeds (regular sesame seeds if you don’t have black sesame)\n\t2 sheets roasted nori/kim (crumbled)\n\t2 Tbsp sesame oil\n\tflax seeds (optional, for garnish)",
+      "amount": "",
+      "unit": "",
+      "original": "1/8 cup soaked shitake mushrooms (diced\n\t1 large carrot (diced)\n\t1 large bunch broccoli florets (diced)\n\tother leftover veggies (optional, diced)\n\tflaxseed (or other vegetable) oil\n\t1 Tbsp soy sauce\n\t2 Tbsp lemon juice\n\tsalt and black pepper\n\t1/2 to 1 Tbsp sugar (to taste)\n\t1 Tbsp black sesame seeds (regular sesame seeds if you don’t have black sesame)\n\t2 sheets roasted nori/kim (crumbled)\n\t2 Tbsp sesame oil\n\tflax seeds (optional, for garnish)"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

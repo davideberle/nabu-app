@@ -1,0 +1,182 @@
+{
+  "id": "vegan-crab-noodle-soup",
+  "name": "◁ VEGAN CRAB NOODLE SOUP",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "09_Part04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Part04"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Originating in the northern region of Vietnam, bún riêu is now a common breakfast all over the country. For this recipe, you'll use a seasoned, mashed tofu instead of rice paddy crabs, along with chao and fermented soybean sauce. You can either stir the sauce into the broth during the last step or set it out as a condiment,\nSKILL LEVELModerate|YIELD4 servings\n\nRIÊU\n1 block (14 ounces/400 g) firm tofu, mashed\n1 tablespoon sugar\n\n1 teaspoon vegetable or mushroom stock powder, plus more to taste",
+      "amount": "",
+      "unit": "",
+      "original": "Originating in the northern region of Vietnam, bún riêu is now a common breakfast all over the country. For this recipe, you'll use a seasoned, mashed tofu instead of rice paddy crabs, along with chao and fermented soybean sauce. You can either stir the sauce into the broth during the last step or set it out as a condiment,\nSKILL LEVELModerate|YIELD4 servings\n\nRIÊU\n1 block (14 ounces/400 g) firm tofu, mashed\n1 tablespoon sugar\n\n1 teaspoon vegetable or mushroom stock powder, plus more to taste"
+    },
+    {
+      "item": "4 teaspoons annatto oil, divided",
+      "amount": "",
+      "unit": "",
+      "original": "4 teaspoons annatto oil, divided"
+    },
+    {
+      "item": "BROTH\n1 cup (120 ml) vegetable oil, divided\n8 ounces (227 g) firm tofu, cut into 1-inch (2.5 cm) cubes",
+      "amount": "",
+      "unit": "",
+      "original": "BROTH\n1 cup (120 ml) vegetable oil, divided\n8 ounces (227 g) firm tofu, cut into 1-inch (2.5 cm) cubes"
+    },
+    {
+      "item": "1 tablespoon minced leek (white part only)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon minced leek (white part only)"
+    },
+    {
+      "item": "7 ounces (200 g) plum tomatoes, cubed",
+      "amount": "",
+      "unit": "",
+      "original": "7 ounces (200 g) plum tomatoes, cubed"
+    },
+    {
+      "item": "3½ ounces (100 g) fresh mushrooms (straw, beech, or king oyster), stems trimmed and sliced",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) fresh mushrooms (straw, beech, or king oyster), stems trimmed and sliced"
+    },
+    {
+      "item": "5 cups (1.2 L) vegetable broth, store-bought or homemade (here)",
+      "amount": "",
+      "unit": "",
+      "original": "5 cups (1.2 L) vegetable broth, store-bought or homemade (here)"
+    },
+    {
+      "item": "1 teaspoon salt, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon salt, plus more if needed"
+    },
+    {
+      "item": "1 teaspoon vegetable or mushroom stock powder, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon vegetable or mushroom stock powder, plus more if needed"
+    },
+    {
+      "item": "1 tablespoon tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water"
+    },
+    {
+      "item": "1 tablespoon sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sugar"
+    },
+    {
+      "item": "2 cubes store-bought or homemade chao (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "2 cubes store-bought or homemade chao (optional)"
+    },
+    {
+      "item": "2 tablespoons fermented soybean sauce (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons fermented soybean sauce (optional)"
+    },
+    {
+      "item": "2 tablespoons water",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons water"
+    },
+    {
+      "item": "10 ounces (283 g) dried rice vermicelli noodles",
+      "amount": "",
+      "unit": "",
+      "original": "10 ounces (283 g) dried rice vermicelli noodles"
+    },
+    {
+      "item": "3½ ounces (100 g) leaf or iceberg lettuce, leaves torn into small pieces or shredded, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) leaf or iceberg lettuce, leaves torn into small pieces or shredded, for serving"
+    },
+    {
+      "item": "3 ounces (90 g) perilla leaves, shredded, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) perilla leaves, shredded, for serving"
+    },
+    {
+      "item": "1. MAKE THE RIÊU In a medium bowl, combine mashed tofu, 1 tablespoon of sugar, 1 teaspoon of stock powder, and 2 teaspoons of the annatto oil, and mix well.",
+      "amount": "",
+      "unit": "",
+      "original": "1. MAKE THE RIÊU In a medium bowl, combine mashed tofu, 1 tablespoon of sugar, 1 teaspoon of stock powder, and 2 teaspoons of the annatto oil, and mix well."
+    },
+    {
+      "item": "2. Heat the remaining 2 teaspoons annatto oil in a large skillet over medium-low heat. When hot, add tofu mixture, stir, and cook until tofu absorbs all seasoning (about 3 minutes). Transfer to a bowl and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Heat the remaining 2 teaspoons annatto oil in a large skillet over medium-low heat. When hot, add tofu mixture, stir, and cook until tofu absorbs all seasoning (about 3 minutes). Transfer to a bowl and set aside."
+    },
+    {
+      "item": "3. MAKE THE BROTH Heat ½ cup (120 ml) of the vegetable oil in a medium nonstick skillet over medium-low heat. Add tofu cubes and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "3. MAKE THE BROTH Heat ½ cup (120 ml) of the vegetable oil in a medium nonstick skillet over medium-low heat. Add tofu cubes and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain."
+    },
+    {
+      "item": "4. In a medium stockpot, heat remaining ½ cup (120 ml) vegetable oil over medium-low heat. When hot, add leek and cook and stir until fragrant (about 1 minute). Add tomatoes and mushrooms, stir, and cook until soft (about 3 minutes). Add vegetable broth, salt, and stock powder.",
+      "amount": "",
+      "unit": "",
+      "original": "4. In a medium stockpot, heat remaining ½ cup (120 ml) vegetable oil over medium-low heat. When hot, add leek and cook and stir until fragrant (about 1 minute). Add tomatoes and mushrooms, stir, and cook until soft (about 3 minutes). Add vegetable broth, salt, and stock powder."
+    },
+    {
+      "item": "5. Add tamarind paste, deep-fried tofu, and 1 tablespoon of sugar and bring to a boil. Cook over medium-low heat for 5 minutes. Season to taste with more salt and/or stock powder if needed.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Add tamarind paste, deep-fried tofu, and 1 tablespoon of sugar and bring to a boil. Cook over medium-low heat for 5 minutes. Season to taste with more salt and/or stock powder if needed."
+    },
+    {
+      "item": "6. If using, place chao and fermented soybean sauce in a food processor or blender and process with the water until smooth. (You can also mash by hand with a spoon.) Stir mixture into broth.",
+      "amount": "",
+      "unit": "",
+      "original": "6. If using, place chao and fermented soybean sauce in a food processor or blender and process with the water until smooth. (You can also mash by hand with a spoon.) Stir mixture into broth."
+    },
+    {
+      "item": "7. Follow the instructions on the package to cook the dried rice vermicelli noodles.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Follow the instructions on the package to cook the dried rice vermicelli noodles."
+    },
+    {
+      "item": "8. Divide the cooked noodles into serving bowls, spoon the riêu on top, and then ladle the hot broth over the top. Serve with a platter of shredded lettuce and perilla leaves with lime wedges on the side.",
+      "amount": "",
+      "unit": "",
+      "original": "8. Divide the cooked noodles into serving bowls, spoon the riêu on top, and then ladle the hot broth over the top. Serve with a platter of shredded lettuce and perilla leaves with lime wedges on the side."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

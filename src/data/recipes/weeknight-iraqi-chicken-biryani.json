@@ -1,0 +1,101 @@
+{
+  "id": "weeknight-iraqi-chicken-biryani",
+  "name": "◁ Weeknight Iraqi Chicken Biryani",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "09_Chapter04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Chapter04"
+  },
+  "servings": "prep time: 15 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "POTATOES\n3 large yellow potatoes (about 1½ pounds, or 650 g), peeled and cut into ¾-inch (2 cm) cubes\n2 tablespoons avocado oil",
+      "amount": "",
+      "unit": "",
+      "original": "POTATOES\n3 large yellow potatoes (about 1½ pounds, or 650 g), peeled and cut into ¾-inch (2 cm) cubes\n2 tablespoons avocado oil"
+    },
+    {
+      "item": "CHICKEN\n1½ pounds (700 g) boneless, skinless chicken thighs, cut into ¾-inch (2 cm) cubes (see Note)\n1½ teaspoons kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "CHICKEN\n1½ pounds (700 g) boneless, skinless chicken thighs, cut into ¾-inch (2 cm) cubes (see Note)\n1½ teaspoons kosher salt"
+    },
+    {
+      "item": "1 tablespoon avocado oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon avocado oil"
+    },
+    {
+      "item": "2 cups (400 g) long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups (400 g) long-grain white basmati rice, rinsed until the water runs clear and drained completely"
+    },
+    {
+      "item": "1½ cups (200 g) frozen green peas",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups (200 g) frozen green peas"
+    },
+    {
+      "item": "1 teaspoon ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground allspice"
+    },
+    {
+      "item": "1 teaspoon ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground cinnamon"
+    },
+    {
+      "item": "1 teaspoon ground cardamom",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground cardamom"
+    },
+    {
+      "item": "FOR GARNISHING AND SERVING\n1 tablespoon avocado oil\n½ cup (55 g) slivered almonds",
+      "amount": "",
+      "unit": "",
+      "original": "FOR GARNISHING AND SERVING\n1 tablespoon avocado oil\n½ cup (55 g) slivered almonds"
+    },
+    {
+      "item": "1 cup (145 g) raisins (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (145 g) raisins (optional)"
+    },
+    {
+      "item": "1 TO MAKE THE POTATOES: Preheat the oven to 450°F (230°C) and position a rack on the bottom. Line a large baking sheet with parchment paper.",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE POTATOES: Preheat the oven to 450°F (230°C) and position a rack on the bottom. Line a large baking sheet with parchment paper."
+    },
+    {
+      "item": "2 Add the potatoes to the sheet pan and toss with the 2 tablespoons oil and ½ teaspoon salt. Smooth the cubes into a single layer and bake for 25 to 30 minutes on the bottom rack, until golden and soft.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Add the potatoes to the sheet pan and toss with the 2 tablespoons oil and ½ teaspoon salt. Smooth the cubes into a single layer and bake for 25 to 30 minutes on the bottom rack, until golden and soft."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

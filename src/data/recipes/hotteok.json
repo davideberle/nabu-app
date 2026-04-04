@@ -1,0 +1,50 @@
+{
+  "id": "hotteok",
+  "name": "HOTTEOK",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_057"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_057"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 ¼ cup canned adzuki beans\n\t8 medjool dates",
+      "amount": "",
+      "unit": "",
+      "original": "1 ¼ cup canned adzuki beans\n\t8 medjool dates"
+    },
+    {
+      "item": "1 tsp active dry yeast\n\t1 tbsp coconut sugar\n\t½ lukewarm water (110-115 F)\n\t1 cup all purpose flour (150 grams)\n\t¼ tsp salt\n\t½ tbsp oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp active dry yeast\n\t1 tbsp coconut sugar\n\t½ lukewarm water (110-115 F)\n\t1 cup all purpose flour (150 grams)\n\t¼ tsp salt\n\t½ tbsp oil"
+    },
+    {
+      "item": "Lightly cover your hands with oil and remove dough to a flat surface. Divide the dough into 5 or 6 pieces depending on your size preference. Flatten 1 piece of dough with your hands to fill 1.5 – 2 tbsps of red bean filling in the middle. Grab the corners of the dough to seal the filling into a ball shape. Repeat with remaining dough pieces. (Note: If the dough is too sticky, add a bit more oil to your hands.)",
+      "amount": "",
+      "unit": "",
+      "original": "Lightly cover your hands with oil and remove dough to a flat surface. Divide the dough into 5 or 6 pieces depending on your size preference. Flatten 1 piece of dough with your hands to fill 1.5 – 2 tbsps of red bean filling in the middle. Grab the corners of the dough to seal the filling into a ball shape. Repeat with remaining dough pieces. (Note: If the dough is too sticky, add a bit more oil to your hands.)"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

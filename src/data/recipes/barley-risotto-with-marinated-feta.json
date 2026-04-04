@@ -1,0 +1,185 @@
+{
+  "id": "barley-risotto-with-marinated-feta",
+  "name": "Barley risotto with marinated feta",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c02_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Basic hummus, reserving 4 tbsp of the cooked chickpeas to garnish",
+      "amount": "",
+      "unit": "",
+      "original": "Basic hummus, reserving 4 tbsp of the cooked chickpeas to garnish",
+      "group": null
+    },
+    {
+      "item": "chopped flat-leaf parsley, to garnish",
+      "amount": "",
+      "unit": "",
+      "original": "chopped flat-leaf parsley, to garnish",
+      "group": null
+    },
+    {
+      "item": "2 tbsp pine nuts, toasted in the oven or fried in a little unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp pine nuts, toasted in the oven or fried in a little unsalted butter",
+      "group": null
+    },
+    {
+      "item": "10½ oz / 300 g neck fillet of lamb, finely chopped by hand",
+      "amount": "",
+      "unit": "",
+      "original": "10½ oz / 300 g neck fillet of lamb, finely chopped by hand",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "¼ tsp freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp freshly ground black pepper",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "¼ tsp freshly ground white pepper",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp freshly ground white pepper",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp ground allspice",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "½ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground cinnamon",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "good pinch of freshly grated nutmeg",
+      "amount": "",
+      "unit": "",
+      "original": "good pinch of freshly grated nutmeg",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tsp crushed dried za’atar or oregano leaves",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp crushed dried za’atar or oregano leaves",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tbsp white wine vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp white wine vinegar",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tbsp chopped mint",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp chopped mint",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tbsp chopped flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp chopped flat-leaf parsley",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp salt",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tbsp unsalted butter or ghee",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp unsalted butter or ghee",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "1 tsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp olive oil",
+      "group": "KAWARMA"
+    },
+    {
+      "item": "⅓ oz / 10 g flat-leaf parsley, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ oz / 10 g flat-leaf parsley, finely chopped",
+      "group": "LEMON SAUCE"
+    },
+    {
+      "item": "1 green chile, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 green chile, finely chopped",
+      "group": "LEMON SAUCE"
+    },
+    {
+      "item": "4 tbsp freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "4 tbsp freshly squeezed lemon juice",
+      "group": "LEMON SAUCE"
+    },
+    {
+      "item": "2 tbsp white wine vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp white wine vinegar",
+      "group": "LEMON SAUCE"
+    },
+    {
+      "item": "2 cloves garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "2 cloves garlic, crushed",
+      "group": "LEMON SAUCE"
+    },
+    {
+      "item": "¼ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp salt",
+      "group": "LEMON SAUCE"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/barley-risotto-with-marinated-feta.jpg"
+}

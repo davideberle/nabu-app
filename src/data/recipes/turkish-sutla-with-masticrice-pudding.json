@@ -1,0 +1,91 @@
+{
+  "id": "turkish-sutla-with-masticrice-pudding",
+  "name": "◁ Turkish Sutlaç with MasticRICE PUDDING",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "12_Chapter07"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "12_Chapter07"
+  },
+  "servings": "prep time: 5 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "6 cups (1.5 L) whole milk",
+      "amount": "",
+      "unit": "",
+      "original": "6 cups (1.5 L) whole milk"
+    },
+    {
+      "item": "¾ cup (180 ml) cold heavy whipping cream",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup (180 ml) cold heavy whipping cream"
+    },
+    {
+      "item": "1½ tablespoons cornstarch",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tablespoons cornstarch"
+    },
+    {
+      "item": "¾ cup (170 g) short-grain rice, rinsed until the water runs clear and drained completely",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup (170 g) short-grain rice, rinsed until the water runs clear and drained completely"
+    },
+    {
+      "item": "1 cup (200 g) granulated sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (200 g) granulated sugar"
+    },
+    {
+      "item": "1 Add the milk to a medium saucepan and heat over medium heat until hot but not boiling. Remove from the heat.",
+      "amount": "",
+      "unit": "",
+      "original": "1 Add the milk to a medium saucepan and heat over medium heat until hot but not boiling. Remove from the heat."
+    },
+    {
+      "item": "2 In a small bowl, combine the cream and cornstarch and mix until the cornstarch has dissolved. Using a mortar and pestle, crush the mastic gum (if using) into a fine powder.",
+      "amount": "",
+      "unit": "",
+      "original": "2 In a small bowl, combine the cream and cornstarch and mix until the cornstarch has dissolved. Using a mortar and pestle, crush the mastic gum (if using) into a fine powder."
+    },
+    {
+      "item": "3 Add the rice to a large pan or skillet at least 2 inches (5 cm) deep. Add 2 ladles of the hot milk and gently simmer together over medium heat, stirring constantly. When the rice has absorbed most of the milk, add a few more ladles of hot milk and continue to stir until most of the milk is absorbed. Continue adding milk, a few ladles at a time, stirring until most of it is absorbed. (This method is similar to how you would cook a risotto; while slow, this process will yield very creamy results.) Once you have used all the milk, add the sugar and stir for a few minutes until it is dissolved. Add the whipping cream–cornstarch mixture and continue to stir until the pudding is thickened and the rice is cooked to a very soft consistency. This process should take 30 to 40 minutes in total.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Add the rice to a large pan or skillet at least 2 inches (5 cm) deep. Add 2 ladles of the hot milk and gently simmer together over medium heat, stirring constantly. When the rice has absorbed most of the milk, add a few more ladles of hot milk and continue to stir until most of the milk is absorbed. Continue adding milk, a few ladles at a time, stirring until most of it is absorbed. (This method is similar to how you would cook a risotto; while slow, this process will yield very creamy results.) Once you have used all the milk, add the sugar and stir for a few minutes until it is dissolved. Add the whipping cream–cornstarch mixture and continue to stir until the pudding is thickened and the rice is cooked to a very soft consistency. This process should take 30 to 40 minutes in total."
+    },
+    {
+      "item": "4 Stir in the mastic gum powder (if using) or other flavoring (see Notes). Remove the pan from the heat. Pour the rice pudding into oven-safe 5- to 6-ounce (150 to 180 ml) ramekins for individual servings, arranging them on a large sheet pan. Turn on the oven broiler and place the sheet pan directly under the broiler. Broil for 1 to 2 minutes (at the most), until the surfaces are caramelized and look spotty and browned. Remove and let cool for a few minutes.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Stir in the mastic gum powder (if using) or other flavoring (see Notes). Remove the pan from the heat. Pour the rice pudding into oven-safe 5- to 6-ounce (150 to 180 ml) ramekins for individual servings, arranging them on a large sheet pan. Turn on the oven broiler and place the sheet pan directly under the broiler. Broil for 1 to 2 minutes (at the most), until the surfaces are caramelized and look spotty and browned. Remove and let cool for a few minutes."
+    },
+    {
+      "item": "5 Serve warm (my favorite), at room temperature, or cover with plastic wrap, refrigerate for 2 hours, and then serve cold.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Serve warm (my favorite), at room temperature, or cover with plastic wrap, refrigerate for 2 hours, and then serve cold."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,122 @@
+{
+  "id": "all-green-spring-slaw",
+  "name": "ALL-GREEN SPRING SLAW",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "¼ cup silken tofu",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup silken tofu"
+    },
+    {
+      "item": "1 tablespoon freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon freshly squeezed lemon juice"
+    },
+    {
+      "item": "1 tablespoon Dijon mustard",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon Dijon mustard"
+    },
+    {
+      "item": "2 tablespoons apple cider vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons apple cider vinegar"
+    },
+    {
+      "item": "1 clove garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "1 clove garlic, minced"
+    },
+    {
+      "item": "½ teaspoon coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ teaspoon coarse sea salt"
+    },
+    {
+      "item": "2 tablespoons extra-virgin olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons extra-virgin olive oil"
+    },
+    {
+      "item": "3 cups very thinly sliced green cabbage",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups very thinly sliced green cabbage"
+    },
+    {
+      "item": "2 teaspoons coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons coarse sea salt"
+    },
+    {
+      "item": "½ cup shelled green peas (about 8 ounces peas in the pod)",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup shelled green peas (about 8 ounces peas in the pod)"
+    },
+    {
+      "item": "8 ounces sugar snap peas, trimmed and thinly sliced lengthwise",
+      "amount": "",
+      "unit": "",
+      "original": "8 ounces sugar snap peas, trimmed and thinly sliced lengthwise"
+    },
+    {
+      "item": "2 stalks celery, strings removed and thinly sliced diagonally (see sidebar)",
+      "amount": "",
+      "unit": "",
+      "original": "2 stalks celery, strings removed and thinly sliced diagonally (see sidebar)"
+    },
+    {
+      "item": "¼ cup husked raw pumpkin seeds, toasted",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup husked raw pumpkin seeds, toasted"
+    },
+    {
+      "item": "2 tablespoons chopped fresh chives",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons chopped fresh chives"
+    },
+    {
+      "item": "1 tablespoon finely grated lime zest",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon finely grated lime zest"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

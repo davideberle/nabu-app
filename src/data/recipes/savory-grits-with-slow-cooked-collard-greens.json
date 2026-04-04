@@ -1,0 +1,133 @@
+{
+  "id": "savory-grits-with-slow-cooked-collard-greens",
+  "name": "SAVORY GRITS with SLOW-COOKED COLLARD GREENS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c05_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c05_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 tablespoon plus ¼ teaspoon coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon plus ¼ teaspoon coarse sea salt"
+    },
+    {
+      "item": "1 pound collard greens, cut into bite-size pieces",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound collard greens, cut into bite-size pieces"
+    },
+    {
+      "item": "3 tablespoons extra-virgin olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons extra-virgin olive oil"
+    },
+    {
+      "item": "1 red onion, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 red onion, finely chopped"
+    },
+    {
+      "item": "½ teaspoon minced fresh ginger",
+      "amount": "",
+      "unit": "",
+      "original": "½ teaspoon minced fresh ginger"
+    },
+    {
+      "item": "¼ teaspoon chili powder",
+      "amount": "",
+      "unit": "",
+      "original": "¼ teaspoon chili powder"
+    },
+    {
+      "item": "⅛ teaspoon cayenne pepper",
+      "amount": "",
+      "unit": "",
+      "original": "⅛ teaspoon cayenne pepper"
+    },
+    {
+      "item": "2 large cloves garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "2 large cloves garlic, minced"
+    },
+    {
+      "item": "1 cup vegetable stock, homemade or store-bought",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup vegetable stock, homemade or store-bought"
+    },
+    {
+      "item": "1 large red bell pepper, diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 large red bell pepper, diced"
+    },
+    {
+      "item": "1 jalapeño chile, seeded and minced",
+      "amount": "",
+      "unit": "",
+      "original": "1 jalapeño chile, seeded and minced"
+    },
+    {
+      "item": "4 cups vegetable stock, homemade or store-bought",
+      "amount": "",
+      "unit": "",
+      "original": "4 cups vegetable stock, homemade or store-bought"
+    },
+    {
+      "item": "1 teaspoon coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon coarse sea salt"
+    },
+    {
+      "item": "¾ cup yellow corn grits",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup yellow corn grits"
+    },
+    {
+      "item": "½ cup Creamed Cashews",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup Creamed Cashews"
+    },
+    {
+      "item": "¼ cup packed minced flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup packed minced flat-leaf parsley"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Freshly ground black pepper"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

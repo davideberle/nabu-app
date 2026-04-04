@@ -1,0 +1,77 @@
+{
+  "id": "crispy-macaroni",
+  "name": "◁ CRISPY MACARONI",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "12_Part07"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "12_Part07"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "If you ask me which Vietnamese snack is most similar to chips (think Pringles or Doritos), I would say nui chiên! It’s just the thing to satisfy those between-meal cravings. Rice macaroni is deep-fried and then tossed with savory seasonings. I recommend using elbow macaroni or corkscrew- or spiral-shaped pasta, like fusilli, for the ultimate crispy puffiness. However, note that you must use macaroni or pasta made with white or brown rice flour for this recipe, as traditional Italian pastas are made from wheat flour and become hard when fried. You’ll want to serve these within 2 hours after cooking or keep them in an airtight container. If left out for too long, the macaroni will lose its crispness.\nSKILL LEVELBasic|YIELD2 servings\n1 cup (240 ml) vegetable oil\n2 ounces (56 g) rice elbow macaroni or other twisty pasta (such as fusilli, rotini, cavatappi, or pipe rigate)\n1 tablespoon vegan butter or margarine\n2 cloves garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "If you ask me which Vietnamese snack is most similar to chips (think Pringles or Doritos), I would say nui chiên! It’s just the thing to satisfy those between-meal cravings. Rice macaroni is deep-fried and then tossed with savory seasonings. I recommend using elbow macaroni or corkscrew- or spiral-shaped pasta, like fusilli, for the ultimate crispy puffiness. However, note that you must use macaroni or pasta made with white or brown rice flour for this recipe, as traditional Italian pastas are made from wheat flour and become hard when fried. You’ll want to serve these within 2 hours after cooking or keep them in an airtight container. If left out for too long, the macaroni will lose its crispness.\nSKILL LEVELBasic|YIELD2 servings\n1 cup (240 ml) vegetable oil\n2 ounces (56 g) rice elbow macaroni or other twisty pasta (such as fusilli, rotini, cavatappi, or pipe rigate)\n1 tablespoon vegan butter or margarine\n2 cloves garlic, minced"
+    },
+    {
+      "item": "1 teaspoon vegan fish sauce",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon vegan fish sauce"
+    },
+    {
+      "item": "1 tablespoon sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sugar"
+    },
+    {
+      "item": "1 tablespoon water",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon water"
+    },
+    {
+      "item": "1. In a small saucepan, heat vegetable oil over medium heat until hot (about 3 minutes). To test, stick one end of a chopstick in the oil; if bubbles appear around it, it's ready.",
+      "amount": "",
+      "unit": "",
+      "original": "1. In a small saucepan, heat vegetable oil over medium heat until hot (about 3 minutes). To test, stick one end of a chopstick in the oil; if bubbles appear around it, it's ready."
+    },
+    {
+      "item": "2. Drop in the macaroni. They tend to pop up and brown fast (within a few seconds); when they do, use a slotted spoon to transfer quickly to a paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Drop in the macaroni. They tend to pop up and brown fast (within a few seconds); when they do, use a slotted spoon to transfer quickly to a paper towel–lined plate to drain."
+    },
+    {
+      "item": "3. In a small pan melt the vegan butter and cook and stir the garlic over medium-low heat until slightly golden (about 30 seconds). Add the vegan fish sauce, sugar, and water, and simmer until sugar is dissolved and sauce has thickened slightly (about 1 minute).",
+      "amount": "",
+      "unit": "",
+      "original": "3. In a small pan melt the vegan butter and cook and stir the garlic over medium-low heat until slightly golden (about 30 seconds). Add the vegan fish sauce, sugar, and water, and simmer until sugar is dissolved and sauce has thickened slightly (about 1 minute)."
+    },
+    {
+      "item": "4. Add the crispy macaroni and toss until coated with sauce (about 30 seconds). Remove from heat, sprinkle with chili flakes, and enjoy immediately.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Add the crispy macaroni and toss until coated with sauce (about 30 seconds). Remove from heat, sprinkle with chili flakes, and enjoy immediately."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

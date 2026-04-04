@@ -1,0 +1,44 @@
+{
+  "id": "korean-mung-bean-pancakes",
+  "name": "KOREAN MUNG BEAN PANCAKES",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_065"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_065"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "½ cup peeled and split mung beans, soaked in warm water for at least two hours\n\t1 cup water\n\t1 Tbsp doenjang or brown miso\n\t2 tsps sugar\n\t½ cup brown rice flour\n\t1 cup of chopped chives (scallions and leeks are good, too)\n\t1 cup of shredded carrot\n\ta couple Tbsps oil for pan-frying (any neutral-flavored oil, I used sunflower)",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup peeled and split mung beans, soaked in warm water for at least two hours\n\t1 cup water\n\t1 Tbsp doenjang or brown miso\n\t2 tsps sugar\n\t½ cup brown rice flour\n\t1 cup of chopped chives (scallions and leeks are good, too)\n\t1 cup of shredded carrot\n\ta couple Tbsps oil for pan-frying (any neutral-flavored oil, I used sunflower)"
+    },
+    {
+      "item": "3 Tbsps soy sauce\n\t1 tsp sesame oil\n\t¾ tsp sugar\n\t¾ tsp gochugaru (Korean red pepper flakes) or ½ tsp common red pepper flakes\n\t2 tsps toasted sesame seeds",
+      "amount": "",
+      "unit": "",
+      "original": "3 Tbsps soy sauce\n\t1 tsp sesame oil\n\t¾ tsp sugar\n\t¾ tsp gochugaru (Korean red pepper flakes) or ½ tsp common red pepper flakes\n\t2 tsps toasted sesame seeds"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

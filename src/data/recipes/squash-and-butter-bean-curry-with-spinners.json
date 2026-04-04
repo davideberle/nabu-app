@@ -1,0 +1,133 @@
+{
+  "id": "squash-and-butter-bean-curry-with-spinners",
+  "name": "SQUASH AND BUTTER BEAN CURRY WITH SPINNERS",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore",
+    "chapter": "chapter09"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "chapter09"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "500 ml (17 fl oz/2 cups) vegetable stock",
+      "amount": "",
+      "unit": "",
+      "original": "500 ml (17 fl oz/2 cups) vegetable stock"
+    },
+    {
+      "item": "100 g (3½ oz) creamed coconut",
+      "amount": "",
+      "unit": "",
+      "original": "100 g (3½ oz) creamed coconut"
+    },
+    {
+      "item": "4 tablespoons coconut oil",
+      "amount": "",
+      "unit": "",
+      "original": "4 tablespoons coconut oil"
+    },
+    {
+      "item": "1 onion, diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, diced"
+    },
+    {
+      "item": "2 tablespoons medium Jamaican curry powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons medium Jamaican curry powder"
+    },
+    {
+      "item": "1 thumb-sized piece of fresh ginger root, peeled and grated",
+      "amount": "",
+      "unit": "",
+      "original": "1 thumb-sized piece of fresh ginger root, peeled and grated"
+    },
+    {
+      "item": "1 bay leaf",
+      "amount": "",
+      "unit": "",
+      "original": "1 bay leaf"
+    },
+    {
+      "item": "1 tablespoon allspice berries, ground",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon allspice berries, ground"
+    },
+    {
+      "item": "6 garlic cloves, very finely chopped (yes, 6)",
+      "amount": "",
+      "unit": "",
+      "original": "6 garlic cloves, very finely chopped (yes, 6)"
+    },
+    {
+      "item": "2 ½ tablespoons Green Seasoning",
+      "amount": "",
+      "unit": "",
+      "original": "2 ½ tablespoons Green Seasoning"
+    },
+    {
+      "item": "1 Scotch bonnet",
+      "amount": "",
+      "unit": "",
+      "original": "1 Scotch bonnet"
+    },
+    {
+      "item": "100 ml (3½ fl oz/scant ½ cup) coconut milk",
+      "amount": "",
+      "unit": "",
+      "original": "100 ml (3½ fl oz/scant ½ cup) coconut milk"
+    },
+    {
+      "item": "4 sprigs of thyme",
+      "amount": "",
+      "unit": "",
+      "original": "4 sprigs of thyme"
+    },
+    {
+      "item": "1 x 400 g (14 oz) tin of butter (lima) beans, drained and rinsed",
+      "amount": "",
+      "unit": "",
+      "original": "1 x 400 g (14 oz) tin of butter (lima) beans, drained and rinsed"
+    },
+    {
+      "item": "1 red kuri squash or other small–medium sized squash, chopped into chunks",
+      "amount": "",
+      "unit": "",
+      "original": "1 red kuri squash or other small–medium sized squash, chopped into chunks"
+    },
+    {
+      "item": "1 potato, diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 potato, diced"
+    },
+    {
+      "item": "150 g (5 oz/1¼ cups) plain (all-purpose) flour",
+      "amount": "",
+      "unit": "",
+      "original": "150 g (5 oz/1¼ cups) plain (all-purpose) flour"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

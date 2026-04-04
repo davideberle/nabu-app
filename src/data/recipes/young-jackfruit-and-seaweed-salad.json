@@ -1,0 +1,86 @@
+{
+  "id": "young-jackfruit-and-seaweed-salad",
+  "name": "◁ YOUNG JACKFRUIT AND SEAWEED SALAD",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "07_Part02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Part02"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Jackfruit is a large, heavy tropical fruit with a thick, bumpy rind. Because it’s native to Asia, Africa, and South America, it’s not readily available in other countries; however, for this recipe, you can use canned young jackfruit in brine, which you should be able to find at most Asian grocery stores. Just make sure you get green jackfruit, not yellow. You can also substitute an equal amount of breadfruit if you’re unable to find green jackfruit. This recipe (gỏi rong biển mít non) also calls for fried leek, which make this dish far more flavorful.\nSKILL LEVELModerate|YIELD3 or 4 servings\n10½ ounces (300 g) fresh young green jackfruit or breadfruit, peeled, or canned jackfruit, drained\n½ teaspoon salt\n3 tablespoons vegetable oil\n3 ounces (90 g) thinly sliced leek (white part only)\n1 teaspoon vegetable or mushroom stock powder\n2 tablespoons roasted peanuts, crushed\n1 tablespoon toasted sesame seeds, plus 1 teaspoon for garnish (optional)\n1 ounce (28 g) mint",
+      "amount": "",
+      "unit": "",
+      "original": "Jackfruit is a large, heavy tropical fruit with a thick, bumpy rind. Because it’s native to Asia, Africa, and South America, it’s not readily available in other countries; however, for this recipe, you can use canned young jackfruit in brine, which you should be able to find at most Asian grocery stores. Just make sure you get green jackfruit, not yellow. You can also substitute an equal amount of breadfruit if you’re unable to find green jackfruit. This recipe (gỏi rong biển mít non) also calls for fried leek, which make this dish far more flavorful.\nSKILL LEVELModerate|YIELD3 or 4 servings\n10½ ounces (300 g) fresh young green jackfruit or breadfruit, peeled, or canned jackfruit, drained\n½ teaspoon salt\n3 tablespoons vegetable oil\n3 ounces (90 g) thinly sliced leek (white part only)\n1 teaspoon vegetable or mushroom stock powder\n2 tablespoons roasted peanuts, crushed\n1 tablespoon toasted sesame seeds, plus 1 teaspoon for garnish (optional)\n1 ounce (28 g) mint"
+    },
+    {
+      "item": "1 ounce (28 g) dried, seasoned seaweed crumbs (see Note), plus more to taste",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) dried, seasoned seaweed crumbs (see Note), plus more to taste"
+    },
+    {
+      "item": "1 bird’s eye chili pepper, thinly sliced, for garnish (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 bird’s eye chili pepper, thinly sliced, for garnish (optional)"
+    },
+    {
+      "item": "1. Place the young jackfruit in a pot, add salt, and then boil until soft enough to be easily skewered with a fork or chopstick (20 to 25 minutes for fresh or 15 minutes for canned; if using breadfruit, boil for 10 to 15 minutes). Remove from heat and allow to cool.",
+      "amount": "",
+      "unit": "",
+      "original": "1. Place the young jackfruit in a pot, add salt, and then boil until soft enough to be easily skewered with a fork or chopstick (20 to 25 minutes for fresh or 15 minutes for canned; if using breadfruit, boil for 10 to 15 minutes). Remove from heat and allow to cool."
+    },
+    {
+      "item": "2. Cut jackfruit into thin slices, stack them on top of each other, and then cut along the grain into julienned strips (see Note).",
+      "amount": "",
+      "unit": "",
+      "original": "2. Cut jackfruit into thin slices, stack them on top of each other, and then cut along the grain into julienned strips (see Note)."
+    },
+    {
+      "item": "3. Set a fine-mesh sieve over a heatproof bowl near the stovetop. Heat vegetable oil in a small skillet over medium heat. When hot, add leek and cook and stir until golden brown (about 2 minutes). Immediately empty contents of skillet into the fine-mesh sieve and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Set a fine-mesh sieve over a heatproof bowl near the stovetop. Heat vegetable oil in a small skillet over medium heat. When hot, add leek and cook and stir until golden brown (about 2 minutes). Immediately empty contents of skillet into the fine-mesh sieve and set aside."
+    },
+    {
+      "item": "4. In a large bowl, combine jackfruit, stock powder, and 1 tablespoon of the fried leek oil. Mix thoroughly until jackfruit absorbs all seasonings.",
+      "amount": "",
+      "unit": "",
+      "original": "4. In a large bowl, combine jackfruit, stock powder, and 1 tablespoon of the fried leek oil. Mix thoroughly until jackfruit absorbs all seasonings."
+    },
+    {
+      "item": "5. Add peanuts, sesame seeds, mint, and seasoned seaweed, and mix well. Add more seasoned seaweed to taste.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Add peanuts, sesame seeds, mint, and seasoned seaweed, and mix well. Add more seasoned seaweed to taste."
+    },
+    {
+      "item": "6. Transfer salad to plates. Garnish with more sesame seeds and chili slices (if using) and serve with sesame rice crackers (if using).",
+      "amount": "",
+      "unit": "",
+      "original": "6. Transfer salad to plates. Garnish with more sesame seeds and chili slices (if using) and serve with sesame rice crackers (if using)."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

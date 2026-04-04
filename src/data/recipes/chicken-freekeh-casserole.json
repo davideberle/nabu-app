@@ -1,0 +1,137 @@
+{
+  "id": "chicken-freekeh-casserole",
+  "name": "◁ Chicken & Freekeh Casserole",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "10_Chapter05"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "10_Chapter05"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "CHICKEN\n¼ cup (60 ml) fresh lemon juice\n5 large cloves garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "CHICKEN\n¼ cup (60 ml) fresh lemon juice\n5 large cloves garlic, crushed"
+    },
+    {
+      "item": "4 teaspoons seven spice",
+      "amount": "",
+      "unit": "",
+      "original": "4 teaspoons seven spice"
+    },
+    {
+      "item": "2½ teaspoons salt",
+      "amount": "",
+      "unit": "",
+      "original": "2½ teaspoons salt"
+    },
+    {
+      "item": "4½ pounds (2 kg) bone-in, skin-on chicken leg quarters (5 leg quarters)",
+      "amount": "",
+      "unit": "",
+      "original": "4½ pounds (2 kg) bone-in, skin-on chicken leg quarters (5 leg quarters)"
+    },
+    {
+      "item": "CARROTS\n2/3 pound (300 g) small or medium carrots, peeled and kept whole if small or cut in half lengthwise if large\n½ teaspoon salt",
+      "amount": "",
+      "unit": "",
+      "original": "CARROTS\n2/3 pound (300 g) small or medium carrots, peeled and kept whole if small or cut in half lengthwise if large\n½ teaspoon salt"
+    },
+    {
+      "item": "1 tablespoon olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon olive oil"
+    },
+    {
+      "item": "2½ cups (350 g) whole or cracked freekeh, rinsed and drained (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "2½ cups (350 g) whole or cracked freekeh, rinsed and drained (see Note)"
+    },
+    {
+      "item": "1 teaspoon seven spice",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon seven spice"
+    },
+    {
+      "item": "1½ teaspoons kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons kosher salt"
+    },
+    {
+      "item": "4 cups (960 ml) chicken broth or water",
+      "amount": "",
+      "unit": "",
+      "original": "4 cups (960 ml) chicken broth or water"
+    },
+    {
+      "item": "1 TO MAKE THE CHICKEN: Preheat the oven to 400°F (205°C).",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE CHICKEN: Preheat the oven to 400°F (205°C)."
+    },
+    {
+      "item": "2 In a large bowl, mix together the lemon juice, garlic, seven spice, 2½ teaspoons salt, and ½ teaspoon pepper.",
+      "amount": "",
+      "unit": "",
+      "original": "2 In a large bowl, mix together the lemon juice, garlic, seven spice, 2½ teaspoons salt, and ½ teaspoon pepper."
+    },
+    {
+      "item": "3 Make three or four ½-inch (13 mm) slits on the bottom side of each chicken quarter. Add the chicken quarters to the bowl with the marinade and slather the chicken with the marinade, making sure to cover all sides and working it under the skin. Let sit for 10 to 15 minutes, or marinate, covered, in the refrigerator overnight.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Make three or four ½-inch (13 mm) slits on the bottom side of each chicken quarter. Add the chicken quarters to the bowl with the marinade and slather the chicken with the marinade, making sure to cover all sides and working it under the skin. Let sit for 10 to 15 minutes, or marinate, covered, in the refrigerator overnight."
+    },
+    {
+      "item": "4 MEANWHILE, PREP THE CARROTS: In a medium bowl, mix the carrots with the ½ teaspoon salt, ¼ teaspoon pepper, and 1 tablespoon oil.",
+      "amount": "",
+      "unit": "",
+      "original": "4 MEANWHILE, PREP THE CARROTS: In a medium bowl, mix the carrots with the ½ teaspoon salt, ¼ teaspoon pepper, and 1 tablespoon oil."
+    },
+    {
+      "item": "5 TO MAKE THE FREEKEH: In a large roasting pan that is also stovetop safe, heat the 2 tablespoons oil over medium heat. (If you don’t have a stovetop-safe roaster, you can use a large skillet then transfer everything to a baking dish.) Sear the chicken leg quarters skin side down for 2 to 3 minutes until golden. Flip and sear the other side for a few minutes. Transfer to a plate.",
+      "amount": "",
+      "unit": "",
+      "original": "5 TO MAKE THE FREEKEH: In a large roasting pan that is also stovetop safe, heat the 2 tablespoons oil over medium heat. (If you don’t have a stovetop-safe roaster, you can use a large skillet then transfer everything to a baking dish.) Sear the chicken leg quarters skin side down for 2 to 3 minutes until golden. Flip and sear the other side for a few minutes. Transfer to a plate."
+    },
+    {
+      "item": "6 Add the onion to the roasting pan and cook, stirring often, until softened, 2 to 3 minutes. Add the freekeh and toast while stirring for 2 to 3 minutes. Add the seven spice and 1½ teaspoons salt and cook, stirring often, for a few minutes. Add the broth and bring to a boil. Once the water is boiling, nestle the chicken quarters on top of the freekeh and scatter the carrots throughout.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Add the onion to the roasting pan and cook, stirring often, until softened, 2 to 3 minutes. Add the freekeh and toast while stirring for 2 to 3 minutes. Add the seven spice and 1½ teaspoons salt and cook, stirring often, for a few minutes. Add the broth and bring to a boil. Once the water is boiling, nestle the chicken quarters on top of the freekeh and scatter the carrots throughout."
+    },
+    {
+      "item": "7 Tightly cover the roasting pan with aluminum foil and bake for 1 hour. After 1 hour, uncover the pan and bake for another 30 minutes, or until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C) and the freekeh is tender. Broil for 3 to 5 minutes, until the chicken skin is golden brown.",
+      "amount": "",
+      "unit": "",
+      "original": "7 Tightly cover the roasting pan with aluminum foil and bake for 1 hour. After 1 hour, uncover the pan and bake for another 30 minutes, or until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C) and the freekeh is tender. Broil for 3 to 5 minutes, until the chicken skin is golden brown."
+    },
+    {
+      "item": "8 Serve with salad.",
+      "amount": "",
+      "unit": "",
+      "original": "8 Serve with salad."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

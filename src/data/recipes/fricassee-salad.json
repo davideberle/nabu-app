@@ -1,0 +1,95 @@
+{
+  "id": "fricassee-salad",
+  "name": "Fricassee salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c06_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 tbsp harissa paste (store-bought or see recipe)",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp harissa paste (store-bought or see recipe)",
+      "group": null
+    },
+    {
+      "item": "4 tbsp capers",
+      "amount": "",
+      "unit": "",
+      "original": "4 tbsp capers",
+      "group": null
+    },
+    {
+      "item": "2 tsp finely chopped preserved lemon peel, (store-bought or see recipe)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp finely chopped preserved lemon peel, (store-bought or see recipe)",
+      "group": null
+    },
+    {
+      "item": "½ cup / 60 g black olives, pitted and halved",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 60 g black olives, pitted and halved",
+      "group": null
+    },
+    {
+      "item": "2 tbsp freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp freshly squeezed lemon juice",
+      "group": null
+    },
+    {
+      "item": "5 oz / 140 g preserved piquillo peppers (about 5 peppers), torn into rough strips",
+      "amount": "",
+      "unit": "",
+      "original": "5 oz / 140 g preserved piquillo peppers (about 5 peppers), torn into rough strips",
+      "group": null
+    },
+    {
+      "item": "4 large eggs, hard boiled, peeled, and quartered",
+      "amount": "",
+      "unit": "",
+      "original": "4 large eggs, hard boiled, peeled, and quartered",
+      "group": null
+    },
+    {
+      "item": "2 baby gem lettuces (about 5 oz / 140 g in total), leaves separated and torn",
+      "amount": "",
+      "unit": "",
+      "original": "2 baby gem lettuces (about 5 oz / 140 g in total), leaves separated and torn",
+      "group": null
+    },
+    {
+      "item": "⅔ oz / 20 g flat-leaf parsley, leaves picked and torn",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ oz / 20 g flat-leaf parsley, leaves picked and torn",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

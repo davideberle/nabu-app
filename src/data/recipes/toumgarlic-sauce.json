@@ -1,0 +1,152 @@
+{
+  "id": "toumgarlic-sauce",
+  "name": "◁ ToumGARLIC SAUCE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "06_Chapter01"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "06_Chapter01"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "YIELD: 2 cups (480 ml)",
+      "amount": "",
+      "unit": "",
+      "original": "YIELD: 2 cups (480 ml)"
+    },
+    {
+      "item": "1 cup (155 g) cloves garlic, peeled (pre-peeled works as long as they are fresh)",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (155 g) cloves garlic, peeled (pre-peeled works as long as they are fresh)"
+    },
+    {
+      "item": "½ cup (120 ml) fresh lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (120 ml) fresh lemon juice"
+    },
+    {
+      "item": "2 teaspoons kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons kosher salt"
+    },
+    {
+      "item": "2 cups (480 ml) neutral oil (such as avocado oil)",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups (480 ml) neutral oil (such as avocado oil)"
+    },
+    {
+      "item": "1 Cut the garlic cloves in half lengthwise and remove the green germ if necessary. (The germ will make the toum bitter.)",
+      "amount": "",
+      "unit": "",
+      "original": "1 Cut the garlic cloves in half lengthwise and remove the green germ if necessary. (The germ will make the toum bitter.)"
+    },
+    {
+      "item": "2 In a tall jug or jar that fits an immersion blender, place the garlic, lemon juice, and salt and blend until a paste forms and develops some foam, 20 to 30 seconds, depending on the power of your blender.",
+      "amount": "",
+      "unit": "",
+      "original": "2 In a tall jug or jar that fits an immersion blender, place the garlic, lemon juice, and salt and blend until a paste forms and develops some foam, 20 to 30 seconds, depending on the power of your blender."
+    },
+    {
+      "item": "3 While the blender is still inside the container, add the oil. Start blending, keeping the blades at the bottom of the jar and slowly pulsing it up and down slightly. Do this for 3 to 5 minutes, until the oil and the garlic start to emulsify. (The emulsification will slowly work its way up the jar until the whole sauce is emulsified; see Notes.)",
+      "amount": "",
+      "unit": "",
+      "original": "3 While the blender is still inside the container, add the oil. Start blending, keeping the blades at the bottom of the jar and slowly pulsing it up and down slightly. Do this for 3 to 5 minutes, until the oil and the garlic start to emulsify. (The emulsification will slowly work its way up the jar until the whole sauce is emulsified; see Notes.)"
+    },
+    {
+      "item": "4 Store in an airtight jar in the refrigerator for 3 to 4 weeks.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Store in an airtight jar in the refrigerator for 3 to 4 weeks."
+    },
+    {
+      "item": "YIELD: 2 cups (370 g)",
+      "amount": "",
+      "unit": "",
+      "original": "YIELD: 2 cups (370 g)"
+    },
+    {
+      "item": "¾ ounce (21 g) dried chili peppers (such as guajillo, Kashmiri, or any other pepper), sliced lengthwise and seeds and stems removed",
+      "amount": "",
+      "unit": "",
+      "original": "¾ ounce (21 g) dried chili peppers (such as guajillo, Kashmiri, or any other pepper), sliced lengthwise and seeds and stems removed"
+    },
+    {
+      "item": "1½ teaspoons caraway seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons caraway seeds"
+    },
+    {
+      "item": "1½ teaspoons cumin seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons cumin seeds"
+    },
+    {
+      "item": "1½ teaspoons coriander seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons coriander seeds"
+    },
+    {
+      "item": "6½ ounces (180 g) jarred roasted red peppers",
+      "amount": "",
+      "unit": "",
+      "original": "6½ ounces (180 g) jarred roasted red peppers"
+    },
+    {
+      "item": "1 cup (50 g) sun-dried tomatoes",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (50 g) sun-dried tomatoes"
+    },
+    {
+      "item": "4 large cloves garlic, peeled",
+      "amount": "",
+      "unit": "",
+      "original": "4 large cloves garlic, peeled"
+    },
+    {
+      "item": "1 teaspoon kosher salt, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon kosher salt, plus more if needed"
+    },
+    {
+      "item": "2 tablespoons fresh lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons fresh lemon juice"
+    },
+    {
+      "item": "2 teaspoons grated lemon zest",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons grated lemon zest"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

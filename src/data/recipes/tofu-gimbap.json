@@ -1,0 +1,50 @@
+{
+  "id": "tofu-gimbap",
+  "name": "TOFU GIMBAP",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_046"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_046"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "5 gim aka nori sheets",
+      "amount": "",
+      "unit": "",
+      "original": "5 gim aka nori sheets"
+    },
+    {
+      "item": "2 cups uncooked short grain rice standard measuring cup not the cup that comes with a rice cooker \n\t1 tbsps sesame oil\n\tsalt to taste start with 1/2 tsp",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups uncooked short grain rice standard measuring cup not the cup that comes with a rice cooker \n\t1 tbsps sesame oil\n\tsalt to taste start with 1/2 tsp"
+    },
+    {
+      "item": "10 ounces firm tofu\n\t1 bunch spinach about 8 ounces\n\t1 tsp sesame oil\n\t3 kirby cucumbers\n\t2 medium carrots\n\t1 burdock root uoeong, braised \n\tsesame oil\n\tsalt\n\tcooking oil",
+      "amount": "",
+      "unit": "",
+      "original": "10 ounces firm tofu\n\t1 bunch spinach about 8 ounces\n\t1 tsp sesame oil\n\t3 kirby cucumbers\n\t2 medium carrots\n\t1 burdock root uoeong, braised \n\tsesame oil\n\tsalt\n\tcooking oil"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

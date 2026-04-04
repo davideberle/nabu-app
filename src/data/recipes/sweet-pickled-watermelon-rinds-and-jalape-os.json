@@ -1,0 +1,80 @@
+{
+  "id": "sweet-pickled-watermelon-rinds-and-jalape-os",
+  "name": "SWEET PICKLED WATERMELON RINDS and JALAPEÑOS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Rind from a medium watermelon (a 10- to 12-pound melon)",
+      "amount": "",
+      "unit": "",
+      "original": "Rind from a medium watermelon (a 10- to 12-pound melon)"
+    },
+    {
+      "item": "2 cups thinly sliced jalapeño chiles",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups thinly sliced jalapeño chiles"
+    },
+    {
+      "item": "3 cups water",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups water"
+    },
+    {
+      "item": "3 cups raw cane sugar",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups raw cane sugar"
+    },
+    {
+      "item": "2 teaspoons coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons coarse sea salt"
+    },
+    {
+      "item": "2 large navel oranges with peel, thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "2 large navel oranges with peel, thinly sliced"
+    },
+    {
+      "item": "4 lemons with peel, thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "4 lemons with peel, thinly sliced"
+    },
+    {
+      "item": "2 cups white vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups white vinegar"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

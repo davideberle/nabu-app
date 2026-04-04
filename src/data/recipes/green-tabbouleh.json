@@ -1,0 +1,114 @@
+{
+  "id": "green-tabbouleh",
+  "name": "Green tabbouleh",
+  "subtitle": "Tabbouleh khadra",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c03"
+  },
+  "introduction": "Tabbouleh is so ubiquitous across the Levant that we didn’t feel the need to publish our own traditional take on this well-known salad. Rather than tweaking the bulgur and parsley version, we’ve offered three rather novel variations: this green one with kale, another that uses rice instead of bulgur (this page), and a wintry-citrus-purple version (see this page).\n\nSami’s mother used to make a version of this to take on picnics in Jericho in the summer months. The salad was kept fresh by the addition of a few cubes of ice, wrapped up in newspaper, to the bottom of the basket. Picnics were, typically, an elaborate affair. Preparations would start the day before, with everyone coming together to chop and arrange for the movable feast.\n\nThis is as nice throughout the year as a side or part of a spread, as it is eaten on a picnic outdoors. The dressing is lemony and sharp, so it works particularly well with oily fish or rich meatballs.\n\nPlaying around: The kale can be replaced by all sorts of other cabbages, depending on what’s in season; white cabbage, hispi (aka “pointed”) green cabbage, spring greens, and young cauliflower with its tender leaves attached all work very well.\n\nGetting ahead: You can prepare the salad in advance but don’t add the dressing until serving, and shred (rather than chop) the herbs—this will prevent them from bruising and losing their color. The difference between chopping and shredding, for us, is the number of times the knife goes through the herb leaf. Chopping sees it getting cut many times—chop, chop, chop—whereas shredding sees the knife just go through once, in a cleaner motion.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "⅓ cup/50g bulgur (regular or whole wheat, for extra nuttiness)",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup/50g bulgur (regular or whole wheat, for extra nuttiness)",
+      "group": null
+    },
+    {
+      "item": "5 tbsp/70ml boiling water",
+      "amount": "",
+      "unit": "",
+      "original": "5 tbsp/70ml boiling water",
+      "group": null
+    },
+    {
+      "item": "⅓ cup/80ml lemon juice (from about 2 lemons)",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup/80ml lemon juice (from about 2 lemons)",
+      "group": "Dressing"
+    },
+    {
+      "item": "2½ tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp olive oil",
+      "group": "Dressing"
+    },
+    {
+      "item": "⅛ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "⅛ tsp ground cinnamon",
+      "group": "Dressing"
+    },
+    {
+      "item": "¼ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp ground allspice",
+      "group": "Dressing"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Dressing"
+    },
+    {
+      "item": "1½ cups/100g kale leaves (or 6⅓ oz/180g if starting with kale on the stalk, which you then need to remove), finely shredded",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups/100g kale leaves (or 6⅓ oz/180g if starting with kale on the stalk, which you then need to remove), finely shredded",
+      "group": "Dressing"
+    },
+    {
+      "item": "4 cups/75g parsley (mostly leaves, not stems), finely shredded",
+      "amount": "",
+      "unit": "",
+      "original": "4 cups/75g parsley (mostly leaves, not stems), finely shredded",
+      "group": "Dressing"
+    },
+    {
+      "item": "1¾ cups/35g mint leaves, finely shredded",
+      "amount": "",
+      "unit": "",
+      "original": "1¾ cups/35g mint leaves, finely shredded",
+      "group": "Dressing"
+    },
+    {
+      "item": "3 large (or 6 regular) green onions, very thinly sliced (¾ cup/60g)",
+      "amount": "",
+      "unit": "",
+      "original": "3 large (or 6 regular) green onions, very thinly sliced (¾ cup/60g)",
+      "group": "Dressing"
+    }
+  ],
+  "method": [
+    "Place the bulgur in a small bowl, pour in the boiling water, then set aside for about 20 minutes, or until the water has been absorbed.",
+    "To make the dressing, whisk together all the ingredients with ¾ tsp of salt and a grind of black pepper, and set aside.",
+    "Transfer the bulgur to a large mixing bowl and add all the remaining ingredients. Pour the dressing over the top, toss well, and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

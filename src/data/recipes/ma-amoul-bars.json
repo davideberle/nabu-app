@@ -1,0 +1,235 @@
+{
+  "id": "ma-amoul-bars",
+  "name": "Ma’amoul bars",
+  "subtitle": "Ma’amoul maad",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c09"
+  },
+  "introduction": "In the days leading up to Eid, to mark the end of Ramadan, Sami’s aunties, mother, grandmother, and cousins would come together to make the very popular ma’amoul. Sitting on the floor in a circle, everyone would have their designated job: kneading or rolling the dough, stuffing or molding, baking, and packing. It seemed to go on for days, in Sami’s imaginings, and led him to think that the process must be a long and complicated one. It was with some surprise then, when he made the cookies for himself years later, that he saw that the recipe couldn’t be easier. Time set aside for festive catch-ups, Sami now sees, should be factored into the write-up of the recipe. These are traditionally cookies to mark Easter or Eid, but make them year-round. They have a wonderfully crumbly shortbread-like texture: crunchy, rich, and melt-in-the-mouth. Crumbs are part of the equation here, but that’s how some things should be.\n\nPlaying around: We’ve given a choice of two fillings—one with dates and one with pistachios. If you want to make both versions, just double the quantity of the dough.\n\nGetting ahead: The dough needs to rest for at least 4 hours, so it’s a good idea to make this the day before you want to bake. Once made, the dough keeps well in the fridge for up to two days; you’ll need to bring it back to room temperature before using, though, so that it is malleable. If you are using the dough the day you make it, then it does not need to go into the fridge. You can also make the fillings a day ahead. Once made, the bars keep in a sealed container, at room temperature, for up to a week.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 24 cookies",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 cup plus 7 tbsp/320g unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup plus 7 tbsp/320g unsalted butter",
+      "group": "Dough"
+    },
+    {
+      "item": "2 cups/320g semolina",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups/320g semolina",
+      "group": "Dough"
+    },
+    {
+      "item": "2½ cups/320g all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "2½ cups/320g all-purpose flour",
+      "group": "Dough"
+    },
+    {
+      "item": "4 tsp baking powder",
+      "amount": "",
+      "unit": "",
+      "original": "4 tsp baking powder",
+      "group": "Dough"
+    },
+    {
+      "item": "⅔ cup/80g confectioners’ sugar",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup/80g confectioners’ sugar",
+      "group": "Dough"
+    },
+    {
+      "item": "½ tsp fast-acting dried yeast",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp fast-acting dried yeast",
+      "group": "Dough"
+    },
+    {
+      "item": "1 tsp mahleb (see this page; or a tiny drop of almond extract)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp mahleb (see this page; or a tiny drop of almond extract)",
+      "group": "Dough"
+    },
+    {
+      "item": "2½ tsp ground aniseed",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tsp ground aniseed",
+      "group": "Dough"
+    },
+    {
+      "item": "½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp salt",
+      "group": "Dough"
+    },
+    {
+      "item": "1 lb 6 oz/625g Medjool dates, pitted and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 lb 6 oz/625g Medjool dates, pitted and finely chopped",
+      "group": "Date filling"
+    },
+    {
+      "item": "½ tsp mahleb (see this page; or a tiny drop of almond extract)",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp mahleb (see this page; or a tiny drop of almond extract)",
+      "group": "Date filling"
+    },
+    {
+      "item": "¾ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp ground cinnamon",
+      "group": "Date filling"
+    },
+    {
+      "item": "¾ tsp ground cardamom",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp ground cardamom",
+      "group": "Date filling"
+    },
+    {
+      "item": "2½ tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp sunflower oil",
+      "group": "Date filling"
+    },
+    {
+      "item": "2⅔ cups/375g pistachios",
+      "amount": "",
+      "unit": "",
+      "original": "2⅔ cups/375g pistachios",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "¼ cup/75g honey",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/75g honey",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "4 tsp orange blossom water",
+      "amount": "",
+      "unit": "",
+      "original": "4 tsp orange blossom water",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "3 tbsp water",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp water",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "9 oz/250g natural marzipan, cut into ¾-inch/2cm chunks",
+      "amount": "",
+      "unit": "",
+      "original": "9 oz/250g natural marzipan, cut into ¾-inch/2cm chunks",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "1¼ tsp ground cardamom",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ tsp ground cardamom",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "1 tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp ground cinnamon",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp salt",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "2½ tbsp rose water",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp rose water",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "2½ tbsp orange blossom water",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp orange blossom water",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "2½ tbsp water",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp water",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "5 tbsp/75g ghee, melted",
+      "amount": "",
+      "unit": "",
+      "original": "5 tbsp/75g ghee, melted",
+      "group": "Pistachio filling"
+    },
+    {
+      "item": "Confectioners’ sugar, to dust",
+      "amount": "",
+      "unit": "",
+      "original": "Confectioners’ sugar, to dust",
+      "group": "Pistachio filling"
+    }
+  ],
+  "method": [
+    "To make the dough, put the butter into a small saucepan and place over very low heat for about 2 minutes, just to melt.",
+    "Put the semolina, flour, baking powder, confectioners’ sugar, yeast, mahleb, aniseed, and salt into the bowl of a stand mixer fitted with the paddle attachment. Mix on low speed for 1 minute, to combine. With the mixer still on low speed, pour in the melted butter, continuing to mix until well combined and the texture is that of sticky, wet sand. Cover the bowl with a plate and set aside for about 4 hours, at room temperature, for the semolina to really absorb the fat. Letting it rest for this long makes it much easier to work with.",
+    "Preheat the oven to 400°F. Grease well and line the base and sides of a 9 x 13-inch/23 x 33cm baking dish and set aside.",
+    "If making the date filling, put all the ingredients into a medium saucepan and place over low heat. Heat for 8 minutes, stirring a few times, to form a mushy, sticky paste. Remove from the heat and set aside. If you make this in advance, you’ll want to warm it through a little when filling the pastry; it’s much easier to spread when warm.",
+    "If making the pistachio filling, spread the pistachios out on a parchment-lined baking sheet and toast for about 8 minutes. Remove from the oven and set aside until completely cool. Put the honey, orange blossom water, and water into a small bowl. Mix well to combine and set aside. Once the pistachios are cool, transfer them to a food processor, along with the marzipan, and blitz for 2 minutes. You want them to turn into fine crumbs but still have a little bit of texture. Add the honey mixture, spices, and salt and pulse a couple of times to combine, to form a sticky paste.",
+    "Put the rose water and orange blossom water into a small bowl, along with the water and melted ghee. Mix to combine, then, while kneading with one hand, gradually pour the mixture over the dough. Continue to knead for about 5 minutes (either by hand or in a stand mixer fitted with the paddle attachment), until the dough is soft and comes together well and is pale in color. (Add a few more drops of water, if you need to, if the dough is too dry.)",
+    "When ready to assemble, divide the dough into two equal pieces and, working with wet fingers, press half the dough gently into the base and sides of the prepared baking dish.",
+    "Place the filling between two sheets of parchment paper (about 12 x 16 inches/ 30 x 40cm) and gently roll with a rolling pin to form a rectangle, about 9 x 13 inches/23 x 33cm—don’t worry about getting the dimensions exact here, they can be adjusted in the baking dish.",
+    "Remove and discard the top layer of parchment from the filling and then, sliding your hand under the paste to help you, flip it upside down into the baking dish. With the paper still attached (and now facing upward), start pressing it gently in to and up the sides of the dish. Carefully pull away the paper and then flatten the filling to fill any gaps.",
+    "Repeat the process with the second half of the dough, spreading the remaining dough evenly over the filling, taking it right up to the edges. Pinch some of the excess pastry to fill any gaps and, using your fingers, seal the edges very well. Using a small, sharp knife, cut the dough (keeping it in its dish) into 4 rows and 6 columns, to make 24 squares. Take the knife right down to the bottom of the dish. The lines will close up as the dough bakes, but will help when it comes to finally cutting them. Next, use the back of a fork to press down gently into the middle of each square, to make line patterns with the tines of the fork.",
+    "Bake for 30–35 minutes, rotating the dish halfway through cooking, until the ma’amoul is golden brown and the edges are looking crispy. Remove from the oven and allow to cool completely before cutting.",
+    "Arrange the ma’amoul squares on a serving platter, dust generously with confectioners’ sugar, and serve.",
+    "Pictured on this page, middle right"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

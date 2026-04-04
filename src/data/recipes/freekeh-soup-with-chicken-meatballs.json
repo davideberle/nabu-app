@@ -1,0 +1,232 @@
+{
+  "id": "freekeh-soup-with-chicken-meatballs",
+  "name": "Freekeh soup with chicken meatballs",
+  "subtitle": "Shorbet freekeh",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c04"
+  },
+  "introduction": "It’s hard to talk about any form of chicken soup without talking about comfort. Pulling this back from the brink of slippers and Sunday night, though (not that anyone ever needs to resist), is the freekeh (see this page for more). Adding this smoked cracked wheat, with its nutty bite, to this soup makes it the best of all worlds: comforting and classy.\n\nGetting ahead: The meatballs can be made and pan-fried a day in advance. The soup also keeps well, once cooked, for up to three days in the fridge.\n\nIngredients note: You can ask your butcher to grind the chicken thighs, or you can pop them into the freezer for half an hour, to firm up, then put them into the bowl of a food processor and blitz until finely ground. Firming them in the freezer helps them to grind cleanly, but skipping this stage is also fine.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 large slice sourdough bread, crusts removed, cut into roughly ½-inch/1cm dice (1¾ cups/55g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large slice sourdough bread, crusts removed, cut into roughly ½-inch/1cm dice (1¾ cups/55g)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "3 tbsp buttermilk",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp buttermilk",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "10½ oz/300g ground chicken thighs or turkey thighs",
+      "amount": "",
+      "unit": "",
+      "original": "10½ oz/300g ground chicken thighs or turkey thighs",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "3 green onions, finely sliced (⅓ cup/30g)",
+      "amount": "",
+      "unit": "",
+      "original": "3 green onions, finely sliced (⅓ cup/30g)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "¼ cup/5g parsley, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g parsley, finely chopped",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "½ cup/10g mint, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/10g mint, finely chopped",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 green chile, seeded and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 green chile, seeded and finely chopped",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "½ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground cinnamon",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "½ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground allspice",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "2 tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp sunflower oil",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 large leek, trimmed, cut in half lengthwise and finely sliced (2 cups/200g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large leek, trimmed, cut in half lengthwise and finely sliced (2 cups/200g)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "3 celery stalks, trimmed and finely sliced (1¼ cups/150g)",
+      "amount": "",
+      "unit": "",
+      "original": "3 celery stalks, trimmed and finely sliced (1¼ cups/150g)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 tsp cumin seeds, roughly ground in a mortar and pestle",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp cumin seeds, roughly ground in a mortar and pestle",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp ground cinnamon",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "½ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground allspice",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "4 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "4 garlic cloves, crushed",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 tbsp tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp tomato paste",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 cup/170g freekeh",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/170g freekeh",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1½ cups/30g cilantro, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups/30g cilantro, roughly chopped",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "1 cup/20g parsley, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g parsley, roughly chopped",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "6⅓ cups/1.5L chicken stock",
+      "amount": "",
+      "unit": "",
+      "original": "6⅓ cups/1.5L chicken stock",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "3 green onions, finely sliced (⅓ cup/30g)",
+      "amount": "",
+      "unit": "",
+      "original": "3 green onions, finely sliced (⅓ cup/30g)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "¼ cup/60ml lemon juice (from about 2 lemons)",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/60ml lemon juice (from about 2 lemons)",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "½ cup/120ml buttermilk",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/120ml buttermilk",
+      "group": "Chicken meatballs"
+    },
+    {
+      "item": "¼ tsp dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp dried mint",
+      "group": "Chicken meatballs"
+    }
+  ],
+  "method": [
+    "To make the meatballs, put the bread and buttermilk into a large bowl. Set aside for about 5 minutes, then use your hands to squish the mixture into fine crumbs. Add the ground chicken and all the remaining ingredients for the meatballs, along with ¾ tsp of salt and a generous grind of black pepper, except the sunflower oil. Mix to combine, then form the mixture into small balls, each weighing about ½ oz/15g; you should make about 30 balls.",
+    "Put the sunflower oil into a large frying pan and place over high heat. Line a plate with paper towels. Once the oil is hot, add the meatballs and fry for about 3 minutes, turning throughout, so that they are nicely browned on all sides but not cooked through. Remove from the pan and set aside on the prepared plate until needed.",
+    "Put the olive oil into a large saucepan with a lid, and place over medium heat. Add the leek and celery and cook for about 12 minutes, stirring from time to time, until the vegetables are soft but not taking on any color. Add the spices, garlic, and tomato paste and cook for 1 minute, until fragrant. Add the freekeh, 1 cup/20g of cilantro, the parsley, stock, 2 tsp of salt, and a good grind of black pepper. Simmer for about 40 minutes, with the pan partially covered, or until the freekeh is soft and the liquid has reduced by a third. Add the meatballs and simmer for 10 minutes, with the pan covered, until they are cooked through. Stir in two-thirds of the green onions, the remaining ½ cup/10g of cilantro, and 3 tbsp of lemon juice and keep warm until ready to serve.",
+    "Combine the buttermilk with the dried mint, the remaining 1 tbsp of lemon juice, and ¼ tsp of salt and stir well to mix.",
+    "Divide the soup among four bowls, drizzle with the buttermilk mixture, sprinkle with the remaining green onions, and serve at once."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": "/recipes/freekeh-soup-with-chicken-meatballs.jpg"
+}

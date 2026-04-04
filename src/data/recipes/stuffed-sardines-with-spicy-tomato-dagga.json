@@ -1,0 +1,198 @@
+{
+  "id": "stuffed-sardines-with-spicy-tomato-dagga",
+  "name": "Stuffed sardines with spicy tomato dagga",
+  "subtitle": "Sardine ma’ daggit banadora",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c06"
+  },
+  "introduction": "Green chile, garlic, dill seeds, sardines—this is a roll call of ingredients that typify Gazan cuisine. As well as being the general term for all pounded dressings or sauces, dagga is also the name of Gaza’s famous spicy tomato salad. It’s traditionally paired with oily fish—sardines, mackerel, salmon—to offset their richness, but really, it can be eaten in abundance alongside anything. It’s wonderful with Baked Fish in Tahini Sauce (this page), Kofta with Tahini, Potato, and Onion (this page), or Chicken Shawarma Pie (this page).\n\nGetting ahead: You can prepare the stuffing a couple of days ahead and even stuff the sardines in advance; they’ll keep well in the fridge for a day. The dagga can also be made up to a day in advance and kept in the fridge until serving.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves six",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 cup/20g parsley leaves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g parsley leaves, finely chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¾ cup/15g cilantro leaves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g cilantro leaves, finely chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "2 tbsp pistachios, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp pistachios, finely chopped",
+      "group": "Stuffing"
+    },
+    {
+      "item": "3 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 garlic cloves, crushed",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1 large green chile, finely chopped (2½ tbsp/25g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large green chile, finely chopped (2½ tbsp/25g)",
+      "group": "Stuffing"
+    },
+    {
+      "item": "3 tbsp lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp lemon juice",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1½ tsp ground cumin",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp ground cumin",
+      "group": "Stuffing"
+    },
+    {
+      "item": "¾ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp ground allspice",
+      "group": "Stuffing"
+    },
+    {
+      "item": "1½ tbsp sumac",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp sumac",
+      "group": "Stuffing"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Stuffing"
+    },
+    {
+      "item": "4 large tomatoes, cut into ¼-inch/6mm dice (2½ cups/450g)",
+      "amount": "",
+      "unit": "",
+      "original": "4 large tomatoes, cut into ¼-inch/6mm dice (2½ cups/450g)",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "2 small green chiles, seeded and finely chopped (1 tbsp/10g)",
+      "amount": "",
+      "unit": "",
+      "original": "2 small green chiles, seeded and finely chopped (1 tbsp/10g)",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "1 cup/20g cilantro leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g cilantro leaves, roughly chopped",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "2 tsp dill seeds or celery seeds",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp dill seeds or celery seeds",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "1 tsp ground coriander",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp ground coriander",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "¼ cup/60ml lemon juice (from 2 lemons)",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/60ml lemon juice (from 2 lemons)",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "5 tbsp/70ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "5 tbsp/70ml olive oil",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "18 large sardines, cleaned and butterflied (ask your fishmonger to do this; about 1⅔ lb/730g)",
+      "amount": "",
+      "unit": "",
+      "original": "18 large sardines, cleaned and butterflied (ask your fishmonger to do this; about 1⅔ lb/730g)",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "Salt",
+      "amount": "",
+      "unit": "",
+      "original": "Salt",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "3 tbsp all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp all-purpose flour",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "2 eggs, lightly beaten",
+      "amount": "",
+      "unit": "",
+      "original": "2 eggs, lightly beaten",
+      "group": "Tomato dagga"
+    },
+    {
+      "item": "3 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp olive oil",
+      "group": "Tomato dagga"
+    }
+  ],
+  "method": [
+    "To make the stuffing, place all the ingredients in a small bowl along with ¾ tsp of salt and a good grind of black pepper. Mix well to combine and set aside.",
+    "To make the tomato dagga, place all the ingredients in a medium bowl with ½ tsp of salt and a good grind of black pepper. Mix to combine and set aside.",
+    "Wash the sardines and pat dry, then lay 9 of the fillets flat on a large baking sheet or chopping board, skin side down. Season lightly with salt, then divide the stuffing equally among the fillets, spreading it all over the fish. Lightly season the other 9 fillets and arrange them on top of the stuffed fillets, to sandwich them together.",
+    "Spread the flour out on one plate or in a wide shallow bowl and put the eggs into another.",
+    "Put the oil into a large frying pan and place over medium-high heat. Line a plate with paper towels.",
+    "Working with one fish “sandwich” at a time, carefully lift and dip it lightly into the flour, turning so that both sides get covered, then dip it into the egg. Put it into the pan and fry for about 5 minutes, turning once so that both sides are crisp. Transfer to the prepared plate while you continue with the remaining sardines. Serve warm or at room temperature, with the dagga spooned on top or served alongside."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

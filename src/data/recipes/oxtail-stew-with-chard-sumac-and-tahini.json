@@ -1,0 +1,208 @@
+{
+  "id": "oxtail-stew-with-chard-sumac-and-tahini",
+  "name": "Oxtail stew with chard, sumac, and tahini",
+  "subtitle": "Sumaqqiyeh",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c07"
+  },
+  "introduction": "The green chile, the dill seeds, the tahini sauce—the roll call of typical Gazan ingredients makes this a classic Gazan dish. In Gaza, the tahini would be red tahini, which is nuttier and richer than regular tahini. The difference between the two is the sort of heat the sesame seeds are roasted with; steam heating in the case of regular tahini, and roasting with direct heat in the case of red tahini. As long as you are starting with what we call “proper tahini,” though (see this page for the sermon), any regular creamy Arabic tahini is just fine.\n\nGetting ahead: The oxtail needs a long cooking time—4 hours—to ensure that it falls off the bone as much as you want it to. You can make it a day or two in advance, though, taking it up to the point before the chard leaves and fresh dill get added. These should always go in at the last stage, so that they retain their color and freshness.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four generously",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 onions, roughly chopped (2 cups/300g)",
+      "amount": "",
+      "unit": "",
+      "original": "2 onions, roughly chopped (2 cups/300g)",
+      "group": null
+    },
+    {
+      "item": "6 garlic cloves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "6 garlic cloves, roughly chopped",
+      "group": null
+    },
+    {
+      "item": "2 green chiles, seeded and thinly sliced (¼ cup/40g)",
+      "amount": "",
+      "unit": "",
+      "original": "2 green chiles, seeded and thinly sliced (¼ cup/40g)",
+      "group": null
+    },
+    {
+      "item": "1 tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp sunflower oil",
+      "group": null
+    },
+    {
+      "item": "3⅓ lb/1.5kg oxtail",
+      "amount": "",
+      "unit": "",
+      "original": "3⅓ lb/1.5kg oxtail",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "2–3 plum tomatoes, finely chopped (1⅔ cups/300g)",
+      "amount": "",
+      "unit": "",
+      "original": "2–3 plum tomatoes, finely chopped (1⅔ cups/300g)",
+      "group": null
+    },
+    {
+      "item": "1 tbsp tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp tomato paste",
+      "group": null
+    },
+    {
+      "item": "1 tbsp ground cumin",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp ground cumin",
+      "group": null
+    },
+    {
+      "item": "1 tbsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp ground cinnamon",
+      "group": null
+    },
+    {
+      "item": "1 tbsp baharat (see this page)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp baharat (see this page)",
+      "group": null
+    },
+    {
+      "item": "1½ tsp sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp sugar",
+      "group": null
+    },
+    {
+      "item": "6⅓ cups/1.5L water",
+      "amount": "",
+      "unit": "",
+      "original": "6⅓ cups/1.5L water",
+      "group": null
+    },
+    {
+      "item": "¼ cup/75g tahini",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/75g tahini",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "5 tbsp/75ml water",
+      "amount": "",
+      "unit": "",
+      "original": "5 tbsp/75ml water",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "1½ tbsp lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp lemon juice",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "⅛ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "⅛ tsp salt",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "1 x 14-oz/400g can chickpeas, drained and rinsed (1¾ cups/240g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 x 14-oz/400g can chickpeas, drained and rinsed (1¾ cups/240g)",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "1 lb 2 oz/500g Swiss chard, stalks removed and roughly chopped into 1-inch/2.5cm pieces, leaves roughly shredded",
+      "amount": "",
+      "unit": "",
+      "original": "1 lb 2 oz/500g Swiss chard, stalks removed and roughly chopped into 1-inch/2.5cm pieces, leaves roughly shredded",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "1 tbsp dill seeds or celery seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp dill seeds or celery seeds",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "¾ cup/15g parsley, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g parsley, roughly chopped",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "2 tbsp sumac",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp sumac",
+      "group": "Tahini sauce"
+    },
+    {
+      "item": "1 cup/20g dill, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g dill, roughly chopped",
+      "group": "Tahini sauce"
+    }
+  ],
+  "method": [
+    "Put the onions, garlic, and two-thirds of the chiles into a food processor. Pulse a few times, until finely minced but not so much that it turns to a puree. Set aside until ready to use.",
+    "Put the sunflower oil into a large heavy-bottomed saucepan with a lid and place over medium-high heat. Pat the oxtail dry and sprinkle with ½ tsp of salt and a good grind of black pepper. In two batches, sear the oxtail for 5–6 minutes, turning so that all sides get nicely browned. Once all the meat is browned, transfer it to a separate plate, pour off the excess oil, and wipe the pan clean. Add the olive oil, onion, garlic, and chile mix and cook for about 4 minutes, stirring often, or until softened. Add the tomatoes and tomato paste and cook for another 4 minutes, or until the tomatoes have broken down. Stir in the spices, then add the oxtail, sugar, water, 2¼ tsp of salt, and a generous grind of black pepper. Bring to a boil, then decrease the heat to medium-low, cover the pan, and let simmer gently for 4 hours, stirring every so often, or until the meat is tender and almost falling off the bone.",
+    "To make the tahini sauce, put all the ingredients into a bowl. Whisk until smooth and set aside.",
+    "After about 4 hours, use a pair of tongs to remove the oxtail from the pan. Set it aside to cool slightly, and add the chickpeas and chard stalks to the pan. Increase the heat to medium-high and cook for 20–25 minutes, stirring often, until the sauce has thickened and reduced by half.",
+    "Meanwhile, once the oxtail is cool enough to handle, tear off the meat and fat in large chunks, discarding the bones; you should be left with about 1 lb 7 oz/650g. Return this to the pan, along with the chard leaves, dill seeds, parsley, 1½ tbsp of sumac, and all but a handful of chopped dill. Cook for about 5 minutes, or until the leaves have wilted and the meat has heated through.",
+    "Transfer the stew to a large serving platter and drizzle with a third of the tahini sauce. The remaining sauce can be served in a bowl alongside. Top with the remaining chopped dill, chiles, and 1½ tsp of sumac and serve at once."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

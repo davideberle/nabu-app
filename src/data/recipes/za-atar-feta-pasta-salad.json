@@ -1,0 +1,133 @@
+{
+  "id": "za-atar-feta-pasta-salad",
+  "name": "◁ Za’atar & Feta Pasta Salad",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "07_Chapter02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Chapter02"
+  },
+  "servings": "prep time: 10 minutes, plus 1 hour chilling",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "PASTA SALAD\n8 ounces (225 g) pasta of choice (such as cavatelli, farfalle, or fusilli)\n2 small Persian cucumbers, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "PASTA SALAD\n8 ounces (225 g) pasta of choice (such as cavatelli, farfalle, or fusilli)\n2 small Persian cucumbers, finely chopped"
+    },
+    {
+      "item": "½ cup (55 g) sliced black olives",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (55 g) sliced black olives"
+    },
+    {
+      "item": "½ cup (30 g) finely chopped green onions",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (30 g) finely chopped green onions"
+    },
+    {
+      "item": "½ cup (25 g) finely chopped fresh parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (25 g) finely chopped fresh parsley"
+    },
+    {
+      "item": "½ cup (60 g) chopped sun-dried tomatoes",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (60 g) chopped sun-dried tomatoes"
+    },
+    {
+      "item": "2/3 cup (100 g) crumbled feta cheese",
+      "amount": "",
+      "unit": "",
+      "original": "2/3 cup (100 g) crumbled feta cheese"
+    },
+    {
+      "item": "DRESSING\n¼ cup (60 ml) fresh lemon juice\n2 tablespoons za’atar",
+      "amount": "",
+      "unit": "",
+      "original": "DRESSING\n¼ cup (60 ml) fresh lemon juice\n2 tablespoons za’atar"
+    },
+    {
+      "item": "¼ cup (60 ml) olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (60 ml) olive oil"
+    },
+    {
+      "item": "2 tablespoons Dijon mustard",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons Dijon mustard"
+    },
+    {
+      "item": "2 tablespoons honey",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons honey"
+    },
+    {
+      "item": "1 TO MAKE THE PASTA SALAD: Cook the pasta to al dente according to the package directions.",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE PASTA SALAD: Cook the pasta to al dente according to the package directions."
+    },
+    {
+      "item": "2 Meanwhile, add the cucumbers, olives, green onions, parsley, sun-dried tomatoes, and feta to a medium salad bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Meanwhile, add the cucumbers, olives, green onions, parsley, sun-dried tomatoes, and feta to a medium salad bowl."
+    },
+    {
+      "item": "3 When the pasta is cooked, drain and run under cold water to cool it, then add it to the salad bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "3 When the pasta is cooked, drain and run under cold water to cool it, then add it to the salad bowl."
+    },
+    {
+      "item": "4 TO MAKE THE DRESSING: In a small bowl, whisk together the lemon juice, za’atar, oil, salt, Dijon mustard, and honey until well combined.",
+      "amount": "",
+      "unit": "",
+      "original": "4 TO MAKE THE DRESSING: In a small bowl, whisk together the lemon juice, za’atar, oil, salt, Dijon mustard, and honey until well combined."
+    },
+    {
+      "item": "5 Pour the dressing over the salad and toss to combine well.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Pour the dressing over the salad and toss to combine well."
+    },
+    {
+      "item": "6 Refrigerate for at least 1 hour before serving.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Refrigerate for at least 1 hour before serving."
+    },
+    {
+      "item": "BEAN SALAD\n38 ounces (1.1 kg) mixed canned beans, drained and rinsed\n1 cup (50 g) finely chopped parsley",
+      "amount": "",
+      "unit": "",
+      "original": "BEAN SALAD\n38 ounces (1.1 kg) mixed canned beans, drained and rinsed\n1 cup (50 g) finely chopped parsley"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

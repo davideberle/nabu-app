@@ -1,0 +1,86 @@
+{
+  "id": "shortbread-cookies",
+  "name": "Shortbread cookies",
+  "subtitle": "Ghraybeh",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c09"
+  },
+  "introduction": "Ghraybeh means “swoon” in Arabic. Aptly, these little sugar cookies are often served at celebrations such as baptisms or weddings, when the air is thick with “swooning.” They’re a popular choice for large events for practical reasons—the recipe scales up wonderfully, if there are many mouths to feed, and they are quick and easy to prepare. Use them for everyday baking as well; they’re lovely to have around to snack on.\n\nPlaying around: Play around with the shape and flavorings, if you like. We’ve gone for a thin bracelet with the ends “cemented” together with a nut, but a little round cake or a diamond also looks good. You can also stick two cookies together with any sort of jam—to create a sort of Palestinian Linzer cookie. Flavor-wise, the orange blossom and rose water can be replaced with vanilla extract and lemon zest.\n\nGetting ahead: The dough can be made up to three days in advance and kept in the fridge (or longer in the freezer). The cookies can also be shaped and frozen, then baked straight from frozen; they’ll just need an extra minute in the oven. Once baked, the cookies keep well in an airtight container for up to five days.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 35 cookies",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "¾ cup plus 2 tbsp/200g ghee or clarified butter (see this page), at room temperature",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup plus 2 tbsp/200g ghee or clarified butter (see this page), at room temperature",
+      "group": null
+    },
+    {
+      "item": "⅔ cup/80g confectioners’ sugar, sifted",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup/80g confectioners’ sugar, sifted",
+      "group": null
+    },
+    {
+      "item": "3 cups/370g all-purpose flour, sifted",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups/370g all-purpose flour, sifted",
+      "group": null
+    },
+    {
+      "item": "¾ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp salt",
+      "group": null
+    },
+    {
+      "item": "1½ tsp orange blossom water",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp orange blossom water",
+      "group": null
+    },
+    {
+      "item": "1 tsp rose water",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp rose water",
+      "group": null
+    },
+    {
+      "item": "About 35 unsalted pistachios (enough for one to go on each cookie)",
+      "amount": "",
+      "unit": "",
+      "original": "About 35 unsalted pistachios (enough for one to go on each cookie)",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put the ghee and confectioners’ sugar into the bowl of a stand mixer fitted with the whisk attachment. Mix on medium-high speed for about 4 minutes, until pale and fluffy. Replace the whisk with the paddle attachment. Add the flour, salt, orange blossom water, and rose water and mix for another 3 minutes, until the dough is uniform and smooth. Using your hands, bring the dough together and shape into a ball. Place the dough in an airtight container and place in the fridge for about 1 hour, to rest. You’ll need to remove it from the fridge about 10 minutes before you want to roll it out so that it has some malleability.",
+    "Preheat the oven to 350°F. Line two baking sheets with parchment paper.",
+    "Pinch off a bit of the dough, about ¾ oz/20g, and roll it into a sausage—it should be about 4 inches/10cm long and ¼ inch/6mm thick. Bring both ends together, slightly overlapping them and pressing down where the two ends meet. Press a single pistachio into the dough where the ends join and place on the prepared baking sheet. Repeat with the remaining dough and pistachios, spacing the rings ½ inch/1cm apart on the sheet. Bake for 15 minutes, until the cookies are cooked through but have not taken on too much color. Remove from the oven and set aside until completely cool before serving.",
+    "Pictured on this page, top left"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

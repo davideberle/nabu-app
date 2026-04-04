@@ -1,0 +1,85 @@
+{
+  "id": "steamed-taro-cake",
+  "name": "◁ STEAMED TARO CAKE",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "12_Part07"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "12_Part07"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "This yummy dessert (bánh khoai môn hấp) is from the southwest region of Vietnam. As taro has purple-tinged flesh, most dishes created or flavored with it feature its signature color. However, because the ratio of taro to flour in this cake is rather low, you will use purple cabbage as a natural coloring agent.\nSKILL LEVELModerate|YIELD8 servings\n¼ small purple cabbage, rinsed and shredded\n1½ cups (360 ml) water, divided\n1 cup (150 g) rice flour\n6 tablespoons tapioca starch\n½ cup (100 g) sugar\n1 cup (240 ml) full-fat, unsweetened coconut milk\nPinch of salt\n1 tablespoon vanilla extract",
+      "amount": "",
+      "unit": "",
+      "original": "This yummy dessert (bánh khoai môn hấp) is from the southwest region of Vietnam. As taro has purple-tinged flesh, most dishes created or flavored with it feature its signature color. However, because the ratio of taro to flour in this cake is rather low, you will use purple cabbage as a natural coloring agent.\nSKILL LEVELModerate|YIELD8 servings\n¼ small purple cabbage, rinsed and shredded\n1½ cups (360 ml) water, divided\n1 cup (150 g) rice flour\n6 tablespoons tapioca starch\n½ cup (100 g) sugar\n1 cup (240 ml) full-fat, unsweetened coconut milk\nPinch of salt\n1 tablespoon vanilla extract"
+    },
+    {
+      "item": "1 pound (454 g) taro, peeled and thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound (454 g) taro, peeled and thinly sliced"
+    },
+    {
+      "item": "1 teaspoon vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon vegetable oil"
+    },
+    {
+      "item": "1. Combine shredded cabbage with 1 cup (240 ml) of the water in a medium bowl, and let sit for 15 minutes.",
+      "amount": "",
+      "unit": "",
+      "original": "1. Combine shredded cabbage with 1 cup (240 ml) of the water in a medium bowl, and let sit for 15 minutes."
+    },
+    {
+      "item": "2. Drain through a sieve into a large bowl and discard shredded leaves (or save for salads). Add rice flour, tapioca starch, sugar, coconut milk, salt, vanilla extract, and the remaining ½ cup water, and stir until smooth.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Drain through a sieve into a large bowl and discard shredded leaves (or save for salads). Add rice flour, tapioca starch, sugar, coconut milk, salt, vanilla extract, and the remaining ½ cup water, and stir until smooth."
+    },
+    {
+      "item": "3. Separate taro slices and drop them into the batter.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Separate taro slices and drop them into the batter."
+    },
+    {
+      "item": "4. Lightly grease an 8-inch (20 cm) round silicone or aluminum baking pan with oil. Pour batter into pan and even out until it covers the bottom.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Lightly grease an 8-inch (20 cm) round silicone or aluminum baking pan with oil. Pour batter into pan and even out until it covers the bottom."
+    },
+    {
+      "item": "5. Fill a steamer halfway with water and place baking pan in the basket. Wrap the steamer lid in a large kitchen towel and tie the corners of the fabric over the handle. This will absorb the excess steam and prevent it from dropping back down on the cake. Bring the water to a boil, cover, and steam until a chopstick inserted in the center comes out clean (35 to 40 minutes). Remove from steamer and let cool completely.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Fill a steamer halfway with water and place baking pan in the basket. Wrap the steamer lid in a large kitchen towel and tie the corners of the fabric over the handle. This will absorb the excess steam and prevent it from dropping back down on the cake. Bring the water to a boil, cover, and steam until a chopstick inserted in the center comes out clean (35 to 40 minutes). Remove from steamer and let cool completely."
+    },
+    {
+      "item": "6. Run a knife along the edges of the pan to loosen and unmold the cake. Transfer to a platter or cake stand lined with parchment paper or banana leaf to prevent sticking. With a lightly oiled knife, cut the cake into 8 equal portions and serve.",
+      "amount": "",
+      "unit": "",
+      "original": "6. Run a knife along the edges of the pan to loosen and unmold the cake. Transfer to a platter or cake stand lined with parchment paper or banana leaf to prevent sticking. With a lightly oiled knife, cut the cake into 8 equal portions and serve."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

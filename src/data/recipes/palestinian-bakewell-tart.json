@@ -1,0 +1,153 @@
+{
+  "id": "palestinian-bakewell-tart",
+  "name": "Palestinian Bakewell tart",
+  "subtitle": "Al mabroushy",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c09"
+  },
+  "introduction": "This is our take on the Bakewell tart. Kids love these, adults love these, Mr. Kipling himself would have loved these, we’re sure!\n\nKeeping notes: Once baked, this keeps well in a sealed container for up to three days.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "makes 12 bars",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "¾ cup/250g strawberry jam",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/250g strawberry jam",
+      "group": "Rose jam"
+    },
+    {
+      "item": "2 tsp rose water",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp rose water",
+      "group": "Rose jam"
+    },
+    {
+      "item": "1⅓ cups/165g all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "1⅓ cups/165g all-purpose flour",
+      "group": "Shortbread"
+    },
+    {
+      "item": "⅔ cups/75g confectioners’ sugar",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cups/75g confectioners’ sugar",
+      "group": "Shortbread"
+    },
+    {
+      "item": "¼ tsp flaky sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp flaky sea salt",
+      "group": "Shortbread"
+    },
+    {
+      "item": "1 lemon: finely grate the zest to get 2 tsp",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon: finely grate the zest to get 2 tsp",
+      "group": "Shortbread"
+    },
+    {
+      "item": "½ cup plus 2 tbsp/150g unsalted butter, fridge-cold, cut into ½-inch/1cm dice",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup plus 2 tbsp/150g unsalted butter, fridge-cold, cut into ½-inch/1cm dice",
+      "group": "Shortbread"
+    },
+    {
+      "item": "2¼ oz/60g halva",
+      "amount": "",
+      "unit": "",
+      "original": "2¼ oz/60g halva",
+      "group": "Halva spread"
+    },
+    {
+      "item": "1 tbsp tahini",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp tahini",
+      "group": "Halva spread"
+    },
+    {
+      "item": "1½ tbsp water",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp water",
+      "group": "Halva spread"
+    },
+    {
+      "item": "¼ cup/25g sliced almonds",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/25g sliced almonds",
+      "group": "Halva spread"
+    },
+    {
+      "item": "¾ oz/20g halva",
+      "amount": "",
+      "unit": "",
+      "original": "¾ oz/20g halva",
+      "group": "Halva spread"
+    },
+    {
+      "item": "1 tbsp sesame seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp sesame seeds",
+      "group": "Halva spread"
+    },
+    {
+      "item": "1½ tsp all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp all-purpose flour",
+      "group": "Halva spread"
+    },
+    {
+      "item": "½ tsp flaky sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp flaky sea salt",
+      "group": "Halva spread"
+    },
+    {
+      "item": "2 tbsp confectioners’ sugar (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp confectioners’ sugar (optional)",
+      "group": "Halva spread"
+    }
+  ],
+  "method": [
+    "To make the rose jam, put the strawberry jam and rose water in a bowl. Mix well and set aside.",
+    "Preheat the oven to 375°F. Grease and line the base and sides of an 8-inch/20cm square baking dish and set aside.",
+    "To make the shortbread, put all the ingredients into a food processor and pulse for about 15 seconds, until the mixture has the consistency of coarse breadcrumbs. Remove 2¼ oz/60g of this—about an eighth—and keep in the fridge until needed. Press the remaining mixture into the prepared baking dish, so that it evenly covers the bottom, and bake for about 25 minutes, or until cooked through and lightly golden. Remove from the oven and set aside to cool for about 15 minutes.",
+    "To make the halva spread, put the halva, tahini, and water into a bowl. Beat with a fork until smooth.",
+    "Evenly spread the halva mixture over the cooled shortbread base. Top this with the jam and set aside.",
+    "Combine the reserved 2¼ oz/60g of shortbread in a bowl with the almonds, halva, sesame seeds, flour, and salt. Using your hands, rub together until this topping consistency is that of crumble.",
+    "Sprinkle the shortbread topping unevenly over the jam. Bake for a final 25 minutes, or until golden, then set aside for 1 hour, to cool. Remove from the pan and slice into 12 pieces. Dust with confectioners’ sugar, if desired, and serve either warm or at room temperature.",
+    "Pictured on this page, middle left"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": "/recipes/palestinian-bakewell-tart.jpg"
+}

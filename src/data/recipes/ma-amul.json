@@ -1,0 +1,115 @@
+{
+  "id": "ma-amul",
+  "name": "Ma’amul",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c08_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 cups / 500 g fine semolina",
+      "amount": "",
+      "unit": "",
+      "original": "3 cups / 500 g fine semolina",
+      "group": null
+    },
+    {
+      "item": "⅔ cup / 75 g all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup / 75 g all-purpose flour",
+      "group": null
+    },
+    {
+      "item": "½ cup / 70 g pine nuts, blitzed into large crumbs",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 70 g pine nuts, blitzed into large crumbs",
+      "group": null
+    },
+    {
+      "item": "½ cup / 80 ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 80 ml olive oil",
+      "group": null
+    },
+    {
+      "item": "⅓ cup / 80 ml sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup / 80 ml sunflower oil",
+      "group": null
+    },
+    {
+      "item": "2½ tbsp / 40 g unsalted butter, melted, plus extra to grease the pan",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp / 40 g unsalted butter, melted, plus extra to grease the pan",
+      "group": null
+    },
+    {
+      "item": "1½ tsp fenugreek seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp fenugreek seeds",
+      "group": null
+    },
+    {
+      "item": "2½ cups / 600 ml water",
+      "amount": "",
+      "unit": "",
+      "original": "2½ cups / 600 ml water",
+      "group": null
+    },
+    {
+      "item": "1½ tsp fast-rising active yeast",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp fast-rising active yeast",
+      "group": null
+    },
+    {
+      "item": "½ tsp baking powder",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp baking powder",
+      "group": null
+    },
+    {
+      "item": "½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp salt",
+      "group": null
+    },
+    {
+      "item": "3 tbsp / 25 g whole almonds, blanched and peeled",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp / 25 g whole almonds, blanched and peeled",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

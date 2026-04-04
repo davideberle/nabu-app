@@ -1,0 +1,200 @@
+{
+  "id": "butternut-squash-and-saffron-soup-with-caramelized-pistachio",
+  "name": "Butternut squash and saffron soup with caramelized pistachios and herb oil",
+  "subtitle": "",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c04"
+  },
+  "introduction": "This is the soup to launch your autumn cooking, whether you’re looking for a comforting midweek meal or an impressive starter for a feast. Don’t make both toppings if you don’t want to; the soup works well with either the pistachios or the herb oil alone. The combination of all three, though, is a special one.\n\nGetting ahead: All the elements can be made well in advance. The soup keeps in the fridge for up to three days (or longer in the freezer). The herb oil can also be made a day or two ahead; it keeps its color well. The pistachios keep well in a sealed container at room temperature; they’ll get less crunchy with time but still taste good. Double the batch for these, if you can; they’re lovely sprinkled over salads or just to have around to snack on.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four generously, or six as a starter",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2½ tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "2 large onions, roughly chopped (2⅓ cups/320g)",
+      "amount": "",
+      "unit": "",
+      "original": "2 large onions, roughly chopped (2⅓ cups/320g)",
+      "group": null
+    },
+    {
+      "item": "5 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "5 garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "1 large butternut squash, peeled, seeded, and cut into roughly ½-inch/1.5cm dice (2 lb 2 oz/1kg)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large butternut squash, peeled, seeded, and cut into roughly ½-inch/1.5cm dice (2 lb 2 oz/1kg)",
+      "group": null
+    },
+    {
+      "item": "1 large potato, peeled and chopped into roughly ½-inch/1.5cm dice (mounded 1 cup/250g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large potato, peeled and chopped into roughly ½-inch/1.5cm dice (mounded 1 cup/250g)",
+      "group": null
+    },
+    {
+      "item": "1 tsp paprika",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp paprika",
+      "group": null
+    },
+    {
+      "item": "¼ tsp saffron threads",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp saffron threads",
+      "group": null
+    },
+    {
+      "item": "1 qt/1L vegetable stock",
+      "amount": "",
+      "unit": "",
+      "original": "1 qt/1L vegetable stock",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "1 cup/150g pistachios or pumpkin seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/150g pistachios or pumpkin seeds",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "1 tsp Urfa chile flakes (or ½ tsp regular chile flakes)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp Urfa chile flakes (or ½ tsp regular chile flakes)",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "1 tsp orange blossom water (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp orange blossom water (optional)",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "2 tsp light corn syrup",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp light corn syrup",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "2 tsp maple syrup",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp maple syrup",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "1 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp olive oil",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "¼ tsp flaky sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp flaky sea salt",
+      "group": "Caramelized pistachios"
+    },
+    {
+      "item": "¾ cup/15g parsley leaves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g parsley leaves, finely chopped",
+      "group": "Herb oil"
+    },
+    {
+      "item": "½ cup/10g oregano leaves, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/10g oregano leaves, finely chopped",
+      "group": "Herb oil"
+    },
+    {
+      "item": "1 shallot, finely chopped (⅓ cup/50g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 shallot, finely chopped (⅓ cup/50g)",
+      "group": "Herb oil"
+    },
+    {
+      "item": "½ tsp chile flakes",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp chile flakes",
+      "group": "Herb oil"
+    },
+    {
+      "item": "½ cup/120ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/120ml olive oil",
+      "group": "Herb oil"
+    },
+    {
+      "item": "1 tbsp cider vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp cider vinegar",
+      "group": "Herb oil"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": "Herb oil"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Line a baking sheet with parchment paper.",
+    "Put the oil into a large saucepan with a lid, and place over medium heat. Add the onions and cook for about 12 minutes, stirring often, until soft and golden brown. Add the garlic and cook for 30 seconds, until fragrant, then add the squash, potato, paprika, saffron, stock, 2 tsp of salt, and a good grind of black pepper. Bring to a boil over medium-high heat, then decrease the heat to medium-low and simmer for about 25 minutes, covered, or until the vegetables are completely soft and cooked through. If you like your soup smooth, use a blender (immersion or countertop) to blitz it as much as you want. We like to half-blitz it so that some texture remains; if using a countertop blender, transfer half the soup to this, blitz until smooth, then return this to the un-blitzed soup in the pan. Keep warm until ready to serve.",
+    "To make the caramelized pistachios, while the soup is cooking, put all the ingredients into a bowl and mix well to combine. Tip out onto the prepared baking sheet and bake for about 15 minutes, stirring halfway through, until the nuts are golden and bubbling. Remove from the oven, set aside until completely cool, then roughly chop the nuts. Set aside (or keep in an airtight container if making in advance) until needed.",
+    "To make the herb oil, put all the ingredients into a bowl with ¼ tsp of salt and a grind of black pepper. Stir to mix, then set aside until ready to serve.",
+    "Ladle out the soup and top with a generous spoonful of the pistachios. Drizzle with the herb oil and serve at once.",
+    "Pictured on this page"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

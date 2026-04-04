@@ -1,0 +1,43 @@
+{
+  "id": "spiced-root-vegetable-cakes-with-tamarind-date-sauce",
+  "name": "Spiced Root Vegetable Cakes with Tamarind & Date Sauce",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "part0005_split_038"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0005_split_038"
+  },
+  "servings": "makes 14–16",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "500g (1lb 2oz) potatoes (I prefer waxy, but floury are also fine), scrubbed\n1 bunch of spring onions, thinly sliced\n2 carrots, coarsely grated\n1 parsnip, finely grated\n1 large beetroot, finely grated\n2 tsp ground cumin\n2 tsp turmeric\n2 tsp ground coriander\n1 small bunch of coriander, leaves picked and finely chopped, plus extra to garnish\n2 small red chillies, finely chopped (optional)\n2 large free-range eggs\n2 tbsp plain flour\nsea salt and freshly ground black pepper\nvegetable oil, for frying",
+      "amount": "",
+      "unit": "",
+      "original": "500g (1lb 2oz) potatoes (I prefer waxy, but floury are also fine), scrubbed\n1 bunch of spring onions, thinly sliced\n2 carrots, coarsely grated\n1 parsnip, finely grated\n1 large beetroot, finely grated\n2 tsp ground cumin\n2 tsp turmeric\n2 tsp ground coriander\n1 small bunch of coriander, leaves picked and finely chopped, plus extra to garnish\n2 small red chillies, finely chopped (optional)\n2 large free-range eggs\n2 tbsp plain flour\nsea salt and freshly ground black pepper\nvegetable oil, for frying"
+    },
+    {
+      "item": "100g (3½oz) dates, pitted and roughly chopped\n50g (1¾oz) tamarind paste\n3 tbsp clear honey\n1 tsp ground cumin\n½ tsp ground ginger\n1 tsp crushed sea salt\nsqueeze of lemon juice\n400ml (14fl oz) hot water",
+      "amount": "",
+      "unit": "",
+      "original": "100g (3½oz) dates, pitted and roughly chopped\n50g (1¾oz) tamarind paste\n3 tbsp clear honey\n1 tsp ground cumin\n½ tsp ground ginger\n1 tsp crushed sea salt\nsqueeze of lemon juice\n400ml (14fl oz) hot water"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

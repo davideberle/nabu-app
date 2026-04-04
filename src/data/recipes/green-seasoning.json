@@ -1,0 +1,134 @@
+{
+  "id": "green-seasoning",
+  "name": "GREEN SEASONING",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore",
+    "chapter": "chapter14"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "chapter14"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "10 springs of thyme, leaves picked",
+      "amount": "",
+      "unit": "",
+      "original": "10 springs of thyme, leaves picked"
+    },
+    {
+      "item": "5 spring onions (scallions), roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "5 spring onions (scallions), roughly chopped"
+    },
+    {
+      "item": "2 celery stalks, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "2 celery stalks, roughly chopped"
+    },
+    {
+      "item": "1 bulb of garlic, cloves peeled",
+      "amount": "",
+      "unit": "",
+      "original": "1 bulb of garlic, cloves peeled"
+    },
+    {
+      "item": "1 onion, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, roughly chopped"
+    },
+    {
+      "item": "1 green (bell) pepper, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 green (bell) pepper, roughly chopped"
+    },
+    {
+      "item": "1 Scotch bonnet",
+      "amount": "",
+      "unit": "",
+      "original": "1 Scotch bonnet"
+    },
+    {
+      "item": "300 g (10½ oz) shallots, peeled and roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "300 g (10½ oz) shallots, peeled and roughly chopped"
+    },
+    {
+      "item": "8 garlic cloves, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "8 garlic cloves, chopped"
+    },
+    {
+      "item": "2 teaspoons chilli flakes",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons chilli flakes"
+    },
+    {
+      "item": "250 g (9 oz) dried shiitake mushrooms, soaked and chopped",
+      "amount": "",
+      "unit": "",
+      "original": "250 g (9 oz) dried shiitake mushrooms, soaked and chopped"
+    },
+    {
+      "item": "1 nori sheet, shredded",
+      "amount": "",
+      "unit": "",
+      "original": "1 nori sheet, shredded"
+    },
+    {
+      "item": "125 ml (4 fl oz/½ cup) olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "125 ml (4 fl oz/½ cup) olive oil"
+    },
+    {
+      "item": "3 tablespoons dark soy sauce",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons dark soy sauce"
+    },
+    {
+      "item": "1½ teaspoons dark brown soft sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons dark brown soft sugar"
+    },
+    {
+      "item": "1½ teaspoons ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons ground allspice"
+    },
+    {
+      "item": "1 teaspoon salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon salt"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

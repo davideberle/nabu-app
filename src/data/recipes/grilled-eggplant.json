@@ -1,0 +1,161 @@
+{
+  "id": "grilled-eggplant",
+  "name": "◁ GRILLED EGGPLANT",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "08_Part03"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "08_Part03"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 Japanese eggplants or 1 medium globe eggplant (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "3 Japanese eggplants or 1 medium globe eggplant (see Note)"
+    },
+    {
+      "item": "2 cloves garlic",
+      "amount": "",
+      "unit": "",
+      "original": "2 cloves garlic"
+    },
+    {
+      "item": "1 bird’s eye chili pepper, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 bird’s eye chili pepper, chopped"
+    },
+    {
+      "item": "2 tablespoons plus 1 teaspoon sugar, divided",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons plus 1 teaspoon sugar, divided"
+    },
+    {
+      "item": "3 tablespoons vegan fish sauce",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons vegan fish sauce"
+    },
+    {
+      "item": "3½ ounces (100 g) chopped scallions",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) chopped scallions"
+    },
+    {
+      "item": "3 tablespoons vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons vegetable oil"
+    },
+    {
+      "item": "1 tablespoon fried shallots (see step 1 on this page or store-bought), for garnish (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon fried shallots (see step 1 on this page or store-bought), for garnish (optional)"
+    },
+    {
+      "item": "1 tablespoon crushed roasted peanuts, for garnish (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon crushed roasted peanuts, for garnish (optional)"
+    },
+    {
+      "item": "1. Using a skewer or toothpick, poke holes all over the surface of each eggplant.",
+      "amount": "",
+      "unit": "",
+      "original": "1. Using a skewer or toothpick, poke holes all over the surface of each eggplant."
+    },
+    {
+      "item": "2. If using a gas grill, preheat it to 500°F (250°C). Using tongs, place each eggplant on the hot grill and close the lid. Check after 10 minutes and again after 15 minutes. If eggplants look deflated and their grilled sides are soft (use a toothpick to check), they’re ready to be flipped. Grill for another 10 minutes, or until all flesh has collapsed and turned soft. If using a charcoal grill, grease the grate, then heat to medium-high heat (that is, coals should be covered with ash and glowing red without any black remaining). Using tongs, place each eggplant on the hot grate and cook them uncovered, turning occasionally, until skin is blackened and flesh has collapsed (15 to 20 minutes). Remove from grill and allow to cool.",
+      "amount": "",
+      "unit": "",
+      "original": "2. If using a gas grill, preheat it to 500°F (250°C). Using tongs, place each eggplant on the hot grill and close the lid. Check after 10 minutes and again after 15 minutes. If eggplants look deflated and their grilled sides are soft (use a toothpick to check), they’re ready to be flipped. Grill for another 10 minutes, or until all flesh has collapsed and turned soft. If using a charcoal grill, grease the grate, then heat to medium-high heat (that is, coals should be covered with ash and glowing red without any black remaining). Using tongs, place each eggplant on the hot grate and cook them uncovered, turning occasionally, until skin is blackened and flesh has collapsed (15 to 20 minutes). Remove from grill and allow to cool."
+    },
+    {
+      "item": "3. Carefully remove skin from eggplants, leaving the stems intact, and then arrange on a platter. Loosely drag a fork through the flesh to loosen so it will absorb the sauce.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Carefully remove skin from eggplants, leaving the stems intact, and then arrange on a platter. Loosely drag a fork through the flesh to loosen so it will absorb the sauce."
+    },
+    {
+      "item": "4. In a food processor or mortar and pestle, combine the garlic, chili, and 1 teaspoon of the sugar, and grind into a coarse paste.",
+      "amount": "",
+      "unit": "",
+      "original": "4. In a food processor or mortar and pestle, combine the garlic, chili, and 1 teaspoon of the sugar, and grind into a coarse paste."
+    },
+    {
+      "item": "5. In a small bowl, mix remaining 2 tablespoons sugar and vegan fish sauce, and stir until sugar is dissolved. Add garlic-chili paste and mix well.",
+      "amount": "",
+      "unit": "",
+      "original": "5. In a small bowl, mix remaining 2 tablespoons sugar and vegan fish sauce, and stir until sugar is dissolved. Add garlic-chili paste and mix well."
+    },
+    {
+      "item": "6. Place the scallions in a small, heatproof bowl. Heat oil in a small skillet over medium heat. When it starts to smoke, immediately remove from heat, pour the oil over the scallions, and stir well.",
+      "amount": "",
+      "unit": "",
+      "original": "6. Place the scallions in a small, heatproof bowl. Heat oil in a small skillet over medium heat. When it starts to smoke, immediately remove from heat, pour the oil over the scallions, and stir well."
+    },
+    {
+      "item": "7. Drizzle sauce all over eggplants and top them off with some of the scallion oil.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Drizzle sauce all over eggplants and top them off with some of the scallion oil."
+    },
+    {
+      "item": "8. Garnish with fried shallots (if using) and roasted peanuts (if using).",
+      "amount": "",
+      "unit": "",
+      "original": "8. Garnish with fried shallots (if using) and roasted peanuts (if using)."
+    },
+    {
+      "item": "This is the vegan version of stir-fried intestine with turmeric (lòng xào nghệ)—a popular specialty dish in Central Vietnam. The seitan in Vietnam comes in a tube shape, so it looks quite similar to the meat in the original dish when it’s cut into rings, but you can omit this ingredient if you prefer.\nSKILL LEVELModerate|YIELD2 servings\n7 ounces (200 g) oyster mushrooms, rinsed with salted water",
+      "amount": "",
+      "unit": "",
+      "original": "This is the vegan version of stir-fried intestine with turmeric (lòng xào nghệ)—a popular specialty dish in Central Vietnam. The seitan in Vietnam comes in a tube shape, so it looks quite similar to the meat in the original dish when it’s cut into rings, but you can omit this ingredient if you prefer.\nSKILL LEVELModerate|YIELD2 servings\n7 ounces (200 g) oyster mushrooms, rinsed with salted water"
+    },
+    {
+      "item": "3-inch (7.5 cm) piece fresh turmeric, peeled, or 1 teaspoon turmeric powder (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "3-inch (7.5 cm) piece fresh turmeric, peeled, or 1 teaspoon turmeric powder (see Note)"
+    },
+    {
+      "item": "2 tablespoons vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons vegetable oil"
+    },
+    {
+      "item": "2 cloves garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "2 cloves garlic, minced"
+    },
+    {
+      "item": "3 ounces (90 g) store-bought or homemade seitan, cut into ¼-inch (6 mm) thick rings (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) store-bought or homemade seitan, cut into ¼-inch (6 mm) thick rings (optional)"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

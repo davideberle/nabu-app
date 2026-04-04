@@ -1,0 +1,49 @@
+{
+  "id": "strawberry-and-blueberry-chia-pudding",
+  "name": "Strawberry and Blueberry Chia Pudding",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson",
+    "chapter": "part0026"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0026"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 cups whole milk",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups whole milk"
+    },
+    {
+      "item": "1 teaspoon pure vanilla extract",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon pure vanilla extract"
+    },
+    {
+      "item": "2 tablespoons honey",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons honey"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

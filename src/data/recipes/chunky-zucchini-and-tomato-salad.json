@@ -1,0 +1,114 @@
+{
+  "id": "chunky-zucchini-and-tomato-salad",
+  "name": "Chunky zucchini and tomato salad",
+  "subtitle": "Mafghoussa",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c03"
+  },
+  "introduction": "Mafghoussa, meaning “mashed” in Arabic, is more of a spread than a salad. We’ve kept our version nice and chunky but, if you want a spread, the vegetables can be lightly crushed. Either way, it’s delicious as it is—spooned up with some pita—or served alongside all sorts of grilled meats, rice dishes, and other salads. Some lightly toasted and roughly chopped walnuts mixed in are also a really nice addition.\n\nThe vegetables for mafghoussa are traditionally charred on the embers in a taboon oven, the clay (and often communal) oven found outdoors in Palestinian village homes (see this page for more on taboon). The dish is great at a summer barbecue, when tomatoes and zucchini are at their best and the grill will be out and ready. In the absence of either a taboon oven or the right weather for a barbecue, a grill pan set over high heat on the stove also, happily, works very well.\n\nGetting ahead: The vegetables can be grilled, chopped, and left to drain the day before serving, if you want to get ahead. Mix them with the yogurt and herbs on the actual day, though.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves six",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 lb 2 oz/1kg zucchini (either 10 small pale green ones, ideally, or 5 large darker green ones), trimmed and sliced in half lengthwise (or quartered lengthwise, if large)",
+      "amount": "",
+      "unit": "",
+      "original": "2 lb 2 oz/1kg zucchini (either 10 small pale green ones, ideally, or 5 large darker green ones), trimmed and sliced in half lengthwise (or quartered lengthwise, if large)",
+      "group": null
+    },
+    {
+      "item": "5 large very ripe tomatoes (1¾ lb/800g), cut in half crosswise",
+      "amount": "",
+      "unit": "",
+      "original": "5 large very ripe tomatoes (1¾ lb/800g), cut in half crosswise",
+      "group": null
+    },
+    {
+      "item": "3 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "1¼ cups/300g Greek yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ cups/300g Greek yogurt",
+      "group": null
+    },
+    {
+      "item": "1 large garlic clove, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "1 large garlic clove, crushed",
+      "group": null
+    },
+    {
+      "item": "1 lemon: finely grate the zest to get 1 tsp, then juice to get 2 tbsp",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon: finely grate the zest to get 1 tsp, then juice to get 2 tbsp",
+      "group": null
+    },
+    {
+      "item": "1 tbsp date molasses, plus 2 tsp",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp date molasses, plus 2 tsp",
+      "group": null
+    },
+    {
+      "item": "2 red chiles, seeded and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "2 red chiles, seeded and finely chopped",
+      "group": null
+    },
+    {
+      "item": "¼ cup/5g mint leaves, roughly chopped, plus 1 tbsp small leaves",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup/5g mint leaves, roughly chopped, plus 1 tbsp small leaves",
+      "group": null
+    },
+    {
+      "item": "¾ cup/15g parsley, roughly chopped, plus 1 tbsp chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g parsley, roughly chopped, plus 1 tbsp chopped",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F. Line two baking sheets with parchment paper, place a ridged grill pan over high heat, and ventilate the kitchen well.",
+    "Spread the zucchini and tomatoes on the prepared baking sheets, cut side up. Brush with 2 tbsp of oil (in total) and season with ½ tsp of salt and plenty of black pepper.",
+    "By now the grill pan should be piping hot. Place a few of the zucchini on the pan, cut side down, and cook for 4–5 minutes; the zucchini should be nicely charred on one side. If you’ve quartered your zucchini lengthwise, adjust them on the grill pan halfway through so that both exposed sides get charred. Return them to the baking sheet, arranging them all cut side up, and continue with the remaining zucchini and tomatoes in the same way—the tomatoes just need a minute or so less on the grill. Transfer the vegetables to the oven and roast for 20 minutes, until the zucchini are very tender and the tomatoes are cooked through but still retain their shape. Remove the baking sheets from the oven and allow the vegetables to cool down slightly. Chop them roughly into 1-inch/2.5cm pieces and let drain in a colander for 15 minutes.",
+    "Meanwhile, whisk the yogurt, garlic, lemon zest, lemon juice, 1 tbsp date molasses, and two-thirds of the chiles in a large mixing bowl. Add the chopped vegetables, ¼ cup/5g mint, ¾ cup/15g parsley, 1 tsp of salt, and plenty of pepper. Stir well, then transfer to a large, shallow serving plate. Spread it all over, then garnish with the remaining 1 tbsp parsley, one-third chile, and 1 tbsp mint leaves. Finally, drizzle with the remaining 2 tsp of date molasses and remaining 1 tbsp of oil and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

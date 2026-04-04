@@ -1,0 +1,98 @@
+{
+  "id": "salataeveryday-chopped-salad",
+  "name": "◁ SalataEVERYDAY CHOPPED SALAD",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "07_Chapter02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Chapter02"
+  },
+  "servings": "prep time: 15 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 medium bell pepper (any color), small diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium bell pepper (any color), small diced"
+    },
+    {
+      "item": "½ cup (25 g) finely chopped fresh parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (25 g) finely chopped fresh parsley"
+    },
+    {
+      "item": "DRESSING\n½ cup (120 ml) olive oil\n½ cup (120 ml) fresh lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "DRESSING\n½ cup (120 ml) olive oil\n½ cup (120 ml) fresh lemon juice"
+    },
+    {
+      "item": "2 tablespoons pomegranate molasses",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons pomegranate molasses"
+    },
+    {
+      "item": "1 teaspoon sumac",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon sumac"
+    },
+    {
+      "item": "1 teaspoon dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon dried mint"
+    },
+    {
+      "item": "1 TO MAKE THE SALATA: In a medium salad bowl, combine the cucumbers, tomato, onion, bell pepper, and parsley. Sprinkle with the ¼ teaspoon salt.",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE SALATA: In a medium salad bowl, combine the cucumbers, tomato, onion, bell pepper, and parsley. Sprinkle with the ¼ teaspoon salt."
+    },
+    {
+      "item": "2 TO MAKE THE DRESSING: Add the oil, lemon juice, pomegranate molasses, sumac, mint, and ½ teaspoon salt to a jar or container with a lid. Seal the jar or container and shake well until combined.",
+      "amount": "",
+      "unit": "",
+      "original": "2 TO MAKE THE DRESSING: Add the oil, lemon juice, pomegranate molasses, sumac, mint, and ½ teaspoon salt to a jar or container with a lid. Seal the jar or container and shake well until combined."
+    },
+    {
+      "item": "3 Drizzle ¼ cup (60 ml) of the dressing over the salad. Toss to combine well. Taste and adjust for more dressing as desired. Seal the jar or container, refrigerate, and use as needed.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Drizzle ¼ cup (60 ml) of the dressing over the salad. Toss to combine well. Taste and adjust for more dressing as desired. Seal the jar or container, refrigerate, and use as needed."
+    },
+    {
+      "item": "4 Garnish with dried mint, then serve immediately, or let chill in the refrigerator for no more than 1 hour.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Garnish with dried mint, then serve immediately, or let chill in the refrigerator for no more than 1 hour."
+    },
+    {
+      "item": "1 large bunch fresh dill, finely chopped and thick stems removed",
+      "amount": "",
+      "unit": "",
+      "original": "1 large bunch fresh dill, finely chopped and thick stems removed"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

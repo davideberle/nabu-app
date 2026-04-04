@@ -1,0 +1,103 @@
+{
+  "id": "braised-fava-beans-with-olive-oil-and-lemon",
+  "name": "Braised fava beans with olive oil and lemon",
+  "subtitle": "Foul akdar",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c03"
+  },
+  "introduction": "This is a very simple dish but, thanks to the generous amount of lemon juice and the even more generous olive oil, also wonderfully sharp and rich. It’s lovely as it is, warm or at room temperature, with a bowl of rice or some plain yogurt alongside, or as a side or as part of a mezzeh spread. Leftovers are also delicious and keep well for a couple of days, so double or triple the batch if you have a glut of beans.\n\nIngredients note: For those used to taking fava beans out of both their pods and their individual fibrous skins, braising them whole will be a revelation. The younger and more tender the beans that you start with, the more melt-in-the-mouth they will feel.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four as a side or part of a spread",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "6 tbsp/90ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "6 tbsp/90ml olive oil",
+      "group": null
+    },
+    {
+      "item": "1 onion, finely chopped (1 cup/150g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 onion, finely chopped (1 cup/150g)",
+      "group": null
+    },
+    {
+      "item": "3 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "1 lb 5 oz/600g fresh fava beans, stalks trimmed and stringy part removed, then cut on the diagonal into roughly 1½-inch/4cm-long pieces",
+      "amount": "",
+      "unit": "",
+      "original": "1 lb 5 oz/600g fresh fava beans, stalks trimmed and stringy part removed, then cut on the diagonal into roughly 1½-inch/4cm-long pieces",
+      "group": null
+    },
+    {
+      "item": "¾ cup plus 2 tbsp/200ml chicken or vegetable stock",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup plus 2 tbsp/200ml chicken or vegetable stock",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "1 lemon: finely grate the zest to get ½ tsp, then juice to get 2 tbsp",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon: finely grate the zest to get ½ tsp, then juice to get 2 tbsp",
+      "group": null
+    },
+    {
+      "item": "¼ tsp dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp dried mint",
+      "group": null
+    },
+    {
+      "item": "½ cup/10g parsley leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/10g parsley leaves, roughly chopped",
+      "group": null
+    },
+    {
+      "item": "½ cup/10g mint leaves, roughly chopped just before serving",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/10g mint leaves, roughly chopped just before serving",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put the oil into a large sauté pan with a lid and place over medium-high heat. Add the onion and cook for about 7 minutes, stirring occasionally, until soft and golden brown. Add the garlic and cook for another 30 seconds, until fragrant, then add the fava beans, stock, 1½ tsp of salt, and a good grind of black pepper. Bring to a simmer, then decrease the heat to medium-low and cook for about 25 minutes, covered, until the beans are very soft.",
+    "Stir in the lemon juice and dried mint and set aside for just 10 minutes, if serving warm, or to cool, if serving at room temperature. Scatter the parsley, chopped mint, and lemon zest on top and serve."
+  ],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

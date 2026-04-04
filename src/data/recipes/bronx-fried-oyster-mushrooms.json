@@ -1,0 +1,43 @@
+{
+  "id": "bronx-fried-oyster-mushrooms",
+  "name": "BRONX FRIED OYSTER MUSHROOMS",
+  "source": {
+    "cookbook": "Black Rican Vegan   Fire Plant Based Recipes from ",
+    "author": "Various",
+    "chapter": "p04-c07"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "p04-c07"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "COMPRA LIST\n1 lb (455 g) oyster mushrooms\n4 cups (500 g) all-purpose flour, divided\n2 cups (485 ml) unsweetened nondairy milk\n¼ cup (60 ml) hot sauce\n3 tbsp (27 g) potato starch\n1 tsp garlic powder\n1 tsp Cajun seasoning\n1 tsp onion powder\n1 tsp dried oregano\n1 tsp paprika\n1 tsp salt, plus more to taste\n4 cups (946 ml) vegetable oil\n\nServes 4",
+      "amount": "",
+      "unit": "",
+      "original": "COMPRA LIST\n1 lb (455 g) oyster mushrooms\n4 cups (500 g) all-purpose flour, divided\n2 cups (485 ml) unsweetened nondairy milk\n¼ cup (60 ml) hot sauce\n3 tbsp (27 g) potato starch\n1 tsp garlic powder\n1 tsp Cajun seasoning\n1 tsp onion powder\n1 tsp dried oregano\n1 tsp paprika\n1 tsp salt, plus more to taste\n4 cups (946 ml) vegetable oil\n\nServes 4"
+    },
+    {
+      "item": "Wash your oyster mushrooms and peel them apart into wing-sized pieces. In a medium-sized bowl, combine 2 cups (250 g) of the flour, the nondairy milk and the hot sauce, and whisk thoroughly; this is your wet batter. In another medium-sized bowl, combine the remaining 2 cups (250 g) of flour, potato starch, garlic powder, Cajun seasoning, onion powder, oregano, paprika and salt, and whisk thoroughly; this is your dry batter.",
+      "amount": "",
+      "unit": "",
+      "original": "Wash your oyster mushrooms and peel them apart into wing-sized pieces. In a medium-sized bowl, combine 2 cups (250 g) of the flour, the nondairy milk and the hot sauce, and whisk thoroughly; this is your wet batter. In another medium-sized bowl, combine the remaining 2 cups (250 g) of flour, potato starch, garlic powder, Cajun seasoning, onion powder, oregano, paprika and salt, and whisk thoroughly; this is your dry batter."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

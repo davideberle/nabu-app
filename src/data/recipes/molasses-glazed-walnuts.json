@@ -1,0 +1,62 @@
+{
+  "id": "molasses-glazed-walnuts",
+  "name": "MOLASSES-GLAZED WALNUTS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c06_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c06_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 cups walnut pieces",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups walnut pieces"
+    },
+    {
+      "item": "1 tablespoon sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sunflower oil"
+    },
+    {
+      "item": "2 tablespoons unsulfured molasses",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons unsulfured molasses"
+    },
+    {
+      "item": "1 tablespoon raw cane sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon raw cane sugar"
+    },
+    {
+      "item": "¼ teaspoon fine sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "¼ teaspoon fine sea salt"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

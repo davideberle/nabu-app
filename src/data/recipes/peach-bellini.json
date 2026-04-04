@@ -1,0 +1,44 @@
+{
+  "id": "peach-bellini",
+  "name": "Peach Bellini",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson",
+    "chapter": "part0075"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0075"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 cups peach purée, chilled",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups peach purée, chilled"
+    },
+    {
+      "item": "1 bottle of prosecco, chilled",
+      "amount": "",
+      "unit": "",
+      "original": "1 bottle of prosecco, chilled"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

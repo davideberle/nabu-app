@@ -1,0 +1,149 @@
+{
+  "id": "lebanese-tahini-chicken",
+  "name": "◁ Lebanese Tahini Chicken",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "08_Chapter03"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "08_Chapter03"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "CHICKEN\n1½ pounds (650 g) boneless, skinless chicken breasts (3 large breasts; or substitute boneless chicken thighs), cut into 1-inch (2.5 cm) cubes\n1 teaspoon kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "CHICKEN\n1½ pounds (650 g) boneless, skinless chicken breasts (3 large breasts; or substitute boneless chicken thighs), cut into 1-inch (2.5 cm) cubes\n1 teaspoon kosher salt"
+    },
+    {
+      "item": "1 teaspoon paprika",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon paprika"
+    },
+    {
+      "item": "1 teaspoon ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground allspice"
+    },
+    {
+      "item": "1 teaspoon onion powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon onion powder"
+    },
+    {
+      "item": "1 teaspoon garlic powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon garlic powder"
+    },
+    {
+      "item": "3 tablespoons olive oil, divided",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons olive oil, divided"
+    },
+    {
+      "item": "TAHINI SAUCE\n½ cup (90 ml) fresh lemon juice, plus more if needed\n½ cup (120 ml) tahini",
+      "amount": "",
+      "unit": "",
+      "original": "TAHINI SAUCE\n½ cup (90 ml) fresh lemon juice, plus more if needed\n½ cup (120 ml) tahini"
+    },
+    {
+      "item": "1 cup (240 ml) plain, whole-milk yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (240 ml) plain, whole-milk yogurt"
+    },
+    {
+      "item": "7 large cloves garlic, minced",
+      "amount": "",
+      "unit": "",
+      "original": "7 large cloves garlic, minced"
+    },
+    {
+      "item": "1½ teaspoons kosher salt, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons kosher salt, plus more if needed"
+    },
+    {
+      "item": "1 teaspoon garlic powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon garlic powder"
+    },
+    {
+      "item": "1 teaspoon onion powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon onion powder"
+    },
+    {
+      "item": "FOR GARNISHING AND SERVING\n1 tablespoon olive oil\n½ cup whole cashews (60 g), slivered almonds (55 g), or pine nuts (65 g)",
+      "amount": "",
+      "unit": "",
+      "original": "FOR GARNISHING AND SERVING\n1 tablespoon olive oil\n½ cup whole cashews (60 g), slivered almonds (55 g), or pine nuts (65 g)"
+    },
+    {
+      "item": "½ cup (25 g) finely chopped fresh parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (25 g) finely chopped fresh parsley"
+    },
+    {
+      "item": "1 TO MAKE THE CHICKEN: In a large bowl, mix the chicken with the 1 teaspoon salt, paprika, pepper, allspice, onion powder, garlic powder, and 1 tablespoon of the oil until well combined. Set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "1 TO MAKE THE CHICKEN: In a large bowl, mix the chicken with the 1 teaspoon salt, paprika, pepper, allspice, onion powder, garlic powder, and 1 tablespoon of the oil until well combined. Set aside."
+    },
+    {
+      "item": "2 TO MAKE THE TAHINI SAUCE: In a medium bowl, whisk together the lemon juice, tahini, yogurt, garlic, 1½ teaspoons salt, pepper, garlic powder, and onion powder with ½ cup (120 ml) of water until the consistency is smooth.",
+      "amount": "",
+      "unit": "",
+      "original": "2 TO MAKE THE TAHINI SAUCE: In a medium bowl, whisk together the lemon juice, tahini, yogurt, garlic, 1½ teaspoons salt, pepper, garlic powder, and onion powder with ½ cup (120 ml) of water until the consistency is smooth."
+    },
+    {
+      "item": "3 In a large skillet, heat the remaining 2 tablespoons olive oil over medium heat for 2 minutes. Add the chicken and sear it for 2 minutes on each side, or until lightly golden, working in batches to avoid overcrowding. Transfer to a plate. The chicken does not need to be fully cooked, as it will simmer in the sauce.",
+      "amount": "",
+      "unit": "",
+      "original": "3 In a large skillet, heat the remaining 2 tablespoons olive oil over medium heat for 2 minutes. Add the chicken and sear it for 2 minutes on each side, or until lightly golden, working in batches to avoid overcrowding. Transfer to a plate. The chicken does not need to be fully cooked, as it will simmer in the sauce."
+    },
+    {
+      "item": "4 Place all the chicken back into the skillet, then pour the tahini sauce on top. Let the chicken and sauce simmer for 5 to 7 minutes, until the sauce is bubbling and the chicken is fully white on the inside. Taste and adjust for salt and/or lemon juice if needed.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Place all the chicken back into the skillet, then pour the tahini sauce on top. Let the chicken and sauce simmer for 5 to 7 minutes, until the sauce is bubbling and the chicken is fully white on the inside. Taste and adjust for salt and/or lemon juice if needed."
+    },
+    {
+      "item": "5 MEANWHILE, MAKE THE GARNISH: Heat the 1 tablespoon oil in a small skillet over low heat, then add the nuts and toast for 5 minutes, or until golden, stirring often.",
+      "amount": "",
+      "unit": "",
+      "original": "5 MEANWHILE, MAKE THE GARNISH: Heat the 1 tablespoon oil in a small skillet over low heat, then add the nuts and toast for 5 minutes, or until golden, stirring often."
+    },
+    {
+      "item": "6 Garnish with the chopped parsley and toasted nuts and serve with rice and salad.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Garnish with the chopped parsley and toasted nuts and serve with rice and salad."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

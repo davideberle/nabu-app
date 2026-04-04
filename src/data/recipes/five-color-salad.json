@@ -1,0 +1,158 @@
+{
+  "id": "five-color-salad",
+  "name": "◁ FIVE-COLOR SALAD",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "07_Part02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Part02"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "The core of Vietnamese cuisine is made up of the power of five flavors, which correspond to the five elements: spicy (metal), sour (wood), bitter (fire), salty (water), and sweet (earth). Likewise, many chefs strive to feature five colors in their dishes that correspond to the gastronomic senses: sight, touch, smell, sound, and taste. This salad (gỏi ngũ sắc) is the perfect example of this meticulous philosophy. It’s so colorful and will look fantastic on your party or banquet table, but it’s also simple enough to prepare for a weeknight meal.\nSKILL LEVELBasic|YIELD4 servings\n4 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu\n3½ ounces (100 g) leek (white part only), thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "The core of Vietnamese cuisine is made up of the power of five flavors, which correspond to the five elements: spicy (metal), sour (wood), bitter (fire), salty (water), and sweet (earth). Likewise, many chefs strive to feature five colors in their dishes that correspond to the gastronomic senses: sight, touch, smell, sound, and taste. This salad (gỏi ngũ sắc) is the perfect example of this meticulous philosophy. It’s so colorful and will look fantastic on your party or banquet table, but it’s also simple enough to prepare for a weeknight meal.\nSKILL LEVELBasic|YIELD4 servings\n4 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu\n3½ ounces (100 g) leek (white part only), thinly sliced"
+    },
+    {
+      "item": "1 cube store-bought or homemade chao",
+      "amount": "",
+      "unit": "",
+      "original": "1 cube store-bought or homemade chao"
+    },
+    {
+      "item": "1 tablespoon fermented soybean sauce",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon fermented soybean sauce"
+    },
+    {
+      "item": "1 tablespoon sriracha",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sriracha"
+    },
+    {
+      "item": "2 teaspoons sugar",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons sugar"
+    },
+    {
+      "item": "1 tablespoon lime juice",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon lime juice"
+    },
+    {
+      "item": "1 tablespoon sesame or olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sesame or olive oil"
+    },
+    {
+      "item": "1 bird's eye chili pepper, minced, plus more sliced for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "1 bird's eye chili pepper, minced, plus more sliced for garnish"
+    },
+    {
+      "item": "3 ounces (90 g) banana blossom, prepped and thinly sliced (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) banana blossom, prepped and thinly sliced (optional)"
+    },
+    {
+      "item": "3 ounces (90 g) cucumber, seeds removed and thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) cucumber, seeds removed and thinly sliced"
+    },
+    {
+      "item": "3 ounces (90 g) carrot, peeled and shredded",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) carrot, peeled and shredded"
+    },
+    {
+      "item": "3 ounces (90 g) red cabbage, shredded",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) red cabbage, shredded"
+    },
+    {
+      "item": "1 ounce (28 g) mint",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) mint"
+    },
+    {
+      "item": "3 tablespoons roasted peanuts, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons roasted peanuts, crushed"
+    },
+    {
+      "item": "2 tablespoons toasted sesame seeds",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons toasted sesame seeds"
+    },
+    {
+      "item": "1. In a medium skillet, heat 1 tablespoon of vegetable oil over medium heat. When hot, add tofu and cook until golden brown on all sides (about 10 minutes). Place tofu on paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "1. In a medium skillet, heat 1 tablespoon of vegetable oil over medium heat. When hot, add tofu and cook until golden brown on all sides (about 10 minutes). Place tofu on paper towel–lined plate to drain."
+    },
+    {
+      "item": "2. Cut tofu into thin strips and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Cut tofu into thin strips and set aside."
+    },
+    {
+      "item": "3. In a clean skillet, heat remaining 3 tablespoons of vegetable oil, and then cook and stir sliced leek until golden brown (about 2 minutes). Using a slotted spoon, transfer leek to a paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "3. In a clean skillet, heat remaining 3 tablespoons of vegetable oil, and then cook and stir sliced leek until golden brown (about 2 minutes). Using a slotted spoon, transfer leek to a paper towel–lined plate to drain."
+    },
+    {
+      "item": "4. In a small bowl, mash the chao into a smooth paste, and then add fermented soybean and sriracha sauces, sugar, lime juice, sesame oil, and minced chili pepper, and stir well.",
+      "amount": "",
+      "unit": "",
+      "original": "4. In a small bowl, mash the chao into a smooth paste, and then add fermented soybean and sriracha sauces, sugar, lime juice, sesame oil, and minced chili pepper, and stir well."
+    },
+    {
+      "item": "5. Arrange banana blossom slices (if using), cucumber, carrot, cabbage, and mint on a platter. Top with tofu, and then sprinkle with fried leek, peanuts, and sesame seeds.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Arrange banana blossom slices (if using), cucumber, carrot, cabbage, and mint on a platter. Top with tofu, and then sprinkle with fried leek, peanuts, and sesame seeds."
+    },
+    {
+      "item": "6. Drizzle dressing on top, garnish with chili slices, and toss well before serving.",
+      "amount": "",
+      "unit": "",
+      "original": "6. Drizzle dressing on top, garnish with chili slices, and toss well before serving."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

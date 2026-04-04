@@ -1,0 +1,133 @@
+{
+  "id": "puff-pastry-cheese-fatayer",
+  "name": "◁ Puff Pastry Cheese Fatayer",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "07_Chapter02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Chapter02"
+  },
+  "servings": "prep time: 15 minutes, plus 1 hour thawing",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "14 ounces (400 g) frozen puff pastry",
+      "amount": "",
+      "unit": "",
+      "original": "14 ounces (400 g) frozen puff pastry"
+    },
+    {
+      "item": "4½ ounces (130 g) feta cheese, crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "4½ ounces (130 g) feta cheese, crumbled"
+    },
+    {
+      "item": "4½ ounces (130 g) mozzarella cheese, shredded",
+      "amount": "",
+      "unit": "",
+      "original": "4½ ounces (130 g) mozzarella cheese, shredded"
+    },
+    {
+      "item": "4½ ounces (130 g) cream cheese, at room temperature",
+      "amount": "",
+      "unit": "",
+      "original": "4½ ounces (130 g) cream cheese, at room temperature"
+    },
+    {
+      "item": "1 teaspoon dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon dried mint"
+    },
+    {
+      "item": "2 teaspoons dried parsley (or substitute 2 tablespoons finely chopped fresh parsley)",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons dried parsley (or substitute 2 tablespoons finely chopped fresh parsley)"
+    },
+    {
+      "item": "1½ teaspoons ground Aleppo pepper (or substitute paprika)",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons ground Aleppo pepper (or substitute paprika)"
+    },
+    {
+      "item": "1 large egg, beaten",
+      "amount": "",
+      "unit": "",
+      "original": "1 large egg, beaten"
+    },
+    {
+      "item": "2 tablespoons white sesame seeds",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons white sesame seeds"
+    },
+    {
+      "item": "2 tablespoons nigella seeds",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons nigella seeds"
+    },
+    {
+      "item": "1 Bring the puff pastry to room temperature by thawing on the counter for 1 hour.",
+      "amount": "",
+      "unit": "",
+      "original": "1 Bring the puff pastry to room temperature by thawing on the counter for 1 hour."
+    },
+    {
+      "item": "2 Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper."
+    },
+    {
+      "item": "3 In a medium bowl, mix the feta, mozzarella, cream cheese, mint, parsley, dill, and Aleppo pepper until well combined.",
+      "amount": "",
+      "unit": "",
+      "original": "3 In a medium bowl, mix the feta, mozzarella, cream cheese, mint, parsley, dill, and Aleppo pepper until well combined."
+    },
+    {
+      "item": "4 If using puff pastry that is not precut into squares and must be rolled out, lightly flour your work surface. Using a rolling pin, roll out the pastry until it is ⅛ inch (6 mm) thick. Cut into 4 x 4-inch (10 x 10 cm) squares.",
+      "amount": "",
+      "unit": "",
+      "original": "4 If using puff pastry that is not precut into squares and must be rolled out, lightly flour your work surface. Using a rolling pin, roll out the pastry until it is ⅛ inch (6 mm) thick. Cut into 4 x 4-inch (10 x 10 cm) squares."
+    },
+    {
+      "item": "5 Place roughly 1½ tablespoons of the filling on the center of one of the puff pastry squares, gently spreading it out along the diagonal, leaving a ½-inch (13 mm) border. Fold one corner of the square over the filling, diagonally, and pinch it closed at the opposite corner, forming a triangle. Use a fork to press down the open edges until sealed. Transfer to the prepared sheet pan. Repeat with the remaining filling and puff pastry squares. Brush the tops of the fatayer with the beaten egg, then sprinkle them with the sesame and nigella seeds.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Place roughly 1½ tablespoons of the filling on the center of one of the puff pastry squares, gently spreading it out along the diagonal, leaving a ½-inch (13 mm) border. Fold one corner of the square over the filling, diagonally, and pinch it closed at the opposite corner, forming a triangle. Use a fork to press down the open edges until sealed. Transfer to the prepared sheet pan. Repeat with the remaining filling and puff pastry squares. Brush the tops of the fatayer with the beaten egg, then sprinkle them with the sesame and nigella seeds."
+    },
+    {
+      "item": "6 Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color."
+    },
+    {
+      "item": "7 Serve warm.",
+      "amount": "",
+      "unit": "",
+      "original": "7 Serve warm."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

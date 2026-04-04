@@ -1,0 +1,179 @@
+{
+  "id": "spicy-noodle-soup",
+  "name": "◁ SPICY NOODLE SOUP",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "09_Part04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Part04"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "This vegan version of bún bò Huế has a sweet broth comprised of various vegetables and fruits. Instead of beef, you’ll use dried mock beef slices for the perfect balance of spicy, savory, and sweet.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n1 medium chayote, peeled and cut into 1½-inch (4 cm) cubes\n1 medium carrot, peeled and cut into 1½-inch (4 cm) cubes\n1 medium corncob, cut into 1-inch (2.5 cm) thick rounds\n1 small jicama, peeled and cut into 1½-inch (4 cm) cubes\n1 medium apple or pear, peeled and cut into 1½-inch (4 cm) cubes\n1 gallon (4 L) water\n2 ounces (50 g) rock sugar\n1 tablespoon salt\n½ cup (120 ml) vegetable oil, divided\n2 blocks (28 ounces/800 g) firm tofu",
+      "amount": "",
+      "unit": "",
+      "original": "This vegan version of bún bò Huế has a sweet broth comprised of various vegetables and fruits. Instead of beef, you’ll use dried mock beef slices for the perfect balance of spicy, savory, and sweet.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n1 medium chayote, peeled and cut into 1½-inch (4 cm) cubes\n1 medium carrot, peeled and cut into 1½-inch (4 cm) cubes\n1 medium corncob, cut into 1-inch (2.5 cm) thick rounds\n1 small jicama, peeled and cut into 1½-inch (4 cm) cubes\n1 medium apple or pear, peeled and cut into 1½-inch (4 cm) cubes\n1 gallon (4 L) water\n2 ounces (50 g) rock sugar\n1 tablespoon salt\n½ cup (120 ml) vegetable oil, divided\n2 blocks (28 ounces/800 g) firm tofu"
+    },
+    {
+      "item": "2 tablespoons minced lemongrass, plus 5 to 8 lemongrass stalks, trimmed and bruised",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons minced lemongrass, plus 5 to 8 lemongrass stalks, trimmed and bruised"
+    },
+    {
+      "item": "1 tablespoon minced garlic",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon minced garlic"
+    },
+    {
+      "item": "3 tablespoons minced leek (white part only)",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons minced leek (white part only)"
+    },
+    {
+      "item": "1 tablespoon minced bird's eye chili pepper",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon minced bird's eye chili pepper"
+    },
+    {
+      "item": "2 tablespoons chili flakes or powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons chili flakes or powder"
+    },
+    {
+      "item": "1 tablespoon sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sugar"
+    },
+    {
+      "item": "1 tablespoon vegetable or mushroom stock powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon vegetable or mushroom stock powder"
+    },
+    {
+      "item": "2 ounces (56 g) dried mock beef slices, soaked",
+      "amount": "",
+      "unit": "",
+      "original": "2 ounces (56 g) dried mock beef slices, soaked"
+    },
+    {
+      "item": "10½ ounces (300 g) mushrooms (straw, shiitake, enoki, or beech), stems trimmed and cut into bite-size pieces",
+      "amount": "",
+      "unit": "",
+      "original": "10½ ounces (300 g) mushrooms (straw, shiitake, enoki, or beech), stems trimmed and cut into bite-size pieces"
+    },
+    {
+      "item": "16 ounces (454 g) dried rice vermicelli noodles or 2¼ pounds (1 kg) fresh rice vermicelli noodles",
+      "amount": "",
+      "unit": "",
+      "original": "16 ounces (454 g) dried rice vermicelli noodles or 2¼ pounds (1 kg) fresh rice vermicelli noodles"
+    },
+    {
+      "item": "2 ounces (56 g) cilantro, finely chopped, for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "2 ounces (56 g) cilantro, finely chopped, for garnish"
+    },
+    {
+      "item": "3½ ounces (100 g) leaf or iceberg lettuce, shredded or torn, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) leaf or iceberg lettuce, shredded or torn, for serving"
+    },
+    {
+      "item": "3 ounces (90 g) green herbs, (such as mint, perilla, cilantro, and/or Asian basil), chopped, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) green herbs, (such as mint, perilla, cilantro, and/or Asian basil), chopped, for serving"
+    },
+    {
+      "item": "3½ ounces (100 g) bean sprouts, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3½ ounces (100 g) bean sprouts, for serving"
+    },
+    {
+      "item": "3 ounces (90 g) banana blossom, prepped and shredded, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "3 ounces (90 g) banana blossom, prepped and shredded, for serving"
+    },
+    {
+      "item": "1 lime, cut into wedges, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "1 lime, cut into wedges, for serving"
+    },
+    {
+      "item": "1. Place chayote, carrot, corn, jicama, and apple in a large stockpot, and then add the water, rock sugar, and salt. Bring to a boil, and then reduce the heat to medium-low and simmer, uncovered, until vegetables are sweet to the taste (about 1 hour).",
+      "amount": "",
+      "unit": "",
+      "original": "1. Place chayote, carrot, corn, jicama, and apple in a large stockpot, and then add the water, rock sugar, and salt. Bring to a boil, and then reduce the heat to medium-low and simmer, uncovered, until vegetables are sweet to the taste (about 1 hour)."
+    },
+    {
+      "item": "2. Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain, and then cut into slices.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add the tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain, and then cut into slices."
+    },
+    {
+      "item": "3. Heat the remaining ¼ cup (60 ml) oil in a medium skillet over low heat. When hot, add minced lemongrass, garlic, leek, chili pepper, bruised lemongrass stalks, chili flakes, sugar, and stock powder. Cook and stir until slightly golden (about 3 minutes). Remove from heat.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Heat the remaining ¼ cup (60 ml) oil in a medium skillet over low heat. When hot, add minced lemongrass, garlic, leek, chili pepper, bruised lemongrass stalks, chili flakes, sugar, and stock powder. Cook and stir until slightly golden (about 3 minutes). Remove from heat."
+    },
+    {
+      "item": "4. Using tongs or chopsticks, transfer lemongrass stalks to the large pot of vegetables. Reserve half of the cooked mixture in a small bowl to serve as a condiment with each bowl of soup.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Using tongs or chopsticks, transfer lemongrass stalks to the large pot of vegetables. Reserve half of the cooked mixture in a small bowl to serve as a condiment with each bowl of soup."
+    },
+    {
+      "item": "5. Add the mock beef slices and mushrooms to the remaining half of mixture in the skillet and cook and stir over medium-low heat until tender (2 to 3 minutes). Add tofu slices, stir gently, and then remove from heat and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Add the mock beef slices and mushrooms to the remaining half of mixture in the skillet and cook and stir over medium-low heat until tender (2 to 3 minutes). Add tofu slices, stir gently, and then remove from heat and set aside."
+    },
+    {
+      "item": "6. If using dried vermicelli, cook it following the package instructions. If using fresh, quickly blanch it in hot water if it has been refrigerated.",
+      "amount": "",
+      "unit": "",
+      "original": "6. If using dried vermicelli, cook it following the package instructions. If using fresh, quickly blanch it in hot water if it has been refrigerated."
+    },
+    {
+      "item": "7. Fill one-third of each serving bowl with rice vermicelli noodles, and then top with mushrooms, tofu, and mock beef slices. Ladle hot broth over the top and garnish with chopped cilantro.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Fill one-third of each serving bowl with rice vermicelli noodles, and then top with mushrooms, tofu, and mock beef slices. Ladle hot broth over the top and garnish with chopped cilantro."
+    },
+    {
+      "item": "8. Serve with a platter of lettuce, herbs, bean sprouts, banana blossom, and lime wedges, along with the reserved condiment mixture.",
+      "amount": "",
+      "unit": "",
+      "original": "8. Serve with a platter of lettuce, herbs, bean sprouts, banana blossom, and lime wedges, along with the reserved condiment mixture."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

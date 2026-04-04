@@ -1,0 +1,95 @@
+{
+  "id": "baby-spinach-salad-with-dates-almonds",
+  "name": "Baby spinach salad with dates & almonds",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c01_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 large eggplants, halved lengthwise with the stem on (about 1⅔ lb / 750 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "2 large eggplants, halved lengthwise with the stem on (about 1⅔ lb / 750 g in total)",
+      "group": null
+    },
+    {
+      "item": "⅔ cup / 150 ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup / 150 ml olive oil",
+      "group": null
+    },
+    {
+      "item": "4 onions (about 1¼ lb / 550 g in total), thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "4 onions (about 1¼ lb / 550 g in total), thinly sliced",
+      "group": null
+    },
+    {
+      "item": "1½ green chiles",
+      "amount": "",
+      "unit": "",
+      "original": "1½ green chiles",
+      "group": null
+    },
+    {
+      "item": "1½ tsp ground cumin",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp ground cumin",
+      "group": null
+    },
+    {
+      "item": "1 tsp sumac",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp sumac",
+      "group": null
+    },
+    {
+      "item": "1¾ oz / 50 g feta cheese, broken into large chunks",
+      "amount": "",
+      "unit": "",
+      "original": "1¾ oz / 50 g feta cheese, broken into large chunks",
+      "group": null
+    },
+    {
+      "item": "1 medium lemon",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium lemon",
+      "group": null
+    },
+    {
+      "item": "1 clove garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "1 clove garlic, crushed",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/baby-spinach-salad-with-dates-almonds.jpg"
+}

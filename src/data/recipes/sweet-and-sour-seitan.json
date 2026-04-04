@@ -1,0 +1,125 @@
+{
+  "id": "sweet-and-sour-seitan",
+  "name": "◁ SWEET-AND-SOUR SEITAN",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "08_Part03"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "08_Part03"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "The key to success with this dish (mì căn rim chua ngọt) is its flavorful sweet-and-sour sauce. If you’re not a fan of seitan, feel free to use any other plant-based protein you prefer, such as vegan chicken tenders or chunks, or textured vegetable protein. Anything that has a chewy, springy texture to absorb the sauce will work.\nSKILL LEVELBasic|YIELD4 servings\n¼ cup (60 ml) vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "The key to success with this dish (mì căn rim chua ngọt) is its flavorful sweet-and-sour sauce. If you’re not a fan of seitan, feel free to use any other plant-based protein you prefer, such as vegan chicken tenders or chunks, or textured vegetable protein. Anything that has a chewy, springy texture to absorb the sauce will work.\nSKILL LEVELBasic|YIELD4 servings\n¼ cup (60 ml) vegetable oil"
+    },
+    {
+      "item": "7 ounces (200 g) store-bought or homemade seitan or vegan protein of choice",
+      "amount": "",
+      "unit": "",
+      "original": "7 ounces (200 g) store-bought or homemade seitan or vegan protein of choice"
+    },
+    {
+      "item": "2 tablespoons white vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons white vinegar"
+    },
+    {
+      "item": "2 tablespoons ketchup",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons ketchup"
+    },
+    {
+      "item": "1 tablespoon brown sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon brown sugar"
+    },
+    {
+      "item": "1 tablespoon vegetable or mushroom stock powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon vegetable or mushroom stock powder"
+    },
+    {
+      "item": "1 teaspoon sesame oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon sesame oil"
+    },
+    {
+      "item": "2 tablespoons soy sauce",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons soy sauce"
+    },
+    {
+      "item": "1 tablespoon sriracha sauce",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon sriracha sauce"
+    },
+    {
+      "item": "1 tablespoon vegetarian oyster sauce (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon vegetarian oyster sauce (optional)"
+    },
+    {
+      "item": "½ cup (120 ml) water",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (120 ml) water"
+    },
+    {
+      "item": "1 tablespoon roasted sesame seeds, for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon roasted sesame seeds, for garnish"
+    },
+    {
+      "item": "1. In a medium skillet, heat oil over low heat. When hot, add seitan and cook until golden brown on all sides (3 to 5 minutes). Remove and place on a paper towel–lined plate to drain and let cool. Cut into ½-inch (1 cm) thick slices.",
+      "amount": "",
+      "unit": "",
+      "original": "1. In a medium skillet, heat oil over low heat. When hot, add seitan and cook until golden brown on all sides (3 to 5 minutes). Remove and place on a paper towel–lined plate to drain and let cool. Cut into ½-inch (1 cm) thick slices."
+    },
+    {
+      "item": "2. In a small bowl, whisk together vinegar, ketchup, brown sugar, stock powder, sesame oil, soy sauce, sriracha, and vegetarian oyster sauce (if using) until solids are dissolved.",
+      "amount": "",
+      "unit": "",
+      "original": "2. In a small bowl, whisk together vinegar, ketchup, brown sugar, stock powder, sesame oil, soy sauce, sriracha, and vegetarian oyster sauce (if using) until solids are dissolved."
+    },
+    {
+      "item": "3. Simmer seitan slices, prepared sauce, and water in a large skillet over medium-low heat until sauce thickens (about 15 minutes). Remove from heat.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Simmer seitan slices, prepared sauce, and water in a large skillet over medium-low heat until sauce thickens (about 15 minutes). Remove from heat."
+    },
+    {
+      "item": "4. Transfer to a platter, dust with pepper, sprinkle with sesame seeds, and serve.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Transfer to a platter, dust with pepper, sprinkle with sesame seeds, and serve."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

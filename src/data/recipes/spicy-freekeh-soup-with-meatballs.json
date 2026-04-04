@@ -1,0 +1,197 @@
+{
+  "id": "spicy-freekeh-soup-with-meatballs",
+  "name": "Spicy freekeh soup with meatballs",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c03_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "14 oz / 400 g ground beef, lamb, or a combination of both",
+      "amount": "",
+      "unit": "",
+      "original": "14 oz / 400 g ground beef, lamb, or a combination of both",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "1 small onion (5 oz / 150 g in total), finely diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 small onion (5 oz / 150 g in total), finely diced",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "2 tbsp finely chopped flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp finely chopped flat-leaf parsley",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "½ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground allspice",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "¼ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "¼ tsp ground cinnamon",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "3 tbsp all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp all-purpose flour",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 large onion (9 oz / 250 g in total), chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 large onion (9 oz / 250 g in total), chopped",
+      "group": "SOUP"
+    },
+    {
+      "item": "3 cloves garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "3 cloves garlic, crushed",
+      "group": "SOUP"
+    },
+    {
+      "item": "2 carrots (9 oz / 250 g in total), peeled and cut into ⅜-inch / 1cm cubes",
+      "amount": "",
+      "unit": "",
+      "original": "2 carrots (9 oz / 250 g in total), peeled and cut into ⅜-inch / 1cm cubes",
+      "group": "SOUP"
+    },
+    {
+      "item": "2 celery stalks (5 oz / 150 g in total), cut into ⅜-inch / 1cm cubes",
+      "amount": "",
+      "unit": "",
+      "original": "2 celery stalks (5 oz / 150 g in total), cut into ⅜-inch / 1cm cubes",
+      "group": "SOUP"
+    },
+    {
+      "item": "3 large tomatoes (12 oz / 350 g in total), chopped",
+      "amount": "",
+      "unit": "",
+      "original": "3 large tomatoes (12 oz / 350 g in total), chopped",
+      "group": "SOUP"
+    },
+    {
+      "item": "2½ tbsp / 40 g tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp / 40 g tomato paste",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 tbsp baharat spice mix (store-bought or see recipe)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp baharat spice mix (store-bought or see recipe)",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 tbsp ground coriander",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp ground coriander",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 cinnamon stick",
+      "amount": "",
+      "unit": "",
+      "original": "1 cinnamon stick",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 tbsp superfine sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp superfine sugar",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 cup / 150 g cracked freekeh",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup / 150 g cracked freekeh",
+      "group": "SOUP"
+    },
+    {
+      "item": "2 cups / 500 ml beef stock",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups / 500 ml beef stock",
+      "group": "SOUP"
+    },
+    {
+      "item": "2 cups / 500 ml chicken stock",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups / 500 ml chicken stock",
+      "group": "SOUP"
+    },
+    {
+      "item": "3¼ cups / 800 ml hot water",
+      "amount": "",
+      "unit": "",
+      "original": "3¼ cups / 800 ml hot water",
+      "group": "SOUP"
+    },
+    {
+      "item": "⅓ oz / 10 g cilantro, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ oz / 10 g cilantro, chopped",
+      "group": "SOUP"
+    },
+    {
+      "item": "1 lemon, cut into 6 wedges",
+      "amount": "",
+      "unit": "",
+      "original": "1 lemon, cut into 6 wedges",
+      "group": "SOUP"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": "/recipes/spicy-freekeh-soup-with-meatballs.jpg"
+}

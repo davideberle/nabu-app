@@ -1,0 +1,68 @@
+{
+  "id": "cumin-pickled-onions",
+  "name": "CUMIN-PICKLED ONIONS",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "½ cup apple cider vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup apple cider vinegar"
+    },
+    {
+      "item": "1½ cups water",
+      "amount": "",
+      "unit": "",
+      "original": "1½ cups water"
+    },
+    {
+      "item": "1 tablespoon raw cane sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon raw cane sugar"
+    },
+    {
+      "item": "1 teaspoon cumin seeds toasted",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon cumin seeds toasted"
+    },
+    {
+      "item": "1 teaspoon black peppercorns",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon black peppercorns"
+    },
+    {
+      "item": "2 red onions, sliced into thin rings",
+      "amount": "",
+      "unit": "",
+      "original": "2 red onions, sliced into thin rings"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

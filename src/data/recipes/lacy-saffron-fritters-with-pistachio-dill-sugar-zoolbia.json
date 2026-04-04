@@ -1,0 +1,43 @@
+{
+  "id": "lacy-saffron-fritters-with-pistachio-dill-sugar-zoolbia",
+  "name": "Lacy Saffron Fritters with Pistachio & Dill Sugar Zoolbia",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "part0006_split_007"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0006_split_007"
+  },
+  "servings": "makes about 16",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "175g (6oz) plain flour\npinch of salt\n1 x 7g (1/6 oz) sachet of fast-action dried yeast\n250ml (9fl oz) warm water\n75g (2¾oz) Greek yogurt\npinch of saffron threads, ground with a pestle and mortar, then dissolved in 2 tbsp boiling water\n500ml (18fl oz) vegetable oil",
+      "amount": "",
+      "unit": "",
+      "original": "175g (6oz) plain flour\npinch of salt\n1 x 7g (1/6 oz) sachet of fast-action dried yeast\n250ml (9fl oz) warm water\n75g (2¾oz) Greek yogurt\npinch of saffron threads, ground with a pestle and mortar, then dissolved in 2 tbsp boiling water\n500ml (18fl oz) vegetable oil"
+    },
+    {
+      "item": "70g (2½oz) shelled pistachio nuts\ngood handful of dill, leaves picked and finely chopped\n150g (5½oz) caster sugar",
+      "amount": "",
+      "unit": "",
+      "original": "70g (2½oz) shelled pistachio nuts\ngood handful of dill, leaves picked and finely chopped\n150g (5½oz) caster sugar"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

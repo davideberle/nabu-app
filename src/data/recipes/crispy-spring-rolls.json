@@ -1,0 +1,155 @@
+{
+  "id": "crispy-spring-rolls",
+  "name": "◁ CRISPY SPRING ROLLS",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "07_Part02"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "07_Part02"
+  },
+  "servings": "skill leveladvanced|yield20 spring rolls",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 tablespoons vegetable oil, plus more for deep-frying",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons vegetable oil, plus more for deep-frying"
+    },
+    {
+      "item": "2 tablespoons minced leek (white part only) or scallion",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons minced leek (white part only) or scallion"
+    },
+    {
+      "item": "½ cup (44 g) finely chopped straw or brown mushrooms",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (44 g) finely chopped straw or brown mushrooms"
+    },
+    {
+      "item": "¼ cup (22 g) dried shiitake mushrooms, soaked and chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (22 g) dried shiitake mushrooms, soaked and chopped"
+    },
+    {
+      "item": "½ cup (44 g) dried wood ear mushrooms, soaked and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (44 g) dried wood ear mushrooms, soaked and finely chopped"
+    },
+    {
+      "item": "1 cup (250 g) glass noodles, soaked until soft, drained, and roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (250 g) glass noodles, soaked until soft, drained, and roughly chopped"
+    },
+    {
+      "item": "1 cup (100 g) finely shredded taro",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (100 g) finely shredded taro"
+    },
+    {
+      "item": "1 cup (100 g) peeled and shredded carrot",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (100 g) peeled and shredded carrot"
+    },
+    {
+      "item": "1 teaspoon sugar, plus 1 tablespoon for soaking rice paper",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon sugar, plus 1 tablespoon for soaking rice paper"
+    },
+    {
+      "item": "1 teaspoon vegetable or mushroom stock powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon vegetable or mushroom stock powder"
+    },
+    {
+      "item": "20 rice paper or spring roll wrappers (6 inches/15 cm)",
+      "amount": "",
+      "unit": "",
+      "original": "20 rice paper or spring roll wrappers (6 inches/15 cm)"
+    },
+    {
+      "item": "1 tablespoon lime juice, for soaking rice paper",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon lime juice, for soaking rice paper"
+    },
+    {
+      "item": "2 cups (480 ml) water, to soften rice paper",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups (480 ml) water, to soften rice paper"
+    },
+    {
+      "item": "1. Put mashed mung beans in a large bowl and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "1. Put mashed mung beans in a large bowl and set aside."
+    },
+    {
+      "item": "2. Heat 2 tablespoons of vegetable oil in a small skillet over low heat. When hot, add leek and cook and stir until slightly golden brown (about 1 minute). Remove from heat and transfer both vegetables and oil to bowl of mashed mung beans.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Heat 2 tablespoons of vegetable oil in a small skillet over low heat. When hot, add leek and cook and stir until slightly golden brown (about 1 minute). Remove from heat and transfer both vegetables and oil to bowl of mashed mung beans."
+    },
+    {
+      "item": "3. Add mushrooms, glass noodles, taro, carrot, salt, 1 teaspoon of sugar, stock powder, and pepper. Mix well and set aside.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Add mushrooms, glass noodles, taro, carrot, salt, 1 teaspoon of sugar, stock powder, and pepper. Mix well and set aside."
+    },
+    {
+      "item": "4. Prepare rice paper wrappers for rolling with the lime juice, water, and 1 tablespoon of sugar (here). Place a wrapper on a flat surface and add 1 tablespoon of filling closer to one end. Lift up that end, fold it, push the filling back a little bit, and then fold in both sides. Continue to roll tightly all the way to the other end. Repeat with remaining wrappers and filling.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Prepare rice paper wrappers for rolling with the lime juice, water, and 1 tablespoon of sugar (here). Place a wrapper on a flat surface and add 1 tablespoon of filling closer to one end. Lift up that end, fold it, push the filling back a little bit, and then fold in both sides. Continue to roll tightly all the way to the other end. Repeat with remaining wrappers and filling."
+    },
+    {
+      "item": "5. Line a medium saucepan with parchment paper to prevent rolls from picking up any burnt bits from the bottom. Fill with 2 inches (5 cm) of oil. Heat oil to 350°F (175°C). (You can check the temperature with a cooking thermometer or insert one end of a chopstick in the oil; if bubbles appear around it, the oil is ready for deep-frying).",
+      "amount": "",
+      "unit": "",
+      "original": "5. Line a medium saucepan with parchment paper to prevent rolls from picking up any burnt bits from the bottom. Fill with 2 inches (5 cm) of oil. Heat oil to 350°F (175°C). (You can check the temperature with a cooking thermometer or insert one end of a chopstick in the oil; if bubbles appear around it, the oil is ready for deep-frying)."
+    },
+    {
+      "item": "6. Fry rolls in batches of 5 to 8 over medium-low heat until golden brown (about 10 minutes). The rice paper might be sticky at first, so be sure to leave some space between each roll.",
+      "amount": "",
+      "unit": "",
+      "original": "6. Fry rolls in batches of 5 to 8 over medium-low heat until golden brown (about 10 minutes). The rice paper might be sticky at first, so be sure to leave some space between each roll."
+    },
+    {
+      "item": "7. Using a wire spider or slotted spoon, transfer rolls to a cooling rack or paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Using a wire spider or slotted spoon, transfer rolls to a cooling rack or paper towel–lined plate to drain."
+    },
+    {
+      "item": "8. Serve within 1 hour of frying with vegan fish dipping sauce.",
+      "amount": "",
+      "unit": "",
+      "original": "8. Serve within 1 hour of frying with vegan fish dipping sauce."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

@@ -1,0 +1,130 @@
+{
+  "id": "roasted-red-pepper-and-walnut-dip",
+  "name": "Roasted red pepper and walnut dip",
+  "subtitle": "Muhammara",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c02"
+  },
+  "introduction": "The word muhammara can mean both “roasted” and “red” and can also (though not here) refer to the use of paprika in a dish to bring a smoky depth of flavor and reddish color. Muhammara is Syrian in origin, moving freely to Palestine and Lebanon when the Levant was a single territory. It still moves freely now, across whichever table it is served at, acting as a dip, spread, or side in all sorts of contexts. Scoop it up with warm toasted pita, spoon it alongside some cooked lima beans or lentils or any roast meat, pair it with some creamy hummus or cheese, or use it as part of a mezzeh spread. You can’t really go wrong.\n\nKeeping notes: This keeps well in the fridge for up to three days.\n\nGluten-free note: Adding the panko makes the mix firm up and slightly dry, in a good way. For a gluten-free alternative, use an equal quantity of ground almonds or increase the quantity of walnuts by about 2 tbsp/20g.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four as part of a mezzeh spread",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 cup plus 2 tbsp/110g walnut halves",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup plus 2 tbsp/110g walnut halves",
+      "group": null
+    },
+    {
+      "item": "6–7 red bell peppers (2 lb 2 oz/1kg)",
+      "amount": "",
+      "unit": "",
+      "original": "6–7 red bell peppers (2 lb 2 oz/1kg)",
+      "group": null
+    },
+    {
+      "item": "⅓ cup/80ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ cup/80ml olive oil",
+      "group": null
+    },
+    {
+      "item": "1 red onion, finely chopped (1 cup/120g)",
+      "amount": "",
+      "unit": "",
+      "original": "1 red onion, finely chopped (1 cup/120g)",
+      "group": null
+    },
+    {
+      "item": "4 garlic cloves, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "4 garlic cloves, crushed",
+      "group": null
+    },
+    {
+      "item": "2 tsp tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp tomato paste",
+      "group": null
+    },
+    {
+      "item": "2 tsp ground cumin",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp ground cumin",
+      "group": null
+    },
+    {
+      "item": "2 tsp Aleppo chile flakes (or 1 tsp regular chile flakes)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp Aleppo chile flakes (or 1 tsp regular chile flakes)",
+      "group": null
+    },
+    {
+      "item": "½ cup/35g panko breadcrumbs",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup/35g panko breadcrumbs",
+      "group": null
+    },
+    {
+      "item": "1½ tbsp pomegranate molasses",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp pomegranate molasses",
+      "group": null
+    },
+    {
+      "item": "2 tsp lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 tsp lemon juice",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "1 tbsp parsley leaves, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp parsley leaves, roughly chopped",
+      "group": null
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Line two baking sheets with parchment paper.",
+    "Spread the walnuts out on a prepared baking sheet and roast for about 8 minutes, until lightly toasted. Remove from the oven and set aside.",
+    "Increase the oven temperature to 450°F. Place the bell peppers on the second prepared baking sheet and toss with 1 tsp of oil. Bake for about 40 minutes, or until completely softened and charred. Transfer to a bowl, cover with a clean dish towel or a plate, and let cool for about 20 minutes. Once cool enough to handle, remove and discard the skins, stems, and seeds—the remaining flesh should weigh about 13⅓ oz/380g.",
+    "Put 2 tbsp of oil into a medium sauté pan and place over medium-high heat. Add the onion and cook for about 7 minutes, stirring a few times, until softened and browned. Add the garlic, tomato paste, and spices and cook for 30 seconds, stirring constantly. Remove from the heat and tip into a food processor, along with the roasted pepper, panko breadcrumbs, pomegranate molasses, lemon juice, 1 tbsp of oil, 1 tsp of salt, and a grind of black pepper. Blitz for about 30 seconds, to form a coarse paste, and then add 1 cup/90g of the walnuts. Blitz for another 20 seconds or so; not much longer than this, as you want the walnuts to just break down rather than form a paste. Transfer to a serving platter and drizzle with the remaining 2 tbsp of oil. Roughly crush the remaining 2 tbsp walnuts with your hands and sprinkle these and the parsley on top and serve.",
+    "Pictured on this page"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

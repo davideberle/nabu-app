@@ -1,0 +1,40 @@
+{
+  "id": "candied-sweet-potato",
+  "name": "CANDIED SWEET POTATO",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_054"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_054"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 pound peeled and washed Korean sweet potato, roll cut into ½ to 1 inch thick pieces\n\t⅓ cup white sugar\n\tcooking oil (vegetable, grape seeds, or corn oil) for making syrup and frying\n\t1 tsp toasted black sesame seeds (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound peeled and washed Korean sweet potato, roll cut into ½ to 1 inch thick pieces\n\t⅓ cup white sugar\n\tcooking oil (vegetable, grape seeds, or corn oil) for making syrup and frying\n\t1 tsp toasted black sesame seeds (optional)"
+    }
+  ],
+  "method": [
+    "2nd fry for the sweet potato:"
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

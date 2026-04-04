@@ -1,0 +1,167 @@
+{
+  "id": "h-ti-u",
+  "name": "◁ HỦ TIẾU",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "09_Part04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Part04"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "Hủ tiếu comes from Southwestern Vietnam and is widely served at the floating markets in the Mekong Delta. It is influenced by a Chinese-Cambodian dish called kuy teav. The original dish features chewy tapioca noodles, a pork- and daikon-based broth, and various toppings, including shrimp, squid, pork, quail eggs, garlic chives, and more. Dried hủ tiếu dai noodles are the best choice for this soup. They're slender sticks made mostly from tapioca. When cooked, they become translucent and tender, and they also retain the flavor of broth very well. I recommend cooking them in serving-size batches in a noodle strainer, rather than cooking them all at once, to avoid the noodles clumping together.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n16 cups (4 L) water\n1 medium red or Gala apple, peeled and cut into 2-inch (5 cm) cubes\n1 medium Asian or Bosc pear, peeled and cut into 2-inch (5 cm) cubes\n2 corncobs, cut into 1-inch (2.5 cm) rounds\n10½ ounces (300 g) daikon radish, cut into 1-inch (2.5 cm) rounds\n1 ounce (28 g) rock sugar\n1 tablespoon salt, plus more to taste\n1 teaspoon vegetable or mushroom stock powder, plus more to taste\n¼ cup (60 ml) plus 5 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu",
+      "amount": "",
+      "unit": "",
+      "original": "Hủ tiếu comes from Southwestern Vietnam and is widely served at the floating markets in the Mekong Delta. It is influenced by a Chinese-Cambodian dish called kuy teav. The original dish features chewy tapioca noodles, a pork- and daikon-based broth, and various toppings, including shrimp, squid, pork, quail eggs, garlic chives, and more. Dried hủ tiếu dai noodles are the best choice for this soup. They're slender sticks made mostly from tapioca. When cooked, they become translucent and tender, and they also retain the flavor of broth very well. I recommend cooking them in serving-size batches in a noodle strainer, rather than cooking them all at once, to avoid the noodles clumping together.\nSKILL LEVELAdvanced|YIELD8 to 10 servings\n16 cups (4 L) water\n1 medium red or Gala apple, peeled and cut into 2-inch (5 cm) cubes\n1 medium Asian or Bosc pear, peeled and cut into 2-inch (5 cm) cubes\n2 corncobs, cut into 1-inch (2.5 cm) rounds\n10½ ounces (300 g) daikon radish, cut into 1-inch (2.5 cm) rounds\n1 ounce (28 g) rock sugar\n1 tablespoon salt, plus more to taste\n1 teaspoon vegetable or mushroom stock powder, plus more to taste\n¼ cup (60 ml) plus 5 tablespoons vegetable oil, divided\n1 block (14 ounces/400 g) firm tofu"
+    },
+    {
+      "item": "1 ounce (28 g) dried bean curd sheet, soaked and cut into 4-inch (10 cm) square pieces (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) dried bean curd sheet, soaked and cut into 4-inch (10 cm) square pieces (optional)"
+    },
+    {
+      "item": "2 tablespoons minced leek (white part only)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons minced leek (white part only)"
+    },
+    {
+      "item": "2 tablespoons minced garlic",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons minced garlic"
+    },
+    {
+      "item": "1½ ounces (32 g) salted preserved radish (see Note), soaked for 10 minutes, drained, and finely chopped (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "1½ ounces (32 g) salted preserved radish (see Note), soaked for 10 minutes, drained, and finely chopped (optional)"
+    },
+    {
+      "item": "1 teaspoon granulated sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon granulated sugar"
+    },
+    {
+      "item": "10½ ounces (300 g) mushrooms (straw, king oyster, shiitake, or similar), stems trimmed and sliced",
+      "amount": "",
+      "unit": "",
+      "original": "10½ ounces (300 g) mushrooms (straw, king oyster, shiitake, or similar), stems trimmed and sliced"
+    },
+    {
+      "item": "2 tablespoons soy sauce or vegan fish sauce",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons soy sauce or vegan fish sauce"
+    },
+    {
+      "item": "16 ounces (454 g) dried hủ tiếu dai noodles or dried flat rice noodles",
+      "amount": "",
+      "unit": "",
+      "original": "16 ounces (454 g) dried hủ tiếu dai noodles or dried flat rice noodles"
+    },
+    {
+      "item": "7 ounces (200 g) fresh mung bean sprouts, blanched",
+      "amount": "",
+      "unit": "",
+      "original": "7 ounces (200 g) fresh mung bean sprouts, blanched"
+    },
+    {
+      "item": "1 ounce (28 g) cilantro, chopped, for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) cilantro, chopped, for garnish"
+    },
+    {
+      "item": "3 bird's eye chili peppers, sliced, for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "3 bird's eye chili peppers, sliced, for garnish"
+    },
+    {
+      "item": "1. In a large stockpot, combine the water, apple, pear, corncobs, daikon radish, rock sugar, and 1 tablespoon of salt. Bring to a boil over high heat, and then reduce heat to medium-low. Allow to simmer for 1 hour. Taste the broth, and then season with more salt and/or stock powder if needed.",
+      "amount": "",
+      "unit": "",
+      "original": "1. In a large stockpot, combine the water, apple, pear, corncobs, daikon radish, rock sugar, and 1 tablespoon of salt. Bring to a boil over high heat, and then reduce heat to medium-low. Allow to simmer for 1 hour. Taste the broth, and then season with more salt and/or stock powder if needed."
+    },
+    {
+      "item": "2. Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain. When cool, cut tofu into bite-size slices.",
+      "amount": "",
+      "unit": "",
+      "original": "2. Heat ¼ cup (60 ml) of the oil in a small skillet over medium-low heat. When hot, add tofu and cook until golden brown on all sides (10 to 15 minutes). Transfer to a cooling rack or paper towel–lined plate to drain. When cool, cut tofu into bite-size slices."
+    },
+    {
+      "item": "3. Drop the dried bean curd (if using) into the remaining hot oil in the pan and cook until they puff up (5 to 10 seconds). Using tongs, remove immediately from oil and place on a cooling rack to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "3. Drop the dried bean curd (if using) into the remaining hot oil in the pan and cook until they puff up (5 to 10 seconds). Using tongs, remove immediately from oil and place on a cooling rack to drain."
+    },
+    {
+      "item": "4. In a medium skillet, heat 3 tablespoons of the oil over medium-low heat. When hot, add leek and cook and stir until golden brown (1 to 2 minutes). Using a slotted spoon, transfer to a small bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "4. In a medium skillet, heat 3 tablespoons of the oil over medium-low heat. When hot, add leek and cook and stir until golden brown (1 to 2 minutes). Using a slotted spoon, transfer to a small bowl."
+    },
+    {
+      "item": "5. Add garlic to the remaining oil in the pan and cook and stir over low heat until golden brown (about 30 seconds). Using a slotted spoon, transfer to a separate small bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Add garlic to the remaining oil in the pan and cook and stir over low heat until golden brown (about 30 seconds). Using a slotted spoon, transfer to a separate small bowl."
+    },
+    {
+      "item": "6. Add the chopped preserved radish (if using) to the remaining oil in the pan and cook and stir over low heat for 1 minute. Stir in granulated sugar, and then transfer to a third small bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "6. Add the chopped preserved radish (if using) to the remaining oil in the pan and cook and stir over low heat for 1 minute. Stir in granulated sugar, and then transfer to a third small bowl."
+    },
+    {
+      "item": "7. Heat the remaining 2 tablespoons oil in the skillet over medium-low heat. Add mushrooms, soy sauce, and 1 teaspoon of stock powder. Cook and stir until mushrooms start to release moisture (about 1 minute), and then add fried tofu to absorb juices. Season to taste with salt, ground pepper, and more stock powder.",
+      "amount": "",
+      "unit": "",
+      "original": "7. Heat the remaining 2 tablespoons oil in the skillet over medium-low heat. Add mushrooms, soy sauce, and 1 teaspoon of stock powder. Cook and stir until mushrooms start to release moisture (about 1 minute), and then add fried tofu to absorb juices. Season to taste with salt, ground pepper, and more stock powder."
+    },
+    {
+      "item": "8. Place dried hủ tiếu noodles in a large bowl and cover with room-temperature water. Let soak for 15 minutes until softened, and then drain.",
+      "amount": "",
+      "unit": "",
+      "original": "8. Place dried hủ tiếu noodles in a large bowl and cover with room-temperature water. Let soak for 15 minutes until softened, and then drain."
+    },
+    {
+      "item": "9. Bring a large saucepan of water to a boil over high heat and add mung bean sprouts. Blanch for 30 seconds, and then, using a wire spider or slotted spoon, transfer to a plate.",
+      "amount": "",
+      "unit": "",
+      "original": "9. Bring a large saucepan of water to a boil over high heat and add mung bean sprouts. Blanch for 30 seconds, and then, using a wire spider or slotted spoon, transfer to a plate."
+    },
+    {
+      "item": "10. Add a handful of noodles to a noodle strainer, submerge in the boiling water the mung bean sprouts were blanched in, and cook until al dente (3 to 5 minutes). Repeat with remaining noodles. If using flat rice noodles, follow the instructions on the package.",
+      "amount": "",
+      "unit": "",
+      "original": "10. Add a handful of noodles to a noodle strainer, submerge in the boiling water the mung bean sprouts were blanched in, and cook until al dente (3 to 5 minutes). Repeat with remaining noodles. If using flat rice noodles, follow the instructions on the package."
+    },
+    {
+      "item": "11. Divide noodles and mung bean sprouts into serving bowls and top with mushroom-tofu mixture, fried leek and garlic, and sautéed preserved radish. Ladle the broth over the top, garnish with chopped cilantro, sliced chili peppers, and fried bean curd (if using), and serve hot.",
+      "amount": "",
+      "unit": "",
+      "original": "11. Divide noodles and mung bean sprouts into serving bowls and top with mushroom-tofu mixture, fried leek and garlic, and sautéed preserved radish. Ladle the broth over the top, garnish with chopped cilantro, sliced chili peppers, and fried bean curd (if using), and serve hot."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

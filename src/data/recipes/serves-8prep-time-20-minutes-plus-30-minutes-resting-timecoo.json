@@ -1,0 +1,127 @@
+{
+  "id": "serves-8prep-time-20-minutes-plus-30-minutes-resting-timecoo",
+  "name": "SERVES 8PREP TIME: 20 MINUTES, PLUS 30 MINUTES RESTING TIMECOOK TIME: 1¼ HOURS",
+  "source": {
+    "cookbook": "Plentiful",
+    "author": "Denai Moore",
+    "chapter": "chapter13"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "chapter13"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "60 g (2 oz/⅔ cup) desiccated (dried shredded) coconut",
+      "amount": "",
+      "unit": "",
+      "original": "60 g (2 oz/⅔ cup) desiccated (dried shredded) coconut"
+    },
+    {
+      "item": "250 g (9 oz/2 cups) plain (all-purpose) flour",
+      "amount": "",
+      "unit": "",
+      "original": "250 g (9 oz/2 cups) plain (all-purpose) flour"
+    },
+    {
+      "item": "1 teaspoon baking powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon baking powder"
+    },
+    {
+      "item": "70 g (2¼ oz) silken tofu",
+      "amount": "",
+      "unit": "",
+      "original": "70 g (2¼ oz) silken tofu"
+    },
+    {
+      "item": "200 ml (7 fl oz/scant 1 cup) soya milk",
+      "amount": "",
+      "unit": "",
+      "original": "200 ml (7 fl oz/scant 1 cup) soya milk"
+    },
+    {
+      "item": "80 g (3 oz) creamed coconut",
+      "amount": "",
+      "unit": "",
+      "original": "80 g (3 oz) creamed coconut"
+    },
+    {
+      "item": "1½ teaspoons vanilla extract",
+      "amount": "",
+      "unit": "",
+      "original": "1½ teaspoons vanilla extract"
+    },
+    {
+      "item": "115 g (4 oz/½ cup) coconut oil",
+      "amount": "",
+      "unit": "",
+      "original": "115 g (4 oz/½ cup) coconut oil"
+    },
+    {
+      "item": "115 g (4 o/½ cup) caster (superfine) sugar",
+      "amount": "",
+      "unit": "",
+      "original": "115 g (4 o/½ cup) caster (superfine) sugar"
+    },
+    {
+      "item": "50 g (2 oz/generous ¼ cup) soft brown sugar",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/generous ¼ cup) soft brown sugar"
+    },
+    {
+      "item": "30 g (1 oz/½ cup) toasted coconut",
+      "amount": "",
+      "unit": "",
+      "original": "30 g (1 oz/½ cup) toasted coconut"
+    },
+    {
+      "item": "50 g (2 oz/scant ½ cup) plain flour",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/scant ½ cup) plain flour"
+    },
+    {
+      "item": "50 g (2 oz/generous ¼ cup) light brown soft sugar",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz/generous ¼ cup) light brown soft sugar"
+    },
+    {
+      "item": "50 g (2 oz) vegan block butter, plus extra for greasing",
+      "amount": "",
+      "unit": "",
+      "original": "50 g (2 oz) vegan block butter, plus extra for greasing"
+    },
+    {
+      "item": "30 g (1 oz/½ cup) toasted coconut",
+      "amount": "",
+      "unit": "",
+      "original": "30 g (1 oz/½ cup) toasted coconut"
+    },
+    {
+      "item": "Preheat the oven to 170°C (375°F/gas 5). Grease a 900 g (2 lb/9 x 5 x 3 inch) loaf tin (pan) with butter and line lengthways with baking parchment, with the paper overhanging the ends of the tin, so that the cake will be easy to remove once baked.",
+      "amount": "",
+      "unit": "",
+      "original": "Preheat the oven to 170°C (375°F/gas 5). Grease a 900 g (2 lb/9 x 5 x 3 inch) loaf tin (pan) with butter and line lengthways with baking parchment, with the paper overhanging the ends of the tin, so that the cake will be easy to remove once baked."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

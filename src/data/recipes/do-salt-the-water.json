@@ -1,0 +1,44 @@
+{
+  "id": "do-salt-the-water",
+  "name": "DO! ​ ​ Salt the water",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Various",
+    "chapter": "Tart_9781632174284_epub3_fm4_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Tart_9781632174284_epub3_fm4_r1"
+  },
+  "servings": "makes 4 servings",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3½ cups durum wheat flour",
+      "amount": "",
+      "unit": "",
+      "original": "3½ cups durum wheat flour"
+    },
+    {
+      "item": "1 cup lukewarm water",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup lukewarm water"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

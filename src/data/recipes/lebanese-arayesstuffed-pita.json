@@ -1,0 +1,113 @@
+{
+  "id": "lebanese-arayesstuffed-pita",
+  "name": "◁ Lebanese ArayesSTUFFED PITA",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "09_Chapter04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Chapter04"
+  },
+  "servings": "prep time: 15 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "5 large cloves garlic, peeled",
+      "amount": "",
+      "unit": "",
+      "original": "5 large cloves garlic, peeled"
+    },
+    {
+      "item": "½ cup (25 g) packed roughly chopped fresh parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup (25 g) packed roughly chopped fresh parsley"
+    },
+    {
+      "item": "1 pound (454 g) extra-lean ground beef",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound (454 g) extra-lean ground beef"
+    },
+    {
+      "item": "4 tablespoons olive oil, divided, plus more for greasing",
+      "amount": "",
+      "unit": "",
+      "original": "4 tablespoons olive oil, divided, plus more for greasing"
+    },
+    {
+      "item": "1 teaspoon kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon kosher salt"
+    },
+    {
+      "item": "1 teaspoon seven spice (or substitute with ground allspice)",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon seven spice (or substitute with ground allspice)"
+    },
+    {
+      "item": "2 tablespoons pomegranate molasses",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons pomegranate molasses"
+    },
+    {
+      "item": "4 small, thick Greek-style round pitas (4 inches, or 10 cm), cut in half (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "4 small, thick Greek-style round pitas (4 inches, or 10 cm), cut in half (see Note)"
+    },
+    {
+      "item": "1 Add the onion, garlic, and parsley to a small food processor and pulse until chopped very fine. (If you do not have a food processor, you can chop it very finely with a knife.) Using your hands, squeeze out and discard as much moisture as you can from this vegetable mixture and transfer it to a large bowl.",
+      "amount": "",
+      "unit": "",
+      "original": "1 Add the onion, garlic, and parsley to a small food processor and pulse until chopped very fine. (If you do not have a food processor, you can chop it very finely with a knife.) Using your hands, squeeze out and discard as much moisture as you can from this vegetable mixture and transfer it to a large bowl."
+    },
+    {
+      "item": "2 Add the ground beef, 2 tablespoons of the oil, the pepper, salt, seven spice, and pomegranate molasses. Mix well using your hands, ensuring all the spices are well incorporated.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Add the ground beef, 2 tablespoons of the oil, the pepper, salt, seven spice, and pomegranate molasses. Mix well using your hands, ensuring all the spices are well incorporated."
+    },
+    {
+      "item": "3 Open the pita halves to form pockets. Stuff each one with about 2 tablespoons of the meat mixture, ensuring the meat layer is roughly ¼ to ½ inch (6 to 13 mm) thick. Press down to flatten and ensure the filling comes all the way to the edge.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Open the pita halves to form pockets. Stuff each one with about 2 tablespoons of the meat mixture, ensuring the meat layer is roughly ¼ to ½ inch (6 to 13 mm) thick. Press down to flatten and ensure the filling comes all the way to the edge."
+    },
+    {
+      "item": "4 Brush the outsides of the pitas with the remaining 2 or 3 tablespoons oil on all sides.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Brush the outsides of the pitas with the remaining 2 or 3 tablespoons oil on all sides."
+    },
+    {
+      "item": "5 Preheat a medium or large cast-iron grill pan over high heat. Brush with olive oil, then place 2 or 3 pitas (however many you can fit) in the pan and sear for 2 minutes per side, pressing down lightly with a spatula. Sear the edges as well, especially the exposed meat side. Continue to cook, flipping the arayes every 1 to 2 minutes, until the beef is cooked through and the outside is golden, 5 to 7 minutes total. Repeat with the remaining pitas.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Preheat a medium or large cast-iron grill pan over high heat. Brush with olive oil, then place 2 or 3 pitas (however many you can fit) in the pan and sear for 2 minutes per side, pressing down lightly with a spatula. Sear the edges as well, especially the exposed meat side. Continue to cook, flipping the arayes every 1 to 2 minutes, until the beef is cooked through and the outside is golden, 5 to 7 minutes total. Repeat with the remaining pitas."
+    },
+    {
+      "item": "6 Serve immediately with tarator, toum, and/or ketchup for dipping and french fries.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Serve immediately with tarator, toum, and/or ketchup for dipping and french fries."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

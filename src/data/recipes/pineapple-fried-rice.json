@@ -1,0 +1,89 @@
+{
+  "id": "pineapple-fried-rice",
+  "name": "◁ PINEAPPLE FRIED RICE",
+  "source": {
+    "cookbook": "Vietnamese Food Any Day",
+    "author": "Andrea Nguyen",
+    "chapter": "10_Part05"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "10_Part05"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "This dish from Thailand (cơm chiên trái thơm) has become one of the most popular ways to prepare fried rice in Vietnam. The refreshing, sweet-and-sour pineapple balances out the fried rice in an exquisite way, and the roasted cashew nuts add a special crunch. It is colorful, delicious, and beautifully served in a pineapple.\nSKILL LEVELModerate|YIELD2 servings\n1 whole, medium-ripe pineapple (about 3 pounds/1.5 kg)\n3½ ounces (100 g) firm tofu, cut into 1-inch (2.5 cm) cubes\n¼ teaspoon five-spice or curry powder\n½ teaspoon salt, divided\n¼ teaspoon freshly ground black pepper\n3 tablespoons vegetable oil\n¼ cup (40 g) diced yellow onion\n¼ cup (30 g) diced carrot\n¼ cup (40 g) green peas",
+      "amount": "",
+      "unit": "",
+      "original": "This dish from Thailand (cơm chiên trái thơm) has become one of the most popular ways to prepare fried rice in Vietnam. The refreshing, sweet-and-sour pineapple balances out the fried rice in an exquisite way, and the roasted cashew nuts add a special crunch. It is colorful, delicious, and beautifully served in a pineapple.\nSKILL LEVELModerate|YIELD2 servings\n1 whole, medium-ripe pineapple (about 3 pounds/1.5 kg)\n3½ ounces (100 g) firm tofu, cut into 1-inch (2.5 cm) cubes\n¼ teaspoon five-spice or curry powder\n½ teaspoon salt, divided\n¼ teaspoon freshly ground black pepper\n3 tablespoons vegetable oil\n¼ cup (40 g) diced yellow onion\n¼ cup (30 g) diced carrot\n¼ cup (40 g) green peas"
+    },
+    {
+      "item": "1 cup (140 g) leftover cooked long-grain white rice (see Note)",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (140 g) leftover cooked long-grain white rice (see Note)"
+    },
+    {
+      "item": "2 tablespoons soy sauce or vegan fish sauce",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons soy sauce or vegan fish sauce"
+    },
+    {
+      "item": "1 ounce (28 g) scallion, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 ounce (28 g) scallion, finely chopped"
+    },
+    {
+      "item": "10 roasted cashew nuts",
+      "amount": "",
+      "unit": "",
+      "original": "10 roasted cashew nuts"
+    },
+    {
+      "item": "1. Cut the pineapple in half lengthwise through the green top, and then run a sharp paring knife around the inside of both halves, closer to the peel, to create a bowl shape. Score the pineapple flesh into a grid, making each piece around ½ inch (1 cm) wide. Use a spoon to scoop out the flesh, remove and discard the core, and then dice the flesh.",
+      "amount": "",
+      "unit": "",
+      "original": "1. Cut the pineapple in half lengthwise through the green top, and then run a sharp paring knife around the inside of both halves, closer to the peel, to create a bowl shape. Score the pineapple flesh into a grid, making each piece around ½ inch (1 cm) wide. Use a spoon to scoop out the flesh, remove and discard the core, and then dice the flesh."
+    },
+    {
+      "item": "2. In a small bowl, toss the tofu with the five-spice powder, ¼ teaspoon of the salt, and pepper. In a medium skillet, heat oil over medium-high heat. When hot, add the tofu and cook until golden brown on all sides (about 4 minutes). Remove tofu and transfer to a paper towel–lined plate to drain.",
+      "amount": "",
+      "unit": "",
+      "original": "2. In a small bowl, toss the tofu with the five-spice powder, ¼ teaspoon of the salt, and pepper. In a medium skillet, heat oil over medium-high heat. When hot, add the tofu and cook until golden brown on all sides (about 4 minutes). Remove tofu and transfer to a paper towel–lined plate to drain."
+    },
+    {
+      "item": "3. Add the onion to the remaining oil in the skillet and cook and stir over medium heat until translucent (about 2 minutes). Add carrot and green peas, and cook and stir until tender (8 to 10 minutes).",
+      "amount": "",
+      "unit": "",
+      "original": "3. Add the onion to the remaining oil in the skillet and cook and stir over medium heat until translucent (about 2 minutes). Add carrot and green peas, and cook and stir until tender (8 to 10 minutes)."
+    },
+    {
+      "item": "4. Add the diced pineapple, fried tofu, leftover rice, and turmeric powder (if using) to make it yellow, and toss well. Cook until rice is yellow (about 2 minutes), and then season with remaining ¼ teaspoon salt, stock powder, and soy sauce. Use a spatula to break up any rice lumps and cook and stir for about 3 more minutes. Stir in scallion and turn off heat.",
+      "amount": "",
+      "unit": "",
+      "original": "4. Add the diced pineapple, fried tofu, leftover rice, and turmeric powder (if using) to make it yellow, and toss well. Cook until rice is yellow (about 2 minutes), and then season with remaining ¼ teaspoon salt, stock powder, and soy sauce. Use a spatula to break up any rice lumps and cook and stir for about 3 more minutes. Stir in scallion and turn off heat."
+    },
+    {
+      "item": "5. Divide the pineapple fried rice between the hollowed-out pineapple halves. Sprinkle cashews on top and serve hot.",
+      "amount": "",
+      "unit": "",
+      "original": "5. Divide the pineapple fried rice between the hollowed-out pineapple halves. Sprinkle cashews on top and serve hot."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

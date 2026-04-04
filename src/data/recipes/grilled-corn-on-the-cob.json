@@ -1,0 +1,56 @@
+{
+  "id": "grilled-corn-on-the-cob",
+  "name": "GRILLED CORN ON THE COB",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c04_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "6 ears of sweet corn",
+      "amount": "",
+      "unit": "",
+      "original": "6 ears of sweet corn"
+    },
+    {
+      "item": "2 tablespoons coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons coarse sea salt"
+    },
+    {
+      "item": "¼ cup Smoky Pili Pili Sauce or Spicy Mustard Greens",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup Smoky Pili Pili Sauce or Spicy Mustard Greens"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Freshly ground black pepper"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

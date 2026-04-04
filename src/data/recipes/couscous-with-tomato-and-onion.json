@@ -1,0 +1,85 @@
+{
+  "id": "couscous-with-tomato-and-onion",
+  "name": "Couscous with tomato and onion",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c02_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "3 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "1 medium onion, finely chopped (1 cup / 160 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium onion, finely chopped (1 cup / 160 g in total)",
+      "group": null
+    },
+    {
+      "item": "1 tbsp tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp tomato paste",
+      "group": null
+    },
+    {
+      "item": "½ tsp sugar",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp sugar",
+      "group": null
+    },
+    {
+      "item": "2 very ripe tomatoes, cut into ¼-inch / 0.5cm dice (1¾ cups / 320 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "2 very ripe tomatoes, cut into ¼-inch / 0.5cm dice (1¾ cups / 320 g in total)",
+      "group": null
+    },
+    {
+      "item": "scant 1 cup / 150 g couscous",
+      "amount": "",
+      "unit": "",
+      "original": "scant 1 cup / 150 g couscous",
+      "group": null
+    },
+    {
+      "item": "scant 1 cup / 220 ml boiling chicken or vegetable stock",
+      "amount": "",
+      "unit": "",
+      "original": "scant 1 cup / 220 ml boiling chicken or vegetable stock",
+      "group": null
+    },
+    {
+      "item": "2½ tbsp / 40 g unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp / 40 g unsalted butter",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": "/recipes/couscous-with-tomato-and-onion.jpg"
+}

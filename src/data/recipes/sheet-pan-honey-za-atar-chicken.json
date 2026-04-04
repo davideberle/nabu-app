@@ -1,0 +1,125 @@
+{
+  "id": "sheet-pan-honey-za-atar-chicken",
+  "name": "◁ Sheet-Pan Honey Za’atar Chicken",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "09_Chapter04"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "09_Chapter04"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "VEGETABLES\n3 large yellow potatoes (500 g), peeled and cut into ¼-inch (6 mm) wedges\n1 large yellow onion, cut into eighths",
+      "amount": "",
+      "unit": "",
+      "original": "VEGETABLES\n3 large yellow potatoes (500 g), peeled and cut into ¼-inch (6 mm) wedges\n1 large yellow onion, cut into eighths"
+    },
+    {
+      "item": "7 small carrots (2/3 pound, or 300 g), sliced in half lengthwise and cut into 2-inch-long (5 cm) pieces",
+      "amount": "",
+      "unit": "",
+      "original": "7 small carrots (2/3 pound, or 300 g), sliced in half lengthwise and cut into 2-inch-long (5 cm) pieces"
+    },
+    {
+      "item": "1 tablespoon olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon olive oil"
+    },
+    {
+      "item": "CHICKEN\n10 large cloves garlic, crushed into a paste using a small food processor, a mortar and pestle, or a garlic press\n¼ cup (60 ml) olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "CHICKEN\n10 large cloves garlic, crushed into a paste using a small food processor, a mortar and pestle, or a garlic press\n¼ cup (60 ml) olive oil"
+    },
+    {
+      "item": "¼ cup (22 g) za’atar",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (22 g) za’atar"
+    },
+    {
+      "item": "2 teaspoons kosher salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons kosher salt"
+    },
+    {
+      "item": "2 teaspoons onion powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons onion powder"
+    },
+    {
+      "item": "¼ cup (60 ml) honey",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (60 ml) honey"
+    },
+    {
+      "item": "1 tablespoon apple cider vinegar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon apple cider vinegar"
+    },
+    {
+      "item": "8 bone-in, skin-on chicken thighs (22/3 pounds, or 1.2 kg), patted dry",
+      "amount": "",
+      "unit": "",
+      "original": "8 bone-in, skin-on chicken thighs (22/3 pounds, or 1.2 kg), patted dry"
+    },
+    {
+      "item": "1 Preheat the oven to 425°F (220°C). Line a large, rimmed sheet pan with parchment paper.",
+      "amount": "",
+      "unit": "",
+      "original": "1 Preheat the oven to 425°F (220°C). Line a large, rimmed sheet pan with parchment paper."
+    },
+    {
+      "item": "2 TO MAKE THE VEGETABLES: Add the potatoes, onion, and carrots to a large bowl. Season with the ½ teaspoon salt, drizzle with the 1 tablespoon oil, and mix all the ingredients together. Transfer to the prepared sheet pan and spread in a single layer.",
+      "amount": "",
+      "unit": "",
+      "original": "2 TO MAKE THE VEGETABLES: Add the potatoes, onion, and carrots to a large bowl. Season with the ½ teaspoon salt, drizzle with the 1 tablespoon oil, and mix all the ingredients together. Transfer to the prepared sheet pan and spread in a single layer."
+    },
+    {
+      "item": "3 TO MAKE THE CHICKEN: In a small bowl, combine the garlic, ¼ cup (60 ml) oil, za’atar, 2 teaspoons salt, onion powder, pepper, honey, and vinegar and mix well.",
+      "amount": "",
+      "unit": "",
+      "original": "3 TO MAKE THE CHICKEN: In a small bowl, combine the garlic, ¼ cup (60 ml) oil, za’atar, 2 teaspoons salt, onion powder, pepper, honey, and vinegar and mix well."
+    },
+    {
+      "item": "4 Place the chicken thighs on the sheet pan with the vegetables. Pour all the marinade over the chicken and work it into each piece, ensuring both the fronts and backs of the thighs are coated. Work a few tablespoons of the marinade into the vegetables as well.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Place the chicken thighs on the sheet pan with the vegetables. Pour all the marinade over the chicken and work it into each piece, ensuring both the fronts and backs of the thighs are coated. Work a few tablespoons of the marinade into the vegetables as well."
+    },
+    {
+      "item": "5 Bake for 35 to 40 minutes, until the thighs are golden brown and cooked through. (Check that the chicken is white on the inside and the juices run clear.)",
+      "amount": "",
+      "unit": "",
+      "original": "5 Bake for 35 to 40 minutes, until the thighs are golden brown and cooked through. (Check that the chicken is white on the inside and the juices run clear.)"
+    },
+    {
+      "item": "6 Spoon the vegetables onto a platter and top with the chicken. Serve with pita bread and slaw or salad.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Spoon the vegetables onto a platter and top with the chicken. Serve with pita bread and slaw or salad."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

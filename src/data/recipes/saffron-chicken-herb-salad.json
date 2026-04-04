@@ -1,0 +1,178 @@
+{
+  "id": "saffron-chicken-herb-salad",
+  "name": "Saffron chicken & herb salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c05_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "⅔ cup / 150 g light tahini paste",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ cup / 150 g light tahini paste",
+      "group": null
+    },
+    {
+      "item": "3 tbsp freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp freshly squeezed lemon juice",
+      "group": null
+    },
+    {
+      "item": "½ cup / 120 ml water",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 120 ml water",
+      "group": null
+    },
+    {
+      "item": "1 medium clove garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "1 medium clove garlic, crushed",
+      "group": null
+    },
+    {
+      "item": "2 tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp sunflower oil",
+      "group": null
+    },
+    {
+      "item": "2 tbsp / 30 g unsalted butter or ghee (optional)",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp / 30 g unsalted butter or ghee (optional)",
+      "group": null
+    },
+    {
+      "item": "toasted pine nuts, to garnish",
+      "amount": "",
+      "unit": "",
+      "original": "toasted pine nuts, to garnish",
+      "group": null
+    },
+    {
+      "item": "finely chopped flat-leaf parsley, to garnish",
+      "amount": "",
+      "unit": "",
+      "original": "finely chopped flat-leaf parsley, to garnish",
+      "group": null
+    },
+    {
+      "item": "sweet paprika, to garnish",
+      "amount": "",
+      "unit": "",
+      "original": "sweet paprika, to garnish",
+      "group": null
+    },
+    {
+      "item": "14 oz / 400 g ground lamb",
+      "amount": "",
+      "unit": "",
+      "original": "14 oz / 400 g ground lamb",
+      "group": "KOFTA"
+    },
+    {
+      "item": "14 oz / 400 g ground veal or beef",
+      "amount": "",
+      "unit": "",
+      "original": "14 oz / 400 g ground veal or beef",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1 small onion (about 5 oz / 150 g), finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 small onion (about 5 oz / 150 g), finely chopped",
+      "group": "KOFTA"
+    },
+    {
+      "item": "2 large cloves garlic, crushed",
+      "amount": "",
+      "unit": "",
+      "original": "2 large cloves garlic, crushed",
+      "group": "KOFTA"
+    },
+    {
+      "item": "7 tbsp / 50 g toasted pine nuts, coarsely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "7 tbsp / 50 g toasted pine nuts, coarsely chopped",
+      "group": "KOFTA"
+    },
+    {
+      "item": "½ cup / 30 g finely chopped flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 30 g finely chopped flat-leaf parsley",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1 large medium-hot red chile, seeded and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 large medium-hot red chile, seeded and finely chopped",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1½ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp ground cinnamon",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1½ tsp ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp ground allspice",
+      "group": "KOFTA"
+    },
+    {
+      "item": "¾ tsp grated nutmeg",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp grated nutmeg",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1½ tsp freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp freshly ground black pepper",
+      "group": "KOFTA"
+    },
+    {
+      "item": "1½ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp salt",
+      "group": "KOFTA"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/saffron-chicken-herb-salad.jpg"
+}

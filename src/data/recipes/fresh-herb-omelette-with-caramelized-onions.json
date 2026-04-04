@@ -1,0 +1,136 @@
+{
+  "id": "fresh-herb-omelette-with-caramelized-onions",
+  "name": "Fresh herb omelette with caramelized onions",
+  "subtitle": "Ijeh",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c01"
+  },
+  "introduction": "Palestinian omelettes have a little bit of flour and baking powder added to the mix. This (along with the fact that they are fried in a generous amount of olive oil) makes them something between an omelette, a pancake, and a frittata. They’re crisp around the edges, puffed up in the middle, and comforting through and through. The fresh herbs and white cheese are traditional, the caramelized onions less so.\n\nIjeh can be eaten either warm and fresh from the pan, for breakfast or a light supper, or at room temperature later if taken to work or on a picnic. Serve with a chopped or leafy salad (see this page and this page, respectively) and some bread, if you like.\n\nPlaying around: Use whatever soft herbs you have and like—dill, chives, tarragon, basil, cilantro—in any combination; they all work well. Just keep the total amount about the same.\n\nGetting ahead: You can double or triple the quantities for the caramelized onions; they keep well in the fridge for up to five days and are lovely to have around, to make more omelettes with or to spoon on top of cheese and bread.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "serves four",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "7½ tbsp/110ml olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "7½ tbsp/110ml olive oil",
+      "group": null
+    },
+    {
+      "item": "2 tbsp unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp unsalted butter",
+      "group": null
+    },
+    {
+      "item": "3 onions, thinly sliced (3¾ cups/450g)",
+      "amount": "",
+      "unit": "",
+      "original": "3 onions, thinly sliced (3¾ cups/450g)",
+      "group": null
+    },
+    {
+      "item": "8 eggs, beaten",
+      "amount": "",
+      "unit": "",
+      "original": "8 eggs, beaten",
+      "group": null
+    },
+    {
+      "item": "2½ tbsp all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp all-purpose flour",
+      "group": null
+    },
+    {
+      "item": "6 green onions, trimmed and finely sliced (¾ cup/60g)",
+      "amount": "",
+      "unit": "",
+      "original": "6 green onions, trimmed and finely sliced (¾ cup/60g)",
+      "group": null
+    },
+    {
+      "item": "1 green chile, seeded and finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 green chile, seeded and finely chopped",
+      "group": null
+    },
+    {
+      "item": "1 cup/20g parsley leaves, half roughly chopped and the remainder left whole",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g parsley leaves, half roughly chopped and the remainder left whole",
+      "group": null
+    },
+    {
+      "item": "1 cup/20g mint leaves, half roughly chopped and the remainder left whole",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup/20g mint leaves, half roughly chopped and the remainder left whole",
+      "group": null
+    },
+    {
+      "item": "¾ tsp dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "¾ tsp dried mint",
+      "group": null
+    },
+    {
+      "item": "4½ oz/125g feta, roughly crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "4½ oz/125g feta, roughly crumbled",
+      "group": null
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "Salt and black pepper",
+      "group": null
+    },
+    {
+      "item": "½ tsp baking powder",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp baking powder",
+      "group": null
+    },
+    {
+      "item": "2½ tsp za’atar",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tsp za’atar",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put 2 tbsp of oil and all the butter into a medium frying pan and place over medium-high heat. Add the onions and cook for about 20 minutes, stirring from time to time, until deep brown and caramelized. Set aside for about 10 minutes, to cool.",
+    "Put the eggs and flour into a mixing bowl and whisk well to combine, then add the green onions, chile, chopped parsley, chopped mint, dried mint, 1¾ oz/50g of feta, ¾ tsp of salt, and a good grind of black pepper. Mix well to combine. Add the baking powder, mix again to combine, and set aside.",
+    "Combine the caramelized onions with the whole herbs, remaining 2¾ oz/75g of feta, and 1½ tsp of za’atar and set aside.",
+    "Put about 2 tsp of oil into a medium frying pan and place over medium-high heat. Add 4–5 tbsp of the egg mixture—about 1¼ oz/35g, if you’re weighing it out—and cook for about 1½ minutes, until the bottom is golden. Using a spatula, carefully flip the omelette and cook for another 30 seconds or so, until golden brown on both sides. Carefully slide the omelette onto a plate and return the pan to the heat. Repeat the process with the remaining oil and egg mixture, to make eight omelettes in total.",
+    "Divide the omelettes among four plates, two per person. Top with the caramelized onions, sprinkle with the remaining 1 tsp of za’atar, and serve."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

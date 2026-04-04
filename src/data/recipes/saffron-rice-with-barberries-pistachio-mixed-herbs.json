@@ -1,0 +1,95 @@
+{
+  "id": "saffron-rice-with-barberries-pistachio-mixed-herbs",
+  "name": "Saffron rice with barberries, pistachio & mixed herbs",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c02_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2½ tbsp / 40 g unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "2½ tbsp / 40 g unsalted butter",
+      "group": null
+    },
+    {
+      "item": "2 cups / 360 g basmati rice, rinsed under cold water and drained well",
+      "amount": "",
+      "unit": "",
+      "original": "2 cups / 360 g basmati rice, rinsed under cold water and drained well",
+      "group": null
+    },
+    {
+      "item": "2⅓ cups / 560 ml boiling water",
+      "amount": "",
+      "unit": "",
+      "original": "2⅓ cups / 560 ml boiling water",
+      "group": null
+    },
+    {
+      "item": "1 tsp saffron threads, soaked in 3 tbsp boiling water for 30 minutes",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp saffron threads, soaked in 3 tbsp boiling water for 30 minutes",
+      "group": null
+    },
+    {
+      "item": "¼ cup / 40 g dried barberries, soaked for a few minutes in boiling water with a pinch of sugar",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup / 40 g dried barberries, soaked for a few minutes in boiling water with a pinch of sugar",
+      "group": null
+    },
+    {
+      "item": "1 oz / 30 g dill, coarsely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 oz / 30 g dill, coarsely chopped",
+      "group": null
+    },
+    {
+      "item": "⅔ oz / 20 g chervil, coarsely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "⅔ oz / 20 g chervil, coarsely chopped",
+      "group": null
+    },
+    {
+      "item": "⅓ oz / 10 g tarragon, coarsely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ oz / 10 g tarragon, coarsely chopped",
+      "group": null
+    },
+    {
+      "item": "½ cup / 60 g slivered or crushed unsalted pistachios, lightly toasted",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 60 g slivered or crushed unsalted pistachios, lightly toasted",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/saffron-rice-with-barberries-pistachio-mixed-herbs.jpg"
+}

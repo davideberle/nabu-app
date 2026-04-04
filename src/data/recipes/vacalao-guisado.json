@@ -1,0 +1,50 @@
+{
+  "id": "vacalao-guisado",
+  "name": "VACALAO GUISADO",
+  "source": {
+    "cookbook": "Black Rican Vegan   Fire Plant Based Recipes from ",
+    "author": "Various",
+    "chapter": "p03-c06"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "p03-c06"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "COMPRA LIST\n2 (14-oz [400-g]) cans hearts of palm, drained and rinsed\n2 tbsp (10 g) nori furikake, divided\n1 (2-oz [55-g]) can jackfruit in brine, drained\n2 tbsp (30 ml) olive oil\n3 tbsp (45 ml) Sofrito\n5 cloves garlic, minced\n1 yellow onion, diced\n1 cup (150 g) diced bell peppers, assorted colors\n1 (8-oz [225-g]) can tomato sauce\n4 cups (946 ml) vegetable stock\n½ cup (45 g) olives with pimientos and capers\n1½ tsp (1 [4-g] packet) Sazón or my homemade Sazón\n1 tsp Adobo\n1 tbsp (4 g) fresh oregano\nPinch of sugar (optional)\n2 tbsp (2 g) chopped fresh cilantro\nSalt and freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "COMPRA LIST\n2 (14-oz [400-g]) cans hearts of palm, drained and rinsed\n2 tbsp (10 g) nori furikake, divided\n1 (2-oz [55-g]) can jackfruit in brine, drained\n2 tbsp (30 ml) olive oil\n3 tbsp (45 ml) Sofrito\n5 cloves garlic, minced\n1 yellow onion, diced\n1 cup (150 g) diced bell peppers, assorted colors\n1 (8-oz [225-g]) can tomato sauce\n4 cups (946 ml) vegetable stock\n½ cup (45 g) olives with pimientos and capers\n1½ tsp (1 [4-g] packet) Sazón or my homemade Sazón\n1 tsp Adobo\n1 tbsp (4 g) fresh oregano\nPinch of sugar (optional)\n2 tbsp (2 g) chopped fresh cilantro\nSalt and freshly ground black pepper"
+    },
+    {
+      "item": "Chop your hearts of palm into small pieces, place in a bowl and marinate it in 1 tablespoon (5 g) of the nori furikake.",
+      "amount": "",
+      "unit": "",
+      "original": "Chop your hearts of palm into small pieces, place in a bowl and marinate it in 1 tablespoon (5 g) of the nori furikake."
+    },
+    {
+      "item": "Bring a medium-sized pot of water to a boil. Add the drained jackfruit to the boiling water and cook for 30 minutes to extract the brine. Remove from the water and pat out the excess liquid with a paper towel. Shred the jackfruit, season it in the remaining tablespoon (5 g) of nori furikake and set it aside.",
+      "amount": "",
+      "unit": "",
+      "original": "Bring a medium-sized pot of water to a boil. Add the drained jackfruit to the boiling water and cook for 30 minutes to extract the brine. Remove from the water and pat out the excess liquid with a paper towel. Shred the jackfruit, season it in the remaining tablespoon (5 g) of nori furikake and set it aside."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

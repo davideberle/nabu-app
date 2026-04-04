@@ -1,0 +1,125 @@
+{
+  "id": "unstuffed-cabbage-soup",
+  "name": "◁ Unstuffed Cabbage Soup",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "11_Chapter06"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "11_Chapter06"
+  },
+  "servings": "prep time: 15 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 tablespoons olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons olive oil"
+    },
+    {
+      "item": "1 pound (450 g) lean ground beef",
+      "amount": "",
+      "unit": "",
+      "original": "1 pound (450 g) lean ground beef"
+    },
+    {
+      "item": "2½ teaspoons kosher salt, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "2½ teaspoons kosher salt, plus more if needed"
+    },
+    {
+      "item": "1 teaspoon ground allspice",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground allspice"
+    },
+    {
+      "item": "1 cup (240 g) tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup (240 g) tomato paste"
+    },
+    {
+      "item": "6 cups (1.5 L) chicken or vegetable broth",
+      "amount": "",
+      "unit": "",
+      "original": "6 cups (1.5 L) chicken or vegetable broth"
+    },
+    {
+      "item": "1/3 cup (75 g) short-grain rice, rinsed until the water runs clear and drained completely",
+      "amount": "",
+      "unit": "",
+      "original": "1/3 cup (75 g) short-grain rice, rinsed until the water runs clear and drained completely"
+    },
+    {
+      "item": "¼ cup (60 ml) fresh lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "¼ cup (60 ml) fresh lemon juice"
+    },
+    {
+      "item": "2 teaspoons dried mint",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons dried mint"
+    },
+    {
+      "item": "FOR GARNISHING AND SERVING\n¼ cup (13 g) finely chopped fresh parsley\nDried mint",
+      "amount": "",
+      "unit": "",
+      "original": "FOR GARNISHING AND SERVING\n¼ cup (13 g) finely chopped fresh parsley\nDried mint"
+    },
+    {
+      "item": "1 In a large pot over medium heat, combine the oil and garlic and cook, stirring continuously, over medium heat for 1 to 2 minutes, until the garlic is fragrant and slightly golden.",
+      "amount": "",
+      "unit": "",
+      "original": "1 In a large pot over medium heat, combine the oil and garlic and cook, stirring continuously, over medium heat for 1 to 2 minutes, until the garlic is fragrant and slightly golden."
+    },
+    {
+      "item": "2 Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned.",
+      "amount": "",
+      "unit": "",
+      "original": "2 Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned."
+    },
+    {
+      "item": "3 Add the salt, allspice, cinnamon, pepper, and tomato paste, mix everything together, and cook for another 1 to 2 minutes. Add the cabbage and stir to combine.",
+      "amount": "",
+      "unit": "",
+      "original": "3 Add the salt, allspice, cinnamon, pepper, and tomato paste, mix everything together, and cook for another 1 to 2 minutes. Add the cabbage and stir to combine."
+    },
+    {
+      "item": "4 Add the broth and stir to combine. Cover with the lid and let simmer over medium heat for 30 minutes.",
+      "amount": "",
+      "unit": "",
+      "original": "4 Add the broth and stir to combine. Cover with the lid and let simmer over medium heat for 30 minutes."
+    },
+    {
+      "item": "5 Add the rice, stir, and continue to cook, covered, for 10 minutes. Uncover the pot and add the lemon juice and mint. Stir to combine and taste and adjust the salt if necessary. If the soup is too thick, add a bit of water to thin it out to desired consistency.",
+      "amount": "",
+      "unit": "",
+      "original": "5 Add the rice, stir, and continue to cook, covered, for 10 minutes. Uncover the pot and add the lemon juice and mint. Stir to combine and taste and adjust the salt if necessary. If the soup is too thick, add a bit of water to thin it out to desired consistency."
+    },
+    {
+      "item": "6 Ladle into bowls and garnish with the parsley and mint and serve with lemon wedges for squeezing.",
+      "amount": "",
+      "unit": "",
+      "original": "6 Ladle into bowls and garnish with the parsley and mint and serve with lemon wedges for squeezing."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": []
+  },
+  "image": null
+}

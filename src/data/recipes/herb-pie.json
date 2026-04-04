@@ -1,0 +1,158 @@
+{
+  "id": "herb-pie",
+  "name": "Herb pie",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c07_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "2 tbsp olive oil, plus extra for brushing the pastry",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil, plus extra for brushing the pastry",
+      "group": null
+    },
+    {
+      "item": "1 large onion, diced",
+      "amount": "",
+      "unit": "",
+      "original": "1 large onion, diced",
+      "group": null
+    },
+    {
+      "item": "1 lb / 500 g Swiss chard, stems and leaves finely shredded but kept separate",
+      "amount": "",
+      "unit": "",
+      "original": "1 lb / 500 g Swiss chard, stems and leaves finely shredded but kept separate",
+      "group": null
+    },
+    {
+      "item": "5 oz / 150 g celery, thinly sliced",
+      "amount": "",
+      "unit": "",
+      "original": "5 oz / 150 g celery, thinly sliced",
+      "group": null
+    },
+    {
+      "item": "1¾ oz / 50 g green onion, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1¾ oz / 50 g green onion, chopped",
+      "group": null
+    },
+    {
+      "item": "1¾ oz / 50 g arugula",
+      "amount": "",
+      "unit": "",
+      "original": "1¾ oz / 50 g arugula",
+      "group": null
+    },
+    {
+      "item": "1 oz / 30 g flat-leaf parsley, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 oz / 30 g flat-leaf parsley, chopped",
+      "group": null
+    },
+    {
+      "item": "1 oz / 30 g mint, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 oz / 30 g mint, chopped",
+      "group": null
+    },
+    {
+      "item": "¾ oz / 20 g dill, chopped",
+      "amount": "",
+      "unit": "",
+      "original": "¾ oz / 20 g dill, chopped",
+      "group": null
+    },
+    {
+      "item": "4 oz / 120 g anari or ricotta cheese, crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "4 oz / 120 g anari or ricotta cheese, crumbled",
+      "group": null
+    },
+    {
+      "item": "3½ oz / 100 g aged Cheddar cheese, grated",
+      "amount": "",
+      "unit": "",
+      "original": "3½ oz / 100 g aged Cheddar cheese, grated",
+      "group": null
+    },
+    {
+      "item": "2 oz / 60 g feta cheese, crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "2 oz / 60 g feta cheese, crumbled",
+      "group": null
+    },
+    {
+      "item": "grated zest of 1 lemon",
+      "amount": "",
+      "unit": "",
+      "original": "grated zest of 1 lemon",
+      "group": null
+    },
+    {
+      "item": "2 large free-range eggs",
+      "amount": "",
+      "unit": "",
+      "original": "2 large free-range eggs",
+      "group": null
+    },
+    {
+      "item": "⅓ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "⅓ tsp salt",
+      "group": null
+    },
+    {
+      "item": "½ tsp freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp freshly ground black pepper",
+      "group": null
+    },
+    {
+      "item": "½ tsp superfine sugar",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp superfine sugar",
+      "group": null
+    },
+    {
+      "item": "9 oz / 250 g filo pastry",
+      "amount": "",
+      "unit": "",
+      "original": "9 oz / 250 g filo pastry",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/herb-pie.jpg"
+}

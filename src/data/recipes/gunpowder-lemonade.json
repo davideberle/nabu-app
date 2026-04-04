@@ -1,0 +1,68 @@
+{
+  "id": "gunpowder-lemonade",
+  "name": "GUNPOWDER LEMONADE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c10_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c10_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "9½ cups water",
+      "amount": "",
+      "unit": "",
+      "original": "9½ cups water"
+    },
+    {
+      "item": "Scant ¼ cup gunpowder (pearl) green tea leaves or other Chinese green tea leaves",
+      "amount": "",
+      "unit": "",
+      "original": "Scant ¼ cup gunpowder (pearl) green tea leaves or other Chinese green tea leaves"
+    },
+    {
+      "item": "¾ cup freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup freshly squeezed lemon juice"
+    },
+    {
+      "item": "½ cup plus 2 tablespoons Spearmint Syrup",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup plus 2 tablespoons Spearmint Syrup"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": "",
+      "unit": "",
+      "original": "Ice, for serving"
+    },
+    {
+      "item": "Spearmint sprigs, for garnish",
+      "amount": "",
+      "unit": "",
+      "original": "Spearmint sprigs, for garnish"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

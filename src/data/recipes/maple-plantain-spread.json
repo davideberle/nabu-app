@@ -1,0 +1,86 @@
+{
+  "id": "maple-plantain-spread",
+  "name": "MAPLE-PLANTAIN SPREAD",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c07_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 large ripe plantain (about 12 ounces), chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 large ripe plantain (about 12 ounces), chopped"
+    },
+    {
+      "item": "¾ cup water",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup water"
+    },
+    {
+      "item": "½ cup Grade B maple syrup",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup Grade B maple syrup"
+    },
+    {
+      "item": "1 teaspoon coconut oil",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon coconut oil"
+    },
+    {
+      "item": "2 tablespoons freshly squeezed orange juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 tablespoons freshly squeezed orange juice"
+    },
+    {
+      "item": "¼ teaspoon finely grated lemon zest",
+      "amount": "",
+      "unit": "",
+      "original": "¼ teaspoon finely grated lemon zest"
+    },
+    {
+      "item": "2 teaspoons freshly squeezed lemon juice",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons freshly squeezed lemon juice"
+    },
+    {
+      "item": "½ teaspoon bourbon",
+      "amount": "",
+      "unit": "",
+      "original": "½ teaspoon bourbon"
+    },
+    {
+      "item": "Scant ¼ teaspoon fine sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "Scant ¼ teaspoon fine sea salt"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

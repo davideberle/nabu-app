@@ -1,0 +1,61 @@
+{
+  "id": "classic-sweet-brunch-dishes",
+  "name": "Classic Sweet Brunch Dishes",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson",
+    "chapter": "part0019"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "part0019"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "4 large eggs, room temperature",
+      "amount": "",
+      "unit": "",
+      "original": "4 large eggs, room temperature"
+    },
+    {
+      "item": "1 cup whole milk",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup whole milk"
+    },
+    {
+      "item": "1 teaspoon ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon ground cinnamon"
+    },
+    {
+      "item": "8 (1-inch-thick) slices challah bread",
+      "amount": "",
+      "unit": "",
+      "original": "8 (1-inch-thick) slices challah bread"
+    },
+    {
+      "item": "3-4 tablespoons unsalted butter",
+      "amount": "",
+      "unit": "",
+      "original": "3-4 tablespoons unsalted butter"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

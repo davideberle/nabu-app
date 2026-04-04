@@ -1,0 +1,131 @@
+{
+  "id": "pickled-cucumbers-with-dill",
+  "name": "Pickled cucumbers with dill",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c09_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "4½ cups / 1 liter water",
+      "amount": "",
+      "unit": "",
+      "original": "4½ cups / 1 liter water",
+      "group": null
+    },
+    {
+      "item": "4½ tbsp coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "4½ tbsp coarse sea salt",
+      "group": null
+    },
+    {
+      "item": "1 tsp black mustard seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp black mustard seeds",
+      "group": null
+    },
+    {
+      "item": "1 tsp coriander seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp coriander seeds",
+      "group": null
+    },
+    {
+      "item": "10 allspice berries",
+      "amount": "",
+      "unit": "",
+      "original": "10 allspice berries",
+      "group": null
+    },
+    {
+      "item": "1 tsp fennel seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp fennel seeds",
+      "group": null
+    },
+    {
+      "item": "10 black peppercorns",
+      "amount": "",
+      "unit": "",
+      "original": "10 black peppercorns",
+      "group": null
+    },
+    {
+      "item": "5 whole cloves",
+      "amount": "",
+      "unit": "",
+      "original": "5 whole cloves",
+      "group": null
+    },
+    {
+      "item": "1 tsp celery seeds",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp celery seeds",
+      "group": null
+    },
+    {
+      "item": "1 small dried chile",
+      "amount": "",
+      "unit": "",
+      "original": "1 small dried chile",
+      "group": null
+    },
+    {
+      "item": "1 large bunch dill (1¾ oz / 50 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "1 large bunch dill (1¾ oz / 50 g in total)",
+      "group": null
+    },
+    {
+      "item": "7 cloves garlic, unpeeled, lightly crushed",
+      "amount": "",
+      "unit": "",
+      "original": "7 cloves garlic, unpeeled, lightly crushed",
+      "group": null
+    },
+    {
+      "item": "6 bay leaves",
+      "amount": "",
+      "unit": "",
+      "original": "6 bay leaves",
+      "group": null
+    },
+    {
+      "item": "10 to 13 mini or Lebanese cucumbers (about 1 lb / 900 g in total)",
+      "amount": "",
+      "unit": "",
+      "original": "10 to 13 mini or Lebanese cucumbers (about 1 lb / 900 g in total)",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan",
+      "gluten-free"
+    ]
+  },
+  "image": null
+}

@@ -1,0 +1,50 @@
+{
+  "id": "vegan-bibimbap",
+  "name": "VEGAN BIBIMBAP",
+  "source": {
+    "cookbook": "The Vegan Korean   Complete Guide And Cookbook so ",
+    "author": "Various",
+    "chapter": "index_split_049"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "index_split_049"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "200 g / 7 oz firm non-GMO (cotton not silken) tofu, pressed\n\t4 tsp soy sauce or tamari for GF version)\n\t1 tsp Gochujang (Korean chilli paste) this is the one I used\n\t2-4 tsp oil (I used rice bran oil)\n\t100 g / 3½ oz mushrooms (shiitake if you can get them)\n\t100 g / 3½ oz spinach\n\t1 carrot shredded\n\t50 g / 2 oz edamame beans\n\t½ cup rice, cooked (I used brown)\n\tpickled daikon (see below)\n\t½ long cucumber, finely sliced\n\t1 spring onion, finely sliced",
+      "amount": "",
+      "unit": "",
+      "original": "200 g / 7 oz firm non-GMO (cotton not silken) tofu, pressed\n\t4 tsp soy sauce or tamari for GF version)\n\t1 tsp Gochujang (Korean chilli paste) this is the one I used\n\t2-4 tsp oil (I used rice bran oil)\n\t100 g / 3½ oz mushrooms (shiitake if you can get them)\n\t100 g / 3½ oz spinach\n\t1 carrot shredded\n\t50 g / 2 oz edamame beans\n\t½ cup rice, cooked (I used brown)\n\tpickled daikon (see below)\n\t½ long cucumber, finely sliced\n\t1 spring onion, finely sliced"
+    },
+    {
+      "item": "100 g / 3½ oz daikon (or radishes)\n\t60 ml / ¼ cup rice wine vinegar + 60-120 ml / ¼-½ cup water\n\t2 tbsp sugar, adjust to taste\n\t1 tsp salt, adjust to taste",
+      "amount": "",
+      "unit": "",
+      "original": "100 g / 3½ oz daikon (or radishes)\n\t60 ml / ¼ cup rice wine vinegar + 60-120 ml / ¼-½ cup water\n\t2 tbsp sugar, adjust to taste\n\t1 tsp salt, adjust to taste"
+    },
+    {
+      "item": "2 tbsp Gochujang (Korean chilli paste)\n\t2 tsp rice wine vinegar\n\t1 tbsp soy sauce or tamari for GF version)\n\t1 tbsp toasted sesame oil\n\t1 tbsp maple syrup (or sugar dissolved in soy sauce)\n\t1 small garlic clove, finely grated",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp Gochujang (Korean chilli paste)\n\t2 tsp rice wine vinegar\n\t1 tbsp soy sauce or tamari for GF version)\n\t1 tbsp toasted sesame oil\n\t1 tbsp maple syrup (or sugar dissolved in soy sauce)\n\t1 small garlic clove, finely grated"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

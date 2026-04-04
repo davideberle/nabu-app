@@ -1,0 +1,136 @@
+{
+  "id": "turnip-veal-cake",
+  "name": "Turnip & veal “cake”",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Recipes"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Otto_9781607743958_epub_c04_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1⅔ cups / 300 g basmati rice",
+      "amount": "",
+      "unit": "",
+      "original": "1⅔ cups / 300 g basmati rice",
+      "group": null
+    },
+    {
+      "item": "14 oz / 400 g ground veal, lamb, or beef",
+      "amount": "",
+      "unit": "",
+      "original": "14 oz / 400 g ground veal, lamb, or beef",
+      "group": null
+    },
+    {
+      "item": "½ cup / 30 g chopped flat-leaf parsley",
+      "amount": "",
+      "unit": "",
+      "original": "½ cup / 30 g chopped flat-leaf parsley",
+      "group": null
+    },
+    {
+      "item": "1½ tsp baharat spice mix (store-bought or see recipe)",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp baharat spice mix (store-bought or see recipe)",
+      "group": null
+    },
+    {
+      "item": "½ tsp ground cinnamon",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp ground cinnamon",
+      "group": null
+    },
+    {
+      "item": "½ tsp chile flakes",
+      "amount": "",
+      "unit": "",
+      "original": "½ tsp chile flakes",
+      "group": null
+    },
+    {
+      "item": "2 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "10 to 15 medium turnips (3¼ lb / 1.5 kg in total)",
+      "amount": "",
+      "unit": "",
+      "original": "10 to 15 medium turnips (3¼ lb / 1.5 kg in total)",
+      "group": null
+    },
+    {
+      "item": "about 1⅔ cups / 400 ml sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "about 1⅔ cups / 400 ml sunflower oil",
+      "group": null
+    },
+    {
+      "item": "scant 2 cups / 300 g chopped tomatoes, canned are fine",
+      "amount": "",
+      "unit": "",
+      "original": "scant 2 cups / 300 g chopped tomatoes, canned are fine",
+      "group": null
+    },
+    {
+      "item": "1½ tbsp tamarind paste",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp tamarind paste",
+      "group": null
+    },
+    {
+      "item": "¾ cup plus 2 tbsp / 200 ml chicken stock, hot",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup plus 2 tbsp / 200 ml chicken stock, hot",
+      "group": null
+    },
+    {
+      "item": "1 cup / 250 ml water",
+      "amount": "",
+      "unit": "",
+      "original": "1 cup / 250 ml water",
+      "group": null
+    },
+    {
+      "item": "1½ tbsp superfine sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tbsp superfine sugar",
+      "group": null
+    },
+    {
+      "item": "2 thyme sprigs, leaves picked",
+      "amount": "",
+      "unit": "",
+      "original": "2 thyme sprigs, leaves picked",
+      "group": null
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "gluten-free"
+    ]
+  },
+  "image": "/recipes/turnip-veal-cake.jpg"
+}

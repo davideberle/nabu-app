@@ -1,0 +1,92 @@
+{
+  "id": "creole-spice-blend",
+  "name": "CREOLE SPICE BLEND",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry",
+    "chapter": "Terr_9781607745327_epub_c01_r1"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Terr_9781607745327_epub_c01_r1"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1 tablespoon garlic powder",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon garlic powder"
+    },
+    {
+      "item": "1 tablespoon paprika",
+      "amount": "",
+      "unit": "",
+      "original": "1 tablespoon paprika"
+    },
+    {
+      "item": "2 teaspoons coarse sea salt",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons coarse sea salt"
+    },
+    {
+      "item": "2 teaspoons freshly ground black pepper",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons freshly ground black pepper"
+    },
+    {
+      "item": "2 teaspoons onion powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons onion powder"
+    },
+    {
+      "item": "2 teaspoons chili powder",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons chili powder"
+    },
+    {
+      "item": "2 teaspoons red pepper flakes",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons red pepper flakes"
+    },
+    {
+      "item": "1 teaspoon dried thyme",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon dried thyme"
+    },
+    {
+      "item": "1 teaspoon dried oregano",
+      "amount": "",
+      "unit": "",
+      "original": "1 teaspoon dried oregano"
+    },
+    {
+      "item": "½ teaspoon cayenne pepper",
+      "amount": "",
+      "unit": "",
+      "original": "½ teaspoon cayenne pepper"
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}

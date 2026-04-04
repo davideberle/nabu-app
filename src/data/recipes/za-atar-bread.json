@@ -1,0 +1,136 @@
+{
+  "id": "za-atar-bread",
+  "name": "Za’atar bread",
+  "subtitle": "Aqras za’atar",
+  "source": {
+    "cookbook": "Falastin",
+    "author": "Sami Tamimi & Tara Wigley",
+    "chapter": "c08"
+  },
+  "introduction": "Za’atar bread is also known as fatayer fallahi, which means “villagers’ pie.” Traditionally, it’s made in spring, when the season for collecting fresh wild za’atar begins. We’ve used fresh oregano and dried za’atar, though, freeing up the option to make this year-round. The bread can be shaped all sorts of ways—into a flatbread, a loaf, or individual buns, as here. In any case, it should always be super soft—almost moist—in the middle, with a really crunchy crust. A mixture of black and white sesame seeds is preferable, but it’s fine to use just white.\n\nServe this either warm, fresh from the oven, or at room temperature the same day, with some labneh (or feta), fresh chopped salad (see this page), olives, or Hassan’s easy eggs (see this page).\n\nGetting ahead: The dough can be made up to two days ahead and kept in the fridge, ready to be rolled and baked. Once baked, the buns also freeze well, ready to be toasted or warmed through in the oven straight from frozen.",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes"
+  },
+  "servings": "makes 12 rolls",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1½ tsp fast-acting dried yeast",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tsp fast-acting dried yeast",
+      "group": null
+    },
+    {
+      "item": "1 tsp sugar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tsp sugar",
+      "group": null
+    },
+    {
+      "item": "¾ cup/170ml lukewarm water",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/170ml lukewarm water",
+      "group": null
+    },
+    {
+      "item": "2½ cups/320g all-purpose flour",
+      "amount": "",
+      "unit": "",
+      "original": "2½ cups/320g all-purpose flour",
+      "group": null
+    },
+    {
+      "item": "1 tbsp milk powder (also known as dried skimmed milk)",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp milk powder (also known as dried skimmed milk)",
+      "group": null
+    },
+    {
+      "item": "1⅛ tsp ground turmeric",
+      "amount": "",
+      "unit": "",
+      "original": "1⅛ tsp ground turmeric",
+      "group": null
+    },
+    {
+      "item": "1¼ tsp salt",
+      "amount": "",
+      "unit": "",
+      "original": "1¼ tsp salt",
+      "group": null
+    },
+    {
+      "item": "3 tbsp sunflower oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp sunflower oil",
+      "group": null
+    },
+    {
+      "item": "4 tbsp olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "4 tbsp olive oil",
+      "group": null
+    },
+    {
+      "item": "3 tbsp sesame seeds, plus 1½ tsp",
+      "amount": "",
+      "unit": "",
+      "original": "3 tbsp sesame seeds, plus 1½ tsp",
+      "group": null
+    },
+    {
+      "item": "¾ cup/15g oregano leaves",
+      "amount": "",
+      "unit": "",
+      "original": "¾ cup/15g oregano leaves",
+      "group": null
+    },
+    {
+      "item": "4½ oz/120g feta, crumbled",
+      "amount": "",
+      "unit": "",
+      "original": "4½ oz/120g feta, crumbled",
+      "group": null
+    },
+    {
+      "item": "2 tbsp Greek yogurt",
+      "amount": "",
+      "unit": "",
+      "original": "2 tbsp Greek yogurt",
+      "group": null
+    },
+    {
+      "item": "1 tbsp za’atar",
+      "amount": "",
+      "unit": "",
+      "original": "1 tbsp za’atar",
+      "group": null
+    }
+  ],
+  "method": [
+    "Put the yeast, sugar, and water into a small bowl. Mix to combine, then set aside for 5 minutes, or until it starts to bubble.",
+    "Put the flour, milk powder, turmeric, and salt into the bowl of a stand mixer fitted with the dough hook. Mix for 1 minute, just to incorporate, then add the yeast mixture, followed by the sunflower oil and 3 tbsp of olive oil. Mix on low speed for about 2 minutes, to bring everything together, then increase the speed to medium. Continue to mix for 3 minutes. Add the 3 tbsp sesame seeds and oregano leaves and mix for another 4 minutes, until the dough is soft and elastic and the oregano leaves have been incorporated into the dough. It will feel very soft and almost sticky, but this is how it should be. Tip the dough onto a clean work surface and bring together to form a ball. Grease the mixing bowl with the remaining 1 tbsp of olive oil, then return the dough to the bowl. Turn it a couple of times so that it’s completely coated in oil, then cover the bowl. Set aside somewhere warm for 1 hour, until the dough is doubled in size.",
+    "Roll the dough out into the shape of a sausage, about 12 inches/30cm long, and cut into 12 even pieces, about 1¾ oz/50g each. Roll each piece into a ball, place on a large plate, cover, and set aside for 20 minutes, to rest.",
+    "Preheat the oven to 425°F.",
+    "On a clean, lightly floured work surface, use your fingers to flatten each ball into a round disc, about 4 inches/10cm wide and ⅛ inch/3mm thick. Spoon a heaped 2 tsp (about ⅓ oz/10g) of the crumbled feta cheese into the center of each disc. Draw all the sides upward and press together to form a ball. Arrange the buns on a baking sheet, pinched side down and spaced well apart. Brush the balls all over with yogurt and sprinkle with the remaining 1½ tsp sesame seeds and za’atar. Set aside to rest for 5 minutes, then bake for about 20 minutes, or until the buns are cooked and the bottoms are golden brown. Remove from the oven and serve either warm, at once, or at room temperature."
+  ],
+  "tags": {
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "image": null
+}

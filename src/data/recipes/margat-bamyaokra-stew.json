@@ -1,0 +1,98 @@
+{
+  "id": "margat-bamyaokra-stew",
+  "name": "◁ Margat BamyaOKRA STEW",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Amina Al-Saigh",
+    "chapter": "11_Chapter06"
+  },
+  "introduction": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "11_Chapter06"
+  },
+  "servings": "prep time: 10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 30,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "1½ pounds (650 g) bone-in veal (see Notes), cut into 2-inch (5 cm) pieces",
+      "amount": "",
+      "unit": "",
+      "original": "1½ pounds (650 g) bone-in veal (see Notes), cut into 2-inch (5 cm) pieces"
+    },
+    {
+      "item": "2 teaspoons kosher salt, divided, plus more if needed",
+      "amount": "",
+      "unit": "",
+      "original": "2 teaspoons kosher salt, divided, plus more if needed"
+    },
+    {
+      "item": "3 tablespoons olive oil",
+      "amount": "",
+      "unit": "",
+      "original": "3 tablespoons olive oil"
+    },
+    {
+      "item": "1 large onion, finely chopped",
+      "amount": "",
+      "unit": "",
+      "original": "1 large onion, finely chopped"
+    },
+    {
+      "item": "6 tablespoons tomato paste",
+      "amount": "",
+      "unit": "",
+      "original": "6 tablespoons tomato paste"
+    },
+    {
+      "item": "28 ounces (800 g) frozen small okra (see Notes)",
+      "amount": "",
+      "unit": "",
+      "original": "28 ounces (800 g) frozen small okra (see Notes)"
+    },
+    {
+      "item": "8 large cloves garlic, roughly chopped",
+      "amount": "",
+      "unit": "",
+      "original": "8 large cloves garlic, roughly chopped"
+    },
+    {
+      "item": "1½ tablespoons pomegranate molasses",
+      "amount": "",
+      "unit": "",
+      "original": "1½ tablespoons pomegranate molasses"
+    },
+    {
+      "item": "1 Season the veal pieces with ½ teaspoon of the salt and the pepper.",
+      "amount": "",
+      "unit": "",
+      "original": "1 Season the veal pieces with ½ teaspoon of the salt and the pepper."
+    },
+    {
+      "item": "2 In a large pot over medium heat, add the oil, onion, and ½ teaspoon of the salt and cook, stirring often, for 5 to 6 minutes, until the onion is softened and translucent. Add the veal and sear for 5 to 6 minutes, flipping until all sides are lightly browned. Stir in the tomato paste and continue to cook for another few minutes. Add the okra, garlic, pomegranate molasses, remaining 1 teaspoon salt, and about 6 cups (1.4 L) of water to the pot and mix everything well. Bring to a rolling boil over medium heat, then boil for about 30 minutes with the pot half-covered with the lid.",
+      "amount": "",
+      "unit": "",
+      "original": "2 In a large pot over medium heat, add the oil, onion, and ½ teaspoon of the salt and cook, stirring often, for 5 to 6 minutes, until the onion is softened and translucent. Add the veal and sear for 5 to 6 minutes, flipping until all sides are lightly browned. Stir in the tomato paste and continue to cook for another few minutes. Add the okra, garlic, pomegranate molasses, remaining 1 teaspoon salt, and about 6 cups (1.4 L) of water to the pot and mix everything well. Bring to a rolling boil over medium heat, then boil for about 30 minutes with the pot half-covered with the lid."
+    },
+    {
+      "item": "3 After 30 minutes, check the tenderness of the okra and the meat and taste and adjust the salt and pepper if necessary. If the okra and meat are both still slightly firm, add more water (2 to 3 cups, or 480 to 720 ml) and continue boiling for another 30 minutes; if they are both tender, turn off the heat and serve.",
+      "amount": "",
+      "unit": "",
+      "original": "3 After 30 minutes, check the tenderness of the okra and the meat and taste and adjust the salt and pepper if necessary. If the okra and meat are both still slightly firm, add more water (2 to 3 cups, or 480 to 720 ml) and continue boiling for another 30 minutes; if they are both tender, turn off the heat and serve."
+    }
+  ],
+  "method": [],
+  "tags": {
+    "dietary": [
+      "vegetarian",
+      "vegan"
+    ]
+  },
+  "image": null
+}
