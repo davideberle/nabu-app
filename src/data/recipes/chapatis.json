@@ -1,0 +1,37 @@
+{
+  "id": "chapatis",
+  "name": "CHAPATIS",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "makes 8–10 small chapatis",
+  "intro": "You know those chapatis available at the supermarket? Well, don’t bother. Make your own and you will be much happier. These are so much fluffier and worth every minute you spend making them.",
+  "ingredients": [
+    {
+      "item": "(2 cups) chapati flour, plus extra for dusting",
+      "amount": "250g"
+    },
+    {
+      "item": "About 125ml (½ cup) water",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed oil, for oiling the pan",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the flour into a bowl and add the water a little at a time. Knead until you have a soft, pliable dough, then continue kneading for about 3 minutes. Dust the work surface with a little flour and divide the dough into 8–10 balls.",
+    "Working in batches, depending on space in your kitchen (keep the waiting balls covered with a damp tea towel), flatten each ball between your hands and then flatten them more with a rolling pin until they are about 12cm (4½ in) in diameter and 1mm thick. Dust off any excess flour from a disc of dough then slap it from hand to hand to remove any stubborn flour.",
+    "Oil the pan with just enough oil to create a film (½ tsp should do) and dry-fry the chapati for 30 seconds, then flip it over and fry for another 30 seconds. Brown spots should appear on both sides. If you are cooking on an electric hob, turn the chapati over again and apply pressure to the surface with a spatula or kitchen towel. It should puff up with air. If it doesn’t it should still be fine.",
+    "If you are cooking over a gas flame, lift the chapati out of the pan and carefully place it directly on the flame. This will cause it to puff up into a nice light chapati.",
+    "Transfer to a bowl lined with kitchen paper to keep warm while you make the remaining chapatis. For best results, serve immediately, but they can also be warmed up in the microwave if necessary."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

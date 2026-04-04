@@ -1,0 +1,63 @@
+{
+  "id": "grilled-lamb-chops",
+  "name": "GRILLED LAMB CHOPS",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Sometimes simplicity is best, and that is certainly the case with the famous lamb chops served at Lahore Kebab House in Shoreditch.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green chilli paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "lamb chops on the bone, with most surface fat removed",
+      "amount": "8–10"
+    },
+    {
+      "item": "(½ cup) Greek yoghurt",
+      "amount": "100g"
+    },
+    {
+      "item": "Fresh coriander (cilantro), to serve",
+      "amount": ""
+    },
+    {
+      "item": "Salt and black freshly ground pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large glass or ceramic bowl, mix the oil, chilli paste, garlic and ginger paste, garam masala, turmeric, chilli powder and lemon juice together. Add the lamb chops and massage the marinade into the meat. Let this stand for about 20 minutes.",
+    "Whisk the yoghurt until nice and creamy then pour it over the meat, ensuring every piece is coated. Marinate the meat for 24–72 hours. (You could marinate for a shorter time but the longer the better.)",
+    "When ready to cook, set up your barbecue for direct heat cooking, until the coals are extremely hot. Grill each lamb chop until nicely charred underneath then flip over and do the same on the other side. When nicely blackened, remove from the heat to rest for about 5 minutes. Season with salt and pepper and serve garnished with fresh coriander (cilantro)."
+  ],
+  "image": "/recipes/grilled-lamb-chops.jpg"
+}

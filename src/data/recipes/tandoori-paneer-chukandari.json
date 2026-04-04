@@ -1,0 +1,76 @@
+{
+  "id": "tandoori-paneer-chukandari",
+  "name": "TANDOORI PANEER CHUKANDARI",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi -course meal",
+  "intro": "I was invited to the Radisson Blu Edwardian at Heathrow a few years back to try their new restaurant Annayu and write a review on my blog. The head chef at the time, Madhup Sinha, really went to town trying to impress, and impress he did. He has since moved on to become head chef of Global Street Food Kitchen and has been such a valuable source of information, both with recipes and techniques.",
+  "ingredients": [
+    {
+      "item": "(4½ lb) raw beetroot (beet), peeled",
+      "amount": "2kg"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "royal (black) cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground white pepper",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "(1½ lb) paneer (for homemade), cut into 7.5cm (3 in) cubes or slices 1cm (½ in) thick",
+      "amount": "700g"
+    },
+    {
+      "item": "(1½ cups) balsamic vinegar",
+      "amount": "350ml"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "tamarind concentrate",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Sea salt",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sprinkle the beetroot (beet) with sea salt and wrap in foil. Roast in the oven for about 45 minutes or until the beetroot is very soft, like potatoes cooked for mash. Weigh out 1.5kg (3 lb 5 oz) cooled beetroot (reserve the rest) and blend to a smooth paste in a food processor. In a bowl, stir the ajwain and cumin seeds, white pepper, garlic powder and garam masala into the beetroot paste.",
+    "Now add the paneer pieces and check for seasoning, adding a little more salt if needed. Stir gently to coat the paneer, cover and marinate in the fridge for 4 hours, or overnight.",
+    "Put the reserved roasted beetroot through a juicer if you have one. If not, blend it and pass it through a fine sieve a few times to obtain the juice. Add the balsamic vinegar to the beetroot juice, tip into a pan and reduce by half over a medium heat; keep warm (or reheat gently when ready to serve).",
+    "When ready to cook, preheat the oven to 180°C/350F°/gas mark 4 or set up your barbecue for indirect cooking. Stir the dried fenugreek leaves and tamarind pulp into the marinade, then remove the paneer and spread out in a single layer in a roasting tin if roasting in the oven, or place on a rack to barbecue. Roast or barbecue until the paneer feels soft, 5–10 minutes.",
+    "Immediately drizzle the hot beetroot and vinegar reduction over the paneer, sprinkle with some chaat masala and serve."
+  ],
+  "image": "/recipes/tandoori-paneer-chukandari.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

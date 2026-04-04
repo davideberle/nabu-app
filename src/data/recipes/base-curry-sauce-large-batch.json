@@ -1,0 +1,85 @@
+{
+  "id": "base-curry-sauce-large-batch",
+  "name": "BASE CURRY SAUCE (LARGE BATCH)",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "makes 6 litres (6 quarts) or enough for 22–24 servings",
+  "intro": "This smooth curry sauce ‘gravy’, more than any other ingredient, is what gives British Indian restaurant (BIR) style curries their distinctive flavour and texture. If you have a six-litre (six US quart) stockpot, it’s the perfect size for this large batch recipe.",
+  "ingredients": [
+    {
+      "item": "(4½ lb) (about 15) Spanish onions, roughly chopped",
+      "amount": "2kg"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(½ lb) carrots, peeled and chopped",
+      "amount": "225g"
+    },
+    {
+      "item": "(4¼ oz) cabbage, chopped",
+      "amount": "120g"
+    },
+    {
+      "item": "(3½ oz) red pepper (bell pepper), deseeded and diced",
+      "amount": "100g"
+    },
+    {
+      "item": "(3½ oz) green pepper (bell pepper), deseeded and diced",
+      "amount": "100g"
+    },
+    {
+      "item": "tin (2 cups) chopped tomatoes",
+      "amount": "1 x 400g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "9 tbsp"
+    },
+    {
+      "item": "(3 cups) rapeseed oil",
+      "amount": "750ml"
+    },
+    {
+      "item": "garam masala",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground fenugreek",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place the onions in a large 6-litre (6 US quart) stockpot and top with the rest of the vegetables, tomatoes and garlic and ginger paste. Pour in the oil and about a litre (1 US quart) of water. Stir to coat and place the pot over medium high heat. Bring to a simmer and then reduce to the heat to low and simmer gently, covered for about 45 minutes.",
+    "Now add another 2 litres (2 US quart) water and stir in the spices. Continue simmering for another 30 minutes. When the oil rises to the top and your veggies are soft, you’re ready to blend. Carefully skim the seasoned oil off the top for use in your curries. It keeps indefinitely in an airtight container.",
+    "Using a hand-held blender, blend for about 4 minutes until the sauce is super smooth, with no chunks and not at all grainy. This step can be done in a blender in batches, but it takes a lot more time.",
+    "You will notice that the blended sauce, about 3 litres (3 US quarts), is quite thick, perfect for storing in the fridge or freezing. When you use it in your curries, you will need to double the volume with water, or until it is about the same thickness as full-fat milk.",
+    "Use immediately or store in the fridge for up to 3 days or freeze in 750ml (3 cup) portions for up to 3 months."
+  ],
+  "image": "/recipes/base-curry-sauce-large-batch.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "papadams",
+  "name": "PAPADAMS",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "",
+  "intro": "Almost everyone loves a papadam or two while eagerly awaiting their curry dinner. Most good Indian restaurants fry their own as they are much better than those pre-packed papadams found at supermarkets. If you happen upon a restaurant that doesn’t fry their own in-house, it is a good sign that you should make a quick exit.",
+  "ingredients": [
+    {
+      "item": "Rapeseed oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Papads (1–2 per person)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat 10cm (4 in) of oil in a large pan or wok until hot. When a piece of papad puffs up quite quickly when dropped into the oil, it’s ready. Papads are usually cooked in pairs, which speeds the process up and also helps keep them uniformly flat. Drop the papads in the oil. They will very quickly expand into full-sized papadams. Be careful not to overcook or burn the papadams. They will quickly begin to turn brown, so remove them from the oil before this happens. It only takes seconds to overcook papadams, so be ready to get them out of that oil. Remove from the oil with tongs or a wire mesh spoon and place on kitchen paper to absorb the excess oil.",
+    "You can leave them to cool flat, or fold them into your own preferred shapes while they are still hot. Serve or store in an airtight container."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

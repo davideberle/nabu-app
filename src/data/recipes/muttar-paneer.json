@@ -1,0 +1,124 @@
+{
+  "id": "muttar-paneer",
+  "name": "MUTTAR PANEER",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK.",
+  "ingredients": [
+    {
+      "item": "(2¼ lb) paneer (for homemade), cut into 4cm (1½ in) cubes",
+      "amount": "1kg"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Greek yoghurt, whisked",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "4"
+    },
+    {
+      "item": "cloves",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "large onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(2¾ lb) tomatoes, halved",
+      "amount": "1.2kg"
+    },
+    {
+      "item": "raw cashew paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli powder, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh green chillies, quartered",
+      "amount": "2"
+    },
+    {
+      "item": "(1 cup) frozen peas",
+      "amount": "150g"
+    },
+    {
+      "item": "single (light) cream",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "(⅓ cup) cold butter, diced",
+      "amount": "80g"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "dried fenugreek (methi) leaves, crushed",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the paneer in a bowl with the oil, garlic and ginger paste, salt, lemon juice and chilli powder, and mix gently to coat. Set aside for about 15 minutes then stir in the whisked yoghurt and garam masala. Leave to marinate while you prepare the tomato sauce.",
+    "In a large saucepan, heat the oil until hot. Toss in the cardamom pods, cloves and bay leaf, and sizzle for 30 seconds. Add the onions and fry for a further 3 minutes until soft and translucent but not browned. Stir in the garlic and ginger paste.",
+    "Fry for another 30 seconds, stirring, then add the tomatoes, 125ml (½ cup) water and the cashew paste. Let this come to a simmer and cook until the onions and tomatoes break down into a thick sauce, about 5 minutes. Using a jug or hand-held blender, blend until super smooth, about 3–4 minutes.",
+    "Return the sauce to the pan and stir in the chilli powder and green chillies. Let this all come to a mild bubble then add the paneer cubes and peas, and heat through for about 2 minutes (if you cook the cheese too long, it will begin to disintegrate into the sauce, so watch carefully).",
+    "To finish, swirl in the cream and garam masala, then stir in the cold butter one piece at a time. Stir in the lemon juice and check for seasoning, adding salt to taste. Top with the dried fenugreek leaves and serve."
+  ],
+  "image": "/recipes/muttar-paneer.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

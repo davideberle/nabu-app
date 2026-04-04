@@ -1,0 +1,92 @@
+{
+  "id": "chicken-dopiaza",
+  "name": "CHICKEN DOPIAZA",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Dopiaza curries are big on flavour and can be mild or quite spicy, depending on the restaurant. Broken down, the word do means two and piaza means onions. So the authentic Indian version of this dish is a curry with onions cooked in two different ways. If you count the base curry sauce, and fried onion petals, this recipe is made with onions cooked in four different ways so the name doesn’t quite fit. That’s just being technical, though.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "small onion, quartered and divided into petals",
+      "amount": "1"
+    },
+    {
+      "item": "green cardamom pods, bashed",
+      "amount": "6"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander seeds, roughly chopped",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(½ cup) tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "(2 cups) base curry sauce, heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "(1 lb 5 oz) pre-cooked stewed chicken, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
+      "amount": "600g"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mild or hot chilli powder, to taste",
+      "amount": "1–2 tsp"
+    },
+    {
+      "item": "onion paste made with yoghurt",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Small bunch of coriander (cilantro), chopped",
+      "amount": ""
+    },
+    {
+      "item": "handfuls of fried onions",
+      "amount": "2"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat 1 tbsp of the oil in a large pan over a high heat. When good and hot, toss in the onion petals and sear them until they are nicely charred but still quite crisp. Remove with a slotted spoon to a plate.",
+    "Reduce the heat to medium-high and pour in the rest of the oil. When bubbles start to appear, add the whole spices. Stir the spices around in the oil for about 30 seconds and enjoy the aroma of that awesome meal you’re making.",
+    "Stir in the garlic and ginger paste and let it sizzle until fragrant then add the mixed powder, ground cumin, chilli powder and tomato purée. Give this all a good stir and then add 250ml (1 cup) of the base curry sauce. The curry sauce will begin to bubble rapidly and, when it does, add the rest of the sauce and the stock or extra sauce. Turn up the heat and simmer; some of the sauce may begin to caramelize on the side of the pan, so just stir this in from time to time for more flavour.",
+    "Add the chicken pieces and simmer, without stirring, for about 2 minutes, until the chicken is warmed through. The sauce will cook down and become thicker, but if it becomes too thick for your liking, add a little more chicken or spice stock or base curry sauce. Stir in the onion paste 1 tbsp at a time then the dried fenugreek leaves and charred onion petals. Add salt to taste then sprinkle with the fresh coriander (cilantro), fried onions and garam masala to serve."
+  ],
+  "image": "/recipes/chicken-dopiaza.jpg"
+}

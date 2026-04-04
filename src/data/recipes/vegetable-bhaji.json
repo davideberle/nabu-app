@@ -1,0 +1,100 @@
+{
+  "id": "vegetable-bhaji",
+  "name": "VEGETABLE BHAJI",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Any seasonal vegetables can be used for this recipe. I’ve recommended a few, but feel free to add whatever you like. Vegetable bhaji is essentially a stir-fry with a little base curry sauce and spices mixed in. Be careful not to over-cook the vegetables in the sauce. They need to have a bit of bite to them.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh or frozen curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "yellow and 1 red pepper (bell pepper), thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s-eye chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kashmiri paste or mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(½ cup) tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "small carrot, peeled and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "button mushrooms",
+      "amount": "10"
+    },
+    {
+      "item": "green beans, cut into 2.5cm (1 in) pieces",
+      "amount": "20"
+    },
+    {
+      "item": "handful shredded cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(1½ cups) base curry sauce",
+      "amount": "400ml"
+    },
+    {
+      "item": "tomato, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large wok or frying pan over a high heat. When hot, throw in the mustard seeds. When they begin to crackle, reduce the heat to medium-high, then add the curry leaves and stir to combine.",
+    "Now add the sliced onions and peppers (bell peppers) and fry for about two minutes until the onions are translucent and soft. Add the garlic and ginger paste, chillies, turmeric and mixed powder or Kashmiri paste, followed by the tomato purée. Let these sizzle for a minute and then stir in the rest of the vegatbles to fry for a couple of minutes, stirring continuously.",
+    "Pour in the base curry sauce and simmer undisturbed, stirring only if it is catching to the pan.",
+    "When the vegetables are cooked to your liking, add the tomato wedges and dried fenugreek leaves. Season with salt and pepper to taste and sprinkle with the garam masala to serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

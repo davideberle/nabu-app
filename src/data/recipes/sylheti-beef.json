@@ -1,0 +1,68 @@
+{
+  "id": "sylheti-beef",
+  "name": "SYLHETI BEEF",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Whenever I go out to a Bangladeshi-run curry house, I look for their shatkora curries. I absolutely love the intensely tangy shatkora fruit. These are available frozen from Asian grocers and, when in season, they can often be purchased fresh. If you have trouble finding them, you could substitute shatkora pickle or, if all else fails, quartered limes, but the flavour will not be the same.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "black cardamom pods, lightly bruised",
+      "amount": "2"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "each of ground turmeric, cumin and coriander (cilantro), medium chilli powder and paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(1¾ lb) beef topside, cut into bite-sized pieces, (see Note)",
+      "amount": "800g"
+    },
+    {
+      "item": "(3 cups) Spice stock, plus a little more if required",
+      "amount": "750ml"
+    },
+    {
+      "item": "shatkora, outer rind only, cut into small pieces",
+      "amount": "¼"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Chopped coriander (cilantro) leaves, to finish",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large frying pan over a medium-high heat. When hot, toss in the cardamom pods and, after about 30 seconds, add the onion and fry for 5 minutes until soft, translucent and lightly browned.",
+    "Now add the garlic and ginger paste and fry for a further minute, stirring. Add the tomato purée and the ground spices, and cook for another minute. Add the beef and about 250ml (1 cup) of the spice stock. Boil it all for about 5 minutes then add the remaining spice stock and the shatkora rind.",
+    "Reduce the heat and simmer for 45–60 minutes, or until the sauce reduces to a fairly thick consistency and the meat is tender. Add more spice stock if needed.",
+    "To serve, add the garam masala, and salt to taste and top with the chopped coriander (cilantro)."
+  ],
+  "image": null
+}

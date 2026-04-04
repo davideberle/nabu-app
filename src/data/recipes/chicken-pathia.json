@@ -1,0 +1,79 @@
+{
+  "id": "chicken-pathia",
+  "name": "CHICKEN PATHIA",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Pathia curries were probably first made by Bangladeshi chefs here in Britain in an attempt to come up with an Indian dish that could compete with the sweet-and-sour chicken that was becoming popular at Chinese takeaways. It seems to have caught on because you rarely find a curry house or takeaway that doesn’t have pathia on the menu.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "small onion, very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(½ cup) tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "(2 cups) base curry sauce heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "(1¾ lb) pre-cooked stewed chicken plus 125ml (½ cup) of its cooking stock, or more curry base sauce",
+      "amount": "800g"
+    },
+    {
+      "item": "smooth mango chutney",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tamarind concentrate",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of 1 or 2 lemons, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped fresh coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large pan over a medium-high heat until bubbling hot. Stir in the chopped onion and fry until translucent and soft, then add the garlic and ginger paste and let it sizzle for about a minute. Then, when your kitchen smells all garlicky and gingery, sprinkle a little salt over the mixture as this will help release moisture. Cook for about another minute then add the mixed powder, chilli powder and sugar. Stir briskly.",
+    "Stir in the tomato purée and 250ml (1 cup) of the base curry sauce. Let this come to a rolling simmer and scrape back in any caramelized sauce from the sides of the pan. Add the rest of the base sauce and the stock, followed by the pre-cooked chicken. Let this bubble and spit until reduced down to your preferred consistency. Add a little more base sauce or stock if you want more sauce.",
+    "To finish, stir in the mango chutney, tamarind, dried fenugreek leaves and lemon juice to taste. Taste the curry, and if you want it to be sweeter, add some more sugar or mango chutney, or more lemon juice if you want it to have more of a tang. Check for seasoning, and add salt to taste to serve. Serve garnished with the chopped coriander (cilantro)."
+  ],
+  "image": null
+}

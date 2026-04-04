@@ -1,0 +1,68 @@
+{
+  "id": "takeaway-style-pakora-sauce",
+  "name": "TAKEAWAY-STYLE PAKORA SAUCE",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "makes about 300ml (1¼ cups)",
+  "intro": "If it’s Indian takeaway-style pakora sauce you like, this is a good one. Usually this sweet-and-sour sauce is red from food colouring, and does look the part when bright red. The mango chutney and ketchup are already quite sweet but you might want to add a little sugar. The sour flavours come from the lemon and mint sauce. Just try it and adjust until you are happy with the flavour.",
+  "ingredients": [
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "smooth mango chutney",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato ketchup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mint sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(scant 1 cup) plain yoghurt",
+      "amount": "200g"
+    },
+    {
+      "item": "roasted cumin seeds Spice Blends",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder, or to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Lemon juice, to taste",
+      "amount": ""
+    },
+    {
+      "item": "red food colouring powder (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Milk (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Whisk all the ingredients together, except for the food colouring, milk and salt. Once the sauce is nicely combined, check for seasoning and add salt to taste. Add food colouring, if using. If the sauce is too thick, stir in a little milk until you are happy with the consistency."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

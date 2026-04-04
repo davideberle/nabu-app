@@ -1,0 +1,91 @@
+{
+  "id": "lamb-madras",
+  "name": "LAMB MADRAS",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Dining out with friends at a curry house right after I moved to the UK, I was told how to order from the menu by spice level. A simple lamb curry would be mild. A Madras would be the same but with more chilli powder. The vindaloo would have substantially more chilli powder and the phal, dangerously hot. That advice did me well back then, but nowadays the better chefs ensure each of these curries have a flavour all their own. It’s not just down to the spiciness anymore.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Kashmiri dried red chillies, to taste",
+      "amount": "2–4"
+    },
+    {
+      "item": "A few green cardamom pods, lightly bruised",
+      "amount": ""
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh green chillies, or to taste, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(½ cup) tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "chilli powder, to taste",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(2 cups) base curry sauce, heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "(1¾lb) pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
+      "amount": "800g"
+    },
+    {
+      "item": "smooth mango chutney, to taste",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of garam masala",
+      "amount": ""
+    },
+    {
+      "item": "Fresh coriander (cilantro), to garnish",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a pan over a medium-high heat until hot. Add the dried chillies and cardamom pods, and allow to sizzle for about 30 seconds. Be sure to count the cardamom pods in and count them back out again at the end of cooking if you don’t like biting into whole spices. Scoop in the garlic and ginger paste along with the chopped chillies. Allow them to sizzle for about 20 seconds then stir in the tomato purée followed by the ground cumin, coriander and turmeric, the chilli powder and mixed powder.",
+    "Now add 250ml (1 cup) of the base curry sauce along with the lamb. Simmer for about 2 minutes, without stirring unless it is obviously catching on the pan, scraping back in any caramelized sauce from the sides of the pan. Pour in the rest of the base curry sauce and the stock, and let it simmer over a high heat until it has reduced down to your preferred consistency.",
+    "To serve, stir in the mango chutney and lime juice. Check for seasoning and add salt to taste. Sprinkle with the garam masala and garnish with the chopped coriander (cilantro)."
+  ],
+  "image": "/recipes/lamb-madras.jpg"
+}

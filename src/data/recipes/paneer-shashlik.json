@@ -1,0 +1,74 @@
+{
+  "id": "paneer-shashlik",
+  "name": "PANEER SHASHLIK",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "These spicy paneer kebabs are a real treat, with a crispy, charred crust on the exterior and a deliciously soft centre. The kebabs are great served on their own or wrapped into hot homemade naans with the raita of your choice.",
+  "ingredients": [
+    {
+      "item": "Greek yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "large red pepper (bell pepper), deseeded and cut into pieces",
+      "amount": "1"
+    },
+    {
+      "item": "medium red onion, cut into pieces",
+      "amount": "1"
+    },
+    {
+      "item": "(10½ oz) paneer (for homemade), cubed",
+      "amount": "300g"
+    }
+  ],
+  "method": [
+    "Put the yoghurt, garlic and ginger paste, spices, amchoor, oil and lemon juice in a bowl and mix together by hand. Add the pepper (bell pepper), onion and paneer to the marinade, stir to coat and leave to marinate for about 2 hours, or overnight in the fridge.",
+    "When ready to cook, light your barbecue using the direct grilling method. Thread the vegetables and paneer onto skewers and grill over direct heat for 8–10 minutes, turning regularly until the middle of the paneer is hot and soft.",
+    "You can serve these as they are, on a plate, or wrap a naan around the skewer and pull the hot paneer and vegetables off into the naan. Top with your favourite raita or hot sauce."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

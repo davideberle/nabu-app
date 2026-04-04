@@ -1,0 +1,79 @@
+{
+  "id": "bindi-masala",
+  "name": "BINDI MASALA",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This makes a nice side dish and is also very good served as a vegetarian main course. The bindi (okra) should be cooked through but still have a good crunch to them.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "panch poran",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "Kashmiri dried red chillies",
+      "amount": "3"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh green chillies, to taste, finely chopped",
+      "amount": "2–3"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut flour",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "firm plum tomato, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(1 lb) fresh okra, sliced into discs",
+      "amount": "450g"
+    },
+    {
+      "item": "(1 cup) base curry sauce, heated",
+      "amount": "250ml"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "freshly grated coconut (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a pan over a medium-high heat until bubbly hot. Add the panch poran and dried chillies, and sizzle for about 30 seconds until fragrant. Stir in the onion and green chillies, and sauté until the onion is soft and translucent. Add the garlic and ginger paste and fry for another 30 seconds.",
+    "Sprinkle in the amchoor and coconut flour, followed by the tomato and okra. Let the okra fry for a couple of minutes until hot but still crisp then pour in the base curry sauce. Turn the heat up and let the sauce bubble until you are happy with the consistency.",
+    "To serve, season with salt to taste and squeeze the lemon juice over the top. Sprinkle with the freshly grated coconut, if you like."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

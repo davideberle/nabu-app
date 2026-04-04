@@ -1,0 +1,78 @@
+{
+  "id": "base-curry-sauce-small-batch",
+  "name": "BASE CURRY SAUCE (SMALL BATCH)",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "makes enough for about 8–10 servings",
+  "intro": "The cooking instructions for a small batch of base curry sauce are exactly the same as with the large batch, so I recommend making the larger batch if you’ve got the freezer space. When making a small batch of sauce, I find that using a pressure cooker really speeds up the process without jeopardizing flavour. If you have one, you can make small batches often as it only takes minutes to prepare, which makes a lot more sense than spending 90 minutes making such a small amount of sauce. If not using a pressure cooker, simply follow the method for",
+  "ingredients": [
+    {
+      "item": "(5 tbsp) rapeseed oil or ghee",
+      "amount": "75ml"
+    },
+    {
+      "item": "(1¾ lb) Spanish onions, roughly chopped",
+      "amount": "800g"
+    },
+    {
+      "item": "(1 oz) carrot, peeled and chopped",
+      "amount": "25g"
+    },
+    {
+      "item": "(1 oz) cabbage, chopped",
+      "amount": "25g"
+    },
+    {
+      "item": "(1½ oz) red pepper (bell pepper), deseeded and diced",
+      "amount": "40g"
+    },
+    {
+      "item": "(1½ oz) green pepper (bell pepper), deseeded and diced",
+      "amount": "40g"
+    },
+    {
+      "item": "(5½ oz) tomatoes, diced",
+      "amount": "150g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground fenugreek",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Heat the oil or ghee in the pressure cooker pan. When hot, add the onions and fry for about 5 minutes until soft and translucent but not browned. Add the remaining ingredients, except the garam masala, and stir it all to combine. Fry for a further minute or so.",
+    "Pour in 400ml (1⅔ cups) water in and secure the pressure cooker lid. Cook on high pressure for 10 minutes then carefully open the pressure valve to release the steam. Your sauce is now ready to be blended until smooth. Four minutes blending per batch should do the job.",
+    "Stir the garam masala into the blended sauce and add the same volume of water to your base sauce. There you have it: a base curry sauce that usually takes 90 minutes to make, in less than 20 minutes!"
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

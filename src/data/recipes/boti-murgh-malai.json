@@ -1,0 +1,105 @@
+{
+  "id": "boti-murgh-malai",
+  "name": "BOTI MURGH MALAI",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This is an interesting curry. There is no garlic, ginger or onion in the mix, which is unusual here in the UK. The flavour comes from the warming spices that are sizzled in hot ghee. That and a simple but delicious marinade. Boti murgh malai is Bangladeshi in origin and a lot different to what you find on the menus at most Indian restaurants.",
+  "ingredients": [
+    {
+      "item": "skinless, boneless chicken breasts, diced into bite-sized pieces",
+      "amount": "4"
+    },
+    {
+      "item": "ghee",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "Kashmiri paste (good-quality shop-bought, for homemade) to taste",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "(1 cup) single (light) cream",
+      "amount": "250ml"
+    },
+    {
+      "item": "tomatoes, quartered",
+      "amount": "4"
+    },
+    {
+      "item": "finely chopped coriander (cilantro), plus extra to serve",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "(½ cup) plain yoghurt",
+      "amount": "100g"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "To make the marinade, put the lemon juice, yoghurt, salt, turmeric, paprika, cumin, chilli powder, coriander and mixed powder into a large bowl and whisk until nice and smooth. Mix in the chicken, cover and marinate in the fridge for at least 3 hours and up to 24 hours; the longer the better.",
+    "When ready to cook, remove the chicken from the marinade, reserving the marinade, place on a rack under a hot grill (broiler) and cook until the exterior of the chicken is slightly blackened and the meat is almost cooked through. Set aside while you make the sauce.",
+    "Heat the ghee in a large frying pan and, when hot, add the bay leaves, cardamom pods, cloves, star anise and cinnamon stick, and fry for about a minute. Plop in the Kashmiri paste and stir to combine. Fry for a further couple of minutes.",
+    "Pour in the cream and the reserved marinade, then stir in the chicken. Add about 100ml (⅓ cup) water and coat the meat with the sauce. Add the tomato quarters and coriander (cilantro).",
+    "Cook for a further 5–10 minutes. The sauce will thicken and you will be left with a delicious curry like no other! Season with salt and pepper to taste and sprinkle with coriander."
+  ],
+  "image": null
+}

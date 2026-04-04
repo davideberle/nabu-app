@@ -1,0 +1,49 @@
+{
+  "id": "mint-coriander-and-mango-chutney",
+  "name": "MINT, CORIANDER AND MANGO CHUTNEY",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "makes enough for 4–6 as an accompaniment",
+  "intro": "I love this simple chutney. It’s so good spooned over the",
+  "ingredients": [
+    {
+      "item": "Small bunch of coriander (cilantro), leaves only",
+      "amount": ""
+    },
+    {
+      "item": "Large bunch of mint, leaves only",
+      "amount": ""
+    },
+    {
+      "item": "(scant 1 cup) smooth mango chutney",
+      "amount": "200ml"
+    },
+    {
+      "item": "fresh green chillies, to taste, finely chopped",
+      "amount": "1–4"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Finely chop the coriander (cilantro) and mint leaves and place in a blender with the remaining ingredients, adding salt to taste. Blend until smooth and use within three days."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

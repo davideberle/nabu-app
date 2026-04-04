@@ -1,0 +1,41 @@
+{
+  "id": "tomato-onion-and-chilli-chutney",
+  "name": "TOMATO, ONION AND CHILLI CHUTNEY",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "this makes enough for 4–6 people as an accompaniment. you can easily double or triple the recipe",
+  "intro": "This quick and easy chutney goes well with pretty much everything. With such bright flavours and colours, it should never be left off your curry feast table.",
+  "ingredients": [
+    {
+      "item": "tomatoes, deseeded and finely chopped",
+      "amount": "5"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "green chillies, to taste, finely chopped",
+      "amount": "2–3"
+    },
+    {
+      "item": "finely chopped fresh coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the tomatoes, onion, chillies and coriander (cilantro) in a bowl and add salt to taste. Place in the fridge for the flavours to develop for about an hour. Serve as a topping on whatever dish you want."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
