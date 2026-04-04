@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
 // Only allow David's email
-const ALLOWED_EMAILS = ["david@davideberle.com", "davideberle@gmail.com"];
+const ALLOWED_EMAILS = ["info@davideberle.com"];
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
