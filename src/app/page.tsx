@@ -3,6 +3,14 @@ import { auth, signOut } from "@/auth";
 
 const tiles = [
   {
+    id: "todos",
+    name: "Todos",
+    emoji: "✅",
+    description: "Tasks, reminders, follow-ups",
+    href: "/todos",
+    stats: "2 active",
+  },
+  {
     id: "shopping",
     name: "Shopping",
     emoji: "🛒",
