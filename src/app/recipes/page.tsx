@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllRecipes } from "@/lib/recipes";
+import { getAllRecipes, getCookbooks, getCuisines, getDietaryOptions, getDietary } from "@/lib/recipes";
 
 function capitalize(str: string): string {
   if (!str) return '';
@@ -9,13 +9,13 @@ function capitalize(str: string): string {
 
 export default function RecipesPage() {
   const recipes = getAllRecipes();
+  const cookbooks = getCookbooks();
+  const cuisines = getCuisines();
+  const dietaryOptions = getDietaryOptions();
   const recipesWithImages = recipes.filter(r => r.image);
   
-  // Get chapters from either source.chapter or category.chapter
-  const chapters = [...new Set(recipes.map(r => r.source?.chapter || r.category?.chapter).filter(Boolean))];
-  
-  // Get unique cookbooks
-  const cookbooks = [...new Set(recipes.map(r => r.source?.cookbook).filter(Boolean))];
+  // Get 8 featured recipes with images
+  const featuredRecipes = recipesWithImages.slice(0, 8);
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -34,89 +34,172 @@ export default function RecipesPage() {
               Recipes
             </h1>
             <p className="text-xs text-stone-400 dark:text-stone-500">
-              {recipes.length} recipes · {recipesWithImages.length} with photos
+              {recipes.length} recipes · {cookbooks.length} cookbooks
             </p>
           </div>
         </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        {/* Cookbooks info */}
-        <div className="mb-8 text-center">
-          <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
-            {cookbooks.length} Cookbooks
-          </p>
-          <h2 className="text-2xl font-serif text-stone-700 dark:text-stone-200 mt-1">
-            {cookbooks.slice(0, 3).join(' · ')}
-            {cookbooks.length > 3 && ` + ${cookbooks.length - 3} more`}
-          </h2>
+        {/* Search placeholder */}
+        <div className="mb-8">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search recipes..."
+              className="w-full px-4 py-3 pl-10 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-lg text-stone-700 dark:text-stone-200 placeholder:text-stone-400"
+              disabled
+            />
+            <svg className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <p className="text-xs text-stone-400 mt-2 text-center">Search coming soon</p>
         </div>
 
-        {/* Chapter filters */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-          {chapters.map((chapter) => (
-            <span
-              key={chapter}
-              className="text-xs px-3 py-1.5 bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-full whitespace-nowrap"
+        {/* Quick filter pills */}
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4">
+          <Link
+            href="/recipes"
+            className="text-xs px-4 py-2 bg-stone-800 dark:bg-stone-200 text-white dark:text-stone-900 rounded-full whitespace-nowrap font-medium"
+          >
+            All ({recipes.length})
+          </Link>
+          {dietaryOptions.slice(0, 2).map((d) => (
+            <Link
+              key={d.slug}
+              href={`/recipes/dietary/${d.slug}`}
+              className="text-xs px-4 py-2 bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-full whitespace-nowrap hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
             >
-              {chapter}
-            </span>
+              {d.name} ({d.count})
+            </Link>
+          ))}
+          {cuisines.slice(0, 3).map((c) => (
+            <Link
+              key={c.slug}
+              href={`/recipes/cuisine/${c.slug}`}
+              className="text-xs px-4 py-2 bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-full whitespace-nowrap hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+            >
+              {c.name} ({c.count})
+            </Link>
           ))}
         </div>
 
-        {/* Recipe Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {recipes.map((recipe) => {
-            const chapter = recipe.source?.chapter || recipe.category?.chapter || '';
-            const dietary = recipe.dietary || recipe.tags?.dietary || [];
-            
-            return (
-            <Link
-              key={recipe.id}
-              href={`/recipes/${recipe.id}`}
-              className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
-            >
-              {recipe.image ? (
-                <div className="relative h-44 w-full overflow-hidden">
-                  <Image
-                    src={recipe.image}
-                    alt={recipe.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ) : (
-                <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                  <span className="text-3xl opacity-30">🍽️</span>
-                </div>
-              )}
-              <div className="p-4">
-                <h2 className="font-serif text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
-                  {recipe.name}
-                </h2>
-                
-                <div className="flex items-center gap-2 mt-2 text-xs text-stone-400 dark:text-stone-500">
-                  {recipe.servings && <span>{capitalize(recipe.servings)}</span>}
-                  {recipe.servings && chapter && <span>·</span>}
-                  {chapter && <span>{chapter}</span>}
-                </div>
-
-                {dietary.length > 0 && (
-                  <div className="flex gap-1.5 mt-2">
-                    {dietary.slice(0, 2).map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+        {/* Browse by Cookbook */}
+        <section className="mb-10">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
+              Browse by Cookbook
+            </h2>
+            <Link href="/recipes/cookbooks" className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300">
+              View all →
             </Link>
-          )})}
-        </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {cookbooks.slice(0, 8).map((cookbook) => (
+              <Link
+                key={cookbook.slug}
+                href={`/recipes/cookbook/${cookbook.slug}`}
+                className="p-4 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors group"
+              >
+                <h3 className="font-serif text-stone-800 dark:text-stone-100 text-sm leading-tight group-hover:text-stone-600 dark:group-hover:text-stone-300 line-clamp-2">
+                  {cookbook.name}
+                </h3>
+                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                  {cookbook.count} recipes
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Browse by Cuisine */}
+        <section className="mb-10">
+          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
+            Browse by Cuisine
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {cuisines.map((cuisine) => (
+              <Link
+                key={cuisine.slug}
+                href={`/recipes/cuisine/${cuisine.slug}`}
+                className="px-4 py-2 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors text-sm text-stone-700 dark:text-stone-300"
+              >
+                {cuisine.name}
+                <span className="ml-2 text-stone-400 dark:text-stone-500">{cuisine.count}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Browse by Dietary */}
+        <section className="mb-10">
+          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
+            Dietary
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {dietaryOptions.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/recipes/dietary/${d.slug}`}
+                className="px-4 py-2 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors text-sm text-stone-700 dark:text-stone-300"
+              >
+                {d.name}
+                <span className="ml-2 text-stone-400 dark:text-stone-500">{d.count}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Recipes with Images */}
+        <section>
+          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
+            Featured Recipes
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {featuredRecipes.map((recipe) => {
+              const dietary = getDietary(recipe);
+              return (
+                <Link
+                  key={recipe.id}
+                  href={`/recipes/${recipe.id}`}
+                  className="group rounded-lg bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+                >
+                  {recipe.image && (
+                    <div className="relative h-36 w-full overflow-hidden">
+                      <Image
+                        src={recipe.image}
+                        alt={recipe.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="p-3">
+                    <h3 className="font-serif text-sm text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 leading-snug line-clamp-2">
+                      {recipe.name}
+                    </h3>
+                    <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                      {recipe.source?.cookbook}
+                    </p>
+                    {dietary.length > 0 && (
+                      <div className="flex gap-1 mt-2">
+                        {dietary.slice(0, 1).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       </main>
     </div>
   );

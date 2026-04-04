@@ -18,7 +18,7 @@ export type Recipe = {
   source?: {
     cookbook: string;
     author: string;
-    chapter: string;
+    chapter?: string;
   };
   introduction?: string | null;
   intro?: string;
@@ -39,6 +39,22 @@ export type Recipe = {
   };
   dietary?: string[];
   image?: string | null;
+};
+
+// Cookbook to cuisine mapping
+const COOKBOOK_CUISINES: Record<string, string> = {
+  'Ottolenghi: The Cookbook': 'Middle Eastern',
+  'Jerusalem': 'Middle Eastern',
+  'Falastin': 'Middle Eastern',
+  'Persiana': 'Middle Eastern',
+  'Souk to Table': 'Middle Eastern',
+  'The Curry Guy': 'Indian',
+  'The Indian Vegan': 'Indian',
+  'Vietnamese Food Any Day': 'Vietnamese',
+  'Vegan Vietnamese': 'Vietnamese',
+  'Afro-Vegan': 'African & Caribbean',
+  'Plentiful': 'Caribbean',
+  'The Vegan Korean': 'Korean',
 };
 
 // Load recipes from JSON files at build time
@@ -85,4 +101,113 @@ export function getRecipesByChapter(chapter: string): Recipe[] {
 
 export function getRecipesWithImages(): Recipe[] {
   return allRecipes.filter(r => r.image !== null);
+}
+
+// Get cuisine for a recipe
+export function getCuisine(recipe: Recipe): string {
+  const cookbook = recipe.source?.cookbook;
+  if (cookbook && COOKBOOK_CUISINES[cookbook]) {
+    return COOKBOOK_CUISINES[cookbook];
+  }
+  return 'Other';
+}
+
+// Get dietary tags for a recipe (normalized)
+export function getDietary(recipe: Recipe): string[] {
+  return recipe.dietary || recipe.tags?.dietary || [];
+}
+
+// Get all unique cookbooks with counts
+export function getCookbooks(): { name: string; slug: string; count: number; author?: string }[] {
+  const cookbookMap = new Map<string, { count: number; author?: string }>();
+  
+  for (const recipe of allRecipes) {
+    const cookbook = recipe.source?.cookbook;
+    if (cookbook) {
+      const existing = cookbookMap.get(cookbook);
+      if (existing) {
+        existing.count++;
+      } else {
+        cookbookMap.set(cookbook, { count: 1, author: recipe.source?.author });
+      }
+    }
+  }
+  
+  return Array.from(cookbookMap.entries())
+    .map(([name, data]) => ({
+      name,
+      slug: slugify(name),
+      count: data.count,
+      author: data.author
+    }))
+    .sort((a, b) => b.count - a.count);
+}
+
+// Get all unique cuisines with counts
+export function getCuisines(): { name: string; slug: string; count: number }[] {
+  const cuisineMap = new Map<string, number>();
+  
+  for (const recipe of allRecipes) {
+    const cuisine = getCuisine(recipe);
+    cuisineMap.set(cuisine, (cuisineMap.get(cuisine) || 0) + 1);
+  }
+  
+  return Array.from(cuisineMap.entries())
+    .map(([name, count]) => ({
+      name,
+      slug: slugify(name),
+      count
+    }))
+    .sort((a, b) => b.count - a.count);
+}
+
+// Get recipes by cookbook
+export function getRecipesByCookbook(cookbookSlug: string): Recipe[] {
+  return allRecipes.filter(r => {
+    const cookbook = r.source?.cookbook;
+    return cookbook && slugify(cookbook) === cookbookSlug;
+  });
+}
+
+// Get recipes by cuisine
+export function getRecipesByCuisine(cuisineSlug: string): Recipe[] {
+  return allRecipes.filter(r => slugify(getCuisine(r)) === cuisineSlug);
+}
+
+// Get recipes by dietary tag
+export function getRecipesByDietary(dietary: string): Recipe[] {
+  return allRecipes.filter(r => {
+    const tags = getDietary(r);
+    return tags.includes(dietary.toLowerCase());
+  });
+}
+
+// Helper to create URL-safe slugs
+function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+// Get dietary options with counts
+export function getDietaryOptions(): { name: string; slug: string; count: number }[] {
+  const dietaryMap = new Map<string, number>();
+  
+  for (const recipe of allRecipes) {
+    const tags = getDietary(recipe);
+    for (const tag of tags) {
+      dietaryMap.set(tag, (dietaryMap.get(tag) || 0) + 1);
+    }
+  }
+  
+  return Array.from(dietaryMap.entries())
+    .map(([name, count]) => ({
+      name: name.charAt(0).toUpperCase() + name.slice(1),
+      slug: name.toLowerCase(),
+      count
+    }))
+    .sort((a, b) => b.count - a.count);
 }
