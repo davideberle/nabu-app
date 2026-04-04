@@ -1,0 +1,82 @@
+{
+  "id": "mejadra",
+  "name": "Mejadra",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 6",
+  "intro": "This ancient dish, popular throughout the Arab world, is also one of our most loved. The fried onion, with its sweet oiliness and slight crunch, is the secret. When Sami’s family would go out on a day trip to Jericho, they would take a large pot of mejadra for the picnic. The lentils were divided among small bowls and topped with a spoonful of fresh yogurt sauce. Dessert was a huge watermelon that Sami’s dad chilled in a small stream running into the Jordan River.",
+  "tips": "The two of us can spend many pointless hours discussing what makes the best comfort food and why, but never seem to reach any kind of serious conclusion. Mejadra, however, is where the dispute ends. When served alongside Yogurt with cucumber or just plain Greek yogurt, the sweetly spiced rice and lentils strewn with soft fried onion is as comforting as it gets in Jerusalem. It is best served warm but is also fine at room temperature.",
+  "ingredients": [
+    {
+      "item": "green or brown lentils",
+      "amount": "1¼ cups / 250 g"
+    },
+    {
+      "item": "medium onions (1½ lb / 700 g before peeling)",
+      "amount": "4"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "about 1 cup / 250 ml sunflower oil",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "basmati rice",
+      "amount": "1 cup / 200 g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "1½ cups / 350 ml"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the lentils in a small saucepan, cover with plenty of water, bring to a boil, and cook for 12 to 15 minutes, until the lentils have softened but still have a little bite. Drain and set aside.",
+    "Peel the onions and slice thinly. Place on a large flat plate, sprinkle with the flour and 1 teaspoon salt, and mix well with your hands. Heat the sunflower oil in a medium heavy-bottomed saucepan placed over high heat. Make sure the oil is hot by throwing in a small piece of onion; it should sizzle vigorously. Reduce the heat to medium-high and carefully (it may spit!) add one-third of the sliced onion. Fry for 5 to 7 minutes, stirring occasionally with a slotted spoon, until the onion takes on a nice golden brown color and turns crispy (adjust the temperature so the onion doesn’t fry too quickly and burn). Use the spoon to transfer the onion to a colander lined with paper towels and sprinkle with a little more salt. Do the same with the other two batches of onion; add a little extra oil if needed.",
+    "Wipe the saucepan in which you fried the onion clean and put in the cumin and coriander seeds. Place over medium heat and toast the seeds for a minute or two. Add the rice, olive oil, turmeric, allspice, cinnamon, sugar, ½ teaspoon salt, and plenty of black pepper. Stir to coat the rice with the oil and then add the cooked lentils and the water. Bring to a boil, cover with a lid, and simmer over very low heat for 15 minutes.",
+    "Remove from the heat, lift off the lid, and quickly cover the pan with a clean tea towel. Seal tightly with the lid and set aside for 10 minutes.",
+    "Finally, add half the fried onion to the rice and lentils and stir gently with a fork. Pile the mixture in a shallow serving bowl and top with the rest of the onion."
+  ],
+  "image": "/recipes/mejadra.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "raw-artichoke-and-herb-salad",
+  "name": "Raw artichoke & herb salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 2",
+  "tips": "Artichokes are the most extraordinary vegetable; nothing tastes quite as magical. Many cooks tend to be finicky when it comes to artichokes, easily shunning the effort involved in preparing them. In Jerusalem, some housewives buy great numbers of artichokes when they are in season, in early summer, and allocate a couple of hours to trimming and cleaning them, before storing them in the freezer for a rainy day. If you can spare the time, we encourage you to adopt the habit. If you can’t, prepare just a couple and make this refreshing salad, the ideal pairing to anything fatty or hearty. Try it with Lamb shawarma, Latkes, or Jerusalem mixed grill.",
+  "ingredients": [
+    {
+      "item": "large globe artichokes (1½ lb / 700 g in total)",
+      "amount": "2 or 3"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "arugula",
+      "amount": "2 cups / 40 g"
+    },
+    {
+      "item": "torn mint leaves",
+      "amount": "½ cup / 15 g"
+    },
+    {
+      "item": "torn cilantro leaves",
+      "amount": "½ cup / 15 g"
+    },
+    {
+      "item": "pecorino toscano or romano cheese, thinly shaved",
+      "amount": "1 oz / 30 g"
+    },
+    {
+      "item": "Maldon sea salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Prepare a bowl of water mixed with half of the lemon juice. Remove the stem from 1 artichoke and pull off the tough outer leaves. Once you reach the softer, pale leaves, use a large, sharp knife to cut across the flower so that you are left with the bottom quarter. Use a small, sharp knife or a vegetable peeler to remove the outer layers of the artichoke until the base, or bottom, is exposed. Scrape out the hairy “choke” and put the base in the acidulated water. Discard the rest, then repeat with the other artichoke(s).",
+    "Drain the artichokes and pat dry with paper towels. Using a mandoline or large, sharp knife, cut the artichokes into paper-thin slices and transfer to a large mixing bowl. Squeeze over the remaining lemon juice, add the olive oil, and toss well to coat. You can leave the artichoke for up to a few hours if you like, at room temperature. When ready to serve, add the arugula, mint, and cilantro to the artichoke and season with a generous ¼ teaspoon salt and plenty of freshly ground black pepper. Toss gently and arrange on serving plates. Garnish with the pecorino shavings."
+  ],
+  "image": "/recipes/raw-artichoke-and-herb-salad.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

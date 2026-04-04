@@ -1,0 +1,56 @@
+{
+  "id": "basic-hummus",
+  "name": "Basic hummus",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 6",
+  "tips": "Our basic hummus recipe is supersmooth and rich in tahini, just as we like it, and can be kept in the fridge for up to three days and used simply spread over a plate, drizzled with olive oil, and eaten with a pita or bread. However, the two recipes that follow turn hummus into an altogether different thing, an exciting centerpiece of a seriously substantial meal, as it is mostly enjoyed in Jerusalem. If you prefer to stick to the basic recipe, you can vary it by folding in cooked and crushed chickpeas for texture, adding some ground cumin, and adjusting the amount of lemon juice and tahini to your taste.",
+  "ingredients": [
+    {
+      "item": "dried chickpeas",
+      "amount": "1¼ cups / 250 g"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "/ 1.5 liters water",
+      "amount": "6½ cups"
+    },
+    {
+      "item": "plus 2 tbsp / 270 g light tahini paste",
+      "amount": "1 cup"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "4"
+    },
+    {
+      "item": "ice-cold water",
+      "amount": "6½ tbsp / 100 ml"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "The night before, put the chickpeas in a large bowl and cover them with cold water at least twice their volume. Leave to soak overnight.",
+    "The next day, drain the chickpeas. Place a medium saucepan over high heat and add the drained chickpeas and baking soda. Cook for about 3 minutes, stirring constantly. Add the water and bring to a boil. Cook, skimming off any foam and any skins that float to the surface. The chickpeas will need to cook between 20 and 40 minutes, depending on the type and freshness, sometimes even longer. Once done, they should be very tender, breaking up easily when pressed between your thumb and finger, almost but not quite mushy.",
+    "Drain the chickpeas. You should have roughly 3⅔ cups / 600 g now. Place the chickpeas in a food processor and process until you get a stiff paste. Then, with the machine still running, add the tahini paste, lemon juice, garlic, and 1½ teaspoons salt. Finally, slowly drizzle in the iced water and allow it to mix for about 5 minutes, until you get a very smooth and creamy paste.",
+    "Transfer the hummus to a bowl, cover the surface with plastic wrap, and let it rest for at least 30 minutes. If not using straightaway, refrigerate until needed. Make sure to take it out of the fridge at least 30 minutes before serving."
+  ],
+  "image": "/recipes/basic-hummus.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -7,35 +7,38 @@ import path from 'path';
 export type Ingredient = {
   item: string;
   amount: string;
-  unit: string;
-  original: string;
+  unit?: string;
+  original?: string;
   group?: string | null;
 };
 
 export type Recipe = {
   id: string;
   name: string;
-  source: {
+  source?: {
     cookbook: string;
     author: string;
     chapter: string;
   };
-  introduction: string | null;
-  category: {
+  introduction?: string | null;
+  intro?: string;
+  tips?: string;
+  category?: {
     dish_type: string[];
     chapter: string;
   };
   servings: string;
-  time: { prep: number; cook: number; total: number };
+  time?: { prep: number; cook: number; total: number };
   ingredients: Ingredient[];
   method: string[];
   serving?: string;
   related_recipes?: { name: string; page?: number }[];
-  tags: {
+  tags?: {
     dietary: string[];
     season?: string[];
   };
-  image: string | null;
+  dietary?: string[];
+  image?: string | null;
 };
 
 // Load recipes from JSON files at build time
@@ -77,7 +80,7 @@ export function getAllRecipes(): Recipe[] {
 }
 
 export function getRecipesByChapter(chapter: string): Recipe[] {
-  return allRecipes.filter(r => r.category.chapter === chapter);
+  return allRecipes.filter(r => r.source?.chapter === chapter || r.category?.chapter === chapter);
 }
 
 export function getRecipesWithImages(): Recipe[] {

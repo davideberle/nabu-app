@@ -1,0 +1,69 @@
+{
+  "id": "harissa",
+  "name": "Harissa",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes 1 small jarabout a generous ¾ cup / 200 ml",
+  "tips": "Harissa, the basic flavoring agent in Tunisian cuisine, is extremely versatile. Use it as a condiment for grilled meat or fish, add it to roasted vegetables, or stir into stews and soups. We particularly like it with couscous or rice. Adjust the amount of heat by increasing or reducing the number of chiles. Just remember, it is meant to be hot!",
+  "ingredients": [
+    {
+      "item": "red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "small red onion, coarsely chopped (scant ⅔ cup / 90 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, coarsely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "hot red chiles, seeded and coarsely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Place the pepper under a very hot broiler, turning occasionally for about 25 minutes, until blackened on the outside and completely soft. Transfer to a bowl, cover with plastic wrap, and allow to cool. Peel the pepper and discard its skin and seeds.",
+    "Place a dry frying pan over low heat and lightly toast the coriander, cumin, and caraway seeds for 2 minutes. Remove them to a mortar and use a pestle to grind to a powder.",
+    "Heat the olive oil in a frying pan over medium heat, and fry the onion, garlic, and chiles for 10 to 12 minutes, until a dark smoky color and almost caramelized.",
+    "Now use a blender or a food processor to blitz together all of the paste ingredients until smooth, adding a little more oil if needed.",
+    "Store in a sterilized jar (SEE PRESERVED LEMONS) in the fridge for up to 2 weeks or even longer."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "chopped-liver",
+  "name": "Chopped liver",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Meat"
+  },
+  "servings": "serves 4 to 6",
+  "intro": "“Liver-flavor eggplant” is a weird-sounding, yet popular invention, which is probably one of the best products to expose the unique, often paradoxical history of the city over the last sixty years.\n\nDuring the days of rationing, in the 1950s, Ashkenazic Jews couldn’t afford to make one of their most loved dishes, chopped liver, second only to gefilte fish in its iconic value. A creative solution was found using eggplants, a cheap and abundant local ingredient, that was “made” to taste like the real thing. Still, over the years this dish, using an ingredient their eastern European Ashkenazic ancestors would have thought was a UFO, has become a hit with many and is now sold everywhere, enjoying particular popularity in Orthodox neighborhoods. The liver has turned into an eggplant within two generations, with the origins of the dish still carried on in the name.",
+  "tips": "Our “real” chicken liver is a fantastic way to start a meal. Serve it with little toasts or with slices of good white bread.",
+  "ingredients": [
+    {
+      "item": "melted goose or duck fat",
+      "amount": "6½ tbsp / 100 ml"
+    },
+    {
+      "item": "large onions, sliced (about 3 cups / 400 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "chicken livers, cleaned and broken down into roughly 1¼-inch / 3cm chunks",
+      "amount": "14 oz / 400 g"
+    },
+    {
+      "item": "extra-large free-range eggs, hard boiled",
+      "amount": "5"
+    },
+    {
+      "item": "dessert wine",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "2 to 3"
+    },
+    {
+      "item": "chopped chives",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place two-thirds of the goose fat in a large frying pan and fry the onions over medium heat for 10 to 15 minutes, stirring occasionally, until dark brown. Remove the onions from the pan, pushing them down a little as you do so, so that you are left with some fat in the pan. Add a little fat if needed. Add the livers and cook them for up to 10 minutes, stirring from time to time, until they are properly cooked in the middle—no blood should be coming out at this stage.",
+    "Mix the livers with the onion before chopping them together. The best way to do this is with a meat grinder, processing the mixture twice to get the right texture. If you don’t have a meat grinder, a food processor is also fine. Blitz the onions and liver in two or three batches so the machine bowl isn’t very full. Pulse for 20 to 30 seconds, then check, making sure the liver and onions have turned into a uniformly smooth, yet still “bumpy” paste. Transfer everything into a large mixing bowl.",
+    "Peel the eggs, then grate two of them roughly and another two finely and add them to the liver mixture. Add the remaining fat, the dessert wine, and the salt and pepper and fold everything together gently. Transfer the mix to a nonmetallic flat dish and cover the surface tightly with plastic wrap. Leave it to cool down, then store in the fridge for at least 2 hours to firm up a little.",
+    "To serve, finely chop the remaining egg. Spoon the chopped liver onto individual serving plates, garnish with the chopped egg, and sprinkle with the green onions and chives."
+  ],
+  "image": "/recipes/chopped-liver.jpg"
+}

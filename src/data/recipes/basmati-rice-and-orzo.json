@@ -1,0 +1,44 @@
+{
+  "id": "basmati-rice-and-orzo",
+  "name": "Basmati rice & orzo",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 6",
+  "intro": "Just like the Palestinians, rice is the basic grain for most Sephardic communities, excluding North Africans. Although the cooking methods and accompanying ingredients vary greatly, with Iranians developing the most complex method and best texture, rice is an essential element in every Friday night dinner. Mixing chickpeas with rice (or bulgur) is common practice among Sephardim, as it makes the rice, served next to stews and long-cooked dishes, more interesting in look and texture. Many other substantial elements—vermicelli (see below), potatoes, lentils, nuts—could also be included. Bukharan Jews, a substantial community in Jerusalem, make a pilaf with plenty of spices (ginger, clove, cardamom, cinnamon), lots of mint, raisins, and peas. It is a luxurious and rich dish, appropriate for a previously wealthy Jewish community that had built its own neighborhood when its members started coming to Palestine in the late nineteenth and early twentieth century, wearing unusual embroidered clothes, adorned with jewelry. Later on, after the Russian Revolution, many lost their wealth and the neighborhood lost much of its past glory, but the food remains as spectacular and vibrant.",
+  "tips": "Long-grain rice, cooked simply with plain vermicelli noodles, is common all over the Levant and Turkey. Its neutral flavor and playful textures make an effective background for various stews, soups, and salads. Our version uses orzo—tiny rice-shaped pasta—but you can use vermicelli. Just don’t fry them as long, as they burn quickly. Try this and you may not want to cook plain rice ever again.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "1⅓ cups / 250 g"
+    },
+    {
+      "item": "melted ghee or unsalted butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "scant ½ cup / 85 g orzo",
+      "amount": ""
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2½ cups / 600 ml"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Wash the basmati rice well, then place in a large bowl and cover with plenty of cold water. Allow it to soak for 30 minutes, then drain.",
+    "Heat the ghee and oil over medium-high heat in a medium heavy-bottomed saucepan for which you have a lid. Add the orzo and sauté for 3 to 4 minutes, until the grains turn dark golden. Add the stock, bring to a boil, and cook for 3 minutes. Add the drained rice and salt, bring to a gentle boil, stir once or twice, cover the pan, and simmer over very low heat for 15 minutes. Don’t be tempted to uncover the pan; you’ll need to allow the rice to steam properly.",
+    "Turn off the heat, remove the lid, and quickly cover the pan with a clean tea towel. Place the lid back on top of the towel and leave for 10 minutes. Fluff the rice with a fork before serving."
+  ],
+  "image": null
+}

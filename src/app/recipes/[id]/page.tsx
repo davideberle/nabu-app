@@ -80,15 +80,18 @@ export default async function RecipePage({
           {/* Header */}
           <header className="px-8 pt-10 pb-6">
             {/* Source line */}
+            {recipe.source && (
             <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
               {recipe.source.author} — {recipe.source.cookbook}
             </p>
+            )}
             
             <h1 className="text-3xl md:text-4xl font-serif text-stone-800 dark:text-stone-100 leading-tight tracking-tight">
               {recipe.name}
             </h1>
             
             {/* Dish type tags */}
+            {recipe.category?.dish_type && (
             <div className="flex gap-3 mt-5">
               {recipe.category.dish_type.map((type) => (
                 <span
@@ -98,14 +101,22 @@ export default async function RecipePage({
                   {capitalize(type)}
                 </span>
               ))}
-              <span className="text-stone-300 dark:text-stone-600">·</span>
+            </div>
+            )}
+            <div className="flex gap-3 mt-2">
+              {recipe.servings && (
               <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
                 {capitalize(recipe.servings)}
               </span>
+              )}
+              {recipe.time?.total && (
+              <>
               <span className="text-stone-300 dark:text-stone-600">·</span>
               <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
                 {recipe.time.total} min
               </span>
+              </>
+              )}
             </div>
           </header>
 
@@ -199,10 +210,12 @@ export default async function RecipePage({
           )}
 
           {/* Footer - dietary tags */}
-          {recipe.tags.dietary.length > 0 && (
+          {(() => {
+            const dietary = recipe.dietary || recipe.tags?.dietary || [];
+            return dietary.length > 0 && (
             <footer className="px-8 py-4 bg-[#faf9f7] dark:bg-stone-800/30 border-t border-stone-100 dark:border-stone-800">
               <div className="flex gap-3">
-                {recipe.tags.dietary.map((tag) => (
+                {dietary.map((tag: string) => (
                   <span
                     key={tag}
                     className="text-xs text-stone-400 dark:text-stone-500"
@@ -212,7 +225,7 @@ export default async function RecipePage({
                 ))}
               </div>
             </footer>
-          )}
+          )})()}
         </article>
       </main>
     </div>

@@ -1,0 +1,68 @@
+{
+  "id": "a-ja-bread-fritters",
+  "name": "A’ja (bread fritters)",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 2 to 4makes about 8 fritters",
+  "intro": "This Tripolitan version is one among endless kinds of vegetable or herb-based bread fritters and omelets that are rife all over the city. This is convenience food at its best, ready to be stuffed inside a pita and put in a lunch box, or prepared as a quick “solution” for a light meal using leftover bread and seasonal vegetables. It may not sound appetizing, but taste it once, and you will see what it’s all about.",
+  "tips": "You can add grated vegetables, such as zucchini or sweet potato, to these fritters, replacing the bread or adding to it. Feel free to play with the herbs and spices. Tunisians, for instance, add chopped mint and crushed garlic. Vegetable-based fritters are best served in a pita, warm or at room temperature, with Tahini sauce and sliced tomato and cucumber. This bread-based variety is nice on its own with a fresh salad (FATTOUSH), omitting the bread.",
+  "ingredients": [
+    {
+      "item": "white bread slices, crusts removed (3 oz / 80 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "extra-large free-range eggs",
+      "amount": "4"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "scant 1 oz / 25 g chives, chopped",
+      "amount": ""
+    },
+    {
+      "item": "scant 1 oz / 25 g flat-leaf parsley, chopped",
+      "amount": ""
+    },
+    {
+      "item": "tarragon, chopped",
+      "amount": "⅓ oz / 10 g"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "1½ oz / 40 g"
+    },
+    {
+      "item": "sunflower oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak the bread in plenty of cold water for 1 minute, then squeeze well.",
+    "Crumble the soaked bread into a medium bowl, then add the eggs, spices, ½ teaspoon salt, and ¼ teaspoon pepper and whisk well. Mix in the chopped herbs and feta.",
+    "Heat 1 tablespoon oil in a medium frying pan over medium-high heat. Spoon about 3 tablespoons of the mixture into the center of the pan for each fritter and flatten it using the underside of the spoon; the fritters should be ¾ to 1¼ inches / 2 to 3 cm thick. Fry the fritters for 2 to 3 minutes on each side, until golden brown. Repeat with the remaining batter. You should get about 8 fritters.",
+    "Alternatively, you can fry all the batter at once, as you would a large omelet. Slice and serve warm or at room temperature."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

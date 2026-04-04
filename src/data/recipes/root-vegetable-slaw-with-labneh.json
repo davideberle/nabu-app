@@ -1,0 +1,79 @@
+{
+  "id": "root-vegetable-slaw-with-labneh",
+  "name": "Root vegetable slaw with labneh",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "tips": "We make this salad in the winter or early spring, before any of the summer crops are around. It is incredibly fresh, ideal for starting a hearty meal. It is also great served alongside grilled oily fish. The labneh can be substituted with Greek yogurt, well seasoned with some olive oil, crushed garlic, and salt and pepper. It can also be left out all together, if you prefer to keep it light and simple. This recipe was inspired by a dish from Manta Ray, a great restaurant on the beach in Tel Aviv.",
+  "ingredients": [
+    {
+      "item": "medium beets (1 lb / 450 g in total)",
+      "amount": "3"
+    },
+    {
+      "item": "medium carrots (9 oz / 250 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "celery root (10 oz / 300 g in total)",
+      "amount": "½"
+    },
+    {
+      "item": "medium kohlrabi (9 oz / 250 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cilantro leaves, coarsely chopped",
+      "amount": "¾ cup / 25 g"
+    },
+    {
+      "item": "mint leaves, shredded",
+      "amount": "¾ cup / 25 g"
+    },
+    {
+      "item": "flat-leaf parsley leaves, coarsely chopped",
+      "amount": "⅔ cup / 20 g"
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "scant 1 cup / 200 g labneh (store-bought or see recipe)",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel all the vegetables and slice them thinly, about 1/16 small hot chile, finely chopped",
+    "Place the lemon juice, olive oil, vinegar, sugar, and 1 teaspoon salt in a small saucepan. Bring to a gentle simmer and stir until the sugar and the salt have dissolved. Remove from the heat.",
+    "Drain the vegetable strips and transfer to a paper towel to dry well. Dry the bowl and replace the vegetables. Pour the hot dressing over the vegetables, mix well, and leave to cool. Place in the fridge for at least 45 minutes.",
+    "When ready to serve, add the herbs, lemon zest, and 1 teaspoon black pepper to the salad. Toss well, taste, and add more salt if needed. Pile onto serving plates and serve with some labneh on the side."
+  ],
+  "image": "/recipes/root-vegetable-slaw-with-labneh.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

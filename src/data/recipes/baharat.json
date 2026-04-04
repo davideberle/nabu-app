@@ -1,0 +1,53 @@
+{
+  "id": "baharat",
+  "name": "Baharat",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "",
+  "tips": "We recommend getting a spice grinder for this, and for plenty of other occasions. It is one of the kitchen gadgets we use the most, and it needn’t be expensive. If you are using a mortar and pestle, you may want to get ground cardamom, as the pods will be hard to grind by hand.",
+  "ingredients": [
+    {
+      "item": "black peppercorns",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "small cinnamon stick, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cardamom pods",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "whole nutmeg, grated",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Place all the spices in a spice grinder or mortar and grind until a fine powder is formed. Store in an airtight container, where it will keep for 8 weeks."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

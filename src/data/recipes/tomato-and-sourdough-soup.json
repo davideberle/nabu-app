@@ -1,0 +1,67 @@
+{
+  "id": "tomato-and-sourdough-soup",
+  "name": "Tomato & sourdough soup",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Soups"
+  },
+  "servings": "serves 4",
+  "intro": "Yotam’s mother, Ruth, who kindly gave us this recipe, is in many ways a typical Jewish Jerusalem cook. She was born to a Yekke family, German Jews who settled in the city just before the Second World War. Growing up, she spoke German at home and ate sweet-spiced red cabbage, potatoes, and sausages. Outside, she would experience some Arab food—it tasted thoroughly exotic to her—and the food of various Jewish immigrants, particularly from Poland and eastern Europe. She would also experience the beginnings of what later developed into a pretty defined Israeli cuisine, particularly as it was prepared in the kibbutzim—the famous chopped cucumber and tomato salad, tahini sauce, and olives.\n\nRuth married Michael, of Italian background, and so a whole new culinary world was opened up for her. She also got to travel a bit, mainly to Europe and the United States, and being an open person, she was always seeking new influences, new cuisines to try.\n\nGrowing up, Yotam remembers Ruth daringly trying all kinds of dishes. She made Spanish gazpachos, Italian zabagliones, and Malaysian curries. She cooked beef bourguignon; roast beef, English style; and sweet-and-sour chicken. She also cooked many specialties of her German heritage. What you could hardly find in her kitchen were many local Palestinian ingredients. Yotam can’t remember ever seeing a tub of tahini in the house or a bag of bulgur. Still, over the years, Arab food gained respectability in Israeli culture and people started daring to go beyond the obligatory visit to a Palestinian joint for a kebab skewer and a plate of hummus when visiting the Old City. Ruth, like many other Israeli cooks, began to get to know what was happening in her neighbors’ kitchens and what was laid on their tables. Instead of feeling exotic, ingredients like za’atar made their way into the daily food repertoire, until they felt like they had always been there.\n\nToday, like many other Jewish cooks, Ruth is comfortable with her European culinary heritage, but her style has changed and the ingredients she uses are much more local. In her larder you can now find freekeh and tahini sitting next to fusilli and a jar of rollmops. On her spice shelf are sumac, cumin, and organic Swiss bouillon powder. And you can even catch her, once in a while, burning a little eggplant.",
+  "tips": "This modest list of ingredients yields the most delicate soup. It is truly wonderful.",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large onion, chopped (1⅔ cups / 250 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "3 cups / 750 ml"
+    },
+    {
+      "item": "large ripe tomatoes, chopped (4 cups / 650 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "one 14-oz / 400g can chopped Italian tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "slice sourdough bread (1½ oz / 40 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "chopped cilantro, plus extra to finish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a medium saucepan and add the onion. Sauté for about 5 minutes, stirring often, until the onion is translucent. Add the cumin and garlic and fry for 2 minutes. Pour in the stock, both types of tomato, sugar, 1 teaspoon salt, and a good grind of black pepper.",
+    "Bring the soup to a gentle simmer and cook for 20 minutes, adding the bread, torn into chunks, halfway through the cooking. Finally, add the cilantro and then blitz, using a blender, in a few pulses so that the tomatoes break down but are still a little coarse and chunky. The soup should be quite thick; add a little water if it is too thick at this point. Serve, drizzled with oil and scattered with fresh cilantro."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

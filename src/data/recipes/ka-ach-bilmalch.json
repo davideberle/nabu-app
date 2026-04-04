@@ -1,0 +1,95 @@
+{
+  "id": "ka-ach-bilmalch",
+  "name": "Ka’ach bilmalch",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Baking"
+  },
+  "servings": "makes 30 to 40 biscuits",
+  "tips": "These simple savory cookies are normally kept at home in a jar, ready to be snacked on at any moment (Yotam’s dad tends to sneak into the kitchen in the middle of the night and devour a couple—without anyone noticing, of course). They aren’t very rich, so they will go well with a cheese dip or on their own with a glass of cold beer, arak on ice, or black coffee. The dipping sauce given here is optional; make it if you want to upgrade them to a predinner party appetizer.",
+  "ingredients": [
+    {
+      "item": "all-purpose flour, sifted",
+      "amount": "4 cups / 500 g"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "6½ tbsp / 100 ml"
+    },
+    {
+      "item": "unsalted butter, diced and left to soften",
+      "amount": "6½ tbsp / 100 g"
+    },
+    {
+      "item": "fast-rising active dry yeast",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fennel seeds, toasted and very lightly crushed",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "about 6½ tbsp / 100 ml water",
+      "amount": ""
+    },
+    {
+      "item": "large free-range egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "white and black sesame seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "flat-leaf parsley (stems and leaves)",
+      "amount": "1¼ oz / 35 g"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "scant 2 tbsp / 25 g light tahini paste",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "½ cup / 125 g"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "5 tsp / 25 ml"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F / 200°C. Place the sifted flour in a large bowl and make a well in the center. Pour the oil into the well, add the butter, yeast, baking powder, sugar, salt, and spices, and stir together well until a dough forms. Add the water gradually while stirring until the dough is smooth. Knead for a couple minutes.",
+    "Line a baking sheet with parchment paper. Pinch pieces of the dough into small balls, about a scant 1 oz / 25 g each. On a clean surface, roll the balls into long snakes about ⅜ inch / 1 cm thick and 5 to 5½ inches / 12 to 13 cm long. Form each snake into a closed ring and arrange on the baking sheet, spacing them about ¾ inch / 2 cm apart. Brush each ring with the egg and sprinkle lightly with the sesame seeds. Leave to proof for 30 minutes.",
+    "Bake the biscuits for 22 minutes, until golden brown. Allow to cool down before storing them in a clean jar or an airtight container. They keep for up to 10 days.",
+    "To make the dipping sauce, just blitz all the ingredients together to get a uniformly green sauce. Add a tablespoon or so of water if the sauce is very thick; you want a nice coating consistency."
+  ],
+  "image": "/recipes/ka-ach-bilmalch.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

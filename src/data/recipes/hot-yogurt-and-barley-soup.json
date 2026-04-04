@@ -1,0 +1,67 @@
+{
+  "id": "hot-yogurt-and-barley-soup",
+  "name": "Hot yogurt & barley soup",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Soups"
+  },
+  "servings": "serves 4",
+  "intro": "This is adapted from an Armenian recipe for warm rice and yogurt soup, not dissimilar to Sephardic soups using rice, yogurt, onion, herbs, and lemon juice.\n\nArmenians have lived in Jerusalem since the fourth century AD and their food assimilated many of the local cultures. They have a small quarter within the walls of the crowded Old City—one of only four: Muslim, Jewish, Christian, and Armenian—where they reside in relative isolation, speaking Armenian. The heart of the quarter is the Cathedral of Saint James and it has its own institutions—churches, schools, and social clubs.",
+  "tips": "This soup is very comforting and quick to prepare. Save it for when you need to cook unexpectedly using pantry ingredients and whatever you have in the fridge. Omit or use other soft herbs if you wish.",
+  "ingredients": [
+    {
+      "item": "/ 1.6 liters water",
+      "amount": "6¾ cups"
+    },
+    {
+      "item": "pearl barley",
+      "amount": "1 cup / 200 g"
+    },
+    {
+      "item": "medium onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "4 tbsp / 60 g"
+    },
+    {
+      "item": "large eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "scant 2 cups / 400 g Greek yogurt",
+      "amount": ""
+    },
+    {
+      "item": "fresh mint, chopped",
+      "amount": "⅔ oz / 20 g"
+    },
+    {
+      "item": "flat-leaf parsley, chopped",
+      "amount": "⅓ oz / 10 g"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring the water to a boil with the barley in a large saucepan, adding 1 teaspoon salt, and simmer until the barley is cooked but still al dente, 15 to 20 minutes. Remove from the heat. Once cooked, you will need 4¾ cups / 1.1 liters of the cooking liquid for the soup; top up with water if you are left with less due to evaporation.",
+    "While the barley is cooking, sauté the onion and dried mint over medium heat in the butter until soft, about 15 minutes. Add this to the cooked barley.",
+    "Whisk together the eggs and yogurt in a large heatproof mixing bowl. Slowly mix in some of the barley and water, one ladle at a time, until the yogurt has warmed. This will temper the yogurt and eggs and stop them from splitting when added to the hot liquid. Add the yogurt to the soup pot and return to medium heat, stirring continuously, until the soup comes to a very light simmer. Remove from the heat, add the chopped herbs and green onions and check the seasoning. Serve hot."
+  ],
+  "image": "/recipes/hot-yogurt-and-barley-soup.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

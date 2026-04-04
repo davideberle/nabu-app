@@ -1,0 +1,58 @@
+{
+  "id": "latkes",
+  "name": "Latkes",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4makes 12 latkes",
+  "tips": "We would like to thank our friend Helen Goh, a true perfectionist if ever there was one, for perfecting this Ashkenazic Hanukkah specialty for us. Don’t save latkes just for holidays though; they are truly marvelous and a good way to start any meal, or to accompany roasted beef. Latkes are also often served sweet. To do this, remove the chive and reduce the salt. Serve warm with sour cream and sprinkled with superfine sugar.",
+  "ingredients": [
+    {
+      "item": "peeled and grated fairly waxy potatoes such as Yukon Gold",
+      "amount": "5½ cups / 600 g"
+    },
+    {
+      "item": "peeled and grated parsnips",
+      "amount": "2¾ cups / 300 g"
+    },
+    {
+      "item": "chives, finely chopped",
+      "amount": "⅔ cup / 30 g"
+    },
+    {
+      "item": "egg whites",
+      "amount": "4"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "5 tbsp / 80 g"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "6½ tbsp / 100 ml"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sour cream, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse the potato in a large bowl of cold water. Drain in a colander, squeeze out any excess water, and then spread the potato out on a clean kitchen towel to dry completely.",
+    "In a large bowl, mix together the potato, parsnip, chives, egg whites, cornstarch, 1 teaspoon salt, and plenty of black pepper.",
+    "Heat half the butter and half the oil in a large frying pan over medium-high heat. Use your hands to pick out portions of about 2 tablespoons of the latke mix, squeeze firmly to remove some of the liquid, and shape into thin patties about 3/8 inch / 1 cm thick and 3¼ inches / 8 cm in diameter. Carefully place as many latkes as you can comfortably fit in the pan, push them down gently, and level them with the back of a spoon. Fry over medium-high heat for 3 minutes on each side. The latkes need to be completely brown on the outside. Remove the fried latkes from the oil, place on paper towels, and keep warm while you cook the rest. Add the remaining butter and oil as needed. Serve at once with sour cream on the side."
+  ],
+  "image": "/recipes/latkes.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

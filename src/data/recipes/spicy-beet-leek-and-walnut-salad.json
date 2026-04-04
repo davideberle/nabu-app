@@ -1,0 +1,79 @@
+{
+  "id": "spicy-beet-leek-and-walnut-salad",
+  "name": "Spicy beet, leek & walnut salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "",
+  "tips": "This gutsy salad is inspired by Georgian cuisine. The beets and leeks can be cooked well ahead of time, even a day in advance. We keep the two elements of the salad separate until serving, so the beets don’t color the leeks red. This is not necessary if such an aesthetic consideration is not top of your priority list. Beets of other colors—golden, white, or striped—are also good.",
+  "ingredients": [
+    {
+      "item": "medium beets (⅓ lb / 600 g in total after cooking and peeling)",
+      "amount": "4"
+    },
+    {
+      "item": "medium leeks, cut into 4-inch / 10cm segments (4 cups / 360 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "cilantro, coarsely chopped",
+      "amount": "½ oz / 15 g"
+    },
+    {
+      "item": "arugula",
+      "amount": "1¼ cups / 25 g"
+    },
+    {
+      "item": "pomegranate seeds (optional)",
+      "amount": "⅓ cup / 50 g"
+    },
+    {
+      "item": "walnuts, coarsely chopped",
+      "amount": "1 cup / 100 g"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "tamarind water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "walnut oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F / 220°C.",
+    "Wrap the beets individually in aluminum foil and roast them in the oven for 1 to 1½ hours, depending on their size. Once cooked, you should be able to stick a small knife through to the center easily. Remove from the oven and set aside to cool.",
+    "Once cool enough to handle, peel the beets, halve them, and cut each half into wedges ⅜ inch / 1 cm thick at the base. Put in a medium bowl and set aside.",
+    "Place the leeks in a medium pan with salted water, bring to a boil, and simmer for 10 minutes, until just cooked; it’s important to simmer them gently and not to overcook them so they don’t fall apart. Drain and refresh under cold water, then use a very sharp serrated knife to cut each segment into 3 smaller pieces and pat dry. Transfer to a bowl, separate from the beets, and set aside.",
+    "While the vegetables are cooking, mix together all the dressing ingredients and leave to one side for at least 10 minutes for all the flavors to come together.",
+    "Divide the walnut dressing and the cilantro equally between the beets and the leeks and toss gently. Taste both and add more salt if needed.",
+    "To put the salad together, spread most of the beets on a serving platter, top with some arugula, then most of the leeks, then the remaining beets, and finish with more leeks and arugula. Sprinkle over the pomegranate seeds, if using, and serve."
+  ],
+  "image": "/recipes/spicy-beet-leek-and-walnut-salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

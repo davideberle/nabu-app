@@ -1,0 +1,70 @@
+{
+  "id": "tabbouleh",
+  "name": "Tabbouleh",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4 generously",
+  "intro": "“If you want to find a good husband, you’d better learn how to chop your parsley properly,” Sami’s mother sternly cautioned his sister when she was a teenager. Indeed tabbouleh, as is not always understood in the West, is all about parsley. It is a key ingredient—both in this salad and in Palestinian cuisine in general—and it must be treated with respect and great deftness, as implied by Sami’s mum.\n\nTabbouleh probably hails from Lebanon and Syria, but has become such an essential part of the Palestinian heritage that nobody seems to remember any more. A good tabbouleh is based on plenty of fresh flat-leaf parsley and mint, carefully shredded by hand to prevent bruising, well seasoned and sharp, mixed with some tomato and al dente bulgur wheat. The exact proportions of parsley to bulgur vary. The Lebanese use the least amount of bulgur, just a tiny quantity of grain dotted sparingly among the parsley. The Palestinians add a little more. Other elements need to be added carefully. Whichever way, this is, essentially, a parsley salad, not a bulgur salad.",
+  "tips": "If you can’t get fine bulgur wheat, or if the pack doesn’t mention the grade, soak it in boiling water for 5 minutes, then drain and leave to dry in a fine sieve. Tabbouleh is traditionally eaten scooped up with small romaine lettuce leaves. These can be arranged on a platter at the start of a meal and everybody helps themselves. It also goes well next to most meat and fish dishes.",
+  "ingredients": [
+    {
+      "item": "fine bulgur wheat",
+      "amount": "½ cup / 30 g"
+    },
+    {
+      "item": "large tomatoes, ripe but firm (10½ oz / 300 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "shallot, finely chopped (3 tbsp / 30 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "freshly squeezed lemon juice, plus a little extra to finish",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "large bunches flat-leaf parsley (5½ oz / 160 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "bunches mint (1 oz / 30 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "baharat spice mix (store-bought or see recipe)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "top-quality olive oil",
+      "amount": "½ cup / 80 ml"
+    },
+    {
+      "item": "seeds of about ½ large pomegranate (½ cup / 70 g in total), optional",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the bulgur in a fine sieve and run under cold water until the water coming through looks clear and most of the starch has been removed. Transfer to a large mixing bowl.",
+    "Use a small serrated knife to cut the tomatoes into slices ¼ inch / 0.5 cm thick. Cut each slice into ¼-inch / 0.5cm strips and then into dice. Add the tomatoes and their juices to the bowl, along with the shallot and lemon juice and stir well.",
+    "Take a few sprigs of parsley and pack them together tightly. Use a large, very sharp knife to trim off most of the stems and discard. Now use the knife to move up the stems and leaves, gradually “feeding” the knife in order to shred the parsley as finely as you can and trying to avoid cutting pieces wider than 1/16 inch / 1 mm. Add to the bowl.",
+    "Pick the mint leaves off the stems, pack a few together tightly, and shred them finely as you did the parsley; don’t chop them up too much as they tend to discolor. Add to the bowl.",
+    "Finally, add the allspice, baharat, olive oil, pomegranate, if using, and some salt and pepper. Taste, and add more salt and pepper if you like, possibly a little bit of lemon juice, and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

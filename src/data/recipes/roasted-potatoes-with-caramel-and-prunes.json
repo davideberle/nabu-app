@@ -1,0 +1,51 @@
+{
+  "id": "roasted-potatoes-with-caramel-and-prunes",
+  "name": "Roasted potatoes with caramel & prunes",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This is our little tribute to tzimmes, a common Polish Ashkenazic sweet stew of carrots and dried fruit that in most of its local manifestations, we have to admit, is pretty gross. However, when done properly, with beef flank pieces, marrowbones, goose fat, cinnamon, honey, and lemon juice, it is one of the most delectable wintery stews you can make. A lesser-known Lithuanian version is made with potatoes instead of carrots.",
+  "tips": "We first published this recipe a few years back for a Guardian Christmas booklet. It is perfectly suited to such seminal family feasts, where the eating carries on for hours and the cooking isn’t too much work. Serve it with roasted beef or chicken and Kohlrabi salad. Vegetarians can substitute the goose fat with sunflower oil.",
+  "ingredients": [
+    {
+      "item": "floury potatoes, such as russet",
+      "amount": "2¼ lb / 1 kg"
+    },
+    {
+      "item": "goose fat",
+      "amount": "½ cup / 120 ml"
+    },
+    {
+      "item": "whole soft Agen prunes, pitted",
+      "amount": "5 oz / 150 g"
+    },
+    {
+      "item": "scant ½ cup / 90 g superfine sugar",
+      "amount": ""
+    },
+    {
+      "item": "iced water",
+      "amount": "3½ tbsp / 50 ml"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 475°F / 240°C.",
+    "Peel the potatoes, leave the small ones whole and halve the larger ones, so you end up with pieces of around 2 oz / 60 g. Rinse under cold water, then place the potatoes in a large pan with plenty of fresh cold water. Bring to a boil, and simmer for 8 to 10 minutes. Drain the potatoes well, then shake the colander to roughen their edges.",
+    "Place the goose fat in a roasting pan and heat in the oven until smoking, about 8 minutes. Carefully take the pan out of the oven and add the boiled potatoes to the hot fat with metal tongs, rolling them around in the fat as you do so. Gently place the pan on the highest rack of the oven and cook for 50 to 65 minutes, or until the potatoes are golden and crunchy on the outside. Turn them over from time to time while they are cooking.",
+    "Once the potatoes are almost ready, take the tray out of the oven and tip it over a heatproof bowl to remove most of the fat. Add ½ teaspoon salt and the prunes and stir gently. Return to the oven for another 5 minutes.",
+    "During this time, make the caramel. Put the sugar in a clean, heavy-bottomed saucepan and place over low heat. Without stirring, watch the sugar turn a rich caramel color. Make sure to keep your eyes on the sugar at all times. As soon as you reach this color, remove the pan from the heat. Holding the pan at a safe distance from your face, quickly pour the iced water into the caramel to stop it from cooking. Return to the heat and stir to remove any sugar lumps.",
+    "Before serving, stir the caramel into the potatoes and prunes. Transfer to a serving bowl and eat at once."
+  ],
+  "image": "/recipes/roasted-potatoes-with-caramel-and-prunes.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

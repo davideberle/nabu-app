@@ -1,0 +1,70 @@
+{
+  "id": "kohlrabi-salad",
+  "name": "Kohlrabi salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Kohlrabi is a weird vegetable. We don’t like saying it but it is. It is a cabbage with a swollen stem that looks like a bumpy green or purple apple and with a texture and flavor not dissimilar to a radish or cabbage heart. It is weird because of its look—it is like an alien vegetable, with a round, squat base from which straight leafy stems spew out haphazardly—and because people in the West, Germany excepted, have no clue what to do with it. Perhaps because of its oddity and eccentricity, or maybe because it is so easy to grow and tastes so fresh, people in Israel love it. Jerusalemites mainly use kohlrabi for refreshing and crunchy salads, sometimes in combination with other firm vegetables and fruit, such as fennel, radish, cabbage, and apple. But they also cook with it, adding it to stews and creamy gratins and sometimes even stuff it.",
+  "tips": "This salad was first made in our London West End restaurant, NOPI. It is simple, fresh, and makes for a great way to open or to end a meal. You can also serve it alongside a selection of other seasonal salads or cooked vegetables to make a light meal. Choose kohlrabies that are small and hard with tight-looking skin.",
+  "ingredients": [
+    {
+      "item": "medium kohlrabies (1⅔ lb / 750 g in total)",
+      "amount": "3"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "⅓ cup / 80 g"
+    },
+    {
+      "item": "sour cream",
+      "amount": "5 tbsp / 70 g"
+    },
+    {
+      "item": "mascarpone cheese",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely shredded fresh mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "about 12 sprigs / 20 g baby watercress",
+      "amount": ""
+    },
+    {
+      "item": "sumac",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt and white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel the kohlrabies, cut into ⅔-inch / 1.5cm dice, and put in a large mixing bowl. Set aside and make the dressing.",
+    "Put the yogurt, sour cream, mascarpone, garlic, lemon juice, and olive oil in a medium bowl. Add ¼ teaspoon salt and a healthy grind of pepper and whisk until smooth. Add the dressing to the kohlrabi, followed by the fresh and dried mint and half the watercress. Gently stir, then place on a serving dish. Dot the remaining watercress on top and sprinkle with the sumac."
+  ],
+  "image": "/recipes/kohlrabi-salad.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

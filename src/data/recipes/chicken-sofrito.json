@@ -1,0 +1,64 @@
+{
+  "id": "chicken-sofrito",
+  "name": "Chicken sofrito",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Meat"
+  },
+  "servings": "",
+  "intro": "Many of Jerusalem’s most iconic dishes—and the most interesting, we dare say—are the result of necessity and straitened circumstances. The Palestinian population of the city and surrounding areas includes many comfortable city folk, but is mostly comprised of village people with very limited means. Of the Jews, the majority of the twentieth-century newcomers were poor in their countries of origin or, if not, became relatively poor in the first years after settling in the city. What all these people cooked, and still do to some extent, reflects the scarcity and costliness of many ingredients.\n\nThe Sephardic dish sofrito—actually more a cooking method than a dish—is a perfect example of how frugality yields some superb delicacies, and it became tremendously popular in Jerusalem. Originating from the Spanish verb sofreír (to fry lightly), it involves slowly cooking meat in a pot on the stove top for a long time, with only oil and very little liquid. The slow braising and steaming of the meat, in its own juices, results in a very tender texture with a distinguishably comforting flavor. This slow cooking method—practiced by Sephardim for centuries—meant that the dish could be made on a Friday for Shabbat and fitted perfectly with the lifestyle in Jerusalem, when, up until not too long ago, only cheap cuts of meat were realistically available and other ingredients were expensive.",
+  "tips": "We add potatoes to our sofrito, which isn’t necessary, but trust us, you will never regret doing so because they take on the most gorgeous flavors from the bottom of the pan. If you have a wide enough pan to hold the whole chicken flat, butterfly it by cutting through the center of the breast with a large knife, in between the two sides, until the bird opens up; you could also ask a butcher to do this for you. In the pan, press the bird down firmly so that it lies completely flat.",
+  "ingredients": [
+    {
+      "item": "sunflower oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "small free-range chicken, about 3¼ lb / 1.5 kg, butterflied or quartered",
+      "amount": "1"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "large onion, peeled and quartered",
+      "amount": "1"
+    },
+    {
+      "item": "sunflower oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "Yukon Gold potatoes, peeled, washed, and cut into ¾-inch / 2cm dice",
+      "amount": "1⅔ lb / 750 g"
+    },
+    {
+      "item": "cloves garlic, unpeeled",
+      "amount": "25"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Pour the oil into a large, shallow pan or Dutch oven and put over medium heat. Place the chicken flat in the pan, skin side down, and sear for 4 to 5 minutes, until golden brown. Season all over with the paprika, turmeric, sugar, scant ¼ teaspoon salt, a good grind of black pepper, and 1½ tablespoons of the lemon juice. Turn the chicken over so that the skin faces up, add the onion to the pan, and cover with a lid. Decrease the heat to low and cook for a total of about 1½ hours; this includes the time the chicken is cooked with the potatoes. Lift the lid every now and then to check the amount of liquid in the bottom of the pan. The idea is for the chicken to cook and steam in its own juices, but you may need to add a little bit of boiling water, just so that there is always ¼ inch / 5 mm of liquid at the bottom of the pan.",
+    "After the chicken has been cooking for about 30 minutes, pour sunflower oil into a medium saucepan to a depth of 1¼ inches / 3 cm and place over medium-high heat. Fry the potatoes and garlic together in a few batches for about 6 minutes per batch, until they take on some color and crisp up. Use a slotted spoon to lift each batch away from the oil and onto paper towels, then sprinkle with salt.",
+    "After the chicken has been cooking for 1 hour, lift it from the pan and spoon in the fried potatoes and garlic, stirring them with the cooking juices. Return the chicken to the pan, placing it on top of the potatoes for the remainder of the cooking time, that is, 30 minutes. The chicken should be falling off the bone and the potatoes should be soaked in the cooking liquid and completely soft. Drizzle with the remaining lemon juice when serving."
+  ],
+  "image": "/recipes/chicken-sofrito.jpg"
+}

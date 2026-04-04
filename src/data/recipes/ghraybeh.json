@@ -1,0 +1,51 @@
+{
+  "id": "ghraybeh",
+  "name": "Ghraybeh",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Cakes & Cookies"
+  },
+  "servings": "makes about 45 cookies",
+  "intro": "One of Yotam’s oldest memories of the Old City—it stands out clearly from all others—is a confectionery shop near David Street selling yellowish shortbread cookies with the most delectable melting texture. The flavor is one of those childhood sensations that cannot be replicated. They were sweet, almost sandy in texture, disappearing as soon as they hit the mouth, with the most wonderful aroma of rose water. These were, most probably, ghraybeh cookies.\n\nGhraybeh, meaning “swoon” in Arabic, are found in Palestine, Syria, Lebanon, and other countries in the region. They can be made in various shapes, either as a thin bracelet with a nut “cementing” the two ends together, as a diamond with a nut in the middle, or as a round cake as we make them here.",
+  "tips": "Tripolitan Jews sometimes add semolina to their ghraybeh. Some Sephardic Jews use margarine or oil, which makes them both kosher and shorter. Jews from Aden (Yemen) make similar cookies called nayem; they are flavored with ground cardamom and each cookie is studded with a clove. All these are possible variations.The flavors of orange blossom and rose water are quite intense here. Reduce them if you like. Serve the ghraybeh with black coffee or tea.",
+  "ingredients": [
+    {
+      "item": "plus 2 tbsp / 200 g ghee or clarified butter, from the fridge so it is solid",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "scant ⅔ cup / 70 g confectioners’ sugar",
+      "amount": ""
+    },
+    {
+      "item": "all-purpose flour, sifted",
+      "amount": "3 cups / 370 g"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "scant 4 tsp orange blossom water",
+      "amount": ""
+    },
+    {
+      "item": "rose water",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "about 5 tbsp / 30 g unsalted pistachios",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a stand mixer fitted with the whip attachment, cream together the ghee and confectioners’ sugar for 5 minutes, until fluffy, creamy, and pale. Replace the whip with the beater attachment, add the flour, salt, and orange blossom and rose waters, and mix for a good 3 to 4 minutes, until a uniform, smooth dough forms. Wrap the dough in plastic wrap and chill for 1 hour.",
+    "Preheat the oven to 350°F / 180°C. Pinch a piece of dough, weighing about ½ oz / 15 g, and roll it into a ball between your palms. Flatten it slightly and place on a baking sheet lined with parchment paper. Repeat with the rest of the dough, arranging the cookies on lined sheets and spacing them well apart. Press 1 pistachio into the center of each cookie.",
+    "Bake for 17 minutes, making sure the cookies don’t take on any color but just cook through. Remove from the oven and leave to cool down completely. Store the cookies in an airtight container for up to 5 days."
+  ],
+  "image": "/recipes/ghraybeh.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

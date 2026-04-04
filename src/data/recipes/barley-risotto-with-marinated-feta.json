@@ -1,0 +1,95 @@
+{
+  "id": "barley-risotto-with-marinated-feta",
+  "name": "Barley risotto with marinated feta",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 4",
+  "tips": "This vegetarian main course is a dish everybody loves, particularly children. Unlike the proper Italian risotto, ours does not require the exact precision and meticulous preparation, but still tastes sensational.",
+  "ingredients": [
+    {
+      "item": "pearl barley",
+      "amount": "1 cup / 200 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "2 tbsp / 30 g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "6 tbsp / 90 ml"
+    },
+    {
+      "item": "small celery stalks, cut into ¼-inch / 0.5cm dice",
+      "amount": "2"
+    },
+    {
+      "item": "small shallots, cut into ¼-inch / 0.5cm dice",
+      "amount": "2"
+    },
+    {
+      "item": "cloves garlic, cut into 1/16-inch / 2mm dice",
+      "amount": "4"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "strips lemon peel",
+      "amount": "4"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "one 14-oz / 400g can chopped tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "scant 3 cups / 700 ml vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "passata (sieved crushed tomatoes)",
+      "amount": "1¼ cups / 300 ml"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "feta cheese, broken into roughly ¾-inch / 2cm pieces",
+      "amount": "10½ oz / 300 g"
+    },
+    {
+      "item": "fresh oregano leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse the pearl barley well under cold water and leave to drain.",
+    "Melt the butter and 2 tablespoons of the olive oil in a very large frying pan and cook the celery, shallots, and garlic over gentle heat for 5 minutes, until soft. Add the barley, thyme, paprika, bay leaf, lemon peel, chile flakes, tomatoes, stock, passata, and salt. Stir to combine. Bring the mixture to a boil, then reduce to a very gentle simmer and cook for 45 minutes, stirring frequently to make sure the risotto does not catch on the bottom of the pan. When ready, the barley should be tender and most of the liquid absorbed.",
+    "Meanwhile, toast the caraway seeds in a dry pan for a couple of minutes. Then lightly crush them so that some whole seeds remain. Add them to the feta with the remaining 4 tablespoons / 60 ml olive oil and gently mix to combine.",
+    "Once the risotto is ready, check the seasoning and then divide it among four shallow bowls. Top each with the marinated feta, including the oil, and a sprinkling of oregano leaves."
+  ],
+  "image": "/recipes/barley-risotto-with-marinated-feta.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

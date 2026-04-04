@@ -1,0 +1,96 @@
+{
+  "id": "herb-pie",
+  "name": "Herb pie",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Baking"
+  },
+  "servings": "serves 4",
+  "intro": "The extravagant use of herbs in our cooking is definitely to be blamed on Jerusalem. Herbs are sold there, quite literally, by the bucketload. Fallahat, Palestinian peasant women, come into the city with baskets and sacks brimming with fresh produce from the surrounding countryside to sell on the curbside. They used to carry the sacks of produce on their heads with amazing acts of graceful balance. Herbs are always there—particularly mint, parsley, za’atar, cilantro, sage, and dill—but also plenty of other vegetables and fruits in season. Housewives buy liberal quantities ready to go into salads, aromatic pastes, vegetable stuffings, and most other dishes as well. It seems almost ironic that it is Israeli and Palestinian herbs that fill the miserly bags of fresh herbs sold in most UK supermarkets today, given that no sane cook there would consider buying anything less than five times the amount.",
+  "tips": "This pie, inspired by all kinds of Sephardic pastries from Turkey and the Balkans, can happily sit at the center of a light vegetarian meal. Serve it after the Burnt eggplant and mograbieh soup.",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra for brushing the pastry",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "Swiss chard, stems and leaves finely shredded but kept separate",
+      "amount": "1 lb / 500 g"
+    },
+    {
+      "item": "celery, thinly sliced",
+      "amount": "5 oz / 150 g"
+    },
+    {
+      "item": "green onion, chopped",
+      "amount": "1¾ oz / 50 g"
+    },
+    {
+      "item": "arugula",
+      "amount": "1¾ oz / 50 g"
+    },
+    {
+      "item": "flat-leaf parsley, chopped",
+      "amount": "1 oz / 30 g"
+    },
+    {
+      "item": "mint, chopped",
+      "amount": "1 oz / 30 g"
+    },
+    {
+      "item": "dill, chopped",
+      "amount": "¾ oz / 20 g"
+    },
+    {
+      "item": "anari or ricotta cheese, crumbled",
+      "amount": "4 oz / 120 g"
+    },
+    {
+      "item": "aged Cheddar cheese, grated",
+      "amount": "3½ oz / 100 g"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "2 oz / 60 g"
+    },
+    {
+      "item": "grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "large free-range eggs",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "⅓ tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "filo pastry",
+      "amount": "9 oz / 250 g"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F / 200°C. Pour the olive oil into a large, deep frying pan over medium heat. Add the onion and sauté for 8 minutes without browning. Add the chard stems and the celery and continue cooking for 4 minutes, stirring occasionally. Add the chard leaves, increase the heat to medium-high, and stir as you cook for 4 minutes, until the leaves wilt. Add the green onion, arugula, and herbs and cook for 2 minutes more. Remove from the heat and transfer to a colander to cool.",
+    "Once the mixture is cool, squeeze out as much water as you can and transfer to a mixing bowl. Add the three cheeses, lemon zest, eggs, salt, pepper, and sugar and mix well.",
+    "Lay out a sheet of filo pastry and brush it with some olive oil. Cover with another sheet and continue in the same manner until you have 5 layers of filo brushed with oil, all covering an area large enough to line the sides and bottom of a 8½-inch / 22cm pie dish, plus extra to hang over the rim. Line the pie dish with the pastry, fill with the herb mix, and fold the excess pastry over the edge of the filling, trimming the pastry as necessary to create a ¾-inch / 2cm border.",
+    "Make another set of 5 filo layers brushed with oil and place them over the pie. Scrunch up the pastry a little to create a wavy, uneven top and trim the edges so it just covers the pie. Brush generously with olive oil and bake for 40 minutes, until the filo turns a nice golden brown. Remove from the oven and serve warm or at room temperature."
+  ],
+  "image": "/recipes/herb-pie.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

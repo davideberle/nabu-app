@@ -1,0 +1,80 @@
+{
+  "id": "sabih",
+  "name": "Sabih",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This isn’t a Jerusalem dish. It was developed by Iraqi Jews settling in the 1950s in the city of Ramat Gan, near Tel Aviv. It incorporates so many elements, though, that it perfectly epitomizes the jumble of cuisines of the region. The simply fried eggplant slices are a mainstay of both Arab and Sephardic cooking. Tahini has a similar lineage. The zhoug is a Jewish Yemeni chile paste that has become the Israeli equivalent to ketchup. The savory mango pickle the Iraqis brought with them reflects Indian influence. Hard-boiled egg is another Sephardic basic, and the chopped salad, well, that’s as Arab and as Israeli as can be.",
+  "tips": "This mumbo-jumbo served in or on a pita is one of the most exciting street foods you can come across. If you can’t get a thick, fresh pita from a Middle Eastern grocer, don’t bother with the supermarket brands and use toasted bread instead. While you are there, buy a savory mango pickle if you can. Sweet mango pickles or mango chutneys are not really suitable.",
+  "ingredients": [
+    {
+      "item": "large eggplants (about 1⅔ lb / 750 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "about 1¼ cups / 300 ml sunflower oil",
+      "amount": ""
+    },
+    {
+      "item": "slices good-quality white bread, toasted, or fresh and moist mini pitas",
+      "amount": "4"
+    },
+    {
+      "item": "Tahini sauce",
+      "amount": "1 cup / 240 ml"
+    },
+    {
+      "item": "large free-range eggs, hard-boiled, peeled, and cut into ⅜-inch / 1cm thick slices or quartered",
+      "amount": "4"
+    },
+    {
+      "item": "about 4 tbsp Zhoug",
+      "amount": ""
+    },
+    {
+      "item": "amba or savory mango pickle (optional)",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "medium ripe tomatoes, cut into ⅜-inch / 1cm dice (about 1 cup / 200 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "mini cucumbers, cut into ⅜-inch / 1cm dice (about 1 cup / 120 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    }
+  ],
+  "method": [
+    "Use a vegetable peeler to peel away strips of eggplant skin from top to bottom, leaving the eggplants with alternating strips of black skin and white flesh, zebralike. Cut both eggplants widthwise into slices 1 inch / 2.5 cm thick. Sprinkle them on both sides with salt, then spread them out on a baking sheet and let stand for at least 30 minutes to remove some water. Use paper towels to wipe them.",
+    "Heat the sunflower oil in a wide frying pan. Carefully—the oil spits—fry the eggplant slices in batches until nice and dark, turning once, 6 to 8 minutes total. Add oil if needed as you cook the batches. When done, the eggplant pieces should be completely tender in the center. Remove from the pan and drain on paper towels.",
+    "Make the chopped salad by mixing together all the ingredients and seasoning with salt and pepper to taste.",
+    "Just before serving, place 1 slice of bread or pita on each plate. Spoon 1 tablespoon of the tahini sauce over each slice, then arrange the eggplant slices on top, overlapping. Drizzle over some more tahini but without completely covering the eggplant slices. Season each egg slice with salt and pepper and arrange over the eggplant. Drizzle some more tahini on top and spoon over as much zhoug as you like; be careful, it’s hot! Spoon over mango pickle as well, if you like. Serve the vegetable salad on the side, spooning some on top of every serving if desired."
+  ],
+  "image": "/recipes/sabih.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

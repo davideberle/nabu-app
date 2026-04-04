@@ -3,13 +3,19 @@ import Image from "next/image";
 import { getAllRecipes } from "@/lib/recipes";
 
 function capitalize(str: string): string {
+  if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export default function RecipesPage() {
   const recipes = getAllRecipes();
   const recipesWithImages = recipes.filter(r => r.image);
-  const chapters = [...new Set(recipes.map(r => r.category.chapter))];
+  
+  // Get chapters from either source.chapter or category.chapter
+  const chapters = [...new Set(recipes.map(r => r.source?.chapter || r.category?.chapter).filter(Boolean))];
+  
+  // Get unique cookbooks
+  const cookbooks = [...new Set(recipes.map(r => r.source?.cookbook).filter(Boolean))];
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -35,13 +41,14 @@ export default function RecipesPage() {
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        {/* Cookbook info */}
+        {/* Cookbooks info */}
         <div className="mb-8 text-center">
           <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
-            Yotam Ottolenghi
+            {cookbooks.length} Cookbooks
           </p>
           <h2 className="text-2xl font-serif text-stone-700 dark:text-stone-200 mt-1">
-            Ottolenghi: The Cookbook
+            {cookbooks.slice(0, 3).join(' · ')}
+            {cookbooks.length > 3 && ` + ${cookbooks.length - 3} more`}
           </h2>
         </div>
 
@@ -59,7 +66,11 @@ export default function RecipesPage() {
 
         {/* Recipe Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {recipes.map((recipe) => (
+          {recipes.map((recipe) => {
+            const chapter = recipe.source?.chapter || recipe.category?.chapter || '';
+            const dietary = recipe.dietary || recipe.tags?.dietary || [];
+            
+            return (
             <Link
               key={recipe.id}
               href={`/recipes/${recipe.id}`}
@@ -85,14 +96,14 @@ export default function RecipesPage() {
                 </h2>
                 
                 <div className="flex items-center gap-2 mt-2 text-xs text-stone-400 dark:text-stone-500">
-                  <span>{capitalize(recipe.servings)}</span>
-                  <span>·</span>
-                  <span>{recipe.category.chapter}</span>
+                  {recipe.servings && <span>{capitalize(recipe.servings)}</span>}
+                  {recipe.servings && chapter && <span>·</span>}
+                  {chapter && <span>{chapter}</span>}
                 </div>
 
-                {recipe.tags.dietary.length > 0 && (
+                {dietary.length > 0 && (
                   <div className="flex gap-1.5 mt-2">
-                    {recipe.tags.dietary.slice(0, 2).map((tag) => (
+                    {dietary.slice(0, 2).map((tag: string) => (
                       <span
                         key={tag}
                         className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
@@ -104,7 +115,7 @@ export default function RecipesPage() {
                 )}
               </div>
             </Link>
-          ))}
+          )})}
         </div>
       </main>
     </div>

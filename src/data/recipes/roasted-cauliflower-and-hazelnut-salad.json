@@ -1,0 +1,68 @@
+{
+  "id": "roasted-cauliflower-and-hazelnut-salad",
+  "name": "Roasted cauliflower & hazelnut salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 2 to 4",
+  "tips": "Cauliflower, raw or lightly cooked, is a useful salad ingredient, above all in winter when there isn’t a great variety of fresh vegetables available. It soaks up flavors particularly effectively and benefits from anything sweet and sharp. This salad, which will go well with the Chicken sofrito or with Grilled fish skewers with hawayej and parsley, is inspired by a recipe from a brilliant Australian chef and food writer, Karen Martini.",
+  "ingredients": [
+    {
+      "item": "head cauliflower, broken into small florets (1½ lb / 660 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "large celery stalk, cut on an angle into ¼-inch / 0.5cm slices (⅔ cup / 70 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "hazelnuts, with skins",
+      "amount": "5 tbsp / 30 g"
+    },
+    {
+      "item": "small flat-leaf parsley leaves, picked",
+      "amount": "⅓ cup / 10 g"
+    },
+    {
+      "item": "pomegranate seeds (from about ½ medium pomegranate)",
+      "amount": "⅓ cup / 50 g"
+    },
+    {
+      "item": "generous ¼ tsp ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "generous ¼ tsp ground allspice",
+      "amount": ""
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F / 220°C.",
+    "Mix the cauliflower with 3 tablespoons of the olive oil, ½ teaspoon salt, and some black pepper. Spread out in a roasting pan and roast on the top oven rack for 25 to 35 minutes, until the cauliflower is crisp and parts of it have turned golden brown. Transfer to a large mixing bowl and set aside to cool down.",
+    "Decrease the oven temperature to 325°F / 170°C. Spread the hazelnuts on a baking sheet lined with parchment paper and roast for 17 minutes.",
+    "Allow the nuts to cool a little, then coarsely chop them and add to the cauliflower, along with the remaining oil and the rest of the ingredients. Stir, taste, and season with salt and pepper accordingly. Serve at room temperature."
+  ],
+  "image": "/recipes/roasted-cauliflower-and-hazelnut-salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "falafel",
+  "name": "Falafel",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 4makes about 20 balls",
+  "intro": "Falafel and hummus are the ultimate daily grub in Muslim Jerusalem. As a little boy, Sami used to be sent out to the shops every morning to buy breakfast for his older brothers: hummus and freshly fried falafel balls. He’d take an empty plate to Abu Shukri, a famous hummus spot in the Old City, and the man himself would spread the warm paste over the plate and, with much attention, garnish it with herbs, spices, and pickled cucumber. The warm falafel and fresh pitas were carried alongside in a brown paper bag. Sami would charge his brothers “a little something” for the task, which he always spent in the sweet shop.\n\nAnd that was not the end of it. Fresh falafel was sold as a snack—stuffed into pita with hummus, tahini sauce, fiery red chile sauce, and chopped salad—throughout the day. Sami would often come back from school with a stained uniform and no appetite for lunch after slyly indulging in one on the way home. Na’ama wasn’t happy.\n\nOver on the west side of the city, Yotam had a pretty similar experience: school-day end, a massive falafel sandwich, tahini-stained shirt, no appetite, angry mother.\n\nIn west Jerusalem, as in the rest of Israel, it was Yemeni Jews arriving in the country in the first half of the twentieth century who set up falafel shops and introduced the street food to Jewish society for the first time. The iconic Israeli “mana falafel,” the pita pocket stuffed with falafel, french fries, salad, and other goodies, emerged when the Yemenis began to flavor falafel with hawayej and zhoug.",
+  "tips": "Don’t be alarmed about not boiling the chickpeas before they are blitzed into a falafel mix. This is part of the process. When frying falafel, it is important that they get just the right amount of time in the oil. If you don’t have an appropriate thermometer, assess the temperature of the oil by frying one falafel ball as instructed, making sure it takes the specified amount of time to cook through completely but without burning on the outside. Serve hot with pita bread, Tahini sauce, chopped tomato and cucumber salad (SPICED CHICKPEAS AND FRESH VEGETABLE SALAD), Zhoug, and pickles (PICKLED TURNIP AND BEET).",
+  "ingredients": [
+    {
+      "item": "dried chickpeas",
+      "amount": "1¼ cups / 250 g"
+    },
+    {
+      "item": "medium onion, finely chopped (½ cup / 80 g in total)",
+      "amount": "½"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped cilantro",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "about 3 cups / 750 ml sunflower oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "sesame seeds, for coating",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the chickpeas in a large bowl and cover with cold water at least twice their volume. Set aside to soak overnight.",
+    "The next day, drain the chickpeas well and combine them with the onion, garlic, parsley, and cilantro. For the best results, use a meat grinder for the next part. Put the chickpea mixture once through the machine, set to its finest setting, then pass it through the machine for a second time. If you don’t have a meat grinder, use a food processor. Blitz the mix in batches, pulsing each for 30 to 40 seconds, until it is finely chopped, but not mushy or pasty, and holds itself together. Once processed, add the spices, baking powder, ¾ teaspoon salt, flour, and water. Mix well by hand until smooth and uniform. Cover the mixture and leave it in the fridge for at least 1 hour, or until ready to use.",
+    "Fill a deep, heavy-bottomed medium saucepan with enough oil to come 2¾ inches / 7 cm up the sides of the pan. Heat the oil to 350°F / 180°C.",
+    "With wet hands, press 1 tablespoon of the mixture in the palm of your hand to form a patty or a ball the size of a small walnut, about a scant 1 oz / 25 g (you can also use a wet ice-cream scoop for this).",
+    "Sprinkle the balls evenly with sesame seeds and deep-fry them in batches for 4 minutes, until well browned and cooked through. It is important they really dry out on the inside, so make sure they get enough time in the oil. Drain in a colander lined with paper towels and serve at once."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

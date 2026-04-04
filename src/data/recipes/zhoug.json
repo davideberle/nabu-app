@@ -1,0 +1,65 @@
+{
+  "id": "zhoug",
+  "name": "Zhoug",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes 1 small jarabout ⅔ cup / 150 ml",
+  "tips": "The texture of zhoug is important. It needs to be coarse, as if it were made traditionally with grinding stones. It should also be very hot, so use more chiles if yours aren’t.",
+  "ingredients": [
+    {
+      "item": "cilantro (leaves and stems), coarsely chopped",
+      "amount": "1¼ oz / 35 g"
+    },
+    {
+      "item": "flat-leaf parsley (leaves and stems), coarsely chopped",
+      "amount": "⅔ oz / 10 g"
+    },
+    {
+      "item": "hot green chiles, coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Place all of the ingredients in a small food processor. Blitz in a few pulses to get a coarse paste; make sure not to overmix. Store in a sterilized jar (SEE PRESERVED LEMONS) in the fridge for up to 3 weeks."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

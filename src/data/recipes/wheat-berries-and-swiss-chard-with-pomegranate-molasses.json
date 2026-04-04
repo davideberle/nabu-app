@@ -1,0 +1,61 @@
+{
+  "id": "wheat-berries-and-swiss-chard-with-pomegranate-molasses",
+  "name": "Wheat berries & Swiss chard with pomegranate molasses",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 4",
+  "intro": "This recipe was given to us with much love by our friend Anat Teitelbaum, a passionate Jerusalem cook who personifies some of the most wonderful things about this city. Anat does all her shopping in Machne Yehuda market, where she knows every street vendor and every restaurant owner. She is familiar with her ingredients and makes the most out of them, with great confidence and only when they are in season. Just like us, she likes big flavors and simple cooking techniques, and she is happy to pick and choose from all the different cuisines around her. This dish, with its deep sweet and sour flavors and with its marvelous earthiness, is typical Anat and typical Jerusalem.",
+  "tips": "This potent dish is great eaten on its own as a light supper, or can be served with plainly cooked chicken or burgers. Try it with the Turkey and zucchini burgers with green onion and cumin, leaving out the sauce. Wheat berries, hulled (aka peeled wheat) and unhulled, are available online or from Middle Eastern and Turkish groceries. Pearl barley is an okay substitute but doesn’t take as long to cook, so you won’t get that deep flavor that comes from the caramelizing of the sugars. Brands of pomegranate molasses vary, so we suggest assessing the flavor of the dish at the end and adding more if needed.",
+  "ingredients": [
+    {
+      "item": "Swiss chard or rainbow chard",
+      "amount": "1⅓ lb / 600 g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "large leeks, white and pale green parts, thinly sliced (3 cups / 350 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "light brown sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "about 3 tbsp pomegranate molasses",
+      "amount": ""
+    },
+    {
+      "item": "scant 1¼ cups / 200 g hulled or unhulled wheat berries",
+      "amount": ""
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2 cups / 500 ml"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Separate the chard’s white stalks from the green leaves using a small, sharp knife. Slice the stalks into ⅜-inch / 1cm slices and the leaves into ¾-inch / 2cm slices.",
+    "Heat the oil and butter in a large heavy-bottomed pan. Add the leeks and cook, stirring, for 3 to 4 minutes. Add the chard stalks and cook for 3 minutes, then add the leaves and cook for a further 3 minutes. Add the sugar, 3 tablespoons pomegranate molasses, and the wheat berries and mix well. Add the stock, ¾ teaspoon salt, and some black pepper, bring to a gentle simmer, and cook over low heat, covered, for 60 to 70 minutes. The wheat should be al dente at this point.",
+    "Remove the lid and, if needed, increase the heat and allow any remaining liquid to evaporate. The base of the pan should be dry and have a bit of burnt caramel on it. Remove from the heat.",
+    "Before serving, taste and add more molasses, salt, and pepper if needed; you want it sharp and sweet, so don’t be shy with your molasses. Serve warm, with a dollop of Greek yogurt."
+  ],
+  "image": "/recipes/wheat-berries-and-swiss-chard-with-pomegranate-molasses.jpg"
+}

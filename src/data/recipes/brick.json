@@ -1,0 +1,47 @@
+{
+  "id": "brick",
+  "name": "Brick",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Baking"
+  },
+  "servings": "serves 2",
+  "intro": "We were given this recipe by Rafram Hadad, a very colorful character. Hadad was born in Djerba, a Tunisian island with a Jewish minority that settled there over twenty-five hundred years ago, and arrived in Israel with his family in the 1970s. The main Tunisian community in Jerusalem, which arrived earlier—in the 1950s and 1960s—was very small, so it was “annexed” to the much larger Moroccan community and lost some of its unique heritage. Hadad, however, is extremely proud of his unique Tunisian food heritage. He still has some family in Tunisia and he returns on a regular basis guiding culinary trips. He is also the Slow Food movement coordinator in Israel, an artist, a political activist, and a food writer. He is one of those people who surfs life’s waves, taking it all in as part of an adventure. In 2010, he got mixed up in an ordeal that resulted in him being kept in solitary confinement in a Libyan prison for five months. He was arrested after having been seen wandering in Tripoli taking photographs of the city and was released following a major diplomatic effort involving, among others, Tony Blair, Vladimir Putin, and Silvio Berlusconi.",
+  "tips": "Brick is the commercial name given to a paper-thin pastry, similar to filo, only sturdier and crunchier (spring-roll wrappers make a good substitute). It gets its name from a popular Tunisian street snack, also called brick. Other Tunisian staples can be added, such as crushed cooked potato seasoned with cinnamon, fried onion, ground meat, black olives, harissa paste, or canned tuna.You will need to have the ingredients for the brick filling ready so that once your oil is at the right temperature, you can assemble the parcels quickly and fry them as soon as they’re made. The parcels won’t hold together well if you don’t fry them immediately.",
+  "ingredients": [
+    {
+      "item": "about 1 cup / 250 ml sunflower oil",
+      "amount": ""
+    },
+    {
+      "item": "circles feuilles de brick pastry, 10 to 12 inches / 25 to 30 cm in diameter",
+      "amount": "2"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped green onion, both green and white parts",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "large free-range eggs",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Pour the sunflower oil into a medium saucepan; it should come about ¾ inch / 2 cm up the sides of the pan. Place over medium heat and leave until the oil is hot. You don’t want it too hot or the pastry will burn before the egg is cooked; tiny bubbles will start to surface when it reaches the right temperature.",
+    "Place one of the pastry circles inside a shallow bowl. (You can use a larger piece if you don’t want to waste much pastry and fill it up more.) You will need to work quickly so that the pastry does not dry out and become stiff. Put half the parsley in the center of the circle and sprinkle with half the green onion. Create a little nest in which to rest an egg, then carefully crack an egg into the nest. Sprinkle generously with salt and pepper and fold in the sides of the pastry to create a parcel. The four folds will overlap so that the egg is fully enclosed. You can’t seal the pastry, but a neat fold should keep the egg inside.",
+    "Carefully turn the parcel over and gently place it in the oil, seal side down. Cook for 60 to 90 seconds on each side, until the pastry is golden brown. The egg white should be set and the yolk still runny. Lift the cooked parcel from the oil and place between paper towels to soak up the excess oil. Keep warm while you cook the second pastry. Serve both parcels at once."
+  ],
+  "image": "/recipes/brick.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

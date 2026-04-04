@@ -1,0 +1,92 @@
+{
+  "id": "fricassee-salad",
+  "name": "Fricassee salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Fish"
+  },
+  "servings": "serves 4",
+  "intro": "This salad is a deconstruction of Tunisian fricassee: a fried bun stuffed with tuna, harissa, olives, anchovies, a spicy pumpkin relish, pickled lemon, cooked potato, and hard-boiled egg. We are not quite sure how it got to signify something so different from the common French term fricassée, which is a type of meat stew, but the resemblance to another French classic, Niçoise salad, is no coincidence and is evidence of the interaction between French and Tunisian cuisines during the years of French occupation. The fried buns arrived in Jerusalem in the mid-twentieth century with Tunisian immigrants and joined a long list of favorite fast foods.",
+  "tips": "Here we confit fresh tuna, a method of preservation that gives the fish both a rich flavor and a wonderful texture. Use olive oil of the best quality and reuse it later for preparing other fish and seafood dishes. You can, however, skip the long process of preservation by getting a good canned tuna. We like Ortiz brand the best, though it is expensive. Turn this into a sandwich by halving the amount of potato and sticking everything inside a hearty baguette.",
+  "ingredients": [
+    {
+      "item": "rosemary sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "4"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "about 1⅔ cups / 400 ml extra virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "tuna steak, in one piece or two",
+      "amount": "10½ oz / 300 g"
+    },
+    {
+      "item": "Yukon Gold potatoes, peeled and cut into ¾-inch / 2cm pieces",
+      "amount": "1⅓ lb / 600 g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "anchovy fillets, coarsely chopped",
+      "amount": "5"
+    },
+    {
+      "item": "harissa paste (store-bought or see recipe)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "capers",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "finely chopped preserved lemon peel, (store-bought or see recipe)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "black olives, pitted and halved",
+      "amount": "½ cup / 60 g"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "preserved piquillo peppers (about 5 peppers), torn into rough strips",
+      "amount": "5 oz / 140 g"
+    },
+    {
+      "item": "large eggs, hard boiled, peeled, and quartered",
+      "amount": "4"
+    },
+    {
+      "item": "baby gem lettuces (about 5 oz / 140 g in total), leaves separated and torn",
+      "amount": "2"
+    },
+    {
+      "item": "flat-leaf parsley, leaves picked and torn",
+      "amount": "⅔ oz / 20 g"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To prepare the tuna, put the rosemary, bay leaves, and peppercorns in a small saucepan and add the olive oil. Heat the oil to just below the boiling point, when tiny bubbles begin to surface. Carefully add the tuna (the tuna must be completely covered; if it isn’t, heat more oil and add to the pan). Remove from the heat and leave aside for a couple hours, uncovered, then cover the pan and refrigerate for at least 24 hours.",
+    "Cook the potatoes with the turmeric in plenty of salted boiling water for 10 to 12 minutes, until cooked. Drain carefully, making sure none of the turmeric water spills (the stains are a pain to remove!), and place in a large mixing bowl. While the potatoes are still hot, add the anchovies, harissa, capers, preserved lemon, olives, 6 tbsp / 90 ml of the tuna preserving oil, and some of the peppercorns from the oil. Mix gently and leave to cool.",
+    "Lift the tuna from the remaining oil, break it into bite-size chunks, and add to the salad. Add the lemon juice, peppers, eggs, lettuce, and parsley. Toss gently, taste, add salt if it needs it and possibly more oil, then serve."
+  ],
+  "image": null
+}

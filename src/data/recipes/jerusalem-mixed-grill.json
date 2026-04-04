@@ -1,0 +1,53 @@
+{
+  "id": "jerusalem-mixed-grill",
+  "name": "Jerusalem mixed grill",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Meat"
+  },
+  "servings": "serves 4",
+  "intro": "Aside from kugel few dishes have gained the addition of “Jerusalem” to their name. Despite the misleading name, Jerusalem artichokes aren’t named after the city but are welcome here anyway. The me’orav Yerushalmi, literally translated as “Jerusalem mixed grill,” was invented on Agripas Street near Machne Yehuda market in the late 1960s. Several local steakhouses claim credit for the invention, but according to food writer Sherry Ansky, the original Jerusalem mixed grill was born at Makam steakhouse and almost overnight the chicken innards and onions, all fried in a particular spice mix, became one of the city’s most iconic dishes. Today, many specialty steakhouses serve mixed grills to local clientele—mostly taxi drivers, who flock there in the early evening or late at night for the offal delight.\n\nMeanwhile, on the eastern side of Jerusalem, Palestinians have been making their version of the dish for centuries. They stuff the cooked innards in a pita and lightly season them with freshly squeezed lemon juice, hot chile peppers, parsley, and crushed cumin seeds. The dish, in either version, solves the issue of using the cheapest, unloved parts of Jerusalem’s most loved meat, the chicken. We adore it.",
+  "tips": "Serve the mixed grill as a whole meal with fresh pita, savory mango chutney, Tahini sauce, and pickles.",
+  "ingredients": [
+    {
+      "item": "boneless chicken breast, cut into ¾-inch / 2cm cubes",
+      "amount": "10½ oz / 300 g"
+    },
+    {
+      "item": "chicken hearts, cut in half lengthwise (optional)",
+      "amount": "7 oz / 200 g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chicken livers, cleaned and diced",
+      "amount": "9 oz / 250 g"
+    },
+    {
+      "item": "large onions, thinly sliced (about 4½ cups / 500 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "baharat spice mix (store-bought or see recipe)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put a large cast-iron or other heavy frying pan over medium-high heat and leave for a few minutes, until nearly smoking. Add the chicken breast and leave for a minute, stir once, then cook until browned all over, 2 to 3 minutes. Transfer the pieces to a bowl and set aside.",
+    "Put the hearts in the pan and cook, stirring occasionally, until browned but not cooked through, 2 to 3 minutes. Add to the bowl.",
+    "Pour a teaspoon of the olive oil into the pan and add the livers. Cook for 2 to 3 minutes, stirring just once or twice, then remove from the pan.",
+    "Pour 2 tablespoons of the olive oil into the pan and add half of the onions. Cook, stirring all the time, for 4 to 5 minutes, until the onions soften and slightly char but aren’t completely limp. Add the remaining oil to the pan and repeat with the second half of the onions. Return the first batch to the pan, along with the spices and cooked chicken pieces, hearts, and livers. Season with ¾ teaspoon salt and continue to cook for about 3 minutes, scraping the pan as you cook, until the chicken is cooked through. Serve at once."
+  ],
+  "image": null
+}

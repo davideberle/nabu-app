@@ -1,0 +1,56 @@
+{
+  "id": "mutabbaq",
+  "name": "Mutabbaq",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Cakes & Cookies"
+  },
+  "servings": "serves 6",
+  "intro": "Mutabbaq is a good dessert when you have guests. It is unusual yet utterly delicious, it looks impressive and it can be made in advance, kept in the fridge and then baked to serve. Add a couple of drops of orange blossom water to the syrup if you like. An alternative, yet common filling you can use consists of crushed walnuts (2 cups / 200 g), superfine sugar (¼ cup / 50 g), cinnamon (1 tsp), and melted unsalted butter (3 tbsp)—all mixed together.",
+  "ingredients": [
+    {
+      "item": "unsalted butter, melted",
+      "amount": "⅔ cup / 130 g"
+    },
+    {
+      "item": "sheets filo pastry, 12 by 15½ inches / 31 by 39 cm",
+      "amount": "14"
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "2 cups / 500 g"
+    },
+    {
+      "item": "soft goat’s milk cheese",
+      "amount": "9 oz / 250 g"
+    },
+    {
+      "item": "crushed unsalted pistachios, to garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "6 tbsp / 90 ml"
+    },
+    {
+      "item": "rounded 1⅓ cups / 280 g superfine sugar",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oven to 450°F / 230°C. Brush a shallow-rimmed baking sheet about 11 by 14½ inches / 28 by 37 cm with some of the melted butter. Spread a filo sheet on top, tucking it into the corners and allowing the edges to hang over. Brush all over with butter, top with another sheet, and brush with butter again. Repeat the process until you have 7 sheets evenly stacked, each brushed with butter.",
+    "Place the ricotta and goat’s milk cheese in a bowl and mash together with a fork, mixing well. Spread over the top filo sheet, leaving ¾ inch / 2 cm clear around the edge. Brush the surface of the cheese with butter and top with the remaining 7 sheets of filo, brushing each in turn with butter.",
+    "Use scissors to trim about ¾ inch / 2 cm off the edge but without reaching the cheese, so it stays well sealed within the pastry. Use your fingers to tuck the filo edges gently underneath the pastry to achieve a neat edge. Brush with more butter all over. Use a sharp knife to cut the surface into roughly 2¾-inch / 7cm squares, allowing the knife almost to reach the bottom but not quite. Bake for 25 to 27 minutes, until golden and crisp.",
+    "While the pastry is baking, prepare the syrup. Put the water and sugar in a small saucepan and mix well with a wooden spoon. Place over medium heat, bring to a boil, add the lemon juice, and simmer gently for 2 minutes. Remove from the heat.",
+    "Slowly pour the syrup over the pastry the minute you take it out of the oven, making sure it soaks in evenly. Leave to cool for 10 minutes. Sprinkle with the crushed pistachios, if using, and cut into portions. Serve warm."
+  ],
+  "image": "/recipes/mutabbaq.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

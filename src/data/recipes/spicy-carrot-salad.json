@@ -1,0 +1,65 @@
+{
+  "id": "spicy-carrot-salad",
+  "name": "Spicy carrot salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Most typical meze selections served in restaurants across the city have some variation on carrot salad, which must include cooked carrot, oil, garlic, and lemon juice or vinegar. This is pretty much the standard. However, as is often the case, the devil is in the details and these vary substantially.\n\nTo our mind, the best carrot salads are found in North African kitchens, where a potent chile and spice paste blends with the natural sweetness of the carrot and gives it some serious depth. Moroccans make a version that calls for caraway seeds. Jews from Tripoli, Libya, a community with a rich and distinctive cuisine, make an array of chershi, which are piquant condiments. These are served at a Friday night dinner, along with pickles, next to the main-course, stew, and couscous. The most typical is chershi kara’a, crushed pumpkin salad.",
+  "tips": "This carrot salad is based on a recipe by Pascale Perez-Rubin, an illustrious food writer who has researched Tripolitan food in great detail. Rubin’s pumpkin salad is very similar. You can substitute the carrot with cooked pumpkin or butternut squash and crush to create a beautiful, vibrant paste or dip. It is important to allow this salad to sit to let the flavors come together and mellow—at least 30 minutes. Harissa can substitute for the pilpelchuma—though pilpelchuma is the real deal—but you must assess how hot it is before adding.",
+  "ingredients": [
+    {
+      "item": "large carrots, peeled (about 1½ lb / 700 g in total)",
+      "amount": "6"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "large onion, finely chopped (2 cups / 300 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "Pilpelchuma or 2 tbsp harissa (store-bought or see recipe)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "caraway seeds, freshly ground",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "arugula leaves",
+      "amount": "1½ cups / 30 g"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the carrots in a large saucepan, cover with water, and bring to a boil. Decrease the heat, cover, and cook for about 20 minutes, until the carrots are just tender. Drain and, once cool enough to handle, cut into ¼-inch / 0.5cm slices.",
+    "While the carrots are cooking, heat half the oil in a large frying pan. Add the onion and cook over medium heat for 10 minutes, until golden brown.",
+    "Tip the fried onion into a large mixing bowl and add the pilpelchuma, cumin, caraway, ¾ teaspoon salt, sugar, vinegar, and the remaining oil. Add the carrots and toss well. Leave aside for at least 30 minutes for the flavors to mature.",
+    "Arrange the salad on a large platter, dotting with the arugula as you go."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

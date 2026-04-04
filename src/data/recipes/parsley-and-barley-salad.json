@@ -1,0 +1,79 @@
+{
+  "id": "parsley-and-barley-salad",
+  "name": "Parsley & barley salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "We started off calling this Barley and feta tabbouleh, but the longer we spent with our recipes and sources the more we realized how strongly people feel about the names given to dishes. This is understandable in a place where so much is always at stake.\n\nStill, this recipe is very much inspired by the concept of tabbouleh. It was first cooked for Yotam by Tami Rosenbaum, mother of Yoni, his childhood best friend. Tami is a fantastic cook. She comes from a Yekke family (German Jews), and had a “proper,” not particularly Middle Eastern upbringing. Tami studied cookery at secondary school, again receiving traditional training. When Yotam used to visit Yoni as a child, it was the only home of any of his friends where bread rolls—sweet and savory—were baked regularly; schnitzels were made from veal and stuffed with bacon; and all the children played musical instruments seriously—just like back home in Germany. Despite all that, even Tami’s food was not immune to local Middle Eastern influences, and many dishes she cooks today manage to fuse together the two worlds in a very delicious way.",
+  "tips": "“Serious” Jerusalem dishes—those substantial, slow-cooked ones that everybody adores but at the same time is also slightly terrified of due to how heavy and sleep-inducing they can be (SEE CHICKEN WITH CARAMELIZED ONION AND CARDAMOM RICE, OR TURNIP AND VEAL “CAKE”)—must always be accompanied by a sharp, fresh salad such as this one. The herbs and lemon juice cleanse the palate and give a certain sense of lightness, balancing out any overdose of carbs and unctuous meat. You can also serve it alongside other vegetable-based meze dishes. The barley can be replaced with spelt, farro, or wheat berries, with cooking times varying.",
+  "ingredients": [
+    {
+      "item": "scant ¼ cup / 40 g pearl barley",
+      "amount": ""
+    },
+    {
+      "item": "feta cheese",
+      "amount": "5 oz / 150 g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "5½ tbsp"
+    },
+    {
+      "item": "za’atar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander seeds, lightly toasted and crushed",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "scant 3 oz / 80 g flat-leaf parsley, leaves and fine stems",
+      "amount": ""
+    },
+    {
+      "item": "green onions, finely chopped (⅓ cup / 40 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "cashew nuts, lightly toasted and coarsely crushed",
+      "amount": "⅓ cup / 40 g"
+    },
+    {
+      "item": "green pepper, seeded and cut into ⅜-inch / 1cm dice",
+      "amount": "1"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the pearl barley in a small saucepan, cover with plenty of water, and boil for 30 to 35 minutes, until tender but with a bite. Pour into a fine sieve, shake to remove all the water, and transfer to a large bowl.",
+    "Break the feta into rough pieces, about ¾ inch / 2 cm in size, and mix in a small bowl with 1½ tablespoons of the olive oil, the za’atar, the coriander seeds, and the cumin. Gently mix together and leave to marinate while you prepare the rest of the salad.",
+    "Chop the parsley finely and place in a bowl with the green onions, garlic, cashew nuts, pepper, allspice, lemon juice, the remaining olive oil, and the cooked barley. Mix together well and season to taste. To serve, divide the salad among four plates and top with the marinated feta."
+  ],
+  "image": "/recipes/parsley-and-barley-salad.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

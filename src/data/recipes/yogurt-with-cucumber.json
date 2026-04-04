@@ -1,0 +1,56 @@
+{
+  "id": "yogurt-with-cucumber",
+  "name": "Yogurt with cucumber",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes enough for 8served as a condiment",
+  "tips": "The combination of yogurt and cucumber uses the cooling effect of both ingredients to refresh hearty or meaty dishes. We are happy to spoon it over anything. The Palestinian version, khyar b’laban, is often served with rice dishes (SEE MEJADRA) and with lamb or chicken (SEE LAMB SHAWARMA AND CHICKEN SOFRITO). For Ashkenazic Jews, sour cream replaces yogurt in dairy meals, or just the seasoned cucumbers (with oil, sugar, green onion, dill, and vinegar) are served next to meat or fish.",
+  "ingredients": [
+    {
+      "item": "mini cucumbers (7 oz / 200 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "2 cups / 500 g"
+    },
+    {
+      "item": "clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "pinch of cayenne pepper",
+      "amount": ""
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped fresh mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "white pepper",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Peel the cucumbers and cut them into very thin slices. Mix all the rest of the ingredients in a medium bowl, add the cucumbers, and check the seasoning. Leave in the fridge for 30 minutes. Serve cold."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

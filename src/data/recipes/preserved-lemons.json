@@ -1,0 +1,47 @@
+{
+  "id": "preserved-lemons",
+  "name": "Preserved lemons",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes 6",
+  "tips": "We’ve published this recipe before, in Ottolenghi: The Cookbook, but as pickled lemons are so central to our cooking and so much better homemade, here it is again. Just remember, the preserving process will take at least four weeks, and you really do need to give the lemons this time. The same method can be used with limes.",
+  "ingredients": [
+    {
+      "item": "unwaxed lemons",
+      "amount": "6"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "rosemary sprigs",
+      "amount": "2"
+    },
+    {
+      "item": "large red chile",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 6 lemons",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Before starting, get a jar just large enough to accommodate all the lemons snugly. To sterilize it, fill it with boiling water, leave for a minute, and then empty it. Allow it to dry out naturally without wiping it so it remains sterilized.",
+    "Wash the lemons and cut a deep cross all the way from the top to within ¾ inch / 2 cm from the base. Stuff each lemon with 1 tablespoon of the salt and place in the jar. Push the lemons in tightly so they are squeezed together tightly. Seal the jar and leave in a cool spot for at least a week.",
+    "After this initial period, remove the lid and press the lemons as hard as you can to squeeze out as much of the juice as possible. Add the rosemary, chile, and lemon juice and cover with a thin layer of olive oil. Seal the jar and leave in a cool place for at least 4 weeks. The longer you leave them, the better the flavor."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

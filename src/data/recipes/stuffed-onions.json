@@ -1,0 +1,89 @@
+{
+  "id": "stuffed-onions",
+  "name": "Stuffed onions",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Stuffed Vegetables"
+  },
+  "servings": "serves 4makes about 16 stuffed onions",
+  "tips": "As a result of the long cooking and the sharp sweetness of the pomegranate molasses, these onions have a surprisingly deep, yet fresh flavor. Serve them at the start of a meat-centered meal, or alongside a selection of small vegetable dishes, such as Charred okra with tomato, garlic, and preserved lemon or Fried cauliflower with tahini. Consider a variation based on a Syrian Jewish dish: stuff the onions with ground beef flavored with cinnamon and allspice and braise in a sauce made with water, tamarind, lemon juice, sugar, and a little oil.",
+  "ingredients": [
+    {
+      "item": "large onions (2 lb / 900 g in total, peeled weight) about 1⅔ cups / 400 ml vegetable stock",
+      "amount": "4"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "finely chopped shallots",
+      "amount": "1 cup / 150 g"
+    },
+    {
+      "item": "short-grain rice",
+      "amount": "½ cup / 100 g"
+    },
+    {
+      "item": "pine nuts, crushed",
+      "amount": "¼ cup / 35 g"
+    },
+    {
+      "item": "chopped fresh mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried mint",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground clove",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon wedges (optional)",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Peel and cut about ¼ inch / 0.5 cm off the tops and tails of the onions, place the trimmed onions in a large saucepan with plenty of water, bring to a boil, and cook for 15 minutes. Drain and set aside to cool down.",
+    "To prepare the stuffing, heat the olive oil in a medium frying pan over medium-high heat and add the shallots. Sauté for 8 minutes, stirring often, then add all the remaining ingredients except the lemon wedges. Turn the heat to low and continue to cook and stir for 10 minutes.",
+    "Using a small knife, make a long cut from the top of the onion to the bottom, running all the way to its center, so that each layer of onion has only one slit running through it. Start gently separating the onion layers, one after another, until you reach the core. Don’t worry if some of the layers tear a little through the peeling; you can still use them.",
+    "Hold a layer of onion in one cupped hand and spoon about 1 tablespoon of the rice mixture into one-half of the onion, placing the filling near to one end of the opening. Don’t be tempted to fill it up more, as it needs to be wrapped up nice and snug. Fold the empty side of the onion over the stuffed side and roll it up tightly so the rice is covered with a few layers of onion with no air in the middle. Place in a medium frying pan for which you have a lid, seam side down, and continue with the remaining onions and rice mixture. Lay the onions side by side in the pan, so that there is no space to move about. Fill any spaces with parts of the onion that have not been stuffed. Add enough stock so that the onions are three-quarters covered, along with the pomegranate molasses, and season with ¼ teaspoon salt.",
+    "Cover the pan and cook on the lowest possible simmer for 1½ to 2 hours, until the liquid has evaporated. Serve warm or at room temperature, with lemon wedges if you like."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

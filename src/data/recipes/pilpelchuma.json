@@ -1,0 +1,55 @@
+{
+  "id": "pilpelchuma",
+  "name": "Pilpelchuma",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes 1 small jarabout 1 cup / 250 ml",
+  "tips": "This is an intense chile-and-garlic paste that is used by Jews from Tripoli as a basic seasoning for many of their dishes, a bit like the Tunisian harissa. It is concentrated and deep in flavor, so use it carefully. It can be smeared over root vegetables before roasting, or mixed with oil and herbs to marinate meats for the grill. It is also wonderful whisked into the eggs when making scrambled eggs.",
+  "ingredients": [
+    {
+      "item": "large ancho or pasilla chile, or other dried chile with a little heat (⅓ oz / 12 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "4½ tbsp / 25 g"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "3½ tbsp / 25 g"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "caraway seeds, ground",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cloves garlic, peeled (2¾ oz / 75 g in total)",
+      "amount": "20"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "sunflower oil, plus a little extra",
+      "amount": "5 tbsp / 75 ml"
+    }
+  ],
+  "method": [
+    "Place the chile in a small bowl, cover with hot water, and allow it to soak for 30 minutes. Drain and seed the chile and cut into large chunks.",
+    "Spread the ground spices out in a frying pan. Place over medium-low heat and dry-roast them for about 2 minutes. Put the spices in a small food processor, along with the chile, garlic, and salt. Process a little, then, with the machine still running, pour in the oil and process until you get a sticky paste.",
+    "Spoon the mixture into a sterilized jar (SEE PRESERVED LEMONS) and cover with a film of oil to prevent it drying out. Seal and store in the fridge, where it will last for up to 1 month."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

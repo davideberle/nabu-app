@@ -1,0 +1,62 @@
+{
+  "id": "shakshuka",
+  "name": "Shakshuka",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 2 to 4",
+  "intro": "Shakshuka is Tunisian in origin but has become hugely popular in Jerusalem and all over Israel as substantial breakfast or lunch fare. Tunisian cuisine has a passionate love affair with eggs and this particular version of shakshuka is the seasonal variant for the summer and early autumn. Potatoes are used during the winter and eggplants in spring.",
+  "tips": "Having published recipes for shakshuka once or twice before, we are well aware of the risk of repeating ourselves. Still, we are happy to add another version of this splendid dish, seeing how popular it is and how convenient it is to prepare. This time the focus is on tomato and spice. But we encourage you to play around with different ingredients and adjust the amount of heat to your taste. Serve with good white bread and nothing else.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Pilpelchuma or harissa (store-bought or see recipe)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "large red peppers, cut into ¼-inch / 0.5cm dice (2 cups / 300 g in total)",
+      "amount": "2"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "large, very ripe tomatoes, chopped (5 cups / 800 g in total); canned are also fine",
+      "amount": "5"
+    },
+    {
+      "item": "large free-range eggs, plus 4 egg yolks",
+      "amount": "4"
+    },
+    {
+      "item": "labneh (store-bought or see recipe) or thick yogurt",
+      "amount": "½ cup / 120 g"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large frying pan over medium heat and add the pilpelchuma or harissa, tomato paste, peppers, garlic, cumin, and ¾ teaspoon salt. Stir and cook over medium heat for about 8 minutes to allow the peppers to soften. Add the tomatoes, bring to a gentle simmer, and cook for a further 10 minutes until you have quite a thick sauce. Taste for seasoning.",
+    "Make 8 little dips in the sauce. Gently break the eggs and carefully pour each into its own dip. Do the same with the yolks. Use a fork to swirl the egg whites a little bit with the sauce, taking care not to break the yolks. Simmer gently for 8 to 10 minutes, until the egg whites are set but the yolks are still runny (you can cover the pan with a lid if you wish to hasten the process). Remove from the heat, leave for a couple of minutes to settle, then spoon into individual plates and serve with the labneh or yogurt."
+  ],
+  "image": "/recipes/shakshuka.jpg",
+  "dietary": [
+    "vegetarian"
+  ]
+}

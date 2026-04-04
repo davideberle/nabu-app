@@ -1,0 +1,93 @@
+{
+  "id": "seafood-and-fennel-soup",
+  "name": "Seafood & fennel soup",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Soups"
+  },
+  "servings": "serves 4",
+  "intro": "You don’t see lots of seafood in Jerusalem. The distance from the sea and kosher rules make it a rare find. However, many of Jerusalem’s culinary inventions aren’t necessarily “natural” to its surroundings or population. The restaurant Machenyuda, which became famous for its little Kilner jars of polenta topped with asparagus and truffle, is the current trendsetter. Just as influential in the 1990s was Occianus (Ocean), where Eyal Shani, the enfant terrible of Israeli cooking, made his name. Shani’s prawns grilled over orange-tree charcoal and his ingredients foraged in the Judean mountains, combined with his fiery and eccentric ways, made him the voice of modern Israeli cuisine.",
+  "tips": "This is our interpretation of a Tunisian fish soup, with embellishments that take it way out of the realm of traditional, kosher cooking. Of all Jewish communities, it is the Tunisians who make the most extensive and creative use of fresh fish (panfried sea bass with harissa and rose, AND fricassee salad). Tunisian Jews traditionally had fish most days of the week and served it over couscous. This soup would, obviously, not appear on a traditional Tunisian Jewish table but it would still taste wonderful when spooned over couscous (just reduce the soup a little so it turns slightly thicker).",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cloves garlic, thinly sliced",
+      "amount": "4"
+    },
+    {
+      "item": "fennel bulbs (10½ oz / 300 g in total), trimmed and cut into thin wedges",
+      "amount": "2"
+    },
+    {
+      "item": "large waxy potato (7 oz / 200 g in total), peeled and cut into ⅔-inch / 1.5cm cubes",
+      "amount": "1"
+    },
+    {
+      "item": "scant 3 cups / 700 ml fish stock (or chicken or vegetable stock, if preferred)",
+      "amount": ""
+    },
+    {
+      "item": "medium preserved lemon (½ oz / 15 g in total), store-bought or see recipe",
+      "amount": "½"
+    },
+    {
+      "item": "red chile, sliced (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes (14 oz / 400 g in total), peeled and cut into quarters",
+      "amount": "6"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "good pinch of saffron",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "fillets sea bass (about 10½ oz / 300 g in total), skin on, cut in half",
+      "amount": "4"
+    },
+    {
+      "item": "mussels (about 8 oz / 220 g in total)",
+      "amount": "14"
+    },
+    {
+      "item": "clams (about 4½ oz / 140 g in total)",
+      "amount": "15"
+    },
+    {
+      "item": "tiger prawns (about 8 oz / 220 g in total), in their shells or peeled and deveined",
+      "amount": "10"
+    },
+    {
+      "item": "arak, ouzo, or Pernod",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped tarragon (optional)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the olive oil and garlic in a wide, low-rimmed frying pan and cook over medium heat for 2 minutes without coloring the garlic. Stir in the fennel and potato and cook for a further 3 to 4 minutes. Add the stock and preserved lemon, season with ¼ teaspoon salt and some black pepper, bring to a boil, then cover and cook over low heat for 12 to 14 minutes, until the potatoes are cooked. Add the chile (if using), tomatoes, spices, and half the parsley and cook for a further 4 to 5 minutes.",
+    "Add up to another 1¼ cups / 300 ml of water at this point, simply as much as is needed to be able just to cover the fish to poach it, and bring to a simmer again. Add the sea bass and shellfish, cover the pan, and allow to boil quite fiercely for 3 to 4 minutes, until the shellfish open and the prawns turn pink.",
+    "Using a slotted spoon, remove the fish and shellfish from the soup. If it is still a bit watery, allow the soup to boil for a few more minutes to reduce. Add the arak and taste for seasoning.",
+    "Finally, return the shellfish and fish to the soup to reheat them. Serve at once, garnished with the remainder of the parsley and the tarragon, if using."
+  ],
+  "image": "/recipes/seafood-and-fennel-soup.jpg"
+}

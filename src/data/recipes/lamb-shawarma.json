@@ -1,0 +1,101 @@
+{
+  "id": "lamb-shawarma",
+  "name": "Lamb shawarma",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Meat"
+  },
+  "servings": "serves 8",
+  "intro": "Jerusalem proudly boasts its own indigenous Hebrew vocabulary, made up of random words that substitute the common names for words like licorice, piggyback, lollipop, and others. The flatbread referred to in the city as esh tanur (burning furnace) is the carb of choice for encasing shawarma, slices of spiced meat and fat arranged on a large spit that rotates continuously near a hot grill and is regularly “shaved” with a large knife for passing customers. In addition to the meat, the flatbread includes chopped salad, tahini, fries, pickles, and amba, a mango and fenugreek sauce originally from India that has been adopted into the Jewish version of shawarma via Iraqi immigrants.\n\nSami remembers that when he was growing up going for shawarma was a bit of a luxury, as it was quite expensive. In Arab shops it was sold in a pita with a condiment of onion marinated with salt and sumac. The fries had to be good!",
+  "tips": "This is hardly a proper shawarma recipe. But then again, we wouldn’t expect most readers to have a vertical rotating spit at home. Still, the marinated lamb leg ends up tasting close enough to the real thing, which is as common and popular in Jerusalem as it is everywhere else in the Middle East.The first eleven ingredients, also known as Lebanese spice mix (SIMILAR TO THE YEMENITE HAWAYEJ), make a versatile mixture that can be used to marinate fish, meat, or root vegetables before roasting or grilling. You can double their quantity and keep half in a sealed jar for up to three weeks. If you don’t have a spice grinder, you can use a mortar and pestle to make this mix, but you would need to substitute ground cinnamon for cinnamon sticks, cardamom powder for pods, and leave out the star anise.Always serve the shawarma with fresh cucumber and tomato salad, dressed with lemon juice, olive oil, garlic, and chopped parsley or cilantro. It really needs the freshness and moisture. On top of that, you can serve rice or bulgur and/or Tahini sauce. If you wish, you can add some peeled waxy potatoes to the roasting pan about 1½ hours before the lamb is ready, and toss them in the cooking liquids every now and then as they roast.",
+  "ingredients": [
+    {
+      "item": "black peppercorns",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "5"
+    },
+    {
+      "item": "cardamom pods",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "½"
+    },
+    {
+      "item": "whole nutmeg, grated",
+      "amount": "½"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Maldon sea salt",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "scant 1 oz / 25 g fresh ginger, grated",
+      "amount": ""
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "chopped cilantro, stems and leaves",
+      "amount": "⅔ cup / 40 g"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "½ cup / 120 ml"
+    },
+    {
+      "item": "bone-in leg of lamb, about 5½ to 6½ lb / 2.5 to 3 kg",
+      "amount": "1"
+    },
+    {
+      "item": "boiling water",
+      "amount": "1 cup / 240 ml"
+    }
+  ],
+  "method": [
+    "Put the first 8 ingredients in a cast-iron pan and dry-roast over medium-high heat for a minute or two, until the spices begin to pop and release their aromas. Take care not to burn them. Add the nutmeg, ginger, and paprika, toss for a few more seconds, just to heat them, then transfer to a spice grinder. Process the spices to a uniform powder. Transfer to a medium bowl and stir in all the remaining ingredients, except the lamb.",
+    "Use a small, sharp knife to score the leg of lamb in a few places, making slits ⅔ inch / 1.5 cm deep through the fat and meat to allow the marinade to seep in. Place in a large roasting pan and rub the marinade all over the lamb; use your hands to massage the meat well. Cover the pan with aluminum foil and leave aside for at least a couple of hours or, preferably, chill overnight.",
+    "Preheat the oven to 325°F / 170°C.",
+    "Put the lamb in the oven with its fatty side facing up and roast for a total of about 4½ hours, until the meat is completely tender. After 30 minutes of roasting, add the boiling water to the pan and use this liquid to baste the meat every hour or so. Add more water, as needed, making sure there is always about ¼ inch / 0.5 cm in the bottom of the pan. For the last 3 hours, cover the lamb with foil to prevent the spices from burning. Once done, remove the lamb from the oven and leave to rest for 10 minutes before carving and serving."
+  ],
+  "image": "/recipes/lamb-shawarma.jpg"
+}

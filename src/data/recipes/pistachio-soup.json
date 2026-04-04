@@ -1,0 +1,73 @@
+{
+  "id": "pistachio-soup",
+  "name": "Pistachio soup",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Soups"
+  },
+  "servings": "serves 4",
+  "tips": "Don’t be too quick to judge. This soup, traditional of the Iranian Jewish community, only reveals its true glory at the very last stage, when fresh orange juice is stirred through it. Serve small portions; it’s quite rich. If you don’t want to skin the pistachios, don’t; it will only affect the color.",
+  "ingredients": [
+    {
+      "item": "boiling water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "saffron threads",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "shelled unsalted pistachios",
+      "amount": "1⅔ cups / 200 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "2 tbsp / 30 g"
+    },
+    {
+      "item": "shallots, finely chopped (3½ oz / 100 g in total)",
+      "amount": "4"
+    },
+    {
+      "item": "scant 1 oz / 25 g ginger, peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "leek, finely chopped (1¼ cups / 150 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "scant 3 cups / 700 ml chicken stock",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed orange juice",
+      "amount": "⅓ cup / 80 ml"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sour cream, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F / 180°C. Pour the boiling water over the saffron threads in a small cup and leave to infuse for 30 minutes.",
+    "To remove the pistachio skins, blanch the nuts in boiling water for 1 minute, drain, and while still hot, remove the skins by pressing the nuts between your fingers. Not all the skins will come off as with almonds—this is fine as it won’t affect the soup—but getting rid of some skin will improve the color, making it a brighter green. Spread the pistachios out on a baking sheet and roast in the oven for 8 minutes. Remove and leave to cool.",
+    "Heat the butter in a large saucepan and add the shallots, ginger, leek, cumin, ½ teaspoon salt, and some black pepper. Sauté over medium heat for 10 minutes, stirring often, until the shallots are completely soft. Add the stock and half of the saffron liquid. Cover the pan, lower the heat, and let the soup simmer for 20 minutes.",
+    "Place all but 1 tablespoon of the pistachios in a large bowl along with half of the soup. Use a handheld blender to blitz until smooth and then return this to the saucepan. Add the orange and lemon juice, reheat, and taste to adjust the seasoning.",
+    "To serve, coarsely chop up the reserved pistachios. Transfer the hot soup into bowls and top with a spoonful of sour cream. Sprinkle with the pistachios and drizzle with the remaining saffron liquid."
+  ],
+  "image": null
+}

@@ -1,0 +1,77 @@
+{
+  "id": "mixed-bean-salad",
+  "name": "Mixed bean salad",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "String beans are in season in summer and early autumn and are a symbol of the Jewish New Year (Rosh Hashanah), particularly with Sephardic Jews. You would expect the fruit and vegetable market, Machne Yehuda, to be bustling the last two days before Rosh Hashanah, a holiday on which a seminal family meal takes place. Often, though, the market is eerily calm. A taxi driver explained to us that the smart and canny housewives shop well before the holiday, when the prices are low, preparing and cooking whatever can be made in advance, and that only “mugs” go shopping at the last minute, just before the holiday.",
+  "tips": "Yellow beans are wonderfully tender. We suggest making an effort to find them, because they make a contribution to the general texture and the look of the dish, but you are perfectly fine substituting as suggested. Serve this salad alongside Polpettone or Roasted chicken with Jerusalem artichoke and lemon.",
+  "ingredients": [
+    {
+      "item": "yellow beans, trimmed (if unavailable, double the quantity of green beans)",
+      "amount": "10 oz / 280 g"
+    },
+    {
+      "item": "green beans, trimmed",
+      "amount": "10 oz / 280 g"
+    },
+    {
+      "item": "red peppers, cut into ¼-inch / 0.5cm strips",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil, plus 1 tsp for the peppers",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cloves garlic, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "capers, rinsed and patted dry",
+      "amount": "6 tbsp / 50 g"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "4"
+    },
+    {
+      "item": "tarragon, coarsely chopped",
+      "amount": "⅓ cup / 10 g"
+    },
+    {
+      "item": "picked chervil leaves (or a mixture of picked dill and shredded parsley)",
+      "amount": "⅔ cup / 20 g"
+    },
+    {
+      "item": "grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 450°F / 220°C.",
+    "Bring a large pan with plenty of water to a boil and add the yellow beans. After 1 minute, add the green beans and cook for another 4 minutes, or until the beans are cooked through but still crunchy. Refresh under ice-cold water, drain, pat dry, and place in a large mixing bowl.",
+    "Meanwhile, toss the peppers in 1 teaspoon of the oil, spread on a baking sheet, and place in the oven for 5 minutes, or until tender. Remove from the oven and add to the bowl with the cooked beans.",
+    "Heat the 3 tablespoons olive oil in a small saucepan. Add the garlic and cook for 20 seconds; add the capers (careful, they spit!) and fry for another 15 seconds. Add the cumin and coriander seeds and continue frying for another 15 seconds. The garlic should have turned golden by now. Remove from the heat and pour the contents of the pan immediately over the beans. Toss and add the green onions, herbs, lemon zest, a generous ¼ teaspoon salt, and black pepper. Serve, or keep refrigerated for up to a day. Just remember to bring back to room temperature before serving."
+  ],
+  "image": "/recipes/mixed-bean-salad.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

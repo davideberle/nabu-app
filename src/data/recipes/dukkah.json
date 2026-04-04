@@ -1,0 +1,65 @@
+{
+  "id": "dukkah",
+  "name": "Dukkah",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Condiments"
+  },
+  "servings": "makes about 1 cup / 125 g",
+  "tips": "This is an Egyptian aromatic seed-and-nut mix that can be sprinkled over leafy salads, roasted vegetables, bean pastes such as hummus, and simply cooked rice or lentils. It adds an exotic charm. You can prepare it in advance and store it in an airtight container for a month or so. When making, be sure not to burn the seeds, removing them from the heat as soon as they begin to pop, and also not to process them much with the mortar and pestle so that they keep their texture.",
+  "ingredients": [
+    {
+      "item": "hazelnuts, with skins",
+      "amount": "½ cup / 70 g"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried green peppercorns (or white, as an alternative)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Maldon sea salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 325°F / 160°C.",
+    "Spread the hazelnuts on a baking sheet and place in the oven for 20 minutes. Add the sunflower seeds after 10 minutes, keeping them apart from the nuts. Remove from the oven and leave to cool while you toast the seeds.",
+    "Put a cast-iron pan or heavy-bottomed frying pan over medium heat and leave for 5 minutes to heat up. Spread the fennel seeds in the pan and dry-toast them for 30 seconds. Add the cumin seeds and cook for another 30 seconds, until they start to pop, then transfer them both to a little bowl. Keeping the pan over the heat, add the green peppercorns and cook for about 30 seconds, until they start to pop. Transfer to a separate bowl. Dry-toast the coriander seeds for up to a minute, until they start to pop. Keep separate.",
+    "Decrease the heat to low and cook the sesame and nigella seeds together, stirring occasionally, until the sesame seeds turn light brown, then remove from the pan.",
+    "Rub the hazelnuts between the palms of your hands to remove and discard some of the skins. Use a mortar and pestle to chop them coarsely, then transfer to a medium bowl. Lightly crush the cumin and fennel seeds and add to the hazelnuts. Do the same with the coriander seeds, followed by the green peppercorns and then the sunflower seeds. Add the sesame and nigella seeds, the salt, and the paprika and mix well. Store in an airtight container for up to 1 month."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

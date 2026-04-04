@@ -1,0 +1,93 @@
+{
+  "id": "burekas",
+  "name": "Burekas",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Baking"
+  },
+  "servings": "makes 18 small pastries",
+  "intro": "Opened in 1959, Burekas Mussa on Jaffa Street is the city’s most popular bureka joint. It is easily recognizable; you simply follow the long queue of hungry mouths waiting patiently (by Israeli standards, that is) for their order of the incredibly greasy, flaky pastry filled with a hard-boiled egg, spicy tomato or tahini sauce, and the equally legendary side dish of pickled cucumber.\n\nThe bureka—the large, Turkish variety—is a major contender for the title of national dish, at least on the Jewish side. Best served freshly baked and still warm from the oven, sliced open and stuffed with goodies like a Christmas stocking, it makes for an indulgent meal and often comes under fire for the role it plays in the nation’s expanding waistline.\n\nThe name bureka is a general term given to a vast array of flaky pastries made from either puff pastry, shortcrust pastry, or filo and stuffed with a savory filling, such as cheese (the most popular), mashed potato, seasoned ground meat, or cooked spinach, with a system of distinctive shapes to indicate the type of filling inside. Available in both small and large versions, industrially made or handcrafted, in the frozen-foods section of a supermarket or grocery or freshly assembled at a specialty shop, the bureka was brought over by Jewish immigrants from Turkey, Greece, and the Balkans and was wholeheartedly adopted by all Jerusalemites. It has taken such a strong hold in the national culture that Israeli B movies have even been named after it (similar to the spaghetti Westerns of the 1960s).",
+  "tips": "Our bite-size burekas can be made larger if you like. You can serve these pastries as a snack or as a modest meal, particularly if you slice them horizontally after they are baked and stuff them with all the wonderful additions we mention opposite.We offer you two cheese fillings for your burekas; the second one is stronger and more potent. You can try both but you can also save yourself work by choosing only one of the fillings and just doubling its quantity if you are using the full 1 lb / 500 g of pastry.",
+  "ingredients": [
+    {
+      "item": "best-quality, all-butter puff pastry",
+      "amount": "1 lb / 500 g"
+    },
+    {
+      "item": "large free-range egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "cottage cheese",
+      "amount": "¼ cup / 60 g"
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "¼ cup / 60 g"
+    },
+    {
+      "item": "scant ⅔ cup / 90 crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "2 tsp / 10 g"
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "3½ tbsp / 50 g"
+    },
+    {
+      "item": "grated aged pecorino cheese",
+      "amount": "⅔ cup / 70 g"
+    },
+    {
+      "item": "grated aged Cheddar cheese",
+      "amount": "⅓ cup / 50 g"
+    },
+    {
+      "item": "leek, cut into 2-inch / 5cm segments, blanched until tender, and finely chopped (¾ cup / 80 g in total)",
+      "amount": "1"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "yellow mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Roll out the pastry into two 12-inch / 30cm squares each ⅛ inch / 3 mm thick. Place the pastry sheets on a parchment-lined baking sheet—they can rest on top of each other, with a sheet of parchment between—and leave in the fridge for 1 hour.",
+    "Place each set of filling ingredients in a separate bowl. Mix and set aside. Mix all the seeds together in a bowl and set aside.",
+    "Cut each pastry sheet into 4-inch / 10cm squares; you should get 18 squares total. Divide the first filling evenly among half of the squares, spooning it onto the center of each square. Brush two adjacent edges of each square with egg and then fold the square in half to form a triangle. Push out any air and pinch the sides together firmly. You want to press the edges very well so they don’t open during cooking. Repeat with the remaining pastry squares and the second filling. Place on a parchment-lined baking sheet and chill in the fridge for at least 15 minutes to firm up. Preheat the oven to 425°F / 220°C.",
+    "Brush the two short edges of each pastry with egg and dip these edges in the seed mix; a tiny amount of seeds, just ⅙ inch / 2 mm wide, is all that is needed, as they are quite dominant. Brush the top of each pastry with some egg as well, avoiding the seeds.",
+    "Make sure the pastries are spaced about 1¼ inches / 3 cm apart. Bake for 15 to 17 minutes, until golden brown all over. Serve warm or at room temperature. If some of the filling spills out of the pastries during the baking, just gently stuff it back in when they are cool enough to handle."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ]
+}

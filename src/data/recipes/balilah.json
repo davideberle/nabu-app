@@ -1,0 +1,57 @@
+{
+  "id": "balilah",
+  "name": "Balilah",
+  "source": {
+    "cookbook": "Jerusalem",
+    "author": "Yotam Ottolenghi & Sami Tamimi",
+    "chapter": "Pulses & Grains"
+  },
+  "servings": "serves 4",
+  "intro": "On the corner of the souk in the Old City stood the very popular balilah man. He had large piles of freshly cooked chickpeas on his stall, steaming and beautifully decorated with parsley and lemon. Like a magician, he used to whip the balilah into a newspaper cone in a flash and serve it to the eager customer.\n\nBalilah is a popular Palestinian street food consisting of fresh chickpeas seasoned with cumin and lemon juice and it makes the most gratifying snack. Curiously, in the Jewish Orthodox neighborhood of Me’ah She’arim, a cheap and cheerful snack called arbes is sold. It is just like balilah, only seasoned with black pepper instead of cumin. It, too, is highly popular.",
+  "tips": "Balilah can be eaten warm, not hot, or at room temperature as a little between-meal snack. It is also delicious served next to grilled chicken or fish, or can be turned into a salad by adding some leaves, feta, and diced tomatoes.",
+  "ingredients": [
+    {
+      "item": "dried chickpeas",
+      "amount": "1 cup / 200 g"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "1 cup / 60 g"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "large lemon",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "The night before, put the chickpeas in a large bowl and cover with cold water at least twice their volume. Add the baking soda and leave at room temperature to soak overnight.",
+    "Drain the chickpeas and place them in a large saucepan. Cover with plenty of cold water and place over high heat. Bring to a boil, skim the surface of the water, then decrease the heat and simmer for 1 to 1½ hours, until the chickpeas are very soft but still retain their shape.",
+    "While the chickpeas are cooking, put the parsley and green onions in a large mixing bowl. Peel the lemon by topping and tailing it, placing on a board, and running a small sharp knife along its curves to remove the skin and white pith. Discard the skin, pith, and seeds and coarsely chop the flesh. Add the flesh and all of the juices to the bowl.",
+    "Once the chickpeas are ready, drain and add them to the bowl while they are still hot. Add the olive oil, cumin, ¾ teaspoon salt, and a good grind of pepper. Mix well. Allow to cool down until just warm, taste for seasoning, and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
