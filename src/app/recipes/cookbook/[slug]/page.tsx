@@ -13,6 +13,7 @@ export function generateStaticParams() {
   return cookbooks.map((c) => ({ slug: c.slug }));
 }
 
+// rebuilt
 export default async function CookbookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const cookbooks = getCookbooks();
