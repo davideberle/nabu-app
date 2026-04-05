@@ -1,0 +1,49 @@
+{
+  "id": "pizza-with-garlicky-pomodorini",
+  "name": "Pizza with Garlicky Pomodorini",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "large pizza shell (see my wood oven pizza recipe.)",
+      "amount": "1"
+    },
+    {
+      "item": "mozzarella cut into strips",
+      "amount": "2 cups"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1"
+    },
+    {
+      "item": "pomodorini tomatoes -cut in half, leave the whole ones",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "olive oil plus olive oil for drizzling",
+      "amount": "2 T"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "In a bowl, mix 2 T olive oil, 1 minced garlic, 1/4 cup chopped parsley, and 1 cup of pomodorini. Set aside. After parbaking a pizza bottom, remove from oven, and preheat to broil, 500°F. Drizzle olive oil, grated pecorino, and pomodorini. Arrange mozzarella strips and broil until the top is golden brown and the cheeses are bubbly. Remove from oven and slice with a pizza cutter. This is one of our favorites! Serves 2. Olé"
+  ]
+}

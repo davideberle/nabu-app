@@ -1,0 +1,72 @@
+{
+  "id": "1-thai-salad-with-peanut-sauce",
+  "name": "1) Thai Salad with Peanut Sauce",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "shredded napa cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "shredded napa cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "sliced cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "sliced cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "julienned red onion",
+      "amount": "1"
+    },
+    {
+      "item": "julienned red onion",
+      "amount": "1"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "2"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "2"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "2"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "sliced jalapeno pepper",
+      "amount": "1"
+    },
+    {
+      "item": "sliced jalapeno pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a large bowl, toss all the salad ingredients.",
+    "In a large bowl, toss all the salad ingredients.",
+    "Add the dressing to salad mixture (Step 1) and mix well.",
+    "Add the dressing to salad mixture (Step 1) and mix well."
+  ]
+}

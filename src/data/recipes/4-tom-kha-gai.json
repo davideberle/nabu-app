@@ -1,0 +1,56 @@
+{
+  "id": "4-tom-kha-gai",
+  "name": "4) Tom Kha Gai",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "wedged onion",
+      "amount": "1"
+    },
+    {
+      "item": "wedged onion",
+      "amount": "1"
+    },
+    {
+      "item": "quartered cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "quartered cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "stemmed and quartered chilies",
+      "amount": "4"
+    },
+    {
+      "item": "stemmed and quartered chilies",
+      "amount": "4"
+    },
+    {
+      "item": "rinsed and shredded makrut leaves",
+      "amount": "4"
+    },
+    {
+      "item": "rinsed and shredded makrut leaves",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Chopped coriander stalks - 1 ounce",
+    "Chopped coriander stalks - 1 ounce",
+    "Boil 1 cup of coconut milk on low heat",
+    "Boil 1 cup of coconut milk on low heat",
+    "Add lemon juice, galangal (Step 2), and chicken into the boiling coconut milk and continue to simmer for 5-6 minutes.",
+    "Add lemon juice, galangal (Step 2), and chicken into the boiling coconut milk and continue to simmer for 5-6 minutes.",
+    "Add 1 more cup of coconut milk and let it heat on medium-low heat",
+    "Add 1 more cup of coconut milk and let it heat on medium-low heat",
+    "Add palm sugar, coriander stalks, Thai chilies, paprika, tomatoes, makrut and onions. Let it cook until the vegetables soften",
+    "Add palm sugar, coriander stalks, Thai chilies, paprika, tomatoes, makrut and onions. Let it cook until the vegetables soften",
+    "Add 1 cup of water, fish sauce, the rest of the ingredients",
+    "Add 1 cup of water, fish sauce, the rest of the ingredients"
+  ]
+}

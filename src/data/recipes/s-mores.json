@@ -1,0 +1,35 @@
+{
+  "id": "s-mores",
+  "name": "S’mores",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 8 s’mores",
+  "intro": "I can’t make a campfire in my apartment or in the park across the street. I can’t eat conventional marshmallows because they contain bovine gelatin and I can’t just eat most boxed graham crackers because they contain honey. What’s a s’mores lovin’, former Girl Scout-turned-vegan city dweller supposed to do? The answer is simple: I sandwich mini vegan marshmallows from Sweet and Sara (see Resources page 290) and squares of my favorite dark chocolate bar between two homemade Graham Crackers (page 136). What are you waiting for?",
+  "ingredients": [
+    {
+      "item": "Graham Crackers (page 136)",
+      "amount": "16 (2 inch / 5 cm)"
+    },
+    {
+      "item": "to 6 ounces / 142 to 170 grams any favorite dark chocolate bar, broken into small pieces",
+      "amount": "5"
+    },
+    {
+      "item": "to 20 mini vegan marshmallows",
+      "amount": "16"
+    }
+  ],
+  "method": [
+    "Position a rack in the upper third of the oven and preheat to 425°F / 220°C. Line a baking sheet with parchment paper.",
+    "Lay half the graham crackers on the baking sheet. Cover the grahams with pieces of chocolate, leaving a small border. Warm in the oven for 2 to 3 minutes, until the chocolate is just beginning to melt.",
+    "Remove the baking sheet from the oven: Be careful—the baking sheet is hot! Press enough of the mini marshmallows over the chocolate to cover. The marshmallows will adhere to the melty chocolate.",
+    "Return the baking sheet to the oven and bake until the marshmallows and chocolate are soft and gooey, about 5 minutes.",
+    "Remove from the oven and top with the remaining graham crackers, pressing down slightly to make a sandwich."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

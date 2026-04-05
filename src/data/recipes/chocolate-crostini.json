@@ -1,0 +1,38 @@
+{
+  "id": "chocolate-crostini",
+  "name": "Chocolate Crostini",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 16 pieces",
+  "intro": "Slice a good crusty baguette. Brush the bread with a little fruity extra-virgin olive oil, warm the ganache, and set aside while you enjoy your meal with friends and family. After dinner, pop back into the kitchen and finish the crostini. Or make a tray to serve at a cocktail party. I like to sprinkle the warm crostini with lemon salt or one of the smoked finishing salts found at The Meadow in New York City’s West Village (see Resources page 290), but any finishing salt will do. The crunchy salt and drizzle of fruity olive oil on the chocolate-smeared bread is heavenly. Don’t omit.",
+  "ingredients": [
+    {
+      "item": "good-quality (10-inch / 25-cm) whole grain or sourdough baguette",
+      "amount": "1"
+    },
+    {
+      "item": "fruity extra-virgin olive oil for the bread; plus about 1 tablespoon / 15 ml for drizzling",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "Bittersweet Chocolate Ganache Glaze (page 264), warmed in a water bath until spreadable",
+      "amount": "1⅓ cups / 320 ml"
+    },
+    {
+      "item": "Finishing salt or flaked sea salt for sprinkling",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Slice the bread on a diagonal, about ½ inch / 12 mm thick. Arrange on a baking sheet and brush each slice lightly with the olive oil. Set aside until needed.",
+    "Fifteen minutes before you are ready to serve, preheat the oven to 375°F / 190°C. When the oven is at temperature, toast the bread for 5 to 8 minutes or until golden.",
+    "Remove the baking sheet from the oven and cool the bread until barely warm, about 5 minutes.",
+    "Spread each piece with about 2 tablespoons / 30 ml of the ganache, or enough to cover. Sprinkle lighly with salt and drizzle with a touch of olive oil. Serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "hot-chocolate-mexican-style",
+  "name": "Hot Chocolate Mexican-Style",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes one serving",
+  "intro": "While I was on my way to Boston for the holidays, my nephew texted me to say he’d meet me at the Amtrak station so we could get to the Taza Chocolate Factory in nearby Somerville for the three o’clock tour. (Good nephew Josh knew his aunt was doing research for her vegan chocolate book and made reservations.) Cups of steaming hot chocolate, Mexican-style, were being passed when we arrived—vegans welcome! I had one made with almond milk. It was frothy and satisfying with just a hint of cinnamon and vanilla from Taza’s high quality Mexican chocolate disks, which are made using traditional methods on antique or repurposed equipment. And all Taza ingredients are organic and direct trade (see Resources page 290). Get to Taza for a tour if you are in the area. Until then, try this version using their chocolate.",
+  "ingredients": [
+    {
+      "item": "disk of Mexican-style vegan chocolate, any flavor (Taza preferred)",
+      "amount": "1 (1.3-ounce / 37-gram)"
+    },
+    {
+      "item": "nondairy milk or water",
+      "amount": "½ cup / 120 ml"
+    },
+    {
+      "item": "rum, bourbon, or tequila (optional)",
+      "amount": "1 tablespoon / 15 ml"
+    }
+  ],
+  "method": [
+    "Use a Microplane grater to grate the disk of chocolate into a small bowl and set aside.",
+    "Heat the milk or water to just below boiling in a small saucepan with high sides.",
+    "Remove the saucepan from the heat and add the grated chocolate. Whisk continuously to prevent the chocolate from sticking to the bottom. Add any of the optional liquors and continue to whisk until the chocolate is completely melted.",
+    "Pour the chocolate mixture into a small pitcher and whisk vigorously for up to two minutes, until the chocolate is frothy.",
+    "Pour into a warm mug and serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "pasta-allastice",
+  "name": "Pasta all'Astice",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 T"
+    },
+    {
+      "item": "butter",
+      "amount": "1 T"
+    },
+    {
+      "item": "chopped shallots",
+      "amount": "2"
+    },
+    {
+      "item": "lobsters rinsed and cut in half, lengthwise",
+      "amount": "2"
+    },
+    {
+      "item": "white wine",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "can San Marzano tomatoes plus one can of water",
+      "amount": "8 oz"
+    },
+    {
+      "item": "grams linguine or spaghetti",
+      "amount": "300"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "chopped parsley.",
+      "amount": "1/4 cup"
+    }
+  ],
+  "method": [
+    "In a frying pan on medium heat, add 2 T olive oil, and 1 T butter, and saute shallots until transparent. Add lobsters and white wine and let the alcohol burn off. Add tomatoes, water, salt, and pepper and let simmer on low for 20 minutes. In the meantime, boil salted water and add pasta. When pasta is cooked al dente add directly to frying pan with chopped parsley, mix, and manticare. Turn onto plates, dividing the two lobsters- one for each plate. Garnish with parsley. Serves 2. Serving suggestion: fresh bread and salad. Olé."
+  ]
+}

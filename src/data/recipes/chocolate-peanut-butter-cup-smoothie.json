@@ -1,0 +1,51 @@
+{
+  "id": "chocolate-peanut-butter-cup-smoothie",
+  "name": "Chocolate Peanut Butter Cup Smoothie",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 2 servings",
+  "intro": "I almost lived on peanut butter cup candies during finals as a freshman in college, and as a result I couldn’t eat them again for years. But my preference for pairing peanut butter and chocolate eventually returned and remains to this day, only now I use better-quality peanut butter and chocolate. This quick, protein-packed, and healthy (but still rather decadent-tasting) smoothie, and the variation that follows, are in heavy rotation on my good mini-meal and snack list.",
+  "ingredients": [
+    {
+      "item": "any nondairy milk",
+      "amount": "1 cup / 240 ml"
+    },
+    {
+      "item": "medium frozen banana, cut into chunks",
+      "amount": "1"
+    },
+    {
+      "item": "to 3 tablespoons / 34 to 51 grams peanut butter, chunky or smooth",
+      "amount": "2"
+    },
+    {
+      "item": "to 3 tablespoons / 30 to 45 ml pure maple syrup, Grade B or dark amber, or agave syrup",
+      "amount": "2"
+    },
+    {
+      "item": "/ 28 grams dark chocolate (use any percentage), melted",
+      "amount": "1 ounce"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "pure almond extract (optional)",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "/ 140 grams ice cubes",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Add the nondairy milk, banana, 2 tablespoons / 34 grams of the peanut butter, 2 tablespoons / 30 ml of the maple syrup, the melted chocolate, and the vanilla and almond extracts to a blender and blend on high until smooth. Add the ice cubes and blend until frothy. Taste and add additional peanut butter and sweetener if needed. Pour into glasses and enjoy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

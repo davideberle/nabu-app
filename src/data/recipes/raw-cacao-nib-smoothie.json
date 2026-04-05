@@ -1,0 +1,55 @@
+{
+  "id": "raw-cacao-nib-smoothie",
+  "name": "Raw Cacao Nib Smoothie",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 large serving",
+  "intro": "Cacao nibs are partially ground cacao beans that are the natural source of all chocolate products. If you’ve cracked open a cacao bean and eaten the nib inside you know it is bitter, with just a hint of chocolate flavor on the finish. I do like the flavor of the nib when it is infused into liquid, and I also like its crunch in place of nuts or seeds. In this recipe, you can add more or less cacao nib to taste. Look for raw nibs that are fermented and dried at temperatures below 118°F / 48°C for maximum nutrient retention. For a truly raw recipe, be sure to use raw agave syrup and alcohol-free vanilla extract for the cashew cream. This recipe specifies a high-speed blender, but a standard blender will do; just make sure to blend longer until the liquid is silky smooth. You can use nondairy milk, tamari instead of unpasteurized nama shoyu, any other sweetener, and pure vanilla to make this recipe. It will taste just as good, but will be what I call now “raw friendly” instead of really raw.",
+  "ingredients": [
+    {
+      "item": "Basic Thick Cashew Cream (page 284)",
+      "amount": "¾ cup / 180 ml"
+    },
+    {
+      "item": "plus 1 tablespoon / 75 ml water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pitted Medjool or 4 pitted Deglet Noor dates / 46 grams, soaked and peeled",
+      "amount": "3"
+    },
+    {
+      "item": "/ 24 grams raw cacao nibs",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "to 4 tablespoons / 45 to 60 ml raw agave syrup, to taste",
+      "amount": "3"
+    },
+    {
+      "item": "alcohol-free vanilla extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "nama shoyu (optional)",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "/ 140 grams ice cubes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "to 2 tablespoons / 15 to 30 ml agave syrup or maple syrup (optional to add sweetness)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Put all the ingredients in a blender in the order listed, except the ice, and blend until smooth and creamy. Start the blender on low and increase to high speed. Add the ice cubes a few at a time and blend until frothy. Taste and add more sweetener if needed. Pour into a tall glass, and enjoy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

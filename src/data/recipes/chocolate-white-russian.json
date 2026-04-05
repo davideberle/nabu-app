@@ -1,0 +1,32 @@
+{
+  "id": "chocolate-white-russian",
+  "name": "Chocolate White Russian",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 drink",
+  "intro": "The White Russian is the potent but easy to quaff cocktail that was a favorite of Jeff “The Dude” Lebowski (Jeff Bridges) in the Coen Brother’s cult classic The Big Lebowski—only he called it “The Caucasian.” I have enjoyed vegan versions of this cocktail made with nondairy creamer and have now upped the ante by starting with house-made cacao nib–infused Chocolate Vodka (page 257). My favorite creamer is So Delicious coconut milk creamer, but you can use any brand you like. (A cream-free Black Russian variation follows this recipe.) Whether to stir, float the cream on top, or to use equal parts vodka and coffee liqueur, I leave to you.",
+  "ingredients": [
+    {
+      "item": "Chocolate Vodka (page 257)",
+      "amount": "2 ounces / 60 ml"
+    },
+    {
+      "item": "coffee liqueur, such as Kahlua",
+      "amount": "1 ounce / 30 ml"
+    },
+    {
+      "item": "nondairy creamer",
+      "amount": "½ ounce / 15 ml"
+    }
+  ],
+  "method": [
+    "Pour the vodka and coffee liqueur into an old-fashioned glass filled with ice cubes and stir.",
+    "Pour the nondairy milk into the glass and leave it to float on top, or stir vigorously."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

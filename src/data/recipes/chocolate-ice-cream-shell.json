@@ -1,0 +1,33 @@
+{
+  "id": "chocolate-ice-cream-shell",
+  "name": "Chocolate Ice Cream Shell",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 cup / 240 ml",
+  "intro": "Smucker’s Magic Shell—the chocolate sauce with the waxy taste and hydrogenated oil that hardens on ice cream—has the distinction of being the only junk food my mom didn’t stock. But then again, she liked her ice cream straight up. I preferred the Carvel ice cream version in which cones were dipped in a similar waxy liquid chocolate that hardened immediately on the cold soft serve twist. After a futile search for the name of this favorite forgotten Carvel treat, I turned to my Facebook and Twitter friends. Based on the volume of immediate answers, it was clear I was not alone in my fond memories of the Carvel Brown Bonnet. Turns out, this magic ice cream topping, which is hard but slightly chewy, is super simple to make and requires only three ingredients (chocolate, vanilla, and olive or coconut oil). The best-tasting in my opinion—and in the opinions of many tasters—was a chocolate ice cream shell made with mild tasting olive oil. Just use good chocolate for the best tasting topping, but after that the flavor possibilities are endless. A mint-flavored variation follows the recipe.",
+  "ingredients": [
+    {
+      "item": "/ 198 grams dark chocolate (68 to 70%), finely chopped",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "mild tasting extra-virgin olive oil or coconut oil, melted",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Place the chocolate in a small heatproof bowl and set it in a saucepan of very hot water over the lowest heat. Allow the chocolate to melt undisturbed until about two-thirds is melted.",
+    "Remove the saucepan from the heat and stir with a silicone spatula until all the chocolate is melted. Stir the oil into the chocolate until incorporated. Add the vanilla.",
+    "Keep the shell in liquid form until ready to pour over the ice cream—do not refrigerate."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ciambelle-al-vino",
+  "name": "Ciambelle al Vino",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "dry white wine (you can also use red )",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 T"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F. In a large bowl, mix ingredients. With floured hands roll 2T of the dough to form a rope two inches long. Bring ends together to form a donut overlapping the ends. In a small bowl, add two T sugar and coat cookie, place on a parchment-lined baking sheet two inches apart. Bake for 10 minutes or until golden. Let cool. Delicious with tea or coffee. Makes 1 dozen. Olé"
+  ]
+}

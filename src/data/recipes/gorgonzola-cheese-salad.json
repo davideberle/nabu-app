@@ -1,0 +1,45 @@
+{
+  "id": "gorgonzola-cheese-salad",
+  "name": "Gorgonzola Cheese Salad",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "small head of romaine lettuce cut up",
+      "amount": "1"
+    },
+    {
+      "item": "red onion cut into very thin slices",
+      "amount": "¼"
+    },
+    {
+      "item": "toasted sunflower seeds (optional)",
+      "amount": "2 T"
+    },
+    {
+      "item": "crumbled gorgonzola",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "crumbled gorgonzola for garnish",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "In a salad bowl, toss lettuce, red onion, toasted sunflower seeds, and 1/4 cup crumbled gorgonzola. In a small bowl, whisk mayonnaise, 1/2 cup gorgonzola, salt, and pepper. I usually toss right before eating. You can add more salt and pepper depending on your diet and taste preference. Serves 2-4. Olé"
+  ]
+}

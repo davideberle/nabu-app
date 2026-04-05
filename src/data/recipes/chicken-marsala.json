@@ -1,0 +1,66 @@
+{
+  "id": "chicken-marsala",
+  "name": "Chicken Marsala",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "chicken breasts pounded thin",
+      "amount": "4"
+    },
+    {
+      "item": "sliced cremini mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cloves crushed garlic",
+      "amount": "2"
+    },
+    {
+      "item": "chopped shallots",
+      "amount": "2-3"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "2 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "2 t"
+    },
+    {
+      "item": "butter",
+      "amount": "2 T"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 T"
+    },
+    {
+      "item": "Marsala",
+      "amount": "½ cup"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Wash and pat chicken dry, on a plastic lined cutting board pound 1/4 inch thin. In a small bowl combine flour, salt, and pepper. Coat chicken on both sides and set aside. In a large frying pan on medium heat, brown chicken on both sides and remove from pan. Set aside to drain on paper towels. In the same frying pan, add 2 T olive oil, 2 T butter, mushrooms, and saute. Add shallots, garlic, 1 cup of chicken broth, Marsala, 1 t salt, and 1 t pepper. It's best not to oversalt because you can always add more later!",
+    "Simmer on low heat, for 20 minutes, then add heavy cream, chicken breasts that you fried earlier and simmer an additional 5 minutes. Sauce will be thick but just in case it's not thick enough you can dissolve 1 T cornstarch or flour in 2 T cold water and add it to the cream slowly. Garnish with parsley. Serving suggestion: Roasted vegetables and bruschetta. Serves 2- 3. Olé This is one of Leo's favorite recipes!"
+  ]
+}

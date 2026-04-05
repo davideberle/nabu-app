@@ -1,0 +1,73 @@
+{
+  "id": "blondies",
+  "name": "Blondies",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes one (8 x 8-inch / 20 x 20-cm) square pan",
+  "intro": "Brownies without chocolate in the batter are considered Blondies! These moist bar cookies are made with brown sugar, which is their defining flavor. As conventional brown sugar is just white sugar with the molasses added back in, I prefer to use organic whole cane sugar from which the molasses has never been removed. You can vary this recipe as you would a brownie recipe—for example, add a half-cup of chopped nuts or spread with Thick and Glossy Fudge Frosting (page 271). For a party, double the recipe and bake it in a 13 × 9-inch / 33 × 23-cm pan.",
+  "ingredients": [
+    {
+      "item": "plus 6 tablespoons / 210 ml canned unsweetened full-fat coconut milk, well-stirred (do not use light), divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "/ 64 grams organic all-purpose flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "/ 70 grams organic whole wheat pastry flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "/ 27 grams coconut flour",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "aluminum-free baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "plus 2 tablespoons / 90 ml coconut oil, melted, or mild tasting extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "plus 1 tablespoon / 169 grams organic whole cane sugar, ground in a blender until powdered",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "/ 85 grams vegan dark chocolate chips",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Position a rack in the middle of the oven and preheat to 350°F / 180°C. Oil the sides and bottom of the pan and line the bottom with parchment cut to fit. Do not oil the parchment.",
+    "Mix ½ cup / 120 ml of the coconut milk with the vinegar and set aside for 30 minutes to clabber.",
+    "Place a wire mesh strainer over a medium bowl. Add the all-purpose flour, pastry flour, coconut flour, baking powder, cinnamon, and salt to the strainer and stir with a whisk to sift the ingredients into the bowl. (If any small bits remain in the strainer, add them to the mixture in the bowl.) Whisk to aerate the mixture.",
+    "Beat the oil and sugar in a separate medium bowl with electric beaters on low speed for 2 minutes until thoroughly combined. Increase the speed to medium and beat another minute. Add the clabbered coconut milk and beat on low until the mixture is smooth.",
+    "Add the sifted ingredients to the liquid ingredients in thirds, mixing on low between each addition. Add the remaining 6 tablespoons / 90 ml of coconut milk and the vanilla and beat on low until the batter is smooth.",
+    "Stir the chocolate chips into the batter. Pour the batter into the pan and level the top.",
+    "Bake for 21 to 22 minutes, or until a wooden toothpick inserted in a few spots near the center comes out mostly clean and not sticky. Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

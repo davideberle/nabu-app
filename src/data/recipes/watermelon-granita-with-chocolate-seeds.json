@@ -1,0 +1,42 @@
+{
+  "id": "watermelon-granita-with-chocolate-seeds",
+  "name": "Watermelon Granita with Chocolate Seeds",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 1½ pints / ¾ liter",
+  "intro": "On a hot and humid New York City summer day, nothing beats a couple of slices of ice-cold watermelon to cool me off (as much as possible, anyway). Nothing, that is, until I made this rosy pink, icy cold, lime-scented watermelon granita for my frozen dessert class at the Natural Gourmet Institute for Health and Culinary Arts in New York City. Granitas are typically made by freezing fruity liquid in a shallow pan and scraping the mixture with a fork at regular intervals as it freezes. That’s pretty simple, but I didn’t want to be tied to setting a timer and scraping. I had heard about making granita in a food processor using frozen cubes of fruit purée, and I decided to test the process. It worked perfectly; the granita was fluffy and the watermelon taste shone through.",
+  "ingredients": [
+    {
+      "item": "/ 680 grams watermelon, cubed and seeded",
+      "amount": "1½ pounds"
+    },
+    {
+      "item": "/ 50 grams organic granulated sugar, ground in a blender until powdered",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh lime juice",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "to 2 ounces / 28 to 57 grams dark chocolate (any percentage), chopped into small chunks for the “seeds”",
+      "amount": "1"
+    },
+    {
+      "item": "Flaked sea salt (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Purée the watermelon cubes in a food processor or blender and pour into a bowl. (You should have 2 cups / 480 ml of juice.) Add the powdered sugar and lime juice to the purée and whisk briskly until the sugar is dissolved.",
+    "Pour the mixture into ice cube trays and freeze until hard. This can take up to 24 hours.",
+    "Make the granita: Put a 1-quart / 1-liter container with a lid into the freezer. Transfer the frozen cubes to a food processor. Limit the number of cubes to no more than a double layer at a time so that the granita does not get slushy. Pulse a dozen or so times in 2 to 3-second bursts until the cubes are finely chopped. The number of pulses will depend on your machine.",
+    "Scrape the granita into the chilled container, cover the container, and return it to the freezer; repeat with the remaining cubes if necessary."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

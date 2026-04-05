@@ -1,0 +1,70 @@
+{
+  "id": "25-tom-yum-goong",
+  "name": "25) Tom Yum Goong",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "medium-size prawns",
+      "amount": "12"
+    },
+    {
+      "item": "medium-size prawns",
+      "amount": "12"
+    },
+    {
+      "item": "lemon",
+      "amount": "1"
+    },
+    {
+      "item": "lemon",
+      "amount": "1"
+    },
+    {
+      "item": "kaffir lime leaves",
+      "amount": "6"
+    },
+    {
+      "item": "kaffir lime leaves",
+      "amount": "6"
+    },
+    {
+      "item": "slices of galangal",
+      "amount": "8"
+    },
+    {
+      "item": "slices of galangal",
+      "amount": "8"
+    },
+    {
+      "item": "Thai chilies",
+      "amount": "2"
+    },
+    {
+      "item": "Thai chilies",
+      "amount": "2"
+    },
+    {
+      "item": "an onion",
+      "amount": "½"
+    },
+    {
+      "item": "an onion",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Heat a little vegetable oil in a stainless-steel pan over medium-high heat, then sauté the shells and heads of the prawns, using a spatula to squeeze out any tomalley from the prawn head.",
+    "Heat a little vegetable oil in a stainless-steel pan over medium-high heat, then sauté the shells and heads of the prawns, using a spatula to squeeze out any tomalley from the prawn head.",
+    "Add onion and simmer on medium-low heat for 45 minutes. When done, strain the soup, making sure to remove any liquid from the prawn head.",
+    "Add onion and simmer on medium-low heat for 45 minutes. When done, strain the soup, making sure to remove any liquid from the prawn head.",
+    "Place lemon, kaffir lime leaves, galangal, and chilies into the soup (Step 3). Let it boil for 5 minutes.",
+    "Place lemon, kaffir lime leaves, galangal, and chilies into the soup (Step 3). Let it boil for 5 minutes.",
+    "Add the oyster mushrooms and let the soup boil again.",
+    "Add the oyster mushrooms and let the soup boil again.",
+    "Stir in lemon juice, fish sauce, chili paste and sugar.",
+    "Stir in lemon juice, fish sauce, chili paste and sugar."
+  ]
+}

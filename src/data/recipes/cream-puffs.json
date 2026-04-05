@@ -1,0 +1,54 @@
+{
+  "id": "cream-puffs",
+  "name": "Cream Puffs",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "butter",
+      "amount": "8 T"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 t"
+    },
+    {
+      "item": "flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "eggs beaten",
+      "amount": "4"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "4 T"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 t"
+    },
+    {
+      "item": "powdered sugar to sprinkle on top",
+      "amount": "1 T"
+    }
+  ],
+  "method": [
+    "In a medium saucepan, combine water, milk, 8 T butter, salt, and sugar. Bring to a boil over medium heat. Remove from heat, and stir in one cup of flour all at once. Put back on medium heat and stir constantly for 1.5-2 minutes. The dough will come together to form a smooth ball. Transfer to a bowl and beat for one minute to let the mixture cool. Add eggs one at a time. Beat another minute until the dough forms a thick ribbon when you pull it up.",
+    "Transfer the dough to a piping bag. Pipe out 28 puffs onto a parchment-lined baking sheet 1.5-inches in diameter and ½-inch tall. Bake at 325°F for 20 minutes. Remove from oven and let cool. In the meantime, beat the remaining filling ingredients except for the powdered sugar. Transfer cream to piping bag and fill each puff. Sprinkle with powdered sugar. Serving suggestion: fresh raspberries. Serves 4. Olé"
+  ]
+}

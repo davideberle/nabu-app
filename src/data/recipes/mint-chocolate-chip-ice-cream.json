@@ -1,0 +1,60 @@
+{
+  "id": "mint-chocolate-chip-ice-cream",
+  "name": "Mint Chocolate Chip Ice Cream",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 1½ pints / ¾ liter ice cream",
+  "intro": "I like avocados for their taste, texture, and healthy nutritional profile. I eat them in salads, on crusty dense bread, mashed into a chunky guacamole, or simply halved and sprinkled with lime juice and flaked sea salt. Then, there is avocado-based ice cream! You may have already enjoyed some of the naturally vegan avocado ice creams that are standard fare in Mexico and other countries, and if you have, you know the good fat in this fruit churns into ultra creamy frozen desserts. You won’t notice the slightly vegetal flavor of the fruit if you use just-ripe—not very ripe—fruit. But don’t worry too much: It’s the chocolate and mint that you’ll taste the most. As a New Yorker with limited avocado choices, I use the creamy, neutral-flavored Hass from California.",
+  "ingredients": [
+    {
+      "item": "plus 2 tablespoons / 390 ml almond milk",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "agave syrup or pure maple syrup, Grade B or dark amber",
+      "amount": "1¼ cups / 300 ml"
+    },
+    {
+      "item": "/ 150 grams just-ripe Hass avocado, mashed (about ½ an average-size fruit)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 25 grams Dutch-process cocoa powder",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "natural mint oil or ⅜ teaspoon mint extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "guar gum",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "/ 85 grams vegan mint chocolate, finely chopped",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "recipe Mint Chocolate Ice Cream Shell (page 279), for serving (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Process the almond milk, agave, avocado, cocoa powder, vanilla, and mint oil in a blender on high for 1 minute or until completely puréed.",
+    "Sprinkle the guar gum directly on the mixture. Blend on low for 30 seconds, then increase the speed to high and blend for 1 minute. Taste the mixture. The mint should be strong but not overpowering. Add more mint oil cautiously, drop by drop, if needed.",
+    "Pour the purée into a 2-cup / 500-ml measure. Add enough almond milk to equal 2 cups / 480 ml.",
+    "Pour the ice cream base into a 2-cup / 500-ml container. Cover and refrigerate the base for 2 to 4 hours until thoroughly chilled before churning. Chilling the base thoroughly means faster churning, which results in a creamier frozen dessert.",
+    "When the mixture is cold, give it a good whisk. Pour into an ice cream maker and churn according to the manufacturer’s directions. It will look like soft serve when it is ready. Add the chopped chocolate and process for another minute or two.",
+    "Using a silicone spatula, immediately transfer the frozen ice cream to the chilled container. Cover tightly and freeze for at least 3 hours until the ice cream is firm enough to scoop."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

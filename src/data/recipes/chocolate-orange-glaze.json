@@ -1,0 +1,45 @@
+{
+  "id": "chocolate-orange-glaze",
+  "name": "Chocolate Orange Glaze",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes ⅔ cup / 160 ml",
+  "intro": "Drizzling this quick glaze over any simple cake will make a drab winter day—heck, any day—brighter. It’s an added bonus that the juice makes this glaze lower in fat than those made with nondairy milks, and that it contains no added sugar. Choose an orange large enough and it alone might yield enough juice and zest for the recipe.",
+  "ingredients": [
+    {
+      "item": "Finely grated zest of 1 large organic orange",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed orange juice, strained",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "/ 99 grams dark chocolate (70 to 72%), very finely chopped",
+      "amount": "3½ ounces"
+    },
+    {
+      "item": "fruity extra-virgin olive oil",
+      "amount": "2 teaspoons / 10 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "⅛ teaspoon"
+    }
+  ],
+  "method": [
+    "Combine the zest, orange juice, and chocolate in a small saucepan. Cook over the lowest heat until the chocolate begins to melt.",
+    "Remove from the heat and stir until the chocolate is completely melted and the glaze is smooth.",
+    "Stir the olive oil, vanilla, and salt into the glaze. Pour into a bowl and allow the glaze to thicken at room temperature for 20 to 25 minutes or until the glaze has set enough to coat a spoon thickly. Stir a few times before using."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

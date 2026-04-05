@@ -1,0 +1,454 @@
+{
+  "id": "how-to-clean-mussels",
+  "name": "How to clean mussels",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia"
+  },
+  "ingredients": [
+    {
+      "item": "mirin",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sake",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "white miso paste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "black cod fillets",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small baby bok choy, cut into thin strips",
+      "amount": "2"
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "small pumpkin, halved and seeded",
+      "amount": "1"
+    },
+    {
+      "item": "sprigs rosemary, plus few more for garnish",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pecorino, grated",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "gigli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Bulgarian sirene cheese",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "toasted sunflower seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "sumac, divided",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "pink scallops",
+      "amount": "12"
+    },
+    {
+      "item": "small cauliflower, about 1 pound, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "Madagascar vanilla bean, sliced lengthwise and seeds scraped",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "roasted crushed hazelnuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "bucatini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic, gently crushed",
+      "amount": "1"
+    },
+    {
+      "item": "speck, diced",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped, divided",
+      "amount": "1"
+    },
+    {
+      "item": "fresh porcini mushrooms, cut into ¼-inch slices",
+      "amount": "½ pound"
+    },
+    {
+      "item": "saffron threads, soaked in 1 tablespoon of boiling water for 15 minutes",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "reginette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "medium delicata squashes, halved lengthwise and seeded",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "conchiglie rigate pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "burrata",
+      "amount": "2 (8-ounce)"
+    },
+    {
+      "item": "toasted nigella seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "African cayenne",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fennel pork sausage, casing removed",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "to 3 thyme sprigs, stemmed",
+      "amount": "2"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "golden chanterelles, trimmed",
+      "amount": "1 pound"
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated pecorino or Parmigiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Oregon white truffle (about 40 grams)",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "small head savoy cabbage, cut into thin strips",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "penne pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "fontina, shredded",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "Castelvetrano olives, pitted and halved",
+      "amount": "20"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bunch Italian parsley, minced",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "small head purple cauliflower, cut into ½-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "lingcod fillet, cut into ½-inch strips",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "fettuccine pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "shallot, minced",
+      "amount": "½"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "4"
+    },
+    {
+      "item": "bunch Italian parsley, stemmed and leaves minced",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "small fresh peperoncino, minced, or ¼ teaspoon red pepper flakes",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes, halved (optional)",
+      "amount": "10"
+    },
+    {
+      "item": "Penn Cove mussels",
+      "amount": "3 pounds"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cooked chickpeas, drained",
+      "amount": "½ cup"
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "medium head escarole, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "artisanal ’nduja, divided",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "burrata",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "strips bacon",
+      "amount": "4"
+    },
+    {
+      "item": "medium head romanesco, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "to 2 pinches red pepper flakes, or 1 small peperoncino, minced",
+      "amount": "1"
+    },
+    {
+      "item": "rigatoni pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "Place the black cod in a 10-by-12-inch hotel pan or baking dish, pour the marinade over it, cover with plastic wrap, and refrigerate for 2 to 3 days.",
+    "Preheat the oven to 350 degrees F.",
+    "Place the pumpkin on a baking sheet. Add the rosemary, olive oil, and water, lightly mix, and cover with aluminum foil. Bake for 40 minutes, or until soft when poked with a fork. Remove the aluminum foil and let the pumpkin cool. Discard the rosemary. Using a spoon, put all the pumpkin pulp in a blender, making sure to add all the juice from the baking sheet. Add the pecorino, cinnamon, and salt and pepper to taste, and blend until creamy.",
+    "In a medium pan over medium heat, stir together the pumpkin puree and butter.",
+    "Remove from the oven and let cool, putting aside ½ cup. In a food processor on medium speed, blend the cauliflower and vanilla bean seeds until creamy. Season with salt and pepper to taste.",
+    "Remove the scallops from the fridge, drain, and cut eight into small pieces.",
+    "In a medium nonstick pan over medium-high heat, warm the butter. Add the remaining four whole scallops and cook for 1 minute on each side. Remove from the pan and set aside.",
+    "In a large skillet over medium heat, warm the olive oil. Add the shallot and garlic, and cook for a couple of minutes, stirring to avoid burning. Add the speck and cook for another couple of minutes, or until crispy. Add half the parsley and the porcini, and cook for about a minute more. Add the saffron and season with salt and white pepper to taste.",
+    "Add the wine and cook for 6 to 7 minutes.",
+    "Preheat the oven to 350 degrees F. On a baking sheet, place the squash, drizzle with the olive oil, add the water, and season with salt and pepper to taste. Bake for 45 minutes, or until fork-tender. Remove from the oven and let cool.",
+    "In a medium-large pan over medium heat, melt the butter. Add half the truffle and immediately turn off the heat.",
+    "In a medium-large pan over medium heat, warm the olive oil and garlic.",
+    "In a medium-large skillet over medium-low heat, warm the olive oil for 1 to 2 minutes. Add the olives, shallot, parsley, capers, and red pepper flakes, and cook for another couple of minutes.",
+    "In a large deep skillet over medium heat, warm the olive oil for a minute. Add the shallot, garlic, half the parsley, the capers, pepper to taste, and the peperoncino, and cook for about 2 minutes. Add the tomatoes and the mussels, stir, and cook for 1 minute.",
+    "Add the wine and continue cooking until the alcohol evaporates, 2 to 3 minutes. Reduce the heat to low, add the chickpeas, cover, and let cook for 5 minutes.",
+    "In a colander in the kitchen sink, run the mussels under cold water. Rinse them repeatedly, until the water runs clear, making sure all the dirt is gone. Next, remove the beard from each mussel: Pull on the clump of fibers with focused energy, taking care not to break the shell. Use a towel if they seem too slippery to hold. Rinse again, then proceed with cooking.",
+    "In a medium-large sauté pan over medium heat, warm the olive oil and garlic for a couple of minutes, stirring to avoid burning.",
+    "Add the escarole, cover, and cook for 8 to 10 minutes, or until the escarole has wilted. Add half the ’nduja and stir until it melts into the escarole mixture. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "Preheat the oven to 400 degrees F. On a baking sheet (lined with parchment paper, if you like), place the bacon, and bake for 15 to 18 minutes, or until crispy. Set aside until cool, then cut into ½-inch pieces.",
+    "In a large pot of boiling salted water, put half the romanesco. Cook until soft, 5 to 6 minutes. Using a spider, remove the romanesco and set aside. Turn off the heat, but keep the pot of water to use later for cooking the pasta.",
+    "In a blender, blend the cooked romanesco, half the pecorino, and 1 tablespoon of the olive oil until creamy and smooth.",
+    "In a medium-large pan over medium heat, warm the remaining 2 tablespoons olive oil, the garlic, and red pepper flakes for a minute. Stir in the romanesco puree, and continue cooking for another couple of minutes. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner."
+  ]
+}

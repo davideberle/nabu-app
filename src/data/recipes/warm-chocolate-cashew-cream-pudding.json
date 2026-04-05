@@ -1,0 +1,44 @@
+{
+  "id": "warm-chocolate-cashew-cream-pudding",
+  "name": "Warm Chocolate Cashew Cream Pudding",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 3 to 4 servings",
+  "intro": "Because cashew cream reduces faster than heavy cream when it is cooked, this creamy chocolate pudding is pot-to-bowl in about five minutes (assuming you have my Basic Thick Cashew Cream already made and stored in the refrigerator or freezer as I recommend).",
+  "ingredients": [
+    {
+      "item": "recipe (about 1¾ cups) / 420 ml Basic Thick Cashew Cream (page 284)",
+      "amount": "1"
+    },
+    {
+      "item": "/ 12 grams Dutch-process cocoa powder, sifted",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "/ 26 grams organic granulated sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "/ 57 grams dark chocolate (62 to 68%), finely chopped, or use vegan chocolate chips for a sweeter pudding",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "Dark chocolate shavings, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small saucepan, heat the cashew cream gently over low heat until just warm to the touch. Add the cocoa powder and sugar, and stir until dissolved. Remove the saucepan from the heat.",
+    "Add the chocolate and the vanilla and stir until the chocolate is melted."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

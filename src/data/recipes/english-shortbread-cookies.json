@@ -1,0 +1,29 @@
+{
+  "id": "english-shortbread-cookies",
+  "name": "English Shortbread Cookies",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "softened butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "sugar",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350° F. In a large bowl, mix salt, sugar, and flour. Cut butter into dough until crumbly. You will be able to gather up the dough, if it’s too dry add a little water. On a floured flat surface roll out dough and cut into vertical bars, 1 inch thick, two inches wide, 6 inches long. Arrange on baking sheet 2 inches apart. Prick three fork marks as pictured and bake for 10 minutes or until golden brown. Let cool. Serving Suggestion: English tea, of course! Makes 1 dozen. Olé"
+  ]
+}

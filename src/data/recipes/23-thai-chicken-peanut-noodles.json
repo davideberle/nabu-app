@@ -1,0 +1,46 @@
+{
+  "id": "23-thai-chicken-peanut-noodles",
+  "name": "23) Thai Chicken Peanut Noodles",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "chopped sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "4"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Whisk peanut butter, chicken broth, lemon juice, soy sauce, chili sauce, and red pepper flakes in a small bowl until smooth.",
+    "Whisk peanut butter, chicken broth, lemon juice, soy sauce, chili sauce, and red pepper flakes in a small bowl until smooth.",
+    "Cook pasta according to package directions. Strain when done",
+    "Cook pasta according to package directions. Strain when done",
+    "In a large skillet, fry the carrots, pepper, garlic, and chicken over medium heat for 5-6 mins.",
+    "In a large skillet, fry the carrots, pepper, garlic, and chicken over medium heat for 5-6 mins.",
+    "Stir in peanut butter mixture (Step 1). Let it boil. When it starts boiling, reduce heat and let it simmer for 3-5 mins.",
+    "Stir in peanut butter mixture (Step 1). Let it boil. When it starts boiling, reduce heat and let it simmer for 3-5 mins.",
+    "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts.",
+    "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts."
+  ]
+}

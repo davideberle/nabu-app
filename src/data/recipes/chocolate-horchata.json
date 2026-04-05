@@ -1,0 +1,66 @@
+{
+  "id": "chocolate-horchata",
+  "name": "Chocolate Horchata",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 2 servings",
+  "intro": "Horchata (pronounced or-CHA-tah) is a refreshing dairy-free rice- or nut-based drink from Mexico that’s increasingly available in taquerías and burrito stands in the United States. (In Spain, horchata is based on the Chufa nut, which I’ve never seen here.) My recipe combines elements from Horchata de Arroz (rice) and Horchata de Almendra (almonds) but with healthy upgrades: Whole grain brown rice replaces white rice and organic granulated sugar and organic whole cane sugar replace refined white sugar. (You will need to soak the rice and almonds overnight, so plan ahead.) My Mexican and Salvadorian friends have told me about horchata flavored with mint, chocolate, or lime, and with enough ice to make the drink slushy. I like all these flavors too and find one cup of ice makes for the most refreshing version. Finally, for an adult version, tip some rum or tequila into the beverage for a frothy, potent, cooling cocktail.",
+  "ingredients": [
+    {
+      "item": "/ 44 grams long grain brown rice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "/ 70 grams blanched whole almonds (see Sidebar page 289)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "/ 50 grams organic granulated sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "/ 27 grams organic whole cane sugar or coconut sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "/ 18 grams Dutch-process cocoa or natural cocoa (15 grams)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "/ 2 grams ground cinnamon, more or less to taste",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "almond extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "guar gum (optional but recommended)",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "/ 210 grams ice cubes, more for serving",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "to 2 teaspoons / 1 to 2 grams lime zest (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Soak the rice and almonds: Rinse the rice in a sieve. Transfer into a container, pour in enough water to cover the rice by 2 inches, and refrigerate for 24 to 36 hours. Rinse the almonds. Transfer to a container, pour in enough water to cover the nuts by 2 inches, and refrigerate for 8 to 24 hours.",
+    "To make the drink, drain and rinse the rice first. Grind the rice with 1 cup of fresh water in a blender on high until the rice is pulverized and the resulting rice milk is smooth. This will take 5 minutes or longer in a standard blender.",
+    "Drain and rinse the almonds and add to the rice milk in the blender. Start the machine on low and quickly increase the speed to high. Blend until smooth, up to 5 minutes in a standard blender. Stop the machine a few times to clean the sides of the container, and have patience.",
+    "Add the granulated and coconut sugars, cocoa, cinnamon, and vanilla and almond extracts and blend on high until smooth. Scrape the sides of the blender with a spatula, pushing any unblended bits of rice or almond into the liquid. Add the guar gum if using and blend on high for 1 minute. Add the lime zest and 1 cup of ice cubes a few cubes at a time and blend on high until incorporated. Taste and add more sugar if desired. Pour over ice into tall glasses and serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "id": "jalape-o-chili-oil",
+  "name": "JALAPEÑO CHILI OIL",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia"
+  },
+  "ingredients": [
+    {
+      "item": "to 4 ounces young stinging nettles",
+      "amount": "3"
+    },
+    {
+      "item": "raw walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "gigli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated ricotta salata",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Calabrian chili oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "to 10 edible spring flowers",
+      "amount": "8"
+    },
+    {
+      "item": "fiddlehead ferns, well cleaned, dirty parts trimmed and discarded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "leek, roots and thick green stems trimmed and discarded",
+      "amount": "1"
+    },
+    {
+      "item": "raw walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Fiore Sardo DOP, divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "conchiglie rigate pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "medium leek, thinly sliced, roots and thick green stems trimmed and discarded",
+      "amount": "1"
+    },
+    {
+      "item": "Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "bunch thyme, stemmed",
+      "amount": "1"
+    },
+    {
+      "item": "fresh English peas",
+      "amount": "14 ounces"
+    },
+    {
+      "item": "penne pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "crème fraîche",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pea shoots",
+      "amount": "4 cups"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "shelled pistachios",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "radiatori pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "jalapeño chili oil (recipe follows)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil 2 whole dry jalapeño peppers, stemmed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole dry jalapeño peppers, stemmed",
+      "amount": "2"
+    },
+    {
+      "item": "fresh baby spinach, plus a few leaves for garnish",
+      "amount": "½ pound"
+    },
+    {
+      "item": "whole raw almonds",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "crumbled Beecher’s Flagship cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh morels, halved lengthwise",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "finely chopped Italian parsley",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "saffron threads, soaked in ⅓ cup boiling water for 30 minutes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "fresh cow ricotta",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "purple or green asparagus, trimmed, tips and stems separated",
+      "amount": "1 pound"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "fresh wild spot prawns, washed, peeled, and heads removed",
+      "amount": "1 pound"
+    },
+    {
+      "item": "cayenne powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "small shallot, finely minced",
+      "amount": "½"
+    },
+    {
+      "item": "asparagus, stems cut into 1-inch pieces and tips set aside",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "toasted almonds, crushed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "fresh halibut fillet, cut into 1-inch strips",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "medium white onion, diced",
+      "amount": "½"
+    },
+    {
+      "item": "carrots, cut into 1-inch rounds",
+      "amount": "2"
+    },
+    {
+      "item": "lamb shoulder, cut into 1-inch cubes",
+      "amount": "½ pound"
+    },
+    {
+      "item": "lamb ribs",
+      "amount": "2"
+    },
+    {
+      "item": "to 4 bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "dry red wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "canned San Marzano tomato puree",
+      "amount": "32 ounces (4 cups)"
+    },
+    {
+      "item": "reginette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "knobs unsalted butter",
+      "amount": "3"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "giant Pacific octopus tentacle, rinsed until clean (see Tip)",
+      "amount": "1 pound"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "to 15 Gaeta or Castelvetrano olives, pitted and halved",
+      "amount": "12"
+    },
+    {
+      "item": "bunch Italian parsley, minced, divided",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "to 7 cherry tomatoes, halved (optional)",
+      "amount": "6"
+    },
+    {
+      "item": "paccheri pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "walnuts halves, gently crushed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Trevisano radicchio, cut into thin strips",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Gorgonzola Dolce, shredded",
+      "amount": "½ pound"
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "to 10 leaves spearmint, finely chopped, plus 4 whole leaves for finishing",
+      "amount": "8"
+    },
+    {
+      "item": "sprig wild fennel, minced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh fava beans, shelled",
+      "amount": "1 pound"
+    },
+    {
+      "item": "water",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "wild coho salmon, shredded into small pieces",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water to a boil. In the meantime, put on gloves and clean the nettles, removing the stems and keeping just the leaves. Rinse the leaves, then blanch them in the boiling water for less than a minute. Cool them down under cold water or in an ice bath.",
+    "In a large pot of boiling salted water, blanch the fiddleheads for 5 minutes. Leave the water boiling, and use a slotted spoon or spider to remove the fiddleheads. Rinse them with cold water, and set aside, reserving about a dozen for finishing.",
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the pancetta and sauté until it becomes crispy, stirring to avoid burning.",
+    "Add the leek and the potatoes, and cook until firm but soft enough to put a fork through. Stir in the thyme. Add the peas and cook, stirring occasionally, for 5 to 6 minutes. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "In a food processor, pulse the pea shoots (reserving a few shoots for finishing), pecorino, pistachios, and lemon juice, adding the olive oil slowly until you obtain a creamy consistency. Season with salt and pepper to taste. In a medium pan over low heat, warm the pesto.",
+    "In a big pot of boiling water, place a bottle, and let it boil for about 20 minutes. Remove the sterilized bottle from the pot and let it dry.",
+    "Put the jalapeños in the bottom of the bottle, add your favorite extra-virgin olive oil, seal the bottle, and let it rest in a dry, dark place for about a month for best flavor. The oil will keep for several months.",
+    "In a blender, blend the spinach, almonds, cheese, olive oil, water, and salt and pepper to taste, taking care not to liquefy (the pesto should still have some texture).",
+    "In a medium-large pan over medium heat, warm the pesto for a couple of minutes.",
+    "Make the spinach pesto ahead of time and keep it in a container in the refrigerator for 3 to 4 days. Drizzle some extra-virgin olive oil on top to avoid oxidation.",
+    "In a large pan over medium heat, warm the olive oil. Add the shallot and garlic and sauté for 2 minutes, stirring to avoid burning. Add the pancetta and walnuts, and cook for 2 minutes, stirring with a wooden spoon.",
+    "Add the morels and continue cooking for 1 minute. Add the parsley, saffron water, and salt and pepper to taste, and continue cooking for another 2 minutes. Turn off the heat, but leave the pan on the burner.",
+    "In a medium pot of boiling water, blanch the asparagus stems for 5 minutes, then drain. In a food processor, blend the asparagus stems and 1 tablespoon of the olive oil until you obtain a creamy consistency. Set aside.",
+    "In a medium-large skillet over medium heat, warm the remaining 3 tablespoons olive oil. Add the garlic and sauté for a couple of minutes, stirring to avoid burning.",
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the shallot and sauté for 2 to 3 minutes.",
+    "Add the asparagus stems, almonds, oregano, red pepper flakes, and salt and pepper to taste, reduce the heat to medium-low, and cook, covered, for 5 to 6 minutes, or until thick and saucy.",
+    "In a medium saucepan over medium-low heat, warm the olive oil. Add the onions and carrots; sauté for 2 to 3 minutes.",
+    "Preheat the oven to 180 degrees F.",
+    "In a medium-large sauté pan over medium-low heat, warm the olive oil for 1 minute. Add the pancetta and walnuts, and sauté until the pancetta becomes crispy, 2 to 3 minutes.",
+    "Add two-thirds of the radicchio and sauté, stirring occasionally, for 3 to 4 minutes.",
+    "In a medium-large pan over medium-low heat, warm the olive oil for 1 minute. Add the shallot, mint, and wild fennel, and sauté for 2 minutes.",
+    "Stir in the fava beans and cook for a minute. Add the water and cook for another 3 to 4 minutes. Season with salt and pepper to taste. Turn off the heat.",
+    "In a blender or food processer, blend half the fava bean mixture until you obtain a creamy consistency. Set aside."
+  ]
+}

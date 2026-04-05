@@ -1,0 +1,75 @@
+{
+  "id": "chocolate-mexican-spiced-ice-cream",
+  "name": "Chocolate Mexican-Spiced Ice Cream",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 2 pints / 1 liter",
+  "intro": "I like chili-seasoned foods but prefer them on the mild side. If you’re like me, you will be very happy with the flavor of this ice cream, which mixes smoky sweet ancho chili powder and pungent cinnamon into a luscious chocolate base. The chocolate flavor is up front, but as the ice cream melts in your mouth, the spice makes itself known. Three-eighths of a teaspoon of chili powder is just right for those of us with milder tastes, but heat seekers should feel free to spice it up even more. I prefer to make this ice cream with Dutch-process cocoa, but if you enjoy the fruity (or, as some say, sour) taste of natural cocoa, be sure to use a high-quality brand. Note that too much heat destroys the flavor of good cocoa, so simmer on low and don’t overcook.",
+  "ingredients": [
+    {
+      "item": "/ 257 grams organic granulated sugar",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "/ 104 grams Dutch-process or natural cocoa powder (non-alkalized)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 2 grams ancho chili powder",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch sea salt",
+      "amount": ""
+    },
+    {
+      "item": "boiling water, cooled 1 minute",
+      "amount": "1 cup / 240 ml"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "2 teaspoons / 10 ml"
+    },
+    {
+      "item": "almond extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "almond milk",
+      "amount": "1 cup / 240 ml"
+    },
+    {
+      "item": "guar gum",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "to 4 ounces / 85 to 113 grams dark chocolate (any percentage), finely chopped and mixed with a pinch of ground cinnamon and organic granulated sugar, for garnish (optional)",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Sift the sugar, cocoa powder, chili, cinnamon, and salt into a medium saucepan.",
+    "Add the hot water and whisk over low heat until the dry ingredients are dissolved and a few wisps of steam are visible on the surface.",
+    "Increase the heat to medium-low and add the agave. Simmer for 2 minutes, whisking frequently. Make sure to stir the bottom and sides of the pan.",
+    "Remove the saucepan from the heat and add the vanilla and almond extracts. Cool 5 minutes.",
+    "Pour the almond milk into a blender and add the guar gum. Blend on low for 30 seconds, then increase the speed to high for another 30 seconds.",
+    "Add the contents from the saucepan to the blender and blend for 1 minute.",
+    "Pour the mixture through a strainer into a bowl. Cover the bowl and refrigerate until very cold, 3 to 4 hours or overnight.",
+    "When the mixture is cold, give it a good whisk. Pour it into an ice cream maker and churn according to the manufacturer’s directions. The ice cream is ready when it looks like soft serve.",
+    "Using a silicone spatula, immediately transfer the frozen ice cream to the chilled storage container. Cover tightly and freeze for 3 to 4 hours until firm enough to scoop."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

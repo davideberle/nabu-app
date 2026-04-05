@@ -1,0 +1,48 @@
+{
+  "id": "maple-cranberry-sauce",
+  "name": "Maple Cranberry Sauce",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 2 cups / 480 ml",
+  "intro": "This is the sauce to turn to when you want a pop of color and a tart counterpoint to a chocolate dessert. If you think like I do, you’ll have bags of cranberries bought in winter in the freezer all year long. This sauce is chunky, but you can push it through a fine mesh sieve and make a gorgeous crimson coulis. (The variation follows.)",
+  "ingredients": [
+    {
+      "item": "fresh or frozen cranberries, picked over and rinsed (do not defrost if frozen)",
+      "amount": "3 cups (or one 12-ounce / 340-gram bag)"
+    },
+    {
+      "item": "pure maple syrup, Grade B or dark amber",
+      "amount": "½ cup / 120 ml"
+    },
+    {
+      "item": "to 5 tablespoons / 50 to 60 grams organic granulated sugar",
+      "amount": "4"
+    },
+    {
+      "item": "orange juice",
+      "amount": "⅓ cup / 80 ml"
+    },
+    {
+      "item": "/ 1 gram finely minced zest of an organic or unsprayed orange",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    }
+  ],
+  "method": [
+    "Combine the cranberries, maple syrup, 4 tablespoons of the sugar, the orange juice, zest, and salt in a medium saucepan. Bring to a boil over medium heat. Reduce the heat to medium-low and cook at a low boil for about 10 minutes, stirring frequently, until the cranberries are soft and most of the liquid is absorbed. Remove from the heat and stir in the vanilla. Taste the sauce. If you prefer a less tart flavor, add the additional tablespoon of sugar and stir until dissolved.",
+    "Cool to room temperature in the saucepan. Spoon into a container, cover, and refrigerate until needed."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

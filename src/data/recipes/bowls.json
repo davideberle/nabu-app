@@ -1,0 +1,1439 @@
+{
+  "id": "bowls",
+  "name": "BOWLS",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "fl oz (1½ dl) broccoli florets, fresh or frozen",
+      "amount": "5"
+    },
+    {
+      "item": "frozen pineapple or tropical fruit mix",
+      "amount": "8¾ oz (250 g)"
+    },
+    {
+      "item": "fl oz (2 dl) coconut water",
+      "amount": "6¾"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "tips to get going",
+      "amount": "5"
+    },
+    {
+      "item": "bananas, frozen or fresh",
+      "amount": "3"
+    },
+    {
+      "item": "packet pea sprouts, approx. 3½ oz (100g)",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "goji berries",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "hemp seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "frozen acai berries, or 1 tbsp acai powder and 7 oz (200 g) frozen blueberries",
+      "amount": "7 oz (200 g)"
+    },
+    {
+      "item": "bananas",
+      "amount": "3"
+    },
+    {
+      "item": "chia seeds (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "sprigs of lemon balm",
+      "amount": "2"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "blueberries, frozen or defrosted",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "handful of green leaves",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberry powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen blueberries",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "banana, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "dried figs (soft or pre-soaked)",
+      "amount": "6"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "apples",
+      "amount": "2"
+    },
+    {
+      "item": "flaxseed oil or Udo’s choice oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hemp seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh figs",
+      "amount": "2"
+    },
+    {
+      "item": "bananas",
+      "amount": "3"
+    },
+    {
+      "item": "frozen mango, or a scant ½ cup (1 dl) dried and soaked mango",
+      "amount": "4½ oz (125 g)"
+    },
+    {
+      "item": "fl oz (2 dl) (½ tin) coconut milk",
+      "amount": "6¾"
+    },
+    {
+      "item": "sliced banana",
+      "amount": "1"
+    },
+    {
+      "item": "fresh strawberries",
+      "amount": "12"
+    },
+    {
+      "item": "raw coconut chips",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dates",
+      "amount": "4"
+    },
+    {
+      "item": "strawberries, fresh or frozen",
+      "amount": "15"
+    },
+    {
+      "item": "fl oz (1½ dl) coconut milk",
+      "amount": "5"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "fresh strawberries",
+      "amount": "6"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "buckwheat, without hulls",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "fresh cranberries, or defrosted if frozen",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut oil (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water or coconut water (optional)",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "stalks celery",
+      "amount": "3"
+    },
+    {
+      "item": "fresh dates",
+      "amount": "5"
+    },
+    {
+      "item": "almond mylk (see pp. 80–81)",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "avocados, peeled, pitted, and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "hemp protein powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cashews",
+      "amount": "2 cups (4½ dl)"
+    },
+    {
+      "item": "lukewarm water",
+      "amount": "2 cups (4½ dl)"
+    },
+    {
+      "item": "probiotics capsules",
+      "amount": "4"
+    },
+    {
+      "item": "vanilla powder (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rolled oats, preferably naked oats",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "+ 2 tsp (5 dl) apple juice or water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "goji berries",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "apple",
+      "amount": "1"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut palm sugar (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mylk",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dried chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mylk",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "almond butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh or frozen blueberries and raspberries",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "grains, such as rolled oats, buckwheat or quinoa",
+      "amount": "1 (2 dl)"
+    },
+    {
+      "item": "cranberries, frozen or fresh",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pecans",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mylk, made from Brazil nuts",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "cacao nibs",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coconut water",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "pomegranate seeds, frozen",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mylk",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "berries—raspberries, blueberries, or blackberries, for example",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "dried and reconstituted mango or 4½ oz (125 g) frozen mango, defrosted",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "water or apple juice",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "Spirulina powder (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw carob powder or raw cacao powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "mesquite powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "honey or yacon syrup (or add more to taste)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "pears",
+      "amount": "2"
+    },
+    {
+      "item": "(1 dl), approx. 1/3 fennel bulb",
+      "amount": "½ cup"
+    },
+    {
+      "item": "spinach—approx. 3½ oz (100 g)",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "water + 1 cup (2 dl) coconut water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "spirulina powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "frozen raspberries",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "coconut water",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "raw maca powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "goji berries",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "frozen or fresh bananas",
+      "amount": "2"
+    },
+    {
+      "item": "hothouse (English) cucumber",
+      "amount": "½"
+    },
+    {
+      "item": "pear",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "handfuls of spinach, approx. 2½ oz (70 g)",
+      "amount": "3"
+    },
+    {
+      "item": "almond mylk",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "handful of fresh basil",
+      "amount": "1"
+    },
+    {
+      "item": "nuts/seeds",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "quart (1 liter) water",
+      "amount": "1"
+    },
+    {
+      "item": "mylk",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mixed berries, fresh or frozen",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "banana",
+      "amount": "½"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mylk",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "whole, de-hulled buckwheat",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "4"
+    },
+    {
+      "item": "mylk",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "almond mylk",
+      "amount": "1¼ (3 dl)"
+    },
+    {
+      "item": "goji berries",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen strawberries",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "maca powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "honey for added sweetness (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tips on how to incorporate superfoods every day",
+      "amount": "8"
+    },
+    {
+      "item": "matcha powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey for extra sweetness (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white almond butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water at 158°F (70°C) (or almond mylk)",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "lbs (1 kg) carrots",
+      "amount": "2¼"
+    },
+    {
+      "item": "liquid coconut oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green tea",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "quart water",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "nut butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "licorice root or ¼ cup (½ dl) finely chopped licorice root or 2 tsp licorice powder",
+      "amount": "1"
+    },
+    {
+      "item": "quart (1 liter) water",
+      "amount": "1"
+    },
+    {
+      "item": "2 oz (500 g) honey",
+      "amount": "1 lb"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "nut butter, see p. 141",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "warm water",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "chocolate mixture",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bananas",
+      "amount": "3"
+    },
+    {
+      "item": "almond butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "maple syrup or agave syrup",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "bananas",
+      "amount": "4"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "raw cacao nibs",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw cacao powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cashew butter or almond butter",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "frozen cranberries, defrosted",
+      "amount": "7 oz (200 g)"
+    },
+    {
+      "item": "maple syrup or 3 tbsp honey",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "cacao butter, melted",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raspberries and 2 small chunks of mango per popsicle mold",
+      "amount": "3 (frozen)"
+    },
+    {
+      "item": "coconut palm sugar per popsicle mold",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "avocados",
+      "amount": "2"
+    },
+    {
+      "item": "frozen black currants or cherries",
+      "amount": "½ lb (225 gr)"
+    },
+    {
+      "item": "yacon or maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "frozen or fresh black currants",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "kale or black cabbage leaves",
+      "amount": "7"
+    },
+    {
+      "item": "cashews",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "hemp hearts",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white miso",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sauerkraut",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "carrot juice",
+      "amount": "2 cups (5 dl)"
+    },
+    {
+      "item": "acovados, scooped",
+      "amount": "2"
+    },
+    {
+      "item": "fennel bulb",
+      "amount": "½"
+    },
+    {
+      "item": "hothouse cucumber",
+      "amount": "¼"
+    },
+    {
+      "item": "almond mylk",
+      "amount": "1¾ cup (3 dl)"
+    },
+    {
+      "item": "avocado, scooped",
+      "amount": "1"
+    },
+    {
+      "item": "chopped almonds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "grated Parmesan cheese or nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "stalks celery",
+      "amount": "3"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "zucchini or 1 package kelp noodles",
+      "amount": "2"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "½ cup (¾ dl)"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "10 tbsp"
+    },
+    {
+      "item": "almond pulp",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pinches of salt",
+      "amount": "2"
+    },
+    {
+      "item": "avocados",
+      "amount": "3"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "zucchinis or daikon radishes",
+      "amount": "2"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "container fresh basil",
+      "amount": "½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "warm water",
+      "amount": "1¼ cup (2½ dl)"
+    },
+    {
+      "item": "dark miso paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic or scant ¼ tsp garlic powder",
+      "amount": "1"
+    },
+    {
+      "item": "bunch of cilantro",
+      "amount": "1"
+    },
+    {
+      "item": "lime wedges",
+      "amount": "2"
+    },
+    {
+      "item": "bananas",
+      "amount": "6"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "prunes",
+      "amount": "25"
+    },
+    {
+      "item": "frozen blueberries, defrosted",
+      "amount": "9 oz (250 g)"
+    },
+    {
+      "item": "frozen raspberries, defrosted—do not use the liquid",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "(75 g)—approx. 1¼ cup (2½ dl) coconut chips",
+      "amount": "2¾ oz"
+    },
+    {
+      "item": "baobab or lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "golden flaxseeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "brown flaxseeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "5 cup (6 dl)"
+    },
+    {
+      "item": "hulled sesame seeds, with hulls",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "stock powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "wakame seaweed",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "frozen or fresh berries or other fruit",
+      "amount": "½ lb (225 gr)"
+    },
+    {
+      "item": "apricots or dates",
+      "amount": "5"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "hemp protein powder",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "15"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "or 3¼ oz (90 g) cacao butter",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "Brazil nuts",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "hemp hearts",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "tahini, or other type of nut or seed butter",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maca powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw carob powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cacao butter",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "quinoa puffs",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "agave, maple, or yacon syrup",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "lucuma powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "almonds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "frozen cherries, defrosted",
+      "amount": "½ lb (225 g)"
+    },
+    {
+      "item": "hemp powder",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ cup (½ dl)"
+    },
+    {
+      "item": "almonds, soaked or dry",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "sulfate-free raisins",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "coconut oil, softened (but not liquid)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "coconut oil, softened (but not liquid)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "almonds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "8"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut oil, softened",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen berries, defrosted",
+      "amount": "½ lb (225 gr)"
+    },
+    {
+      "item": "apples, chopped in the food processor with 8 soaked (dried) apricots",
+      "amount": "4"
+    },
+    {
+      "item": "dried mango, soaked",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (5 dl)"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (5 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "reishi powder (optional)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "+ ½ cup (1 dl) walnuts",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (2½ dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "matcha powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "maca powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground-cherries",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "1¼ cup (2½ dl)"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "coconut oil, softened",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "+ 1 tsp honey (¾ dl)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cranberry powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "nut butter",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mylk, water, or cold coffee",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "cashews",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cup, heaped (5 dl) nuts/seeds/almonds",
+      "amount": "1"
+    },
+    {
+      "item": "cup–¾ cup (½ dl–1½ dl) neutral-tasting oil",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "Cut the broccoli florets into smaller chunks. Blend all ingredients into a smooth texture.",
+    "Peel and slice the bananas—put them in a plastic bag and freeze them if you wish to use frozen bananas. You can blend the frozen bananas if you have a powerful blender. If not, defrost the fruit for 10 minutes first. Mix the bananas with the pea sprouts, avocado, and vanilla powder until you have a creamy consistency. Top with goji ­berries, hemp seeds, and bee pollen.",
+    "In a food processor, mix acai and banana to a smooth consistency. Add 2 tablespoons chia seeds, if desired. Pour the mixture into two bowls, dust with lucuma powder, sprinkle with mulberries and pomegranate seeds, and top with lemon balm.",
+    "Remove the stones from the dates. In a food processor or blender, mix all the ingredients (except toppings) to a creamy consistency. Spoon into bowls and top with sliced fresh strawberries and bee pollen.",
+    "To achieve good results from working out, the body needs to be replenished with good fuel.",
+    "Cut the celery stalks into chunks. Remove the stones from the dates. In a food processor or blender, mix it all to a smooth consistency, and dilute with some water if needed.",
+    "In a blender, mix the cashews with the water. Open the probiotics capsules and add the contents to the mixed cashews with the optional vanilla powder, and mix again. Pour the mixture into a glass bowl (do not use a metal bowl, or the yogurt culture will not grow) and cover it with a kitchen towel. Let the bowl sit at room temperature for the day, or overnight, to let the process begin. The yogurt will keep for up to a week in the refrigerator, in a bowl or jar with a tight-fitting lid.",
+    "Mix together all the ingredients for the pudding. Let it sit for at least 30 minutes, and top it with chopped nuts, mulberries, and dried buckwheat before serving.",
+    "Put everything (except toppings) together in a jar and stir to mix thoroughly. Let the mix sit for at least 30 minutes in the refrigerator, and serve with almond mylk and toppings.",
+    "Stir the grains with water or mylk (use the lesser quantity of either if you’re using frozen berries, because the berries will produce liquid as they defrost) and the remaining ingredients, except toppings. Let the mix stand for 1 to 8 hours. Top the mix with chopped pecans and cardamom.",
+    "Cut the fruit into chunks, mix them together, and sprinkle with chia seeds.",
+    "Mix together all the ingredients for the pudding, and let it sit for at least 30 minutes. Mix it thoroughly before serving. Top the pudding with sliced banana, cacao nibs, and dried mulberries.",
+    "Mix the chia seeds and the coconut water, and stir in the pomegranate seeds. Let sit for at least 30 minutes before serving.",
+    "Mix mylk with the chia seeds and fold in the berries. Let stand for at least 30 minutes. Top or sweeten if you so wish.",
+    "Cut the pears and fennel into chunks. Mix them together with the spinach, water, and coconut water. Add the remaining ingredients and blend to a smooth consistency.",
+    "Cut the cucumber and the pear into chunks. Scoop out the avocado. Blend all the ingredients to a smooth texture.",
+    "Mix all the ingredients in a blender to a smooth consistency.",
+    "Mix everything together in a cup or in a saucepan. Drink as is, or warm it carefully till it reaches body temperature.",
+    "Make fruit leathers, balls, and nice cream—maybe together with the kids?",
+    "Put the matcha powder, honey, and almond butter in the blender. Add water, and mix.",
+    "Mix it in a blender and strain.",
+    "Wash the carrots if they’re organic, otherwise peel them. Process the carrots with the ginger in a centrifugal juicer. Or, if you have a blender with a strong motor, you can mix the carrots with the ginger and 1 cup (2 dl) of water instead, then strain the juice through a fine-meshed sieve or a nut-milk bag. Stir in the coconut oil before serving.",
+    "Mix the tea leaves with the water inside a bottle. Let it steep at room temperature or in the refrigerator for about 4 to 8 hours.",
+    "Add about 10 cherries to a quart of green tea that’s cold-brewing in the refrigerator, in order to get the flavor and the nutrients from the fruit. You can strain out the fruit, or serve them in the tea.",
+    "Mix some cold-brewed tea with lemon juice, a piece of ginger, honey or coconut palm sugar, and a few ice cubes. If your blender’s motor isn’t powerful enough to crush ice cubes, pour the tea into a glass with ice cubes.",
+    "Heat up the water if you want a warm Cinnacino. Mix water, nut butter, coconut palm sugar, and cinnamon in a blender.",
+    "Bring the water and the root to a boil and let boil for about 10 minutes. Strain the liquid. It’s also fine to simply heat the water and stir in the licorice powder. Drink the beverage warm, or chill it to make iced tea and serve it with lemon and coconut palm sugar. Measure half a sliced lemon and 2 tablespoons of coconut palm sugar or honey per quart of tea.",
+    "In a bowl, mix the honey with the peppermint oil and the cacao powder, then pour it all back into the honey jar. Use 1 or 2 teaspoons in a cup of warm water or warm mylk.",
+    "Mix the ingredients and store them in a jar with a tight-fitting lid.",
+    "ADDITIONALLY, I BOOST MY OWN CHOCOLATE MIX WITH: • Maca powder—See p. 45. • Reishi powder—Reishi is a medicinal mushroom that contains a wide range of minerals and vitamins, such as magnesium, potassium, calcium, and zinc. • Mesquite powder is rich in fiber and protein, and even with its sweet taste, its GI index is low. Mesquite powder is rich in calcium. • Carob powder. A cacao replacement rich in calcium and caffeine-free.",
+    "ADDITIONALLY, I BOOST MY OWN CHOCOLATE MIX WITH:",
+    "In a food processor, blend the bananas and strawberries together with the almond butter. Add in your choice of sweetener, if desired. Freeze the mixture in popsicle molds for at least 6 hours.",
+    "Make sure the coconut oil is liquid, and then stir in the remaining ingredients. Drizzle the chocolate sauce over the nice cream, or dip the popsicles in the sauce.",
+    "Mix the bananas with the coconut cream in a blender. If you wish to add two colors to one mold, transfer half the ice cream to another bowl. Add cacao powder to the blender and mix. Stir cacao nibs into the ice cream in the bowl. Mix the two nice creams attractively in the molds and place the molds the freezer until the nice cream has set. This will take about 6 hours.",
+    "In a blender, mix the cranberries and nut butter together with the maple syrup. Pour the mixture into molds and put them in the freezer for at least 6 hours. Melt the cacao butter in a warm water bath; stir in the coconut palm sugar. Remove the popsicles from the freezer and dip them quickly, one by one, in the cacao butter. Enjoy them immediately, or put them back in the freezer.",
+    "Place the mango chunks and frozen raspberries in each mold, and fill the molds up with coconut water. Sprinkle with coconut palm sugar, and put the molds in the freezer for about 6 hours.",
+    "In a blender, mix the avocado, frozen berries, and syrup to a smooth nice cream. Serve in bowls topped with frozen black currants and bee pollen, and some extra syrup if you want more sweetener.",
+    "Cut the fennel and cucumber into smaller chunks. Process them in a blender together with the other ingredients—except the topping—and season with more herb salt if needed. Top with Parmesan or—if you’re a vegan—nutritional yeast.",
+    "Cut cucumber, tomatoes, and celery into chunks. Process them in a blender with the remaining ingredients, taste and adjust the soup for salt.",
+    "Cut the tomatoes into large chunks. Process them in a blender or food processor together with the remaining sauce ingredients, except for the pumpkin seeds. Add the seeds in and pulse them.",
+    "In a blender, mix all ingredients except the salt flakes. Taste-test, and add more licorice powder if needed.",
+    "Stir together all the ingredients, but make sure to not include the liquid from the defrosted raspberries (save that juice in a glass and drink it!). Dot tablespoons of the mixture on waxed parchment paper and let the cookies dehydrate at 107°F (42°C) for about 20 hours. Store the cookies in an airtight jar.",
+    "Cut the wakame seaweed into smaller bits and add them to the seed mixture. Spread the mixture thinly and evenly on a sheet of parchment paper or Teflex. Mark out squares with the back of a knife.",
+    "Mix sesame and pumpkin seeds in a food processor. Add the remaining ingredients and process until everything is thoroughly mixed. Spread the mixture on a sheet of parchment paper and shape the mixture into a rectangle using another piece of parchment paper placed on top. The rectangle should be ⅓” to ¾” thick (1 to 2 cm), and measure about 4” x 8” (10 cm x 20 cm). Cut it into bars of desired size. Lay some parchment paper between the bars, as if you were wrapping a sandwich.",
+    "MAKES 1 LARGE CAKE OR 15 INDIVIDUAL PIECES",
+    "In a bowl, stir together all the ingredients. Shape the mixture into small, pointy truffles; if it crumbles a bit, add in some more honey. Or if you’re in a hurry, eat the mixture directly with a spoon. You can roll the truffles in extra cacao powder.",
+    "Melt the cacao butter and coconut oil over a lukewarm water bath. Stir in the quinoa puffs, cacao powder, syrup, and lucuma powder. With a spoon, fill the muffin cups halfway. Store in the freezer. These taste best eaten while still chilled, since the cocoa butter and coconut oil will melt after a while.",
+    "Chop all the pumpkin seeds in a food processor. Remove them and transfer ¼ cup (½ dl) of the chopped pumpkin seeds to a bowl. Put the almonds in the food processor and grind them together with the pumpkin seeds until they are mixed into flour.",
+    "Remove the pits from the dates, and add the dates, grated lemon zest, cherries (reserving their liquid), hemp powder, and chia seeds to the food processor and mix everything into a batter, diluting it if necessary with some cherry juice. The mixture shouldn’t be completely dry, but not too sticky either.",
+    "Remove the bars from the freezer when you’re ready to eat them. They will defrost in no time and have the perfect texture.",
+    "Add the ginger and the salt, and process until you have a dough that’s sturdy enough to roll into balls.",
+    "Mix the grated coconut and the licorice powder in a bowl. Roll the balls in the coconut mix. Store the balls in the refrigerator.",
+    "Chop the cashews in a food processor until they are finely ground. Remove the pits from the dates and add to the cashews. Add in 1 tablespoon coffee granules, 1 table-spoon water, and then the remaining ingredients. Taste, and add more coffee granules and water if needed. Shape into small squares measuring about 1¼ x 1¼\" (3 x 3 cm).",
+    "Mix the cashews with the chia seeds in a food processor. Add all the ingredients—except the ground-cherries—and process some more. Fold in the ground-cherries and shape into bars with the help of a sheet of parchment paper.",
+    "Mix the pumpkin and sunflower seeds in a food processor until they are finely ground. Add in the remaining ingredients and process until you can make balls out of the mixture. Try rolling the balls in cranberry powder.",
+    "Mix everything together in a bowl. Roll the batter into balls, and then roll the balls in grated coconut; or, eat the batter with a spoon directly from the bowl.",
+    "Chop the cashews in a food processor until they are finely ground, add the remaining ingredients except the dried blueberries, and keep mixing until a dough forms. Fold in the dried blueberries. Roll out balls, or shape the dough into a circle and cut out small pie slices instead.",
+    "Mix the nuts or seeds of your choice, or almonds, in a food processor, adding in the neutral oil and salt. Different nuts will call for different amounts of oil. Cashews only need about ¼ cup (½ dl) of oil, while almonds will need ¾ cup (1½ dl) to become a really creamy nut butter. Store the butter in a glass jar with a tight-fitting lid."
+  ]
+}

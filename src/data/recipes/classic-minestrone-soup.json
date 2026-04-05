@@ -1,0 +1,73 @@
+{
+  "id": "classic-minestrone-soup",
+  "name": "Classic Minestrone Soup",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "chopped small onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped carrot",
+      "amount": "1"
+    },
+    {
+      "item": "chopped stalk of celery",
+      "amount": "1"
+    },
+    {
+      "item": "cloves of crushed garlic",
+      "amount": "2"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "2 T"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "oregano or preferred Italian seasonings",
+      "amount": "1 T"
+    },
+    {
+      "item": "of vegetable broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "parmesan",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 t"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 T"
+    },
+    {
+      "item": "8 oz can of cannellini beans",
+      "amount": "1"
+    },
+    {
+      "item": "small pasta ( elbow, bowtie, orzo )",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "In a stock pot, on medium heat, add 2 T of olive oil. Add vegetables and cook thoroughly. Add beans, broth, and seasonings. Let soup simmer covered for 30 minutes on low heat. Add pasta and cook until al dente. Add to soup near the end of cooking time, garnish with parsley, and top with grated parmesan cheese. Serving suggestion: fresh bread and salad. Serves 2-3."
+  ]
+}

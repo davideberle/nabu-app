@@ -1,0 +1,35 @@
+{
+  "id": "feta-herb-ladolemono",
+  "name": "Feta-Herb Ladolemono",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:5 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "strained fresh lemon juice",
+      "amount": "⅓ cup (80 ml)"
+    },
+    {
+      "item": "crumbled Greek feta",
+      "amount": "⅓ cup (50 g)"
+    },
+    {
+      "item": "chopped fresh oregano",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic clove, minced (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin Greek olive oil",
+      "amount": "1 cup (240 ml)"
+    }
+  ],
+  "method": [
+    "Whisk together the lemon juice, feta, oregano, and garlic, if using, in a medium bowl. While whisking, drizzle in the olive oil in a slow, steady stream and whisk until smooth and creamy.",
+    "Season to taste with salt and pepper."
+  ]
+}

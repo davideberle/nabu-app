@@ -1,0 +1,34 @@
+{
+  "id": "italian-grissini",
+  "name": "Italian Grissini",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "00 flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "warm water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "honey",
+      "amount": "2 t"
+    },
+    {
+      "item": "package active dry yeast",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "In a cup of warm water, add 2 t honey and yeast. Let rest for 10 minutes or until you can see bubbles on top. In a large bowl, add flour and salt, mix well. Add yeast mixture to flour and mix well. If the dough sticks add enough flour to handle. Knead for 5 minutes. Place in a bowl, drizzle olive oil over top, cover with a towel, and let rise for one hour in a warm place.",
+    "Preheat oven to 375°F. After an hour, punch down dough. On a semolina-floured surface roll dough to about ½ inch thick. Cut long strips, about 10 inches. Twist each strip and place on a parchment-lined baking sheet. Let puff up a little -about 15 minutes. Drizzle olive oil and sprinkle coarse salt over each breadstick. You can also add rosemary, cracked black pepper, or Italian herbs. Bake until golden brown, about 10 minutes. Serves 2-3. Olé"
+  ]
+}

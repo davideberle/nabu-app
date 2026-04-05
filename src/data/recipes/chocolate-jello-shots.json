@@ -1,0 +1,46 @@
+{
+  "id": "chocolate-jello-shots",
+  "name": "Chocolate Jello Shots",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 6 shots",
+  "intro": "I’m glad I didn’t know how to make these in my college days; I never cared for the red and green kind at bars and parties, but these would have been hard to resist. Made with Chocolate Vodka (page 257), or any good vodka, this bracing shot is definitely not for kids. Shoot two and you’ll need a designated driver.",
+  "ingredients": [
+    {
+      "item": "/ 4 grams agar flakes",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "plus 2 tablespoons / 210 ml water, at room temperature",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "/ 64 grams organic granulated sugar",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "/ 25 grams Dutch-process cocoa, sifted",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Pinch fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Chocolate Vodka (page 257), or any premium vodka",
+      "amount": "¼ cup / 60 ml"
+    }
+  ],
+  "method": [
+    "Measure the agar flakes into a small saucepan. Pour the water into the pan. Do not stir or heat. Set aside for 10 minutes to allow the agar flakes to soften. This will help the agar dissolve thoroughly and easily.",
+    "Bring the agar mixture to a boil over medium heat and reduce the heat to low. Cover the saucepan and cook for 3 minutes, lifting the lid to whisk a few times. Check a spoonful of liquid for specks of agar. There should be none or very little. Cover and simmer longer if necessary, until the agar is completely dissolved.",
+    "Add the sugar, cocoa powder, and salt and whisk until dissolved. Remove from the heat and add the vodka.",
+    "Pour into six 2-ounce / 60-ml shot glasses and refrigerate until set, about 10 minutes. Serve cold."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

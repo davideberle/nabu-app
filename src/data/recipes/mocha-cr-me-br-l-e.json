@@ -1,0 +1,61 @@
+{
+  "id": "mocha-cr-me-br-l-e",
+  "name": "Mocha Crème Brûlée",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 4 servings",
+  "intro": "The rich custard underneath the crispy caramelized sugar shell of a traditional Crème Brûlée is made with egg yolks, heavy cream, and white sugar and baked in a water bath. The rich custard underneath the crispy caramel of this vegan version is not baked and is far easier to make. Cashew cream and agar powder are the secret agents.",
+  "ingredients": [
+    {
+      "item": "Basic Thick Cashew Cream (page 284)",
+      "amount": "1½ cups / 360 ml"
+    },
+    {
+      "item": "pure maple syrup, Grade B or dark amber, or agave syrup",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "/ 39 grams organic granulated sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "plus 1 teaspoon / 14 grams Dutch-process cocoa powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "/ 9 grams instant coffee or espresso granules",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "⅜ teaspoon agar powder",
+      "amount": ""
+    },
+    {
+      "item": "Pinch fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "Organic granulated sugar, ground superfine in a blender, for the brûlée (use enough to make a ¼-inch coating for each layer)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the cashew cream, maple syrup, sugar, cocoa, instant coffee, agar, and salt in the high-speed blender in the order listed. Blend on low to start, and then increase the speed to high. Blend 2 to 3 minutes until the mixture boils. Open the cap in the cover and you will see a lot of steam. The mixture will sputter since it is thick when it boils. The container is hot. Be careful.",
+    "Add the vanilla extract and blend low for 15 seconds.",
+    "Pour into four 3-ounce / 89-ml ramekins or other heatproof dishes. Cool to room temperature uncovered. A very thin skin will form. This is desirable.",
+    "Cover with plastic wrap but do not allow the wrap to directly touch the surface. Refrigerate until ready to add the brûlée topping, which should be done no more than 30 minutes before serving.",
+    "Be very careful when using a blowtorch: Don’t hold the ramekins in your hands. Place the ramekins on a flameproof surface, such as a baking sheet. Sprinkle a thin, even layer of superfine sugar over the surface.",
+    "Use a blowtorch to dissolve and caramelize the sugar, constantly moving the flame over the surface. Don’t hold the blowtorch too close to the surface or the sugar will burn.",
+    "If a thicker layer of caramelized sugar is desired, it’s better to do two separate layers rather than one thick one."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

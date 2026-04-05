@@ -1,0 +1,41 @@
+{
+  "id": "quick-and-easy-homemade-hot-cocoa",
+  "name": "Quick and Easy Homemade Hot Cocoa",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 serving",
+  "intro": "If you like basic hot cocoa, you’ll be dog-earing this page, but you probably won’t need to: The recipe is easy to remember and among the handful in the book with four or fewer ingredients. That does not mean it wasn’t tested many times to get the taste just right. The only differences from your standard cocoa recipe are the uses of organic granulated sugar and nondairy milk. What cocoa you use is up to you. I make mine with Dutch-process cocoa, while my neighbor and colleague, Linda Long (author of Great Chefs Cook Vegan) prefers natural cocoa in her cup.",
+  "ingredients": [
+    {
+      "item": "/ 39 grams organic granulated sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "plus 1½ teaspoons / 9 grams Dutch-process or natural (non-alkalized) cocoa powder, sifted if lumpy",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Pinch fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "any nondairy milk",
+      "amount": "¾ cup / 180 ml"
+    },
+    {
+      "item": "Vegan marshmallows, for serving (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the sugar, cocoa, and salt to a small saucepan. Whisk to combine.",
+    "Whisk the milk in gradually. Don’t worry if the cocoa and sugar do not dissolve fully.",
+    "Whisking constantly, cook over medium-low heat until the first wisps of steam appear. Do not allow the mixture to boil. Reduce the heat to low and cook only until a few small bubbles appear around the sides. Pour into a mug and garnish with vegan marshmallows if you like."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

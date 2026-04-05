@@ -1,0 +1,51 @@
+{
+  "id": "sachertorte",
+  "name": "Sachertorte",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes one (8-inch / 20-cm) cake, 8 to 10 servings",
+  "intro": "The legend of the Sachertorte—a chocolate cake filled with a thin layer of apricot jam and covered in a shiny chocolate glaze—dates to 1832. That’s when Prince von Metternich of Austria instructed his chef to create a new dessert for a VIP guest, but when the chef took ill, he passed the task to his sixteen-year-old apprentice, Franz Sacher. Sacher created his namesake torte and his son Eduard, a trained pastry chef, perfected the recipe at both the Hotel Sacher and Demel’s Bakery. Subsequently, a nine-year legal battle raged over the rights to use the words “The Original Sachertorte” and ended with the hotel calling it the “Orginal Sachertorte” and Demel’s “Eduard Sachertorte.” Despite the history and hype that continues today, legions of the Sacher-obsessed who have taste tested both are often disappointed, using words like “dry” and “austere” to describe the Sachers. No doubt this is why the cakes are served with whipped cream. No one would ever describe my Sachertorte this way. Moist and chocolaty, it has a healthy layer of apricot jam spread over a layer of ganache that adds flavor and texture while guarding against soggy cake. The entire cake is coated in two layers of Bittersweet Chocolate Ganache Glaze. Apricot-cognac sauce is swirled into Vanilla Custard Cream, which is served as a complement, not a necessity, as is writing “Sacher” on the cake—a nice touch but certainly optional. No matter which cake you use as the basis, this is an easy, elegant Showstopper.",
+  "ingredients": [
+    {
+      "item": "recipes Chocolate Torte to Live For (page 68), refrigerated until cold, divided",
+      "amount": "2"
+    },
+    {
+      "item": "recipe Bittersweet Chocolate Ganache Glaze (page 264), warmed in a water bath until pourable",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality apricot preserves, plus ¼ cup / 60 ml for apricot-cognac sauce (optional), divided",
+      "amount": "⅓ cup / 80 ml"
+    },
+    {
+      "item": "/ 113 grams dark chocolate (any percentage), tempered (see page 28), for writing “Sacher” (optional)",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "cognac (optional) (substitute 1 teaspoon / 5 ml freshly squeezed and strained lemon juice)",
+      "amount": "2 teaspoons / 10 ml"
+    },
+    {
+      "item": "recipe Vanilla Custard Cream (page 282), for serving (optional)",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Place the first cake layer on a cardboard cake circle that is exactly the same size or slightly smaller than the cake.",
+    "Spread a thin layer (about ¼ cup / 60 ml) of Bittersweet Chocolate Ganache Glaze on the layer. Allow the glaze to set.",
+    "Spread ⅓ cup / 80 ml of apricot preserves over the glaze.",
+    "Spread the second layer of cake with ¼ cup / 60 ml of the ganache glaze and refrigerate until set.",
+    "Place the second layer, glaze side down, on the apricot-coated layer.",
+    "Glaze the entire cake: Place the cake on a wire rack set over a parchment-lined baking sheet. Pour 1 cup / 240 ml of the Bittersweet Chocolate Ganache Glaze into a measuring cup with a spout. Holding the cup at about the center of the cake, pour the glaze onto the cake. Coax the glaze to the edges and down the sides by tilting the baking sheet, or by using an offset spatula. Use the spatula to spread the glaze onto the sides.",
+    "Allow the glaze to set undisturbed for 15 minutes, and then refrigerate the cake for 10 minutes.",
+    "Refill the measuring cup with the remaining ½ cup / 120 ml of glaze, and add another coating on the top of the cake. This time, try not to move the glaze around with the spatula after it has been applied. Doing so will mar the finish. Refrigerate to set the glaze.",
+    "To write in chocolate: Place a small round (Wilton size 4, 5, or 6) pastry tip into a small pastry bag and fill the bag halfway with some of the tempered chocolate. Write “Sacher” on top of the cake. (Refill the bag if more chocolate is needed.) Refrigerate briefly until the chocolate is set."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

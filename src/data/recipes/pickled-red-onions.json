@@ -1,0 +1,502 @@
+{
+  "id": "pickled-red-onions",
+  "name": "PICKLED RED ONIONS",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia"
+  },
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "medium white onions, cut into ¼-inch strips",
+      "amount": "2"
+    },
+    {
+      "item": "sage leaves, finely chopped",
+      "amount": "8"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "organic, free-range chicken liver, rinsed and cut into ¼-inch strips",
+      "amount": "1 pound"
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Mama Lil’s spicy peppers, or pickled red onions (this page)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Walla Walla sweet onions, halved",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "whole walnuts",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Twin Sisters Creamery’s Farmhouse with Whole Peppercorns",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pickled red onions (recipe follows), or 8 Mama Lil’s spicy peppers (see Tip)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large red onion",
+      "amount": "1"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "jalapeño, halved lengthwise and seeds removed",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "3"
+    },
+    {
+      "item": "to 4 bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "canola oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "bunch green onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "marinated artichoke hearts, drained and cut into strips",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "wild sockeye salmon fillet",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "farfalle pasta Ground white pepper",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "medium zucchini, cut into ½-inch rounds",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "to 10 spearmint leaves, finely chopped",
+      "amount": "8"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "small eggplant, cut into 2-inch cubes",
+      "amount": "1"
+    },
+    {
+      "item": "albacore tuna fillet",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "paccheri pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baby arugula",
+      "amount": "4 cups"
+    },
+    {
+      "item": "raw walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated pecorino or Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "small Yukon Gold or other potato variety, boiled and cooled",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, grated",
+      "amount": "1 ounce"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated ricotta salata",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "red habanero chili oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "clove garlic, gently crushed",
+      "amount": "1"
+    },
+    {
+      "item": "zucchini, cut into ½-inch cubes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "to 8 spearmint leaves, finely chopped",
+      "amount": "7"
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "crushed toasted almonds",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "to 12 fried zucchini blossoms (recipe follows)",
+      "amount": "8"
+    },
+    {
+      "item": "all-purpose flour 1 teaspoon baking soda Kosher salt ¾ cup water 1 cup vegetable oil 8 to 10 zucchini blossoms",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "to 10 zucchini blossoms",
+      "amount": "8"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "white onion, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "medium yellow peppers, trimmed and cut into 1-inch strips",
+      "amount": "3"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "creste di gallo pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ricotta salata, shaved",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "canola oil 12 shishito peppers Kosher salt",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "canola oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "shishito peppers",
+      "amount": "12"
+    },
+    {
+      "item": "to 5 asparagus, trimmed and cut into 1-inch pieces",
+      "amount": "4"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "salted butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "bunch green onions, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cooked crabmeat",
+      "amount": "½ pound"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "salted artisanal butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "small shallot, minced",
+      "amount": "⅓"
+    },
+    {
+      "item": "sprig thyme, stemmed and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grams or ⅓ ounce salmon roe caviar",
+      "amount": "10"
+    },
+    {
+      "item": "to 5 medium heirloom tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "guanciale cut into ¾-inch strips",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "bucatini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "eggplant, cut into ½-inch cubes",
+      "amount": "½"
+    },
+    {
+      "item": "supersweet tomatoes, halved",
+      "amount": "1 pound"
+    },
+    {
+      "item": "’nduja",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "creste di gallo pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated ricotta salata",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sausage, casing removed",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "grapes",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "sprig rosemary, stemmed",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large grape leaves, julienned",
+      "amount": "2"
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil and butter for a couple of minutes.",
+    "Add the onions, sage, and red pepper flakes, and sauté for 2 to 4 minutes. Add the water and vinegar, reduce the heat to medium-low, and cook for 5 minutes.",
+    "Preheat the oven to 350 degrees F. On a deep-rimmed baking sheet, place the onion halves, season with salt and pepper to taste, and cover with the water. Drizzle with half the olive oil, cover with aluminum foil, and bake for 45 minutes. Transfer the onions and the cooking liquid to a container. Let cool for a few hours.",
+    "In a food processor, blend the onions with liquid, the remaining olive oil, walnuts, and Parmigiano until you have a creamy puree. Take care not to liquefy the sauce.",
+    "In a small pot over medium heat, combine all the remaining ingredients, stir, and simmer for 4 to 5 minutes.",
+    "Pour the mixture over the onions in the jar, making sure the onions are covered to the top. Let it rest for at least 4 to 6 hours before serving.",
+    "In a small sauté pan over high heat, warm the canola oil. When the oil is hot, add the capers and fry for 2 to 3 minutes. Scoop them out onto a paper towel to drain. Sprinkle with a pinch or two of salt and set aside.",
+    "In a large skillet over medium heat, warm the olive oil. Add the green onion and sauté for a minute, stirring to avoid burning, then add the artichokes and sauté for 2 minutes more. Add the salmon and cook, flipping occasionally, for a couple more minutes. Season with salt and pepper to taste.",
+    "In a large pot of boiling salted water, blanch the zucchini for 5 minutes, drain, and put in a food processor with the red pepper flakes, a pinch of salt and pepper, and 2 tablespoons of the olive oil. Blend until creamy and set aside.",
+    "In a large pan over medium heat, warm the remaining 2 tablespoons olive oil. Add the shallot, garlic, three-quarters of the mint, and the capers, and sauté for 1 minute. Stir in the eggplant so that all the pieces are coated with olive oil. Season with salt and pepper to taste, cover, and reduce the heat to medium-low. Cook for 3 to 4 minutes, then uncover, increase the heat to medium, stir in the tuna, and cook for 1 minute.",
+    "In a blender on the lowest speed, blend the arugula, walnuts, pecorino, olive oil, potato, and ginger, until combined but not liquefied (the pesto should still have some texture). Season with salt and pepper to taste.",
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the garlic and sauté for 1 minute, stirring to avoid burning.",
+    "Add the zucchini, and cook, stirring occasionally, for 3 to 4 minutes.",
+    "Season with salt and pepper to taste, add the mint and lemon zest, and cook for another 2 minutes. Turn off the heat, but leave the pan on the burner.",
+    "In a mixing bowl, whisk together the flour, baking soda, and salt. Slowly add the water, stirring, until you obtain a smooth, runny consistency.",
+    "In a skillet over medium heat, warm the vegetable oil. Test the oil by dropping in a bit of the pastella. If it starts bubbling, it’s ready. Dip the zucchini blossom into the pastella, thoroughly coating, and fry each for a minute or so, flipping them halfway through, until golden brown and crispy. Remove with a spider or slotted spoon, and place on a paper towel to absorb the excess oil.",
+    "In a medium saucepan over medium heat, warm the olive oil. Add the onions and sauté for 1 minute, then add the bell peppers and cook for 2 to 3 minutes. Add the oregano, season with salt and pepper to taste, and stir.",
+    "Add the water, and cover. Let the bell peppers cook for about 10 minutes, or until soft. Turn off the heat. Using an immersion blender, blend until the consistency is creamy but not liquid.",
+    "In a medium pan over medium heat, warm the canola oil until it is shimmering hot. Add the shishito peppers, and fry them on both sides until they are brown but not burned.",
+    "In a large pot of boiling salted water, blanch the asparagus for 2 minutes. Drain and set aside, reserving the water for cooking the pasta.",
+    "In a medium-large skillet over medium-low heat, warm the olive oil and butter for 1 to 2 minutes. Add the green onions and sauté for 1 minute. Then add the crabmeat and asparagus and cook for 2 minutes.",
+    "Add the wine and continue cooking for another 4 to 5 minutes, until the alcohol has evaporated. Stir in the ginger and season with salt and pepper to taste.",
+    "In a medium-large skillet over medium-low heat, warm the butter for a minute. Add the shallot, thyme, and half the lemon zest, and sauté for 2 to 3 minutes. Season with salt and Sichuan pepper to taste.",
+    "In a large pot of boiling salted water, blanch the tomatoes for 30 seconds. Remove and quickly run under cold water. Remove the pot from the heat, but do not discard the blanching water. Peel off the tomato skins and remove all the seeds. Crush the tomatoes thoroughly with your clean hands or a fork. Set aside.",
+    "In a medium cast-iron skillet over medium-low heat, warm the olive oil for 1 to 2 minutes. Add the guanciale and red pepper flakes, and sauté for 2 minutes. Add the wine and continue cooking until the alcohol has evaporated, 3 to 4 minutes. Remove the guanciale from the pan and set aside, leaving all the oil and liquid it released in the skillet.",
+    "Add the tomatoes and cook, stirring occasionally, for 10 to 15 minutes. Season with salt and pepper to taste, keeping in mind that the guanciale and pecorino are rather salty.",
+    "In a large sauté pan over medium heat, warm the olive oil. When hot (it will bubble if you sprinkle in some flour), fry the eggplant, flipping occasionally, until golden on all sides. Transfer to a tray or large plate covered with paper towel and set aside.",
+    "In a large pan over medium heat, warm the olive oil. Add the shallot and sauté for 1 minute, stirring to avoid burning. Crumble in the sausage, cook for a couple of minutes, add the grapes, and stir. Add the rosemary and cook for 2 minutes more.",
+    "Pour in the broth, reduce the heat to low, cover, and cook for 5 minutes. Season with salt and pepper to taste.",
+    "In a small pan over high heat, add the canola oil, and fry the grape leaves until crispy. Remove leaves with a spider or slotted spoon, place on a paper towel, and sprinkle with salt."
+  ]
+}

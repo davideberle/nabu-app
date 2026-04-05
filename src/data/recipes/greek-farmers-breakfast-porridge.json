@@ -1,0 +1,49 @@
+{
+  "id": "greek-farmers-breakfast-porridge",
+  "name": "Greek Farmers’ Breakfast Porridge",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:1 hour 10 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "bulgur wheat or whole wheat kernels (see headnote)",
+      "amount": "2 cups (280 g)"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "milk",
+      "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "to 6 tablespoons (60 to 90 ml) Greek honey",
+      "amount": "4"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "finely chopped fresh mint",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "seedless raisins",
+      "amount": "⅔ cup (95 g)"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "1½ cups (350 ml)"
+    }
+  ],
+  "method": [
+    "If using whole wheat kernels, rinse them, put them in a bowl with water to cover, and soak them overnight. Drain.",
+    "Place the bulgur or whole wheat kernels in a medium saucepan with 6 cups (1.4 L) water. Bring to a simmer over medium heat and add the cinnamon stick and milk. Reduce the heat to low and simmer, stirring, until creamy, about 10 minutes for bulgur and 45 minutes to 1 hour for whole wheat kernels.",
+    "Season with the salt and honey, using more or less according to your taste. Just before removing from the heat, stir in the parsley, mint, raisins, and pomegranate seeds. Remove the cinnamon stick.",
+    "Serve in shallow bowls, sprinkled with cinnamon."
+  ]
+}

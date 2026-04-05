@@ -1,0 +1,36 @@
+{
+  "id": "6-thai-shrimp-soup",
+  "name": "6) Thai Shrimp Soup",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "lemongrass stalk",
+      "amount": "1"
+    },
+    {
+      "item": "lemongrass stalk",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Peeled and deveined uncooked shrimp - 1 pound",
+    "Peeled and deveined uncooked shrimp - 1 pound",
+    "Heat oil in a Dutch oven, then sauté the onion until soft.",
+    "Heat oil in a Dutch oven, then sauté the onion until soft.",
+    "Add water, lemongrass, curry leaves, ginger, fish sauce, brown sugar, and chicken broth. Let it boil. When it starts boiling, reduce heat and add the edamame and shrimp. Cook for 5-6 mins, uncovered.",
+    "Add water, lemongrass, curry leaves, ginger, fish sauce, brown sugar, and chicken broth. Let it boil. When it starts boiling, reduce heat and add the edamame and shrimp. Cook for 5-6 mins, uncovered.",
+    "Add coconut milk, sorghum, bamboo shoots, basil, cilantro, lime juice, and lime peel. Let it boil. Discard the lemongrass before serving.",
+    "Add coconut milk, sorghum, bamboo shoots, basil, cilantro, lime juice, and lime peel. Let it boil. Discard the lemongrass before serving."
+  ]
+}

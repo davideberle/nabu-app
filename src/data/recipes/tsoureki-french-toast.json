@@ -1,0 +1,33 @@
+{
+  "id": "tsoureki-french-toast",
+  "name": "Tsoureki French Toast",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time: 30 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "large eggs",
+      "amount": "2"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "to 4 tablespoons (45 to 55 g) unsalted butter",
+      "amount": "3"
+    },
+    {
+      "item": "slices stale leftover tsoureki or vasilopita (Greek Easter or New Year’s bread) or challah",
+      "amount": "12"
+    }
+  ],
+  "method": [
+    "Whisk together the eggs, milk, and cinnamon in a wide, shallow bowl.",
+    "In a large skillet, melt 1 tablespoon of the butter over medium heat.",
+    "One at a time, dip 3 of the bread slices into the egg-milk mixture. As soon as the butter stops bubbling and before it turns brown, place the bread in the skillet and cook until golden brown on both sides. Transfer to a platter and cover or tent with aluminum foil to keep warm. Repeat with the remaining bread, adding another tablespoon or so of the butter to the skillet between batches as needed.",
+    "Serve the tsoureki French toast hot, drizzled with Greek honey and dusted with a little cinnamon."
+  ]
+}

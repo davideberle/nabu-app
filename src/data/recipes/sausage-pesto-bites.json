@@ -1,0 +1,45 @@
+{
+  "id": "sausage-pesto-bites",
+  "name": "Sausage Pesto Bites",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "english muffins toasted, each slice cut in four",
+      "amount": "2"
+    },
+    {
+      "item": "¼ inch thin sliced mozzarella cut into triangles",
+      "amount": "4"
+    },
+    {
+      "item": "Italian sausages- casings removed, cooked and cut into ¼ inch slices",
+      "amount": "2"
+    },
+    {
+      "item": "little tomatoes cut in half",
+      "amount": "4-5"
+    },
+    {
+      "item": "little basil leaves for garnish or you can tear the basil",
+      "amount": "16"
+    },
+    {
+      "item": "toothpicks",
+      "amount": "16"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "Cut toasted English muffin slices into 4 triangles, spread pesto, assemble mozzarella, sausage, little tomato, and basil. Secure with a toothpick. If you like you can add a splash of olive oil on each triangle. Serves 2-3. Olé"
+  ]
+}

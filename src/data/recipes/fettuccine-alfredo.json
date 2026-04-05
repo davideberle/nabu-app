@@ -1,0 +1,33 @@
+{
+  "id": "fettuccine-alfredo",
+  "name": "Fettuccine Alfredo",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "grams fresh fettuccine (see recipe)",
+      "amount": "300"
+    },
+    {
+      "item": "grated old parmesan, or pecorino cheese",
+      "amount": "3 cups"
+    },
+    {
+      "item": "butter",
+      "amount": "4 T"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "This recipe is tricky, just like carbonara and cacio pepe. In Rome, they don't use cream, it is used more in northern Italy. An authentic Roman recipe always uses only cheese and water to make the sauce. You also rarely see butter in Roman recipes, but it's super yummy in this one, and that's the way they do it in Rome. The original restaurant that invented Fettuccine Alfredo is still operating in Italy. Boil the fettuccine in salted water al dente…homemade takes only about 2-3 minutes. I stay by the pot and keep an eye on it. Transfer hot fettuccine to a frying pan, Add 3 cups of pecorino or parmesan and butter plus 2-3 ladles of boiling pasta water, and mix, mix, mix!! Manticare and garnish with more grated parmesan or pecorino. You can also garnish with a little parsley on top. Serving suggestion: fresh bread and salad. Serves 2-3. Olé"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crispy-sardine-bones",
+  "name": "Crispy Sardine Bones",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "sea salt, plus more to taste",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "to 1½ cups (125 to 190 g) all-purpose flour, for dredging",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Salt the bones with 2 tablespoons of the sea salt and leave them out at room temperature, covered with paper towels, for 2 hours.",
+    "In a deep wide pot or skillet, heat ½ inch (1.5 cm) sunflower oil over medium-high heat until just below the smoke point. In a wide shallow bowl, combine the flour with salt to taste and the smoked paprika. Dredge the sardine bones lightly in the seasoned flour and shake off the excess. Fry the bones in the hot oil for a few minutes, until they turn lightly golden. Remove and drain on paper towels. Serve as is, with lemon wedges for squeezing over the top."
+  ]
+}

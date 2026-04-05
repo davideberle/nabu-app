@@ -1,0 +1,47 @@
+{
+  "id": "grec-mex-whipped-feta",
+  "name": "Grec-Mex Whipped Feta",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 3",
+  "ingredients": [
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "slim fresh chile, such as árbol, seeded and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "to 3 pickled jalapeños, drained, seeded, and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "chopped canned chipotles in adobo sauce",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "½ cup (25 g)"
+    },
+    {
+      "item": "crumbled Greek feta",
+      "amount": "3 cups (450 g)"
+    },
+    {
+      "item": "to ⅔ cup (120 to 160 ml) extra-virgin Greek olive oil",
+      "amount": "½"
+    },
+    {
+      "item": "to 3 tablespoons strained fresh lemon juice",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the garlic clove, chile, pickled jalapeños, and chipotles in the bowl of a food processor and pulse to a paste. Add the cilantro and pulse to combine.",
+    "Add the feta. with the motor running, steadily stream in enough of the olive oil to make a smooth, spreadable paste. Add the lemon zest, 2 tablespoons of the lemon juice, and black pepper to taste. Pulse to combine, taste, and adjust the texture and flavor with the remaining olive oil and/or lemon juice. Serve as a dip with pita chips."
+  ]
+}

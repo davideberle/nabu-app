@@ -1,0 +1,41 @@
+{
+  "id": "pecan-snowballs",
+  "name": "Pecan Snowballs",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "softened butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped pecans",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vanilla",
+      "amount": "1 t"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cold water",
+      "amount": "1 T"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F. In a medium bowl, combine flour, sugar, and salt. Cut in butter until crumbly. Add chopped pecans, add a little water, enough to combine the dough so you can work with it. Roll 1-inch balls between hands and arrange on a parchment-lined baking sheet, 2 inches apart. Bake 10 minutes, or until golden brown. When cookies have cooled down completely roll in powdered sugar. Makes 1 dozen. Olé"
+  ]
+}

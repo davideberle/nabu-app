@@ -1,0 +1,44 @@
+{
+  "id": "chewy-date-candies",
+  "name": "Chewy Date Candies",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 24 (1½-inch / 4-cm) candy logs, 24 truffles, or one (6-inch / 15-cm) tart crust",
+  "intro": "Take a handful of ingredients, a food processor, a quick pass with a rolling pin, and in 10 minutes you’ll be snacking on a nutritious and satisfying chocolate-scented, sugar-free candy that can easily be made raw by using raw cacao powder and alcohol-free vanilla. The recipe calls for Medjool dates, but Deglet Noor or Halawi dates work as well. A little hot water may be needed if the dates are very dry, but rarely have I found this to be the case. What I have found to be the case in this recipe is the flavor-boosting power of soy sauce. I asked Elizabeth Andoh, a leading English-language expert on Japanese cuisine, if I was imagining this flavor boost, and she confirmed it exists. My preference is to add a dash of unpasteurized soy sauce (nama shoyu) to boost the chocolate flavor, but you can substitute any quality soy sauce or tamari, or just leave it out altogether and add a pinch of salt.",
+  "ingredients": [
+    {
+      "item": "/ 171 grams pitted Medjool dates (about 10)",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "/ 32 grams Dutch-process cocoa powder",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "nama shoyu (optional) or pinch of fine sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "/ 68 grams finely ground walnuts",
+      "amount": "⅔ cup"
+    }
+  ],
+  "method": [
+    "Rough chop the dates in a food processor with a few pulses on and off, and then process until the dates are very finely chopped. The dates may form a ball on the blade when finished.",
+    "Add the cocoa powder and process to incorporate.",
+    "Add the vanilla extract and the soy sauce or salt, if using. Add the walnuts and process for 2 minutes or until the walnuts are fully incorporated and the mixture is smooth and shiny.",
+    "Stop the machine and pinch a piece of the mixture between your fingers. It should be pliable and moist but not sticky. If it is sticky, add another tablespoon of cocoa powder. If it is too dry, add a few drops of very hot water.",
+    "Spoon the mixture onto a large piece of plastic wrap and cover with another piece of wrap. Press into a rough square. Roll to a ½-inch / 12-mm thickness and you have made the candy. (If the candy sticks to the wrap, refrigerate until it is cold and continue.)",
+    "Refrigerate or freeze the candy in a freezer bag until cold before cutting into squares. Chilling for at least 30 minutes improves the flavor."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

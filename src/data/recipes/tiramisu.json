@@ -1,0 +1,53 @@
+{
+  "id": "tiramisu",
+  "name": "Tiramisu",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 t"
+    },
+    {
+      "item": "Kahlua liquor (for cream mixture)",
+      "amount": "1 T"
+    },
+    {
+      "item": "mascarpone cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "½ cups espresso coffee",
+      "amount": "1"
+    },
+    {
+      "item": "Kahlua liquor (for coffee mixture)",
+      "amount": "1 T"
+    },
+    {
+      "item": "package ladyfinger cookies",
+      "amount": "½"
+    },
+    {
+      "item": "cocoa powder plus cocoa powder to sprinkle on top.",
+      "amount": "1 T"
+    }
+  ],
+  "method": [
+    "Boil ¼ cup water. In the meantime, in a bowl that could fit if you place it on top of the pot,( because you will be double bowling the eggs in a minute,) with an electric mixer, beat eggs and sugar for a minute. Transfer bowl to pot of boiling water…they call this bagnomaria in Italian. Beat for 3 minutes then remove from heat. Mix for an additional 5 minutes. Add Kahlua and mascarpone and beat for a minute or until well blended. Scrape down sides with rubber spatula. In a separate bowl, beat heavy cream until light and fluffy. Gently fold cream into the egg mixture. Cover with plastic and refrigerate for an hour. Brew espresso coffee and transfer to a bowl. Add Kahlua, brown sugar, and cocoa powder, mix well. Let mixture cool. Soak ladyfingers in coffee mixture, not too much or they will fall apart. Layer on the bottom of an 8-inch casserole dish until you have covered the bottom. Spread a layer of cream on top of the layer of ladyfingers. Try to divide the mixture evenly between the layers. Resume the next layer as you did the first, and then add the remaining cream. Sprinkle with cocoa powder, and refrigerate for an hour. Serves 4. Olé"
+  ]
+}

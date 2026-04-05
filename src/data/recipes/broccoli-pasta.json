@@ -1,0 +1,45 @@
+{
+  "id": "broccoli-pasta",
+  "name": "Broccoli Pasta",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "clove crushed garlic",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "broccoli",
+      "amount": "3 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 t"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "1 cup"
+    },
+    {
+      "item": "grams spaghetti",
+      "amount": "300"
+    }
+  ],
+  "method": [
+    "Boil a pot of salted water, add broccoli and boil until tender, about 20 minutes. Remove broccoli and roughly chop the florets and stems, set aside, reserve broccoli water, bring to a boil a second time, and add pasta. In the meantime, in a large frying pan on medium heat, add olive oil, broccoli pieces and stems, and mash with a wooden spoon. Add red pepper and crushed garlic, and saute for two minutes (you can remove garlic at the end), now turn off the heat. Add pasta directly to the frying pan with broccoli, 1 cup of grated pecorino right on top, and 1 cup of pasta water, mix it well until the sauce becomes thick. You can add more or less water depending on the consistency, but in my opinion less is more! Manticare and turn onto plates."
+  ]
+}

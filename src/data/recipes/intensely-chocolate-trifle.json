@@ -1,0 +1,53 @@
+{
+  "id": "intensely-chocolate-trifle",
+  "name": "Intensely Chocolate Trifle",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes a large trifle, 10 to 12 servings",
+  "intro": "Classic English trifles—layered desserts composed of cake, cooked fruits, and vanilla custard—are wonderfully decadent. Spike them with liquor (usually rum or sherry), and those trifles become what the English call “Tipsy Cakes.” Tipsy or not, chocolate makes everything better so this trifle starts with a chocolate cake or brownie and adds two of my other favorite ingredients: vegan vanilla custard and a sweet cranberry sauce. But this is an infinitely customizable recipe, so bake any of the chocolate cakes or brownies in the book, defrost cakes you have in your freezer, or use leftovers. (I once used a cake that broke coming out of the pan.) Then, layer the cake with any custard or creams and the fruit of your choice. If you want to “tipsy the trifle,” add 1 to 2 tablespoons of a liquor to the custard. Make the components ahead and assemble up to two hours before serving.",
+  "ingredients": [
+    {
+      "item": "recipe (1 layer) Brooklyn Blackout Cake (page 94), 1 recipe Very Fudgy Chocolate Chip Brownies (page 128), or 1 recipe Gluten-free Brownie Bites (page 126)",
+      "amount": "½"
+    },
+    {
+      "item": "recipe Bittersweet Chocolate Ganache Glaze (page 264), at room temperature, warmed in a water bath until pourable",
+      "amount": "1"
+    },
+    {
+      "item": "recipe Almost-Instant Chocolate Pudding (page 179) made with an additional 3 tablespoons / 45 ml of milk or water",
+      "amount": "1"
+    },
+    {
+      "item": "recipe Vanilla Custard Cream Filling (page 282)",
+      "amount": "1"
+    },
+    {
+      "item": "liquor like rum, sherry, framboise, or Kahlua (optional)",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "recipe Maple Cranberry Sauce (page 286)",
+      "amount": "1"
+    },
+    {
+      "item": "/ 57 grams dark chocolate (any percentage), finely chopped or shaved, for garnish",
+      "amount": "2 ounces"
+    }
+  ],
+  "method": [
+    "Use a serrated knife to cut enough cubes of cake to cover the bottom of a clear glass serving bowl (preferably a trifle bowl—see Sidebar) plus another layer. The amount needed depends on the size of the bowl.",
+    "Place half of the cake in the bottom of the bowl.",
+    "Pour ⅔ cup / 160 ml of the Bittersweet Chocolate Ganache Glaze over the cake. Refrigerate for 10 to 15 minutes until the glaze is no longer liquid.",
+    "Add the Almost-Instant Chocolate Pudding and smooth the top.",
+    "Add another layer of cake. Pour ⅔ cup / 160 ml of the glaze over the cake. Refrigerate until the glaze is no longer liquid.",
+    "Stir the Vanilla Custard Cream Filling and add the optional liquor if using. Spread about two-thirds of the custard cream on the cake and smooth the top.",
+    "Reserve a few tablespoons of the cranberries from the Maple Cranberry Sauce for garnish and spoon the rest on the custard. Drizzle with the remaining glaze. Refrigerate until the glaze is no longer liquid."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

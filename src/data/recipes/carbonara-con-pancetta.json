@@ -1,0 +1,45 @@
+{
+  "id": "carbonara-con-pancetta",
+  "name": "Carbonara con Pancetta",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "1T"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1T"
+    },
+    {
+      "item": "parmesan",
+      "amount": "½ cup"
+    },
+    {
+      "item": "6 oz package of pancetta",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "grams of spaghetti",
+      "amount": "300"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "In a large bowl, whisk together eggs and cheese, set aside. Boil a large pot of salted water. In the meantime, in a large frying pan on medium heat, add 1 T of olive oil,1 T butter, and fry pancetta until crispy. Turn off heat. When water is boiling add spaghetti and cook until al dente. Add directly to the frying pan with the cooked pancetta. Add 1 cup of hot pasta water and put the egg mixture directly on top. Mix quickly and manticare a couple of times. Turn onto plates, add parmesan and black pepper to garnish. Serving suggestion: fresh salad and homemade bread. Serves 2. Olé"
+  ]
+}

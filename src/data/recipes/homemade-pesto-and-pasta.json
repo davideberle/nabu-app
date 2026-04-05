@@ -1,0 +1,41 @@
+{
+  "id": "homemade-pesto-and-pasta",
+  "name": "Homemade Pesto and Pasta",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "basil leaves",
+      "amount": "1 cup"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "parmesan",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pignoli nuts toasted",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small tomatoes cut in half",
+      "amount": "12"
+    },
+    {
+      "item": "grams penne pasta",
+      "amount": "300"
+    }
+  ],
+  "method": [
+    "Combine ingredients (except for the tomatoes) in a blender and whizz for a minute, and set aside. This is enough pesto for 2-3 people, double or triple if you need more. Please note that most of my recipes serve 2-3. Boil water for pasta, ziti, penne, or farfalle pasta are all good choices, I like to use penne. Spoon the pesto over the top and mix thoroughly to coat the pasta. Top with fresh tomatoes cut in half and grated parmesan. Serving suggestion: fresh bread and salad. You can eat this dish hot, or cold. Serves 2-3. Olé"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "leos-illuminati-pasta",
+  "name": "Leo's Illuminati Pasta",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "grams rigatoni",
+      "amount": "300"
+    },
+    {
+      "item": "can tuna",
+      "amount": "1"
+    },
+    {
+      "item": "roasted peppers",
+      "amount": "3"
+    },
+    {
+      "item": "fresh basil leaves",
+      "amount": "5"
+    },
+    {
+      "item": "chopped garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "anchovie filets",
+      "amount": "2"
+    },
+    {
+      "item": "salted capers",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 T"
+    },
+    {
+      "item": "chopped parsley leaves, reserve stalks",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "chopped taggiasca olives",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "chopped red pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F. Wash and remove stems and seeds from 2 peppers, and cut into pieces. On a parchment-lined baking sheet place peppers and drizzle with olive oil, sprinkle with salt and pepper and roast for 20-30 minutes or until peppers are cooked well. Remove outside pepper skin and with a hand blender or a mixer, add peppers, 5 basil leaves, and 2 T olive oil. Set aside for later. Boil a pot of salted water, then add pasta.",
+    "In the meantime, in a frying pan on medium heat, add 2 T olive oil, 5 chopped garlic cloves, 4 salted capers, 2 anchovie filets, parsley stalks, 1/4 cup taggiasca olives, 1 chopped red pepper, and saute for 2 minutes. Add the blended pepper mixture and mix well. At the end of cooking time, transfer pasta to frying pan with 2 ladles of pasta water, mix and manticare. Add one can of tuna and 1/4 cup of chopped parsley, mix and manticare. Taste it, if you need to add salt you can add it now, but because the capers are salted it's not added to the recipe. Serves 2-3. Serving suggestion: fresh bread and salad. Olé"
+  ]
+}

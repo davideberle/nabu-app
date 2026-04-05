@@ -1,0 +1,53 @@
+{
+  "id": "meatloaf",
+  "name": "Meatloaf",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "ground beef",
+      "amount": "1 lb"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "small chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "cloves minced garlic",
+      "amount": "2"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "breadcrumbs",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "1 T"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "ketchup",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "On a parchment-lined loaf pan, form a loaf with the meat mixture and pour ketchup on top. Bake at 350 °F for 30 minutes covered, remove foil and bake an additional 10-15 minutes. This is one of my American dishes, there are a couple of them in this book. In Italy, they call meatloaf polpettone. Polpetta means meatball so it's a great big one! Serving suggestion, mashed potatoes, fresh bread, and salad. Serves 4. Olé"
+  ]
+}

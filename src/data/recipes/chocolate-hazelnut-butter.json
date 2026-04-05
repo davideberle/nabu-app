@@ -1,0 +1,50 @@
+{
+  "id": "chocolate-hazelnut-butter",
+  "name": "Chocolate Hazelnut Butter",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 1½ cups / 360 ml",
+  "intro": "I enjoy eating spoonfuls of “Fran-tella,” my healthier and tastier version of the popular Italian chocolate and hazelnut spread, straight out of the jar. Making nut butters at home in a food processor is quick, easy, and cheaper than buying the jarred kind. Better yet, no added oil is needed when you allow the nuts to grind in a food processor for five to ten minutes. For the best flavor, roast the nuts first.",
+  "ingredients": [
+    {
+      "item": "/ 140 grams whole hazelnuts, roasted and skinned (see Sidebar) to make ½ cup / 120 ml hazelnut butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 107 grams confectioners’ sugar, sifted",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 58 grams Dutch-process cocoa powder, sifted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "almond milk, at room temperature, plus more as needed to adjust consistency",
+      "amount": "3 tablespoons / 45 ml"
+    },
+    {
+      "item": "pure chocolate extract (optional, but recommended)",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Grind the hazelnuts in a food processor for 5 to 10 minutes until the nuts have transformed into a smooth, glossy nut butter. Scrape the sides of the processor once or twice if necessary. Stop processing before the nut butter gets oily.",
+    "Scrape the sides of the processor with a silicone spatula. Add the sugar, cocoa, and salt and pulse a few times until incorporated. The mixture will look like small crumbs.",
+    "Add the hot water and process for about 1 minute until incorporated, but not longer. The mixture will now look like large crumbles.",
+    "Scrape the mixture into a medium bowl. Mix 2 tablespoons of the almond milk and the chocolate extract into the mixture until incorporated. Repeat with the third tablespoon of almond milk. If the consistency looks good to you, spoon the spread into a jar. If it is still too thick, mix in more almond milk, one tablespoon at a time, with a silicone spatula, until the desired consistency is reached. (Do not add additional liquid to the processor, or the resulting hazelnut butter will be oily.)"
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

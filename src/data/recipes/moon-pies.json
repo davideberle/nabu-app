@@ -1,0 +1,32 @@
+{
+  "id": "moon-pies",
+  "name": "Moon Pies",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 8 moon pies",
+  "intro": "Moon pies are an American classic dating back to the 1920s. Manufactured commercially in Chattanooga, these childhood favorites are made by sandwiching round graham crackers around a marshmallow filling. The sandwiches are then dipped in chocolate and chilled until the chocolate is set. This version is an accurate copy of the original, but far healthier. I’m confident you’ll think they taste better, too! Variations follow the recipe, but don’t call them Moon Pies if you serve them to strident fans of the original. (RC Cola was—or still is—the traditional accompaniment to Moon Pies in some southern towns!)",
+  "ingredients": [
+    {
+      "item": "recipe Graham Crackers (page 136), cut into 2-inch / 5 cm rounds, baked and cooled",
+      "amount": "1"
+    },
+    {
+      "item": "Rice Mallow Cream (see Resources page 290) or use an alternative filling (see Variations)",
+      "amount": "2 cups / 480 ml"
+    },
+    {
+      "item": "/ 142 grams dark chocolate (66 to 70%), melted",
+      "amount": "5 ounces"
+    }
+  ],
+  "method": [
+    "Spread the bottoms of half of the graham cracker cookies with 3 to 4 tablespoons / 45 to 60 ml of marshmallow cream. Top each with another cookie, bottom side down, and press together lightly.",
+    "Spread or pour enough melted chocolate to cover the top of each cookie and allow it to run down the sides (about 2 tablespoons / 30 ml). Refrigerate the Moon Pies for 10 to 15 minutes, or until the chocolate hardens."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

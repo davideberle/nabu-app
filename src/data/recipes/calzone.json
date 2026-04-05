@@ -1,0 +1,57 @@
+{
+  "id": "calzone",
+  "name": "Calzone",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "1/4 cups 00 flour plus semolina flour for dusting",
+      "amount": "2"
+    },
+    {
+      "item": "package active dry yeast",
+      "amount": "1"
+    },
+    {
+      "item": "shredded mozzarella",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "grated pecorino or parmesan cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "slices of prosciutto, you can also use ham",
+      "amount": "2"
+    },
+    {
+      "item": "parsley (optional)",
+      "amount": "2 T"
+    },
+    {
+      "item": "warm water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    }
+  ],
+  "method": [
+    "In a large bowl, add flour and salt. Proof the yeast in 1 cup of warm water. Let rest until bubbles form on top, about 10 minutes. Add yeast water to flour mixture slowly, mixing until you have formed a wet dough. Add a little more flour until you can handle the dough without sticking and knead for 5 minutes. Form a ball, place it in a bowl with a dish towel on top, and let rise for about an hour, or until doubled. Punch down and let rise a second time for an hour. After an hour, or when the dough is doubled in size, punch down and transfer dough to a semolina-dusted cutting board. Preheat oven to 450°F. With a rolling pin, roll out to12-inches round. Cut in half. In the middle of each half put 3-4 T of the cheese mixture. Season with salt & pepper. Lay prosciutto (or ham) on top and fold over. With wet fingers, pinch together dough to close, see picture. On a parchment-lined baking sheet place your calzones, make a small slit on top to vent, bake calzone on bottom rack until browned on bottom. Remove from oven. Place rack on top and broil (500°) until brown and bubbly. Makes 2 calzones. Olé"
+  ]
+}

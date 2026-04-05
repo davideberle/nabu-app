@@ -1,0 +1,39 @@
+{
+  "id": "greek-honey-hot-sauce",
+  "name": "Greek Honey Hot Sauce",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "extra-virgin Greek olive oil",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "fresh jalapeños, seeded and chopped",
+      "amount": "10"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "4"
+    },
+    {
+      "item": "strained fresh lemon juice, plus more for seasoning",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "coarsely chopped fresh cilantro",
+      "amount": "2 cups (100 g)"
+    },
+    {
+      "item": "to 3 tablespoons good-quality honey, preferably raw Greek pine honey",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place all the ingredients in the bowl of a food processor and puree until smooth.",
+    "Taste and season with more lemon juice, hot sauce, and/or salt as needed."
+  ]
+}

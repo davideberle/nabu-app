@@ -1,0 +1,516 @@
+{
+  "id": "how-to-cut-open-a-sea-urchin",
+  "name": "How to cut open a sea urchin",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia"
+  },
+  "ingredients": [
+    {
+      "item": "slices rustic bread",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "medium organic lemon",
+      "amount": "1"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Calabrian chili pepper",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "sea urchin roe",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "spaghetti alla Chitarra pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "1 ounce"
+    },
+    {
+      "item": "medium sage leaves",
+      "amount": "35"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "quail eggs",
+      "amount": "4"
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "rapini, divided into florets",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "spicy Calabrian chili sausages, casings removed",
+      "amount": "4"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "fresh Italian peperoncino, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "pecorino",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Manila clams",
+      "amount": "2½ pounds"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small shallot, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cooked chickpeas, drained",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "10"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "large red beets, well scrubbed",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "1 cup"
+    },
+    {
+      "item": "grated pecorino romano, divided",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "small Yukon Gold potato, boiled and cooled",
+      "amount": "1"
+    },
+    {
+      "item": "spaghettoni pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "balls burrata",
+      "amount": "2 (2-ounce)"
+    },
+    {
+      "item": "Calabrian chili oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh basil leaves",
+      "amount": "8"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "to 5 medium carrots (8 to 10 ounces), cut into ½-inch rounds",
+      "amount": "4"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh cow ricotta",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "radiatori pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "balls buffalo mozzarella",
+      "amount": "2 (2-ounce)"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "bunch Italian parsley, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "3"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "to 5 (0.14-ounce) sachets squid ink",
+      "amount": "4"
+    },
+    {
+      "item": "squid, cut into small pieces",
+      "amount": "1 pound"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "cooked cannellini beans, drained",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "8"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "bottarga (about 5 ounces)",
+      "amount": "1"
+    },
+    {
+      "item": "to 5 tablespoons extra-virgin olive oil",
+      "amount": "4"
+    },
+    {
+      "item": "to 7 drained anchovy fillets",
+      "amount": "5"
+    },
+    {
+      "item": "bunch Italian parsley, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "3"
+    },
+    {
+      "item": "geoduck, cut into thin slices",
+      "amount": "½ pound"
+    },
+    {
+      "item": "Gaeta olives, pitted",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "canned San Marzano tomato puree",
+      "amount": "14 ounces (1¾ cups)"
+    },
+    {
+      "item": "bucatini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "to 4 ounces pancetta",
+      "amount": "3"
+    },
+    {
+      "item": "medium Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "sprigs rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "smoked scamorza or provola, shredded",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano or Grana Padano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "diced carrots",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "diced celery",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ground elk",
+      "amount": "1 pound"
+    },
+    {
+      "item": "red wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "canned San Marzano tomato puree",
+      "amount": "16 ounces (2 cups)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "juniper berries",
+      "amount": "10"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "to 5 bay leaves",
+      "amount": "4"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "rigatoni pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "dry navy beans",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "to 3 bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "bunch Italian parsley, minced",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "can whole peeled San Marzano tomatoes, drained",
+      "amount": "1 (14-ounce)"
+    },
+    {
+      "item": "pasta mista or ditalini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "white onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "carrot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "stick celery, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground local rabbit",
+      "amount": "1 pound"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "sprigs rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "to 15 pink peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "organic chicken stock",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F. On a baking sheet, place the bread, and drizzle 1 tablespoon of the olive oil over it. Bake for about 20 minutes. Remove the bread from the oven and let cool to room temperature. Put the bread slices in a blender. Using a microplane, zest the lemon into the blender. Pulse until you obtain a fine consistency, then set aside.",
+    "In a medium skillet over medium-low heat, warm the remaining 3 tablespoons olive oil. Add three-quarters of the parsley, the chili pepper, and garlic, and cook for about 2 minutes, stirring to avoid burning. Increase the heat to medium and add half the roe, stirring for 1 minute. Turn off the heat, but leave the pan on the burner.",
+    "Place a whole sea urchin upside down, making sure to have access to the mouth. Hold the urchin with a towel, and using kitchen shears, cut a hole close to the perimeter of the skeleton. Remove that part of the shell and look at the beautiful star-shaped flower that has been revealed to you. Scoop out the roe and use it for pasta, risotto, or crostini.",
+    "In a small pan over high heat, warm the canola oil. When the oil is hot, fry the remaining 5 sage leaves for about 1 minute. Once fried, remove with a slotted spoon, place on a paper towel, and set aside.",
+    "In a medium-large pot of boiling salted water, blanch the rapini for 3 minutes. Using a spider or slotted spoon, remove them and set aside. Keep the water for cooking the pasta later.",
+    "In a medium pan over medium heat, warm the olive oil and garlic. Once the garlic has infused the oil but before it burns, add the sausage, breaking it up as much as possible. Cook for a couple of minutes, add the wine, and continue cooking until the alcohol evaporates. Season with salt and pepper to taste, add the peperoncino and rapini, and sauté for about 2 minutes.",
+    "Bring the blanching water back to a boil, cook the orecchiette until al dente, drain, and transfer to the pan. Increase the heat to medium-high, and sauté for a minute, adding pasta water as necessary to bind the ingredients. Stir in the pecorino.",
+    "In a large sauté pan over medium heat, warm the olive oil. Add the shallot, parsley, garlic, capers, and black pepper and red pepper flakes to taste, and sauté for 2 to 3 minutes. Then add the chickpeas.",
+    "Drain the clams, add them to the pan, and sauté for about 2 minutes. Add the tomatoes and wine, and cook for about 3 minutes, or until the alcohol has evaporated. Cover and cook until the clams have opened, 4 to 5 minutes.",
+    "Preheat the oven to 350 degrees F. In a baking pan, place the beets, water, ⅓ cup of the olive oil, and salt and pepper to taste. Cover with foil and bake for about 1 hour, or until the beets can be easily pierced by a fork.",
+    "Remove the beets from the oven, uncover, and allow to cool. In a large bowl, add the beets and their cooking liquid, 1 cup of the pecorino, the potato, and salt and pepper to taste. Using an immersion blender or a mixer on low speed, blend until creamy but not liquid. Pour the puree into a large skillet and set aside.",
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the shallot and sauté for a couple of minutes, then stir in the carrots. Add the water and turmeric, stir again, and cover. Reduce the heat to medium-low and cook for 10 to 15 minutes, or until the carrots are soft.",
+    "In a large pan over medium-high heat, warm the olive oil. Add the parsley, garlic, capers, and red pepper flakes and sauté for 2 minutes. Stir in the squid ink.",
+    "Add the squid meat, cook for a minute, stir, and add the wine. Reduce the heat to medium-low and cook for 5 to 7 minutes, or until the alcohol evaporates.",
+    "Add the cannellini beans and tomatoes, season with salt and pepper to taste, stir, and turn off the heat.",
+    "In a medium-large sauté pan over medium heat, warm the olive oil. Add the anchovy fillets, parsley, and garlic, and sauté for about 2 minutes, or until the anchovies can break into pieces.",
+    "Add the geoduck and cook for a minute. Add the olives, capers, and red pepper flakes, and cook for another minute. Reduce the heat to medium-low, add the tomato puree, and cook for about 10 minutes. Season with salt and pepper to taste.",
+    "Cut the breast from the neck and set aside. The breast—body meat—has a stronger clam flavor and can be cut into small pieces and used in recipes like chowder. The neck has a wonderful crunchy texture and can be used in various ways, from sashimi to puttanesca.",
+    "In a medium-large skillet over medium-high heat, warm the olive oil. Add the pancetta and sauté for a couple of minutes, or until crispy.",
+    "Add the potatoes and rosemary and cook for 2 minutes. Stir in 1 cup of water. Reduce the heat to medium-low and add the pasta. Stir constantly, as if you are making risotto, adding more water, a little bit at a time as needed, until both the pasta and potatoes are cooked through. It should be a loose consistency, not too soupy or too thick. Season with salt and pepper to taste. Remove the rosemary sprigs from the skillet.",
+    "In a deep medium skillet over medium heat, warm the olive oil. Add the onion, carrots, and celery (the trio is called soffritto in Italian cooking), and sauté for 2 to 3 minutes. Add the elk and cook, stirring occasionally, for 3 to 4 minutes. Add the wine and continue cooking for another 2 to 3 minutes, until the alcohol evaporates. Stir in the tomato puree and water.",
+    "Add the juniper berries, black peppercorns, bay leaves, and cloves, reduce the heat to low, and simmer for about 3 hours, stirring occasionally. If the ragù is getting too thick, add a little bit of extra water.",
+    "Stir in half the Parmigiano, and divide among four bowls. Finish each bowl with a scoop of the remaining ragù and the remaining Parmigiano. Enjoy with a full-bodied red wine.",
+    "In a pot full of cold water, soak the beans for at least 7 to 8 hours. (These can soak the night before.)",
+    "In a medium deep saucepan over medium heat, warm the olive oil for a minute. Add the onion, carrots, and celery, and sauté for 2 minutes.",
+    "Add the rabbit and pancetta, and cook for 4 to 5 minutes, stirring constantly. Add the rosemary and pink peppercorns. Season with salt to taste. Stir and continue cooking for another 2 to 3 minutes.",
+    "Add a splash of the wine and let it evaporate. Add the stock, cover, reduce the heat to low, and simmer for about 2 hours. When the meat is cooked through and the sauce comes together, uncover and add half the pomegranate seeds (also called arils).",
+    "Stir in half the Parmigiano, and divide among four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining pomegranate seeds, and a drizzle of oil. Enjoy with a glass or two of smooth and young red wine."
+  ]
+}

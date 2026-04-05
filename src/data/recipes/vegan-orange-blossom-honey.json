@@ -1,0 +1,42 @@
+{
+  "id": "vegan-orange-blossom-honey",
+  "name": "Vegan Orange Blossom Honey",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about ⅔ cup / 160 ml",
+  "intro": "If you don’t eat honey for ethical reasons or because you find it congesting, as I do, this orange-scented honey substitute is a superb alternative. I make a double recipe in a large saucepan so I always have a jar in my refrigerator for drizzling on nondairy yogurt, over puddings, on bread, and for dipping apples during the Rosh Hashanah holiday.",
+  "ingredients": [
+    {
+      "item": "brown rice syrup, warmed in the jar until liquid (see page 23)",
+      "amount": "⅓ cup / 80 ml"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "pure maple syrup, Grade B or dark amber",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "/ 4 grams organic granulated sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Strips of zest from ½ of a medium organic orange",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the rice, agave, and maple syrups and the sugar in a medium saucepan with high sides and cook over medium heat to a boil. Add the orange zest.",
+    "Lower the heat and cook for 10 minutes, stirring a few times and adjusting the heat as necessary to maintain a low boil.",
+    "Remove the saucepan from the heat. Test the final consistency: Spoon a scant tablespoon into a small dish and refrigerate for 10 minutes. If the honey is thick enough, cool to room temperature in the saucepan. If not, cook it another few minutes.",
+    "Pour the syrup through a fine mesh strainer into a jar. Cover and refrigerate for up to 1 month."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

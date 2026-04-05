@@ -1,0 +1,41 @@
+{
+  "id": "chocolate-avocado-buttercream",
+  "name": "Chocolate Avocado “Buttercream”",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 cup / 240 ml",
+  "intro": "One of my favorite “fast food” snacks is a fully ripe buttery avocado sprinkled with flaky sea salt. But for desserts, the dark chocolate mutes the flavor of the ripe avocado, leaving just a hint of complementary fruitiness. Starting with a just-ripe, rather than a fully ripe, avocado avoids the subtle vegetal taste. I understand that the words “avocado” and “buttercream” may seem strange together—but be daring! As super tester James from Australia wrote, “It’s fab! I tell you what, before I added the chocolate it looked like something out of Ghostbusters, but then I added the chocolate, and after a few seconds it looked like buttercream!”",
+  "ingredients": [
+    {
+      "item": "/ 120 grams (about ½ cup mashed) just-ripe avocado",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "any nondairy milk",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "to 1¾ cups / 164 to 191 grams organic confectioners’ sugar, sifted twice",
+      "amount": "1½"
+    },
+    {
+      "item": "/ 85 grams dark chocolate (66 to 70%), melted",
+      "amount": "3 ounces"
+    }
+  ],
+  "method": [
+    "Mash the avocado with a fork in a medium bowl. Add the nondairy milk and vanilla extract and mix with electric beaters on high until smooth.",
+    "Add the confectioners’ sugar, ¼ cup / 25 grams at a time, beating on low speed until just incorporated. Increase the speed to high and beat for 1 minute after each addition. Repeat until 1½ cups / 164 grams of the sugar is used. Taste the buttercream and decide if more sugar is needed.",
+    "When all the sugar has been added, stir the melted chocolate into the buttercream with a silicone spatula."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

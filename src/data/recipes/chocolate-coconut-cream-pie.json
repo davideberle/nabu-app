@@ -1,0 +1,76 @@
+{
+  "id": "chocolate-coconut-cream-pie",
+  "name": "Chocolate Coconut Cream Pie",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes one 9-inch / 23-cm pie or tart",
+  "intro": "My dad, Sonny, liked all desserts, but his favorite was pie, specifically any coconut cream pie served in a Greek diner. Dad was proud when I became a “cook,” and since he liked chocolate too, I am sure he would have been okay with my “messing” with his beloved pie. In fact, Dad, who cooked in a homeless shelter when he was in his eighties, might have even baked this pie for the people he served; proudly telling everyone it was his daughter’s recipe. If so, I’d tell him what I tell you: Start the pie the day before you plan to serve it, since both of the cream components need to be refrigerated overnight. The pie crust needs to be baked and cooled before being filled, but can be made in advance and frozen until needed. The Blender Coconut Cream component of this recipe was inspired by Elizabeth Falkner’s recipe for Magic Coconut Cream.",
+  "ingredients": [
+    {
+      "item": "recipe Almond Cookie Crust (page 155)",
+      "amount": "1"
+    },
+    {
+      "item": "canned unsweetened full-fat coconut milk, well-stirred (do not use light)",
+      "amount": "⅔ cups / 160 ml"
+    },
+    {
+      "item": "/ 27 grams coconut sugar or organic granulated sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "⅜ teaspoon guar gum",
+      "amount": ""
+    },
+    {
+      "item": "Pinch fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "can (13.5 to 14-ounce / 400 to 414-ml) unsweetened full-fat coconut milk, at room temperature (do not use light)",
+      "amount": "1"
+    },
+    {
+      "item": "/ 14 grams organic cornstarch",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "/ 3 grams agar powder",
+      "amount": "1¼ teaspoons"
+    },
+    {
+      "item": "plus 1 tablespoon / 63 grams organic granulated sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut oil, divided",
+      "amount": "3 tablespoons / 45 ml"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "pure vanilla extract, divided",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "/ 198 grams dark chocolate (66 to 71%) finely chopped, divided",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "/ 38 grams toasted shredded coconut, plus more for garnishing the pie",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Put the coconut milk, coconut sugar, guar gum, and salt in a blender on low for 30 seconds. Increase the speed to high (or full power) and blend for 2 minutes.",
+    "Pour into a container. Cover and refrigerate for at least 5 hours or overnight. The cream will thicken slightly as it chills. (Think melted marshmallow cream.)"
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

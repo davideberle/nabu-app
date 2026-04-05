@@ -1,0 +1,34 @@
+{
+  "id": "17-thai-shrimp-stir-fry",
+  "name": "17) Thai Shrimp Stir-fry",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sliced sweet red peppers",
+      "amount": "2"
+    },
+    {
+      "item": "sliced sweet red peppers",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Peeled and deveined uncooked shrimp - 1 pound",
+    "Peeled and deveined uncooked shrimp - 1 pound",
+    "Heat canola oil in a large non-stick skillet or wok, then sauté the red pepper for 1 minute.",
+    "Heat canola oil in a large non-stick skillet or wok, then sauté the red pepper for 1 minute.",
+    "Add shrimp and cook (stirring) for 2 minutes.",
+    "Add shrimp and cook (stirring) for 2 minutes."
+  ]
+}

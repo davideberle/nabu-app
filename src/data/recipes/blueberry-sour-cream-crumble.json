@@ -1,0 +1,57 @@
+{
+  "id": "blueberry-sour-cream-crumble",
+  "name": "Blueberry Sour Cream Crumble",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "unbaked pie crust (you can divide my pie crust recipe in half)",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "sour cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "2.5 cups fresh blueberries",
+      "amount": ""
+    },
+    {
+      "item": "vanilla",
+      "amount": "1 t"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "butter",
+      "amount": "4 T"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 T"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "flour",
+      "amount": "2 T"
+    }
+  ],
+  "method": [
+    "ingredients. In a small bowl, add flour, salt, and sugar. Cut in butter until mixture becomes crumbly. Set aside. Pour the filling into the unbaked pie crust and the cover edges with foil to prevent overbrowning. Bake for 30 minutes, remove from oven and add the crumble mixture on top, remove foil edges. Return to oven and bake for 10-15 minutes. Serves 4. Serving suggestion: Top with fresh cream! Olé"
+  ]
+}

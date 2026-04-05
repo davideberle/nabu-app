@@ -2,38 +2,56 @@
   "id": "chocolate-sorbet",
   "name": "Chocolate Sorbet",
   "source": {
-    "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
   },
-  "servings": "serves 6",
+  "servings": "makes 2 pints / 1 liter",
+  "intro": "Sorbets are soft, smooth frozen ices made without milk or other dairy products. My chef in culinary school taught me to add egg whites to yield an even smoother sorbet. This is not an option for vegan cooks. Moreover, egg whites also mute a sorbet’s flavor. My extremely smooth, intensely flavored chocolate sorbet has no such problems. It uses no eggs, and will stay that way with no unpleasant iciness for up to a week (if it lasts that long).",
   "ingredients": [
     {
-      "item": "litre water",
-      "amount": "1"
+      "item": "/ 414 grams organic granulated sugar",
+      "amount": "2 cups"
     },
     {
-      "item": "caster sugar",
-      "amount": "250 g"
+      "item": "water, at room temperature",
+      "amount": "4 cups / 960 ml"
     },
     {
-      "item": "cocoa powder, preferably a good-quality Swiss or Belgian variety",
-      "amount": "200 g"
+      "item": "pure maple syrup, Grade B or dark amber",
+      "amount": "½ cup / 120 ml"
     },
     {
-      "item": "ground coffee",
-      "amount": "1 tablespoon"
+      "item": "/ 104 grams Dutch-process cocoa powder, sifted",
+      "amount": "1 cup"
     },
     {
-      "item": "crème de cacao (optional, see Variation)",
-      "amount": "½ cup"
+      "item": "⅜ teaspoon fine sea salt",
+      "amount": ""
     },
     {
-      "item": "thick (double) cream (optional)",
-      "amount": "250 ml"
+      "item": "/ 227 grams dark chocolate (70 to 72%), finely chopped",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "/ 9 grams instant coffee (optional)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 tablespoon / 15 ml"
     }
   ],
   "method": [
-    "Serves 6 1 litre water 250 g caster sugar 200 g cocoa powder, preferably a good-quality Swiss or Belgian variety 1 tablespoon ground coffee ½ cup crème de cacao (optional, see Variation) 250 ml thick (double) cream (optional)",
-    "Bring the water to the boil and dissolve the sugar in it. Put the cocoa powder and ground coffee into a bowl, add a little of the hot syrup and mix to a thick paste. Then add the rest of the water. Taste for sweetness and adjust if necessary by adding more sugar. Allow to cool, put into an ice cream maker and churn."
+    "Make the sugar syrup. Put the sugar into a large saucepan. Pour the water over the sugar and bring it to a boil over medium heat, whisking a few times after the water starts to boil. When a full boil is reached, add the maple syrup. Reduce the heat to medium, adjusting as necessary to keep the mixture at a low boil, and cook for 1 minute.",
+    "Whisk the cocoa into the sugar syrup in 2 additions until the cocoa is dissolved. Add the salt. Reduce the heat, adjusting as necessary to keep the mixture at a low boil for 8 minutes.",
+    "Remove the saucepan from the heat and immediately add half of the chocolate and the coffee if using. Whisk until the chocolate is melted, and then add the remaining chocolate. Add the vanilla. Keep the sorbet base in the saucepan for 5 minutes, whisking a few times.",
+    "Strain the base through a fine mesh strainer into a 3-cup bowl and cool to room temperature.",
+    "Cover and refrigerate the base for 2 to 4 hours until thoroughly chilled before churning. Chilling the base thoroughly means faster churning, which results in a creamier frozen dessert.",
+    "When the mixture is cold, give it a good whisk. Pour it into an ice cream maker and churn according to the manufacturer’s directions. It will look like soft serve when it is ready.",
+    "Using a silicone spatula, immediately transfer the frozen sorbet to the chilled storage container. Cover tightly and freeze for 2 to 4 hours until the ice cream is firm enough to scoop."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
   ]
 }

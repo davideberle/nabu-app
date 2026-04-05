@@ -1,0 +1,41 @@
+{
+  "id": "farmhouse-white-bread",
+  "name": "Farmhouse White Bread",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "pkg active dry yeast",
+      "amount": "1"
+    },
+    {
+      "item": ".5 cups flour",
+      "amount": "2"
+    },
+    {
+      "item": "of warm water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 t"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "Olive Oil",
+      "amount": "1 T"
+    },
+    {
+      "item": "butter for drizzling and greasing the loaf pan.",
+      "amount": "2 T"
+    }
+  ],
+  "method": [
+    "Add yeast to warm water and 1 t sugar. Mix well and let rest for 10 minutes or until bubbles form on top. Combine flour and salt. Add yeast mixture slowly until dough is combined and knead for 7-10 minutes. Add flour to handle the dough if needed. Coat with olive oil and cover with a clean towel. Let rise for one hour or until doubled in a warm place. Turn dough onto a semolina-dusted flat surface and knead dough a little more. Grease a loaf pan with butter and transfer dough. You can make a small slit on top and drizzle melted butter if you like. Let rise until dough has reached about an inch past the top of the pan. Bake at 350°F for 25 minutes or until golden brown. I made this bread for about 30 years using this same recipe. Makes one loaf. Olé."
+  ]
+}

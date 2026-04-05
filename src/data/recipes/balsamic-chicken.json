@@ -1,0 +1,61 @@
+{
+  "id": "balsamic-chicken",
+  "name": "Balsamic Chicken",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "chicken legs",
+      "amount": "4-6"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 T"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped shallot",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 T"
+    },
+    {
+      "item": "butter",
+      "amount": "1 T"
+    },
+    {
+      "item": "green onion stalks chopped",
+      "amount": "1-2"
+    }
+  ],
+  "method": [
+    "In a frying pan on medium heat, add 1 T olive oil and 1 T butter. Fry chicken legs until browned on all sides. Remove and set aside to drain on a paper towel. Whisk 1 cup balsamic vinegar, olive oil, honey, 1 T Dijon mustard, chopped shallot, salt, and pepper. Coat chicken legs in the marinade, and let sit for 45 minutes covered in the refrigerator. In the meantime, spray an 8-inch casserole dish with cooking spray to prevent sticking. Pour marinated chicken into casserole.Bake at 350°F for 45 minutes or until the meat pulling away from the bone. Serves 2-3. Serving suggestion: fresh bread, and mashed potatoes, pictured here garnished with green onion. I also sprinkled green onion on the chicken. Olé"
+  ]
+}

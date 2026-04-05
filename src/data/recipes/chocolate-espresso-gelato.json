@@ -1,0 +1,63 @@
+{
+  "id": "chocolate-espresso-gelato",
+  "name": "Chocolate Espresso Gelato",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 3 ½ pints / 1.6 liters",
+  "intro": "Gelato, Italy’s version of ice cream, contains less sugar and significantly less fat than ice cream’s typical 10 to 16%. So, it is easy to see why I “heard” the gelato recipes in my head asking me to take them over to the vegan side. For my first vegan gelato, I picked one of my favorite flavor combinations—dark chocolate and espresso—and used coconut milk for the fat. (You won’t be able to detect any coconut taste.) A rich, just-sweet-enough gelato is the result.",
+  "ingredients": [
+    {
+      "item": "can (13.5 to 14 ounces / 400 to 414 ml) full-fat organic coconut milk, (do not use light)",
+      "amount": "1"
+    },
+    {
+      "item": "/ 14 grams instant espresso powder",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "/ 207 grams organic granulated sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 58 grams Dutch-process cocoa powder, sifted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "/ 85 grams vegan espresso-flavored chocolate, finely chopped",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "/ 5 grams arrowroot",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "plus 2 tablespoons / 90 ml water, at room temperature",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "Chocolate-covered coffee beans, for serving (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add enough water to the coconut milk to equal 3 cups / 720 ml. Pour into a medium saucepan. Have a fine sieve set over a 4-cup heatproof measure or bowl nearby.",
+    "Mix the espresso powder into the coconut milk. Cook over medium-low heat to a gentle boil. Add the sugar and cook to a low boil over medium heat, whisking a few times until the sugar is dissolved.",
+    "Whisk half the cocoa powder into the liquid until dissolved, and then whisk in the other half until dissolved. Simmer on low heat for 3 minutes, adjusting the heat as needed so that small bubbles are visible around the sides of the saucepan and occasionally in the center. Add the chocolate and stir until it is melted.",
+    "Strain the mixture through the sieve into the heatproof measure or bowl. Rinse and dry the saucepan. Pour the base back into the saucepan and return the liquid to a simmer over low heat.",
+    "In a small bowl, dissolve the arrowroot in the water. (Remember the rule: arrowroot must never be dissolved in warm or hot liquid.)",
+    "Whisking constantly, add the dissolved arrowroot to the simmering mixture. The mixture will thicken. Cook only to a gentle boil and then immediately remove the saucepan from the heat. Add the vanilla.",
+    "Pour the mixture into a 4-cup / 1-liter container and cool to room temperature. Cover and refrigerate for at least 4 hours until thoroughly chilled before churning. Chilling the base thoroughly means faster churning, which results in a creamier frozen dessert.",
+    "When the mixture is cold, give it a good whisk. Pour into an ice cream maker and churn according to the manufacturer’s directions. It will look like soft serve when it’s ready.",
+    "Using a silicone spatula, immediately transfer the frozen gelato to the chilled storage container. Cover tightly, and freeze for 30 to 60 minutes until the gelato is firm enough to scoop."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

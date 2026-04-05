@@ -1,0 +1,45 @@
+{
+  "id": "mendiants",
+  "name": "Mendiants",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 12 thin mendiants",
+  "intro": "Mendiants are small chocolate disks topped with candied fruits and nuts. They look beautiful but can be time-consuming and tricky to make when using tempered chocolate and candying the nuts. I made a simpler version by using leftover ingredients. Melted chocolate left from a recipe test? Check. Walnuts or pine nuts? Yes. Four squares of candied ginger, a handful of dried cranberries . . . you get the idea. This is probably heresy but it works! I had only to rewarm the formerly melted chocolate. While the chocolate was melting, I lined a sheet pan with parchment and gathered the bits of fruit and nuts. Straight out of the refrigerator and onto a silver tray, the leftovers became elegant confections worthy of a grown-up party. I still think of them as fancy leftovers, though.",
+  "ingredients": [
+    {
+      "item": "/ 85 grams dark chocolate (70 to 72%), melted and kept warm in a water bath",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "walnuts, halved or quartered",
+      "amount": "6"
+    },
+    {
+      "item": "blanched almonds, coarsely chopped (see Sidebar page 289)",
+      "amount": "10"
+    },
+    {
+      "item": "/ 12 grams candied ginger, slivered or cubed",
+      "amount": "½ ounce"
+    },
+    {
+      "item": "/ 35 grams any dried fruit, slivered or cubed if large",
+      "amount": "1¼ ounces"
+    },
+    {
+      "item": "/ 5 grams pine nuts (about 24)",
+      "amount": "¼ ounce"
+    }
+  ],
+  "method": [
+    "Line a baking sheet with plastic wrap or parchment paper.",
+    "Drop a tablespoonful of the chocolate onto the sheet and use the back of a spoon to spread it into a thin round about 2 to 2½ inches / 5 to 6 cm in diameter. Keep the thickness of the round as even as possible. Make only 6 at a time to ensure that the chocolate doesn’t set before the toppings are added.",
+    "For each mendiant, arrange a walnut half, a couple of pieces of almond, some of the ginger, a piece of another dried fruit, and 2 or 3 pine nuts on top of the chocolate, creating your own design. Repeat the process until you have used all of the melted chocolate, nuts, and fruits. Allow the mendiants to harden at room temperature. You can speed the process by placing the tray in the refrigerator."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

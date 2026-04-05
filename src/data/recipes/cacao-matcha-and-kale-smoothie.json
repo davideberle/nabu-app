@@ -1,0 +1,55 @@
+{
+  "id": "cacao-matcha-and-kale-smoothie",
+  "name": "Cacao, Matcha, and Kale Smoothie",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 2 servings",
+  "intro": "Kale is the Michael Phelps of Team Cruciferous—a medalist in every Healthy Veggie Olympic contest. Blend that kale with cancer-fighting, energy-boosting, calorie-burning, and detoxifying matcha tea; flavanol-rich raw cacao; and the good fat in avocado, and your day is made. Or, you can choose to drink this smoothie just because it tastes really good. Matcha newbies, note that the taste is strong—a little goes a long way. Start with the smaller amount.",
+  "ingredients": [
+    {
+      "item": "any nondairy milk",
+      "amount": "1¼ cups / 300 ml"
+    },
+    {
+      "item": "large kale leaf, stem removed",
+      "amount": "1"
+    },
+    {
+      "item": "medium avocado (about ¼ cup / 40 grams)",
+      "amount": "¼"
+    },
+    {
+      "item": "/ 15 grams raw cacao powder (or any cocoa powder)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "agave syrup or coconut sugar, or more to taste",
+      "amount": "2 tablespoons / 30 ml"
+    },
+    {
+      "item": "/ 3 grams matcha powder, more to taste",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "Pinch sea salt",
+      "amount": ""
+    },
+    {
+      "item": "/ 140 grams ice cubes",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Put all the ingredients in the blender in the order listed, except the ice, and blend until smooth and creamy. Start the blender on low and increase to high speed. Add the ice cubes a few at a time and blend until frothy. Pour into glasses and enjoy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

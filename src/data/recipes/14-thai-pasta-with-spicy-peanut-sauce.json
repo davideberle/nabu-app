@@ -1,0 +1,50 @@
+{
+  "id": "14-thai-pasta-with-spicy-peanut-sauce",
+  "name": "14) Thai Pasta with Spicy Peanut Sauce",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "peeled, seeded, and chopped cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "peeled, seeded, and chopped cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "julienned carrots",
+      "amount": "2"
+    },
+    {
+      "item": "julienned carrots",
+      "amount": "2"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "5"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "5"
+    },
+    {
+      "item": "julienned sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "julienned sweet red pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Cook linguine according to package directions. Strain it once done.",
+    "Cook linguine according to package directions. Strain it once done.",
+    "In a small bowl, combine the peanut butter and lemon juice.",
+    "In a small bowl, combine the peanut butter and lemon juice.",
+    "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well.",
+    "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well."
+  ]
+}

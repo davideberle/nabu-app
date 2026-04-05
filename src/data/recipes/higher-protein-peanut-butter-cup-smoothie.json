@@ -1,0 +1,43 @@
+{
+  "id": "higher-protein-peanut-butter-cup-smoothie",
+  "name": "Higher Protein Peanut Butter Cup Smoothie",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 2 servings",
+  "intro": "Tofu adds a good portion of protein to this smoothie. I use organic sprouted firm tofu but any kind you like or have on hand will do.",
+  "ingredients": [
+    {
+      "item": "any nondairy milk",
+      "amount": "1 cup / 240 ml"
+    },
+    {
+      "item": "/ 113 grams firm organic tofu",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "/ 67 grams peanut butter, crunchy or smooth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "/ 34 grams organic granulated sugar, whole cane sugar, or coconut sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "/ 25 grams Dutch-process cocoa powder",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "About 1 cup / 140 grams ice cubes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put all the ingredients in a blender in the order listed, except the ice, and blend until smooth and creamy. Start the blender on low and increase to high speed. Blend until all the ingredients are completely puréed. Add the ice cubes a few at a time and blend until frothy. Pour into 1 or 2 glasses and enjoy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

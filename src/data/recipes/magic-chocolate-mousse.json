@@ -1,0 +1,50 @@
+{
+  "id": "magic-chocolate-mousse",
+  "name": "Magic Chocolate Mousse",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 6 to 8 servings",
+  "intro": "I first attempted making a chocolate mousse just after I was married. The women in my circle of friends were all cooking from Julia Child’s Mastering the Art of French Cooking, and although I was an absolute novice in the kitchen, I somehow decided to make Julia’s Mousseline au Chocolat—the one known for its velvety texture and for using every pot in the house—as dessert for my in-laws. (My mother-in-law, Wini, was a very accomplished cook.) What a production! This nervous bride in her tiny kitchen sweated the big and small stuff—Julia’s mousse is based on butter instead of heavy cream and specifies beating separated egg whites over hot water—and I remember little more than being exhausted . . . and getting compliments.",
+  "ingredients": [
+    {
+      "item": "plus 2 tablespoons / 270 ml water, at room temperature, or fruit juice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "/ 340 grams high-quality dark chocolate (68 to 70%), finely chopped",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "liqueur (optional) or fruit juice",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "mild tasting extra-virgin olive oil",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "2 teaspoons / 10 ml"
+    },
+    {
+      "item": "Berries or toasted nuts for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Have 2 bowls ready, one large filled about halfway with ice cubes, and one medium that fits inside the large bowl with the ice. Set the bowls aside (don’t nest them yet) while you melt the chocolate into the water.",
+    "Pour the water into a saucepan. Add the chocolate and salt, and whisk over medium-low heat until the chocolate is completely melted into a smooth sauce. Stir in the liqueur or additional water. Stir in the olive oil. Pour the chocolate sauce into the medium bowl and set it into the ice-filled bowl.",
+    "Add the vanilla. Whisk only until the chocolate has lightened in color and has thickened enough so that tracks from the whisk are visible, then stop. The mousse will be soft at this point, like soft chocolate whipped cream, but will become more dense as it sets. This happens quickly.",
+    "Spoon into small cups. Allow the mousse to set for 10 minutes or longer, until the texture is just right for your taste."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

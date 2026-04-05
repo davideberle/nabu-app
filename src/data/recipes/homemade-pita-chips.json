@@ -1,0 +1,36 @@
+{
+  "id": "homemade-pita-chips",
+  "name": "Homemade Pita Chips",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time: 30 minutes |serves 4 to 6",
+  "ingredients": [
+    {
+      "item": "extra-virgin Greek olive oil, plus more for greasing, if needed",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "garlic cloves, thinly sliced",
+      "amount": "6"
+    },
+    {
+      "item": "pocketless pita bread rounds, cut into 8 triangular wedges each",
+      "amount": "4"
+    },
+    {
+      "item": "or 3 pinches of coarse sea salt or kosher salt",
+      "amount": "2"
+    },
+    {
+      "item": "dried Greek oregano",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (200°C). Lightly oil two large baking sheets or line them with parchment paper.",
+    "Strew the garlic slices over the baking sheets, dividing them evenly.",
+    "Using your hands, toss together the pita wedges, olive oil, salt, and oregano in a large bowl. Divide the pita chips between the baking sheets. Bake for 7 minutes or so, turning once, until golden and crisp. Remove from the baking sheet, transfer to a serving bowl, and serve hot or at room temperature."
+  ]
+}

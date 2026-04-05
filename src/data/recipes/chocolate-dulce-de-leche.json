@@ -1,0 +1,51 @@
+{
+  "id": "chocolate-dulce-de-leche",
+  "name": "Chocolate Dulce de Leche",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 1¼ cups / 300 ml",
+  "intro": "I stood firm in my conviction that chocolate would even improve dulce de leche—the superbly sweet, gooey, and creamy caramelized milk from Latin America, which is known in French as confiture de lait (“milk jam”). First, I had to find a way to replace the whole milk or sweetened condensed milk used in traditional recipes. Cashew cream was a fail, but canned full-fat coconut milk worked beautifully, after I added a tiny amount of the guar gum to stabilize the emulsion. Surprisingly, the coconut flavor—even with coconut sugar added—is just a whisper. I don’t recommend doubling the recipe; it is difficult to get the reduction just right.",
+  "ingredients": [
+    {
+      "item": "can (13.5 to 14 ounces / 400 to 414 ml) unsweetened full-fat coconut milk (do not use light)",
+      "amount": "1"
+    },
+    {
+      "item": "/ 80 grams coconut sugar (substitute ¼ cup each organic whole cane sugar and organic granulated sugar)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "brown rice syrup or agave syrup",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "guar gum",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "/ 58 grams dark chocolate (68 to 72%), finely chopped",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "2 teaspoons / 10 ml"
+    }
+  ],
+  "method": [
+    "Combine the coconut milk, sugar, rice syrup, salt, and guar gum in a blender. Start blending on low and increase the speed to high. Blend for 1 minute until the sugar is dissolved.",
+    "Pour into a heavy-bottomed medium saucepan (about 8 to 10 inches across × 3 inches deep / 20 to 25 cm across × 7.5 cm deep) and cook over medium-high heat, whisking occasionally just until the mixture begins to bubble.",
+    "Raise the heat to high and stir constantly until the mixture starts to boil furiously. Stir frequently for 10 minutes, adjusting the heat up or down as necessary to maintain a steady boil.",
+    "Carefully pour the very hot liquid into a 2-cup / 500 ml heatproof spouted measuring cup. Wait for the bubbling to stop and note the amount. If the liquid measures 1¼ cups / 300 ml, or a little less, it can be finished. If not, cook longer until it has reduced further.",
+    "Once the mixture has reduced, wait about 1 minute until steam is no longer visible, and then add the chocolate and the vanilla extract. Stir until the chocolate is melted and the sauce is smooth. Pour the sauce into a clean jar. Use warm or at room temperature."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

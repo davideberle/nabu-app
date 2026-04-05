@@ -1,0 +1,27 @@
+{
+  "id": "homemade-italian-bread",
+  "name": "Homemade Italian Bread",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "package active dry yeast plus 1 cup warm water",
+      "amount": "1"
+    },
+    {
+      "item": "00 flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1.5 t salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, add yeast to 1 cup of warm water. Let sit for about 10 minutes or until bubbles form on top. In a large bowl, mix 2 cups 00 flour, and 1.5 t of salt. Add proofed yeast to dough and mix with hands. Add more flour if dough is too wet to handle, but dough should be a little wet. Knead for a minute or two, cover with a towel and let rise in a warm place for one hour until dough is doubled in size. Punch down, knead a little, and let rise 1 hour for the second time. Punch down and sprinkle enough flour to keep dough from sticking.",
+    "Preheat oven to 360°F. Transfer to a semolina-dusted flat surface and knead a few times. Form a loaf with your hands. Transfer to a parchment paper-lined baking sheet. Bake for about 20 minutes or until golden brown.",
+    "Christy’s Helpful Hint: This dough is very moist, just add enough flour to handle the dough. The wetness of the dough is what makes Italian bread hard and crunchy. This is a great recipe to make every day so you have it for salad, or you can slice it and have an Italian breakfast with a cup of espresso. Makes 1 medium-sized loaf of Italian bread! Olé"
+  ]
+}

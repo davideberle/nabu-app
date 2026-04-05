@@ -1,0 +1,36 @@
+{
+  "id": "espresso-hot-chocolate",
+  "name": "Espresso Hot Chocolate",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes 1 serving",
+  "intro": "I do not like flavored espresso. I like mine bordering on bitter without sugar. But one mid-morning, when I noticed a cup holding a few tablespoons of ganache next to my espresso machine, I thought, “Why not?” Now, every time I sip this bracing beverage from one of my brightly colored demitasse cups, I wonder, “Why didn’t I think of this sooner?” Don’t like your espresso on the bitter side like me? Go ahead and add some granulated sugar to your cup or a tablespoon of fluffy steamed almond milk.",
+  "ingredients": [
+    {
+      "item": "Bittersweet Chocolate Ganache Glaze page 264)",
+      "amount": "1 tablespoon / 15 ml"
+    },
+    {
+      "item": "freshly made (1-ounce / 30-ml) shot espresso",
+      "amount": "1"
+    },
+    {
+      "item": "Organic granulated sugar to taste (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Frothed nondairy milk (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "If the ganache is solid after being refrigerated, warm it until pourable in a small bowl set into a saucepan containing a few inches of simmering water.",
+    "Stir the ganache into the espresso until thoroughly mixed. Add any or all of the optional ingredients and sip while hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "pasta-all-arrabbiata",
+  "name": "Pasta all’Arrabbiata",
+  "source": {
+    "cookbook": "Zagami Family Cookbook",
+    "author": "Zagami Family"
+  },
+  "ingredients": [
+    {
+      "item": "grams penne pasta",
+      "amount": "300"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 T"
+    },
+    {
+      "item": "8 oz can San Marzano tomatoes plus 1 can of water",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic chopped",
+      "amount": "1"
+    },
+    {
+      "item": "grated pecorino cheese",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 T"
+    },
+    {
+      "item": "salt",
+      "amount": "1 t"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 t"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large frying pan on medium heat, add 2 T olive oil and 1 T red pepper flakes, you can add more or less depending on how spicy you want it. Add tomatoes, 1 can of water, chopped garlic, and salt. Simmer for 20 minutes. In the meantime, boil a pot of salted water, and add pasta, cook al dente. Add pasta to sauce directly, then add 1-2 ladles of pasta water. Mix well, add half of the parsley, mix and manticare. Garnish with grated pecorino and put the rest of the parsley on top. Serves 2-3. Olé"
+  ]
+}

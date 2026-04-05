@@ -1,0 +1,48 @@
+{
+  "id": "raw-cacao-sauce",
+  "name": "Raw Cacao Sauce",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about ¾ cup / 180 ml",
+  "intro": "Blend all the ingredients until smooth and glossy—that’s all it takes to make a dark and delicious raw chocolate sauce. Using nut oil instead of coconut oil can make for an interesting change of pace, but don’t leave it out altogether: the oil ensures that the sauce is silken, not chalky. The unpasteurized soy sauce, nama shoyu, adds more to the flavor than you might expect from just ¼ teaspoon, but if you don’t have the raw kind, use any soy sauce or tamari, or add a pinch of good quality sea salt.",
+  "ingredients": [
+    {
+      "item": "minus 1 tablespoon / 33 grams raw cacao powder",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw agave syrup",
+      "amount": "½ cup / 120 ml"
+    },
+    {
+      "item": "warm water",
+      "amount": "3 tablespoons / 45 ml"
+    },
+    {
+      "item": "plus 1 teaspoon / 20 ml coconut oil, melted",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "nama shoyu, or any soy sauce or tamari",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "sea salt",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Put all the ingredients into a blender. Blend, starting on low and moving to high speed, for at least 1 minute, until the sauce is smooth and glossy. The sauce can also be made in a food processor.",
+    "Pour the sauce into a jar and cover."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

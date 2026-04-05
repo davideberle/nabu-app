@@ -1,0 +1,41 @@
+{
+  "id": "basic-thick-cashew-cream",
+  "name": "Basic Thick Cashew Cream",
+  "source": {
+    "cookbook": "Vegan Chocolate",
+    "author": "Fran Costigan"
+  },
+  "servings": "makes about 1¾ cups / 420 ml",
+  "intro": "Cashew Cream is a valuable base ingredient that stands in for dairy cream in a variety of ways, and is used both uncooked and cooked. Refrigerate Cashew Cream for up to two days, or freeze it in ice cube trays so that the right amount is always available for quick defrosting (see Note on keeping). It’s easy to thin the cream into cashew milk, as desired. A sweeter variation for making Cashew Cream follows.",
+  "ingredients": [
+    {
+      "item": "/ 142 grams whole raw cashews, rinsed and soaked 3 to 4 hours or overnight",
+      "amount": "5 ounces (about 1 cup)"
+    },
+    {
+      "item": "water, at room temperature",
+      "amount": "⅔ cup / 160 ml"
+    },
+    {
+      "item": "agave syrup or pure maple syrup, Grade B or dark amber",
+      "amount": "¼ cup / 60 ml"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon / 5 ml"
+    },
+    {
+      "item": "guar gum",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Drain the cashews in a strainer. Put the rinsed nuts into a blender and add the water, agave or maple syrup, and vanilla. Blend, starting on low, and quickly increase the speed to high. Blend for about 1 minute until the cream is perfectly smooth.",
+    "Push any pieces of unblended cashews down into the cream and blend for 1 minute.",
+    "Add the guar gum directly onto the cream, making sure it doesn’t land on the sides of the container. Blend on low for 30 seconds, then increase the speed to high and blend for 1 minute."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}
