@@ -3,7 +3,8 @@
   "name": "Pizza Margherita",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Mietta Sartori"
+    "author": "Mietta Sartori",
+    "chapter": "Summer"
   },
   "intro": "This is the classic ‘modern’ pizza. In an inspired piece of 19th-century marketing (we are talking 150 years ago) it was named after an Italian princess, the Principessa Margherita, who would become the first queen of a united Italy.\n\nThe red, white and green of the tomato, mozzarella and basil represented the flag colours of the new Italy. So, if you like, it was a political pizza, as well as being so delicious, and it has taken the world by storm.",
   "ingredients": [

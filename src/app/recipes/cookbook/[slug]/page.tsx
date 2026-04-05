@@ -23,6 +23,23 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
   }
   
   const recipes = getRecipesByCookbook(slug);
+  
+  // Group recipes by chapter if chapters exist
+  const chapters = new Map<string, typeof recipes>();
+  let hasChapters = false;
+  
+  for (const recipe of recipes) {
+    const chapter = recipe.source?.chapter || recipe.category?.chapter || '';
+    if (chapter) hasChapters = true;
+    const key = chapter || '__uncategorized__';
+    if (!chapters.has(key)) chapters.set(key, []);
+    chapters.get(key)!.push(recipe);
+  }
+  
+  // Convert to array and sort by chapter name
+  const groupedRecipes = hasChapters 
+    ? Array.from(chapters.entries()).filter(([k]) => k !== '__uncategorized__').sort((a, b) => a[0].localeCompare(b[0]))
+    : [];
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -48,59 +65,118 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {recipes.map((recipe) => {
-            const chapter = recipe.source?.chapter || recipe.category?.chapter || '';
-            const dietary = getDietary(recipe);
-            
-            return (
-              <Link
-                key={recipe.id}
-                href={`/recipes/${recipe.id}`}
-                className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
-              >
-                {recipe.image ? (
-                  <div className="relative h-44 w-full overflow-hidden">
-                    <Image
-                      src={recipe.image}
-                      alt={recipe.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ) : (
-                  <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                    <span className="text-3xl opacity-30">🍽️</span>
-                  </div>
-                )}
-                <div className="p-4">
-                  <h2 className="font-serif text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
-                    {recipe.name}
-                  </h2>
-                  
-                  <div className="flex items-center gap-2 mt-2 text-xs text-stone-400 dark:text-stone-500">
-                    {recipe.servings && <span>{capitalize(recipe.servings)}</span>}
-                    {recipe.servings && chapter && <span>·</span>}
-                    {chapter && <span>{chapter}</span>}
-                  </div>
-
-                  {dietary.length > 0 && (
-                    <div className="flex gap-1.5 mt-2">
-                      {dietary.slice(0, 2).map((tag: string) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+        {hasChapters ? (
+          // Grouped by chapter
+          <div className="space-y-10">
+            {groupedRecipes.map(([chapterName, chapterRecipes]) => (
+              <section key={chapterName}>
+                <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4 pb-2 border-b border-stone-200 dark:border-stone-800">
+                  {chapterName}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {chapterRecipes.map((recipe) => {
+                    const dietary = getDietary(recipe);
+                    return (
+                      <Link
+                        key={recipe.id}
+                        href={`/recipes/${recipe.id}`}
+                        className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
+                      >
+                        {recipe.image ? (
+                          <div className="relative h-44 w-full overflow-hidden">
+                            <Image
+                              src={recipe.image}
+                              alt={recipe.name}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                        ) : (
+                          <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
+                            <span className="text-3xl opacity-30">🍽️</span>
+                          </div>
+                        )}
+                        <div className="p-4">
+                          <h3 className="font-serif text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
+                            {recipe.name}
+                          </h3>
+                          {recipe.servings && (
+                            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                              {capitalize(recipe.servings)}
+                            </p>
+                          )}
+                          {dietary.length > 0 && (
+                            <div className="flex gap-1.5 mt-2">
+                              {dietary.slice(0, 2).map((tag: string) => (
+                                <span
+                                  key={tag}
+                                  className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          // Flat list (no chapters)
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {recipes.map((recipe) => {
+              const dietary = getDietary(recipe);
+              return (
+                <Link
+                  key={recipe.id}
+                  href={`/recipes/${recipe.id}`}
+                  className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
+                >
+                  {recipe.image ? (
+                    <div className="relative h-44 w-full overflow-hidden">
+                      <Image
+                        src={recipe.image}
+                        alt={recipe.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
+                      <span className="text-3xl opacity-30">🍽️</span>
                     </div>
                   )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                  <div className="p-4">
+                    <h2 className="font-serif text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
+                      {recipe.name}
+                    </h2>
+                    {recipe.servings && (
+                      <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                        {capitalize(recipe.servings)}
+                      </p>
+                    )}
+                    {dietary.length > 0 && (
+                      <div className="flex gap-1.5 mt-2">
+                        {dietary.slice(0, 2).map((tag: string) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </main>
     </div>
   );

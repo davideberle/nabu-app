@@ -3,7 +3,8 @@
   "name": "White Pizza",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Mietta Sartori"
+    "author": "Mietta Sartori",
+    "chapter": "Summer"
   },
   "intro": "Not all pizzas have a topping of tomatoes and cheese. In fact, the original street-food pizzas in Naples (from where the pizza comes) had neither. This is a rather refined pizza, very tasty and visually appealing, that makes a delicious change from the classic.",
   "ingredients": [
