@@ -117,23 +117,27 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
-// Cookbook cover images (extracted from EPUBs)
+// Cookbook cover images (extracted from EPUBs + Open Library)
 const COOKBOOK_COVERS: Record<string, string> = {
+  'Ottolenghi: The Cookbook': '/cookbooks/ottolenghi-the-cookbook.jpg',
+  'Jerusalem': '/cookbooks/jerusalem.jpg',
+  'Falastin': '/cookbooks/falastin.jpg',
   'Persiana': '/cookbooks/persiana.jpg',
   'The Curry Guy': '/cookbooks/the-curry-guy.jpg',
   'The Curry Guy Bible': '/cookbooks/the-curry-guy-bible.jpg',
+  'The Indian Vegan': '/cookbooks/the-indian-vegan.jpg',
   'Vietnamese Food Any Day': '/cookbooks/vietnamese-food-any-day.jpg',
+  'Afro-Vegan': '/cookbooks/afro-vegan.jpg',
   'Plentiful': '/cookbooks/plentiful.jpg',
   'The Vegan Korean': '/cookbooks/the-vegan-korean.jpg',
   'Black Rican Vegan': '/cookbooks/black-rican-vegan.jpg',
   'Brunch Cookbook': '/cookbooks/brunch-cookbook.jpg',
   'Four Seasons': '/cookbooks/four-seasons.jpg',
+  'The High-Protein Vegan Cookbook': '/cookbooks/the-high-protein-vegan-cookbook.jpg',
   'Land of Fish and Rice': '/cookbooks/land-of-fish-and-rice.jpg',
+  'Vegan Chocolate': '/cookbooks/vegan-chocolate.jpg',
   'The Authentic Greek Kitchen': '/cookbooks/the-authentic-greek-kitchen.jpg',
   'Zagami Family Cookbook': '/cookbooks/zagami-family-cookbook.jpg',
-  'Vegan Chocolate': '/cookbooks/vegan-chocolate.jpg',
-  'The Indian Vegan': '/cookbooks/the-indian-vegan.jpg',
-  'The High-Protein Vegan Cookbook': '/cookbooks/the-high-protein-vegan-cookbook.jpg',
 };
 
 // Get all unique cookbooks with counts
