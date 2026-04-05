@@ -3,9 +3,16 @@
   "name": "Pressure Cooker Tender Patties",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "2 cups",
+  "intro": "These patties are ready in no time with an electric pressure cooker and are super simple to make. There seems to be an infinite number of recipe possibilities for these little disks. Pictured in Polenta with Rich Mushroom Gravy (page 239).",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
+  },
   "ingredients": [
     {
       "item": "vital wheat gluten",
@@ -58,6 +65,46 @@
     {
       "item": "tomato sauce",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "plus 3 tablespoons vital wheat gluten",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "tamari, divided",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "red curry paste, divided",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "vegetable broth, divided",
+      "amount": "1½ cups"
     }
   ],
   "method": [
@@ -67,15 +114,21 @@
     "Place in an electric pressure cooker.",
     "Add 1½ cups water, 1½ cups vegetable broth, and the tomato sauce to a small bowl, stir, and then pour over the seitan cutlets in the pressure cooker. Close the lid, making sure the top knob is turned to sealing. Press Manual on the front of the pot. Push button to 4 (meaning 4 minutes). In a few seconds, the pressure cooker will make a click and start to build pressure. It will take about 15 minutes to build pressure and cook. Leave the cutlets in the pot to set. They will cook more as the pressure is naturally releasing. Don’t vent.",
     "After about an hour, go ahead and vent. It may already have cooled completely, but vent to make sure all of the pressure has been released and then open the lid.",
-    "Remove the cutlets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day and keep well in the freezer."
+    "Remove the cutlets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day and keep well in the freezer.",
+    "Add the gluten, flour, ginger, salt, garlic powder, and paprika to a large bowl.",
+    "Mix ¾ cup vegetable broth, 1 teaspoon tamari, and 2 teaspoons red curry paste in a small bowl. Pour the wet mixture into the dry ingredients.",
+    "Mix and then knead for about 2 to 3 minutes or until elastic. It’s a very wet dough but you will see it is still elastic. It should be mildly stretchy and pull back but still pliable. Pinch off pieces of seitan dough into very small balls, about 1 to 1½ inches in diameter. They will fatten up when cooking.",
+    "Place in an electric pressure cooker.",
+    "Add 1½ cups vegetable broth, 1½ cups water, and 2 teaspoons red curry paste to a bowl and stir well. Pour over the nuggets in the pressure cooker. Close the lid, make sure the top knob is turned to sealing. Press Manual on the front of the pot. Push button to 4 (meaning 4 minutes). The pressure cooker will make a click and start to build pressure. It will take about 15 minutes to build pressure and cook. Leave the nuggets in the pot to set. They will cook more as the pressure is naturally releasing. Don’t vent.",
+    "After about an hour, go ahead and vent. It may already have cooled completely, but vent to make sure the pressure has released and then open the lid.",
+    "Remove the nuggets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day. You can also freeze them."
   ],
+  "image": "/recipes/pressure-cooker-tender-patties.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 15
-  },
   "category": {
     "dish_type": [
       "main"

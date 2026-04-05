@@ -3,9 +3,16 @@
   "name": "Carrot Cake Two-Bite Balls",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Salads"
   },
-  "servings": "",
+  "servings": "16 balls",
+  "intro": "Carrot cake! I kid you not. Everything for a carrot cake is in here, all rolled up into perfect little balls. You can roll some in coconut and leave others plain. They are so pretty.",
+  "time": {
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "old-fashioned oats",
@@ -50,15 +57,182 @@
     {
       "item": "ground ginger",
       "amount": "½ tsp"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "bran flakes cereal",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mixed nuts, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried cherries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips, melted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "dates, pitted",
+      "amount": "16"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "vanilla protein powder",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "sunflower seed kernels, ground fine in a small food processor",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "3 cups"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "protein powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "almond meal",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "wheat germ",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pepitas",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "dried currants",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
     }
   ],
   "method": [
     "Add the oats, almond meal, pecans, ⅓ cup coconut, carrots, dates, and cocoa powder to a food processor. Mix on high until well processed. You may have to scrape down the edges a couple of times to make sure the dates aren’t clumping. Add the almond butter, cinnamon, nutmeg, and ginger. Mix again until well mixed. Scrape down again if needed.",
-    "Transfer to a flat surface and make sure all is blended well. Use your hands if necessary. Pinch off pieces of dough and roll into sixteen balls. Roll the balls in additional shredded coconut, if desired."
+    "Transfer to a flat surface and make sure all is blended well. Use your hands if necessary. Pinch off pieces of dough and roll into sixteen balls. Roll the balls in additional shredded coconut, if desired.",
+    "Line an 8-inch square baking dish with parchment paper and come up about 3 inches on opposite sides. This will act as a handle to remove the bars from the dish.",
+    "Add the oats, cereal, nuts, cherries, cranberries, and hempseed to a large bowl and mix well.",
+    "Mix the peanut butter and syrup together and pour into the large bowl. Mix well. Add the melted chocolate and mix again.",
+    "Press firmly into the prepared dish and into all corners. Let set in the refrigerator for 30 minutes.",
+    "Grab the “handles” of the parchment paper and lift out of the dish. Place on a cutting board and slice down the center. Turn and make three even cuts, which will give you eight long bars.",
+    "Line an 8-inch square baking dish with parchment paper and come up about 3 inches on opposite sides. This will act as a handle to remove the squares from the dish.",
+    "In a medium saucepan, melt the butter over medium-high heat. Add the sugar and vanilla. Mix the in oats and cook for 2 minutes. Add the hempseed and protein powder and mix well. Transfer half of the mixture into the prepared dish and press firmly and evenly into all edges and corners.",
+    "Place the chocolate and peanut butter in a small saucepan. Heat over low heat until chocolate is melted and all is well combined. Pour over the bottom layer in the prepared dish and smooth evenly all over the top. Crumble the remaining oat mixture over the top as evenly as possible and lightly press into the chocolate.",
+    "Refrigerate for at least 1 hour.",
+    "Grab the “handles” of the parchment paper and lift out of the dish. Place on a cutting sheet and slice into sixteen squares.",
+    "Mix the oats, almond meal, wheat germ, flaxseed meal, pepitas, hempseed, cinnamon, nutmeg, and currants together in a medium bowl.",
+    "Add the peanut butter, maple syrup, vanilla, and salt to the bowl of a stand mixer. Mix on medium speed until well combined. Pour the dry ingredients into the wet mixture. Mix on low until well combined.",
+    "Roll into thirty-two balls."
   ],
+  "image": "/recipes/carrot-cake-two-bite-balls.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
   "category": {
     "dish_type": [

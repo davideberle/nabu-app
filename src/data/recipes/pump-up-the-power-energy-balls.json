@@ -3,9 +3,15 @@
   "name": "Pump Up the Power Energy Balls",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Salads"
   },
-  "servings": "",
+  "servings": "32 balls",
+  "intro": "No-bake treats are so easy to make. Currants are readily available, and they seem to have been made to be combined with pepitas . . . and hempseed . . . and peanut butter . . .",
+  "time": {
+    "prep": "20 minutes",
+    "total": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "old-fashioned oats",
@@ -65,9 +71,11 @@
     "Add the peanut butter, maple syrup, vanilla, and salt to the bowl of a stand mixer. Mix on medium speed until well combined. Pour the dry ingredients into the wet mixture. Mix on low until well combined.",
     "Roll into thirty-two balls."
   ],
+  "image": "/recipes/pump-up-the-power-energy-balls.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
   "category": {
     "dish_type": [

@@ -3,9 +3,16 @@
   "name": "Broccoli Stir-Fry with Seitan and Cashews",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Main Courses"
   },
-  "servings": "",
+  "servings": "2 servings",
+  "intro": "A sweet and tangy sauce combined with veggies and cashews makes this an impressive dish. Serve over sticky jasmine rice for the perfect finish.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "jasmine rice",
@@ -50,6 +57,150 @@
     {
       "item": "raw cashews",
       "amount": "½ cup"
+    },
+    {
+      "item": "navy beans",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links (page 284)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "carrots, peeled and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "cloves garlic, finely diced",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce cans fire-roasted tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "cobs of corn, kernels cut from the cob",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "basil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hot sauce, such as Tabasco (omit if you don’t like spicy; you can put it on the table instead)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hoisin sauce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "soy sauce, divided",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cubed",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "cornstarch or potato starch",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "packaged organic udon noodles",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "plus 2 tablespoons vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "brown rice",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "low sodium vegetable broth",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "yellow onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "reen bell pepper, chopped",
+      "amount": "1 g"
+    },
+    {
+      "item": "15-ounce cans black beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "parsley",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "thyme",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -57,15 +208,27 @@
     "Meanwhile, add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 5 minutes. Remove from steamer and set aside.",
     "In a small bowl, mix together the tamari, ¼ cup plus 2 tablespoons water, vinegar, syrup, ginger, and garlic powder.",
     "Add 1 tablespoon sauce mixture to a large skillet. Turn the heat up to medium high and add bell peppers. Sauté for 5 minutes. Add the broccoli and cook for 5 minutes. Push the vegetables to the side and add cornstarch to the liquid. Leaving on medium-high heat, stir for 1 minute. Mix all together and add seitan nuggets and cashews. Cook to heat through for about 3 minutes.",
-    "Serve over the jasmine rice."
+    "Serve over the jasmine rice.",
+    "Put the beans in a large pot and cover with water. Swish your hand around in the water and pick out any beans that float or don’t look good. Drain the beans. Put the beans back into the large pot. Cover with water by about 4 inches above the beans. Let soak on the counter overnight.",
+    "Drain the beans and cover with 2 to 3 inches of fresh water. Cover and bring to a boil. Turn down the heat to medium low and simmer, partially covered, for about 1½ to 2 hours. Stir a couple of times during cooking time but make sure the temperature stays at a good simmer and the beans are covered with water. The beans are finished when you can squish one with your fingers.",
+    "When the beans are almost done, brown the seitan links on all sides. Remove from the pan and cut into about ¾-inch pieces.",
+    "Add the oil to a large skillet and heat to medium low. Add the chopped onion and carrots and sauté for 10 minutes. Add the garlic and cook for 1 more minute.",
+    "Drain the beans and return to the large pot. Add the tomatoes and cook for 10 minutes. It will be soupy. Add the corn, broth, basil, and hot sauce and bring to a boil. Turn down the heat and simmer another 10 minutes.",
+    "Mix the hoisin and 2 tablespoons soy sauce in a small bowl. Add the cubed tofu, toss, and let marinate for 30 minutes.",
+    "Place the cornstarch on a large plate. Remove the tofu from marinade and lay out on cornstarch, tossing to coat all sides.",
+    "Heat the oil over medium-high heat in a large skillet. Add the tofu to the hot oil and fry on all sides. Set aside.",
+    "Fill a large saucepan with water and cover. Bring to a boil and add the udon. Cook for 5 minutes and drain. Set aside.",
+    "Add the broth and peanut butter to the same saucepan and bring to a boil. Turn down the heat and cook for 2 minutes, then add the udon back into the pan. Coat the udon with the sauce. Add the spinach to the pot and stir into the sauce and noodles. Continue cooking, on low, for about 3 minutes until the spinach wilts.",
+    "Remove from the heat and divide between two bowls. Place half of the tofu on top of each bowl of udon. Drizzle the remaining hoisin mixture over the top.",
+    "Cook the brown rice by any method you choose. I use a rice cooker. Cook the rice with vegetable broth for this recipe.",
+    "In a large skillet, heat the oil to medium and then add the onion and bell pepper. Sauté until the onion becomes transparent, about 10 minutes. Add all the remaining ingredients (except the rice) to the large skillet with the onion and bell pepper. Cook for 10 minutes. Add the rice and heat through."
   ],
+  "image": "/recipes/broccoli-stir-fry-with-seitan-and-cashews.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 35
-  },
   "category": {
     "dish_type": [
       "main"

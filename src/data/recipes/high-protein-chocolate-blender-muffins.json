@@ -3,9 +3,16 @@
   "name": "High-Protein Chocolate Blender Muffins",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Breakfast"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "These moist and chocolaty muffins will leave you feeling guilt-free. Blend, pour, and bake for an easy road to chocolate protein.",
+  "time": {
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
+  },
   "ingredients": [
     {
       "item": "15-ounce can black beans, drained and rinsed",
@@ -62,6 +69,670 @@
     {
       "item": "raw shelled hempseed",
       "amount": "¼ cup"
+    },
+    {
+      "item": "ground chia seeds or chia seeds, divided",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "plus 2 tablespoons dairy-free milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "strawberries, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ground chia seeds or chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vanilla protein powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dates, chopped small",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "black salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Pinch of turmeric",
+      "amount": ""
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "slices sprouted grain bread",
+      "amount": "2"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "diced red bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links, crumbled (page 284)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "arge sprouted grain tortillas",
+      "amount": "2 l"
+    },
+    {
+      "item": "frozen banana, 4 slices reserved for topping",
+      "amount": "1"
+    },
+    {
+      "item": "almond milk or other dairy-free milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "banana slices (from above)",
+      "amount": "4"
+    },
+    {
+      "item": "strawberry, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "old-fashioned oats (use gluten-free if desired)",
+      "amount": "7 cups"
+    },
+    {
+      "item": "shredded coconut",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "1 cup"
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "plus 1 tablespoon extra virgin olive oil, divided",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "maple syrup, for serving",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "frozen blueberries, defrosted, divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dates",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "strawberries (more for garnish, optional)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaved chocolate, for garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "slices sprouted grain bread",
+      "amount": "2"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "banana, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "bananas, mashed",
+      "amount": "2"
+    },
+    {
+      "item": "creamy peanut butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "unsweetened applesauce",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "pitted dates, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and crumbled",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links, sliced thick (page 276)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "black salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "creamy buckwheat cereal",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pecans",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "peeled and sliced apples (I like them kind of thick)",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free butter, melted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "hempseed, toasted in shell",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pecans, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup"
+    },
+    {
+      "item": "wheat germ",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oat bran",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dates, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pepitas",
+      "amount": "½ cup"
+    },
+    {
+      "item": "wheat bran",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond milk or other dairy-free milk",
+      "amount": "7 cups"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "diced russet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced sweet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "black salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "thyme",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links, sliced (page 276)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links (page 284)",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "broccoli florets",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black salt",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground black pepper, divided",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "15-ounce can pinto beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "15-ounce can enchilada sauce",
+      "amount": "1"
+    },
+    {
+      "item": "flour tortillas, 8 to 10 inches in diameter",
+      "amount": "6"
+    },
+    {
+      "item": "Black olives, sliced, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Green onions, sliced, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, chopped, for garnish",
+      "amount": ""
     }
   ],
   "method": [
@@ -69,15 +740,68 @@
     "Line a twelve-cup muffin tin with paper liners.",
     "Place all the ingredients in a blender except the chocolate chips and the hempseed. Blend until the mixture is as smooth as possible. Add the chocolate chips and hempseed and blend 5 seconds or until dispersed.",
     "Pour into the muffin cups, filling at least three-quarters full. Bake for 20 minutes. Cool for 5 minutes, and then move the paper cups to a wire rack to cool completely.",
-    "Store in the refrigerator for up to 3 days or freeze up to 6 months."
+    "Store in the refrigerator for up to 3 days or freeze up to 6 months.",
+    "Preheat the oven to 375°F.",
+    "Grease the inside of a six-cup muffin tin and set aside.",
+    "Mix 1 tablespoon ground chia seeds together with 3 tablespoons water and set aside.",
+    "Using an electric mixer, beat together the butter and sugar in a large bowl until light and fluffy, about 3 minutes. Add the chia seed mixture and mix again. Add the milk and lemon juice. Mix well.",
+    "Add the flour, baking powder, baking soda, salt, hempseed, and the remaining tablespoon ground chia seeds to a medium bowl. Mix. Add the flour mixture to the wet mixture and beat until just combined. It will be a sticky batter. Fold in the strawberries.",
+    "Divide the batter between the muffin cups. Fill at least three-quarters full, even if you’re short on filling for one cup. Bake for 25 minutes or until a toothpick inserted into the center comes out clean.",
+    "Rinse the quinoa and place in a small saucepan with a lid. Cover with ½ cup water and bring to a boil over medium-high heat. Cover and turn down to low. Let cook for 20 minutes and then remove from the heat. Take off the lid and let cool.",
+    "Preheat the oven to 450°F. Line six muffin cups with paper liners.",
+    "Mix the ground chia seeds with ¼ cup plus 2 tablespoons water and set aside.",
+    "Add the almond flour, protein powder, and salt to a small bowl. Mix well. Add the dates and mix to coat. Set aside.",
+    "Put the coconut oil in a medium bowl. If it is not liquid already, put in the microwave and heat for 10 to 20 seconds or until melted. Remove from microwave and add the maple syrup. Stir well. When cool, add the chia seed mixture, vanilla extract, coconut, almond flour mixture, cooked quinoa, and raisins. Mix well.",
+    "Divide the batter between the six muffin cups and bake 12 to 15 minutes, until a toothpick inserted in the center comes out clean.",
+    "Add the butter to a skillet and heat over medium-high heat. Crumble tofu into the skillet. Sprinkle with the salt, onion powder, and turmeric and sauté for about 4 minutes, making sure the tofu is crumbled small.",
+    "In a small bowl, mash the avocado with the pepper and lime juice.",
+    "Toast the bread. Spread half of the prepared avocado on each piece of toast. Top with half of the prepared tofu on each piece of toast. Slice the toasts in half at an angle.",
+    "Melt the butter in a large skillet over medium-high heat. Add the bell pepper and onion and sauté for 10 minutes. Crumble in the tofu along with the prepared seitan. Sauté for 5 minutes more and add the taco seasoning and salt. Sprinkle in flaxseed meal and mix well.",
+    "Spoon half the mixture into each tortilla and roll burrito-style. Cut in half and serve.",
+    "Add the smoothie bowl ingredients to a blender and blend until smooth.",
+    "Pour into a bowl and garnish with the toppings.",
+    "Preheat the oven to 300°F.",
+    "Mix all the ingredients together except for the raisins. Spread out in a large baking pan.",
+    "Bake for 40 minutes. Take out of the oven every 10 minutes and stir. Return to the oven.",
+    "After 30 minutes, add raisins and stir. Bake for 10 more minutes. Take out of the oven and let cool.",
+    "Pack in airtight container. Will keep for 4 weeks.",
+    "Mix the flaxseed meal with 6 tablespoons water and set aside.",
+    "Add all the ingredients except the blueberries and 1 tablespoon oil to a food processor and blend well. Use the quick pulse button to blend in ¼ cup of the blueberries.",
+    "Heat the remaining oil in a skillet and add ¼ cup of the pancake batter to the center of the pan. When bubbling on one side, flip and cook until golden brown. Continue until all the batter is gone.",
+    "Serve with maple syrup and remaining ¼ cup blueberries sprinkled on top.",
+    "Add the milk and dates to a blender. Blend until smooth. Add the strawberries, cocoa powder, vanilla, ground chia seeds, hempseed, and maple syrup. Blend well. Pour into two bowls and refrigerate for at least 4 hours.",
+    "Garnish with shaved chocolate and pieces of strawberry, if desired.",
+    "Preheat the oven to 350°F.",
+    "Line a baking sheet with parchment paper and set aside.",
+    "Add the mashed banana and peanut butter to a large bowl and mix well. Add the applesauce, flour, hempseed, and vanilla. Mix well. Stir in the oatmeal and dates.",
+    "Drop cookie dough, 1 heaping tablespoon at a time and 2 inches apart, onto the prepared baking sheet. Flatten with the back of a fork. Bake cookies for 25 minutes.",
+    "Remove from the oven and let the cookies cool 5 minutes, then move to a cooling rack.",
+    "Heat the butter over medium-high heat in a large skillet. Add the onion, mushrooms, tofu, and seitan links. Sauté 15 minutes.",
+    "Add the black beans, nutritional yeast, and all the spices and seasonings. Heat through 5 minutes and serve.",
+    "Bring 3 cups of water to a boil in a medium saucepan. Add the cereal, cinnamon, and salt. Reduce the heat to medium low and cover. Cook for 8 minutes, stirring occasionally, until all the water is absorbed. Stir in peanut butter and coconut cream.",
+    "Serve in two bowls and garnish with the cranberries, pecans, hempseed, and maple syrup.",
+    "Place all the dry ingredients in a large mixing bowl. Mix well. Pour in the milk and mix well again.",
+    "Cover and place in the refrigerator to sit overnight.",
+    "The muesli is ready to eat in the morning and keeps for 4 to 5 days.",
+    "In a very large skillet, either 12 inches wide or very deep, heat the oil over medium-high heat. Add the russet potatoes and cook for 10 minutes, flipping once. Add the sweet potatoes and onion; stir and cook 5 more minutes.",
+    "Push the potatoes and onions to the side and crumble the tofu into the pan. Add all of the spices and mix with the tofu. Cook 2 to 3 minutes or until you see that the turmeric is dispersed well and the tofu has turned a golden color.",
+    "Add the links and nutritional yeast and mix the whole skillet of ingredients together. Cook 2 to 3 minutes or until the links are heated through. Taste and season with more salt and pepper, if desired.",
+    "Place the seitan pieces in a food processor and pulse until lightly crumbled.",
+    "Add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 10 minutes. Remove from steamer and set aside.",
+    "Heat the oil in a large skillet over medium-high heat. Crumble the tofu into the skillet, using your hands. Stir and cook for 3 minutes, breaking up any pieces that are still too large. Add the nutritional yeast, black salt, ½ teaspoon pepper, turmeric, and paprika. Stir to combine. Add the seitan, beans, broccoli, salt, and ¼ teaspoon pepper. Stir to combine. Remove from the heat and set aside.",
+    "Melt the butter in a medium saucepan over medium-high heat. Add the flour and stir, cooking for 1 minute. Add the milk and bring to a low boil. Stir occasionally to keep the lumps out of the sauce. Turn the heat down to medium and add nutritional yeast and salt. Stir and continue to cook to let thicken a bit. Remove from the heat and set aside.",
+    "Preheat the oven to 350°F.",
+    "In a 9-inch square or 8-by-10-inch casserole dish, add 3 tablespoons of the enchilada sauce. Spread over the bottom.",
+    "Divide the filling in the skillet into six portions. You can eyeball this or make creases in the filling in a pie shape.",
+    "Lay out a tortilla and lightly spread with enchilada sauce. Fill with a sixth of the tofu filling. Roll up and place in the casserole dish. Continue until all six tortillas have been filled and rolled. Pour the remaining enchilada sauce over the top of the rolled tortillas.",
+    "Heat the white cheese sauce again if it has thickened, so that you can spoon it over the top of the enchilada sauce. Cover and bake for 30 minutes."
   ],
+  "image": "/recipes/high-protein-chocolate-blender-muffins.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 25
-  },
   "category": {
     "dish_type": [
       "dessert"

@@ -3,9 +3,16 @@
   "name": "Maple-Glazed Mixed Nuts",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Appetizers & Snacks"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "This easy-to-make protein snack only takes minutes. The result is maple-sweet candied nuts that would be a gift of love for anyone.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "walnuts",
@@ -30,13 +37,12 @@
     "Remove from oven and flip with a spatula. They can overlap some at this point. Put back in the oven and bake another 6 minutes or so. Watch closely. If they’re in too long, they start to burn quickly.",
     "Take the baking sheet out of the oven, flip the nuts again, and let cool completely. Eat right away or pack in an airtight container. These nuts will keep in your pantry for quite a few weeks and will keep in the fridge about 2 to 3 months. The freezer will store them for 6 months."
   ],
+  "image": "/recipes/maple-glazed-mixed-nuts.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 13
-  },
   "category": {
     "dish_type": [
       "main"

@@ -3,9 +3,16 @@
   "name": "Pressure Cooker Thai Nuggets",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "4 servings",
+  "intro": "Small unformed nuggets with delectable flavors come from your pressure cooker with this recipe. They have an Asian flair and can be added to just about any recipe. Pictured in Broccoli Stir-Fry with Seitan and Cashews (page 267).",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
+  },
   "ingredients": [
     {
       "item": "plus 3 tablespoons vital wheat gluten",
@@ -57,13 +64,12 @@
     "After about an hour, go ahead and vent. It may already have cooled completely, but vent to make sure the pressure has released and then open the lid.",
     "Remove the nuggets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day. You can also freeze them."
   ],
+  "image": "/recipes/pressure-cooker-thai-nuggets.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 15
-  },
   "category": {
     "dish_type": [
       "main"

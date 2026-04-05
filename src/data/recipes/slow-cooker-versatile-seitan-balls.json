@@ -3,9 +3,16 @@
   "name": "Slow Cooker Versatile Seitan Balls",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "3 cups or 34 balls",
+  "intro": "These little round balls add so much flavor and texture to your hardy dishes. They make a fantastic foundation for marinara sauce submarine sandwiches, too. Pictured in Slow Cooker Seitan Bourguignon (page 226).",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
+  },
   "ingredients": [
     {
       "item": "vital wheat gluten",
@@ -62,6 +69,210 @@
     {
       "item": "vegetable broth, divided",
       "amount": "1½ cups"
+    },
+    {
+      "item": "vital wheat gluten",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "mushroom powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground sage",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vital wheat gluten",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "plus 2 tablespoons chickpea flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "plus 2 tablespoons vital wheat gluten",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chipotle hot sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "vital wheat gluten",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried basil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "poultry seasoning",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "vegetable broth, divided",
+      "amount": "2¼ cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "plus 3 tablespoons vital wheat gluten",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "tamari, divided",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "red curry paste, divided",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "vegetable broth, divided",
+      "amount": "1½ cups"
     }
   ],
   "method": [
@@ -69,15 +280,44 @@
     "In a small bowl, add ¼ cup tomato sauce, ¼ cup water, liquid smoke, and ½ cup vegetable broth. Mix well.",
     "Make a well in the center of the dry ingredients and pour in the tomato sauce mixture. Mix well and start to knead. Knead for 1 minute or until the dough becomes mildly elastic. You will see the dough slightly pull back as you are kneading and it will be a bit sticky. Pour remaining ¼ cup tomato sauce, 1 cup vegetable broth, and 3 cups water into the slow cooker. Stir.",
     "Tear off small chunks of the dough, squeeze into a round shape, and drop into the liquid in the slow cooker. There will be forty-four balls. You can also make seventeen larger balls and cut them after cooking and cooling. Or make two logs and cut into desired shapes. Cover and cook on low for 4 to 6 hours. They will grow in size as they cook. Check at 4 hours and see if you like the texture. They will become firmer as they sit in the refrigerator.",
-    "Remove from the pot and let cool. Store in the refrigerator for up to 5 days or freeze for up to 4 months."
+    "Remove from the pot and let cool. Store in the refrigerator for up to 5 days or freeze for up to 4 months.",
+    "Add the gluten, flour, mushroom powder, nutritional yeast, sage, salt, and garlic and onion powders to a large bowl.",
+    "Mix tomato sauce, tomato paste, and ¼ cup plus 1 tablespoon water in a small bowl. Pour the wet mixture into the dry ingredients.",
+    "Mix and then knead for about 2 to 3 minutes or until mildly elastic. You will see the dough slightly pull back as you are kneading and it will be a bit sticky. Shape the seitan into a log.",
+    "Pour 1 cup water, the vegetable broth, and tomato sauce into a 2½- to 3-quart slow cooker. Place the log in the slow cooker or roll loosely in cheesecloth and tie each end with cotton string. It does expand when cooking, so you shouldn’t roll it tight. If you don’t care that the outside is a bit lumpier after being cooked, then don’t bother to roll in cheesecloth. Cover slow cooker and turn to low. Cook on low for 6 hours.",
+    "Remove the log from the liquid and place aside to cool. Store in the refrigerator for up to 5 days. It can also be frozen for 4 months.",
+    "Add the gluten, flour, and garlic and onion powders to a large bowl.",
+    "Add the broth, tomato sauce, tamari, liquid smoke, and oil to a small bowl and mix well. Pour the liquid into the dry ingredients and mix. Knead for 2 minutes until elastic. You will see it pull back into a rounder shape as you knead. This is a firm dough and will not double in size while cooking.",
+    "Add 5 cups water to a saucepan. Bring to a boil. Place a steamer basket inside the pan and turn down the heat to simmer.",
+    "Use a pastry cutter to slice off irregular pieces. You can squeeze them into a ball, as best you can, or leave chunky. You can also steam as one log and cut into chunks after steaming and cooling.",
+    "Steam for 40 minutes.",
+    "Remove the seitan to cool and store in the refrigerator for up to 5 days or in the freezer for up to 4 months.",
+    "Add the gluten, flour, garlic and onion powders, and taco seasoning to a large bowl.",
+    "Mix ¼ cup water, the tomato sauce, and hot sauce in a small bowl and mix well. Pour the liquid mixture into the dry ingredients and mix. Knead for 2 minutes until elastic. You will see it pull back into a rounder shape as you knead. This is a firm dough and will not double in size as cooking.",
+    "Cut into four equal pieces and roll each one into a log shape.",
+    "Add 5 cups water to a saucepan. Bring to a boil. Place a steamer basket inside the pan and turn down the heat. Add seitan links to the steamer basket and cover. Steam for 40 minutes.",
+    "Remove the seitan to cool and store in the refrigerator for up to 5 days or in the freezer for up to 4 months.",
+    "Add the gluten, flour, nutritional yeast, basil, salt, poultry seasoning, garlic and onion powders, and paprika to a large bowl.",
+    "Mix ¾ cup vegetable broth, oil, and tamari in a small bowl. Pour the wet mixture into the dry ingredients.",
+    "Mix and then knead for about 2 to 3 minutes or until elastic. It should be stretchy and pull back but still pliable. Divide the dough into eight pieces. Use your fingers to squeeze and work around into a patty measuring about 3 to 4 inches in diameter.",
+    "Place in an electric pressure cooker.",
+    "Add 1½ cups water, 1½ cups vegetable broth, and the tomato sauce to a small bowl, stir, and then pour over the seitan cutlets in the pressure cooker. Close the lid, making sure the top knob is turned to sealing. Press Manual on the front of the pot. Push button to 4 (meaning 4 minutes). In a few seconds, the pressure cooker will make a click and start to build pressure. It will take about 15 minutes to build pressure and cook. Leave the cutlets in the pot to set. They will cook more as the pressure is naturally releasing. Don’t vent.",
+    "After about an hour, go ahead and vent. It may already have cooled completely, but vent to make sure all of the pressure has been released and then open the lid.",
+    "Remove the cutlets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day and keep well in the freezer.",
+    "Add the gluten, flour, ginger, salt, garlic powder, and paprika to a large bowl.",
+    "Mix ¾ cup vegetable broth, 1 teaspoon tamari, and 2 teaspoons red curry paste in a small bowl. Pour the wet mixture into the dry ingredients.",
+    "Mix and then knead for about 2 to 3 minutes or until elastic. It’s a very wet dough but you will see it is still elastic. It should be mildly stretchy and pull back but still pliable. Pinch off pieces of seitan dough into very small balls, about 1 to 1½ inches in diameter. They will fatten up when cooking.",
+    "Place in an electric pressure cooker.",
+    "Add 1½ cups vegetable broth, 1½ cups water, and 2 teaspoons red curry paste to a bowl and stir well. Pour over the nuggets in the pressure cooker. Close the lid, make sure the top knob is turned to sealing. Press Manual on the front of the pot. Push button to 4 (meaning 4 minutes). The pressure cooker will make a click and start to build pressure. It will take about 15 minutes to build pressure and cook. Leave the nuggets in the pot to set. They will cook more as the pressure is naturally releasing. Don’t vent.",
+    "After about an hour, go ahead and vent. It may already have cooled completely, but vent to make sure the pressure has released and then open the lid.",
+    "Remove the nuggets from the liquid and set aside to cool. You can eat them right away, add to a recipe, or keep in the fridge overnight. They are great the next day. You can also freeze them."
   ],
+  "image": "/recipes/slow-cooker-versatile-seitan-balls.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 180
-  },
   "category": {
     "dish_type": [
       "main"

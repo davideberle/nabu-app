@@ -3,9 +3,16 @@
   "name": "Acadian Black Beans and Rice",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Main Courses"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "Here’s an updated version of that Southern classic, red beans and rice. This version is made with a variety of spices popular in Cajun country.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "brown rice",
@@ -24,8 +31,8 @@
       "amount": "½"
     },
     {
-      "item": "green bell pepper, chopped",
-      "amount": "1"
+      "item": "reen bell pepper, chopped",
+      "amount": "1 g"
     },
     {
       "item": "15-ounce cans black beans, drained and rinsed",
@@ -76,13 +83,12 @@
     "Cook the brown rice by any method you choose. I use a rice cooker. Cook the rice with vegetable broth for this recipe.",
     "In a large skillet, heat the oil to medium and then add the onion and bell pepper. Sauté until the onion becomes transparent, about 10 minutes. Add all the remaining ingredients (except the rice) to the large skillet with the onion and bell pepper. Cook for 10 minutes. Add the rice and heat through."
   ],
+  "image": "/recipes/acadian-black-beans-and-rice.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 20
-  },
   "category": {
     "dish_type": [
       "side"

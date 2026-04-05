@@ -3,9 +3,16 @@
   "name": "Sprouted Grain Spicy Seitan Sandwich",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Soups & Stews"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "This super simple sandwich stars tender patties from an Instant Pot or pressure cooker. Premake the seitan and keep in the fridge or freezer for a super fast lunch.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
+  },
   "ingredients": [
     {
       "item": "coconut oil",
@@ -36,9 +43,11 @@
     "Heat the oil in a large skillet over medium-high heat and fry the patties until just golden on each side.",
     "While the patties are in the skillet, toast the English muffins. Layer the toast with mayo, mustard, avocado, patty, and onion."
   ],
+  "image": "/recipes/sprouted-grain-spicy-seitan-sandwich.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
   "category": {
     "dish_type": [

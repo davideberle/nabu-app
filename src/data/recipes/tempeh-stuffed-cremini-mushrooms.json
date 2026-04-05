@@ -3,9 +3,16 @@
   "name": "Tempeh Stuffed Cremini Mushrooms",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Appetizers & Snacks"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "Here’s a twist on stuffed mushrooms. There’s no bread or panko in the filling, just lots of flavor along with rice and tempeh.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "cremini mushrooms",
@@ -34,21 +41,91 @@
     {
       "item": "tamari",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen edamame",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained (save the liquid to use as aquafaba) and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "peanuts",
+      "amount": "3 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "powdered garlic",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pecans",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cashews",
+      "amount": "1 cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1½ cups"
     }
   ],
   "method": [
     "Remove stems from the mushrooms and set the caps aside. Finely chop the stems and set aside.",
     "Heat 3 tablespoons of water in a medium skillet. Add the chopped mushroom stems and onion. Sauté 10 to 15 minutes or until onion is translucent. Add the tempeh and cook another 5 minutes. Add onion powder, cayenne pepper, rice, and tamari. Cook 2 minutes, stirring occasionally.",
     "Preheat the oven to 350°F.",
-    "Stuff mushroom caps and place on baking sheet. Bake for 20 minutes."
+    "Stuff mushroom caps and place on baking sheet. Bake for 20 minutes.",
+    "Preheat the oven to 400°F.",
+    "Cook the edamame according to directions on package.",
+    "Spread the chickpeas and cooked edamame on a baking sheet. Bake for 20 minutes.",
+    "Place the taco seasoning in a medium bowl.",
+    "Remove the edamame and chickpeas from oven and toss with the aquafaba. Add to the bowl of taco seasoning and coat well.",
+    "Return to oven and bake another 10 minutes.",
+    "You can eat these as soon as they’ve cooled enough to handle, but let them cool in the oven for at least 2 hours to overnight before packing away. Store in an airtight container. They will keep for 2 weeks.",
+    "Preheat the oven to 325°F.",
+    "Mix the nuts and maple syrup together in a medium bowl. Make sure that each nut has been coated well. Spread out on a baking sheet so they are in one layer but still close to each other. Touching is okay. Bake for 7 minutes.",
+    "Remove from oven and flip with a spatula. They can overlap some at this point. Put back in the oven and bake another 6 minutes or so. Watch closely. If they’re in too long, they start to burn quickly.",
+    "Take the baking sheet out of the oven, flip the nuts again, and let cool completely. Eat right away or pack in an airtight container. These nuts will keep in your pantry for quite a few weeks and will keep in the fridge about 2 to 3 months. The freezer will store them for 6 months."
   ],
+  "image": "/recipes/tempeh-stuffed-cremini-mushrooms.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 40
-  },
   "category": {
     "dish_type": [
       "main"

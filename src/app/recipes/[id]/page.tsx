@@ -66,25 +66,38 @@ function getCuisineFromCookbook(cookbook?: string): string | null {
   return map[cookbook] || null;
 }
 
-// Format cooking time
+// Format cooking time - round to nice intervals
 function formatTime(time?: { prep?: string; cook?: string; total?: string | number }): string | null {
   if (!time) return null;
   
+  let totalMins = 0;
+  
   // If we have total, use that
-  if (time.total) return typeof time.total === 'number' ? `${time.total} min` : time.total;
-  
-  // Try to extract numbers from prep/cook strings
-  const prepMatch = time.prep?.match(/(\d+)/);
-  const cookMatch = time.cook?.match(/(\d+)/);
-  
-  const prep = prepMatch ? parseInt(prepMatch[1]) : 0;
-  const cook = cookMatch ? parseInt(cookMatch[1]) : 0;
-  
-  if (prep + cook > 0) {
-    return `${prep + cook} min`;
+  if (time.total) {
+    if (typeof time.total === 'number') {
+      totalMins = time.total;
+    } else {
+      const match = time.total.match(/(\d+)/);
+      if (match) totalMins = parseInt(match[1]);
+    }
+  } else {
+    // Try to extract numbers from prep/cook strings
+    const prepMatch = time.prep?.match(/(\d+)/);
+    const cookMatch = time.cook?.match(/(\d+)/);
+    const prep = prepMatch ? parseInt(prepMatch[1]) : 0;
+    const cook = cookMatch ? parseInt(cookMatch[1]) : 0;
+    totalMins = prep + cook;
   }
   
-  return null;
+  if (totalMins === 0) return null;
+  
+  // Round to nice intervals
+  if (totalMins <= 15) return `${Math.round(totalMins / 5) * 5} min`;
+  if (totalMins <= 30) return `${Math.round(totalMins / 5) * 5} min`;
+  if (totalMins <= 60) return `${Math.round(totalMins / 10) * 10} min`;
+  if (totalMins < 90) return '1 hr';
+  if (totalMins < 120) return '1.5 hrs';
+  return `${Math.round(totalMins / 60)} hrs`;
 }
 
 export default async function RecipePage({
@@ -169,34 +182,38 @@ export default async function RecipePage({
               {recipe.name}
             </h1>
             
-            {/* Dish type tags */}
-            {recipe.category?.dish_type && (
-            <div className="flex gap-3 mt-5">
-              {recipe.category.dish_type.map((type) => (
+            {/* Info pills */}
+            <div className="flex flex-wrap gap-2 mt-5">
+              {/* Dish type */}
+              {recipe.category?.dish_type?.map((type) => (
                 <span
                   key={type}
-                  className="text-xs tracking-wide text-stone-500 dark:text-stone-400"
+                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
                 >
                   {capitalize(type)}
                 </span>
               ))}
-            </div>
-            )}
-            <div className="flex gap-3 mt-2 flex-wrap">
-              {recipe.servings && (
-              <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
-                {capitalize(recipe.servings)}
-              </span>
-              )}
+              
+              {/* Cooking time */}
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {formatTime(recipe.time as any) && (
-              <>
-              <span className="text-stone-300 dark:text-stone-600">·</span>
-              <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                ⏱ {formatTime(recipe.time as any)}
-              </span>
-              </>
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                  {formatTime(recipe.time as any)}
+                </span>
+              )}
+              
+              {/* Servings */}
+              {recipe.servings && (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {capitalize(recipe.servings)}
+                </span>
               )}
             </div>
           </header>

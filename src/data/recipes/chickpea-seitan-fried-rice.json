@@ -3,9 +3,16 @@
   "name": "Chickpea Seitan Fried Rice",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Main Courses"
   },
-  "servings": "",
+  "servings": "2 servings",
+  "intro": "You won’t break a sweat over this recipe. A little bit of preparation and heating in a skillet brings all the flavors together in no time.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "jasmine rice",
@@ -46,6 +53,386 @@
     {
       "item": "Green onions, sliced, for garnish",
       "amount": ""
+    },
+    {
+      "item": "lentils",
+      "amount": "1 pound"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "reen bell pepper, diced",
+      "amount": "1 g"
+    },
+    {
+      "item": "carrots, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Roma tomatoes, diced",
+      "amount": "3"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Slow Cooker Versatile Seitan Balls, cubed (page 279)",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce cans diced tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "salsa",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "15-ounce cans black beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "brown rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "corn, fresh, frozen, or canned",
+      "amount": "½ cup"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chipotle peppers in adobo sauce, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "lentils",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole wheat tortillas",
+      "amount": "12"
+    },
+    {
+      "item": "Additional toppings, such as more salsa, avocado or guacamole, and black olives",
+      "amount": ""
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sweet potato, peeled and diced",
+      "amount": "1"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "diced red bell pepper",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets (page 283)",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "baby spinach, torn small",
+      "amount": "2 cups"
+    },
+    {
+      "item": "whole wheat or sprouted grain tortillas",
+      "amount": "6"
+    },
+    {
+      "item": "rotelle pasta",
+      "amount": "3 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets (page 283), cut into bite-size pieces if necessary",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce can diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Scallions, for garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "jasmine rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "broccoli, stems peeled and diced, florets cut into bite-size pieces",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tamari",
+      "amount": "½ cup"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "red bell pepper, diced",
+      "amount": "1"
+    },
+    {
+      "item": "cornstarch or potato starch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Pressure Cooker Thai Nuggets (page 288)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "raw cashews",
+      "amount": "½ cup"
+    },
+    {
+      "item": "navy beans",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links (page 284)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "carrots, peeled and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "cloves garlic, finely diced",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce cans fire-roasted tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "cobs of corn, kernels cut from the cob",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "basil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hot sauce, such as Tabasco (omit if you don’t like spicy; you can put it on the table instead)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hoisin sauce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "soy sauce, divided",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cubed",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "cornstarch or potato starch",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "packaged organic udon noodles",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "plus 2 tablespoons vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "brown rice",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "low sodium vegetable broth",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "yellow onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "reen bell pepper, chopped",
+      "amount": "1 g"
+    },
+    {
+      "item": "15-ounce cans black beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "parsley",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "thyme",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -54,15 +441,44 @@
     "Add the chickpeas to the food processor and pulse them to make small pieces, about three or four pulses.",
     "Mix the tamari, maple syrup, and ginger in a small bowl and set aside.",
     "In a large skillet, add the oil and heat over medium-high heat. Add the carrots and fry, flipping with a spatula, for about 5 to 10 minutes. Turn down the heat if necessary to keep the carrots from burning. Add the garlic and stir; cook for 1 minute. Add the rice, prepared chickpeas, and seitan and continue to sauté until there is some browning on the seitan. Add the sauce mixture and continue stirring and flipping with a spatula to incorporate all the sauce and to slightly cook it.",
-    "Serve garnished with the sliced green onions."
+    "Serve garnished with the sliced green onions.",
+    "Place the lentils and bay leaf in a large saucepan and cook according to package directions.",
+    "While the lentils are cooking, heat the oil over medium-high heat in a very large skillet. Add the onions and bell pepper and sauté for 10 minutes. Add the remaining ingredients and sauté for 5 minutes. Add the lentils, stir, and cook for 5 minutes to heat through.",
+    "Add the tomatoes, salsa, beans, rice, corn, taco seasoning, cumin, salt, chipotles, and broth to a slow cooker. Stir and cover. Cook on low for 6 to 8 hours or on high for 3 to 4 hours.",
+    "Add the lentils for the last 40 minutes of cooking. Continue cooking until the lentils are tender. The rice will be tender and most of the liquid will be absorbed. This is the filling.",
+    "Lay out the tortillas and place about ⅓ to ½ cup (for a very large burrito) of the filling on each tortilla. Spread the filling down through the center of the tortilla. Fold each end about 1½ inches over the point edge of the beans. Then roll up the tortilla along the long edge. If you have a certain technique that you want to use on these, go right ahead.",
+    "Stack up and serve with more salsa, avocado or guacamole, and black olives.",
+    "Heat the oil in a large skillet over medium-high heat. Add the sweet potato, mushrooms, onion, and bell pepper. Sauté for 15 minutes. Add the seitan, chili powder, garlic powder, and cumin, and cook for 5 more minutes. Add the spinach and cook just a minute or so until wilted.",
+    "If the tortillas are stiff, such as sprouted grain, then you can warm them in a microwave for 10 to 15 seconds. This will make them easier to roll.",
+    "Spoon about 1 cup of sweet potato mixture down the center of each tortilla. Roll up. Cut in half for easier handling.",
+    "Cook rotelle according to directions on the package.",
+    "Meanwhile, heat the oil in a large skillet over medium-high heat. Add the onion and seitan and sauté for 10 minutes until the onion is translucent. Add the garlic and cook for another minute. Add the diced tomatoes, Italian seasoning, salt, and pepper. Raise to a boil and then turn down and simmer for 5 minutes. Add the cooked rotelle. Heat through for 5 minutes.",
+    "If you’d like, garnish with the scallions.",
+    "Add the rice to a medium saucepan and add 2 cups water. Bring to a boil, cover, turn down heat to low, and cook for 20 minutes or until water is absorbed and rice is tender.",
+    "Meanwhile, add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 5 minutes. Remove from steamer and set aside.",
+    "In a small bowl, mix together the tamari, ¼ cup plus 2 tablespoons water, vinegar, syrup, ginger, and garlic powder.",
+    "Add 1 tablespoon sauce mixture to a large skillet. Turn the heat up to medium high and add bell peppers. Sauté for 5 minutes. Add the broccoli and cook for 5 minutes. Push the vegetables to the side and add cornstarch to the liquid. Leaving on medium-high heat, stir for 1 minute. Mix all together and add seitan nuggets and cashews. Cook to heat through for about 3 minutes.",
+    "Serve over the jasmine rice.",
+    "Put the beans in a large pot and cover with water. Swish your hand around in the water and pick out any beans that float or don’t look good. Drain the beans. Put the beans back into the large pot. Cover with water by about 4 inches above the beans. Let soak on the counter overnight.",
+    "Drain the beans and cover with 2 to 3 inches of fresh water. Cover and bring to a boil. Turn down the heat to medium low and simmer, partially covered, for about 1½ to 2 hours. Stir a couple of times during cooking time but make sure the temperature stays at a good simmer and the beans are covered with water. The beans are finished when you can squish one with your fingers.",
+    "When the beans are almost done, brown the seitan links on all sides. Remove from the pan and cut into about ¾-inch pieces.",
+    "Add the oil to a large skillet and heat to medium low. Add the chopped onion and carrots and sauté for 10 minutes. Add the garlic and cook for 1 more minute.",
+    "Drain the beans and return to the large pot. Add the tomatoes and cook for 10 minutes. It will be soupy. Add the corn, broth, basil, and hot sauce and bring to a boil. Turn down the heat and simmer another 10 minutes.",
+    "Mix the hoisin and 2 tablespoons soy sauce in a small bowl. Add the cubed tofu, toss, and let marinate for 30 minutes.",
+    "Place the cornstarch on a large plate. Remove the tofu from marinade and lay out on cornstarch, tossing to coat all sides.",
+    "Heat the oil over medium-high heat in a large skillet. Add the tofu to the hot oil and fry on all sides. Set aside.",
+    "Fill a large saucepan with water and cover. Bring to a boil and add the udon. Cook for 5 minutes and drain. Set aside.",
+    "Add the broth and peanut butter to the same saucepan and bring to a boil. Turn down the heat and cook for 2 minutes, then add the udon back into the pan. Coat the udon with the sauce. Add the spinach to the pot and stir into the sauce and noodles. Continue cooking, on low, for about 3 minutes until the spinach wilts.",
+    "Remove from the heat and divide between two bowls. Place half of the tofu on top of each bowl of udon. Drizzle the remaining hoisin mixture over the top.",
+    "Cook the brown rice by any method you choose. I use a rice cooker. Cook the rice with vegetable broth for this recipe.",
+    "In a large skillet, heat the oil to medium and then add the onion and bell pepper. Sauté until the onion becomes transparent, about 10 minutes. Add all the remaining ingredients (except the rice) to the large skillet with the onion and bell pepper. Cook for 10 minutes. Add the rice and heat through."
   ],
+  "image": "/recipes/chickpea-seitan-fried-rice.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 30
-  },
   "category": {
     "dish_type": [
       "side"

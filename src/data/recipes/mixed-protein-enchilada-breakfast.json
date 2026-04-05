@@ -3,9 +3,16 @@
   "name": "Mixed Protein Enchilada Breakfast",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Breakfast"
   },
-  "servings": "",
+  "servings": "6 servings",
+  "intro": "These cheesy enchiladas are filling enough for a huge day on the weekend and complex enough for a very satisfying breakfast or dinner. The tofu and seitan are both stars.",
+  "time": {
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
+  },
   "ingredients": [
     {
       "item": "Steamed Seitan Chipotle Links (page 284)",
@@ -103,13 +110,12 @@
     "Lay out a tortilla and lightly spread with enchilada sauce. Fill with a sixth of the tofu filling. Roll up and place in the casserole dish. Continue until all six tortillas have been filled and rolled. Pour the remaining enchilada sauce over the top of the rolled tortillas.",
     "Heat the white cheese sauce again if it has thickened, so that you can spoon it over the top of the enchilada sauce. Cover and bake for 30 minutes."
   ],
+  "image": "/recipes/mixed-protein-enchilada-breakfast.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 40
-  },
   "category": {
     "dish_type": [
       "main"

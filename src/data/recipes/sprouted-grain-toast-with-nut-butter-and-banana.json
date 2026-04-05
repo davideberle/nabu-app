@@ -1,0 +1,399 @@
+{
+  "id": "sprouted-grain-toast-with-nut-butter-and-banana",
+  "name": "Sprouted Grain Toast with Nut Butter and Banana",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans",
+    "chapter": "Breakfast"
+  },
+  "servings": "2 servings",
+  "intro": "This is more of a how-to than a recipe, but believe me, if it isn’t written down in a cookbook you might forget about it. And you don’t want to forget about it. How can something so simple taste so good?",
+  "time": {
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "slices sprouted grain bread",
+      "amount": "2"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "banana, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "bananas, mashed",
+      "amount": "2"
+    },
+    {
+      "item": "creamy peanut butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "unsweetened applesauce",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "pitted dates, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and crumbled",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links, sliced thick (page 276)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "black salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "creamy buckwheat cereal",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pecans",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "peeled and sliced apples (I like them kind of thick)",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free butter, melted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "hempseed, toasted in shell",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pecans, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup"
+    },
+    {
+      "item": "wheat germ",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oat bran",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dates, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pepitas",
+      "amount": "½ cup"
+    },
+    {
+      "item": "wheat bran",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond milk or other dairy-free milk",
+      "amount": "7 cups"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "diced russet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced sweet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "black salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "thyme",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links, sliced (page 276)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links (page 284)",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "broccoli florets",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black salt",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground black pepper, divided",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "15-ounce can pinto beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "15-ounce can enchilada sauce",
+      "amount": "1"
+    },
+    {
+      "item": "flour tortillas, 8 to 10 inches in diameter",
+      "amount": "6"
+    },
+    {
+      "item": "Black olives, sliced, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Green onions, sliced, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, chopped, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Line a baking sheet with parchment paper and set aside.",
+    "Add the mashed banana and peanut butter to a large bowl and mix well. Add the applesauce, flour, hempseed, and vanilla. Mix well. Stir in the oatmeal and dates.",
+    "Drop cookie dough, 1 heaping tablespoon at a time and 2 inches apart, onto the prepared baking sheet. Flatten with the back of a fork. Bake cookies for 25 minutes.",
+    "Remove from the oven and let the cookies cool 5 minutes, then move to a cooling rack.",
+    "Heat the butter over medium-high heat in a large skillet. Add the onion, mushrooms, tofu, and seitan links. Sauté 15 minutes.",
+    "Add the black beans, nutritional yeast, and all the spices and seasonings. Heat through 5 minutes and serve.",
+    "Bring 3 cups of water to a boil in a medium saucepan. Add the cereal, cinnamon, and salt. Reduce the heat to medium low and cover. Cook for 8 minutes, stirring occasionally, until all the water is absorbed. Stir in peanut butter and coconut cream.",
+    "Serve in two bowls and garnish with the cranberries, pecans, hempseed, and maple syrup.",
+    "Place all the dry ingredients in a large mixing bowl. Mix well. Pour in the milk and mix well again.",
+    "Cover and place in the refrigerator to sit overnight.",
+    "The muesli is ready to eat in the morning and keeps for 4 to 5 days.",
+    "In a very large skillet, either 12 inches wide or very deep, heat the oil over medium-high heat. Add the russet potatoes and cook for 10 minutes, flipping once. Add the sweet potatoes and onion; stir and cook 5 more minutes.",
+    "Push the potatoes and onions to the side and crumble the tofu into the pan. Add all of the spices and mix with the tofu. Cook 2 to 3 minutes or until you see that the turmeric is dispersed well and the tofu has turned a golden color.",
+    "Add the links and nutritional yeast and mix the whole skillet of ingredients together. Cook 2 to 3 minutes or until the links are heated through. Taste and season with more salt and pepper, if desired.",
+    "Place the seitan pieces in a food processor and pulse until lightly crumbled.",
+    "Add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 10 minutes. Remove from steamer and set aside.",
+    "Heat the oil in a large skillet over medium-high heat. Crumble the tofu into the skillet, using your hands. Stir and cook for 3 minutes, breaking up any pieces that are still too large. Add the nutritional yeast, black salt, ½ teaspoon pepper, turmeric, and paprika. Stir to combine. Add the seitan, beans, broccoli, salt, and ¼ teaspoon pepper. Stir to combine. Remove from the heat and set aside.",
+    "Melt the butter in a medium saucepan over medium-high heat. Add the flour and stir, cooking for 1 minute. Add the milk and bring to a low boil. Stir occasionally to keep the lumps out of the sauce. Turn the heat down to medium and add nutritional yeast and salt. Stir and continue to cook to let thicken a bit. Remove from the heat and set aside.",
+    "Preheat the oven to 350°F.",
+    "In a 9-inch square or 8-by-10-inch casserole dish, add 3 tablespoons of the enchilada sauce. Spread over the bottom.",
+    "Divide the filling in the skillet into six portions. You can eyeball this or make creases in the filling in a pie shape.",
+    "Lay out a tortilla and lightly spread with enchilada sauce. Fill with a sixth of the tofu filling. Roll up and place in the casserole dish. Continue until all six tortillas have been filled and rolled. Pour the remaining enchilada sauce over the top of the rolled tortillas.",
+    "Heat the white cheese sauce again if it has thickened, so that you can spoon it over the top of the enchilada sauce. Cover and bake for 30 minutes."
+  ],
+  "image": "/recipes/sprouted-grain-toast-with-nut-butter-and-banana.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "high-protein"
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

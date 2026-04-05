@@ -3,9 +3,16 @@
   "name": "Protein Power Grilled Veggie and Fruit Skewers",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
-    "author": "Ginny Kay McMeans"
+    "author": "Ginny Kay McMeans",
+    "chapter": "Appetizers & Snacks"
   },
-  "servings": "",
+  "servings": "4 servings",
+  "intro": "We’ve all heard of fruit skewers, but have you heard of fruit and marinated tofu skewers? All are grilled on a stick to make the prettiest and freshest finger food around.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "extra-firm tofu, drained, pressed (page 17), and cut into 1-inch cubes",
@@ -28,8 +35,8 @@
       "amount": "¼ tsp"
     },
     {
-      "item": "large sweet potato, peeled and chopped into bite-size chunks",
-      "amount": "1"
+      "item": "arge sweet potato, peeled and chopped into bite-size chunks",
+      "amount": "1 l"
     },
     {
       "item": "cremini mushrooms",
@@ -50,6 +57,722 @@
     {
       "item": "Extra virgin olive oil, for grilling",
       "amount": ""
+    },
+    {
+      "item": "baguette, cut into 12 slices",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "8-ounce can corn, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "4-ounce can black olives, drained and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Fresh thyme, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chili pepper, such as jalapeño or cayenne, chopped fine",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, chopped fine",
+      "amount": "2"
+    },
+    {
+      "item": "tamari",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into 1-inch cubes",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "8-ounce can sliced pineapple",
+      "amount": "1"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "canned chickpeas, drained and rinsed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free chipotle mayonnaise",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "hempseed, toasted in shell",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tahini",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "reen onion, chopped",
+      "amount": "1 g"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets (page 283)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "arge spinach tortillas",
+      "amount": "2 l"
+    },
+    {
+      "item": "Fresh parsley, for garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "orange bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "6-inch cucumbers",
+      "amount": "2"
+    },
+    {
+      "item": "hummus",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "seitan, crumbled (Slow Cooker Log for Thin Slices and Crumbles, page 280)",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "green lentils",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "grated carrots",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "diced onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "15-ounce can fire-roasted tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "ketchup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Tabasco",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "crushed pineapple",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "28-ounce can chickpeas, drained (save the liquid to use as aquafaba) and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Tabasco",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "English muffins",
+      "amount": "3"
+    },
+    {
+      "item": "raw almonds, soaked in water from one hour to overnight",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra virgin olive oil, more if desired",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "seitan, crumbled (Slow Cooker Log for Thin Slices and Crumbles, page 280)",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "black olives, sliced",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Freshly cut parsley, for garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "hot sauce (such as Frank’s)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "medium sweet potatoes, peeled and chopped into 2-inch cubes (equal to 2 cups mashed sweet potato)",
+      "amount": "2"
+    },
+    {
+      "item": "quinoa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra virgin olive oil, divided",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "panko",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "14-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Tabasco",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "raw cashews, soaked from 1 hour to overnight and drained",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tapioca starch or tapioca flour (they are the same thing)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tortilla chips",
+      "amount": "10 to 18 ounces"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Roma tomato, diced small",
+      "amount": "1"
+    },
+    {
+      "item": "tempeh, diced very small",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "hot chili pepper, sliced thin crosswise",
+      "amount": "1"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "Juice from one lime",
+      "amount": ""
+    },
+    {
+      "item": "raw cashews, soaked for 1 hour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "plus 2 teaspoons dairy-free milk",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "button mushrooms",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "dairy-free butter, divided",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "slices whole-grain bread",
+      "amount": "9"
+    },
+    {
+      "item": "quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baby spinach, with stems chopped off",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "artichoke hearts in water, drained",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "coconut oil, melted",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "seitan (Slow Cooker Log for Thin Slices and Crumbles, page 280)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "Mustards, for serving",
+      "amount": ""
+    },
+    {
+      "item": "cremini mushrooms",
+      "amount": "18"
+    },
+    {
+      "item": "diced red onion, small dice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tempeh, diced very small, or pulsed small",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "Pinch of onion powder",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of cayenne pepper",
+      "amount": ""
+    },
+    {
+      "item": "rice, cooked",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen edamame",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained (save the liquid to use as aquafaba) and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "peanuts",
+      "amount": "3 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "powdered garlic",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pecans",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cashews",
+      "amount": "1 cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1½ cups"
     }
   ],
   "method": [
@@ -57,15 +780,95 @@
     "Parboil the sweet potato chunks for 10 minutes or until just tender.",
     "Clean the mushrooms and cut off the ends of the stems. If some of the mushrooms are large, cut into halves or thirds.",
     "Skewer the tofu, sweet potato, pineapple, red and yellow bell peppers, and mushrooms onto each skewer.",
-    "Brush grill or grill pan with oil and set to medium-high heat. Grill skewered vegetables and fruit until there are grill marks. Flip and grill the other side."
+    "Brush grill or grill pan with oil and set to medium-high heat. Grill skewered vegetables and fruit until there are grill marks. Flip and grill the other side.",
+    "Lay out the bread slices on a baking sheet. Lightly brush each slice of bread with oil. (The new silicone brushes are great for this, and they wash up really easily.) Put the baking sheet under the broiler. Don’t do anything else. Just stand there and keep checking the bread and don’t let it burn. It only takes a couple of minutes. After the toasts are lightly browned, remove the sheet from the oven. You can make these ahead of time and keep them in the refrigerator for later use, too.",
+    "In a large bowl, mix all the remaining ingredients together, except the thyme.",
+    "Top each toast with the chickpea mixture just before serving. Garnish with fresh thyme.",
+    "Prepare the sauce by mixing the cornstarch and 1 tablespoon of water together until smooth and set aside.",
+    "Add the rice vinegar, ⅔ cup water, sugar, chili pepper, garlic, tamari, parsley, and cayenne pepper to a food processor. Process until well blended and the chili pepper is broken up very well.",
+    "Pour mixture into a small saucepan and heat until boiling, stirring until the sugar is dissolved. Turn down heat and cook 5 minutes. Add the cornstarch mixture and stir occasionally for about 5 minutes or until mixture is a bit thickened. Take off heat and let it cool.",
+    "Add the tofu cubes to the cooled sweet chili sauce. Let marinate about 30 minutes.",
+    "Drain the pineapple and slice the rings into about 1- to 1¼-inch wedges.",
+    "Place a slice of pineapple on a plate and center a cube of marinated tofu on top. Place another slice of pineapple on the tofu and secure with a toothpick.",
+    "Add the tofu, chickpeas, mayonnaise, hot sauce, hempseed, tahini, vinegar, garlic powder, onion, salt, and pepper to a food processor. Process until well combined and spreadable with a knife.",
+    "Chop seitan nuggets into very small pieces. (You could also pulse in a food processor a couple of times.) Fry seitan in a small skillet over medium-high heat for about 4 minutes, stirring often to keep from burning. Set aside.",
+    "Divide the tofu filling into two portions and spread evenly onto each tortilla. Leave about an inch from the edge on one side without filling to aid in rolling. Sprinkle seitan over each tortilla. Start rolling each tortilla at the opposite side of the edge that you did not cover. Roll firmly but not too tight, so as not to squeeze out the filling.",
+    "Pin toothpicks along the edge of the tortilla about 1½ to 2 inches apart. Slice between each toothpick. This helps to keep the rolls together until you can set them on a plate. They do stick together very well. Garnish with fresh parsley, if desired.",
+    "Slice the bell peppers until you have eighteen thin toothpick-size strips of each color, and then chop the remaining peppers into a very fine dice (should be at least 3 tablespoons of each color; you may have some leftover). Set aside.",
+    "Use a vegetable peeler to slice off long strips from the cucumbers. Keep the same direction so that some green will be on each long edge of the strips. Slice on all four sides and discard the center seed section. You will have about two or three slices from each of the four sides of the cucumber.",
+    "Lay out the slices. Spread about 2 teaspoons hummus down the center of each strip; spread out evenly, keeping a little bit away from the long edge. Sprinkle a dash of salt and pepper on each hummus-covered cucumber. Now sprinkle about 1½ teaspoons each of seitan and chopped bell pepper mix on each slice.",
+    "Roll up each cucumber and secure with a toothpick. Set on their sides and slide three different-colored bell pepper strips into the center at different heights. You will need to cut some of them shorter to achieve this look.",
+    "Rinse and drain the lentils. Place lentils in a medium-large saucepan. Pour in the vegetable broth and cover. Place pan on high heat and bring to a boil. When boiling, turn down to medium high and cook for 20 minutes or until the lentils are tender. All the water should be absorbed. This process can also be done in a rice cooker.",
+    "Preheat the oven to 425°F.",
+    "Heat the oil in a small skillet over medium-high heat. Add the onion and sauté until translucent, about 10 to 15 minutes.",
+    "Add the cooked lentils, sautéed onions, oats, carrots, garlic, tomato paste, aquafaba, Italian seasoning, salt, and pepper to a large bowl. Mix very well.",
+    "Roll pieces of the lentil mixture into eighteen balls and place on a baking sheet. Bake for 10 minutes, then flip, and bake another 10 minutes.",
+    "Add all the sauce ingredients to a food processor. Blend well until almost smooth. There should still be small pieces of pineapple.",
+    "Pour into a large saucepan. Bring to a boil then turn down to medium heat.",
+    "Carefully add lentil balls to the pan and fold them into the sauce. Heat through about 5 minutes and then serve with toothpicks.",
+    "Preheat the oven to 400°F.",
+    "Add all the chickpea ball ingredients to a food processor. Pulse until the chickpeas are broken down and the ingredients are mixed. Form mixture into twenty-four bean balls and place them on a baking sheet. Bake for 25 minutes.",
+    "Mix all the dip ingredients together thoroughly.",
+    "Serve in a bowl with toothpicks alongside the chickpea ball poppers.",
+    "Break apart the English muffins at the center and toast. Place on a baking sheet and set aside.",
+    "Place the almonds in a food processor. Add lemon juice, nutritional yeast, curry powder, mustard powder, salt, and pepper. Blend until the mixture is as smooth as you can get it. It will still have a few little pieces. Slowly pour in the olive oil through the opening in the lid. You may add a little more oil if you would like it thinner. Pour mixture into a small bowl and mix with the crumbled seitan.",
+    "Divide the mixture and spread on the six muffin halves. It will be thick. Slide the baking sheet under the broiler for about 2 minutes, until lightly golden.",
+    "Top with black olive slices and cut each muffin into quarters. The easiest way to do this is by using a cleaver and pushing straight down as you would cut pizza. Stack on a plate and garnish with freshly cut parsley, if desired.",
+    "Turn the tofu on its side and cut through the center to make two rectangles. Flip them onto their flat sides and stack. Cut through the center, and without separating the halves, cut those two halves twice each. Make two equal-size cuts lengthwise. There are now twenty-four cubes. Place the cubes in a small flat casserole dish or other container in which all the cubes will fit on one level.",
+    "Mix together the vegetable broth and hot sauce. Pour over the tofu. Marinate for an hour.",
+    "Preheat the oven to 350°F.",
+    "Place ¼ cup cornstarch in a medium bowl. Remove the tofu from the marinade and place on the cornstarch. Toss and then place the tofu on a baking sheet. Bake for 30 to 40 minutes. Toss with a spatula every 10 minutes until golden and puffed.",
+    "To a small saucepan, add ½ cup water, tamari, and cornstarch and heat on medium high. Stir until the cornstarch is dissolved. Add the remaining ingredients and bring to a boil. Turn down heat to medium and cook, stirring until desired thickness. Place the tofu on a platter with toothpicks and dip into the sauce.",
+    "Place the sweet potato cubes in a medium saucepan and cover with water. Cover and bring to a boil and then turn the heat down to medium high. Cook with the lid cracked a bit, about 15 minutes or until you can pierce the sweet potatoes with a fork. Drain and mash. Set aside.",
+    "Cook the quinoa in another saucepan: place quinoa in a sieve and rinse well. In a small saucepan, combine quinoa and ⅔ cup water. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the water is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove lid and fluff.",
+    "Meanwhile, add 1 tablespoon of oil to a skillet and heat to medium high. Add the onion and sauté for about 10 to 15 minutes or until translucent.",
+    "To a large bowl, add the mashed potatoes, quinoa, sautéed onion, hempseed, paprika, cumin, and panko and stir well. Stir in the black beans Make twelve balls and then flatten to patties that are about ¼ inch thick.",
+    "Add the remaining oil to a skillet and heat to medium high. Brown the patties on each side for about 3 to 5 minutes or until lightly browned.",
+    "Mix all the dip ingredients together thoroughly.",
+    "Serve in a bowl alongside Triple Power Patties.",
+    "Add all the cheese ingredients to a blender and blend until smooth. Transfer this blended mixture into a small saucepan. Cook on medium heat and stir until the sauce thickens a bit. It will take about 5 to 10 minutes. Take off the heat to cool slightly.",
+    "Lay all the chips on a platter. Sprinkle black beans over the chips. Dot with cashew cheese. Sprinkle the red onion, tomato, tempeh, chili pepper, and hempseed all over the top.",
+    "Dice the avocado and dredge in lime juice. Sprinkle diced avocado over the nachos.",
+    "Add cashews, milk, lemon juice, salt, and pepper to a food processor. Process until smooth.",
+    "Clean mushrooms and finely chop.",
+    "Heat 1 tablespoon butter over medium-high heat in a small skillet. Add chopped mushrooms and sauté for 5 minutes. Turn off the heat and add the cashew mixture and hempseed. Stir well.",
+    "Preheat the oven to 425°F.",
+    "Cut crusts off of the bread and leave in a square shape. Roll each square thin with a rolling pin. You will be rolling up these squares. Spread 1 tablespoon mushroom mixture onto each square and roll up.",
+    "Melt remaining butter.",
+    "Cut rolls in half and roll in melted butter. Place rolls on cookie sheets and bake for 8 minutes or until browned.",
+    "Place quinoa in a sieve and rinse well. Combine quinoa and 1 cup water in a small saucepan. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the liquid is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove lid and fluff.",
+    "Heat the oil in a large skillet over medium-high heat. Add the onion and sauté over medium heat for 10 minutes. Stir in the spinach and cook until wilted, about a minute or so. Add the hempseed and spices and stir in quickly. Remove from the heat.",
+    "Cut off the top of the artichoke hearts. Discard the toughest of the outside leaves.",
+    "Add everything to a food processor. Process until well combined and chopped very small.",
+    "Serve with homemade pita chips (see note).",
+    "Preheat the oven to 350°F.",
+    "Add the flours, sugar, baking powder, baking soda, and salt to a medium bowl. Mix well.",
+    "In a small bowl, combine the oil and milk. Stir into the dry mixture to make a stiff dough.",
+    "Roll the dough out into about an 8-inch square. Cut lengthwise down the center so that there are two rectangles measuring 4 by 8 inches.",
+    "Put the seitan in a food processor and process for crumbles. Divide the seitan in half and spread across each dough rectangle leaving 1 inch on the long side of each rectangle. Start rolling up, lengthwise, and end at the edge that has no seitan. Roll firmly but not tightly. Leave seam side. Cut each roll into ¾-inch rounds. You will end up with twelve rounds for each roll. Place about 1½ inches apart on a baking sheet and bake for 15 minutes.",
+    "Serve with assorted mustards.",
+    "Remove stems from the mushrooms and set the caps aside. Finely chop the stems and set aside.",
+    "Heat 3 tablespoons of water in a medium skillet. Add the chopped mushroom stems and onion. Sauté 10 to 15 minutes or until onion is translucent. Add the tempeh and cook another 5 minutes. Add onion powder, cayenne pepper, rice, and tamari. Cook 2 minutes, stirring occasionally.",
+    "Preheat the oven to 350°F.",
+    "Stuff mushroom caps and place on baking sheet. Bake for 20 minutes.",
+    "Preheat the oven to 400°F.",
+    "Cook the edamame according to directions on package.",
+    "Spread the chickpeas and cooked edamame on a baking sheet. Bake for 20 minutes.",
+    "Place the taco seasoning in a medium bowl.",
+    "Remove the edamame and chickpeas from oven and toss with the aquafaba. Add to the bowl of taco seasoning and coat well.",
+    "Return to oven and bake another 10 minutes.",
+    "You can eat these as soon as they’ve cooled enough to handle, but let them cool in the oven for at least 2 hours to overnight before packing away. Store in an airtight container. They will keep for 2 weeks.",
+    "Preheat the oven to 325°F.",
+    "Mix the nuts and maple syrup together in a medium bowl. Make sure that each nut has been coated well. Spread out on a baking sheet so they are in one layer but still close to each other. Touching is okay. Bake for 7 minutes.",
+    "Remove from oven and flip with a spatula. They can overlap some at this point. Put back in the oven and bake another 6 minutes or so. Watch closely. If they’re in too long, they start to burn quickly.",
+    "Take the baking sheet out of the oven, flip the nuts again, and let cool completely. Eat right away or pack in an airtight container. These nuts will keep in your pantry for quite a few weeks and will keep in the fridge about 2 to 3 months. The freezer will store them for 6 months."
   ],
+  "image": "/recipes/protein-power-grilled-veggie-and-fruit-skewers.jpg",
   "dietary": [
     "vegan",
-    "vegetarian"
+    "vegetarian",
+    "high-protein"
   ],
-  "time": {
-    "total": 40
-  },
   "category": {
     "dish_type": [
       "main"
