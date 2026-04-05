@@ -1,0 +1,56 @@
+{
+  "id": "smoked-duck-eggs",
+  "name": "Smoked duck eggs",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "yan xun tang xin dan 烟熏溏心蛋",
+  "intro": "With their shiny, molten yolks and delicate smoky aroma, these eggs make an irresistible appetizer. I first tasted them at the Ningbo Residents’ Association in Hong Kong, and have been enjoying them practically ever since at one of my favorite Shanghai restaurants, Fu 1088. At Fu 1088, they top each egg with a tiny leaf of cilantro and about half a teaspoon of black caviar, which looks pretty and tastes delicious. The eggs are also delectable when dipped into Sichuan pepper salt or, less authentically, celery salt.",
+  "ingredients": [
+    {
+      "item": "duck eggs",
+      "amount": "6"
+    },
+    {
+      "item": "Iced water",
+      "amount": ""
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black tea leaves",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "A bunch of spring onions",
+      "amount": ""
+    },
+    {
+      "item": "A few sprigs of cilantro, to garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Salt or Sichuan pepper salt (see here), to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the duck eggs in a saucepan and cover generously with cold water. Bring them to the boil, stirring gently with a long-handled spoon (the stirring helps to center the yolks). Simmer for 1 minute, then turn off the heat, cover and leave to steep undisturbed in the hot water for 3 minutes. Remove, immerse in iced water and crackle the shells all over by knocking them against the base of the container or other hard surface. Once the eggs have cooled, shell them carefully.",
+    "Put the soy sauces in a bowl with 3 tablespoons cold water. Working in batches, roll the eggs in the dark liquid for about a minute, turning them occasionally for even coloring, then drain on paper towels.",
+    "Wash and trim the spring onions and smack them gently with the flat side of a Chinese cleaver or rolling pin to loosen their fibers. Put them in a steamer basket and arrange the eggs on top.",
+    "Put the tea leaves in a bowl and add just enough hot water to cover them. Soak for a minute, then drain and, when cool enough to handle, squeeze them dry. Line the base of a seasoned wok with two layers of aluminum foil. Scatter the sugar, then the damp tea leaves, over the foil. Heat the wok over a high flame until plenty of smoke is rising from the tea leaves. Put the steamer basket with the eggs into the wok, cover with a lid, then turn off the heat and let them sit in the smoke for 3 minutes.",
+    "To serve, cut the eggs in half and arrange on a serving dish. Garnish each egg with a tiny piece of cilantro, if you wish. Serve with salt or Sichuan pepper salt."
+  ],
+  "image": "/recipes/smoked-duck-eggs.jpg"
+}

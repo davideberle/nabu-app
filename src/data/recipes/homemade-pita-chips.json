@@ -3,8 +3,7 @@
   "name": "Homemade Pita Chips",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time: 30 minutes |serves 4 to 6",
   "ingredients": [
@@ -26,7 +25,7 @@
     },
     {
       "item": "dried Greek oregano",
-      "amount": "1 tsp"
+      "amount": "1 teaspoon"
     }
   ],
   "method": [
@@ -34,12 +33,5 @@
     "Strew the garlic slices over the baking sheets, dividing them evenly.",
     "Using your hands, toss together the pita wedges, olive oil, salt, and oregano in a large bowl. Divide the pita chips between the baking sheets. Bake for 7 minutes or so, turning once, until golden and crisp. Remove from the baking sheet, transfer to a serving bowl, and serve hot or at room temperature."
   ],
-  "time": {
-    "total": 7
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

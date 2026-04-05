@@ -1,0 +1,55 @@
+{
+  "id": "shanghai-fried-rice-with-salt-pork-and-green-bok-choy",
+  "name": "Shanghai fried rice with salt pork and green bok choy",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xian rou cai fan 咸肉菜饭",
+  "intro": "In a backstreet not far from Nanjing Road in the heart of Shanghai, there’s a small diner that serves one of the most delicious versions of this classic local rice dish I’ve tasted. The plump, glossy rice, studded with salt pork, threaded with the bright green of bok choy, is irresistible. Everyone eats it, in the Chinese manner, with a bowl of broth to refresh the palate (a simple stock with sliced spring onion greens will do). This is my version of their recipe, which includes red onion and shiitake mushrooms. This dish is usually made with short-grain white rice—Japanese sushi rice is what I use at home—but it will also taste delicious with long-grain Thai fragrant rice. For the most sizzlingly delicious results, use lard as your cooking oil. Feel free to vary the quantities of pork or vegetables as you please. Spinach may be used as a substitute for the bok choy. Another traditional way to make this dish is to begin by frying the salt pork and greens, preferably in lard, then add raw washed rice and water. Bring to the boil, then cover and slow cook, as in the recipe for plain white rice.",
+  "ingredients": [
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "small red onion",
+      "amount": "½"
+    },
+    {
+      "item": "salt pork, pancetta or unsmoked bacon",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "green bok choy (3–4 heads)",
+      "amount": "10 oz (275g)"
+    },
+    {
+      "item": "cooked and cooled sushi rice (1½ cups /300g when uncooked)",
+      "amount": "3 cups (600g)"
+    },
+    {
+      "item": "cooking oil, preferably lard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cover the shiitake mushrooms in boiling water and leave to soak for half an hour. Finely chop the onion. Remove any rind from the pork and chop it into dice. Remove the mushroom stalks and dice the caps. Chop the green bok choy a little more coarsely than the other ingredients. Break the rice up into small clumps to make stir-frying easier.",
+    "Heat the cooking oil in a seasoned wok over a medium flame. Add the pork and onion and stir-fry gently until the onion is tender and the pork has released its oil and is fragrant but not browned. Add the mushrooms and ginger, turn up the heat to high and stir-fry briefly until fragrant.",
+    "Tip in the rice and stir-fry over a high heat, breaking it up as you go. When the rice is piping hot and smells delicious, season with salt and pepper. (If you are eating the rice as a main meal, it will need to be saltier than if you are eating it with other dishes.) Add the bok choy and continue to stir-fry until the vegetable is piping hot and just cooked. Remove from the heat, stir in the sesame oil and serve.",
+    "Vegetarians can simply omit the meat in either the main recipe or its variation to make simple cai fan (“vegetable rice”)—although Chinese cooks would still tend to stir-fry the rice with lard to enhance its fragrance."
+  ],
+  "image": "/recipes/shanghai-fried-rice-with-salt-pork-and-green-bok-choy.jpg"
+}

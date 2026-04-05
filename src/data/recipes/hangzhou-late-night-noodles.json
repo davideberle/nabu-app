@@ -1,0 +1,74 @@
+{
+  "id": "hangzhou-late-night-noodles",
+  "name": "Hangzhou late-night noodles",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "rou si ban chuan mian 肉丝拌川面",
+  "intro": "It was midnight in a Hangzhou backstreet, and Dai Jianjun had taken me to find a famous peripatetic street stall serving ban chuan noodles, a favorite local snack. The cook, wild-haired and sweat-faced, stirred at a relentless, machine-like pace. Into her blackened wok she flung handfuls of shredded pork, tofu, pig’s kidney and heart, adding some noodles and seasoning with soy sauce and a bright flash of yellow chives, their pungent aromas singing out into the warm autumn air. Her husband, standing behind her, took orders and money, and around them a gaggle of customers sat in near-darkness at ramshackle tables. I couldn’t take my eyes off the woman. Like an Olympian athlete of street food, tough and muscular, on and on she toiled, stirring with a brutal, determined rhythm. Dai told me that the couple’s pledge was to “cook each bowlful of noodles separately” (yi wan mian yi shao), which is why they were so delicious. Although the woman’s work was hard, they made a fortune, enough to send their child to college. Dai and I sat on rickety stools and slurped the strong, bouncy noodles with their sting of offal and the heady fragrance of chives. This recipe, my tribute to that Amazonian street vendor, is best made with alkaline noodles, which have a yellowish color, a particular taste and a springy texture. If you can’t find them, use fresh wheat noodles, or egg noodles if you prefer. For convenience, I’ve taken the liberty of cooking enough for two, and added mushrooms and preserved vegetable instead of the offal. Serves 2.",
+  "ingredients": [
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "spiced or smoked firm tofu",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "Sichuan preserved vegetable",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "oyster mushrooms",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "Chinese yellow chives",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "2"
+    },
+    {
+      "item": "fresh Chinese wheat noodles",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Cut the pork into slivers. Add the marinade ingredients with 1 teaspoon cold water and mix well. Cut the tofu, Sichuan preserved vegetable and mushrooms into fine slivers. Cut the chives and spring onions into 3 in (8cm) lengths.",
+    "Bring a pan of water to the boil. Add the noodles and cook them to your liking, then rinse them under the cold tap and drain well. Heat 1 tablespoon of the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked, then set aside. Return the wok to the flame with the remaining oil. Add the preserved vegetable and stir-fry briefly until you can smell it. Add the tofu and mushrooms and stir-fry until the mushrooms are just cooked.",
+    "Return the pork to the wok, add the noodles and stir-fry vigorously to mix everything together, seasoning with the soy sauce and salt (remember the preserved vegetable is salty). When the noodles are piping hot, add the chives and stir-fry briefly until they smell wonderful. Stir in the spring onion greens and then, off the heat, the sesame oil. Serve."
+  ],
+  "image": null
+}

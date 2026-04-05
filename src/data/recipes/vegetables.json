@@ -1,0 +1,78 @@
+{
+  "id": "vegetables",
+  "name": "Vegetables",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep. time 15 minutes | cooking time 40 minutes | serves 4",
+  "ingredients": [
+    {
+      "item": "x ½ pound cans salmon, drained and flaked",
+      "amount": "2"
+    },
+    {
+      "item": "sliced scallions",
+      "amount": "2"
+    },
+    {
+      "item": "Vegetables 6 cups cubed peeled pumpkin",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "freshly ground pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "divided salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "mixed salad greens",
+      "amount": "8 cups"
+    },
+    {
+      "item": "avocado, chopped in chunks",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "freshly ground pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "divided salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "sherry vinegar or red-wine vinegar",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "whole-grain mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "minced anchovy fillet or paste",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat oven to 450 F.",
+    "Toss root vegetables in a large bowl with ¼ teaspoon salt, 1 tablespoon oil, and ½ teaspoon pepper. Spread in a single layer on a large rimmed baking sheet. Roast for 15 minutes. Stir and continue roasting until soft and golden brown in spots, about 14-16 minutes more.",
+    "Whisk 2 tablespoon oil, mustard, vinegar, garlic, anchovy, and the remaining ¼ teaspoon each pepper and salt in a large bowl. Reserve 2 tablespoons of the dressing in a small bowl. Add the salad greens to the large bowl and toss to combine; divide among 4 dinner plates.",
+    "When the vegetables are done, transfer them to the large bowl and gently combine with the avocado, reserved dressing, salmon, and scallions. Serve over the salad greens."
+  ],
+  "image": null
+}

@@ -3,8 +3,7 @@
   "name": "Northern Greek Walnut Fritters",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 10 minutes | cook time:10 minutes |serves 6",
   "ingredients": [
@@ -15,6 +14,10 @@
     {
       "item": "to 2 cups (190 to 250 g) all-purpose flour, as needed, plus extra for coating the fritters",
       "amount": "1½"
+    },
+    {
+      "item": "Scant 1 tablespoon baking soda",
+      "amount": ""
     },
     {
       "item": "coarsely ground walnuts",
@@ -38,9 +41,5 @@
     "In a large deep skillet, heat about 2 inches (5 cm) of olive oil over medium-high heat until it registers about 365°F (185°C) on an instant-read or deep-fry thermometer.",
     "Spread the flour over a large plate or platter and lightly dredge the patties, shaking off the excess. Working in batches, fry the patties in the hot oil until deep golden brown on both sides, flipping once. Drain on paper towels and serve, accompanied, if desired, by Greek yogurt."
   ],
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

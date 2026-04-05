@@ -1,0 +1,32 @@
+{
+  "id": "plain-stir-fried-greens",
+  "name": "Plain stir-fried greens",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "qing chao qing cai 清炒青菜",
+  "intro": "Few recipes are easier than this one, yet it’s so delicious. I’ve included it simply to highlight the use of stir-frying to swiftly cook one of the archetypal Chinese vegetables, one of the great family of brassicas, and to transform it into something not only palatable, but fragrant, juicy and extremely nutritious. You don’t need garlic, or ginger, or anything—just try it. Salt is always added at the end of this kind of dish: if you add it too early, it will draw water out of the leaves and result in a watery dish with stringy vegetables.",
+  "ingredients": [
+    {
+      "item": "heads green bok choy",
+      "amount": "2–3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Trim the bok choy and chop it across the line of the leaves into chopstickable lengths.",
+    "Heat the oil in a seasoned wok until beginning to smoke. Add the greens and stir-fry over a high flame until hot and wilted. Season with salt and serve.",
+    "Sometimes known as “dragons’ whiskers” because of their curly fronds, pea shoots are traditionally regarded as a luxurious vegetable in China. In the past they were a banquet delicacy, only available in season and used in soups and stir-fries. They are at their peak in early spring, like tea leaves. They have a beautiful qing xiang wei (bright, clear fragrance and flavor) when simply stir-fried with oil and salt, and are also delicious with a smattering of garlic. If you have peas growing in your garden, pluck only the tenderest new leaves for cooking.",
+    "Crisp lettuces such as romaine are wonderful stir-fried like this.",
+    "With its deep green, purple-hearted leaves, this vegetable is unmistakable, and can often be found in Chinese food shops. Blanch the leaves in boiling water with a little oil, then stir-fry with finely chopped garlic and salt. The purple of the leaves will give the cooking juices a magnificent magenta color. The vegetable is traditionally eaten around the Dragon Boat Festival in late spring. A handful of fava beans, skinned and then boiled until tender, makes a delightful addition to the dish."
+  ],
+  "image": null
+}

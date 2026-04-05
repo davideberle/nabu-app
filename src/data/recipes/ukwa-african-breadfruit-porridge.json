@@ -1,0 +1,62 @@
+{
+  "id": "ukwa-african-breadfruit-porridge",
+  "name": "Ukwa (African Breadfruit Porridge)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "The star of this flavourful and nutritious Igbo dish is ukwa, or African breadfruit. If using dried ukwa, be sure to soak it overnight before cooking, otherwise you can skip the soaking step. The porridge is wonderfully savoury with a hint of spice and sweetness. Ukwa is delicious when cooked plain with a pinch of salt but the additional ingredients included here take it to the next level.",
+  "ingredients": [
+    {
+      "item": "dried ukwa/African breadfruit (soaked overnight)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "1/2 teaspoon baking soda",
+      "amount": ""
+    },
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "scotch bonnet chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup bitter leaves (washed, drained and chopped)",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup cooked maize or sweetcorn",
+      "amount": ""
+    },
+    {
+      "item": "chopped mushrooms (optional)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Wash/rinse the pre-soaked ukwa several times in a colander to remove any grit or dirt.",
+    "Place the ukwa, chopped onions, 3 cups of water and baking soda in a large pot. Bring to a boil then cook covered for 45 minutes over medium heat until the ukwa is tender. Check halfway through the cooking time and add extra water if needed.",
+    "Once the ukwa is tender, add the palm oil, scotch bonnet chilli, bitter leaves, maize/corn, mushrooms, vegetable stock and salt to taste. Stir and cook for 10 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/ukwa-african-breadfruit-porridge.jpg"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "stir-fried-celtuce",
+  "name": "Stir-fried celtuce",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "qing chao wo sun 清炒莴笋",
+  "intro": "This recipe, along with the celtuce salad in the Appetizers chapter, appears here because of my fervent hope that this exquisite vegetable, a kind of lettuce with thick, truncheon-like stems, will become more widely available outside China (it can currently be found from time to time in Chinese supermarkets and farmers’ markets). Simply stir-fried like this in vegetable oil with a little salt, it’s fantastically delicious. You may also stir-fry it with other ingredients, or perhaps just a few slices of red bell pepper for color.",
+  "ingredients": [
+    {
+      "item": "celtuce stems (about 1½ lbs/700g)",
+      "amount": "2"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel the celtuce stems and discard any fibrous part at their bases. Holding your knife at an angle to each stem, cut it into oval slices 2–3mm thick.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the celtuce and stir-fry for 1–2 minutes until piping hot. Season with salt. Remove from the heat, stir in the sesame oil and serve."
+  ],
+  "image": "/recipes/stir-fried-celtuce.jpg"
+}

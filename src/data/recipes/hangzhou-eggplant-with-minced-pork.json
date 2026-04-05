@@ -1,0 +1,70 @@
+{
+  "id": "hangzhou-eggplant-with-minced-pork",
+  "name": "Hangzhou eggplant with minced pork",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "rou mo qie zi 肉末茄子",
+  "intro": "The eggplant may not be a native Chinese plant, but one of the earliest written references to it can be found in the sixth-century Chinese agricultural treatise Qimin Yaoshu (“Essential skills for the life of the common people”). Its use in Chinese cookery dates back more than 1,000 years earlier than the tomato, a New World import that is still known in many Chinese dialects as a “barbarian eggplant.” This dish comes from the Hangzhou home-cooking tradition, and was taught to me by chef Hu Zhongying of the Hangzhou Restaurant. It is usually made with long, slender, purple Chinese eggplant, but also works splendidly with the Mediterranean version, which tends to be more widely available outside China. I always salt Mediterranean eggplant before frying, to draw out some of their moisture and limit the amount of oil they absorb, but this is not normally done with Chinese eggplant. If you are cooking for vegetarians, simply omit the pork; the dish will still be delicious.",
+  "ingredients": [
+    {
+      "item": "eggplant",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "About 1½ cups (350ml) cooking oil",
+      "amount": ""
+    },
+    {
+      "item": "minced pork, ideally with a little fat",
+      "amount": "2–3 oz (50–75g)"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sweet fermented sauce (see here)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch mixed with 1 tbsp cold water",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "finely chopped spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the eggplant lengthways into 1 in (2cm) thick slices, then cut the slices into long strips. Cut these into 2–2½ in (5–6cm) batons. Sprinkle with a little salt, mix well and leave to drain in a colander for half an hour or so.",
+    "Heat the oil to 400°F (200°C). Pat the eggplant dry and deep-fry in a couple of batches until slightly golden. Remove with a slotted spoon and drain on paper towels.",
+    "Add 1–2 tablespoons oil to a seasoned wok over a high flame, swirl it around, then add the pork and stir-fry until the meat has lost its pinkness and any liquid that has emerged has evaporated. Add the ginger and stir a few times to release its fragrance. Add the sweet fermented sauce and stir a few times until it smells delicious too. Add the stock, Shaoxing wine, soy sauces and sugar along with the eggplant and mix well. Toss the eggplant in the sauce, then give the potato starch mixture a stir and pour it into the center of the wok, moving briskly to stir it in. Add the spring onion greens, stir a few times and serve."
+  ],
+  "image": null
+}

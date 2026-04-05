@@ -1,0 +1,50 @@
+{
+  "id": "emon",
+  "name": "Greek Lemon–Olive Oil Dressing",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "ground round",
+      "amount": "1 pound"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "breadcrumbs",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "stick (¼ pound) butter",
+      "amount": "1"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Combine meat, cumin, breadcrumbs, garlic, egg, salt, and pepper.",
+    "Shape teaspoonfuls of the meat mixture into oval or oblong shapes (wetting your hands to facilitate handling).",
+    "Fry in butter over medium heat, turning frequently.",
+    "Combine lemon juice and water and pour over the souzoukakia."
+  ],
+  "image": "/recipes/emon.jpg"
+}

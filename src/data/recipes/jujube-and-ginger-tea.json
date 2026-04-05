@@ -1,0 +1,30 @@
+{
+  "id": "jujube-and-ginger-tea",
+  "name": "Jujube and ginger tea",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "hong zao cha 红枣茶",
+  "intro": "One of my favorite foot massage emporiums in Shanghai serves this hot fruit infusion, which is delightfully warming on a cold winter’s day. You can sweeten it with sugar or honey, but I prefer it unsweetened. It’s gorgeous served either hot or cold. Red jujubes (hong zao), also known as Chinese dates, are delectable when eaten fresh in their autumn season, like little apples; dried, the wrinkled, deep-red fruits are used all year round in sweets and tonic dishes. They have been appreciated in the Jiangnan region since Neolithic times—archaeologists found their remains, along with those of rice, water caltrop and calabash gourds, at the Stone Age remains of Hemudu near today’s Ningbo. Makes about 1 quart (1 liter). See here for a photograph that includes soaking jujubes, rock sugar and fresh ginger; the brewed drink is pictured at the bottom of here.",
+  "ingredients": [
+    {
+      "item": "dried red jujubes",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "fresh ginger",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "Honey or rock sugar, to sweeten (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Break open the jujubes and discard their stones. Put them in a pan with 1½ quarts (1.5 liters) water. Bring to the boil, then cover the pan and leave to steep for a few hours or overnight.",
+    "Peel and slice the ginger and add it to the jujubes. Bring everything to the boil and simmer for 45 minutes. Season to taste with honey or rock sugar, if desired. Strain before drinking hot or cold.",
+    "Simmer generous amounts of peeled, sliced fresh ginger in water for at least 10 minutes until you have a peppery infusion. Season to taste with brown sugar. This is a wonderfully warming winter drink, and is particularly advised as a tonic for women during menstruation. Make it as gingery as you like."
+  ],
+  "image": "/recipes/jujube-and-ginger-tea.jpg"
+}

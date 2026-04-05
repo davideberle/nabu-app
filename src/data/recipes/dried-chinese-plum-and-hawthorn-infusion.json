@@ -1,0 +1,32 @@
+{
+  "id": "dried-chinese-plum-and-hawthorn-infusion",
+  "name": "Dried Chinese plum and hawthorn infusion",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "suan mei tang 酸梅汤",
+  "intro": "In China, many tempting drinks are made from dried fruits. At the Wumen Renjia restaurant in Suzhou they serve a warm, dark, sour-sweet smoothie made from dried apricots and jujubes that have been steamed, blended and diluted with water. Another gorgeous and refreshing drink is the Hangzhou favorite, cool “sour plum soup.” This fruity infusion, sweetened with rock sugar, is made with dried black Chinese plums (wu mei), Chinese hawthorn fruit and dried licorice root, all of which can be found in Chinese supermarkets. The wrinkled plums are normally sold whole, while the hawthorn fruit, as small as cherries, tend to be sliced before drying. The infusion is served chilled and would be also be delicious on ice and in cocktails. It keeps in the fridge for a few days. The recipe comes from Hangzhou chef Chen Xiaoming. Makes about 1 quart (1 liter).",
+  "ingredients": [
+    {
+      "item": "Chinese dried black plums (10–15 fruits)",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "sliced dried Chinese hawthorn fruit",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "slices dried licorice root",
+      "amount": "5"
+    },
+    {
+      "item": "Rock sugar, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cover the plums, hawthorn fruit and licorice root with cold water and soak for 4 hours or overnight. After soaking, rinse the ingredients, then put them in a pan with 1½ quarts (1.5 liters) water, bring to the boil and simmer for 30 minutes. Sweeten with rock sugar to taste. Strain and chill before drinking."
+  ],
+  "image": "/recipes/dried-chinese-plum-and-hawthorn-infusion.jpg"
+}

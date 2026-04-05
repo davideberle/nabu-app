@@ -1,0 +1,72 @@
+{
+  "id": "mixed-vegetable-pickles",
+  "name": "Mixed Vegetable Pickles",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 10 minutes | cook time:3 to 5 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "mixed cut vegetables, such as peeled carrots, peeled cucumbers, cauliflower florets, and pearl onions, or 8 cups Hungarian wax peppers",
+      "amount": "8 cups"
+    },
+    {
+      "item": "sprigs fresh dill",
+      "amount": "2"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "4 cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cloves garlic, smashed",
+      "amount": "4"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 teaspoon dried Greek oregano, crumbled",
+      "amount": ""
+    },
+    {
+      "item": "yellow mustard seeds",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "or 3 whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "whole black peppercorns",
+      "amount": "10"
+    }
+  ],
+  "method": [
+    "Cut the carrots and cucumbers into 2-inch lengths and halve or quarter them lengthwise, depending on thickness, into similar sizes and shapes. Cut the cauliflower florets into halves or quarters so that they are roughly the same size as the carrots and cucumbers. Blanch the pearl or cipolline onions in boiling water for 3 to 5 minutes, depending on size. Drain and peel when cool. If using Hungarian wax peppers, pierce each one with a large roasting fork or paring knife to allow the pickling liquid to penetrate.",
+    "Put the prepared vegetables and dill sprigs in a nonreactive container. In a medium saucepan, combine all the remaining ingredients, bring to a boil, and pour over the vegetables. Set an inverted plate inside the container to keep the vegetables submerged. Let cool to room temperature, then refrigerate for at least 3 days or up to 2 weeks."
+  ],
+  "image": null
+}

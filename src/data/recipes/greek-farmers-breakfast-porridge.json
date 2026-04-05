@@ -3,8 +3,7 @@
   "name": "Greek Farmers’ Breakfast Porridge",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time:1 hour 10 minutes |serves 4",
   "ingredients": [
@@ -19,6 +18,10 @@
     {
       "item": "milk",
       "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
     },
     {
       "item": "to 6 tablespoons (60 to 90 ml) Greek honey",
@@ -47,12 +50,5 @@
     "Season with the salt and honey, using more or less according to your taste. Just before removing from the heat, stir in the parsley, mint, raisins, and pomegranate seeds. Remove the cinnamon stick.",
     "Serve in shallow bowls, sprinkled with cinnamon."
   ],
-  "time": {
-    "total": 115
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

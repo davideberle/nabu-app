@@ -1,0 +1,28 @@
+{
+  "id": "sweet-fermented-sauce-dip",
+  "name": "Sweet fermented sauce dip",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "tian mian jiang 甜面酱",
+  "intro": "This sleek, dark sauce is used as a dip for various foods, including fresh cucumber batons, and also as a relish to be served with roast meats. It keeps indefinitely at room temperature.",
+  "ingredients": [
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sweet fermented sauce (see here)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "white sugar, or to taste",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Boil the kettle. Heat the oil in a seasoned wok over a medium flame. Add the sweet fermented sauce and stir-fry for a minute or so until fragrant. Add ¼ cup (50ml) hot water and bring to the boil. Season with the sugar. Continue to stir until the sauce thickens to the consistency of tomato ketchup, then remove from the wok and set aside."
+  ],
+  "image": null
+}

@@ -1,0 +1,42 @@
+{
+  "id": "kritiko-phylo",
+  "name": "Kritiko Phylo",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time: 20 to 30 minutes |serves 4",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "3½–4 cups"
+    },
+    {
+      "item": "coarse sea salt or kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "vodka",
+      "amount": "½ cup"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "About ⅔ cup water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place 3½ cups flour and the salt in a food processor. Pulse a few times to mix. with the motor running, add the vodka, lemon juice and oil, then add just enough water to make a soft dough.",
+    "Let the dough rest in the processor for 15 minutes.",
+    "Process the dough for 1 to 2 minutes longer, or until it is slightly elastic. Let rest in the food processor for 20 to 30 minutes.",
+    "On a lightly floured surface, knead the dough briefly, until it is smooth and elastic, adding a little more flour if it is sticky. Divide the dough into 4 pieces. Cover 3 of them with plastic wrap and, with a rolling pin, roll out the dough as thin as possible, dusting often with a little flour. Or, if you have a pasta machine, roll out strips of phyllo as described in the manufacturer’s instructions. Repeat with the remaining dough. Use immediately, and proceed as instructed in the individual recipes."
+  ],
+  "image": null
+}

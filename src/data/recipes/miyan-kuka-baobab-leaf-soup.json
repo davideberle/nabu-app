@@ -1,0 +1,55 @@
+{
+  "id": "miyan-kuka-baobab-leaf-soup",
+  "name": "Miyan Kuka (Baobab Leaf Soup)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "This soup takes us all the way to the north of Nigeria. It is popular amongst the Hausa and is made using dry baobab leaf powder, also known as kuka powder. Baobab is highly medicinal and packed with incredible health properties. The soup has a dark colour and is traditionally made using groundnut oil, though palm oil can be used as well. The texture is slimy and sticky, reminiscent of Ogbono or Okra Soup.",
+  "ingredients": [
+    {
+      "item": "groundnut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "ground/grated dawadawa",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "baobab leaves powder (kuka powder)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pre-cooked meat alternative of your choice (such as mushrooms, seitan or tofu)",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Heat the groundnut oil in a pot, add the onions and ginger and cook on medium heat for 2-3 minutes, stirring frequently, until the onions start to soften.",
+    "Add the water, vegetable stock cube, dawadawa, cayenne pepper and seaweed flakes.",
+    "Add the baobab leaves powder a little at a time, stirring with a wooden spoon as you do so. The soup will thicken fast. Cook on medium heat for 3 minutes, then add the meat alternatives of your choice and season with salt to taste. Cook for another 5 minutes on medium heat.",
+    "Serve hot with tuwo masara, tuwo shinkafa or millet fufu."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/miyan-kuka-baobab-leaf-soup.jpg"
+}

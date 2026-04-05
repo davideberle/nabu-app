@@ -1,0 +1,42 @@
+{
+  "id": "hand-torn-mushrooms",
+  "name": "Hand-torn mushrooms",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "shou si jun gu 手撕菌菇",
+  "intro": "This is my attempt to re-create a delicious and unusual starter served at the Fu 1088 restaurant in Shanghai: a golden tumble of deep-fried mushrooms dressed in fragrant spring onion oil, with a hint of sweetness. At the restaurant, according to one of the waiters, they make it with a more exotic selection of mushrooms including “monkeyhead” mushrooms, “tea tree” mushrooms and “pig’s stomach” mushrooms. At home, I’ve used the more easily available oyster and king oyster mushrooms. You may feel you’re starting off with an excessive amount of mushrooms, but they will shrink considerably in the deep-frying oil.",
+  "ingredients": [
+    {
+      "item": "king oyster mushrooms",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "oyster mushrooms",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "cooking oil, plus extra for deep-frying",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Tear the mushrooms lengthways into strips about 5mm wide. Heat the deep-frying oil to 375°F (190°C). Deep-fry the mushrooms in batches until they have reduced in volume by about half and are tinged with gold. Remove with a slotted spoon and drain on paper towels.",
+    "Reheat the deep-frying oil to 375°F (190°C) and fry the mushrooms in batches again, until they turn a rich brown. Remove and drain on paper towels.",
+    "Put the spring onions in a heatproof bowl. Heat 4 tablespoons fresh cooking oil in a wok over a high flame until a little smoke is coming off the sides of the wok. Pour the oil over the spring onions—in order to extract their fragrance, the oil must be hot enough to produce a violent sizzle, so it’s best to test the temperature by dripping a small amount over the onions first. If there’s a vigorous sizzle, pour over the rest of the oil. Add the salt and sugar and mix well. Toss in the fried mushrooms, adding a little more salt to taste if you wish, then serve."
+  ],
+  "image": null
+}

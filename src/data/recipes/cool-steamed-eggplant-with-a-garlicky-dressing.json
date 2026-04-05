@@ -1,0 +1,49 @@
+{
+  "id": "cool-steamed-eggplant-with-a-garlicky-dressing",
+  "name": "Cool steamed eggplant with a garlicky dressing",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "liang ban qie zi 凉拌茄子",
+  "intro": "This Shanghainese appetizer is absurdly easy to make and wondrously satisfying. Steaming brings out a gentle, unfamilar side to a vegetable that is more commonly fried, baked or grilled, and, simple as they are, the seasonings taste sublime. Use Mediterranean eggplant or, if you can find them, the slender purple Chinese variety. I was introduced to this recipe by my Shanghainese friend Jason Li.",
+  "ingredients": [
+    {
+      "item": "eggplant",
+      "amount": "1 lb (500g)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Cut the eggplant lengthways into ½ in (1cm) slices, then cut these into ½ in (1cm) strips. Cut the strips into bite-sized lengths and pile them into a bowl that will fit inside your steamer basket. Place the bowl in the steamer basket and steam over a high flame for 20 minutes, until tender. Combine the soy sauce, vinegar and sugar in a small bowl.",
+    "Shortly before you wish to serve them, pile the eggplant in a serving dish and top them with the garlic, ginger and spring onion. Heat the oil in a seasoned wok or saucepan over a high flame until it is very hot. Carefully ladle the hot oil over the garlic, ginger and spring onions—it should produce a dramatic sizzle. Pour the soy sauce mixture over the eggplant. Gently stir in the seasonings and serve."
+  ],
+  "image": "/recipes/cool-steamed-eggplant-with-a-garlicky-dressing.jpg"
+}

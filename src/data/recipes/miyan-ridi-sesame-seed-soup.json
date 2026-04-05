@@ -1,0 +1,55 @@
+{
+  "id": "miyan-ridi-sesame-seed-soup",
+  "name": "Miyan Ridi (Sesame Seed Soup)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-5",
+  "intro": "A rich, nutty and nutritious soup from the middle belt and northern part of Nigeria. It is also known as Beniseed Soup and has a similar appearance to Efo Egusi thanks to the ground sesame seeds.",
+  "ingredients": [
+    {
+      "item": "sesame seeds",
+      "amount": "2 cups"
+    },
+    {
+      "item": "red bell peppers (deseeded and roughly chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "medium tomatoes (roughly chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "scotch bonnet chillis",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cubes Salt to taste",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Add the bell peppers, tomatoes and scotch bonnet chillis and water to the blender and blend until smooth. Set aside.",
+    "Heat the palm in a pot, add the chopped onions and cook over medium-high heat for 2-3 minutes until the onions start to soften. Add the blended pepper mix and cook for 5 minutes.",
+    "Add the blended sesame seeds, along with the vegetable stock cubes and salt to taste. Stir well and add 1 cup of water. Simmer on low-medium heat for 5 minutes, stirring occasionally.",
+    "Add the chopped spinach and cook for a further 3 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/miyan-ridi-sesame-seed-soup.jpg"
+}

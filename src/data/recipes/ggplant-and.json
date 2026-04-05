@@ -1,0 +1,54 @@
+{
+  "id": "ggplant-and",
+  "name": "Eggplant and Yogurt Dip",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time: 20 minutes | serves 4-6",
+  "ingredients": [
+    {
+      "item": "plain yogurt",
+      "amount": "2 cups"
+    },
+    {
+      "item": "eggplant, about 2 pounds",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "minced fresh dill",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped scallion",
+      "amount": "2 cups"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1½ tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350 degrees.",
+    "Line a mixing bowl with cheesecloth and empty yogurt into it.",
+    "Bring the edges of the cheesecloth up to make a bag; tie with string and suspend over the bowl to let yogurt drip.",
+    "Let stand in a cool place for 2 to 3 hours.",
+    "The yogurt will become as thick as sour cream.",
+    "Meanwhile, prick eggplant, place on a square of aluminum foil in a baking pan, and bake for 1 hour, or until very soft.",
+    "Split in half lengthwise and cool.",
+    "Remove as many seeds as possible, and scrape pulp well from skins.",
+    "Place pulp in a colander and let drain.",
+    "Put eggplant pulp in a bowl and add yogurt. Mix well.",
+    "Add remaining ingredients and chill thoroughly.",
+    "Garnish, if desired, with tomato wedges and olives."
+  ],
+  "image": "/recipes/ggplant-and.jpg"
+}

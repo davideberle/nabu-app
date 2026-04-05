@@ -1,0 +1,47 @@
+{
+  "id": "monk-wensi-s-tofu-thread-soup",
+  "name": "Monk Wensi’s tofu thread soup",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "wen si dou fu geng 文思豆腐羹",
+  "intro": "Perhaps more than any other dish, this ethereal tofu concoction shows off the dazzling knife skills for which Yangzhou chefs are famed. A single block of silken tofu is cut into paper-thin slices, then into hairlike strands, which drift in a gently thickened broth like some extraordinary subterranean flower, their whiteness set off by wisps of rosy ham and dark wood-ear mushroom. The dish is named after a Buddhist monk of the Tianning Temple in Yangzhou, who was an accomplished vegetarian cook and originally made it with slivers of tofu, lily flower and mushrooms in a vegetarian broth. Monk Wensi’s tofu was one of the dishes served at the lavish Man-Han banquet laid on for the Qianlong emperor in Yangzhou in the late eighteenth century; it was later adopted into the repertoire of the palace kitchen. One modern version of Wensi tofu can be found in the restaurants of Beijing celebrity chef Da Dong, who serves the classic white tofu threads in a black soup colored by squid ink: an utterly beautiful dish. Do not be disappointed if your tofu threads fail to match up to Yangzhou standards; the soup will be a pleasure to eat anyway! It’s a symphony of delicate colors and textures that will soothe and refresh your guests.",
+  "ingredients": [
+    {
+      "item": "dried wood-ear mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "3"
+    },
+    {
+      "item": "quart (1 liter) clear stock",
+      "amount": "1"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cover the wood-ear mushrooms in boiling water and set aside for at least half an hour.",
+    "Turn the tofu out onto a chopping board. Hold a Chinese cleaver or broad cutting knife perpendicular to the board and trim off and discard the sloping end of the block, so you have a clean perpendicular edge. Working slowly and steadily with an up-and-down chopping motion, cut the tofu into the thinnest slices you can—ideally about 1mm thick. Keep the tofu block wet by sprinkling it with a little cold water as necessary. When you have sliced about a third of the block, nudge the slices so they fall on their sides in overlapping layers. Cut them into the thinnest possible strips. Use the side of your cleaver or knife to gently scoop up the tofu slivers and place them in a bowl of cold water. Repeat with the rest of the block.",
+    "Drain the wood-ears, trim off any knobbly bits and then cut them into the thinnest possible slivers. Cut the ham and spring onion greens as evenly as possible into very thin slivers.",
+    "Bring the stock to the boil in a seasoned wok, skimming if necessary. Season with salt and pepper. Drain the tofu strips in a sieve and gently transfer them to the stock. Add the wood-ears. Bring the liquid back to the boil and adjust the seasoning if necessary. Give the starch mixture a good stir and add it in stages to the soup, stirring gently as the liquid thickens: it’s best to do this by nudging the soup with the back of a ladle so you don’t break up the tofu. When the liquid has a heavy, lazy consistency that holds the tofu threads easily, transfer to a serving bowl. Sprinkle over the strands of ham and spring onion and stir them in gently. Serve."
+  ],
+  "image": "/recipes/monk-wensi-s-tofu-thread-soup.jpg"
+}

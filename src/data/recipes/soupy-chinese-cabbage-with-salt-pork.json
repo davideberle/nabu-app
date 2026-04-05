@@ -1,0 +1,46 @@
+{
+  "id": "soupy-chinese-cabbage-with-salt-pork",
+  "name": "Soupy Chinese cabbage with salt pork",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "bai cai hui xian rou 白菜烩咸肉",
+  "intro": "There was snow on the ground when I visited the organic farm at Mugongshan in the Zhejiang hills. In a shed, seventeen eager, frenetic piglets that had been born the night before flowed over one another like quicksilver, squealing and squirming, bursting with irrepressible vitality. Outside, the walls were hung with dried chillies and corn cobs from last year’s harvest. In another shed dangled a forest of salted hams; enormous clay vats of pickling vegetables sat here and there. On the land, the terraced fields fell away below us, tiny green shoots peeking up through a frosting of white; bamboo-clad slopes rose all around. There were few vegetables to pick in this season, but the hardy Chinese cabbages stood amid the snow. They looked somewhat ridiculous: huge protuberances of tatty brown leaves tufted with snow, but when farmer Xu Hualong peeled away the rotted leaves, the cabbages inside were tight, crisp and luminous, hidden miracles. He picked one for our lunch. This is one of the dishes Mr. Xu’s wife cooked that day in her farmhouse kitchen, with their own home-salted pork. Chinese cabbage can seem like a watery, rather insipid vegetable, but it becomes dreamily soft and silky when cooked thoroughly in soups and stewed dishes like this one. The cabbage is simply boiled in a good stock with a little salt pork; a smidgeon of lard is a wonderful addition because it emulsifies in the stock and gives it a creamy richness.",
+  "ingredients": [
+    {
+      "item": "Chinese leaf cabbage",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "fat salt pork, pancetta or unsmoked bacon",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "A few slices of peeled fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "stock",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the Chinese cabbage widthways into 1 in (2cm) slices. Smack the spring onion whites gently with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Remove the rind from the salt pork and cut it into bite-sized slices.",
+    "Heat the lard or oil in a seasoned wok over a high flame. Add the spring onions and ginger and stir-fry briefly until they smell wonderful. Add the salt pork and fry briefly until it has become pale. Add the cabbage and stock and bring to the boil. Cover the wok and boil for 8–10 minutes, until the cabbage is silkily tender. After a few minutes, taste the broth and add a little salt if you need to (the salt pork will already have given it some saltiness). Finally, season with a little pepper and serve.",
+    "This is a dish from Zhu Yinfeng in southern Zhejiang. Cut the stalky white parts of a Chinese cabbage into evenly sized slices. Blanch, drain and sprinkle them with a little salt. Scrunch the salt into the cabbage with your fingers. Arrange the cabbage in a dish with thin slices of blanched salt pork on top. Add a few tablespoons of stock and a tablespoon or so of lard and season with salt. Steam over a high flame until the cabbage is beautifully tender but not falling apart. Serve."
+  ],
+  "image": "/recipes/soupy-chinese-cabbage-with-salt-pork.jpg"
+}

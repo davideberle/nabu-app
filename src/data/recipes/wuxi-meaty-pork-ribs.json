@@ -1,0 +1,71 @@
+{
+  "id": "wuxi-meaty-pork-ribs",
+  "name": "Wuxi meaty pork ribs",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "wu xi rou gu tou 无锡肉骨头",
+  "intro": "A speciality of the old canal town of Wuxi, these chunky pork ribs are clothed in a gorgeous, aromatic gravy with a bit of the sweetness for which the local cooking is renowned. According to local lore, the recipe originated in the Nanchan Buddhist Temple. The gist of the story is that during the Southern Song dynasty, a visiting monk called Jigong gave the owner of a local cooked-meat shop some invaluable tips on the art of stewing meat (somewhat curiously, since Chinese Buddhist monks are normally vegetarians). Jigong cooked his meat slowly, overnight, in one of the temple’s incense burners, making all the young monks “drool with greed,” and the shop owner adopted his method. This is one of several Jiangnan legends about meat-eating Buddhist monks; I’m not sure if this means that a little meat-eating was tolerated in monastic communities, that laypeople just enjoy telling tales about the hypocrisy of clerics, or if it’s simply an illustration of the Chinese infatuation with pork, a meat so delicious that even committed vegetarians are not immune to its delights. You’ll need a big, meaty tranche of spare ribs. I’ve given instructions for cutting them in the traditional Wuxi way, but you can, of course, use other cuts of rib. The red yeasted rice gives a gorgeous pink tint to the sauce but is unnecessary in terms of flavor. Note that the ribs must be salted overnight before cooking.",
+  "ingredients": [
+    {
+      "item": "lbs (850g) meaty pork ribs, in one piece",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red yeasted rice (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "A small piece of cassia bark or cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "stock or water",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "potato starch mixed with 2 tsp cold water",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Ask your butcher to saw the whole tranche of ribs crossways into two or three pieces, cutting through the rib bones at 2–2½ in (5–6cm) intervals. When you get home, make a cut through the meat between every other rib, so you end up with fat squares of meat, each with two embedded lengths of bone. Put the rib pieces in a container, add the salt, mix well and chill overnight.",
+    "If you are using the red yeasted rice, put it in a bowl or mortar and just cover it with hot water. Leave to steep for at least half an hour, then mash with a pestle. Put the salted ribs in a pan, cover with cold water and bring to the boil. Boil for 1–2 minutes, skim, then drain in a colander. Rinse well. Smack the ginger and spring onions lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Put the ribs in the cleaned pan or a clay pot. Add the ginger and spring onions, Shaoxing wine, spices, soy sauces, sugar and stock or water. If you are using the red yeasted rice, strain the mashed rice liquid through a tea strainer into the pot. For best results, rinse the residue a few times with the liquid in the pot to extract as much color as possible, then discard the residue. Bring everything to the boil, then cover and simmer over a medium flame for 1 hour.",
+    "Remove the lid, discard the ginger, spring onion and spices, then turn up the heat to reduce the sauce to about 1 in (2cm) deep, stirring frequently and spooning the liquid over the meat. Give the potato starch mixture a stir and add just enough to thicken it to a luxurious gravy, then serve."
+  ],
+  "image": "/recipes/wuxi-meaty-pork-ribs.jpg"
+}

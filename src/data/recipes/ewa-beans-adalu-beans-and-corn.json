@@ -1,0 +1,46 @@
+{
+  "id": "ewa-beans-adalu-beans-and-corn",
+  "name": "Ewa (Beans) / Adalu (Beans and Corn)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Ewa is the Yoruba word for beans and this popular style of cooking it is loved across Nigeria. Unlike Ewa Agoyin, the beans are stewed in “pepper”. It’s a simple dish to make, with very few ingredients, though the soaking and boiling of the beans can take time if you do not add baking soda or potash. If possible, use honey beans so that you can achieve that signature sweet taste. In reality, any variety of beans will also work well if you do not have access to honey beans.",
+  "ingredients": [
+    {
+      "item": "honey beans or black- eyed beans (soaked overnight then drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/2 teaspoon baking soda",
+      "amount": ""
+    },
+    {
+      "item": "medium onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "stew base (page 45) (optional)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add the beans and baking soda to a large pot with 2 and a 1/2 cups of water. (If using dried or fresh corn to make Adalu, add it in at this stage). Cover the pot partially and cook on low-medium heat for 40 minutes.",
+    "Add the chopped onions, palm oil, stew base, vegetable stock cube and salt. (If using frozen sweetcorn to make Adalu, add it at this stage). Cook for a further 10 minutes on medium heat.",
+    "Serve hot on its own or with a side of your choice such as Agege bread (page 49), fried plantain, soaked garri (page 187) and/or a sprinkling of dry garri on top."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/ewa-beans-adalu-beans-and-corn.jpg"
+}

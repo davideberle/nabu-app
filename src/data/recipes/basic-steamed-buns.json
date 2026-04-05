@@ -1,0 +1,42 @@
+{
+  "id": "basic-steamed-buns",
+  "name": "Basic steamed buns",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "baozi 包子",
+  "intro": "In the kitchens of the Lu Mansion, once the home of a rich Yangzhou salt merchant and his family, a team of chefs spend their early mornings wrapping baozi. Around them sit great basins of different stuffings; a stack of bamboo steamers stands on the end of the table. With a gentle rocking motion, one young chef quickly and effortlessly draws a circle of dough around the stuffing in a series of tiny pleats, finally drawing the dough into a “carp’s mouth” and pinching it closed. Baozi are found all over China but are a staple food in the wheat-eating north, where they tend to be large and substantial. In Yangzhou, pastry chefs make their steamed buns with a dainty southern touch. With a variety of fillings, sweet or savory, they may be eaten as part of a tea breakfast or lunch, the local equivalent of Cantonese dim sum. There’s a knack to wrapping baozi, and it’s easier to watch a video or ask someone to show you than to try to learn from the printed page. Once you’ve grasped the technique, however, they’re easy to make and quite addictive. I usually have some dough or stuffing left over; the remains of vegetarian stuffings can be eaten like salad, while small amounts of meaty stuffings can be stir-fried and served with a bowl of rice or noodles. If it’s dough you have left, just make a couple of plain steamed buns. You may like to serve meaty buns with little dishes of Chinkiang vinegar for dipping. I’m very grateful to chef Fu Bing for helping me work out this recipe, which should make 12–14 buns, depending on their size.",
+  "ingredients": [
+    {
+      "item": "Chinese low-gluten flour",
+      "amount": "2 cups (250g)"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "groundnut oil or melted lard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quantity stuffing of your choice (see here)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix the flour, yeast and sugar together in a bowl or on a clean work surface. Make a well in the center and gradually pour in around 150ml lukewarm water (ideally at about 80°F/27°C), drawing the flour in from the sides to make a soft but not sticky dough. When the dough has nearly formed, add the baking powder and oil or lard and mix well. Turn the dough onto a clean work surface and knead briefly until evenly mixed, cover with a damp cloth and set aside in a warm place for 20 minutes. Punch back the dough and knead well until pale and very smooth. Cover with a damp cloth and set aside for another 15 minutes. Brush the layers of a bamboo steamer lightly with oil or lard. Cut out fourteen 2½ in (6cm) squares of parchment paper.",
+    "Knead the dough briefly again, then shape it into two sausages with a diameter of 1½ in (4cm). Cut off 1 oz (30g) pieces, stand them on their ends and flatten them with your hand to make fat discs. Roll them into 3½ in (9cm) diameter circles that are thinner around the edges. Take a disc in your left hand (if you are right-handed), place a tablespoon of the stuffing on it and press it down into the center. Use your right hand to draw up and pleat the edges of the circle around the stuffing, turning it in your left hand as you do so. If you’re using more than one stuffing, try giving the buns distinguishing features, such as pinching the top into a point or a flat rim of dough, depending on the stuffing.",
+    "Seal the buns tightly and put them on the paper squares in the oiled steamer, filling both layers: make sure there is space between them, as they will expand. Cover the steamer and leave in a warm place for 20 minutes to rise. Fill the base with water, bring it to the boil over a high flame and steam, covered, for about 8 minutes, until springy. (The exact cooking time will depend on the size of your buns. You want the stuffing to be heated through and the dough to be cooked but retain a little springiness. If the buns appear flattened and droopy after steaming, they’re overcooked.)"
+  ],
+  "image": "/recipes/basic-steamed-buns.jpg"
+}

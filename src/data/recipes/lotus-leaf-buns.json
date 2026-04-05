@@ -1,0 +1,26 @@
+{
+  "id": "lotus-leaf-buns",
+  "name": "Lotus leaf buns",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "he ye bing 荷叶饼",
+  "intro": "Lotus leaf buns, made from a basic steamed bun dough shaped to resemble lotus leaves, are the traditional accompaniment to many rich, meaty dishes, such as Dongpo pork, steamed pork in rice meal and Shaoxing pork with dried fermented greens. They can be made in advance and frozen until you wish to use them. You’ll need a clean comb or a serrated knife to decorate them. Makes 15–20 buns.",
+  "ingredients": [
+    {
+      "item": "quantity Basic steamed bun dough (see here)",
+      "amount": "1"
+    },
+    {
+      "item": "A little cooking oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Make the basic steamed bun dough and let it rest. Oil the layers of a steamer. Turn the dough out onto a lightly floured work surface. Knead it briefly, then cut or roll it into a 1½ in (3cm) thick cylinder. Use a knife to cut this into 1¾ in (4cm) sections weighing about ¾ oz (25g) each. Lightly dust your hands with flour, turn each section on its end and flatten it with the palm of your hand, then roll it out into an 3 in (8cm) circle. Repeat with the rest of the dough.",
+    "Take a circle of dough and brush the upper side very lightly with oil. Use a chopstick placed across the center to help you fold it in half. Place the folded circle on the work surface and use the teeth of a clean comb or a serrated knife to prick lotus leaf veins into the dough. Use the back of the comb or knife to nudge the rounded edges of the bun in at the end of each “leaf vein.” Pinch out the center of the straight edge of the semicircle to make a “stem.” Put the buns on the oiled rack of a steamer and leave to rise for 20 minutes.",
+    "Steam the buns over a high flame for about 8 minutes, until cooked through. Serve immediately or leave to cool, then refrigerate or freeze. Steam again to heat through before serving."
+  ],
+  "image": "/recipes/lotus-leaf-buns.jpg"
+}

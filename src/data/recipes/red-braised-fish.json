@@ -1,0 +1,66 @@
+{
+  "id": "red-braised-fish",
+  "name": "Red-braised fish",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "hong shao xian yu 红烧鲜鱼",
+  "intro": "Red-braised fish is a favorite dish on domestic supper tables across the Lower Yangtze region. A whole fish is fried until its skin is slightly caramelized, then cooked with Shaoxing wine, dark soy sauce and sugar until tender and bathed in a sleek, luxurious sauce (skin-on fillets may also be used). The sauce itself is magnificent soaked into plain white rice; any leftovers can be reheated with vegetables or tofu. One common variation on this recipe is the “spring onion-braised” crucian carp, in which the fish is red-braised with a whole bunch of slender spring onions; tender and silky after cooking, they are laid neatly over the fish before serving. This method works equally well with freshwater fish and sea fish such as bream and bass. Chinese cooks often fry their fish in lard, or a mixture of lard and vegetable oil, to enhance its flavor. I was lucky enough to be given lessons in the art of red-braising by chefs Dong Jinmu of the Dragon Well Manor restaurant and Zhu Yinfeng of the Agricultural Academy, and this recipe is based on their teaching. Any leftover sauce will set to a jelly: in the old days, a friend in Nanjing told me, people would cut up the jellied stock with its fragments of fish and eat it as an appetizer. A similar method is used to to red-braise the heads and tails of bighead carp.",
+  "ingredients": [
+    {
+      "item": "sea bream or sea bass (about 1¾ lbs/800g), scaled and gutted",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onion",
+      "amount": "1"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Make 3 or 4 parallel diagonal slashes through the thickest part of the fish, then a couple in the opposite direction, to make a broad crisscross pattern. Rub the fish inside and out with the marinade wine and salt and leave for a few minutes. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Tie the spring onion into a knot, if it’s long and slender enough to make this possible.",
+    "When you are ready to cook, boil the kettle. Pat the fish dry with paper towels, then rub both sides with the 2 teaspoons dark soy sauce. Heat the lard or cooking oil in a seasoned wok over a high flame. Add the fish, turn the heat down to medium and fry until browned. Turn the fish, add the ginger and spring onion and fry until the other side is colored and the ginger and onion are fragrant. (Try not to move the fish around too much to avoid breaking the skin; just tilt the wok gently to make sure it is evenly colored.) Add the Shaoxing wine, 1½ tablespoons dark soy sauce, the sugar and 1 cup (200ml) hot water from the kettle. Bring to the boil over a high flame. Cover with a lid and cook over a medium flame for about 4 minutes. Carefully turn the fish, cover and cook for about another 4 minutes, until the thickest part of the fish is cooked through.",
+    "Transfer the fish to a serving plate, discarding the ginger and spring onions. Turn up the heat to reduce the sauce to a dark, glossy gravy. Pour the sauce over the fish, scatter with spring onion greens and serve."
+  ],
+  "image": null
+}

@@ -1,0 +1,70 @@
+{
+  "id": "hangzhou-sweet-and-sour-pork",
+  "name": "Hangzhou sweet-and-sour pork",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "tang cu li ji 糖醋里脊",
+  "intro": "This is a delicious variation on the sweet-and-sour pork theme, and less gaudy than the Cantonese restaurant version. It’s the kind of dish that you might find at dinner in a Hangzhou home, and was taught to me by master chef Hu Zhongying of the Hangzhou Restaurant.",
+  "ingredients": [
+    {
+      "item": "pork tenderloin",
+      "amount": "10 oz (275g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "sesame oil (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "A small handful of spring onions, green parts only, cut into 2 in (5cm) lengths",
+      "amount": ""
+    },
+    {
+      "item": "Cooking oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "potato starch mixed with 2 tsp cold water",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Cut the pork into bite-sized slices, about ½ in (1cm) thick. Add the salt and Shaoxing wine and mix well. Mix the potato starch and flour with about 5 tablespoons water to make a thick batter. Add it to the pork and stir well to coat all the pieces. Combine all the sauce ingredients in a bowl.",
+    "In a seasoned wok, heat the oil for deep-frying to 350°F (150°C). Use a pair of chopsticks to drop pieces of pork into the oil in batches. Fry for about 3 minutes, until crisp and just cooked through, then remove and set aside. Reheat the oil to 375–400°F (190–200°C). Fry the pork again until golden and crisp; set aside. Pour off the oil into a heatproof container.",
+    "Return the pork pieces to a dry wok over a high flame. Give the sauce a quick stir and immediately pour it into the base of the wok. When the sauce boils and starts to thicken, stir vigorously to coat the pieces in the sauce, which will quickly reduce to a treacly glaze. Add the spring onion greens and turn a couple of times to give them a lick of heat. Remove from the heat, stir in the sesame oil, if using, and serve."
+  ],
+  "image": null
+}

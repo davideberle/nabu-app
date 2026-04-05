@@ -1,0 +1,38 @@
+{
+  "id": "zhoushan-pan-fried-tofu",
+  "name": "Zhoushan pan-fried tofu",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xiang jian dou fu 香煎豆腐",
+  "intro": "We drove over the endless bridge across the bay from Ningbo, low over the water, with no land visible on either side. Eventually we reached the mud flats and ponds of Zhoushan, and then drove into the gentle hills, covered in small trees and feathery bamboo. Later, my friend Lin Wei and his companions took me to one of their favorite Dinghai restaurants, where we chose our dishes from a display of ingredients on the ground floor. We ended up eating raw salt-cured crab, spiced cuttlefish, red-braised pomfrets, steamed tonguefish, enormous king shrimp and clams with celery, as well as an array of vegetable dishes that included this one. The tofu had been pre-steeped in brine, which gave it a surprisingly delicious flavor, especially when scattered with morsels of ham and spring onion.",
+  "ingredients": [
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lbs (600g) plain white tofu",
+      "amount": "1½"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "very finely chopped Spanish or Chinese cured ham, steamed briefly",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Pour 2½ cups (600ml) cold water into a pan, add the salt and stir to dissolve. Slice off the firm outer skin of the tofu block (you can keep this and use it in a stir-fry or a salad). Cut the rest of the tofu into bite-sized slices about ½ in (1cm) thick. Put the tofu slices in the salted water, leave to soak for 45 minutes, then drain.",
+    "Heat the cooking oil in a seasoned frying pan. Add the tofu slices in a single layer and fry over a medium flame until beautifully golden on both sides. You may need to cook them in a couple of batches.",
+    "When the tofu is nearly ready, sprinkle it with the ham and spring onions, cover the pan for a few seconds to give them a brief burst of heat, then transfer to a serving dish. Serve hot or cool."
+  ],
+  "image": null
+}

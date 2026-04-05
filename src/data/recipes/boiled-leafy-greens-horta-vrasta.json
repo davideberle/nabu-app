@@ -1,0 +1,36 @@
+{
+  "id": "boiled-leafy-greens-horta-vrasta",
+  "name": "Boiled Leafy Greens (Horta Vrasta)",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep. time 15 minutes | cooking time 20 minutes | serves 4",
+  "ingredients": [
+    {
+      "item": "curly endive (or any leafy green of your choice, like chicory or Swiss chard)",
+      "amount": "3 pounds"
+    },
+    {
+      "item": "white vinegar for adding to soaking water)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "juiced lemon",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Wash the greens well before cooking and trim any coarse stems. Discard any brown leaves. Soak the greens in a clean sink with plenty of water and about a cup of white vinegar. Any sand or residue will fall to the bottom of the sink while the greens will float on top. Remove the greens to a colander before draining the water.",
+    "Bring a large pot of water to a boil and then add about a tablespoon of salt to the water. Carefully submerge the greens in the pot and boil for about 20 minutes or until the thickest parts of the stems are tender. Be careful not to over boil. Drain in a colander and place in a bowl. Dress with extra virgin olive oil, lemon juice, and a bit of salt and pepper to taste. Serve the greens warm or at room temperature."
+  ],
+  "image": null
+}

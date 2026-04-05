@@ -1,0 +1,47 @@
+{
+  "id": "green-bok-choy-with-dried-shrimp",
+  "name": "Green bok choy with dried shrimp",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "kai yang chao cai 开洋炒菜",
+  "intro": "This wonderful, quick stir-fry was taught to me by master chef Hu Zhongying in the kitchens of the Hangzhou Restaurant. A handful of dried shrimp lends an umami richness to the juicy greens; a little stock will further enhance their flavor, but you can use water if you don’t have any to hand. The recipe may sound similar to the stir-fried cabbage with dried shrimp here, but it has a totally different flavor and mouthfeel. In Chinese markets, especially in places near the coast such as Ningbo and Zhoushan, you will find great tubs of dried shrimp of different colors and sizes, from the moon-white papery variety to orange-pink creatures as large as the fresh saltwater shrimp that are eaten as a main ingredient. In this dish I use the smallish pink ones that are known as “open ocean,” “sea rice” and “rice shrimp” in different dialects. They are sold in most Chinese food shops and keep well in the fridge or freezer. If you wish, you can thicken the cooking juices with potato starch to give it a glossy, professional finish. The same method can be used for other vegetables, such as choy sum and spinach. If you have the very thick, stalky kind of choy sum, chop it into chopstickable pieces before cooking.",
+  "ingredients": [
+    {
+      "item": "dried shrimp (about ⅓ oz/10g)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "stock or water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "potato starch mixed with 1 tsp cold water (optional)",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the shrimp and Shaoxing wine in a bowl and cover with hot water; soak for at least half an hour. Quarter the bok choy lengthways, then cut it into chopstickable lengths.",
+    "Heat the oil in a seasoned wok over a high flame. Add the shrimp and stir-fry until they smell delicious, then add the bok choy and stir until the leaves have wilted. Pour the stock or water around the sides of the wok. Bring to the boil, cover and cook for a minute or so to heat through. Remove the lid, season with salt and stir briefly to allow the liquid to reduce. Give the potato starch mixture a stir and mix into the wok, if using. Serve.",
+    "Soak the shrimp as in the main recipe. Cut the zucchini into fairly thin slices. Stir-fry the shrimp in oil until fragrant, add the zucchini and stir-fry until piping hot. Add a little stock and season with salt; cover the wok and cook for a short while until tender. Lift the lid to reduce the liquid, then serve.",
+    "Soak the mushrooms in boiling water for half an hour to reconstitute, then trim off any knotty bits. Stir-fry with green bok choy. The slippery-crisp mushrooms are a nice contrast to the juicy vegetables."
+  ],
+  "image": "/recipes/green-bok-choy-with-dried-shrimp.jpg"
+}

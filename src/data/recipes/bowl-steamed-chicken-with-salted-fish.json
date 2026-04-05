@@ -1,0 +1,47 @@
+{
+  "id": "bowl-steamed-chicken-with-salted-fish",
+  "name": "Bowl-steamed chicken with salted fish",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xiang kou ji 鲞扣鸡",
+  "intro": "Steaming is one of the most ancient and characteristic of Chinese cooking methods, although it has been eclipsed by stir-frying in most people’s perceptions of Chinese cuisine. Pottery steamers have been found among the relics of Chinese Neolithic sites, including the Hemudu site in Zhejiang. Steaming is still one of the finest ways of preserving the innate or “root” flavor (ben wei) of ingredients, without the transformations of searing, browning or tossing at high temperatures in a wok. In the past, it was also used because it was an economical means of cooking a few separate dishes in the steam of the rice pot, thus saving fuel. The following dish is a favorite in Shaoxing and Hangzhou. It is a kou dish, which is to say one in which ingredients are fitted neatly into a bowl, steamed, then turned out onto a serving dish in the form of a dome. In this case, strips of partially cooked chicken are interleaved with slices of pungent salted fish. The salted fish is a treasured ingredient in Zhejiang, but it’s an acquired taste for those who did not grow up with it. It has a funky, complex flavor reminiscent of ripe washed-rind cheeses, which perks up the gentle chicken flesh in a darkly magnificent way. Chinese people don’t expect Westerners to like their salted fish. The first time I served this dish to non-Chinese guests, I warned them that they might dislike it—but they adored it, and one of my friends described the dish as “a revelation.”",
+  "ingredients": [
+    {
+      "item": "Chinese salted mackerel or 2½ oz (65g) dried yellow croaker",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "boned chicken legs or thighs only (about 1 lb/550g)",
+      "amount": "2"
+    },
+    {
+      "item": "spring onion",
+      "amount": "1"
+    },
+    {
+      "item": "slices fresh ginger, skin on",
+      "amount": "3"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chicken stock or water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "If you are using dried yellow croaker, soak it in cold water for at least 1 hour. Bring a pan of water to the boil, add the chicken and poach it for about 5 minutes, until semi-cooked. Drain and rinse it in cold water to cool. Pick out the spine of your salted fish, along with as many bones as possible, then cut the fish into slices.",
+    "Cut each boned chicken leg into two, separating thigh and drumstick. Lay each piece skin-side up on a chopping board and cut it evenly into 1 in (2cm) strips, keeping the slices together in their original positions as far as possible. Scoop each set of slices up with a large knife or Chinese cleaver and place them in a 2 cups (500ml) heatproof bowl so that the slices are lined up with the skin against the inside of the bowl. Tuck slices of salted fish at regular intervals in between the chicken slices. When the inside of the bowl is covered, fill the bowl with any remaining pieces of chicken and morsels of salted fish.",
+    "Smack the spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers and cut it in half. Put the spring onion and ginger on the chicken and add the Shaoxing wine and chicken stock or water. Cover the bowl with a heatproof plate or aluminum foil, place it in a steamer basket and steam over a high flame for 30 minutes.",
+    "To serve, remove the plate or foil, cover the bowl with a serving dish and swiftly invert it, so the chicken falls out in a dome surrounded by its cooking juices. Garnish with the spring onion greens. Don’t forget to spoon the wild, heady juices over your rice."
+  ],
+  "image": null
+}

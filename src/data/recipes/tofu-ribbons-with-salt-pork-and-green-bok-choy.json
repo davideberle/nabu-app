@@ -1,0 +1,42 @@
+{
+  "id": "tofu-ribbons-with-salt-pork-and-green-bok-choy",
+  "name": "Tofu ribbons with salt pork and green bok choy",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xian rou bai ye tang cai 咸肉百叶棠菜",
+  "intro": "This is a particularly harmonious combination of pale, ribbony tofu, savory salt pork and fresh, juicy greens. The recipe is based on some advice from a salt pork vendor in a Shanghai market. It’s typical of Jiangnan cooking in the use of a little meat and stock to make vegetarian ingredients taste sumptuous. With rice, it could suffice as a simple meal for two. Some cooks might add sliced bamboo shoot; in Yangzhou I had a version that included both sliced carrot and bamboo shoot, along with fresh green soybeans and wood-ear mushrooms. All of which is to say, go ahead and vary the recipe according to what you have in your fridge or larder.",
+  "ingredients": [
+    {
+      "item": "fresh tofu sheets",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "unsmoked bacon, very thickly cut if possible",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "rich chicken or fine banquet stock (see here)",
+      "amount": "2 cups (450ml)"
+    },
+    {
+      "item": "lard (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roll up the tofu sheets and cut them into ½–¾ in (12–15mm) ribbons. Cut the bacon across the grain into ½ in (1cm) strips, keeping skin on if you wish. Cut the bok choy into large bite-sized pieces (if you are using baby bok choy, simply halve it lengthways).",
+    "Bring a pan of water to the boil, add the tofu and blanch to refresh and reheat. Remove it from the pan with a slotted spoon and drain on paper towels. Tip the bacon into the boiling water and blanch until just cooked. Remove with a slotted spoon. Blanch the bok choy very briefly, just to wilt the leaves. Remove and drain.",
+    "Put the stock in a wok or saucepan with the tofu, pork and lard, if using, bring to the boil and boil for about 3 minutes. Season with salt and pepper. Add the blanched greens, heat through and turn everything into a deep serving dish to serve."
+  ],
+  "image": "/recipes/tofu-ribbons-with-salt-pork-and-green-bok-choy.jpg"
+}

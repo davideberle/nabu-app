@@ -1,0 +1,61 @@
+{
+  "id": "spicy-stir-fried-tofu-with-pickles",
+  "name": "Spicy stir-fried tofu with pickles",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "jia chang xiao chao huang 家常小炒皇",
+  "intro": "This recipe is based on an unexpectedly delicious dish I tasted once at the restaurant of the Liuying Hotel in Hangzhou. It was made with king oyster mushrooms and a particular pickled mustard from nearby Ningbo. The chef, Niu Youqiang, kindly explained the method to me and this is my attempt to re-create it, but using the more easily available snow vegetable in place of the Ningbo preserve. King oyster mushrooms (known in Chinese as apricot abalone mushrooms, xing bao gu), are sold in many Chinese supermarkets. If you can’t find them, use button and/or oyster mushrooms instead. Served with rice, this quick stir-fry makes a simple supper in itself, and it’s completely vegetarian if you use vegetarian stock.",
+  "ingredients": [
+    {
+      "item": "spiced firm tofu (2 cakes)",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "king oyster mushrooms, or a mixture of button and oyster mushrooms",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "medium-hot dried chillies, or to taste",
+      "amount": "3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "snow vegetable",
+      "amount": "3½ oz (90g)"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Holding your knife at an angle, cut the tofu into slices about ⅙ in (5mm) thick. Cut the mushrooms into ⅛ in (3–4mm) slices. Snip the chillies in half with a pair of scissors and shake out the seeds as much as you can. Combine the sauce ingredients in a small bowl.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the chillies and stir-fry for a few seconds until you can smell them, then add the snow vegetable and continue to stir-fry until it too smells delicious. Tip in the mushrooms and continue to stir-fry. When the mushrooms are tender, add the tofu and heat through. When all is piping hot, give the sauce a stir and pour it in, stirring as the liquid reduces. Turn off the heat, stir in the sesame oil and serve."
+  ],
+  "image": "/recipes/spicy-stir-fried-tofu-with-pickles.jpg"
+}

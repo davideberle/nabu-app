@@ -3,8 +3,7 @@
   "name": "Greek Yogurt Pancakes",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time: 15 minutes |serves 4",
   "ingredients": [
@@ -18,15 +17,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1½ tsp"
+      "amount": "1½ teaspoons"
     },
     {
       "item": "baking soda",
-      "amount": "¼ tsp"
+      "amount": "¼ teaspoon"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ teaspoon"
     },
     {
       "item": "Greek yogurt, preferably full-fat",
@@ -47,12 +46,5 @@
     "When ready to make the pancakes, in a nonstick skillet, melt 2 teaspoons butter over medium-high heat, tilting the pan so the butter is evenly distributed over the surface.",
     "Pour the batter into the skillet, a ladleful at a time, to form pancakes that are about 4 inches (10 cm) in diameter. Don’t overcrowd the skillet. Flip the pancakes when the underside is golden brown and continue to cook until both sides are golden. Transfer to a plate, dabbing each pancake with a little butter as you stack them. Continue until the all the batter has been used, adding butter to the skillet between batches as needed. Serve hot."
   ],
-  "time": {
-    "total": 15
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

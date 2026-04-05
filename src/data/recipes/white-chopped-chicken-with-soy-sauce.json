@@ -1,0 +1,37 @@
+{
+  "id": "white-chopped-chicken-with-soy-sauce",
+  "name": "White chopped chicken with soy sauce",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "bai zhan ji 白斩鸡",
+  "intro": "White chopped chicken is served as an appetizer across the Jiangnan region, as it is in the Cantonese south. The simplest of Chinese chicken dishes, it relies not only on careful control of cooking temperature, but also on the quality of the bird. In Shanghai, where it’s a particular favorite, they like to use the local “triple yellow” chickens, so named because of their yellow skin, beaks and feet. Do make sure you use a fine free-range chicken, preferably one with golden skin. The bird is steeped in very hot water, then chilled quickly in iced water, so the flesh has a magnificent succulence with just a hint of tautness. Even the breast, so often cottony in texture when cooked by other methods, should be sleek, juicy and delicious. In China, they serve the meat chopped, on the bone, into bite-sized strips, but you can remove it from the bone if you wish. For maximum simplicity, eat it with just a dip of a really good, rich soy sauce. At home I often use an organic Japanese-style tamari that has both the dark treacly color and the saltiness of old-fashioned Chinese soy sauces. Otherwise, you might like to dip it in a zesty relish made from spring onion and ginger (see variation). This cooking method can leave the chicken a little pink at the bones; if this bothers you, return it to the boil for a third time and steep for a further 5 minutes. To make sure the chicken is cooked to internationally approved standards, use a meat thermometer to check that the innermost parts are heated to 165°F (74°C).",
+  "ingredients": [
+    {
+      "item": "free-range chicken (about 4 lbs/1.8kg)",
+      "amount": "1"
+    },
+    {
+      "item": "Iced water, for steeping",
+      "amount": ""
+    },
+    {
+      "item": "Sesame oil, to taste",
+      "amount": ""
+    },
+    {
+      "item": "A rich, flavorful soy sauce, to dip",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring 5 quarts (4.5 liters) water to the boil in a large stockpot. Carefully put the chicken in the boiling water, breast-side down, then lift it out again, letting the water drain out of its cavity. Put it back in the water (this helps even out the temperature of the water inside and outside the bird—some recipes recommend doing it several times). Bring the water back to the boil, immediately turn the heat down low and simmer extremely gently for 8 minutes. After this, remove from the heat, cover with a close-fitting lid and leave undisturbed for 20 minutes.",
+    "Heat again over a high flame until the liquid is just beginning to boil. Remove from the heat, cover again and leave to steep for another 15 minutes. Fill another large pan with iced water.",
+    "When the chicken is ready, carefully remove it from the cooking liquid and let the hot water drain out of its cavity. Place it in the iced water and leave for 15 minutes.",
+    "Remove it from the iced water, then drain and pat it dry with paper towels. Rub the skin with a little sesame oil to give it a fragrant gloss. Leave to cool completely.",
+    "Before serving, cut the chicken, on or off the bone as you please, into bite-sized pieces. Use the cooking liquid as stock, perhaps to make a chicken congee (see here). Serve with soy sauce to dip.",
+    "This relish is unbelievably delicious and can be served alongside the soy sauce dip. Put 2 tbsp very finely chopped fresh ginger and 1 tbsp very finely chopped spring onion white in a dish. Heat 1½ tbsp cooking oil until very hot, then pour it over them, producing a vigorous sizzle. Stir in 1 tbsp very finely chopped spring onion greens, 1 tsp salt and ½ tsp sugar."
+  ],
+  "image": "/recipes/white-chopped-chicken-with-soy-sauce.jpg"
+}

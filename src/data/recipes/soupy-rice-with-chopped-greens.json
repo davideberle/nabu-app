@@ -1,0 +1,41 @@
+{
+  "id": "soupy-rice-with-chopped-greens",
+  "name": "Soupy rice with chopped greens",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "cai pao fan 菜泡饭",
+  "intro": "“Soaked” or soupy rice is an excellent way of using up leftovers. All you need to do is reheat yesterday’s rice in stock or water with any little tidbits you have hanging around, and perhaps a smidgeon of lard for extra richness. Not surprisingly, there are many variations on this theme. In Zhenjiang I once had a wonderful version made with chopped greens, salt pork and dried shiitake, while a Hangzhou favorite is soupy rice with morsels of intensely flavored soy sauce–cured duck. At home I often make soupy rice with brown rice, which has an even more delightful texture: silky and chewy at the same time. The mouthfeel of soupy rice, with its individual rice grains, is distinct from the mouthfeel of congee, in which rice and liquid fuse into one voluptuous mass. There’s no need to weigh and measure ingredients for this kind of dish: the measurements in the recipe are just a guide. Add enough liquid to generously cover but not overwhelm the rice, which will swell and become juicy in the stock. Season the rice properly if you’re planning to make a meal of it; under-season if you’ll be eating it with other dishes or just a salty relish—cubes of fermented tofu, perhaps, or a hard-boiled salted duck egg or some pickles.",
+  "ingredients": [
+    {
+      "item": "fresh shiitake mushrooms",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "leftover cooked rice (¾ cup/150g when uncooked)",
+      "amount": "1¼ cups (300g)"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Remove the mushroom stalks and thickly slice the caps. Chop the bok choy into bite-sized pieces. Heat the lard or cooking oil in a seasoned wok over a high flame. Add the mushrooms and stir-fry until softened; add the bok choy and continue to stir-fry until just wilted. Set aside.",
+    "Bring the stock to the boil in a wok or saucepan. Add the leftover rice, breaking up any clumps, bring to the boil again and cook until just heated through. Stir in the bok choy and mushrooms and season with salt and pepper. Serve."
+  ],
+  "image": "/recipes/soupy-rice-with-chopped-greens.jpg"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "springtime-noodles",
+  "name": "“Springtime” noodles",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "yang chun mian 阳春面",
+  "intro": "This is the simplest form of Jiangnan soup noodle, and is made in homes across the region. It consists solely of plain wheaten noodles served in a bowlful of clear stock seasoned with dark soy sauce and garnished with sesame oil and sliced spring onion greens, without any meat, fish or vegetables. The noodles peep shyly out of their dark, aromatic broth. The name yang chun mian literally means “springtime noodles,” although some sources suggest it’s rather a reference to “Indian summer” (xiao yang chun). Eat these as a snack on their own, or with another dish or two on the side. Serves 2.",
+  "ingredients": [
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "fresh Chinese wheat noodles",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Divide the soy sauces and sesame oil between 2 serving bowls. Bring the stock to the boil and keep it warm. Bring a pan of water to the boil. Add the noodles, separate them with chopsticks and boil until cooked to your liking. Drain well.",
+    "Pour the hot stock over the seasonings in the bowls. Divide the noodles between the serving bowls and garnish with the spring onions."
+  ],
+  "image": null
+}

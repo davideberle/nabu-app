@@ -1,0 +1,33 @@
+{
+  "id": "clear-simmered-silkie-chicken-soup",
+  "name": "Clear-simmered silkie chicken soup",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "qing dun wu ji 清炖乌鸡",
+  "intro": "When it comes to cooking a really good chicken, less is often more. Typically, the most flavorful birds—mature, free-range hens—are “clear-simmered,” which is to say stewed gently in water, on their own, for two hours or more, until the flesh falls from the wings and the broth is replete with their delicious essences. Often, a little ginger and spring onion is tucked in to the pot to refine the flavor of the bird; medicinal herbs or goji berries may be added to enhance the tonic properties of the soup. This cooking method encourages appreciation of the ben wei or “essential taste” of the bird, without any distractions, and is the kind of which eighteenth-century gourmet Yuan Mei enthusiastically approved: “Every ingredient has its own taste,” he wrote, “which should not be confused with that of others … These days, one sees chefs who boil up chicken, duck, pork and goose together in a single broth … creating flavors so blurred that one might as well be munching on candlewax. If chickens, ducks, pigs and geese had souls, I fear they would bring lawsuits against such malefactors in the City of the Wronged Dead.” The finest chicken soups I’ve ever tasted have been made in the Chinese countryside, from two- or even three-year-old farmhouse birds that produce a divine, golden broth. Seek out good free-range birds, or, as in this recipe, the white-feathered, black-skinned silkie chicken that can be found in Chinatowns and, increasingly, mainstream food shops too. In China, soups like this are typically made in a clay pot.",
+  "ingredients": [
+    {
+      "item": "silkie chicken (about 1⅓ lbs/600g)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "A small handful of goji berries (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a large pan of water to the boil. Leave the chicken whole or chop it, on the bone, into bite-sized chunks. Add the chicken to the pan and blanch it for a minute or so. Remove it from the pan and rinse well under the tap. Discard the blanching water and rinse out the pan. Smack the ginger and spring onions lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Put the chicken in a saucepan or clay pot, cover it generously with fresh water and bring to the boil, skimming well. Add the ginger and spring onion, return to the boil and simmer gently for 2–3 hours. Before serving, add the goji berries, if using, and simmer for a few minutes until plump."
+  ],
+  "image": "/recipes/clear-simmered-silkie-chicken-soup.jpg"
+}

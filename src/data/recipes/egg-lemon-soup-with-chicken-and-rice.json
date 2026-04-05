@@ -1,0 +1,45 @@
+{
+  "id": "egg-lemon-soup-with-chicken-and-rice",
+  "name": "Egg-Lemon Soup with Chicken & Rice",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:18 minutes |serves 6",
+  "ingredients": [
+    {
+      "item": "boneless, skinless chicken breast, about 3/4 pound",
+      "amount": "1"
+    },
+    {
+      "item": "quart unsalted chicken stock",
+      "amount": "1"
+    },
+    {
+      "item": "1/4 cup long-grain rice",
+      "amount": ""
+    },
+    {
+      "item": "cornstarch dissolved in 3 tablespoons water",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "large egg yolks",
+      "amount": "3"
+    },
+    {
+      "item": "1/3 cup fresh lemon juice, plus more as needed",
+      "amount": ""
+    },
+    {
+      "item": "Chopped fresh dill for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the chicken breast in a medium pot with the stock and 2 cups of water. Bring to a simmer, add the rice and 1 teaspoon salt, cover, and reduce the heat to low. Cook until the rice is tender, about 18 minutes. Remove the chicken breast and, when cool enough to handle, shred the chicken by hand.",
+    "Return the broth to a simmer over medium-high heat. Whisk in the cornstarch mixture and return to a simmer.",
+    "In a medium bowl, whisk the egg yolks with the 1/3 cup lemon juice, then whisk in about half of the hot broth to warm the eggs. Return the mixture to the saucepan and bring to a boil, whisking constantly. Remove from the heat. Stir in the shredded chicken. Taste and adjust the salt and lemon. Divide among soup bowls, topping each portion with some chopped dill and pepper. Serve immediately."
+  ],
+  "image": null
+}

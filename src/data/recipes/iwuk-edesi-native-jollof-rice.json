@@ -1,0 +1,58 @@
+{
+  "id": "iwuk-edesi-native-jollof-rice",
+  "name": "Iwuk Edesi (Native Jollof Rice)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "This rich dish, also known as palm oil rice, is popular amongst the Efik and Ibibio people in south Nigeria. Although traditionally made with an assortment of seafood, this vegan version works well with plant-based meat substitutes such as mushrooms, seitan or tofu. If you are able to get seaweed flakes, that is a great way to add a seafood hint to the dish. If you ever get bored with regular Jollof Rice, this is a great dish to make.",
+  "ingredients": [
+    {
+      "item": "1/4 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "red onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "long grain rice (washed and drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "iru (fermented locust beans)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cubes",
+      "amount": "2"
+    },
+    {
+      "item": "ugu/pumpkin leaves or spinach (washed and shredded)",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot and add the chopped onions. Fry for 2-3 minutes until the onions start to soften. Add the stew base and tomato paste and cook for 5 minutes on medium-high heat.",
+    "Add the water and the rice. Season with iru, vegetable stock cubes, seaweed and salt. Cover and leave to simmer on low heat for 25 minutes until the rice is tender and most of the liquid has been absorbed.",
+    "Stir in the roasted mushrooms, along with the shredded ugu or spinach. Cook for another 5 minutes. Serve hot with a side of plantain, mixed vegetables or salad."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/iwuk-edesi-native-jollof-rice.jpg"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "sichuan-pepper-salt",
+  "name": "Sichuan pepper salt",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "jiao yan 椒盐",
+  "intro": "This classic dip is made with Sichuan pepper, which is gently roasted with salt until both are marvelously aromatic. The seasoning is particularly good with roasted meats and deep-fried foods, but can also be used in sweet dumplings and pastries, where the combination of sugar with a hint of salt and spice is delightful. The dip will be most delicious soon after making; you can keep it in a sealed jar, but the pepper flavor dims over time.",
+  "ingredients": [
+    {
+      "item": "salt",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "whole Sichuan peppercorns",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Put the salt and Sichuan peppercorns in a dry wok and stir gently over a very low flame for a few minutes, until your kitchen has filled with the gorgeous aroma of the toasted pepper and the salt has yellowed slightly. Tip the mixture into a mortar and grind it to a fine powder. Sift the powder through a tea strainer or a small sieve to remove any remaining woody pepper husk. Store in a sealed container."
+  ],
+  "image": null
+}

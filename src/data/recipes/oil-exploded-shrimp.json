@@ -1,0 +1,50 @@
+{
+  "id": "oil-exploded-shrimp",
+  "name": "Oil-exploded shrimp",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "you bao xia 油爆虾",
+  "intro": "One spring afternoon we set off by boat to explore the lake near restaurateur Dai Jianjun’s farm in southern Zhejiang. A fisherman rowed up and offered us some live shrimp he had caught a few moments before. Back at the farm that evening, Dai’s chef, Zhu Yinfeng, cooked them up in typical Zhejiang style, deep-frying and then stir-frying them over a high flame with a sweet, rich sauce laced with rice wine and vinegar. The deep-frying in very hot oil is known as “oil-exploding” (you bao), and it shocks the papery shrimp shells away from the flesh, making them delectably crisp and crunchy. The fragrant sauce clings to the shrimp like lacquer, so they look as beautiful as they taste. Small freshwater shrimp are particularly dainty in this recipe, but you can also achieve a marvelous effect using saltwater shrimp, which is what I do at home. In Zhejiang, they cook the shrimp with their heads; you may include or omit these as you please, but the shells and tails are essential to the character of the dish. Be warned that this dish has what my father calls a “high grapple factor” and be prepared for some messy eating! Use your teeth and tongue to extract the flesh of the shrimp and leave the bits of hard shell on the plate.",
+  "ingredients": [
+    {
+      "item": "uncooked unpeeled shrimp (a little more if you want to cook them without heads)",
+      "amount": "¾ lb (350g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "A few slices of peeled fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "Chinkiang or red rice vinegar",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "5 tsp"
+    }
+  ],
+  "method": [
+    "Use a sharp knife to trim the spikes from the head of the shrimp (or their entire heads if you are discarding these), and their legs. Use a darning needle to remove, as far as possible, the black veins that run along their backs, just under the shell. Rinse them thoroughly and shake dry. Smack the spring onion white lightly with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers. Combine the sauce ingredients in a small bowl, and have the vinegar measured out and ready in another small bowl.",
+    "Heat the oil in a seasoned wok over a high flame to 400°F (200°C). Have another pan or a heatproof container to hand. Carefully tip the shrimp into the hot oil and deep-fry for 10–20 seconds (depending on size), stirring constantly, until they have curled up and changed color. Remove with a slotted spoon and set aside.",
+    "Let the oil return to its original temperature. Add the shrimp and fry for another 20 seconds or so, until the shells are crisp and tinged golden. Remove with a slotted spoon and set aside. Pour all but about 1 tablespoon of the oil into your heatproof container, then return the wok to a high flame with the spring onion white and ginger. Stir-fry until they smell wonderful. Add the shrimp, stir once, then give the sauce a stir and pour it in. Stir rapidly as the sauce boils and becomes syrupy. Splash the vinegar around the edges of the shrimp and stir over a high flame for another 5 seconds or so to fuse the flavors. Serve."
+  ],
+  "image": "/recipes/oil-exploded-shrimp.jpg"
+}

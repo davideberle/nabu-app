@@ -1,0 +1,41 @@
+{
+  "id": "japanese-fava-bean-rice",
+  "name": "“Japanese” fava bean rice",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "yuan guo wo dou fan 原锅倭豆饭",
+  "intro": "This is my re-creation of a wonderful rice dish served at the Crock-Duck-Dog (gang ya gou) restaurant in Ningbo, where they make and serve it in a weighty cast-iron pot. The scent and richness of the salt pork permeate the rice, and the beans make it even more delicious. They are known by an unusual dialect name, wo dou or “Japanese” beans, using an archaic and derogatory name for Japan. According to the menu, they acquired this name during the Ming dynasty, when Japanese pirates would harass the people of the Zhoushan archipelago every summer and steal all the fava beans that had just been harvested. Sick of this looting, one year local people poisoned the beans and killed all the pirates, after which they triumphantly renamed the beans. The dish is traditionally eaten in Ningbo during the Beginning of Summer (li xia) solar term of the traditional calendar. It would also work well with peas or green soybeans.",
+  "ingredients": [
+    {
+      "item": "sushi or Thai fragrant rice",
+      "amount": "1 cup (250g)"
+    },
+    {
+      "item": "bacon (smoked or unsmoked) or pancetta",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "shelled, skinned fava beans (about ¾ lb/350–400g in their pods)",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse the rice in several changes of water until the water runs clear. Set aside in a sieve to drain completely. If the bacon has rinds, slice them off and reserve them. Cut the bacon or pancetta into ½ in (1cm) slices or small cubes. Bring a pan of water to the boil, blanch the bacon briefly, then drain it.",
+    "Put the lard or cooking oil in a heavy-bottomed pan with a tight-fitting lid and heat over a high flame. Add the meat and rinds, if you have them, and stir-fry until they smell delicious. Remove and discard the rinds, if using. Add the beans and stir them into the fragrant oil. Add the rice and 1⅓ cups (300ml) cold water and season with salt (remember the bacon is already salty). Stir well, scraping the bottom of the pan. Cook over a high flame for a few minutes, without stirring, until small holes appear on the surface. Cover the pan, transfer to a very low flame and cook gently for 20 minutes. Serve with a sprinkling of spring onion greens."
+  ],
+  "image": null
+}

@@ -1,0 +1,41 @@
+{
+  "id": "pan-fried-ribbonfish",
+  "name": "Pan-fried ribbonfish",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "gan jian dai yu 干煎带鱼",
+  "intro": "The ribbonfish or hairtail looks like a shiny silver girdle, which is why its Chinese name is “beltfish.” Laid out in rows in the markets of Shanghai and Ningbo, where they are a particular favorite, these long, flat creatures, with their bright metallic sheen, are astonishingly beautiful. If you can’t find them fresh, you will probably be able to find them frozen in good Chinese supermarkets. Often, they are simply pan-fried, as in the following recipe, but they can also be steamed. To eat the fish, pull out the pin-like bones from the side of each piece with your teeth or fingers; you will then find the flesh comes away easily from the backbone. Any leftover fried fish can be simmered in a little stock with dark soy sauce, Shaoxing wine and sugar, to make red-braised ribbonfish for another meal.",
+  "ingredients": [
+    {
+      "item": "ribbonfish, fresh or frozen and defrosted",
+      "amount": "1 lb (450g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Around 1 cup (200ml) cooking oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Make diagonal cuts into the thickest part of the fish at 1 in (2cm) intervals, then cut it into 2–2½ in (5–6cm) sections. Put them in a bowl. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers, then add them to the fish, along with the Shaoxing wine and salt. Mix well and set aside in the fridge for 2–3 hours.",
+    "Pat the fish pieces dry with paper towels. Pour ⅛ in (3–4mm) cooking oil into a flat frying pan with a seasoned or non-stick surface and heat over a high flame. When the oil is hot, turn the heat down to medium and add the fish pieces in a single layer. Fry for 5–10 minutes, until crisp and golden, then turn over and repeat on the other side. It is very important not to move the fish around until it has developed a crisp, golden layer, to avoid breaking the skin. Serve with rice and other dishes."
+  ],
+  "image": null
+}

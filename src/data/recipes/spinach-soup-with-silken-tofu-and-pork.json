@@ -1,0 +1,54 @@
+{
+  "id": "spinach-soup-with-silken-tofu-and-pork",
+  "name": "Spinach soup with silken tofu and pork",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "bo cai rou si dou fu geng 菠菜肉丝豆腐羹",
+  "intro": "This is one of a family of Shanghainese soups that are traditionally made with the herby green leaves of shepherd’s purse, a distinctive local vegetable that is most tender in the early spring. If you can find it, do use it in this recipe; otherwise, spinach makes a very satisfying substitute. Sometimes you will find slippery slices of yellow croaker fish and cubes of tofu suspended in the vibrant green broth; sometimes threads of crab and scallop. In the following recipe, I’ve given another typical combination that makes an easy supper dish at home: tofu and slivered pork. The broth is thickened with starch so that tiny pieces of each ingredient hang it in like a kaleidoscope.",
+  "ingredients": [
+    {
+      "item": "trimmed spinach (about 9 oz/250g before trimming)",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "quart (1 liter) stock",
+      "amount": "1"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chicken oil or lard (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a pan of water to the boil and blanch the spinach leaves briefly to wilt them. Refresh immediately under the cold tap and then squeeze dry. Chop as finely as possible. Cut the pork into very thin slivers. Cut the tofu into ⅙ in (5mm) cubes.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked. Splash in the Shaoxing wine, then add the stock and tofu and bring to the boil. Stir in the spinach and return to the boil. Season with salt and white pepper.",
+    "Give the starch mixture a stir and add it in stages to the wok, mixing well as you go, adding just enough to give the soup a silky, heavy consistency—this will ensure that the tofu and spinach are suspended evenly in the soup. Stir in the chicken oil or lard, if using, and serve."
+  ],
+  "image": "/recipes/spinach-soup-with-silken-tofu-and-pork.jpg"
+}

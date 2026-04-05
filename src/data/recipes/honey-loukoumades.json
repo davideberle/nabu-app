@@ -1,0 +1,52 @@
+{
+  "id": "honey-loukoumades",
+  "name": "Honey Loukoumades",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep. time 60–70 minutes | cooking time 25–30 minutes | serves 10",
+  "ingredients": [
+    {
+      "item": "water, lukewarm",
+      "amount": "1 cup"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "½ ounce"
+    },
+    {
+      "item": "milk, lukewarm",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "¼ cups flour",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "honey",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "In a mixing bowl, combine the water and yeast and stir gently.",
+    "Add the remaining dough ingredients and combine to form a smooth batter.",
+    "Cover and set aside for an hour to rise.",
+    "In a large, heavy saucepan, heat the oil to 350°F over high heat. Try to maintain this temperature.",
+    "Spoon the dough in balls one by one into the hot oil, and fry them until they are golden brown from all sides, turning as needed.",
+    "Drain them on paper towel, and then arrange them on a large platter. Top with the honey and sprinkle with cinnamon and walnuts."
+  ],
+  "image": null
+}

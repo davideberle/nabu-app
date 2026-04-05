@@ -1,0 +1,86 @@
+{
+  "id": "olded",
+  "name": "Molded Fish Roe Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 10 minutes | cook time: 20 minutes | serves 12-16",
+  "ingredients": [
+    {
+      "item": "unflavored gelatin",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cold water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tarama (4 ounces)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "grated onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "4"
+    },
+    {
+      "item": "pimiento",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "cream cheese",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "chopped parsley, whole olives, and pickles for garnish",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Chill a metal 6-cup fish mold in the freezer.",
+    "Sprinkle gelatin over ¼ cup cold water to soften.",
+    "Add the boiling water and stir until gelatin dissolves.",
+    "Put in the refrigerator to cool, about 5 minutes.",
+    "(Do not allow gelatin to set.)",
+    "Blend tarama, mayonnaise, lemon juice, breadcrumbs, cayenne, onion, and salt in a blender or electric mixer.",
+    "Mix 1 cup of gelatin liquid into tarama mixture and put in refrigerator.",
+    "Cut olives into slices and pimientos into narrow strips.",
+    "Pour ½ cup of gelatin liquid into fish mold and tip it to spread into all the crevices.",
+    "Arrange olive and pimiento slices as scales, eyes, and tail.",
+    "Place mold in freezer for 15 minutes.",
+    "Pour ¼ cup more of gelatin mixture into mold and return to freezer.",
+    "Beat or blend cream cheese and add remaining ½ cup gelatin liquid to it.",
+    "Place in refrigerator for 15 minutes.",
+    "Do not let it set completely.",
+    "Spread cheese mixture over bottom and sides of mold.",
+    "Return to freezer for 15 minutes to set.",
+    "Fill mold with tarama mixture.",
+    "Refrigerate to set for 4 hours, or overnight.",
+    "Chill serving platter in refrigerator.",
+    "To serve, dip bottom of mold in hot water.",
+    "Place serving platter over mold and turn mold over quickly.",
+    "Garnish with chopped parsley, olives, pickles, and any other vegetables desired.",
+    "Serve with bread or crackers."
+  ],
+  "image": "/recipes/olded.jpg"
+}

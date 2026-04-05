@@ -1,0 +1,39 @@
+{
+  "id": "spicy-chinese-cabbage",
+  "name": "Spicy Chinese cabbage",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "la bai cai 辣白菜",
+  "intro": "This is a gorgeous little Shanghainese starter that can be made well in advance of your meal. After a long salting and draining, the cabbage is soft but retains a little bite, and is thrillingly infused with scorched chilli. The salting greatly reduces the volume, so you’ll end up with a fairly small portion, but it’s easy to double the recipe if you are cooking for a crowd. The chilli plays a marginal role in Jiangnan cooking, and it’s tempting to see dishes like this one as the product of Sichuanese influences in Shanghai, which has long been a melting pot of cultural and culinary influences from across China and the world. The city even has its own, somewhat toned-down version of Sichuanese flavors in hai pai chuan cai, the so-called “Shanghai-style” Sichuan cuisine.",
+  "ingredients": [
+    {
+      "item": "Chinese cabbage (about 1⅓ lbs/600g)",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "whole Sichuan peppercorns",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "dried chillies",
+      "amount": "3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Rinse the Chinese cabbage whole, then put it on a chopping board and slice across the grain into ⅙ in (5mm) strips. Put them in a bowl. Add the salt and Sichuan peppercorns and use your hand to scrunch them into the cabbage strips, which will become slightly floppy. Cover the cabbage with an inverted small plate that sits directly on it and put a heavy weight on top (I use old-fashioned weights in a plastic freezer bag, but a heavy stone will do). Leave it in the fridge or a cool place for several hours or overnight.",
+    "Remove the weight and plate. Drain the cabbage, squeezing to extract as much liquid as you can. Pick out and discard as many of the Sichuan peppercorns as possible. Snip the chillies into 1 in (2cm) sections and discard the seeds.",
+    "Heat the oil in a seasoned wok until smoking. Turn off the heat, immediately add the chillies and stir them for a few seconds until fragrant and darkening, but not burned. Swiftly add the drained cabbage and stir to clothe it in the fragrant oil. Serve at room temperature.",
+    "Add 1½ tsp Chinkiang vinegar and ¾ tsp sesame oil to the main recipe."
+  ],
+  "image": null
+}

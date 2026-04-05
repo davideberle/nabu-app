@@ -1,0 +1,66 @@
+{
+  "id": "stir-fried-chicken-hotchpotch",
+  "name": "Stir-fried chicken hotchpotch",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "chao shi jian 炒时件",
+  "intro": "This recipe is based on one I enjoyed at the Dragon Well Manor restaurant in Hangzhou. There, they made it with the assorted offal of four chickens: livers, hearts, intestines and gizzards. The contrasting textures of the crisp intestines and gizzards and the tender livers and hearts is delectable, but the same method can also be used to make a marvelous quick stir-fry of chicken livers alone, mixed with hearts if you have them. It doesn’t look particularly elegant but it tastes wonderful. With plain rice and a simple green vegetable, this makes a satisfying supper for a couple of people.",
+  "ingredients": [
+    {
+      "item": "chicken livers (or livers and hearts)",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "garlic cloves and an equivalent amount of fresh ginger",
+      "amount": "3"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "2"
+    },
+    {
+      "item": "cooking oil or lard",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "A pinch of superfine sugar",
+      "amount": ""
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Cut the chicken livers into 2 in (5mm) slices and put them in a bowl. Add the marinade ingredients and mix well. Peel and slice the garlic and ginger and cut the spring onion greens into 2½ in (6cm) lengths.",
+    "Heat 2 tablespoons of the cooking oil or lard in a seasoned wok over a high flame. Add the chicken livers and stir-fry rapidly to separate the slices. When they are half cooked, remove them from the wok and set aside. Return the wok to the heat with the remaining lard or oil and the ginger and garlic and stir-fry briefly until the latter are wonderfully fragrant. Return the livers to the wok and stir them into the fragrant oil. Splash the Shaoxing wine around the edges of the pan and season with the soy sauces and a pinch of sugar. Stir in the spring onion greens to give them a brief lick of heat. Finally, remove from the heat, stir in the sesame oil and serve. The livers should be barely cooked and still juicy.",
+    "Slice, marinate and pre-fry the chicken livers as in the main recipe. Instead of ginger and garlic, fry 4 oz (100g) Chinese chives cut into 2½ oz (6cm) sections until hot and fragrant, with some ground chilli if you wish. Return the livers to the wok, season to taste with light soy sauce and serve."
+  ],
+  "image": null
+}

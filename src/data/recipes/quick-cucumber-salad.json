@@ -1,0 +1,44 @@
+{
+  "id": "quick-cucumber-salad",
+  "name": "Quick cucumber salad",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "liang ban huang gua 凉拌黄瓜",
+  "intro": "At dinnertime, people loiter on the pavement outside a tiny, ordinary-looking townhouse in a tree-lined lane of Shanghai’s former French Concession, waiting for a table at one of the city’s most adored local restaurants. For more than 20 years, the chefs at Old Jesse have been turning out mouthwatering renditions of Shanghainese cuisine, from stir-fried green soybeans with pickled greens to boned pig’s trotters with “eight-treasure” stuffing. This recipe is based on one of their simplest appetizers, a sweet-sour, garlicky salad that’s quick to make and a refreshing contrast to richer dishes. If you don’t have the mellow brown rice vinegar they use at the restaurant, balsamic vinegar would make a good substitute. The common Chinese name for cucumber is “yellow squash” (huang gua), which is why you will often find it served in Zhejiang province as one of the traditional “five yellows” at the Dragon Boat Festival of the fifth lunar month (the other “yellow” foods might include yellow croaker, “yellow” paddy eels, salted duck-egg yolks and Shaoxing “yellow wine”).",
+  "ingredients": [
+    {
+      "item": "cucumber (about 12 oz/375g)",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Trim both ends off the cucumber and lay it across your chopping board. Use the flat side of a Chinese cleaver or a rolling pin to smack it gently several times, turning it each time, to break it open and loosen the flesh without smashing it to smithereens.",
+    "Cut the cucumber in half lengthways, then into two or three long strips. Lay the strips parallel and cut them into bite-sized pieces. Add the salt, mix well and leave in a colander for at least 10 minutes to drain.",
+    "Drain off as much of the liquid that has emerged from the cucumber as possible. Add the sugar and set it aside for a minute or two until it dissolves, then add the rest of the ingredients, stir well and serve.",
+    "This is a dish taught to me by chef Sun Fugen in Suzhou. Cut the cucumber into thin slices and leave in the salt for several hours, then squeeze out as much water as possible. Add superfine sugar to taste, some finely chopped garlic and a little sliced pickled chilli. The longer salting gives the cucumber an intriguing texture: floppy yet crisp.",
+    "Cut the cucumber into batons and serve with sweet fermented sauce dip (see here). At the Dragon Well Manor restaurant in Hangzhou, this is the way they serve their whole baby cucumbers: crisp, delicate and picked earlier the same day."
+  ],
+  "image": "/recipes/quick-cucumber-salad.jpg"
+}

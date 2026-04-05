@@ -1,0 +1,51 @@
+{
+  "id": "fresh-clam-custard",
+  "name": "Fresh clam custard",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "ge li dun dan 蛤蜊炖蛋",
+  "intro": "In this Ningbo dish, clams, mouths wide open, peep out of a pale lake of silken custard. Usually, when I’ve eaten this, the custard has been a pale egg yellow in color, but in one marvelous Ningbo restaurant they add a little dark soy sauce, which gives it the color of café au lait; I’ve added this as an optional ingredient. Do steam the eggs gently—if the heat is too fierce, they will froth up and become coarse in texture. When I’ve had this dish in Ningbo it has been served plain, so you can really appreciate the tastes of the eggs and clams; in the Cantonese south they often finish the cooked custard with a little light soy sauce and sesame oil, which is also delicious.",
+  "ingredients": [
+    {
+      "item": "live littleneck clams or similar",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "large or 3 medium eggs",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark soy sauce (optional)",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "If you suspect the clams are sandy, soak them for half an hour or so in cold water from the tap to purge them before you begin. Wash them throughly in cold water. Discard any that have broken shells, or that remain open when tapped.",
+    "Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers and put them in a saucepan or wok with 1 cup (200ml) water. Bring to the boil over a high flame, add the clams, cover and cook for 2–3 minutes, until the shells have opened. Quickly remove the clams with a slotted spoon and set aside. Leave a good handful of clams in their shells; remove the meat from the others with chopsticks and discard the shells.",
+    "Boil the kettle. Beat the eggs with ¼ teaspoon salt until well blended. Pour ¾ cup (150ml) of the clam cooking liquid slowly into the egg mixture, leaving any sandy residue in the pan. Add the Shaoxing wine and dark soy sauce, if using, and mix well. Skim off and discard any froth on the surface. Stir in the shelled clams.",
+    "Bring water to the boil under your steamer. Warm a shallow bowl large enough to hold the clams and the egg mixture by filling it with hot water from the kettle, then pour off the water. Scatter the unshelled clams, smiley side up, across the base of the bowl. Pour over the egg and shelled clam mixture. Put the dish of eggs and clams in your steamer basket and steam over a medium flame for about 12 minutes, until the eggs have set into a very delicate custard. Scatter with the spring onion greens, cover and steam for a few seconds more, then serve."
+  ],
+  "image": null
+}

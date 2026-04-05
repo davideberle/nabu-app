@@ -1,0 +1,61 @@
+{
+  "id": "umin",
+  "name": "umin",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "grated kefalotiri cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sticks (½ pound) butter or margarine, melted",
+      "amount": "2"
+    },
+    {
+      "item": "egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "ouzo",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "egg white",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350 degrees.",
+    "Blend together flour, salt, mustard, and cheese.",
+    "Add melted butter, egg yolk, ouzo, and water, mixing to form a soft dough.",
+    "Roll out dough to a thickness of ¼ inch and cut into 3 × ½-inch strips, or cut into various shapes with a cookie cutter.",
+    "Place on a greased cookie sheet.",
+    "Brush with egg white and sprinkle with cumin seeds.",
+    "Bake for 15 minutes or until light brown."
+  ],
+  "image": null
+}

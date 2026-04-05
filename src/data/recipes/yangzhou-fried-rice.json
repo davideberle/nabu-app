@@ -1,0 +1,75 @@
+{
+  "id": "yangzhou-fried-rice",
+  "name": "Yangzhou fried rice",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "yang zhou chao fan 扬州炒饭",
+  "intro": "Late one night, I dropped into my friend Yang Bin’s restaurant in the old quarter of Yangzhou for a bowlful of noodles, and happened also to meet his cooking master, Huang Wanqi. Chef Huang started talking about a 2,000-year-old gastronomic text, “The Root of Tastes” (ben wei pian), and told me he thought Yangzhou cooking best represented the subtle magic it described. He went on to explain the mysteries of Yangzhou fried rice, the only dish from this ancient gastronomic capital that has so far achieved international fame. He told me how to cook the secondary ingredients in chicken broth, and discussed the different roles that beaten egg could play in the dish. “If you begin by frying the beaten egg, and then add the rice,” he said, “you will have ‘golden fragments’ of egg in the rice (sui jin fen). If, instead, you fry the rice and then pour in the egg, the golden liquid coats each grain of rice, so it’s like ‘silver wrapped in gold’ (jin guo yin).” Both, he said, were traditional methods. You don’t have to go into such detail to appreciate this dish, one of the finest variations on the fried rice theme. The rice is speckled with little nuggets of delicious ingredients and infused with the umami richness of chicken stock. The following is my version, which omits the hard-to-find luxuries of sea cucumber and freshwater crabmeat, but otherwise follows the traditional method. If you want to make the totally authentic version, add ¾ oz (25g) chopped, soaked dried sea cucumber and ¾ oz (25g) freshwater crabmeat, and substitute tiny freshwater shrimp for the saltwater shrimp.",
+  "ingredients": [
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "small peeled shrimp, fresh or frozen, cooked or uncooked",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "cooked chicken",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "bamboo shoot (optional)",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "3"
+    },
+    {
+      "item": "large egg, plus an egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "cold, cooked Thai fragrant rice (1 cup/250g when uncooked)",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "fresh or frozen peas or cooked green soybeans",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "1 cup (200ml)"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cover the shiitake mushrooms in boiling water and leave to soak for half an hour, then remove the stalks. Cut the pork, shrimp, ham, chicken, mushoom caps and bamboo shoot, if using, into small dice. Thinly slice the spring onion greens. Beat the egg and egg yolk with a little salt and pepper. Break the rice up into small clumps to make it easier to fry.",
+    "Heat 2 tablespoons of the oil in a seasoned wok over a high flame. Add the pork and shrimp and stir-fry briefly until the pork is pale. Add the ham, chicken, mushrooms, peas or beans and bamboo shoot, if using, and continue to stir-fry for 1–2 minutes, until everything is hot and sizzling. Add the Shaoxing wine, then pour in the stock and bring to the boil. Season with salt, then pour off into a bowl and set aside.",
+    "Rinse and dry the wok and return it to the heat with the remaining oil. When the oil is hot, add the beaten egg mixture and swirl it around the base of the wok. When the egg is half-cooked, add all the rice and stir-fry, breaking up any clumps. When the rice is very hot, smells delicious and makes a popping sound around the edges of the wok, add the reserved ingredients in their stock sauce. Mix well and continue to stir-fry for another 30 seconds or so, seasoning with salt or pepper if you wish. Stir in the spring onion greens and serve.",
+    "This simple fried rice is popular in Jiangnan; simply stir-fry leftover rice and add soy sauce to taste. A rich, traditional Chinese soy sauce is ideal; otherwise add light soy for salt and flavor, and a little dark soy to provide a deep brown luster."
+  ],
+  "image": "/recipes/yangzhou-fried-rice.jpg"
+}

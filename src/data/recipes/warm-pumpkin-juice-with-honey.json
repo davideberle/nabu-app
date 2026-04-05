@@ -1,0 +1,27 @@
+{
+  "id": "warm-pumpkin-juice-with-honey",
+  "name": "Warm pumpkin juice with honey",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "nan gua zhi 南瓜汁",
+  "intro": "In Hangzhou, the Dragon Well Manor restaurant often serves juices made with the fresh fruits of the season. Perhaps there will be the pale minty-green juice of wild kiwi fruits, the pale gold of loquats, the cool bronze of sugar cane or the milky purity of water chestnuts. Since the Chinese tend to be unencumbered by arbitrary distinctions between fruits and vegetables, they might also offer the warm juices of sweetcorn, pea shoots or pumpkin, lightly sweetened with honey. Drunk before or during a meal, these juices smooth the throat and soothe the spirits. Pumpkins, which are usually known as “southern squashes” (nan gua), are widely grown in China, where they have many culinary uses. In rural areas, people stir-fry the tender leaves of the plant as a vegetable and, in hard times, add their flesh to the rice-pot to make the rice go further. Pumpkin meat may be stir-fried, steamed or made into sweet dumplings. It can also be used to make this golden, satiny drink, which will slip dreamily down your throat. Serves 4. See here for a photograph that includes a Crown Prince pumpkin; the juice is pictured at the top of here.",
+  "ingredients": [
+    {
+      "item": "lbs (550g) pumpkin, peeled and deseeded",
+      "amount": "1¼"
+    },
+    {
+      "item": "About 4 tbsp honey, or to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the pumpkin in the basket of a stainless steel steamer and steam over a high flame until completely tender. When the pumpkin is cooked, remove it from the steamer. Put the honey in a small pan with an equal quantity of water from the steamer and stir as you heat it gently to dissolve.",
+    "While the pumpkin is still warm, put it in a blender with some of the water from the base of the steamer and blitz until you have a smooth liquid with the consistency of double cream. Season to taste with the dissolved honey. Serve.",
+    "Boil or steam sweetcorn cobs, then cut off the kernels and blend to a smooth, creamy juice. Sweeten with diluted honey, if desired.",
+    "Make it in the same way as the pumpkin juice, with just a hint of added sweetness from diluted honey."
+  ],
+  "image": null
+}

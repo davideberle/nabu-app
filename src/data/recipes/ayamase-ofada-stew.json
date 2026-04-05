@@ -1,0 +1,42 @@
+{
+  "id": "ayamase-ofada-stew",
+  "name": "Ayamase (Ofada Stew)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Traditionally served with ofada rice, this stew is a flavour packed dish that is similar to Ata Dindin in terms of preparation, but which features green peppers, palm oil and iru (locust beans) as the main ingredients. The stew normally contains several types of meat, so if you are able to use a variety of chunky meat substitutes, you will get close in terms of look and texture.",
+  "ingredients": [
+    {
+      "item": "green bell peppers (deseeded and roughly chopped)",
+      "amount": "4"
+    },
+    {
+      "item": "red onions (1 roughly chopped,",
+      "amount": "2"
+    },
+    {
+      "item": "sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "and 1/2 cups water 1/2 cup palm oil",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cube Salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the peppers, chopped onions and chillies in a food processor and pulse with 1 and 1/2 cups of water until you have a chunky sauce. Pour the mix into a strainer to drain out some of the excess water (no need to press down with a spoon, just allow the water to drain naturally). This strained liquid can be repurposed in other soups or used as a veggie broth.",
+    "Add the blended pepper and roasted meat substitute. Season with vegetable stock cube and salt to taste. Cook uncovered over low-medium heat for 45-50 minutes, stirring at intervals to prevent burning. The stew should become thick and darker in colour.",
+    "Serve with steamed rice or yam, boiled plantain, sweet potatoes or any other starch of your choice. As the flavour is very intense and concentrated, a little goes a long way."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/ayamase-ofada-stew.jpg"
+}

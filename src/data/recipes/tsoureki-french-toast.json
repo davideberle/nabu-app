@@ -3,8 +3,7 @@
   "name": "Tsoureki French Toast",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time: 30 minutes |serves 4",
   "ingredients": [
@@ -15,6 +14,10 @@
     {
       "item": "whole milk",
       "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "Scant 1 teaspoon ground cinnamon, plus more for garnish",
+      "amount": ""
     },
     {
       "item": "to 4 tablespoons (45 to 55 g) unsalted butter",
@@ -31,9 +34,5 @@
     "One at a time, dip 3 of the bread slices into the egg-milk mixture. As soon as the butter stops bubbling and before it turns brown, place the bread in the skillet and cook until golden brown on both sides. Transfer to a platter and cover or tent with aluminum foil to keep warm. Repeat with the remaining bread, adding another tablespoon or so of the butter to the skillet between batches as needed.",
     "Serve the tsoureki French toast hot, drizzled with Greek honey and dusted with a little cinnamon."
   ],
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": "/recipes/tsoureki-french-toast.jpg"
 }

@@ -1,0 +1,50 @@
+{
+  "id": "shanghai-double-pork-soup-with-bamboo-shoot",
+  "name": "Shanghai double-pork soup with bamboo shoot",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "yan du xian 腌笃鲜",
+  "intro": "After a long simmering, the salt pork, fresh pork and bamboo shoot in this Shanghainese soup develop a rich, exquisite sweetness that will make you feel at peace with the world. This was originally a dish for early spring, when the first bamboo shoots of the season would thrust their way up out of the earth, and its glorious scent would drift on the air of many old Shanghai neighborhoods. If you can find fresh spring bamboo shoot, please use it. Otherwise, it is magnificent even when made with bamboo shoot preserved in brine. What is critical is to use really excellent pork. The name of this dish in Chinese has a delightful ring to it because the words for “salted” (yan) and “fresh” (xian) rhyme with each other. Although the dish is often regarded as typically Shanghainese, Hangzhou master chef Hu Zhongying tells me it originates in Hangzhou. The character du in the name is an onomatopoeic dialect word for simmering over a low flame. If your salt pork is excessively salty, you may wish to soak it overnight in plenty of cold water before cooking. Some cooks add a handful of tofu knots to the broth for added texture. It is traditionally cooked in a Chinese clay pot.",
+  "ingredients": [
+    {
+      "item": "boneless pork belly, skin on",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "gammon (salt pork), with a little fat",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "fresh or brined bamboo shoot",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "A few lengths of spring onion, green parts only, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the pork belly into 1 in (2cm) cubes and do the same with the gammon. If using fresh bamboo shoot, peel off the husk, slice away and discard the fibrous part near the base, then roll-cut (see here) into 1 in (2cm) chunks. Blanch the bamboo shoot, whether fresh or brined, for a minute or so in boiling water. Smack the ginger and spring onion whites with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Put the pork belly in a pan, cover with cold water, bring to the boil and then blanch for 2 minutes. Drain, discarding the water. Put the pork belly in your cooking pot, along with the gammon and bamboo shoot. Cover with 1½ quarts (1.5 liters) cold water and bring to the boil, skimming if necessary. Add the ginger, spring onion and Shaoxing wine. Boil rapidly for 5 minutes, then half-cover, turn the heat down low and simmer very gently for about 3 hours, by which stage wonderful aromas will fill your kitchen and the broth will taste delicious, with a natural sweetness. Before serving, add a little salt if you need it (you probably won’t). Scatter with the spring onion greens, then serve.",
+    "Bring a pan of water to the boil. Add some pieces of salt pork, return to the boil and skim. Add thick slices of peeled winter melon with a dash of Shaoxing wine and, if you like, some green soybeans. Return to the boil, simmer until tender and serve with a scattering of sliced spring onion greens."
+  ],
+  "image": "/recipes/shanghai-double-pork-soup-with-bamboo-shoot.jpg"
+}

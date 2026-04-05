@@ -1,0 +1,44 @@
+{
+  "id": "ata-dindin-fried-pepper-stew",
+  "name": "Ata Dindin (Fried Pepper Stew)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "red bell peppers (deseeded and roughly chopped)",
+      "amount": "4"
+    },
+    {
+      "item": "large red onion (peeled and chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup water",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    },
+    {
+      "item": "pre-cooked meat alternative (such as seitan, firm tofu, aubergine or mushrooms)",
+      "amount": "4 cups"
+    }
+  ],
+  "method": [
+    "Place the peppers, half the chopped onions and chillies in a food processor and pulse with a small amount of water until you have a chunky sauce. Pour the mix into a strainer and press down gently with the back of a spoon or spatula to drain out some excess liquid. This liquid can be repurposed in other soups or as a veggie broth.",
+    "Heat the oil in a pot, add the rest of the chopped onions and fry for 2 minutes. Add the blended pepper and season with the vegetable stock cube and salt to taste. Cover and leave to cook over medium heat for 20 minutes, stirring at intervals to prevent burning. Stir in the roasted or grilled meat substitutes and cook uncovered for another 10-15 minutes, stirring at intervals. The stew should be thick and darker red in colour. The oil may float to the top of the stew and you can skim oﬀ and discard some of this excess if you wish."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/ata-dindin-fried-pepper-stew.jpg"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "hangzhou-breakfast-tofu",
+  "name": "Hangzhou breakfast tofu",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "hang zhou dou hua 杭州豆花",
+  "ingredients": [
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Chilli oil, to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped Sichuan preserved vegetable",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fried peanuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring enough water to cover the tofu to the boil in a saucepan and salt it lightly. Use a spoon to scoop up large pieces of the tofu and transfer them to the water. Simmer very gently for about 5 minutes to heat it through.",
+    "When the tofu is ready, use a slotted spoon to transfer it to a serving bowl and break up the chunks into smaller pieces. Scatter the rest of the ingredients over it and serve. This dish is best eaten with a spoon.",
+    "Instead of the garnishes in the main recipe, put 2 tsp papery dried shrimp and 1 tbsp dried laver seaweed, torn into tiny pieces, in the serving bowl. Add the warm tofu and scatter with 1 tbsp finely chopped Sichuan preserved vegetable, 1½ tbsp thinly sliced spring onion greens, 2 tsp light soy sauce and 1 tsp sesame oil. Mix well before eating. This version is served as part of the lavish breakfast buffet at the Wumen Renjia restaurant in Suzhou."
+  ],
+  "image": "/recipes/hangzhou-breakfast-tofu.jpg"
+}

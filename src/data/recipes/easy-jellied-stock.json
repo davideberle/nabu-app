@@ -1,0 +1,28 @@
+{
+  "id": "easy-jellied-stock",
+  "name": "Easy jellied stock",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "pi dong 皮冻",
+  "intro": "Jellied stock is an essential ingredient in steamed “soup” dumplings (xiao long bao) and potsticker buns. It’s traditionally made from gelatine-rich pig’s skin or trotters, but it’s much easier, and just as effective, to make it simply by adding gelatine to a good stock. If you have any jellied stock left after making dumpling stuffings, add it to soups, congees and stir-fries for extra savoriness.",
+  "ingredients": [
+    {
+      "item": "clear Everyday or Chicken stock (see here)",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "gelatine leaves",
+      "amount": "4"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring the stock to the boil, then set it aside. Season with salt and pepper. When the stock has cooled to tea-drinking temperature, put the gelatine in a bowl of cold water for about 4 minutes, until softened and floppy, then stir it into the warm stock until dissolved. Set aside to cool completely, then chill in the fridge overnight to set."
+  ],
+  "image": null
+}

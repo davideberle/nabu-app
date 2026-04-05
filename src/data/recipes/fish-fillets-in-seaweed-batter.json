@@ -1,0 +1,67 @@
+{
+  "id": "fish-fillets-in-seaweed-batter",
+  "name": "Fish fillets in seaweed batter",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "tai tiao yu liu 苔条鱼柳",
+  "intro": "If you like English fish and chips, you will enjoy this dainty Ningbo version. Thin strips of tender fish are clothed in a thick batter speckled with delicious seaweed, deep fried and then eaten with a refreshing vinegar dip. In Ningbo they make it with yellow croaker, but grouper, or slippery flat fish such as flounder and sole, also work very well. The seaweed is tai tiao, a kind of sun-dried string lettuce or gutweed. At home I’ve made it with dried, ground aonori-ko seaweed flakes from a Japanese supermarket, which includes gutweed and has a very similar flavor.",
+  "ingredients": [
+    {
+      "item": "skinless flounder, sole or grouper fillet",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "Around 2 cups (500ml) cooking oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Chinkiang or Chinese red vinegar, to serve",
+      "amount": ""
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "½ cup (60g)"
+    },
+    {
+      "item": "potato flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "seaweed flakes",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Cut the fish evenly into small strips, 2–2½ in (5–6cm) long and ½–1 in (1–2cm) wide, and put them in a bowl. Smack the ginger and spring onion white lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers and add them to the fish with the other marinade ingredients. Mix well.",
+    "Mix together the flours, baking powder and salt for the batter in a bowl. Gradually stir in ½ cup (100ml) cold water to make a thick, smooth batter. Finally, stir in the seaweed flakes.",
+    "Heat the oil in a wok to 300°F (150°C). Trail the pieces of fish through the batter, ensuring they are evenly coated, and drop them into the hot oil, using chopsticks to separate them. The oil should fizz around the pieces. Fry for 1–2 minutes at this temperature, turning the strips from time to time, until the outside of the batter is firm. Remove the fish from the wok and set aside.",
+    "Reheat the oil to 350°F (180°C). Add all the fish strips and fry again until golden, turning for even coloring. Serve immediately with a dip of vinegar."
+  ],
+  "image": "/recipes/fish-fillets-in-seaweed-batter.jpg"
+}

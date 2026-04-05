@@ -1,0 +1,47 @@
+{
+  "id": "hibiscus-blossom-egg-white-with-fresh-fava-beans",
+  "name": "Hibiscus-blossom egg white with fresh fava beans",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "fu rong can dou 芙蓉蚕豆",
+  "intro": "This simple but dreamily delicious dish is made of pillowy, cloud-like egg white and fresh fava beans, finished with a sprinkling of dark pink ham. The egg white, scrambled gently to preserve its tenderness, resembles the loose, unbuttoned white flowers of the cotton or Confederate rose, Hibiscus mutabilis, hence its name. I first tasted this dish in a small restaurant in Yangzhou run by chef Yang Bin. It’s typical of Yangzhou cooking in its delicacy, its seasonality, and the elegant way in which the rosy ham is used to complement the white egg and bright green beans. The crux of this dish is huo hou, the control of heat and timing. The egg white must be scrambled at a modest temperature; if you overheat it, it will lose its soft, custardy texture.",
+  "ingredients": [
+    {
+      "item": "potato starch",
+      "amount": "2¼ tsp"
+    },
+    {
+      "item": "large egg whites",
+      "amount": "4"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "shelled, skinned fava beans (about 1¼ lbs/550g in their pods)",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 cup (200ml)"
+    },
+    {
+      "item": "finely chopped Spanish or Chinese cured ham, steamed briefly",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix 2 teaspoons of the potato starch with 2 teaspoons water. Gently stir it into the egg whites and season with salt (you don’t want to make them frothy).",
+    "Bring the stock to the boil and season with salt. Add the fava beans, return to the boil and simmer for a few minutes until tender—they will also have absorbed the savory flavor of the stock. Remove the beans from the stock and set aside.",
+    "Heat the oil in a seasoned wok to 250°F (120°C). Pour in the egg white mixture and stir gently over a medium flame as it sets into lazy billows, taking great care not to let the oil get too hot or the egg white will toughen. Remove it with a slotted spoon and set aside.",
+    "Mix the remaining potato starch with 1 teaspoon water. Brush and wipe out the wok to remove most of the oil, then add ½ cup (100ml) of the seasoned stock and bring to the boil over a high flame. Add the beans and quickly reheat them. Add the egg white and stir swiftly but gently to incorporate. Give the potato starch mixture a stir and pour it into the wok, stirring gently as the stock thickens. Turn it out onto a serving dish, scatter over the chopped ham and serve immediately."
+  ],
+  "image": "/recipes/hibiscus-blossom-egg-white-with-fresh-fava-beans.jpg"
+}

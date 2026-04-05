@@ -1,0 +1,42 @@
+{
+  "id": "milky-rice-broth-soup-with-radish-and-dried-shrimp",
+  "name": "Milky rice-broth soup with radish and dried shrimp",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "mi tang zhu luo bo 米汤煮萝卜",
+  "intro": "Chefs Zheng and Ling and I drove out from Tunxi, near the Yellow Mountain, to the Clove Garden, a restaurant owned by some friends of theirs by the edge of a shimmering lake. I was immediately invited into the kitchen for a lesson in the arts of southern Anhui cooking. Some of the dishes I learned to make that day would be hard to reproduce outside the region—in particular the Yellow Mountain “two stone” soup made with locally gathered stone-ear fungus and so-called “stone chicken” (actually a kind of frog)—but this gentle soup is not. It traditionally relies on that old farmhouse staple known as “rice broth,” the silky liquid left after parboiling rice before steaming, but which can also be made by cooking a little rice in plenty of water. Here, slices of radish are simmered in the broth until they are slippery-tender and finally garnished with dried shrimp and spring onions. I would like to thank chefs Gao Yongfei and Feng Jianjin at the Clove Garden for explaining the recipe. It’s a simple, rustic soup and a refreshing balance to, for example, a rich red-braised dish. Think of this recipe as a basic template for all kinds of rice-broth soups, made with any vegetables and odds and ends you might have to hand. One lovely tonic soup I’ve enjoyed in Zhejiang is rice broth sweetened with honey and enriched with wisps of beaten egg (mi tang chong ji dan): just boil the broth, sweeten it to taste, then stir in a beaten egg over a gentle heat.",
+  "ingredients": [
+    {
+      "item": "plain white rice",
+      "amount": "½ cup (125g)"
+    },
+    {
+      "item": "papery dried shrimp",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "lbs (650g) white Asian radish",
+      "amount": "1½"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the rice in a saucepan with 2 quarts (2 liters) cold water. Bring to the boil, skim and give the pan a good stir to stop the rice sticking. Turn the heat down and simmer for 30 minutes, until the liquid is soft and milky. Strain off and retain the liquid—this is your rice broth. Discard the rice, or use it for something else.",
+    "Put the shrimp in a small bowl and add just enough cold water to cover; leave for a few minutes to soften. Peel the radish, halve it lengthways, then cut it into semicircular slices about 2mm thick.",
+    "Heat the lard or oil in a seasoned wok over a high flame. Add the radish and stir-fry for 1–2 minutes. Add the rice broth, bring to the boil and simmer for 30 minutes, until the radish slices are completely tender. Stir in the dried shrimp and season with salt and pepper. Serve with a scattering of spring onion greens."
+  ],
+  "image": null
+}

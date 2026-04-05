@@ -1,0 +1,41 @@
+{
+  "id": "stir-fried-fava-beans-with-spring-onion",
+  "name": "Stir-fried fava beans with spring onion",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "cong hua can dou 葱花蚕豆",
+  "intro": "On my first visit to Shanghai in the 1990s, Qiu Shuzhen, the sister of one of my cooking teachers in Chengdu, invited me for dinner at her home in one of the old Shanghai lanes, and this was one of the dishes she made: a bright little stir-fry of fava beans and spring onion. It is typical of home cooking in the city, where people adore fava beans, either fresh or dried (after soaking for three days until they sprout, the latter are delicious stir-fried with snow vegetable and then stewed with a little water). Mrs. Qiu served the beans alongside vegetarian “roast duck,” stir-fried river shrimp in their shells, wild rice stem with soy sauce, stewed eel and a potful of dark, caramelized red-braised pork. Do make sure you use young and tender fava beans, which won’t require skinning once you’ve plucked them out of their pods.",
+  "ingredients": [
+    {
+      "item": "young, tender fava beans (about ¾ lb/350g shelled)",
+      "amount": "2 lb (1kg)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, white parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Shell the beans. Heat the oil in a seasoned wok over a high flame. Add the spring onion whites and stir-fry briefly until they are fragrant. Add the beans and toss them in the fragrant oil. Add ¾ cup (150ml) water, sugar and season with salt, and bring to the boil. Cover and simmer over a medium flame for a few minutes, until tender—keep an eye on them to make sure they don’t boil dry.",
+    "Remove the lid and increase the heat to high to reduce the liquid. When only a couple of tablespoons of liquid remains, add the spring onion greens and stir until they smell wonderful. Serve."
+  ],
+  "image": null
+}

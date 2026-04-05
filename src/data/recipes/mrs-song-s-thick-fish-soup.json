@@ -1,0 +1,88 @@
+{
+  "id": "mrs-song-s-thick-fish-soup",
+  "name": "Mrs. Song’s thick fish soup",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "song sao yu geng 宋嫂鱼羹",
+  "intro": "This soup is a gentle miracle: a swirl of tender fish, golden wisps of egg yolk and slivers of bamboo shoot and mushroom, its savory flavors lifted by a final spritz of vinegar. Like many Hangzhou dishes, this one tells a story. It dates back to the time when the Song dynasty had been driven south to Hangzhou by Jurchen invaders. One day, the emperor took to the imperial boat for a leisurely tour of the West Lake. As he made his progress, he ordered his servants to summon the floating traders on the lake and ask for samples of their wares. One of them boldly introduced herself as “fifth sister-in-law Song,” and told the emperor she had followed his court south from the old northern capital Kaifeng, and was making her living by selling thick fish soup on the shores of the lake. The emperor tasted her soup and was overcome by nostalgia for his lost northern capital. Moved beyond words, he thanked Mrs. Song with a gift of rolls of silk shot with silver and gold. Afterwards, they say, local people flocked to Mrs. Song’s for a bowlful of soup, “half buying a taste of imperial favor, half buying fish.” The recipe is said to have been based on a northern-style sour-and-hot soup made with carp from the Yellow River, but adapted in Hangzhou to use the mandarin fish or Chinese perch. Sea bass also works like a dream. This recipe is adapted from one in Hangzhou Cuisine, with thanks also to chef Hu Zhongying of the Hangzhou Restaurant for his suggestions.",
+  "ingredients": [
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "sea bass (about 1 lb/500g) scaled and gutted",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "3"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "lean Spanish or Chinese cured ham, steamed briefly",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "spring onion, green parts only",
+      "amount": "1"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "liter chicken stock",
+      "amount": "1"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "egg yolks, mixed together",
+      "amount": "4"
+    },
+    {
+      "item": "Chinkiang vinegar, plus extra to serve",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak the shiitake mushrooms in boiling water for at least half an hour, until softened.",
+    "Cut off the head and fins of the fish and slice it along the backbone into two halves. Rinse and shake dry. Place the fish, skin-side down, in a bowl that will fit into your steamer basket.",
+    "Take ½ oz (15g) ginger and 1 spring onion white and smack them gently with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Tuck them into a bowl with the fish and sprinkle over ½ tablespoon Shaoxing wine. Put the fish bowl in the steamer basket and steam over a high flame until just cooked—about 5 minutes.",
+    "When the fish is ready, strain off its juices into another bowl. Gently flake the flesh from the fish, discarding skin and bones, and add it to the cooking juices (chopsticks are good for this).",
+    "Smack the remaining spring onion whites to loosen their fibers. Peel the remaining ginger and cut it into thin slivers. Cut the ham and the spring onion green into very thin slivers. Drain the shiitake, discard the stalks and cut the caps into thin slivers. Cut the bamboo shoot into slivers of a similar thickness and blanch for 1–2 minutes in boiling water; drain well.",
+    "Heat the lard in a seasoned wok over a high flame. Add the spring onion whites and stir-fry until they are tinged with gold and smell delicious. Add the stock and bring to the boil, then fish out and discard the spring onion whites. Add the mushrooms and bamboo shoot to the wok and return to the boil.",
+    "Add the soy sauces and the fish with all its juices, and season with salt. Return to the boil, then turn down to a very gentle simmer. Give the starch mixture a stir and pour it into the center of the wok in about 3 stages, stirring well to thicken the soup—add just enough to give it a creamy, lazy consistency.",
+    "Add the egg yolks and stir them into the soup; the yolks will set into flowery wisps. Finally, add the vinegar and heat for just a few moments to fuse the flavors of the soup.",
+    "Pour the soup into a serving bowl. Sprinkle with a little pepper and garnish with the slivered ham, ginger and spring onion greens. Serve immediately. Invite your guests to add a tiny dash of vinegar at the table, if they wish."
+  ],
+  "image": "/recipes/mrs-song-s-thick-fish-soup.jpg"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "soupy-fish-with-snow-vegetable",
+  "name": "Soupy fish with snow vegetable",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xue cai da tang xian yu 雪菜大汤鲜鱼",
+  "intro": "In its original version, made with a large yellow croaker, this is one of the most famous Ningbo dishes. The tender, silky fish lazes in a rich broth made with snow vegetable and bamboo shoot. It’s a lovely marriage of flavors, and perfectly expresses both the lightness of Ningbo cooking and the local predilection for combining fresh and salted ingredients. The snow vegetable is widely eaten in Jiangnan, but is particularly adored by Ningbo people, who call it by a dialect word, “salty choppings” (xian ji), and have a little ditty: “If three days go by without a taste of pickled vegetable soup, your feet will be so sore they bring tears to your eyes.” Rather charmingly, there is also a local saying that yellow croaker and pickle soup is so delicious that “it makes your eyebrows fall off”! In the past, the dish was made with a large wild yellow croaker, but these are so rare now that they sell for prices equivalent to hundreds of dollars. At home I’ve used the same method to cook sea bass, which is also delicious.",
+  "ingredients": [
+    {
+      "item": "yellow croaker or sea bass (about 1 lb/500g), scaled and gutted",
+      "amount": "1"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "spring onions",
+      "amount": "2"
+    },
+    {
+      "item": "sliced bamboo shoot",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "snow vegetable, chopped coarsely",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Trim off and discard the fins of the fish and make 4 or 5 parallel diagonal cuts into each side. Rub ¼ teaspoon salt and ½ tablespoon Shaoxing wine into the fish, inside and out, and set aside. Boil the kettle.",
+    "Trim the spring onions and separate the white and green parts. Smack the whites gently with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. If you wish to garnish the dish, cut the greens into 1½ in (4cm) sections. Blanch the bamboo shoot for 1–2 minutes in boiling water, then drain well.",
+    "Rinse the fish and pat it dry with paper towels. Heat the lard or oil in a seasoned wok until smoking. Add the ginger and spring onion whites and stir-fry briefly until you can smell their fragrance. Remove with a slotted spoon and set aside. Carefully slide the fish into the wok and fry over a high flame until tinged with gold on each side. Try not to move the fish around too much to help keep it intact; instead, tilt the wok for even frying.",
+    "Add the remaining Shaoxing wine and let it burn off. Just cover the fish with hot water (about 2½ cups/600ml) and bring to the boil. Return the ginger and spring onion whites to the wok. Cover and simmer over a medium flame for 7–8 minutes, then add the bamboo shoot and snow vegetable. Cover the pan again and boil vigorously for another 2–3 minutes, until the soup is milky white. Season with salt and a little white pepper. Gently transfer the fish to a deep serving dish and pour over the soup and vegetables. Use chopsticks to fish out the bamboo slices and lay them prettily over the fish. Garnish with the spring onion greens, if using, and serve."
+  ],
+  "image": "/recipes/soupy-fish-with-snow-vegetable.jpg"
+}

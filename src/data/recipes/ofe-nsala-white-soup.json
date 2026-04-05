@@ -1,0 +1,53 @@
+{
+  "id": "ofe-nsala-white-soup",
+  "name": "Ofe Nsala (White Soup)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 6-8",
+  "intro": "A delicious soup that originates from the Igbo tribe. It is called white soup because of its pale colour. Unlike many other traditional soups, palm oil is not used in the preparation. Catfish is the main protein in the traditional recipe but in this vegan version, I recommend using jackfruit because of the flaky texture. Of course you are welcome to use any other meat alternative of your choice. Yam is used as a thickener in this soup. If you do not have access to fresh yam, you can also use a small amount of yam flour mixed into the vegetable broth.",
+  "ingredients": [
+    {
+      "item": "diced yam Warm water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "scotch bonnet chilli",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "whole uda pods or 1",
+      "amount": "2"
+    },
+    {
+      "item": "ground ehuru (calabash nutmeg)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "1/4 teaspoon ogiri Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "uziza leaves (washed, drained and roughly chopped)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "utazi leaves (washed, drained and roughly chopped)",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Place the yam in a pot and cover completely with water. Bring to a boil on high heat and cook for 15-20 minutes until tender.",
+    "Pour 2 cups of water into a pot and bring to a boil. Add the vegetable stock cubes, uda/white pepper, seaweed flakes, ehuru, ogiri and salt to taste. Add the yam mixture and stir continuously over low heat until the soup is well combined. Add the pre-cooked meat alternative of your choice, along with the utazi and uziza leaves and simmer on medium heat for another 3 minutes. If the soup has thickened considerably, you may wish to add a small amount of hot water to loosen the mixture."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/ofe-nsala-white-soup.jpg"
+}

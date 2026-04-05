@@ -1,0 +1,49 @@
+{
+  "id": "boiled-firm-tofu-slivers-in-chicken-stock",
+  "name": "Boiled firm tofu slivers in chicken stock",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "ji huo zhu gan si 鸡火煮干丝",
+  "intro": "In the past, Yangzhou was regarded as one of China’s most elegant destinations for pleasure and relaxation, and the historic quarter of the city, with its lanes and canals, salt merchants’ mansions and Slender West Lake Park, still has an old-fashioned charm. For centuries it was also one of the centers of Chinese gastronomy, and the city lays claim to many famous dishes, including this one. Several sources trace its origins back to a more elaborate “nine-sliver soup” (jiu si tang) that was served as a banquet dish for the Qianlong emperor, and which included slivered sea cucumber, dried razor clams and bird’s nest among its ingredients. These days, many ostentatious restaurant versions involve freshwater shrimp, chicken slivers, chicken gizzard and liver, dried shrimp eggs and sliced bamboo shoot, while more elegant, pared-down renditions employ only pea shoots and slivers of ham. This recipe is somewhere between the two, and I hope you’ll find it delicious. The tofu slivers are twice soaked in boiling water to dispel what the Chinese refer to as their “beany fishy taste” (dou xing wei)—that is, the less appealing aspect of the flavor of soybeans. Typically of Yangzhou cooking, this dish involves careful attention to color, with green leaves and needles of dark pink ham used as a counterpoint to the pallor of the tofu.",
+  "ingredients": [
+    {
+      "item": "plain firm tofu",
+      "amount": "8 oz (225g)"
+    },
+    {
+      "item": "cooked chicken breast",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "lean Spanish or Chinese cured ham, sliced 1mm thick",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "A handful of pea shoots or baby spinach leaves",
+      "amount": ""
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2¾ cups (650ml)"
+    },
+    {
+      "item": "lard or chicken oil",
+      "amount": "1 oz (25g)"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the tofu into very thin slices and then into thin slivers. Put them in a bowl with a good pinch of salt and cover generously with boiling water. Leave to cool.",
+    "Cut or tear the chicken into thin slivers. Boil or steam the ham and, when cool, cut into thin shreds. Bring a pan of water to the boil and blanch the pea shoots or spinach leaves very briefly to wilt them; refresh immediately in cold water, then shake dry.",
+    "Drain the tofu in a colander, then return it to the bowl with another pinch of salt, cover with fresh boiling water and leave for at least 2 minutes.",
+    "Bring the stock to the boil in a wok. Add the tofu and shake gently to immerse. Tuck the chicken into the stock at one side of the wok. Add the lard and boil fast for about 10 minutes, until the stock has emulsified and become milky, stirring occasionally with chopsticks so the tofu strands don’t stick together. Season with salt, cover and simmer gently for another 2 minutes.",
+    "Pile the tofu up in a deep serving dish with the chicken slivers on top. Pour over the rest of the stock. Arrange the green leaves prettily around the tofu, garnish with the slivered ham and serve.",
+    "(If you wish to make the full, classic version of this dish, you will also need small amounts of cooked chicken gizzard and liver, cut into slivers, sliced bamboo shoot, blanched pea shoots, dried shrimp eggs and a few uncooked shrimp, which should be lightly coated in starch paste and briefly stir-fried in lard. Add the chicken offal, shrimp eggs and bamboo shoot to the wok along with the chicken slivers. Garnish with the cooked shrimp, pea shoots and ham.)"
+  ],
+  "image": null
+}

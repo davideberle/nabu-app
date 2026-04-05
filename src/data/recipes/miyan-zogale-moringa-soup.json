@@ -1,0 +1,49 @@
+{
+  "id": "miyan-zogale-moringa-soup",
+  "name": "Miyan Zogale (Moringa Soup)",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "moringa leaves (washed)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "palm oil or groundnut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ground or chopped dawadawa (fermented locust beans)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "1/2 cup roasted groundnut (ground to a smooth paste)",
+      "amount": ""
+    },
+    {
+      "item": "SOUPS AND STEWS",
+      "amount": "119"
+    }
+  ],
+  "method": [
+    "Place the moringa leaves in a pot, cover with 3 cups of boiling hot water and cook for 7-8 minutes on high heat. Drain through a strainer (the liquid can be saved and enjoyed as a highly nutritious tea) and rinse the leaves thoroughly under cold water. Set aside.",
+    "Heat the palm oil in a pot and add the chopped onions. Cook for 2-3 minutes on medium heat until the onions start to soften. Add the pepper sauce, 1 cup of water, yaji/suya spice, vegetable stock cube, dawadawa, groundnut paste, meat alternative of your choice and salt to taste. Cook for 12-15 minutes on medium heat, stirring occasionally.",
+    "Add the moringa leaves and simmer for another 5 minutes. Serve hot with tuwo shinkafa or tuwo masara."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "image": "/recipes/miyan-zogale-moringa-soup.jpg"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "fresh-savory-soymilk",
+  "name": "Fresh savory soymilk",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "dou jiang 豆奖",
+  "intro": "In the West, people often think of soymilk only as a substitute for cows’ milk for vegans and those who are lactose intolerant. In China, it is a common breakfast beverage, often drunk with deep-fried dough sticks (you tiao) for dunking. Freshly made, it’s a beautiful drink. The best I’ve ever had is the stone-ground soymilk served at the start of banquets at the Dragon Well Manor restaurant in Hangzhou. Guests there are encouraged first to taste the unseasoned milk to appreciate its intrinsic flavor (yuan wei), then to drink it with flavorings of their choice. Some people like it sweetened with sugar, but for me the only choice is to season it with savory condiments: soy sauce, dried shrimp, spring onion greens, pickled mustard and fragments of deep-fried dough stick. This way it’s like a soup, and fantastically satisfying. If you’re not drinking the soymilk immediately, you’ll notice that a skin will form on the surface as it cools; whip this off with a chopstick and hang it up to dry and you’ll have tofu skin, which can be added to a soup or stir-fried vegetables. You’ll need a piece of clean muslin. If you don’t have a Chinese dough stick to hand (I usually don’t), just omit it. Makes about 1 quart (800ml), or 4 small bowlfuls.",
+  "ingredients": [
+    {
+      "item": "dried yellow soybeans",
+      "amount": "6 oz (200g)"
+    },
+    {
+      "item": "drops vegetable oil, plus extra for greasing",
+      "amount": "2"
+    },
+    {
+      "item": "Superfine sugar, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Light soy sauce",
+      "amount": ""
+    },
+    {
+      "item": "Papery dried shrimp",
+      "amount": ""
+    },
+    {
+      "item": "Thinly sliced spring onions, green parts only",
+      "amount": ""
+    },
+    {
+      "item": "Finely chopped Sichuan preserved vegetable",
+      "amount": ""
+    },
+    {
+      "item": "Finely chopped Chinese dough stick",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cover the soybeans with plenty of cold water and soak overnight in a cool place. Discard the soaking water and rinse the beans well.",
+    "Bring 1 quart (1 liter) water to the boil and add the vegetable oil (this will help to subdue the foaminess of the soymilk). Put the beans in a blender with about 2 cups (500ml) of the hot water and blitz until smooth.",
+    "Lightly grease the inside of a pan with vegetable oil. Line a sieve with muslin and strain the soymilk through it into the pan. Draw the edges of the muslin together and squeeze to extract as much liquid as possible. Use some of the remaining hot water to rinse the residue in the sieve as you go along, and then repeat the squeezing. Add the rest of the hot water to the strained soymilk in the pan and bring it to the boil, stirring to prevent sticking. Simmer for 7–8 minutes. Serve in individual bowls, seasoned with your chosen condiments to taste, and drink it with spoons, like a soup.",
+    "If you choose the savory option, for each bowl of soymilk I suggest about 1 teaspoon light soy sauce or organic tamari to taste, and 1 teaspoon each of papery dried shrimp, spring onion greens and Sichuan preserved vegetable (and the dough stick, if using)."
+  ],
+  "image": null
+}

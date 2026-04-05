@@ -1,0 +1,33 @@
+{
+  "id": "mashed-fava-beans-with-snow-vegetable",
+  "name": "Mashed fava beans with snow vegetable",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "dou ban su 豆瓣酥",
+  "intro": "My first Jiangnan meal was at the Ningbo Residents’ Association restaurant in Hong Kong, a hidden enclave of traditional Ningbo food in the heart of the island’s entertainment district. With my friend Rose, a fluent speaker of Ningbo dialect, as my guide, I tasted my first raw mud snails pickled in Shaoxing wine, steamed clams in a delicate custard, smoked duck eggs and this delectable appetizer of mashed fava beans with pickled greens. Since then I’ve eaten many versions of the dish, which is a favorite in both Ningbo and Shanghai. I’ve suggested making it with fresh fava beans, but you can also make it with the dried beans which can be bought ready-skinned in Middle Eastern shops (soak them overnight, boil until tender, then add to the stir-fried snow vegetable as in the recipe). You can also use the fresh skinned beans whole rather than mashed: just boil them, then stir-fry with the snow vegetable and allow to cool to room temperature before serving. Some Chinese supermarkets sell frozen shelled and skinned fava beans, which save a lot of time.",
+  "ingredients": [
+    {
+      "item": "shelled fava beans (around 3 lbs/1kg in the pod)",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped snow vegetable",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a pan of lightly salted water to the boil. Add the beans and boil them until completely tender. Plunge into cold water or rinse under the cold tap to cool them quickly, then pop the beans out of their skins (if they are very small and tender, you can leave the skins on if you don’t mind a chunkier mash). Mash the beans coarsely, using a potato masher in a pan or a Chinese cleaver on a chopping board. Boil the kettle.",
+    "Heat a seasoned wok over a medium flame. Add the oil, then the snow vegetable and stir-fry briefly until fragrant. Add the mashed beans and continue to stir-fry until piping hot, adding a little hot water if necessary to keep the mash loose, and seasoning with salt. Leave the mash to cool, then press it into a lightly oiled rice bowl. Turn it out onto a dish to serve."
+  ],
+  "image": "/recipes/mashed-fava-beans-with-snow-vegetable.jpg"
+}

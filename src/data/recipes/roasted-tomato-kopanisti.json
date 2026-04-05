@@ -3,8 +3,7 @@
   "name": "Roasted Tomato “Kopanisti”",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time:30 minutes |serves 3",
   "ingredients": [
@@ -22,7 +21,7 @@
     },
     {
       "item": "Greek yogurt, preferably full-fat",
-      "amount": "2 tbsp"
+      "amount": "2 tablespoons"
     },
     {
       "item": "roasted cherry or teardrop tomatoes (see Note)",
@@ -30,15 +29,15 @@
     },
     {
       "item": "extra-virgin Greek olive oil",
-      "amount": "3 tbsp"
+      "amount": "3 tablespoons"
     },
     {
       "item": "grated lemon zest",
-      "amount": "1 tsp"
+      "amount": "1 teaspoon"
     },
     {
       "item": "chopped fresh oregano leaves",
-      "amount": "2 tsp"
+      "amount": "2 teaspoons"
     }
   ],
   "method": [
@@ -46,12 +45,5 @@
     "Add the roasted tomatoes, olive oil, lemon zest, and oregano and pulse until the mixture is a slightly chunky paste.",
     "Transfer to a bowl or plastic container, cover, and refrigerate for at least 30 minutes or up to 1 week before serving. Serve as a dip with pita chips."
   ],
-  "time": {
-    "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

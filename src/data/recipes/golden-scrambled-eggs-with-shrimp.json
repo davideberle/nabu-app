@@ -1,0 +1,46 @@
+{
+  "id": "golden-scrambled-eggs-with-shrimp",
+  "name": "Golden scrambled eggs with shrimp",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xia ren chao dan 虾仁炒蛋",
+  "intro": "One warm day in May, with the breeze whispering in the bamboo and the lotus leaves lying lazily on the surface of the pond, I spent the morning sitting in the garden of the Dragon Well Manor restaurant in Hangzhou. At lunchtime, I sat among friends at a table spread with the most exquisite repast: crisp river shrimp cradled in golden eggs, darkly glistening red-braised pork with tofu puffs, a lively stir-fry of fresh green soybeans, fluffy white rice and a dreamy broth in which floated the tenderest, most ethereal little cabbage leaves. It was, like all meals at the Manor, full of quiet, understated joy and the perfection of the season. In this recipe, I’ve suggested you use saltwater shrimp rather than freshwater shrimp, but have otherwise followed the instructions of the Manor’s head chef, Chen Xiaoming.",
+  "ingredients": [
+    {
+      "item": "uncooked saltwater shrimp",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "potato starch",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse and devein the shrimp, then shake them dry and put them in a bowl. Separate one of the eggs. Add 1 teaspoon egg white and ¼ teaspoon salt to the shrimp and chill them in the fridge for 1 hour before cooking.",
+    "Remove the shrimp from the fridge and stir in the potato starch. Beat the remaining white and yolk of the separated egg with the two other eggs and season with salt and white pepper. Stir in the spring onions and Shaoxing wine.",
+    "Heat the oil in a seasoned wok over a high flame. When hot, turn down the heat, add the shrimp and stir-fry until nearly—but not completely—cooked. Remove them with a slotted spoon and drop them into the egg mixture. Return the wok to a high flame. When the oil is hot again, add the egg mixture and stir-fry until nearly cooked. Stop stirring and allow the egg to become golden, flipping it over once to color the other side. Break up the eggs and pile them onto a serving dish."
+  ],
+  "image": "/recipes/golden-scrambled-eggs-with-shrimp.jpg"
+}

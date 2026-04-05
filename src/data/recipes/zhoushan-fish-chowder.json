@@ -1,0 +1,58 @@
+{
+  "id": "zhoushan-fish-chowder",
+  "name": "Zhoushan fish chowder",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "jin tang fan qie tu duo shao yu 金汤番茄土豆烧鱼",
+  "intro": "At night, the strip of shoreline on the edge of Dinghai, the main town of the Zhoushan archipelago, is taken over by an orgy of seafood eating. Dozens of stalls line the strand, each one displaying its wares on crushed ice or in tubs of water. There are swimming crabs and silvery, kite-shaped pomfret, yellow croakers and shining ribbonfish, razor clams and shrimp, squid and cuttlefish … Behind this bounty of the seas, the chefs toss their woks over furious flames, cooking up dish after dish for a raucous, riotous crowd of customers. Singers and fortune-tellers drift in and out. My friend Rose’s cousin Lin Wei and I sat with his friends amid the cacophony, eating crabs with our fingers, guzzling the savory white meat from a shatter of shell and entrails, slurping up razor clams seasoned with garlic and chilli, scoffing steamed fish and shrimp, and leaving on the table a devastation of whisker, carapace and bone. Lin Wei plied me with red bayberry wine from the nearby Buddhist island of Putuoshan “to drive out the coldness of the crabs.” One of the dishes I particularly enjoyed that night was a kind of chowder made with a “tiger-head” fish, potatoes and tomatoes. As satisfying as bouillabaisse, the dish seemed more Mediterranean than Chinese, except for the tell-tale hint of ginger and spring onion (the people of Shanghai and Ningbo sometimes use tomato and potato in what seems like a European way, perhaps a legacy of their semi-colonial histories). The rich broth is tinted golden by the tomatoes and made silky by the addition of mashed potato.",
+  "ingredients": [
+    {
+      "item": "cooked potatoes, peeled",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "ripe tomatoes (about 7 oz/200g)",
+      "amount": "2"
+    },
+    {
+      "item": "red snapper or grouper (about 1½–1¾ lbs/700–800g), fillets and backbone separated",
+      "amount": "1"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mash 4 oz (100g) of the potatoes and cut the rest of them into thick slices. Cut the tomatoes into sixths or eighths. Cut the fish fillets into bite-sized chunks and put them in a bowl with ⅛ teaspoon salt and 1 tablespoon of the Shaoxing wine. Put it in the fridge while you prepare the soup.",
+    "Cut the fish backbone into about 3 pieces. Smack the spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Boil the kettle.",
+    "Heat the oil in a seasoned wok over a high flame. Add the fish backbone and fry until golden; do not stir, just tilt the wok to cook it evenly. Turn the pieces over, add the ginger and spring onion whites and fry until the backbone is golden on the other side. Add the remaining Shaoxing wine and let it sizzle for a moment, then pour in about 1 quart (1 liter) hot water from the kettle. Bring to the boil, skim, then cover and boil for about 10 minutes until you have a rich fish stock. Remove and discard the backbone.",
+    "Add the tomatoes and both mashed and sliced potatoes to the broth. Bring to the boil and simmer until the tomatoes are tender and the broth is a light orange color. Season with salt. Add the fish chunks, with a little more boiling water to cover if necessary, then return to the boil and simmer for 2 minutes, until the fish is just cooked. Season with pepper, pour into a serving tureen and garnish with the spring onion greens, if using.",
+    "You can make this recipe with a whole fish, or ask your fishmonger to cut the fillets from the bones—just make sure you keep the backbone, to make the base of the soup. If you like, add some roll-cut chunks of peeled silk gourd to the broth with the chunks of fish flesh.",
+    "Do not fillet the fish; instead, make a few diagonal slashes into the thickest part of the flesh on both sides. Heat the oil in a seasoned wok and fry the fish until golden on both sides. Add the ginger and spring onions towards the end of cooking, allowing them to sizzle out their fragrances. Cover generously with boiling water, boil and skim. Add the tomatoes and mashed and sliced potatoes, return to the boil, season with salt and simmer for 10 minutes. Finally, add pepper to taste, and serve with a scattering of spring onions, if you like.",
+    "Instead of a fish, use a couple of live swimming crabs (around 6 oz/175g each), cleaned and chopped into sections. Crack the front claws with the blunt spine of a heavy cleaver or a nutcracker so they will be easier to eat. Proceed as for a whole fish, frying the crab before you add the other ingredients. Be prepared for some messy eating. This is a scrumptious variation."
+  ],
+  "image": "/recipes/zhoushan-fish-chowder.jpg"
+}

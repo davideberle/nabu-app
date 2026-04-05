@@ -1,0 +1,33 @@
+{
+  "id": "honey-roasted-pears",
+  "name": "Honey-Roasted Pears",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 5 minutes | cook time:45 minutes |serves 3",
+  "ingredients": [
+    {
+      "item": "large Bosc or other pears, halved, peeled, and cored",
+      "amount": "3"
+    },
+    {
+      "item": "1/4 cup packed light brown sugar",
+      "amount": ""
+    },
+    {
+      "item": "warm honey",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "1-inch piece of vanilla bean, split lengthwise",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Put the pears, cut side down, in a baking dish just large enough to hold them in 1 layer.",
+    "Sprinkle with the brown sugar and drizzle with the honey. Scrape the seeds from the vanilla bean into the baking dish, then add the pod.",
+    "Bake, uncovered, using a pastry brush to baste the pears occasionally with the accumulated juices in the dish, until the pears are tender when pierced, about 45 minutes. Turn the pears cut side up and baste again with the syrupy juices. Let cool until just warm."
+  ],
+  "image": null
+}

@@ -1,0 +1,58 @@
+{
+  "id": "lentil-and-mushroom-soup",
+  "name": "Lentil & Mushroom Soup",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various"
+  },
+  "servings": "prep time: 10 minutes | cook time:45 minutes |serves 8",
+  "ingredients": [
+    {
+      "item": "green or brown lentils (not French lentilles de Puy)",
+      "amount": "1 pound"
+    },
+    {
+      "item": "21/2 quarts chicken or vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "large yellow onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "large carrots, peeled and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ribs celery, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "3"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "Kokkari Tomato Sauce or canned tomato sauce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "3/4 cup extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "mushrooms, halved and sliced",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "In a large pot, combine the lentils, stock, onion, carrots, celery, garlic, bay leaves, tomato sauce, olive oil, and salt to taste.",
+    "Cover partially and bring to a simmer over medium heat. Simmer for about 15 minutes, then add the mushrooms.",
+    "Continue simmering until the lentils and vegetables are soft, about 45 minutes longer.",
+    "Let cool for 10 minutes, then add several grinds of pepper and more salt if necessary. Remove the bay leaves. Ladle into bowls to serve."
+  ],
+  "image": null
+}

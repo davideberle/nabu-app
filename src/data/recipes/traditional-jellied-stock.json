@@ -1,0 +1,42 @@
+{
+  "id": "traditional-jellied-stock",
+  "name": "Traditional jellied stock",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "pi dong 皮冻",
+  "intro": "This is a recipe for old-fashioned jellied stock made by extracting the natural gelatine from pig’s trotters with a long simmering (its name in Chinese means “skin jelly”). It has a rich and wonderful flavor; make more than you need, freeze the surplus and use it to add richness to soups, stews and other dishes.",
+  "ingredients": [
+    {
+      "item": "pig’s trotters (about 1¾ lbs/750g)",
+      "amount": "2"
+    },
+    {
+      "item": "chicken carcasses",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Ask your butcher to split the trotters in half lengthways. Give them a good rinse. Put the trotters and chicken carcasses in a large pan, cover with cold water and bring to the boil. Boil for 2 minutes, then drain and rinse well. Rinse out the pan. Smack the ginger and spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Return the trotters and carcasses to the saucepan, cover with 3½ quarts (3.5 liters) water and bring to the boil. Skim, then add the ginger, spring onion and Shaoxing wine. Return to the boil, then turn down the heat and simmer gently for 3 hours.",
+    "Strain and discard the trotters and carcasses. Boil to reduce the liquid to about 1 quart (1 liter). Season with salt and pepper. Allow to cool completely, then chill in the fridge overnight, or until set."
+  ],
+  "image": null
+}

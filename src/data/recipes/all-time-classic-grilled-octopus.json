@@ -3,8 +3,7 @@
   "name": "All-Time Classic Grilled Octopus",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Main Dishes"
+    "author": "Various"
   },
   "servings": "prep time: 5 minutes | cook time:8 to 12 minutes |serves 8 to 12",
   "ingredients": [
@@ -46,7 +45,7 @@
     },
     {
       "item": "cracked black pepper",
-      "amount": "1 tsp"
+      "amount": "1 teaspoon"
     },
     {
       "item": "heaping teaspoons dried Greek oregano",
@@ -54,11 +53,11 @@
     },
     {
       "item": "Greek capers, drained and rinsed",
-      "amount": "2 tbsp"
+      "amount": "2 tablespoons"
     },
     {
       "item": "chopped fresh parsley or oregano",
-      "amount": "2 tbsp"
+      "amount": "2 tablespoons"
     }
   ],
   "method": [
@@ -70,12 +69,5 @@
     "Brush the grill grates with a little olive oil. Grill the octopus tentacles for 8 to 12 minutes, turning to char lightly on all sides.",
     "Transfer the tentacles to a serving platter. Drizzle with the reduced cooking liquid and the remaining 2 to 3 tablespoons olive oil, sprinkle with the capers and a little fresh parsley or oregano, and serve."
   ],
-  "time": {
-    "total": 180
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  }
+  "image": null
 }

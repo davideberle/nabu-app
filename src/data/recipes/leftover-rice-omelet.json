@@ -1,0 +1,42 @@
+{
+  "id": "leftover-rice-omelet",
+  "name": "Leftover rice omelet",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "mi fan ji dan bing 米饭鸡蛋饼",
+  "intro": "When I was staying on Hangzhou restaurateur Dai Jianjun’s organic farm in southern Zhejiang, a young chef made a sweet omelet with leftover rice for breakfast one day. It was unexpectedly delicious—the rice gave the eggs an almost cakey texture—and I’ve been making versions of it ever since, both sweet, as in the original, and savory. It’s a good way of using up irritatingly small amounts of leftover rice. The quantities are not critical, so please use what you have and feel free to improvise. Both versions make a delightful dish for breakfast or a main meal. On that November morning on the farm, the omelet was just one of a spread of dishes that included congee with black pickled cucumber, slivers of preserved mustard tuber stir-fried with a little pork, fried eggs, sweet potato chips with honey, corn cobs steamed in their husks and little steamed buns.",
+  "ingredients": [
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "leftover cooked rice",
+      "amount": "½ cup (100g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "A handful of chopped Chinese chives or spring onion greens",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Beat the eggs and stir in the rice, with your choice of sweet or savory additional ingredients.",
+    "Heat the oil in a seasoned wok or an omelet pan over a high flame. Pour in the egg mixture and swirl it around the base of the pan. Reduce the heat to medium, cover and fry until the under side is golden. Flip the omelet over.",
+    "When the omelet is golden on both sides and just cooked through, remove from the heat. Cut into strips or wedges and and pile them up prettily on a serving plate."
+  ],
+  "image": null
+}

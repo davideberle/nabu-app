@@ -1,0 +1,55 @@
+{
+  "id": "steamed-chopped-pork-with-salted-fish",
+  "name": "Steamed chopped pork with salted fish",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "subtitle": "xiang zheng rou bing 鲞蒸肉饼",
+  "intro": "Like all dishes made with xiang, the salted sea fish beloved in Zhejiang province and the Cantonese south, this one has a wild, funky aroma that may, to the uninitiated, seem disconcerting at first. In some ways, however, it’s not so different from the more familiar Mediterranean leg of lamb spiked with anchovies and chunks of garlic that melt into the flesh as it cooks, perfuming it with a bold pungency that is sweetened by heat. In Zhejiang, this dish tends to be popular with the older generation, who remember the bitter old days when a tiny slice of the pungent fish might be all someone had to “send down” a whole bowlful of rice. It is sometimes known as a “lazy cake” (lan duo bing), apparently because the meat is slapped down on the plate rather than carefully shaped into spheres, like meatballs. Serve it with plain white rice and a simple stir-fried green vegetable for an easy and satisfying supper—and be sure to spoon the glorious juices over the rice. Hand-chopping the meat really does give a more delectable texture, so I strongly advise it.",
+  "ingredients": [
+    {
+      "item": "skinless, boneless pork belly (or coarsely ground fatty minced pork)",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "Vietnamese salted mackerel or 2 oz (60g) Chinese dried yellow croaker",
+      "amount": "1½ oz (45g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "If possible, put the meat in the freezer for an hour or two before you begin, which will make the cutting much easier. If you are using dried croaker, soak it in cold water for at least 1 hour, then cut it open, winkle out the bones and finely chop it. If you are using the moister salted mackerel, just cut it into small pieces, discarding the bones. Cover the shiitake mushrooms with boiling water and leave to soak for at least half an hour, then remove the stalks and finely chop the caps.",
+    "Cut the pork into 2 in (5mm) slices. Cut the slices into strips and then into small dice. The idea is to end up with a coarse, chunky mince. Put it in a mixing bowl and add everything else except the salted fish and spring onions, and mix well. Stir in the croaker, if using (salted mackerel should be added later). Stir vigorously with your hand until the pork has a sticky texture. Spread it out into a circle in a shallow dish that will fit in your steamer: the meat should be 1–1½ in (2–3cm) deep.",
+    "Cut the salted mackerel, if using, into slices and place these on top of the pork. Cover the dish with a plate or aluminum foil. Place it in a steamer and steam over high heat for about 25 minutes, until cooked through. Serve scattered with the spring onion greens.",
+    "For a delicious variation, use 2 salted duck eggs instead of the salted fish. Break the eggs and separate the waxy yolks from the liquid whites. Stir the whites into the pork mixture, omitting the soy sauce because the eggs themselves are very salty. Slice the yolks and arrange them on top of the pork patty before steaming it."
+  ],
+  "image": "/recipes/steamed-chopped-pork-with-salted-fish.jpg"
+}
