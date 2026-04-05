@@ -3,9 +3,10 @@
   "name": "Broad Beans with Pecorino",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "I love to serve this very simple but delicious dish as a starter or even with pre-dinner drinks.\n\nThe best time to eat broad beans is when they are very young and tender. I first tried this wonderful combination of sweet, crunchy favas with the salty, strong flavour of the pecorino cheese in Tuscany. The farmer put a large basket of fresh fava beans on the table, cut a large chunk of pecorino cheese, produced with the milk from his own sheep, and poured some very fragrant new virgin olive oil. We all helped ourselves, shelling the beans, dipping them into the oil and eating them with a thin slice of cheese.",
   "ingredients": [
     {
       "item": "very young broad beans",
@@ -18,9 +19,15 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "60 ml"
+    },
+    {
+      "item": "sea salt flakes",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 400 g very young broad beans 200 g pecorino 60 ml good-quality virgin olive oil sea salt flakes"
-  ]
+    "Pop the broad beans out of their pods. If they are very young there is no need to blanch and peel them.",
+    "Shave the pecorino over the beans and drizzle with olive oil. Sprinkle with salt and serve."
+  ],
+  "image": "/recipes/broad-beans-with-pecorino.jpg"
 }

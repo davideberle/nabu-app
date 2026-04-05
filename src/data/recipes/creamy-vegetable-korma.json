@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This might look similar to the mild kormas you find at curry houses but British kormas are kormas in name only. This authentic dish is on the spicy side but the spice level can be adjusted to taste.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "potato (about 185g/6½oz), cut into small cubes",
@@ -49,8 +53,8 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "5cm (2in) piece of cinnamon stick",
-      "amount": ""
+      "item": "piece of cinnamon stick",
+      "amount": "5cm (2in)"
     },
     {
       "item": "green cardamom pods, bruised",
@@ -94,56 +98,69 @@
     },
     {
       "item": "chana dhal",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "KORMA PASTE"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "KORMA PASTE"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "KORMA PASTE"
     },
     {
       "item": "thick coconut milk or creamed coconut",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml (generous ¾ cup)",
+      "group": "KORMA PASTE"
     },
     {
       "item": "cashew nuts",
-      "amount": "30"
+      "amount": "30",
+      "group": "KORMA PASTE"
     },
     {
       "item": "sesame seeds",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "KORMA PASTE"
     },
     {
       "item": "cloves",
-      "amount": "4"
+      "amount": "4",
+      "group": "KORMA PASTE"
     },
     {
       "item": "green chillies, roughly chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "KORMA PASTE"
     },
     {
       "item": "dried red chillies",
-      "amount": "2"
+      "amount": "2",
+      "group": "KORMA PASTE"
     },
     {
       "item": "sugar",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "KORMA PASTE"
     },
     {
       "item": "black peppercorns",
-      "amount": "10"
+      "amount": "10",
+      "group": "KORMA PASTE"
     }
   ],
   "method": [
     "Parboil your cubed potato until almost cooked through – about 5 minutes. Then add the rest of the vegetables and simmer them with the potato until just cooked through but still quite fresh-looking, about 2 minutes. Drain and set aside.",
     "To make the korma paste, lightly toast the lentils in a dry frying pan for 1½–2 minutes until light brown, then transfer to a plate to cool. Roast the cumin and coriander seeds in the same way. They are ready when fragrant. If they begin to smoke, get them off the heat. Place the lentils, cumin seeds and coriander seeds in a spice grinder with the other paste ingredients and grind to a smooth, thick paste.",
+    "When you’re ready to make the curry, soak the saffron in 3 tablespoons of warm milk (if using) and set aside. Heat the ghee, butter or oil in a large saucepan that has a lid. When visibly hot, add the cinnamon stick and cardamom pods and temper these spices in the oil for about 30 seconds before adding the curry leaves. Temper the leaves for another 30 seconds, then add the chopped onions. Fry the onions until soft and lightly browned, about 5 minutes, and then stir in the garlic and ginger paste.",
     "Add the chopped tomatoes and turmeric and let this mixture all cook for another 2 minutes before adding your prepared korma paste. Toss in the par-cooked vegetables and about 250ml (1 cup) of water to cover. Stir well and place the lid on the top. Cook, covered, for about 2 minutes until the sauce has thickened and the vegetables are fully cooked. If you prefer a thicker sauce, remove the pan lid for 1 minute, or until you are happy with the consistency.",
     "Pour in the cream or yoghurt and the saffron-infused milk (if using) and cook for another minute with the lid on.",
     "To finish, season with salt, garnish with the coriander (cilantro) and sprinkle the garam masala over the top."
   ],
+  "image": "/recipes/creamy-vegetable-korma.jpg",
   "dietary": [
     "vegetarian"
   ]

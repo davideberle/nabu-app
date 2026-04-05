@@ -3,11 +3,14 @@
   "name": "JAMAICAN GINGER AND MARZIPAN LOAF",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 8–10",
-  "time": "1¼ HOUR",
   "intro": "My favourite cakes to make are oil-based loaf cakes. They’re foolproof – always moist and never dry. So it made sense to create a ginger and marzipan loaf cake, one of my dream flavour combinations. Anything with a deep almondy flavour is a win for me. Sticky ginger cake, both fiery and deeply sweet – perfect.",
+  "time": {
+    "prep": "25 MINUTES",
+    "cook": "1¼ HOURS"
+  },
   "ingredients": [
     {
       "item": "marzipan",
@@ -91,6 +94,7 @@
     "Add the wet mixture to the dry, whisking until smooth, then stir in the marzipan. Pour the batter into the prepared tin.",
     "Bake in the oven for 1 hour 5 minutes until a skewer inserted into the centre comes out clean. Leave to cool in the tin for 30 minutes before turning out and slicing and serving with ice cream or créme fraîche."
   ],
+  "image": "/recipes/jamaican-ginger-and-marzipan-loaf.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

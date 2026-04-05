@@ -3,44 +3,89 @@
   "name": "Roasted Eggplant with Labneh",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "10 minutes",
   "intro": "Eggplant is one of the most beloved vegetables across the Middle East, mainly due to it thriving in the warm climate of the region. It is prepared in countless ways: grilled, fried, roasted, stewed, and stuffed. In Iraq, a plate of fried eggplant is considered a staple at dinnertime, rolled into sandwiches with sliced tomatoes and caramelized onions. People use it as an economical way to replace meat in many dishes because it adds depth, substance, and flavor. I have been an avid fan since I was very little. I still recall my mom being puzzled by the fact that I would devour any eggplant dish placed in front of me, while both of my sisters would turn up their noses. My dad is known for making one eggplant dish in particular, in which he fries it in oil with sliced onions, then he layers yogurt on top and digs in with bread. This dish is reminiscent of that, but using labneh as a base and layering perfectly roasted eggplant seasoned with sumac and dill. The final—and most essential—component is hot garlic oil drizzled on top.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
+      "item": "large eggplants (about 2 pounds, or 907 g), ends trimmed, peeled lengthwise every other stripe in a zebra pattern, and cut into ¼-inch-thick (6 mm) rounds",
+      "amount": "2",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "plus 1 tablespoon (75 ml) olive oil",
+      "amount": "¼ cup",
+      "group": "EGGPLANT"
+    },
+    {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "EGGPLANT"
     },
     {
       "item": "sumac",
-      "amount": "2 teaspoons"
+      "amount": "2 teaspoons",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "Labneh",
+      "amount": "¾ cup (175 g)",
+      "group": "LABNEH"
+    },
+    {
+      "item": "sumac",
+      "amount": "½ teaspoon",
+      "group": "LABNEH"
     },
     {
       "item": "finely chopped fresh dill (optional)",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "LABNEH"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "roughly torn fresh dill",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Pita bread",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "large cloves garlic, thinly sliced",
+      "amount": "4",
+      "group": "GARLIC OIL"
     },
     {
       "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "GARLIC OIL"
     }
   ],
   "method": [
-    "TO MAKE THE EGGPLANT: Preheat the oven to 450°F (230°C) and place a rack in the middle.",
+    "Preheat the oven to 450°F (230°C) and place a rack in the middle.",
     "Line two large, rimmed sheet pans with parchment paper and place the eggplant rounds on the pans in a single layer. Drizzle with the oil, then sprinkle with the salt and 2 teaspoons sumac. Mix well to coat all the rounds.",
     "Bake for 45 minutes, or until the eggplant is soft and golden.",
-    "MEANWHILE, PREPARE THE LABNEH: In a small bowl, mix the labneh, ½ teaspoon sumac, and dill (if using) until well combined.",
-    "TO MAKE THE GARNISH: Toast the pine nuts in a small, dry skillet over medium heat for a few minutes, or until lightly golden, stirring continuously. Transfer to a small bowl.",
+    "PREPARE THE LABNEH: In a small bowl, mix the labneh, ½ teaspoon sumac, and dill (if using) until well combined.",
+    "Toast the pine nuts in a small, dry skillet over medium heat for a few minutes, or until lightly golden, stirring continuously. Transfer to a small bowl.",
     "WHEN THE EGGPLANT IS BAKED AND JUST BEFORE SERVING, MAKE THE GARLIC OIL: In the same skillet the pine nuts were toasted in, heat the olive oil over medium heat. Add the garlic and cook, stirring continuously, for a few minutes, or until sizzling and golden. Stir in the Aleppo pepper and remove from the heat.",
     "Spread the labneh onto a medium serving platter and top with the roasted eggplant rounds. Spoon the garlic oil evenly over the top, then garnish with the toasted pine nuts and fresh dill. Serve with pita bread."
   ],
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/roasted-eggplant-with-labneh.jpg"
 }

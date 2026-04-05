@@ -1,0 +1,70 @@
+{
+  "id": "margat-sabanikhspinach-and-chickpea-stew",
+  "name": "Margat SabanikhSPINACH & CHICKPEA STEW",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 to 8 servings",
+  "intro": "This was one of my favorite stews growing up, but my mom would always make it with ground beef. I learned this vegetarian version from my sister, and it is perfect when I want to cook a vegetarian meal. It uses plenty of fresh dill and whole dried limes for a deep, earthy flavor. You don’t miss out on the meat: the onions, spinach, chickpeas, and dill all simmer together as the stew thickens and the flavors balance out. I serve it over rice for the family, but I also love having it as a soup.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "40 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "medium yellow onions, diced",
+      "amount": "2"
+    },
+    {
+      "item": "small bunches fresh dill, large stems removed and finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black pepper, plus more if needed",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "frozen chopped spinach, thawed for 5 minutes",
+      "amount": "28 ounces (800 g)"
+    },
+    {
+      "item": "dried limes, soaked in boiling water for 5 minutes",
+      "amount": "3"
+    },
+    {
+      "item": "canned chickpeas, drained and rinsed",
+      "amount": "18 ounces (510 g)"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Roz Bi Shaariya",
+      "amount": "",
+      "group": "FOR SERVING"
+    }
+  ],
+  "method": [
+    "In a medium pot, heat the oil over medium heat. Add the onions and cook, stirring often, until softened and lightly browned, 6 to 7 minutes.",
+    "Add the dill and tomato paste and cook, stirring often, for 2 to 3 minutes. Add the salt, pepper, and spinach. Add enough water to cover the ingredients (4¼ to 6½ cups, or 1 to 1.5 L), filling the pot about halfway.",
+    "Drain the dried limes and use a knife to carefully make 2 or 3 slits in each one to allow the flavor to be extracted. Add them to the pot along with the chickpeas and bring to a boil. Cover the pot with the lid, reduce the heat to medium-low and let simmer for 20 minutes.",
+    "Uncover and let simmer for another 20 to 30 minutes, until the stew has thickened. (Simmer longer if you prefer it thicker, or less if you prefer a soup consistency.) Taste and adjust the salt and pepper if necessary.",
+    "Ladle into bowls and serve with pita bread and rice."
+  ],
+  "image": "/recipes/margat-sabanikhspinach-and-chickpea-stew.jpg"
+}

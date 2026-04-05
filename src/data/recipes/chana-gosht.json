@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Chana gosht is a favourite staff curry behind the scenes at many restaurants. One of the best I’ve tried was at Lahore Kebab House in Shoreditch when I was researching recipes for my first book. I didn’t get the recipe from them at the time but wished that I had. This recipe came about by surprise. I was preparing shami kebabs, which are made with the same ingredients. It wasn’t until I tried the reduced mixture I was cooking, before blending it all up for the shamis, that I realized that the flavour was so close to that curry I enjoyed so much at Lahore! I make this curry all the time now. In the recipe, you pan-fry the lamb chops, which works well. I also like this curry with grilled lamb chops, cooked over hot coals on the barbecue. It adds an amazing smoky, charred flavour.",
+  "time": {
+    "prep": "20 MINS, PLUS MARINATING TIME",
+    "cook": "1 HOUR 15 MINS"
+  },
   "ingredients": [
     {
       "item": "ground coriander",
@@ -78,5 +82,7 @@
     "Transfer the meat to a plate and pour the rest of the oil into the pan. Fry the onions and chillies over a medium–high heat until the onions are soft and translucent, about 5 minutes. Now add the garlic and ginger paste and the rest of the ground spices. Stir this all up and add the meat, tomatoes, chana dhal and just enough water to cover.",
     "Simmer the curry until the chana dhal is soft and the meat is super-tender. This will take about 1 hour. You may need to add a little water during the cooking process. This is normally a drier curry, so when your lentils are soft, continue to simmer until you have a thick sauce. Season with salt and sprinkle with the garam masala.",
     "Serve garnished with the coriander (cilantro)."
-  ]
+  ],
+  "tips": "Watch those lentils! They have a tendency to stick to the pan, so add a little more water and stir occasionally when necessary.",
+  "image": "/recipes/chana-gosht.jpg"
 }

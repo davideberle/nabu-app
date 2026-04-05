@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I love masala chips. Whether I’m serving them as a main dish or doing what I normally do, serving them as a side, they are always a big hit. This is especially so since I started using this recipe that was shown to me by my friend Alfarid ‘Billy’ Juma. The recipe couldn’t be easier, but you’ve got to follow the instructions carefully – there is a reason Billy’s masala chips are so good. This is true comfort food and I promise you that if you have one chip in his special masala sauce, you’ll find it difficult to stop. For ease, I use shop-bought frozen chips. I prefer this recipe with deep-fried chips but you could also use oven-baked chips.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "frozen chips (preferably the kind you deep-fry, but oven-bake will do)",
@@ -34,31 +38,38 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "tomato hamburger relish",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "tomato ketchup",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "sugar",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "MASALA SAUCE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MASALA SAUCE"
     }
   ],
   "method": [
@@ -66,6 +77,7 @@
     "Cook your chips as per the instructions on the packet. Most takeaways use frozen chips that they deep-fry. I highly recommend doing the same, but if you’re looking for a lighter or less messy option, oven chips will do. When your chips are ready, season them directly with the chilli powder, cumin, coriander and a little bit of salt. Remember there is already some salt in the masala sauce, so go easy.",
     "While the chips are still hot, begin adding them to the pan with the sauce, stirring so that every chip is evenly covered in the sauce. Ideally, the process of coating the chips in the sauce and serving should be done in about 2 minutes. If you let them sit too long, the chips will get soggy rather than the crispy sauce-coated chips they are meant to be."
   ],
+  "image": "/recipes/masala-chips.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -3,7 +3,7 @@
   "name": "Pasta with Fresh Sardines",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
@@ -12,36 +12,36 @@
       "amount": "600 g"
     },
     {
-      "item": "salt",
-      "amount": "2 tablespoons"
+      "item": "tablespoons salt",
+      "amount": "2"
     },
     {
-      "item": "large bunches wild fennel",
-      "amount": "2"
+      "item": "arge bunches wild fennel",
+      "amount": "2 l"
     },
     {
       "item": "good-quality virgin olive oil",
       "amount": "150 ml"
     },
     {
-      "item": "large Spanish onion, finely chopped",
+      "item": "arge Spanish onion, finely chopped",
+      "amount": "1 l"
+    },
+    {
+      "item": "teaspoon ground cumin",
       "amount": "1"
     },
     {
-      "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "item": "teaspoon ground cinnamon",
+      "amount": "1"
     },
     {
-      "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "item": "teaspoon turmeric",
+      "amount": "1"
     },
     {
-      "item": "turmeric",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "ground ginger",
-      "amount": "1 teaspoon"
+      "item": "teaspoon ground ginger",
+      "amount": "1"
     },
     {
       "item": "anchovy fillets in oil, drained",
@@ -72,8 +72,12 @@
       "amount": "1"
     },
     {
-      "item": "saffron powder",
-      "amount": "½ teaspoon"
+      "item": "teaspoon saffron powder",
+      "amount": "½"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     },
     {
       "item": "strozzapreti or bucatini pasta",
@@ -81,8 +85,12 @@
     }
   ],
   "method": [
+    "Scrape away the scales from the sardines. Pull the heads away from the bodies – the backbones will naturally come away too. (Your fishmonger can do this for you if you prefer.) Dry the sardines well on kitchen paper.",
     "Add the salt to a large saucepan of water and bring to the boil. Drop in the fennel and simmer for 5 minutes. Lift it out of the water and chop finely. Reserve the water for cooking the pasta.",
+    "To make the sauce, heat 3 tablespoons of the olive oil in a large frying pan. Add the onion and cook until soft and translucent. Stir in the spices and cook for a few more minutes. Add the anchovies, currants, pine nuts and half the sardines to the pan. Cook for around 5 minutes, stirring and breaking up the sardines with a fork.",
     "Add the breadcrumbs, chopped fennel, herbs and saffron with another 2 tablespoons of olive oil. Season to taste and cook for a further 1–2 minutes.",
-    "Boil the pasta in the reserved fennel water until it is al dente."
-  ]
+    "Boil the pasta in the reserved fennel water until it is al dente.",
+    "Meanwhile, heat 2 tablespoons of the olive oil in a separate frying pan and quickly fry the remaining sardines until golden. Drain the pasta and tip half into a warm serving bowl. Stir in the rest of the olive oil and half of the sauce. Top with the remaining sauce and the fried sardines and toss together at the table."
+  ],
+  "image": "/recipes/pasta-with-fresh-sardines.jpg"
 }

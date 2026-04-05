@@ -3,17 +3,38 @@
   "name": "Tuna Carpaccio",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "The combination of the crisp saltiness of the fried capers and the sweetness of the tuna is absolutely delicious.\n\nYou can serve these with pre-dinner drinks or as a light first course.",
   "ingredients": [
     {
       "item": "× 25 cm square sheet of good-quality butter puff pastry",
       "amount": "1"
     },
     {
-      "item": "capers in brine, drained",
-      "amount": "6 teaspoons"
+      "item": "sea salt flakes",
+      "amount": ""
+    },
+    {
+      "item": "sunflower oil, for frying",
+      "amount": "200–300 ml"
+    },
+    {
+      "item": "teaspoons capers in brine, drained",
+      "amount": "6"
+    },
+    {
+      "item": "sashimi-grade tuna",
+      "amount": "250–300 g"
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "organic lemon juice, for drizzling",
+      "amount": ""
     },
     {
       "item": "small red chilli, very finely sliced (optional)",
@@ -21,9 +42,10 @@
     }
   ],
   "method": [
-    "Serves 6 1 × 25 cm square sheet of good-quality butter puff pastry sea salt flakes 200–300 ml sunflower oil, for frying 6 teaspoons capers in brine, drained 250–300 g sashimi-grade tuna good-quality virgin olive oil, for drizzling organic lemon juice, for drizzling 1 small red chilli, very finely sliced (optional)",
     "Preheat the oven to 180°C (gas mark 4).",
     "Cut the pastry sheet into 6 equal rectangles. Score the surface on the diagonal with a sharp knife, and sprinkle with a few salt flakes. Bake for 6 minutes, or until golden-brown.",
-    "Heat the sunflower oil in a small saucepan until hot. Fry the capers until they turn crisp, then remove from the oil and drain on kitchen paper."
-  ]
+    "Heat the sunflower oil in a small saucepan until hot. Fry the capers until they turn crisp, then remove from the oil and drain on kitchen paper.",
+    "Just before serving, arrange 3–4 slices of very thinly sliced tuna on each pastry base. Drizzle over a little olive oil and lemon juice, then sprinkle on the capers and chilli, if using. (There is no need to season further as the capers are salty enough.)"
+  ],
+  "image": "/recipes/tuna-carpaccio.jpg"
 }

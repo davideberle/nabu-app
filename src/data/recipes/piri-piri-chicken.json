@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Piri piri dishes are now popular all over the world. Originally a Portuguese recipe that is believed to have been first made in the former Portuguese colony of Mozambique, piri piri was introduced to the native population of Goa during the Portuguese occupation. The sauce was made from red sweet (bell) peppers, paprika and red piri piri chillies, but many other varieties are used now.",
+  "intro": "Piri piri dishes are now popular all over the world. Originally a Portuguese recipe that is believed to have been first made in the former Portuguese colony of Mozambique, piri piri was introduced to the native population of Goa during the Portuguese occupation. The sauce was made from red sweet (bell) peppers, paprika and red piri piri chillies, but many other varieties are used now.\n\nIt is believed that the red piri piri sauce was the inspiration behind chicken cafreal, which is made with similar ingredients but with additional green chillies, coriander (cilantro) and mint to make a green sauce. So it’s little wonder that this spicy Portuguese dish that was loved by the Goan population is now finding its way on to many Indian restaurant menus. Double the sauce recipe if you like a lot of sauce.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING AND CHILLING TIME",
+    "cook": "1–1¼ HOURS"
+  },
   "ingredients": [
     {
       "item": "1.5kg (3lb 5oz) chicken thighs, bone-in and skin left on",
@@ -26,57 +30,72 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "red (bell) pepper, roughly chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "garlic cloves, peeled",
-      "amount": "8"
+      "amount": "8",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "green or red chillies, roughly chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "smoked or regular paprika",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "cayenne pepper (more or less to taste)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "dried chilli (hot pepper) flakes",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "lemon juice",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "PIRI PIRI SAUCE"
     },
     {
       "item": "white wine vinegar",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml (¼ cup)",
+      "group": "PIRI PIRI SAUCE"
     }
   ],
   "method": [
     "To make the sauce, heat the oil in a saucepan over a medium–high heat and add the onion and red (bell) pepper. Fry until the onion is translucent and soft (about 5 minutes), then add the garlic and chillies. Fry for a further minute or so, then add the paprika, the cayenne chilli powder, black pepper and chilli (hot pepper) flakes and season with salt.",
     "Add the lemon juice and vinegar and simmer for about 5 minutes. Allow to cool slightly, then blend until very smooth and place this marinade in the fridge for about 30 minutes.",
+    "When ready to prepare your chicken, season the thighs generously with salt and pepper and the paprika and pour over half of the piri piri sauce. Stir it all up so that the chicken is nicely coated and marinate in the fridge for no more than 3 hours.",
+    "When ready to cook, heat the oven to its highest temperature. Remove as much of the marinade as you can and stir it into the marinade you set aside. Place the chicken in a roasting tray and cook for 40 minutes–1 hour until the chicken is crisp and cooked through.",
     "Transfer the chicken to a warm serving plate, then whisk the retained marinade into the cooking juices in the tray. Bring to a rolling simmer. You can either pour this over the chicken or serve it like a gravy at the table.",
     "Serve the chicken drizzled with the sauce and topped with slices of lime. I love this dish cooked using the indirect cooking method on the barbecue."
-  ]
+  ],
+  "image": "/recipes/piri-piri-chicken.jpg"
 }

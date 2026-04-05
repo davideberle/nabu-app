@@ -3,9 +3,10 @@
   "name": "Smoked Eel Pâté",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "Eel is one of those rather unloved fish. I suppose it looks a bit unattractive (but how beautiful is octopus?). I think it’s more that weusually do not know what to do with it.\n\nThis is a delicious way to prepare eel. It has a rich, rather fatty fleshes that is perfect for pâté. Smoking enhances the flavour and thelemon juice adds a delicious sharpness. This is one of the great fish pâtés.",
   "ingredients": [
     {
       "item": "whole smoked eel, about 500 g",
@@ -16,11 +17,21 @@
       "amount": "125 g"
     },
     {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
+    },
+    {
       "item": "red onion, finely sliced",
       "amount": "⅓"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 1 whole smoked eel, about 500 g 125 g unsalted butter, at room temperature juice of 1 organic lemon ⅓ red onion, finely sliced salt and ground black pepper"
-  ]
+    "Skin the eel and remove the backbone. Place the flesh, broken into pie pieces, in a food processor with the butter, lemon juice and onion. Process until it becomes a smooth mousse. Taste and season with sal salt and pepper, then refrigerate until needed.",
+    "You can buy eel at fish markets. It is usually sold vacuum-packed."
+  ],
+  "image": "/recipes/smoked-eel-p-t.jpg"
 }

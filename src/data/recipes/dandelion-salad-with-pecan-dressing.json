@@ -1,0 +1,66 @@
+{
+  "id": "dandelion-salad-with-pecan-dressing",
+  "name": "DANDELION SALAD with PECAN DRESSING",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "4 to 6 servings",
+  "intro": "WHILE THEY ARE NOT often associated with Southern foodways in the popular imagination, dandelion greens are a staple in traditional African-American cooking. My family grew them, and we cooked them along with collard and mustard greens and other leafy vegetables. They are often used as a healing and preventative herb during the spring when they’re at their peak, and they’re a good source of vitamins A, B6, K, and E, as well as thiamin, riboflavin, calcium, iron, copper, and potassium. Tangerines, which are cultivated in Algeria, add a sweet counterpoint to the bitterness from the dandelion greens in this salad, and the sugar-coated pecans add sweet crunch.",
+  "ingredients": [
+    {
+      "item": "finely chopped pecans",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "freshly squeezed orange juice",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "packed cilantro leaves",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "large tangerines",
+      "amount": "7"
+    },
+    {
+      "item": "torn stemmed dandelion greens",
+      "amount": "6 cups"
+    },
+    {
+      "item": "chopped Sugared Pecans",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the dressing, combine the pecans, orange juice, lemon juice, mustard, cilantro, and salt in a blender and process until smooth. With the motor running, slowly pour in the oil and process until creamy. Taste and season with more salt if desired.",
+    "To make the salad, use a sharp knife to remove the rind and bitter white pith from 1 tangerine. Holding the fruit over a large bowl to catch the juices and sections, cut just inside the membrane of each section and loosen until it falls into the bowl. Discard any seeds. Repeat with the remaining tangerines.",
+    "Add the dandelion greens and pecans. Pour in enough dressing to lightly coat the salad, saving any remaining dressing for another use, and gently toss. Season each serving with a few grinds of black pepper."
+  ],
+  "image": "/recipes/dandelion-salad-with-pecan-dressing.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

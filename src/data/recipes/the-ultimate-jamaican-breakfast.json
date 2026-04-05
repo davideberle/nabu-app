@@ -3,115 +3,144 @@
   "name": "THE ULTIMATE JAMAICAN BREAKFAST",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "20 MINUTE",
   "intro": "Fried dumplings remind me of Sunday mornings. That was fried dumpling time for my mother, and waking up to that smell was heavenly. You wouldn’t make this full version on a weekly basis – often I would have the dumplings with steamed cabbage and salt fish, or even sausages and spicy baked beans. The recipe below is with all the bells and whistles. With ackee and salt fish being the national dish of Jamaica, it would feel strange to not include a recipe for it. It feels like a ‘I’m trying to impress my partner’s family’ kind of moment, or ‘it’s Easter and I’ve been put in charge of breakfast’.",
+  "time": {
+    "prep": "20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "self-raising flour (or 4 cups all-purpose flour plus 3½ teaspoons baking powder)",
-      "amount": "400 g (14 oz)"
+      "amount": "400 g (14 oz)",
+      "group": "DUMPLINGS"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "1 tablespoons"
+      "amount": "1 tablespoons",
+      "group": "DUMPLINGS"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "DUMPLINGS"
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DUMPLINGS"
     },
     {
       "item": "water",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml (7 fl oz/scant 1 cup)",
+      "group": "DUMPLINGS"
     },
     {
       "item": "vegetable oil, for frying",
-      "amount": ""
+      "amount": "",
+      "group": "DUMPLINGS"
     },
     {
       "item": "olive oil",
-      "amount": "2–3 tablespoons"
+      "amount": "2–3 tablespoons",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "red onion, diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "tomato, diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "Scotch bonnet, deseeded and chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "spring onion (scallion), chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "garlic cloves, chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "kale",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g (12 oz)",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "splash of water",
-      "amount": ""
+      "amount": "",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "sprigs of thyme, leaves chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "hearts of palm, roughly chopped",
-      "amount": "210 g (7½ oz)"
+      "amount": "210 g (7½ oz)",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "splash of water",
-      "amount": ""
+      "amount": "",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "tin of ackee, rinsed and drained",
-      "amount": "500 g (1 lb 2 oz)"
+      "amount": "500 g (1 lb 2 oz)",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "your favourite hot sauce, to serve",
-      "amount": ""
+      "amount": "",
+      "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "GARLICKY GREENS"
     },
     {
       "item": "garlic cloves, finely chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "GARLICKY GREENS"
     },
     {
       "item": "spinach",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g (12 oz)",
+      "group": "GARLICKY GREENS"
     },
     {
       "item": "ripe plantains, peeled and sliced diagonally into 8 pieces",
-      "amount": "2"
+      "amount": "2",
+      "group": "FRIED PLANTAINS"
     },
     {
       "item": "olive or vegetable oil, for frying",
-      "amount": ""
+      "amount": "",
+      "group": "FRIED PLANTAINS"
     }
   ],
   "method": [
@@ -122,6 +151,7 @@
     "Heat 2.5 cm (1 inch) of oil in a deep-sided heavy-bottomed frying pan over a medium heat. Test the temperature by using a wooden spoon – if lots of bubbles appear around it immediately, it’s ready to go. Fry the dumplings for 3–4 minutes – be careful, if they are browning too quickly, the temperature of the oil is too high.",
     "Put a couple of fried dumplings, some plantains and garlicky greens on each plate. Finally, add the ackee and ‘salt fish’ in the middle. Serve with your favourite hot sauce and enjoy!"
   ],
+  "image": "/recipes/the-ultimate-jamaican-breakfast.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

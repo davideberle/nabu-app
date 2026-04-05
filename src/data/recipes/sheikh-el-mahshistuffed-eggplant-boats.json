@@ -3,54 +3,107 @@
   "name": "Sheikh El MahshiSTUFFED EGGPLANT BOATS",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "15 minutes",
   "intro": "The term sheikh is a title used to refer to a respected elder, and mahshi means “stuffed.” This dish translates to “the leader of all stuffed dishes,” and I am in full agreement, because this dish is absolutely superior! My mom also stuffs onions and zucchini. To cut time, I use only eggplant, but I do sometimes throw in a few stuffed onions (learn how to core and stuff an onion in the Onion Dolma recipe). The not-so-secret ingredient in the sauce is the pomegranate molasses.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "1 hour and 30 minutes"
+  },
   "ingredients": [
     {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "Indian eggplants (or substitute 6 Italian eggplants or 3 American eggplants) (about 2¼ pounds, or 1 kg total), with the ends intact and peeled lengthwise every other stripe in a zebra pattern",
+      "amount": "9",
+      "group": "EGGPLANT"
+    },
+    {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "BEEF FILLING"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "½",
+      "group": "BEEF FILLING"
     },
     {
       "item": "lean ground beef",
-      "amount": "1½ pounds (700 g)"
+      "amount": "1½ pounds (700 g)",
+      "group": "BEEF FILLING"
     },
     {
       "item": "ground allspice",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "BEEF FILLING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "BEEF FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "BEEF FILLING"
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "BEEF FILLING"
+    },
+    {
+      "item": "tomato passata (puree)",
+      "amount": "2 cups (480 ml)",
+      "group": "SAUCE"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ teaspoon",
+      "group": "SAUCE"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "SAUCE"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Roz Bi Shaariya",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Salata",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE EGGPLANT: Preheat the oven to 450°F (230°C). In a large, oven-safe skillet, heat the ¼ cup (60 ml) oil for a few minutes over medium-high heat. Add the eggplants, working in batches to avoid overcrowding, and sear on all sides for 3 to 4 minutes, until lightly golden. Arrange all the seared eggplants in the skillet, add 1 cup (240 ml) of water, and cover. Bake for 40 to 45 minutes, until fork-tender.",
-    "MEANWHILE, MAKE THE BEEF FILLING: In a large skillet, heat the 2 tablespoons oil over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 6 minutes. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned. Add the allspice, cinnamon, ½ teaspoon pepper, and 1½ teaspoons salt and mix to combine. Cook for 5 to 8 minutes longer, until the meat juices dry up. Remove from the heat.",
-    "TO MAKE THE SAUCE: In a large bowl, mix the passata, ½ teaspoon salt, ¼ teaspoon pepper, and pomegranate molasses with 1 cup (240 ml) of water until combined.",
+    "Preheat the oven to 450°F (230°C). In a large, oven-safe skillet, heat the ¼ cup (60 ml) oil for a few minutes over medium-high heat. Add the eggplants, working in batches to avoid overcrowding, and sear on all sides for 3 to 4 minutes, until lightly golden. Arrange all the seared eggplants in the skillet, add 1 cup (240 ml) of water, and cover. Bake for 40 to 45 minutes, until fork-tender.",
+    "MAKE THE BEEF FILLING: In a large skillet, heat the 2 tablespoons oil over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 6 minutes. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned. Add the allspice, cinnamon, ½ teaspoon pepper, and 1½ teaspoons salt and mix to combine. Cook for 5 to 8 minutes longer, until the meat juices dry up. Remove from the heat.",
+    "In a large bowl, mix the passata, ½ teaspoon salt, ¼ teaspoon pepper, and pomegranate molasses with 1 cup (240 ml) of water until combined.",
     "Remove the fork-tender eggplants from the oven, leaving the oven on. Make a cut halfway deep along the length of each eggplant, stopping just before the bottom and leaving the ends intact, to create a boat shape. Using a fork, pry the eggplants open and gently mash up and push down the insides to make space for the filling. Sprinkle the 1 teaspoon salt among the eggplants to season the insides. Scoop a few tablespoons of the filling into each eggplant boat, filling it as much as possible. You can also spoon leftover filling into the skillet around the eggplants. Pour the sauce over the eggplants, ensuring that some of the sauce is on top.",
     "Bake, uncovered, for 15 to 20 minutes, until the liquid is bubbling. If required, add ½ cup (120 ml) of water to the pan to create enough of a thick sauce to spoon over rice. Garnish with the chopped parsley and serve with rice and salad."
-  ]
+  ],
+  "image": "/recipes/sheikh-el-mahshistuffed-eggplant-boats.jpg"
 }

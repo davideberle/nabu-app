@@ -3,11 +3,13 @@
   "name": "PASSION FRUIT GLAZED DOUGHNUTS",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
-  "servings": "",
-  "time": "20 MINUTE",
   "intro": "A glazed doughnut heals a lot of things internally for me. Something that a cookie or even a really nice slice of cake will never do. I’ll take a well-made doughnut over one of their baking treat competitors any day (hides face). OK, let’s talk about it. Actually, no, I will FIGHT you on this. You can’t change my mind.",
+  "time": {
+    "prep": "40 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "silken tofu",
@@ -47,19 +49,23 @@
     },
     {
       "item": "juice and seeds of 2 passion fruit zest of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "GLAZE"
     },
     {
       "item": "icing (confectioners’ sugar)",
-      "amount": "100 g (3½ oz/generous ¾ cup)"
+      "amount": "100 g (3½ oz/generous ¾ cup)",
+      "group": "GLAZE"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "GLAZE"
     },
     {
       "item": "pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "GLAZE"
     }
   ],
   "method": [
@@ -70,6 +76,7 @@
     "Meanwhile, make the glaze by whisking together all the ingredients. It should be the consistency of double (heavy) cream.",
     "Dip each cooled doughnut into the glaze (4) and then transfer to a wire rack placed over a baking sheet to harden before eating."
   ],
+  "image": "/recipes/passion-fruit-glazed-doughnuts.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

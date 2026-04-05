@@ -3,59 +3,103 @@
   "name": "Sheet-Pan Honey Za’atar Chicken",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 servings",
-  "time": "10 minutes",
   "intro": "This was one of the first chicken dishes I created on my blog that went viral. And for good reason! It combines herby za’atar seasoning with honey and garlic to create a lip-smacking marinade that perfectly coats and flavors the chicken, carrots, and potatoes as they bake. This is the type of dish that doesn’t quite make it to the table before I’ve had a full portion just for testing purposes. My favorite part is mopping up the juices in the bottom of the pan with a piece of pita bread.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "40 minutes"
+  },
   "ingredients": [
     {
-      "item": "carrots (2/3 pound, or 300 g), sliced in half lengthwise and cut into 2-inch-long (5 cm) pieces",
-      "amount": "7 small"
+      "item": "large yellow potatoes (500 g), peeled and cut into ¼-inch (6 mm) wedges",
+      "amount": "3",
+      "group": "VEGETABLES"
+    },
+    {
+      "item": "large yellow onion, cut into eighths",
+      "amount": "1",
+      "group": "VEGETABLES"
+    },
+    {
+      "item": "small carrots (2/3 pound, or 300 g), sliced in half lengthwise and cut into 2-inch-long (5 cm) pieces",
+      "amount": "7",
+      "group": "VEGETABLES"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "VEGETABLES"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "VEGETABLES"
+    },
+    {
+      "item": "large cloves garlic, crushed into a paste using a small food processor, a mortar and pestle, or a garlic press",
+      "amount": "10",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "CHICKEN"
     },
     {
       "item": "za’atar",
-      "amount": "¼ cup (22 g)"
+      "amount": "¼ cup (22 g)",
+      "group": "CHICKEN"
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons"
+      "amount": "2 teaspoons",
+      "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons"
+      "amount": "2 teaspoons",
+      "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
     },
     {
       "item": "honey",
-      "amount": "¼ cup (60 ml)"
+      "amount": "¼ cup (60 ml)",
+      "group": "CHICKEN"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CHICKEN"
     },
     {
       "item": "bone-in, skin-on chicken thighs (22/3 pounds, or 1.2 kg), patted dry",
-      "amount": "8"
+      "amount": "8",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Tahini Cabbage Slaw or Arugula & Pomegranate Salad",
+      "amount": "",
+      "group": "FOR SERVING"
     }
   ],
   "method": [
     "Preheat the oven to 425°F (220°C). Line a large, rimmed sheet pan with parchment paper.",
-    "TO MAKE THE VEGETABLES: Add the potatoes, onion, and carrots to a large bowl. Season with the ½ teaspoon salt, drizzle with the 1 tablespoon oil, and mix all the ingredients together. Transfer to the prepared sheet pan and spread in a single layer.",
-    "TO MAKE THE CHICKEN: In a small bowl, combine the garlic, ¼ cup (60 ml) oil, za’atar, 2 teaspoons salt, onion powder, pepper, honey, and vinegar and mix well.",
+    "Add the potatoes, onion, and carrots to a large bowl. Season with the ½ teaspoon salt, drizzle with the 1 tablespoon oil, and mix all the ingredients together. Transfer to the prepared sheet pan and spread in a single layer.",
+    "In a small bowl, combine the garlic, ¼ cup (60 ml) oil, za’atar, 2 teaspoons salt, onion powder, pepper, honey, and vinegar and mix well.",
     "Place the chicken thighs on the sheet pan with the vegetables. Pour all the marinade over the chicken and work it into each piece, ensuring both the fronts and backs of the thighs are coated. Work a few tablespoons of the marinade into the vegetables as well.",
     "Bake for 35 to 40 minutes, until the thighs are golden brown and cooked through. (Check that the chicken is white on the inside and the juices run clear.)",
     "Spoon the vegetables onto a platter and top with the chicken. Serve with pita bread and slaw or salad."
-  ]
+  ],
+  "image": "/recipes/sheet-pan-honey-za-atar-chicken.jpg"
 }

@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "This recipe was sent to me by my friend Usman Butt – executive chef of Imran’s in Birmingham’s Balti Triangle. If you’re a lamb curry fan, this is one you’ve simply got to try. The sauce is quite mild and has a delicious flavour that when teamed with the tender lamb shanks is about as good as it gets.",
+  "intro": "This recipe was sent to me by my friend Usman Butt – executive chef of Imran’s in Birmingham’s Balti Triangle. If you’re a lamb curry fan, this is one you’ve simply got to try. The sauce is quite mild and has a delicious flavour that when teamed with the tender lamb shanks is about as good as it gets.\n\nLamb nihari is a fantastic all-round option for entertaining. Your guests can add chopped green chillies, lemon juice, julienned ginger and coriander (cilantro) to taste at the table. If you want the curry to be fiery hot, add loads of chillies, or simply go for some of the less spicy options to produce the perfect curry for you.",
+  "time": {
+    "prep": "20 MINS",
+    "cook": "3½ HOURS"
+  },
   "ingredients": [
     {
       "item": "lamb shanks (about 2kg/4lb 6oz in total)",
@@ -81,8 +85,8 @@
       "amount": "2"
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and julienned",
-      "amount": ""
+      "item": "piece of ginger, peeled and julienned",
+      "amount": "5cm (2in)"
     },
     {
       "item": "hot fresh green chillies, finely sliced",
@@ -99,10 +103,12 @@
   ],
   "method": [
     "Place the lamb shanks on a plate and rub them all over with ½ teaspoon of salt and 1 teaspoon of the oil. Set aside while you prepare the spice masala.",
+    "This is a raw spice masala so no need to roast the spices first. Put the nutmeg, mace, fennel seeds, bay leaves, cinnamon, peppercorns, nigella seeds, cloves and cumin seeds in a spice grinder and grind to a fine powder. Stir in the paprika, chilli powder and ground ginger.",
     "Melt the butter in a large saucepan with a tight-fitting lid over a medium heat. Add the onion rings and fry for about 5 minutes until soft, translucent and lightly browned. Transfer to a plate with a slotted spoon and set aside.",
     "Now pour the remaining oil into the saucepan and brown the lamb shanks for about 2 minutes.",
     "Add the ground spices and browned onions and pour in 1.2 litres (5 cups) warm water.",
     "Arrange the lamb shanks in the saucepan, cover and simmer over a low heat for 3 hours, basting and turning the shanks every 30 minutes. After 3 hours, carefully lift out the shanks into a large, warmed serving bowl. Skim off as much excess oil from the cooking liquid as possible and discard.",
     "Mix the chapatti flour with 4 teaspoons water to make a smooth paste. Whisk the paste into the sauce and simmer for 5–6 minutes to thicken. Season with salt and pour the sauce over the meat in the serving bowl. Serve the garnishes in little bowls on the table to add to the lamb nihari as you like."
-  ]
+  ],
+  "image": "/recipes/lamb-nihari.jpg"
 }

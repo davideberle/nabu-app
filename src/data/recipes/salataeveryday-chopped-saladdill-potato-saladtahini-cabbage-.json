@@ -1,0 +1,1339 @@
+{
+  "id": "salataeveryday-chopped-saladdill-potato-saladtahini-cabbage-",
+  "name": "SalataEVERYDAY CHOPPED SALADDill Potato SaladTahini Cabbage SlawBulgur SaladArugula & Pomegranate SaladZa’atar & Feta Pasta SaladLemony Bean SaladCrumbled Falafel SaladIraqi Timman AhmarRED RICETurkish Bulgur PilafRoz Bi ShaariyaVERMICELLI RICEIraqi Timman BagillaFAVA BEAN AND DILL RICERoz AsfarFRAGRANT YELLOW RICEPan-Fried Curried Cauliflower FrittersTurkish Cheese BörekPHYLLO CHEESE PIELahm Bi AjeenSPICED GROUND BEEF FLATBREADPuff Pastry Cheese FatayerRoasted Eggplant with LabnehLebanese Batata HarraBAKED SPICY POTATOES",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 servings",
+  "intro": "Who doesn’t love a side of crispy potatoes? But this recipe has you skipping the bland seasoning and spicing them up, Lebanese-style. Batata harra is a common mezze dish served as an appetizer at Lebanese restaurants. Some versions are spicier than others, so I will leave the spice level for you to decide by adding more or less chili flakes. These are best enjoyed straight out of the pan, and I often struggle to get a full portion over to the dinner table!",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "35 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "small Persian cucumbers, small diced",
+      "amount": "4",
+      "group": "SALATA"
+    },
+    {
+      "item": "large tomato, small diced",
+      "amount": "1",
+      "group": "SALATA"
+    },
+    {
+      "item": "small red onion, small diced",
+      "amount": "½",
+      "group": "SALATA"
+    },
+    {
+      "item": "medium bell pepper (any color), small diced",
+      "amount": "1",
+      "group": "SALATA"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "SALATA"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ teaspoon",
+      "group": "SALATA"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "Dried mint",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "medium yellow potatoes (about 3 pounds, or 1.3 kg), peeled and cut into 1- to 1½-inch (2.5 to 4 cm) chunks",
+      "amount": "5",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "large bunch fresh dill, finely chopped and thick stems removed",
+      "amount": "1",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "green onions, finely chopped",
+      "amount": "6",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "1½ cups (75 g)",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "finely chopped pickled turnips (or substitute with 3 large dill pickles, finely chopped)",
+      "amount": "2 cups (280 g)",
+      "group": "POTATO SALAD"
+    },
+    {
+      "item": "plain, whole-milk yogurt",
+      "amount": "1 cup (240 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "sweet relish",
+      "amount": "½ cup (120 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute with 1 teaspoon paprika plus ¼ teaspoon cayenne pepper)",
+      "amount": "1½ teaspoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "white or purple cabbage, shredded",
+      "amount": "14 ounces (400 g)",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "carrots, shredded",
+      "amount": "7 ounces (200 g)",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "green onions, finely chopped",
+      "amount": "3",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup (145 g)",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "CABBAGE SLAW"
+    },
+    {
+      "item": "plain, whole-milk yogurt",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "fresh lemon juice (about 2 lemons), plus more if needed",
+      "amount": "¼ cup (60 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "honey",
+      "amount": "2 teaspoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "large clove garlic",
+      "amount": "1",
+      "group": "DRESSING"
+    },
+    {
+      "item": "large green onion, roughly chopped",
+      "amount": "1",
+      "group": "DRESSING"
+    },
+    {
+      "item": "roughly chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "BULGUR"
+    },
+    {
+      "item": "small yellow onion, finely chopped",
+      "amount": "½",
+      "group": "BULGUR"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "BULGUR"
+    },
+    {
+      "item": "coarse bulgur (see Note), rinsed and drained",
+      "amount": "1 cup (180 g)",
+      "group": "BULGUR"
+    },
+    {
+      "item": "small Persian cucumbers, small diced",
+      "amount": "3",
+      "group": "SALAD"
+    },
+    {
+      "item": "large tomato, small diced",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "large red bell pepper, small diced",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "green onions, finely chopped",
+      "amount": "3",
+      "group": "SALAD"
+    },
+    {
+      "item": "raisins",
+      "amount": "¼ cup (35 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "slivered almonds (or substitute with other nuts or seeds)",
+      "amount": "¼ cup (30 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "arugula",
+      "amount": "3½ cups (70 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "fresh mint leaves",
+      "amount": "¼ cup (10 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "pomegranate arils",
+      "amount": "1/3 cup (70 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "shredded Parmesan cheese",
+      "amount": "¼ cup (30 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "chopped pistachios",
+      "amount": "¼ cup (40 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "Kosher salt and black pepper",
+      "amount": "",
+      "group": "DRESSING"
+    },
+    {
+      "item": "pasta of choice (such as cavatelli, farfalle, or fusilli)",
+      "amount": "8 ounces (225 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "small Persian cucumbers, finely chopped",
+      "amount": "2",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "sliced black olives",
+      "amount": "½ cup (55 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "finely chopped green onions",
+      "amount": "½ cup (30 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "chopped sun-dried tomatoes",
+      "amount": "½ cup (60 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "2/3 cup (100 g)",
+      "group": "PASTA SALAD"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "za’atar",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "mixed canned beans, drained and rinsed",
+      "amount": "38 ounces (1.1 kg)",
+      "group": "BEAN SALAD"
+    },
+    {
+      "item": "finely chopped parsley",
+      "amount": "1 cup (50 g)",
+      "group": "BEAN SALAD"
+    },
+    {
+      "item": "Roma tomatoes, small diced",
+      "amount": "2",
+      "group": "BEAN SALAD"
+    },
+    {
+      "item": "large red onion, small diced",
+      "amount": "½",
+      "group": "BEAN SALAD"
+    },
+    {
+      "item": "fresh lemon juice, plus more if needed",
+      "amount": "1/3 cup (80 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1½ teaspoons",
+      "group": "DRESSING"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/8 teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "dried chickpeas",
+      "amount": "2½ cups (500 g)",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "cold water",
+      "amount": "6 cups (1.4 L)",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "small yellow onions, cut into quarters",
+      "amount": "2",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "large cloves garlic",
+      "amount": "10",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "packed roughly chopped fresh parsley",
+      "amount": "2 cups (100 g)",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "packed roughly chopped fresh cilantro",
+      "amount": "1 cup (40 g)",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "plus 3 tablespoons olive oil, divided",
+      "amount": "¾ cup (180 ml)",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "3 teaspoons",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "3 teaspoons",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "FALAFEL"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "large clove garlic",
+      "amount": "1",
+      "group": "DRESSING"
+    },
+    {
+      "item": "green onion, roughly chopped",
+      "amount": "1",
+      "group": "DRESSING"
+    },
+    {
+      "item": "leaves basil",
+      "amount": "6",
+      "group": "DRESSING"
+    },
+    {
+      "item": "packed roughly chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "DRESSING"
+    },
+    {
+      "item": "hearts romaine lettuce, roughly chopped",
+      "amount": "1 to 2",
+      "group": "SALAD"
+    },
+    {
+      "item": "small Persian cucumbers, finely chopped",
+      "amount": "6",
+      "group": "SALAD"
+    },
+    {
+      "item": "medium red onion, finely chopped",
+      "amount": "¼",
+      "group": "SALAD"
+    },
+    {
+      "item": "chopped pickled turnips (or dill pickles)",
+      "amount": "¼ cup (36 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "large tomato, chopped (optional)",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "dried limes",
+      "amount": "2",
+      "group": "SALAD"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "SALAD"
+    },
+    {
+      "item": "medium yellow onion, finely chopped",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "kosher salt, divided",
+      "amount": "1½ teaspoons",
+      "group": "SALAD"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1/3 cup (70 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "chicken broth (see Notes)",
+      "amount": "3 cups (720 ml)",
+      "group": "SALAD"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (400 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 tablespoon",
+      "group": "SALAD"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "SALAD"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "large red bell pepper, finely chopped",
+      "amount": "1",
+      "group": "SALAD"
+    },
+    {
+      "item": "large cloves garlic, minced",
+      "amount": "4",
+      "group": "SALAD"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons",
+      "group": "SALAD"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon",
+      "group": "SALAD"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon",
+      "group": "SALAD"
+    },
+    {
+      "item": "sweet red pepper paste",
+      "amount": "1 tablespoon",
+      "group": "SALAD"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon",
+      "group": "SALAD"
+    },
+    {
+      "item": "coarse bulgur, rinsed and drained",
+      "amount": "2 cups (360 g)",
+      "group": "SALAD"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "4 cups (960 ml)",
+      "group": "SALAD"
+    },
+    {
+      "item": "Fresh mint leaves (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Plain, whole-milk yogurt",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Dried mint",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "vermicelli noodles (see Note)",
+      "amount": "½ cup (50 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "boiling chicken broth or water",
+      "amount": "3½ cups (840 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2 cups (400 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "pine nuts (35 g) or slivered almonds (30 g)",
+      "amount": "¼ cup",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "Handful finely chopped fresh parsley",
+      "amount": "",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "3 cups (600 g)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "7 tablespoons",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "frozen cooked and peeled fava beans (or substitute cooked or canned lima beans)",
+      "amount": "28 ounces (800 g)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "packed finely chopped fresh dill, thick stems removed",
+      "amount": "3 cups (150 g)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2½ teaspoons",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "chicken or vegetable broth, divided",
+      "amount": "4 cups (960 ml)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "small yellow onion, finely chopped",
+      "amount": "1",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "whole peppercorns",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "5",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "whole green cardamom pods",
+      "amount": "5",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "kosher salt, or more to taste",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "3 cups (550 g)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "4½ cups (1 L)",
+      "group": "FOR GARNISHING (OPTIONAL)"
+    },
+    {
+      "item": "large head cauliflower, cut into florets",
+      "amount": "½",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "large yellow potato, peeled and grated",
+      "amount": "½",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "½ cup (30 g)",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "2",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "curry powder",
+      "amount": "3 teaspoons",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 teaspoon",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup (30 g)",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "olive oil, plus more if needed",
+      "amount": "¼ cup (60 ml)",
+      "group": "CAULIFLOWER FRITTERS"
+    },
+    {
+      "item": "plain, whole-milk yogurt",
+      "amount": "½ cup (120 ml)",
+      "group": "MINT YOGURT SAUCE (OPTIONAL)"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 tablespoon",
+      "group": "MINT YOGURT SAUCE (OPTIONAL)"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon",
+      "group": "MINT YOGURT SAUCE (OPTIONAL)"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/8 teaspoon",
+      "group": "MINT YOGURT SAUCE (OPTIONAL)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ teaspoon",
+      "group": "MINT YOGURT SAUCE (OPTIONAL)"
+    },
+    {
+      "item": "package (1 pound, or 454 g) frozen phyllo dough (16 to 20 sheets)",
+      "amount": "1",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "¼ teaspoon",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 teaspoon",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "4½ ounces (130 g)",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "shredded mozzarella cheese",
+      "amount": "12/3 cups (185 g)",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "grated Parmesan cheese (or use more feta)",
+      "amount": "¼ cup (25 g)",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "finely chopped white onion (or substitute green onions)",
+      "amount": "¼ cup (40 g)",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 teaspoon",
+      "group": "CHEESE FILLING"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "3 tablespoons",
+      "group": "EGG WASH"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 ml)",
+      "group": "EGG WASH"
+    },
+    {
+      "item": "large egg",
+      "amount": "1",
+      "group": "EGG WASH"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¼ cup (60 ml)",
+      "group": "EGG WASH"
+    },
+    {
+      "item": "instant yeast",
+      "amount": "2 teaspoons",
+      "group": "DOUGH"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tablespoon",
+      "group": "DOUGH"
+    },
+    {
+      "item": "lukewarm water",
+      "amount": "1 cup (240 ml)",
+      "group": "DOUGH"
+    },
+    {
+      "item": "all-purpose flour, plus more for dusting",
+      "amount": "2½ cups (300 g)",
+      "group": "DOUGH"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "DOUGH"
+    },
+    {
+      "item": "olive oil, plus more for greasing",
+      "amount": "¼ cup (60 ml)",
+      "group": "DOUGH"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1",
+      "group": "FILLING"
+    },
+    {
+      "item": "bunch fresh parsley, finely chopped",
+      "amount": "½",
+      "group": "FILLING"
+    },
+    {
+      "item": "lean ground beef",
+      "amount": "1 pound (454 g)",
+      "group": "FILLING"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "3½ ounces (100 g)",
+      "group": "FILLING"
+    },
+    {
+      "item": "tomato passata (puree)",
+      "amount": "3½ ounces (100 ml)",
+      "group": "FILLING"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1 tablespoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 teaspoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "curry powder",
+      "amount": "½ teaspoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1 teaspoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ teaspoon",
+      "group": "FILLING"
+    },
+    {
+      "item": "lemon wedges",
+      "amount": "8 to 10",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "medium red onion, sliced",
+      "amount": "½",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "roughly chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "frozen puff pastry",
+      "amount": "14 ounces (400 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "4½ ounces (130 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "mozzarella cheese, shredded",
+      "amount": "4½ ounces (130 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "cream cheese, at room temperature",
+      "amount": "4½ ounces (130 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "dried parsley (or substitute 2 tablespoons finely chopped fresh parsley)",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "dried dill",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute paprika)",
+      "amount": "1½ teaspoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "All-purpose flour, for dusting (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large egg, beaten",
+      "amount": "1",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large eggplants (about 2 pounds, or 907 g), ends trimmed, peeled lengthwise every other stripe in a zebra pattern, and cut into ¼-inch-thick (6 mm) rounds",
+      "amount": "2",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "plus 1 tablespoon (75 ml) olive oil",
+      "amount": "¼ cup",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 teaspoons",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "Labneh",
+      "amount": "¾ cup (175 g)",
+      "group": "LABNEH"
+    },
+    {
+      "item": "sumac",
+      "amount": "½ teaspoon",
+      "group": "LABNEH"
+    },
+    {
+      "item": "finely chopped fresh dill (optional)",
+      "amount": "2 tablespoons",
+      "group": "LABNEH"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "roughly torn fresh dill",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "large cloves garlic, thinly sliced",
+      "amount": "4",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
+      "amount": "½ teaspoon",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "large yellow potatoes (about 2¼ pounds, or 1 kg), peeled, washed, patted dry, and cut into 1½-inch-long x ½-inch-thick (4 x 1.3 cm) pieces",
+      "amount": "4",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tablespoons (60 ml)",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ teaspoon",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "large cloves garlic, minced",
+      "amount": "6",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "½ teaspoon",
+      "group": "GARLIC OIL"
+    },
+    {
+      "item": "finely chopped fresh parsley or cilantro",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Chili flakes",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    }
+  ],
+  "method": [
+    "In a medium salad bowl, combine the cucumbers, tomato, onion, bell pepper, and parsley. Sprinkle with the ¼ teaspoon salt.",
+    "Add the oil, lemon juice, pomegranate molasses, sumac, mint, and ½ teaspoon salt to a jar or container with a lid. Seal the jar or container and shake well until combined.",
+    "Drizzle ¼ cup (60 ml) of the dressing over the salad. Toss to combine well. Taste and adjust for more dressing as desired. Seal the jar or container, refrigerate, and use as needed.",
+    "Garnish with dried mint, then serve immediately, or let chill in the refrigerator for no more than 1 hour.",
+    "Fill a large pot more than halfway with water and place over medium heat. Add the 2 teaspoons salt and bring to a boil.",
+    "Add the potatoes to the boiling water and boil until fork-tender, 10 to 12 minutes. Drain in a colander and let cool completely.",
+    "MAKE THE DRESSING: In a small bowl, whisk together the yogurt, mayonnaise, relish, Dijon mustard, Aleppo pepper, and 1 teaspoon salt.",
+    "Place the cooled potatoes, dill, green onions, parsley and pickles in a large bowl and add the dressing. Toss to combine well.",
+    "Refrigerate for at least 2 hours before serving for best results.",
+    "In a medium salad bowl, combine the cabbage and carrots. Add the green onion, parsley, and raisins. Sprinkle with the ½ teaspoon salt.",
+    "Place the yogurt, tahini, lemon juice, honey, salt, pepper, garlic, green onion, and parsley in a small blender and process until smooth. You may need to add a few tablespoons of water to loosen the dressing to help it blend well. Taste and adjust for more salt and/or lemon juice if needed.",
+    "Drizzle the dressing over the salad. Toss to combine well and serve.",
+    "In a medium saucepan, heat the oil over medium heat. Add the onion and cook, stirring often, until softened, 5 to 6 minutes.",
+    "Add the salt, bulgur, and 1½ cups (360 ml) of water. Bring to a boil, then cover and let simmer over low heat for 20 minutes. Fluff it with a fork and check doneness; the grains should be soft but not mushy. If the grains are not soft, add 2 tablespoons of water, cover again, and let stand for 10 more minutes with the heat off.",
+    "Transfer the cooked bulgur to a medium bowl. Add the cucumbers, tomato, red pepper, parsley, green onions, and raisins.",
+    "Add the lemon juice, pomegranate molasses, oil, salt, and pepper to a small jar or bowl. Whisk or seal the jar and shake the ingredients to incorporate well.",
+    "Pour the dressing over the salad and toss to combine well. Refrigerate for at least 2 hours.",
+    "Toast the slivered almonds in a small, dry skillet over medium heat for 3 to 4 minutes, until lightly golden, stirring continuously. Add them to the salad right before serving.",
+    "In a large bowl, massage the arugula with the oil.",
+    "Add the mint leaves, pomegranate arils, Parmesan, and pistachios to the bowl. Drizzle with the pomegranate molasses and season with salt and pepper.",
+    "Toss to combine well and serve.",
+    "Cook the pasta to al dente according to the package directions.",
+    "add the cucumbers, olives, green onions, parsley, sun-dried tomatoes, and feta to a medium salad bowl.",
+    "When the pasta is cooked, drain and run under cold water to cool it, then add it to the salad bowl.",
+    "In a small bowl, whisk together the lemon juice, za’atar, oil, salt, Dijon mustard, and honey until well combined.",
+    "Pour the dressing over the salad and toss to combine well.",
+    "Refrigerate for at least 1 hour before serving.",
+    "Place the beans in a medium salad bowl. Add the parsley, tomatoes, and onion.",
+    "In a small bowl, whisk together the lemon juice, oil, salt, and pepper.",
+    "Pour the dressing over the salad and toss to combine well. Taste and adjust for more salt and/or lemon juice if needed.",
+    "Refrigerate for at least 30 minutes before serving.",
+    "Place the dried chickpeas in a large bowl and cover them with the cold water. Stir in the baking soda and leave them to soak overnight; they will double in size. When ready to use, drain the chickpeas and pat them dry.",
+    "Preheat the oven to 450°F (230°C) and place a rack on the bottom.",
+    "Add the yellow onions and 10 garlic cloves to a large food processor and pulse for a few seconds until finely chopped. Add the soaked chickpeas, 2 cups (100 g) parsley, cilantro, baking powder, 3 tablespoons of the oil, 2 teaspoons salt, cumin, coriander, and pepper. Process for 5 to 7 minutes, until the ingredients are mashed together and the mixture has a dough-like consistency, pausing to scrape the bottom of the food processor and ensure all the ingredients are incorporated. If the mixture is still crumbly, continue to pulse in the food processor until it holds together.",
+    "Pour ½ cup (120 ml) of the oil into a rimmed half sheet pan (18 x 13 inches, or 46 x 33 cm) lined with parchment paper and spread it evenly. Place the falafel mixture into the pan and flatten it using your hands, covering the surface of the sheet pan in an even layer. Do not pack it down too much.",
+    "Bake on the bottom rack for 20 minutes, or until the edges start to turn slightly golden. Remove the pan from the oven and, using a spatula, break up and flip pieces of the falafel over, working your way across the entire sheet pan. The aim is to flip it over in sections; it is fine if some of the falafel pieces break up or crumble, since the result will be a combination of larger crispy chunks and smaller crumbles. Drizzle the falafel with the remaining ¼ cup (60 ml) oil and bake for another 15 minutes, or until golden brown. Remove from the oven and test a few pieces; there should be a mixture of dark, crunchy pieces and softer pieces. If you want more crunch and color, return it to the oven for a few more minutes on the broil setting.",
+    "WHILE THE FALAFEL BAKES, MAKE THE DRESSING: Add the tahini, lemon juice, garlic clove, green onion, basil, ¼ cup (13 g) parsley, ½ teaspoon salt, and ¼ cup (60 ml) of water to a blender and process until a smooth and runny dressing forms. You may need to add a bit more water to loosen the dressing.",
+    "In a large salad bowl, combine the lettuce, cucumbers, red onion, pickled turnips, and tomato (if using). Add most of the dressing and toss to combine well. Top with the falafel croutons, drizzle with the remaining salad dressing, and then serve.",
+    "Bring a kettle or pot of water to a boil. Place the dried limes in a small bowl, pour the hot water on top, and let sit for 5 minutes, or until softened. Once they are soft, remove the limes from the bowl and use a knife to make 2 or 3 slits in each one to allow the flavor to be extracted.",
+    "In a large pot, heat the oil over medium heat. Add the onion, sprinkle with ½ teaspoon of the salt, and cook, stirring often, until softened and translucent, 4 to 5 minutes.",
+    "Add the tomato paste and dried limes and cook for 1 to 2 minutes to caramelize the tomato paste.",
+    "Add the broth and remaining 1 teaspoon salt to the pot and stir. Bring the pot to a rolling boil. Taste and adjust the broth for salt (it should taste noticeably salty; you may need to add more salt depending on the broth you are using).",
+    "Add the rice. Wait for it to come back to a rolling boil, then let boil for 2 to 3 minutes. Cover with a tight-fitting lid, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
+    "Remove from the heat and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving.",
+    "In a large saucepan or skillet, melt the butter along with the oil over medium heat.",
+    "Add the onion and cook, stirring often, until softened, 4 to 5 minutes. Add the bell pepper and cook for 2 to 3 minutes, until softened. Add the garlic and cook for 1 minute. Season with the salt and pepper, stir, and cook for 1 to 2 more minutes.",
+    "Add the tomato and red pepper pastes, cooking and stirring until combined, for 1 minute.",
+    "Add the dried mint, followed by the bulgur, mixing until well combined. Add the broth and bring to a boil for 3 minutes. Reduce the heat to low, cover with the lid, and let simmer for 25 minutes.",
+    "Fluff up the bulgur, garnish with mint leaves (if using) and serve with yogurt sprinkled with dried mint.",
+    "In a large pot, heat the oil over medium heat. Add the noodles and cook for 1 to 2 minutes, stirring continuously, until they turn golden brown.",
+    "Add the boiling broth or water and salt to the pot. (If using broth, taste the liquid after you add it to the pot and before adding the salt. Add as much salt as needed to ensure the broth tastes noticeably salty; alternatively, some broths have a high salt content, so you may need less salt.) Bring to a rolling boil, then add the rice. Wait for it to come back to a rolling boil, then reduce the heat to low and cover with a tight-fitting lid. Let cook for 20 minutes, undisturbed.",
+    "Remove the lid and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving.",
+    "If garnishing with the pine nuts or almonds, in a small dry skillet, toast the nuts for 2 to 3 minutes over medium heat, until golden, stirring continuously.",
+    "Serve the rice on a platter, topped with the toasted pine nuts or almonds (if using) and chopped parsley (if using).",
+    "Place the rinsed rice in a bowl, cover with water, and let soak for 10 minutes.",
+    "In a medium pot, heat 5 tablespoons of the oil over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 7 minutes.",
+    "Add the fava beans and let them thaw in the pot for 5 minutes. (Or add the lima beans, if using instead, and warm them through for 5 minutes.) Add the dill, salt, pepper, and 2 cups (480 ml) of the broth to the pot. Cover with the lid and cook for 5 minutes.",
+    "Add the remaining 2 cups (480 ml) broth to the pot and bring to a boil over high heat. Taste and adjust the liquid for more salt if needed; it should taste noticeably salty.",
+    "Add the rice to the pot along with the remaining 2 tablespoons oil and bring to a boil again for 2 to 3 minutes. The liquid level should be about even with the surface of the rice (not much more). Cover the pot, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
+    "Fluff the rice with a fork or wooden spoon and check on it. If it is still slightly undercooked, add ¼ cup (60 ml) of water, cover it again, and let cook for 10 more minutes before serving.",
+    "In a large pot, heat the oil for 1 minute over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 6 minutes.",
+    "Add the peppercorns, cloves, cardamom, and cinnamon sticks to the pot and cook, stirring continuously, for a few more minutes until the spices are toasted and fragrant. Add the salt and turmeric and stir to combine with the onion and spices.",
+    "Add the rice and stir it gently to combine with the onion and spices. Add the broth and bring to a rolling boil over medium heat, then cover the pot with a tight-fitting lid, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
+    "Turn off the heat, remove the lid, and gently fluff the rice with a fork or wooden spoon. Cover again and let rest for 10 minutes. Before serving, pick out and discard the peppercorns, cloves, cardamom pods and cinnamon sticks (see Note).",
+    "Place 1 or 2 inches (2.5 to 5 cm) of water in a small pot and place a steamer basket inside; bring the water to a boil. Place the cauliflower florets in the steamer basket, cover, and cook until tender, 4 to 8 minutes depending on the size of the florets. (You can also steam the cauliflower in a microwave using a microwave steamer basket.)",
+    "Transfer the steamed cauliflower to a large bowl. Lightly mash it using a potato masher until the florets are broken down but not overly mushy.",
+    "Add the potato, parsley, green onions, beaten eggs, curry powder, coriander, 2 teaspoons salt, ½ teaspoon pepper, and flour. Mix well using a spoon or your hands until all the ingredients are combined.",
+    "In a large skillet, heat the oil over medium heat. Place a heaping spoonful of fritter batter into the hot oil and gently flatten it into a rough circular shape. Continue spooning the fritters in to cover the surface of the skillet without overcrowding. Shallow-fry each side for 1 to 2 minutes, until golden and crispy. Transfer to a paper towel–lined plate to absorb excess oil. (You may need to add more oil until all the fritter batter is cooked.)",
+    "In a small bowl, whisk together the yogurt, mayonnaise, mint, ⅛ teaspoon pepper, and ¼ teaspoon salt until combined.",
+    "Serve the fritters with the sauce (if using) for dipping or into sandwiches.",
+    "TO PREPARE THE PHYLLO PASTRY: Bring the phyllo dough to room temperature by thawing on the counter for 2 hours or in the refrigerator overnight.",
+    "Preheat the oven to 350°F (175°C) on the convection setting (if you do not have this setting, use the bake setting) and place an oven rack in the middle.",
+    "In a medium bowl, mix together the feta, mozzarella, and Parmesan cheeses. Add the parsley, onion, and 1 teaspoon nigella seeds and mix well to combine.",
+    "In a small bowl, whisk together the melted butter, oil, egg, and milk until combined.",
+    "Open the phyllo dough package and lay the pastry sheets on a flat surface, loosely covered with a kitchen towel.",
+    "Cut a piece of parchment paper that fits the dimensions of a 10 x 12-inch (25 x 30 cm) baking dish and place it inside the dish. Use a pastry brush to brush the bottom and sides of the dish with egg wash, right over the parchment paper. Place 2 to 4 phyllo sheets on the base of the dish, allowing the pastry to overhang all sides, so there are at least 2 inches (5 cm) of excess dough. Place the sheets slightly offset from each other so that there is enough dough overhanging; this excess overhang will be folded over the topmost layer at the end to ensure the filling stays securely inside and does not ooze out. Brush these sheets with egg wash until well saturated.",
+    "Set aside 2 phyllo sheets to use for the top of the börek. Divide the remaining sheets in half. Use half of the sheets for the next few steps to layer the börek. Pick up one sheet at a time, tear it into 2 or 3 pieces, and scrunch up the pieces with your hands to create crumpled-up dough (like you would crumple up a piece of paper). Place the crumpled-up dough pieces loosely in the dish, spreading them out evenly across the surface area; crumpling the pastry will create air pockets for a softer, lighter börek.",
+    "Use the pastry brush to gently brush egg wash all over the crumpled phyllo sheets, then spoon all the cheese mixture into the baking dish, on top of the crumpled-up dough, creating an even layer.",
+    "Repeat the same tearing, scrunching, and crumpling of the dough with the remaining half of the phyllo sheets, then place them over the cheese mixture in an even layer and brush them with egg wash.",
+    "Fold the overhanging phyllo dough over the topmost layer and pat down gently to flatten. Place the reserved 2 sheets on top in a smooth, flat layer; this layer should cover the full surface of the börek. If you must trim some excess dough to create an even layer, do so. Brush the top with the remaining egg wash.",
+    "Using a sharp knife, gently cut the börek into 12 equal-size squares, using a sawing motion to avoid disturbing the phyllo dough too much and to keep the pieces intact. Sprinkle the surface with the ¼ teaspoon nigella seeds and the sesame seeds.",
+    "Place in the oven on the middle rack and bake for 25 to 30 minutes, until the top is golden brown and the filling is heated through and melted. You may broil the top for a few minutes, if required, to achieve a golden color. Let cool for 10 minutes. Use a sharp knife to gently slice into the precut squares and serve.",
+    "Place the yeast and sugar in a small bowl with the lukewarm water and mix with a spoon. Let stand for 2 to 3 minutes.",
+    "Using a stand mixer with a dough hook, place the flour and salt in the mixing bowl and start mixing on low speed. Add the oil to the bowl and continue to mix until the oil is fully incorporated into the flour. Gradually add the water-yeast mixture and continue to mix on medium speed. Once the water is fully incorporated, the dough will start to form. Continue kneading for at least 5 to 7 minutes. The dough is ready when it feels moist but not too sticky and starts to pull away from the bowl. If it feels dry, add more water; if it feels too moist, add a dusting of flour.",
+    "Rub your hands with some oil and bring the dough together into a ball. Cover the bowl with plastic wrap and let rise for 1 hour.",
+    "MAKE THE FILLING: In a large bowl, combine the onion, parsley, ground beef, tomato paste, passata, pomegranate molasses, pepper, kosher salt, curry powder, allspice, and cinnamon. Mix well using your hands until the ingredients are incorporated.",
+    "Preheat the oven to 450°F (230°C) on the bake setting. If you have one, place a pizza stone on the bottom rack to heat up; otherwise, line a large sheet pan with parchment paper (no need to preheat the sheet pan).",
+    "Once the dough has risen, cut it into 6 equal-size pieces and roll each piece into a ball.",
+    "Lightly sprinkle some flour on your work surface and, using a rolling pin, roll out one of the dough balls into a thin circle (the size does not matter and can be to your preference). Gently remove the dough from the work surface and place it either on a pizza peel lined with parchment paper, if you are using a pizza stone, or on the parchment-lined sheet pan. Place 3 or 4 spoonfuls of the filling on the rolled-out dough, smoothing it out using a spoon to cover the surface with a thin layer, leaving roughly a ¼-inch (6 mm) border.",
+    "Bake for 7 to 10 minutes, until the bottom is lightly golden. Switch the oven to broil at 500°F (260°C) and broil for 1 to 2 minutes, until the beef has browned. Remove from the oven and transfer it to a large tray, covering it with a kitchen towel or aluminum foil to keep it moist. Reduce the oven heat back to 450°F (230°C) on the bake setting. Repeat steps 7 and 8 with the remaining dough balls and filling. You can stack the lahm bi ajeen pieces over one another in the tray, keeping them covered with a towel.",
+    "Serve warm or at room temperature. To eat, squeeze the lemon wedges over the surface. Dust the onion slices with the sumac and sprinkle them on top with some chopped parsley; roll up the flatbread to enjoy.",
+    "Bring the puff pastry to room temperature by thawing on the counter for 1 hour.",
+    "Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper.",
+    "In a medium bowl, mix the feta, mozzarella, cream cheese, mint, parsley, dill, and Aleppo pepper until well combined.",
+    "If using puff pastry that is not precut into squares and must be rolled out, lightly flour your work surface. Using a rolling pin, roll out the pastry until it is ⅛ inch (6 mm) thick. Cut into 4 x 4-inch (10 x 10 cm) squares.",
+    "Place roughly 1½ tablespoons of the filling on the center of one of the puff pastry squares, gently spreading it out along the diagonal, leaving a ½-inch (13 mm) border. Fold one corner of the square over the filling, diagonally, and pinch it closed at the opposite corner, forming a triangle. Use a fork to press down the open edges until sealed. Transfer to the prepared sheet pan. Repeat with the remaining filling and puff pastry squares. Brush the tops of the fatayer with the beaten egg, then sprinkle them with the sesame and nigella seeds.",
+    "Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color.",
+    "Preheat the oven to 450°F (230°C) and place a rack in the middle.",
+    "Line two large, rimmed sheet pans with parchment paper and place the eggplant rounds on the pans in a single layer. Drizzle with the oil, then sprinkle with the salt and 2 teaspoons sumac. Mix well to coat all the rounds.",
+    "Bake for 45 minutes, or until the eggplant is soft and golden.",
+    "PREPARE THE LABNEH: In a small bowl, mix the labneh, ½ teaspoon sumac, and dill (if using) until well combined.",
+    "Toast the pine nuts in a small, dry skillet over medium heat for a few minutes, or until lightly golden, stirring continuously. Transfer to a small bowl.",
+    "WHEN THE EGGPLANT IS BAKED AND JUST BEFORE SERVING, MAKE THE GARLIC OIL: In the same skillet the pine nuts were toasted in, heat the olive oil over medium heat. Add the garlic and cook, stirring continuously, for a few minutes, or until sizzling and golden. Stir in the Aleppo pepper and remove from the heat.",
+    "Spread the labneh onto a medium serving platter and top with the roasted eggplant rounds. Spoon the garlic oil evenly over the top, then garnish with the toasted pine nuts and fresh dill. Serve with pita bread.",
+    "Preheat the oven to 450°F (230°C) and place a rack on the bottom.",
+    "Line a large, rimmed sheet pan with parchment paper and place the potatoes in the pan in a single layer. Drizzle with 2 tablespoons of the oil, then sprinkle with the paprika, salt, and coriander.",
+    "Bake for 25 minutes, then remove the pan from the oven and flip the potatoes. Place the pan back into the oven and bake for 10 to 15 minutes longer, until the potatoes are crispy.",
+    "In a small skillet, heat the remaining 2 tablespoons oil over medium heat. Add the garlic and chili flakes and cook, stirring continuously, for 1 minute, or until the garlic is golden and fragrant.",
+    "Pour the hot oil over the baked potatoes and toss to combine.",
+    "Garnish with the chopped parsley or cilantro, a squeeze of lemon, and more chili flakes. Serve immediately."
+  ],
+  "image": "/recipes/salataeveryday-chopped-saladdill-potato-saladtahini-cabbage-.jpg"
+}

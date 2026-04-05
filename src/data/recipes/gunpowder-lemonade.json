@@ -1,0 +1,46 @@
+{
+  "id": "gunpowder-lemonade",
+  "name": "GUNPOWDER LEMONADE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "4 to 6 servings",
+  "intro": "MINT TEA HOLDS A SPECIAL PLACE in North Africa, where the ritualized nature of making and drinking it is an integral part of social and cultural life, similar to how making and serving coffee is in Ethiopia. The national drink of Morocco, it’s consumed throughout the day and served to guests as a gesture of hospitality. Tea culture is also important to daily life in many parts of West Africa, and mint tea is enjoyed during midday breaks and after dinner. As Jessica B. Harris explains in The Africa Cookbook, the Senegalese make a unique version of mint tea; it has the same ingredients as Moroccan mint tea—Chinese gunpowder green tea and fresh mint—but it’s prepared differently in a tea ceremony called attaya, in which tea is served in three rounds.\n\nHere I’ve combined Chinese gunpowder green tea with spearmint syrup and fresh lemon juice to make an invigorating, minty green tea lemonade. I use the traditional Chinese method of preparing green tea to ensure that the flavor isn’t too bitter. Green tea has a high number of antioxidants, and studies have found that drinking it is associated with a reduced risk of heart disease and certain cancers, so enjoying it a few times per week is probably a good practice.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "9½ cups"
+    },
+    {
+      "item": "Scant ¼ cup gunpowder (pearl) green tea leaves or other Chinese green tea leaves",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "plus 2 tablespoons Spearmint Syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Spearmint sprigs, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put 2 cups of the water in a medium saucepan and bring to a boil over high heat. Let cool for 5 minutes. Add the tea and swirl around for 10 seconds to rinse the tea. Immediately drain the tea leaves in a fine-mesh sieve, discarding the liquid.",
+    "Put the remaining 7½ cups water in the same saucepan and bring to a boil over high heat. Let cool for 7 minutes. Add the tea leaves, swirl around for about 5 seconds, and cover. After 2 minutes, strain the tea through the fine-mesh sieve into a heatproof pitcher. (Compost the tea leaves.)",
+    "Add the lemon juice and Spearmint Syrup. Taste and add more syrup if desired. Let cool to room temperature, then refrigerate until chilled, about 3 hours. Serve in tall glasses over ice, garnished with a sprig of spearmint."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

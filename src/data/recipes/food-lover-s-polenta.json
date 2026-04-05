@@ -3,25 +3,37 @@
   "name": "Food Lover’s Polenta",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
     {
-      "item": "sea salt",
-      "amount": "1½ teaspoons"
+      "item": "POLENTA",
+      "amount": ""
+    },
+    {
+      "item": ".5 litres water",
+      "amount": "1"
+    },
+    {
+      "item": "teaspoons sea salt",
+      "amount": "1½"
     },
     {
       "item": "coarse polenta",
       "amount": "300 g"
     },
     {
+      "item": "MUSHROOMS",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "25 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "Spanish onion, finely sliced",
@@ -48,6 +60,10 @@
       "amount": "15 g"
     },
     {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "150 g"
     },
@@ -57,9 +73,12 @@
     }
   ],
   "method": [
-    "Serves 4–6 POLENTA 1.5 litres water 1½ teaspoons sea salt 300 g coarse polenta MUSHROOMS 25 g unsalted butter 2 tablespoons good-quality virgin olive oil 1 Spanish onion, finely sliced 2 cloves garlic, finely sliced 6 anchovies 1 bunch flat-leaf parsley, chopped 200 g mixed mushrooms, finely chopped 15 g dried porcini mushrooms, soaked in a little water for 15 minutes, drained and finely sliced sea salt and ground black pepper 150 g unsalted butter 15 sage leaves",
+    "To cook the polenta, put the water and salt in a large saucepan and bring to the boil. Add the polenta in a steady stream, whisking constantly to avoid lumps. Turn the heat down to low and cook the polenta for about 45 minutes, stirring from time to time. When the polenta comes away from the sides of the pan, it is cooked.",
+    "In the meantime, prepare the mushrooms. Heat the butter and oil in a saucepan and cook the onion until it begins to soften, then add the garlic, anchovies and parsley and cook for a further few minutes. Add all the mushrooms and continue cooking until soft. Taste for salt (remembering that the anchovies will have added some already) and grind over some pepper.",
     "Stir the mixture into the cooked polenta, combining well. Pour the polenta into a tray lined with greaseproof paper, spreading the polenta to about 1.5 cm thick. Leave to cool.",
     "Cut the cooled polenta into small squares or rectangles. Heat some of the butter in a frying pan and add a few sage leaves. Fry a few polenta shapes at a time, browning them on both sides.",
-    "Transfer to a warm oven while you cook the rest, using more of the butter and sage as you go."
-  ]
+    "Transfer to a warm oven while you cook the rest, using more of the butter and sage as you go.",
+    "This polenta dish is delicious served as an antipasto to go with drinks, or as a starter."
+  ],
+  "image": "/recipes/food-lover-s-polenta.jpg"
 }

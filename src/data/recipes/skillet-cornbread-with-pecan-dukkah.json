@@ -1,0 +1,74 @@
+{
+  "id": "skillet-cornbread-with-pecan-dukkah",
+  "name": "SKILLET CORNBREAD with PECAN DUKKAH",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "16 servings as a snack, or 8 servings to accompany a meal",
+  "intro": "DUKKAH is an Egyptian mixture of nuts, seeds, and spices enjoyed throughout the Middle East and North Africa. From all available evidence, there is no standard recipe; Dukkah varies depending on ingredients available, region, and family. It’s typically eaten as a snack or hors d’oeuvre on bread, by dipping the bread into olive oil then into the Dukkah. Therefore, I thought it would make a wonderful addition to skillet cornbread, a Southern staple. Of course, you can always make a streamlined version of this cornbread without the Dukkah. But once you make a batch of Dukkah, you can also sprinkle it on salads or vegetables for a burst of texture and flavor.\n\nAlthough I initially imagined this cornbread being cut into small squares and served as a snack, it can certainly accompany a meal. In fact, I suggest having it with Sweet Potato and Lima Bean Tagine. I don’t add any sugar to this recipe because authentic Southern cornbread typically doesn’t include it, but I suppose you could add a tablespoon or two of raw cane sugar to the dry ingredients if you absolutely need a sweet element. This cornbread also makes fantastic croutons, which I like to serve along with my recipe for Stewed Tomatoes and Black-Eyed Peas.",
+  "ingredients": [
+    {
+      "item": "yellow cornmeal",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "unbleached all-purpose flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Dukkah",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "finely ground golden flaxseeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "water",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "unsweetened almond milk, homemade or store-bought",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Creamed Cashews",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "finely grated orange zest",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coconut oil, melted, plus more for oiling",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F.",
+    "Put the cornmeal, flour, baking powder, baking soda, salt, and Dukkah in a medium bowl and mix well. In a separate medium bowl, combine the flaxseeds and water and stir with a fork until well blended. Add the almond milk, cashew cream, vinegar, orange zest, and the ¼ cup oil and whisk until well blended.",
+    "Oil a 10-inch cast-iron skillet, then put it in the oven. After the skillet has heated for 3 minutes, pour the almond milk mixture into the cornmeal mixture and mix gently just until the dry ingredients are moist; don’t overmix, or the texture of the cornbread will suffer. Remove the skillet from the oven and scrape the batter into it, spreading it in an even layer. Bake for about 20 minutes, until golden brown and firm to the touch, or until a skewer inserted in the center comes out clean. Cut into even pieces and serve hot."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

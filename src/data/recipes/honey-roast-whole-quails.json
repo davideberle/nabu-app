@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Free-range quails have stronger skin than barn-reared birds, so source those if you can. This is my version of a unique Indian recipe that I learned on a trip to Mumbai. I was told it stems back to the days of the British Raj when wild quails or similar would be used on hunting days, though the recipe was presumably less spicy. It’s rare to cook poultry with the skin on in Indian cooking, but I’m sure you’ll agree, it’s worth every calorie. The quails are spicy, sweet, sour and savoury – all of my favourite taste sensations in one dish! I like to serve this with rice and mixed vegetable pickle or kachumber salad and a good chutney or hot sauce.",
+  "time": {
+    "prep": "30 MINS",
+    "cook": "40 MINS"
+  },
   "ingredients": [
     {
       "item": "free-range quails, skin on",
@@ -14,71 +18,88 @@
     },
     {
       "item": "Juice of 2 lemons",
-      "amount": ""
+      "amount": "",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Kashmiri chilli powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml (¼ cup)",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "quantity of fried onion paste using yoghurt",
-      "amount": "1"
+      "amount": "1",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Seeds of 8 green cardamom pods",
-      "amount": ""
+      "amount": "",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "green bird’s eye chillies, minced to a paste",
-      "amount": "3"
+      "amount": "3",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g (1 cup)",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "clear honey",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml (½ cup)",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "melted ghee",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Flaky salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "SECOND MARINADE"
     }
   ],
   "method": [
@@ -88,6 +109,7 @@
     "Set up the barbecue for indirect cooking. When very hot (around 220°C/430°F), place the quails on the grill away from the burning coals and cook for 10 minutes. Swiftly transfer to a plate and cover the barbecue.",
     "Spread the honey lightly all over the skin of the quails and leave for about 10 minutes to dry onto the skin (you don’t have to use all the honey, just a thin coating will do). Brush the quails with the ghee and return to the barbecue to cook for about 20 minutes, or until the quails are cooked through and the skin is nicely browned and crispy. Season with flaky salt."
   ],
+  "image": "/recipes/honey-roast-whole-quails.jpg",
   "dietary": [
     "vegetarian"
   ]

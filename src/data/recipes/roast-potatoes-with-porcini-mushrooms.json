@@ -3,28 +3,42 @@
   "name": "Roast Potatoes with Porcini Mushrooms",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "This dish is the essence of autumn – the season when you can find porcini mushrooms growing wild in the woods. When porcini and potatoes are cooked together, the potatoes absorb the earthy taste of the mushrooms and the whole dish takes on their wild woodland flavour.",
   "ingredients": [
     {
       "item": "waxy, yellow potatoes, such as Desiree",
       "amount": "1 kg"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "4 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "4"
     },
     {
       "item": "dried porcini mushrooms, soaked in 750 ml warm water for 15 minutes",
       "amount": "100 g"
+    },
+    {
+      "item": "about 12 cloves garlic, skin on",
+      "amount": ""
+    },
+    {
+      "item": "about 15 fresh sage leaves 100 g unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "sea salt flakes and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 1 kg waxy, yellow potatoes, such as Desiree 4 tablespoons good-quality virgin olive oil 100 g dried porcini mushrooms, soaked in 750 ml warm water for 15 minutes about 12 cloves garlic, skin on about 15 fresh sage leaves 100 g unsalted butter sea salt flakes and ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
     "Peel and cut the potatoes into quarters. Choose a roasting pan that will hold the potatoes comfortably without crowding them and pour the olive oil into it. Add the potatoes and shake them around to coat with the oil.",
     "Drain the porcini mushrooms, reserving the water they have been soaked in, and add them to the potatoes. Now mix the garlic and sage evenly through the potatoes and porcini. Add the water the porcini were soaked in and lastly chop the butter into small pieces and dot them around.",
+    "Roast in the oven for about 30 minutes, shaking the pan from time to time. The potatoes should be golden-brown and full of porcini flavour.",
     "Transfer to a serving plate and season with salt and pepper."
-  ]
+  ],
+  "image": "/recipes/roast-potatoes-with-porcini-mushrooms.jpg"
 }

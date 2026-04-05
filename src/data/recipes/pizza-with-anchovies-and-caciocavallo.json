@@ -3,29 +3,45 @@
   "name": "Pizza with Anchovies and Caciocavallo",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
+    {
+      "item": "PIZZA DOUGH",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour, preferably Italian type 00",
       "amount": "600 g"
     },
     {
-      "item": "salt",
-      "amount": "2 teaspoons"
+      "item": "teaspoons salt",
+      "amount": "2"
     },
     {
-      "item": "dry yeast",
-      "amount": "1 tablespoon"
+      "item": "tablespoon dry yeast",
+      "amount": "1"
+    },
+    {
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "3"
+    },
+    {
+      "item": "warm water",
+      "amount": "375–500 ml"
+    },
+    {
+      "item": "TOPPING",
+      "amount": ""
     },
     {
       "item": "good-quality virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "90–100 ml"
     },
     {
-      "item": "large Spanish onions, finely sliced",
-      "amount": "2"
+      "item": "arge Spanish onions, finely sliced",
+      "amount": "2 l"
     },
     {
       "item": "anchovy fillets in oil, drained and roughly broken up",
@@ -40,16 +56,23 @@
       "amount": "200 g"
     },
     {
-      "item": "fresh breadcrumbs",
-      "amount": "2 tablespoons"
+      "item": "tablespoons fresh breadcrumbs",
+      "amount": "2"
     },
     {
-      "item": "fresh oregano, chopped",
-      "amount": "2 tablespoons"
+      "item": "tablespoons fresh oregano, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "sea salt flakes and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
+    "To make the pizza dough, combine all the dough ingredients in a large mixing bowl. Turn the dough onto a work surface and knead until it becomes smooth, shiny and elastic. If it looks too dry, add a little more water. If it looks too wet, add a little more flour. Shape into a ball and rub with a little oil. Leave in a warm place, covered with a tea towel, for about an hour.",
     "Preheat the oven to 220°C (gas mark 7).",
+    "Heat around 2 tablespoons of the oil in a large frying pan and add the onion. Fry for 5 minutes or until soft and translucent. Oil a 30 × 40 cm oven tray. Roll the pizza dough out and lift it onto the tray. Use your fingers to push the dough into the corners and to make indentations over the surface. Brush generously with olive oil. Spread the onion over the pizza base, followed by the anchovies, olives, cheese, breadcrumbs and oregano. Drizzle on the remaining oil and sprinkle with a few salt flakes and pepper. (Don’t add too much salt as the anchovies and olives are already salty.)",
     "Bake in the oven for about 20 minutes until golden-brown."
-  ]
+  ],
+  "image": "/recipes/pizza-with-anchovies-and-caciocavallo.jpg"
 }

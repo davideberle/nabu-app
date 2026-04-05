@@ -3,13 +3,18 @@
   "name": "Caramel Cream",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
-  "servings": "serves 8 3 organic egg yolks pinch of salt 200 g caster sugar 500 ml cream 1 teaspoon water",
+  "servings": "serves 8",
+  "intro": "This was my mother’s version of crème brûlée.\n\nI like to serve this delicious caramel-flavoured cream in small coffee cups. Your guests will expect it to be an espresso coffee, but will react with delight once they have tried the ‘mystery’ dessert.",
   "ingredients": [
     {
       "item": "organic egg yolks",
       "amount": "3"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
     },
     {
       "item": "caster sugar",
@@ -20,15 +25,16 @@
       "amount": "500 ml"
     },
     {
-      "item": "water",
-      "amount": "1 teaspoon"
+      "item": "teaspoon water",
+      "amount": "1"
     }
   ],
   "method": [
-    "Serves 8 3 organic egg yolks pinch of salt 200 g caster sugar 500 ml cream 1 teaspoon water",
     "In a mixing bowl, beat the egg yolks, salt and 2 tablespoons of the sugar until light and fluffy. Add the cream and beat for a further few minutes.",
     "Heat the cream and egg mixture in a saucepan on low heat for just a few minutes.",
     "Put the remaining sugar and the water in a saucepan over low heat and let it caramelise. Make sure the sugar does not burn.",
+    "Now add the caramel drop by drop to the cream mixture, beating vigorously with a whisk, making sure the caramel dissolves. The mixture will develop a beautiful caramel colour and thicken to a cream consistency.",
     "Pour the cream into 8 small ramekins and refrigerate. Serve with whipped cream and biscuits on the side."
-  ]
+  ],
+  "image": "/recipes/caramel-cream.jpg"
 }

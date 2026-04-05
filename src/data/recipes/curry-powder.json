@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes 285g (2½ cups)",
-  "intro": "Commercially prepared curry powders date back to the 18th century, when spice blends were prepared by Indian merchants to sell to British army and government officials returning to Britain during the British Raj. It was a way of taking the flavours of India home with them.",
+  "intro": "Commercially prepared curry powders date back to the 18th century, when spice blends were prepared by Indian merchants to sell to British army and government officials returning to Britain during the British Raj. It was a way of taking the flavours of India home with them.\n\nUnlike garam masalas, which are blends of warming spices, curry powders usually contain other complementary ingredients, with chillies often added to produce spicier blends. This version is spicy but not overly so. If you or the people you will be cooking for don’t like spicy food, you can leave the dried chillies and chilli powder out.",
+  "time": {
+    "prep": "8 MINS",
+    "cook": "2 MINS"
+  },
   "ingredients": [
     {
       "item": "coriander seeds",
@@ -29,8 +33,8 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "12cm (5in) piece of cinnamon stick or cassia bark",
-      "amount": ""
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "12cm (5in)"
     },
     {
       "item": "Indian bay leaves (cassia leaves)",
@@ -74,6 +78,7 @@
     "Tip the warm spices onto a plate and leave to cool, then grind to a fine powder in a spice grinder or pestle and mortar. Add the turmeric, chilli powder (if using), garlic powder and onion powder, and stir to combine.",
     "Store in an air-tight container in a cool, dark place and use within 2 months for optimal flavour."
   ],
+  "image": "/recipes/curry-powder.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

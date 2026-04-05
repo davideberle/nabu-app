@@ -3,9 +3,10 @@
   "name": "Meatballs with Ricotta",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "The addition of ricotta makes the polpettine both a bit lighter and more moist. The inclusion of the spices gives the mixture a little unusual pep.",
   "ingredients": [
     {
       "item": "minced lamb",
@@ -28,24 +29,24 @@
       "amount": "75 ml"
     },
     {
-      "item": "large Spanish onion, finely chopped",
-      "amount": "1"
+      "item": "arge Spanish onion, finely chopped",
+      "amount": "1 l"
     },
     {
       "item": "cloves garlic, crushed",
       "amount": "3"
     },
     {
-      "item": "ground cumin",
-      "amount": "2 teaspoons"
+      "item": "teaspoons ground cumin",
+      "amount": "2"
     },
     {
-      "item": "ground coriander",
-      "amount": "1 teaspoon"
+      "item": "teaspoon ground coriander",
+      "amount": "1"
     },
     {
-      "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "item": "teaspoon ground cinnamon",
+      "amount": "1"
     },
     {
       "item": "sprigs fresh rosemary, stalks discarded and leaves chopped",
@@ -66,12 +67,18 @@
     {
       "item": "organic eggs",
       "amount": "2"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 800 g minced lamb 300 g fresh ricotta 50 g freshly grated parmigiano 100 g unsalted butter 75 ml good-quality virgin olive oil 1 large Spanish onion, finely chopped 3 cloves garlic, crushed 2 teaspoons ground cumin 1 teaspoon ground coriander 1 teaspoon ground cinnamon 2 sprigs fresh rosemary, stalks discarded and leaves chopped ½ bunch flat-leaf parsley, finely chopped 100 g pine nuts 60 g fresh breadcrumbs 2 organic eggs salt and ground black pepper",
     "Place the minced lamb, ricotta and parmigiano into a large mixing bowl. Heat around 20 g of the butter and 2 tablespoons of the oil in a frying pan. Add the onion and cook over a low heat until it softens. Add the garlic, spices, herbs and pine nuts and cook for another 5 minutes, stirring frequently. Remove the pan from the heat and leave to cool.",
     "Add the breadcrumbs and eggs to the lamb and cheeses. Tip in the spicy onion mixture and season with salt and pepper. Use your hands to mix everything together well. At this stage you can cover the mince mixture and leave it in the refrigerator for a few hours, or even overnight, until needed.",
-    "Fry the meatballs in batches using the remaining butter and oil, turning on all sides until they are golden-brown. Transfer to a serving dish and keep warm in the oven."
-  ]
+    "Roll spoonfuls of the mince into small balls between the palms of your hands.",
+    "Fry the meatballs in batches using the remaining butter and oil, turning on all sides until they are golden-brown. Transfer to a serving dish and keep warm in the oven.",
+    "The meatballs are delicious served hot, warm or cold. If you like, serve them with the Tomato Sauce from Timballo di Natalia."
+  ],
+  "image": "/recipes/meatballs-with-ricotta.jpg"
 }

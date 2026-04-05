@@ -7,6 +7,10 @@
   },
   "servings": "serves 2 or more as part of a multi-course meal",
   "intro": "You can get really creative with fried rice. For onion fried rice, simply fry some onion in the oil and then stir in your cold, cooked rice. You could also make a fried rice version of the pilau rice above using this method. The following lemon rice recipe is the perfect accompaniment for fish curries.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "5 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or ghee",
@@ -40,6 +44,8 @@
   "method": [
     "Heat the oil or ghee in a large frying pan over a medium–high heat until bubbling hot. Add the garlic and ginger paste and lemon zest, and fry for about 30 seconds. Add the cold rice and stir gently for about 2 minutes until all the rice grains are nicely coated with the oil. When the rice is really hot, squeeze in the lemon juice. Season with salt and top with the chopped chives to serve."
   ],
+  "tips": "*It is important to cool leftover rice quickly (within an hour) after cooking. When reheating, take care to fully heat it all the way through before using.",
+  "image": "/recipes/fried-rice.jpg",
   "dietary": [
     "vegetarian"
   ]

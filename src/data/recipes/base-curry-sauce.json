@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes 3 litres (3 us quarts) or enough for 10–15 servings",
-  "intro": "This smooth curry sauce ‘gravy’, more than any other ingredient, is what gives BIR-style curries their distinctive flavour and texture. A base curry sauce is essentially just a slowly cooked onion stock with a few other veggies and spices thrown in. The sauce is quite bland in flavour but it does taste good. It needs to be bland as it is used in everything, from the mildest korma to the spiciest phall. The magic happens when this bland sauce is used in the different curries and cooked with the ingredients called for in those curries.",
+  "intro": "This smooth curry sauce ‘gravy’, more than any other ingredient, is what gives BIR-style curries their distinctive flavour and texture. A base curry sauce is essentially just a slowly cooked onion stock with a few other veggies and spices thrown in. The sauce is quite bland in flavour but it does taste good. It needs to be bland as it is used in everything, from the mildest korma to the spiciest phall. The magic happens when this bland sauce is used in the different curries and cooked with the ingredients called for in those curries.\n\nBase sauces at restaurants are all quite similar and rarely is an exact recipe followed. This recipe is a scaled-down version of the recipe in my first book, The Curry Guy. It is also different to the quick recipe. These are different recipes that both get excellent results. If you have a 3-litre (3 US-quart) stockpot, it’s the perfect size for this recipe.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "1¼ HOURS"
+  },
   "ingredients": [
     {
       "item": "onions, roughly chopped",
@@ -77,6 +81,7 @@
     "At this stage, the blended sauce might be quite thick. Add water until the sauce is about the same consistency as full-fat (whole) milk or stock. Sometimes I need to pour the sauce into a larger bowl to do this.",
     "Use immediately or store in the fridge for up to 3 days, or freeze in small portions of between 500ml (2 cups) and 750ml (3¼ cups) for use later. The sauce can be frozen for up to three months."
   ],
+  "image": "/recipes/base-curry-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

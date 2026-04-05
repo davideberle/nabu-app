@@ -3,28 +3,55 @@
   "name": "Fish in a Salt Crust",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "My friend Tito, who has a restaurant (one of my very favourites) in San Pantaleo, a village in the hills above the Costa Smeralda in Sardinia, taught me this recipe. It is such a festive dish, which appears in a theatrical flourish at the table to delight your guests. Although the fish is totally covered with salt, it forms a crust that does not penetrate the scales so the fish inside is not salty.\n\nThe scales will stick to the salt and, when the crust is cracked, peel off like a glove, leaving the fish inside beautifully moist and cooked in its own juices.",
   "ingredients": [
     {
       "item": "whole 1.5–2 kg fish (such as red emperor, snapper or any other firm white-fleshed fish), gutted and cleaned but with the scales left on",
       "amount": "1"
     },
     {
+      "item": "organic lemon slices",
+      "amount": ""
+    },
+    {
+      "item": "fennel, sliced (or bay leaves, tarragon or thyme, if preferred)",
+      "amount": ""
+    },
+    {
       "item": "fine salt",
       "amount": "2 kg"
     },
     {
+      "item": "water",
+      "amount": ""
+    },
+    {
+      "item": "DRESSING",
+      "amount": ""
+    },
+    {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
+    },
+    {
       "item": "good-quality virgin olive oil",
       "amount": "175 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 1 whole 1.5–2 kg fish (such as red emperor, snapper or any other firm white-fleshed fish), gutted and cleaned but with the scales left on organic lemon slices fennel, sliced (or bay leaves, tarragon or thyme, if preferred) 2 kg fine salt water DRESSING juice of 1 organic lemon 175 ml good-quality virgin olive oil salt and ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
     "Place the fish in an oiled baking dish and insert some lemon and fennel slices into its stomach cavity.",
     "In a bowl mix the salt with a little water – just enough to make the salt sticky. Cover the fish thickly with the salt, making sure it is well sealed everywhere (see Note). Bake in the oven for about 40 minutes.",
-    "Mix together the fresh lemon juice and olive oil to serve as a dressing over the fish."
-  ]
+    "Mix together the fresh lemon juice and olive oil to serve as a dressing over the fish.",
+    "When serving the fish, break the salt crust at the table, in front of your guests, as it looks impressive. Make sure you remove all the salt crust before eating – usually the skin of the fish will come off easily with the crust.",
+    "If the fish is very large, don’t cover its head with salt so you will have enough to cover the body properly."
+  ],
+  "image": "/recipes/fish-in-a-salt-crust.jpg"
 }

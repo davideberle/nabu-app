@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 1",
-  "intro": "Almost any curry can be cooked as a balti. At Shababs, in Birmingham, they seem to have hundreds of combinations that can be ordered. The restaurant was packed when I visited with my friend and balti historian Andy Munro. He commented that making baltis correctly was probably best left to the professionals, and after watching chef-owner Zafar Hussain cook a few, I could understand why. Don’t let that stop you making this one, though!",
+  "intro": "Almost any curry can be cooked as a balti. At Shababs, in Birmingham, they seem to have hundreds of combinations that can be ordered. The restaurant was packed when I visited with my friend and balti historian Andy Munro. He commented that making baltis correctly was probably best left to the professionals, and after watching chef-owner Zafar Hussain cook a few, I could understand why. Don’t let that stop you making this one, though!\n\nAuthentic baltis are cooked over a high gas flame that is much hotter than is possible on most conventional hobs. As they are cooked, the whole pan turns into a big ball of fire as the oil catches light. You might think that this would burn the other ingredients but it doesn’t. Only the oil is burned off, making the balti healthier and adding a delicious smoking flavour. When they place those sizzling hot curries in front of you, you know you’re in for something special. Cook it in a large one-serving balti pan just like at Shababs! A good frying pan can be substituted.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -75,5 +79,6 @@
     "Add the ground spices and 5 tablespoons of the base curry sauce. Let this come to a boil then add the chicken pieces and another 5 tablespoons of the base sauce. Stir occasionally so that the sauce doesn’t catch, and scrape the caramelized sauce from the sides of the pan.",
     "Pour in the remaining base sauce and let the curry simmer until the chicken is cooked through and the sauce is quite thick. Baltis are usually served with fresh naans or chapattis, which are used to soak up the sauce and meat instead of cutlery, and your sauce needs to be thick enough to do this.",
     "To finish, stir in the garam masala and dried fenugreek leaves (kasoori methi) and check for seasoning. If there is any oil on the surface, skim it off for a healthier curry. Top with chopped coriander (cilantro) to serve."
-  ]
+  ],
+  "image": "/recipes/chicken-balti.jpg"
 }

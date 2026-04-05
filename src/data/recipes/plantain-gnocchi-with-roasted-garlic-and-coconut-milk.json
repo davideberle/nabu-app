@@ -3,63 +3,79 @@
   "name": "PLANTAIN GNOCCHI WITH ROASTED GARLIC AND COCONUT MILK",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 3",
-  "time": "40 MINUTE",
   "intro": "Making pasta and gnocchi from scratch is actually not as diﬃcult as you might think. Normally made with mashed potatoes, this plantain gnocchi feels so luxurious, and indeed special. I absolutely love roasted garlic, so whenever the oven is on I roast a bulb so that I have easy access to it in the coming days. This sauce is mainly a combination of roasted garlic and coconut milk, so it is very rich.",
+  "time": {
+    "prep": "30 MINUTESCOOK TIME: 40 MINUTES",
+    "cook": "40 MINUTES"
+  },
   "ingredients": [
     {
       "item": "ripe plantains",
-      "amount": "2"
+      "amount": "2",
+      "group": "GNOCCHI"
     },
     {
       "item": "olive oil, plus extra for roasting the garlic and frying the gnocchi",
-      "amount": "3 tablespoons"
+      "amount": "3 tablespoons",
+      "group": "GNOCCHI"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "GNOCCHI"
     },
     {
       "item": "plain (all-purpose) flour, plus extra for dusting",
-      "amount": "100 g (3½ oz/generous ¾ cup)"
+      "amount": "100 g (3½ oz/generous ¾ cup)",
+      "group": "GNOCCHI"
     },
     {
       "item": "grated vegan Parmesan, to serve",
-      "amount": ""
+      "amount": "",
+      "group": "GNOCCHI"
     },
     {
       "item": "bulb of garlic",
-      "amount": "1"
+      "amount": "1",
+      "group": "SAUCE"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "group": "SAUCE"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SAUCE"
     },
     {
       "item": "white miso paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SAUCE"
     },
     {
       "item": "coconut vinegar or lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SAUCE"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SAUCE"
     },
     {
       "item": "olive oil, for frying",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     }
   ],
   "method": [
@@ -70,6 +86,7 @@
     "Heat a glug of olive oil in a frying pan (skillet) over a medium high heat. Fry the gnocchi on both sides for 4-5 minutes until lovely and caramelised.",
     "Pour the sauce into the frying pan with the gnocchi and reduce over a high heat for 3–4 minutes, so that the sauce clings to the gnocchi. Divide between bowls and top with more black pepper and grated vegan Parmesan."
   ],
+  "image": "/recipes/plantain-gnocchi-with-roasted-garlic-and-coconut-milk.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -3,67 +3,127 @@
   "name": "Iraqi Mutabbaq SimachSPICED FISH & RICE",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "15 minutes",
   "intro": "Fish is commonly consumed in Iraq, due to its freshwater rivers, lakes, and marshes being home to a wide variety of fish. Mutabbaq simach is one of the most popular fish dishes, featuring heavily seasoned fish on top of layers of rice and onions, vermicelli noodles, and raisins. The different components are steamed together to infuse the flavors. Typically, bone-in fish pieces are seasoned, fried, and then layered with the rice. In this version, I have adapted the recipe to use boneless fillets, seared and pan-fried separately, and then served on top of the rice. The seasoning mix and the vermicelli topping make this dish truly special.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "35 minutes"
+  },
   "ingredients": [
     {
+      "item": "curry powder",
+      "amount": "1½ tablespoons",
+      "group": "SPICE BLEND"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tablespoon",
+      "group": "SPICE BLEND"
+    },
+    {
       "item": "paprika",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SPICE BLEND"
     },
     {
       "item": "dried lime powder or 2 whole dried limes, crushed",
-      "amount": "2 teaspoons"
+      "amount": "2 teaspoons",
+      "group": "SPICE BLEND"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SPICE BLEND"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SPICE BLEND"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SPICE BLEND"
     },
     {
-      "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "item": "skin-on whitefish (such as halibut, grouper, catfish, tilapia) fillets (2¾ pounds, or 1.25 kg), patted dry",
+      "amount": "6",
+      "group": "FISH"
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "FISH"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons",
+      "group": "FISH"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tablespoon",
+      "group": "VERMICELLI NOODLES"
+    },
+    {
+      "item": "vermicelli pasta noodles, cut into ½-inch (13 mm) pieces (if using vermicelli nests, break them up by hand)",
+      "amount": "1 cup (100 g)",
+      "group": "VERMICELLI NOODLES"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tablespoon",
+      "group": "RICE"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1",
+      "group": "RICE"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ teaspoons",
+      "group": "RICE"
     },
     {
       "item": "raisins",
-      "amount": "1 cup (145 g)"
+      "amount": "1 cup (145 g)",
+      "group": "RICE"
     },
     {
       "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
-      "amount": "2 cups (360 g)"
+      "amount": "2 cups (360 g)",
+      "group": "RICE"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ tablespoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "peeled whole (70 g) or slivered (55 g) almonds",
+      "amount": "½ cup",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Salata or Arugula & Pomegranate Salad",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE SPICE BLEND: In a small bowl, mix together all the spice blend ingredients.",
-    "TO MAKE THE FISH: In a large bowl or platter, sprinkle both sides of the fillets with the 1½ teaspoons salt, then sprinkle both sides with 2 tablespoons of the spice blend.",
+    "In a small bowl, mix together all the spice blend ingredients.",
+    "In a large bowl or platter, sprinkle both sides of the fillets with the 1½ teaspoons salt, then sprinkle both sides with 2 tablespoons of the spice blend.",
     "In a large nonstick pot, heat the 2 tablespoons vegetable oil over medium heat. Add the fish fillets, working in batches to avoid overcrowding, and sear for 1 minute per side, until golden. Continue to cook the fish for 6 to 7 minutes, depending on the thickness, until cooked all the way through; the fish should be opaque and flake easily with a fork. Transfer to a plate.",
-    "TO MAKE THE VERMICELLI NOODLES: In a small skillet, heat the 1 tablespoon oil over medium heat. Add the noodles and cook, stirring constantly, for 3 to 4 minutes, until the noodles turn a dark golden brown. (Do not stop stirring, as they burn easily.)",
+    "In a small skillet, heat the 1 tablespoon oil over medium heat. Add the noodles and cook, stirring constantly, for 3 to 4 minutes, until the noodles turn a dark golden brown. (Do not stop stirring, as they burn easily.)",
     "Add 1 cup (240 ml) of water to the skillet and let the noodles soften for 1 to 2 minutes. The water will make a splashing sound; this is normal. Remove the skillet from the heat, keeping the noodles in it.",
-    "TO MAKE THE RICE: In the same pot the fish fillets were cooked in, heat the 1 tablespoon vegetable oil over medium heat. Add the onion and cook, stirring often, until softened and lightly golden, 4 to 5 minutes. Add the remaining spice blend and 1½ teaspoons salt to the pot and stir to incorporate. Add the raisins and cook, stirring continuously for 1 minute, then add the vermicelli noodles (and any of their remaining water). Stir to combine everything.",
+    "In the same pot the fish fillets were cooked in, heat the 1 tablespoon vegetable oil over medium heat. Add the onion and cook, stirring often, until softened and lightly golden, 4 to 5 minutes. Add the remaining spice blend and 1½ teaspoons salt to the pot and stir to incorporate. Add the raisins and cook, stirring continuously for 1 minute, then add the vermicelli noodles (and any of their remaining water). Stir to combine everything.",
     "Smooth out the onion-noodle mixture into an even layer in the pot. Add the rice on top, using a wooden spoon to spread it out evenly in the pot. Add 3 cups (720 ml) of water, keeping the heat on medium. The water will come to a low boil within a minute. Let boil for 2 minutes, then immediately cover the pot with a tight-fitting lid and reduce the heat to low. Let the rice cook for 25 minutes, undisturbed.",
-    "MEANWHILE, MAKE THE GARNISH: In a small skillet, heat the olive oil over low heat, then add the almonds and toast them for 4 to 5 minutes, until golden brown, stirring continuously.",
+    "MAKE THE GARNISH: In a small skillet, heat the olive oil over low heat, then add the almonds and toast them for 4 to 5 minutes, until golden brown, stirring continuously.",
     "After the rice has cooked for 25 minutes, remove the lid and gently fluff it with a fork or wooden spoon and check for doneness. If the rice is soft and fluffy, place the fish pieces over it to heat them, then cover and let stand for 10 minutes; if the rice grains are still firm, splash ¼ cup (60 ml) of water on top, cover, and cook for another 10 minutes over low heat.",
     "Once ready to serve, remove the lid and fish pieces and set aside. Place a large tray on top of the pot. (If you do not have a large tray, you can spoon the rice onto a platter.) Using oven mitts, carefully flip the pot upside down while holding the tray firmly in place. When the pot is flipped, gently remove it. If there are some noodles and onions left in the pot, spoon them out and place on top. Place the cooked fish pieces on top and garnish with the toasted almonds. Serve with salad."
   ],
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/iraqi-mutabbaq-simachspiced-fish-and-rice.jpg"
 }

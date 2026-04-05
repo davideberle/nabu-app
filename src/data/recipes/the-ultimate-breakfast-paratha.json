@@ -3,11 +3,14 @@
   "name": "THE ULTIMATE BREAKFAST PARATHA",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "15 MINUTE",
   "intro": "As a paratha stan, I simply had no choice in creating this recipe. I simply don’t know what I did before my frozen paratha obsession began. Well, it’s more like a lifestyle at this point. They are the perfect freezable food, just as good as fresh when fried, and so versatile. I’ve used them for desserts, as pitta-style chips … the list goes on. Here, I’ve used them as a vessel for ackee and plantain. While writing this book, this was my weekend brekky after one too many frozen margs the night before. I’ve made them for friends that stayed the night and made paratha addicts out of them, too. This recipe includes a different twist on vegan ackee and ‘salt fish’, using artichokes. This dish is often served with fried dumplings or hard food, and the paratha offers a wonderful twist.",
+  "time": {
+    "prep": "10 MINUTESCOOK TIME: 15 MINUTES",
+    "cook": "15 MINUTES"
+  },
   "ingredients": [
     {
       "item": "olive oil, plus extra for frying the plantains",
@@ -59,15 +62,18 @@
     },
     {
       "item": "plain dairy-free yoghurt",
-      "amount": "4 tablespoons"
+      "amount": "4 tablespoons",
+      "group": "SPICY SWEET YOGHURT"
     },
     {
       "item": "chilli jam",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SPICY SWEET YOGHURT"
     },
     {
       "item": "splash of your favourite hot sauce, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "SPICY SWEET YOGHURT"
     }
   ],
   "method": [
@@ -77,6 +83,7 @@
     "Heat a dry frying pan over a medium heat and cook the paratha, one at a time, for 1–2 minutes on each side.",
     "Place a paratha on a plate, add a dollop of the spicy yoghurt, some plantain and then the ackee mixture. Garnish with some more spring onions or hot sauce."
   ],
+  "image": "/recipes/the-ultimate-breakfast-paratha.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

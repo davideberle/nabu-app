@@ -6,91 +6,116 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "I was introduced to pav bhaji by my friend and award-winning chef Syed Ahmed, of Duke Bombay Café in Darlington. I love the food that comes out of his kitchen, and this buttery pav bhaji is one of my all-time favourites. Authentic pav bhaji is cooked with a lot of butter. If you aren’t keen on using the amount of butter I suggest here, you can of course reduce the quantity.",
+  "intro": "I was introduced to pav bhaji by my friend and award-winning chef Syed Ahmed, of Duke Bombay Café in Darlington. I love the food that comes out of his kitchen, and this buttery pav bhaji is one of my all-time favourites. Authentic pav bhaji is cooked with a lot of butter. If you aren’t keen on using the amount of butter I suggest here, you can of course reduce the quantity.\n\nPav bhajis are normally served with a top and bottom buttered bun with generous portions of the potato mixture and toppings. If you are serving these as part of a multi-course meal, you might want to give each person half a bun with the sauce. The bread and potato mixture, though delicious, can be quite filling.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "25 MINS"
+  },
   "ingredients": [
     {
       "item": "large potatoes, peeled and finely sliced",
-      "amount": "2"
+      "amount": "2",
+      "group": "VEGETABLES"
     },
     {
       "item": "cauliflower florets",
-      "amount": "250g (9oz)"
+      "amount": "250g (9oz)",
+      "group": "VEGETABLES"
     },
     {
       "item": "small carrot, peeled and diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "VEGETABLES"
     },
     {
       "item": "fresh or frozen peas",
-      "amount": "100g (¾ cup)"
+      "amount": "100g (¾ cup)",
+      "group": "VEGETABLES"
     },
     {
       "item": "tin (can) chopped tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g (14oz)",
+      "group": "VEGETABLES"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "VEGETABLES"
     },
     {
       "item": "unsalted butter",
-      "amount": "200g (¾ cup)"
+      "amount": "200g (¾ cup)",
+      "group": "MASALA"
     },
     {
       "item": "large red onion (about 250g/9oz), finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "MASALA"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MASALA"
     },
     {
       "item": "red chilli powder (more or less to taste)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MASALA"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MASALA"
     },
     {
       "item": "fat garlic cloves, grated",
-      "amount": "4"
+      "amount": "4",
+      "group": "MASALA"
     },
     {
       "item": "2.5cm (1in) piece of ginger, peeled and grated",
-      "amount": ""
+      "amount": "",
+      "group": "MASALA"
     },
     {
       "item": "red (bell) pepper, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "MASALA"
     },
     {
       "item": "garam masala",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MASALA"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MASALA"
     },
     {
       "item": "Soft buns",
-      "amount": ""
+      "amount": "",
+      "group": "MASALA"
     },
     {
       "item": "Butter, for spreading",
-      "amount": ""
+      "amount": "",
+      "group": "MASALA"
     },
     {
       "item": "Coriander (cilantro) leaves, chopped",
-      "amount": ""
+      "amount": "",
+      "group": "MASALA"
     },
     {
       "item": "lemon wedges",
-      "amount": "4"
+      "amount": "4",
+      "group": "MASALA"
     },
     {
       "item": "red onion, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "MASALA"
     }
   ],
   "method": [
@@ -98,6 +123,7 @@
     "Melt about 100g (7 tablespoons) of the butter in a large frying pan over a medium–high heat. Toss in the onion and cumin seeds and fry until the onion is soft. Add the chilli powder, turmeric, garlic, ginger and red (bell) pepper and fry for a further minute or so. Stir in the garam masala and season with salt. Whisk this mixture into the mashed vegetables. Top with the remaining butter and allow to melt.",
     "To serve, cut the buns in half and butter them generously on both sides. Place them buttered-side down in a hot frying pan to brown. Place the toasted buns on warmed plates with a good helping of the bhaji. Sprinkle with coriander (cilantro) and serve with lemon wedges and red onion on the side."
   ],
+  "image": "/recipes/pav-bhaji.jpg",
   "dietary": [
     "vegetarian"
   ]

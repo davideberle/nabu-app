@@ -7,6 +7,10 @@
   },
   "servings": "makes about 25",
   "intro": "I tried smoked toor dhal samosas at a little street-food stall in Mumbai. They were so good I had to try making them at home. Samosa pastry is available at most Asian shops in the freezer section, but if you want to try making your own, look at my lamb or vegetable samosas recipe. If you would like to see how I fold them, watch my samosa video on my YouTube channel, Dan Toombs. To try these samosas smoked you will need to light charcoal, as described below, or use a home smoker for an easier and smokier process. They are pictured.",
+  "time": {
+    "prep": "1 HOUR, PLUS SOAKING AND RESTING TIME",
+    "cook": "35 MINS"
+  },
   "ingredients": [
     {
       "item": "toor dhal",
@@ -50,23 +54,28 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "TEMPERING"
     },
     {
       "item": "mustard seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "TEMPERING"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "TEMPERING"
     },
     {
       "item": "green chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "TEMPERING"
     },
     {
       "item": "curry leaves, roughly chopped",
-      "amount": "10"
+      "amount": "10",
+      "group": "TEMPERING"
     }
   ],
   "method": [
@@ -76,9 +85,12 @@
     "Now heat the tempering oil over a high heat in a separate pan until visibly hot. Add the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium and stir in the cumin seeds, chillies and curry leaves. Temper for about 40 seconds, then pour it over the cooked dhal and whisk it in, along with the coriander (cilantro).",
     "By this time, the charcoal should be ready. Using tongs, place the hot charcoal on a piece of foil and carefully transfer to the pan with the dhal. Drizzle the ½ teaspoon of rapeseed (canola) oil over the charcoal – it will begin to smoke heavily. Cover the pan and let the dhal smoke until all the smoke is gone. I usually smoke mine in my Traeger or smoker, which I find more convenient. Feel free to use a smoker if you have one.",
     "Take a samosa sheet and wrap the filling up as explained on black bean and cheddar samosas. Repeat with the remaining samosa wrappers and filling.",
+    "When all the samosas are wrapped, you can freeze them if you wish. Spread them out on a baking tray and transfer to a freezer bag once frozen. Be sure to thaw them first before frying.",
     "If frying immediately, heat about 10cm (4in) of oil in a large saucepan or wok to 170°C (340°F) and fry in batches for about 3 minutes until crispy and lightly browned. Keep warm while you fry the remaining samosas.",
     "Serve with your favourite chutneys and lime wedges for squeezing."
   ],
+  "tips": "For a lighter option, preheat the oven to 200°C (400°F/Gas 6), brush each samosa with a little oil and bake for about 20 minutes, or until heated through and browned to your liking.",
+  "image": "/recipes/smoked-toor-dhal-samosas.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

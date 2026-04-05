@@ -3,7 +3,7 @@
   "name": "Cheese Soufflé",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -16,6 +16,10 @@
       "amount": "50 g"
     },
     {
+      "item": "about 500 ml hot milk",
+      "amount": ""
+    },
+    {
       "item": "grated Gruyère sea salt and ground black pepper",
       "amount": "200 g"
     },
@@ -25,8 +29,10 @@
     }
   ],
   "method": [
-    "Serves 4 50 g unsalted butter 50 g unbleached plain flour about 500 ml hot milk 200 g grated Gruyère sea salt and ground black pepper 4 organic eggs, separated",
     "Preheat the oven to 180°C (gas mark 4). Butter a soufflé dish and put a collar of greaseproof paper around the rim of the dish.",
-    "Make a béchamel by melting the butter in a saucepan. Add the flour and stir well, letting it cook for a few minutes (be careful that it doesn’t brown). Slowly add the hot milk, whisking vigorously so that no lumps form. When it has become the consistency of thick cream, turn off the heat and add the cheese, salt and pepper. Stir well until the cheese has melted. Add 1 egg yolk at a time to the sauce, mixing until well incorporated."
-  ]
+    "Make a béchamel by melting the butter in a saucepan. Add the flour and stir well, letting it cook for a few minutes (be careful that it doesn’t brown). Slowly add the hot milk, whisking vigorously so that no lumps form. When it has become the consistency of thick cream, turn off the heat and add the cheese, salt and pepper. Stir well until the cheese has melted. Add 1 egg yolk at a time to the sauce, mixing until well incorporated.",
+    "Beat the egg whites until they form peaks but are not dry. Gradually fold them through the béchamel, egg and cheese mixture. Pour the mixture into the soufflé dish and bake in the oven for about 40 minutes. It should be puffed up and goldenbrown. Don’t open the oven door to check on the soufflé while it’s cooking or it will collapse (check through the glass instead). Serve immediately.",
+    "I like to serve the soufflé with a mixed salad."
+  ],
+  "image": "/recipes/cheese-souffl.jpg"
 }

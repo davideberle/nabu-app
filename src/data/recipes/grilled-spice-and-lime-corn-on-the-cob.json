@@ -7,6 +7,10 @@
   },
   "servings": "serves 4–6 as part of a multi-course meal",
   "intro": "Once you’ve tried this corn on the cob, you’ll want to make it again and again! In barbecue season, I like to light up a lumpwood or log fire and cook the corn directly on the hot coals. Don’t worry about burning the corn. You want about a quarter of the kernels to blacken as it cooks through. Only cook on the coals if you are using untreated charcoal.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -22,30 +26,37 @@
     },
     {
       "item": "amchoor (dried mango powder)",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SPICE MIX"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SPICE MIX"
     },
     {
       "item": "chaat masala",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "SPICE MIX"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SPICE MIX"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SPICE MIX"
     }
   ],
   "method": [
     "Set up the barbecue for direct cooking. Place a tray near the fire with the butter on and let it melt.",
     "Mix together all the spice mix ingredients on a serving plate and set aside.",
+    "When ready to cook, place your corn either on the grate or right in the coals. As you hear the corn begin to crackle, turn it slightly. Continue doing this until you have a mixture of yellow and blackened corn kernels.",
     "To serve, roll the corn around in the melted butter. Serve hot and tell friends to dip their corn in the spice mixture and then rub it all over the corn with the lime wedges, squeezing the juice out as they do."
   ],
+  "image": "/recipes/grilled-spice-and-lime-corn-on-the-cob.jpg",
   "dietary": [
     "vegetarian"
   ]

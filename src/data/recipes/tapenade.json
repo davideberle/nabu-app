@@ -3,9 +3,10 @@
   "name": "Tapenade",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "I often make this tapanata. When made with green olives rather than black, it tastes quite different. Black ones are the ripe olives, so they have a softer and rounder taste. Green ones, not so ripe and harder, have a little more bite to them. It’s a matter of taste, so try both and see which you prefer.",
   "ingredients": [
     {
       "item": "good-quality black or green olives, pitted",
@@ -28,12 +29,26 @@
       "amount": "1"
     },
     {
+      "item": "a few leaves fresh basil",
+      "amount": ""
+    },
+    {
       "item": "good-quality virgin olive oil",
       "amount": "400 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "toasted bread or crackers, to serve",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 500 g good-quality black or green olives, pitted 2 cloves garlic 100 g anchovy fillets 50 g capers 1 chilli a few leaves fresh basil 400 ml good-quality virgin olive oil salt and ground black pepper toasted bread or crackers, to serve",
-    "Place the olives, garlic, anchovy fillets, capers, chilli and basil in a food processor and blend, adding the oil slowly in a fine stream until you have the desired consistency."
-  ]
+    "Place the olives, garlic, anchovy fillets, capers, chilli and basil in a food processor and blend, adding the oil slowly in a fine stream until you have the desired consistency.",
+    "Taste and season with salt and pepper. Serve with crunchy bread or crackers.",
+    "The tapanata keeps very well in the fridge for at least one week. Just pour it into a clean jar, bang the jar on the table to make sure there are no air pockets and seal the tapanata with a thin layer of virgin olive oil."
+  ],
+  "image": "/recipes/tapenade.jpg"
 }

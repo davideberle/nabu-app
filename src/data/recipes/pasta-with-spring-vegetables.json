@@ -3,9 +3,10 @@
   "name": "Pasta with Spring Vegetables",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "This is a wonderful spring pasta dish. It relies on its impact from the new season’s vegetables – the smaller the better. The flavour is delicate and fresh.",
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -52,15 +53,19 @@
       "amount": "500 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "freshly grated parmigiano",
       "amount": "100 g"
     }
   ],
   "method": [
-    "Serves 4–6 50 g unsalted butter 3 baby leeks, trimmed and sliced 2 cloves garlic, crushed 1 small fennel bulb, very thinly sliced 1 ½ tablespoons salt 150 g podded baby broad beans, blanched and peeled 150 g baby green beans, cut into 3 cm lengths 150 g podded fresh peas 1 bunch thin asparagus, cut into 3 cm lengths 400 ml pure cream 500 g ditali pasta (small 1 cm tubes) salt and ground black pepper 100 g freshly grated parmigiano",
     "Melt the butter in a large frying pan. Add the leeks and cook gently for 5 minutes, then add the garlic and fennel and cook until soft.",
     "Add the salt to a large saucepan of water and bring to the boil. When the water boils, drop in the broad beans, green beans, peas and asparagus. As soon as the water comes back to the boil, lift the vegetables out with a slotted spoon (reserve the water for cooking the pasta) and add them to the frying pan with the leek and fennel mixture. Pour in the cream and bring to the boil. Let it bubble for 2 minutes – the vegetables should still have a crunch – then remove the pan from the heat.",
     "Boil the pasta in the vegetable water until al dente.",
     "Drain the pasta well and add to the cream and vegetable mix. Toss everything together. Season with salt and pepper, add the parmigiano and serve immediately."
-  ]
+  ],
+  "image": "/recipes/pasta-with-spring-vegetables.jpg"
 }

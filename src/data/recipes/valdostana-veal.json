@@ -3,10 +3,14 @@
   "name": "Valdostana Veal",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
+    {
+      "item": "about 8 veal scaloppine, 2 per person (depending on the size of the scaloppine)",
+      "amount": ""
+    },
     {
       "item": "fontina cheese, sliced thinly",
       "amount": "250 g"
@@ -16,12 +20,16 @@
       "amount": "24"
     },
     {
+      "item": "unbleached plain flour, for dusting",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "50 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "4 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "4"
     },
     {
       "item": "cloves garlic, crushed",
@@ -30,11 +38,16 @@
     {
       "item": "dry white wine",
       "amount": "150 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 about 8 veal scaloppine, 2 per person (depending on the size of the scaloppine) 250 g fontina cheese, sliced thinly 24 fresh sage leaves unbleached plain flour, for dusting 50 g unsalted butter 4 tablespoons good-quality virgin olive oil 4 cloves garlic, crushed 150 ml dry white wine salt and ground black pepper",
+    "Flatten the scaloppine by beating them with a meat tenderiser. Put a slice of fontina cheese on each scaloppine and fold the meat over. Secure the scaloppine with a toothpick and thread a fresh sage leaf through the toothpick. Now dust the scaloppine with flour.",
     "Melt the butter with the olive oil, add the garlic and the rest of the sage leaves, then the veal. Fry the scaloppine on all sides, until golden. Now add the dry white wine and continue cooking, turning the scaloppine a few times, until cooked – about 5 minutes. Add salt and pepper to taste. If the sauce looks dry, add a little stock.",
     "Serve immediately while still hot. I like to serve this with Patate Arrosto con Funghi Porcini."
-  ]
+  ],
+  "image": "/recipes/valdostana-veal.jpg"
 }

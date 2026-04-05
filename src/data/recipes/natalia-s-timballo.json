@@ -3,17 +3,21 @@
   "name": "Natalia’s Timballo",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
+    {
+      "item": "TOMATO SAUCE",
+      "amount": ""
+    },
     {
       "item": "unsalted butter",
       "amount": "25 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "Spanish onion, very finely sliced",
@@ -44,6 +48,10 @@
       "amount": "400 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "sunflower oil, for frying",
       "amount": "500 ml"
     },
@@ -56,18 +64,22 @@
       "amount": "500 g"
     },
     {
-      "item": "fresh breadcrumbs",
-      "amount": "2 tablespoons"
+      "item": "tablespoons fresh breadcrumbs",
+      "amount": "2"
     },
     {
-      "item": "large fresh mozzarella ball, cut into small cubes",
-      "amount": "1"
+      "item": "arge fresh mozzarella ball, cut into small cubes",
+      "amount": "1 l"
     }
   ],
   "method": [
     "Preheat the oven to 200°C (gas mark 6).",
+    "To make the sauce, heat the butter and oil in a large frying pan and gently fry the onion, garlic and herbs, taking care not to burn the garlic. When soft, add the tomato paste and cook for a few minutes, until the mixture darkens in colour. Stir in the tomatoes and cook over a gentle heat for about 20 minutes. Discard the bay leaves and season to your liking.",
     "Heat the sunflower oil in a small frying pan and, when hot, fry the eggplant in batches until pale golden. Remove from the oil and drain on kitchen paper.",
     "Cook the pasta in plenty of boiling, salted water until al dente. Drain well and mix in the tomato sauce so the pasta is evenly coated.",
-    "Remove from the oven and leave the timballo to stand for about 3 minutes before turning upside down onto a serving dish."
-  ]
+    "Thoroughly butter a round non-stick oven dish (25 cm in diameter and at least 8 cm deep). Sprinkle the breadcrumbs over the bottom and up the sides of the dish, then pour in half the pasta. Top with a layer of the eggplant and mozzarella, then cover with the remaining pasta. Bake for 15–20 minutes.",
+    "Remove from the oven and leave the timballo to stand for about 3 minutes before turning upside down onto a serving dish.",
+    "This recipe uses a special pasta called anelli, shaped like little rings. You could also use farfalline, pennette or other small pasta shapes."
+  ],
+  "image": "/recipes/natalia-s-timballo.jpg"
 }

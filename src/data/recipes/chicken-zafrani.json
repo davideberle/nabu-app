@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This delicious curry has a rich flavour that’s all its own. I like it with chillies, often more than called for in the recipe, but if you leave them out it is a great curry for kids and those who prefer milder curries. You can get away with only marinating the chicken for about 30 minutes, but if you marinate the meat for about 24 hours, it will be even better. The marinade is used to make the sauce. This makes cooking the dish a lot easier as you just have to take the marinated chicken out of the fridge and cook it. You can literally get home from work and cook this one up in under 30 minutes.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "30 MINS"
+  },
   "ingredients": [
     {
       "item": "skinless chicken thighs – on or off the bone",
@@ -46,55 +50,68 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Rapeseed (canola) oil, for shallow-frying",
-      "amount": ""
+      "amount": "",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "onions, thinly sliced",
-      "amount": "3"
+      "amount": "3",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "skinned almonds, soaked in water for 20 minutes",
-      "amount": "12"
+      "amount": "12",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "cashew nuts, soaked in water for 20 minutes",
-      "amount": "12"
+      "amount": "12",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Kashmiri chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "plain yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g (1 cup)",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "green bird’s eye chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "SECOND MARINADE"
     }
   ],
   "method": [
@@ -102,6 +119,9 @@
     "For the next marinade, heat about 10cm (4in) of oil in a large saucepan or wok. When visibly hot, add the onions and fry for 7–10 minutes until golden brown. Transfer to paper towel to soak up any excess oil.",
     "Place the fried onions in a spice grinder or food processor and grind to a smooth onion paste. You can add a drop of water to assist with blending if needed. Now add the soaked almonds and cashew nuts, turmeric, cumin, coriander and chilli powder and blend again until smooth.",
     "Whisk this paste together with the yoghurt and finely chopped chillies. Do not blend the yoghurt or it will become runny. Pour this over the chicken and rub this marinade into the meat. Leave to marinate for at least 30 minutes or overnight – the longer the better.",
+    "When ready to cook, melt the ghee or oil in a large saucepan with a tight-fitting lid over a medium–high heat. Add the cinnamon stick, cardamom pods and star anise. If you don’t like whole spices in your curries, be sure to count them in and then count them back out again at the end of cooking. Let these spices infuse into the ghee for about 30 seconds, then tip in the chicken pieces along with all the marinade.",
     "Cover and simmer over a low heat for about 25 minutes, or until the chicken is cooked through. You can add a drop of water if the curry is looking thirsty but the chicken will release moisture to make the sauce. When the chicken is cooked through, stir in the saffron and cream and cook for a further 3 minutes, then add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Season with salt and serve."
-  ]
+  ],
+  "tips": "This chicken zafrani, like all authentic curries, can be adjusted to your personal preference. Feel free to cut the chicken thighs into bite-size pieces. If you prefer more sauce, add a little water or stock and cook it down until you are happy with the consistency. If you like creamy curries, adding more cream, though not authentic, will do the job!",
+  "image": "/recipes/chicken-zafrani.jpg"
 }

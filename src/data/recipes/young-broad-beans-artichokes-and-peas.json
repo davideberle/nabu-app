@@ -3,10 +3,19 @@
   "name": "Young Broad Beans, Artichokes and Peas",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "I love this vegetable dish. I think the sweetness of the artichokes combined with the broad beans and peas is a match made in heaven.",
   "ingredients": [
+    {
+      "item": "artichokes",
+      "amount": "3–4"
+    },
+    {
+      "item": "juice of 2 organic lemons, mixed with 1 litre water",
+      "amount": ""
+    },
     {
       "item": "good-quality virgin olive oil",
       "amount": "75 ml"
@@ -28,6 +37,10 @@
       "amount": "400 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "bunch flat-leaf parsley, finely chopped",
       "amount": "½"
     },
@@ -37,8 +50,9 @@
     }
   ],
   "method": [
-    "Serves 4 3–4 artichokes juice of 2 organic lemons, mixed with 1 litre water 75 ml good-quality virgin olive oil 50 g unsalted butter 20 shallots, finely sliced 400 g podded fresh broad beans, blanched and peeled 400 g podded fresh peas salt and ground black pepper ½ bunch flat-leaf parsley, finely chopped 2 sprigs wild fennel, finely chopped",
+    "To prepare the artichokes, remove the tough outer leaves until they become pale in colour and tender. Slice a third off the tops. Cut them into quarters and remove the choke. Now slice the artichokes into thin wedges and quickly place them in the lemon water to prevent the flesh from discolouring.",
     "Remove the artichokes from the lemon water and dry them thoroughly on kitchen paper. Heat 2 tablespoons of the oil and all the butter in a frying pan. Add the artichokes and shallots and cook gently for a few minutes.",
     "Add 125 ml water to the pan. Stir in the broad beans and peas and cook until they are just tender, about 8 minutes. Season with salt and pepper and stir in the herbs and the remaining olive oil. Serve at room temperature."
-  ]
+  ],
+  "image": "/recipes/young-broad-beans-artichokes-and-peas.jpg"
 }

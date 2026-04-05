@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes 700ml (3 cups)",
-  "intro": "Green pani (green water) is delicious poured into pani puri. It can be made in minutes, though leaving it in the fridge for about 2 hours before serving will allow the flavours to develop. I don’t strain the pani but some people do. I’ll leave that up to you.",
+  "intro": "Green pani (green water) is delicious poured into pani puri. It can be made in minutes, though leaving it in the fridge for about 2 hours before serving will allow the flavours to develop. I don’t strain the pani but some people do. I’ll leave that up to you.\n\nGreen pani has other uses besides pani puri. Try steaming rice using the green pani instead of water. If you don’t feel like making it, you can purchase excellent-quality green pani at Asian grocers.",
+  "time": {
+    "prep": "10 MINS, PLUS CHILLING TIME",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "Large bunch of mint leaves",
@@ -57,6 +61,7 @@
     "Put all the ingredients up to the salt in a blender with 250ml (1 cup) of water and blend for 1 minute. If you’re in a rush for the deliciousness, you could add 250ml (1 cup) more water and run it all through a sieve, check for seasoning and enjoy immediately. For best results and a stronger flavour, place the paste with the additional water in the fridge for about 1 hour. Then run it through a sieve and check for seasoning. Season with salt and perhaps a little chilli powder. If you prefer a sweeter flavour, stir in some more sugar.",
     "Your green pani is now ready to serve. It can also be frozen for up to 3 months to use later. I always have some on hand because my pani puri parties just tend to happen late at night after a few beers with friends without any planning."
   ],
+  "image": "/recipes/green-pani.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

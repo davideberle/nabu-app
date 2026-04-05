@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Have you ever tried a good Pakistani dry meat curry? Done correctly, this has to be one of my favourite curries. The lamb is marinated and then simmered in water and the marinade until fall-apart tender. Then comes the fantastic final cooking, which is all explained below. I’m getting hungry just thinking about it! For my version of this now-famous curry, I used marinated, diced leg of lamb. If you have the leg bone from the leg, throw that in with the meat too as it adds a nice flavour. In Pakistan and at authentic Pakistani restaurants, the lamb meat, usually shoulder, is cooked in small pieces on the bone. You could do this too – it’s messier to eat but so good! Pakistani dry meat curry is delicious served with naans or chapattis.",
+  "time": {
+    "prep": "20 MINUTES, PLUS MARINATING TIME",
+    "cook": "1½ HOURS"
+  },
   "ingredients": [
     {
       "item": "lean lamb leg meat, cut into bite-size pieces",
@@ -46,32 +50,40 @@
     },
     {
       "item": "white vinegar",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml (¼ cup)",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "125g (½ cup)"
+      "amount": "125g (½ cup)",
+      "group": "MARINADE"
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "1½ tsp"
+      "amount": "1½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "green bird’s eye chillies, blended to a paste with a drop of water",
-      "amount": "8"
+      "amount": "8",
+      "group": "MARINADE"
     },
     {
       "item": "mustard oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Whisk all the marinade ingredients together in a large mixing bowl until creamy smooth. Add the meat and mix well with your hands to ensure it is nicely coated and marinate for 3 hours or overnight – the longer the better.",
+    "When ready to start cooking, bring 1 litre (4½ cups) of water to the boil and add the lamb chunks with all the marinade and stir well. Reduce the heat and simmer for about 1 hour, or until the lamb is really tender. You might need to add a little more water during cooking, but the idea is to end up with tender lamb chunks and about 250ml (1 cup) of cooking stock. Tip the cooked meat and remaining liquid into a bowl.",
     "Now, using the same pan, melt the ghee over a high heat and add the onions. Fry for about 15 minutes, or until the onions are a deep brown. Using a slotted spoon, transfer half the onions to a separate bowl. If you want to make this recipe the traditional way, leave all the ghee in the pan. If you want to go for the healthier option, pour out all but about 2 tablespoons of the ghee. This ghee can be stored in the fridge and used in other curries.",
     "Reduce the heat to medium–high and stir in the garam masala and chilli powder and return half the fried onions to the pan. Now add the meat and remaining broth to the pan and cook until the broth has almost all evaporated. Turn up the heat to high and flash-fry the meat until it is crispy and the ghee is beginning to separate from the other ingredients. Add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the pan and season with salt. When you are testing the meat for seasoning, it is very easy to continue snacking on it, so try not to do that if you are serving a crowd. Garnish with the coriander (cilantro) and serve with lime wedges."
-  ]
+  ],
+  "image": "/recipes/pakistani-dry-meat-curry.jpg"
 }

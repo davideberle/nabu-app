@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "When you bite into these shami kebabs, they simply melt in your mouth. Crisp on the outside and fall-apart tender inside; I can’t get enough of them. There are few things as toothsome as a hot shami drizzled with coriander, garlic and chilli raita or spicy tomato chutney. Although I use lamb for this recipe, mutton is a popular alternative. If you’ve got the bone from the shoulder, simmer it with the meat for even more fantastic flavour.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "1 HOUR 20 MINS"
+  },
   "ingredients": [
     {
       "item": "lamb shoulder, roughly chopped and trimmed of excess fat",
@@ -64,6 +68,8 @@
   "method": [
     "Place the lamb in a large saucepan, add water to cover and bring to the boil, skimming off the foam that rises to the top. Add the chana dhal, garlic and ginger paste, dried chillies, onion and mixed powder.",
     "Cover and simmer for about 1 hour until the water evaporates and the meat is fork-tender, stirring in the garam masala after 45 minutes. Watch the pan carefully so that the dhal doesn’t scorch on the bottom, adding more water if required.",
-    "Allow to cool, then transfer the mixture to a food processor with the coriander (cilantro), mint and chillies. Blend until fine, with the consistency of thick clay. Season with salt and form into patties. This can all be done well ahead of serving."
-  ]
+    "Allow to cool, then transfer the mixture to a food processor with the coriander (cilantro), mint and chillies. Blend until fine, with the consistency of thick clay. Season with salt and form into patties. This can all be done well ahead of serving.",
+    "When ready to fry, heat about 2.5cm (1in) oil in a large frying pan. Brush both sides of each patty with the beaten egg, place in the hot oil and cook for about 1 minute per side until browned. Remove from the oil to a plate lined with paper towel."
+  ],
+  "image": "/recipes/lamb-shami-kebabs.jpg"
 }

@@ -3,71 +3,89 @@
   "name": "DARK CHOCOLATE AND PECAN COFFEE CARAMEL TART",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "25 MINUTE",
   "intro": "A pecan-flavoured dessert is right up there for me and paired with dark chocolate it really hits the mark. The base is baked, but the rest of it comes together really quickly and just needs to chill in the refrigerator to set.",
+  "time": {
+    "prep": "30 MINUTES",
+    "cook": "25 MINUTES"
+  },
   "ingredients": [
     {
       "item": "instant coffee or instant espresso powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "boiling water",
-      "amount": "60 ml (2 fl oz/¼ cup)"
+      "amount": "60 ml (2 fl oz/¼ cup)",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "coconut cream",
-      "amount": "115–125 g (3¾–4 oz)"
+      "amount": "115–125 g (3¾–4 oz)",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "dark brown soft sugar",
-      "amount": "90 g (3¼ oz/scant ½ cup)"
+      "amount": "90 g (3¼ oz/scant ½ cup)",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ teaspoon",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "pecans, plus extra to decorate",
-      "amount": "150 g (5 oz/1½ cups)"
+      "amount": "150 g (5 oz/1½ cups)",
+      "group": "PECAN CARAMEL"
     },
     {
       "item": "Biscoff biscuits (cookies)",
-      "amount": "300 g (10½ oz)"
+      "amount": "300 g (10½ oz)",
+      "group": "BASE"
     },
     {
       "item": "vegan block butter, melted, plus extra for greasing",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g (3½ oz)",
+      "group": "BASE"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "group": "CHOCOLATE FILLING"
     },
     {
       "item": "agave syrup",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "CHOCOLATE FILLING"
     },
     {
       "item": "70% dark (bittersweet) vegan chocolate, roughly chopped",
-      "amount": "300 g (10½ oz)"
+      "amount": "300 g (10½ oz)",
+      "group": "CHOCOLATE FILLING"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CHOCOLATE FILLING"
     },
     {
       "item": "coconut yogurt",
-      "amount": "50g (¼ cup)"
+      "amount": "50g (¼ cup)",
+      "group": "CHOCOLATE FILLING"
     },
     {
       "item": "flaky sea salt, to decorate",
-      "amount": ""
+      "amount": "",
+      "group": "CHOCOLATE FILLING"
     }
   ],
   "method": [
@@ -79,6 +97,7 @@
     "Next, make the chocolate filling. Warm the coconut milk with the agave syrup in a saucepan over a medium heat until steaming. Put the chocolate into a bowl and pour over the hot coconut milk. Mix with a spatula until the chocolate has melted. Add the vanilla extract and stir to combine. Allow to cool for a few minutes, then fold in the yoghurt.",
     "To assemble, pour the caramel into the prepared base, then break up the roasted pecans with your hands and scatter over the caramel. Pour over the chocolate filling and even out with a palette knife or spatula. Top with more pecans and a pinch of flaky sea salt. Leave to sit in the refrigerator for at least 3 hours before serving."
   ],
+  "image": "/recipes/dark-chocolate-and-pecan-coffee-caramel-tart.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

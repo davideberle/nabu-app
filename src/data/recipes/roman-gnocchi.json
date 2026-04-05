@@ -3,17 +3,21 @@
   "name": "Roman Gnocchi",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
     {
-      "item": "litre milk",
-      "amount": "1"
+      "item": "itre milk",
+      "amount": "1 l"
     },
     {
       "item": "water",
       "amount": "500 ml"
+    },
+    {
+      "item": "teaspoons salt",
+      "amount": "1–2"
     },
     {
       "item": "coarse semolina",
@@ -24,20 +28,34 @@
       "amount": "2"
     },
     {
+      "item": "ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "grated parmigiano",
       "amount": "150 g"
     },
     {
+      "item": "tablespoons fresh breadcrumbs",
+      "amount": "2–3"
+    },
+    {
       "item": "butter",
       "amount": "100 g"
+    },
+    {
+      "item": "a few fresh sage leaves (optional)",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 1 litre milk 500 ml water 1–2 teaspoons salt 250 g coarse semolina 2 organic egg yolks ground black pepper 150 g grated parmigiano 2–3 tablespoons fresh breadcrumbs 100 g butter a few fresh sage leaves (optional)",
     "Place the milk and water in a large pan, add the salt and bring to the boil. Add the semolina slowly, in a very fine and constant stream, whisking continuously with a whisk so as not to form lumps. Cook for about 10 minutes, stirring constantly with a wooden spoon. Then allow the semolina to cool slightly.",
     "Stir in the egg yolks, pepper and about half the parmigiano, then taste for salt and add more if necessary.",
     "Place some greaseproof paper on your kitchen bench and pour the semolina onto the paper, flattening it with the blade of a knife to about 1 cm thickness. Allow it to cool completely.",
     "Preheat the oven to 200°C (gas mark 6).",
-    "Sprinkle the breadcrumbs and the remaining parmigiano on top of the semolina discs. Cut the butter into little cubes and place on top of the gnocchi and, finally, add the sage leaves, if using. Bake in the oven for about 20 minutes, or until golden-brown."
-  ]
+    "Butter an ovenproof dish, about 5–6 cm deep. With a biscuit cutter or a glass of about 3 cm diameter, cut out little discs of the semolina mixture then arrange them in the dish with the discs overlapping slightly, like fish scales.",
+    "Sprinkle the breadcrumbs and the remaining parmigiano on top of the semolina discs. Cut the butter into little cubes and place on top of the gnocchi and, finally, add the sage leaves, if using. Bake in the oven for about 20 minutes, or until golden-brown.",
+    "To this basic recipe, you can add about 400 g finely chopped spinach to the milk, for green gnocchi. Alternatively, add about 300 g mashed baked pumpkin – these gnocchi will be softer than the basic recipe, therefore a little more difficult to handle, but the sweetness of the pumpkin is absolutely delicious."
+  ],
+  "image": "/recipes/roman-gnocchi.jpg"
 }

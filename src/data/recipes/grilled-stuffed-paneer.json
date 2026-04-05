@@ -7,6 +7,10 @@
   },
   "servings": "serves 2–3 or more as part of a multi-course meal",
   "intro": "This stuffed paneer recipe is delicious fried, but I also like to cook it outdoors on skewers over the hot coals. I usually marinate the paneer for about 2 hours or overnight, but I do this more for convenience than flavour. Still, you will get a more intense flavour if you marinate the paneer for a while. If marinating, prick each piece of paneer a few times with a fork to allow the marinade to really get into the cheese.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "paneer cheese, cut into 5cm (2in) squares and 1cm (¾in) thick, or similar",
@@ -18,75 +22,93 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Juice of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Kashmiri chilli powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "FILLING"
     },
     {
       "item": "Large handful (1 cup) of mint leaves, large stems removed",
-      "amount": ""
+      "amount": "",
+      "group": "FILLING"
     },
     {
       "item": "Large handful (1 cup) of coriander (cilantro)",
-      "amount": ""
+      "amount": "",
+      "group": "FILLING"
     },
     {
       "item": "Large handful (1 cup) of baby spinach leaves",
-      "amount": ""
+      "amount": "",
+      "group": "FILLING"
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and finely chopped",
-      "amount": ""
+      "item": "piece of ginger, peeled and finely chopped",
+      "amount": "5cm (2in)",
+      "group": "FILLING"
     },
     {
       "item": "garlic cloves, smashed",
-      "amount": "3"
+      "amount": "3",
+      "group": "FILLING"
     },
     {
       "item": "green bird’s eye chillies",
-      "amount": "3"
+      "amount": "3",
+      "group": "FILLING"
     },
     {
       "item": "chaat masala",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "FILLING"
     },
     {
       "item": "Juice of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "FILLING"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "FILLING"
     }
   ],
   "method": [
@@ -95,6 +117,8 @@
     "The coals are ready when it is unbearably hot to hold your hand over them for 2 seconds at cooking height. Skewer the paneer onto two or three metal skewers, leaving a bit of space between each piece, and cook over the coals on the grill, turning regularly for about 10 minutes, or until the paneer has charred a brown colour all over.",
     "Remove the paneer from the skewers. Spread the filling paste over half of them and top with the other half to make a paneer sandwich. Season with flaky salt and serve hot."
   ],
+  "tips": "While you’re marinating the paneer, you could also marinate some nice vegetables, such as red onion or red (bell) pepper. Then skewer them with the paneer. The additional vegetables look great and taste delicious served with the paneer.",
+  "image": "/recipes/grilled-stuffed-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

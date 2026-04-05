@@ -3,11 +3,14 @@
   "name": "RICE AND PEAS ARANCINI",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "1 HOUR",
   "intro": "Rice and peas is a crowd pleaser, and in the right hands can be the main event, outshining the rest of its companions on a plate. But these arancini are in a league of their own. This recipe came into being by accident when I had a restaurant residency years ago. I had some leftover rice and peas, decided to turn them into arancini and the rest is history. This is my revised take on the concept, using a more traditional risotto-making technique. These would be great to make the day before and then simply fry them on the day you are serving.",
+  "time": {
+    "prep": "30 MINUTES",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "tin of kidney beans, drained and rinsed",
@@ -89,6 +92,7 @@
     "Wet your hands slightly and put a heaped tablespoon of rice and peas risotto into the palm of your hands. Put two cubes of the vegan cheese into the middle and enclose it in your palm. Roll it into a ball, then place it into the plain flour, then into the coconut milk, then into the panko breadcrumbs. Transfer the arancini to the baking sheet and repeat until all the mixture is used up.",
     "Pour enough vegetable oil into a high-sided heavy-bottomed frying pan or saucepan to fill three-quarters of the pan and gently bring to heat. Test the temperature by using a wooden spoon – if lots of bubbles appear around it immediately, it’s ready to go. Fry 2–3 arancini balls at a time for 6–8 minutes until golden and crisp. Drain on paper towels and season with a sprinkle of salt. Serve with your favourite condiments."
   ],
+  "image": "/recipes/rice-and-peas-arancini.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

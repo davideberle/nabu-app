@@ -3,9 +3,10 @@
   "name": "Tuna Starter",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "This makes a delicious starter, or you can enjoy it as a snack during the day.\n\nI first tried it on the island of Favignana on the western side of Sicily, a port town famous for the annual tuna catch – the ‘matanza’. There you find the long, wide boats that have been used for centuries to net the tuna as they swim past on their seasonal migration.",
   "ingredients": [
     {
       "item": "canned tuna in oil, drained",
@@ -20,13 +21,17 @@
       "amount": "25 g"
     },
     {
+      "item": "cornichons (gherkins) in brine, drained and diced",
+      "amount": "6–8"
+    },
+    {
       "item": "good-quality virgin olive oil",
       "amount": "125 ml"
     }
   ],
   "method": [
-    "Serves 4–6 400 g canned tuna in oil, drained 50 g unsalted pistachio nuts, toasted and roughly chopped 25 g capers in brine, drained 6–8 cornichons (gherkins) in brine, drained and diced 125 ml good-quality virgin olive oil",
     "Combine the tuna, pistachios, capers, and cornichons in a mixing bowl. Add the olive oil and use a fork to mix them together roughly – I prefer it to be a bit chunky.",
     "Serve with crusty sourdough bread or lingue di suocera (Impasto per Pizza)."
-  ]
+  ],
+  "image": "/recipes/tuna-starter.jpg"
 }

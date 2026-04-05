@@ -3,10 +3,14 @@
   "name": "Date Tart",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
   "ingredients": [
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "unsalted butter",
       "amount": "125 g"
@@ -18,6 +22,18 @@
     {
       "item": "sugar",
       "amount": "60 g"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "zest of 1 organic lemon and few drops of juice",
+      "amount": ""
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "unsalted butter",
@@ -32,14 +48,25 @@
       "amount": "125 g"
     },
     {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
       "item": "Nocino (walnut liqueur), or Mirto liqueur (optional)",
       "amount": "50 ml"
+    },
+    {
+      "item": "approximately 30 dried dates, pitted and cut lengthways",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 8 PASTRY 125 g unsalted butter 200 g unbleached plain flour 60 g sugar pinch of salt zest of 1 organic lemon and few drops of juice FILLING 125 g unsalted butter 125 g coconut cream 125 g brown sugar pinch of salt 50 ml Nocino (walnut liqueur), or Mirto liqueur (optional) approximately 30 dried dates, pitted and cut lengthways",
+    "Process all the pastry ingredients in a food processor. Roll out and lay in a 28 cm springform pan. Place in the freezer for about 30 minutes.",
     "Preheat the oven to 200°C (gas mark 6).",
     "Remove the pastry from the freezer, prick the base with a fork then blind bake in the oven until lightly coloured – about 15 minutes.",
-    "Mix together all the filling ingredients, except the dates, and boil in a pan for 20 minutes. Allow to cool."
-  ]
+    "Mix together all the filling ingredients, except the dates, and boil in a pan for 20 minutes. Allow to cool.",
+    "When the pastry is cool, arrange the dates in a fan shape on top of the pastry. Pour the cooled sauce over the dates (if the sauce is too hot, it will be too liquid and soften the pastry).",
+    "Serve with whipped cream."
+  ],
+  "image": "/recipes/date-tart.jpg"
 }

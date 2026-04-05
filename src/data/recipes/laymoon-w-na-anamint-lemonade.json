@@ -1,0 +1,47 @@
+{
+  "id": "laymoon-w-na-anamint-lemonade",
+  "name": "Laymoon W Na’anaMINT LEMONADE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "5 servings",
+  "intro": "Mint lemonade needs no introduction or explanation; it’s simply one of the most refreshing drinks on a hot summer day. It is served at every restaurant in the Middle East, sometimes in a completely liquified form and sometimes like a frozen slushie. You can vary the amount of sugar based on your preference and serve it garnished with beautiful fresh mint leaves.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": ""
+  },
+  "ingredients": [
+    {
+      "item": "fresh lemon juice (8 to 10 large lemons)",
+      "amount": "1¼ cups (300 ml)"
+    },
+    {
+      "item": "granulated sugar (or less, per preference)",
+      "amount": "¾ cup (150 g)"
+    },
+    {
+      "item": "loosely packed fresh mint leaves",
+      "amount": "2 cups (100 g)"
+    },
+    {
+      "item": "filtered water",
+      "amount": "2½ cups (600 ml)"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Fresh mint leaves",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    }
+  ],
+  "method": [
+    "Add the lemon juice, sugar, mint leaves, and water to a large high-powered blender and blend for 1 to 2 minutes, until the sugar is dissolved.",
+    "Add the ice and blend again for a few seconds, or until the ice is crushed.",
+    "Pour into drinking glasses and garnish with mint leaves."
+  ],
+  "image": "/recipes/laymoon-w-na-anamint-lemonade.jpg"
+}

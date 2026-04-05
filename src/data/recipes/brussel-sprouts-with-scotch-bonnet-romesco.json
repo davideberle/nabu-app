@@ -3,11 +3,14 @@
   "name": "BRUSSEL SPROUTS WITH SCOTCH BONNET ROMESCO",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "20 MINUTE",
   "intro": "Brussels are finally getting the attention they deserve and I’m so happy about it. Most vegetables taste infinitely better once charred and roasted, but there’s something very magical about roasted Brussels sprouts, as their craggy, ribbon-like leaves allow for sauce to nestle in between them. People think they dislike Brussels sprouts, but they’re wrong. Most likely they have only had them after they have been steamed to death. This recipe serves them alongside a wonderfully pokey and warmly spiced romesco sauce, which they marry with perfectly. This is the dish to convince all the Brussels haters you know. Make this and change their minds.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "sprouts, trimmed and halved",
@@ -35,43 +38,53 @@
     },
     {
       "item": "olive oil",
-      "amount": "75 ml (2½ fl oz/5 tablespoons)"
+      "amount": "75 ml (2½ fl oz/5 tablespoons)",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "allspice berries (or 1 teaspoon ground allspice)",
-      "amount": "4"
+      "amount": "4",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "cloves garlic (or more if you’re into your garlic)",
-      "amount": "6"
+      "amount": "6",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "Scotch bonnet, quartered (remove the seeds if you prefer it to be less spicy)",
-      "amount": "1"
+      "amount": "1",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "flaked almonds (or 30 g/1 oz blanched almonds), plus extra to serve",
-      "amount": "50 g (2 oz/½ cup)"
+      "amount": "50 g (2 oz/½ cup)",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "roasted red peppers from a jar",
-      "amount": "3"
+      "amount": "3",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "4 tablespoons"
+      "amount": "4 tablespoons",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "stale bread (any type), toasted and cubed",
-      "amount": "100 g (3½ oz/3 tablespoons)"
+      "amount": "100 g (3½ oz/3 tablespoons)",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "pinch of sugar",
-      "amount": ""
+      "amount": "",
+      "group": "SCOTCH BONNET ROMESCO SAUCE"
     }
   ],
   "method": [
@@ -81,6 +94,7 @@
     "In a food processor, add the red peppers, balsamic vinegar, bread, salt, pinch of sugar and the oil and almond mixture. Blend into a slightly chunky texture, just before being completely smooth.",
     "Spoon some of the sauce onto a plate and top with the charred sprouts, then garnish with more almond flakes. Store the remaining sauce in an airtight container for up to 1 week. It’s so delish on so many other dishes."
   ],
+  "image": "/recipes/brussel-sprouts-with-scotch-bonnet-romesco.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

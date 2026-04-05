@@ -3,17 +3,21 @@
   "name": "Monica’s Pizza",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
+    {
+      "item": "DOUGH",
+      "amount": ""
+    },
     {
       "item": "potatoes",
       "amount": "250 g"
     },
     {
-      "item": "dry yeast",
-      "amount": "1 teaspoon"
+      "item": "teaspoon dry yeast",
+      "amount": "1"
     },
     {
       "item": "warm milk",
@@ -24,24 +28,32 @@
       "amount": "200 ml"
     },
     {
-      "item": "salt",
-      "amount": "1½ teaspoons"
+      "item": "teaspoons salt",
+      "amount": "1½"
     },
     {
       "item": "unbleached plain flour",
       "amount": "400 g"
     },
     {
+      "item": "TOMATO SAUCE",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "15 g"
     },
     {
-      "item": "good-quality virgin olive oil, plus extra for drizzling",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil, plus extra for drizzling",
+      "amount": "2"
     },
     {
       "item": "small Spanish onion, finely chopped",
       "amount": "1"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "1–2"
     },
     {
       "item": "fresh sage leaves",
@@ -64,6 +76,10 @@
       "amount": "300 g"
     },
     {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "grated Gruyère",
       "amount": "50 g"
     },
@@ -73,7 +89,11 @@
     }
   ],
   "method": [
-    "Serves 4 DOUGH 250 g potatoes 1 teaspoon dry yeast 200 ml warm milk 200 ml warm water 1½ teaspoons salt 400 g unbleached plain flour TOMATO SAUCE 15 g unsalted butter 2 tablespoons good-quality virgin olive oil, plus extra for drizzling 1 small Spanish onion, finely chopped 1–2 cloves garlic, crushed 4 fresh sage leaves 1 sprig fresh rosemary 1 fresh bay leaf 75 g tomato paste 300 g canned peeled roma tomatoes sea salt and ground black pepper 50 g grated Gruyère 50 g grated Emmental",
-    "Preheat the oven to 200°C (gas mark 6)."
-  ]
+    "For the dough, boil the potatoes in their skins until just done. Peel them and put them through a potato ricer, holding the ricer over a mixing bowl. Add the remaining dough ingredients to the bowl and mix well with a spoon. The dough should be shiny and quite wet, with a consistency similar to thick yoghurt.",
+    "Oil an oven tray (the best size to use is 30 × 20 cm, with a tall lip of about 5 cm around each side). Pour the dough into the tray and, with oiled hands, spread it to the edges. Let the dough stand in a warm place for 1 hour, or until it begins to rise and bubble.",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "In the meantime, prepare the sauce. Heat the butter and oil in a saucepan and sauté the onion until softened, then add the garlic and herbs and cook for a further few minutes. Stir in the tomato paste and cook for a few minutes more, until it darkens in colour, but be careful not to burn it. Add the tomatoes, salt and pepper, put a lid on the pan and turn the heat down to low. Cook for about 15 minutes, stirring from time to time. Remove from the heat and discard the rosemary stalk and bay leaf.",
+    "Spread the tomato sauce over the pizza base and top with the cheeses. Drizzle a little olive oil on top and sprinkle with salt and pepper. Bake for about 20 minutes, or until the dough is cooked. The dough will rise quite high and the sauce will seep into it to create a soft pizza."
+  ],
+  "image": "/recipes/monica-s-pizza.jpg"
 }

@@ -3,11 +3,14 @@
   "name": "PEANUT PUNCH",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "15 MINUTE",
   "intro": "This peanut punch is a slightly more adult version of the traditional Jamaican drink. Roasting the peanuts adds an extra depth. There’s something that’s quite Christmassy about this drink, which is exactly why it’s in the special occasion chapter. Enjoy on its own, with lots of ice, a swig of rum and a slice of rum cake.",
+  "time": {
+    "prep": "5 MINUTESCOOK TIME: 15 MINUTES",
+    "cook": "15 MINUTES"
+  },
   "ingredients": [
     {
       "item": "blanched peanuts",
@@ -47,11 +50,13 @@
     },
     {
       "item": "plenty of ice",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "dark rum (optional)",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -60,6 +65,7 @@
     "Serve the peanut punch with lots of ice and a sprinkle of nutmeg on top – you can even add a shot of dark rum if you’re being extra indulgent.",
     "Store in a jug (pitcher) or jar in the refrigerator for up to 1 week."
   ],
+  "image": "/recipes/peanut-punch.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

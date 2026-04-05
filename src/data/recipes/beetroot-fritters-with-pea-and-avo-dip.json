@@ -3,11 +3,14 @@
   "name": "BEETROOT FRITTERS WITH PEA AND AVO DIP",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1",
-  "time": "5 MINUTE",
   "intro": "As someone who works from home a lot, I’ve found solitude is best broken up by taking the time to make myself a lovely lunch. This dish feels like a proper treat. The spiced beetroot (beet) fritters are very light and have the most vibrant earthy colour. Paired with the creamy, cold and bring green pea and avo dip, it’s a wonderful contrast of textures and flavour.",
+  "time": {
+    "prep": "10 MINUTESCOOK TIME: 5 MINUTES",
+    "cook": "5 MINUTES"
+  },
   "ingredients": [
     {
       "item": "gram (chickpea) flour",
@@ -59,23 +62,28 @@
     },
     {
       "item": "frozen peas, thawed",
-      "amount": "100 g (3½ oz/⅔ cup)"
+      "amount": "100 g (3½ oz/⅔ cup)",
+      "group": "PEA AND AVO DIP"
     },
     {
       "item": "mint leaves",
-      "amount": "5"
+      "amount": "5",
+      "group": "PEA AND AVO DIP"
     },
     {
       "item": "avocado",
-      "amount": "½"
+      "amount": "½",
+      "group": "PEA AND AVO DIP"
     },
     {
       "item": "juice of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "PEA AND AVO DIP"
     },
     {
       "item": "garlic clove",
-      "amount": "1"
+      "amount": "1",
+      "group": "PEA AND AVO DIP"
     }
   ],
   "method": [
@@ -83,6 +91,7 @@
     "In a frying pan (skillet), heat the coconut oil over a medium-high heat. Quenelle the fritters using two spoons, then fry for 3–4 minutes until crispy on all sides. Drain on paper towels.",
     "Meanwhile, blend all the ingredients for the dip in a high-speed blender. Don’t blend until smooth – keep the dip slightly chunky. Spread the dip on a plate and add the fritters on top. Sprinkle with a little bit of flaky salt and enjoy!"
   ],
+  "image": "/recipes/beetroot-fritters-with-pea-and-avo-dip.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

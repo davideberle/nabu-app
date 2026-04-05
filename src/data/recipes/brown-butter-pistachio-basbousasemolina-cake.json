@@ -1,0 +1,94 @@
+{
+  "id": "brown-butter-pistachio-basbousasemolina-cake",
+  "name": "Brown Butter Pistachio BasbousaSEMOLINA CAKE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "26 to 30 pieces",
+  "intro": "This syrup-soaked semolina cake is one that is enjoyed in almost all countries in the Middle East and is often called different names, such as namoura in Lebanon, hareesa in Palestine, and revani in Turkey. Basbousa is the Egyptian name, and this particular recipe is Egyptian bakery–style: thinner and fudgy in texture. I’ve had a lot of basbousa in my lifetime, and many can verge on the sickly sweet and one-note end of the spectrum, or be quite dry in texture. But this recipe is none of those things. I use brown butter to add a delicious level of nuttiness that is further enhanced by the excessive amount of pistachios, which toast nicely in the oven as it bakes. There are two important steps to ensure you get this right: mixing the brown butter into the semolina to coat every grain until it’s the texture of sand (this process is called bas in Arabic, which is likely how this dessert got its name) and making sure you use cooled syrup when pouring it over the hot basbousa to maintain a soft texture. Follow the steps in this recipe, and I promise I won’t steer you wrong—but right into a possible basbousa overdose.",
+  "time": {
+    "prep": "15 minutes, plus 30 minutes cooling",
+    "cook": "35 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "granulated sugar",
+      "amount": "1½ cups (300 g)",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "piece (1 inch, or 2.5 cm) lemon peel",
+      "amount": "1",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "plus 1 tablespoon unsalted butter, divided",
+      "amount": "2/3 cup (150 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "coarse semolina",
+      "amount": "1½ cups (285 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "medium or fine semolina",
+      "amount": "1½ cups (285 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "packed unsweetened finely shredded coconut",
+      "amount": "½ cup (45 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "Grated zest of 2 lemons",
+      "amount": "",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2/3 cup (160 ml)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "honey",
+      "amount": "½ cup (120 ml)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "¾ cup (150 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "roughly chopped unsalted pistachios (or substitute any other nuts)",
+      "amount": "½ cup (85 g)",
+      "group": "BASBOUSA"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (205°F) and position a rack on the bottom.",
+    "In a small saucepan, combine the 1½ cups (300 g) sugar, lemon juice, and lemon peel with 1½ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes. Remove the pan from the heat and let cool.",
+    "MAKE THE BASBOUSA: Add ⅔ cup (160 g) of the butter to a small, light-colored saucepan over medium heat. Melt the butter, swirling the pan every few seconds. Once the butter is melted and starting to sizzle and foam around the edges, keep stirring with a silicone spatula to ensure it browns evenly. After about 5 minutes, the foam will slightly subside, the butter will turn golden brown, and the milk solids will look toasted. Immediately remove the pan from the heat and set aside.",
+    "In a large bowl, mix together the coarse semolina, medium or fine semolina, coconut, and salt. Add the lemon zest and mix well to combine.",
+    "Slowly add the brown butter to the semolina mixture, making sure to scrape the bottom of the pan to get all of the toasted milk solids in as well. Use a silicone spatula to mix the butter into the semolina, fully coating every grain; the mixture will look like crumbly wet sand.",
+    "In a medium microwave-safe glass bowl or measuring cup, combine the milk, honey, and ¾ cup (150 g) sugar and microwave on full power for 1 minute and 20 seconds. (If you don’t have a microwave, simply heat the ingredients on the stovetop over medium heat until hot.) Whisk the wet ingredients together, then slowly pour over the dry ingredients, using the silicone spatula to combine the two. Do not overmix; stop when all the ingredients are visibly incorporated.",
+    "Grease a 12-inch (30 cm) round pan that is 1 inch (2.5 cm) deep with the remaining 1 tablespoon butter. (You may also use a rectangular pan.) Spoon the batter into the greased pan and use your hands to smooth it into an even layer. Sprinkle the chopped pistachios evenly over the surface.",
+    "Bake for 22 to 24 minutes, until the basbousa is firm to the touch. It’s fine if the edges start to turn darker than the surface. Broil for 1 to 2 minutes to achieve a deeply golden color. Remove from the oven and immediately pour the cooled simple syrup evenly over the top (see Note); it will start to pool on the surface, so let it to sit for 30 minutes, or until all the syrup is absorbed and the basbousa has cooled.",
+    "Cut into small squares or diamonds and serve. Cover any leftovers with plastic wrap or place them in an airtight container and store on the counter for 4 to 5 days."
+  ],
+  "tips": "It’s important to ensure that the simple syrup is cool and that the basbousa is hot when the syrup is poured over it. If you use hot syrup, it will give the basbousa a hard texture.",
+  "image": "/recipes/brown-butter-pistachio-basbousasemolina-cake.jpg"
+}

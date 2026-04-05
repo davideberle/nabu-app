@@ -1,0 +1,63 @@
+{
+  "id": "roz-asfarfragrant-yellow-rice",
+  "name": "Roz AsfarFRAGRANT YELLOW RICE",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 servings",
+  "intro": "Fragrant yellow rice is commonplace at Middle Eastern restaurants, often served as a side in shawarma platters. It gets its vibrant yellow color from the addition of turmeric or, in other variations, saffron. I love using an abundance of fragrant whole spices in the broth, which lend it a delicious flavor and inviting aroma. If you want to make it extra fancy for guests, toast some almonds and raisins and sprinkle them on top. Serve as a side to main dishes, such as Sheet-Pan Chicken Shawarma.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "small yellow onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "whole peppercorns",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "5"
+    },
+    {
+      "item": "whole green cardamom pods",
+      "amount": "5"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "kosher salt, or more to taste",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "3 cups (550 g)"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "4½ cups (1 L)"
+    }
+  ],
+  "method": [
+    "In a large pot, heat the oil for 1 minute over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 6 minutes.",
+    "Add the peppercorns, cloves, cardamom, and cinnamon sticks to the pot and cook, stirring continuously, for a few more minutes until the spices are toasted and fragrant. Add the salt and turmeric and stir to combine with the onion and spices.",
+    "Add the rice and stir it gently to combine with the onion and spices. Add the broth and bring to a rolling boil over medium heat, then cover the pot with a tight-fitting lid, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
+    "Turn off the heat, remove the lid, and gently fluff the rice with a fork or wooden spoon. Cover again and let rest for 10 minutes. Before serving, pick out and discard the peppercorns, cloves, cardamom pods and cinnamon sticks (see Note)."
+  ],
+  "image": "/recipes/roz-asfarfragrant-yellow-rice.jpg"
+}

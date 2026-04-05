@@ -3,17 +3,30 @@
   "name": "Polenta Baked with Cheese",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
+  "intro": "When I make polenta I always like to make more than I need. Then I can use the left-over polenta the next day to make something marvellous. This is one of those ‘next-day’ recipes, baked in the oven to produce a rich and warming dish traditional to the foothills of the Italian Alps. The recipe also includes the instructions for basic polenta, which you can serve with Tonno in Umido.",
   "ingredients": [
     {
-      "item": "sea salt",
-      "amount": "2 teaspoons"
+      "item": "POLENTA",
+      "amount": ""
+    },
+    {
+      "item": ".5 litres water",
+      "amount": "2–2"
+    },
+    {
+      "item": "teaspoons sea salt",
+      "amount": "2"
     },
     {
       "item": "coarse polenta",
       "amount": "500 g"
+    },
+    {
+      "item": "unsalted butter, for greasing",
+      "amount": ""
     },
     {
       "item": "Gruyère, thinly sliced",
@@ -26,10 +39,16 @@
     {
       "item": "mascarpone",
       "amount": "250 g"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6–8 POLENTA 2–2.5 litres water 2 teaspoons sea salt 500 g coarse polenta unsalted butter, for greasing 150 g Gruyère, thinly sliced 150 g Gorgonzola dolce, thinly sliced 250 g mascarpone ground black pepper",
-    "Preheat the oven to 200°C (gas mark 6)."
-  ]
+    "To cook the polenta, put the water and salt in a large saucepan and bring to the boil. Add the polenta in a steady stream, whisking constantly to avoid lumps. Turn the heat down to low and cook the polenta for about 45 minutes, stirring from time to time. When the polenta comes away from the sides of the pan, it is cooked and ready to be served. Pour the polenta onto a wooden board or into a tray lined with greaseproof paper and leave to cool.",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Butter an ovenproof dish. Slice the polenta into 1 cm thick slices. Layer the bottom of the dish with a third of the polenta, then top with the Gruyère. Add another layer of polenta, then the Gorgonzola dolce. Add the final layer of polenta and spread with the mascarpone. Grind some pepper on top and bake in the preheated oven for about 20 minutes, or until golden."
+  ],
+  "image": "/recipes/polenta-baked-with-cheese.jpg"
 }

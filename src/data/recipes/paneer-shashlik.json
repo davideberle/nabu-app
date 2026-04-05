@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "These spicy paneer kebabs (pictured) are a real treat, with a crispy, charred crust on the exterior and a deliciously soft centre. If you’re working ahead of time, you can marinate these early in the day and then simply skewer them up and grill just before serving. They are great served on their own or wrapped into hot homemade naans with the raita of your choice.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "Greek yoghurt",
@@ -63,8 +67,10 @@
   ],
   "method": [
     "Put the yoghurt, garlic and ginger paste, spices, amchoor, oil and lemon juice in a bowl and mix together by hand. Add the red (bell) pepper, onion and paneer to the marinade, stir to coat and leave to marinate for about 2 hours or overnight in the fridge.",
+    "When ready to cook, light the barbecue using the direct grilling method. Thread the vegetables and paneer onto skewers and grill over direct heat for 8–10 minutes, turning regularly until the middle of the paneer is hot and soft.",
     "You can serve these as they are, on a plate, or wrap a naan around the skewer and pull the hot paneer and vegetables off into the naan. Top with your favourite raita or hot sauce."
   ],
+  "image": "/recipes/paneer-shashlik.jpg",
   "dietary": [
     "vegetarian"
   ]

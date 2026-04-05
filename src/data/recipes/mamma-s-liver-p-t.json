@@ -3,10 +3,14 @@
   "name": "Mamma’s Liver Pâté",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
   "ingredients": [
+    {
+      "item": "GELATINE",
+      "amount": ""
+    },
     {
       "item": "water",
       "amount": "250 ml"
@@ -16,8 +20,8 @@
       "amount": "1"
     },
     {
-      "item": "gelatine leaves",
-      "amount": "3"
+      "item": "elatine leaves",
+      "amount": "3 g"
     },
     {
       "item": "unsalted butter, cut into cubes",
@@ -60,14 +64,20 @@
       "amount": "150 ml"
     },
     {
-      "item": "sea salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon sea salt",
+      "amount": "1"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6–8 GELATINE 250 ml water 1 chicken stock cube 3 gelatine leaves 250 g unsalted butter, cut into cubes 1 Spanish onion, finely chopped 3 cloves garlic, finely chopped 5 rashers bacon, finely chopped 8 fresh sage leaves 1 sprig fresh rosemary 1 fresh bay leaf 500 g chicken livers, trimmed of little white nerves and bile, chopped 400 g calf’s liver, chopped 150 ml cognac or vin santo 1 teaspoon sea salt ground black pepper",
     "Bring the water and stock cube to the boil. Soften the gelatine leaves in a little cold water then add them to the stock, stirring to dissolve them. Pour the stock into a 25 cm long terrine dish and leave to cool, then put it in the refrigerator to set. Once set, you can decorate the jelly with herbs, decoratively cut vegetables or gold leaf if you wish.",
     "In a large frying pan heat about 20 g of the butter and lightly fry the onion, garlic, bacon and herbs. Add the liver and cook for about 5–10 minutes, by which time it should be cooked but still a little pink in the middle. Add the cognac or vin santo, salt and a few grindings of pepper, stirring well. Let the liquid come just to the boil then turn off the heat and add the rest of the butter, letting it melt into the mixture. Discard the rosemary stalk and bay leaf.",
-    "Put the mixture into a food processor and process until you have a light, smooth mass. Taste to see if more salt is needed or even a touch more cognac or vin santo."
-  ]
+    "Put the mixture into a food processor and process until you have a light, smooth mass. Taste to see if more salt is needed or even a touch more cognac or vin santo.",
+    "Spoon the pâté into the terrine dish, being careful not to disturb any decoration you may have put on the gelatine. Cover with plastic wrap and refrigerate for at least 3 hours or overnight.",
+    "To serve, run a sharp knife around the rim of the pâté then stand the dish in a little hot water for a few seconds to loosen the jelly on the bottom. Invert the pâté onto a serving plate and serve with crusty Italian bread or toast."
+  ],
+  "image": "/recipes/mamma-s-liver-p-t.jpg"
 }

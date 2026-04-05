@@ -3,19 +3,22 @@
   "name": "Lebanese ArayesSTUFFED PITA",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "8 pieces",
-  "time": "15 minutes",
   "intro": "To this day, I’m still not sure why this dish is called arayes, which literally translates to “brides” in Arabic. But no matter, it will continue to be a constant go-to meal for my family, because it uses one of my favorite versatile proteins to cook with in a fun way. Arayes are usually made at barbecues using raw kofta smeared inside pita bread, which is crisped up on the grill until the beef is juicy and cooked through. They’re a popular Levantine street food but also a perfect weeknight dinner that guarantees happy bellies (especially little ones). No need to fire up the grill; these come out perfectly crispy and delicious when grilled on a stovetop cast-iron pan or baked in the oven.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "30 minutes"
+  },
   "ingredients": [
     {
-      "item": "yellow onion, roughly chopped",
-      "amount": "½ large"
+      "item": "large yellow onion, roughly chopped",
+      "amount": "½"
     },
     {
-      "item": "cloves garlic, peeled",
-      "amount": "5 large"
+      "item": "large cloves garlic, peeled",
+      "amount": "5"
     },
     {
       "item": "packed roughly chopped fresh parsley",
@@ -48,6 +51,16 @@
     {
       "item": "small, thick Greek-style round pitas (4 inches, or 10 cm), cut in half (see Note)",
       "amount": "4"
+    },
+    {
+      "item": "Tarator, Toum, and/or ketchup",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "French fries",
+      "amount": "",
+      "group": "FOR SERVING"
     }
   ],
   "method": [
@@ -57,5 +70,6 @@
     "Brush the outsides of the pitas with the remaining 2 or 3 tablespoons oil on all sides.",
     "Preheat a medium or large cast-iron grill pan over high heat. Brush with olive oil, then place 2 or 3 pitas (however many you can fit) in the pan and sear for 2 minutes per side, pressing down lightly with a spatula. Sear the edges as well, especially the exposed meat side. Continue to cook, flipping the arayes every 1 to 2 minutes, until the beef is cooked through and the outside is golden, 5 to 7 minutes total. Repeat with the remaining pitas.",
     "Serve immediately with tarator, toum, and/or ketchup for dipping and french fries."
-  ]
+  ],
+  "image": "/recipes/lebanese-arayesstuffed-pita.jpg"
 }

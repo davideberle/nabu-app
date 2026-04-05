@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Now you get to put that pre-cooked keema to work. I’ve specified lamb keema here but any meat keema will do. Whenever I make this curry, I usually also prepare a selection of different samosas the same day using the pre-cooked keema. I just take out what I need for the samosas and use the rest in the curry. I would like to stress how much magnificent additional flavour you get by pre-cooking the keema meat. You could throw it in raw for this recipe, but you would be missing one of the flavour boosts that makes BIR dishes so amazing.",
+  "intro": "Now you get to put that pre-cooked keema to work. I’ve specified lamb keema here but any meat keema will do. Whenever I make this curry, I usually also prepare a selection of different samosas the same day using the pre-cooked keema. I just take out what I need for the samosas and use the rest in the curry. I would like to stress how much magnificent additional flavour you get by pre-cooking the keema meat. You could throw it in raw for this recipe, but you would be missing one of the flavour boosts that makes BIR dishes so amazing.\n\nTo make this dish even more exciting, try adding a few more complementary ingredients. Chickpeas, blended spinach, pre-cooked potatoes and/or tandoori prawns, for example, could be all that’s needed to take this popular curry and make it into a personal masterpiece. Thick curries like this are always nice scooped up with hot chapattis.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -81,8 +85,8 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and julienned",
-      "amount": ""
+      "item": "piece of ginger, peeled and julienned",
+      "amount": "5cm (2in)"
     }
   ],
   "method": [
@@ -90,5 +94,6 @@
     "Stir in the mixed powder, cumin and chilli powder, give it all a good stir and then add the tomato purée. Let this sizzle for about 30 seconds and then pour in about 250ml (1 cup) of the base curry sauce and let it bubble for about 30 seconds. There’s no need to stir unless it is obviously catching on the pan. Stir in the pre-cooked keema and the rest of the base curry sauce. This is usually a dry curry, but if you prefer more sauce, go ahead and add it, or a little meat stock.",
     "Add the peas, tomato and dried fenugreek leaves (kasoori methi) and cook for a further 2–3 minutes until the peas are heated through. Be careful not to overcook them; they need to be plump and still have a bit of a bite to them. Simmer them too long and they will turn wrinkly and rather unappetizing.",
     "Season with salt and sprinkle with the garam masala, coriander (cilantro) and ginger to serve."
-  ]
+  ],
+  "image": "/recipes/lamb-keema.jpg"
 }

@@ -3,10 +3,18 @@
   "name": "Rolled Lamb with Asparagus",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
+    {
+      "item": "lamb backstraps (loins)",
+      "amount": "800–900 g"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
     {
       "item": "fresh fior di latte balls (cow’s milk mozzarella)",
       "amount": "2"
@@ -24,6 +32,10 @@
       "amount": "2"
     },
     {
+      "item": "unbleached plain flour, for dusting",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "100 g"
     },
@@ -37,8 +49,10 @@
     }
   ],
   "method": [
-    "Serves 6 800–900 g lamb backstraps (loins) salt and ground black pepper 2 fresh fior di latte balls (cow’s milk mozzarella) 24 anchovy fillets in oil, drained 2 bunches young asparagus 2 sprigs rosemary, stalks discarded unbleached plain flour, for dusting 100 g unsalted butter 60 ml good-quality virgin olive oil 150 ml dry Marsala",
     "Cut each lamb backstrap in half, then slice it lengthways into thirds (you will have 6 slices per backstrap). With a meat mallet, pound the lamb slices as thinly as you can into rectangles. Pat them dry on kitchen paper and season lightly to your liking (remember that the anchovies are salty).",
-    "In a large frying pan, fry the involtini in batches in the butter and oil with the rest of the rosemary. Turn them so they colour evenly. Transfer to a warmed dish."
-  ]
+    "Lay the lamb slices out on your work surface with the long edges facing you. Cut the mozzarella into very thin slices and place 1 slice on top of each piece of lamb – it should cover about a third of the lamb slice. Arrange 1 anchovy and 2 asparagus spears crossways on top of the cheese and sprinkle with a few rosemary leaves. Roll the lamb tightly around the filling and secure with a toothpick or string. Dust the involtini with flour, shaking off any excess.",
+    "In a large frying pan, fry the involtini in batches in the butter and oil with the rest of the rosemary. Turn them so they colour evenly. Transfer to a warmed dish.",
+    "Once the involtini are all cooked, add the Marsala and cook for a few minutes, scraping up any bits from the base of the pan. Return the involtini to the pan and roll them around in the sauce. Lower the heat and cover the pan. Cook gently for about 10 minutes, adding a little more Marsala or water if it seems too dry. Serve the involtini hot, straight from the pan."
+  ],
+  "image": "/recipes/rolled-lamb-with-asparagus.jpg"
 }

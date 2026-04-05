@@ -3,10 +3,19 @@
   "name": "Fish Couscous",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "In Sicily couscous is made by hand, mixing semolina flour with a little water and saffron. It is rolled between the fingers to form small grains, about half the size of peppercorns, which are left to dry on a wooden board. It is a lengthy process, so for this dish I have broken with tradition and suggested using good-quality purchased couscous.\n\nFor this recipe you can use various fish, such as blue eye, ling, sea bass, red mullet or grouper. Ask your fishmonger to clean and fillet the fish, and to keep all the heads and bones for you to use to make the stock.",
   "ingredients": [
+    {
+      "item": "FISH STOCK",
+      "amount": ""
+    },
+    {
+      "item": ".5 kg assorted fish (use heads and bones for stock and reserve fish fillets for stew)",
+      "amount": "1"
+    },
     {
       "item": "Spanish onion, quartered",
       "amount": "1"
@@ -20,16 +29,24 @@
       "amount": "3"
     },
     {
-      "item": "salt",
-      "amount": "2 teaspoons"
+      "item": "teaspoons salt",
+      "amount": "2"
+    },
+    {
+      "item": "FISH STEW",
+      "amount": ""
     },
     {
       "item": "good-quality virgin olive oil",
       "amount": "60 ml"
     },
     {
-      "item": "large Spanish onion, finely chopped",
-      "amount": "1"
+      "item": "arge Spanish onion, finely chopped",
+      "amount": "1 l"
+    },
+    {
+      "item": "the heart from ½ bunch celery, finely chopped",
+      "amount": ""
     },
     {
       "item": "cloves garlic, sliced",
@@ -48,12 +65,24 @@
       "amount": "1"
     },
     {
+      "item": "assorted fish fillets, cut into 5 cm chunks (see above)",
+      "amount": ""
+    },
+    {
       "item": "blue swimmer crab",
       "amount": "1"
     },
     {
-      "item": "saffron powder",
-      "amount": "½ teaspoon"
+      "item": ".5 litres fish stock (see above)",
+      "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon saffron powder",
+      "amount": "½"
     },
     {
       "item": "good-quality couscous",
@@ -61,6 +90,9 @@
     }
   ],
   "method": [
+    "To make the fish stock, put the fish heads and bones in a large saucepan and cover with cold water. Add the onion, celery, bay leaves and salt and bring to the boil. Simmer gently for 30 minutes, skimming off any scum that rises to the surface. Remove from the heat and strain through a fine sieve.",
+    "To make the stew, heat three-quarters of the olive oil in a large saucepan, add the onion, celery and garlic and fry gently for a few minutes until they soften. Add the bay leaves, tomatoes and chilli and simmer gently for about 15 minutes. Add the fish fillets to the pan, together with the crab. Cook for a few minutes then ladle in the fish stock, reserving 600 ml for the couscous, and simmer for 10–15 minutes. Taste, then season with salt and pepper.",
     "Heat the reserved fish stock in a separate saucepan. Stir in the saffron powder then add the couscous. Add the remaining oil, stir well and leave to absorb (as per the packet instructions). Fluff the couscous up with a fork, adding a little more oil if need be. Tip the couscous out onto a warm serving plate and ladle on some of the fish stew. Serve the remaining fish stew on the side."
-  ]
+  ],
+  "image": "/recipes/fish-couscous.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Butter paneer just plain gets it! This one is so good simply served with plain white rice. The sauce isn’t only good with paneer. Try making small hara bhara kebabs and deep-frying them before adding them to the sauce. Just wonderful!",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "paneer cheese, cut into 2.5cm (1in) cubes",
@@ -62,43 +66,53 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "salt",
-      "amount": "1½ tsp"
+      "amount": "1½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "red chilli powder",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "120g (½ cup)"
+      "amount": "120g (½ cup)",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi), crushed",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "chopped coriander (cilantro)",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
@@ -108,6 +122,7 @@
     "Returning to your simmering sauce, add the chillies (if using) and stir in the butter 1 tablespoon at a time, whisking until it is emulsified into the sauce. Stir in the cream and season with salt. Taste the sauce. If you prefer a sweeter sauce, add about 1½ tablespoons of sugar, or to taste.",
     "To serve, whisk the reserved marinade into the sauce, 1 tablespoon at a time. Add the paneer and dust the top with the garam masala and crushed dried fenugreek leaves (kasoori methi) and sprinkle with chopped coriander (cilantro)."
   ],
+  "image": "/recipes/butter-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

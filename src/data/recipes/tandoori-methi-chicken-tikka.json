@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Like most of the recipes in this book, this methi chicken tikka is a mix of about ten different recipes I’ve seen prepared. I took the best ingredients and ideas from each and came up with this version that’s a big favourite at our family barbecues.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "Juice of 2 lemons",
@@ -34,51 +38,63 @@
     },
     {
       "item": "large bunches (about 100g/3½ oz) of fresh fenugreek leaves*",
-      "amount": "2"
+      "amount": "2",
+      "group": "MARINADE"
     },
     {
       "item": "rapeseed (canola) oil or mustard oil",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g (1 cup)",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "finely chopped coriander (cilantro) leaves",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "green chilli paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "red chilli powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "cream cheese",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
@@ -89,5 +105,7 @@
     "Cover the chicken and marinate for 3–24 hours. When ready to cook, light about two shoe boxes full of charcoal on the barbecue. When the charcoal is white-hot, you’re ready to cook.",
     "Skewer your chicken, leaving a small space between each piece, and grill on one side until nicely charred. Flip the skewers over and continue grilling until cooked through – it will take about 10 minutes.",
     "Just before the meat is cooked, baste it with the melted butter. Remove to a warm plate and let rest for about 5 minutes before serving. Check the seasoning and serve with your favourite raita and naans."
-  ]
+  ],
+  "tips": "You can also roast the chicken in the oven at 200°C (400°F/Gas 6) until cooked through. Once cooked, placing the meat under a grill (broiler) will give a nice charred finish.",
+  "image": "/recipes/tandoori-methi-chicken-tikka.jpg"
 }

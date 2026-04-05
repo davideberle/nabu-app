@@ -3,10 +3,15 @@
   "name": "Ricotta and Spinach Gnocchi",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
+  "intro": "‘Nudi’ in Italian means ‘naked’. They are called this because they are essentially a ravioli filling but without the pasta.",
   "ingredients": [
+    {
+      "item": ".25 kg frozen whole baby spinach (not chopped), thawed",
+      "amount": "1"
+    },
     {
       "item": "ricotta",
       "amount": "500 g"
@@ -20,13 +25,26 @@
       "amount": "150 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "plain flour, for dusting",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "100 g"
+    },
+    {
+      "item": "a few fresh sage leaves",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 8 1.25 kg frozen whole baby spinach (not chopped), thawed 500 g ricotta 2 organic egg yolks and 2 whole organic eggs, beaten together 150 g grated parmigiano, plus extra 100 g for the table salt and ground black pepper plain flour, for dusting 100 g unsalted butter a few fresh sage leaves",
+    "Squeeze all the water out of the spinach (this is very important) and chop it roughly. With a fork thoroughly whisk the ricotta, eggs, 150 g parmigiano, salt and pepper, then mix in the spinach. Take about 1 tablespoon of this mixture at a time and roll it into little balls, dusting with flour.",
     "Boil some salted water, turn the heat down and drop about 5 balls at a time into the water. As soon as they float to the surface, they are ready (about 1 minute). With a small sieve, fish them out and put them on a heated serving dish, in a single layer. Sprinkle a generous amount of parmigiano over the nudi.",
     "Melt the butter with the sage. When it foams, pour it over the nudi and serve immediately."
-  ]
+  ],
+  "image": "/recipes/ricotta-and-spinach-gnocchi.jpg"
 }

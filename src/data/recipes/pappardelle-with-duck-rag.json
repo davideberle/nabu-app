@@ -3,7 +3,7 @@
   "name": "Pappardelle with Duck Ragù",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
@@ -12,8 +12,8 @@
       "amount": "25 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "free-range duck breasts, trimmed of excess fat and sliced",
@@ -60,14 +60,23 @@
       "amount": "800 g"
     },
     {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "pappardelle",
       "amount": "500 g"
+    },
+    {
+      "item": "freshly grated parmigiano, for serving",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 25 g unsalted butter 2 tablespoons good-quality virgin olive oil 2 free-range duck breasts, trimmed of excess fat and sliced 50 g pancetta, diced 1 Spanish onion, thinly sliced 2 cloves garlic, thinly sliced 1 carrot, finely diced 1 stalk celery, thinly sliced 1 fresh bay leaf 6 fresh sage leaves 250 ml red wine, such as pinot noir 140 g tomato paste 800 g canned peeled roma tomatoes sea salt and ground black pepper 500 g pappardelle freshly grated parmigiano, for serving",
     "Heat the butter and oil in a saucepan and brown the duck pieces all over. Set aside on a plate.",
+    "To the same pan add the pancetta, onion, garlic, carrot, celery and herbs and cook for a few minutes, until they begin to colour. Add the duck pieces, with any juices that have pooled on the plate, and the wine. Stir well, scraping off anything sticking to the bottom of the pan. When the wine has evaporated, add the tomato paste. Cook for a few minutes, then stir in the tomatoes.",
     "Put a lid on the pan and cook over low heat for about 45 minutes, stirring from time to time. The sauce should become thick and rich and the duck meat very tender. Taste for salt and pepper.",
     "Bring a large pan of salted water to the boil. Cook the pappardelle until aldente. Drain the pasta and put it into a warm serving dish. Add the ragù and combine well. Serve immediately with parmigiano."
-  ]
+  ],
+  "image": "/recipes/pappardelle-with-duck-rag.jpg"
 }

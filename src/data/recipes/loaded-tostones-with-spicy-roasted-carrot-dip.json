@@ -3,11 +3,14 @@
   "name": "LOADED TOSTONES WITH SPICY ROASTED CARROT DIP",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 3–4",
-  "time": "40 MINUTE",
   "intro": "As a person who thrives on a good dip with a crispy dip-delivery vehicle, this recipe is the perfect marriage of crunchy, sour, spicy, garlicky and sweet! Carrots are the perfect vegetable for dips like this as they have a touch of sweetness that isn’t too overwhelming. They’re also such a great vehicle for spices and really love to be roasted. Served with crispy tostones, this is the perfect little snack or side dish to whip up for a late-afternoon vibe.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 40 MINUTES",
+    "cook": "40 MINUTES"
+  },
   "ingredients": [
     {
       "item": "green plantains",
@@ -23,43 +26,53 @@
     },
     {
       "item": "carrots, chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "olive oil, plus extra for roasting the carrots",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "coriander seeds, roughly ground",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "cumin seeds, roughly ground",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "garlic cloves, unpeeled",
-      "amount": "4"
+      "amount": "4",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "vegan cream cheese",
-      "amount": "170 g (6 oz)"
+      "amount": "170 g (6 oz)",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "vegan-friendly kimchi",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g (2 oz)",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "kimchi juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tablespoons",
+      "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SPICY ROASTED CARROT DIP"
     }
   ],
   "method": [
@@ -70,6 +83,7 @@
     "In a frying pan (skillet), heat enough vegetable oil to coat the bottom of the pan over a medium-high heat. Fry the plantain slices for 3–4 minutes, flipping to cook on both sides. Remove and drain briefly paper towels, then transfer to a board and use a mug or bowl to flatten the pieces. Fry again for a further 2–3 minutes until crispy. Drain again on paper towels and hit immediately with some flaky sea salt.",
     "Arrange the tostones around the dip on a serving plate to serve."
   ],
+  "image": "/recipes/loaded-tostones-with-spicy-roasted-carrot-dip.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

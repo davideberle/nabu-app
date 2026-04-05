@@ -3,11 +3,14 @@
   "name": "LYCHEE AND SCOTCH BONNET FROZEN MARG",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "6 MINUTE",
   "intro": "This is very much inspired by a bar in Margate, a town on the British coast, where I live. When I’m ‘Margate tipsy’, I’m referring to being three frozen margs deep at Little Swift on the seafront. It’s that spicy-sweet combination that is just what I crave, even in a cocktail. The floral flavour of lychee just sings alongside the hot scotch bonnie. Make this for a girlfriend, or just for yourself. It’s very much a treat and should be enjoyed in quantities.",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": "6 MINUTES"
+  },
   "ingredients": [
     {
       "item": "tin of lychees in syrup",
@@ -43,15 +46,18 @@
     },
     {
       "item": "flaky salt",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "sliced limes",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "sliced chillies",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -61,6 +67,7 @@
     "Pour the cooled syrup into a food processor along with the remaining ingredients (including the frozen lychees and lychee juice) and blend to a slushy consistency.",
     "Put some lime juice and flaky sea salt into two separate saucers or shallow dishes. Dip serving glasses in the lime juice first, followed by the flaky sea salt, then fill with the frozen marg and garnish with slices of lime, mint leaves and sliced chillies."
   ],
+  "image": "/recipes/lychee-and-scotch-bonnet-frozen-marg.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

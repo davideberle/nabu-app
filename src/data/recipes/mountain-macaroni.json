@@ -3,9 +3,10 @@
   "name": "Mountain Macaroni",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "This is a typical dish of the ‘cucina povera’ (poor man’s cooking) that is served in the mountains. The traditional way to serve it is with puréed apples as an accompaniment. It is an unusual combination of salty and sweet, but it somehow works – although I prefer to eat the dish plain.",
   "ingredients": [
     {
       "item": "penne or macaroni",
@@ -16,8 +17,8 @@
       "amount": "125 g"
     },
     {
-      "item": "large onion, sliced",
-      "amount": "1"
+      "item": "arge onion, sliced",
+      "amount": "1 l"
     },
     {
       "item": "bacon, diced",
@@ -30,6 +31,10 @@
     {
       "item": "fresh bay leaf",
       "amount": "1"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     },
     {
       "item": "grated Gruyère",
@@ -45,9 +50,10 @@
     }
   ],
   "method": [
-    "Serves 4 300 g penne or macaroni 125 g unsalted butter 1 large onion, sliced 150 g bacon, diced 200 ml cream 1 fresh bay leaf ground black pepper 100 g grated Gruyère 100 g grated Emmental 300 g potatoes, boiled in their skins then cut into 2 cm cubes",
     "Preheat the oven to 200°C (gas mark 6).",
     "Boil the penne in plenty of salted water until half-cooked (about 3 or 4 minutes). Drain and place in a buttered ovenproof dish, dotting with 25 g of the butter so the pasta doesn’t stick.",
+    "Sauté the onion in another 25 g of the butter until soft, then add the bacon and cook until the mixture starts to colour. Remove from the heat, then add the cream, bay leaf and a grinding of pepper. Return to the heat and gently simmer for a few more minutes. Discard the bay leaf.",
     "Add the cream sauce, cheeses and potatoes to the penne and mix everything together. Dot small pieces of the remaining butter over the top of the pasta. Bake in the oven for about 15 minutes, or until it bubbles and starts to turn golden."
-  ]
+  ],
+  "image": "/recipes/mountain-macaroni.jpg"
 }

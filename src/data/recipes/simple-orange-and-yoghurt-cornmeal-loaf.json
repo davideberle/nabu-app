@@ -3,11 +3,14 @@
   "name": "SIMPLE ORANGE AND YOGHURT CORNMEAL LOAF",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 8–10",
-  "time": "1 HOUR 5 MINUTE",
   "intro": "Sometimes you simply just need cake. In fact, I would like this cake right now. It’s worth the wait – giving the cake enough time to soak up the syrup takes it to another level. This orange and yoghurt loaf comes together with such simple ingredients, doesn’t require any special equipment and the polenta (cornmeal) adds a wonderful texture to the crumb. The use of olive oil and yoghurt keeps the cake very moist.",
+  "time": {
+    "prep": "20 MINUTES",
+    "cook": "1 HOUR 5 MINUTES"
+  },
   "ingredients": [
     {
       "item": "plain (all-purpose) flour",
@@ -55,11 +58,13 @@
     },
     {
       "item": "juice of 4 oranges",
-      "amount": ""
+      "amount": "",
+      "group": "ORANGE SYRUP"
     },
     {
       "item": "agave syrup",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml (3½ fl oz/scant ½ cup)",
+      "group": "ORANGE SYRUP"
     }
   ],
   "method": [
@@ -68,6 +73,7 @@
     "Bake in the oven for 50–55 minutes until a skewer inserted into the centre comes out clean. Leave to cool in the tin for 10 minutes while you prepare the syrup.",
     "Combine the orange juice and the agave syrup in a saucepan. Bring to the boil and bubble for 6–8 minutes until reduced by half. Using a skewer, poke holes in the top of the cake for the syrup. Pour the syrup over the cake and swirl it around until it soaks through. Rest for 45–60 minutes before slicing."
   ],
+  "image": "/recipes/simple-orange-and-yoghurt-cornmeal-loaf.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

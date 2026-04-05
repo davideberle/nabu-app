@@ -3,16 +3,20 @@
   "name": "Maria’s Ricotta",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "ingredients": [
     {
-      "item": "litre full-cream milk",
-      "amount": "1"
+      "item": "Makes around 100 g",
+      "amount": ""
     },
     {
-      "item": "salt",
-      "amount": "1 teaspoon"
+      "item": "itre full-cream milk",
+      "amount": "1 l"
+    },
+    {
+      "item": "teaspoon salt",
+      "amount": "1"
     },
     {
       "item": "white vinegar",
@@ -24,9 +28,11 @@
     }
   ],
   "method": [
-    "Makes around 100 g 1 litre full-cream milk 1 teaspoon salt 80 ml white vinegar 180 ml water",
     "Heat the milk (and salt, if using) in a large saucepan, stirring constantly. As soon as it boils, remove the pan from the heat.",
     "Mix the vinegar and water together in a small jug. Pour it into the milk in a slow, steady stream, beginning in the centre then working out in a bigger and bigger circle until you reach the edge of the pan. You will see the milk start to separate.",
-    "Place the saucepan in a sink of very cold water. After a few minutes use a slotted spoon to lift the ricotta out and transfer it to a colander lined with a damp cheesecloth (muslin). Sit the colander on a plate and leave to drain. If you are not using it straight away, transfer it to the refrigerator."
-  ]
+    "Place the saucepan in a sink of very cold water. After a few minutes use a slotted spoon to lift the ricotta out and transfer it to a colander lined with a damp cheesecloth (muslin). Sit the colander on a plate and leave to drain. If you are not using it straight away, transfer it to the refrigerator.",
+    "The watery liquid that remains behind in the pan is called the whey. If it still looks a little cloudy and milky, return it to the boil. You will see it coagulate to form a little more ricotta. Put the pan back into the sink of cold water and lift the ricotta out with a slotted spoon and transfer to the colander.",
+    "The whey may be combined with more milk to make further batches of ricotta. I actually find the second, third and fourth batches are better, as they lose some of the acidity of the vinegar. If you don’t plan to make more ricotta straight away, you can pour the whey into a glass jar and keep it in the refrigerator for up to 4 days."
+  ],
+  "image": "/recipes/maria-s-ricotta.jpg"
 }

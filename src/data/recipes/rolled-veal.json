@@ -3,10 +3,18 @@
   "name": "Rolled Veal",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
+    {
+      "item": "large slice of top round of veal (see Method)",
+      "amount": ""
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
     {
       "item": "prosciutto, thinly sliced",
       "amount": "100 g"
@@ -28,13 +36,23 @@
       "amount": "25 ml"
     },
     {
+      "item": "cloves garlic, crushed",
+      "amount": "2–3"
+    },
+    {
       "item": "good-quality dry white wine",
       "amount": "375 ml"
+    },
+    {
+      "item": "stock, for moisture, if needed",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 large slice of top round of veal (see Method) salt and ground black pepper 100 g prosciutto, thinly sliced 2 veal kidneys, skin and fat removed 20 fresh sage leaves 30 g unsalted butter 25 ml good-quality virgin olive oil 2–3 cloves garlic, crushed 375 ml good-quality dry white wine stock, for moisture, if needed",
+    "Get the butcher to cut a large piece of the top round of veal, cut across the grain (so that it does not shrink during cooking) and about 2 cm thick. This is the cut one uses to make scaloppine, but for this recipe you need a slice from the thicker part of the muscle. Pound the veal out nice and thinly – it should be as rectangular as possible!",
+    "Lay the veal flat and season it with salt and pepper. Put the prosciutto in a layer covering the meat, then put the whole veal kidneys side by side in the middle of the piece of meat with 10 sage leaves over the top. Now roll the meat very tightly and secure with a string that you knot every 5 cm along the roll.",
     "Melt the butter and oil in a frying pan that is large enough to hold the veal roll comfortably. Brown the meat all over. Add the garlic and the remaining sage leaves, then pour the wine over the veal, turning it around several times. Put a lid on the pan, turn the heat down to low and cook the rotolo, basting and turning it from time to time, for about 1–1 ½ hours, depending on the thickness of the roll. If the meat looks too dry add a little stock to the pan.",
     "Remove from the oven and let the meat rest for a few minutes, then carve it into slices about 1 cm thick. Pour the meat juices over the veal and serve."
-  ]
+  ],
+  "image": "/recipes/rolled-veal.jpg"
 }

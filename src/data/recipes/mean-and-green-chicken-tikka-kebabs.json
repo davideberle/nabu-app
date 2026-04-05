@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I love the deep green colour of these kebabs and the flavour is out of this world. Just look at the photograph! Be sure to keep some of the marinade aside to brush over the chicken pieces just before they’re cooked through. You can also cook these on a grill (broiler) if the barbecue isn’t set up, or even in the oven if you wish. See the note.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "skinless chicken breast, cut into bite-size pieces",
@@ -14,69 +18,87 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "MARINADE"
     },
     {
       "item": "green chillies, finely chopped (use less if you don’t like it very hot)",
-      "amount": "8"
+      "amount": "8",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "large handfuls of baby spinach leaves",
-      "amount": "3"
+      "amount": "3",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Juice of 2 lemons",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "cashew nuts",
-      "amount": "10"
+      "amount": "10",
+      "group": "MARINADE"
     },
     {
       "item": "butter",
-      "amount": "100g (3½ oz)"
+      "amount": "100g (3½ oz)",
+      "group": "MARINADE"
     },
     {
       "item": "mint leaves",
-      "amount": "15"
+      "amount": "15",
+      "group": "MARINADE"
     },
     {
       "item": "Large bunch of coriander (cilantro)",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "thick Greek yoghurt",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala (or more or less to taste)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "To make the marinade, heat the oil in a large pan over a medium–high heat. Tip in the onion and green chillies and sizzle until the onion is translucent and soft, about 5 minutes. Add the cumin and turmeric and stir it all up. Stir the spinach and the garlic and ginger paste into the onion. As you cook, the spinach will wilt. Remove from the heat and allow to cool for a few minutes.",
     "In a blender or food processor, blend the spinach and onion mixture with the lemon juice, cashew nuts, butter, mint and coriander (cilantro) – you might need to add a drop of water. Whisk the mixture in a bowl with the yoghurt until smooth and creamy, add the garam masala and season with salt and black pepper.",
     "Remove about 250ml (1 cup) of the marinade and set aside for later. Pour the remaining marinade over the chicken pieces and allow to marinate for 3–48 hours.",
+    "When ready to cook, light your charcoal using the direct cooking method. Skewer the chicken pieces (tikka), leaving a small space between each piece, and place over the hot coals. Allow the meat to cook and get a good char on the underside before turning. Flip the skewers over and cook through. You can rotate the skewers from time to time for more even cooking.",
     "Just before serving, baste with the marinade you set aside earlier."
-  ]
+  ],
+  "tips": "You can also roast the chicken in the oven at 200°C (400°F/Gas 6) until cooked through. Once cooked, placing the meat under a grill (broiler) will give a nice charred finish.",
+  "image": "/recipes/mean-and-green-chicken-tikka-kebabs.jpg"
 }

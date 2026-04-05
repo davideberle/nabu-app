@@ -1,0 +1,45 @@
+{
+  "id": "ginger-lemongrass-tonic",
+  "name": "GINGER-LEMONGRASS TONIC",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "about 4 servings",
+  "intro": "I CREATED THIS DRINK in the spirit of healing tonics that have been used in many cultures to support overall health and well-being. Inspired by citronelle, a traditional tea from the Ivory Coast, this tonic uses lemongrass, as well as fresh ginger. Both promote digestion and help provide relief from flatulence. It also contains apple cider vinegar, which helps alkalize the body and brings balance to overacidity. In a shout-out to the Master Cleanse, the addition of maple syrup makes this a satisfying drink for ending a savory meal on a sweet note. Sipping on 1 cup should be sufficient to aid in digestion.",
+  "ingredients": [
+    {
+      "item": "Grade B maple syrup",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "(3-inch) knob fresh ginger, peeled and sliced into paper-thin rounds",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "6 cups"
+    },
+    {
+      "item": "lemongrass stalks, ends trimmed and thinly sliced",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Put the maple syrup, lemon juice, and vinegar in a heatproof pitcher and mix well. Stir in the ginger. Put the water and lemongrass in a medium saucepan over high heat and bring to a boil. Immediately decrease the heat to medium-low, cover, and simmer for 30 minutes.",
+    "Pour the lemongrass infusion into the pitcher and let cool to room temperature. Cover and refrigerate for at least 8 hours. Strain through a fine-mesh sieve, pressing the solids to extract as much liquid as possible. (Compost the solids.) Serve chilled. Stored in the refrigerator, it will keep for 5 days."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

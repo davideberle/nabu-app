@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "OLIVE OIL, VEGETABLE STOCK",
   "servings": "8 to 12 servings as an hors d’oeuvre, or 4 to 6 servings as a main dish",
   "intro": "CHERMOULA, an herb-filled sauce used in North African cooking, is a delicious marinade in which to bake tempeh. These tasty morsels can be eaten alone as an hors d’oeuvre, or serve them as a main dish, along with couscous or rice.",
   "ingredients": [
@@ -36,6 +35,7 @@
     "Put the stock, Chermoula, and salt in a medium saucepan and bring to a boil over high heat. Immediately pour three-fourths of the mixture over the tempeh, reserving the remainder. Stir gently until the tempeh is evenly coated, then immediately transfer to a 2-quart baking dish, spreading the tempeh in a single snug layer. Cover tightly with aluminum foil and bake for 1 hour, until much of the sauce has been absorbed.",
     "Remove the foil, add the remaining Chermoula mixture, and stir gently until evenly incorporated. Bake for 10 minutes, until warmed though. Serve at room temperature."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

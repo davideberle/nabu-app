@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "You will find the hugely popular curry-house way to make a rogan josh. There are many authentic recipes for this famous curry and this one is different in that no garlic or onions are used in the sauce. As much as I love garlic, it really isn’t missed in this, one of my favourite rogan josh recipes. Rogan josh is known for its bright red colour, which is accomplished here with paprika and rattanjot. You could leave the rattanjot out as it doesn’t add much flavour, but it sure gives the dish a nice, appealing natural red glow! Rattanjot can be difficult to find but if you google it you’ll find it online.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "1 HOUR 10 MINS"
+  },
   "ingredients": [
     {
       "item": "diced mutton or lamb on the bone",
@@ -65,33 +69,42 @@
       "amount": ""
     },
     {
-      "item": "5cm (2in) piece of cinnamon stick",
-      "amount": ""
+      "item": "piece of cinnamon stick",
+      "amount": "5cm (2in)",
+      "group": "MARINADE"
     },
     {
       "item": "Seeds from 6 green cardamom pods",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "black peppercorns",
-      "amount": "10"
+      "amount": "10",
+      "group": "MARINADE"
     },
     {
       "item": "fennel seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "plain yoghurt",
-      "amount": "500g (2 cups)"
+      "amount": "500g (2 cups)",
+      "group": "MARINADE"
     },
     {
       "item": "Kashmiri chilli powder",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "To make the marinade, toast the cinnamon, cardamom seeds, peppercorns and fennel seeds in a dry frying pan over a medium heat. When the spices become fragrant (after about 2 minutes) and warm to the touch but not yet smoking, transfer them to a plate to cool slightly. Grind them into a fine powder using a spice grinder or pestle and mortar. Whisk the yoghurt until it is creamy smooth, then whisk in the ground spices along with the Kashmiri chilli powder.",
     "Place the meat in a large mixing bowl and rub the marinade into it with your hands. Cover and marinate for at least 2 hours or overnight – the longer the better.",
+    "When ready to cook, heat the oil in a large saucepan or wok over a medium heat. When visibly hot but not smoking, stir in the rattanjot (if using), the cinnamon, cardamom pods, cloves, bay leaves and asafoetida and let these spices infuse into the oil for about 45 seconds. Stir in the ground ginger and paprika followed by the meat. Give it all a good stir to combine and coat the meat with the oil.",
     "Now add 250ml (1 cup) of water and cover the pan with a lid. Simmer over a medium heat for 45 minutes until the meat is nice and tender. Stir in the tomato purée and cook for a further 15 minutes, or until the texture of the meat is to your liking and the oil separates from the sauce. Season with salt and serve with naans or chapattis."
-  ]
+  ],
+  "tips": "*Using lots of oil is the traditional way of cooking this curry. If you would rather go for a healthier option, use about 2 tablespoons of oil and add just enough water to cover and simmer the meat. There are plenty of curries in this book that use less oil though, so I recommend giving this one a go just as it’s written so that you can experience it the way it’s meant to be.",
+  "image": "/recipes/kashmiri-mutton-rogan-josh.jpg"
 }

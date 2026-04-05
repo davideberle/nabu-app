@@ -1,11 +1,10 @@
 {
   "id": "fresh-peach-banana-and-warm-millet-smoothie",
-  "name": "FRESH PEACH, BANANA, & WARM MILLET SMOOTHIE",
+  "name": "FRESH PEACH, BANANA, and WARM MILLET SMOOTHIE",
   "source": {
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "ORANGE JUICE, LIME JUICE, DATES, CASHEWS",
   "servings": "2 generous servings, or 4 smaller servings",
   "intro": "FRUITY, WARM, and filling, this drink always leaves me thoroughly satisfied. The idea for it came from a visit to the Raleigh-Durham area a few years ago. I was there to give a talk, and one of my buddies from college, Njathi Kabui, came to hear my presentation. I hadn’t seen him in over a decade and discovered that he was the founder and executive chef of Organics and Sound, a company that provides education about healthy eating highlighted by site-specific dining events that bring together local food, music, art, and community.\n\nThat evening we invited a few people over for a dinner inspired by the cuisine of Kabui’s homeland, Kenya, and stayed up late discussing food, politics, and black folks. The next morning, he warmed up some leftover millet from the night before and pureed it in a blender with orange juice and fresh fruit. After drinking the smoothie, I was full and felt energized for the rest of the morning. Similar to Kabui’s concotion, this is the perfect on-the-go smoothie.\n\nDrinking a standard fruit smoothie is a great way to stay hydrated and contribute to your recommended daily consumption of fruit, but adding protein-packed ancient grains like millet, quinoa, and amaranth makes this a power smoothie. Ideally, you’d use leftover millet and simply warm it before blending, but I’ve included directions for cooking a small amount to use in your smoothie. You can also drink it cold; simply cook millet the night before (if not using leftovers) and add ½ cup of ice. Whether you drink it warm or cold, enjoy sipping it while dancing around and jumping up and down to one of my daughter’s favorite songs, “Jambo Bwana.”",
   "ingredients": [
@@ -50,6 +49,7 @@
     "Combine the millet and 1 cup of the water in a small saucepan and refrigerate overnight. In the morning, stir in the salt and bring to a boil over medium heat. Immediately decrease the heat to low, cover, and simmer until most of the liquid is absorbed, about 20 minutes. Remove from the heat and let sit, covered, for about 10 minutes.",
     "Put 1½ cups of the peaches and the bananas, orange juice, cashews, dates, lime juice, and the remaining 1 cup water in a blender and process until smooth. Scrape in the millet and any cooking liquid and puree until smooth. Serve garnished with the remaining peaches."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

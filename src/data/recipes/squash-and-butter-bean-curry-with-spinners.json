@@ -3,11 +3,14 @@
   "name": "SQUASH AND BUTTER BEAN CURRY WITH SPINNERS",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "20 MINUTE",
   "intro": "A good curry is the ultimate comfort grub. Imagine you come home, it’s peak autumn (fall), you’ve been caught in the rain. What would you want to eat when you get in? For me that’s a curry. With freshly steamed rice. of course! Butter (lima) beans are the bean underdog. Their creamy lush texture really holds up in this curry and contrasts beautifully with a red kuri squash, which is my personal favourite.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "vegetable stock",
@@ -79,23 +82,28 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "150 g (5 oz/1¼ cups)"
+      "amount": "150 g (5 oz/1¼ cups)",
+      "group": "SPINNERS"
     },
     {
       "item": "enough water to bring the dough together",
-      "amount": ""
+      "amount": "",
+      "group": "SPINNERS"
     },
     {
       "item": "roughly chopped coriander (cilantro)",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "spring onions (scallions)",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "rice or roti",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -104,6 +112,7 @@
     "Meanwhile, make the spinners. In a bowl, mix together the flour and water to form a smooth dough. Take a thumb-sized piece of the dough and form thin, tapered sausage shapes using the palms of your hands.",
     "Add the dumplings to the pan and push into the curry sauce. Cover and cook for 6–8 minutes until the spinners are cooked. Check and adjust the seasoning, then serve up with fresh coriander, spring onions and rice or roti."
   ],
+  "image": "/recipes/squash-and-butter-bean-curry-with-spinners.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

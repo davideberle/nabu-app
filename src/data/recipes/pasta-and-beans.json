@@ -3,7 +3,7 @@
   "name": "Pasta and Beans",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
@@ -16,8 +16,20 @@
       "amount": "150 g"
     },
     {
-      "item": "large Spanish onions, sliced",
-      "amount": "2"
+      "item": "arge Spanish onions, sliced",
+      "amount": "2 l"
+    },
+    {
+      "item": "stalks celery, sliced",
+      "amount": "2–3"
+    },
+    {
+      "item": "carrots, sliced",
+      "amount": "2–3"
+    },
+    {
+      "item": "cloves garlic, chopped",
+      "amount": "2–3"
     },
     {
       "item": "chilli",
@@ -40,8 +52,12 @@
       "amount": "½"
     },
     {
-      "item": "glass dry red or white wine",
-      "amount": "1"
+      "item": "pork sausages (optional), chopped into 2 cm lengths",
+      "amount": "4–6"
+    },
+    {
+      "item": "lass dry red or white wine",
+      "amount": "1 g"
     },
     {
       "item": "fresh chicken or veal stock",
@@ -62,10 +78,20 @@
     {
       "item": "short pasta, such as shells or penne",
       "amount": "500 g"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "freshly grated parmigiano, for serving",
+      "amount": ""
     }
   ],
   "method": [
     "In a large saucepan heat the oil and fry the pancetta, sliced onion, celery, carrot, garlic and whole chilli. Add the herbs. If using, add the sausages and cook for a few minutes until the sausages start to brown. Now add the wine, stirring vigorously until it evaporates. Add the stock, then the borlotti beans and tomatoes. Let it all cook for about 30–45 minutes, covered, or until the borlotti beans are very tender.",
+    "Now add the pasta to the beans and vegetables. If the dish looks dry at this point, add more stock or water (the finished dish should be quite moist, and the pasta will take up liquid). Cook until the pasta is al dente or for about 10–12 minutes, depending on what pasta you use. Taste for salt and pepper and season.",
     "Serve with freshly grated parmigiano and a little good-quality virgin olive oil on the table for drizzling."
-  ]
+  ],
+  "image": "/recipes/pasta-and-beans.jpg"
 }

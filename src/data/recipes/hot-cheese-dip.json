@@ -3,9 +3,10 @@
   "name": "Hot Cheese Dip",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "Traditional cheese fondue is a dish with fairly frugal beginnings. It was simply what people did with left-over cheese – they melted it in an earthenware pot over a fire and dipped pieces of bread in. With time, the dish became more refined, and kirsch and white wine were added.",
   "ingredients": [
     {
       "item": "clove garlic",
@@ -24,12 +25,28 @@
       "amount": "200 g"
     },
     {
+      "item": "vacherin cheese (such as vacherin à fondue, but not Vacherin Mont d’Or; if you can’t find vacherin, increase Gruyère and Emmental to 300 g each)",
+      "amount": "200 g"
+    },
+    {
       "item": "kirsch",
       "amount": "50 ml"
     },
     {
-      "item": "cornflour (optional, but it helps bind the sauce)",
-      "amount": "2 tablespoons"
+      "item": "tablespoons cornflour (optional, but it helps bind the sauce)",
+      "amount": "2"
+    },
+    {
+      "item": "freshly grated nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "loaf of Italian ciabatta bread, cut into bite-sized pieces",
+      "amount": ""
     },
     {
       "item": "organic egg (optional)",
@@ -37,7 +54,10 @@
     }
   ],
   "method": [
-    "Serves 4 1 clove garlic 300 ml dry white wine 200 g coarsely grated Gruyère 200 g coarsely grated Emmental 200 g vacherin cheese (such as vacherin à fondue, but not Vacherin Mont d’Or; if you can’t find vacherin, increase Gruyère and Emmental to 300 g each) 50 ml kirsch 2 tablespoons cornflour (optional, but it helps bind the sauce) freshly grated nutmeg ground black pepper loaf of Italian ciabatta bread, cut into bite-sized pieces 1 organic egg (optional)",
-    "Put the fondue pan in the middle of the table over a flame to keep the liquid lightly bubbling. With a fork, each person should spear a piece of bread and dip it into the fondue."
-  ]
+    "Rub the fondue pan with the garlic. Add the wine and put the pan over low heat on the stove. Heat the wine until close to boiling.",
+    "Gradually add the cheeses, stirring constantly. When they have melted, add the kirsch (if you are using the cornflour, stir it into the kirsch beforehand). The fondue should have a creamy consistency. Add a little nutmeg and a grinding of pepper.",
+    "Put the fondue pan in the middle of the table over a flame to keep the liquid lightly bubbling. With a fork, each person should spear a piece of bread and dip it into the fondue.",
+    "At the end of the meal, leave a little bit of cheese in the bottom of the pot and break the egg into it. Scramble the egg and cheese together and serve it as a final taste. (This last step is optional but well worth trying.)"
+  ],
+  "image": "/recipes/hot-cheese-dip.jpg"
 }

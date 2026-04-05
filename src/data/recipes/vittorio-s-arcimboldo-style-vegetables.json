@@ -3,9 +3,10 @@
   "name": "Vittorio’s Arcimboldo-Style Vegetables",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
+  "intro": "My friend Vittorio, the creator of this dish, says it is ‘obligatory’ to use a heavy copper saucepan when making it so the vegetables keep their vibrant colour. Ideally the ingredients should come straight from your own garden.",
   "ingredients": [
     {
       "item": "good-quality virgin olive oil",
@@ -16,21 +17,51 @@
       "amount": "1"
     },
     {
+      "item": "onions, quartered",
+      "amount": "3–4"
+    },
+    {
+      "item": "a piece of pumpkin",
+      "amount": ""
+    },
+    {
       "item": "capsicums (peppers), quartered (not deseeded)",
       "amount": "2"
+    },
+    {
+      "item": "zucchini (courgettes), larger ones cut in half",
+      "amount": "3–4"
+    },
+    {
+      "item": "ripe red tomatoes and 2 green tomatoes, halved – or quartered if large",
+      "amount": "3–4"
     },
     {
       "item": "celery stalks",
       "amount": "3"
     },
     {
+      "item": "cloves garlic",
+      "amount": "4–5"
+    },
+    {
+      "item": "mild, long chillies",
+      "amount": "2–3"
+    },
+    {
       "item": "bunch fresh basil or oregano",
       "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 8 50 ml good-quality virgin olive oil 1 eggplant (aubergine), roughly cut into large pieces 3–4 onions, quartered a piece of pumpkin 2 capsicums (peppers), quartered (not deseeded) 3–4 zucchini (courgettes), larger ones cut in half 3–4 ripe red tomatoes and 2 green tomatoes, halved – or quartered if large 3 celery stalks 4–5 cloves garlic 2–3 mild, long chillies 1 bunch fresh basil or oregano salt",
     "Put the olive oil in the bottom of your copper pan. Now add the vegetables, first the hard ones (eggplant, onions, pumpkin) then the capsicum, zucchini and tomatoes, and finally the celery, garlic, chillies and herbs. Season to taste with salt.",
-    "Put the pan on low heat with the lid on and let it cook gently for about 1 hour. From time to time gently shake the pan, so the vegetables won’t stick to the bottom, but do not stir. Remove from the heat and allow to cool to room temperature – about 15 minutes."
-  ]
+    "Put the pan on low heat with the lid on and let it cook gently for about 1 hour. From time to time gently shake the pan, so the vegetables won’t stick to the bottom, but do not stir. Remove from the heat and allow to cool to room temperature – about 15 minutes.",
+    "You can add a few anchovies, in which case be careful when adding salt. Serve with either some boiled rice or some tajerini, or just some crunchy bread. It is delicious as a lunch dish.",
+    "If you have a vegetable garden, you can use virtually any vegetable that is in season."
+  ],
+  "image": "/recipes/vittorio-s-arcimboldo-style-vegetables.jpg"
 }

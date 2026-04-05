@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Gola kebabs are usually pan-fried on wooden skewers so that they have a hole in the middle to look like a minced kebab should. Although the pan-frying method is very good, I like to cook them on the barbecue. What makes these kebabs really unique is the flavour of the allspice berries and mace. Unlike seekh kebabs, the meat is formed into small oblong balls, which makes them easier to thread onto the skewers. The finished kebabs can be eaten as they are with naans or rice and all the sauces and vegetables of your choice, or they could also be used as kofta in any of the curry house-style curries. I have served them here with rice and kachumber salad.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "dried allspice berries",
@@ -64,6 +68,8 @@
   "method": [
     "Heat a dry frying pan over a medium–high heat and add the allspice berries, mace, cumin seeds, coriander seeds and peppercorns. Roast until warm to the touch and fragrant but not yet smoking. Be sure to move the spices around in the pan so that they roast evenly. Transfer to a plate to cool slightly, then place in a spice grinder or pestle and mortar and grind to a fine powder.",
     "Place the meat in a food processor with the prepared spice powder and the remaining ingredients except for the melted ghee, and blend until very finely minced. Prepare the barbecue for direct heat cooking.",
-    "Divide the meat into about 12 small oblong balls the size of limes. Oiling your hands lightly will help in doing this. Lightly oil four skewers and slide the balls onto them, leaving a little space between each. Be sure to squeeze the kebabs onto the skewers so that they remain firmly in place."
-  ]
+    "Divide the meat into about 12 small oblong balls the size of limes. Oiling your hands lightly will help in doing this. Lightly oil four skewers and slide the balls onto them, leaving a little space between each. Be sure to squeeze the kebabs onto the skewers so that they remain firmly in place.",
+    "When the coals are white-hot and it is unbearably hot to hold your hand at cooking level for more than 2 seconds, you’re ready to cook. Cook the kebabs on one side for about 5 minutes until they are beginning to brown on the underside. Then flip them over and cook the other side for another 5 minutes, or until nicely charred and cooked through. Baste the kebabs with the melted ghee as they cook and sprinkle with a little flaky salt. Remove the kebabs from the skewers and serve."
+  ],
+  "image": "/recipes/lamb-and-beef-gola-kebabs.jpg"
 }

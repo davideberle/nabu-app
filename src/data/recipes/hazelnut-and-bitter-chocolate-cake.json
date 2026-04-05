@@ -3,9 +3,13 @@
   "name": "Hazelnut and Bitter Chocolate Cake",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "ingredients": [
+    {
+      "item": "Serves about 10",
+      "amount": ""
+    },
     {
       "item": "hazelnuts",
       "amount": "400 g"
@@ -28,11 +32,12 @@
     }
   ],
   "method": [
-    "Serves about 10 400 g hazelnuts 400 g dark chocolate (70% cocoa solids) 400 g unsalted butter, at room temperature 300 g caster sugar pinch of salt 10 organic eggs",
     "Preheat the oven to 160°C (gas mark 3).",
     "Place the hazelnuts in a dry frying pan and roast them over gentle heat until they are just starting to take a bit of colour, but do not burn them. Put them in a clean tea towel, fold the towel over and with your hands rub the nuts backwards and forwards; this movement will remove the skin.",
     "Put the nuts in a food processor and pulse until they are ground finely but not to a paste.",
     "Place the chocolate in a saucepan over hot water and, without stirring, let it melt. Remove from the heat and cool slightly.",
+    "Using an electric mixer, beat the soft butter with the sugar, adding the pinch of salt. When the mixture is light and fluffy, add the melted chocolate, blending well. Still blending, add one egg at a time, until well incorporated. Now fold in the crushed hazelnuts with a spatula.",
     "Pour the mixture into a buttered cake tin, 28 cm in diameter, and bake in the oven for about 40 minutes, or until a skewer inserted in the cake comes out clean. Open the oven door and turn off the heat, leaving the cake in for another 30 minutes."
-  ]
+  ],
+  "image": "/recipes/hazelnut-and-bitter-chocolate-cake.jpg"
 }

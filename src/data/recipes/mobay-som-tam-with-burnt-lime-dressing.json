@@ -3,11 +3,14 @@
   "name": "MOBAY SOM TAM WITH BURNT LIME DRESSING",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "10 MINUTE",
   "intro": "This salad is inspired by the amazing som tam salad from Thailand, which uses green papaya and is viciously spicy and heady with salty brightness. I wanted to use mangoes instead. Green mangos are perfect for this salad. Their tart and slightly firmer flesh gives more of a bite to the dish. The flavours in this salad are bold: nori, roasted salted peanuts, crispy shallots, burnt limes. All the best things. It is a salad that will surprise you by how punchy it is.",
+  "time": {
+    "prep": "20 MINUTESCOOK TIME: 10 MINUTES",
+    "cook": "10 MINUTES"
+  },
   "ingredients": [
     {
       "item": "slightly unripe mango",
@@ -39,23 +42,28 @@
     },
     {
       "item": "limes, halved",
-      "amount": "1½"
+      "amount": "1½",
+      "group": "DRESSING"
     },
     {
       "item": "garlic clove, very finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "DRESSING"
     },
     {
       "item": "palm sugar, coconut sugar or brown sugar",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tablespoons",
+      "group": "DRESSING"
     },
     {
       "item": "or ¼ Scotch bonnet, finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "DRESSING"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     }
   ],
   "method": [
@@ -64,6 +72,7 @@
     "In a bowl, combine the garlic, sugar, Scotch bonnet and vegan fish sauce, then squeeze in the juice of the burnt limes. Taste and adjust the flavours if necessary.",
     "Add the dressing to the prepared vegetables and toss to coat. Add the peanuts, then transfer to a serving platter, garnishing with the nori flakes and crispy shallots just before serving."
   ],
+  "image": "/recipes/mobay-som-tam-with-burnt-lime-dressing.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

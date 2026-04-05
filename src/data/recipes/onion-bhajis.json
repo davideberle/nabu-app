@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4–8",
-  "intro": "Onion bhajis and vegetable pakoras are best cooked in two stages. The first cooking is in oil that is hot enough to sizzle and cook them through. They are then removed to rest, the oil temperature is increased and they are fried again in the hotter oil to give them a darker and crispier exterior. The bhajis are pictured.",
+  "intro": "Onion bhajis and vegetable pakoras are best cooked in two stages. The first cooking is in oil that is hot enough to sizzle and cook them through. They are then removed to rest, the oil temperature is increased and they are fried again in the hotter oil to give them a darker and crispier exterior. The bhajis are pictured.\n\nMixing the onions with salt at the beginning of the recipe is key to making the perfect bhajis. If you were to bend a fresh onion slice, it would snap. The salt releases moisture from the onion slices so they become limp and no longer snap when bent, making it easier to form your bhajis.",
+  "time": {
+    "prep": "15 MINS, PLUS SITTING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "onions (slightly larger than tennis balls), sliced",
@@ -51,8 +55,11 @@
   ],
   "method": [
     "Place the onions in a bowl, sprinkle over the salt and mix it all up with your hands to ensure the onions are evenly coated with the salt. Let them sit for 30 minutes–2 hours; the salt will release the moisture from the onions, which will become part of your batter.",
-    "Heat about 10cm (4in) of rapeseed (canola) oil to 160°C (320°F) in a large frying pan. Form the onion mixture into bhajis about the size of golf balls, or larger if you prefer. Fry in small batches until lightly browned and cooked through, then remove them with a slotted spoon to a wire rack to rest while you fry the remaining bhajis."
+    "When ready to form the bhajis, sift the flours over the onions and add the garlic paste, ginger, chillies, panch poran, 2 tablespoons of oil and the coriander (cilantro). Begin to work these ingredients into the onions with your hands until they are nicely coated. There should be enough moisture from the onions and oil, but if you are finding it a bit too sticky, add just a little water. When you can easily form a bhaji with your hands, you’re ready to go.",
+    "Heat about 10cm (4in) of rapeseed (canola) oil to 160°C (320°F) in a large frying pan. Form the onion mixture into bhajis about the size of golf balls, or larger if you prefer. Fry in small batches until lightly browned and cooked through, then remove them with a slotted spoon to a wire rack to rest while you fry the remaining bhajis.",
+    "When all the bhajis are cooked, raise the heat of the oil to 180°C (355°F) and fry them again in small batches until you are happy with the colour of the exterior. Serve immediately or, if working ahead, place the bhajis on a wire rack placed over a foil-lined dish in a low oven for up to 30 minutes."
   ],
+  "image": "/recipes/onion-bhajis.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

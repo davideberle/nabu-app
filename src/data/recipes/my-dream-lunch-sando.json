@@ -3,11 +3,14 @@
   "name": "MY DREAM LUNCH SANDO",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1",
-  "time": "20 MINUTE",
   "intro": "A good sando is one of my go-to solo lunches – this one takes a little bit more time than your standard sandwich, but it’s worth the extra effort. I think yuba (dried tofu skin) is highly underused; they are sold dry and you can find them easily at your local Asian supermarket. They have this wonderful texture when pan fried and caramelised in a sticky sauce. Feel free to add some pickled onions or jalapeños to the mix here.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "yuba knots",
@@ -59,15 +62,18 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "MARINADE"
     },
     {
       "item": "barbecue sauce of your choice",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "MARINADE"
     },
     {
       "item": "garlic cloves, very finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "MARINADE"
     }
   ],
   "method": [
@@ -76,6 +82,7 @@
     "In a frying pan (skillet), heat the oil over a high heat. Once smoking, add the broccoli and shallot and fry until well charred and the broccoli is tender, about 3–4 minutes. Move to one side of the pan. Add the spinach and allow to wilt, seasoning with salt and pepper. Add the yuba knots to the other side of the pan along with the marinade and fry for 2–3 minutes until fragrant and caramelised. Season with salt and pepper to taste. Place the cheese on top of the broccoli and greens, add a splash of water to the pan, cover and leave to melt the cheese for 1–2 minutes.",
     "Toast the bread, then add a smear of mayo and a little hot sauce. Add the chargrilled red pepper, followed by the cheesy garlic greens and then finally the fried yuba on top."
   ],
+  "image": "/recipes/my-dream-lunch-sando.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

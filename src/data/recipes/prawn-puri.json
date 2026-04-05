@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "After I wrote my first two books, so many people asked ‘but where’s the prawn puri recipe?’ Well, here it is! You can judge how good a curry-house meal is going to be by their prawn puri. Some chefs simply deep-fry chapattis and call them puris. They taste good but simply can’t stand up to the real thing. So if you want to cheat, fry up some chapattis and follow the prawn sauce recipe below. If you want to try this recipe the way I love it and make it at home, take some time and make homemade puffy and crispy puris, following my recipe.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or ghee",
@@ -17,8 +21,8 @@
       "amount": "1"
     },
     {
-      "item": "5cm (2in) piece of cinnamon stick",
-      "amount": ""
+      "item": "piece of cinnamon stick",
+      "amount": "5cm (2in)"
     },
     {
       "item": "onion, finely chopped",
@@ -79,6 +83,11 @@
   ],
   "method": [
     "Heat the oil in a large frying pan or wok over a medium–high heat. Add the star anise and cinnamon and let the flavour of the spices infuse into the oil for about 30 seconds. Add the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and ginger paste along with the chilli and cook for another minute. Add the Kashmiri chilli powder and the cumin, followed by the tomato purée and about 250ml (1 cup) of the base sauce. Bring this all to a rolling simmer, only stirring if it looks like the sauce is catching on the pan.",
-    "Now add the prawns (shrimp) and another 250ml (1 cup) of the base sauce and simmer until the prawns are pink and almost cooked through. The sauce will reduce. You can add a little more base sauce if you like a thinner sauce, but you may not want to use it all. Stir in the tomatoes."
+    "Now add the prawns (shrimp) and another 250ml (1 cup) of the base sauce and simmer until the prawns are pink and almost cooked through. The sauce will reduce. You can add a little more base sauce if you like a thinner sauce, but you may not want to use it all. Stir in the tomatoes.",
+    "When the sauce consistency is to your liking, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Squeeze the juice of one of the lemons into the sauce and season with salt. To serve, place one puri or fried chapatti on each of four plates. Divide the prawn curry between the plates and garnish with the coriander (cilantro) and a lemon wedge."
+  ],
+  "image": "/recipes/prawn-puri.jpg",
+  "dietary": [
+    "vegetarian"
   ]
 }

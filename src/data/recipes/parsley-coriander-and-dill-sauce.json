@@ -3,7 +3,7 @@
   "name": "Parsley, Coriander and Dill Sauce",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
@@ -20,8 +20,12 @@
       "amount": "½"
     },
     {
-      "item": "Dijon mustard",
-      "amount": "1 teaspoon"
+      "item": "teaspoon Dijon mustard",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
     },
     {
       "item": "chilli (optional)",
@@ -34,10 +38,16 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "250 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 1 small bunch flat-leaf parsley ½ bunch coriander ½ bunch dill 1 teaspoon Dijon mustard juice of 1 organic lemon 1 chilli (optional) 1 organic egg yolk 250 ml good-quality virgin olive oil salt and ground black pepper",
-    "Place all the ingredients, except the oil and seasoning, in a food processor, and mix very well. Then add the oil very slowly, in a fine stream, as if you were making mayonnaise. The salsa verde should be quite thick in consistency. Add salt and pepper to taste."
-  ]
+    "Place all the ingredients, except the oil and seasoning, in a food processor, and mix very well. Then add the oil very slowly, in a fine stream, as if you were making mayonnaise. The salsa verde should be quite thick in consistency. Add salt and pepper to taste.",
+    "The herbs that go into a salsa verde (green sauce) can be a matter of taste. To accompany lamb, use flat-leaf parsley and mint. For grilled vegetables, you could use flat-leaf parsley and basil.",
+    "If you want to keep it for a few days, pour it into a jar, bang the jar on the table to make sure there are no air pockets in the sauce and then pour a thin layer of virgin olive oil over it. Keep in the refrigerator for up to one week."
+  ],
+  "image": "/recipes/parsley-coriander-and-dill-sauce.jpg"
 }

@@ -3,17 +3,18 @@
   "name": "Fontina Caterpillar",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "This dish is a delicious way to use day-old bread. It was another favourite of my mother’s. Its strong flavour comes from the cheese and anchovies, and the mayonnaise melts through the bread. The result is a crusty outside with a soft, deliciously gooey inside.",
   "ingredients": [
     {
       "item": "home-made mayonnaise",
       "amount": "100 ml"
     },
     {
-      "item": "loaf ciabatta bread, sliced but not right through – the loaf should hold together",
-      "amount": "1"
+      "item": "oaf ciabatta bread, sliced but not right through – the loaf should hold together",
+      "amount": "1 l"
     },
     {
       "item": "Italian fontina, sliced ed 5 mm thick",
@@ -22,11 +23,17 @@
     {
       "item": "anchovies",
       "amount": "12"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 100 ml home-made mayonnaise 1 loaf ciabatta bread, sliced but not right through – the loaf should hold together 400 g Italian fontina, sliced ed 5 mm thick 12 anchovies ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
-    "Cook the bread in the oven for about 20 minutes until goldenbrown and crisp."
-  ]
+    "Spread a little mayonnaise on each slice of bread. Slide a cheese slice between each bread slice along with an anchovy. Grind some pepper over the loaf. Put the loaf on some oiled aluminium foil and wrap the foil around the bread, leaving the top open, so that the loaf will crisp.",
+    "Cook the bread in the oven for about 20 minutes until goldenbrown and crisp.",
+    "Fontina is a mountain cheese that comes from the Val d’Aosta in Piemonte. It has quite a rich but delicate flavour and it melts beautifully when heated."
+  ],
+  "image": "/recipes/fontina-caterpillar.jpg"
 }

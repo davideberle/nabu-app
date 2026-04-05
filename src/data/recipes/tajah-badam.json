@@ -7,6 +7,10 @@
   },
   "servings": "serves 4–6 as a snack",
   "intro": "I love bringing out this tasty snack of spicy Bangladeshi almonds when we have friends over. It is always devoured and only take a few minutes to throw together. It is pictured.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "2 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -41,6 +45,7 @@
     "Heat the oil in a large frying pan. Add the almonds and toast for about 1 minute until lightly browned. Add the chillies and turmeric and stir to combine.",
     "Serve on a warmed plate with the lime juice squeezed over the top and season with salt. Garnish with the coriander (cilantro)."
   ],
+  "image": "/recipes/tajah-badam.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

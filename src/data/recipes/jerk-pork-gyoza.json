@@ -3,11 +3,13 @@
   "name": "JERK ‘PORK’ GYOZA",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
-  "servings": "",
-  "time": "5 MINUTE",
   "intro": "Number 184,871,809 in the different ways of using jerk marinade! These gyoza are spicy, deeply savoury and easy to make. Make these for friends, or for yourself, like I did. They also freeze very well, so you can save any leftovers for future dumpling cravings.",
+  "time": {
+    "prep": "20 MINUTESCOOK TIME: 5 MINUTES",
+    "cook": "5 MINUTES"
+  },
   "ingredients": [
     {
       "item": "vegan minced (ground) pork",
@@ -63,6 +65,7 @@
     "Fill a small bowl with water and set out a baking sheet or plate dusted with a little flour or lined with cling film (plastic wrap). Take a dumpling wrapper and put a teaspoon of the filling in the middle, then use your finger to brush the edge with water. Close like a taco and then form the folds. Make sure it’s sealed tight. Repeat to until all the filling is used up.",
     "To cook the gyoza, heat the vegetable oil in a lidded frying pan (skillet) over a medium heat. Add some of the gyoza (making sure not to crowd the pan too much) and fry for about 2 minutes, or until golden brown underneath. Now add the water, cover and steam for 3–4 minutes until cooked through. Repeat to cook as many dumplings as you like, then serve with your favourite dipping sauce."
   ],
+  "image": "/recipes/jerk-pork-gyoza.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

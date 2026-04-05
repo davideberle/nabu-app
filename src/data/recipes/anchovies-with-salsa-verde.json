@@ -3,9 +3,10 @@
   "name": "Anchovies with Salsa Verde",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "Anchovies are a feature of Piemontese cooking. This dish can be served with drinks or as a starter.",
   "ingredients": [
     {
       "item": "very good quality anchovies in oil",
@@ -34,13 +35,17 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "175 ml"
+    },
+    {
+      "item": "juice of ½ organic lemon",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 20 very good quality anchovies in oil 3 cloves garlic, unpeeled 1 bunch flat-leaf parsley 1 handful fresh basil leaves 1 small hot chilli, deseeded 2 hardboiled egg yolks 175 ml good-quality virgin olive oil juice of ½ organic lemon",
     "Drain off the oil from the anchovies and pat them dry on kitchen paper, removing any largish bones.",
     "Place the garlic cloves in water, bring to the boil and cook for 3 minutes. This will ensure their flavour is mild and sweet. Squeeze the garlic out of their skins, put into a food processor with all other ingredients, except the anchovies, and process until smooth and fluffy. (This salsa verde should have a thickish consistency.)",
     "Put a little of the sauce on a serving dish, arrange some anchovies in a layer over it, then cover those anchovies with some more sauce. Continue in this way until all the anchovies and sauce have been used up. Let the dish stand at room temperature for 1–2 hours or longer, so the flavours can meld.",
     "Serve as an antipasto with lots of crunchy, fresh bread, spread with a generous coating of unsalted butter."
-  ]
+  ],
+  "image": "/recipes/anchovies-with-salsa-verde.jpg"
 }

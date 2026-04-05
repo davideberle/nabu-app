@@ -3,11 +3,14 @@
   "name": "Puff Pastry Cheese Fatayer",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "15 pieces",
-  "time": "15 minutes, plus 1 hour thawing",
   "intro": "Fatayer are savory pies that are commonly served as appetizers for big dinners or as a light snack in the Middle East. They can be stuffed with cheese, meat, or a tangy spinach stuffing. Typically, they are made with yeast-leavened dough, but I love making them with store-bought puff pastry, which makes the process much quicker. The cheese mixture is made using three types of cheese and flavored with herbs. This recipe is often a go-to when I am hosting a dinner and would like a side dish that’s quick to prepare. Make sure you don’t skip the sprinkling of sesame and nigella seeds—not only do they look beautiful, but they elevate the flavor too.",
+  "time": {
+    "prep": "15 minutes, plus 1 hour thawing",
+    "cook": "20 minutes"
+  },
   "ingredients": [
     {
       "item": "frozen puff pastry",
@@ -46,8 +49,8 @@
       "amount": ""
     },
     {
-      "item": "egg, beaten",
-      "amount": "1 large"
+      "item": "large egg, beaten",
+      "amount": "1"
     },
     {
       "item": "white sesame seeds",
@@ -64,10 +67,7 @@
     "In a medium bowl, mix the feta, mozzarella, cream cheese, mint, parsley, dill, and Aleppo pepper until well combined.",
     "If using puff pastry that is not precut into squares and must be rolled out, lightly flour your work surface. Using a rolling pin, roll out the pastry until it is ⅛ inch (6 mm) thick. Cut into 4 x 4-inch (10 x 10 cm) squares.",
     "Place roughly 1½ tablespoons of the filling on the center of one of the puff pastry squares, gently spreading it out along the diagonal, leaving a ½-inch (13 mm) border. Fold one corner of the square over the filling, diagonally, and pinch it closed at the opposite corner, forming a triangle. Use a fork to press down the open edges until sealed. Transfer to the prepared sheet pan. Repeat with the remaining filling and puff pastry squares. Brush the tops of the fatayer with the beaten egg, then sprinkle them with the sesame and nigella seeds.",
-    "Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color.",
-    "Serve warm."
+    "Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "image": "/recipes/puff-pastry-cheese-fatayer.jpg"
 }

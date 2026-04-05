@@ -3,11 +3,14 @@
   "name": "SPICY SLOW-ROASTED TOMATOES AND SHALLOTS ON TOAST WITH WHIPPED SILKEN TOFU",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 2–3",
-  "time": "25 MINUTE",
   "intro": "There’s something about tomatoes and jammy shallots on toast. When tomatoes and onions are roasted and slightly charred they become smoky and create a wonderful sticky texture. This serves a few, but it is also a very good solo breakfast for one. The tomatoes keep well in the fridge and work wonderfully in a grilled cheese sandwich the next day.",
+  "time": {
+    "prep": "10 MINUTESCOOK TIME: 25 MINUTES",
+    "cook": "25 MINUTES"
+  },
   "ingredients": [
     {
       "item": "olive oil",
@@ -51,23 +54,28 @@
     },
     {
       "item": "silken tofu",
-      "amount": "175 g (6 oz)"
+      "amount": "175 g (6 oz)",
+      "group": "WHIPPED TOFU"
     },
     {
       "item": "small handful of coriander (cilantro) leaves",
-      "amount": ""
+      "amount": "",
+      "group": "WHIPPED TOFU"
     },
     {
       "item": "small handful of flat-leaf parsley leaves",
-      "amount": ""
+      "amount": "",
+      "group": "WHIPPED TOFU"
     },
     {
       "item": "garlic clove (optional, if you like the heat of raw garlic)",
-      "amount": "1"
+      "amount": "1",
+      "group": "WHIPPED TOFU"
     },
     {
       "item": "juice of ½ lemon",
-      "amount": ""
+      "amount": "",
+      "group": "WHIPPED TOFU"
     }
   ],
   "method": [
@@ -76,6 +84,7 @@
     "Heat the olive oil in an ovenproof frying pan (skillet) or casserole dish (Dutch oven) over a medium heat and fry the shallots with a good pinch of salt until lightly browned and softened. As it’s sizzling, add the ground coriander seeds and chilli flakes. Next, add the tomatoes, garlic and thyme. Season again with salt and pepper, then drizzle with the balsamic glaze. Transfer to the oven to roast for 15–20 minutes until beautifully charred and blistered.",
     "Toast the bread and divide between plates, then top with some of the whipped tofu and a few tablespoons of the tomatoes. Serve immediately."
   ],
+  "image": "/recipes/spicy-slow-roasted-tomatoes-and-shallots-on-toast-with-whipp.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

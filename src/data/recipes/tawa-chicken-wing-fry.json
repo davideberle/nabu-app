@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you’re looking for a delicious chicken dish that only takes minutes to make, this is the one! Traditionally it’s cooked on a tawa (a flat, round pan with no sides that dips down slightly in the centre), but you could of course use any pan and other cuts of chicken. Thigh works really well here, but I like to use cheaper cuts of meat like wings when I can. You can purchase skinless chicken wings at Asian grocers, and I suggest you do so as skinning wings is a really big job. Chicken wings are so tasty and I love picking them up to devour every last bit of meat and sauce!",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or rendered chicken fat (shop-bought or homemade)",
@@ -65,5 +69,6 @@
     "Heat the oil in a large tawa or frying pan over a medium–high heat. Add the chicken pieces and give them a good stir to coat them in the oil. Season with salt, add the garlic and ginger paste and stir some more to combine. Fry for about 30 seconds, then sprinkle over the turmeric, ground coriander, tandoori masala and chilli powder, and stir it all up again.",
     "Add the water or spice stock and tomato, stirring continuously, then add half the coriander (cilantro) and the curry leaves. With this recipe it is really important to continue stirring so that the chicken cooks evenly. Fry until the water has almost evaporated but the chicken still looks nice and moist in a thick gravy.",
     "To serve, squeeze the lemon juice over the top and garnish with the remaining coriander. Check for seasoning, adding more salt or chilli powder if needed."
-  ]
+  ],
+  "image": "/recipes/tawa-chicken-wing-fry.jpg"
 }

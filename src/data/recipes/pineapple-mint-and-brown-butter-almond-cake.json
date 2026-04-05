@@ -3,11 +3,14 @@
   "name": "PINEAPPLE, MINT AND BROWN BUTTER ALMOND CAKE",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6–8",
-  "time": "1 HOUR",
   "intro": "There’s very, very few things that brown butter won’t improve. It deepens and complements the sweet and floral qualities of pineapple and mint in this cake. As you’ll know by now, I’m not heavy on the iced (frosted) cakes. I tend to veer towards cakes that are based on some kind of nut or fruit, and which require very little decorative skills. I imagine this cake would be a great spring dinner party cake, something to take to a friend’s house to impress everyone. Also, it’s gluten free! So you get to say, ‘BTW this is gluten free’ and then bask in all the praise for your wizardry.",
+  "time": {
+    "prep": "25 MINUTESCOOK TIME: 1 HOUR",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "vegan block butter, plus extra for greasing",
@@ -55,19 +58,23 @@
     },
     {
       "item": "fresh pineapple, chopped",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g (12 oz)",
+      "group": "MUDDLED PINEAPPLE"
     },
     {
       "item": "passion fruit",
-      "amount": "2"
+      "amount": "2",
+      "group": "MUDDLED PINEAPPLE"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "50 g (2 oz/generous ¼ cup)"
+      "amount": "50 g (2 oz/generous ¼ cup)",
+      "group": "MUDDLED PINEAPPLE"
     },
     {
       "item": "mint leaves, finely chopped",
-      "amount": "10"
+      "amount": "10",
+      "group": "MUDDLED PINEAPPLE"
     }
   ],
   "method": [
@@ -78,6 +85,7 @@
     "Mix together the ground almonds, flour and baking powder and fold into the wet ingredients until combined. Pour the cake batter into the prepared tin, then spoon over the muddled pineapple, drizzling some of the minty syrup over.",
     "Bake in the oven for 50–55 minutes until a skewer inserted into the centre comes out clean. Allow to cool completely before slicing."
   ],
+  "image": "/recipes/pineapple-mint-and-brown-butter-almond-cake.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

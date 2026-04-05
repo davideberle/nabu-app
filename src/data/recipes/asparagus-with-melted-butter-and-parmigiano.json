@@ -3,9 +3,10 @@
   "name": "Asparagus with Melted Butter and Parmigiano",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "When asparagus is in season this is my favourite lunch. I like the very thin green asparagus and I eat it with fried eggs.",
   "ingredients": [
     {
       "item": "bunches asparagus",
@@ -18,11 +19,16 @@
     {
       "item": "unsalted butter",
       "amount": "100 g"
+    },
+    {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 3 bunches asparagus 150 g freshly grated parmigiano 100 g unsalted butter sea salt and ground black pepper",
     "Cook the asparagus in an asparagus pan if you have one, or steam them. Do not overcook – make sure the stalks are still a little crunchy. Drain the asparagus and arrange on a heated serving dish.",
-    "Sprinkle the parmigiano on the tips of the asparagus. Melt the butter and, as soon as it is foaming, pour it over the parmigiano. (The heat of the butter will melt the cheese and make a delicious crust.) Add a little salt and pepper. Serve at once with some crunchy Italian ciabatta bread."
-  ]
+    "Sprinkle the parmigiano on the tips of the asparagus. Melt the butter and, as soon as it is foaming, pour it over the parmigiano. (The heat of the butter will melt the cheese and make a delicious crust.) Add a little salt and pepper. Serve at once with some crunchy Italian ciabatta bread.",
+    "For a more substantial meal you can fry 2 organic eggs per person and serve them on the plate with the asparagus. Make sure the yolks are still very runny."
+  ],
+  "image": "/recipes/asparagus-with-melted-butter-and-parmigiano.jpg"
 }

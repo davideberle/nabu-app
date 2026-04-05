@@ -7,6 +7,10 @@
   },
   "servings": "serves 4",
   "intro": "There is no one recipe for Mulligatawny soup and it can vary greatly in flavour and colour. This recipe is up there with the best. It is delicious served with broken idlis. You can purchase instant idli mix at most Asian shops or follow my recipe.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "30 MINS"
+  },
   "ingredients": [
     {
       "item": "butter",
@@ -17,8 +21,8 @@
       "amount": "3"
     },
     {
-      "item": "5cm (2in) piece of cinnamon stick",
-      "amount": ""
+      "item": "piece of cinnamon stick",
+      "amount": "5cm (2in)"
     },
     {
       "item": "cloves",
@@ -70,31 +74,38 @@
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SPICE PASTE"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SPICE PASTE"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SPICE PASTE"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SPICE PASTE"
     },
     {
       "item": "garlic cloves, peeled",
-      "amount": "6"
+      "amount": "6",
+      "group": "SPICE PASTE"
     },
     {
-      "item": "4cm (1½in) piece of ginger, peeled and roughly chopped",
-      "amount": ""
+      "item": "piece of ginger, peeled and roughly chopped",
+      "amount": "4cm (1½in)",
+      "group": "SPICE PASTE"
     },
     {
       "item": "Handful each of coriander (cilantro) and mint leaves",
-      "amount": ""
+      "amount": "",
+      "group": "SPICE PASTE"
     }
   ],
   "method": [
@@ -102,5 +113,6 @@
     "Melt the butter in a large heavy-bottomed saucepan. Add the bay leaves, cinnamon and cloves and fry for a minute or so to flavour the butter. Add the onion and cook for 5 minutes until soft and translucent.",
     "Add the vegetables and cook for a further 5 minutes. Stir in the spice paste and fry for a few minutes until fragrant. Stir in the flour followed by the stock. Cover and simmer for 15 minutes until thickened. Pour in the coconut milk and mix. If you like a creamier texture, as I do, blend the soup and run it through a sieve. Adjust the seasoning and add more stock if it is too thick.",
     "Season with salt and serve with idli pieces, if desired, and lemon wedges."
-  ]
+  ],
+  "image": "/recipes/mulligatawny-soup.jpg"
 }

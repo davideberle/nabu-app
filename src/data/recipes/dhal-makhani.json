@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Dhal makhani, when cooked correctly, is delicious. I’ve tried some amazing versions and also a few that just weren’t quite there yet. If you like a good dhal makhani, I think this recipe will get you the flavour and texture you’re looking for. Be warned, however, this isn’t one you can just whip up on a whim. The lentils need to soak in water for at least 12 hours, then be slowly cooked until fall-apart tender. This is where many chefs go wrong. They rush the cooking process and the dhal has just a bit too much bite to it. If time permits, I recommend cooking this for 4 hours, adding water when required.",
+  "time": {
+    "prep": "10 MINS, PLUS SOAKING",
+    "cook": "3¼–4¼ HOURS"
+  },
   "ingredients": [
     {
       "item": "black urad dhal, soaked overnight in cold water",
@@ -66,6 +70,7 @@
     "To save time, the following steps can be done while your lentils are simmering. Heat the oil in a large frying pan over a medium–high heat. When visibly hot, stir in the chopped onions and fry for about 10 minutes until soft and lightly browned. Stir in the garlic and ginger paste and fry for about 30 seconds before adding the chopped tomatoes and the spices. Cook for another minute, then add about 125ml (½ cup) of the strained lentil water. Bring this to a simmer and add the cooked lentils. Cook over a high heat for 5 minutes, adding more strained water if needed. The dhal should be thick and soupy.",
     "To finish, season with salt. I recommend about 2 teaspoons, which I think works really well, but as with all the recipes in this book, I feel how much salt you add is a personal thing. Add it to taste. Makhani means butter, so you can’t leave that out. I recommend using about 3 tablespoons, but if you don’t want to use that much, the dhal will still be delicious. Stir most of it into the dhal and then add whatever is left over to melt on top. Drizzle the cream over the top and sprinkle with the chopped coriander (cilantro) and you are ready to serve your masterpiece."
   ],
+  "image": "/recipes/dhal-makhani.jpg",
   "dietary": [
     "vegetarian"
   ]

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This one is a real showpiece. I wouldn’t exactly call it easy cooking, but it’s well worth the effort. You want to freeze the chicken breasts for about 30 minutes before slicing as this will make slicing much easier. I usually cook this in my tandoor oven, which always makes the chicken taste amazing. To do this, I skewer a small raw onion or shallot between each kebab and at both ends of the skewer to help keep the stuffing in.",
+  "time": {
+    "prep": "30 MINS, PLUS OPTIONAL MARINATING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "large boneless, skinless chicken breasts, placed in the freezer for 30 minutes",
@@ -18,95 +22,118 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "200g (¾ cup)"
+      "amount": "200g (¾ cup)",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Kashmiri chilli powder (more or less to taste)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "chaat masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "garam masala or tandoori masala",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "amchoor (dried mango powder)",
-      "amount": "1½ tsp"
+      "amount": "1½ tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "mustard oil or rapeseed (canola) oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "STUFFING"
     },
     {
       "item": "shallots, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "STUFFING"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "STUFFING"
     },
     {
       "item": "green bird’s eye chillies, finely chopped or blended to a paste",
-      "amount": "3"
+      "amount": "3",
+      "group": "STUFFING"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "STUFFING"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "STUFFING"
     },
     {
       "item": "minced (ground) chicken",
-      "amount": "120g (4oz)"
+      "amount": "120g (4oz)",
+      "group": "STUFFING"
     },
     {
       "item": "Parmesan cheese (finely grated)",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "STUFFING"
     },
     {
       "item": "finely chopped coriander (cilantro)",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "STUFFING"
     },
     {
       "item": "cider or white wine vinegar",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "STUFFING"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "STUFFING"
     }
   ],
   "method": [
@@ -115,7 +142,9 @@
     "Whisk all the second marinade ingredients together in a bowl until creamy smooth. Set aside.",
     "To make the stuffing, heat the oil in a large frying pan over a medium heat and fry the shallots for about 5 minutes, or until soft and translucent. Add the garlic and ginger paste, green chillies, cumin and turmeric and stir it all up to combine. Continue cooking for about 45 seconds, then add the minced chicken. Cook for about 5 minutes, or until completely cooked through, then stir in the Parmesan, coriander (cilantro) and vinegar. Season with salt and black pepper. Transfer the stuffing to a bowl to cool.",
     "Lay one of the chicken breast steaks lengthways in front of you. Place 2–3 tablespoons of the stuffing on one end and roll it up tightly lengthways. Secure with a toothpick or two and repeat with the remaining steaks. Place these rolled bundles of deliciousness into the second marinade so that they are completely covered in sauce. You could cook these now or let them sit for a few hours or overnight for best results.",
+    "When ready to cook, heat the barbecue for direct cooking. Pick up the chicken rolls and remove as much marinade as possible. Retain the excess marinade. Skewer the chicken pieces though the centre of the mince filling. It is important that each of the chicken bundles is pressed together on the skewer to help keep the stuffing in. I usually put 3 or 4 on one skewer.",
     "Cook over the coals for about 5 minutes until the underside is cooked through and lightly charred. Then turn the skewers over to cook the other side for about 5 more minutes. The kebabs are ready when the exterior is nicely charred and the stuffing is sizzling hot. Baste with a little melted ghee or butter before serving.",
     "Place the retained marinade into a saucepan and bring to a simmer over a medium heat. If you don’t have a lot left, you could stir in some more yoghurt. Once the sauce has come to a simmer, let it cook for a couple of minutes to cook off the raw chicken juices and then try it. This sauce is delicious served with the chicken, so adjust the flavours to your liking by adding more spices, salt and/or yoghurt."
-  ]
+  ],
+  "image": "/recipes/spicy-gourmet-chicken-kebabs.jpg"
 }

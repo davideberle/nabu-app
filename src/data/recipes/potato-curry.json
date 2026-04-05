@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Delicious and satisfying, potato curry is usually served for breakfast in India. It’s currently served for breakfast at my house almost weekly. It’s the perfect way to start the day but it’s pretty good any time of day really! You’ve probably seen this curry on a few Indian restaurant menus. It’s delicious served over rice, but the more traditional way to serve it is with fresh homemade puris. You could cube the potatoes, but I like to serve this one the way I was taught: simply boil your potatoes and break them up by hand into the spicy sauce. This gives you less uniform, different-size chunks, which I like. If you have any left over, cook it down and spread it on a Mumbai toastie.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "medium potatoes",
@@ -92,6 +96,8 @@
     "Add the potatoes to the curry by breaking them up with your hands and stir in just enough water to cover. Simmer for about 5 minutes, or until the potatoes are soft to your liking, then add the gram flour mixture and stir well. Season with salt. Some people like this curry a little sweeter, so you can add sugar to taste as well if you like, but I usually don’t.",
     "Garnish with the coriander (cilantro) leaves and serve with rice or preferably puris."
   ],
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "image": "/recipes/potato-curry.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4–6",
-  "intro": "You’ve got to love a good shawarma kebab! Perfectly marinated pieces of meat that are nice and crisp on the exterior and juicy and tender in the centre. I’m getting hungry just writing about it. At UK takeaways, beef, chicken and lamb are marinated and then placed on a rotating spit. The meat is shaved off with a large electric knife and then served in fresh naans topped with salad, hot sauce and/or yoghurt dressing.",
+  "intro": "You’ve got to love a good shawarma kebab! Perfectly marinated pieces of meat that are nice and crisp on the exterior and juicy and tender in the centre. I’m getting hungry just writing about it. At UK takeaways, beef, chicken and lamb are marinated and then placed on a rotating spit. The meat is shaved off with a large electric knife and then served in fresh naans topped with salad, hot sauce and/or yoghurt dressing.\n\nI don’t have a large spit, nor the need to cook as much meat as takeaways do, so I decided to downsize this recipe a bit. You will need metal skewers and a good barbecue for best results. I like to add vegetables like red onions and (bell) peppers to the skewers – they are delicious served with the marinated, grilled meat.",
+  "time": {
+    "prep": "15 MINS, PLUS FREEZING AND MARINATING",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "large chicken breasts",
@@ -30,39 +34,48 @@
     },
     {
       "item": "olive oil",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground allspice",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "paprika",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
@@ -71,5 +84,6 @@
     "When ready to cook, light your charcoal using the direct cooking method and wait until white-hot.",
     "In the meantime, skewer the marinated chicken discs on the metal skewers so that they are pressed tightly together. I like to include some chillies, red onions and peppers for colour.",
     "Place the skewers over the heat and rotate often until charred on the outside and cooked through – about 15 minutes. Remove the meat and vegetables and chop the meat into small pieces. Serve the meat and vegetables on their own or wrapped in fresh naans, buns or tortillas with your sauces of choice."
-  ]
+  ],
+  "image": "/recipes/shawarma-kebabs.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you like prawn (shrimp) curries, this is a straightforward one that my youngest daughter, Jennifer, makes all the time. One of her tips for getting extra flavour into the curry (that isn’t in the recipe method below) is to purchase your prawns unpeeled. Peel and clean them and then sauté the shells in the oil. The shells will turn pink as they cook. Press the shells down to extract every last bit of flavour and then remove and discard them, leaving as much oil in the pan as possible. Then, start the recipe as described below. This extra step really adds depth and flavour to the sauce.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or ghee",
@@ -78,5 +82,10 @@
     "Stir in the garlic and ginger paste and bring to a good sizzle before adding the chopped chillies. Stir it all up well, then add the mixed powder, tomato purée and about 125ml (½ cup) of the base curry sauce. Allow this to come to a simmer, only stirring if the sauce is catching on the pan. If the sauce caramelizes on the sides of the pan, stir it in as it adds nice flavour.",
     "Tip in the raw prawns (shrimp) and the rest of the base curry sauce and simmer until the prawns are cooked through and you are happy with the consistency of the sauce. Now add the coconut milk and the soy sauce or coconut amino. Stir in the coriander (cilantro) and season with salt and black pepper.",
     "To serve, squeeze the lime juice over the top and sprinkle with the garam masala."
+  ],
+  "tips": "*Most soy sauces are not gluten-free. If this is important to you, use coconut amino instead.",
+  "image": "/recipes/prawn-masala-curry.jpg",
+  "dietary": [
+    "vegetarian"
   ]
 }

@@ -3,92 +3,144 @@
   "name": "One-Pot Chicken & Saffron Orzo",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 or 5 servings",
-  "time": "10 minutes",
   "intro": "If it’s not already evident by the number of rice recipes in this cookbook, I cook rice a lot. But when I want a pleasant change, one of my favorite carbs to cook is orzo. It absorbs flavor like a sponge, and when cooked with the right liquid ratio, it can be silky smooth and pleasant to eat.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "20 minutes"
+  },
   "ingredients": [
     {
-      "item": "onion powder",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "garlic powder",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "parsley flakes",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "paprika",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "black pepper",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "olive oil",
-      "amount": "1 tablespoon"
-    },
-    {
-      "item": "butter",
-      "amount": "1 tablespoon"
-    },
-    {
-      "item": "olive oil",
-      "amount": "1 tablespoon"
-    },
-    {
-      "item": "yellow onion, finely chopped",
-      "amount": "½ large"
+      "item": "boneless, skinless chicken breasts (about 4 large breasts)",
+      "amount": "1½ pounds (680 g)",
+      "group": "CHICKEN"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "½ teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
     },
     {
       "item": "garlic powder",
-      "amount": "½ teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "parsley flakes",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
     },
     {
       "item": "paprika",
-      "amount": "¼ teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
     },
     {
-      "item": "cloves garlic, minced",
-      "amount": "2 large"
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
     },
     {
-      "item": "orzo",
-      "amount": "16 ounces (454 g)"
-    },
-    {
-      "item": "chicken broth",
-      "amount": "4 cups (960 ml)"
+      "item": "olive oil",
+      "amount": "1 tablespoon",
+      "group": "CHICKEN"
     },
     {
       "item": "butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "saffron strands",
+      "amount": "½ teaspoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "hot water",
+      "amount": "2 tablespoons",
+      "group": "ORZO"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "large yellow onion, finely chopped",
+      "amount": "½",
+      "group": "ORZO"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ teaspoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ teaspoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "large cloves garlic, minced",
+      "amount": "2",
+      "group": "ORZO"
+    },
+    {
+      "item": "orzo",
+      "amount": "16 ounces (454 g)",
+      "group": "ORZO"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "4 cups (960 ml)",
+      "group": "ORZO"
+    },
+    {
+      "item": "butter",
+      "amount": "1 tablespoon",
+      "group": "ORZO"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Lemon slices",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Salata or Arugula & Pomegranate Salad",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE CHICKEN: Place a chicken breast on a cutting board and hold it flat with the palm of your non-knife-holding hand. Using a sharp chef’s knife, slice the chicken breast horizontally into 2 even cutlets using as few strokes as possible for a smooth finish. Repeat with the remaining chicken breasts.",
+    "Place a chicken breast on a cutting board and hold it flat with the palm of your non-knife-holding hand. Using a sharp chef’s knife, slice the chicken breast horizontally into 2 even cutlets using as few strokes as possible for a smooth finish. Repeat with the remaining chicken breasts.",
     "In a large bowl, mix together the salt, 1 teaspoon onion powder, 1 teaspoon garlic powder, parsley flakes, 1 teaspoon paprika, and pepper. Add the chicken cutlets and thoroughly coat with the seasoning mix.",
     "In a large 2-inch-deep (5 cm) skillet, heat the oil and butter over medium heat. Add the chicken cutlets, working in batches so as to avoid overcrowding, and sear for 2 minutes on each side until golden. Transfer to a plate.",
-    "TO MAKE THE ORZO: Bloom the saffron by grinding the strands into a powder using a mortar and pestle. Place the powder in a small bowl, pour in the hot water, and let sit for 5 minutes.",
+    "Bloom the saffron by grinding the strands into a powder using a mortar and pestle. Place the powder in a small bowl, pour in the hot water, and let sit for 5 minutes.",
     "In the same skillet the chicken was cooked in, heat the oil over medium heat. Add the onion and cook, stirring often, for 5 minutes, or until softened and translucent. Add the salt, ½ teaspoon onion powder, ½ teaspoon garlic powder, ¼ teaspoon paprika, and garlic and cook, stirring often, for a few more minutes. Add the orzo and toast it for a few minutes, stirring continuously. Stir in the broth and saffron water and bring to a boil.",
     "Once boiling, add the chicken cutlets back into the skillet in a single layer, cover the skillet with a tight-fitting lid, and cook over medium heat for 5 minutes. Turn off the heat and let sit for 10 minutes. Check that the chicken cutlets are cooked through by using a meat thermometer and ensuring the interior is heated to 165°F (74°C), or by cutting a piece to check that it is white inside. If required, cover and cook for a few more minutes.",
     "Cut the 1 tablespoon butter into small pieces and add it over the orzo to finish, then garnish with the chopped parsley and a squeeze of lemon. Serve with salad."
-  ]
+  ],
+  "image": "/recipes/one-pot-chicken-and-saffron-orzo.jpg"
 }

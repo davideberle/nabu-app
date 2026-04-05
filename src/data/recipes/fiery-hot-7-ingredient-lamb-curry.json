@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Look at the ingredients list of most Indian recipes and it’s no wonder so many people find cooking Indian food a bit daunting. This authentic Rajasthani recipe, with its list of only seven ingredients, is therefore quite unique but is in no way lacking in magnificent flavour. The meat breaks down and becomes so juicy and tender in the ghee. Be warned… this curry is really spicy. If you are not a spicy curry fan, you could use a mild paprika instead of the dried chillies and/or chilli powder.",
+  "intro": "Look at the ingredients list of most Indian recipes and it’s no wonder so many people find cooking Indian food a bit daunting. This authentic Rajasthani recipe, with its list of only seven ingredients, is therefore quite unique but is in no way lacking in magnificent flavour. The meat breaks down and becomes so juicy and tender in the ghee. Be warned… this curry is really spicy. If you are not a spicy curry fan, you could use a mild paprika instead of the dried chillies and/or chilli powder.\n\nI have to admit I was rather sceptical about using so much ghee, and it might be a bit scary for some, but believe me… it is amazing. The ghee is needed as, when flavoured with the lamb, it actually becomes the sauce. Dip hot naans into the curry or spoon it over hot rice. You’re in for an incredible eating experience. Due to the amount of ghee used, stir well before serving and ensure the sauce is really hot. I like to serve this over warm rice with a twist of lime juice, kachumber salad and mint and coriander sauce.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "45–60 MINS"
+  },
   "ingredients": [
     {
       "item": "large garlic cloves, peeled",
@@ -40,5 +44,7 @@
   "method": [
     "Slice 8 of the garlic cloves in half lengthways and lightly smash. Blend or pound the remaining cloves into a paste. Set aside.",
     "Heat the ghee over a medium–high heat. When bubbly hot, stir in the lamb, chillies, chilli powder, coriander seeds, smashed garlic and garlic paste. Give it all a good stir and simmer for 45 minutes, only adding a little water if the mixture is sticking to the pan. Stir regularly and cook until the lamb is succulent and tender. Don’t rush this. If after 45 minutes it is not tender, continue cooking until it is. Season with salt."
-  ]
+  ],
+  "tips": "*Using lots of ghee is the traditional way of cooking this curry. If you would prefer a healthier option, choose another recipe! There are plenty of curries in this book that are far less fatty; I recommend giving this one a go just as it’s meant to be.",
+  "image": "/recipes/fiery-hot-7-ingredient-lamb-curry.jpg"
 }

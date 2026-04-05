@@ -1,0 +1,52 @@
+{
+  "id": "salty-lemon-cream-with-parsley",
+  "name": "SALTY LEMON CREAM with PARSLEY",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "about 1 cup",
+  "intro": "THIS IS A TOFU-BASED CREAM that you can use like sour cream or crème fraîche. I’ve experimented with several brands of silken tofu for this recipe, and I find that the Mori-Nu brand works best.",
+  "ingredients": [
+    {
+      "item": "packed chopped flat-leaf parsley",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "firm silken tofu",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Finely grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "large clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Set aside 2 tablespoons of the parsley. Put the remaining parsley in a blender. Add the tofu, lemon zest, lemon juice, oil, mustard, garlic, and salt and blend until creamy. Transfer to a bowl. Mince the reserved parsley and stir it in. Season with salt to taste, cover, and refrigerate for at least 1 hour before serving. Stored in the refrigerator, it will keep for 3 days."
+  ],
+  "image": "/recipes/salty-lemon-cream-with-parsley.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

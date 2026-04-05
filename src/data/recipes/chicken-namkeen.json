@@ -7,6 +7,10 @@
   },
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "Chicken namkeen is delicious as the dish is cooked in chicken fat. You can purchase rendered chicken fat at some speciality shops and farm shops, but I usually render my own. Rendering your own chicken fat is easy: purchase two 1.5kg (3lb 5oz) chickens and remove the fat from the carcasses and the skin and cut it into small 2.5cm (1in) pieces. Fry the fat over a medium heat in a non-stick pan for 5 minutes. This will release some fat. Cover the skin and fat with 500ml (2 cups) of water and simmer, covered, for 1 hour. Lift the lid and turn the crispy fat over and fry the other side for a further 20 minutes, uncovered. By now, all the water will have evaporated and you will be left with enough fat for this curry. Use one of the chickens for the curry and use the other for another recipe.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "30 MINS"
+  },
   "ingredients": [
     {
       "item": "rendered chicken fat",
@@ -33,13 +37,14 @@
       "amount": ""
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and julienned",
-      "amount": ""
+      "item": "piece of ginger, peeled and julienned",
+      "amount": "5cm (2in)"
     }
   ],
   "method": [
     "Heat a large high-sided frying pan over a high heat and pour in the rendered chicken fat. Add the chicken and fry, covered, for about 20 minutes, stirring regularly so that it cooks evenly. Once all the chicken pieces are cooked through and a bit crispy, pour all but about 4 tablespoons of the oil out of the pan. You can freeze this fat for the next time you make a namkeen.",
     "Tip in the tomatoes and the green chillies – remove the seeds if you don’t like really spicy curries. Continue cooking and stirring until the sauce thickens to your preferred consistency.",
     "Season with the black pepper and salt and garnish with the ginger."
-  ]
+  ],
+  "image": "/recipes/chicken-namkeen.jpg"
 }

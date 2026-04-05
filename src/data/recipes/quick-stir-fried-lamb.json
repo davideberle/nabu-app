@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 2 or more as part of a multi-course meal",
-  "intro": "Like many of my recipes, I found this one by chance. I was in Tooting, London, with my wife one evening and we happened upon a restaurant called Vijaya Krishna. We both ordered the Alleppey lamb roast off the menu and absolutely loved it. I asked for the recipe and thankfully the chef Shabaz Ali was happy to invite me back to the kitchen the next day. This is my interpretation of their excellent dish. It is a dry curry and definitely worth a try!",
+  "intro": "Like many of my recipes, I found this one by chance. I was in Tooting, London, with my wife one evening and we happened upon a restaurant called Vijaya Krishna. We both ordered the Alleppey lamb roast off the menu and absolutely loved it. I asked for the recipe and thankfully the chef Shabaz Ali was happy to invite me back to the kitchen the next day. This is my interpretation of their excellent dish. It is a dry curry and definitely worth a try!\n\nTo make it, you need to start with small pieces (tikka) of pre-cooked lamb. I often simmer the lamb tikka in base sauce until cooked and tender. The lamb-flavoured base sauce is then delicious used in other lamb curries. Dry the meat before frying. This is a great way to use up leftover lamb roast from Sunday dinner too. The most important part of getting this dish right is to ensure that, however you cook your lamb, it is good and tender before adding it to the pan. The recipe serves two, but it can easily be scaled up to serve more.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -25,8 +29,8 @@
       "amount": "20"
     },
     {
-      "item": "generous tbsp garlic and ginger paste",
-      "amount": "1"
+      "item": "garlic and ginger paste",
+      "amount": "1 generous tbsp"
     },
     {
       "item": "pre-cooked lamb (leg or shoulder)",
@@ -65,5 +69,6 @@
     "Heat the oil in a large frying pan over a high heat. When visibly hot, add the chopped onion and fry for about 5 minutes until lightly browned. Stir in the fresh green chillies and the curry leaves and fry for a further 30 seconds until fragrant. Add the garlic and ginger paste and fry for another 30 seconds.",
     "Add the lamb tikka and fry over a high heat until heated through and crisp. Stir in the mixed powder or curry powder, chilli powder, black pepper and soy sauce and season with a little salt, if needed.",
     "To serve, garnish with the chopped coriander (cilantro) and the lemon wedges, which can be squeezed over the top at the table."
-  ]
+  ],
+  "image": "/recipes/quick-stir-fried-lamb.jpg"
 }

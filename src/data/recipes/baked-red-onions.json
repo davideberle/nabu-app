@@ -3,9 +3,10 @@
   "name": "Baked Red Onions",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "I love to cook with Spanish onions. I find they are very sweet and not as strong as other varieties. They also lend themselves very well to being eaten raw in salads.",
   "ingredients": [
     {
       "item": "medium Spanish onions, peeled (about 2 onions per person)",
@@ -22,10 +23,16 @@
     {
       "item": "unsalted butter, at room temperature",
       "amount": "175 g"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 12 medium Spanish onions, peeled (about 2 onions per person) 6 cloves garlic, very thinly sliced 1 bunch fresh thyme 175 g unsalted butter, at room temperature salt and ground black pepper",
-    "Preheat the oven to 180°C (gas mark 4)."
-  ]
+    "Preheat the oven to 180°C (gas mark 4).",
+    "Trim the base of the onions so that they can stand upright. Now cut a deep incision in the form of a cross on the top of the onions, making sure you do not cut right through them.",
+    "Stand the onions in an ovenproof dish. Put a few garlic slices and a few thyme leaves into the incisions. Mix the butter with the remaining thyme and garlic, and distribute it evenly among the onions, pushing the butter well into the onion. Season with salt and pepper. Cook in the oven for about 40 minutes."
+  ],
+  "image": "/recipes/baked-red-onions.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "In Hindi, ‘achar’ means pickle. Achari is a very popular Punjabi curry made with the spices often used to make pickles, such as the panch poran and dried chillies used in this recipe. The sweet flavour of the mango chutney and sourness in the lime pickle give this curry the well-rounded flavour loved by so many.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or vegetable oil",
@@ -90,5 +94,6 @@
     "Add the garlic and ginger paste and bird’s eye chillies and fry for a further 30 seconds while stirring continuously. Pour in the tomato purée followed by the mixed powder, ground coriander, chilli powder and 250ml (1 cup) of the base curry sauce. It will sizzle and bubble, but don’t be tempted to stir unless it is obviously burning onto the pan. Be sure to scrape any caramelized sauce from the side of the pan into the sauce for additional flavour.",
     "Add the meat and its stock and the rest of the curry sauce and simmer until it has reduced down to your preferred consistency. Stir in the lime pickle and mango chutney (if using), then add the yoghurt 1 tablespoon at a time. You need to stir continuously so that the yoghurt doesn’t curdle.",
     "Swirl in the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Squeeze the lemon juice over the top and garnish with the coriander (cilantro) to serve."
-  ]
+  ],
+  "image": "/recipes/lamb-achari.jpg"
 }

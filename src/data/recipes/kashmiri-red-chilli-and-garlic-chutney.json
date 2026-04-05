@@ -7,6 +7,10 @@
   },
   "servings": "makes enough for 4–6 as an accompaniment",
   "intro": "This is a hot one! You only need to dab a bit on your papadam and you’ll see what I mean. As you can see from the ingredients list, there isn’t much to this chutney. It’s all about the chilli. Give it a go if you like it hot. Don’t if you don’t. It is pictured opposite, on the top right.",
+  "time": {
+    "prep": "5 MINS, PLUS SOAKING TIME",
+    "cook": "1 MIN"
+  },
   "ingredients": [
     {
       "item": "Kashmiri dried red chillies",
@@ -29,6 +33,7 @@
     "Split the chillies open and remove as many seeds as you can. (There’s no need to remove them all as they will sink when you soak the chillies.) Toast the chillies for about 1 minute in a dry frying pan, pressing them down so that they are equally toasted. Tip into a bowl and add hot water from the kettle to cover. Leave to soak for 30 minutes.",
     "Strain the chillies, reserving the soaking water, and place in a spice grinder or food processor with the garlic, cumin and salt. Taste the soaking water, and unless it is really bitter, add just enough to blend the mixture to a smooth, ketchup consistency. If the soaking water tastes bitter, discard it and use fresh water instead. Check for seasoning and it’s ready to serve."
   ],
+  "image": "/recipes/kashmiri-red-chilli-and-garlic-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

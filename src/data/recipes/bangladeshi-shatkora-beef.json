@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Whenever I go out to a Bangladeshi-run curry house, I look for their shatkora curries. I absolutely love the intensely tangy shatkora fruit. These are available frozen from Asian grocers, and when in season they can often be purchased fresh. If you have trouble finding them, you could substitute shatkora pickle or, if all else fails, quartered limes, but the flavour will not be the same.",
+  "intro": "Whenever I go out to a Bangladeshi-run curry house, I look for their shatkora curries. I absolutely love the intensely tangy shatkora fruit. These are available frozen from Asian grocers, and when in season they can often be purchased fresh. If you have trouble finding them, you could substitute shatkora pickle or, if all else fails, quartered limes, but the flavour will not be the same.\n\nThis is a popular beef curry that, when prepared like this, is usually made in bulk and promoted as a house special. Not only does the beef need to cook until tender, but the shatkora require a long simmer so that they are not tough, and also to release their flavour into the sauce. Only the rind of the fruit is used, because the pulp is terribly bitter. If you have a couple beef marrow bones, throw them into the dish as it simmers.\n\nThis recipe was inspired by a visit to Omar’s, a small curry house in Hatfield Peverel. It may be small but the curries I enjoyed there are right up there with the best!",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -78,5 +82,7 @@
     "Now add the garlic and ginger paste and fry for a further minute, stirring. Add the tomato purée and the ground spices, and cook for another minute. Add the beef and about 250ml (1 cup) of the spice stock. Boil it all for about 5 minutes, then add the remaining spice stock and the shatkora rind.",
     "Reduce the heat and simmer for 45 minutes–1 hour, or until the sauce reduces to a fairly thick consistency and the meat is tender. Add more spice stock if needed.",
     "To serve, add the garam masala, season with salt and top with the coriander (cilantro)."
-  ]
+  ],
+  "tips": "In the UK, most people prefer their curries cooked with meat off the bone, but this recipe is sometimes made using beef ribs. If you like ribs, give them a go. You’ll love the beefy ribs in this sauce.",
+  "image": "/recipes/bangladeshi-shatkora-beef.jpg"
 }

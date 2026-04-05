@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I think that one of the most valuable things I’ve learned during my visits to southern coastal India is the low-fat way they cook up amazing seafood curries. Hardly any oil is required as many of the aromatic ingredients are simply boiled in water to produce a delicious sauce. Although you can use tamarind concentrate instead of kokum for this recipe, it is traditionally made with kokum and that’s the way I like it most.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "fresh or frozen grated coconut",
@@ -61,5 +65,6 @@
     "Blend the coconut and turmeric into a fine paste or powder and set aside.",
     "Bring 500ml (2 cups) of water to the boil in a pot, preferably a clay pot if you have one. Add the coconut mixture, chilli powder, ginger, green chilli and kokum or tamarind concentrate and simmer for about 15 minutes. Add the fish and simmer with the pan covered for a further 7 minutes, or until the fish is just cooked through. Be careful not to overcook the fish or it will fall apart.",
     "Meanwhile, heat the oil in a small frying pan over a medium–high heat. When visibly hot, add the mustard seeds and when they begin to crackle (after about 30 seconds), reduce the heat to medium and stir in the curry leaves and shallots and fry until the shallots are soft and lightly browned. Pour over the curry. You can leave it as a garnish or stir the infused oil into the curry. Check for seasoning and season with salt if needed."
-  ]
+  ],
+  "image": "/recipes/malabar-fish-curry.jpg"
 }

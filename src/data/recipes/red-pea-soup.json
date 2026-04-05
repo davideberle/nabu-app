@@ -3,11 +3,14 @@
   "name": "RED PEA SOUP",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "1½ HOUR",
   "intro": "Saturday soup is a ritual in most Jamaican households, and my favourite soup growing up was red pea soup. In fact, if I had to choose a last meal, this would be it. It’s a hug in a bowl, and when the weather dips and the seasons switch between autumn (fall) and winter, this is the soup that I make. It is finished with a type of simple dumpling called spinners. The most important ingredient here is the time to make it. Leaving the kidney beans to soak overnight creates a buttery texture in the final soup. Be sure to chop the yam, sweet potatoes and carrots to the same size so that they cook evenly.",
+  "time": {
+    "prep": "20 MINUTES",
+    "cook": "1½ HOURS"
+  },
   "ingredients": [
     {
       "item": "dried kidney beans",
@@ -63,15 +66,18 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "250 g (9 oz/2 cups)"
+      "amount": "250 g (9 oz/2 cups)",
+      "group": "SPINNERS"
     },
     {
       "item": "water",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml (8½ fl oz/1 cup)",
+      "group": "SPINNERS"
     },
     {
       "item": "pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "SPINNERS"
     }
   ],
   "method": [
@@ -81,6 +87,7 @@
     "Meanwhile, finish the spinners. Take a thumb-sized piece of the dough and form thin, tapered sausage shapes using the palms of your hands. Add the dumplings to the pan and cook for a further 10–15 minutes, until the dumplings are cooked.",
     "Remove the Scotch bonnet before serving."
   ],
+  "image": "/recipes/red-pea-soup.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

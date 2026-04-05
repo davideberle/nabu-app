@@ -3,7 +3,7 @@
   "name": "Chocolate Mousse",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -24,12 +24,18 @@
       "amount": "4"
     },
     {
-      "item": "cocoa powder, for sprinkling",
-      "amount": "1 tablespoon"
+      "item": "tablespoon cocoa powder, for sprinkling",
+      "amount": "1"
+    },
+    {
+      "item": "whipped cream, for serving",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 100 g good-quality dark chocolate (70% cocoa solids) 40 g unsalted butter 50 ml Nocino liqueur (see Note) 4 organic eggs, separated 1 tablespoon cocoa powder, for sprinkling whipped cream, for serving",
-    "Melt the chocolate and butter (without stirring) in a bowl set over a saucepan of simmering water. Remove from the heat and stir in the Nocino followed by the egg yolks, combining well."
-  ]
+    "Melt the chocolate and butter (without stirring) in a bowl set over a saucepan of simmering water. Remove from the heat and stir in the Nocino followed by the egg yolks, combining well.",
+    "Beat the egg whites until stiff, then gradually fold them through the chocolate mixture. Pour the mousse into individual dishes and refrigerate overnight. Or, do as they do at the Kronenhalle restaurant in Zürich and refrigerate the mousse in a large bowl, bring the bowl to the table and spoon it onto dessert plates. Sprinkle with cocoa powder, if you like. Serve with whipped cream.",
+    "This mousse is better if you make it the day before – somehow it becomes even more chocolatey. Nocino is an Italian liqueur made from walnuts and spices. You can use vin santo or oloroso sherry if you prefer."
+  ],
+  "image": "/recipes/chocolate-mousse.jpg"
 }

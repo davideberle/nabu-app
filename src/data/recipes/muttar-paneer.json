@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK. It’s worth noting that this sauce is not limited to paneer and peas. It goes well with so many other main ingredients. Prawns (shrimp), chicken, bite-size pieces of seekh kebab… If you think it sounds good, it will be.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "paneer cheese, cut into 4cm (1½in) cubes",
@@ -42,71 +46,88 @@
     },
     {
       "item": "rapeseed (canola) oil or seasoned oil",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "SAUCE"
     },
     {
       "item": "green cardamom pods, lightly bruised",
-      "amount": "4"
+      "amount": "4",
+      "group": "SAUCE"
     },
     {
       "item": "cloves",
-      "amount": "2"
+      "amount": "2",
+      "group": "SAUCE"
     },
     {
       "item": "bay leaf",
-      "amount": "1"
+      "amount": "1",
+      "group": "SAUCE"
     },
     {
       "item": "large onions, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "SAUCE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "SAUCE"
     },
     {
       "item": "1.2kg (2lb 10oz) tomatoes, halved",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     },
     {
       "item": "raw cashew paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "SAUCE"
     },
     {
       "item": "chilli powder, or to taste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SAUCE"
     },
     {
       "item": "fresh green chillies, quartered",
-      "amount": "2"
+      "amount": "2",
+      "group": "SAUCE"
     },
     {
       "item": "frozen peas",
-      "amount": "150g (1 cup)"
+      "amount": "150g (1 cup)",
+      "group": "SAUCE"
     },
     {
       "item": "single (light) cream",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "SAUCE"
     },
     {
       "item": "garam masala",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "SAUCE"
     },
     {
       "item": "cold butter, diced",
-      "amount": "80g (⅓ cup)"
+      "amount": "80g (⅓ cup)",
+      "group": "SAUCE"
     },
     {
       "item": "Juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi), crushed",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "SAUCE"
     }
   ],
   "method": [
@@ -116,6 +137,8 @@
     "Return the sauce to the pan and stir in the chilli powder and green chillies. Let this all come to a mild bubble, then add the paneer cubes and peas, and heat through for about 2 minutes (if you cook the cheese too long, it will begin to disintegrate into the sauce, so watch carefully).",
     "To finish, swirl in the cream and garam masala, then stir in the cold butter one piece at a time. Stir in the lemon juice and season with salt. Top with the dried fenugreek leaves (kasoori methi) and serve."
   ],
+  "tips": "My pan-fried paneer and grilled paneer can be substituted for the raw marinated paneer with equally tasty results.",
+  "image": "/recipes/muttar-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

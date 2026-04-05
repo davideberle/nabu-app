@@ -3,13 +3,18 @@
   "name": "Yellow and Green Frittata",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "Maria Teresa, a wonderful traditional Piemontese cook, showed me how to prepare this frittata. The frittata comes out as a roll that you slice to reveal the brilliant greenness of the spinach. It looks very enticing. I serve this as a light lunch or as an entrée for a special dinner.",
   "ingredients": [
     {
       "item": "organic eggs",
       "amount": "6"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     },
     {
       "item": "unsalted butter",
@@ -18,10 +23,23 @@
     {
       "item": "bunch spinach, or a 250 g packet frozen spinach",
       "amount": "1"
+    },
+    {
+      "item": "slices prosciutto",
+      "amount": "4–5"
+    },
+    {
+      "item": "tablespoons Pâté di Tonno",
+      "amount": "4–5"
     }
   ],
   "method": [
-    "Serves 4 6 organic eggs salt and ground black pepper 25 g unsalted butter 1 bunch spinach, or a 250 g packet frozen spinach 4–5 slices prosciutto 4–5 tablespoons Pâté di Tonno",
-    "Heat a large 35 cm pan, melt the butter in it and pour in enough of the egg mixture to make a very thin frittata. Cook over low heat until set, then remove from the pan."
-  ]
+    "Beat the eggs together until fluffy, then season with salt and pepper.",
+    "Heat a large 35 cm pan, melt the butter in it and pour in enough of the egg mixture to make a very thin frittata. Cook over low heat until set, then remove from the pan.",
+    "If using frozen spinach, thaw it first and squeeze out all the water. If using fresh spinach, blanch the leaves for 1 minute in boiling, salted water, then squeeze out all the water and chop roughly.",
+    "Arrange the prosciutto slices, side by side, on the frittata, then spread the pâté di tonno over, about 1 cm thick, and finally the spinach. Season with pepper and salt (be careful with the salt as both the prosciutto and the pâté di tonno are already salted).",
+    "Now roll up the frittata like a swiss roll. Wrap the rolled frittata in aluminium foil and refrigerate for at least 1 hour or overnight.",
+    "To serve, unwrap the frittata and cut it into slices about 2 cm thick. Serve as an antipasto or part of a larger antipasto platter."
+  ],
+  "image": "/recipes/yellow-and-green-frittata.jpg"
 }

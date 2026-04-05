@@ -3,12 +3,21 @@
   "name": "Cloud Soufflé",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "This dish is basically eggs in a party dress. It looks extraordinary as it arrives on the table, apparently the result of limitless time and skill. In fact it’s fairly simple and takes no time at all – a winning combination to produce something that looks so good.\n\nServe it as a lunch dish with just a green salad and some crunchy bread.",
   "ingredients": [
+    {
+      "item": "Per person you will need:",
+      "amount": ""
+    },
     {
       "item": "organic eggs, separated",
       "amount": "2"
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
     },
     {
       "item": "cream",
@@ -19,14 +28,20 @@
       "amount": "50 g"
     },
     {
+      "item": "ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "15 g"
     }
   ],
   "method": [
-    "Serve it as a lunch dish with just a green salad and some crunchy bread.",
     "Preheat the oven to 200°C (gas mark 6). Butter an individual ramekin per person (about 15 cm in diameter).",
+    "Beat the egg whites. When they start to become stiff, add salt to taste. Continue beating until they hold their peaks well.",
+    "Carefully drop the 2 egg yolks into the ramekin, then add the cream and Gruyère. Grind over some black pepper and add the butter. Spoon the egg whites over the cheese, cream and egg yolks.",
     "Bake in the oven for 6–8 minutes. The top should be lightly golden, and when you break the crust, the yolks and cream should be soft and hot.",
     "Serve with crusty bread to dip into the yolks and cream."
-  ]
+  ],
+  "image": "/recipes/cloud-souffl.jpg"
 }

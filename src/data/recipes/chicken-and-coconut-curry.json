@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you like spicy curries, this one is for you. The soaked and blended Kashmiri chillies give this curry an eye-catching red hue. If you are not a spicy curry fan, you could remove the seeds from the chillies so that you still get the glow but without all the heat.",
+  "time": {
+    "prep": "10 MINS, PLUS SOAKING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "Kashmiri dried red chillies",
@@ -89,5 +93,6 @@
     "Soak the Kashmiri chillies in cold water for 20 minutes. While the chillies are soaking, place the cumin seeds, coriander seeds, sesame seeds, peppercorns, cloves, cinnamon and cardamom seeds in a small dry frying pan and toast them over a medium heat until warm and fragrant but not yet smoking. Transfer to a spice grinder and grind to a fine powder. Add the soaked Kashmiri chillies, onions and garlic and ginger paste and blend to a paste. If needed, you can add a drop of water to assist blending.",
     "Now heat the oil in a large frying pan or wok over a medium–high heat. When hot, add the spice paste and the turmeric and let it sizzle in the oil for about 3 minutes, stirring continuously. Add the tomatoes and stir well to combine. Add the chicken to the pan and fry for about 5 minutes until browned. Pour in the coconut milk and simmer, covered, until the chicken is cooked through. Stir in the tamarind concentrate and season with salt.",
     "To serve, sprinkle with the garam masala and garnish with the coriander (cilantro)."
-  ]
+  ],
+  "image": "/recipes/chicken-and-coconut-curry.jpg"
 }

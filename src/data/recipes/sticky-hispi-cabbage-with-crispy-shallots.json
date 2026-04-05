@@ -3,11 +3,14 @@
   "name": "STICKY HISPI CABBAGE WITH CRISPY SHALLOTS",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 3–4",
-  "time": "30 MINUTE",
   "intro": "Hispi cabbage is such a humble ingredient. I grew up absolutely loving cabbage as a really simple and quick meal. My mother used to steam it with LOTS of garlic and soy sauce and top it with fried onions. This recipe involves pan-frying it in brown butter and then coating it with a sorrel hoisin sauce, which makes it feel really special. The cabbage leaves get lovely and glazed and slightly crispy in all the right places.",
+  "time": {
+    "prep": "10 MINUTESCOOK TIME: 30 MINUTES",
+    "cook": "30 MINUTES"
+  },
   "ingredients": [
     {
       "item": "vegan block butter",
@@ -48,6 +51,7 @@
     "Glaze with some of the sorrel hoisin, then transfer to the oven and roast for 15 minutes until caramelised.",
     "To serve, spread a little of the sorrel hoisin over the base of a serving dish and add the cabbage on top. Garnish with the chilli and crispy shallots."
   ],
+  "image": "/recipes/sticky-hispi-cabbage-with-crispy-shallots.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

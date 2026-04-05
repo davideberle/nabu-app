@@ -3,9 +3,10 @@
   "name": "Taglierini with Butter and White Truffles",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "White truffles are one of the high points of north Italian food. Unfortunately they cannot be cultivated outside their natural habitat in Piemonte. They grow in the wild and truffle hunters are notoriously secretive. The experience of the strong but delicate aroma of truffles is unique. To my taste they are best eaten when grated over something very simple to allow the aroma of the truffle to reign supreme.\n\nWhen you can’t get the truffles themselves, a little truffle oil can remind you of what they are really like.",
   "ingredients": [
     {
       "item": "quantity tajerini",
@@ -18,10 +19,15 @@
     {
       "item": "freshly grated parmigiano",
       "amount": "100 g"
+    },
+    {
+      "item": "fresh white truffle or truffle oil, for garnish",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 1 quantity tajerini 80 g unsalted butter, melted 100 g freshly grated parmigiano fresh white truffle or truffle oil, for garnish",
-    "Make the tajerini, then boil in plenty of salted water for just a few minutes. Drain the pasta and place it in a heated serving dish. Pour the melted butter over it, add the parmigiano and mix together."
-  ]
+    "Make the tajerini, then boil in plenty of salted water for just a few minutes. Drain the pasta and place it in a heated serving dish. Pour the melted butter over it, add the parmigiano and mix together.",
+    "If you have a fresh white truffle, shave it very thinly with a truffle slicer over the pasta, or alternatively drizzle over a few drops of truffle oil. Serve immediately."
+  ],
+  "image": "/recipes/taglierini-with-butter-and-white-truffles.jpg"
 }

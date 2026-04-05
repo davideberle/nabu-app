@@ -3,11 +3,14 @@
   "name": "Turkish Bulgur Pilaf",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "5 minutes",
   "intro": "Bulgur is a type of cracked wheat that is parboiled, dried, and then ground into various sizes. Fine bulgur is used in salads like tabouli and requires no cooking; it is simply soaked in liquid. Medium and coarse bulgur are used to make dishes like this bulgur pilaf. Its cooking process is similar to that of rice, using a bulgur-to-liquid ratio of 1:2. When I was growing up, my mom cooked bulgur regularly instead of rice, often making “red bulgur” using tomato paste and adding chickpeas, and sometimes making “yellow bulgur” with onions and mushrooms (see One-Pot Chicken & Mushroom Bulgur). This Turkishstyle bulgur pilaf is one we grew accustomed to, as we frequented Turkish restaurants and always enjoyed it alongside grilled meat. The distinguishing features of Turkish pilaf are the use of red pepper paste along with tomato paste and the addition of dried mint, which gives it a unique and delicious flavor. This dish is very quick to make and versatile as a side to many meals.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "40 minutes"
+  },
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -18,16 +21,16 @@
       "amount": "2 tablespoons"
     },
     {
-      "item": "onion, finely chopped",
-      "amount": "1 large"
+      "item": "large onion, finely chopped",
+      "amount": "1"
     },
     {
-      "item": "red bell pepper, finely chopped",
-      "amount": "1 large"
+      "item": "large red bell pepper, finely chopped",
+      "amount": "1"
     },
     {
-      "item": "cloves garlic, minced",
-      "amount": "4 large"
+      "item": "large cloves garlic, minced",
+      "amount": "4"
     },
     {
       "item": "kosher salt",
@@ -58,8 +61,19 @@
       "amount": "4 cups (960 ml)"
     },
     {
+      "item": "Fresh mint leaves (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Plain, whole-milk yogurt",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
       "item": "Dried mint",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
@@ -68,5 +82,6 @@
     "Add the tomato and red pepper pastes, cooking and stirring until combined, for 1 minute.",
     "Add the dried mint, followed by the bulgur, mixing until well combined. Add the broth and bring to a boil for 3 minutes. Reduce the heat to low, cover with the lid, and let simmer for 25 minutes.",
     "Fluff up the bulgur, garnish with mint leaves (if using) and serve with yogurt sprinkled with dried mint."
-  ]
+  ],
+  "image": "/recipes/turkish-bulgur-pilaf.jpg"
 }

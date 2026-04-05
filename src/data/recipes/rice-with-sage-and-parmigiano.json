@@ -3,10 +3,19 @@
   "name": "Rice with Sage and Parmigiano",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "This dish is perfect in its simplicity. By pouring the melted butter over the parmigiano, it will form a wonderful crust.",
   "ingredients": [
+    {
+      "item": "rice, preferably Vialone Nano variety (it does not fall apart and it keeps its bite)",
+      "amount": "350–400 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50–75 g"
+    },
     {
       "item": "cloves garlic",
       "amount": "2"
@@ -21,9 +30,9 @@
     }
   ],
   "method": [
-    "Serves 4 350–400 g rice, preferably Vialone Nano variety (it does not fall apart and it keeps its bite) 50–75 g unsalted butter 2 cloves garlic 10 fresh sage leaves 100 g freshly grated parmigiano or fontina",
     "Boil the rice in salted water until cooked but still al dente.",
     "Melt the butter in a frying pan, then add the garlic and the sage leaves. Let the butter bubble but do not burn it. Discard the garlic. The sage leaves should be crisp.",
     "Pour the cooked rice on a serving dish. Sprinkle the cheese over the rice and then the bubbling hot butter and sage over the cheese. Serve immediately."
-  ]
+  ],
+  "image": "/recipes/rice-with-sage-and-parmigiano.jpg"
 }

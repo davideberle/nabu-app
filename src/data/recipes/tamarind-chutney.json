@@ -7,6 +7,10 @@
   },
   "servings": "makes 2 jars",
   "intro": "Tamarind chutney simply has to be on the table when my wife and I plan a curry party. It’s sweet, sour, savoury and spicy, and also has a nice crunch to it. What more could you ask for in a chutney?",
+  "time": {
+    "prep": "5 MINS, PLUS SITTING TIME",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "tamarind concentrate",
@@ -60,6 +64,7 @@
   "method": [
     "Put all the ingredients into a small bowl and mix well. Refrigerate for at least 1 hour before serving."
   ],
+  "image": "/recipes/tamarind-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

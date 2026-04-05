@@ -3,123 +3,154 @@
   "name": "CRISPY OYSTER MUSHROOMS WITH SCOTCH BONNET BURNT LIME DRESSING AND COCONUT RICE",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "40 MINUTE",
   "intro": "Fried chicken and rice is very nostalgic for me. My mother’s was famous in our house and she would always serve it with a slaw on the side. This recipe replaces the chicken with crispy oyster mushrooms that are similar to those I use in my fried ‘chicken’ burger. Oyster mushrooms have such a succulent and juicy texture, that when fried they are reminiscent of chicken. They are really in their green jackfruit circa 2016 era, and it is truly deserved. Mushrooms in general are so magical, and I could totally imagine this working really well with a vast variety of them. The burnt lime in the dressing is so deeply savoury and offers a slight bitterness.",
+  "time": {
+    "prep": "30 MINUTES",
+    "cook": "40 MINUTES"
+  },
   "ingredients": [
     {
       "item": "Thai fragrant (jasmine) rice or basmati rice",
-      "amount": "300 g (10½ oz/1½ cups)"
+      "amount": "300 g (10½ oz/1½ cups)",
+      "group": "COCONUT RICE"
     },
     {
       "item": "water",
-      "amount": "550 ml (18½ fl oz/2¼ cups)"
+      "amount": "550 ml (18½ fl oz/2¼ cups)",
+      "group": "COCONUT RICE"
     },
     {
       "item": "creamed coconut (or desiccated/dried shredded coconut)",
-      "amount": "100 g (3½oz)"
+      "amount": "100 g (3½oz)",
+      "group": "COCONUT RICE"
     },
     {
       "item": "coconut sugar",
-      "amount": "1½ tablespoon"
+      "amount": "1½ tablespoon",
+      "group": "COCONUT RICE"
     },
     {
       "item": "garlic clove",
-      "amount": "1"
+      "amount": "1",
+      "group": "COCONUT RICE"
     },
     {
       "item": "bay leaf",
-      "amount": "1"
+      "amount": "1",
+      "group": "COCONUT RICE"
     },
     {
       "item": "sprigs of thyme",
-      "amount": "5"
+      "amount": "5",
+      "group": "COCONUT RICE"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "COCONUT RICE"
     },
     {
       "item": "oyster mushrooms",
-      "amount": "400 g (14 oz)"
+      "amount": "400 g (14 oz)",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "Green Seasoning",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "ground allspice",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "x quantity wet dredge",
-      "amount": "1"
+      "amount": "1",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "x quantity crispy coating (see page XX)",
-      "amount": "1"
+      "amount": "1",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "vegetable oil, for deep-frying",
-      "amount": ""
+      "amount": "",
+      "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "limes, halved",
-      "amount": "3"
+      "amount": "3",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "soy sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tablespoons",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "Scotch bonnet, deseeded and chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "garlic clove, finely diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "handful of coriander (cilantro) leaves",
-      "amount": ""
+      "amount": "",
+      "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
       "item": "beetroot (beet), grated",
-      "amount": "1"
+      "amount": "1",
+      "group": "SLAW"
     },
     {
       "item": "carrot, grated",
-      "amount": "1"
+      "amount": "1",
+      "group": "SLAW"
     },
     {
       "item": "spring onion (scallion), finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "SLAW"
     },
     {
       "item": "white wine vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "SLAW"
     },
     {
       "item": "agave syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SLAW"
     },
     {
       "item": "handful of roasted peanuts, roughly chopped",
-      "amount": ""
+      "amount": "",
+      "group": "SLAW"
     },
     {
       "item": "sliced spring onions (scallions)",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "sliced red chili",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -133,6 +164,7 @@
     "Add 4–5 mushroom clusters to the pan, being careful not to overcrowd. Fry for 4–6 minutes until crisp. Drain off any excess oil on a wire rack. Repeat until all the mushrooms are cooked.",
     "Serve the crispy mushrooms sprinkled with sliced chillies and spring onions, with the rice, dressing and slaw on the side so everyone can help themselves."
   ],
+  "image": "/recipes/crispy-oyster-mushrooms-with-scotch-bonnet-burnt-lime-dressi.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

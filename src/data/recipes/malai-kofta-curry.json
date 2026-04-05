@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I promise, you won’t miss the meat when you make these koftas. Served in the mildly spiced, creamy sauce, they are real crowd pleasers! The koftas could also be made smaller and flattened into patties so you don’t need to cook with as much oil.",
+  "time": {
+    "prep": "20 MINS",
+    "cook": "40 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or vegetable oil, plus extra for deep-frying",
@@ -66,39 +70,48 @@
     },
     {
       "item": "peeled potatoes",
-      "amount": "250g (9oz)"
+      "amount": "250g (9oz)",
+      "group": "KOFTAS"
     },
     {
       "item": "rice flour",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "KOFTAS"
     },
     {
       "item": "plain (all-purpose) flour (or an additional 1 tbsp rice flour if gluten-free)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "KOFTAS"
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)"
+      "amount": "200g (7oz)",
+      "group": "KOFTAS"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "KOFTAS"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "KOFTAS"
     },
     {
       "item": "Large handful of baby spinach leaves, washed and roughly chopped",
-      "amount": ""
+      "amount": "",
+      "group": "KOFTAS"
     },
     {
       "item": "finely chopped coriander (cilantro) leaves",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "KOFTAS"
     },
     {
       "item": "Salt, to taste",
-      "amount": "½"
+      "amount": "½",
+      "group": "KOFTAS"
     }
   ],
   "method": [
@@ -109,6 +122,7 @@
     "You can fry your koftas while the sauce is simmering if time is an issue. To cook the koftas, heat about 10cm (4in) of rapeseed or vegetable oil in a saucepan – you need enough oil in your pan to just cover the koftas, so add more if required. The oil is hot enough for frying when a small piece broken off one of the koftas sizzles and rises to the top immediately when thrown in. Carefully place your koftas in the oil and fry until crispy brown on the exterior. About 5 minutes should do the trick. Don’t overcrowd your pan. Do this in batches if necessary.",
     "Place the fried koftas on paper towel to soak up excess oil and then place in a large serving bowl or individual bowls and cover with the sauce. Sprinkle with garam masala and a drizzle of cream to serve."
   ],
+  "image": "/recipes/malai-kofta-curry.jpg",
   "dietary": [
     "vegetarian"
   ]

@@ -3,11 +3,14 @@
   "name": "NEW POTATOES WITH HERBY CREMA AND CASHEW CHILLI NORI OIL",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "45 MINUTE",
   "intro": "This side is bold and punchy and has lots of lovely textures through it. New potatoes are perfect for smashing as they are waxy, so they hold their shape. As you will have discovered by now, I love nori and I will not stop until I’ve found a way to introduce it into most dishes.",
+  "time": {
+    "prep": "25 MINUTESCOOK TIME: 45 MINUTES",
+    "cook": "45 MINUTES"
+  },
   "ingredients": [
     {
       "item": "new potatoes",
@@ -23,59 +26,73 @@
     },
     {
       "item": "bunch of flat-leaf parsley, leaves picked",
-      "amount": ""
+      "amount": "",
+      "group": "HERBY CREMA"
     },
     {
       "item": "bunch of coriander (cilantro), leaves picked",
-      "amount": ""
+      "amount": "",
+      "group": "HERBY CREMA"
     },
     {
       "item": "silken tofu",
-      "amount": "300 g (10½ oz)"
+      "amount": "300 g (10½ oz)",
+      "group": "HERBY CREMA"
     },
     {
       "item": "garlic clove",
-      "amount": "1"
+      "amount": "1",
+      "group": "HERBY CREMA"
     },
     {
       "item": "juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "HERBY CREMA"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "HERBY CREMA"
     },
     {
       "item": "nori sheets",
-      "amount": "2"
+      "amount": "2",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "olive oil",
-      "amount": "120 ml (4 fl oz/½ cup)"
+      "amount": "120 ml (4 fl oz/½ cup)",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "cashews, roughly chopped",
-      "amount": "70 g (2¼ oz/scant ½ cup)"
+      "amount": "70 g (2¼ oz/scant ½ cup)",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "Scotch bonnet, finely sliced",
-      "amount": "1"
+      "amount": "1",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "garlic cloves",
-      "amount": "3"
+      "amount": "3",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "zest of 2 limes",
-      "amount": ""
+      "amount": "",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CASHEW CHILLI NORI OIL"
     }
   ],
   "method": [
@@ -86,6 +103,7 @@
     "In a small saucepan, heat the olive oil over a medium heat, add the cashews and stir for 30 seconds until golden brown. Add the chilli and nori, stir and toast for another 30 seconds. Remove from the heat and add the garlic cloves and lime zest, then stir and allow the residual heat to cook the garlic. Add the maple syrup and salt, stir, then transfer to a clean jar.",
     "Spread a good dollop of the crema over the base of a serving plate. Top with the smashed potatoes, then dress with the cashew chilli nori oil."
   ],
+  "image": "/recipes/new-potatoes-with-herby-crema-and-cashew-chilli-nori-oil.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

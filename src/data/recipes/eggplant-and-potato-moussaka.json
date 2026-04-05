@@ -3,67 +3,113 @@
   "name": "Eggplant & Potato Moussaka",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "20 minutes",
   "intro": "This is not your typical Greek-style moussaka made with bechamel sauce. This moussaka has somehow evolved over time in my husband’s family and become a staple for us. It is a cross between moussaka and shepherd’s pie, bringing together the best of both dishes. It was one of the first recipes I shared on the blog that went viral.",
+  "time": {
+    "prep": "20 minutes",
+    "cook": "1 hour and 10 minutes"
+  },
   "ingredients": [
     {
-      "item": "olive oil",
-      "amount": "¼ cup (60 ml)"
-    },
-    {
-      "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "black pepper, plus more if needed",
-      "amount": "¼ teaspoon"
-    },
-    {
-      "item": "whole milk, divided",
-      "amount": "1 cup (240 ml)"
-    },
-    {
-      "item": "cloves garlic, minced",
-      "amount": "4"
-    },
-    {
-      "item": "lean ground beef",
-      "amount": "1½ pounds (680 g)"
+      "item": "large American (globe) eggplants (2½ pounds, or 1.2 kg), ends trimmed, peeled lengthwise every other stripe in a zebra pattern, and cut into ¼-inch-thick (6 mm) rounds",
+      "amount": "2",
+      "group": "EGGPLANT"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "½ teaspoon",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "EGGPLANT"
+    },
+    {
+      "item": "russet or Yukon gold potatoes, peeled and cut into large pieces (roughly into eighths)",
+      "amount": "31/3 pounds (1.5 kg)",
+      "group": "POTATOES"
+    },
+    {
+      "item": "salted butter",
+      "amount": "¼ cup (55 g)",
+      "group": "POTATOES"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon",
+      "group": "POTATOES"
+    },
+    {
+      "item": "black pepper, plus more if needed",
+      "amount": "¼ teaspoon",
+      "group": "POTATOES"
+    },
+    {
+      "item": "whole milk, divided",
+      "amount": "1 cup (240 ml)",
+      "group": "POTATOES"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons",
+      "group": "FILLING"
+    },
+    {
+      "item": "large onion, finely diced",
+      "amount": "1",
+      "group": "FILLING"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "4",
+      "group": "FILLING"
+    },
+    {
+      "item": "lean ground beef",
+      "amount": "1½ pounds (680 g)",
+      "group": "FILLING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "FILLING"
     },
     {
       "item": "finely chopped fresh thyme (or substitute with 2 tablespoons dried oregano or basil)",
-      "amount": "3 tablespoons"
+      "amount": "3 tablespoons",
+      "group": "FILLING"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "FILLING"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "FILLING"
     },
     {
       "item": "tomato passata (puree)",
-      "amount": "1½ cups (375 g)"
+      "amount": "1½ cups (375 g)",
+      "group": "FILLING"
     }
   ],
   "method": [
     "Preheat the oven to 450°F (230°C) and place a rack in the middle.",
-    "TO MAKE THE EGGPLANT: Place the eggplant in a single layer on a large, rimmed sheet pan lined with parchment paper and sprinkle with ½ teaspoon salt and drizzle with the olive oil. (Use two sheet pans if necessary.) Bake for 40 minutes, or until golden and softened.",
-    "TO MAKE THE POTATOES: Place the potatoes in a large pot over high heat and cover with cold water. Bring to a boil and cook until very soft, 20 to 25 minutes. Drain and leave the potatoes in the pot. Add the butter, 1 teaspoon salt, ¼ teaspoon pepper, and 1 cup (240 ml) milk. Mash the potatoes using a potato masher or ricer until creamy and fluffy.",
+    "Place the eggplant in a single layer on a large, rimmed sheet pan lined with parchment paper and sprinkle with ½ teaspoon salt and drizzle with the olive oil. (Use two sheet pans if necessary.) Bake for 40 minutes, or until golden and softened.",
+    "Place the potatoes in a large pot over high heat and cover with cold water. Bring to a boil and cook until very soft, 20 to 25 minutes. Drain and leave the potatoes in the pot. Add the butter, 1 teaspoon salt, ¼ teaspoon pepper, and 1 cup (240 ml) milk. Mash the potatoes using a potato masher or ricer until creamy and fluffy.",
     "WHILE THE EGGPLANT AND POTATOES COOK, MAKE THE FILLING: In a large skillet, heat the vegetable oil over medium heat. Add the onion and cook, stirring often, until softened and translucent, 5 to 7 minutes. Add the garlic and cook for another minute, stirring often. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 5 to 7 minutes, until browned. Add the salt, pepper, thyme, and onion and garlic powders and oregano and stir. Cook for 2 to 3 minutes until the meat juices dry up. Add the passata and stir to combine. Remove from the heat.",
     "In a 9 x 13-inch (23 x 33 cm) baking dish, layer all the baked eggplant to cover the base of the dish, overlapping the pieces as necessary. Spread all the beef mixture evenly on top. Spoon the mashed potatoes on top, adding large spoonfuls to cover the surface, then use a flat or offset spatula to smooth the potatoes into an even layer. Ensure all the edges are sealed with the potato.",
     "Use a fork and run it all along the surface of the potatoes in rows, pressing down gently to make grooves. Bake for 30 minutes. Spray the surface of the baking dish with oil, then broil for 2 minutes to brown the top slightly. Let cool for 10 minutes before slicing and serving."
-  ]
+  ],
+  "image": "/recipes/eggplant-and-potato-moussaka.jpg"
 }

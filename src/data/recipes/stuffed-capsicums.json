@@ -3,21 +3,37 @@
   "name": "Stuffed Capsicums",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
   "ingredients": [
+    {
+      "item": "red capsicums (peppers)",
+      "amount": "4–5"
+    },
+    {
+      "item": "anchovy fillets",
+      "amount": "16–20"
+    },
+    {
+      "item": "fresh basil leaves",
+      "amount": "16–20"
+    },
+    {
+      "item": "PÂTÉ DI TONNO",
+      "amount": ""
+    },
     {
       "item": "unsalted butter",
       "amount": "150 g"
     },
     {
-      "item": "large Spanish onion, chopped",
-      "amount": "1"
+      "item": "arge Spanish onion, chopped",
+      "amount": "1 l"
     },
     {
-      "item": "large shallot, peeled and chopped",
-      "amount": "1"
+      "item": "arge shallot, peeled and chopped",
+      "amount": "1 l"
     },
     {
       "item": "sprigs fresh tarragon, chopped",
@@ -34,11 +50,19 @@
     {
       "item": "canned tuna in oil",
       "amount": "400 g"
+    },
+    {
+      "item": "pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 8 4–5 red capsicums (peppers) 16–20 anchovy fillets 16–20 fresh basil leaves PÂTÉ DI TONNO 150 g unsalted butter 1 large Spanish onion, chopped 1 large shallot, peeled and chopped 2 sprigs fresh tarragon, chopped 10 anchovy fillets, chopped 125 ml oloroso sherry 400 g canned tuna in oil pepper",
+    "Char the capsicum skins, holding them over a flame (a gas burner or kitchen blow torch) with a pair of tongs, turning them all over until blackened. Then place them, still hot, in a plastic bag and leave for 5–10 minutes. (The steam will loosen the skin of the capsicums and make them very easy to peel.) Peel and deseed, then dry the capsicum with kitchen paper and set aside.",
+    "For the pâté, use about 50 g of the butter to cook the onion and shallot in a frying pan. Add the tarragon and anchovies and cook gently until the anchovies melt. Add the sherry and let it evaporate a little. Add the remaining butter and let it melt, but not cook.",
     "Place the drained tuna in a food processor and add the butter and onion mix. Process until it becomes light in colour and add pepper.",
-    "Cut the capsicums lengthways into 2 cm slices, and on each slice put an anchovy fillet, a basil leaf and a heaped tablespoon of the pâté di tonno. Roll the capsicum slices, making neat little bundles and secure them with a toothpick."
-  ]
+    "Cut the capsicums lengthways into 2 cm slices, and on each slice put an anchovy fillet, a basil leaf and a heaped tablespoon of the pâté di tonno. Roll the capsicum slices, making neat little bundles and secure them with a toothpick.",
+    "Arrange on a serving plate and serve as an antipasto by themselves, or as part of a larger antipasto platter.",
+    "You can also use baby capsicums (pictured). Char the skin and remove as described above, but do not slice. Remove the tops and discard the seeds, then stuff the whole capsicum with pâté di tonno."
+  ],
+  "image": "/recipes/stuffed-capsicums.jpg"
 }

@@ -3,11 +3,14 @@
   "name": "ROASTED TOFU AND SQUASH WITH GREEN PEANUT SAUCED NOODLES",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1",
-  "time": "20 MINUTE",
   "intro": "I love making a sauce at the top end of the week that can filter into various dishes. This dressing is very rich, but when topped with roasted tofu and squash, it provides a wonderful stress-free lunch option. This makes tons of sauce, so save the leftovers to use over rice and veggies!",
+  "time": {
+    "prep": "20 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "soba or udon noodles",
@@ -31,71 +34,88 @@
     },
     {
       "item": "extra-firm tofu",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g (3½ oz)",
+      "group": "TOFU"
     },
     {
       "item": "cornflour (cornstarch)",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "TOFU"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "TOFU"
     },
     {
       "item": "olive oil",
-      "amount": "½ tablespoon"
+      "amount": "½ tablespoon",
+      "group": "TOFU"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TOFU"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "TOFU"
     },
     {
       "item": "wedge of butternut squash, cut into chunks",
-      "amount": "1"
+      "amount": "1",
+      "group": "SQUASH"
     },
     {
       "item": "olive oil",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "SQUASH"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SQUASH"
     },
     {
       "item": "coconut milk",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml (3½ fl oz/scant ½ cup)",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "Jamaican curry powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "smooth peanut butter",
-      "amount": "50 g (2 oz/3 tablespoons)"
+      "amount": "50 g (2 oz/3 tablespoons)",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "coriander (cilantro) leaves",
-      "amount": "50 g (2 oz/1½ cups)"
+      "amount": "50 g (2 oz/1½ cups)",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "flat-leaf parsley leaves",
-      "amount": "50 g (2 oz/1½ cups)"
+      "amount": "50 g (2 oz/1½ cups)",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "spring onion (scallion)",
-      "amount": "1"
+      "amount": "1",
+      "group": "GREEN PEANUT SAUCE"
     },
     {
       "item": "juice of ½ lemon",
-      "amount": ""
+      "amount": "",
+      "group": "GREEN PEANUT SAUCE"
     }
   ],
   "method": [
@@ -105,6 +125,7 @@
     "Put the ingredients for the sauce in a high-speed blender and blend until smooth. If needed, add a little water until it has reached your desired consistency. Transfer to a jar and set aside.",
     "Cook the noodles according to the packet instructions and drain, rinsing with cold water to stop them cooking. Put the cavolo nero in a bowl and add a tablespoon of the dressing. Massage it into the kale to soften, then add the noodles and add another 2 tablespoons of the dressing. Toss together to coat. Add the Little Gem and coriander. Toss and transfer to serving bowl. Top with tofu and squash and some peanuts for crunch."
   ],
+  "image": "/recipes/roasted-tofu-and-squash-with-green-peanut-sauced-noodles.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

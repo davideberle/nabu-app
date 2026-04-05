@@ -3,9 +3,10 @@
   "name": "Mamma’s Baked Vegetables",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "My mother used to make these vegetables often in winter. By changing the vegetables, it becomes a new dish every time, so the vegetables used here are simply one suggestion.",
   "ingredients": [
     {
       "item": "medium leeks, white, tender parts only, halved lengthways, rinsed well under running water",
@@ -32,6 +33,10 @@
       "amount": "300 ml"
     },
     {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "freshly grated parmigiano",
       "amount": "200 g"
     },
@@ -41,8 +46,9 @@
     }
   ],
   "method": [
-    "Serves 4 2 medium leeks, white, tender parts only, halved lengthways, rinsed well under running water ½ small Savoy cabbage, sliced ½ small cauliflower, broken into small florets 4 stems broccolini 1 small sweet potato, thinly sliced 300 ml cream sea salt and ground black pepper 200 g freshly grated parmigiano 70 g unsalted butter",
     "Preheat the oven to 200°C (gas mark 6).",
+    "Butter a large ovenproof dish (about 30 × 40 cm). Lay the vegetables in rows next to each other. Pour over the cream and sprinkle with salt, pepper and parmigiano. Break the butter into little pieces and dot it over the vegetables.",
     "Bake in the oven for about 25 minutes, or until the vegetables are tender and golden on top."
-  ]
+  ],
+  "image": "/recipes/mamma-s-baked-vegetables.jpg"
 }

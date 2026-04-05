@@ -3,10 +3,14 @@
   "name": "Bread Sticks with Olives",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
+    {
+      "item": "DOUGH",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour, preferably Italian type 00",
       "amount": "300 g"
@@ -20,8 +24,8 @@
       "amount": "1"
     },
     {
-      "item": "malt extract",
-      "amount": "1 teaspoon"
+      "item": "teaspoon malt extract",
+      "amount": "1"
     },
     {
       "item": "½ teaspoons salt",
@@ -36,18 +40,34 @@
       "amount": "60 ml"
     },
     {
-      "item": "lard (optional, although the lard gives the grissini extra flavour)",
-      "amount": "2 tablespoons"
+      "item": "tablespoons lard (optional, although the lard gives the grissini extra flavour)",
+      "amount": "2"
     },
     {
       "item": "green olives, pitted",
       "amount": "125 g"
+    },
+    {
+      "item": "unbleached plain flour or semolina, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil, for brushing",
+      "amount": ""
+    },
+    {
+      "item": "sea salt",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 DOUGH 300 g unbleached plain flour, preferably Italian type 00 200 g rye flour 1 ½ tablespoons dry yeast 1 teaspoon malt extract 1 ½ teaspoons salt 375 ml warm water 60 ml good-quality virgin olive oil 2 tablespoons lard (optional, although the lard gives the grissini extra flavour) 125 g green olives, pitted unbleached plain flour or semolina, for dusting good-quality virgin olive oil, for brushing sea salt",
     "Preheat the oven to 240°C (gas mark 9).",
     "Mix all the dough ingredients together and knead until the dough becomes shiny and elastic. Make sure the dough is not too dry – add a few more drops of warm water if necessary.",
+    "Shape the dough into a ball and put in a lightly oiled bowl. Put a few drops of oil over the dough, so that it does not dry out. Cover with a cloth and let it stand in a warm place for 1–2 hours.",
+    "Now punch the dough down and knead again, to get rid of all the air. Shape the dough roughly into a sausage about 10 cm in diameter, and cut slices off about 3 cm wide.",
+    "Take a slice of dough and arrange the olives in a row, touching each other. Now pinch the top of the dough together with your fingers in order to seal the olives in. Put a little flour or semolina on the workbench and roll the dough into a long grissino, about as thick as your finger.",
+    "Arrange the grissini on a baking tray, and let them stand for about 30 minutes. With a pastry brush, brush some more olive oil on them, and sprinkle them with salt.",
     "Bake in the hot oven for about 5 minutes. Check them from time to time to make sure they do not burn."
-  ]
+  ],
+  "image": "/recipes/bread-sticks-with-olives.jpg"
 }

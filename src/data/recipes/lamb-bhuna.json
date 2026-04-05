@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Authentic Indian bhunas are quite a lot more difficult to make than this British restaurant-style version. Bhuna is a style of cooking where hot oil or ghee is used to release the flavours of whole spices before raw meat is added, often as small pieces still on the bone. Once the meat is added, stock or water is drizzled into the pan in small amounts, cooking the meat as it reduces down. This process is repeated for 1 hour or more until the meat becomes fall-off-the-bone tender. It is then served in the thick sauce it was cooked in. This time-consuming style of cooking wouldn’t be possible in most restaurants.",
+  "intro": "Authentic Indian bhunas are quite a lot more difficult to make than this British restaurant-style version. Bhuna is a style of cooking where hot oil or ghee is used to release the flavours of whole spices before raw meat is added, often as small pieces still on the bone. Once the meat is added, stock or water is drizzled into the pan in small amounts, cooking the meat as it reduces down. This process is repeated for 1 hour or more until the meat becomes fall-off-the-bone tender. It is then served in the thick sauce it was cooked in. This time-consuming style of cooking wouldn’t be possible in most restaurants.\n\nThis bhuna is still a dry curry, but it is made in a fraction of the time, using cooked boneless meat instead of braised raw meat. It is delicious served with chapattis or naans to soak up all that amazing sauce.\n\nYou can try my authentic chicken bhuna recipe. Chicken takes a lot less time to cook in authentic bhuna style, but you could use the same method to cook an authentic lamb bhuna. You will just need to add more water during cooking.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "ghee, rapeseed (canola) oil or seasoned oil",
@@ -74,5 +78,6 @@
     "Add the tomato purée and, when it starts to bubble, stir in the mixed powder and tandoori masala, followed by 250ml (1 cup) of the base curry sauce. Let this simmer for about 2 minutes, without stirring unless it is obviously catching on the pan. Scrape any caramelized sauce at the edges of the pan back in.",
     "Increase the heat to high and add the pre-cooked lamb and the rest of the sauce along with the cooking stock. Let this bubble undisturbed until it reduces down to a thick sauce.",
     "To finish, reduce the heat to medium and whisk in the yoghurt 1 tablespoon at a time. Season with salt and black pepper. Top with the coriander (cilantro) and serve with a good squeeze of lime juice and/or some sliced red chilli, if you like."
-  ]
+  ],
+  "image": "/recipes/lamb-bhuna.jpg"
 }

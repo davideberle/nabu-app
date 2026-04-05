@@ -3,9 +3,10 @@
   "name": "Marsala Ice Cream",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
+  "intro": "This is a sophisticated dessert, something of a classic.\n\nMarsala, from the south-west of Sicily, is a sweet fortified wine that gives the ice cream a velvety texture.",
   "ingredients": [
     {
       "item": "organic eggs, separated",
@@ -25,7 +26,10 @@
     }
   ],
   "method": [
-    "Serves 8 6 organic eggs, separated 110 g caster sugar 150 ml good-quality Marsala 500 ml full cream, whipped",
-    "Place the bowl over a double boiler, allow the water in the lower pan to simmer, and whisk the mixture until it increases in volume and becomes like a thick cream. Set aside and allow it to cool."
-  ]
+    "Beat the egg yolks and sugar together until light, then add the Marsala and beat again until light and fluffy.",
+    "Place the bowl over a double boiler, allow the water in the lower pan to simmer, and whisk the mixture until it increases in volume and becomes like a thick cream. Set aside and allow it to cool.",
+    "Beat the egg whites until stiff but not dry. Mix the whipped cream with the egg yolk, sugar and Marsala mixture, then fold in the egg whites. Pour into a 30 × 30 cm square dish, cover with plastic wrap and put in freezer for at least 6 hours.",
+    "Scoop the ice cream out and put it into glasses to serve. The ice cream should still be a little bit soft – ‘semifreddo’ means ‘half-frozen’."
+  ],
+  "image": "/recipes/marsala-ice-cream.jpg"
 }

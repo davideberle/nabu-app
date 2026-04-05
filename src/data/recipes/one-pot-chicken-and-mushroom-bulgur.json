@@ -3,11 +3,14 @@
   "name": "One-Pot Chicken & Mushroom Bulgur",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
   "intro": "This bulgur dish is cooked Iraqi-style, with lots of mushrooms, onions, and boneless chicken pieces. The combination of those ingredients adds so much umami to this dish that I can’t help but eat spoon after spoon standing at the stove. It’s important to cook the mushrooms down on their own, without much oil, and give them time to release their moisture and turn golden brown; that’s how their flavor will concentrate. I serve this dish with any citrusy side salad and dollops of plain yogurt.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "50 minutes"
+  },
   "ingredients": [
     {
       "item": "boneless, skinless chicken thighs, cut into ½-inch (13 mm) cubes",
@@ -38,8 +41,8 @@
       "amount": "1½ pounds (680 g)"
     },
     {
-      "item": "yellow onions, finely diced",
-      "amount": "3 small"
+      "item": "small yellow onions, finely diced",
+      "amount": "3"
     },
     {
       "item": "ground turmeric",
@@ -56,6 +59,16 @@
     {
       "item": "chicken broth",
       "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "Salata or Arugula & Pomegranate Salad",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Plain, whole-milk yogurt",
+      "amount": "",
+      "group": "FOR SERVING"
     }
   ],
   "method": [
@@ -64,5 +77,6 @@
     "Add the mushrooms to the same skillet and cook, stirring often, over medium heat for 10 minutes, until they turn deeply golden and release their moisture. Add the onions and remaining 3 tablespoons oil and cook until softened, stirring often, for 5 to 6 minutes. Add the remaining 1 teaspoon salt, ½ teaspoon pepper, 1 teaspoon cumin, and ½ teaspoon coriander along with the turmeric and stir to combine. Mix to combine and toast the spices for 2 minutes, or until fragrant. Remove a few tablespoons of the onion and mushroom mixture for garnish, if desired.",
     "Add the chickpeas, bulgur, and broth and bring to a boil. Once boiling, carefully taste the liquid and adjust the salt; it should be noticeably salty. Add the chicken back into the skillet, cover with the lid, reduce the heat to low, and let cook for 25 minutes, undisturbed. Remove the lid and fluff the bulgur with a fork.",
     "Garnish with the reserved mushrooms and onions (if using) and serve with salad and yogurt."
-  ]
+  ],
+  "image": "/recipes/one-pot-chicken-and-mushroom-bulgur.jpg"
 }

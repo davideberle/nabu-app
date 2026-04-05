@@ -3,11 +3,14 @@
   "name": "TOFU LARB",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1",
-  "time": "20 MINUTE",
   "intro": "I crave spicy and salty things. Larb is a type of Thai salad that packs a massive punch. Traditionally, it is made with minced (ground) pork and is vibrant with lime and mint. This dish comes together so quickly, making it very lunch-friendly, and a wonderful meal to make for yourself when you want something delicious without having to break a sweat. Grating the tofu creates a similar texture to the traditional minced meat and allows it to caramelise really well in the pan. Serve this up with any leftover grain, over noodles, or with crunchy vegetables!",
+  "time": {
+    "prep": "5 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "jasmine rice",
@@ -55,31 +58,38 @@
     },
     {
       "item": "Green Seasoning",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     },
     {
       "item": "brown sugar, coconut sugar or maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     },
     {
       "item": "juice of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "Little Gem lettuce",
-      "amount": "1"
+      "amount": "1",
+      "group": "TO SERVE"
     },
     {
       "item": "cucumber, halved, deseeded and cut into matchsticks",
-      "amount": "¼"
+      "amount": "¼",
+      "group": "TO SERVE"
     },
     {
       "item": "carrot, cut into matchsticks",
-      "amount": "1"
+      "amount": "1",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -88,6 +98,7 @@
     "In the same frying pan, heat the coconut oil, then add the mushrooms and the grated tofu. Fry for 3–4 minutes with a good pinch of salt until caramelized. Add the shallot, coriander stalks and Scotch bonnet, and continue to fry for a further 3–4 minutes until softened. Add the garlic and fry until fragrant. Add the dressing and allow to coat the tofu and mushrooms. Remove from the heat and add the chopped coriander and torn mint leaves. Add some of the nuts.",
     "Transfer the larb to a bowl and scatter over the remaining nuts. Arrange the vegetables around the bowl and enjoy!"
   ],
+  "image": "/recipes/tofu-larb.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

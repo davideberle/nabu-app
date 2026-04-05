@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Chicken wings are becoming a popular starter at lots of Indian restaurants. You might have seen many delicious options, from spicy garlic salt to Portuguese piri piri. They may not all be flavoured with the ingredients you would expect at a curry house, but I’ve never heard anyone complain! This is a recipe I developed after picking up some chicken wings at a food festival. The chef was happy to tell me what went into his marinade, and I think I got it just right.",
+  "intro": "Chicken wings are becoming a popular starter at lots of Indian restaurants. You might have seen many delicious options, from spicy garlic salt to Portuguese piri piri. They may not all be flavoured with the ingredients you would expect at a curry house, but I’ve never heard anyone complain! This is a recipe I developed after picking up some chicken wings at a food festival. The chef was happy to tell me what went into his marinade, and I think I got it just right.\n\nUsually chicken is served skinless at Indian restaurants. Skinless chicken wings are available from most halal butchers. I tried skinning them myself once and won’t again. It was way too much work. Of course, unskinned chicken wings are a lot fattier, but the crispy chicken skin is worth every calorie.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "40 MINS"
+  },
   "ingredients": [
     {
       "item": "chicken wings, preferably skinless",
@@ -22,46 +26,58 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "green chilli paste, or 2–3 green chillies, finely chopped",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "tamarind concentrate",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "cider vinegar",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Worcestershire sauce",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "honey",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder, or to taste",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Juice of 3 limes",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "Salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
-    "Mix all the marinade ingredients together in a large bowl. Add the chicken wings and coat well with the marinade. Leave to marinate for 2–48 hours."
-  ]
+    "Mix all the marinade ingredients together in a large bowl. Add the chicken wings and coat well with the marinade. Leave to marinate for 2–48 hours.",
+    "When ready to cook, preheat the oven to 200°C (400°F/Gas 6). Arrange the chicken wings on a lightly greased baking tray and place on the middle rack. Cook for about 30 minutes and then give the chicken a good shake and cook for another 10 minutes, or until cooked through and slightly blackened on the outside. Stir in the chilli sauce and serve with a good raita like the coriander, garlic and chilli raita."
+  ],
+  "image": "/recipes/sweet-and-spicy-chicken-wings.jpg"
 }

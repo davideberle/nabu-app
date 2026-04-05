@@ -3,9 +3,10 @@
   "name": "Tomato Sauce",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "This is a classic and basic tomato sauce. You can use it to accompany pasta, on pizza, or with eggs or meat.",
   "ingredients": [
     {
       "item": "Spanish onion, chopped",
@@ -20,6 +21,18 @@
       "amount": "25 ml"
     },
     {
+      "item": "cloves garlic, chopped",
+      "amount": "2–3"
+    },
+    {
+      "item": "anchovies",
+      "amount": "6–8"
+    },
+    {
+      "item": "a few sage leaves",
+      "amount": ""
+    },
+    {
       "item": "bay leaf",
       "amount": "1"
     },
@@ -32,13 +45,23 @@
       "amount": "500 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "small chilli (optional)",
       "amount": "1"
+    },
+    {
+      "item": "a few basil leaves, for serving",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 1 Spanish onion, chopped 25 g unsalted butter 25 ml good-quality virgin olive oil 2–3 cloves garlic, chopped 6–8 anchovies a few sage leaves 1 bay leaf 150 g tomato paste 500 g ripe, peeled roma tomatoes (canned tomatoes can be used if fresh are not available) salt and ground black pepper 1 small chilli (optional) a few basil leaves, for serving",
+    "Soften the onion in the butter and olive oil. Add the garlic, anchovies, sage and bay leaf (or you can use thyme, oregano or rosemary if you prefer).",
     "Add the tomato paste and stir well, cooking until the paste turns a terracotta colour (do not let it burn). Add the tomatoes, mix well, season as required and add the chilli, if using.",
-    "Cover and cook for about 20 minutes, stirring often. Finally, chop the basil leaves and add to the dish."
-  ]
+    "Cover and cook for about 20 minutes, stirring often. Finally, chop the basil leaves and add to the dish.",
+    "The tomato paste gives the sauce a richer, stronger flavour."
+  ],
+  "image": "/recipes/tomato-sauce.jpg"
 }

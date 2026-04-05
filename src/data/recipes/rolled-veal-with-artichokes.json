@@ -3,7 +3,7 @@
   "name": "Rolled Veal with Artichokes",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -18,6 +18,10 @@
     {
       "item": "unsalted butter at room temperature",
       "amount": "90 g"
+    },
+    {
+      "item": "juice of ½ organic lemon",
+      "amount": ""
     },
     {
       "item": "artichokes",
@@ -38,12 +42,18 @@
     {
       "item": "dry white wine",
       "amount": "150 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 600 g veal backstraps (loins) 80 g prosciutto, finely diced 90 g unsalted butter at room temperature juice of ½ organic lemon 2 artichokes 60 g unbleached plain flour 80 ml good-quality virgin olive oil 5 fresh sage leaves 150 ml dry white wine salt and ground black pepper",
     "Cut the veal into 8 thin slices and pat dry with kitchen paper. Mix the prosciutto into the softened butter.",
     "Bring a saucepan of salted water to the boil, then add the lemon juice. Trim the artichoke stalks away and remove the tough outer leaves, then slice a third off the tops. Add them to the boiling water and cook for 2 minutes. Remove from the water and drain upside down on a rack. When cool enough to handle, cut each artichoke into 8 slices, removing hairy bits of choke as necessary.",
+    "Spread each slice of veal with a little of the butter mixture and top with 2 slices of artichoke. Roll the meat up tightly and secure with a toothpick or string.",
+    "Roll the involtini in the flour.",
     "Heat the olive oil in a large frying pan then add the sage leaves and involtini. Turn them around in the oil so that they brown evenly all over. Add the wine and stir well, making sure you scrape up all the tasty bits from the bottom of the pan. Season with salt and pepper then cover the pan and simmer over a very low heat for 10–15 minutes. Add a little more wine if necessary. Serve hot."
-  ]
+  ],
+  "image": "/recipes/rolled-veal-with-artichokes.jpg"
 }

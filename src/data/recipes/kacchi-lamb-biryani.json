@@ -7,6 +7,10 @@
   },
   "servings": "serves 6–8",
   "intro": "Order a biryani at a curry house and you are much more likely to be served something like the restaurant-style biryani. I first tried an authentic kacchi biryani back in 2013 at Sheba on Brick Lane in London, which they cook up for special occasions. This is my take on their delicious and hugely popular dish.",
+  "time": {
+    "prep": "25 MINS, PLUS MARINATING TIME",
+    "cook": "50 MINS"
+  },
   "ingredients": [
     {
       "item": "onions, finely sliced and fried (see fried onions and onion paste), plus about 250ml (1 cup) of the reserved cooking oil",
@@ -66,58 +70,73 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "plain yoghurt",
-      "amount": "420g (scant 1¾ cups)"
+      "amount": "420g (scant 1¾ cups)",
+      "group": "MARINADE"
     },
     {
       "item": "Juice of 2 lemons",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "fresh green chillies, roughly chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground mace",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "coriander (cilantro) leaves, finely chopped",
-      "amount": "30g (1oz)"
+      "amount": "30g (1oz)",
+      "group": "MARINADE"
     },
     {
       "item": "mint leaves, finely chopped",
-      "amount": "10g (⅓oz)"
+      "amount": "10g (⅓oz)",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Mix the marinade ingredients in a bowl with a quarter of the fried onions and 200ml (generous ¾ cup) of cooled reserved cooking oil. Add the lamb and rub the marinade into it. Cover and marinate overnight in the fridge.",
+    "When ready to cook, bring 1.5 litres (6¼ cups) water to a boil in a large pan. Add the salt, whole garam masala and rice, and simmer for 6 minutes. After the 6 minutes, remove half the rice from the water with a strainer and place in a small bowl. Cook the remaining rice for another minute and remove to a second bowl.",
     "Now spoon about 3 tablespoons of the reserved onion oil into a large, heavy-based saucepan and tip in the marinated meat along with all of the marinade. Spread the first batch of rice, including any whole spices, over the lamb. Cover with half the remaining fried onions and half the chopped coriander (cilantro) and mint.",
     "Add the second bowl of rice on top and then the remaining fried onions and herbs. Spoon the melted ghee over the top layer, followed by the saffron-infused milk, the rose water and a sprinkle of ground cumin. Scatter some dried rose petals on top (if using).",
     "Mix the flour with enough water to make a soft dough. Run it around the top of the pan and secure the lid tightly on top. Heat the biryani over a high heat for about 2 minutes. When you hear it simmering, reduce the heat to very low and cook for about 40 minutes. Don’t be tempted to lift the lid.",
     "After 40 minutes, your kitchen will smell amazing. Take your biryani to the table and unseal the lid. Lift it and enjoy the amazing aroma. Stir the meat from the bottom into the rice about three or four times and serve with your favourite raita."
-  ]
+  ],
+  "tips": "*Ask your butcher to cut your leg of lamb into pieces.",
+  "image": "/recipes/kacchi-lamb-biryani.jpg"
 }

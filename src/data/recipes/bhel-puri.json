@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Bhel puri can be made with many different ingredients, but the key ingredient is kurmure (puffed rice), which can be found in most Indian/Asian shops. This delicious snack food originates from Mumbai but is now popular all over India – so much so, it’s made its way to restaurants and street-food stalls here in the UK. It’s so good, it’s addictive, and it’s super-easy to make too. You want to mix the ingredients up just before serving. Once you get the idea behind bhel puri, you can adjust the recipe depending on how much you want to make and what you feel like adding. Bhel puri is traditionally served in rolled-up newspapers, but a simple bowl will do.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "potato, unpeeled",
@@ -65,6 +69,8 @@
     "Bring a saucepan of water to a boil. When ready, add the potato and boil until fork-tender. The cooking time will vary depending on the size of the potato, so it’s ready when it’s ready. Transfer to a chopping board to cool, then peel and cut into small cubes.",
     "In a large bowl, mix the kurmure, onion, green chillies and potato together. Add the mint and coriander sauce along with the tamarind sauce. Try to coat all the rice with the sauces. Now stir in the remaining ingredients, season with salt and serve."
   ],
+  "tips": "Many other ingredients are popular additions to bhel puri. Try finely diced mango or pomegranate seeds for a good sweet touch, or broken potato crisps.",
+  "image": "/recipes/bhel-puri.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

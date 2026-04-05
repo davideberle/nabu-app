@@ -3,10 +3,15 @@
   "name": "Pink Grapefruit and Campari Sorbet",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
+  "intro": "The bitterness of the Campari, grapefruit and Angostura gives this sorbet a quite unusual flavour. It is such a refreshing dessert, perfect to be eaten on a hot summer’s evening.",
   "ingredients": [
+    {
+      "item": "arge pink grapefruits, juiced",
+      "amount": "4–5 l"
+    },
     {
       "item": "caster sugar",
       "amount": "125 g"
@@ -21,7 +26,8 @@
     }
   ],
   "method": [
-    "Serves 6–8 4–5 large pink grapefruits, juiced 125 g caster sugar 125 ml Campari 5 drops Angostura bitters",
-    "Mix all the ingredients together well. When the sugar has completely dissolved, put into an ice cream machine and churn until fluffy and light coloured."
-  ]
+    "Mix all the ingredients together well. When the sugar has completely dissolved, put into an ice cream machine and churn until fluffy and light coloured.",
+    "Spoon the sorbet into glasses and finish off with a little more Campari on top. The sorbet should not be too sweet."
+  ],
+  "image": "/recipes/pink-grapefruit-and-campari-sorbet.jpg"
 }

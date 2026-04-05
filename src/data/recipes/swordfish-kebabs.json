@@ -3,13 +3,22 @@
   "name": "Swordfish Kebabs",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "Swordfish lends itself very well to kebabs as it has a firm flesh.",
   "ingredients": [
     {
       "item": "swordfish, cut into 2.5 cm cubes",
       "amount": "1 kg"
+    },
+    {
+      "item": "fresh bay leaves",
+      "amount": ""
+    },
+    {
+      "item": "MARINADE",
+      "amount": ""
     },
     {
       "item": "cloves garlic",
@@ -20,12 +29,27 @@
       "amount": "1"
     },
     {
+      "item": "sea salt flakes",
+      "amount": ""
+    },
+    {
+      "item": "juice of ½ organic lemon",
+      "amount": ""
+    },
+    {
       "item": "good-quality virgin olive oil",
       "amount": "250 ml"
+    },
+    {
+      "item": "Salsa Verde",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 1 kg swordfish, cut into 2.5 cm cubes fresh bay leaves MARINADE 2 cloves garlic 1 chilli sea salt flakes juice of ½ organic lemon 250 ml good-quality virgin olive oil Salsa Verde",
-    "In a mortar, mix all the marinade ingredients together well. Pour this marinade over the fish skewers and let rest for about 15 minutes."
-  ]
+    "String the fish cubes onto wooden or steel skewers (if using wooden skewers, soak them first in water, so that they will not burn on the grill). After every third fish cube add a fresh bay leaf on the skewer.",
+    "In a mortar, mix all the marinade ingredients together well. Pour this marinade over the fish skewers and let rest for about 15 minutes.",
+    "Preheat the grill to high.",
+    "Grill the fish under a very hot grill for about 3–4 minutes, turning the skewers so that the fish is nicely coloured all over. Serve with the salsa verde."
+  ],
+  "image": "/recipes/swordfish-kebabs.jpg"
 }

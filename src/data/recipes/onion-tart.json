@@ -3,10 +3,14 @@
   "name": "Onion Tart",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "dry yeast",
       "amount": "15 g"
@@ -24,8 +28,12 @@
       "amount": "100 g"
     },
     {
-      "item": "salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon salt",
+      "amount": "1"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "unsalted butter, plus extra for greasing",
@@ -36,8 +44,8 @@
       "amount": "600 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "1 tablespoon"
+      "item": "tablespoon good-quality virgin olive oil",
+      "amount": "1"
     },
     {
       "item": "bacon, cut into strips",
@@ -56,15 +64,24 @@
       "amount": "100 g"
     },
     {
-      "item": "sea salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon sea salt",
+      "amount": "1"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 PASTRY 15 g dry yeast 100 ml warm water 200 g unbleached plain flour 100 g unsalted butter, at room temperature 1 teaspoon salt FILLING 50 g unsalted butter, plus extra for greasing 600 g onions, finely sliced 1 tablespoon good-quality virgin olive oil 150 g bacon, cut into strips 4 organic eggs 300 ml cream 100 g grated Gruyère 1 teaspoon sea salt ground black pepper",
+    "For the pastry, combine the yeast and water and set aside.",
     "Put the flour, butter and salt in a bowl and rub the butter into the flour with your fingertips. Add the yeast and water and mix until it forms a dough (if it seems too dry, you may need to add a little more water). Knead the dough until smooth and shiny. (Alternatively, you can make the dough in a food processor.) Let the dough rest for about 30 minutes (it should rise just a little).",
     "Preheat the oven to 220°C (gas mark 7).",
+    "For the filling, heat the butter in a saucepan and cook the onions for about 10 minutes on medium heat, until soft and sweet. Transfer them to a plate.",
     "Add the oil and bacon to the pan and cook until the bacon starts to become brown and crisp (be careful not to burn it). Drain on kitchen paper.",
-    "Cook on the bottom shelf of the oven for 30–40 minutes, or until golden-brown in colour."
-  ]
+    "Butter an ovenproof pie dish (around 25–30 cm in diameter). Roll out the pastry and press it into the dish, trimming off any excess.",
+    "Beat the eggs and cream in a mixing bowl then add the cheese, salt, a grinding of pepper and the onions. Pour the mixture into the pastry base and scatter the bacon on top.",
+    "Cook on the bottom shelf of the oven for 30–40 minutes, or until golden-brown in colour.",
+    "You can serve this onion tart with a salad for lunch, or as a starter before dinner. It can also be made without the cheese, which will make the tart a little lighter."
+  ],
+  "image": "/recipes/onion-tart.jpg"
 }

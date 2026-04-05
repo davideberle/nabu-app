@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I first tried this delicious vegetarian curry at Baluchi at LaLit London. I loved it and asked my chef friend Jomon Kuriakose to send me the recipe. His recipe was slightly different in that it was prepared on a restaurant scale, but I have adapted it for the home cook. I really like the flavour and meaty texture of jackfruit. It goes so well with the other dumpling ingredients. To save time, you could let the sauce simmer while you prepare the dumplings. Sometimes I simplify this curry by making sauce and then just adding small pieces of jackfruit. I like to serve this with steamed basmati rice.",
+  "time": {
+    "prep": "20 MINS, PLUS SOAKING THE CASHEW NUTS",
+    "cook": "50 MINS"
+  },
   "ingredients": [
     {
       "item": "Rapeseed (canola) oil, for frying",
@@ -22,83 +26,103 @@
     },
     {
       "item": "large (about 250g/9oz) potatoes",
-      "amount": "2"
+      "amount": "2",
+      "group": "DUMPLINGS"
     },
     {
       "item": "grated jackfruit (tinned or fresh)",
-      "amount": "250g (9oz)"
+      "amount": "250g (9oz)",
+      "group": "DUMPLINGS"
     },
     {
       "item": "rice flour",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "DUMPLINGS"
     },
     {
       "item": "cornflour (cornstarch) (optional)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "DUMPLINGS"
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)"
+      "amount": "200g (7oz)",
+      "group": "DUMPLINGS"
     },
     {
       "item": "2.5cm (1in) piece of ginger, peeled and minced",
-      "amount": ""
+      "amount": "",
+      "group": "DUMPLINGS"
     },
     {
       "item": "green chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "DUMPLINGS"
     },
     {
       "item": "finely chopped coriander (cilantro) leaves",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "DUMPLINGS"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "DUMPLINGS"
     },
     {
       "item": "medium onions, roughly chopped",
-      "amount": "5"
+      "amount": "5",
+      "group": "SAUCE"
     },
     {
       "item": "2.5cm (1in) piece of ginger, peeled and crushed",
-      "amount": ""
+      "amount": "",
+      "group": "SAUCE"
     },
     {
       "item": "garlic cloves",
-      "amount": "2"
+      "amount": "2",
+      "group": "SAUCE"
     },
     {
       "item": "green chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "SAUCE"
     },
     {
       "item": "green cardamom pods, smashed",
-      "amount": "3"
+      "amount": "3",
+      "group": "SAUCE"
     },
     {
       "item": "Indian bay leaf (cassia leaf)",
-      "amount": "1"
+      "amount": "1",
+      "group": "SAUCE"
     },
     {
       "item": "cashew nuts, soaked in water overnight",
-      "amount": "100g (3½oz)"
+      "amount": "100g (3½oz)",
+      "group": "SAUCE"
     },
     {
       "item": "double (heavy) cream",
-      "amount": "100ml (scant ½ cup)"
+      "amount": "100ml (scant ½ cup)",
+      "group": "SAUCE"
     },
     {
       "item": "white pepper",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SAUCE"
     },
     {
       "item": "level tsp salt",
-      "amount": "1"
+      "amount": "1",
+      "group": "SAUCE"
     },
     {
       "item": "cold butter",
-      "amount": "75g (5 tbsp)"
+      "amount": "75g (5 tbsp)",
+      "group": "SAUCE"
     }
   ],
   "method": [
@@ -109,6 +133,7 @@
     "Blend the sauce and pass it through a fine sieve to get a smooth sauce consistency. Add some or all of the double cream and season with the white pepper and salt. Add the fried jackfruit dumplings and simmer in the sauce until heated through.",
     "Add the butter, allowing it to melt into the sauce. Serve on warm plates with rice and garnish with fried onions and coriander (cilantro)."
   ],
+  "image": "/recipes/jackfruit-dumpling-curry.jpg",
   "dietary": [
     "vegetarian"
   ]

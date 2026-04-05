@@ -3,7 +3,7 @@
   "name": "Hazelnut Semifreddo",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -24,13 +24,21 @@
       "amount": "600 ml"
     },
     {
-      "item": "Nocino liqueur or oloroso sherry",
-      "amount": "2 tablespoons"
+      "item": "tablespoons Nocino liqueur or oloroso sherry",
+      "amount": "2"
+    },
+    {
+      "item": "melted dark chocolate, to serve (optional)",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 250 g caster sugar 300 g hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro 2 organic eggs, separated 600 ml thickened cream 2 tablespoons Nocino liqueur or oloroso sherry melted dark chocolate, to serve (optional)",
-    "melted dark chocolate, to serve (optional)",
-    "In a separate bowl, beat the egg whites until they form stiff peaks but are not dry. Fold into the praline mixture. Spoon the mixture into a rectangular dish. Cover with plastic wrap and freeze for at least 4 hours, or overnight."
-  ]
+    "To make the praline, melt 200 g of the sugar in a saucepan over medium heat, until golden-brown, tipping the pan from side to side so that the sugar will melt evenly. Stir in the hazelnuts and shake them around, until the caramelised sugar has coated them evenly. Pour onto some greaseproof paper and, with the back of a spoon, smooth the mix out to spread the nuts evenly (be careful, the praline will be very hot!).",
+    "When cold, break off pieces and pulse them in a food processor. The praline should not be too finely chopped: it should still be recognisable as little bits of hazelnut and caramel.",
+    "Beat the egg yolks with the remaining 50 g sugar, until light and fluffy, then add the cream slowly to the yolk mixture and beat for a few minutes more, adding the Nocino or sherry at the end. The mixture should have the consistency of a thick cream. Add the praline mixture and with a spoon fold it in well.",
+    "In a separate bowl, beat the egg whites until they form stiff peaks but are not dry. Fold into the praline mixture. Spoon the mixture into a rectangular dish. Cover with plastic wrap and freeze for at least 4 hours, or overnight.",
+    "Before serving, drizzle with melted dark chocolate, if desired.",
+    "You can make the semifreddo in individual dishes if you prefer."
+  ],
+  "image": "/recipes/hazelnut-semifreddo.jpg"
 }

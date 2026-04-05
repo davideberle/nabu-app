@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I find myself eating a lot less meat these days and I’m not all that crazy about meat substitutes. That’s why I love veggie kebabs like these. They are both filling and delicious. Serve as a snack with a good raita or chutney. Here I have served them with homemade mango pickle and garnished them with flaky salt and coriander (cilantro). If you form the kebabs into small bite-size balls, they are also good stirred into any of the sauces in the curry-house section of this book.",
+  "time": {
+    "prep": "15 MINS, PLUS SOAKING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -95,6 +99,7 @@
     "Place this lentil mixture in a mixing bowl and add the fried vegetables. Mix well with your hands to combine and season with salt and black pepper. Form the mixture into the shape of your choice – they could be small and round like meatballs, or made into sausage shapes.",
     "Heat the oil in a large frying pan. I usually use about 5cm (2in) of oil, but you could use a lot less if using a non-stick pan. Fry the kebabs for about 3 minutes until browned on one side, then flip them over and brown the other side for 2–3 minutes."
   ],
+  "image": "/recipes/red-lentil-and-vegetable-kebabs.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

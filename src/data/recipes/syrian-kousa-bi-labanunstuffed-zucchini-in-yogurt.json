@@ -3,53 +3,106 @@
   "name": "Syrian Kousa Bi LabanUNSTUFFED ZUCCHINI IN YOGURT",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 servings",
-  "time": "15 minutes",
   "intro": "Kousa means “squash” or “zucchini” in Arabic, and it is one of the vegetables that is most commonly cored and stuffed with ground beef. The stuffed kousa are then either simmered in a rich tomato sauce or a yogurt sauce. I personally always gravitate to warm, cooked yogurt dishes, and this is one of my favorites. But instead of going through the process of coring and stuffing the zucchini, which can be very time-consuming, I make a deconstructed version on the advice of my Syrian friend Nadia (who is an excellent cook).",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
+      "item": "large zucchini (about 1½ pounds, or 660 g, total)",
+      "amount": "3",
+      "group": "ZUCCHINI"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon",
+      "group": "ZUCCHINI"
+    },
+    {
       "item": "kosher salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ teaspoon",
+      "group": "ZUCCHINI"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "GROUND BEEF"
+    },
+    {
+      "item": "large yellow onion, finely chopped",
+      "amount": "1",
+      "group": "GROUND BEEF"
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "GROUND BEEF"
     },
     {
       "item": "lean ground beef",
-      "amount": "1 pound (454 g)"
+      "amount": "1 pound (454 g)",
+      "group": "GROUND BEEF"
     },
     {
       "item": "seven spice",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "GROUND BEEF"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ teaspoon",
+      "group": "GROUND BEEF"
     },
     {
       "item": "pine nuts (or substitute slivered almonds)",
-      "amount": "½ cup (70 g)"
+      "amount": "½ cup (70 g)",
+      "group": "GROUND BEEF"
     },
     {
-      "item": "egg",
-      "amount": "1 large"
+      "item": "plain, whole-milk yogurt",
+      "amount": "4½ cups (1.1 L)",
+      "group": "YOGURT SAUCE"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1 tablespoon",
+      "group": "YOGURT SAUCE"
+    },
+    {
+      "item": "large egg",
+      "amount": "1",
+      "group": "YOGURT SAUCE"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "YOGURT SAUCE"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "YOGURT SAUCE"
+    },
+    {
+      "item": "Dried mint",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Roz Bi Shaariya",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE ZUCCHINI: Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper.",
+    "Preheat the oven to 400°F (205°C). Line a large, rimmed sheet pan with parchment paper.",
     "Cut the zucchini in half lengthwise, then cut in half lengthwise again. Each zucchini will create 4 long “sticks.” Finally, cut the 12 sticks into ½-inch-long (13 mm) pieces. Place the pieces on the prepared sheet pan. Drizzle with the 1 tablespoon oil and sprinkle with the ¾ teaspoon salt, toss to combine. Bake for 20 to 30 minutes, until soft; if required, bake for another 5 to 10 minutes.",
-    "TO MAKE THE GROUND BEEF: In a large skillet, heat the 2 tablespoons oil over medium heat. Add the onion and ½ teaspoon of the salt and cook, stirring often, until softened, 5 to 6 minutes. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned and its juices dry up. Season with the remaining ½ teaspoon salt, seven spice, and pepper and cook and stir for a few minutes longer to combine the spices with the beef. Taste and adjust the salt if necessary. Using the wooden spoon, move the beef to one side of the skillet and add the pine nuts to the other side. Toast them for a few minutes, or until lightly golden. Remove a few tablespoons of pine nuts and set aside for garnishing, then mix the rest with the meat. Turn off the heat.",
-    "TO MAKE THE YOGURT SAUCE: Add the yogurt to a medium saucepan but do not turn on the heat. Place the cornstarch in a small bowl with 3 tablespoons of water. Whisk together with a fork to create a slurry. Add the slurry to the yogurt along with the egg. Whisk well to combine, then turn the heat to medium. Let the yogurt heat up and simmer for 10 to 12 minutes, whisking occasionally. Do not bring it to a boil. Season with the 1 teaspoon salt and mint and turn off the heat. Add the baked zucchini and ground beef and gently mix to combine. Garnish with the reserved pine nuts and mint. Serve with rice."
-  ]
+    "In a large skillet, heat the 2 tablespoons oil over medium heat. Add the onion and ½ teaspoon of the salt and cook, stirring often, until softened, 5 to 6 minutes. Add the ground beef and cook, breaking it up into small pieces with a wooden spoon, for 6 to 7 minutes, until browned and its juices dry up. Season with the remaining ½ teaspoon salt, seven spice, and pepper and cook and stir for a few minutes longer to combine the spices with the beef. Taste and adjust the salt if necessary. Using the wooden spoon, move the beef to one side of the skillet and add the pine nuts to the other side. Toast them for a few minutes, or until lightly golden. Remove a few tablespoons of pine nuts and set aside for garnishing, then mix the rest with the meat. Turn off the heat.",
+    "Add the yogurt to a medium saucepan but do not turn on the heat. Place the cornstarch in a small bowl with 3 tablespoons of water. Whisk together with a fork to create a slurry. Add the slurry to the yogurt along with the egg. Whisk well to combine, then turn the heat to medium. Let the yogurt heat up and simmer for 10 to 12 minutes, whisking occasionally. Do not bring it to a boil. Season with the 1 teaspoon salt and mint and turn off the heat. Add the baked zucchini and ground beef and gently mix to combine. Garnish with the reserved pine nuts and mint. Serve with rice."
+  ],
+  "image": "/recipes/syrian-kousa-bi-labanunstuffed-zucchini-in-yogurt.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This is one you are very unlikely to find at a curry house but it was too good to leave out of the book. I’ve been making beer can chicken for many years and this Indian-inspired version is one of my current favourites. You could also easily make this in a conventional oven – see my tip.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "1–1½ HOURS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -22,39 +26,52 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "paprika",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "dried oregano",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "red chilli powder",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Small bunch of coriander (cilantro), blended with a little water",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Blend all the marinade ingredients into a paste or pound them using a pestle and mortar.",
-    "Slowly drizzle the rapeseed (canola) oil into the paste, whisking continuously until you have a smooth emulsion. Cover the chicken inside and out with the marinade and allow to marinate for 8 hours or overnight. I carefully rub about half of the marinade under the skin but don’t worry if you can’t be bothered."
-  ]
+    "Slowly drizzle the rapeseed (canola) oil into the paste, whisking continuously until you have a smooth emulsion. Cover the chicken inside and out with the marinade and allow to marinate for 8 hours or overnight. I carefully rub about half of the marinade under the skin but don’t worry if you can’t be bothered.",
+    "When ready to cook, set up the barbecue for indirect cooking. Drink half the can of beer or lager and add 1 teaspoon of marinade from the chicken dish to the can. The beer might foam up when you add the marinade but that isn’t a problem.",
+    "When your barbecue is good and hot you’re ready to cook. If you have a thermometer, aim for a cooking temperature of 190–200°C (375–390°F). Place the chicken on the beer can and stand it directly on the barbecue on the side with no coals. Cover and cook for about 1–1¼ hours until the chicken is cooked through and the juices run clear when stuck with a knife in the thigh. You can’t be too careful with chicken so if you have a meat thermometer, check that your chicken is 82°C (180°F).",
+    "When cooked through, transfer to a serving plate and cover with foil to sit for about 10 minutes before serving."
+  ],
+  "tips": "You can also cook the chicken in the oven. Preheat the oven to 230°C (450°F/Gas 8). Place the chicken on a half-full beer can in a roasting tray and roast for 20 minutes. Reduce the heat to 200°C (400°F/Gas 6) and continue to roast until cooked through and the juices run clear, about another 30 minutes. Season with salt and black pepper. Let the chicken rest for about 10 minutes before carving.",
+  "image": "/recipes/tandoori-beer-can-chicken.jpg"
 }

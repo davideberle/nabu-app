@@ -3,10 +3,15 @@
   "name": "Sardinian Ravioli",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6 (makes about 24 large ravioli)",
+  "intro": "This is a traditional pasta dish from the island of Sardinia.\n\nWe used to go to a restaurant located in a magic position high above the sea, nestled into the granite rocks. The chef, Gennaro, used wild mint from the island. The flavour is closer to that of sage than our mint, which is why I prefer sage for this dish.",
   "ingredients": [
+    {
+      "item": "PASTA",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour, preferably Italian type 00",
       "amount": "450 g"
@@ -16,12 +21,24 @@
       "amount": "4"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "1 tablespoon"
+      "item": "tablespoon good-quality virgin olive oil",
+      "amount": "1"
     },
     {
-      "item": "leeks, finely chopped",
-      "amount": "2"
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "extra flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
+    },
+    {
+      "item": "eeks, finely chopped",
+      "amount": "2 l"
     },
     {
       "item": "clove garlic, chopped",
@@ -40,6 +57,10 @@
       "amount": "500 g"
     },
     {
+      "item": "mint leaves (this is the original way, but I prefer fresh sage leaves instead)",
+      "amount": "5–6"
+    },
+    {
       "item": "grated parmigiano, plus extra for serving",
       "amount": "100 g"
     },
@@ -48,12 +69,29 @@
       "amount": "60 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "BURNT SAGE BUTTER",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "100–150 g"
+    },
+    {
       "item": "fresh sage leaves",
       "amount": "15"
     }
   ],
   "method": [
-    "Serves 6 (makes about 24 large ravioli)",
-    "Heat the butter over medium heat until it bubbles, then add the sage and cook until crisp. Sprinkle parmigiano over the ravioli and pour the bubbling butter and sage sauce over them."
-  ]
+    "For the filling, gently fry the leek and garlic together in the butter and oil until they are soft and the leeks are sweet. Then mix with all the remaining filling ingredients.",
+    "For the pasta, mix the flour, eggs, oil and salt in a food processor, using a dough hook, until you get a shiny ball of dough. Divide into 4 or 5 pieces and roll these into strips using a pasta machine, starting at the thickest setting and rolling them five times, folding the sheets into three each time before you re-roll. Gradually reduce to the second-finest setting.",
+    "Lay a pasta sheet on a surface dusted with flour. Place tablespoons of filling on the pasta, spaced out at about 5 cm. With a pastry brush dipped in water, lightly moisten the edges of the ravioli so the pastry cover will stick. Cover with another pasta sheet, press down really well, then cut the ravioli in a round or square shape. They should be about 8–10 cm in diameter. Make sure they are well sealed all round.",
+    "Lightly flour a tray and place the ravioli on it in a single layer. (At this stage they can be frozen, if you are not using them on the day.) Drop the ravioli into a pan of boiling, salted water. Cook the ravioli for about 2–3 minutes, or until al dente. Remove them one at a time and arrange 3–4 on individual dishes.",
+    "Heat the butter over medium heat until it bubbles, then add the sage and cook until crisp. Sprinkle parmigiano over the ravioli and pour the bubbling butter and sage sauce over them.",
+    "You can also use the tomato sauce on Insalata di Polipini e Seppioline."
+  ],
+  "image": "/recipes/sardinian-ravioli.jpg"
 }

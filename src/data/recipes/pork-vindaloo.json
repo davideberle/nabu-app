@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Goa was the birthplace of vindaloo curry. In the 15th century, the Portuguese controlled what is now Goa and brought with them their Portuguese recipes and ingredients from the new world – the Americas. The name ‘vindaloo’ is believed to have come from the Portuguese dish carne de vinho e alho, or meat with wine and garlic. The Goans couldn’t pronounce vinho e alho and ended up calling it vindaloo. The name stuck.",
+  "intro": "Goa was the birthplace of vindaloo curry. In the 15th century, the Portuguese controlled what is now Goa and brought with them their Portuguese recipes and ingredients from the new world – the Americas. The name ‘vindaloo’ is believed to have come from the Portuguese dish carne de vinho e alho, or meat with wine and garlic. The Goans couldn’t pronounce vinho e alho and ended up calling it vindaloo. The name stuck.\n\nOne thing the Goans changed when making vinho e alho, or vindaloo, was that they added a lot of chillies and spices indigenous to the area. They loved spicy chillies, which had only recently made their way to the Indian subcontinent via the Portuguese.\n\nI learned this recipe from Chef Vivek Kashiwale, who has now moved on from the small restaurant near Leeds where I met him to share his culinary expertise in Dubai. I feel pretty lucky to have learned this delicious and authentic Goan pork vindaloo from him.",
+  "time": {
+    "prep": "20 MINS, PLUS MARINATING TIME",
+    "cook": "1½ HOURS"
+  },
   "ingredients": [
     {
       "item": "pork leg, diced",
@@ -54,65 +58,81 @@
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground fenugreek",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cloves",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground black pepper",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¾ tsp"
+      "amount": "¾ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "green chillies, finely chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "MARINADE"
     },
     {
       "item": "red wine vinegar",
-      "amount": "5 tbsp"
+      "amount": "5 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "soft brown sugar",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "tamarind concentrate (or another 2 tbsp of vinegar)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Start with the marinade. Place all the marinade ingredients in a large glass bowl and stir into a smooth paste. Add the pork and mix well to combine. Cover and leave the pork to marinate in the fridge for 30 minutes or overnight.",
+    "When ready to cook, heat the oil in a saucepan over a low heat. Add the garlic slivers and allow to cook gently for about 20 minutes. It is important not to burn the garlic, so watch carefully. It should be soft and translucent but not browned. Transfer the garlic from the saucepan to a plate and set aside, leaving as much of the oil in the pan as possible.",
     "Turn up the heat to high and add a little more oil, if required. When visibly hot, stir in the mustard seeds. When they begin to pop (after about 30 seconds), add the curry leaves and sauté for 30 seconds before adding the chopped onions. Reduce the heat to medium–high and fry for about 5 minutes until the onions are soft and translucent.",
     "Add the chopped tomatoes, chilli powder, bay leaves and the pork with all its marinade to the pan, then pour in just enough water to cover. Leave to simmer for about 1 hour, or until the pork is very tender. You may need to add a drop more water while simmering.",
     "To finish, stir in the slivered garlic you sautéed earlier and season with salt. Squeeze the lemon juice over the top and serve."
-  ]
+  ],
+  "image": "/recipes/pork-vindaloo.jpg"
 }

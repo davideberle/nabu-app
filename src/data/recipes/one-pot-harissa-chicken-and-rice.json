@@ -3,11 +3,14 @@
   "name": "One-Pot Harissa Chicken & Rice",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "15 minutes",
   "intro": "I cook a lot of chicken and rice at my home, and this is one of the ways I like to change it up using two condiments I typically have on hand: Tunisian Harissa and Toum. Skin-on, bone-in chicken thighs are marinated and then seared until golden. The rice is cooked in the same pot, along with chickpeas and spinach to bulk it up. The thighs then go back on top and the whole thing steams for twenty minutes before you’re ready to serve it. It’s a quick, weeknight-friendly favorite.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "skin-on, bone-in chicken thighs (2¼ pounds, or 1 kg)",
@@ -34,8 +37,8 @@
       "amount": "3 tablespoons"
     },
     {
-      "item": "onion, finely chopped",
-      "amount": "1 small"
+      "item": "small onion, finely chopped",
+      "amount": "1"
     },
     {
       "item": "packed chopped spinach",
@@ -54,8 +57,19 @@
       "amount": "4 cups (960 ml)"
     },
     {
+      "item": "Fresh lemon juice",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Salata, Tahini Cabbage Slaw, or Arugula & Pomegranate Salad",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
       "item": "Plain, whole-milk yogurt",
-      "amount": ""
+      "amount": "",
+      "group": "FOR SERVING"
     }
   ],
   "method": [
@@ -66,5 +80,6 @@
     "Add the rice and stir to combine with the chickpeas and vegetables. Add the chicken broth and the remaining 1½ teaspoons salt. Bring to a boil over medium heat. Once boiling, carefully taste and adjust the salt if necessary; it should taste noticeably salty (see Note).",
     "Add the chicken thighs back into the pan, arranging them on top of the rice. Cover the pot, reduce the heat to low, and let cook, undisturbed, for 25 minutes. Remove the lid and fluff the rice using a fork.",
     "Serve warm with slaw or salad and yogurt."
-  ]
+  ],
+  "image": "/recipes/one-pot-harissa-chicken-and-rice.jpg"
 }

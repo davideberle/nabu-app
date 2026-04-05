@@ -3,27 +3,30 @@
   "name": "Sheet-Pan Iraqi AroogBEEF PATTIES",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "25 to 30 pieces; 4 to 6 servings",
-  "time": "15 minutes",
   "intro": "Aroog are an Iraqi pan-fried beef patty made with onions, garlic, parsley, and sometimes peppers or tomatoes. They are lightly seasoned and flavored mostly with tomato sauce. These crispy patties are often served as a light dinner or stuffed into Iraqi samoon (buns) with sliced veggies. My sisters and I would request aroog often, and we’d stand around my mom in the kitchen as she pan-fried them, with oil splattering all over the stove. As soon as she’d place the first few pieces on the plate, we would immediately dive in, rolling them up in bread, always with slices of tomato, parsley, and onions. And because the oil splattering is such a vivid memory, and I do not enjoy cleaning my stove, I came up with a sheet-pan version that mimics the pan frying in a cleaner, faster way, along with being great for making large batches.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "40 minutes"
+  },
   "ingredients": [
     {
-      "item": "yellow onions, peeled and roughly chopped",
-      "amount": "2 medium"
+      "item": "medium yellow onions, peeled and roughly chopped",
+      "amount": "2"
     },
     {
-      "item": "bunch fresh parsley, roughly chopped",
-      "amount": "1 small"
+      "item": "small bunch fresh parsley, roughly chopped",
+      "amount": "1"
     },
     {
-      "item": "cloves garlic, peeled",
-      "amount": "2 large"
+      "item": "large cloves garlic, peeled",
+      "amount": "2"
     },
     {
-      "item": "bell pepper (any color), roughly chopped",
-      "amount": "1 small"
+      "item": "small bell pepper (any color), roughly chopped",
+      "amount": "1"
     },
     {
       "item": "regular or lean ground beef",
@@ -58,16 +61,29 @@
       "amount": "4 tablespoons"
     },
     {
+      "item": "Fresh samoon buns or pita bread",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Sliced tomatoes",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
       "item": "Sliced green onions",
-      "amount": ""
+      "amount": "",
+      "group": "FOR SERVING"
     },
     {
       "item": "Roughly chopped fresh parsley",
-      "amount": ""
+      "amount": "",
+      "group": "FOR SERVING"
     },
     {
       "item": "Mayonnaise, hot sauce, and/or ketchup",
-      "amount": ""
+      "amount": "",
+      "group": "FOR SERVING"
     }
   ],
   "method": [
@@ -78,5 +94,6 @@
     "Spoon 1 to 2 tablespoons of the meat mixture directly onto the pan and form it into a circular patty, roughly ¼ inch (6 mm) thick. Continue doing this, leaving 1 inch (2.5 cm) of space between each patty.",
     "Place the sheet pans on the bottom rack of the oven and bake for 15 minutes. (If your oven does not fit both pans, bake one pan at a time.) After 15 minutes, check if the bottoms of the patties are cooked; they should look brown and crispy; if not, bake for another 5 minutes. Use a flat spatula to gently flip them over and cook for 10 to 15 minutes longer, until sizzling and golden on both sides. Broil the tops for a few minutes to brown them further if required.",
     "Serve as sandwiches in samoon buns or pita bread with sliced tomatoes, green onions, parsley, and mayonnaise, hot sauce, and/or ketchup for topping."
-  ]
+  ],
+  "image": "/recipes/sheet-pan-iraqi-aroogbeef-patties.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "makes 550ml (generous 2¼ cups)",
   "intro": "This is delicious spooned over biryanis and kebabs. If you want to make it even more exciting, try adding a few small chunks of cooked potato and/or finely chopped green chilli.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "Greek yoghurt",
@@ -32,6 +36,7 @@
   "method": [
     "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about 1 hour before serving."
   ],
+  "image": "/recipes/cucumber-raita.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

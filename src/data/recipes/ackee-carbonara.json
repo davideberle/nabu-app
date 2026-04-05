@@ -3,11 +3,14 @@
   "name": "ACKEE CARBONARA",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 3–4",
-  "time": "10 MINUTE",
   "intro": "Although I would never say that ackee is a replacement for eggs, it works so well in replacing the egg yolks in a carbonara. It is so wonderfully rich just blended on its own that it is the perfect ingredient to emulsify a sauce. Italians, please don’t come for me. But this just works on so many levels.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 10 MINUTES",
+    "cook": "10 MINUTES"
+  },
   "ingredients": [
     {
       "item": "rinsed and drained ackee",
@@ -39,23 +42,28 @@
     },
     {
       "item": "smoked tofu, cut into lardons (thin strips)",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g (3½ oz)",
+      "group": "TOFU BACON"
     },
     {
       "item": "liquid smoke",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "TOFU BACON"
     },
     {
       "item": "smoked paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TOFU BACON"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TOFU BACON"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TOFU BACON"
     }
   ],
   "method": [
@@ -65,6 +73,7 @@
     "Once cooked, add the pasta to the lardons, allowing some of the pasta water to transfer, then add the ackee mixture. Stir over the heat to emulsify and cook for 2–3 minutes until glossy. Remove from the heat, add the Parmesan and season with salt and pepper. Stir well.",
     "Serve in bowls with extra Parm grated on top."
   ],
+  "image": "/recipes/ackee-carbonara.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

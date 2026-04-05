@@ -7,6 +7,10 @@
   },
   "servings": "serves 2",
   "intro": "If you love lobster like I do, nothing more needs to be said. Just look at it! You will need a sharp pair of kitchen scissors for removing the shells.",
+  "time": {
+    "prep": "30 MINS, PLUS SEDATING THE LOBSTERS",
+    "cook": "45 MINS"
+  },
   "ingredients": [
     {
       "item": "x 750g (1lb 10oz) live lobsters",
@@ -74,23 +78,28 @@
     },
     {
       "item": "butter",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "LOBSTER STOCK"
     },
     {
       "item": "Retained cracked claw shells with remaining meat",
-      "amount": ""
+      "amount": "",
+      "group": "LOBSTER STOCK"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "LOBSTER STOCK"
     },
     {
       "item": "Indian bay leaves (cassia leaves)",
-      "amount": "2"
+      "amount": "2",
+      "group": "LOBSTER STOCK"
     },
     {
       "item": "dry white wine",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml (1 cup)",
+      "group": "LOBSTER STOCK"
     }
   ],
   "method": [
@@ -103,5 +112,6 @@
     "Pour in 150ml (generous ½ cup) of the lobster stock and turn up the heat to bring the mixture to a boil. Reduce this sauce by half, then whisk in the yoghurt, cream and saffron (if using). Simmer for another 5–10 minutes to thicken. Season with salt and set aside to cool slightly.",
     "Pour the warm sauce over each bowl of lobster meat and spoon the mixture back into the shells. I usually place the meat from the two claws in the body and the tail meat in the tails. You may not be able to use all the sauce. Sprinkle with the Parmesan and transfer to the oven or barbecue for 4–5 minutes until the meat is just cooked through and hot. Watch closely so you don’t overcook!",
     "Transfer each to a hot plate, garnish with coriander (cilantro) and serve with lemon or lime wedges."
-  ]
+  ],
+  "image": "/recipes/tandoori-lobster.jpg"
 }

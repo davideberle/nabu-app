@@ -1,0 +1,542 @@
+{
+  "id": "toumgarlic-saucetunisian-harissachili-pastemoroccan-chermoul",
+  "name": "ToumGARLIC SAUCETunisian HarissaCHILI PASTEMoroccan ChermoulaLabnehTaratorTAHINI SAUCEEgyptian DukkahNUT & SEED SPICE BLENDHummus with BeefBaba GhanoushSMOKED EGGPLANT DIPSyrian MuhammaraROASTED RED PEPPER & WALNUT DIPMusabahaMASHED CHICKPEAS & TAHINI",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "2½ cups (570 g); 6 servings",
+  "intro": "If you love hummus and a chunky texture, then you’ll love musabaha. It is another classic Levantine dip, very similar to hummus, but with one main difference: the chickpeas are left whole or slightly mashed. It’s also more heavily seasoned with cumin and paprika.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "10 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "cloves garlic, peeled (pre-peeled works as long as they are fresh)",
+      "amount": "1 cup (155 g)"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "neutral oil (such as avocado oil)",
+      "amount": "2 cups (480 ml)"
+    },
+    {
+      "item": "dried chili peppers (such as guajillo, Kashmiri, or any other pepper), sliced lengthwise and seeds and stems removed",
+      "amount": "¾ ounce (21 g)"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "jarred roasted red peppers",
+      "amount": "6½ ounces (180 g)"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "1 cup (50 g)"
+    },
+    {
+      "item": "large cloves garlic, peeled",
+      "amount": "4"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "olive oil, plus more for topping",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "packed roughly chopped fresh parsley (about 1 bunch)",
+      "amount": "2 cups (100 g)"
+    },
+    {
+      "item": "packed roughly chopped fresh cilantro (about ½ bunch)",
+      "amount": "1 cup (40 g)"
+    },
+    {
+      "item": "large cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper, or more to taste",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "plain, whole-milk yogurt (6% to 11% fat)",
+      "amount": "3 cups (720 ml)",
+      "group": "LABNEH"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "LABNEH"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Za’atar",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Garlic",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Chili flakes",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Olives",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Fresh herbs",
+      "amount": "",
+      "group": "TOPPINGS (OPTIONAL)"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "tahini",
+      "amount": "1 cup (240 ml)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "large clove garlic, crushed",
+      "amount": "1",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "black pepper, or more to taste",
+      "amount": "1/8 teaspoon",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "roughly chopped fresh parsley",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "3 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "chopped pistachios",
+      "amount": "3 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "chopped hazelnuts",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "cayenne pepper, or more to taste",
+      "amount": "¼ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "large cloves garlic",
+      "amount": "2",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "fresh lemon juice, plus more if needed",
+      "amount": "¼ cup (60 ml)",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "1 teaspoon",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "canned chickpeas, drained and ¾ cup (180 ml) of the liquid (aquafaba) reserved",
+      "amount": "36 ounces (1 kg)",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2",
+      "group": "HUMMUS"
+    },
+    {
+      "item": "boneless steak (ribeye, sirloin, or flank), cut into bite-size pieces",
+      "amount": "18 ounces (500 g)",
+      "group": "BEEF"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "BEEF"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "BEEF"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ teaspoon",
+      "group": "BEEF"
+    },
+    {
+      "item": "unsalted butter or ghee",
+      "amount": "1 tablespoon",
+      "group": "BEEF"
+    },
+    {
+      "item": "pine nuts (30 g) or slivered almonds (35 g)",
+      "amount": "¼ cup",
+      "group": "BEEF"
+    },
+    {
+      "item": "finely chopped parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "pomegranate arils (optional)",
+      "amount": "¼ cup (50 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large eggplants (1 to 11/3 pounds, or 500 to 600 g, each)",
+      "amount": "2",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "kosher salt, or more to taste",
+      "amount": "½ to 1 teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "small clove garlic, crushed",
+      "amount": "1",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "fresh lemon juice, or more to taste",
+      "amount": "3 to 4 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "¼ cup (35 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pomegranate arils (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Finely chopped fresh parsley (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large red bell peppers, cut in half and seeds and stems removed (or use 10½ ounces, or 300 g, jarred roasted red peppers; see Note)",
+      "amount": "3",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "bread crumbs",
+      "amount": "½ cup (50 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "unsalted whole raw walnuts",
+      "amount": "½ cup (50 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large clove garlic",
+      "amount": "1",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "ground Aleppo pepper (or substitute with ½ teaspoon chili flakes)",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "small sun-dried tomatoes",
+      "amount": "4",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pomegranate molasses",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Unsalted chopped raw walnuts",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Finely chopped fresh parsley",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "chickpeas, drained and half the liquid (aquafaba) reserved",
+      "amount": "18 ounces (510 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "large cloves garlic, crushed",
+      "amount": "2",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "¾ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup (60 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ cup (120 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Pita bread",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    }
+  ],
+  "method": [
+    "Cut the garlic cloves in half lengthwise and remove the green germ if necessary. (The germ will make the toum bitter.)",
+    "In a tall jug or jar that fits an immersion blender, place the garlic, lemon juice, and salt and blend until a paste forms and develops some foam, 20 to 30 seconds, depending on the power of your blender.",
+    "While the blender is still inside the container, add the oil. Start blending, keeping the blades at the bottom of the jar and slowly pulsing it up and down slightly. Do this for 3 to 5 minutes, until the oil and the garlic start to emulsify. (The emulsification will slowly work its way up the jar until the whole sauce is emulsified; see Notes.)",
+    "Store in an airtight jar in the refrigerator for 3 to 4 weeks.",
+    "Bring water to a boil in a kettle or pot.",
+    "Place the chili peppers in a medium bowl and submerge them in boiling water. Cover with foil or a lid and let sit for 15 minutes.",
+    "In a small, dry skillet, toast the caraway, cumin, and coriander seeds over low heat for 2 minutes, or until fragrant, stirring continuously. Transfer the toasted seeds to a mortar and pestle or a spice grinder and grind into a powder (see Note).",
+    "Drain the chili peppers and gently pat them and the red peppers dry. Add the chilies, ground seeds, red peppers, sun-dried tomatoes, garlic, salt, lemon juice, lemon zest, and oil to a small food processor and process until a smooth paste forms. Taste and adjust for more salt if needed. (If you prefer it spicier, add more chili peppers.)",
+    "Transfer the harissa to a 2-cup (480 ml) container with an airtight lid. Cover the top with an even layer of oil, seal the lid, and store in the refrigerator and use within 2 to 3 weeks. Always use a clean utensil when serving and replenish the olive oil layer with each use.",
+    "Add the parsley, cilantro, and garlic to a small food processor and pulse until finely chopped.",
+    "Add the paprika, cumin, coriander, salt, cayenne, oil, lemon juice, and lemon zest and pulse a few more times to combine. The sauce texture should be rough, not smooth.",
+    "Store in an airtight container in the refrigerator and use within 1 to 2 weeks.",
+    "In a medium bowl, mix together the yogurt and salt. (You can also add the salt directly to the yogurt tub to avoid dirtying another dish.)",
+    "In a separate medium bowl, place a fine-mesh strainer so that it is elevated and not touching the bottom of the bowl. Line the strainer with a cheesecloth. (If you do not have a cheesecloth, layer thick paper towels in the strainer instead.)",
+    "Transfer the yogurt into the cheesecloth and lift all corners of the cloth to tie it into a secure knot. (You can also rest a wooden spoon at the top of the bowl and tie the cheesecloth to the spoon with a trivet underneath to ensure it does not touch the bottom of the bowl.) Allow it to strain for 24 hours in the refrigerator, or up to 48 hours for an even thicker consistency.",
+    "Spread the labneh onto a plate and top with olive oil and your preferred toppings. Serve with pita bread.",
+    "Add the tahini and crushed garlic to a medium bowl and whisk to combine.",
+    "Slowly add the lemon juice and whisk; the mixture will start to seize up and look very dry.",
+    "Gradually add about ¾ cup (180 ml) of water, 2 to 3 tablespoons at a time, while whisking until the mixture is smooth.",
+    "Season with the salt and pepper and garnish with the chopped parsley.",
+    "Place a small, dry skillet over medium heat and add the cumin and coriander. Toast for a few minutes, or until fragrant and slightly darker in color, stirring continuously. Transfer to a spice grinder or mortar and pestle. Toast the sesame seeds the same way, reserve 1 tablespoon, and add the rest to the spice grinder or mortar and pestle. Grind to a fine powder and place in a small bowl.",
+    "Add the pistachios and hazelnuts to the same skillet and toast over medium heat for a few minutes, or until fragrant, stirring often. Transfer the toasted nuts to a spice grinder and pulse a few times, maintaining a coarse texture. Add them to the bowl with the ground seeds.",
+    "Add the salt, cayenne, and reserved sesame seeds to the bowl with the seeds and nuts and mix well.",
+    "Store in an airtight container at room temperature and use within a few days.",
+    "Add the garlic, lemon juice, and oil to a food processor and process for a few seconds until combined. Add the salt, chickpeas, and tahini to the food processor and process for a few minutes, or until the hummus starts to come together. Add the ice cubes while the food processor is running and slowly drizzle in the reserved chickpea liquid. Process the mixture for at least 5 minutes to yield a creamy texture. Taste and adjust for more salt and lemon juice if needed. Place in the refrigerator to cool for a few minutes.",
+    "MAKE THE BEEF: Season the steak pieces with the salt, pepper, and allspice.",
+    "In a large cast-iron skillet, melt the butter over medium-high heat. Add the meat and cook for 5 to 7 minutes, until caramelized, working in batches to avoid overcrowding. Remove the beef from the pan.",
+    "Add the pine nuts to the same skillet and lightly toast them over low heat for 3 to 5 minutes, until golden, stirring continuously.",
+    "Assemble by spreading the hummus on a plate, topping with some of the beef and pine nuts, and garnishing with the parsley, pomegranate arils (if using), and a drizzle of oil. Serve with pita bread.",
+    "Preheat the oven to 450°F (230°C). Line a large baking sheet with aluminum foil.",
+    "Pierce the eggplants with a knife to create 4 or 5 slits all over; this helps the steam to escape.",
+    "If you have a gas stove, use tongs to char each eggplant’s skin all over on an open flame, rotating them carefully for a few minutes until the skin is blistered. If you have an electric or induction stove, you can char the eggplants’ skin in a hot cast-iron skillet without any oil. Rotate the eggplants for a few minutes until the skin is blistered, then proceed to baking.",
+    "Place the eggplants on the prepared baking sheet and bake for 45 minutes, or until they are soft and can be easily pierced with a fork.",
+    "Cut the eggplants in half lengthwise and scoop out the flesh using a fork or spoon. Place the flesh in a fine-mesh strainer over a small bowl and allow it to drain its liquid for a few minutes.",
+    "Transfer the drained flesh to a medium bowl with the tahini, salt, pepper, garlic, and lemon juice. Mash it using a fork; this will create a chunky consistency. (If you like it smooth, you can pulse it in a food processor or use an immersion blender.) Adjust the seasoning to your liking.",
+    "Toast the pine nuts in a small, dry skillet over medium heat, for 5 minutes, or until golden, stirring continuously.",
+    "Serve the baba ghanoush topped with oil, toasted pine nuts, pomegranate arils (if using), and parsley (if using).",
+    "Preheat the oven to 450°F (230°C).",
+    "Place the peppers, skin sides down, in a large cast-iron pan over medium-high heat and char for 5 to 6 minutes, until the skins are blistered.",
+    "Cover the pan with aluminum foil and bake for 30 to 45 minutes, until the peppers are soft. Remove from the oven and let rest, still covered, for 10 minutes; this helps them to soften and makes removing the skins easier.",
+    "Carefully peel the peppers with tongs or your hands and discard the skins.",
+    "Lightly toast the bread crumbs in a medium, dry skillet over medium heat for 3 to 5 minutes, until they are slightly darker in color, stirring continuously, then remove from the pan.",
+    "Lightly toast the walnuts in the same skillet over medium heat for 3 to 5 minutes, until slightly darker and fragrant, stirring continuously, then remove from the pan.",
+    "Add the roasted peppers, toasted bread crumbs, toasted walnuts, pomegranate molasses, oil, garlic, Aleppo pepper, salt, sun-dried tomatoes, tomato paste, and lemon juice to a food processor. Process until a paste forms, stopping to scrape down the sides of the food processor as necessary. The final dip should be a bit lumpy.",
+    "Spread the muhammara onto a dish and garnish with pomegranate molasses, walnuts, and parsley. Serve with pita bread.",
+    "Place the chickpeas and the reserved aquafaba in a medium saucepan over medium heat. Add 1 cup (240 ml) of water to cover the chickpeas, bring to a boil, and boil for 5 to 7 minutes.",
+    "In a medium bowl, combine the garlic, salt, cumin, and lemon juice.",
+    "Using a slotted spoon, remove all the hot chickpeas from the saucepan, reserving a few tablespoons for garnish, and place the rest of the chickpeas in the bowl with the lemon juice and garlic. Add ¼ cup (60 ml) of the boiling water from the saucepan to the bowl. Mix everything together, then add the tahini and continue to mix. As you are mixing, mash some of the chickpeas but leave most of them whole. If required, add a few more tablespoons of the chickpea cooking liquid to loosen the sauce. Taste and adjust for more salt if needed.",
+    "Spoon the musabaha into a serving bowl and garnish with the chopped parsley, paprika, oil, and reserved chickpeas. Serve with pita bread."
+  ],
+  "image": "/recipes/toumgarlic-saucetunisian-harissachili-pastemoroccan-chermoul.jpg"
+}

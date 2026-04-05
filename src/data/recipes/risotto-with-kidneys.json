@@ -3,21 +3,33 @@
   "name": "Risotto with Kidneys",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
     {
+      "item": "Risotto alla Milanese",
+      "amount": ""
+    },
+    {
+      "item": "ROGNONCINI",
+      "amount": ""
+    },
+    {
       "item": "veal kidneys, skin and fat removed, diced",
       "amount": "3"
+    },
+    {
+      "item": "a little unbleached plain flour, for dusting",
+      "amount": ""
     },
     {
       "item": "unsalted butter",
       "amount": "50 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "Spanish onion, finely sliced",
@@ -28,17 +40,28 @@
       "amount": "2"
     },
     {
+      "item": "fresh sage leaves",
+      "amount": "8–10"
+    },
+    {
       "item": "slices pancetta, diced",
       "amount": "6"
     },
     {
       "item": "oloroso sherry",
       "amount": "200 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 Risotto alla Milanese ROGNONCINI 3 veal kidneys, skin and fat removed, diced a little unbleached plain flour, for dusting 50 g unsalted butter 2 tablespoons good-quality virgin olive oil 1 Spanish onion, finely sliced 2 cloves garlic, crushed 8–10 fresh sage leaves 6 slices pancetta, diced 200 ml oloroso sherry salt and ground black pepper",
     "Make the Risotto alla Milanese but omit the bone marrow and saffron.",
-    "Pour the risotto into a serving dish, make a well in the top and fill it with the rognoncini plus all their juices. Serve immediately."
-  ]
+    "Dust the diced kidneys with flour.",
+    "In a heavy-based pan, melt the butter, add the oil and fry the onion, garlic, sage and pancetta until the onion is soft. Take care not to burn the garlic. Add the kidneys and, over fairly high heat, brown them quickly all over. Pour the sherry over the kidneys and, with a wooden spoon, scrape up all the bits on the bottom of the frying pan, so they are incorporated into the sauce. Season with salt and pepper. Put the lid on the pan, turn the heat to low and cook until the kidneys are done, about 15 minutes. If they look dry add a little more stock or sherry to the pan.",
+    "Pour the risotto into a serving dish, make a well in the top and fill it with the rognoncini plus all their juices. Serve immediately.",
+    "Remember that risotto does not wait, so prepare the kidneys first if you think it might be too difficult having both cooking at the same time."
+  ],
+  "image": "/recipes/risotto-with-kidneys.jpg"
 }

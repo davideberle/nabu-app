@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "These prawns (shrimp) are addictive. They are superb served on their own, dipped into a tasty raita, or added to a curry. That said, I think they are much too good to be thrown in a curry. I like to serve them drizzled with my honey mustard raita, which goes so well with most seafood.",
+  "intro": "These prawns (shrimp) are addictive. They are superb served on their own, dipped into a tasty raita, or added to a curry. That said, I think they are much too good to be thrown in a curry. I like to serve them drizzled with my honey mustard raita, which goes so well with most seafood.\n\nOne of the spice blends used in the recipe is mace and ground cardamom powder, which is so simple to make: just grind equal amounts of mace and green cardamom seeds together into a powder. This delicate spice blend adds a subtle flavour that takes the tandoori prawns to a whole new level. The lemons you see in the photograph were charred on the grill. This not only looks great but helps draw the juice out of them when squeezed at the table.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "raw king prawns (jumbo shrimp), peeled and deveined with head and tail intact",
@@ -14,68 +18,87 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "¼tsp"
+      "amount": "¼tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "ground white pepper",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "FIRST MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "cream cheese",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "single (light) cream",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
-      "item": "1cm (½ in) piece of ginger, peeled and finely chopped",
-      "amount": ""
+      "item": "piece of ginger, peeled and finely chopped",
+      "amount": "1cm (½ in)",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "fresh green chilli, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "finely chopped coriander (cilantro)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "mace and cardamom powder (see above)",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "garlic powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     },
     {
       "item": "ajwain (carom) seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "SECOND MARINADE"
     }
   ],
   "method": [
     "Prepare the barbecue for direct heat cooking.",
     "Mix the prawns (shrimp) with the ingredients for the first marinade and set aside. Combine all the ingredients for the second marinade and work them together with your hands until you have a smooth emulsion. Cover the prawns with this marinade and leave for about 20 minutes.",
     "Thread the prawns onto skewers and place over the hot fire. (You can also cook them directly on a barbecue grill.) Cook, turning frequently, until lightly charred and cooked through."
+  ],
+  "image": "/recipes/tandoori-style-king-prawns.jpg",
+  "dietary": [
+    "vegetarian"
   ]
 }

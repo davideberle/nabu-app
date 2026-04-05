@@ -3,11 +3,14 @@
   "name": "WHITE CHOCOLATE AND STEM GINGER COOKIES … TWO FOR NOW, TWO FOR LATER",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1–2",
-  "time": "18 MINUTE",
   "intro": "A very good cookie trumps all baked goods for me. I’m not here to argue, just laying my sweet treat desires on the table. Sometimes the concept of baking big-batch desserts alone feels like a mountain to climb. However, if you crave a cookie and you live alone, or with one other person, you deserve to have a cookie. These cookies are crisp on the outside and gooey on the inside, with savoury respite from the black pepper, miso and brown butter. They’re an adult cookie that should be served with ice-cold milk and enjoyed warm straight from the oven.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 18 MINUTES",
+    "cook": "18 MINUTES"
+  },
   "ingredients": [
     {
       "item": "chia seeds",
@@ -65,6 +68,7 @@
     "In a separate bowl, combine the dry ingredients and stir to combine. Add the set chia egg to the brown butter mixture and stir. Now, using a spatula, combine the wet ingredients with the dry until it’s just about incorporated. Finally, stir in the chocolate. Set aside to rest for at least 30 minutes.",
     "Separate the dough into four balls. Set two aside, then wrap the other two in cling film (plastic wrap) and store in the freezer for later. Put the two reserved balls of dough on the prepared baking sheet and bake in the oven for 13 minutes."
   ],
+  "image": "/recipes/white-chocolate-and-stem-ginger-cookies-two-for-now-two-for-.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

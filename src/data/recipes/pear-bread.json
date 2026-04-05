@@ -3,24 +3,33 @@
   "name": "Pear Bread",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "This is a very traditional bread with a sweet fruit filling. We eat it for breakfast, as a snack during the day or after dinner with some cheese and fresh pears. Spread it with a little butter or, as the Swiss like to eat it, with cheese.",
   "ingredients": [
+    {
+      "item": "Makes a loaf of about 1 kg",
+      "amount": ""
+    },
+    {
+      "item": "DOUGH",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour",
       "amount": "300 g"
     },
     {
-      "item": "caster sugar",
-      "amount": "4 teaspoons"
+      "item": "teaspoons caster sugar",
+      "amount": "4"
     },
     {
-      "item": "dry yeast",
-      "amount": "1 tablespoon"
+      "item": "tablespoon dry yeast",
+      "amount": "1"
     },
     {
-      "item": "salt",
-      "amount": "½ teaspoon"
+      "item": "teaspoon salt",
+      "amount": "½"
     },
     {
       "item": "unsalted butter",
@@ -29,6 +38,10 @@
     {
       "item": "warm milk",
       "amount": "150 ml"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "dried pears, soaked overnight in 100 ml merlot",
@@ -47,16 +60,20 @@
       "amount": "50 g"
     },
     {
-      "item": "ground cinnamon",
-      "amount": "2 teaspoons"
+      "item": "teaspoons ground cinnamon",
+      "amount": "2"
     },
     {
-      "item": "each ground cloves, ground cardamom and ground coriander",
-      "amount": "1 teaspoon"
+      "item": "teaspoon each ground cloves, ground cardamom and ground coriander",
+      "amount": "1"
     },
     {
-      "item": "ground nutmeg",
-      "amount": "½ teaspoon"
+      "item": "teaspoon ground nutmeg",
+      "amount": "½"
+    },
+    {
+      "item": "grated zest of 1 organic lemon",
+      "amount": ""
     },
     {
       "item": "Nocino liqueur or kirsch",
@@ -67,19 +84,25 @@
       "amount": "50 ml"
     },
     {
+      "item": "EGG WASH",
+      "amount": ""
+    },
+    {
       "item": "organic egg yolk",
       "amount": "1"
     },
     {
-      "item": "milk or cream",
-      "amount": "1 tablespoon"
+      "item": "tablespoon milk or cream",
+      "amount": "1"
     }
   ],
   "method": [
     "Place all the dough ingredients in a food processor and process using a dough hook for 5–10 minutes, until the dough is shiny and slightly elastic (when you press a finger into the dough, the impression should spring back slowly). You may need to add a little more milk if the dough seems too dry or more flour if too wet. Transfer the dough to a bowl, cover with a cloth and leave in a warm place for about 1 hour, or until it has doubled in size.",
     "Preheat the oven to 200°C (gas mark 6).",
     "Place all the filling ingredients in a food processor and mix until you get a thick mass, ideally with some small chunks of fruit and nuts remaining.",
+    "Knock the air out of the dough and knead it for a few minutes. Roll the dough out to a thin rectangle of about 30 × 40 cm. Put the filling in the centre of the dough and shape it into a thick sausage running along the length of the dough. Wrap the dough around the filling, making sure there are no gaps, and trim away any excess dough. Place the loaf on an oven tray lined with greaseproof paper.",
     "Combine the egg wash ingredients and brush over the loaf. Pierce holes all over the loaf with a fork. With the left-over dough you can make small decorations to go on top of the birebrot.",
     "Bake the bread in the oven for about 20 minutes, or until the crust is golden-brown."
-  ]
+  ],
+  "image": "/recipes/pear-bread.jpg"
 }

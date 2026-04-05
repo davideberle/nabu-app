@@ -3,15 +3,18 @@
   "name": "Roasted Baharat Chicken & Potatoes",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "10 minutes",
   "intro": "There’s no dish more universal than chicken and potatoes. I make some version of it on a weekly basis, with eyeballed measurements and throwing in what I have on hand. This recipe was made using my mom’s baharat spice blend from her famous Chicken Biryani (here). This is an easy, hands-off meal that is bursting with flavor. Don’t forget to mop up the juices with a piece of bread.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "1 hour"
+  },
   "ingredients": [
     {
-      "item": "cloves garlic, minced",
-      "amount": "7 large"
+      "item": "large cloves garlic, minced",
+      "amount": "7"
     },
     {
       "item": "black pepper",
@@ -62,24 +65,36 @@
       "amount": "8"
     },
     {
-      "item": "yellow potatoes, cut into thick wedges",
-      "amount": "4 large"
+      "item": "large yellow potatoes, cut into thick wedges",
+      "amount": "4"
     },
     {
-      "item": "red onion, cut into thick wedges",
-      "amount": "1 large"
+      "item": "large red onion, cut into thick wedges",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "finely chopped green onions",
+      "amount": "¼ cup (15 g)",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Arugula & Pomegranate Salad or Tahini Cabbage Slaw",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
     "Preheat the oven to 450°F (230°C) and place a rack in the middle.",
     "In a large bowl, mix together the garlic, pepper, curry powder, allspice, cinnamon, cardamom, nutmeg, cumin, cloves, 1 teaspoon of the salt, oil, and the vinegar to create a thick paste. Remove 3 tablespoons of the paste and set aside.",
     "Add the chicken thighs to the bowl and mix with the marinade until the chicken is thoroughly coated. Let marinate for 30 minutes.",
-    "Meanwhile, place the potato and onion wedges in a large baking dish (at least 13 x 11 inches, or 33 x 28 cm). Add the remaining 1 teaspoon salt and reserved marinade and mix well to combine; arrange the potatoes and onions in a single layer.",
+    "place the potato and onion wedges in a large baking dish (at least 13 x 11 inches, or 33 x 28 cm). Add the remaining 1 teaspoon salt and reserved marinade and mix well to combine; arrange the potatoes and onions in a single layer.",
     "Place the baking dish in the oven and bake for 15 minutes, uncovered. Remove the dish from the oven. Nestle the marinated chicken thighs on top of the potatoes and onions, add ¾ cup (180 ml) of water, and return the dish to the oven and bake, uncovered, for another 30 minutes. Test the chicken and potatoes for doneness. The potatoes should be soft and the chicken white on the inside or cooked to 165°F (74°C). Baste the chicken with the juices from the bottom of the pan, then broil for 3 to 5 minutes, until lightly golden on top.",
     "Garnish the dish with the chopped parsley and green onions and serve with salad or slaw."
-  ]
+  ],
+  "image": "/recipes/roasted-baharat-chicken-and-potatoes.jpg"
 }

@@ -1,0 +1,39 @@
+{
+  "id": "smoked-fish-roe-with-celery",
+  "name": "Smoked Fish Roe with Celery",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Mietta Sartori"
+  },
+  "servings": "serves 6",
+  "intro": "Bottarga, dried roe of mullet, is a prized ingredient in Sardinia and Sicily. The combination of the salty, fishy flavour of the bottarga with the fresh crunchiness of the celery is inspired.",
+  "ingredients": [
+    {
+      "item": "roe of 1 smoked mullet (bottarga)",
+      "amount": ""
+    },
+    {
+      "item": "celery stalks",
+      "amount": "6–8"
+    },
+    {
+      "item": "juice of ½ organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel off the very thin outer membrane of the mullet roe as it can be bitter.",
+    "Slice the celery stalks very thinly and arrange on individual dishes. Over the top of the celery, slice the bottarga very thinly.",
+    "Squeeze over the lemon juice, then a drizzle of virgin olive oil and some pepper and serve.",
+    "You can buy this fish roe at the fish markets or at your fish monger. The two long egg sacks are vacuum packed, so they will keep for a few weeks in the fridge."
+  ],
+  "image": "/recipes/smoked-fish-roe-with-celery.jpg"
+}

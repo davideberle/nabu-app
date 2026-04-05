@@ -7,6 +7,10 @@
   },
   "servings": "makes about 750ml (3¼ cups)",
   "intro": "I usually make a batch of spice stock at the same time as I make the base curry sauce. This isn’t one you really need to watch closely while cooking so it’s a good way of getting two jobs done at once. The aromatic strained stock can be added to curries when a little more liquid is desired to thin the sauce. So could water, for that matter, but this stock does give curries more depth.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "35 MINS"
+  },
   "ingredients": [
     {
       "item": "Handful of green cardamom pods, lightly bruised",
@@ -44,6 +48,7 @@
   "method": [
     "Put 1 litre (4½ cups) of water in a pan and bring to a rolling boil. Throw in the herbs and spices and stir to combine. Reduce to a simmer and cook for about 30 minutes. Strain through a fine sieve and use immediately, or store in air-tight plastic containers in the fridge for up to 3 days. It also freezes well."
   ],
+  "image": "/recipes/spice-stock.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -3,10 +3,14 @@
   "name": "RUM PUNCH",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
   "intro": "This rum punch screams summer and al fresco eating. It screams barbecue season, and, most of all, it screams strawb season – and when strawb season hits, I’m eating them in abundance.",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "mint leaves",
@@ -30,29 +34,35 @@
     },
     {
       "item": "strawberries, hulled",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g (7 oz)",
+      "group": "STRAWBERRY SYRUP"
     },
     {
       "item": "agave syrup",
-      "amount": "150 ml (5 fl oz/scant ⅔ cup)"
+      "amount": "150 ml (5 fl oz/scant ⅔ cup)",
+      "group": "STRAWBERRY SYRUP"
     },
     {
       "item": "mint leaves",
-      "amount": "8"
+      "amount": "8",
+      "group": "STRAWBERRY SYRUP"
     },
     {
       "item": "freshly grated nutmeg",
-      "amount": ""
+      "amount": "",
+      "group": "STRAWBERRY SYRUP"
     },
     {
       "item": "juice of 4 limes",
-      "amount": ""
+      "amount": "",
+      "group": "STRAWBERRY SYRUP"
     }
   ],
   "method": [
     "Start by making the fresh strawberry syrup. Blend all the ingredients together in a blender, and then strain with a sieve.",
     "Put the mint leaves and lime slices for the punch in a big jug (pitcher). Add the strawberry syrup, rum and pineapple juice. Top up with lots of ice, stir well and serve."
   ],
+  "image": "/recipes/rum-punch.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

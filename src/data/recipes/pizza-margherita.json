@@ -3,9 +3,14 @@
   "name": "Pizza Margherita",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "This is the classic ‘modern’ pizza. In an inspired piece of 19th-century marketing (we are talking 150 years ago) it was named after an Italian princess, the Principessa Margherita, who would become the first queen of a united Italy.\n\nThe red, white and green of the tomato, mozzarella and basil represented the flag colours of the new Italy. So, if you like, it was a political pizza, as well as being so delicious, and it has taken the world by storm.",
   "ingredients": [
+    {
+      "item": "Makes 4 pizzas, approximately 30 × 40 cm each",
+      "amount": ""
+    },
     {
       "item": "quantity pizza dough (Impasto per Pizza)",
       "amount": "1"
@@ -21,13 +26,25 @@
     {
       "item": "fresh large mozzarella or 6 mozzarella Ovolini",
       "amount": "1"
+    },
+    {
+      "item": "fresh basil leaves",
+      "amount": "6–8"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
     }
   ],
   "method": [
-    "Makes 4 pizzas, approximately 30 × 40 cm each 1 quantity pizza dough (Impasto per Pizza) 2 cloves garlic, crushed 1 × 400 g can peeled roma tomatoes 1 fresh large mozzarella or 6 mozzarella Ovolini 6–8 fresh basil leaves salt and ground black pepper good-quality virgin olive oil, for drizzling",
-    "Makes 4 pizzas, approximately 30 × 40 cm each",
     "Preheat the oven to 240°C (gas mark 9).",
+    "Roll out the dough onto an oiled oven tray – the dough should be about 5 mm thick. Spread the garlic over the dough.",
     "Drain the tomatoes of their juice and seeds and chop roughly. Spread the tomato over the dough. Break the mozzarella into little pieces and spread evenly on top of the tomato. Tear the basil leaves and sprinkle over the pizza and season. Lastly, sprinkle some olive oil over the whole pizza.",
     "Cook in the oven for about 10–15 minutes, or in a pizza oven for 3–5 minutes, until the base is golden and crunchy."
-  ]
+  ],
+  "image": "/recipes/pizza-margherita.jpg"
 }

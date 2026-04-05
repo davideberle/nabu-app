@@ -3,69 +3,112 @@
   "name": "Muhammara Pasta",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
   "intro": "This dish came to be when I had leftover Syrian Muhammara from a dinner gathering and decided to spoon it into cooked pasta in my fridge. It was incredibly tasty, and I knew I had to develop this into a recipe in its own right. I added spinach, basil, black olives, and Parmesan to jazz it up and make it more of a balanced dish, but feel free to add any vegetables you like. We now look forward to this dish the day after I make a batch of muhammara!",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "20 minutes"
+  },
   "ingredients": [
     {
+      "item": "Kosher salt",
+      "amount": "",
+      "group": "PASTA"
+    },
+    {
+      "item": "pasta shape of choice",
+      "amount": "13 ounces (360 g)",
+      "group": "PASTA"
+    },
+    {
       "item": "packed baby spinach",
-      "amount": "1 cup (20 g)"
+      "amount": "1 cup (20 g)",
+      "group": "PASTA"
     },
     {
       "item": "packed basil leaves",
-      "amount": "½ cup (12 g)"
+      "amount": "½ cup (12 g)",
+      "group": "PASTA"
     },
     {
       "item": "sliced Kalamata olives (or any other black olives)",
-      "amount": "¼ cup (60 g)"
+      "amount": "¼ cup (60 g)",
+      "group": "PASTA"
     },
     {
       "item": "shaved Parmesan cheese",
-      "amount": "½ cup (25 g)"
+      "amount": "½ cup (25 g)",
+      "group": "PASTA"
+    },
+    {
+      "item": "jarred roasted red peppers (about 3 large peppers)",
+      "amount": "10 ounces (300 g)",
+      "group": "MUHAMMARA SAUCE"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "1½ ounces (40 g)",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "unsalted whole raw walnuts",
-      "amount": "½ cup (50 g)"
+      "amount": "½ cup (50 g)",
+      "group": "MUHAMMARA SAUCE"
     },
     {
-      "item": "cloves garlic",
-      "amount": "2 large"
+      "item": "large cloves garlic",
+      "amount": "2",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "ground Aleppo pepper (or substitute with 1 teaspoon paprika)",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "MUHAMMARA SAUCE"
+    },
+    {
+      "item": "Shaved Parmesan cheese",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Basil leaves",
+      "amount": "",
+      "group": "FOR GARNISHING"
     },
     {
       "item": "Black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING"
     }
   ],
   "method": [
-    "To make the pasta: Fill a large pot with cold water, add salt, and bring to a boil over medium-high heat. Add the pasta and cook according to the package instructions for al dente.",
-    "Meanwhile, make the muhammara sauce: Add all the sauce ingredients to a food processor and process for 1 minute until a smooth paste forms.",
+    "Fill a large pot with cold water, add salt, and bring to a boil over medium-high heat. Add the pasta and cook according to the package instructions for al dente.",
+    "make the muhammara sauce: Add all the sauce ingredients to a food processor and process for 1 minute until a smooth paste forms.",
     "Add the muhammara sauce to a large, deep skillet and cook for 1 to 2 minutes, stirring often.",
     "Drain the pasta, reserving 1 cup (240 ml) of pasta cooking water. Add the cooked pasta to the skillet along with the baby spinach, basil leaves, olives, and Parmesan. Mix everything together, then add the reserved pasta cooking water to loosen the sauce.",
     "Garnish with more Parmesan, basil leaves, and black pepper. Serve immediately."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "image": "/recipes/muhammara-pasta.jpg"
 }

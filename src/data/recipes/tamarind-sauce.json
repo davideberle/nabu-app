@@ -7,6 +7,10 @@
   },
   "servings": "makes about 200ml (generous ¾ cup)",
   "intro": "Good-quality tamarind sauce is commercially available. It is delicious squeezed over different chaats like my aloo tikki chaat. If you fancy having a go at making your own, this recipe gets great results.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": "30 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -49,6 +53,8 @@
     "Heat the oil in a saucepan over a medium–high heat. When visibly hot, stir in the cumin, cayenne, ginger, asafoetida or garlic powder, fennel seeds and garam masala. Stir the spices around in the oil to flavour it for about 30 seconds, then pour in the sugar and tamarind concentrate along with 450ml (scant 2 cups) of water.",
     "Bring to a rolling simmer and let the sauce reduce until it has a chocolatey colour and is thick enough to coat the back of a spoon. This should take about 20–30 minutes. The sauce will be thin but will thicken once cooled. Store in the fridge in a squeezy bottle, if you have one, and use as required. This sauce will keep for 2 weeks."
   ],
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "image": "/recipes/tamarind-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Authentic Indian pasandas can be spicy or mild, sweet and/or savoury. What makes them ‘pasanda’ has nothing to do with the sauces, which can vary greatly, but relates to the use of flattened meat, tenderized with a meat mallet before being added to the pan. Here in the UK, our pasandas are quite similar to our kormas but usually not quite as sweet. I have yet to try one with flattened meat in a curry house, although I do use thinly sliced raw chicken rather than the standard pre-cooked chicken tikka. Either could be used. My friends at Eastern Eye in Brick Lane, London, recommend adding a splash of red wine to the sauce. Great advice! I think it really gives the sauce a unique and delicious flavour. This curry is perfect for kids and those who aren’t fans of spicy dishes.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "almond flakes",
@@ -66,5 +70,6 @@
     "Add the oil to the pan. When nice and bubbly, add the coconut flour, ground almonds and sugar. Stir this around for about 30 seconds, then add the sultanas, base curry sauce and block coconut pieces. When the sauce begins to simmer, stir in the chicken.",
     "Let this simmer for about 5 minutes until the chicken is cooked through and the sauce has cooked to your preferred consistency. If the sauce caramelizes to the sides, stir it back into the sauce. At this time, you could add a splash of red wine to simmer in the sauce until the alcohol cooks out.",
     "To serve, check for seasoning, adding salt, more coconut and sugar if desired, to taste. Stir in the cream and sprinkle with the garam masala and the toasted almond flakes."
-  ]
+  ],
+  "image": "/recipes/chicken-pasanda.jpg"
 }

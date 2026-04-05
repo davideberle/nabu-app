@@ -1,0 +1,58 @@
+{
+  "id": "margat-bamyaokra-stew",
+  "name": "Margat BamyaOKRA STEW",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 servings",
+  "intro": "Bamya means “okra” in Arabic, and it’s usually cooked in a tomato-based stew until the okra is soft and melts in your mouth. It’s a stew that I personally loved growing up, but I came to realize as an adult that many of my friends did not enjoy eating it because of the subtle sliminess okra can give off. But when okra is cooked right, there should not be any sliminess. The trick is to ensure it is not cut up before cooking; my mom would only trim the tops very slightly and leave it whole. I may be biased, but I think my family’s Iraqi-style okra stew is the most delicious because of the excessive use of two things: garlic, which complements the okra, and pomegranate molasses.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "1 hour"
+  },
+  "ingredients": [
+    {
+      "item": "bone-in veal (see Notes), cut into 2-inch (5 cm) pieces",
+      "amount": "1½ pounds (650 g)"
+    },
+    {
+      "item": "kosher salt, divided, plus more if needed",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "black pepper, plus more if needed",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "frozen small okra (see Notes)",
+      "amount": "28 ounces (800 g)"
+    },
+    {
+      "item": "large cloves garlic, roughly chopped",
+      "amount": "8"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1½ tablespoons"
+    }
+  ],
+  "method": [
+    "Season the veal pieces with ½ teaspoon of the salt and the pepper.",
+    "In a large pot over medium heat, add the oil, onion, and ½ teaspoon of the salt and cook, stirring often, for 5 to 6 minutes, until the onion is softened and translucent. Add the veal and sear for 5 to 6 minutes, flipping until all sides are lightly browned. Stir in the tomato paste and continue to cook for another few minutes. Add the okra, garlic, pomegranate molasses, remaining 1 teaspoon salt, and about 6 cups (1.4 L) of water to the pot and mix everything well. Bring to a rolling boil over medium heat, then boil for about 30 minutes with the pot half-covered with the lid.",
+    "After 30 minutes, check the tenderness of the okra and the meat and taste and adjust the salt and pepper if necessary. If the okra and meat are both still slightly firm, add more water (2 to 3 cups, or 480 to 720 ml) and continue boiling for another 30 minutes; if they are both tender, turn off the heat and serve."
+  ],
+  "image": "/recipes/margat-bamyaokra-stew.jpg"
+}

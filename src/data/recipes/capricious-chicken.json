@@ -3,9 +3,10 @@
   "name": "Capricious Chicken",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This dish looks absolutely spectacular. Serve it in a large, long dish and put it in the middle of the table for people to help themselves.",
   "ingredients": [
     {
       "item": "organic chicken breasts",
@@ -16,12 +17,28 @@
       "amount": "25 ml"
     },
     {
+      "item": "sea salt flakes and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "red capsicum (pepper)",
       "amount": "1"
     },
     {
       "item": "yellow capsicum (pepper)",
       "amount": "1"
+    },
+    {
+      "item": "carrots",
+      "amount": "2–3"
+    },
+    {
+      "item": "celery stalks",
+      "amount": "2–3"
+    },
+    {
+      "item": "baby iceberg lettuce or radicchio leaves, for serving",
+      "amount": ""
     },
     {
       "item": "home-made mayonnaise (see Vitello Tonnato), made extra lemony",
@@ -32,8 +49,12 @@
       "amount": "1"
     },
     {
-      "item": "toasted pine nuts",
-      "amount": "½ cup"
+      "item": "cup toasted pine nuts",
+      "amount": "½"
+    },
+    {
+      "item": "MARINADE",
+      "amount": ""
     },
     {
       "item": "good-quality virgin olive oil",
@@ -44,15 +65,24 @@
       "amount": "125 ml"
     },
     {
+      "item": "cloves garlic, chopped",
+      "amount": "2–3"
+    },
+    {
       "item": "chilli, chopped",
       "amount": "1"
+    },
+    {
+      "item": "fresh bay leaves, chopped",
+      "amount": "2–3"
     }
   ],
   "method": [
-    "Serves 6 5 organic chicken breasts 25 ml virgin olive oil sea salt flakes and ground black pepper 1 red capsicum (pepper) 1 yellow capsicum (pepper) 2–3 carrots 2–3 celery stalks baby iceberg lettuce or radicchio leaves, for serving 400 ml home-made mayonnaise (see Vitello Tonnato), made extra lemony 1 handful rocket leaves ½ cup toasted pine nuts MARINADE 125 ml good-quality virgin olive oil 125 ml lemon juice 2–3 cloves garlic, chopped 1 chilli, chopped 2–3 fresh bay leaves, chopped",
     "Mix together all the marinade ingredients, pour over the chicken breasts and leave for about 30 minutes.",
     "Preheat the oven to 200°C (gas mark 6).",
     "Heat a large cast-iron griddle or pan, add the olive oil and sear the chicken breasts to brown them, then finish off in the oven for about 20 minutes, or until done. Let them cool, then cut into 2 cm strips. Season with salt and pepper.",
-    "Cut all the vegetables into thin sticks."
-  ]
+    "Cut all the vegetables into thin sticks.",
+    "On your serving dish, arrange some baby iceberg or radicchio leaves. Mix the carrots and celery with 125 ml mayonnaise. Spoon onto the leaves then add the capsicum followed by the chicken pieces. Put the rocket leaves on top of the chicken and, finally, scatter over the pine nuts. Serve the remainder of the mayonnaise on the side."
+  ],
+  "image": "/recipes/capricious-chicken.jpg"
 }

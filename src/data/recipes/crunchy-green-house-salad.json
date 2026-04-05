@@ -3,10 +3,14 @@
   "name": "CRUNCHY GREEN HOUSE SALAD",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
   "intro": "Everyone needs a good ‘house salad’ in their arsenal. House salads aren’t meant to be the heroes of the show, but most definitely shouldn’t be an afterthought. This salad embraces texture from pumpkin seeds, celery, sugar snap peas and creamy avo. For salads, texture and contrast is essential. I love the mellow, refreshing crunch of a cos (romaine) lettuce and the subtle sweetness of the pear. Fruit in salads can freak people out, but they can work so wonderfully. I would serve this salad with my roasted aubergine (eggplant)!",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "large avocado, chopped",
@@ -38,37 +42,45 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tablespoons",
+      "group": "DRESSING"
     },
     {
       "item": "juice and zest of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "Dijon mustard",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     },
     {
       "item": "garlic clove, very finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "DRESSING"
     },
     {
       "item": "handful of chives, finely chopped",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     }
   ],
   "method": [
     "In a small bowl, whisk together all the ingredients for the dressing apart from the chives. Stir through the chives, then set aside.",
     "Put the avocado into a large bowl with a tablespoon of the dressing and stir to coat – this will stop it turning brown. Add the rest of the ingredients along with the remaining dressing and toss well before serving."
   ],
+  "image": "/recipes/crunchy-green-house-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

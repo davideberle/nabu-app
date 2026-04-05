@@ -3,11 +3,14 @@
   "name": "SORREL HOISIN FRIED ‘CHICKEN’ BURGER",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "30 MINUTE",
   "intro": "Every now and then you need a good burger in your life, and this one satisfies that craving. This is the kind of dish I make for my non-vegan friends. The sorrel hoisin glaze is quietly delicious and adds a fruity twist. Lettuce and pickles are non-negotiable here. There’s just something about the hot, crispy, sticky glazed oyster mushrooms and the ice-cold lettuce.",
+  "time": {
+    "prep": "20 MINUTES",
+    "cook": "30 MINUTES"
+  },
   "ingredients": [
     {
       "item": "oyster mushrooms",
@@ -39,63 +42,78 @@
     },
     {
       "item": "soya milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "group": "WET DREDGE"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "WET DREDGE"
     },
     {
       "item": "hot sauce of your choice",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "WET DREDGE"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "200 g (7 oz/1⅔ cups)"
+      "amount": "200 g (7 oz/1⅔ cups)",
+      "group": "CRISPY COATING"
     },
     {
       "item": "cornflour (cornstarch)",
-      "amount": "50 g (2 oz/scant ½ cup)"
+      "amount": "50 g (2 oz/scant ½ cup)",
+      "group": "CRISPY COATING"
     },
     {
       "item": "all-purpose seasoning",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CRISPY COATING"
     },
     {
       "item": "dried sage",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CRISPY COATING"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CRISPY COATING"
     },
     {
       "item": "onion powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "CRISPY COATING"
     },
     {
       "item": "garlic granules",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "CRISPY COATING"
     },
     {
       "item": "vegan-friendly brioche burger buns",
-      "amount": "6"
+      "amount": "6",
+      "group": "TO SERVE"
     },
     {
       "item": "knob of vegan block butter",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "vegan mayonnaise",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "iceberg lettuce",
-      "amount": "½"
+      "amount": "½",
+      "group": "TO SERVE"
     },
     {
       "item": "gherkins (pickles)",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -107,6 +125,7 @@
     "Toast the brioche buns with a touch of vegan butter.",
     "On the base of each bun spread a tablespoon of vegan mayonnaise and add a couple of lettuce leaves. Now add the glazed mushrooms and pickles. And another dollop of vegan mayo on the top bun. Serve and enjoy!"
   ],
+  "image": "/recipes/sorrel-hoisin-fried-chicken-burger.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

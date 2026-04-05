@@ -3,25 +3,34 @@
   "name": "Valdostana Soup",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This mountain soup is really a meal in itself, which is how it was traditionally served.",
   "ingredients": [
     {
-      "item": "large Savoy cabbage",
-      "amount": "½"
+      "item": ".5 litres good-quality chicken stock",
+      "amount": "2"
+    },
+    {
+      "item": "unsalted butter, for greasing bowls",
+      "amount": ""
+    },
+    {
+      "item": "arge Savoy cabbage",
+      "amount": "½ l"
     },
     {
       "item": "bunch cavolo nero (black cabbage)",
       "amount": "1"
     },
     {
-      "item": "loaf ciabatta bread, thinly sliced and toasted",
-      "amount": "¾"
+      "item": "oaf ciabatta bread, thinly sliced and toasted",
+      "amount": "¾ l"
     },
     {
-      "item": "large clove garlic",
-      "amount": "1"
+      "item": "arge clove garlic",
+      "amount": "1 l"
     },
     {
       "item": "anchovies in oil, drained",
@@ -38,12 +47,20 @@
     {
       "item": "freshly grated parmigiano",
       "amount": "100 g"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 2.5 litres good-quality chicken stock unsalted butter, for greasing bowls ½ large Savoy cabbage 1 bunch cavolo nero (black cabbage) ¾ loaf ciabatta bread, thinly sliced and toasted 1 large clove garlic 20 anchovies in oil, drained 225 g fontina, roughly grated 225 g Gruyère, roughly grated 100 g freshly grated parmigiano ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
     "In a large pan heat the chicken stock. Butter six large, ovenproof soup bowls.",
-    "Remove the leaves from the Savoy cabbage, cut away any thick stems and cut the leaves into large pieces. Cut the cavolo nero into large pieces."
-  ]
+    "Remove the leaves from the Savoy cabbage, cut away any thick stems and cut the leaves into large pieces. Cut the cavolo nero into large pieces.",
+    "Rub the toasted ciabatta bread with the garlic clove.",
+    "In the bottom of each bowl, put some cabbage and cavolo nero. On top of this place about 3 anchovy fillets then a handful of fontina and Gruyère cheeses. Arrange 1–2 slices of the toasted ciabatta on top. Continue with more layers of cabbage and cavolo nero, anchovies and parmigiano, then finally some ground pepper.",
+    "Now fill the bowls to three-quarters with the hot stock (do not fill them too full, as the bread will swell a bit during cooking). Cook them in the oven for about 15–20 minutes. The soup should have a nice golden, crunchy crust on top. Serve immediately.",
+    "If you cannot find cavolo nero, substitute with fresh English spinach."
+  ],
+  "image": "/recipes/valdostana-soup.jpg"
 }

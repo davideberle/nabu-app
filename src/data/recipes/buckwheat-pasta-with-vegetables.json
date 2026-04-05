@@ -3,10 +3,15 @@
   "name": "Buckwheat Pasta with Vegetables",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "Pizzoccheri is a traditional buckwheat pasta eaten as a hearty main meal. This version is delicious, baked with vegetables and cheese. If you do not have the time to make your own pasta, you can find pizzoccheri in good Italian delicatessens.",
   "ingredients": [
+    {
+      "item": "PASTA",
+      "amount": ""
+    },
     {
       "item": "buckwheat flour",
       "amount": "250 g"
@@ -16,20 +21,24 @@
       "amount": "150 g"
     },
     {
-      "item": "sea salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon sea salt",
+      "amount": "1"
     },
     {
-      "item": "large organic eggs",
-      "amount": "3"
+      "item": "arge organic eggs",
+      "amount": "3 l"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "1 tablespoon"
+      "item": "tablespoon good-quality virgin olive oil",
+      "amount": "1"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "VEGETABLES",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "unsalted butter",
@@ -42,6 +51,10 @@
     {
       "item": "cloves garlic, chopped",
       "amount": "2"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "6–8"
     },
     {
       "item": "bunch cavolo nero (black cabbage), stems discarded, leaves roughly chopped",
@@ -74,6 +87,10 @@
   ],
   "method": [
     "Mix the pasta ingredients into a dough; if it seems dry, add a few drops of water. Divide the dough into 3 or 4 pieces. Pass 1 piece through your pasta machine on a wide setting, then fold it up in order to pass it through again. Continue doing so until the dough is of a uniform consistency and shiny. Repeat with the other pieces of dough. Set the pasta machine to a medium setting and put the pieces through again to make large, thin sheets.",
-    "Preheat the oven to 220°C (gas mark 7)."
-  ]
+    "Lay the sheets on a floured surface and cut them widthways with a sharp knife into strips about 2 cm thick.",
+    "Preheat the oven to 220°C (gas mark 7).",
+    "For the vegetables, heat the oil and 25 g of the butter in a saucepan and gently cook the onions until soft. Add the garlic, sage and cavolo nero and cook for a few more minutes. Remove from the heat and add the potatoes, beans, peas and spinach and gently mix together.",
+    "Butter a large ovenproof dish. Bring a large pan of salted water to the boil and cook the pizzoccheri for just 1 minute. Drain and put the pasta into the dish. Add the vegetables, Gruyère and some salt and pepper and gently mix everything together. Sprinkle the parmigiano on top, then evenly dot the remaining butter over the top of the parmigiano. Bake the pizzoccheri in the oven for about 20 minutes, or until the top turns golden."
+  ],
+  "image": "/recipes/buckwheat-pasta-with-vegetables.jpg"
 }

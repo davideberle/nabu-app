@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Chapli kebabs are, in my opinion, the king of all kebabs. They are traditionally cooked in beef dripping, but you could opt for a healthier oil such as rapeseed (canola) oil, if you wish. You can serve these on their own with a salad and some mint and coriander sauce, or wrap them up in homemade naans topped with salad, vegetables and chutney or raita.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "3 MINS"
+  },
   "ingredients": [
     {
       "item": "minced (ground) beef (preferably 20% fat)",
@@ -67,6 +71,8 @@
   ],
   "method": [
     "Place the minced beef in a large baking tray and add all the ingredients down to and including the gram flour. Knead the meat with all the ingredient with your hands for about 10 minutes, pushing it all down into the tray as you do. The idea here is not only to combine the ingredients but to super-mince the meat.",
-    "Finely chop the beef bone marrow into 5mm (¼in) pieces or smaller. Work this into the meat as well so that it is all well combined, but you still want to see the chunks of marrow. Divide the meat mixture into four large equal-size patties, or smaller patties if you wish."
-  ]
+    "Finely chop the beef bone marrow into 5mm (¼in) pieces or smaller. Work this into the meat as well so that it is all well combined, but you still want to see the chunks of marrow. Divide the meat mixture into four large equal-size patties, or smaller patties if you wish.",
+    "When ready to cook, heat about 7.5cm (3in) of beef dripping over a medium–high heat. When visibly hot, carefully submerge the beef patties into the boiling oil. Fry for 2–3 minutes until crispy on the exterior and cooked through. Season with salt and drizzle each with a squeeze of lime juice."
+  ],
+  "image": "/recipes/beef-chapli-kebabs.jpg"
 }

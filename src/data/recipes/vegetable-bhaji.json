@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Any seasonal vegetables can be used for this recipe. I’ve recommended a few, but feel free to add whatever you like. Vegetable bhaji is essentially a stir-fry with a little base curry sauce and spices mixed in. Be careful not to overcook the vegetables in the sauce. They need to have a bit of bite to them.",
+  "intro": "Any seasonal vegetables can be used for this recipe. I’ve recommended a few, but feel free to add whatever you like. Vegetable bhaji is essentially a stir-fry with a little base curry sauce and spices mixed in. Be careful not to overcook the vegetables in the sauce. They need to have a bit of bite to them.\n\nConsider this a slightly fancier version of the pre-cooked onions and vegetables. Vegetable bhaji can be served as a curry on its own, or you could mix a few spoonfuls into the curry of your choice.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -88,8 +92,11 @@
   "method": [
     "Heat the oil in a large wok or frying pan over a high heat. When hot, throw in the mustard seeds. When they begin to crackle (after about 30 seconds), reduce the heat to medium–high, then add the curry leaves and stir to combine.",
     "Now add the sliced onions and yellow and red (bell) peppers and fry for about 5 minutes until the onions are translucent and soft. Add the garlic and ginger paste, chillies, turmeric and mixed powder, followed by the tomato purée. Let these sizzle for 1 minute, then stir in the rest of the vegetables to fry for about 2 minutes, stirring continuously.",
-    "Pour in the base curry sauce and simmer undisturbed, stirring only if it is catching on the pan."
+    "Pour in the base curry sauce and simmer undisturbed, stirring only if it is catching on the pan.",
+    "When the vegetables are cooked to your liking, add the tomato wedges and dried fenugreek leaves (kasoori methi). Season with salt and black pepper and sprinkle with the garam masala to serve."
   ],
+  "tips": "A couple of pre-cooked potatoes and a little of the cooking sauce is a nice addition.",
+  "image": "/recipes/vegetable-bhaji.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

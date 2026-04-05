@@ -3,10 +3,14 @@
   "name": "ZIPPY GARLICKY CUCUMBER AND CHO CHO SALAD",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 2–3",
   "intro": "Cho cho, aka chayote is so insanely delicious raw, yet it’s never prepared that way in Jamaican cooking! I love the sturdy crunch it offers, it really holds the dressing and works really well alongside the cuke, which is it’s cooler cousin flavour-wise.",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "cucumber, finely sliced",
@@ -34,29 +38,35 @@
     },
     {
       "item": "garlic clove, very finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "DRESSING"
     },
     {
       "item": "Scotch bonnet, deseeded and very finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "DRESSING"
     },
     {
       "item": "zest and juice of 1 lime",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "DRESSING"
     }
   ],
   "method": [
     "Whisk together all the ingredients for the dressing in a small bowl.",
     "In a large bowl, combine the cucumber, chayote and onion. Add the dressing to the vegetables and toss to coat. Add the roughly chopped parsley and mint and season with salt and pepper to taste."
   ],
+  "image": "/recipes/zippy-garlicky-cucumber-and-cho-cho-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "One of the things about making Indian food daily and then blogging about it is that inevitably you come across recipes you want to make all the time. Tandoori chicken legs are a family favourite and my basic recipe has changed very little over the years. Red food colouring is often added to the chicken to give it that familiar appearance, but it is being used a lot less these days – it adds no flavour and is solely there for appearance.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "skinless chicken legs, including thighs",
@@ -26,44 +30,55 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "100g (scant ½ cup)"
+      "amount": "100g (scant ½ cup)",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "tandoori masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "green chilli paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "amchoor (dried mango powder)",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Cut 3–5 shallow slits in each chicken leg and place in a large bowl. Squeeze the lime juice over the chicken and rub it into the meat along with the salt and red food colouring (if using). Set aside while you make the marinade.",
     "Place all the marinade ingredients in a bowl and work them together with your hands until smooth. Coat the chicken with the marinade and allow to marinate for 2–48 hours – the longer the better.",
+    "When ready to cook, skewer the chicken legs onto flat skewers and heat the barbecue. Grill using the direct grilling method until the chicken is nicely charred and then turn. This is important when using skewers, as the meat needs to cook so that it expands and doesn’t move around on the skewers.",
     "If you can’t be bothered to fire up the barbecue? No worries! Preheat the oven to 200°C (400°F/Gas 6) and cook the chicken on a wire rack placed over a foil-lined oven tray for about 20 minutes, or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature for a minute or so."
-  ]
+  ],
+  "image": "/recipes/tandoori-chicken-legs.jpg"
 }

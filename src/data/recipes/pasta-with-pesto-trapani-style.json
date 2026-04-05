@@ -3,10 +3,15 @@
   "name": "Pasta with Pesto, Trapani-Style",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "I first tried this pesto in Trapani, western Sicily. The almonds were still green outside so the kernels were soft and juicy. With the sweetness of the tomatoes it made a very special sauce.\n\nYou can also use this pesto on a bruschetta as a starter.",
   "ingredients": [
+    {
+      "item": "PESTO",
+      "amount": ""
+    },
     {
       "item": "bunch fresh basil, leaves only",
       "amount": "1"
@@ -20,12 +25,20 @@
       "amount": "50 g"
     },
     {
+      "item": "cloves garlic, crushed",
+      "amount": "1–2"
+    },
+    {
       "item": "fresh breadcrumbs",
       "amount": "50 g"
     },
     {
       "item": "good-quality virgin olive oil",
       "amount": "125 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     },
     {
       "item": "spaghettini or spaghetti",
@@ -37,8 +50,8 @@
     }
   ],
   "method": [
-    "Serves 4–6 PESTO 1 bunch fresh basil, leaves only 6 very ripe tomatoes, skin and seeds removed, roughly chopped 50 g fresh almonds 1–2 cloves garlic, crushed 50 g fresh breadcrumbs 125 ml good-quality virgin olive oil salt and ground black pepper 500 g spaghettini or spaghetti 100 g dried salted ricotta or parmigiano, freshly grated",
     "Put all the pesto ingredients into a mortar or food processor and blend to a coarse paste. Taste and adjust the seasoning to your liking.",
     "Boil the pasta in plenty of salted water. As soon as the pasta is cooked al dente, drain it and tip it into a warm serving dish. Pour on the pesto and toss well. Take to the table straight away and serve with the ricotta or parmigiano on the side."
-  ]
+  ],
+  "image": "/recipes/pasta-with-pesto-trapani-style.jpg"
 }

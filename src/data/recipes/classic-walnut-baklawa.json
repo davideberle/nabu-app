@@ -3,29 +3,75 @@
   "name": "Classic Walnut Baklawa",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "90 pieces",
-  "time": "30 minutes, plus 1 hour cooling",
   "intro": "I always think that I can have one piece of baklawa as a little sweet treat and then be done. But something just happens when you bite into it and immediately hear the crunch. I personally can never resist another piece—they’re so small, after all. When I was thinking of including this recipe in this book, I wanted to get creative with my classic recipe, but my family would not hear of it. They demanded that I stick to this classic recipe and declared that it cannot be topped. Well, I listened to them. Baklawa (otherwise known as baklava) is an ancient dessert that can be traced back to the eighth century BCE, when people in the Assyrian Empire arranged unleavened flatbread in layers with nuts in between, though its exact origins are often debated. It is the main attraction at every Middle Eastern dessert spread. In Iraq, if you want to honor guests, you serve a large tray of baklawa. It comes in various shapes and can also be stuffed with pistachios or a thick cream filling. Store-bought baklawa is often too rich and too sweet, so I recommend making it yourself. I do have to give credit to my sister Sarra for perfecting the ingredient ratios in this family recipe: the cardamom-to-nuts ratio, the nuts-to-pastry ratio, and the syrup-to-baklawa ratio—everything has been perfected! And if you feel like it is too intimidating, trust me when I say that it is one of the easiest desserts to make.",
+  "time": {
+    "prep": "30 minutes, plus 1 hour cooling",
+    "cook": "55 minutes"
+  },
   "ingredients": [
     {
-      "item": "2/3 cup (135 g) granulated sugar",
-      "amount": ""
+      "item": "granulated sugar",
+      "amount": "2½ cups (500 g)",
+      "group": "SIMPLE SYRUP"
     },
     {
-      "item": "egg (see Notes)",
-      "amount": "1 medium"
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "unsalted whole raw walnuts (see Notes)",
+      "amount": "1½ pounds (700 g)",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "3 tablespoons",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2/3 cup (135 g)",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "medium egg (see Notes)",
+      "amount": "1",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "½ cup (120 g)",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 g)",
+      "group": "PHYLLO PASTRY"
     },
     {
       "item": "box (16 ounces, or 454 g) frozen phyllo dough (2 rolls; 18 sheets total), thawed for 1 hour",
-      "amount": "1"
+      "amount": "1",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "Crushed pistachios (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Dried rose petals (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING"
     }
   ],
   "method": [
     "Preheat the oven to 350°F (175°C).",
-    "TO MAKE THE SIMPLE SYRUP: In a medium saucepan, combine the sugar and lemon juice with 1¼ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes; it should have a runny, syrupy consistency. Remove the pan from the heat and let cool.",
-    "MEANWHILE, MAKE THE WALNUT FILLING: Add the walnuts to a food processor and grind until a coarse consistency; each walnut should break up to about a fifth of its size.",
+    "In a medium saucepan, combine the sugar and lemon juice with 1¼ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes; it should have a runny, syrupy consistency. Remove the pan from the heat and let cool.",
+    "MAKE THE WALNUT FILLING: Add the walnuts to a food processor and grind until a coarse consistency; each walnut should break up to about a fifth of its size.",
     "Transfer the ground walnuts to a medium bowl and add the cardamom, sugar, and egg. Mix well using a spoon.",
     "TO PREPARE THE PHYLLO PASTRY: In a small bowl, combine the butter and oil.",
     "Unwrap the phyllo dough package, unroll it, and cover the dough with a kitchen towel to prevent it from drying out while you work. Measure the sheets’ dimensions against your pan (I used a 13 x 18-inch, or 33 x 46-cm, rimmed sheet pan) and snip any excess using scissors; the phyllo sheets should sit inside the pan up to the edges.",
@@ -36,7 +82,6 @@
     "Bake for 45 to 50 minutes, until the baklawa is a light golden color. Remove from the oven and immediately pour the cooled simple syrup over the top; you will hear a splashing sound as the cooled syrup hits the hot baklawa. Garnish with the crushed pistachios and rose petals (if using).",
     "Let the baklawa cool for at least 1 hour in the pan before serving. If you plate it while hot, the baklawa will crumble."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "tips": "You can substitute pistachios for the walnuts, or use a mixture of half each of walnuts and pistachios.\n\nUsing egg in the filling helps hold the filling together, especially when cutting the baklava. However, you can omit the egg if necessary for dietary restrictions.\n\nStore leftovers in a container, uncovered, on the counter if you are consuming within a few days; otherwise, to maintain freshness, place in an airtight container and freeze. Thaw at room temperature for 1 hour before serving.",
+  "image": "/recipes/classic-walnut-baklawa.jpg"
 }

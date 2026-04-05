@@ -3,21 +3,22 @@
   "name": "Tuna Pâté",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This is a dish created by my grandfather, a famous restaurateur. It was his way of creating a simpler and lighter dish than the traditional pâté.",
   "ingredients": [
     {
       "item": "unsalted butter",
       "amount": "150 g"
     },
     {
-      "item": "large Spanish onion, chopped",
-      "amount": "1"
+      "item": "arge Spanish onion, chopped",
+      "amount": "1 l"
     },
     {
-      "item": "large shallot, chopped",
-      "amount": "1"
+      "item": "arge shallot, chopped",
+      "amount": "1 l"
     },
     {
       "item": "bay leaf",
@@ -38,11 +39,17 @@
     {
       "item": "canned tuna in oil, drained",
       "amount": "400 g"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 150 g unsalted butter 1 large Spanish onion, chopped 1 large shallot, chopped 1 bay leaf 2 sprigs fresh tarragon, finely chopped 10 anchovy fillets, finely chopped 125 ml oloroso sherry 400 g canned tuna in oil, drained ground black pepper",
+    "Using about 50 g of the butter, cook the onion and shallot until soft and transparent. Add the herbs and anchovies. After a few minutes add the sherry and let it evaporate. Add the remaining butter, cut into pieces, and let it melt gently, making sure it does not bubble.",
     "Put the drained tuna and the butter mixture into a food processor, removing the bay leaf. Process for about 5–10 minutes, or until the mixture becomes a very pale colour. Taste for seasoning and add pepper if necessary.",
-    "Pour the mixture into a bowl and leave it in the refrigerator for about 2 hours, or until firm."
-  ]
+    "Pour the mixture into a bowl and leave it in the refrigerator for about 2 hours, or until firm.",
+    "You can add 1–2 large boiled, mashed potatoes to the pâté to make it go further or lighten the taste."
+  ],
+  "image": "/recipes/tuna-p-t.jpg"
 }

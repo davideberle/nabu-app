@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The papad rolls can be a bit fussy to make. Don’t worry! Just do your best. They tend to come out fine in the end. You could use cutlery but I like to pick up the papad rolls and dip them into the sauce by hand. It’s messy, mind! If you want to prepare ahead, you could make the sauce up to three days in advance, but frying the papad rolls and adding the extra cheese is best done just before serving. You can wrap anything you like into the papads – reduced potato curry, for example.",
+  "time": {
+    "prep": "20 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "onion, roughly chopped",
@@ -58,43 +62,53 @@
     },
     {
       "item": "rapeseed (canola) oil, plus extra for shallow-frying",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "fennel seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "grated cauliflower",
-      "amount": "100g (3½oz)"
+      "amount": "100g (3½oz)",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "grated carrot",
-      "amount": "60g (2oz)"
+      "amount": "60g (2oz)",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "grated cabbage",
-      "amount": "60g (2oz)"
+      "amount": "60g (2oz)",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "finely chopped green beans",
-      "amount": "50g (⅓ cup)"
+      "amount": "50g (⅓ cup)",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)"
+      "amount": "200g (7oz)",
+      "group": "PAPAD ROLLS"
     },
     {
       "item": "papads",
-      "amount": "6–10"
+      "amount": "6–10",
+      "group": "PAPAD ROLLS"
     }
   ],
   "method": [
@@ -104,6 +118,7 @@
     "Fill a deep plate or casserole with water and place a few papads in it. It is best if they aren’t touching. Soak them for about 3 minutes, then carefully remove one from the water bath. Place it on a clean surface and then scoop about 2–3 tablespoons of the vegetable and paneer mixture just under the centre. Fold the sides in and then roll it up like a burrito or tight cylinder shape. Allow to dry a little while you do the same with the remaining papads.",
     "Shallow-fry the papad rolls in oil until crispy all over. You will need to do this in batches, so keep them warm while you fry the remaining papads. Stir the reserved grated paneer into the sauce or sprinkle it on top. Place your papad rolls in the sauce so they are sticking out and garnish with coriander (cilantro)."
   ],
+  "image": "/recipes/vegetable-stuffed-papad-roll-curry.jpg",
   "dietary": [
     "vegetarian"
   ]

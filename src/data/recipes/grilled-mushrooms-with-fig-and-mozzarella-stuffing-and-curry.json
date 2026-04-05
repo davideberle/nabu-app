@@ -7,6 +7,10 @@
   },
   "servings": "serves 2–4",
   "intro": "I have to say that this is one of my all-time favourite mushroom recipes. I first tried it at a local curry house that’s no longer around but I did get to watch the chef there make this. I later heard that a similar dish was being served at a tandoori restaurant in Camden called Namaaste Kitchen. Knowing the brilliant restaurant and its talented chef/owner, Sabbir Karim, my bet is that the dish originated there. I didn’t get Sabbir’s recipe in time for this cookbook but I think you are going to like this one. There really is so much amazing flavour in the grilled mushrooms and dressing that all you need is a little rice to go with it and you will be in food heaven. Sometimes I do add a nice raita or coriander (cilantro) chutney though.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "large flat mushrooms, stems cut off and chopped for the stuffing",
@@ -34,64 +38,80 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Pinch of ground cumin",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "Pinch of garam masala",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "Large bunch of fresh curry leaves (about 50)",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "garlic clove, smashed",
-      "amount": "1"
+      "amount": "1",
+      "group": "DRESSING"
     },
     {
-      "item": "1cm (½in) piece of ginger, peeled and grated",
-      "amount": ""
+      "item": "piece of ginger, peeled and grated",
+      "amount": "1cm (½in)",
+      "group": "DRESSING"
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "DRESSING"
     },
     {
       "item": "lime juice",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "DRESSING"
     },
     {
       "item": "Pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "Pinch of red chilli powder",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     },
     {
       "item": "ground cumin",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "DRESSING"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "DRESSING"
     }
   ],
   "method": [
     "Set up the barbecue for indirect cooking.",
     "While it is heating up, mix all of the marinade ingredients in a bowl, then add the mushroom tops. Coat them evenly and allow the mushrooms to marinate while you make the filling.",
     "Mix the mozzarella, spring onions (scallions), figs, chopped mushroom stems and green chilli together in a bowl and season with salt. Now remove the mushroom tops from the marinade and fill them equally with the stuffing.",
+    "When the barbecue is up to heat, place the stuffed mushrooms over the cooler side and bake for about 20 minutes until cooked through and browned on the top.",
     "While the mushrooms are baking, make the dressing. This can also be done a day or so in advance. Place the curry leaves in a pestle and mortar and pound until the leaves are broken into small pieces, but not a paste. This helps release their flavour. Now add the garlic and ginger and pound some more to incorporate. Add the rest of the ingredients and whisk them all together until you have a nice thick, leafy dressing. Check for seasoning and set aside until ready to use.",
     "Place each of the baked mushrooms on a plate and drizzle the curry-leaf dressing over them to serve."
   ],
+  "tips": "You can also make this recipe in the oven. Place a baking tray with a wire rack in the oven and preheat it to 200°C (400°F/Gas 6). When the oven is up to heat, place the stuffed mushrooms on the rack over the baking tray and bake for about 20 minutes until cooked through and toasty brown on top.\n\nThe mozzarella could simply be left out, or there is good dairy-free mozzarella available that melts well and makes a great alternative.",
+  "image": "/recipes/grilled-mushrooms-with-fig-and-mozzarella-stuffing-and-curry.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

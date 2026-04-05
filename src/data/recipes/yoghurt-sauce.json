@@ -7,6 +7,10 @@
   },
   "servings": "makes 250ml (1 cup)",
   "intro": "This is essentially a raita, but I call it a sauce because that’s what it is referred to at many of my local kebab shops. It’s that white sauce in a squeezy bottle that tastes amazing squirted all over your kebab. You must know the one? It also has soured cream in it, which I’ve never seen in a raita. Whatever you call it, I’m almost certain you will recognize the flavour if you frequently find yourself in the queue for a delicious kebab. Some places substitute mayonnaise for the soured cream, which you might want to try. For me though, it has to be soured cream.",
+  "time": {
+    "prep": "5 MINS, PLUS CHILLING TIME",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "plain yoghurt",
@@ -44,6 +48,7 @@
   "method": [
     "Place all the ingredients in a large bowl and whisk until thoroughly blended into one very tasty sauce. Check for seasoning and place in the fridge for at least 30 minutes before serving."
   ],
+  "image": "/recipes/yoghurt-sauce.jpg",
   "dietary": [
     "vegetarian"
   ]

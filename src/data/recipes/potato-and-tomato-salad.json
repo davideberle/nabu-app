@@ -3,9 +3,10 @@
   "name": "Potato and Tomato Salad",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "I love this simple but delicious dish. It is perfect as a light lunch because it is so simple it does depend on the quality of the tomatoes.\n\nWhen you buy tomatoes (or better still, pick them in your vegetable garden), make sure they are firm and fragrant. I don’t put them in the fridge, as I find they lose a lot of flavour. Put them in a flat basket and leave them on the kitchen table. Of course the best way to have the most fragrant tomatoes is to grow your own. They are easy to grow and, together with herbs, are some of the most worthwhile ingredients to produce at home.",
   "ingredients": [
     {
       "item": "medium potatoes, boiled, peeled and sliced",
@@ -38,10 +39,15 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "80 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 4 medium potatoes, boiled, peeled and sliced 1 small Spanish onion, very thinly sliced 8 ripe tomatoes, diced, or 16 cherry tomatoes 12 black or green olives, pitted 30 g capers in brine, drained and chopped 1 handful fresh basil leaves, chopped 1 handful fresh oregano leaves, chopped 80 ml good-quality virgin olive oil salt and ground black pepper",
+    "Gently combine the potato, onion, tomato, olives and capers in a large bowl.",
     "Add the basil, oregano and oil, and toss together gently but thoroughly. Season and serve with plenty of crusty Italian bread."
-  ]
+  ],
+  "image": "/recipes/potato-and-tomato-salad.jpg"
 }

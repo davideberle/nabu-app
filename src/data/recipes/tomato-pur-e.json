@@ -7,6 +7,10 @@
   },
   "servings": "makes 4 tablespoons",
   "intro": "This is a thin purée of tomatoes used in many curries for flavour and colour. Here are two ways you can make it.",
+  "time": {
+    "prep": "2 MINS",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "concentrated tomato paste",
@@ -29,6 +33,8 @@
     "Simply mix the ingredients together to form a thinner paste. This recipe can be easily scaled up or down: just use 1 part tomato paste to 3 parts water.",
     "Blend the plum tomatoes to make a smooth purée. If you want a deeper red colour, add in a little concentrated tomato paste."
   ],
+  "tips": "You could also use sieved, unseasoned Italian passata.",
+  "image": "/recipes/tomato-pur-e.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

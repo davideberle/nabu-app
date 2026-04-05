@@ -1,11 +1,10 @@
 {
   "id": "curried-corn-and-coconut-rice",
-  "name": "CURRIED CORN & COCONUT RICE",
+  "name": "CURRIED CORN and COCONUT RICE",
   "source": {
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "SWEET CORN, CURRY POWDER, SHORT-GRAIN BROWN RICE, COCONUT MILK, DRIED COCONUT",
   "servings": "4 to 6 servings",
   "intro": "THE COCONUT RICE and curried corn in this recipe could very well be eaten separately, and they would make fine additions to lunch or dinner, but the combination of the two is truly special. I call for Jamaican Curry Powder, giving the corn a complexly spicy, sweet, and slightly sour flavor profile.",
   "ingredients": [
@@ -42,8 +41,8 @@
       "amount": "1 tablespoon"
     },
     {
-      "item": "garlic, minced",
-      "amount": "1 clove"
+      "item": "clove garlic, minced",
+      "amount": "1"
     },
     {
       "item": "Jamaican Curry Powder",
@@ -56,6 +55,7 @@
     "Warm the oil in a medium sauté pan over medium heat. Add the garlic, curry powder, and the remaing ¼ teaspoon salt and sauté until fragrant, about 2 minutes. Add the corn and sauté until heated through, 3 to 5 minutes.",
     "To serve, spoon the corn over the rice."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

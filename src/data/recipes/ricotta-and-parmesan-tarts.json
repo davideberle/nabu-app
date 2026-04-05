@@ -3,9 +3,18 @@
   "name": "Ricotta and Parmesan Tarts",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "I find these ideal as a lunch dish. The combination of the ricotta and parmesan is light but very satisfying. They are wonderful served with a simple green salad.",
   "ingredients": [
+    {
+      "item": "Makes 8 × 15 cm diameter tarts",
+      "amount": ""
+    },
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour",
       "amount": "500 g"
@@ -23,8 +32,12 @@
       "amount": "100 g"
     },
     {
-      "item": "salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon salt",
+      "amount": "1"
+    },
+    {
+      "item": "RICOTTA FILLING",
+      "amount": ""
     },
     {
       "item": "ricotta",
@@ -39,6 +52,14 @@
       "amount": "100 g"
     },
     {
+      "item": "teaspoons salt",
+      "amount": "1–2"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "handful fresh oregano leaves",
       "amount": "1"
     },
@@ -48,9 +69,12 @@
     }
   ],
   "method": [
-    "Makes 8 × 15 cm diameter tarts PASTRY 500 g unbleached plain flour 200 g unsalted butter, at room temperature 2 organic eggs plus 1 egg yolk 100 g grated parmigiano 1 teaspoon salt RICOTTA FILLING 1 kg ricotta 2 organic eggs 100 g grated parmigiano 1–2 teaspoons salt ground black pepper 1 handful fresh oregano leaves 10 zucchini (courgette) flowers (optional), bitter stamens removed, roughly sliced",
     "Place all the pastry ingredients in a food processor and mix together to form a dough using a dough hook, but do not overprocess. Put the dough in the refrigerator to rest for about 30–60 minutes.",
+    "In the meantime prepare the ricotta filling by mixing all the filling ingredients well in a bowl.",
     "Preheat the oven to 200°C (gas mark 6) and butter 8 individual tartlet or pie dishes, or a 30 cm springform tin.",
-    "Bake in the preheated oven for about 20–25 minutes. When ready the ricotta should look puffed up and golden on top."
-  ]
+    "Divide the pastry dough into 8 pieces. Place between two sheets of greaseproof or baking paper and flatten the pastry until it is very thin. Line each tartlet mould with the pastry. Fill the individual tarts with the ricotta mixture – about 2 large spoonfuls each.",
+    "Bake in the preheated oven for about 20–25 minutes. When ready the ricotta should look puffed up and golden on top.",
+    "You can eat these tarts hot or at room temperature."
+  ],
+  "image": "/recipes/ricotta-and-parmesan-tarts.jpg"
 }

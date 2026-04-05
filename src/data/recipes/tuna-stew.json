@@ -3,7 +3,7 @@
   "name": "Tuna Stew",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -12,12 +12,16 @@
       "amount": "50 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
-      "item": "large Spanish onion, chopped",
-      "amount": "1"
+      "item": "arge Spanish onion, chopped",
+      "amount": "1 l"
+    },
+    {
+      "item": "cloves garlic, chopped",
+      "amount": "2–3"
     },
     {
       "item": "medium carrots, chopped",
@@ -61,9 +65,11 @@
     }
   ],
   "method": [
-    "Serves 6 50 g unsalted butter 2 tablespoons good-quality virgin olive oil 1 large Spanish onion, chopped 2–3 cloves garlic, chopped 3 medium carrots, chopped 3 stalks celery, chopped 1 bunch flat-leaf parsley, chopped 1 fresh bay leaf 5 fresh sage leaves 140 g tomato paste 12 anchovies 800 g canned peeled roma tomatoes, broken up with your fingers 850 g canned tuna in oil, drained 250 g freshly shelled peas sea salt and ground black pepper",
     "Heat the butter and oil in a large saucepan and sauté the onion until softened, then add the garlic, being careful not to let it brown. Add the carrots, celery and herbs and cook for a further few minutes.",
     "Add the tomato paste and anchovies and cook over medium heat for about 5 minutes. Add the peeled tomatoes and turn the heat down to low. Put a lid on the pan and cook for 30 minutes, stirring from time to time.",
-    "Put the tuna in the pan, breaking it into bite-sized pieces with the spoon, and then add the peas. Cook until the peas are tender (about 10 minutes)."
-  ]
+    "Put the tuna in the pan, breaking it into bite-sized pieces with the spoon, and then add the peas. Cook until the peas are tender (about 10 minutes).",
+    "Taste the stew for salt and pepper, discard the bay leaf, and serve.",
+    "This wintry dish is traditionally served with polenta, for soaking up the delicious juices (see Polenta Pasticciata for a basic polenta recipe). It is also great served with mashed potatoes."
+  ],
+  "image": "/recipes/tuna-stew.jpg"
 }

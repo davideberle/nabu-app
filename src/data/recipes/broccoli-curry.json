@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I’m pretty sure this broccoli curry was the first vegetarian curry I ever posted on my blog. In India, I’ve seen many similar curries that are cooked with cauliflower instead. You could do that too as it’s very good. For me, however, I like the colour and flavour the broccoli adds to the dish. There really is so much going on here. From the roasted peanuts and sesame seeds to the creamy coconut milk, I just love this dish. So much so, it’s now one of the curries I teach at my vegetarian cooking classes. Even those who think vegetarian curries are boring end up changing their minds very quickly when they taste this.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "broccoli, cut into small florets",
@@ -80,6 +84,7 @@
     "Add the garlic and give it a good stir. When fragrant, add the chopped tomatoes followed by the par-cooked broccoli and coconut milk. Heat the broccoli through but try to ensure that it is tender but not at all mushy.",
     "Season with salt and black pepper and sprinkle with the garam masala and the remaining sesame seeds. Serve immediately with rice, puris or chapattis."
   ],
+  "image": "/recipes/broccoli-curry.jpg",
   "dietary": [
     "vegetarian"
   ]

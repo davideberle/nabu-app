@@ -3,9 +3,10 @@
   "name": "Ricotta, Almond and Lemon Cake",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
+  "intro": "I love this light, moist cake which combines some of the famous flavours of Sicily.\n\nOrnella is a cheesemaker from the hills outside Modica in southeastern Sicily. When she made it for me the ricotta was so fresh it was still warm.",
   "ingredients": [
     {
       "item": "unsalted butter, at room temperature",
@@ -28,16 +29,26 @@
       "amount": "75 g"
     },
     {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "finely grated zest of 5 organic lemons and juice of 4 organic lemons",
+      "amount": ""
+    },
+    {
       "item": "fresh ricotta",
       "amount": "400 g"
     }
   ],
   "method": [
-    "Serves 6–8 250 g unsalted butter, at room temperature 250 g caster sugar 6 organic eggs, separated 250 g almonds, roasted then ground 75 g self-raising flour pinch of salt finely grated zest of 5 organic lemons and juice of 4 organic lemons 400 g fresh ricotta",
     "Preheat the oven to 180°C (gas mark 4).",
+    "Butter a 25 cm round springform cake tin. Beat the butter and sugar in an electric mixer until very light and fluffy. With the motor running, add the egg yolks, one at a time, until all are incorporated.",
     "Combine the ground almonds with the flour, salt and lemon zest. Fold into the batter.",
     "Whisk the lemon juice with the ricotta until light and airy. Fold into the cake batter.",
+    "Beat the egg whites until they form soft peaks. Fold them carefully into the batter.",
     "Pour the batter into the prepared cake tin and bake for 50 minutes. Test for doneness by inserting a skewer into the cake. It should come out clean when cooked through.",
     "Remove the cake from the oven and turn it out onto a cake rack to cool. It will remain nice and moist for a few days. Traditionally this delicious dessert or afternoon tea cake is served with a glass of Marsala."
-  ]
+  ],
+  "image": "/recipes/ricotta-almond-and-lemon-cake.jpg"
 }

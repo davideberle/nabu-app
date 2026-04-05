@@ -3,11 +3,14 @@
   "name": "Harissa Honey Shrimp Skewers",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "15 minutes, plus 15 minutes marinating",
   "intro": "Having a jar of Tunisian Harissa in your fridge means you can have a fancy meal on the dinner table in twenty minutes. A big part of the solution is also shrimp, the quickest-cooking protein! The marinade for these shrimp skewers couldn’t be simpler, because the work is already done for you with the harissa paste. I love mixing harissa with honey to balance the spiciness and help caramelize the shrimp. Use an indoor or outdoor grill, and while you’re at it, toss some onions in the marinade and throw them on the grill too. They’ll soften and become sweeter—and the perfect accompaniment to the shrimp.",
+  "time": {
+    "prep": "15 minutes, plus 15 minutes marinating",
+    "cook": "15 minutes"
+  },
   "ingredients": [
     {
       "item": "bamboo or metal skewers",
@@ -34,16 +37,27 @@
       "amount": "1½ pounds (680 g)"
     },
     {
-      "item": "yellow onions, cut into quarters",
-      "amount": "3 small"
+      "item": "small yellow onions, cut into quarters",
+      "amount": "3"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Tunisian Harissa",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
     "If using bamboo skewers for this recipe, start by soaking them in water for 15 minutes.",
     "In a large bowl, mix the harissa, honey, oil, and salt until well combined. Add the shrimp to the bowl and mix well, ensuring all the shrimp are coated. Let the shrimp marinate in the refrigerator for 15 minutes.",
     "Remove the shrimp from the fridge and skewer them, 4 or 5 shrimp per skewer, then place on a platter and let come to room temperature for 10 minutes. Reserve the leftover marinade. Toss the quartered onions in the bowl of leftover marinade to soak it up, then place them on the remaining skewers.",
-    "Meanwhile, preheat an outdoor grill to 400°F (205°C). If grilling indoors, preheat a large cast-iron grill pan over medium heat. Grease the grill pan with oil to avoid the shrimp sticking.",
+    "preheat an outdoor grill to 400°F (205°C). If grilling indoors, preheat a large cast-iron grill pan over medium heat. Grease the grill pan with oil to avoid the shrimp sticking.",
     "If grilling outdoors, grill the skewers over direct, medium heat for 5 to 6 minutes, turning the shrimp halfway through, until the shrimp curl and turn opaque. If grilling indoors, place the skewers on the grill pan and cook for 1 minute per side, or until the shrimp curl and turn opaque. Grill the onion skewers for 3 to 4 minutes per side, until charred and softened.",
     "Place the skewers on a platter along with the grilled onions and garnish with the chopped parsley. Serve more harissa in a bowl for dipping."
-  ]
+  ],
+  "image": "/recipes/harissa-honey-shrimp-skewers.jpg"
 }

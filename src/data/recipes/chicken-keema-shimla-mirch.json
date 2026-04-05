@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Shimla mirch means bell pepper or capsicum and you get a lot of that in this one. You could try making this curry with tandoori chicken tikka but I prefer it with chicken keema. Both are really good. At restaurants, this popular keema curry is usually prepared with minced lamb. You could use your minced meat of choice. Turkey is nice too. The curry is often topped with julienned ginger, spring onions (scallions), coriander (cilantro) and freshly chopped green chillies, and that is exactly what you’ll be doing here. The toppings take a good curry and make it great!",
+  "time": {
+    "prep": "15 MINS, PLUS MAKING THE BASE CURRY SAUCE",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -73,8 +77,8 @@
       "amount": ""
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and julienned",
-      "amount": ""
+      "item": "piece of ginger, peeled and julienned",
+      "amount": "5cm (2in)"
     },
     {
       "item": "spring onions (scallions), roughly chopped",
@@ -90,5 +94,6 @@
     "Now add the ground spices and stir them into the vegetables. Pour in the passata (sieved tomatoes) and 250ml (1 cup) of the curry sauce. Bring this to a simmer, stirring only if the sauce is sticking to the pan.",
     "Add the chicken and stir it into the sauce. Let this simmer for about 10 minutes until the chicken is cooked through. (In restaurants, pre-cooked keema would be used as a time saver so if you’re working ahead, feel free to do the same, following my recipe.) Once cooked through, add the rest of the base sauce and the coconut milk and stir it all to combine.",
     "Add the quartered tomatoes. Season with salt and add more of the ground spices, if you want. Serve at the table with the ginger, spring onions (scallions), coriander (cilantro) and sliced chillies on the side or as a garnish. I have provided quantities for the toppings to start, but you might just find you like them so much you want to add more."
-  ]
+  ],
+  "image": "/recipes/chicken-keema-shimla-mirch.jpg"
 }

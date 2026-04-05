@@ -3,10 +3,14 @@
   "name": "Lamb Pie with Potato Crust",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
+    {
+      "item": "CRUST",
+      "amount": ""
+    },
     {
       "item": "potatoes, boiled in their skins, peeled and mashed",
       "amount": "500 g"
@@ -20,28 +24,32 @@
       "amount": "150 g"
     },
     {
-      "item": "sea salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon sea salt",
+      "amount": "1"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "lamb fillets or backstraps (loins), cut into 2 cm pieces",
       "amount": "800 g"
     },
     {
-      "item": "unbleached plain flour, for dusting",
-      "amount": "2 tablespoons"
+      "item": "tablespoons unbleached plain flour, for dusting",
+      "amount": "2"
     },
     {
       "item": "unsalted butter",
       "amount": "50 g"
     },
     {
-      "item": "virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons virgin olive oil",
+      "amount": "2"
     },
     {
-      "item": "large Spanish onion, sliced",
-      "amount": "1"
+      "item": "arge Spanish onion, sliced",
+      "amount": "1 l"
     },
     {
       "item": "cloves garlic, crushed",
@@ -76,16 +84,29 @@
       "amount": "350 ml"
     },
     {
+      "item": "sea salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "EGG WASH",
+      "amount": ""
+    },
+    {
       "item": "organic egg",
       "amount": "1"
     },
     {
-      "item": "cream",
-      "amount": "2 tablespoons"
+      "item": "tablespoons cream",
+      "amount": "2"
     }
   ],
   "method": [
     "Preheat the oven to 200°C (gas mark 6).",
-    "Mix the mashed potato, egg, flour and salt into a dough. Let the dough rest for about half an hour."
-  ]
+    "Mix the mashed potato, egg, flour and salt into a dough. Let the dough rest for about half an hour.",
+    "For the filling, toss the pieces of lamb in the flour. Heat the butter and oil in a large saucepan and, when the butter foams, add the lamb. Brown the meat all over then transfer it to a plate. Add the onion, garlic, carrot, celery, parsnip and herbs to the pan and cook for about 5 minutes, until they start to soften. Stir in the lamb and ham, then add the wine. Cook until the wine has evaporated. Remove from the heat and season with salt and pepper.",
+    "Butter an oval ovenproof dish. Fill the dish with the meat and vegetables.",
+    "Roll the dough out between two lightly floured pieces of greaseproof paper until it is about 2 cm thick. Cut the dough to the shape of the dish and place this ‘lid’ over the meat and vegetables, pressing down around the edges of the dough to seal it. Roll a long sausage from the excess dough and with a fork press it around the rim of the dish. If you have any dough left over, you can decorate the lid with leaf shapes.",
+    "For the egg wash, beat the egg and cream together and brush it over the dough. Bake the pie in the oven for about 30 minutes, or until the crust is golden-brown."
+  ],
+  "image": "/recipes/lamb-pie-with-potato-crust.jpg"
 }

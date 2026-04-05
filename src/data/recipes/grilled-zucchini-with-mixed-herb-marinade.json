@@ -1,0 +1,62 @@
+{
+  "id": "grilled-zucchini-with-mixed-herb-marinade",
+  "name": "GRILLED ZUCCHINI with MIXED-HERB MARINADE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "4 to 6 servings",
+  "intro": "THE COMBINATION of sautéed zucchini and tomatoes that’s traditionally eaten during Ramadan in Egypt inspired this dish. It’s a lovely side, and you could also eat it as a light meal by topping it with Eggplant, Tomatoes, and Peanuts, a recipe inspired by the Moroccan dish zaalouk.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "freshly squeezed orange juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "minced, flat-leaf parsley",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "minced fresh thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "minced fresh chervil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "zucchini, halved lengthwise",
+      "amount": "6"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the oil, lemon juice, orange juice, garlic, parsley, thyme, chervil, and salt in a large bowl and whisk to combine. Add the zucchini and toss until evenly coated. Cover and refrigerate for at least 3 hours or overnight, tossing occasionally.",
+    "Prepare a medium heat grill. Drain the zucchini, arrange on the grill grate, and grill until they begin to char, 4 to 6 minutes. Turn with tongs and cook for 4 to 6 more minutes.",
+    "Cut the zucchini into thirds crosswise, transfer to a bowl, sprinkle with pepper, and serve."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

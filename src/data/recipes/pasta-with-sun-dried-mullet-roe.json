@@ -3,9 +3,10 @@
   "name": "Pasta with Sun-Dried Mullet Roe",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
+  "intro": "You can find bottarga at fish markets or good fish shops. The flavour is quite strong and salty, so it is used sparingly, rather as you would use salted anchovies. Try it very thinly sliced on a piece of buttered sourdough toast or on a bed of celery (Bottarga con Sedano).",
   "ingredients": [
     {
       "item": "spaghetti",
@@ -24,8 +25,8 @@
       "amount": "50 g"
     },
     {
-      "item": "baby capers in brine, drained",
-      "amount": "2 tablespoons"
+      "item": "tablespoons baby capers in brine, drained",
+      "amount": "2"
     },
     {
       "item": "bunch flat-leaf parsley, chopped",
@@ -42,10 +43,17 @@
     {
       "item": "bottarga (sun-dried mullet roe), membrane removed, shaved or very finely grated",
       "amount": "100 g"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 500 g spaghetti 190 ml good-quality virgin olive oil 10 anchovy fillets in oil, drained 50 g fresh breadcrumbs 2 tablespoons baby capers in brine, drained ½ bunch flat-leaf parsley, chopped ½ bunch fresh mint, chopped 20 cherry tomatoes, halved 100 g bottarga (sun-dried mullet roe), membrane removed, shaved or very finely grated salt and ground black pepper",
-    "Boil the spaghetti in plenty of salted water."
-  ]
+    "Boil the spaghetti in plenty of salted water.",
+    "While the pasta is cooking, heat 2 tablespoons of the olive oil in a small frying pan. Add the anchovies and stir them around in the oil until they melt. Add the breadcrumbs, capers, parsley and mint and toss over the heat for about 2 minutes, taking care not to burn the breadcrumbs. Remove the pan from the heat.",
+    "As soon as the pasta is cooked al dente, drain it, reserving about 125 ml of the cooking water.",
+    "Tip the pasta into a warm serving dish and stir in the reserved water. Stir in the remaining olive oil then add the breadcrumb mixture, tomatoes and bottarga. Toss everything together gently, then taste and adjust the seasoning to your liking. Serve immediately."
+  ],
+  "image": "/recipes/pasta-with-sun-dried-mullet-roe.jpg"
 }

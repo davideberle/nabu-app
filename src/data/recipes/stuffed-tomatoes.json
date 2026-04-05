@@ -3,7 +3,7 @@
   "name": "Stuffed Tomatoes",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -28,8 +28,8 @@
       "amount": "10"
     },
     {
-      "item": "capers in brine, drained and chopped",
-      "amount": "2 tablespoons"
+      "item": "tablespoons capers in brine, drained and chopped",
+      "amount": "2"
     },
     {
       "item": "handfuls flat-leaf parsley, chopped",
@@ -46,10 +46,17 @@
     {
       "item": "handfuls fresh basil leaves, chopped",
       "amount": "2"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 8 firm, ripe, medium-sized tomatoes 50 g unsalted butter 60 ml good-quality virgin olive oil 1 medium Spanish onion, very finely diced 10 anchovy fillets in oil, drained and chopped 2 tablespoons capers in brine, drained and chopped 2 handfuls flat-leaf parsley, chopped 75 g fresh breadcrumbs 50 g pine nuts, toasted 2 handfuls fresh basil leaves, chopped salt and ground black pepper",
-    "Preheat the oven to 160°C (gas mark 3)."
-  ]
+    "Preheat the oven to 160°C (gas mark 3).",
+    "With a sharp knife, slice the tops off the tomatoes. (If you like, you can reserve the tops to put back on the tomatoes before baking.) Use a small spoon to scoop out just the seeds, leaving the fleshy internal chambers intact. Arrange the tomatoes upside down on a rack and leave to drain for about 30 minutes.",
+    "Meanwhile, melt the butter and half the oil in a large frying pan. Add the onion and fry gently until soft. Add the anchovies, capers and parsley and cook for just a few minutes. Add the remaining oil and the breadcrumbs and fry gently for a few minutes more, taking care not to burn the breadcrumbs. Add the pine nuts and basil, and season with a little salt and pepper.",
+    "Stuff the mixture into the tomatoes, making sure you press it gently into all the internal chambers. Replace the tomato ‘lids’, if using, then arrange the tomatoes on an oven tray and bake for around an hour. The tomatoes can be eaten hot or cold."
+  ],
+  "image": "/recipes/stuffed-tomatoes.jpg"
 }

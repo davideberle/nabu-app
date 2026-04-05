@@ -3,17 +3,18 @@
   "name": "Milanese Risotto",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This is one of the classics of Italian cooking. There are many variations but this is the basic recipe that inspired the others.",
   "ingredients": [
     {
-      "item": "litres well-flavoured fresh chicken or veal stock",
-      "amount": "2"
+      "item": "itres well-flavoured fresh chicken or veal stock",
+      "amount": "2 l"
     },
     {
-      "item": "large onion, chopped",
-      "amount": "1"
+      "item": "arge onion, chopped",
+      "amount": "1 l"
     },
     {
       "item": "unsalted butter",
@@ -22,6 +23,14 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "50 ml"
+    },
+    {
+      "item": "bone marrow (optional, see Note)",
+      "amount": ""
+    },
+    {
+      "item": "pinch saffron",
+      "amount": ""
     },
     {
       "item": "carnaroli or arborio rice",
@@ -34,10 +43,21 @@
     {
       "item": "freshly grated parmigiano, plus extra for serving",
       "amount": "125 g"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "fresh porcini mushrooms, pan-fried, for serving (optional)",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 2 litres well-flavoured fresh chicken or veal stock 1 large onion, chopped 125 g unsalted butter 50 ml good-quality virgin olive oil bone marrow (optional, see Note) pinch saffron 500 g carnaroli or arborio rice 300 ml dry white wine 125 g freshly grated parmigiano, plus extra for serving salt and ground black pepper fresh porcini mushrooms, pan-fried, for serving (optional)",
-    "Allow the stock to come to the boil in a pan and then turn heat down and simmer."
-  ]
+    "Allow the stock to come to the boil in a pan and then turn heat down and simmer.",
+    "In a large, heavy-based pan fry the onion in 50 g of the butter and the oil until transparent, then add the bone marrow and mix quickly. Add the saffron and then the rice. Coat the rice well with the oil, butter and marrow mix. Let it cook for 1–2 minutes then add the wine, stirring vigorously until it has evaporated. Add about half the stock to the rice and stir continuously over high heat. When the rice gets a bit dry, add more stock, this time one ladle at a time (the more stock you use the more flavour the risotto will have). After about 20 minutes the rice should be ready. It should still be a bit al dente.",
+    "Turn the heat off and add the remaining butter and about 70 g of the parmigiano, serving the rest on the side. Taste for salt and pepper and add if needed. Serve immediately with pan-fried porcini mushrooms, if you like.",
+    "Ask the butcher to cut 2 large veal bones lengthways, so you will be able to remove the marrow. The marrow is optional in this recipe, but it does make the risotto taste fantastic."
+  ],
+  "image": "/recipes/milanese-risotto.jpg"
 }

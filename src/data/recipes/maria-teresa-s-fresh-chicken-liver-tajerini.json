@@ -3,13 +3,30 @@
   "name": "Maria Teresa’s Fresh Chicken Liver Tajerini",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "For these tajerini – thin, flat, fresh pasta ribbons that are called taglierini elsewhere in Italy – you need very fine semolina flour. The chicken liver sauce is a great accompaniment to them.",
   "ingredients": [
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "very fine semolina flour",
+      "amount": "300–400 g"
+    },
+    {
+      "item": "organic eggs",
+      "amount": "3–4"
+    },
+    {
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
+    },
+    {
+      "item": "teaspoons salt",
+      "amount": "1–2"
+    },
+    {
+      "item": "SUGO DI FEGATINI",
+      "amount": ""
     },
     {
       "item": "small onions, finely chopped",
@@ -20,22 +37,35 @@
       "amount": "50 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
+    },
+    {
+      "item": "chicken livers, sinews and skin removed, roughly chopped",
+      "amount": "250–300 g"
     },
     {
       "item": "chicken stock",
       "amount": "125 ml"
     },
     {
-      "item": "sugar",
-      "amount": "½ teaspoon"
+      "item": "splash of dry Marsala or oloroso sherry",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon sugar",
+      "amount": "½"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 300–400 g very fine semolina flour 3–4 organic eggs 2 tablespoons good-quality virgin olive oil 1–2 teaspoons salt SUGO DI FEGATINI 2 small onions, finely chopped 50 g unsalted butter 2 tablespoons good-quality virgin olive oil 250–300 g chicken livers, sinews and skin removed, roughly chopped 125 ml chicken stock splash of dry Marsala or oloroso sherry ½ teaspoon sugar salt",
     "Mix the semolina, eggs, oil and salt together and knead until the mixture is well amalgamated and looks smooth and shiny. Cut a small piece of dough off and pass it through a pasta machine, fold it in three, and pass it through about 5–6 more times. Then reduce the width of the pasta machine until you get to number 2 or 3 (this depends a bit on your machine; the pasta should not be too thin).",
     "Cut the pasta sheets to about 30 cm in length, and then cut them into tajerini ribbons (like spaghetti). Because this pasta is made with semolina it lasts much longer than other fresh pastas and will keep for up to 5 days in the refrigerator without becoming mouldy.",
+    "For the sauce (sugo), fry the onion in the butter and oil until transparent then add the chicken livers. After about 2–3 minutes add the chicken stock, cover and let it cook very gently for a few minutes, then add the Marsala and again let it cook for a few minutes. Season to taste with salt and sugar.",
     "Boil the tajerini in lots of salted water – they will only take a minute or so to cook – drain well and then mix the sauce through the pasta. Serve immediately."
-  ]
+  ],
+  "image": "/recipes/maria-teresa-s-fresh-chicken-liver-tajerini.jpg"
 }

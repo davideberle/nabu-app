@@ -7,6 +7,10 @@
   },
   "servings": "serves 2 as a main course or 4 as a side dish",
   "intro": "I make this popular vegetarian curry two ways, depending on my mood. You could blend the spinach and chillies with a little spice stock or water to make a smooth spinach purée as in the lamb saag recipe. Alternatively, you could make it as shown with blanched, roughly cut baby spinach leaves. I like to use coconut oil for this one, which is now widely available. It adds a nice, nutty flavour to the curry.",
+  "time": {
+    "prep": "10 MINS, PLUS THE TIME TO PRE-COOK THE POTATOES",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "coconut oil, rapeseed (canola) oil or seasoned oil",
@@ -69,6 +73,7 @@
     "Simmer for another minute or so until you are happy with the consistency. If you prefer more sauce, add some more cooking stock or even a little base curry sauce (see quick and easy base curry sauce).",
     "Sprinkle the garam masala over the top and season with salt and black pepper."
   ],
+  "image": "/recipes/saag-aloo.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

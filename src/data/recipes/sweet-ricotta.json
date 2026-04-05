@@ -3,7 +3,7 @@
   "name": "Sweet Ricotta",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -28,6 +28,10 @@
       "amount": "300 ml"
     },
     {
+      "item": "CARAMELISED WALNUTS",
+      "amount": ""
+    },
+    {
       "item": "caster sugar",
       "amount": "80 g"
     },
@@ -41,7 +45,12 @@
     }
   ],
   "method": [
-    "Serves 4 4 very fresh organic egg yolks 60 g caster sugar 500 g fresh ricotta 125 ml Nocino (walnut liqueur) or vin santo (see Variation) 300 ml cream CARAMELISED WALNUTS 80 g caster sugar 50 ml cream 12 walnut halves",
-    "In a separate bowl, beat the cream until stiff, then fold the cream into the ricotta mixture."
-  ]
+    "Beat the egg yolks and sugar together until light and fluffy. Add the ricotta and the Nocino and mix well.",
+    "In a separate bowl, beat the cream until stiff, then fold the cream into the ricotta mixture.",
+    "Line a jelly mould (or individual moulds) with cheesecloth (muslin). Pour the ricotta mixture into the mould(s) and refrigerate for at least 4 hours or, better still, overnight.",
+    "On the day you intend to serve the ricotta, make the walnuts. Caramelise the sugar over low heat. When the sugar is goldenbrown, add the cream and stir vigorously with a wooden spoon until it is well mixed (about 1–2 minutes). Now add the walnut halves and toss them in the caramel mixture until they are all well coated. Lay them out on a piece of greaseproof paper.",
+    "Unmould the ricotta onto a serving dish or, if you are using individual moulds, onto small plates. Decorate with the caramelised walnuts and serve.",
+    "If you are using vin santo, you can mix some finely grated organic lemon and orange zest into the ricotta mixture. You can then caramelise finely cut orange zest instead of the walnuts."
+  ],
+  "image": "/recipes/sweet-ricotta.jpg"
 }

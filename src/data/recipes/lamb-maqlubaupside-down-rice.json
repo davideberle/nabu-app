@@ -3,108 +3,159 @@
   "name": "Lamb MaqlubaUPSIDE-DOWN RICE",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 to 8 servings",
-  "time": "30 minutes",
   "intro": "Maqluba is a dish that you can make for guests and sort of sell like a “dinner and a show” type of evening, because flipping the maqluba pot is so much fun, especially with a crowd around cheering you on. We grew up on my mom’s delicious maqluba, a dish made across Iraq, but it is also known in Palestine, Syria, and other neighboring countries. The Iraqi version is slightly different than the Levantine one, but I’ve never had a maqluba I didn’t love. Every version is delicious, simply because of the technique—layers of meat (chicken or lamb) and vegetables underneath a bed of rice, left to simmer together for a while. The flavors all infuse, resulting in the most delicious rice dish you’ll ever taste.",
+  "time": {
+    "prep": "30 minutes",
+    "cook": "1 hour and 45 minutes"
+  },
   "ingredients": [
     {
+      "item": "vegetable oil",
+      "amount": "2 tablespoons",
+      "group": "LAMB AND BROTH"
+    },
+    {
+      "item": "bone-in lamb shoulder, cut into 2- to 3-inch (5 to 7.5 cm) pieces (see Note)",
+      "amount": "2 pounds (900 g)",
+      "group": "LAMB AND BROTH"
+    },
+    {
       "item": "cinnamon sticks",
-      "amount": "2"
+      "amount": "2",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "green cardamom pods",
-      "amount": "5"
+      "amount": "5",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "whole allspice berries",
-      "amount": "6"
+      "amount": "6",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "whole cloves",
-      "amount": "6"
+      "amount": "6",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "bay leaves",
-      "amount": "3"
+      "amount": "3",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3½ teaspoons"
+      "amount": "3½ teaspoons",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "LAMB AND BROTH"
     },
     {
       "item": "tomato paste",
-      "amount": "¼ cup (60 g)"
+      "amount": "¼ cup (60 g)",
+      "group": "LAMB AND BROTH"
+    },
+    {
+      "item": "Italian eggplants (22/3 pounds, or 1.2 kg), ends trimmed, peeled lengthwise every other stripe, in a zebra pattern, and cut into ¾-inch-thick (2 cm) rounds",
+      "amount": "4",
+      "group": "MAQLUBA"
+    },
+    {
+      "item": "large yellow potatoes, peeled and cut into ½-inch-thick (13 mm) rounds",
+      "amount": "2",
+      "group": "MAQLUBA"
     },
     {
       "item": "plus 3 tablespoons olive oil, divided",
-      "amount": "½ cup (120 ml)"
+      "amount": "½ cup (120 ml)",
+      "group": "MAQLUBA"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "MAQLUBA"
     },
     {
-      "item": "yellow onions, sliced ¼ inch (6 mm) thick",
-      "amount": "2 small"
+      "item": "small yellow onions, sliced ¼ inch (6 mm) thick",
+      "amount": "2",
+      "group": "MAQLUBA"
     },
     {
-      "item": "red bell pepper, seeds removed and sliced ½ inch (13 mm) thick",
-      "amount": "1 medium"
+      "item": "medium red bell pepper, seeds removed and sliced ½ inch (13 mm) thick",
+      "amount": "1",
+      "group": "MAQLUBA"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "MAQLUBA"
     },
     {
-      "item": "tomato, sliced ½ inch (13 mm) thick",
-      "amount": "1 large"
+      "item": "large tomato, sliced ½ inch (13 mm) thick",
+      "amount": "1",
+      "group": "MAQLUBA"
     },
     {
       "item": "canned chickpeas, drained and rinsed",
-      "amount": "18 ounces (510 g)"
+      "amount": "18 ounces (510 g)",
+      "group": "MAQLUBA"
     },
     {
       "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
-      "amount": "2½ cups (500 g)"
+      "amount": "2½ cups (500 g)",
+      "group": "MAQLUBA"
+    },
+    {
+      "item": "olive oil (optional)",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "slivered almonds (optional)",
+      "amount": "¼ cup (30 g)",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "finely chopped fresh parsley",
-      "amount": "¼ cup (13 g)"
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Plain, whole-milk yogurt",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Salata",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE LAMB AND BROTH: In a pressure cooker or large pot, heat the vegetable oil over medium heat for 1 minute. Add the lamb pieces and sear for 2 to 3 minutes on each side, until lightly golden, working in batches to avoid overcrowding. Add 3 cups (720 ml) of water, the cinnamon sticks, cardamom pods, allspice berries, cloves, bay leaves, and 1 teaspoon of the salt. If using a pressure cooker, pressure-cook on high for 25 minutes; if using the stovetop, cover with the lid and boil over medium heat for 40 to 60 minutes, until the lamb is tender.",
+    "In a pressure cooker or large pot, heat the vegetable oil over medium heat for 1 minute. Add the lamb pieces and sear for 2 to 3 minutes on each side, until lightly golden, working in batches to avoid overcrowding. Add 3 cups (720 ml) of water, the cinnamon sticks, cardamom pods, allspice berries, cloves, bay leaves, and 1 teaspoon of the salt. If using a pressure cooker, pressure-cook on high for 25 minutes; if using the stovetop, cover with the lid and boil over medium heat for 40 to 60 minutes, until the lamb is tender.",
     "Once the lamb is cooked, transfer it to a plate. Strain the broth from the whole spices and pour it into a large bowl or a 6-cup (1.4 L) measuring cup. Add the turmeric, remaining 2½ teaspoons salt, 1 teaspoon black pepper, and tomato paste. Mix well to combine and add additional water to make 5½ cups (1.3 L) of liquid in total. Set aside.",
-    "MEANWHILE, MAKE THE MAQLUBA: Preheat the oven to 450°F (230°C). Line two large, rimmed sheet pans with parchment paper.",
+    "MAKE THE MAQLUBA: Preheat the oven to 450°F (230°C). Line two large, rimmed sheet pans with parchment paper.",
     "Lay the eggplant on one of the prepared sheet pans and the potatoes on the other. Toss with ¼ cup (60 ml) each of the olive oil and ¼ teaspoon each of the salt, then readjust the rounds into a single layer. Bake for 45 minutes, or until the eggplant and potatoes are golden brown and tender.",
     "In a large skillet, heat the remaining 3 tablespoons olive oil over medium heat. Add the sliced onions and bell peppers and cook, stirring often, for 6 to 7 minutes, until both vegetables are softened. Season with the remaining ½ teaspoon salt and the ½ teaspoon black pepper. Transfer to a plate.",
     "In a large 5.5 quart (5.2 L) nonstick pot, first make a layer of the tomato slices, followed by a layer of the eggplant. You will have enough eggplant to make 2 or 3 layers; simply lay the pieces on top of each other. Next, layer the potatoes, then the lamb pieces. Spoon the onions and bell pepper on top and place the chickpeas around the lamb to create an even layer. Finally, add the rice and flatten it down using a spoon.",
     "Gently pour the broth on top of the rice; the liquid should just barely cover the surface of the rice.",
     "Cover the pot with the lid and place it on the stovetop over high heat for 5 to 7 minutes. Once the maqluba looks like it is heated with steam and has slight bubbles on the surface, cover it again, and reduce the heat to medium-low and let cook for 20 minutes.",
     "After 20 minutes, uncover the pot and very gently stir only the topmost layer of rice. The goal is to move the topmost layer of rice, which will look dry and uncooked, slightly underneath, and bring the cooked rice to the top; this will rotate the rice to give all of it a chance to cook evenly without the addition of more liquid (more liquid will make the rice too mushy). Cover the pot again and let cook for another 30 minutes. Remove the lid and check the rice for doneness; all the grains should be soft and fluffy. Turn off the heat, place the lid back on, and let sit for 10 minutes.",
-    "TO MAKE THE GARNISH: If using, in a small skillet, heat the 2 teaspoons olive oil over medium heat for 1 minute. Add the almonds and toast for 4 to 5 minutes, until golden, stirring continuously.",
+    "If using, in a small skillet, heat the 2 teaspoons olive oil over medium heat for 1 minute. Add the almonds and toast for 4 to 5 minutes, until golden, stirring continuously.",
     "To serve, use a large, round, flat serving tray. Remove the lid and place the serving tray upside down, covering the pot like a lid. Grab the handles of the pot, at the same time gripping the edges of the tray, and gently but swiftly flip the pot upside down. Allow the flipped pot to stay in place over the tray for 5 to 10 minutes to help gravity slowly bring the maqluba down and hold its shape. Slowly remove the pot to reveal the maqluba. If there are some vegetables stuck to the bottom of the pan, gently spoon them on top.",
     "Garnish with the toasted almonds (if using) and chopped parsley and serve with yogurt and salad."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "image": "/recipes/lamb-maqlubaupside-down-rice.jpg"
 }

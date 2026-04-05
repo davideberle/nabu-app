@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes enough for about 10 servings",
-  "intro": "Pre-cooking the chicken until it is just cooked through makes cooking in most Indian restaurants not only faster, but tastier too.",
+  "intro": "Pre-cooking the chicken until it is just cooked through makes cooking in most Indian restaurants not only faster, but tastier too.\n\nThe cooking stock can be added to chicken curries and gives a fantastic flavour. Simply remove the chicken pieces from the liquid and then strain it. You could also throw in a chicken carcass or two while cooking the chicken. Remove the chicken pieces (tikka) when cooked but let the sauce simmer, adding a little water if necessary until you have a beautiful, rich stock. When time permits, I let mine simmer for about 2 hours. It tastes amazing. When your stock is ready, strain it and use it to thin curry sauces when necessary or simply to give the curry more depth of flavour.\n\nBoth the chicken and the stock can be stored in the fridge for up to 3 days. They can also be frozen for up to 2 months without much loss of flavour. Always defrost both and heat the stock before using.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "30 MINS–2 HOURS, DEPENDING ON WHETHER YOU SIMMER THE CHICKEN BONES"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -74,5 +78,7 @@
     "Add the onions and stir regularly for about 5 minutes until soft and translucent. Sprinkle the salt over the top; this will help release moisture from the onions.",
     "Now spoon in the garlic and ginger paste, followed by the turmeric; the pan will sizzle as the paste releases its moisture. When your kitchen becomes fragrant with the magnificent aroma of garlic and ginger, tip in the tomatoes. Reduce the heat to medium and let the ingredients simmer and get to know each other for about 5 minutes. Add the chicken pieces and just enough spice stock or water to cover the chicken.",
     "Reduce the heat and let the stock softly bubble until the chicken is just cooked through; don’t overcook it. Stir in the garam masala and, using a slotted spoon, remove the chicken pieces for use in your curries, reserving the cooking stock. A little of this added to your chicken curries makes them even more delicious."
-  ]
+  ],
+  "tips": "If freezer space is an issue but you want to have some stock on hand, reduce the finished stock by two-thirds. Let the remaining stock cool, and freeze in ice cube trays. Then simply toss one or two cubes into your sauces as required.",
+  "image": "/recipes/pre-cooked-stewed-chicken-and-cooking-stock.jpg"
 }

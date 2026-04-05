@@ -3,11 +3,14 @@
   "name": "ROASTED CORN AND SPRING ONION GRATIN",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "30 MINUTE",
   "intro": "Corn and spring onions (scallions) go hand in hand for me. A marriage that can never be separated. This recipe feels like a BBQ kind of side dish as the charred corn flavour and smell just sing charcoal heaven.",
+  "time": {
+    "prep": "10 MINUTESCOOK TIME: 30 MINUTES",
+    "cook": "30 MINUTES"
+  },
   "ingredients": [
     {
       "item": "corn on the cob",
@@ -64,6 +67,7 @@
     "In a separate bowl, combine all the remaining ingredients except the cheese and season with lots of black pepper. Mix well until smooth. Add the corn and the cheese and stir to combine.",
     "Grease a cast-iron frying pan with vegan butter, then pour in the corn mixture. Finally, sprinkle over some more cheese and bake in the oven for 20 minutes until golden and crispy on top."
   ],
+  "image": "/recipes/roasted-corn-and-spring-onion-gratin.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

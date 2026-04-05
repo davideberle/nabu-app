@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Chicken legs are the juiciest part of the chicken, but there is one thing that stops them being the most popular cut: those six stringy tendons. Luckily they aren’t difficult to remove, and I think you will love serving these crispy chicken lollipops. The lollipops are also nice marinated in a chicken marinade, such the tandoori chicken tikka marinade, and then cooked over direct heat on the barbecue. These are delicious served simply with lime wedges or a good raita, or a hot sauce of your choice.",
+  "time": {
+    "prep": "45 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "chicken legs",
@@ -18,43 +22,54 @@
     },
     {
       "item": "egg",
-      "amount": "1"
+      "amount": "1",
+      "group": "MARINADE"
     },
     {
       "item": "tandoori masala or garam masala",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "coarse black pepper",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "soy sauce (use gluten-free if liked)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "cornflour (cornstarch)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Hold a paring knife perpendicular to the end of a chicken leg, just before the ankle, and slice around the skin. Grab the skin and tear it off the ankle. A pair of good pliers will help with this, but I do it by hand. Begin sliding the skin and meat up the leg to form the lollipop end. As you do this, you will see the six stringy white tendons: grasp each tightly with your hand or pliers and pull them off the bone. You could also use a knife to cut any bits you missed. Continue moving the meat and skin up the bone until you have a nice ball at one end. Repeat with the remaining legs.",
-    "Whisk all the marinade ingredients together in a large bowl. Coat the chicken lollipops with the marinade and marinate for 30 minutes–24 hours – the longer the better."
-  ]
+    "Whisk all the marinade ingredients together in a large bowl. Coat the chicken lollipops with the marinade and marinate for 30 minutes–24 hours – the longer the better.",
+    "When ready to fry, heat about 10cm (4in) of oil in a saucepan until a bit of the batter/marinade sizzles immediately when dropped in. Fry the chicken lollipops in batches until cooked through – about 5 minutes should do the job, but be sure to check. The internal temperature should be 75°C (165°F). If you don’t have a meat thermometer, stick a sharp knife in – the chicken is ready when the juices run clear."
+  ],
+  "image": "/recipes/fried-chicken-lollipops.jpg"
 }

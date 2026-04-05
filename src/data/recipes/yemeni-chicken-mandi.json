@@ -3,90 +3,151 @@
   "name": "Yemeni Chicken Mandi",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "15 minutes",
   "intro": "Yemeni chicken mandi is a rice dish that has gained popularity not only in Yemen, but across all the Arab world. It can be made with lamb or chicken, and it is heavily spiced with Yemeni hawaij spices—a classic blend of aromatic spices used across Yemeni cuisine. Traditionally, mandi is cooked in an underground oven called a taboon, using hot coals. This recipe is an easier adaptation of the dish, suitable for a modern kitchen. The seasoned chicken sits on top of glistening yellow rice, garnished with fried onions, almonds, and raisins. It is commonly served with a spicy green or red bisbas sauce, which resembles a spicy chutney.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "1 hour and 15 minutes"
+  },
   "ingredients": [
     {
-      "item": "ground cloves",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "ground cardamom",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "ground cinnamon",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "black pepper",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "turmeric, divided",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "kosher salt, divided",
-      "amount": "2½ teaspoons"
-    },
-    {
-      "item": "whole chicken (about 4 pounds, or 1.8 kg), cut into quarters",
-      "amount": "1"
-    },
-    {
-      "item": "olive oil, divided",
-      "amount": "4 tablespoons"
-    },
-    {
-      "item": "yellow onion, finely chopped",
-      "amount": "1 medium"
-    },
-    {
-      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
-      "amount": "2½ cups (500 g)"
-    },
-    {
-      "item": "kosher salt",
-      "amount": "½ teaspoon"
-    },
-    {
-      "item": "packed roughly chopped fresh cilantro",
-      "amount": "½ cup (20 g)"
-    },
-    {
-      "item": "packed roughly chopped fresh parsley",
-      "amount": "½ cup (25 g)"
-    },
-    {
-      "item": "olive oil",
-      "amount": "2 tablespoons"
-    },
-    {
-      "item": "kosher salt, plus more if needed",
-      "amount": "½ teaspoon"
+      "item": "ground coriander",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "turmeric, divided",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "kosher salt, divided",
+      "amount": "2½ teaspoons",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "whole chicken (about 4 pounds, or 1.8 kg), cut into quarters",
+      "amount": "1",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tablespoons",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "medium yellow onion, finely chopped",
+      "amount": "1",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
+      "amount": "2½ cups (500 g)",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": "",
+      "group": "CRISPY ONIONS"
+    },
+    {
+      "item": "small yellow onions, cut in half and thinly sliced into half-moons (use a sharp knife, mandoline, or a food processor with a slicer attachment)",
+      "amount": "4",
+      "group": "CRISPY ONIONS"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "CRISPY ONIONS"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "¼ cup (30 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "raisins",
+      "amount": "¼ cup (35 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "large jalapeño, or more to taste",
+      "amount": "1",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "cloves garlic, peeled",
+      "amount": "2",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "packed roughly chopped fresh cilantro",
+      "amount": "½ cup (20 g)",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "packed roughly chopped fresh parsley",
+      "amount": "½ cup (25 g)",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "½ teaspoon",
+      "group": "BISBAS SAUCE"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ teaspoon",
+      "group": "BISBAS SAUCE"
     },
     {
       "item": "Juice of ½ lemon",
-      "amount": ""
+      "amount": "",
+      "group": "BISBAS SAUCE"
     }
   ],
   "method": [
-    "TO MAKE THE CHICKEN: Preheat the oven to 450°F (230°C). Line a large, rimmed sheet pan with parchment paper.",
+    "Preheat the oven to 450°F (230°C). Line a large, rimmed sheet pan with parchment paper.",
     "In a small bowl, mix the coriander, cumin, cloves, cardamom, cinnamon, black pepper, ½ teaspoon of the turmeric, and 1 teaspoon of the salt until well combined. Reserve 1½ tablespoons of the spice mixture for the rice later.",
     "Pat the chicken pieces dry with a paper towel and place them on the prepared sheet pan. Drizzle 1 tablespoon of olive oil all over the chicken pieces, then sprinkle with the spice mixture, rubbing the spices into the chicken and ensuring all sides are covered.",
     "In a large, deep skillet, heat 1 tablespoon of the olive oil over medium heat for 1 minute. Add the chicken and sear for 2 minutes per side on all sides, or until lightly golden. Transfer the chicken to the sheet pan, then bake in the oven for 45 minutes, or until cooked (white on the inside or has an internal temperature of 165°F, or 74°C). Broil the chicken for 4 to 5 minutes, until deeply golden.",
     "In the same skillet that the chicken was seared in, add the remaining 2 tablespoons olive oil and heat for 1 minute over medium heat. Add the chopped onion and cook, stirring often, for 4 to 5 minutes, until softened. Add the reserved spice mixture and the remaining ½ teaspoon turmeric and 1½ teaspoons salt. Stir into the onion and cook for 1 to 2 minutes. Add the rice and stir to combine. Add 3½ cups (840 ml) of water and bring to a boil over medium-high heat. Once boiling, reduce the heat to low and cover with the lid. Let cook for 20 minutes, undisturbed.",
-    "MEANWHILE, MAKE THE CRISPY ONIONS: In a large skillet, heat enough vegetable oil (at least ½ cup, or 120 ml) over medium-high heat to cover the sliced onions. Add the onions so that they are immersed in the oil and not overcrowded, working in two batches, and cook until the edges start to turn golden. Gently bring the outer ones to the center and continue frying until they all turn golden brown; be careful not to burn them. With a slotted spoon, remove the onions to a paper towel–lined tray to absorb the excess oil. Sprinkle with the ½ teaspoon salt.",
-    "TO MAKE THE GARNISH: Using the onion oil left over in the skillet, toast the almonds over medium heat for 4 to 5 minutes, until golden, stirring continuously. Transfer to a small bowl. Add the raisins to the same skillet and stir for 30 seconds until they are warm and glossy. Transfer them to the bowl with the almonds.",
-    "TO MAKE THE BISBAS SAUCE: Add all the sauce ingredients to a small food processor and pulse for a few minutes until a thick paste. Taste and adjust for salt if needed.",
+    "MAKE THE CRISPY ONIONS: In a large skillet, heat enough vegetable oil (at least ½ cup, or 120 ml) over medium-high heat to cover the sliced onions. Add the onions so that they are immersed in the oil and not overcrowded, working in two batches, and cook until the edges start to turn golden. Gently bring the outer ones to the center and continue frying until they all turn golden brown; be careful not to burn them. With a slotted spoon, remove the onions to a paper towel–lined tray to absorb the excess oil. Sprinkle with the ½ teaspoon salt.",
+    "Using the onion oil left over in the skillet, toast the almonds over medium heat for 4 to 5 minutes, until golden, stirring continuously. Transfer to a small bowl. Add the raisins to the same skillet and stir for 30 seconds until they are warm and glossy. Transfer them to the bowl with the almonds.",
+    "Add all the sauce ingredients to a small food processor and pulse for a few minutes until a thick paste. Taste and adjust for salt if needed.",
     "After the rice has cooked for 20 minutes, fluff with a fork or wooden spoon. Spoon onto a large platter and top with a layer of crispy onions. Add the chicken pieces, then garnish with the toasted almonds and raisins. Serve with the bisbas sauce and more crispy onions on the side."
-  ]
+  ],
+  "image": "/recipes/yemeni-chicken-mandi.jpg"
 }

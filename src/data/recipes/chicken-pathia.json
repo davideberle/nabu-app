@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Pathia curries were probably first made by Bangladeshi chefs here in Britain in an attempt to come up with an Indian dish that could compete with the sweet-and-sour chicken that was becoming popular at Chinese takeaways. It seems to have caught on because you rarely find a curry house or takeaway that doesn’t have pathia on the menu.",
+  "intro": "Pathia curries were probably first made by Bangladeshi chefs here in Britain in an attempt to come up with an Indian dish that could compete with the sweet-and-sour chicken that was becoming popular at Chinese takeaways. It seems to have caught on because you rarely find a curry house or takeaway that doesn’t have pathia on the menu.\n\nYou need to make the sauce so that it is both sweet and sour. I’ve seen mint sauce used as a souring agent and pineapple juice, sugar and ketchup used for sweetening. With this, my favourite combo, you get the sour flavour from the lemon and the sweetness from the sugar and mango chutney. Go ahead and adjust these ingredients to your own preferences, or even try some of the other alternative ingredients mentioned. Sometimes the best curries are discovered through a bit of experimentation.\n\nLike chicken tikka masala and chasni curries, pathia curries are often coloured red with food colouring. I did this in this recipe, but remember that there is no flavour in food colouring so it is not an essential ingredient.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -78,5 +82,7 @@
     "Stir in the tomato purée and 250ml (1 cup) of the base curry sauce. Let this come to a rolling simmer and scrape back in any caramelized sauce from the sides of the pan. Add the rest of the base sauce and the stock, followed by the pre-cooked chicken. Let this bubble and spit until reduced down to your preferred consistency. Add a little more base sauce or stock if you want more sauce.",
     "To finish, stir in the mango chutney, tamarind, dried fenugreek leaves (kasoori methi) and lemon juice to taste. Taste the curry, and if you want it to be sweeter, add some more sugar or mango chutney, or more lemon juice if you want it to have more of a tang. If using food colouring, you can stir it in now. Start with ½ teaspoon and add more if you want a redder hue.",
     "Season with salt and garnish with coriander (cilantro) to serve."
-  ]
+  ],
+  "tips": "Prawns (shrimp) are an excellent and popular alternative to chicken.",
+  "image": "/recipes/chicken-pathia.jpg"
 }

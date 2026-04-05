@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "The soola marinade in this recipe is popular not just for chicken but red meat and vegetables too. Red meat such as venison, beef and lamb can be marinated for three days and the end result is so good. With chicken, duck and other poultry and feathered game, I usually marinate the meat for 24–48 hours. Seafood only needs about 20 minutes. These kebabs are pictured. I like to serve them with a simple green salad and coriander, garlic and chilli raita.",
+  "intro": "The soola marinade in this recipe is popular not just for chicken but red meat and vegetables too. Red meat such as venison, beef and lamb can be marinated for three days and the end result is so good. With chicken, duck and other poultry and feathered game, I usually marinate the meat for 24–48 hours. Seafood only needs about 20 minutes. These kebabs are pictured. I like to serve them with a simple green salad and coriander, garlic and chilli raita.\n\nFor me, mustard oil is a must with this recipe. You could substitute rapeseed (canola) oil but you will get a different flavour.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "skinless, boneless chicken breasts, cut into bite-size pieces (tikka)",
@@ -26,56 +30,70 @@
     },
     {
       "item": "cloves",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Seeds from 6 black cardamom pods",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     },
     {
       "item": "black peppercorns",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "fennel seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "ghee",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "mustard oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "large onion, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "MARINADE"
     },
     {
       "item": "garlic cloves, finely chopped",
-      "amount": "8"
+      "amount": "8",
+      "group": "MARINADE"
     },
     {
       "item": "large bunches of coriander (cilantro), leaves only",
-      "amount": "2"
+      "amount": "2",
+      "group": "MARINADE"
     },
     {
       "item": "plain yoghurt",
-      "amount": "100g (scant ½ cup)"
+      "amount": "100g (scant ½ cup)",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "To make the marinade, heat a frying pan over a medium heat. Throw in the cloves, cardamom seeds, peppercorns and the fennel, cumin and coriander seeds, and move them around in the pan so that they roast evenly. When they become warm and fragrant, tip onto a plate, allow to cool a little, then grind them into a powder using a spice grinder or pestle and mortar.",
     "Heat the ghee and mustard oil together in the frying pan. Add the onion and fry until translucent and soft, but not browned. Add the garlic and fry for a further minute, then remove from the heat and allow to cool.",
-    "Transfer to a food processor with the ground spices, coriander (cilantro) leaves and 1 teaspoon of salt, and blend until smooth. Transfer to a bowl, add the yoghurt and whisk together. Add the chicken pieces and stir to coat, then cover and marinate in the fridge for 3–48 hours – the longer the better."
-  ]
+    "Transfer to a food processor with the ground spices, coriander (cilantro) leaves and 1 teaspoon of salt, and blend until smooth. Transfer to a bowl, add the yoghurt and whisk together. Add the chicken pieces and stir to coat, then cover and marinate in the fridge for 3–48 hours – the longer the better.",
+    "When ready to cook, light the barbecue using the direct cooking method. Thread the chicken pieces onto skewers and cook, turning them until nicely charred on the exterior and cooked through. Transfer to a warm plate and squeeze the lime juice over the top. Sprinkle with the chaat masala and season with salt and black pepper."
+  ],
+  "image": "/recipes/chicken-soola-kebabs.jpg"
 }

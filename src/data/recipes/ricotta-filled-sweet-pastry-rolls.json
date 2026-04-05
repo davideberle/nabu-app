@@ -3,9 +3,17 @@
   "name": "Ricotta-filled Sweet Pastry Rolls",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "ingredients": [
+    {
+      "item": "Makes around 12 cannoli",
+      "amount": ""
+    },
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "unsalted butter, at room temperature (traditionally lard is used instead of butter in this recipe)",
       "amount": "25 g"
@@ -19,16 +27,24 @@
       "amount": "1"
     },
     {
-      "item": "caster sugar",
-      "amount": "1 tablespoon"
+      "item": "tablespoon caster sugar",
+      "amount": "1"
     },
     {
       "item": "dry Marsala",
       "amount": "80 ml"
     },
     {
-      "item": "bitter cocoa powder",
-      "amount": "2 tablespoons"
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons bitter cocoa powder",
+      "amount": "2"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "fresh ricotta",
@@ -41,10 +57,31 @@
     {
       "item": "good-quality dark chocolate (70% cocoa solids), chopped into small chunks",
       "amount": "30 g"
+    },
+    {
+      "item": "finely grated zest of 1 organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "finely grated zest of 1 organic orange",
+      "amount": ""
+    },
+    {
+      "item": "sunflower oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "icing sugar, for dusting",
+      "amount": ""
     }
   ],
   "method": [
     "Put all the pastry ingredients into a food processor and pulse to form a dough. It will be smooth and firm, similar to pasta dough. Form it into a ball and let it rest, covered with a cloth, for about 1 hour.",
-    "Pour the sunflower oil into a medium-sized saucepan to a depth of around 6 cm. When the oil is hot, fry the cannoli in batches of 3 until golden-brown. Drain well on kitchen paper and slide them off the metal cylinders while still warm."
-  ]
+    "While the dough is resting, make the ricotta filling. Whisk the ricotta with the sugar until it is light and fluffy. Mix in the chocolate and both citrus zests, then refrigerate until needed.",
+    "Roll the pastry out to about 3 mm thick (I find it easiest to feed it through a pasta machine). Cut the pastry into 8 cm squares and lay them out on a floured work surface.",
+    "Brush metal cannoli cylinders lightly with oil. Wrap a piece of pastry on the diagonal around each cylinder. Use the egg white left over from making the pastry to moisten the edges where they overlap, and press them together gently to seal.",
+    "Pour the sunflower oil into a medium-sized saucepan to a depth of around 6 cm. When the oil is hot, fry the cannoli in batches of 3 until golden-brown. Drain well on kitchen paper and slide them off the metal cylinders while still warm.",
+    "When the cannoli are completely cold, spoon the ricotta filling into a piping bag and fill the cannoli shells generously. Dust with icing sugar and serve. They are best eaten on the day they are made."
+  ],
+  "image": "/recipes/ricotta-filled-sweet-pastry-rolls.jpg"
 }

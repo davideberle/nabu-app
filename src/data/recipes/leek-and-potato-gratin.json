@@ -3,17 +3,18 @@
   "name": "Leek and Potato Gratin",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "The sweetness of the leeks infuses the potatoes to make this dish something special. You can serve it as an accompaniment to meat or even fish.",
   "ingredients": [
     {
       "item": "unsalted butter",
       "amount": "50 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "3 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "3"
     },
     {
       "item": "young leeks, trimmed and sliced",
@@ -34,12 +35,17 @@
     {
       "item": "sprigs fresh rosemary, stalks discarded",
       "amount": "2"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 50 g unsalted butter 3 tablespoons good-quality virgin olive oil 6 young leeks, trimmed and sliced 3 cloves garlic, thinly sliced 1 kg waxy potatoes, such as Desiree or King Edward, very thinly sliced 350 ml cream 2 sprigs fresh rosemary, stalks discarded salt and ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
     "Heat the butter and oil in a large saucepan. Add the leeks and garlic, cover the pan and sweat over a low heat for 15 minutes, stirring from time to time. The leeks should be soft and sweet.",
+    "Butter an ovenproof dish and arrange a layer of sliced potatoes over the base. Cover with some of the leeks, then pour on some cream and sprinkle with some of the rosemary and salt and pepper. Continue layering until all the ingredients are used up. Finish with a layer of potatoes, covered with cream, and sprinkled with rosemary, salt and pepper.",
     "Transfer the potatoes to the oven and bake for around 35 minutes until the top is golden-brown."
-  ]
+  ],
+  "image": "/recipes/leek-and-potato-gratin.jpg"
 }

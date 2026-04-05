@@ -3,11 +3,14 @@
   "name": "SMALL-BATCH STICKY TOFFEE PUDDING",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 1–2",
-  "time": "20 MINUTE",
   "intro": "I spent most of lockdown thinking about sticky toffee pudding for some crazy reason. It is my favourite English dessert. Those notes of molasses and sticky date are something that I truly fantasise about. Often when you’re cooking for yourself, a proper dessert feels like mission impossible – especially a steamed or baked pudding like this, where you usually have tons of leftovers. To honour my lockdown craving, I wanted to write a small-batch sticky toffee pudding recipe. One for now, one for later. Or, if you’re having an intimate dinner with a friend or lover, this makes two perfect personal-sized puds.",
+  "time": {
+    "prep": "25 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "ground linseed (flaxseed)",
@@ -75,15 +78,18 @@
     },
     {
       "item": "coconut milk",
-      "amount": "85 ml (3 fl oz/⅓ cup)"
+      "amount": "85 ml (3 fl oz/⅓ cup)",
+      "group": "CARAMEL"
     },
     {
       "item": "dark brown soft sugar",
-      "amount": "85 g (3 oz/scant ½ cup)"
+      "amount": "85 g (3 oz/scant ½ cup)",
+      "group": "CARAMEL"
     },
     {
       "item": "good pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "CARAMEL"
     }
   ],
   "method": [
@@ -95,6 +101,7 @@
     "After 10 minutes, prepare the caramel. Combine the coconut milk, sugar and salt in a saucepan and bring to the boil, then continue to cook for 4–5 minutes until reduced and thickened into a caramel.",
     "Once baked, run a knife around the puddings and tap out into a bowl. Drizzle the caramel on top and serve immediately with a scoop of ice cream."
   ],
+  "image": "/recipes/small-batch-sticky-toffee-pudding.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -3,10 +3,15 @@
   "name": "White Mountain",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This dessert, which I find easier to make with chestnut purée rather than whole chestnuts, should look like a mountain covered in snow. (Monte Bianco is the highest mountain in the Alps.)",
   "ingredients": [
+    {
+      "item": "MERINGUES",
+      "amount": ""
+    },
     {
       "item": "organic egg whites",
       "amount": "6"
@@ -16,12 +21,20 @@
       "amount": "250 g"
     },
     {
-      "item": "white wine vinegar",
-      "amount": "1 teaspoon"
+      "item": "pinch of salt",
+      "amount": ""
     },
     {
-      "item": "pure vanilla extract",
-      "amount": "1 teaspoon"
+      "item": "teaspoon white wine vinegar",
+      "amount": "1"
+    },
+    {
+      "item": "teaspoon pure vanilla extract",
+      "amount": "1"
+    },
+    {
+      "item": "CHESTNUT BASE",
+      "amount": ""
     },
     {
       "item": "unsweetened chestnut purée",
@@ -32,6 +45,14 @@
       "amount": "75 g"
     },
     {
+      "item": "cream",
+      "amount": "50–100 ml"
+    },
+    {
+      "item": "TOPPING",
+      "amount": ""
+    },
+    {
       "item": "meringues (see below)",
       "amount": "12"
     },
@@ -40,15 +61,18 @@
       "amount": "250 ml"
     },
     {
-      "item": "caster sugar",
-      "amount": "3 tablespoons"
+      "item": "tablespoons caster sugar",
+      "amount": "3"
     }
   ],
   "method": [
-    "Serves 6 MERINGUES 6 organic egg whites 250 g caster sugar pinch of salt 1 teaspoon white wine vinegar 1 teaspoon pure vanilla extract CHESTNUT BASE 600 g unsweetened chestnut purée 75 g caster sugar 50–100 ml cream TOPPING 12 meringues (see below) 250 ml cream 3 tablespoons caster sugar",
     "Preheat the oven to 150°C (gas mark 2).",
+    "Beat the egg whites until they start to form peaks. Add half the sugar and a pinch of salt and continue beating until the egg whites become shiny. Add the rest of the sugar, vinegar and vanilla and continue beating a little longer.",
+    "Line a large tray with greaseproof paper. Using a soup spoon, scoop out large spoonfuls of the meringue mixture and flip them onto the tray. If you prefer you can push the mixture through a piping bag.",
     "Put the meringues into the preheated oven, turn the heat down to 120°C (gas mark ½ ) and cook them for about 30 minutes. Put a wooden spoon in the oven door to keep it slightly open and continue cooking the meringues for another hour. They should be crisp on the outside but still a little soft on the inside.",
     "Transfer them to a rack and let them cool completely.",
-    "Mix the chestnut purée with the sugar, and add just enough cream so that the chestnut mass can be pushed through a potato ricer."
-  ]
+    "On a large serving plate make a mound of chestnut ‘worms’ by pushing the mixture through the ricer.",
+    "For the topping, arrange the meringues around the chestnut mound to make a mountain. Beat the cream and sugar until stiff and put it into a piping bag. Pipe the cream into the gaps between the meringues."
+  ],
+  "image": "/recipes/white-mountain.jpg"
 }

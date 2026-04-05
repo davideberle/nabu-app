@@ -3,9 +3,18 @@
   "name": "Pickled Vegetables",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "A jar of these fabulous tart and crunchy vegetables should be a part of every well-stocked pantry. They are eaten with pre-dinner drinks or as part of an antipasto.\n\nI love them with Polpettone or just some prosciutto.",
   "ingredients": [
+    {
+      "item": "Makes 1 × 2 litre jar, or 2 × 1 litre jars",
+      "amount": ""
+    },
+    {
+      "item": "PICKLING LIQUID",
+      "amount": ""
+    },
     {
       "item": "good-quality white-wine vinegar",
       "amount": "800 ml"
@@ -15,8 +24,8 @@
       "amount": "800 ml"
     },
     {
-      "item": "honey",
-      "amount": "2 tablespoons"
+      "item": "tablespoons honey",
+      "amount": "2"
     },
     {
       "item": "juniper berries",
@@ -29,6 +38,10 @@
     {
       "item": "peppercorns",
       "amount": "10"
+    },
+    {
+      "item": "small red chillies",
+      "amount": "2–4"
     },
     {
       "item": "fresh bay leaves",
@@ -60,9 +73,9 @@
     }
   ],
   "method": [
-    "Makes 1 × 2 litre jar, or 2 × 1 litre jars PICKLING LIQUID 800 ml good-quality white-wine vinegar 800 ml water 2 tablespoons honey 6 juniper berries 6 cloves 10 peppercorns 2–4 small red chillies 3 fresh bay leaves 8 very small pearl onions 4 small carrots, cut into 4 cm sticks 4 celery stalks (the young, light-green ones), cut into 4 cm sticks ½ small cauliflower, broken into small florets 200 g young green beans, tops and tails trimmed 10 cloves garlic, peeled",
-    "Makes 1 × 2 litre jar, or 2 × 1 litre jars",
     "Place all the pickling liquid ingredients into a large non-reactive saucepan. Bring to the boil, then cover the pan and simmer gently for 15 minutes.",
-    "Add the onions to the pan and simmer for 5 minutes. Add the remaining ingredients and, when the liquid returns to the boil, remove the pan from the heat."
-  ]
+    "Add the onions to the pan and simmer for 5 minutes. Add the remaining ingredients and, when the liquid returns to the boil, remove the pan from the heat.",
+    "Sterilise a 2 litre glass jar or 2 × 1 litre jars. Spoon the vegetables into the sterilised jar(s), and pour in enough of the pickling liquid to cover them completely. Seal and allow to cool. Refrigerate for 2 days before eating. Once opened, the giardiniera will keep for up to 2 months in the refrigerator."
+  ],
+  "image": "/recipes/pickled-vegetables.jpg"
 }

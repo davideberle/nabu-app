@@ -3,13 +3,18 @@
   "name": "Orange Marmalade Tart",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This tart is very special. The thin, crunchy base marries so well with the bitter-sweetness of the marmalade.",
   "ingredients": [
     {
       "item": "good-quality bitter marmalade (home-made is best)",
       "amount": "250 g"
+    },
+    {
+      "item": "PASTRY",
+      "amount": ""
     },
     {
       "item": "unbleached plain flour",
@@ -26,12 +31,22 @@
     {
       "item": "caster sugar",
       "amount": "50 g"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "grated zest of 1 organic lemon",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 250 g good-quality bitter marmalade (home-made is best) PASTRY 200 g unbleached plain flour 100 g unsalted butter, at room temperature 3 organic egg yolks 50 g caster sugar pinch of salt grated zest of 1 organic lemon",
     "Put all the pastry ingredients into a food processor and pulse in quick bursts. When the dough is well amalgamated, roll it into a ball and place it in the refrigerator to rest for 30 minutes.",
     "Preheat the oven to 200°C (gas mark 6) and generously butter a 23 cm pie dish or a springform tin.",
+    "Roll the pastry out on a lightly floured work surface, reserving a little pastry for the decoration. Lift the pastry onto the buttered pie dish and gently press into the dish. Roughly trim the edges to fit.",
+    "Spread the marmalade over the base. Use the remaining pastry to cut out little decorations and arrange them on the marmalade.",
     "Bake on the bottom shelf of the oven for 20–25 minutes. Leave to cool in the pie dish completely before carefully sliding out onto a serving dish."
-  ]
+  ],
+  "image": "/recipes/orange-marmalade-tart.jpg"
 }

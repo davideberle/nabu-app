@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "MAPLE SYRUP, LEMON JUICE, LEMON ZEST, ORANGE JUICE, BOURBON",
   "servings": "about 2 cups",
   "intro": "I ORIGINATED this recipe as an accompaniment for my Teff Biscuits, to provide both the creaminess of butter and the sweetness of a fruit spread. It’s also delicious on toast. It congeals a bit when refrigerated, so bring it to room temperature and whip it with a spoon right before serving. If a plantain is not available, you could use a just-ripe banana instead.",
   "ingredients": [
@@ -50,6 +49,7 @@
     "Put all the ingredients in a small saucepan and bring to a boil over high heat. Decrease the heat to medium and simmer, stirring often, until the plantains are soft and the liquid is thickening, about 10 minutes. Let cool for 5 minutes.",
     "Transfer to a blender and process until creamy, scraping down the sides if necessary. Transfer to a bowl, cover, and refrigerate until chilled, about 30 minutes. Serve at room temperature. Stored in the refrigerator, it will keep for 5 days."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

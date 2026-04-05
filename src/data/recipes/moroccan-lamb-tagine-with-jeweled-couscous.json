@@ -3,92 +3,134 @@
   "name": "Moroccan Lamb Tagine with Jeweled Couscous",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "15 minutes",
   "intro": "Tagine refers to both a common North African cone-shaped cooking vessel made of clay and also the slow-cooked savory stew that is cooked in it. The clay tagine is designed to contain the steam inside the vessel, keeping the stew moist as it slowly cooks for hours. You can easily replicate this technique using a heavy cast-iron Dutch oven.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "2 hours and 15 minutes"
+  },
   "ingredients": [
     {
+      "item": "bone-in lamb shoulder, cut into 2-inch (5 cm) pieces",
+      "amount": "2¼ pounds (1 kg)",
+      "group": "TAGINE"
+    },
+    {
+      "item": "kosher salt, divided, plus more to taste",
+      "amount": "2 teaspoons",
+      "group": "TAGINE"
+    },
+    {
       "item": "black pepper",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "vegetable oil, plus more if needed",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "TAGINE"
     },
     {
-      "item": "onions, finely chopped",
-      "amount": "2 large"
+      "item": "large onions, finely chopped",
+      "amount": "2",
+      "group": "TAGINE"
     },
     {
-      "item": "cloves garlic, crushed",
-      "amount": "6 large"
+      "item": "large cloves garlic, crushed",
+      "amount": "6",
+      "group": "TAGINE"
     },
     {
       "item": "ground cumin",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "TAGINE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "ground ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "TAGINE"
     },
     {
       "item": "chicken or vegetable broth",
-      "amount": "2 cups (480 ml)"
+      "amount": "2 cups (480 ml)",
+      "group": "TAGINE"
     },
     {
-      "item": "carrots, cut into ½-inch-thick (13 mm) rounds",
-      "amount": "4 large"
+      "item": "large carrots, cut into ½-inch-thick (13 mm) rounds",
+      "amount": "4",
+      "group": "TAGINE"
     },
     {
-      "item": "yellow potatoes, cut into 1-inch (2.5 cm) cubes",
-      "amount": "2 large"
+      "item": "large yellow potatoes, cut into 1-inch (2.5 cm) cubes",
+      "amount": "2",
+      "group": "TAGINE"
     },
     {
       "item": "pitted prunes (optional)",
-      "amount": "1½ cups (195 g)"
+      "amount": "1½ cups (195 g)",
+      "group": "TAGINE"
+    },
+    {
+      "item": "chicken or vegetable broth",
+      "amount": "1½ cups (360 ml)",
+      "group": "COUSCOUS"
+    },
+    {
+      "item": "kosher salt, plus more if needed",
+      "amount": "½ teaspoon",
+      "group": "COUSCOUS"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "COUSCOUS"
     },
     {
       "item": "dried couscous",
-      "amount": "1 cup (195 g)"
+      "amount": "1 cup (195 g)",
+      "group": "COUSCOUS"
     },
     {
       "item": "pine nuts (60 g) or slivered almonds (70 g)",
-      "amount": "½ cup"
+      "amount": "½ cup",
+      "group": "COUSCOUS"
     },
     {
       "item": "pomegranate arils",
-      "amount": "1 cup (188 g)"
+      "amount": "1 cup (188 g)",
+      "group": "COUSCOUS"
     }
   ],
   "method": [
-    "TO MAKE THE TAGINE: Preheat the oven to 325°F (165°C). Season the lamb on all sides with 1½ teaspoons of the salt and the pepper.",
+    "Preheat the oven to 325°F (165°C). Season the lamb on all sides with 1½ teaspoons of the salt and the pepper.",
     "In a large oven-safe pot or Dutch oven, heat the vegetable oil over medium-high heat. Add the lamb, working in batches to avoid overcrowding, and sear for a few minutes per side, or until browned. Transfer to a plate.",
     "Add the onions to the same pot and cook for 4 to 5 minutes, stirring often, until softened (add more oil if necessary). Add the garlic, cumin, turmeric, paprika, cinnamon, coriander, and ginger and cook, stirring constantly, for a few minutes until fragrant. Add the 2 cups (480 ml) broth and place the lamb back into the pot. Cover with the lid and bring to a boil over medium heat. Once boiling, carefully transfer the pot to the oven and bake, covered, for 1 hour and 15 minutes.",
     "After the stew has baked for 1 hour and 15 minutes, remove from the oven. Sprinkle the carrots and potatoes with the remaining ½ teaspoon salt, then add them and the prunes to the pot, submerging them in the liquid as best as possible. Cover and bake for 45 more minutes, or until the meat is tender and falling off the bone. If there is too much liquid, let simmer on the stovetop over medium heat, uncovered, to reduce it slightly.",
-    "MEANWHILE, MAKE THE COUSCOUS: In a medium saucepan over medium-high heat, bring the 1½ cups (360 ml) broth to a boil and season with the ½ teaspoon salt. Add the olive oil. Place the couscous in a large bowl. Pour the boiling broth over the couscous, mix well, and cover with a tight-fitting lid or aluminum foil. Let the couscous steam for 5 to 7 minutes.",
+    "MAKE THE COUSCOUS: In a medium saucepan over medium-high heat, bring the 1½ cups (360 ml) broth to a boil and season with the ½ teaspoon salt. Add the olive oil. Place the couscous in a large bowl. Pour the boiling broth over the couscous, mix well, and cover with a tight-fitting lid or aluminum foil. Let the couscous steam for 5 to 7 minutes.",
     "Add the nuts to a small skillet and toast them for a few minutes, or until golden and fragrant, stirring continuously.",
     "Uncover the couscous and fluff with a fork. Taste and adjust for salt if necessary. Mix in the pomegranate arils and toasted nuts. Serve the tagine with the couscous on the side."
-  ]
+  ],
+  "image": "/recipes/moroccan-lamb-tagine-with-jeweled-couscous.jpg"
 }

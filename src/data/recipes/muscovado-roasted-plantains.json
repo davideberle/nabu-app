@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "OLIVE OIL, MAPLE SYRUP",
   "servings": "4 to 6 servings",
   "intro": "INSPIRED BY candied sweet potatoes, this flavorfully sweet side dish provides a satisfying counterpoint to a savory main. While roasting brings out the natural sweetness in plantains, muscovado—unrefined brown cane sugar—gives the plantains a subtle molasses flavor. You can add chopped pecans for texture. If you cannot find muscovado, use raw cane sugar and replace the maple syrup with 1 teaspoon unsulfured molasses.",
   "ingredients": [
@@ -35,6 +34,7 @@
     "Put the plantains in a large bowl, drizzle with 2 teaspoons of the oil, and sprinkle with the salt. Toss gently until the plantains are evenly coated. Transfer to the lined baking sheet and bake for 40 minutes, gently stirring and turning every 10 minutes, until fork-tender and lightly browned.",
     "Combine the maple syrup, muscovado, and remaining 2 teaspoons oil in a small bowl and stir with a fork to combine. Pour into a large skillet and warm over high heat until melted, about 30 seconds. Add the plantains, and cook for 1 minute, tossing vigorously to coat evenly, and serve."
   ],
+  "image": "/recipes/muscovado-roasted-plantains.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

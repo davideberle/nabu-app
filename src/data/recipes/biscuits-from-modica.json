@@ -3,9 +3,17 @@
   "name": "Biscuits from Modica",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "ingredients": [
+    {
+      "item": "Makes around 20 biscuits",
+      "amount": ""
+    },
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour",
       "amount": "300 g"
@@ -23,8 +31,16 @@
       "amount": "1"
     },
     {
-      "item": "salt",
-      "amount": "½ teaspoon"
+      "item": "teaspoon salt",
+      "amount": "½"
+    },
+    {
+      "item": "grated zest of 1 organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "ground almonds",
@@ -35,8 +51,12 @@
       "amount": "150 g"
     },
     {
-      "item": "ground cinnamon",
-      "amount": "2 teaspoons"
+      "item": "grated zest of 1 organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "teaspoons ground cinnamon",
+      "amount": "2"
     },
     {
       "item": "finely minced lean beef",
@@ -45,11 +65,19 @@
     {
       "item": "dark chocolate, melted",
       "amount": "100 g"
+    },
+    {
+      "item": "few drops of good-quality Marsala, to moisten if necessary",
+      "amount": ""
     }
   ],
   "method": [
-    "Makes around 20 biscuits PASTRY 300 g unbleached plain flour 150 g unsalted butter, at room temperature 80 g caster sugar 1 organic egg, plus 1 organic egg yolk ½ teaspoon salt grated zest of 1 organic lemon FILLING 250 g ground almonds 150 g caster sugar grated zest of 1 organic lemon 2 teaspoons ground cinnamon 50 g finely minced lean beef 100 g dark chocolate, melted few drops of good-quality Marsala, to moisten if necessary",
     "Place all the pastry ingredients in a food processor and pulse until the dough amalgamates. Roll into a ball, cover in plastic wrap and refrigerate for 30 minutes.",
-    "Preheat the oven to 180°C (gas mark 4)."
-  ]
+    "Preheat the oven to 180°C (gas mark 4).",
+    "To make the filling, mix all the ingredients together well to form a thickish paste. If it seems too dry, add a few drops of Marsala.",
+    "Roll the pastry out as thinly as you can on a lightly floured work surface. With a pastry cutter, cut out circles of around 6 cm. With a sharp knife make a small 1 cm incision along the bottom third of each circle.",
+    "Spoon the filling into a piping bag and pipe around 3 cm of filling widthways across the centre of each pastry circle, parallel with the incision. Brush the rim with a little water, then fold the pastry over to create a half moon. Make sure the little cut is uppermost. Press around the rim to seal and trim away any excess pastry.",
+    "Line an oven tray with greaseproof paper. Lift the filled biscuits onto the tray and bake for 15–20 minutes until goldenbrown. Remove from the oven and transfer to a rack to cool. They will keep in an airtight jar for about a week."
+  ],
+  "image": "/recipes/biscuits-from-modica.jpg"
 }

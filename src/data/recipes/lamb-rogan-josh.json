@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Just like many of the British versions of Indian curries, our lamb rogan josh is quite a lot different to those made in India. Mutton or lamb rogan josh originates from the Kashmir region of India, where it is made with tempered whole spices such as cloves, cinnamon, bay leaves, cardamom and deseeded Kashmiri dried chillies. Meat on the bone is braised in a sauce that is deep red, from both the Kashmiri chillies and rattanjot, which is a natural red food colouring and difficult to come by in the West, where the red colouring is achieved with paprika and tomato. You might also want to try my authentic Kashmiri lamb rogan josh recipe.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -82,5 +86,6 @@
     "Allow the sauce to simmer for about 2 minutes, without stirring unless it is obviously catching on the pan. Some of the sauce should caramelize to the sides of the pan; you want to scrape it off from time to time as it adds a nice smoky flavour. Add the pre-cooked lamb and the rest of the base sauce with the stock.",
     "Let the sauce come to a boil until it reduces to your preferred consistency, only stirring if it is catching. Add the tomato wedges to the sauce.",
     "To serve, swirl in the cashew paste, then add the yoghurt 1 tablespoon at a time, stirring continuously. Sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Top with coriander (cilantro) and garnish with chopped red onion and a little plain yoghurt."
-  ]
+  ],
+  "image": "/recipes/lamb-rogan-josh.jpg"
 }

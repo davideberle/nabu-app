@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Based on the bright flavours of Sri Lanka, chicken Ceylon is a good all-rounder. I prefer it really spicy hot and add a lot more fresh chillies and chilli powder than suggested in this recipe, so feel free to do that too. I’ve also taken the liberty of adding a few ingredients that are rarely included in curry-house Ceylon curries but are very Sri Lankan all the same.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -118,5 +122,6 @@
     "Add the garlic and ginger paste and the chopped chillies. Both will sizzle in the pan as they release their moisture and flavour into the oil. When they quieten down, after about 30 seconds, add the coconut flour and mix it all together for a few seconds before adding the coriander (cilantro) stalks, chilli powder, mixed powder, tandoori masala, black pepper and tomato purée.",
     "Now stir in about 250ml (1 cup) of the base curry sauce and let it reduce for about 1 minute, stirring the caramelized bits into the sauce. Add the pre-cooked chicken, the rest of the base curry sauce, the stock and block coconut pieces. Let the sauce simmer for about 5 minutes until you are happy with the consistency, only stirring if it looks like it is catching on the pan.",
     "Stir in the dried fenugreek leaves (kasoori methi), mango chutney and cashew paste (if using). Fish out the whole spices if you want and add salt and sugar to taste. Squeeze the lime juice over the top and sprinkle with the garam masala and chopped coriander (cilantro) to serve."
-  ]
+  ],
+  "image": "/recipes/chicken-ceylon.jpg"
 }

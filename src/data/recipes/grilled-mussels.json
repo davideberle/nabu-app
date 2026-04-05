@@ -3,7 +3,7 @@
   "name": "Grilled Mussels",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -26,12 +26,18 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "50 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 1 kg mussels (about 6–8 mussels per person) 100 g breadcrumbs 2 cloves garlic, chopped 1 handful finely chopped flat-leaf parsley 50 ml good-quality virgin olive oil salt and ground black pepper",
+    "Clean the mussels under cold, running water and pull or cut away their beards.",
     "Heat about 125 ml water in a large saucepan. When boiling, add the mussels, cover the pan and let them cook until the shells open – shake the pan from time to time. (The mussels will take about 5 minutes to open.) When they are cool enough to handle, arrange them in an ovenproof dish, using only one half of the shell (discard the other halves).",
+    "Preheat the grill to high.",
     "In a bowl, mix together the breadcrumbs, garlic, parsley, olive oil, salt and pepper to a crumbly paste. Place a little of this mixture on every half mussel shell, pressing down well around the mussel.",
     "Cook under the hot grill for a few minutes until the topping starts to colour but not burn. This dish can be eaten hot or cold."
-  ]
+  ],
+  "image": "/recipes/grilled-mussels.jpg"
 }

@@ -1,0 +1,36 @@
+{
+  "id": "zucchini-salad",
+  "name": "Zucchini Salad",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Mietta Sartori"
+  },
+  "servings": "serves 4",
+  "intro": "In my vegetable garden, which I can see from my kitchen window, I can spot the moment when the zucchini are at their summer peak. I pick them every second day as they grow quickly and do need to be especially small and very fresh for this simple salad. When you buy zucchini make sure they are small and very firm.",
+  "ingredients": [
+    {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "125 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small fresh chilli, deseeded and finely chopped (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "small young zucchini (courgettes), thinly sliced",
+      "amount": "3–4"
+    }
+  ],
+  "method": [
+    "To make the dressing, mix together the lemon juice, olive oil, salt, sal pepper and chilli. Pour over the zucchini and allow to rest forabout 15 minutes before serving. I like to serve this dish with a frittata."
+  ],
+  "image": "/recipes/zucchini-salad.jpg"
+}

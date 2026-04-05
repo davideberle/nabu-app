@@ -3,10 +3,14 @@
   "name": "Michele’s Ravioli",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
+    {
+      "item": "PASTA DOUGH",
+      "amount": ""
+    },
     {
       "item": "semolina flour (hard durum flour)",
       "amount": "400 g"
@@ -14,6 +18,14 @@
     {
       "item": "organic eggs",
       "amount": "4"
+    },
+    {
+      "item": "teaspoons salt",
+      "amount": "1–2"
+    },
+    {
+      "item": "STUFFING",
+      "amount": ""
     },
     {
       "item": "zucchini (courgette) flowers (bitter stamens removed), chopped",
@@ -32,6 +44,14 @@
       "amount": "1"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "SAUCE",
+      "amount": ""
+    },
+    {
       "item": "good-quality virgin olive oil",
       "amount": "125 ml"
     },
@@ -40,15 +60,28 @@
       "amount": "125 ml"
     },
     {
+      "item": "zucchini (courgette) flowers (bitter stamens removed), finely sliced",
+      "amount": "15–20"
+    },
+    {
       "item": "handful fresh mint leaves, finely sliced",
       "amount": "1"
     },
     {
       "item": "freshly grated parmigiano",
       "amount": "150 g"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Bring a large saucepan of salted water to the boil. Add the ravioli carefully and boil for 2 minutes until they float to the surface – they should still be al dente. Lift the ravioli out with a slotted spoon and transfer them to a warm serving dish."
-  ]
+    "For the dough, put the flour, eggs and salt into a food processor or electric mixer and mix with a dough hook until the pasta is smooth and elastic (about 5 minutes). Divide the dough into quarters and feed them through a pasta machine, working from the widest setting down to the second-finest setting. Sprinkle the pasta sheets with a little flour and set aside.",
+    "To make the stuffing, mix all the ingredients together then taste and adjust the seasoning to your liking. Be careful with the salt, though, as the cheese is already salty.",
+    "Use an 8 cm pastry cutter to cut out circles from the pasta dough. Place a heaped teaspoon of stuffing in the middle of each, then fold the dough in half over the stuffing and press firmly around the edges to seal.",
+    "Bring a large saucepan of salted water to the boil. Add the ravioli carefully and boil for 2 minutes until they float to the surface – they should still be al dente. Lift the ravioli out with a slotted spoon and transfer them to a warm serving dish.",
+    "To make the sauce, whisk the oil and water together to form an emulsion. Add the remaining ingredients then pour the sauce over the ravioli and serve immediately."
+  ],
+  "image": "/recipes/michele-s-ravioli.jpg"
 }

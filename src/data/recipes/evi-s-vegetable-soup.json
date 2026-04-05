@@ -3,7 +3,7 @@
   "name": "Evi’s Vegetable Soup",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
   "ingredients": [
@@ -12,8 +12,12 @@
       "amount": "25 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
+    },
+    {
+      "item": "veal shanks, ends cut to expose the marrow",
+      "amount": "3–4"
     },
     {
       "item": "medium leeks, washed well, cut into small rounds",
@@ -28,6 +32,10 @@
       "amount": "1"
     },
     {
+      "item": "about 7 small carrots, cut into rounds",
+      "amount": ""
+    },
+    {
       "item": "dry white wine",
       "amount": "250 ml"
     },
@@ -36,8 +44,12 @@
       "amount": "1"
     },
     {
-      "item": "litres water",
-      "amount": "3"
+      "item": "itres water",
+      "amount": "3 l"
+    },
+    {
+      "item": "sea salt flakes and ground black pepper",
+      "amount": ""
     },
     {
       "item": "bunch flat-leaf parsley, chopped",
@@ -45,8 +57,9 @@
     }
   ],
   "method": [
-    "Serves 6–8 25 g unsalted butter 2 tablespoons good-quality virgin olive oil 3–4 veal shanks, ends cut to expose the marrow 2 medium leeks, washed well, cut into small rounds 2 turnips, peeled and cut into small dice 1 small celeriac, peeled and cut into small dice about 7 small carrots, cut into rounds 250 ml dry white wine 1 bunch cavolo nero (black cabbage), cut into strips 3 litres water sea salt flakes and ground black pepper 1 bunch flat-leaf parsley, chopped",
+    "Heat the butter and oil in a large saucepan and brown the veal shanks on all sides. Transfer them to a plate and add the leeks to the pan. Cook the leeks over low heat for 10 minutes, until they become soft and sweet. Add the turnips, celeriac and carrots and cook, stirring, until they start to colour. Add the wine and stir well to deglaze the bottom of the pan. Let the wine evaporate over a medium heat. Add the cavolo nero, water, veal shanks and some salt and pepper to taste and let the soup simmer (covered with a lid) for about 1 hour, or until the meat is falling off the bones.",
     "Remove the bones and, with a small spoon, scrape out the marrow. Stir the marrow into the soup. Break up any large chunks of meat in the soup with a wooden spoon.",
     "Stir the parsley through the soup and serve with crusty bread."
-  ]
+  ],
+  "image": "/recipes/evi-s-vegetable-soup.jpg"
 }

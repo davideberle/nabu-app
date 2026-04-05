@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "SERRANO CHILE, BLACK PEPPERCORNS",
   "servings": "about 1 cup",
   "intro": "HOT-PEPPER VINEGAR is a staple on many Southern tables. Sprinkling it over a mess of collard greens (or any other greens, for that matter) is the perfect way to season them, as the vinegar cuts some of the bitterness of the greens and brightens them up. The heat from the chiles makes any serving of greens more compelling!",
   "ingredients": [
@@ -29,6 +28,7 @@
   "method": [
     "Sterilize a small bottle or canning jar with a capacity slightly over 1 cup. With a sharp knife, cut 2 slits into each chile. Put the chiles and peppercorns in the bottle. Put the vinegars in a small saucepan and bring to a simmer over medium heat. Immediately pour the vinegars into the bottle. Let cool slightly, then seal tightly and store in a cool, dark place for up to 1 month."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

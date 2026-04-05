@@ -3,11 +3,14 @@
   "name": "NO-CHURN RUM AND RAISIN ICE CREAM",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "3 MINUTE",
   "intro": "Rum and raisin was always my go-to ice cream flavour. It was the flavour everyone in my family could settle on in the supermarket – and it’s what I have missed so deeply since going vegan! No-churn ice creams are just so easy to put together, they are the perfect carefree dessert to make for a low-key dinner.",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": "3 MINUTES"
+  },
   "ingredients": [
     {
       "item": "dark rum",
@@ -34,6 +37,7 @@
     "Heat the rum in a saucepan over a medium heat until it’s just hot – not boiling. Pour over the raisins in a small bowl and leave to soak overnight.",
     "The next day, whisk the cream in a bowl to firm, soft peaks. Add the condensed milk and vanilla extract to the soaked raisins, then fold them into the cream. Pour the mixture into a metal loaf tin (pan) or ice cream tub and cover with a lid or cling film (plastic wrap). Freeze for 3–4 hours until set."
   ],
+  "image": "/recipes/no-churn-rum-and-raisin-ice-cream.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi -course meal",
-  "intro": "I was invited to the Radisson Blu Edwardian at Heathrow a few years back to try their new restaurant Annayu and write a review on my blog. The head chef at the time, Madhup Sinha, really went to town trying to impress, and impress he did. He has since moved on to become head chef of Global Street Food Kitchen and has been such a valuable source of information, with both recipes and techniques.",
+  "intro": "I was invited to the Radisson Blu Edwardian at Heathrow a few years back to try their new restaurant Annayu and write a review on my blog. The head chef at the time, Madhup Sinha, really went to town trying to impress, and impress he did. He has since moved on to become head chef of Global Street Food Kitchen and has been such a valuable source of information, with both recipes and techniques.\n\nThe evening of my visit, Madhup prepared about 15 different dishes for me. I didn’t eat for two days after that! They were all spectacular, but this one really caught my eye; it was beautiful. I didn’t want to ruin it by cutting into it, but of course I did. The good news is, it isn’t difficult to make but don’t tell anyone. Your guests will think you are some kind of master chef when you place this one in front of them.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "raw beetroot (beet), peeled",
@@ -65,8 +69,10 @@
     "Preheat the oven to 200°C (400°F/Gas 6). Sprinkle the beetroot (beet) with sea salt and wrap in foil. Roast in the oven for about 45 minutes, or until the beetroot is very soft, like potatoes cooked for mash. Weigh out 1.5kg (3lb 5oz) cooled beetroot (reserve the rest) and blend to a smooth paste in a food processor. In a bowl, stir the ajwain (carom) seeds and cumin seeds, white pepper, garlic powder and garam masala into the beetroot paste.",
     "Now add the paneer pieces and check for seasoning, adding a little more salt if needed. Stir gently to coat the paneer, cover and marinate in the fridge for 4 hours or overnight.",
     "Put the reserved roasted beetroot through a juicer if you have one. If not, blend it and pass it through a fine sieve a few times to obtain the juice. Add the balsamic vinegar to the beetroot juice, tip into a pan and reduce by half over a medium heat. Keep warm (or reheat gently when ready to serve).",
+    "When ready to cook, preheat the oven to 180°C (350°F/Gas 4) or set up the barbecue for indirect cooking. Stir the dried fenugreek leaves (kasoori methi) and tamarind pulp into the marinade, then remove the paneer and spread out in a single layer in a roasting tin if roasting in the oven, or place on a rack to barbecue. Roast or barbecue until the paneer feels soft, 5–10 minutes.",
     "Immediately drizzle the hot beetroot and vinegar reduction over the paneer, sprinkle with some chaat masala and serve."
   ],
+  "image": "/recipes/tandoori-paneer-chukandari.jpg",
   "dietary": [
     "vegetarian"
   ]

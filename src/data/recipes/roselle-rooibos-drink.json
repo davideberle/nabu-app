@@ -1,0 +1,54 @@
+{
+  "id": "roselle-rooibos-drink",
+  "name": "ROSELLE-ROOIBOS DRINK",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "4 to 6 servings",
+  "intro": "BOTH ROOIBOS AND ROSELLE have health-supportive properties. Rooibos is high in antioxidants and a number of minerals, including copper, iron, potassium, calcium, zinc, manganese, and magnesium. Healers in Africa, Asia, and Latin America have traditionally used roselle, a type of hibiscus, to treat a number of ailments. This drink is tart, sweet, and floral and has become one of my favorite summertime beverages. In this recipe, I call for fresh pineapple to give the drink texture and vibrant tropical flavor, but when my editor, Melissa Moore, brought me a bag of fresh peaches from the farm of Mas Masumoto, I peeled, sliced, and used them in place of the pineapple. It was off the chain! I think any other stone fruit, such as nectarines or cherries, would also work well, and I encourage you to experiment with adding them. For a late fall or winter spin, serve this drink warm, omitting the fresh fruit and boiling the tea and hibiscus with ¼ teaspoon whole cloves, in a nod to how roselle is prepared in Trinidad and Tobago.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "6½ cups"
+    },
+    {
+      "item": "(2-inch) cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "tea bags or 3 tablespoons rooibos tea",
+      "amount": "6"
+    },
+    {
+      "item": "dried hibiscus flowers",
+      "amount": "2 cups"
+    },
+    {
+      "item": "freshly squeezed orange juice",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "agave nectar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cubed fresh pineapple, in 1-inch chunks, plus 6 spears",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the water and cinnamon in a medium saucepan. Bring to a boil over high heat, then boil for 2 minutes. Add the rooibos, hibiscus flowers, orange juice, and agave nectar and mix well. Immediately remove from the heat, cover, and let stand for 30 minutes.",
+    "Uncover and let cool to room temperature. Strain through a fine-mesh sieve into a pitcher, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Add the pineapple chunks and refrigerate for at least 8 hours or overnight.",
+    "Serve over ice, garnishing each glass with a pineapple spear."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

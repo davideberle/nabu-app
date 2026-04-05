@@ -3,10 +3,15 @@
   "name": "Blood Orange Salad",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This is a beautiful dessert – very light but full of flavour.",
   "ingredients": [
+    {
+      "item": "CARAMELISED ALMONDS",
+      "amount": ""
+    },
     {
       "item": "sugar",
       "amount": "100 g"
@@ -29,7 +34,9 @@
     }
   ],
   "method": [
-    "Serves 6 CARAMELISED ALMONDS 100 g sugar 10 almonds 6 blood oranges, peeled and cut crossways into thin slices 4 best-quality dates, pitted and cut into thin strips 1 punnet raspberries",
-    "Put the sugar in a small saucepan and heat it gently without stirring until the sugar caramelises to a golden-brown. Now add the almonds and cook just a little longer, being careful that the sugar doesn’t burn. Pour the mixture onto a tray lined with greaseproof paper and leave to cool."
-  ]
+    "Put the sugar in a small saucepan and heat it gently without stirring until the sugar caramelises to a golden-brown. Now add the almonds and cook just a little longer, being careful that the sugar doesn’t burn. Pour the mixture onto a tray lined with greaseproof paper and leave to cool.",
+    "When the caramel is cold, put it into a plastic bag and beat it with a meat tenderiser or rolling pin until you have small, crunchy pieces.",
+    "Arrange the oranges on a serving dish, mixing the dates through them. Heap the raspberries in the middle then sprinkle the almond crunch on top. Serve just like this, or with some mascarpone sweetened with a little sugar, if desired."
+  ],
+  "image": "/recipes/blood-orange-salad.jpg"
 }

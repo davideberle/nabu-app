@@ -3,11 +3,14 @@
   "name": "CALLALOO AND PLANTAIN FILO PIE",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 8",
-  "time": "55 MINUTE",
   "intro": "I love a filo pie. My friend makes the best bastilla, which is an amazing North African savoury pie and this is loosely inspired by her. Callaloo works so well in pastry, being a heartier green, it holds its shape and doesn’t wilt that much. This would be a perfect Easter dish to bring to the family table. I know the weight of bringing the ‘vegan’ dish, but this one is very flavoursome and the plantain acts as a lovely sweet surprise. Everyone will be asking you to make it the following year.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 55 MINUTES",
+    "cook": "55 MINUTES"
+  },
   "ingredients": [
     {
       "item": "ripe plantains, sliced",
@@ -66,6 +69,7 @@
     "Fill with half of the plantain and then add half of the callaloo mixture on top. Sprinkle with half of the cheese. Repeat with the remaining fillings, then fold the excess pastry over the top to seal. Brush more butter, then sprinkle with salt and pepper.",
     "Bake in the oven for 45 minutes until golden and crisp."
   ],
+  "image": "/recipes/callaloo-and-plantain-filo-pie.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

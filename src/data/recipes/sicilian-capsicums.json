@@ -3,21 +3,26 @@
   "name": "Sicilian Capsicums",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "The Italians have a saying: ‘First you eat with your eyes’. When you see this dish with its vibrant colours you can see why they say this.",
   "ingredients": [
     {
-      "item": "large red capsicums (peppers)",
-      "amount": "3"
+      "item": "arge red capsicums (peppers)",
+      "amount": "3 l"
     },
     {
-      "item": "large yellow capsicums (peppers)",
-      "amount": "3"
+      "item": "arge yellow capsicums (peppers)",
+      "amount": "3 l"
     },
     {
-      "item": "large green capsicum (pepper)",
-      "amount": "1"
+      "item": "arge green capsicum (pepper)",
+      "amount": "1 l"
+    },
+    {
+      "item": "TOPPING",
+      "amount": ""
     },
     {
       "item": "black olives, pitted",
@@ -44,11 +49,18 @@
       "amount": "1"
     },
     {
+      "item": "good-quality virgin olive oil",
+      "amount": "125–200 ml"
+    },
+    {
       "item": "small red chilli",
       "amount": "1"
     }
   ],
   "method": [
-    "Serves 6 3 large red capsicums (peppers) 3 large yellow capsicums (peppers) 1 large green capsicum (pepper) TOPPING 50 g black olives, pitted 10 anchovy fillets in oil, drained 140 g capers in brine, drained 40 g pine nuts 3 cloves garlic 1 handful fresh mint leaves 125–200 ml good-quality virgin olive oil 1 small red chilli"
-  ]
+    "Char the capsicum skins, holding them over a flame (a gas burner or kitchen blow torch) with a pair of tongs, turning them all over until blackened. Then place them, still hot, in a plastic bag and leave for 5–10 minutes. (The steam will loosen the skin of the capsicums and make them very easy to peel.) Peel and deseed, then cut each capsicum into 4–6 slices. Pat them dry with kitchen paper and arrange them on a serving platter.",
+    "To make the sauce, simply put all the ingredients in a blender and process until just amalgamated. Be careful not to over-blend – you should still see the individual ingredients. Spoon some of the sauce over the capsicums and serve the rest on the side in a little bowl.",
+    "This dish should be eaten at room temperature."
+  ],
+  "image": "/recipes/sicilian-capsicums.jpg"
 }

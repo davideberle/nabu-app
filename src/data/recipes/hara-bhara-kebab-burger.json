@@ -7,6 +7,10 @@
   },
   "servings": "makes 8 burger-size kebabs",
   "intro": "Hara bhara kebabs not only look great but they’re also delicious and good for you. These can be eaten on their own with a little mint and coriander sauce or mango pickle, or used as a filling for the kathi roll. I like to add small, hot hara bhara kebabs to tomato-based curries, or substitute them for the paneer in my butter paneer recipe. Be sure to add them at the end of cooking, though, so that they don’t fall apart. You really can’t beat a good burger, so that’s how I’ve done them here.",
+  "time": {
+    "prep": "15 MINS, PLUS CHILLING TIME",
+    "cook": "25 MINS"
+  },
   "ingredients": [
     {
       "item": "large potato, about 350g (12oz), cut into 6 pieces",
@@ -95,8 +99,11 @@
     "Heat a frying pan over a medium heat and add 2 tablespoons of the oil. When visibly hot, stir in the cardamom pods, cinnamon, cloves, and cumin and coriander seeds. Move the spices around in the oil for about 45 seconds, then remove the cardamom pods and cinnamon.",
     "Add the onion and fry for about 5 minutes until translucent and soft. Stir in the blanched spinach, mashed potato, peas, mint, coriander (cilantro), chillies, garlic and ginger and cook for a further 3 minutes. Allow to cool.",
     "Place these ingredients with the paneer, gram flour and chaat masala in a food processor or large pestle and mortar and blend to a thick paste. Add the lime juice and season with salt, if needed.",
-    "Form this paste into eight large patties (or you could make more smaller ones, if you wish). If you find that it is too wet, you could add a little more gram flour. Place the patties in the fridge for about 15 minutes before frying."
+    "Form this paste into eight large patties (or you could make more smaller ones, if you wish). If you find that it is too wet, you could add a little more gram flour. Place the patties in the fridge for about 15 minutes before frying.",
+    "When ready to cook, heat the remaining oil in a frying pan and fry the patties for about 3 minutes per side, or until lightly browned and heated through."
   ],
+  "tips": "You can substitute about 150g (5½ oz) of defrosted shop-bought frozen spinach for the fresh spinach if you wish. There is no need to blanch this as it was done before freezing.\n\nYou could leave the cheese out or use a non-dairy cheese of your choice. Why not top it all with some meltable dairy-free cheese?",
+  "image": "/recipes/hara-bhara-kebab-burger.jpg",
   "dietary": [
     "vegetarian"
   ]

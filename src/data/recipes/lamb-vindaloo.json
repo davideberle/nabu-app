@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Many restaurants include potato in their vindaloo curries. ‘Aloo’ means potato in Hindi, so a lot of the original self-taught Bangladeshi and Pakistani chefs in the UK mistakenly added potatoes to this fiery curry, and it stuck. Vindaloo, however, owes its origins to Portuguese-controlled Goa in the 15th century, where the dish was usually served with pork. The name vindaloo was most likely a mispronunciation of the similar Portuguese dish carne de vinho e alho (meat with wine and garlic). So our vindaloo is completely different to the authentic Goan version other than it is quite spicy and often packs a vinegary punch. I don’t add potatoes, but if you would like to, I’ve included instructions. If you would like to try a recipe for the original Goan pork vindaloo, you’ll find it.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB AND POTATOES",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -91,5 +95,6 @@
     "Pour in about 250ml (1 cup) of the base curry sauce and let it come to a rolling simmer. Don’t stir the sauce unless it looks like it is beginning to catch. Scrape back in any sauce that caramelizes around the sides of the pan.",
     "The pan should be going crazy over the heat. Swirl in the remaining base curry sauce and add the pre-cooked meat with a little of the cooking stock. Let the sauce simmer over the high heat until it cooks down to your desired consistency.",
     "To finish, add the vinegar, dried fenugreek leaves (kasoori methi), potatoes (if using) and the coriander (cilantro). Season with salt and black pepper."
-  ]
+  ],
+  "image": "/recipes/lamb-vindaloo.jpg"
 }

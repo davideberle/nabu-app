@@ -7,6 +7,10 @@
   },
   "servings": "makes 500–550ml (2 cups)",
   "intro": "My favourite raita. Nothing more to be said.",
+  "time": {
+    "prep": "5 MINS",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "Bunch of fresh coriander (cilantro), leaves only",
@@ -37,6 +41,7 @@
     "In a spice grinder or small food processor, blend the coriander (cilantro) leaves, garlic, lime juice and chillies to a paste. You can also use a pestle and mortar to do this, which is a little more work.",
     "Whisk the yoghurt with a fork until creamy smooth, then stir in the coriander paste. Season with salt to taste and chill in the fridge for about 30 minutes before serving."
   ],
+  "image": "/recipes/coriander-garlic-and-chilli-raita.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

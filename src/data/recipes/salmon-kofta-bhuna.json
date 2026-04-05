@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This recipe was sent to me by my friend Milon Miah, head chef at Spice Island in Barnard Castle. The recipe was taught to Milon by his mother, but he claims to have modernized it a bit. I’ve never tried the original but have to say his version, which he makes with chital (a freshwater Bangladeshi fish) is truly delicious. I’m not the only one who thinks so. Milon recently won first place with this dish on the reality TV show The Chef. The ingredients are all very simple but they work so well together. All you need is a little plain white rice and you’ve got yourself a masterpiece meal in minutes.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil, plus extra for shallow-frying",
@@ -62,31 +66,38 @@
     },
     {
       "item": "salmon fillet or chital fish",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g (1lb 2oz)",
+      "group": "KOFTAS"
     },
     {
       "item": "mixed powder or curry powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "KOFTAS"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "KOFTAS"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "KOFTAS"
     },
     {
       "item": "finely chopped coriander (cilantro) leaves",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "KOFTAS"
     },
     {
       "item": "spring onions (scallions), thinly sliced",
-      "amount": "2"
+      "amount": "2",
+      "group": "KOFTAS"
     },
     {
       "item": "salt, or to taste",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "KOFTAS"
     }
   ],
   "method": [
@@ -95,5 +106,6 @@
     "Meanwhile, form the fish paste into about 12 small, flat koftas. In a large frying pan, pour in oil to the depth of about 2.5cm (1in) and heat over a medium–high heat. When hot, add the koftas and fry for about 2 minutes on one side. Flip over and fry for another 2 minutes, or until cooked through.",
     "Place the tomatoes and koftas on top of the simmering sauce for about 2 minutes until the tomatoes are warmed through. Season with salt.",
     "To serve, divide the sauce mixture equally between four warmed plates. Place three koftas on each and serve with wedges of lemon or lime."
-  ]
+  ],
+  "image": "/recipes/salmon-kofta-bhuna.jpg"
 }

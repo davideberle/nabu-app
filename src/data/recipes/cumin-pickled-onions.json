@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "WHITE VINEGAR, RAW CANE SUGAR, CUMIN, BLACK PEPPERCORNS",
   "servings": "about 2 cups",
   "intro": "A SIMPLE RECIPE for sandwich-worthy onions. Try them on the Berbere-Spiced Black-Eyed Pea Sliders.",
   "ingredients": [
@@ -38,6 +37,7 @@
     "Put the vinegar, water, sugar, cumin, and peppercorns in a medium saucepan and bring to a boil over medium-high heat. Decrease the heat to medium and cook, stirring occasionally, until the sugar dissolves, about 5 minutes. Remove from the heat and let cool to room temperature.",
     "Put the onions in a canning jar, then pour the vinegar mixture into the jar. Cover tightly and refrigerate for at least 1 day before eating. Stored in the refrigerator, the onions will keep for up to 1 month."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

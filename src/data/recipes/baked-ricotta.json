@@ -3,9 +3,10 @@
   "name": "Baked Ricotta",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "This is a really delicious way to prepare ricotta. It looks very inviting and can be served on its own or as part of an antipasto.\n\nIt keeps well for a few days in the fridge.",
   "ingredients": [
     {
       "item": "ricotta",
@@ -20,13 +21,23 @@
       "amount": "100 g"
     },
     {
+      "item": "a few fresh oregano leaves",
+      "amount": ""
+    },
+    {
       "item": "chilli, deseeded and finely sliced",
       "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 500 g ricotta 2 organic eggs 100 g parmigiano a few fresh oregano leaves 1 chilli, deseeded and finely sliced salt and ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
-    "Mix all the ingredients together well in a bowl. Butter an ovenproof dish, place the mixture in the dish and bake for about 25 minutes until golden and puffed up."
-  ]
+    "Mix all the ingredients together well in a bowl. Butter an ovenproof dish, place the mixture in the dish and bake for about 25 minutes until golden and puffed up.",
+    "You can eat this dish hot, but it has more flavour when cold.",
+    "You can buy fresh ricotta at your deli or supermarket. Make sure you buy the full-cream milk ricotta and not the fat-reduced version."
+  ],
+  "image": "/recipes/baked-ricotta.jpg"
 }

@@ -7,6 +7,10 @@
   },
   "servings": "makes 20 – feeds a crowd",
   "intro": "Papadams are delicious, but this Keralan recipe takes them to the next level. The papads are dipped into a spicy batter before deep-frying. Unlike plain papads, these battered papads stay about the same size when fried. They are delicious served with a selection of pickles, sauces and chutneys. Papadda vada are pictured in the top left corner.",
+  "time": {
+    "prep": "10 MINS, PLUS SOAKING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "Rapeseed (canola) oil, for deep-frying",
@@ -18,31 +22,38 @@
     },
     {
       "item": "basmati rice, rinsed and soaked in water for 5 hours, then drained",
-      "amount": "275g (scant 1½ cups)"
+      "amount": "275g (scant 1½ cups)",
+      "group": "BATTER"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "BATTER"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "BATTER"
     },
     {
       "item": "black sesame seeds",
-      "amount": "1 heaped tbsp"
+      "amount": "1 heaped tbsp",
+      "group": "BATTER"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "BATTER"
     },
     {
       "item": "dried chilli (hot pepper) flakes (optional)",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "BATTER"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "BATTER"
     }
   ],
   "method": [
@@ -50,6 +61,7 @@
     "Heat the oil in a large saucepan or wok until hot enough to deep-fry. The oil is ready when a piece of papad dropped into the oil sizzles and floats to the top immediately.",
     "Dip the first papad into the batter, ensuring that it is very well coated, and gently place it into the oil. Fry for about 40 seconds until the batter coating turns light brown. Transfer with a slotted spoon to a wire rack over a tray or to a piece of paper towel. Allow the excess oil to drip into the pan or drain into the paper while you finish cooking the remaining papads."
   ],
+  "image": "/recipes/papadda-vada.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

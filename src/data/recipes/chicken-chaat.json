@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This British curry-house classic is hugely popular and also quick and easy to make. I like to add tandoori chicken tikka or any of the grilled chicken recipes in this book as the smoky flavour really adds to the dish. You could really add any leftover cooked chicken. It’s a great way of giving new life to your leftover Sunday dinner chicken roast! You can also cook the chicken from raw. Just cut the raw chicken into bite-size pieces and be sure to cook it through in the sauce.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -73,5 +77,6 @@
     "Heat the oil in a frying pan over a medium–high heat. When it’s visibly hot, add the onion and fry for about 5 minutes until soft and translucent. Add the garlic and ginger paste and give it all another good stir.",
     "Spoon in the mixed powder, chilli powder and chaat masala, followed by the tomato purée. This should sizzle when it hits the pan. When it does, add half the base sauce. Allow this to bubble for a minute or so, only stirring if the sauce begins to stick to the pan. Add the chicken pieces and the rest of the base sauce and simmer until the chicken is cooked through – about 10 minutes should do the job.",
     "To finish, stir in the cucumber, red (bell) pepper, chickpeas and tomato wedges. Season with salt and sprinkle with the garam masala."
-  ]
+  ],
+  "image": "/recipes/chicken-chaat.jpg"
 }

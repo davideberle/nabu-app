@@ -7,6 +7,10 @@
   },
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "Fluffy steamed idlis taste great. They are delicious dipped into your favourite chutneys and sambar. This recipe uses a quick ‘cheat’s method’ batter, which is a lot less work than more authentic versions that use a fermented batter. For the best results, you will need idli moulds – available online and at Asian markets. Before I invested in an idli mould set, I used a Yorkshire pudding tray placed on a brick in a large lidded pot of boiling water to steam. It worked well, so do what you have to try these. You’ll be glad you did!",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "Vegetable or rapeseed (canola) oil, for greasing",
@@ -18,34 +22,42 @@
     },
     {
       "item": "rice flour",
-      "amount": "200g (1¼ cup)"
+      "amount": "200g (1¼ cup)",
+      "group": "BATTER"
     },
     {
       "item": "urad dhal flour",
-      "amount": "70g (½ cup)"
+      "amount": "70g (½ cup)",
+      "group": "BATTER"
     },
     {
       "item": "ground fenugreek",
-      "amount": "⅛ tsp"
+      "amount": "⅛ tsp",
+      "group": "BATTER"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "BATTER"
     },
     {
       "item": "baking powder",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "BATTER"
     },
     {
       "item": "Juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "BATTER"
     }
   ],
   "method": [
     "Pour all of the batter ingredients into a bowl. Slowly pour in 410ml (1¾ cups) water, mixing until you have a thick and smooth batter. It should be thick enough to coat the back of a spoon.",
+    "When ready to cook, pour about 7.5cm (3in) depth of water into the bottom of your idli pan and bring to the boil. You want the water level to be just below the idli trays, so you might need to adjust the amount of water depending on your pan. Oil your idli trays lightly with oil, then pour the batter into the moulds.",
     "Carefully lower the trays into the idli pan, cover and steam for 15 minutes. After 15 minutes, you should have delicious, fluffy idlis. To check for doneness, stick a toothpick or fork into the centre of one or two. If it comes out clean, your idlis are ready. If it comes out with a little batter stuck to it, continue steaming for a couple more minutes. Remove the trays from the steamer and let the steamed idlis sit, undisturbed, for about 2 minutes before removing them from the moulds. A small knife or spoon will help you lift the cooked idlis neatly out of the moulds.",
     "Serve with chutneys and/or sambar if you like."
   ],
+  "image": "/recipes/idlis.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

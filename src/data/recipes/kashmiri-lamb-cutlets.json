@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Kashmiri lamb cutlets are irresistible; cooking the meat in the spiced milk makes them melt-in-the-mouth tender. The succulent pieces of lamb can be eaten by hand like chicken nuggets… I bet you can’t eat just one. I used boned lamb chops for this recipe, but any good meaty lamb cut will do. You could even cut the chops in half if you are serving a selection of starters to a group.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "50 MINS"
+  },
   "ingredients": [
     {
       "item": "lamb chops",
@@ -58,31 +62,38 @@
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "BATTER"
     },
     {
       "item": "baking powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "BATTER"
     },
     {
       "item": "rice flour",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "BATTER"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "BATTER"
     },
     {
       "item": "plain yoghurt",
-      "amount": "150g (generous ½ cup)"
+      "amount": "150g (generous ½ cup)",
+      "group": "BATTER"
     },
     {
       "item": "garam masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "BATTER"
     },
     {
       "item": "Pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "BATTER"
     }
   ],
   "method": [
@@ -91,5 +102,7 @@
     "Now whisk the batter ingredients together. It should be quite thick, like double (heavy) cream, so that it clings to the cutlets, so add a little more gram flour if it is too thin or more yoghurt if too thick.",
     "Heat about 15cm (6in) of oil in a deep, heavy-based saucepan or wok to about 170°C (340°F) until a little batter dropped in sizzles immediately. Coat one of the lamb cutlets with the batter and slowly ease it into the oil. Repeat with the rest of the meat, but don’t overload the pan – you may need to cook the lamb in batches.",
     "Deep-fry until nicely browned, then remove with a wire-mesh spoon to a plate lined with paper towel to soak up any excess oil. Sprinkle with a little flaky sea salt and serve with the lime wedges. They are also great dipped into your favourite raita or chutney."
-  ]
+  ],
+  "tips": "If cooking ahead of time, you can place the finished cutlets on a wire rack placed over a foil-lined baking tray in a low oven, for up to 30 minutes.",
+  "image": "/recipes/kashmiri-lamb-cutlets.jpg"
 }

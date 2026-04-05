@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Railway mutton curry is a lot like a traditional British stew. The original curry was served in the first-class cars of the Indian railways and stems back to the British Raj. The story goes that a British officer was served a lamb curry and found it to be too spicy so asked for the curry to be milder. The chef added some yoghurt and coconut milk to the sauce to cool it down and the officer loved it. Over time, this curry became much milder, with only a little chilli powder added; you could always add more to taste. Most of our curry house-style curries were developed here in the UK for the British palate. This famous curry was developed for the British as well, but most definitely has its origin in India. Although you could definitely cook the meat in the curry sauce, I cook it separately, as it would have been cooked back in the days when this curry was popular on Indian trains. The cooked meat would then have been used in a variety of curries served on the train, from mild to fiery hot, with the cooking stock used to flavour the curries. You might like to double or triple the meat part of the recipe and use the additional pre-cooked meat in one of the curry house-style curries in this book.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "2 HOURS"
+  },
   "ingredients": [
     {
       "item": "mutton or lamb shoulder on the bone, cut into bite-size pieces",
@@ -98,5 +102,6 @@
     "Meanwhile, heat the mustard oil in a large saucepan. When visibly hot, add the cardamom pods, Kashmiri chillies, cloves and cinnamon stick and let these spices infuse into the oil for about 30 seconds. Add the curry leaves and let them fry with the spices for another 30 seconds before adding the onions. Fry for about 5 minutes until the onions are soft and translucent, then the stir in the garlic and ginger paste and fry for a further 30 seconds.",
     "Now add the ground spices and tomatoes, stir well and add the green chillies – this is your base for the curry. When the meat is almost cooked to perfection, add the potatoes and cook until tender. This should take about 15 minutes. Then add the meat and potatoes to the curry sauce, with about 500ml (2 cups) of the cooking stock. Simmer until you are happy with the consistency. This curry can be either really soupy or thick, depending on your preference. Stir in the tamarind concentrate and coconut milk. You’re almost done now.",
     "To finish, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Season with salt and garnish with some chopped coriander (cilantro) if you like."
-  ]
+  ],
+  "image": "/recipes/railway-mutton-lamb-curry.jpg"
 }

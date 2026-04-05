@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4–10 depending on use",
-  "intro": "Paneer is often added raw to curries just before serving, as you can’t cook it in a sauce long or it will begin to break up. Here is another option. The crispy exterior that the paneer gets when shallow-fried helps stop it from disintegrating in the sauce, and it’s also delicious. Plain paneer doesn’t have a lot of flavour, so marinating for about 30 minutes before frying will make it more interesting.",
+  "intro": "Paneer is often added raw to curries just before serving, as you can’t cook it in a sauce long or it will begin to break up. Here is another option. The crispy exterior that the paneer gets when shallow-fried helps stop it from disintegrating in the sauce, and it’s also delicious. Plain paneer doesn’t have a lot of flavour, so marinating for about 30 minutes before frying will make it more interesting.\n\nI find commercially available paneer works perfectly well for BIR curries, frying and grilling, but I also like to make my own. To do this, bring 1.5 litres (6¼ cups) of full-fat (whole) milk to a boil, whisking continuously so that it doesn’t boil over. When the milk has come to a boil, reduce the heat and simmer to reduce by about 15%. Remove the milk from the heat and stir in the juice of one lemon and whisk for 5–10 minutes to separate the curds from the whey. Wrap the curds tightly in cheesecloth and hang over the sink for about 2 hours. Form the paneer into a block, pressing out any remaining whey, and you’ve got the 200g (7oz) of fresh paneer needed for this recipe! Your homemade paneer will keep in the fridge for up to three days.",
+  "time": {
+    "prep": "5 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "garlic and ginger paste",
@@ -39,8 +43,10 @@
   ],
   "method": [
     "Whisk the garlic and ginger paste, spices and yoghurt together in a bowl. Using a fork or toothpick, pierce the paneer cubes all over so that the marinade can penetrate. Add the paneer and leave to marinate for about 30 minutes.",
+    "When ready to fry, heat the oil in a frying pan over a medium–high heat. When it begins to bubble, remove the paneer from the marinade and add to the hot oil. Fry until browned on one side, then flip the paneer over and fry on the other side. Only frying two opposite sides is enough to help keep the cheese together while cooking in a sauce, but if you like you can brown it on all sides, as I do (it just looks better).",
     "Transfer the browned paneer cubes to a plate lined with paper towel to absorb any excess oil, and set aside until ready to use."
   ],
+  "image": "/recipes/fried-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

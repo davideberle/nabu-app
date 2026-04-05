@@ -3,13 +3,22 @@
   "name": "Fresh Anchovies",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6–8",
+  "intro": "Fresh anchovies have a much more delicate flavour than the salted variety. You can ask your fishmonger to clean them, as the job is a bit fiddly.\n\nI also like to squeeze lemon juice over the cooked anchovies, especially when I eat them cold.",
   "ingredients": [
+    {
+      "item": "fresh anchovies",
+      "amount": "8–16"
+    },
     {
       "item": "breadcrumbs",
       "amount": "40 g"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "1–2"
     },
     {
       "item": "chilli, finely chopped",
@@ -18,12 +27,22 @@
     {
       "item": "handful finely chopped flat-leaf parsley",
       "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6–8 8–16 fresh anchovies 40 g breadcrumbs 1–2 cloves garlic, crushed 1 chilli, finely chopped 1 handful finely chopped flat-leaf parsley salt and ground black pepper good-quality virgin olive oil, for drizzling",
     "Preheat the oven to 220°C (gas mark 7).",
+    "Split open the anchovies down the belly, then remove the heads and spines. Rinse them under running water and dry with kitchen paper. Lay the fish flat, belly side down and spread open, on kitchen paper.",
     "Put the breadcrumbs, garlic, chilli, parsley, salt and pepper in a bowl and stir together with a spoon.",
+    "Oil an ovenproof serving dish. Sprinkle some of the breadcrumb mixture evenly, but not too thickly, over the bottom of the dish. Arrange the anchovies, in a single layer, in the dish. Sprinkle some more breadcrumb mix on top and then drizzle some olive oil all over the fish.",
     "Cook in the oven for about 5 minutes, until the fish are slightly coloured. Serve either hot or cold."
-  ]
+  ],
+  "image": "/recipes/fresh-anchovies.jpg"
 }

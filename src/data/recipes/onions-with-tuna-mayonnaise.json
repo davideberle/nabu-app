@@ -1,0 +1,30 @@
+{
+  "id": "onions-with-tuna-mayonnaise",
+  "name": "Onions with Tuna Mayonnaise",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Mietta Sartori"
+  },
+  "servings": "serves 4",
+  "intro": "I like to use these delicious sweet onions when I make vitello tonnato. They are exceptional with the tuna–mayonnaise sauce. Of course, you can also use them on their own or as part of an antipasto.",
+  "ingredients": [
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "small onions, peeled",
+      "amount": "10"
+    },
+    {
+      "item": "Vitello Tonnato sauce",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 190°C (gas mark 5).",
+    "Drizzle the olive oil over the onions and put them on an oven tray. Bake until they are cooked, shaking the tray from time to time – about 20 minutes.",
+    "When cool arrange them in a serving dish and pour the Vitello Tonnato mayonnaise over them."
+  ],
+  "image": "/recipes/onions-with-tuna-mayonnaise.jpg"
+}

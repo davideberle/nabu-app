@@ -3,11 +3,14 @@
   "name": "LOADED PLANTAIN BOAT SPREAD",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "35 MINUTE",
   "intro": "I love a good spread. This plantain boat recipe gives everyone their own individual roasted plantain to load up, adding the combinations of flavours that they want. It’s stress-free as it all comes together on a single baking sheet, giving you time to enjoy a relaxed hosting experience.",
+  "time": {
+    "prep": "5 MINUTESCOOK TIME: 35 MINUTES",
+    "cook": "35 MINUTES"
+  },
   "ingredients": [
     {
       "item": "soy sauce",
@@ -51,19 +54,23 @@
     },
     {
       "item": "grated vegan cheese",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "non-dairy sour cream",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "smashed avocado",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     },
     {
       "item": "hummus",
-      "amount": ""
+      "amount": "",
+      "group": "TO SERVE"
     }
   ],
   "method": [
@@ -71,6 +78,7 @@
     "In a bowl, mix together the soy sauce, balsamic vinegar, 2 tablespoons of the olive oil, the thyme leaves, smoked paprika, garlic and salt and pepper. Put the oyster mushrooms and onion on one half of the baking sheet and pour over the marinade. Mix to coat, then set aside.",
     "Pierce the plantains with a knife or fork and place on the sheet alongside the mushrooms. Bake in the oven for 25 minutes, then slice the plantains through the skin down the middle, exposing the flesh. Brush with the remaining olive oil and cook for a further 10 minutes. Stuff the plantains with the mushrooms and onions and serve with the toppings of your choice."
   ],
+  "image": "/recipes/loaded-plantain-boat-spread.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

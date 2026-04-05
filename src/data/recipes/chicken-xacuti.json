@@ -7,111 +7,143 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Chicken xacuti is one of Goa’s most famous curries. It is known for its spiciness and its subtle flavour of nutmeg, poppy seeds, coconut and star anise. Xacuti is usually cooked with skinless chicken on the bone, which is what I’ve done here. Lamb on the bone is also a popular main ingredient. The curry is normally served with plain rice or semolina fried potatoes like the recipe. Those potatoes are fantastic and I highly recommend giving them a try with your xacuti.",
+  "time": {
+    "prep": "10 MINS, PLUS SOAKING TIME",
+    "cook": "25 MINS"
+  },
   "ingredients": [
     {
       "item": "Kashmiri dried red chillies, chopped (seeds removed for a milder curry)",
-      "amount": "6"
+      "amount": "6",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "dried coconut flakes",
-      "amount": "75g (1 cup)"
+      "amount": "75g (1 cup)",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "ajwain (carom) seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "fennel seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "black poppy seeds",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "cloves",
-      "amount": "7"
+      "amount": "7",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "black peppercorns",
-      "amount": "1 tbsp (about 35)"
+      "amount": "1 tbsp (about 35)",
+      "group": "XACUTI MASALA"
     },
     {
-      "item": "5cm (2in) piece of cinnamon stick",
-      "amount": ""
+      "item": "piece of cinnamon stick",
+      "amount": "5cm (2in)",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "star anise",
-      "amount": "4"
+      "amount": "4",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "garlic cloves, finely chopped",
-      "amount": "8"
+      "amount": "8",
+      "group": "XACUTI MASALA"
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and finely chopped",
-      "amount": ""
+      "item": "piece of ginger, peeled and finely chopped",
+      "amount": "5cm (2in)",
+      "group": "XACUTI MASALA"
     },
     {
       "item": "skinless chicken thighs on the bone",
-      "amount": "8"
+      "amount": "8",
+      "group": "CURRY"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "CURRY"
     },
     {
       "item": "black mustard seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "CURRY"
     },
     {
       "item": "fresh or frozen curry leaves",
-      "amount": "10"
+      "amount": "10",
+      "group": "CURRY"
     },
     {
       "item": "onions, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "CURRY"
     },
     {
       "item": "green bird’s eye chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "CURRY"
     },
     {
       "item": "chicken stock or water",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml (2 cups)",
+      "group": "CURRY"
     },
     {
       "item": "tamarind paste or concentrate",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "CURRY"
     },
     {
       "item": "ground nutmeg",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "CURRY"
     },
     {
       "item": "coriander (cilantro), finely chopped",
-      "amount": "20g (¼ cup)"
+      "amount": "20g (¼ cup)",
+      "group": "CURRY"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "CURRY"
     }
   ],
   "method": [
     "Start by making the xacuti masala. In a dry frying pan, toast the Kashmiri chillies for about 1 minute, turning regularly until fragrant. Place in a bowl of warm water to soak for about 30 minutes. Now toast the coconut flakes until lightly browned and set aside. Toast the cumin, coriander, ajwain (carom) seeds, fennel and poppy seeds, the cloves, peppercorns, cinnamon stick and star anise over a medium–high heat until fragrant and warm to the touch. Transfer to a bowl and allow to cool.",
+    "When the chillies are soft, drain them, reserving the soaking water, then blend them with the coconut flakes and the rest of the masala ingredients, along with a little of the chilli soaking water to make a paste, but taste the water first: if it is bitter, use fresh water instead.",
     "Pour the paste over the chicken in a large bowl and mix well to coat. You can start cooking the curry now, but if you would like to marinate the chicken for a couple of hours or overnight, it will be even better.",
+    "When ready to cook, heat the oil in a large frying pan or wok over a high heat. When bubbles begin to form on the bottom of the pan, add the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium–high and stir in the curry leaves and let them flavour the oil for about 30 seconds. You’ll know when the oil is perfectly flavoured because it will smell so nice. Add the onions and fry for about 5 minutes until soft, lightly browned and translucent. Stir in the chillies, then the chicken and all of the marinade. Stir well to coat the chicken in the onion mixture. Add the stock or water and simmer for about 15 minutes until the chicken is tender and cooked through.",
     "Stir in the tamarind paste or concentrate and nutmeg, then give it a taste. For a sourer flavour, add more tamarind. Nutmeg can taste quite strong to some, but add more if you like. To serve, stir in the coriander (cilantro) and season with salt."
-  ]
+  ],
+  "image": "/recipes/chicken-xacuti.jpg"
 }

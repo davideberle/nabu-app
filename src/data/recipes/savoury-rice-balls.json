@@ -3,16 +3,21 @@
   "name": "Savoury Rice Balls",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "I love these little balls that are packed with flavour. You can eat them as a ‘stuzzichino’ – a taste-teaser before your meal – accompanied by a nice light red wine, or as part of an antipasto or even as a starter.\n\nIn Sicily they make these arancine bigger and pointy on one side. They are called ‘arancine Mont Albano’ after a well-known TV character, a detective who always stops his investigations for a good lunch or dinner.",
   "ingredients": [
+    {
+      "item": "Makes 15–20 arancine",
+      "amount": ""
+    },
     {
       "item": "left-over risotto",
       "amount": "300 g"
     },
     {
-      "item": "large fresh mozzarella ball, cut into small cubes",
-      "amount": "1"
+      "item": "arge fresh mozzarella ball, cut into small cubes",
+      "amount": "1 l"
     },
     {
       "item": "thick slices cooked ham, very finely chopped",
@@ -36,7 +41,10 @@
     }
   ],
   "method": [
-    "Makes 15–20 arancine 300 g left-over risotto 1 large fresh mozzarella ball, cut into small cubes 2 thick slices cooked ham, very finely chopped 120 g unbleached plain flour 2 organic eggs, lightly beaten 200 g fresh breadcrumbs 500 ml sunflower oil, for frying",
-    "Heat the oil in a medium saucepan. Deep-fry the arancine in batches over medium–high heat until golden, turning them frequently as they cook. Drain on kitchen paper and keep them warm while you cook the remainder. Serve immediately."
-  ]
+    "Moisten your hands with a little water, then take a tablespoon of the risotto and flatten it gently in the palm of one hand. Place a cube of mozzarella and a little ham in the centre, then shape the risotto around the filling, forming it into a neat, tight ball. Add a little more risotto to cover the filling if necessary.",
+    "Roll the arancine in the flour, shaking off any excess. Dip them into the egg, then coat with breadcrumbs. Pat the arancine well with your hands to make sure they are nice and firm and evenly coated. Place them on a board, ready for frying.",
+    "Heat the oil in a medium saucepan. Deep-fry the arancine in batches over medium–high heat until golden, turning them frequently as they cook. Drain on kitchen paper and keep them warm while you cook the remainder. Serve immediately.",
+    "To make black squid ink arancine, use risotto made with fish stock – you could use left-over fish stock from Cus-cus di Pesce. Add a little squid ink to the risotto to make it black. Follow the same method as for the arancine recipe above, simply substituting prawns for the ham."
+  ],
+  "image": "/recipes/savoury-rice-balls.jpg"
 }

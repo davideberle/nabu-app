@@ -7,6 +7,10 @@
   },
   "servings": "makes 18–20",
   "intro": "Shop-bought filo pastry or samosa wrappers are most often used at Indian restaurants. They do the job, but there’s nothing like homemade pastry, so I have included my pastry recipe here. If you want to make these samosas ahead of time, you can freeze them once shaped but not fried, on a plate, wrapped tightly in cling film (plastic wrap). Once frozen, transfer to a freezer bag and store until ready to fry, defrosting them first. You can see the lamb version pictured.",
+  "time": {
+    "prep": "30 MINS",
+    "cook": "ABOUT 30 MINS"
+  },
   "ingredients": [
     {
       "item": "Rapeseed (canola) oil, for deep-frying",
@@ -14,71 +18,88 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "400g (2¾ cups)"
+      "amount": "400g (2¾ cups)",
+      "group": "PASTRY"
     },
     {
       "item": "Pinch of salt",
-      "amount": ""
+      "amount": "",
+      "group": "PASTRY"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PASTRY"
     },
     {
       "item": "melted ghee",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PASTRY"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "PASTRY"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "PASTRY"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "PASTRY"
     },
     {
       "item": "green bird’s eye chillies, finely chopped",
-      "amount": "2"
+      "amount": "2",
+      "group": "PASTRY"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PASTRY"
     },
     {
       "item": "floury potatoes, peeled and cut into 1cm (½in) cubes",
-      "amount": "2"
+      "amount": "2",
+      "group": "PASTRY"
     },
     {
       "item": "mixed powder",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "PASTRY"
     },
     {
       "item": "About 250ml (1 cup) water or spice stock – enough to cover",
-      "amount": ""
+      "amount": "",
+      "group": "PASTRY"
     },
     {
       "item": "carrot, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "PASTRY"
     },
     {
       "item": "finely chopped coriander (cilantro)",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "PASTRY"
     },
     {
       "item": "frozen peas",
-      "amount": "125g (1 cup)"
+      "amount": "125g (1 cup)",
+      "group": "PASTRY"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "PASTRY"
     },
     {
       "item": "quantity pre-cooked keema*",
-      "amount": "1"
+      "amount": "1",
+      "group": "MEAT FILLING"
     }
   ],
   "method": [
@@ -86,8 +107,10 @@
     "To make the vegetable filling, heat the oil in a large frying pan over a medium–high heat until bubbles appear. Add the cumin seeds. When they become fragrant in the oil, toss in the onion and chillies, and fry for 5–7 minutes until the onion is translucent and lightly browned. Add the garlic and ginger paste and fry for a further minute.",
     "Add the potatoes and mixed powder, and just enough water or spice stock to cover. Simmer until the potatoes are soft, topping up the stock if needed. Add the carrot and continue cooking until cooked through but still al dente. Reduce the stock until you have a dry potato mixture. Stir in the coriander (cilantro) and peas and season with salt. Set aside to cool.",
     "To make the lamb or vegetable samosas, tear off a piece of dough the size of a golf ball and place on a floured surface (keep the remaining dough in the bowl covered so that it doesn’t dry out). Roll the dough into a very thin rectangle, the thinner the better, about 5 x 12cm (2 x 4½in).",
-    "Place about 1 tablespoon of lamb or vegetable filling at the top of the pastry rectangle. Fold the top left corner over the filling to make a small triangular pocket. There will still be about 6cm (2½in) of pastry under this triangular pocket. Fold the top of the triangle over onto the remaining pastry and then again to create a little triangular samosa. Press the seams together tightly and repeat until all of the samosas are made."
+    "Place about 1 tablespoon of lamb or vegetable filling at the top of the pastry rectangle. Fold the top left corner over the filling to make a small triangular pocket. There will still be about 6cm (2½in) of pastry under this triangular pocket. Fold the top of the triangle over onto the remaining pastry and then again to create a little triangular samosa. Press the seams together tightly and repeat until all of the samosas are made.",
+    "When ready to cook, pour 10cm (4in) of rapeseed (canola) oil into a deep saucepan and heat to 170°C (340°F). Fry the samosas in batches until nicely browned. Remove with a slotted spoon and transfer to a wire rack. Keep warm while you fry the remaining samosas."
   ],
+  "image": "/recipes/lamb-or-vegetable-samosas.jpg",
   "dietary": [
     "vegetarian"
   ]

@@ -3,9 +3,10 @@
   "name": "Capsicum with Anchovies",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "You will find this dish in most Italian antipasti. Although it takes a little time to skin the capsicums, it is well worth it. They will have a delicious smoky flavour and be quite silky.",
   "ingredients": [
     {
       "item": "firm red capsicums (peppers)",
@@ -16,12 +17,26 @@
       "amount": "1"
     },
     {
+      "item": "cloves garlic",
+      "amount": "2–3"
+    },
+    {
+      "item": "fresh basil",
+      "amount": ""
+    },
+    {
       "item": "anchovies",
       "amount": "15"
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 3 firm red capsicums (peppers) 1 firm yellow capsicum (pepper) 2–3 cloves garlic fresh basil 15 anchovies good-quality virgin olive oil, for drizzling",
+    "Blacken the skin of the capsicums over a flame (a gas burner on the stove or a kitchen blow torch), turning the capsicums over and over using tongs. When blackened, place them in a plastic bag, tie the top and let them cool for about 30 minutes.",
+    "After this time remove the skin, which should easily slide off. (The flesh of the capsicums should still be firm, not mushy.) Cut the capsicums in slices, removing cores and seeds, and dry them well with kitchen paper. Remove any remaining pieces of skin.",
     "In a serving dish arrange a layer of capsicum then some chopped garlic, basil and some anchovy fillets. Continue layering until everything is used up. Now drizzle over some olive oil and let stand for a few hours before serving."
-  ]
+  ],
+  "image": "/recipes/capsicum-with-anchovies.jpg"
 }

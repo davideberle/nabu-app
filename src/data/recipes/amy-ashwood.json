@@ -1,0 +1,49 @@
+{
+  "id": "amy-ashwood",
+  "name": "AMY ASHWOOD",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "2 servings",
+  "intro": "WHILE THERE ARE A NUMBER of streets, parks, and libraries across the globe dedicated to the late Pan-Africanist Marcus Garvey, very little has been created to honor the memory of his first wife, Amy Ashwood Garvey. As explained by professor Frederick Douglass Opie in a series of online videos, Amy Ashwood was a cofounder of the Universal Negro Improvement Association (UNIA) with Garvey, and she played a central role in founding a number of UNIA restaurants in Harlem. She also opened the Florence Mills Restaurant and Social Club in London, which served Caribbean food. It also functioned as a gathering spot for African and Afro-Caribbean student activists and played a crucial role in the growth of Pan-African politics in the United Kingdom.\n\nIn a nod to Ashwood’s Jamaican heritage, this cocktail features classic Caribbean flavors and ingredients—tropical fruit (mango and lime), spice (ginger), and heat (cayenne). The mango and ginger base pairs nicely with vodka and makes this a refreshing drink to enjoy on a hot summer day, and the crystallized ginger absolutely gilds the lily.",
+  "ingredients": [
+    {
+      "item": "Ice, for shaking the cocktail",
+      "amount": ""
+    },
+    {
+      "item": "fluid ounces Mango Nectar",
+      "amount": "6"
+    },
+    {
+      "item": "fresh ginger juice",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "fluid ounce freshly squeezed lime juice",
+      "amount": "1"
+    },
+    {
+      "item": "fluid ounces vodka",
+      "amount": "3"
+    },
+    {
+      "item": "thin slices crystallized ginger",
+      "amount": "2"
+    },
+    {
+      "item": "Cayenne pepper, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Fill a cocktail shaker with ice and add the nectar, ginger juice, lime juice, and vodka. Shake well, then strain evenly into 2 glasses. Garnish each serving with the crystallized ginger and a small pinch of cayenne pepper."
+  ],
+  "tips": "The easiest way to get ginger juice is to feed fresh ginger root into an electric juicer. If you don’t have a juicer, coarsely grate ginger knobs (no need to peel them) or pulverize them in a food processor, then wrap the pulp in cheesecloth and squeeze to extract all the juice. You can also squeeze the pulp with your hands, then strain the juice.",
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

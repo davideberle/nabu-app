@@ -3,35 +3,56 @@
   "name": "Eggs on a Bed of Greens",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 1 as an antipasto or a light lunch",
+  "intro": "This is a very simple dish with its origins in the ‘cucina povera’, or peasant cooking, of the countryside. It is simplicity with a delicious result, ideal as a lunch dish with crusty bread.",
   "ingredients": [
     {
       "item": "organic eggs per person",
       "amount": "2"
     },
     {
+      "item": "SAUCE",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "50 g"
+    },
+    {
+      "item": "tablespoons goodquality virgin olive oil",
+      "amount": "1–2"
     },
     {
       "item": "small Spanish onion, chopped",
       "amount": "1"
     },
     {
+      "item": "cloves garlic, crushed",
+      "amount": "2–3"
+    },
+    {
       "item": "bunch flat-leaf parsley, chopped",
       "amount": "1"
     },
     {
-      "item": "unbleached plain flour",
-      "amount": "2 tablespoons"
+      "item": "tablespoons unbleached plain flour",
+      "amount": "2"
+    },
+    {
+      "item": "water or vegetable stock, for thinning",
+      "amount": ""
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 1 as an antipasto or a light lunch 2 organic eggs per person SAUCE 50 g unsalted butter 1–2 tablespoons goodquality virgin olive oil 1 small Spanish onion, chopped 2–3 cloves garlic, crushed 1 bunch flat-leaf parsley, chopped 2 tablespoons unbleached plain flour water or vegetable stock, for thinning salt and ground black pepper",
-    "Serves 1 as an antipasto or a light lunch",
     "Boil the eggs for a maximum of 4–5 minutes, then leave to cool in cold water.",
-    "In a saucepan melt the butter with the olive oil and gently fry the onion and garlic (do not let them burn). Now add the parsley and cook for a few seconds only. Add the flour, let it cook for a few minutes, but do not let it brown or it will become bitter. Add some hot water or a light vegetable stock, stirring, until the sauce is the consistency of thick cream. Add salt and pepper to taste."
-  ]
+    "In a saucepan melt the butter with the olive oil and gently fry the onion and garlic (do not let them burn). Now add the parsley and cook for a few seconds only. Add the flour, let it cook for a few minutes, but do not let it brown or it will become bitter. Add some hot water or a light vegetable stock, stirring, until the sauce is the consistency of thick cream. Add salt and pepper to taste.",
+    "Shell the eggs, then cut them in half and put them cut side up in the sauce. Serve with some crunchy Italian bread."
+  ],
+  "image": "/recipes/eggs-on-a-bed-of-greens.jpg"
 }

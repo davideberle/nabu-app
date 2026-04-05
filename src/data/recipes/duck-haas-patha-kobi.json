@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you like duck, you’ve simply got to try this authentic Bangladeshi duck curry! The first time I tried it, the duck breasts were marinated in a well-known commercial brand of balti masala. It was really good but I prefer the simple marinade below. These ingredients really bring out the flavour of the duck without competing with it.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "duck breasts",
@@ -34,55 +38,68 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "CABBAGE"
     },
     {
       "item": "panch phoran",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "CABBAGE"
     },
     {
       "item": "garlic slivers",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "CABBAGE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "CABBAGE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "CABBAGE"
     },
     {
       "item": "heaped tsp dried chilli (hot pepper) flakes, or to taste",
-      "amount": "1"
+      "amount": "1",
+      "group": "CABBAGE"
     },
     {
       "item": "plain passata (sieved tomatoes) or blended chopped tomatoes",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml (generous ¾ cup)",
+      "group": "CABBAGE"
     },
     {
       "item": "Savoy cabbage, shredded",
-      "amount": "½"
+      "amount": "½",
+      "group": "CABBAGE"
     },
     {
       "item": "star anise",
-      "amount": "2"
+      "amount": "2",
+      "group": "WHOLE GARAM MASALA"
     },
     {
       "item": "black peppercorns",
-      "amount": "10"
+      "amount": "10",
+      "group": "WHOLE GARAM MASALA"
     },
     {
       "item": "cumin seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "WHOLE GARAM MASALA"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "WHOLE GARAM MASALA"
     },
     {
       "item": "2.5cm (1in) piece of cinnamon stick",
-      "amount": ""
+      "amount": "",
+      "group": "WHOLE GARAM MASALA"
     }
   ],
   "method": [
@@ -91,5 +108,6 @@
     "For the cabbage, heat the 3 tablespoons of oil in a saucepan over a medium–high heat. Add the panch phoran and fry for about 30 seconds. Now add the garlic slivers and a little salt and fry until the garlic turns light brown. Be careful not to burn it. Stir in the garlic and ginger paste, dried chilli (hot pepper) flakes and the passata (sieved tomatoes), followed by the shredded cabbage. You want to just cook the cabbage through so that it still has a bit of crunch to it. Add the duck skin reduction and stir it all up well. Keep warm.",
     "Meanwhile, sear the duck breasts in a dry frying pan over a high heat. I prefer my duck slightly pink inside so I cook the breasts for about 2 minutes per side. You can cook for longer if you prefer the meat cooked through.",
     "To serve, slice the duck breasts thinly. Divide the cabbage mixture onto four plates and top each plate with one thinly sliced duck breast. Season with salt and sprinkle with the chopped spring onions (scallions) to serve."
-  ]
+  ],
+  "image": "/recipes/duck-haas-patha-kobi.jpg"
 }

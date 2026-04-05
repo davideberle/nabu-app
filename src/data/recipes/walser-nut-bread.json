@@ -3,9 +3,18 @@
   "name": "Walser Nut Bread",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "This is a fabulous dark bread that keeps fresh for several days. The sourdough starter gives the bread a strong flavour and it needs to be made two or three days in advance. For a quicker bread, you can make this without the starter – it is still delicious. Just increase the rye flour to 350 g. When making bread, I use organic flour and grains wherever possible.",
   "ingredients": [
+    {
+      "item": "Makes a loaf of about 1 kg",
+      "amount": ""
+    },
+    {
+      "item": "SOURDOUGH STARTER",
+      "amount": ""
+    },
     {
       "item": "rye flour",
       "amount": "150 g"
@@ -15,16 +24,20 @@
       "amount": "200 ml"
     },
     {
-      "item": "natural yoghurt (with acidophilus)",
-      "amount": "1 tablespoon"
+      "item": "tablespoon natural yoghurt (with acidophilus)",
+      "amount": "1"
     },
     {
-      "item": "dry yeast",
-      "amount": "2 tablespoons"
+      "item": "BREAD",
+      "amount": ""
     },
     {
-      "item": "honey",
-      "amount": "1 tablespoon"
+      "item": "tablespoons dry yeast",
+      "amount": "2"
+    },
+    {
+      "item": "tablespoon honey",
+      "amount": "1"
     },
     {
       "item": "warm water",
@@ -47,14 +60,18 @@
       "amount": "100 g"
     },
     {
-      "item": "salt",
-      "amount": "2 teaspoons"
+      "item": "teaspoons salt",
+      "amount": "2"
     }
   ],
   "method": [
-    "Makes a loaf of about 1 kg SOURDOUGH STARTER 150 g rye flour 200 ml warm water 1 tablespoon natural yoghurt (with acidophilus) BREAD 2 tablespoons dry yeast 1 tablespoon honey 100 ml warm water 200 g wholemeal spelt flour 200 g rye flour 150 g whole rye grains, soaked in water overnight, drained 100 g walnuts, broken into pieces 2 teaspoons salt",
     "Combine the starter ingredients in a bowl and cover with a cloth. Leave in a warm place for 2–3 days, stirring from time to time, until it starts to froth.",
+    "To begin the bread, combine the yeast, honey, warm water and 1 tablespoon of spelt flour in a large mixing bowl. Leave for a few minutes, until the mixture begins to bubble. Add the sourdough starter, the remaining spelt flour, rye flour, soaked grains, walnuts and salt and mix to combine. If the mixture seems a little dry, add more water, or if too wet, add some extra spelt flour.",
+    "Turn the mixture onto a work surface and knead for 5–10 minutes until the dough is shiny and slightly elastic (when you press a finger into the dough, the impression should spring back slowly).",
+    "Form the dough into a ball, put it back into the mixing bowl and cover with a cloth. Leave it to rise in a warm spot for about 1 hour.",
+    "Knock the air out of the dough and form it into a long, wide loaf. Place on a baking tray and let it rise for another hour.",
     "Preheat the oven to 200°C (gas mark 6).",
     "Bake the bread for 20–25 minutes. To test if it is done, tap on the underside; it should sound hollow. Cool the bread on a rack."
-  ]
+  ],
+  "image": "/recipes/walser-nut-bread.jpg"
 }

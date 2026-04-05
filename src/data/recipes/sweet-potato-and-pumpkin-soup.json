@@ -1,11 +1,10 @@
 {
   "id": "sweet-potato-and-pumpkin-soup",
-  "name": "SWEET POTATO & PUMPKIN SOUP",
+  "name": "SWEET POTATO and PUMPKIN SOUP",
   "source": {
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "PUMPKIN SEEDS, CINNAMON, CASHEWS",
   "servings": "4 to 6 servings",
   "intro": "THIS SILKY WINTER SOUP combines pumpkin—used in soups and stews throughout Africa—and sweet potatoes, which are emblematic of African-American foodways. It’s great hot or at room temperature, and the addition of toasted pumpkin seeds lends a nice textural accent.",
   "ingredients": [
@@ -49,6 +48,7 @@
     "Using a standard blender and working in batches, or using an immersion blender, blend the soup until smooth. Pour the soup back into the saucepan and cook, over medium-low heat, stirring occasionally, until warmed through. If necessary, thin with water so the soup pours easily from a spoon. Season with salt and pepper to taste. Serve garnished with the toasted pumpkin seeds.",
     "NOTE: Toasted pumpkin seeds (and seeds of other winter squashes) can be eaten as a snack. If making them for that purpose, consider sprinkling with dried spices and herbs before toasting."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

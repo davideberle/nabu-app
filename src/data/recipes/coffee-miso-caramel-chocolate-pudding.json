@@ -3,11 +3,14 @@
   "name": "COFFEE MISO CARAMEL CHOCOLATE PUDDING",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 8",
-  "time": "40 MINUTE",
   "intro": "Miso and coffee are two of my favourite ingredients and they work so well together in a caramel sauce. This pudding is so comforting and comes together so quickly. This is the Sunday pud of all puds! It should be made during peak winter and served with a scoop of vegan vanilla ice cream.",
+  "time": {
+    "prep": "20 MINUTESCOOK TIME: 40 MINUTES",
+    "cook": "40 MINUTES"
+  },
   "ingredients": [
     {
       "item": "silken tofu",
@@ -63,23 +66,28 @@
     },
     {
       "item": "light brown soft sugar",
-      "amount": "95 g (3¼ oz/½ cup)"
+      "amount": "95 g (3¼ oz/½ cup)",
+      "group": "CARAMEL"
     },
     {
       "item": "white miso paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "CARAMEL"
     },
     {
       "item": "instant coffee granules",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "CARAMEL"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CARAMEL"
     },
     {
       "item": "boiling water",
-      "amount": "190 ml (6½ fl oz/generous ¾ cup)"
+      "amount": "190 ml (6½ fl oz/generous ¾ cup)",
+      "group": "CARAMEL"
     }
   ],
   "method": [
@@ -91,6 +99,7 @@
     "Pour the hot caramel mixture immediately over the batter. It will sink to the bottom and create a caramel sauce. Carefully place the dish into the oven and bake for 40 minutes.",
     "Once the pudding is baked, allow it to sit for 10 minutes. Serve warm with vanilla ice cream."
   ],
+  "image": "/recipes/coffee-miso-caramel-chocolate-pudding.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

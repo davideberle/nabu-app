@@ -1,11 +1,10 @@
 {
   "id": "tomato-onion-and-chile-pepper-salad",
-  "name": "TOMATO, ONION, & CHILE PEPPER SALAD",
+  "name": "TOMATO, ONION, and CHILE PEPPER SALAD",
   "source": {
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "CILANTRO, PARSLEY, LEMON JUICE, APPLE CIDER VINEGAR",
   "servings": "4 to 6 servings",
   "intro": "THIS DISH IS INSPIRED BY kachumbari, a mixture of fresh tomato and onion eaten as a side dish in East, Central, and southern Africa. It’s often served as an accompaniment to spicy dishes as a cooling counterpoint. This one calls for seeded jalapeño to make it interesting, but you can omit the chile if you want to keep your version completely cool. This recipe makes a small quantity because it’s intended as a condiment, but feel free to double the recipe.",
   "ingredients": [
@@ -45,6 +44,8 @@
   "method": [
     "Put all the ingredients in a large bowl and toss gently to combine. Refrigerate until chilled, at least 1 hour. Serve cold."
   ],
+  "tips": "Much of the suggested cultural matter in this book is meant to inspire and educate. Art, music, literature, and film have had a powerful impact on my development as a person, and they’ve played a crucial role in my thoughts around health, food, and agricultural issues. When I was a teenager, the song “Beef,” a brilliant articulation of the negative impact of factory farming on animals reared for human consumption by pioneering hip-hop group Boogie Down Productions, radically shifted my thoughts around the way we treat animals. Reading about Dick Gregory’s personal journey with food in his book, Natural Diet for Folks Who Eat: Cookin’ with Mother Nature, moved me to experiment with various health-supportive models of eating, such as vegetarianism, veganism, raw foodism, and frutarianism. Watching Life and Debt, a documentary film about the negative impact of economic globalization on Jamaica’s agricultural system, played a major role in influencing me to start b-healthy, an organization that taught young people to cook and equipped them to be educators and organizers around food issues in their communities.",
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

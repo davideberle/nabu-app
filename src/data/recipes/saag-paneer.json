@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "It’s so often the case that the best recipes are the simplest. You don’t need to slave over the hob all day to make a delicious meal. Back in 2015, I visited Thali on Old Brompton Road in London. I was there to review the restaurant and they brought out a meal that was beyond amazing.",
+  "intro": "It’s so often the case that the best recipes are the simplest. You don’t need to slave over the hob all day to make a delicious meal. Back in 2015, I visited Thali on Old Brompton Road in London. I was there to review the restaurant and they brought out a meal that was beyond amazing.\n\nOne of the side dishes they served that evening was this saag paneer. This wasn’t a dish I would normally order, but I loved it! So much so, I asked them for the recipe. This is my play on their amazing recipe. You will need a big pan for this one as there is so much spinach, but it does reduce down a lot during cooking. You could also use frozen spinach for this recipe, which is a lot easier.",
+  "time": {
+    "prep": "10 MINS, PLUS OPTIONAL MARINATING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "paneer cheese, cubed",
@@ -50,19 +54,23 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "salt",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
@@ -72,6 +80,7 @@
     "Now heat the remaining oil in a large frying pan over a medium–high heat. When visibly hot, add the cumin seeds and stir them around in the oil for about 30 seconds, then add the chilli powder and turmeric. Stir in the garlic and fry until it turns a light golden brown. Be careful not to burn the garlic or it will turn bitter.",
     "Add the blended spinach to the pan and stir in the yoghurt, 1 tablespoon at a time. Stir in the fried paneer and heat through. Season with salt and serve immediately. I like to stir in about 3 tablespoons of single (light) cream to finish the dish off. This is optional but very nice."
   ],
+  "image": "/recipes/saag-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

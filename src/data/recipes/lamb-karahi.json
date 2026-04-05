@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I got to watch this curry being prepared at Imran’s in Birmingham by head chef Talib Hussain. It was drop-dead gorgeous and I’ve made it many times since. At Imran’s, the meat is cut into small pieces still on the bone. Boneless lamb can be substituted, but personally I like it their way. It may be messier to eat, but dipping your naan into this delicious sauce and trying to gnaw every last bit of meat off the bone is part of the experience. This curry is fun to serve and can be quite impressive when presented in a sizzling hot karahi at the table.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "lamb leg and shoulder, cut into pieces, ideally still with bone in",
@@ -66,29 +70,36 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "100g (scant ½ cup)"
+      "amount": "100g (scant ½ cup)",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Mix the meat pieces with the marinade ingredients in a large bowl and cover with cling film (plastic wrap). Leave to marinate in the fridge for at least 2 hours or ideally overnight – the longer the better.",
+    "When ready to cook, heat the oil in a pan over a medium–high heat and add the garlic and ginger paste. Stir this around for about 30 seconds, then add the meat and all the marinade. Using a large spoon, stir to coat the meat with the garlicky oil. Add the fried onions, chilli flakes and tomatoes and again stir it all up to combine.",
     "Now sprinkle in the ground cumin, coriander and chilli powder. Pour in just enough water to cover and let it all simmer for a good 40 minutes to 1 hour. You may need to top up the water from time to time.",
     "Check for seasoning and add more salt or spices to taste. This is a quite dry curry so that it can easily be soaked up with fresh naans. When the meat is really tender, add the ginger, fresh chillies and garam masala and serve topped with coriander (cilantro).",
     "That’s it! This may be simple, but believe me no one will know. Serve it to friends and they’ll think you’ve been secretly working as the head chef of Imran’s!"
-  ]
+  ],
+  "image": "/recipes/lamb-karahi.jpg"
 }

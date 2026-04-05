@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "CORIANDER, CUMIN, JALAPEñO, PAPRIKA, CAYENNE, RED PEPPER FLAKES, CILANTRO, PARSLEY",
   "servings": "about 1 cup",
   "intro": "THIS IS A REALLY HOT green version of harissa, the popular pepper paste used throughout North Africa. Jalapeños provide a spicy base and mustard greens give it peppery zest. I use it to season couscous and grains by incorporating a few tablespoons before adding water. It’s also a wonderful spicy condiment for many dishes. If you need to tone the heat down, simply reduce the amount of jalapeño chiles and red pepper flakes (but then what’s the point?—wink, wink).",
   "ingredients": [
@@ -22,8 +21,8 @@
       "amount": "3 tablespoons"
     },
     {
-      "item": "garlic, minced",
-      "amount": "3 cloves"
+      "item": "cloves garlic, minced",
+      "amount": "3"
     },
     {
       "item": "coriander seeds",
@@ -76,6 +75,7 @@
     "In the same skillet, toast the coriander and cumin, shaking the pan occasionally, until fragrant. Let cool for a few minutes, then transfer to a mortar or spice grinder and grind into a fine powder.",
     "Transfer the powder to a blender. Add the jalapeños, paprika, red pepper flakes, cayenne, cilantro, parsley, lemon juice, vinegar, water, mustard greens, garlic oil, and the remaining ¼ teaspoon salt. Puree until smooth. Taste and season with more salt if desired. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

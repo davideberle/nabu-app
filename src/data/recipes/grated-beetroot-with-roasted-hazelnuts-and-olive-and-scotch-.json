@@ -3,11 +3,14 @@
   "name": "GRATED BEETROOT WITH ROASTED HAZELNUTS AND OLIVE AND SCOTCH BONNET JAM",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "10 MINUTE",
   "intro": "If you think you don’t like beetroot (beets), this salad will change your mind! Grating them offers a wonderful texture and retains that vibrant, deep purple colour. Olives are wonderful in savoury jams, as they are so abrasively salty (which is what I love about them). They hold up a fight in a jammy situation. This salad gives slaw vibes and would be perfect for a barbecue or even alongside a creamy, denser dish.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 10 MINUTES",
+    "cook": "10 MINUTES"
+  },
   "ingredients": [
     {
       "item": "hazelnuts",
@@ -39,27 +42,33 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "Scotch bonnet, very finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "garlic cloves, chopped",
-      "amount": "4"
+      "amount": "4",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "jar of pitted black olives, drained and chopped",
-      "amount": "330 g (11 oz)"
+      "amount": "330 g (11 oz)",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "maple syrup",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml (8½ fl oz/1 cup)",
+      "group": "OLIVE AND SCOTCH BONNET JAM"
     }
   ],
   "method": [
@@ -68,6 +77,7 @@
     "In a large bowl, combine the grated beetroot with the shallot and toss with the olive oil, balsamic vinegar and salt and pepper to taste. Add the roasted hazelnuts and parsley and toss again.",
     "In the base of a serving bowl, pile up the beetroot, then dress it with the jam on top and around the plate."
   ],
+  "image": "/recipes/grated-beetroot-with-roasted-hazelnuts-and-olive-and-scotch-.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

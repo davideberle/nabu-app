@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 as a snack",
   "intro": "Delicious served with drinks before a meal, you simply have to try this posh Bombay mix (shown on pictured). This one really packs a punch! Use the Bombay mix of your choice. You’ll find the best selection at Asian grocers, but it is also available in supermarkets. If eating gluten-free is important, be sure to check the bag, as some can contain gluten.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "A few large handfuls of your Bombay mix of choice",
@@ -44,6 +48,7 @@
   "method": [
     "Using a cocktail mixer or any container with a firm-fitting lid, add your favourite Bombay mix along with the rest of the ingredients. Close the lid and shake hard. Eat immediately or the Bombay mix will get soggy."
   ],
+  "image": "/recipes/posh-bombay-mix.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

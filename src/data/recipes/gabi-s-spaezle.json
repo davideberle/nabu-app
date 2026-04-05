@@ -3,17 +3,26 @@
   "name": "Gabi’s Spaezle",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "My sister-in-law is the spaezle queen, and she gave me this recipe. Spaezle are delicious eaten by themselves, or you can use them in dishes that would normally have pasta or mashed potatoes, or as an accompaniment to stews or even Arrosto di Cervo (roast venison). The consistency of spaezle is a little denser than that of pasta. You will need a spaezle press or a potato ricer to make them.",
   "ingredients": [
+    {
+      "item": "SPAEZLE",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour",
       "amount": "700 g"
     },
     {
-      "item": "freshly grated nutmeg",
-      "amount": "½ teaspoon"
+      "item": "teaspoons sea salt",
+      "amount": "1½"
+    },
+    {
+      "item": "teaspoon freshly grated nutmeg",
+      "amount": "½"
     },
     {
       "item": "organic eggs",
@@ -24,8 +33,8 @@
       "amount": "150 ml"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil",
+      "amount": "2"
     },
     {
       "item": "unsalted butter",
@@ -38,13 +47,22 @@
     {
       "item": "breadcrumbs",
       "amount": "50 g"
+    },
+    {
+      "item": "freshly grated parmigiano, for serving",
+      "amount": ""
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 SPAEZLE 700 g unbleached plain flour 1½teaspoons sea salt ½ teaspoon freshly grated nutmeg 6 organic eggs 150 ml water 2 tablespoons good-quality virgin olive oil 170 g unsalted butter 1 Spanish onion 50 g breadcrumbs freshly grated parmigiano, for serving ground black pepper",
     "Put the spaezle ingredients in a large bowl. Beat the mixture with a wooden spoon until it is smooth and some air bubbles have formed. It will take about 10–15 minutes, so you will need a bit of elbow grease! Alternatively, use a food processor with a dough hook.",
     "Let the dough rest for about 1 hour, beating it from time to time.",
+    "Bring a large pan of salted water to the boil. Put 2–3 tablespoons of the dough into a spaezle press or ricer, and over the water push the ‘little worms’ of dough through, cutting them off with a sharp knife. They should be about 4 cm long. As soon as they float to the surface of the water, they are cooked. Scoop them out with a slotted spoon into a heated dish. Dot the cooked spaezle with small pieces of the butter so they don’t stick to each other, and keep them warm in a low oven while you continue cooking the rest.",
     "In a frying pan, heat the oil and 25 g of the butter. Sauté the onion until softened. Add the rest of the butter and the breadcrumbs and cook for about 2 minutes, or until the breadcrumbs are starting to become crisp. Add the spaezle and cook for a further few minutes.",
     "Serve topped with parmigiano and pepper."
-  ]
+  ],
+  "image": "/recipes/gabi-s-spaezle.jpg"
 }

@@ -3,57 +3,95 @@
   "name": "Baked Moroccan Chermoula Meatballs with Couscous",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "18 meatballs; 4 to 6 servings",
-  "time": "10 minutes",
   "intro": "This recipe has a special place in my heart, because it combines two things I love: baked meatballs (one of the quickest meals to make) and Moroccan Chermoula. This is the perfect way to elevate boring meatballs into a sophisticated, weeknight-friendly meal and to show just how versatile chermoula is. By no means is this a traditional recipe—it came about as a result of my tinkering with leftovers from my fridge one day. Using chermoula in the meatballs gives them just the right amount of flavor and moisture to keep them juicy, and while they bake in the oven, you can quickly make the couscous, which also gets a few dollops of chermoula stirred through it. This meal is best enjoyed with a citrusy side salad.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "15 minutes"
+  },
   "ingredients": [
     {
+      "item": "lean ground beef",
+      "amount": "1 pound (454 g)",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "large egg",
+      "amount": "1",
+      "group": "MEATBALLS"
+    },
+    {
       "item": "bread crumbs",
-      "amount": "¼ cup (25 g)"
+      "amount": "¼ cup (25 g)",
+      "group": "MEATBALLS"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "MEATBALLS"
     },
     {
       "item": "paprika",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "MEATBALLS"
     },
     {
       "item": "olive oil, plus more for greasing",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "MEATBALLS"
     },
     {
       "item": "Moroccan Chermoula",
-      "amount": "¼ cup (60 g)"
+      "amount": "¼ cup (60 g)",
+      "group": "MEATBALLS"
+    },
+    {
+      "item": "couscous",
+      "amount": "1 cup (195 g)",
+      "group": "COUSCOUS"
+    },
+    {
+      "item": "kosher salt, plus more to taste",
+      "amount": "½ teaspoon",
+      "group": "COUSCOUS"
     },
     {
       "item": "boiling water",
-      "amount": "1 cup (240 ml)"
+      "amount": "1 cup (240 ml)",
+      "group": "COUSCOUS"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "COUSCOUS"
     },
     {
       "item": "Moroccan Chermoula",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "COUSCOUS"
+    },
+    {
+      "item": "slivered almonds (30 g) or pine nuts (35 g)",
+      "amount": "¼ cup",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Salata or Arugula & Pomegranate Salad",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
     "Preheat the oven to 425°F (220°C).",
-    "TO MAKE THE MEATBALLS: In a large bowl, combine the ground beef, egg, bread crumbs, salt, paprika, oil, and ¼ cup (60 g) chermoula and mix well using your hands.",
+    "In a large bowl, combine the ground beef, egg, bread crumbs, salt, paprika, oil, and ¼ cup (60 g) chermoula and mix well using your hands.",
     "Roll the meat mixture into even-size balls, roughly 1½ inches (4 cm) in diameter. Place the meatballs in a single layer on a large, rimmed sheet pan that has been lightly coated with olive oil.",
     "Bake for 10 to 12 minutes, until browned on the outside and fully cooked on the inside. Avoid baking too long to keep them moist.",
     "WHILE THE MEATBALLS ARE BAKING, PREPARE THE COUSCOUS: Place the couscous in a medium bowl and mix with the salt. Add the boiling water, then cover the bowl with a lid or a large plate and allow the couscous to absorb the water for 10 minutes.",
-    "TO MAKE THE GARNISH: In a small, dry skillet, toast the almonds over medium heat for 5 to 6 minutes, until lightly golden, stirring continuously.",
+    "In a small, dry skillet, toast the almonds over medium heat for 5 to 6 minutes, until lightly golden, stirring continuously.",
     "Uncover the couscous, then add the olive oil and 2 tablespoons chermoula and mix thoroughly. Taste and adjust for salt. Mix in 2 tablespoons of the toasted almonds, reserving the rest for garnish.",
     "Garnish the meatballs with the toasted almonds, drizzle with more chermoula, and serve with the couscous and salad."
   ],
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/baked-moroccan-chermoula-meatballs-with-couscous.jpg"
 }

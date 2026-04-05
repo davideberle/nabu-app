@@ -3,10 +3,19 @@
   "name": "Sicilian Cassata",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "There is a saying in Sicily if a girl is very beautiful that she is ‘bella come una cassata’ (as beautiful as a cassata). As they love beautiful girls you can imagine how much they like their cassata.",
   "ingredients": [
+    {
+      "item": "MARIA’S SPONGE CAKE",
+      "amount": ""
+    },
+    {
+      "item": "butter, for greasing",
+      "amount": ""
+    },
     {
       "item": "organic eggs",
       "amount": "3"
@@ -20,12 +29,24 @@
       "amount": "150 g"
     },
     {
-      "item": "baking powder",
-      "amount": "1 teaspoon"
+      "item": "teaspoon baking powder",
+      "amount": "1"
     },
     {
-      "item": "hot water",
-      "amount": "2 tablespoons"
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "grated zest of 1 organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons hot water",
+      "amount": "2"
+    },
+    {
+      "item": "RICOTTA FILLING",
+      "amount": ""
     },
     {
       "item": "fresh ricotta",
@@ -36,8 +57,8 @@
       "amount": "300 g"
     },
     {
-      "item": "Marsala",
-      "amount": "3 tablespoons"
+      "item": "tablespoons Marsala",
+      "amount": "3"
     },
     {
       "item": "dark chocolate, chopped into little pieces",
@@ -48,6 +69,10 @@
       "amount": "100 g"
     },
     {
+      "item": "MARZIPAN",
+      "amount": ""
+    },
+    {
       "item": "ground almonds",
       "amount": "200 g"
     },
@@ -56,17 +81,34 @@
       "amount": "200 g"
     },
     {
-      "item": "orange-blossom water or rosewater",
-      "amount": "2 teaspoons"
+      "item": "teaspoons orange-blossom water or rosewater",
+      "amount": "2"
     },
     {
       "item": "drop green food colouring around 50 ml water",
       "amount": "1"
+    },
+    {
+      "item": "GARNISH",
+      "amount": ""
+    },
+    {
+      "item": "candied fruit (optional)",
+      "amount": ""
+    },
+    {
+      "item": "melted dark or white chocolate (optional)",
+      "amount": ""
     }
   ],
   "method": [
-    "melted dark or white chocolate (optional)",
     "Preheat the oven to 180°C (gas mark 4).",
-    "Remove from the oven and leave to cool in the tin for a few minutes before turning out onto a cake rack. When cold, carefully cut the sponge horizontally through the centre, creating 2 thin slices. Then cut out 2 × 21 cm circles and cut the rest of the sponge into wide strips."
-  ]
+    "Line a 30 × 20 cm rectangular cake tin with greaseproof paper then butter the paper generously.",
+    "To make the sponge, beat the eggs until light and fluffy then, still beating, gradually add the sugar. Slowly mix in the flour, baking powder, salt and lemon zest, followed by the water. Pour the mixture into the prepared cake tin. Cook for about 8 minutes, or until firm to the touch.",
+    "Remove from the oven and leave to cool in the tin for a few minutes before turning out onto a cake rack. When cold, carefully cut the sponge horizontally through the centre, creating 2 thin slices. Then cut out 2 × 21 cm circles and cut the rest of the sponge into wide strips.",
+    "Line the base and side of a 22 cm springform cake tin with greaseproof paper. Arrange one sponge circle in the bottom of the cake tin and neatly line the side with the strips of cake so there are no gaps.",
+    "To make the ricotta filling, beat the ricotta with the sugar and Marsala until smooth. Fold in the chocolate and candied fruit, if using. Spoon the filling into the sponge-lined cake tin. Place the remaining sponge circle on top and press gently. Cover and transfer to the refrigerator for a few hours or, better still, overnight.",
+    "To make the marzipan, combine the ground almonds, icing sugar, flower water and food colouring with just enough water to form a stiff paste. Roll out the marzipan to 1 cm thickness. Turn the cassata out onto a serving plate and cover with marzipan. Decorate with more candied fruit or patterns in melted chocolate, if desired."
+  ],
+  "image": "/recipes/sicilian-cassata.jpg"
 }

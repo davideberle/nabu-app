@@ -3,10 +3,19 @@
   "name": "Pavese Soup",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "There is a nice story about the origin of this soup. Cesare Pavese, a famous Italian poet, was walking in the mountains when a big storm surprised him and he had to seek shelter in a small mountain hut. The farmer was very honoured when he discovered who his guest was. As he had only bread and eggs to offer Pavese, he created this soup and named it after the great poet.",
   "ingredients": [
+    {
+      "item": ".5 litres good-quality chicken stock",
+      "amount": "2"
+    },
+    {
+      "item": "sea salt flakes",
+      "amount": ""
+    },
     {
       "item": "slices ciabatta bread",
       "amount": "6"
@@ -26,11 +35,16 @@
     {
       "item": "bunch flat-leaf parsley, chopped",
       "amount": "1"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 2.5 litres good-quality chicken stock sea salt flakes 6 slices ciabatta bread 100 g grated Gruyère 100 g freshly grated parmigiano 6 organic eggs 1 bunch flat-leaf parsley, chopped ground black pepper",
     "Put six wide soup bowls in a gentle oven just to heat them up (so the soup will stay piping hot).",
-    "Bring the chicken stock to a simmer and season. Keep the stock at simmering point while you grill or toast the ciabatta slices."
-  ]
+    "Bring the chicken stock to a simmer and season. Keep the stock at simmering point while you grill or toast the ciabatta slices.",
+    "After toasting, place each slice of bread into a hot bowl. Combine the cheeses and sprinkle them over the bread. Pour the hot stock into the bowls and carefully break an egg on top of each slice of bread. Sprinkle some parsley and grind some pepper over the eggs. The heat of the stock should just cook the whites of the eggs, leaving the yolks deliciously runny."
+  ],
+  "image": "/recipes/pavese-soup.jpg"
 }

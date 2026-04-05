@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "GARLIC, YELLOW ONION, RAW CANE SUGAR, TOMATO PASTE, HOT-PEPPER VINEGAR",
   "servings": "4 to 6 servings",
   "intro": "THIS IS PROBABLY MY FAVORITE recipe in this book. I was so proud of myself for transforming a mundane side dish, braised greens, into a complexly flavored and delicious standout. Inspired by smoor tomatoes and onions—a traditional South African dish eaten as a sauce, relish, or side—I caramelize onions, then sauté them with tomato paste. I top slow-braised mustard greens with this mixture and finish it with minced jalapeños and hot-pepper vinegar. Warm, savory, and tangy sweet, this dish is everything a side of greens in pot likker should be.",
   "ingredients": [
@@ -60,6 +59,7 @@
     "Meanwhile, prepare the onions. Warm the oil in a separate large sauté pan over medium-low heat. Add the onions and sugar and sauté until deep golden brown and quite soft, about 15 minutes. Stir in the tomato paste and water and cook, stirring often, until the onions are thoroughly coated and hot, about 3 minutes.",
     "To serve, portion the greens along with some of their liquid into small bowls. Top with the onions, sprinkle with the jalapeño, and drizzle some hot-pepper vinegar on top."
   ],
+  "image": "/recipes/slow-braised-mustard-greens.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

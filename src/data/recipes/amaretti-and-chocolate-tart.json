@@ -3,10 +3,14 @@
   "name": "Amaretti and Chocolate Tart",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
+    {
+      "item": "PASTRY",
+      "amount": ""
+    },
     {
       "item": "self-raising flour",
       "amount": "250 g"
@@ -24,6 +28,14 @@
       "amount": "120 g"
     },
     {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
+    },
+    {
       "item": "organic egg whites",
       "amount": "4"
     },
@@ -38,12 +50,18 @@
     {
       "item": "amaretti biscuits, finely chopped",
       "amount": "75 g"
+    },
+    {
+      "item": "icing sugar, for dusting",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 PASTRY 250 g self-raising flour 120 g caster sugar 2 organic egg yolks 120 g unsalted butter, at room temperature pinch of salt FILLING 4 organic egg whites 75 g bitter chocolate, finely chopped 75 g almonds, toasted and finely chopped 75 g amaretti biscuits, finely chopped icing sugar, for dusting",
     "Put all the pastry ingredients in a food processor and pulse until the dough is just amalgamated. Roll it into a ball and place it in the refrigerator to rest for an hour.",
     "Preheat the oven to 180°C (gas mark 4) and butter a 23 cm springform cake tin.",
+    "Roll the pastry out on a lightly floured work surface then lift it into the prepared tin so the pastry comes up the sides.",
+    "To make the filling, beat the egg whites until they form stiff peaks, but are not dry. Fold in the chocolate, almonds and amaretti. Pour the filling into the pastry shell and bake for around 35 minutes.",
     "Remove the tin from the oven. Release the sides of the tin and remove the tart. Leave it to cool completely and serve dusted with icing sugar."
-  ]
+  ],
+  "image": "/recipes/amaretti-and-chocolate-tart.jpg"
 }

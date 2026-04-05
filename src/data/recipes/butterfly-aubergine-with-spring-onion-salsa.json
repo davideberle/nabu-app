@@ -3,11 +3,14 @@
   "name": "BUTTERFLY AUBERGINE WITH SPRING ONION SALSA",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "45 MINUTE",
   "intro": "When aubergine (eggplant) is cooked to perfection, it can be a wonderful thing. However, when it’s undercooked, there’s truly nothing worse. Generally speaking, I think aubergine cooks the best in the oven. It’s a very forgiving process this way and gives you that lush creamy aubergine texture you dream of!",
+  "time": {
+    "prep": "10 MINUTES",
+    "cook": "45 MINUTES"
+  },
   "ingredients": [
     {
       "item": "aubergines (eggplants)",
@@ -47,27 +50,33 @@
     },
     {
       "item": "spring onions (scallions), sliced in half lengthways",
-      "amount": "10"
+      "amount": "10",
+      "group": "SPRING ONION SALSA"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "SPRING ONION SALSA"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "3 tablespoons"
+      "amount": "3 tablespoons",
+      "group": "SPRING ONION SALSA"
     },
     {
       "item": "pinch of cayenne pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SPRING ONION SALSA"
     },
     {
       "item": "handful of flat-leaf parsley leaves, chopped",
-      "amount": ""
+      "amount": "",
+      "group": "SPRING ONION SALSA"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SPRING ONION SALSA"
     }
   ],
   "method": [
@@ -76,6 +85,7 @@
     "For the spring onion salsa, heat 1 tablespoon of the olive oil in a frying pan (skillet) over a high heat and add the spring onions. Place a plate on top that fits in the pan to press it down. Fry for 2–3 minutes, flipping once, until caramelised on each side. Remove from the pan and chop very finely, then transfer to a bowl with all the other ingredients and season to taste with salt and pepper.",
     "On a baking tray (pan) fan out the aubergines (reserving any marinade in the bowl) and then cover with foil. Bake in the oven for 25 minutes, then remove the foil and flip over the aubergine. Stir the maple syrup into the leftover marinade and use it to baste the aubergines, then bake for a further 15 minutes until soft and caramelised. Serve on a big plate and pour over the spring onion salsa!"
   ],
+  "image": "/recipes/butterfly-aubergine-with-spring-onion-salsa.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

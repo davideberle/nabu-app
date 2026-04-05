@@ -3,11 +3,14 @@
   "name": "STICKY ORANGE ROASTED GREEN BEAN AND MANGETOUT SALAD",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "20 MINUTE",
   "intro": "I am a strong advocate for warm salads. Roasting more vegetables brings out their flavour but something dramatic changes when you roast green beans and mangetout (snow peas). There’s something about their bitter sweetness that is amplified in the process. This salad comes together quickly, retaining some crunch in the green veggies.",
+  "time": {
+    "prep": "5 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "fine green beans, topped and tailed",
@@ -39,23 +42,28 @@
     },
     {
       "item": "juice and zest of 1 orange",
-      "amount": ""
+      "amount": "",
+      "group": "ORANGE DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tablespoons",
+      "group": "ORANGE DRESSING"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "ORANGE DRESSING"
     },
     {
       "item": "garlic cloves, very finely chopped",
-      "amount": "3"
+      "amount": "3",
+      "group": "ORANGE DRESSING"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "ORANGE DRESSING"
     }
   ],
   "method": [
@@ -64,6 +72,7 @@
     "In a large bowl, toss the green beans and mangetout with half the dressing, then spread the vegetables out evenly on a wide baking sheet. Roast in the oven for 20 minutes, adding the hazelnuts after 10 minutes.",
     "Once roasted, transfer the vegetables back into the bowl and add the lentils, shallot, parsley and mint. Add the remaining dressing and toss to combine. Sprinkle with a little more parsley before serving."
   ],
+  "image": "/recipes/sticky-orange-roasted-green-bean-and-mangetout-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -1,0 +1,52 @@
+{
+  "id": "congo-square",
+  "name": "CONGO SQUARE",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "2 servings",
+  "intro": "THIS RICH AND VELVETY cocktail is very satisfying to drink. I prefer it warm during the colder months, but it’s also enjoyable cold or at room temperature during other times of the year. It is primarily inspired by two traditional holiday drinks: kremas, a Haitian drink made from creamed coconut, sweetened condensed milk, and rum; and milk punch, a sweetened milk and bourbon concoction popular in New Orleans and other parts of the South. I created this cocktail to symbolize the shared history and interconnection of New Orleans and Haiti that dates back to the eighteenth century.\n\nTo this day, if you look with a careful eye, you can see the influence of Haiti throughout New Orleans, from the architecture to the cuisine. New Orleans, which had the largest antebellum slave market in the nation, received a huge influx of Haitians (over ten thousand) during the Haitian Revolution (1791–1803). I imagine that many of the newly arrived Africans from Haiti built community with other Africans at Congo Square, a space where Africans came from miles around to gather on Sundays, playing drums, dancing, and preserving traditions.",
+  "ingredients": [
+    {
+      "item": "fluid ounces coconut milk",
+      "amount": "2"
+    },
+    {
+      "item": "fluid ounces Creamed Cashews",
+      "amount": "2"
+    },
+    {
+      "item": "fluid ounces coconut water",
+      "amount": "2"
+    },
+    {
+      "item": "fluid ounces dark rum",
+      "amount": "2"
+    },
+    {
+      "item": "pinches of finely grated lemon zest",
+      "amount": "2"
+    },
+    {
+      "item": "fluid ounce Vanilla Bean Syrup",
+      "amount": "¾"
+    },
+    {
+      "item": "large pinches of freshly ground nutmeg",
+      "amount": "2"
+    },
+    {
+      "item": "small pinches of ground cinnamon",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Put the coconut milk, cashew cream, coconut water, rum, lemon zest, and vanilla syrup in a small saucepan. Cook over medium heat, stirring often, until warmed though and thoroughly combined, about 3 minutes. Divide evenly into 2½-pint Mason jars or mugs. Garnish each drink with the nutmeg and cinnamon and serve immediately."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

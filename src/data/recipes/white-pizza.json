@@ -3,12 +3,21 @@
   "name": "White Pizza",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "Not all pizzas have a topping of tomatoes and cheese. In fact, the original street-food pizzas in Naples (from where the pizza comes) had neither. This is a rather refined pizza, very tasty and visually appealing, that makes a delicious change from the classic.",
   "ingredients": [
+    {
+      "item": "Makes 4 pizzas, approximately 30 × 40 cm each",
+      "amount": ""
+    },
     {
       "item": "quantity pizza dough (Impasto per Pizza)",
       "amount": "1"
+    },
+    {
+      "item": "eeks, finely chopped",
+      "amount": "2–3 l"
     },
     {
       "item": "unsalted butter",
@@ -17,13 +26,29 @@
     {
       "item": "good-quality virgin olive oil, plus extra for drizzling",
       "amount": "25 ml"
+    },
+    {
+      "item": "medium potatoes, sliced paper-thin",
+      "amount": "2–3"
+    },
+    {
+      "item": "sea salt flakes",
+      "amount": ""
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "a few sprigs fresh rosemary, stems discarded",
+      "amount": ""
     }
   ],
   "method": [
-    "Makes 4 pizzas, approximately 30 × 40 cm each 1 quantity pizza dough (Impasto per Pizza) 2–3 leeks, finely chopped 25 g unsalted butter 25 ml good-quality virgin olive oil, plus extra for drizzling 2–3 medium potatoes, sliced paper-thin sea salt flakes ground black pepper a few sprigs fresh rosemary, stems discarded",
-    "Makes 4 pizzas, approximately 30 × 40 cm each",
     "Preheat the oven to 240°C (gas mark 9). Make the pizza dough.",
     "Cook the leeks in a pan in a little butter and olive oil for about 10 minutes, until soft and sweet. Take a piece of dough (about 150–200 g), flatten it until it is about 1 cm thick and place it on an oiled oven tray. Spread the cooked leeks evenly over the dough and then arrange the potatoes like fish scales all over the pizza.",
-    "Sprinkle some salt and pepper on top, then drizzle olive oil all over the pizza, with some rosemary. Cook in the oven for about 10–15 minutes or until the base is golden-brown and crunchy."
-  ]
+    "Sprinkle some salt and pepper on top, then drizzle olive oil all over the pizza, with some rosemary. Cook in the oven for about 10–15 minutes or until the base is golden-brown and crunchy.",
+    "If you have a pizza oven, the pizza will only take 5 minutes to cook, so you should boil the potatoes until tender beforehand, then slice them and put them on the dough, otherwise they will be too raw."
+  ],
+  "image": "/recipes/white-pizza.jpg"
 }

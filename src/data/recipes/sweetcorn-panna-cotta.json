@@ -3,11 +3,14 @@
   "name": "SWEETCORN PANNA COTTA",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "7 MINUTE",
   "intro": "Growing up, my mother would eat sweetcorn with condensed milk and cream or milk for a quick and easy dessert. It’s such a simple combination, but it brings back so many memories. Panna cotta is my go-to dessert order if I see it on a menu. No bells and whistles, just bursting with vanilla flavour and served with something fruity.",
+  "time": {
+    "prep": "15 MINUTES",
+    "cook": "7 MINUTES"
+  },
   "ingredients": [
     {
       "item": "vegan block butter",
@@ -61,6 +64,7 @@
     "Temper the yoghurt by adding a little of the hot sweetcorn cream and stirring to combine. Add this to the pan with the rest of the sweetcorn cream, stir to combine and then blend again. Pass through a sieve and then divide between six ramekins. Leave to cool for 30 minutes at room temperature, then refrigerate for 4–6 hours until completely set.",
     "To serve, either top straightaway with toffee popcorn and grated nutmeg, or dip each ramekin into hot water to loosen and turn over onto a serving plate."
   ],
+  "image": "/recipes/sweetcorn-panna-cotta.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

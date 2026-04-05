@@ -3,16 +3,32 @@
   "name": "Devilled Eggs",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "ingredients": [
+    {
+      "item": "SAUCE",
+      "amount": ""
+    },
     {
       "item": "unsalted butter",
       "amount": "25 g"
     },
     {
+      "item": "tablespoons goodquality virgin olive oil",
+      "amount": "1–2"
+    },
+    {
       "item": "Spanish onion, finely chopped",
       "amount": "1"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2–3"
+    },
+    {
+      "item": "a few fresh sage leaves",
+      "amount": ""
     },
     {
       "item": "sprig fresh rosemary",
@@ -31,12 +47,16 @@
       "amount": "500 g"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "small chilli (optional), chopped",
       "amount": "1"
     },
     {
-      "item": "white vinegar",
-      "amount": "1 tablespoon"
+      "item": "tablespoon white vinegar",
+      "amount": "1"
     },
     {
       "item": "organic eggs per person",
@@ -45,11 +65,17 @@
     {
       "item": "slices ciabatta bread per person",
       "amount": "2"
+    },
+    {
+      "item": "a few fresh basil leaves",
+      "amount": ""
     }
   ],
   "method": [
     "Melt the butter and oil and soften the onion and garlic until the onion becomes transparent, then add the sage, rosemary and bay leaf. Add the tomato paste and cook until the paste turns a terracotta colour. Add the peeled tomatoes, mix well, season and add the chilli. Cover and cook for about 20 minutes over low heat. The sauce for this dish should be strong and tasty.",
     "Boil some water with the tablespoon of white vinegar and poach the eggs. Make sure that the yolks remain runny.",
+    "Toast or grill 2 slices of ciabatta bread per person. Arrange them on a plate and spoon 2–3 generous spoonfuls of tomato sauce on top. Then, making sure the poached eggs are drained of all water, place them on top of the sauce.",
     "Chop the fresh basil, sprinkle it over the eggs and season with salt and pepper to taste."
-  ]
+  ],
+  "image": "/recipes/devilled-eggs.jpg"
 }

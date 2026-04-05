@@ -3,17 +3,18 @@
   "name": "Eggs in Cocotte",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This is another dish that’s very simple but full of flavour. Instead of spinach, you can experiment with other favourite vegetables.\n\nI insist on organic eggs, not only because they are much healthier for you, but the flavour is so superior.",
   "ingredients": [
     {
       "item": "slices pancetta",
       "amount": "12"
     },
     {
-      "item": "virgin olive oil",
-      "amount": "4 tablespoons"
+      "item": "tablespoons virgin olive oil",
+      "amount": "4"
     },
     {
       "item": "½ large Spanish onions",
@@ -28,8 +29,12 @@
       "amount": "600 g"
     },
     {
-      "item": "large organic eggs",
-      "amount": "12"
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "arge organic eggs",
+      "amount": "12 l"
     },
     {
       "item": "cream",
@@ -41,10 +46,11 @@
     }
   ],
   "method": [
-    "Serves 6 12 slices pancetta 4 tablespoons virgin olive oil 1 ½ large Spanish onions 120 g unsalted butter 600 g frozen chopped spinach, well-drained salt and ground black pepper 12 large organic eggs 250 ml cream 150 g grated parmigiano",
     "Preheat the oven to 200°C (gas mark 6).",
     "Fry the pancetta in a small amount of oil in a frying pan until crisp, then let it drain on kitchen paper.",
     "Chop the onions and fry them until soft in a little butter and oil. Add the spinach, salt and pepper and cook for a few minutes. Add the pancetta.",
+    "Butter 6 ramekins (you will need one medium ovenproof ramekin or bowl per person), and spread the spinach mixture evenly among the bowls. Make a small indentation in the spinach and gently break 2 whole eggs into each dish. Add about 2 tablespoons cream on top of the eggs, season with salt and pepper and scatter parmigiano over the top. Lastly, add a small knob of unsalted butter to each ramekin.",
     "Bake in the oven for about 5–8 minutes. The egg yolks should still be soft when they are served."
-  ]
+  ],
+  "image": "/recipes/eggs-in-cocotte.jpg"
 }

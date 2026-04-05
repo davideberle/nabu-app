@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Green chillies stuffed with spiced gram flour? You’re just going to have to trust me here if you don’t already know how good these are! These stuffed chillies make the perfect appetizer.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "10–15 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
@@ -55,6 +59,7 @@
     "Slit the green chillies down the middle and remove most of the seeds with your thumb. Stuff the chillies with the gram flour paste.",
     "Heat the remaining oil in a frying pan over a low heat. Fry the chillies for 2–3 minutes until browned all over. You should see a few blackened spots and blisters on the chillies. Serve immediately on their own or with a good raita or coconut chutney."
   ],
+  "image": "/recipes/spicy-stuffed-green-chillies.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

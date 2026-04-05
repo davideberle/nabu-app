@@ -1,0 +1,30 @@
+{
+  "id": "basil-salt",
+  "name": "BASIL SALT",
+  "source": {
+    "cookbook": "Afro-Vegan",
+    "author": "Bryant Terry"
+  },
+  "servings": "about ½ cup",
+  "intro": "I LOVE TO USE FRESH HERBS to enhance the flavor of salt. This version uses basil, but feel free to experiment with a different herb or a combination of herbs. By the way, these colorful blends make great gifts. (Pictured here.)",
+  "ingredients": [
+    {
+      "item": "coarse sea salt",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "packed minced fresh basil",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 175°F. Line a small, rimmed baking sheet with parchment paper.",
+    "Combine the salt and basil in a spice grinder and process until finely ground. Spread the mixture on the lined baking sheet and bake for 15 minutes, stirring occasionally. Turn off the oven and leave the mixture in the oven to dry for 30 minutes.",
+    "Remove from the oven and let cool. Transfer to a jar and seal tightly. Stored at room temperature, it will keep for 6 months."
+  ],
+  "image": "/recipes/basil-salt.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

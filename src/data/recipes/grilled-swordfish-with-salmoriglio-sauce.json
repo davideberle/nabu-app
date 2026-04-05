@@ -3,10 +3,15 @@
   "name": "Grilled Swordfish with Salmoriglio Sauce",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "In Sicily swordfish, found in the waters off the island’s long coastline, is much appreciated. Perhaps this is because it has a very delicate flavour, so even people who do not especially like fish will love it. The salmoriglio sauce is a very traditional way to prepare it.",
   "ingredients": [
+    {
+      "item": "SALMORIGLIO SAUCE",
+      "amount": ""
+    },
     {
       "item": "good-quality virgin olive oil",
       "amount": "120 ml"
@@ -16,16 +21,20 @@
       "amount": "60 ml"
     },
     {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
+    },
+    {
       "item": "cloves garlic, very finely chopped",
       "amount": "2"
     },
     {
-      "item": "finely chopped fresh oregano",
-      "amount": "1 tablespoon"
+      "item": "tablespoon finely chopped fresh oregano",
+      "amount": "1"
     },
     {
-      "item": "finely chopped flat-leaf parsley",
-      "amount": "1 tablespoon"
+      "item": "tablespoon finely chopped flat-leaf parsley",
+      "amount": "1"
     },
     {
       "item": "small red chilli, partially deseeded and very finely chopped (optional)",
@@ -36,11 +45,18 @@
       "amount": "4"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "1 tablespoon"
+      "item": "tablespoon good-quality virgin olive oil",
+      "amount": "1"
+    },
+    {
+      "item": "salt flakes and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 SALMORIGLIO SAUCE 120 ml good-quality virgin olive oil 60 ml warm water juice of 1 organic lemon 2 cloves garlic, very finely chopped 1 tablespoon finely chopped fresh oregano 1 tablespoon finely chopped flat-leaf parsley 1 small red chilli, partially deseeded and very finely chopped (optional) 4 × 150 g slices swordfish, about 1 cm thick 1 tablespoon good-quality virgin olive oil salt flakes and ground black pepper"
-  ]
+    "Preheat the grill to high.",
+    "To prepare the sauce, whisk the oil in a mixing bowl and very slowly add the warm water and lemon juice, whisking continuously to form an emulsion. Add the garlic, herbs and chilli (if using).",
+    "Pat the swordfish slices dry with kitchen paper and rub them all over with oil. Grill for around 2 minutes on each side. Remove the fish from the grill and season with salt and pepper. Serve straight away, with the sauce spooned over the fish. Alternatively, serve the sauce on the side in a warm jug."
+  ],
+  "image": "/recipes/grilled-swordfish-with-salmoriglio-sauce.jpg"
 }

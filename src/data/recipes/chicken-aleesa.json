@@ -7,6 +7,10 @@
   },
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "During one of our visits to the beautiful state of Kerala, my wife Caroline and I were invited to breakfast at the home of Chef Shihabudeen V. M. and his family. This was no ordinary breakfast! In fact, it was one of the most amazing home-cooked meals we had ever experienced. Shihabudeen and his wife Ruvaida cooked up an incredible feast with no fewer than seven different dishes, and this delicious aleesa was one of them. Its origins are in the Middle East, but it is a very popular dish with the Muslim community in Kerala, especially during Ramadan. Caroline and I loved it so much I just had to get the recipe and, thankfully, Shihabudeen was happy to send it to me.",
+  "time": {
+    "prep": "10 MINS, PLUS SOAKING TIME",
+    "cook": "1 HOUR 20 MINS"
+  },
   "ingredients": [
     {
       "item": "star anise",
@@ -60,5 +64,6 @@
     "Remove the meat from the chicken bones and place it with the cooked bulgur in the pan with the browned shallots.",
     "Cover with water and simmer for another 30–40 minutes until the chicken and bulgur are like mush – the finished dish should have the texture of cooked oatmeal. You can use a potato masher to mash it all up really well.",
     "Season with salt and garnish with the nuts and shallots, if you like."
-  ]
+  ],
+  "image": "/recipes/chicken-aleesa.jpg"
 }

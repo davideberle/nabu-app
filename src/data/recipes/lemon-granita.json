@@ -3,17 +3,17 @@
   "name": "Lemon Granita",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
-  "servings": "serves 6 5 organic lemons 3 lemon leaves 200 g caster sugar 200 ml water",
+  "servings": "serves 6",
   "ingredients": [
     {
       "item": "organic lemons",
       "amount": "5"
     },
     {
-      "item": "lemon leaves",
-      "amount": "3"
+      "item": "emon leaves",
+      "amount": "3 l"
     },
     {
       "item": "caster sugar",
@@ -25,7 +25,11 @@
     }
   ],
   "method": [
-    "Serves 6 5 organic lemons 3 lemon leaves 200 g caster sugar 200 ml water",
-    "Place the zest in a saucepan with the lemon leaves, sugar and water and simmer gently for about 5 minutes. Remove from the heat and leave to cool before straining. Stir the lemon juice into the syrup. Pour into an ice cream machine and churn until it has a light and fluffy texture."
-  ]
+    "Use a sharp knife to peel 3 thick, long strips of zest from the lemons. Squeeze the lemons and reserve the juice.",
+    "Place the zest in a saucepan with the lemon leaves, sugar and water and simmer gently for about 5 minutes. Remove from the heat and leave to cool before straining. Stir the lemon juice into the syrup. Pour into an ice cream machine and churn until it has a light and fluffy texture.",
+    "If you don’t have an ice cream machine, pour the mixture into a shallow metal tray and place in the freezer. Every 1–2 hours take it out of the freezer and stir with a fork to mix the frozen crystals back into the liquid. When the granita is completely frozen, break it up roughly and place in a food processor. Pulse briefly until it is light and fluffy then return to the freezer until ready to serve.",
+    "Spoon the granita into glasses and serve.",
+    "This granita is quite tart, which is the way I like it. If you prefer it sweeter, just add a little more sugar."
+  ],
+  "image": "/recipes/lemon-granita.jpg"
 }

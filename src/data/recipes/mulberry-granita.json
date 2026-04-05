@@ -3,13 +3,18 @@
   "name": "Mulberry Granita",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "This granita is the most intense dark-red colour and looks spectacular topped with whipped cream.",
   "ingredients": [
     {
       "item": "ripe, dark-red mulberries",
       "amount": "300 g"
+    },
+    {
+      "item": "juice of 1 organic lemon",
+      "amount": ""
     },
     {
       "item": "caster sugar",
@@ -18,10 +23,16 @@
     {
       "item": "water",
       "amount": "100 ml"
+    },
+    {
+      "item": "whipped cream, to serve",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 300 g ripe, dark-red mulberries juice of 1 organic lemon 125 g caster sugar 100 ml water whipped cream, to serve",
-    "Place all the ingredients except the cream into a food processor and blend to a smooth purée. Pour into an ice cream machine and churn until it has a light and fluffy texture."
-  ]
+    "Place all the ingredients except the cream into a food processor and blend to a smooth purée. Pour into an ice cream machine and churn until it has a light and fluffy texture.",
+    "If you don’t have an ice cream machine, pour the mixture into a shallow metal tray and place in the freezer. Every 1–2 hours take it out of the freezer and stir with a fork to mix the frozen crystals back into the liquid. When the granita is completely frozen, break it up roughly and place in a food processor. Pulse briefly until it is light and fluffy then return to the freezer until ready to serve.",
+    "Spoon the granita into glasses and top with whipped cream."
+  ],
+  "image": "/recipes/mulberry-granita.jpg"
 }

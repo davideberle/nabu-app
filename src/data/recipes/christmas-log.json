@@ -3,10 +3,15 @@
   "name": "Christmas Log",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This wonderful roll is a traditional Christmas cake. What makes it particularly delicious are the walnuts. I like to serve it year-round. You can either dust it with icing sugar or, more authentically, ice it to look like a tree trunk.",
   "ingredients": [
+    {
+      "item": "WALNUT SPONGE",
+      "amount": ""
+    },
     {
       "item": "organic eggs, separated",
       "amount": "4"
@@ -20,28 +25,48 @@
       "amount": "150 g"
     },
     {
-      "item": "pure vanilla extract",
-      "amount": "1 teaspoon"
+      "item": "teaspoon pure vanilla extract",
+      "amount": "1"
     },
     {
-      "item": "salt",
-      "amount": "½ teaspoon"
+      "item": "teaspoon salt",
+      "amount": "½"
     },
     {
-      "item": "baking powder",
-      "amount": "½ teaspoon"
+      "item": "teaspoon baking powder",
+      "amount": "½"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "cream",
       "amount": "250 ml"
     },
     {
-      "item": "caster sugar",
-      "amount": "2 tablespoons"
+      "item": "tablespoons caster sugar",
+      "amount": "2"
     },
     {
-      "item": "pure vanilla extract or 3 teaspoons Nocino liqueur",
-      "amount": "½ teaspoon"
+      "item": "reserved ground walnuts",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon pure vanilla extract or 3 teaspoons Nocino liqueur",
+      "amount": "½"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "ICING",
+      "amount": ""
+    },
+    {
+      "item": "icing sugar, for dusting",
+      "amount": ""
     },
     {
       "item": "unsalted butter, at room temperature",
@@ -52,12 +77,18 @@
       "amount": "50 g"
     },
     {
-      "item": "Nocino liqueur or ½ teaspoon pure vanilla extract",
-      "amount": "3 teaspoons"
+      "item": "teaspoons Nocino liqueur or ½ teaspoon pure vanilla extract",
+      "amount": "3"
     }
   ],
   "method": [
-    "Serves 6 WALNUT SPONGE 4 organic eggs, separated 75 g caster sugar 150 g walnuts, lightly toasted and ground 1 teaspoon pure vanilla extract ½ teaspoon salt ½ teaspoon baking powder FILLING 250 ml cream 2 tablespoons caster sugar reserved ground walnuts ½ teaspoon pure vanilla extract or 3 teaspoons Nocino liqueur pinch of salt ICING icing sugar, for dusting OR 200 g unsalted butter, at room temperature 50 g caster sugar 3 teaspoons Nocino liqueur or ½ teaspoon pure vanilla extract",
-    "Preheat the oven to 220°C (430°F). Line a 30 × 40 cm tray with greaseproof paper, leaving some overhanging paper at the ends."
-  ]
+    "Preheat the oven to 220°C (430°F). Line a 30 × 40 cm tray with greaseproof paper, leaving some overhanging paper at the ends.",
+    "Beat the egg yolks and sugar until light and fluffy, then fold in most of the walnuts (reserving 3 tablespoons for the filling), the vanilla and salt. Set the batter aside.",
+    "Beat the egg whites and baking powder until stiff but not dry. Gradually fold them into the sponge batter. Pour the batter into the tray and spread it out evenly. Bake the sponge in the oven for 5 minutes, or until the top is lightly golden.",
+    "When the sponge is out of the oven, take one end of the paper and slide the sponge out of the tray onto a work surface. Place the tray upside down over the sponge (the steam this creates will keep the sponge soft and pliable) and leave it to cool.",
+    "For the filling, beat the cream and sugar until stiff, then fold in the extra 3 tablespoons of walnuts, the vanilla and salt.",
+    "Flip the sponge upside down onto a fresh piece of greaseproof paper and peel off the top layer of paper. Spread the filling over the cooled sponge and roll the sponge up widthways. Wrap the roll up tightly with the paper to hold it together. Refrigerate for 2 hours.",
+    "Dust with icing sugar, slice and serve. Alternatively, mix the icing ingredients and spread it over the roll. For a wooden log effect, pull a fork in raking motions through the icing."
+  ],
+  "image": "/recipes/christmas-log.jpg"
 }

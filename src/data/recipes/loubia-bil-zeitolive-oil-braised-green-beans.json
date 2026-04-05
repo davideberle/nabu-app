@@ -3,23 +3,26 @@
   "name": "Loubia Bil ZeitOLIVE OIL–BRAISED GREEN BEANS",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 servings",
-  "time": "10 minutes",
   "intro": "This vegetarian main dish is made with green beans, long beans, or flat Romano beans and is common across Levantine countries. It can also be served as a cold appetizer. The beans are braised with lots of olive oil, garlic, and tomatoes and enjoyed scooped up with bread. The simplicity of this dish is what makes it special, and the simple ingredients make the green beans shine. This is a great light weeknight dinner, and I also love serving it cold the next day.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "30 minutes"
+  },
   "ingredients": [
     {
       "item": "olive oil",
       "amount": "¼ cup (60 ml)"
     },
     {
-      "item": "onion, finely chopped",
-      "amount": "1 large"
+      "item": "large onion, finely chopped",
+      "amount": "1"
     },
     {
-      "item": "cloves garlic, roughly chopped",
-      "amount": "12 large"
+      "item": "large cloves garlic, roughly chopped",
+      "amount": "12"
     },
     {
       "item": "kosher salt, divided",
@@ -34,16 +37,27 @@
       "amount": "¼ teaspoon"
     },
     {
-      "item": "vine tomatoes, diced",
-      "amount": "2 small"
+      "item": "small vine tomatoes, diced",
+      "amount": "2"
     },
     {
       "item": "tomato paste",
       "amount": "1 tablespoon"
     },
     {
+      "item": "Olive oil",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Kosher salt (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
       "item": "Pita bread or Roz Bi Shaariya",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
@@ -53,8 +67,5 @@
     "Remove the lid and add the tomatoes, tomato paste, and 3 or 4 tablespoons of water. Stir to combine, then cover again and cook for 10 minutes longer, stirring occasionally, until they reach a crisp, tender texture. Remove from the heat.",
     "Transfer the beans to a flat plate, pouring all the pan juices as well. Drizzle with olive oil and an extra sprinkling of salt, if desired. Serve with a side of pita bread or rice."
   ],
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/loubia-bil-zeitolive-oil-braised-green-beans.jpg"
 }

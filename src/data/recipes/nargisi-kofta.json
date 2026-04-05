@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "These are excellent served outside, straight off the barbecue. You can prepare them indoors up to the end of the frying stage, then take them outside and cook over indirect heat on the barbecue. Like all of the tandoori recipes in this book, you can also cook them in the oven, as I have here. They are delicious served just as they are with a green salad and perhaps a good hot sauce.",
+  "intro": "These are excellent served outside, straight off the barbecue. You can prepare them indoors up to the end of the frying stage, then take them outside and cook over indirect heat on the barbecue. Like all of the tandoori recipes in this book, you can also cook them in the oven, as I have here. They are delicious served just as they are with a green salad and perhaps a good hot sauce.\n\nCook the hard-boiled eggs to your liking. For soft yolks, boil the eggs for no more than 7 minutes, and for hard yolks, 10–12 minutes. The meat is prepared exactly as the lamb seekh kebab recipe.\n\nThis is a great recipe for parties as most of the work can be done ahead of time. Even the frying can be done a good hour before guests arrive, so all you need to do is heat them up in the oven or on the barbecue.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "seekh kebab minced (ground) lamb per egg",
@@ -36,6 +40,8 @@
   "method": [
     "For each egg, roll out 150g (5½oz) minced lamb mixture between two layers of cling film (plastic wrap), so that it is about 5mm (¼in) thick, and flat. Remove the top layer of cling film and place a hard-boiled egg in the middle. Using the bottom sheet of cling film, bring the meat up and form it around the egg.",
     "Dust in the gram (chickpea) flour, then coat in the beaten egg and roll in the breadcrumbs until fully coated. (This work can all be done ahead of time for ease. Just place the coated koftas on a plate, cover with cling film and store in the fridge.)",
+    "When ready to cook, pour about 5cm (2in) of oil into a wok and heat over a high heat. When a few breadcrumbs sizzle immediately when thrown in, it is ready. Lower a nargisi kofta into the oil and fry all over for about 3 minutes until nicely browned. Remove with a slotted spoon to a plate lined with paper towel and repeat until all the koftas are fried.",
     "To finish, preheat the oven to 200°C (400°F/Gas 6) or prepare your barbecue for indirect cooking. If refrigerated, remove the koftas from the fridge to come to room temperature. If oven cooking, place the fried koftas on a baking tray and roast in the oven for about 7 minutes. If using the barbecue, place the fried kofta on the grate over the side that has no coals and cover, cooking for about 7 minutes. The meat should already be cooked from the frying, so the oven or barbecue roasting will just warm them through."
-  ]
+  ],
+  "image": "/recipes/nargisi-kofta.jpg"
 }

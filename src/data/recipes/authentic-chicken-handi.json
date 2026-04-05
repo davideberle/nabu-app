@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I am asked for chicken handi recipes all the time, but that’s a difficult one. Simply asking for a chicken handi recipe may or may not get you the curry you want to recreate. Just like balti and karahi curries, handis are called handis because of the handi pot they are cooked and/or served in. These days, more often than not, the handi will be cooked in a frying pan at restaurants and then served in an ornamental metal handi pan. The first handis were cooked in earthenware handi pots and the recipes varied from chef to chef. There is a lot of ghee in this one, which might be one of the reasons it’s so good.",
+  "time": {
+    "prep": "15 MINS",
+    "cook": "40 MINS"
+  },
   "ingredients": [
     {
       "item": "ghee",
@@ -77,13 +81,14 @@
       "amount": ""
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and julienned",
-      "amount": ""
+      "item": "piece of ginger, peeled and julienned",
+      "amount": "5cm (2in)"
     }
   ],
   "method": [
     "Heat the ghee in a handi pan or large saucepan over a medium–high heat. When visibly hot, add the onions and fry for about 10 minutes, or until golden brown and crispy-looking but not burnt. Stir in the garlic and ginger paste and cumin seeds and fry for about 30 seconds, then add the tomatoes and green chillies and stir it all up to combine.",
     "Stir in the ground spices and mix it all up. This is the base of your curry. Toss in the chicken thighs and stir continuously for 3–4 minutes to brown the meat in the sauce mixture. Add the water/stock, cover the pan and simmer for about 15 minutes over a medium heat until the chicken is cooked through and the stock is thick.",
     "Stir in the yoghurt 1 tablespoon at a time and continue to simmer until you are happy with the consistency of the sauce. If using cream, add it now, then sprinkle in the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers, followed by the garam masala. Season with salt and garnish with the coriander (cilantro) and ginger."
-  ]
+  ],
+  "image": "/recipes/authentic-chicken-handi.jpg"
 }

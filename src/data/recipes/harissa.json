@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "PAPRIKA, CAYENNE, RED PEPPER FLAKES, CUMIN, CORIANDER, TOMATO SAUCE, TOMATO PASTE",
   "servings": "about 1 cup",
   "intro": "HARISSA, A HOT-CHILE PASTE commonly eaten in North Africa, is used in a range of dishes to add heat. I often make a saucier version with tomatoes to serves as a fiery dipping condiment, but here I present a thicker blend that can be used to flavor soups, stews, vegetables, and grain dishes.",
   "ingredients": [
@@ -73,6 +72,7 @@
   "method": [
     "Warm the oil in a small saucepan over low heat. Add the paprika, red pepper flakes, cumin, coriander, salt, and cayenne and stir to combine. Cook, stirring occasionally, until fragrant, about 3 minutes. Stir in the serrano and garlic and sauté for 2 minutes. Add the tomato sauce, tomato paste, water, lime juice, and maple syrup. Mix well and simmer, stirring occasionally, until the mixture starts to thicken, about 5 minutes. Stir in the white pepper. Taste and season with more salt if desired. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

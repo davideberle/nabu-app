@@ -7,6 +7,10 @@
   },
   "servings": "makes about 1.5l (6¼ cups)",
   "intro": "Mango chutney is easy to prepare. You can make it either sweet, or sweet and spicy – adding a teaspoon or so of chilli powder really gives this chutney a kick. Once you have finished cooking the chutney, you can serve it chunky or blend it until smooth. I usually make both versions from one batch. The resulting chutney is great served with papadams and kebabs. The smooth version tastes amazing stirred into madras and jalfrezi curries at the end of cooking. Don’t add the chunky version to curries as the mango pieces will become hard and rubbery.",
+  "time": {
+    "prep": "15 MINS, PLUS SITTING TIME",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "caster sugar",
@@ -29,8 +33,8 @@
       "amount": ""
     },
     {
-      "item": "5cm (2in) piece of ginger, peeled and finely chopped",
-      "amount": ""
+      "item": "piece of ginger, peeled and finely chopped",
+      "amount": "5cm (2in)"
     },
     {
       "item": "garlic cloves, finely chopped",
@@ -50,8 +54,10 @@
     }
   ],
   "method": [
-    "Put the sugar and vinegar in a large saucepan and bring to a boil, stirring continuously until the sugar dissolves. Add the remaining ingredients and simmer for about 1 hour, stirring regularly until syrupy."
+    "Put the sugar and vinegar in a large saucepan and bring to a boil, stirring continuously until the sugar dissolves. Add the remaining ingredients and simmer for about 1 hour, stirring regularly until syrupy.",
+    "When it is sticky and thick to your liking you can either leave it as it is or blend until smooth (or blend half, see introduction). Transfer to hot sterilized jars (see note), leaving a little space at the top."
   ],
+  "image": "/recipes/mango-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

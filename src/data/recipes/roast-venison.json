@@ -3,10 +3,15 @@
   "name": "Roast Venison",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "I use venison fillet in this recipe as it is incredibly tender and quick to cook – allow 150 g per person. Because it has no fat, the meat should be cooked rare to medium–rare. I like to serve this roast with spaezle.",
   "ingredients": [
+    {
+      "item": "VENISON",
+      "amount": ""
+    },
     {
       "item": "juniper berries",
       "amount": "8"
@@ -26,6 +31,10 @@
     {
       "item": "venison fillet",
       "amount": "600 g"
+    },
+    {
+      "item": "SAUCE",
+      "amount": ""
     },
     {
       "item": "bottle good-quality red wine",
@@ -56,8 +65,8 @@
       "amount": "1"
     },
     {
-      "item": "brown sugar",
-      "amount": "2 tablespoons"
+      "item": "tablespoons brown sugar",
+      "amount": "2"
     },
     {
       "item": "unsalted butter sea salt and ground black pepper",
@@ -68,13 +77,20 @@
       "amount": "25 g"
     },
     {
-      "item": "good-quality virgin olive oil",
-      "amount": "1 tablespoon"
+      "item": "tablespoon good-quality virgin olive oil",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 VENISON 8 juniper berries 2 fresh bay leaves 10 peppercorns 1 small chilli 600 g venison fillet SAUCE 1 bottle good-quality red wine 50 ml balsamic vinegar 3 shallots, roughly chopped 3 cloves garlic, crushed with a knife 8 juniper berries 6 cloves 1 fresh bay leaf 2 tablespoons brown sugar 25 g unsalted butter sea salt and ground black pepper 25 g unsalted butter 1 tablespoon good-quality virgin olive oil coarse sea salt",
+    "For the venison, crush the juniper berries, bay leaves, peppercorns and chilli in a mortar. Rub this mixture into the meat and let it stand at room temperature for about 1 hour.",
     "Preheat the oven to 180°C (gas mark 4).",
+    "In the meantime, put the sauce ingredients except the butter, salt and pepper in a saucepan and bring to the boil. Simmer gently until reduced to about 200 ml. Strain the liquid through a sieve and return it to the pan. Add the butter and heat until it melts into the sauce. Taste for salt and pepper. Keep warm while you cook the venison.",
+    "Heat the butter and oil in a frying pan and, as soon as the butter begins to foam, put the venison into the pan and brown it quickly on all sides, sealing in the juices. Transfer the meat to an oven tray and roast for about 10 minutes (if your venison weighs more or less than 600 g, calculate the cooking time based on 15 minutes per kilogram for rare, and 20 minutes per kilogram for medium–rare). It is important to rest the meat for as long as you cooked it in the oven, loosely wrapped in foil to keep it warm.",
     "Slice the meat, place it on a warmed serving plate and pour over some sauce, then sprinkle some coarse sea salt over it. Put the rest of the sauce in a bowl to serve on the side."
-  ]
+  ],
+  "image": "/recipes/roast-venison.jpg"
 }

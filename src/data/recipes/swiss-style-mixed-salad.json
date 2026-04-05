@@ -3,21 +3,34 @@
   "name": "Swiss-Style Mixed Salad",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "There is nothing better than eating a colourful and delicious salad like this one in the middle of a long, grey winter. It is like a ray of sunshine.",
   "ingredients": [
     {
       "item": "or 1 large handful Nüsslisalat (lamb’s lettuce/mâche)",
       "amount": "50 g"
     },
     {
+      "item": "radicchio leaves, sliced in thin strips",
+      "amount": "6–8"
+    },
+    {
+      "item": "medium carrots, grated",
+      "amount": "1–2"
+    },
+    {
       "item": "small celeriac, peeled and grated",
       "amount": "⅓"
     },
     {
-      "item": "Lebanese cucumber, peeled and sliced",
-      "amount": "1"
+      "item": "ebanese cucumber, peeled and sliced",
+      "amount": "1 L"
+    },
+    {
+      "item": "SAUCE",
+      "amount": ""
     },
     {
       "item": "red-wine vinegar",
@@ -28,16 +41,18 @@
       "amount": "150 ml"
     },
     {
-      "item": "sea salt",
-      "amount": "½ teaspoon"
+      "item": "teaspoon sea salt",
+      "amount": "½"
     },
     {
-      "item": "home-made mayonnaise",
-      "amount": "4 tablespoons"
+      "item": "tablespoons home-made mayonnaise",
+      "amount": "4"
     }
   ],
   "method": [
-    "Serves 4 50 g or 1 large handful Nüsslisalat (lamb’s lettuce/mâche) 6–8 radicchio leaves, sliced in thin strips 1–2 medium carrots, grated ⅓ small celeriac, peeled and grated 1 Lebanese cucumber, peeled and sliced SAUCE 50 ml red-wine vinegar 150 ml good-quality virgin olive oil ½ teaspoon sea salt 4 tablespoons home-made mayonnaise",
-    "Put the vinegar, oil, salt and mayonnaise in a glass jar with a lid and shake vigorously until creamy. Pour the dressing over the salad and serve at once."
-  ]
+    "Arrange the salad leaves and vegetables separately around a large plate.",
+    "Put the vinegar, oil, salt and mayonnaise in a glass jar with a lid and shake vigorously until creamy. Pour the dressing over the salad and serve at once.",
+    "Use Nüsslisalat for this winter salad, as it only grows during this season. Alternatively, you can use baby spinach leaves."
+  ],
+  "image": "/recipes/swiss-style-mixed-salad.jpg"
 }

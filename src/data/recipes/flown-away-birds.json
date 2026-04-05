@@ -3,9 +3,10 @@
   "name": "Flown-away Birds",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "They are called ‘ucelli scappati’ (which means ‘flown-away birds’) because the combination of the pancetta, veal and liver apparently tastes like the wild birds that were once used.",
   "ingredients": [
     {
       "item": "calf’s liver, sliced about 2 cm thick",
@@ -20,6 +21,14 @@
       "amount": "150 g"
     },
     {
+      "item": "unbleached plain flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": ""
+    },
+    {
       "item": "unsalted butter",
       "amount": "25 g"
     },
@@ -28,13 +37,27 @@
       "amount": "25 ml"
     },
     {
+      "item": "cloves garlic, chopped",
+      "amount": "2–3"
+    },
+    {
       "item": "dry white wine",
       "amount": "300 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "chicken or veal stock for moisture, if needed",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 300 g calf’s liver, sliced about 2 cm thick 300 g veal nut (noix, or topside), sliced about 2 cm thick 150 g pancetta, sliced 5 mm thick unbleached plain flour, for dusting fresh sage leaves 25 g unsalted butter 25 ml good-quality virgin olive oil 2–3 cloves garlic, chopped 300 ml dry white wine salt and ground black pepper chicken or veal stock for moisture, if needed",
     "Cut the liver, veal and pancetta into square cubes. Dust the liver and veal with flour. Then, alternating, thread the liver, sage, veal and pancetta on skewers.",
-    "Add the garlic to the pan with a few more sage leaves. Let the garlic become golden (do not burn it) then add the wine and scrape up all the bits in the bottom of the pan. When it bubbles add the skewers, salt and pepper and let them cook, covered and on low heat, for about 20 minutes."
-  ]
+    "Take a pan large enough to hold all the skewers at once and, in the butter and oil, brown the skewers of meat one or two at a time on all sides, then set aside in a dish.",
+    "Add the garlic to the pan with a few more sage leaves. Let the garlic become golden (do not burn it) then add the wine and scrape up all the bits in the bottom of the pan. When it bubbles add the skewers, salt and pepper and let them cook, covered and on low heat, for about 20 minutes.",
+    "If the dish seems too dry before cooking is finished, add a bit of veal or chicken stock."
+  ],
+  "image": "/recipes/flown-away-birds.jpg"
 }

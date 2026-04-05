@@ -3,11 +3,14 @@
   "name": "Turkish Chicken Noodle Soup",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 to 6 servings",
-  "time": "10 minutes",
   "intro": "Every culture has their own chicken noodle soup, and this Turkish version is the one I love. My mom always made us a simple vermicelli noodle soup with a tomato broth, and we devoured it. This soup reminds me of hers but with a bit more flair and body, using onions, carrots, spices, and a bit of flour to thicken everything. The flavor is made even better the longer you simmer the soup.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "olive oil",
@@ -18,16 +21,16 @@
       "amount": "1 tablespoon"
     },
     {
-      "item": "yellow onion, finely chopped",
-      "amount": "1 large"
+      "item": "large yellow onion, finely chopped",
+      "amount": "1"
     },
     {
       "item": "kosher salt, divided, plus more if needed",
       "amount": "2 teaspoons"
     },
     {
-      "item": "cloves garlic, crushed",
-      "amount": "4 large"
+      "item": "large cloves garlic, crushed",
+      "amount": "4"
     },
     {
       "item": "carrots, shredded",
@@ -54,8 +57,18 @@
       "amount": "3½ cups (685 g)"
     },
     {
-      "item": "51/3 ounces (150 g) pasta shape of choice (such as gemelli, fusilli, or cavatappi)",
-      "amount": ""
+      "item": "pasta shape of choice (such as gemelli, fusilli, or cavatappi)",
+      "amount": "51/3 ounces (150 g)"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "¼ cup (13 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Lemon wedges",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
@@ -64,5 +77,6 @@
     "Add the broth and bring the soup to a boil over high heat. Once boiling, cover the pot with the lid, reduce the heat to medium, and let simmer for 20 minutes.",
     "Remove the lid and add the shredded chicken and pasta, along with the remaining 1 teaspoon salt. Stir everything together, then let simmer, covered, for another 15 to 20 minutes, until the pasta is cooked. Taste and adjust for salt if necessary.",
     "Ladle into bowls, garnish with parsley, and serve with lemon wedges for squeezing."
-  ]
+  ],
+  "image": "/recipes/turkish-chicken-noodle-soup.jpg"
 }

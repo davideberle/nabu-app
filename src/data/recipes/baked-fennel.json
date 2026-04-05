@@ -3,9 +3,10 @@
   "name": "Baked Fennel",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
+  "intro": "When you bake fennel and Spanish onions together, there is a wonderful exchange of flavours. This dish can be eaten hot or cold.",
   "ingredients": [
     {
       "item": "good-quality virgin olive oil",
@@ -20,13 +21,19 @@
       "amount": "2"
     },
     {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
       "item": "bunch flat-leaf parsley, finely chopped",
       "amount": "1"
     }
   ],
   "method": [
-    "Serves 4 125 ml good-quality virgin olive oil 6 fennel bulbs, quartered (use the long, thin, male fennel bulbs) 2 Spanish onions, quartered salt and ground black pepper 1 bunch flat-leaf parsley, finely chopped",
     "Preheat the oven to 200°C (gas mark 6).",
-    "Bake for about 20 minutes, shaking the dish from time to time to stop the vegetables from sticking to the bottom of the dish. They should start to colour lightly. Remove from the oven, season with salt and pepper and stir in the parsley before serving."
-  ]
+    "Drizzle 2 tablespoons of the olive oil over the base of an ovenproof dish. Scatter in the fennel and onion, then add the rest of the oil and mix so that the vegetables are thoroughly coated.",
+    "Bake for about 20 minutes, shaking the dish from time to time to stop the vegetables from sticking to the bottom of the dish. They should start to colour lightly. Remove from the oven, season with salt and pepper and stir in the parsley before serving.",
+    "I sometimes like to sprinkle on 3 tablespoons fresh breadcrumbs and 4 tablespoons freshly grated parmigiano before baking."
+  ],
+  "image": "/recipes/baked-fennel.jpg"
 }

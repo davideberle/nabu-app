@@ -1,0 +1,742 @@
+{
+  "id": "brown-butter-pistachio-basbousasemolina-cakeclassic-walnut-b",
+  "name": "Brown Butter Pistachio BasbousaSEMOLINA CAKEClassic Walnut BaklawaSamara’s No-Bake Chocolate Biscuit CakeOm Mahmoud’s Ka’ak SimsimSESAME COOKIESAish El SarayaBREAD PUDDINGMoroccan GhribaALMOND COOKIESMini Cheese KunafaSHREDDED PHYLLO STUFFED WITH CHEESEIraqi ChuragSWEET BUNSOrange CakeTurkish Sutlaç with MasticRICE PUDDINGEgyptian KarkadeHIBISCUS ICED TEALaymoon W Na’anaMINT LEMONADEBaba’s Black Grapes & Mint JuiceTurkish CoffeeChai Bi Na’anaMINT BLACK TEAKarak ChaiSPICED TEA WITH MILK",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 servings (4-ounce, or 120-ml, chai cups)",
+  "intro": "Karak chai was popularized in the Middle East, especially in the Persian Gulf, due to the vast influence of South Asians in the region. My husband’s family lives in Kuwait, and when we visit, we often find little roadside shops selling this spiced milk tea, piping hot and with a delicious aroma. It’s so comforting, especially in the colder months, and you can adjust the whole spices to your taste. My family and I always make this when we are all gathered together and want a little something special to drink, aside from our regular black tea. The most important thing is not to forget the tea biscuits for dunking!",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "10 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "granulated sugar",
+      "amount": "1½ cups (300 g)",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "piece (1 inch, or 2.5 cm) lemon peel",
+      "amount": "1",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "plus 1 tablespoon unsalted butter, divided",
+      "amount": "2/3 cup (150 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "coarse semolina",
+      "amount": "1½ cups (285 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "medium or fine semolina",
+      "amount": "1½ cups (285 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "packed unsweetened finely shredded coconut",
+      "amount": "½ cup (45 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "Grated zest of 2 lemons",
+      "amount": "",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2/3 cup (160 ml)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "honey",
+      "amount": "½ cup (120 ml)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "¾ cup (150 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "roughly chopped unsalted pistachios (or substitute any other nuts)",
+      "amount": "½ cup (85 g)",
+      "group": "BASBOUSA"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2½ cups (500 g)",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "unsalted whole raw walnuts (see Notes)",
+      "amount": "1½ pounds (700 g)",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "3 tablespoons",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2/3 cup (135 g)",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "medium egg (see Notes)",
+      "amount": "1",
+      "group": "WALNUT FILLING"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "½ cup (120 g)",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup (120 g)",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "box (16 ounces, or 454 g) frozen phyllo dough (2 rolls; 18 sheets total), thawed for 1 hour",
+      "amount": "1",
+      "group": "PHYLLO PASTRY"
+    },
+    {
+      "item": "Crushed pistachios (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Dried rose petals (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 cup (240 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup (100 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "unsweetened cocoa powder",
+      "amount": "½ cup (50 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "whole milk, divided",
+      "amount": "1½ cups (360 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "instant coffee",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "rectangular tea biscuits (see Notes)",
+      "amount": "12½ ounces (350 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "crushed pistachios",
+      "amount": "½ cup (60 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "shaved or chopped chocolate of choice",
+      "amount": "¼ cup (35 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1¾ cups (210 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup (200 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "medium eggs",
+      "amount": "2",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "1 cup (240 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1½ cups (225 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1½ cups (300 g)",
+      "group": "BREAD PUDDING"
+    },
+    {
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "BREAD PUDDING"
+    },
+    {
+      "item": "slices brioche bread",
+      "amount": "6",
+      "group": "BREAD PUDDING"
+    },
+    {
+      "item": "heavy whipping cream",
+      "amount": "2 cups (473 ml)",
+      "group": "ASHTA"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2 cups (473 ml)",
+      "group": "ASHTA"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup (100 g)",
+      "group": "ASHTA"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "½ cup (60 g)",
+      "group": "ASHTA"
+    },
+    {
+      "item": "rose water",
+      "amount": "2 teaspoons",
+      "group": "ASHTA"
+    },
+    {
+      "item": "crushed pistachios",
+      "amount": "¼ cup (30 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "dried rosebuds (optional)",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "blanched almond flour",
+      "amount": "10½ ounces (300 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2/3 cup (135 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Grated zest of 2 lemons",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "unsalted butter, softened",
+      "amount": "3 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "medium egg yolks",
+      "amount": "2",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "plus 1 teaspoon orange blossom water, divided",
+      "amount": "¼ cup (60 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "almond extract (optional)",
+      "amount": "1 teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 cup (120 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "2½ cups (300 g)",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "Squeeze of fresh lemon juice",
+      "amount": "",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "rose or orange blossom water (optional)",
+      "amount": "1 tablespoon",
+      "group": "SIMPLE SYRUP"
+    },
+    {
+      "item": "high-moisture mozzarella cheese, shredded or cut into small cubes",
+      "amount": "11/3 pounds (600 g)",
+      "group": "KUNAFA"
+    },
+    {
+      "item": "canned thick table cream",
+      "amount": "¾ cup (180 ml)",
+      "group": "KUNAFA"
+    },
+    {
+      "item": "box (16 ounces, or 454 g) frozen kataifi dough (shredded phyllo dough), thawed for 1 hour",
+      "amount": "1",
+      "group": "KUNAFA"
+    },
+    {
+      "item": "unsalted butter, melted, plus 2 tablespoons for greasing",
+      "amount": "1 cup (240 ml)",
+      "group": "KUNAFA"
+    },
+    {
+      "item": "crushed pistachios",
+      "amount": "½ cup (60 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "dried rose petals (optional)",
+      "amount": "2 tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "plus 3 tablespoons (500 g) all-purpose flour",
+      "amount": "4 cups",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "warm water",
+      "amount": "¾ cup (180 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "warm whole milk (microwave for 30 seconds)",
+      "amount": "½ cup (120 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "instant yeast",
+      "amount": "½ tablespoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "¼ cup (50 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "large eggs, separated",
+      "amount": "2",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "olive oil, plus more for greasing",
+      "amount": "½ cup (120 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1/3 cup (50 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "honey",
+      "amount": "1 cup (240 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "plus 1 tablespoon vegetable oil, divided",
+      "amount": "1 cup (240 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "plus 1 tablespoon all-purpose flour, divided",
+      "amount": "2 cups (240 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "large oranges",
+      "amount": "3",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup (200 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "ground cardamom (optional)",
+      "amount": "3 teaspoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "eggs, at room temperature",
+      "amount": "3",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "whole milk",
+      "amount": "6 cups (1.5 L)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "cold heavy whipping cream",
+      "amount": "¾ cup (180 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1½ tablespoons",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "mastic gum (see Notes; optional)",
+      "amount": "¼ teaspoon",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "short-grain rice, rinsed until the water runs clear and drained completely",
+      "amount": "¾ cup (170 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup (200 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "filtered water",
+      "amount": "6 cups (1.4 L)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "dried hibiscus flowers",
+      "amount": "1 cup (33 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "granulated sugar (or more per preference)",
+      "amount": "½ cup (100 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Ice cubes (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Fresh mint leaves",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "fresh lemon juice (8 to 10 large lemons)",
+      "amount": "1¼ cups (300 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "granulated sugar (or less, per preference)",
+      "amount": "¾ cup (150 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "loosely packed fresh mint leaves",
+      "amount": "2 cups (100 g)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "filtered water",
+      "amount": "2½ cups (600 ml)",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2 cups",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Fresh mint leaves",
+      "amount": "",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "seedless black grapes, plus more to taste",
+      "amount": "4 cups (400 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "filtered water",
+      "amount": "1½ cups (360 ml)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "packed fresh mint leaves",
+      "amount": "¾ cup (40 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "1 cup",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "Ice cubes (optional)",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Fresh mint leaves",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Turkish coffee (finely ground coffee)",
+      "amount": "5 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "granulated sugar (See Note)",
+      "amount": "1 to 2 tablespoons",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Turkish delight, cookies, chocolates, or sweet treat of choice",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "filtered water",
+      "amount": "3 cups (720 ml)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "loose-leaf black tea",
+      "amount": "4 tablespoons",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "loosely packed fresh mint leaves",
+      "amount": "1 cup (50 g)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Granulated sugar",
+      "amount": "",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "green cardamom pods",
+      "amount": "6",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "5",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "filtered water",
+      "amount": "3 cups (720 ml)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "loose-leaf black tea",
+      "amount": "3 tablespoons",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "evaporated milk",
+      "amount": "½ cup (120 ml)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "granulated sugar, or to taste",
+      "amount": "¼ cup (50 g)",
+      "group": "FOR SERVING"
+    },
+    {
+      "item": "Tea biscuits",
+      "amount": "",
+      "group": "FOR SERVING"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (205°F) and position a rack on the bottom.",
+    "In a small saucepan, combine the 1½ cups (300 g) sugar, lemon juice, and lemon peel with 1½ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes. Remove the pan from the heat and let cool.",
+    "MAKE THE BASBOUSA: Add ⅔ cup (160 g) of the butter to a small, light-colored saucepan over medium heat. Melt the butter, swirling the pan every few seconds. Once the butter is melted and starting to sizzle and foam around the edges, keep stirring with a silicone spatula to ensure it browns evenly. After about 5 minutes, the foam will slightly subside, the butter will turn golden brown, and the milk solids will look toasted. Immediately remove the pan from the heat and set aside.",
+    "In a large bowl, mix together the coarse semolina, medium or fine semolina, coconut, and salt. Add the lemon zest and mix well to combine.",
+    "Slowly add the brown butter to the semolina mixture, making sure to scrape the bottom of the pan to get all of the toasted milk solids in as well. Use a silicone spatula to mix the butter into the semolina, fully coating every grain; the mixture will look like crumbly wet sand.",
+    "In a medium microwave-safe glass bowl or measuring cup, combine the milk, honey, and ¾ cup (150 g) sugar and microwave on full power for 1 minute and 20 seconds. (If you don’t have a microwave, simply heat the ingredients on the stovetop over medium heat until hot.) Whisk the wet ingredients together, then slowly pour over the dry ingredients, using the silicone spatula to combine the two. Do not overmix; stop when all the ingredients are visibly incorporated.",
+    "Grease a 12-inch (30 cm) round pan that is 1 inch (2.5 cm) deep with the remaining 1 tablespoon butter. (You may also use a rectangular pan.) Spoon the batter into the greased pan and use your hands to smooth it into an even layer. Sprinkle the chopped pistachios evenly over the surface.",
+    "Bake for 22 to 24 minutes, until the basbousa is firm to the touch. It’s fine if the edges start to turn darker than the surface. Broil for 1 to 2 minutes to achieve a deeply golden color. Remove from the oven and immediately pour the cooled simple syrup evenly over the top (see Note); it will start to pool on the surface, so let it to sit for 30 minutes, or until all the syrup is absorbed and the basbousa has cooled.",
+    "Cut into small squares or diamonds and serve. Cover any leftovers with plastic wrap or place them in an airtight container and store on the counter for 4 to 5 days.",
+    "Preheat the oven to 350°F (175°C).",
+    "In a medium saucepan, combine the sugar and lemon juice with 1¼ cups (300 ml) of water and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes; it should have a runny, syrupy consistency. Remove the pan from the heat and let cool.",
+    "MAKE THE WALNUT FILLING: Add the walnuts to a food processor and grind until a coarse consistency; each walnut should break up to about a fifth of its size.",
+    "Transfer the ground walnuts to a medium bowl and add the cardamom, sugar, and egg. Mix well using a spoon.",
+    "TO PREPARE THE PHYLLO PASTRY: In a small bowl, combine the butter and oil.",
+    "Unwrap the phyllo dough package, unroll it, and cover the dough with a kitchen towel to prevent it from drying out while you work. Measure the sheets’ dimensions against your pan (I used a 13 x 18-inch, or 33 x 46-cm, rimmed sheet pan) and snip any excess using scissors; the phyllo sheets should sit inside the pan up to the edges.",
+    "To assemble, generously brush the bottom of the pan with the butter-oil mixture, then layer 2 sheets of phyllo on top, ensuring you smooth them down and remove air bubbles as best you can every time you add a sheet. Brush the top sheet of phyllo generously with the butter-oil mixture, then continue layering 2 sheets at a time, brushing the top sheet with the butter-oil mixture, until you have 8 sheets (or half the phyllo dough) layered.",
+    "Spoon the walnut filling onto the phyllo pastry, covering it evenly and packing it down using the back of a spoon or your hand. Layer the remaining 8 phyllo sheets, brushing them with the butter-oil mixture, as you did in step 7.",
+    "Using a sharp knife, gently make straight cuts parallel to the long edge of the pan, roughly 1½ inches (4 cm) apart, all the way through to the bottom. Hold down the pastry gently as you cut and use a rocking motion so that the pastry does not get dragged out of place.",
+    "Make a diagonal cut from one corner of the pan, going all the way to the opposite corner, then make more diagonal cuts parallel to that, about 1 inch (2.5 cm) apart, to create diamond-shape pieces. Go over all the cuts twice to ensure you have cut through all the layers. (If it is easier, you can simply cut them into square shapes and adjust the size to your liking.)",
+    "Bake for 45 to 50 minutes, until the baklawa is a light golden color. Remove from the oven and immediately pour the cooled simple syrup over the top; you will hear a splashing sound as the cooled syrup hits the hot baklawa. Garnish with the crushed pistachios and rose petals (if using).",
+    "Let the baklawa cool for at least 1 hour in the pan before serving. If you plate it while hot, the baklawa will crumble.",
+    "In a medium saucepan, melt the butter over medium heat. Add the sugar and cocoa powder and whisk until combined, 4 to 5 minutes. Add 1 cup (240 ml) of the milk and continue to whisk for 5 minutes, or until the sauce starts to thicken and bubble. Remove the pan from the heat and whisk in the instant coffee until it is dissolved.",
+    "Line the bottom and sides of a loaf pan (see Notes) with plastic wrap, ensuring there is at least 2 inches (5 cm) of plastic wrap overhanging the sides of the pan (to act as “handles” when releasing the pan before serving).",
+    "Pour the remaining ½ cup (120 ml) milk into a small bowl. Start assembling the cake by dipping the tea biscuits in the milk for 1 second and arranging them on the bottom of the pan, side by side. Cover the biscuits with a layer of the chocolate sauce, ensuring all the biscuits are covered, then add another layer of biscuits dipped in milk, followed by another layer of chocolate sauce. Continue to layer the biscuits and chocolate sauce until the sauce is used up, with the top layer being chocolate sauce. You should have 5 or 6 biscuit layers if using a loaf pan.",
+    "Smooth the final layer of chocolate sauce using a butter knife. Cover the loaf pan with a separate piece of plastic wrap (not the overhanging plastic wrap) and refrigerate for at least 4 hours, or overnight.",
+    "Remove the top plastic wrap layer, and carefully use the overhanging plastic wrap to lift the cake out of the pan and onto a serving platter. The cake should be set enough to handle.",
+    "Garnish with the crushed pistachios and shaved chocolate, then slice and serve.",
+    "Preheat the oven to 350°F (175°C). Line a large sheet pan with parchment paper.",
+    "In a large bowl, combine the flour, sugar, baking powder, and cardamom and mix until well incorporated.",
+    "Whisk the eggs in a small bowl, then add them to the dry ingredients along with the melted butter. Mix the wet ingredients into the dry ingredients, either using your hands or a stand mixer, until a thick cookie dough forms.",
+    "Cover the bowl with plastic wrap and place in the refrigerator for 10 minutes.",
+    "Place the sesame seeds in a shallow bowl or plate. Scoop about 1 tablespoon of the cookie dough. Roll it into a thin rope, roughly 4 inches (10 cm) in length and ½ inch (1.3 cm) in width, then twist the rope into a circular shape, sticking the ends together (see Note). Dip it into the sesame seeds, covering one side of the cookie, then place it on the prepared sheet pan, seeds side up. Repeat with the remaining dough, placing them 1 inch (2.5 cm) apart and baking in batches.",
+    "Bake for 15 minutes, or until the cookies are lightly golden and set. Broil for 2 to 3 minutes, until the tops are golden.",
+    "Preheat the oven to 400°F (205°C).",
+    "In a small saucepan, combine the sugar and lemon juice with 1 cup (240 ml) of water for a simple syrup, and bring to a boil over medium heat. Once boiling, reduce the heat to medium-low and let simmer for 10 minutes. Remove the saucepan from the heat and let cool to room temperature.",
+    "MAKE THE ASHTA: In a medium saucepan, combine the cream, milk, sugar, and cornstarch and whisk until the cornstarch is dissolved. Place the pot over medium heat and cook for 10 minutes, whisking continuously, until the ashta thickens. Stir in the rose water, remove from the heat, and let cool.",
+    "Place the brioche slices on a large sheet pan and toast in the oven for 5 to 7 minutes, flipping halfway through, until golden. Let cool.",
+    "In a food processor, add the toasted brioche, a few slices at a time, and process to a fine consistency. Transfer the bread crumbs to a large bowl, then add ¾ cup (180 ml) of the simple syrup and mix to combine (reserve the remaining simple syrup for serving) into a wet, crumbly mixture.",
+    "Spoon 2 to 3 tablespoons of the bread crumbs into the base of each of 6 small parfait serving cups and pack them down. If using one baking dish, use a 9-inch (23 cm) square pan. Layer about ½ cup (120 ml) of ashta on top of the bread layer in each cup and smooth it out. Cover each serving cup with plastic wrap, making sure that the plastic is in contact with the ashta layer to help prevent a film from forming on the surface. Place in the refrigerator for at least 2 hours, or overnight.",
+    "When ready to serve, remove the plastic wrap, garnish with the crushed pistachios and rosebuds (if using), and serve with the remaining simple syrup.",
+    "Preheat the oven to 350°F (175°C) and position a rack on the bottom.",
+    "In a large bowl, mix together the almond flour and baking powder.",
+    "In a medium bowl, combine the sugar and lemon zest and use your hands to rub the zest into the sugar to extract the flavor. Add the almond flour to the bowl and whisk until the ingredients are well combined.",
+    "Add the butter and egg yolks to the dry ingredients and use your hands to work them in until a crumbly mixture forms; you should be able to form a ball when squeezing the mixture together. Add 1 teaspoon of the orange blossom water and the almond extract (if using) and mix well.",
+    "Place the powdered sugar in a small bowl and the remaining ¼ cup (60 ml) orange blossom water in a separate small bowl. Line two medium baking sheets with parchment paper, or use one baking sheet and bake the cookies in batches.",
+    "Scoop ¾ tablespoon of cookie dough. Dip your hands in the orange blossom water to wet your hands and roll the dough into a ball. Gently flatten the ball very slightly, then roll it in the powdered sugar until completely covered. Place on a prepared baking sheet, 1 inch (2.5 cm) apart. Repeat with the remaining dough, wetting your hands with the orange blossom water as you shape each cookie.",
+    "Bake on the bottom rack for 15 minutes; the cookies will start to develop cracks, which is normal. Do not overbake, even if they still seem soft; they will firm up as they cool. Cool on the baking sheet for 10 minutes before serving.",
+    "Preheat the oven to 350°F (175°C).",
+    "In a medium saucepan, combine the sugar and lemon juice with 1¼ cups (300 ml) of water and bring to a boil over high heat. Once boiling, reduce the heat to medium and let simmer for 10 minutes. Remove from the heat, stir in the rose or orange water blossom (if using), and let cool to room temperature.",
+    "MAKE THE KUNAFAS: In a medium bowl, mix together the mozzarella and cream.",
+    "Break up the kataifi dough using your hands and place it in a food processor. Process for a few seconds until it is broken up into small pieces, at least ¼ inch (6 mm) long. Alternatively, you can shred it on a cutting board using a sharp knife.",
+    "Transfer the shredded kataifi dough to a large bowl and pour the melted butter over it. Using your hands, massage the butter into the dough, making sure to saturate every strand.",
+    "Brush the bottoms and sides of a 12-cup muffin pan with butter. Spoon the kataifi into the muffin cups, filling each one about halfway. Using your fingers, flatten the kataifi onto the bottom of each muffin cup, allowing the pastry to also line the edges, creating a small cup shape. Spoon about 1½ tablespoons of the cheese mixture into each muffin cup. Take the remaining kataifi dough and spread it over the cheese, completely covering it and tightly packing it in.",
+    "Bake for 40 to 45 minutes, until the outside is deeply golden and crispy. Remove from the oven and carefully flip the muffin tray over onto a large sheet pan to release all the mini kunafas. Immediately drizzle the mini kunafas with most of the simple syrup, covering the entire surface of each one. Reserve a bit of simple syrup for serving.",
+    "Garnish with the crushed pistachios and rose petals (if using). Serve on small plates or a large platter with simple syrup on the side.",
+    "In a large bowl, mix together the flour and salt.",
+    "In a medium bowl, whisk together the warm water, warm milk, and yeast until the yeast is dissolved. Add the sugar, egg yolks, and oil and whisk to combine.",
+    "Slowly add the wet ingredients to the flour and mix the dough using your hands until it comes together; at first the dough will feel wet, but start kneading it on the counter for 5 to 7 minutes, until it comes together and has a smooth and soft texture. Cover the bowl with plastic wrap and a kitchen towel and let the dough rise for 1 hour, or until it doubles in size.",
+    "While the dough rises, place the sesame seeds in a medium dry skillet over medium-low heat. Stir continuously for 4 to 5 minutes, or until the sesame seeds are slightly darker in color and fragrant. Remove and set aside to cool.",
+    "When the dough is ready, preheat the oven to 350°F (175°C). Line two large baking sheets with parchment paper.",
+    "Divide the dough into small balls, roughly 40 to 50 grams in weight. Lay the dough balls on a large tray and cover loosely with plastic wrap to prevent them from drying out while you shape the churag.",
+    "Place the sesame seeds in a shallow bowl or plate. Beat the egg whites in a small bowl.",
+    "On a lightly oiled surface, roll a dough ball into a rope 10 to 12 inches (25 to 30 cm) long, using even pressure so that the rope is the same width from end to end. Cut the rope in half to form 2 ropes, then arrange the ropes side by side and pinch them together at one end. Braid the rope by bringing the right one over the left one, then the left over the right, and so on. Bring the ends together to create a circular braid and pinch them to seal. Gently tuck the pinched end underneath for a clean look. Lightly brush the top of the churag with egg whites, then dip the top in the toasted sesame seeds and place on a prepared baking sheet. Repeat with the remaining dough balls, placing them 1 inch (2.5 cm) apart since they will double in size.",
+    "Bake for 20 to 25 minutes, until the bottoms are lightly golden. Broil for a few minutes until the tops are lightly golden. Remove from the oven and lightly brush each bun with some honey while warm to achieve a shiny surface.",
+    "Place the churag on a platter and cover with plastic wrap or a towel to keep them moist. Serve warm or at room temperature.",
+    "Preheat the oven to 350°F (175°C) and position the rack in the middle. Grease a 10-cup (2.4 L) Bundt pan with 1 tablespoon of the oil, then dust it with 1 tablespoon of the flour. Tap the outside of the pan to circulate the flour so that it covers the inside surface.",
+    "Zest the oranges (avoiding the white pith) into a small bowl to yield roughly 4 to 5 tablespoons of orange zest. Juice the oranges into a separate small bowl to yield ¾ cup (180 ml) of juice.",
+    "In a large bowl, whisk together the remaining 2 cups (240 g) flour, the baking powder, salt, granulated sugar, and cardamom (if using). Whisk in the orange zest.",
+    "In a medium bowl, whisk the remaining 1 cup (240 ml) oil, the eggs, and orange juice until combined.",
+    "Gradually fold the wet ingredients into the dry ingredients using a silicone spatula until the wet and dry ingredients are just combined and you no longer see flour streaks. Do not overmix the batter. Pour the batter into the prepared Bundt pan.",
+    "Bake for 45 minutes, or until a toothpick inserted into the center comes out clean. Let cool for 10 minutes, then carefully flip onto a cake plate or stand. Let cool completely.",
+    "Dust with the powdered sugar, slice, and serve.",
+    "Add the milk to a medium saucepan and heat over medium heat until hot but not boiling. Remove from the heat.",
+    "In a small bowl, combine the cream and cornstarch and mix until the cornstarch has dissolved. Using a mortar and pestle, crush the mastic gum (if using) into a fine powder.",
+    "Add the rice to a large pan or skillet at least 2 inches (5 cm) deep. Add 2 ladles of the hot milk and gently simmer together over medium heat, stirring constantly. When the rice has absorbed most of the milk, add a few more ladles of hot milk and continue to stir until most of the milk is absorbed. Continue adding milk, a few ladles at a time, stirring until most of it is absorbed. (This method is similar to how you would cook a risotto; while slow, this process will yield very creamy results.) Once you have used all the milk, add the sugar and stir for a few minutes until it is dissolved. Add the whipping cream–cornstarch mixture and continue to stir until the pudding is thickened and the rice is cooked to a very soft consistency. This process should take 30 to 40 minutes in total.",
+    "Stir in the mastic gum powder (if using) or other flavoring (see Notes). Remove the pan from the heat. Pour the rice pudding into oven-safe 5- to 6-ounce (150 to 180 ml) ramekins for individual servings, arranging them on a large sheet pan. Turn on the oven broiler and place the sheet pan directly under the broiler. Broil for 1 to 2 minutes (at the most), until the surfaces are caramelized and look spotty and browned. Remove and let cool for a few minutes.",
+    "Serve warm (my favorite), at room temperature, or cover with plastic wrap, refrigerate for 2 hours, and then serve cold.",
+    "Add the filtered water to a medium saucepan and bring to a boil.",
+    "Add the hibiscus flowers and sugar. Let boil for 5 minutes until the sugar is dissolved. Turn off the heat and allow the hibiscus to steep in the water for 20 minutes. You may taste and adjust for more sugar at this point. To add more, stir it into the tea while it is still hot until it dissolves.",
+    "Strain the tea into a pitcher, being careful not to spill any on easily stained counters (the hibiscus is highly pigmented).",
+    "Refrigerate for at least 2 hours. If the tea is too strong, feel free to dilute it with more cold water, but do not dilute too much if serving with ice cubes.",
+    "Serve with ice cubes (if using) and garnish with mint leaves.",
+    "Add the lemon juice, sugar, mint leaves, and water to a large high-powered blender and blend for 1 to 2 minutes, until the sugar is dissolved.",
+    "Add the ice and blend again for a few seconds, or until the ice is crushed.",
+    "Pour into drinking glasses and garnish with mint leaves.",
+    "Add the grapes, water, and mint leaves to a high-powered blender and blend for a few seconds, or until the ingredients are juiced.",
+    "Add 1 cup ice cubes and blend for a few more seconds. Taste and adjust; if it is too watery, add more grapes and blend again.",
+    "Place a fine-mesh strainer over a large bowl or jug and pour the juice through it to strain out the large bits of grape skin.",
+    "Pour the strained juice into a pitcher and either refrigerate or serve immediately over more ice cubes. Garnish with fresh mint leaves.",
+    "Add the coffee and sugar to a Turkish coffeepot.",
+    "Using a small Turkish coffee cup, measure out 5 cups (1.2 L) of filtered water and add it to the coffeepot.",
+    "Place the coffeepot over medium heat and stir for a minute to dissolve the coffee and sugar. Let the coffee come to a boil, 4 to 5 minutes. As soon as the coffee starts to boil, remove the pot from the heat. A layer of coffee foam will form at the top of the pot. Using a teaspoon, scoop the foam into each coffee cup, then pour the coffee. Each cup will have a small layer of foam. The bottom of the coffee will have a thick layer of coffee grounds which you leave in the pot (but it’s fine if some of it gets into the cup).",
+    "Serve with Turkish delight, cookies, chocolates, or any other sweet treat.",
+    "Add the water to a stovetop teapot (or a saucepan) with a strainer then add the loose-leaf tea to the strainer. Place the teapot over medium-high heat and bring to a boil.",
+    "Once boiling, reduce the heat to medium-low and let simmer for 5 minutes. After 5 minutes, and after you smell the tea strongly, turn off the heat.",
+    "Boil a kettle of water to serve on the side. The water can be used to reduce the strength of the tea for those who like it less strong.",
+    "Place some of the mint leaves in each teacup, then pour the tea into the teacups.",
+    "Serve with sugar for sweetening.",
+    "Place the cardamom pods and cloves in a mortar and crush them lightly to break open the cardamom pods and crush the cloves into smaller pieces.",
+    "In a medium saucepan, combine the water, cinnamon sticks, crushed cloves, and cardamom pods. Place the saucepan over medium-high heat and bring to a boil.",
+    "Once boiling, add the loose-leaf black tea, reduce the heat to medium-low, and let simmer for 2 to 3 minutes. Add the evaporated milk and sugar and bring the chai to a boil over high heat. Remove the saucepan from the heat until the bubbles stop, then place it back over high heat for a second boil. Once it bubbles again, reduce the heat to medium-low and let simmer for 5 minutes or longer, depending on your preferred tea strength.",
+    "Turn off the heat and pour into chai cups through a tea strainer. Serve with tea biscuits."
+  ],
+  "tips": "It’s important to ensure that the simple syrup is cool and that the basbousa is hot when the syrup is poured over it. If you use hot syrup, it will give the basbousa a hard texture.\n\nYou can substitute pistachios for the walnuts, or use a mixture of half each of walnuts and pistachios.\n\nUsing egg in the filling helps hold the filling together, especially when cutting the baklava. However, you can omit the egg if necessary for dietary restrictions.\n\nStore leftovers in a container, uncovered, on the counter if you are consuming within a few days; otherwise, to maintain freshness, place in an airtight container and freeze. Thaw at room temperature for 1 hour before serving.\n\nYou can use round biscuits if you can’t find rectangular ones, but you may need to break them to fit the contours of the pan. I recommend specifically using tea biscuits or digestive biscuits, not any other type.\n\nYou can use any pan you have on hand and adjust the biscuits and chocolate sauce quantities to create at least 4 layers.\n\nShape the cookies into thin ropes, because they will spread in the oven. If you make the ropes too thick, they will lose their circular shape.\n\nStore the cookies in an airtight container on the counter for up to 1 week.\n\nYou can freeze the churag in an airtight freezer bag or container for 2 to 3 months after baking them, then reheat in the oven to enjoy warm. Also, if you struggle to shape them as described, you can simply shape each ball into a long thin rope, then twist it onto itself to create a pinwheel shape.\n\nIf you don’t have mastic gum, you can choose any other flavoring for the pudding, such as vanilla, cardamom, rose water, or orange blossom water. Simply add 1 to 2 teaspoons of any of these options after the pudding is cooked and just before broiling.\n\nStore leftovers in the refrigerator covered with plastic wrap for 4 to 5 days.\n\nTurkish coffee is strong and hence it is always served per preference with regards to sweetness. There are three common sweetness levels: no sugar, medium, or sweet. Typically, the medium level requires 1 tablespoon of sugar per 1 tablespoon of coffee. The sweet level requires 2 tablespoons of sugar per 1 tablespoon of coffee.\n\nYou may skip adding the sugar to the saucepan and, instead, add sugar when serving into cups per preference.",
+  "image": "/recipes/brown-butter-pistachio-basbousasemolina-cakeclassic-walnut-b.jpg"
+}

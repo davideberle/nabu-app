@@ -7,6 +7,10 @@
   },
   "servings": "makes 6 naans, serves 4–6",
   "intro": "This is how naans are made at most curry houses. The idea is to use bakers’ measures so that when getting started the amount of dry ingredients is equal to the amount of wet ingredients. Following this rule, it is easy to scale the recipe up or down. As self-raising flour is used, a large or small batch can be whipped up whenever necessary. So to double this recipe you would use 1kg (2lb 3oz) of flour, 500ml (2 cups) of milk and about 400ml (scant 1¾ cups) of water and an additional egg, for example. Then just scale up the sugar, salt and nigella seeds too. You really can wing it. When you make the first batch, you might think it has gone wrong – it hasn’t! Be sure to read the recipe to the end. I have a video on my YouTube channel that demonstrates this recipe cooked in a tandoor oven, but you can get outstanding results in a pan.",
+  "time": {
+    "prep": "20 MINS, PLUS OPTIONAL SITTING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "warm full-fat (whole) milk",
@@ -43,9 +47,11 @@
   ],
   "method": [
     "Pour the milk and 150ml (generous ½ cup) warm water into a large mixing bowl. Add the eggs, salt, sugar and nigella seeds and whisk well. Start adding in the flour, whisking as you do. Once you’ve added all the flour, the mixture will still look very soupy and far too wet to work into dough balls. I recommend covering the dough at this time with a wet cloth and letting it sit for at least 3 hours or overnight for best results. That said, you could just jump right into finishing the recipe at this stage.",
+    "When ready to cook the naans, slowly start adding more flour. The idea here is to add just enough flour so that the dough is workable. It should be very soft and slightly sticky, but not so sticky that it sticks to your hands. If it does, dust with a little bit more flour until you can easily divide and form the dough into six spongy dough balls.",
     "Once the dough balls are formed, you either could let them sit, covered, for about 30 minutes or you could push forward and make the naans immediately. As the dough is so soft, you shouldn’t need a rolling pin. Dip your fingers in the oil and start patting the first dough ball to flatten it. Continue slapping it until it is flat. Repeat with the remaining dough balls.",
     "Heat a dry frying pan over a medium–high heat and slap the first naan into it, oiled side up. As it cooks, bubbles will form on the surface and it will begin to look like a real naan! If you have a blow torch, use it to brown and blacken the bubbles; otherwise, just flip the naan over. This will pop a lot of the bubbles, but the naan will still be delicious. Brush with a little melted ghee or butter, keep warm and repeat with the remaining naans."
   ],
+  "image": "/recipes/curry-house-naans.jpg",
   "dietary": [
     "vegetarian"
   ]

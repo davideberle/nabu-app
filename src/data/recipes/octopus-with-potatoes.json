@@ -3,13 +3,22 @@
   "name": "Octopus with Potatoes",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "I first tried this dish in a minuscule restaurant in Milan called La Latteria. It was across the road from the local newspaper, Corriere della sera. The owner told me that journalists in Milan are very fussy and partial to their food. Apparently this dish was a favourite.",
   "ingredients": [
+    {
+      "item": "medium octopus",
+      "amount": "3–4"
+    },
     {
       "item": "organic lemons",
       "amount": "2"
+    },
+    {
+      "item": "fresh bay leaves",
+      "amount": "2–3"
     },
     {
       "item": "yellow waxy potatoes, such as kipfler",
@@ -18,11 +27,20 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "250 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "a few sprigs flat-leaf parsley, finely chopped",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 6 3–4 medium octopus 2 organic lemons 2–3 fresh bay leaves 1 kg yellow waxy potatoes, such as kipfler 250 ml good-quality virgin olive oil salt and ground black pepper a few sprigs flat-leaf parsley, finely chopped",
     "Cut the heads off the octopus and discard. Bring a pan of water to the boil, add ½ lemon, sliced, and the bay leaves. Add the octopus and boil gently over medium heat for about 20 minutes. Allow to cool in the water.",
-    "Boil the potatoes and when cooked, cut into bite-sized pieces."
-  ]
+    "Boil the potatoes and when cooked, cut into bite-sized pieces.",
+    "Pull off the octopus tentacles, remove the slimy skin and cut the flesh into bite-sized pieces. Add to the potatoes. Mix together the juice of the remaining 1 ½ lemons with the olive oil, salt, pepper and parsley. Pour this mixture over the octopus and potatoes. Serve at room temperature."
+  ],
+  "image": "/recipes/octopus-with-potatoes.jpg"
 }

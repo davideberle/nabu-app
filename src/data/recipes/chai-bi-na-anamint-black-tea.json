@@ -1,0 +1,41 @@
+{
+  "id": "chai-bi-na-anamint-black-tea",
+  "name": "Chai Bi Na’anaMINT BLACK TEA",
+  "source": {
+    "cookbook": "Souk to Table",
+    "author": "Reem Kassis"
+  },
+  "servings": "6 servings (4-ounce, or 120-ml, chai cups)",
+  "intro": "In Iraq, and I’m sure this goes for other Arab countries, chai is almost always prepared before we eat dinner, so it is piping hot and ready to pour into teacups as soon as we’re finished eating. No one likes to wait around for tea; it must be served immediately! Black tea is the preferred choice across the Middle East, almost always flavored with mint or cardamom (but never both!). It is poured into an istikan (what we call the little teacups in Iraq), along with sugar per preference (make mine sweet, please!). Usually, a second pot of boiled water is served along with the teapot and is used to dilute the tea for those who like theirs weaker.",
+  "time": {
+    "prep": "",
+    "cook": "10 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "filtered water",
+      "amount": "3 cups (720 ml)"
+    },
+    {
+      "item": "loose-leaf black tea",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "loosely packed fresh mint leaves",
+      "amount": "1 cup (50 g)"
+    },
+    {
+      "item": "Granulated sugar",
+      "amount": "",
+      "group": "FOR SERVING"
+    }
+  ],
+  "method": [
+    "Add the water to a stovetop teapot (or a saucepan) with a strainer then add the loose-leaf tea to the strainer. Place the teapot over medium-high heat and bring to a boil.",
+    "Once boiling, reduce the heat to medium-low and let simmer for 5 minutes. After 5 minutes, and after you smell the tea strongly, turn off the heat.",
+    "Boil a kettle of water to serve on the side. The water can be used to reduce the strength of the tea for those who like it less strong.",
+    "Place some of the mint leaves in each teacup, then pour the tea into the teacups.",
+    "Serve with sugar for sweetening."
+  ],
+  "image": "/recipes/chai-bi-na-anamint-black-tea.jpg"
+}

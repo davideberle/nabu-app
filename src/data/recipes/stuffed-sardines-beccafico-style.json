@@ -3,7 +3,7 @@
   "name": "Stuffed Sardines, Beccafico Style",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -20,6 +20,14 @@
       "amount": "1"
     },
     {
+      "item": "STUFFING",
+      "amount": ""
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "125–200 ml"
+    },
+    {
       "item": "anchovy fillets",
       "amount": "5"
     },
@@ -28,29 +36,37 @@
       "amount": "100 g"
     },
     {
-      "item": "finely chopped flat-leaf parsley",
-      "amount": "2 tablespoons"
+      "item": "tablespoons finely chopped flat-leaf parsley",
+      "amount": "2"
     },
     {
-      "item": "capers in brine, drained and finely chopped (optional)",
-      "amount": "1 tablespoon"
+      "item": "tablespoon capers in brine, drained and finely chopped (optional)",
+      "amount": "1"
     },
     {
-      "item": "currants",
-      "amount": "3 tablespoons"
+      "item": "tablespoons currants",
+      "amount": "3"
     },
     {
-      "item": "pine nuts, toasted grated zest and juice of 1 organic lemon",
-      "amount": "4 tablespoons"
+      "item": "tablespoons pine nuts, toasted grated zest and juice of 1 organic lemon",
+      "amount": "4"
     },
     {
-      "item": "sugar",
-      "amount": "1 teaspoon"
+      "item": "teaspoon sugar",
+      "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 700 g fresh sardines 15 fresh bay leaves 1 handful each chopped flat-leaf parsley and mint, to serve STUFFING 125–200 ml good-quality virgin olive oil 5 anchovy fillets 100 g fresh breadcrumbs 2 tablespoons finely chopped flat-leaf parsley 1 tablespoon capers in brine, drained and finely chopped (optional) 3 tablespoons currants 4 tablespoons pine nuts, toasted grated zest and juice of 1 organic lemon 1 teaspoon sugar salt and ground black pepper",
     "Preheat the oven to 200°C (gas mark 6).",
+    "Scrape away the scales from the sardines. Pull the heads away from the bodies – the backbone will naturally come away too – making sure the tail stays attached to the two fillets. (Your fishmonger can do this for you.) Rinse them well then dry them on kitchen paper.",
+    "To make the stuffing, heat half the olive oil in a small frying pan, then add the anchovies and let them melt, stirring continuously for about a minute. Add the breadcrumbs and cook for another minute then add the parsley, mix well and take off the heat. Stir in the capers, currants, pine nuts, lemon zest (reserving the juice for later), sugar and a little salt and pepper.",
+    "Open out the sardines and lay them out flat on a work surface. Place a teaspoon of the stuffing mixture onto each fish, arranging it neatly along its length. Lift the sides of the fish up to enclose the stuffing and secure with 2 toothpicks.",
+    "Butter an ovenproof dish, around 18 × 30 cm. Arrange the stuffed sardines in the dish, packing them in tightly to prevent them from opening up. Tuck the bay leaves in between the sardines and sprinkle on any left-over stuffing mixture. Drizzle over the remaining oil and bake for 15 minutes until golden-brown.",
     "Remove from the oven and pour on the reserved lemon juice. Add the fresh herbs just before serving. You can serve this dish hot or cold, although I like it best at room temperature."
-  ]
+  ],
+  "image": "/recipes/stuffed-sardines-beccafico-style.jpg"
 }

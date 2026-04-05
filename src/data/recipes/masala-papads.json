@@ -7,6 +7,10 @@
   },
   "servings": "serves 2 or more as part of a multi-course meal",
   "intro": "I think you’ll like these roasted papads topped with this simple but tasty masala. I like to stack them up and serve them like a salad, but simply topping a papad with the masala is equally as good. They are pictured opposite. You can prepare them a couple of days ahead: just store the roasted papads in an air-tight container and the masala in the fridge.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "large tomato, diced",
@@ -50,6 +54,7 @@
     "Heat a dry frying pan over a medium heat. Using a brush or your hand, spread a little oil over both sides of a papad. Place it in the centre of the pan and press it down with a spatula. You will be able to see the papad cooking through. When this begins to happen, flip it over and press it down again with the spatula. Continue flipping until the papad is nicely roasted on both sides and cooked through – about 30–45 seconds. Transfer to a wire rack and continue cooking the remaining papads in the same way.",
     "To serve, top each papad with about 2 tablespoons of the masala."
   ],
+  "image": "/recipes/masala-papads.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

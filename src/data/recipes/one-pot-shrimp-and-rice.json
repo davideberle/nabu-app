@@ -3,72 +3,129 @@
   "name": "One-Pot Shrimp & Rice",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "4 servings",
-  "time": "5 minutes",
   "intro": "It’s no secret why one-pot meals are so popular: you get all the components of a well-balanced meal cooked up in one pot. I whip up this dish quite frequently on busy weeknights involving a lot of mom duties, and since my kids are huge fans of shrimp, it’s a dream. The shrimp is coated in a blend of warm Middle Eastern spices and cooked for just a few minutes before being removed. Once the rice is cooked in the same pot and ready to be steamed into its final fluffy form, the shrimp is added back in to finish cooking. This method guarantees extra-plump and -juicy shrimp.",
+  "time": {
+    "prep": "5 minutes",
+    "cook": "25 minutes"
+  },
   "ingredients": [
     {
+      "item": "kosher salt",
+      "amount": "1½ teaspoons",
+      "group": "SEASONING"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1½ teaspoons",
+      "group": "SEASONING"
+    },
+    {
       "item": "ground coriander",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "SEASONING"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SEASONING"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SEASONING"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "SEASONING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "SEASONING"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "SEASONING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "SEASONING"
+    },
+    {
+      "item": "large or jumbo shrimp, peeled, deveined, and patted dry",
+      "amount": "2 pounds (900 g)",
+      "group": "SHRIMP"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon",
+      "group": "SHRIMP"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "RICE"
+    },
+    {
+      "item": "small onion, finely chopped",
+      "amount": "1",
+      "group": "RICE"
     },
     {
       "item": "cloves garlic, minced",
-      "amount": "3"
+      "amount": "3",
+      "group": "RICE"
     },
     {
       "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
-      "amount": "2 cups (360 g)"
+      "amount": "2 cups (360 g)",
+      "group": "RICE"
     },
     {
       "item": "frozen peas",
-      "amount": "2 cups (270 g)"
+      "amount": "2 cups (270 g)",
+      "group": "RICE"
     },
     {
       "item": "chicken broth",
-      "amount": "3½ cups (840 ml)"
+      "amount": "3½ cups (840 ml)",
+      "group": "RICE"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "RICE"
+    },
+    {
+      "item": "Finely chopped fresh parsley",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
+    },
+    {
+      "item": "Fresh lemon juice",
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "Salata",
-      "amount": ""
+      "amount": "",
+      "group": "FOR GARNISHING AND SERVING"
     }
   ],
   "method": [
-    "TO MAKE THE SEASONING: In a small bowl, mix all the seasoning ingredients until well combined.",
-    "TO MAKE THE SHRIMP: Place the shrimp in a small bowl and mix them with half of the seasoning mixture.",
+    "In a small bowl, mix all the seasoning ingredients until well combined.",
+    "Place the shrimp in a small bowl and mix them with half of the seasoning mixture.",
     "In a 4½-quart (4.3 L) sauté pan with a tight-fitting lid, heat the olive oil over medium heat. Add the shrimp and cook for 30 seconds on each side, working in batches to avoid overcrowding. Transfer to a plate.",
-    "TO MAKE THE RICE: In the same pan the shrimp were cooked in, over medium heat, add the vegetable oil and the onion and cook, stirring occasionally, for 4 to 5 minutes, until softened and translucent. Add the garlic and the remaining seasoning mixture and cook, stirring often, for a few more minutes, or until fragrant.",
+    "In the same pan the shrimp were cooked in, over medium heat, add the vegetable oil and the onion and cook, stirring occasionally, for 4 to 5 minutes, until softened and translucent. Add the garlic and the remaining seasoning mixture and cook, stirring often, for a few more minutes, or until fragrant.",
     "Add the rice and mix well. Add the frozen peas, followed by the broth. Season with the ½ teaspoon salt and bring to a boil. Once boiling, cover the pot with the lid, reduce the heat to low, and let cook for 20 minutes.",
     "Turn off the heat and fluff the rice with a fork. Add the shrimp back into the pan on top of the rice. Cover again with the lid and let stand for 10 minutes.",
     "Garnish with parsley and a squeeze of lemon juice. Serve with salad."
-  ]
+  ],
+  "image": "/recipes/one-pot-shrimp-and-rice.jpg"
 }

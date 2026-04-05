@@ -3,11 +3,14 @@
   "name": "TRIBUTE TO HELLSHIRE",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4",
-  "time": "20 MINUTE",
   "intro": "I grew up eating fish and bammy (cassava flatbreads) at the seafood restaurants at Hellshire Beach, on the south coast of Jamaica. This tribute isn’t fish and bammy, but it’s bammy fried and coated in a nori salt, which gives you that ocean flavour. Most vegetables taste better charred and aubergine (eggplant) is a true testament to that. This aubergine dip is truly something special and paired with the bammy, it’s a wonderful tribute indeed.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "bammy, cut it into 6 pieces each",
@@ -27,55 +30,68 @@
     },
     {
       "item": "aubergine",
-      "amount": "1"
+      "amount": "1",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "tahini",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g (2 oz)",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "smoked paprika",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "tamarind paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "juice of 1 lemon",
-      "amount": ""
+      "amount": "",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ teaspoon",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "nori sheets",
-      "amount": "2"
+      "amount": "2",
+      "group": "NORI SALT"
     },
     {
       "item": "dried porcini or shiitake mushrooms",
-      "amount": "2"
+      "amount": "2",
+      "group": "NORI SALT"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "NORI SALT"
     },
     {
       "item": "MSG",
-      "amount": "½ teaspoon"
+      "amount": "½ teaspoon",
+      "group": "NORI SALT"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "NORI SALT"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "NORI SALT"
     }
   ],
   "method": [
@@ -85,6 +101,7 @@
     "Pat the bammy dry with paper towels and set aside. Melt enough coconut oil to coat in a frying pan (skillet) over a medium heat and fry the bammy pieces in batches for 3–4 minutes on each side until crispy. Transfer to a metal bowl and immediately hit with the nori salt, tossing to coat. Set aside on a wire rack.",
     "Serve the dip in a bowl with the bammy placed around it."
   ],
+  "image": "/recipes/tribute-to-hellshire.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

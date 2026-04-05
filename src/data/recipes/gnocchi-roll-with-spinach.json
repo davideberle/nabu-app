@@ -3,7 +3,7 @@
   "name": "Gnocchi Roll with Spinach",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -12,8 +12,16 @@
       "amount": "2 kg"
     },
     {
+      "item": "teaspoons salt",
+      "amount": "1–2"
+    },
+    {
       "item": "organic eggs, lightly beaten",
       "amount": "2"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "200–300 g"
     },
     {
       "item": "unsalted butter, cubed",
@@ -22,6 +30,10 @@
     {
       "item": "fresh sage leaves",
       "amount": "10"
+    },
+    {
+      "item": "FILLING",
+      "amount": ""
     },
     {
       "item": "ricotta",
@@ -34,6 +46,10 @@
     {
       "item": "organic egg",
       "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     },
     {
       "item": "unsalted butter",
@@ -49,7 +65,12 @@
     }
   ],
   "method": [
-    "Serves 6 2 kg floury potatoes, boiled 1–2 teaspoons salt 2 organic eggs, lightly beaten 200–300 g unbleached plain flour 100 g unsalted butter, cubed 10 fresh sage leaves FILLING 250 g ricotta 50 g freshly grated parmigiano 1 organic egg salt and ground black pepper 25 g unsalted butter 2 cloves garlic, crushed 250 g frozen spinach, thawed",
-    "Preheat the oven to 200°C (gas mark 6)."
-  ]
+    "While the potatoes are still hot, peel them and push them through a potato ricer. Now add the salt, eggs and, gradually, the flour. (The amount of flour will depend on the kind of potato you use, but remember that the less flour you use, the softer the gnocchi will be.) The gnocchi dough should be soft, but not stick to your hands.",
+    "With a rolling pin, roll out the dough until about 2 cm thick.",
+    "For the filling, mix the ricotta, parmigiano, egg, salt and pepper and spread this evenly on top of the dough. In a frying pan melt a little butter and lightly cook the garlic. Mix the thawed spinach with the butter and garlic, cook for just a few minutes and then spread this on top of the ricotta mixture.",
+    "Roll the gnocchi dough, ricotta and spinach into a sausage, swiss-roll style. Wrap the sausage tightly in cheesecloth (muslin). Tie each end and boil in salted water for about 10–15 minutes. Let it cool.",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Unwrap the roll gently from the cheesecloth and place it in a buttered oven dish that will hold the rotolo comfortably. With a sharp knife, cut the roll into slices about 2 cm thick. Sprinkle with some parmigiano, then dot cubed butter and sage leaves evenly over the slices. Cook in the oven until golden-brown, about 15 minutes."
+  ],
+  "image": "/recipes/gnocchi-roll-with-spinach.jpg"
 }

@@ -3,11 +3,14 @@
   "name": "Samara’s No-Bake Chocolate Biscuit Cake",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "8 to 10 servings",
-  "time": "20 minutes, plus 4 hours chilling",
   "intro": "This recipe comes from my husband’s cousin, my dear friend Samara. Whenever we get together and have family dinners, everyone knows that Samara will be bringing a large pan of this no-bake cold cake. And every time we enjoy it together, we discuss how she does everything “by eye” and how she tweaks it slightly every time she makes it, adding dark chocolate, adding more coffee, and using different biscuits. No matter what she does, it is always so delicious and gone in minutes. She exercised a lot of patience with me as we sent voice notes back and forth, her trying to be descriptive and me trying to be precise and capturing exact measurements.",
+  "time": {
+    "prep": "20 minutes, plus 4 hours chilling",
+    "cook": ""
+  },
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -32,6 +35,16 @@
     {
       "item": "rectangular tea biscuits (see Notes)",
       "amount": "12½ ounces (350 g)"
+    },
+    {
+      "item": "crushed pistachios",
+      "amount": "½ cup (60 g)",
+      "group": "FOR GARNISHING"
+    },
+    {
+      "item": "shaved or chopped chocolate of choice",
+      "amount": "¼ cup (35 g)",
+      "group": "FOR GARNISHING"
     }
   ],
   "method": [
@@ -42,7 +55,6 @@
     "Remove the top plastic wrap layer, and carefully use the overhanging plastic wrap to lift the cake out of the pan and onto a serving platter. The cake should be set enough to handle.",
     "Garnish with the crushed pistachios and shaved chocolate, then slice and serve."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "tips": "You can use round biscuits if you can’t find rectangular ones, but you may need to break them to fit the contours of the pan. I recommend specifically using tea biscuits or digestive biscuits, not any other type.\n\nYou can use any pan you have on hand and adjust the biscuits and chocolate sauce quantities to create at least 4 layers.",
+  "image": "/recipes/samara-s-no-bake-chocolate-biscuit-cake.jpg"
 }

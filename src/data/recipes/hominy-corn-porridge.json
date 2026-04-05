@@ -3,11 +3,14 @@
   "name": "HOMINY CORN PORRIDGE",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "1 HOUR 20 MINUTE",
   "intro": "Jamaican porridge is one of my favourite things in the world. From polenta (cornmeal) porridge or green banana porridge to hominy corn, as soon as the winter months come by, I make myself a bowl of Jamaican porridge and I feel safe. Hominy corn porridge is my favourite. My grandma always made it for me when she lived in Sheﬃeld and the smell of it simply brings me back to her. In many ways, this is a homage to her. Except for the vegan dairy replacements, this recipe is very similar to how I remember her making it.",
+  "time": {
+    "prep": "5 MINUTES",
+    "cook": "1 HOUR 20 MINUTES"
+  },
   "ingredients": [
     {
       "item": "dried yellow hominy corn",
@@ -60,6 +63,7 @@
     "Add the coconut milk and bring back to the boil, then boil for 5 minutes. Transfer a third of the mixture to a high-speed blender and blend until smotth. This is to thicken the porridge. Add back to the porridge, along with the soya milk. Simmer for 5 more minutes until thickened.",
     "Grate a generous amount of nutmeg into the porridge and sweeten to taste with condensed coconut milk, coconut sugar or brown sugar. Serve in bowls with some more grated nutmeg on top."
   ],
+  "image": "/recipes/hominy-corn-porridge.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

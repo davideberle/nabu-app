@@ -3,50 +3,101 @@
   "name": "Lebanese Lemon-Garlic Spatchcock Chicken",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
   "intro": "Once you learn how to spatchcock a chicken, it may be the only way you cook it going forward. Spatchcocking a chicken has so many benefits, including a much faster cooking time than a whole chicken, more even cooking (because the chicken lies flat), and crispier skin (because all the skin is exposed to the heat in a flat layer). This recipe uses a classic lemon-garlic flavor combination. And I really mean business when I say “lemon-garlic,” because this chicken will be extra lemony and extra garlicky. The technique used to roast the chicken yields extra juices on the bottom of the pan, perfect for scooping over the chicken and potatoes and mopping up with bread.",
+  "time": {
+    "prep": "10 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
-      "item": "garlic cloves, crushed",
-      "amount": "12 large"
+      "item": "unsalted butter",
+      "amount": "¼ cup (60 g)",
+      "group": "GARLIC-BUTTER OIL"
     },
     {
-      "item": "onion powder",
-      "amount": "1 teaspoon"
+      "item": "olive oil",
+      "amount": "¼ cup (60 ml)",
+      "group": "GARLIC-BUTTER OIL"
     },
     {
-      "item": "garlic powder",
-      "amount": "1 teaspoon"
+      "item": "large garlic cloves, crushed",
+      "amount": "12",
+      "group": "GARLIC-BUTTER OIL"
     },
     {
-      "item": "dried basil",
-      "amount": "1 teaspoon"
-    },
-    {
-      "item": "whole chicken (31/3 to 4½ pounds, or 1.5 to 2 kg), spatchcocked (see Note)",
-      "amount": "1"
+      "item": "kosher salt",
+      "amount": "3½ teaspoons",
+      "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "dried basil",
+      "amount": "1 teaspoon",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "whole chicken (31/3 to 4½ pounds, or 1.5 to 2 kg), spatchcocked (see Note)",
+      "amount": "1",
+      "group": "CHICKEN"
+    },
+    {
+      "item": "large yellow potatoes, cut into eighths",
+      "amount": "4",
+      "group": "POTATOES"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon",
+      "group": "POTATOES"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon",
+      "group": "POTATOES"
     },
     {
       "item": "chicken broth",
-      "amount": "¼ cup (60 ml)"
+      "amount": "¼ cup (60 ml)",
+      "group": "POTATOES"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "¾ cup (180 ml)",
+      "group": "BAKING LIQUID"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2/3 cup (160 ml)",
+      "group": "BAKING LIQUID"
     }
   ],
   "method": [
     "Preheat the oven to 450°F (230°C) and position a rack on the bottom.",
-    "TO MAKE THE GARLIC-BUTTER OIL: In a medium microwave-safe glass bowl, melt the butter in a microwave. Add the olive oil and crushed garlic and mix well to combine.",
-    "TO MAKE THE CHICKEN: In a medium bowl, combine the 3½ teaspoons salt, 1 teaspoon pepper, onion powder, garlic powder, basil, and 5 tablespoons of the garlic-butter oil and mix to form a thick paste.",
+    "In a medium microwave-safe glass bowl, melt the butter in a microwave. Add the olive oil and crushed garlic and mix well to combine.",
+    "In a medium bowl, combine the 3½ teaspoons salt, 1 teaspoon pepper, onion powder, garlic powder, basil, and 5 tablespoons of the garlic-butter oil and mix to form a thick paste.",
     "Place the chicken on a cutting board and pat it dry. Slather the seasoning paste all over the chicken, covering the whole surface and working it under the skin. If you have the time, place the chicken in a bowl, cover, and let marinate for a few hours in the refrigerator, then bring it to room temperature for 30 minutes before cooking; otherwise, you can continue with the recipe without letting the chicken marinate.",
-    "TO MAKE THE POTATOES: Place the potatoes in a large roasting tray (at least 9 x 13 inches, or 22 x 33 cm, and 2 inches, or 5 cm, deep) and sprinkle them with the 1 teaspoon salt and ½ teaspoon pepper. Add 2 tablespoons of the garlic-butter oil and toss to combine.",
+    "Place the potatoes in a large roasting tray (at least 9 x 13 inches, or 22 x 33 cm, and 2 inches, or 5 cm, deep) and sprinkle them with the 1 teaspoon salt and ½ teaspoon pepper. Add 2 tablespoons of the garlic-butter oil and toss to combine.",
     "If you have a rack that fits over the roasting tray, place it on top of the potatoes, then place the chicken, skin side up, on the rack; if you don’t have a rack, place the chicken directly on the potatoes, skin side up. (The rack helps achieve a crispier chicken.)",
     "Pour ¼ cup (60 ml) broth in the bottom of the pan, then place the pan in the oven on the bottom rack. Bake for 30 minutes.",
-    "MEANWHILE, MAKE THE BAKING LIQUID: In a medium bowl, combine the remaining garlic-butter oil, the lemon juice, and ¾ cup (180 ml) broth and mix well.",
+    "MAKE THE BAKING LIQUID: In a medium bowl, combine the remaining garlic-butter oil, the lemon juice, and ¾ cup (180 ml) broth and mix well.",
     "After the chicken has baked for 30 minutes, pour the baking liquid all over the chicken and potatoes. Continue to bake for another 15 to 20 minutes, until the chicken is fully cooked and golden brown (white on the inside or has an internal temperature of 165°F, or 74°C). If required, broil the chicken for 4 to 5 minutes to get more color. Let rest for 10 minutes before serving."
-  ]
+  ],
+  "image": "/recipes/lebanese-lemon-garlic-spatchcock-chicken.jpg"
 }

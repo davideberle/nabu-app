@@ -1,11 +1,10 @@
 {
   "id": "sweet-pickled-watermelon-rinds-and-jalape-os",
-  "name": "SWEET PICKLED WATERMELON RINDS & JALAPEÑOS",
+  "name": "SWEET PICKLED WATERMELON RINDS and JALAPEÑOS",
   "source": {
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "WHITE VINEGAR, RAW CANE SUGAR, NAVEL ORANGE, LEMON",
   "servings": "6 pints",
   "intro": "DON’T GET RID OF those watermelon rinds just yet! Pickling is a great way to make the most of them. While pickled watermelon rinds were fairly common in the South, these are unique in that I add jalapeños for a subtle kick. The rinds are great alongside savory dishes, similar to how you’d use chutney. You can cut them into thin slices and eat them on Berbere-Spiced Black-Eyed Pea Sliders for another layer of flavor on that burger.",
   "ingredients": [
@@ -50,6 +49,7 @@
     "Put the water, sugar, and salt in the same pot and bring to a boil over high heat. Decrease the heat to medium and cook, stirring often, until the sugar and salt have dissolved.",
     "Divide the orange and lemon slices evenly among the sterilized jars, then immediately pour in the hot vinegar mixture, dividing it evenly among the jars. Stored in the refrigerator, the pickles should keep for a few months."
   ],
+  "image": "/recipes/sweet-pickled-watermelon-rinds-and-jalape-os.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

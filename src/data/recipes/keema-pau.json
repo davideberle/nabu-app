@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "My friend Roxanne Bamboat is a travel blogger from Mumbai. She writes the fantastic blog The Tiny Taster, and I highly recommend looking it up and reading about her travels. When I was researching recipes for my book The Curry Guy Veggie, I flew out to Mumbai with my a friend of mine and, luckily, Roxanne just happened to be in town to show us the sights and introduce us to some of the best food that Mumbai has on offer. Roxanne is from the Parsi community, a group that fled oppression in Iran for India sometime between the 8th and 10th centuries, where they became, and still are, an important part of society in Mumbai. One memorable stop was breakfast at the oldest Iranian café in Mumbai: Kayani & Co, which is popular with many celebrities and Bollywood stars. She ordered keema pau (pav) for us and it was so good. Keema pau is very popular street food, but if you ever find yourself at Kayani & Co, it is also one of the best breakfasts you’ll ever eat.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "minced (ground) lamb",
@@ -37,8 +41,8 @@
       "amount": "½ tsp"
     },
     {
-      "item": "generous tbsp garam masala",
-      "amount": "1"
+      "item": "garam masala",
+      "amount": "1 generous tbsp"
     },
     {
       "item": "Generous handful of coriander (cilantro) leaves",
@@ -75,5 +79,7 @@
     "Add the turmeric and garam masala and stir well to combine and simmer while you prepare the coriander (cilantro) and chillies. Blend the coriander and chillies with about 70ml (¼ cup) of water into a smooth paste, then pour it over the keema. Stir well and cover the pan. Continue cooking for a further 5 minutes. Add the peas, cover and continue cooking for another 5 minutes. This is a dry curry, so there is no need to add more water unless it is looking a little too dry.",
     "To finish, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers and continue cooking until the oil separates from the meat mixture. Season with salt.",
     "Pour onto a warm serving plate and serve with the lime wedges and hamburger buns, which can be broken up to scoop up the keema."
-  ]
+  ],
+  "tips": "Toasting the hamburger buns in a little butter is a nice and delicious touch.",
+  "image": "/recipes/keema-pau.jpg"
 }

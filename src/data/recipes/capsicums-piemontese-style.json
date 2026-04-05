@@ -3,7 +3,7 @@
   "name": "Capsicums Piemontese-Style",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4–6",
   "ingredients": [
@@ -34,12 +34,19 @@
     {
       "item": "good-quality virgin olive oil",
       "amount": "50 ml"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4–6 5 very ripe medium tomatoes 4 red capsicums (peppers) 1 yellow capsicum (pepper) 20 anchovy fillets 4 cloves garlic, very thinly sliced 1 handful fresh oregano leaves 50 ml good-quality virgin olive oil salt and ground black pepper",
     "Preheat the oven to 180°C (gas mark 4).",
+    "Immerse the tomatoes for 1 minute in boiling water in order to loosen the skin, peel then cut them in half.",
+    "Char the capsicum skins, holding them over a flame (a gas burner or kitchen blow torch) with a pair of tongs, turning them all over until blackened. Then place them, still hot, in a plastic bag and leave for 5–10 minutes. (The steam will loosen the skin of the capsicums and make them very easy to peel.)",
     "Cut the capsicums in half, making sure you also cut the stem in half (this is for visual effect). Remove the seeds and any filaments. Into each half put 2 anchovy fillets, a little sliced garlic and some oregano, then put a half tomato on top of the anchovy. Sprinkle over the olive oil and season (be careful when adding salt as the anchovies are already salty).",
-    "Bake in the oven for about 30 minutes."
-  ]
+    "Bake in the oven for about 30 minutes.",
+    "You can serve these peperoni as an appetiser, as part of an antipasto or as an accompaniment to grilled veal, pork or beef. The peperoni also taste delicious when eaten cold."
+  ],
+  "image": "/recipes/capsicums-piemontese-style.jpg"
 }

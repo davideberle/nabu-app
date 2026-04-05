@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "SWEET CORN, SALT",
   "servings": "about 7 cups",
   "intro": "GREAT FOR SIPPING on hot days and adding depth to soups and stews, this broth is also a good way to get the most out of corncobs. After making Grilled Corn on the Cob, Smashed Potatoes, Peas, and Corn with Chile-Garlic Oil, and Jamaican Patties Stuffed with Corn Maque Choux, you can store leftover cobs in the freezer until you’re ready to make this broth.",
   "ingredients": [
@@ -25,6 +24,7 @@
   "method": [
     "Put the corncobs and water in a large pot and bring to a boil over high heat. Decrease the heat to medium-low, partially cover, and simmer for 45 minutes. Strain through a colander. (Compost the cobs.) Season with salt to taste. Use immediately or let cool and store in the refrigerator for up to 3 days or the freezer for up to 6 months."
   ],
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

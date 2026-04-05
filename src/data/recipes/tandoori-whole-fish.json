@@ -7,6 +7,10 @@
   },
   "servings": "serves 2 or more as part of a multi-course meal",
   "intro": "I must make this recipe once a week in the summer. You only need to throw it on the barbecue for a few minutes and, voilà, you’ve got yourself a dinner that not only tastes great but looks amazing. My fishmonger gets wild sea bass and bream for me, which is a lot better than the farmed stuff. It’s a little more expensive, but when you’re making a fancy meal like this it’s worth every penny.",
+  "time": {
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "whole bream or sea bass, cleaned",
@@ -18,41 +22,50 @@
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "white wine vinegar",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "chilli powder",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "tandoori masala",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "plain yoghurt",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Salt, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "MARINADE"
     }
   ],
   "method": [
     "Make shallow slits on each side of the fish. Put all of the marinade ingredients up to and including the yoghurt in a bowl and whisk to combine. Season with salt, then rub the marinade all over the fish, inside and out, and leave to marinate for about 30 minutes.",
     "Meanwhile, prepare the barbecue for direct grilling. Remove the fish from the marinade and place in a metal grill fish basket, or thread a couple of skewers through to hold it in place. Cook, turning regularly, until the skin is nicely charred and the fish is cooked through. Serve with a squeeze of lemon."
   ],
+  "image": "/recipes/tandoori-whole-fish.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

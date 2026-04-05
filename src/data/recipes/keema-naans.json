@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes enough to serve 8–10",
-  "intro": "I’ve found that keema naans are best cooked in a tandoor or very hot oven on a pizza stone. They are difficult to get right in a frying pan because of the meat inside. The trick is to roll them out while keeping the meat inside. With a little practice, you’ll roll out your naans and the minced meat inside will be thin and flavourful, just like at the best restaurants.",
+  "intro": "I’ve found that keema naans are best cooked in a tandoor or very hot oven on a pizza stone. They are difficult to get right in a frying pan because of the meat inside. The trick is to roll them out while keeping the meat inside. With a little practice, you’ll roll out your naans and the minced meat inside will be thin and flavourful, just like at the best restaurants.\n\nI often substitute homemade tandoori masala for the mixed powder in the minced lamb. I like both versions, so you might like to give both a try.",
+  "time": {
+    "prep": "25 MINS, PLUS THE TIME TO PREPARE THE DOUGH",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "quantity naan dough (see authentic naans*), ready to shape",
@@ -26,27 +30,33 @@
     },
     {
       "item": "minced (ground) lamb",
-      "amount": "400g (14oz)"
+      "amount": "400g (14oz)",
+      "group": "KEEMA"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "½"
+      "amount": "½",
+      "group": "KEEMA"
     },
     {
       "item": "green chillies, finely chopped or mashed into a paste",
-      "amount": "2"
+      "amount": "2",
+      "group": "KEEMA"
     },
     {
       "item": "mixed powder",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "KEEMA"
     },
     {
       "item": "garlic and ginger paste",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "KEEMA"
     },
     {
       "item": "Pinch each of salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "KEEMA"
     }
   ],
   "method": [
@@ -56,5 +66,7 @@
     "Lightly roll out the filled disc following the method on authentic naans, flipping it over a couple of times as you do. Be careful not to press too hard while rolling, or the meat will become exposed. If this happens, patch the area with a small piece of dough.",
     "Brush the shaped naan with just a little melted ghee and place on the heated pizza stone in the oven. Bake for about 3 minutes, then flip it over and cook for another 3 minutes. Check the dough and filling are done, and cook for longer if needed.",
     "To serve, sprinkle with coriander (cilantro) and perhaps a little more melted ghee. Keep warm while you roll and bake the remaining naans."
-  ]
+  ],
+  "tips": "If you don’t have a pizza stone, you can use a baking tray, although it will not get as hot.",
+  "image": "/recipes/keema-naans.jpg"
 }

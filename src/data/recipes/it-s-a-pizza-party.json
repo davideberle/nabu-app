@@ -3,83 +3,104 @@
   "name": "IT’S A PIZZA PARTY",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 6",
-  "time": "1 HOUR",
   "intro": "Not only did I reignite my sourdough journey in lockdown, I also bought a pizza oven. So I completed lockdown with flying colours. Pizza seems to be the ultimate gathering food. It’s universally liked and is a safe option to please multiple guests (despite the whole pineapple discourse … I promise you, liking or not liking pineapple on pizza doesn’t need to be attached to your personality or in your Hinge bio). This is coming from a pineapple on pizza advocate. Most people rarely seem to make pizza at home even though its actually quite easy. The dough uses minimal ingredients and the toppings can be totally customisable to your desired flavour combinations. This is a deep-dish style pizza, which for me gets the best results when baking in a home oven.",
+  "time": {
+    "prep": "30 MINUTES",
+    "cook": "1 HOUR"
+  },
   "ingredients": [
     {
       "item": "room-temperature water",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml (8½ fl oz/1 cup)",
+      "group": "DOUGH"
     },
     {
       "item": "boiling water",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml (3½ fl oz/scant ½ cup)",
+      "group": "DOUGH"
     },
     {
       "item": "maple syrup",
-      "amount": "1½ teaspoons"
+      "amount": "1½ teaspoons",
+      "group": "DOUGH"
     },
     {
       "item": "active dry yeast",
-      "amount": "2 teaspoons"
+      "amount": "2 teaspoons",
+      "group": "DOUGH"
     },
     {
       "item": "strong white bread flour",
-      "amount": "400 g (14 oz/3¼ cups)"
+      "amount": "400 g (14 oz/3¼ cups)",
+      "group": "DOUGH"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "DOUGH"
     },
     {
       "item": "olive oil, plus extra for greasing",
-      "amount": "65 ml (2½ fl oz/scant ½ cup)"
+      "amount": "65 ml (2½ fl oz/scant ½ cup)",
+      "group": "DOUGH"
     },
     {
       "item": "onions, sliced into half-moons",
-      "amount": "2"
+      "amount": "2",
+      "group": "CARAMELISED ONIONS"
     },
     {
       "item": "fennel seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CARAMELISED ONIONS"
     },
     {
       "item": "chilli flakes, plus extra to serve",
-      "amount": "1 teaspoon"
+      "amount": "1 teaspoon",
+      "group": "CARAMELISED ONIONS"
     },
     {
       "item": "silken tofu",
-      "amount": "150 g (5 oz)"
+      "amount": "150 g (5 oz)",
+      "group": "TOFU GARLIC CREAM"
     },
     {
       "item": "garlic cloves",
-      "amount": "2"
+      "amount": "2",
+      "group": "TOFU GARLIC CREAM"
     },
     {
       "item": "salt and freshly ground black pepper",
-      "amount": ""
+      "amount": "",
+      "group": "TOFU GARLIC CREAM"
     },
     {
       "item": "drained and rinsed tinned callaloo",
-      "amount": "150 g (5 oz)"
+      "amount": "150 g (5 oz)",
+      "group": "CALLALOO TOPPING"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CALLALOO TOPPING"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tablespoon",
+      "group": "CALLALOO TOPPING"
     },
     {
       "item": "vegan Parmesan",
-      "amount": "20 g (¾ oz)"
+      "amount": "20 g (¾ oz)",
+      "group": "CALLALOO TOPPING"
     },
     {
       "item": "ball vegan mozzarella, sliced",
-      "amount": "1"
+      "amount": "1",
+      "group": "CALLALOO TOPPING"
     }
   ],
   "method": [
@@ -90,6 +111,7 @@
     "Once the dough has risen, knock the air out of it. Pour the remaining olive oil into to a deep 23 cm (9 inch) rectangular baking tray (pan). Add the dough and stretch it to fit. Cover again with cling film and leave for a further 1 hour until doubled in size again. As it is rising, preheat the oven to as hot as it will go for at least 45 minutes.",
     "Once ready, top the pizza. Start by adding three-quarters of the caramelised onions, then top with some of the tofu garlic cream. Add the callaloo and then the vegan mozzarella. Sprinkle with chilli flakes and a drizzle of olive oil and bake for 25 minutes until lovely and caramelised. Add the rest of the caramelised onions just before serving."
   ],
+  "image": "/recipes/it-s-a-pizza-party.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

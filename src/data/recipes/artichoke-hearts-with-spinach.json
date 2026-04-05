@@ -3,7 +3,7 @@
   "name": "Artichoke Hearts with Spinach",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -16,8 +16,8 @@
       "amount": "1"
     },
     {
-      "item": "garlic cloves, chopped finely",
-      "amount": "3"
+      "item": "arlic cloves, chopped finely",
+      "amount": "3 g"
     },
     {
       "item": "anchovies, chopped",
@@ -36,14 +36,28 @@
       "amount": "8"
     },
     {
+      "item": "juice of ½ organic lemon, mixed with 1 litre water",
+      "amount": ""
+    },
+    {
       "item": "dried breadcrumbs",
       "amount": "50 g"
+    },
+    {
+      "item": "good-quality virgin olive oil, for drizzling",
+      "amount": ""
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
-    "Serves 4 50 g unsalted butter, plus extra knob 1 Spanish onion, chopped finely 3 garlic cloves, chopped finely 10 anchovies, chopped 1 chilli, chopped 800 g spinach, fresh or frozen 8 artichokes juice of ½ organic lemon, mixed with 1 litre water 50 g dried breadcrumbs good-quality virgin olive oil, for drizzling salt and ground black pepper",
     "Preheat the oven to 180°C (gas mark 4).",
     "In a frying pan melt the butter and cook the onion and garlic until soft, then add the chopped anchovies and chilli. Squeeze all the water out of the spinach leaves and add them. Cook, stirring, for a few minutes.",
+    "Trim the artichoke stalks, leaving about 2 cm. Remove most of the leaves, leaving only the very tender, innermost ones. Cut the top two-thirds of the artichoke leaves off. Now, with your fingers, open the artichoke up, in order to expose the choke. With a sharp knife remove all the choke and put the cleaned artichokes one by one into the lemon water to prevent the flesh from discolouring.",
+    "Butter an ovenproof dish that the artichokes will fit into. Dry the artichokes well with kitchen paper, then spoon 2 heaped tablespoons of the spinach mix into each artichoke heart, pressing it down. Sprinkle some breadcrumbs over the artichokes, then a drizzle of virgin olive oil and a knob of butter. Season with salt and pepper.",
     "Bake for 20–25 minutes. You can serve it immediately from the oven dish, but the artichokes are also nice eaten at room temperature."
-  ]
+  ],
+  "image": "/recipes/artichoke-hearts-with-spinach.jpg"
 }

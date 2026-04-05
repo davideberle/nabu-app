@@ -126,10 +126,10 @@ export default async function RecipePage({
           </div>
 
           {/* Introduction */}
-          {recipe.introduction && (
+          {(recipe.introduction || recipe.intro) && (
             <section className="px-8 py-6">
               <p className="text-stone-600 dark:text-stone-400 font-serif text-lg leading-relaxed whitespace-pre-line">
-                {recipe.introduction}
+                {recipe.introduction || recipe.intro}
               </p>
             </section>
           )}
@@ -184,6 +184,18 @@ export default async function RecipePage({
               ))}
             </ol>
           </section>
+
+          {/* Notes/Tips */}
+          {recipe.tips && (
+            <section className="px-8 py-6 bg-amber-50/50 dark:bg-amber-900/10 border-t border-amber-100 dark:border-amber-900/20">
+              <h2 className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400 mb-3">
+                Notes
+              </h2>
+              <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed whitespace-pre-line">
+                {recipe.tips}
+              </p>
+            </section>
+          )}
 
           {/* Serving suggestions */}
           {recipe.serving && (

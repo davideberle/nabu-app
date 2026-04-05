@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I learned this recipe at a brilliant restaurant in Newcastle called Ury. I was invited there one afternoon to watch the head chef prepare this bean curry. Talk about gorgeous! This one is so easy to make but the flavours are still complex and work so well together.",
+  "time": {
+    "prep": "10 MINS",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "coconut oil or rapeseed (canola) oil",
@@ -79,6 +83,7 @@
     "To finish, stir in the yoghurt 1 tablespoon at a time.",
     "Serve immediately, garnished with coriander (cilantro) and a little more yoghurt or yoghurt sauce if you like."
   ],
+  "image": "/recipes/black-eyed-bean-curry.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

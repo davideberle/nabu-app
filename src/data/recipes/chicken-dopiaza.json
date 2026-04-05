@@ -7,6 +7,10 @@
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Dopiaza curries are big on flavour and can be mild or quite spicy, depending on the restaurant. Broken down, the word ‘do’ means two and ‘piaza’ means onions. So the authentic Indian version of this dish is a curry with onions cooked in two different ways. If you count the base curry sauce, and fried onion petals, this recipe is actually made with onions cooked in four different ways so the name doesn’t quite fit. That’s just being technical, though.",
+  "time": {
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "rapeseed (canola) oil or seasoned oil",
@@ -86,5 +90,6 @@
     "Reduce the heat to medium–high and pour in the rest of the oil. When bubbles start to appear, add the whole spices. Stir the spices around in the oil for about 30 seconds and enjoy the aroma of that awesome meal you’re making.",
     "Stir in the garlic and ginger paste and let it sizzle until fragrant, then add the mixed powder, ground cumin, chilli powder and tomato purée. Give this all a good stir and then add 250ml (1 cup) of the base curry sauce. The curry sauce will begin to bubble rapidly and, when it does, add the rest of the sauce and the stock or extra sauce. Turn up the heat and simmer; some of the sauce may begin to caramelize on the side of the pan, so just stir this in from time to time for more flavour.",
     "Add the chicken pieces and continue to simmer, without stirring, for about 2 minutes until the chicken is warmed through. The sauce will cook down and become thicker, but if it becomes too thick for your liking, add a little more chicken or spice stock or base curry sauce. Stir in the onion paste 1 tablespoon at a time, then the dried fenugreek leaves (kasoori methi) and charred onion petals. Season with salt, then sprinkle with the coriander (cilantro), fried onions and garam masala to serve."
-  ]
+  ],
+  "image": "/recipes/chicken-dopiaza.jpg"
 }

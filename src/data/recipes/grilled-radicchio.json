@@ -1,0 +1,29 @@
+{
+  "id": "grilled-radicchio",
+  "name": "Grilled Radicchio",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Mietta Sartori"
+  },
+  "servings": "serves 4",
+  "intro": "I love this simple way of eating radicchio. It is a slightly bitter leaf with wonderful colour. Grilled like this, with extra virgin olive oil and salt, it becomes something special. It is particularly good as an accompaniment to grilled meat or fish, but can also be part of an antipasto.",
+  "ingredients": [
+    {
+      "item": "young radicchio good-quality virgin olive oil, for drizzling",
+      "amount": "2"
+    },
+    {
+      "item": "salt flakes",
+      "amount": ""
+    },
+    {
+      "item": "ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat a barbecue or griddle plate to high.",
+    "Cut the radicchio into quarter wedges and drizzle with olive oil. Grill or barbecue for a few minutes until the radicchio just starts to colour. Transfer to a serving dish and drizzle with a little more oil. Sprinkle with salt and pepper and serve."
+  ],
+  "image": "/recipes/grilled-radicchio.jpg"
+}

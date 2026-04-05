@@ -6,7 +6,11 @@
     "author": "Dan Toombs"
   },
   "servings": "makes enough to serve 8–10",
-  "intro": "Peshawari naans take some experimentation to get right. I don’t really have a sweet tooth, so if they’re too sweet, I just don’t like them. That is of course not the case with many people, who love them very sweet. Therefore, please use this recipe as a guide. Feel free to adjust it to your own tastes when making the paste. With a bit of practice, you will find a recipe that is exactly as you want your Peshawari naans to be.",
+  "intro": "Peshawari naans take some experimentation to get right. I don’t really have a sweet tooth, so if they’re too sweet, I just don’t like them. That is of course not the case with many people, who love them very sweet. Therefore, please use this recipe as a guide. Feel free to adjust it to your own tastes when making the paste. With a bit of practice, you will find a recipe that is exactly as you want your Peshawari naans to be.\n\nIf you have any leftover dough, it can be kept in the fridge for up to 3 days, or frozen. If you’re planning a curry evening with friends, why not make a selection of naans? Place a plate each of plain, keema and Peshawari naans on the table and you’ll be everyone’s best friend.",
+  "time": {
+    "prep": "2 MINS, PLUS THE TIME TO PREPARE THE DOUGH",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "quantity naan dough (see authentic naans*), ready to shape",
@@ -26,23 +30,28 @@
     },
     {
       "item": "almond flakes",
-      "amount": "200g (2½ cups)"
+      "amount": "200g (2½ cups)",
+      "group": "PESHAWARI PASTE"
     },
     {
       "item": "desiccated coconut",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "PESHAWARI PASTE"
     },
     {
       "item": "single (light) cream",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "PESHAWARI PASTE"
     },
     {
       "item": "sugar, or to taste",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "PESHAWARI PASTE"
     },
     {
       "item": "sultanas (golden raisins)",
-      "amount": "20"
+      "amount": "20",
+      "group": "PESHAWARI PASTE"
     }
   ],
   "method": [
@@ -51,6 +60,7 @@
     "Fold the naan dough around the paste and roll out following the method for plain naan. Cook in a hot, dry frying pan in the same way, then brush with ghee and sprinkle with sesame seeds to finish.",
     "Keep warm while you cook the rest of the naans."
   ],
+  "image": "/recipes/peshawari-naans.jpg",
   "dietary": [
     "vegetarian"
   ]

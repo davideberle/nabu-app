@@ -3,9 +3,10 @@
   "name": "Egg White Cake",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
+  "intro": "This is my father’s favourite cake. I find that I always end up with extra egg whites in the fridge, so this is an ideal way of using them.",
   "ingredients": [
     {
       "item": "unsalted butter, plus extra for greasing",
@@ -20,8 +21,12 @@
       "amount": "200 g"
     },
     {
-      "item": "pure vanilla extract",
-      "amount": "1 teaspoon"
+      "item": "teaspoon pure vanilla extract",
+      "amount": "1"
+    },
+    {
+      "item": "pinch of salt",
+      "amount": ""
     },
     {
       "item": "unbleached selfraising flour",
@@ -32,15 +37,16 @@
       "amount": "100 g"
     },
     {
-      "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "item": "teaspoon ground cinnamon",
+      "amount": "1"
     }
   ],
   "method": [
-    "Serves 6 125 g unsalted butter, plus extra for greasing 8 organic egg whites 200 g caster sugar 1 teaspoon pure vanilla extract pinch of salt 125 g unbleached selfraising flour 100 g slivered almonds 1 teaspoon ground cinnamon",
     "Preheat the oven to 180°C (gas mark 4) and butter a 25 cm springform cake tin.",
     "Melt the 125 g butter and leave it to cool a little.",
+    "Beat the egg whites until they start to hold peaks then, while still beating, slowly add the sugar, reserving about 1 tablespoon for dusting, until the mixture becomes shiny. Add the vanilla and salt to the melted butter. Fold a little of the butter into the egg whites, then fold in some of the flour. Continue until all the butter and flour have been added. Pour the mixture into the tin.",
     "Combine the almonds, cinnamon and the extra sugar. Sprinkle this evenly over the cake mixture.",
     "Bake the cake in the oven for about 40 minutes, or until it springs back a little when touched. Cool the cake on a rack before serving."
-  ]
+  ],
+  "image": "/recipes/egg-white-cake.jpg"
 }

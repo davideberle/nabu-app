@@ -3,13 +3,13 @@
   "name": "Pineapple Sorbet",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
-  "servings": "serves 6 1 large ripe pineapple, skinned and cored 60 g caster sugar 100 ml water",
+  "servings": "serves 6",
   "ingredients": [
     {
-      "item": "large ripe pineapple, skinned and cored",
-      "amount": "1"
+      "item": "arge ripe pineapple, skinned and cored",
+      "amount": "1 l"
     },
     {
       "item": "caster sugar",
@@ -21,8 +21,9 @@
     }
   ],
   "method": [
-    "Serves 6 1 large ripe pineapple, skinned and cored 60 g caster sugar 100 ml water",
     "Cut the pineapple into pieces, place it in a food processor and process until smooth.",
-    "Make a syrup with the sugar and water and, when cool, add to the pineapple purée. Taste to see if it sweet enough and add more sugar if necessary. Churn the mixture in an ice cream machine until fluffy."
-  ]
+    "Make a syrup with the sugar and water and, when cool, add to the pineapple purée. Taste to see if it sweet enough and add more sugar if necessary. Churn the mixture in an ice cream machine until fluffy.",
+    "You can add 3–4 finely chopped fresh mint leaves before putting the mixture into the ice cream machine."
+  ],
+  "image": "/recipes/pineapple-sorbet.jpg"
 }

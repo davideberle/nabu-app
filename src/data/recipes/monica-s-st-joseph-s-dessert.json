@@ -3,7 +3,7 @@
   "name": "Monica’s St Joseph’s Dessert",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -36,12 +36,26 @@
       "amount": "125 ml"
     },
     {
+      "item": "pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "few drops pure vanilla essence",
+      "amount": ""
+    },
+    {
       "item": "dark chocolate (70% cocoa solids; optional)",
       "amount": "200 g"
     }
   ],
   "method": [
-    "Serves 8 25 savoiardi (sponge finger) biscuits 250 ml dry Marsala 350 g unsalted butter, at room temperature 3 fresh organic eggs, separated 175 g caster sugar 250 g hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro, then finely ground 125 ml very strong espresso coffee pinch of salt few drops pure vanilla essence 200 g dark chocolate (70% cocoa solids; optional)",
-    "Put the mixture into the mould, pressing it down well. Cover with plastic wrap and refrigerate for at least 6 hours or, better still, overnight."
-  ]
+    "Use a high-sided mould, about 10 cm high and 18 cm wide. Take a piece of cheesecloth (muslin) that will easily line the mould, wet it then squeeze out absolutely all the water and line the mould with it.",
+    "Dip the biscuits into the Marsala, squeeze them so they flatten, and line the bottom and sides of the mould completely with the biscuits, pressing them well into the surfaces.",
+    "With an electric mixer, beat the butter until it becomes very fluffy; set aside.",
+    "Now beat the egg yolks and sugar together until pale yellow and fluffy. Add the hazelnuts, coffee, salt and vanilla. With a spatula mix the butter and egg–hazelnut mixture together until well amalgamated.",
+    "Beat the egg whites until stiff but not dry, and gently fold into the rest of the cake.",
+    "Put the mixture into the mould, pressing it down well. Cover with plastic wrap and refrigerate for at least 6 hours or, better still, overnight.",
+    "Carefully remove the cake from the mould, turn it over onto a serving plate and unwrap it. Melt the dark chocolate and pour it over the cake, if desired."
+  ],
+  "image": "/recipes/monica-s-st-joseph-s-dessert.jpg"
 }

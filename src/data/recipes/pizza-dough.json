@@ -3,9 +3,14 @@
   "name": "Pizza Dough",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
+  "intro": "With this basic pizza dough recipe you can also make grissini (thin bread sticks) or lingue di suocera (mother-in-law’s tongues), which are very thin crisp-breads.",
   "ingredients": [
+    {
+      "item": "Makes 4 pizzas, approximately 30 × 40 cm each",
+      "amount": ""
+    },
     {
       "item": "unbleached plain flour, preferably Italian type 00",
       "amount": "1 kg"
@@ -19,13 +24,18 @@
       "amount": "15 g"
     },
     {
-      "item": "good-quality virgin olive oil, plus extra for drizzling",
-      "amount": "2 tablespoons"
+      "item": "tablespoons good-quality virgin olive oil, plus extra for drizzling",
+      "amount": "2"
+    },
+    {
+      "item": "warm water",
+      "amount": "625–750 ml"
     }
   ],
   "method": [
-    "Makes 4 pizzas, approximately 30 × 40 cm each 1 kg unbleached plain flour, preferably Italian type 00 15 g salt 15 g dry yeast 2 tablespoons good-quality virgin olive oil, plus extra for drizzling 625–750 ml warm water",
-    "Makes 4 pizzas, approximately 30 × 40 cm each",
-    "Mix together the dry ingredients with the oil and enough water to form a dough. Knead until the dough becomes shiny and elastic. Shape into a ball, place in a bowl and sprinkle a few drops of oil over the dough so that it does not dry out. Cover with a cloth and let stand in a warm spot for about 1 hour."
-  ]
+    "Mix together the dry ingredients with the oil and enough water to form a dough. Knead until the dough becomes shiny and elastic. Shape into a ball, place in a bowl and sprinkle a few drops of oil over the dough so that it does not dry out. Cover with a cloth and let stand in a warm spot for about 1 hour.",
+    "Punch the dough down, knead again well and, if you have time, let it rise again.",
+    "If you like, once you have kneaded the pizza dough, you can put it in a bowl, cover it with cling film and put it in the fridge overnight. The next day let the dough come to room temperature, then proceed in making your pizza or breads."
+  ],
+  "image": "/recipes/pizza-dough.jpg"
 }

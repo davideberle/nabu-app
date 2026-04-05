@@ -7,6 +7,10 @@
   },
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "Here’s one of my favourites, which I hope you find the time to try. Although the meat is usually cooked well done, as it is in this recipe, I like to build a really hot fire so that the meat chars quickly. Doing this, you will still have some pink juicy meat in the centre if medium-cooked sirloin is more to your liking.",
+  "time": {
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS"
+  },
   "ingredients": [
     {
       "item": "beef sirloin cut into 5cm (2in) cubes",
@@ -26,66 +30,83 @@
     },
     {
       "item": "salt",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "Kashmiri chilli powder",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "dried red chilli flakes",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground coriander",
-      "amount": "1½ tsp"
+      "amount": "1½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "ground cumin",
-      "amount": "1½ tsp"
+      "amount": "1½ tsp",
+      "group": "MARINADE"
     },
     {
       "item": "garam masala",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "MARINADE"
     },
     {
       "item": "amchoor (dried mango powder)",
-      "amount": "1½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "lemon or lime juice",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "garlic and ginger paste blended with 3 tbsp finely chopped onion",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "green chilli paste",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "mint sauce",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "finely chopped coriander (cilantro)",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "200g (¾ cup)"
+      "amount": "200g (¾ cup)",
+      "group": "MARINADE"
     }
   ],
   "method": [
-    "Place all the marinade ingredients in a large mixing bowl and whisk to combine. Add the meat and mix well with your hands so that it is thoroughly coated in the marinade. Cover and leave to marinate for at least 30 minutes or overnight – the longer the better."
-  ]
+    "Place all the marinade ingredients in a large mixing bowl and whisk to combine. Add the meat and mix well with your hands so that it is thoroughly coated in the marinade. Cover and leave to marinate for at least 30 minutes or overnight – the longer the better.",
+    "When ready to cook, set up the barbecue for direct heat cooking. Skewer the meat, preferably on flat skewers if you have them, and place over the hot coals. Grill for about 5 minutes on one side, then turn the skewers over and grill for another 5 minutes, or until the exterior is charred. Be sure to brush the meat from time to time with the melted ghee. Season with salt and serve with hot naans, a salad, your hot sauce of choice and perhaps a raita or two."
+  ],
+  "image": "/recipes/beef-boti-kebabs.jpg"
 }

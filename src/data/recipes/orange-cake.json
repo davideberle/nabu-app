@@ -3,11 +3,14 @@
   "name": "Orange Cake",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Amina Al-Saigh"
+    "author": "Reem Kassis"
   },
   "servings": "10 to 12 servings",
-  "time": "15 minutes",
   "intro": "This simple orange cake was tested six times before I was happy with the results. I was adamant about including a cake that was unfussy and perfectly delicious on its own—no need for any glaze or icing! I also don’t particularly enjoy baking, so the only cake I’ll bake is one that I can mix in a bowl using a whisk or spatula. I don’t want many steps, I don’t want to wait for anything to chill, and I don’t want to take out my stand mixer. This orange cake is the answer. It reminds me of the cakes we used to always have at the breakfast table or at teatime. We would often cut a slice of cake and top it with plain yogurt to enjoy. I recently asked a few Iraqi friends if they did this as well and was met with blank stares. Maybe it was just our family. But make this cake and try it! I do have to warn you though: zesting the oranges is a bit of a workout, so feel free to get someone else involved and pass it on to them while you do the “hard” part.",
+  "time": {
+    "prep": "15 minutes",
+    "cook": "45 minutes"
+  },
   "ingredients": [
     {
       "item": "plus 1 tablespoon vegetable oil, divided",
@@ -18,8 +21,8 @@
       "amount": "2 cups (240 g)"
     },
     {
-      "item": "oranges",
-      "amount": "3 large"
+      "item": "large oranges",
+      "amount": "3"
     },
     {
       "item": "baking powder",
@@ -40,6 +43,11 @@
     {
       "item": "eggs, at room temperature",
       "amount": "3"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 tablespoon",
+      "group": "FOR GARNISHING"
     }
   ],
   "method": [
@@ -51,7 +59,5 @@
     "Bake for 45 minutes, or until a toothpick inserted into the center comes out clean. Let cool for 10 minutes, then carefully flip onto a cake plate or stand. Let cool completely.",
     "Dust with the powdered sugar, slice, and serve."
   ],
-  "dietary": [
-    "vegetarian"
-  ]
+  "image": "/recipes/orange-cake.jpg"
 }

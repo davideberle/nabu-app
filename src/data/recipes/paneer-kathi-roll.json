@@ -7,6 +7,10 @@
   },
   "servings": "makes 4",
   "intro": "This is a different way of making paneer kathi rolls. Usually the paneer is cubed and then wrapped in a chapatti. This is very good, but I like the paneer grated, as I saw them doing it at Zindiya Streatery & Bar in Birmingham. The cheese is heated through and mixed well with all the other ingredients, making the plain old paneer kathi roll a luxurious and mouthwatering wrap.",
+  "time": {
+    "prep": "10 MINS, PLUS OVERNIGHT SOAKING THE DHAL",
+    "cook": "10 MINS"
+  },
   "ingredients": [
     {
       "item": "chapattis or parathas (shop-bought or homemade), warmed",
@@ -22,59 +26,73 @@
     },
     {
       "item": "washed moong dhal, soaked in water overnight",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "SALAD"
     },
     {
       "item": "red cabbage, finely shredded",
-      "amount": "150g (5½oz)"
+      "amount": "150g (5½oz)",
+      "group": "SALAD"
     },
     {
       "item": "white cabbage, finely shredded",
-      "amount": "150g (5½oz)"
+      "amount": "150g (5½oz)",
+      "group": "SALAD"
     },
     {
       "item": "red onion, diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "SALAD"
     },
     {
       "item": "carrot, grated",
-      "amount": "1"
+      "amount": "1",
+      "group": "SALAD"
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "SALAD"
     },
     {
       "item": "Juice of 1–2 limes",
-      "amount": ""
+      "amount": "",
+      "group": "SALAD"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
-      "amount": ""
+      "amount": "",
+      "group": "SALAD"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "FILLING"
     },
     {
       "item": "black mustard seeds",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "FILLING"
     },
     {
       "item": "Kashmiri dried red chillies, broken into 3 pieces and deseeded",
-      "amount": "2"
+      "amount": "2",
+      "group": "FILLING"
     },
     {
       "item": "onion, finely chopped",
-      "amount": "1"
+      "amount": "1",
+      "group": "FILLING"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "FILLING"
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)"
+      "amount": "200g (7oz)",
+      "group": "FILLING"
     }
   ],
   "method": [
@@ -82,6 +100,7 @@
     "For the filling, heat the oil in a large frying pan over a medium–high heat. When visibly hot, add the mustard seeds. When they begin to pop (after about 30 seconds), add the Kashmiri chillies, followed by the onion. Allow the onion to fry until translucent and lightly browned – about 5 minutes should do it. Now stir the turmeric into the oil, then add the paneer and stir it around until it is heated through.",
     "Divide the cheese mixture between four warmed chapattis. Top with equal amounts of the salad and top with the mint and coriander and tamarind sauces. Wrap tightly, then cut each kathi in half diagonally. Serve immediately."
   ],
+  "image": "/recipes/paneer-kathi-roll.jpg",
   "dietary": [
     "vegetarian"
   ]

@@ -3,11 +3,14 @@
   "name": "SILKY BUTTER BEANS WITH ROASTED CORN AND HAZELNUTS",
   "source": {
     "cookbook": "Plentiful",
-    "author": "Denai Moore"
+    "author": "Dee Sherwood"
   },
   "servings": "serves 4–6",
-  "time": "30 MINUTE",
   "intro": "There are no secrets or tricks here. Just a humble bowl of beans with wonderful sweet and crunchy bits. The base starts with olive oil, onions and whole garlic cloves that ooze a more subtle flavour into the pan. Beans can go a long way. They’re cheap, creamy and with a bit of care can be transformed into a glorious meal. They work so well in quick braises like this and soak up so much flavour.",
+  "time": {
+    "prep": "15 MINUTESCOOK TIME: 30 MINUTES",
+    "cook": "30 MINUTES"
+  },
   "ingredients": [
     {
       "item": "hazelnuts",
@@ -61,6 +64,7 @@
     "Meanwhile, char the corn. If you have a gas hob (stovetop), use tongs to hold the corn over the flame until charred. If you don’t have a gas hob, heat a little oil in a frying pan over a medium-high heat and fry until charred. Use a sharp knife to shave the kernels from the cob and set aside.",
     "Check the beans for seasoning and then add a splash of apple cider vinegar. Using the back of a fork, smush some of the butter beans in the pan to create a lush texture. Spoon the beans onto a serving dish, sprinkle the corn over the top and then add the hazelnuts. Top with some parsley to finish."
   ],
+  "image": "/recipes/silky-butter-beans-with-roasted-corn-and-hazelnuts.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

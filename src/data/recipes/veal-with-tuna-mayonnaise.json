@@ -3,7 +3,7 @@
   "name": "Veal with Tuna Mayonnaise",
   "source": {
     "cookbook": "Four Seasons",
-    "author": "Katie and Giancarlo Caldesi"
+    "author": "Mietta Sartori"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -16,28 +16,56 @@
       "amount": "250 ml"
     },
     {
-      "item": "large onion, cut into large pieces",
-      "amount": "1"
+      "item": "arge carrots, cut into large pieces",
+      "amount": "1–2 l"
+    },
+    {
+      "item": "celery stalks, cut into large pieces",
+      "amount": "1–2"
+    },
+    {
+      "item": "arge onion, cut into large pieces",
+      "amount": "1 l"
     },
     {
       "item": "bay leaves",
       "amount": "2"
     },
     {
+      "item": "a few peppercorns",
+      "amount": ""
+    },
+    {
+      "item": "MAYONNAISE",
+      "amount": ""
+    },
+    {
       "item": "organic egg yolks",
       "amount": "2"
     },
     {
-      "item": "salt",
-      "amount": "1 teaspoon"
+      "item": "teaspoon salt",
+      "amount": "1"
     },
     {
-      "item": "Dijon mustard",
-      "amount": "1 teaspoon"
+      "item": "teaspoon Dijon mustard",
+      "amount": "1"
     },
     {
       "item": "sunflower oil",
       "amount": "300 ml"
+    },
+    {
+      "item": "juice of ½ organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "TUNA MIX",
+      "amount": ""
     },
     {
       "item": "canned tuna",
@@ -50,10 +78,18 @@
     {
       "item": "handful capers, plus extra for garnish",
       "amount": "1"
+    },
+    {
+      "item": "salt and ground black pepper",
+      "amount": ""
     }
   ],
   "method": [
+    "Choose a saucepan that the veal will just fit into. Place the veal in the pan and cover with cold water. Add the wine, carrots, celery, onion, bay leaves and peppercorns. Put the lid on. Bring to the boil and then reduce the heat to low. Let it simmer for 20–25 minutes. Allow the meat to cool in the stock (see Note).",
+    "For the mayonnaise, beat the egg yolks with the salt and mustard then, while continuing to beat steadily, add the oil drop by drop – as the yolks begin to thicken, increase the oil to a steady trickle. Add some lemon juice then more oil, alternating until you have used up both the oil and lemon juice. Season to taste.",
     "Place the tuna, anchovies and capers in a food processor, pulse to mix and add 1–2 ladlefuls of the veal stock. The tuna mixture should be like a thick cream. Taste and add salt and pepper if needed.",
-    "Slice the veal very thinly and arrange on a serving plate. Mix some of the mayonnaise with the tuna mixture and spread some of it over the sliced meat and put the rest in a bowl, to serve on the side. Garnish with capers."
-  ]
+    "Slice the veal very thinly and arrange on a serving plate. Mix some of the mayonnaise with the tuna mixture and spread some of it over the sliced meat and put the rest in a bowl, to serve on the side. Garnish with capers.",
+    "The left-over stock from cooking the veal can be used to make risotto. It can also be frozen for later use."
+  ],
+  "image": "/recipes/veal-with-tuna-mayonnaise.jpg"
 }

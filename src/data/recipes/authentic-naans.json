@@ -7,6 +7,10 @@
   },
   "servings": "makes enough to serve 8–10",
   "intro": "You don’t need a tandoor oven to make great-tasting, fluffy naans. Sure, it’s nice to use a tandoor, and I often do, but this pan method is much easier and worth a try. I guarantee you that the naans you make at home on your hob will be just as good as most takeaways, if not better.",
+  "time": {
+    "prep": "15 MINS, PLUS RISING TIME",
+    "cook": "20 MINS"
+  },
   "ingredients": [
     {
       "item": "plain (all-purpose) flour, plus extra for dusting",
@@ -61,6 +65,7 @@
     "Heat a dry frying pan over a high heat and, when very hot, place the naan in it. It will begin to cook on the underside then bubble on the top. Check the bottom regularly to ensure it doesn’t burn. If it begins to get too dark, turn the naan over to get a bit of colour on the other side. Each naan should take no more than 3–5 minutes to cook.",
     "Remove the cooked naan to a plate, brush with a little ghee and sprinkle with nigella seeds. Keep warm while you cook the remaining dough in the same way."
   ],
+  "image": "/recipes/authentic-naans.jpg",
   "dietary": [
     "vegetarian"
   ]

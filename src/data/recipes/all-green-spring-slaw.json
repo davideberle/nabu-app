@@ -5,7 +5,6 @@
     "cookbook": "Afro-Vegan",
     "author": "Bryant Terry"
   },
-  "subtitle": "GREEN CABBAGE, GREEN PEAS, SUGAR SNAP PEAS, CELERY, PUMPKIN SEEDS, PARSLEY, CHIVES",
   "servings": "4 to 6 servings",
   "intro": "THIS DISH IS MY MODERN take on classic coleslaw. The delicate flavor of the green peas and sugar snap peas make this an exceptional dish, and the crunch from the celery and pumpkin seeds is extremely satisfying. The tangy dressing is top-notch too, so reserve any extra to use on another salad.",
   "ingredients": [
@@ -26,8 +25,8 @@
       "amount": "2 tablespoons"
     },
     {
-      "item": "garlic, minced",
-      "amount": "1 clove"
+      "item": "clove garlic, minced",
+      "amount": "1"
     },
     {
       "item": "coarse sea salt",
@@ -76,6 +75,8 @@
     "Rinse the cabbage under cold water, then squeeze with clean hands to extract as much liquid as possible. Return the cabbage to the large bowl and add the shelled peas, sugar snap peas, celery, and pumpkin seeds. Pour in enough dressing to lightly coat the vegetables (start with 3 tablespoons). Toss with clean hands, then taste and add more dressing as desired (reserve any extra for another use).",
     "To serve, with clean hands, transfer the slaw to a serving bowl, leaving any juices behind. Garnish with the parsley, chives, and lime zest."
   ],
+  "tips": "I find that the strings in celery stalks make the celery hard to chew, so I usually take them off. I typically use a vegetable peeler to lightly remove the top layer, getting rid of all the strings.",
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"
