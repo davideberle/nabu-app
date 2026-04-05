@@ -14,6 +14,52 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Abbreviate and clean up measurements
+function cleanAmount(amount: string): string {
+  if (!amount) return '';
+  return amount
+    // Remove imperial measurements in brackets
+    .replace(/\s*\([^)]*oz[^)]*\)/gi, '')
+    .replace(/\s*\([^)]*lb[^)]*\)/gi, '')
+    .replace(/\s*\([^)]*cup[^)]*\)/gi, '')
+    .replace(/\s*\([^)]*inch[^)]*\)/gi, '')
+    .replace(/\s*\([^)]*in\)/gi, '')
+    // Abbreviate common units
+    .replace(/\btablespoons?\b/gi, 'tbsp')
+    .replace(/\bteaspoons?\b/gi, 'tsp')
+    .replace(/\bkilograms?\b/gi, 'kg')
+    .replace(/\bgrams?\b/gi, 'g')
+    .replace(/\bmillilitres?\b/gi, 'ml')
+    .replace(/\blitres?\b/gi, 'l')
+    // Clean up extra spaces
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Get cuisine from cookbook
+function getCuisineFromCookbook(cookbook?: string): string | null {
+  if (!cookbook) return null;
+  const map: Record<string, string> = {
+    'Plentiful': 'Caribbean',
+    'Ottolenghi: The Cookbook': 'Middle Eastern',
+    'Jerusalem': 'Middle Eastern',
+    'Falastin': 'Palestinian',
+    'Persiana': 'Persian',
+    'The Curry Guy': 'Indian',
+    'The Curry Guy Bible': 'Indian',
+    'The Indian Vegan': 'Indian',
+    'Vietnamese Food Any Day': 'Vietnamese',
+    'Vegan Vietnamese': 'Vietnamese',
+    'Afro-Vegan': 'African & Caribbean',
+    'The Vegan Korean': 'Korean',
+    'Four Seasons': 'Italian',
+    'Souk to Table': 'Middle Eastern',
+    'Black Rican Vegan': 'Caribbean',
+    'Vegan Nigerian Kitchen': 'Nigerian',
+  };
+  return map[cookbook] || null;
+}
+
 export default async function RecipePage({
   params,
 }: {
@@ -62,7 +108,7 @@ export default async function RecipePage({
       </div>
 
       {/* Hero image */}
-      {recipe.image && (
+      {recipe.image ? (
         <div className="relative h-[65vh] w-full">
           <Image
             src={recipe.image}
@@ -73,15 +119,21 @@ export default async function RecipePage({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
         </div>
+      ) : (
+        // Spacer for recipes without images
+        <div className="h-20" />
       )}
 
-      <main className="relative max-w-2xl mx-auto px-4 -mt-24 pb-16">
+      <main className={`relative max-w-2xl mx-auto px-4 pb-16 ${recipe.image ? '-mt-24' : 'pt-4'}`}>
         <article className="bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <header className="px-8 pt-10 pb-6">
-            {/* Source line */}
+            {/* Source line with cuisine */}
             {recipe.source && (
             <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
+              {getCuisineFromCookbook(recipe.source.cookbook) && (
+                <span className="text-stone-600 dark:text-stone-300">{getCuisineFromCookbook(recipe.source.cookbook)} · </span>
+              )}
               {recipe.source.author} — {recipe.source.cookbook}
             </p>
             )}
@@ -157,7 +209,7 @@ export default async function RecipePage({
                         {capitalize(ing.item)}
                       </span>
                       <span className="text-stone-400 dark:text-stone-500 text-sm ml-4 tabular-nums">
-                        {ing.amount}{ing.unit && ` ${ing.unit}`}
+                        {cleanAmount(ing.amount)}{ing.unit && ` ${ing.unit}`}
                       </span>
                     </li>
                   ))}
