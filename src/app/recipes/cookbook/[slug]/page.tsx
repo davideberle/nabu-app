@@ -36,8 +36,15 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
     chapters.get(key)!.push(recipe);
   }
   
-  // Convert to array and sort by chapter name
-  const groupedRecipes = hasChapters 
+  // Convert to array - only use chapters if we actually have them
+  // If most recipes don't have chapters, treat as flat list
+  const chapterCount = Array.from(chapters.keys()).filter(k => k !== '__uncategorized__').length;
+  const uncategorizedCount = chapters.get('__uncategorized__')?.length || 0;
+  
+  // Use chapter grouping only if there are actual chapters and not too many uncategorized
+  const useChapterGrouping = hasChapters && chapterCount > 0 && (uncategorizedCount < recipes.length * 0.5);
+  
+  const groupedRecipes = useChapterGrouping 
     ? Array.from(chapters.entries()).filter(([k]) => k !== '__uncategorized__').sort((a, b) => a[0].localeCompare(b[0]))
     : [];
 
@@ -65,7 +72,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        {hasChapters ? (
+        {useChapterGrouping ? (
           // Grouped by chapter
           <div className="space-y-10">
             {groupedRecipes.map(([chapterName, chapterRecipes]) => (
