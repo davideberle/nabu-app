@@ -95,17 +95,30 @@ export default function RecipesPage() {
               View all →
             </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {cookbooks.slice(0, 8).map((cookbook) => (
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+            {cookbooks.slice(0, 6).map((cookbook) => (
               <Link
                 key={cookbook.slug}
                 href={`/recipes/cookbook/${cookbook.slug}`}
-                className="p-4 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors group"
+                className="group"
               >
-                <h3 className="font-serif text-stone-800 dark:text-stone-100 text-sm leading-tight group-hover:text-stone-600 dark:group-hover:text-stone-300 line-clamp-2">
-                  {cookbook.name}
-                </h3>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-stone-200 dark:bg-stone-800 shadow-sm group-hover:shadow-md transition-shadow">
+                  {cookbook.cover ? (
+                    <Image
+                      src={cookbook.cover}
+                      alt={cookbook.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center p-2">
+                      <span className="text-center font-serif text-stone-500 dark:text-stone-400 text-[10px] leading-tight">
+                        {cookbook.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-1.5 text-center truncate">
                   {cookbook.count} recipes
                 </p>
               </Link>

@@ -117,8 +117,27 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
+// Cookbook cover images (extracted from EPUBs)
+const COOKBOOK_COVERS: Record<string, string> = {
+  'Persiana': '/cookbooks/persiana.jpg',
+  'The Curry Guy': '/cookbooks/the-curry-guy.jpg',
+  'The Curry Guy Bible': '/cookbooks/the-curry-guy-bible.jpg',
+  'Vietnamese Food Any Day': '/cookbooks/vietnamese-food-any-day.jpg',
+  'Plentiful': '/cookbooks/plentiful.jpg',
+  'The Vegan Korean': '/cookbooks/the-vegan-korean.jpg',
+  'Black Rican Vegan': '/cookbooks/black-rican-vegan.jpg',
+  'Brunch Cookbook': '/cookbooks/brunch-cookbook.jpg',
+  'Four Seasons': '/cookbooks/four-seasons.jpg',
+  'Land of Fish and Rice': '/cookbooks/land-of-fish-and-rice.jpg',
+  'The Authentic Greek Kitchen': '/cookbooks/the-authentic-greek-kitchen.jpg',
+  'Zagami Family Cookbook': '/cookbooks/zagami-family-cookbook.jpg',
+  'Vegan Chocolate': '/cookbooks/vegan-chocolate.jpg',
+  'The Indian Vegan': '/cookbooks/the-indian-vegan.jpg',
+  'The High-Protein Vegan Cookbook': '/cookbooks/the-high-protein-vegan-cookbook.jpg',
+};
+
 // Get all unique cookbooks with counts
-export function getCookbooks(): { name: string; slug: string; count: number; author?: string }[] {
+export function getCookbooks(): { name: string; slug: string; count: number; author?: string; cover?: string }[] {
   const cookbookMap = new Map<string, { count: number; author?: string }>();
   
   for (const recipe of allRecipes) {
@@ -138,7 +157,8 @@ export function getCookbooks(): { name: string; slug: string; count: number; aut
       name,
       slug: slugify(name),
       count: data.count,
-      author: data.author
+      author: data.author,
+      cover: COOKBOOK_COVERS[name]
     }))
     .sort((a, b) => b.count - a.count);
 }
