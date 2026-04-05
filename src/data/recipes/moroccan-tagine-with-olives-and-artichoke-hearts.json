@@ -1,0 +1,80 @@
+{
+  "id": "moroccan-tagine-with-olives-and-artichoke-hearts",
+  "name": "Moroccan Tagine with Olives and Artichoke Hearts",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "A delicious Moroccan stew that can be served over couscous or saffron rice. This dish can also be made vegetarian by omitting the chicken.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "skinless, boneless chicken breast halves - cut into chunks",
+      "amount": "2"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "(15.5 ounces) of can garbanzo beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "(14.5 ounces) of can diced tomatoes with juice",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can vegetable broth",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can quartered artichoke hearts, drained",
+      "amount": "1"
+    },
+    {
+      "item": "carrot, peeled and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sliced Mediterranean black olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 pinch"
+    }
+  ],
+  "method": [
+    "Heat olive oil in a large skillet over medium heat. Cook and stir chicken, onion, and garlic in hot oil until the chicken is no longer pink in the center, about 15 minutes.",
+    "Stir garbanzo beans, diced tomatoes with juice, vegetable broth, artichoke hearts, carrot, olives, sugar, lemon juice, salt, coriander, and cayenne pepper into the chicken mixture; bring to a boil, reduce heat to low, and simmer until vegetables are tender for about 30 minutes."
+  ],
+  "image": "/recipes/moroccan-tagine-with-olives-and-artichoke-hearts.jpg"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "moroccan-fig-pork-roast",
+  "name": "Moroccan Fig Pork Roast",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 servings",
+  "intro": "A succulent, savory, and sweet pork roast, ideally served over vegetable rice or couscous.",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "(5 pounds) of boneless pork loin roast",
+      "amount": "1"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cayenne pepper",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "salt and ground black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic, roughly chopped",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "onion, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fig compote",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(14.5 ounces) of can whole peeled tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat an oven to 350 degrees F (175 degrees C). Pat pork roast dry with a clean towel. Mix curry powder, turmeric, garam masala, ground ginger, chili powder, cumin, cayenne, salt, and pepper in a small bowl. Rub spice mixture all over the pork roast.",
+    "Heat the olive oil and butter in a large, heavy-bottom pot or Dutch oven over medium-high heat. Place the seasoned pork roast into the pot and cook until evenly browned, about 2 minutes on each side. Remove pork and set aside. Stir in the garlic and onion; cook and stir until the onion has softened and turned translucent for about 5 minutes. Stir in the fig compote until well blended. Return pork to the pot, coating it with the fig mixture. Pour in the tomatoes and chicken broth. Cover, and bring to a boil.",
+    "Place covered pot in the preheated oven. Cook until the pork is no longer pink in the center, about 2 hours. An instant-read thermometer inserted into the center should read 145 degrees F (63 degrees C)."
+  ],
+  "image": "/recipes/moroccan-fig-pork-roast.jpg"
+}

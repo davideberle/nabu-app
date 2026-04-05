@@ -1,0 +1,80 @@
+{
+  "id": "moroccan-chicken-and-whole-grain-couscous",
+  "name": "Moroccan Chicken and Whole Grain Couscous",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "A flavorful chicken stew that uses exotic spices and nice vegetables served over whole-grain couscous. This recipe was actually a real chicken contest winner! Vegetables and even meat can vary according to taste, but I find squash, carrots, bell peppers, and lamb work well in this recipe. Even though the spices seem strange, the flavors are subtle but fragrant! A real favorite at home.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "whole wheat couscous",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "whole cloves, crushed",
+      "amount": "5"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground dried turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "skinless, boneless chicken breast halves - chopped",
+      "amount": "6"
+    },
+    {
+      "item": "(16 ounces) of can garbanzo beans",
+      "amount": "1"
+    },
+    {
+      "item": "(16 ounces) of can crushed tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "(48 fluid ounce) of can chicken broth",
+      "amount": "1"
+    },
+    {
+      "item": "carrots, cut into 1/2 inch pieces",
+      "amount": "2"
+    },
+    {
+      "item": "zucchini, cut into 1/2-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large pot over medium heat, and cook onion until tender. Mix in bay leaves, cloves, cinnamon, turmeric, and cayenne pepper. Place chicken in the pot, and cook until well browned. Pour garbanzo beans, tomatoes, and broth into the pot, and bring to a boil. Reduce heat to low, and simmer 25 minutes.",
+    "Mix carrots and zucchini into the pot. Season with salt. Continue cooking for 10 minutes or until vegetables are tender. Serve stew over cooked couscous."
+  ],
+  "image": "/recipes/moroccan-chicken-and-whole-grain-couscous.jpg"
+}

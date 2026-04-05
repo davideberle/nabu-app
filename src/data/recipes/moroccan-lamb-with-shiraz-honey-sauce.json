@@ -1,0 +1,41 @@
+{
+  "id": "moroccan-lamb-with-shiraz-honey-sauce",
+  "name": "Moroccan Lamb with Shiraz Honey Sauce",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "A delicious Moroccan-inspired rack of lamb. Serve with honey-glazed carrots and rosemary mashed potatoes. Ras el hanout is a traditional and complex Moroccan spice blend and may be found in specialty grocery stores.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "(7 bone) rack of lamb, trimmed and frenched",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "½ tablespoons ras el hanout",
+      "amount": "2"
+    },
+    {
+      "item": "Shiraz wine",
+      "amount": "1 cup"
+    },
+    {
+      "item": "honey",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Season lamb with sea salt, and rub with ras el hanout. In a medium cast-iron skillet over medium-high heat, sear lamb on all sides until evenly browned.",
+    "Place skillet with lamb in the preheated oven, roast for 30 minutes, or until the internal temperature has reached a minimum of 145 degrees F (63 degrees C).",
+    "Remove lamb from skillet, reserve juices, and rest 10 to 15 minutes before slicing ribs. Place skillet with juices over medium heat, and stir in wine and honey. Cook until reduced by about half. Drizzle over ribs to serve."
+  ],
+  "image": "/recipes/moroccan-lamb-with-shiraz-honey-sauce.jpg"
+}

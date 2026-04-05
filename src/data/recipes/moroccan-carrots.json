@@ -1,0 +1,55 @@
+{
+  "id": "moroccan-carrots",
+  "name": "Moroccan Carrots",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 serving s",
+  "intro": "Want a nice side dish and don't want to heat up the kitchen? Great dinner idea for those hot summer nights.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "large carrots, peeled and grated",
+      "amount": "4"
+    },
+    {
+      "item": "(16 ounces) of can garbanzo beans (chickpeas), drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt and ground pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Whisk olive oil, lemon juice, cumin, chili powder, salt, and ground black pepper together; stir into carrot mixture. Marinate carrot mixture for 2 hours. Serve with crumbled feta cheese."
+  ],
+  "image": "/recipes/moroccan-carrots.jpg"
+}

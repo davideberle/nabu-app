@@ -1,0 +1,76 @@
+{
+  "id": "stovetop-moroccan-tagine",
+  "name": "Stovetop Moroccan Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 serving s",
+  "intro": "An exotic warm stew that is loved by all and is very easy to make. Also delicious as a vegetarian dish, without chicken. Serve over couscous.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "skinless, boneless chicken breast halves - cut into chunks",
+      "amount": "2"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "small butternut squash, peeled and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(15.5 ounces) can garbanzo beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "carrot, peeled and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(14.5 ounces) can diced tomatoes with juice",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can vegetable broth",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dash cayenne pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large skillet over medium heat, and cook the chicken, onion, and garlic for about 15 minutes, until browned.",
+    "Mix the squash, garbanzo beans, carrot, tomatoes with juice, broth, sugar, and lemon juice into the skillet. Season with salt, coriander, and cayenne pepper. Bring the mixture to a boil, and continue cooking for 30 minutes until vegetables are tender."
+  ],
+  "image": "/recipes/stovetop-moroccan-tagine.jpg"
+}

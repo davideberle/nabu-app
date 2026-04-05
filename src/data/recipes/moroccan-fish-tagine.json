@@ -1,0 +1,111 @@
+{
+  "id": "moroccan-fish-tagine",
+  "name": "Moroccan Fish Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "This delicious healthy dish common to North Africa, particularly Morocco, is one of my favorites when entertaining guests. The wonderful spices blended with fresh vegetables and fish is a crowd-pleaser. The fish is marinated in a chermoula sauce to soak up all the wonderful spices before cooking. This dish is prepared in a traditional method in a ceramic tagine but can be prepared in a heavy-lidded pot. This dish, as it cooks, emits some of the most wonderful smells throughout the house. Serve with couscous or rice and crusty bread to mop up all the wonderful sauce!",
+  "time": {
+    "prep": "50 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "½ cup",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "½ cup",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "½ cup",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "lemon, juiced",
+      "amount": "½",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "6 cloves",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "ground paprika",
+      "amount": "1 tsp",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "ground saffron (Optional)",
+      "amount": "¼ tsp",
+      "group": "Chermoula Marinade"
+    },
+    {
+      "item": "½ pounds cod fillets, cut into bite-sized pieces",
+      "amount": "1",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "large onion, cut into rings",
+      "amount": "1",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "large carrot, peeled and cut into matchsticks",
+      "amount": "1",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "potatoes, peeled and sliced 1/4-inch thick",
+      "amount": "2",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "large green bell pepper, sliced into rings",
+      "amount": "1",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "tomatoes, seeded and cut into strips",
+      "amount": "3",
+      "group": "Fish Tagine"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "¼ cup",
+      "group": "Fish Tagine"
+    }
+  ],
+  "method": [
+    "Mix 1/2 cup olive oil, 1/2 cup cilantro, parsley, lemon juice, garlic, paprika, ginger, cumin, salt, and saffron in a large glass or ceramic bowl. Add cod and mix well. Cover and marinate in the refrigerator for 2 hours.",
+    "Heat 1 tablespoon olive oil in a large pot or tagine. Layer onion rings, carrot matchsticks, and potato slices in the pot in that order. Remove cod from marinade and spread evenly over potatoes. Cover cod with green bell pepper rings and tomato strips. Sprinkle 1/4 cup cilantro on top. Pour marinade over cilantro.",
+    "Cover pot tightly and cook over low heat until potatoes are tender and cod flakes easily with a fork, about 1 hour."
+  ],
+  "image": "/recipes/moroccan-fish-tagine.jpg"
+}

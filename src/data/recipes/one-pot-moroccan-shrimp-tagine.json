@@ -1,0 +1,104 @@
+{
+  "id": "one-pot-moroccan-shrimp-tagine",
+  "name": "One-Pot Moroccan Shrimp Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "The rich, exotic flavors of Morocco shine through in this delicious, one-pot shrimp tagine dish! Serve over prepared couscous.",
+  "time": {
+    "prep": "20 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "large carrots, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "large sweet onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "large russet potato, peeled and diced",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "pitted Kalamata olives, sliced",
+      "amount": "½ cup"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "large tomatoes, coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "seasoned salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(1.41 ounce) package sazon seasoning with saffron (such as Goya® Azafran)",
+      "amount": "1"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "uncooked medium shrimp, peeled and deveined",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "Heat a Dutch oven over medium-high heat. Add olive oil. Saute carrots, onion, potato, and bell pepper until soft, about 5 minutes. Add olives, garlic, and ginger paste and saute for 2 minutes.",
+    "Stir in tomatoes, cilantro, parsley, cumin, seasoned salt, sazon, paprika, turmeric, lemon juice, cayenne, black pepper, and bay leaf. Cover and cook until tomatoes have broken down and flavors have combined for about 20 minutes. Add shrimp, cover, and cook until they are bright pink, about 5 minutes."
+  ],
+  "image": "/recipes/one-pot-moroccan-shrimp-tagine.jpg"
+}

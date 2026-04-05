@@ -1,0 +1,83 @@
+{
+  "id": "moroccan-chicken-tagine-with-caramelized-pears",
+  "name": "Moroccan Chicken Tagine with Caramelized Pears",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "Chicken cooked in a tagine is always meltingly tender. Adding sweet, caramelized pears at the end makes this Moroccan dish irresistible.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil, divided",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "onions, peeled and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "whole chicken, cut into pieces",
+      "amount": "1"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "3"
+    },
+    {
+      "item": "bay leaves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "bunch fresh cilantro, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger root, peeled and minced",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pears, cored and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Heat 2 tablespoon olive oil in a skillet over medium heat and cook onions until softened and browned, 8 to 10 minutes. Transfer onions into a tagine. Layer chicken pieces on top of onions.",
+    "Combine turmeric, cumin, ground coriander, and salt in a small bowl; mix well with the remaining 5 tablespoons olive oil. Spread spice mixture onto the chicken pieces. Add cinnamon pieces, bay leaves, ginger, and cilantro. Pour in 1/2 cup of water and cover tagine with a lid.",
+    "Bake in the preheated oven until chicken is no longer pink at the bone and the juices run clear for about 50 minutes. An instant-read thermometer inserted near the bone should read 165 degrees F (74 degrees C).",
+    "Melt butter in a skillet over low heat while the chicken is cooking. Add sliced pears and honey and cook, while stirring, until the honey has caramelized.",
+    "Remove tagine from the oven and stir in caramelized pears. Return to the oven and cook for an additional 10 minutes."
+  ],
+  "image": "/recipes/moroccan-chicken-tagine-with-caramelized-pears.jpg"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "vegetarian-moroccan-harira",
+  "name": "Vegetarian Moroccan Harira",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "5 servings",
+  "intro": "Harira is a famous Moroccan soup, and here's a hearty vegetarian (and vegan!) version - packed with tomatoes and chickpeas and flavored with paprika, turmeric, saffron, ginger, and harissa. The amount of water can be adjusted depending on the thickness you want.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, diced",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "(15 ounce) can chickpeas, drained",
+      "amount": "1"
+    },
+    {
+      "item": "bunch fresh cilantro, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bunch fresh parsley, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh mint leaves, chopped",
+      "amount": "20"
+    },
+    {
+      "item": "ground paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "harissa",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "saffron threads",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "water, or more to taste",
+      "amount": "4 cups"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cherry tomatoes halved",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt and ground black pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat oil in a large pot over medium heat and cook onion until soft and translucent, about 5 minutes. Add tomatoes, chickpeas, cilantro, parsley, mint, paprika, turmeric, ginger, harissa, and saffron. Add water and cook over medium heat until flavors have combined for about 30 minutes.",
+    "Mix a few tablespoons of soup liquid with flour and cornstarch in a small bowl and return to the soup, stirring in well. Add cherry tomatoes. Bring to a boil, reduce heat, and simmer over low heat until soup thickens about 10 minutes. Season with salt and pepper."
+  ],
+  "image": "/recipes/vegetarian-moroccan-harira.jpg"
+}

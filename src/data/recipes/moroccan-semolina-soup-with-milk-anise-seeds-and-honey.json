@@ -1,0 +1,54 @@
+{
+  "id": "moroccan-semolina-soup-with-milk-anise-seeds-and-honey",
+  "name": "Moroccan Semolina Soup with Milk, Anise Seeds, and Honey",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "This simple Moroccan soup is easy to prepare and can be served in the evening or as a breakfast porridge. Serve warm, garnished with cinnamon, with honey for sweetening on the side.",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "coarse semolina flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "¼ teaspoons salt, or to taste",
+      "amount": "1"
+    },
+    {
+      "item": "milk",
+      "amount": "3 cups"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "anise seed, or more to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "You can substitute fennel seeds for anise seeds if desired.",
+      "amount": "",
+      "group": "Notes"
+    },
+    {
+      "item": "The soup will thicken as it cools. Stir in additional water to thin the soup when reheating.",
+      "amount": "",
+      "group": "Notes"
+    }
+  ],
+  "method": [
+    "Bring water to a boil in a saucepan and stir in semolina and salt. Simmer gently, frequently stirring, until the semolina is tender and mixture is very thick, 10 to 15 minutes. Stir in milk, butter, and anise seed; simmer until soup reaches desired consistency, 5 to 10 minutes.",
+    "Stir milk, butter, and anise seed into soup; simmer until soup reaches desired consistency, 5 to 10 minutes."
+  ],
+  "image": "/recipes/moroccan-semolina-soup-with-milk-anise-seeds-and-honey.jpg"
+}

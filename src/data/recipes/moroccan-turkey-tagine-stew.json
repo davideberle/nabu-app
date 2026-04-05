@@ -1,0 +1,81 @@
+{
+  "id": "moroccan-turkey-tagine-stew",
+  "name": "Moroccan Turkey Tagine Stew",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 serving s",
+  "intro": "A classic Moroccan tagine stew with warm spices, vegetables, and dried fruit adds leftover turkey for a twist on a traditional dish.",
+  "time": {
+    "prep": "35 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped red onion",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "thinly sliced carrots",
+      "amount": "2 cups"
+    },
+    {
+      "item": "thinly sliced parsnips",
+      "amount": "2 cups"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ras el hanout seasoning",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(15 ounces) of can garbanzo beans, drained, rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "(14.5 ounces) of can Hunt's Diced Tomatoes, undrained",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can chicken broth",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped dried apricots",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped pitted prunes or whole raisins",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "shredded cooked turkey",
+      "amount": "3 cups"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Greek yogurt and hot cooked couscous, optional",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat oil in a Dutch oven or large saucepan over medium-high heat. Add onion; cook 3 minutes or until tender, stirring occasionally. Add carrots and parsnips; cook 5 minutes or until crisp-tender. Stir in garlic and ras el hanout seasoning; cook 1 minute or until fragrant .",
+    "Stir in beans, undrained tomatoes, broth, water, apricots, and prunes. Bring to a boil. Reduce heat and simmer 30 minutes or until vegetables are tender, stirring occasionally.",
+    "Stir in turkey; heat 5 minutes more or until hot. Top each serving with cilantro. If desired, top with yogurt and serve with couscous on the side."
+  ],
+  "image": "/recipes/moroccan-turkey-tagine-stew.jpg"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "moroccan-chicken-thigh-sheet-pan-dinner",
+  "name": "Moroccan Chicken Thigh Sheet Pan Dinner",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "This Moroccan-inspired sheet pan dinner is packed with bold sweet and savory flavors and palate-pleasing textures. This is perfect for quick weeknight dinners or laid-back dinner parties. Ras el hanout is a North African seasoning available in specialty grocery stores, or if you'd like to make your own, there are many recipes available online.",
+  "time": {
+    "prep": "30 mins"
+  },
+  "ingredients": [
+    {
+      "item": "lemon, zested and juiced",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "½ teaspoon of ras el hanout",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(6 ounces) of bone-in chicken thighs with skin",
+      "amount": "4"
+    },
+    {
+      "item": "medium sweet potato, peeled and cut into 1-inch chunks",
+      "amount": "1"
+    },
+    {
+      "item": "medium zucchini, cut into 1-inch chunks",
+      "amount": "1"
+    },
+    {
+      "item": "(15 ounces) of can chickpeas, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can quartered artichoke hearts, drained",
+      "amount": "1"
+    },
+    {
+      "item": "ras el hanout",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "shelled pistachios, coarsely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "To make cleanup easier, line the sheet pan with aluminum foil.",
+      "amount": "",
+      "group": "Notes"
+    }
+  ],
+  "method": [
+    "Combine lemon juice, lemon zest, 2 tablespoons olive oil, 1 1/2 teaspoons ras el hanout, and 1/2 teaspoon salt in a resealable plastic bag. Place chicken thighs into the bag, making sure marinade gets under the skin. Seal and refrigerate for at least 30 minutes. Remove chicken from refrigerator 20 minutes before baking and let it come to room temperature.",
+    "Combine sweet potato, zucchini, chickpeas, and artichoke hearts in a bowl. Sprinkle with 1 teaspoon ras el hanout and 1/2 teaspoon salt. Drizzle with 2 tablespoons olive oil and stir to combine evenly.",
+    "Remove chicken from marinade and place on a 13x18-inch rimmed sheet pan. Place vegetable mixture around chicken.",
+    "Bake in the preheated oven, flipping vegetables halfway through, or until chicken has reached an internal temperature of 165 degrees F (74 degrees C), about 30 minutes.",
+    "Remove from oven and garnish with pomegranate seeds, parsley, and pistachios before serving."
+  ],
+  "image": "/recipes/moroccan-chicken-thigh-sheet-pan-dinner.jpg"
+}

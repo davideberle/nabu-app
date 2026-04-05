@@ -1,0 +1,55 @@
+{
+  "id": "moroccan-spiced-roasted-carrots",
+  "name": "Moroccan-Spiced Roasted Carrots",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "Roasted carrots with the Moroccan spice blend. Fast and easy, and pairs well with any meat!",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "carrots, cut into thick slices",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "white sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper, or to taste",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "aluminum foil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Toss carrots in a bowl with olive oil, lemon juice, sugar, cumin, cinnamon, garlic powder, and cayenne pepper. Transfer to a large roasting pan and arrange in a single layer."
+  ],
+  "image": "/recipes/moroccan-spiced-roasted-carrots.jpg"
+}

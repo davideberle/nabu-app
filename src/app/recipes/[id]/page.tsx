@@ -56,8 +56,35 @@ function getCuisineFromCookbook(cookbook?: string): string | null {
     'Souk to Table': 'Middle Eastern',
     'Black Rican Vegan': 'Caribbean',
     'Vegan Nigerian Kitchen': 'Nigerian',
+    'Tagine Cookbook': 'Moroccan',
+    'Land of Fish and Rice': 'Chinese',
+    'Brunch Cookbook': 'American',
+    'Vegan Chocolate': 'Desserts',
+    'The High-Protein Vegan Cookbook': 'Vegan',
+    'Zagami Family Cookbook': 'Italian',
   };
   return map[cookbook] || null;
+}
+
+// Format cooking time
+function formatTime(time?: { prep?: string; cook?: string; total?: string | number }): string | null {
+  if (!time) return null;
+  
+  // If we have total, use that
+  if (time.total) return typeof time.total === 'number' ? `${time.total} min` : time.total;
+  
+  // Try to extract numbers from prep/cook strings
+  const prepMatch = time.prep?.match(/(\d+)/);
+  const cookMatch = time.cook?.match(/(\d+)/);
+  
+  const prep = prepMatch ? parseInt(prepMatch[1]) : 0;
+  const cook = cookMatch ? parseInt(cookMatch[1]) : 0;
+  
+  if (prep + cook > 0) {
+    return `${prep + cook} min`;
+  }
+  
+  return null;
 }
 
 export default async function RecipePage({
@@ -155,17 +182,19 @@ export default async function RecipePage({
               ))}
             </div>
             )}
-            <div className="flex gap-3 mt-2">
+            <div className="flex gap-3 mt-2 flex-wrap">
               {recipe.servings && (
               <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
                 {capitalize(recipe.servings)}
               </span>
               )}
-              {recipe.time?.total && (
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {formatTime(recipe.time as any) && (
               <>
               <span className="text-stone-300 dark:text-stone-600">·</span>
               <span className="text-xs tracking-wide text-stone-500 dark:text-stone-400">
-                {recipe.time.total} min
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                ⏱ {formatTime(recipe.time as any)}
               </span>
               </>
               )}

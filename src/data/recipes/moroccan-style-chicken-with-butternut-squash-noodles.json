@@ -1,0 +1,69 @@
+{
+  "id": "moroccan-style-chicken-with-butternut-squash-noodles",
+  "name": "Moroccan-Style Chicken with Butternut Squash Noodles",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 serving s",
+  "intro": "Delicious Moroccan-inspired chicken dish served with butternut squash noodles.",
+  "time": {
+    "prep": "25 mins"
+  },
+  "ingredients": [
+    {
+      "item": "spiralized butternut squash",
+      "amount": "2 cups"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt and ground black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "½ pound of skinless, boneless chicken breasts, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "Moroccan spice mix (such as McCormick®), or to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "orange juice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped dried apricots",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped dates",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond slivers",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cooked rice",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Place spiralized butternut squash in a bowl; add 1 tablespoon oil, salt, and pepper. Toss to coat and transfer to a baking sheet.",
+    "Heat butter and the remaining 2 tablespoons oil in a large saute pan over medium-high heat. Add chicken and sprinkle both sides with Moroccan spice, salt, and pepper to taste. Cover pan and cook, occasionally turning, until chicken is no longer pink in the center and the juices run clear, 5 to 7 minutes. Remove chicken and set aside.",
+    "Add orange juice, apricots, cranberries, and dates to the same saute pan over medium heat. Cook and stir until orange juice thickens, 3 to 4 minutes. Add almonds and toss to coat. Remove topping from heat."
+  ],
+  "image": "/recipes/moroccan-style-chicken-with-butternut-squash-noodles.jpg"
+}

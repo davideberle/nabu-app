@@ -1,0 +1,138 @@
+{
+  "id": "moroccan-spiced-pork-roast",
+  "name": "Moroccan-Spiced Pork Roast",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "12 servings",
+  "intro": "Serving a gorgeous, fancy-looking holiday roast doesn't have to be complicated, time-consuming, or expensive. This pork loin proves exactly that. This is fast, easy, and affordable, but it looks like a million dollars when you bring it to the table. The beautifully warming and aromatic spices really work so well with a pork roast - I hope you give it a try soon!",
+  "time": {
+    "prep": "30 mins"
+  },
+  "ingredients": [
+    {
+      "item": "(3 pounds) boneless pork loin roast",
+      "amount": "1"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "5 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "¼ tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "¼ tsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "honey, or as needed",
+      "amount": "3 tbsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "baby potatoes",
+      "amount": "8",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "carrots, cut into 2-inch chunks",
+      "amount": "2",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "Anaheim chile peppers, halved and seeded",
+      "amount": "2",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "red onion, roughly chopped",
+      "amount": "1",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "salt to taste",
+      "amount": "",
+      "group": "For the Moroccan Spice Rub"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "½ cup",
+      "group": "For the Yogurt Sauce (Optional)"
+    },
+    {
+      "item": "thinly sliced fresh mint",
+      "amount": "2 tbsp",
+      "group": "For the Yogurt Sauce (Optional)"
+    },
+    {
+      "item": "garlic, finely crushe d",
+      "amount": "1 clove",
+      "group": "For the Yogurt Sauce (Optional)"
+    },
+    {
+      "item": "You can use any size pork loin roast.",
+      "amount": "",
+      "group": "Notes"
+    }
+  ],
+  "method": [
+    "Butterfly the pork loin by cutting almost all the way through, starting on the thinnest side, keeping your knife flat and parallel to the cutting board. Stop about 1 inch from the opposite edge you started so that the meat opens up like a book. A few more shallow cuts can be made if the pork is not opening up enough to flatten out, but do not cut all the way through; otherwise, you'll end up with two pieces.",
+    "Season the butterflied pork on both sides with kosher salt and let sit out at room temperature for 30 to 45 minutes, or 2 to 3 hours in the fridge.",
+    "Preheat the oven to 350 degrees F (175 degrees C). Grease a roasting pan with 2 tablespoons olive oil. Pat the tenderloin dry with a paper towel.",
+    "Mix cumin, coriander, ginger, black pepper, smoked paprika, cayenne, cinnamon, cloves, allspice, and honey together in a bowl with a spoon. Spread about half of the spice mixture inside the butterflied pork, fold it back together, and spread the remaining mixture all over the surface. Use 3 or 4 pieces of kitchen string to tie the loin up every few inches, cutting off the extra string.",
+    "Place the pork into the prepared roasting pan and surround it with a vegetable mixture.",
+    "Roast in the preheated oven until an instant-read thermometer inserted into the thickest part of the loin reads at least 140 to 145 degrees F (60 to 63 degrees C), about 1 hour and 15 minutes. Remove from the oven and turn roast over with tongs in pan drippings. Transfer to a plate, cover loosely with foil and let rest for 15 minutes.",
+    "Increase oven temperature to 425 degrees F. Toss vegetable mixture in pan drippings and return to the oven to crisp up, about 10 minutes.",
+    "Remove strings on the roast. Slice, spoon pan drippings over and serve with vegetables and yogurt sauce."
+  ],
+  "image": "/recipes/moroccan-spiced-pork-roast.jpg"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "savory-quail-tagine",
+  "name": "Savory Quail Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "2 serving s",
+  "intro": "Quail cooked in savory spices with vegetables in a tagine for a change from the usual. If you do not own a tagine, a Dutch oven will work perfectly well.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "whole quail",
+      "amount": "1"
+    },
+    {
+      "item": "ras el hanout",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil, or more as needed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "carrots, cut into 1-inch rounds",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "1-ounce leeks, cut into 1/2-inch rounds",
+      "amount": ""
+    },
+    {
+      "item": "garlic, peeled and crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "dried apricots",
+      "amount": "10"
+    },
+    {
+      "item": "potatoes, cut into 1-inch slices",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "loomi Aswad (dried black lime seasoning)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Rub the ras el hanout onto the entire surface of the quail, including beneath the wings and legs. Use all the seasoning. Allow it to rest at room temperature for 30 minutes.",
+    "Preheat oven to 375 degrees F (190 degrees C). Remove the middle rack(s) and place the lower rack in its lowest position.",
+    "Place a diffuser over the stove burner, so the tagine base is not in direct contact with it. Place the tagine base on the diffuser and heat over medium heat; add the oil. When oil is hot, add the carrots and leeks. Saute until leeks are tender, about 5 minutes. Separate the leeks into single rounds using a wooden spoon. Push the vegetables to the sides of the tagine and add the quail and garlic. Cook the quail on all sides until nicely browned, about 10 minutes. You may need to add a bit of oil occasionally, depending on the bird's fat content. Remove tagine from heat.",
+    "Arrange apricots, potatoes, and tomatoes around the edges, leaving the quail uncovered. Sprinkle all ingredients with the loomi Aswad.",
+    "Cover the tagine place in preheated oven. Roast until the internal temperature of the quail has reached 150 degrees F, 35 to 40 minutes."
+  ],
+  "image": "/recipes/savory-quail-tagine.jpg"
+}

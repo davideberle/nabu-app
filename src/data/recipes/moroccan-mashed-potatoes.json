@@ -1,0 +1,49 @@
+{
+  "id": "moroccan-mashed-potatoes",
+  "name": "Moroccan Mashed Potatoes",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "32 servings",
+  "intro": "These creamy Middle Eastern-style potatoes are flavored with turmeric and use olive oil rather than butter. They are great alone and for fillings in puff pastries. Amounts of salt, pepper, and other spices may be adjusted to taste.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "large baking potatoes, peeled and cubed",
+      "amount": "10"
+    },
+    {
+      "item": "olive oil, or as needed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Place the potatoes into a large pot, and fill with enough water to cover. Bring to a boil over medium-high heat, cook until tender, and be pierced with a fork, about 20 minutes.",
+    "Meanwhile, place 1 tablespoon olive oil in a skillet and heat over medium-high heat. Stir in the onion and cook until translucent and lightly browned, about 6 minutes.",
+    "Drain water from the potatoes and mash. Stir in the onion, and continue mashing. Mix in the turmeric, salt, pepper, and cumin. Add the remaining 2 tablespoons olive oil, or amount desired to make the potatoes more or less creamy."
+  ],
+  "image": "/recipes/moroccan-mashed-potatoes.jpg"
+}

@@ -1,44 +1,43 @@
 {
   "id": "cucumber-raita",
-  "name": "CUCUMBER RAITA",
+  "name": "Cucumber Raita",
   "source": {
-    "cookbook": "The Curry Guy Bible",
-    "author": "Dan Toombs"
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
   },
-  "servings": "makes 550ml (generous 2¼ cups)",
-  "intro": "This is delicious spooned over biryanis and kebabs. If you want to make it even more exciting, try adding a few small chunks of cooked potato and/or finely chopped green chilli.",
+  "servings": "12 servings",
+  "intro": "Serve this cool, refreshing salad with my Lamb Tagine and Moroccan Couscous on this site. Make the salad early in the day and keep it in the refrigerator to let the flavors blend and intensify. Add more mint to taste, but do not substitute dried mint; the flavor is just not the same.",
   "time": {
-    "prep": "5 MINS",
-    "cook": ""
+    "prep": "15 mins"
   },
   "ingredients": [
     {
-      "item": "Greek yoghurt",
-      "amount": "420g (scant 1¾ cups)"
+      "item": "hot-house cucumber - peeled, seeded, and thinly sliced",
+      "amount": "2"
     },
     {
-      "item": "garlic cloves, finely chopped",
-      "amount": "3"
+      "item": "Greek yogurt",
+      "amount": "2 cups"
     },
     {
-      "item": "English cucumber, grated",
-      "amount": "½"
+      "item": "lemon juice",
+      "amount": "3 tbsp"
     },
     {
-      "item": "Juice of 1–2 limes",
-      "amount": ""
+      "item": "chopped fresh mint",
+      "amount": "2 tbsp"
     },
     {
-      "item": "Pinch each of salt and freshly ground black pepper",
-      "amount": ""
+      "item": "white sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ tsp"
     }
   ],
   "method": [
-    "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about 1 hour before serving."
+    "Stir together the cucumber, yogurt, lemon juice, mint, sugar, and salt in a bowl. Cover and refrigerate for at least 3 hours, preferably overnight."
   ],
-  "image": null,
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/cucumber-raita.jpg"
 }

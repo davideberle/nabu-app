@@ -1,0 +1,60 @@
+{
+  "id": "moroccan-sweet-potato-and-raisin-salad",
+  "name": "Moroccan Sweet Potato and Raisin Salad",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "This sweet Moroccan salad is prepared by simmering diced sweet potatoes or yams with cinnamon, turmeric, saffron, raisins, and honey. It is an easy dish with an exotic taste.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "raisins",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "sweet potatoes, peeled and cut into 1/2-inch cubes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "saffron threads, crumbled, or to taste",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Place sweet potatoes into a saucepan, cover with 2 cups water, and bring to a boil. Add honey, butter, salt, cinnamon, black pepper, turmeric, and saffron to potatoes; reduce heat to low. Simmer until potatoes are tender but not mushy, 8 to 10 minutes. Drain raisins and stir into sweet potato mixture.",
+    "Continue to simmer until the mixture has thickened, about 10 more minutes. Let cool before serving."
+  ],
+  "image": "/recipes/moroccan-sweet-potato-and-raisin-salad.jpg"
+}

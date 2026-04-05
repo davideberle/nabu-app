@@ -1,0 +1,100 @@
+{
+  "id": "moroccan-shepherds-pie",
+  "name": "Moroccan Shepherd's Pie",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "This is a Moroccan take on shepherd's pie. Delicious combinations of savory and sweet, with lamb and turmeric simmered with cinnamon, raisins, and sweet potato. This dish also looks pleasant, and each happy eater gets their own ramekin!",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "cooking spray",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cubed lamb stew meat",
+      "amount": "1 pound"
+    },
+    {
+      "item": "ground cumin, divided",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt, divided",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "½ cups chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "4"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "½ (10.5 ounces) of cans low-sodium chicken broth",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olives, or to taste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raisins",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cinnamon, divided",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "frozen green peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "peeled and chopped sweet potatoes",
+      "amount": "4 cups"
+    },
+    {
+      "item": "large egg, lightly beaten",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350 degrees F (175 degrees C). Spray four 10-ounce ramekins with cooking spray.",
+    "Sprinkle lamb evenly with 1/2 teaspoon cumin and 1/4 teaspoon salt. Cook and stir lamb in the hot oil until browned on all sides, about 4 minutes. Transfer lamb to a bowl. Cook and stir onion in the same skillet until slightly softened about 3 minutes; add garlic and cook until fragrant, about 30 seconds.",
+    "Stir tomato paste into onion mixture until evenly coated, about 30 seconds. Pour broth and water into onion mixture; bring to a boil, scraping skillet with a wooden spoon to loosen browned bits of food. Return lamb to skillet.",
+    "Stir remaining 1/2 teaspoon cumin, olives, raisins, honey, cayenne pepper, turmeric, and 1/8 teaspoon cinnamon into lamb mixture. Reduce heat and simmer, occasionally stirring, until lamb is fully cooked and flavors have blended for about 30 minutes. Remove from heat and stir in peas.",
+    "Place sweet potatoes into a large pot and cover with salted water; bring to a boil. Reduce heat to medium-low and simmer until tender, about 10 minutes. Drain and cool for 5 minutes. Transfer sweet potatoes to a bowl and sprinkle with 1/4 teaspoon salt and 3/8 teaspoon cinnamon. Beat potato mixture with a hand mixer at high speed until smooth. Add egg; beat until incorporated.",
+    "Spoon lamb mixture into each ramekin; spread sweet potato mixture over lamb mixture. Place ramekins on a baking sheet."
+  ],
+  "image": "/recipes/moroccan-shepherds-pie.jpg"
+}

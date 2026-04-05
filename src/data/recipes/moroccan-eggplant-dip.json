@@ -1,0 +1,65 @@
+{
+  "id": "moroccan-eggplant-dip",
+  "name": "Moroccan Eggplant Dip",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "12 servings",
+  "intro": "Serve this to folks who never eat eggplant. They will be amazed. Serve at room temperature with wheat crackers.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "(8 ounces) of can tomato sauce",
+      "amount": "1"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cayenne",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "½ pounds eggplant, unpeeled, cut into chunks",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, seeded, and cut into chunks",
+      "amount": "1"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Mix tomato sauce, red wine vinegar, cumin, salt, sugar, and cayenne together in a small bowl.",
+    "Heat olive oil in a large skillet over medium-low heat. Add garlic; cook and stir until golden, about 2 minutes. Add eggplant and red bell pepper; pour in tomato sauce mixture. Simmer, covered, until eggplant and red bell pepper soften, about 20 minutes. Remove from heat and let cool, about 10 minutes.",
+    "Transfer eggplant mixture to a food processor; pulse until it reaches the desired consistency. Sprinkle cilantro over dip."
+  ],
+  "image": "/recipes/moroccan-eggplant-dip.jpg"
+}

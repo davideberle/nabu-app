@@ -1,0 +1,90 @@
+{
+  "id": "moroccan-harira-bean-soup",
+  "name": "Moroccan Harira (Bean Soup)",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "10 serving s",
+  "intro": "A (mostly) vegetarian, a shoestring-budget meal that will leave you feeling both very satisfied and with tons of leftovers. Bonus: it's super-healthy and easy to prepare.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "beef stock",
+      "amount": "6 cups"
+    },
+    {
+      "item": "dry lentils",
+      "amount": "1 cup"
+    },
+    {
+      "item": "olive oil, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "minced fresh ginger root",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(15 ounces) of can garbanzo beans, drained",
+      "amount": "1"
+    },
+    {
+      "item": "(15 ounces) of can red kidney beans, rinsed and drained",
+      "amount": "1"
+    },
+    {
+      "item": "(14 ounces) of can diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "cooked quinoa (Optional)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bunch flat-leaf parsley leaves and thinner stems, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bunch cilantro leaves and thinner stems, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "lemon, or to taste, juiced",
+      "amount": "1"
+    },
+    {
+      "item": "To make the soup wholly vegetarian, trade out the beef stock for vegetable stock.",
+      "amount": "",
+      "group": "Notes"
+    }
+  ],
+  "method": [
+    "Stir beef stock and lentils together in a large pot; bring to a boil, reduce heat to low, and keep at a simmer while preparing onion.",
+    "Heat olive oil in a skillet over medium heat. Cook and stir onion, cinnamon stick, ginger, turmeric, cumin, and black pepper in the hot oil until the onion is translucent for about 5 minutes; add to stock mixture.",
+    "Pour garbanzo beans, kidney beans, tomatoes, and quinoa into the stock mixture; stir and bring mixture to a boil. Stir parsley and cilantro into the stock mixture; reduce heat to low and cook mixture at a simmer until the lentils are tender, about 45 minutes. Drizzle lemon juice over the soup before serving."
+  ],
+  "image": "/recipes/moroccan-harira-bean-soup.jpg"
+}

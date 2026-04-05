@@ -1,0 +1,83 @@
+{
+  "id": "instant-pot-moroccan-chicken-tagine",
+  "name": "Instant Pot Moroccan Chicken Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "Your Instant Pot replaces the traditional clay or ceramic cone-shaped cooking pot used in Moroccan cuisine (the tagine). The word 'tagine' also refers to the slow-cooked, stew-like dish that is prepared in it. This chicken tagine features the authentic flavors of preserved lemons and olives, with a delicious combination of spices typically used in Moroccan cooking.",
+  "time": {
+    "prep": "25 mins"
+  },
+  "ingredients": [
+    {
+      "item": "minced fresh garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "¼ teaspoons paprika",
+      "amount": "1"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "saffron powder",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "½ pound skinless, boneless chicken breasts, cut into bite-sized pieces",
+      "amount": "1"
+    },
+    {
+      "item": "preserved lemon",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "medium red onions, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "pitted and halved Mediterranean olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped fresh flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Combine garlic, paprika, ginger, turmeric, and saffron in a large bowl. Add chicken pieces and mix until coated with spices. Cover and refrigerate, 3 to 4 hours or overnight.",
+    "Cut the preserved lemon into quarters. Remove pulp from the peel and remove seeds from the pulp. Mince pulp and set aside. Cut lemon peel into strips and set aside.",
+    "Turn on a multi-functional pressure cooker (such as Instant Pot®) and select Saute function. Heat olive oil and butter in the cooker; add chicken. Cook chicken until browned, about 3 minutes per side. Transfer chicken to a plate, reserving drippings in the pot.",
+    "Place onions and lemon pulp into the hot pot and cook, occasionally stirring, until onions have softened, about 5 minutes. Add cinnamon stick, place chicken on top, and scatter olives and lemon peel over the chicken. Pour in chicken broth. Close and lock the lid. Select high pressure according to manufacturer's instructions; set timer for 10 minutes. Allow 10 to 15 minutes for pressure to build.",
+    "Release pressure using the natural-release method according to manufacturer's instructions, about 10 minutes. Unlock and remove the lid carefully, turning it away from you. Transfer contents to a large serving bowl. Sprinkle with parsley and cilantro and serve immediately."
+  ],
+  "image": "/recipes/instant-pot-moroccan-chicken-tagine.jpg"
+}

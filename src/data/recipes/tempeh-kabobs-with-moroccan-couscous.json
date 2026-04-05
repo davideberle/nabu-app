@@ -1,0 +1,102 @@
+{
+  "id": "tempeh-kabobs-with-moroccan-couscous",
+  "name": "Tempeh Kabobs with Moroccan Couscous",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "Soaked in a delicious honey-soy marinade and paired with grilled vegetables, these kabobs will please both meat-eaters and vegetarians .",
+  "time": {
+    "prep": "30 mins"
+  },
+  "ingredients": [
+    {
+      "item": "(8 ounces) of package tempeh, cut into 1/2 inch squares",
+      "amount": "1"
+    },
+    {
+      "item": "fresh white mushrooms",
+      "amount": "16"
+    },
+    {
+      "item": "medium eggplant, cut into 1-inch cubes",
+      "amount": "1"
+    },
+    {
+      "item": "large red bell pepper, cut into 1-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "16"
+    },
+    {
+      "item": "olive oil",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "teriyaki sauce",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "grated fresh ginger root",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped fresh garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "grated fresh ginger root",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "dry couscous",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "drained canned chickpeas (garbanzo beans)",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "lemo n",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place tempeh, mushrooms, eggplant, red bell pepper, and cherry tomatoes in a large resealable plastic bag. In a mixing bowl, whisk together olive oil, soy sauce, teriyaki sauce, and honey; season with 1 tablespoon ginger, 1 tablespoon garlic, and salt and pepper to taste. Pour mixture over tempeh and veggies, seal, and shake to coat. Refrigerate for 2 hours.",
+    "Preheat grill for medium-high heat. Thread tempeh and veggies on skewers. Reserve remaining marinade.",
+    "Grill skewers, often turning to make sure everything is cooked evenly. These can also be done in the broiler.",
+    "While grilling kabobs, combine vegetable stock, 1 tablespoon grated ginger, cumin, and salt. Bring to a light boil. Stir in couscous, raisins, and garbanzo beans; cover and remove from heat. Let sit for five minutes, or until fluffy. Just before serving, squeeze lemon over couscous and stir. Serve kabobs with reserved marinade."
+  ],
+  "image": "/recipes/tempeh-kabobs-with-moroccan-couscous.jpg"
+}

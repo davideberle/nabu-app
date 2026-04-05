@@ -1,0 +1,81 @@
+{
+  "id": "israeli-moroccan-couscous",
+  "name": "Israeli Moroccan Couscous",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 serving s",
+  "intro": "The vegetables can be cubed but will take longer to cook.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "carrots, peeled and julienned",
+      "amount": "2"
+    },
+    {
+      "item": "turnips, peeled and julienned",
+      "amount": "2"
+    },
+    {
+      "item": "sweet potato, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "zucchini, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "(15 ounces) of can garbanzo beans, drained",
+      "amount": "1"
+    },
+    {
+      "item": "(15 ounces) of can tomato sauce",
+      "amount": "1"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "saffron",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "uncooked couscous",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Heat oil in a large pot over medium-high heat; saute onion until golden. Pour in vegetable broth and bring to a boil. Stir in carrots, turnips, and sweet potato. Reduce heat to medium and simmer 15 minutes.",
+    "Stir in garbanzo beans, tomato sauce, cinnamon, turmeric, saffron, and curry powder. Simmer until heated through.",
+    "Meanwhile, bring 2 1/2 cups of water to a boil. Stir in couscous, cover, and remove from heat. Let stand 5 to 7 minutes. Fluff with a fork and serve with vegetables on top."
+  ],
+  "image": "/recipes/israeli-moroccan-couscous.jpg"
+}

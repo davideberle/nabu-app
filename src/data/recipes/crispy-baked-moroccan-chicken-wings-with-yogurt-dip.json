@@ -1,0 +1,112 @@
+{
+  "id": "crispy-baked-moroccan-chicken-wings-with-yogurt-dip",
+  "name": "Crispy Baked Moroccan Chicken Wings with Yogurt Dip",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 servings",
+  "intro": "Ditch the deep fryer in favor of flavor-packed baked chicken wings coated in Moroccan spices and crisped to perfection atop a foil-lined baking sheet from Kelly Senyei of Just a Taste. Dunk the spiced wings in a refreshing herb yogurt dip made with mint, cilantro, lemon juice, and honey.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "½ pounds chicken wings",
+      "amount": "2",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "½ tablespoon of vegetable oil",
+      "amount": "1",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¼ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "pepper",
+      "amount": "¼ tsp",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "Reynolds Wrap Non-Stick Aluminum Foil",
+      "amount": "",
+      "group": "Chicken Wings"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "1 cup",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 tbsp",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "chopped fresh mint",
+      "amount": "1 tbsp",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "1 tbsp",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "½ tablespoon of honey",
+      "amount": "1",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp",
+      "group": "Yogurt Dip"
+    },
+    {
+      "item": "pepper",
+      "amount": "¼ tsp",
+      "group": "Yogurt Dip"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees F. Line a baking sheet with Reynolds Wrap Non-Stick Foil. Add the chicken wings to a large bowl, drizzle them with the vegetable oil, then toss until the wings are thoroughly coated.",
+    "In a small bowl, stir together the paprika, cumin, cinnamon, ginger, cayenne, turmeric, salt, and pepper. Sprinkle the wings with the spice mixture, tossing until they are coated. Arrange the wings in a single layer on the baking sheet, spacing them apart, so they aren't touching.",
+    "Bake the wings for 40 to 45 minutes until they are cooked through, then transfer them to a serving platter.",
+    "In a small bowl, stir together the yogurt, lemon juice, mint, cilantro, honey, salt, and pepper. Taste and season the dip with additional salt and pepper as desired. Serve the wings with the yogurt dip."
+  ],
+  "image": "/recipes/crispy-baked-moroccan-chicken-wings-with-yogurt-dip.jpg"
+}

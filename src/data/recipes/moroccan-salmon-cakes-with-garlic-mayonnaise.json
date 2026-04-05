@@ -1,0 +1,87 @@
+{
+  "id": "moroccan-salmon-cakes-with-garlic-mayonnaise",
+  "name": "Moroccan Salmon Cakes with Garlic Mayonnaise",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 to 5 servings",
+  "intro": "This is a great alternative to the standard salmon patty recipe using couscous, spinach, and cumin for an exotic flavor.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup",
+      "group": "Garlic mayonnaise"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove",
+      "group": "Garlic mayonnaise"
+    },
+    {
+      "item": "paprika",
+      "amount": "⅛ tsp",
+      "group": "Garlic mayonnaise"
+    },
+    {
+      "item": "couscous",
+      "amount": "½ cup",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "orange juice",
+      "amount": "⅔ cup",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "(14.75 ounces) of can red salmon, drained",
+      "amount": "1",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "(10 ounces) of package frozen chopped spinach - thawed, drained, and squeezed dry",
+      "amount": "1",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "egg yolks, beaten",
+      "amount": "2",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "2 cloves",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp",
+      "group": "Salmon cakes"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp",
+      "group": "Salmon cakes"
+    }
+  ],
+  "method": [
+    "In a small stainless steel or glass bowl, stir together mayonnaise, garlic, and paprika. Set aside.",
+    "Prepare couscous according to package directions using the 2/3 cup of orange juice in place of water .",
+    "In a mixing bowl, combine the cooked couscous, red salmon, drained spinach, egg yolks, garlic, cumin, black pepper, and salt. Form into patties.",
+    "In a large skillet over medium heat, heat the olive oil and fry patties until golden brown, turning once, about 8 to 10 minutes. Serve with garlic mayonnaise."
+  ],
+  "image": "/recipes/moroccan-salmon-cakes-with-garlic-mayonnaise.jpg"
+}

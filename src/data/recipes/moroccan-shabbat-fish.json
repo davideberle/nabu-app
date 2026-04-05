@@ -1,0 +1,71 @@
+{
+  "id": "moroccan-shabbat-fish",
+  "name": "Moroccan Shabbat Fish",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "Prep time: 20 mins",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "red bell pepper, cut into thin strips",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "tomatoes, sliced",
+      "amount": "3",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "(6 ounces) of tilapia fillets",
+      "amount": "6",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "paprika",
+      "amount": "2 tbsp",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "chicken bouillon granules",
+      "amount": "1 tbsp",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 tsp",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": "",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "¼ cup",
+      "group": "Ingredient s"
+    }
+  ],
+  "method": [
+    "Layer the sliced red peppers and sliced tomatoes in the bottom of a baking dish. Arrange the tilapia fillets on top of the vegetables.",
+    "Combine the paprika, chicken bouillon, cayenne, salt, pepper, olive oil, and water and mix well. Pour the seasoning mixture over the fish. Sprinkle with parsley.",
+    "Cover the baking dish with aluminum foil and bake in the preheated oven until the fish flakes easily with a fork and the vegetables are tender for about 1 hour."
+  ],
+  "image": "/recipes/moroccan-shabbat-fish.jpg"
+}

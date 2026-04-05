@@ -1,0 +1,79 @@
+{
+  "id": "moroccan-chicken-thighs",
+  "name": "Moroccan Chicken Thighs",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "4 serving s",
+  "intro": "Quick and easy thighs with complex Moroccan flavors. Serve with rice, garnished with lemon wedges.",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "bone-in chicken thighs",
+      "amount": "8"
+    },
+    {
+      "item": "kosher salt and ground black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "½ cups chicken broth",
+      "amount": "1"
+    },
+    {
+      "item": "paprika",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "minced fresh ginger root",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lemon, zested and juiced",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil, or to taste",
+      "amount": ""
+    },
+    {
+      "item": "canola oil, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "pimento-stuffed green olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Season chicken thighs with salt and pepper. Let come to room temperature, about 30 minutes.",
+    "Combine chicken broth, paprika, cumin, ginger, turmeric, cinnamon, and 2 teaspoons lemon zest in a bowl.",
+    "Heat oils in a cast-iron skillet until they begin to smoke. Add chicken thighs, skin-side down, and cook for 4 minutes. Flip thighs and continue cooking until skin is crispy, about 4 minutes more. Transfer to a plate. Saute onion in the skillet until softened, 3 to 5 minutes. Pour chicken broth mixture carefully over onion; scrape up any browned bits off the bottom of the skillet.",
+    "Transfer skillet to the preheated oven; bake until chicken thighs are no longer pink in the center, 25 to 30 minutes.",
+    "Add olives to the skillet. Drizzle lemon juice over the thighs and garnish the whole dish with parsley."
+  ],
+  "image": "/recipes/moroccan-chicken-thighs.jpg"
+}

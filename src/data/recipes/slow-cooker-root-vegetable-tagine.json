@@ -1,0 +1,75 @@
+{
+  "id": "slow-cooker-root-vegetable-tagine",
+  "name": "Slow Cooker Root Vegetable Tagine",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 serving s",
+  "intro": "This is a subtly spiced, super easy slow cooker meal. A good introduction to Moroccan food. Serve with couscous.",
+  "time": {
+    "prep": "50 mins"
+  },
+  "ingredients": [
+    {
+      "item": "parsnips, peeled and diced",
+      "amount": "1 pound"
+    },
+    {
+      "item": "turnips, peeled and diced",
+      "amount": "1 pound"
+    },
+    {
+      "item": "medium onions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "carrots, peeled and diced",
+      "amount": "1 pound"
+    },
+    {
+      "item": "dried apricots, chopped",
+      "amount": "6"
+    },
+    {
+      "item": "pitted prunes, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "dried parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(14 ounces) of can vegetable broth",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a slow cooker, toss together the parsnips, turnips, onions, carrots, apricots, and prunes. Season with turmeric, cumin, ginger, cinnamon, cayenne pepper, parsley, and cilantro. Pour in the vegetable broth."
+  ],
+  "image": "/recipes/slow-cooker-root-vegetable-tagine.jpg"
+}

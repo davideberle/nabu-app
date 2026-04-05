@@ -1,0 +1,106 @@
+{
+  "id": "instant-pot-lamb-tagine-with-lentils",
+  "name": "Instant Pot Lamb Tagine with Lentils",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 serving s",
+  "intro": "This lovely Moroccan-inspired Instant Pot tagine has a wonderful taste and a little kick. The spices combine to present a warm flavor, and the honey and raisins soften the tangy tomatoes with a bit of sweetness. You can double the spices if you like, but start with listed measurements and adjust per your tastes! Serve with rice.",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "ghee (clarified butter)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion",
+      "amount": "1"
+    },
+    {
+      "item": "cubed lamb stew meat",
+      "amount": "1 pound"
+    },
+    {
+      "item": "large tomatoes, diced",
+      "amount": "2"
+    },
+    {
+      "item": "½ cups diced potatoes",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "salt (Optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chili flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "dry lentils",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raisins, or more to taste",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and ground black pepper to taste (Optional)",
+      "amount": "1 pinch"
+    }
+  ],
+  "method": [
+    "Turn on a multi-functional pressure cooker (such as Instant Pot) and select Saute function. Add ghee. Add onions and cubed lamb to the melted ghee; cook and stir until lamb is browned and onion is soft and translucent, 5 to 7 minutes. Stir in tomatoes, potatoes, and garlic. Cook for 2 more minutes.",
+    "Mix in salt, pepper, cumin, coriander, turmeric, cinnamon, ginger, paprika, and chili flakes. Stir in tomato paste. Add chicken broth, lentils, raisins, and honey; stir until all ingredients are well combined.",
+    "Turn Saute mode off. Close and lock the lid. Set vent to 'Sealing' and select Meat/Stew mode according to manufacturer's instructions; set timer for 30 minutes. Allow 10 to 15 minutes for pressure to build.",
+    "Release pressure using the natural-release method according to manufacturer's instructions, for 10 minutes. Turn vent and release remaining pressure carefully using the quick-release method according to the manufacturer's instructions. Season with salt and pepper, if needed."
+  ],
+  "image": "/recipes/instant-pot-lamb-tagine-with-lentils.jpg"
+}

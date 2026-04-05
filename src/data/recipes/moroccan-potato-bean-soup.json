@@ -1,0 +1,85 @@
+{
+  "id": "moroccan-potato-bean-soup",
+  "name": "Moroccan Potato Bean Soup",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 servings",
+  "intro": "A delicious, creamy soup and enjoyed anytime. The soup is medium spicy. If you favor a less spicy soup, reduce the amount of peppers used. Vegetable stock may be used instead of water.",
+  "time": {
+    "prep": "15 mins"
+  },
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "6 cups"
+    },
+    {
+      "item": "(15 ounces) of can kidney beans",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "onions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "potatoes, peeled and cubed",
+      "amount": "2"
+    },
+    {
+      "item": "chicken bouillon powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground white pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper (Optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "half-and-half",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dry potato flakes",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a medium-size cooking pot, add water and white kidney beans and bring to boil. Reduce heat and simmer for 15 minutes .",
+    "To the cooking pot, add potatoes, sauteed onions, chicken soup base, turmeric, black pepper, white pepper, cayenne pepper, curry powder, and soy sauce, and cook until potatoes are tender.",
+    "Add whole milk and a half and half cream and bring back to boil. Add instant potato flakes, stirring until well blended. Adjust seasonings to taste. Garnish with chopped chives or green onions."
+  ],
+  "image": "/recipes/moroccan-potato-bean-soup.jpg"
+}

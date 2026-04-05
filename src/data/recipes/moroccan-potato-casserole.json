@@ -1,0 +1,89 @@
+{
+  "id": "moroccan-potato-casserole",
+  "name": "Moroccan Potato Casserole",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "6 servings",
+  "intro": "This is a very colorful dish and a very tasty one. A dressing made from fresh herbs and spices gives this vegetable dish a Moroccan flavor. It is a great vegan recipe!",
+  "time": {
+    "prep": "40 mins"
+  },
+  "ingredients": [
+    {
+      "item": "garlic",
+      "amount": "6 cloves"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "paprika",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "lemon, juiced",
+      "amount": "1"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "½ pound of red potatoes, sliced 1/2 inch thick",
+      "amount": "1"
+    },
+    {
+      "item": "large red bell pepper, cut into 1-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper, cut into 1 1/2 inch squares",
+      "amount": "1"
+    },
+    {
+      "item": "large green bell pepper, cut into 1 1/2 inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "stalks celery, cut into 2-inch pieces",
+      "amount": "4"
+    },
+    {
+      "item": "tomatoes, each cut into 8 wedges",
+      "amount": "1 pound"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Combine garlic, 1/2 teaspoon salt, paprika, cumin, and cayenne in a food processor bowl. Process until mixture forms a paste. Add herbs, and pulse a few times to blend. Add lemon juice, vinegar, and 2 to 3 tablespoons olive oil; blend. Season to taste with salt.",
+    "In a large bowl, combine potatoes, peppers, and celery. Season with salt, and toss with herb sauce. Transfer to a large shallow baking dish. Scatter tomatoes among the potato mixture. Drizzle 1 to 2 tablespoons oil over the top, and cover with foil.",
+    "Bake for 35 minutes. Remove foil. Continue baking until vegetables are tender, 20 to 30 minutes. Serve warm."
+  ],
+  "image": "/recipes/moroccan-potato-casserole.jpg"
+}

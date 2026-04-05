@@ -1,0 +1,132 @@
+{
+  "id": "moroccan-kofte-and-sausage-stew",
+  "name": "Moroccan Kofte and Sausage Stew",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 servings",
+  "intro": "A North African casserole ideal for a small party. Just adjust the ingredients to your liking.",
+  "time": {
+    "prep": "20 mins"
+  },
+  "ingredients": [
+    {
+      "item": "dried red chile peppers",
+      "amount": "10",
+      "group": "Harissa"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "4 tbsp",
+      "group": "Harissa"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves",
+      "group": "Harissa"
+    },
+    {
+      "item": "sea salt",
+      "amount": "½ tsp",
+      "group": "Harissa"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp",
+      "group": "Harissa"
+    },
+    {
+      "item": "ground caraway seeds",
+      "amount": "1 tsp",
+      "group": "Harissa"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp",
+      "group": "Harissa"
+    },
+    {
+      "item": "bunch fresh cilantro, or to taste",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "⅓ pounds ground beef",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "fresh red chile pepper, finely chopped",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp",
+      "group": "Stew"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "1 tsp",
+      "group": "Stew"
+    },
+    {
+      "item": "egg",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "sea salt",
+      "amount": "½ tsp",
+      "group": "Stew"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp",
+      "group": "Stew"
+    },
+    {
+      "item": "(16 ounces) of can diced tomatoes",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "(14.5 ounces) of can chicken stock",
+      "amount": "1",
+      "group": "Stew"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ tsp",
+      "group": "Stew"
+    },
+    {
+      "item": "links Merguez sausage, cut into pieces",
+      "amount": "3",
+      "group": "Stew"
+    },
+    {
+      "item": "Store harissa in an airtight container and keep for a month in the refrigerator.",
+      "amount": "",
+      "group": "Notes"
+    },
+    {
+      "item": "Use any good-quality sausage you like .",
+      "amount": "",
+      "group": "Notes"
+    }
+  ],
+  "method": [
+    "Blend chiles with 2 tablespoons of olive oil, garlic, and 1/2 teaspoon salt in a food processor. Add coriander, caraway seeds, and cumin; blend to form a smooth paste. Transfer to an airtight container. Drizzle about 2 tablespoons olive oil on top to keep fresh.",
+    "Chop 1/2 of the cilantro and stem the rest. Combine chopped cilantro with beef, onion, cilantro, fresh chile, cumin, and cloves. Add egg and sea salt; mix to combine. Form into about 26 small meatballs, each about the size of a walnut.",
+    "Heat olive oil in a large frying pan. Fry meatballs in batches until browned all over, about 5 minutes. Remove meatballs and add 2 tablespoons harissa to the pan; cook, stirring, for 1 minute. Add tomatoes, chicken stock, and cinnamon. Simmer for 15 minutes.",
+    "Return meatballs to the pan and stir in sausage. Simmer until sausage is heated through and no longer pink in the center, about 20 minutes. Stir in remaining cilantro."
+  ],
+  "image": "/recipes/moroccan-kofte-and-sausage-stew.jpg"
+}

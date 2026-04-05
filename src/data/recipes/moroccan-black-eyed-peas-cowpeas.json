@@ -1,0 +1,85 @@
+{
+  "id": "moroccan-black-eyed-peas-cowpeas",
+  "name": "Moroccan Black-Eyed Peas (Cowpeas)",
+  "source": {
+    "cookbook": "Tagine Cookbook",
+    "author": "Various"
+  },
+  "servings": "8 servings",
+  "intro": "This delicious Moroccan-style recipe smells so good while cooking and tastes so yummy.",
+  "time": {
+    "prep": "10 mins"
+  },
+  "ingredients": [
+    {
+      "item": "½ cups dried black-eyed peas (cowpeas)",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "(8 ounces) of can tomato sauce",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "¼ cup",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "garlic, finely chopped",
+      "amount": "3 cloves",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "½ teaspoons salt",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "½ teaspoon of ground cumin",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "½ teaspoon of sweet paprika",
+      "amount": "1",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 tsp",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "½ cups water, or more if needed",
+      "amount": "3",
+      "group": "Ingredient s"
+    },
+    {
+      "item": "If using fresh-picked peas, omit the soaking process and reduce the cooking time by half.",
+      "amount": "",
+      "group": "Note"
+    }
+  ],
+  "method": [
+    "Place black-eyed peas into a large container and cover with several inches of cool water; let stand for 8 hours to overnight. Drain and rinse peas.",
+    "Combine peas, onion, tomato sauce, olive oil, cilantro, garlic, salt, cumin, paprika, ginger, and cayenne pepper in a stockpot; pour 3 1/2 cups water over pea mixture. Bring water to a boil, decrease the heat to low, cover pot, and simmer, stirring occasionally and adding more water if the sauce gets too thick until peas are tender about 1 1/2 hours."
+  ],
+  "image": "/recipes/moroccan-black-eyed-peas-cowpeas.jpg"
+}
