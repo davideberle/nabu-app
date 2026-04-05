@@ -1,0 +1,72 @@
+{
+  "id": "a-touch-of-the-tropics-rice-bowl",
+  "name": "A Touch of the Tropics Rice Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "sweet potato, peeled and chopped into bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "jasmine rice, cooked",
+      "amount": "2 cups"
+    },
+    {
+      "item": "pineapple, peeled, cored, and chopped into bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "cashews",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped pineapple",
+      "amount": "½ cup"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "light brown sugar",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ketchup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425ºF.",
+    "Toss the sweet potato with the oil. Place on a baking sheet and roast for 30 minutes.",
+    "Remove from the oven and let cool.",
+    "Whisk together cornstarch and 1 tablespoon water in a small bowl. Set aside.",
+    "Add the pineapple and ¼ cup water to a blender. Blend until the mixture is as smooth as possible.",
+    "Add the pineapple mixture, rice vinegar, brown sugar, ketchup, and soy sauce to a medium saucepan. Bring to a boil over medium-high heat. Stir in the cornstarch mixture and cook until thickened, about a minute. Remove from the heat and set aside while assembling bowls.",
+    "Place rice in the bottom of each bowl. Add rows of pineapple, cashews, hempseed, and sweet potato. Top with the sweet and sour sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

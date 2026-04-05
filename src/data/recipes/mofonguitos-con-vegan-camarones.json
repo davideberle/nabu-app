@@ -1,0 +1,79 @@
+{
+  "id": "mofonguitos-con-vegan-camarones",
+  "name": "MOFONGUITOS CON VEGAN CAMARONES",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "intro": "Mofonguitos are just green plantains twice fried into a bowl shape. I like to use a citrus squeezer to mold them. This makes them perfect to stuff with any filling you would like. They are crunchy and easy to make and eat on the go. For this bowl, we’re going to fill it with vegan camarones (shrimp), using my Vegan Shroom Shrimp to fill the bowls. The camarones are cooked in a savory pepper stew full of flavor, making this dish juicy, crunchy and full of different and delicious textures.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "diced bell pepper, assorted colors",
+      "amount": "½ cup (75 g)"
+    },
+    {
+      "item": "diced yellow onion",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1 (8-oz [224-g])"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "2 cups (475 ml)"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tbsp (3 g)"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Vegan Shroom Shrimp",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "green plantains",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "In a medium-sized pot over medium heat, heat your olive oil and, once hot, sauté the sofrito, garlic, bell pepper and onion. Cook to release the aromatics and until the vegetables have softened, about 4 minutes.",
+    "Add the tomato sauce, vegetable stock, oregano, cilantro, salt and black pepper, and stir. Add the Vegan Shroom Shrimp and simmer for 8 minutes over low heat.",
+    "In a separate large pot, heat the vegetable oil to 350°F (180°C). Peel the green plantains and cut them horizontally into three equal lengths. Fry each piece for 3 minutes and remove it from the oil. Let it rest for 1 minute, then use the citrus squeezer to mold the plantain into a bowl shape. Before doing so, wrap the citrus squeezer in plastic wrap so the plantain doesn’t stick. Once you make your bowls, refry them for another 3 minutes, then remove them from the oil and let rest for 1 to 2 minutes.",
+    "Pour the camarones mixture into the bowls and eat hot."
+  ],
+  "image": "/recipes/mofonguitos-con-vegan-camarones.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

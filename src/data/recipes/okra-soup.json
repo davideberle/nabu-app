@@ -1,0 +1,52 @@
+{
+  "id": "okra-soup",
+  "name": "Okra Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Trim the tops and tails of the okra and roughly chop the pods. Place the okra in a food blender with the scotch bonnet chilli and pulse/blend until broken down, with a few small lumps remaining.",
+  "ingredients": [
+    {
+      "item": "handfuls okra (approx.",
+      "amount": "4"
+    },
+    {
+      "item": "pods)",
+      "amount": "30"
+    },
+    {
+      "item": "scotch bonnet chilli",
+      "amount": "1"
+    },
+    {
+      "item": "palm oil (optional)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "large red bell pepper (deseeded and finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "pre-cooked meat alternative of your choice (such as seitan, roasted tofu or mushrooms)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "SOUPS AND STEWS",
+      "amount": "129"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot, add the chopped onions and red bell pepper and sauté for 2-3 minutes. If making it oil-free, simply sauté the onions and pepper in 4 tablespoons of water until they start to soften and caramelise. Add the blended okra mixture, meat alternative and season with salt to taste. Cook for 5 minutes on high heat.",
+    "Serve hot with a swallow of your choice, such as eba or fufu."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

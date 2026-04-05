@@ -1,0 +1,44 @@
+{
+  "id": "strawberry-and-blueberry-chia-pudding",
+  "name": "Strawberry and Blueberry Chia Pudding",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 2 | prep. time 30 minutes",
+  "ingredients": [
+    {
+      "item": "chia seeds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "honey",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "hulled and chopped strawberries",
+      "amount": "½ cup"
+    },
+    {
+      "item": "blueberries",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the chia seeds, milk, vanilla extract, honey, and salt.",
+    "Cover the mixture with plastic wrap and refrigerate the mixture for 30 minutes, stirring it every 10 minutes.",
+    "Serve with the pudding with the strawberries and blueberries on top."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "clementine-martini",
+  "name": "Clementine Martini",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes",
+  "ingredients": [
+    {
+      "item": "clementines, juiced",
+      "amount": "6"
+    },
+    {
+      "item": "vodka",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Cointreau",
+      "amount": "½ cup"
+    },
+    {
+      "item": "bottle of prosecco",
+      "amount": "1"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pitcher, add the clementine juice, vodka, Cointreau, prosecco, and lots of ice. Mix until well-combined.",
+    "Serve in chilled glasses."
+  ]
+}

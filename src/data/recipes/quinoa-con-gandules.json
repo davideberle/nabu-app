@@ -1,0 +1,74 @@
+{
+  "id": "quinoa-con-gandules",
+  "name": "QUINOA CON GANDULES",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "Quinoa con gandules is quinoa with pigeon peas. This is a healthier version of Arroz con Gandules Wepa!, and if you’re not into white rice, then this is the perfect substitute for you. Although it is made with quinoa, it’s comforting and full of flavor.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1½ tbsp (23 ml)"
+    },
+    {
+      "item": "Better Than Bouillon® organic vegetable bouillon paste",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "A small handful of pitted olives (optional)",
+      "amount": ""
+    },
+    {
+      "item": "can gandules (pigeon peas)",
+      "amount": "½ (14-oz [397-g])"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "¾ tsp (½ [4-g] packet)"
+    },
+    {
+      "item": "water",
+      "amount": "1¼ cups (295 ml)"
+    },
+    {
+      "item": "uncooked white quinoa",
+      "amount": "1 cup (173 g)"
+    },
+    {
+      "item": "Banana leaf (large enough to cover the pot)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small rice pot over medium heat, combine the coconut oil, vegetable bouillon, garlic and sofrito, and sauté for 3 to 4 minutes. Then, add the garlic powder, bay leaf, olives (if using), gandules, turmeric and Sazón, and mix everything together. Add your water and bring to a boil; once you see the water rumbling, add your quinoa and mix well.",
+    "Cover the pot with the banana leaf and allow to cook, covered with a lid, for about 10 minutes over medium heat until all the water is absorbed. Turn off the heat and let the quinoa absorb the moisture with the lid on for an additional 5 minutes.",
+    "Remove the lid and banana leaf, and your quinoa is ready to go. You can also remove the bay leaf at this time. Pair it with your favorite greens and protein. ¡Buen provecho!"
+  ],
+  "image": "/recipes/quinoa-con-gandules.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

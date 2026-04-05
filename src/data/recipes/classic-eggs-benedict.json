@@ -1,0 +1,62 @@
+{
+  "id": "classic-eggs-benedict",
+  "name": "Classic Eggs Benedict",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 10-15 minutes",
+  "ingredients": [
+    {
+      "item": "white wine vinegar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "English muffins, split",
+      "amount": "2"
+    },
+    {
+      "item": "thick-sliced bacon strips",
+      "amount": "4"
+    },
+    {
+      "item": "flat-leaf parsley, chopped",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot filled with water, add the white wine vinegar and bring to a gentle simmer. Don't let the water bubble too much.",
+    "Whisk the water with a spoon to make a whirl. Crack the eggs into the water.",
+    "Cook for 2-3 minutes. Remove the eggs from the pot with a slotted spoon and set aside.",
+    "To make the hollandaise sauce, prepare a small bowl set over a pot of simmering water. Crack the egg yolks into the pot. Whisk them until well-combined.",
+    "Stir in the lemon juice and vinegar. Constantly stirring, add the butter little by little until creamy and a thickened sauce is formed.",
+    "Season the sauce with salt and pepper and set aside.",
+    "Cook the bacon in a medium nonstick pan over high heat until crispy, about 5-6 minutes. Set aside.",
+    "Toast the English muffins. Once toasted, top each muffin with the sauce, bacon, and a cooked egg.",
+    "Top with the parsley before serving."
+  ]
+}

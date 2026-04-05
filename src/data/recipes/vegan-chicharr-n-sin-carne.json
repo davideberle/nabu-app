@@ -1,0 +1,82 @@
+{
+  "id": "vegan-chicharr-n-sin-carne",
+  "name": "VEGAN CHICHARRÓN SIN CARNE",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "This vegan chicharrón sin carne (meaning “fried without meat”) is my take on a popular Hispanic dish called chicharrón de pollo, which is chicken chunks that are breaded and seasoned, then fried. The “meat” in this dish is jackfruit, marinated and coated with herbs and spices. Once fried, it is topped with lime juice for that signature flavor. Chicharrón is popularly served with tostones, which are green plantains that are fried, then smashed, then fried again. I use jackfruit for this dish because it can mimic pork or chicken and is perfect to manipulate.",
+  "ingredients": [
+    {
+      "item": "cans jackfruit in brine",
+      "amount": "2 (14-oz [400-g])"
+    },
+    {
+      "item": "Mojo Sauce",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "all-purpose flour, divided",
+      "amount": "5 cups (625 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tbsp (9 g)"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tbsp (3 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tbsp (9 g)"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tbsp (7 g)"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "2 cups (475 ml)"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "Oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "Freshly squeezed lime juice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot, boil the jackfruit for 1 hour to extract the brine. After an hour, drain and squeeze out the excess water with a paper towel. In a bowl, combine the boiled jackfruit and mojo sauce, then marinate overnight in the fridge.",
+    "Get two medium-sized bowls, one for mixing the dry batter and one for the wet. Preheat the oven to 400°F (200°C).",
+    "For the dry batter, in one bowl, combine 3 cups (375 g) of the flour with the Sazón, adobo, oregano, garlic powder, onion powder and salt to taste.",
+    "For the wet batter, in the other bowl, combine the remaining 2 cups (250 g) of flour, nondairy milk, hot sauce and vinegar, and mix. This batter shouldn’t be too thick or too loose. Add more flour or milk accordingly.",
+    "In a baking pan, lay down the jackfruit and separate them a bit, then bake for 20 minutes. This is to dehydrate the jackfruit a bit to make it meatier.",
+    "In a large pot, heat your oil to 370°F (190°C). Using one hand, dip your jackfruit into the wet batter; then, with your other hand, coat the jackfruit with dry batter. If you want a supercrispy crunch, double batter the jackfruit. Repeat until all the jackfruit has been coated.",
+    "Fry the jackfruit on both sides for about 6 minutes, or until golden brown. Remove from the oil and let rest on a cooling rack. Squeeze the lime juice on the jackfruit chicharrones."
+  ],
+  "image": "/recipes/vegan-chicharr-n-sin-carne.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

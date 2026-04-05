@@ -1,0 +1,76 @@
+{
+  "id": "buffalo-cauliflower-w-no-wings",
+  "name": "BUFFALO CAULIFLOWER W/NO WINGS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "These Buffalo cauliflower wings are perfect for a game night or an appetizer with family and friends. Most bars in New York City would serve these, and it was a lifesaver for me when I was out having a good time and wanted a snack to eat. They are fun to make, they are spicy, they are saucy and they are delicious. Let’s get to it!",
+  "ingredients": [
+    {
+      "item": "large head cauliflower, cut into florets, rinsed and dried",
+      "amount": "1"
+    },
+    {
+      "item": "all-purpose flour, divided",
+      "amount": "1½ cups (188 g)"
+    },
+    {
+      "item": "cornmeal",
+      "amount": "½ cup (70 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "hot sauce, divided",
+      "amount": "1¼ cups (295 ml)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 cups (710 ml)"
+    },
+    {
+      "item": "melted vegan butter",
+      "amount": "½ cup (120 ml)"
+    }
+  ],
+  "method": [
+    "Place your cauliflower florets in a large bowl.",
+    "In a separate large bowl, combine 1 cup (125 g) of flour, cornmeal, garlic powder, onion powder, salt, smoked paprika, oregano and pepper and whisk together.",
+    "In a third large bowl, whisk together the nondairy milk, the remaining ½ cup (63 g) of flour and ¼ cup (55 ml) of the hot sauce. Pour over the cauliflower and use your hands to gently mix together. Then, one by one dredge the cauliflower florets in the flour mixture.",
+    "In a large skillet over low to medium heat, bring the oil to 330°F (170°C). Once hot, working in batches, add a few pieces of the breaded cauliflower; do not overcrowd the pan. Make sure you fry both sides for 2 minutes each, or until they are golden brown. Transfer the cooked cauliflower to a cooling rack.",
+    "For your Buffalo sauce, in a small bowl, mix the remaining cup (240 ml) of hot sauce and melted vegan butter together. Place all the cauliflower in a clean bowl, add the buffalo sauce and toss everything together."
+  ],
+  "image": "/recipes/buffalo-cauliflower-w-no-wings.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

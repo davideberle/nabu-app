@@ -1,0 +1,77 @@
+{
+  "id": "coconut-fried-rice",
+  "name": "Coconut Fried Rice",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "Next to Jollof rice, fried rice is the most popular rice dish in Nigeria. You’ll find it served at parties and special occasions. It is usually made as a one-pot dish and here we have an elevated version that is cooked in an aromatic coconut broth - irresistible! As you can imagine, fried rice recipes vary from one household to the next, featuring diﬀerent combinations of vegetables and proteins.",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves (finely chopped)",
+      "amount": "3"
+    },
+    {
+      "item": "grated fresh ginger",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "and 1/2 cups tinned full-fat coconut milk",
+      "amount": "1"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "long grain or golden sella basmati rice (washed and drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "vegetable stock cubes",
+      "amount": "2"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cayenne pepper (optional)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "finely chopped roasted mushrooms or tofu",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/2 cup chopped red bell pepper 1/2 cup chopped green bell pepper",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup chopped green beans (sliced)",
+      "amount": ""
+    },
+    {
+      "item": "chopped carrots 1/2 cup sweetcorn",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat the coconut oil in a pot and add the chopped onion, garlic and ginger. Fry for 1-2 minutes until the onions start to soften.",
+    "Pour in the coconut milk and water, add the rice and season with vegetable stock cubes, curry powder, cayenne pepper and salt. Bring to a boil then stir well, cover the pot and simmer on low heat for 20 minutes.",
+    "Add the roasted mushrooms/tofu, red and green bell peppers, green beans, carrots and sweetcorn. Cook for a further 10 minutes, until most of the liquid has been absorbed. Stir well to combine and serve hot with a side of your choice such as Moin Moin (page 156), fried plantain or coleslaw (page 138)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

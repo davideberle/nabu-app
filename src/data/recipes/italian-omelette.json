@@ -1,0 +1,43 @@
+{
+  "id": "italian-omelette",
+  "name": "Italian Omelette",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "organic eggs",
+      "amount": "12"
+    },
+    {
+      "item": "water",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "heaped tablespoons grated parmigiano",
+      "amount": "4"
+    },
+    {
+      "item": "large potatoes, boiled and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Spanish onion or 2 leeks, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "25 ml"
+    }
+  ],
+  "method": [
+    "Serves 6 12 organic eggs 1 tablespoon water salt and ground black pepper 4 heaped tablespoons grated parmigiano 2 large potatoes, boiled and chopped 1 Spanish onion or 2 leeks, chopped 25 g unsalted butter 25 ml good-quality virgin olive oil",
+    "Fry the onion or leeks in the butter and oil until transparent and add them and the chopped potatoes to the egg mixture. Put a little oil or butter in a non-stick frying pan, pour in the egg mixture and cook over medium heat for around 5 minutes. Then turn the grill to medium and place the frittata under it. Grill for about 5 minutes or until the frittata is golden-brown. Allow to cool and slide onto a serving dish."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "veal-with-tuna-mayonnaise",
+  "name": "Veal with Tuna Mayonnaise",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "veal nut (noix or topside), wrapped very tightly in cheesecloth (muslin)",
+      "amount": "1"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "250 ml"
+    },
+    {
+      "item": "large onion, cut into large pieces",
+      "amount": "1"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "organic egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "300 ml"
+    },
+    {
+      "item": "canned tuna",
+      "amount": "500 g"
+    },
+    {
+      "item": "anchovies in oil",
+      "amount": "20"
+    },
+    {
+      "item": "handful capers, plus extra for garnish",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the tuna, anchovies and capers in a food processor, pulse to mix and add 1–2 ladlefuls of the veal stock. The tuna mixture should be like a thick cream. Taste and add salt and pepper if needed.",
+    "Slice the veal very thinly and arrange on a serving plate. Mix some of the mayonnaise with the tuna mixture and spread some of it over the sliced meat and put the rest in a bowl, to serve on the side. Garnish with capers."
+  ]
+}

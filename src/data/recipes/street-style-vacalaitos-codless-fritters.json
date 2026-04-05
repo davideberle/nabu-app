@@ -1,0 +1,79 @@
+{
+  "id": "street-style-vacalaitos-codless-fritters",
+  "name": "STREET-STYLE VACALAITOS (CODLESS FRITTERS)",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "intro": "Vacalaitos are my twist on bacalaitos, which are codfish fritters made in Puerto Rico. They are fried into a flat circle, and chewy on the inside but crispy on the outside. In Puerto Rico, these would be sold in a kiosk by local food vendors near the beach. Codfish is salty, and normally you have to boil out the salt to prepare this dish. For this recipe, I use hearts of palm and marinate them in salt and nori furikake for that salty seafood flavor. The texture of hearts of palm is a perfect substitute. The flavors in the batter bring this dish to life, and the fritters make a great snack.",
+  "ingredients": [
+    {
+      "item": "can hearts of palm, drained",
+      "amount": "1 (14-oz [400-g])"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "nori furikake",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups (250 g)"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1½ tsp (7 g)"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ tbsp (2 g)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "water (see Tip)",
+      "amount": "2½ cups (590 ml)"
+    },
+    {
+      "item": "About ¼ cup (38 g) mixed minced bell pepper and onion",
+      "amount": ""
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 cups (710 ml)"
+    }
+  ],
+  "method": [
+    "Chop the hearts of palm into codfishlike pieces—small, oval shapes (almost like anchovies)—and place them in a medium bowl. In a small bowl, combine the sea salt and nori furikake, then add to the hearts of palm and let them marinate in the fridge for 2 hours or overnight.",
+    "In a separate bowl, stir together your flour, baking powder, cumin, garlic powder, black pepper, oregano and sofrito. Add your water and mix again. Once mixed, add your bell pepper and onion and marinated hearts of palm. Then, add your turmeric.",
+    "In a large skillet, heat your oil to about 350°F (180°F) and, using a ladle, gently pour in your mixture, forming a solid circle. When it starts to brown, about 4 minutes, flip it and allow it to fry on the other side for 4 minutes, or until the vacalaitos are golden brown and crispy. Remove the vacalaitos from the oil and transfer them to a paper towel to absorb the excess oil. ¡Buen provecho!",
+    "If you want thinner and crispier vacalaitos, adjust the water measurements by adding more to make a looser batter. The batter shouldn’t be too watery or too thick."
+  ],
+  "image": "/recipes/street-style-vacalaitos-codless-fritters.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

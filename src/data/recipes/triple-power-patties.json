@@ -1,0 +1,76 @@
+{
+  "id": "triple-power-patties",
+  "name": "Triple Power Patties",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "medium sweet potatoes, peeled and chopped into 2-inch cubes (equal to 2 cups mashed sweet potato)",
+      "amount": "2"
+    },
+    {
+      "item": "quinoa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra virgin olive oil, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "diced onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "panko",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "14-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Tabasco",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Place the sweet potato cubes in a medium saucepan and cover with water. Cover and bring to a boil and then turn the heat down to medium high. Cook with the lid cracked a bit, about 15 minutes or until you can pierce the sweet potatoes with a fork. Drain and mash. Set aside.",
+    "Cook the quinoa in another saucepan: place quinoa in a sieve and rinse well. In a small saucepan, combine quinoa and ⅔ cup water. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the water is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove lid and fluff.",
+    "Meanwhile, add 1 tablespoon of oil to a skillet and heat to medium high. Add the onion and sauté for about 10 to 15 minutes or until translucent.",
+    "To a large bowl, add the mashed potatoes, quinoa, sautéed onion, hempseed, paprika, cumin, and panko and stir well. Stir in the black beans Make twelve balls and then flatten to patties that are about ¼ inch thick.",
+    "Add the remaining oil to a skillet and heat to medium high. Brown the patties on each side for about 3 to 5 minutes or until lightly browned.",
+    "Mix all the dip ingredients together thoroughly.",
+    "Serve in a bowl alongside Triple Power Patties."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

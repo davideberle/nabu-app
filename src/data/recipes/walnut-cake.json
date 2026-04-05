@@ -1,0 +1,59 @@
+{
+  "id": "walnut-cake",
+  "name": "Walnut Cake",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "180 g"
+    },
+    {
+      "item": "walnuts, lightly toasted",
+      "amount": "200 g"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "300 g"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "100 g"
+    },
+    {
+      "item": "organic eggs, separated",
+      "amount": "6"
+    },
+    {
+      "item": "fresh ricotta",
+      "amount": "200 g"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cloves grated zest of",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "organic lemon pinch of salt",
+      "amount": "1"
+    },
+    {
+      "item": "icing sugar, for dusting",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Serves 8 180 g fresh breadcrumbs 200 g walnuts, lightly toasted 300 g caster sugar 100 g unsalted butter, at room temperature 6 organic eggs, separated 200 g fresh ricotta 1 teaspoon ground cinnamon ½ teaspoon ground cloves grated zest of 1 organic lemon pinch of salt 1 tablespoon icing sugar, for dusting",
+    "Preheat the oven to 190°C (gas mark 5).",
+    "Combine the walnuts with half the sugar in a food processor and pulse until you have a fine, flour-like consistency.",
+    "In an electric mixer, beat the rest of the sugar with the butter until very light and fluffy. Add the egg yolks, one at a time, and continue beating until they are all incorporated and the mixture is light and airy. Fold in the ground walnut mixture, ricotta, remaining breadcrumbs, spices, lemon zest and salt.",
+    "In a separate bowl, whisk the egg whites to stiff peaks. Fold into the cake batter then pour into the cake tin. Transfer to the oven and bake for 35–40 minutes.",
+    "Remove from the oven, release the sides of the tin and remove the cake. Leave to cool completely then place the cake on a serving plate and dust with icing sugar."
+  ]
+}

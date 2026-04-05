@@ -1,0 +1,75 @@
+{
+  "id": "french-ham-and-3-cheese-sandwich",
+  "name": "French Ham and 3 Cheese Sandwich",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "flour",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "½ cups milk, heated",
+      "amount": "1"
+    },
+    {
+      "item": "shredded Gruyere cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "coarse ground black pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "slices thick white bread, crusts trimmed, toasted",
+      "amount": "8"
+    },
+    {
+      "item": "champagne mustard or Dijon mustard",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "smoked ham, sliced thin",
+      "amount": "½ pound"
+    },
+    {
+      "item": "Brie cheese, slice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "shredded Parmesan cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh chives, chopped",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (204°C). Line a baking sheet with parchment paper.",
+    "In a saucepan, heat the butter over medium heat. Sprinkle in the flour and whisk until a paste forms.",
+    "Slowly add the warm milk, whisking constantly until creamy. Season with salt, pepper, and nutmeg. Continue cooking, stirring constantly, until the sauce thickens.",
+    "Remove from the heat and add the Gruyere cheese.",
+    "On each piece of bread, spread a little champagne mustard and then make sandwiches with a layer of ham and brie cheese.",
+    "Coat each of the sandwiches with the cream sauce on both sides. With a spatula, transfer the sandwiches to the baking sheet. Sprinkle the sandwiches with half of the remaining Gruyere cheese.",
+    "Place the sandwiches in the oven and bake for 7 minutes. Remove from the oven and turn over using a spatula.",
+    "Sprinkle the Parmesan cheese on the sandwiches and bake for an additional 5 minutes.",
+    "Turn the broiler on high, and place the sandwiches under it until they are golden and crispy, approximately 1-2 minutes.",
+    "Remove from the oven and serve immediately, garnished with fresh chives."
+  ]
+}

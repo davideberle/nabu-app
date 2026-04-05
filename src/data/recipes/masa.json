@@ -1,0 +1,42 @@
+{
+  "id": "masa",
+  "name": "Masa",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "This traditional Hausa snack may take hours to make, but most of that time is just waiting around for the batter to rise; the actual preparation is pretty straightforward. This rice-based pancake, also known as Waina in some parts of northern Nigeria, is fluﬀy and delicious and can actually go the sweet or savoury route depending on what you pair it with.",
+  "ingredients": [
+    {
+      "item": "and 1/2 cups raw short grain or jasmine rice (soaked overnight and drained)",
+      "amount": "1"
+    },
+    {
+      "item": "pre-cooked short grain or jasmine rice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "baking soda Sunflower or vegetable oil for frying",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Combine the yeast, sugar and a quarter cup of warm water in a small bowl and set aside for 10 minutes until it becomes foamy.",
+    "Add the raw pre-soaked rice and pre-cooked rice to a blender and blend with about 3/4 cup of water until you have a smooth, creamy batter. Pour the batter into a large bowl and add the yeast mixture and salt. Stir well to combine. Cover and leave to rest in a warm place for 2-3 hours. You can leave the batter for up to 6-8 hours to achieve a more fermented taste. The batter will grow in size so make sure that the bowl is large enough to accommodate that. Just before you are ready to cook the masa, add the baking soda and give the batter a good mix.",
+    "Heat some oil in a frying pan or poﬀertjespan/masa pan (pan with round indents) and fry the masa in batches over low heat. If using a frying pan, you can choose to make large masa or lots of little ones. Fry until golden brown on one side and the top starts to bubble, then flip over to brown the other side. If using a masa pan, use a skewer or chopstick to gently turn them over.",
+    "Serve masa on its own with any type of sweet or savoury porridge, or with veggie suya or with a pepper stew or Miyan Taushe (page 118), or dipped in some yaji/suya spice. There are countless ways to enjoy it!"
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

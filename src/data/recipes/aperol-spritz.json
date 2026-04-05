@@ -1,0 +1,31 @@
+{
+  "id": "aperol-spritz",
+  "name": "Aperol Spritz",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes",
+  "ingredients": [
+    {
+      "item": "Ice",
+      "amount": ""
+    },
+    {
+      "item": "Aperol",
+      "amount": "½ cup"
+    },
+    {
+      "item": "prosecco",
+      "amount": "½ cup"
+    },
+    {
+      "item": "club soda",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a large pitcher, add the ice, Aperol, and prosecco. Top up with the club soda.",
+    "Serve in chilled glasses."
+  ]
+}

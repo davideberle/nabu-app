@@ -1,0 +1,66 @@
+{
+  "id": "banga-rice",
+  "name": "Banga Rice",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "A traditional rice dish that is native to the Urhobo people of southern Nigeria. It is made using palm fruit concentrate (also called: palmnut cream concentrate) and has a warming flavour. Although you can make your own palm fruit concentrate from scratch, it is now possible to buy it tinned and this makes the cooking process so much quicker. In the usual recipe, you’ll find smoked fish and ground crayfish added, but here we’ll get creative by making some smoky jackfruit and incorporating some seaweed. No access to jackfruit? Try shredded mushrooms instead.",
+  "ingredients": [
+    {
+      "item": "long-grain rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "jackfruit",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sunflower oil 1/2 teaspoon smoked paprika",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "liquid smoke (optional)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "palm fruit concentrate",
+      "amount": "1 cup"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "2"
+    },
+    {
+      "item": "small red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "cayenne pepper or cameroon pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "seaweed flakes (optional)",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Add the rice to a large pot and cover completely with water. Parboil for 15 minutes over medium heat. Drain the excess water by pouring the rice into a sieve. Run the rice under cold water to cool it down completely. Set aside.",
+    "Add the palm fruit concentrate to a large pot, along with 2 and 1/2 cups of water. As it comes to a boil over high heat, add the onions, scotch bonnet chilli, cayenne pepper or cameroon pepper, stock cube, seaweed flakes and salt to taste. Cover and leave to boil for 5 minutes.",
+    "Add the parboiled rice and mix until well combined. Cover and simmer over medium-low heat for 25-30 minutes. Add the scent leaves and smoky jackfruit towards the end of the cooking time. The rice is ready when it has softened and most of the liquid has been absorbed. Give it a good stir to combine all the ingredients.",
+    "Serve hot with a side of fried plantain, Moin Moin (page 156) and/or salad."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

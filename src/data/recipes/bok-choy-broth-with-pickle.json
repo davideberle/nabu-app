@@ -1,0 +1,335 @@
+{
+  "id": "bok-choy-broth-with-pickle",
+  "name": "Bok choy broth with pickle",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "Sichuan preserved vegetable ¾ lb (350g) green bok choy 1 tbsp cooking oil 1½ quarts (1.5 liters) stock Salt and ground white pepper",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "Sichuan preserved vegetable",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "¾ lb (350g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "quarts (1.5 liters) stock",
+      "amount": "1½"
+    },
+    {
+      "item": "dudhi or Chinese shiny green gourd (about 1 lb/475g) 2 eggs 1½ quarts (1.5 liters) stock 1 tbsp lard (optional) Salt and ground white pepper",
+      "amount": "1"
+    },
+    {
+      "item": "dudhi or Chinese shiny green gourd (about 1 lb/475g)",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "quarts (1.5 liters) stock",
+      "amount": "1½"
+    },
+    {
+      "item": "lard (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Chinese long green gourd or chayote",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "thickly sliced Spanish or Chinese cured ham, steamed briefly",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "quarts (1.2 liters) chicken stock",
+      "amount": "1¼"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "shelled, peeled fava beans (¾–1 lb/350–400g in their pods)",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "potato starch mixed with 2 tbsp cold water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "silkie chicken (about 1⅓ lbs/600g) ¾ oz (20g) fresh ginger, skin on 2 spring onions, white parts only A small handful of goji berries (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "silkie chicken (about 1⅓ lbs/600g)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "boneless pork belly, skin on",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "gammon (salt pork), with a little fat",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "fresh or brined bamboo shoot",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "potatoes",
+      "amount": "1 lb (475g)"
+    },
+    {
+      "item": "ripe tomatoes (about 1 lb/500g)",
+      "amount": "4"
+    },
+    {
+      "item": "quarts (1.5 liters) stock",
+      "amount": "1½"
+    },
+    {
+      "item": "butter",
+      "amount": "4 tbsp (60g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white crabmeat",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "potato starch mixed with 5 tbsp cold water",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "dried wood-ear mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "3"
+    },
+    {
+      "item": "quart (1 liter) clear stock",
+      "amount": "1"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "trimmed spinach (about 9 oz/250g before trimming)",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "quart (1 liter) stock",
+      "amount": "1"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chicken oil or lard (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried soybeans 2 pig’s trotters ½ oz (15g) fresh ginger, skin on 2 spring onions, white parts only Salt and ground white pepper",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "dried soybeans",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "pig’s trotters",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "sea bass (about 1 lb/500g) scaled and gutted",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "3"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "lean Spanish or Chinese cured ham, steamed briefly",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "spring onion, green parts only",
+      "amount": "1"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "liter chicken stock",
+      "amount": "1"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch mixed with 6 tbsp cold water",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "egg yolks, mixed together",
+      "amount": "4"
+    },
+    {
+      "item": "Chinkiang vinegar, plus extra to serve",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "plain white rice",
+      "amount": "½ cup (125g)"
+    },
+    {
+      "item": "papery dried shrimp",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "lbs (650g) white Asian radish",
+      "amount": "1½"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in a seasoned wok over a high flame. Add the preserved vegetable and stir-fry briefly until it smells wonderful. Add the stock, bring to the boil and boil for a minute or so to allow the pickle to flavor the broth. Add the bok choy and boil until tender. Season with salt and pepper—you probably won’t need much salt because the pickle is salty. Serve.",
+    "Cut some lean pork into slivers add it to the broth with the preserved vegetable; omit the greens.",
+    "Peel and trim the dudhi and slice it in half lengthways, then slice it into semicircles about ⅛ in (4mm) thick. Beat the eggs in a bowl.",
+    "Bring the stock to the boil. Add the sliced dudhi and boil for about 10 minutes, until tender. Season with salt and pepper and stir in the lard, if using. Turn the heat down low, then drizzle the egg all over the surface of the soup. When the egg has set into “flowers,” turn off the heat, stir gently and serve.",
+    "Sliced gourd and fava bean soup",
+    "Peel the chayote or gourd and cut it neatly into ⅛ in (3mm) slices. Trim off any fat from the ham and cut it into neat little slices. Bring the stock to the boil in a large pan, then keep it warm.",
+    "Heat the oil in a seasoned wok over a high flame. Add the fava beans and sliced gourd and stir-fry for about a minute. Add the stock and ham, bring to the boil and simmer gently for 2 minutes until the vegetables are tender. Season with salt. Give the potato starch mixture a stir and add it to the soup in 2 or 3 stages, stirring as the liquid thickens. Add just enough to give the soup a lazy, gravy-like consistency. Serve.",
+    "Bring a large pan of water to the boil. Leave the chicken whole or chop it, on the bone, into bite-sized chunks. Add the chicken to the pan and blanch it for a minute or so. Remove it from the pan and rinse well under the tap. Discard the blanching water and rinse out the pan. Smack the ginger and spring onions lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Put the chicken in a saucepan or clay pot, cover it generously with fresh water and bring to the boil, skimming well. Add the ginger and spring onion, return to the boil and simmer gently for 2–3 hours. Before serving, add the goji berries, if using, and simmer for a few minutes until plump.",
+    "Cut the pork belly into 1 in (2cm) cubes and do the same with the gammon. If using fresh bamboo shoot, peel off the husk, slice away and discard the fibrous part near the base, then roll-cut (see here) into 1 in (2cm) chunks. Blanch the bamboo shoot, whether fresh or brined, for a minute or so in boiling water. Smack the ginger and spring onion whites with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Bring a pan of water to the boil. Add some pieces of salt pork, return to the boil and skim. Add thick slices of peeled winter melon with a dash of Shaoxing wine and, if you like, some green soybeans. Return to the boil, simmer until tender and serve with a scattering of sliced spring onion greens.",
+    "Bring a pan of water to the boil. Peel the potatoes, steam or boil them until tender, then mash them coarsely. Cut a cross through the skin of each tomato and put them all in a bowl. Cover them with boiling water and leave to cool. When cool enough to handle, peel off the skins, then core them, discarding the seeds, and chop the flesh into fine dice. Bring the stock to the boil.",
+    "Cover the wood-ear mushrooms in boiling water and set aside for at least half an hour.",
+    "Drain the wood-ears, trim off any knobbly bits and then cut them into the thinnest possible slivers. Cut the ham and spring onion greens as evenly as possible into very thin slivers.",
+    "Bring a pan of water to the boil and blanch the spinach leaves briefly to wilt them. Refresh immediately under the cold tap and then squeeze dry. Chop as finely as possible. Cut the pork into very thin slivers. Cut the tofu into ⅙ in (5mm) cubes.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked. Splash in the Shaoxing wine, then add the stock and tofu and bring to the boil. Stir in the spinach and return to the boil. Season with salt and white pepper.",
+    "Cover the soybeans in plenty of cold water and soak them overnight. Rinse and drain.",
+    "Cut the trotters in half lengthways, then chop them into 1½ in (3cm) chunks, discarding the very knobbly foot end. Blanch them in boiling water for 2 minutes, then rinse them in cold water. Use tweezers to pluck out any remaining bristles. Smack the ginger and spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Put the soybeans and trotter pieces in a pan with 2½ quarts (2.5 liters) cold water and bring to the boil. Skim. Add the ginger and spring onions, then cover, reduce the heat and simmer for about 4 hours, until the beans are completely tender. Season with salt and pepper before serving.",
+    "Cut off the head and fins of the fish and slice it along the backbone into two halves. Rinse and shake dry. Place the fish, skin-side down, in a bowl that will fit into your steamer basket.",
+    "Heat the lard in a seasoned wok over a high flame. Add the spring onion whites and stir-fry until they are tinged with gold and smell delicious. Add the stock and bring to the boil, then fish out and discard the spring onion whites. Add the mushrooms and bamboo shoot to the wok and return to the boil.",
+    "Add the soy sauces and the fish with all its juices, and season with salt. Return to the boil, then turn down to a very gentle simmer. Give the starch mixture a stir and pour it into the center of the wok in about 3 stages, stirring well to thicken the soup—add just enough to give it a creamy, lazy consistency.",
+    "Add the egg yolks and stir them into the soup; the yolks will set into flowery wisps. Finally, add the vinegar and heat for just a few moments to fuse the flavors of the soup.",
+    "Pour the soup into a serving bowl. Sprinkle with a little pepper and garnish with the slivered ham, ginger and spring onion greens. Serve immediately. Invite your guests to add a tiny dash of vinegar at the table, if they wish.",
+    "Put the rice in a saucepan with 2 quarts (2 liters) cold water. Bring to the boil, skim and give the pan a good stir to stop the rice sticking. Turn the heat down and simmer for 30 minutes, until the liquid is soft and milky. Strain off and retain the liquid—this is your rice broth. Discard the rice, or use it for something else.",
+    "Put the shrimp in a small bowl and add just enough cold water to cover; leave for a few minutes to soften. Peel the radish, halve it lengthways, then cut it into semicircular slices about 2mm thick.",
+    "Heat the lard or oil in a seasoned wok over a high flame. Add the radish and stir-fry for 1–2 minutes. Add the rice broth, bring to the boil and simmer for 30 minutes, until the radish slices are completely tender. Stir in the dried shrimp and season with salt and pepper. Serve with a scattering of spring onion greens."
+  ]
+}

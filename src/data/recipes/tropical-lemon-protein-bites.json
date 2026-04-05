@@ -1,0 +1,43 @@
+{
+  "id": "tropical-lemon-protein-bites",
+  "name": "Tropical Lemon Protein Bites",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "coconut flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Place the cashews in a food processor and process until very fine. Add the rest of the ingredients and process until well blended. Dump the mixture into a large bowl.",
+    "Take a clump of the dough and squeeze it into a ball. Keep squeezing and working it a few times until a ball is formed and solid."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

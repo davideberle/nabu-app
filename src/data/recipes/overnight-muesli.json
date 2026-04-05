@@ -1,0 +1,64 @@
+{
+  "id": "overnight-muesli",
+  "name": "Overnight Muesli",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup"
+    },
+    {
+      "item": "wheat germ",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oat bran",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dates, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pepitas",
+      "amount": "½ cup"
+    },
+    {
+      "item": "wheat bran",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond milk or other dairy-free milk",
+      "amount": "7 cups"
+    }
+  ],
+  "method": [
+    "Place all the dry ingredients in a large mixing bowl. Mix well. Pour in the milk and mix well again.",
+    "Cover and place in the refrigerator to sit overnight.",
+    "The muesli is ready to eat in the morning and keeps for 4 to 5 days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

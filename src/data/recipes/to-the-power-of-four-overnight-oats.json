@@ -1,0 +1,51 @@
+{
+  "id": "to-the-power-of-four-overnight-oats",
+  "name": "To the Power of Four Overnight Oats",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "unsweetened almond milk",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "peanut butter, divided",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "Sunflower seed kernels, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add all the ingredients except for 2 tablespoons of the peanut butter and the sunflower seeds to a large bowl. Mix well. It will seem very wet but the chia seeds and oats will absorb some of the milk. Cover and place in the refrigerator to set overnight.",
+    "To serve in the morning, dot the remaining 2 tablespoons peanut butter around the inside of two bowls and fill each with the overnight oats. Garnish with sunflower seeds, if desired."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

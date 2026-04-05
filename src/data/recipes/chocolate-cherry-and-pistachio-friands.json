@@ -1,0 +1,55 @@
+{
+  "id": "chocolate-cherry-and-pistachio-friands",
+  "name": "Chocolate Cherry and Pistachio Friands",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 15 minutes | cooking time 25 minutes",
+  "ingredients": [
+    {
+      "item": "chopped pistachios",
+      "amount": "½ cup"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chocolate chips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sour cherries",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon zest",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large egg whites",
+      "amount": "6"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "1¼ cups"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Grease a friand pan with cooking spray.",
+    "In a large mixing bowl, combine the powdered sugar, flour, almond flour, and chopped pistachios.",
+    "Stir in the lemon zest, egg whites, and butter.",
+    "Stir in the pistachios and sour cherries.",
+    "Transfer the batter to the prepared pan. Bake for 25 minutes.",
+    "Serve with a dusting of powdered sugar."
+  ]
+}

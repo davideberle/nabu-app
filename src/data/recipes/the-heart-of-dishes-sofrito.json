@@ -1,0 +1,70 @@
+{
+  "id": "the-heart-of-dishes-sofrito",
+  "name": "THE HEART OF DISHES SOFRITO!",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "intro": "Deseed your bell peppers and roughly chop them along with the tomato and onion. Remove the stems from the oregano, cilantro and culantro, and roughly chop them as well.",
+  "ingredients": [
+    {
+      "item": "green bell peppers",
+      "amount": "5"
+    },
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "yellow onion",
+      "amount": "1"
+    },
+    {
+      "item": "Leaves from a few sprigs oregano",
+      "amount": ""
+    },
+    {
+      "item": "bunch cilantro",
+      "amount": "1"
+    },
+    {
+      "item": "bunch culantro (recao)",
+      "amount": "1"
+    },
+    {
+      "item": "ají dulce green peppers",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "About 10 cloves garlic",
+      "amount": ""
+    },
+    {
+      "item": "mini sweet peppers",
+      "amount": "6"
+    },
+    {
+      "item": "Grapeseed oil",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sofrito is so important to many dishes that I make. It is the foundation that ties everything together and gives the dish its flair and sabor. Sofrito is an aromatic blend of vegetables, herbs and spices used to flavor beans, fish, meats, rice and stews. It is used in many Hispanic cultures and each person makes it differently and calls it by different names. Sofrito can be found in most markets in the freezer aisle, but there is nothing like making it fresh and storing it at home or even sharing it with your friends and family. A few tips here: If you cannot find ají dulce peppers, substitute 2 Cubanelle peppers. Feel free to scale the number of garlic cloves up or down. I always say to use a shit ton, but you should make it your own. If you cannot find culantro, double up on the cilantro instead.",
+    "Use a good blender to blend your vegetables, one vegetable at a time (you do not want the blender to overflow), as follows: Blend your green and red bell peppers first, then place in a bowl. Then blend your tomato, ají dulces, garlic and oregano. Add the onion, cilantro, culantro and mini sweet peppers, blend again, then place in the same bowl. You can add oil to aid in the blending, but don’t use too much, about 2 tablespoons (30 ml) should suffice. The juice from the vegetables should be enough to blend everything together. If you want, add salt and black pepper to taste.",
+    "Once everything is combined and mixed well, you can freeze it in freezer-safe jars until you need to use it. Sofrito will stay good in the freezer for about 6 months, or in the refrigerator for about 2 weeks. ¡Buen provecho!"
+  ],
+  "image": "/recipes/the-heart-of-dishes-sofrito.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

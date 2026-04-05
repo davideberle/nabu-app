@@ -1,0 +1,75 @@
+{
+  "id": "broccoli-veggie-dippers",
+  "name": "Broccoli Veggie Dippers",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "lentils",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "broccoli florets, fresh",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "½ cup"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried parsley",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried basil",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "breadcrumbs, divided",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Rinse and drain the lentils. Place the lentils in a medium-large saucepan. Pour in ½ cup water. Place the pan on high heat and bring to a boil. When the water comes to a boil, turn down to medium high and cook for 20 minutes or until the lentils are tender. All the water should be absorbed. Set aside.",
+    "Meanwhile, add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 10 minutes. Remove from steamer and set aside.",
+    "Mix ground chia seeds with 3 tablespoons water in a small bowl.",
+    "Place all ingredients in a food processor, except ¼ cup breadcrumbs. Process until well combined, with a crumbly texture. Divide mixture into twelve pieces. Roll each piece into a ball and then flatten them into patties. Coat each patty, on each side, with the remaining breadcrumbs.",
+    "Heat the oil in a medium skillet to medium high and brown the patties for 3 minutes on each side.",
+    "Serve with dairy-free chipotle mayonnaise or any of your other favorite spicy dipping sauces."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

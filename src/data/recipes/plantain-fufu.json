@@ -1,0 +1,29 @@
+{
+  "id": "plantain-fufu",
+  "name": "Plantain Fufu",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Made using unripe green plantain, this swallow is simple to make and is often eaten as a low carbohydrate alternative to Amala or Cassava Fufu.",
+  "ingredients": [
+    {
+      "item": "unripe green plantains (peeled and chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Place the plantains in a blender along with the water and blend until you have a smooth mixture.",
+    "Pour this mixture into a pot and stir continuously with a wooden spoon over medium heat. After a few minutes, it will begin to thicken and change colour. You will know it is ready when it becomes sticky, smooth and turns a slightly brighter, almost translucent yellow colour.",
+    "Place the yam in a pot and cover completely with water. Cover and cook on medium-high heat for 25 minutes until the yam is very soft. Drain (reserve some of the water) and place the boiled yam in a food processor with half a cup of the reserved water. Blend until you have a smooth, sticky dough."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

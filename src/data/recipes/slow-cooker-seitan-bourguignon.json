@@ -1,0 +1,82 @@
+{
+  "id": "slow-cooker-seitan-bourguignon",
+  "name": "Slow Cooker Seitan Bourguignon",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "diced yellow onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sliced carrots",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "dairy-free butter, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "flour",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "good Burgundy wine",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "thyme",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Slow Cooker Versatile Seitan Balls, cubed (page 279)",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet. Add the onion and carrots and sauté about 10 to 15 minutes or until the onions are translucent. Add 1 tablespoon butter. Add the garlic and cook for another minute.",
+    "Add the flour and stir to coat everything and cook for another minute. Make sure the flour has been worked all the way in and the mixture does not show any dry flour.",
+    "Add all the ingredients from the skillet to the slow cooker. Stir in ½ cup water, the broth, liquid smoke, tomato paste, wine, bay leaf, thyme, and salt. Cook on low for 6 to 8 hours.",
+    "About an hour before serving, sauté the mushrooms in a tablespoon of butter in a large skillet for about 10 minutes. Add the mushrooms and seitan to the slow cooker and cook another hour.",
+    "Serve by itself or with noodles, potatoes, or rice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "chopped-chickpea-salad-veggie-bowl",
+  "name": "Chopped Chickpea Salad Veggie Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dry quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "15-ounce can chickpeas, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground mustard",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "scallions, finely sliced",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of cayenne pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped romaine lettuce",
+      "amount": "3 cups"
+    },
+    {
+      "item": "diced purple cabbage",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced orange bell pepper",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Place the quinoa in a sieve and rinse well. Combine quinoa, broth, and salt in a small saucepan. Bring to a boil, cover, and reduce to a simmer. Cook for 15 minutes or until the broth is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove the lid and fluff out into a small bowl to cool.",
+    "Place all of the chickpea salad ingredients in a food processor. Pulse four or five times. The chickpeas should be chunky. Remove the blade and stir to make sure the mixture is blended well.",
+    "Mix the oil and vinegar together in a small bowl and set aside.",
+    "Divide the lettuce between two bowls. Lay the vegetables in decorative rows: cabbage, quinoa, bell pepper, and chickpea salad, leaving an edge of romaine lettuce. Serve with the dressing."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

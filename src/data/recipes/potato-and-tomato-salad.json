@@ -1,0 +1,47 @@
+{
+  "id": "potato-and-tomato-salad",
+  "name": "Potato and Tomato Salad",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "medium potatoes, boiled, peeled and sliced",
+      "amount": "4"
+    },
+    {
+      "item": "small Spanish onion, very thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "ripe tomatoes, diced, or 16 cherry tomatoes",
+      "amount": "8"
+    },
+    {
+      "item": "black or green olives, pitted",
+      "amount": "12"
+    },
+    {
+      "item": "capers in brine, drained and chopped",
+      "amount": "30 g"
+    },
+    {
+      "item": "handful fresh basil leaves, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful fresh oregano leaves, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "80 ml"
+    }
+  ],
+  "method": [
+    "Serves 4 4 medium potatoes, boiled, peeled and sliced 1 small Spanish onion, very thinly sliced 8 ripe tomatoes, diced, or 16 cherry tomatoes 12 black or green olives, pitted 30 g capers in brine, drained and chopped 1 handful fresh basil leaves, chopped 1 handful fresh oregano leaves, chopped 80 ml good-quality virgin olive oil salt and ground black pepper",
+    "Add the basil, oregano and oil, and toss together gently but thoroughly. Season and serve with plenty of crusty Italian bread."
+  ]
+}

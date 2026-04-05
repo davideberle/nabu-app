@@ -1,0 +1,48 @@
+{
+  "id": "rose-sangria",
+  "name": "Rose Sangria",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes",
+  "ingredients": [
+    {
+      "item": "nectarines, sliced",
+      "amount": "3"
+    },
+    {
+      "item": "strawberries, hulled and sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bottle of rosé wine",
+      "amount": "1"
+    },
+    {
+      "item": "orange, juiced",
+      "amount": "1"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "orange liqueur",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "¼ cups sparkling water",
+      "amount": "1"
+    },
+    {
+      "item": "Ice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pitcher, mix the nectarines, strawberries, rosé wine, orange juice, sugar, orange liqueur, and sparkling water.",
+    "Add lots of ice and mix until well-combined.",
+    "Serve in chilled glasses."
+  ]
+}

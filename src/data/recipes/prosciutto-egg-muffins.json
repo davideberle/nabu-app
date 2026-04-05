@@ -1,0 +1,47 @@
+{
+  "id": "prosciutto-egg-muffins",
+  "name": "Prosciutto Egg Muffins",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 6 | prep. time 10 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "large eggs, room temperature",
+      "amount": "8"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "diced prosciutto",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a muffin pan with muffin liners.",
+    "In a medium mixing bowl, whisk the eggs, milk, and oregano. Season with salt and pepper to taste.",
+    "Pour the egg mixture evenly into the muffin pan.",
+    "Even add some of the cherry tomatoes, ham, and feta cheese in each muffin.",
+    "Bake for 20 minutes.",
+    "Serve warm."
+  ]
+}

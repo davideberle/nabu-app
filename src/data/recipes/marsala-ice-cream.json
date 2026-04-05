@@ -1,0 +1,31 @@
+{
+  "id": "marsala-ice-cream",
+  "name": "Marsala Ice Cream",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "organic eggs, separated",
+      "amount": "6"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "110 g"
+    },
+    {
+      "item": "good-quality Marsala",
+      "amount": "150 ml"
+    },
+    {
+      "item": "full cream, whipped",
+      "amount": "500 ml"
+    }
+  ],
+  "method": [
+    "Serves 8 6 organic eggs, separated 110 g caster sugar 150 ml good-quality Marsala 500 ml full cream, whipped",
+    "Place the bowl over a double boiler, allow the water in the lower pan to simmer, and whisk the mixture until it increases in volume and becomes like a thick cream. Set aside and allow it to cool."
+  ]
+}

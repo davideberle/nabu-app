@@ -1,0 +1,57 @@
+{
+  "id": "zobo",
+  "name": "Zobo",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 8",
+  "intro": "A delicious drink from the northern part of Nigeria, this beverage is easy to make and requires only a couple of ingredients. It has a slightly sweet and sour taste, which can be enhanced with other flavours such as ginger, vanilla, cinnamon or nutmeg.",
+  "ingredients": [
+    {
+      "item": "tamarind (peeled and rinsed)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh grated ginger (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "8 cups"
+    },
+    {
+      "item": "zobo leaves (rinsed)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ripe pineapple (peeled and diced)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger (roughly chopped)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar or syrup of choice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "hot water",
+      "amount": "10 cups"
+    }
+  ],
+  "method": [
+    "Place the tamarind pulp, fresh ginger and water in a large pot and bring to a rapid boil. Cover the pot and simmer on medium heat for 15 minutes. Leave to cool completely for up to 1 hour.",
+    "Place the zobo leaves, pineapple, ginger, cloves and sugar/ syrup in a large pot and cover with 10 cups of hot water. Bring to a boil then cover the pot and simmer on low-medium heat for 15 minutes. Take oﬀ the heat and leave to steep and cool for up to 3-4 hours or overnight (for a more intense flavour).",
+    "Pour the zobo into a large jug, taste for sweetness and add more sugar/syrup, or add more cold water if needed, along with ice and sliced citrus fruit."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "pizza-margherita",
+  "name": "Pizza Margherita",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "quantity pizza dough (Impasto per Pizza)",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "× 400 g can peeled roma tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "fresh large mozzarella or 6 mozzarella Ovolini",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Makes 4 pizzas, approximately 30 × 40 cm each 1 quantity pizza dough (Impasto per Pizza) 2 cloves garlic, crushed 1 × 400 g can peeled roma tomatoes 1 fresh large mozzarella or 6 mozzarella Ovolini 6–8 fresh basil leaves salt and ground black pepper good-quality virgin olive oil, for drizzling",
+    "Makes 4 pizzas, approximately 30 × 40 cm each",
+    "Preheat the oven to 240°C (gas mark 9).",
+    "Drain the tomatoes of their juice and seeds and chop roughly. Spread the tomato over the dough. Break the mozzarella into little pieces and spread evenly on top of the tomato. Tear the basil leaves and sprinkle over the pizza and season. Lastly, sprinkle some olive oil over the whole pizza.",
+    "Cook in the oven for about 10–15 minutes, or in a pizza oven for 3–5 minutes, until the base is golden and crunchy."
+  ]
+}

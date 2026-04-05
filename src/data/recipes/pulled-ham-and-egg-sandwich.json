@@ -1,0 +1,74 @@
+{
+  "id": "pulled-ham-and-egg-sandwich",
+  "name": "Pulled Ham and Egg Sandwich",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 20 minutes | cooking time 7-9 hours",
+  "ingredients": [
+    {
+      "item": "cooked bone-in ham",
+      "amount": "3-4 pounds"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "bottle beer",
+      "amount": "1 (12-ounce)"
+    },
+    {
+      "item": "ground pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "fresh rosemary sprigs",
+      "amount": "2"
+    },
+    {
+      "item": "brioche buns, split",
+      "amount": "8"
+    },
+    {
+      "item": "butter, more for spreading, at room temperature",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large eggs",
+      "amount": "8"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Spring mix lettuce, optional",
+      "amount": ""
+    },
+    {
+      "item": "Butter pickle slices for garnish",
+      "amount": ""
+    },
+    {
+      "item": "slices Swiss cheese",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Add ham, mustard, maple syrup, beer, ground pepper, and rosemary to a slow cooker. Stir to combine. Cover and cook on LOW for 7-9 hours.",
+    "Transfer the ham to a plate and let it cool. Once cool, shred the meat and remove the bone. Keep the bone for a soup base.",
+    "Remove the rosemary sprigs and skim the fat.",
+    "Place the shredded pork back into the slow cooker.",
+    "Preheat the oven to 350°F (177°C).",
+    "Let the butter melt in a non-stick skillet over medium heat. In batches, fry the eggs sunny-side-up until cooked to the desired doneness. Season to taste with salt and pepper. Set aside.",
+    "Simultaneously, toast the buns and spread with butter on both sides.",
+    "Lay a few lettuce leaves on the bottom buns and add some butter pickle slices if desired.",
+    "Top with a generous amount of shredded ham, a Swiss cheese slice, and top with a fried egg. Top with remaining buns and serve immediately."
+  ]
+}

@@ -2,15 +2,14 @@
   "id": "chicken-chasni",
   "name": "CHICKEN CHASNI",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Some say that chicken chasni is the new chicken tikka masala. It’s sweet, not spicy, and delicious over rice or naans. For me, tandoori chicken tikka is the only way to go with this one. The flavours work so well together.",
   "ingredients": [
     {
-      "item": "ghee or rapeseed oil or seasoned oil",
+      "item": "ghee or rapeseed (canola) oil or seasoned oil",
       "amount": "3 tbsp"
     },
     {
@@ -22,12 +21,12 @@
       "amount": "½ tsp"
     },
     {
-      "item": "(2 cups) base curry sauce, heated",
-      "amount": "500ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
     },
     {
-      "item": "(1¾lb) pre-cooked stewed chicken, plus 125ml (½ cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g"
+      "item": "pre-cooked stewed chicken, plus 125ml (½ cup) of its cooking stock, or more base curry sauce",
+      "amount": "800g (1lb 12oz)"
     },
     {
       "item": "smooth mango chutney",
@@ -46,11 +45,15 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "(scant 1 cup) double (heavy) cream",
-      "amount": "200ml"
+      "item": "double (heavy) cream",
+      "amount": "200ml (generous (¾ cup)"
     },
     {
-      "item": "Juice of 1 or 2 lemons, to taste",
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1–2 lemons, to taste",
       "amount": ""
     },
     {
@@ -64,16 +67,11 @@
     {
       "item": "very finely chopped coriander (cilantro)",
       "amount": "3 tbsp"
-    },
-    {
-      "item": "Salt",
-      "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large pan over a medium-high heat. When the oil is visibly hot, add the garlic and ginger paste; it will sizzle as it releases its moisture into the hot oil. Add the turmeric and fry for about 40 seconds, stirring continuously, then pour in 250ml (1 cup) of the base curry sauce. Let this come to a rapid simmer and scrape any caramelized sauce from the sides of the pan into the sauce.",
-    "Add the rest of the base sauce with the pre-cooked chicken and the stock. Let this cook for about 5 minutes, only stirring if the sauce is obviously catching on the pan, and stirring in any caramelized sauce from the side of the pan.",
+    "Heat the ghee or oil in a large pan over a medium–high heat. When the oil is visibly hot, add the garlic and ginger paste; it will sizzle as it releases its moisture into the hot oil. Add the turmeric and fry for about 40 seconds, stirring continuously, then pour in 250ml (1 cup) of the base curry sauce. Let this come to a rapid simmer and scrape any caramelized sauce from the sides of the pan into the sauce.",
+    "Add the rest of the base sauce with the pre-cooked chicken and the stock or extra sauce. Let this cook for about 5 minutes, only stirring if the sauce is obviously catching on the pan, and stirring in any caramelized sauce from the side of the pan.",
     "Stir in the mango chutney, mint sauce and ketchup followed by the cumin. Pour in the cream and simmer until good and hot. Season with salt and squeeze in the lemon juice to taste. Add red food colouring powder if you want and sprinkle with the garam masala and chopped coriander (cilantro) to serve."
-  ],
-  "image": null
+  ]
 }

@@ -1,0 +1,71 @@
+{
+  "id": "chocolate-crepes",
+  "name": "Chocolate Crepes",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 10 | prep. time 10 minutes | cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Pinch of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sparkling water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "3"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Butter or olive oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "Fruits like berries or sliced bananas for serving",
+      "amount": ""
+    },
+    {
+      "item": "Chocolate sauce for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the flour, baking powder, salt, and cocoa powder in a large mixing bowl.",
+    "In another large mixing bowl, stir the whole milk, sparkling water, eggs, and melted butter.",
+    "Add the dry ingredients to the wet ingredients, then add the vanilla extract and sugar to the mixture.",
+    "Mix until well combined and smooth.",
+    "Melt 1 tablespoon of butter or olive oil in a non-stick skillet or crepe pan over medium heat. Pour about ¼ cup of the batter into the skillet. Swirl around to spread the batter. Let cook until bubbles appear on the surface and flip over with a spatula. Let cook on the other side for 1-2 more minutes and transfer to a serving plate. Cover with foil if desired to keep warm.",
+    "To serve, fill the crepes with fruits and fold. Drizzle with chocolate syrup if desired."
+  ]
+}

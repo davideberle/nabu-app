@@ -1,0 +1,66 @@
+{
+  "id": "fish-couscous",
+  "name": "Fish Couscous",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Spanish onion, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalks, roughly chopped",
+      "amount": "4"
+    },
+    {
+      "item": "fresh bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "60 ml"
+    },
+    {
+      "item": "large Spanish onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, sliced",
+      "amount": "3"
+    },
+    {
+      "item": "fresh bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "canned, crushed roma tomatoes",
+      "amount": "400 g"
+    },
+    {
+      "item": "small red chilli, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "blue swimmer crab",
+      "amount": "1"
+    },
+    {
+      "item": "saffron powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "good-quality couscous",
+      "amount": "500 g"
+    }
+  ],
+  "method": [
+    "Heat the reserved fish stock in a separate saucepan. Stir in the saffron powder then add the couscous. Add the remaining oil, stir well and leave to absorb (as per the packet instructions). Fluff the couscous up with a fork, adding a little more oil if need be. Tip the couscous out onto a warm serving plate and ladle on some of the fish stew. Serve the remaining fish stew on the side."
+  ]
+}

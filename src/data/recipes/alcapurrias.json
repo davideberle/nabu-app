@@ -1,0 +1,79 @@
+{
+  "id": "alcapurrias",
+  "name": "ALCAPURRIAS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "intro": "Much like the Pastelillos, alcapurrias are a delicious handheld treat using root vegetables. They are a labor of love but one that is very worth it. These were often purchased from local street vendors in my neighborhood or at the Puerto Rican Day festival in New York City. My family didn’t have many of the high-tech tools we have now in the kitchen, so we used a grater to grate the green banana and yautia (taro root) for the masa. Now, I use a food processor to reduce the prep time and they come out just as good. Veganizing them was as simple as just replacing the meat filling. My savory Must-Have Picadillo is perfect for alcapurrias.",
+  "ingredients": [
+    {
+      "item": "vegetable oil, divided",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "annatto seeds",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "green bananas",
+      "amount": "4"
+    },
+    {
+      "item": "green plantain",
+      "amount": "1"
+    },
+    {
+      "item": "medium-sized yautia (about ½ lb [225 g])",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Waxed paper or banana leaf, for molding",
+      "amount": ""
+    },
+    {
+      "item": "Must-Have Picadillo",
+      "amount": ""
+    },
+    {
+      "item": "Mayo ketchup, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Start by making achiote oil, which is a way to flavor and color food without using Sazón packets. In a small pot over medium heat, combine 1 cup (240 ml) of the vegetable oil and the annatto seeds. Allow the oil to heat up. As it gets hot, it will activate the color of the annatto seeds. Stir occasionally. You do not need to bring this to a boil—you want to stir and heat enough that the oil turns into a deep orange-red color. Once that has happened, remove the pot from the heat and let the oil sit until it is cool enough to pass through a strainer. Strain the oil into a bowl. Now, you have achiote oil! If you have leftover oil, store it in a jar on your shelf for up to 2 months.",
+    "Peel the green bananas and green plantain and cut them into small disks about ½ inch (1.3 cm) wide. Use a potato peeler to peel the yautia and then chop it into small pieces.",
+    "In a food processor, combine the banana, plantain and yautia pieces with a little less than ¼ cup (about 55 ml) of achiote oil and process until you get a masa consistency. If you are not familiar with masa, it should be blended enough that it’s almost like a paste batter. You should have no clumps or hard pieces—if so, continue to process further. If your food processor isn’t strong enough to process everything at once, process in smaller batches.",
+    "Pour the masa into a bowl and add your salt, pepper, garlic powder, cumin and oregano. Stir to combine.",
+    "Use a piece of waxed paper or a banana leaf to mold your alcapurrias. With one hand, hold the paper or leaf, and use your other hand to add ¼ cup (55 g) of masa, spreading it into a small oval.",
+    "Add a small dollop of picadillo to the center and add one more ¼ cup (55 g) of masa over the filling until you cover it evenly. Repeat until all the masa is used.",
+    "In a skillet, heat the remaining 3 cups (706 ml) of vegetable oil to 375°F (190°C) and gently add the alcapurrias, two at a time—you don’t want to overcrowd the pot. Fry them on both sides, about 5 minutes per side, making sure to fry them thoroughly.",
+    "Serve with my mayo ketchup."
+  ],
+  "image": "/recipes/alcapurrias.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

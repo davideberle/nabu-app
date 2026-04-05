@@ -1,0 +1,36 @@
+{
+  "id": "ham-and-cheese-croissants",
+  "name": "Ham and Cheese Croissants",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 5 minutes | cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "puff pastry",
+      "amount": "½ pound"
+    },
+    {
+      "item": "sliced ham",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "Swiss or Gruyere cheese, sliced",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "large egg, lightly whisked",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a baking sheet with parchment paper.",
+    "Roll out the puff pastry into a large rectangle of ¼-inch thick. Cut into 12 triangles.",
+    "To each triangle, add 1 slice of cheese and 1 slice of ham.",
+    "Roll out each pastry into a croissant shape. Arrange the croissants on the prepared baking sheet.",
+    "Brush each croissant with the whisked egg.",
+    "Bake for 15 minutes or until puffed up and golden-brown in color.",
+    "Serve warm."
+  ]
+}

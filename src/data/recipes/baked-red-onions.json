@@ -1,0 +1,31 @@
+{
+  "id": "baked-red-onions",
+  "name": "Baked Red Onions",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "medium Spanish onions, peeled (about 2 onions per person)",
+      "amount": "12"
+    },
+    {
+      "item": "cloves garlic, very thinly sliced",
+      "amount": "6"
+    },
+    {
+      "item": "bunch fresh thyme",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "175 g"
+    }
+  ],
+  "method": [
+    "Serves 6 12 medium Spanish onions, peeled (about 2 onions per person) 6 cloves garlic, very thinly sliced 1 bunch fresh thyme 175 g unsalted butter, at room temperature salt and ground black pepper",
+    "Preheat the oven to 180°C (gas mark 4)."
+  ]
+}

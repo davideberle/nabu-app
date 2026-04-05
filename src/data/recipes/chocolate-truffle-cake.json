@@ -1,0 +1,38 @@
+{
+  "id": "chocolate-truffle-cake",
+  "name": "Chocolate Truffle Cake",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "good-quality dark chocolate (70% cocoa solids)",
+      "amount": "125 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "125 g"
+    },
+    {
+      "item": "organic eggs, separated",
+      "amount": "5"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "250 g"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Serves 6 125 g good-quality dark chocolate (70% cocoa solids) 125 g unsalted butter 5 organic eggs, separated 250 g caster sugar 2 tablespoons unbleached plain flour pinch of salt whipped cream, for serving",
+    "Preheat the oven to 150°C (gas mark 2) and butter a 25 cm springform cake tin.",
+    "Melt the chocolate and butter in a bowl set over a saucepan of simmering water.",
+    "In a mixing bowl beat the egg yolks and sugar until fluffy, then add the flour, salt and the butter and chocolate mixture. Stir well.",
+    "Pour the mixture into the tin and bake in the oven for 35 minutes, or until a light crust has formed on top but the centre is still soft. Immediately release the cake from the tin, let it cool on a rack (it will collapse a little), then refrigerate overnight. Serve with cream."
+  ]
+}

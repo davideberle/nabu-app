@@ -1,0 +1,67 @@
+{
+  "id": "crazy-quinoa-protein-muffins",
+  "name": "Crazy Quinoa Protein Muffins",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ground chia seeds or chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vanilla protein powder",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dates, chopped small",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Rinse the quinoa and place in a small saucepan with a lid. Cover with ½ cup water and bring to a boil over medium-high heat. Cover and turn down to low. Let cook for 20 minutes and then remove from the heat. Take off the lid and let cool.",
+    "Preheat the oven to 450°F. Line six muffin cups with paper liners.",
+    "Mix the ground chia seeds with ¼ cup plus 2 tablespoons water and set aside.",
+    "Add the almond flour, protein powder, and salt to a small bowl. Mix well. Add the dates and mix to coat. Set aside.",
+    "Put the coconut oil in a medium bowl. If it is not liquid already, put in the microwave and heat for 10 to 20 seconds or until melted. Remove from microwave and add the maple syrup. Stir well. When cool, add the chia seed mixture, vanilla extract, coconut, almond flour mixture, cooked quinoa, and raisins. Mix well.",
+    "Divide the batter between the six muffin cups and bake 12 to 15 minutes, until a toothpick inserted in the center comes out clean."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

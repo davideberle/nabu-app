@@ -1,0 +1,78 @@
+{
+  "id": "return-of-the-mac",
+  "name": "RETURN OF THE MAC",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 12",
+  "intro": "This mac ‘n’ cheese is creamy, cheesy, savory and sharp. It will taste as if you’re eating the dairy version. It is one of my best sellers at my pop-up in New York City. We’re going to use potatoes, carrots and cauliflower for sharpness. Nutritional yeast will be added for more of a cheesy flavor. This recipe requires patience and love.",
+  "ingredients": [
+    {
+      "item": "water, divided",
+      "amount": "10 cups (2.5 L)"
+    },
+    {
+      "item": "plus 1½ tsp (9 g) salt, divided",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "large potatoes, peeled and cubed",
+      "amount": "2"
+    },
+    {
+      "item": "large carrot, peeled and cubed",
+      "amount": "1"
+    },
+    {
+      "item": "chopped cauliflower",
+      "amount": "2 cups (200 g)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "½ cup (64 g)"
+    },
+    {
+      "item": "melted vegan butter",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "boxes macaroni noodles",
+      "amount": "2 (1-lb [455-g])"
+    },
+    {
+      "item": "vegan Cheddar cheese shreds",
+      "amount": "¾ cup (160 g)"
+    }
+  ],
+  "method": [
+    "In a large pot, bring 4 cups (946 ml) of water to a boil and add 1 tablespoon (18 g) of salt, the potatoes, carrot and cauliflower and boil for 10 minutes, or until tender. Drain the vegetables but reserve 2 cups (480 ml) of the water. Add the vegetables to a blender with the nutritional yeast, melted vegan butter, oregano, paprika, garlic powder, hot sauce and pepper. Then blend, adding the reserved 2 cups (480 ml) of water gradually until you create a creamy and loose sauce.",
+    "Preheat the oven to 400°F (200°C). In a large pot (rinse and reuse the one used for the vegetables), bring 6 cups (1.4 L) of water and 1½ teaspoons (9 g) of salt to a boil. Once the water is boiling, add the macaroni and boil until al dente.",
+    "Drain the macaroni in a strainer and place it in a 9 x 13–inch (23 x 33–cm) baking dish, followed by the vegetable mixture, and mix everything together. Add a layer of vegan Cheddar cheese shreds on top and cover with foil. Bake for 15 minutes, then remove the foil and broil the cheese for 6 minutes, or until it browns up a bit."
+  ],
+  "image": "/recipes/return-of-the-mac.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

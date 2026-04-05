@@ -1,0 +1,81 @@
+{
+  "id": "mixed-beans-chili",
+  "name": "Mixed Beans Chili",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "beans, mixed varieties (you can buy premixed or mix your own)",
+      "amount": "1 pound"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "vegetable broth, more if needed",
+      "amount": "4 cups"
+    },
+    {
+      "item": "28-ounce can crushed fire-roasted tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "8-ounce can tomato sauce",
+      "amount": "1"
+    },
+    {
+      "item": "6-ounce can tomato paste",
+      "amount": "1"
+    },
+    {
+      "item": "vegan Worcestershire sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "chili powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Rinse the beans and place in a large stockpot. Cover with water by about 3 inches. The beans will swell. Let soak overnight.",
+    "Drain the beans and place back into the stockpot.",
+    "Heat the oil in a large skillet over medium-high heat. Add the onion and sauté until translucent, about 10 to 15 minutes. Add the garlic and sauté another minute. Add this mixture to the beans in the stockpot. Add the vegetable broth, crushed tomatoes, tomato sauce, tomato paste, and Worcestershire sauce. The beans should be covered by a couple of inches of liquid. You can add more broth or water, if needed. Stir well. Add the remaining ingredients and stir well again. Cover and bring to a boil.",
+    "Remove the lid, turn down the heat, and simmer very low. So low you can barely see the liquid moving. Don’t put the lid back on. It becomes much more flavorful with the lid off. If the liquid cooks down to where the beans are not submerged, then add some more broth or water. (If you add more liquid, you’ll have to cover again, raise the heat to a boil, and then turn it down immediately and uncover.) Make sure your heat isn’t too high. Cook for 1 hour and check the beans. You will want them tender. If they are not done yet, then cook longer. You shouldn’t need to cook longer than 1½ hours."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "crepes-with-cream-cheese-filling",
+  "name": "Crepes with Cream Cheese Filling",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cream cheese",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "whipped cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "hulled and sliced strawberries",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the flour, eggs, milk, water, and salt.",
+    "Stir in the butter and whisk until combined.",
+    "Warm a large non-stick frying pan over medium heat. Spray it with cooking spray.",
+    "Add some of the crepe batter. Swirl the pan around to make an even crepe.",
+    "Cook for 1 minute on each side. Set aside on a plate to cool slightly.",
+    "Repeat with the remaining batter.",
+    "To make the filling, in a large mixing bowl, combine the cream cheese, vanilla extract, powdered sugar, whipped cream, and lemon juice until fluffy and creamy.",
+    "Fill each of the crepes with the cream cheese mixture. Top with the strawberries and fold into rolls.",
+    "Serve warm."
+  ]
+}

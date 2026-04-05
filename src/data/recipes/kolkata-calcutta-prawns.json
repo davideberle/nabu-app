@@ -2,16 +2,15 @@
   "id": "kolkata-calcutta-prawns",
   "name": "KOLKATA (CALCUTTA) PRAWNS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Kolkata-style prawn curries are making their way onto many curry-house menus. This recipe was inspired by a visit to my local curry house, Raj Bari in Yarm. I didn’t see the chefs making the dish while I was there, but they were nice enough to let me know what went into it. I returned home and decided to make the curry all over again for my family. It was that good!",
+  "intro": "Kolkata-style prawn (shrimp) curries are making their way onto many curry-house menus. This recipe was inspired by a visit to my local curry house, Raj Bari in Yarm. I didn’t see the chefs making the dish while I was there, but they were nice enough to let me know what went into it. I returned home and decided to make the curry all over again for my family. It was that good!",
   "ingredients": [
     {
-      "item": "(1 lb) raw tiger prawns (shrimp), peeled and deveined",
-      "amount": "500g"
+      "item": "raw tiger prawns (shrimp), peeled and deveined",
+      "amount": "500g (1lb 2oz)"
     },
     {
       "item": "ground turmeric",
@@ -34,8 +33,8 @@
       "amount": "4"
     },
     {
-      "item": "cinnamon stick",
-      "amount": "1"
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
     },
     {
       "item": "bay leaf",
@@ -58,37 +57,37 @@
       "amount": "1"
     },
     {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
       "item": "coconut flour",
       "amount": "2 tbsp"
     },
     {
-      "item": "(1¾ cups) coconut milk",
-      "amount": "400ml"
+      "item": "tin (can) thick coconut milk",
+      "amount": "400ml (14fl oz)"
     },
     {
       "item": "Pinch of saffron threads",
       "amount": ""
     },
     {
-      "item": "paprika",
-      "amount": "½ tsp"
-    },
-    {
       "item": "garam masala",
       "amount": "1 tsp"
     },
     {
-      "item": "finely chopped coriander (cilantro)",
-      "amount": "1 tbsp"
+      "item": "Salt, to taste",
+      "amount": ""
     },
     {
-      "item": "Salt",
-      "amount": ""
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "1 tbsp"
     }
   ],
   "method": [
-    "Sprinkle the prawns (shrimp) with the turmeric and mix well. Heat the ghee or oil in a large frying pan or wok over a medium-high heat. When hot, toss in the mustard seeds. When they begin to pop, reduce the heat to medium and add the rest of the whole spices, bay leaf and curry leaves. Fry for 30 seconds then add the shallots and sauté for about 5 minutes, until translucent and soft.",
-    "Add the garlic and ginger paste and the fresh chilli, and stir to combine. Add the prawns and paprika and fry, stirring regularly until the prawns begin to turn pink. Stir in the coconut flour, coconut milk and saffron and simmer for a further few minutes so that the sauce thickens slightly and the prawns cook through. To serve, stir in the garam masala, check for seasoning and add salt to taste. Top with the fresh coriander (cilantro)."
-  ],
-  "image": "/recipes/kolkata-calcutta-prawns.jpg"
+    "Sprinkle the prawns (shrimp) with the turmeric and mix well.",
+    "Heat the ghee or oil in a large frying pan or wok over a medium–high heat. When hot, toss in the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium and add the rest of the whole spices, bay leaf and curry leaves. Fry for 30 seconds, then add the shallots and sauté for about 5 minutes until translucent and soft.",
+    "Add the garlic and ginger paste and the fresh chilli, and stir to combine. Add the prawns and paprika and fry, stirring regularly, until the prawns begin to turn pink. Stir in the coconut flour, coconut milk and saffron and simmer for a further few minutes so that the sauce thickens slightly and the prawns cook through. To serve, stir in the garam masala and season with salt. Top with the coriander (cilantro)."
+  ]
 }

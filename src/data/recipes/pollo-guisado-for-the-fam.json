@@ -1,0 +1,80 @@
+{
+  "id": "pollo-guisado-for-the-fam",
+  "name": "POLLO GUISADO FOR THE FAM",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "Pollo guisado was one of the first dishes I learned to make as a young girl, and it was my favorite. Nothing reminded me of home more than a plate of pollo guisado and white rice. This was my go-to meal to make when my mom had to work and then go to school, and I had to cook for myself and my siblings. My mom and uncle made this all the time, and I always watched, learned and asked questions so I could perfect it on my own. It is easy to make, savory and saucy. Adding the potatoes gives it more of a homey feel.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "oyster mushrooms, washed and peeled into thick shreds",
+      "amount": "3 lb (1.4 kg)"
+    },
+    {
+      "item": "diced bell peppers, assorted colors",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1 (8-oz [225-g])"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "golden potatoes, peeled and cubed",
+      "amount": "3"
+    },
+    {
+      "item": "olives with pimientos and capers",
+      "amount": "½ cup (45 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot over medium heat, heat your oil and sauté the garlic, sofrito, onion, oyster mushrooms and bell peppers to release the aromatics and sear the mushrooms for about 5 minutes. Add the tomato sauce, stock, potatoes, olive mixture, Sazón, adobo, oregano and cilantro, and cook until the potatoes are tender, about 15 minutes. Taste the stew and add salt and black pepper to your liking."
+  ],
+  "image": "/recipes/pollo-guisado-for-the-fam.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

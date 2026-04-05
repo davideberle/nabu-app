@@ -1,0 +1,48 @@
+{
+  "id": "rainbow-veggie-protein-pinwheels",
+  "name": "Rainbow Veggie Protein Pinwheels",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "hummus",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tempeh, crumbled in a food processor",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large spinach tortillas",
+      "amount": "2"
+    },
+    {
+      "item": "thinly sliced red bell pepper",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "thinly sliced yellow bell pepper",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carrot, sliced thin",
+      "amount": "1"
+    },
+    {
+      "item": "very thinly sliced purple cabbage",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Mix together the hummus and tempeh.",
+    "Lay out tortillas. Spread hummus mixture in a thin layer over the whole surface of each tortilla stopping 1 inch from the edges. Lay a thin strip of each of the four vegetables, next to each other, over the hummus mixture.",
+    "Roll each tortilla tightly and cut crosswise into pinwheels. You can use toothpicks if needed, but the hummus helps them stick together at the edges."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

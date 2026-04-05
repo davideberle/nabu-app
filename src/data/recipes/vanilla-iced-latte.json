@@ -1,0 +1,31 @@
+{
+  "id": "vanilla-iced-latte",
+  "name": "Vanilla Iced Latte",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 1 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "brewed espresso, cooled",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vanilla extract or to taste",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Ice cubes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the espresso, milk, and vanilla to a pitcher.",
+    "Mix until combined and pour into a serving glass filled with ice."
+  ]
+}

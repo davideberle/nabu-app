@@ -1,0 +1,72 @@
+{
+  "id": "pump-up-the-power-energy-balls",
+  "name": "Pump Up the Power Energy Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "almond meal",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "wheat germ",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pepitas",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried currants",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Mix the oats, almond meal, wheat germ, flaxseed meal, pepitas, hempseed, cinnamon, nutmeg, and currants together in a medium bowl.",
+    "Add the peanut butter, maple syrup, vanilla, and salt to the bowl of a stand mixer. Mix on medium speed until well combined. Pour the dry ingredients into the wet mixture. Mix on low until well combined.",
+    "Roll into thirty-two balls."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

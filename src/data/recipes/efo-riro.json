@@ -1,0 +1,43 @@
+{
+  "id": "efo-riro",
+  "name": "Efo Riro",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red onion (sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    },
+    {
+      "item": "spinach (washed and chopped or left whole)",
+      "amount": "6 cups"
+    },
+    {
+      "item": "SOUPS AND STEWS",
+      "amount": "105"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot and add the sliced onions and iru. Cook for 2-3 minutes until the onions start to soften. Add the stew base, meat alternatives, stock cube and salt to taste. Cook for 5 minutes over high heat. Add the spinach, stir well to combine and simmer on medium heat for another 5 minutes.",
+    "Serve hot with a side of your choice such as steamed rice, eba, pounded yam, boiled plantain, etc."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "king-fakin-bacun",
+  "name": "KING FAKIN BACUN",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 3 to 4",
+  "intro": "Everyone loves bacon, but I don’t like to hurt animals for it, so here is my vegan take on it: bacun. It is crispy, smoky, savory and missing nothing. Let’s pig out! Hee-hee.",
+  "ingredients": [
+    {
+      "item": "king oyster mushroom",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "hickory liquid smoke",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pure maple syrup",
+      "amount": "2 tsp (10 ml)"
+    }
+  ],
+  "method": [
+    "Cut off the caps and woody ends of the king oyster mushrooms and use a mandoline to slice the mushrooms long ways, using the widest setting. Thick slices are preferred because they will shrink in the cooking process.",
+    "Preheat the oven to 350°F (180°C) and line a large baking sheet with parchment paper.",
+    "Add a pinch of salt and pepper to the mushroom slices and brush them with oil. This will draw out the moisture during the baking process, which is meant to dehydrate them. Arrange the mushrooms in a single layer on the prepared baking sheet. Bake for about 20 minutes. Then, flip the mushrooms, using tongs, and bake them for an additional 15 to 20 minutes, or until golden brown and a bit crispy. Keep an eye on them during this process so they do not overcook.",
+    "In a large bowl, whisk together the sugar, garlic powder, paprika, liquid smoke and maple syrup, then add the baked mushrooms and toss to coat all the slices. You can cook it again on a skillet for extra crispness, or eat it as is."
+  ],
+  "image": "/recipes/king-fakin-bacun.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

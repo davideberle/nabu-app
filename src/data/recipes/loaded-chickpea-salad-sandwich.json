@@ -1,0 +1,71 @@
+{
+  "id": "loaded-chickpea-salad-sandwich",
+  "name": "Loaded Chickpea Salad Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "15-ounce cans chickpeas, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce cans pinto beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vegan mayonnaise (add another tablespoon if you like it better that way)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Dijon mustard (add another tablespoon if desired)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "slices whole wheat bread or sprouted grain bread",
+      "amount": "16"
+    },
+    {
+      "item": "avocados, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "2 ounces"
+    }
+  ],
+  "method": [
+    "In a large bowl, add the beans and mash. Leave a bit chunky, not completely mashed. Add the remaining ingredients except the bread, avocado, and spinach. Mix well.",
+    "Spread on the bread slices. Add the avocado slices and spinach. You can also keep any extra chickpea salad in your fridge for up to 5 days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

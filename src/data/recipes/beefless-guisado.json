@@ -1,0 +1,107 @@
+{
+  "id": "beefless-guisado",
+  "name": "BEEFLESS GUISADO",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Beefless guisado is my take on carne guisado, which translates to “beef stew.” It is normally made with beef chunks; however, this can be made using jackfruit or seitan, but seitan can be a little tricky to work with, and I wanted to provide a recipe that is easy and delicious, so I am using jackfruit. The jackfruit is shaped like beef chunks and has a meaty texture making it the perfect mock meat. You want to keep the integrity of the shape, so working gently with this is important. This guisado is warm, savory, chunky and full of interesting flavors that complement one another so well.",
+  "ingredients": [
+    {
+      "item": "cans jackfruit in brine, drained",
+      "amount": "3 (14-oz [400-g])"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "vegan vegetable bouillon cubes, divided",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 tbsp (15 g)"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1 (8-oz [225-g])"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups (710 ml)"
+    },
+    {
+      "item": "golden potatoes, peeled and cubed",
+      "amount": "3"
+    },
+    {
+      "item": "carrots, peeled and cut into coins",
+      "amount": "2"
+    },
+    {
+      "item": "diced bell peppers, assorted colors",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "olives with pimientos and capers",
+      "amount": "¼ cup (23 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Cooked white rice, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a large pot of water to a boil. Add the drained jackfruit to the boiling water with a big pinch of salt and one vegetable bouillon cube. Cook for 30 minutes to boil out the brine. Drain and gently pat out any excess liquid with a paper towel.",
+    "In a large pot over medium heat, heat your oil and sauté the onion, garlic, sofrito, the remaining vegetable bouillon cube, soy sauce, cumin and jackfruit. Let everything sear and sauté for 5 minutes while stirring.",
+    "Add the flour and gently mix it into everything in the pot. This is to thicken the sauce a bit. Once the sauce is a bit thicker, add the tomato sauce, water, potatoes, carrots, bell peppers, olive mixture, Sazón and oregano. Let everything cook for 8 minutes, or until the carrots and potatoes are tender. Also, be mindful that the water should cover everything in the pot, so you may need to add more accordingly, depending on how shallow your pot is.",
+    "Add the cilantro, and salt and black pepper to taste. Serve with white rice."
+  ],
+  "image": "/recipes/beefless-guisado.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

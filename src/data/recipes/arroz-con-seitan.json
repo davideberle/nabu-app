@@ -1,0 +1,63 @@
+{
+  "id": "arroz-con-seitan",
+  "name": "Arroz con Seitan",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bell pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "jasmine rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "15-ounce can tomatoes, diced",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links, torn into bite-size pieces (page 284)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "peas, fresh, frozen, or canned (optional)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Add the oil to a large skillet that has a cover and heat over medium-high heat. Add the onions and bell peppers and sauté for 10 minutes. Add the garlic and stir to heat through. Add the rice, tomatoes, and vegetable broth. Stir and pat down with the back of a wooden spoon to make sure all the rice is in liquid. Cover, raise to a boil, and turn down immediately to simmer for 15 minutes. Check to see if rice is done and most of the liquid is cooked away.",
+    "Lightly stir in the seitan, peas (if using) salt, and pepper, and replace the cover. Let steam for 10 minutes on low heat."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

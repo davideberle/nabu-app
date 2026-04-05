@@ -1,0 +1,43 @@
+{
+  "id": "milanese-risotto",
+  "name": "Milanese Risotto",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "litres well-flavoured fresh chicken or veal stock",
+      "amount": "2"
+    },
+    {
+      "item": "large onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "125 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "50 ml"
+    },
+    {
+      "item": "carnaroli or arborio rice",
+      "amount": "500 g"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "300 ml"
+    },
+    {
+      "item": "freshly grated parmigiano, plus extra for serving",
+      "amount": "125 g"
+    }
+  ],
+  "method": [
+    "Serves 6 2 litres well-flavoured fresh chicken or veal stock 1 large onion, chopped 125 g unsalted butter 50 ml good-quality virgin olive oil bone marrow (optional, see Note) pinch saffron 500 g carnaroli or arborio rice 300 ml dry white wine 125 g freshly grated parmigiano, plus extra for serving salt and ground black pepper fresh porcini mushrooms, pan-fried, for serving (optional)",
+    "Allow the stock to come to the boil in a pan and then turn heat down and simmer."
+  ]
+}

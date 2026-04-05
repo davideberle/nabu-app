@@ -1,0 +1,71 @@
+{
+  "id": "mom-s-potato-salad-reinvented",
+  "name": "MOM’S POTATO SALAD REINVENTED",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 10",
+  "intro": "Yeah, from this title, I bet you’re probably curious about this potato salad. People are so iffy about the way other people prepare their potato salad. Best believe, in my family, only two people were allowed to make it: me or my mom. Potatoes may be one of my favorite foods. My grandma used to prepare them in many different ways—mashed, boiled, french fries, scalloped and so on. It’s one of my comfort foods; eating potatoes is like a big warm hug. I fell in love with my mom’s potato salad as a young girl. It’s savory, peppery, eggy and just so yummy. You must make this. I use black salt (which I found on Amazon) and tofu to replace the egg flavor and texture. The replacement is perfect. This is a potato salad you can bring to the family function.",
+  "ingredients": [
+    {
+      "item": "salt",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "Yukon Gold potatoes, peeled and diced small",
+      "amount": "3 lb (1.4 kg)"
+    },
+    {
+      "item": "diced mixed green and red bell pepper",
+      "amount": "½ cup (75 g)"
+    },
+    {
+      "item": "diced yellow onion",
+      "amount": "½ cup (80 g)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "1½ cups (338 g)"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "1 tbsp (6 g)"
+    },
+    {
+      "item": "black salt",
+      "amount": "1 tbsp (13 g)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "block extra-firm tofu, diced",
+      "amount": "½ (12-oz [340-g])"
+    },
+    {
+      "item": "olives",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "Paprika, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Fill a large pot with water and add your regular salt and your diced potatoes. Bring to a boil and boil for about 20 minutes, or until fork-tender.",
+    "Drain the potatoes in a colander and run cold water over them so they stop cooking. Let the potatoes rest until completely cool. This is an important step before adding everything else to make the salad.",
+    "Once the potatoes are cool, add your bell pepper, onion, olive oil, vegan mayonnaise, black pepper, black salt and adobo, and mix. Do not overmix—you do not want to mash the potatoes.",
+    "Once you mix everything up, add your tofu and olives and gently mix again. Garnish with paprika."
+  ],
+  "image": "/recipes/mom-s-potato-salad-reinvented.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

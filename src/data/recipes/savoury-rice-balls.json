@@ -1,0 +1,42 @@
+{
+  "id": "savoury-rice-balls",
+  "name": "Savoury Rice Balls",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "left-over risotto",
+      "amount": "300 g"
+    },
+    {
+      "item": "large fresh mozzarella ball, cut into small cubes",
+      "amount": "1"
+    },
+    {
+      "item": "thick slices cooked ham, very finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "120 g"
+    },
+    {
+      "item": "organic eggs, lightly beaten",
+      "amount": "2"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "200 g"
+    },
+    {
+      "item": "sunflower oil, for frying",
+      "amount": "500 ml"
+    }
+  ],
+  "method": [
+    "Makes 15–20 arancine 300 g left-over risotto 1 large fresh mozzarella ball, cut into small cubes 2 thick slices cooked ham, very finely chopped 120 g unbleached plain flour 2 organic eggs, lightly beaten 200 g fresh breadcrumbs 500 ml sunflower oil, for frying",
+    "Heat the oil in a medium saucepan. Deep-fry the arancine in batches over medium–high heat until golden, turning them frequently as they cook. Drain on kitchen paper and keep them warm while you cook the remainder. Serve immediately."
+  ]
+}

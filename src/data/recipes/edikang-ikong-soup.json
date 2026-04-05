@@ -1,0 +1,44 @@
+{
+  "id": "edikang-ikong-soup",
+  "name": "Edikang Ikong Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "This hearty and nutritious vegetable soup is native to the Efiks, people who reside primarily in Cross River and Akwa Ibom State. It is traditionally prepared using copious amounts of pumpkin leaves and water leaves - the stars of the dish. If you live abroad and are struggling to find these leaves, I recommend using chopped frozen spinach instead. This soup goes well with most swallows.",
+  "ingredients": [
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "(approx. 300g) ugu/ pumpkin leaves (washed and finely chopped)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "(approx. 150g) water leaves or spinach (washed and finely chopped)",
+      "amount": "1 cups"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "and 1/2 cups water Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add the palm oil and onions to a large pot. Cook over medium-high heat for 2-3 minutes until the onions start to soften. Add the meat alternative(s) of your choice, ensuring that they are firm (roast beforehand if necessary). Add the chopped leafy green vegetables, vegetable stock cube, 1 and 1/2 cups of water and salt to taste. Stir well, cover and cook over medium-high heat for 7-8 minutes.",
+    "Serve hot with a swallow of your choice such as: eba, fufu, pounded yam, etc."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

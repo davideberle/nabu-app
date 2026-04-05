@@ -1,0 +1,55 @@
+{
+  "id": "devilled-eggs",
+  "name": "Devilled Eggs",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "Spanish onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sprig fresh rosemary",
+      "amount": "1"
+    },
+    {
+      "item": "fresh bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "140 g"
+    },
+    {
+      "item": "fresh, ripe, peeled roma tomatoes (canned ones will do)",
+      "amount": "500 g"
+    },
+    {
+      "item": "small chilli (optional), chopped",
+      "amount": "1"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "organic eggs per person",
+      "amount": "2"
+    },
+    {
+      "item": "slices ciabatta bread per person",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Melt the butter and oil and soften the onion and garlic until the onion becomes transparent, then add the sage, rosemary and bay leaf. Add the tomato paste and cook until the paste turns a terracotta colour. Add the peeled tomatoes, mix well, season and add the chilli. Cover and cook for about 20 minutes over low heat. The sauce for this dish should be strong and tasty.",
+    "Boil some water with the tablespoon of white vinegar and poach the eggs. Make sure that the yolks remain runny.",
+    "Chop the fresh basil, sprinkle it over the eggs and season with salt and pepper to taste."
+  ]
+}

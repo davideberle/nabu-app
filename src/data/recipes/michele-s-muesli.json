@@ -1,0 +1,57 @@
+{
+  "id": "michele-s-muesli",
+  "name": "Michele’s Muesli",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "rolled oats",
+      "amount": "500 g"
+    },
+    {
+      "item": "rolled triticale",
+      "amount": "500 g"
+    },
+    {
+      "item": "rice bran or bran mixture",
+      "amount": "500 g"
+    },
+    {
+      "item": "ground almonds",
+      "amount": "250 g"
+    },
+    {
+      "item": "pepitas",
+      "amount": "250 g"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "250 g"
+    },
+    {
+      "item": "linseeds",
+      "amount": "250 g"
+    },
+    {
+      "item": "unhulled sesame seeds",
+      "amount": "250 g"
+    },
+    {
+      "item": "lecithin granules",
+      "amount": "250 g"
+    },
+    {
+      "item": "shredded coconut",
+      "amount": "250 g"
+    },
+    {
+      "item": "sultanas",
+      "amount": "300 g"
+    }
+  ],
+  "method": [
+    "Combine all the ingredients and store in the freezer."
+  ]
+}

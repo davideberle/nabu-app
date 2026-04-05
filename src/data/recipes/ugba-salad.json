@@ -1,0 +1,64 @@
+{
+  "id": "ugba-salad",
+  "name": "Ugba Salad",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "Also known as oil bean salad, this dish is popular in the eastern parts of Nigeria, particularly amongst the Igbo. The shredded and fermented oil bean seeds have an umami taste. If you live outside of Nigeria, it is possible to find ugba from specialised African food shops or from online retailers. Sometimes it is also labelled as ukpaka. If possible, go with the unsalted version so that you can control the amount of saltiness in the dish.",
+  "ingredients": [
+    {
+      "item": "ugba (shredded oil bean seed)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "1/2 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "baking soda mixed with",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "warm water",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "crushed chilli flakes or cameroon pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "ground ehuru (or nutmeg)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "1/2 teaspoon ground Uziza seed or black peppercorns",
+      "amount": ""
+    },
+    {
+      "item": "red onion (thinly sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "1/4 cup shredded ukazi leaves or shredded spinach",
+      "amount": ""
+    },
+    {
+      "item": "garden eggs (cut into bite-size pieces)",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Add the palm oil and baking soda mixture to a mixing bowl and whisk continuously until well combined and emulsified. Add the crushed chilli flakes, ehuru (or nutmeg) and ground Uziza (or peppercorn). Mix well to combine, then add the ugba and stir to coat evenly.",
+    "Add the sliced onions, shredded ukazi (or spinach) and garden egg to garnish."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "ham-and-cheese-waffles",
+  "name": "Ham and Cheese Waffles",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10-15 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "deli ham, diced",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole-wheat flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, whisk together both flours, garlic powder, salt, and baking powder.",
+    "Stir in the milk, butter, and eggs until combined.",
+    "Fold in the diced ham and cheddar cheese. Mix until combined.",
+    "Warm your waffle iron and spray it with cooking spray.",
+    "Working in batches, cook the waffles for 5-7 minutes or until done.",
+    "Serve warm."
+  ]
+}

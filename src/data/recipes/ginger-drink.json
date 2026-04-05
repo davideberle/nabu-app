@@ -1,0 +1,59 @@
+{
+  "id": "ginger-drink",
+  "name": "Ginger Drink",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-5",
+  "intro": "A fresh and satisfying ginger drink that is common to the Hausa people of northern Nigeria. It is sometimes called Hausa beer and is served at special occasions such as weddings and birthday parties.",
+  "ingredients": [
+    {
+      "item": "sliced fresh ginger",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ripe pineapple (peeled and chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "warm water",
+      "amount": "5 cups"
+    },
+    {
+      "item": "tiger nuts (soaked overnight then drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fresh coconut flesh (cut into small pieces)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "soft pitted dates (optional)",
+      "amount": "2"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "10"
+    },
+    {
+      "item": "thick slices fresh ginger",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Place the fresh ginger and pineapple in a blender with 3 cups of water and blend until smooth. Pass through a strainer to extract the juice. Save the pulp for another recipe (why not add it to a cake or muﬃn batter?)",
+    "Pour the juice into a pitcher, squeeze in the lime or lemon juice and top with ice cold water. Sweeten with sugar or syrup to taste, mix well and serve over ice.",
+    "Place all the ingredients in a blender and blend on high speed until smooth. You may need to start and stop the blender at intervals to prevent burning the motor.",
+    "Pour the mixture through a fine sieve, repeating the process 3-4 times until you have a smooth and silky drink. Alternatively, you can use a fine straining cloth to squeeze out the liquid. You may need to do this in batches, depending on the size of your sieve or straining cloth. Reserve the pulp and add to other recipes such as cakes, muﬃns and pancakes for a fibre boost.",
+    "Pour the milk into a jug, chill and serve cold on its own or over ice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

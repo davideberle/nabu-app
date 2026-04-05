@@ -1,0 +1,85 @@
+{
+  "id": "my-famous-flancocho",
+  "name": "MY FAMOUS FLANCOCHO",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 12",
+  "intro": "Get your 10-inch (25-cm) Bundt pan ready and set it on a flat and even surface.",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "cans organic unsweetened coconut milk (Target® has the best options)",
+      "amount": "2 (13.5-oz [400-ml])"
+    },
+    {
+      "item": "can sweetened condensed coconut milk",
+      "amount": "1 (8-oz [236-ml])"
+    },
+    {
+      "item": "agar agar powder",
+      "amount": "1 tbsp (7 g)"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1½ cups (188 g)"
+    },
+    {
+      "item": "unsweetened cocoa powder",
+      "amount": "⅓ cup (37 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "avocado oil",
+      "amount": "⅔ cup (160 ml)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tbsp (15 ml)"
+    }
+  ],
+  "method": [
+    "Flancocho is a custard that is baked on top of a chocolate cake. Flan is a popular dessert in Puerto Rico, normally made with condensed milk and sugar to make a custard. This flancocho was a recipe I worked on for three months to perfect, and it is now a popular item on the Black Rican Vegan menu. This dessert is sweet, and the custard texture mixed with the moist chocolate cake makes it a perfect bite every time. You’ll need a Bundt pan for this recipe, so make sure to plan ahead.",
+    "To a medium-sized nonstick pot over medium heat, add the sugar and caramelize, stirring constantly with a spatula, until it is golden brown. Working fast is vital because this will get very hot very quickly, and you do not want it to burn. Once the sugar turns brown and runny, pour it into the Bundt pan and use the spatula to spread it evenly on the bottom. Let the sugar harden. You may hear it start to crack—this is normal.",
+    "In another pot over medium heat, whisk together the unsweetened coconut milk, condensed coconut milk, agar agar, cinnamon, vanilla and salt. Bring the mixture to a gentle boil while whisking, then remove it from the heat and pour it into the Bundt pan. Let the flan rest for 20 minutes, then put it into the refrigerator to solidify a bit for about 2 hours.",
+    "Preheat your oven to 350°F (180°C). In a large bowl, whisk together the all-purpose flour, cocoa powder, salt, raw cane sugar, avocado oil, water, vanilla and lemon juice. Mix thoroughly. Evenly pour the chocolate cake batter into the Bundt pan over the flan.",
+    "Add about 8 cups (1.9 L) of water to a deep, wide baking dish that is large enough to hold your Bundt pan. This will be your water bath, which will prevent the sugar from burning during the baking process. Place the Bundt pan into the water bath. Bake for 1 hour, checking on it periodically. Insert a toothpick into the chocolate cake and make sure no wet batter coats the toothpick—if so, the cake may need more time. When the cake is done, let it rest in its pan at room temperature for 40 minutes, then refrigerate for 2 hours or overnight.",
+    "Use a cutting board or big plate to flip the Bundt pan upside down. You may have to run a knife through the edges or tap out the cake. ¡Buen provecho!"
+  ],
+  "image": "/recipes/my-famous-flancocho.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

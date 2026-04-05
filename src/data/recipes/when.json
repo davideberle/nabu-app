@@ -1,0 +1,32 @@
+{
+  "id": "when",
+  "name": "When",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "Transfer to a bowl, add the oil and salt, and use a whisk or hand mixer to beat the mixture for 2-3 minutes to incorporate some air into it.",
+  "ingredients": [
+    {
+      "item": "honey beans or black eyed beans (soaked overnight)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "sunflower oil Salt to taste (optional)",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Place the beans and water in a food blender and blend until you have a very smooth, thick puree.",
+    "Transfer to a bowl, add the oil and salt, and use a whisk or hand mixer to beat the mixture for 2-3 minutes to incorporate some air into it."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

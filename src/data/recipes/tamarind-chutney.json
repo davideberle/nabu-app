@@ -2,9 +2,8 @@
   "id": "tamarind-chutney",
   "name": "TAMARIND CHUTNEY",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "makes 2 jars",
   "intro": "Tamarind chutney simply has to be on the table when my wife and I plan a curry party. It’s sweet, sour, savoury and spicy, and also has a nice crunch to it. What more could you ask for in a chutney?",
@@ -50,18 +49,17 @@
       "amount": "1"
     },
     {
-      "item": "Madras curry powder",
+      "item": "madras curry powder",
       "amount": "1 tsp"
     },
     {
-      "item": "Salt to taste",
+      "item": "Salt, to taste",
       "amount": ""
     }
   ],
   "method": [
-    "Put all the ingredients, with salt to taste, into a small bowl and mix well. Refrigerate for at least 1 hour before serving."
+    "Put all the ingredients into a small bowl and mix well. Refrigerate for at least 1 hour before serving."
   ],
-  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

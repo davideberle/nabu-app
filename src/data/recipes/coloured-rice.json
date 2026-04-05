@@ -1,0 +1,31 @@
+{
+  "id": "coloured-rice",
+  "name": "COLOURED RICE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4",
+  "intro": "A cookbook of curry-house recipes wouldn’t be complete if I didn’t explain how to make coloured rice. You probably already know it’s done with food colouring, but if you don’t, it is. Powdered food colouring is normally used when the rice is still moist from cooking. You can use the colours of your choice. Here is one option.",
+  "ingredients": [
+    {
+      "item": "basmati rice, cooked",
+      "amount": "500g"
+    },
+    {
+      "item": "red food colouring powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green food colouring powder",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Place your cooked rice on a large plate and mentally divide it into quarters. Stir red food colouring powder into one quarter, green into another, and leave the rest white. Let it stand for a few minutes, then mix it all up again."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

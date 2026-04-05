@@ -1,0 +1,72 @@
+{
+  "id": "beef-chapli-kebabs",
+  "name": "BEEF CHAPLI KEBABS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Chapli kebabs are, in my opinion, the king of all kebabs. They are traditionally cooked in beef dripping, but you could opt for a healthier oil such as rapeseed (canola) oil, if you wish. You can serve these on their own with a salad and some mint and coriander sauce, or wrap them up in homemade naans topped with salad, vegetables and chutney or raita.",
+  "ingredients": [
+    {
+      "item": "minced (ground) beef (preferably 20% fat)",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "medium red onions, very finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tomatoes, peeled, deseeded and finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s eye chillies, very finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt, plus extra to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "beef marrow (available from most butchers and many supermarkets)",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "Beef dripping, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "limes, quartered",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the minced beef in a large baking tray and add all the ingredients down to and including the gram flour. Knead the meat with all the ingredient with your hands for about 10 minutes, pushing it all down into the tray as you do. The idea here is not only to combine the ingredients but to super-mince the meat.",
+    "Finely chop the beef bone marrow into 5mm (¼in) pieces or smaller. Work this into the meat as well so that it is all well combined, but you still want to see the chunks of marrow. Divide the meat mixture into four large equal-size patties, or smaller patties if you wish."
+  ]
+}

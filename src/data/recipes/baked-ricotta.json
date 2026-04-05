@@ -1,0 +1,32 @@
+{
+  "id": "baked-ricotta",
+  "name": "Baked Ricotta",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "ricotta",
+      "amount": "500 g"
+    },
+    {
+      "item": "organic eggs",
+      "amount": "2"
+    },
+    {
+      "item": "parmigiano",
+      "amount": "100 g"
+    },
+    {
+      "item": "chilli, deseeded and finely sliced",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 500 g ricotta 2 organic eggs 100 g parmigiano a few fresh oregano leaves 1 chilli, deseeded and finely sliced salt and ground black pepper",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Mix all the ingredients together well in a bowl. Butter an ovenproof dish, place the mixture in the dish and bake for about 25 minutes until golden and puffed up."
+  ]
+}

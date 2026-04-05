@@ -1,0 +1,36 @@
+{
+  "id": "acha-pudding",
+  "name": "Acha Pudding",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "A quick, filling and nutritious breakfast eaten mainly in the northern part of Nigeria. Acha is the Hausa name for fonio - the gluten-free super grain indigenous to West Africa. Just like couscous, fonio swells easily when cooked so you only need to start oﬀ with a small amount.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "plant-based milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fonio",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/4 teaspoon nutmeg 1/4 teaspoon cinnamon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring the water and milk to a boil in a pot, then add the fonio, nutmeg and cinnamon. Cover and cook for 10-12 minutes on low heat, stirring often, until it starts to thicken. You should be left with a fluﬀy, creamy porridge. Sweeten with sugar or syrup of your choice.",
+    "Serve hot on its own or with a topping of roasted groundnuts and/or fresh fruit to make it more filling."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

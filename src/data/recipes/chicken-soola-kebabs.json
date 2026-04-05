@@ -2,13 +2,28 @@
   "id": "chicken-soola-kebabs",
   "name": "CHICKEN SOOLA KEBABS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "The soola marinade in this recipe is popular not just for chicken but red meat and vegetables too. Red meat such as venison, beef and lamb can be marinated for three days and the end result is so good. With chicken, duck and other poultry and feathered game, I usually marinate the meat for 24–48 hours. Seafood only needs about 20 minutes.",
+  "intro": "The soola marinade in this recipe is popular not just for chicken but red meat and vegetables too. Red meat such as venison, beef and lamb can be marinated for three days and the end result is so good. With chicken, duck and other poultry and feathered game, I usually marinate the meat for 24–48 hours. Seafood only needs about 20 minutes. These kebabs are pictured. I like to serve them with a simple green salad and coriander, garlic and chilli raita.",
   "ingredients": [
+    {
+      "item": "skinless, boneless chicken breasts, cut into bite-size pieces (tikka)",
+      "amount": "8"
+    },
+    {
+      "item": "Juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
     {
       "item": "cloves",
       "amount": "1 tbsp"
@@ -54,32 +69,13 @@
       "amount": "2"
     },
     {
-      "item": "(½ cup) plain yoghurt",
-      "amount": "100g"
-    },
-    {
-      "item": "skinless, boneless chicken breasts, cut into bite-sized pieces (tikka)",
-      "amount": "8"
-    },
-    {
-      "item": "Juice of 2 limes",
-      "amount": ""
-    },
-    {
-      "item": "chaat masala",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "Salt and freshly ground pepper",
-      "amount": ""
+      "item": "plain yoghurt",
+      "amount": "100g (scant ½ cup)"
     }
   ],
   "method": [
-    "Heat a frying pan over a medium heat. Throw in the cloves, cardamom seeds, peppercorns, and the fennel, cumin and coriander seeds, and move them around in the pan so that they roast evenly. When they become warm and fragrant, tip onto a plate, allow to cool a little, then grind them into a powder using a spice grinder or pestle and mortar.",
+    "To make the marinade, heat a frying pan over a medium heat. Throw in the cloves, cardamom seeds, peppercorns and the fennel, cumin and coriander seeds, and move them around in the pan so that they roast evenly. When they become warm and fragrant, tip onto a plate, allow to cool a little, then grind them into a powder using a spice grinder or pestle and mortar.",
     "Heat the ghee and mustard oil together in the frying pan. Add the onion and fry until translucent and soft, but not browned. Add the garlic and fry for a further minute, then remove from the heat and allow to cool.",
-    "Transfer to a food processor with the ground spices, coriander (cilantro) leaves and 1 tsp salt, and blend until smooth. Transfer to a bowl, add the yoghurt and whisk together. Add the chicken pieces and stir to coat, then cover and marinate in the fridge for at least 3 hours or up to 48 hours; the longer the better.",
-    "When ready to cook, light your barbecue using the direct cooking method. Thread the chicken pieces onto skewers and cook, turning them until nicely charred on the exterior and cooked through. Transfer to a warm plate and squeeze the lime juice over the top. Sprinkle with the chaat masala and season with salt and pepper to taste.",
-    "I like to serve this with a simple green salad and coriander, garlic and chilli raita."
-  ],
-  "image": null
+    "Transfer to a food processor with the ground spices, coriander (cilantro) leaves and 1 teaspoon of salt, and blend until smooth. Transfer to a bowl, add the yoghurt and whisk together. Add the chicken pieces and stir to coat, then cover and marinate in the fridge for 3–48 hours – the longer the better."
+  ]
 }

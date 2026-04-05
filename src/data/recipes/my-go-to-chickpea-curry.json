@@ -1,0 +1,86 @@
+{
+  "id": "my-go-to-chickpea-curry",
+  "name": "MY GO-TO CHICKPEA CURRY",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "All first-time vegans eat chickpea curry, I’m convinced. I would eat this maybe every other day. It’s easy to make, it’s full of flavor, it’s affordable and you can never make it wrong. You could make it with coconut milk or without, you could sauté the chickpeas, you can boil them, bake them, air-fry them—chickpeas are so versatile. This recipe has a lot of Caribbean and Indian flavors. There is a balanced taste coming from the herbs, spices and just a touch of sweetness. This dish pairs well with brown rice, but you can also eat it by itself.",
+  "ingredients": [
+    {
+      "item": "grapeseed oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "minced bell pepper, assorted colors",
+      "amount": "¼ cup (23 g)"
+    },
+    {
+      "item": "minced yellow onion",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 (14-oz [400-g])"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sprigs thyme",
+      "amount": "2"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Green onion, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a skillet over medium heat, heat your oil and sauté your garlic, bell pepper and onion until fragrant, about 4 minutes. Then, add your drained chickpeas and cook for 2 minutes.",
+    "Stir in the curry powder, paprika, cumin, chili powder, red pepper flakes, turmeric, cinnamon, thyme and coconut milk. Simmer over low heat for 7 minutes. Taste and add salt and black pepper to your liking.",
+    "Once it is done, plate and garnish with fresh green onion."
+  ],
+  "image": "/recipes/my-go-to-chickpea-curry.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

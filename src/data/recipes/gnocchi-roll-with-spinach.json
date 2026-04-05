@@ -1,0 +1,55 @@
+{
+  "id": "gnocchi-roll-with-spinach",
+  "name": "Gnocchi Roll with Spinach",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "floury potatoes, boiled",
+      "amount": "2 kg"
+    },
+    {
+      "item": "organic eggs, lightly beaten",
+      "amount": "2"
+    },
+    {
+      "item": "unsalted butter, cubed",
+      "amount": "100 g"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "10"
+    },
+    {
+      "item": "ricotta",
+      "amount": "250 g"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "50 g"
+    },
+    {
+      "item": "organic egg",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "frozen spinach, thawed",
+      "amount": "250 g"
+    }
+  ],
+  "method": [
+    "Serves 6 2 kg floury potatoes, boiled 1–2 teaspoons salt 2 organic eggs, lightly beaten 200–300 g unbleached plain flour 100 g unsalted butter, cubed 10 fresh sage leaves FILLING 250 g ricotta 50 g freshly grated parmigiano 1 organic egg salt and ground black pepper 25 g unsalted butter 2 cloves garlic, crushed 250 g frozen spinach, thawed",
+    "Preheat the oven to 200°C (gas mark 6)."
+  ]
+}

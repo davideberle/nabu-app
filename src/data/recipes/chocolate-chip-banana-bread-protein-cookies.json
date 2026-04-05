@@ -1,0 +1,75 @@
+{
+  "id": "chocolate-chip-banana-bread-protein-cookies",
+  "name": "Chocolate Chip Banana Bread Protein Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "chia seeds or ground chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "½ cup"
+    },
+    {
+      "item": "protein powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "organic light brown sugar, packed",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "banana, mashed (1 medium banana)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Cut parchment paper to fit on a baking sheet. Set aside.",
+    "Mix the chia seeds with 6 tablespoons water and set aside.",
+    "Add both flours, the flaxseed, protein powder, baking soda, and salt to a large bowl. Set aside.",
+    "Add butter and both sugars to the bowl of a stand mixer. Mix on medium speed for 5 minutes. Turn off beater and add the prepared chia seed mixture, vanilla, and banana. Mix well on medium speed. Add the dry ingredients and keep mixing until just combined. Remove the mixing bowl and fold in the chocolate chips.",
+    "Place heaping tablespoons on a cookie sheet 2 inches apart and flatten with the bottom of a glass to about ½ inch thick. Bake for 12 minutes.",
+    "Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

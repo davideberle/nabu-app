@@ -1,0 +1,57 @@
+{
+  "id": "ewa-agoyin",
+  "name": "Ewa Agoyin",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "A combination of roughly mashed beans and a fiery, concentrated pepper-based stew that is scooped on top. Ewa is the Yoruba name for beans while Agoyin refers to the name of the Benin tribe that migrated to Nigeria and brought this dish along with them. Ewa Agoyin is delicious on its own or served with a side of fried plantain or soft agege bread. While the Ewa is cooking, I recommend using that time to prepare the stew.",
+  "ingredients": [
+    {
+      "item": "honey beans or black- eyed beans (soaked overnight)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "1/4 teaspoon baking soda (to speed up the softening process) Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "1/2 cup water",
+      "amount": ""
+    },
+    {
+      "item": "red bell pepper (deseeded and roughly chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "palm oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the beans, onion, baking powder and salt in a pot and cover completely with 3 cups of water. Boil on medium-low heat for 1 hour, stirring occasionally, until the beans become completely soft. Stir well and mash the beans lightly with a wooden spoon.",
+    "To make the sauce, place the bell pepper, chillies, onion and ginger in a blender and blend with 1/2 cup of water until smooth. Heat the palm oil over high heat, then add the blended pepper mixture. Season with vegetable stock cube and salt. Bring to a boil then cover and cook over medium heat for 30 minutes, stirring frequently to prevent burning, until the sauce thickens and darkens in colour.",
+    "Serve the beans with a generous helping of stew on top. It can be enjoyed with a side of Agege bread (page 49), fried plantain or soaked garri (page 187)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

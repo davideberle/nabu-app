@@ -1,0 +1,64 @@
+{
+  "id": "loaded-sweet-potato-burritos",
+  "name": "Loaded Sweet Potato Burritos",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sweet potato, peeled and diced",
+      "amount": "1"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "diced red bell pepper",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets (page 283)",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "baby spinach, torn small",
+      "amount": "2 cups"
+    },
+    {
+      "item": "whole wheat or sprouted grain tortillas",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet over medium-high heat. Add the sweet potato, mushrooms, onion, and bell pepper. Sauté for 15 minutes. Add the seitan, chili powder, garlic powder, and cumin, and cook for 5 more minutes. Add the spinach and cook just a minute or so until wilted.",
+    "If the tortillas are stiff, such as sprouted grain, then you can warm them in a microwave for 10 to 15 seconds. This will make them easier to roll.",
+    "Spoon about 1 cup of sweet potato mixture down the center of each tortilla. Roll up. Cut in half for easier handling."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

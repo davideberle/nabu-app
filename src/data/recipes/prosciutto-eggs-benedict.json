@@ -1,0 +1,61 @@
+{
+  "id": "prosciutto-eggs-benedict",
+  "name": "Prosciutto Eggs Benedict",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes | cooking time 10-15 minutes",
+  "ingredients": [
+    {
+      "item": "white wine vinegar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "English muffins, split",
+      "amount": "2"
+    },
+    {
+      "item": "slices prosciutto ham",
+      "amount": "4"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "tarragon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of salt and pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot filled with water, add the white wine vinegar and bring to a gentle simmer. Don't let the water bubble too much.",
+    "Whisk the water with a spoon to make a whirl. Crack the eggs into the water.",
+    "Cook the eggs for 2-3 minutes. Remove them with a slotted spoon and set aside.",
+    "To make the hollandaise sauce, prepare a small bowl set over a pot of simmering water. Crack the egg yolks into the bowl. Whisk them until well-combined.",
+    "Stir in the lemon juice and vinegar. Constantly stirring, add the butter little by little until a creamy and thickened sauce is formed.",
+    "Season with the tarragon, salt and pepper. Set aside.",
+    "Toast the English muffins. Once toasted, top each muffin with the sauce, a piece of prosciutto ham, and a cooked egg.",
+    "Serve warm."
+  ]
+}

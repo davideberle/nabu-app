@@ -1,0 +1,30 @@
+{
+  "id": "quick-croissants",
+  "name": "Quick Croissants",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 5 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "puff pastry",
+      "amount": "1 pound"
+    },
+    {
+      "item": "large egg, lightly whisked",
+      "amount": "1"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Preheat oven to 400°F (204°C). Line a baking sheet with parchment paper.",
+    "Roll out the puff pastry into a large rectangle if ¼-inch thick. Cut the pastry into triangles.",
+    "Roll out the triangles to form the croissants. Arrange them on the prepared baking sheet.",
+    "Brush the croissants with the lightly whisked egg. Sprinkle each with the sugar.",
+    "Bake for 15-20 minutes or until puffed and golden brown."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "peanut-butter-banana-breakfast-cookies",
+  "name": "Peanut Butter Banana Breakfast Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "bananas, mashed",
+      "amount": "2"
+    },
+    {
+      "item": "creamy peanut butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "unsweetened applesauce",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "almond flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "pitted dates, chopped",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Line a baking sheet with parchment paper and set aside.",
+    "Add the mashed banana and peanut butter to a large bowl and mix well. Add the applesauce, flour, hempseed, and vanilla. Mix well. Stir in the oatmeal and dates.",
+    "Drop cookie dough, 1 heaping tablespoon at a time and 2 inches apart, onto the prepared baking sheet. Flatten with the back of a fork. Bake cookies for 25 minutes.",
+    "Remove from the oven and let the cookies cool 5 minutes, then move to a cooling rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

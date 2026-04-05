@@ -1,0 +1,57 @@
+{
+  "id": "frozen-smoothie-bowls",
+  "name": "Frozen Smoothie Bowls",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "frozen bananas",
+      "amount": "4"
+    },
+    {
+      "item": "whole milk or coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "frozen strawberries",
+      "amount": "2 cups"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "flaked coconut",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Fresh berries or other favorite fruit, sliced",
+      "amount": ""
+    },
+    {
+      "item": "Slivered almonds",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a high-speed blender or food processor, add the bananas, milk, strawberries, honey, vanilla extract, and salt.",
+    "Blend until creamy.",
+    "Divide the smoothie into serving bowls topped with the chia seeds, flaked coconut, almonds, and berries.",
+    "Serve fresh."
+  ]
+}

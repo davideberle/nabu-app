@@ -1,0 +1,39 @@
+{
+  "id": "tapenade",
+  "name": "Tapenade",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "good-quality black or green olives, pitted",
+      "amount": "500 g"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "anchovy fillets",
+      "amount": "100 g"
+    },
+    {
+      "item": "capers",
+      "amount": "50 g"
+    },
+    {
+      "item": "chilli",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "400 ml"
+    }
+  ],
+  "method": [
+    "Serves 4 500 g good-quality black or green olives, pitted 2 cloves garlic 100 g anchovy fillets 50 g capers 1 chilli a few leaves fresh basil 400 ml good-quality virgin olive oil salt and ground black pepper toasted bread or crackers, to serve",
+    "Place the olives, garlic, anchovy fillets, capers, chilli and basil in a food processor and blend, adding the oil slowly in a fine stream until you have the desired consistency."
+  ]
+}

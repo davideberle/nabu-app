@@ -2,27 +2,26 @@
   "id": "mango-chutney",
   "name": "MANGO CHUTNEY",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
-  "servings": "makes 2 jars",
-  "intro": "Mango chutney is easy to prepare. You can make it either sweet, or sweet and spicy – adding a teaspoon or so of chilli powder really gives this chutney a kick. Once you have finished cooking the chutney, you can serve it chunky or blend it until smooth. I usually make both versions from one batch.",
+  "servings": "makes about 1.5l (6¼ cups)",
+  "intro": "Mango chutney is easy to prepare. You can make it either sweet, or sweet and spicy – adding a teaspoon or so of chilli powder really gives this chutney a kick. Once you have finished cooking the chutney, you can serve it chunky or blend it until smooth. I usually make both versions from one batch. The resulting chutney is great served with papadams and kebabs. The smooth version tastes amazing stirred into madras and jalfrezi curries at the end of cooking. Don’t add the chunky version to curries as the mango pieces will become hard and rubbery.",
   "ingredients": [
     {
-      "item": "(2 cups) sugar",
-      "amount": "400g"
+      "item": "caster sugar",
+      "amount": "400g (2 cups)"
     },
     {
-      "item": "(1 cup) distilled white vinegar",
-      "amount": "250ml"
+      "item": "distilled white vinegar",
+      "amount": "250ml (1 cup)"
     },
     {
-      "item": "green mangoes, peeled and cubed",
+      "item": "green mangos, peeled and cubed",
       "amount": "4–5"
     },
     {
-      "item": "onion, chopped",
+      "item": "onion, finely chopped",
       "amount": "1"
     },
     {
@@ -30,7 +29,7 @@
       "amount": ""
     },
     {
-      "item": "5cm (2 in) ginger, peeled and finely chopped",
+      "item": "5cm (2in) piece of ginger, peeled and finely chopped",
       "amount": ""
     },
     {
@@ -51,11 +50,8 @@
     }
   ],
   "method": [
-    "Put the sugar and vinegar in a large saucepan and bring to a boil, stirring continuously until the sugar dissolves. Add the remaining ingredients and simmer for about 1 hour, stirring regularly until syrupy.",
-    "When it is sticky and thick to your liking you can either leave it as it is or blend until smooth (or blend half, see introduction). Transfer to hot sterilized jars, leaving a little space at the top.",
-    "Clockwise, from top left: red onion chutney; kashmiri red chilli and garlic chutney; mint, coriander and mango chutney; tamarind chutney."
+    "Put the sugar and vinegar in a large saucepan and bring to a boil, stirring continuously until the sugar dissolves. Add the remaining ingredients and simmer for about 1 hour, stirring regularly until syrupy."
   ],
-  "image": "/recipes/mango-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -1,0 +1,70 @@
+{
+  "id": "orange-cranberry-power-cookies",
+  "name": "Orange Cranberry Power Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter, softened",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "orange juice",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "organic vanilla extract",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "protein powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F.",
+    "Beat the butter and sugar together in the bowl of a stand mixer. Add the orange juice and vanilla extract. Mix well.",
+    "Add flour, protein powder, baking powder, and baking soda to a medium bowl. Mix and add to the wet mixture. Mix on medium speed until well blended. Add the oats, chocolate chips, walnuts, and cranberries. Mix on low.",
+    "Drop heaping tablespoons about 2 inches apart on an ungreased baking sheet. These are big cookies. They spread out to 3 to 4 inches in diameter. Bake for 10 to 11 minutes.",
+    "Cool a minute and then transfer to a wire rack to cool completely."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

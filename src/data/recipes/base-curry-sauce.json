@@ -1,0 +1,84 @@
+{
+  "id": "base-curry-sauce",
+  "name": "BASE CURRY SAUCE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 3 litres (3 us quarts) or enough for 10–15 servings",
+  "intro": "This smooth curry sauce ‘gravy’, more than any other ingredient, is what gives BIR-style curries their distinctive flavour and texture. A base curry sauce is essentially just a slowly cooked onion stock with a few other veggies and spices thrown in. The sauce is quite bland in flavour but it does taste good. It needs to be bland as it is used in everything, from the mildest korma to the spiciest phall. The magic happens when this bland sauce is used in the different curries and cooked with the ingredients called for in those curries.",
+  "ingredients": [
+    {
+      "item": "onions, roughly chopped",
+      "amount": "900g (2lb/about 7 medium)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil*",
+      "amount": "250ml (1 cup)"
+    },
+    {
+      "item": "carrots, peeled and chopped",
+      "amount": "110g (3¾oz)"
+    },
+    {
+      "item": "cabbage, roughly chopped",
+      "amount": "60g (2oz)"
+    },
+    {
+      "item": "red (bell) pepper, deseeded and diced",
+      "amount": "85g (3oz)"
+    },
+    {
+      "item": "green (bell) pepper, deseeded and diced",
+      "amount": "85g (3oz)"
+    },
+    {
+      "item": "tinned (canned) chopped tomatoes, or about 4 medium fresh tomatoes, chopped",
+      "amount": "200g (1 cup)"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "ground fenugreek (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Place the onions in a 3-litre (3 US quart) stockpot over a medium heat and add the salt and oil. Give it a good stir, then add the remaining vegetables along with the garlic and ginger paste and just enough water to cover. You will simmer this for some time, so do not fill the pan to the rim. The water level should be about 5cm (2in) from the top. Bring to a simmer and then reduce the heat to low and simmer gently, covered, for about 45 minutes.",
+    "After 45 minutes, your vegetables will be much softer and the liquid will have reduced somewhat. Add the remaining ingredients and top up with water so that the water level is again about 5cm (2in) from the top. Take this as a guide; if you don’t need to add water at this time, then don’t.",
+    "Simmer for another 30 minutes. When the oil rises to the top and your veggies are good and soft, you’re ready to blend. Skim the seasoned oil carefully off the top for use in your curries or leave it in the sauce if you like.",
+    "Using a hand-held blender, blend for about 4 minutes until the sauce is super-smooth, with no chunks and not at all grainy. This step can be done in batches in a blender. If you have a good blender, you might not need to blend as long to achieve that smooth consistency.",
+    "At this stage, the blended sauce might be quite thick. Add water until the sauce is about the same consistency as full-fat (whole) milk or stock. Sometimes I need to pour the sauce into a larger bowl to do this.",
+    "Use immediately or store in the fridge for up to 3 days, or freeze in small portions of between 500ml (2 cups) and 750ml (3¼ cups) for use later. The sauce can be frozen for up to three months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

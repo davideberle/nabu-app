@@ -1,0 +1,59 @@
+{
+  "id": "chocolate-banana-hemp-smoothie-bowl",
+  "name": "Chocolate Banana Hemp Smoothie Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "frozen banana, 4 slices reserved for topping",
+      "amount": "1"
+    },
+    {
+      "item": "almond milk or other dairy-free milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "banana slices (from above)",
+      "amount": "4"
+    },
+    {
+      "item": "strawberry, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Add the smoothie bowl ingredients to a blender and blend until smooth.",
+    "Pour into a bowl and garnish with the toppings."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

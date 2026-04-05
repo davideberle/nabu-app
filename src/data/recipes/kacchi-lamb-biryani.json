@@ -2,15 +2,14 @@
   "id": "kacchi-lamb-biryani",
   "name": "KACCHI LAMB BIRYANI",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 6–8",
-  "intro": "The simple stir-fried biryanis served at most curry houses simply don’t compare to this slow-cooked kacchi biryani. I first tried it back in 2013 at Sheba on Brick Lane in London. It was so good I had to get the recipe! This is my take on their delicious and hugely popular dish.",
+  "intro": "Order a biryani at a curry house and you are much more likely to be served something like the restaurant-style biryani. I first tried an authentic kacchi biryani back in 2013 at Sheba on Brick Lane in London, which they cook up for special occasions. This is my take on their delicious and hugely popular dish.",
   "ingredients": [
     {
-      "item": "onions, finely sliced and fried (see Fried Onions and onion Paste), cooking oil reserved",
+      "item": "onions, finely sliced and fried (see fried onions and onion paste), plus about 250ml (1 cup) of the reserved cooking oil",
       "amount": "3"
     },
     {
@@ -18,12 +17,60 @@
       "amount": "1"
     },
     {
+      "item": "sea salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Whole garam masala (5cm/2in piece of cinnamon stick, 10 peppercorns, 1 bay leaf, 1 tbsp cumin seeds)",
+      "amount": ""
+    },
+    {
+      "item": "good-quality basmati rice",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "coriander (cilantro) leaves, finely chopped",
+      "amount": "60g (2oz)"
+    },
+    {
+      "item": "mint leaves, finely chopped",
+      "amount": "20g (¾ oz)"
+    },
+    {
+      "item": "melted ghee",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "Pinch of saffron threads infused in 300ml (1¼ cups) hot milk",
+      "amount": ""
+    },
+    {
+      "item": "rose water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Dried rose petals (optional)",
+      "amount": ""
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "180g (1½ cups)"
+    },
+    {
+      "item": "Raita of your choice, to serve",
+      "amount": ""
+    },
+    {
       "item": "garlic and ginger paste",
       "amount": "2 tbsp"
     },
     {
-      "item": "(2 cups) plain yoghurt",
-      "amount": "420g"
+      "item": "plain yoghurt",
+      "amount": "420g (scant 1¾ cups)"
     },
     {
       "item": "Juice of 2 lemons",
@@ -58,61 +105,19 @@
       "amount": "½ tsp"
     },
     {
-      "item": "(1 oz) fresh coriander (cilantro) leaves, chopped",
-      "amount": "30g"
+      "item": "coriander (cilantro) leaves, finely chopped",
+      "amount": "30g (1oz)"
     },
     {
-      "item": "(⅓ oz) fresh mint leaves, chopped",
-      "amount": "10g"
-    },
-    {
-      "item": "sea salt",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "Whole garam masala (1 cinnamon stick, 10 peppercorns, 1 bay leaf, 1 tbsp cumin seeds)",
-      "amount": ""
-    },
-    {
-      "item": "(1 lb) aged basmati rice",
-      "amount": "500g"
-    },
-    {
-      "item": "Pinch of saffron threads infused with 300ml (1¼ cups) hot milk",
-      "amount": ""
-    },
-    {
-      "item": "(2 oz) fresh coriander (cilantro) leaves, chopped",
-      "amount": "60g"
-    },
-    {
-      "item": "(⅔ oz) fresh mint leaves, chopped",
-      "amount": "20g"
-    },
-    {
-      "item": "melted ghee",
-      "amount": "6 tbsp"
-    },
-    {
-      "item": "rose water",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "ground cumin",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "Dried rose petals (optional)",
-      "amount": ""
+      "item": "mint leaves, finely chopped",
+      "amount": "10g (⅓oz)"
     }
   ],
   "method": [
-    "Mix the marinade ingredients in a bowl with a quarter of the fried onions and 200ml (¾ cup) of cooled reserved oil. Add the lamb and rub the marinade into it. Cover and marinate overnight in the fridge.",
-    "To make the rice, when ready to cook, bring 1.5 litres (6 cups) water to a boil in a large pan. Add the salt, whole garam masala and rice, and simmer for 6 minutes. After the 6 minutes, remove half the rice from the water with a strainer and place in a small bowl. Cook the remaining rice for another minute and remove to a second bowl.",
-    "Now spoon about 3 tbsp of the reserved onion oil into a large, heavy-based saucepan and tip in the marinated meat and all of the marinade. Spread the first batch of rice, including any whole spices over the lamb. Cover with half the remaining fried onions and half the chopped coriander (cilantro) and mint.",
-    "Add the second bowl of rice on top and then the remaining fried onions and herbs. Spoon the melted ghee over the top layer, followed by the saffron-infused milk, the rose water and a sprinkle of cumin powder. Scatter some dried rose petals on top, if using.",
-    "Make a soft dough with water and flour and run it around the top of the pan and secure the lid tightly on top. Heat the biryani over a high heat for a couple of minutes. When you hear it simmering, reduce the heat to very low and cook for about 40 minutes. Don’t be tempted to lift the lid.",
+    "Mix the marinade ingredients in a bowl with a quarter of the fried onions and 200ml (generous ¾ cup) of cooled reserved cooking oil. Add the lamb and rub the marinade into it. Cover and marinate overnight in the fridge.",
+    "Now spoon about 3 tablespoons of the reserved onion oil into a large, heavy-based saucepan and tip in the marinated meat along with all of the marinade. Spread the first batch of rice, including any whole spices, over the lamb. Cover with half the remaining fried onions and half the chopped coriander (cilantro) and mint.",
+    "Add the second bowl of rice on top and then the remaining fried onions and herbs. Spoon the melted ghee over the top layer, followed by the saffron-infused milk, the rose water and a sprinkle of ground cumin. Scatter some dried rose petals on top (if using).",
+    "Mix the flour with enough water to make a soft dough. Run it around the top of the pan and secure the lid tightly on top. Heat the biryani over a high heat for about 2 minutes. When you hear it simmering, reduce the heat to very low and cook for about 40 minutes. Don’t be tempted to lift the lid.",
     "After 40 minutes, your kitchen will smell amazing. Take your biryani to the table and unseal the lid. Lift it and enjoy the amazing aroma. Stir the meat from the bottom into the rice about three or four times and serve with your favourite raita."
-  ],
-  "image": "/recipes/kacchi-lamb-biryani.jpg"
+  ]
 }

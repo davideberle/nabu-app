@@ -1,0 +1,73 @@
+{
+  "id": "pl-tano-tostada",
+  "name": "PLÁTANO TOSTADA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Plátano tostada is a mashed green plantain that is fried twice into a circular shape and topped with your favorite veggies. It’s much like a Mexican tostada that is made using a tortilla, but swapping in plantain instead. Green plantain is easy to mold, and after it is fried once and then fried again, it keeps its structure well. I like to make mine with smashed black beans, tomato, shredded lettuce, pickled red onion and a jalapeño-cilantro crema. Just talking about this is making my mouth water. You can use two cutting boards to mash the green plantains into shape, but it is much easier to invest in a tortilla press. You’ll form perfect circles every time.",
+  "ingredients": [
+    {
+      "item": "green plantains",
+      "amount": "3"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "3 cups (710 ml)"
+    },
+    {
+      "item": "raw cashews, soaked in water for 6 hours to overnight",
+      "amount": "½ cup (70 g)"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "jalapeño pepper",
+      "amount": "½"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "1 tbsp (1 g)"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "mashed black beans, seasoned to your liking",
+      "amount": "1 cup (172 g)"
+    },
+    {
+      "item": "Roma tomato, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "shredded lettuce",
+      "amount": "1 cup (75 g)"
+    },
+    {
+      "item": "pickled red onion",
+      "amount": "1 cup (67 g)"
+    }
+  ],
+  "method": [
+    "Peel your green plantains and cut them in half.",
+    "In a large skillet over medium heat, heat your vegetable oil to 350°F (180°C). Once hot, fry your plantains, one to two at a time, for about 2 minutes on each side until they turn bright yellow; be careful not to overcook. Transfer them from the oil to a paper towel–lined plate. Reserve the cooking oil in the pot for refrying.",
+    "Get your tortilla press ready by adding some waxed paper to both sides. One by one, place a green plantain half in the center of the tortilla press and smash it into a disk. Alternatively, you can use two cutting boards. Repeat with all the pieces of fried plantain.",
+    "Bring the oil back up to 350°F (180°C) and refry the plantains on both sides for about 1 minute, or until they are fully cooked and crispy. Transfer from the oil to the paper towel–lined plate.",
+    "In a blender, combine the cashews, lemon and lime juice, jalapeño, cilantro and water. Blend until smooth.",
+    "Equally divide your mashed black beans and spread onto your fried plantains, followed by the tomato, lettuce, pickled red onion and jalapeño-cilantro crema."
+  ],
+  "image": "/recipes/pl-tano-tostada.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

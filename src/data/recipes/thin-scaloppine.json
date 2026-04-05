@@ -1,0 +1,39 @@
+{
+  "id": "thin-scaloppine",
+  "name": "Thin Scaloppine",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "veal scaloppine",
+      "amount": "4"
+    },
+    {
+      "item": "organic egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "breadcrumbs, for coating",
+      "amount": "50 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "80 ml"
+    },
+    {
+      "item": "handful fresh sage leaves",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 4 veal scaloppine plain flour, for dusting 1 organic egg, beaten 50 g breadcrumbs, for coating 50 g unsalted butter 80 ml good-quality virgin olive oil 1 handful fresh sage leaves salt and ground black pepper organic lemon wedges",
+    "Melt the butter in a frying pan and add the oil and sage leaves. When the butter foams, cook the scaloppine well on both sides until golden. Season with salt and pepper, and serve with a few wedges of lemon, or add some rocket and cherry tomatoes."
+  ]
+}

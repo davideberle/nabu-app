@@ -1,0 +1,74 @@
+{
+  "id": "angel-eggs",
+  "name": "ANGEL EGGS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "intro": "Angel eggs are my version of deviled eggs that use Yukon Gold potatoes for the eggs. These are simple to make and make a great brunch appetizer. All you need is a potato, some black salt and some nutritional yeast, and we can make some magic. Ready to impress?",
+  "ingredients": [
+    {
+      "item": "black salt",
+      "amount": "1 tbsp (13 g)"
+    },
+    {
+      "item": "small Yukon Gold or red potatoes (they should be egg-sized)",
+      "amount": "12"
+    },
+    {
+      "item": "Paprika, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Filling",
+      "amount": ""
+    },
+    {
+      "item": "black salt, divided",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "large russet potatoes",
+      "amount": "2"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "relish",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch of ground turmeric",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "¼ tbsp (4 g)"
+    }
+  ],
+  "method": [
+    "Fill a large pot with water, add the black salt and bring to a boil. Once boiling, add the Yukon Gold potatoes and cook for 10 minutes, or until fork-tender. Drain the potatoes and cut them in half. Use a small spoon or apple corer to scoop out some of the potatoes from the center to create a small impression for the filling.",
+    "Bring a pot of water to a boil with ½ teaspoon of the black salt. Once boiling, add the russet potatoes and cook for 10 minutes, or until fork-tender. Drain the potatoes, remove the skin and place them in a bowl with the remaining ½ teaspoon of black salt, Dijon mustard, relish, nutritional yeast, turmeric, pepper, garlic powder and vegan mayonnaise. Mash until well combined.",
+    "Place the filling in a piping bag and gently squeeze the filling into the center of the Yukon potato halves. Garnish with paprika and serve."
+  ],
+  "image": "/recipes/angel-eggs.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

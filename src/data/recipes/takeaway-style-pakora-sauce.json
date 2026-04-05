@@ -2,9 +2,8 @@
   "id": "takeaway-style-pakora-sauce",
   "name": "TAKEAWAY-STYLE PAKORA SAUCE",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "makes about 300ml (1¼ cups)",
   "intro": "If it’s Indian takeaway-style pakora sauce you like, this is a good one. Usually this sweet-and-sour sauce is red from food colouring, and does look the part when bright red. The mango chutney and ketchup are already quite sweet but you might want to add a little sugar. The sour flavours come from the lemon and mint sauce. Just try it and adjust until you are happy with the flavour.",
@@ -26,11 +25,11 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(scant 1 cup) plain yoghurt",
-      "amount": "200g"
+      "item": "plain yoghurt",
+      "amount": "200g (¾ cup)"
     },
     {
-      "item": "roasted cumin seeds Spice Blends",
+      "item": "roasted cumin seeds (see ground spices and spice blends)",
       "amount": "½ tsp"
     },
     {
@@ -46,22 +45,21 @@
       "amount": ""
     },
     {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
       "item": "red food colouring powder (optional)",
       "amount": "½ tsp"
     },
     {
-      "item": "Milk (optional)",
-      "amount": ""
-    },
-    {
-      "item": "Salt",
+      "item": "Full-fat (whole) milk (optional)",
       "amount": ""
     }
   ],
   "method": [
-    "Whisk all the ingredients together, except for the food colouring, milk and salt. Once the sauce is nicely combined, check for seasoning and add salt to taste. Add food colouring, if using. If the sauce is too thick, stir in a little milk until you are happy with the consistency."
+    "Whisk all the ingredients up to and including the lemon juice together. Once the sauce is nicely combined, season with salt, if needed. Add the food colouring (if using). If the sauce is too thick, stir in a little milk until you are happy with the consistency."
   ],
-  "image": null,
   "dietary": [
     "vegetarian"
   ]

@@ -1,0 +1,34 @@
+{
+  "id": "akara",
+  "name": "Akara",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "Fried fritters made from a lightly spiced blend of beans and peppers. Akara is popular in Nigeria and across West Africa, and has even made its way to Brazil, where it is known as Acaraje. It is perfect as a snack on its own and is also eaten for breakfast and lunch alongside porridges, bread and more. It is now possible to buy ready-peeled beans, which will save you a lot of time if you can find some!",
+  "ingredients": [
+    {
+      "item": "honey beans or black-eyed beans (soaked overnight and drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "small onion (roughly chopped) 1/2 red bell pepper (deseeded and roughly chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli 1/2 cup water",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the peeled beans, onion, peppers and water in a food processor and blend until you have a smooth, thick batter. You want to use very little water because unlike moin moin, the batter for akara needs to be thick and scoopable. Use a hand or electric whisk to whisk the batter for 2-3 minutes to incorporate some air and to make it light and fluﬀy.",
+    "Transfer the mixture to a large bowl and season with salt.",
+    "Heat some oil in a deep non-stick pot or pan, enough for deep-frying. Add the mixture in heap tablespoons, making sure to avoid overcrowding the pan. Fry until golden brown all over then use a slotted spoon to scoop them out",
+    "Serve warm or cold on its own or with Ogi/Pap (page 67), custard or porridge for breakfast."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

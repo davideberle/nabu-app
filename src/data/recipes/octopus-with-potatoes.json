@@ -1,0 +1,28 @@
+{
+  "id": "octopus-with-potatoes",
+  "name": "Octopus with Potatoes",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "organic lemons",
+      "amount": "2"
+    },
+    {
+      "item": "yellow waxy potatoes, such as kipfler",
+      "amount": "1 kg"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "250 ml"
+    }
+  ],
+  "method": [
+    "Serves 6 3–4 medium octopus 2 organic lemons 2–3 fresh bay leaves 1 kg yellow waxy potatoes, such as kipfler 250 ml good-quality virgin olive oil salt and ground black pepper a few sprigs flat-leaf parsley, finely chopped",
+    "Cut the heads off the octopus and discard. Bring a pan of water to the boil, add ½ lemon, sliced, and the bay leaves. Add the octopus and boil gently over medium heat for about 20 minutes. Allow to cool in the water.",
+    "Boil the potatoes and when cooked, cut into bite-sized pieces."
+  ]
+}

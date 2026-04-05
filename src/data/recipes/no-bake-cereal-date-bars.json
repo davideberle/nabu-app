@@ -1,0 +1,53 @@
+{
+  "id": "no-bake-cereal-date-bars",
+  "name": "No-Bake Cereal Date Bars",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "granola cereal",
+      "amount": "2 cups"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "protein powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "peanuts, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dates, chopped small",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "brown rice syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Line an 8-inch square baking dish with parchment paper and come up about 3 inches on opposite sides. This will act as a handle to remove the bars from the pan.",
+    "Combine the cereal, flaxseed meal, protein powder, peanuts, and dates in a large bowl.",
+    "In a small saucepan, add the almond butter and both syrups. Bring to a boil and cook to the hard ball stage, 260°F, on a candy thermometer. Quickly stir into the cereal mixture and then spread into the prepared dish. It will cool quickly, so you can use your fingertips to press down into the dish as evenly as possible. Refrigerate for at least 30 minutes.",
+    "Grab the “handles” of the parchment paper and lift out of the dish. Place on a cutting board and slice into sixteen squares."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

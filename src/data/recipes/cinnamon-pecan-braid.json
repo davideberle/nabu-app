@@ -1,0 +1,89 @@
+{
+  "id": "cinnamon-pecan-braid",
+  "name": "Cinnamon Pecan Braid",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 30 minutes | cooking time 20 minutes",
+  "intro": "Pecans braids are very hard to resist when they come out of the oven luring you in with their fresh aroma and delicate cinnamon-pecan filling.",
+  "ingredients": [
+    {
+      "item": "warm water (110–115°F or 43-48°C)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "package active dry yeast",
+      "amount": "1 (¼ ounce)"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4-6 cups"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cold butter, cubed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "packed brown sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "butter, at room temperature",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped pecans",
+      "amount": "1 cup"
+    },
+    {
+      "item": "butter, melted",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "confectioners' sugar",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "milk",
+      "amount": "1–2 tablespoons"
+    },
+    {
+      "item": "Pecan halves",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Dissolve the yeast in a bowl with ¼ cup of warm water.",
+    "Add the eggs and remaining water. Mix well.",
+    "In another bowl, combine the flour, sugar, and salt. Cut in the butter until crumbly.",
+    "Beat the flour mixture into the yeast mixture (do not knead). Cover and refrigerate overnight.",
+    "For the filling, cream the butter and brown sugar in a small bowl. Stir in the pecans and cinnamon; set aside.",
+    "Turn the dough onto a lightly floured surface and divide it into 4 portions. Roll each into a 12×9 rectangle on a greased baking sheet. Spread the filling lengthwise down the center third of each rectangle.",
+    "On each long side, cut ¾-inch-wide strips toward the center to within ½ inch of the filling.",
+    "Starting at one end, fold the strips alternately at an angle across the filling. Pinch the ends to seal and tuck under. Cover and let rise in a warm place for 1 hour (dough will not double).",
+    "Bake at 350°F (177°C) for 18–20 minutes or until golden brown. Let cool slightly before removing from baking sheet to wire rack.",
+    "Combine the glaze ingredients EXCEPT for the pecans.",
+    "Place a pecan half in the middle of each and drizzle generously over the cooled braids."
+  ]
+}

@@ -2,15 +2,14 @@
   "id": "tandoori-chicken-legs",
   "name": "TANDOORI CHICKEN LEGS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "One of the things about making Indian food daily and then blogging about it is that inevitably you come across recipes you want to make all the time. Tandoori chicken legs are a family favourite and my basic recipe has changed very little over the years.",
+  "intro": "One of the things about making Indian food daily and then blogging about it is that inevitably you come across recipes you want to make all the time. Tandoori chicken legs are a family favourite and my basic recipe has changed very little over the years. Red food colouring is often added to the chicken to give it that familiar appearance, but it is being used a lot less these days – it adds no flavour and is solely there for appearance.",
   "ingredients": [
     {
-      "item": "chicken legs, including the thigh, skinned",
+      "item": "skinless chicken legs, including thighs",
       "amount": "8"
     },
     {
@@ -26,8 +25,8 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(½ cup) Greek yoghurt",
-      "amount": "100g"
+      "item": "Greek yoghurt",
+      "amount": "100g (scant ½ cup)"
     },
     {
       "item": "ground cumin",
@@ -63,10 +62,8 @@
     }
   ],
   "method": [
-    "Cut 3–5 shallow slits in each chicken leg and place in a large bowl. Squeeze the lime juice over the chicken and rub it into the meat along with the salt and the red food colouring, if using. Set aside while you make the marinade.",
-    "Place all the marinade ingredients in a bowl and work them together with your hands until smooth. Cover the chicken with the marinade and allow to marinate for at least 2 hours, or up to 48 hours; the longer the better.",
-    "When ready to cook, skewer the chicken legs onto flat skewers and heat your barbecue. Grill using the direct grilling method until the chicken is nicely charred and then turn. This is important when using skewers, as the meat needs to cook so that it expands and doesn’t move around on the skewers.",
-    "If you can’t be bothered to fire up the barbecue? No worries! Preheat your oven to 200°C/400°F/gas mark 6 and cook the chicken on a rack placed over a foil-lined oven tray for about 20 minutes or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature, for a minute or so."
-  ],
-  "image": null
+    "Cut 3–5 shallow slits in each chicken leg and place in a large bowl. Squeeze the lime juice over the chicken and rub it into the meat along with the salt and red food colouring (if using). Set aside while you make the marinade.",
+    "Place all the marinade ingredients in a bowl and work them together with your hands until smooth. Coat the chicken with the marinade and allow to marinate for 2–48 hours – the longer the better.",
+    "If you can’t be bothered to fire up the barbecue? No worries! Preheat the oven to 200°C (400°F/Gas 6) and cook the chicken on a wire rack placed over a foil-lined oven tray for about 20 minutes, or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature for a minute or so."
+  ]
 }

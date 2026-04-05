@@ -1,0 +1,85 @@
+{
+  "id": "onion-pakora-curry",
+  "name": "ONION PAKORA CURRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Onion pakoras, or onion bhajis as they are usually referred to in the West, aren’t just served as a starter course. They are delicious in this yoghurt-based curry sauce. So next time you have a few homemade onion bhajis, give this one a try. Why wait though? Make my onion bhajis. You might just be surprised at how amazing onion bhajis can taste served in this mildly spicy sauce. If you live near an Indian snack shop, you could just purchase the onion pakoras, as I’ve never had a bad one.",
+  "ingredients": [
+    {
+      "item": "Greek yoghurt",
+      "amount": "500g (2 cups)"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "25g (¼ cup)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "5"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "fresh or frozen curry leaves",
+      "amount": "15"
+    },
+    {
+      "item": "medium onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion bhajis (pakoras)",
+      "amount": "12"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro), to garnish",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Strain the yoghurt into a mixing bowl until creamy smooth (straining the yoghurt will help prevent it from curdling when cooked). Sift in the flour, turmeric, chilli powder and ground coriander and whisk it all in too. Add 400ml (scant 1¾ cups) of water and stir until combined into the yoghurt. Set aside.",
+    "Now heat the oil in a large frying pan over a medium–high heat. When bubbly hot, add the mustard seeds and when they begin to crackle (after about 30 seconds), stir in the fenugreek seeds, cumin seeds and the cinnamon stick. Infuse these spices into the oil until they become fragrant – 30 seconds should do the job. Be careful not to burn the spices or they will become bitter. Add the curry leaves and the onion and fry over a medium to medium–high heat for about 5 minutes until the onion is soft and translucent.",
+    "Add the garlic and ginger paste and fry for a further 30 seconds, then pour in the yoghurt mixture. Slowly bring to a simmer, then stir in the pakoras. Cook the sauce down until you are happy with the consistency. Season with salt and garnish with the coriander (cilantro)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

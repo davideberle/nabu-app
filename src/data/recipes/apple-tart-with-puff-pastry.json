@@ -1,0 +1,40 @@
+{
+  "id": "apple-tart-with-puff-pastry",
+  "name": "Apple Tart with Puff Pastry",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 20-25 minutes",
+  "ingredients": [
+    {
+      "item": "puff pastry",
+      "amount": "½ pound"
+    },
+    {
+      "item": "apricot jam",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "apples, peeled, cored, and thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat oven to 400°F (204°C).",
+    "Roll out the puff pastry into a large rectangle of ¼-inch thick. Cut out a 14-inch circle.",
+    "Spread the apricot jam almost to the edges of the circle.",
+    "Arrange the apple slices in a fan shape across the circle.",
+    "Sprinkle with the brown sugar and cinnamon.",
+    "Bake for 20-25 minutes or until golden-brown and puffed up.",
+    "Serve warm."
+  ]
+}

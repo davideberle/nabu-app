@@ -1,0 +1,48 @@
+{
+  "id": "samosa-chaat",
+  "name": "SAMOSA CHAAT",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Crispy samosas right out of the hot oil take this popular chaat to a whole new level. You could use any samosas, even shop-bought, but why miss out on the fun of making them yourself? This is an excellent way to use up leftover samosas. However, your samosa chaat will be better if you make the samosas just before serving.",
+  "ingredients": [
+    {
+      "item": "hot samosas (or shop-bought)",
+      "amount": "8"
+    },
+    {
+      "item": "tin (can) chickpeas (garbanzo beans), drained and rinsed",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "large red onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "mint and coriander sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "yoghurt sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "tamarind sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "large handfuls of fine sev or similar*",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place two hot samosas in the centre of each of four serving plates. (If using shop-bought or leftover samosas, you could microwave them until hot, or better, place them in an oven preheated to 200°C (400°F/Gas 6) for about 10 minutes.) You could leave the samosas whole or break them up a bit.",
+    "Cover the samosas with the chickpeas and onion. Top with mint and coriander sauce, yoghurt sauce and tamarind sauce. To finish, cover generously with fine sev."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

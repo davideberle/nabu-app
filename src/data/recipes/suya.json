@@ -1,0 +1,55 @@
+{
+  "id": "suya",
+  "name": "Suya",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "Blend the roasted groundnut in a food processor or spice grinder until it resembles fine bread crumbs. Transfer to a bowl and add the oil, chilli, salt, onion powder, ginger powder and garlic powder. Add the mushrooms or seitan and mix until well combined. Leave to marinade for 30 minutes. If you are preparing this for a BBQ, you can even mix this a day before and marinade overnight.",
+  "ingredients": [
+    {
+      "item": "oyster mushrooms or",
+      "amount": "3 cups"
+    },
+    {
+      "item": "chunks of seitan",
+      "amount": "8"
+    },
+    {
+      "item": "1/2 cup roasted groundnut",
+      "amount": ""
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "chilli powder (adjust to your taste)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ginger powder",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Serve warm with a garnish of sliced onions, tomatoes and cucumbers. For extra heat, you can dust the suya in extra chilli powder."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

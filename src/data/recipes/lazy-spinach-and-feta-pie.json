@@ -1,0 +1,55 @@
+{
+  "id": "lazy-spinach-and-feta-pie",
+  "name": "Lazy Spinach and Feta Pie",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 5 minutes | cooking time 40 minutes",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "corn flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "3"
+    },
+    {
+      "item": "½ cups Greek yogurt",
+      "amount": "1"
+    },
+    {
+      "item": "baby spinach, roughly chopped",
+      "amount": "3 cups"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C) degrees. Line a baking sheet with parchment paper.",
+    "In a large mixing bowl, combine the flour, corn flour, baking powder, and salt.",
+    "Stir in the vegetable oil, eggs, and Greek yogurt.",
+    "Fold in the spinach and feta cheese.",
+    "Transfer the batter to the prepared baking sheet. Bake for 40 minutes or until a toothpick inserted in the center comes out clean.",
+    "Serve warm."
+  ]
+}

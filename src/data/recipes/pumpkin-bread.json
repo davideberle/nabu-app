@@ -1,0 +1,66 @@
+{
+  "id": "pumpkin-bread",
+  "name": "Pumpkin Bread",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 45-50 minutes",
+  "ingredients": [
+    {
+      "item": "½ cups all-purpose flour",
+      "amount": "1"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "pumpkin purée",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a loaf pan with parchment paper.",
+    "In a large mixing bowl, combine the flour, baking powder, cinnamon, nutmeg, baking soda, and salt.",
+    "Stir in the pumpkin purée, milk, sugar, vegetable oil, eggs, and vanilla until just combined with the dry ingredients.",
+    "Transfer the batter into the prepared loaf pan. Bake for 45-50 minutes.",
+    "Let the bread cool slightly before serving."
+  ]
+}

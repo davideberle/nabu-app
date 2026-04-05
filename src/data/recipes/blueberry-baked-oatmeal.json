@@ -1,0 +1,78 @@
+{
+  "id": "blueberry-baked-oatmeal",
+  "name": "Blueberry Baked Oatmeal",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 50 minutes",
+  "ingredients": [
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "whole rolled oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "hemp seeds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut flakes",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "almond milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "banana, mashed",
+      "amount": "1"
+    },
+    {
+      "item": "strawberries, hulled and sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "blueberries",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line an 8x8-inch baking pan with parchment paper.",
+    "In a large mixing bowl, combine the eggs, oats, slivered almonds, hemp seeds, coconut flakes, brown sugar, baking powder, ground cinnamon, salt, almond milk, maple syrup, melted butter, and mashed banana.",
+    "Stir in the blueberries and strawberries.",
+    "Transfer the batter to the prepared pan. Bake for 50 minutes.",
+    "Serve when slightly cooled."
+  ]
+}

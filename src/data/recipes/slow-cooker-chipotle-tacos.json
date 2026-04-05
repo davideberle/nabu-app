@@ -1,0 +1,55 @@
+{
+  "id": "slow-cooker-chipotle-tacos",
+  "name": "Slow Cooker Chipotle Tacos",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "15-ounce cans pinto beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "corn, fresh, frozen, or canned",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chipotle pepper in adobo sauce (about 2 peppers), chopped",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "Thai sweet chili sauce",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "unsweetened cocoa powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "white corn taco shells or tortillas, or your favorite",
+      "amount": "8"
+    },
+    {
+      "item": "Favorite toppings: spinach, lettuce, black olives, lime, avocado, peppers",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put everything in the crockpot except the taco shells and toppings. Cook on low for 3 to 4 hours or on high for 1½ to 2 hours.",
+    "Spread quite a bit of the filling on your taco shells, hard or soft. Add your favorite toppings."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

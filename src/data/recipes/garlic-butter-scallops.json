@@ -1,0 +1,68 @@
+{
+  "id": "garlic-butter-scallops",
+  "name": "GARLIC BUTTER SCALLOPS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4 to 6",
+  "intro": "These scallops are made using king oyster mushrooms, which emulate the texture of scallops so perfectly and even have the same shape. They are the perfect substitute: meaty, plump, juicy and easy to make. You can serve this as an appetizer or with your favorite pasta. They’re impressive for date night as well.",
+  "ingredients": [
+    {
+      "item": "large king oyster mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "miso paste",
+      "amount": "2 tbsp (32 g)"
+    },
+    {
+      "item": "umami seasoning blend",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "nori furikake",
+      "amount": "2 tbsp (10 g)"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "vegan butter",
+      "amount": "¼ cup (57 g)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "finely chopped fresh parsley",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 tbsp (30 ml)"
+    }
+  ],
+  "method": [
+    "Wash and cut off the caps and woody ends from the king oyster mushrooms, leaving the body.",
+    "Cut the mushrooms into 1-inch (2.5-cm) circular pieces. They should look like a scallop now. Optionally, you can score the top of each mushroom scallop with a sharp knife, creating a crisscross pattern.",
+    "In a large pot, bring the vegetable stock to a boil and mix in the miso, umami seasoning, nori furikake and salt. Lower the heat, add the mushroom scallops and simmer covered, for 15 minutes. Remove the scallops from the broth and let them rest.",
+    "In a medium-sized cast-iron pan over medium heat, heat the grapeseed oil. Once the oil is hot, add and sear the scallops on both sides for about 3 minutes, or until they are golden brown. Remove from the pan and start on your garlic butter sauce.",
+    "Add your vegan butter, garlic, parsley and lemon juice to the same pan and stir, then add your scallops and simmer for 5 to 7 minutes. Serve as is, or pair with your favorite pasta."
+  ],
+  "image": "/recipes/garlic-butter-scallops.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

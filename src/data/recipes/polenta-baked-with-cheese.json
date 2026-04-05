@@ -1,0 +1,35 @@
+{
+  "id": "polenta-baked-with-cheese",
+  "name": "Polenta Baked with Cheese",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6–8",
+  "ingredients": [
+    {
+      "item": "sea salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "coarse polenta",
+      "amount": "500 g"
+    },
+    {
+      "item": "Gruyère, thinly sliced",
+      "amount": "150 g"
+    },
+    {
+      "item": "Gorgonzola dolce, thinly sliced",
+      "amount": "150 g"
+    },
+    {
+      "item": "mascarpone",
+      "amount": "250 g"
+    }
+  ],
+  "method": [
+    "Serves 6–8 POLENTA 2–2.5 litres water 2 teaspoons sea salt 500 g coarse polenta unsalted butter, for greasing 150 g Gruyère, thinly sliced 150 g Gorgonzola dolce, thinly sliced 250 g mascarpone ground black pepper",
+    "Preheat the oven to 200°C (gas mark 6)."
+  ]
+}

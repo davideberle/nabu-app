@@ -1,0 +1,64 @@
+{
+  "id": "chicken-aleesa",
+  "name": "CHICKEN ALEESA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 6 or more as part of a multi-course meal",
+  "intro": "During one of our visits to the beautiful state of Kerala, my wife Caroline and I were invited to breakfast at the home of Chef Shihabudeen V. M. and his family. This was no ordinary breakfast! In fact, it was one of the most amazing home-cooked meals we had ever experienced. Shihabudeen and his wife Ruvaida cooked up an incredible feast with no fewer than seven different dishes, and this delicious aleesa was one of them. Its origins are in the Middle East, but it is a very popular dish with the Muslim community in Kerala, especially during Ramadan. Caroline and I loved it so much I just had to get the recipe and, thankfully, Shihabudeen was happy to send it to me.",
+  "ingredients": [
+    {
+      "item": "star anise",
+      "amount": "3"
+    },
+    {
+      "item": "cloves",
+      "amount": "5"
+    },
+    {
+      "item": "green cardamom pods, smashed",
+      "amount": "3"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "bulgur, soaked in water for 2 hours",
+      "amount": "225g (1 cup)"
+    },
+    {
+      "item": "large skinless chicken leg with thigh (about 350g/12½oz)",
+      "amount": "1"
+    },
+    {
+      "item": "Flaked almonds or cashew nuts, to garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "ghee",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "shallots, thinly sliced",
+      "amount": "50g (2oz)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Tie the star anise, cloves, cardamom pods and cinnamon in a clean cloth. Place the tied spices in a large pot with the soaked bulgur and chicken leg. Cover with water and cover the pot with a lid. Bring to a boil, then simmer for about 40 minutes until the chicken is falling off the bone and the bulgur is nice and soft.",
+    "Meanwhile, toast the almonds or cashew nuts in the ghee until lightly browned, then transfer to a bowl to use as a garnish. This is optional.",
+    "In the same ghee, sauté the shallots until lightly browned and stir in the turmeric. You can remove some of the shallots to use as a garnish as well.",
+    "Remove the meat from the chicken bones and place it with the cooked bulgur in the pan with the browned shallots.",
+    "Cover with water and simmer for another 30–40 minutes until the chicken and bulgur are like mush – the finished dish should have the texture of cooked oatmeal. You can use a potato masher to mash it all up really well.",
+    "Season with salt and garnish with the nuts and shallots, if you like."
+  ]
+}

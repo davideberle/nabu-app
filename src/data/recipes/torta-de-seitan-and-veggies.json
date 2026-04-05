@@ -1,0 +1,63 @@
+{
+  "id": "torta-de-seitan-and-veggies",
+  "name": "Torta de Seitan and Veggies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green bell pepper, diced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links (page 284)",
+      "amount": "4"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "sub rolls",
+      "amount": "2"
+    },
+    {
+      "item": "salsa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Romaine lettuce, sliced and chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet over medium-high heat. Add the onion and bell pepper and sauté for 10 to 15 minutes or until onion is translucent. Add the garlic, oregano, and cumin and cook for 1 minute. Tear the seiten into chunks and drop into the skillet. Add the black beans. Stir and cook over medium heat for 5 minutes or until seitan is heated through.",
+    "Cut each roll in half and scoop out some of the bread center. Spread a layer of salsa on the bread and sprinkle on some chopped romaine lettuce. Fill up with black bean and seitan mixture."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

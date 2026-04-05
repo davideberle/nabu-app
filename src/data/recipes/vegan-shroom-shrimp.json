@@ -1,0 +1,43 @@
+{
+  "id": "vegan-shroom-shrimp",
+  "name": "VEGAN SHROOM SHRIMP",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Yes, vegan shroom shrimp. Made using mushrooms. I wanted to stick to a natural, plant-based approach when making a vegan alternative to shrimp. Using king oyster mushrooms are perfect because you can shape them into shrimp, and after they are cooked, they have the same plump texture. This vegan shrimp is chewy, savory and has that perfect seafood taste. Boiling the mushrooms in a flavored broth is going to allow flavors to immerse into the mushrooms before cooking, making them even tastier.",
+  "ingredients": [
+    {
+      "item": "large king oyster mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "6 cups (1.4 L)"
+    },
+    {
+      "item": "nori furikake",
+      "amount": "1 tbsp (5 g)"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "Old Bay Seasoning",
+      "amount": "1 tbsp (7 g)"
+    }
+  ],
+  "method": [
+    "Wash and cut off the caps and woody ends of the king oyster mushrooms, leaving the body.",
+    "Using a small, sharp knife, carve out a small, acute-shaped triangle from the top to the bottom of the body of each mushrooms. The triangle should be cut from a quarter of the shroom at one corner. You can now slice ½-inch (1.3-cm) rounds of the mushrooms, resembling the shape of a shrimp.",
+    "In a large pot, combine your vegetable stock, nori furikake and salt and bring to a boil, then add the shrooms. Boil the shrooms for about 15 minutes, then remove them from the water and squeeze out any excess liquid using dry paper towels.",
+    "Season with Old Bay and enjoy as is, or add them to your favorite recipes, such as the shrimp stew in Mofonguitos con Vegan Camarones."
+  ],
+  "image": "/recipes/vegan-shroom-shrimp.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

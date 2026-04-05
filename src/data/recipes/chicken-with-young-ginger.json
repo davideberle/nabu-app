@@ -1,0 +1,556 @@
+{
+  "id": "chicken-with-young-ginger",
+  "name": "Chicken with young ginger",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "plump fresh ginger",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "boned chicken thighs",
+      "amount": "¾ lb (350g)"
+    },
+    {
+      "item": "cooking oil or lard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "potato starch mixed with ½ tsp cold water",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cold water",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "stock or water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chicken (3–3½ lbs/1.5–1.7kg)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "spring onions or 5 oz (150g) baby leeks, white parts only",
+      "amount": "10"
+    },
+    {
+      "item": "skinless pork belly",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "lard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4 cups (500g)"
+    },
+    {
+      "item": "fine salt",
+      "amount": "1¾ cups (500g)"
+    },
+    {
+      "item": "whole dried lotus leaves",
+      "amount": "2"
+    },
+    {
+      "item": "lard",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "6"
+    },
+    {
+      "item": "boned chicken legs or thighs",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "winter bamboo shoot (optional)",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cooked peeled chestnuts",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Chinese salted mackerel or 2½ oz (65g) dried yellow croaker",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "boned chicken legs or thighs only (about 1 lb/550g)",
+      "amount": "2"
+    },
+    {
+      "item": "spring onion",
+      "amount": "1"
+    },
+    {
+      "item": "slices fresh ginger, skin on",
+      "amount": "3"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chicken stock or water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chicken livers (or livers and hearts)",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "garlic cloves and an equivalent amount of fresh ginger",
+      "amount": "3"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "2"
+    },
+    {
+      "item": "cooking oil or lard",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "oven-ready duck (about 4 lb/2kg)",
+      "amount": "1"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "5 tsp"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "spring onions",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "potato starch mixed with 2 tbsp cold water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "glutinous rice",
+      "amount": "½ cup (100g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "raw chicken breast",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "ready-to-use lotus seeds",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "green soybeans",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "finely chopped spring onions, white part only",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "uncooked saltwater shrimp",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "potato starch",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chinese or garlic chives 3 tbsp cooking oil ¾ oz (25g) papery dried shrimp 4 large eggs ½ tbsp Shaoxing wine Salt and ground white pepper",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "Chinese or garlic chives",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "papery dried shrimp",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "½ cup (100ml)"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "potato starch mixed with ½ tsp cold water",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "medium eggs",
+      "amount": "4"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2¼ tsp"
+    },
+    {
+      "item": "large egg whites",
+      "amount": "4"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "shelled, skinned fava beans (about 1¼ lbs/550g in their pods)",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 cup (200ml)"
+    },
+    {
+      "item": "finely chopped Spanish or Chinese cured ham, steamed briefly",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dried sweet potato noodles",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "Chinese cabbage",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "minced pork",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely chopped spring onion",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "quart (1 liter) stock",
+      "amount": "1"
+    },
+    {
+      "item": "lard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Peel the ginger and cut it into 2mm slices. Smack the spring onion white gently with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers. Cut the chicken into 1 in (2cm) cubes, put it in a bowl with the marinade ingredients and stir well.",
+    "Combine the sauce ingredients in a small bowl. Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onion white and stir-fry until they smell wonderfully fragrant. Add the chicken and continue to stir-fry over a high heat, separating the pieces as you go.",
+    "Preheat the oven to 425°F (220°C). Pound the sand ginger to a coarse powder with a pestle and mortar.",
+    "Make the stuffing. Cut the spring onion whites or leeks and the pork into slivers. Heat the lard in a seasoned wok over a high flame. Add the spring onion and stir-fry for a few seconds until fragrant. Add the pork and continue to stir-fry until it has changed color. Add the other stuffing ingredients, mix well, then remove them from the wok and set aside.",
+    "Cover the dried mushrooms with boiling water and leave to soak for at least half an hour. Cut the chicken evenly into bite-sized chunks. Remove the shiitake stalks and quarter the caps. Cut the bamboo shoot, if using, into 2 in (5mm) thick bite-sized slices and blanch these in boiling water; drain. Smack the spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Slice the ginger.",
+    "Cut the chicken livers into 2 in (5mm) slices and put them in a bowl. Add the marinade ingredients and mix well. Peel and slice the garlic and ginger and cut the spring onion greens into 2½ in (6cm) lengths.",
+    "Slice, marinate and pre-fry the chicken livers as in the main recipe. Instead of ginger and garlic, fry 4 oz (100g) Chinese chives cut into 2½ oz (6cm) sections until hot and fragrant, with some ground chilli if you wish. Return the livers to the wok, season to taste with light soy sauce and serve.",
+    "Remove and discard the mushroom stalks and cut the caps into ½ in (1cm) dice. Cut the bamboo shoot into 1cm dice and do the same with the chicken breast. Cut the ham into slightly smaller dice. Bring a pan or wok of water to the boil. Add the lotus seeds, green soybeans and bamboo shoot dice and blanch for 30 seconds, then remove and drain. Drain the soaked rice.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry briefly until fragrant; add the shiitake and ham and stir-fry until they are also fragrant. Add the chicken and stir-fry until just cooked through, then add the bamboo shoot, lotus seeds and soybeans. When everything is piping hot, stir in the rice, the light and dark soy sauces and salt. Set aside to cool.",
+    "Bring a large pan of water to the boil. Turn the duck inside out and blanch it briefly in the hot water, then rinse it well under the cold tap and turn it right-side in again. Use a needle and strong cotton thread to sew up any holes in the skin, and to sew up the hole in the base of the bird.",
+    "In a stable, seasoned wok, heat the oil for deep-frying to 320°F (160°C). Very carefully, lower the bird into the oil and deep-fry until golden brown, turning it once for even coloring. Carefully remove it from the oil and set aside.",
+    "In a saucepan large enough to take your duck lying down, heat 2 tablespoons of the deep-frying oil over a high flame. Add the sliced ginger, spring onions and star anise and stir-fry until wonderfully fragrant. Add some hot water from the kettle, add the duck, then top with enough hot water to cover. Add the Shaoxing wine, light soy sauce, 2 teaspoons of the dark soy sauce and the sugar. Bring to the boil and season with salt. Cover the pan, turn down the heat and simmer for 1½ hours.",
+    "Remove the shrimp from the fridge and stir in the potato starch. Beat the remaining white and yolk of the separated egg with the two other eggs and season with salt and white pepper. Stir in the spring onions and Shaoxing wine.",
+    "Heat the oil in a seasoned wok over a high flame. When hot, turn down the heat, add the shrimp and stir-fry until nearly—but not completely—cooked. Remove them with a slotted spoon and drop them into the egg mixture. Return the wok to a high flame. When the oil is hot again, add the egg mixture and stir-fry until nearly cooked. Stop stirring and allow the egg to become golden, flipping it over once to color the other side. Break up the eggs and pile them onto a serving dish.",
+    "Cover the omelet with a plate and carefully invert the pan so the omelet turns out onto the plate, then slide it back into the pan and cook the other side until golden. Slide the omelet onto a chopping board. Cut it into 1½ in (4cm) strips, then cut the strips diagonally into chopstickable slices. Pile up on a serving dish.",
+    "Cut the pork into very thin slivers, add the marinade ingredients and mix well. Stir in ½ tablespoon cooking oil. Beat the eggs, seasoning them with salt and white pepper. Add 3 tablespoons of the spring onions and stir them in.",
+    "Make sure your wok is stable before you start to cook. Heat 1 tablespoon cooking oil in a seasoned wok over a medium flame. Add the pork and stir swiftly to separate the slivers. When they are just cooked, remove them from the pan and tip them into the egg mixture, stirring them in.",
+    "Heat the remaining cooking oil in the wok over a high flame until the surface begins to shimmer. Take the bowl containing the egg mixture in your weaker hand. Scoop up a ladleful of hot oil from the wok with the other hand, pour the egg mixture into the wok and immediately pour the ladleful of hot oil into the center of the egg mixture, taking great care as you do this. The egg will bubble up dramatically.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the remaining ginger and stir-fry very briefly until you can smell its fragrance, then add the egg mixture and stir-fry gently to scramble. When the eggs are just about cooked, stir in the vinegar. Remove from the wok and serve immediately.",
+    "Mix 2 teaspoons of the potato starch with 2 teaspoons water. Gently stir it into the egg whites and season with salt (you don’t want to make them frothy).",
+    "Bring the stock to the boil and season with salt. Add the fava beans, return to the boil and simmer for a few minutes until tender—they will also have absorbed the savory flavor of the stock. Remove the beans from the stock and set aside.",
+    "Heat the oil in a seasoned wok to 250°F (120°C). Pour in the egg white mixture and stir gently over a medium flame as it sets into lazy billows, taking great care not to let the oil get too hot or the egg white will toughen. Remove it with a slotted spoon and set aside.",
+    "Mix the remaining potato starch with 1 teaspoon water. Brush and wipe out the wok to remove most of the oil, then add ½ cup (100ml) of the seasoned stock and bring to the boil over a high flame. Add the beans and quickly reheat them. Add the egg white and stir swiftly but gently to incorporate. Give the potato starch mixture a stir and pour it into the wok, stirring gently as the stock thickens. Turn it out onto a serving dish, scatter over the chopped ham and serve immediately.",
+    "Drain the sweet potato noodles well, then put them in a heavy-bottomed pan with a lid that you can also use as a serving vessel. Put the sliced cabbage on top and add the stock, lard and soy sauces. Put the dumplings on the surface of the pot in an overlapping circle. Bring to the boil and season with salt and pepper. Cover and simmer over a medium flame for about 10 minutes, until the cabbage is silkily tender. Serve with a sprinkling of spring onion greens."
+  ]
+}

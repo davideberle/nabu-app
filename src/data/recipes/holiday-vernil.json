@@ -1,0 +1,76 @@
+{
+  "id": "holiday-vernil",
+  "name": "HOLIDAY VERNIL",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 10",
+  "intro": "Holiday vernil is my take on a popular traditional Puerto Rican dish called pernil. It is a shredded pork shoulder dish that is salty, juicy, garlicky and succulent. My jackfruit vernil mimics the texture perfectly and still leads to that succulent bite. This vegan pernil is packed with flavors from our seasoning and makes a great comfort food. While I was growing up in a Puerto Rican household, this was the main dish cooked on holidays and special occasions, and usually, the same person was relied on to make it for every event—especially if they make it well. This is nothing to be played with! My mom did the cooking for most of our family events as well as the hosting, and it was easily my favorite thing to eat. One thing that made pernil super delicious was the scent while cooking it in the oven for many hours. The fragrance of garlic and Sofrito always filled the air and had me anticipating when it would be done. Since going vegan, I couldn’t bring myself to eat pork anymore and celebrating with my family was a little different, but I made it work. Jackfruit stood out as a great substitute for pork, due to its texture and how easily I could manipulate it to taste like pernil. This took many attempts, but I’ve created the perfect recipe for you to try at home. When making this, it is important to have patience, just like cooking the real thing. You can find jackfruit at your local Asian market and Trader Joe’s®. Let’s dig right in, shall we?",
+  "ingredients": [
+    {
+      "item": "salt, plus more as needed",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "cans jackfruit in brine, drained",
+      "amount": "3 (20-oz [567-g])"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "8 cloves"
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp (6 g)"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1½ tsp (4.5 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh lime juice",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "Arroz con Gandules Wepa!, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a medium-sized pot of water to a boil over medium heat and lightly salt the water. Rinse the brine off your jackfruit before placing it in the pot of boiling water. Boil the jackfruit for about 30 minutes.",
+    "At the end of 30 minutes, drain the jackfruit and let it cool. Use your hands or a potato masher to squeeze all the liquid out of the jackfruit. Remove any seeds you may find.",
+    "Once all the liquid and seeds are removed, transfer your jackfruit to a large bowl and add your sofrito, garlic, grapeseed oil, salt, pepper, oregano, adobo, Sazón, cumin, onion powder and lime juice. Mix thoroughly, then cover the bowl with plastic wrap and let the jackfruit marinate in the refrigerator for about 6 hours or overnight.",
+    "When you’re ready to cook, preheat the oven to 400°F (200°C). Line a baking sheet with parchment paper. Arrange the jackfruit in a single layer. It is so important not to overcrowd the pan; if you do, the jackfruit will be mushy, and you want this to be a little crisp.",
+    "Bake the jackfruit for 30 minutes, stirring it every 10 minutes. Some ovens heat differently, so keep an eye on it and make sure it doesn’t overcook. You want it a little crispy but not burnt. You’re looking for evenly cooked, meat-like pieces that are a bit bronzed. Once the jackfruit is done, remove it from the oven and pair it with arroz con gandules. ¡Buen provecho!"
+  ],
+  "image": "/recipes/holiday-vernil.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

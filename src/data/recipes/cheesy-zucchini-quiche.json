@@ -1,0 +1,57 @@
+{
+  "id": "cheesy-zucchini-quiche",
+  "name": "Cheesy Zucchini Quiche",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 6 | prep. time 10 minutes | cooking time 35-40 minutes",
+  "ingredients": [
+    {
+      "item": "medium zucchinis, shredded",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "½ cups sliced leeks",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "6"
+    },
+    {
+      "item": "half and half",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chopped chives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fontina cheese, shredded",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Spray a round baking pan with cooking spray.",
+    "Heat the olive oil in a large non-stick frying pan over medium heat.",
+    "Add the leeks. Cook for 5-7 minutes, seasoning with salt and pepper.",
+    "Transfer the cooked leeks to a large mixing bowl.",
+    "To the mixing bowl, add the eggs, zucchini, half and half, chives, and feta cheese. Combine well.",
+    "Transfer the mixture into the prepared baking pan. Top with the fontina cheese.",
+    "Bake for 30-35 minutes.",
+    "Let the quiche cool completely before serving."
+  ]
+}

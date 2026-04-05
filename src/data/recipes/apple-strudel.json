@@ -1,0 +1,89 @@
+{
+  "id": "apple-strudel",
+  "name": "Apple Strudel",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4–6 | prep. time 20–30 minutes | cooking time 60 minutes",
+  "ingredients": [
+    {
+      "item": "egg whites",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "bread flour",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "warm water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Granny Smith apples, peeled and chopped",
+      "amount": "4"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "melted butter",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "hazelnuts and walnuts, finely chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Add the flour, salt, egg whites, lemon juice and oil to a mixing bowl. Mix well.",
+    "Add warm water and stir the mixture well.",
+    "Lightly dust your work surface with flour; add the dough and knead to make a springy, smooth dough. Set aside in a bowl for 30 minutes to settle.",
+    "To another mixing bowl, add the apples, raisins, lemon zest, sugar, and cinnamon. Mix well. Set aside for 30 minutes.",
+    "Roll the dough to make a 20–24-inch circle. Tug the edges and cut off any rough edges.",
+    "Brush with the butter and sprinkle with the chopped nuts.",
+    "Add the apples over one edge of the dough. Roll the dough up.",
+    "After rolling it completely, seal the edges.",
+    "Preheat the oven to 350°F (177°C). Grease a baking sheet lined with parchment paper with some cooking spray or melted butter.",
+    "Add the strudel and brush with beaten egg.",
+    "Bake for 55–60 minutes until evenly brown; brush with the butter 4–5 times during cooking.",
+    "Combine the sugar and cream in a bowl. Spoon over the strudel and serve warm."
+  ]
+}

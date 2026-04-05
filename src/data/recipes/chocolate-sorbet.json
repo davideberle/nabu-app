@@ -1,0 +1,39 @@
+{
+  "id": "chocolate-sorbet",
+  "name": "Chocolate Sorbet",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "litre water",
+      "amount": "1"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "250 g"
+    },
+    {
+      "item": "cocoa powder, preferably a good-quality Swiss or Belgian variety",
+      "amount": "200 g"
+    },
+    {
+      "item": "ground coffee",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "crème de cacao (optional, see Variation)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thick (double) cream (optional)",
+      "amount": "250 ml"
+    }
+  ],
+  "method": [
+    "Serves 6 1 litre water 250 g caster sugar 200 g cocoa powder, preferably a good-quality Swiss or Belgian variety 1 tablespoon ground coffee ½ cup crème de cacao (optional, see Variation) 250 ml thick (double) cream (optional)",
+    "Bring the water to the boil and dissolve the sugar in it. Put the cocoa powder and ground coffee into a bowl, add a little of the hot syrup and mix to a thick paste. Then add the rest of the water. Taste for sweetness and adjust if necessary by adding more sugar. Allow to cool, put into an ice cream maker and churn."
+  ]
+}

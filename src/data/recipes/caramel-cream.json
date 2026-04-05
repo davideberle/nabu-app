@@ -1,0 +1,34 @@
+{
+  "id": "caramel-cream",
+  "name": "Caramel Cream",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 8 3 organic egg yolks pinch of salt 200 g caster sugar 500 ml cream 1 teaspoon water",
+  "ingredients": [
+    {
+      "item": "organic egg yolks",
+      "amount": "3"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "200 g"
+    },
+    {
+      "item": "cream",
+      "amount": "500 ml"
+    },
+    {
+      "item": "water",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Serves 8 3 organic egg yolks pinch of salt 200 g caster sugar 500 ml cream 1 teaspoon water",
+    "In a mixing bowl, beat the egg yolks, salt and 2 tablespoons of the sugar until light and fluffy. Add the cream and beat for a further few minutes.",
+    "Heat the cream and egg mixture in a saucepan on low heat for just a few minutes.",
+    "Put the remaining sugar and the water in a saucepan over low heat and let it caramelise. Make sure the sugar does not burn.",
+    "Pour the cream into 8 small ramekins and refrigerate. Serve with whipped cream and biscuits on the side."
+  ]
+}

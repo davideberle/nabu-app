@@ -1,0 +1,49 @@
+{
+  "id": "ukpo-ogede",
+  "name": "Ukpo Ogede",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Building on the classic Moin Moin (page 158), here we have a snack or light meal that is made in a similar way but which features the wonderfully versatile plantain! These “steamed plantain puddings” are a great way to showcase plantains. It’s a perfect balance of sweet, savoury and spicy, which your taste buds will thank you for. Although they are traditionally steamed in uma leaves, you can use small ramekins instead.",
+  "ingredients": [
+    {
+      "item": "ripe plantains (peeled and roughly chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "medium onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 cup plantain flour or fine cornmeal",
+      "amount": ""
+    },
+    {
+      "item": "palm oil or vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "uma leaves or banana leaves for steaming (optional)",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Place the water, ripe plantains, onion and scotch bonnet in a food blender or food processor and blend until you have a smooth batter.",
+    "Transfer the batter to a mixing bowl and add the plantain flour/cornmeal, palm oil and salt. Mix well to combine.",
+    "Place the leaf parcels or ramekins into a steamer and steam over medium-low heat for 45 minutes. Ensure that the parcels are laid flat. Halfway through the cooking time, check that the water in the steamer has not dried up during the cooking time."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

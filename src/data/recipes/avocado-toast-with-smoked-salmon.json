@@ -1,0 +1,62 @@
+{
+  "id": "avocado-toast-with-smoked-salmon",
+  "name": "Avocado Toast with Smoked Salmon",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 6 | prep. time 10 minutes | cooking time 5-10 minutes",
+  "ingredients": [
+    {
+      "item": "slices sourdough bread",
+      "amount": "6"
+    },
+    {
+      "item": "ripe avocados, pitted",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "spring onions, diced",
+      "amount": "2"
+    },
+    {
+      "item": "tomato, diced into small cubes",
+      "amount": "1"
+    },
+    {
+      "item": "flat-leaf parsley, chopped",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "smoked salmon",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, toss the bread slices with olive oil.",
+    "Spray a grill pan with cooking spray. Heat the pan over high heat.",
+    "Working in batches, toast the bread slices on the pan for 2 minutes per side. When done, set the toasted bread aside.",
+    "In the meantime, in a medium mixing bowl, mash the avocados with a fork. Add the lemon juice, salt, pepper, spring onions, tomato, garlic, and parsley. Mix until well-combined.",
+    "Spread the guacamole over the toasted bread slices. Top with the smoked salmon and dill before serving."
+  ]
+}

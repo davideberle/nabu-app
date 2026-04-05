@@ -2,19 +2,18 @@
   "id": "muttar-paneer",
   "name": "MUTTAR PANEER",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK.",
+  "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK. It’s worth noting that this sauce is not limited to paneer and peas. It goes well with so many other main ingredients. Prawns (shrimp), chicken, bite-size pieces of seekh kebab… If you think it sounds good, it will be.",
   "ingredients": [
     {
-      "item": "(2¼ lb) paneer (for homemade), cut into 4cm (1½ in) cubes",
-      "amount": "1kg"
+      "item": "paneer cheese, cut into 4cm (1½in) cubes",
+      "amount": "1kg (2lb 3oz)"
     },
     {
-      "item": "rapeseed oil",
+      "item": "rapeseed (canola) oil",
       "amount": "1 tbsp"
     },
     {
@@ -39,10 +38,10 @@
     },
     {
       "item": "garam masala",
-      "amount": "¼ tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "3 tbsp"
     },
     {
@@ -66,8 +65,8 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "(2¾ lb) tomatoes, halved",
-      "amount": "1.2kg"
+      "item": "1.2kg (2lb 10oz) tomatoes, halved",
+      "amount": ""
     },
     {
       "item": "raw cashew paste",
@@ -82,8 +81,8 @@
       "amount": "2"
     },
     {
-      "item": "(1 cup) frozen peas",
-      "amount": "150g"
+      "item": "frozen peas",
+      "amount": "150g (1 cup)"
     },
     {
       "item": "single (light) cream",
@@ -91,33 +90,32 @@
     },
     {
       "item": "garam masala",
-      "amount": "¼ tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "(⅓ cup) cold butter, diced",
-      "amount": "80g"
+      "item": "cold butter, diced",
+      "amount": "80g (⅓ cup)"
     },
     {
       "item": "Juice of 1 lemon",
       "amount": ""
     },
     {
-      "item": "dried fenugreek (methi) leaves, crushed",
-      "amount": "2 tsp"
+      "item": "Salt, to taste",
+      "amount": ""
     },
     {
-      "item": "Salt",
-      "amount": ""
+      "item": "dried fenugreek leaves (kasoori methi), crushed",
+      "amount": "2 tsp"
     }
   ],
   "method": [
-    "Put the paneer in a bowl with the oil, garlic and ginger paste, salt, lemon juice and chilli powder, and mix gently to coat. Set aside for about 15 minutes then stir in the whisked yoghurt and garam masala. Leave to marinate while you prepare the tomato sauce.",
+    "Put the paneer in a bowl with the oil, garlic and ginger paste, salt, lemon juice and chilli powder, and mix gently to coat. Set aside for about 15 minutes, then stir in the whisked yoghurt and garam masala. Leave to marinate while you prepare the tomato sauce.",
     "In a large saucepan, heat the oil until hot. Toss in the cardamom pods, cloves and bay leaf, and sizzle for 30 seconds. Add the onions and fry for a further 3 minutes until soft and translucent but not browned. Stir in the garlic and ginger paste.",
-    "Fry for another 30 seconds, stirring, then add the tomatoes, 125ml (½ cup) water and the cashew paste. Let this come to a simmer and cook until the onions and tomatoes break down into a thick sauce, about 5 minutes. Using a jug or hand-held blender, blend until super smooth, about 3–4 minutes.",
-    "Return the sauce to the pan and stir in the chilli powder and green chillies. Let this all come to a mild bubble then add the paneer cubes and peas, and heat through for about 2 minutes (if you cook the cheese too long, it will begin to disintegrate into the sauce, so watch carefully).",
-    "To finish, swirl in the cream and garam masala, then stir in the cold butter one piece at a time. Stir in the lemon juice and check for seasoning, adding salt to taste. Top with the dried fenugreek leaves and serve."
+    "Fry for another 30 seconds, stirring, then add the tomatoes, 125ml (½ cup) of water and the cashew paste. Let this come to a simmer and cook until the onions and tomatoes break down into a thick sauce, about 5 minutes. Using a jug or hand-held blender, blend until super-smooth, about 3–4 minutes.",
+    "Return the sauce to the pan and stir in the chilli powder and green chillies. Let this all come to a mild bubble, then add the paneer cubes and peas, and heat through for about 2 minutes (if you cook the cheese too long, it will begin to disintegrate into the sauce, so watch carefully).",
+    "To finish, swirl in the cream and garam masala, then stir in the cold butter one piece at a time. Stir in the lemon juice and season with salt. Top with the dried fenugreek leaves (kasoori methi) and serve."
   ],
-  "image": "/recipes/muttar-paneer.jpg",
   "dietary": [
     "vegetarian"
   ]

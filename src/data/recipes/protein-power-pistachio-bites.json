@@ -1,0 +1,47 @@
+{
+  "id": "protein-power-pistachio-bites",
+  "name": "Protein Power Pistachio Bites",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats",
+      "amount": "½ cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "oat bran",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pistachios, ground",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Add all the ingredients to a large bowl and mix well.",
+    "Roll into eighteen balls."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

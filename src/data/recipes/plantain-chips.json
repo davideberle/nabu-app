@@ -1,0 +1,54 @@
+{
+  "id": "plantain-chips",
+  "name": "Plantain Chips",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "The ripeness of plantain aﬀects its flavour. Here we will use green/unripe plantain for a more savoury flavour profile. For a sweeter version, you want to go for just- ripened but firm plantain. Although this recipe calls for frying to give you the original cooking method for this snack, you can also bake them for a healthier option (baked recipe on my website vegannigerian.com).",
+  "ingredients": [
+    {
+      "item": "sunflower or vegetable oil for deep- frying",
+      "amount": "4 cups"
+    },
+    {
+      "item": "green/unripe plantains (peeled)",
+      "amount": "4"
+    },
+    {
+      "item": "large very ripe plantain",
+      "amount": "1"
+    },
+    {
+      "item": "and 1/2 cups plain flour",
+      "amount": "1"
+    },
+    {
+      "item": "instant yeast",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "sugar (optional) 1/2 teaspoon chilli powder Pinch of salt (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "warm water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sunflower oil for deep-frying",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "Heat the sunflower oil in a large pot over medium heat.",
+    "Fry the plantain strips in small batches in the hot oil until golden brown and crispy. This should take about 3-5 minutes. It is important not to overcrowd the pan so that the oil remains hot.",
+    "Place the plantain in a mixing bowl and use a fork to mash until you have a lumpy puree. Add the flour, yeast, sugar, salt, chilli and water. Mix well until you have a thick batter. Cover the bowl with a cloth and leave to rise in a warm place for 45 minutes. After this time, gently mix the batter to remove the air bubbles.",
+    "Heat the sunflower oil in a small non-stick saucepan over medium-high heat. When hot, add the plantain mixture in round dollops using a tablespoon. Fry, turning them over a few times to brown on all sides. The mosa should float to the top of the oil. Use a slotted spoon to transfer to a plate or tray lined with kitchen paper, to drain oﬀ any excess oil. Leave to cool before serving."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

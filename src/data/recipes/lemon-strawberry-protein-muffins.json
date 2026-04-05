@@ -1,0 +1,67 @@
+{
+  "id": "lemon-strawberry-protein-muffins",
+  "name": "Lemon Strawberry Protein Muffins",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "ground chia seeds or chia seeds, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "plus 2 tablespoons dairy-free milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "strawberries, chopped",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F.",
+    "Grease the inside of a six-cup muffin tin and set aside.",
+    "Mix 1 tablespoon ground chia seeds together with 3 tablespoons water and set aside.",
+    "Using an electric mixer, beat together the butter and sugar in a large bowl until light and fluffy, about 3 minutes. Add the chia seed mixture and mix again. Add the milk and lemon juice. Mix well.",
+    "Add the flour, baking powder, baking soda, salt, hempseed, and the remaining tablespoon ground chia seeds to a medium bowl. Mix. Add the flour mixture to the wet mixture and beat until just combined. It will be a sticky batter. Fold in the strawberries.",
+    "Divide the batter between the muffin cups. Fill at least three-quarters full, even if you’re short on filling for one cup. Bake for 25 minutes or until a toothpick inserted into the center comes out clean."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

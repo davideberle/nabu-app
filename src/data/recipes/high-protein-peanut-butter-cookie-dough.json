@@ -1,0 +1,55 @@
+{
+  "id": "high-protein-peanut-butter-cookie-dough",
+  "name": "High-Protein Peanut Butter Cookie Dough",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "crunchy peanut butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "almond meal flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "peanuts, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cashews, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Finely ground peanuts, for coating (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the peanut butter and the syrup in a large bowl. Add the remaining ingredients and mix well. Shape into balls and eat.",
+    "If you’d like a little bit more of a refined look for serving, roll the balls into finely ground peanuts. For easier handling, store in the refrigerator between snacking."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

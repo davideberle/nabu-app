@@ -1,0 +1,83 @@
+{
+  "id": "acadian-black-beans-and-rice",
+  "name": "Acadian Black Beans and Rice",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "brown rice",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "low sodium vegetable broth",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "yellow onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green bell pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "15-ounce cans black beans, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "parsley",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Cook the brown rice by any method you choose. I use a rice cooker. Cook the rice with vegetable broth for this recipe.",
+    "In a large skillet, heat the oil to medium and then add the onion and bell pepper. Sauté until the onion becomes transparent, about 10 minutes. Add all the remaining ingredients (except the rice) to the large skillet with the onion and bell pepper. Cook for 10 minutes. Add the rice and heat through."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

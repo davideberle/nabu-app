@@ -1,0 +1,72 @@
+{
+  "id": "gwate-acha",
+  "name": "Gwate Acha",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 8",
+  "intro": "A popular dish from Plateau State, this savoury porridge is a mix of fonio and highly nutritious vegetables. It also goes by other names such as Pete Acha, Gote, Gwete and Tere. Below are the classic components of the dish but feel free to mix and match the vegetables. Like couscous, fonio doubles in size when cooked.",
+  "ingredients": [
+    {
+      "item": "large onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "shredded white cabbage or lettuce",
+      "amount": "3 cups"
+    },
+    {
+      "item": "carrots (peeled and diced)",
+      "amount": "4"
+    },
+    {
+      "item": "garden eggs or",
+      "amount": "2"
+    },
+    {
+      "item": "aubergine (diced)",
+      "amount": "1"
+    },
+    {
+      "item": "groundnut (roasted and ground)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "scotch bonnet chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "fonio",
+      "amount": "2 cups"
+    },
+    {
+      "item": "vegetable stock cubes Salt to taste",
+      "amount": "2"
+    },
+    {
+      "item": "pre-cooked meat substitute of your choice (such as roasted mushrooms or seitan pieces)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "shredded spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shredded yakuwa/sorrel leaves or kale leaves (optional)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "spring onion (finely chopped)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a large pot, add the onions, cabbage, carrots, garden eggs, groundnut and scotch bonnet, along with enough water to just about cover everything. Bring to a boil and simmer for 10 minutes on medium heat until the vegetables start to soften.",
+    "Add the fonio, along with 2 cups of water and use a wooden spoon to mix thoroughly. Season with vegetable stock cubes and salt to taste. Leave to simmer uncovered for 5 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

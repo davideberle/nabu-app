@@ -1,0 +1,68 @@
+{
+  "id": "vegetable-jumble-with-thai-seitan",
+  "name": "Vegetable Jumble with Thai Seitan",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "carrots, sliced thinly",
+      "amount": "2"
+    },
+    {
+      "item": "small head cauliflower, cut into florets",
+      "amount": "1"
+    },
+    {
+      "item": "small head broccoli, cut into florets",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "small white onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "Pressure Cooker Thai Nuggets (page 288)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "thyme",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "basil",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Add water to a medium saucepan with a steamer insert and bring to a boil. Add the carrots and cauliflower to the insert and steam over boiling water for 5 minutes.",
+    "Add the broccoli on top of the cauliflower and steam for 10 more minutes. Poke all the vegetables and make sure they can be easily pierced with a fork. Do not overcook. Al dente is best.",
+    "Heat the oil in a large skillet. Add the onion and bell pepper and sauté for 10 minutes. Add the mushrooms to the skillet and cook for 10 more minutes. Add the seitan nuggets and all of the herbs and spices. Stir and heat through for about 2 minutes. Add the cauliflower mixture, stir well, and cook another 5 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

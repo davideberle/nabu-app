@@ -1,0 +1,39 @@
+{
+  "id": "cottage-cheese-eggs-and-bell-pepper",
+  "name": "Cottage Cheese, Eggs, and Bell Pepper",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 15-20 minutes",
+  "ingredients": [
+    {
+      "item": "bell peppers, cored, seeded, and sliced into rings",
+      "amount": "4"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "4"
+    },
+    {
+      "item": "cottage cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "shredded Gouda cheese",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a baking sheet with parchment paper.",
+    "Arrange the bell pepper rings on the prepared baking sheet. Set aside.",
+    "In a medium mixing bowl, whisk together the eggs, cottage cheese, salt, and pepper.",
+    "Add 1-2 tablespoons of the cottage cheese mixture to each bell pepper ring. Top each ring with the cheese.",
+    "Bake for 15-20 minutes.",
+    "Serve warm."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "dairy",
+  "name": "Dairy",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "Dairy products pop up here and there in Nigerian cuisine. In the north where cows are herded, you will find many local dairy-based drinks and snacks. Down south, powdered milk is the most widely used dairy product, often added to teas and porridges. Of course, margarine and butter is also common in Nigerian households, slathered onto chunks of bread and toast for breakfast. Cheese, on the other hand, is not a huge part of Nigerian cuisine, though you will find locally made dairy-based cheeses known as wara, which is said to originate from Kwara State.",
+  "ingredients": [
+    {
+      "item": "raw soybeans (soaked overnight and drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "vanilla extract (optional)",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Place the soybeans and water in a food blender and blend on high speed until smooth.",
+    "Pour the mixture into a straining cloth draped over a bowl, twist the cloth to secure and squeeze to extract the soy milk. Add the vanilla extract and stir well to combine.",
+    "Transfer the soy milk into a jug, jar or bottle with a tight seal. Store in the refrigerator and use within 4-5 days."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

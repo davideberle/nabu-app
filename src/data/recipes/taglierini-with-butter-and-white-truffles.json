@@ -1,0 +1,27 @@
+{
+  "id": "taglierini-with-butter-and-white-truffles",
+  "name": "Taglierini with Butter and White Truffles",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "quantity tajerini",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "80 g"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "100 g"
+    }
+  ],
+  "method": [
+    "Serves 4 1 quantity tajerini 80 g unsalted butter, melted 100 g freshly grated parmigiano fresh white truffle or truffle oil, for garnish",
+    "Make the tajerini, then boil in plenty of salted water for just a few minutes. Drain the pasta and place it in a heated serving dish. Pour the melted butter over it, add the parmigiano and mix together."
+  ]
+}

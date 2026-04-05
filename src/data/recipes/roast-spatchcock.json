@@ -1,0 +1,38 @@
+{
+  "id": "roast-spatchcock",
+  "name": "Roast Spatchcock",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "× 500–600 g spatchcocks",
+      "amount": "4"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "6"
+    },
+    {
+      "item": "sprigs fresh rosemary, stems discarded and leaves roughly chopped",
+      "amount": "4"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "50 ml"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "200 g"
+    }
+  ],
+  "method": [
+    "Serves 4 4 × 500–600 g spatchcocks 6 cloves garlic, crushed 4 sprigs fresh rosemary, stems discarded and leaves roughly chopped sea salt and ground black pepper 50 ml good-quality virgin olive oil 200 g unsalted butter",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Heat the oil and 50 g of the butter in a frying pan. When the foam from the butter subsides, brown the birds until they are nicely coloured on all sides.",
+    "Place the birds in an oven dish and bake for about 30 minutes, basting from time to time with the juices from the pan and with an extra 50 g of melted butter.",
+    "Remove the birds from the oven and let them rest for a few minutes. Melt the remaining butter in a saucepan and add the leftover garlic and rosemary. Cook for a few minutes, being careful that the garlic doesn’t brown. Pour the sauce over the birds and serve."
+  ]
+}

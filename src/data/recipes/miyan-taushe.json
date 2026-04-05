@@ -1,0 +1,57 @@
+{
+  "id": "miyan-taushe",
+  "name": "Miyan Taushe",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 6",
+  "intro": "This comforting dish is popular amongst the Hausa in the northern part of Nigeria. It is rich, sumptuous and delicious thanks to the combination of pumpkin and groundnut paste. In some cases, pawpaw/papaya can be used to replace the pumpkin in this recipe. At a pinch, you can also substitute with butternut squash.",
+  "ingredients": [
+    {
+      "item": "1/2 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base (page 45) 1/2 cup roasted groundnut (or natural unsalted peanut butter)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "ripe pumpkin or butternut squash (diced)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cubes 1/2 tablespoon dawadawa Salt to taste",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 cup water",
+      "amount": ""
+    },
+    {
+      "item": "spinach (washed and finely chopped)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sorrel leaves (or other dark leafy green such as kale)",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot and add the chopped onions. Fry for 2-3 minutes until the onions start to soften.",
+    "Place the red pepper mix and roasted groundnut in a food blender and blend until smooth. Pour into a pot and add the diced pumpkin, tomato paste, stock cubes and dawadawa. Stir well to combine. If using peanut butter instead of roasted peanuts, simply add it to the pot along with the other ingredients at this stage. Bring to a boil, then cover and simmer on medium heat for 15-20 minutes.",
+    "Serve hot with a swallow of your choice such as tuwo shinkafa or tuwo masara."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

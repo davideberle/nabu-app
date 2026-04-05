@@ -1,0 +1,46 @@
+{
+  "id": "prosciutto-and-rocket-pizza",
+  "name": "Prosciutto and Rocket Pizza",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "quantity pizza dough (Impasto per Pizza)",
+      "amount": "1"
+    },
+    {
+      "item": "× 400 g can peeled roma tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "tomato paste (optional)",
+      "amount": "150 g"
+    },
+    {
+      "item": "chilli, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "prosciutto, in long slices",
+      "amount": "100 g"
+    },
+    {
+      "item": "piece of parmigiano",
+      "amount": "50 g"
+    },
+    {
+      "item": "bunch rocket leaves, roughly chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Makes 4 pizzas, approximately 30 × 40 cm each 1 quantity pizza dough (Impasto per Pizza) 1 × 400 g can peeled roma tomatoes 150 g tomato paste (optional) 1–2 cloves garlic, crushed 1 chilli, finely sliced 100 g prosciutto, in long slices good-quality virgin olive oil, for drizzling 50 g piece of parmigiano 1 bunch rocket leaves, roughly chopped sea salt flakes and ground black pepper",
+    "Makes 4 pizzas, approximately 30 × 40 cm each",
+    "Preheat the oven to 240°C (gas mark 9).",
+    "Drain the tomatoes of all their liquid. Chop them roughly and drain again – the tomatoes should not be wet. (You can add the tomato paste if you prefer a stronger flavour.)",
+    "Cook in the oven for about 5–10 minutes, or in a pizza oven for about 3–5 minutes, until the bottom of the base is golden.",
+    "Remove from the oven. With a potato peeler, shave some parmigiano over the pizza and top with the rocket. Then drizzle some more olive oil over the pizza and season."
+  ]
+}

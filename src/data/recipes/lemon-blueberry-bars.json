@@ -1,0 +1,54 @@
+{
+  "id": "lemon-blueberry-bars",
+  "name": "Lemon Blueberry Bars",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 16 | prep. time 10 minutes | cooking time 25 minutes",
+  "ingredients": [
+    {
+      "item": "½ cups all-purpose flour",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Zest and juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "eggs, room temperature",
+      "amount": "4"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "applesauce",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh blueberries",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line an 8x8-inch baking dish with parchment paper.",
+    "In a large mixing bowl, combine the flour, salt, baking powder, lemon zest, lemon juice, eggs, sugar, applesauce, and milk.",
+    "Fold in the blueberries.",
+    "Transfer the batter into the prepared baking dish. Bake for 25 minutes or until a toothpick inserted in the center comes clean.",
+    "Cut into bars and serve with a dusting of powdered sugar."
+  ]
+}

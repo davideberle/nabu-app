@@ -1,0 +1,820 @@
+{
+  "id": "crisp-seaweed-with-peanuts",
+  "name": "Crisp seaweed with peanuts",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "dried branched string lettuce, or 5 dark green outer leaves of spring cabbage, or 4 oz (100g) green or purple curly kale",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "red-skinned peanuts",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1⅓ cups (300ml)"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "cucumber (about 12 oz/375g) ½ tsp salt 1½ tbsp superfine sugar 2 tbsp finely chopped garlic 1 tbsp Chinkiang vinegar 1 tsp light soy sauce",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber (about 12 oz/375g)",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "bunches small red radishes, (about 14 oz/400g after topping and tailing)",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "white Asian radish ¾ tsp salt 1 pack ready-to-eat jellyfish (about 6 oz/170g) 3 spring onions 2 tbsp cooking oil ¾ tsp superfine sugar",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "white Asian radish",
+      "amount": "14 oz (400g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "pack ready-to-eat jellyfish (about 6 oz/170g)",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions",
+      "amount": "3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "dried shiitake mushroom",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "4"
+    },
+    {
+      "item": "medium-sized heads green bok choy, preferably 6 in (15cm) long (about 2 lbs/1kg in total)",
+      "amount": "8"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garland chrysanthemum (crown daisy) leaves",
+      "amount": "1 lb (500g)"
+    },
+    {
+      "item": "firm tofu",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Chinese cabbage (about 1⅓ lbs/600g) 2½ tsp salt ¾ tsp whole Sichuan peppercorns 3 dried chillies 2 tbsp cooking oil",
+      "amount": "1"
+    },
+    {
+      "item": "Chinese cabbage (about 1⅓ lbs/600g)",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "whole Sichuan peppercorns",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "dried chillies",
+      "amount": "3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "celtuce stems (about 1½ lbs/700g) 4 tbsp thinly sliced spring onions, green parts only 2 tbsp cooking oil 1 tsp superfine sugar Salt",
+      "amount": "2"
+    },
+    {
+      "item": "celtuce stems (about 1½ lbs/700g)",
+      "amount": "2"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "celery sticks (about 5 oz/150g)",
+      "amount": "2"
+    },
+    {
+      "item": "carrots",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "red bell pepper",
+      "amount": "¼"
+    },
+    {
+      "item": "fresh ginger",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "soybean or mungbean beansprouts",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "chopped snow vegetable or Chinese black pickled cucumber",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "celery sticks (about 7 oz/200g) 1 large day lily bulb (about 4 oz/100g) ½ tbsp cooking oil 1 tsp sesame oil Salt",
+      "amount": "4"
+    },
+    {
+      "item": "celery sticks (about 7 oz/200g)",
+      "amount": "4"
+    },
+    {
+      "item": "large day lily bulb (about 4 oz/100g)",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried shiitake mushrooms (7 oz/200g after soaking)",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "good chicken stock",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "king oyster mushrooms",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "oyster mushrooms",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "cooking oil, plus extra for deep-frying",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "short-grain glutinous rice, preferably Japanese sweet rice",
+      "amount": "¼ cup (50g)"
+    },
+    {
+      "item": "sections lotus root (about 15 oz/425g)",
+      "amount": "2"
+    },
+    {
+      "item": "rock sugar or superfine sugar",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "osmanthus blossom jam (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried or 10 oz (275g) fresh kao fu",
+      "amount": "4½ oz (125g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "raw peanuts, in their skins",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "cooking oil, plus extra for frying",
+      "amount": "1¾ cups (400ml)"
+    },
+    {
+      "item": "fresh ginger, lightly crushed",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sheets dried tofu skin, 24 in (60cm) in diameter",
+      "amount": "6"
+    },
+    {
+      "item": "rock sugar (or ordinary superfine sugar)",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "unsalted vegetable stock or water",
+      "amount": "1¾ cups (400ml)"
+    },
+    {
+      "item": "eggplant",
+      "amount": "1 lb (500g)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "shelled fava beans (around 3 lbs/1kg in the pod) 3 tbsp cooking oil 3 tbsp chopped snow vegetable Salt",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "shelled fava beans (around 3 lbs/1kg in the pod)",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped snow vegetable",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lbs (750g) filleted grass carp, black carp or gray mullet",
+      "amount": "1¾"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1¾ cups (400ml)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "five-spice powder, plus extra to serve (optional)",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "9 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "duck eggs",
+      "amount": "6"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "black tea leaves",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "duck breasts (about ¾ lb/350g)",
+      "amount": "2"
+    },
+    {
+      "item": "duck legs (about 1 lb/500g)",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "whole Sichuan peppercorns",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "tsao-kuo (black cardamom) pod, smacked",
+      "amount": "1"
+    },
+    {
+      "item": "cloves, their powdery heads pinched off and discarded",
+      "amount": "2"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "3"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "duck breasts and 2 duck legs (about 2 lbs/850g)",
+      "amount": "2"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 cup (100ml)"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "star anise",
+      "amount": "½"
+    },
+    {
+      "item": "free-range chicken (about 4 lbs/1.8kg) Iced water, for steeping Sesame oil, to taste A rich, flavorful soy sauce, to dip",
+      "amount": "1"
+    },
+    {
+      "item": "free-range chicken (about 4 lbs/1.8kg)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "chicken breasts (about 10 oz/300g)",
+      "amount": "2"
+    },
+    {
+      "item": "chicken legs (thighs and drumsticks separated, about 1–1½ lbs/500–600g)",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "good Shaoxing Huadiao wine",
+      "amount": "1¼ cups (225ml)"
+    },
+    {
+      "item": "strong Chinese liquor (optional)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "fresh ginger in one piece, plus 2 tsp finely chopped",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "boned chicken legs (about 1½ lbs/675g on the bone or 1 lb/500g boned)",
+      "amount": "2"
+    },
+    {
+      "item": "spring onions, green parts only, sliced (about 6 tbsp)",
+      "amount": "4"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "good chicken stock",
+      "amount": "½ cup (100ml)"
+    },
+    {
+      "item": "pork front hocks, boned (3 lbs/1.7kg after boning)",
+      "amount": "2"
+    },
+    {
+      "item": "continental curing salt",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "spring onions",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "Sichuan peppercorns",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "½"
+    },
+    {
+      "item": "salt",
+      "amount": "3 oz (80g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "alum powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Chinkiang vinegar, to serve",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "fresh ginger, cut into slivers, to serve",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "6"
+    },
+    {
+      "item": "dried shrimp",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "raw peanuts",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "chicken breast or boneless thigh",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "4½ oz (125g)"
+    },
+    {
+      "item": "firm tofu",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "shelled green soybeans",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "sweet fermented sauce (see here)",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "chilli and garlic sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "½ cup (100ml)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Put the peanuts in a seasoned wok with the cooking oil and heat gently to 260–275°F (130–140°C) until there is a gentle fizzing around the nuts—it’s easiest to use a thermometer for this. Deep-fry at this temperature for 15–20 minutes, until the nuts are glossy, crisp and fragrant (if you taste one, carefully, you will be able to tell when it has lost its raw crunch). Remove with a slotted spoon and drain on paper towels.",
+    "Mix the peanuts and cabbage “seaweed” together, season with salt, then add the sugar and serve. If you are using real branched string lettuce, you won’t need any salt.",
+    "Cut the cucumber in half lengthways, then into two or three long strips. Lay the strips parallel and cut them into bite-sized pieces. Add the salt, mix well and leave in a colander for at least 10 minutes to drain.",
+    "Drain off as much of the liquid that has emerged from the cucumber as possible. Add the sugar and set it aside for a minute or two until it dissolves, then add the rest of the ingredients, stir well and serve.",
+    "Cut the cucumber into batons and serve with sweet fermented sauce dip (see here). At the Dragon Well Manor restaurant in Hangzhou, this is the way they serve their whole baby cucumbers: crisp, delicate and picked earlier the same day.",
+    "Peel and trim the radish. Cut it into thin slices, then into slivers. Put them in a bowl, add the salt and scrunch it in with your fingers. Set aside for half an hour or so in a colander to draw out the liquid.",
+    "Heat the oil in a seasoned wok over a medium flame. Add the spring onion whites and stir-fry until they are a rich brown color and wonderfully fragrant. Remove them, leaving behind as much oil as possible. Pour the hot oil over the spring onion greens: it should sizzle fiercely. Add the spring onions with their oil and the sugar to the radish slivers. Mix everything together well with chopsticks, then allow to cool. Finally, stir in the jellyfish. Pile the mixture up on a dish to serve.",
+    "Bring a large pan of water to the boil. If the heads of bok choy are larger than 6 in, cut them in half or quarters lengthways, otherwise, leave them whole. Blanch briefly in the boiling water to wilt the leaves. Drain and shake dry.",
+    "Preheat the oven to 250°F (120°C). Roast the pine nuts on a lipped baking tray for 5–10 minutes, until golden. Keep an eye on them, as they burn easily. Tip them out quickly onto a plate to cool.",
+    "Wash the chrysanthemum leaves and discard any thick stalks. Bring a pan of water to the boil, add the leaves and blanch for 10–20 seconds, until wilted. Turn them out into a colander and rinse them immediately under the cold tap to cool completely. Squeeze as much water as possible out of the leaves, then chop them finely. Finely chop the firm tofu.",
+    "Mix the leaves and tofu in a bowl, add the sesame oil and season with salt. Stir well. Pile the leaves on a serving dish, or press them into a cup and invert it to make a tidy mound. Garnish with the pine nuts.",
+    "Remove the weight and plate. Drain the cabbage, squeezing to extract as much liquid as you can. Pick out and discard as many of the Sichuan peppercorns as possible. Snip the chillies into 1 in (2cm) sections and discard the seeds.",
+    "Heat the oil in a seasoned wok until smoking. Turn off the heat, immediately add the chillies and stir them for a few seconds until fragrant and darkening, but not burned. Swiftly add the drained cabbage and stir to clothe it in the fragrant oil. Serve at room temperature.",
+    "Add 1½ tsp Chinkiang vinegar and ¾ tsp sesame oil to the main recipe.",
+    "Drain off any water that has emerged from the celtuce and squeeze the strips tightly to get rid of as much liquid as possible. Put the spring onions in a small heatproof bowl.",
+    "Heat the oil in a seasoned wok until the edges of the wok are beginning to smoke. Pour the hot oil over the spring onions: it should sizzle fiercely. Pour the spring onions and oil onto the celtuce, add the sugar and extra salt to taste and mix well. Pile up on a dish to serve.",
+    "Put the wood-ear and shiitake mushrooms and lily flowers, if using, in a bowl and soak in plenty of boiling water for at least half an hour.",
+    "Heat a seasoned wok over a high flame. Add ½ tablespoon cooking oil, tip in the ginger and stir-fry until it smells wonderful. Add the mushrooms and lily flowers and stir-fry until hot and fragrant, seasoning with salt. Remove from the wok and set aside.",
+    "Bring a small pan of water to the boil and add the cooking oil. Tip in the celery and blanch for 30–60 seconds. Add the lily bulb and blanch for another 30 seconds or so: you just want to “break the rawness” of the vegetables, which should retain their crispness. Tip the vegetables into a colander and cool immediately under the cold tap. Shake them dry. Put them in a bowl, add the sesame oil and mix well. Season with salt, and serve.",
+    "Put the shiitake mushrooms in a bowl and soak in plenty of boiling water for at least half an hour, until softened. When they are fully reconstituted, slice off and discard their stalks and squeeze them dry.",
+    "Add the stock, Shaoxing wine, salt and sugar. Bring to the boil, then turn down the heat and simmer gently for at least 40 minutes.",
+    "Put the roots in a saucepan and cover generously with water. Bring to the boil over a high flame, then half-cover and simmer for 2 hours, topping up with hot water as necessary. (Alternatively, cover with water and pressure-cook at high pressure for 30 minutes, then allow to reduce pressure naturally.) As it cooks, the lotus and the water it cooks in will blush a deep, rosy pink. When they are tender, remove the roots from the liquid and allow to cool.",
+    "Heat the oil in a seasoned wok to 350–400°F (180–200°C); it should produce a vigorous sizzle. Fry the kao fu in batches until golden and crisp, then remove and drain on paper towels. Drain the shiitake mushrooms and strain and reserve the soaking liquid. Remove the stalks and cut the caps into two or three pieces. Drain and gently squeeze the lily flowers and wood-ears. Remove any knotty bits, then tear them into bite-sized pieces. Boil the kettle.",
+    "Add the wood-ears and lily flowers, then increase the heat to high. Cook, stirring, to reduce the sauce to a shallow, flavorful pool of liquid. Allow to cool. Before serving, sprinkle over the sesame oil and stir it gently in.",
+    "Remove the “goose” from the broth to serve, and pick out and discard the skewers. Brush with the sesame oil, then cut widthways into 1 in (2cm) slices. Pile up neatly on a dish to serve. This dish keeps for several days in the fridge, but try to let it return to room temperature before serving.",
+    "Prepare the tofu sheets with the flavoring broth as in the main recipe. Lay the stuffing along one of the shorter ends of the rectangle, with the trimmings. Roll it up from the shorter end, tucking in the sides as you go, to enclose the stuffing. Secure with skewers, steam, deep-fry and steep as in the main recipe. Brush with sesame oil before cutting and serving.",
+    "Cut the eggplant lengthways into ½ in (1cm) slices, then cut these into ½ in (1cm) strips. Cut the strips into bite-sized lengths and pile them into a bowl that will fit inside your steamer basket. Place the bowl in the steamer basket and steam over a high flame for 20 minutes, until tender. Combine the soy sauce, vinegar and sugar in a small bowl.",
+    "Bring a pan of lightly salted water to the boil. Add the beans and boil them until completely tender. Plunge into cold water or rinse under the cold tap to cool them quickly, then pop the beans out of their skins (if they are very small and tender, you can leave the skins on if you don’t mind a chunkier mash). Mash the beans coarsely, using a potato masher in a pan or a Chinese cleaver on a chopping board. Boil the kettle.",
+    "Heat a seasoned wok over a medium flame. Add the oil, then the snow vegetable and stir-fry briefly until fragrant. Add the mashed beans and continue to stir-fry until piping hot, adding a little hot water if necessary to keep the mash loose, and seasoning with salt. Leave the mash to cool, then press it into a lightly oiled rice bowl. Turn it out onto a dish to serve.",
+    "Make the flavoring broth. Smack the ginger and spring onion lightly as before. Put them in a saucepan with 2 cups (500ml) water and the other flavoring broth ingredients. Bring to the boil slowly, stirring to dissolve the sugar. Simmer for 5 minutes, then set aside until the fish is ready.",
+    "Remove the ginger and spring onions from the marinade. Place the fish slices on paper towels to drain. Bring the broth to the boil, then set aside.",
+    "Heat the cooking oil in a wok to 350°F (180°C). Fry the fish slices in batches until crisp and golden. Remove them with chopsticks and drop into the hot flavoring broth to steep for 2–3 minutes. Fish them out and set them aside to cool. Repeat with the rest of the fish, then pile the pieces up neatly on a serving dish. Sprinkle with 2 teaspoons sesame oil and a little five-spice powder, if desired. Serve at room temperature.",
+    "Put the duck eggs in a saucepan and cover generously with cold water. Bring them to the boil, stirring gently with a long-handled spoon (the stirring helps to center the yolks). Simmer for 1 minute, then turn off the heat, cover and leave to steep undisturbed in the hot water for 3 minutes. Remove, immerse in iced water and crackle the shells all over by knocking them against the base of the container or other hard surface. Once the eggs have cooled, shell them carefully.",
+    "Put the soy sauces in a bowl with 3 tablespoons cold water. Working in batches, roll the eggs in the dark liquid for about a minute, turning them occasionally for even coloring, then drain on paper towels.",
+    "Wash and trim the spring onions and smack them gently with the flat side of a Chinese cleaver or rolling pin to loosen their fibers. Put them in a steamer basket and arrange the eggs on top.",
+    "Remove the duck pieces from the broth and allow to cool completely, retaining the broth. Cut the meat into slices before serving. Chinese cooks usually chop through the bone, but you may wish to remove the meat from the leg bones before cutting it. Serve the sliced duck with a spoonful or two of the cooking broth, to make it juicy.",
+    "Add the duck pieces, arranging them so that they are immersed in the liquid. Bring to the boil over a medium flame, skim, then turn down the heat and simmer for 20 minutes; the liquid should bubble gently.",
+    "Remove the duck from the sauce and leave to cool completely, reserving the sauce. To serve, cut the duck into bite-sized pieces and arrange them on a serving dish. Reheat some of the cooking juices and pour them over the duck.",
+    "Heat again over a high flame until the liquid is just beginning to boil. Remove from the heat, cover again and leave to steep for another 15 minutes. Fill another large pan with iced water.",
+    "Remove it from the iced water, then drain and pat it dry with paper towels. Rub the skin with a little sesame oil to give it a fragrant gloss. Leave to cool completely.",
+    "Remove the bones from the chicken thighs and drumsticks. Cut the meat widthways into ½–1 in (1–2cm) strips through the skin. Put the cooled chicken pieces in a pot just large enough to hold them and pour over the cooled stock mixture. Cover and leave in the fridge for at least 24 hours (it keeps well in the fridge for a few days). Serve cold.",
+    "Cut the chicken into bite-sized strips and pile up tidily in a serving dish. Shortly before serving, heat the oil over a high flame until the surface is beginning to shimmer. Turn off the heat, add the spring onion greens and chopped ginger and stir rapidly until fragrant (the spring onions should remain green). Add the stock, bring to the boil and season with salt and pepper: the sauce needs to be quite salty to season the chicken. Pour over the chicken and serve.",
+    "Place one boned hock on your chopping board, skin-side down. Use a skewer to prick the meat all over. Place it, skin-side down, in a nonreactive container. Sprinkle half the curing salt over it and use both hands to rub it in thoroughly. Repeat with the other hock. Cover and leave in the fridge for 3–4 days, turning the hocks every day. After curing, remove the hocks and rinse them well. Soak them for about 2 hours in cold water, changing the water a couple of times.",
+    "Remove the hocks from the soaking water and scrape the skin clean. Pluck out any bristles with tweezers. Rinse the hocks in warm water, then drain. Place them, skin-side up, in a pan and cover with about 1 quart (1.2 liters) water. Bring to the boil, skim, then add the spice bundle, the salt and Shaoxing wine. Return to the boil, then simmer gently for about 3 hours, until tender, topping up with hot water if necessary.",
+    "Cover the shiitake mushrooms with boiling water and set aside for half an hour to soften. Put the dried shrimp in a bowl with 1 tablespoon Shaoxing wine and cover with hot water.",
+    "Bring a pan of salted water to the boil, add the peanuts and simmer for 20 minutes. (If you wish, you can then flush them with cold water and massage off their skins.) Drain well.",
+    "Cut the chicken into ½ in (1cm) cubes. Add ⅛ teaspoon salt, ½ teaspoon potato starch and 1 tsp Shaoxing wine and mix well. Do the same with the pork. Cut the bamboo shoot and firm tofu into ½ in (1cm) cubes. Drain the soaked shiitake, remove their stalks and cut the caps into ½ in (1cm) cubes. Drain the shrimp. Bring a pan of water to the boil. Blanch the tofu, green soybeans and bamboo shoot for about 1 minute, then drain well.",
+    "Heat 1 tablespoon oil in a seasoned wok. Add the pork and chicken and stir-fry until cooked through; remove and set aside. Heat a little more oil, add the shiitake and shrimp and stir-fry until fragrant, then add the bamboo shoot, soybeans and tofu and stir-fry until piping hot. Remove and set aside."
+  ]
+}

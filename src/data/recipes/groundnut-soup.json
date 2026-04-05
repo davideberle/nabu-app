@@ -1,0 +1,52 @@
+{
+  "id": "groundnut-soup",
+  "name": "Groundnut Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 6",
+  "intro": "From Nigeria to Mali to Ghana to Cameroon, every West African country has got its own version of this dish. The soup is enjoyed across all regions in Nigeria and is typically served alongside a swallow such as fufu, semovita or pounded yam. Sweet, nutty and spicy notes make this soup absolutely irresistible.",
+  "ingredients": [
+    {
+      "item": "roasted groundnut",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "medium red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli 2-3 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "palm oil (optional) 3-4 cups mushrooms (cut into large chunks)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ground cameroon pepper or cayenne pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "stalk spring onions (finely chopped)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Pour the mix into a pot, along with the palm oil. Cover and bring to a boil. Simmer for 10 minutes over medium heat. The soup may thicken rapidly because of the groundnuts so add a small amount of water if needed until you have a creamy soup consistency.",
+    "Add the mushrooms and season with cameroon pepper and salt. Simmer for another 7-8 minutes. Garnish with chopped spring onions and serve hot with a swallow of your choice or with rice, boiled plantain or boiled yam."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

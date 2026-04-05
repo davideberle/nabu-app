@@ -1,0 +1,35 @@
+{
+  "id": "puris",
+  "name": "PURIS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 6",
+  "intro": "I am hooked on puris! Especially served for breakfast with the potato curry. You will see my finished puris on that page too. There is really so much you can do with puris. Dip them into curries and dhals, or they are delicious served with pickles, like the spicy mixed vegetable pickle. At the end of the day, these are fried bread so I’m sure you’ll find a use for them.",
+  "ingredients": [
+    {
+      "item": "chapatti flour, plus extra for dusting",
+      "amount": "450g (3¼ cups)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sift the chapatti flour into a large bowl with the salt. Slowly add about 250ml (1 cup) of warm water until you have a soft, pliable dough. Knead the dough for about 10 minutes, then set aside, covered with a tea (dish) towel, for about 30 minutes.",
+    "Divide the dough into six equal-size balls. Using a rolling pin, roll out the small dough balls on a floured surface until round and quite flat. Try to keep them as perfectly round as possible for best results.",
+    "Heat about 10cm (4in) of the oil in a large wok. When a piece of rolled-out puri sizzles instantly when hitting the oil, you’re ready to fry. If you have an oil thermometer, you’re aiming for 190°C (375°F). Don’t overcrowd your pan – cook one puri at a time if necessary. Slowly lower the flat puris into the oil and deep-fry for 30 seconds, until the puris puff up and turn light brown. Tapping them lightly with the back of your spatula will help them balloon up. They are ready when lightly browned. If they are not cooked enough, they will deflate when you take them out of the oil. I usually turn my puris in the oil at least once to cook both sides evenly.",
+    "Carefully remove them with a slotted spoon or spider strainer when ready and transfer to paper towel to absorb any excess oil.",
+    "You can serve puris on their own, as you would naans, or filled with the filling of your choice. Serve immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

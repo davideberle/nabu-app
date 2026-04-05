@@ -1,0 +1,79 @@
+{
+  "id": "vegetable-pakoras",
+  "name": "VEGETABLE PAKORAS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Vegetable pakoras can be made in lots of ways with many different variations. In fact, if you have tried the onion bhaji recipe opposite, it can be made into vegetable pakoras too. Simply follow that recipe and add a few chopped vegetables of choice and voilà… you’ve got vegetable pakoras! Below is a recipe that is completely different to that one but just as delicious. If you want to make this recipe gluten-free, just leave out the panko breadcrumbs.",
+  "ingredients": [
+    {
+      "item": "green (bell) pepper, thinly sliced and cut into 2.5cm (1in) pieces",
+      "amount": "1"
+    },
+    {
+      "item": "A generous handful of cabbage, shredded (about 90g/1 cup)",
+      "amount": ""
+    },
+    {
+      "item": "medium carrot, peeled and julienned",
+      "amount": "1"
+    },
+    {
+      "item": "shredded baby spinach leaves, large stems removed",
+      "amount": "450g (2 cups)"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "gram (chickpea) flour, plus extra if needed",
+      "amount": "170g (1 cup)"
+    },
+    {
+      "item": "rice flour",
+      "amount": "80g (⅓ cup)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt, plus extra to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "panko breadcrumbs (optional)",
+      "amount": "90g (1 cup)"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Pakora sauce, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the vegetables in a large mixing bowl and add the coriander (cilantro).",
+    "Sift the gram flour, rice flour, turmeric, salt and Kashmiri chilli powder into a separate bowl and add the lemon juice (if using). Begin slowly pouring about 125ml (½ cup) of water into the flour mixture while whisking until it is about the same consistency as whisked natural yoghurt.",
+    "Tip the vegetables into the batter and mix well. Sprinkle the panko breadcrumbs (if using) onto a plate.",
+    "Using your hands, form the battered vegetables into balls slightly larger than golf balls and dip them in the panko breadcrumbs. If you are finding the mixture too wet to work with, sift in a little more gram flour. If too dry, add a drop more water.",
+    "Heat about 10cm (4in) of oil in a large saucepan or wok to 180°C (355°F). If you don’t have an oil thermometer, the oil is ready when a small piece of the battered vegetables sizzles immediately and rises to the top. You might need to cook the pakoras in batches. Fry until they are crispy, brown and cooked through. This will take about 4 minutes. Serve hot with pakora sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

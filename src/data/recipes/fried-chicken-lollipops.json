@@ -1,0 +1,60 @@
+{
+  "id": "fried-chicken-lollipops",
+  "name": "FRIED CHICKEN LOLLIPOPS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Chicken legs are the juiciest part of the chicken, but there is one thing that stops them being the most popular cut: those six stringy tendons. Luckily they aren’t difficult to remove, and I think you will love serving these crispy chicken lollipops. The lollipops are also nice marinated in a chicken marinade, such the tandoori chicken tikka marinade, and then cooked over direct heat on the barbecue. These are delicious served simply with lime wedges or a good raita, or a hot sauce of your choice.",
+  "ingredients": [
+    {
+      "item": "chicken legs",
+      "amount": "12"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "tandoori masala or garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coarse black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "soy sauce (use gluten-free if liked)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cornflour (cornstarch)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Hold a paring knife perpendicular to the end of a chicken leg, just before the ankle, and slice around the skin. Grab the skin and tear it off the ankle. A pair of good pliers will help with this, but I do it by hand. Begin sliding the skin and meat up the leg to form the lollipop end. As you do this, you will see the six stringy white tendons: grasp each tightly with your hand or pliers and pull them off the bone. You could also use a knife to cut any bits you missed. Continue moving the meat and skin up the bone until you have a nice ball at one end. Repeat with the remaining legs.",
+    "Whisk all the marinade ingredients together in a large bowl. Coat the chicken lollipops with the marinade and marinate for 30 minutes–24 hours – the longer the better."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "egg-hash-brown-and-bacon-breakfast-skillet",
+  "name": "Egg, Hash Brown, and Bacon Breakfast Skillet",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 15-20 minutes",
+  "ingredients": [
+    {
+      "item": "slices bacon, diced",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "hash browns",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "4"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "½ cups cheddar cheese, shredded",
+      "amount": "1"
+    },
+    {
+      "item": "diced spring onion",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large non-stick skillet over medium heat.",
+    "Add the diced bacon and hash browns. Cook for 10 minutes, seasoning with salt and pepper.",
+    "Crack in the eggs and cover the pan, cooking the eggs all the way through.",
+    "Top with the cheddar cheese and spring onion before serving."
+  ]
+}

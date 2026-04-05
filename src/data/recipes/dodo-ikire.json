@@ -1,0 +1,33 @@
+{
+  "id": "dodo-ikire",
+  "name": "Dodo Ikire",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "A spicy snack made using very ripe plantains which are charred and coated in hot pepper. The undertones of sweetness are balanced with a smoky flavour and heat from chilli flakes. It is known for its dark colour and chewy consistency, which is achieved by frying in palm oil.",
+  "ingredients": [
+    {
+      "item": "very ripe plantain (peeled) Pinch of salt",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "1/2 teaspoon chilli powder (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the plantain in a mixing bowl and use a fork to mash it until you have a lumpy mixture. Mix in the salt and 1 tablespoon of chilli flakes.",
+    "Heat the palm oil in a small frying pan and add the plantain mix in small dollops around the pan.",
+    "Fry on high heat for 2 minutes then reduce the heat to medium-low and continue frying until the plantain is dark brown (not burnt) on one side and cooked all the way through. This should take about 15 minutes. Flip the dodo ikire over and fry for a further 5 minutes. Take the dodo ikire out of the oil using a slotted spoon and leave to drain on a plate lined with kitchen paper. Repeat the frying process with the rest of the plantain mix."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

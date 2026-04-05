@@ -2,15 +2,26 @@
   "id": "grilled-lamb-chops",
   "name": "GRILLED LAMB CHOPS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Sometimes simplicity is best, and that is certainly the case with the famous lamb chops served at Lahore Kebab House in Shoreditch.",
+  "intro": "Sometimes simplicity is best, and that is certainly the case with the famous lamb chops served at Lahore Kebab House in Shoreditch. After trying their lamb chops on a visit there, I arranged to meet Emran Siddique, one of the owners, to find out how they were prepared. I guess you could say I needed that recipe! These delicious marinated lamb chops are cooked over a flame grill, which produces a tasty char. Lahore uses only top-quality ingredients and marinates the lamb for three days. This makes all the difference. These lamb chops are out-of-this-world gorgeous! I recommend serving them with cucumber raita and lime wedges.",
   "ingredients": [
     {
-      "item": "rapeseed oil",
+      "item": "lamb chops on the bone, with most surface fat removed",
+      "amount": "8–10"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Coriander (cilantro), to serve",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
       "amount": "1 tbsp"
     },
     {
@@ -38,26 +49,12 @@
       "amount": ""
     },
     {
-      "item": "lamb chops on the bone, with most surface fat removed",
-      "amount": "8–10"
-    },
-    {
-      "item": "(½ cup) Greek yoghurt",
-      "amount": "100g"
-    },
-    {
-      "item": "Fresh coriander (cilantro), to serve",
-      "amount": ""
-    },
-    {
-      "item": "Salt and black freshly ground pepper",
-      "amount": ""
+      "item": "Greek yoghurt",
+      "amount": "100g (scant ½ cup)"
     }
   ],
   "method": [
-    "In a large glass or ceramic bowl, mix the oil, chilli paste, garlic and ginger paste, garam masala, turmeric, chilli powder and lemon juice together. Add the lamb chops and massage the marinade into the meat. Let this stand for about 20 minutes.",
-    "Whisk the yoghurt until nice and creamy then pour it over the meat, ensuring every piece is coated. Marinate the meat for 24–72 hours. (You could marinate for a shorter time but the longer the better.)",
-    "When ready to cook, set up your barbecue for direct heat cooking, until the coals are extremely hot. Grill each lamb chop until nicely charred underneath then flip over and do the same on the other side. When nicely blackened, remove from the heat to rest for about 5 minutes. Season with salt and pepper and serve garnished with fresh coriander (cilantro)."
-  ],
-  "image": "/recipes/grilled-lamb-chops.jpg"
+    "Mix all of the marinade ingredients up to and including the lemon juice together in a large glass or ceramic bowl. Add the lamb chops and massage the marinade into the meat. Let this stand for about 20 minutes.",
+    "Whisk the yoghurt until nice and creamy, then pour it over the meat, massaging it right into the flesh, ensuring every piece is coated. As you massage the yoghurt into the meat, it will take on the colours of the spices in the marinade. Marinate the meat for 24–72 hours. (You could marinate for a shorter time, but the longer the better.)"
+  ]
 }

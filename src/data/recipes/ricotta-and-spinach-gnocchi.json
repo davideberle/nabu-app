@@ -1,0 +1,32 @@
+{
+  "id": "ricotta-and-spinach-gnocchi",
+  "name": "Ricotta and Spinach Gnocchi",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "ricotta",
+      "amount": "500 g"
+    },
+    {
+      "item": "organic egg yolks and 2 whole organic eggs, beaten together",
+      "amount": "2"
+    },
+    {
+      "item": "grated parmigiano, plus extra 100 g for the table",
+      "amount": "150 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "100 g"
+    }
+  ],
+  "method": [
+    "Serves 8 1.25 kg frozen whole baby spinach (not chopped), thawed 500 g ricotta 2 organic egg yolks and 2 whole organic eggs, beaten together 150 g grated parmigiano, plus extra 100 g for the table salt and ground black pepper plain flour, for dusting 100 g unsalted butter a few fresh sage leaves",
+    "Boil some salted water, turn the heat down and drop about 5 balls at a time into the water. As soon as they float to the surface, they are ready (about 1 minute). With a small sieve, fish them out and put them on a heated serving dish, in a single layer. Sprinkle a generous amount of parmigiano over the nudi.",
+    "Melt the butter with the sage. When it foams, pour it over the nudi and serve immediately."
+  ]
+}

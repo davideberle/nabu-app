@@ -1,0 +1,78 @@
+{
+  "id": "ji-mmanu",
+  "name": "Ji Mmanu",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "This simple but tasty meal or side dish is popular amongst the Igbo, and is also enjoyed amongst the Yoruba in certain parts of western Nigeria. It is composed of boiled yam with lightly seasoned palm oil drizzled over the top.",
+  "ingredients": [
+    {
+      "item": "small tuber puna yam (sliced into",
+      "amount": "1"
+    },
+    {
+      "item": "rounds, peeled and washed)",
+      "amount": "4"
+    },
+    {
+      "item": "1/2 cup palm oil",
+      "amount": ""
+    },
+    {
+      "item": "small onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped utazi leaves or kale leaves (washed)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "1/2 teaspoon ground cloves",
+      "amount": ""
+    },
+    {
+      "item": "cloves garlic (minced)",
+      "amount": "2"
+    },
+    {
+      "item": "finely grated ginger",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "suya spice mix",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube or salt to taste",
+      "amount": "1"
+    },
+    {
+      "item": "crushed chilli flakes",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "water",
+      "amount": "4 tablespoons"
+    }
+  ],
+  "method": [
+    "Place the sliced yam in a large pot, cover with water and boil for 20 minutes on medium-high heat until the yam is soft and fork-tender. Drain any excess water.",
+    "Heat the palm oil over medium heat for 1-2 minutes to allow it to melt completely. Add the chopped onions, scotch bonnet chilli and a pinch of salt to taste. Stir-fry for 5 minutes.",
+    "Serve the yam with a generous drizzle of the chilli oil or serve the oil in a small dipping dish. Garnish with shredded leafy greens such as utazi or kale.",
+    "Prepare the spice rub by combining the oil, cloves, garlic, ginger, suya spice mix, stock cube and chilli flakes with a little water. Brush the seitan or mushroom slices with the spice rub on both sides."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

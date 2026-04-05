@@ -1,0 +1,548 @@
+{
+  "id": "shanghai-red-braised-pork-with-eggs",
+  "name": "Shanghai red-braised pork with eggs",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "eggs, small if possible",
+      "amount": "6"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "pork belly, skin on",
+      "amount": "1¾ lb (750g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "stock or hot water",
+      "amount": "3 cups (700ml)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "plus 1 tsp dark soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "superfine sugar or 1½ oz (40g) rock sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lbs (900g) boned pork belly in one piece, skin on",
+      "amount": "2"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "liquid from a jar of red fermented tofu",
+      "amount": "3½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lbs (850g) meaty pork ribs, in one piece",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red yeasted rice (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "stock or water",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "potato starch mixed with 2 tsp cold water",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "x 5 in (1 x 12cm) wide strip of unscored, skin-on, boneless pork belly (about 2 lbs/1kg, or 3 lbs/1.3kg bone-in)",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "5½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "good Shaoxing wine",
+      "amount": "1½ cups (250ml)"
+    },
+    {
+      "item": "Chinese cabbage leaves",
+      "amount": "8"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "chicken or chicken and pork stock",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch mixed with 3 tbsp cold water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "skinless, boneless pork belly",
+      "amount": "1 lb (500g)"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "finely chopped spring onion, white part only",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cold stock or water",
+      "amount": "⅓ cup (75ml)"
+    },
+    {
+      "item": "egg white",
+      "amount": "1"
+    },
+    {
+      "item": "potato starch mixed with 1 tbsp cold water",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "10 oz (275g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "sesame oil (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "potato starch mixed with 2 tsp cold water",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "good handfuls of Shaoxing dried fermented greens (about 3 oz/75g)",
+      "amount": "3"
+    },
+    {
+      "item": "lbs (550g) pork belly, skin on",
+      "amount": "1¼"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "stock or water",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "½"
+    },
+    {
+      "item": "skinless, boneless pork belly (or coarsely ground fatty minced pork)",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "Vietnamese salted mackerel or 2 oz (60g) Chinese dried yellow croaker",
+      "amount": "1½ oz (45g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lbs (600g) boneless pork belly, skin on",
+      "amount": "1⅓"
+    },
+    {
+      "item": "dried lotus leaf",
+      "amount": "1"
+    },
+    {
+      "item": "spiced rice meal (see headnote)",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sweet fermented sauce (see here)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped spring onion",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pork hock (about 2 lbs/950g)",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "good Shaoxing wine",
+      "amount": "½ cup (100ml)"
+    },
+    {
+      "item": "Chinese red rice vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "3½ tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "rock sugar",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "small heads green bok choy, to garnish (optional)",
+      "amount": "8"
+    },
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Chinese yellow chives",
+      "amount": "4½ oz (125g)"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "preserved mustard tuber",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "rice vinegar (red or Chinkiang)",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "flowering chives",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cold water or beaten egg",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "goat leg in one piece, on the bone",
+      "amount": "1¾ lb (775g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "star anise",
+      "amount": "½"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "white Asian radish",
+      "amount": "1 lb (500g)"
+    }
+  ],
+  "method": [
+    "Put the pork in a pan, cover with cold water, bring to the boil over a high flame and boil for 5 minutes. Drain and rinse it under the cold tap. When cool enough to handle, cut the meat through the skin into 1–1½ in (2–3cm) cubes (if your piece of belly is thick, you may want to cut each piece in half so they end up more cube-like).",
+    "Pour into a pot or a bowl, allow to cool, then chill overnight. In the morning, remove the layer of pale fat that has settled on the surface. Tip the meat and jellied liquid back into a wok, reheat gently, then boil over a high flame to reduce the sauce, stirring constantly. Remove and discard the ginger, spring onion and whole spices. After 10–15 minutes, when the liquid has reduced by about half, stir in the remaining dark soy sauce.",
+    "Add a quantity of peeled, cooked chestnuts roughly equal in volume to the pork when you reheat and reduce the stew. This is a scrumptious variation made by Zhejiang chef Zhu Yinfeng.",
+    "Bring a pan of water to the boil, add the pork and cook for 15 minutes, until part-cooked. Drain and rinse the meat, then cut it through the skin into 1 in (2cm) cubes. Trim the spring onions and smack them with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Heat the oil in a seasoned wok over a high flame. Add the spring onions and ginger and stir-fry until they smell wonderful, then add the pork, wine, fermented tofu liquid, sugar, light soy sauce and ½ teaspoon of the dark soy sauce, with enough stock or water to just cover the meat. Bring to the boil, then cover and simmer over a low flame or in the oven for 1 hour, until tender. Spoon the liquid over the pork occasionally.",
+    "Put the ribs in the cleaned pan or a clay pot. Add the ginger and spring onions, Shaoxing wine, spices, soy sauces, sugar and stock or water. If you are using the red yeasted rice, strain the mashed rice liquid through a tea strainer into the pot. For best results, rinse the residue a few times with the liquid in the pot to extract as much color as possible, then discard the residue. Bring everything to the boil, then cover and simmer over a medium flame for 1 hour.",
+    "Remove the lid, discard the ginger, spring onion and spices, then turn up the heat to reduce the sauce to about 1 in (2cm) deep, stirring frequently and spooning the liquid over the meat. Give the potato starch mixture a stir and add just enough to thicken it to a luxurious gravy, then serve.",
+    "Remove and discard the ginger and spring onions. For best results, leave the pork to cool in the pan and chill overnight. Scrape off and remove the layer of white fat on the surface (this can be used for other purposes, such as frying potatoes or stir-frying mushrooms).",
+    "Put the pork belly in the freezer until slightly hardened but not frozen; 1–2 hours should do the trick. Bring a pan of water to the boil and blanch the Chinese cabbage leaves until floppy. Refresh in cold water, then drain and set aside.",
+    "Remove the pork from the freezer and use a sharp knife to cut it into ⅙ in (4–5mm) slices. Lay these slices on your board and cut them into ⅙ in (4–5mm) strips, then into tiny cubes the size of pomegranate seeds. (Traditionally, the leaner meat is cut into slightly smaller ⅛ in/3–4mm pieces).",
+    "Mix 4 oz (100g) crabmeat into the pork mixture with a little ground pepper, then make an indentation in the top of each meatball and press in some crab coral. I have made this recipe with saltwater crabmeat; it was pretty delicious, but not quite the same thing.",
+    "Cut the pork into bite-sized slices, about ½ in (1cm) thick. Add the salt and Shaoxing wine and mix well. Mix the potato starch and flour with about 5 tablespoons water to make a thick batter. Add it to the pork and stir well to coat all the pieces. Combine all the sauce ingredients in a bowl.",
+    "In a seasoned wok, heat the oil for deep-frying to 350°F (150°C). Use a pair of chopsticks to drop pieces of pork into the oil in batches. Fry for about 3 minutes, until crisp and just cooked through, then remove and set aside. Reheat the oil to 375–400°F (190–200°C). Fry the pork again until golden and crisp; set aside. Pour off the oil into a heatproof container.",
+    "Put the dried fermented greens in a bowl and cover with cold water. Squeeze them with your hands to rinse off any excess salt. Put them in a colander and rinse again under the cold tap, then squeeze dry.",
+    "Bring a pan of water to the boil, add the pork and cook for 5 minutes. Drain and rinse under the cold tap, then cut it into 1–1½ in (2–3cm) cubes through the skin. Smack the spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers.",
+    "Cut the salted mackerel, if using, into slices and place these on top of the pork. Cover the dish with a plate or aluminum foil. Place it in a steamer and steam over high heat for about 25 minutes, until cooked through. Serve scattered with the spring onion greens.",
+    "Cut the pork, through the skin, into ½ in (1cm) slices. Cut each piece into two: you want to end up with bite-sized pieces that are 2½–3 in (6–8cm) long, ½ in (1cm) wide and as deep as the piece of belly. Put them in a bowl, add the marinade ingredients and mix well. Cover and set aside in the fridge or a cool place for at least 1 hour to marinate.",
+    "Place the hock on a chopping board with the straighter side uppermost and make a deep incision into the thickest part, cutting along the line of the bone and right down to it. Open the hock out slightly around the cut, then make two parallel cuts into the thick flesh on either side of the bone. This will enable you to open out the thicker end a bit so you can stand the hock upright. Use kitchen scissors or a knife to trim the skin around the edge into a neatish circle.",
+    "Cut the pork into thin slices, and then into slivers. Put them in a bowl, add the wine and soy sauces and mix well. Cut the chives into 2½ in (6cm) lengths. Cut the bamboo shoot into slivers and blanch in boiling water; drain well. Rinse the preserved mustard tuber and cut it into slivers.",
+    "Heat the oil in a seasoned wok over a high flame. Add the pork and stir-fry. As soon as the pieces have separated, add the preserved mustard tuber and bamboo shoot and continue to stir-fry until the pork is just cooked and everything is piping hot. Add the stock and stir until it has mostly evaporated. Add the chives and continue to stir until hot and fragrant, then season with salt. Stir in the vinegar, then remove from the wok and serve with a scattering of spring onion greens.",
+    "Cut the pork into thin slices and then into thin slivers. Add the marinade ingredients and mix well. Remove the flower buds from the end of each chive, and cut the chives into 2–2½ in (5–6cm) lengths. (The buds can be used in other dishes, including omelets.)",
+    "Heat 2 tablespoons oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked; remove from the wok and set aside. Return the wok to a high heat, with the remaining cooking oil if you need it. Add the ginger and stir-fry for a moment until fragrant; then add the chives and red bell pepper, if using, and stir-fry until piping hot and fragrant. Return the pork to the wok and season with salt. Remove from the heat, stir in the sesame oil and serve.",
+    "Bring a large pan of water to the boil. Blanch the goat for 5 minutes, then drain and rinse well. Cover it with fresh water and bring to the boil. Skim.",
+    "Peel and trim the radish and roll-cut it (see here) into bite-sized pieces. Bring a pan of water to the boil, add the radish and cook for 3 minutes to dispel any pepperiness. Drain. Add the radish to the pan, bring it to the boil and simmer until the radish is tender—about 20 minutes."
+  ]
+}

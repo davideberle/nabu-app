@@ -1,0 +1,66 @@
+{
+  "id": "new-orleans-style-beignets",
+  "name": "New Orleans Style Beignets",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 30 | prep. time 1 hour 50 minutes | cooking time 10 minutes",
+  "ingredients": [
+    {
+      "item": "warm water",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "2¼ teaspoons"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "2½ teaspoons"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "7 cups"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "butter, at room temperature",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "vegetable oil. for frying",
+      "amount": "4 cups"
+    },
+    {
+      "item": "icing sugar",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "In a large bowl, whisk the flour, yeast, salt, and sugar.",
+    "In another bowl, whisk together the eggs, warm water, milk, butter, and vanilla.",
+    "Pour the wet ingredients into the dry ingredients and fold until combined into a smooth dough.",
+    "Let the dough rise at room temperature for 90–120 minutes until tripled in size.",
+    "On a lightly floured working surface, roll out the risen dough into a ¼-inch-thick rectangle. Cut out the beignets into 2½-inch squares.",
+    "Line a baking sheet with parchment paper and place the doughnuts to rise for 20 minutes.",
+    "Meanwhile, warm the vegetable oil on medium heat to 375°F (191°C).",
+    "Deep fry the doughnuts for about 1 minute on each side.",
+    "Just before serving, dust with icing sugar."
+  ]
+}

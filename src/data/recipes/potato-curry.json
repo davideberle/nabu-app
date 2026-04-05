@@ -1,0 +1,99 @@
+{
+  "id": "potato-curry",
+  "name": "POTATO CURRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Delicious and satisfying, potato curry is usually served for breakfast in India. It’s currently served for breakfast at my house almost weekly. It’s the perfect way to start the day but it’s pretty good any time of day really! You’ve probably seen this curry on a few Indian restaurant menus. It’s delicious served over rice, but the more traditional way to serve it is with fresh homemade puris. You could cube the potatoes, but I like to serve this one the way I was taught: simply boil your potatoes and break them up by hand into the spicy sauce. This gives you less uniform, different-size chunks, which I like. If you have any left over, cook it down and spread it on a Mumbai toastie.",
+  "ingredients": [
+    {
+      "item": "medium potatoes",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chana dhal",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "white split urad dhal",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "Pinch of asafoetida*",
+      "amount": ""
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, diced",
+      "amount": "2"
+    },
+    {
+      "item": "green chillies",
+      "amount": "2–3"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "⅓–½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "gram (chickpea) flour, whisked in about 3 tbsp water until smooth",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "sugar (more or less to taste) (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chopped coriander (cilantro) leaves, to serve",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Puris or rice, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a pan of water to a boil and add the potatoes. Cook for 15–20 minutes until they are fork-tender.",
+    "While the potatoes are cooking, heat the oil in a large saucepan over a medium–high heat until visibly hot. Stir in the chana and urad lentils and fry until lightly browned. Add the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium and stir in the cumin seeds, curry leaves and asafoetida and fry for a further 30 seconds before adding the chopped onion. Fry the onion for about 5 minutes until translucent and soft, then add the ginger, diced tomatoes and chillies. Add the turmeric and chilli powder and mix it all up.",
+    "Once the potatoes are cooked, transfer them to a cutting board to cool, then peel them.",
+    "Add the potatoes to the curry by breaking them up with your hands and stir in just enough water to cover. Simmer for about 5 minutes, or until the potatoes are soft to your liking, then add the gram flour mixture and stir well. Season with salt. Some people like this curry a little sweeter, so you can add sugar to taste as well if you like, but I usually don’t.",
+    "Garnish with the coriander (cilantro) leaves and serve with rice or preferably puris."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

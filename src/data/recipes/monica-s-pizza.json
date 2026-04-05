@@ -1,0 +1,79 @@
+{
+  "id": "monica-s-pizza",
+  "name": "Monica’s Pizza",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "potatoes",
+      "amount": "250 g"
+    },
+    {
+      "item": "dry yeast",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "warm milk",
+      "amount": "200 ml"
+    },
+    {
+      "item": "warm water",
+      "amount": "200 ml"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "400 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "15 g"
+    },
+    {
+      "item": "good-quality virgin olive oil, plus extra for drizzling",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small Spanish onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "4"
+    },
+    {
+      "item": "sprig fresh rosemary",
+      "amount": "1"
+    },
+    {
+      "item": "fresh bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "75 g"
+    },
+    {
+      "item": "canned peeled roma tomatoes",
+      "amount": "300 g"
+    },
+    {
+      "item": "grated Gruyère",
+      "amount": "50 g"
+    },
+    {
+      "item": "grated Emmental",
+      "amount": "50 g"
+    }
+  ],
+  "method": [
+    "Serves 4 DOUGH 250 g potatoes 1 teaspoon dry yeast 200 ml warm milk 200 ml warm water 1½ teaspoons salt 400 g unbleached plain flour TOMATO SAUCE 15 g unsalted butter 2 tablespoons good-quality virgin olive oil, plus extra for drizzling 1 small Spanish onion, finely chopped 1–2 cloves garlic, crushed 4 fresh sage leaves 1 sprig fresh rosemary 1 fresh bay leaf 75 g tomato paste 300 g canned peeled roma tomatoes sea salt and ground black pepper 50 g grated Gruyère 50 g grated Emmental",
+    "Preheat the oven to 200°C (gas mark 6)."
+  ]
+}

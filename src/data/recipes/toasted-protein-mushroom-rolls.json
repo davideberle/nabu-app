@@ -1,0 +1,60 @@
+{
+  "id": "toasted-protein-mushroom-rolls",
+  "name": "Toasted Protein Mushroom Rolls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "raw cashews, soaked for 1 hour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "plus 2 teaspoons dairy-free milk",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "button mushrooms",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "dairy-free butter, divided",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "slices whole-grain bread",
+      "amount": "9"
+    }
+  ],
+  "method": [
+    "Add cashews, milk, lemon juice, salt, and pepper to a food processor. Process until smooth.",
+    "Clean mushrooms and finely chop.",
+    "Heat 1 tablespoon butter over medium-high heat in a small skillet. Add chopped mushrooms and sauté for 5 minutes. Turn off the heat and add the cashew mixture and hempseed. Stir well.",
+    "Preheat the oven to 425°F.",
+    "Cut crusts off of the bread and leave in a square shape. Roll each square thin with a rolling pin. You will be rolling up these squares. Spread 1 tablespoon mushroom mixture onto each square and roll up.",
+    "Melt remaining butter.",
+    "Cut rolls in half and roll in melted butter. Place rolls on cookie sheets and bake for 8 minutes or until browned."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "pizza-crostini",
+  "name": "Pizza Crostini",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 10-15 minutes",
+  "ingredients": [
+    {
+      "item": "loaf stale or fresh bread",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "mozzarella cheese, shredded or sliced",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "Marinara, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a baking sheet with parchment paper.",
+    "In a large mixing bowl, toss the bread slices with the olive oil and garlic powder. Sprinkle with the dried oregano.",
+    "Arrange the bread slices over the prepared baking sheet.",
+    "Bake for 5-7 minutes.",
+    "Top with the mozzarella cheese. Bake again until the cheese is completely melted, about 2-5 minutes.",
+    "Serve with marinara, if desired."
+  ]
+}

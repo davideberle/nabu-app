@@ -1,0 +1,58 @@
+{
+  "id": "fried-green-tomato-grilled-cheese",
+  "name": "Fried Green Tomato Grilled Cheese",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 10–15 minutes",
+  "ingredients": [
+    {
+      "item": "flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "medium to large green tomatoes, sliced ¼ inch thick",
+      "amount": "2–3"
+    },
+    {
+      "item": "Salt and cracked pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "panko breadcrumbs",
+      "amount": "1–2 cups"
+    },
+    {
+      "item": "Oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "slices crusty French bread",
+      "amount": "8"
+    },
+    {
+      "item": "slices Pepper Jack cheese",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Season the tomato slices liberally with salt and pepper.",
+    "Add the panko, eggs, and flour to three separate bowls. Dip the tomato slices in the flour, then eggs, then panko to coat evenly.",
+    "Heat 1 inch of oil over medium heat in a medium saucepan or skillet.",
+    "Add the tomato slices in batches and fry 2 minutes per side until evenly golden.",
+    "Drain over paper towels, sprinkle with salt.",
+    "Butter 4 of the bread slices and top with cheese slices.",
+    "Top with 2 tomato slices and another cheese slice. Top with the remaining bread slices.",
+    "Heat the sandwiches in a lightly greased saucepan over medium heat. Cook until evenly brown on both sides.",
+    "Serve warm."
+  ]
+}

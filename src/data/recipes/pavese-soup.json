@@ -1,0 +1,36 @@
+{
+  "id": "pavese-soup",
+  "name": "Pavese Soup",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "slices ciabatta bread",
+      "amount": "6"
+    },
+    {
+      "item": "grated Gruyère",
+      "amount": "100 g"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "100 g"
+    },
+    {
+      "item": "organic eggs",
+      "amount": "6"
+    },
+    {
+      "item": "bunch flat-leaf parsley, chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 6 2.5 litres good-quality chicken stock sea salt flakes 6 slices ciabatta bread 100 g grated Gruyère 100 g freshly grated parmigiano 6 organic eggs 1 bunch flat-leaf parsley, chopped ground black pepper",
+    "Put six wide soup bowls in a gentle oven just to heat them up (so the soup will stay piping hot).",
+    "Bring the chicken stock to a simmer and season. Keep the stock at simmering point while you grill or toast the ciabatta slices."
+  ]
+}

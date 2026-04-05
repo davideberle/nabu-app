@@ -1,0 +1,60 @@
+{
+  "id": "crunchy-nuts-and-seeds-protein-bars",
+  "name": "Crunchy Nuts and Seeds Protein Bars",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "chickpea flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "plus 2 tablespoons almond flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cashew butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips, melted",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Line an 8-inch square baking dish with parchment paper and come up about 3 inches on opposite sides. This will act as a handle to remove the bars from the dish.",
+    "Combine the flours and flaxseed meal in a large bowl and mix well. With a heavy wooden spoon, mix in the milk, cashew butter, maple syrup, almonds, cranberries, and sunflower seeds. Lastly, mix in the melted chocolate. Add the batter to the prepared dish and press firmly into all corners and as evenly as possible. Refrigerate for at least 30 minutes.",
+    "Grab the “handles” of the parchment paper and lift out of the dish. Place on a cutting sheet and slice into sixteen bars."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

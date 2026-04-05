@@ -1,0 +1,55 @@
+{
+  "id": "stuffed-tomatoes",
+  "name": "Stuffed Tomatoes",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "firm, ripe, medium-sized tomatoes",
+      "amount": "8"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "60 ml"
+    },
+    {
+      "item": "medium Spanish onion, very finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "anchovy fillets in oil, drained and chopped",
+      "amount": "10"
+    },
+    {
+      "item": "capers in brine, drained and chopped",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "handfuls flat-leaf parsley, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "75 g"
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "50 g"
+    },
+    {
+      "item": "handfuls fresh basil leaves, chopped",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Serves 4 8 firm, ripe, medium-sized tomatoes 50 g unsalted butter 60 ml good-quality virgin olive oil 1 medium Spanish onion, very finely diced 10 anchovy fillets in oil, drained and chopped 2 tablespoons capers in brine, drained and chopped 2 handfuls flat-leaf parsley, chopped 75 g fresh breadcrumbs 50 g pine nuts, toasted 2 handfuls fresh basil leaves, chopped salt and ground black pepper",
+    "Preheat the oven to 160°C (gas mark 3)."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "ogbono-soup",
+  "name": "Ogbono Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Similar to Okra Soup in terms of its slippery texture. It is also referred to as draw soup because of the way it stretches and draws. It is made from finely ground ogbono seeds and originates from the south-eastern region of Nigeria. It can be cooked plain and simply, or you may wish to add some leafy green vegetables such as ugu or bitter leaves as well. It is easy to find pre-ground ogbono seeds these days but if you are using whole seeds, be sure to grind it in a spice grinder or in a mortar and pestle until you have a fine powder.",
+  "ingredients": [
+    {
+      "item": "ground ogbono seeds 1/4 cup palm oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "pre-cooked meat alternatives of your choice (such as mushrooms, aubergine, tofu, etc)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "spinach or ugu or bitter leaves (washed and chopped)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cayenne or cameroon pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "1/4 teaspoon ogiri (optional) Salt to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the meat alternative and chopped greens, along with the cayenne pepper, seaweed, ogiri and salt to taste. Cook for 7-8 minutes on medium-high heat, stirring occasionally to prevent burning.",
+    "Serve hot with a swallow of your choice such as eba or pounded yam."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

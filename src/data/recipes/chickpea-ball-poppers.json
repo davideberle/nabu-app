@@ -1,0 +1,65 @@
+{
+  "id": "chickpea-ball-poppers",
+  "name": "Chickpea Ball Poppers",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "28-ounce can chickpeas, drained (save the liquid to use as aquafaba) and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Tabasco",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F.",
+    "Add all the chickpea ball ingredients to a food processor. Pulse until the chickpeas are broken down and the ingredients are mixed. Form mixture into twenty-four bean balls and place them on a baking sheet. Bake for 25 minutes.",
+    "Mix all the dip ingredients together thoroughly.",
+    "Serve in a bowl with toothpicks alongside the chickpea ball poppers."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

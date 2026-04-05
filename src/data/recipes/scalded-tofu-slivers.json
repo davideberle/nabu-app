@@ -1,0 +1,247 @@
+{
+  "id": "scalded-tofu-slivers",
+  "name": "Scalded tofu slivers",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "plain firm tofu",
+      "amount": "8 oz (225g)"
+    },
+    {
+      "item": "small dried shrimp",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "fresh ginger, peeled",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "finely chopped Sichuan preserved vegetable",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "plain firm tofu",
+      "amount": "8 oz (225g)"
+    },
+    {
+      "item": "cooked chicken breast",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "lean Spanish or Chinese cured ham, sliced 1mm thick",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "2¾ cups (650ml)"
+    },
+    {
+      "item": "lard or chicken oil",
+      "amount": "1 oz (25g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lbs (600g) plain white tofu",
+      "amount": "1½"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "very finely chopped Spanish or Chinese cured ham, steamed briefly",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh tofu sheets",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "unsmoked bacon, very thickly cut if possible",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "rich chicken or fine banquet stock (see here)",
+      "amount": "2 cups (450ml)"
+    },
+    {
+      "item": "lard (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "spiced firm tofu (2 cakes)",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "king oyster mushrooms, or a mixture of button and oyster mushrooms",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "medium-hot dried chillies, or to taste",
+      "amount": "3"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "snow vegetable",
+      "amount": "3½ oz (90g)"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "silken tofu",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely chopped Sichuan preserved vegetable",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fried peanuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "potato starch mixed with 1 tbsp cold water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "5"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spiced or smoked firm tofu",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "slices peeled fresh ginger",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "bicarbonate of soda",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "Cut the tofu into very thin slices and then into thin slivers. Place them in a bowl with a good pinch of salt and cover generously with boiling water. Leave to cool.",
+    "Put the dried shrimp in a small bowl and cover with boiling water. Leave for at least half an hour to soften. Cut the ginger into very thin slices and then into tiny slivers. Put in a bowl, cover with cold water and set aside. Drain the tofu in a colander. Return it to the bowl with another pinch of salt and cover with fresh boiling water. Leave for at least 2 minutes.",
+    "Put the shrimp with 6 tablespoons of their soaking water in a pan and bring to the boil (if there isn’t enough, make up the quantity with plain water). Boil for 30 seconds or so, then add the sauce ingredients with 5 tablespoons water and return to the boil, stirring to dissolve the sugar. Set aside.",
+    "Boiled firm tofu slivers in chicken stock",
+    "Cut the tofu into very thin slices and then into thin slivers. Put them in a bowl with a good pinch of salt and cover generously with boiling water. Leave to cool.",
+    "Cut or tear the chicken into thin slivers. Boil or steam the ham and, when cool, cut into thin shreds. Bring a pan of water to the boil and blanch the pea shoots or spinach leaves very briefly to wilt them; refresh immediately in cold water, then shake dry.",
+    "Drain the tofu in a colander, then return it to the bowl with another pinch of salt, cover with fresh boiling water and leave for at least 2 minutes.",
+    "Bring the stock to the boil in a wok. Add the tofu and shake gently to immerse. Tuck the chicken into the stock at one side of the wok. Add the lard and boil fast for about 10 minutes, until the stock has emulsified and become milky, stirring occasionally with chopsticks so the tofu strands don’t stick together. Season with salt, cover and simmer gently for another 2 minutes.",
+    "Pour 2½ cups (600ml) cold water into a pan, add the salt and stir to dissolve. Slice off the firm outer skin of the tofu block (you can keep this and use it in a stir-fry or a salad). Cut the rest of the tofu into bite-sized slices about ½ in (1cm) thick. Put the tofu slices in the salted water, leave to soak for 45 minutes, then drain.",
+    "Heat the cooking oil in a seasoned frying pan. Add the tofu slices in a single layer and fry over a medium flame until beautifully golden on both sides. You may need to cook them in a couple of batches.",
+    "Bring a pan of water to the boil, add the tofu and blanch to refresh and reheat. Remove it from the pan with a slotted spoon and drain on paper towels. Tip the bacon into the boiling water and blanch until just cooked. Remove with a slotted spoon. Blanch the bok choy very briefly, just to wilt the leaves. Remove and drain.",
+    "Put the stock in a wok or saucepan with the tofu, pork and lard, if using, bring to the boil and boil for about 3 minutes. Season with salt and pepper. Add the blanched greens, heat through and turn everything into a deep serving dish to serve.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the chillies and stir-fry for a few seconds until you can smell them, then add the snow vegetable and continue to stir-fry until it too smells delicious. Tip in the mushrooms and continue to stir-fry. When the mushrooms are tender, add the tofu and heat through. When all is piping hot, give the sauce a stir and pour it in, stirring as the liquid reduces. Turn off the heat, stir in the sesame oil and serve.",
+    "Bring enough water to cover the tofu to the boil in a saucepan and salt it lightly. Use a spoon to scoop up large pieces of the tofu and transfer them to the water. Simmer very gently for about 5 minutes to heat it through.",
+    "Cut the tofu skins into 4 x 8 in (10 x 20cm) rectangles. Put one on your board and place about 2 tablespoons of the stuffing along one end. Roll it up, tucking in the ends, and brush the end with the potato starch mixture to seal it. Heat the oil for deep-frying to 350°F (180°C). Use chopsticks to dip the rolls into the batter, then into the hot oil. Fry until golden and puffy, then remove and drain on paper towels. Serve hot with Chinkiang vinegar to dip."
+  ]
+}

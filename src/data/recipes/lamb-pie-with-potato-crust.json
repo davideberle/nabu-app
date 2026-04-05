@@ -1,0 +1,91 @@
+{
+  "id": "lamb-pie-with-potato-crust",
+  "name": "Lamb Pie with Potato Crust",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "potatoes, boiled in their skins, peeled and mashed",
+      "amount": "500 g"
+    },
+    {
+      "item": "organic egg",
+      "amount": "1"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "150 g"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "lamb fillets or backstraps (loins), cut into 2 cm pieces",
+      "amount": "800 g"
+    },
+    {
+      "item": "unbleached plain flour, for dusting",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "large Spanish onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "carrots, diced",
+      "amount": "2"
+    },
+    {
+      "item": "stalks celery, diced",
+      "amount": "3"
+    },
+    {
+      "item": "parsnip, diced",
+      "amount": "1"
+    },
+    {
+      "item": "sprigs fresh rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "10"
+    },
+    {
+      "item": "thickly sliced leg ham, cut into thin strips",
+      "amount": "200 g"
+    },
+    {
+      "item": "red wine",
+      "amount": "350 ml"
+    },
+    {
+      "item": "organic egg",
+      "amount": "1"
+    },
+    {
+      "item": "cream",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Mix the mashed potato, egg, flour and salt into a dough. Let the dough rest for about half an hour."
+  ]
+}

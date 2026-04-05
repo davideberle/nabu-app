@@ -1,0 +1,83 @@
+{
+  "id": "not-so-crabby-cake",
+  "name": "NOT-SO-CRABBY CAKE",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "The crab cake is the perfect appetizer to have at brunch. It is big enough to share, and it’s a cute menu item if you’re feeling fancy. The trick to making these so amazing is using lion’s mane mushrooms. If you can’t find a lion’s mane, feel free to use shredded jackfruit or even shredded artichoke. These crab cakes are a popular item from my brunch menu at my pop-up in New York.",
+  "ingredients": [
+    {
+      "item": "ground flaxseeds",
+      "amount": "1 tbsp (7 g)"
+    },
+    {
+      "item": "water",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "shredded lion’s mane mushrooms",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "Old Bay Seasoning",
+      "amount": "1 tbsp (7 g)"
+    },
+    {
+      "item": "mixed diced green and red bell pepper",
+      "amount": "¼ cup (38 g)"
+    },
+    {
+      "item": "diced onion",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "vegan panko",
+      "amount": "½ cup (28 g)"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "2 tbsp (28 g)"
+    },
+    {
+      "item": "fresh dill",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Lemon wedges, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make a flax egg, in a small bowl, combine the ground flaxseeds and water, then set aside to thicken.",
+    "In a large skillet over medium heat, heat 1 tablespoon (15 ml) of the olive oil, add your shredded lion’s mane mushrooms, then cook, stirring occasionally, for about 8 minutes. Add your Old Bay and cook for an additional 2 minutes. Remove from the heat and transfer to a bowl to cool.",
+    "Add 1 more tablespoon (15 ml) of olive oil to the skillet and sauté your bell peppers and onion over medium heat for 2 to 3 minutes, or until the onion is translucent. Remove from the heat and transfer the mixture to the lion’s mane bowl. Once the veggies have cooled, add the panko, vegan mayonnaise, dill, oregano, parsley, salt and black pepper. Mix gently to combine. Add the flax egg and mix again.",
+    "Use a spoon to mold small crab cakes. Heat the remaining 2 tablespoons (30 ml) of olive oil in a skillet over medium heat. Once hot, cook the crab cakes on each side for 3 to 4 minutes. Serve with lemon wedges."
+  ],
+  "image": "/recipes/not-so-crabby-cake.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

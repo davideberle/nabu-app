@@ -1,0 +1,83 @@
+{
+  "id": "southwest-veggie-packed-salad-bowl",
+  "name": "Southwest Veggie-Packed Salad Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "small sweet potato, peeled and chopped in bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil, divided",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "green lentils",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced bell pepper, orange and yellow",
+      "amount": "½ cup"
+    },
+    {
+      "item": "canned kidney beans, drained and rinsed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ear corn on the cob, kernels cut off of cob",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lime juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "to ½ teaspoon hot sauce",
+      "amount": "¼"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "mixed lettuce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "grape tomatoes, sliced in half",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F.",
+    "Place the sweet potato on a baking sheet and sprinkle with 1 tablespoon oil and toss. Roast for about 25 minutes or until you can pierce the sweet potato easily with a fork.",
+    "While the sweet potato is roasting, rinse the lentils. Add 1 cup water and the lentils to a medium saucepan. Cover, bring to a boil, crack lid, and turn down the heat to medium. Cook about 20 minutes or until the lentils are tender.",
+    "Meanwhile, heat 1 tablespoon oil in a skillet over medium-high heat. Add the onion and bell pepper and sauté for about 10 to 15 minutes or until the onion is translucent. Add the kidney beans and corn and heat through. Stir in the lentils, sweet potato, salt, and set aside.",
+    "Mix all the ingredients for the dressing and set aside.",
+    "Divide the lettuce between two salad bowls, pulling the lettuce up higher on half of the bowl. Divide the lentil mixture between each bowl, filling up half the bowl. Lay a row of sliced grape tomatoes between the lettuce and vegetable mixture. Serve with the dressing."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

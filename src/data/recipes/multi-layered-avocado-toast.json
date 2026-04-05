@@ -1,0 +1,56 @@
+{
+  "id": "multi-layered-avocado-toast",
+  "name": "Multi-Layered Avocado Toast",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "black salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Pinch of turmeric",
+      "amount": ""
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "slices sprouted grain bread",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Add the butter to a skillet and heat over medium-high heat. Crumble tofu into the skillet. Sprinkle with the salt, onion powder, and turmeric and sauté for about 4 minutes, making sure the tofu is crumbled small.",
+    "In a small bowl, mash the avocado with the pepper and lime juice.",
+    "Toast the bread. Spread half of the prepared avocado on each piece of toast. Top with half of the prepared tofu on each piece of toast. Slice the toasts in half at an angle."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "rolled-eggplant",
+  "name": "Rolled Eggplant",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "firm young eggplants (aubergines)",
+      "amount": "3"
+    },
+    {
+      "item": "peanut oil, for frying",
+      "amount": "600 ml"
+    },
+    {
+      "item": "large fresh mozzarella balls",
+      "amount": "2"
+    },
+    {
+      "item": "anchovies fillets in oil, drained",
+      "amount": "20"
+    },
+    {
+      "item": "handful fresh basil leaves",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 6 3 firm young eggplants (aubergines) 600 ml peanut oil, for frying 2 large fresh mozzarella balls 20 anchovies fillets in oil, drained 1 handful fresh basil leaves salt and ground black pepper",
+    "Preheat the oven to 220°C (gas mark 7).",
+    "Slice the eggplants lengthways, about 5 mm thick – you need around 20 slices in total.",
+    "Heat the oil in a large frying pan and when it is very hot, fry the eggplant slices in batches, until golden. Remove them from the pan and drain on kitchen paper.",
+    "Cut each mozzarella ball in half then cut each half into 5 even slices. Top each slice of eggplant with an anchovy, a slice of mozzarella and a basil leaf. Season lightly with salt and pepper. Roll each slice up tightly and secure with a toothpick."
+  ]
+}

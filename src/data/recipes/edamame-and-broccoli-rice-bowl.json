@@ -1,0 +1,71 @@
+{
+  "id": "edamame-and-broccoli-rice-bowl",
+  "name": "Edamame and Broccoli Rice Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "broccoli florets",
+      "amount": "½ cup"
+    },
+    {
+      "item": "edamame, frozen",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "peas, frozen or fresh",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped yellow bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tahini",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "jasmine rice, cooked",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 10 minutes. Remove from steamer and set aside.",
+    "Bring 2 cups water to a boil in a small saucepan and add the edamame and salt. Boil for 5 minutes, adding the peas during the last minute. Drain and set aside.",
+    "Meanwhile, add 2 tablespoons water to a small skillet and heat over medium-high heat. Add the bell pepper and sauté for 10 minutes. Remove from the heat and set aside.",
+    "Add all the ingredients plus 5 tablespoons water to a small bowl and blend until smooth.",
+    "Add the rice to the bottom of each bowl. Divide the remaining items in half and add onto the rice in a pinwheel fashion, making sure that the greens don’t touch each other for a more pleasing design.",
+    "Serve with the tahini sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

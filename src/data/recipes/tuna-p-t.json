@@ -1,0 +1,48 @@
+{
+  "id": "tuna-p-t",
+  "name": "Tuna Pâté",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "150 g"
+    },
+    {
+      "item": "large Spanish onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "large shallot, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "sprigs fresh tarragon, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "anchovy fillets, finely chopped",
+      "amount": "10"
+    },
+    {
+      "item": "oloroso sherry",
+      "amount": "125 ml"
+    },
+    {
+      "item": "canned tuna in oil, drained",
+      "amount": "400 g"
+    }
+  ],
+  "method": [
+    "Serves 6 150 g unsalted butter 1 large Spanish onion, chopped 1 large shallot, chopped 1 bay leaf 2 sprigs fresh tarragon, finely chopped 10 anchovy fillets, finely chopped 125 ml oloroso sherry 400 g canned tuna in oil, drained ground black pepper",
+    "Put the drained tuna and the butter mixture into a food processor, removing the bay leaf. Process for about 5–10 minutes, or until the mixture becomes a very pale colour. Taste for seasoning and add pepper if necessary.",
+    "Pour the mixture into a bowl and leave it in the refrigerator for about 2 hours, or until firm."
+  ]
+}

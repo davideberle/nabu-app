@@ -2,12 +2,11 @@
   "id": "cold-onion-chutney",
   "name": "COLD ONION CHUTNEY",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
-  "servings": "this makes enough for 4–6 people as an accompaniment. you can easily double or triple the recipe",
-  "intro": "You know those sliced onions that are served in a red sauce with papadams before the meal at Indian restaurants? Well, this simple chutney is a lot more popular than you might think, and is one of the most requested recipes on my blog. It’s so easy to make.",
+  "servings": "makes enough for 4–6 as an accompaniment",
+  "intro": "You know those sliced onions that are served in a red sauce with papadams before the meal at Indian restaurants? Well, this simple chutney is a lot more popular than you might think.",
   "ingredients": [
     {
       "item": "large onion, finely sliced",
@@ -30,16 +29,15 @@
       "amount": ""
     },
     {
-      "item": "roasted cumin seeds Spice Blends",
+      "item": "roasted cumin seeds (see ground spices and spice blends)",
       "amount": "1 tsp"
     }
   ],
   "method": [
-    "Put the sliced onions in a bowl of cold water with ice cubes added, and put in the fridge for about an hour. Once good and cold, drain and pat the slices dry with a clean cloth.",
+    "Put the sliced onions in a bowl of cold water with ice cubes added, and put in the fridge for about 1 hour. Once good and cold, drain and pat the slices dry with a clean cloth.",
     "Now mix the ketchup, tomato purée, chilli powder and salt together. Stir in the sliced onions and roasted cumin seeds.",
     "Stick in the fridge for about 45 minutes before serving, to allow the ingredients to get to know each other, and serve with papadams or whatever you fancy."
   ],
-  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

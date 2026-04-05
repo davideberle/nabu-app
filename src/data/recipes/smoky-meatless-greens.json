@@ -1,0 +1,82 @@
+{
+  "id": "smoky-meatless-greens",
+  "name": "SMOKY MEATLESS GREENS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 10",
+  "intro": "Smoky greens without the meat: savory, juicy and herby. They make a great soul side. Pair with my Return of the Mac, Lightly Sweet Potato Yams or Bronx Fried Oyster Mushrooms to complete a full meal. Make sure to wash your fresh greens and remove the big stems. Chopping the leaves into shreds helps them cook faster and retain more flavor.",
+  "ingredients": [
+    {
+      "item": "grapeseed oil",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "diced bell pepper, assorted colors",
+      "amount": "¼ cup (38 g)"
+    },
+    {
+      "item": "garlic, chopped",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "white onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1½ tsp (4 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ tsp (4.5 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tsp (9 g)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1½ tsp (3 g)"
+    },
+    {
+      "item": "crushed red pepper flakes",
+      "amount": "1½ tsp (2 g)"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1½ tsp (4 g)"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "collard greens, washed, stemmed and shredded",
+      "amount": "3 lb (1.4 kg)"
+    }
+  ],
+  "method": [
+    "In a large pot over medium-high heat, combine your oil, bell peppers, garlic, onion and tomato and sauté for 1 to 2 minutes.",
+    "Add your stock plus the paprika, garlic powder, salt, black pepper, red pepper flakes, cumin, liquid smoke and cinnamon. Let come to a light boil and then add your greens; they will start to cook down and shrink. Simmer the greens for 20 minutes.",
+    "Get ready to serve once done. Enjoy hot!"
+  ],
+  "image": "/recipes/smoky-meatless-greens.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

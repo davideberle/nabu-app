@@ -1,0 +1,52 @@
+{
+  "id": "amazing-lentil-energy-balls",
+  "name": "Amazing Lentil Energy Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "lentils",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "½ cup"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "2 cups"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unsweeted shredded coconut",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Rinse and drain the lentils. Place 1 cup water and the lentils in a medium-large saucepan. Bring to a boil over high heat. When the water comes to a boil, turn down to medium high and cook for 20 to 25 minutes or until the lentils are tender. All the water should be absorbed. Set aside to cool.",
+    "Add the chocolate chips, oats, sunflower seeds, hempseed, and coconut in a large bowl. Mix in the cooled lentils. Add almond butter and maple syrup. Mix well. Form into thirty-six balls and place in a glass container with a lid.",
+    "Refrigerate for about 30 minutes. Store in the refrigerator for up to 5 days or freeze for up to 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

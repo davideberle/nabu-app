@@ -1,0 +1,70 @@
+{
+  "id": "rich-chocolate-energy-cookies",
+  "name": "Rich Chocolate Energy Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter, softened",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chia seeds or ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dairy-free chocolate chips, divided",
+      "amount": "2 cups (12 ounces)"
+    },
+    {
+      "item": "instant coffee",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Cut parchment paper to fit on a baking sheet. Set aside.",
+    "Add the butter and sugar to the bowl of a stand mixer. Cream on medium speed for 5 minutes or until light and fluffy.",
+    "Mix the chia seeds with 3 tablespoons water and set aside.",
+    "Melt ½ cup of the chocolate chips in a microwave or in a double boiler. Set aside to cool a bit.",
+    "Boil 2 tablespoons water and add instant coffee. Set aside to cool.",
+    "Add flour, baking soda, baking powder, and salt to a bowl. Mix well by hand.",
+    "Add the prepared chia seed mixture and melted chocolate to the bowl of the stand mixer. Mix well on medium speed. Add the flour mixture and keep mixing until just combined. Remove the mixing bowl and fold in the remaining chocolate chips, hempseed, and walnuts. Mix well.",
+    "Drop on the prepared cookie sheet by large, heaping tablespoons, 2 inches apart, and flatten slightly. Bake for 12 minutes.",
+    "Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

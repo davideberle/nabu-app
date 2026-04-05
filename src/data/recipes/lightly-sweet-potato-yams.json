@@ -1,0 +1,51 @@
+{
+  "id": "lightly-sweet-potato-yams",
+  "name": "LIGHTLY SWEET POTATO YAMS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 8",
+  "intro": "This southern, soul food side is sweet and spiced with nutmeg and cinnamon; it tastes great with my Return of the Mac. My family makes sweet potato yams mostly during the holidays and in big batches for everyone to eat. The yams are normally doused with granulated sugar, but that isn’t always so good for your body, so I replaced it with raw cane sugar, which is much better for you. You can also try it with coconut sugar, if you’d like. When you’re shopping for your yams, try to pick out large pieces and cut them as evenly as possible so they can cook the same.",
+  "ingredients": [
+    {
+      "item": "vegan butter",
+      "amount": "¾ cup (170 g)"
+    },
+    {
+      "item": "dark brown sugar",
+      "amount": "½ cup (115 g)"
+    },
+    {
+      "item": "raw cane sugar",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1½ tsp (7.5 ml)"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "large sweet potatoes (a scant 2 lb [890 g]), peeled and cut into disks or cubes",
+      "amount": "4 to 5"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (200°C).",
+    "In a pot over medium heat, heat the vegan butter, and once it melts, add the brown sugar, raw cane sugar, vanilla, cinnamon and nutmeg, and whisk everything together. Cook for about 3 minutes, remove from the heat and pour into a big bowl to cool slightly.",
+    "When the butter mixture is still warm, add the sweet potatoes and mix everything together with your hands, coating every piece. Transfer the sweet potatoes to an 8 x 8–inch (20 x 20–cm) baking dish and cover with foil. Bake for 30 minutes, then remove the foil and bake for another 15 minutes to caramelize the sweet potatoes.",
+    "Remove from the oven and serve with Smoky Meatless Greens, Return of the Mac and Bronx Fried Oyster Mushrooms."
+  ],
+  "image": "/recipes/lightly-sweet-potato-yams.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

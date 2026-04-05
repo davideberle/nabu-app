@@ -1,0 +1,55 @@
+{
+  "id": "superfood-breakfast-smoothie-bowls",
+  "name": "Superfood Breakfast Smoothie Bowls",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 2 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "ripe banana, peeled and frozen",
+      "amount": "1"
+    },
+    {
+      "item": "frozen blueberries",
+      "amount": "1 cup"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "milk of choice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut flakes",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh blueberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh banana, peeled and sliced",
+      "amount": "½"
+    },
+    {
+      "item": "pomegranate arils",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped almonds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Add all the bowl ingredients to a high-speed blender and pulse until smooth.",
+    "Divide into serving bowls along with the toppings. If desired, chill before serving, or serve immediately."
+  ]
+}

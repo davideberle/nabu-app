@@ -1,0 +1,31 @@
+{
+  "id": "swordfish-kebabs",
+  "name": "Swordfish Kebabs",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "swordfish, cut into 2.5 cm cubes",
+      "amount": "1 kg"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "chilli",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "250 ml"
+    }
+  ],
+  "method": [
+    "Serves 6 1 kg swordfish, cut into 2.5 cm cubes fresh bay leaves MARINADE 2 cloves garlic 1 chilli sea salt flakes juice of ½ organic lemon 250 ml good-quality virgin olive oil Salsa Verde",
+    "In a mortar, mix all the marinade ingredients together well. Pour this marinade over the fish skewers and let rest for about 15 minutes."
+  ]
+}

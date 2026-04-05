@@ -1,0 +1,58 @@
+{
+  "id": "carrot-cake-waffles",
+  "name": "Carrot Cake Waffles",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 6 | prep. time 15 minutes | cooking time 20-25 minutes",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "grated carrots",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the flour, baking powder, eggs, cinnamon, carrots, milk, vegetable oil, vanilla extract, maple syrup, and salt.",
+    "Warm a waffle iron. Spray it with cooking spray.",
+    "Add some of the batter to the iron. Cook for 3-4 minutes on each side.",
+    "Repeat with the remaining batter.",
+    "Serve warm."
+  ]
+}

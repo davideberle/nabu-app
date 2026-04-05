@@ -2,9 +2,8 @@
   "id": "coriander-garlic-and-chilli-raita",
   "name": "CORIANDER, GARLIC AND CHILLI RAITA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "makes 500–550ml (2 cups)",
   "intro": "My favourite raita. Nothing more to be said.",
@@ -26,19 +25,18 @@
       "amount": "2"
     },
     {
-      "item": "(1¾ cups) plain yoghurt",
-      "amount": "375g"
+      "item": "plain yoghurt",
+      "amount": "375g (1¾ cups)"
     },
     {
-      "item": "Salt",
+      "item": "Salt, to taste",
       "amount": ""
     }
   ],
   "method": [
-    "In a spice grinder or small food processor, blend the coriander (cilantro) leaves, garlic, lime juice and chillies to a paste. You can also use a pestle and mortar to do this, with a little more work.",
-    "Whisk the yoghurt with a fork until creamy smooth then stir in the coriander paste. Season with salt to taste and chill in the fridge for about 30 minutes before serving."
+    "In a spice grinder or small food processor, blend the coriander (cilantro) leaves, garlic, lime juice and chillies to a paste. You can also use a pestle and mortar to do this, which is a little more work.",
+    "Whisk the yoghurt with a fork until creamy smooth, then stir in the coriander paste. Season with salt to taste and chill in the fridge for about 30 minutes before serving."
   ],
-  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

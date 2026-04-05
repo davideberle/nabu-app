@@ -2,15 +2,14 @@
   "id": "lamb-bhuna",
   "name": "LAMB BHUNA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Authentic Indian bhunas are quite a lot more difficult to make than this British restaurant-style version. Bhuna is a style of cooking where hot oil or ghee is used to release the flavours of whole spices before raw meat is added, often as small pieces still on the bone.",
+  "intro": "Authentic Indian bhunas are quite a lot more difficult to make than this British restaurant-style version. Bhuna is a style of cooking where hot oil or ghee is used to release the flavours of whole spices before raw meat is added, often as small pieces still on the bone. Once the meat is added, stock or water is drizzled into the pan in small amounts, cooking the meat as it reduces down. This process is repeated for 1 hour or more until the meat becomes fall-off-the-bone tender. It is then served in the thick sauce it was cooked in. This time-consuming style of cooking wouldn’t be possible in most restaurants.",
   "ingredients": [
     {
-      "item": "ghee, rapeseed oil or seasoned oil",
+      "item": "ghee, rapeseed (canola) oil or seasoned oil",
       "amount": "3 tbsp"
     },
     {
@@ -18,7 +17,7 @@
       "amount": "1"
     },
     {
-      "item": "red pepper (bell pepper), deseeded and roughly chopped",
+      "item": "red (bell) pepper, deseeded and roughly chopped",
       "amount": "¼"
     },
     {
@@ -30,8 +29,8 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "(½ cup) tomato purée",
-      "amount": "125ml"
+      "item": "tomato purée",
+      "amount": "125ml (½ cup)"
     },
     {
       "item": "mixed powder",
@@ -42,39 +41,38 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "(2 cups) base curry sauce, heated",
-      "amount": "500ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
     },
     {
-      "item": "(1¾lb) pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base sauce",
-      "amount": "800g"
+      "item": "pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
+      "amount": "800g (1lb 12oz)"
     },
     {
       "item": "Greek yoghurt",
       "amount": "2 tbsp"
     },
     {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
       "item": "Small bunch of coriander (cilantro), leaves finely chopped",
       "amount": ""
     },
     {
-      "item": "Salt and freshly ground pepper",
+      "item": "Juice of 1–2 limes, to serve (optional)",
       "amount": ""
     },
     {
-      "item": "Juice of 1 or 2 limes",
-      "amount": ""
-    },
-    {
-      "item": "Sliced red chilli, to serve",
+      "item": "Sliced red chilli, to serve (optional)",
       "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large pan over a medium-high heat. When it is bubbling, add the onion and pepper (bell pepper) and sizzle them in the oil for about 5 minutes until the onion is translucent and soft. Stir in the garlic and ginger paste, and coriander (cilantro) stalks and stir these around in the oil for about 30 seconds.",
-    "Add the tomato purée and, when it starts to bubble, stir in the mixed powder and tandoori masala, followed by 250ml (1 cup) of the base curry sauce. Let this simmer for a couple of minutes, without stirring unless it is obviously catching on the pan. Scrape any caramelized sauce at the edges of the pan back in.",
-    "Increase the heat to high and add the pre-cooked lamb and the rest of the sauce, with the stock. Let this bubble undisturbed until it reduces down to a thick sauce.",
-    "To finish, reduce the heat to medium and whisk in the yoghurt 1 tbsp at a time. Check for seasoning and add salt and pepper to taste. Top with the fresh coriander and serve with a good squeeze of lime juice and/or some sliced red chilli, if you like."
-  ],
-  "image": "/recipes/lamb-bhuna.jpg"
+    "Heat the ghee or oil in a large pan over a medium–high heat. When it is bubbling, add the onion and red (bell) pepper and sizzle them in the oil for about 5 minutes until the onion is translucent and soft. Stir in the garlic and ginger paste, and coriander (cilantro) stalks, and stir these around in the oil for about 30 seconds.",
+    "Add the tomato purée and, when it starts to bubble, stir in the mixed powder and tandoori masala, followed by 250ml (1 cup) of the base curry sauce. Let this simmer for about 2 minutes, without stirring unless it is obviously catching on the pan. Scrape any caramelized sauce at the edges of the pan back in.",
+    "Increase the heat to high and add the pre-cooked lamb and the rest of the sauce along with the cooking stock. Let this bubble undisturbed until it reduces down to a thick sauce.",
+    "To finish, reduce the heat to medium and whisk in the yoghurt 1 tablespoon at a time. Season with salt and black pepper. Top with the coriander (cilantro) and serve with a good squeeze of lime juice and/or some sliced red chilli, if you like."
+  ]
 }

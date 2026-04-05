@@ -1,0 +1,32 @@
+{
+  "id": "boiled-white-rice",
+  "name": "BOILED WHITE RICE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4",
+  "intro": "You can cook a lot more rice using this method, and the water-to-rice ratio isn’t as important. You need to cook with enough water so that the grains of rice can float around freely as it simmers. This is my preferred method when I am preparing rice for a fried rice recipe.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "370g (2 cups)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A little butter",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the uncooked rice in a large bowl and cover with cold water. Swirl the water around with your hands; it will become milky from the rice starch. Pour the water out and add fresh water and repeat until the water is almost clear. About five times should do the job. Leave the rice to soak in the last batch of fresh water for about 30 minutes, then drain.",
+    "Bring a large saucepan of water to a boil, then add the rice. Stir in the salt and butter, reduce the heat and simmer for 7–9 minutes. To check for doneness, take out a couple of grains and press them with your fingers. They should be soft but still have a bit of resistance to them.",
+    "Carefully pour the rice into a colander. If serving immediately, transfer to a serving dish and your job is done. If storing for later, rinse with cold water, carefully stir through and place in an air-tight container in the fridge for up to 4 days."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

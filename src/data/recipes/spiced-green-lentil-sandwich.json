@@ -1,0 +1,84 @@
+{
+  "id": "spiced-green-lentil-sandwich",
+  "name": "Spiced Green Lentil Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "green lentils",
+      "amount": "1 cup"
+    },
+    {
+      "item": "small potato, to equal about ½ cup mashed potato",
+      "amount": "1"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "carrot, finely chopped in a processor",
+      "amount": "1"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "pepitas or sunflower seed kernels",
+      "amount": "½ cup"
+    },
+    {
+      "item": "hempseed, toasted in shell",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sandwich buns",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Place 2 cups water and the lentils in a large saucepan. Cover and bring to a boil. Turn down to low and cook for 20 minutes. Drain off remaining liquid from the lentils, if any. Set the lentils aside.",
+    "Pierce the potato a couple of times with a sharp knife. Wrap in a damp paper towel. Set in the microwave and cook on high for 4 minutes or until you can pinch the potato easily. Peel the potato and mash well. Set aside.",
+    "Heat 2 tablespoons water in a skillet over medium-high heat. Add the onion and sauté for 10 minutes. Remove from the heat.",
+    "Add the lentils, potato, onion, and the remainder of the ingredients to a large bowl (excluding the oil and the buns). Mix well. Form eight patties to the size of your sandwich buns.",
+    "Heat the oil in a frying pan and fry the lentil patties on each side without crowding.",
+    "Spread the buns with all your favorite condiments and any other toppings of your choice.",
+    "You may also freeze extra patties for future meals."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

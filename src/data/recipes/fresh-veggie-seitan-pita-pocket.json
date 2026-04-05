@@ -1,0 +1,59 @@
+{
+  "id": "fresh-veggie-seitan-pita-pocket",
+  "name": "Fresh Veggie Seitan Pita Pocket",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets, sliced thick (page 283)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "broccoli florets, chopped small",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced cucumber",
+      "amount": "½ cup"
+    },
+    {
+      "item": "carrot, grated",
+      "amount": "1"
+    },
+    {
+      "item": "artichoke hearts in water, drained",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "pita pockets",
+      "amount": "2"
+    },
+    {
+      "item": "dairy-free mayonnaise",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "1 ounce"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet over medium-high heat. Add the seitan, broccoli, and bell pepper and cook over medium heat for 3 minutes. Add the cucumber, carrot, and artichoke hearts. Stir and cook for 1 minute. Take off the heat.",
+    "Cut the pita pockets in half and spread half the mayonnaise into both halves of each pocket. Add a few leaves of baby spinach and then spoon a quarter of the seitan mixture into each of the four pocket halves."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

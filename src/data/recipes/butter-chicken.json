@@ -2,19 +2,14 @@
   "id": "butter-chicken",
   "name": "BUTTER CHICKEN",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "In 1947, Kundan Lal Gujral opened the first tandoori restaurant, called Moti Mahal, in Delhi, India. Although tandoor-style ovens had already been used for thousands of years, he was the first to have large tandoors manufactured for use in a restaurant. The restaurant served delicious marinated chicken, meat and vegetables, all charred to perfection in a tandoor. Not one to waste, Gujral came up with the idea of using the leftover marinades in a curry, and butter chicken (murgh makhani) was born. For the chicken, use",
+  "intro": "In 1947, Kundan Lal Gujral opened the first tandoori restaurant, called Moti Mahal, in Delhi, India. Although tandoor-style ovens had already been used for thousands of years, he was the first to have large tandoors manufactured for use in a restaurant. The restaurant served delicious marinated chicken, meat and vegetables, all charred to perfection in a tandoor. Not one to waste, Gujral came up with the idea of using the leftover marinades in a curry, and butter chicken (murgh makhani) was born. For the chicken, use tandoori chicken tikka or tandoori chicken legs. Reserve the marinade for the sauce.",
   "ingredients": [
     {
-      "item": "(3 lb 5 oz) grilled tandoori chicken (see Tandoori Chicken Tikka or Tandoori Murgh Malai Tikka)",
-      "amount": "1.5kg"
-    },
-    {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -42,12 +37,16 @@
       "amount": "1"
     },
     {
+      "item": "salt, plus extra, to taste",
+      "amount": "1 tsp"
+    },
+    {
       "item": "garlic and ginger paste",
       "amount": "2 tbsp"
     },
     {
-      "item": "tins (4 cups) chopped tomatoes",
-      "amount": "2 x 400g"
+      "item": "x 400g (14oz) tins (cans) chopped tomatoes",
+      "amount": "2"
     },
     {
       "item": "paprika",
@@ -66,27 +65,30 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(1¼ cups) double (heavy) cream",
-      "amount": "300ml"
+      "item": "1.5kg (3lb 5oz) grilled tandoori chicken (see Tandoori chicken tikka or Tandoori chicken legs) and the reserved marinade",
+      "amount": ""
+    },
+    {
+      "item": "double (heavy) cream",
+      "amount": "300ml (1¼ cups)"
     },
     {
       "item": "butter, chilled",
       "amount": "3 tbsp"
     },
     {
-      "item": "garam masala",
-      "amount": "1 tbsp"
+      "item": "Freshly ground black pepper, to taste",
+      "amount": ""
     },
     {
-      "item": "Salt and freshly ground pepper",
-      "amount": ""
+      "item": "garam masala",
+      "amount": "1 tbsp"
     }
   ],
   "method": [
-    "Heat the oil in a large saucepan over medium-high heat. When hot, toss in the cinnamon stick, star anise, cardamom pods and bay leaves, and stir them in the oil for about 30 seconds.",
-    "Now add the onions and carrot, and fry for about 15 minutes, stirring occasionally, so that the onions turn soft and translucent but not browned. Sprinkle 1 tsp salt over the top to help release some of the moisture from the onions. Now add the garlic and ginger paste and fry for 30 seconds, followed by the chopped tomatoes.",
-    "Add the paprika and the ground cumin, coriander and turmeric, and simmer for about 3 minutes. At this stage you have a choice. You can either leave the sauce as it is or take the whole spices out and blend it to a smooth sauce. I’ll leave that one to you. I usually leave it as is.",
-    "Lower the heat to medium and place the grilled chicken pieces in the sauce to heat through. To finish, whisk in the cream and reserved marinade from preparing the chicken, and turn the heat back up to medium-high. Add the chilled butter, 1 tbsp at a time, and check for seasoning, adding more salt if needed. Sprinkle with the garam masala and serve."
-  ],
-  "image": "/recipes/butter-chicken.jpg"
+    "Heat the oil in a large saucepan over a medium–high heat. When hot, toss in the cinnamon stick, star anise, cardamom pods and bay leaves, and stir them in the oil for about 30 seconds.",
+    "Add the onions and carrot, and fry for about 15 minutes, stirring occasionally, so that the onions turn soft and translucent but not browned. Sprinkle 1 teaspoon of salt over the top to help release some of the moisture from the onions. Now add the garlic and ginger paste and fry for 30 seconds, followed by the tomatoes.",
+    "Add the paprika and ground cumin, coriander and turmeric, and simmer for about 3 minutes. At this stage you have a choice. You can either leave the sauce as it is or take the whole spices out and blend it to a smooth sauce. I’ll leave that one to you. I usually leave it as is.",
+    "Reduce the heat to medium and place the grilled chicken pieces in the sauce to heat through. To finish, whisk in the cream and reserved marinade from preparing the chicken, and turn the heat back up to medium–high. Add the chilled butter, 1 tablespoon at a time, and check for seasoning, adding more salt if needed. Sprinkle with the garam masala and serve."
+  ]
 }

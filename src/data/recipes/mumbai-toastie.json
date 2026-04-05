@@ -1,0 +1,95 @@
+{
+  "id": "mumbai-toastie",
+  "name": "MUMBAI TOASTIE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 2",
+  "intro": "If you haven’t tried the famous Mumbai toastie yet, it’s time you did. These are so good. Buttered fluffy white bread topped with seasoned potatoes, vegetables and the essential mint and coriander sauce… this is a sandwich you would expect from the exciting city that is Mumbai. These are often served as a simple sandwich, but for me, it’s the buttered and toasted version that gets it! If you’ve made some of my potato curry and have leftovers, you could use it on these toasties if you wish.",
+  "ingredients": [
+    {
+      "item": "ghee or vegetable ghee",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "green chillies, sliced into rings",
+      "amount": "2–3"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "potatoes, peeled and cut into cubes",
+      "amount": "2"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mint and coriander sauce, but without the yoghurt",
+      "amount": "150ml (generous ½ cup)"
+    },
+    {
+      "item": "pieces of white bread",
+      "amount": "4"
+    },
+    {
+      "item": "slices of Cheddar cheese",
+      "amount": "4"
+    },
+    {
+      "item": "slices of tomato",
+      "amount": "8"
+    },
+    {
+      "item": "slices of cucumber",
+      "amount": "8"
+    },
+    {
+      "item": "slices of red (bell) pepper",
+      "amount": "8"
+    },
+    {
+      "item": "slices of red onion",
+      "amount": "8"
+    },
+    {
+      "item": "Butter, for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the potato filling, heat the ghee in a large pan over a medium–high heat. When hot, add the cumin seeds and curry leaves. Temper these in the hot oil for about 30 seconds, then add the onion. Fry for about 5 minutes until fragrant and soft, then add the chillies, turmeric, chilli powder (if using) and garlic and ginger paste. Stir this all up well and tip in the cubed potatoes. Add just enough water to cover, and simmer until the potatoes are fork-tender and quite dry – about 10 minutes should do. Season with salt and black pepper and stir in the coriander (cilantro). Set aside to cool slightly.",
+    "Heat a large frying pan over a medium–high heat. Add 2 generous tablespoons of butter and fry the sandwiches in the butter. When nicely browned, carefully flip them over and fry the other side until browned. Serve immediately."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

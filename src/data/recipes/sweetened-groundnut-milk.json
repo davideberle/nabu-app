@@ -1,0 +1,36 @@
+{
+  "id": "sweetened-groundnut-milk",
+  "name": "Sweetened Groundnut Milk",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "As you can already gather from the name, this velvety drink is made using groundnuts. It is delicious not only as a refreshing standalone drink but as a replacement for dairy milk in other recipes. For a more neutral taste, you may wish to leave out the sugar/syrup and vanilla.",
+  "ingredients": [
+    {
+      "item": "raw groundnut (peeled and soaked overnight)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cold water",
+      "amount": "5 cups"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar or syrup",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Place groundnuts and water in a food blender and blend on high speed until smooth.",
+    "Pour the milk into a pot and add the simmer over medium heat, stirring frequently until it comes to a boil."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

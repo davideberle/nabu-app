@@ -2,15 +2,14 @@
   "id": "chicken-dhansak",
   "name": "CHICKEN DHANSAK",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Chicken dhansak is one of the most popular curries served at curry houses around the UK. British dhansak is a play on a curry served by the Parsi community around Mumbai. There, it’s usually made with goat’s meat or mutton and it is a real party piece. It’s traditionally served with brown rice and usually has other nice vegetables thrown in like pumpkin, aubergine (eggplant) and potato. Four different lentils are used to make the sauce along with a long list of spices.",
+  "intro": "Chicken dhansak is one of the most popular curries served at curry houses around the UK. British dhansak is a play on a curry served by the Parsi community around Mumbai. There, it’s usually made with goat’s meat or mutton and it is a real party piece. It’s traditionally served with brown rice and usually has other nice vegetables thrown in like pumpkin, aubergine (eggplant) and potato. Four different lentils are used to make the sauce, along with a long list of spices. Our British version is a lot less complicated, although it is a sweet-and-sour curry like the original. Cooked red split lentils (try my tarka dhal) are added to the sauce, and it is usually sweetened with pineapple juice and chunks or rings of pineapple, with lemon juice used as a souring agent.",
   "ingredients": [
     {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -30,46 +29,45 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "(½ cup) tomato purée",
-      "amount": "125ml"
+      "item": "tomato purée",
+      "amount": "125ml (½ cup)"
     },
     {
-      "item": "(2 cups) base curry sauce, heated",
-      "amount": "500ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
     },
     {
-      "item": "(1 cup) red split lentils, rinsed and cooked in water until soft",
-      "amount": "180g"
+      "item": "red split lentils, rinsed and cooked in water until soft",
+      "amount": "180g (1 cup)"
     },
     {
-      "item": "(1¾lb) pre-cooked stewed chicken, plus a little of its cooking stock",
-      "amount": "800g"
+      "item": "pre-cooked stewed chicken, plus a little of its cooking stock or some spice stock",
+      "amount": "800g (1lb 12oz)"
     },
     {
-      "item": "(scant ½ cup) pineapple juice",
-      "amount": "115ml"
+      "item": "pineapple juice",
+      "amount": "115ml (scant ½ cup)"
     },
     {
-      "item": "tinned pineapple rings, cut into pieces",
+      "item": "tinned (canned) pineapple rings, cut into pieces",
       "amount": "3–4"
     },
     {
-      "item": "Juice of 1 or 2 lemons, to taste",
+      "item": "Salt, to taste",
       "amount": ""
     },
     {
-      "item": "freshly chopped coriander (cilantro)",
+      "item": "Juice of 1–2 lemons, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped coriander (cilantro)",
       "amount": "3 tbsp"
-    },
-    {
-      "item": "Salt",
-      "amount": ""
     }
   ],
   "method": [
-    "Heat the oil in a pan over a medium-high heat. Spoon in the garlic and ginger paste along with the turmeric, and let sizzle for about 30 seconds. The turmeric will become darker as you do this. Now add the mixed powder, chilli powder and tomato purée and stir briskly.",
-    "Pour in half of the base curry sauce and let it simmer for about a minute. Add the cooked lentils and stir it all up. Watch closely as lentils have a tendency to scorch on the bottom of the pan, so reduce the heat if necessary. Now add the rest of the sauce and the pre-cooked stewed chicken along with a splash of cooking stock or spice stock for additional flavour. Pour in the pineapple juice and add the pineapple pieces. Simmer for a further 3–5 minutes, adding more base curry sauce or stock if the mixture becomes too thick.",
-    "Check for seasoning and add salt to taste. Stir in the lemon juice and top with the chopped coriander (cilantro) to serve."
-  ],
-  "image": "/recipes/chicken-dhansak.jpg"
+    "Heat the oil in a pan over a medium–high heat. Spoon in the garlic and ginger paste along with the turmeric, and let sizzle for about 30 seconds. The turmeric will become darker as you do this. Now add the mixed powder, chilli powder and tomato purée and stir briskly.",
+    "Pour in half of the base curry sauce and let it simmer for about 1 minute. Add the cooked lentils and stir it all up. Watch closely as lentils have a tendency to scorch on the bottom of the pan, so reduce the heat if necessary. Now add the rest of the sauce and the pre-cooked stewed chicken along with a splash of cooking stock or spice stock for additional flavour. Pour in the pineapple juice and add the pineapple pieces. Simmer for a further 3–5 minutes, adding more base curry sauce or stock if the mixture becomes too thick.",
+    "Season with salt, stir in the lemon juice and top with the coriander (cilantro) to serve."
+  ]
 }

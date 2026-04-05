@@ -2,16 +2,15 @@
   "id": "cucumber-raita",
   "name": "CUCUMBER RAITA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
-  "servings": "makes 550ml (2¼ cups)",
-  "intro": "Delicious spooned over biryanis and kebabs. If you want to make it even more exciting, try adding a few small chunks of cooked potato and/or finely chopped green chilli.",
+  "servings": "makes 550ml (generous 2¼ cups)",
+  "intro": "This is delicious spooned over biryanis and kebabs. If you want to make it even more exciting, try adding a few small chunks of cooked potato and/or finely chopped green chilli.",
   "ingredients": [
     {
-      "item": "(2 cups) Greek yoghurt",
-      "amount": "420g"
+      "item": "Greek yoghurt",
+      "amount": "420g (scant 1¾ cups)"
     },
     {
       "item": "garlic cloves, finely chopped",
@@ -22,18 +21,17 @@
       "amount": "½"
     },
     {
-      "item": "Juice of 1 or 2 limes",
+      "item": "Juice of 1–2 limes",
       "amount": ""
     },
     {
-      "item": "Pinch each of salt and freshly ground pepper",
+      "item": "Pinch each of salt and freshly ground black pepper",
       "amount": ""
     }
   ],
   "method": [
-    "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about an hour before serving."
+    "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about 1 hour before serving."
   ],
-  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"

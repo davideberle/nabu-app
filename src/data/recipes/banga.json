@@ -1,0 +1,49 @@
+{
+  "id": "banga",
+  "name": "Banga",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Unlike palm oil, which is also extracted from palm fruit, palm fruit juice is extracted at a much lower temperature and contains a mix of oil and water. Banga spice mix is also available from African grocery stores or online and often contains a combination of ataiko, ighreje, aidan, omilo and more. The soup can be served with most swallows and can also be served with boiled rice.",
+  "ingredients": [
+    {
+      "item": "(400g tin) palm fruit concentrate",
+      "amount": "2 cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "seaweed flakes",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "and 1/2 tablespoons ground Banga spice mix",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cube 1/2 teaspoon ogiri",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup chopped scent leaves or basil (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Pour the palm fruit concentrate and water into a large pot and bring to a boil. Cook on medium heat for 8-10 minutes, stirring occasionally.",
+    "Add the meat alternatives of your choice, onions, seaweed, chilli powder, Banga spice mix, vegetable stock, ogiri and salt to taste. Cook for 5 minutes then add the chopped scent leaves/basil and cook for another 2 minutes.",
+    "Serve the soup hot with a swallow of your choice, such as eba (garri), pounded yam, fufu or semolina."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "these",
+  "name": "These",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "These two dishes are by no means the same, but they are prepared in such similar ways that it makes sense to share one overarching vegan alternative. The main diﬀerence between the two dishes is that while isi ewu contains goat head and brains, nkwobi contains chopped cow feet. The meat substitute I recommend for this dish is seitan (e.g. VChunks - see page 29) because it has the structure and texture required to make this work. In place of that, you can also use mushrooms.",
+  "ingredients": [
+    {
+      "item": "[approx. 300g] seitan or mushrooms (cut into large chunks)",
+      "amount": "4 cups"
+    },
+    {
+      "item": "water 1/2 cup palm oil",
+      "amount": "6 cups"
+    },
+    {
+      "item": "1/2 teaspoon baking soda mixed with",
+      "amount": ""
+    },
+    {
+      "item": "warm water",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ground ehuru (calabash nutmeg)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground black pepper or cameroon pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "seaweed flakes (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red onion (half roughly chopped; half sliced into rings)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the seitan or mushrooms in a pot and cover with water. Season with 1 vegetable stock cube, a pinch of salt and roughly chopped onions. Cook over high heat for 10 minutes. Remove the seitan/mushrooms from the broth and set aside. The broth is not needed and can be repurposed in another recipe.",
+    "Add the palm oil to another pot but do not place on the heat yet. Add the baking soda mixture and stir continuously until the oil turns paler in colour. Add the ehuru, black pepper/cameroon pepper, vegetable stock cube, seaweed flakes and salt to taste. Stir until well combined. Add the ugba and the cooked seitan/mushrooms and mix well to combine.",
+    "Place the pot on medium-low heat for 5 minutes to warm it through. Serve with a garnish of shredded utazi leaves and onion slices."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

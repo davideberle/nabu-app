@@ -1,0 +1,48 @@
+{
+  "id": "stew",
+  "name": "Stew",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Serve with a side of your choice, such as: steamed rice, boiled/fried plantain, sweet potatoes, boiled yam, etc.",
+  "ingredients": [
+    {
+      "item": "sunflower oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "stew base",
+      "amount": "4 cups"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "finely chopped garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "1/2 teaspoon thyme",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add all the ingredients except the meat alternative into a pot, bring to a boil then simmer on medium heat for 15-20 minutes. Add the meat alternative and cook for a further 5 minutes.",
+    "Serve with a side of your choice, such as: steamed rice, boiled/fried plantain, sweet potatoes, boiled yam, etc."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

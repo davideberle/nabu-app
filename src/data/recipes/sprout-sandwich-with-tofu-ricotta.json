@@ -1,0 +1,96 @@
+{
+  "id": "sprout-sandwich-with-tofu-ricotta",
+  "name": "Sprout Sandwich with Tofu Ricotta",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "baby spinach, packed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sun-dried tomatoes packed in oil, drained (save the oil)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Pinch of garlic powder",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "oil or reserved oil from the sun-dried tomatoes",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and crumbled",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "slices sprouted grain bread",
+      "amount": "4"
+    },
+    {
+      "item": "alfalfa sprouts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Roma tomato, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "slices red onion",
+      "amount": "2"
+    },
+    {
+      "item": "Pinch of garlic powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place all the pesto ingredients in a small food processor, starting with the spinach. Process until well blended.",
+    "Place all the ricotta ingredients in a small food processor. Process until well blended.",
+    "Spread a thick layer of the tofu ricotta on two bread slices. Spread pesto on the other two bread slices. Divide the sprouts, tomato, and onion and place on the ricotta. Top with the pesto slice. Slice each sandwich into fourths in triangle shapes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

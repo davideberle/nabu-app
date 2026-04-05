@@ -1,0 +1,306 @@
+{
+  "id": "plain-white-rice",
+  "name": "Plain white rice",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "Thai fragrant rice 1 quart (1.1 liters) water",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "Thai fragrant rice",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "quart (1.1 liters) water",
+      "amount": "1"
+    },
+    {
+      "item": "sushi rice 3⅓ cups (800ml) water",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "sushi rice",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "water",
+      "amount": "3⅓ cups (800ml)"
+    },
+    {
+      "item": "Thai fragrant rice or sushi rice ½ tsp salt 2 tsp cooking oil 2½ quarts (2.4 liters) water",
+      "amount": "¾ cup (150g)"
+    },
+    {
+      "item": "Thai fragrant rice or sushi rice",
+      "amount": "¾ cup (150g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "quarts (2.4 liters) water",
+      "amount": "2½"
+    },
+    {
+      "item": "sushi rice",
+      "amount": "¾ cup (150g)"
+    },
+    {
+      "item": "quarts (2.5 liters) chicken stock (see here)",
+      "amount": "2½"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "small red onion",
+      "amount": "½"
+    },
+    {
+      "item": "salt pork, pancetta or unsmoked bacon",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "green bok choy (3–4 heads)",
+      "amount": "10 oz (275g)"
+    },
+    {
+      "item": "cooked and cooled sushi rice (1½ cups /300g when uncooked)",
+      "amount": "3 cups (600g)"
+    },
+    {
+      "item": "cooking oil, preferably lard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "small peeled shrimp, fresh or frozen, cooked or uncooked",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "cooked chicken",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "bamboo shoot (optional)",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "3"
+    },
+    {
+      "item": "large egg, plus an egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "cold, cooked Thai fragrant rice (1 cup/250g when uncooked)",
+      "amount": "2½ cups (600g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "fresh or frozen peas or cooked green soybeans",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "1 cup (200ml)"
+    },
+    {
+      "item": "sushi or Thai fragrant rice",
+      "amount": "1 cup (250g)"
+    },
+    {
+      "item": "bacon (smoked or unsmoked) or pancetta",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "shelled, skinned fava beans (about ¾ lb/350–400g in their pods)",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "leftover cooked rice",
+      "amount": "½ cup (100g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh shiitake mushrooms",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "leftover cooked rice (¾ cup/150g when uncooked)",
+      "amount": "1¼ cups (300g)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "4"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "large egg",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "papery dried shrimp",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Korean sliced rice cake",
+      "amount": "¾ lb (350g)"
+    },
+    {
+      "item": "stock or water",
+      "amount": "¾ cup (150ml)"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "lbs (600g) small clams, in their shells",
+      "amount": "1⅓"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "Korean rice cake strips",
+      "amount": "¾ lb (350g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "½ oz (15g)"
+    },
+    {
+      "item": "pork tenderloin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green bok choy",
+      "amount": "10 oz (275g)"
+    },
+    {
+      "item": "glutinous rice flour",
+      "amount": "1 cup (250g)"
+    },
+    {
+      "item": "quart (1 liter) chicken stock",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil or lard",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Put the rice in a bowl, cover it with cold water and use your hand to swirl it around. Drain and repeat until the water is clear. Tip into a sieve and leave to drain completely.",
+    "Put the rice in a heavy-bottomed pan with the measured water and bring to the boil over a high flame. Stir to dislodge any grains sticking to the bottom, then boil for a few minutes until the surface of the rice is dry and covered in little round breathing holes. Cover the pan tightly, turn the heat down as low as possible and cook for 12–15 minutes, until tender.",
+    "Serve your congee with a strong, salty relish, such as cubes of fermented tofu, a dish of pickles (homemade or bought in easy sachets in a Chinese shop) or hard-boiled salted duck eggs. If you like, add steamed buns, sweet or savory, reheated leftover dishes or fried peanuts.",
+    "Bring the measured water to the boil in a heavy-bottomed pan over a high flame, add the rice, return to the boil, partially cover the pan with a lid and simmer gently for about 1½ hours, stirring the mixture from time to time. After a while the rice grains will burst open; by the end of the cooking they will have melted into the water to form one soft mass. Serve the congee with your choice of accompaniments.",
+    "Serve the congee with a sprinkling of soy sauce, spring onion and ginger and a few drips of sesame oil. If you want to be really Shanghainese, eat it with a dish of white-chopped chicken and soy sauce for dipping (see here).",
+    "Cover the shiitake mushrooms in boiling water and leave to soak for half an hour. Finely chop the onion. Remove any rind from the pork and chop it into dice. Remove the mushroom stalks and dice the caps. Chop the green bok choy a little more coarsely than the other ingredients. Break the rice up into small clumps to make stir-frying easier.",
+    "Heat the cooking oil in a seasoned wok over a medium flame. Add the pork and onion and stir-fry gently until the onion is tender and the pork has released its oil and is fragrant but not browned. Add the mushrooms and ginger, turn up the heat to high and stir-fry briefly until fragrant.",
+    "Cover the shiitake mushrooms in boiling water and leave to soak for half an hour, then remove the stalks. Cut the pork, shrimp, ham, chicken, mushoom caps and bamboo shoot, if using, into small dice. Thinly slice the spring onion greens. Beat the egg and egg yolk with a little salt and pepper. Break the rice up into small clumps to make it easier to fry.",
+    "Heat 2 tablespoons of the oil in a seasoned wok over a high flame. Add the pork and shrimp and stir-fry briefly until the pork is pale. Add the ham, chicken, mushrooms, peas or beans and bamboo shoot, if using, and continue to stir-fry for 1–2 minutes, until everything is hot and sizzling. Add the Shaoxing wine, then pour in the stock and bring to the boil. Season with salt, then pour off into a bowl and set aside.",
+    "Heat the oil in a seasoned wok or an omelet pan over a high flame. Pour in the egg mixture and swirl it around the base of the pan. Reduce the heat to medium, cover and fry until the under side is golden. Flip the omelet over.",
+    "Remove the mushroom stalks and thickly slice the caps. Chop the bok choy into bite-sized pieces. Heat the lard or cooking oil in a seasoned wok over a high flame. Add the mushrooms and stir-fry until softened; add the bok choy and continue to stir-fry until just wilted. Set aside.",
+    "Bring the stock to the boil in a wok or saucepan. Add the leftover rice, breaking up any clumps, bring to the boil again and cook until just heated through. Stir in the bok choy and mushrooms and season with salt and pepper. Serve.",
+    "Stir-fried rice cake with scrambled egg and dried shrimp",
+    "Cover the shiitake mushrooms in boiling water and leave to soak for at least half an hour. Drain well, remove the stalks and slice the caps into slivers. Cut the green bok choy across the leaves into ½ in (1cm) ribbons. Beat the egg in a small bowl.",
+    "Heat 1 tablespoon of the oil in a seasoned wok over a high flame. Add the egg and stir-fry until barely cooked; remove from the wok and set aside. Return the wok to a high flame with another tablespoon of oil. Add the papery dried shrimp and stir-fry briefly until crisp and fragrant; set aside.",
+    "Stir-fried rice cake with fresh clams",
+    "Slice the bok choy widthways into ½ in (1cm) strips (if you are using small baby bok choy, simply cut them in half lengthways). Smack the spring onion whites with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
+    "Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry until they smell wonderful. Add the bok choy, stir once or twice, tip in the drained rice cake slices and stir-fry until the bok choy has wilted. Add the clam meat and cooking liquor, leaving any grit in the saucepan. Stir briefly to incorporate and season with salt and pepper. Serve.",
+    "Cut the pork into slivers and put it in a bowl with ⅛ teaspoon salt and the Shaoxing wine. Mix well. Trim the bok choy and cut it into bite-sized pieces.",
+    "Put the glutinous rice flour in a bowl. Add ¾–1 cup (175–200ml) warm water—just enough to make a cohesive but fairly stiff dough. Knead until smooth. Roll the dough into 2 or 3 cylinders around ½ in (3cm) in diamater. Cut or break off 1–1½ in (2–3cm) pieces and roll them into balls. Flatten each ball between the palms of your hands, then press your index finger into the centers to make deep dimples.",
+    "Bring a pan of water to the boil. Add the dumplings, stir once to prevent sticking, then boil for about 2 minutes, until they float to the surface. Remove with a slotted spoon, place in a bowl of cold water and set aside.",
+    "Bring the stock to the boil and keep warm. Heat 1 tablespoon of the oil in a seasoned wok over a high flame, add the pork and stir-fry until just cooked. Set aside. Heat the remaining oil in the wok, add the ginger and stir-fry until it smells delicious. Add the stock and the bok choy, bring to the boil and season with salt and white pepper (remember that the dumplings are unseasoned, so the soup should be well salted). Add the dumplings and pork strips, boil to heat through, then serve."
+  ]
+}

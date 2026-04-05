@@ -1,0 +1,56 @@
+{
+  "id": "tempeh-chickpea-stuffed-mini-peppers",
+  "name": "Tempeh Chickpea Stuffed Mini Peppers",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "multi-colored sweet mini peppers",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "15-ounce cans chickpeas, drained and rinsed",
+      "amount": "2"
+    },
+    {
+      "item": "tempeh, chopped",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "dairy-free mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ground mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Cut off the stem end of the peppers. Slice lengthwise. Remove any seeds that are inside. Set aside.",
+    "Place all the remaining ingredients in a food processor. Pulse four or five times. The chickpeas should be chunky. Remove the blade and stir to make sure the mixture is blended well.",
+    "Stuff each pepper half full with about 2 tablespoons of the chickpea mixture. Set on a plate to serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

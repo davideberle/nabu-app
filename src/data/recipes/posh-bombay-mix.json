@@ -1,0 +1,51 @@
+{
+  "id": "posh-bombay-mix",
+  "name": "POSH BOMBAY MIX",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 as a snack",
+  "intro": "Delicious served with drinks before a meal, you simply have to try this posh Bombay mix (shown on pictured). This one really packs a punch! Use the Bombay mix of your choice. You’ll find the best selection at Asian grocers, but it is also available in supermarkets. If eating gluten-free is important, be sure to check the bag, as some can contain gluten.",
+  "ingredients": [
+    {
+      "item": "A few large handfuls of your Bombay mix of choice",
+      "amount": ""
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "1–2"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) stems",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "tomato, deseeded and diced",
+      "amount": "½"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Using a cocktail mixer or any container with a firm-fitting lid, add your favourite Bombay mix along with the rest of the ingredients. Close the lid and shake hard. Eat immediately or the Bombay mix will get soggy."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "balti-dhal-fry",
+  "name": "BALTI DHAL FRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 2",
+  "intro": "This recipe is a balti so I only cook it to serve one or two people. Authentic British baltis are cooked in a stainless steel balti pan over a high heat and then served in the same pan they were cooked in. That’s how I hope you serve this too. There’s just something about dipping fresh naans into a flaming hot balti pan laden with delicious sizzling curry. If you don’t have a balti pan, do make this anyway!",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cloves",
+      "amount": "2"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "onion, very finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "large tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) stalks",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3–4"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cooked chana dhal",
+      "amount": "200g (1 cup)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Coriander (cilantro), to garnish (optional)",
+      "amount": ""
+    },
+    {
+      "item": "ghee, vegetable ghee or rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Kashmiri dried red chillies",
+      "amount": "3"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch of asafoetida*",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Melt the coconut oil in a saucepan over a high heat. When it is good and hot, stir in the cloves and cinnamon stick. Let the spices temper into the oil for about 30 seconds and then add the chopped onion. Fry for about 2 minutes, then add the green chillies. Stir well and add the tomato and coriander (cilantro) stalks followed by the garlic and ground spices. Stir in the cooked dhal and simmer over a low heat while you make the tarka.",
+    "Melt the ghee or oil in another pan. When visibly hot, add the Kashmiri chillies, cumin seeds and asafoetida. Allow to sizzle for about 30 seconds, then pour it all over the dhal.",
+    "Season to taste with salt and black pepper, and garnish with coriander (if using)."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

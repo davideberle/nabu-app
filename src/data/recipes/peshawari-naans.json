@@ -2,15 +2,14 @@
   "id": "peshawari-naans",
   "name": "PESHAWARI NAANS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "makes enough to serve 8–10",
-  "intro": "Peshawari naans take some experimentation to get right. I don’t really have a sweet tooth, so if they’re too sweet, I just don’t like them. That is of course not the case with many people, who love them very sweet.",
+  "intro": "Peshawari naans take some experimentation to get right. I don’t really have a sweet tooth, so if they’re too sweet, I just don’t like them. That is of course not the case with many people, who love them very sweet. Therefore, please use this recipe as a guide. Feel free to adjust it to your own tastes when making the paste. With a bit of practice, you will find a recipe that is exactly as you want your Peshawari naans to be.",
   "ingredients": [
     {
-      "item": "quantity naan dough, ready to shape",
+      "item": "quantity naan dough (see authentic naans*), ready to shape",
       "amount": "1"
     },
     {
@@ -26,8 +25,8 @@
       "amount": ""
     },
     {
-      "item": "(2½ cups) almond flakes",
-      "amount": "200g"
+      "item": "almond flakes",
+      "amount": "200g (2½ cups)"
     },
     {
       "item": "desiccated coconut",
@@ -48,11 +47,10 @@
   ],
   "method": [
     "First make the paste. In a food processor, blend the almond flakes, coconut, cream, sugar and sultanas (golden raisins) until they form a thick paste. You may need to add more cream if it is too crumbly, or more almond flakes if too wet. Remove from the processor and knead into a pliable dough-like paste.",
-    "Pull off a ball of naan dough the size of a tennis ball, flatten slightly and place a piece of Peshawari slightly larger than a golf ball in the middle of the dough.",
+    "Pull off a ball of naan dough the size of a tennis ball, flatten slightly and place a piece of Peshawari paste slightly larger than a golf ball in the middle of the dough.",
     "Fold the naan dough around the paste and roll out following the method for plain naan. Cook in a hot, dry frying pan in the same way, then brush with ghee and sprinkle with sesame seeds to finish.",
     "Keep warm while you cook the rest of the naans."
   ],
-  "image": null,
   "dietary": [
     "vegetarian"
   ]

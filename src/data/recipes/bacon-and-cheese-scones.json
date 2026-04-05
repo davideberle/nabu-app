@@ -1,0 +1,64 @@
+{
+  "id": "bacon-and-cheese-scones",
+  "name": "Bacon and Cheese Scones",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "½ cups all-purpose flour",
+      "amount": "1"
+    },
+    {
+      "item": "¼ cups whole wheat flour",
+      "amount": "1"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "unsalted butter, cold and diced",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "cheddar cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cooked bacon, crumbled",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "diced chives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "buttermilk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large egg, room temperature",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat oven to 400°F (204°C). Line a baking sheet with parchment paper.",
+    "In a large mixing bowl, combine the flours, baking powder, salt, pepper, and sugar.",
+    "Stir in the butter, cheddar cheese, bacon, chives, buttermilk and egg.",
+    "Using your hands, knead a dough from the mixture.",
+    "Roll the dough out into a rectangular shape ½ -inch thick. Cut the dough into 12 triangles.",
+    "Arrange the triangles on the prepared baking sheet. Bake for 20 minutes or until golden-brown.",
+    "Serve warm."
+  ]
+}

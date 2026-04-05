@@ -1,0 +1,41 @@
+{
+  "id": "chocolate-macchiato",
+  "name": "Chocolate Macchiato",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 1 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "ground espresso coffee",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "hot water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chocolate sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Cocoa powder for dusting",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Brew the espresso in a coffee machine.",
+    "Warm the milk in a small saucepan and froth it with a milk frother.",
+    "Add the brewed coffee to a serving glass and mix it with the chocolate sauce and vanilla.",
+    "Add the milk foam on top. Dust with cocoa powder and serve."
+  ]
+}

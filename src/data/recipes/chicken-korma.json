@@ -2,19 +2,18 @@
   "id": "chicken-korma",
   "name": "CHICKEN KORMA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "There are hundreds of recipes for authentic Indian korma. Korma, which means ‘braising’ in Hindi, is actually a style of cooking where meat and vegetables are braised in a sealed pot with a little liquid. The sauce can be creamy, nutty and mild like our British kormas but they can also be quite spicy and cooked in stock or water. What we know as a korma may share the same name but it isn’t really a korma at all.",
   "ingredients": [
     {
-      "item": "ghee, rapeseed oil or seasoned oil",
+      "item": "ghee, rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
-      "item": "2.5cm (1 in) piece of cinnamon stick or cassia bark",
+      "item": "2.5cm (1in) piece of cinnamon stick or cassia bark",
       "amount": ""
     },
     {
@@ -38,27 +37,27 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "(3 cups) base curry sauce",
-      "amount": "700ml"
+      "item": "base curry sauce (see quick and easy base cury sauce), heated",
+      "amount": "700ml (3 cups)"
     },
     {
-      "item": "(3½ oz) block coconut or 4 extra tbsp coconut flour",
-      "amount": "100g"
+      "item": "block coconut",
+      "amount": "100g (3½ oz)"
     },
     {
-      "item": "(1¾ lb) raw chicken breast, cut on the diagonal into 5mm (¼ in) slices, or pre-cooked stewed chicken",
-      "amount": "800g"
+      "item": "raw chicken breast, cut on the diagonal into 5mm (¼in) slices, or pre-cooked stewed chicken",
+      "amount": "800g (1lb 12oz)"
     },
     {
       "item": "garam masala",
       "amount": "1 tbsp"
     },
     {
-      "item": "(½ cup) single (light) cream, plus a little more to finish",
-      "amount": "125ml"
+      "item": "single (light) cream, plus a little extra to finish",
+      "amount": "125ml (½ cup)"
     },
     {
-      "item": "rose water or to taste",
+      "item": "rose water, or to taste",
       "amount": "1 tbsp"
     },
     {
@@ -66,14 +65,12 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "Salt",
+      "item": "Salt, to taste",
       "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large frying pan over a medium heat. When small bubbles begin to appear, toss in the cinnamon stick and cardamom pods. Let the whole spices flavour the oil for about 30 seconds then stir in the garlic and ginger paste. Fry for about 20 seconds before adding the sugar, ground almonds and coconut flour. Mix into the oil and pour in about 250ml (1 cup) of the base curry sauce; it will bubble up nicely. Break up the block coconut, if using block, and add it to the simmering sauce. It will dissolve and give your korma a nice light yellow tone.",
-    "Pour in the rest of the base curry sauce, then add the chicken. If using raw chicken, press it right into the sauce so that it cooks quickly and evenly. You can add a little more base curry sauce if you need to, as it will boil down anyway. Swirl in the garam masala.",
-    "When your chicken is cooked/heated through, remove the cardamom pods and cinnamon, and stir in the cream. Add the rose water and finish with the butter, if you want. Season with salt to taste and check the sweetness, adding more sugar if needed."
-  ],
-  "image": "/recipes/chicken-korma.jpg"
+    "Heat the ghee or oil in a large frying pan over a medium heat. When small bubbles begin to appear, toss in the cinnamon stick or cassia bark and cardamom pods. Let the whole spices flavour the oil for about 30 seconds, then stir in the garlic and ginger paste. Fry for about 20 seconds before adding the sugar, ground almonds and coconut flour. Mix into the oil and pour in about 250ml (1 cup) of the base curry sauce; it will bubble up nicely. Break up the block coconut and add it to the simmering sauce. It will dissolve and give your korma a nice light yellow tone.",
+    "Pour in the rest of the base curry sauce, then add the chicken. If using raw chicken, press it right into the sauce so that it cooks quickly and evenly. You can add a little more base curry sauce if you need to, as it will boil down anyway. Swirl in the garam masala."
+  ]
 }

@@ -1,0 +1,47 @@
+{
+  "id": "sweet-ricotta",
+  "name": "Sweet Ricotta",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "very fresh organic egg yolks",
+      "amount": "4"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "60 g"
+    },
+    {
+      "item": "fresh ricotta",
+      "amount": "500 g"
+    },
+    {
+      "item": "Nocino (walnut liqueur) or vin santo (see Variation)",
+      "amount": "125 ml"
+    },
+    {
+      "item": "cream",
+      "amount": "300 ml"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "80 g"
+    },
+    {
+      "item": "cream",
+      "amount": "50 ml"
+    },
+    {
+      "item": "walnut halves",
+      "amount": "12"
+    }
+  ],
+  "method": [
+    "Serves 4 4 very fresh organic egg yolks 60 g caster sugar 500 g fresh ricotta 125 ml Nocino (walnut liqueur) or vin santo (see Variation) 300 ml cream CARAMELISED WALNUTS 80 g caster sugar 50 ml cream 12 walnut halves",
+    "In a separate bowl, beat the cream until stiff, then fold the cream into the ricotta mixture."
+  ]
+}

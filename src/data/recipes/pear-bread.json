@@ -1,0 +1,85 @@
+{
+  "id": "pear-bread",
+  "name": "Pear Bread",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "unbleached plain flour",
+      "amount": "300 g"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "4 teaspoons"
+    },
+    {
+      "item": "dry yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "warm milk",
+      "amount": "150 ml"
+    },
+    {
+      "item": "dried pears, soaked overnight in 100 ml merlot",
+      "amount": "250 g"
+    },
+    {
+      "item": "each dried figs, pitted prunes and pitted dates",
+      "amount": "60 g"
+    },
+    {
+      "item": "each currants, sultanas, almonds, hazelnuts and walnuts",
+      "amount": "50 g"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "50 g"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "each ground cloves, ground cardamom and ground coriander",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Nocino liqueur or kirsch",
+      "amount": "100 ml"
+    },
+    {
+      "item": "rosewater",
+      "amount": "50 ml"
+    },
+    {
+      "item": "organic egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "milk or cream",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Place all the dough ingredients in a food processor and process using a dough hook for 5–10 minutes, until the dough is shiny and slightly elastic (when you press a finger into the dough, the impression should spring back slowly). You may need to add a little more milk if the dough seems too dry or more flour if too wet. Transfer the dough to a bowl, cover with a cloth and leave in a warm place for about 1 hour, or until it has doubled in size.",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Place all the filling ingredients in a food processor and mix until you get a thick mass, ideally with some small chunks of fruit and nuts remaining.",
+    "Combine the egg wash ingredients and brush over the loaf. Pierce holes all over the loaf with a fork. With the left-over dough you can make small decorations to go on top of the birebrot.",
+    "Bake the bread in the oven for about 20 minutes, or until the crust is golden-brown."
+  ]
+}

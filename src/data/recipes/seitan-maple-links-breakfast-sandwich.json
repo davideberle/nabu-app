@@ -1,0 +1,48 @@
+{
+  "id": "seitan-maple-links-breakfast-sandwich",
+  "name": "Seitan Maple Links Breakfast Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links (page 276)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "English muffins, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "Condiments of choice",
+      "amount": ""
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Heat the oil over medium-high heat in a large skillet. Add the mushrooms and sauté for about 15 minutes. Remove mushrooms from the pan and set aside.",
+    "Add the butter to the pan at medium-high heat. Add the links to the pan and brown on all sides for about 5 minutes total. If you made the larger size of links, then slice lengthwise through the center and fry that way. The links are already cooked all the way through and they can be enjoyed cold, but this finishes off the sandwich nicely.",
+    "While the links are browning, toast the English muffins and spread with your favorite condiments, such as dairy-free chipotle mayo. Layer on the sautéed mushrooms, links, and avocado. Top with English muffin slice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

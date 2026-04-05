@@ -1,0 +1,66 @@
+{
+  "id": "artichoke-quinoa-dip",
+  "name": "Artichoke Quinoa Dip",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baby spinach, with stems chopped off",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "artichoke hearts in water, drained",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Place quinoa in a sieve and rinse well. Combine quinoa and 1 cup water in a small saucepan. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the liquid is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove lid and fluff.",
+    "Heat the oil in a large skillet over medium-high heat. Add the onion and sauté over medium heat for 10 minutes. Stir in the spinach and cook until wilted, about a minute or so. Add the hempseed and spices and stir in quickly. Remove from the heat.",
+    "Cut off the top of the artichoke hearts. Discard the toughest of the outside leaves.",
+    "Add everything to a food processor. Process until well combined and chopped very small.",
+    "Serve with homemade pita chips (see note)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

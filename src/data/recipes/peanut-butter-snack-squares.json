@@ -1,0 +1,66 @@
+{
+  "id": "peanut-butter-snack-squares",
+  "name": "Peanut Butter Snack Squares",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "creamy peanut butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "garbanzo flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dates, pitted and chopped small",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Lightly grease an 8-inch square baking dish.",
+    "Mix the sugar and peanut butter with a hand or stand mixer on medium speed for 5 minutes. Mix in the vanilla. Add the flours, baking soda, and baking powder and mix on medium speed. Add the oats and mix for a few seconds. This will be stiff. Add the milk and mix on medium until just combined.",
+    "Fold in the peanuts and dates and make sure everything is well incorporated.",
+    "You can use your hands to press the dough lightly into the prepared dish. Bake for 15 to 20 minutes or until lightly golden brown.",
+    "Place on a wire rack to cool. Cut into sixteen squares and store in the refrigerator."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "ewedu",
+  "name": "Ewedu",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "[approx. 50g] fresh or frozen ewedu leaves (washed and drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "iru (fermented locust beans)",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Place the ewedu leaves, water and iru in a blender and blend for 1-2 minutes until the ewedu has broken down into very tiny pieces.",
+    "Pour the ewedu into a pot and season with salt to taste. Cook for 2-3 minutes on high heat until it starts bubbling then take oﬀ the heat immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

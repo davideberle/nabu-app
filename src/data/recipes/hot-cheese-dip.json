@@ -1,0 +1,43 @@
+{
+  "id": "hot-cheese-dip",
+  "name": "Hot Cheese Dip",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "300 ml"
+    },
+    {
+      "item": "coarsely grated Gruyère",
+      "amount": "200 g"
+    },
+    {
+      "item": "coarsely grated Emmental",
+      "amount": "200 g"
+    },
+    {
+      "item": "kirsch",
+      "amount": "50 ml"
+    },
+    {
+      "item": "cornflour (optional, but it helps bind the sauce)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "organic egg (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 1 clove garlic 300 ml dry white wine 200 g coarsely grated Gruyère 200 g coarsely grated Emmental 200 g vacherin cheese (such as vacherin à fondue, but not Vacherin Mont d’Or; if you can’t find vacherin, increase Gruyère and Emmental to 300 g each) 50 ml kirsch 2 tablespoons cornflour (optional, but it helps bind the sauce) freshly grated nutmeg ground black pepper loaf of Italian ciabatta bread, cut into bite-sized pieces 1 organic egg (optional)",
+    "Put the fondue pan in the middle of the table over a flame to keep the liquid lightly bubbling. With a fork, each person should spear a piece of bread and dip it into the fondue."
+  ]
+}

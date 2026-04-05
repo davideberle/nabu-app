@@ -1,0 +1,55 @@
+{
+  "id": "savory-quinoa-breakfast-cups",
+  "name": "Savory Quinoa Breakfast Cups",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "plus 3 tablespoons quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "spinach",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "½ cup"
+    },
+    {
+      "item": "milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Place the quinoa in a sieve and rinse well. In a small saucepan, combine quinoa and 1 cup plus 2 tablespoons water. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the liquid is absorbed. Remove from the heat and let set with the cover on for 5 minutes. Remove the lid and fluff.",
+    "Preheat the oven to 375°F.",
+    "Place paper muffin cups in a six-cup muffin tin.",
+    "Place spinach and mushrooms in a food processor and process until finely chopped.",
+    "Add all the ingredients to a large bowl and mix well.",
+    "Divide the mixture between muffin cups. Bake for 20 to 25 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

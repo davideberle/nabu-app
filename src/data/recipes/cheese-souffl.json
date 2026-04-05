@@ -1,0 +1,32 @@
+{
+  "id": "cheese-souffl",
+  "name": "Cheese Soufflé",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "unbleached plain flour",
+      "amount": "50 g"
+    },
+    {
+      "item": "grated Gruyère sea salt and ground black pepper",
+      "amount": "200 g"
+    },
+    {
+      "item": "organic eggs, separated",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Serves 4 50 g unsalted butter 50 g unbleached plain flour about 500 ml hot milk 200 g grated Gruyère sea salt and ground black pepper 4 organic eggs, separated",
+    "Preheat the oven to 180°C (gas mark 4). Butter a soufflé dish and put a collar of greaseproof paper around the rim of the dish.",
+    "Make a béchamel by melting the butter in a saucepan. Add the flour and stir well, letting it cook for a few minutes (be careful that it doesn’t brown). Slowly add the hot milk, whisking vigorously so that no lumps form. When it has become the consistency of thick cream, turn off the heat and add the cheese, salt and pepper. Stir well until the cheese has melted. Add 1 egg yolk at a time to the sauce, mixing until well incorporated."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "walser-nut-bread",
+  "name": "Walser Nut Bread",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "rye flour",
+      "amount": "150 g"
+    },
+    {
+      "item": "warm water",
+      "amount": "200 ml"
+    },
+    {
+      "item": "natural yoghurt (with acidophilus)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dry yeast",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "warm water",
+      "amount": "100 ml"
+    },
+    {
+      "item": "wholemeal spelt flour",
+      "amount": "200 g"
+    },
+    {
+      "item": "rye flour",
+      "amount": "200 g"
+    },
+    {
+      "item": "whole rye grains, soaked in water overnight, drained",
+      "amount": "150 g"
+    },
+    {
+      "item": "walnuts, broken into pieces",
+      "amount": "100 g"
+    },
+    {
+      "item": "salt",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "Makes a loaf of about 1 kg SOURDOUGH STARTER 150 g rye flour 200 ml warm water 1 tablespoon natural yoghurt (with acidophilus) BREAD 2 tablespoons dry yeast 1 tablespoon honey 100 ml warm water 200 g wholemeal spelt flour 200 g rye flour 150 g whole rye grains, soaked in water overnight, drained 100 g walnuts, broken into pieces 2 teaspoons salt",
+    "Combine the starter ingredients in a bowl and cover with a cloth. Leave in a warm place for 2–3 days, stirring from time to time, until it starts to froth.",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Bake the bread for 20–25 minutes. To test if it is done, tap on the underside; it should sound hollow. Cool the bread on a rack."
+  ]
+}

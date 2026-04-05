@@ -2,16 +2,15 @@
   "id": "lamb-seekh-kebabs",
   "name": "LAMB SEEKH KEBABS",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "How can you not love a good, grilled lamb seekh kebab? They’re great on their own, simply dipped into a spicy raita or two and even more delicious wrapped into a homemade naan with lots of crispy cold salad. I’ve tried more complicated recipes but this is my ‘go to’ recipe. Use the best quality minced meat you can find and the rest of the ingredients will bring out its natural flavour to perfection.",
+  "intro": "How can you not love a good grilled lamb seekh kebab? They’re great on their own, simply dipped into a spicy raita or chutney or two, and even more delicious wrapped into a hot homemade naan with lots of crispy cold salad. They are especially good with the mint, coriander and mango chutney.",
   "ingredients": [
     {
-      "item": "(2¼ lb) lean minced lamb",
-      "amount": "1kg"
+      "item": "lean minced (ground) lamb",
+      "amount": "1kg (2lb 3oz)"
     },
     {
       "item": "egg",
@@ -26,7 +25,7 @@
       "amount": "2"
     },
     {
-      "item": "freshly roasted ground coriander (see Spice Blends)",
+      "item": "freshly roasted ground coriander (see ground spices and spice blends)",
       "amount": "1 tbsp"
     },
     {
@@ -43,9 +42,8 @@
     }
   ],
   "method": [
-    "Place the lamb mince in a large bowl. Mix in the remaining ingredients and begin kneading the mixture with your hands. When all the ingredients are nicely mixed, begin pressing down on the meat, scraping it against the bottom of the bowl. The meat should streak against the bottom of the bowl, giving a ‘lace’ texture (see above), which will take about 5 minutes of kneading.",
+    "Place the minced lamb in a large bowl. Mix in the remaining ingredients and begin kneading the mixture with your hands. When all the ingredients are nicely mixed, begin pressing down on the meat, scraping it against the bottom of the bowl. The meat should streak against the bottom of the bowl, giving a ‘lace’ texture (see above), which will take about 5 minutes of kneading.",
     "Form the mixture into meatballs the size of tennis balls. Slide a meatball onto a large, flat skewer and squeeze with a wet hand into a sausage shape around the skewer. Turn the skewer over and do the same, squeezing again with your hand to make it longer. Continue this process until you have a long kebab with visible finger marks that is securely on the skewer. Repeat with the rest of the meat mixture.",
-    "Heat your barbecue using the direct heat method then place the kebabs over the heat. Char well on one side then flip them over and do the same on the other side. When nicely blackened and cooked through, serve with salad, raita and/or chutney (they are especially good with the mint, coriander and mango chutney). These are delicious served wrapped up in hot homemade naans. You could also pan-fry the kebabs, but I tend not to. It just isn’t the same."
-  ],
-  "image": "/recipes/lamb-seekh-kebabs.jpg"
+    "Heat the barbecue using the direct heat method, then place the kebabs over the heat. Char well on one side, then flip them over and do the same on the other side until nicely blackened and cooked through. You could also pan-fry the kebabs, but I tend not to. It just isn’t the same."
+  ]
 }

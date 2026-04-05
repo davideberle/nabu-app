@@ -1,0 +1,60 @@
+{
+  "id": "seitan-nuggets-rotelle",
+  "name": "Seitan Nuggets Rotelle",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "rotelle pasta",
+      "amount": "3 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Steamed Seitan Smoky Nuggets (page 283), cut into bite-size pieces if necessary",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cloves garlic, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "15-ounce can diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Scallions, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook rotelle according to directions on the package.",
+    "Meanwhile, heat the oil in a large skillet over medium-high heat. Add the onion and seitan and sauté for 10 minutes until the onion is translucent. Add the garlic and cook for another minute. Add the diced tomatoes, Italian seasoning, salt, and pepper. Raise to a boil and then turn down and simmer for 5 minutes. Add the cooked rotelle. Heat through for 5 minutes.",
+    "If you’d like, garnish with the scallions."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

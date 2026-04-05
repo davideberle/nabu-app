@@ -1,0 +1,28 @@
+{
+  "id": "asparagus-with-melted-butter-and-parmigiano",
+  "name": "Asparagus with Melted Butter and Parmigiano",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "bunches asparagus",
+      "amount": "3"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "150 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "100 g"
+    }
+  ],
+  "method": [
+    "Serves 4 3 bunches asparagus 150 g freshly grated parmigiano 100 g unsalted butter sea salt and ground black pepper",
+    "Cook the asparagus in an asparagus pan if you have one, or steam them. Do not overcook – make sure the stalks are still a little crunchy. Drain the asparagus and arrange on a heated serving dish.",
+    "Sprinkle the parmigiano on the tips of the asparagus. Melt the butter and, as soon as it is foaming, pour it over the parmigiano. (The heat of the butter will melt the cheese and make a delicious crust.) Add a little salt and pepper. Serve at once with some crunchy Italian ciabatta bread."
+  ]
+}

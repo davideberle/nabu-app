@@ -1,0 +1,55 @@
+{
+  "id": "southwest-scramble-breakfast-burrito",
+  "name": "Southwest Scramble Breakfast Burrito",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced red bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "Steamed Seitan Chipotle Links, crumbled (page 284)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "large sprouted grain tortillas",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Melt the butter in a large skillet over medium-high heat. Add the bell pepper and onion and sauté for 10 minutes. Crumble in the tofu along with the prepared seitan. Sauté for 5 minutes more and add the taco seasoning and salt. Sprinkle in flaxseed meal and mix well.",
+    "Spoon half the mixture into each tortilla and roll burrito-style. Cut in half and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

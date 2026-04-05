@@ -1,0 +1,41 @@
+{
+  "id": "dalgona-chocolate-iced-coffee",
+  "name": "Dalgona Chocolate Iced Coffee",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 1 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "instant coffee",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Ice cubes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the instant coffee, sugar, and water to a small bowl. Using a hand blender stick or a milk frother, whip the ingredients until fluffy and thick.",
+    "Pour the milk and cocoa powder into a blender and blitz until combined and smooth.",
+    "Fill a tall glass with ice cubes. Add the milk mixture to the glass, and top with the whipped coffee mixture.",
+    "Dust with cocoa powder before serving."
+  ]
+}

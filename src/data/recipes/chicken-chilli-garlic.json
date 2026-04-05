@@ -2,15 +2,14 @@
   "id": "chicken-chilli-garlic",
   "name": "CHICKEN CHILLI GARLIC",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Garlicky and spicy, chicken chilli garlic curries are one of my curry house favourites – I do love my garlic. I have experimented with this recipe many times and I think it’s a winner.",
+  "intro": "Garlicky and spicy, chicken chilli garlic curries are one of my curry-house favourites – I do love my garlic. I have experimented with this recipe many times and I think it’s a winner.",
   "ingredients": [
     {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -30,8 +29,8 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "(or more) fresh green chillies, sliced into thin rings, plus extra to serve (optional)",
-      "amount": "3"
+      "item": "fresh green chillies, sliced into thin rings, plus extra to serve (optional)",
+      "amount": "3 (or more)"
     },
     {
       "item": "chilli powder",
@@ -46,23 +45,23 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "(½ cup) tomato purée",
-      "amount": "125ml"
+      "item": "tomato purée",
+      "amount": "125ml (½ cup)"
     },
     {
-      "item": "(2 cups) base curry sauce, heated",
-      "amount": "500ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
     },
     {
-      "item": "(1¾ lb) tandoori chicken tikka plus 125ml (½ cup) pre-cooked stewed chicken stock or Spice stock",
-      "amount": "800g"
+      "item": "tandoori chicken tikka, plus 125ml (½ cup) pre-cooked stewed chicken stock or spice stock",
+      "amount": "800g (1lb 12oz)"
     },
     {
-      "item": "dried fenugreek (methi) leaves",
+      "item": "dried fenugreek leaves (kasoori methi)",
       "amount": "1 tsp"
     },
     {
-      "item": "Salt",
+      "item": "Salt, to taste",
       "amount": ""
     },
     {
@@ -76,10 +75,9 @@
   ],
   "method": [
     "Heat the oil in a pan over a medium heat and add the garlic slivers. It is very important not to burn the garlic, so watch the pan and move the slivers around in the pan until they become soft and are just beginning to brown.",
-    "Now add the onion and fry for about 3 minutes until soft and translucent, sprinkling a little salt over the onions to help release moisture. Stir in the garlic and ginger paste and chillies, and fry for about 20 seconds.",
-    "Increase the heat to medium-high, add the ground spices and tomato purée and sizzle for a further 30 seconds, stirring continuously. Add half the base curry sauce and bring to a rolling simmer. (You don’t need to stir the sauce unless it is obviously catching on the pan.) Be sure to scrape any sauce that caramelizes on the sides of the pan back into the sauce.",
-    "Pour in the rest of the base sauce, the chicken and cooking stock and let this bubble without disturbing until the chicken is heated through and your sauce consistency is how you like it.",
-    "Stir in the dried fenugreek leaves and check for seasoning, adding salt to taste. Sprinkle with the chopped coriander (cilantro), dried garlic flakes and a few more chilli rings, if you like."
-  ],
-  "image": "/recipes/chicken-chilli-garlic.jpg"
+    "Now add the onion and fry for a further 3 minutes until soft and translucent, sprinkling a little salt over the onions to help release moisture. Stir in the garlic and ginger paste and chillies, and fry for about 20 seconds.",
+    "Increase the heat to medium–high, add the ground spices and tomato purée and sizzle for a further 30 seconds, stirring continuously. Add half the base curry sauce and bring to a rolling simmer. (You don’t need to stir the sauce unless it is obviously catching on the pan.) Be sure to scrape any sauce that caramelizes on the sides of the pan back into the sauce.",
+    "Pour in the rest of the base sauce, the chicken and the cooking stock or spice stock, and let this bubble without disturbing until the chicken is heated through (about 2 minutes) and your sauce consistency is how you like it.",
+    "Stir in the dried fenugreek leaves (kasoori methi) and season with salt. Sprinkle with the coriander (cilantro), dried garlic flakes and a few more chilli rings, if you like."
+  ]
 }

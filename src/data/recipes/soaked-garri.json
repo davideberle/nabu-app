@@ -1,0 +1,35 @@
+{
+  "id": "soaked-garri",
+  "name": "Soaked Garri",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 1",
+  "intro": "Before you assemble this snack, you need to “wash” the garri first by placing it in a large bowl and covering it with a lot of water. Wait for any particles to rise to the top of the water and then drain oﬀ. Repeat this process 3-4 times until the water on top of the garri is mostly clear.",
+  "ingredients": [
+    {
+      "item": "1/2 cup garri",
+      "amount": ""
+    },
+    {
+      "item": "cold water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ice cubes (optional)",
+      "amount": "4"
+    },
+    {
+      "item": "1/4 cup roasted groundnut (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the cold water, sugar and ice cubes. Top with roasted groundnut for an extra crunch."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

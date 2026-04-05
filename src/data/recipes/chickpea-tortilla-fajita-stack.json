@@ -1,0 +1,93 @@
+{
+  "id": "chickpea-tortilla-fajita-stack",
+  "name": "Chickpea Tortilla Fajita Stack",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "yellow bell pepper, diced",
+      "amount": "1"
+    },
+    {
+      "item": "white mushrooms, diced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fajita seasoning",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "15-ounce can pinto beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Salsa, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix ground chia seeds with 3 tablespoons water. Set aside.",
+    "Add 1 cup water, the chickpea flour, chia seed mixture, salt, and cumin to a medium bowl.",
+    "Mix until just combined.",
+    "Add 2 tablespoons oil to an 8-inch skillet and heat to medium high.",
+    "Add ¼ cup chickpea batter and tilt the pan in a circular tilt to let the batter flow to cover the bottom of the pan, as you would a crepe.",
+    "Cook until golden brown and flip. Cook for another minute and remove to a plate. Continue until all the batter is gone and the tortillas are made.",
+    "Add the oil to a large skillet and heat to medium high. Add the onion, bell pepper, and mushrooms and sauté 10 to 15 minutes or until the onion is translucent. Add the tomatoes, fajita seasoning, salt, and pepper and cook for 5 minutes. Add the beans and hempseed. Heat through.",
+    "Layer the chickpea tortilla stack starting with one tortilla on a plate. Spoon on about ½ cup filling. Add another tortilla and ½ cup filling and continue until the filling is all gone. Top with a tortilla, salsa, and avocado. Cut into quarters in a pie shape and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

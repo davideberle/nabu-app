@@ -1,0 +1,92 @@
+{
+  "id": "caribbean-chili",
+  "name": "Caribbean Chili",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "green pepper, diced",
+      "amount": "1"
+    },
+    {
+      "item": "Roma tomatoes, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "carrots, diced",
+      "amount": "2"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "chili powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "allspice",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "15-ounce can kidney beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "ear corn, kernels cut from the cob",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet over medium-high heat and add the onion and bell pepper. Sauté until the onion is translucent, about 10 to 15 minutes.",
+    "Add the tomatoes, carrots, tomato paste, and ½ cup of water. Add the spices and herbs. Bring to a boil, cover, and turn down to simmer for 30 minutes.",
+    "Add the kidney beans and corn. Cook on a low simmer for another 15 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

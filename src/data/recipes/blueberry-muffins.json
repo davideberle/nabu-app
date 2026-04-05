@@ -1,0 +1,63 @@
+{
+  "id": "blueberry-muffins",
+  "name": "Blueberry Muffins",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "½ cups all-purpose flour",
+      "amount": "1"
+    },
+    {
+      "item": "almond flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "¼ cups fresh blueberries",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a muffin tin with muffin liners.",
+    "In a large mixing bowl, combine the flour, almond flour, baking powder, ground cinnamon, and salt.",
+    "Stir in the milk, vegetable oil, eggs, sugar, and vanilla extract.",
+    "Fold in the blueberries.",
+    "Transfer the batter to the prepared muffin tin. Bake for 20 minutes or until a toothpick inserted in the center comes out clean.",
+    "Serve warm."
+  ]
+}

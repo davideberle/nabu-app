@@ -1,0 +1,70 @@
+{
+  "id": "bronx-fried-oyster-mushrooms",
+  "name": "BRONX FRIED OYSTER MUSHROOMS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "So, you know how Kentucky has Kentucky fried chicken? Well, this is my Bronx fried oyster mushroom chicken, using oyster mushrooms because they taste just like chicken. This recipe is savory, and so crunchy you won’t tell that you’re not eating the real thing—trust me. It is perfect to make a soul plate or paired on top of my Savory Buttamilk Veggie Waffles, or just eat by itself because it’s that good. The options are endless. I add hot sauce to my batter but it doesn’t make it spicy; make sure you don’t skip that ingredient!",
+  "ingredients": [
+    {
+      "item": "oyster mushrooms",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "all-purpose flour, divided",
+      "amount": "4 cups (500 g)"
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "2 cups (485 ml)"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "¼ cup (60 ml)"
+    },
+    {
+      "item": "potato starch",
+      "amount": "3 tbsp (27 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Cajun seasoning",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt, plus more to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "4 cups (946 ml)"
+    }
+  ],
+  "method": [
+    "Wash your oyster mushrooms and peel them apart into wing-sized pieces. In a medium-sized bowl, combine 2 cups (250 g) of the flour, the nondairy milk and the hot sauce, and whisk thoroughly; this is your wet batter. In another medium-sized bowl, combine the remaining 2 cups (250 g) of flour, potato starch, garlic powder, Cajun seasoning, onion powder, oregano, paprika and salt, and whisk thoroughly; this is your dry batter.",
+    "In a large pot, heat your vegetable oil to 350°F (180°C). Using one hand, dip a piece of oyster mushroom into the wet batter and then, using your other hand dip the same piece into the dry batter. If you want it to be extra crispy, double batter it.",
+    "Working in batches, place the battered oyster mushrooms in the hot oil and fry for about 7 minutes, or until it is crispy and golden brown. When they are done cooking, transfer from the oil to a cooling rack. Sprinkle with a little salt, if desired. Serve them hot."
+  ],
+  "image": "/recipes/bronx-fried-oyster-mushrooms.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

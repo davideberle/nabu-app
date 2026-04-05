@@ -1,0 +1,79 @@
+{
+  "id": "smoky-tempeh-buddha-bowl",
+  "name": "Smoky Tempeh Buddha Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "small sweet potato, chopped into bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "dry quinoa",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "faux bacon-flavored tempeh",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "almond butter",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "tamari",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "red curry paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped purple cabbage",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F.",
+    "Place the sweet potatoes on a baking sheet. Drizzle the oil over the top and lightly toss. Sprinkle with salt. Bake for 30 to 35 minutes or until they can be easily pierced with a fork. Set aside.",
+    "Meanwhile, cook the quinoa. Place quinoa in a sieve and rinse well. In a small saucepan, combine quinoa and broth. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the broth is absorbed. Remove from the heat and let set with the cover on for 5 minutes.",
+    "Cut the tempeh into ¼-inch slices and then cube.",
+    "Mix all the ingredients together in a small bowl until smooth and well combined.",
+    "Fill each salad bowl with the spinach. Make a decorative rim with the spinach tips if so desired. Divide the quinoa and vegetables between the two bowls and lay in a circle: peppers, quinoa, cabbage, sweet potatoes, and lastly, tempeh. Drizzle the dressing in a circle over all."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

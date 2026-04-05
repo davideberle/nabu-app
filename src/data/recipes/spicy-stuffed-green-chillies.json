@@ -1,0 +1,62 @@
+{
+  "id": "spicy-stuffed-green-chillies",
+  "name": "SPICY STUFFED GREEN CHILLIES",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Green chillies stuffed with spiced gram flour? You’re just going to have to trust me here if you don’t already know how good these are! These stuffed chillies make the perfect appetizer.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "125ml (½ cup)"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "100g (heaped ¾ cup)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt (I use just under 1 tsp)",
+      "amount": ""
+    },
+    {
+      "item": "long green chillies",
+      "amount": "350g (12½ oz)"
+    },
+    {
+      "item": "Raita or coconut chutney, to serve (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat 1 teaspoon of the oil in a large frying pan over a medium–high heat. Tip in the flour and work it with a whisk or fork in the pan so that it toasts evenly. The flour is ready after about 2 minutes when fragrant and lightly browned. Don’t worry if you see small balls of untoasted gram flour. Break them up as best you can, but any remaining are fine.",
+    "Add the turmeric, chilli powder, cumin, coriander, amchoor and salt and transfer to a mixing bowl. Pour in 70ml (¼ cup) of water and work with your hands into a thick paste.",
+    "Slit the green chillies down the middle and remove most of the seeds with your thumb. Stuff the chillies with the gram flour paste.",
+    "Heat the remaining oil in a frying pan over a low heat. Fry the chillies for 2–3 minutes until browned all over. You should see a few blackened spots and blisters on the chillies. Serve immediately on their own or with a good raita or coconut chutney."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "chapman-cocktail",
+  "name": "Chapman Cocktail",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "This bright orange drink is said to have originated from the exclusive Ikoyi Club in Lagos. I have fond memories of going to the club on weekends for tennis lessons and on the rare occasion that we’d dine there as a family after a lesson, I always enjoyed ordering the non-alcoholic version of the cocktail. Chapman is refreshing, flavourful and perfect for a hot, sunny day.",
+  "ingredients": [
+    {
+      "item": "grenadine syrup 1/2 cup blackcurrant juice concentrate (e.g. Ribena)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cucumber slices",
+      "amount": "6"
+    },
+    {
+      "item": "lemon and/or lime slices",
+      "amount": "4"
+    },
+    {
+      "item": "orange slices",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Place all the ingredients in a large pitcher and stir with a long spatula or wooden spoon. Serve chilled over ice."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "eggs-in-cocotte",
+  "name": "Eggs in Cocotte",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "slices pancetta",
+      "amount": "12"
+    },
+    {
+      "item": "virgin olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "½ large Spanish onions",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "120 g"
+    },
+    {
+      "item": "frozen chopped spinach, well-drained",
+      "amount": "600 g"
+    },
+    {
+      "item": "large organic eggs",
+      "amount": "12"
+    },
+    {
+      "item": "cream",
+      "amount": "250 ml"
+    },
+    {
+      "item": "grated parmigiano",
+      "amount": "150 g"
+    }
+  ],
+  "method": [
+    "Serves 6 12 slices pancetta 4 tablespoons virgin olive oil 1 ½ large Spanish onions 120 g unsalted butter 600 g frozen chopped spinach, well-drained salt and ground black pepper 12 large organic eggs 250 ml cream 150 g grated parmigiano",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Fry the pancetta in a small amount of oil in a frying pan until crisp, then let it drain on kitchen paper.",
+    "Chop the onions and fry them until soft in a little butter and oil. Add the spinach, salt and pepper and cook for a few minutes. Add the pancetta.",
+    "Bake in the oven for about 5–8 minutes. The egg yolks should still be soft when they are served."
+  ]
+}

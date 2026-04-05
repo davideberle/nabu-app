@@ -1,0 +1,82 @@
+{
+  "id": "portabella-mushroom-gyro",
+  "name": "Portabella Mushroom Gyro",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "large portabella mushroom caps",
+      "amount": "2"
+    },
+    {
+      "item": "vegan Worcestershire sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red bell pepper, diced large",
+      "amount": "½"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw shelled hempseeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried mint",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dill weed",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "pita flatbreads",
+      "amount": "2"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "1 ounce"
+    }
+  ],
+  "method": [
+    "Remove the stems from the mushrooms and also remove the gills with a spoon. Discard. Slice the mushrooms into thick strips.",
+    "Mix the Worcestershire sauce, cumin, maple syrup, and oregano in a medium bowl. Lay the mushroom slices in the marinade and let marinate for 10 minutes.",
+    "Heat the oil in a large skillet over medium-high heat. Add the onion and bell pepper and sauté for 10 minutes. Add the marinated mushroom slices and sauté for 5 more minutes. Remove from the heat and let cool.",
+    "Mix all of the Fresh White Sauce ingredients in a small bowl and set aside.",
+    "Lay out a layer of spinach leaves on each flatbread. Spoon the Fresh White Sauce down the center. Lay the mushroom and bell pepper mixture on top. Fold each flatbread to overlap and secure with decorative picks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

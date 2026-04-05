@@ -1,0 +1,49 @@
+{
+  "id": "tandoori-whole-chicken",
+  "name": "TANDOORI WHOLE CHICKEN",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4",
+  "intro": "Over the years, this tandoori whole roast chicken has been one of my family’s favourite Sunday night dinners. It is so easy to make and tastes amazing. The recipe calls for tandoori masala, which is commercially available, but I hope you try my homemade tandoori masala.",
+  "ingredients": [
+    {
+      "item": "2.5kg (5lb 8oz) whole free-range skinless chicken",
+      "amount": ""
+    },
+    {
+      "item": "Melted butter, for basting",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1–2 limes",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Greek yoghurt",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tandoori masala (more or less to taste)",
+      "amount": "1 heaped tbsp"
+    }
+  ],
+  "method": [
+    "Make the marinade by mixing together all of the marinade ingredients. Rub about a quarter of the marinade inside the chicken. Make shallow incisions into the chicken breasts, legs and thighs and truss it tightly. (If you aren’t familiar with how to truss a chicken, no worries. Just tie the legs together tightly with a piece of string. It won’t win you any awards for presentation but it will help the chicken cook evenly.) Rub the remaining marinade all over the chicken, ensuring that all of the incisions are covered in marinade. Allow to marinate in the fridge for 3–48 hours.",
+    "Remove the chicken from the fridge a good half an hour before cooking. When ready to cook, preheat the oven to its highest setting. Once the oven is hot, place the chicken in a roasting pan and roast for 40 minutes to 1 hour, basting regularly with the melted butter and cooking juices. Your chicken is ready when the juices run clear when you prick the thigh with a knife. If using a meat thermometer, aim for 75°C (165°F).",
+    "Squeeze over the lime juice and season with salt."
+  ]
+}

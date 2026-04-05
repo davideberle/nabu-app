@@ -1,0 +1,99 @@
+{
+  "id": "fried-vish-blossoms",
+  "name": "FRIED VISH BLOSSOMS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "Banana blossoms are the perfect substitute for making fish. They mimic the flaky layers of fish and normally become meaty, making them a fun plant-based alternative to cook with. I love using banana blossoms for my fried fish recipes because not only do they look like fish, but depending on how you prepare them, they can come close to the real thing. It sparks an interest in many people who see it. I use canned banana blossoms, which you can find in your local Asian markets or as a quick purchase from Amazon. They don’t have much of a taste, so the seasoning will be your best friend. This is a very innovative dish that I’m excited to share with you.",
+  "ingredients": [
+    {
+      "item": "cans Nature’s Charm banana blossom in brine, drained",
+      "amount": "2 (12-oz [340-g])"
+    },
+    {
+      "item": "Old Bay Seasoning",
+      "amount": "1½ tsp (3.5 g)"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1½ tsp (3.5 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ tsp (4.5 g)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1½ tsp (3 g)"
+    },
+    {
+      "item": "Creole seasoning",
+      "amount": "1 tbsp (7.5 g)"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "2 tbsp (28 g)"
+    },
+    {
+      "item": "yellow cornmeal",
+      "amount": "2 cups (244 g)"
+    },
+    {
+      "item": "nori sheets, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup (125 g)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "1 cup (225 g)"
+    },
+    {
+      "item": "capers, minced",
+      "amount": "2 tbsp (17 g)"
+    },
+    {
+      "item": "relish",
+      "amount": "2 tbsp (30 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tbsp (15 ml)"
+    }
+  ],
+  "method": [
+    "Rinse the banana blossoms with water. Pat dry, then transfer them to a large bowl and season with the Old Bay, onion powder, garlic powder, pepper, Creole seasoning, hot sauce and vegan mayonnaise.",
+    "Gently mix everything together with your hands. Make sure you keep the banana blossoms intact, though if they break apart, no worries—you can squeeze together the extra pieces and make an additional fillet. In another bowl, mix together the cornmeal, nori and flour with a pinch of salt. Dredge the filets through this cornmeal mixture to coat.",
+    "In a large skillet, heat the vegetable oil to 350°F (180°C). Add two or three fillets and fry on each side for about 3 minutes, or until golden brown. Transfer to a paper towel to absorb any excess oil. Repeat until all the vish is fried.",
+    "To make the tartar sauce, in a small bowl, just combine the vegan mayonnaise, capers, relish, salt, parsley and lemon juice. Serve your vish with the vegan tartar sauce."
+  ],
+  "image": "/recipes/fried-vish-blossoms.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "millet-fufu",
+  "name": "Millet Fufu",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Eaten mainly in the northern part of Nigeria, this healthy, antioxidant-rich swallow is prepared in the same way as other flour-based swallows. It has an earthy flavour and slightly grainy texture, which may be an acquired taste for some.",
+  "ingredients": [
+    {
+      "item": "millet flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "and 1/4 cups water (plus",
+      "amount": "1"
+    },
+    {
+      "item": "tablespoons)",
+      "amount": "2"
+    },
+    {
+      "item": "yam (peeled and chopped)",
+      "amount": "4 cups"
+    },
+    {
+      "item": "ripe plantain (peeled and cut into",
+      "amount": "1"
+    },
+    {
+      "item": "pieces)",
+      "amount": "4"
+    },
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a pot or saucepan, mix the millet flour with 1 and 1/4 cups of water. Stir continuously with a wooden spoon over low heat for 10 minutes until it is lump free and starts to thicken.",
+    "Add 2 tablespoons of water, do not mix, cover the pot/ saucepan and leave to simmer on low heat for 10 minutes.",
+    "Place the yam in a pot and cover with water. Bring to a boil then cook on medium heat for 15 minutes. Add the plantain and cook for a further 10 minutes. Both the yam and plantain should be very soft. Once cooked, drain any excess liquid into a separate bowl and set aside. Add the palm oil to the piping hot yam and plantain and mash roughly with a fork.",
+    "Place the roughly mashed yam and plantain in a food processor and blend until you have a smooth, stretchy dough. If the mixture is too thick and struggling to blend, you can add a small amount of the excess liquid set aside earlier, one tablespoon at a time. Be careful not to add too much liquid so that you don’t end up with a runny mixture. Serve with a soup/stew of your choice, such as egusi or pepper soup."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

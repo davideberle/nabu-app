@@ -2,16 +2,15 @@
   "id": "tarka-dhal",
   "name": "TARKA DHAL",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "This has to be one of the most ordered side dishes at Indian restaurants. Personally, I feel the meal just isn’t complete without a good tarka dhal. A ‘tarka’ is a mixture of spices and/or aromatics that are tempered in oil or ghee. This mixture is then poured over the cooked dhal just before serving. So the",
+  "intro": "This has to be one of the most-ordered side dishes at Indian restaurants. Personally, I feel the meal just isn’t complete without a good tarka dhal. A ‘tarka’ is a mixture of spices and/or aromatics that are tempered in oil or ghee. This mixture is then poured over the cooked dhal just before serving. So the chana dhal is actually a tarka dhal too.",
   "ingredients": [
     {
-      "item": "(1½ cups) masoor dhal, rinsed",
-      "amount": "250g"
+      "item": "masoor dhal (red lentils), rinsed",
+      "amount": "250g (1½ cups)"
     },
     {
       "item": "ghee",
@@ -26,8 +25,8 @@
       "amount": "1 tsp"
     },
     {
-      "item": "cinnamon stick",
-      "amount": "1"
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
     },
     {
       "item": "onion, finely sliced",
@@ -46,16 +45,15 @@
       "amount": "½ tsp"
     },
     {
-      "item": "Salt and freshly ground pepper",
+      "item": "Salt and freshly ground black pepper, to taste",
       "amount": ""
     }
   ],
   "method": [
-    "Put the dhal into a pan and pour over about 400ml (1⅔ cups) water. Simmer over a medium-high heat for about 25 minutes until tender, removing any foam that forms on the top.",
+    "Put the dhal into a pan and pour over about 400ml (scant 1¾ cups) of water. Simmer over a medium–high heat for about 25 minutes until tender, removing any foam that forms on the top.",
     "Meanwhile, melt the ghee in a frying pan and add the curry leaves, cumin seeds and cinnamon stick. Stir this all up so that the ghee soaks up the flavour of the spices. Add the onion and fry for about 5 minutes until light brown. Add the garlic, garam masala and turmeric, and sizzle until the garlic is soft.",
     "Season the cooked dhal with salt and pepper, then pour the ghee mixture (the tarka) over the lentils to serve."
   ],
-  "image": null,
   "dietary": [
     "vegetarian"
   ]

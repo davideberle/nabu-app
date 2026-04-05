@@ -1,0 +1,65 @@
+{
+  "id": "creamy-avena",
+  "name": "CREAMY AVENA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "Avena is very nostalgic to me. It is oatmeal that’s smoother and sweeter. This is made with evaporated coconut milk, cinnamon, nutmeg, vanilla extract and love. Because that’s how I remember it tasting when I used to get it from the Hispanic bakery up the block from where I lived in Castle Hill. This was years ago, and to my surprise, I saw it is still in business. Clearly for a very good reason! This avena is so smooth, you could drink it out of the cup. It is perfect on a cold day in New York.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "oats, divided",
+      "amount": "1½ cups (120 g)"
+    },
+    {
+      "item": "can evaporated coconut milk",
+      "amount": "1 (11.25-oz [332-ml])"
+    },
+    {
+      "item": "oat milk",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "3"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "¼ cup (38 g)"
+    }
+  ],
+  "method": [
+    "In a blender, combine the water and 1 cup (80 g) of the oats and blend to get a liquid with small pieces. Do not overblend.",
+    "In a medium-sized pot over high heat, combine the evaporated coconut milk, oat milk, cinnamon sticks, ground cinnamon, cloves, salt and nutmeg. Add the blended mixture and the remaining ½ cup (40 g) of oats to the pot, along with the vanilla and coconut sugar. Lower the heat to a simmer and cook, stirring constantly, for 7 minutes. When the oats are soft, the avena is ready to serve."
+  ],
+  "image": "/recipes/creamy-avena.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

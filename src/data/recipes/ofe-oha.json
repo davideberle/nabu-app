@@ -1,0 +1,49 @@
+{
+  "id": "ofe-oha",
+  "name": "Ofe Oha",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "Dissolve the ground achi seeds in 6 tablespoons of cold water to form a paste, add to the pot and stir rapidly. Add the meat alternatives and season with salt to taste. Cook for 10 minutes on medium-high heat, stirring frequently until the soup starts to thicken slightly.",
+  "ingredients": [
+    {
+      "item": "water 1/2 cup palm oil",
+      "amount": "5 cups"
+    },
+    {
+      "item": "ground cameroon pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube 1/2 teaspoon ogiri",
+      "amount": "1"
+    },
+    {
+      "item": "ground achi seeds Salt to taste",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "seaweed flakes (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oha/ora leaves (approx. 150g) (washed and chopped)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "uziza leaves (washed and sliced)",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Add the water, palm oil, cameroon pepper, vegetable stock cube and ogiri to a pot and bring to a boil.",
+    "Add the seaweed, oha leaves and uziza leaves, and cook for a further 10 minutes.",
+    "Serve with a swallow of your choice, such as eba, pounded yam or semovita."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

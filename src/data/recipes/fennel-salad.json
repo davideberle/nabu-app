@@ -1,0 +1,31 @@
+{
+  "id": "fennel-salad",
+  "name": "Fennel Salad",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "fennel bulbs (use the longer, thinner male fennel bulb)",
+      "amount": "2"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "125 ml"
+    },
+    {
+      "item": "wholegrain Dijon mustard",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "capers",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Serves 4 2 fennel bulbs (use the longer, thinner male fennel bulb) juice of 1 organic lemon 125 ml good-quality virgin olive oil 1 tablespoon wholegrain Dijon mustard salt and ground black pepper 1 tablespoon capers",
+    "Cut the fennel bulb in half lengthways and slice as thinly as possible. Mix the remaining ingredients together well to make a sauce and pour over the fennel. Chop some of the fennel’s fine green leaves and sprinkle over the salad."
+  ]
+}

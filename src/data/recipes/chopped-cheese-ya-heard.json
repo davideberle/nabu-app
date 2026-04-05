@@ -1,0 +1,80 @@
+{
+  "id": "chopped-cheese-ya-heard",
+  "name": "CHOPPED CHEESE YA HEARD!",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 2",
+  "intro": "The chopped cheese is a New York City staple sandwich that is prepared at your local bodega or deli. It consists of hamburger meat chopped up with bell peppers and onion, topped with cheese and served on a roll or hero. No one is quite sure what borough it originated in, but you can be sure your local New York City deli makes it. This was the best fast meal to eat after a fun night clubbing with friends. Delis in New York stay open late or 24 hours, so when you’re leaving the club at four a.m. and need a greasy, tasty meal to cure your hunger and hangover, chopped cheese with everything on it was the way to go. Now, you know I wasn’t giving this up! Follow this recipe for my easy vegan version of it. It gets messy, so have some waxed paper ready to wrap the sandwich before eating.",
+  "ingredients": [
+    {
+      "item": "grapeseed oil",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "diced mixed green and red bell pepper",
+      "amount": "¼ cup (38 g)"
+    },
+    {
+      "item": "diced yellow onion",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "Beyond Meat ground meat",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1 tsp (⅔ [4-g] packet)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "slices vegan Cheddar cheese (I recommend Violife brand)",
+      "amount": "3"
+    },
+    {
+      "item": "vegan bread rolls of your liking",
+      "amount": "2"
+    },
+    {
+      "item": "head romaine lettuce, sliced",
+      "amount": "½"
+    },
+    {
+      "item": "tomato, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup (115 g)"
+    },
+    {
+      "item": "ketchup",
+      "amount": "¼ cup (60 g)"
+    },
+    {
+      "item": "relish",
+      "amount": "1 tbsp (15 g)"
+    }
+  ],
+  "method": [
+    "In a medium-sized pan over medium heat, combine your grapeseed oil, bell pepper, onion and sofrito and cook until tender.",
+    "Add the Beyond Meat, Sazón and adobo, and begin to chop up the meat and mix in the seasonings. Cook for about 6 minutes, stirring occasionally.",
+    "Pile your meat together and add your vegan cheese. If you want it to melt, add a tablespoon (15 ml) of water to the pan and cover it with a lid for 1 to 2 minutes.",
+    "In a bowl, mix together the mayonnaise, ketchup and relish until well blended.",
+    "Toast your bread rolls. Add your chopped cheese to the center and top it with lettuce, tomato and mayo ketchup to your liking. The sandwich can tend to get sloppy, so use waxed paper to wrap it. Cut it in half or enjoy it as is."
+  ],
+  "image": "/recipes/chopped-cheese-ya-heard.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

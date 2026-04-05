@@ -1,0 +1,36 @@
+{
+  "id": "cauliflower-salad",
+  "name": "Cauliflower Salad",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "small, firm white cauliflower, leaves removed and divided into small florets",
+      "amount": "1"
+    },
+    {
+      "item": "red-wine vinegar",
+      "amount": "125 ml"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "250 ml"
+    },
+    {
+      "item": "fresh chilli, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful flat-leaf parsley, chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 1 small, firm white cauliflower, leaves removed and divided into small florets 125 ml red-wine vinegar 250 ml good-quality virgin olive oil 4–5 anchovy fillets, mashed 1 fresh chilli, finely chopped 1 handful flat-leaf parsley, chopped",
+    "Put some salted water in a saucepan and bring to the boil. Drop the cauliflower florets into the water and boil for a few minutes – they should still be very firm. Rinse them under cold water to prevent them from cooking further, then dry on kitchen paper.",
+    "In a bowl mix the red-wine vinegar with the olive oil then add the anchovies and chilli. Pour this mixture over the cauliflower and sprinkle with the chopped parsley. Serve this salad as part of an antipasto or with grilled meats."
+  ]
+}

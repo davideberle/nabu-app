@@ -2,28 +2,31 @@
   "id": "lamb-nihari",
   "name": "LAMB NIHARI",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
-  "servings": "serves 4",
+  "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This recipe was sent to me by my friend Usman Butt – executive chef of Imran’s in Birmingham’s Balti Triangle. If you’re a lamb curry fan, this is one you’ve simply got to try. The sauce is quite mild and has a delicious flavour that when teamed with the tender lamb shanks is about as good as it gets.",
   "ingredients": [
     {
-      "item": "lamb shanks, about 2kg (4½ lb) in total",
+      "item": "lamb shanks (about 2kg/4lb 6oz in total)",
       "amount": "4"
     },
     {
-      "item": "(½ cup) rapeseed oil or seasoned oil",
-      "amount": "125ml"
+      "item": "salt, plus extra to taste",
+      "amount": "½ tsp"
     },
     {
-      "item": "whole nutmeg, crushed into smaller pieces",
+      "item": "rapeseed (canola) oil or seasoned oil",
+      "amount": "125ml (½ cup)"
+    },
+    {
+      "item": "whole nutmeg, crushed into small pieces",
       "amount": "1"
     },
     {
-      "item": "mace blades",
-      "amount": "1 tbsp"
+      "item": "blade of mace",
+      "amount": "1"
     },
     {
       "item": "fennel seeds",
@@ -34,7 +37,7 @@
       "amount": "3"
     },
     {
-      "item": "2.5cm (1 in) piece of cinnamon stick or cassia bark, broken into small pieces",
+      "item": "2.5cm (1in) piece of cinnamon stick or cassia bark, broken into small pieces",
       "amount": ""
     },
     {
@@ -66,8 +69,8 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(1½ oz) unsalted butter",
-      "amount": "40g"
+      "item": "unsalted butter",
+      "amount": "40g (3 tbsp)"
     },
     {
       "item": "onion, sliced into rings",
@@ -78,12 +81,8 @@
       "amount": "2"
     },
     {
-      "item": "Salt",
+      "item": "5cm (2in) piece of ginger, peeled and julienned",
       "amount": ""
-    },
-    {
-      "item": "(or more) fine julienne of ginger",
-      "amount": "4 tbsp"
     },
     {
       "item": "hot fresh green chillies, finely sliced",
@@ -99,13 +98,11 @@
     }
   ],
   "method": [
-    "Place the lamb shanks on a plate and rub them all over with ½ tsp salt and 1 tsp of the oil. Set aside while you prepare the spice masala.",
-    "This is a raw spice masala so no need to roast the spices first. Put the nutmeg, mace, fennel seeds, bay leaves, cinnamon, peppercorns, nigella seeds, cloves and cumin seeds in a spice grinder and grind to a fine powder. Stir in the paprika, chilli powder and ground ginger.",
+    "Place the lamb shanks on a plate and rub them all over with ½ teaspoon of salt and 1 teaspoon of the oil. Set aside while you prepare the spice masala.",
     "Melt the butter in a large saucepan with a tight-fitting lid over a medium heat. Add the onion rings and fry for about 5 minutes until soft, translucent and lightly browned. Transfer to a plate with a slotted spoon and set aside.",
     "Now pour the remaining oil into the saucepan and brown the lamb shanks for about 2 minutes.",
-    "Add the browned onions coated with the spices and pour in 1.2 litres (4¾ cups) warm water.",
-    "Arrange the lamb shanks in the saucepan, cover and simmer over a low heat for 3 hours, basting and turning the shanks every 30 minutes. After 3 hours, carefully lift out the shanks into a large, warmed serving bowl. Skim off as much excess oil from the cooking liquid as possible from the sauce and discard.",
-    "Mix the chapatti flour with 4 teaspoons water to make a smooth paste. Whisk the paste into the sauce and simmer for 5–6 minutes to thicken. Check for seasoning, add salt to taste and then pour the sauce over the meat in the serving bowl. Serve the garnishes in little bowls on the table to add to the lamb nihari as you like."
-  ],
-  "image": "/recipes/lamb-nihari.jpg"
+    "Add the ground spices and browned onions and pour in 1.2 litres (5 cups) warm water.",
+    "Arrange the lamb shanks in the saucepan, cover and simmer over a low heat for 3 hours, basting and turning the shanks every 30 minutes. After 3 hours, carefully lift out the shanks into a large, warmed serving bowl. Skim off as much excess oil from the cooking liquid as possible and discard.",
+    "Mix the chapatti flour with 4 teaspoons water to make a smooth paste. Whisk the paste into the sauce and simmer for 5–6 minutes to thicken. Season with salt and pour the sauce over the meat in the serving bowl. Serve the garnishes in little bowls on the table to add to the lamb nihari as you like."
+  ]
 }

@@ -1,0 +1,32 @@
+{
+  "id": "koko",
+  "name": "Koko",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "This spiced and fermented millet porridge is a Hausa dish that is mostly eaten in the northern part of the country. This porridge is great for breakfast or as a light meal at any time of the day. For maximum enjoyment, eat it alongside Akara/ Kosai (page 135) or Masa (page 175).",
+  "ingredients": [
+    {
+      "item": "millet (soaked overnight and drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "5 cups"
+    },
+    {
+      "item": "whole cloves 1/4 cup sliced fresh ginger",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Place the millet, 3 cups of water, cloves and sliced ginger in a blender and blend for several minutes until very smooth. Blend at intervals to prevent your blender motor from overheating.",
+    "Serve on its own or with a side of Akara/Kosai (page 135) or Masa (page 175)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "mojo-sauce",
+  "name": "MOJO SAUCE",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "garlic",
+      "amount": "9 cloves"
+    },
+    {
+      "item": "bunch cilantro",
+      "amount": "½"
+    },
+    {
+      "item": "small yellow onion",
+      "amount": "1"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 cups (480 ml)"
+    }
+  ],
+  "method": [
+    "The smell of this sauce alone transports me home. Mojo sauce is garlicky, herby, salty and just elevates any dish you put it on. You can use mojo sauce to marinate food or as a dipping sauce. It is very easy and simple to make, and it goes well with anything.",
+    "In a food processor, process the garlic and cilantro. Transfer from the processor to a bowl. Add your onion to the food processor and pulse about five times, then transfer to the same bowl. Add your lime juice, salt, pepper, oregano and olive oil to the bowl, and mix well.",
+    "Wrap the mojo in plastic wrap and let chill in the refrigerator for 4 hours or overnight. Once it is ready, you can eat it with tostones or rice and beans, or use it to marinate your food."
+  ],
+  "image": "/recipes/mojo-sauce.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

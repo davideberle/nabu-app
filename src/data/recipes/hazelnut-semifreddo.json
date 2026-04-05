@@ -1,0 +1,36 @@
+{
+  "id": "hazelnut-semifreddo",
+  "name": "Hazelnut Semifreddo",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "caster sugar",
+      "amount": "250 g"
+    },
+    {
+      "item": "hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro",
+      "amount": "300 g"
+    },
+    {
+      "item": "organic eggs, separated",
+      "amount": "2"
+    },
+    {
+      "item": "thickened cream",
+      "amount": "600 ml"
+    },
+    {
+      "item": "Nocino liqueur or oloroso sherry",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Serves 6 250 g caster sugar 300 g hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro 2 organic eggs, separated 600 ml thickened cream 2 tablespoons Nocino liqueur or oloroso sherry melted dark chocolate, to serve (optional)",
+    "melted dark chocolate, to serve (optional)",
+    "In a separate bowl, beat the egg whites until they form stiff peaks but are not dry. Fold into the praline mixture. Spoon the mixture into a rectangular dish. Cover with plastic wrap and freeze for at least 4 hours, or overnight."
+  ]
+}

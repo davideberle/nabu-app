@@ -1,0 +1,76 @@
+{
+  "id": "cinnamon-rolls",
+  "name": "Cinnamon Rolls",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 30 minutes",
+  "ingredients": [
+    {
+      "item": "warm water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "package active dry yeast",
+      "amount": "1 (¼-ounce)"
+    },
+    {
+      "item": "granulated sugar + 1 teaspoon granulated sugar",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2¾ cups"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "½ cup"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "½ tablespoons ground cinnamon",
+      "amount": "1"
+    },
+    {
+      "item": "½ cups powdered sugar",
+      "amount": "1"
+    },
+    {
+      "item": "whole milk",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the warm water, active dry yeast, and granulated sugar. Let it steep for 10 minutes.",
+    "Stir in the butter, milk, salt, and remaining granulated sugar.",
+    "Stir in the flour. Using your hands, knead a dough from the mixture.",
+    "Place the kneaded dough back in the bowl. Cover with kitchen cloth and let the dough rise at room temperature for 90 minutes.",
+    "Preheat oven to 350°F (177°C).",
+    "Meanwhile, in a small mixing bowl, combine the brown sugar and ground cinnamon.",
+    "Roll out the risen dough into a rectangular shape ¼-inch thick. Spread the butter on top and sprinkle with the cinnamon mixture.",
+    "Roll out the dough into a roulade. Cut the roulade into 1-inch-thick slices.",
+    "Arrange the cinnamon rolls on a baking sheet lined with a piece of parchment paper. Bake for 30-35 minutes or until golden-brown in color.",
+    "To make the glaze, in a small mixing bowl, combine the powdered sugar, milk, and vanilla extract. Spread the glaze on top of the baked cinnamon rolls.",
+    "Serve warm."
+  ]
+}

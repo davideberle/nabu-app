@@ -1,0 +1,63 @@
+{
+  "id": "chickpea-seitan-fried-rice",
+  "name": "Chickpea Seitan Fried Rice",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "jasmine rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Pressure Cooker Tender Patties (page 286)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "tamari",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "carrots, peeled and diced small",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "Green onions, sliced, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the rice to a medium saucepan and add 2 cups water. Bring to a boil, cover, turn down the heat to low, and cook for 20 minutes or until the water is absorbed and the rice is tender. Set aside.",
+    "Place the seitan in a food processor and pulse a few times to make small pieces. Transfer to a small bowl.",
+    "Add the chickpeas to the food processor and pulse them to make small pieces, about three or four pulses.",
+    "Mix the tamari, maple syrup, and ginger in a small bowl and set aside.",
+    "In a large skillet, add the oil and heat over medium-high heat. Add the carrots and fry, flipping with a spatula, for about 5 to 10 minutes. Turn down the heat if necessary to keep the carrots from burning. Add the garlic and stir; cook for 1 minute. Add the rice, prepared chickpeas, and seitan and continue to sauté until there is some browning on the seitan. Add the sauce mixture and continue stirring and flipping with a spatula to incorporate all the sauce and to slightly cook it.",
+    "Serve garnished with the sliced green onions."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

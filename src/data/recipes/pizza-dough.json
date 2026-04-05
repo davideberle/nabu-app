@@ -1,0 +1,31 @@
+{
+  "id": "pizza-dough",
+  "name": "Pizza Dough",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "unbleached plain flour, preferably Italian type 00",
+      "amount": "1 kg"
+    },
+    {
+      "item": "salt",
+      "amount": "15 g"
+    },
+    {
+      "item": "dry yeast",
+      "amount": "15 g"
+    },
+    {
+      "item": "good-quality virgin olive oil, plus extra for drizzling",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Makes 4 pizzas, approximately 30 × 40 cm each 1 kg unbleached plain flour, preferably Italian type 00 15 g salt 15 g dry yeast 2 tablespoons good-quality virgin olive oil, plus extra for drizzling 625–750 ml warm water",
+    "Makes 4 pizzas, approximately 30 × 40 cm each",
+    "Mix together the dry ingredients with the oil and enough water to form a dough. Knead until the dough becomes shiny and elastic. Shape into a ball, place in a bowl and sprinkle a few drops of oil over the dough so that it does not dry out. Cover with a cloth and let stand in a warm spot for about 1 hour."
+  ]
+}

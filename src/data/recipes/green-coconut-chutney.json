@@ -1,0 +1,74 @@
+{
+  "id": "green-coconut-chutney",
+  "name": "GREEN COCONUT CHUTNEY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes about 300ml (1¼ cups)",
+  "intro": "I can’t get enough of this mildly spiced chutney, pictured.",
+  "ingredients": [
+    {
+      "item": "chana dhal",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "grated fresh coconut, frozen shredded coconut or dried coconut flakes (if using dried, rinse and soak in 250ml/1 cup water for about 30 minutes before using)",
+      "amount": "100g (1 cup)"
+    },
+    {
+      "item": "coriander (cilantro), chopped",
+      "amount": "40g (¾ cup)"
+    },
+    {
+      "item": "green chillies, roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "2cm (¾ in) piece of ginger, peeled and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "sugar (or to taste)",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "coconut oil or rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "white split urad dhal",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "asafoetida*",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "4–5"
+    }
+  ],
+  "method": [
+    "Toast the chana dhal in a dry frying pan over a medium–high heat until fragrant and lightly browned, about 1½–2 minutes. Transfer to a plate to cool slightly.",
+    "Put the coconut, coriander (cilantro), green chillies, ginger and toasted chana dhal in a blender or spice grinder and blend with 125ml (½ cup) of water. This should be a runny chutney so add more water until the consistency is right. Add the sugar and lemon juice and season with salt.",
+    "Heat the oil in a small pan over a high heat. When hot, add the mustard seeds. When they begin to pop, reduce the temperature to medium–high and stir in the white urad dhal. Let the dhal toast until light brown – about 1 minute should do. Stir in the asafoetida and curry leaves and let this all sizzle in the oil for about 20 seconds. Your kitchen will smell amazing.",
+    "Pour the spiced oil over the chutney to serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

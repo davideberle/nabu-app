@@ -1,0 +1,61 @@
+{
+  "id": "chana",
+  "name": "CHANA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "If you ever find yourself in the Northern Quarter of Manchester, you’ll find some fantastic home-style curry cafés that you’ve simply got to try. These are no-nonsense restaurants and/or takeaways that look like old greasy spoons but are immaculate, and the food is out of this world. You can still get a curry and rice for a fiver! One of my favourites is Al-Faisal Tandoori.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried chickpeas (garbanzo beans), soaked in water overnight, then drained",
+      "amount": "250g (1½ cups)"
+    },
+    {
+      "item": "bicarbonate of soda (baking soda)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 heaped tbsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Chopped green chillies and coriander (cilantro), to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat 1 tablespoon of the oil in a saucepan over a medium–high heat until visibly hot. Stir in the garlic and ginger paste and fry for about 1 minute. Now add the prepared chickpeas and bicarbonate of soda (baking soda) and cover with water. Simmer for about 70 minutes, adding a little more water when necessary, until the chickpeas are tender. This is quite a thick curry, so when the chickpeas are close to fork-tender cook down the water to a minimum.",
+    "In a separate frying pan, heat the remaining oil over a medium–high heat and temper the cumin seeds and ajwain (carom) seeds in the oil for about 40 seconds. Add the chilli powder and chopped onion and fry until the onion is lightly browned and soft – about 7 minutes. Pour this over your finished chickpeas and give it all a good stir.",
+    "Season with salt and serve with chopped green chillies and coriander (cilantro), which can be added to taste at the table."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

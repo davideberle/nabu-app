@@ -1,0 +1,68 @@
+{
+  "id": "fancy-strawberry-oatmeal",
+  "name": "Fancy Strawberry Oatmeal",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 30 minutes",
+  "ingredients": [
+    {
+      "item": "instant oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "3 cups"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Pinch of ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "hulled and sliced strawberries",
+      "amount": "1 cup"
+    },
+    {
+      "item": "whipped cream, chilled",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Chocolate chips",
+      "amount": ""
+    },
+    {
+      "item": "Chopped hazelnuts",
+      "amount": ""
+    },
+    {
+      "item": "Coconut flakes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the instant oats, milk, chia seeds, vanilla extract, honey, cinnamon, salt, and lemon zest.",
+    "Cover the bowl with plastic wrap and refrigerate for 20 minutes.",
+    "When ready to serve, divide the mixture into 4 glasses. Top with the whipped cream, strawberries, chocolate chips, chopped hazelnuts, and coconut flakes."
+  ]
+}

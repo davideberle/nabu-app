@@ -1,0 +1,86 @@
+{
+  "id": "party-jollof-rice",
+  "name": "Party Jollof Rice",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Bring to a boil then cover and simmer on low heat for 25-30 minutes, until the rice is soft and has absorbed most of the liquid. Stir the rice gently, take oﬀ the heat and leave to stand for 5 minutes.",
+  "ingredients": [
+    {
+      "item": "long-grain rice or “sella” golden basmati rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tomatoes (roughly chopped)",
+      "amount": "3"
+    },
+    {
+      "item": "red bell pepper (deseeded and roughly chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "scotch bonnet chilli",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "3"
+    },
+    {
+      "item": "fresh grated ginger",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "4 tablespoon"
+    },
+    {
+      "item": "small red onion (sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "liquid smoke (optional)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Place the tomatoes, red bell pepper, chilli, garlic and ginger in a blender with 1 cup of water and blend until smooth.",
+    "Heat the sunflower oil in a large saucepan or cooking pot. Add the onions and sauté for 2-3 minutes. Add the blended pepper and tomato mixture. Cook on high heat for 5 minutes. Add the washed rice, 1/2 cup of water, tomato paste, curry powder, thyme, bay leaf, stock cube, liquid smoke (optional) and salt to taste. Stir well to combine all the ingredients.",
+    "Bring to a boil then cover and simmer on low heat for 25-30 minutes, until the rice is soft and has absorbed most of the liquid. Stir the rice gently, take oﬀ the heat and leave to stand for 5 minutes.",
+    "Serve hot with a side of your choice such as Moin Moin (page 156), coleslaw (page 138), fried plantain and/or mixed vegetables."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

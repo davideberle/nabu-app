@@ -2,15 +2,14 @@
   "id": "chicken-jalfrezi",
   "name": "CHICKEN JALFREZI",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "I visited Balti House Rishton after hearing great things about chef and owner Hussain Rashid. He invited me to come and watch him cook in person and I wasn’t going to pass that offer up. I liked how he was promoting only using the freshest ingredients, so I knew I was going to be offered a good meal for my long drive, if nothing else.",
+  "intro": "I visited The Balti House, Rishton, after hearing great things about the chef and owner, Hussain Rashid. He invited me to come and watch him cook in person and I wasn’t going to pass that offer up. I liked how he was promoting only using the freshest ingredients, so I knew I was going to be offered a good meal for my long drive, if nothing else. He asked me what I’d like to see him prepare, and as I could see a basket full of fresh tomatoes, green bird’s eye chillies, peppers and onions, I chose a jalfrezi. We sat down to one heck of a good curry and rice meal. This is my interpretation of the recipe.",
   "ingredients": [
     {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -18,11 +17,11 @@
       "amount": "1"
     },
     {
-      "item": "red pepper (bell pepper), deseeded and thinly sliced",
+      "item": "red (bell) pepper, deseeded and thinly sliced",
       "amount": "1"
     },
     {
-      "item": "green bird’s-eye chillies, roughly chopped",
+      "item": "green bird’s eye chillies, roughly chopped",
       "amount": "3"
     },
     {
@@ -46,31 +45,31 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(2 cups) base curry sauce, heated",
-      "amount": "500ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
     },
     {
-      "item": "(1½ lb) pre-cooked stewed chicken, plus 100ml (scant ½ cup) of its cooking stock",
-      "amount": "700g"
+      "item": "pre-cooked stewed chicken, plus 100ml (scant ½ cup) of its cooking stock",
+      "amount": "700g (1lb 9oz)"
     },
     {
       "item": "tomatoes, quartered",
       "amount": "2"
     },
     {
-      "item": "dried fenugreek (methi) leaves",
+      "item": "dried fenugreek leaves (kasoori methi)",
       "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
     },
     {
       "item": "garam masala",
       "amount": "1 tsp"
     },
     {
-      "item": "Salt",
-      "amount": ""
-    },
-    {
-      "item": "Fresh coriander (cilantro) leaves, chopped",
+      "item": "Coriander (cilantro) leaves, chopped",
       "amount": ""
     },
     {
@@ -79,11 +78,9 @@
     }
   ],
   "method": [
-    "Heat the oil in a large frying pan over a medium-high heat then add the sliced onion, pepper (bell pepper), green chillies and coriander (cilantro) stalks. Mix this all up in the pan and sauté until the vegetables are beginning to cook through but are still crisp.",
-    "Stir in the garlic and ginger paste and fry for about a minute. Add the tomato purée, mixed powder, chilli powder and about 250ml (1 cup) of the base curry sauce. This will come to an instant bubble. Add the chicken, stock and the rest of the base curry sauce.",
+    "Heat the oil in a large frying pan over a medium–high heat, then add the sliced onion, red (bell) pepper, green chillies and coriander (cilantro) stalks. Mix this all up in the pan and sauté until the vegetables are beginning to cook through but are still crisp.",
+    "Stir in the garlic and ginger paste and fry for about 1 minute. Add the tomato purée, mixed powder, chilli powder and about 250ml (1 cup) of the base curry sauce. This will come to an instant bubble. Add the chicken, stock and the rest of the base curry sauce.",
     "Let this simmer over a medium heat for about 5 minutes, without stirring unless it is obviously catching on the pan. If the sauce begins to caramelize around the edges of the pan, stir this back into the curry. Add more base sauce or cooking stock if the sauce becomes too thick.",
-    "About 2 minutes before serving, add the quartered tomatoes and dried fenugreek (methi) leaves.",
-    "When the tomatoes are cooked through but still crisp and you are happy with the consistency, season with salt to taste and sprinkle with the garam masala. Finish by garnishing with the chopped coriander leaves and sliced chillies."
-  ],
-  "image": "/recipes/chicken-jalfrezi.jpg"
+    "About 2 minutes before serving, add the quartered tomatoes and dried fenugreek leaves (kasoori methi)."
+  ]
 }

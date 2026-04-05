@@ -1,0 +1,71 @@
+{
+  "id": "pasta-and-beans",
+  "name": "Pasta and Beans",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4–6",
+  "ingredients": [
+    {
+      "item": "good-quality virgin olive oil, plus extra for drizzling",
+      "amount": "60 ml"
+    },
+    {
+      "item": "pancetta, diced",
+      "amount": "150 g"
+    },
+    {
+      "item": "large Spanish onions, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "chilli",
+      "amount": "1"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "5"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "sprig rosemary",
+      "amount": "1"
+    },
+    {
+      "item": "bunch flat-leaf parsley, roughly chopped",
+      "amount": "½"
+    },
+    {
+      "item": "glass dry red or white wine",
+      "amount": "1"
+    },
+    {
+      "item": "fresh chicken or veal stock",
+      "amount": "500 ml"
+    },
+    {
+      "item": "dried borlotti beans, soaked overnight, or",
+      "amount": "250 g"
+    },
+    {
+      "item": "fresh beans (no need to soak)",
+      "amount": "400 g"
+    },
+    {
+      "item": "peeled roma tomatoes",
+      "amount": "800 g"
+    },
+    {
+      "item": "short pasta, such as shells or penne",
+      "amount": "500 g"
+    }
+  ],
+  "method": [
+    "In a large saucepan heat the oil and fry the pancetta, sliced onion, celery, carrot, garlic and whole chilli. Add the herbs. If using, add the sausages and cook for a few minutes until the sausages start to brown. Now add the wine, stirring vigorously until it evaporates. Add the stock, then the borlotti beans and tomatoes. Let it all cook for about 30–45 minutes, covered, or until the borlotti beans are very tender.",
+    "Serve with freshly grated parmigiano and a little good-quality virgin olive oil on the table for drizzling."
+  ]
+}

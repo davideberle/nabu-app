@@ -1,0 +1,43 @@
+{
+  "id": "sprouted-grain-spicy-seitan-sandwich",
+  "name": "Sprouted Grain Spicy Seitan Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Pressure Cooker Tender Patties (page 286)",
+      "amount": "6"
+    },
+    {
+      "item": "sprouted grain English muffins, sliced open",
+      "amount": "6"
+    },
+    {
+      "item": "Condiments of your choice, such as dairy-free chipotle mayo and horseradish mustard",
+      "amount": ""
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "slices red onion",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet over medium-high heat and fry the patties until just golden on each side.",
+    "While the patties are in the skillet, toast the English muffins. Layer the toast with mayo, mustard, avocado, patty, and onion."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

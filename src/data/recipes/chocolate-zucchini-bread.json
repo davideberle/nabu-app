@@ -1,0 +1,71 @@
+{
+  "id": "chocolate-zucchini-bread",
+  "name": "Chocolate Zucchini Bread",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 16 | prep. time 15 minutes | cooking time 40-50 minutes",
+  "ingredients": [
+    {
+      "item": "½ cups all-purpose flour",
+      "amount": "2"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "3"
+    },
+    {
+      "item": "½ cups whole milk",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "shredded zucchini",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chocolate chips",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a loaf tin with parchment paper.",
+    "In a large mixing bowl, combine the flour, cocoa powder, baking powder, baking soda, salt, and ground cinnamon.",
+    "Stir in the eggs, milk, vegetable oil, maple syrup, and vanilla extract.",
+    "Add the shredded zucchini and chocolate chips. Mix until just combined.",
+    "Transfer the batter to the prepared loaf pan. Bake for 40-50 minutes or until a toothpick inserted in the center of the cake comes out clean.",
+    "Serve warm."
+  ]
+}

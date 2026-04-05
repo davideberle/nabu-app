@@ -1,0 +1,49 @@
+{
+  "id": "afang-soup",
+  "name": "Afang Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "In a large pot, add your meat substitutes, chopped onion, vegetable stock cube and palm oil. Cook over high heat for 2-3 minutes. Add the chopped ukazi and water leaves, along with 1/2 cup of water (use this water to rinse down the sides of the blender and pour into the pot so that none of the chopped leaves go to waste). Stir and season with salt to taste. Simmer over medium heat for another 6-7 minutes. Add the seaweed flakes.",
+  "ingredients": [
+    {
+      "item": "ukazi leaves or spinach (washed and drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "(approx. 400g) water leaves or watercress (washed and drained)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "pre-cooked meat alternatives (such as seitan, tofu, mushrooms etc.)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "small onion (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "palm oil Salt to taste",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Place the ukazi leaves and water leaves, or spinach and watercress in a food blender with 1 cup of water and pulse until the leaves are broken down into small pieces. Do not over blend as you do not want a smoothie consistency. Set aside.",
+    "In a large pot, add your meat substitutes, chopped onion, vegetable stock cube and palm oil. Cook over high heat for 2-3 minutes. Add the chopped ukazi and water leaves, along with 1/2 cup of water (use this water to rinse down the sides of the blender and pour into the pot so that none of the chopped leaves go to waste). Stir and season with salt to taste. Simmer over medium heat for another 6-7 minutes. Add the seaweed flakes.",
+    "Serve hot with a swallow of your choice such as: pounded yam, eba, all types of fufu."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

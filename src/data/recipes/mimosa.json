@@ -1,0 +1,31 @@
+{
+  "id": "mimosa",
+  "name": "Mimosa",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes",
+  "ingredients": [
+    {
+      "item": "champagne",
+      "amount": "25 ounces (1 standard bottle size)"
+    },
+    {
+      "item": "freshly squeezed orange juice, chilled",
+      "amount": "4 cups"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Orange slices, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pitcher, combine the champagne with the orange juice.",
+    "Garnish with the orange slices and serve in glasses with ice."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "double-decker-red-quinoa-sandwich",
+  "name": "Double-Decker Red Quinoa Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "red quinoa",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large portabella mushroom caps",
+      "amount": "4"
+    },
+    {
+      "item": "coconut oil, divided",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "finely chopped onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw pecans",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green spring onions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "rice wine vinegar",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole wheat burger buns",
+      "amount": "3"
+    },
+    {
+      "item": "Toppings and condiments: lettuce, tomatoes, red onion, mustard, dairy-free spicy mayo",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the quinoa in a sieve and rinse well. Combine the quinoa and broth in a small saucepan. Bring to a boil, cover, and reduce to a simmer. Cook for 10 to 15 minutes or until the broth is absorbed. Remove from the heat and let set with the cover on for 5 minutes.",
+    "Remove the gills from the mushrooms and discard. Chop up the mushroom caps.",
+    "Heat 1 tablespoon oil in a large skillet. Add the onion and mushrooms and sauté for 10 minutes. Add the pecans and sauté for 5 more minutes. Remove from the heat and let cool.",
+    "Add the mushroom mixture, green onion, and vinegar to a food processor. Process until very fine. It will not be smooth.",
+    "Transfer to a large bowl and add the quinoa, garlic powder, nutritional yeast, hempseed, and flour. Mix until well blended. Form into six patties the size of the burger buns.",
+    "Heat remaining oil in a large skillet and fry one patty at a time so that you can flip it easily. Fry until golden brown on each side.",
+    "Assemble the double deckers: Lay down the bottom of the bun, add mustard, lettuce, patty, red onion, lettuce, dairy-free spicy mayo, patty, dairy-free spicy mayo, tomatoes, and top of bun."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

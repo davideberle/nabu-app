@@ -1,0 +1,59 @@
+{
+  "id": "sardinian-ravioli",
+  "name": "Sardinian Ravioli",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6 (makes about 24 large ravioli)",
+  "ingredients": [
+    {
+      "item": "unbleached plain flour, preferably Italian type 00",
+      "amount": "450 g"
+    },
+    {
+      "item": "organic eggs",
+      "amount": "4"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "leeks, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "25 ml"
+    },
+    {
+      "item": "boiled and mashed potatoes",
+      "amount": "500 g"
+    },
+    {
+      "item": "grated parmigiano, plus extra for serving",
+      "amount": "100 g"
+    },
+    {
+      "item": "Sardinian pecorino",
+      "amount": "60 g"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "15"
+    }
+  ],
+  "method": [
+    "Serves 6 (makes about 24 large ravioli)",
+    "Heat the butter over medium heat until it bubbles, then add the sage and cook until crisp. Sprinkle parmigiano over the ravioli and pour the bubbling butter and sage sauce over them."
+  ]
+}

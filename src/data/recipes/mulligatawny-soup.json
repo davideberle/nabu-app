@@ -1,0 +1,106 @@
+{
+  "id": "mulligatawny-soup",
+  "name": "MULLIGATAWNY SOUP",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4",
+  "intro": "There is no one recipe for Mulligatawny soup and it can vary greatly in flavour and colour. This recipe is up there with the best. It is delicious served with broken idlis. You can purchase instant idli mix at most Asian shops or follow my recipe.",
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "25g (2 tbsp)"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "cloves",
+      "amount": "6"
+    },
+    {
+      "item": "large red onion, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "stick celery, diced",
+      "amount": "1"
+    },
+    {
+      "item": "carrot, diced",
+      "amount": "1"
+    },
+    {
+      "item": "tinned (canned) plum tomatoes, roughly chopped",
+      "amount": "50g (1¾oz)"
+    },
+    {
+      "item": "leek, diced",
+      "amount": "½"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "litre (4½ cups) salt-free chicken or vegetable stock",
+      "amount": "1"
+    },
+    {
+      "item": "tin (can) thick coconut milk",
+      "amount": "400ml (14fl oz)"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "broken idlis (optional)",
+      "amount": "4"
+    },
+    {
+      "item": "lemon wedges, to serve",
+      "amount": "4"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic cloves, peeled",
+      "amount": "6"
+    },
+    {
+      "item": "4cm (1½in) piece of ginger, peeled and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "Handful each of coriander (cilantro) and mint leaves",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put all the spice paste ingredients into a food processor or blender. Add a splash of water and blitz to a paste. Leave to one side.",
+    "Melt the butter in a large heavy-bottomed saucepan. Add the bay leaves, cinnamon and cloves and fry for a minute or so to flavour the butter. Add the onion and cook for 5 minutes until soft and translucent.",
+    "Add the vegetables and cook for a further 5 minutes. Stir in the spice paste and fry for a few minutes until fragrant. Stir in the flour followed by the stock. Cover and simmer for 15 minutes until thickened. Pour in the coconut milk and mix. If you like a creamier texture, as I do, blend the soup and run it through a sieve. Adjust the seasoning and add more stock if it is too thick.",
+    "Season with salt and serve with idli pieces, if desired, and lemon wedges."
+  ]
+}

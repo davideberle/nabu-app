@@ -1,0 +1,74 @@
+{
+  "id": "not-so-southern-sausage-gravy",
+  "name": "NOT-SO-SOUTHERN SAUSAGE GRAVY",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 8",
+  "intro": "This southern sausage gravy goes so perfectly with the Homemade Buttery Herb Biscuits. The sausage gravy is savory, chunky, flavorful and warm; it is a hug on a plate. Using Impossible brand sausage is the perfect alternative, especially if you’re a meat lover; the texture and taste are spot on—you won’t even know it’s vegan.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "package Impossible brand sausage",
+      "amount": "1 (14-oz [400-g])"
+    },
+    {
+      "item": "salt, plus more to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "freshly ground black pepper, plus more to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tsp (6 g)"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp (5 g)"
+    },
+    {
+      "item": "fresh or ground sage",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "vegan butter",
+      "amount": "¼ cup (½ stick; 57 g)"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup (30 g)"
+    },
+    {
+      "item": "½ cups (590 ml) unsweetened nondairy milk",
+      "amount": "2"
+    },
+    {
+      "item": "Fresh parsley, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a cast-iron skillet over medium heat, combine the olive oil and Impossible sausage. Season with salt, pepper, garlic powder, onion powder, sage, allspice and smoked paprika. Make sure the sausage meat is broken down into crumbles.",
+    "Now, add your vegan butter. Once it is melted, add your flour and stir everything together. When the flour coats the meat, gradually add your milk while constantly stirring. At this point, you can taste test to add more salt or pepper. If the gravy is too thick, add a little more milk.",
+    "Let this simmer over low heat for about 6 minutes, then garnish with fresh parsley and serve on top of my Homemade Buttery Herb Biscuits."
+  ],
+  "image": "/recipes/not-so-southern-sausage-gravy.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

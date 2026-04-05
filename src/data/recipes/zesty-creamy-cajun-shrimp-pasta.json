@@ -1,0 +1,92 @@
+{
+  "id": "zesty-creamy-cajun-shrimp-pasta",
+  "name": "ZESTY CREAMY CAJUN SHRIMP PASTA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "This pasta tastes exactly how it sounds: zesty, creamy and Cajun. The flavors are savory and warm; this is a bowl you need on a random Tuesday evening with some wine. It’s quite creative and makes a good conversation starter if you want to impress someone near and dear to you. I love using my Vegan Shroom Shrimp recipe to make the vegan shrimp ahead of time and cut down on prep time.",
+  "ingredients": [
+    {
+      "item": "salt, plus more to taste",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "box linguine noodles",
+      "amount": "1 (1-lb [455-g])"
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "minced shallots",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "3 to 4 cloves"
+    },
+    {
+      "item": "vegan butter, divided",
+      "amount": "3 tbsp (42 g)"
+    },
+    {
+      "item": "Vegan Shroom Shrimp",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 tbsp (15 g)"
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "¾ cup (175 ml)"
+    },
+    {
+      "item": "vegan Parmesan cheese",
+      "amount": "¼ cup (28 g)"
+    },
+    {
+      "item": "vegan mozzarella cheese",
+      "amount": "½ cup (56 g)"
+    },
+    {
+      "item": "Cajun seasoning",
+      "amount": "2 tbsp (15 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh parsley, for garnish",
+      "amount": "1 tbsp (4 g)"
+    }
+  ],
+  "method": [
+    "In a large pot, bring 6 cups (1.4 L) of water to a boil for the linguine and add the salt. When the water starts to boil, add the noodles and cook according to the package directions until al dente. Once done, drain and set aside.",
+    "In a large skillet over medium heat, heat the grapeseed oil, and once hot, add your shallots and garlic. Stir to soften the shallots and release the aromatics from the garlic.",
+    "Add 2 tablespoons (28 g) of the vegan butter and your shrimp, searing on each side for 2 minutes, or until golden brown. Remove the shrimp from the heat and set aside.",
+    "To the same pan, add the remaining tablespoon (14 g) of vegan butter and melt it down. Now, add your flour to make a roux, whisking until the butter and flour combine. Whisk in the nondairy milk, and once it gets hot, add your vegan Parmesan cheese and vegan mozzarella cheese and stir until the cheese is completely melted.",
+    "Stir in the Cajun seasoning, garlic powder, onion powder, cayenne and black pepper with a pinch of salt. Simmer for 8 minutes, then add your linguine and shrimp. Stir, then plate and serve, garnished with fresh parsley."
+  ],
+  "image": "/recipes/zesty-creamy-cajun-shrimp-pasta.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

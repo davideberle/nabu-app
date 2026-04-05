@@ -1,0 +1,49 @@
+{
+  "id": "breakfast-potatoes",
+  "name": "Breakfast Potatoes",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 15–20 minutes",
+  "ingredients": [
+    {
+      "item": "paprika",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "granulated garlic",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cracked black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "seasoning salt",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red potatoes, cut into wedges",
+      "amount": "6"
+    },
+    {
+      "item": "canola oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "spice mix",
+      "amount": "1½ teaspoons"
+    }
+  ],
+  "method": [
+    "Combine all the spice ingredients and set aside.",
+    "Preheat the oven to 450°F (232°C).",
+    "Add the potato ingredients and the spice mix to a baking sheet. Combine and bake for 15–20 minutes.",
+    "Serve warm."
+  ]
+}

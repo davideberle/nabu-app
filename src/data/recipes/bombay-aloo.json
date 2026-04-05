@@ -2,15 +2,14 @@
   "id": "bombay-aloo",
   "name": "BOMBAY ALOO",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Monday nights are always curry nights at my house. On Sundays, we usually cook up a roast Sunday dinner with all the fixings, so I always make extra roast potatoes for this curry. You could do the same in place of the pre-cooked stewed potatoes used here, although the cooking stock is nice added to this sauce.",
   "ingredients": [
     {
-      "item": "ghee, rapeseed oil or seasoned oil",
+      "item": "ghee, rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -30,12 +29,12 @@
       "amount": "7 tbsp"
     },
     {
-      "item": "(1¼ cups) base curry sauce, heated (or more for a saucier dish, see introduction)",
-      "amount": "300ml"
+      "item": "base curry sauce (quick and easy base curry sauce), heated (or more for a saucier dish – see introduction)",
+      "amount": "300ml (1¼ cups)"
     },
     {
-      "item": "(1¼ lb) pre-cooked stewed potatoes, cut into bite-sized chunks, plus 100ml (⅓ cup) of the cooking stock, or water",
-      "amount": "600g"
+      "item": "pre-cooked stewed potatoes, cut into bite-size chunks, plus 100ml (scant ½ cup) of the cooking stock or water",
+      "amount": "600g (1lb 5oz)"
     },
     {
       "item": "mixed powder",
@@ -50,7 +49,11 @@
       "amount": "2"
     },
     {
-      "item": "dried fenugreek (methi) leaves",
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "dried fenugreek leaves (kasoori methi)",
       "amount": "1 tsp"
     },
     {
@@ -60,19 +63,14 @@
     {
       "item": "finely chopped coriander (cilantro)",
       "amount": "3 tbsp"
-    },
-    {
-      "item": "Salt",
-      "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a pan over a medium-high heat then add the cumin seeds. When they become fragrant, stir in the onion and fry for about 3 minutes until soft and translucent. Stir in the garlic and ginger paste and enjoy that garlicky aroma.",
-    "Now stir in the tomato purée, base curry sauce and potato cooking stock or water, and bring to a simmer. There is no need to stir unless it is obviously catching on the pan. Scrape any caramelized sauce on the sides of the pan back in then add the pre-cooked potatoes, mixed powder and chilli powder.",
-    "Continue to simmer while spooning the sauce over the potatoes. When well coated, add the tomatoes and cook for a further couple of minutes.",
-    "Season with salt to taste and sprinkle with the dried fenugreek leaves and garam masala. Top with the chopped coriander (cilantro) to serve."
+    "Heat the ghee or oil in a pan over a medium–high heat, then add the cumin seeds. When they become fragrant, stir in the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and ginger paste and enjoy that garlicky aroma.",
+    "Now stir in the tomato purée, base sauce and potato cooking stock or water, and bring to a simmer. There is no need to stir unless it is obviously catching on the pan. Scrape any caramelized sauce on the sides of the pan back in, then add the pre-cooked potatoes, mixed powder and chilli powder.",
+    "Continue to simmer while spooning the sauce over the potatoes. When well coated, add the tomatoes and cook for a further 2 minutes.",
+    "Season with salt and sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala. Top with the chopped coriander (cilantro) to serve."
   ],
-  "image": null,
   "dietary": [
     "vegetarian"
   ]

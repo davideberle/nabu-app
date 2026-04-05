@@ -1,0 +1,57 @@
+{
+  "id": "breakfast-chicken-casserole",
+  "name": "Breakfast Chicken Casserole",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 25 minutes",
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "12"
+    },
+    {
+      "item": "quart whole milk",
+      "amount": "1"
+    },
+    {
+      "item": "Italian herb blend",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "slices bread, diced",
+      "amount": "8"
+    },
+    {
+      "item": "chicken breasts, cooked and shredded",
+      "amount": "2"
+    },
+    {
+      "item": "cheddar cheese, grated",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "Spread the butter evenly over the inside surface of the Dutch oven.",
+    "Heat the Dutch oven to 350°F (177°C).",
+    "Beat the eggs in a bowl. Add the milk, Italian herbs, salt, and pepper. Mix well.",
+    "Make a layer of bread in the Dutch oven. Cover it with the shredded chicken.",
+    "Pour on the egg mixture.",
+    "Cover the Dutch oven and cook for 20–25 minutes.",
+    "Add the cheese, cover again, and cook for 10–15 minutes more until the eggs are well cooked.",
+    "Serve warm."
+  ]
+}

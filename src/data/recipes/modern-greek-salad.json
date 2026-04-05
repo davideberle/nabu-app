@@ -1,0 +1,65 @@
+{
+  "id": "modern-greek-salad",
+  "name": "Modern Greek Salad",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 2–3 | prep. time 5–10 minutes",
+  "ingredients": [
+    {
+      "item": "kale, stemmed",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped romaine",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cooked quinoa",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "crumbled feta",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "almond slices",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped cucumber",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil, garlic powder, oregano, onion powder, red wine vinegar and salt to a mixing bowl. Mix well.",
+    "Add the lettuce and kale to a salad bowl. Toss well.",
+    "Add the quinoa, almond slices, feta and cucumber; drizzle with dressing to taste and toss to mix well.",
+    "Serve fresh."
+  ]
+}

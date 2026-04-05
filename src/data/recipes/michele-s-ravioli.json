@@ -1,0 +1,54 @@
+{
+  "id": "michele-s-ravioli",
+  "name": "Michele’s Ravioli",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "semolina flour (hard durum flour)",
+      "amount": "400 g"
+    },
+    {
+      "item": "organic eggs",
+      "amount": "4"
+    },
+    {
+      "item": "zucchini (courgette) flowers (bitter stamens removed), chopped",
+      "amount": "15"
+    },
+    {
+      "item": "fresh full-cream ricotta",
+      "amount": "400 g"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "100 g"
+    },
+    {
+      "item": "handful fresh mint leaves, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "125 ml"
+    },
+    {
+      "item": "water",
+      "amount": "125 ml"
+    },
+    {
+      "item": "handful fresh mint leaves, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "150 g"
+    }
+  ],
+  "method": [
+    "Bring a large saucepan of salted water to the boil. Add the ravioli carefully and boil for 2 minutes until they float to the surface – they should still be al dente. Lift the ravioli out with a slotted spoon and transfer them to a warm serving dish."
+  ]
+}

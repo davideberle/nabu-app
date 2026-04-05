@@ -1,0 +1,48 @@
+{
+  "id": "adobo-from-scratch",
+  "name": "ADOBO FROM SCRATCH",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "salt",
+      "amount": "1 tbsp (18 g)"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "2 tsp (4 g)"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp (5 g)"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 tsp (2 g)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1½ tsp (3.5 g)"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tsp (6 g)"
+    }
+  ],
+  "method": [
+    "Adobo is a combination of many seasonings but has strong notes of garlic and cumin. Adobo is used in a lot of Puerto Rican dishes. I like to make mine from scratch because it doesn’t include the additives, which aren’t the best for your health. You can visit your local spice shop to pick up the organic spices individually.",
+    "In a small bowl, combine the salt, pepper, onion powder, oregano, turmeric, cumin and garlic powder. Store in airtight container or a glass container with a tight-fitting lid. It will keep on the shelf for at least 1 month or in the refrigerator for 3 months."
+  ],
+  "image": "/recipes/adobo-from-scratch.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

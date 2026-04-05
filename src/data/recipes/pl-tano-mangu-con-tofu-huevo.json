@@ -1,0 +1,84 @@
+{
+  "id": "pl-tano-mangu-con-tofu-huevo",
+  "name": "PLÁTANO MANGU CON TOFU HUEVO",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Plátano mangu con tofu huevo is my rendition of tres golpe, a popular Dominican breakfast that consists of eggs, salami, cheese and mangu. This was my go-to hangover meal when I used to party in Dyckman or Washington Heights, which is a prime area in New York City where most Dominicans reside. I also have an ex-boyfriend whose Dominican mom used to make this all the time; it was always so good and the perfect meal to cure my hangovers. Mangu is made using green plantain, which is mashed with water and vegan butter. I’m making a tofu scramble with this, with pickled red onions; you can also add your favorite vegan meat alternative to complete the dish. I would recommend Beyond Meat sausage.",
+  "ingredients": [
+    {
+      "item": "salt, plus more to taste",
+      "amount": "2 tsp (12 g)"
+    },
+    {
+      "item": "green plantains, peeled and cut",
+      "amount": "3"
+    },
+    {
+      "item": "vegan butter, plus more if needed",
+      "amount": "¼ cup (½ stick; 57 g)"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil, divided",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "diced yellow onion",
+      "amount": "¼ cup (40 g)"
+    },
+    {
+      "item": "diced mixed red and green bell pepper",
+      "amount": "¼ cup (38 g)"
+    },
+    {
+      "item": "block firm tofu, pressed",
+      "amount": "1(12-oz [340-g])"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tbsp (16 g)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1 tsp (⅔ [4-g] packet)"
+    },
+    {
+      "item": "red onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tbsp (30 ml)"
+    }
+  ],
+  "method": [
+    "To a large pot filled with water, add the salt and the plantains, and boil for about 10 minutes, or until the green plantains are tender. Reserve 1 cup (240 ml) of the cooking water for later and drain the rest.",
+    "In the same pot, combine your green plantains and vegan butter, and gradually add the reserved cooking water to mash the green plantains into mangu. The consistency should be like mashed potatoes, smooth and soft. Make sure you mash all the clumpy parts. Add more butter or water, if needed, and salt and black pepper to taste.",
+    "In a medium-sized skillet over medium heat, heat 2 tablespoons (30 ml) of the olive oil, then add the onion and bell pepper and sauté until fragrant. Now, add your pressed tofu and begin to break it down into crumbles. Add your turmeric, nutritional yeast, adobo, Sazón, and salt and black pepper to taste. Mix together and cook stirring occasionally for 8 minutes.",
+    "In a small pot, combine the remaining tablespoon (15 ml) of olive oil, red onion, sugar and vinegar, and cook for about 5 minutes. Add salt and pepper to taste. This process will quickly cook and pickle the red onion.",
+    "Combine the mangu and tofu egg on a plate and garnish with the pickled red onion."
+  ],
+  "image": "/recipes/pl-tano-mangu-con-tofu-huevo.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

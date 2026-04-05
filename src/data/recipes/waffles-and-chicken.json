@@ -1,0 +1,123 @@
+{
+  "id": "waffles-and-chicken",
+  "name": "Waffles and Chicken",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 15 minutes",
+  "ingredients": [
+    {
+      "item": "¼ cups all-purpose flour",
+      "amount": "2"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "buttermilk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "3 cups"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "chicken thighs, boneless and skinless",
+      "amount": "8"
+    },
+    {
+      "item": "Sriracha hot sauce, maple syrup, or honey for serving",
+      "amount": ""
+    },
+    {
+      "item": "Oil for frying, about 4 cups",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the flour, baking powder, sugar, and salt.",
+    "Stir in the cinnamon, eggs, milk, vanilla, and vegetable oil. Whisk until well-combined.",
+    "Preheat a waffle iron. Add the batter to the iron. Cook until done, about 5-7 minutes. Set the waffles aside on a plate.",
+    "Repeat with the remaining batter.",
+    "To make the buttermilk brine, in a large mixing bowl, combine the buttermilk, onion powder, garlic powder, chili powder, salt, and smoked paprika.",
+    "Stir in the chicken thighs. Let it marinate at room temperature for 30 minutes.",
+    "Meanwhile, in a large mixing bowl, combine the flour, onion powder, garlic powder, salt, pepper, cornstarch, and baking powder.",
+    "Drain the chicken thighs from the buttermilk brine. Coat in the seasoned flour mixture.",
+    "Heat the oil in a large non-stick frying pan over medium heat. Deep-fry the chicken until crispy, about 10 minutes.",
+    "Serve the waffles with the crispy fried chicken on top. Drizzle with the sriracha sauce, maple syrup, or honey."
+  ]
+}

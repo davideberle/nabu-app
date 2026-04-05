@@ -1,0 +1,58 @@
+{
+  "id": "crispy-baked-puffed-tofu-with-teriyaki-sauce",
+  "name": "Crispy Baked Puffed Tofu with Teriyaki Sauce",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "7 ounces"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "hot sauce (such as Frank’s)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Turn the tofu on its side and cut through the center to make two rectangles. Flip them onto their flat sides and stack. Cut through the center, and without separating the halves, cut those two halves twice each. Make two equal-size cuts lengthwise. There are now twenty-four cubes. Place the cubes in a small flat casserole dish or other container in which all the cubes will fit on one level.",
+    "Mix together the vegetable broth and hot sauce. Pour over the tofu. Marinate for an hour.",
+    "Preheat the oven to 350°F.",
+    "Place ¼ cup cornstarch in a medium bowl. Remove the tofu from the marinade and place on the cornstarch. Toss and then place the tofu on a baking sheet. Bake for 30 to 40 minutes. Toss with a spatula every 10 minutes until golden and puffed.",
+    "To a small saucepan, add ½ cup water, tamari, and cornstarch and heat on medium high. Stir until the cornstarch is dissolved. Add the remaining ingredients and bring to a boil. Turn down heat to medium and cook, stirring until desired thickness. Place the tofu on a platter with toothpicks and dip into the sauce."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

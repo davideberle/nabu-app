@@ -1,0 +1,48 @@
+{
+  "id": "tajah-badam",
+  "name": "TAJAH BADAM",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4–6 as a snack",
+  "intro": "I love bringing out this tasty snack of spicy Bangladeshi almonds when we have friends over. It is always devoured and only take a few minutes to throw together. It is pictured.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "flaked (slivered) almonds",
+      "amount": "250g (3 cups)"
+    },
+    {
+      "item": "long green chillies, finely sliced lengthways",
+      "amount": "4"
+    },
+    {
+      "item": "Pinch of ground turmeric",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped coriander (cilantro), to serve",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large frying pan. Add the almonds and toast for about 1 minute until lightly browned. Add the chillies and turmeric and stir to combine.",
+    "Serve on a warmed plate with the lime juice squeezed over the top and season with salt. Garnish with the coriander (cilantro)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

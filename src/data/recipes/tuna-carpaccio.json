@@ -1,0 +1,29 @@
+{
+  "id": "tuna-carpaccio",
+  "name": "Tuna Carpaccio",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "× 25 cm square sheet of good-quality butter puff pastry",
+      "amount": "1"
+    },
+    {
+      "item": "capers in brine, drained",
+      "amount": "6 teaspoons"
+    },
+    {
+      "item": "small red chilli, very finely sliced (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 6 1 × 25 cm square sheet of good-quality butter puff pastry sea salt flakes 200–300 ml sunflower oil, for frying 6 teaspoons capers in brine, drained 250–300 g sashimi-grade tuna good-quality virgin olive oil, for drizzling organic lemon juice, for drizzling 1 small red chilli, very finely sliced (optional)",
+    "Preheat the oven to 180°C (gas mark 4).",
+    "Cut the pastry sheet into 6 equal rectangles. Score the surface on the diagonal with a sharp knife, and sprinkle with a few salt flakes. Bake for 6 minutes, or until golden-brown.",
+    "Heat the sunflower oil in a small saucepan until hot. Fry the capers until they turn crisp, then remove from the oil and drain on kitchen paper."
+  ]
+}

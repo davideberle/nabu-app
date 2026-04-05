@@ -1,0 +1,55 @@
+{
+  "id": "pizza-with-anchovies-and-caciocavallo",
+  "name": "Pizza with Anchovies and Caciocavallo",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4–6",
+  "ingredients": [
+    {
+      "item": "unbleached plain flour, preferably Italian type 00",
+      "amount": "600 g"
+    },
+    {
+      "item": "salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "dry yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "large Spanish onions, finely sliced",
+      "amount": "2"
+    },
+    {
+      "item": "anchovy fillets in oil, drained and roughly broken up",
+      "amount": "20"
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "20"
+    },
+    {
+      "item": "caciocavallo or pecorino, shaved",
+      "amount": "200 g"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "fresh oregano, chopped",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 220°C (gas mark 7).",
+    "Bake in the oven for about 20 minutes until golden-brown."
+  ]
+}

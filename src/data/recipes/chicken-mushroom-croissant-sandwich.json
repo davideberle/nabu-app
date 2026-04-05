@@ -1,0 +1,82 @@
+{
+  "id": "chicken-mushroom-croissant-sandwich",
+  "name": "Chicken Mushroom Croissant Sandwich",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 6 | prep. time 10 minutes | cooking time 22 minutes",
+  "ingredients": [
+    {
+      "item": "Preheat your oven to 400°F (204°C).",
+      "amount": ""
+    },
+    {
+      "item": "Rub the chicken breasts with black pepper and salt.",
+      "amount": ""
+    },
+    {
+      "item": "Put a suitable skillet with 2 tablespoons of butter over medium-high heat.",
+      "amount": ""
+    },
+    {
+      "item": "Sear the chicken for 3 minutes per side, then transfer to a plate.",
+      "amount": ""
+    },
+    {
+      "item": "Add remaining butter to the same skillet and stir in garlic, onion, and mushrooms, then sauté for 5 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Add cream cheese to the skillet and cook for 1 minute.",
+      "amount": ""
+    },
+    {
+      "item": "Shred the cooked chicken and add to the skillet.",
+      "amount": ""
+    },
+    {
+      "item": "Unroll the croissant dough and separate the triangles.",
+      "amount": ""
+    },
+    {
+      "item": "Line a baking sheet with parchment paper.",
+      "amount": ""
+    },
+    {
+      "item": "Spoon the chicken mixture onto the croissant dough triangles.",
+      "amount": ""
+    },
+    {
+      "item": "Roll each croissant triangle in a way to seal the filling inside.",
+      "amount": ""
+    },
+    {
+      "item": "Brush each roll with the egg wash.",
+      "amount": ""
+    },
+    {
+      "item": "Place the rolls on the baking sheet and bake for 15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Serve.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat your oven to 400°F (204°C).",
+    "Rub the chicken breasts with black pepper and salt.",
+    "Put a suitable skillet with 2 tablespoons of butter over medium-high heat.",
+    "Sear the chicken for 3 minutes per side, then transfer to a plate.",
+    "Add remaining butter to the same skillet and stir in garlic, onion, and mushrooms, then sauté for 5 minutes.",
+    "Add cream cheese to the skillet and cook for 1 minute.",
+    "Shred the cooked chicken and add to the skillet.",
+    "Unroll the croissant dough and separate the triangles.",
+    "Line a baking sheet with parchment paper.",
+    "Spoon the chicken mixture onto the croissant dough triangles.",
+    "Roll each croissant triangle in a way to seal the filling inside.",
+    "Brush each roll with the egg wash.",
+    "Place the rolls on the baking sheet and bake for 15 minutes."
+  ]
+}

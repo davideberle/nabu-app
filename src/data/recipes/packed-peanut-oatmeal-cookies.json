@@ -1,0 +1,67 @@
+{
+  "id": "packed-peanut-oatmeal-cookies",
+  "name": "Packed Peanut Oatmeal Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "chia seeds or ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1 cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "vanilla protein powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "dairy-free butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dairy-free cream cheese, softened",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "peanuts, chopped",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F. Cut parchment paper to fit on a baking sheet. Set aside.",
+    "Mix the chia seeds with 3 tablespoons water and set aside.",
+    "Add the flour, baking powder, oats, and protein powder to a large bowl. Set aside.",
+    "Add the butter and sugar to the bowl of a stand mixer. Cream on medium-low speed for 5 minutes. Add the cream cheese and mix well. Turn off the beater and add the prepared chia seed mixture, vanilla, and banana. Mix well on medium speed. Add the dry ingredients and peanuts and keep mixing until just combined.",
+    "Spoon dollops on a cookie sheet 2 inches apart and flatten with the bottom of a glass to about ½-inch thick. Bake for 11 minutes.",
+    "Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

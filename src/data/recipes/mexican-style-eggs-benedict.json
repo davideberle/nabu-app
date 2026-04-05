@@ -1,0 +1,83 @@
+{
+  "id": "mexican-style-eggs-benedict",
+  "name": "Mexican-Style Eggs Benedict",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 20 minutes | cooking time 25-30 minutes",
+  "ingredients": [
+    {
+      "item": "medium sized butternut squash",
+      "amount": "½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Salt and black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "large avocado, pitted and mashed",
+      "amount": "1"
+    },
+    {
+      "item": "chorizo sausages, removed from their casings and ground",
+      "amount": "4"
+    },
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "jalapeño, cored, seeded, and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh cilantro, chopped",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large egg yolks",
+      "amount": "4"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped chipotle pepper in adobo or 1 teaspoon chipotle powder or to taste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Peel the squash and slice it into 4 slices of about ½ inch thickness. Brush slices on both sides with olive oil. Season with salt and pepper to taste.",
+    "Preheat the grill over medium heat. Grease the grates with some vegetable oil.",
+    "Add the squash slices. Grill for 5-6 minutes on each side until softened, tender, and the grill marks are visible.",
+    "Add the chorizo to a medium saucepan or skillet over medium heat. Cook, breaking the sausage up with a spatula, until crumbly and cooked through. Set aside.",
+    "In another medium saucepan or skillet, melt the butter.",
+    "In a small mixing bowl, combine the egg yolks, lemon juice, chipotle pepper, and salt.",
+    "Add a spoonful of the melted butter and combine well. Repeat until you've used all butter.",
+    "In a small saucepan or skillet, pour water until it's ½-inch high. Add a splash of vinegar and a pinch of salt. Heat water over medium-high until bubbly. Do not bring it to a boil.",
+    "Crack an egg into a small bowl (do not whisk). Gently add the egg to the heated water. The egg white will start to firm up gradually. Cook for about 3-4 minutes until the white is well-set.",
+    "Using a spoon, remove the cooked egg and transfer it over a paper towel to drain excess water.",
+    "Cook the remaining eggs the same way.",
+    "Arrange the squash slices on plates. Top each with mashed avocado and chorizo.",
+    "Add the poached eggs to each and drizzle with the sauce. Top with the jalapeño and cilantro.",
+    "Serve warm."
+  ]
+}

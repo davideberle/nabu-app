@@ -1,0 +1,40 @@
+{
+  "id": "valdostana-veal",
+  "name": "Valdostana Veal",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "fontina cheese, sliced thinly",
+      "amount": "250 g"
+    },
+    {
+      "item": "fresh sage leaves",
+      "amount": "24"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "50 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "cloves garlic, crushed",
+      "amount": "4"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "150 ml"
+    }
+  ],
+  "method": [
+    "Serves 4 about 8 veal scaloppine, 2 per person (depending on the size of the scaloppine) 250 g fontina cheese, sliced thinly 24 fresh sage leaves unbleached plain flour, for dusting 50 g unsalted butter 4 tablespoons good-quality virgin olive oil 4 cloves garlic, crushed 150 ml dry white wine salt and ground black pepper",
+    "Melt the butter with the olive oil, add the garlic and the rest of the sage leaves, then the veal. Fry the scaloppine on all sides, until golden. Now add the dry white wine and continue cooking, turning the scaloppine a few times, until cooked – about 5 minutes. Add salt and pepper to taste. If the sauce looks dry, add a little stock.",
+    "Serve immediately while still hot. I like to serve this with Patate Arrosto con Funghi Porcini."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "efo-egusi",
+  "name": "Efo Egusi",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Efo Egusi is the most popular dish amongst the Ijesa people of Osun State (my hometown), where it is eaten alongside pounded yam. Egusi soup is eaten all the way across Nigeria by the Igbo, Hausa, Edo, Itsekiri, Ibibio and Efik, to name a few. The ground egusi seeds are added to soups as a thickening agent. The traditional recipe calls for meat to be added, but you can use any meat substitute, such as roasted mushrooms or diced aubergine (garden egg/eggplant).",
+  "ingredients": [
+    {
+      "item": "palm oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "iru (fermented locust beans)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    },
+    {
+      "item": "whole or ground egusi",
+      "amount": "2 cups"
+    },
+    {
+      "item": "large red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "(approx. 600g) chopped spinach",
+      "amount": "6 cups"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot and add the stew base. Season with iru, vegetable stock cube and salt, and cook uncovered on medium-high heat for 5-6 minutes.",
+    "Place the egusi in a food blender with the chopped onion and 1 cup of water. Blend for 2 minutes until you have a thick paste. Pour the egusi blend over the stew and do not stir. Cover the pot and simmer on medium-low heat for 20 minutes. The egusi should cake and form little air pockets.",
+    "Add the chopped spinach and meat alternative of your choice. Mix well, cover the pot and cook on high heat for another 5 minutes.",
+    "Serve hot with a side of your choice, such as: pounded yam, eba, boiled yam, rice, boiled plantain, fried plantain, and more."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

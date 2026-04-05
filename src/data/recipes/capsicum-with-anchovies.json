@@ -1,0 +1,27 @@
+{
+  "id": "capsicum-with-anchovies",
+  "name": "Capsicum with Anchovies",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "firm red capsicums (peppers)",
+      "amount": "3"
+    },
+    {
+      "item": "firm yellow capsicum (pepper)",
+      "amount": "1"
+    },
+    {
+      "item": "anchovies",
+      "amount": "15"
+    }
+  ],
+  "method": [
+    "Serves 6 3 firm red capsicums (peppers) 1 firm yellow capsicum (pepper) 2–3 cloves garlic fresh basil 15 anchovies good-quality virgin olive oil, for drizzling",
+    "In a serving dish arrange a layer of capsicum then some chopped garlic, basil and some anchovy fillets. Continue layering until everything is used up. Now drizzle over some olive oil and let stand for a few hours before serving."
+  ]
+}

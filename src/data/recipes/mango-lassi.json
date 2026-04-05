@@ -1,0 +1,55 @@
+{
+  "id": "mango-lassi",
+  "name": "MANGO LASSI",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 2",
+  "intro": "Way back when I first started my blog, it was the mango lassis that got my kids excited about going out for a curry. I was happy with the pints of cold lager, but for them it was those thick mango milkshakes that they craved more than the curries and rice. So this is one of the first recipes I taught them. Lassis are the perfect accompaniment for a curry feast. They are deliciously soothing, offering an often-appreciated cooling effect when consumed with those spicy curries.",
+  "ingredients": [
+    {
+      "item": "Greek yoghurt",
+      "amount": "250g (1 cup)"
+    },
+    {
+      "item": "full-fat (whole) milk",
+      "amount": "400ml (scant ¾ cups)"
+    },
+    {
+      "item": "tinned (canned) mango pulp or the equivalent ripe cut mango pieces",
+      "amount": "250ml (1 cup)"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cardamom powder (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Handful of ice cubes",
+      "amount": ""
+    },
+    {
+      "item": "pistachio nuts, lightly crushed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Whipped cream, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of saffron, to garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the yoghurt, milk, mango, sugar and cardamom powder (if using) in a blender and blend until super-smooth. Add the ice cubes and blend until crushed.",
+    "Divide into two glasses and sprinkle some pistachio nuts over the top. Garnish with a squirt of whipped cream and top with a few more pistachios and saffron."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

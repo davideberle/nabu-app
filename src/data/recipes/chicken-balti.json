@@ -2,15 +2,14 @@
   "id": "chicken-balti",
   "name": "CHICKEN BALTI",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 1",
-  "intro": "Almost any curry can be cooked as a balti. At Shababs, in Birmingham, they seem to have hundreds of combinations that can be ordered. The restaurant was packed when I visited with friend and balti historian Andy Munro. He commented that making baltis correctly was probably best left to the professionals, and after watching chef-owner Zafar Hussain cook a few, I could understand why. Don’t let that stop you from making this one, though!",
+  "intro": "Almost any curry can be cooked as a balti. At Shababs, in Birmingham, they seem to have hundreds of combinations that can be ordered. The restaurant was packed when I visited with my friend and balti historian Andy Munro. He commented that making baltis correctly was probably best left to the professionals, and after watching chef-owner Zafar Hussain cook a few, I could understand why. Don’t let that stop you making this one, though!",
   "ingredients": [
     {
-      "item": "rapeseed oil or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "3 tbsp"
     },
     {
@@ -18,7 +17,7 @@
       "amount": "1"
     },
     {
-      "item": "green pepper (bell pepper), deseeded and roughly chopped",
+      "item": "green (bell) pepper, deseeded and roughly chopped",
       "amount": "1"
     },
     {
@@ -46,23 +45,23 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(1 cup) base curry sauce, heated",
-      "amount": "250ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "250ml (1 cup)"
     },
     {
-      "item": "(70z) skinless chicken breast or thigh meat, cut into small pieces (tikka)",
-      "amount": "200g"
+      "item": "skinless chicken breast or thigh meat, cut into small pieces (tikka)",
+      "amount": "200g (7oz)"
     },
     {
       "item": "garam masala",
       "amount": "1 tbsp"
     },
     {
-      "item": "dried fenugreek (methi) leaves",
+      "item": "dried fenugreek leaves (kasoori methi)",
       "amount": "1 tsp"
     },
     {
-      "item": "Salt",
+      "item": "Salt, to taste",
       "amount": ""
     },
     {
@@ -71,11 +70,10 @@
     }
   ],
   "method": [
-    "Heat the oil in a frying pan (or wok, karahi or balti pan) over a high heat until almost smoking. Add the onion, pepper (bell pepper) and tomato, and fry for about a minute. Stir in the garlic and ginger paste and chilli paste. The oil will sizzle as they release their moisture.",
+    "Heat the oil in a frying pan (or wok, karahi or balti pan) over a high heat until almost smoking. Add the onion, green (bell) pepper and tomato, and fry for about 1 minute. Stir in the garlic and ginger paste and chilli paste. The oil will sizzle as they release their moisture.",
     "If you’re feeling brave and have a gas hob, tilt the pan towards the flame and see if you can get the oil to catch fire. Don’t panic if it lights, and never throw water on the flame or you will probably have to call the fire service and may need a new kitchen.",
-    "Add the ground spices and 5 tbsp of the base curry sauce. Let this come to a boil then add the chicken pieces and another 5 tbsp of the base sauce. Stir occasionally so that the sauce doesn’t catch, and scrape the caramelized sauce from the sides of the pan.",
-    "Pour in the remaining base sauce and let the curry simmer until the chicken is cooked through and the sauce is quite thick. Baltis are usually served with fresh naans or chapatis, which are used to soak up the sauce and meat instead of cutlery, and your sauce needs to be thick enough to do this.",
-    "To finish, stir in the garam masala and dried fenugreek leaves and check for seasoning. If there is any oil on the surface, skim it off for a healthier curry. Top with chopped coriander (cilantro) to serve."
-  ],
-  "image": "/recipes/chicken-balti.jpg"
+    "Add the ground spices and 5 tablespoons of the base curry sauce. Let this come to a boil then add the chicken pieces and another 5 tablespoons of the base sauce. Stir occasionally so that the sauce doesn’t catch, and scrape the caramelized sauce from the sides of the pan.",
+    "Pour in the remaining base sauce and let the curry simmer until the chicken is cooked through and the sauce is quite thick. Baltis are usually served with fresh naans or chapattis, which are used to soak up the sauce and meat instead of cutlery, and your sauce needs to be thick enough to do this.",
+    "To finish, stir in the garam masala and dried fenugreek leaves (kasoori methi) and check for seasoning. If there is any oil on the surface, skim it off for a healthier curry. Top with chopped coriander (cilantro) to serve."
+  ]
 }

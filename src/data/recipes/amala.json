@@ -1,0 +1,37 @@
+{
+  "id": "amala",
+  "name": "Amala",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2-3",
+  "intro": "Native to the Yoruba tribe in the western part of Nigeria, Amala is prepared using yam flour (elubo). The yam is dried and ground into a fine flour that is oﬀ-white in colour. When cooked or added to hot water, it then turns a deep brown colour. It has an earthy flavour and is eaten alongside traditional stews such as Efo Riro.",
+  "ingredients": [
+    {
+      "item": "yam flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "2"
+    },
+    {
+      "item": "garri",
+      "amount": "1 cup"
+    },
+    {
+      "item": "boiling hot water",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Pour 2 cups of cold water into a pot and add the yam flour all at once. Stir continuously with a wooden spoon over medium heat until it starts to thicken to a dough. This should take 6-8 minutes.",
+    "Pour in the remaining 1/2 cup of hot water, do not stir, cover the pot and simmer for 5-6 minutes over low heat. Mix and vigorously knead the amala until you are left with a smooth, soft, sticky dough.",
+    "Place the garri in a large heat resistant bowl and add 2 cups of boiling hot water. Mix thoroughly with a wooden spoon until it comes together and you have a sticky dough."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

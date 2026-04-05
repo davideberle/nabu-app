@@ -1,0 +1,98 @@
+{
+  "id": "three-layer-tacos-with-kale-slaw",
+  "name": "Three-Layer Tacos with Kale Slaw",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "taco seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tamari",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into ½-inch chunks",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "15-ounce can pinto beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "finely diced white onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Roma tomatoes, finely diced",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "de-stemmed and coarsely chopped kale",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "thinly sliced purple cabbage",
+      "amount": "1 cup"
+    },
+    {
+      "item": "thinly sliced green cabbage",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dairy-free mayonnaise",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chipotle pepper in adobo sauce, chopped finely",
+      "amount": "1"
+    },
+    {
+      "item": "taco shells",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Mix the taco seasoning and tamari in a small bowl. Set aside.",
+    "Add the tofu to the tamari mix and toss. Marinate while working on the bean mixture and slaw.",
+    "Add the beans, onion, tomatoes, salt, pepper, and parsley to a small bowl. Toss and set aside to meld.",
+    "Add the kale to a medium bowl and add the lemon juice. Massage the kale with your hands to soften it up. Add both cabbages, the carrots, mayonnaise, lime juice, maple syrup, and chili in adobo sauce. Mix well.",
+    "Assemble the tacos by layering the shells with the bean mixture, tofu, and finally the slaw."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

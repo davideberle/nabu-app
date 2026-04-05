@@ -1,0 +1,44 @@
+{
+  "id": "gbegiri",
+  "name": "Gbegiri",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "A Yoruba bean soup that originates from Ibadan. It is flavourful, healthy and nutritious. It is traditionally served with Amala (page 86), along with Ewedu (page 106) and red stew to make a local dish called Abula. It can also be served with just Amala and Stew (page 132). The traditional method of making Gbegiri involves the use of the ancient cooking tool ijabe, but a food blender does the job.",
+  "ingredients": [
+    {
+      "item": "brown/honey beans or black-eyed beans (soaked overnight and drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "1/4 teaspoon baking soda 1-2 scotch bonnet chillies",
+      "amount": ""
+    },
+    {
+      "item": "iru (fermented locust beans)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "palm oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the peeled beans a pot with 3 cups of water and baking soda. Cook on medium heat for 45 minutes, stirring frequently to prevent the beans from sticking to the bottom of the pot. The beans should be mushy and very soft.",
+    "Pour the beans back into the pot, add one cup of water, palm oil, stock cube and salt to taste. Cook for 5 minutes over medium-high heat."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

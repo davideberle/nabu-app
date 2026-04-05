@@ -1,0 +1,40 @@
+{
+  "id": "tomato-salad-with-fresh-mozzarella",
+  "name": "Tomato Salad with Fresh Mozzarella",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4–6 | prep. time 15 minutes",
+  "ingredients": [
+    {
+      "item": "very ripe tomatoes, sliced ¼-inch thick",
+      "amount": "4"
+    },
+    {
+      "item": "fresh mozzarella cheese, sliced ¼-inch thick",
+      "amount": "1 pound"
+    },
+    {
+      "item": "large fresh basil leaves",
+      "amount": "20"
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Fine balsamic vinegar",
+      "amount": ""
+    },
+    {
+      "item": "Sea salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Arrange tomato and mozzarella slices on a serving platter by alternating layers with basil leaves.",
+    "Drizzle each layer with olive oil, balsamic vinegar, salt, and freshly ground pepper.",
+    "Chill about 10 minutes before serving."
+  ]
+}

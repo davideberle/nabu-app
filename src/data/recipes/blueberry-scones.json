@@ -1,0 +1,60 @@
+{
+  "id": "blueberry-scones",
+  "name": "Blueberry Scones",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "heavy cream",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "¼ cups all-purpose flour",
+      "amount": "2"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter, cold and cubed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large egg, room temperature",
+      "amount": "1"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fresh blueberries",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C). Line a baking sheet with parchment paper.",
+    "In a large mixing bowl, combine the flour, sugar, baking powder, baking soda, and salt.",
+    "Stir in the butter, egg, vanilla extract, and heavy cream.",
+    "Fold in the blueberries.",
+    "Using your hands, knead a dough from the batter. Roll the dough out into a square shape 1-inch thick and cut into 8 triangles.",
+    "Arrange the triangles on the prepared baking sheet. Bake for 15 minutes.",
+    "Serve with a dusting of powdered sugar."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "id": "all-in-one-skillet-breakfast-hash",
+  "name": "All-in-One Skillet Breakfast Hash",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "diced russet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced sweet potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "black salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "thyme",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Slow Cooker Maple Breakfast Links, sliced (page 276)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a very large skillet, either 12 inches wide or very deep, heat the oil over medium-high heat. Add the russet potatoes and cook for 10 minutes, flipping once. Add the sweet potatoes and onion; stir and cook 5 more minutes.",
+    "Push the potatoes and onions to the side and crumble the tofu into the pan. Add all of the spices and mix with the tofu. Cook 2 to 3 minutes or until you see that the turmeric is dispersed well and the tofu has turned a golden color.",
+    "Add the links and nutritional yeast and mix the whole skillet of ingredients together. Cook 2 to 3 minutes or until the links are heated through. Taste and season with more salt and pepper, if desired."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

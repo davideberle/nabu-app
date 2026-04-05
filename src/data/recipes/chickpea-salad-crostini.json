@@ -1,0 +1,72 @@
+{
+  "id": "chickpea-salad-crostini",
+  "name": "Chickpea Salad Crostini",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "baguette, cut into 12 slices",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "8-ounce can corn, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "4-ounce can black olives, drained and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chili powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Fresh thyme, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Lay out the bread slices on a baking sheet. Lightly brush each slice of bread with oil. (The new silicone brushes are great for this, and they wash up really easily.) Put the baking sheet under the broiler. Don’t do anything else. Just stand there and keep checking the bread and don’t let it burn. It only takes a couple of minutes. After the toasts are lightly browned, remove the sheet from the oven. You can make these ahead of time and keep them in the refrigerator for later use, too.",
+    "In a large bowl, mix all the remaining ingredients together, except the thyme.",
+    "Top each toast with the chickpea mixture just before serving. Garnish with fresh thyme."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

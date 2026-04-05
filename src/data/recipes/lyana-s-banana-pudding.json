@@ -1,0 +1,62 @@
+{
+  "id": "lyana-s-banana-pudding",
+  "name": "LYANA’S BANANA PUDDING",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 10",
+  "intro": "For the whipped cream, to a small pot over medium heat, add the aquafaba, granulated sugar and agar agar. Cook until it reaches a low boil, then remove from the heat and transfer to a heatproof bowl to cool slightly, until you can put your finger into it.",
+  "ingredients": [
+    {
+      "item": "aquafaba (liquid drained from canned chickpeas)",
+      "amount": "1¾ cups (414 ml)"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "agar agar powder",
+      "amount": "1½ tsp (4.5 g)"
+    },
+    {
+      "item": "cream of tartar",
+      "amount": "1½ tsp (scant 5 g)"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 cup (120 g)"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tbsp (15 ml)"
+    },
+    {
+      "item": "banana powder",
+      "amount": "3 tbsp (27 g)"
+    },
+    {
+      "item": "can Nature Charm brand coconut custard",
+      "amount": "1 (14-oz [400-g])"
+    },
+    {
+      "item": "About 10 vegan vanilla sandwich cookies, such as Oreo®, with the filling removed, plus more for garnish",
+      "amount": ""
+    },
+    {
+      "item": "bananas, peeled and sliced, plus more for garnish",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Banana is one of my favorite fruits. I love banana-flavored everything, but I especially love banana pudding. Banana pudding is a southern dessert that is sweet, soft, fluffy and a little crunchy from the vanilla cookies. This banana pudding is simple to make, and instead of making the custard from scratch, I recommend using Nature’s Charm brand coconut custard to cut down on prep. If you cannot find this in your local stores, Amazon should be your go-to spot.",
+    "In a stand mixer, blend the aquafaba mixture on high speed for 7 minutes. You will see it start to turn white and build volume. Turn off the blender, then add the cream of tartar and powdered sugar. Blend on high speed for another 7 minutes while gradually adding the vanilla. At this point, you should have a thick and creamy whipped cream.",
+    "Remove about 1 cup (240 ml) of the whipped cream and reserve. Add the banana powder to the whipped cream in the blender and gradually add the coconut custard little by little and blend; you may not need to use the whole can since you just need the pudding to be fluffy and full."
+  ],
+  "image": "/recipes/lyana-s-banana-pudding.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "baked-fennel",
+  "name": "Baked Fennel",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "125 ml"
+    },
+    {
+      "item": "fennel bulbs, quartered (use the long, thin, male fennel bulbs)",
+      "amount": "6"
+    },
+    {
+      "item": "Spanish onions, quartered",
+      "amount": "2"
+    },
+    {
+      "item": "bunch flat-leaf parsley, finely chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 125 ml good-quality virgin olive oil 6 fennel bulbs, quartered (use the long, thin, male fennel bulbs) 2 Spanish onions, quartered salt and ground black pepper 1 bunch flat-leaf parsley, finely chopped",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Bake for about 20 minutes, shaking the dish from time to time to stop the vegetables from sticking to the bottom of the dish. They should start to colour lightly. Remove from the oven, season with salt and pepper and stir in the parsley before serving."
+  ]
+}

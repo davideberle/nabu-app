@@ -1,0 +1,58 @@
+{
+  "id": "chocolate-trail-mix-bars",
+  "name": "Chocolate Trail Mix Bars",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "bran flakes cereal",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mixed nuts, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried cherries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips, melted",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Line an 8-inch square baking dish with parchment paper and come up about 3 inches on opposite sides. This will act as a handle to remove the bars from the dish.",
+    "Add the oats, cereal, nuts, cherries, cranberries, and hempseed to a large bowl and mix well.",
+    "Mix the peanut butter and syrup together and pour into the large bowl. Mix well. Add the melted chocolate and mix again.",
+    "Press firmly into the prepared dish and into all corners. Let set in the refrigerator for 30 minutes.",
+    "Grab the “handles” of the parchment paper and lift out of the dish. Place on a cutting board and slice down the center. Turn and make three even cuts, which will give you eight long bars."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

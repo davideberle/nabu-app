@@ -1,0 +1,73 @@
+{
+  "id": "mixed-bag-chocolate-walnut-protein-bars",
+  "name": "Mixed Bag Chocolate walnut Protein Bars",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "peanut butter",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "quick-cooking oats",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "protein powder",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Prepare an 8-inch square baking dish with parchment paper coming up on the sides on two opposite ends. Not over the top, just the sides. This makes for easier removal.",
+    "Add the peanut butter, maple syrup, and coconut oil to a small saucepan. Heat to melt the peanut butter and stir well. Take off heat and let cool a bit.",
+    "Mix the ground chia seeds and 3 tablespoons water in a small bowl and set aside.",
+    "Add the oats, walnuts, chocolate chips, sugar, hempseed, protein powder, cinnamon, and salt to a large bowl. Mix well. Add the chia mixture and peanut butter mixture to the bowl of dry ingredients and mix well.",
+    "Pour the mixture into the prepared dish and press down with your fingers to make the mix firm and pressed into all corners.",
+    "Bake for 30 to 35 minutes. The bars will get harder as they cool, so don’t overbake.",
+    "Let cool on a wire rack. To remove, grab hold of the extra parchment paper on the opposite ends of the dish and lift. Place on a cutting board and slice into bars that are about 2 inches wide and then in half at 4 inches long."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

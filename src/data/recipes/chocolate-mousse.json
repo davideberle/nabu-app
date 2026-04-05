@@ -1,0 +1,35 @@
+{
+  "id": "chocolate-mousse",
+  "name": "Chocolate Mousse",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "good-quality dark chocolate (70% cocoa solids)",
+      "amount": "100 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "40 g"
+    },
+    {
+      "item": "Nocino liqueur (see Note)",
+      "amount": "50 ml"
+    },
+    {
+      "item": "organic eggs, separated",
+      "amount": "4"
+    },
+    {
+      "item": "cocoa powder, for sprinkling",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Serves 4 100 g good-quality dark chocolate (70% cocoa solids) 40 g unsalted butter 50 ml Nocino liqueur (see Note) 4 organic eggs, separated 1 tablespoon cocoa powder, for sprinkling whipped cream, for serving",
+    "Melt the chocolate and butter (without stirring) in a bowl set over a saucepan of simmering water. Remove from the heat and stir in the Nocino followed by the egg yolks, combining well."
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "id": "shanghai-potsticker-buns",
+  "name": "Shanghai potsticker buns",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "white or black sesame seeds, or a mixture of both",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Chinese low-gluten flour, plus extra for dusting",
+      "amount": "2 cups (250g)"
+    },
+    {
+      "item": "Chinese high-gluten flour",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cooking oil, plus extra for cooking",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "jellied stock (see here)",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "pork mince, preferably belly",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground white pepper",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Chinese high-gluten flour, plus extra for dusting",
+      "amount": "1¾ cups (200g)"
+    },
+    {
+      "item": "cooking oil, plus extra for the steamer",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "fresh ginger",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "jellied stock (see here)",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (25g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "pork mince, preferably belly",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground white pepper",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "oil or lard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "papery dried shrimp",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped preserved mustard tuber",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "thinly sliced spring onions",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "stock (or wonton cooking water)",
+      "amount": "3 cups (750ml)"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "curly green kale, or 5 oz (150g) bunched spinach or shepherd’s purse",
+      "amount": "9 oz (250g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "¾ oz (20g)"
+    },
+    {
+      "item": "spring onion, white part only",
+      "amount": "1"
+    },
+    {
+      "item": "minced pork",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Chinese low-gluten flour",
+      "amount": "2 cups (250g)"
+    },
+    {
+      "item": "active dry yeast",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "groundnut oil or melted lard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quantity stuffing of your choice (see here)",
+      "amount": "1"
+    },
+    {
+      "item": "quantity Basic steamed bun dough (see here)",
+      "amount": "1"
+    },
+    {
+      "item": "white Asian radish, about 2 lbs (900g)",
+      "amount": "1"
+    },
+    {
+      "item": "skinless, boneless pork belly",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped spring onion",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quantity Basic steamed bun dough (see here)",
+      "amount": "1"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "curly green kale",
+      "amount": "1½ oz (500g)"
+    },
+    {
+      "item": "fresh or brined bamboo shoot",
+      "amount": "1 lb (40g)"
+    },
+    {
+      "item": "firm tofu (plain, spiced or smoked)",
+      "amount": "1½ oz (40g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "plus a pinch of superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "rapeseed or groundnut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "quantity Basic steamed bun dough (see here)",
+      "amount": "1"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "3"
+    },
+    {
+      "item": "chicken breast or thigh meat, with or without skin",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "skinless pork belly",
+      "amount": "6 oz (175g)"
+    },
+    {
+      "item": "fresh or brined bamboo shoot",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "lard or cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped fresh ginger",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "finely chopped spring onion, white part only",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "1 cup (225ml)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "potato starch mixed with 3 tbsp cold water",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quantity Basic steamed bun dough (see here) A little cooking oil",
+      "amount": "1"
+    },
+    {
+      "item": "quantity Basic steamed bun dough (see here)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Make the wrappers. Lay out a sheet of parchment paper. Give the rested dough a quick knead, then cut it into two or three strips. Roll each strip into a long cylinder, then cut off pieces of dough the size of walnuts, about 1 oz (30g) each. Dust them lightly with flour. Stand them cut-side up and flatten them into discs with the palm of your hand. Roll the discs into circles about 3 in (9cm) in diameter, dusting with a little flour as required.",
+    "Make the wrappers. Cut the dough into strips about 1½ in (3cm) wide, then break off pieces the size of very large cherries, about ½ oz (15g) each. Dust these lightly with flour, stand them cut-side up on a board and flatten them into discs with the palm of your hand. Roll the discs into 4 in (10cm) diameter circles, dusting the board and rolling pin with flour as needed.",
+    "Make the dumplings. Brush the base of a bamboo steamer with oil. Holding a circle of dough in one hand, use a blunt knife or bamboo spatula to place about ¾ oz (20g) of stuffing in the center. Use your other hand to pinch the edge of the dough to enclose the stuffing (see here). Make sure the mouth of the dumpling is sealed, then pinch it up into a point. Put the finished dumplings in your oiled steamer, leaving gaps of at least 1½ in (3cm) between them.",
+    "Bring a large pan of water to the boil and fill a small dish with cold water. Place a dumpling wrapper in the palm of your hand and put a generous tablespoon (¾ oz/20–25g) of the pork mixture in the center, pressing it into the wrapper. Dip your finger in the dish of water and run it around the edgeof the wrapper. Wrap the wonton, sealing the edges tightly. Put the finished dumpling on a dry surface. Make the rest of the dumplings.",
+    "Peel the radish and cut it into 1½ in (3mm) slices, then into slivers. Add 1 tablespoon salt, mix well and set aside for at least half an hour. Cover the pork in cold water, bring to the boil, then simmer gently until cooked through. Remove from the water and leave to cool, then cut it into 2 in (5mm) dice. Drain the radish and squeeze it to get rid of as much water as possible.",
+    "Heat the lard or cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until it smells delicious and is tinged with gold. Add the ginger and spring onion and stir-fry briefly until fragrant. Tip the Shaoxing wine around the edges of the pan and let it sizzle. Remove from the heat, add the radish, light soy sauce and sugar, along with ¼ teaspoon salt, and mix well. Set aside to cool. Use to fill and cook Basic steamed buns (see here).",
+    "Make a basic pork stuffing using the ingredients of the Shanghai potsticker bun (see here), without the jellied stock. Stuff and cook as for Basic steamed buns (see here).",
+    "Stir-fry plenty of snow vegetable with a little finely chopped firm tofu and bamboo shoot, and season to taste with salt and sugar. Stuff and cook as for Basic steamed buns (see here).",
+    "Make the basic steamed bun dough and let it rest. Oil the layers of a steamer. Turn the dough out onto a lightly floured work surface. Knead it briefly, then cut or roll it into a 1½ in (3cm) thick cylinder. Use a knife to cut this into 1¾ in (4cm) sections weighing about ¾ oz (25g) each. Lightly dust your hands with flour, turn each section on its end and flatten it with the palm of your hand, then roll it out into an 3 in (8cm) circle. Repeat with the rest of the dough."
+  ]
+}

@@ -2,15 +2,14 @@
   "id": "chicken-tikka-masala",
   "name": "CHICKEN TIKKA MASALA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "When people order a chicken tikka masala, they know what they want, and if it isn’t just like they expect it to be, you can see the disappointment in their faces. The thing is, there are hundreds of recipes for this world-famous curry, but this BIR combo should get you the result you’re looking for.",
+  "intro": "When people order a chicken tikka masala, they know what they want, and if it isn’t just like they expect it to be, you can see the disappointment in their faces. The thing is, there are hundreds of recipes for this world-famous curry. Some chefs add loads of coconut flour or block coconut, whereas others leave the coconut out. And many people like this curry super-sweet, whereas others prefer it to be more savoury. This BIR combo is my favourite version and should get you the result you’re looking for. If you use this as a guide, you can then adjust the sweetness and coconut flavour to taste. Be sure to use tandoori chicken tikka for this one.",
   "ingredients": [
     {
-      "item": "ghee, rapeseed oil or seasoned oil",
+      "item": "ghee, rapeseed (canola) oil or seasoned oil",
       "amount": "4 tbsp"
     },
     {
@@ -46,52 +45,50 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "(3 cups) base curry sauce, heated",
-      "amount": "700ml"
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "700ml (3 cups)"
     },
     {
       "item": "About 125ml (½ cup) cooking stock or spice stock, (optional)",
       "amount": ""
     },
     {
-      "item": "(1¾lb) grilled chicken tikka",
-      "amount": "800g"
+      "item": "grilled chicken tikka",
+      "amount": "800g (1lb 12oz)"
     },
     {
-      "item": "(scant 1 cup) single (light) cream, plus a little more to finish",
-      "amount": "200ml"
+      "item": "single (light) cream, plus a little more to finish",
+      "amount": "200ml (generous ¾ cup)"
     },
     {
       "item": "red food colouring powder (optional)",
       "amount": "1 tbsp"
     },
     {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
       "item": "Juice of 1 lemon",
       "amount": ""
     },
     {
-      "item": "Small bunch of fresh coriander (cilantro), chopped",
+      "item": "Small bunch of coriander (cilantro), chopped",
       "amount": ""
     },
     {
-      "item": "dried fenugreek (methi) leaves",
+      "item": "dried fenugreek leaves (kasoori methi)",
       "amount": "1 tbsp"
     },
     {
       "item": "garam masala",
       "amount": "1 tsp"
-    },
-    {
-      "item": "Salt",
-      "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large pan over a medium-high heat. When small bubbles begin to appear, stir in the garlic and ginger paste; it will sizzle. Add the sugar, ground almonds and coconut flour (if using) followed by the tomato purée. This will cool the pan slightly.",
-    "Swirl this all together into one big happy tomato party then stir in the mixed powder, tandoori masala and paprika, followed by 250ml (1 cup) of the base curry sauce. When the sauce begins to bubble, add the rest of the base curry sauce and let it simmer nicely for a few minutes. As it simmers, the sauce will begin to brown on the side of the pan. Stir this in from time to time.",
+    "Heat the ghee or oil in a large pan over a medium–high heat. When small bubbles begin to appear, stir in the garlic and ginger paste; it will sizzle. Add the sugar, ground almonds and coconut flour (if using) followed by the tomato purée. This will cool the pan slightly.",
+    "Swirl this all together into one big happy tomato party, then stir in the mixed powder, tandoori masala and paprika, followed by 250ml (1 cup) of the base curry sauce. When the sauce begins to bubble, add the rest of the base curry sauce and let it simmer nicely for a few minutes. As it simmers, the sauce will begin to brown on the side of the pan. Stir this in from time to time.",
     "If you have some cooking stock from pre-cooked stewed chicken or spice stock, you can add it for extra flavour. Add the grilled chicken to the simmering sauce to heat through.",
-    "When the sauce has cooked down to your desired thickness, add the cream and food colouring, if using, and simmer for a further couple of minutes. If the sauce becomes too thick, you can add a little more base sauce, cooking stock or spice stock.",
-    "To finish, taste and season with salt. If you like your CTMs sweet, add a little more sugar. Squeeze in the lemon juice and sprinkle with the chopped coriander (cilantro), dried fenugreek leaves and the garam masala. A swirl of cream on top adds a nice finishing touch."
-  ],
-  "image": "/recipes/chicken-tikka-masala.jpg"
+    "To finish, taste and season with salt. If you like your CTMs sweet, add a little more sugar. Squeeze in the lemon juice and sprinkle with the chopped coriander (cilantro), dried fenugreek leaves (kasoori methi) and the garam masala. A swirl of cream on top adds a nice finishing touch."
+  ]
 }

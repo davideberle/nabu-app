@@ -1,0 +1,53 @@
+{
+  "id": "cucumber-seitan-rollups",
+  "name": "Cucumber seitan Rollups",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "orange bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "6-inch cucumbers",
+      "amount": "2"
+    },
+    {
+      "item": "hummus",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "seitan, crumbled (Slow Cooker Log for Thin Slices and Crumbles, page 280)",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Slice the bell peppers until you have eighteen thin toothpick-size strips of each color, and then chop the remaining peppers into a very fine dice (should be at least 3 tablespoons of each color; you may have some leftover). Set aside.",
+    "Use a vegetable peeler to slice off long strips from the cucumbers. Keep the same direction so that some green will be on each long edge of the strips. Slice on all four sides and discard the center seed section. You will have about two or three slices from each of the four sides of the cucumber.",
+    "Lay out the slices. Spread about 2 teaspoons hummus down the center of each strip; spread out evenly, keeping a little bit away from the long edge. Sprinkle a dash of salt and pepper on each hummus-covered cucumber. Now sprinkle about 1½ teaspoons each of seitan and chopped bell pepper mix on each slice.",
+    "Roll up each cucumber and secure with a toothpick. Set on their sides and slide three different-colored bell pepper strips into the center at different heights. You will need to cut some of them shorter to achieve this look."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

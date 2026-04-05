@@ -1,0 +1,68 @@
+{
+  "id": "apple-broccoli-crunch-bowl",
+  "name": "Apple Broccoli Crunch Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "medium heads broccoli (about 4 cups when chopped)",
+      "amount": "2"
+    },
+    {
+      "item": "apples of your choice, diced right before you add them to the salad (I use Gala)",
+      "amount": "3"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "maple syrup (you can use up to 2 tablespoons)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    }
+  ],
+  "method": [
+    "Cut the florets from the broccoli stalks and set the stalks aside. Cut the florets into very small pieces. Place in a large bowl.",
+    "Cut the hard outer skin off the broccoli stalks to get down to the tender inside. Discard the outer skin. Cut the inside stems into matchsticks. (Or you can use a mandolin or food processor that has an attachment that will cut the stems into long strips—not grated. Scissors work too.) The idea is to have very small sticks of raw broccoli stems that will hold their shape. Add to the large bowl along with the florets. Add the apples, onions, raisins, sunflower seeds, and hempseed.",
+    "Whisk together all of the dressing ingredients in a medium bowl. Add the dressing to the salad and toss. Chill until ready to serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

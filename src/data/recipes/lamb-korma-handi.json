@@ -1,0 +1,84 @@
+{
+  "id": "lamb-korma-handi",
+  "name": "LAMB KORMA HANDI",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This korma is a lot different to the sweet, creamy and mild kormas you might be familiar with from UK curry houses. Our British-style kormas are actually kormas only in name. Korma or quorma is actually a style of cooking where meat or vegetables are braised and cooked in one big pot. Handis are used traditionally because of their large belly and smaller mouth, which is perfect for korma-style cooking. The meat is usually cooked on the bone for flavour, but you could use lamb off the bone for easier eating. Do you really need all that ghee? Yep, if you want to make it authentic, but use less if you must. Served with chapattis and homemade lime pickle, this is a must-try!",
+  "ingredients": [
+    {
+      "item": "garlic cloves, roughly chopped",
+      "amount": "6"
+    },
+    {
+      "item": "5cm (2in) piece of ginger, peeled and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "green chillies, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "generous tbsp ground coriander",
+      "amount": "3"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Onion paste made with 2 medium onions or the equivalent made with shop-bought fried onions",
+      "amount": ""
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "250g (1 cup)"
+    },
+    {
+      "item": "lamb, cut into small pieces on or off the bone",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "generous tbsp (¾ cup) ghee",
+      "amount": "8"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "cloves",
+      "amount": "5"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "green cardamom pods, smashed",
+      "amount": "10"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "rose water",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Place the garlic, ginger and green chillies in a spice grinder or blend with just enough water to make a paste. Add the ground spices and onion paste and blend further: this is your korma paste. Add the yoghurt by running it through a fine-mesh strainer. This is done to prevent the yoghurt from curdling. Place the meat in a mixing bowl and pour over the marinade, mixing well. Leave to marinate for at least 30 minutes or overnight.",
+    "Season with salt and stir in the rose water just before serving."
+  ]
+}

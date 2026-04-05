@@ -1,0 +1,39 @@
+{
+  "id": "podina-coriander-and-mint-chutney",
+  "name": "PODINA CORIANDER AND MINT CHUTNEY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 600ml",
+  "intro": "You really can’t go wrong with a nice podina. It is delicious served really cold with hot homemade bora. Or you can serve it with samosas, papadams, onion bhajis, on top of kebabs… anything really!",
+  "ingredients": [
+    {
+      "item": "bunch of mint",
+      "amount": "½"
+    },
+    {
+      "item": "bunch of coriander (cilantro)",
+      "amount": "½"
+    },
+    {
+      "item": "fresh green chillies, to taste",
+      "amount": "10–15"
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "420g (scant 1¾ cups)"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the mint, coriander (cilantro), green chillies and 2 tablespoons of water in a blender and blitz to a paste. Add this to the yoghurt in a bowl and mix until smooth, seasoning with salt. Refrigerate until really cold."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

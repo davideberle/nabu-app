@@ -1,0 +1,771 @@
+{
+  "id": "chapattis",
+  "name": "CHAPATTIS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs",
+    "chapter": "Recipes"
+  },
+  "servings": "prep time: 5 mins, plus resting time",
+  "ingredients": [
+    {
+      "item": "(2 cups) chapatti flour, plus extra for dusting",
+      "amount": "250g"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for oiling the pan",
+      "amount": ""
+    },
+    {
+      "item": "(2lb) plain (all-purpose) flour, plus extra for dusting",
+      "amount": "900g"
+    },
+    {
+      "item": "Scant 1 tbsp salt",
+      "amount": ""
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(1¼ cups) full-fat (whole) milk",
+      "amount": "300ml"
+    },
+    {
+      "item": "sachet (2½ tsp) dried yeast",
+      "amount": "7g"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "(generous 1 cup) Greek yoghurt",
+      "amount": "270g"
+    },
+    {
+      "item": "Oil, for greasing",
+      "amount": ""
+    },
+    {
+      "item": "melted ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Nigella seeds (black onion seeds), to sprinkle",
+      "amount": ""
+    },
+    {
+      "item": "(1 cup) warm full-fat (whole) milk",
+      "amount": "250ml"
+    },
+    {
+      "item": "eggs, lightly beaten",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "heaped tbsp caster (superfine) sugar",
+      "amount": "3"
+    },
+    {
+      "item": "nigella seeds (black onion seeds)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(4 cups) self-raising (self-rising) flour, plus extra as needed",
+      "amount": "500g"
+    },
+    {
+      "item": "(¼ cup) rapeseed (canola) oil",
+      "amount": "70ml"
+    },
+    {
+      "item": "Ghee or butter, for brushing",
+      "amount": ""
+    },
+    {
+      "item": "quantity naan dough (see authentic naans*), ready to shape",
+      "amount": "1"
+    },
+    {
+      "item": "Flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "melted ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Sesame seeds, to sprinkle",
+      "amount": ""
+    },
+    {
+      "item": "(2½ cups) almond flakes",
+      "amount": "200g"
+    },
+    {
+      "item": "desiccated coconut",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "single (light) cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sugar, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sultanas (golden raisins)",
+      "amount": "20"
+    },
+    {
+      "item": "quantity naan dough (see authentic naans*), ready to shape",
+      "amount": "1"
+    },
+    {
+      "item": "Flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "Melted ghee, for brushing",
+      "amount": ""
+    },
+    {
+      "item": "Coriander (cilantro), to garnish",
+      "amount": ""
+    },
+    {
+      "item": "(14oz) minced (ground) lamb",
+      "amount": "400g"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green chillies, finely chopped or mashed into a paste",
+      "amount": "2"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch each of salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(3¼ cups) chapatti flour, plus extra for dusting",
+      "amount": "450g"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable or rapeseed (canola) oil, for greasing",
+      "amount": ""
+    },
+    {
+      "item": "Chutneys or sambar, to serve (optional)",
+      "amount": ""
+    },
+    {
+      "item": "(1¼ cup) rice flour",
+      "amount": "200g"
+    },
+    {
+      "item": "(½ cup) urad dhal flour",
+      "amount": "70g"
+    },
+    {
+      "item": "ground fenugreek",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "(3 cups) plain (all-purpose) flour",
+      "amount": "450g"
+    },
+    {
+      "item": "(½ cup) semolina flour",
+      "amount": "80g"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "About 50g (3½ tbsp) melted warm ghee, vegetable ghee or rapeseed (canola) oil",
+      "amount": ""
+    },
+    {
+      "item": "Oil, for greasing",
+      "amount": ""
+    },
+    {
+      "item": "(2 cups) plain (all-purpose) flour",
+      "amount": "250g"
+    },
+    {
+      "item": "(¼ cup) fine semolina",
+      "amount": "50g"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "bicarbonate of soda (baking soda)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "generous tbsp Greek yoghurt",
+      "amount": "2½"
+    },
+    {
+      "item": "(2 cups) basmati rice",
+      "amount": "370g"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "ghee or butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(2 cups) basmati rice",
+      "amount": "370g"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A little butter",
+      "amount": ""
+    },
+    {
+      "item": "basmati rice, cooked",
+      "amount": "500g"
+    },
+    {
+      "item": "red food colouring powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green food colouring powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(2 cups) basmati rice",
+      "amount": "370g"
+    },
+    {
+      "item": "milk",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Pinch of saffron threads",
+      "amount": ""
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "6"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick or cassia bark",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove, smashed",
+      "amount": "1"
+    },
+    {
+      "item": "(3¼ cups) cold water or unsalted chicken stock",
+      "amount": "750ml"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil or ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Finely grated zest of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "(2 cups) cold cooked basmati rice*",
+      "amount": "500ml"
+    },
+    {
+      "item": "Juice of 1–2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chives, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "(2lb) frozen chips (preferably the kind you deep-fry, but oven-bake will do)",
+      "amount": "900g"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tomato hamburger relish",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "tomato ketchup",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium potatoes, washed and peeled",
+      "amount": "3"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fine salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "Flaky sea salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fine semolina",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "(1½ cups) masoor dhal (red lentils), rinsed",
+      "amount": "250g"
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh or frozen curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "onion, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "garam masala",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "(10½ oz) chana dhal, soaked in water for 30 minutes",
+      "amount": "300g"
+    },
+    {
+      "item": "About 1 tbsp rapeseed (canola) oil or seasoned oil",
+      "amount": ""
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "brown mustard seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch of asafoetida*",
+      "amount": ""
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic cloves, cut into slivers",
+      "amount": "5"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh green bullet chillies, to taste, finely chopped",
+      "amount": "1–5"
+    },
+    {
+      "item": "tomatoes, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Chopped coriander (cilantro), to serve",
+      "amount": ""
+    },
+    {
+      "item": "(7oz) black urad dhal, soaked overnight in cold water",
+      "amount": "200g"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomatoes, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt, or to taste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "butter, or to taste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(1 cup) single (light) cream",
+      "amount": "250ml"
+    },
+    {
+      "item": "Chopped coriander (cilantro) leaves, to serve",
+      "amount": ""
+    },
+    {
+      "item": "red onion, very finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, very finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, very finely diced",
+      "amount": "1–2"
+    },
+    {
+      "item": "olive oil or vegetable oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "roasted cumin seeds (see ground spices and spice blends)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "tennis ball-size firm tomatoes, thinly sliced",
+      "amount": "5"
+    },
+    {
+      "item": "onion, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "green chilli peppers, finely chopped (optional)",
+      "amount": "2"
+    },
+    {
+      "item": "mint sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Juice and finely grated zest of 1 lime or lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the flour into a bowl and add about 125ml (½ cup) water a little at a time. Knead until you have a soft, pliable dough, then continue kneading for about 3 minutes. Set aside, covered with a tea (dish) towel, and allow to rest for at least 30 minutes.",
+    "Dust the work surface with a little flour and divide the dough into 8–10 balls.",
+    "Working in batches, depending on space in your kitchen (keep the waiting balls covered with a damp tea/dish towel), flatten each ball between your hands and then flatten them more with a rolling pin until they are about 12cm (5in) in diameter and 1 mm thick. Dust off any excess flour from a disc of dough, then slap it from hand to hand to remove any stubborn flour.",
+    "Oil the pan with just enough oil to create a film (½ teaspoon should do) and dry-fry the chapatti for 30 seconds, then flip it over and fry for another 30 seconds. Brown spots should appear on both sides.",
+    "If you are cooking on an electric hob, turn the chapatti over again and apply pressure to the surface with a spatula or sheet of paper towel. It should puff up with air. If it doesn’t it should still be fine. If you are cooking over a gas flame, lift the chapatti out of the pan and carefully place it directly on the flame. This will cause it to puff up into a nice light chapatti.",
+    "Transfer to a bowl lined with paper towel to keep warm while you make the remaining chapattis. For best results, serve immediately, but they can also be warmed up in the microwave if necessary.",
+    "Sift the flour, salt and baking powder into a large bowl. Heat the milk in the microwave or on the hob until hand-hot. Pour into a jug (if heated on the hob), add the yeast and sugar, and whisk it all together. Cover with a cloth and leave in a warm place for about 20 minutes. It should foam right up. If it doesn’t, don’t worry, your naans will still rise.",
+    "Lightly beat the eggs and yoghurt together. Pour the yeasty milk mixture into the flour, along with the whisked eggs and yoghurt, and mix everything to combine.",
+    "Tip the dough out onto a work surface and knead for about 10 minutes until you have a soft, slightly sticky dough ball. Brush the insides of the bowl with a little oil and place the dough back in the bowl. Cover and allow to rise for 1–24 hours – longer rising times achieve a tasty sourdough.",
+    "Pull a chunk of dough, about the size of a tennis ball, from the risen dough. Using your hands or a rolling pin, roll the ball out on a lightly floured work surface into a flat, circular disc or teardrop shape, about 5mm (¼ in) thick. Slap the disc between your hands to get all the excess flour off.",
+    "Heat a dry frying pan over a high heat and, when very hot, place the naan in it. It will begin to cook on the underside then bubble on the top. Check the bottom regularly to ensure it doesn’t burn. If it begins to get too dark, turn the naan over to get a bit of colour on the other side. Each naan should take no more than 3–5 minutes to cook.",
+    "Remove the cooked naan to a plate, brush with a little ghee and sprinkle with nigella seeds. Keep warm while you cook the remaining dough in the same way.",
+    "Pour the milk and 150ml (generous ½ cup) warm water into a large mixing bowl. Add the eggs, salt, sugar and nigella seeds and whisk well. Start adding in the flour, whisking as you do. Once you’ve added all the flour, the mixture will still look very soupy and far too wet to work into dough balls. I recommend covering the dough at this time with a wet cloth and letting it sit for at least 3 hours or overnight for best results. That said, you could just jump right into finishing the recipe at this stage.",
+    "When ready to cook the naans, slowly start adding more flour. The idea here is to add just enough flour so that the dough is workable. It should be very soft and slightly sticky, but not so sticky that it sticks to your hands. If it does, dust with a little bit more flour until you can easily divide and form the dough into six spongy dough balls.",
+    "Once the dough balls are formed, you either could let them sit, covered, for about 30 minutes or you could push forward and make the naans immediately. As the dough is so soft, you shouldn’t need a rolling pin. Dip your fingers in the oil and start patting the first dough ball to flatten it. Continue slapping it until it is flat. Repeat with the remaining dough balls.",
+    "Heat a dry frying pan over a medium–high heat and slap the first naan into it, oiled side up. As it cooks, bubbles will form on the surface and it will begin to look like a real naan! If you have a blow torch, use it to brown and blacken the bubbles; otherwise, just flip the naan over. This will pop a lot of the bubbles, but the naan will still be delicious. Brush with a little melted ghee or butter, keep warm and repeat with the remaining naans.",
+    "First make the paste. In a food processor, blend the almond flakes, coconut, cream, sugar and sultanas (golden raisins) until they form a thick paste. You may need to add more cream if it is too crumbly, or more almond flakes if too wet. Remove from the processor and knead into a pliable dough-like paste.",
+    "Pull off a ball of naan dough the size of a tennis ball, flatten slightly and place a piece of Peshawari paste slightly larger than a golf ball in the middle of the dough.",
+    "Fold the naan dough around the paste and roll out following the method for plain naan. Cook in a hot, dry frying pan in the same way, then brush with ghee and sprinkle with sesame seeds to finish.",
+    "Keep warm while you cook the rest of the naans.",
+    "Preheat the oven to its highest setting and place a pizza stone on a rack to heat for about 1 hour.",
+    "Meanwhile, combine all the keema ingredients in a large mixing bowl. Knead the meat for about 5 minutes, scraping the meat against the bottom of the bowl as you do so. You want to see streaks of minced meat clinging to the surface.",
+    "Pull off a piece of naan dough the size of a tennis ball and roll out on a floured surface to about 3mm thick. Place a ball of minced meat, slightly larger than a golf ball, in the middle of the disc and wrap the dough around it.",
+    "Lightly roll out the filled disc following the method on authentic naans, flipping it over a couple of times as you do. Be careful not to press too hard while rolling, or the meat will become exposed. If this happens, patch the area with a small piece of dough.",
+    "Brush the shaped naan with just a little melted ghee and place on the heated pizza stone in the oven. Bake for about 3 minutes, then flip it over and cook for another 3 minutes. Check the dough and filling are done, and cook for longer if needed.",
+    "To serve, sprinkle with coriander (cilantro) and perhaps a little more melted ghee. Keep warm while you roll and bake the remaining naans.",
+    "Sift the chapatti flour into a large bowl with the salt. Slowly add about 250ml (1 cup) of warm water until you have a soft, pliable dough. Knead the dough for about 10 minutes, then set aside, covered with a tea (dish) towel, for about 30 minutes.",
+    "Divide the dough into six equal-size balls. Using a rolling pin, roll out the small dough balls on a floured surface until round and quite flat. Try to keep them as perfectly round as possible for best results.",
+    "Heat about 10cm (4in) of the oil in a large wok. When a piece of rolled-out puri sizzles instantly when hitting the oil, you’re ready to fry. If you have an oil thermometer, you’re aiming for 190°C (375°F). Don’t overcrowd your pan – cook one puri at a time if necessary. Slowly lower the flat puris into the oil and deep-fry for 30 seconds, until the puris puff up and turn light brown. Tapping them lightly with the back of your spatula will help them balloon up. They are ready when lightly browned. If they are not cooked enough, they will deflate when you take them out of the oil. I usually turn my puris in the oil at least once to cook both sides evenly.",
+    "Carefully remove them with a slotted spoon or spider strainer when ready and transfer to paper towel to absorb any excess oil.",
+    "You can serve puris on their own, as you would naans, or filled with the filling of your choice. Serve immediately.",
+    "Pour all of the batter ingredients into a bowl. Slowly pour in 410ml (1¾ cups) water, mixing until you have a thick and smooth batter. It should be thick enough to coat the back of a spoon.",
+    "When ready to cook, pour about 7.5cm (3in) depth of water into the bottom of your idli pan and bring to the boil. You want the water level to be just below the idli trays, so you might need to adjust the amount of water depending on your pan. Oil your idli trays lightly with oil, then pour the batter into the moulds.",
+    "Carefully lower the trays into the idli pan, cover and steam for 15 minutes. After 15 minutes, you should have delicious, fluffy idlis. To check for doneness, stick a toothpick or fork into the centre of one or two. If it comes out clean, your idlis are ready. If it comes out with a little batter stuck to it, continue steaming for a couple more minutes. Remove the trays from the steamer and let the steamed idlis sit, undisturbed, for about 2 minutes before removing them from the moulds. A small knife or spoon will help you lift the cooked idlis neatly out of the moulds.",
+    "Serve with chutneys and/or sambar if you like.",
+    "Pour the flours, salt and sugar into a large mixing bowl. Slowly drizzle in 300ml (1¼ cups) of warm water while working the dough with your hands into a soft but firm, easy-to-handle dough. Knead for 5 minutes, then cover and allow to rest for 20 minutes, or even overnight.",
+    "Dip your fingers in the ghee or oil and work the dough into 6 equal-size balls. The ghee or oil makes working with the dough easier, plus adds flavour. Let the dough balls rest, covered, for another 5 minutes.",
+    "Lightly oil your work surface and place one of the dough balls on top. Flatten it with your hands, then roll out into a large rectangular shape. The dough needs to be really thin so that your parathas are nice and flaky. You should be able to see the surface through it.",
+    "With the longest sides at the top and bottom, use a sharp knife to cut slits across the width of the dough at about 5mm (¼ in) intervals but leaving the edges intact, so that the dough is still joined at the sides. Lightly brush all over the surface with a little ghee or oil.",
+    "Now carefully begin to roll the dough up from the bottom into a long sausage. This will be difficult because of the slits; I find that using a sharp knife to help lift the dough from the surface helps. Once you have a long dough rope, curl that up into a spiral, so it looks like a Chelsea bun or cinnamon roll. The idea here is to get as many layers in your paratha as possible. Repeat to roll up all the dough pieces in the same way. Let each ball sit for at least 5 minutes, covered.",
+    "Flatten one of the parathas with your hands, until it is about 18cm (7in) in diameter. Be careful not to press down too hard or you will lose some of those layers. The swirls should be visible at the top.",
+    "Melt a little ghee or oil in a non-stick pan over a medium heat. Place your paratha in the pan, cook for about 30 seconds, then flip it over. You can start flattening your next paratha while this one is cooking. Continue cooking the first paratha, flipping regularly so it doesn’t burn, until it is cooked through and browned on both sides – about 3–5 minutes should do. Flatten and cook the rest of the parathas, stacking the cooked ones as you make them and keeping them warm under a cloth.",
+    "Once they are all cooked, bash the stack of parathas lightly with your hands on the sides so the layers become more visible, then serve.",
+    "Tip the flour and semolina into a large mixing bowl and add the baking powder, bicarbonate of soda (baking soda) and salt. Mix well with your hands, then add 2 tablespoons of rapeseed (canola) oil and mix it into the flour. Add the yoghurt and slowly pour in about 125ml (½ cup) of water while mixing with your hand. You may not need all the water, so add it slowly until you have a very soft dough that is slightly sticky to the touch but workable. Form this into a dough ball and cover. Place in a warm place to rise for about 2 hours. Don’t worry if it doesn’t rise much; the dough will still work.",
+    "Divide the dough into eight equal-size balls. Take a dough ball and coat it lightly with oil, then roll it out into a round tortilla/chapatti shape that is about the same thickness as a tortilla. Repeat with the remaining balls. Heat about 10cm (4in) of oil in a large saucepan or wok over a medium–high heat. The oil is hot enough when a small piece of dough sizzles and rises immediately to the top when tossed in.",
+    "Slowly lower the first bhatura into the hot oil and tap it with the back of a spoon or better, a large slotted spoon. As you do this, the bhatura will begin ballooning. Drizzle hot oil over any parts that aren’t puffing up to help it inflate. Turn it over and continue tapping it with the back of the spoon until it is fully inflated. Turn it over a few more times until it is light brown – this helps the bhatura stay inflated. Transfer to a warm plate and cook the rest. Bhatura are best served immediately.",
+    "Put the uncooked rice in a large bowl and cover with cold water. Swirl the water around with your hands; it will become milky from the rice starch. Pour the water out and add fresh water and repeat until the water is almost clear. About five times should do the job. Leave the rice to soak in the last batch of fresh water for about 30 minutes, then drain.",
+    "Place the rice in a saucepan along with 750ml (3¼ cups) of cold water, the salt and ghee or butter in a saucepan. Cover with a tight-fitting lid and bring to a boil over a high heat. As soon as the water boils, remove from the heat and let it sit, lid on, for 40 minutes. Don’t remove the lid. After 40 minutes, your rice will be perfectly done. Using a fork or chopstick, separate the rice grains, stirring very slowly. Basmati rice has a tendency to turn to mush if stirred too vigorously.",
+    "Put the uncooked rice in a large bowl and cover with cold water. Swirl the water around with your hands; it will become milky from the rice starch. Pour the water out and add fresh water and repeat until the water is almost clear. About five times should do the job. Leave the rice to soak in the last batch of fresh water for about 30 minutes, then drain.",
+    "Bring a large saucepan of water to a boil, then add the rice. Stir in the salt and butter, reduce the heat and simmer for 7–9 minutes. To check for doneness, take out a couple of grains and press them with your fingers. They should be soft but still have a bit of resistance to them.",
+    "Carefully pour the rice into a colander. If serving immediately, transfer to a serving dish and your job is done. If storing for later, rinse with cold water, carefully stir through and place in an air-tight container in the fridge for up to 4 days.",
+    "Place your cooked rice on a large plate and mentally divide it into quarters. Stir red food colouring powder into one quarter, green into another, and leave the rest white. Let it stand for a few minutes, then mix it all up again.",
+    "Put the uncooked rice in a large bowl and cover with cold water. Swirl the water with your hands; it will become milky from the rice starch. Pour the water out and add fresh water and repeat until the water is almost clear – five times should do the job. Leave to soak in the final batch of water for about 30 minutes, then drain.",
+    "While the rice is soaking, heat the milk in a small pan until it begins to simmer. Take off the heat and stir in the saffron. Leave to infuse for about 15 minutes.",
+    "Melt the ghee over a medium–high heat in a saucepan with a tight-fitting lid. When starting to give off a nutty aroma, toss in the whole spices and cook for about 30 seconds until fragrant. Add the onion and sizzle for about 5 minutes until translucent and soft.",
+    "Add the garlic to the pan, followed by the drained rice. Stir this all up so that the rice is evenly coated in the ghee. Pour in the water or stock, add the bay leaves, then cover the pan. When the rice begins to boil and the water foams, remove from the heat and let it sit, covered and undisturbed, for 40 minutes.",
+    "After 40 minutes, lift the lid and pour the saffron milk mixture on top. Carefully stir through the rice using a fork or chopstick until nice and fluffy. Don’t stir too vigorously as the basmati rice may split. Season with salt and transfer to a warm bowl to serve.",
+    "Heat the oil or ghee in a large frying pan over a medium–high heat until bubbling hot. Add the garlic and ginger paste and lemon zest, and fry for about 30 seconds. Add the cold rice and stir gently for about 2 minutes until all the rice grains are nicely coated with the oil. When the rice is really hot, squeeze in the lemon juice. Season with salt and top with the chopped chives to serve.",
+    "First make the sauce. Heat the oil in a saucepan over a medium–high heat. When visibly hot, stir in the cumin seeds and sauté in the oil for about 30 seconds until fragrant. Add the hamburger relish followed by the ketchup and bring to a simmer. Stir in the sugar and continue to cook for about 1 minute, then add the chopped onion and garlic and ginger paste and stir it all up to combine. Season with a little salt and take off the heat while your prepare your chips.",
+    "Cook your chips as per the instructions on the packet. Most takeaways use frozen chips that they deep-fry. I highly recommend doing the same, but if you’re looking for a lighter or less messy option, oven chips will do. When your chips are ready, season them directly with the chilli powder, cumin, coriander and a little bit of salt. Remember there is already some salt in the masala sauce, so go easy.",
+    "While the chips are still hot, begin adding them to the pan with the sauce, stirring so that every chip is evenly covered in the sauce. Ideally, the process of coating the chips in the sauce and serving should be done in about 2 minutes. If you let them sit too long, the chips will get soggy rather than the crispy sauce-coated chips they are meant to be.",
+    "Slice the potatoes into 3mm (⅛in) coins. Place the slices in a bowl of cold water and move them around with your hand, then drain. Add fresh water and leave to soak for about 25 minutes. Move the slices around again with your hand and drain – this washes away the starch. Dry the inside of the bowl and put the potato slices back in and sprinkle with the chilli powder, turmeric and salt. Be sure to coat the slices evenly, then set aside for 10 minutes while you make the coating.",
+    "Mix the coating ingredients together, then coat the potato slices with this mixture. Pour about 1.5cm (½ in) of oil to completely cover the base of a large frying pan. Heat over a medium–high heat. When visibly hot, add the potato slices. Shallow-fry for about 10 minutes per side until the potato is cooked soft and the exterior is crispy. Season with flaky salt.",
+    "Put the dhal into a pan and pour over about 400ml (scant 1¾ cups) of water. Simmer over a medium–high heat for about 25 minutes until tender, removing any foam that forms on the top.",
+    "Meanwhile, melt the ghee in a frying pan and add the curry leaves, cumin seeds and cinnamon stick. Stir this all up so that the ghee soaks up the flavour of the spices. Add the onion and fry for about 5 minutes until light brown. Add the garlic, garam masala and turmeric, and sizzle until the garlic is soft.",
+    "Season the cooked dhal with salt and pepper, then pour the ghee mixture (the tarka) over the lentils to serve.",
+    "Drain the lentils and rinse in several changes of water, then place in a saucepan with 700ml (3 cups) of fresh water. Bring to a boil and drizzle the oil on top to stop the water from foaming over the top.",
+    "Reduce the heat and simmer until the lentils are soft but with just a little bite to them, 45 minutes–1 hour, skimming off any foam that does form. Do not strain; allow the water to reduce down.",
+    "Meanwhile, in a separate pan, melt the ghee over a high heat. When it is visibly very hot, toss in the mustard seeds. They will begin to pop after about 30 seconds. Reduce the heat to medium–high and add the cumin seeds and asafoetida. Temper in the oil for about 30 seconds and then add the turmeric and onion and fry until soft and translucent – 3–5 minutes should do the job. Stir in the slivered garlic, garlic and ginger paste and chillies, and cook, stirring continuously, for another 30 seconds.",
+    "Returning to the dhal, reduce the heat to medium and stir in the chopped tomatoes, coriander and cumin, and bring to a happy simmer. Keep warm.",
+    "You can leave the dhal as it is once cooked, or whisk or blend until creamy. Stir the onion and ghee mixture into the lentils and sprinkle with garam masala. To serve, season with salt and top with a little coriander (cilantro).",
+    "In a large saucepan over a low–medium heat, simmer the urad dhal in water until fall-apart soft. You might need to top up the water from time to time while the lentils cook. After about 3–4 hours of simmering, the lentils will be perfectly soft. Strain the lentils, reserving the cooking water, and set it all aside.",
+    "To save time, the following steps can be done while your lentils are simmering. Heat the oil in a large frying pan over a medium–high heat. When visibly hot, stir in the chopped onions and fry for about 10 minutes until soft and lightly browned. Stir in the garlic and ginger paste and fry for about 30 seconds before adding the chopped tomatoes and the spices. Cook for another minute, then add about 125ml (½ cup) of the strained lentil water. Bring this to a simmer and add the cooked lentils. Cook over a high heat for 5 minutes, adding more strained water if needed. The dhal should be thick and soupy.",
+    "To finish, season with salt. I recommend about 2 teaspoons, which I think works really well, but as with all the recipes in this book, I feel how much salt you add is a personal thing. Add it to taste. Makhani means butter, so you can’t leave that out. I recommend using about 3 tablespoons, but if you don’t want to use that much, the dhal will still be delicious. Stir most of it into the dhal and then add whatever is left over to melt on top. Drizzle the cream over the top and sprinkle with the chopped coriander (cilantro) and you are ready to serve your masterpiece.",
+    "Mix the onion, cucumber and tomatoes together in a large bowl. Add the oil, lemon juice, coriander (cilantro) and cumin seeds and season with salt and black pepper. Place in the fridge for about 30 minutes before serving.",
+    "Mix all the ingredients together in a bowl and season with salt and black pepper. Allow to sit for 15 minutes before serving."
+  ],
+  "image": "/recipes/chapattis.jpg"
+}

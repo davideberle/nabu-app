@@ -1,0 +1,63 @@
+{
+  "id": "thai-sweet-chili-tofu-stacks",
+  "name": "Thai Sweet Chili Tofu Stacks",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "cornstarch",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chili pepper, such as jalapeño or cayenne, chopped fine",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, chopped fine",
+      "amount": "2"
+    },
+    {
+      "item": "tamari",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into 1-inch cubes",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "8-ounce can sliced pineapple",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Prepare the sauce by mixing the cornstarch and 1 tablespoon of water together until smooth and set aside.",
+    "Add the rice vinegar, ⅔ cup water, sugar, chili pepper, garlic, tamari, parsley, and cayenne pepper to a food processor. Process until well blended and the chili pepper is broken up very well.",
+    "Pour mixture into a small saucepan and heat until boiling, stirring until the sugar is dissolved. Turn down heat and cook 5 minutes. Add the cornstarch mixture and stir occasionally for about 5 minutes or until mixture is a bit thickened. Take off heat and let it cool.",
+    "Add the tofu cubes to the cooled sweet chili sauce. Let marinate about 30 minutes.",
+    "Drain the pineapple and slice the rings into about 1- to 1¼-inch wedges.",
+    "Place a slice of pineapple on a plate and center a cube of marinated tofu on top. Place another slice of pineapple on the tofu and secure with a toothpick."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

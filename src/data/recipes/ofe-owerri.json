@@ -1,0 +1,46 @@
+{
+  "id": "ofe-owerri",
+  "name": "Ofe Owerri",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "The soup may thicken a lot because of the cocoyam. You can add extra water until you reach the desired consistency.",
+  "ingredients": [
+    {
+      "item": "small red cocoyams (approx. 500g) (peeled and cut into large chunks)",
+      "amount": "2"
+    },
+    {
+      "item": "water 1/4 cup palm oil",
+      "amount": "3 cups"
+    },
+    {
+      "item": "1/4 teaspoon ogiri",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "ugu leaves (washed and sliced)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ukazi leaves (washed and sliced)",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Place the cocoyam in a large pot, cover with water and boil over high heat for 30 minutes until tender. Leave to cool for 20 minutes. Place the cocoyam in a food blender and blend with 1 cup of warm water (you can use the water that the cocoyam was cooked in) until smooth.",
+    "Place the meat alternatives in a large pot with 2 cups of water (If using tofu, add towards the end of the cooking time). Bring to a boil then add the blended cocoyam a little at a time, mixing as you go along. Rinse out the blender with half a cup of water and pour into the pot. Turn the heat down to medium.",
+    "Add the palm oil, ogiri, vegetable stock cube, chilli powder/ cameroon pepper, ugu and ukazi leaves. Stir well to combine and simmer on medium heat for 5 minutes. Taste for seasoning and add salt if necessary.",
+    "Serve with a swallow of your choice such as eba or fufu."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

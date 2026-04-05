@@ -1,0 +1,60 @@
+{
+  "id": "savory-muffins",
+  "name": "Savory Muffins",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "½ cups diced onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced prosciutto",
+      "amount": "½ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "dried rosemary",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "½ teaspoons baking powder",
+      "amount": "1"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "buttermilk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C) degrees. Line a muffin tin with muffin liners.",
+    "Heat a large non-stick frying pan over medium heat.",
+    "Add the onion and stir-fry for 2-3 minutes. Add the prosciutto and continue cooking for 1-2 minutes.",
+    "Transfer the onion mixture to a large mixing bowl. Stir in the flour, baking powder, rosemary, baking soda, salt, pepper, buttermilk, and eggs. Mix until well-combined.",
+    "Transfer the mixture into the prepared tin.",
+    "Bake for 20 minutes or until a toothpick inserted in the center of each muffin comes out clean.",
+    "Serve warm."
+  ]
+}

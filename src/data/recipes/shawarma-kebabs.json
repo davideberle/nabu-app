@@ -1,0 +1,75 @@
+{
+  "id": "shawarma-kebabs",
+  "name": "SHAWARMA KEBABS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4–6",
+  "intro": "You’ve got to love a good shawarma kebab! Perfectly marinated pieces of meat that are nice and crisp on the exterior and juicy and tender in the centre. I’m getting hungry just writing about it. At UK takeaways, beef, chicken and lamb are marinated and then placed on a rotating spit. The meat is shaved off with a large electric knife and then served in fresh naans topped with salad, hot sauce and/or yoghurt dressing.",
+  "ingredients": [
+    {
+      "item": "large chicken breasts",
+      "amount": "6"
+    },
+    {
+      "item": "Red and green chillies",
+      "amount": ""
+    },
+    {
+      "item": "Red onion and green and/or yellow (bell) peppers, chopped",
+      "amount": ""
+    },
+    {
+      "item": "Naans, buns or tortillas, to serve",
+      "amount": ""
+    },
+    {
+      "item": "Sauces of your choice, to serve",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the chicken breasts in the freezer for 30 minutes – this will help you slice them. Remove from the freezer and slice into thin discs.",
+    "Place all the marinade ingredients in a bowl and mix well. Add your chicken discs to the marinade and ensure it is all nicely coated. Marinate for 30 minutes–24 hours.",
+    "When ready to cook, light your charcoal using the direct cooking method and wait until white-hot.",
+    "In the meantime, skewer the marinated chicken discs on the metal skewers so that they are pressed tightly together. I like to include some chillies, red onions and peppers for colour.",
+    "Place the skewers over the heat and rotate often until charred on the outside and cooked through – about 15 minutes. Remove the meat and vegetables and chop the meat into small pieces. Serve the meat and vegetables on their own or wrapped in fresh naans, buns or tortillas with your sauces of choice."
+  ]
+}

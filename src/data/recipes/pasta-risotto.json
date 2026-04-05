@@ -1,0 +1,47 @@
+{
+  "id": "pasta-risotto",
+  "name": "Pasta Risotto",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large Spanish onion",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "25 ml"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "small pasta shells",
+      "amount": "500 g"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "200 ml"
+    },
+    {
+      "item": "litres fresh, strong chicken stock",
+      "amount": "2"
+    },
+    {
+      "item": "freshly grated parmigiano, plus extra for serving",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Serves 4 1 large Spanish onion 25 ml good-quality virgin olive oil 25 g unsalted butter 500 g small pasta shells 200 ml dry white wine 2 litres fresh, strong chicken stock 2 tablespoons freshly grated parmigiano, plus extra for serving",
+    "Chop the onion and sauté in a pan with the olive oil and half the butter until it has softened.",
+    "Add the pasta shells and cook for 1–2 minutes, stirring well. Add the wine and let it evaporate.",
+    "Add half the stock, bring to the boil and cook, stirring occasionally. If it gets too dry, add more stock. The pasta should still be al dente when ready – about 8–10 minutes.",
+    "Remove from the stove, add the remaining butter and parmigiano and stir well. (The pasta should be quite moist.)",
+    "Serve immediately with extra parmigiano."
+  ]
+}

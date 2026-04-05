@@ -1,0 +1,45 @@
+{
+  "id": "scrambled",
+  "name": "Scrambled",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "This simple breakfast is loved by many across Nigeria, and was a firm favourite when I was growing up. Buttered bread and tea is a standard way to start the day when in a hurry, and it is common practice to dip the bread into the steaming hot sweet tea. The addition of scramble makes this breakfast extra filling and provides a protein boost. For this vegan version, we will use tofu to replace the eggs. Any type of bread will do, but if you really want to eat like a Nigerian, use Agege bread (see page 41 for the recipe or buy a fresh loaf from your local African grocery store).",
+  "ingredients": [
+    {
+      "item": "sunflower oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "small onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 red bell pepper (finely chopped)",
+      "amount": ""
+    },
+    {
+      "item": "scotch bonnet chilli (deseeded and finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "block (approx. 350g) of extra firm tofu (drained)",
+      "amount": "1"
+    },
+    {
+      "item": "curry powder 1/2 teaspoon turmeric",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Heat the sunflower oil in a frying pan and add the onion, red pepper and chilli. Fry on medium heat for about 5 minutes until the vegetables soften. Crumble the tofu into the frying pan and season with curry powder, turmeric and salt to taste. Mix and stir-fry for another 5 minutes until the tofu is heated through.",
+    "Prepare your black tea as you normally would, adding as much plant-based milk and/or sugar as you care for.",
+    "Serve the scramble alongside a chunk of Agege bread and a steaming mug of sweet tea."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

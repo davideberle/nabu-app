@@ -1,0 +1,49 @@
+{
+  "id": "tempeh-stuffed-cremini-mushrooms",
+  "name": "Tempeh Stuffed Cremini Mushrooms",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "cremini mushrooms",
+      "amount": "18"
+    },
+    {
+      "item": "diced red onion, small dice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "tempeh, diced very small, or pulsed small",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "Pinch of onion powder",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of cayenne pepper",
+      "amount": ""
+    },
+    {
+      "item": "rice, cooked",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Remove stems from the mushrooms and set the caps aside. Finely chop the stems and set aside.",
+    "Heat 3 tablespoons of water in a medium skillet. Add the chopped mushroom stems and onion. Sauté 10 to 15 minutes or until onion is translucent. Add the tempeh and cook another 5 minutes. Add onion powder, cayenne pepper, rice, and tamari. Cook 2 minutes, stirring occasionally.",
+    "Preheat the oven to 350°F.",
+    "Stuff mushroom caps and place on baking sheet. Bake for 20 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

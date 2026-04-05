@@ -1,0 +1,52 @@
+{
+  "id": "spinach-mushroom-frittata",
+  "name": "Spinach Mushroom Frittata",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 ǀ prep. time 10 minutes ǀ cooking time 15 minutes",
+  "ingredients": [
+    {
+      "item": "yellow potatoes, peeled and sliced thinly",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "baby spinach",
+      "amount": "4 cups"
+    },
+    {
+      "item": "onion, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "6"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large non-stick skillet, heat the olive oil over medium heat.",
+    "Add the mushrooms and cook for 5 minutes.",
+    "Stir in the spinach, onion, and potatoes. Cook for 5 minutes.",
+    "In a medium mixing bowl, whisk the eggs with the feta cheese, salt, and pepper.",
+    "Lower the temperature to medium-low heat. Pour the egg mixture on top of the ingredients in the skillet. Cover and cook for 10 minutes.",
+    "Flip the frittata and cook for 2-3 minutes more.",
+    "Serve warm."
+  ]
+}

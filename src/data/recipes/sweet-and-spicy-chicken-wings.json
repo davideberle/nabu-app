@@ -1,0 +1,67 @@
+{
+  "id": "sweet-and-spicy-chicken-wings",
+  "name": "SWEET AND SPICY CHICKEN WINGS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Chicken wings are becoming a popular starter at lots of Indian restaurants. You might have seen many delicious options, from spicy garlic salt to Portuguese piri piri. They may not all be flavoured with the ingredients you would expect at a curry house, but I’ve never heard anyone complain! This is a recipe I developed after picking up some chicken wings at a food festival. The chef was happy to tell me what went into his marinade, and I think I got it just right.",
+  "ingredients": [
+    {
+      "item": "chicken wings, preferably skinless",
+      "amount": "1kg (2lb 3oz)"
+    },
+    {
+      "item": "chilli sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Raita of your choice, to serve",
+      "amount": ""
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chilli paste, or 2–3 green chillies, finely chopped",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tamarind concentrate",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chilli powder, or to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of 3 limes",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix all the marinade ingredients together in a large bowl. Add the chicken wings and coat well with the marinade. Leave to marinate for 2–48 hours."
+  ]
+}

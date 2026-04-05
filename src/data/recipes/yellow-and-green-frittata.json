@@ -1,0 +1,27 @@
+{
+  "id": "yellow-and-green-frittata",
+  "name": "Yellow and Green Frittata",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "organic eggs",
+      "amount": "6"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "25 g"
+    },
+    {
+      "item": "bunch spinach, or a 250 g packet frozen spinach",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 4 6 organic eggs salt and ground black pepper 25 g unsalted butter 1 bunch spinach, or a 250 g packet frozen spinach 4–5 slices prosciutto 4–5 tablespoons Pâté di Tonno",
+    "Heat a large 35 cm pan, melt the butter in it and pour in enough of the egg mixture to make a very thin frittata. Cook over low heat until set, then remove from the pan."
+  ]
+}

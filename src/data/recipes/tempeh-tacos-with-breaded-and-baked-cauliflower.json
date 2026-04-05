@@ -1,0 +1,82 @@
+{
+  "id": "tempeh-tacos-with-breaded-and-baked-cauliflower",
+  "name": "Tempeh Tacos with Breaded and Baked Cauliflower",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "original tempeh",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "hot sauce (such as Frank’s), divided",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "plus 2 tablespoons unsweetened dairy-free milk, divided",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small head cauliflower",
+      "amount": "1"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "panko breadcrumbs",
+      "amount": "½ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "shredded romaine lettuce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "taco shells",
+      "amount": "8"
+    },
+    {
+      "item": "Roma tomatoes, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Lime wedges (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Salsa (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Cut the tempeh widthwise into ¼-inch strips, then tear those into about ½-inch pieces.",
+    "Mix 1 tablespoon hot sauce and 2 tablespoons milk together in a small bowl. Add tempeh and toss. Let marinate for 1 hour.",
+    "Meanwhile, prepare the cauliflower by cutting the florets into small bite-size pieces.",
+    "Mix 2 tablespoons of hot sauce and ¼ cup milk in a large bowl. Add the cauliflower and toss.",
+    "Add the flour, taco seasoning, panko, and nutritional yeast to a large bowl and mix well.",
+    "Take the cauliflower out of the wet mixture and add to the flour mixture and toss to coat all of the florets. Place on a baking sheet and bake for 20 to 30 minutes, turning after 15 minutes. You will be able to pierce them easily with a fork when done.",
+    "While the cauliflower is baking, heat the oil in a small skillet over medium-high heat and add the tempeh. Cook for about 2 minutes, flipping occasionally, until the pieces become golden brown. Remove from the heat to a paper towel.",
+    "Assemble the taco by laying some lettuce in the bottom of a shell and spooning in some tempeh, cauliflower, and tomato. Serve with lime wedges and salsa, if desired."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

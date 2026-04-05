@@ -1,0 +1,52 @@
+{
+  "id": "ham-and-potato-casserole",
+  "name": "Ham and Potato Casserole",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 16 | prep. time 10 minutes | cooking time 45-50 minutes",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "4 cups"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mozzarella cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "shredded hash browns",
+      "amount": "40 ounces"
+    },
+    {
+      "item": "frozen peas",
+      "amount": "3 cups"
+    },
+    {
+      "item": "diced ham",
+      "amount": "1¾ cups"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C).",
+    "Grease a 9x13-inch baking dish with butter or cooking spray.",
+    "In a medium mixing bowl, whisk together the flour and milk.",
+    "Place the hash browns in the prepared baking dish. Top with the ham and peas. Season with salt and pepper.",
+    "Pour in the milk mixture. Top with the cheddar cheese and mozzarella cheese.",
+    "Bake for 45-50 minutes or until golden-brown in color.",
+    "Serve warm."
+  ]
+}

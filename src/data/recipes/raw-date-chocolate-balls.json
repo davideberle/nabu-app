@@ -1,0 +1,55 @@
+{
+  "id": "raw-date-chocolate-balls",
+  "name": "Raw Date Chocolate Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "sunflower seed kernels, ground",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "dates, pitted, chopped well",
+      "amount": "½ cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsweetened cacao powder",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "creamy almond butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "old-fashioned oats (use gluten-free if desired)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "unsweetened coconut, for coating",
+      "amount": "6 ounces"
+    }
+  ],
+  "method": [
+    "Place the sunflower seeds, dates, walnuts, cacao powder, maple syrup, almond butter, oats, and hempseed in a large bowl. Mix well.",
+    "Pinch off pieces of dough and roll into twenty-four balls. Roll each ball in shredded coconut. Place in the refrigerator to harden for about 30 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

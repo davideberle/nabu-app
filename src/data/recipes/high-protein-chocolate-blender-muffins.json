@@ -1,0 +1,78 @@
+{
+  "id": "high-protein-chocolate-blender-muffins",
+  "name": "High-Protein Chocolate Blender Muffins",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "15-ounce can black beans, drained and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "applesauce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "flaxseed",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "unsweetened cocoa powder",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F.",
+    "Line a twelve-cup muffin tin with paper liners.",
+    "Place all the ingredients in a blender except the chocolate chips and the hempseed. Blend until the mixture is as smooth as possible. Add the chocolate chips and hempseed and blend 5 seconds or until dispersed.",
+    "Pour into the muffin cups, filling at least three-quarters full. Bake for 20 minutes. Cool for 5 minutes, and then move the paper cups to a wire rack to cool completely.",
+    "Store in the refrigerator for up to 3 days or freeze up to 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

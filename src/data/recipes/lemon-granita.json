@@ -1,0 +1,31 @@
+{
+  "id": "lemon-granita",
+  "name": "Lemon Granita",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6 5 organic lemons 3 lemon leaves 200 g caster sugar 200 ml water",
+  "ingredients": [
+    {
+      "item": "organic lemons",
+      "amount": "5"
+    },
+    {
+      "item": "lemon leaves",
+      "amount": "3"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "200 g"
+    },
+    {
+      "item": "water",
+      "amount": "200 ml"
+    }
+  ],
+  "method": [
+    "Serves 6 5 organic lemons 3 lemon leaves 200 g caster sugar 200 ml water",
+    "Place the zest in a saucepan with the lemon leaves, sugar and water and simmer gently for about 5 minutes. Remove from the heat and leave to cool before straining. Stir the lemon juice into the syrup. Pour into an ice cream machine and churn until it has a light and fluffy texture."
+  ]
+}

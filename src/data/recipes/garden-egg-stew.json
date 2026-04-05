@@ -1,0 +1,40 @@
+{
+  "id": "garden-egg-stew",
+  "name": "Garden Egg Stew",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4-6",
+  "intro": "5-6 small-medium garden eggs or 2 large purple eggplants/ aubergines (cut into small bite- size pieces)",
+  "ingredients": [
+    {
+      "item": "1/2 cup palm oil or coconut oil",
+      "amount": ""
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "4 cups"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "iru (fermented locust beans)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat the palm oil in a pot and add the stew base, tomato paste, garden eggs (or aubergine), iru, vegetable stock cube and salt. Bring to a boil then cover the pot and simmer on low heat for 40 minutes, stirring occasionally.",
+    "Serve hot with steamed rice, yam, sweet potatoes, plantain, and other starches."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

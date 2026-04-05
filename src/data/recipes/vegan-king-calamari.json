@@ -1,0 +1,74 @@
+{
+  "id": "vegan-king-calamari",
+  "name": "VEGAN KING CALAMARI",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Calamari was often my go-to item at brunch to share at the table with friends. If you don’t know what calamari is, it is squid cut into circles, battered and then deep-fried, usually paired with marinara sauce or aioli. My vegan version is made using king oyster mushrooms. This mushroom makes a great replacement because it can be cut up like the calamari and resembles its chewy texture. The seasoned batter makes it salty and crispy.",
+  "ingredients": [
+    {
+      "item": "king oyster mushrooms",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "unbleached all-purpose flour, divided",
+      "amount": "2 cups (250 g)"
+    },
+    {
+      "item": "garlic powder, divided",
+      "amount": "2 tbsp (18 g)"
+    },
+    {
+      "item": "hot sauce",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "nori furikake",
+      "amount": "2 tbsp (10 g)"
+    },
+    {
+      "item": "Old Bay Seasoning",
+      "amount": "2 tbsp (14 g)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp (6 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "6 cups (1.4 L)"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "2 tbsp (28 g)"
+    },
+    {
+      "item": "sriracha",
+      "amount": "2 tbsp (30 ml)"
+    }
+  ],
+  "method": [
+    "Remove the caps of the king oyster mushrooms and set them aside. Using an apple corer, remove the center of each of the mushroom stems. Then, slice the coreless mushrooms to get ring-shaped pieces. Slice the mushroom caps to get extra slices.",
+    "In a medium-sized bowl, combine the nondairy milk, 1 cup (125 g) of the flour, 1 tablespoon (9 g) of the garlic powder and the hot sauce. Use a whisk to mix everything together until smooth. This is your wet batter.",
+    "In a separate bowl, combine the remaining flour, nori furikake, remaining tablespoon (9 g) of garlic powder, Old Bay Seasoning, salt and pepper. Whisk to mix everything together until smooth.",
+    "Dip a batch of the mushroom pieces into the wet batter and let the mushrooms soak for about 5 minutes. Then, using a skimmer, scoop out the mushrooms (making sure to shake off any excess liquid) and add them to the Old Bay mixture to seal the breading.",
+    "Heat the vegetable oil in a deep pot or a deep fryer to 375°F (190°C). Use the skimmer to scoop the breaded mushrooms and add them in batches to the hot oil. Let them fry for 3 to 5 minutes, making sure to stir the mushrooms from time to time so they don’t stick together.",
+    "Remove the mushrooms once they are golden brown and place them on a paper towel–covered plate to absorb some of the excess oil.",
+    "In a small bowl, stir together the vegan mayonnaise and sriracha to serve with the hot calamari. Alternatively, you can serve them with marinara sauce and a bit of lemon for zest."
+  ],
+  "image": "/recipes/vegan-king-calamari.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "chicken-curry",
+  "name": "CHICKEN CURRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "The first time I was invited back to a curry-house kitchen to learn a recipe, it went something like this chicken curry. The chef assumed that I had no idea what a base sauce was and wanted to show me how to cook a curry house-style curry, but without the need of a base sauce. Following this example, you could cook all of the following traditional British curries without base sauce or pre-cooked ingredients. This basic mild chicken curry, like those on most curry-house menus, can easily be spiced up with more chilli powder or chopped fresh chillies to taste. You will notice that it does take longer to cook a curry in this way than if you were doing it with a base sauce and pre-cooked ingredients, but the end result is delicious.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "Seeds from 3 green cardamom pods",
+      "amount": ""
+    },
+    {
+      "item": "star anise",
+      "amount": "2"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato purée or plain passata (sieved tomatoes)",
+      "amount": "125ml (½ cup)"
+    },
+    {
+      "item": "mixed powder or curry powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "medium tomatoes, diced",
+      "amount": "2"
+    },
+    {
+      "item": "chicken thighs or breast, cut into bite-size pieces",
+      "amount": "900g (2lb)"
+    },
+    {
+      "item": "Pinch of dried fenugreek leaves (kasoori methi)",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "melted ghee (optional)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro), to garnish",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil over a medium–high heat in a large frying pan. When visibly hot, add the cinnamon stick, cardamom seeds, star anise and cumin seeds. Stir these spices around in the oil for about 30 seconds, then add the onions. Fry the onions for about 5 minutes until soft and translucent, then stir in the garlic and ginger paste and fry for a further 30 seconds. Now stir in the tomato purée and bring to a simmer. You are aiming to achieve a smooth sauce like you get when you use a prepared base sauce, so add about 250ml (1 cup) of water and simmer until the water has almost evaporated. This will help break the onions down into the sauce.",
+    "Add the ground spices and tomatoes and give it all a good stir to combine. By now, you should have a nice saucy mixture, but the onions will still need to break down some more. Add another 250ml (1 cup) of water and simmer until the water has almost evaporated. You will be left with a thick sauce and the onions will be melting into the sauce. Add the chicken and coat it well with the sauce, then cover the pan to simmer until the meat is cooked through – about 10 minutes. You will need to stir from time to time so that it cooks evenly. Remove the lid and you will have a chicken curry with a very thick sauce. It will be nice this way but if you prefer more sauce, add more water and continue to simmer until you are happy with the consistency.",
+    "To finish, rub the dried fenugreek leaves (kasoori methi) between your fingers into the sauce and season with salt. If you’re not watching the calories, drizzle some ghee over the top and stir it in before serving. Garnish with the coriander (cilantro)."
+  ]
+}

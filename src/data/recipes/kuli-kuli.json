@@ -1,0 +1,36 @@
+{
+  "id": "kuli-kuli",
+  "name": "Kuli Kuli",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "A crunchy spiced groundnut snack that is popular across West Africa. It is made by grinding roasted groundnuts into a paste, mixing it with spices and stripping the excess oil from the paste. Stripping the oil guarantees that the kuli kuli holds its shape and does not disintegrate when fried. It is excellent eaten alone but is often paired with soaked garri. Kuli kuli can be ground and used for making suya spice which you can use to season grilled or roasted vegetables. Although traditionally fried, you can also bake kuli kuli for a low-oil version.",
+  "ingredients": [
+    {
+      "item": "peeled groundnuts 1/2 small onion",
+      "amount": "2 cups"
+    },
+    {
+      "item": "inch piece of ginger 1/2 teaspoon salt",
+      "amount": "2"
+    },
+    {
+      "item": "chilli powder 1/2 cup warm water",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "Place the roasted groundnuts in a food processor and blend with half a cup of water to form a thick paste. Place the groundnut paste in a muslin cloth and squeeze well for several minutes to extract as much oil and water as possible. The final texture should be very dry and crumbly.",
+    "Heat the sunflower oil in a medium frying pan. Fry the kuli kuli in small batches. Be careful not to overcrowd the pan."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

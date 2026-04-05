@@ -1,0 +1,73 @@
+{
+  "id": "masala-chips",
+  "name": "MASALA CHIPS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "I love masala chips. Whether I’m serving them as a main dish or doing what I normally do, serving them as a side, they are always a big hit. This is especially so since I started using this recipe that was shown to me by my friend Alfarid ‘Billy’ Juma. The recipe couldn’t be easier, but you’ve got to follow the instructions carefully – there is a reason Billy’s masala chips are so good. This is true comfort food and I promise you that if you have one chip in his special masala sauce, you’ll find it difficult to stop. For ease, I use shop-bought frozen chips. I prefer this recipe with deep-fried chips but you could also use oven-baked chips.",
+  "ingredients": [
+    {
+      "item": "frozen chips (preferably the kind you deep-fry, but oven-bake will do)",
+      "amount": "900g (2lb)"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tomato hamburger relish",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "tomato ketchup",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "First make the sauce. Heat the oil in a saucepan over a medium–high heat. When visibly hot, stir in the cumin seeds and sauté in the oil for about 30 seconds until fragrant. Add the hamburger relish followed by the ketchup and bring to a simmer. Stir in the sugar and continue to cook for about 1 minute, then add the chopped onion and garlic and ginger paste and stir it all up to combine. Season with a little salt and take off the heat while your prepare your chips.",
+    "Cook your chips as per the instructions on the packet. Most takeaways use frozen chips that they deep-fry. I highly recommend doing the same, but if you’re looking for a lighter or less messy option, oven chips will do. When your chips are ready, season them directly with the chilli powder, cumin, coriander and a little bit of salt. Remember there is already some salt in the masala sauce, so go easy.",
+    "While the chips are still hot, begin adding them to the pan with the sauce, stirring so that every chip is evenly covered in the sauce. Ideally, the process of coating the chips in the sauce and serving should be done in about 2 minutes. If you let them sit too long, the chips will get soggy rather than the crispy sauce-coated chips they are meant to be."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

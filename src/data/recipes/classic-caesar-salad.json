@@ -1,0 +1,65 @@
+{
+  "id": "classic-caesar-salad",
+  "name": "Classic Caesar Salad",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4–6 | prep. time 15 minutes",
+  "ingredients": [
+    {
+      "item": "bunch romaine lettuce, cleaned and torn into bite-sized pieces",
+      "amount": "1"
+    },
+    {
+      "item": "fresh croutons, 1-inch pieces, toasted",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Sea salt and freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "clove garlic, peeled",
+      "amount": "1"
+    },
+    {
+      "item": "parmesan cheese, grated",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "mustard powder",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "anchovy fillet, cleaned, optional",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Arrange lettuce in a serving bowl.",
+    "In a food processor, combine all dressing ingredients. Process until well blended. Adjust seasoning with salt and pepper to taste.",
+    "Prior to serving, pour dressing on lettuce and toss.",
+    "Add croutons, toss again, and serve immediately."
+  ]
+}

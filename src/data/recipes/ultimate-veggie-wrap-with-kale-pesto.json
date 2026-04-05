@@ -1,0 +1,77 @@
+{
+  "id": "ultimate-veggie-wrap-with-kale-pesto",
+  "name": "Ultimate Veggie Wrap with Kale Pesto",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "raw cashews, soaked at least 2 hours",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "kale, de-stemmed and coarsely chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "broccoli florets",
+      "amount": "½ cup"
+    },
+    {
+      "item": "spinach tortillas",
+      "amount": "2"
+    },
+    {
+      "item": "grated carrots",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "yellow bell pepper, diced",
+      "amount": "½"
+    },
+    {
+      "item": "spinach",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Place the cashews, kale, garlic, and salt in a small food processor. Process for about 30 seconds. Add the nutritional yeast and oil and process a few more seconds until well blended. Set aside.",
+    "Add water to a medium saucepan with a steamer insert and bring to a boil. Add the broccoli to the insert and steam over boiling water for 10 minutes. Remove from steamer and set aside.",
+    "Lay out the spinach tortillas. Divide the kale pesto between the two tortillas and spread evenly, leaving about 1 inch around all edges. Divide the remaining ingredients in half and lay out each half next to each other and down the length of each tortilla.",
+    "Start to roll up snugly, without tearing the tortilla. Cut each tortilla in half and serve."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

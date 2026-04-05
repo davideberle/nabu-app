@@ -1,0 +1,51 @@
+{
+  "id": "plantain-porridge",
+  "name": "Plantain Porridge",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Proving that plantain can be used at all stages of ripeness, this recipe features green unripe plantain. You can of course use just-ripe plantain for a sweeter tasting porridge, but avoid using overripe plantain. The process of making this dish is similar to Asaro (page 54) and makes for a great alternative if you ever get bored with yam.",
+  "ingredients": [
+    {
+      "item": "palm oil or coconut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "green or just-ripe plantains (peeled and cut into bite-size pieces)",
+      "amount": "3"
+    },
+    {
+      "item": "red onion (sliced)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chilli powder Salt to taste",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "shredded or finely chopped spinach",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat the oil in a pot over medium heat and add the diced plantain and onions. Fry for 4-5 minutes over high heat, stirring occasionally. Add the stew base, vegetable stock cube, curry powder, chilli powder and salt to taste. Mix well, bring to a boil, then cover the pot and simmer over medium-low heat for 12-15 minutes until the plantain is soft. Add the meat substitute, tomatoes and spinach and cook for a further 3 minutes on high heat. Serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

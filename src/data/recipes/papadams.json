@@ -2,29 +2,1777 @@
   "id": "papadams",
   "name": "PAPADAMS",
   "source": {
-    "cookbook": "The Curry Guy",
+    "cookbook": "The Curry Guy Bible",
     "author": "Dan Toombs",
     "chapter": "Recipes"
   },
-  "servings": "",
-  "intro": "Almost everyone loves a papadam or two while eagerly awaiting their curry dinner. Most good Indian restaurants fry their own as they are much better than those pre-packed papadams found at supermarkets. If you happen upon a restaurant that doesn’t fry their own in-house, it is a good sign that you should make a quick exit.",
+  "servings": "prep time: 5 mins",
   "ingredients": [
     {
-      "item": "Rapeseed oil, for deep-frying",
+      "item": "Rapeseed (canola) oil, for deep-frying",
       "amount": ""
     },
     {
       "item": "Papads (1–2 per person)",
       "amount": ""
+    },
+    {
+      "item": "large tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2–3"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3–4 tbsp"
+    },
+    {
+      "item": "papads per person",
+      "amount": "2–3"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "papads",
+      "amount": "20"
+    },
+    {
+      "item": "(scant 1½ cups) basmati rice, rinsed and soaked in water for 5 hours, then drained",
+      "amount": "275g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "heaped tbsp black sesame seeds",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried chilli (hot pepper) flakes (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(½ cup) rapeseed (canola) oil",
+      "amount": "125ml"
+    },
+    {
+      "item": "(heaped ¾ cup) gram (chickpea) flour",
+      "amount": "100g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt (I use just under 1 tsp)",
+      "amount": ""
+    },
+    {
+      "item": "(12½ oz) long green chillies",
+      "amount": "350g"
+    },
+    {
+      "item": "Raita or coconut chutney, to serve (optional)",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil or ghee",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(14oz) mashed potato (about 1 large potato)",
+      "amount": "400g"
+    },
+    {
+      "item": "(7oz) cooked artichoke hearts, diced",
+      "amount": "200g"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "heaped tbsp plain (all-purpose) flour, plus extra for dusting",
+      "amount": "4"
+    },
+    {
+      "item": "(heaped 1 cup) plain (all-purpose) flour",
+      "amount": "150g"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Mint and coriander sauce",
+      "amount": ""
+    },
+    {
+      "item": "Tamarind sauce",
+      "amount": ""
+    },
+    {
+      "item": "Yoghurt sauce",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "(14oz) tins (cans) black beans, drained and rinsed",
+      "amount": "2 x 400g"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Handful of grated Cheddar cheese",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "shop-bought rectangular samosa sheets",
+      "amount": "20"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(1 cup) toor dhal",
+      "amount": "150g"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "finely chopped ginger",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "shop-bought rectangular samosa sheets",
+      "amount": "25"
+    },
+    {
+      "item": "Your favourite chutneys and lime wedges, to serve",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "curry leaves, roughly chopped",
+      "amount": "10"
+    },
+    {
+      "item": "x 25cm (10in) flour tortillas or chapattis",
+      "amount": "6"
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh or frozen curry leaves, roughly chopped (optional)",
+      "amount": "10"
+    },
+    {
+      "item": "onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "tandoori masala or garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Kashmiri chilli powder (optional and to taste)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "(1lb 2oz) skinless chicken breasts or thighs, roughly chopped",
+      "amount": "500g"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "(7oz) green cabbage, thinly sliced and chopped",
+      "amount": "200g"
+    },
+    {
+      "item": "carrot, grated",
+      "amount": "1"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "Raita, hot sauce and/or chutneys, to serve",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "(2¾ cups) plain (all-purpose) flour",
+      "amount": "400g"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "melted ghee",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "green bird’s eye chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "floury potatoes, peeled and cut into 1cm (½in) cubes",
+      "amount": "2"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "About 250ml (1 cup) water or spice stock – enough to cover",
+      "amount": ""
+    },
+    {
+      "item": "carrot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(1 cup) frozen peas",
+      "amount": "125g"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "quantity pre-cooked keema*",
+      "amount": "1"
+    },
+    {
+      "item": "(½ cup) masoor dhal (red lentils)",
+      "amount": "100g"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(scant 3 cups) rice flour",
+      "amount": "380g"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Podina coriander and mint chutney, refrigerated until really cold",
+      "amount": ""
+    },
+    {
+      "item": "onions (slightly larger than tennis balls), sliced",
+      "amount": "3"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "(1 cup) gram (chickpea) flour",
+      "amount": "140g"
+    },
+    {
+      "item": "garlic paste*",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and cut into matchsticks",
+      "amount": ""
+    },
+    {
+      "item": "fresh green chillies, roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "panch poran",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) leaves",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green (bell) pepper, thinly sliced and cut into 2.5cm (1in) pieces",
+      "amount": "1"
+    },
+    {
+      "item": "A generous handful of cabbage, shredded (about 90g/1 cup)",
+      "amount": ""
+    },
+    {
+      "item": "medium carrot, peeled and julienned",
+      "amount": "1"
+    },
+    {
+      "item": "(2 cups) shredded baby spinach leaves, large stems removed",
+      "amount": "450g"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(1 cup) gram (chickpea) flour, plus extra if needed",
+      "amount": "170g"
+    },
+    {
+      "item": "(⅓ cup) rice flour",
+      "amount": "80g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt, plus extra to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(1 cup) panko breadcrumbs (optional)",
+      "amount": "90g"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Pakora sauce, to serve",
+      "amount": ""
+    },
+    {
+      "item": "unpeeled raw large prawns (shrimp)",
+      "amount": "8–10"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "roasted cumin seeds (see Ground spices and spice blends)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder, or to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil or ghee",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "1"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s eye chilli, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(½ cup) tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "(3 cups) base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "700ml"
+    },
+    {
+      "item": "(1lb) small peeled raw prawns (shrimp)",
+      "amount": "450g"
+    },
+    {
+      "item": "tomatoes, quartered",
+      "amount": "2"
+    },
+    {
+      "item": "dried fenugreek leaves (kasoori methi)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemons (1 quartered)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "homemade puris or fried chapattis",
+      "amount": "4"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh mussels",
+      "amount": "25"
+    },
+    {
+      "item": "freshly cracked black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "generous tbsp fine semolina flour",
+      "amount": "5"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Flaky sea salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Lime wedges, to serve",
+      "amount": ""
+    },
+    {
+      "item": "skinless chicken legs, including thighs",
+      "amount": "8"
+    },
+    {
+      "item": "Juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red food colouring powder (optional, see introduction)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(scant ½ cup) Greek yoghurt",
+      "amount": "100g"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chilli paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(1½ cups) skinless and boneless chicken breast, cubed or sliced",
+      "amount": "250g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "chilli powder, to taste",
+      "amount": "½–1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "White of 1 small egg",
+      "amount": ""
+    },
+    {
+      "item": "(½ cup) gram (chickpea) flour",
+      "amount": "65g"
+    },
+    {
+      "item": "Sparkling water",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Lemon wedges, onion rings and lettuce, to serve",
+      "amount": ""
+    },
+    {
+      "item": "(2lb 3oz) chicken breasts",
+      "amount": "1kg"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves",
+      "amount": "20"
+    },
+    {
+      "item": "green chillies, sliced",
+      "amount": "3"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "12"
+    },
+    {
+      "item": "10cm (4in) piece of ginger, peeled and julienned",
+      "amount": ""
+    },
+    {
+      "item": "spring onions (scallions), roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli sauce (optional)",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornflour (cornstarch)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chicken legs",
+      "amount": "12"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "tandoori masala or garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coarse black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "soy sauce (use gluten-free if liked)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cornflour (cornstarch)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(generous ½ cup) tomato purée",
+      "amount": "150ml"
+    },
+    {
+      "item": "(scant 1¾ cups) base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "400ml"
+    },
+    {
+      "item": "(1lb 9oz) pre-cooked chicken (see introduction above)",
+      "amount": "700g"
+    },
+    {
+      "item": "cucumber, peeled, deseeded and cut into 2.5cm (1in) pieces",
+      "amount": "½"
+    },
+    {
+      "item": "red (bell) pepper, roughly chopped",
+      "amount": "½"
+    },
+    {
+      "item": "(3½oz) tinned (canned) chickpeas (garbanzo beans), drained and rinsed",
+      "amount": "100g"
+    },
+    {
+      "item": "large tomato, cut into 8 wedges",
+      "amount": "1"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(2lb 3oz) boneless and skinless chicken thighs, cut into thirds",
+      "amount": "1kg"
+    },
+    {
+      "item": "Garlic salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for browning the chicken",
+      "amount": ""
+    },
+    {
+      "item": "Cornflour (cornstarch) or rice flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "(½ cup) caster sugar",
+      "amount": "100g"
+    },
+    {
+      "item": "(½ cup) rice wine vinegar or white wine vinegar",
+      "amount": "125ml"
+    },
+    {
+      "item": "red chilli hot sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato ketchup",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "dark soy sauce or coconut amino*",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(¼ cup) orange juice",
+      "amount": "65ml"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "(2lb 3oz) chicken wings, preferably skinless",
+      "amount": "1kg"
+    },
+    {
+      "item": "chilli sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Raita of your choice, to serve",
+      "amount": ""
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green chilli paste, or 2–3 green chillies, finely chopped",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tamarind concentrate",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chilli powder, or to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of 3 limes",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "lamb chops",
+      "amount": "12"
+    },
+    {
+      "item": "(2 cups) full-fat (whole) milk",
+      "amount": "500ml"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick or cassia bark",
+      "amount": ""
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "6"
+    },
+    {
+      "item": "cloves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and grated",
+      "amount": ""
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Flaky sea salt and 3 limes, quartered, to serve",
+      "amount": ""
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rice flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(generous ½ cup) plain yoghurt",
+      "amount": "150g"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "(2lb 3oz) lamb shoulder, roughly chopped and trimmed of excess fat",
+      "amount": "1kg"
+    },
+    {
+      "item": "(1 cup) chana dhal, rinsed and soaked for 30 minutes",
+      "amount": "150g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Kashmiri dried red chillies",
+      "amount": "3"
+    },
+    {
+      "item": "onion, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Small bunch of coriander (cilantro)",
+      "amount": ""
+    },
+    {
+      "item": "chopped mint leaves",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s eye chillies, or to taste",
+      "amount": "2"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "large eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "(1lb 12oz) minced (ground) beef (preferably 20% fat)",
+      "amount": "800g"
+    },
+    {
+      "item": "medium red onions, very finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tomatoes, peeled, deseeded and finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s eye chillies, very finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt, plus extra to taste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(7oz) beef marrow (available from most butchers and many supermarkets)",
+      "amount": "200g"
+    },
+    {
+      "item": "Beef dripping, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "limes, quartered",
+      "amount": "2"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium red onion, grated",
+      "amount": "1"
+    },
+    {
+      "item": "medium potato, peeled and grated",
+      "amount": "1"
+    },
+    {
+      "item": "broccoli (1 cup), grated",
+      "amount": "80g"
+    },
+    {
+      "item": "medium carrot, grated",
+      "amount": "1"
+    },
+    {
+      "item": "(3oz) cauliflower (1 cup) grated",
+      "amount": "80g"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(1 cup) masoor (red) lentils, washed and soaked in water for 30 minutes",
+      "amount": "225g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "(½ cup) ground almonds",
+      "amount": "50g"
+    },
+    {
+      "item": "tandoori masala or garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chaat masala (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "Kashmiri chilli powder (more or less to taste)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "(1 cup) Greek yoghurt",
+      "amount": "250g"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "medium potatoes, unpeeled",
+      "amount": "4"
+    },
+    {
+      "item": "heaped tbsp rice flour",
+      "amount": "4"
+    },
+    {
+      "item": "heaped tbsp phoa (rice flakes), soaked in 2 tbsp water for 30 minutes (optional)",
+      "amount": "4"
+    },
+    {
+      "item": "Rapeseed (canola) or vegetable oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of asafoetida*",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Small bunch of coriander (cilantro), finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "Tamarind sauce, to serve",
+      "amount": ""
+    },
+    {
+      "item": "Mint, coriander and mango chutney, to serve",
+      "amount": ""
+    },
+    {
+      "item": "(2 tbsp) butter",
+      "amount": "25g"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "cloves",
+      "amount": "6"
+    },
+    {
+      "item": "large red onion, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "stick celery, diced",
+      "amount": "1"
+    },
+    {
+      "item": "carrot, diced",
+      "amount": "1"
+    },
+    {
+      "item": "(1¾oz) tinned (canned) plum tomatoes, roughly chopped",
+      "amount": "50g"
+    },
+    {
+      "item": "leek, diced",
+      "amount": "½"
+    },
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "litre (4½ cups) salt-free chicken or vegetable stock",
+      "amount": "1"
+    },
+    {
+      "item": "(14fl oz) tin (can) thick coconut milk",
+      "amount": "400ml"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "broken idlis (optional)",
+      "amount": "4"
+    },
+    {
+      "item": "lemon wedges, to serve",
+      "amount": "4"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic cloves, peeled",
+      "amount": "6"
+    },
+    {
+      "item": "4cm (1½in) piece of ginger, peeled and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "Handful each of coriander (cilantro) and mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "(1 cup) Greek yoghurt",
+      "amount": "250g"
+    },
+    {
+      "item": "(scant ¾ cups) full-fat (whole) milk",
+      "amount": "400ml"
+    },
+    {
+      "item": "(1 cup) tinned (canned) mango pulp or the equivalent ripe cut mango pieces",
+      "amount": "250ml"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cardamom powder (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Handful of ice cubes",
+      "amount": ""
+    },
+    {
+      "item": "pistachio nuts, lightly crushed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Whipped cream, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of saffron, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "A few large handfuls of your Bombay mix of choice",
+      "amount": ""
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "1–2"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) stems",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "tomato, deseeded and diced",
+      "amount": "½"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(3 cups) flaked (slivered) almonds",
+      "amount": "250g"
+    },
+    {
+      "item": "long green chillies, finely sliced lengthways",
+      "amount": "4"
+    },
+    {
+      "item": "Pinch of ground turmeric",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped coriander (cilantro), to serve",
+      "amount": "3 tbsp"
     }
   ],
   "method": [
-    "Heat 10cm (4 in) of oil in a large pan or wok until hot. When a piece of papad puffs up quite quickly when dropped into the oil, it’s ready. Papads are usually cooked in pairs, which speeds the process up and also helps keep them uniformly flat. Drop the papads in the oil. They will very quickly expand into full-sized papadams. Be careful not to overcook or burn the papadams. They will quickly begin to turn brown, so remove them from the oil before this happens. It only takes seconds to overcook papadams, so be ready to get them out of that oil. Remove from the oil with tongs or a wire mesh spoon and place on kitchen paper to absorb the excess oil.",
-    "You can leave them to cool flat, or fold them into your own preferred shapes while they are still hot. Serve or store in an airtight container."
+    "Heat 10cm (4in) of oil in a large pan or wok until hot. When a piece of papad puffs up quite quickly when dropped into the oil, you know the oil is hot enough. Papads are usually cooked in pairs, which speeds up the process and also helps keep them uniformly flat. Drop the papads in the oil. They will very quickly expand into full-size papadams. Be careful not to overcook or burn the papadams; they will quickly begin to turn brown so remove them from the oil before this happens. It only takes seconds to overcook papadams, so be ready to get them out of that oil. Remove from the oil with tongs or a wire-mesh spoon and place on paper towel to absorb the excess oil.",
+    "You can leave them to cool flat, or fold them into your own preferred shapes while they are still hot. Serve or store in an air-tight container.",
+    "Mix the tomato, onion, green chillies, lime juice and coriander (cilantro) in a large bowl. Season with salt and black pepper and add a little chaat masala if you like. Remember that most papads and chaat masala already have salt in them, so it is a good idea to try one first so that you don’t over-season the masala. Cover and place in the fridge while you roast the papads.",
+    "Heat a dry frying pan over a medium heat. Using a brush or your hand, spread a little oil over both sides of a papad. Place it in the centre of the pan and press it down with a spatula. You will be able to see the papad cooking through. When this begins to happen, flip it over and press it down again with the spatula. Continue flipping until the papad is nicely roasted on both sides and cooked through – about 30–45 seconds. Transfer to a wire rack and continue cooking the remaining papads in the same way.",
+    "To serve, top each papad with about 2 tablespoons of the masala.",
+    "To make the batter, place the soaked rice in a food processor and add just enough water to blend it into a thick batter. Whisk in the rest of the ingredients. The batter should be thick enough to adhere to the papads when dipped into it. If it is too thick to easily dip, add a drop more water – it should be the consistency of double (heavy) cream.",
+    "Heat the oil in a large saucepan or wok until hot enough to deep-fry. The oil is ready when a piece of papad dropped into the oil sizzles and floats to the top immediately.",
+    "Dip the first papad into the batter, ensuring that it is very well coated, and gently place it into the oil. Fry for about 40 seconds until the batter coating turns light brown. Transfer with a slotted spoon to a wire rack over a tray or to a piece of paper towel. Allow the excess oil to drip into the pan or drain into the paper while you finish cooking the remaining papads.",
+    "Heat 1 teaspoon of the oil in a large frying pan over a medium–high heat. Tip in the flour and work it with a whisk or fork in the pan so that it toasts evenly. The flour is ready after about 2 minutes when fragrant and lightly browned. Don’t worry if you see small balls of untoasted gram flour. Break them up as best you can, but any remaining are fine.",
+    "Add the turmeric, chilli powder, cumin, coriander, amchoor and salt and transfer to a mixing bowl. Pour in 70ml (¼ cup) of water and work with your hands into a thick paste.",
+    "Slit the green chillies down the middle and remove most of the seeds with your thumb. Stuff the chillies with the gram flour paste.",
+    "Heat the remaining oil in a frying pan over a low heat. Fry the chillies for 2–3 minutes until browned all over. You should see a few blackened spots and blisters on the chillies. Serve immediately on their own or with a good raita or coconut chutney.",
+    "To make the filling, heat the oil in a large frying pan over a medium–high heat. When hot, add the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and ginger paste, green chillies, cumin, coriander, garam masala and turmeric. Now add the mashed potato and artichoke and stir until well combined. It should have a nice yellow glow because of the turmeric. Stir in the lemon juice and chopped coriander (cilantro) and set aside to cool.",
+    "Now make the pastry. Mix the flour, oil, cumin seeds and salt in a bowl and slowly add about 80ml (5½ tablespoons) of water while working with your hands until you have a soft but dry dough. Let it sit for about 30 minutes, covered with a wet tea (dish) towel.",
+    "To make the pinwheels, roll the dough out on a lightly floured surface into a 20cm (8in) diameter circle that is slightly thicker than a chapatti. Spread the potato and artichoke mixture evenly all over the surface – it should look like a big potato pizza. Starting at one end, roll it into a tight cylinder, then slice into 2.5cm (1in) rounds.",
+    "When ready to cook, heat about 10cm (4in) of oil in a large wok or saucepan. The oil is ready when a piece of pastry sizzles and rises to the top immediately when placed in it. If you have an oil thermometer, aim for 170°C (340°F).",
+    "Mix the 4 tablespoons of flour with 100ml (scant ½ cup) of water in a bowl to make a thick paste.",
+    "Dip one of the pinwheels in the flour paste so it is nicely coated and carefully lower it into the oil. Repeat with the rest of the pinwheels and fry for about 3 minutes per side until nicely browned all over. You may need to work in batches to avoid overcrowding the pan. I usually turn the pinwheels over in the oil a few times for more uniform cooking. Transfer to paper towel to soak up the excess oil, then serve with the sauces.",
+    "Heat the oil in a saucepan over a medium–high heat. When hot, add the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and fry for a further 30 seconds, then add the beans, chilli powder and ground cumin. Reduce the heat to medium and start mashing it all up with a potato masher until you have a mixture the consistency of mashed potatoes. Whisk in the cheese and season with salt. Allow to cool. The bean mixture will become thicker as it cools.",
+    "To make the samosas, take a samosa sheet and place it on a clean surface with one of the short ends closest to you. Mix the flour with enough water to make a thick paste, ready for sealing the samosas. Take the top left corner of the samosa sheet and bring it about halfway down to meet the right-hand side, creating a kite-like shape at the top. Now fold the top right corner down to meet the left-hand side, creating a triangular pocket with a small flap. Fill the pocket with a generous tablespoon of the filling and fold the small triangular flap and pastry over to close. Now rub the flour paste all over the surface of the remaining pastry, and fold it into a neat triangle to seal. If there are any holes in the corners, use the paste to seal them too. Repeat with the rest of the samosa wrappers and filling.",
+    "Heat about 10cm (4in) of rapeseed (canola) oil in a large saucepan or wok to 170°C (340°F) – or until a piece of samosa sizzles immediately when dropped in the oil. You don’t want to overcrowd the pan so you might need to work in batches. Fry for about 2 minutes, turning the samosas a few times as you do, until they are crisp and light brown. Keep warm while you fry any remaining batches.",
+    "Rinse the dhal several times, cover with water and soak for 30 minutes.",
+    "Meanwhile, light a few pieces of lumpwood charcoal outside to become white-hot (optional).",
+    "Tip the dhal into a pan with the salt, turmeric and ginger and cover with 1 litre (4½ cups) of water. Bring to a boil over a high heat, then reduce the heat and simmer for 30 minutes, or until the dhal is really soft. Stir in the amchoor and garam masala. You want the dhal to be really thick as it is a stuffing, so reduce the water down until good and thick. Stir regularly so it doesn’t burn to the bottom of the pan. Set aside to cool; it will thicken more as it does.",
+    "Now heat the tempering oil over a high heat in a separate pan until visibly hot. Add the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium and stir in the cumin seeds, chillies and curry leaves. Temper for about 40 seconds, then pour it over the cooked dhal and whisk it in, along with the coriander (cilantro).",
+    "By this time, the charcoal should be ready. Using tongs, place the hot charcoal on a piece of foil and carefully transfer to the pan with the dhal. Drizzle the ½ teaspoon of rapeseed (canola) oil over the charcoal – it will begin to smoke heavily. Cover the pan and let the dhal smoke until all the smoke is gone. I usually smoke mine in my Traeger or smoker, which I find more convenient. Feel free to use a smoker if you have one.",
+    "Take a samosa sheet and wrap the filling up as explained on black bean and cheddar samosas. Repeat with the remaining samosa wrappers and filling.",
+    "When all the samosas are wrapped, you can freeze them if you wish. Spread them out on a baking tray and transfer to a freezer bag once frozen. Be sure to thaw them first before frying.",
+    "If frying immediately, heat about 10cm (4in) of oil in a large saucepan or wok to 170°C (340°F) and fry in batches for about 3 minutes until crispy and lightly browned. Keep warm while you fry the remaining samosas.",
+    "Serve with your favourite chutneys and lime wedges for squeezing.",
+    "Cut the tortillas in half so that you have 12 half circles. Set aside. Heat the oil over a medium–high heat and when visibly hot, stir in the mustard seeds. When the mustard seeds begin to crackle (after about 30 seconds), reduce the heat to medium and add the cumin seeds and curry leaves (if using). Sizzle for about 30 seconds, but be careful not to burn the cumin seeds. To cool the pan down, add the onions and fry over a medium heat for about 5 minutes until soft and translucent. Now add the chillies and garlic and ginger paste, and stir it all up to combine. Cook for a further 30 seconds to cook the rawness out of the garlic and ginger.",
+    "Add the tomato and stir well. Then stir in the tandoori or garam masala and the chilli powder (if using). Stir in 2 tablespoons of the coriander (cilantro) and the chicken. Cook until the chicken is cooked through, about 7 minutes, and then squeeze in the lime juice and season with salt. Tip everything into a bowl to cool.",
+    "Place the pan back on the heat and add the cabbage and carrot. Fry in whatever oil remains in the pan until just cooked through but still crunchy – 2–3 minutes should do the job. Pour into the bowl with the chicken and stir well to combine.",
+    "In a small bowl, whisk 4 tablespoons of water and the flour with a fork to make a paste. This paste will be used to seal the samosas. Take one tortilla half and place it on a clean surface with the flat cut at the top. Bring the two corners together. Apply a generous amount of the paste to the exterior of one of the straight edges and press the two sides together to form a cone shape. You will need to press firmly so the cone sticks together. Fill the cone almost to the top with the chicken mixture and seal the top using more paste. Repeat with the remaining tortillas.",
+    "Heat the oil to 170°C (340°F), or until a piece of tortilla begins to sizzle immediately when added to the oil and floats to the top. Cooking in batches, add the samosas to the hot oil and cook for about 4 minutes, or until they are crispy brown and heated through. Transfer to paper towel to soak up the excess oil and serve hot with a good raita, hot sauce and/or chutney.",
+    "Mix 350g (2½ cups) of the flour in a large bowl with the salt, oil and ghee. Slowly drizzle enough water into the mixture to make a firm but sticky dough. Sprinkle the remaining flour on a clean surface, tip out the dough and knead for about 5 minutes until it no longer sticks to your hands. Cover the dough and let rest for 30 minutes.",
+    "To make the vegetable filling, heat the oil in a large frying pan over a medium–high heat until bubbles appear. Add the cumin seeds. When they become fragrant in the oil, toss in the onion and chillies, and fry for 5–7 minutes until the onion is translucent and lightly browned. Add the garlic and ginger paste and fry for a further minute.",
+    "Add the potatoes and mixed powder, and just enough water or spice stock to cover. Simmer until the potatoes are soft, topping up the stock if needed. Add the carrot and continue cooking until cooked through but still al dente. Reduce the stock until you have a dry potato mixture. Stir in the coriander (cilantro) and peas and season with salt. Set aside to cool.",
+    "To make the lamb or vegetable samosas, tear off a piece of dough the size of a golf ball and place on a floured surface (keep the remaining dough in the bowl covered so that it doesn’t dry out). Roll the dough into a very thin rectangle, the thinner the better, about 5 x 12cm (2 x 4½in).",
+    "Place about 1 tablespoon of lamb or vegetable filling at the top of the pastry rectangle. Fold the top left corner over the filling to make a small triangular pocket. There will still be about 6cm (2½in) of pastry under this triangular pocket. Fold the top of the triangle over onto the remaining pastry and then again to create a little triangular samosa. Press the seams together tightly and repeat until all of the samosas are made.",
+    "When ready to cook, pour 10cm (4in) of rapeseed (canola) oil into a deep saucepan and heat to 170°C (340°F). Fry the samosas in batches until nicely browned. Remove with a slotted spoon and transfer to a wire rack. Keep warm while you fry the remaining samosas.",
+    "To make the bora, wash the lentils and soak them in cold water for 30 minutes. Drain and transfer to a saucepan. Add 550ml (scant 2½ cups) of fresh water, the onion, salt and turmeric. Cook over a medium heat until the lentils are soft and the water is almost all gone.",
+    "Tip the lentils into a bowl and stir in the rice flour. Mix thoroughly with your hands until you have a smooth dough. (Mixing everything while still warm makes it easier.)",
+    "On a flat surface, roll out the dough to a 2–3 mm thickness (separate the dough into smaller balls to make this easier if you like). Cut out bite-size pieces of the dough, either in long triangles or use cookie cutters to make different shapes.",
+    "Heat at least 10cm (4in) of rapeseed (canola) oil in a heavy-based saucepan to about 170°C (340°F). When a piece of dough sizzles immediately when dropped into the oil, you’re ready to cook. Fry in batches, transfer to a plate lined with paper towel and keep warm while you deep-fry the rest. Season with a little more salt if you like. Serve piping hot with the fridge-cold podina.",
+    "Place the onions in a bowl, sprinkle over the salt and mix it all up with your hands to ensure the onions are evenly coated with the salt. Let them sit for 30 minutes–2 hours; the salt will release the moisture from the onions, which will become part of your batter.",
+    "When ready to form the bhajis, sift the flours over the onions and add the garlic paste, ginger, chillies, panch poran, 2 tablespoons of oil and the coriander (cilantro). Begin to work these ingredients into the onions with your hands until they are nicely coated. There should be enough moisture from the onions and oil, but if you are finding it a bit too sticky, add just a little water. When you can easily form a bhaji with your hands, you’re ready to go.",
+    "Heat about 10cm (4in) of rapeseed (canola) oil to 160°C (320°F) in a large frying pan. Form the onion mixture into bhajis about the size of golf balls, or larger if you prefer. Fry in small batches until lightly browned and cooked through, then remove them with a slotted spoon to a wire rack to rest while you fry the remaining bhajis.",
+    "When all the bhajis are cooked, raise the heat of the oil to 180°C (355°F) and fry them again in small batches until you are happy with the colour of the exterior. Serve immediately or, if working ahead, place the bhajis on a wire rack placed over a foil-lined dish in a low oven for up to 30 minutes.",
+    "Place the vegetables in a large mixing bowl and add the coriander (cilantro).",
+    "Sift the gram flour, rice flour, turmeric, salt and Kashmiri chilli powder into a separate bowl and add the lemon juice (if using). Begin slowly pouring about 125ml (½ cup) of water into the flour mixture while whisking until it is about the same consistency as whisked natural yoghurt.",
+    "Tip the vegetables into the batter and mix well. Sprinkle the panko breadcrumbs (if using) onto a plate.",
+    "Using your hands, form the battered vegetables into balls slightly larger than golf balls and dip them in the panko breadcrumbs. If you are finding the mixture too wet to work with, sift in a little more gram flour. If too dry, add a drop more water.",
+    "Heat about 10cm (4in) of oil in a large saucepan or wok to 180°C (355°F). If you don’t have an oil thermometer, the oil is ready when a small piece of the battered vegetables sizzles immediately and rises to the top. You might need to cook the pakoras in batches. Fry until they are crispy, brown and cooked through. This will take about 4 minutes. Serve hot with pakora sauce.",
+    "Using a sharp knife, slice down the centre of the back of each prawn (shrimp) and remove the black or clear vein. Peel off the head and the rest of the shell down to the tail. Leave the tail intact as it makes a good and attractive handle. Continue to make a shallow incision into the back to butterfly each prawn. Place cling film (plastic wrap) over the butterflied prawns and lightly pound them flat with a mallet.",
+    "For the batter, mix the flours, baking powder, cumin, mixed powder and chilli powder together in a bowl. Slowly whisk in about 125fl oz (½ cup) of water until you have a batter the consistency of double (heavy) cream and thick enough to coat the back of a spoon but slowly drip off. If it is too thick, add a little more water, or a pinch more gram flour if too thin. Season the batter with salt.",
+    "Heat about 15cm (6in) of oil in a deep, heavy-based saucepan or wok until hot enough for a drop of batter to sizzle immediately when dropped in the oil. Dip and coat the prawns with the batter, slowly lower each battered prawn into the hot oil and fry for about 3 minutes until nicely browned on the exterior and cooked through. You might need to do this in batches.",
+    "If cooking ahead (see introduction) remove to a cooling rack placed over a foil-lined dish for any excess oil to drain off, and place in a warm oven (they will stay nice and crisp for 30 minutes). Transfer to a warm plate to serve.",
+    "Heat the oil in a large frying pan or wok over a medium–high heat. Add the star anise and cinnamon and let the flavour of the spices infuse into the oil for about 30 seconds. Add the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and ginger paste along with the chilli and cook for another minute. Add the Kashmiri chilli powder and the cumin, followed by the tomato purée and about 250ml (1 cup) of the base sauce. Bring this all to a rolling simmer, only stirring if it looks like the sauce is catching on the pan.",
+    "Now add the prawns (shrimp) and another 250ml (1 cup) of the base sauce and simmer until the prawns are pink and almost cooked through. The sauce will reduce. You can add a little more base sauce if you like a thinner sauce, but you may not want to use it all. Stir in the tomatoes.",
+    "When the sauce consistency is to your liking, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Squeeze the juice of one of the lemons into the sauce and season with salt. To serve, place one puri or fried chapatti on each of four plates. Divide the prawn curry between the plates and garnish with the coriander (cilantro) and a lemon wedge.",
+    "Run cold water over the mussels, clean and debeard them. The mussels should close tightly when washed; if they don’t, discard them. Bring about 250ml (1 cup) water to a boil in a saucepan with a tight-fitting lid. Place the mussels in the boiling water and cover. In about 5 minutes, they should all open. Discard any that don’t.",
+    "Break open the mussel shells and carefully remove the meat. Place the meat in a bowl and allow to cool slightly. Sprinkle with the cracked black pepper, Kashmiri chilli powder and salt. Mix well and stir in the lime juice.",
+    "Now whisk the egg in a bowl and sprinkle the semolina on a plate. Take one mussel and dip it in the beaten egg, then roll it in the semolina to coat. Repeat with the remaining mussels.",
+    "Heat the oil over a medium–high heat in a preferably non-stick frying pan. Fry the mussels on one side for about 2 minutes, then turn them over to fry the other side, until the mussels are golden brown. This shouldn’t take more than about 4 minutes.",
+    "For a nice presentation, serve the fried mussels in half shells. Season with flaky sea salt and serve hot with lime wedges.",
+    "Cut 3–5 shallow slits in each chicken leg and place in a large bowl. Squeeze the lime juice over the chicken and rub it into the meat along with the salt and red food colouring (if using). Set aside while you make the marinade.",
+    "Place all the marinade ingredients in a bowl and work them together with your hands until smooth. Coat the chicken with the marinade and allow to marinate for 2–48 hours – the longer the better.",
+    "When ready to cook, skewer the chicken legs onto flat skewers and heat the barbecue. Grill using the direct grilling method until the chicken is nicely charred and then turn. This is important when using skewers, as the meat needs to cook so that it expands and doesn’t move around on the skewers.",
+    "If you can’t be bothered to fire up the barbecue? No worries! Preheat the oven to 200°C (400°F/Gas 6) and cook the chicken on a wire rack placed over a foil-lined oven tray for about 20 minutes, or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature for a minute or so.",
+    "Place the chicken in a large bowl and mix with the turmeric, ajwain (carom) seeds, garam masala, chilli powder and a little salt so that the meat is evenly coated. Let this sit for about 20 minutes.",
+    "Stir in the garlic and ginger paste, coriander (cilantro) and egg white. Now start adding the gram flour a little at a time, coating the meat, adding a splash of sparkling water from time to time. Continue until all the flour is used up and it has the consistency of ketchup.",
+    "Heat enough oil for deep-frying in a deep, heavy-based saucepan or deep-fat fryer, to between 170–180°C (340–355°F). Using a wire mesh spoon, slowly lower the pakoras into the hot oil. You may need to fry in batches and cooking times will depend on the size of the chicken chunks, but they should only take a few minutes to cook through.",
+    "Serve with lemon wedges, onion rings and lettuce.",
+    "Slice the chicken breasts into small bite-size pieces (tikka). Mix all the batter ingredients into a paste, then rub it evenly into the chicken pieces. If time permits, let this marinate for about 30 minutes or overnight, but this isn’t crucial.",
+    "When ready to deep-fry, heat about 10cm (4in) of oil in a large wok. The oil is ready when a small piece of chicken sizzles immediately upon putting it in the oil. If using an oil thermometer, aim for 190°C (375°F).",
+    "Fry the chicken in batches until the exterior is nice and crispy and the meat is almost cooked through. This should take 2–3 minutes per batch. Place the finished chicken pieces on a wire rack to rest while you fry the remaining batches. The frying can be done ahead of time. Store the fried chicken covered in the fridge until ready to use.",
+    "Once cooled a bit, remove all but about 3 tablespoons of the oil from the wok. Place over a high heat and toss in the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium–high, add the cumin seeds, curry leaves and green chillies and fry for a further 30 seconds. Stir in the garlic and ginger and fry until fragrant and soft – about 1 minute should do the job.",
+    "Tip in the chicken and spring onions (scallions) and stir well to coat. Fry over a high heat until the chicken is completely cooked through. Squeeze the lemon juice over the top and add the chilli sauce (if using). Give it all one last good stir, check for seasoning, adding a little more salt if needed, and serve.",
+    "Hold a paring knife perpendicular to the end of a chicken leg, just before the ankle, and slice around the skin. Grab the skin and tear it off the ankle. A pair of good pliers will help with this, but I do it by hand. Begin sliding the skin and meat up the leg to form the lollipop end. As you do this, you will see the six stringy white tendons: grasp each tightly with your hand or pliers and pull them off the bone. You could also use a knife to cut any bits you missed. Continue moving the meat and skin up the bone until you have a nice ball at one end. Repeat with the remaining legs.",
+    "Whisk all the marinade ingredients together in a large bowl. Coat the chicken lollipops with the marinade and marinate for 30 minutes–24 hours – the longer the better.",
+    "When ready to fry, heat about 10cm (4in) of oil in a saucepan until a bit of the batter/marinade sizzles immediately when dropped in. Fry the chicken lollipops in batches until cooked through – about 5 minutes should do the job, but be sure to check. The internal temperature should be 75°C (165°F). If you don’t have a meat thermometer, stick a sharp knife in – the chicken is ready when the juices run clear.",
+    "Heat the oil in a frying pan over a medium–high heat. When it’s visibly hot, add the onion and fry for about 5 minutes until soft and translucent. Add the garlic and ginger paste and give it all another good stir.",
+    "Spoon in the mixed powder, chilli powder and chaat masala, followed by the tomato purée. This should sizzle when it hits the pan. When it does, add half the base sauce. Allow this to bubble for a minute or so, only stirring if the sauce begins to stick to the pan. Add the chicken pieces and the rest of the base sauce and simmer until the chicken is cooked through – about 10 minutes should do the job.",
+    "To finish, stir in the cucumber, red (bell) pepper, chickpeas and tomato wedges. Season with salt and sprinkle with the garam masala.",
+    "Preheat the oven to 175°C (350°F/Gas 4) and line a baking pan with foil or baking parchment to make clearing up easier.",
+    "Sprinkle the chicken pieces with garlic salt and the amchoor and set aside for about 10 minutes. Meanwhile, heat about 2.5cm (1in) of oil in a saucepan set over a medium–high heat. Roll the chicken pieces in cornflour (cornstarch) to coat well, then fry them in the oil for about 3 minutes, or until lightly browned. Set aside.",
+    "Mix together the sugar, vinegar, chilli sauce, ketchup, soy sauce or coconut amino and orange juice with a dash of salt and black pepper in a saucepan. Over a medium–high heat, stir the sauce until the sugar has dissolved.",
+    "Place a single layer of the chicken on the prepared baking tray and pour the sauce over. Bake for 1 hour until browned and crispy. For best results you will need to turn the chicken pieces a few times during cooking, but I often forget and have never been disappointed.",
+    "Transfer the cooked chicken to a serving plate and serve, or just serve in the tray! It will save you washing up and I really don’t think anyone will complain.",
+    "Mix all the marinade ingredients together in a large bowl. Add the chicken wings and coat well with the marinade. Leave to marinate for 2–48 hours.",
+    "When ready to cook, preheat the oven to 200°C (400°F/Gas 6). Arrange the chicken wings on a lightly greased baking tray and place on the middle rack. Cook for about 30 minutes and then give the chicken a good shake and cook for another 10 minutes, or until cooked through and slightly blackened on the outside. Stir in the chilli sauce and serve with a good raita like the coriander, garlic and chilli raita.",
+    "Remove the bone from the chops and pound the meat with a meat mallet into small, flat steaks. Refrigerate until ready to use.",
+    "Pour the milk into a saucepan and add the cinnamon, seeds from the cardamom pods, cloves, ginger, onion, cumin, black pepper and mixed powder. Bring to a boil, then add the meat to the milk mixture and simmer for 30 minutes. Remove the meat from the milk and pat dry with paper towel.",
+    "Now whisk the batter ingredients together. It should be quite thick, like double (heavy) cream, so that it clings to the cutlets, so add a little more gram flour if it is too thin or more yoghurt if too thick.",
+    "Heat about 15cm (6in) of oil in a deep, heavy-based saucepan or wok to about 170°C (340°F) until a little batter dropped in sizzles immediately. Coat one of the lamb cutlets with the batter and slowly ease it into the oil. Repeat with the rest of the meat, but don’t overload the pan – you may need to cook the lamb in batches.",
+    "Deep-fry until nicely browned, then remove with a wire-mesh spoon to a plate lined with paper towel to soak up any excess oil. Sprinkle with a little flaky sea salt and serve with the lime wedges. They are also great dipped into your favourite raita or chutney.",
+    "Place the lamb in a large saucepan, add water to cover and bring to the boil, skimming off the foam that rises to the top. Add the chana dhal, garlic and ginger paste, dried chillies, onion and mixed powder.",
+    "Cover and simmer for about 1 hour until the water evaporates and the meat is fork-tender, stirring in the garam masala after 45 minutes. Watch the pan carefully so that the dhal doesn’t scorch on the bottom, adding more water if required.",
+    "Allow to cool, then transfer the mixture to a food processor with the coriander (cilantro), mint and chillies. Blend until fine, with the consistency of thick clay. Season with salt and form into patties. This can all be done well ahead of serving.",
+    "When ready to fry, heat about 2.5cm (1in) oil in a large frying pan. Brush both sides of each patty with the beaten egg, place in the hot oil and cook for about 1 minute per side until browned. Remove from the oil to a plate lined with paper towel.",
+    "Place the minced beef in a large baking tray and add all the ingredients down to and including the gram flour. Knead the meat with all the ingredient with your hands for about 10 minutes, pushing it all down into the tray as you do. The idea here is not only to combine the ingredients but to super-mince the meat.",
+    "Finely chop the beef bone marrow into 5mm (¼in) pieces or smaller. Work this into the meat as well so that it is all well combined, but you still want to see the chunks of marrow. Divide the meat mixture into four large equal-size patties, or smaller patties if you wish.",
+    "When ready to cook, heat about 7.5cm (3in) of beef dripping over a medium–high heat. When visibly hot, carefully submerge the beef patties into the boiling oil. Fry for 2–3 minutes until crispy on the exterior and cooked through. Season with salt and drizzle each with a squeeze of lime juice.",
+    "Heat the oil in a large frying pan over a medium–high heat. Add the grated vegetables and the salt and fry, stirring regularly, for 5–7 minutes. You not only want to soften the vegetables but also cook out most of the moisture. They should be quite dry.",
+    "Drain the lentils and dry them on paper towel. Place in a food processor with the remaining ingredients up to and including the lemon juice and blend until you have a chunky paste – it should be smooth, but not pâté smooth and there should still be some small chunky bits.",
+    "Place this lentil mixture in a mixing bowl and add the fried vegetables. Mix well with your hands to combine and season with salt and black pepper. Form the mixture into the shape of your choice – they could be small and round like meatballs, or made into sausage shapes.",
+    "Heat the oil in a large frying pan. I usually use about 5cm (2in) of oil, but you could use a lot less if using a non-stick pan. Fry the kebabs for about 3 minutes until browned on one side, then flip them over and brown the other side for 2–3 minutes.",
+    "Whisk the yoghurt for about 2 minutes until airy and light. Stir in the chaat masala, chilli powder and lime juice and season with salt. Set aside.",
+    "Boil the potatoes in their skins until almost tender, but still with a little resistance when a knife is inserted. Allow to cool a little, then peel and grate the potatoes into a mixing bowl. Stir in the rice flour. Squeeze any excess liquid from the soaked rice flakes (if using) and add them too.",
+    "In a small frying pan, heat about 2 tablespoons of oil over a medium–high heat until hot. Add the asafoetida and cumin seeds to the hot oil and fry for about 30 seconds, then add the chillies and ginger. Fry for a further minute or so, then stir in the ground coriander, turmeric and chilli powder.",
+    "Sauté until the chillies and ginger are cooked through – about 2 minutes should be enough – then remove from the heat to cool slightly. Pour this mixture and the coriander (cilantro) into the bowl with the grated potatoes and mix well by hand. Season with salt.",
+    "Mash the mixture lightly with a potato masher or by hand. The mixture shouldn’t be completely mashed and you should still be able to see that the potatoes have been grated. Form the mixture into golf ball-size balls, then press down on them gently to form them into patties (tikki).",
+    "Shallow-fry the tikki in about 2.5cm (1in) of hot oil for 2 minutes on one side, then flip over to fry the other side for 2 minutes. If needed, fry for a little more time to brown to your preferred colour. Season with salt and top generously with the yoghurt mixture, along with some tamarind sauce and mint, coriander and mango chutney.",
+    "Put all the spice paste ingredients into a food processor or blender. Add a splash of water and blitz to a paste. Leave to one side.",
+    "Melt the butter in a large heavy-bottomed saucepan. Add the bay leaves, cinnamon and cloves and fry for a minute or so to flavour the butter. Add the onion and cook for 5 minutes until soft and translucent.",
+    "Add the vegetables and cook for a further 5 minutes. Stir in the spice paste and fry for a few minutes until fragrant. Stir in the flour followed by the stock. Cover and simmer for 15 minutes until thickened. Pour in the coconut milk and mix. If you like a creamier texture, as I do, blend the soup and run it through a sieve. Adjust the seasoning and add more stock if it is too thick.",
+    "Season with salt and serve with idli pieces, if desired, and lemon wedges.",
+    "Place the yoghurt, milk, mango, sugar and cardamom powder (if using) in a blender and blend until super-smooth. Add the ice cubes and blend until crushed.",
+    "Divide into two glasses and sprinkle some pistachio nuts over the top. Garnish with a squirt of whipped cream and top with a few more pistachios and saffron.",
+    "Using a cocktail mixer or any container with a firm-fitting lid, add your favourite Bombay mix along with the rest of the ingredients. Close the lid and shake hard. Eat immediately or the Bombay mix will get soggy.",
+    "Heat the oil in a large frying pan. Add the almonds and toast for about 1 minute until lightly browned. Add the chillies and turmeric and stir to combine.",
+    "Serve on a warmed plate with the lime juice squeezed over the top and season with salt. Garnish with the coriander (cilantro)."
   ],
-  "image": null,
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ]
+  "image": "/recipes/papadams.jpg"
 }

@@ -1,0 +1,43 @@
+{
+  "id": "warm-maple-protein-oatmeal",
+  "name": "Warm Maple Protein Oatmeal",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "steel-cut oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raw shelled hempseed, divided",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "currants",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Bring 4 cups of water to a boil in a large saucepan. Add the steel-cut oatmeal, 2 tablespoons hempseed, maple syrup, and cinnamon and bring back to a boil. Reduce heat to low and cook uncovered for 30 minutes, stirring occasionally.",
+    "Serve in bowls, garnished with almond slivers, currants, and the remaining hempseed."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

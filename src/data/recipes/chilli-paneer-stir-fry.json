@@ -1,0 +1,76 @@
+{
+  "id": "chilli-paneer-stir-fry",
+  "name": "CHILLI PANEER STIR-FRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 2 or more as part of a multi-course meal",
+  "intro": "This is a lip-smacking way to serve paneer. The sauce is sweet, savoury and just as spicy as you like it. Use your favourite hot sauce for this one. You can use less if you really don’t like your sauces spicy hot. I like to roll the seared, soft paneer with the fried veggies and sauce into chapattis. Of course, it’s also good served as a saucy curry over plain white rice.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "paneer cheese, cubed",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "mixed coloured (bell) peppers, roughly chopped",
+      "amount": "200g (7oz)"
+    },
+    {
+      "item": "spring onions (scallions), roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "Plain rice or rotis, to serve",
+      "amount": ""
+    },
+    {
+      "item": "tomato ketchup",
+      "amount": "250ml (1 cup)"
+    },
+    {
+      "item": "hot sauce of your choice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "5"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "light soy sauce or coconut aminos",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornflour (cornstarch)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Start by preparing the sauce. Whisk together all of the sauce ingredients up to and including the white pepper. Season to taste with salt and set aside.",
+    "Heat the oil in a large frying pan over a medium–high heat. When visibly hot, add the cubed paneer to the pan and brown on two sides. Stir in the peppers and spring onions (scallions) and fry until cooked through but still crisp, about 1–2 minutes.",
+    "Now add the prepared sauce and stir it all up nicely. Check for seasoning and serve hot with plain rice or wrapped into hot rotis."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

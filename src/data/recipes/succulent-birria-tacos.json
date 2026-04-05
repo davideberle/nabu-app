@@ -1,0 +1,97 @@
+{
+  "id": "succulent-birria-tacos",
+  "name": "SUCCULENT BIRRIA TACOS",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "These succulent barbacoa jackfruit tacos are everything you need and want in a taco. They are delicious, juicy, spicy and full of chile flavor. Making them with a corn tortilla is going to enhance the flavor and give it more of an authentic taste. I haven’t met anyone who doesn’t love these tacos.",
+  "ingredients": [
+    {
+      "item": "cans jackfruit",
+      "amount": "3 (2-oz [55-g])"
+    },
+    {
+      "item": "guajillo chiles, seeded",
+      "amount": "7"
+    },
+    {
+      "item": "pasilla chile, seeded",
+      "amount": "1"
+    },
+    {
+      "item": "small yellow onion, cut in half",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable stock, plus more if needed",
+      "amount": "1 cup (240 ml)"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "garlic",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1½ tsp (2 g)"
+    },
+    {
+      "item": "liquid smoke",
+      "amount": "1½ tsp (7.5 ml)"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "masa harina",
+      "amount": "2 cups (224 g)"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "warm water",
+      "amount": "1½ cups (355 ml)"
+    },
+    {
+      "item": "Chopped fresh cilantro, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Chopped onion, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Vegan mozzarella cheese, for serving (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Drain your jackfruit and boil it in water for 1 hour. While the jackfruit is boiling, soak the guajillo and pasilla chiles in a bowl of hot water to rehydrate them. This will also take about an hour. After an hour, drain the jackfruit and use your hands to squeeze out any excess water, then set aside. Remove the chiles from the liquid.",
+    "In a large pot over medium-low heat, combine the chiles, onion, vegetable stock, vinegar, garlic, pepper, oregano, liquid smoke and bay leaf. Let simmer, covered, for about 25 minutes.",
+    "Remove from the heat, pour into a blender and blend until smooth. You may have to do this in batches, and do so carefully—it will be hot. Strain the blended liquid through a strainer into a bowl. This is your birria.",
+    "In a medium-sized skillet, combine the olive oil and jackfruit and cook for 15 minutes over medium heat, or until the jackfruit cooks down. Then, add the birria and let simmer for 10 minutes. If the sauce is too thick, you can add more vegetable stock.",
+    "To make the corn tortillas, in a medium bowl, combine the masa harina with a pinch of salt and the warm water. Mix with a spoon, then mix with your hands until it looks like Play-Doh®. Grab about ¼ cup (55 g) of the masa mixture and roll it into your hands, creating a ball. Place waxed paper in the center of both sides of a tortilla presser and place the masa ball in the middle. Then, press down on the ball to create a flat disk. Heat the tortillas, one by one, in a skillet over medium heat for 40 seconds on both sides, stack them in a bowl and cover them with a clean cloth.",
+    "Grab one tortilla and dip it into the pan of the birria, covering half of the tortilla, and sit it in a pan over medium heat. Add the jackfruit to the center and fold the tortilla in half. Cook on both sides until the tortilla gets a little crispy. You can serve these with with chopped cilantro and onion, and add vegan mozzarella cheese as well, if desired."
+  ],
+  "image": "/recipes/succulent-birria-tacos.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

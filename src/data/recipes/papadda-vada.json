@@ -1,0 +1,57 @@
+{
+  "id": "papadda-vada",
+  "name": "PAPADDA VADA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 20 – feeds a crowd",
+  "intro": "Papadams are delicious, but this Keralan recipe takes them to the next level. The papads are dipped into a spicy batter before deep-frying. Unlike plain papads, these battered papads stay about the same size when fried. They are delicious served with a selection of pickles, sauces and chutneys. Papadda vada are pictured in the top left corner.",
+  "ingredients": [
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "papads",
+      "amount": "20"
+    },
+    {
+      "item": "basmati rice, rinsed and soaked in water for 5 hours, then drained",
+      "amount": "275g (scant 1½ cups)"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 heaped tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried chilli (hot pepper) flakes (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "To make the batter, place the soaked rice in a food processor and add just enough water to blend it into a thick batter. Whisk in the rest of the ingredients. The batter should be thick enough to adhere to the papads when dipped into it. If it is too thick to easily dip, add a drop more water – it should be the consistency of double (heavy) cream.",
+    "Heat the oil in a large saucepan or wok until hot enough to deep-fry. The oil is ready when a piece of papad dropped into the oil sizzles and floats to the top immediately.",
+    "Dip the first papad into the batter, ensuring that it is very well coated, and gently place it into the oil. Fry for about 40 seconds until the batter coating turns light brown. Transfer with a slotted spoon to a wire rack over a tray or to a piece of paper towel. Allow the excess oil to drip into the pan or drain into the paper while you finish cooking the remaining papads."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

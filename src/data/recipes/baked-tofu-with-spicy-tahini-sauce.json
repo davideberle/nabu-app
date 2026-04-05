@@ -1,0 +1,62 @@
+{
+  "id": "baked-tofu-with-spicy-tahini-sauce",
+  "name": "Baked Tofu with Spicy Tahini Sauce",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "jasmine rice",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into ½-inch cubes",
+      "amount": "14 ounces"
+    },
+    {
+      "item": "tahini",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "tamari",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "clove garlic, minced",
+      "amount": "1"
+    },
+    {
+      "item": "sriracha",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Fresh thyme, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F. Line a baking sheet with parchment paper.",
+    "Add the rice to a saucepan and cover with 3 cups water. Cover, bring to a boil, and turn down heat. Cook covered for about 15 minutes or until water is absorbed.",
+    "Place the tofu cubes on the prepared baking sheet and bake for 15 minutes. Flip with a spatula and cook for 10 more minutes. Set aside.",
+    "While the tofu is baking, make the sauce: Add tahini, tamari, ½ cup water, rice vinegar, maple syrup, ginger, garlic, and sriracha to a saucepan. Mix well and heat through until hot and creamy.",
+    "Toss in prepared tofu and serve hot over rice. Garnish with the thyme, if desired."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

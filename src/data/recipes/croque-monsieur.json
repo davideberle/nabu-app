@@ -1,0 +1,60 @@
+{
+  "id": "croque-monsieur",
+  "name": "Croque Monsieur",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 20-25 minutes",
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of ground nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "thin slices sandwich bread",
+      "amount": "8"
+    },
+    {
+      "item": "slices prosciutto",
+      "amount": "16"
+    },
+    {
+      "item": "Gruyere cheese, shredded",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "parmesan cheese, grated",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 400°F (204°C). Line a baking sheet with parchment paper.",
+    "Melt the butter in a saucepan over medium heat. Once melted, add the flour and cook for 1 minute.",
+    "Stir in the milk and whisk until thickened, about 3-4 minutes. Season with salt, pepper, mustard, and nutmeg. Set aside.",
+    "Line the prepared baking sheet with 4 slices of bread. Add half of the sauce. Top each slice with the prosciutto slices, Gruyere cheese, and another slice of bread.",
+    "Top the sandwiches with the remaining sauce. Sprinkle the sandwiches with the parmesan cheese.",
+    "Bake for 5-6 minutes.",
+    "Serve warm."
+  ]
+}

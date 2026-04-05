@@ -1,0 +1,100 @@
+{
+  "id": "aloo-tikki-chaat",
+  "name": "ALOO TIKKI CHAAT",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4–8",
+  "intro": "I absolutely love this chaat! The tamarind sauce and the mint, coriander and mango chutney can be purchased from most good Asian grocers or online. If you fancy a go at making your own, I have included recipes. Phoa (rice flakes) are also available at Asian shops. You could leave them out, but they really do help give the aloo tikki an amazing crispy texture.",
+  "ingredients": [
+    {
+      "item": "Greek yoghurt",
+      "amount": "250g (1 cup)"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "medium potatoes, unpeeled",
+      "amount": "4"
+    },
+    {
+      "item": "rice flour",
+      "amount": "4 heaped tbsp"
+    },
+    {
+      "item": "phoa (rice flakes), soaked in 2 tbsp water for 30 minutes (optional)",
+      "amount": "4 heaped tbsp"
+    },
+    {
+      "item": "Rapeseed (canola) or vegetable oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of asafoetida*",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Small bunch of coriander (cilantro), finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "Tamarind sauce, to serve",
+      "amount": ""
+    },
+    {
+      "item": "Mint, coriander and mango chutney, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Whisk the yoghurt for about 2 minutes until airy and light. Stir in the chaat masala, chilli powder and lime juice and season with salt. Set aside.",
+    "Boil the potatoes in their skins until almost tender, but still with a little resistance when a knife is inserted. Allow to cool a little, then peel and grate the potatoes into a mixing bowl. Stir in the rice flour. Squeeze any excess liquid from the soaked rice flakes (if using) and add them too.",
+    "In a small frying pan, heat about 2 tablespoons of oil over a medium–high heat until hot. Add the asafoetida and cumin seeds to the hot oil and fry for about 30 seconds, then add the chillies and ginger. Fry for a further minute or so, then stir in the ground coriander, turmeric and chilli powder.",
+    "Sauté until the chillies and ginger are cooked through – about 2 minutes should be enough – then remove from the heat to cool slightly. Pour this mixture and the coriander (cilantro) into the bowl with the grated potatoes and mix well by hand. Season with salt.",
+    "Mash the mixture lightly with a potato masher or by hand. The mixture shouldn’t be completely mashed and you should still be able to see that the potatoes have been grated. Form the mixture into golf ball-size balls, then press down on them gently to form them into patties (tikki).",
+    "Shallow-fry the tikki in about 2.5cm (1in) of hot oil for 2 minutes on one side, then flip over to fry the other side for 2 minutes. If needed, fry for a little more time to brown to your preferred colour. Season with salt and top generously with the yoghurt mixture, along with some tamarind sauce and mint, coriander and mango chutney."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

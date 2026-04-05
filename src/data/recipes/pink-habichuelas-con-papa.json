@@ -1,0 +1,93 @@
+{
+  "id": "pink-habichuelas-con-papa",
+  "name": "PINK HABICHUELAS CON PAPA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Pink habuchuelas con papa translates to “pink beans with potatoes.” They are one of my favorite beans and they are prepared as a stew. It goes really well with white rice. This dish is saucy, comforting, filling and complements any protein and grain.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "diced bell peppers, assorted colors",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "can pink beans, drained and rinsed",
+      "amount": "1 (15-oz [439-g])"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1 (8-oz [225-g])"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "3 cups (710 ml)"
+    },
+    {
+      "item": "golden potatoes, peeled and cubed",
+      "amount": "3"
+    },
+    {
+      "item": "olives with pimientos and capers",
+      "amount": "½ cup (45 g)"
+    },
+    {
+      "item": "calabaza squash, seeded and cubed",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Cooked white rice, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Avocado slices, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot over medium heat, heat your oil and sauté the garlic, sofrito, onion and bell peppers to release the aromatics and soften the onion. Add the pink beans to the pot.",
+    "Add the tomato sauce, stock, potatoes, olive mixture, calabaza, Sazón, adobo, oregano and cilantro. Cook for 10 minutes over low heat, or until the potatoes and calabaza are tender. Taste and add salt and pepper to your liking. Serve over white rice with avocado. ¡Buen provecho!"
+  ],
+  "image": "/recipes/pink-habichuelas-con-papa.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

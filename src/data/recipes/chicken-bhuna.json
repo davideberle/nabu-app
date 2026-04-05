@@ -1,0 +1,92 @@
+{
+  "id": "chicken-bhuna",
+  "name": "CHICKEN BHUNA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Curry-house bhunas are similar to authentic bhunas in that they have a thick sauce, perfect for mopping up with hot naans or chapattis. That is where their similarity ends. You can find my curry house-style lamb bhuna; like all curry house-style recipes, it can be made with any meat or other main ingredient of your choice. Authentic bhuna is a style of cooking where the meat is cooked in its own juices and just a little water until the meat is really tender and covered in a thick sauce that is deliciously flavoured by the meat and other ingredients. You could use another meat such as beef or lamb in this recipe, but the cooking time will be longer and you will need to add a little more water; the exact amount of water depends on how long it takes for the meat to become tender. No rushing things! It’s ready when it’s ready.",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves) (optional)",
+      "amount": "2"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "cloves",
+      "amount": "5"
+    },
+    {
+      "item": "green cardamom pods, lightly smashed",
+      "amount": "5"
+    },
+    {
+      "item": "medium onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Kashmiri chilli powder (more or less to taste)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium tomatoes, diced",
+      "amount": "3"
+    },
+    {
+      "item": "whole skinless chicken, cut into 8 pieces",
+      "amount": "1kg (2lb 3oz)"
+    },
+    {
+      "item": "hot water, plus extra if needed",
+      "amount": "250ml (1 cup)"
+    },
+    {
+      "item": "green bird’s eye chillies, sliced lengthways",
+      "amount": "3"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large saucepan that has a lid. When the oil is bubbly hot, add the cinnamon stick, bay leaves, black peppercorns, cloves and cardamom pods. Stir the spices for about 40 seconds to infuse their flavours into the oil. Add the onions and sugar and fry for 8–10 minutes until they turn a caramelized brown. Add the garlic and ginger paste, Kashmiri chilli powder, turmeric, cumin and coriander. Give it all a good stir to combine, then add the tomatoes and chicken.",
+    "Brown the chicken for about 2 minutes, then pour in the hot water, reduce the heat to medium and cover the pan. Simmer, covered, for 10 minutes, then give it a stir. Only add a drop more water if it is looking dry. The idea here is not so much to simmer the chicken in a lot of liquid but just to have enough water in the pan to cook the chicken through without frying it. Cover the pan again and simmer for another 10 minutes, stirring from time to time and adding more water as needed. By this time, you should have a sauce that is so thick it coats the meat. When the oil rises to the top, your curry is ready! Throw in the chillies and garam masala and season with salt."
+  ]
+}

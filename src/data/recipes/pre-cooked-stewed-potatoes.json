@@ -2,15 +2,14 @@
   "id": "pre-cooked-stewed-potatoes",
   "name": "PRE-COOKED STEWED POTATOES",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
-  "servings": "makes enough for 4 servings*",
-  "intro": "This pre-cooked potato dish can be eaten on its own or used in other British Indian restaurant-style dishes. Serve it as is and it could be a delicious, authentic style Bombay aloo, in which case I recommend cutting the potato cubes smaller (there is also a BIR version of Bombay Aloo) in which you can use these pre-cooked potatoes. Be sure to cook the potatoes until they are soft. Nobody likes an 80% cooked, hard potato.",
+  "servings": "makes enough for 4–10 servings depending on use",
+  "intro": "This pre-cooked potato dish can be eaten on its own or used in other British Indian restaurant-style dishes. Serve it as is and it could be a delicious, authentic-style Bombay aloo, in which case I recommend cutting the potato cubes smaller. Be sure to cook the potatoes until they are soft. Nobody likes an 80% cooked, hard potato. This is exactly why you will want to make this recipe if you are intending on whipping up a potato-based curry or two. It’s a good job to get done early so that all you have to do is heat them up in the curry sauce of your choice and serve. They keep for at least 3 days, covered in the fridge, and can also be frozen with their tasty cooking stock. Defrost before using.",
   "ingredients": [
     {
-      "item": "rapeseed or seasoned oil",
+      "item": "rapeseed (canola) oil or seasoned oil",
       "amount": "2 tbsp"
     },
     {
@@ -42,11 +41,11 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "tin (2 cups) chopped tomatoes",
-      "amount": "1 x 400g"
+      "item": "tin (can) chopped tomatoes",
+      "amount": "400g (14oz)"
     },
     {
-      "item": "Kashmiri mild chilli powder, or to taste",
+      "item": "Kashmiri chilli powder, or to taste",
       "amount": "1 tbsp"
     },
     {
@@ -54,27 +53,26 @@
       "amount": "1 tsp"
     },
     {
-      "item": "(1 lb) potatoes, peeled and each cut into 3",
-      "amount": "500g"
+      "item": "potatoes, peeled and each cut into 3",
+      "amount": "500g (1lb 2oz)"
     },
     {
-      "item": "(2¾ cups) Spice stock or water",
-      "amount": "650ml"
+      "item": "spice stock or water",
+      "amount": "650ml (2¾ cups)"
     },
     {
       "item": "garam masala",
       "amount": "1 tbsp"
     },
     {
-      "item": "Salt and freshly ground pepper",
+      "item": "Salt and freshly ground black pepper, to taste",
       "amount": ""
     }
   ],
   "method": [
-    "Heat the oil and ghee over a high heat in a large saucepan then throw in the mustard seeds. When they begin to pop, reduce the heat to medium high and toss in the cumin seeds, cinnamon stick and cardamom pods, and temper in the oil for a further 30 seconds. Stir in the onions and fry for about 5 minutes until soft and translucent, stirring regularly, then add the garlic and ginger paste and let it sizzle in the oil for about 1 minute. Tip in the tomatoes, chilli powder and turmeric, and stir it all up nicely.",
-    "Now add the potato pieces and cover with the spice stock or water. Cover and simmer until the potatoes are soft and cooked through, about 30 minutes. Sprinkle with the garam masala and salt and pepper to taste, and give it all a good stir. Serve the potatoes as they are immediately or remove the potato pieces and strain the stock for use in your curries. This will keep for at least 3 days in the fridge and can also be frozen. The strained cooking stock adds a nice flavour to vegetarian curries."
+    "Heat the oil and ghee over a high heat in a large saucepan, then throw in the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium–high and toss in the cumin seeds, cinnamon stick and cardamom pods, and temper in the oil for a further 30 seconds. Stir in the onions and fry for about 5 minutes until soft and translucent, stirring regularly, then add the garlic and ginger paste and let it sizzle in the oil for about 1 minute. Tip in the tomatoes, chilli powder and turmeric, and stir it all up nicely.",
+    "Now add the potato pieces and cover with the spice stock or water. Cover and simmer until the potatoes are soft and cooked through, about 30 minutes. Sprinkle with the garam masala and season with salt and black pepper, giving it all a good stir. Serve the potatoes as they are immediately or remove the potato pieces and strain the stock for use in your curries. This will keep for at least 3 days in the fridge and can also be frozen. The strained cooking stock adds a nice flavour to vegetarian curries."
   ],
-  "image": null,
   "dietary": [
     "vegetarian"
   ]

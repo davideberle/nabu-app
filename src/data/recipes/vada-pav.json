@@ -1,0 +1,102 @@
+{
+  "id": "vada-pav",
+  "name": "VADA PAV",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 8",
+  "intro": "These mildly spiced, deep-fried potato burgers are a delicious way to use up leftover mashed potatoes. The mashed potato is first fried with a few complementary spices and herbs, and then formed into large balls that are dipped into a seasoned gram-flour batter. Everything, right up to making the sandwich, can be done ahead of time. At busy restaurants and street stalls, the potato vada are formed and fried earlier in the day and heated through again in hot oil before serving. This is really convenient if you are serving a group of friends. When I tried these at food stalls in India there was always a plate of roasted chillies you could help yourself to for topping your vada pav, making them as mild or spicy as you want. If you really want to treat yourself, spread lots of butter on the buns before grilling!",
+  "ingredients": [
+    {
+      "item": "potatoes (about 800g/1lb 12oz), peeled and diced",
+      "amount": "4"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "green chillies, finely chopped, plus extra to garnish",
+      "amount": "3"
+    },
+    {
+      "item": "finely chopped ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "curry leaves, roughly chopped",
+      "amount": "10"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Rapeseed (canola) oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "sifted gram (chickpea) flour, plus extra if needed",
+      "amount": "120g (1 cup)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "soft hamburger buns",
+      "amount": "4"
+    },
+    {
+      "item": "Ghee, butter or oil, for browning the buns",
+      "amount": ""
+    },
+    {
+      "item": "Mint and coriander sauce",
+      "amount": ""
+    },
+    {
+      "item": "Tamarind sauce (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Roasted green chillies",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Boil the potatoes in water for about 10 minutes until fork-tender. Drain and mash.",
+    "Heat the oil in a large frying pan over a medium–high heat. Add the mustard seeds. When they begin to pop (after about 30 seconds), stir in the turmeric, green chillies, ginger, chilli powder and curry leaves. Move this all around in the pan to flavour the oil, then add the mashed potatoes and mix well. Season with salt and add the coriander (cilantro). Allow to cool slightly, then form into eight lemon-size balls.",
+    "Whisk the batter ingredients together, adding enough water slowly to make a thick and smooth batter. The batter should cling to, and coat, the vada. If you find it is too thin, sift in a little more flour.",
+    "Heat the oil for deep-frying in a large pan. The oil should be deep enough to cover the vada. You are ready to start deep-frying when a piece of potato sizzles immediately when dropped into the hot oil. If you have an oil thermometer, aim for 200°C (390°F). Carefully lower the vada into the oil and fry until crispy brown – about 3–5 minutes should do. Depending on the size of your pan, you may need to cook these in small batches of three or four.",
+    "While the vada are frying, brown the buns in another pan in some ghee, butter or oil. When toasted to your liking, spread the mint and coriander sauce over the bun halves. Place a vada on top of the bottom bun and top with tamarind sauce (if using) and one or more roasted chillies if you like it spicy. Add the top bun and serve."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

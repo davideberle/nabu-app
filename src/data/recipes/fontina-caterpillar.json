@@ -1,0 +1,32 @@
+{
+  "id": "fontina-caterpillar",
+  "name": "Fontina Caterpillar",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4–6",
+  "ingredients": [
+    {
+      "item": "home-made mayonnaise",
+      "amount": "100 ml"
+    },
+    {
+      "item": "loaf ciabatta bread, sliced but not right through – the loaf should hold together",
+      "amount": "1"
+    },
+    {
+      "item": "Italian fontina, sliced ed 5 mm thick",
+      "amount": "400 g"
+    },
+    {
+      "item": "anchovies",
+      "amount": "12"
+    }
+  ],
+  "method": [
+    "Serves 4–6 100 ml home-made mayonnaise 1 loaf ciabatta bread, sliced but not right through – the loaf should hold together 400 g Italian fontina, sliced ed 5 mm thick 12 anchovies ground black pepper",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "Cook the bread in the oven for about 20 minutes until goldenbrown and crisp."
+  ]
+}

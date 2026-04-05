@@ -1,0 +1,256 @@
+{
+  "id": "everyday-stock",
+  "name": "Everyday stock",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "fresh ginger, skin on 2 spring onions, white parts only 3–4 raw chicken carcasses A smaller amount of pork ribs or other bones (optional)",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "free-range chicken",
+      "amount": "1"
+    },
+    {
+      "item": "lbs (600g) pork ribs",
+      "amount": "1⅓"
+    },
+    {
+      "item": "lean Chinese or Spanish cured ham",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "dried scallops (optional)",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "clear Everyday or Chicken stock (see here) 4 gelatine leaves Salt and ground white pepper",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "clear Everyday or Chicken stock (see here)",
+      "amount": "2 cups (500ml)"
+    },
+    {
+      "item": "gelatine leaves",
+      "amount": "4"
+    },
+    {
+      "item": "pig’s trotters (about 1¾ lbs/750g)",
+      "amount": "2"
+    },
+    {
+      "item": "chicken carcasses",
+      "amount": "2"
+    },
+    {
+      "item": "fresh ginger, skin on",
+      "amount": "1 oz (30g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lbs (2kg) leaf lard or pork back or belly fat, minced if possible",
+      "amount": "4"
+    },
+    {
+      "item": "lbs (2kg) leaf lard or pork back or belly fat, minced if possible",
+      "amount": "4"
+    },
+    {
+      "item": "strong white bread flour 2 tsp salt",
+      "amount": "8 cups (1kg)"
+    },
+    {
+      "item": "strong white bread flour",
+      "amount": "8 cups (1kg)"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "quantity Wheat gluten (see here)",
+      "amount": "½"
+    },
+    {
+      "item": "quantity Wheat gluten (see here)",
+      "amount": "½"
+    },
+    {
+      "item": "quantity Wheat gluten (see here) Cooking oil, for deep-frying",
+      "amount": "½"
+    },
+    {
+      "item": "quantity Wheat gluten (see here)",
+      "amount": "½"
+    },
+    {
+      "item": "long-grain glutinous rice 1 Chinese wine yeast ball (about ⅓ oz/10g)",
+      "amount": "1¼ cups (250g)"
+    },
+    {
+      "item": "long-grain glutinous rice",
+      "amount": "1¼ cups (250g)"
+    },
+    {
+      "item": "Chinese wine yeast ball (about ⅓ oz/10g)",
+      "amount": "1"
+    },
+    {
+      "item": "dried adzuki beans 5 oz (150g) lard or coconut oil 10 oz (300g) superfine sugar",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "dried adzuki beans",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "lard or coconut oil",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "fresh, clean, firm white Asian radish (about 1¾ lbs/750g)",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "⅓ cup (90ml)"
+    },
+    {
+      "item": "cooled boiled water",
+      "amount": "½ cup (100ml)"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Chinese red or rose vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh, plump, tender ginger 1 tsp salt 8 tbsp red Chinese vinegar 6 tbsp superfine sugar",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "fresh, plump, tender ginger",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red Chinese vinegar",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "lbs (750g) small mustard greens, potherb mustard or radish tops 1 tbsp salt",
+      "amount": "1¾"
+    },
+    {
+      "item": "lbs (750g) small mustard greens, potherb mustard or radish tops",
+      "amount": "1¾"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lbs (1kg) small mustard greens or potherb mustard 4 tsp salt",
+      "amount": "2"
+    },
+    {
+      "item": "lbs (1kg) small mustard greens or potherb mustard",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "salt ½ tbsp whole Sichuan peppercorns",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "whole Sichuan peppercorns",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cooking oil 5 tbsp sweet fermented sauce (see here) 1 tbsp white sugar, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sweet fermented sauce (see here)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "white sugar, or to taste",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Bring a large pan of water to the boil. Add the chicken, ribs and ham and bring back to the boil for 1–2 minutes. Drain in a colander in the sink, discarding the water, and rinse well under the tap. Rinse out the pan.",
+    "Bring 1 quart (1 liter) water to the boil with 2 oz (50g) black fermented beans, rinsed and drained, then simmer for about 20 minutes. Strain out and discard the black beans if you wish.",
+    "Bring the stock to the boil, then set it aside. Season with salt and pepper. When the stock has cooled to tea-drinking temperature, put the gelatine in a bowl of cold water for about 4 minutes, until softened and floppy, then stir it into the warm stock until dissolved. Set aside to cool completely, then chill in the fridge overnight to set.",
+    "Bring a pan of water to the boil. Take a ball of gluten about the size of a fist and cut it into 3 pieces. Take a pair of natural, unpainted wooden or bamboo chopsticks and hold them together. Wrap one piece of the gluten around the chopsticks, stretching it as you go. You want to end up with a nice bulgy wrapping that extends along most of the length of the chopsticks, without any gaps between the layers of gluten.",
+    "Wash the radish well, but don’t peel it. Trim off and discard both ends, along with any whiskers or blemishes. Cut in half lengthways and then, holding the knife diagonally, cut each half into ⅙ in (5mm) slices. Put the slices in a non-reactive container, add the salt and mix well. Cover with a small plate, then weigh this down with a heavy stone or weight. Leave in the fridge or another cold place for 24–48 hours to press out much of the liquid.",
+    "Mix the ingredients for the pickling liquid together, stirring to dissolve the sugar. Drain the radishes, squeezing out as much liquid as possible. Immerse the radishes in the pickling liquid in a non-reactive container; use a small plate to keep them covered by the liquid and keep in the fridge for 2 days before eating. The pickle will keep well in the fridge for at least several weeks.",
+    "Peel the ginger and cut it lengthways into ⅙ in (5mm) slices, then into ⅙ in (5mm) strips. Add the salt, mix well and set it aside for 1 hour to draw out some of the pepperiness. Bring a little water to the boil, then set it aside to cool.",
+    "Drain off any liquid from the ginger, then rinse it in the cooled boiled water. Squeeze out as much liquid as possible from the ginger, then squeeze dry. Put it in a non-reactive pot or jar with the vinegar and sugar. Steep for at least 2 days before using. The pickle will keep in the fridge for a few weeks at least.",
+    "Wash the greens thoroughly, then thread them onto a coathanger or a length of string and hang them to dry overnight in a cool place. (Many people advise sun-drying the greens for half a day before pickling; if you wish to do this, hang them up or lay them out on bamboo trays in strong sunlight.)",
+    "Wash the greens thoroughly, then thread them onto a coathanger or a length of string and hang them to dry overnight in a cool, shady place.",
+    "Put the salt and Sichuan peppercorns in a dry wok and stir gently over a very low flame for a few minutes, until your kitchen has filled with the gorgeous aroma of the toasted pepper and the salt has yellowed slightly. Tip the mixture into a mortar and grind it to a fine powder. Sift the powder through a tea strainer or a small sieve to remove any remaining woody pepper husk. Store in a sealed container.",
+    "Boil the kettle. Heat the oil in a seasoned wok over a medium flame. Add the sweet fermented sauce and stir-fry for a minute or so until fragrant. Add ¼ cup (50ml) hot water and bring to the boil. Season with the sugar. Continue to stir until the sauce thickens to the consistency of tomato ketchup, then remove from the wok and set aside."
+  ]
+}

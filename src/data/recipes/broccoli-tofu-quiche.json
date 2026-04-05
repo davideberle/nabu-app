@@ -1,0 +1,115 @@
+{
+  "id": "broccoli-tofu-quiche",
+  "name": "Broccoli Tofu Quiche",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "raw cashews, soaked for 1 hour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tapioca flour",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red miso",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced red bell pepper (about one small pepper)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cremini mushrooms, sliced",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "broccoli, inner stalks cut into cubes and florets cut into bites",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "cloves garlic, chopped fine",
+      "amount": "3"
+    },
+    {
+      "item": "canned black beans, drained and rinsed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "turmeric",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "package vegan piecrust with 2 crusts",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add all the cheese ingredients to a blender. Blend until smooth.",
+    "Pour into a small saucepan and cook over medium-high heat, stirring most of the time. It will thicken and become a bit stretchy within 5 minutes. If it seems too thick to combine with the quiche ingredients, then you can add a drop of water at a time. Set aside.",
+    "Preheat the oven to 350°F.",
+    "Heat the oil in a large skillet over medium heat. Add the baby spinach and cook until it is wilted. Remove from the pan and set aside. Add the onion, bell pepper, mushrooms, and broccoli to the skillet and sauté for about 10 to 15 minutes until the onion is translucent. Add the garlic and cook 2 more minutes. Stir in the black beans and heat through. Pour into a large mixing bowl.",
+    "Break the tofu into a blender and add the milk, cashew cheese, turmeric, oregano, salt, and pepper. Blend as smooth as possible. Add the blended mixture to the sautéed vegetables and mix well.",
+    "Pour into one piecrust. Cover with the second piecrust and crimp the edge. If you use a springform pan, make a rolled edge in the bottom crust and lay the top crust over the top of the ingredients. Bake the quiche for 30 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

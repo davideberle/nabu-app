@@ -1,0 +1,56 @@
+{
+  "id": "dan-wake",
+  "name": "Dan Wake",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "A light Hausa meal that consists of little bean flour dumplings dressed in fresh vegetables and the signature suya spice. This makes for a delicious lunch. Instead of fresh vegetables, it can also be served with stir-fried veggies or a veggie sauce of your choice.",
+  "ingredients": [
+    {
+      "item": "and 1/2 cups beans flour 1/2 cup cassava flour",
+      "amount": "1"
+    },
+    {
+      "item": "kuka (baobab leaf powder)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "1/2 teaspoon baking soda",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tomato (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 small onion (chopped) 1/2 cucumber (chopped)",
+      "amount": ""
+    },
+    {
+      "item": "shredded cabbage or lettuce",
+      "amount": "1 cup"
+    },
+    {
+      "item": "groundnut oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "suya spice Pinch of salt (optional)",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "In a large bowl, combine the beans flour, cassava flour, kuka and baking soda. Add the water very slowly and mix until you have a thick dough.",
+    "Serve hot with a topping of tomatoes, onions, cucumbers and shredded cabbage. Drizzle some groundnut oil over the top and sprinkle some suya spice and a pinch of salt to season."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

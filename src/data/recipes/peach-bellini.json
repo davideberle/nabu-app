@@ -1,0 +1,36 @@
+{
+  "id": "peach-bellini",
+  "name": "Peach Bellini",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 5 minutes",
+  "ingredients": [
+    {
+      "item": "peach purée, chilled",
+      "amount": "2 cups"
+    },
+    {
+      "item": "bottle of prosecco, chilled",
+      "amount": "1"
+    },
+    {
+      "item": "Ice, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Peach slices, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Mint sprigs, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pitcher, mix the peach purée and prosecco.",
+    "Garnish with peach slices and a sprig of mint.",
+    "Serve in chilled glasses with ice."
+  ]
+}

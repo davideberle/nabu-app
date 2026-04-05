@@ -1,0 +1,66 @@
+{
+  "id": "protein-power-grilled-veggie-and-fruit-skewers",
+  "name": "Protein Power Grilled Veggie and Fruit Skewers",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into 1-inch cubes",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "tamari",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chili powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "large sweet potato, peeled and chopped into bite-size chunks",
+      "amount": "1"
+    },
+    {
+      "item": "cremini mushrooms",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "pineapple, chopped into chunks",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, chopped into large pieces",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper, chopped into large pieces",
+      "amount": "1"
+    },
+    {
+      "item": "Extra virgin olive oil, for grilling",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the tofu cubes in a large bowl. In a small bowl, mix the tamari, rice vinegar, maple syrup, and chili powder together and pour over tofu. Marinate for 30 minutes.",
+    "Parboil the sweet potato chunks for 10 minutes or until just tender.",
+    "Clean the mushrooms and cut off the ends of the stems. If some of the mushrooms are large, cut into halves or thirds.",
+    "Skewer the tofu, sweet potato, pineapple, red and yellow bell peppers, and mushrooms onto each skewer.",
+    "Brush grill or grill pan with oil and set to medium-high heat. Grill skewered vegetables and fruit until there are grill marks. Flip and grill the other side."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "fibre-packed",
+  "name": "Fibre-Packed",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Fibre-packed yam is boiled until tender and fluﬀy, and accompanied by a deliciously saucy scramble. Once again, we’re getting creative here by replacing the eggs with tofu. For a soy-free option, follow the steps for the bean-based vegan omelette recipe on page 49 and replace the water with the stew base and prepare as you would scrambled eggs.",
+  "ingredients": [
+    {
+      "item": "round slices of puna yam (about",
+      "amount": "8"
+    },
+    {
+      "item": "inch in thickness, peeled)",
+      "amount": "1"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "medium tomato (chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "stew base (page 45)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 teaspoon curry powder 1/2 teaspoon dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock cube",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the yam slices in a large pot and cover completely with plain or lightly salted water. Allow to cook uncovered on medium heat for 20 minutes or until the yam is soft and fork-tender.",
+    "Heat the sunflower oil in a frying pan and crumble the tofu into it. Add the bell peppers, tomato and onion, and fry for 5 minutes on high heat, stirring often. Add the stew base, along with the curry, thyme, vegetable stock cube and salt to taste. Simmer on medium-high heat for another 5 minutes."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

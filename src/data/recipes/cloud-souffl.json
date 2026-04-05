@@ -1,0 +1,32 @@
+{
+  "id": "cloud-souffl",
+  "name": "Cloud Soufflé",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "organic eggs, separated",
+      "amount": "2"
+    },
+    {
+      "item": "cream",
+      "amount": "50 ml"
+    },
+    {
+      "item": "grated Gruyère",
+      "amount": "50 g"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "15 g"
+    }
+  ],
+  "method": [
+    "Serve it as a lunch dish with just a green salad and some crunchy bread.",
+    "Preheat the oven to 200°C (gas mark 6). Butter an individual ramekin per person (about 15 cm in diameter).",
+    "Bake in the oven for 6–8 minutes. The top should be lightly golden, and when you break the crust, the yolks and cream should be soft and hot.",
+    "Serve with crusty bread to dip into the yolks and cream."
+  ]
+}

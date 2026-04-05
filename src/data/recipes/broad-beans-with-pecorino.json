@@ -1,0 +1,26 @@
+{
+  "id": "broad-beans-with-pecorino",
+  "name": "Broad Beans with Pecorino",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "very young broad beans",
+      "amount": "400 g"
+    },
+    {
+      "item": "pecorino",
+      "amount": "200 g"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "60 ml"
+    }
+  ],
+  "method": [
+    "Serves 4 400 g very young broad beans 200 g pecorino 60 ml good-quality virgin olive oil sea salt flakes"
+  ]
+}

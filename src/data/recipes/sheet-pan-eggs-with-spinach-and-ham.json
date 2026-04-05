@@ -1,0 +1,50 @@
+{
+  "id": "sheet-pan-eggs-with-spinach-and-ham",
+  "name": "Sheet Pan Eggs with Spinach and Ham",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 30 minutes",
+  "ingredients": [
+    {
+      "item": "large eggs, room temperature",
+      "amount": "18"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "frozen spinach, thawed, drained, and chopped",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "diced ham",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 300°F (149°C). Line a rimmed baking sheet with parchment paper and set aside.",
+    "In a large mixing bowl, combine the eggs, milk, and smoked paprika. Season with salt, pepper, and onion powder.",
+    "Make sure the spinach have been drained of most of its water. Fold in the spinach, cheddar cheese, and ham.",
+    "Pour the mixture into the prepared baking sheet. Cook for 30 minutes or until set and golden-brown.",
+    "Serve warm."
+  ]
+}

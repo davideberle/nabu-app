@@ -1,0 +1,55 @@
+{
+  "id": "chocolate-strawberry-chia-seed-pudding",
+  "name": "Chocolate Strawberry Chia Seed Pudding",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dates",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "strawberries (more for garnish, optional)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Shaved chocolate, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the milk and dates to a blender. Blend until smooth. Add the strawberries, cocoa powder, vanilla, ground chia seeds, hempseed, and maple syrup. Blend well. Pour into two bowls and refrigerate for at least 4 hours.",
+    "Garnish with shaved chocolate and pieces of strawberry, if desired."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

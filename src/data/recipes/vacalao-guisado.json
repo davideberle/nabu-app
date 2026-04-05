@@ -1,0 +1,91 @@
+{
+  "id": "vacalao-guisado",
+  "name": "VACALAO GUISADO",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Vacalao guisado is a remake of bacalao guisado (salt fish stew). This dish has seafood notes, saltiness and sauciness. Shredded jackfruit and hearts of palm make the perfect salt fish substitute here.",
+  "ingredients": [
+    {
+      "item": "cans hearts of palm, drained and rinsed",
+      "amount": "2 (14-oz [400-g])"
+    },
+    {
+      "item": "nori furikake, divided",
+      "amount": "2 tbsp (10 g)"
+    },
+    {
+      "item": "can jackfruit in brine, drained",
+      "amount": "1 (2-oz [55-g])"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "3 tbsp (45 ml)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "diced bell peppers, assorted colors",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1 (8-oz [225-g])"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "olives with pimientos and capers",
+      "amount": "½ cup (45 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "Pinch of sugar (optional)",
+      "amount": ""
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Chop your hearts of palm into small pieces, place in a bowl and marinate it in 1 tablespoon (5 g) of the nori furikake.",
+    "Bring a medium-sized pot of water to a boil. Add the drained jackfruit to the boiling water and cook for 30 minutes to extract the brine. Remove from the water and pat out the excess liquid with a paper towel. Shred the jackfruit, season it in the remaining tablespoon (5 g) of nori furikake and set it aside.",
+    "In a large pot over medium heat, heat your oil and sauté the sofrito, garlic, onion and bell peppers to release the aromatics and soften the onion. Add the tomato sauce, vegetable stock, olive mixture, Sazón, adobo, oregano, the marinated hearts of palm and the jackfruit. Optionally, you can also add a pinch of sugar here to make it a bit less acidic. Cook the stew covered, for 15 minutes, stirring occasionally.",
+    "Add the cilantro in the last 5 minutes, and season with salt and black pepper to taste. Serve and enjoy."
+  ],
+  "image": "/recipes/vacalao-guisado.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

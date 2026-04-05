@@ -1,0 +1,45 @@
+{
+  "id": "watermelon-jelly",
+  "name": "Watermelon Jelly",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "ripe watermelon",
+      "amount": "2 kg"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "120 g"
+    },
+    {
+      "item": "cornflour",
+      "amount": "50 g"
+    },
+    {
+      "item": "jasmine water (see Note), or 1 teaspoon rosewater",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dark chocolate, grated",
+      "amount": "50 g"
+    },
+    {
+      "item": "unsalted pistachio nuts, finely chopped",
+      "amount": "50 g"
+    }
+  ],
+  "method": [
+    "Serves 6 2 kg ripe watermelon 120 g caster sugar 50 g cornflour 1 tablespoon jasmine water (see Note), or 1 teaspoon rosewater 1 teaspoon ground cinnamon 50 g dark chocolate, grated 50 g unsalted pistachio nuts, finely chopped jasmine flowers or rose petals, to garnish (optional)",
+    "Slice the watermelon flesh away from the skin and remove all the seeds. Place in a blender and process to a smooth purée – one 2 kg watermelon should yield around 1 litre watermelon purée.",
+    "Mix the sugar, cornflour and jasmine water (or rosewater) with a little of the watermelon purée to make a smooth paste. Stir in the remaining watermelon purée and tip the mixture into a saucepan. Bring to the boil slowly over a gentle heat. The mixture will start to thicken. When it does, remove the pan from the heat and stir in the cinnamon.",
+    "Pour the jelly into individual small moulds or one large mould, which you have moistened with a little water. Leave to set in the refrigerator for several hours or, better still, overnight."
+  ]
+}

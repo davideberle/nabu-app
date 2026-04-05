@@ -1,0 +1,89 @@
+{
+  "id": "roasted-root-vegetable-salad-bowl",
+  "name": "Roasted Root Vegetable Salad Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "sweet potato, peeled and chopped into bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "parsnip, peeled and sliced into ¼-inch rounds",
+      "amount": "1"
+    },
+    {
+      "item": "carrots, peeled and sliced into ½-inch rounds",
+      "amount": "2"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "tahini",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped red cabbage",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chia seeds, black or white",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F.",
+    "Place the sweet potatoes, parsnips, and carrots on a baking sheet, keeping them separated. Drizzle the oil over the top and lightly toss, still keeping the vegetables separated. Sprinkle with salt. Bake for 30 to 35 minutes or until they can be pierced with a fork. Set aside.",
+    "Add all the dressing ingredients to a blender and blend until smooth.",
+    "Prepare the salad bowls by placing half the spinach in the bottom of each bowl. Arrange all the remaining vegetables and hempseed in a circle around the edge of the bowl. Pour half of the dressing in the center of the vegetable round. Sprinkle with the chia seeds."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

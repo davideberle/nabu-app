@@ -1,0 +1,79 @@
+{
+  "id": "bacon-and-onion-quiche",
+  "name": "Bacon and Onion Quiche",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "½ cups cold unsalted butter, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "cold water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thick slices bacon",
+      "amount": "4"
+    },
+    {
+      "item": "large onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "crème fraiche (or full fat sour cream)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "¼ cups cheddar cheese, shredded",
+      "amount": "1"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Make the pastry. In a mixing bowl, combine the flour, salt, and pepper. Cut in the butter until it is pea-sized.",
+    "Add the water, and mix with a fork just to combine. When it can be formed into a ball, wrap it in plastic and refrigerate for 1 hour.",
+    "Roll out the dough on a lightly floured surface to about a 12-inch circle, and fit it into your quiche pan or pie plate. Trim the edges, and refrigerate for 30 minutes.",
+    "Heat the oven to 375°F (191°C). Cover the pastry with foil, and fill it with dried beans or pie weights. Bake for 45 minutes, and remove the weights and cook for 20 minutes longer, until nicely browned. Remove it to a cooling rack and reduce the heat to 325°F (163°C).",
+    "In a skillet over medium heat, cook the bacon. When it is crisp, remove it to a plate lined with paper towels.",
+    "Clean out the pan except for 2 tablespoons of drippings. Sauté the onion until it is very soft, about 10 minutes. Remove the pan from the heat and let it cool.",
+    "In a medium bowl, whisk the eggs and add the milk. Mix in the sour cream or crème fraiche and the salt and red pepper flakes.",
+    "Spread the onion in the pastry, and layer on the bacon and cheese. Pour in the egg mixture.",
+    "Bake for 35 minutes, or until the eggs are set. Remove it from the oven and let it cool before serving.",
+    "Sprinkle with dill before serving."
+  ]
+}

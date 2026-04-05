@@ -1,0 +1,41 @@
+{
+  "id": "nargisi-kofta",
+  "name": "NARGISI KOFTA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "These are excellent served outside, straight off the barbecue. You can prepare them indoors up to the end of the frying stage, then take them outside and cook over indirect heat on the barbecue. Like all of the tandoori recipes in this book, you can also cook them in the oven, as I have here. They are delicious served just as they are with a green salad and perhaps a good hot sauce.",
+  "ingredients": [
+    {
+      "item": "seekh kebab minced (ground) lamb per egg",
+      "amount": "150g (5½ oz)"
+    },
+    {
+      "item": "Hard-boiled eggs, 1 per person (see cooking times above), peeled",
+      "amount": ""
+    },
+    {
+      "item": "Gram (chickpea) flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "Toasted breadcrumbs, for coating",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed (canola) oil, for frying",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "For each egg, roll out 150g (5½oz) minced lamb mixture between two layers of cling film (plastic wrap), so that it is about 5mm (¼in) thick, and flat. Remove the top layer of cling film and place a hard-boiled egg in the middle. Using the bottom sheet of cling film, bring the meat up and form it around the egg.",
+    "Dust in the gram (chickpea) flour, then coat in the beaten egg and roll in the breadcrumbs until fully coated. (This work can all be done ahead of time for ease. Just place the coated koftas on a plate, cover with cling film and store in the fridge.)",
+    "To finish, preheat the oven to 200°C (400°F/Gas 6) or prepare your barbecue for indirect cooking. If refrigerated, remove the koftas from the fridge to come to room temperature. If oven cooking, place the fried koftas on a baking tray and roast in the oven for about 7 minutes. If using the barbecue, place the fried kofta on the grate over the side that has no coals and cover, cooking for about 7 minutes. The meat should already be cooked from the frying, so the oven or barbecue roasting will just warm them through."
+  ]
+}

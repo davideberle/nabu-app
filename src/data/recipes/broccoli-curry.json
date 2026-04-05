@@ -1,0 +1,86 @@
+{
+  "id": "broccoli-curry",
+  "name": "BROCCOLI CURRY",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "I’m pretty sure this broccoli curry was the first vegetarian curry I ever posted on my blog. In India, I’ve seen many similar curries that are cooked with cauliflower instead. You could do that too as it’s very good. For me, however, I like the colour and flavour the broccoli adds to the dish. There really is so much going on here. From the roasted peanuts and sesame seeds to the creamy coconut milk, I just love this dish. So much so, it’s now one of the curries I teach at my vegetarian cooking classes. Even those who think vegetarian curries are boring end up changing their minds very quickly when they taste this.",
+  "ingredients": [
+    {
+      "item": "broccoli, cut into small florets",
+      "amount": "500g (1lb 2oz)"
+    },
+    {
+      "item": "ghee or coconut oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "2.5cm (1in) piece of ginger, peeled and finely grated",
+      "amount": ""
+    },
+    {
+      "item": "grated fresh or frozen coconut",
+      "amount": "70g (2½oz)"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "roasted peanuts",
+      "amount": "70g (½ cup)"
+    },
+    {
+      "item": "red chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "tomatoes, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "tin (can) thick coconut milk",
+      "amount": "400ml (14fl oz)"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Rice, puris or chapattis, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat some water and steam the broccoli florets until just cooked – about 3 minutes. You should just be able to stick a fork into the side of the florets, but there should be some resistance. Set aside.",
+    "Now heat a large frying pan or wok over a medium heat and add the ghee or oil. When hot, throw in the ginger, coconut, 2 tablespoons of the sesame seeds, the peanuts, chilli powder and turmeric and cook for about 3 minutes, stirring the ingredients about the pan with a spatula.",
+    "Stir in the onion and chillies and fry for about 5 minutes until the onion is soft and translucent and just starting to brown.",
+    "Add the garlic and give it a good stir. When fragrant, add the chopped tomatoes followed by the par-cooked broccoli and coconut milk. Heat the broccoli through but try to ensure that it is tender but not at all mushy.",
+    "Season with salt and black pepper and sprinkle with the garam masala and the remaining sesame seeds. Serve immediately with rice, puris or chapattis."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

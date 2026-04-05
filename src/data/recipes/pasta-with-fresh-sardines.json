@@ -1,0 +1,88 @@
+{
+  "id": "pasta-with-fresh-sardines",
+  "name": "Pasta with Fresh Sardines",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4–6",
+  "ingredients": [
+    {
+      "item": "fresh sardines",
+      "amount": "600 g"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "large bunches wild fennel",
+      "amount": "2"
+    },
+    {
+      "item": "good-quality virgin olive oil",
+      "amount": "150 ml"
+    },
+    {
+      "item": "large Spanish onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground ginger",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "anchovy fillets in oil, drained",
+      "amount": "5"
+    },
+    {
+      "item": "currants",
+      "amount": "50 g"
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "50 g"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "100 g"
+    },
+    {
+      "item": "handful flat-leaf parsley, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful mint, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful marjoram, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "saffron powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "strozzapreti or bucatini pasta",
+      "amount": "500 g"
+    }
+  ],
+  "method": [
+    "Add the salt to a large saucepan of water and bring to the boil. Drop in the fennel and simmer for 5 minutes. Lift it out of the water and chop finely. Reserve the water for cooking the pasta.",
+    "Add the breadcrumbs, chopped fennel, herbs and saffron with another 2 tablespoons of olive oil. Season to taste and cook for a further 1–2 minutes.",
+    "Boil the pasta in the reserved fennel water until it is al dente."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "valdostana-soup",
+  "name": "Valdostana Soup",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "large Savoy cabbage",
+      "amount": "½"
+    },
+    {
+      "item": "bunch cavolo nero (black cabbage)",
+      "amount": "1"
+    },
+    {
+      "item": "loaf ciabatta bread, thinly sliced and toasted",
+      "amount": "¾"
+    },
+    {
+      "item": "large clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "anchovies in oil, drained",
+      "amount": "20"
+    },
+    {
+      "item": "fontina, roughly grated",
+      "amount": "225 g"
+    },
+    {
+      "item": "Gruyère, roughly grated",
+      "amount": "225 g"
+    },
+    {
+      "item": "freshly grated parmigiano",
+      "amount": "100 g"
+    }
+  ],
+  "method": [
+    "Serves 6 2.5 litres good-quality chicken stock unsalted butter, for greasing bowls ½ large Savoy cabbage 1 bunch cavolo nero (black cabbage) ¾ loaf ciabatta bread, thinly sliced and toasted 1 large clove garlic 20 anchovies in oil, drained 225 g fontina, roughly grated 225 g Gruyère, roughly grated 100 g freshly grated parmigiano ground black pepper",
+    "Preheat the oven to 200°C (gas mark 6).",
+    "In a large pan heat the chicken stock. Butter six large, ovenproof soup bowls.",
+    "Remove the leaves from the Savoy cabbage, cut away any thick stems and cut the leaves into large pieces. Cut the cavolo nero into large pieces."
+  ]
+}

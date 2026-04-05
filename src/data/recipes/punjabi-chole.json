@@ -1,0 +1,112 @@
+{
+  "id": "punjabi-chole",
+  "name": "PUNJABI CHOLE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "You might think that cooking chickpeas with teabags is a bit strange. Chickpeas are naturally quite dry, even after simmering for a long time, as they don’t naturally retain much moisture. Cooking them with teabags helps retain the moisture, which is important for Punjabi chole. The sauce does not taste at all like tea, but the teabags do give the curry its distinctive deep brown colour. This is delicious street food at its best that is usually served with freshly made bhatura. Punjabi chole bhatura is street food that simply must be tried!",
+  "ingredients": [
+    {
+      "item": "dried chickpeas (garbanzo beans)",
+      "amount": "300g (1½ cups)"
+    },
+    {
+      "item": "English tea teabags",
+      "amount": "3"
+    },
+    {
+      "item": "bicarbonate of soda (baking soda)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "5cm (2in) piece of cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "black or 4 green cardamom pods, bruised",
+      "amount": "2"
+    },
+    {
+      "item": "cloves",
+      "amount": "5"
+    },
+    {
+      "item": "generous tbsp ghee",
+      "amount": "4"
+    },
+    {
+      "item": "asafoetida*",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "medium red onions, blended with a little water to make a paste",
+      "amount": "2"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomatoes, blended",
+      "amount": "300g"
+    },
+    {
+      "item": "chole masala (or shop-bought)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried pomegranate seeds, lightly crushed (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder (more or less to taste)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried fenugreek leaves (kasoori methi)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "small red onion, thinly sliced into rings",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green bird’s eye chillies, sliced lengthways (optional)",
+      "amount": "4"
+    },
+    {
+      "item": "Fresh bhatura, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash and soak the dried chickpeas overnight. When ready to cook, drain the chickpeas and place them in a large saucepan. Cover with water and add the teabags, bicarbonate of soda (baking soda), cinnamon, cardamom pods and cloves. Bring to a simmer and cook for about 1 hour until the chickpeas are really soft, then drain. You should be able to easily squash one between your fingers. Set aside.",
+    "Heat the ghee in a large, high-sided frying pan over a medium–high heat. When it begins to shimmer, stir in the asafoetida and cumin seeds and let these infuse into the ghee for about 30 seconds. Add the blended onions and stir to combine. Reduce the temperature to medium and fry for about 10 minutes, or until the onions turn deep brown. Stir in the garlic and ginger paste and fry for a further 30 seconds before adding the tomatoes. Add the chole masala, pomegranate seeds (if using), ground coriander, chilli powder and turmeric. Simmer for about 5 minutes, then tip in the cooked chickpeas minus the teabags. Add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers and season with salt.",
+    "Garnish with the onion rings, coriander (cilantro) and some green chillies, if liked, and serve with fresh bhatura."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}

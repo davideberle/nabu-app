@@ -1,0 +1,40 @@
+{
+  "id": "tuwo-masara",
+  "name": "Tuwo Masara",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "This swallow is made from coarsely ground durum wheat. In Nigeria, it is popularly referred to as Semovita, which is a brand of semolina flour. It has a pale, oﬀ-white colour when cooked.",
+  "ingredients": [
+    {
+      "item": "semolina flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "and 1/2 cups water (2 cups cold; 1/2 cup hot)",
+      "amount": "2"
+    },
+    {
+      "item": "fine cornmeal",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water (1 cold;",
+      "amount": "2 cups"
+    },
+    {
+      "item": "hot)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Pour 2 cups of cold water into a pot and add the semolina. Stir quickly with a wooden spoon and keep mixing over medium-high heat until a sticky dough forms. Add half a cup of hot water and do not stir. Cover and simmer for 6-7 minutes over low heat. Mix vigorously with a wooden spoon until you have a smooth, stretchy dough.",
+    "Pour 1 cup of cold water into a pot, add the cornmeal and stir continuously over medium heat. Add 1 cup of hot water and do not stir. Cover and simmer over low heat for 5 minutes. Use a wooden spoon to knead the mixture for 10-15 minutes until you have a smooth, stretchy dough. Leave to cool slightly and it will continue to thicken."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

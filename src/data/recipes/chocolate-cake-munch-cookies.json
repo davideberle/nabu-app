@@ -1,0 +1,73 @@
+{
+  "id": "chocolate-cake-munch-cookies",
+  "name": "Chocolate Cake Munch Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter, softened",
+      "amount": "½ cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chia seeds or ground chia seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "soy milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "vanilla",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "whole wheat flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "protein powder",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "cocoa powder",
+      "amount": "½ cup"
+    },
+    {
+      "item": "walnuts, chopped",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Add butter and sugar to the bowl of a stand mixer. Mix on medium speed for 5 minutes.",
+    "Meanwhile, mix the chia seeds with 3 tablespoons water.",
+    "Add the chia mixture, milk, and vanilla to the butter and mix well at medium speed.",
+    "Add the flour, protein powder, baking powder, baking soda, salt, and cocoa to a medium bowl. Mix well.",
+    "Turn mixer on medium and slowly add the dry mixture. Add the walnuts and mix at low speed until combined. Place the mixture in the refrigerator from one hour to overnight.",
+    "About 15 minutes before you’re ready to bake the cookies, preheat the oven to 400°F. Cut parchment paper to fit on a baking sheet. Set aside.",
+    "Drop heaping tablespoons onto prepared cookie sheet, 2 inches apart. Roll into balls and then flatten by about half with the bottom of a measuring cup or some other strong material. They bake up thick. Bake for 8 minutes.",
+    "Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "egg-casserole",
+  "name": "Egg Casserole",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 35-40 minutes",
+  "ingredients": [
+    {
+      "item": "Canadian bacon",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "package English muffins",
+      "amount": "1 (12-ounce)"
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "10"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "whole milk",
+      "amount": "3 cups"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "flat-leaf parsley, chopped",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C).",
+    "In a 9x13-inch baking dish, arrange the English muffins. Top with the Canadian bacon.",
+    "In a large mixing bowl, add the eggs, milk, salt, pepper, garlic powder, and paprika. Mix until just combined.",
+    "Pour the egg and milk mixture on top of the English muffins.",
+    "Bake for 35-40 minutes or until golden-brown in color.",
+    "Top with the chopped parsley before serving."
+  ]
+}

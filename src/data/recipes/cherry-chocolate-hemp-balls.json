@@ -1,0 +1,51 @@
+{
+  "id": "cherry-chocolate-hemp-balls",
+  "name": "Cherry Chocolate Hemp Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats",
+      "amount": "1 cup"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried cherries, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pistachios, chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Add all of the ingredients to a large bowl. Mix well with a sturdy wooden spoon. Roll into 24 balls.",
+    "Store in the refrigerator for up to 5 days or freeze for up to 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

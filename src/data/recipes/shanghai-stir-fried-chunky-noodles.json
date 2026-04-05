@@ -1,0 +1,319 @@
+{
+  "id": "shanghai-stir-fried-chunky-noodles",
+  "name": "Shanghai stir-fried chunky noodles",
+  "source": {
+    "cookbook": "Land of Fish and Rice",
+    "author": "Fuchsia Dunlop"
+  },
+  "ingredients": [
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "fresh Shanghai noodles or Japanese udon",
+      "amount": "15 oz (425g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "baby green bok choy or 2 large handfuls of baby spinach",
+      "amount": "9 oz (200g)"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "beaten egg or 1 tbsp cold water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried shrimp",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "spring onions",
+      "amount": "4"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "dried noodles of your choice or 10 oz (300g) fresh noodles",
+      "amount": "7 oz (200g)"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "stock",
+      "amount": "2½ cups (600ml)"
+    },
+    {
+      "item": "fresh Chinese wheat noodles",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "thinly sliced spring onions, green parts only",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "spiced or smoked firm tofu",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "Sichuan preserved vegetable",
+      "amount": "2½ oz (60g)"
+    },
+    {
+      "item": "oyster mushrooms",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "Chinese yellow chives",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "2"
+    },
+    {
+      "item": "fresh Chinese wheat noodles",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "potato starch",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "lean pork",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "cooking oil or lard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "snow vegetable",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fresh Chinese wheat noodles",
+      "amount": "10 oz (300g)"
+    },
+    {
+      "item": "lard (optional)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "thinly sliced spring onions",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried sweet potato noodles",
+      "amount": "4 oz (100g)"
+    },
+    {
+      "item": "skinless pork belly",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "spiced firm tofu",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "spring onions, green parts only",
+      "amount": "3"
+    },
+    {
+      "item": "red bell pepper, cored and deseeded",
+      "amount": "¼"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Shaoxing wine",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "stock",
+      "amount": "1⅓ cups (300ml)"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "high-gluten flour, plus extra for dusting",
+      "amount": "2 cups (250g)"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried shiitake mushrooms",
+      "amount": "2"
+    },
+    {
+      "item": "bamboo shoot",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "cooked chicken breast",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "Spanish or Chinese cured ham, steamed briefly",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "frozen peas",
+      "amount": "3 oz (75g)"
+    },
+    {
+      "item": "quarts (1.5 liters) chicken stock",
+      "amount": "1½"
+    },
+    {
+      "item": "low-gluten Chinese flour",
+      "amount": "1¾ cups (400g)"
+    },
+    {
+      "item": "spring onions, white parts only",
+      "amount": "2"
+    },
+    {
+      "item": "bamboo shoot (optional)",
+      "amount": "2 oz (50g)"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "⅓ oz (10g)"
+    },
+    {
+      "item": "snow vegetable, chopped",
+      "amount": "5 oz (150g)"
+    },
+    {
+      "item": "quarts (1.6 liters) stock",
+      "amount": "1½"
+    }
+  ],
+  "method": [
+    "Cut the pork evenly into thin slices, then into slivers. Add the marinade ingredients and mix well.",
+    "Bring a pan of water to the boil. Add the noodles and cook for 2 minutes (fresh Shanghai and udon noodles are already half-cooked when you buy them, which is why this doesn’t take long). Turn the cooked noodles into a colander and cool under the cold tap. Shake them dry. Drip over ½ tablespoon oil and stir in thoroughly to prevent sticking.",
+    "Heat 1 tablespoon of the oil in a seasoned wok over a high flame. Add the pork strips and stir-fry swiftly to separate them. When they are just cooked, remove from the wok and set aside. Clean and re-season the wok if necessary, then return it to a high flame with the remaining oil. Add the noodles and stir-fry until piping hot, adding both soy sauces and seasoning with salt and pepper. Add the bok choy or spinach and continue to stir-fry briefly until wilted. Finally, stir in the pork. Serve.",
+    "Put the dried shrimp in a small bowl with the Shaoxing wine and just enough hot water to cover them and leave to soak for half an hour. Smack the spring onions slightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers, then cut them evenly into 2½–2¾ in (6–7cm) sections. Pour the soy sauce into your serving bowl.",
+    "Heat the oil in a seasoned wok over a high flame. Add the spring onions and stir-fry until they are turning a little golden. Drain the shrimp, add them to the wok and continue to stir-fry until the spring onions are well browned and wonderfully fragrant, but not burned. Then set aside this fragrant oil, along with the spring onions and shrimp.",
+    "Bring a large pan of water to the boil and cook the noodles to your liking, then drain them well and put them in the serving bowl. Put the spring onions, shrimp and their fragrant oil on top and serve. Mix everything together very well with a pair of chopsticks before eating.",
+    "Pour the hot stock over the seasonings in the bowls. Divide the noodles between the serving bowls and garnish with the spring onions.",
+    "Cut the pork into slivers. Add the marinade ingredients with 1 teaspoon cold water and mix well. Cut the tofu, Sichuan preserved vegetable and mushrooms into fine slivers. Cut the chives and spring onions into 3 in (8cm) lengths.",
+    "Bring a pan of water to the boil. Add the noodles and cook them to your liking, then rinse them under the cold tap and drain well. Heat 1 tablespoon of the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked, then set aside. Return the wok to the flame with the remaining oil. Add the preserved vegetable and stir-fry briefly until you can smell it. Add the tofu and mushrooms and stir-fry until the mushrooms are just cooked.",
+    "Bring a pan of water to the boil. Cut the bamboo shoot into thin, bite-sized slices and blanch them briefly, then refresh them under cold tap water and drain. Cut the pork into thin slices of a similar size. Boil the kettle.",
+    "Heat the cooking oil or lard in a seasoned wok over a high flame. Add the pork and stir-fry to separate the slices, adding the Shaoxing wine as the meat turns pale. Add the bamboo shoot, stir-fry briefly, then tip in the snow vegetable. Stir-fry until it’s all hot and fragrant, then add the soy sauces and 1⅓ cups (300ml) hot water. Bring to the boil, then turn the heat down low to keep warm.",
+    "Stir-fried sweet potato noodles",
+    "Cover the noodles with cold water and leave to soak for 2 hours or overnight. Cut the pork and tofu into ⅛ in (3–4mm) strips. Peel and slice the garlic. Cut the spring onion greens into 2 in (5cm) sections. Cut the red bell pepper into slivers. Before you start cooking, drain the noodles in a colander.",
+    "Heat the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until it has turned pale. Add the garlic and firm tofu and continue to stir-fry for a minute or so, until everything smells delicious. Stir in the Shaoxing wine. Add the stock, noodles and soy sauces, stir well and bring to the boil. Season with salt. Cover the wok and continue to cook for 2 minutes, until the stock has almost all been absorbed by the noodles.",
+    "Mix the flour and salt together. Make a well in the center and gradually add enough water to make a dough, drawing the flour in from the edges as you go. Knead the dough until smooth and glossy, then cover with a wet tea towel and rest for 15 minutes.",
+    "Bring a big pan of water to the boil, salting it as you would for Italian pasta. Tip in the ears and give them a good stir. Boil for 1–2 minutes until the ears float, then drain in a colander and rinse under the cold tap until completely cold. Drain well, add the cooking oil and mix well to coat the ears and prevent sticking. Set aside in the fridge for 2 hours. Cover the shiitake mushrooms in boiling water and leave them to soften for at least half an hour.",
+    "Cut the bamboo shoot into ½ in (1cm) cubes and blanch in boiling water. Refresh under the cold tap and drain. Drain the mushrooms, discard the stalks and cut the caps into smaller cubes. Cut the chicken and ham into ½ in (1cm) cubes. Put the bamboo shoot, mushrooms, chicken, ham and peas in a pan with the chicken stock and bring to the boil. Add the cat’s ears to the broth. Return to the boil and boil for 30 seconds to reheat. Season with salt and pepper and serve.",
+    "Put the flour in a bowl and make a well in the center. Gradually add about 1½ cups (325ml) cold water, drawing in the flour from the edges as you stir with a wooden spoon. You should end up with a very wet dough that won’t hold its shape. Set aside for about 10 minutes.",
+    "Heat 1 tablespoon of the oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry briefly until they smell wonderful. Add the snow vegetable and bamboo shoot, if using, and stir-fry a little longer until they too are fragrant. Pour in the stock and bring to the boil. Season with salt and pepper and keep warm."
+  ]
+}

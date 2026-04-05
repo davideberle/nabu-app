@@ -1,0 +1,63 @@
+{
+  "id": "banana-pancakes",
+  "name": "Banana Pancakes",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 8 | prep. time 10 minutes | cooking time 20-25 minutes",
+  "ingredients": [
+    {
+      "item": "large egg, room temperature",
+      "amount": "1"
+    },
+    {
+      "item": "mashed banana",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsalted butter, melted",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "whole milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "maple extract or syrup",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, combine the egg, mashed banana, butter, vanilla extract, and milk.",
+    "Stir in the flour, baking powder, baking soda, ground cinnamon, and salt.",
+    "Stir in the maple extract and mix until just combined. Be careful not to overmix the batter.",
+    "Heat a large nonstick frying pan over medium heat. Spray it with cooking spray to lightly coat the surface.",
+    "Working in batches, pan-fry the pancakes for 2-3 minutes on each side.",
+    "Serve with banana slices and a drizzle of maple syrup if desired."
+  ]
+}

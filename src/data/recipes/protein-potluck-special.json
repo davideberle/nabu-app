@@ -1,0 +1,75 @@
+{
+  "id": "protein-potluck-special",
+  "name": "Protein Potluck Special",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "lentils",
+      "amount": "1 pound"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "finely chopped onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green bell pepper, diced",
+      "amount": "1"
+    },
+    {
+      "item": "carrots, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Roma tomatoes, diced",
+      "amount": "3"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Slow Cooker Versatile Seitan Balls, cubed (page 279)",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the lentils and bay leaf in a large saucepan and cook according to package directions.",
+    "While the lentils are cooking, heat the oil over medium-high heat in a very large skillet. Add the onions and bell pepper and sauté for 10 minutes. Add the remaining ingredients and sauté for 5 minutes. Add the lentils, stir, and cook for 5 minutes to heat through."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

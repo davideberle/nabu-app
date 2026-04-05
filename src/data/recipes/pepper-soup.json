@@ -1,0 +1,50 @@
+{
+  "id": "pepper-soup",
+  "name": "Pepper Soup",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2-3",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "4 cups"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground ehuru (calabash nutmeg)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground uda (grains of selim)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground or whole uziza seeds",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "vegetable stock cube Salt to taste",
+      "amount": "1"
+    },
+    {
+      "item": "mushrooms (cut into bite- size pieces)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "stalk spring onion (finely chopped, to garnish)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place all the ingredients except the scent leaves/basil in a pot, bring to a boil then cover and simmer on medium heat for 20 minutes. Add the shredded scent leaves/basil towards the end of the cooking time."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

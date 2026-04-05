@@ -1,0 +1,35 @@
+{
+  "id": "blood-orange-salad",
+  "name": "Blood Orange Salad",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "100 g"
+    },
+    {
+      "item": "almonds",
+      "amount": "10"
+    },
+    {
+      "item": "blood oranges, peeled and cut crossways into thin slices",
+      "amount": "6"
+    },
+    {
+      "item": "best-quality dates, pitted and cut into thin strips",
+      "amount": "4"
+    },
+    {
+      "item": "punnet raspberries",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 6 CARAMELISED ALMONDS 100 g sugar 10 almonds 6 blood oranges, peeled and cut crossways into thin slices 4 best-quality dates, pitted and cut into thin strips 1 punnet raspberries",
+    "Put the sugar in a small saucepan and heat it gently without stirring until the sugar caramelises to a golden-brown. Now add the almonds and cook just a little longer, being careful that the sugar doesn’t burn. Pour the mixture onto a tray lined with greaseproof paper and leave to cool."
+  ]
+}

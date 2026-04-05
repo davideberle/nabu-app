@@ -1,0 +1,29 @@
+{
+  "id": "fresh-anchovies",
+  "name": "Fresh Anchovies",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6–8",
+  "ingredients": [
+    {
+      "item": "breadcrumbs",
+      "amount": "40 g"
+    },
+    {
+      "item": "chilli, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful finely chopped flat-leaf parsley",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Serves 6–8 8–16 fresh anchovies 40 g breadcrumbs 1–2 cloves garlic, crushed 1 chilli, finely chopped 1 handful finely chopped flat-leaf parsley salt and ground black pepper good-quality virgin olive oil, for drizzling",
+    "Preheat the oven to 220°C (gas mark 7).",
+    "Put the breadcrumbs, garlic, chilli, parsley, salt and pepper in a bowl and stir together with a spoon.",
+    "Cook in the oven for about 5 minutes, until the fish are slightly coloured. Serve either hot or cold."
+  ]
+}

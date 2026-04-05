@@ -1,0 +1,27 @@
+{
+  "id": "mulberry-granita",
+  "name": "Mulberry Granita",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "ripe, dark-red mulberries",
+      "amount": "300 g"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "125 g"
+    },
+    {
+      "item": "water",
+      "amount": "100 ml"
+    }
+  ],
+  "method": [
+    "Serves 4 300 g ripe, dark-red mulberries juice of 1 organic lemon 125 g caster sugar 100 ml water whipped cream, to serve",
+    "Place all the ingredients except the cream into a food processor and blend to a smooth purée. Pour into an ice cream machine and churn until it has a light and fluffy texture."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "spice-stock",
+  "name": "SPICE STOCK",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes about 750ml (3¼ cups)",
+  "intro": "I usually make a batch of spice stock at the same time as I make the base curry sauce. This isn’t one you really need to watch closely while cooking so it’s a good way of getting two jobs done at once. The aromatic strained stock can be added to curries when a little more liquid is desired to thin the sauce. So could water, for that matter, but this stock does give curries more depth.",
+  "ingredients": [
+    {
+      "item": "Handful of green cardamom pods, lightly bruised",
+      "amount": ""
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "15"
+    },
+    {
+      "item": "2.5cm (1in) piece of cinnamon stick or cassia bark",
+      "amount": ""
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "20"
+    },
+    {
+      "item": "Large handful of star anise",
+      "amount": ""
+    },
+    {
+      "item": "roasted cumin seeds (see ground spices and spice blends)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Large bunch of coriander (cilantro), stems and leaves roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "or more fresh green chillies, to taste, halved lengthways (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Put 1 litre (4½ cups) of water in a pan and bring to a rolling boil. Throw in the herbs and spices and stir to combine. Reduce to a simmer and cook for about 30 minutes. Strain through a fine sieve and use immediately, or store in air-tight plastic containers in the fridge for up to 3 days. It also freezes well."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

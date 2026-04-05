@@ -1,0 +1,32 @@
+{
+  "id": "maria-s-ricotta",
+  "name": "Maria’s Ricotta",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "litre full-cream milk",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "80 ml"
+    },
+    {
+      "item": "water",
+      "amount": "180 ml"
+    }
+  ],
+  "method": [
+    "Makes around 100 g 1 litre full-cream milk 1 teaspoon salt 80 ml white vinegar 180 ml water",
+    "Heat the milk (and salt, if using) in a large saucepan, stirring constantly. As soon as it boils, remove the pan from the heat.",
+    "Mix the vinegar and water together in a small jug. Pour it into the milk in a slow, steady stream, beginning in the centre then working out in a bigger and bigger circle until you reach the edge of the pan. You will see the milk start to separate.",
+    "Place the saucepan in a sink of very cold water. After a few minutes use a slotted spoon to lift the ricotta out and transfer it to a colander lined with a damp cheesecloth (muslin). Sit the colander on a plate and leave to drain. If you are not using it straight away, transfer it to the refrigerator."
+  ]
+}

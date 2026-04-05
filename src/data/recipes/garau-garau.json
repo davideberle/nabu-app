@@ -1,0 +1,40 @@
+{
+  "id": "garau-garau",
+  "name": "Garau Garau",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 4",
+  "intro": "Beans and rice is eaten across the whole of Nigeria, but in diﬀerent ways. Plain boiled beans and rice is often served with Stew (page 130) but here we will focus on a Hausa delicacy known as Garau Garau or Shinkafa Da Wake, which is served with fresh vegetables and yaji/suya spice. The classic toppings are tomatoes, onions and lettuce/cabbage, but you can also add chopped cucumber or bell peppers.",
+  "ingredients": [
+    {
+      "item": "1/2 cup black eyed beans (soaked overnight and drained) 1/4 teaspoon baking soda",
+      "amount": ""
+    },
+    {
+      "item": "long grain or golden basmati rice (washed and drained)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "small red onion (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "shredded lettuce Groundnut oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "RICE DISHES",
+      "amount": "79"
+    }
+  ],
+  "method": [
+    "Place the beans and baking soda in a pot and cover with 2 cups of water. Cook on high heat for 20 minutes then drain oﬀ the water. Add the rice and 1 and a 1/2 cups of boiling hot water. Season with salt and continue to cook for another 25-30 minutes on low heat until the rice and beans have softened and most of the water has been absorbed.",
+    "Serve hot with a side or topping of shredded lettuce, chopped onions and tomatoes. Drizzle a small amount of groundnut oil and yaji/suya spice over the dish before eating."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

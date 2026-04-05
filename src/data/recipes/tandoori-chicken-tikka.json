@@ -2,19 +2,22 @@
   "id": "tandoori-chicken-tikka",
   "name": "TANDOORI CHICKEN TIKKA",
   "source": {
-    "cookbook": "The Curry Guy",
-    "author": "Dan Toombs",
-    "chapter": "Recipes"
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
   },
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Red food colouring powder is often added to chicken tikka to give it the appearance of being spicy hot. I often add red food colouring to my chicken tikka but it doesn’t add any flavour and can be left out. Beetroot powder is often used as a substitute but it doesn’t achieve that bright red curry-house look.",
   "ingredients": [
     {
-      "item": "(2¼ lb) skinless, boneless chicken breasts, cut into bite-sized pieces (tikka)",
-      "amount": "1kg"
+      "item": "skinless, boneless chicken breasts, cut into bite-size pieces (tikka)",
+      "amount": "1kg (2lb 3oz)"
     },
     {
       "item": "Juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
       "amount": ""
     },
     {
@@ -26,12 +29,8 @@
       "amount": ""
     },
     {
-      "item": "Salt",
-      "amount": ""
-    },
-    {
-      "item": "(1 cup) Greek yoghurt, whisked",
-      "amount": "210g"
+      "item": "Greek yoghurt, whisked",
+      "amount": "200g (¾ cup)"
     },
     {
       "item": "ground cumin",
@@ -83,10 +82,8 @@
     }
   ],
   "method": [
-    "Place the chicken pieces (tikka) in a large bowl, squeeze the lemon juice over them and sprinkle with a little salt. Stir in the garlic and ginger paste and some red food colouring, if you want the authentic chicken tikka colour. Mix it all up really well and set aside while you make the marinade.",
-    "Place the marinade ingredients in a bowl and mix with your hands until good and smooth. Cover the chicken pieces with the marinade, ensuring they are completely coated. Cover and marinate in the fridge for at least 6 hours or up to 48 hours; the longer the better.",
-    "When ready to cook, prepare your barbecue for direct cooking. When your coals are white hot, thread the chicken tikka onto skewers and place over the coals, turning occasionally until the chicken is cooked through and the edges are blackened. You can also do this on a grill.",
-    "Season with salt to taste and serve hot, or use in your curries."
-  ],
-  "image": null
+    "Place the chicken pieces (tikka) in a large bowl, squeeze the lemon juice over them and sprinkle with a little salt. Stir in the garlic and ginger paste and some red food colouring if you want the authentic chicken tikka colour. Mix it all up really well and set aside while you make the marinade.",
+    "Place the marinade ingredients in a bowl and mix with your hands until good and smooth. Cover the chicken pieces with the marinade, ensuring they are completely coated. Cover and marinate in the fridge for 6–48 hours – the longer the better.",
+    "Season with salt and serve hot, or use in your curries."
+  ]
 }

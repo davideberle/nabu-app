@@ -1,0 +1,50 @@
+{
+  "id": "ricotta-filled-sweet-pastry-rolls",
+  "name": "Ricotta-filled Sweet Pastry Rolls",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "ingredients": [
+    {
+      "item": "unsalted butter, at room temperature (traditionally lard is used instead of butter in this recipe)",
+      "amount": "25 g"
+    },
+    {
+      "item": "self-raising flour",
+      "amount": "150 g"
+    },
+    {
+      "item": "organic egg, separated",
+      "amount": "1"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "dry Marsala",
+      "amount": "80 ml"
+    },
+    {
+      "item": "bitter cocoa powder",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "fresh ricotta",
+      "amount": "250 g"
+    },
+    {
+      "item": "icing sugar",
+      "amount": "125 g"
+    },
+    {
+      "item": "good-quality dark chocolate (70% cocoa solids), chopped into small chunks",
+      "amount": "30 g"
+    }
+  ],
+  "method": [
+    "Put all the pastry ingredients into a food processor and pulse to form a dough. It will be smooth and firm, similar to pasta dough. Form it into a ball and let it rest, covered with a cloth, for about 1 hour.",
+    "Pour the sunflower oil into a medium-sized saucepan to a depth of around 6 cm. When the oil is hot, fry the cannoli in batches of 3 until golden-brown. Drain well on kitchen paper and slide them off the metal cylinders while still warm."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "vegan-omelette-with-boiled-plantain",
+  "name": "Vegan Omelette With Boiled Plantain",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "Plantain for breakfast is very common in Nigeria and if it isn’t served with a stew, it is served with eggs. Here we will make a bean-based vegan omelette that’s bursting with fresh and flavourful vegetables.",
+  "ingredients": [
+    {
+      "item": "ripe yellow plantains 1/2 cup beans flour 1/2 cup water",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 scotch bonnet chilli (finely chopped)",
+      "amount": ""
+    },
+    {
+      "item": "1/4 cup sweetcorn",
+      "amount": ""
+    },
+    {
+      "item": "1/2 teaspoon salt (or black salt/kala namak for an eggy flavour) Sunflower oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "VEGAN “EGG” DISHES",
+      "amount": "49"
+    }
+  ],
+  "method": [
+    "Cut the tops and tails of the plantains and use a knife to score the skin all the way down the side. Leave the skin on and cut each plantain into 3-4 large chunks. Place them in a pot and cover completely with water. Bring to a boil then cook on medium heat for 20 minutes until tender. Drain the excess water, leave the plantains to cool for a few minutes then peel and discard the skins.",
+    "To make the vegan omelette, combine the beans flour, water, chopped onions, peppers, chilli, sweetcorn and salt in a bowl. Mix well and set aside for 10 minutes.",
+    "Heat 1 tablespoon of oil in a small non-stick frying pan and pour in half of the omelette batter. Gently spread it around the bottom of the pan with the back of a spoon to form a round omelette, cover and cook for 5 minutes over medium-high heat. Use a spatula to loosen the sides and gently flip the omelette over to cook on the other side for a further 2-3 minutes. Gently fold the omelette in half and transfer to a plate. Repeat this process with the rest of the batter to make another omelette. The omelette will appear stiﬀ at first but will soften as it starts to cool."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

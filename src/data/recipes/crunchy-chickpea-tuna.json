@@ -1,0 +1,69 @@
+{
+  "id": "crunchy-chickpea-tuna",
+  "name": "CRUNCHY CHICKPEA TUNA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 4",
+  "intro": "Did I mention how versatile chickpeas are? You can literally make them into anything, but in this recipe, we’re going to turn them into tuna made from only a few ingredients. This dish is easy to make and doesn’t require any cooking; all you need is your knife, cutting board and a bowl, and maybe some bread to put this on, or lettuce wraps. This is fresh, crunchy and filling. Let’s get started.",
+  "ingredients": [
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 (14-oz [400-g])"
+    },
+    {
+      "item": "Juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "⅓ cup (75 g)"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "½ cup (80 g)"
+    },
+    {
+      "item": "capers, minced",
+      "amount": "1 tbsp (8.5 g)"
+    },
+    {
+      "item": "chopped celery",
+      "amount": "¼ cup (25 g)"
+    },
+    {
+      "item": "relish",
+      "amount": "1 tbsp (15 g)"
+    },
+    {
+      "item": "nori furikake",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Pinch of cayenne powder",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of paprika",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, using a fork or masher, mash the chickpeas, leaving a few chunky pieces. Add the lemon juice, vegan mayonnaise, red onion, capers, celery, relish, nori furikake, garlic powder, cayenne and paprika, and combine thoroughly. Taste and season with salt and black pepper to your liking, mixing again.",
+    "Serve chilled with bread as a sandwich or in lettuce wraps."
+  ],
+  "image": "/recipes/crunchy-chickpea-tuna.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

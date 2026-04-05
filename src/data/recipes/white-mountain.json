@@ -1,0 +1,54 @@
+{
+  "id": "white-mountain",
+  "name": "White Mountain",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "organic egg whites",
+      "amount": "6"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "250 g"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "unsweetened chestnut purée",
+      "amount": "600 g"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "75 g"
+    },
+    {
+      "item": "meringues (see below)",
+      "amount": "12"
+    },
+    {
+      "item": "cream",
+      "amount": "250 ml"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Serves 6 MERINGUES 6 organic egg whites 250 g caster sugar pinch of salt 1 teaspoon white wine vinegar 1 teaspoon pure vanilla extract CHESTNUT BASE 600 g unsweetened chestnut purée 75 g caster sugar 50–100 ml cream TOPPING 12 meringues (see below) 250 ml cream 3 tablespoons caster sugar",
+    "Preheat the oven to 150°C (gas mark 2).",
+    "Put the meringues into the preheated oven, turn the heat down to 120°C (gas mark ½ ) and cook them for about 30 minutes. Put a wooden spoon in the oven door to keep it slightly open and continue cooking the meringues for another hour. They should be crisp on the outside but still a little soft on the inside.",
+    "Transfer them to a rack and let them cool completely.",
+    "Mix the chestnut purée with the sugar, and add just enough cream so that the chestnut mass can be pushed through a potato ricer."
+  ]
+}

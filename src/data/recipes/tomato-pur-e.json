@@ -1,0 +1,36 @@
+{
+  "id": "tomato-pur-e",
+  "name": "TOMATO PURÉE",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 4 tablespoons",
+  "intro": "This is a thin purée of tomatoes used in many curries for flavour and colour. Here are two ways you can make it.",
+  "ingredients": [
+    {
+      "item": "concentrated tomato paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "can plum tomatoes",
+      "amount": "400g (14oz)"
+    },
+    {
+      "item": "Concentrated tomato paste, to taste (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Simply mix the ingredients together to form a thinner paste. This recipe can be easily scaled up or down: just use 1 part tomato paste to 3 parts water.",
+    "Blend the plum tomatoes to make a smooth purée. If you want a deeper red colour, add in a little concentrated tomato paste."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

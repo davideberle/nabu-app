@@ -1,0 +1,43 @@
+{
+  "id": "protein-peanut-butter-balls",
+  "name": "Protein Peanut Butter Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "creamy peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "½ cup"
+    },
+    {
+      "item": "powdered soy milk, non-GMO",
+      "amount": "½ cup"
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut flour",
+      "amount": "½ cup"
+    },
+    {
+      "item": "peanuts, chopped fine",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Place the peanut butter and maple syrup in a medium bowl. Mix well. Add the powdered soy milk, flaxseed meal, and coconut flour. Mix well and roll into 24 balls. Lightly roll each ball in the chopped peanuts.",
+    "Store in the refrigerator for up to 2 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

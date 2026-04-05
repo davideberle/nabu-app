@@ -1,0 +1,55 @@
+{
+  "id": "classic-shakshuka",
+  "name": "Classic Shakshuka",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 10-15 minutes",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "chili pepper, cored, seeded, and diced",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "3"
+    },
+    {
+      "item": "diced San Marzano tomatoes",
+      "amount": "26 ounces"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "large eggs, room temperature",
+      "amount": "8"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large, deep non-stick frying pan over medium heat.",
+    "Add the onion, chili pepper, and garlic. Cook for 2-3 minutes, stirring continuously.",
+    "Stir in the diced tomatoes and water. Season with salt and pepper. Cook for 5 minutes.",
+    "Crack the eggs on top of the tomato sauce.",
+    "Cover and cook until eggs are done, about 5 minutes.",
+    "Serve with the parsley."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "peanut-butter-chocolate-seed-balls",
+  "name": "Peanut Butter Chocolate Seed Balls",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "creamy peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsweetened shredded coconut",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sunflower seed kernels, pulsed fine in a mini food processor, divided",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Melt the chocolate in a double boiler. Stir in the peanut butter and blend well. Take off of the the heat and mix in the hempseed, shredded coconut, and ½ cup sunflower seeds. Refrigerate until the dough is firm enough to use a small cookie scoop, about 30 minutes.",
+    "Remove the dough from the refrigerator and scoop out forty-eight balls. You can roll them into smoother balls with the palms of your hands. While they are still warm from rolling, roll them in the remaining pulsed sunflower seeds.",
+    "These will keep in the fridge for about 3 weeks and in the freezer for about 6 months."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

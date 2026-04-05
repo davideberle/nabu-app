@@ -1,0 +1,93 @@
+{
+  "id": "spiced-cauliflower-tempeh-salad-bowl",
+  "name": "Spiced Cauliflower Tempeh Salad Bowl",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "small head of cauliflower, cut into florets",
+      "amount": "1"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "vegan mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsweetened dairy-free milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dill weed",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Pinch of ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "tempeh, sliced into ¼-inch-thick slices and then into small bite-size pieces",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "small red onion, cut into bite-size pieces",
+      "amount": "1"
+    },
+    {
+      "item": "carrots, cut into small matchstick pieces",
+      "amount": "2"
+    },
+    {
+      "item": "yellow bell pepper, cut into bite-size pieces",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F.",
+    "Place the cauliflower florets into a large bowl. Sprinkle with the oil, salt, cumin, and ¼ teaspoon pepper. Toss. Spread out onto a baking sheet and bake for about 25 minutes or until you can easily pierce the cauliflower with a fork. Remove from the oven and set aside.",
+    "While the cauliflower is baking, make the salad dressing. Mix the mayonnaise, milk, lemon juice, garlic and onion powders, dill weed, salt, and pinch of pepper in a small bowl. Place the tempeh in the dressing to marinate while the cauliflower is baking.",
+    "Divide the spinach between two salad bowls. Make a line in the shape of an arc with each vegetable starting with the onion and continuing on with the carrots, cauliflower, and bell pepper. Remove tempeh from the marinade and add it as the final touch to the bowl. Serve with the dressing."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

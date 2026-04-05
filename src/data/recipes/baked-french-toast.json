@@ -1,0 +1,48 @@
+{
+  "id": "baked-french-toast",
+  "name": "Baked French Toast",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 10 minutes | cooking time 30-35 minutes",
+  "ingredients": [
+    {
+      "item": "large eggs, room temperature",
+      "amount": "3"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground cinnamon, divided",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "slices challah bread",
+      "amount": "10 (1-inch-thick)"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C).",
+    "In a large mixing bowl, whisk the eggs, milk, granulated sugar, ½ teaspoon ground cinnamon, and salt.",
+    "Spray a 9x13-inch baking dish with cooking spray. Arrange the bread slices in the dish.",
+    "Pour the egg mixture on top of the bread slices, soaking them well.",
+    "In a small mixing bowl, combine the brown sugar and remaining ground cinnamon. Top the bread slices with the mixture.",
+    "Bake for 30-35 minutes or until golden-brown in color.",
+    "Let the French toast cool slightly before serving with powdered sugar or a drizzle of honey or maple syrup."
+  ]
+}

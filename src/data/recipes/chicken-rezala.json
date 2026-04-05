@@ -1,0 +1,73 @@
+{
+  "id": "chicken-rezala",
+  "name": "CHICKEN REZALA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "One thing I really love about doing what I do is meeting and learning from so many great curry-house chefs around the UK. On one visit to London, I took my wife to Sheba Brick Lane and told her she had to try their rezala curry. She loved it. Chicken rezala is a lot like chicken tikka masala but it is a bit spicier and there are a lot fewer ingredients. I learned Sheba’s famous biryani recipe when I was writing my first cookbook, so I asked the floor manager, Mohith Khan, if I could see how they make their rezala. A couple of days later, I was back in the Sheba kitchen cooking with Chef Faruk Miah. You are going to love this one. Chicken rezala is delicious served with white or pilau rice. Naans are also very nice!",
+  "ingredients": [
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of salt, plus more to taste",
+      "amount": ""
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "70ml (¼ cup)"
+    },
+    {
+      "item": "base curry sauce (see quick and easy base curry sauce), heated",
+      "amount": "500ml (2 cups)"
+    },
+    {
+      "item": "pre-cooked chicken, plus 70ml (¼ cup) of its cooking stock, or more base curry sauce",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "single (light) cream",
+      "amount": "125ml (½ cup)"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "butter",
+      "amount": "1–2 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in a frying pan over a medium–high heat. Add the garlic and ginger paste and let it sizzle, stirring continuously, for about 30 seconds. Add the onion and salt (the salt will help release the moisture from the onion into the pan). Fry for about 3 minutes until the onion is just becoming translucent, then add the green chillies and fry for a further 30 seconds. Stir in the mixed powder and chilli powder. Add the tomato purée and about 70ml (¼ cup) of the base sauce – the sauce should evaporate quite quickly. When almost dry, add another 125ml (½ cup) of the base sauce and the chicken with the cooking liquid, if you have some, or more base curry sauce.",
+    "Bring this to a rolling simmer, stirring only if the sauce is obviously sticking to the pan. Be sure to scrape any sauce that caramelizes on the side of the pan back in as this adds fantastic flavour. Add the remaining base sauce and simmer until the sauce has thickened to your liking.",
+    "To finish, swirl in the cream, garam masala, coriander (cilantro) and butter. When the butter has melted into the sauce, season with salt."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "buckwheat-coconut-porridge",
+  "name": "Buckwheat Coconut Porridge",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "creamy buckwheat cereal",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pecans",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw shelled hempseed",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Bring 3 cups of water to a boil in a medium saucepan. Add the cereal, cinnamon, and salt. Reduce the heat to medium low and cover. Cook for 8 minutes, stirring occasionally, until all the water is absorbed. Stir in peanut butter and coconut cream.",
+    "Serve in two bowls and garnish with the cranberries, pecans, hempseed, and maple syrup."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

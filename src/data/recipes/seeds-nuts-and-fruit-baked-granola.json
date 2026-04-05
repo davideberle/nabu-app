@@ -1,0 +1,54 @@
+{
+  "id": "seeds-nuts-and-fruit-baked-granola",
+  "name": "Seeds, Nuts, and Fruit Baked Granola",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "old-fashioned oats (use gluten-free if desired)",
+      "amount": "7 cups"
+    },
+    {
+      "item": "shredded coconut",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "1 cup"
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 300°F.",
+    "Mix all the ingredients together except for the raisins. Spread out in a large baking pan.",
+    "Bake for 40 minutes. Take out of the oven every 10 minutes and stir. Return to the oven.",
+    "After 30 minutes, add raisins and stir. Bake for 10 more minutes. Take out of the oven and let cool.",
+    "Pack in airtight container. Will keep for 4 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

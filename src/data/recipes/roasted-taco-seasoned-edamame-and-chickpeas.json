@@ -1,0 +1,40 @@
+{
+  "id": "roasted-taco-seasoned-edamame-and-chickpeas",
+  "name": "Roasted Taco-Seasoned Edamame and Chickpeas",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "frozen edamame",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "15-ounce can chickpeas, drained (save the liquid to use as aquafaba) and rinsed",
+      "amount": "1"
+    },
+    {
+      "item": "taco seasoning",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "aquafaba",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F.",
+    "Cook the edamame according to directions on package.",
+    "Spread the chickpeas and cooked edamame on a baking sheet. Bake for 20 minutes.",
+    "Place the taco seasoning in a medium bowl.",
+    "Remove the edamame and chickpeas from oven and toss with the aquafaba. Add to the bowl of taco seasoning and coat well.",
+    "Return to oven and bake another 10 minutes.",
+    "You can eat these as soon as they’ve cooled enough to handle, but let them cool in the oven for at least 2 hours to overnight before packing away. Store in an airtight container. They will keep for 2 weeks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

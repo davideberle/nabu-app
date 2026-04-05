@@ -1,0 +1,44 @@
+{
+  "id": "chocolate-and-nougat-roll",
+  "name": "Chocolate and Nougat Roll",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "organic egg yolks",
+      "amount": "4"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "175 g"
+    },
+    {
+      "item": "unsalted butter, at room temperature",
+      "amount": "175 g"
+    },
+    {
+      "item": "good-quality cocoa powder",
+      "amount": "100 g"
+    },
+    {
+      "item": "torrone (nougat), cut into largish pieces",
+      "amount": "200 g"
+    },
+    {
+      "item": "savoiardi (sponge finger) biscuits",
+      "amount": "150 g"
+    },
+    {
+      "item": "hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro, then roughly pounded",
+      "amount": "200 g"
+    }
+  ],
+  "method": [
+    "Serves 10 4 organic egg yolks 175 g caster sugar 175 g unsalted butter, at room temperature 100 g good-quality cocoa powder pinch of salt 200 g torrone (nougat), cut into largish pieces 150 g savoiardi (sponge finger) biscuits 200 g hazelnuts, toasted and skin removed, as described on Torta alle Nocciole e Cioccolato Amaro, then roughly pounded",
+    "In a food processor, break up the torrone and savoiardi. Make sure you do not pulverise them, but leave them in quite largish chunks. Add them to the egg mixture with the hazelnuts and mix well.",
+    "Slice the tronchetto into 1 cm thick discs and serve with coffee."
+  ]
+}

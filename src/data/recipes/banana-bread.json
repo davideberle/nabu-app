@@ -1,0 +1,76 @@
+{
+  "id": "banana-bread",
+  "name": "Banana Bread",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 12 | prep. time 10 minutes | cooking time 45-50 minutes",
+  "ingredients": [
+    {
+      "item": "ripe bananas, mashed",
+      "amount": "3"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "whole milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "baking soda",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "chopped walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chocolate chips",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Preheat oven to 350°F (177°C).",
+    "In a large mixing bowl, combine the mashed bananas, brown sugar, milk, vegetable oil, vanilla extract, and apple cider vinegar.",
+    "Stir in the flour, baking powder, baking soda, salt, ground cinnamon, and ground nutmeg. Mix until well-combined.",
+    "Fold in the chopped walnuts and chocolate chips.",
+    "Transfer the batter into a 13-inch loaf pan lined with parchment paper or sprayed with cooking spray.",
+    "Bake for 45-50 minutes or until a toothpick inserted in the center of the cake comes out clean.",
+    "Let cool before serving."
+  ]
+}

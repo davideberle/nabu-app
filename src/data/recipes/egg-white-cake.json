@@ -1,0 +1,46 @@
+{
+  "id": "egg-white-cake",
+  "name": "Egg White Cake",
+  "source": {
+    "cookbook": "Four Seasons",
+    "author": "Katie and Giancarlo Caldesi"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "unsalted butter, plus extra for greasing",
+      "amount": "125 g"
+    },
+    {
+      "item": "organic egg whites",
+      "amount": "8"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "200 g"
+    },
+    {
+      "item": "pure vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "unbleached selfraising flour",
+      "amount": "125 g"
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "100 g"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Serves 6 125 g unsalted butter, plus extra for greasing 8 organic egg whites 200 g caster sugar 1 teaspoon pure vanilla extract pinch of salt 125 g unbleached selfraising flour 100 g slivered almonds 1 teaspoon ground cinnamon",
+    "Preheat the oven to 180°C (gas mark 4) and butter a 25 cm springform cake tin.",
+    "Melt the 125 g butter and leave it to cool a little.",
+    "Combine the almonds, cinnamon and the extra sugar. Sprinkle this evenly over the cake mixture.",
+    "Bake the cake in the oven for about 40 minutes, or until it springs back a little when touched. Cool the cake on a rack before serving."
+  ]
+}

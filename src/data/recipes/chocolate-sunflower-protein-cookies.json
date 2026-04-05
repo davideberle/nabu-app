@@ -1,0 +1,68 @@
+{
+  "id": "chocolate-sunflower-protein-cookies",
+  "name": "Chocolate Sunflower Protein Cookies",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "dairy-free butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "plus 2 tablespoons coconut sugar",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "whole wheat pastry flour",
+      "amount": "2¼ cups"
+    },
+    {
+      "item": "protein powder",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "dairy-free chocolate chips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sunflower seed kernels",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F. Cut parchment paper to fit on a baking sheet. Set aside.",
+    "Add the butter and sugar to the bowl of stand mixer and mix together on medium-low speed for 5 minutes.",
+    "Meanwhile, mix ground chia seeds with 6 tablespoons water and set aside.",
+    "Mix together the flour, protein powder, baking soda, baking powder, and salt in a medium bowl.",
+    "Add the vanilla and chia mixture to the butter mixture. Mix until well blended. Mix in the flour mixture a little at a time. On low speed, mix in the chocolate chips and sunflower seeds.",
+    "Form into round balls and set on the prepared baking sheet about 2 inches apart. Flatten to about ½ inch thick. Bake for 8 to 9 minutes.",
+    "Cool on a wire rack."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

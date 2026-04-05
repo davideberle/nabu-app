@@ -1,0 +1,49 @@
+{
+  "id": "bhatura",
+  "name": "BHATURA",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "makes 8",
+  "intro": "These puffy breads are traditionally served with Punjabi chole. They are similar to puris, but puris are unleavened, whereas bhatura are leavened. There is also a slight difference in texture between the two, so I hope you try both to decide which you prefer. You could use bhatura instead of puris for dishes like prawn puris.",
+  "ingredients": [
+    {
+      "item": "plain (all-purpose) flour",
+      "amount": "250g (2 cups)"
+    },
+    {
+      "item": "fine semolina",
+      "amount": "50g (¼ cup)"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "bicarbonate of soda (baking soda)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil, plus extra for deep-frying",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "generous tbsp Greek yoghurt",
+      "amount": "2½"
+    }
+  ],
+  "method": [
+    "Tip the flour and semolina into a large mixing bowl and add the baking powder, bicarbonate of soda (baking soda) and salt. Mix well with your hands, then add 2 tablespoons of rapeseed (canola) oil and mix it into the flour. Add the yoghurt and slowly pour in about 125ml (½ cup) of water while mixing with your hand. You may not need all the water, so add it slowly until you have a very soft dough that is slightly sticky to the touch but workable. Form this into a dough ball and cover. Place in a warm place to rise for about 2 hours. Don’t worry if it doesn’t rise much; the dough will still work.",
+    "Divide the dough into eight equal-size balls. Take a dough ball and coat it lightly with oil, then roll it out into a round tortilla/chapatti shape that is about the same thickness as a tortilla. Repeat with the remaining balls. Heat about 10cm (4in) of oil in a large saucepan or wok over a medium–high heat. The oil is hot enough when a small piece of dough sizzles and rises immediately to the top when tossed in.",
+    "Slowly lower the first bhatura into the hot oil and tap it with the back of a spoon or better, a large slotted spoon. As you do this, the bhatura will begin ballooning. Drizzle hot oil over any parts that aren’t puffing up to help it inflate. Turn it over and continue tapping it with the back of the spoon until it is fully inflated. Turn it over a few more times until it is light brown – this helps the bhatura stay inflated. Transfer to a warm plate and cook the rest. Bhatura are best served immediately."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

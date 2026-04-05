@@ -1,0 +1,91 @@
+{
+  "id": "slammin-jammin-rasta-pasta",
+  "name": "SLAMMIN JAMMIN RASTA PASTA",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6 to 8",
+  "intro": "Rasta pasta is a Caribbean pasta that is made with vegan Alfredo sauce and jerk seasoning. I use penne noodles, sliced bell peppers, onions and shiitake mushrooms for smokiness and flavor. This pasta is super easy to make, and instead of making jerk sauce from scratch, I just buy it, making it such a simple dish to pull together—and you can make it as spicy as you like. Rasta pasta is popular in my neighborhood because it is made in all the Jamaican restaurants. It is creamy and spicy.",
+  "ingredients": [
+    {
+      "item": "box penne noodles",
+      "amount": "1 (1-lb [455-g])"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "red bell pepper, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "green bell pepper, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "white onion, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "shiitake mushrooms",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "vegan butter",
+      "amount": "¼ cup (57 g)"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "3 tbsp (22.5 g)"
+    },
+    {
+      "item": "unsweetened nondairy milk",
+      "amount": "4 cups (946 ml)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "¼ cup (20 g)"
+    },
+    {
+      "item": "vegan Parmesan cheese",
+      "amount": "2 oz (55.5 g)"
+    },
+    {
+      "item": "vegan mozzarella cheese",
+      "amount": "7 oz (200 g)"
+    },
+    {
+      "item": "fresh thyme leaves",
+      "amount": "1 tbsp (2.5 g)"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "jerk sauce, or to taste",
+      "amount": "3 tbsp (45 ml)"
+    }
+  ],
+  "method": [
+    "In a large pot, boil the penne noodles in salted water until al dente. Drain and set the pasta aside in a large bowl.",
+    "Using the same pot, heat the oil over medium heat and sauté the bell peppers, onion, shiitake mushrooms and garlic until fragrant. Remove the vegetables and set aside. Then, add your vegan butter to the pot. Once it melts, add your flour and use a whisk to begin making a roux.",
+    "Gradually whisk in the nondairy milk, then add the nutritional yeast, vegan Parmesan, vegan mozzarella, thyme and salt and black pepper to taste, and stir until the cheese melts.",
+    "Pour the Alfredo sauce—as little or as much as you like—into the bowl of cooked penne and add the vegetable mixture. Add the jerk sauce and mix everything together."
+  ],
+  "image": "/recipes/slammin-jammin-rasta-pasta.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

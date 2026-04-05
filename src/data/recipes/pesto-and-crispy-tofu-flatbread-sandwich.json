@@ -1,0 +1,96 @@
+{
+  "id": "pesto-and-crispy-tofu-flatbread-sandwich",
+  "name": "Pesto and Crispy Tofu Flatbread Sandwich",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "extra-firm tofu, drained, pressed (page 17), and cut into 1-inch cubes",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "raw cashews, soaked for 1 hour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "basil, packed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "diced onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "6"
+    },
+    {
+      "item": "hummus",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "slices flatbread",
+      "amount": "2"
+    },
+    {
+      "item": "sunflower sprouts",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Mix together the vegetable broth, tamari, onion powder, and salt in a small bowl. Add the tofu and let marinate at least 1 hour.",
+    "Preheat the oven to 350°F.",
+    "Place the cornstarch in a medium bowl.",
+    "Remove the tofu from the marinade and place on the cornstarch. Toss and then set on a baking sheet. Bake for 30 to 40 minutes. Toss with a spatula every 10 minutes until golden and puffed.",
+    "Place the cashews, basil, garlic, and salt in a small food processor. Process for about 30 seconds. Add the nutritional yeast and olive oil and process a few more seconds until well blended.",
+    "Heat the coconut oil in a skillet over medium-high heat. Add the onions and mushrooms and sauté for about 10 to 15 minutes or until onion is translucent. Remove from the heat.",
+    "Spread half of the hummus on each flatbread. Spread half of the pesto on each flatbread. Sprinkle half of the tofu, sunflower sprouts, mushrooms, and onion down the center of each flatbread. Fold each flatbread to overlap and secure with decorative picks."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

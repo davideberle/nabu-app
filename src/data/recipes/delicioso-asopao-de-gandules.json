@@ -1,0 +1,92 @@
+{
+  "id": "delicioso-asopao-de-gandules",
+  "name": "DELICIOSO ASOPAO DE GANDULES",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 6",
+  "intro": "Asopao de gandules is a soup made with pigeon peas. It is flavored with herbs and spices and aromatics; green plantain bowls and rice are added, making it fulfilling and a warm bowl of love. The best way to form the plantain balls is with a grater or a blender, so that when you drop them into the soup, they do not break up. Also, leave this step for last, after everything is cooked.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1 tbsp (15 g)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "vegan vegetable bouillon cube, or 1 tbsp (18 g) vegetable bouillon paste",
+      "amount": "1"
+    },
+    {
+      "item": "small yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "1 cup (245 g)"
+    },
+    {
+      "item": "Sazón or my homemade Sazón",
+      "amount": "1½ tsp (1 [4-g] packet)"
+    },
+    {
+      "item": "package frozen pigeon peas, or 2 (15-oz [425-g]) cans, drained and rinsed",
+      "amount": "1 (14-oz [397-g])"
+    },
+    {
+      "item": "quarts (1.9 L) vegetable stock",
+      "amount": "2"
+    },
+    {
+      "item": "uncooked medium-grain rice, washed and soaked for 1 hour",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "olives and capers",
+      "amount": "½ cup (45 g)"
+    },
+    {
+      "item": "leaves fresh culantro (recao)",
+      "amount": "4"
+    },
+    {
+      "item": "fresh cilantro, chopped finely",
+      "amount": "⅓ cup (5 g)"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 tbsp (6 g)"
+    },
+    {
+      "item": "green plantains",
+      "amount": "2"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "calabaza squash, seeded and cut into 6 pieces",
+      "amount": "8 oz (225 g)"
+    }
+  ],
+  "method": [
+    "In a large soup pot over medium heat, combine your oil, garlic paste, sofrito, vegetable bouillon and onion. Sauté to release the aromatics and soften the onion.",
+    "Add the tomato sauce, Sazón, pigeon peas and vegetable stock. Cook the soup, stirring occasionally. When the peas start to soften, add your rice, olive mixture, culantro, cilantro and oregano.",
+    "While the soup cooks, peel your plantains. You can either grate them or place them in a blender, then lightly season with salt and pepper. Shape the grated plantains into six to eight small balls.",
+    "Check back on the soup. When the rice has softened and doubled in size, add in the calabaza and cook for an additional 6 minutes, or until the calabaza is tender. Add salt and pepper to taste.",
+    "Next, gently drop the plantain balls into the soup to cook. Allow the soup to simmer, covered, over low heat for about 15 minutes while stirring occasionally, then serve hot."
+  ],
+  "image": "/recipes/delicioso-asopao-de-gandules.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

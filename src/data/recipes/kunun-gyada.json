@@ -1,0 +1,37 @@
+{
+  "id": "kunun-gyada",
+  "name": "Kunun Gyada",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "A northern Nigerian porridge made with groundnuts and rice. This filling porridge is a great source of protein and carbohydrates, and can be eaten at any time of the day, but especially as a warming breakfast alongside some Akara/Kosai (page 135) or Masa (page 175).",
+  "ingredients": [
+    {
+      "item": "peeled groundnuts (soaked overnight then drained)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "1/2 cup white short-grain rice (soaked overnight then drained)",
+      "amount": ""
+    },
+    {
+      "item": "and 1/2 cups water",
+      "amount": "2"
+    },
+    {
+      "item": "tsamiya (tamarind) paste",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Place the groundnuts in a food blender with 2 cups of water and blend until you have a smooth paste. Sieve the mixture into a pot to extract the milk. You can repurpose the leftover pulp in other recipes such as Kuli Kuli (page 152) or add to cakes, muﬃns or pancakes.",
+    "Add the rice and tamarind paste to the groundnut milk, along with 1 cup of water. Simmer uncovered for 20-25 minutes on medium-low heat, stirring frequently so the rice does not stick to the bottom of the pot.",
+    "Serve warm on its own or with a side of Akara/Kosai (page 135), Masa (page 175) or Moin Moin (page 156)."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

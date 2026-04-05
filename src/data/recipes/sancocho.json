@@ -1,0 +1,102 @@
+{
+  "id": "sancocho",
+  "name": "SANCOCHO",
+  "source": {
+    "cookbook": "Black Rican Vegan",
+    "author": "Lyana Blount"
+  },
+  "servings": "serves 8",
+  "intro": "Sancocho is a rustic dish of boiled chicken and smoked ham, top round beef, pork feet, plus many root vegetables in Puerto Rico. This soup was normally made with leftover animal parts and root vegetables grown on the islands. It is an African-rooted dish that was brought by the Spanish from the Canary Islands to Colombia, where it was adapted over time by Colombian cooks with New World ingredients. Many Caribbeans adapted this soup, making their own unique version. This veganized version has easily become a popular menu item on my pop-up menu during the winter season. It is hearty, full of flavor and textures and has unique ingredients.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp (30 ml)"
+    },
+    {
+      "item": "Sofrito",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "small yellow onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "vegan vegetable bouillon cubes",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "8 cups (1.9 L)"
+    },
+    {
+      "item": "large yuca, peeled and cubed",
+      "amount": "1"
+    },
+    {
+      "item": "large russet potato, peeled and cubed",
+      "amount": "1"
+    },
+    {
+      "item": "ears corn, cut in half",
+      "amount": "3"
+    },
+    {
+      "item": "green bananas, peeled and cut into ½ (1.3-cm) disks",
+      "amount": "2"
+    },
+    {
+      "item": "green plantain, peeled and cut into ½ (1.3-cm) disks",
+      "amount": "1"
+    },
+    {
+      "item": "oyster mushrooms, peeled apart to make shreds",
+      "amount": "1 lb (455 g)"
+    },
+    {
+      "item": "Adobo",
+      "amount": "1 tbsp (9 g)"
+    },
+    {
+      "item": "fresh oregano",
+      "amount": "1 tbsp (4 g)"
+    },
+    {
+      "item": "leaves culantro (recao)",
+      "amount": "3"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "2 tbsp (2 g)"
+    },
+    {
+      "item": "Salt (optional)",
+      "amount": ""
+    },
+    {
+      "item": "calabaza squash, seeded and cubed",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "Cooked white rice, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Sliced avocado, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot over medium-high heat, heat the oil and sauté the sofrito, onion and garlic until fragrant. Add the bouillon cubes and cook until they have broken down into the liquid.",
+    "Add the water, followed by the yuca, potato, corn, bananas, plantain and mushrooms. Then, add the adobo, oregano, culantro and cilantro. Taste and add salt, if needed.",
+    "Cook for 8 minutes, or until all the root vegetables soften. Add the calabaza last, because it cooks quickly; it’ll take about 4 minutes and adds a sweet flavor and thicker texture. Once it is tender, serve the soup hot with a side of white rice and avocado. ¡Buen provecho!"
+  ],
+  "image": "/recipes/sancocho.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

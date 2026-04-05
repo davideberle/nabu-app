@@ -1,0 +1,49 @@
+{
+  "id": "dutch-baby-with-arugula-and-parmesan",
+  "name": "Dutch Baby with Arugula and Parmesan",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 4 | prep. time 15 minutes | cooking time 20 minutes",
+  "ingredients": [
+    {
+      "item": "large eggs, room temperature",
+      "amount": "7"
+    },
+    {
+      "item": "whole milk",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole-wheat flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "baby arugula",
+      "amount": "2 cups"
+    },
+    {
+      "item": "shaved parmesan",
+      "amount": "1 ounce"
+    }
+  ],
+  "method": [
+    "Preheat a large oven-safe skillet set in an oven to 400°F (204°C). Melt the butter in the skillet.",
+    "In a large mixing bowl, combine the eggs, milk, both flours, salt, and pepper.",
+    "Pour the pancake batter into the hot skillet. Bake for 20 minutes in the oven.",
+    "Serve immediately topped with the arugula and shaved parmesan."
+  ]
+}

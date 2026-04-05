@@ -1,0 +1,57 @@
+{
+  "id": "masala-papads",
+  "name": "MASALA PAPADS",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 2 or more as part of a multi-course meal",
+  "intro": "I think you’ll like these roasted papads topped with this simple but tasty masala. I like to stack them up and serve them like a salad, but simply topping a papad with the masala is equally as good. They are pictured opposite. You can prepare them a couple of days ahead: just store the roasted papads in an air-tight container and the masala in the fridge.",
+  "ingredients": [
+    {
+      "item": "large tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green chillies, finely chopped",
+      "amount": "2–3"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chaat masala (optional)",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "rapeseed (canola) oil",
+      "amount": "3–4 tbsp"
+    },
+    {
+      "item": "papads per person",
+      "amount": "2–3"
+    }
+  ],
+  "method": [
+    "Mix the tomato, onion, green chillies, lime juice and coriander (cilantro) in a large bowl. Season with salt and black pepper and add a little chaat masala if you like. Remember that most papads and chaat masala already have salt in them, so it is a good idea to try one first so that you don’t over-season the masala. Cover and place in the fridge while you roast the papads.",
+    "Heat a dry frying pan over a medium heat. Using a brush or your hand, spread a little oil over both sides of a papad. Place it in the centre of the pan and press it down with a spatula. You will be able to see the papad cooking through. When this begins to happen, flip it over and press it down again with the spatula. Continue flipping until the papad is nicely roasted on both sides and cooked through – about 30–45 seconds. Transfer to a wire rack and continue cooking the remaining papads in the same way.",
+    "To serve, top each papad with about 2 tablespoons of the masala."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

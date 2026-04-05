@@ -1,0 +1,46 @@
+{
+  "id": "salted-caramel-frappuccino",
+  "name": "Salted Caramel Frappuccino",
+  "source": {
+    "cookbook": "Brunch Cookbook",
+    "author": "Louise Davidson"
+  },
+  "servings": "serves 1 | prep. time 10 minutes",
+  "ingredients": [
+    {
+      "item": "brewed espresso, cold",
+      "amount": "½ cup"
+    },
+    {
+      "item": "caramel sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Ice cubes for serving",
+      "amount": ""
+    },
+    {
+      "item": "heavy whipping cream",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Add the whipping cream and powdered sugar to a bowl and whip them with a hand mixer until stiff peaks form.",
+    "Combine the espresso, caramel sauce, salt, and milk in a big glass.",
+    "Add the ice cubes and mix thoroughly.",
+    "Decorate the top of the glass with the whipped cream.",
+    "Drizzle some extra caramel sauce on top."
+  ]
+}

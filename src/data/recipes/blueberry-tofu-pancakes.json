@@ -1,0 +1,73 @@
+{
+  "id": "blueberry-tofu-pancakes",
+  "name": "Blueberry Tofu Pancakes",
+  "source": {
+    "cookbook": "The High-Protein Vegan Cookbook",
+    "author": "Ginny Kay McMeans"
+  },
+  "servings": "",
+  "ingredients": [
+    {
+      "item": "flaxseed meal",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "extra-firm tofu, drained and pressed (page 17)",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "old-fashioned oats",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dairy-free milk",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "coconut sugar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "plus 1 tablespoon extra virgin olive oil, divided",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "maple syrup, for serving",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "frozen blueberries, defrosted, divided",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Mix the flaxseed meal with 6 tablespoons water and set aside.",
+    "Add all the ingredients except the blueberries and 1 tablespoon oil to a food processor and blend well. Use the quick pulse button to blend in ¼ cup of the blueberries.",
+    "Heat the remaining oil in a skillet and add ¼ cup of the pancake batter to the center of the pan. When bubbling on one side, flip and cook until golden brown. Continue until all the batter is gone.",
+    "Serve with maple syrup and remaining ¼ cup blueberries sprinkled on top."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "spicy-street-food-noodles",
+  "name": "Spicy Street Food Noodles",
+  "source": {
+    "cookbook": "Vegan Nigerian Kitchen",
+    "author": "Tomi Makanjuola"
+  },
+  "servings": "serves 2",
+  "intro": "1 tablespoon curry powder 1/2 teaspoon garlic powder 1/2 teaspoon ginger powder 1/2 teaspoon ground black pepper",
+  "ingredients": [
+    {
+      "item": "packets instant noodles (approx. 140g)",
+      "amount": "2"
+    },
+    {
+      "item": "and 3/4 cups water",
+      "amount": "1"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small red onion (finely chopped) 1/2 cup tofu (crumbled)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup cucumbers (chopped)",
+      "amount": ""
+    },
+    {
+      "item": "medium tomato (finely chopped)",
+      "amount": "1"
+    },
+    {
+      "item": "1/2 cup spring onions (finely chopped)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the noodles and water in a pot and cook over high heat for 5-6 minutes until the noodles have softened. Drain and set aside.",
+    "Heat the oil in a frying pan and add the scotch bonnet, onion, tofu, curry powder, garlic powder, ginger powder, black pepper and salt. Sauté over high heat for 5-6 minutes. Add the cooked noodles, chopped cucumber, tomato and spring onions. Mix well and serve hot."
+  ],
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
+}

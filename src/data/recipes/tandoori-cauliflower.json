@@ -1,0 +1,72 @@
+{
+  "id": "tandoori-cauliflower",
+  "name": "TANDOORI CAULIFLOWER",
+  "source": {
+    "cookbook": "The Curry Guy Bible",
+    "author": "Dan Toombs"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "The flavour of marinated and chargrilled cauliflower is amazing. This mildly spiced marinade can be substantially spiced up by using more chilli powder and/or blended green chillies to taste. Although this recipe is fine as simple finger food, I like to wrap the cauliflower up into hot chapattis with a sloppy helping of mint and coriander sauce. It is photographed, next to the lamb raan.",
+  "ingredients": [
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cauliflower florets with short stems still attached",
+      "amount": "24"
+    },
+    {
+      "item": "melted unsalted butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Flaky sea salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Greek yoghurt",
+      "amount": "250g (1 cup)"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chaat masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kashmiri chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of ½ lemon (about 1 tbsp)",
+      "amount": ""
+    },
+    {
+      "item": "mustard oil or rapeseed (canola) oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Bring 2 litres (2 US quarts) of water to the boil and add the salt and cauliflower florets. Simmer for 3 minutes, or until fork-tender but not at all mushy. Strain and set aside to cool.",
+    "In a large mixing bowl, whisk all of the marinade ingredients together until smooth. Place the cauliflower in the marinade and mix well. For the best results, allow to marinate for about 30 minutes, but this isn’t really necessary.",
+    "To finish, baste lightly with the melted butter and season with flaky salt and black pepper."
+  ],
+  "dietary": [
+    "vegetarian"
+  ]
+}
