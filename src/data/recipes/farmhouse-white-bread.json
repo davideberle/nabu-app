@@ -3,7 +3,8 @@
   "name": "Farmhouse White Bread",
   "source": {
     "cookbook": "Zagami Family Cookbook",
-    "author": "Zagami Family"
+    "author": "Zagami Family",
+    "chapter": "Sides"
   },
   "ingredients": [
     {

@@ -3,7 +3,8 @@
   "name": "Chocolate Macchiato",
   "source": {
     "cookbook": "Brunch Cookbook",
-    "author": "Louise Davidson"
+    "author": "Louise Davidson",
+    "chapter": "Desserts"
   },
   "servings": "serves 1 | prep. time 10 minutes",
   "ingredients": [
