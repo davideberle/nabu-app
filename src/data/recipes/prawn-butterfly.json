@@ -52,5 +52,13 @@
     "Heat about 15 cm (6 in) of rapeseed oil in a deep, heavy-based pan or wok, until hot enough for a drop of batter to sizzle immediately when dropped in the oil. Dip and coat your prawns with the batter, slowly lower each battered prawn into the hot oil and fry for about 3 minutes until nicely browned on the exterior and cooked through. You might need to do this in batches.",
     "If cooking ahead (see introduction) remove to a cooling rack placed over a foil-lined dish for any excess oil to drain off, and place in the warm oven (they will stay nice and crisp for 30 minutes)."
   ],
-  "image": "/recipes/prawn-butterfly.jpg"
+  "image": "/recipes/prawn-butterfly.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

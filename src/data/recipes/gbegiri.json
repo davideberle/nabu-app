@@ -22,11 +22,11 @@
     },
     {
       "item": "iru (fermented locust beans)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "palm oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vegetable stock cube Salt to taste",
@@ -40,5 +40,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

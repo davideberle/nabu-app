@@ -27,5 +27,13 @@
     "Drizzle the olive oil over the onions and put them on an oven tray. Bake until they are cooked, shaking the tray from time to time – about 20 minutes.",
     "When cool arrange them in a serving dish and pour the Vitello Tonnato mayonnaise over them."
   ],
-  "image": "/recipes/onions-with-tuna-mayonnaise.jpg"
+  "image": "/recipes/onions-with-tuna-mayonnaise.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

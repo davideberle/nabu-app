@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "vegetable oil, divided",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "store-bought or homemade seitan",
@@ -21,7 +21,7 @@
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Vietnamese mint, stems removed and roughly chopped",
@@ -33,23 +33,23 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "lime juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder (optional)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

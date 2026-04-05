@@ -36,5 +36,13 @@
     "Cook the bread in the oven for about 20 minutes until goldenbrown and crisp.",
     "Fontina is a mountain cheese that comes from the Val d’Aosta in Piemonte. It has quite a rich but delicate flavour and it melts beautifully when heated."
   ],
-  "image": "/recipes/fontina-caterpillar.jpg"
+  "image": "/recipes/fontina-caterpillar.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

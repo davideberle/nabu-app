@@ -105,5 +105,13 @@
     "Combine the egg wash ingredients and brush over the loaf. Pierce holes all over the loaf with a fork. With the left-over dough you can make small decorations to go on top of the birebrot.",
     "Bake the bread in the oven for about 20 minutes, or until the crust is golden-brown."
   ],
-  "image": "/recipes/pear-bread.jpg"
+  "image": "/recipes/pear-bread.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

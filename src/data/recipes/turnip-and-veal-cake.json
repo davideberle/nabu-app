@@ -80,5 +80,13 @@
     "Put the tomatoes, tamarind, stock, water, sugar, 1 teaspoon salt, and ½ teaspoon pepper in a large mixing bowl. Whisk well. Pour about one-third of this liquid into a medium, heavy-bottomed saucepan (9½ inches / 24 cm in diameter). Arrange one-third of the turnip slices inside. Add half the rice mixture and level. Arrange another layer of turnips, followed by the second half of the rice. Finish with the last of the turnips, pressing down softly with your hands. Pour the remaining tomato liquid over the turnip and rice layers and sprinkle with the thyme. Gently slide a spatula down the sides of the pot to allow the juices to flow to the bottom.",
     "Place over medium heat and bring to a boil. Lower the heat to an absolute minimum, cover, and simmer for 1 hour. Take off the heat, uncover, and allow to rest for 10 to 15 minutes before serving. Unfortunately, it is impossible to invert the cake onto a plate as it doesn’t hold its shape, so it must be spooned out."
   ],
-  "image": "/recipes/turnip-and-veal-cake.jpg"
+  "image": "/recipes/turnip-and-veal-cake.jpg",
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

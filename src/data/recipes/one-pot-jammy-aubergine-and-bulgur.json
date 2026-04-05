@@ -14,19 +14,19 @@
   "ingredients": [
     {
       "item": "tamarind paste",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "3–4 tablespoons"
+      "amount": "3–4 tbsp"
     },
     {
       "item": "aubergine (eggplant), cut into 8 long wedges",
@@ -54,15 +54,15 @@
     },
     {
       "item": "coriander seeds, ground (or 1 teaspoon ground coriander)",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "vegetable stock",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "bulgur wheat",
-      "amount": "160 g (5½ oz/scant 1 cup)"
+      "amount": "160 g"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -95,5 +95,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

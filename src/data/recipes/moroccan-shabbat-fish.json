@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "Prep time: 20 mins",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 60
   },
   "ingredients": [
     {
@@ -67,5 +68,10 @@
     "Combine the paprika, chicken bouillon, cayenne, salt, pepper, olive oil, and water and mix well. Pour the seasoning mixture over the fish. Sprinkle with parsley.",
     "Cover the baking dish with aluminum foil and bake in the preheated oven until the fish flakes easily with a fork and the vegetables are tender for about 1 hour."
   ],
-  "image": "/recipes/moroccan-shabbat-fish.jpg"
+  "image": "/recipes/moroccan-shabbat-fish.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

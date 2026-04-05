@@ -66,11 +66,11 @@
     },
     {
       "item": "tin (can) thick coconut milk",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "pork leg, cut into large chunks",
-      "amount": "900g (2lb)"
+      "amount": "900g"
     },
     {
       "item": "About 500ml (2 cups) water or chicken stock, to cover",
@@ -90,5 +90,10 @@
     "Add the onions and fry for about 5 minutes until soft and translucent, then pour in the ground spices and the garlic and ginger paste. Add the green chillies and tomato paste, followed by the tamarind pulp and coconut milk. Mix well and add the pork with just enough water or stock to cover. Simmer for about 40 minutes, or until the pork is fork-tender.",
     "Season with salt and black pepper and sprinkle with the garam masala to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

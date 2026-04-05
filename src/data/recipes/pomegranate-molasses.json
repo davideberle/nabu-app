@@ -16,7 +16,7 @@
     },
     {
       "item": "plus 1 teaspoon strained fresh lemon juice, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
@@ -33,5 +33,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

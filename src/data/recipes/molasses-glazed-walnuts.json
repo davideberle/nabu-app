@@ -14,19 +14,19 @@
     },
     {
       "item": "sunflower oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsulfured molasses",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "raw cane sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -39,5 +39,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

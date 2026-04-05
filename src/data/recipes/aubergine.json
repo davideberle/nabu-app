@@ -52,7 +52,7 @@
     },
     {
       "item": "can chopped tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "red wine vinegar",
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

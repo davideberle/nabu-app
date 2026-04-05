@@ -26,11 +26,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1½ teaspoons / 7.5 ml"
+      "amount": "1½ tsp / 7.5 ml"
     },
     {
       "item": "guar gum",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 2 tablespoons / 90 ml Thick Fudge Sauce (page 277), plus more for serving (optional)",
@@ -51,5 +51,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

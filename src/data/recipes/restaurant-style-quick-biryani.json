@@ -42,7 +42,7 @@
     },
     {
       "item": "pre-cooked meat, chicken, prawns (shrimp) or vegetables",
-      "amount": "250g (8oz)"
+      "amount": "250g"
     },
     {
       "item": "tomato purée",
@@ -62,7 +62,7 @@
     },
     {
       "item": "cooked and cooled basmati rice*",
-      "amount": "500g (2 cups)"
+      "amount": "500g"
     },
     {
       "item": "Pinch of saffron infused in 2 tbsp hot milk (optional)",
@@ -74,7 +74,7 @@
     },
     {
       "item": "fresh or frozen peas",
-      "amount": "70g (¼ cup)"
+      "amount": "70g"
     },
     {
       "item": "Salt, to taste",
@@ -96,5 +96,10 @@
     "Once the rice is heated through and coated with the oily sauce mixture, add the saffron-infused milk (if using). Then add the coriander (cilantro) and peas and continue cooking over a medium heat until the peas are cooked. This should take about 3 minutes. Season with salt.",
     "To finish, transfer the biryani to a heated serving plate. Garnish with the fried onions and a little more chopped coriander (cilantro), if liked. Now this is totally optional, but drizzling a bit of hot melted ghee over the top tastes amazing!"
   ],
-  "image": "/recipes/restaurant-style-quick-biryani.jpg"
+  "image": "/recipes/restaurant-style-quick-biryani.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

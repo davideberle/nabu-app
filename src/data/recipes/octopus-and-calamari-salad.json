@@ -48,5 +48,13 @@
     "In a serving bowl, whisk together the lemon zest, juice and olive oil to form an emulsion. Stir in the celery.",
     "Remove the octopus and calamari from the water and peel off the skin. Pull the legs apart and slice the bodies into thick strips. Pat everything dry on kitchen paper and add to the serving bowl. Season with salt flakes and pepper and toss everything together gently. I like to eat this salad at room temperature, as a starter."
   ],
-  "image": "/recipes/octopus-and-calamari-salad.jpg"
+  "image": "/recipes/octopus-and-calamari-salad.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

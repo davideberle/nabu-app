@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "unsalted butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large yellow onion, finely chopped",
@@ -26,7 +26,7 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "large cloves garlic, crushed",
@@ -38,15 +38,15 @@
     },
     {
       "item": "paprika",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "all-purpose flour",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chicken broth",
@@ -78,5 +78,10 @@
     "Remove the lid and add the shredded chicken and pasta, along with the remaining 1 teaspoon salt. Stir everything together, then let simmer, covered, for another 15 to 20 minutes, until the pasta is cooked. Taste and adjust for salt if necessary.",
     "Ladle into bowls, garnish with parsley, and serve with lemon wedges for squeezing."
   ],
-  "image": "/recipes/turkish-chicken-noodle-soup.jpg"
+  "image": "/recipes/turkish-chicken-noodle-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

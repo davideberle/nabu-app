@@ -17,7 +17,7 @@
     },
     {
       "item": "maple syrup",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "cloves garlic, finely chopped",
@@ -25,15 +25,15 @@
     },
     {
       "item": "Chinese five spice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "white wine or rice vinegar",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "cremini mushrooms, wiped clean, or any large mushrooms cut in half",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

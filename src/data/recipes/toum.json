@@ -20,7 +20,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "neutral oil (such as avocado oil)",
@@ -36,5 +36,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

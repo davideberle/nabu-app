@@ -16,19 +16,19 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "sugar, plus 1 tablespoon",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fresh lime juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "Fresno or jalapeño chile, finely chopped, or 2 teaspoons chile garlic sauce (see this page)",
@@ -36,7 +36,7 @@
     },
     {
       "item": "chopped unsalted roasted peanuts or cashews (optional, but great for richness)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small cooked shrimp or shredded cooked chicken (optional)",
@@ -49,5 +49,10 @@
     "Drain the cucumber in a mesh strainer, shake out excess liquid, and transfer to a large bowl. Add the dressing, and peanuts and shrimp, if desired. Taste and adjust the flavors as needed.",
     "Pile the salad into a shallow bowl and serve immediately."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

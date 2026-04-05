@@ -37,7 +37,7 @@
     },
     {
       "item": "salt",
-      "amount": "2 to 3 tablespoons"
+      "amount": "2 to 3 tbsp"
     },
     {
       "item": "Asian shallots or 1 medium yellow onion",
@@ -81,23 +81,23 @@
     },
     {
       "item": "salt, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "granulated sugar, divided",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "five-spice powder, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "soy sauce, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fresh mushrooms (straw, king oyster, or shiitake), stems trimmed and sliced",
@@ -105,7 +105,7 @@
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried flat rice noodles or 2¼ pounds (1 kg) fresh pho noodles",
@@ -156,5 +156,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

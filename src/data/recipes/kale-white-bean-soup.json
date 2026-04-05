@@ -13,7 +13,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarsely chopped onions",
@@ -45,15 +45,15 @@
     },
     {
       "item": "Italian seasoning",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "kale, de-stemmed and coarsely chopped",
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -18,7 +18,7 @@
     },
     {
       "item": "fresh buffalo mozzarella, roughly chopped",
-      "amount": "150g (5½ oz)"
+      "amount": "150g"
     },
     {
       "item": "spring onions (scallions), roughly chopped",
@@ -115,5 +115,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

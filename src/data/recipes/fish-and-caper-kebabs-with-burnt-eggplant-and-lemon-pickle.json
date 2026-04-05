@@ -93,5 +93,13 @@
     "Pour enough oil into a frying pan to form a thin film on the bottom and place over medium-high heat. Cook the kebabs in batches for 4 to 6 minutes for each batch, turning until colored on all sides and cooked through.",
     "Serve the kebabs while still hot, 3 per portion, alongside the burnt eggplant and a small amount of pickled lemon (careful, the lemons tend to dominate)."
   ],
-  "image": "/recipes/fish-and-caper-kebabs-with-burnt-eggplant-and-lemon-pickle.jpg"
+  "image": "/recipes/fish-and-caper-kebabs-with-burnt-eggplant-and-lemon-pickle.jpg",
+  "time": {
+    "total": 36
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

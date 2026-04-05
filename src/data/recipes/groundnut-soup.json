@@ -30,11 +30,11 @@
     },
     {
       "item": "palm oil (optional) 3-4 cups mushrooms (cut into large chunks)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground cameroon pepper or cayenne pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "stalk spring onions (finely chopped)",
@@ -48,5 +48,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -13,11 +13,11 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "bottle beer",
@@ -25,7 +25,7 @@
     },
     {
       "item": "ground pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fresh rosemary sprigs",
@@ -37,7 +37,7 @@
     },
     {
       "item": "butter, more for spreading, at room temperature",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large eggs",
@@ -70,5 +70,13 @@
     "Simultaneously, toast the buns and spread with butter on both sides.",
     "Lay a few lettuce leaves on the bottom buns and add some butter pickle slices if desired.",
     "Top with a generous amount of shredded ham, a Swiss cheese slice, and top with a fried egg. Top with remaining buns and serve immediately."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -19,47 +19,47 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "seven spice",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "bread crumbs",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "MEATBALLS"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MEATBALLS"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SOUP"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SOUP"
     },
     {
@@ -111,5 +111,10 @@
     "Remove the lid and add the orzo. Stir well, then cover and let cook for 15 minutes. Taste and adjust the soup for salt if necessary. Check the orzo to ensure it is cooked to al dente, or softer if desired.",
     "Ladle into bowls, garnish with chopped parsley, and serve with pita bread."
   ],
-  "image": "/recipes/shorbat-lsan-el-asfoormeatball-and-orzo-soup.jpg"
+  "image": "/recipes/shorbat-lsan-el-asfoormeatball-and-orzo-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -46,11 +46,11 @@
     },
     {
       "item": "mashed potato (about 1 large potato)",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "cooked artichoke hearts, diced",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "lemon juice",
@@ -70,7 +70,7 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "150g (heaped 1 cup)",
+      "amount": "150g",
       "group": "PASTRY"
     },
     {
@@ -116,5 +116,10 @@
   "image": "/recipes/potato-and-artichoke-samosa-pinwheels.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

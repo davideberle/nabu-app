@@ -63,5 +63,13 @@
   "image": "/recipes/hot-yogurt-and-barley-soup.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -15,15 +15,15 @@
     },
     {
       "item": "plus 2 teaspoons extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "mustard seeds",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "finely diced white onion",
@@ -35,15 +35,15 @@
     },
     {
       "item": "minced fresh ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cumin seeds, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cardamom pods, toasted, then seeds removed and ground",
@@ -51,19 +51,19 @@
     },
     {
       "item": "chili powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "(14-ounce) can chopped tomatoes with juices",
@@ -87,7 +87,7 @@
     },
     {
       "item": "chopped cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -99,5 +99,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 82
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

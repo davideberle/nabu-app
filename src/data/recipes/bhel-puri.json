@@ -18,7 +18,7 @@
     },
     {
       "item": "kurmure (puffed rice)",
-      "amount": "100g (5 cups)"
+      "amount": "100g"
     },
     {
       "item": "red onion, finely chopped",
@@ -30,7 +30,7 @@
     },
     {
       "item": "mint and coriander sauce (½ recipe quantity, or shop-bought)",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "tamarind sauce (or shop-bought)",
@@ -38,7 +38,7 @@
     },
     {
       "item": "fine sev",
-      "amount": "20g (½ cup)"
+      "amount": "20g"
     },
     {
       "item": "roasted peanuts",
@@ -74,5 +74,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

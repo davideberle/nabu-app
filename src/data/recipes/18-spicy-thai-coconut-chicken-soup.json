@@ -40,5 +40,13 @@
     "Add spices, chili paste, coconut milk and stock. Let it boil. When it starts boiling, reduce heat and let it simmer (covered) for 20 minutes.",
     "Stir in cabbage, snow peas, and chicken. Cook for 3-4 minutes. Serve with green onions and lime.",
     "Stir in cabbage, snow peas, and chicken. Cook for 3-4 minutes. Serve with green onions and lime."
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

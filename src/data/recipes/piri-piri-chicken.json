@@ -85,7 +85,7 @@
     },
     {
       "item": "white wine vinegar",
-      "amount": "70ml (¼ cup)",
+      "amount": "70ml",
       "group": "PIRI PIRI SAUCE"
     }
   ],
@@ -97,5 +97,10 @@
     "Transfer the chicken to a warm serving plate, then whisk the retained marinade into the cooking juices in the tray. Bring to a rolling simmer. You can either pour this over the chicken or serve it like a gravy at the table.",
     "Serve the chicken drizzled with the sauce and topped with slices of lime. I love this dish cooked using the indirect cooking method on the barbecue."
   ],
-  "image": "/recipes/piri-piri-chicken.jpg"
+  "image": "/recipes/piri-piri-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

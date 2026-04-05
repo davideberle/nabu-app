@@ -13,7 +13,7 @@
     },
     {
       "item": "chopped leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried wood ear mushrooms, soaked and julienned (see Note)",
@@ -33,15 +33,15 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "soy sauce or vegan fish sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "rice flour",
@@ -57,11 +57,11 @@
     },
     {
       "item": "vegetable oil, plus more for greasing pan",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "medium cucumber, julienned (see Note)",
@@ -88,5 +88,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

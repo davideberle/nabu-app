@@ -33,11 +33,11 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of kosher salt",
@@ -53,7 +53,7 @@
     },
     {
       "item": "unsalted butter, melted",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "banana, mashed",
@@ -74,5 +74,13 @@
     "Stir in the blueberries and strawberries.",
     "Transfer the batter to the prepared pan. Bake for 50 minutes.",
     "Serve when slightly cooled."
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

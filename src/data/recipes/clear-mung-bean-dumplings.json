@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "shallot or leek, minced",
@@ -21,15 +21,15 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "tapioca starch, divided",
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

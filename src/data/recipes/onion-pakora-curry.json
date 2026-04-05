@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "Greek yoghurt",
-      "amount": "500g (2 cups)"
+      "amount": "500g"
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "25g (¼ cup)"
+      "amount": "25g"
     },
     {
       "item": "ground turmeric",
@@ -86,5 +86,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

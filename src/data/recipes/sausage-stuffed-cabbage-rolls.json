@@ -73,5 +73,13 @@
     "Put the cream and stock in a large frying pan and bring to a simmer. Arrange the capuns in the pan so they fit snugly side by side. Cover with a lid and cook gently for about 20 minutes. Alternatively, place the sauce and capuns in an ovenproof dish, cover with foil, and bake in a 180°C (gas mark 4) oven for 20 minutes.",
     "Serve the capuns in soup bowls with some of the sauce spooned over the top and sprinkled with parmigiano. If using, cook some thin strips of prosciutto in a little butter until crisp and use this as an extra garnish."
   ],
-  "image": "/recipes/sausage-stuffed-cabbage-rolls.jpg"
+  "image": "/recipes/sausage-stuffed-cabbage-rolls.jpg",
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

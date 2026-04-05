@@ -92,5 +92,13 @@
   "image": "/recipes/herb-pie.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 48
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

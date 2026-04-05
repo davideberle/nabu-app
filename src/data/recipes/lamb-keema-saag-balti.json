@@ -38,15 +38,15 @@
     },
     {
       "item": "minced (ground) lamb",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "plain passata (sieved tomatoes) or blended chopped tomatoes",
-      "amount": "150ml (generous ½ cup)"
+      "amount": "150ml"
     },
     {
       "item": "baby spinach leaves, washed and shredded",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "Up to 250ml (1 cup) base curry sauce (see quick and easy base curry sauce), heated (optional)",
@@ -66,5 +66,10 @@
     "Add the garlic and ginger paste and the chopped chillies. Fry for a further minute, then stir in the curry powder followed by the lamb. Brown the meat for about 2 minutes, then stir in the passata (sieved tomatoes) and shredded spinach. The spinach will wilt and cook into the sauce.",
     "To finish, stir in the base curry sauce if you prefer a saucier curry. Let it simmer until it cooks down to your preferred consistency. Season with salt and sprinkle with garam masala to serve."
   ],
-  "image": "/recipes/lamb-keema-saag-balti.jpg"
+  "image": "/recipes/lamb-keema-saag-balti.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -84,5 +84,13 @@
     "Bring a large saucepan of salted water to the boil. Add the ravioli carefully and boil for 2 minutes until they float to the surface – they should still be al dente. Lift the ravioli out with a slotted spoon and transfer them to a warm serving dish.",
     "To make the sauce, whisk the oil and water together to form an emulsion. Add the remaining ingredients then pour the sauce over the ravioli and serve immediately."
   ],
-  "image": "/recipes/michele-s-ravioli.jpg"
+  "image": "/recipes/michele-s-ravioli.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

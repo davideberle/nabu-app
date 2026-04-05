@@ -76,5 +76,13 @@
     "Now spoon in the garlic and ginger paste, followed by the turmeric; the pan will sizzle as the paste releases its moisture. When your kitchen becomes fragrant with the magnificent aroma of garlic and ginger, tip in the tomatoes. Reduce the heat to medium and let the ingredients simmer and get to know each other for about 5 minutes. Add the chicken pieces and just enough spice stock or water to cover the chicken.",
     "Reduce the heat and let the stock softly bubble until the chicken is just cooked through; don’t overcook it. Stir in the garam masala and, using a slotted spoon, remove the chicken pieces for use in your curries, reserving the cooking stock. A little of this added to your chicken curries makes them even more delicious."
   ],
-  "image": "/recipes/pre-cooked-stewed-chicken.jpg"
+  "image": "/recipes/pre-cooked-stewed-chicken.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

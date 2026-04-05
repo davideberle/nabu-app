@@ -22,19 +22,19 @@
     },
     {
       "item": "coconut oil, melted",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -46,5 +46,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

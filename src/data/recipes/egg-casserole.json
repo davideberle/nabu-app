@@ -21,7 +21,7 @@
     },
     {
       "item": "garlic powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Salt and pepper, to taste",
@@ -33,11 +33,11 @@
     },
     {
       "item": "paprika",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "flat-leaf parsley, chopped",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
     "Pour the egg and milk mixture on top of the English muffins.",
     "Bake for 35-40 minutes or until golden-brown in color.",
     "Top with the chopped parsley before serving."
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

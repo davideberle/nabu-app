@@ -51,5 +51,10 @@
     "Taste and season with salt and pepper. Serve with crunchy bread or crackers.",
     "The tapanata keeps very well in the fridge for at least one week. Just pour it into a clean jar, bang the jar on the table to make sure there are no air pockets and seal the tapanata with a thin layer of virgin olive oil."
   ],
-  "image": "/recipes/tapenade.jpg"
+  "image": "/recipes/tapenade.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

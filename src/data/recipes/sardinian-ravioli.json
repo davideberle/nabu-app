@@ -94,5 +94,13 @@
     "Heat the butter over medium heat until it bubbles, then add the sage and cook until crisp. Sprinkle parmigiano over the ravioli and pour the bubbling butter and sage sauce over them.",
     "You can also use the tomato sauce on Insalata di Polipini e Seppioline."
   ],
-  "image": "/recipes/sardinian-ravioli.jpg"
+  "image": "/recipes/sardinian-ravioli.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

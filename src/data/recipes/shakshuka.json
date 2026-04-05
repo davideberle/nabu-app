@@ -58,5 +58,13 @@
   "image": "/recipes/shakshuka.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 28
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -38,11 +38,11 @@
     },
     {
       "item": "/ 5 grams baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "mild tasting extra-virgin olive oil or melted coconut oil",
@@ -54,11 +54,11 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "/ 57 grams vegan chocolate chips",
@@ -81,5 +81,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

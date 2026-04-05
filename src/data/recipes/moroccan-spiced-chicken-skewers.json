@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "Prep time: 45 mins",
   "time": {
-    "prep": "45 mins"
+    "prep": "45 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -129,5 +130,10 @@
     "Toss green bell peppers and red onion in the reserved 1/4 cup marinade. Remove chicken from the bag and discard all marinade. Thread chicken, peppers, and onion alternately onto skewers.",
     "Preheat an outdoor grill for medium-high heat and lightly oil the grate. Arrange skewers on the grill. Close lid and cook, turning once or twice until chicken is firm to the touch, 8 to 10 minutes. Remove from grill and let stand for 2 to 3 minutes. Serve with cold sauce."
   ],
-  "image": "/recipes/moroccan-spiced-chicken-skewers.jpg"
+  "image": "/recipes/moroccan-spiced-chicken-skewers.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

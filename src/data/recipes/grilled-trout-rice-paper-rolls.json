@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "neutral oil, or 2 tablespoons neutral oil plus 1 tablespoon toasted sesame oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "thinly sliced green onion, white and green parts",
@@ -71,5 +71,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

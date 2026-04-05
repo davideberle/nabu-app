@@ -85,7 +85,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "100g (scant ½ cup)",
+      "amount": "100g",
       "group": "MARINADE"
     }
   ],
@@ -95,5 +95,10 @@
     "Transfer to a food processor with the ground spices, coriander (cilantro) leaves and 1 teaspoon of salt, and blend until smooth. Transfer to a bowl, add the yoghurt and whisk together. Add the chicken pieces and stir to coat, then cover and marinate in the fridge for 3–48 hours – the longer the better.",
     "When ready to cook, light the barbecue using the direct cooking method. Thread the chicken pieces onto skewers and cook, turning them until nicely charred on the exterior and cooked through. Transfer to a warm plate and squeeze the lime juice over the top. Sprinkle with the chaat masala and season with salt and black pepper."
   ],
-  "image": "/recipes/chicken-soola-kebabs.jpg"
+  "image": "/recipes/chicken-soola-kebabs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

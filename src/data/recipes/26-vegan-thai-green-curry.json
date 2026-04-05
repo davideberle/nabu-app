@@ -50,5 +50,13 @@
     "Add the red peppers and let it boil for 1 more minute. When done, turn off the stove, stir in the fresh basil and let it wilt in the curry.",
     "Serve with jasmine rice immediately, or later (like most Thai curries, it tastes even better the next day!)",
     "Serve with jasmine rice immediately, or later (like most Thai curries, it tastes even better the next day!)"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

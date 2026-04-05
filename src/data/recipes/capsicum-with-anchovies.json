@@ -39,5 +39,13 @@
     "After this time remove the skin, which should easily slide off. (The flesh of the capsicums should still be firm, not mushy.) Cut the capsicums in slices, removing cores and seeds, and dry them well with kitchen paper. Remove any remaining pieces of skin.",
     "In a serving dish arrange a layer of capsicum then some chopped garlic, basil and some anchovy fillets. Continue layering until everything is used up. Now drizzle over some olive oil and let stand for a few hours before serving."
   ],
-  "image": "/recipes/capsicum-with-anchovies.jpg"
+  "image": "/recipes/capsicum-with-anchovies.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

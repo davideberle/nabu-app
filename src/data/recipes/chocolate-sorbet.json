@@ -39,5 +39,10 @@
     "This sorbet is delicious served with some lightly whipped thick cream.",
     "You can add the crème de cacao to the sorbet before it is frozen, or pour it over later – or both if you prefer!"
   ],
-  "image": "/recipes/chocolate-sorbet.jpg"
+  "image": "/recipes/chocolate-sorbet.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

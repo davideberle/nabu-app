@@ -70,5 +70,13 @@
     "Arrange the grissini on a baking tray, and let them stand for about 30 minutes. With a pastry brush, brush some more olive oil on them, and sprinkle them with salt.",
     "Bake in the hot oven for about 5 minutes. Check them from time to time to make sure they do not burn."
   ],
-  "image": "/recipes/bread-sticks-with-olives.jpg"
+  "image": "/recipes/bread-sticks-with-olives.jpg",
+  "time": {
+    "total": 155
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -55,5 +55,13 @@
     "In a large frying pan, fry the involtini in batches in the butter and oil with the rest of the rosemary. Turn them so they colour evenly. Transfer to a warmed dish.",
     "Once the involtini are all cooked, add the Marsala and cook for a few minutes, scraping up any bits from the base of the pan. Return the involtini to the pan and roll them around in the sauce. Lower the heat and cover the pan. Cook gently for about 10 minutes, adding a little more Marsala or water if it seems too dry. Serve the involtini hot, straight from the pan."
   ],
-  "image": "/recipes/rolled-lamb-with-asparagus.jpg"
+  "image": "/recipes/rolled-lamb-with-asparagus.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

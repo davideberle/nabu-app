@@ -22,23 +22,23 @@
     },
     {
       "item": "/ 32 grams organic whole cane sugar, ground in a blender until powdered",
-      "amount": "3½ tablespoons"
+      "amount": "3½ tbsp"
     },
     {
       "item": "/ 4 grams aluminum-free baking powder",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "xanthan or guar gum (if needed, see headnote)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "mild tasting extra-virgin olive oil",
@@ -54,11 +54,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "chocolate extract (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 46 grams mini gluten-free vegan chocolate chips",
@@ -82,7 +82,7 @@
     },
     {
       "item": "pure maple",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "syrup, Grade B or dark amber",
@@ -104,5 +104,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 33
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

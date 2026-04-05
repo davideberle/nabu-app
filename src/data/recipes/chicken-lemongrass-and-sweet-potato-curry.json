@@ -16,7 +16,7 @@
     },
     {
       "item": "coarsely chopped peeled ginger",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "medium yellow onion, coarsely chopped",
@@ -24,15 +24,15 @@
     },
     {
       "item": "Madras-style curry powder (preferably Sun brand)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "One 13½-ounce can full-fat unsweetened coconut milk, unshaken",
@@ -40,7 +40,7 @@
     },
     {
       "item": "virgin coconut oil or neutral oil, such as canola",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large boneless, skinless chicken thighs (about 1¾ pounds total), each cut into 3 pieces",
@@ -66,5 +66,10 @@
     "Uncover the pot, add the sweet potatoes, and return the curry to a simmer. Continue cooking, uncovered, for 10 to 12 minutes, stirring occasionally, until the potatoes are tender. Turn off the heat, add the coconut cream, stirring it into the sauce, and let rest on the burner’s receding heat for 10 minutes, uncovered, to blend and mature flavors. Taste and season with salt (unsalted curry powder may require an additional teaspoon) and splash in water if the flavors are too strong.",
     "Serve immediately, garnished with the cilantro."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "This hearty vegetarian stew combines great fall/winter vegetables with a spicy Moroccan flair. Stands alone as a complete meal.",
   "time": {
-    "prep": "30 mins"
+    "prep": "30 mins",
+    "total": 40
   },
   "ingredients": [
     {
@@ -112,5 +113,10 @@
     "Bring water, couscous spice packet, and remaining olive oil to a boil in a separate saucepan. Stir in couscous. Cover and remove from heat. Let stand until couscous is tender, about 5 minutes.",
     "Add parsley and honey to the stew. Place 1/2 cup couscous into each serving bowl and top with 1 cup stew. Squeeze a lemon wedge into each dish."
   ],
-  "image": "/recipes/moroccan-vegetable-stew-with-couscous.jpg"
+  "image": "/recipes/moroccan-vegetable-stew-with-couscous.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

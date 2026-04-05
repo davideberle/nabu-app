@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "diced mutton or lamb on the bone",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "rapeseed (canola) oil*",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "rattanjot (optional)",
@@ -58,7 +58,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "Salt, to taste",
@@ -90,7 +90,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "500g (2 cups)",
+      "amount": "500g",
       "group": "MARINADE"
     },
     {
@@ -106,5 +106,10 @@
     "Now add 250ml (1 cup) of water and cover the pan with a lid. Simmer over a medium heat for 45 minutes until the meat is nice and tender. Stir in the tomato purée and cook for a further 15 minutes, or until the texture of the meat is to your liking and the oil separates from the sauce. Season with salt and serve with naans or chapattis."
   ],
   "tips": "*Using lots of oil is the traditional way of cooking this curry. If you would rather go for a healthier option, use about 2 tablespoons of oil and add just enough water to cover and simmer the meat. There are plenty of curries in this book that use less oil though, so I recommend giving this one a go just as it’s written so that you can experience it the way it’s meant to be.",
-  "image": "/recipes/kashmiri-mutton-rogan-josh.jpg"
+  "image": "/recipes/kashmiri-mutton-rogan-josh.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

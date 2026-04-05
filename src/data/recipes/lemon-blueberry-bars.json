@@ -17,7 +17,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Zest and juice of 1 lemon",
@@ -50,5 +50,13 @@
     "Fold in the blueberries.",
     "Transfer the batter into the prepared baking dish. Bake for 25 minutes or until a toothpick inserted in the center comes clean.",
     "Cut into bars and serve with a dusting of powdered sugar."
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

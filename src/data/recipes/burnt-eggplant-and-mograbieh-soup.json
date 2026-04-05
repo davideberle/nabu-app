@@ -73,5 +73,13 @@
     "Meanwhile, bring a small saucepan of salted water to a boil and add the mograbieh or alternative. Cook until al dente; this will vary according to brand but should take 15 to 18 minutes (check the packet). Drain and refresh under cold water.",
     "Transfer the burnt eggplant flesh to the soup and blitz to a smooth liquid with a handheld blender. Add the mograbieh and fried eggplant, keeping some to garnish at the end, and simmer for another 2 minutes. Taste and adjust the seasoning. Serve hot, with the reserved mograbieh and fried eggplant on top and garnished with basil or dill, if you like."
   ],
-  "image": "/recipes/burnt-eggplant-and-mograbieh-soup.jpg"
+  "image": "/recipes/burnt-eggplant-and-mograbieh-soup.jpg",
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

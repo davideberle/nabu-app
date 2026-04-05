@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "dairy-free butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-firm tofu, drained and pressed (page 17)",
@@ -17,11 +17,11 @@
     },
     {
       "item": "black salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of turmeric",
@@ -37,7 +37,7 @@
     },
     {
       "item": "lime juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "slices sprouted grain bread",
@@ -52,5 +52,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

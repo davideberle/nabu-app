@@ -56,5 +56,13 @@
     "Roll the involtini in the flour.",
     "Heat the olive oil in a large frying pan then add the sage leaves and involtini. Turn them around in the oil so that they brown evenly all over. Add the wine and stir well, making sure you scrape up all the tasty bits from the bottom of the pan. Season with salt and pepper then cover the pan and simmer over a very low heat for 10–15 minutes. Add a little more wine if necessary. Serve hot."
   ],
-  "image": "/recipes/rolled-veal-with-artichokes.jpg"
+  "image": "/recipes/rolled-veal-with-artichokes.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

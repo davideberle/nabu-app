@@ -24,12 +24,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "EGGPLANT"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "BEEF FILLING"
     },
     {
@@ -44,22 +44,22 @@
     },
     {
       "item": "ground allspice",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BEEF FILLING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BEEF FILLING"
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BEEF FILLING"
     },
     {
@@ -69,17 +69,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "SAUCE"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SAUCE"
     },
     {
@@ -105,5 +105,10 @@
     "Remove the fork-tender eggplants from the oven, leaving the oven on. Make a cut halfway deep along the length of each eggplant, stopping just before the bottom and leaving the ends intact, to create a boat shape. Using a fork, pry the eggplants open and gently mash up and push down the insides to make space for the filling. Sprinkle the 1 teaspoon salt among the eggplants to season the insides. Scoop a few tablespoons of the filling into each eggplant boat, filling it as much as possible. You can also spoon leftover filling into the skillet around the eggplants. Pour the sauce over the eggplants, ensuring that some of the sauce is on top.",
     "Bake, uncovered, for 15 to 20 minutes, until the liquid is bubbling. If required, add ½ cup (120 ml) of water to the pan to create enough of a thick sauce to spoon over rice. Garnish with the chopped parsley and serve with rice and salad."
   ],
-  "image": "/recipes/sheikh-el-mahshistuffed-eggplant-boats.jpg"
+  "image": "/recipes/sheikh-el-mahshistuffed-eggplant-boats.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

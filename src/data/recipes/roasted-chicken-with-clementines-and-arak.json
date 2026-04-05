@@ -68,5 +68,13 @@
     "Preheat the oven to 475°F / 220°C. Transfer the chicken and its marinade to a baking sheet large enough to accommodate everything comfortably in a single layer (roughly a 12 by 14½-inch / 30 by 37cm pan); the chicken skin should be facing up. Once the oven is hot enough, put the pan in the oven and roast for 35 to 45 minutes, until the chicken discoloured and cooked through. Remove from the oven.",
     "Lift the chicken, fennel, and clementines from the pan and arrange on serving plate; cover and keep warm. Pour the cooking liquid into a small saucepan, place over medium-high heat, bring to a boil, and then simmer until the sauce is reduced by one-third, so you are left with about ⅓ cup / 80 ml. Pour the hot sauce over the chicken, garnish with some parsley, and serve."
   ],
-  "image": "/recipes/roasted-chicken-with-clementines-and-arak.jpg"
+  "image": "/recipes/roasted-chicken-with-clementines-and-arak.jpg",
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,19 +11,19 @@
   "ingredients": [
     {
       "item": "pistachio nut slivers, plus extra to decorate",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "caster sugar",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "full-fat milk",
-      "amount": "600ml (20fl oz)"
+      "amount": "600ml"
     },
     {
       "item": "double cream",
-      "amount": "600ml (20fl oz)"
+      "amount": "600ml"
     },
     {
       "item": "clear honey",
@@ -35,7 +35,7 @@
     },
     {
       "item": "unsweetened evaporated milk",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "finely grated rind of 2 oranges",
@@ -51,5 +51,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

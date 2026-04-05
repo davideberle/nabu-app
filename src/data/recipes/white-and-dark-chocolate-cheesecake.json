@@ -30,11 +30,11 @@
     },
     {
       "item": "coconut oil, melted, or mild tasting extra-virgin olive oil",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "freshly squeezed lemon juice, strained",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "scant tablespoon / 3 grams finely minced lemon zest",
@@ -42,7 +42,7 @@
     },
     {
       "item": "white miso",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "⅜ teaspoon guar gum",
@@ -58,7 +58,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 83 grams confectioners’ sugar, sifted twice",
@@ -66,7 +66,7 @@
     },
     {
       "item": "/ 14 grams tapioca or cornstarch",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Boiling water",
@@ -92,5 +92,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

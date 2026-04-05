@@ -18,11 +18,11 @@
     },
     {
       "item": "grated fresh coconut, frozen shredded coconut or dried coconut flakes (if using dried, rinse and soak in 250ml/1 cup water for about 30 minutes before using)",
-      "amount": "100g (1 cup)"
+      "amount": "100g"
     },
     {
       "item": "coriander (cilantro), chopped",
-      "amount": "40g (¾ cup)"
+      "amount": "40g"
     },
     {
       "item": "green chillies, roughly chopped",
@@ -81,5 +81,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

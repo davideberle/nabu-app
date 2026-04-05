@@ -17,7 +17,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "lemon juice",
@@ -37,7 +37,7 @@
     },
     {
       "item": "flat-leaf parsley, chopped",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "garlic cloves, minced",
@@ -49,7 +49,7 @@
     },
     {
       "item": "chopped dill",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -58,5 +58,13 @@
     "Working in batches, toast the bread slices on the pan for 2 minutes per side. When done, set the toasted bread aside.",
     "In the meantime, in a medium mixing bowl, mash the avocados with a fork. Add the lemon juice, salt, pepper, spring onions, tomato, garlic, and parsley. Mix until well-combined.",
     "Spread the guacamole over the toasted bread slices. Top with the smoked salmon and dill before serving."
-  ]
+  ],
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

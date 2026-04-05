@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil, plus more for panfrying",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced red onion",
@@ -22,7 +22,7 @@
     },
     {
       "item": "berbere, homemade or store-bought",
-      "amount": "5 teaspoons"
+      "amount": "5 tsp"
     },
     {
       "item": "Fine sea salt and freshly ground black pepper",
@@ -38,7 +38,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cooked black-eyed peas, drained (see sidebar)",
@@ -46,19 +46,19 @@
     },
     {
       "item": "tamari",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "unsulfured molasses",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cooked millet (see sidebar)",
@@ -70,7 +70,7 @@
     },
     {
       "item": "minced cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Avocado and tomato slices, for serving",
@@ -101,5 +101,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 100
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

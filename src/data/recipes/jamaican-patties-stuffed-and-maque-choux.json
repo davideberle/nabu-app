@@ -19,11 +19,11 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "coconut oil, chilled",
@@ -31,15 +31,15 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "4 teaspoons"
+      "amount": "4 tsp"
     },
     {
       "item": "plus ¾ teaspoon ice water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "finely diced red onion",
@@ -51,27 +51,27 @@
     },
     {
       "item": "minced seeded habanero chile",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cumin seeds, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "allspice berries, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "sweet corn kernels (from about 2 ears of corn; store the cobs in the freezer to make Corn Broth)",
@@ -87,11 +87,11 @@
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "minced fresh thyme",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Freshly ground black pepper",
@@ -109,5 +109,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 152
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

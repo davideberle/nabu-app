@@ -59,5 +59,13 @@
   "image": "/recipes/saffron-rice-with-barberries-pistachio-and-mixed-herbs.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

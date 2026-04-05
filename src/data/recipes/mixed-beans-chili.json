@@ -13,7 +13,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "diced onion",
@@ -41,31 +41,31 @@
     },
     {
       "item": "vegan Worcestershire sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chili powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground cumin",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "dried oregano",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

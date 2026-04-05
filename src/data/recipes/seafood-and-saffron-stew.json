@@ -11,11 +11,11 @@
   "ingredients": [
     {
       "item": "mussels in their shells",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "small clams in their shells",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "olive oil",
@@ -51,7 +51,7 @@
     },
     {
       "item": "passata",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "can good-quality tomatoes",
@@ -67,7 +67,7 @@
     },
     {
       "item": "baby squid, cut into 1cm (½in) rings",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "scallops, roe discarded",
@@ -92,5 +92,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

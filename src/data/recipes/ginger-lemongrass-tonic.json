@@ -10,15 +10,15 @@
   "ingredients": [
     {
       "item": "Grade B maple syrup",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "(3-inch) knob fresh ginger, peeled and sliced into paper-thin rounds",
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

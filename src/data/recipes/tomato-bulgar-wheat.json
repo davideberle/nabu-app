@@ -32,7 +32,7 @@
     },
     {
       "item": "bulgur wheat",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "generous knob of butter",
@@ -40,12 +40,20 @@
     },
     {
       "item": "water or chicken or vegetable stock",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     }
   ],
   "method": [
     "Place a large nonstick saucepan over a medium heat, drizzle in enough olive oil to coat the base of the pan and soften the onions, stirring to prevent them from colouring too much. Add the diced pepper and stir for a further minute, then add the tomato purée and a generous amount of sea salt and black pepper. Now cook out the tomato purée for a few minutes, stirring to ensure the mixture doesn’t burn. Add just a little more oil if you wish.",
     "Add the bulgur wheat and butter to the pan, then pour in the water or stock and give the mixture a good stir until the tomato purée has dissolved into the liquid evenly. Cover the pan with a tight-fitting lid, reduce the heat to a low-medium heat and cook for 15–20 minutes, or until the water is fully absorbed. Once the bulgur wheat is cooked, use a fork to fluff up the grains. Serve immediately."
   ],
-  "image": "/recipes/tomato-bulgar-wheat.jpg"
+  "image": "/recipes/tomato-bulgar-wheat.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

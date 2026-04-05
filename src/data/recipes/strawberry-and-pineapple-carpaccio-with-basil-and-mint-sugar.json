@@ -15,7 +15,7 @@
     },
     {
       "item": "strawberries",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "generous handful of mint leaves, roughly chopped",
@@ -40,5 +40,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

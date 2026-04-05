@@ -29,5 +29,10 @@
     "In a large skillet, melt 1 tablespoon of the butter over medium heat.",
     "One at a time, dip 3 of the bread slices into the egg-milk mixture. As soon as the butter stops bubbling and before it turns brown, place the bread in the skillet and cook until golden brown on both sides. Transfer to a platter and cover or tent with aluminum foil to keep warm. Repeat with the remaining bread, adding another tablespoon or so of the butter to the skillet between batches as needed.",
     "Serve the tsoureki French toast hot, drizzled with Greek honey and dusted with a little cinnamon."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -29,11 +29,11 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "seitan, crumbled (Slow Cooker Log for Thin Slices and Crumbles, page 280)",
@@ -49,5 +49,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

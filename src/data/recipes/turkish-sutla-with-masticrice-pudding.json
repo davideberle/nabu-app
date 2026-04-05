@@ -22,11 +22,11 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "mastic gum (see Notes; optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "short-grain rice, rinsed until the water runs clear and drained completely",
@@ -45,5 +45,10 @@
     "Serve warm (my favorite), at room temperature, or cover with plastic wrap, refrigerate for 2 hours, and then serve cold."
   ],
   "tips": "If you don’t have mastic gum, you can choose any other flavoring for the pudding, such as vanilla, cardamom, rose water, or orange blossom water. Simply add 1 to 2 teaspoons of any of these options after the pudding is cooked and just before broiling.\n\nStore leftovers in the refrigerator covered with plastic wrap for 4 to 5 days.",
-  "image": "/recipes/turkish-sutla-with-masticrice-pudding.jpg"
+  "image": "/recipes/turkish-sutla-with-masticrice-pudding.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

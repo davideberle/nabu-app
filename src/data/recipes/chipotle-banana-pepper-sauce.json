@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "finely diced red onion",
@@ -22,15 +22,15 @@
     },
     {
       "item": "cumin seeds, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "chopped chipotle chile in adobo sauce",
-      "amount": "1 to 3 teaspoons"
+      "amount": "1 to 3 tsp"
     },
     {
       "item": "rice vinegar",
@@ -42,15 +42,15 @@
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "agave nectar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "freshly ground white pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     }
   ],
   "method": [
@@ -61,5 +61,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

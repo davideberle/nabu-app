@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "/ 4 grams agar flakes",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "plus 2 tablespoons / 210 ml water, at room temperature",
@@ -42,5 +42,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

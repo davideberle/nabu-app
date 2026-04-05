@@ -14,22 +14,22 @@
   "ingredients": [
     {
       "item": "mild curry powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -39,12 +39,12 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CURRY"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "CURRY"
     },
     {
@@ -69,12 +69,12 @@
     },
     {
       "item": "mild curry powder",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CURRY"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CURRY"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CURRY"
     },
     {
@@ -107,5 +107,10 @@
     "After the 10 minutes, uncover the pan and add the slurry. Add the chicken back into the pan, mix well, and cook for another 15 to 20 minutes, uncovered, or until the chicken is cooked through and the vegetables are tender.",
     "Serve with rice."
   ],
-  "image": "/recipes/iraqi-kari-dejajchicken-curry.jpg"
+  "image": "/recipes/iraqi-kari-dejajchicken-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

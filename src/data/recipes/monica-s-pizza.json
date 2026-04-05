@@ -96,5 +96,13 @@
     "In the meantime, prepare the sauce. Heat the butter and oil in a saucepan and sauté the onion until softened, then add the garlic and herbs and cook for a further few minutes. Stir in the tomato paste and cook for a few minutes more, until it darkens in colour, but be careful not to burn it. Add the tomatoes, salt and pepper, put a lid on the pan and turn the heat down to low. Cook for about 15 minutes, stirring from time to time. Remove from the heat and discard the rosemary stalk and bay leaf.",
     "Spread the tomato sauce over the pizza base and top with the cheeses. Drizzle a little olive oil on top and sprinkle with salt and pepper. Bake for about 20 minutes, or until the dough is cooked. The dough will rise quite high and the sauce will seep into it to create a soft pizza."
   ],
-  "image": "/recipes/monica-s-pizza.jpg"
+  "image": "/recipes/monica-s-pizza.jpg",
+  "time": {
+    "total": 95
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

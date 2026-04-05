@@ -97,5 +97,13 @@
     "Serve all of the topping ingredients on individual small plates",
     "Transfer the egg noodles (Step 10) and soup (Step 9) to a bowl. Top it with the crispy noodles (Step 12) and the topping ingredients (Step 13) as desired!",
     "Transfer the egg noodles (Step 10) and soup (Step 9) to a bowl. Top it with the crispy noodles (Step 12) and the topping ingredients (Step 13) as desired!"
-  ]
+  ],
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

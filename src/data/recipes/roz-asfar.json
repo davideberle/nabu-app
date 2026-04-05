@@ -20,7 +20,7 @@
     },
     {
       "item": "whole peppercorns",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "whole cloves",
@@ -36,11 +36,11 @@
     },
     {
       "item": "kosher salt, or more to taste",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
@@ -56,5 +56,10 @@
     "Add the peppercorns, cloves, cardamom, and cinnamon sticks to the pot and cook, stirring continuously, for a few more minutes until the spices are toasted and fragrant. Add the salt and turmeric and stir to combine with the onion and spices.",
     "Add the rice and stir it gently to combine with the onion and spices. Add the broth and bring to a rolling boil over medium heat, then cover the pot with a tight-fitting lid, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
     "Turn off the heat, remove the lid, and gently fluff the rice with a fork or wooden spoon. Cover again and let rest for 10 minutes. Before serving, pick out and discard the peppercorns, cloves, cardamom pods and cinnamon sticks (see Note)."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

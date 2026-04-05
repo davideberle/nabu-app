@@ -63,5 +63,13 @@
     "To make the sauce, simply put all the ingredients in a blender and process until just amalgamated. Be careful not to over-blend – you should still see the individual ingredients. Spoon some of the sauce over the capsicums and serve the rest on the side in a little bowl.",
     "This dish should be eaten at room temperature."
   ],
-  "image": "/recipes/sicilian-capsicums.jpg"
+  "image": "/recipes/sicilian-capsicums.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

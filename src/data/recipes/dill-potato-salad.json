@@ -31,15 +31,15 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground Aleppo pepper (or substitute with 1 teaspoon paprika plus ¼ teaspoon cayenne pepper)",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -52,5 +52,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -34,7 +34,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "mixed powder",
@@ -46,11 +46,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "Greek yoghurt",
@@ -79,5 +79,10 @@
     "Increase the heat to high and add the pre-cooked lamb and the rest of the sauce along with the cooking stock. Let this bubble undisturbed until it reduces down to a thick sauce.",
     "To finish, reduce the heat to medium and whisk in the yoghurt 1 tablespoon at a time. Season with salt and black pepper. Top with the coriander (cilantro) and serve with a good squeeze of lime juice and/or some sliced red chilli, if you like."
   ],
-  "image": "/recipes/lamb-bhuna.jpg"
+  "image": "/recipes/lamb-bhuna.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

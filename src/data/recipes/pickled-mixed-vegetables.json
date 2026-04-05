@@ -33,7 +33,7 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large cloves garlic, green cores removed and thinly sliced lengthwise",
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

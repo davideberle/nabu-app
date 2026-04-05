@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "100g (heaped ¾ cup)"
+      "amount": "100g"
     },
     {
       "item": "ground turmeric",
@@ -46,7 +46,7 @@
     },
     {
       "item": "long green chillies",
-      "amount": "350g (12½ oz)"
+      "amount": "350g"
     },
     {
       "item": "Raita or coconut chutney, to serve (optional)",
@@ -63,5 +63,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

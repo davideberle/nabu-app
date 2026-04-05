@@ -42,5 +42,13 @@
     "Stir in peanut butter mixture (Step 1). Let it boil. When it starts boiling, reduce heat and let it simmer for 3-5 mins.",
     "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts.",
     "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts."
-  ]
+  ],
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

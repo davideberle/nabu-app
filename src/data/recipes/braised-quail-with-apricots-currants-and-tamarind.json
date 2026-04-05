@@ -77,5 +77,13 @@
     "Remove the quail from the pan and discard most of the fat, leaving about 1½ teaspoons. Add the water, the wine, apricots, currants, sugar, tamarind, lemon juice, thyme, ½ teaspoon salt, and some black pepper. Return the quail to the pan. The water should come three-quarters up the sides of the birds; if not, add more water. Bring to a boil, cover the pan, and simmer very gently for 20 to 25 minutes, turning the quail over once or twice, until the birds are just cooked.",
     "Lift the quail from the pan and onto a serving platter and keep warm. If the liquid isn’t very thick, return it to medium heat and simmer for a few minutes to reduce to a good sauce consistency. Spoon the sauce over the quail and garnish with the cilantro and parsley, if using."
   ],
-  "image": "/recipes/braised-quail-with-apricots-currants-and-tamarind.jpg"
+  "image": "/recipes/braised-quail-with-apricots-currants-and-tamarind.jpg",
+  "time": {
+    "total": 150
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -26,11 +26,11 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "skin-on rainbow trout fillets (2 large fillets) (or substitute with salmon), rinsed and patted dry",
@@ -48,5 +48,10 @@
     "After the vegetables have baked for 10 minutes, remove the sheet pan from the oven and add the trout fillets. Place back into the oven and bake for 15 minutes longer, or until the fish is flaky and cooked through.",
     "Serve the fish with the asparagus, radishes, and onion."
   ],
-  "image": "/recipes/roasted-dukkah-crusted-trout.jpg"
+  "image": "/recipes/roasted-dukkah-crusted-trout.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

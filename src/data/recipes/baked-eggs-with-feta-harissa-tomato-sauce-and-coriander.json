@@ -59,7 +59,7 @@
     },
     {
       "item": "feta cheese",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "freshly ground black pepper",
@@ -78,5 +78,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 32
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

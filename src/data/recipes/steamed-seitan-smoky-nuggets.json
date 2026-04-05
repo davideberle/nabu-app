@@ -17,11 +17,11 @@
     },
     {
       "item": "garlic powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "vegetable broth",
@@ -29,19 +29,19 @@
     },
     {
       "item": "tomato sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "tamari",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "liquid smoke",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coconut oil",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -55,5 +55,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

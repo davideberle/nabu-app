@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "full-fat milk",
-      "amount": "650ml (1 pint 2fl oz)"
+      "amount": "650ml"
     },
     {
       "item": "double cream",
@@ -35,11 +35,11 @@
     },
     {
       "item": "pudding rice",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "unsalted butter",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "grated rind of 1 lime",
@@ -47,11 +47,11 @@
     },
     {
       "item": "flaked almonds, toasted",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "chopped shelled pistachio nuts",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "handful of dried edible rose petals",
@@ -67,5 +67,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

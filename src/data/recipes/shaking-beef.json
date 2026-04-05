@@ -12,15 +12,15 @@
   "ingredients": [
     {
       "item": "sugar",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic cloves, put through a press or minced and mashed",
@@ -32,11 +32,11 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "beefsteak, such as bottom sirloin (tri-tip) or New York strip, trimmed and cut into ¾- to 1-inch cubes",
@@ -52,7 +52,7 @@
     },
     {
       "item": "sugar or honey",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "pinches fine sea salt",
@@ -64,11 +64,11 @@
     },
     {
       "item": "unseasoned rice vinegar",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "lightly packed watercress, baby arugula, or other salad greens",
@@ -89,5 +89,10 @@
     "Set a large skillet that can get very hot (such as carbon steel or cast iron) over high heat and add enough of the canola oil to film the bottom. When the oil is shimmering, carefully add the beef, spreading it out in one layer, and cook for 3 to 4 minutes, shaking the pan every 30 to 60 seconds to sear the beef on all sides; it should be medium-rare. (If you want to minimize mess, cover the pan with a splatter guard, and flip the meat with a spatula.) Remove from the heat.",
     "Quickly toss the salad and transfer everything, including the dressing, to a platter or serving dish. Pile the cooked beef and its juices on top, and serve immediately. At the table, ceremoniously combine all the ingredients and invite diners to dive in."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

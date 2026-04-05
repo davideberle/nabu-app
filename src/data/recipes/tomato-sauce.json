@@ -64,5 +64,13 @@
     "Cover and cook for about 20 minutes, stirring often. Finally, chop the basil leaves and add to the dish.",
     "The tomato paste gives the sauce a richer, stronger flavour."
   ],
-  "image": "/recipes/tomato-sauce.jpg"
+  "image": "/recipes/tomato-sauce.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

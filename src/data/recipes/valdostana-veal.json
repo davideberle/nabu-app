@@ -50,5 +50,13 @@
     "Melt the butter with the olive oil, add the garlic and the rest of the sage leaves, then the veal. Fry the scaloppine on all sides, until golden. Now add the dry white wine and continue cooking, turning the scaloppine a few times, until cooked – about 5 minutes. Add salt and pepper to taste. If the sauce looks dry, add a little stock.",
     "Serve immediately while still hot. I like to serve this with Patate Arrosto con Funghi Porcini."
   ],
-  "image": "/recipes/valdostana-veal.jpg"
+  "image": "/recipes/valdostana-veal.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

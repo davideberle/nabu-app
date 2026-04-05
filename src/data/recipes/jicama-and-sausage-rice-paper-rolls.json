@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "soy sauce",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "Brimming 2 tablespoons tahini",
@@ -40,11 +40,11 @@
     },
     {
       "item": "neutral oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "finely chopped garlic",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "peeled and cut into medium matchsticks",
@@ -60,11 +60,11 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Chinese five-spice powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "gently packed baby lettuce or sliced soft leaf lettuce (such as butter, Boston, or red leaf)",
@@ -83,5 +83,10 @@
     "Set up a rice paper–rolling station with the sauce, jicama, sausage, egg, lettuce, and rice papers. Nearby, have a large deep skillet or wide shallow bowl filled with 1 to 2 inches of very warm water.",
     "For each roll, slide a rice paper round in the warm water for a few seconds to wet both sides, then place on a cutting board or dinner plate. When the rice paper is pliable, about 1 minute, smear 1½ teaspoons sauce in the center of the lower third, painting an area about 4 inches by 1 inch. Layer in 3 tablespoons lettuce, 2 to 3 tablespoons jicama, 1 or 2 egg strips, and 2 slices sausage. Bring up the bottom edge to cover the filling and roll twice. Fold in the sides and finish rolling to seal. (To replicate the photo opposite, don’t place the sausage atop the egg; roll the rice paper up once, then tuck in the sausage before finishing.) Present the rolls, whole or halved, with the remaining sauce for spooning into the rolls."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "unsalted butter or virgin coconut oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "fresh corn kernels",
@@ -24,7 +24,7 @@
     },
     {
       "item": "fish sauce, or 1½ teaspoons Bragg Liquid Aminos or Maggi Seasoning sauce plus ¼ teaspoon fine sea salt",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "Rounded ¼ teaspoon smoked paprika",
@@ -36,7 +36,7 @@
     },
     {
       "item": "furikake; 3 pieces Korean toasted seaweed, crumbled; or ½ sheet sushi nori, toasted and crumbled",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     }
   ],
   "method": [
@@ -44,5 +44,10 @@
     "Remove the pan from the heat, add the green onion, and stir until softened. Let cool for 3 to 5 minutes, then transfer to a bowl and top with the furikake.",
     "Serve with spoons for each diner to mix things up, scoop, and eat."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "masoor dhal (red lentils), rinsed",
-      "amount": "250g (1½ cups)"
+      "amount": "250g"
     },
     {
       "item": "ghee",
@@ -61,5 +61,10 @@
   "image": "/recipes/tarka-dhal.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,7 +22,7 @@
     },
     {
       "item": "/ 24 grams raw cacao nibs",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "to 4 tablespoons / 45 to 60 ml raw agave syrup, to taste",
@@ -30,11 +30,11 @@
     },
     {
       "item": "alcohol-free vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "nama shoyu (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 140 grams ice cubes",
@@ -51,5 +51,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

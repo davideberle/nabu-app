@@ -13,23 +13,23 @@
     },
     {
       "item": "raw shelled hempseed, divided",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cinnamon",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "slivered almonds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "currants",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -39,5 +39,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

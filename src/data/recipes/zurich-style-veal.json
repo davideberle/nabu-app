@@ -65,5 +65,13 @@
     "Add the wine to deglaze the bottom of the pan, using a wooden spoon to scrape away any crust that has formed. Add the veal and cook, stirring, until the wine has evaporated. Turn the heat down to low and cook for another 10 minutes.",
     "Season with salt and pepper and, at the last moment, add the cream, allow it to bubble for 2 minutes, then remove the pan from the heat and serve."
   ],
-  "image": "/recipes/zurich-style-veal.jpg"
+  "image": "/recipes/zurich-style-veal.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

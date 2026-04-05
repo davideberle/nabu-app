@@ -13,19 +13,19 @@
   "ingredients": [
     {
       "item": "vegan minced (ground) pork",
-      "amount": "250 g (9 oz)"
+      "amount": "250 g"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Dee’s Classic Jerk Seasoning",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground allspice",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "cloves garlic, very finely shopped",
@@ -49,11 +49,11 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "80 ml (3 fl oz/⅓ cup)"
+      "amount": "80 ml"
     },
     {
       "item": "dipping sauces of your choice, to serve",
@@ -69,5 +69,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

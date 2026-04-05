@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "packed chopped flat-leaf parsley",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "firm silken tofu",
@@ -23,15 +23,15 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Dijon mustard",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -39,7 +39,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -48,5 +48,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

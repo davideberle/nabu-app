@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "rosewater",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "cardamom pods, bruised or crushed a little",
@@ -19,7 +19,7 @@
     },
     {
       "item": "caster sugar",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "smooth-skinned pears, preferably nice big ones",
@@ -39,5 +39,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -13,7 +13,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "½ cups sliced leeks",
@@ -53,5 +53,13 @@
     "Transfer the mixture into the prepared baking pan. Top with the fontina cheese.",
     "Bake for 30-35 minutes.",
     "Let the quiche cool completely before serving."
-  ]
+  ],
+  "time": {
+    "total": 42
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

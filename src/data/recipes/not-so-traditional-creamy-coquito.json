@@ -9,15 +9,15 @@
   "ingredients": [
     {
       "item": "cans coconut milk",
-      "amount": "2 (14-oz [414-ml])"
+      "amount": "2"
     },
     {
       "item": "can sweetened condensed coconut milk",
-      "amount": "1 (12-oz [355-ml])"
+      "amount": "1"
     },
     {
       "item": "can evaporated coconut milk",
-      "amount": "1 (12.2-oz [360-ml])"
+      "amount": "1"
     },
     {
       "item": "dark rum",
@@ -61,5 +61,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

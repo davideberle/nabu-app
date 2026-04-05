@@ -75,5 +75,13 @@
   "image": "/recipes/clementine-and-almond-syrup-cake.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

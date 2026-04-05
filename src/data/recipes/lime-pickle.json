@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "limes",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "level tbsp salt",
@@ -34,7 +34,7 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "150ml (generous ½ cup)",
+      "amount": "150ml",
       "group": "TEMPERING"
     },
     {
@@ -67,5 +67,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

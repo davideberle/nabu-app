@@ -19,11 +19,11 @@
     },
     {
       "item": "plus ½ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic, thinly sliced",
@@ -42,5 +42,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

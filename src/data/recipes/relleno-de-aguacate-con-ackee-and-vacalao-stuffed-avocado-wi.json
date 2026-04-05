@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "can hearts of palm, drained and rinsed",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "salt, divided",
@@ -46,7 +46,7 @@
     },
     {
       "item": "can ackee, drained and rinsed",
-      "amount": "1 (19-oz [540-g])"
+      "amount": "1"
     },
     {
       "item": "small tomato, chopped",
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

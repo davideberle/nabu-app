@@ -21,11 +21,11 @@
     },
     {
       "item": "plus 1 teaspoon sugar, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chopped scallions",
@@ -33,15 +33,15 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fried shallots (see step 1 on this page or store-bought), for garnish (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "crushed roasted peanuts, for garnish (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "oyster mushrooms, rinsed with salted water",
@@ -53,7 +53,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -65,19 +65,19 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cilantro or Vietnamese mint leaves, for garnish",
@@ -85,7 +85,7 @@
     },
     {
       "item": "crushed peanuts, for garnish",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Sliced bird’s eye chili pepper, for garnish (optional)",
@@ -110,5 +110,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

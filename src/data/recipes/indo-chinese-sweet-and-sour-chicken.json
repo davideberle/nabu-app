@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "boneless and skinless chicken thighs, cut into thirds",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "Garlic salt, to taste",
@@ -34,11 +34,11 @@
     },
     {
       "item": "caster sugar",
-      "amount": "100g (½ cup)"
+      "amount": "100g"
     },
     {
       "item": "rice wine vinegar or white wine vinegar",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "red chilli hot sauce",
@@ -54,7 +54,7 @@
     },
     {
       "item": "orange juice",
-      "amount": "65ml (¼ cup)"
+      "amount": "65ml"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
@@ -69,5 +69,10 @@
     "Transfer the cooked chicken to a serving plate and serve, or just serve in the tray! It will save you washing up and I really don’t think anyone will complain."
   ],
   "tips": "*Most soy sauces are not gluten-free. If this is important to you, use coconut amino instead.",
-  "image": "/recipes/indo-chinese-sweet-and-sour-chicken.jpg"
+  "image": "/recipes/indo-chinese-sweet-and-sour-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

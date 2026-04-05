@@ -64,5 +64,13 @@
     "You can add a few anchovies, in which case be careful when adding salt. Serve with either some boiled rice or some tajerini, or just some crunchy bread. It is delicious as a lunch dish.",
     "If you have a vegetable garden, you can use virtually any vegetable that is in season."
   ],
-  "image": "/recipes/vittorio-s-arcimboldo-style-vegetables.jpg"
+  "image": "/recipes/vittorio-s-arcimboldo-style-vegetables.jpg",
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

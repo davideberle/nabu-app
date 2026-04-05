@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "canola or other neutral oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "medium yellow or red onion, thinly sliced",
@@ -20,7 +20,7 @@
     },
     {
       "item": "finely chopped peeled ginger",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "medium carrot, or 1 small sweet potato, cut into thumbnail-size chunks",
@@ -44,7 +44,7 @@
     },
     {
       "item": "fish sauce, or 1½ teaspoons soy sauce, Bragg Liquid Aminos, or Maggi Seasoning sauce, plus more as needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "water",
@@ -72,5 +72,10 @@
     "Let the soup rest, uncovered, for 5 minutes, then taste and, if needed, add more salt or fish sauce. (Splash in water if you’ve gone too far or if the soup isn’t brothy enough for you.)",
     "Ladle the soup into individual bowls and divide the herbs among them. Sprinkle on some pepper or plop in a little chile sauce for lively heat, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "chana dhal, soaked in water for 30 minutes",
-      "amount": "300g (10½ oz)"
+      "amount": "300g"
     },
     {
       "item": "About 1 tbsp rapeseed (canola) oil or seasoned oil",
@@ -92,5 +92,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

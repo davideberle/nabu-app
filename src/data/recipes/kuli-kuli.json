@@ -18,7 +18,7 @@
     },
     {
       "item": "chilli powder 1/2 cup warm water",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sunflower oil",
@@ -32,5 +32,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

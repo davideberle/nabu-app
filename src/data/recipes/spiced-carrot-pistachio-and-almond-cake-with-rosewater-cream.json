@@ -15,7 +15,7 @@
     },
     {
       "item": "caster sugar",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "vanilla extract",
@@ -23,11 +23,11 @@
     },
     {
       "item": "ground almonds",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "desiccated coconut",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "ground cinnamon",
@@ -35,7 +35,7 @@
     },
     {
       "item": "unsalted butter, melted",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "large carrots, coarsely grated",
@@ -43,7 +43,7 @@
     },
     {
       "item": "shelled pistachio nuts, roughly chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "icing sugar, for dusting",
@@ -74,5 +74,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 100
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

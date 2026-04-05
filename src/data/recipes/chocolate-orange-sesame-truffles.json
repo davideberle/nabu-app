@@ -18,7 +18,7 @@
     },
     {
       "item": "freshly squeezed orange juice",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "agave syrup",
@@ -26,15 +26,15 @@
     },
     {
       "item": "raw or roasted tahini, stirred",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 13 grams natural sesame seeds, lightly toasted",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "/ 13 grams black or white sesame seeds, lightly toasted",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     }
   ],
   "method": [
@@ -48,5 +48,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

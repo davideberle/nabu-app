@@ -20,7 +20,7 @@
     },
     {
       "item": "sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "black cod fillets",
@@ -28,7 +28,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "shallot, finely chopped",
@@ -44,7 +44,7 @@
     },
     {
       "item": "black sesame seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "small pumpkin, halved and seeded",
@@ -68,11 +68,11 @@
     },
     {
       "item": "cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "unsalted butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "gigli pasta",
@@ -84,7 +84,7 @@
     },
     {
       "item": "toasted sunflower seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "soy sauce",
@@ -96,7 +96,7 @@
     },
     {
       "item": "sumac, divided",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "pink scallops",
@@ -124,7 +124,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "shallot, finely chopped",
@@ -148,7 +148,7 @@
     },
     {
       "item": "saffron threads, soaked in 1 tablespoon of boiling water for 15 minutes",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "dry white wine",
@@ -180,7 +180,7 @@
     },
     {
       "item": "nutmeg",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "conchiglie rigate pasta",
@@ -188,7 +188,7 @@
     },
     {
       "item": "butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "burrata",
@@ -196,15 +196,15 @@
     },
     {
       "item": "toasted nigella seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "African cayenne",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "shallot, finely chopped",
@@ -248,7 +248,7 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "tagliolini pasta",
@@ -272,11 +272,11 @@
     },
     {
       "item": "ground cumin",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "penne pasta",
@@ -288,11 +288,11 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "Castelvetrano olives, pitted and halved",
@@ -308,11 +308,11 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "small head purple cauliflower, cut into ½-inch pieces",
@@ -344,7 +344,7 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "small fresh peperoncino, minced, or ¼ teaspoon red pepper flakes",
@@ -372,7 +372,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cloves garlic, gently crushed",
@@ -412,7 +412,7 @@
     },
     {
       "item": "extra-virgin olive oil, divided",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cloves garlic",
@@ -450,5 +450,13 @@
     "In a large pot of boiling salted water, put half the romanesco. Cook until soft, 5 to 6 minutes. Using a spider, remove the romanesco and set aside. Turn off the heat, but keep the pot of water to use later for cooking the pasta.",
     "In a blender, blend the cooked romanesco, half the pecorino, and 1 tablespoon of the olive oil until creamy and smooth.",
     "In a medium-large pan over medium heat, warm the remaining 2 tablespoons olive oil, the garlic, and red pepper flakes for a minute. Stir in the romanesco puree, and continue cooking for another couple of minutes. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner."
-  ]
+  ],
+  "time": {
+    "total": 131
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

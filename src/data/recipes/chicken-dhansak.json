@@ -34,23 +34,23 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "red split lentils, rinsed and cooked in water until soft",
-      "amount": "180g (1 cup)"
+      "amount": "180g"
     },
     {
       "item": "pre-cooked stewed chicken, plus a little of its cooking stock or some spice stock",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "pineapple juice",
-      "amount": "115ml (scant ½ cup)"
+      "amount": "115ml"
     },
     {
       "item": "tinned (canned) pineapple rings, cut into pieces",
@@ -74,5 +74,10 @@
     "Pour in half of the base curry sauce and let it simmer for about 1 minute. Add the cooked lentils and stir it all up. Watch closely as lentils have a tendency to scorch on the bottom of the pan, so reduce the heat if necessary. Now add the rest of the sauce and the pre-cooked stewed chicken along with a splash of cooking stock or spice stock for additional flavour. Pour in the pineapple juice and add the pineapple pieces. Simmer for a further 3–5 minutes, adding more base curry sauce or stock if the mixture becomes too thick.",
     "Season with salt, stir in the lemon juice and top with the coriander (cilantro) to serve."
   ],
-  "image": "/recipes/chicken-dhansak.jpg"
+  "image": "/recipes/chicken-dhansak.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

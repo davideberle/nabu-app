@@ -17,7 +17,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely chopped onion",
@@ -37,27 +37,27 @@
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coconut sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Slow Cooker Versatile Seitan Balls, cubed (page 279)",
@@ -71,5 +71,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

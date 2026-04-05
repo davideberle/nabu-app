@@ -16,19 +16,19 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "onion, finely chopped",
@@ -44,7 +44,7 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Roz Bi Shaariya or Roz Asfar",
@@ -58,5 +58,10 @@
     "Add the ground walnuts to a large, dry skillet and toast over low heat for 5 minutes, or until fragrant, stirring continuously. (To ensure the walnuts do not burn, remove from the heat as soon as they are fragrant.) Add the toasted walnuts to the pot, cover the pot halfway with the lid, and continue to simmer for 15 minutes, adding more water if required to ensure the chicken is mostly submerged and the stew consistency is not too thick. Stir occasionally.",
     "Add the pomegranate molasses and sugar. Stir, taste, and adjust the seasoning by adding the remaining ½ teaspoon salt if necessary. Let simmer for 10 to 15 minutes, uncovered, then turn off the heat. The stew consistency should be thick but pourable; the texture will be slightly grainy, which is fine.",
     "Garnish with the pomegranate arils and chopped parsley and serve with rice."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

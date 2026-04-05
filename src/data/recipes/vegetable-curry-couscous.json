@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "A variety of veggies make this interesting side dish versatile. You can serve chicken in an apple, onion, and curry sauce over the top and sprinkle it with flaked coconut. It can also be made with quinoa; just adjust the cooking time.",
   "time": {
-    "prep": "30 mins"
+    "prep": "30 mins",
+    "total": 15
   },
   "ingredients": [
     {
@@ -81,5 +82,10 @@
     "Pour in the chicken stock, bring to a boil, and stir in the carrot, tomatoes, couscous, raisins, and currants. Season with curry powder, turmeric, salt, and black pepper; bring the mixture back to a boil. Reduce heat to low, cover the pan, and allow to cook for 5 minutes .",
     "Remove from heat. Let the couscous stand covered for 5 minutes, and fluff with a fork. Sprinkle with sliced almonds."
   ],
-  "image": "/recipes/vegetable-curry-couscous.jpg"
+  "image": "/recipes/vegetable-curry-couscous.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

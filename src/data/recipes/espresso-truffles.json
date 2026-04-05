@@ -18,27 +18,27 @@
     },
     {
       "item": "/ 14 grams instant espresso powder",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "/ 26 grams organic granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "mild tasting extra-virgin olive oil (optional, but recommended for sheen)",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "Kahlua or other coffee-flavored liqueur (optional)",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "Dutch-process cocoa powder, for coating (optional)",
@@ -59,5 +59,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -40,5 +40,13 @@
     "When ready to cook, pour about a 5cm (2in) depth of oil into a wok and heat over a high heat. When a few breadcrumbs sizzle immediately when thrown in, it is ready. Lower a nargisi kofta into the oil and fry all over for about 3 minutes until nicely browned. Remove with a slotted spoon to a plate lined with kitchen paper, and repeat until all the koftas are fried.",
     "To finish, preheat the oven to 200°C/400°F/gas mark 6 or prepare your barbecue for indirect cooking. If refrigerated, remove the koftas from the fridge to come to room temperature. Place the fried koftas on a baking tray and roast in the oven or barbecue for about 7 minutes – the meat should already be cooked from the frying, so the oven or barbecue roasting will just warm them through."
   ],
-  "image": "/recipes/nargisi-kofta-indian-scotch-egg.jpg"
+  "image": "/recipes/nargisi-kofta-indian-scotch-egg.jpg",
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

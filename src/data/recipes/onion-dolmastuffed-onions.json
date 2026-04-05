@@ -49,47 +49,47 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DOLMA"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DOLMA"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DOLMA"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOLMA"
     },
     {
       "item": "dried dill",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOLMA"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOLMA"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "DOLMA"
     },
     {
       "item": "tomato paste",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "DOLMA"
     },
     {
       "item": "fresh lemon juice",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DOLMA"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "BAKING LIQUID"
     },
     {
@@ -109,12 +109,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BAKING LIQUID"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAKING LIQUID"
     },
     {
@@ -142,5 +142,10 @@
     "Pour the sauce all over the onions. Tightly cover the dish with aluminum foil and bake for 1½ hours. After 1 hour, check the onions to ensure there is enough liquid for them to continue cooking. There should be at least 1 inch (2.5 cm) of liquid in the dish; if needed, add another ½ cup (120 ml) of water. Remove the stuffed onions when both the rice and onions are very soft. Let cool for 10 minutes before serving.",
     "Serve with salad and yogurt."
   ],
-  "image": "/recipes/onion-dolmastuffed-onions.jpg"
+  "image": "/recipes/onion-dolmastuffed-onions.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

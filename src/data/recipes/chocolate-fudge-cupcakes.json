@@ -26,11 +26,11 @@
     },
     {
       "item": "/ 5 grams baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "any nondairy milk",
@@ -42,15 +42,15 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1½ teaspoons / 7.5 ml"
+      "amount": "1½ tsp / 7.5 ml"
     },
     {
       "item": "chocolate extract (optional)",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Thick and Glossy Fudge Frosting (page 271)",
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -47,7 +47,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "sumac",
@@ -64,5 +64,13 @@
     "Preheat a large frying pan over a medium heat if using gas, or a medium-high heat if cooking on electric (you may want to use 2 pans at a time if doing all 4 chicken breasts at once), then drizzle in a good amount of olive oil. Put in the chicken breasts and fry them for 8–10 minutes or so on one side and 6–8 minutes on the other side. To check if it is cooked, prod the fattest part of each chicken breast with your finger. If it feels very springy, it needs to cook for a bit longer, but if it feels firm, your chicken is cooked.",
     "Place the chicken on a chopping board and allow it to rest for a few minutes so that the juices can flow back through the meat, ensuring it remains moist and tender. Slice into strips and put several into each wrap with some onion slices. Dollop some of the yogurt on top (about 3 teaspoons per wrap), drizzle with pomegranate molasses, garnish with rocket and serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

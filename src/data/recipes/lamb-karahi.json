@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "lamb leg and shoulder, cut into pieces, ideally still with bone in",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -75,7 +75,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "100g (scant ½ cup)",
+      "amount": "100g",
       "group": "MARINADE"
     },
     {
@@ -101,5 +101,10 @@
     "Check for seasoning and add more salt or spices to taste. This is a quite dry curry so that it can easily be soaked up with fresh naans. When the meat is really tender, add the ginger, fresh chillies and garam masala and serve topped with coriander (cilantro).",
     "That’s it! This may be simple, but believe me no one will know. Serve it to friends and they’ll think you’ve been secretly working as the head chef of Imran’s!"
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -12,35 +12,35 @@
   "ingredients": [
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "seven spice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "bread crumbs",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cloves garlic, crushed",
@@ -66,5 +66,10 @@
     "Pour in the broth and add the meatballs back into the pot. Cover the pot with the lid and bring to a boil over high heat. Once boiling, reduce the heat to medium and let simmer, covered, for 20 minutes.",
     "Remove the lid and add the orzo. Stir well, then cover and let cook for 15 minutes. Taste and adjust the soup for salt if necessary. Check the orzo to ensure it is cooked to al dente, or softer if desired.",
     "Ladle into bowls, garnish with chopped parsley, and serve with pita bread."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

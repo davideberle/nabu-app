@@ -46,15 +46,15 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g"
     },
     {
       "item": "lamb, cut into small pieces on or off the bone",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "ghee",
-      "amount": "8 generous tbsp (¾ cup)"
+      "amount": "8 generous tbsp"
     },
     {
       "item": "black peppercorns",
@@ -86,5 +86,10 @@
     "When ready to cook, heat the ghee over a medium–high heat in a handi or high-sided saucepan. When bubbling hot, add the whole spices and stir them around for about 30 seconds. Tip in the marinated meat with all its marinade. Reduce the heat to medium and simmer for about 15 minutes, stirring regularly. The yoghurt will become thin and the ghee will rise to the top. Add 1 litre (4½ cups) of water and bring to a rolling simmer. Cover and reduce the heat to low and cook for a further 15 minutes without lifting the lid. Give it all a good stir, cover again and continue cooking for another 15 minutes – do not lift the lid during this time. Check the meat. It should still be a bit tough but beginning to become tender. Cover again and continue cooking, covered, for a further 20–30 minutes, or until the meat is deliciously tender.",
     "Season with salt and stir in the rose water just before serving."
   ],
-  "image": "/recipes/lamb-korma-handi.jpg"
+  "image": "/recipes/lamb-korma-handi.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "The marinade is incredible, and the pieces of prune and apricot create a nice sweet balance. Serve with Basmati rice.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -81,5 +82,10 @@
     "Bring the brown rice and water to a boil in a saucepan over high heat. Reduce the heat to medium-low, cover, and simmer until the rice is tender and the liquid has been absorbed for about 45 to 50 minutes.",
     "Heat the olive oil in a large skillet over medium-high heat, and cook the chicken pieces until browned on all sides. Sprinkle the chicken with prunes and apricots; pour the marinade into the skillet. Bring to a simmer, cover, and cook for 30 minutes. Uncover and simmer until the sauce is slightly thickened, the chicken is no longer pink at the bone, and the juices run clear for about 15 minutes. An instant-read thermometer inserted near the bone should read 165 degrees F (74 degrees C). Serve over the brown rice."
   ],
-  "image": "/recipes/moroccan-chicken-sann.jpg"
+  "image": "/recipes/moroccan-chicken-sann.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -36,5 +36,13 @@
     "Bake for about 20 minutes, shaking the dish from time to time to stop the vegetables from sticking to the bottom of the dish. They should start to colour lightly. Remove from the oven, season with salt and pepper and stir in the parsley before serving.",
     "I sometimes like to sprinkle on 3 tablespoons fresh breadcrumbs and 4 tablespoons freshly grated parmigiano before baking."
   ],
-  "image": "/recipes/baked-fennel.jpg"
+  "image": "/recipes/baked-fennel.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

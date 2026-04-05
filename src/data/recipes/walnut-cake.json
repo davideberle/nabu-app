@@ -58,5 +58,13 @@
     "In a separate bowl, whisk the egg whites to stiff peaks. Fold into the cake batter then pour into the cake tin. Transfer to the oven and bake for 35–40 minutes.",
     "Remove from the oven, release the sides of the tin and remove the cake. Leave to cool completely then place the cake on a serving plate and dust with icing sugar."
   ],
-  "image": "/recipes/walnut-cake.jpg"
+  "image": "/recipes/walnut-cake.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

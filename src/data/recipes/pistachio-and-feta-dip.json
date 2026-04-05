@@ -11,15 +11,15 @@
   "ingredients": [
     {
       "item": "shelled pistachio nuts",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "olive oil",
-      "amount": "75ml (2½fl oz)"
+      "amount": "75ml"
     },
     {
       "item": "feta cheese",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "handful of dill, leaves picked and roughly chopped",
@@ -56,5 +56,13 @@
   "image": "/recipes/pistachio-and-feta-dip.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

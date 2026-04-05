@@ -9,7 +9,8 @@
   "intro": "This simple salad (shown on picture 1 and picture 2) makes a perfect side for your summer barbecue.",
   "time": {
     "prep": "10 MINS, PLUS STANDING TIME",
-    "cook": ""
+    "cook": "",
+    "total": 15
   },
   "ingredients": [
     {
@@ -48,5 +49,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

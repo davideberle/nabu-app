@@ -14,27 +14,27 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "soya milk",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "200 g (7 oz/1⅔ cups)"
+      "amount": "200 g"
     },
     {
       "item": "all-purpose seasoning",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "panko breadcrumbs",
-      "amount": "200 g (7 oz/3⅓ cups)"
+      "amount": "200 g"
     },
     {
       "item": "red kuri squash, cut into thick slices",
@@ -50,17 +50,17 @@
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "amount": "400 ml",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
       "item": "roughly chopped coriander (cilantro) leaves",
-      "amount": "25 g (¾ oz/½ cup)",
+      "amount": "25 g",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
       "item": "roughly chopped chives",
-      "amount": "15 g (½ oz/¼ cup)",
+      "amount": "15 g",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
@@ -75,22 +75,22 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
       "item": "lemon juice",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
       "item": "Jamaican curry powder",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "VIBRANT GREEN CURRY SAUCE"
     },
     {
       "item": "agave or maple syrup",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "VIBRANT GREEN CURRY SAUCE"
     }
   ],
@@ -107,5 +107,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

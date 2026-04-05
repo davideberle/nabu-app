@@ -22,7 +22,7 @@
     },
     {
       "item": "can hearts of palm, drained",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "nori flakes",
@@ -73,5 +73,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

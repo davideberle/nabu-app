@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "ground chia seeds or chia seeds, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dairy-free butter",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "coconut sugar",
@@ -25,7 +25,7 @@
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "whole wheat flour",
@@ -33,15 +33,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "raw shelled hempseed",
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

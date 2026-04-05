@@ -22,11 +22,11 @@
     },
     {
       "item": "extra-virgin olive oil, plus more for oiling",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -34,7 +34,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of cayenne pepper",
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

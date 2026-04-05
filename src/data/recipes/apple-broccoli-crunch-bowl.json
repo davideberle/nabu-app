@@ -45,15 +45,15 @@
     },
     {
       "item": "maple syrup (you can use up to 2 tablespoons)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -64,5 +64,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried wood ear mushrooms, soaked and minced",
@@ -29,23 +29,23 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "soy sauce or vegan fish sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegetable or mushroom stock powder, to taste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "squares (10 by 10 inches/25 by 25 cm) banana leaves, prepped (here)",
@@ -69,11 +69,11 @@
     },
     {
       "item": "vegetable oil, plus more for greasing wrappers and batter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegan fish dipping sauce",
@@ -96,5 +96,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 33
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

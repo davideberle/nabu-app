@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "rose or orange blossom water (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "box (16 ounces, or 454 g) frozen kataifi dough (shredded phyllo dough), thawed for 1 hour",
@@ -35,5 +35,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

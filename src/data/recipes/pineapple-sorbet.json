@@ -26,5 +26,10 @@
     "Make a syrup with the sugar and water and, when cool, add to the pineapple purée. Taste to see if it sweet enough and add more sugar if necessary. Churn the mixture in an ice cream machine until fluffy.",
     "You can add 3–4 finely chopped fresh mint leaves before putting the mixture into the ice cream machine."
   ],
-  "image": "/recipes/pineapple-sorbet.jpg"
+  "image": "/recipes/pineapple-sorbet.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

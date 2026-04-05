@@ -17,7 +17,7 @@
     },
     {
       "item": "dried oregano",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Salt and pepper, to taste",
@@ -43,5 +43,13 @@
     "Even add some of the cherry tomatoes, ham, and feta cheese in each muffin.",
     "Bake for 20 minutes.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

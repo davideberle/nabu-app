@@ -35,5 +35,10 @@
     "Mix the remaining lemon juice, olive oil, salt and pepper and put this into a serving dish.",
     "If the artichokes have a choke, cut it out very carefully and then slice them very finely. Dry the slices on kitchen paper. Immediately put the artichoke slices in the lemon and olive oil sauce. Add the parmigiano slices to the artichokes, and serve."
   ],
-  "image": "/recipes/raw-artichokes-with-parmigiano.jpg"
+  "image": "/recipes/raw-artichokes-with-parmigiano.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

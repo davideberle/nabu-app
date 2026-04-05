@@ -18,7 +18,7 @@
     },
     {
       "item": "fresh ginger juice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fluid ounce freshly squeezed lime juice",
@@ -45,5 +45,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -100,5 +100,13 @@
     "After about 5 minutes, the koftas should be almost cooked through. Check them, moving them around carefully if required. Continue cooking, covered, for a couple more minutes, then stir in the garlic and ginger paste. Next add the tomatoes, ground coriander, chilli powder and turmeric, then the fresh chillies and stir everything to combine. If you like more sauce, you could add a little water or Spice stock at this stage.",
     "Cover and simmer for about 5 more minutes. Check for seasoning and add the garam masala, and salt to taste. To serve, stir in the chickpeas and top with chopped coriander, and mint if you like."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "ground medium-dark or dark roast coffee, such as Café Du Monde, or French, Italian, or Spanish roast",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "About ⅔ cup hot water",
@@ -26,5 +26,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

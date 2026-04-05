@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "medium potatoes",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "oil",
@@ -101,5 +101,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

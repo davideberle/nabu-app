@@ -22,15 +22,15 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "unsweetened dried cranberries",
@@ -45,5 +45,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

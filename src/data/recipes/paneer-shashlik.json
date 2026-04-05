@@ -62,7 +62,7 @@
     },
     {
       "item": "paneer cheese, cubed",
-      "amount": "300g (10½ oz)"
+      "amount": "300g"
     }
   ],
   "method": [
@@ -73,5 +73,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

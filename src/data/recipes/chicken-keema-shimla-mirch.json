@@ -58,15 +58,15 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "600ml (2½ cups)"
+      "amount": "600ml"
     },
     {
       "item": "minced (ground) chicken",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "thick coconut milk",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "small tomatoes, quartered",
@@ -95,5 +95,10 @@
     "Add the chicken and stir it into the sauce. Let this simmer for about 10 minutes until the chicken is cooked through. (In restaurants, pre-cooked keema would be used as a time saver so if you’re working ahead, feel free to do the same, following my recipe.) Once cooked through, add the rest of the base sauce and the coconut milk and stir it all to combine.",
     "Add the quartered tomatoes. Season with salt and add more of the ground spices, if you want. Serve at the table with the ginger, spring onions (scallions), coriander (cilantro) and sliced chillies on the side or as a garnish. I have provided quantities for the toppings to start, but you might just find you like them so much you want to add more."
   ],
-  "image": "/recipes/chicken-keema-shimla-mirch.jpg"
+  "image": "/recipes/chicken-keema-shimla-mirch.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

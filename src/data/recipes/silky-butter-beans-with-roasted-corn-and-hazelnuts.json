@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "hazelnuts",
-      "amount": "50 g (2 oz/scant ⅓ cup)"
+      "amount": "50 g"
     },
     {
       "item": "onion, finely diced",
@@ -68,5 +68,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

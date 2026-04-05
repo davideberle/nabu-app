@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "yellow onion, diced",
@@ -41,7 +41,7 @@
     },
     {
       "item": "chopped flat-leaf parsley",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -51,5 +51,13 @@
     "Crack the eggs on top of the tomato sauce.",
     "Cover and cook until eggs are done, about 5 minutes.",
     "Serve with the parsley."
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

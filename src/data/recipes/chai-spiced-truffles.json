@@ -22,15 +22,15 @@
     },
     {
       "item": "/ 3 grams ground ginger, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "/ 4 grams garam masala, plus more for coating",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "/ 2 grams ground cinnamon",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "⅜ teaspoon grated nutmeg",
@@ -54,11 +54,11 @@
     },
     {
       "item": "/ 54 grams coconut sugar (substitute 3 tablespoons each organic whole cane sugar and organic granulated sugar)",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "almond milk",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "Scant ¼ teaspoon flaked salt, crushed, plus ¼ teaspoon for coating",
@@ -83,5 +83,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

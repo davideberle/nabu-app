@@ -22,27 +22,27 @@
     },
     {
       "item": "baking soda",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "heaping tablespoons finely ground golden flaxseeds",
@@ -50,7 +50,7 @@
     },
     {
       "item": "water",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "raw cane sugar",
@@ -62,7 +62,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "walnuts, toasted and skinned (see sidebar), then chopped",
@@ -74,15 +74,15 @@
     },
     {
       "item": "freshly squeezed orange juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely grated lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -98,5 +98,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -30,7 +30,7 @@
     },
     {
       "item": "bulgur, soaked in water for 2 hours",
-      "amount": "225g (1 cup)"
+      "amount": "225g"
     },
     {
       "item": "large skinless chicken leg with thigh (about 350g/12½oz)",
@@ -46,7 +46,7 @@
     },
     {
       "item": "shallots, thinly sliced",
-      "amount": "50g (2oz)"
+      "amount": "50g"
     },
     {
       "item": "ground turmeric",
@@ -65,5 +65,10 @@
     "Cover with water and simmer for another 30–40 minutes until the chicken and bulgur are like mush – the finished dish should have the texture of cooked oatmeal. You can use a potato masher to mash it all up really well.",
     "Season with salt and garnish with the nuts and shallots, if you like."
   ],
-  "image": "/recipes/chicken-aleesa.jpg"
+  "image": "/recipes/chicken-aleesa.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

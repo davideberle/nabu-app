@@ -10,15 +10,15 @@
   "ingredients": [
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g"
     },
     {
       "item": "full-fat (whole) milk",
-      "amount": "400ml (scant ¾ cups)"
+      "amount": "400ml"
     },
     {
       "item": "tinned (canned) mango pulp or the equivalent ripe cut mango pieces",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "sugar",
@@ -52,5 +52,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

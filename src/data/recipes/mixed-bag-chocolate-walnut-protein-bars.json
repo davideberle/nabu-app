@@ -9,19 +9,19 @@
   "ingredients": [
     {
       "item": "peanut butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "coconut oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "ground chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "quick-cooking oats",
@@ -45,15 +45,15 @@
     },
     {
       "item": "protein powder",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

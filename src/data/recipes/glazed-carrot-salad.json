@@ -14,23 +14,23 @@
     },
     {
       "item": "plus ½ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "peanut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "clove garlic, minced",
@@ -38,7 +38,7 @@
     },
     {
       "item": "cumin seeds, toasted",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "packed chopped cilantro",
@@ -46,11 +46,11 @@
     },
     {
       "item": "roasted peanuts, crushed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chopped fresh mint",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -64,5 +64,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

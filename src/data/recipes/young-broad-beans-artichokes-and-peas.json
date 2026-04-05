@@ -55,5 +55,13 @@
     "Remove the artichokes from the lemon water and dry them thoroughly on kitchen paper. Heat 2 tablespoons of the oil and all the butter in a frying pan. Add the artichokes and shallots and cook gently for a few minutes.",
     "Add 125 ml water to the pan. Stir in the broad beans and peas and cook until they are just tender, about 8 minutes. Season with salt and pepper and stir in the herbs and the remaining olive oil. Serve at room temperature."
   ],
-  "image": "/recipes/young-broad-beans-artichokes-and-peas.jpg"
+  "image": "/recipes/young-broad-beans-artichokes-and-peas.jpg",
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

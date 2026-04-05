@@ -64,5 +64,13 @@
   "image": "/recipes/pur-ed-beets-with-yogurt-and-za-atar.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

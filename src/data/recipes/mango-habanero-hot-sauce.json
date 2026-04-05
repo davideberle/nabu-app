@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "peanut oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "finely diced yellow onion",
@@ -22,15 +22,15 @@
     },
     {
       "item": "cumin seeds, toasted and ground",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -42,7 +42,7 @@
     },
     {
       "item": "finely grated lime zest",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "diced ripe mango",
@@ -54,19 +54,19 @@
     },
     {
       "item": "champagne vinegar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "freshly ground white pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "minced flat-leaf parsley",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

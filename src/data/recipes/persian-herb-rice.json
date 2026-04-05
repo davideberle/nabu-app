@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "basmati rice",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "sea salt",
@@ -44,7 +44,7 @@
     },
     {
       "item": "butter",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     }
   ],
   "method": [
@@ -58,5 +58,13 @@
   "image": "/recipes/persian-herb-rice.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

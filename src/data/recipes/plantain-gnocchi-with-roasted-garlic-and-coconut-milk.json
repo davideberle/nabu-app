@@ -19,17 +19,17 @@
     },
     {
       "item": "olive oil, plus extra for roasting the garlic and frying the gnocchi",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "GNOCCHI"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GNOCCHI"
     },
     {
       "item": "plain (all-purpose) flour, plus extra for dusting",
-      "amount": "100 g (3½ oz/generous ¾ cup)",
+      "amount": "100 g",
       "group": "GNOCCHI"
     },
     {
@@ -44,27 +44,27 @@
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "amount": "400 ml",
       "group": "SAUCE"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SAUCE"
     },
     {
       "item": "white miso paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SAUCE"
     },
     {
       "item": "coconut vinegar or lemon juice",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SAUCE"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
@@ -90,5 +90,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

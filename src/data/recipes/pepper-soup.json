@@ -13,19 +13,19 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground ehuru (calabash nutmeg)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground uda (grains of selim)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground or whole uziza seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube Salt to taste",
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

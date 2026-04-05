@@ -19,7 +19,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "EGGPLANT"
     },
     {
@@ -39,12 +39,12 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "POTATOES"
     },
     {
       "item": "black pepper, plus more if needed",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "POTATOES"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FILLING"
     },
     {
@@ -74,27 +74,27 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FILLING"
     },
     {
       "item": "finely chopped fresh thyme (or substitute with 2 tablespoons dried oregano or basil)",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FILLING"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
@@ -111,5 +111,10 @@
     "In a 9 x 13-inch (23 x 33 cm) baking dish, layer all the baked eggplant to cover the base of the dish, overlapping the pieces as necessary. Spread all the beef mixture evenly on top. Spoon the mashed potatoes on top, adding large spoonfuls to cover the surface, then use a flat or offset spatula to smooth the potatoes into an even layer. Ensure all the edges are sealed with the potato.",
     "Use a fork and run it all along the surface of the potatoes in rows, pressing down gently to make grooves. Bake for 30 minutes. Spray the surface of the baking dish with oil, then broil for 2 minutes to brown the top slightly. Let cool for 10 minutes before slicing and serving."
   ],
-  "image": "/recipes/eggplant-and-potato-moussaka.jpg"
+  "image": "/recipes/eggplant-and-potato-moussaka.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

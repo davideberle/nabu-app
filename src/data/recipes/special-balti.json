@@ -30,7 +30,7 @@
     },
     {
       "item": "pre-cooked lamb keema",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "tomato purée",
@@ -54,7 +54,7 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "150ml (generous ½ cup)"
+      "amount": "150ml"
     },
     {
       "item": "pieces of tandoori chicken tikka",
@@ -66,7 +66,7 @@
     },
     {
       "item": "thick coconut milk",
-      "amount": "100ml (3½ fl oz)"
+      "amount": "100ml"
     },
     {
       "item": "handfuls of chopped spinach",
@@ -98,5 +98,10 @@
     "Now add the coconut milk and spinach. It will look like there is a lot in the pan right now, but the spinach cooks down quickly. When it does, add the prawns (shrimp) and cook for about 2 minutes until they are pink and cooked through. Be sure to top up the curry with some base sauce as needed. Season with salt.",
     "To finish, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the pan. Add the chickpeas (if using) and squeeze the lemon juice over the top."
   ],
-  "image": "/recipes/special-balti.jpg"
+  "image": "/recipes/special-balti.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

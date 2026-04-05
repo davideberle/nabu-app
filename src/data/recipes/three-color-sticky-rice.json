@@ -25,7 +25,7 @@
     },
     {
       "item": "white Chinese rice cooking wine (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sticky rice, rinsed, soaked for 4 to 8 hours, and drained",
@@ -33,7 +33,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "full-fat, unsweetened coconut milk",
@@ -53,7 +53,7 @@
     },
     {
       "item": "sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

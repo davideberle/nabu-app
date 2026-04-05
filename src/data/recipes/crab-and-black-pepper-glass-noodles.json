@@ -24,15 +24,15 @@
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "lightly packed finely chopped fresh cilantro, stems included",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "thinly sliced shallot or small red or yellow onion",
@@ -57,5 +57,10 @@
     "In a large nonstick skillet over medium heat, warm the canola oil. Add the shallot and cook, stirring, for about 2 minutes, until soft. Then, add the celery and crabmeat and cook for about 1 minute, until aromatic and the celery looks jadelike and is slightly soft. Add the noodles and cook, stirring, for 1 to 2 minutes, until they begin to soften. Lower the heat slightly, give the seasoning liquid a good stir, and pour over the noodles. Quickly stir and gently fold the mixture into the noodles to evenly distribute the flavors. In 1 to 2 minutes, the noodles will become translucent, plump, and pale golden. Remove from the heat.",
     "Transfer the noodles to a plate and garnish with the cilantro sprigs. Serve warm."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

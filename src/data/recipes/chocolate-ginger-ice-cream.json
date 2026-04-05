@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 18 grams organic whole cane sugar or coconut sugar, ground in a blender until powdered",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "plus 1 tablespoon / 31 grams Dutch-process cocoa powder",
@@ -30,7 +30,7 @@
     },
     {
       "item": "guar gum Candied ginger, for serving (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -43,5 +43,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

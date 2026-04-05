@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "The preserved lemon in this extremely tasty dish brings out the full flavor of the lamb! These lamb chops can be served on a bed of couscous, with tabbouleh as a side dish. Enjoy with a wine of your choice, keeping in mind that this dish is quite spicy and has the tang of the preserved lemon. A medium white such as chardonnay or even a Mosel is preferred. A mild to sweet red wine would also be great.",
   "time": {
-    "prep": "35 mins"
+    "prep": "35 mins",
+    "total": 5
   },
   "ingredients": [
     {
@@ -57,5 +58,10 @@
     "Cook the lamb rack on the preheated grill until cooked to the desired degree of doneness, about 4 minutes per side for medium-rare. Baste occasionally with the warmed relish. Once cooked, remove from grill, and allow it to rest for 5 minutes before slicing into individual chops.",
     "To serve, arrange lamb chops on a platter, spoon some of the warmed relishes over them, and sprinkle with the reserved chopped herbs."
   ],
-  "image": "/recipes/lamb-chops-with-preserved-lemon-moroccan-style.jpg"
+  "image": "/recipes/lamb-chops-with-preserved-lemon-moroccan-style.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

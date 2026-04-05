@@ -14,11 +14,11 @@
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "3 tablespoon"
+      "amount": "3 tbsp"
     },
     {
       "item": "agave nectar, or to taste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of coarse sea salt",
@@ -34,15 +34,15 @@
     },
     {
       "item": "finely grated lime zest",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced fresh ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "minced fresh mint",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

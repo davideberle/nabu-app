@@ -18,23 +18,23 @@
     },
     {
       "item": "/ 15 grams raw cacao powder, plus more for coating (optional)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "/ 27 grams lucuma",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus 2 teaspoons / 33 grams maca",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 27 grams coconut sugar, plus more for rolling (optional)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "alcohol-free vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -30,7 +30,7 @@
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "apple cider vinegar",
@@ -62,19 +62,19 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "whole allspice berries, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "minced cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Salty Lemon Cream with Parsley, for serving",
@@ -95,5 +95,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 100
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

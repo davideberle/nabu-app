@@ -18,23 +18,23 @@
     },
     {
       "item": "warm water",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "plus 1 teaspoon / 20 ml coconut oil, melted",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "nama shoyu, or any soy sauce or tamari",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

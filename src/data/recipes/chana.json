@@ -22,7 +22,7 @@
     },
     {
       "item": "dried chickpeas (garbanzo beans), soaked in water overnight, then drained",
-      "amount": "250g (1½ cups)"
+      "amount": "250g"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

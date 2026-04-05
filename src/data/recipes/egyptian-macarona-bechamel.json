@@ -16,27 +16,27 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tomato passata (puree)",
@@ -56,15 +56,15 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -74,5 +74,10 @@
     "MEANWHILE, MAKE THE BECHAMEL SAUCE: In a medium saucepan, melt the butter over medium-low heat. Add the flour and whisk vigorously for 4 to 5 minutes, until the flour absorbs all the butter and looks dry. Add the milk gradually and continue whisking the bechamel for 8 to 10 minutes, until it starts to thicken. Stir in the 1½ teaspoons salt, ½ teaspoon pepper, and nutmeg. Dip a spoon into the bechamel, then run your finger down the spoon’s back; if the sauce separates, it is ready.",
     "Mix the pasta and beef sauce one more time and use a spoon to flatten its surface. Slowly pour the bechamel on top, spreading it evenly.",
     "Bake, uncovered, for 20 to 25 minutes. If the sauce starts to leak to the top and around the edges, that’s normal. Broil the top for 3 to 4 minutes, until golden, then serve immediately."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

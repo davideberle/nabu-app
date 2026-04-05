@@ -42,7 +42,7 @@
     },
     {
       "item": "tinned (canned) chopped tomatoes, blended",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "single (light) cream",
@@ -82,27 +82,27 @@
     },
     {
       "item": "grated cauliflower",
-      "amount": "100g (3½oz)",
+      "amount": "100g",
       "group": "PAPAD ROLLS"
     },
     {
       "item": "grated carrot",
-      "amount": "60g (2oz)",
+      "amount": "60g",
       "group": "PAPAD ROLLS"
     },
     {
       "item": "grated cabbage",
-      "amount": "60g (2oz)",
+      "amount": "60g",
       "group": "PAPAD ROLLS"
     },
     {
       "item": "finely chopped green beans",
-      "amount": "50g (⅓ cup)",
+      "amount": "50g",
       "group": "PAPAD ROLLS"
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)",
+      "amount": "200g",
       "group": "PAPAD ROLLS"
     },
     {
@@ -121,5 +121,10 @@
   "image": "/recipes/vegetable-stuffed-papad-roll-curry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

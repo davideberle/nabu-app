@@ -17,7 +17,7 @@
     },
     {
       "item": "salt, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "water",
@@ -25,7 +25,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fresh shiitake mushrooms, stems trimmed and roughly chopped",
@@ -41,19 +41,19 @@
     },
     {
       "item": "vegetable oil, divided",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chopped leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "mushroom or vegetable stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "water",
@@ -69,7 +69,7 @@
     },
     {
       "item": "sugar",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "crushed roasted peanuts",
@@ -96,5 +96,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

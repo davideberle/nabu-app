@@ -35,5 +35,10 @@
     "Melt the butter in a frying pan, then add the garlic and the sage leaves. Let the butter bubble but do not burn it. Discard the garlic. The sage leaves should be crisp.",
     "Pour the cooked rice on a serving dish. Sprinkle the cheese over the rice and then the bubbling hot butter and sage over the cheese. Serve immediately."
   ],
-  "image": "/recipes/rice-with-sage-and-parmigiano.jpg"
+  "image": "/recipes/rice-with-sage-and-parmigiano.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

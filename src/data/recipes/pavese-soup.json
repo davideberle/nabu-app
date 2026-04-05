@@ -47,5 +47,10 @@
     "Bring the chicken stock to a simmer and season. Keep the stock at simmering point while you grill or toast the ciabatta slices.",
     "After toasting, place each slice of bread into a hot bowl. Combine the cheeses and sprinkle them over the bread. Pour the hot stock into the bowls and carefully break an egg on top of each slice of bread. Sprinkle some parsley and grind some pepper over the eggs. The heat of the stock should just cook the whites of the eggs, leaving the yolks deliciously runny."
   ],
-  "image": "/recipes/pavese-soup.jpg"
+  "image": "/recipes/pavese-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

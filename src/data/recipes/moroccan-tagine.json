@@ -8,7 +8,8 @@
   "servings": "5 servings",
   "intro": "Tagines are Moroccan slow-cooked meat, fruit, and vegetable dishes that are almost invariably made with mutton. Using lamb cuts down the cooking time, but if you can find good hogget (older than lamb, younger than mutton, commonly labeled 'baking legs' and sold cheaply), that will do very well",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 125
   },
   "ingredients": [
     {
@@ -64,5 +65,10 @@
     "Heat the oil in a large pot or Dutch oven over medium heat. Fry the onion in the oil until soft. Add the lamb meat to the pan, and fry until just browned on the outside. Season with cumin, coriander, ginger, cinnamon, salt, and pepper. Pour just enough water into the pot to cover the meat. Cover, and simmer over low heat for 1 1/2 to 2 hours until meat is tender and the mixture is stew-like. Displace lid a little after an hour if there appears to be too much liquid.",
     "Add the pears, golden raisins, and almonds to the stew, and cook for another 5 minutes or so until the pears are soft. Serve with rice."
   ],
-  "image": "/recipes/moroccan-tagine.jpg"
+  "image": "/recipes/moroccan-tagine.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

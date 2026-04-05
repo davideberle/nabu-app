@@ -22,15 +22,15 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "finely grated lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of fine sea salt",
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

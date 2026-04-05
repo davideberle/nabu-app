@@ -42,5 +42,13 @@
     "Now roll up the frittata like a swiss roll. Wrap the rolled frittata in aluminium foil and refrigerate for at least 1 hour or overnight.",
     "To serve, unwrap the frittata and cut it into slices about 2 cm thick. Serve as an antipasto or part of a larger antipasto platter."
   ],
-  "image": "/recipes/yellow-and-green-frittata.jpg"
+  "image": "/recipes/yellow-and-green-frittata.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

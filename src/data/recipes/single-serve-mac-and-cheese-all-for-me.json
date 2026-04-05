@@ -14,15 +14,15 @@
   "ingredients": [
     {
       "item": "macaroni (or another small pasta shape like orzo)",
-      "amount": "75 g (2½ oz)"
+      "amount": "75 g"
     },
     {
       "item": "non-dairy milk",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "water",
-      "amount": "50 ml (1 ¾ fl oz/3 tablespoons)"
+      "amount": "50 ml"
     },
     {
       "item": "pinch of salt",
@@ -30,7 +30,7 @@
     },
     {
       "item": "vegan sharp Cheddar, grated",
-      "amount": "30 g (1 oz)"
+      "amount": "30 g"
     },
     {
       "item": "knob of vegan block butter (optional)",
@@ -42,22 +42,22 @@
     },
     {
       "item": "miso paste",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "UMAMI BOMB"
     },
     {
       "item": "sun-dried tomato oil",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "UMAMI BOMB"
     },
     {
       "item": "yellow or Dijon mustard",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "UMAMI BOMB"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "UMAMI BOMB"
     }
   ],
@@ -69,5 +69,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

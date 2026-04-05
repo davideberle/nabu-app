@@ -13,7 +13,7 @@
     },
     {
       "item": "red wine or rum",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "sugar",
@@ -21,7 +21,7 @@
     },
     {
       "item": "vegan butter or margarine",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "can (13½ ounces/400 ml) full-fat, unsweetened coconut milk",
@@ -57,5 +57,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

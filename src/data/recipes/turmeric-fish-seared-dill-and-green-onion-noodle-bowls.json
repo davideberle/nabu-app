@@ -16,19 +16,19 @@
     },
     {
       "item": "packed finely grated peeled fresh turmeric, or 1½ teaspoons ground turmeric",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely grated peeled fresh ginger or galangal",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "anchovy paste",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "sour cream",
@@ -36,7 +36,7 @@
     },
     {
       "item": "canola oil, plus ¼ cup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Brimming ½ cup chopped fresh dill fronds",
@@ -48,11 +48,11 @@
     },
     {
       "item": "anchovy paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fresh lime juice",
@@ -60,7 +60,7 @@
     },
     {
       "item": "fish sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "water",
@@ -109,5 +109,10 @@
     "In a small saucepan, heat the remaining ¼ cup canola oil until faint wisps of smoke start rising. Pour the hot oil over the green onions and dill to sear and wilt them. Using two spoons, gently combine, and then place the fish on the table.",
     "When ready to eat, diners should put some of each component in an individual bowl, tearing the lettuce and herbs into bite-size pieces and breaking up the rice crackers. Dress with a small drizzle of sauce (wield chopsticks and spoon to mix) and gobble it up. Repeat until everything is gone."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,11 +22,11 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -39,5 +39,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

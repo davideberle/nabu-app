@@ -22,11 +22,11 @@
     },
     {
       "item": "small chunks of lamb or mutton on the bone",
-      "amount": "900g (2lb)"
+      "amount": "900g"
     },
     {
       "item": "lamb fat, cut into 2.5cm (1in) chunks",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "medium tomatoes, quartered",
@@ -51,5 +51,10 @@
     "Continue simmering the meat until all the water has been used. Taste a piece: if it is fall-apart tender, your job is almost done; if not, add a little water and continue simmering until the meat is tender to your liking. As the meat simmers, the oil will rise to the top – this is a good clue that the curry is ready. You can skim the fat off at this point or enjoy the curry with all the fat in. The curry should be quite moist, but there shouldn’t be a lot of sauce.",
     "To serve, season with salt and add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce."
   ],
-  "image": "/recipes/charsi-karahi.jpg"
+  "image": "/recipes/charsi-karahi.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

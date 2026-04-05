@@ -21,11 +21,11 @@
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dried oregano",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "mozzarella cheese, shredded or sliced",
@@ -43,5 +43,13 @@
     "Bake for 5-7 minutes.",
     "Top with the mozzarella cheese. Bake again until the cheese is completely melted, about 2-5 minutes.",
     "Serve with marinara, if desired."
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

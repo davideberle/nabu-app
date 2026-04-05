@@ -18,7 +18,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Dutch-process cocoa powder or chopped nuts, for coating (optional)",
@@ -35,5 +35,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

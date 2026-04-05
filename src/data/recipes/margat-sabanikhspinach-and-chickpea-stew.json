@@ -26,15 +26,15 @@
     },
     {
       "item": "tomato paste",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper, plus more if needed",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "frozen chopped spinach, thawed for 5 minutes",
@@ -66,5 +66,10 @@
     "Uncover and let simmer for another 20 to 30 minutes, until the stew has thickened. (Simmer longer if you prefer it thicker, or less if you prefer a soup consistency.) Taste and adjust the salt and pepper if necessary.",
     "Ladle into bowls and serve with pita bread and rice."
   ],
-  "image": "/recipes/margat-sabanikhspinach-and-chickpea-stew.jpg"
+  "image": "/recipes/margat-sabanikhspinach-and-chickpea-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

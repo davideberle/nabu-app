@@ -18,7 +18,7 @@
     },
     {
       "item": "spinach",
-      "amount": "225g (8oz)"
+      "amount": "225g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -50,15 +50,15 @@
     },
     {
       "item": "peas",
-      "amount": "30g (¼ cup)"
+      "amount": "30g"
     },
     {
       "item": "mint, finely chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "coriander (cilantro), finely chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "green chillies, finely chopped",
@@ -74,7 +74,7 @@
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "125g (4½oz)"
+      "amount": "125g"
     },
     {
       "item": "gram (chickpea) flour, plus extra if needed",
@@ -106,5 +106,10 @@
   "image": "/recipes/hara-bhara-kebab-burger.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

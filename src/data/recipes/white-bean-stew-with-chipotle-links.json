@@ -17,7 +17,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced onion",
@@ -45,11 +45,11 @@
     },
     {
       "item": "basil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "hot sauce, such as Tabasco (omit if you don’t like spicy; you can put it on the table instead)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -62,5 +62,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 150
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

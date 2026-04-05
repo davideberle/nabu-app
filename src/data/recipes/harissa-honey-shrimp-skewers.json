@@ -26,11 +26,11 @@
     },
     {
       "item": "olive oil, plus more for greasing if needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large shrimp (20 to 30 shrimp), peeled, deveined, and patted dry",
@@ -59,5 +59,10 @@
     "If grilling outdoors, grill the skewers over direct, medium heat for 5 to 6 minutes, turning the shrimp halfway through, until the shrimp curl and turn opaque. If grilling indoors, place the skewers on the grill pan and cook for 1 minute per side, or until the shrimp curl and turn opaque. Grill the onion skewers for 3 to 4 minutes per side, until charred and softened.",
     "Place the skewers on a platter along with the grilled onions and garnish with the chopped parsley. Serve more harissa in a bowl for dipping."
   ],
-  "image": "/recipes/harissa-honey-shrimp-skewers.jpg"
+  "image": "/recipes/harissa-honey-shrimp-skewers.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

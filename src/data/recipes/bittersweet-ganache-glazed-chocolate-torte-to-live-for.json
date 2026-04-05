@@ -26,15 +26,15 @@
     },
     {
       "item": "/ 5 grams aluminum-free baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "/ 5 grams baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "/ 2.5 grams fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "mild tasting extra-virgin olive oil or organic neutral vegetable oil",
@@ -50,15 +50,15 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1½ teaspoons / 7.5 ml"
+      "amount": "1½ tsp / 7.5 ml"
     },
     {
       "item": "chocolate extract (optional)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "recipe Bittersweet Chocolate Ganache Glaze (page 264)",
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 62
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -18,19 +18,19 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "liqueur (optional) or fruit juice",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "mild tasting extra-virgin olive oil",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "Berries or toasted nuts for serving",
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

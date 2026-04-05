@@ -18,11 +18,11 @@
     },
     {
       "item": "olive oil",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "pre-cooked puy lentils, preferably from a pouch",
-      "amount": "30 g (2 oz/2 tablespoons)"
+      "amount": "30 g"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -34,17 +34,17 @@
     },
     {
       "item": "roasted pistachios",
-      "amount": "20 g (¾ oz/2 tablespoons)",
+      "amount": "20 g",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     },
     {
       "item": "spicy corn nuts",
-      "amount": "20 g (¾ oz/3 tablespoons)",
+      "amount": "20 g",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "60 ml (2 fl oz/¼ cup)",
+      "amount": "60 ml",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     },
     {
@@ -54,12 +54,12 @@
     },
     {
       "item": "chilli flakes",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     },
     {
       "item": "agave syrup",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "item": "fine salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "HOT PISTACHIO AND CORN NUT DRESSING"
     }
   ],
@@ -83,5 +83,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

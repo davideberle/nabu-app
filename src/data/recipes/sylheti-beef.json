@@ -64,5 +64,13 @@
     "Reduce the heat and simmer for 45–60 minutes, or until the sauce reduces to a fairly thick consistency and the meat is tender. Add more spice stock if needed.",
     "To serve, add the garam masala, and salt to taste and top with the chopped coriander (cilantro)."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

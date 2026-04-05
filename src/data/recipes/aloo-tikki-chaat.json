@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)"
+      "amount": "250g"
     },
     {
       "item": "chaat masala",
@@ -102,5 +102,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

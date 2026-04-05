@@ -22,23 +22,23 @@
     },
     {
       "item": "/ 6 grams arrowroot or tapioca starch (7 grams)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 6 grams oat flour (substitute 1 tablespoon / 10 grams whole wheat pastry flour)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 10 grams aluminum-free baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 207 grams organic granulated sugar",
@@ -54,7 +54,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "boiling water",
@@ -73,5 +73,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -14,15 +14,15 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "all-purpose flour",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dried bean curd sticks, soaked",
@@ -42,7 +42,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "round leaf mint or mint, roughly chopped if leaves are large",
@@ -58,7 +58,7 @@
     },
     {
       "item": "crushed roasted peanuts",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "Sesame rice crackers, for serving (optional)",
@@ -66,15 +66,15 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "lime juice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -92,5 +92,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

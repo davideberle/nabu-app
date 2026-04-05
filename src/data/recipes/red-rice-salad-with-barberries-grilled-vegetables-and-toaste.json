@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "red Camargue rice",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "handfuls of dried barberries (or use unsweetened dried sour cherries or cranberries)",
@@ -55,7 +55,7 @@
     },
     {
       "item": "roasted red peppers in oil, drained and roughly diced",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "packets of flat leaf parsley, leaves picked and finely chopped",
@@ -67,7 +67,7 @@
     },
     {
       "item": "blanched whole almonds, toasted",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     }
   ],
   "method": [
@@ -81,5 +81,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 13
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

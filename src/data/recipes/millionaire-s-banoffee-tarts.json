@@ -14,7 +14,7 @@
     },
     {
       "item": "/ 72 grams dark chocolate (any percentage), coarsely chopped",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "large ripe bananas (but not overripe)",
@@ -39,5 +39,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,23 +22,23 @@
     },
     {
       "item": "unsulfured molasses",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "freshly ground nutmeg",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "allspice berries, toasted and ground",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "vanilla bean",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

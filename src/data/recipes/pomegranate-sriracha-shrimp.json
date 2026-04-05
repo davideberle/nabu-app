@@ -20,31 +20,31 @@
     },
     {
       "item": "sriracha, plus more as needed",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "pomegranate molasses (see this page)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
-      "amount": "3½ tablespoons"
+      "amount": "3½ tbsp"
     },
     {
       "item": "to 1½ tablespoons packed light or dark brown sugar",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "shallot, finely chopped",
@@ -66,5 +66,10 @@
     "Give the sauce a stir, then add to the pan, stirring to combine. Let the sauce come to a vigorous boil, stirring occasionally to keep things moving. When the shrimp are cooked through, about 2 minutes, give the cornstarch slurry a stir and add to the pan. Cook, stirring, to slightly thicken the sauce and coat the shrimp.",
     "Transfer the shrimp to a deep plate or shallow bowl and garnish with the cilantro. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

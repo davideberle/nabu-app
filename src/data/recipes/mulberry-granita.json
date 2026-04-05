@@ -35,5 +35,13 @@
     "If you don’t have an ice cream machine, pour the mixture into a shallow metal tray and place in the freezer. Every 1–2 hours take it out of the freezer and stir with a fork to mix the frozen crystals back into the liquid. When the granita is completely frozen, break it up roughly and place in a food processor. Pulse briefly until it is light and fluffy then return to the freezer until ready to serve.",
     "Spoon the granita into glasses and top with whipped cream."
   ],
-  "image": "/recipes/mulberry-granita.jpg"
+  "image": "/recipes/mulberry-granita.jpg",
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

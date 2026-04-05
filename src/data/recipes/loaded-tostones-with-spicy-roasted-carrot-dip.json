@@ -31,22 +31,22 @@
     },
     {
       "item": "olive oil, plus extra for roasting the carrots",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "coriander seeds, roughly ground",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "cumin seeds, roughly ground",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
@@ -56,17 +56,17 @@
     },
     {
       "item": "vegan cream cheese",
-      "amount": "170 g (6 oz)",
+      "amount": "170 g",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "vegan-friendly kimchi",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
       "item": "kimchi juice",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "SPICY ROASTED CARROT DIP"
     },
     {
@@ -87,5 +87,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

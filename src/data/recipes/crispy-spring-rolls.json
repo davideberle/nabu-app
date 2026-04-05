@@ -14,11 +14,11 @@
     },
     {
       "item": "vegetable oil, plus more for deep-frying",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "minced leek (white part only) or scallion",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely chopped straw or brown mushrooms",
@@ -46,19 +46,19 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar, plus 1 tablespoon for soaking rice paper",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "rice paper or spring roll wrappers (6 inches/15 cm)",
@@ -66,7 +66,7 @@
     },
     {
       "item": "lime juice, for soaking rice paper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water, to soften rice paper",
@@ -90,5 +90,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -24,7 +24,7 @@
     },
     {
       "item": "unseasoned Japanese rice vinegar (optional)",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "to 4 tablespoons fish sauce",
@@ -48,5 +48,10 @@
     "Add the fish sauce to the bowl; how much you use depends on the brand and your own taste. Aim for a bold, forward finish that’s a little gutsy. (Keep in mind that this sauce typically dresses dishes that include unsalted ingredients such as lettuce and herbs, which will need an extra flavor lift.) If desired, add the chiles, garlic, and/or carrot. (Offer the chiles on the side if diners are sensitive to their heat.) The sauce can sit at room temperature for up to 8 hours until serving.",
     "Set the sauce at the table so diners may help themselves, or portion it out in small bowls in advance of serving."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

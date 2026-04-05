@@ -58,7 +58,7 @@
     },
     {
       "item": "boxes macaroni noodles",
-      "amount": "2 (1-lb [455-g])"
+      "amount": "2"
     },
     {
       "item": "vegan Cheddar cheese shreds",
@@ -74,5 +74,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 31
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

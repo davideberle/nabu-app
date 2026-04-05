@@ -20,11 +20,11 @@
     },
     {
       "item": "kosher salt, or more to taste",
-      "amount": "½ to 1 teaspoon"
+      "amount": "½ to 1 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "clove garlic, crushed",
@@ -32,7 +32,7 @@
     },
     {
       "item": "fresh lemon juice, or more to taste",
-      "amount": "3 to 4 tablespoons"
+      "amount": "3 to 4 tbsp"
     },
     {
       "item": "Pomegranate arils (optional)",
@@ -56,5 +56,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "bone-in veal or lamb shoulder, cut into 2-inch (5 cm) pieces (see Note)",
@@ -26,7 +26,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "medium yellow potatoes, peeled",
@@ -34,7 +34,7 @@
     },
     {
       "item": "curry powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "medium onions, peeled",
@@ -42,7 +42,7 @@
     },
     {
       "item": "black pepper, plus more if needed",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "plus 2 tablespoons (150 g) tomato paste, plus more to taste",
@@ -50,7 +50,7 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Roz Bi Shaariya, for serving",
@@ -65,5 +65,10 @@
     "Add the onions, 1½ teaspoons of the salt, the pepper, tomato paste, and pomegranate molasses. Ensure the water level is covering the veal and vegetables and continue to cook at a rolling boil for another 15 to 20 minutes. Check the potatoes for doneness; they should be soft but still holding their shape. Taste and add the remaining ½ teaspoon salt if necessary. Add more pepper if necessary. The final consistency of the stew should be a thick liquid.",
     "Ladle into bowls and serve with rice."
   ],
-  "image": "/recipes/margat-batatacurried-potato-stew.jpg"
+  "image": "/recipes/margat-batatacurried-potato-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

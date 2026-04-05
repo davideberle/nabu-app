@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "yuba knots",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "stalks Tenderstem broccoli (broccolini), chopped into threes",
@@ -62,12 +62,12 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MARINADE"
     },
     {
       "item": "barbecue sauce of your choice",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MARINADE"
     },
     {
@@ -86,5 +86,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

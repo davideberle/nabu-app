@@ -34,5 +34,10 @@
     "Combine the tuna, pistachios, capers, and cornichons in a mixing bowl. Add the olive oil and use a fork to mix them together roughly – I prefer it to be a bit chunky.",
     "Serve with crusty sourdough bread or lingue di suocera (Impasto per Pizza)."
   ],
-  "image": "/recipes/tuna-starter.jpg"
+  "image": "/recipes/tuna-starter.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

@@ -80,5 +80,13 @@
     "Spoon the filling into a piping bag and pipe around 3 cm of filling widthways across the centre of each pastry circle, parallel with the incision. Brush the rim with a little water, then fold the pastry over to create a half moon. Make sure the little cut is uppermost. Press around the rim to seal and trim away any excess pastry.",
     "Line an oven tray with greaseproof paper. Lift the filled biscuits onto the tray and bake for 15–20 minutes until goldenbrown. Remove from the oven and transfer to a rack to cool. They will keep in an airtight jar for about a week."
   ],
-  "image": "/recipes/biscuits-from-modica.jpg"
+  "image": "/recipes/biscuits-from-modica.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

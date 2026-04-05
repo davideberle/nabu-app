@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced yellow onion",
@@ -21,7 +21,7 @@
     },
     {
       "item": "dairy-free butter, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -29,7 +29,7 @@
     },
     {
       "item": "flour",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegetable broth",
@@ -37,11 +37,11 @@
     },
     {
       "item": "liquid smoke",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "good Burgundy wine",
@@ -53,11 +53,11 @@
     },
     {
       "item": "thyme",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "mushrooms, sliced",
@@ -78,5 +78,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

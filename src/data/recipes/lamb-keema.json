@@ -50,11 +50,11 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated, plus extra sauce or meat stock if desired",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "quantity pre-cooked keema",
@@ -62,7 +62,7 @@
     },
     {
       "item": "frozen peas",
-      "amount": "150g (1 cup)"
+      "amount": "150g"
     },
     {
       "item": "tomato, cut into 8 wedges",
@@ -95,5 +95,10 @@
     "Add the peas, tomato and dried fenugreek leaves (kasoori methi) and cook for a further 2–3 minutes until the peas are heated through. Be careful not to overcook them; they need to be plump and still have a bit of a bite to them. Simmer them too long and they will turn wrinkly and rather unappetizing.",
     "Season with salt and sprinkle with the garam masala, coriander (cilantro) and ginger to serve."
   ],
-  "image": "/recipes/lamb-keema.jpg"
+  "image": "/recipes/lamb-keema.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

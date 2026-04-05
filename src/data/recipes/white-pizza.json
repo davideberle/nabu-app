@@ -51,5 +51,13 @@
     "Sprinkle some salt and pepper on top, then drizzle olive oil all over the pizza, with some rosemary. Cook in the oven for about 10–15 minutes or until the base is golden-brown and crunchy.",
     "If you have a pizza oven, the pizza will only take 5 minutes to cook, so you should boil the potatoes until tender beforehand, then slice them and put them on the dough, otherwise they will be too raw."
   ],
-  "image": "/recipes/white-pizza.jpg"
+  "image": "/recipes/white-pizza.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -35,5 +35,13 @@
     "Trim the base of the onions so that they can stand upright. Now cut a deep incision in the form of a cross on the top of the onions, making sure you do not cut right through them.",
     "Stand the onions in an ovenproof dish. Put a few garlic slices and a few thyme leaves into the incisions. Mix the butter with the remaining thyme and garlic, and distribute it evenly among the onions, pushing the butter well into the onion. Season with salt and pepper. Cook in the oven for about 40 minutes."
   ],
-  "image": "/recipes/baked-red-onions.jpg"
+  "image": "/recipes/baked-red-onions.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

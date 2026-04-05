@@ -17,7 +17,7 @@
     },
     {
       "item": "minced scallion (white part only), plus 5 scallions (green parts only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "peeled and shredded carrot, divided",
@@ -29,19 +29,19 @@
     },
     {
       "item": "sugar, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "distilled white vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried rice vermicelli noodles",
@@ -61,11 +61,11 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced scallion (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fermented soybean sauce",
@@ -77,7 +77,7 @@
     },
     {
       "item": "peanut butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -110,5 +110,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

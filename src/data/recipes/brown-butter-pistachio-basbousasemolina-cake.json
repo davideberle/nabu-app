@@ -49,7 +49,7 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "BASBOUSA"
     },
     {
@@ -90,5 +90,10 @@
     "Cut into small squares or diamonds and serve. Cover any leftovers with plastic wrap or place them in an airtight container and store on the counter for 4 to 5 days."
   ],
   "tips": "It’s important to ensure that the simple syrup is cool and that the basbousa is hot when the syrup is poured over it. If you use hot syrup, it will give the basbousa a hard texture.",
-  "image": "/recipes/brown-butter-pistachio-basbousasemolina-cake.jpg"
+  "image": "/recipes/brown-butter-pistachio-basbousasemolina-cake.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

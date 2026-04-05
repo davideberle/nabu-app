@@ -11,15 +11,15 @@
   "ingredients": [
     {
       "item": "shelled pistachio nuts",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "ground rice",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "plain flour",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "grated rind of 2 lemons",
@@ -31,7 +31,7 @@
     },
     {
       "item": "icing sugar, sifted",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "salt",
@@ -39,7 +39,7 @@
     },
     {
       "item": "unsalted butter, softened",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "olive oil",
@@ -58,5 +58,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

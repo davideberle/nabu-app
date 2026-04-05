@@ -13,11 +13,11 @@
     },
     {
       "item": "flaxseed meal",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "protein powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "peanuts, chopped",
@@ -49,5 +49,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

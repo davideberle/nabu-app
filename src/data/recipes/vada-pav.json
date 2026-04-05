@@ -58,7 +58,7 @@
     },
     {
       "item": "sifted gram (chickpea) flour, plus extra if needed",
-      "amount": "120g (1 cup)",
+      "amount": "120g",
       "group": "BATTER"
     },
     {
@@ -112,5 +112,10 @@
   "image": "/recipes/vada-pav.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

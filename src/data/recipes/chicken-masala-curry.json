@@ -62,7 +62,7 @@
     },
     {
       "item": "tomato purée or plain passata (sieved tomatoes)",
-      "amount": "100ml (scant ½ cup)"
+      "amount": "100ml"
     },
     {
       "item": "1.6kg (3lb 8oz) skinless chicken thighs, bone-in",
@@ -79,5 +79,10 @@
     "Remove the lid and stir, adding a drop more water if you prefer a thinner sauce or turning up the heat if it is too runny. You’ll know the curry is ready when the oil comes to the top. Simply skim it off.",
     "Stir in 1 teaspoon of the garam masala and taste. Add more salt if needed. I usually use about 2 teaspoons of garam masala."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

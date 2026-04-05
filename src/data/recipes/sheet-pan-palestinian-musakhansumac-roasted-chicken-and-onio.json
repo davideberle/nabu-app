@@ -19,12 +19,12 @@
     },
     {
       "item": "sumac",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "ONIONS"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "ONIONS"
     },
     {
@@ -34,32 +34,32 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "seven spice",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "sumac",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "item": "sumac",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -118,5 +118,10 @@
     "Remove the chicken from the sheet pan. Take one of the pieces of taboon bread and smear it in the chicken juices in the sheet pan to soak up some of the liquid, then place it on a large platter, juicy side up. Scoop half of the onions from the sheet pan and spread them on the bread in a thin layer. Repeat with the remaining piece of bread, placing it on another platter and adding the remaining onions on top. Place 3 chicken quarters on top of each piece of bread.",
     "Garnish with a dusting of the 2 tablespoons sumac and sprinkle the toasted almonds and chopped parsley over everything. Serve each person a piece of chicken with some bread and onions along with yogurt and salad."
   ],
-  "image": "/recipes/sheet-pan-palestinian-musakhansumac-roasted-chicken-and-onio.jpg"
+  "image": "/recipes/sheet-pan-palestinian-musakhansumac-roasted-chicken-and-onio.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

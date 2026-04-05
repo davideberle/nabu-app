@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

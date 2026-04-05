@@ -14,7 +14,7 @@
     },
     {
       "item": "mild tasting extra-virgin oil or neutral vegetable oil",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pinches flaked sea salt (optional)",
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

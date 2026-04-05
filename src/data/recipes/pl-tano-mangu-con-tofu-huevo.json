@@ -38,7 +38,7 @@
     },
     {
       "item": "block firm tofu, pressed",
-      "amount": "1(12-oz [340-g])"
+      "amount": "1"
     },
     {
       "item": "ground turmeric",
@@ -80,5 +80,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 23
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

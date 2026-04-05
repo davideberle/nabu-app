@@ -96,5 +96,13 @@
   "image": "/recipes/spiced-chickpeas-and-fresh-vegetable-salad.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

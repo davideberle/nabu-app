@@ -16,7 +16,7 @@
     },
     {
       "item": "maple syrup, or 2½ tablespoons honey",
-      "amount": "3½ tablespoons"
+      "amount": "3½ tbsp"
     },
     {
       "item": "firmly packed light or dark brown sugar",
@@ -44,5 +44,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

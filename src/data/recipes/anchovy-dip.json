@@ -55,5 +55,10 @@
     "Cut the vegetables into long strips and arrange on a plate. Serve the sauce seperately, so that you can dip the vegetables into it.",
     "I prefer to use anchovies in oil for this dish, as they are less salty than the salt-preserved ones. Just make sure you buy very good quality ones."
   ],
-  "image": "/recipes/anchovy-dip.jpg"
+  "image": "/recipes/anchovy-dip.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

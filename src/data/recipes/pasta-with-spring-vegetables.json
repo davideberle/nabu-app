@@ -68,5 +68,13 @@
     "Boil the pasta in the vegetable water until al dente.",
     "Drain the pasta well and add to the cream and vegetable mix. Toss everything together. Season with salt and pepper, add the parmigiano and serve immediately."
   ],
-  "image": "/recipes/pasta-with-spring-vegetables.jpg"
+  "image": "/recipes/pasta-with-spring-vegetables.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

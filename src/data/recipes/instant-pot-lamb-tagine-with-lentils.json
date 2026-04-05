@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "This lovely Moroccan-inspired Instant Pot tagine has a wonderful taste and a little kick. The spices combine to present a warm flavor, and the honey and raisins soften the tangy tomatoes with a bit of sweetness. You can double the spices if you like, but start with listed measurements and adjust per your tastes! Serve with rice.",
   "time": {
-    "prep": "10 mins"
+    "prep": "10 mins",
+    "total": 62
   },
   "ingredients": [
     {
@@ -102,5 +103,10 @@
     "Turn Saute mode off. Close and lock the lid. Set vent to 'Sealing' and select Meat/Stew mode according to manufacturer's instructions; set timer for 30 minutes. Allow 10 to 15 minutes for pressure to build.",
     "Release pressure using the natural-release method according to manufacturer's instructions, for 10 minutes. Turn vent and release remaining pressure carefully using the quick-release method according to the manufacturer's instructions. Season with salt and pepper, if needed."
   ],
-  "image": "/recipes/instant-pot-lamb-tagine-with-lentils.jpg"
+  "image": "/recipes/instant-pot-lamb-tagine-with-lentils.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 26 grams organic granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "to 1½ teaspoons / 2 to 3.5 grams ancho chili powder, plus ¼ teaspoon for cocoa coating, if using",
@@ -30,15 +30,15 @@
     },
     {
       "item": "fine sea salt, plus ⅛ teaspoon for coating",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "mild tasting or fruity extra-virgin olive oil",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Dutch-process cocoa powder, for coating (optional)",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

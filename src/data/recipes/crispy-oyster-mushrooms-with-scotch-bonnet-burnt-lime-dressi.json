@@ -14,22 +14,22 @@
   "ingredients": [
     {
       "item": "Thai fragrant (jasmine) rice or basmati rice",
-      "amount": "300 g (10½ oz/1½ cups)",
+      "amount": "300 g",
       "group": "COCONUT RICE"
     },
     {
       "item": "water",
-      "amount": "550 ml (18½ fl oz/2¼ cups)",
+      "amount": "550 ml",
       "group": "COCONUT RICE"
     },
     {
       "item": "creamed coconut (or desiccated/dried shredded coconut)",
-      "amount": "100 g (3½oz)",
+      "amount": "100 g",
       "group": "COCONUT RICE"
     },
     {
       "item": "coconut sugar",
-      "amount": "1½ tablespoon",
+      "amount": "1½ tbsp",
       "group": "COCONUT RICE"
     },
     {
@@ -54,17 +54,17 @@
     },
     {
       "item": "oyster mushrooms",
-      "amount": "400 g (14 oz)",
+      "amount": "400 g",
       "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "Green Seasoning",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
       "item": "ground allspice",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CRISPY OYSTER MUSHROOMS"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "item": "soy sauce",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
@@ -104,7 +104,7 @@
     },
     {
       "item": "light brown soft sugar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SCOTCH BONNET BURNT LIME DRESSING"
     },
     {
@@ -129,12 +129,12 @@
     },
     {
       "item": "white wine vinegar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SLAW"
     },
     {
       "item": "agave syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SLAW"
     },
     {
@@ -168,5 +168,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

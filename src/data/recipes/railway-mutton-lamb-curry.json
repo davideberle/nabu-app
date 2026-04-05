@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "mutton or lamb shoulder on the bone, cut into bite-size pieces",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "mustard oil",
-      "amount": "5 tbsp (¼ cup)"
+      "amount": "5 tbsp"
     },
     {
       "item": "cardamom pods, bruised",
@@ -66,7 +66,7 @@
     },
     {
       "item": "chopped tomatoes",
-      "amount": "300g (10½ oz)"
+      "amount": "300g"
     },
     {
       "item": "green chillies, finely chopped",
@@ -82,7 +82,7 @@
     },
     {
       "item": "thick coconut milk",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -103,5 +103,10 @@
     "Now add the ground spices and tomatoes, stir well and add the green chillies – this is your base for the curry. When the meat is almost cooked to perfection, add the potatoes and cook until tender. This should take about 15 minutes. Then add the meat and potatoes to the curry sauce, with about 500ml (2 cups) of the cooking stock. Simmer until you are happy with the consistency. This curry can be either really soupy or thick, depending on your preference. Stir in the tamarind concentrate and coconut milk. You’re almost done now.",
     "To finish, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Season with salt and garnish with some chopped coriander (cilantro) if you like."
   ],
-  "image": "/recipes/railway-mutton-lamb-curry.jpg"
+  "image": "/recipes/railway-mutton-lamb-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

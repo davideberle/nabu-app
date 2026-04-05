@@ -10,11 +10,11 @@
   "ingredients": [
     {
       "item": "/ 39 grams organic granulated sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus 1½ teaspoons / 9 grams Dutch-process or natural (non-alkalized) cocoa powder, sifted if lumpy",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -37,5 +37,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

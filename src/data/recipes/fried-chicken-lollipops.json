@@ -71,5 +71,10 @@
     "Whisk all the marinade ingredients together in a large bowl. Coat the chicken lollipops with the marinade and marinate for 30 minutes–24 hours – the longer the better.",
     "When ready to fry, heat about 10cm (4in) of oil in a saucepan until a bit of the batter/marinade sizzles immediately when dropped in. Fry the chicken lollipops in batches until cooked through – about 5 minutes should do the job, but be sure to check. The internal temperature should be 75°C (165°F). If you don’t have a meat thermometer, stick a sharp knife in – the chicken is ready when the juices run clear."
   ],
-  "image": "/recipes/fried-chicken-lollipops.jpg"
+  "image": "/recipes/fried-chicken-lollipops.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

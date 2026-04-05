@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "plain yoghurt",
-      "amount": "200g (¾ cup)"
+      "amount": "200g"
     },
     {
       "item": "finely chopped coriander (cilantro)",
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

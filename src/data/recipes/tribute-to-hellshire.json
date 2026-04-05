@@ -18,7 +18,7 @@
     },
     {
       "item": "coconut milk",
-      "amount": "400ml (13 fl oz/generous 1½ cups)"
+      "amount": "400ml"
     },
     {
       "item": "coconut oil, for frying",
@@ -35,17 +35,17 @@
     },
     {
       "item": "tahini",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "smoked paprika",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SMOKY AUBERGINE DIP"
     },
     {
       "item": "tamarind paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SMOKY AUBERGINE DIP"
     },
     {
@@ -55,7 +55,7 @@
     },
     {
       "item": "salt",
-      "amount": "¾ teaspoon",
+      "amount": "¾ tsp",
       "group": "SMOKY AUBERGINE DIP"
     },
     {
@@ -75,22 +75,22 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "NORI SALT"
     },
     {
       "item": "MSG",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "NORI SALT"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "NORI SALT"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "NORI SALT"
     }
   ],
@@ -105,5 +105,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

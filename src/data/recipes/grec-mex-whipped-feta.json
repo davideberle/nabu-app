@@ -21,7 +21,7 @@
     },
     {
       "item": "chopped canned chipotles in adobo sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chopped fresh cilantro",
@@ -43,5 +43,10 @@
   "method": [
     "Place the garlic clove, chile, pickled jalapeños, and chipotles in the bowl of a food processor and pulse to a paste. Add the cilantro and pulse to combine.",
     "Add the feta. with the motor running, steadily stream in enough of the olive oil to make a smooth, spreadable paste. Add the lemon zest, 2 tablespoons of the lemon juice, and black pepper to taste. Pulse to combine, taste, and adjust the texture and flavor with the remaining olive oil and/or lemon juice. Serve as a dip with pita chips."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -13,7 +13,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "diced white onion",
@@ -29,15 +29,15 @@
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of ground black pepper",
@@ -49,11 +49,11 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "clove garlic",
@@ -61,7 +61,7 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of ground black pepper",
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

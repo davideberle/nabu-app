@@ -38,5 +38,10 @@
     "Put some salted water in a saucepan and bring to the boil. Drop the cauliflower florets into the water and boil for a few minutes – they should still be very firm. Rinse them under cold water to prevent them from cooking further, then dry on kitchen paper.",
     "In a bowl mix the red-wine vinegar with the olive oil then add the anchovies and chilli. Pour this mixture over the cauliflower and sprinkle with the chopped parsley. Serve this salad as part of an antipasto or with grilled meats."
   ],
-  "image": "/recipes/cauliflower-salad.jpg"
+  "image": "/recipes/cauliflower-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

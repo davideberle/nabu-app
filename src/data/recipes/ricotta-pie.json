@@ -77,5 +77,13 @@
     "Mix all the filling ingredients together and season with pepper. (The cheeses and prosciutto are fairly salty, so don’t add any salt.) Pour the filling into the pastry and smooth the surface.",
     "Roll out the remaining pastry and use it to cover the pie. Press around the rim to seal the edges and prick the pie lid all over with a fork. Transfer to the oven and bake for 30 minutes or until golden-brown. Remove the pie from the oven and leave it to cool down completely before serving. If it is still warm, the ricotta will be too runny to cut into neat slices."
   ],
-  "image": "/recipes/ricotta-pie.jpg"
+  "image": "/recipes/ricotta-pie.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

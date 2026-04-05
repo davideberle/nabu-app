@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans jackfruit in brine, drained",
-      "amount": "3 (14-oz [400-g])"
+      "amount": "3"
     },
     {
       "item": "Salt",
@@ -50,7 +50,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "water",
@@ -103,5 +103,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 43
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

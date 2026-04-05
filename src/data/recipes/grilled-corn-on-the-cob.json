@@ -14,7 +14,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Smoky Pili Pili Sauce or Spicy Mustard Greens",
@@ -35,5 +35,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 145
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

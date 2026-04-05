@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "chia seeds or ground chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "whole wheat flour",
@@ -17,7 +17,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "old-fashioned oats",
@@ -25,7 +25,7 @@
     },
     {
       "item": "vanilla protein powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dairy-free butter",
@@ -41,7 +41,7 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "banana",
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 16
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

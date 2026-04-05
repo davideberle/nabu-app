@@ -40,5 +40,13 @@
     "Using an electric mixer, beat the soft butter with the sugar, adding the pinch of salt. When the mixture is light and fluffy, add the melted chocolate, blending well. Still blending, add one egg at a time, until well incorporated. Now fold in the crushed hazelnuts with a spatula.",
     "Pour the mixture into a buttered cake tin, 28 cm in diameter, and bake in the oven for about 40 minutes, or until a skewer inserted in the cake comes out clean. Open the oven door and turn off the heat, leaving the cake in for another 30 minutes."
   ],
-  "image": "/recipes/hazelnut-and-bitter-chocolate-cake.jpg"
+  "image": "/recipes/hazelnut-and-bitter-chocolate-cake.jpg",
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -54,19 +54,19 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "plain passata (sieved tomatoes) or blended chopped tomatoes",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "pre-cooked lamb or the meat from the lamb masala curry, plus 150ml (generous ½ cup) stock from the lamb masala curry, or more base curry sauce",
-      "amount": "750g (1lb 10oz)"
+      "amount": "750g"
     },
     {
       "item": "cooked potatoes, peeled and diced",
-      "amount": "450g (1lb)"
+      "amount": "450g"
     },
     {
       "item": "Salt, to taste",
@@ -86,5 +86,10 @@
     "Stir in the garlic and ginger paste and allow it to sizzle for about 30 seconds, then add the chilli (hot pepper) flakes, bassar curry masala or chilli powder, paprika, turmeric, cumin and ground coriander. Stir this into the onion mixture. It will become quite fragrant after 30 seconds. When this happens, stir in half of the base curry sauce and the passata (sieved tomatoes). Bring to a rolling simmer, only stirring if the sauce is sticking to the pan.",
     "Stir in the lamb pieces and potato chunks with the cooking stock and the rest of the base curry sauce. Heat everything through and reduce the sauce down to your preferred consistency. Season with salt. To serve, sprinkle with the garam masala and chopped coriander (cilantro)."
   ],
-  "image": "/recipes/aloo-gosht.jpg"
+  "image": "/recipes/aloo-gosht.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

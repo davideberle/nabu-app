@@ -14,7 +14,7 @@
     },
     {
       "item": "/ 18 grams Dutch-process cocoa powder",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "⅜ teaspoon ground cinnamon",
@@ -26,7 +26,7 @@
     },
     {
       "item": "aluminum-free baking powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "to 4 grinds of black pepper, optional",
@@ -38,27 +38,27 @@
     },
     {
       "item": "hot water",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "nondairy milk",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "organic granulated sugar / 65 grams, plus ⅓ to ½ cup / 64 to 111 grams for shaping",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "coconut oil, melted",
-      "amount": "2½ tablespoons / 37.5 ml"
+      "amount": "2½ tbsp / 37.5 ml"
     },
     {
       "item": "/ 52 grams gluten-free chocolate chunks",
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 51
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

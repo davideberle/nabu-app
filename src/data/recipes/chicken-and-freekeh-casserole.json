@@ -24,17 +24,17 @@
     },
     {
       "item": "seven spice",
-      "amount": "4 teaspoons",
+      "amount": "4 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "salt",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
@@ -49,22 +49,22 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CARROTS"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CARROTS"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CARROTS"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FREEKEH"
     },
     {
@@ -79,12 +79,12 @@
     },
     {
       "item": "seven spice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FREEKEH"
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FREEKEH"
     },
     {
@@ -108,5 +108,10 @@
     "Tightly cover the roasting pan with aluminum foil and bake for 1 hour. After 1 hour, uncover the pan and bake for another 30 minutes, or until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C) and the freekeh is tender. Broil for 3 to 5 minutes, until the chicken skin is golden brown.",
     "Serve with salad."
   ],
-  "image": "/recipes/chicken-and-freekeh-casserole.jpg"
+  "image": "/recipes/chicken-and-freekeh-casserole.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

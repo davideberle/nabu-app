@@ -32,19 +32,19 @@
     },
     {
       "item": "kosher salt, plus more to taste",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "tomato paste",
@@ -65,5 +65,10 @@
     "Add 5 cups (1.2 L) of water and bring to a boil. Once boiling, cover the pot with the lid and let boil for 20 minutes over medium heat, stirring occasionally to prevent the onions from sticking to the bottom of the pot.",
     "Remove the lid and stir the broth. Taste and adjust the salt; the broth should be noticeably salty. Add the pasta and 2 cups (480 ml) of water and stir well. Cover the pot again and reduce the heat to medium-low. Cook for 20 minutes, stirring every 5 minutes to ensure the pasta does not stick to the bottom of the pot, or until the pasta is cooked to desired doneness. Add more water as needed until the pasta is soft. Turn off the heat.",
     "Garnish with the chopped parsley and serve immediately (the pasta should be moist when served)."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

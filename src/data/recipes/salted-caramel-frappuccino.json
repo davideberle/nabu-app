@@ -13,7 +13,7 @@
     },
     {
       "item": "caramel sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch of salt",
@@ -33,7 +33,7 @@
     },
     {
       "item": "powdered sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -42,5 +42,10 @@
     "Add the ice cubes and mix thoroughly.",
     "Decorate the top of the glass with the whipped cream.",
     "Drizzle some extra caramel sauce on top."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

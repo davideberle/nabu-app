@@ -70,5 +70,13 @@
     "Heat the butter and oil in a saucepan. Add the onion and leek and cook gently for about 10 minutes. Now add the carrots, celery, celeriac, bay leaf and speck or bacon and turn the heat to medium. Cook for 10 more minutes, stirring from time to time. Add the stock, barley and potatoes and simmer gently for about 1 hour. Taste for salt and pepper and season.",
     "Remove from the heat, add the cream and serve."
   ],
-  "image": "/recipes/pearl-barley-soup.jpg"
+  "image": "/recipes/pearl-barley-soup.jpg",
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

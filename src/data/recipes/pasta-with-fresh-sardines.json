@@ -93,5 +93,13 @@
     "Boil the pasta in the reserved fennel water until it is al dente.",
     "Meanwhile, heat 2 tablespoons of the olive oil in a separate frying pan and quickly fry the remaining sardines until golden. Drain the pasta and tip half into a warm serving bowl. Stir in the rest of the olive oil and half of the sauce. Top with the remaining sauce and the fried sardines and toss together at the table."
   ],
-  "image": "/recipes/pasta-with-fresh-sardines.jpg"
+  "image": "/recipes/pasta-with-fresh-sardines.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

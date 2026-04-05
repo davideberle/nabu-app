@@ -18,15 +18,15 @@
     },
     {
       "item": "baking soda mixed with",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "warm water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "crushed chilli flakes or cameroon pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube",
@@ -34,7 +34,7 @@
     },
     {
       "item": "ground ehuru (or nutmeg)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "1/2 teaspoon ground Uziza seed or black peppercorns",
@@ -60,5 +60,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

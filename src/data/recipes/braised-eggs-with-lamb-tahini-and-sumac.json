@@ -94,5 +94,13 @@
     "You can leave the meat, tomatoes, and sauce at this stage for up to an hour. When you are ready to serve, reheat the meat, add the chicken stock, and bring to a boil. Make 4 small wells in the mix and break an egg into each well. Cover the pan and cook the eggs over low heat for 3 minutes. Place the tomatoes on top, avoiding the yolks, cover again, and cook for 5 minutes, until the egg whites are cooked but the yolks are still runny.",
     "Remove from the heat and dot with dollops of the yogurt sauce, sprinkle with sumac, and finish with the cilantro. Serve at once."
   ],
-  "image": "/recipes/braised-eggs-with-lamb-tahini-and-sumac.jpg"
+  "image": "/recipes/braised-eggs-with-lamb-tahini-and-sumac.jpg",
+  "time": {
+    "total": 23
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

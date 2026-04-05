@@ -21,7 +21,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "diced white onion",
@@ -45,15 +45,15 @@
     },
     {
       "item": "chili powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "raw cashews, soaked from 1 hour to overnight and drained",
@@ -61,23 +61,23 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "tapioca starch (also called tapioca flour)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "garlic powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -93,5 +93,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -18,7 +18,7 @@
     },
     {
       "item": "plus a pinch of coarse sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "vanilla bean",
@@ -46,11 +46,11 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "finely grated lemon zest",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Pinch of ground cinnamon",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 150
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

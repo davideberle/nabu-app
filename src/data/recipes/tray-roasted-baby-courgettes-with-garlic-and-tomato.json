@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "baby courgettes",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "garlic bulb, cloves peeled and thinly sliced",
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "palm oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "onion (finely chopped)",
@@ -40,5 +40,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

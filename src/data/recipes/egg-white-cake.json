@@ -49,5 +49,13 @@
     "Combine the almonds, cinnamon and the extra sugar. Sprinkle this evenly over the cake mixture.",
     "Bake the cake in the oven for about 40 minutes, or until it springs back a little when touched. Cool the cake on a rack before serving."
   ],
-  "image": "/recipes/egg-white-cake.jpg"
+  "image": "/recipes/egg-white-cake.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

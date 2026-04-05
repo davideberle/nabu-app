@@ -13,7 +13,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "hash browns",
@@ -41,5 +41,13 @@
     "Add the diced bacon and hash browns. Cook for 10 minutes, seasoning with salt and pepper.",
     "Crack in the eggs and cover the pan, cooking the eggs all the way through.",
     "Top with the cheddar cheese and spring onion before serving."
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

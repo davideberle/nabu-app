@@ -50,5 +50,10 @@
     "The herbs that go into a salsa verde (green sauce) can be a matter of taste. To accompany lamb, use flat-leaf parsley and mint. For grilled vegetables, you could use flat-leaf parsley and basil.",
     "If you want to keep it for a few days, pour it into a jar, bang the jar on the table to make sure there are no air pockets in the sauce and then pour a thin layer of virgin olive oil over it. Keep in the refrigerator for up to one week."
   ],
-  "image": "/recipes/parsley-coriander-and-dill-sauce.jpg"
+  "image": "/recipes/parsley-coriander-and-dill-sauce.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

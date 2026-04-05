@@ -95,5 +95,13 @@
     "To make the stew, heat three-quarters of the olive oil in a large saucepan, add the onion, celery and garlic and fry gently for a few minutes until they soften. Add the bay leaves, tomatoes and chilli and simmer gently for about 15 minutes. Add the fish fillets to the pan, together with the crab. Cook for a few minutes then ladle in the fish stock, reserving 600 ml for the couscous, and simmer for 10–15 minutes. Taste, then season with salt and pepper.",
     "Heat the reserved fish stock in a separate saucepan. Stir in the saffron powder then add the couscous. Add the remaining oil, stir well and leave to absorb (as per the packet instructions). Fluff the couscous up with a fork, adding a little more oil if need be. Tip the couscous out onto a warm serving plate and ladle on some of the fish stew. Serve the remaining fish stew on the side."
   ],
-  "image": "/recipes/fish-couscous.jpg"
+  "image": "/recipes/fish-couscous.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

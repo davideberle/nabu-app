@@ -14,7 +14,7 @@
     },
     {
       "item": "ground cameroon pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube 1/2 teaspoon ogiri",
@@ -22,11 +22,11 @@
     },
     {
       "item": "ground achi seeds Salt to taste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "seaweed flakes (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "oha/ora leaves (approx. 150g) (washed and chopped)",
@@ -45,5 +45,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

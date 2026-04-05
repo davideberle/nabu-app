@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "minced lamb (fat is essential in this recipe, so do not opt for lean meat)",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "large onion, minced in a food processor or very finely chopped",
@@ -73,5 +73,13 @@
     "If you have opted for a long kebab shape, there are several cooking methods I could suggest to you. Of course, barbecuing the kebabs over coals is the proper way to do it. Avoid the hottest part of the barbecue and cook them for about 8 minutes on each side until they are nicely charred. Alternatively, cook the kebabs in a little vegetable oil in a frying pan over a medium-high heat if using gas, or on full blast on the highest setting if using electric, for approximately 8 minutes on each side until they are nice and brown.",
     "Serve the kebabs in tortilla wraps or bread of your choice, sliced red onion and chopped parsley. A little yogurt tops the whole thing off very nicely."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 24
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -30,7 +30,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "200g (¾ cup)"
+      "amount": "200g"
     },
     {
       "item": "roasted cumin seeds (see ground spices and spice blends)",
@@ -67,5 +67,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

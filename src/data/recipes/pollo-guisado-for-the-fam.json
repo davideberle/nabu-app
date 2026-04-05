@@ -34,7 +34,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "vegetable stock",
@@ -76,5 +76,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

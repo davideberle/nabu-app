@@ -18,7 +18,7 @@
     },
     {
       "item": "freshly squeezed and strained lemon juice",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "⅜ teaspoon fine sea salt",
@@ -26,7 +26,7 @@
     },
     {
       "item": "/ 52 grams smooth cashew butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus 1 tablespoon / 31 grams Dutch-process cocoa powder, sifted",
@@ -34,7 +34,7 @@
     },
     {
       "item": "almond milk, soymilk, or coconut milk beverage",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "½ ounces / 71 grams dark chocolate (66 to 70%), finely chopped",
@@ -46,11 +46,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "almond extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Tender Olive Oil Pastry Dough pie crust, blind baked and cooled (page 152)",
@@ -71,5 +71,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

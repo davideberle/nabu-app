@@ -15,7 +15,7 @@
     },
     {
       "item": "peeled, deseeded butternut squash, cut into 4cm (1½in) chunks",
-      "amount": "750g (1lb 10oz)"
+      "amount": "750g"
     },
     {
       "item": "large or 3 small onions, diced, plus 1 large onion, cut in half and thinly sliced into half moons",
@@ -67,7 +67,7 @@
     },
     {
       "item": "feta cheese",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "olive oil",
@@ -104,5 +104,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

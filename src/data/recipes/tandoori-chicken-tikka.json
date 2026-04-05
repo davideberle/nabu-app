@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "skinless, boneless chicken breasts, cut into bite-size pieces (tikka)",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "Juice of 2 lemons",
@@ -34,7 +34,7 @@
     },
     {
       "item": "Greek yoghurt, whisked",
-      "amount": "200g (¾ cup)",
+      "amount": "200g",
       "group": "MARINADE"
     },
     {
@@ -104,5 +104,10 @@
     "When ready to cook, prepare the barbecue for direct cooking. When the coals are white-hot, thread the chicken tikka onto skewers and place over the coals, turning occasionally until the chicken is cooked through and the edges are blackened. You can also do this on a grill.",
     "Season with salt and serve hot, or use in your curries."
   ],
-  "image": "/recipes/tandoori-chicken-tikka.jpg"
+  "image": "/recipes/tandoori-chicken-tikka.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

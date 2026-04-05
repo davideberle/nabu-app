@@ -18,7 +18,7 @@
     },
     {
       "item": "orange blossom water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "water",
@@ -30,11 +30,11 @@
     },
     {
       "item": "freshly squeezed Ruby Red grapefruit juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely grated Ruby Red grapefruit zest",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coconut milk",
@@ -46,7 +46,7 @@
     },
     {
       "item": "coconut liqueur",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

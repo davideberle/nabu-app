@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "room-temperature boiled potato, grated or cut into very small pieces",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "tin (can) chickpeas (garbanzo beans), drained and rinsed",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "small puri shells",
@@ -46,7 +46,7 @@
     },
     {
       "item": "plain yoghurt, whisked",
-      "amount": "200g (¾ cup)"
+      "amount": "200g"
     },
     {
       "item": "Chaat masala",
@@ -85,5 +85,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -17,15 +17,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Greek yogurt, preferably full-fat",
@@ -45,5 +45,13 @@
     "In a separate medium bowl, whisk together the yogurt, egg, and milk. Add the dry ingredients to the wet ingredients in three or four increments, whisking until smooth. Cover with plastic wrap and let the batter rest in the refrigerator for at least 15 minutes or up to overnight.",
     "When ready to make the pancakes, in a nonstick skillet, melt 2 teaspoons butter over medium-high heat, tilting the pan so the butter is evenly distributed over the surface.",
     "Pour the batter into the skillet, a ladleful at a time, to form pancakes that are about 4 inches (10 cm) in diameter. Don’t overcrowd the skillet. Flip the pancakes when the underside is golden brown and continue to cook until both sides are golden. Transfer to a plate, dabbing each pancake with a little butter as you stack them. Continue until the all the batter has been used, adding butter to the skillet between batches as needed. Serve hot."
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

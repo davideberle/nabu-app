@@ -90,7 +90,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "500g (2 cups)",
+      "amount": "500g",
       "group": "MARINADE"
     }
   ],
@@ -102,5 +102,10 @@
     "Once the lamb is tender, remove it from the barbecue and add more charcoal for direct heat cooking. I usually add the equivalent of a couple of shoe boxes of lumpwood charcoal. The charcoal and cooking grate need to be flaming hot. Your fire is ready when it is unbearably uncomfortable to hold your hand just 5cm (2in) above the cooking grate. Now slam that leg right down on the grate and cook for about 5 minutes per side until nicely charred. Be sure to slather it with the melted ghee! Transfer to a warm platter to rest and season with flaky sea salt.",
     "To make the sauce, pour the retained marinade into a small saucepan and place it on the cooking grate. Stir constantly until the sauce is heated through and serve alongside the lamb."
   ],
-  "image": "/recipes/fall-apart-habanero-grilled-raan.jpg"
+  "image": "/recipes/fall-apart-habanero-grilled-raan.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "radishes, trimmed and very thinly sliced",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "cucumber",
@@ -23,7 +23,7 @@
     },
     {
       "item": "pine nuts, toasted",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     },
     {
       "item": "clear honey",
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -18,7 +18,7 @@
     },
     {
       "item": "can evaporated coconut milk",
-      "amount": "1 (11.25-oz [332-ml])"
+      "amount": "1"
     },
     {
       "item": "oat milk",
@@ -61,5 +61,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

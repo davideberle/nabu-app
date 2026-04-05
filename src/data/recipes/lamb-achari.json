@@ -38,7 +38,7 @@
     },
     {
       "item": "tomato purée, plain passata (sieved tomatoes) or blended tinned (canned) tomatoes",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "mixed powder or curry powder",
@@ -54,11 +54,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "600ml (2½ cups)"
+      "amount": "600ml"
     },
     {
       "item": "pre-cooked lamb, plus 200ml (generous ¾ cup) of the cooking stock",
-      "amount": "750g (1lb 10oz)"
+      "amount": "750g"
     },
     {
       "item": "lime pickle, or 1 tbsp each of lime pickle and smooth mango chutney",
@@ -95,5 +95,10 @@
     "Add the meat and its stock and the rest of the curry sauce and simmer until it has reduced down to your preferred consistency. Stir in the lime pickle and mango chutney (if using), then add the yoghurt 1 tablespoon at a time. You need to stir continuously so that the yoghurt doesn’t curdle.",
     "Swirl in the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Squeeze the lemon juice over the top and garnish with the coriander (cilantro) to serve."
   ],
-  "image": "/recipes/lamb-achari.jpg"
+  "image": "/recipes/lamb-achari.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

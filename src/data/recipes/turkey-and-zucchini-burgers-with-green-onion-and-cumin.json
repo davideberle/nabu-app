@@ -100,5 +100,13 @@
     "Pour enough sunflower oil into a large frying pan to form a layer about 1/16 inch / 2 mm thick on the pan bottom. Heat over medium heat until hot, then sear the meatballs in batches on all sides. Cook each batch for about 4 minutes, adding oil as needed, until golden brown.",
     "Carefully transfer the seared meatballs to a baking sheet lined with waxed paper and place in the oven for 5 to 7 minutes, or until just cooked through. Serve warm or at room temperature, with the sauce spooned over or on the side."
   ],
-  "image": "/recipes/turkey-and-zucchini-burgers-with-green-onion-and-cumin.jpg"
+  "image": "/recipes/turkey-and-zucchini-burgers-with-green-onion-and-cumin.jpg",
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

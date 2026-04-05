@@ -50,15 +50,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "tandoori chicken tikka, plus 125ml (½ cup) pre-cooked stewed chicken stock or spice stock",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -84,5 +84,10 @@
     "Pour in the rest of the base sauce, the chicken and the cooking stock or spice stock, and let this bubble without disturbing until the chicken is heated through (about 2 minutes) and your sauce consistency is how you like it.",
     "Stir in the dried fenugreek leaves (kasoori methi) and season with salt. Sprinkle with the coriander (cilantro), dried garlic flakes and a few more chilli rings, if you like."
   ],
-  "image": "/recipes/chicken-chilli-garlic.jpg"
+  "image": "/recipes/chicken-chilli-garlic.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

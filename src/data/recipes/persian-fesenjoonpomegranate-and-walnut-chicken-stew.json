@@ -18,19 +18,19 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large onion, finely chopped",
@@ -46,7 +46,7 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "pomegranate arils",
@@ -55,7 +55,7 @@
     },
     {
       "item": "finely chopped fresh parsley",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -72,5 +72,10 @@
     "Add the pomegranate molasses and sugar. Stir, taste, and adjust the seasoning by adding the remaining ½ teaspoon salt if necessary. Let simmer for 10 to 15 minutes, uncovered, then turn off the heat. The stew consistency should be thick but pourable; the texture will be slightly grainy, which is fine.",
     "Garnish with the pomegranate arils and chopped parsley and serve with rice."
   ],
-  "image": "/recipes/persian-fesenjoonpomegranate-and-walnut-chicken-stew.jpg"
+  "image": "/recipes/persian-fesenjoonpomegranate-and-walnut-chicken-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

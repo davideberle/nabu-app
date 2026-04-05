@@ -121,5 +121,10 @@
   "image": "/recipes/grilled-stuffed-paneer.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

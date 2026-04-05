@@ -17,15 +17,15 @@
     },
     {
       "item": "almond butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cocoa powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "spinach",
@@ -41,11 +41,11 @@
     },
     {
       "item": "dairy-free chocolate chips",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -55,5 +55,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

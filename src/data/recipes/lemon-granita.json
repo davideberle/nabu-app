@@ -32,5 +32,13 @@
     "Spoon the granita into glasses and serve.",
     "This granita is quite tart, which is the way I like it. If you prefer it sweeter, just add a little more sugar."
   ],
-  "image": "/recipes/lemon-granita.jpg"
+  "image": "/recipes/lemon-granita.jpg",
+  "time": {
+    "total": 125
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

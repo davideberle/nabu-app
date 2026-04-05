@@ -50,5 +50,13 @@
     "Add the long beans and cook until the chicken is fully cooked, the sauce is no longer sticky and the curry has coated the chicken and beans. You may also add salted duck eggs (Step 2) at this Step. Stir well.",
     "Remove from heat and transfer to a plate. Garnish with finely sliced kaffir lime leaves.",
     "Remove from heat and transfer to a plate. Garnish with finely sliced kaffir lime leaves."
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

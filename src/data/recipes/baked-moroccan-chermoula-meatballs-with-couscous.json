@@ -29,17 +29,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "MEATBALLS"
     },
     {
       "item": "paprika",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MEATBALLS"
     },
     {
       "item": "olive oil, plus more for greasing",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MEATBALLS"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "item": "kosher salt, plus more to taste",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "COUSCOUS"
     },
     {
@@ -64,12 +64,12 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "COUSCOUS"
     },
     {
       "item": "Moroccan Chermoula",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "COUSCOUS"
     },
     {
@@ -93,5 +93,10 @@
     "Uncover the couscous, then add the olive oil and 2 tablespoons chermoula and mix thoroughly. Taste and adjust for salt. Mix in 2 tablespoons of the toasted almonds, reserving the rest for garnish.",
     "Garnish the meatballs with the toasted almonds, drizzle with more chermoula, and serve with the couscous and salad."
   ],
-  "image": "/recipes/baked-moroccan-chermoula-meatballs-with-couscous.jpg"
+  "image": "/recipes/baked-moroccan-chermoula-meatballs-with-couscous.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -17,7 +17,7 @@
     },
     {
       "item": "sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch of salt",
@@ -25,7 +25,7 @@
     },
     {
       "item": "vegetable or mushroom stock powder, plus more to taste",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "lotus root, peeled",
@@ -33,7 +33,7 @@
     },
     {
       "item": "all-purpose flour",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vegetable oil",
@@ -64,5 +64,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

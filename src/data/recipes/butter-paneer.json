@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "paneer cheese, cut into 2.5cm (1in) cubes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "x 400g (14oz) tins (cans) chopped tomatoes",
@@ -91,7 +91,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "120g (½ cup)",
+      "amount": "120g",
       "group": "MARINADE"
     },
     {
@@ -125,5 +125,10 @@
   "image": "/recipes/butter-paneer.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

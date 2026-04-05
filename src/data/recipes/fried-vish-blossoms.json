@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans Nature’s Charm banana blossom in brine, drained",
-      "amount": "2 (12-oz [340-g])"
+      "amount": "2"
     },
     {
       "item": "Old Bay Seasoning",
@@ -95,5 +95,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

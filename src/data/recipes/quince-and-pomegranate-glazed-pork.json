@@ -11,11 +11,11 @@
   "ingredients": [
     {
       "item": "quince paste (membrillo)",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "pomegranate juice",
-      "amount": "100ml (3½oz)"
+      "amount": "100ml"
     },
     {
       "item": "pomegranate molasses",
@@ -39,7 +39,7 @@
     },
     {
       "item": "loin pork fillet",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "olive oil",
@@ -52,5 +52,13 @@
     "Preheat the oven to 180°C/fan 160°C/gas mark 4. When you are ready to cook the pork, preheat a large ovenproof frying pan over a medium heat and add the oil. Shake off any excess marinade (reserve the remaining marinade) and sear the pork fillet for a couple of minutes on each side until it colours and forms a nice seared crust. It may blacken somewhat because of the sugars in the marinade, but don’t worry – this doesn’t mean the meat is burnt. Brush some of the leftover marinade evenly on to the pork fillet and transfer the pan to the oven for a further 10 minutes, then remove from the oven and allow it to rest for 5 minutes.",
     "While the pork rests, pour the remaining marinade into a small pan and heat gently until it bubbles. Once rested, cut the fillet into 5cm- (2in-) thick medallions or thinly slice. Serve with a drizzle of the marinade."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

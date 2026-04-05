@@ -19,7 +19,7 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "1/8 teaspoon black pepper",
@@ -35,5 +35,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

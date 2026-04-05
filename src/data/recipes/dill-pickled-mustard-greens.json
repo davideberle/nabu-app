@@ -18,15 +18,15 @@
     },
     {
       "item": "plus 2 teaspoons coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dill seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "black peppercorns",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "mustard greens",
@@ -34,7 +34,7 @@
     },
     {
       "item": "chopped fresh dill",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "serrano chiles, thinly sliced",
@@ -55,5 +55,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,11 +11,11 @@
   "ingredients": [
     {
       "item": "quinoa",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "shelled pistachio nuts",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "olive oil",
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

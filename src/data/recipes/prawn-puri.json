@@ -46,15 +46,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "700ml (3 cups)"
+      "amount": "700ml"
     },
     {
       "item": "small peeled raw prawns (shrimp)",
-      "amount": "450g (1lb)"
+      "amount": "450g"
     },
     {
       "item": "tomatoes, quartered",
@@ -89,5 +89,10 @@
   "image": "/recipes/prawn-puri.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

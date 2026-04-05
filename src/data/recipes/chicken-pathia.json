@@ -42,15 +42,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed chicken, plus 125ml (½ cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "smooth mango chutney, or to taste",
@@ -84,5 +84,10 @@
     "Season with salt and garnish with coriander (cilantro) to serve."
   ],
   "tips": "Prawns (shrimp) are an excellent and popular alternative to chicken.",
-  "image": "/recipes/chicken-pathia.jpg"
+  "image": "/recipes/chicken-pathia.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

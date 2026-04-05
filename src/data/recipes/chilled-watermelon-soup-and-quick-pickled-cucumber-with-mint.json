@@ -14,7 +14,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "rice vinegar",
@@ -30,11 +30,11 @@
     },
     {
       "item": "black peppercorns",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chopped fresh mint",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "seeded diced yellow watermelon flesh (about 1 pound), refrigerated overnight",
@@ -42,15 +42,15 @@
     },
     {
       "item": "red wine vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "large ice cubes",
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 95
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

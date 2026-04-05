@@ -22,23 +22,23 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "freshly squeezed orange juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely grated lemon zest",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "bourbon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Scant ¼ teaspoon fine sea salt",
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

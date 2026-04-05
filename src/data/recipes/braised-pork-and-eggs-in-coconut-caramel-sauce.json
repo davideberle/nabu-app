@@ -28,7 +28,7 @@
     },
     {
       "item": "fish sauce, plus more as needed",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "medium yellow onion, thinly sliced",
@@ -40,7 +40,7 @@
     },
     {
       "item": "black peppercorns, or ½ teaspoon black peppercorns plus 3 whole star anise (24 robust points)",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "coconut water",
@@ -84,5 +84,10 @@
     "Lightly oil a cast-iron stove-top grill (or lightly film a heavy skillet with oil) and set over medium-high heat. In batches, add the beef and cook for 4 to 5 minutes, turning midway, until medium to medium-well done. (These are usually not eaten medium-rare, but you can cook for less time, if you like.) Transfer to a platter and let cool for a few minutes.",
     "Have diners build lettuce wraps with herbs, noodles, and beef (for easier eating, you can break or cut each patty into two or three bite-size pieces). Dunk in the sauce and eat."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

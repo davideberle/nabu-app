@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely diced yellow onion",
@@ -26,7 +26,7 @@
     },
     {
       "item": "minced fresh ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "clove garlic, minced",
@@ -34,11 +34,11 @@
     },
     {
       "item": "paprika",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Corn Broth",
@@ -58,7 +58,7 @@
     },
     {
       "item": "chopped cilantro",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 32
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

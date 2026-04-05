@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "white wine vinegar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large eggs",
@@ -33,15 +33,15 @@
     },
     {
       "item": "white wine vinegar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tarragon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Pinch of salt and pepper, to taste",
@@ -57,5 +57,13 @@
     "Season with the tarragon, salt and pepper. Set aside.",
     "Toast the English muffins. Once toasted, top each muffin with the sauce, a piece of prosciutto ham, and a cooked egg.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

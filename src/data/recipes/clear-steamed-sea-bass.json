@@ -549,5 +549,13 @@
     "Stir-fried shrimp with Dragon Well tea",
     "Boil the kettle. Put the tea leaves in a bowl with 4 tablespoons hot water (Dragon Well tea is best infused with water just below boiling point, at 185–195°F/85–90°C). Leave to infuse for 1 minute, then strain out the tea leaves, retaining both them and the infused liquid.",
     "Drain all but 1 tablespoon oil from the wok. Return it to a high flame and add the shrimp, Shaoxing wine, tea leaves and 2 tablespoons of the tea infusion, and stir rapidly to incorporate. Stir the starch mixture and pour it into the wok, stirring. As soon as the juices have thickened, remove the shrimp from the wok and serve with a dish of vinegar for dipping."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

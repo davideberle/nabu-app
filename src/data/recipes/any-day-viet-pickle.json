@@ -20,11 +20,11 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar, plus ½ cup",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "distilled white vinegar (preferably Heinz)",
@@ -45,5 +45,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

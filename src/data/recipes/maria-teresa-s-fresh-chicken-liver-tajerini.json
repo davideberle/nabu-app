@@ -68,5 +68,13 @@
     "For the sauce (sugo), fry the onion in the butter and oil until transparent then add the chicken livers. After about 2–3 minutes add the chicken stock, cover and let it cook very gently for a few minutes, then add the Marsala and again let it cook for a few minutes. Season to taste with salt and sugar.",
     "Boil the tajerini in lots of salted water – they will only take a minute or so to cook – drain well and then mix the sauce through the pasta. Serve immediately."
   ],
-  "image": "/recipes/maria-teresa-s-fresh-chicken-liver-tajerini.jpg"
+  "image": "/recipes/maria-teresa-s-fresh-chicken-liver-tajerini.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

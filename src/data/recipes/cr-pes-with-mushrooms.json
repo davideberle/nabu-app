@@ -13,11 +13,11 @@
     },
     {
       "item": "turmeric powder",
-      "amount": "⅓ teaspoon"
+      "amount": "⅓ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "water",
@@ -37,19 +37,19 @@
     },
     {
       "item": "minced scallion or leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegan fish sauce or soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "mung bean sprouts",
@@ -86,5 +86,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

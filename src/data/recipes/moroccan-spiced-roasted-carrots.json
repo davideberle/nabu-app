@@ -51,5 +51,10 @@
   "method": [
     "Toss carrots in a bowl with olive oil, lemon juice, sugar, cumin, cinnamon, garlic powder, and cayenne pepper. Transfer to a large roasting pan and arrange in a single layer."
   ],
-  "image": "/recipes/moroccan-spiced-roasted-carrots.jpg"
+  "image": "/recipes/moroccan-spiced-roasted-carrots.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

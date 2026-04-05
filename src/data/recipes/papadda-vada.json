@@ -22,7 +22,7 @@
     },
     {
       "item": "basmati rice, rinsed and soaked in water for 5 hours, then drained",
-      "amount": "275g (scant 1½ cups)",
+      "amount": "275g",
       "group": "BATTER"
     },
     {
@@ -65,5 +65,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

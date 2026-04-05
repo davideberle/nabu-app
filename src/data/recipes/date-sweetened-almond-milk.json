@@ -22,7 +22,7 @@
     },
     {
       "item": "orange blossom water",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of fine sea salt",
@@ -37,5 +37,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

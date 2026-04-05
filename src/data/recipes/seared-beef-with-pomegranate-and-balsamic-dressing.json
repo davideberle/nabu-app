@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "flank, sirloin, hanger or onglet steak (or use lamb neck fillets)",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "olive oil",
@@ -27,7 +27,7 @@
     },
     {
       "item": "pomegranate seeds",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "pomegranate molasses",
@@ -35,7 +35,7 @@
     },
     {
       "item": "syrupy balsamic vinegar",
-      "amount": "75ml (2½fl oz)"
+      "amount": "75ml"
     },
     {
       "item": "olive oil",
@@ -51,5 +51,13 @@
     "Preheat a heavy-based frying pan over a high heat. Rub the beef with the olive oil and some sea salt and black pepper and place it in the pan (the pan should sizzle and smoke when you put in the beef). Sear the beef for about 3 minutes on each side, then remove it from the pan and allow it to rest so that the juices flow back through the meat, keeping it moist and juicy. To check if the meat is cooked, poke it with your finger. If there is a lot of bounce, the meat is very rare. The less bounce you have, the more the meat is cooked. You are looking for meat that doesn’t have too much bounce yet still retains a rare centre but, of course, you can cook your meat for longer, if desired (although these particular cuts are not well suited to cooking well-done).",
     "Once the meat has rested for at least 5 minutes, thinly slice the beef into slivers and arrange them on a platter. Take a generous handful of rocket leaves and place in the centre of the platter, then drizzle the sauce all over the beef and, finally, garnish with the pomegranate seeds. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

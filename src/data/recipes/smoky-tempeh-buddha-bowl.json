@@ -13,11 +13,11 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dry quinoa",
@@ -33,23 +33,23 @@
     },
     {
       "item": "almond butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "dairy-free milk",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "tamari",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "rice vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red curry paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "baby spinach",
@@ -75,5 +75,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

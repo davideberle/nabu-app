@@ -20,11 +20,11 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cardamom",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "eggs",
@@ -49,5 +49,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

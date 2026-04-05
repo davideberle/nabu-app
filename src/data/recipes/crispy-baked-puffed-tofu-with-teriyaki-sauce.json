@@ -17,7 +17,7 @@
     },
     {
       "item": "hot sauce (such as Frank’s)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cornstarch",
@@ -25,23 +25,23 @@
     },
     {
       "item": "tamari",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cornstarch",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "maple syrup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

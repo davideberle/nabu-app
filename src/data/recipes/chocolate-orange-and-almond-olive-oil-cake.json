@@ -22,15 +22,15 @@
     },
     {
       "item": "/ 5 grams baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "aluminum-free baking powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 60 grams ground roasted unpeeled whole almonds (page 19), divided",
@@ -50,15 +50,15 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "pure almond extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "recipe Chocolate Orange Glaze (page 269)",
@@ -83,5 +83,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

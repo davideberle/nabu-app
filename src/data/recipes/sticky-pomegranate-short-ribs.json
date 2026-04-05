@@ -18,15 +18,15 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large onion, finely chopped",
@@ -42,7 +42,7 @@
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -54,11 +54,11 @@
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Microgreens or fresh parsley and mint leaves",
@@ -91,5 +91,10 @@
     "Let the sauce in the pot simmer for 10 to 15 minutes, until thickened, then brush it on top of the short ribs and serve the rest on the side.",
     "Garnish with microgreens or fresh parsley and mint and pomegranate arils and serve with slaw (if using) and rice (if using)."
   ],
-  "image": "/recipes/sticky-pomegranate-short-ribs.jpg"
+  "image": "/recipes/sticky-pomegranate-short-ribs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

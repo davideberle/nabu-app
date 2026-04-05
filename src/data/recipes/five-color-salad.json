@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "vegetable oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "block (14 ounces/400 g) firm tofu",
@@ -25,23 +25,23 @@
     },
     {
       "item": "fermented soybean sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sriracha",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "lime juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sesame or olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "bird's eye chili pepper, minced, plus more sliced for garnish",
@@ -69,11 +69,11 @@
     },
     {
       "item": "roasted peanuts, crushed",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "toasted sesame seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -87,5 +87,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -69,5 +69,13 @@
     "When the pastry is cool, arrange the dates in a fan shape on top of the pastry. Pour the cooled sauce over the dates (if the sauce is too hot, it will be too liquid and soften the pastry).",
     "Serve with whipped cream."
   ],
-  "image": "/recipes/date-tart.jpg"
+  "image": "/recipes/date-tart.jpg",
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

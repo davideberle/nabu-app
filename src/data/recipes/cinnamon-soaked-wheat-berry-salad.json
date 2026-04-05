@@ -22,7 +22,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "carrots (about 8 ounces total), diced into ¼-inch pieces",
@@ -34,7 +34,7 @@
     },
     {
       "item": "packed minced cilantro",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "almonds, blanched, toasted, and chopped",
@@ -42,11 +42,11 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "heaping teaspoon Dijon mustard",
@@ -54,19 +54,19 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -80,5 +80,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

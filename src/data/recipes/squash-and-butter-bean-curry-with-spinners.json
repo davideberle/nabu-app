@@ -14,15 +14,15 @@
   "ingredients": [
     {
       "item": "vegetable stock",
-      "amount": "500 ml (17 fl oz/2 cups)"
+      "amount": "500 ml"
     },
     {
       "item": "creamed coconut",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "coconut oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "onion, diced",
@@ -30,7 +30,7 @@
     },
     {
       "item": "medium Jamaican curry powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "thumb-sized piece of fresh ginger root, peeled and grated",
@@ -42,7 +42,7 @@
     },
     {
       "item": "allspice berries, ground",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "garlic cloves, very finely chopped (yes, 6)",
@@ -58,7 +58,7 @@
     },
     {
       "item": "coconut milk",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "sprigs of thyme",
@@ -82,7 +82,7 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "150 g (5 oz/1¼ cups)",
+      "amount": "150 g",
       "group": "SPINNERS"
     },
     {
@@ -116,5 +116,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

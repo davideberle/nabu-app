@@ -17,7 +17,7 @@
     },
     {
       "item": "active dry yeast",
-      "amount": "2¼ teaspoons"
+      "amount": "2¼ tsp"
     },
     {
       "item": "large eggs, room temperature",
@@ -29,7 +29,7 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "all-purpose flour",
@@ -41,7 +41,7 @@
     },
     {
       "item": "butter, at room temperature",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "vegetable oil. for frying",
@@ -62,5 +62,13 @@
     "Meanwhile, warm the vegetable oil on medium heat to 375°F (191°C).",
     "Deep fry the doughnuts for about 1 minute on each side.",
     "Just before serving, dust with icing sugar."
-  ]
+  ],
+  "time": {
+    "total": 140
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

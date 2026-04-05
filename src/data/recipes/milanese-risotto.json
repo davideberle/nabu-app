@@ -60,5 +60,13 @@
     "Turn the heat off and add the remaining butter and about 70 g of the parmigiano, serving the rest on the side. Taste for salt and pepper and add if needed. Serve immediately with pan-fried porcini mushrooms, if you like.",
     "Ask the butcher to cut 2 large veal bones lengthways, so you will be able to remove the marrow. The marrow is optional in this recipe, but it does make the risotto taste fantastic."
   ],
-  "image": "/recipes/milanese-risotto.jpg"
+  "image": "/recipes/milanese-risotto.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

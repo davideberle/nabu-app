@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "coarse sea salt",
-      "amount": "1¼ teaspoon"
+      "amount": "1¼ tsp"
     },
     {
       "item": "packed chopped mustard greens",
@@ -18,7 +18,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -26,47 +26,47 @@
     },
     {
       "item": "coriander seeds",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cumin seeds",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chopped jalapeño chiles",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "minced cilantro",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced flat-leaf parsley",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red wine vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

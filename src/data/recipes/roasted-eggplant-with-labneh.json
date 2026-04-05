@@ -24,12 +24,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "EGGPLANT"
     },
     {
       "item": "sumac",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "EGGPLANT"
     },
     {
@@ -39,22 +39,22 @@
     },
     {
       "item": "sumac",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "LABNEH"
     },
     {
       "item": "finely chopped fresh dill (optional)",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "LABNEH"
     },
     {
       "item": "pine nuts",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "roughly torn fresh dill",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "GARLIC OIL"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "GARLIC OIL"
     }
   ],
@@ -87,5 +87,10 @@
     "WHEN THE EGGPLANT IS BAKED AND JUST BEFORE SERVING, MAKE THE GARLIC OIL: In the same skillet the pine nuts were toasted in, heat the olive oil over medium heat. Add the garlic and cook, stirring continuously, for a few minutes, or until sizzling and golden. Stir in the Aleppo pepper and remove from the heat.",
     "Spread the labneh onto a medium serving platter and top with the roasted eggplant rounds. Spoon the garlic oil evenly over the top, then garnish with the toasted pine nuts and fresh dill. Serve with pita bread."
   ],
-  "image": "/recipes/roasted-eggplant-with-labneh.jpg"
+  "image": "/recipes/roasted-eggplant-with-labneh.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

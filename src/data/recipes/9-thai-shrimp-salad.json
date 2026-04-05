@@ -34,5 +34,13 @@
     "Place skewers on an oiled grill. Cover and cook over medium heat for 2 to 4 minutes.",
     "Add shrimp, onion, and cucumber into the sauce (Step 1) and stir well.",
     "Add shrimp, onion, and cucumber into the sauce (Step 1) and stir well."
-  ]
+  ],
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

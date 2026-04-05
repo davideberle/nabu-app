@@ -18,23 +18,23 @@
     },
     {
       "item": "kosher salt, divided, plus more to taste",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "black pepper, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground coriander, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "cremini mushrooms, thinly sliced",
@@ -46,7 +46,7 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chickpeas, rinsed and drained",
@@ -78,5 +78,10 @@
     "Add the chickpeas, bulgur, and broth and bring to a boil. Once boiling, carefully taste the liquid and adjust the salt; it should be noticeably salty. Add the chicken back into the skillet, cover with the lid, reduce the heat to low, and let cook for 25 minutes, undisturbed. Remove the lid and fluff the bulgur with a fork.",
     "Garnish with the reserved mushrooms and onions (if using) and serve with salad and yogurt."
   ],
-  "image": "/recipes/one-pot-chicken-and-mushroom-bulgur.jpg"
+  "image": "/recipes/one-pot-chicken-and-mushroom-bulgur.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

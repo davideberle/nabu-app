@@ -21,7 +21,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic chives (or Chinese chives), cut into 3-inch (7.5 cm) lengths",
@@ -52,5 +52,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

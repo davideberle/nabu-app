@@ -20,23 +20,23 @@
     },
     {
       "item": "Chinese five-spice powder",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "maple syrup, or 1 teaspoon honey plus 1 teaspoon water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "apple cider or distilled white vinegar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "thick-cut slices smoked bacon, or 3 thin-cut slices smoked bacon, cut crosswise into ¼- to ⅓-inch-wide strips",
@@ -56,5 +56,10 @@
     "Return the first batch of green beans and the bacon to the skillet, dump in the garlic, and cook, stirring, until hot, 30 to 60 seconds. Splash in the seasoning liquid and cook for about 30 seconds, until the liquid has evaporated.",
     "Heap the green beans onto a serving plate and enjoy."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

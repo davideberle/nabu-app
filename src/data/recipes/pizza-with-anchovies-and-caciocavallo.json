@@ -75,5 +75,13 @@
     "Heat around 2 tablespoons of the oil in a large frying pan and add the onion. Fry for 5 minutes or until soft and translucent. Oil a 30 × 40 cm oven tray. Roll the pizza dough out and lift it onto the tray. Use your fingers to push the dough into the corners and to make indentations over the surface. Brush generously with olive oil. Spread the onion over the pizza base, followed by the anchovies, olives, cheese, breadcrumbs and oregano. Drizzle on the remaining oil and sprinkle with a few salt flakes and pepper. (Don’t add too much salt as the anchovies and olives are already salty.)",
     "Bake in the oven for about 20 minutes until golden-brown."
   ],
-  "image": "/recipes/pizza-with-anchovies-and-caciocavallo.jpg"
+  "image": "/recipes/pizza-with-anchovies-and-caciocavallo.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

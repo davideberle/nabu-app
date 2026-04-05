@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "peanut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely diced white onion",
@@ -18,7 +18,7 @@
     },
     {
       "item": "finely grated orange zest",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -26,11 +26,11 @@
     },
     {
       "item": "paprika",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "African bird’s eye chiles, seeded",
@@ -42,27 +42,27 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "bourbon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "maple syrup",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "unsulfured molasses",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "minced fresh basil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "freshly ground white pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -73,5 +73,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 37
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

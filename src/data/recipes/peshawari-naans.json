@@ -30,7 +30,7 @@
     },
     {
       "item": "almond flakes",
-      "amount": "200g (2½ cups)",
+      "amount": "200g",
       "group": "PESHAWARI PASTE"
     },
     {
@@ -63,5 +63,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -93,5 +93,13 @@
     "Heat the butter and oil in a frying pan and, as soon as the butter begins to foam, put the venison into the pan and brown it quickly on all sides, sealing in the juices. Transfer the meat to an oven tray and roast for about 10 minutes (if your venison weighs more or less than 600 g, calculate the cooking time based on 15 minutes per kilogram for rare, and 20 minutes per kilogram for medium–rare). It is important to rest the meat for as long as you cooked it in the oven, loosely wrapped in foil to keep it warm.",
     "Slice the meat, place it on a warmed serving plate and pour over some sauce, then sprinkle some coarse sea salt over it. Put the rest of the sauce in a bowl to serve on the side."
   ],
-  "image": "/recipes/roast-venison.jpg"
+  "image": "/recipes/roast-venison.jpg",
+  "time": {
+    "total": 105
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

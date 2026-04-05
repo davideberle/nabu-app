@@ -19,12 +19,12 @@
     },
     {
       "item": "all-purpose flour",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CRISPY ONIONS"
     },
     {
       "item": "cornstarch",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CRISPY ONIONS"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CRISPY ONIONS"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "LENTILS AND RICE"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "PASTA"
     },
     {
@@ -89,22 +89,22 @@
     },
     {
       "item": "ground coriander",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DUKKAH (VINEGAR SAUCE)"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DUKKAH (VINEGAR SAUCE)"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DUKKAH (VINEGAR SAUCE)"
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DUKKAH (VINEGAR SAUCE)"
     },
     {
@@ -124,27 +124,27 @@
     },
     {
       "item": "ground coriander",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "TOMATO SAUCE"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TOMATO SAUCE"
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "TOMATO SAUCE"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "TOMATO SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "TOMATO SAUCE"
     },
     {
@@ -159,12 +159,12 @@
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKPEAS"
     },
     {
       "item": "kosher salt",
-      "amount": "1/8 teaspoon",
+      "amount": "1/8 tsp",
       "group": "CHICKPEAS"
     }
   ],
@@ -181,5 +181,10 @@
     "Add the chickpeas to a small bowl with 1 tablespoon of the reserved onion oil, the ½ teaspoon cumin, and ⅛ teaspoon salt. Toss together.",
     "Spoon the lentils and rice onto a large platter, followed by a layer of pasta and then the chickpeas (see Note). Spoon some of the tomato sauce on top, then garnish with the crispy onions. Serve the dukkah and remaining tomato sauce on the side."
   ],
-  "image": "/recipes/egyptian-kosharilentils-rice-and-pasta.jpg"
+  "image": "/recipes/egyptian-kosharilentils-rice-and-pasta.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

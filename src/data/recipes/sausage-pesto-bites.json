@@ -41,5 +41,10 @@
   ],
   "method": [
     "Cut toasted English muffin slices into 4 triangles, spread pesto, assemble mozzarella, sausage, little tomato, and basil. Secure with a toothpick. If you like you can add a splash of olive oil on each triangle. Serves 2-3. Olé"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

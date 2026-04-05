@@ -97,5 +97,13 @@
     "Preheat the oven to 325°F / 170°C.",
     "Put the lamb in the oven with its fatty side facing up and roast for a total of about 4½ hours, until the meat is completely tender. After 30 minutes of roasting, add the boiling water to the pan and use this liquid to baste the meat every hour or so. Add more water, as needed, making sure there is always about ¼ inch / 0.5 cm in the bottom of the pan. For the last 3 hours, cover the lamb with foil to prevent the spices from burning. Once done, remove the lamb from the oven and leave to rest for 10 minutes before carving and serving."
   ],
-  "image": "/recipes/lamb-shawarma.jpg"
+  "image": "/recipes/lamb-shawarma.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

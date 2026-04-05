@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "Graham Crackers (page 136)",
-      "amount": "16 (2 inch / 5 cm)"
+      "amount": "16"
     },
     {
       "item": "to 6 ounces / 142 to 170 grams any favorite dark chocolate bar, broken into small pieces",
@@ -31,5 +31,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

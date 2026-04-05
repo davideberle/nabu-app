@@ -62,5 +62,13 @@
     "Remove the bones and, with a small spoon, scrape out the marrow. Stir the marrow into the soup. Break up any large chunks of meat in the soup with a wooden spoon.",
     "Stir the parsley through the soup and serve with crusty bread."
   ],
-  "image": "/recipes/evi-s-vegetable-soup.jpg"
+  "image": "/recipes/evi-s-vegetable-soup.jpg",
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

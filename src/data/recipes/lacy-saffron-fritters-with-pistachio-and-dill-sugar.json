@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "plain flour",
-      "amount": "175g (6oz)"
+      "amount": "175g"
     },
     {
       "item": "pinch of salt",
@@ -20,15 +20,15 @@
     },
     {
       "item": "sachet of fast-action dried yeast",
-      "amount": "1 x 7g (1/6 oz)"
+      "amount": "1 x 7g"
     },
     {
       "item": "warm water",
-      "amount": "250ml (9fl oz)"
+      "amount": "250ml"
     },
     {
       "item": "Greek yogurt",
-      "amount": "75g (2¾oz)"
+      "amount": "75g"
     },
     {
       "item": "pinch of saffron threads, ground with a pestle and mortar, then dissolved in 2 tbsp boiling water",
@@ -36,11 +36,11 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     },
     {
       "item": "shelled pistachio nuts",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     },
     {
       "item": "good handful of dill, leaves picked and finely chopped",
@@ -48,7 +48,7 @@
     },
     {
       "item": "caster sugar",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     }
   ],
   "method": [
@@ -60,5 +60,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

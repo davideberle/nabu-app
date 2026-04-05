@@ -17,7 +17,7 @@
     },
     {
       "item": "chia seeds or ground chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dairy-free chocolate chips, divided",
@@ -25,7 +25,7 @@
     },
     {
       "item": "instant coffee",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "whole wheat flour",
@@ -33,19 +33,19 @@
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "walnuts, chopped",
@@ -66,5 +66,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 17
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

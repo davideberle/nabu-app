@@ -14,67 +14,67 @@
   "ingredients": [
     {
       "item": "marzipan",
-      "amount": "230 g (8¼ oz)"
+      "amount": "230 g"
     },
     {
       "item": "plain (all-purpose) lour",
-      "amount": "250 g (9 oz/2 cups)"
+      "amount": "250 g"
     },
     {
       "item": "ground ginger",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "silken tofu",
-      "amount": "70 g (2¼ oz)"
+      "amount": "70 g"
     },
     {
       "item": "non-dairy milk",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "black treacle (molasses)",
-      "amount": "90 g (3¼ oz/¼ cup)"
+      "amount": "90 g"
     },
     {
       "item": "golden (light corn) syrup",
-      "amount": "90 g (3¼ oz/¼ cup)"
+      "amount": "90 g"
     },
     {
       "item": "dark brown soft sugar",
-      "amount": "90 g (3¼ oz/scant ½ cup)"
+      "amount": "90 g"
     },
     {
       "item": "vegan block butter, plus extra for greasing",
-      "amount": "130 g (4½ oz)"
+      "amount": "130 g"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "almond extract",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "zest of 2 limes",
@@ -98,5 +98,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -12,11 +12,11 @@
   "ingredients": [
     {
       "item": "bulgur wheat",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "boiling water",
-      "amount": "160ml (5½fl oz)"
+      "amount": "160ml"
     },
     {
       "item": "chilli paste",
@@ -64,7 +64,7 @@
     },
     {
       "item": "pomegranate seeds",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     }
   ],
   "method": [
@@ -76,5 +76,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

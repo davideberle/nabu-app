@@ -75,5 +75,13 @@
     "Now mix the remaining parboiled plain rice and the lentils with the lamb mixture and pile it on top of the yoghurt and rice mixture in a large pan. With a wooden spoon handle, make holes in the rice and add some small pieces of butter. Put the lid on tight and, over a very low heat, cook for about 30–40 minutes.",
     "To serve, turn it upside down onto a warm dish. The rice should have a beautiful golden crust on top."
   ],
-  "image": "/recipes/spiced-lamb-and-rice.jpg"
+  "image": "/recipes/spiced-lamb-and-rice.jpg",
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "basmati rice",
-      "amount": "370g (2 cups)"
+      "amount": "370g"
     },
     {
       "item": "Pinch of salt",
@@ -33,5 +33,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -48,19 +48,19 @@
     },
     {
       "item": "fish sauce",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "canola or other neutral oil, plus more for grilling",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Caramel Sauce (this page), or 2 teaspoons molasses",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "plus ¾ teaspoon sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Scant 1 teaspoon recently ground black pepper",
@@ -76,7 +76,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -89,5 +89,10 @@
     "Oil a cast-iron stove-top grill pan and set over high heat. Add the patties and grill for about 6 minutes, turning frequently and basting with the remaining puree, until there are char marks and the pork is cooked through; nick a patty with the point of a knife to check. Divide the patties among the bowls with the dipping sauce and add the bacon. Set at the table with the noodles and garnishes.",
     "To eat, have diners break each patty into three or four chunks to soak up the sauce. Tear the lettuce and herbs leaves into manageable-size pieces, dropping them into individual bowls. Top with a mound of noodles, add the bacon and patty pieces, and drizzle with sauce, including the pickled carrot and kohlrabi for crunch. Mix things up, and eat. Repeat until everything is gone."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

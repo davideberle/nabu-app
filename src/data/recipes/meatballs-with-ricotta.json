@@ -81,5 +81,13 @@
     "Fry the meatballs in batches using the remaining butter and oil, turning on all sides until they are golden-brown. Transfer to a serving dish and keep warm in the oven.",
     "The meatballs are delicious served hot, warm or cold. If you like, serve them with the Tomato Sauce from Timballo di Natalia."
   ],
-  "image": "/recipes/meatballs-with-ricotta.jpg"
+  "image": "/recipes/meatballs-with-ricotta.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

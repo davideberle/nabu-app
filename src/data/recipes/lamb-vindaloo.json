@@ -54,7 +54,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "jaggery or sugar",
@@ -62,11 +62,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "600ml (2½ cups)"
+      "amount": "600ml"
     },
     {
       "item": "pre-cooked stewed lamb, plus some (generous ¾ cup) of its cooking stock",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "white wine vinegar",
@@ -96,5 +96,10 @@
     "The pan should be going crazy over the heat. Swirl in the remaining base curry sauce and add the pre-cooked meat with a little of the cooking stock. Let the sauce simmer over the high heat until it cooks down to your desired consistency.",
     "To finish, add the vinegar, dried fenugreek leaves (kasoori methi), potatoes (if using) and the coriander (cilantro). Season with salt and black pepper."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

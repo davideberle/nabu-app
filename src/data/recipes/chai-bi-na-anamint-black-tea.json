@@ -18,7 +18,7 @@
     },
     {
       "item": "loose-leaf black tea",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "loosely packed fresh mint leaves",
@@ -37,5 +37,10 @@
     "Place some of the mint leaves in each teacup, then pour the tea into the teacups.",
     "Serve with sugar for sweetening."
   ],
-  "image": "/recipes/chai-bi-na-anamint-black-tea.jpg"
+  "image": "/recipes/chai-bi-na-anamint-black-tea.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

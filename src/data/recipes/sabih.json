@@ -76,5 +76,13 @@
   "image": "/recipes/sabih.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

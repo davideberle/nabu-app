@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans jackfruit",
-      "amount": "3 (2-oz [55-g])"
+      "amount": "3"
     },
     {
       "item": "guajillo chiles, seeded",
@@ -93,5 +93,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

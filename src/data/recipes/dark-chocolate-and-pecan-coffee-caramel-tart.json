@@ -14,72 +14,72 @@
   "ingredients": [
     {
       "item": "instant coffee or instant espresso powder",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "boiling water",
-      "amount": "60 ml (2 fl oz/¼ cup)",
+      "amount": "60 ml",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "coconut cream",
-      "amount": "115–125 g (3¾–4 oz)",
+      "amount": "115–125 g",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "dark brown soft sugar",
-      "amount": "90 g (3¼ oz/scant ½ cup)",
+      "amount": "90 g",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "pecans, plus extra to decorate",
-      "amount": "150 g (5 oz/1½ cups)",
+      "amount": "150 g",
       "group": "PECAN CARAMEL"
     },
     {
       "item": "Biscoff biscuits (cookies)",
-      "amount": "300 g (10½ oz)",
+      "amount": "300 g",
       "group": "BASE"
     },
     {
       "item": "vegan block butter, melted, plus extra for greasing",
-      "amount": "100 g (3½ oz)",
+      "amount": "100 g",
       "group": "BASE"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)",
+      "amount": "400 ml",
       "group": "CHOCOLATE FILLING"
     },
     {
       "item": "agave syrup",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHOCOLATE FILLING"
     },
     {
       "item": "70% dark (bittersweet) vegan chocolate, roughly chopped",
-      "amount": "300 g (10½ oz)",
+      "amount": "300 g",
       "group": "CHOCOLATE FILLING"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHOCOLATE FILLING"
     },
     {
       "item": "coconut yogurt",
-      "amount": "50g (¼ cup)",
+      "amount": "50g",
       "group": "CHOCOLATE FILLING"
     },
     {
@@ -101,5 +101,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

@@ -17,7 +17,7 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -26,5 +26,13 @@
     "Roll out the triangles to form the croissants. Arrange them on the prepared baking sheet.",
     "Brush the croissants with the lightly whisked egg. Sprinkle each with the sugar.",
     "Bake for 15-20 minutes or until puffed and golden brown."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

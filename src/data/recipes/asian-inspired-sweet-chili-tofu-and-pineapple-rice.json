@@ -90,11 +90,11 @@
     },
     {
       "item": "block extra-firm tofu",
-      "amount": "1 (12-oz [340-g])"
+      "amount": "1"
     },
     {
       "item": "bottle sweet chili sauce",
-      "amount": "1 (6.6-oz [194-ml])"
+      "amount": "1"
     },
     {
       "item": "green onions, chopped",
@@ -118,5 +118,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

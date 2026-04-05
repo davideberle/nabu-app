@@ -25,7 +25,7 @@
     },
     {
       "item": "salt, divided",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "cold-pressed peanut or vegetable oil, divided",
@@ -53,15 +53,15 @@
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dried flat rice noodles or 2¼ pounds (1 kg) fresh mì Quảng or flat rice noodles",
@@ -114,5 +114,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 37
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

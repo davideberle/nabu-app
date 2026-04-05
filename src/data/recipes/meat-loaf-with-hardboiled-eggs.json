@@ -92,5 +92,13 @@
     "Line a large rectangular terrine dish or loaf tin (about 35 cm long) with foil and brush it with oil. Put 2–3 bay leaves in the middle of the dish as decoration, then line the bacon side to side over the whole bottom and side of the terrine. Put a third of the mince mixture in the tin and press it down evenly. Lay half the ham slices on top, then add a little more mince on top of the ham. Arrange the hardboiled eggs in a line down the centre, then enough extra mince to cover the eggs. Layer the remaining ham on top and add the remaining mince. If any bacon remains, cover the terrine with it. Press the mixture down well.",
     "Bake the loaf on the bottom shelf of the oven for 50 minutes; it should be lightly browned on top. Turn the polpettone onto a serving dish. It is delicious served hot or cold with crusty bread."
   ],
-  "image": "/recipes/meat-loaf-with-hardboiled-eggs.jpg"
+  "image": "/recipes/meat-loaf-with-hardboiled-eggs.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

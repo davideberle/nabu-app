@@ -34,22 +34,22 @@
     },
     {
       "item": "seven spice",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "KOFTA"
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "KOFTA"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "KOFTA"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "KOFTA"
     },
     {
@@ -59,12 +59,12 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "KOFTA"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KOFTA"
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "POTATOES"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "POTATOES"
     },
     {
@@ -99,17 +99,17 @@
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
       "item": "paprika",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -151,5 +151,10 @@
     "MAKE THE GARNISH: In a small skillet, heat the oil over medium heat, then add the almonds and toast them for a few minutes, or until golden brown, stirring often.",
     "Garnish the kofta skillet with the toasted almonds and chopped parsley and serve with pita bread or rice."
   ],
-  "image": "/recipes/kofta-bil-tahinibaked-kofta-with-tahini.jpg"
+  "image": "/recipes/kofta-bil-tahinibaked-kofta-with-tahini.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

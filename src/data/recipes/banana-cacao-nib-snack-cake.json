@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 18 grams Dutch-process cocoa powder",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "/ 50 grams organic granulated sugar",
@@ -26,15 +26,15 @@
     },
     {
       "item": "aluminum-free baking powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "any nondairy milk",
@@ -42,7 +42,7 @@
     },
     {
       "item": "maple syrup, Grade B or dark amber",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "mild tasting extra-virgin olive oil or organic neutral vegetable oil",
@@ -50,7 +50,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "medium very ripe banana, frozen",
@@ -58,7 +58,7 @@
     },
     {
       "item": "/ 20 grams cacao nibs, plain or sweet",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -72,5 +72,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

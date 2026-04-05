@@ -13,7 +13,7 @@
     },
     {
       "item": "salt, divided",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "vegetable oil",
@@ -29,7 +29,7 @@
     },
     {
       "item": "plus 1 tablespoon sugar, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "water",
@@ -37,11 +37,11 @@
     },
     {
       "item": "all-purpose flour",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "cornstarch",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     }
   ],
   "method": [
@@ -55,5 +55,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

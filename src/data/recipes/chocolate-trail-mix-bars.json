@@ -33,7 +33,7 @@
     },
     {
       "item": "peanut butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "maple syrup",
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -74,5 +74,13 @@
     "Mix the stock, lemon juice, and the remaining oil and season generously with salt and pepper. Ladle spoonfuls of the liquid over the artichokes until they are almost, but not completely, submerged; you may not need all the liquid. Place a piece of parchment paper over the artichokes, cover the pan with a lid, and simmer over low heat for 1 hour. When they’re ready, only about 4 tablespoons liquid should remain. If necessary, remove the lid and paper and reduce the sauce. Set the pan aside until the artichokes are just warm or at room temperature.",
     "When ready to serve, blanch the peas for 2 minutes. Drain and add them and the dill to the pan with the artichokes, season to taste, and mix everything together gently."
   ],
-  "image": "/recipes/stuffed-artichokes-with-peas-and-dill.jpg"
+  "image": "/recipes/stuffed-artichokes-with-peas-and-dill.jpg",
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -9,7 +9,8 @@
   "intro": "My favourite raita. Nothing more to be said.",
   "time": {
     "prep": "5 MINS",
-    "cook": ""
+    "cook": "",
+    "total": 30
   },
   "ingredients": [
     {
@@ -30,7 +31,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "375g (1¾ cups)"
+      "amount": "375g"
     },
     {
       "item": "Salt, to taste",
@@ -45,5 +46,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

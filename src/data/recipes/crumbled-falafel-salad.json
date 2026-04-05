@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "yellow onions, cut into quarters",
@@ -31,7 +31,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "plus 3 tablespoons olive oil, divided",
@@ -39,19 +39,19 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "clove garlic",
@@ -71,7 +71,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "red onion, finely chopped",
@@ -98,5 +98,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

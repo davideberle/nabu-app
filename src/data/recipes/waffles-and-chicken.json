@@ -13,7 +13,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "granulated sugar",
@@ -25,7 +25,7 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large eggs, room temperature",
@@ -41,7 +41,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "buttermilk",
@@ -49,23 +49,23 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "garlic powder",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "onion powder",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "chili powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "all-purpose flour",
@@ -77,23 +77,23 @@
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "chicken thighs, boneless and skinless",
@@ -119,5 +119,13 @@
     "Drain the chicken thighs from the buttermilk brine. Coat in the seasoned flour mixture.",
     "Heat the oil in a large non-stick frying pan over medium heat. Deep-fry the chicken until crispy, about 10 minutes.",
     "Serve the waffles with the crispy fried chicken on top. Drizzle with the sriracha sauce, maple syrup, or honey."
-  ]
+  ],
+  "time": {
+    "total": 47
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

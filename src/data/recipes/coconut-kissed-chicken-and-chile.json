@@ -16,11 +16,11 @@
     },
     {
       "item": "grated or minced and mashed peeled ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "Rounded ¼ teaspoon fine sea salt",
@@ -28,11 +28,11 @@
     },
     {
       "item": "Caramel Sauce (this page), or 1 teaspoon molasses",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut water, plus more as needed",
@@ -44,11 +44,11 @@
     },
     {
       "item": "virgin coconut oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "finely chopped shallot",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "or 2 chiles, such as Fresno, jalapeño, or cayenne, cut into rings, with seeds intact",
@@ -61,5 +61,10 @@
     "In a large nonstick skillet over medium heat, melt 1 tablespoon of the coconut oil. Turn the heat to medium-high, add the chicken, and cook for about 1 minute, until the edges look opaque and the chicken is beginning to brown. Turn the chicken and cook for 45 to 60 seconds more. Add the coconut water and scatter the shallot around the chicken. Bring to a boil and continue boiling for 10 to 12 minutes, turning the chicken occasionally, until there’s little to no liquid and you’re left with mostly sizzling oil. Add the chiles and cook for 1 minute, stirring constantly, until slightly softened and fragrant. Transfer the chicken and chiles to a bowl.",
     "Splash about 3 tablespoons coconut water into the pan and add the remaining 1½ teaspoons coconut oil. Stir to combine and let bubble for about 30 seconds, until slightly thickened. Pour the sauce over the chicken and chiles (or return them to the pan) and stir to coat. Transfer to a shallow bowl or plate and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "box penne noodles",
-      "amount": "1 (1-lb [455-g])"
+      "amount": "1"
     },
     {
       "item": "Salt",
@@ -87,5 +87,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -18,11 +18,11 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "iru (fermented locust beans)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube Salt to taste",
@@ -36,5 +36,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

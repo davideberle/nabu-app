@@ -49,5 +49,13 @@
     "Bake in the oven for about 30 minutes.",
     "You can serve these peperoni as an appetiser, as part of an antipasto or as an accompaniment to grilled veal, pork or beef. The peperoni also taste delicious when eaten cold."
   ],
-  "image": "/recipes/capsicums-piemontese-style.jpg"
+  "image": "/recipes/capsicums-piemontese-style.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -21,11 +21,11 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "tahini",
@@ -33,11 +33,11 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "clove garlic",
@@ -45,7 +45,7 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of ground black pepper",
@@ -53,7 +53,7 @@
     },
     {
       "item": "water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "diced red onion",
@@ -73,7 +73,7 @@
     },
     {
       "item": "chia seeds, black or white",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -85,5 +85,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

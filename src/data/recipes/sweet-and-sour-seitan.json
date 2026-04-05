@@ -17,35 +17,35 @@
     },
     {
       "item": "white vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ketchup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "brown sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sesame oil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sriracha sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetarian oyster sauce (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -53,11 +53,11 @@
     },
     {
       "item": "freshly ground black pepper, for garnish",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "roasted sesame seeds, for garnish",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

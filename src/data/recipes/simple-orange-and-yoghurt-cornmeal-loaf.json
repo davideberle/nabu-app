@@ -14,39 +14,39 @@
   "ingredients": [
     {
       "item": "plain (all-purpose) flour",
-      "amount": "300 g (10½ oz/generous 2⅓ cups)"
+      "amount": "300 g"
     },
     {
       "item": "polenta (cornmeal)",
-      "amount": "100 g (3½ oz/⅔ cup)"
+      "amount": "100 g"
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plain non-dairy yoghurt",
-      "amount": "250 g (9 oz)"
+      "amount": "250 g"
     },
     {
       "item": "non-dairy milk",
-      "amount": "150 ml (5 fl oz/scant ⅔ cup)"
+      "amount": "150 ml"
     },
     {
       "item": "olive oil, plus extra for greasing",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "150 g (5 oz/generous ¾ cup)"
+      "amount": "150 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "zest of 4 oranges",
@@ -54,7 +54,7 @@
     },
     {
       "item": "orange extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "juice of 4 oranges",
@@ -63,7 +63,7 @@
     },
     {
       "item": "agave syrup",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)",
+      "amount": "100 ml",
       "group": "ORANGE SYRUP"
     }
   ],
@@ -77,5 +77,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -13,15 +13,15 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced lemongrass",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Japanese eggplant, cut into ½-inch (1 cm) thick slices",
@@ -33,19 +33,19 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "unsweetened cocoa powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Freshly ground black pepper, to taste",
@@ -57,35 +57,35 @@
     },
     {
       "item": "minced lemongrass",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "char siu seasoning mix",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegetarian oyster sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "block (14 ounces/400 g) firm tofu",
@@ -134,5 +134,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

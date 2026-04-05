@@ -26,7 +26,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "green beans (see Note), trimmed and cut in half crosswise",
@@ -34,7 +34,7 @@
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "small vine tomatoes, diced",
@@ -42,7 +42,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Olive oil",
@@ -67,5 +67,10 @@
     "Remove the lid and add the tomatoes, tomato paste, and 3 or 4 tablespoons of water. Stir to combine, then cover again and cook for 10 minutes longer, stirring occasionally, until they reach a crisp, tender texture. Remove from the heat.",
     "Transfer the beans to a flat plate, pouring all the pan juices as well. Drizzle with olive oil and an extra sprinkling of salt, if desired. Serve with a side of pita bread or rice."
   ],
-  "image": "/recipes/loubia-bil-zeitolive-oil-braised-green-beans.jpg"
+  "image": "/recipes/loubia-bil-zeitolive-oil-braised-green-beans.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

@@ -49,5 +49,13 @@
     "Spread the marmalade over the base. Use the remaining pastry to cut out little decorations and arrange them on the marmalade.",
     "Bake on the bottom shelf of the oven for 20–25 minutes. Leave to cool in the pie dish completely before carefully sliding out onto a serving dish."
   ],
-  "image": "/recipes/orange-marmalade-tart.jpg"
+  "image": "/recipes/orange-marmalade-tart.jpg",
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

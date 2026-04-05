@@ -32,7 +32,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     }
   ],
   "method": [
@@ -43,5 +43,10 @@
     "Position a strainer over a medium or large saucepan (line the strainer with muslin for super-clear stock and easy straining) and ladle or pour the stock through.",
     "Use the stock immediately, or transfer to airtight containers and refrigerate for up to 3 days or freeze for up to 3 months."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

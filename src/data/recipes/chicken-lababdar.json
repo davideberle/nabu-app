@@ -62,7 +62,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "Sugar, to taste (optional)",
@@ -107,5 +107,10 @@
     "Meanwhile, blend the cashew nuts and green bird’s eye chillies with 70ml (¼ cup) of water into a smooth, thin paste. Pour the paste over the chicken while it’s cooking.",
     "After 12 minutes, remove the chicken and whole spices from the pan. Then remove the sauce and blend until smooth in a blender or using a hand-held blender. Pour this back into the pan and, over a medium heat, add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce, as well as the coriander (cilantro) and cream. Return the chicken to the pan and simmer until cooked through and hot. Stir in the butter until it melts into the sauce. Season with salt and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

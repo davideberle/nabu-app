@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "onion, diced",
@@ -22,7 +22,7 @@
     },
     {
       "item": "allspice berries",
-      "amount": "1 tablespoons"
+      "amount": "1 tbsp"
     },
     {
       "item": "Scotch bonnet, deseeded and finely chopped",
@@ -50,11 +50,11 @@
     },
     {
       "item": "chargrilled artichokes from a jar, quartered",
-      "amount": "140 g (4¾ oz)"
+      "amount": "140 g"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "bay leaf",
@@ -66,11 +66,11 @@
     },
     {
       "item": "asparagus spears, cut into threes",
-      "amount": "250 g (9 oz)"
+      "amount": "250 g"
     },
     {
       "item": "Swiss chard, sliced",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "juice of ¼ lemon",
@@ -89,5 +89,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -30,5 +30,13 @@
     "Heat canola oil in a large non-stick skillet or wok, then sauté the red pepper for 1 minute.",
     "Add shrimp and cook (stirring) for 2 minutes.",
     "Add shrimp and cook (stirring) for 2 minutes."
-  ]
+  ],
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

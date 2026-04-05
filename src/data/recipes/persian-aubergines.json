@@ -16,7 +16,7 @@
     },
     {
       "item": "white onions, cut in half and thinly sliced into 5mm- (¼in-) thick half moons",
-      "amount": "750g (1lb 10oz)"
+      "amount": "750g"
     },
     {
       "item": "large aubergines",
@@ -24,7 +24,7 @@
     },
     {
       "item": "Persian kashk (whey) (about ½ large jar), or labneh, or strained thick yogurt",
-      "amount": "340g (11¾oz)"
+      "amount": "340g"
     },
     {
       "item": "sea salt",
@@ -41,5 +41,10 @@
   "image": "/recipes/persian-aubergines.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

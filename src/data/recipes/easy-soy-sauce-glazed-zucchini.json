@@ -16,11 +16,11 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "garlic clove, smashed",
@@ -28,11 +28,11 @@
     },
     {
       "item": "soy sauce, Bragg Liquid Aminos, or Maggi Seasoning sauce",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "chile garlic sauce (see this page) or sambal oelek (optional)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -45,5 +45,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

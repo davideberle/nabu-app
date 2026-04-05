@@ -17,19 +17,19 @@
     },
     {
       "item": "ground ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "paprika",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "vegetable broth",
@@ -37,11 +37,11 @@
     },
     {
       "item": "tamari, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "red curry paste, divided",
-      "amount": "4 teaspoons"
+      "amount": "4 tsp"
     },
     {
       "item": "vegetable broth, divided",
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

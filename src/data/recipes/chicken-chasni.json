@@ -26,11 +26,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed chicken, plus 125ml (½ cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "smooth mango chutney",
@@ -50,7 +50,7 @@
     },
     {
       "item": "double (heavy) cream",
-      "amount": "200ml (generous (¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "Salt, to taste",
@@ -78,5 +78,10 @@
     "Add the rest of the base sauce with the pre-cooked chicken and the stock or extra sauce. Let this cook for about 5 minutes, only stirring if the sauce is obviously catching on the pan, and stirring in any caramelized sauce from the side of the pan.",
     "Stir in the mango chutney, mint sauce and ketchup followed by the cumin. Pour in the cream and simmer until good and hot. Season with salt and squeeze in the lemon juice to taste. Add red food colouring powder if you want and sprinkle with the garam masala and chopped coriander (cilantro) to serve."
   ],
-  "image": "/recipes/chicken-chasni.jpg"
+  "image": "/recipes/chicken-chasni.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

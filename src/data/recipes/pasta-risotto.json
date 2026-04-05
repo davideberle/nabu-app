@@ -45,5 +45,13 @@
     "Remove from the stove, add the remaining butter and parmigiano and stir well. (The pasta should be quite moist.)",
     "Serve immediately with extra parmigiano."
   ],
-  "image": "/recipes/pasta-risotto.jpg"
+  "image": "/recipes/pasta-risotto.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

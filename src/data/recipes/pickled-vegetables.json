@@ -78,5 +78,13 @@
     "Add the onions to the pan and simmer for 5 minutes. Add the remaining ingredients and, when the liquid returns to the boil, remove the pan from the heat.",
     "Sterilise a 2 litre glass jar or 2 × 1 litre jars. Spoon the vegetables into the sterilised jar(s), and pour in enough of the pickling liquid to cover them completely. Seal and allow to cool. Refrigerate for 2 days before eating. Once opened, the giardiniera will keep for up to 2 months in the refrigerator."
   ],
-  "image": "/recipes/pickled-vegetables.jpg"
+  "image": "/recipes/pickled-vegetables.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

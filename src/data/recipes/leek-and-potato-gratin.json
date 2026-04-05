@@ -48,5 +48,13 @@
     "Butter an ovenproof dish and arrange a layer of sliced potatoes over the base. Cover with some of the leeks, then pour on some cream and sprinkle with some of the rosemary and salt and pepper. Continue layering until all the ingredients are used up. Finish with a layer of potatoes, covered with cream, and sprinkled with rosemary, salt and pepper.",
     "Transfer the potatoes to the oven and bake for around 35 minutes until the top is golden-brown."
   ],
-  "image": "/recipes/leek-and-potato-gratin.jpg"
+  "image": "/recipes/leek-and-potato-gratin.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

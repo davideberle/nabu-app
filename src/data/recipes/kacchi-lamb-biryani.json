@@ -30,15 +30,15 @@
     },
     {
       "item": "good-quality basmati rice",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "coriander (cilantro) leaves, finely chopped",
-      "amount": "60g (2oz)"
+      "amount": "60g"
     },
     {
       "item": "mint leaves, finely chopped",
-      "amount": "20g (¾ oz)"
+      "amount": "20g"
     },
     {
       "item": "melted ghee",
@@ -62,7 +62,7 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "180g (1½ cups)"
+      "amount": "180g"
     },
     {
       "item": "Raita of your choice, to serve",
@@ -75,7 +75,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "420g (scant 1¾ cups)",
+      "amount": "420g",
       "group": "MARINADE"
     },
     {
@@ -120,12 +120,12 @@
     },
     {
       "item": "coriander (cilantro) leaves, finely chopped",
-      "amount": "30g (1oz)",
+      "amount": "30g",
       "group": "MARINADE"
     },
     {
       "item": "mint leaves, finely chopped",
-      "amount": "10g (⅓oz)",
+      "amount": "10g",
       "group": "MARINADE"
     }
   ],
@@ -138,5 +138,10 @@
     "After 40 minutes, your kitchen will smell amazing. Take your biryani to the table and unseal the lid. Lift it and enjoy the amazing aroma. Stir the meat from the bottom into the rice about three or four times and serve with your favourite raita."
   ],
   "tips": "*Ask your butcher to cut your leg of lamb into pieces.",
-  "image": "/recipes/kacchi-lamb-biryani.jpg"
+  "image": "/recipes/kacchi-lamb-biryani.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

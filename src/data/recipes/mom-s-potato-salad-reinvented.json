@@ -46,7 +46,7 @@
     },
     {
       "item": "block extra-firm tofu, diced",
-      "amount": "½ (12-oz [340-g])"
+      "amount": "½"
     },
     {
       "item": "olives",
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

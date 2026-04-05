@@ -52,5 +52,13 @@
   "image": "/recipes/mutabbaq.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 37
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

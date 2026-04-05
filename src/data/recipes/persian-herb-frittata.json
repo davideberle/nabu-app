@@ -68,7 +68,7 @@
     },
     {
       "item": "walnut pieces, chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     }
   ],
   "method": [
@@ -80,5 +80,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

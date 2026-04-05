@@ -35,5 +35,13 @@
     "Add 1-2 tablespoons of the cottage cheese mixture to each bell pepper ring. Top each ring with the cheese.",
     "Bake for 15-20 minutes.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

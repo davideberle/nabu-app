@@ -38,15 +38,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "150ml (generous ½ cup)"
+      "amount": "150ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "400ml (scant 1¾ cups)"
+      "amount": "400ml"
     },
     {
       "item": "pre-cooked chicken (see introduction above)",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "cucumber, peeled, deseeded and cut into 2.5cm (1in) pieces",
@@ -58,7 +58,7 @@
     },
     {
       "item": "tinned (canned) chickpeas (garbanzo beans), drained and rinsed",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "large tomato, cut into 8 wedges",
@@ -78,5 +78,10 @@
     "Spoon in the mixed powder, chilli powder and chaat masala, followed by the tomato purée. This should sizzle when it hits the pan. When it does, add half the base sauce. Allow this to bubble for a minute or so, only stirring if the sauce begins to stick to the pan. Add the chicken pieces and the rest of the base sauce and simmer until the chicken is cooked through – about 10 minutes should do the job.",
     "To finish, stir in the cucumber, red (bell) pepper, chickpeas and tomato wedges. Season with salt and sprinkle with the garam masala."
   ],
-  "image": "/recipes/chicken-chaat.jpg"
+  "image": "/recipes/chicken-chaat.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

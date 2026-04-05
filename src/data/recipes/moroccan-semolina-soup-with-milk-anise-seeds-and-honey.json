@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "This simple Moroccan soup is easy to prepare and can be served in the evening or as a breakfast porridge. Serve warm, garnished with cinnamon, with honey for sweetening on the side.",
   "time": {
-    "prep": "10 mins"
+    "prep": "10 mins",
+    "total": 35
   },
   "ingredients": [
     {
@@ -50,5 +51,10 @@
     "Bring water to a boil in a saucepan and stir in semolina and salt. Simmer gently, frequently stirring, until the semolina is tender and mixture is very thick, 10 to 15 minutes. Stir in milk, butter, and anise seed; simmer until soup reaches desired consistency, 5 to 10 minutes.",
     "Stir milk, butter, and anise seed into soup; simmer until soup reaches desired consistency, 5 to 10 minutes."
   ],
-  "image": "/recipes/moroccan-semolina-soup-with-milk-anise-seeds-and-honey.jpg"
+  "image": "/recipes/moroccan-semolina-soup-with-milk-anise-seeds-and-honey.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

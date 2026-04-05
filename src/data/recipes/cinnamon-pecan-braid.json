@@ -34,7 +34,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "packed brown sugar",
@@ -42,7 +42,7 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "butter, at room temperature",
@@ -54,7 +54,7 @@
     },
     {
       "item": "butter, melted",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "confectioners' sugar",
@@ -62,11 +62,11 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "milk",
-      "amount": "1–2 tablespoons"
+      "amount": "1–2 tbsp"
     },
     {
       "item": "Pecan halves",
@@ -85,5 +85,13 @@
     "Bake at 350°F (177°C) for 18–20 minutes or until golden brown. Let cool slightly before removing from baking sheet to wire rack.",
     "Combine the glaze ingredients EXCEPT for the pecans.",
     "Place a pecan half in the middle of each and drizzle generously over the cooled braids."
-  ]
+  ],
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

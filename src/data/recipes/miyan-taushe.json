@@ -26,7 +26,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cubes 1/2 tablespoon dawadawa Salt to taste",
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

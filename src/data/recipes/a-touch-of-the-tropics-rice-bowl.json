@@ -13,7 +13,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "jasmine rice, cooked",
@@ -29,11 +29,11 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chopped pineapple",
@@ -49,11 +49,11 @@
     },
     {
       "item": "ketchup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -66,5 +66,13 @@
     "Add the oyster mushrooms and let the soup boil again.",
     "Stir in lemon juice, fish sauce, chili paste and sugar.",
     "Stir in lemon juice, fish sauce, chili paste and sugar."
-  ]
+  ],
+  "time": {
+    "total": 100
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

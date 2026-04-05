@@ -13,11 +13,11 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "whole wheat pastry flour",
@@ -33,7 +33,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red bell pepper, diced",
@@ -53,19 +53,19 @@
     },
     {
       "item": "chopped walnuts",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dried rosemary",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "vegan mayonnaise or spread of your choice",
@@ -73,11 +73,11 @@
     },
     {
       "item": "dairy-free milk",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cornmeal",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -94,5 +94,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 135
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

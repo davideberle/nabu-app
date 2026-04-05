@@ -38,5 +38,10 @@
     "Cut the fennel bulb in half lengthways and slice as thinly as possible. Mix the remaining ingredients together well to make a sauce and pour over the fennel. Chop some of the fennel’s fine green leaves and sprinkle over the salad.",
     "This is a very fresh and crunchy salad ideally served with fish – for instance Pesce al Sale – as one of the vegetables, or you can serve it as part of an antipasto."
   ],
-  "image": "/recipes/fennel-salad.jpg"
+  "image": "/recipes/fennel-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

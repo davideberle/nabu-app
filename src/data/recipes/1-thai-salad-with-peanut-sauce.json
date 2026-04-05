@@ -68,5 +68,10 @@
     "In a large bowl, toss all the salad ingredients.",
     "Add the dressing to salad mixture (Step 1) and mix well.",
     "Add the dressing to salad mixture (Step 1) and mix well."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "raw tiger prawns (shrimp), peeled and deveined",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "ground turmeric",
@@ -70,7 +70,7 @@
     },
     {
       "item": "tin (can) thick coconut milk",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "Pinch of saffron threads",
@@ -97,5 +97,10 @@
   "image": "/recipes/kolkata-calcutta-prawns.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

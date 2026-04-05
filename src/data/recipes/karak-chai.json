@@ -28,7 +28,7 @@
     },
     {
       "item": "loose-leaf black tea",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "evaporated milk",
@@ -47,5 +47,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

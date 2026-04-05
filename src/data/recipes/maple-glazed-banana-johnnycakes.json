@@ -10,15 +10,15 @@
   "ingredients": [
     {
       "item": "plus 2 teaspoons coconut oil, plus more as needed for panfrying",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "diced just-ripe bananas",
@@ -34,15 +34,15 @@
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Date-Sweetened Almond Milk",
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

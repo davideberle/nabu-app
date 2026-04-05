@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "dried yellow hominy corn",
-      "amount": "200 g (7 oz/generous 1 cup)"
+      "amount": "200 g"
     },
     {
       "item": "1.5 litres (50 fl oz/6½ cups) water",
@@ -26,7 +26,7 @@
     },
     {
       "item": "coconut sugar or brown sugar, plus extra to serve",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cinnamon sticks",
@@ -38,15 +38,15 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "soya milk",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "freshly grated nutmeg, to taste",
@@ -67,5 +67,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

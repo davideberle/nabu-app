@@ -17,7 +17,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red bell pepper, diced",
@@ -37,23 +37,23 @@
     },
     {
       "item": "red curry paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sriracha",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "turmeric",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "14-ounce can coconut cream",
@@ -61,11 +61,11 @@
     },
     {
       "item": "lime juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Pressure Cooker Thai Nuggets (page 288)",
@@ -81,5 +81,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -23,11 +23,11 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "plus 2 tablespoons water",
@@ -35,15 +35,15 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cornmeal",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced fresh thyme",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sliced okra, cut paper-thin",
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

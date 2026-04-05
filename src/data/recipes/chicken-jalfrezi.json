@@ -50,11 +50,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed chicken, plus 100ml (scant ½ cup) of its cooking stock",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "tomatoes, quartered",
@@ -88,5 +88,10 @@
     "About 2 minutes before serving, add the quartered tomatoes and dried fenugreek leaves (kasoori methi).",
     "When the tomatoes are cooked through but still crisp and you are happy with the consistency, season with salt and sprinkle with the garam masala. Finish by garnishing with the chopped coriander (cilantro) leaves and sliced chillies."
   ],
-  "image": "/recipes/chicken-jalfrezi.jpg"
+  "image": "/recipes/chicken-jalfrezi.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

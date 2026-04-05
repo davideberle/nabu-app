@@ -44,5 +44,13 @@
     "Drain the pasta (Step 2), then place it in the pan.",
     "Sprinkle with peanuts and coriander.",
     "Sprinkle with peanuts and coriander."
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

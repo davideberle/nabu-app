@@ -40,5 +40,10 @@
     "In a large bowl, combine chicken, red pepper, onions, carrot and 1/4 cup peanuts.",
     "Add dressing (Step 2) and toss well.",
     "Add dressing (Step 2) and toss well."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -16,7 +16,7 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coconut water, plus more as needed",
@@ -24,7 +24,7 @@
     },
     {
       "item": "fish sauce, or 1 tablespoon soy sauce",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -34,5 +34,10 @@
     "Add the fish sauce, shake the pan and stir to distribute, and cook, uncovered, for about 1 minute longer to further develop the flavor and caramelize the brussels sprouts. If needed, raise the heat to coax the cooking. When the sprouts are lightly glazed, remove from the heat. Let rest for 1 minute.",
     "Serve the sprouts hot, warm, or at room temperature."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

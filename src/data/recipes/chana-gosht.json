@@ -42,7 +42,7 @@
     },
     {
       "item": "lamb chops",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "large onions, finely chopped",
@@ -58,11 +58,11 @@
     },
     {
       "item": "tin (can) chopped tomatoes, or chopped fresh tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "chana dhal, soaked for 20 minutes",
-      "amount": "150g (1 cup)"
+      "amount": "150g"
     },
     {
       "item": "Salt, to taste",
@@ -84,5 +84,10 @@
     "Serve garnished with the coriander (cilantro)."
   ],
   "tips": "Watch those lentils! They have a tendency to stick to the pan, so add a little more water and stir occasionally when necessary.",
-  "image": "/recipes/chana-gosht.jpg"
+  "image": "/recipes/chana-gosht.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

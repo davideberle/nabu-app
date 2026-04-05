@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "corn flour",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "cold water",
@@ -29,5 +29,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 132
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

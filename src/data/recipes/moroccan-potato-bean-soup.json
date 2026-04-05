@@ -8,7 +8,8 @@
   "servings": "8 servings",
   "intro": "A delicious, creamy soup and enjoyed anytime. The soup is medium spicy. If you favor a less spicy soup, reduce the amount of peppers used. Vegetable stock may be used instead of water.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 15
   },
   "ingredients": [
     {
@@ -81,5 +82,10 @@
     "To the cooking pot, add potatoes, sauteed onions, chicken soup base, turmeric, black pepper, white pepper, cayenne pepper, curry powder, and soy sauce, and cook until potatoes are tender.",
     "Add whole milk and a half and half cream and bring back to boil. Add instant potato flakes, stirring until well blended. Adjust seasonings to taste. Garnish with chopped chives or green onions."
   ],
-  "image": "/recipes/moroccan-potato-bean-soup.jpg"
+  "image": "/recipes/moroccan-potato-bean-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -50,7 +50,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "½ (8-oz [225-g])"
+      "amount": "½"
     },
     {
       "item": "red wine vinegar",
@@ -72,5 +72,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

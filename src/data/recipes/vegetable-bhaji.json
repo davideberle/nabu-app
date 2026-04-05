@@ -50,7 +50,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "small carrot, peeled and thinly sliced",
@@ -70,7 +70,7 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "400ml (scant 1¾ cups)"
+      "amount": "400ml"
     },
     {
       "item": "tomato, quartered",
@@ -100,5 +100,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

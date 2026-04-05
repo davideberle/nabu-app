@@ -14,7 +14,7 @@
     },
     {
       "item": "salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "block (14 ounces/400 g) firm tofu",
@@ -22,7 +22,7 @@
     },
     {
       "item": "salt and pepper mix (1 part freshly ground black pepper to 12 parts kosher salt) or chili powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

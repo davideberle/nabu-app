@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 10 grams maple sugar (substitute organic granulated sugar)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -30,7 +30,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

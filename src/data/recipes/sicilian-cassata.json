@@ -111,5 +111,13 @@
     "To make the ricotta filling, beat the ricotta with the sugar and Marsala until smooth. Fold in the chocolate and candied fruit, if using. Spoon the filling into the sponge-lined cake tin. Place the remaining sponge circle on top and press gently. Cover and transfer to the refrigerator for a few hours or, better still, overnight.",
     "To make the marzipan, combine the ground almonds, icing sugar, flower water and food colouring with just enough water to form a stiff paste. Roll out the marzipan to 1 cm thickness. Turn the cassata out onto a serving plate and cover with marzipan. Decorate with more candied fruit or patterns in melted chocolate, if desired."
   ],
-  "image": "/recipes/sicilian-cassata.jpg"
+  "image": "/recipes/sicilian-cassata.jpg",
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,7 +22,7 @@
     },
     {
       "item": "/ 65 grams organic granulated sugar",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "to 3 tablespoons / 30 to 45 ml pure maple syrup, Grade B or dark amber",
@@ -30,11 +30,11 @@
     },
     {
       "item": "mild tasting extra-virgin olive oil",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

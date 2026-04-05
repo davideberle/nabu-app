@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "caster sugar",
-      "amount": "400g (2 cups)"
+      "amount": "400g"
     },
     {
       "item": "distilled white vinegar",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "green mangos, peeled and cubed",
@@ -61,5 +61,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

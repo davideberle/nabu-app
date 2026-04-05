@@ -26,7 +26,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Dutch-process cocoa powder, for coating (optional)",
@@ -42,5 +42,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

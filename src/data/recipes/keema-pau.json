@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "minced (ground) lamb",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -30,7 +30,7 @@
     },
     {
       "item": "onion, finely chopped",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "garlic and ginger paste",
@@ -54,7 +54,7 @@
     },
     {
       "item": "fresh or frozen peas",
-      "amount": "70g (¼ cup)"
+      "amount": "70g"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -81,5 +81,10 @@
     "Pour onto a warm serving plate and serve with the lime wedges and hamburger buns, which can be broken up to scoop up the keema."
   ],
   "tips": "Toasting the hamburger buns in a little butter is a nice and delicious touch.",
-  "image": "/recipes/keema-pau.jpg"
+  "image": "/recipes/keema-pau.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

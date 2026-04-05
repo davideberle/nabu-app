@@ -18,7 +18,7 @@
     },
     {
       "item": "flaked (slivered) almonds",
-      "amount": "250g (3 cups)"
+      "amount": "250g"
     },
     {
       "item": "long green chillies, finely sliced lengthways",
@@ -49,5 +49,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

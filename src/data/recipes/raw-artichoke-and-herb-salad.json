@@ -49,5 +49,10 @@
   "image": "/recipes/raw-artichoke-and-herb-salad.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

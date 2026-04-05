@@ -26,7 +26,7 @@
     },
     {
       "item": "shredded baby spinach leaves, large stems removed",
-      "amount": "450g (2 cups)"
+      "amount": "450g"
     },
     {
       "item": "finely chopped coriander (cilantro)",
@@ -34,11 +34,11 @@
     },
     {
       "item": "gram (chickpea) flour, plus extra if needed",
-      "amount": "170g (1 cup)"
+      "amount": "170g"
     },
     {
       "item": "rice flour",
-      "amount": "80g (⅓ cup)"
+      "amount": "80g"
     },
     {
       "item": "ground turmeric",
@@ -58,7 +58,7 @@
     },
     {
       "item": "panko breadcrumbs (optional)",
-      "amount": "90g (1 cup)"
+      "amount": "90g"
     },
     {
       "item": "Rapeseed (canola) oil, for deep-frying",
@@ -81,5 +81,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

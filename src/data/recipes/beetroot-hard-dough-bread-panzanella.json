@@ -22,11 +22,11 @@
     },
     {
       "item": "cherry tomatoes, halved",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "radishes, sliced",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "handful of mint leaves, finely sliced",
@@ -34,7 +34,7 @@
     },
     {
       "item": "vegan feta, crumbled",
-      "amount": "65 g (2¼ oz)"
+      "amount": "65 g"
     },
     {
       "item": "handful of basil leaves, roughly torn",
@@ -55,12 +55,12 @@
     },
     {
       "item": "balsamic vinegar",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
@@ -80,5 +80,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

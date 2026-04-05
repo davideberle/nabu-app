@@ -103,5 +103,13 @@
   "image": "/recipes/walnut-and-fruit-crumble-cream.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -18,7 +18,7 @@
     },
     {
       "item": "skinless chicken thighs or breasts, cut into 7.5cm (3in) pieces",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "garlic and ginger paste",
@@ -53,7 +53,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)",
+      "amount": "250g",
       "group": "MARINADE"
     },
     {
@@ -107,5 +107,10 @@
     "Just before the meat is cooked, baste it with the melted butter. Remove to a warm plate and let rest for about 5 minutes before serving. Check the seasoning and serve with your favourite raita and naans."
   ],
   "tips": "You can also roast the chicken in the oven at 200°C (400°F/Gas 6) until cooked through. Once cooked, placing the meat under a grill (broiler) will give a nice charred finish.",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

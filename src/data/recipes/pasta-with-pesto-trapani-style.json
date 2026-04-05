@@ -54,5 +54,10 @@
     "Put all the pesto ingredients into a mortar or food processor and blend to a coarse paste. Taste and adjust the seasoning to your liking.",
     "Boil the pasta in plenty of salted water. As soon as the pasta is cooked al dente, drain it and tip it into a warm serving dish. Pour on the pesto and toss well. Take to the table straight away and serve with the ricotta or parmigiano on the side."
   ],
-  "image": "/recipes/pasta-with-pesto-trapani-style.jpg"
+  "image": "/recipes/pasta-with-pesto-trapani-style.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

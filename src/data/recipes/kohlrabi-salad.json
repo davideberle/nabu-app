@@ -66,5 +66,10 @@
   "image": "/recipes/kohlrabi-salad.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

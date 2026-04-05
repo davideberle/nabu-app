@@ -42,5 +42,13 @@
   "method": [
     "In a large frying pan on medium heat, saute onion and red pepper flakes in 2 T olive oil for 2 minutes, add peas and mix well, add tomatoes, water, salt, pepper, and simmer for 20 minutes.",
     "Boil a pot of salted water and add pasta. When pasta is ready, transfer directly to sauce, add pecorino, and 1-2 ladles of pasta water, mix well until a creamy sauce forms. Manticare a couple times and turn onto plates. Top with more grated pecorino. Serves 2-3. Serving suggestion: fresh bread and salad. This is my favorite pasta recipe. They make this in Naples! Olé"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

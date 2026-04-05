@@ -16,7 +16,7 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "7 tablespoons"
+      "amount": "7 tbsp"
     },
     {
       "item": "onion, finely chopped",
@@ -32,11 +32,11 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chicken or vegetable broth, divided",
@@ -50,5 +50,10 @@
     "Add the remaining 2 cups (480 ml) broth to the pot and bring to a boil over high heat. Taste and adjust the liquid for more salt if needed; it should taste noticeably salty.",
     "Add the rice to the pot along with the remaining 2 tablespoons oil and bring to a boil again for 2 to 3 minutes. The liquid level should be about even with the surface of the rice (not much more). Cover the pot, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
     "Fluff the rice with a fork or wooden spoon and check on it. If it is still slightly undercooked, add ¼ cup (60 ml) of water, cover it again, and let cook for 10 more minutes before serving."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

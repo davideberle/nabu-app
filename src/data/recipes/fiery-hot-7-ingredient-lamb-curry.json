@@ -22,7 +22,7 @@
     },
     {
       "item": "lamb on the bone, cut into 5cm (2in) pieces",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "Kashmiri dried red chillies",
@@ -46,5 +46,10 @@
     "Heat the ghee over a medium–high heat. When bubbly hot, stir in the lamb, chillies, chilli powder, coriander seeds, smashed garlic and garlic paste. Give it all a good stir and simmer for 45 minutes, only adding a little water if the mixture is sticking to the pan. Stir regularly and cook until the lamb is succulent and tender. Don’t rush this. If after 45 minutes it is not tender, continue cooking until it is. Season with salt."
   ],
   "tips": "*Using lots of ghee is the traditional way of cooking this curry. If you would prefer a healthier option, choose another recipe! There are plenty of curries in this book that are far less fatty; I recommend giving this one a go just as it’s meant to be.",
-  "image": "/recipes/fiery-hot-7-ingredient-lamb-curry.jpg"
+  "image": "/recipes/fiery-hot-7-ingredient-lamb-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

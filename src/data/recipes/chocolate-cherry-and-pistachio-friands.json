@@ -33,7 +33,7 @@
     },
     {
       "item": "lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large egg whites",
@@ -51,5 +51,13 @@
     "Stir in the pistachios and sour cherries.",
     "Transfer the batter to the prepared pan. Bake for 25 minutes.",
     "Serve with a dusting of powdered sugar."
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

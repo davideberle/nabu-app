@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil, plus extra for frying the plantains",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red onion, diced",
@@ -38,15 +38,15 @@
     },
     {
       "item": "chopped thyme leaves",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "rinsed and drained ackee",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g"
     },
     {
       "item": "marinated artichokes, roughly chopped",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "splash of water",
@@ -62,12 +62,12 @@
     },
     {
       "item": "plain dairy-free yoghurt",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "SPICY SWEET YOGHURT"
     },
     {
       "item": "chilli jam",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICY SWEET YOGHURT"
     },
     {
@@ -87,5 +87,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

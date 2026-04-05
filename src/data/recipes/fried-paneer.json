@@ -30,7 +30,7 @@
     },
     {
       "item": "paneer cheese (see above for homemade), cubed",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -49,5 +49,10 @@
   "image": "/recipes/fried-paneer.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

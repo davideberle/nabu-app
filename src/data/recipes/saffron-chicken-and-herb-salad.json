@@ -76,5 +76,13 @@
     "Mix the chicken breast with half the olive oil and plenty of salt and pepper and place on a very hot ridged griddle pan. Sear for about 2 minutes on each side to get clear char marks all over. Transfer to a roasting pan and place in the oven for 15 to 20 minutes, until just cooked.",
     "Once the chicken is cool enough to handle but still warm, tear it with your hands into rough, quite large pieces. Place in a large mixing bowl, pour over half the orange paste, and stir well. (The other half you can keep in the fridge for a few days. It would make a good addition to an herb salsa to serve with oily fish such as mackerel or salmon.) Add the remaining ingredients to the salad, including the rest of the olive oil, and toss gently. Taste, add salt and pepper, and, if needed, more olive oil and lemon juice."
   ],
-  "image": "/recipes/saffron-chicken-and-herb-salad.jpg"
+  "image": "/recipes/saffron-chicken-and-herb-salad.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

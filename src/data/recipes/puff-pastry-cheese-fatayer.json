@@ -30,19 +30,19 @@
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dried parsley (or substitute 2 tablespoons finely chopped fresh parsley)",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "dried dill",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground Aleppo pepper (or substitute paprika)",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "All-purpose flour, for dusting (optional)",
@@ -54,11 +54,11 @@
     },
     {
       "item": "white sesame seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "nigella seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -69,5 +69,10 @@
     "Place roughly 1½ tablespoons of the filling on the center of one of the puff pastry squares, gently spreading it out along the diagonal, leaving a ½-inch (13 mm) border. Fold one corner of the square over the filling, diagonally, and pinch it closed at the opposite corner, forming a triangle. Use a fork to press down the open edges until sealed. Transfer to the prepared sheet pan. Repeat with the remaining filling and puff pastry squares. Brush the tops of the fatayer with the beaten egg, then sprinkle them with the sesame and nigella seeds.",
     "Bake for 15 to 20 minutes, until the pastry is puffed and golden. You may broil them for 1 to 2 minutes to get more color."
   ],
-  "image": "/recipes/puff-pastry-cheese-fatayer.jpg"
+  "image": "/recipes/puff-pastry-cheese-fatayer.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -33,7 +33,7 @@
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "70ml (¼ cup)",
+      "amount": "70ml",
       "group": "FIRST MARINADE"
     },
     {
@@ -83,12 +83,12 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)",
+      "amount": "250g",
       "group": "SECOND MARINADE"
     },
     {
       "item": "clear honey",
-      "amount": "125ml (½ cup)",
+      "amount": "125ml",
       "group": "SECOND MARINADE"
     },
     {
@@ -112,5 +112,10 @@
   "image": "/recipes/honey-roast-whole-quails.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

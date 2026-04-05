@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "basmati rice",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "vegetable oil",
@@ -20,7 +20,7 @@
     },
     {
       "item": "salted butter",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "sea salt",
@@ -28,23 +28,23 @@
     },
     {
       "item": "pistachio slivers",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "almond slivers",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "dried barberries",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "dried, chopped sour orange peel (available from Middle Eastern shops)",
-      "amount": "40g (1½oz)"
+      "amount": "40g"
     },
     {
       "item": "caster sugar",
-      "amount": "125g (4½oz)"
+      "amount": "125g"
     }
   ],
   "method": [
@@ -57,5 +57,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 68
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

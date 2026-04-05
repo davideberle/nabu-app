@@ -53,5 +53,13 @@
     "Butter 6 ramekins (you will need one medium ovenproof ramekin or bowl per person), and spread the spinach mixture evenly among the bowls. Make a small indentation in the spinach and gently break 2 whole eggs into each dish. Add about 2 tablespoons cream on top of the eggs, season with salt and pepper and scatter parmigiano over the top. Lastly, add a small knob of unsalted butter to each ramekin.",
     "Bake in the oven for about 5–8 minutes. The egg yolks should still be soft when they are served."
   ],
-  "image": "/recipes/eggs-in-cocotte.jpg"
+  "image": "/recipes/eggs-in-cocotte.jpg",
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

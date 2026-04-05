@@ -14,31 +14,31 @@
   "ingredients": [
     {
       "item": "gram (chickpea) flour",
-      "amount": "50 g (2 oz/½ cup)"
+      "amount": "50 g"
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic granules",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "small beetroot (beet), grated",
@@ -50,11 +50,11 @@
     },
     {
       "item": "ice-cold beer or sparkling water",
-      "amount": "50 ml (1¾ fl oz/3 tablespoons)"
+      "amount": "50 ml"
     },
     {
       "item": "coconut oil",
-      "amount": "2–3 tablespoons"
+      "amount": "2–3 tbsp"
     },
     {
       "item": "flaky sea salt and freshly ground black pepper",
@@ -62,7 +62,7 @@
     },
     {
       "item": "frozen peas, thawed",
-      "amount": "100 g (3½ oz/⅔ cup)",
+      "amount": "100 g",
       "group": "PEA AND AVO DIP"
     },
     {
@@ -95,5 +95,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

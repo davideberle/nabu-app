@@ -43,5 +43,13 @@
     "Take the tray out of the oven, allow the biscuits to cool slightly before touching them (otherwise they will break apart) and then let them cool on a wire rack.",
     "In a large bowl sift the icing sugar and then gently roll the little biscuits in it, until well coated."
   ],
-  "image": "/recipes/mother-s-kisses.jpg"
+  "image": "/recipes/mother-s-kisses.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

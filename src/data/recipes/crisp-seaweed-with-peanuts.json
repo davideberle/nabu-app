@@ -704,7 +704,7 @@
     },
     {
       "item": "Chinkiang vinegar, to serve",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fresh ginger, cut into slivers, to serve",
@@ -816,5 +816,13 @@
     "Bring a pan of salted water to the boil, add the peanuts and simmer for 20 minutes. (If you wish, you can then flush them with cold water and massage off their skins.) Drain well.",
     "Cut the chicken into ½ in (1cm) cubes. Add ⅛ teaspoon salt, ½ teaspoon potato starch and 1 tsp Shaoxing wine and mix well. Do the same with the pork. Cut the bamboo shoot and firm tofu into ½ in (1cm) cubes. Drain the soaked shiitake, remove their stalks and cut the caps into ½ in (1cm) cubes. Drain the shrimp. Bring a pan of water to the boil. Blanch the tofu, green soybeans and bamboo shoot for about 1 minute, then drain well.",
     "Heat 1 tablespoon oil in a seasoned wok. Add the pork and chicken and stir-fry until cooked through; remove and set aside. Heat a little more oil, add the shiitake and shrimp and stir-fry until fragrant, then add the bamboo shoot, soybeans and tofu and stir-fry until piping hot. Remove and set aside."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

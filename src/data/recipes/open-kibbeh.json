@@ -92,5 +92,13 @@
     "Remove the kibbeh cake from the oven, spread the tahini sauce evenly on top, sprinkle with the reserved pine nuts and chopped parsley, and return to the oven immediately. Bake for 10 to 12 minutes, until the tahini is just setting and has taken on a little bit of color, and the pine nuts are golden.",
     "Remove from the oven and let cool until warm or at room temperature. Before serving, sprinkle the top with the sumac and drizzle with the remaining oil. Carefully remove the pan sides and cut the kibbeh into slices. Lift them gently so they don’t break."
   ],
-  "image": "/recipes/open-kibbeh.jpg"
+  "image": "/recipes/open-kibbeh.jpg",
+  "time": {
+    "total": 67
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

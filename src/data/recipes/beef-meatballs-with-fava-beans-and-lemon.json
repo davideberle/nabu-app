@@ -93,5 +93,13 @@
     "Return the meatballs to the frying pan holding the fava beans. Add the remaining stock, cover the pan, and simmer gently for 25 minutes. Taste the sauce and adjust the seasoning. If it is very runny, remove the lid and reduce a little. Once the meatballs stop cooking, they will soak up a lot of the juices, so make sure there is still plenty of sauce at this point. You can leave the meatballs now, off the heat, until ready to serve.",
     "Just before serving, reheat the meatballs and add a little water, if needed, to get enough sauce. Add the remaining herbs, the remaining 1 tablespoon lemon juice, and the peeled fava beans and stir very gently. Serve immediately."
   ],
-  "image": "/recipes/beef-meatballs-with-fava-beans-and-lemon.jpg"
+  "image": "/recipes/beef-meatballs-with-fava-beans-and-lemon.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

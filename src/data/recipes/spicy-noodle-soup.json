@@ -37,7 +37,7 @@
     },
     {
       "item": "salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable oil, divided",
@@ -49,31 +49,31 @@
     },
     {
       "item": "minced lemongrass, plus 5 to 8 lemongrass stalks, trimmed and bruised",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "minced garlic",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "minced bird's eye chili pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chili flakes or powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried mock beef slices, soaked",
@@ -125,5 +125,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

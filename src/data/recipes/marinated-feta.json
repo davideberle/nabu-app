@@ -11,15 +11,15 @@
   "ingredients": [
     {
       "item": "feta cheese",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "olive oil (the quantity depends on the size of the dish used to marinate the cheese)",
-      "amount": "500–600ml (18–20fl oz)"
+      "amount": "500–600ml"
     },
     {
       "item": "garlic oil",
-      "amount": "75ml (2½fl oz)"
+      "amount": "75ml"
     },
     {
       "item": "finely grated rind of 2 lemons and juice of ½ lemon",
@@ -50,5 +50,13 @@
   "image": "/recipes/marinated-feta.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

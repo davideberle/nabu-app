@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "tin of callaloo",
-      "amount": "280 g (10 oz)"
+      "amount": "280 g"
     },
     {
       "item": "pine nuts",
-      "amount": "40 g (1½ oz/¼ cup)"
+      "amount": "40 g"
     },
     {
       "item": "garlic clove",
@@ -26,39 +26,39 @@
     },
     {
       "item": "olive oil, plus 1½ teaspoons for frying the chicken pieces",
-      "amount": "60 ml (2 fl oz/¼ cup)"
+      "amount": "60 ml"
     },
     {
       "item": "water",
-      "amount": "120 ml (4 fl oz/½ cup)"
+      "amount": "120 ml"
     },
     {
       "item": "white miso paste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "nutritional yeast",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "basil leaves",
-      "amount": "30 g (1 oz)"
+      "amount": "30 g"
     },
     {
       "item": "pasta shapes of your choice",
-      "amount": "75 g (2½ oz)"
+      "amount": "75 g"
     },
     {
       "item": "vegan chicken pieces",
-      "amount": "90 g (3¼ oz)"
+      "amount": "90 g"
     },
     {
       "item": "frozen peas",
-      "amount": "30 g (1 oz/scant ¼ cup)"
+      "amount": "30 g"
     },
     {
       "item": "sun-dried tomatoes",
@@ -84,5 +84,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

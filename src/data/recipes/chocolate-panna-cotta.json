@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "/ 3.5 grams agar flakes",
-      "amount": "3½ teaspoons"
+      "amount": "3½ tsp"
     },
     {
       "item": "water, at room temperature",
@@ -22,7 +22,7 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -30,7 +30,7 @@
     },
     {
       "item": "/ 18 grams organic whole cane sugar, ground in a blender until powdered",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 25 grams Dutch-processed cocoa powder, sifted",
@@ -38,7 +38,7 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber, or agave syrup",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "/ 14 grams dark chocolate (66 to 70%), finely chopped",
@@ -46,7 +46,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "¾ teaspoons / 3.75 ml"
+      "amount": "¾ tsp / 3.75 ml"
     },
     {
       "item": "fresh berries or any other seasonal fresh fruit, for serving",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 61
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

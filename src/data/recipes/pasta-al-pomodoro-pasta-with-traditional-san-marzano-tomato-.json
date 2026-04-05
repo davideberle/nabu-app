@@ -32,7 +32,7 @@
     },
     {
       "item": "dried oregano",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "of your favorite fresh or dried pasta",
@@ -44,7 +44,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -104,7 +104,7 @@
     },
     {
       "item": "freshly ground nutmeg",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -120,5 +120,13 @@
     "In a medium pot over medium heat, warm the milk, turning off the heat just before it starts to boil.",
     "Pour a scoop of the hot milk into the saucepan and continue to whisk energetically to obtain a smooth consistency. Turn the heat back on to medium-low and slowly add the rest of the milk. Cook, stirring constantly, for 5 to 7 minutes, or until the besciamella coats the back of a spoon.",
     "Stir in the nutmeg, season with salt and pepper to taste, and let cool completely before layering the lasagna."
-  ]
+  ],
+  "time": {
+    "total": 72
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -26,7 +26,7 @@
     },
     {
       "item": "cold cooked basmati rice*",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "Juice of 1–2 lemons",
@@ -48,5 +48,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

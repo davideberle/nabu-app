@@ -5,7 +5,7 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "8 serving s",
+  "servings": "8 servings",
   "intro": "This is a subtly spiced, super easy slow cooker meal. A good introduction to Moroccan food. Serve with couscous.",
   "time": {
     "prep": "50 mins"
@@ -71,5 +71,10 @@
   "method": [
     "In a slow cooker, toss together the parsnips, turnips, onions, carrots, apricots, and prunes. Season with turmeric, cumin, ginger, cinnamon, cayenne pepper, parsley, and cilantro. Pour in the vegetable broth."
   ],
-  "image": "/recipes/slow-cooker-root-vegetable-tagine.jpg"
+  "image": "/recipes/slow-cooker-root-vegetable-tagine.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

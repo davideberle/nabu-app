@@ -18,11 +18,11 @@
     },
     {
       "item": "paneer cheese, cubed",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "mixed coloured (bell) peppers, roughly chopped",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "spring onions (scallions), roughly chopped",
@@ -34,7 +34,7 @@
     },
     {
       "item": "tomato ketchup",
-      "amount": "250ml (1 cup)",
+      "amount": "250ml",
       "group": "SAUCE"
     },
     {
@@ -86,5 +86,10 @@
   "image": "/recipes/chilli-paneer-stir-fry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

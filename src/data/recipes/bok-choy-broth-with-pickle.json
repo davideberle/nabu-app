@@ -331,5 +331,13 @@
     "Put the rice in a saucepan with 2 quarts (2 liters) cold water. Bring to the boil, skim and give the pan a good stir to stop the rice sticking. Turn the heat down and simmer for 30 minutes, until the liquid is soft and milky. Strain off and retain the liquid—this is your rice broth. Discard the rice, or use it for something else.",
     "Put the shrimp in a small bowl and add just enough cold water to cover; leave for a few minutes to soften. Peel the radish, halve it lengthways, then cut it into semicircular slices about 2mm thick.",
     "Heat the lard or oil in a seasoned wok over a high flame. Add the radish and stir-fry for 1–2 minutes. Add the rice broth, bring to the boil and simmer for 30 minutes, until the radish slices are completely tender. Stir in the dried shrimp and season with salt and pepper. Serve with a scattering of spring onion greens."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

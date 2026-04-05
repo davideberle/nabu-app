@@ -16,15 +16,15 @@
     },
     {
       "item": "sugar",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "fresh lime juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "very small garlic clove, put through a press or minced and mashed",
@@ -49,5 +49,10 @@
     "Transfer the drained slaw to a large bowl. Add the chicken, cilantro, and dressing and toss well, then let sit for 1 to 2 minutes to develop flavor and toss again.",
     "Transfer the slaw to a serving plate, leaving most of the excess dressing behind. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

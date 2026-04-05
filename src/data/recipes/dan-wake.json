@@ -14,7 +14,7 @@
     },
     {
       "item": "kuka (baobab leaf powder)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "1/2 teaspoon baking soda",
@@ -38,11 +38,11 @@
     },
     {
       "item": "groundnut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "suya spice Pinch of salt (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -52,5 +52,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

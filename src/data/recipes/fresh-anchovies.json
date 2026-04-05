@@ -45,5 +45,13 @@
     "Oil an ovenproof serving dish. Sprinkle some of the breadcrumb mixture evenly, but not too thickly, over the bottom of the dish. Arrange the anchovies, in a single layer, in the dish. Sprinkle some more breadcrumb mix on top and then drizzle some olive oil all over the fish.",
     "Cook in the oven for about 5 minutes, until the fish are slightly coloured. Serve either hot or cold."
   ],
-  "image": "/recipes/fresh-anchovies.jpg"
+  "image": "/recipes/fresh-anchovies.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

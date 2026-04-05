@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cauliflower florets",
@@ -25,11 +25,11 @@
     },
     {
       "item": "sun-dried tomatoes packed in oil, drained (save the oil)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pine nuts",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "clove garlic",
@@ -37,7 +37,7 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Pinch of garlic powder",
@@ -45,11 +45,11 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "oil or reserved oil from the sun-dried tomatoes",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "slices flatbread",
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

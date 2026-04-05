@@ -42,7 +42,7 @@
     },
     {
       "item": "tinned (canned) plum tomatoes, roughly chopped",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "leek, diced",
@@ -58,7 +58,7 @@
     },
     {
       "item": "tin (can) thick coconut milk",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "Salt, to taste",
@@ -114,5 +114,10 @@
     "Add the vegetables and cook for a further 5 minutes. Stir in the spice paste and fry for a few minutes until fragrant. Stir in the flour followed by the stock. Cover and simmer for 15 minutes until thickened. Pour in the coconut milk and mix. If you like a creamier texture, as I do, blend the soup and run it through a sieve. Adjust the seasoning and add more stock if it is too thick.",
     "Season with salt and serve with idli pieces, if desired, and lemon wedges."
   ],
-  "image": "/recipes/mulligatawny-soup.jpg"
+  "image": "/recipes/mulligatawny-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

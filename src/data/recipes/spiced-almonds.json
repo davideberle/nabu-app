@@ -44,5 +44,10 @@
     "Pour off any extra olive oil, add the sea salt flakes and serve.",
     "You can use other nuts instead of almonds, such as hazelnuts, pecans or cashews."
   ],
-  "image": "/recipes/spiced-almonds.jpg"
+  "image": "/recipes/spiced-almonds.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

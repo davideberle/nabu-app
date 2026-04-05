@@ -16,7 +16,7 @@
     },
     {
       "item": "cherry or baby plum tomatoes, roughly chopped",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "heads of Baby Gem or romaine lettuce, halved lengthways and roughly chopped",
@@ -36,7 +36,7 @@
     },
     {
       "item": "radishes, trimmed and cut into quarters",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "bunch of spring onions, thinly sliced",
@@ -80,5 +80,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

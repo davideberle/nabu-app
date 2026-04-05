@@ -26,27 +26,27 @@
     },
     {
       "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dried oregano",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "sweet red pepper paste (or substitute tomato paste)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Turkish Bulgur Pilaf",
@@ -71,5 +71,10 @@
     "Transfer the cooked chops to a plate and cover with aluminum foil. Let rest for 10 minutes before serving.",
     "Serve the lamb chops over the bulgur pilaf with salad and yogurt."
   ],
-  "image": "/recipes/turkish-lamb-chops.jpg"
+  "image": "/recipes/turkish-lamb-chops.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

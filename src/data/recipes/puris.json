@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "chapatti flour, plus extra for dusting",
-      "amount": "450g (3¼ cups)"
+      "amount": "450g"
     },
     {
       "item": "Pinch of salt",
@@ -36,5 +36,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -19,11 +19,11 @@
     },
     {
       "item": "minced cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Freshly ground white pepper",
@@ -31,7 +31,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "packed baby arugula",
@@ -46,5 +46,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

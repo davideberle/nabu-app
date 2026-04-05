@@ -52,5 +52,13 @@
     "Add palm sugar, coriander stalks, Thai chilies, paprika, tomatoes, makrut and onions. Let it cook until the vegetables soften",
     "Add 1 cup of water, fish sauce, the rest of the ingredients",
     "Add 1 cup of water, fish sauce, the rest of the ingredients"
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

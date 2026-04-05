@@ -30,11 +30,11 @@
     },
     {
       "item": "can pink beans, drained and rinsed",
-      "amount": "1 (15-oz [439-g])"
+      "amount": "1"
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "vegetable stock",
@@ -89,5 +89,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

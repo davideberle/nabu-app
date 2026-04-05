@@ -60,5 +60,13 @@
     "Cook in the oven for about 5–10 minutes, or in a pizza oven for about 3–5 minutes, until the bottom of the base is golden.",
     "Remove from the oven. With a potato peeler, shave some parmigiano over the pizza and top with the rocket. Then drizzle some more olive oil over the pizza and season."
   ],
-  "image": "/recipes/prosciutto-and-rocket-pizza.jpg"
+  "image": "/recipes/prosciutto-and-rocket-pizza.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

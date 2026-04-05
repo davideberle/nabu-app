@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "chicken breasts",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "Rapeseed (canola) oil, for deep-frying",
@@ -119,5 +119,10 @@
     "Once cooled a bit, remove all but about 3 tablespoons of the oil from the wok. Place over a high heat and toss in the mustard seeds. When they begin to pop (after about 30 seconds), reduce the heat to medium–high, add the cumin seeds, curry leaves and green chillies and fry for a further 30 seconds. Stir in the garlic and ginger and fry until fragrant and soft – about 1 minute should do the job.",
     "Tip in the chicken and spring onions (scallions) and stir well to coat. Fry over a high heat until the chicken is completely cooked through. Squeeze the lemon juice over the top and add the chilli sauce (if using). Give it all one last good stir, check for seasoning, adding a little more salt if needed, and serve."
   ],
-  "image": "/recipes/chicken-65.jpg"
+  "image": "/recipes/chicken-65.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

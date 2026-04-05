@@ -14,7 +14,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "2¼ teaspoons"
+      "amount": "2¼ tsp"
     },
     {
       "item": "rice vinegar",
@@ -26,11 +26,11 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "black peppercorns",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large carrot, cut into ribbons with a vegetable peeler",
@@ -46,11 +46,11 @@
     },
     {
       "item": "chopped flat-leaf parsley",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chopped cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

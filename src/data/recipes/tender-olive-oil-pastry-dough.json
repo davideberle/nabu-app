@@ -18,7 +18,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 1 tablespoon / 75 ml mild tasting extra-virgin olive oil, ice-cold, plus more at room temperature to grease the pie pan",
@@ -26,7 +26,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "to 2½ tablespoons / 30 to 38 ml ice water",
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

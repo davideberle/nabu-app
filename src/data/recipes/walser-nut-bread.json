@@ -74,5 +74,13 @@
     "Preheat the oven to 200°C (gas mark 6).",
     "Bake the bread for 20–25 minutes. To test if it is done, tap on the underside; it should sound hollow. Cool the bread on a rack."
   ],
-  "image": "/recipes/walser-nut-bread.jpg"
+  "image": "/recipes/walser-nut-bread.jpg",
+  "time": {
+    "total": 95
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
     },
     {
       "item": "/ 12 grams organic confectioners’ sugar, more for dusting",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -22,11 +22,11 @@
     },
     {
       "item": "brown rice syrup, warmed in the jar until liquid (see page 23)",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "⅜ teaspoon pure almond extract",
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -24,11 +24,11 @@
     },
     {
       "item": "sake, gin, or vodka",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Brimming ⅓ cup honey",
@@ -36,7 +36,7 @@
     },
     {
       "item": "Chinese five-spice powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "bone-in, skin-on chicken thighs (about 3 pounds total, preferably air-chilled)",
@@ -44,11 +44,11 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sweet potatoes, unpeeled, scrubbed, and cut into long wedges ¾ to 1 inch thick",
@@ -60,7 +60,7 @@
     },
     {
       "item": "hoisin sauce, plus more as needed",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     }
   ],
   "method": [
@@ -74,5 +74,10 @@
     "Remove the chicken from the oven. If the sweet potatoes didn’t brown enough, roast on the top rack for 5 to 10 minutes longer. Let the chicken and vegetables rest for 5 to 10 minutes. Mix the reserved glaze with the hoisin sauce; if needed, add up to 1½ teaspoons hoisin to create a pleasant savory-sweet finish.",
     "Transfer the chicken and vegetables to serving plates and serve, passing the hoisin mixture alongside."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

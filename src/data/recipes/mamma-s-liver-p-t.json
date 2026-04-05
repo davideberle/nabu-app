@@ -80,5 +80,13 @@
     "Spoon the pâté into the terrine dish, being careful not to disturb any decoration you may have put on the gelatine. Cover with plastic wrap and refrigerate for at least 3 hours or overnight.",
     "To serve, run a sharp knife around the rim of the pâté then stand the dish in a little hot water for a few seconds to loosen the jelly on the bottom. Invert the pâté onto a serving plate and serve with crusty Italian bread or toast."
   ],
-  "image": "/recipes/mamma-s-liver-p-t.jpg"
+  "image": "/recipes/mamma-s-liver-p-t.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

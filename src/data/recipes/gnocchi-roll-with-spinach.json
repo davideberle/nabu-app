@@ -73,5 +73,13 @@
     "Preheat the oven to 200°C (gas mark 6).",
     "Unwrap the roll gently from the cheesecloth and place it in a buttered oven dish that will hold the rotolo comfortably. With a sharp knife, cut the roll into slices about 2 cm thick. Sprinkle with some parmigiano, then dot cubed butter and sage leaves evenly over the slices. Cook in the oven until golden-brown, about 15 minutes."
   ],
-  "image": "/recipes/gnocchi-roll-with-spinach.jpg"
+  "image": "/recipes/gnocchi-roll-with-spinach.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

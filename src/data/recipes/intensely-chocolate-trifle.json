@@ -26,7 +26,7 @@
     },
     {
       "item": "liquor like rum, sherry, framboise, or Kahlua (optional)",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "recipe Maple Cranberry Sauce (page 286)",
@@ -49,5 +49,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

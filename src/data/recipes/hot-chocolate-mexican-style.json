@@ -18,7 +18,7 @@
     },
     {
       "item": "rum, bourbon, or tequila (optional)",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     }
   ],
   "method": [
@@ -31,5 +31,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

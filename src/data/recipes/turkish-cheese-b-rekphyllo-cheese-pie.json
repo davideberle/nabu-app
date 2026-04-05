@@ -19,12 +19,12 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "PHYLLO PASTRY"
     },
     {
       "item": "white sesame seeds",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "PHYLLO PASTRY"
     },
     {
@@ -54,12 +54,12 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHEESE FILLING"
     },
     {
       "item": "unsalted butter, melted",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "EGG WASH"
     },
     {
@@ -92,5 +92,10 @@
     "Using a sharp knife, gently cut the börek into 12 equal-size squares, using a sawing motion to avoid disturbing the phyllo dough too much and to keep the pieces intact. Sprinkle the surface with the ¼ teaspoon nigella seeds and the sesame seeds.",
     "Place in the oven on the middle rack and bake for 25 to 30 minutes, until the top is golden brown and the filling is heated through and melted. You may broil the top for a few minutes, if required, to achieve a golden color. Let cool for 10 minutes. Use a sharp knife to gently slice into the precut squares and serve."
   ],
-  "image": "/recipes/turkish-cheese-b-rekphyllo-cheese-pie.jpg"
+  "image": "/recipes/turkish-cheese-b-rekphyllo-cheese-pie.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

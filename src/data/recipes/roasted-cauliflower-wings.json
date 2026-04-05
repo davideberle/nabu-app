@@ -20,7 +20,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "to ½ teaspoon recently ground black pepper (use the maximum for a lick of heat)",
@@ -28,7 +28,7 @@
     },
     {
       "item": "paprika",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "Brimming ⅔ cup water",
@@ -36,19 +36,19 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Bragg Liquid Aminos, Maggi Seasoning sauce, or soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chile garlic sauce (see this page)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "light corn syrup or brown rice syrup (such as Lundberg)",
@@ -68,5 +68,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

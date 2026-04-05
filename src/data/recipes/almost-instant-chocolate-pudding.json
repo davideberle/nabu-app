@@ -22,7 +22,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "plus 6 tablespoons / 450 ml vanilla soymilk, vanilla almond milk, or vanilla coconut milk beverage",
@@ -34,7 +34,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     }
   ],
   "method": [
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

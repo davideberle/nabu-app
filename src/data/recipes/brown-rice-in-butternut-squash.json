@@ -21,7 +21,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "firm tofu, cut into",
@@ -33,7 +33,7 @@
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fresh straw or shiitake mushrooms, stems removed and diced",
@@ -57,15 +57,15 @@
     },
     {
       "item": "soy sauce or vegan fish sauce",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sesame oil",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -80,5 +80,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 85
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

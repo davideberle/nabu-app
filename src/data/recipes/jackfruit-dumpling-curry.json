@@ -31,7 +31,7 @@
     },
     {
       "item": "grated jackfruit (tinned or fresh)",
-      "amount": "250g (9oz)",
+      "amount": "250g",
       "group": "DUMPLINGS"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)",
+      "amount": "200g",
       "group": "DUMPLINGS"
     },
     {
@@ -101,12 +101,12 @@
     },
     {
       "item": "cashew nuts, soaked in water overnight",
-      "amount": "100g (3½oz)",
+      "amount": "100g",
       "group": "SAUCE"
     },
     {
       "item": "double (heavy) cream",
-      "amount": "100ml (scant ½ cup)",
+      "amount": "100ml",
       "group": "SAUCE"
     },
     {
@@ -136,5 +136,10 @@
   "image": "/recipes/jackfruit-dumpling-curry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

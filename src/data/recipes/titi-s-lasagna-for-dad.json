@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "block extra-firm tofu",
-      "amount": "1 (12-oz [340-g])"
+      "amount": "1"
     },
     {
       "item": "nutritional yeast",
@@ -58,7 +58,7 @@
     },
     {
       "item": "package Beyond Meat sausage",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "Beyond Meat ground beef",
@@ -66,15 +66,15 @@
     },
     {
       "item": "can tomato paste",
-      "amount": "1 (6-oz [170-g])"
+      "amount": "1"
     },
     {
       "item": "can crushed tomatoes",
-      "amount": "1 (28-oz [800-g])"
+      "amount": "1"
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "raw cane sugar",
@@ -106,11 +106,11 @@
     },
     {
       "item": "box lasagna noodles",
-      "amount": "1 (1-lb [455-g])"
+      "amount": "1"
     },
     {
       "item": "package vegan mozzarella cheese",
-      "amount": "1 (8-oz [227-g])"
+      "amount": "1"
     }
   ],
   "method": [
@@ -133,5 +133,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

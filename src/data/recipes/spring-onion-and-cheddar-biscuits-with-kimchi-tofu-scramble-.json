@@ -14,12 +14,12 @@
   "ingredients": [
     {
       "item": "plain (all-purpose) flour, plus extra for dusting",
-      "amount": "250 g (9 oz/2 cups)",
+      "amount": "250 g",
       "group": "BISCUITS"
     },
     {
       "item": "coarse polenta (cornmeal)",
-      "amount": "50 g (2 oz/⅓ cup)",
+      "amount": "50 g",
       "group": "BISCUITS"
     },
     {
@@ -29,42 +29,42 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BISCUITS"
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BISCUITS"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BISCUITS"
     },
     {
       "item": "nutritional yeast",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "BISCUITS"
     },
     {
       "item": "garlic granules",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BISCUITS"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BISCUITS"
     },
     {
       "item": "vegan Cheddar, grated",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "BISCUITS"
     },
     {
       "item": "vegan block butter, frozen for 10 minutes then grated",
-      "amount": "100 g (3½ oz)",
+      "amount": "100 g",
       "group": "BISCUITS"
     },
     {
@@ -74,22 +74,22 @@
     },
     {
       "item": "unsweetened soya yoghurt",
-      "amount": "100 g (3½ oz)",
+      "amount": "100 g",
       "group": "BISCUITS"
     },
     {
       "item": "non-dairy milk of your choice, plus extra for brushing",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "BISCUITS"
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
@@ -104,32 +104,32 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "silken tofu",
-      "amount": "300 g (10½ oz)",
+      "amount": "300 g",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "vegan-friendly kimchi, roughly chopped",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "black salt (optional)",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KIMCHI TOFU SCRAMBLE"
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "GREENS"
     },
     {
@@ -159,12 +159,12 @@
     },
     {
       "item": "spinach, sliced",
-      "amount": "200 g (7 oz)",
+      "amount": "200 g",
       "group": "GREENS"
     },
     {
       "item": "kale, sliced",
-      "amount": "200 g (7 oz)",
+      "amount": "200 g",
       "group": "GREENS"
     },
     {
@@ -192,5 +192,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

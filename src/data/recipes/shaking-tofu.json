@@ -24,31 +24,31 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cornstarch",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Bragg Liquid Aminos, Maggi Seasoning sauce, or soy sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "toasted sesame oil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "neutral oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "thinly sliced red onion or shallot",
@@ -56,7 +56,7 @@
     },
     {
       "item": "sugar or honey",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "pinches fine sea salt",
@@ -68,11 +68,11 @@
     },
     {
       "item": "unseasoned rice vinegar",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "lightly packed watercress, arugula, or baby lettuce mix",
@@ -99,5 +99,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

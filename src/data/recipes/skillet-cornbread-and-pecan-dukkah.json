@@ -19,15 +19,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Dukkah",
@@ -35,11 +35,11 @@
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "unsweetened almond milk, homemade or store-bought",
@@ -51,11 +51,11 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely grated orange zest",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut oil, melted, plus more for oiling",
@@ -63,23 +63,23 @@
     },
     {
       "item": "finely chopped pecans, toasted",
-      "amount": "7 tablespoons"
+      "amount": "7 tbsp"
     },
     {
       "item": "black sesame seeds, toasted",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coriander seeds, toasted",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "cumin seeds, toasted",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "recipe Skillet Cornbread",
@@ -101,5 +101,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

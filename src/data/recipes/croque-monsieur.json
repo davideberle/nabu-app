@@ -25,7 +25,7 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of ground nutmeg",
@@ -56,5 +56,13 @@
     "Top the sandwiches with the remaining sauce. Sprinkle the sandwiches with the parmesan cheese.",
     "Bake for 5-6 minutes.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

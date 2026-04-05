@@ -13,11 +13,11 @@
     },
     {
       "item": "chao brine",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fermented soybean sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "water",
@@ -29,7 +29,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "leek (white part only), thinly sliced, plus 1 tablespoon, minced, divided",
@@ -37,19 +37,19 @@
     },
     {
       "item": "minced lemongrass",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "annatto oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sugar, plus more to taste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegetable oil",
@@ -77,7 +77,7 @@
     },
     {
       "item": "annatto oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "crushed roasted peanuts",
@@ -97,5 +97,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

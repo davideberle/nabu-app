@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "paneer cheese, cubed",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -22,7 +22,7 @@
     },
     {
       "item": "fresh baby spinach leaves, or 450g (1lb) frozen spinach",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "cumin seeds",
@@ -83,5 +83,10 @@
   "image": "/recipes/saag-paneer.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "This Moroccan chickpea stew is super flavorful, warm, hearty, easy to make, cheap, and to top it off, really good for you. Give it a try!",
   "time": {
-    "prep": "25 mins"
+    "prep": "25 mins",
+    "total": 75
   },
   "ingredients": [
     {
@@ -108,5 +109,10 @@
     "While the stew simmers, bring 3 cups of water and quinoa to a boil in a saucepan. Reduce heat to medium-low, cover, and simmer until quinoa is tender, 15 to 20 minutes.",
     "Mix Greek yogurt, hummus, 1 tablespoon water, and vinegar together to make the sauce. Season with salt and pepper."
   ],
-  "image": "/recipes/moroccan-chickpea-stew-with-quinoa.jpg"
+  "image": "/recipes/moroccan-chickpea-stew-with-quinoa.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

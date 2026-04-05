@@ -14,11 +14,11 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "yellow grits",
@@ -38,7 +38,7 @@
     },
     {
       "item": "plus ¼ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely diced red onion",
@@ -46,19 +46,19 @@
     },
     {
       "item": "cumin seeds, toasted and ground",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "coriander seeds, toasted and ground",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "paprika",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of cayenne pepper",
@@ -66,7 +66,7 @@
     },
     {
       "item": "extra-virgin olive oil, plus more for frying",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small head garlic, roasted",
@@ -82,7 +82,7 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "packed chopped flat-leaf parsley",
@@ -104,5 +104,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

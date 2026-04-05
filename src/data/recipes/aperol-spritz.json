@@ -27,5 +27,10 @@
   "method": [
     "In a large pitcher, add the ice, Aperol, and prosecco. Top up with the club soda.",
     "Serve in chilled glasses."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

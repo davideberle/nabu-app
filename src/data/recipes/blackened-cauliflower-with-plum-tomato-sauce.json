@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -18,7 +18,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "(28-ounce) can plum tomatoes with juices, chopped",
@@ -26,7 +26,7 @@
     },
     {
       "item": "red wine vinegar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Freshly ground white pepper",
@@ -38,7 +38,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Extra-virgin olive oil, for brushing",
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 31
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

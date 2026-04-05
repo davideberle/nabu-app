@@ -17,7 +17,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Pinch of kosher salt",
@@ -51,5 +51,13 @@
     "Fold in the spinach and feta cheese.",
     "Transfer the batter to the prepared baking sheet. Bake for 40 minutes or until a toothpick inserted in the center comes out clean.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

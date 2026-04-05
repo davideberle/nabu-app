@@ -14,37 +14,37 @@
   "ingredients": [
     {
       "item": "curry powder",
-      "amount": "1½ tablespoons",
+      "amount": "1½ tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "paprika",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "dried lime powder or 2 whole dried limes, crushed",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
@@ -54,17 +54,17 @@
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FISH"
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FISH"
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "VERMICELLI NOODLES"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "RICE"
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "RICE"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "½ tablespoon",
+      "amount": "½ tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -125,5 +125,10 @@
     "After the rice has cooked for 25 minutes, remove the lid and gently fluff it with a fork or wooden spoon and check for doneness. If the rice is soft and fluffy, place the fish pieces over it to heat them, then cover and let stand for 10 minutes; if the rice grains are still firm, splash ¼ cup (60 ml) of water on top, cover, and cook for another 10 minutes over low heat.",
     "Once ready to serve, remove the lid and fish pieces and set aside. Place a large tray on top of the pot. (If you do not have a large tray, you can spoon the rice onto a platter.) Using oven mitts, carefully flip the pot upside down while holding the tray firmly in place. When the pot is flipped, gently remove it. If there are some noodles and onions left in the pot, spoon them out and place on top. Place the cooked fish pieces on top and garnish with the toasted almonds. Serve with salad."
   ],
-  "image": "/recipes/iraqi-mutabbaq-simachspiced-fish-and-rice.jpg"
+  "image": "/recipes/iraqi-mutabbaq-simachspiced-fish-and-rice.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,19 +22,19 @@
     },
     {
       "item": "/ 15 grams raw cacao powder (or any cocoa powder)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "agave syrup or coconut sugar, or more to taste",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "/ 3 grams matcha powder, more to taste",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Pinch sea salt",
@@ -51,5 +51,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

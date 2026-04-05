@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 13 grams organic granulated sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Zest from 1 medium organic lemon, removed in thin strips",
@@ -26,15 +26,15 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "fruity extra-virgin olive oil, such as arbequina",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "freshly squeezed lemon juice, strained",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "to 2 drops pure lemon oil (optional)",
@@ -46,7 +46,7 @@
     },
     {
       "item": "flaked sea salt or lemon salt, for coating and serving (optional)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -62,5 +62,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

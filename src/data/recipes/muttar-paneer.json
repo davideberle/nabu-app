@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "paneer cheese, cut into 4cm (1½in) cubes",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -96,7 +96,7 @@
     },
     {
       "item": "frozen peas",
-      "amount": "150g (1 cup)",
+      "amount": "150g",
       "group": "SAUCE"
     },
     {
@@ -111,7 +111,7 @@
     },
     {
       "item": "cold butter, diced",
-      "amount": "80g (⅓ cup)",
+      "amount": "80g",
       "group": "SAUCE"
     },
     {
@@ -141,5 +141,10 @@
   "image": "/recipes/muttar-paneer.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

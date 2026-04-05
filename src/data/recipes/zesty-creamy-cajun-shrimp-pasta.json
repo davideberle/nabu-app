@@ -14,7 +14,7 @@
     },
     {
       "item": "box linguine noodles",
-      "amount": "1 (1-lb [455-g])"
+      "amount": "1"
     },
     {
       "item": "grapeseed oil",
@@ -88,5 +88,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

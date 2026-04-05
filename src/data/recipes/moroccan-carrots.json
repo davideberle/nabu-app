@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "4 serving s",
+  "servings": "4 servings",
   "intro": "Want a nice side dish and don't want to heat up the kitchen? Great dinner idea for those hot summer nights.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 120
   },
   "ingredients": [
     {
@@ -51,5 +52,10 @@
   "method": [
     "Whisk olive oil, lemon juice, cumin, chili powder, salt, and ground black pepper together; stir into carrot mixture. Marinate carrot mixture for 2 hours. Serve with crumbled feta cheese."
   ],
-  "image": "/recipes/moroccan-carrots.jpg"
+  "image": "/recipes/moroccan-carrots.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

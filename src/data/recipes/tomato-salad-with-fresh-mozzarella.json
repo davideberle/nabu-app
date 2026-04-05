@@ -36,5 +36,13 @@
     "Arrange tomato and mozzarella slices on a serving platter by alternating layers with basil leaves.",
     "Drizzle each layer with olive oil, balsamic vinegar, salt, and freshly ground pepper.",
     "Chill about 10 minutes before serving."
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

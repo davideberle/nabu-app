@@ -14,47 +14,47 @@
   "ingredients": [
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SEASONING"
     },
     {
       "item": "onion powder",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SEASONING"
     },
     {
       "item": "ground coriander",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SEASONING"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SEASONING"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SEASONING"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SEASONING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SEASONING"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SEASONING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SEASONING"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SHRIMP"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "RICE"
     },
     {
@@ -127,5 +127,10 @@
     "Turn off the heat and fluff the rice with a fork. Add the shrimp back into the pan on top of the rice. Cover again with the lid and let stand for 10 minutes.",
     "Garnish with parsley and a squeeze of lemon juice. Serve with salad."
   ],
-  "image": "/recipes/one-pot-shrimp-and-rice.jpg"
+  "image": "/recipes/one-pot-shrimp-and-rice.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

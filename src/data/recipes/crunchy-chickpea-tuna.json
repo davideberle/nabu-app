@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "can chickpeas, drained and rinsed",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "Juice of ½ lemon",
@@ -65,5 +65,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

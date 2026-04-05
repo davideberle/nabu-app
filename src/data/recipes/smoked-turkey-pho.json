@@ -44,7 +44,7 @@
     },
     {
       "item": "coriander seeds",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "slender 3-inch cinnamon stick",
@@ -128,7 +128,7 @@
     },
     {
       "item": "toasted sesame oil, plus more for drizzling",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Chubby 1-inch (1-ounce) section ginger, peeled, cut into 4 or 5 coins, and bruised",
@@ -144,7 +144,7 @@
     },
     {
       "item": "plus ⅛ teaspoon Chinese five-spice powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Fine sea salt",
@@ -152,11 +152,11 @@
     },
     {
       "item": "maple syrup, or 1 teaspoon sugar",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "dried Chinese wheat noodles, ramen, or soba, boiled according the package directions and drained",
@@ -193,5 +193,10 @@
     "Meanwhile, divide the noodles among four noodle-soup bowls. Arrange the chicken on top in one layer. If the noodles and chicken are cold, warm them in the microwave with 20-second blasts. Top with the sliced green onion and cilantro.",
     "Add the bok choy to the simmering broth and cook for about 1 minute, until bright green and slightly soft. Taste and, if needed, season the broth with more salt, ¼ teaspoon at a time. Raise the heat and bring to a boil, then divide the broth and vegetables among the bowls. Drizzle with sesame oil and sprinkle with pepper. Serve, and have diners add the pickle to their bowls for bright flavor and crunch."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

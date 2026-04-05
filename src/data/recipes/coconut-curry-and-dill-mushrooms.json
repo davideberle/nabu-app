@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "virgin coconut oil",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "medium or large cremini or white mushrooms, dark ends trimmed",
@@ -28,7 +28,7 @@
     },
     {
       "item": "Madras-style curry powder (preferably Sun brand)",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Fine sea salt",
@@ -48,5 +48,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

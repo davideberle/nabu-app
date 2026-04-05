@@ -18,7 +18,7 @@
     },
     {
       "item": "meaty fish, such as halibut or cod, cut into 5cm (2in) cubes",
-      "amount": "1kg (2lb 2oz)"
+      "amount": "1kg"
     },
     {
       "item": "red onion, quartered",
@@ -140,7 +140,7 @@
     },
     {
       "item": "tin (can) thick coconut milk",
-      "amount": "400ml (14fl oz)",
+      "amount": "400ml",
       "group": "SAUCE"
     }
   ],
@@ -150,5 +150,10 @@
     "Meanwhile, prepare the sauce. Pour the oil into a large pan set over a medium–high heat. When it begins to bubble, add the cinnamon stick, cloves and cardamom pods. Fry for about 30 seconds to allow the oil to take on the flavour of the spices, then add the curry leaves, onion, lemongrass and ginger. Cook this until the onion becomes translucent and soft (about 5 minutes), then add the garlic and green chillies. Let this sizzle for about 1 minute, then pour in the chopped tomatoes. Stir this all up nicely to combine and add black pepper, chilli powder and turmeric. Turn up the heat slightly and add the coconut milk. Bring it to a simmer and allow it to thicken slightly.",
     "Skewer the cubed fish, red onion and green chillies and place in a roasting pan. Cover the fish with the sauce and cook for about 15 minutes, or until the fish is cooked through. Season with salt and perhaps a little more black pepper. Squeeze the lime juice over the top. Serve with plain white rice."
   ],
-  "image": "/recipes/skewered-halibut-curry.jpg"
+  "image": "/recipes/skewered-halibut-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

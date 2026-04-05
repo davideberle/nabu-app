@@ -13,11 +13,11 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "warm water (176°F/80°C)",
@@ -25,7 +25,7 @@
     },
     {
       "item": "vegetable oil, for greasing hands",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pieces (8 by 8 inches/20 by 20 cm) banana leaves, prepped (see Note)",
@@ -33,7 +33,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "shredded young coconut or ¾ cup (75 g) dried coconut flakes",
@@ -41,11 +41,11 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "brown sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "crushed roasted peanuts",
@@ -53,7 +53,7 @@
     },
     {
       "item": "roasted sesame seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -66,5 +66,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

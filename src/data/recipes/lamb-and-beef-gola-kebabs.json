@@ -34,7 +34,7 @@
     },
     {
       "item": "lamb/beef mix (20% fat)",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "garlic and ginger paste",
@@ -71,5 +71,10 @@
     "Divide the meat into about 12 small oblong balls the size of limes. Oiling your hands lightly will help in doing this. Lightly oil four skewers and slide the balls onto them, leaving a little space between each. Be sure to squeeze the kebabs onto the skewers so that they remain firmly in place.",
     "When the coals are white-hot and it is unbearably hot to hold your hand at cooking level for more than 2 seconds, you’re ready to cook. Cook the kebabs on one side for about 5 minutes until they are beginning to brown on the underside. Then flip them over and cook the other side for another 5 minutes, or until nicely charred and cooked through. Baste the kebabs with the melted ghee as they cook and sprinkle with a little flaky salt. Remove the kebabs from the skewers and serve."
   ],
-  "image": "/recipes/lamb-and-beef-gola-kebabs.jpg"
+  "image": "/recipes/lamb-and-beef-gola-kebabs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

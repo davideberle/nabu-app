@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "lean lamb leg meat, cut into bite-size pieces",
-      "amount": "900g (2lb)"
+      "amount": "900g"
     },
     {
       "item": "ghee",
-      "amount": "175ml (¾ cup)"
+      "amount": "175ml"
     },
     {
       "item": "medium white onions, thinly sliced",
@@ -50,12 +50,12 @@
     },
     {
       "item": "white vinegar",
-      "amount": "70ml (¼ cup)",
+      "amount": "70ml",
       "group": "MARINADE"
     },
     {
       "item": "Greek yoghurt",
-      "amount": "125g (½ cup)",
+      "amount": "125g",
       "group": "MARINADE"
     },
     {
@@ -85,5 +85,10 @@
     "Now, using the same pan, melt the ghee over a high heat and add the onions. Fry for about 15 minutes, or until the onions are a deep brown. Using a slotted spoon, transfer half the onions to a separate bowl. If you want to make this recipe the traditional way, leave all the ghee in the pan. If you want to go for the healthier option, pour out all but about 2 tablespoons of the ghee. This ghee can be stored in the fridge and used in other curries.",
     "Reduce the heat to medium–high and stir in the garam masala and chilli powder and return half the fried onions to the pan. Now add the meat and remaining broth to the pan and cook until the broth has almost all evaporated. Turn up the heat to high and flash-fry the meat until it is crispy and the ghee is beginning to separate from the other ingredients. Add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the pan and season with salt. When you are testing the meat for seasoning, it is very easy to continue snacking on it, so try not to do that if you are serving a crowd. Garnish with the coriander (cilantro) and serve with lime wedges."
   ],
-  "image": "/recipes/pakistani-dry-meat-curry.jpg"
+  "image": "/recipes/pakistani-dry-meat-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

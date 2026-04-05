@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 27 grams coconut sugar or organic granulated sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "⅜ teaspoon guar gum",
@@ -34,11 +34,11 @@
     },
     {
       "item": "/ 14 grams organic cornstarch",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 3 grams agar powder",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "plus 1 tablespoon / 63 grams organic granulated sugar",
@@ -46,15 +46,15 @@
     },
     {
       "item": "coconut oil, divided",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "pure vanilla extract, divided",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 198 grams dark chocolate (66 to 71%) finely chopped, divided",
@@ -72,5 +72,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

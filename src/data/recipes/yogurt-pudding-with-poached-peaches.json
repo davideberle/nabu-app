@@ -71,5 +71,13 @@
   "image": "/recipes/yogurt-pudding-with-poached-peaches.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -31,7 +31,7 @@
     },
     {
       "item": "pomegranate seeds",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "sea salt",
@@ -50,5 +50,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -37,5 +37,10 @@
     "Now add the caramel drop by drop to the cream mixture, beating vigorously with a whisk, making sure the caramel dissolves. The mixture will develop a beautiful caramel colour and thicken to a cream consistency.",
     "Pour the cream into 8 small ramekins and refrigerate. Serve with whipped cream and biscuits on the side."
   ],
-  "image": "/recipes/caramel-cream.jpg"
+  "image": "/recipes/caramel-cream.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

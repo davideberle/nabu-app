@@ -8,7 +8,8 @@
   "servings": "32 servings",
   "intro": "These creamy Middle Eastern-style potatoes are flavored with turmeric and use olive oil rather than butter. They are great alone and for fillings in puff pastries. Amounts of salt, pepper, and other spices may be adjusted to taste.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 26
   },
   "ingredients": [
     {
@@ -45,5 +46,10 @@
     "Meanwhile, place 1 tablespoon olive oil in a skillet and heat over medium-high heat. Stir in the onion and cook until translucent and lightly browned, about 6 minutes.",
     "Drain water from the potatoes and mash. Stir in the onion, and continue mashing. Mix in the turmeric, salt, pepper, and cumin. Add the remaining 2 tablespoons olive oil, or amount desired to make the potatoes more or less creamy."
   ],
-  "image": "/recipes/moroccan-mashed-potatoes.jpg"
+  "image": "/recipes/moroccan-mashed-potatoes.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

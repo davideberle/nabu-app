@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "/ 12 grams anise seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 59 grams ground roasted unpeeled almonds (see chapter 1 page 19)",
@@ -26,31 +26,31 @@
     },
     {
       "item": "aluminum-free baking powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "water, at room temperature",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "almond extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Scant ½ cup / 85 grams vegan chocolate chips",
@@ -71,5 +71,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

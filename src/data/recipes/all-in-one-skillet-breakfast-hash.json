@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced russet potatoes",
@@ -29,27 +29,27 @@
     },
     {
       "item": "black salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "onion powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "garlic powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "thyme",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Slow Cooker Maple Breakfast Links, sliced (page 276)",
@@ -57,7 +57,7 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

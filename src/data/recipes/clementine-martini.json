@@ -31,5 +31,10 @@
   "method": [
     "In a large pitcher, add the clementine juice, vodka, Cointreau, prosecco, and lots of ice. Mix until well-combined.",
     "Serve in chilled glasses."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

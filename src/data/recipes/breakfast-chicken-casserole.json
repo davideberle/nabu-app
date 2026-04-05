@@ -21,15 +21,15 @@
     },
     {
       "item": "Italian herb blend",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "slices bread, diced",
@@ -53,5 +53,13 @@
     "Cover the Dutch oven and cook for 20–25 minutes.",
     "Add the cheese, cover again, and cook for 10–15 minutes more until the eggs are well cooked.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

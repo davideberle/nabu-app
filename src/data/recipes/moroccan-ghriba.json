@@ -16,7 +16,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "2/3 cup (135 g) granulated sugar",
@@ -28,7 +28,7 @@
     },
     {
       "item": "unsalted butter, softened",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "egg yolks",
@@ -40,7 +40,7 @@
     },
     {
       "item": "almond extract (optional)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "powdered sugar",
@@ -58,5 +58,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

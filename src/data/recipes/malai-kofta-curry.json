@@ -54,11 +54,11 @@
     },
     {
       "item": "tin (can) chopped tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "single (light) cream, plus extra to serve",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "Salt, to taste",
@@ -70,7 +70,7 @@
     },
     {
       "item": "peeled potatoes",
-      "amount": "250g (9oz)",
+      "amount": "250g",
       "group": "KOFTAS"
     },
     {
@@ -85,7 +85,7 @@
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)",
+      "amount": "200g",
       "group": "KOFTAS"
     },
     {
@@ -125,5 +125,10 @@
   "image": "/recipes/malai-kofta-curry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

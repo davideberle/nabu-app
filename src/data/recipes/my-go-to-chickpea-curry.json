@@ -26,7 +26,7 @@
     },
     {
       "item": "can chickpeas, drained and rinsed",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "curry powder",
@@ -82,5 +82,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

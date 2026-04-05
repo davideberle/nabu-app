@@ -35,7 +35,7 @@
     },
     {
       "item": "butter",
-      "amount": "25g (1oz)"
+      "amount": "25g"
     },
     {
       "item": "pomegranate molasses, to serve",
@@ -51,5 +51,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 103
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "4 to 5 servings",
   "intro": "This is a great alternative to the standard salmon patty recipe using couscous, spinach, and cumin for an exotic flavor.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 10
   },
   "ingredients": [
     {
@@ -83,5 +84,10 @@
     "In a mixing bowl, combine the cooked couscous, red salmon, drained spinach, egg yolks, garlic, cumin, black pepper, and salt. Form into patties.",
     "In a large skillet over medium heat, heat the olive oil and fry patties until golden brown, turning once, about 8 to 10 minutes. Serve with garlic mayonnaise."
   ],
-  "image": "/recipes/moroccan-salmon-cakes-with-garlic-mayonnaise.jpg"
+  "image": "/recipes/moroccan-salmon-cakes-with-garlic-mayonnaise.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

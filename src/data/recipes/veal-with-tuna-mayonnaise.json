@@ -92,5 +92,13 @@
     "Slice the veal very thinly and arrange on a serving plate. Mix some of the mayonnaise with the tuna mixture and spread some of it over the sliced meat and put the rest in a bowl, to serve on the side. Garnish with capers.",
     "The left-over stock from cooking the veal can be used to make risotto. It can also be frozen for later use."
   ],
-  "image": "/recipes/veal-with-tuna-mayonnaise.jpg"
+  "image": "/recipes/veal-with-tuna-mayonnaise.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -20,15 +20,15 @@
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "to 3 teaspoons fish sauce",
@@ -36,7 +36,7 @@
     },
     {
       "item": "water (optional)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "small whole chicken legs (about 2 pounds total)",
@@ -49,5 +49,10 @@
     "Add the chicken to the marinade, rubbing the marinade into the crevices and under the skin. Cover with plastic wrap and marinate at room temperature for 20 minutes, or refrigerate overnight (return to room temperature before grilling).",
     "Prepare a medium charcoal fire or preheat a gas grill to medium (you can hold your hand 6 inches above the grill for 4 to 5 seconds). Grill the chicken for 16 to 20 minutes, turning frequently, until cooked through (poke or cut into the thickest part, and the juices flowing out should be clear). Transfer to a platter and let rest for 5 to 10 minutes before serving."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

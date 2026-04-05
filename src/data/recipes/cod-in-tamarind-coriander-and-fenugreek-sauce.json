@@ -52,11 +52,11 @@
     },
     {
       "item": "warm water",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     },
     {
       "item": "cod loin (or use any firm-fleshed white fish)",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "sea salt and freshly ground black pepper",
@@ -68,5 +68,13 @@
     "Stir the coriander into the onion-and-garlic mixture and cook until it begins to soften. Dissolve the tamarind paste into the warm water, then pour it into the pan, reduce the heat to a moderate setting, cover the pan (leaving a little gap open) and simmer for about 15 minutes.",
     "Once the cooking time has elapsed, cut each cod loin into 5cm (2in) pieces and lay them on top of the sauce, spooning just enough of the sauce over them to barely cover each piece of fish. Season to taste with a littl sea salt and black pepper, then cover the pan with a lid and cook for a further 15 minutes with the lid on. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

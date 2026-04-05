@@ -22,7 +22,7 @@
     },
     {
       "item": "/ 4 grams organic granulated sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Strips of zest from ½ of a medium organic orange",
@@ -38,5 +38,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

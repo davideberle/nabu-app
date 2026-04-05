@@ -14,7 +14,7 @@
     },
     {
       "item": "cans jackfruit in brine, drained",
-      "amount": "3 (20-oz [567-g])"
+      "amount": "3"
     },
     {
       "item": "Sofrito",
@@ -72,5 +72,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

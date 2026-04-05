@@ -17,7 +17,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-firm tofu, drained and pressed (page 17)",
@@ -25,23 +25,23 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "black salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground black pepper, divided",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "turmeric",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "paprika",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "15-ounce can pinto beans, drained and rinsed",
@@ -49,15 +49,15 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dairy-free butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "flour",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "dairy-free milk",
@@ -65,11 +65,11 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "15-ounce can enchilada sauce",
@@ -106,5 +106,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

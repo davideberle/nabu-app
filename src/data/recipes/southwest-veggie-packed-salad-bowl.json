@@ -13,7 +13,7 @@
     },
     {
       "item": "extra virgin olive oil, divided",
-      "amount": "2 tablespoon"
+      "amount": "2 tbsp"
     },
     {
       "item": "green lentils",
@@ -37,7 +37,7 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "extra virgin olive oil",
@@ -49,7 +49,7 @@
     },
     {
       "item": "maple syrup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "to ½ teaspoon hot sauce",
@@ -57,7 +57,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "mixed lettuce",
@@ -79,5 +79,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

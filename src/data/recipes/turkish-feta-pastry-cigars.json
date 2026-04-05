@@ -16,7 +16,7 @@
     },
     {
       "item": "feta cheese",
-      "amount": "150–200g (5½–7oz)"
+      "amount": "150–200g"
     },
     {
       "item": "dried mint",
@@ -48,5 +48,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

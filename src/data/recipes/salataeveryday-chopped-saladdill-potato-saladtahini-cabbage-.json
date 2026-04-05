@@ -39,7 +39,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "SALATA"
     },
     {
@@ -54,22 +54,22 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "sumac",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DRESSING"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DRESSING"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DRESSING"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "POTATO SALAD"
     },
     {
@@ -124,17 +124,17 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "ground Aleppo pepper (or substitute with 1 teaspoon paprika plus ¼ teaspoon cayenne pepper)",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "DRESSING"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DRESSING"
     },
     {
@@ -164,7 +164,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CABBAGE SLAW"
     },
     {
@@ -184,17 +184,17 @@
     },
     {
       "item": "honey",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DRESSING"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DRESSING"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "DRESSING"
     },
     {
@@ -214,7 +214,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "BULGUR"
     },
     {
@@ -224,7 +224,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BULGUR"
     },
     {
@@ -274,22 +274,22 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DRESSING"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "DRESSING"
     },
     {
@@ -299,7 +299,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
@@ -374,7 +374,7 @@
     },
     {
       "item": "za’atar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
@@ -384,17 +384,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DRESSING"
     },
     {
       "item": "Dijon mustard",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "honey",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
@@ -429,12 +429,12 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "DRESSING"
     },
     {
       "item": "black pepper",
-      "amount": "1/8 teaspoon",
+      "amount": "1/8 tsp",
       "group": "DRESSING"
     },
     {
@@ -449,7 +449,7 @@
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FALAFEL"
     },
     {
@@ -474,7 +474,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FALAFEL"
     },
     {
@@ -484,22 +484,22 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FALAFEL"
     },
     {
       "item": "ground cumin",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "FALAFEL"
     },
     {
       "item": "ground coriander",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "FALAFEL"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FALAFEL"
     },
     {
@@ -534,7 +534,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "DRESSING"
     },
     {
@@ -579,7 +579,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SALAD"
     },
     {
@@ -599,12 +599,12 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SALAD"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SALAD"
     },
     {
@@ -624,27 +624,27 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SALAD"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "SALAD"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SALAD"
     },
     {
       "item": "sweet red pepper paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SALAD"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SALAD"
     },
     {
@@ -674,7 +674,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -689,7 +689,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -714,7 +714,7 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "7 tablespoons",
+      "amount": "7 tbsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
@@ -734,12 +734,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
@@ -759,7 +759,7 @@
     },
     {
       "item": "whole peppercorns",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
@@ -779,12 +779,12 @@
     },
     {
       "item": "kosher salt, or more to taste",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
       "item": "ground turmeric",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING (OPTIONAL)"
     },
     {
@@ -824,22 +824,22 @@
     },
     {
       "item": "curry powder",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "ground coriander",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
@@ -859,22 +859,22 @@
     },
     {
       "item": "mayonnaise",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "black pepper",
-      "amount": "1/8 teaspoon",
+      "amount": "1/8 tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
@@ -884,12 +884,12 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "PHYLLO PASTRY"
     },
     {
       "item": "white sesame seeds",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "PHYLLO PASTRY"
     },
     {
@@ -919,12 +919,12 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHEESE FILLING"
     },
     {
       "item": "unsalted butter, melted",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "EGG WASH"
     },
     {
@@ -944,12 +944,12 @@
     },
     {
       "item": "instant yeast",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DOUGH"
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DOUGH"
     },
     {
@@ -964,7 +964,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOUGH"
     },
     {
@@ -999,32 +999,32 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "curry powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FILLING"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FILLING"
     },
     {
@@ -1039,7 +1039,7 @@
     },
     {
       "item": "sumac",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1069,22 +1069,22 @@
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "dried parsley (or substitute 2 tablespoons finely chopped fresh parsley)",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "dried dill",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground Aleppo pepper (or substitute paprika)",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1099,12 +1099,12 @@
     },
     {
       "item": "white sesame seeds",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "nigella seeds",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1119,12 +1119,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "EGGPLANT"
     },
     {
       "item": "sumac",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "EGGPLANT"
     },
     {
@@ -1134,22 +1134,22 @@
     },
     {
       "item": "sumac",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "LABNEH"
     },
     {
       "item": "finely chopped fresh dill (optional)",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "LABNEH"
     },
     {
       "item": "pine nuts",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "roughly torn fresh dill",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1159,7 +1159,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "GARLIC OIL"
     },
     {
@@ -1169,7 +1169,7 @@
     },
     {
       "item": "ground Aleppo pepper (or substitute with ¼ teaspoon chili flakes)",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "GARLIC OIL"
     },
     {
@@ -1179,22 +1179,22 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons (60 ml)",
+      "amount": "4 tbsp (60 ml)",
       "group": "GARLIC OIL"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GARLIC OIL"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GARLIC OIL"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "GARLIC OIL"
     },
     {
@@ -1204,7 +1204,7 @@
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "GARLIC OIL"
     },
     {
@@ -1335,5 +1335,10 @@
     "Pour the hot oil over the baked potatoes and toss to combine.",
     "Garnish with the chopped parsley or cilantro, a squeeze of lemon, and more chili flakes. Serve immediately."
   ],
-  "image": "/recipes/salataeveryday-chopped-saladdill-potato-saladtahini-cabbage-.jpg"
+  "image": "/recipes/salataeveryday-chopped-saladdill-potato-saladtahini-cabbage-.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

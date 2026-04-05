@@ -14,42 +14,42 @@
   "ingredients": [
     {
       "item": "ground coriander",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cloves",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "turmeric, divided",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CHICKEN"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CRISPY ONIONS"
     },
     {
@@ -119,17 +119,17 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "BISBAS SAUCE"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BISBAS SAUCE"
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "BISBAS SAUCE"
     },
     {
@@ -149,5 +149,10 @@
     "Add all the sauce ingredients to a small food processor and pulse for a few minutes until a thick paste. Taste and adjust for salt if needed.",
     "After the rice has cooked for 20 minutes, fluff with a fork or wooden spoon. Spoon onto a large platter and top with a layer of crispy onions. Add the chicken pieces, then garnish with the toasted almonds and raisins. Serve with the bisbas sauce and more crispy onions on the side."
   ],
-  "image": "/recipes/yemeni-chicken-mandi.jpg"
+  "image": "/recipes/yemeni-chicken-mandi.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

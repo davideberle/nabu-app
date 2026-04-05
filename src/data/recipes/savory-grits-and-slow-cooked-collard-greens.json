@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "plus ¼ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "collard greens, cut into bite-size pieces",
@@ -19,7 +19,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "red onion, finely chopped",
@@ -27,15 +27,15 @@
     },
     {
       "item": "minced fresh ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chili powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -59,7 +59,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "yellow corn grits",
@@ -88,5 +88,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

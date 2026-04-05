@@ -92,5 +92,13 @@
     "Wipe the pot clean and add the remaining oil. Add the shallots and cook them over medium heat for 10 minutes, stirring frequently, until golden brown. Add the wine, leave to bubble for a minute or two, then add the chicken stock, bay leaves, thyme, sugar, and some salt and pepper. Arrange the figs and meatballs among and on top of the shallots; the meatballs need to be almost covered in liquid. Bring to a boil, cover with the lid, decrease the heat to very low, and leave to simmer for 30 minutes. Remove the lid and simmer for about another hour, until the sauce has reduced and intensified in flavor. Taste and add salt and pepper if needed.",
     "Transfer to a large, deep serving dish. Whisk the yogurt, pour on top, and scatter with the herbs."
   ],
-  "image": "/recipes/lamb-meatballs-with-barberries-yogurt-and-herbs.jpg"
+  "image": "/recipes/lamb-meatballs-with-barberries-yogurt-and-herbs.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -21,7 +21,7 @@
     },
     {
       "item": "organic vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "whole wheat flour",
@@ -29,15 +29,15 @@
     },
     {
       "item": "protein powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "old-fashioned oats",
@@ -66,5 +66,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 11
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

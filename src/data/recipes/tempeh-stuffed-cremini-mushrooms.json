@@ -13,7 +13,7 @@
     },
     {
       "item": "diced red onion, small dice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "tempeh, diced very small, or pulsed small",
@@ -33,7 +33,7 @@
     },
     {
       "item": "tamari",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -45,5 +45,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

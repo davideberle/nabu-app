@@ -22,11 +22,11 @@
     },
     {
       "item": "olive oil, plus extra for frying",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "king oyster mushrooms, thickly sliced",
@@ -34,27 +34,27 @@
     },
     {
       "item": "tomato purée (paste)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "allspice berries",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Guinness or another dark stout",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Worcestershire sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "garlic cloves",
@@ -74,7 +74,7 @@
     },
     {
       "item": "vegetable stock",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -92,12 +92,12 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "MASH"
     },
     {
       "item": "non-dairy single (light) cream",
-      "amount": "50 ml (1¾ fl oz/3 tablespoons)",
+      "amount": "50 ml",
       "group": "MASH"
     },
     {
@@ -119,5 +119,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

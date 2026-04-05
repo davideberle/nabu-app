@@ -18,7 +18,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "warm water",
@@ -30,7 +30,7 @@
     },
     {
       "item": "instant yeast",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "granulated sugar",
@@ -66,5 +66,10 @@
     "Place the churag on a platter and cover with plastic wrap or a towel to keep them moist. Serve warm or at room temperature."
   ],
   "tips": "You can freeze the churag in an airtight freezer bag or container for 2 to 3 months after baking them, then reheat in the oven to enjoy warm. Also, if you struggle to shape them as described, you can simply shape each ball into a long thin rope, then twist it onto itself to create a pinwheel shape.",
-  "image": "/recipes/iraqi-churagsweet-buns.jpg"
+  "image": "/recipes/iraqi-churagsweet-buns.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

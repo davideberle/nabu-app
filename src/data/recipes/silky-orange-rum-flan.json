@@ -24,7 +24,7 @@
     },
     {
       "item": "unseasoned rice vinegar or fresh lime or lemon juice (optional, but great for fuss-free caramelization)",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "full-fat sweetened condensed milk",
@@ -36,7 +36,7 @@
     },
     {
       "item": "dark rum",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -54,5 +54,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

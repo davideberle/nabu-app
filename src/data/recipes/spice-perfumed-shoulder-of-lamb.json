@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "shoulder of lamb",
-      "amount": "2.5kg (5lb 8oz)"
+      "amount": "2.5kg"
     },
     {
       "item": "sumac",
@@ -48,5 +48,13 @@
     "Drizzle a little oil on to the lamb and rub it all over the joint to create a surface for your spice mix to stick to, then season generously with the sea salt.",
     "Roast in the oven for 4 hours, then remove the lamb, cover with kitchen foil and leave it to rest for 10 minutes before serving. To serve, you can literally take a fork and gently pull the lamb apart or be all fancy and rather unnecessarily use a knife to slice it. Serve with a green salad, potatoes or rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

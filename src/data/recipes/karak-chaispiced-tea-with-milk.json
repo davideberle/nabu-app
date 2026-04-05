@@ -30,7 +30,7 @@
     },
     {
       "item": "loose-leaf black tea",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "evaporated milk",
@@ -53,5 +53,10 @@
     "Turn off the heat and pour into chai cups through a tea strainer. Serve with tea biscuits."
   ],
   "tips": "You may skip adding the sugar to the saucepan and, instead, add sugar when serving into cups per preference.",
-  "image": "/recipes/karak-chaispiced-tea-with-milk.jpg"
+  "image": "/recipes/karak-chaispiced-tea-with-milk.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

@@ -18,11 +18,11 @@
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic cloves, very finely chopped",
@@ -30,11 +30,11 @@
     },
     {
       "item": "ground allspice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "good pinch of salt",
@@ -46,7 +46,7 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "spring onions (scallions), sliced in half lengthways",
@@ -55,12 +55,12 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SPRING ONION SALSA"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "SPRING ONION SALSA"
     },
     {
@@ -89,5 +89,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

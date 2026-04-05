@@ -27,5 +27,10 @@
   "method": [
     "In a large pitcher, combine the champagne with the orange juice.",
     "Garnish with the orange slices and serve in glasses with ice."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "12 servings",
   "intro": "Serving a gorgeous, fancy-looking holiday roast doesn't have to be complicated, time-consuming, or expensive. This pork loin proves exactly that. This is fast, easy, and affordable, but it looks like a million dollars when you bring it to the table. The beautifully warming and aromatic spices really work so well with a pork roast - I hope you give it a try soon!",
   "time": {
-    "prep": "30 mins"
+    "prep": "30 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -134,5 +135,10 @@
     "Increase oven temperature to 425 degrees F. Toss vegetable mixture in pan drippings and return to the oven to crisp up, about 10 minutes.",
     "Remove strings on the roast. Slice, spoon pan drippings over and serve with vegetables and yogurt sauce."
   ],
-  "image": "/recipes/moroccan-spiced-pork-roast.jpg"
+  "image": "/recipes/moroccan-spiced-pork-roast.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

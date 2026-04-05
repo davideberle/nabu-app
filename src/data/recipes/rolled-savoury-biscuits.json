@@ -82,5 +82,13 @@
     "Spread the filling ingredients over the pastry, ensuring the bocconcini is evenly distributed, then roll, slice and cook as above.",
     "With these puff pastry rolls you can really let your imagination run wild. You can use any filling that takes your fancy – I have provided some of my favourites. To make things easier, I suggest you buy butter puff pastry at the supermarket."
   ],
-  "image": "/recipes/rolled-savoury-biscuits.jpg"
+  "image": "/recipes/rolled-savoury-biscuits.jpg",
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

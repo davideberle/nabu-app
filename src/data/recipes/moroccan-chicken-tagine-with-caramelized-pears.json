@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "Chicken cooked in a tagine is always meltingly tender. Adding sweet, caramelized pears at the end makes this Moroccan dish irresistible.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 70
   },
   "ingredients": [
     {
@@ -79,5 +80,10 @@
     "Melt butter in a skillet over low heat while the chicken is cooking. Add sliced pears and honey and cook, while stirring, until the honey has caramelized.",
     "Remove tagine from the oven and stir in caramelized pears. Return to the oven and cook for an additional 10 minutes."
   ],
-  "image": "/recipes/moroccan-chicken-tagine-with-caramelized-pears.jpg"
+  "image": "/recipes/moroccan-chicken-tagine-with-caramelized-pears.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

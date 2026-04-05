@@ -22,7 +22,7 @@
     },
     {
       "item": "rapeseed (canola) oil or seasoned oil",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "whole nutmeg, crushed into small pieces",
@@ -110,5 +110,10 @@
     "Arrange the lamb shanks in the saucepan, cover and simmer over a low heat for 3 hours, basting and turning the shanks every 30 minutes. After 3 hours, carefully lift out the shanks into a large, warmed serving bowl. Skim off as much excess oil from the cooking liquid as possible and discard.",
     "Mix the chapatti flour with 4 teaspoons water to make a smooth paste. Whisk the paste into the sauce and simmer for 5–6 minutes to thicken. Season with salt and pour the sauce over the meat in the serving bowl. Serve the garnishes in little bowls on the table to add to the lamb nihari as you like."
   ],
-  "image": "/recipes/lamb-nihari.jpg"
+  "image": "/recipes/lamb-nihari.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

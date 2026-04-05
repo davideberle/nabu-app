@@ -18,7 +18,7 @@
     },
     {
       "item": "fresh lime juice",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "to 2 ounces / 28 to 57 grams dark chocolate (any percentage), chopped into small chunks for the “seeds”",
@@ -38,5 +38,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -17,7 +17,7 @@
     },
     {
       "item": "ground chia seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dairy-free milk",
@@ -25,7 +25,7 @@
     },
     {
       "item": "lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "maple syrup",
@@ -33,11 +33,11 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "flaxseed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsweetened cocoa powder",
@@ -45,11 +45,11 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "old-fashioned oats",
@@ -74,5 +74,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

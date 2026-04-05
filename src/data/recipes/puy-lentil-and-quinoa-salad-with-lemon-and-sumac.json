@@ -11,19 +11,19 @@
   "ingredients": [
     {
       "item": "quinoa",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "Puy lentils",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "baby tomatoes (I use Pomodorinos or baby plum), halved",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "flat leaf parsley, stalks and leaves finely chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "packets of mint, leaves picked and finely chopped",
@@ -67,5 +67,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

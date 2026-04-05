@@ -18,15 +18,15 @@
     },
     {
       "item": "brown rice syrup or agave syrup",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "guar gum",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "/ 58 grams dark chocolate (68 to 72%), finely chopped",
@@ -34,7 +34,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

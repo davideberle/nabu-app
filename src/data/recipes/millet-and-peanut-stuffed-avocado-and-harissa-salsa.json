@@ -15,23 +15,23 @@
     },
     {
       "item": "coconut oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Harissa",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coriander seeds, toasted and ground",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chili powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "water",
@@ -43,7 +43,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced red onion",
@@ -55,7 +55,7 @@
     },
     {
       "item": "minced garlic",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsalted dry-roasted peanuts",
@@ -67,23 +67,23 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "tamari",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chili powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "minced cilantro, for garnish",
@@ -100,5 +100,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

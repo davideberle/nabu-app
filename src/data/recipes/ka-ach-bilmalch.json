@@ -91,5 +91,13 @@
   "image": "/recipes/ka-ach-bilmalch.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 52
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

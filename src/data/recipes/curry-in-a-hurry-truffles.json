@@ -18,19 +18,19 @@
     },
     {
       "item": "/ 12 grams coconut sugar or organic granulated sugar",
-      "amount": "4 teaspoons"
+      "amount": "4 tsp"
     },
     {
       "item": "/ 4.5 grams curry powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Flaked salt, crushed, for coating (optional)",
@@ -52,5 +52,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

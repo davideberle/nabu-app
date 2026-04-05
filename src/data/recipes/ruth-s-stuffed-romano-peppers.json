@@ -76,5 +76,13 @@
     "Starting from the stalk end, use a small knife to cut lengthwise three-quarters of the way down each pepper, without removing the stalk, creating a long opening. Without forcing the pepper open too much, remove the seeds and then stuff each pepper with an equal amount of the mixture.",
     "Place the chopped tomato and onion in a very large frying pan for which you have a tight-fitting lid. Arrange the peppers on top, close together, and pour in just enough stock so that it comes inch / 1 cm up the sides of the peppers. Season with ½ teaspoon salt and some black pepper. Cover the pan with a lid and simmer over the lowest possible heat for an hour. It is important that the filling is just steamed, so the lid must fit tightly; make sure there is always a little bit of liquid at the bottom of the pan. Serve the peppers warm, not hot, or at room temperature."
   ],
-  "image": "/recipes/ruth-s-stuffed-romano-peppers.jpg"
+  "image": "/recipes/ruth-s-stuffed-romano-peppers.jpg",
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

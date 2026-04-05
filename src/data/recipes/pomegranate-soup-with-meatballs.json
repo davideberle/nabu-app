@@ -24,7 +24,7 @@
     },
     {
       "item": "dried yellow split peas",
-      "amount": "85g (3oz)"
+      "amount": "85g"
     },
     {
       "item": "litres (3½ pints) water",
@@ -60,15 +60,15 @@
     },
     {
       "item": "minced lamb (minced beef and veal are also commonly used)",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "basmati rice",
-      "amount": "85g (3oz)"
+      "amount": "85g"
     },
     {
       "item": "pomegranate juice",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "pomegranate molasses",
@@ -76,7 +76,7 @@
     },
     {
       "item": "caster sugar",
-      "amount": "125g (4½oz)"
+      "amount": "125g"
     }
   ],
   "method": [
@@ -85,5 +85,13 @@
     "To make your meatballs, combine the meat with the minced or grated onion and season generously with some salt and pepper. Roll the mixture into little meatballs about 4cm (1½in) in diameter. Add these to the soup pot along with the uncooked basmati rice, cover and simmer for 30 minutes.",
     "Add the pomegranate juice, pomegranate molasses and sugar and stir the mixture well, then half cover the pan with a lid and simmer for a further 30 minutes. Once cooked, you can adjust the thickness of the soup by adding more hot water, if desired, and also adjust the sugar and pomegranate molasses levels to your taste."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

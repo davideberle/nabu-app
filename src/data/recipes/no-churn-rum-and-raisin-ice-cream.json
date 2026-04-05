@@ -14,23 +14,23 @@
   "ingredients": [
     {
       "item": "dark rum",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "raisins",
-      "amount": "80 g (3 oz/scant ¾ cup)"
+      "amount": "80 g"
     },
     {
       "item": "non-dairy double (heavy) cream",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml"
     },
     {
       "item": "non-dairy condensed milk",
-      "amount": "150 ml (5 fl oz/scant ⅔ cup)"
+      "amount": "150 ml"
     },
     {
       "item": "vanilla extract or paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -41,5 +41,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

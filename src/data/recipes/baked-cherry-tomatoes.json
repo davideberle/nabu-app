@@ -42,5 +42,13 @@
     "Add the olive oil to a large ovenproof dish, then add the tomatoes, still attached to their stalks. Add the basil, thyme, salt, garlic and pepper.",
     "Place in the oven and cook for about 15–20 minutes. Serve warm or cold. I like to serve these with Polpettone instead of the tomato sauce. But they are equally delicious eaten with Pesce Spada al Salmoriglio."
   ],
-  "image": "/recipes/baked-cherry-tomatoes.jpg"
+  "image": "/recipes/baked-cherry-tomatoes.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

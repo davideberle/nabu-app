@@ -16,7 +16,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     },
     {
       "item": "fat garlic clove, crushed",
@@ -42,5 +42,10 @@
   "image": "/recipes/yogurt-with-cucumber-garlic-and-dill.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

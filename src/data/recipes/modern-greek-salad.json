@@ -29,27 +29,27 @@
     },
     {
       "item": "chopped cucumber",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "dried oregano",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "red wine vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Pinch of salt",
@@ -61,5 +61,10 @@
     "Add the lettuce and kale to a salad bowl. Toss well.",
     "Add the quinoa, almond slices, feta and cucumber; drizzle with dressing to taste and toss to mix well.",
     "Serve fresh."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -44,5 +44,13 @@
     "Add the onions, potatoes, and peanuts to the curry (Step 9).",
     "Simmer the curry for 10-15 minutes.",
     "Simmer the curry for 10-15 minutes."
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

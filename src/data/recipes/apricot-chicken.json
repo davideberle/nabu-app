@@ -19,17 +19,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
@@ -49,37 +49,37 @@
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "granulated sugar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SAUCE"
     },
     {
       "item": "chopped pistachios",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "slivered almonds",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "unsalted chopped raw walnuts",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -98,5 +98,10 @@
     "MAKE THE GARNISH: Toast the nuts in a small, dry skillet over low heat for a few minutes, or until fragrant, stirring continuously.",
     "Garnish the chicken with the toasted nuts and serve with rice."
   ],
-  "image": "/recipes/apricot-chicken.jpg"
+  "image": "/recipes/apricot-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -46,5 +46,10 @@
     "In a small bowl, combine the peanut butter and lemon juice.",
     "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well.",
     "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

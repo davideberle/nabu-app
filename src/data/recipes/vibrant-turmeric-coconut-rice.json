@@ -20,15 +20,15 @@
     },
     {
       "item": "grated peeled fresh turmeric, or ¼ teaspoon plus ⅛ teaspoon ground turmeric",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "virgin coconut oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     }
   ],
   "method": [
@@ -41,5 +41,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

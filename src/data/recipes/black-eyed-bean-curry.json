@@ -62,11 +62,11 @@
     },
     {
       "item": "cooked or tinned (canned) black-eyed beans, drained and rinsed",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "plain yoghurt",
-      "amount": "200g (¾ cup)"
+      "amount": "200g"
     },
     {
       "item": "finely chopped coriander (cilantro), to serve",
@@ -87,5 +87,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

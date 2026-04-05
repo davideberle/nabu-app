@@ -26,7 +26,7 @@
     },
     {
       "item": "sugar snap peas, trimmed and halved",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "cucumber, sliced into half-moons",
@@ -38,11 +38,11 @@
     },
     {
       "item": "pumpkin seeds",
-      "amount": "50 g (2 oz/⅓ cup)"
+      "amount": "50 g"
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "DRESSING"
     },
     {
@@ -52,12 +52,12 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
@@ -84,5 +84,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

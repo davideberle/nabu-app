@@ -16,19 +16,19 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons (60 ml)"
+      "amount": "4 tbsp (60 ml)"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -36,7 +36,7 @@
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Chili flakes",
@@ -54,5 +54,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

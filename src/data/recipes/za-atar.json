@@ -22,7 +22,7 @@
     },
     {
       "item": "cumin seeds, toasted",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "heaping tablespoon sesame seeds, toasted",
@@ -41,5 +41,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "plain (all-purpose) flour",
-      "amount": "250g (2 cups)"
+      "amount": "250g"
     },
     {
       "item": "fine semolina",
-      "amount": "50g (¼ cup)"
+      "amount": "50g"
     },
     {
       "item": "baking powder",
@@ -50,5 +50,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

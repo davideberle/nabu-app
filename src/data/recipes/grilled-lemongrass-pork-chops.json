@@ -16,7 +16,7 @@
     },
     {
       "item": "coarsely chopped shallot, or 3 tablespoons roughly chopped yellow onion",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coarsely chopped fresh lemongrass (from 2 medium stalks)",
@@ -24,7 +24,7 @@
     },
     {
       "item": "light or dark brown sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Rounded ¼ teaspoon recently ground black pepper",
@@ -32,19 +32,19 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "molasses, dark amber honey, or Caramel Sauce (this page)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Nuoc Cham Dipping Sauce (this page; optional)",
@@ -57,5 +57,10 @@
     "Warm a cast-iron stove-top grill pan over medium-high heat, prepare a medium-hot charcoal fire, or preheat a gas grill to medium-high (you can hold your hand 6 inches above the grill for 3 to 4 seconds). Grill the pork chops for 5 to 7 minutes, turning frequently, until firm and cooked through. Pierce with the sharp point of a knife to test (it’s okay if the center is faintly pink). Transfer to a plate and let rest for 5 to 10 minutes.",
     "Serve the chops warm, passing the dipping sauce at the table, if desired."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

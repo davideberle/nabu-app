@@ -9,16 +9,17 @@
   "intro": "Although this is Turkish-style coffee, it has been part of Arabic culture and tradition for thousands of years. Every single Arab home you visit will surely offer you a finjan qahwa with dessert. A finjan is the cup that it is served in. Turkish coffee is traditionally made using a Turkish cezve or, in Arabic, a dalla, which is a small, long-handled pot with a spout. The strong, finely ground coffee is stirred with water for a few minutes, then left to brew until boiling. But you must stand near it because it happens quickly; I still recall having to stand over the stove and make the coffee for guests when I was little, many times forgetting to watch it and letting it spill all over the stove. Once it boils, foam will form on the surface, which is what we call the “face” of the coffee and makes each finjan look beautiful. This foam is spooned into all the finjans equally, then the coffee is poured on top. It’s most commonly flavored with cardamom, although you’ll also find varieties with mastic or hazelnut.",
   "time": {
     "prep": "10 minutes",
-    "cook": ""
+    "cook": "",
+    "total": 5
   },
   "ingredients": [
     {
       "item": "Turkish coffee (finely ground coffee)",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "granulated sugar (See Note)",
-      "amount": "1 to 2 tablespoons"
+      "amount": "1 to 2 tbsp"
     },
     {
       "item": "Turkish delight, cookies, chocolates, or sweet treat of choice",
@@ -33,5 +34,10 @@
     "Serve with Turkish delight, cookies, chocolates, or any other sweet treat."
   ],
   "tips": "Turkish coffee is strong and hence it is always served per preference with regards to sweetness. There are three common sweetness levels: no sugar, medium, or sweet. Typically, the medium level requires 1 tablespoon of sugar per 1 tablespoon of coffee. The sweet level requires 2 tablespoons of sugar per 1 tablespoon of coffee.",
-  "image": "/recipes/turkish-coffee.jpg"
+  "image": "/recipes/turkish-coffee.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

@@ -19,23 +19,23 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "coconut oil, chilled, plus melted coconut oil, for brushing (optional)",
-      "amount": "7 tablespoons"
+      "amount": "7 tbsp"
     },
     {
       "item": "cold Date-Sweetened Almond Milk",
@@ -43,7 +43,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Maple-Plantain Spread or Fig Preserves with Thyme, for serving",
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

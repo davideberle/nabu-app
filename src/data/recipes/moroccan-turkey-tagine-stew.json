@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "8 serving s",
+  "servings": "8 servings",
   "intro": "A classic Moroccan tagine stew with warm spices, vegetables, and dried fruit adds leftover turkey for a twist on a traditional dish.",
   "time": {
-    "prep": "35 mins"
+    "prep": "35 mins",
+    "total": 40
   },
   "ingredients": [
     {
@@ -77,5 +78,10 @@
     "Stir in beans, undrained tomatoes, broth, water, apricots, and prunes. Bring to a boil. Reduce heat and simmer 30 minutes or until vegetables are tender, stirring occasionally.",
     "Stir in turkey; heat 5 minutes more or until hot. Top each serving with cilantro. If desired, top with yogurt and serve with couscous on the side."
   ],
-  "image": "/recipes/moroccan-turkey-tagine-stew.jpg"
+  "image": "/recipes/moroccan-turkey-tagine-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

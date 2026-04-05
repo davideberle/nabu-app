@@ -8,7 +8,8 @@
   "servings": "8 servings",
   "intro": "A North African casserole ideal for a small party. Just adjust the ingredients to your liking.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 40
   },
   "ingredients": [
     {
@@ -128,5 +129,10 @@
     "Heat olive oil in a large frying pan. Fry meatballs in batches until browned all over, about 5 minutes. Remove meatballs and add 2 tablespoons harissa to the pan; cook, stirring, for 1 minute. Add tomatoes, chicken stock, and cinnamon. Simmer for 15 minutes.",
     "Return meatballs to the pan and stir in sausage. Simmer until sausage is heated through and no longer pink in the center, about 20 minutes. Stir in remaining cilantro."
   ],
-  "image": "/recipes/moroccan-kofte-and-sausage-stew.jpg"
+  "image": "/recipes/moroccan-kofte-and-sausage-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

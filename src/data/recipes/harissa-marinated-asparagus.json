@@ -31,7 +31,7 @@
     },
     {
       "item": "asparagus spears, trimmed",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     }
   ],
   "method": [
@@ -43,5 +43,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

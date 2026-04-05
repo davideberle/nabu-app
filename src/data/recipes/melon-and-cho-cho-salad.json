@@ -30,7 +30,7 @@
     },
     {
       "item": "roasted and salted Marcona almonds",
-      "amount": "50 g (2 oz/⅓ cup)"
+      "amount": "50 g"
     },
     {
       "item": "splash of coconut vinegar (or white wine vinegar)",
@@ -52,5 +52,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

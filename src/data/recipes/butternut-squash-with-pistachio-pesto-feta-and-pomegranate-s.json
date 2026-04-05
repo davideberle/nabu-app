@@ -27,19 +27,19 @@
     },
     {
       "item": "feta cheese",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "pomegranate seeds",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "shelled pistachio nuts",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "Parmesan or Grana Padano cheese, chopped into rough chunks",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     },
     {
       "item": "olive oil",
@@ -74,5 +74,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

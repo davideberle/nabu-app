@@ -101,5 +101,13 @@
     "Put the pan over medium heat and bring to a simmer; the stock doesn’t need to simmer vigorously but you do need to make sure that it boils properly before covering the pan with a lid, decreasing the heat to low, and cooking over low heat for 30 minutes. Don’t be tempted to uncover the pan; you’ll need to allow the rice to steam properly. Remove the pan from the heat, take off the lid, and quickly place a clean tea towel over the pan, then seal with the lid again. Leave to rest for 10 minutes.",
     "Once ready, remove the lid, invert a large round serving plate or platter over the open pan, and carefully but quickly invert the pan and plate together, holding both sides firmly. Leave the pan on the plate for 2 to 3 minutes, then slowly and carefully lift it off. Garnish with the pine nuts and serve with the Yogurt with cucumber."
   ],
-  "image": "/recipes/maqluba.jpg"
+  "image": "/recipes/maqluba.jpg",
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

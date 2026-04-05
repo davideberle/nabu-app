@@ -29,27 +29,27 @@
     },
     {
       "item": "kosher salt",
-      "amount": "3½ teaspoons",
+      "amount": "3½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "dried basil",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
@@ -64,12 +64,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "POTATOES"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "POTATOES"
     },
     {
@@ -99,5 +99,10 @@
     "MAKE THE BAKING LIQUID: In a medium bowl, combine the remaining garlic-butter oil, the lemon juice, and ¾ cup (180 ml) broth and mix well.",
     "After the chicken has baked for 30 minutes, pour the baking liquid all over the chicken and potatoes. Continue to bake for another 15 to 20 minutes, until the chicken is fully cooked and golden brown (white on the inside or has an internal temperature of 165°F, or 74°C). If required, broil the chicken for 4 to 5 minutes to get more color. Let rest for 10 minutes before serving."
   ],
-  "image": "/recipes/lebanese-lemon-garlic-spatchcock-chicken.jpg"
+  "image": "/recipes/lebanese-lemon-garlic-spatchcock-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -124,5 +124,13 @@
     "Cooking oil for deep- frying, plus 2 tsp",
     "Heat the oil for deep-frying to 300°F (150°C). Fry the pumpkin cakes in batches over a medium flame for about 8 minutes, until golden. The oil should fizz around the cakes, but not too aggressively—you want them to cook slowly enough to melt the lard in the stuffing, and to avoid bursting them open. Serve hot.",
     "Heat the oil in a seasoned wok over a high flame to 300°F (150°C). Carefully slide the pieces of rice cake into the oil and deep-fry for 2–3 minutes, until they are slightly puffy. While they fry, use a wok scoop to separate them. Remove the rice cake pieces from the oil with a slotted spoon and set aside. Carefully pour off the oil into a heatproof container."
-  ]
+  ],
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

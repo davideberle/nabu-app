@@ -47,5 +47,13 @@
     "Fry the onion or leeks in the butter and oil until transparent and add them and the chopped potatoes to the egg mixture. Put a little oil or butter in a non-stick frying pan, pour in the egg mixture and cook over medium heat for around 5 minutes. Then turn the grill to medium and place the frittata under it. Grill for about 5 minutes or until the frittata is golden-brown. Allow to cool and slide onto a serving dish.",
     "You can use all sorts of vegetables to make frittata, such as asparagus, spinach or zucchini (courgettes), but lightly cook the vegetables first."
   ],
-  "image": "/recipes/italian-omelette.jpg"
+  "image": "/recipes/italian-omelette.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

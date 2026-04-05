@@ -82,5 +82,13 @@
     "Place the remaining spice mix in a bowl and add the water, lemon juice, tamarind, the remaining 2 teaspoons sugar, the cinnamon sticks, and ½ teaspoon salt; mix well.",
     "Reduce the oven temperature to 375°F / 195°C. Pour the spice mix into the bottom of the eggplant roasting pan. Spoon the lamb mixture on top of each eggplant. Cover the pan tightly with aluminum foil, return to the oven, and roast for 1½ hours, by which point the eggplants should be completely soft and the sauce thick; twice during the cooking, remove the foil and baste the eggplants with the sauce, adding some water if the sauce dries out. Serve warm, not hot, or at room temperature."
   ],
-  "image": "/recipes/stuffed-eggplant-with-lamb-and-pine-nuts.jpg"
+  "image": "/recipes/stuffed-eggplant-with-lamb-and-pine-nuts.jpg",
+  "time": {
+    "total": 36
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

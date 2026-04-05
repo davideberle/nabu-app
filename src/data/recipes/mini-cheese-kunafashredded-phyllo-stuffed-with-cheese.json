@@ -24,7 +24,7 @@
     },
     {
       "item": "rose or orange blossom water (optional)",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SIMPLE SYRUP"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "item": "dried rose petals (optional)",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING"
     }
   ],
@@ -68,5 +68,10 @@
     "Bake for 40 to 45 minutes, until the outside is deeply golden and crispy. Remove from the oven and carefully flip the muffin tray over onto a large sheet pan to release all the mini kunafas. Immediately drizzle the mini kunafas with most of the simple syrup, covering the entire surface of each one. Reserve a bit of simple syrup for serving.",
     "Garnish with the crushed pistachios and rose petals (if using). Serve on small plates or a large platter with simple syrup on the side."
   ],
-  "image": "/recipes/mini-cheese-kunafashredded-phyllo-stuffed-with-cheese.jpg"
+  "image": "/recipes/mini-cheese-kunafashredded-phyllo-stuffed-with-cheese.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

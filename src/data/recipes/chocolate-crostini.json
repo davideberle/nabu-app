@@ -14,7 +14,7 @@
     },
     {
       "item": "fruity extra-virgin olive oil for the bread; plus about 1 tablespoon / 15 ml for drizzling",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "Bittersweet Chocolate Ganache Glaze (page 264), warmed in a water bath until spreadable",
@@ -34,5 +34,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 13
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

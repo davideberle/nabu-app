@@ -42,5 +42,13 @@
     "Add the cooking juices (Step 6) into the vegetable mixture (Step 7) and mix well.",
     "Place rice on a large plate and top with meat (Step 9) and vegetables (Step 8).",
     "Place rice on a large plate and top with meat (Step 9) and vegetables (Step 8)."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

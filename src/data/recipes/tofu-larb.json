@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "jasmine rice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "white mushrooms, sliced",
@@ -26,7 +26,7 @@
     },
     {
       "item": "firm tofu, grated",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "small shallot, finely sliced",
@@ -50,7 +50,7 @@
     },
     {
       "item": "roasted peanuts or cashews, roughly chopped",
-      "amount": "20 g (¾ oz)"
+      "amount": "20 g"
     },
     {
       "item": "salt",
@@ -58,17 +58,17 @@
     },
     {
       "item": "Green Seasoning",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "brown sugar, coconut sugar or maple syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
@@ -102,5 +102,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -69,5 +69,13 @@
   ],
   "method": [
     "In a stock pot, on medium heat, add 2 T of olive oil. Add vegetables and cook thoroughly. Add beans, broth, and seasonings. Let soup simmer covered for 30 minutes on low heat. Add pasta and cook until al dente. Add to soup near the end of cooking time, garnish with parsley, and top with grated parmesan cheese. Serving suggestion: fresh bread and salad. Serves 2-3."
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

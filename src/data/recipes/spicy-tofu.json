@@ -9,19 +9,19 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "minced garlic",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "minced shallot",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "minced bird's eye chili pepper, plus sliced chili pepper for garnish (optional)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dried shiitake mushrooms, soaked and minced",
@@ -29,15 +29,15 @@
     },
     {
       "item": "chili jam or hot sauce (such as sriracha or Korean hot pepper paste)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetarian oyster sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -45,7 +45,7 @@
     },
     {
       "item": "julienned ginger (see Note)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "silken tofu, cut into small cubes",
@@ -53,19 +53,19 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chopped cilantro, for garnish",
@@ -82,5 +82,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

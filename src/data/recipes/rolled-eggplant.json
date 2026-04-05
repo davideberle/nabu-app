@@ -41,5 +41,13 @@
     "Cut each mozzarella ball in half then cut each half into 5 even slices. Top each slice of eggplant with an anchovy, a slice of mozzarella and a basil leaf. Season lightly with salt and pepper. Roll each slice up tightly and secure with a toothpick.",
     "Butter a shallow ovenproof dish. Arrange the involtini in the dish and bake for 10 minutes, until the mozzarella begins to melt."
   ],
-  "image": "/recipes/rolled-eggplant.jpg"
+  "image": "/recipes/rolled-eggplant.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

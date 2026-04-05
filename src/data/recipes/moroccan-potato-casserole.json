@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "This is a very colorful dish and a very tasty one. A dressing made from fresh herbs and spices gives this vegetable dish a Moroccan flavor. It is a great vegan recipe!",
   "time": {
-    "prep": "40 mins"
+    "prep": "40 mins",
+    "total": 65
   },
   "ingredients": [
     {
@@ -85,5 +86,10 @@
     "In a large bowl, combine potatoes, peppers, and celery. Season with salt, and toss with herb sauce. Transfer to a large shallow baking dish. Scatter tomatoes among the potato mixture. Drizzle 1 to 2 tablespoons oil over the top, and cover with foil.",
     "Bake for 35 minutes. Remove foil. Continue baking until vegetables are tender, 20 to 30 minutes. Serve warm."
   ],
-  "image": "/recipes/moroccan-potato-casserole.jpg"
+  "image": "/recipes/moroccan-potato-casserole.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

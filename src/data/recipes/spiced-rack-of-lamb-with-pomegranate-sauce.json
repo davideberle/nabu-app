@@ -59,7 +59,7 @@
     },
     {
       "item": "pomegranate juice",
-      "amount": "100ml (3½fl oz)"
+      "amount": "100ml"
     },
     {
       "item": "clear honey",
@@ -78,5 +78,13 @@
     "While the lamb is resting, make the pomegranate sauce. Pour the cooking juices from the roasting dish into the frying pan in which you seared the lamb along with the pomegranate molasses, pomegranate juice, honey and balsamic vinegar and bring the mixture to a gentle boil. Cook until the sauce is glossy and even.",
     "Using a sharp knife, slice through the rack of lamb in between the bones and serve the cutlets immediately, with the pomegranate sauce drizzled over."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 23
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -26,7 +26,7 @@
     },
     {
       "item": "warm water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pre-cooked meat",
@@ -34,11 +34,11 @@
     },
     {
       "item": "ground/grated ehuru seeds (calabash nutmeg)",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "cameroon pepper Salt to taste",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "1/2 red onion (sliced)",
@@ -51,5 +51,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

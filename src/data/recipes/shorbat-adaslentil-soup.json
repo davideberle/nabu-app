@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large yellow onions, roughly chopped",
@@ -30,15 +30,15 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "black pepper, or to taste",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "split red lentils, rinsed and drained",
@@ -65,5 +65,10 @@
     "Turn off the heat and carefully blend the soup using an immersion blender right in the pot. (If you do not have an immersion blender, carefully transfer to a regular blender, blending in batches, until the consistency is smooth.)",
     "Ladle into bowls and serve with lemon wedges for squeezing and crunchy pita chips (if using) for topping."
   ],
-  "image": "/recipes/shorbat-adaslentil-soup.jpg"
+  "image": "/recipes/shorbat-adaslentil-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

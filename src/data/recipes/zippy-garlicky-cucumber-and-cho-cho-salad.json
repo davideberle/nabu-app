@@ -53,12 +53,12 @@
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     }
   ],
@@ -70,5 +70,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

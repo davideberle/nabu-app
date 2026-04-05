@@ -75,5 +75,13 @@
     "On a large serving plate make a mound of chestnut ‘worms’ by pushing the mixture through the ricer.",
     "For the topping, arrange the meringues around the chestnut mound to make a mountain. Beat the cream and sugar until stiff and put it into a piping bag. Pipe the cream into the gaps between the meringues."
   ],
-  "image": "/recipes/white-mountain.jpg"
+  "image": "/recipes/white-mountain.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

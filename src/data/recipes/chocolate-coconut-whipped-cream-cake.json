@@ -26,7 +26,7 @@
     },
     {
       "item": "/ 22.5 grams coconut sugar, ground in a blender until powdered",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "teaspoons/ 6.5 grams aluminum-free baking powder",
@@ -34,11 +34,11 @@
     },
     {
       "item": "/ 6.5 grams baking soda",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 2 tablespoons / 210 ml pure maple syrup, Grade B or dark amber, at room temperature",
@@ -54,11 +54,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "recipe Chocolate Coconut Ganache Glaze (page 266)",
@@ -89,5 +89,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 163
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

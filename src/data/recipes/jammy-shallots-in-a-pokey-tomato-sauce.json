@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "sun-dried tomato oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "shallots, halved if large",
@@ -22,19 +22,19 @@
     },
     {
       "item": "fennel seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tomato purée (paste)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Scotch bonnet, deseeded and chopped",
@@ -42,19 +42,19 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "garlic cloves, lightly smashed",
@@ -66,7 +66,7 @@
     },
     {
       "item": "sun-dried tomatoes, chopped",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "parathas, to serve",
@@ -83,5 +83,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

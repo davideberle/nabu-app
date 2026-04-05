@@ -23,15 +23,15 @@
     },
     {
       "item": "freshly squeezed orange juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -39,7 +39,7 @@
     },
     {
       "item": "minced fresh thyme",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "chickpea flour or unbleached all-purpose flour",
@@ -63,7 +63,7 @@
     },
     {
       "item": "Creole Spice Blend",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small French sandwich rolls",
@@ -92,5 +92,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

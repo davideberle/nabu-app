@@ -26,31 +26,31 @@
     },
     {
       "item": "minced lemongrass",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "five-spice powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegetable oil, for brushing, plus more if needed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "crushed roasted peanuts, for garnish",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegan fish dipping sauce, for serving",
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

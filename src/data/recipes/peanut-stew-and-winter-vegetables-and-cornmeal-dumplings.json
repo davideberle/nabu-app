@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "peanut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "finely diced yellow onions",
@@ -19,19 +19,19 @@
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "minced fresh ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -55,11 +55,11 @@
     },
     {
       "item": "creamy peanut butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegetable stock, homemade or store-bought",
@@ -79,27 +79,27 @@
     },
     {
       "item": "minced fresh thyme",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cold plain, unsweetened soy milk",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -112,5 +112,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 54
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

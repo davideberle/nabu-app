@@ -13,23 +13,23 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chili powder",
-      "amount": "1 to 2 teaspoons"
+      "amount": "1 to 2 tsp"
     },
     {
       "item": "chopped scallion",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "all-purpose flour (see Note)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegetable oil, for deep-frying",
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

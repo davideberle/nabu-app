@@ -34,11 +34,11 @@
     },
     {
       "item": "base curry sauce (quick and easy base curry sauce), heated (or more for a saucier dish – see introduction)",
-      "amount": "300ml (1¼ cups)"
+      "amount": "300ml"
     },
     {
       "item": "pre-cooked stewed potatoes, cut into bite-size chunks, plus 100ml (scant ½ cup) of the cooking stock or water",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "mixed powder",
@@ -78,5 +78,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

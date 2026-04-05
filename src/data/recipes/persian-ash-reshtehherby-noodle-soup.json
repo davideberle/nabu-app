@@ -22,7 +22,7 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "large cloves garlic, thinly sliced",
@@ -30,11 +30,11 @@
     },
     {
       "item": "dried mint",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "canned chickpeas, drained and rinsed",
@@ -74,12 +74,12 @@
     },
     {
       "item": "olive oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "dried mint",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -95,5 +95,10 @@
     "Heat the 3 tablespoons oil in a small skillet over medium heat for 1 minute. Add the mint and stir for 20 seconds, or until it turns dark green. Remove from the heat.",
     "Ladle into bowls and top with a bit of the reserved onion-garlic mixture, a few teaspoons of the mint oil, and a few large dollops of sour cream or yogurt."
   ],
-  "image": "/recipes/persian-ash-reshtehherby-noodle-soup.jpg"
+  "image": "/recipes/persian-ash-reshtehherby-noodle-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

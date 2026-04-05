@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "skinless chicken thighs, boned and diced",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -63,7 +63,7 @@
     },
     {
       "item": "double (heavy) cream",
-      "amount": "125ml (½ cup)",
+      "amount": "125ml",
       "group": "SECOND MARINADE"
     },
     {
@@ -78,7 +78,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "100g (scant ½ cup)",
+      "amount": "100g",
       "group": "SECOND MARINADE"
     }
   ],
@@ -90,5 +90,10 @@
     "To cook the chicken, thread the pieces onto skewers and grill, using the direct heat method, until lightly charred on the underside. Flip over the chicken skewers and grill the other side until cooked through. Alternately, bake in the oven at 200°C (400°F/Gas 6) for 6–8 minutes, or until cooked through."
   ],
   "tips": "Palash adds 1 teaspoon of sandalwood powder to his marinade. It isn’t easy to find but if you come across some, give it a go!",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

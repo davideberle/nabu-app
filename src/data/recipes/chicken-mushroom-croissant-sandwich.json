@@ -78,5 +78,13 @@
     "Roll each croissant triangle in a way to seal the filling inside.",
     "Brush each roll with the egg wash.",
     "Place the rolls on the baking sheet and bake for 15 minutes."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

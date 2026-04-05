@@ -50,11 +50,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "skinless chicken breast or thigh meat, cut into small pieces (tikka)",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "garam masala",
@@ -80,5 +80,10 @@
     "Pour in the remaining base sauce and let the curry simmer until the chicken is cooked through and the sauce is quite thick. Baltis are usually served with fresh naans or chapattis, which are used to soak up the sauce and meat instead of cutlery, and your sauce needs to be thick enough to do this.",
     "To finish, stir in the garam masala and dried fenugreek leaves (kasoori methi) and check for seasoning. If there is any oil on the surface, skim it off for a healthier curry. Top with chopped coriander (cilantro) to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

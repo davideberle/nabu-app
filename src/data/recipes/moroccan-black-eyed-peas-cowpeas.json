@@ -8,7 +8,8 @@
   "servings": "8 servings",
   "intro": "This delicious Moroccan-style recipe smells so good while cooking and tastes so yummy.",
   "time": {
-    "prep": "10 mins"
+    "prep": "10 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -81,5 +82,10 @@
     "Place black-eyed peas into a large container and cover with several inches of cool water; let stand for 8 hours to overnight. Drain and rinse peas.",
     "Combine peas, onion, tomato sauce, olive oil, cilantro, garlic, salt, cumin, paprika, ginger, and cayenne pepper in a stockpot; pour 3 1/2 cups water over pea mixture. Bring water to a boil, decrease the heat to low, cover pot, and simmer, stirring occasionally and adding more water if the sauce gets too thick until peas are tender about 1 1/2 hours."
   ],
-  "image": "/recipes/moroccan-black-eyed-peas-cowpeas.jpg"
+  "image": "/recipes/moroccan-black-eyed-peas-cowpeas.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

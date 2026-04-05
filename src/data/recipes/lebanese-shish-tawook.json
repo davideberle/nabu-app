@@ -20,11 +20,11 @@
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -36,27 +36,27 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "chicken breasts (about 1½ pounds, or 700 g), cut into 2-inch (5 cm) cubes",
@@ -87,5 +87,10 @@
     "Meanwhile, preheat an outdoor grill to 400°F (205°C). If grilling indoors, preheat a large cast-iron grill pan over medium heat and grease it with oil.",
     "Grill the skewers for 5 to 6 minutes per side, ensuring the chicken is white and cooked through on the inside and golden on the outside. Avoid grilling the chicken for too long or it will dry out.",
     "Dust the onion slices with the sumac and serve alongside the skewers, assorted vegetables, pita bread, and toum or tarator to make wraps."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

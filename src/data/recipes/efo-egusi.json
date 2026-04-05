@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "palm oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "stew base (page 45)",
@@ -18,7 +18,7 @@
     },
     {
       "item": "iru (fermented locust beans)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube Salt to taste",
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 31
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

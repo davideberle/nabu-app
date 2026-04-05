@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "plus 2 teaspoons extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "whole wheat couscous",
@@ -23,11 +23,11 @@
     },
     {
       "item": "Spicy Mustard Greens, plus more for serving",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus ¾ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "thin asparagus, ends trimmed, tips removed, and stalks cut into ¼-inch-thick slices",
@@ -39,15 +39,15 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced fresh chives",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced flat-leaf parsley",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

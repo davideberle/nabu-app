@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "cornstarch",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Vegetable oil",
@@ -20,7 +20,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "brown lentils, rinsed and drained",
@@ -36,23 +36,23 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Juice of ½ small lemon",
@@ -60,23 +60,23 @@
     },
     {
       "item": "ground coriander",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chili flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "tomato passata (puree)",
@@ -99,5 +99,10 @@
     "TO MAKE THE TOMATO SAUCE: In the same pot the dukkah was cooked in, add 2 tablespoons of the reserved onion oil and the 7 minced garlic cloves over medium heat, cooking, stirring often, until the garlic is lightly golden and fragrant. Add the ¼ cup (60 ml) vinegar, coriander, 1 teaspoon cumin, chili flakes, ½ teaspoon salt, pepper, and passata. Stir the sauce for a few seconds, then simmer over medium-low for 5 to 7 minutes to thicken, stirring occasionally.",
     "TO MAKE THE CHICKPEAS: Add the chickpeas to a small bowl with 1 tablespoon of the reserved onion oil, the ½ teaspoon cumin, and ⅛ teaspoon salt. Toss together.",
     "Spoon the lentils and rice onto a large platter, followed by a layer of pasta and then the chickpeas (see Note). Spoon some of the tomato sauce on top, then garnish with the crispy onions. Serve the dukkah and remaining tomato sauce on the side."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

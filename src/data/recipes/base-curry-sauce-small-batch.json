@@ -74,5 +74,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 125
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

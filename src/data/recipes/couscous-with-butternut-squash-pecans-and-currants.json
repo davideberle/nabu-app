@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil, plus more for oiling",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "butternut squash, peeled and cut into ½-inch pieces",
@@ -18,7 +18,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "whole wheat couscous",
@@ -46,11 +46,11 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "packed torn fresh mint leaves",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Freshly ground white pepper",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 85
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cold cooked rice",
-      "amount": "150 g (5 oz/1 cup)"
+      "amount": "150 g"
     },
     {
       "item": "stalks cavolo nero (lacinato kale), torn",
@@ -30,11 +30,11 @@
     },
     {
       "item": "asparagus, finely sliced on the diagonal",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g"
     },
     {
       "item": "roasted and salted cashews",
-      "amount": "60 g (2 oz/generous ⅓ cup)"
+      "amount": "60 g"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -47,17 +47,17 @@
     },
     {
       "item": "coconut vinegar (or rice vinegar)",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
       "item": "agave syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     },
     {
@@ -74,5 +74,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "Prep time: 30 mins",
   "time": {
-    "prep": "30 mins"
+    "prep": "30 mins",
+    "total": 110
   },
   "ingredients": [
     {
@@ -100,5 +101,10 @@
     "Combine remaining garbanzo beans with 2 tablespoons of broth from the tagine in a food processor or blender; blend into a thin paste.",
     "Transfer chicken to a serving dish. Stir garbanzo bean paste into the tagine. Simmer until flavors combine, about 5 minutes. Spoon broth mixture over chicken."
   ],
-  "image": "/recipes/moroccan-chicken-tagine-with-preserved-lemons-fennel-olives-.jpg"
+  "image": "/recipes/moroccan-chicken-tagine-with-preserved-lemons-fennel-olives-.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

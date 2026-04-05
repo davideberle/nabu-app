@@ -34,7 +34,7 @@
     },
     {
       "item": "pre-cooked lamb (leg or shoulder)",
-      "amount": "400–500g (14–1lb 2oz)"
+      "amount": "400–500g"
     },
     {
       "item": "mixed powder or curry powder",
@@ -70,5 +70,10 @@
     "Add the lamb tikka and fry over a high heat until heated through and crisp. Stir in the mixed powder or curry powder, chilli powder, black pepper and soy sauce and season with a little salt, if needed.",
     "To serve, garnish with the chopped coriander (cilantro) and the lemon wedges, which can be squeezed over the top at the table."
   ],
-  "image": "/recipes/quick-stir-fried-lamb.jpg"
+  "image": "/recipes/quick-stir-fried-lamb.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

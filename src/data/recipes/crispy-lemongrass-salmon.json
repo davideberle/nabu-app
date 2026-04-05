@@ -12,11 +12,11 @@
   "ingredients": [
     {
       "item": "chopped lemongrass (from 1 medium stalk)",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "packed light or dark brown sugar",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "Fine sea salt",
@@ -24,19 +24,19 @@
     },
     {
       "item": "chopped shallot",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fish sauce, plus more as needed",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "Madras-style curry powder (preferably Sun brand)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "canola or other neutral oil, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "One 1⅓-pound skin-on salmon fillet, about 1 inch thick at the center",
@@ -49,5 +49,10 @@
     "Meanwhile, position a rack 5 to 6 inches from the broiler element and set the oven to broil. Let it heat up for about 15 minutes, so it’s really hot. Cover a baking sheet with aluminum foil and set a rack inside.",
     "Drizzle the fish with canola oil and arrange the pieces, skin-side up, on the prepared rack. Broil for 2 to 3 minutes, until the skin is slightly charred. Use a metal spatula to flip the fish and then broil for about 3 minutes, until the flesh no longer looks raw and is beginning to brown. If you don’t like crisp skin, broil the flesh side for about 1 minute longer, to darken and pick up character. If you like crispy skin, flip the fish so the skin is up. Broil for 30 to 60 seconds longer to crisp the skin. Monitor carefully to avoid super-blackened skin. Remove from the oven and let rest for 5 minutes before serving."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

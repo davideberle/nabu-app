@@ -26,7 +26,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "large navel oranges with peel, thinly sliced",
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

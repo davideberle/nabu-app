@@ -82,5 +82,13 @@
     "Remove from the oven and leave the timballo to stand for about 3 minutes before turning upside down onto a serving dish.",
     "This recipe uses a special pasta called anelli, shaped like little rings. You could also use farfalline, pennette or other small pasta shapes."
   ],
-  "image": "/recipes/natalia-s-timballo.jpg"
+  "image": "/recipes/natalia-s-timballo.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

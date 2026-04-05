@@ -84,5 +84,13 @@
     "Pour the sunflower oil into a medium-sized saucepan to a depth of around 6 cm. When the oil is hot, fry the cannoli in batches of 3 until golden-brown. Drain well on kitchen paper and slide them off the metal cylinders while still warm.",
     "When the cannoli are completely cold, spoon the ricotta filling into a piping bag and fill the cannoli shells generously. Dust with icing sugar and serve. They are best eaten on the day they are made."
   ],
-  "image": "/recipes/ricotta-filled-sweet-pastry-rolls.jpg"
+  "image": "/recipes/ricotta-filled-sweet-pastry-rolls.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

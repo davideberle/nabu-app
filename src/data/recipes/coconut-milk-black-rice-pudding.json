@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 3 grams fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "can (13.5 to 14-ounce / 400 to 414-ml) unsweetened full-fat coconut milk (do not use light)",
@@ -34,11 +34,11 @@
     },
     {
       "item": "/ 18 grams organic whole cane sugar, ground in a blender until powdered",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 60 grams roasted pistachio nuts (salted or unsalted), shelled and peeled",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

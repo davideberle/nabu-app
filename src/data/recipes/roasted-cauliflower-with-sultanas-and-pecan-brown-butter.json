@@ -18,23 +18,23 @@
     },
     {
       "item": "ground coriander",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "garlic granules",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sultanas (golden raisins)",
-      "amount": "100 g (3½ oz/generous ¾ cup)"
+      "amount": "100 g"
     },
     {
       "item": "juice of 2 lemons",
@@ -42,11 +42,11 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "pecans",
-      "amount": "50 g (2 oz/½ cup)"
+      "amount": "50 g"
     },
     {
       "item": "garlic clove, very finely chopped",
@@ -76,5 +76,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -89,5 +89,13 @@
     "Using a slotted spoon, remove the fish and shellfish from the soup. If it is still a bit watery, allow the soup to boil for a few more minutes to reduce. Add the arak and taste for seasoning.",
     "Finally, return the shellfish and fish to the soup to reheat them. Serve at once, garnished with the remainder of the parsley and the tarragon, if using."
   ],
-  "image": "/recipes/seafood-and-fennel-soup.jpg"
+  "image": "/recipes/seafood-and-fennel-soup.jpg",
+  "time": {
+    "total": 19
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

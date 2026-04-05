@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "bulgur wheat",
-      "amount": "25g (1oz)"
+      "amount": "25g"
     },
     {
       "item": "large bunch of flat leaf parsley, leaves picked and finely chopped",
@@ -28,7 +28,7 @@
     },
     {
       "item": "pomegranate seeds",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "ground cinnamon",
@@ -60,5 +60,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

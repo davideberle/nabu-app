@@ -41,7 +41,7 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "peanut butter",
@@ -53,7 +53,7 @@
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -65,5 +65,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

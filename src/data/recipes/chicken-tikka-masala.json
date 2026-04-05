@@ -50,7 +50,7 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "700ml (3 cups)"
+      "amount": "700ml"
     },
     {
       "item": "About 125ml (½ cup) cooking stock or spice stock, (optional)",
@@ -58,11 +58,11 @@
     },
     {
       "item": "grilled chicken tikka",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "single (light) cream, plus a little more to finish",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "red food colouring powder (optional)",
@@ -96,5 +96,10 @@
     "When the sauce has cooked down to your desired thickness, add the cream and food colouring (if using) and simmer for a further 2 minutes. If the sauce becomes too thick, you can add a little more base sauce, cooking stock or spice stock.",
     "To finish, taste and season with salt. If you like your CTMs sweet, add a little more sugar. Squeeze in the lemon juice and sprinkle with the chopped coriander (cilantro), dried fenugreek leaves (kasoori methi) and the garam masala. A swirl of cream on top adds a nice finishing touch."
   ],
-  "image": "/recipes/chicken-tikka-masala.jpg"
+  "image": "/recipes/chicken-tikka-masala.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

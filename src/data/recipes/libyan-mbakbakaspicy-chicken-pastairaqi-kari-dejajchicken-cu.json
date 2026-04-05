@@ -34,19 +34,19 @@
     },
     {
       "item": "kosher salt, plus more to taste",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper (optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "tomato paste",
@@ -62,22 +62,22 @@
     },
     {
       "item": "mild curry powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -87,12 +87,12 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CURRY"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "CURRY"
     },
     {
@@ -117,12 +117,12 @@
     },
     {
       "item": "mild curry powder",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CURRY"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CURRY"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CURRY"
     },
     {
@@ -162,12 +162,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "VEGETABLES"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "VEGETABLES"
     },
     {
@@ -187,17 +187,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
@@ -207,7 +207,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -232,22 +232,22 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR SERVING"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR SERVING"
     },
     {
       "item": "ground turmeric",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR SERVING"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR SERVING"
     },
     {
@@ -267,7 +267,7 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR SERVING"
     },
     {
@@ -277,7 +277,7 @@
     },
     {
       "item": "finely chopped fresh parsley",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -292,12 +292,12 @@
     },
     {
       "item": "avocado oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "POTATOES"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "POTATOES"
     },
     {
@@ -307,47 +307,47 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cardamom",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "avocado oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "avocado oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "RICE"
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "RICE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "RICE"
     },
     {
@@ -362,47 +362,47 @@
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "curry powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cardamom",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cloves",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "avocado oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -432,12 +432,12 @@
     },
     {
       "item": "sumac",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "ONIONS"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "ONIONS"
     },
     {
@@ -447,32 +447,32 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "seven spice",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "sumac",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -487,7 +487,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -502,7 +502,7 @@
     },
     {
       "item": "sumac",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -527,7 +527,7 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "3¾ teaspoons",
+      "amount": "3¾ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -537,7 +537,7 @@
     },
     {
       "item": "Toum (or substitute 6 large cloves garlic, crushed)",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -547,7 +547,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -597,17 +597,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -617,7 +617,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
@@ -627,37 +627,37 @@
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "ground coriander",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "granulated sugar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SAUCE"
     },
     {
       "item": "chopped pistachios",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "slivered almonds",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "unsalted chopped raw walnuts",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -672,47 +672,47 @@
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "curry powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground allspice",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground nutmeg",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -722,7 +722,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -762,27 +762,27 @@
     },
     {
       "item": "kosher salt, divided, plus more to taste",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "black pepper, divided",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cumin, divided",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground coriander, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -797,7 +797,7 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -827,7 +827,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
@@ -842,32 +842,32 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "ground allspice",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
@@ -902,17 +902,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BECHAMEL SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BECHAMEL SAUCE"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BECHAMEL SAUCE"
     },
     {
@@ -922,17 +922,17 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ZUCCHINI"
     },
     {
       "item": "kosher salt",
-      "amount": "¾ teaspoon",
+      "amount": "¾ tsp",
       "group": "ZUCCHINI"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "GROUND BEEF"
     },
     {
@@ -942,7 +942,7 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GROUND BEEF"
     },
     {
@@ -952,12 +952,12 @@
     },
     {
       "item": "seven spice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GROUND BEEF"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "GROUND BEEF"
     },
     {
@@ -972,7 +972,7 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "YOGURT SAUCE"
     },
     {
@@ -982,12 +982,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "YOGURT SAUCE"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "YOGURT SAUCE"
     },
     {
@@ -1002,7 +1002,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1017,22 +1017,22 @@
     },
     {
       "item": "ground allspice",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2½ teaspoons",
+      "amount": "2½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1047,7 +1047,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1097,27 +1097,27 @@
     },
     {
       "item": "olive oil, divided, plus more for greasing",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "seven spice (or substitute with ground allspice)",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1162,12 +1162,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR SERVING"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FOR SERVING"
     },
     {
@@ -1187,12 +1187,12 @@
     },
     {
       "item": "baking powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FOR SERVING"
     },
     {
       "item": "vegetable oil",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "FOR SERVING"
     },
     {
@@ -1242,22 +1242,22 @@
     },
     {
       "item": "seven spice",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "KOFTA"
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "KOFTA"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "KOFTA"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "KOFTA"
     },
     {
@@ -1267,12 +1267,12 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "KOFTA"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KOFTA"
     },
     {
@@ -1282,12 +1282,12 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "POTATOES"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "POTATOES"
     },
     {
@@ -1307,17 +1307,17 @@
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
       "item": "paprika",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SAUCE"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SAUCE"
     },
     {
@@ -1327,7 +1327,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1347,37 +1347,37 @@
     },
     {
       "item": "curry powder",
-      "amount": "1½ tablespoons",
+      "amount": "1½ tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "paprika",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "dried lime powder or 2 whole dried limes, crushed",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SPICE BLEND"
     },
     {
@@ -1387,17 +1387,17 @@
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FISH"
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "FISH"
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "VERMICELLI NOODLES"
     },
     {
@@ -1407,7 +1407,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "RICE"
     },
     {
@@ -1417,7 +1417,7 @@
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "RICE"
     },
     {
@@ -1432,7 +1432,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "½ tablespoon",
+      "amount": "½ tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1462,12 +1462,12 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1497,7 +1497,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1507,7 +1507,7 @@
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1517,7 +1517,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -1667,5 +1667,10 @@
     "Remove the lid and add the tomatoes, tomato paste, and 3 or 4 tablespoons of water. Stir to combine, then cover again and cook for 10 minutes longer, stirring occasionally, until they reach a crisp, tender texture. Remove from the heat.",
     "Transfer the beans to a flat plate, pouring all the pan juices as well. Drizzle with olive oil and an extra sprinkling of salt, if desired. Serve with a side of pita bread or rice."
   ],
-  "image": "/recipes/libyan-mbakbakaspicy-chicken-pastairaqi-kari-dejajchicken-cu.jpg"
+  "image": "/recipes/libyan-mbakbakaspicy-chicken-pastairaqi-kari-dejajchicken-cu.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

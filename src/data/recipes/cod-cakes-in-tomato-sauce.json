@@ -104,5 +104,13 @@
     "Heat half the olive oil in a frying pan over medium-high heat, add half of the cakes, and sear for 3 minutes on each side, until well colored. Repeat with the remaining cakes and oil.",
     "Gently place the seared cakes side by side in the tomato sauce; you can squeeze them a bit so they all fit. Add just enough water to cover the cakes partially (about a scant 1 cup / 200 ml). Cover the pan with the lid and simmer over very low heat for 15 to 20 minutes. Turn off the heat and leave the cakes to settle, uncovered, for at least 10 minutes before serving warm or at room temperature, sprinkled with the mint."
   ],
-  "image": "/recipes/cod-cakes-in-tomato-sauce.jpg"
+  "image": "/recipes/cod-cakes-in-tomato-sauce.jpg",
+  "time": {
+    "total": 85
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

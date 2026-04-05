@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "dairy-free butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "diced red bell pepper",
@@ -29,15 +29,15 @@
     },
     {
       "item": "taco seasoning",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "flaxseed meal",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large sprouted grain tortillas",
@@ -51,5 +51,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

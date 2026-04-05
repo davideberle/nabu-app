@@ -8,7 +8,8 @@
   "servings": "12 servings",
   "intro": "Serve this to folks who never eat eggplant. They will be amazed. Serve at room temperature with wheat crackers.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 30
   },
   "ingredients": [
     {
@@ -61,5 +62,10 @@
     "Heat olive oil in a large skillet over medium-low heat. Add garlic; cook and stir until golden, about 2 minutes. Add eggplant and red bell pepper; pour in tomato sauce mixture. Simmer, covered, until eggplant and red bell pepper soften, about 20 minutes. Remove from heat and let cool, about 10 minutes.",
     "Transfer eggplant mixture to a food processor; pulse until it reaches the desired consistency. Sprinkle cilantro over dip."
   ],
-  "image": "/recipes/moroccan-eggplant-dip.jpg"
+  "image": "/recipes/moroccan-eggplant-dip.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

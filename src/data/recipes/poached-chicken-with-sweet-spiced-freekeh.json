@@ -70,5 +70,13 @@
     "Lift the chicken out of the broth and place it on a cutting board. Carefully carve off the breasts and slice them thinly at an angle; remove the meat from the legs and thighs. Keep the chicken and the freekeh warm.",
     "When ready to serve, place the butter, almonds, and some salt in a small frying pan and fry until golden. Spoon the freekeh onto individual serving dishes or one platter. Top with the leg and thigh meat, then arrange the breast slices neatly on top. Finish with the almonds and butter and a sprinkle of parsley."
   ],
-  "image": "/recipes/poached-chicken-with-sweet-spiced-freekeh.jpg"
+  "image": "/recipes/poached-chicken-with-sweet-spiced-freekeh.jpg",
+  "time": {
+    "total": 115
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

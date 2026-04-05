@@ -110,5 +110,10 @@
     "When ready to cook, fire up the barbecue using the direct grilling method and place the lamb chops on the grill. Grill for about 8 minutes, turning only once, or until the exterior is crispy and blackened and medium rare in the centre. (Alternatively, you could sear them in a hot frying pan with a little oil. About 2 minutes per side should get them nicely charred. Then turn regularly until cooked to your preferred doneness.)",
     "Let rest on a warmed plate for a few minutes, then place the chargrilled lamb chops on warm plates, top with the lemon anchovy butter and serve."
   ],
-  "image": "/recipes/lamb-chops-with-lemon-anchovy-butter.jpg"
+  "image": "/recipes/lamb-chops-with-lemon-anchovy-butter.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

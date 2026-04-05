@@ -55,5 +55,13 @@
     "In a saucepan melt the butter with the olive oil and gently fry the onion and garlic (do not let them burn). Now add the parsley and cook for a few seconds only. Add the flour, let it cook for a few minutes, but do not let it brown or it will become bitter. Add some hot water or a light vegetable stock, stirring, until the sauce is the consistency of thick cream. Add salt and pepper to taste.",
     "Shell the eggs, then cut them in half and put them cut side up in the sauce. Serve with some crunchy Italian bread."
   ],
-  "image": "/recipes/eggs-on-a-bed-of-greens.jpg"
+  "image": "/recipes/eggs-on-a-bed-of-greens.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

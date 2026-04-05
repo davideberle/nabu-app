@@ -72,5 +72,13 @@
     "Place the Jerusalem artichokes and all the remaining ingredients, excluding the remaining lemon juice and half of the tarragon, in a large mixing bowl and use your hands to mix everything together well. Cover and leave to marinate in the fridge overnight, or for at least 2 hours.",
     "Preheat the oven to 475°F / 240°C. Arrange the chicken pieces, skin side up, in the center of a roasting pan and spread the remaining ingredients around the chicken. Roast for 30 minutes. Cover the pan with aluminum foil and cook for a further 15 minutes. At this point, the chicken should be completely cooked. Remove from the oven and add the reserved tarragon and lemon juice. Stir well, taste, and add more salt if needed. Serve at once."
   ],
-  "image": "/recipes/roasted-chicken-with-jerusalem-artichoke-and-lemon.jpg"
+  "image": "/recipes/roasted-chicken-with-jerusalem-artichoke-and-lemon.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

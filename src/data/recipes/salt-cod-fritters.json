@@ -11,11 +11,11 @@
   "ingredients": [
     {
       "item": "salt cod (or salted pollock, which is sometimes sold in supermarkets)",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "cold mashed potato",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "packet of flat leaf parsley, leaves picked and finely chopped",
@@ -87,5 +87,13 @@
     "Put the mashed potato and salt cod into a large mixing bowl and break down the cod using a fork. Add the herbs, chillies, spring onions, garlic, lime rind and dry spices, followed by the egg, sea salt and black pepper to taste, and, using a wooden spoon, mix well until everything is evenly combined. Add the flour and baking powder and stir again. Cover the bowl with clingfilm and refrigerate the mixture for at least 1 hour to get it nice and cold.",
     "Put the oil in a large saucepan over a medium-high heat and allow it to get nice and hot, but do not let it smoke. Test a tiny bit of the mixture in the oil – if the oil sizzles within a couple of seconds, it is ready to use. Take a spoonful of the mixture at a time and drop it into the oil. Don’t worry about the fritters being of uneven shapes, as this is perfectly fine. Fry the fritters for about 2–3 minutes, then turn them over and fry them for about 1 minute on the reverse side. Remove them using a slotted spoon and drain on a plate lined with kitchen paper. Repeat until all the fritters are cooked. Serve with lime wedges."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

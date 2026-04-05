@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "sunflower oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "stew base",
@@ -18,15 +18,15 @@
     },
     {
       "item": "grated ginger",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely chopped garlic",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "curry powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "1/2 teaspoon thyme",
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

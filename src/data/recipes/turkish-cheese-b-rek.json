@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "white sesame seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "grated Parmesan cheese (or use more feta)",
@@ -28,7 +28,7 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "egg",
@@ -55,5 +55,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

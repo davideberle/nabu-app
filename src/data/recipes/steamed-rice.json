@@ -55,5 +55,13 @@
   "image": "/recipes/steamed-rice.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 119
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

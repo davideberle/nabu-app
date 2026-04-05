@@ -14,7 +14,7 @@
     },
     {
       "item": "package Beyond Meat sausage sliced into ½-inch (1.3-cm) disks",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "small yellow onion, diced",
@@ -30,7 +30,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "liquid smoke",
@@ -98,5 +98,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

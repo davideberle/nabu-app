@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 18 grams organic granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -26,11 +26,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1¼ teaspoons / 6.25 ml"
+      "amount": "1¼ tsp / 6.25 ml"
     },
     {
       "item": "mild tasting extra-virgin olive oil (optional but recommended for sheen)",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     }
   ],
   "method": [
@@ -45,5 +45,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

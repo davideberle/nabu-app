@@ -14,11 +14,11 @@
     },
     {
       "item": "cans organic unsweetened coconut milk (Target® has the best options)",
-      "amount": "2 (13.5-oz [400-ml])"
+      "amount": "2"
     },
     {
       "item": "can sweetened condensed coconut milk",
-      "amount": "1 (8-oz [236-ml])"
+      "amount": "1"
     },
     {
       "item": "agar agar powder",
@@ -81,5 +81,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

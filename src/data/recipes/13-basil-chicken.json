@@ -34,5 +34,13 @@
     "Add the holy basil and cook for another 30 seconds, stirring well. When done, turn off the heat",
     "Serve on a plate with rice. Top the rice with stir-fry (Step 7) and its sauce. Finally, place the egg (Step 1) on top.",
     "Serve on a plate with rice. Top the rice with stir-fry (Step 7) and its sauce. Finally, place the egg (Step 1) on top."
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

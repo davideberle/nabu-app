@@ -56,5 +56,13 @@
   "image": "/recipes/sweet-filo-cigars.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

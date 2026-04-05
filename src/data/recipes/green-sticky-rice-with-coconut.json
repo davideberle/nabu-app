@@ -21,7 +21,7 @@
     },
     {
       "item": "sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "rice crackers, for serving",
@@ -29,7 +29,7 @@
     },
     {
       "item": "toasted sesame seeds, for garnish",
-      "amount": "2 teaspoons (8 g)"
+      "amount": "2 tsp (8 g)"
     }
   ],
   "method": [
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

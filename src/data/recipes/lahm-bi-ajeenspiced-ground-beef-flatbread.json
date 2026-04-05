@@ -14,12 +14,12 @@
   "ingredients": [
     {
       "item": "instant yeast",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DOUGH"
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DOUGH"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOUGH"
     },
     {
@@ -69,32 +69,32 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FILLING"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "curry powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "FILLING"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "FILLING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "FILLING"
     },
     {
@@ -109,7 +109,7 @@
     },
     {
       "item": "sumac",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -129,5 +129,10 @@
     "Bake for 7 to 10 minutes, until the bottom is lightly golden. Switch the oven to broil at 500°F (260°C) and broil for 1 to 2 minutes, until the beef has browned. Remove from the oven and transfer it to a large tray, covering it with a kitchen towel or aluminum foil to keep it moist. Reduce the oven heat back to 450°F (230°C) on the bake setting. Repeat steps 7 and 8 with the remaining dough balls and filling. You can stack the lahm bi ajeen pieces over one another in the tray, keeping them covered with a towel.",
     "Serve warm or at room temperature. To eat, squeeze the lemon wedges over the surface. Dust the onion slices with the sumac and sprinkle them on top with some chopped parsley; roll up the flatbread to enjoy."
   ],
-  "image": "/recipes/lahm-bi-ajeenspiced-ground-beef-flatbread.jpg"
+  "image": "/recipes/lahm-bi-ajeenspiced-ground-beef-flatbread.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

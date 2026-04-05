@@ -88,5 +88,13 @@
     "Heat the olive oil in a large frying pan for which you have a lid. Place the reserved quince flesh in a food processor, blitz to chop well, and then transfer the mixture to the pan along with the remaining onion, ginger, and the cardamom pods. Sauté for 10 to 12 minutes, until the onion has softened. Add the molasses, the 1 tablespoon lemon juice, sugar, stock, ½ teaspoon salt, and some black pepper and mix well. Add the quince halves to the sauce, with the meat stuffing facing upward, lower the heat to a gentle simmer, cover the pan, and cook for about 30 minutes. At the end the quince should be completely soft, the meat well cooked, and the sauce thick. Lift the lid and simmer for a minute or two to reduce the sauce if needed.",
     "Serve warm or at room temperature, sprinkled with the cilantro and pomegranate seeds."
   ],
-  "image": "/recipes/lamb-stuffed-quince-with-pomegranate-and-cilantro.jpg"
+  "image": "/recipes/lamb-stuffed-quince-with-pomegranate-and-cilantro.jpg",
+  "time": {
+    "total": 42
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

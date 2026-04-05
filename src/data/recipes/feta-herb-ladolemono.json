@@ -17,7 +17,7 @@
     },
     {
       "item": "chopped fresh oregano",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic clove, minced (optional)",
@@ -31,5 +31,10 @@
   "method": [
     "Whisk together the lemon juice, feta, oregano, and garlic, if using, in a medium bowl. While whisking, drizzle in the olive oil in a slow, steady stream and whisk until smooth and creamy.",
     "Season to taste with salt and pepper."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

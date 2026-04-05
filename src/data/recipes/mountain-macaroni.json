@@ -56,5 +56,13 @@
     "Sauté the onion in another 25 g of the butter until soft, then add the bacon and cook until the mixture starts to colour. Remove from the heat, then add the cream, bay leaf and a grinding of pepper. Return to the heat and gently simmer for a few more minutes. Discard the bay leaf.",
     "Add the cream sauce, cheeses and potatoes to the penne and mix everything together. Dot small pieces of the remaining butter over the top of the pasta. Bake in the oven for about 15 minutes, or until it bubbles and starts to turn golden."
   ],
-  "image": "/recipes/mountain-macaroni.jpg"
+  "image": "/recipes/mountain-macaroni.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

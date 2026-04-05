@@ -17,7 +17,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "diced onion",
@@ -37,19 +37,19 @@
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "aquafaba",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Italian seasoning",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "salt",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "Pinch of ground black pepper",
@@ -69,7 +69,7 @@
     },
     {
       "item": "Tabasco",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "crushed pineapple",
@@ -77,19 +77,19 @@
     },
     {
       "item": "cider vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -105,5 +105,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

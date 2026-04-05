@@ -69,5 +69,13 @@
     "Lay the swordfish slices out on a work surface and top each with a teaspoon of the stuffing. Roll up and secure with a toothpick. Scatter the breadcrumbs out on your work surface and roll the involtini in the crumbs so they are evenly coated.",
     "Butter an ovenproof dish. Arrange the involtini in the dish and season lightly with salt and pepper. Tuck lemon slices and bay leaves alternately in between the involtini, then drizzle on the oil. Bake for 10–15 minutes. Any left-over stuffing mixture can be sprinkled over the fish as you serve it."
   ],
-  "image": "/recipes/rolled-swordfish-with-citrus.jpg"
+  "image": "/recipes/rolled-swordfish-with-citrus.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

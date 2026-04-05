@@ -40,5 +40,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

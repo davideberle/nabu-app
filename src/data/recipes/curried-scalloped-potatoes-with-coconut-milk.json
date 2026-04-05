@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "leek, white and tender green parts, thinly sliced (about 1 cup)",
@@ -22,15 +22,15 @@
     },
     {
       "item": "minced seeded habanero chile",
-      "amount": "¼ to ½ teaspoon"
+      "amount": "¼ to ½ tsp"
     },
     {
       "item": "Jamaican Curry Powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "coconut milk",
@@ -50,7 +50,7 @@
     },
     {
       "item": "minced fresh tarragon",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Freshly ground white pepper",
@@ -66,5 +66,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

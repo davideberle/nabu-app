@@ -26,7 +26,7 @@
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "140g (1 cup)"
+      "amount": "140g"
     },
     {
       "item": "garlic paste*",
@@ -63,5 +63,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

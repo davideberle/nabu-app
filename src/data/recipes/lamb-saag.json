@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "baby spinach leaves",
-      "amount": "225g (8oz)"
+      "amount": "225g"
     },
     {
       "item": "A little water or spice stock",
@@ -62,15 +62,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "180ml (¾ cup)"
+      "amount": "180ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "375ml (generous 1½ cups)"
+      "amount": "375ml"
     },
     {
       "item": "pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
@@ -95,5 +95,10 @@
     "Swirl in the tomato purée and about 250ml (1 cup) of the base curry sauce and let it come to a happy simmer. Add the stock and the rest of the base sauce. You can let it simmer for a few minutes and you don’t need to stir unless it is obviously catching on the pan. Be sure to stir in any caramelized sauce from the sides of the pan from time to time.",
     "Add the pre-cooked lamb pieces and simmer in the sauce until heated through. When the sauce is about the consistency you prefer, pour in the spinach purée and stir it all up. The bright green spinach will become darker as it cooks. Simmer for a further 2 minutes. If the sauce becomes too dry for your liking, just add a little more base sauce and/or lamb stock. To finish, season with salt and black pepper. Stir in the yoghurt 1 tablespoon at a time, then top with a squeeze of lemon juice and the garam masala."
   ],
-  "image": "/recipes/lamb-saag.jpg"
+  "image": "/recipes/lamb-saag.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

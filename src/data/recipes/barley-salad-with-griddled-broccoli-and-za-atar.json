@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "cherry tomatoes, halved",
-      "amount": "300g (10oz)"
+      "amount": "300g"
     },
     {
       "item": "small or 3 large red onions, roughly chopped",
@@ -23,11 +23,11 @@
     },
     {
       "item": "tenderstem broccoli",
-      "amount": "300g (10oz)"
+      "amount": "300g"
     },
     {
       "item": "pearl barley",
-      "amount": "250g (9oz)"
+      "amount": "250g"
     },
     {
       "item": "juice of 2 lemons",
@@ -47,7 +47,7 @@
     },
     {
       "item": "pea shoots",
-      "amount": "75g (2¾oz)"
+      "amount": "75g"
     },
     {
       "item": "olive oil",
@@ -55,7 +55,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "250ml (9fl oz)"
+      "amount": "250ml"
     },
     {
       "item": "ground coriander",
@@ -74,5 +74,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

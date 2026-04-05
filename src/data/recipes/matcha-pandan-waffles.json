@@ -20,15 +20,15 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "matcha powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Rounded ¼ teaspoon fine sea salt",
@@ -44,11 +44,11 @@
     },
     {
       "item": "virgin coconut oil, melted and cooled",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     }
   ],
   "method": [
@@ -60,5 +60,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "skinless and boneless chicken breast, cubed or sliced",
-      "amount": "250g (1½ cups)"
+      "amount": "250g"
     },
     {
       "item": "ground turmeric",
@@ -50,7 +50,7 @@
     },
     {
       "item": "gram (chickpea) flour",
-      "amount": "65g (½ cup)"
+      "amount": "65g"
     },
     {
       "item": "Sparkling water",
@@ -71,5 +71,10 @@
     "Heat enough oil for deep-frying in a deep, heavy-based saucepan or deep-fat fryer, to between 170–180°C (340–355°F). Using a wire mesh spoon, slowly lower the pakoras into the hot oil. You may need to fry in batches and cooking times will depend on the size of the chicken chunks, but they should only take a few minutes to cook through.",
     "Serve with lemon wedges, onion rings and lettuce."
   ],
-  "image": "/recipes/chicken-pakoras.jpg"
+  "image": "/recipes/chicken-pakoras.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

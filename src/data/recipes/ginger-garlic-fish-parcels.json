@@ -20,23 +20,23 @@
     },
     {
       "item": "sugar",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "oyster sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "canola or other neutral oil, plus more for brushing",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "baby bok choy, quartered and cut on a sharp diagonal into pieces about 1 inch wide and 2 inches long",
@@ -44,7 +44,7 @@
     },
     {
       "item": "toasted sesame oil",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "One 1⅓-pound salmon or halibut fillet, about 1 inch thick at the center",
@@ -62,5 +62,10 @@
     "Bake the fish for 8 minutes, then rotate and swap the baking sheets and bake for another 6 to 7 minutes, until the parcels have puffed.",
     "Serve the fish immediately, letting diners cut open the parcels themselves."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

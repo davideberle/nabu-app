@@ -10,43 +10,43 @@
   "ingredients": [
     {
       "item": "garlic powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "paprika",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "chili powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "dried thyme",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dried oregano",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -57,5 +57,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -38,7 +38,7 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated, plus extra if needed",
-      "amount": "600ml (2½ cups)"
+      "amount": "600ml"
     },
     {
       "item": "coconut flour",
@@ -50,7 +50,7 @@
     },
     {
       "item": "pre-cooked chicken",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "small mango, cut into bite-size chunks (tinned/canned mango can be used)",
@@ -78,5 +78,10 @@
     "Let this come to a rolling simmer, stirring only if it is sticking to the pan. Add the coconut flour and mango chutney, followed by another 125ml (½ cup) of base curry sauce. Stir in the chicken and heat it through for about 1 minute in the bubbling sauce. Now add the mango chunks and the rest of the base curry sauce. Let the curry cook for another 4 minutes or so until it has reduced down to your preferred consistency. You can always add more base sauce or a little water if it becomes too dry.",
     "To finish, season with salt and sprinkle the garam masala and dried fenugreek leaves (kasoori methi) over the top. Give it a good stir and garnish with the coriander (cilantro) to serve."
   ],
-  "image": "/recipes/mango-chicken-curry.jpg"
+  "image": "/recipes/mango-chicken-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

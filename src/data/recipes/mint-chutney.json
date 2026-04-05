@@ -9,12 +9,13 @@
   "intro": "This is probably the most popular chutney served in Indian restaurants. Some chefs add a little food colouring to make it bright green.",
   "time": {
     "prep": "5 MINS",
-    "cook": ""
+    "cook": "",
+    "total": 30
   },
   "ingredients": [
     {
       "item": "plain yoghurt",
-      "amount": "270g (generous 1 cup)"
+      "amount": "270g"
     },
     {
       "item": "garlic and ginger paste",
@@ -44,5 +45,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

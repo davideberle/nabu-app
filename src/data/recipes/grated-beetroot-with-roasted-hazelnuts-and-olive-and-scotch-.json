@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "hazelnuts",
-      "amount": "75 g (2½ oz/generous ½ cup)"
+      "amount": "75 g"
     },
     {
       "item": "beetroot (beets), coarsely grated",
@@ -30,7 +30,7 @@
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "handful of flat-leaf parsley, roughly chopped",
@@ -42,7 +42,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
@@ -62,12 +62,12 @@
     },
     {
       "item": "jar of pitted black olives, drained and chopped",
-      "amount": "330 g (11 oz)",
+      "amount": "330 g",
       "group": "OLIVE AND SCOTCH BONNET JAM"
     },
     {
       "item": "maple syrup",
-      "amount": "250 ml (8½ fl oz/1 cup)",
+      "amount": "250 ml",
       "group": "OLIVE AND SCOTCH BONNET JAM"
     }
   ],
@@ -81,5 +81,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

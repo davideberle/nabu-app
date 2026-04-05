@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "flour",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "½ cups milk, heated",
@@ -25,15 +25,15 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coarse ground black pepper",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "nutmeg",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "slices thick white bread, crusts trimmed, toasted",
@@ -41,7 +41,7 @@
     },
     {
       "item": "champagne mustard or Dijon mustard",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "smoked ham, sliced thin",
@@ -57,7 +57,7 @@
     },
     {
       "item": "fresh chives, chopped",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -71,5 +71,13 @@
     "Sprinkle the Parmesan cheese on the sandwiches and bake for an additional 5 minutes.",
     "Turn the broiler on high, and place the sandwiches under it until they are golden and crispy, approximately 1-2 minutes.",
     "Remove from the oven and serve immediately, garnished with fresh chives."
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

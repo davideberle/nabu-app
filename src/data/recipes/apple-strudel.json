@@ -13,11 +13,11 @@
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "lemon juice",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "bread flour",
@@ -49,11 +49,11 @@
     },
     {
       "item": "cinnamon",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "melted butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "hazelnuts and walnuts, finely chopped",
@@ -65,7 +65,7 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "heavy cream",
@@ -85,5 +85,13 @@
     "Add the strudel and brush with beaten egg.",
     "Bake for 55–60 minutes until evenly brown; brush with the butter 4–5 times during cooking.",
     "Combine the sugar and cream in a bowl. Spoon over the strudel and serve warm."
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

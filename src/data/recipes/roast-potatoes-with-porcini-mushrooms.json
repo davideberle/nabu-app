@@ -41,5 +41,13 @@
     "Roast in the oven for about 30 minutes, shaking the pan from time to time. The potatoes should be golden-brown and full of porcini flavour.",
     "Transfer to a serving plate and season with salt and pepper."
   ],
-  "image": "/recipes/roast-potatoes-with-porcini-mushrooms.jpg"
+  "image": "/recipes/roast-potatoes-with-porcini-mushrooms.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

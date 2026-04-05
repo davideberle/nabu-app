@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "canola or other neutral oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "medium yellow or red onion, thinly sliced",
@@ -28,7 +28,7 @@
     },
     {
       "item": "fish sauce, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarsely chopped, including tender stems",
@@ -40,7 +40,7 @@
     },
     {
       "item": "finely chopped peeled ginger",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "Recently ground black pepper (optional)",
@@ -51,5 +51,10 @@
     "In a 3- to 4-quart saucepan over medium heat, warm the canola oil. When the oil is barely shimmering, add the onion and cook for about 4 minutes, stirring, until soft and sweetly fragrant. Add the water, ½ teaspoon salt, and fish sauce, then turn the heat to medium-high and bring to a boil. Adjust the heat to maintain a vigorous boil for 3 to 5 minutes to develop flavor. Add the greens, stirring them for even cooking. When the greens are very soft and cooked through, about 5 minutes, add the shrimp and ginger. When the shrimp are opaque and cooked through, 1 to 2 minutes, remove from the heat and let rest for 5 to 10 minutes, uncovered. Taste and add additional salt or fish sauce, if needed.",
     "Serve the soup in a communal bowl or ladle into individual serving bowls. Sprinkle with pepper for a final spicy burst, if you like."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

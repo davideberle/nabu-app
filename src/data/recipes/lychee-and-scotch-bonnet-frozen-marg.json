@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "tin of lychees in syrup",
-      "amount": "565 g (20 oz)"
+      "amount": "565 g"
     },
     {
       "item": "Scotch bonnet, halved and deseeded",
@@ -22,7 +22,7 @@
     },
     {
       "item": "lychee juice",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "bunch of mint leaves, plus extra to serve",
@@ -30,11 +30,11 @@
     },
     {
       "item": "tequila",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "orange liqueur (such as Cointreau)",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "juice of 4 limes, plus extra for the glasses",
@@ -71,5 +71,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "mint leaves",
-      "amount": "20 g (¾ oz)"
+      "amount": "20 g"
     },
     {
       "item": "limes, sliced",
@@ -22,7 +22,7 @@
     },
     {
       "item": "dark or white rum",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "1.5 litres (50 fl oz/6½ cups) pineapple juice",
@@ -34,12 +34,12 @@
     },
     {
       "item": "strawberries, hulled",
-      "amount": "200 g (7 oz)",
+      "amount": "200 g",
       "group": "STRAWBERRY SYRUP"
     },
     {
       "item": "agave syrup",
-      "amount": "150 ml (5 fl oz/scant ⅔ cup)",
+      "amount": "150 ml",
       "group": "STRAWBERRY SYRUP"
     },
     {
@@ -66,5 +66,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

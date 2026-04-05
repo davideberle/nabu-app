@@ -18,15 +18,15 @@
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "mild tasting extra-virgin olive oil or organic neutral vegetable oil",
@@ -34,11 +34,11 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2½ teaspoons / 12.5 ml"
+      "amount": "2½ tsp / 12.5 ml"
     },
     {
       "item": "to 4 tablespoons / 30 to 60 ml water, at room temperature, as needed to adjust dough",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 27
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

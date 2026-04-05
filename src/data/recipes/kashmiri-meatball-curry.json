@@ -86,7 +86,7 @@
     },
     {
       "item": "plain yoghurt (optional)",
-      "amount": "125g (½ cup)"
+      "amount": "125g"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
@@ -98,7 +98,7 @@
     },
     {
       "item": "minced (ground) fatty lamb",
-      "amount": "900g (2lb)",
+      "amount": "900g",
       "group": "MEATBALLS (RISTA)"
     },
     {
@@ -141,5 +141,10 @@
     "Stir this well, then add about 500ml (2 cups) of the cooking liquid from the meatballs, along with the saffron water and the meatballs. Simmer until you are happy with the consistency. If you prefer a runnier sauce, you could add more cooking stock; for a thicker sauce, just cook it down.",
     "Season with salt and black pepper. You could also add more chilli powder if you prefer a spicier curry. Serve with rice, naans or chapattis."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

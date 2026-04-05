@@ -36,5 +36,10 @@
     "Squeeze over the lemon juice, then a drizzle of virgin olive oil and some pepper and serve.",
     "You can buy this fish roe at the fish markets or at your fish monger. The two long egg sacks are vacuum packed, so they will keep for a few weeks in the fridge."
   ],
-  "image": "/recipes/smoked-fish-roe-with-celery.jpg"
+  "image": "/recipes/smoked-fish-roe-with-celery.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -38,5 +38,13 @@
     "Punch the dough down, knead again well and, if you have time, let it rise again.",
     "If you like, once you have kneaded the pizza dough, you can put it in a bowl, cover it with cling film and put it in the fridge overnight. The next day let the dough come to room temperature, then proceed in making your pizza or breads."
   ],
-  "image": "/recipes/pizza-dough.jpg"
+  "image": "/recipes/pizza-dough.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

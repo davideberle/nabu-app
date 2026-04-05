@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "apple cider vinegar",
-      "amount": "1½ teaspoons / 7.5 ml"
+      "amount": "1½ tsp / 7.5 ml"
     },
     {
       "item": "soymilk or almond milk",
@@ -30,15 +30,15 @@
     },
     {
       "item": "/ 5 grams baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "mild tasting extra-virgin olive oil or organic neutral vegetable oil",
@@ -46,7 +46,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 61 grams mini vegan chocolate chips, divided",
@@ -68,5 +68,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 33
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

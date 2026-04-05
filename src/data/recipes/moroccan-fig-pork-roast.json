@@ -8,7 +8,8 @@
   "servings": "8 servings",
   "intro": "A succulent, savory, and sweet pork roast, ideally served over vegetable rice or couscous.",
   "time": {
-    "prep": "10 mins"
+    "prep": "10 mins",
+    "total": 125
   },
   "ingredients": [
     {
@@ -81,5 +82,10 @@
     "Heat the olive oil and butter in a large, heavy-bottom pot or Dutch oven over medium-high heat. Place the seasoned pork roast into the pot and cook until evenly browned, about 2 minutes on each side. Remove pork and set aside. Stir in the garlic and onion; cook and stir until the onion has softened and turned translucent for about 5 minutes. Stir in the fig compote until well blended. Return pork to the pot, coating it with the fig mixture. Pour in the tomatoes and chicken broth. Cover, and bring to a boil.",
     "Place covered pot in the preheated oven. Cook until the pork is no longer pink in the center, about 2 hours. An instant-read thermometer inserted into the center should read 145 degrees F (63 degrees C)."
   ],
-  "image": "/recipes/moroccan-fig-pork-roast.jpg"
+  "image": "/recipes/moroccan-fig-pork-roast.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

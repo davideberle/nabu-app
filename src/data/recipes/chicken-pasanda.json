@@ -38,15 +38,15 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "block coconut, cut into small pieces",
-      "amount": "100g (3½ oz)"
+      "amount": "100g"
     },
     {
       "item": "skinless, boneless chicken breast, cut into thin slices on the diagonal",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "Splash of red wine (125ml/½ cup) (optional)",
@@ -58,7 +58,7 @@
     },
     {
       "item": "single (light) cream",
-      "amount": "100ml (scant ½ cup)"
+      "amount": "100ml"
     },
     {
       "item": "garam masala",
@@ -71,5 +71,10 @@
     "Let this simmer for about 5 minutes until the chicken is cooked through and the sauce has cooked to your preferred consistency. If the sauce caramelizes to the sides, stir it back into the sauce. At this time, you could add a splash of red wine to simmer in the sauce until the alcohol cooks out.",
     "To serve, check for seasoning, adding salt, more coconut and sugar if desired, to taste. Stir in the cream and sprinkle with the garam masala and the toasted almond flakes."
   ],
-  "image": "/recipes/chicken-pasanda.jpg"
+  "image": "/recipes/chicken-pasanda.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

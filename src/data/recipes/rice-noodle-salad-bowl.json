@@ -20,31 +20,31 @@
     },
     {
       "item": "plus ⅛ teaspoon recently ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Chinese five-spice powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "granulated sugar, or 2 tablespoons packed light brown sugar",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "molasses, dark amber honey, or Caramel Sauce (this page)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canola or other neutral oil, plus more for grilling",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "One 6- to 8-ounce package small dried round rice noodles (maifun), or one 10- to 12-ounce package dried rice capellini or thin spaghetti (see this page)",
@@ -94,5 +94,10 @@
     "Cook the skewers for 8 to 12 minutes, turning frequently and basting with oil, until the meat is slightly charred and cooked through. Nick a piece with the point of a knife to check. Divide the meat among the bowls, either keeping it on the skewers or sliding it off. Crown with the nuts, fried onions, and reserved herbs.",
     "Serve the bowls with the sauce on the side. Have diners dress and toss their own bowls."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

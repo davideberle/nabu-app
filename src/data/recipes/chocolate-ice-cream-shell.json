@@ -14,11 +14,11 @@
     },
     {
       "item": "mild tasting extra-virgin olive oil or coconut oil, melted",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -29,5 +29,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

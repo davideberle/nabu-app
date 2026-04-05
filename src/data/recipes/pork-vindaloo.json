@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "pork leg, diced",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "coconut oil or rapeseed (canola) oil",
@@ -134,5 +134,10 @@
     "Add the chopped tomatoes, chilli powder, bay leaves and the pork with all its marinade to the pan, then pour in just enough water to cover. Leave to simmer for about 1 hour, or until the pork is very tender. You may need to add a drop more water while simmering.",
     "To finish, stir in the slivered garlic you sautéed earlier and season with salt. Squeeze the lemon juice over the top and serve."
   ],
-  "image": "/recipes/pork-vindaloo.jpg"
+  "image": "/recipes/pork-vindaloo.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

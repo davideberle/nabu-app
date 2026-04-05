@@ -60,5 +60,13 @@
     "Add the garlic to the pan with a few more sage leaves. Let the garlic become golden (do not burn it) then add the wine and scrape up all the bits in the bottom of the pan. When it bubbles add the skewers, salt and pepper and let them cook, covered and on low heat, for about 20 minutes.",
     "If the dish seems too dry before cooking is finished, add a bit of veal or chicken stock."
   ],
-  "image": "/recipes/flown-away-birds.jpg"
+  "image": "/recipes/flown-away-birds.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -69,5 +69,13 @@
     "Place all but 1 tablespoon of the pistachios in a large bowl along with half of the soup. Use a handheld blender to blitz until smooth and then return this to the saucepan. Add the orange and lemon juice, reheat, and taste to adjust the seasoning.",
     "To serve, coarsely chop up the reserved pistachios. Transfer the hot soup into bowls and top with a spoonful of sour cream. Sprinkle with the pistachios and drizzle with the remaining saffron liquid."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 68
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

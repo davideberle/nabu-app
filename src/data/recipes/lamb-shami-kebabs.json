@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "lamb shoulder, roughly chopped and trimmed of excess fat",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "chana dhal, rinsed and soaked for 30 minutes",
-      "amount": "150g (1 cup)"
+      "amount": "150g"
     },
     {
       "item": "garlic and ginger paste",
@@ -71,5 +71,10 @@
     "Allow to cool, then transfer the mixture to a food processor with the coriander (cilantro), mint and chillies. Blend until fine, with the consistency of thick clay. Season with salt and form into patties. This can all be done well ahead of serving.",
     "When ready to fry, heat about 2.5cm (1in) oil in a large frying pan. Brush both sides of each patty with the beaten egg, place in the hot oil and cook for about 1 minute per side until browned. Remove from the oil to a plate lined with paper towel."
   ],
-  "image": "/recipes/lamb-shami-kebabs.jpg"
+  "image": "/recipes/lamb-shami-kebabs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

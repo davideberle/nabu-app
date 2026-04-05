@@ -22,11 +22,11 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cardamom",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "medium eggs",
@@ -50,5 +50,10 @@
     "Bake for 15 minutes, or until the cookies are lightly golden and set. Broil for 2 to 3 minutes, until the tops are golden."
   ],
   "tips": "Shape the cookies into thin ropes, because they will spread in the oven. If you make the ropes too thick, they will lose their circular shape.",
-  "image": "/recipes/om-mahmoud-s-ka-ak-simsimsesame-cookies.jpg"
+  "image": "/recipes/om-mahmoud-s-ka-ak-simsimsesame-cookies.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

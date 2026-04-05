@@ -84,5 +84,13 @@
     "Brown the meat for a couple of minutes then pour in just enough spice stock or water to cover. Simmer for about 1–1½ hours until the meat is good and tender.",
     "Allow the meat and cooking sauce to cool for use in your curries. The meat and cooking stock (remove the bone, if using) can be stored in the fridge for up to 3 days and freeze well for up to 2 months. The stock is usually strained before adding to curries."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

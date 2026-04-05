@@ -10,11 +10,11 @@
   "ingredients": [
     {
       "item": "/ 3 grams ground chia",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "water, at room temperature",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "plus 1 tablespoon / 42 grams organic all-purpose flour",
@@ -30,11 +30,11 @@
     },
     {
       "item": "/ 1.25 grams aluminum-free baking powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "/ 54 grams coconut oil, solid",
@@ -50,11 +50,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "Heaping ½ cup / 103 grams vegan mini chocolate chunks or vegan chocolate chips",
@@ -74,5 +74,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 24
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

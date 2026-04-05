@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "light or dark brown sugar",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "ripe Asian dwarf bananas, cut lengthwise into 4 sticks, or 2 Cavendish bananas, cut into 4-inch (10 cm) lengths and then quartered lengthwise",
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

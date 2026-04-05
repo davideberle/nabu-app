@@ -14,37 +14,37 @@
   "ingredients": [
     {
       "item": "room-temperature water",
-      "amount": "250 ml (8½ fl oz/1 cup)",
+      "amount": "250 ml",
       "group": "DOUGH"
     },
     {
       "item": "boiling water",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)",
+      "amount": "100 ml",
       "group": "DOUGH"
     },
     {
       "item": "maple syrup",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "DOUGH"
     },
     {
       "item": "active dry yeast",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "DOUGH"
     },
     {
       "item": "strong white bread flour",
-      "amount": "400 g (14 oz/3¼ cups)",
+      "amount": "400 g",
       "group": "DOUGH"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DOUGH"
     },
     {
       "item": "olive oil, plus extra for greasing",
-      "amount": "65 ml (2½ fl oz/scant ½ cup)",
+      "amount": "65 ml",
       "group": "DOUGH"
     },
     {
@@ -54,17 +54,17 @@
     },
     {
       "item": "fennel seeds",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CARAMELISED ONIONS"
     },
     {
       "item": "chilli flakes, plus extra to serve",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CARAMELISED ONIONS"
     },
     {
       "item": "silken tofu",
-      "amount": "150 g (5 oz)",
+      "amount": "150 g",
       "group": "TOFU GARLIC CREAM"
     },
     {
@@ -79,22 +79,22 @@
     },
     {
       "item": "drained and rinsed tinned callaloo",
-      "amount": "150 g (5 oz)",
+      "amount": "150 g",
       "group": "CALLALOO TOPPING"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CALLALOO TOPPING"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CALLALOO TOPPING"
     },
     {
       "item": "vegan Parmesan",
-      "amount": "20 g (¾ oz)",
+      "amount": "20 g",
       "group": "CALLALOO TOPPING"
     },
     {
@@ -115,5 +115,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

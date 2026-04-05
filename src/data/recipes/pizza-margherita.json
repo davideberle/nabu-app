@@ -47,5 +47,13 @@
     "Drain the tomatoes of their juice and seeds and chop roughly. Spread the tomato over the dough. Break the mozzarella into little pieces and spread evenly on top of the tomato. Tear the basil leaves and sprinkle over the pizza and season. Lastly, sprinkle some olive oil over the whole pizza.",
     "Cook in the oven for about 10–15 minutes, or in a pizza oven for 3–5 minutes, until the base is golden and crunchy."
   ],
-  "image": "/recipes/pizza-margherita.jpg"
+  "image": "/recipes/pizza-margherita.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -16,11 +16,11 @@
     },
     {
       "item": "raw sesame seeds (white, brown, or black)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Scant 1 tablespoon virgin coconut oil",
@@ -28,7 +28,7 @@
     },
     {
       "item": "plus ⅛ teaspoon baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "sugar, preferably cane",
@@ -40,7 +40,7 @@
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -55,5 +55,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

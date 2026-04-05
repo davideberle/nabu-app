@@ -29,7 +29,7 @@
     },
     {
       "item": "ground cardamom",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "WALNUT FILLING"
     },
     {
@@ -83,5 +83,10 @@
     "Let the baklawa cool for at least 1 hour in the pan before serving. If you plate it while hot, the baklawa will crumble."
   ],
   "tips": "You can substitute pistachios for the walnuts, or use a mixture of half each of walnuts and pistachios.\n\nUsing egg in the filling helps hold the filling together, especially when cutting the baklava. However, you can omit the egg if necessary for dietary restrictions.\n\nStore leftovers in a container, uncovered, on the counter if you are consuming within a few days; otherwise, to maintain freshness, place in an airtight container and freeze. Thaw at room temperature for 1 hour before serving.",
-  "image": "/recipes/classic-walnut-baklawa.jpg"
+  "image": "/recipes/classic-walnut-baklawa.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -51,5 +51,13 @@
     "Preheat the oven to 200°C (gas mark 6).",
     "Butter an ovenproof dish. Slice the polenta into 1 cm thick slices. Layer the bottom of the dish with a third of the polenta, then top with the Gruyère. Add another layer of polenta, then the Gorgonzola dolce. Add the final layer of polenta and spread with the mascarpone. Grind some pepper on top and bake in the preheated oven for about 20 minutes, or until golden."
   ],
-  "image": "/recipes/polenta-baked-with-cheese.jpg"
+  "image": "/recipes/polenta-baked-with-cheese.jpg",
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

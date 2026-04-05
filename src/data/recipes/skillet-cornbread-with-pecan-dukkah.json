@@ -18,15 +18,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Dukkah",
@@ -34,11 +34,11 @@
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "unsweetened almond milk, homemade or store-bought",
@@ -50,11 +50,11 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely grated orange zest",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coconut oil, melted, plus more for oiling",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

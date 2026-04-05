@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "ground chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chickpea flour",
@@ -17,19 +17,19 @@
     },
     {
       "item": "sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "diced white onion",
@@ -49,15 +49,15 @@
     },
     {
       "item": "fajita seasoning",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "15-ounce can pinto beans, drained and rinsed",
@@ -65,7 +65,7 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Salsa, for garnish",
@@ -89,5 +89,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

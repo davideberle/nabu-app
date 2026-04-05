@@ -61,7 +61,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "100g (scant ½ cup)",
+      "amount": "100g",
       "group": "MARINADE"
     }
   ],
@@ -71,5 +71,10 @@
     "When ready to cook, set up the barbecue for direct heat cooking, until the coals are extremely hot. Grill each lamb chop until nicely charred underneath, then flip over and do the same on the other side. When nicely blackened, remove from the heat to rest for about 5 minutes. Season with salt and black pepper and serve garnished with coriander (cilantro)."
   ],
   "tips": "The chargrilled exterior of these lamb chops is one of the things that makes them so delicious. I don’t recommend pan-frying.",
-  "image": "/recipes/grilled-lamb-chops.jpg"
+  "image": "/recipes/grilled-lamb-chops.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

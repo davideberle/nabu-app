@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "basmati rice",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "sea salt",
@@ -52,7 +52,7 @@
     },
     {
       "item": "large raw peeled prawns",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "freshly ground black pepper",
@@ -60,7 +60,7 @@
     },
     {
       "item": "butter",
-      "amount": "60g (2¼oz)"
+      "amount": "60g"
     }
   ],
   "method": [
@@ -74,5 +74,13 @@
   "image": "/recipes/spicy-prawn-rice.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 48
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

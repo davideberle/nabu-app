@@ -18,7 +18,7 @@
     },
     {
       "item": "/ 5.5 grams agar flakes",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "plus ⅓ cup / 220 grams canned unsweetened full-fat coconut milk, well-stirred (do not use light)",
@@ -30,7 +30,7 @@
     },
     {
       "item": "/ 4.5 grams finely grated lemon zest, divided",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -38,11 +38,11 @@
     },
     {
       "item": "turmeric (optional, for color)",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "/ 14 grams arrowroot",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fresh lemon juice, unstrained",
@@ -50,7 +50,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 57 grams whole almonds, chopped, for garnish (substitute plump berries)",
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 41
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

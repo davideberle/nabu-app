@@ -9,23 +9,23 @@
   "ingredients": [
     {
       "item": "paprika",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "granulated garlic",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cracked black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "seasoning salt",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "dried thyme",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "red potatoes, cut into wedges",
@@ -33,11 +33,11 @@
     },
     {
       "item": "canola oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "spice mix",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     }
   ],
   "method": [
@@ -45,5 +45,13 @@
     "Preheat the oven to 450°F (232°C).",
     "Add the potato ingredients and the spice mix to a baking sheet. Combine and bake for 15–20 minutes.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

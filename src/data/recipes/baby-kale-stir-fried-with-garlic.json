@@ -16,15 +16,15 @@
     },
     {
       "item": "fish sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canola or other neutral oil, plus 1 tablespoon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar (optional)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Fresno, jalapeño, or serrano chile, seeded and chopped (optional)",
@@ -36,11 +36,11 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Two 5- to 6-ounce packages prewashed baby kale, spinach, or a blend of leafy greens",
@@ -57,5 +57,10 @@
     "Quickly stir and fold to distribute the sauce evenly. When the greens have released their juices, add the cornstarch slurry and cook for 30 seconds, until the sauce thickens slightly and the greens take on a silky, shiny finish.",
     "Transfer the kale to a plate, sprinkle with pepper, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

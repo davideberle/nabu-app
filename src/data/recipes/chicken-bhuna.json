@@ -70,11 +70,11 @@
     },
     {
       "item": "whole skinless chicken, cut into 8 pieces",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "hot water, plus extra if needed",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "green bird’s eye chillies, sliced lengthways",
@@ -93,5 +93,10 @@
     "Heat the oil in a large saucepan that has a lid. When the oil is bubbly hot, add the cinnamon stick, bay leaves, black peppercorns, cloves and cardamom pods. Stir the spices for about 40 seconds to infuse their flavours into the oil. Add the onions and sugar and fry for 8–10 minutes until they turn a caramelized brown. Add the garlic and ginger paste, Kashmiri chilli powder, turmeric, cumin and coriander. Give it all a good stir to combine, then add the tomatoes and chicken.",
     "Brown the chicken for about 2 minutes, then pour in the hot water, reduce the heat to medium and cover the pan. Simmer, covered, for 10 minutes, then give it a stir. Only add a drop more water if it is looking dry. The idea here is not so much to simmer the chicken in a lot of liquid but just to have enough water in the pan to cook the chicken through without frying it. Cover the pan again and simmer for another 10 minutes, stirring from time to time and adding more water as needed. By this time, you should have a sauce that is so thick it coats the meat. When the oil rises to the top, your curry is ready! Throw in the chillies and garam masala and season with salt."
   ],
-  "image": "/recipes/chicken-bhuna.jpg"
+  "image": "/recipes/chicken-bhuna.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

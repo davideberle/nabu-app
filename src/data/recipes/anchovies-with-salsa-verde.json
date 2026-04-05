@@ -48,5 +48,13 @@
     "Put a little of the sauce on a serving dish, arrange some anchovies in a layer over it, then cover those anchovies with some more sauce. Continue in this way until all the anchovies and sauce have been used up. Let the dish stand at room temperature for 1–2 hours or longer, so the flavours can meld.",
     "Serve as an antipasto with lots of crunchy, fresh bread, spread with a generous coating of unsalted butter."
   ],
-  "image": "/recipes/anchovies-with-salsa-verde.jpg"
+  "image": "/recipes/anchovies-with-salsa-verde.jpg",
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

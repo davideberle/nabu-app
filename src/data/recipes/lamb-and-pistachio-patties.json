@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "shelled pistachio nuts",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "large free-range eggs",
@@ -20,7 +20,7 @@
     },
     {
       "item": "minced lamb",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "onion, minced or very finely chopped",
@@ -64,5 +64,13 @@
     "Preheat a large nonstick frying pan over a medium heat and preheat the oven to its lowest setting.",
     "Divide the mixture into 10 balls and shape them into flattened patties. Drizzle enough vegetable oil to coat the base of the preheated frying pan and fry several of the patties at a time without overcrowding the pan until the undersides form a nice brown crust, which should take about 6 minutes, then flip them over until both sides are done. Transfer the cooked batch to an ovenproof dish and keep warm in the oven while you fry the remaining patties. Serve with Cacik."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

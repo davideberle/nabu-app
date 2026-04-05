@@ -20,15 +20,15 @@
     },
     {
       "item": "Chinese five-spice powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "packed light or dark brown sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Rounded ¼ teaspoon recently ground black pepper",
@@ -36,7 +36,7 @@
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "One 2½- to 3-pound slab St. Louis–style pork ribs, sawed through the bone into 2 long strips",
@@ -44,11 +44,11 @@
     },
     {
       "item": "honey",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "sriracha",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     }
   ],
   "method": [
@@ -61,5 +61,10 @@
     "Unlock the cooker and, using tongs, place the ribs, bone-side up, on the prepared pan. Brush the ribs with some of the honey glaze, then broil for 4 to 5 minutes, until sizzling and browned here and there. Flip the ribs and repeat the glazing and broiling. Remove from the oven and let cool for a few minutes, then brush on any remaining glaze for extra shine. Cut between the bones.",
     "Serve the ribs hot, warm, or at room temperature."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

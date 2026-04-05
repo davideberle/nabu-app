@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "black urad dhal, soaked overnight in cold water",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -58,7 +58,7 @@
     },
     {
       "item": "single (light) cream",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "Chopped coriander (cilantro) leaves, to serve",
@@ -73,5 +73,10 @@
   "image": "/recipes/dhal-makhani.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

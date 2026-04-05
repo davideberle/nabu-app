@@ -13,11 +13,11 @@
     },
     {
       "item": "chia seeds or ground chia seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coconut oil, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced yellow onion",
@@ -33,19 +33,19 @@
     },
     {
       "item": "dried oregano",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chili powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cloves garlic, finely diced",
@@ -61,7 +61,7 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "whole wheat buns",
@@ -84,5 +84,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

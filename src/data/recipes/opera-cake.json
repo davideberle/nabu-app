@@ -14,7 +14,7 @@
     },
     {
       "item": "apple cider vinegar, divided",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "/ 99 grams organic all-purpose flour",
@@ -34,19 +34,19 @@
     },
     {
       "item": "/ 6 grams arrowroot",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 3.75 grams aluminum-free baking powder",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 1 tablespoon / 75 ml mild tasting extra-virgin olive oil or organic neutral vegetable oil",
@@ -54,11 +54,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "almond extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "plus scant 3 tablespoons / 80 grams finely ground almonds, divided",
@@ -90,7 +90,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "recipe Bittersweet Chocolate Ganache Glaze (page 264), warmed in a water bath until softened",
@@ -98,7 +98,7 @@
     },
     {
       "item": "Espresso Concentrate",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "agave syrup",
@@ -114,7 +114,7 @@
     },
     {
       "item": "Espresso Concentrate",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "to 2 tablespoons / 15 to 30 ml cognac (optional)",
@@ -160,5 +160,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

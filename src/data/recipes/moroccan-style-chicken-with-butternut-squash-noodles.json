@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "Delicious Moroccan-inspired chicken dish served with butternut squash noodles.",
   "time": {
-    "prep": "25 mins"
+    "prep": "25 mins",
+    "total": 7
   },
   "ingredients": [
     {
@@ -65,5 +66,10 @@
     "Heat butter and the remaining 2 tablespoons oil in a large saute pan over medium-high heat. Add chicken and sprinkle both sides with Moroccan spice, salt, and pepper to taste. Cover pan and cook, occasionally turning, until chicken is no longer pink in the center and the juices run clear, 5 to 7 minutes. Remove chicken and set aside.",
     "Add orange juice, apricots, cranberries, and dates to the same saute pan over medium heat. Cook and stir until orange juice thickens, 3 to 4 minutes. Add almonds and toss to coat. Remove topping from heat."
   ],
-  "image": "/recipes/moroccan-style-chicken-with-butternut-squash-noodles.jpg"
+  "image": "/recipes/moroccan-style-chicken-with-butternut-squash-noodles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

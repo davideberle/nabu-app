@@ -26,7 +26,7 @@
     },
     {
       "item": "/ 12 grams Dutch-process cocoa powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -34,7 +34,7 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "/ 40 grams chia seeds, white or black",
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

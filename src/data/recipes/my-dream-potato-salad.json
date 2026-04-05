@@ -14,15 +14,15 @@
   "ingredients": [
     {
       "item": "new potatoes, halved if large",
-      "amount": "750 g (1 lb 10 oz)"
+      "amount": "750 g"
     },
     {
       "item": "mangetout (snow peas) or sugar snap peas, sliced",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "radishes, finely sliced",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "small shallot, finely sliced",
@@ -34,7 +34,7 @@
     },
     {
       "item": "rinsed and drained ackee",
-      "amount": "200 g (7 oz)",
+      "amount": "200 g",
       "group": "ACKEE CURRY MAYO"
     },
     {
@@ -44,17 +44,17 @@
     },
     {
       "item": "Jamaican curry powder",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ACKEE CURRY MAYO"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ACKEE CURRY MAYO"
     },
     {
       "item": "white wine vinegar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ACKEE CURRY MAYO"
     },
     {
@@ -72,5 +72,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

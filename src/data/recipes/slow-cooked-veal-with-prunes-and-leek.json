@@ -99,5 +99,13 @@
     "Heat the remaining oil in a separate frying pan and brown the leeks well over high heat for about 3 minutes, stirring occasionally. Spoon them over the tomato sauce. Next, in the pan in which you made the tomato sauce, mix together the prunes, the remaining stock, and the pulled meat and bone marrow and spoon this over the leeks. Re-cover with the foil and continue to cook for another hour. Once out of the oven, taste and season with salt and more black pepper if needed.",
     "Serve hot, with cold yogurt spooned on top and sprinkled with a mixture of the parsley, lemon zest, and garlic."
   ],
-  "image": "/recipes/slow-cooked-veal-with-prunes-and-leek.jpg"
+  "image": "/recipes/slow-cooked-veal-with-prunes-and-leek.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

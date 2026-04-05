@@ -17,7 +17,7 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Salt and pepper, to taste",
@@ -25,11 +25,11 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsalted butter, cold and diced",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "cheddar cheese",
@@ -60,5 +60,13 @@
     "Roll the dough out into a rectangular shape ½ -inch thick. Cut the dough into 12 triangles.",
     "Arrange the triangles on the prepared baking sheet. Bake for 20 minutes or until golden-brown.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

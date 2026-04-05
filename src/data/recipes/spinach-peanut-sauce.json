@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely diced yellow onion",
@@ -18,11 +18,11 @@
     },
     {
       "item": "minced fresh ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "large cloves garlic, minced",
@@ -42,7 +42,7 @@
     },
     {
       "item": "minced fresh thyme",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -54,5 +54,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

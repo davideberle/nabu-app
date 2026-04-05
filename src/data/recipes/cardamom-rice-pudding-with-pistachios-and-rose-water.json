@@ -76,5 +76,13 @@
   "image": "/recipes/cardamom-rice-pudding-with-pistachios-and-rose-water.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

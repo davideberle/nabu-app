@@ -19,12 +19,12 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "EGGPLANT AND POTATOES"
     },
     {
       "item": "olive oil, divided",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "EGGPLANT AND POTATOES"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
@@ -44,27 +44,27 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
       "item": "ground allspice",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "BEEF AND OTHER VEGETABLES"
     },
     {
@@ -89,22 +89,22 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "COOKING LIQUID"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "COOKING LIQUID"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "COOKING LIQUID"
     },
     {
       "item": "tomato paste",
-      "amount": "5 tablespoons",
+      "amount": "5 tbsp",
       "group": "COOKING LIQUID"
     },
     {
@@ -133,5 +133,10 @@
     "Cover the dish tightly with aluminum foil and bake for 45 minutes. Uncover and bake for another 15 minutes, until the cooking liquid has slightly reduced.",
     "Garnish with chopped parsley (if using) and serve with rice and salad."
   ],
-  "image": "/recipes/iraqi-tapsi-betenjaneggplant-casserole.jpg"
+  "image": "/recipes/iraqi-tapsi-betenjaneggplant-casserole.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

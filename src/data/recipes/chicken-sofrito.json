@@ -60,5 +60,13 @@
     "After the chicken has been cooking for about 30 minutes, pour sunflower oil into a medium saucepan to a depth of 1¼ inches / 3 cm and place over medium-high heat. Fry the potatoes and garlic together in a few batches for about 6 minutes per batch, until they take on some color and crisp up. Use a slotted spoon to lift each batch away from the oil and onto paper towels, then sprinkle with salt.",
     "After the chicken has been cooking for 1 hour, lift it from the pan and spoon in the fried potatoes and garlic, stirring them with the cooking juices. Return the chicken to the pan, placing it on top of the potatoes for the remainder of the cooking time, that is, 30 minutes. The chicken should be falling off the bone and the potatoes should be soaked in the cooking liquid and completely soft. Drizzle with the remaining lemon juice when serving."
   ],
-  "image": "/recipes/chicken-sofrito.jpg"
+  "image": "/recipes/chicken-sofrito.jpg",
+  "time": {
+    "total": 131
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

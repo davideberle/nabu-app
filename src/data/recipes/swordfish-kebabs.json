@@ -52,5 +52,13 @@
     "Preheat the grill to high.",
     "Grill the fish under a very hot grill for about 3–4 minutes, turning the skewers so that the fish is nicely coloured all over. Serve with the salsa verde."
   ],
-  "image": "/recipes/swordfish-kebabs.jpg"
+  "image": "/recipes/swordfish-kebabs.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

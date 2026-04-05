@@ -79,5 +79,13 @@
     "Put a lid on the pan and cook over low heat for about 45 minutes, stirring from time to time. The sauce should become thick and rich and the duck meat very tender. Taste for salt and pepper.",
     "Bring a large pan of salted water to the boil. Cook the pappardelle until aldente. Drain the pasta and put it into a warm serving dish. Add the ragù and combine well. Serve immediately with parmigiano."
   ],
-  "image": "/recipes/pappardelle-with-duck-rag.jpg"
+  "image": "/recipes/pappardelle-with-duck-rag.jpg",
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

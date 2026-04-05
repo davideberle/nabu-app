@@ -38,7 +38,7 @@
     },
     {
       "item": "package frozen pigeon peas, or 2 (15-oz [425-g]) cans, drained and rinsed",
-      "amount": "1 (14-oz [397-g])"
+      "amount": "1"
     },
     {
       "item": "quarts (1.9 L) vegetable stock",
@@ -88,5 +88,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 21
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

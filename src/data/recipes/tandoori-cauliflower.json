@@ -30,7 +30,7 @@
     },
     {
       "item": "Greek yoghurt",
-      "amount": "250g (1 cup)",
+      "amount": "250g",
       "group": "MARINADE"
     },
     {
@@ -84,5 +84,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

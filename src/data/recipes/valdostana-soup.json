@@ -63,5 +63,13 @@
     "Now fill the bowls to three-quarters with the hot stock (do not fill them too full, as the bread will swell a bit during cooking). Cook them in the oven for about 15–20 minutes. The soup should have a nice golden, crunchy crust on top. Serve immediately.",
     "If you cannot find cavolo nero, substitute with fresh English spinach."
   ],
-  "image": "/recipes/valdostana-soup.jpg"
+  "image": "/recipes/valdostana-soup.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

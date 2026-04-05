@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "4 serving s",
+  "servings": "4 servings",
   "intro": "Quick and easy thighs with complex Moroccan flavors. Serve with rice, garnished with lemon wedges.",
   "time": {
-    "prep": "10 mins"
+    "prep": "10 mins",
+    "total": 65
   },
   "ingredients": [
     {
@@ -75,5 +76,10 @@
     "Transfer skillet to the preheated oven; bake until chicken thighs are no longer pink in the center, 25 to 30 minutes.",
     "Add olives to the skillet. Drizzle lemon juice over the thighs and garnish the whole dish with parsley."
   ],
-  "image": "/recipes/moroccan-chicken-thighs.jpg"
+  "image": "/recipes/moroccan-chicken-thighs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -64,27 +64,27 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MUHAMMARA SAUCE"
     },
     {
       "item": "ground Aleppo pepper (or substitute with 1 teaspoon paprika)",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MUHAMMARA SAUCE"
     },
     {
@@ -110,5 +110,10 @@
     "Drain the pasta, reserving 1 cup (240 ml) of pasta cooking water. Add the cooked pasta to the skillet along with the baby spinach, basil leaves, olives, and Parmesan. Mix everything together, then add the reserved pasta cooking water to loosen the sauce.",
     "Garnish with more Parmesan, basil leaves, and black pepper. Serve immediately."
   ],
-  "image": "/recipes/muhammara-pasta.jpg"
+  "image": "/recipes/muhammara-pasta.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

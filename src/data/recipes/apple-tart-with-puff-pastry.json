@@ -13,7 +13,7 @@
     },
     {
       "item": "apricot jam",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "apples, peeled, cored, and thinly sliced",
@@ -21,11 +21,11 @@
     },
     {
       "item": "brown sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -36,5 +36,13 @@
     "Sprinkle with the brown sugar and cinnamon.",
     "Bake for 20-25 minutes or until golden-brown and puffed up.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

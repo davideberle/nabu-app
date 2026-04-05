@@ -71,5 +71,13 @@
   "image": "/recipes/swiss-chard-with-tahini-yogurt-and-buttered-pine-nuts.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

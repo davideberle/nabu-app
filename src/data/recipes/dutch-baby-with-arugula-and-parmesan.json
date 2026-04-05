@@ -29,7 +29,7 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "baby arugula",
@@ -45,5 +45,13 @@
     "In a large mixing bowl, combine the eggs, milk, both flours, salt, and pepper.",
     "Pour the pancake batter into the hot skillet. Bake for 20 minutes in the oven.",
     "Serve immediately topped with the arugula and shaved parmesan."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -24,11 +24,11 @@
     },
     {
       "item": "sugar, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "distilled white vinegar (preferably Heinz), plus more as needed",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     }
   ],
   "method": [
@@ -40,5 +40,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

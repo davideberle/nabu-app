@@ -65,5 +65,13 @@
     "In a frying pan, heat the oil and 25 g of the butter. Sauté the onion until softened. Add the rest of the butter and the breadcrumbs and cook for about 2 minutes, or until the breadcrumbs are starting to become crisp. Add the spaezle and cook for a further few minutes.",
     "Serve topped with parmigiano and pepper."
   ],
-  "image": "/recipes/gabi-s-spaezle.jpg"
+  "image": "/recipes/gabi-s-spaezle.jpg",
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

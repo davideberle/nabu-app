@@ -33,7 +33,7 @@
     },
     {
       "item": "hempseed, toasted in shell",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "breadcrumbs",
@@ -41,27 +41,27 @@
     },
     {
       "item": "tamari",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sandwich buns",
@@ -80,5 +80,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -30,11 +30,11 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "ground cumin",
@@ -46,7 +46,7 @@
     },
     {
       "item": "pre-cooked stewed lamb, plus 200ml (generous ¾ cup) of its cooking stock",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "tomatoes, quartered",
@@ -87,5 +87,10 @@
     "Let the sauce come to a boil until it reduces to your preferred consistency, only stirring if it is catching. Add the tomato wedges to the sauce.",
     "To serve, swirl in the cashew paste, then add the yoghurt 1 tablespoon at a time, stirring continuously. Sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Top with coriander (cilantro) and garnish with chopped red onion and a little plain yoghurt."
   ],
-  "image": "/recipes/lamb-rogan-josh.jpg"
+  "image": "/recipes/lamb-rogan-josh.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

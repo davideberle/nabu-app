@@ -70,11 +70,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked chicken, plus 120ml (½ cup) of the cooking stock",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "plain yoghurt",
@@ -103,5 +103,10 @@
     "Fry for a further 30 seconds, then add the passata (sieved tomatoes), 250ml (1 cup) of the base curry sauce and the cooked chicken. Move the pieces of chicken around in the sauce to coat them but only stir the sauce if it is obviously sticking to the pan. Add the remaining base sauce and the cooking stock and bring to a rapid simmer. Cook until the sauce is your preferred consistency, then whisk in the plain yoghurt, 1 tablespoon at a time. Season with salt and garnish with the coriander (cilantro), garam masala and dried fenugreek leaves (kasoori methi).",
     "If all you can find is dried fenugreek leaves, this can be substituted for fresh. I suggest stirring in the dried leaves to taste at the end of cooking. A good alternative to using dried or fresh fenugreek is chopped celery leaves. They have a similar, but not as bitter, flavour. Another option would be to use a handful or two of chopped spinach with some ground fenugreek. This will give the look and flavour of using fresh fenugreek leaves. Remember, though, fenugreek is bitter and can quickly become overpowering. Add dried fenugreek in small ½ teaspoon amounts to taste."
   ],
-  "image": "/recipes/chicken-methi-curry.jpg"
+  "image": "/recipes/chicken-methi-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

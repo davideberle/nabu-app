@@ -85,5 +85,13 @@
   "image": "/recipes/fava-bean-kuku.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 95
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -30,5 +30,10 @@
     "Make the tajerini, then boil in plenty of salted water for just a few minutes. Drain the pasta and place it in a heated serving dish. Pour the melted butter over it, add the parmigiano and mix together.",
     "If you have a fresh white truffle, shave it very thinly with a truffle slicer over the pasta, or alternatively drizzle over a few drops of truffle oil. Serve immediately."
   ],
-  "image": "/recipes/taglierini-with-butter-and-white-truffles.jpg"
+  "image": "/recipes/taglierini-with-butter-and-white-truffles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

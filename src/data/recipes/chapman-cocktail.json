@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "grenadine syrup 1/2 cup blackcurrant juice concentrate (e.g. Ribena)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cucumber slices",
@@ -31,5 +31,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

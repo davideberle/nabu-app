@@ -30,5 +30,10 @@
     "Pop the broad beans out of their pods. If they are very young there is no need to blanch and peel them.",
     "Shave the pecorino over the beans and drizzle with olive oil. Sprinkle with salt and serve."
   ],
-  "image": "/recipes/broad-beans-with-pecorino.jpg"
+  "image": "/recipes/broad-beans-with-pecorino.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

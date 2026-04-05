@@ -32,5 +32,13 @@
     "Add water, lemongrass, curry leaves, ginger, fish sauce, brown sugar, and chicken broth. Let it boil. When it starts boiling, reduce heat and add the edamame and shrimp. Cook for 5-6 mins, uncovered.",
     "Add coconut milk, sorghum, bamboo shoots, basil, cilantro, lime juice, and lime peel. Let it boil. Discard the lemongrass before serving.",
     "Add coconut milk, sorghum, bamboo shoots, basil, cilantro, lime juice, and lime peel. Let it boil. Discard the lemongrass before serving."
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

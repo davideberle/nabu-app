@@ -32,19 +32,19 @@
     },
     {
       "item": "fish sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -56,5 +56,10 @@
     "Slide the skillet into the oven and roast for 13 to 15 minutes, until the tomato skin is wrinkly and the meat mixture is cooked and hot throughout. Remove from the oven and let rest for 5 minutes.",
     "Serve the tomatoes warm, with any pan juices."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

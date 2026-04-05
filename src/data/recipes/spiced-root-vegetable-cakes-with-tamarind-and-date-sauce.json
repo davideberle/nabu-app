@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "potatoes (I prefer waxy, but floury are also fine), scrubbed",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "bunch of spring onions, thinly sliced",
@@ -67,11 +67,11 @@
     },
     {
       "item": "dates, pitted and roughly chopped",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "tamarind paste",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "clear honey",
@@ -95,7 +95,7 @@
     },
     {
       "item": "hot water",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     }
   ],
   "method": [
@@ -109,5 +109,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 28
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

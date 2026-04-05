@@ -24,7 +24,7 @@
     },
     {
       "item": "Old Bay seasoning, or your favorite seafood boil seasoning blend, plus 1¼ teaspoons",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Fine sea salt",
@@ -52,15 +52,15 @@
     },
     {
       "item": "butter",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "recently ground black pepper or white pepper",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "or 2 limes, cut into wedges",
@@ -77,5 +77,10 @@
     "Set a large colander in the sink, then pour the pot of boiled ingredients into it to drain. Return half of the boiled ingredients to the pot, pour in half of the garlic butter, stir with a large spoon to coat, and then dump onto a rimmed baking sheet. Repeat with the rest of the boil. Combine the black pepper and 1 teaspoon salt and divide among individual small dishes.",
     "Bring the boil to the table to serve. Invite diners to make their own sauce by squeezing lime juice over the salt and pepper and stirring it together. Don’t forget paper towels for easy cleanup."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

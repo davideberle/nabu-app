@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "skinless chicken breast, cut into bite-size pieces",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -63,7 +63,7 @@
     },
     {
       "item": "butter",
-      "amount": "100g (3½ oz)",
+      "amount": "100g",
       "group": "MARINADE"
     },
     {
@@ -100,5 +100,10 @@
     "Just before serving, baste with the marinade you set aside earlier."
   ],
   "tips": "You can also roast the chicken in the oven at 200°C (400°F/Gas 6) until cooked through. Once cooked, placing the meat under a grill (broiler) will give a nice charred finish.",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

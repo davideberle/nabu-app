@@ -54,7 +54,7 @@
     },
     {
       "item": "double (heavy) cream",
-      "amount": "150ml (generous ½ cup)"
+      "amount": "150ml"
     },
     {
       "item": "Pinch of saffron threads (optional)",
@@ -98,7 +98,7 @@
     },
     {
       "item": "dry white wine",
-      "amount": "250ml (1 cup)",
+      "amount": "250ml",
       "group": "LOBSTER STOCK"
     }
   ],
@@ -113,5 +113,10 @@
     "Pour the warm sauce over each bowl of lobster meat and spoon the mixture back into the shells. I usually place the meat from the two claws in the body and the tail meat in the tails. You may not be able to use all the sauce. Sprinkle with the Parmesan and transfer to the oven or barbecue for 4–5 minutes until the meat is just cooked through and hot. Watch closely so you don’t overcook!",
     "Transfer each to a hot plate, garnish with coriander (cilantro) and serve with lemon or lime wedges."
   ],
-  "image": "/recipes/tandoori-lobster.jpg"
+  "image": "/recipes/tandoori-lobster.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

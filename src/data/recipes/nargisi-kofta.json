@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "seekh kebab minced (ground) lamb per egg",
-      "amount": "150g (5½ oz)"
+      "amount": "150g"
     },
     {
       "item": "Hard-boiled eggs, 1 per person (see cooking times above), peeled",
@@ -43,5 +43,10 @@
     "When ready to cook, pour about 5cm (2in) of oil into a wok and heat over a high heat. When a few breadcrumbs sizzle immediately when thrown in, it is ready. Lower a nargisi kofta into the oil and fry all over for about 3 minutes until nicely browned. Remove with a slotted spoon to a plate lined with paper towel and repeat until all the koftas are fried.",
     "To finish, preheat the oven to 200°C (400°F/Gas 6) or prepare your barbecue for indirect cooking. If refrigerated, remove the koftas from the fridge to come to room temperature. If oven cooking, place the fried koftas on a baking tray and roast in the oven for about 7 minutes. If using the barbecue, place the fried kofta on the grate over the side that has no coals and cover, cooking for about 7 minutes. The meat should already be cooked from the frying, so the oven or barbecue roasting will just warm them through."
   ],
-  "image": "/recipes/nargisi-kofta.jpg"
+  "image": "/recipes/nargisi-kofta.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

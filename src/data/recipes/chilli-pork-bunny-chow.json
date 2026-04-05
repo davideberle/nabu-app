@@ -100,5 +100,10 @@
     "Transfer the diced pre-cooked pork to this base masala and stir-fry, stirring constantly for 3–4 minutes to caramelize. If the meat feels dry, add 1–2 tablespoon of the reserved cooking liquid and cook until the liquid has almost evaporated but the meat is deliciously juicy. The pork will acquire a shiny glaze. Check for seasoning and finish with a squeeze of lime.",
     "Divide the meat mixture between six hollowed-out sourdough rolls and you are ready to enjoy one of my favourite meals."
   ],
-  "image": "/recipes/chilli-pork-bunny-chow.jpg"
+  "image": "/recipes/chilli-pork-bunny-chow.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

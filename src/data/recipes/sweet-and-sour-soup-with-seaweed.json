@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "enoki mushrooms (see Note), rinsed with salted water and separated into bite-size bundles",
@@ -29,11 +29,11 @@
     },
     {
       "item": "salt, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -45,7 +45,7 @@
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dried seaweed (wakame or dulse; see Note), soaked and roughly chopped",
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

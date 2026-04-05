@@ -14,7 +14,7 @@
     },
     {
       "item": "coconut oil, plus more for oiling",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "yellow cornmeal",
@@ -26,19 +26,19 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "heaping tablespoons finely ground golden flaxseeds",
@@ -46,7 +46,7 @@
     },
     {
       "item": "water",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "Date-Sweetened Almond Milk",
@@ -54,7 +54,7 @@
     },
     {
       "item": "orange blossom water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "blanched almond slivers, toasted",
@@ -75,5 +75,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 32
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

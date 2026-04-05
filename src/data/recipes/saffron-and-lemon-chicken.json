@@ -28,7 +28,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "crushed sea salt",
@@ -53,5 +53,13 @@
     "Once the chicken has been marinated, preheat the oven or grill to the highest setting possible. Line a large baking sheet with nonstick baking paper.",
     "Remove each piece of chicken from the marinade using a slotted spoon. Lay out all the pieces of chicken on the prepared baking sheet and bake or grill for 18–20 minutes maximum, or until the pieces have slightly charred edges but remain beautifully moist on the insides. Serve with flour tortilla wraps or basmati rice with a little salad and some yogurt."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -42,7 +42,7 @@
     },
     {
       "item": "caster sugar",
-      "amount": "200g (1 cup)"
+      "amount": "200g"
     },
     {
       "item": "tamarind concentrate",
@@ -58,5 +58,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

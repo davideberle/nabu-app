@@ -26,7 +26,7 @@
     },
     {
       "item": "drained and rinsed tinned callaloo",
-      "amount": "500 g (1 lb 2 oz)"
+      "amount": "500 g"
     },
     {
       "item": "juice of 1 lemon",
@@ -34,15 +34,15 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "silken tofu",
-      "amount": "300 g (10½ oz)"
+      "amount": "300 g"
     },
     {
       "item": "vegan block butter",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "x 270 g (10 oz) packet of filo pastry",
@@ -50,7 +50,7 @@
     },
     {
       "item": "vegan Cheddar, grated",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "olive oil, for frying",
@@ -73,5 +73,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

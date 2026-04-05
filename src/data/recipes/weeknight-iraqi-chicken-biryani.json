@@ -19,12 +19,12 @@
     },
     {
       "item": "avocado oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "POTATOES"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "POTATOES"
     },
     {
@@ -34,47 +34,47 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cardamom",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cinnamon",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "avocado oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "avocado oil",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "RICE"
     },
     {
       "item": "salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "RICE"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "RICE"
     },
     {
@@ -89,47 +89,47 @@
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "curry powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cardamom",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "ground cloves",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BAHARAT SPICE BLEND"
     },
     {
       "item": "avocado oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -165,5 +165,10 @@
     "Spoon the biryani into a large serving tray and add the potatoes on top along with half of the toasted almonds and raisins (if using). Stir gently until everything is combined.",
     "Garnish with the remaining toasted almonds and raisins (if using) and serve with yogurt and salad."
   ],
-  "image": "/recipes/weeknight-iraqi-chicken-biryani.jpg"
+  "image": "/recipes/weeknight-iraqi-chicken-biryani.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

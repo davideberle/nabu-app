@@ -47,5 +47,13 @@
     "On a long piece of aluminium foil, pour the mixture into a sausage shape and, with your hands, press it into a tight mass. Cover it with the foil and roll the sausage so that it becomes even. Leave it in the refrigerator for at least 3 hours.",
     "Slice the tronchetto into 1 cm thick discs and serve with coffee."
   ],
-  "image": "/recipes/chocolate-and-nougat-roll.jpg"
+  "image": "/recipes/chocolate-and-nougat-roll.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

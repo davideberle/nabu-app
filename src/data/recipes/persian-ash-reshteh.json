@@ -20,7 +20,7 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "cloves garlic, thinly sliced",
@@ -28,11 +28,11 @@
     },
     {
       "item": "dried mint",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "canned chickpeas, drained and rinsed",
@@ -84,5 +84,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

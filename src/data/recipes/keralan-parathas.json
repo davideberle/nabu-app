@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "plain (all-purpose) flour",
-      "amount": "450g (3 cups)"
+      "amount": "450g"
     },
     {
       "item": "semolina flour",
-      "amount": "80g (½ cup)"
+      "amount": "80g"
     },
     {
       "item": "salt",
@@ -50,5 +50,10 @@
   "image": "/recipes/keralan-parathas.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

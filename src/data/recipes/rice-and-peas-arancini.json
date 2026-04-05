@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "tin of kidney beans, drained and rinsed",
-      "amount": "400 g (14 oz)"
+      "amount": "400 g"
     },
     {
       "item": "litre (34 fl oz/4 cups) boiling water",
@@ -22,7 +22,7 @@
     },
     {
       "item": "ground allspice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "Scotch bonnet",
@@ -42,11 +42,11 @@
     },
     {
       "item": "coconut milk",
-      "amount": "350 ml (12 fl oz/1½ cups)"
+      "amount": "350 ml"
     },
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "onion, finely diced",
@@ -58,19 +58,19 @@
     },
     {
       "item": "risotto rice",
-      "amount": "300 g (10½ oz/1⅓ cups)"
+      "amount": "300 g"
     },
     {
       "item": "panko breadcrumbs",
-      "amount": "100 g (3½ oz/1⅔ cups)"
+      "amount": "100 g"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "100 g (3½ oz/generous ¾ cup)"
+      "amount": "100 g"
     },
     {
       "item": "vegan Cheddar, cubed",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "vegetable oil, for deep-frying",
@@ -96,5 +96,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

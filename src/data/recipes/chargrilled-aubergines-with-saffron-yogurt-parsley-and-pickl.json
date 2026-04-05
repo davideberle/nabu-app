@@ -27,7 +27,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "250ml (9fl oz)"
+      "amount": "250ml"
     },
     {
       "item": "garlic oil",
@@ -58,5 +58,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 23
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

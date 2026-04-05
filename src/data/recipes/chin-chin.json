@@ -22,11 +22,11 @@
     },
     {
       "item": "vegan margarine",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "coconut milk",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coconut",
@@ -46,5 +46,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 44
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

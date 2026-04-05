@@ -18,15 +18,15 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cumin seeds toasted",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "black peppercorns",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "red onions, sliced into thin rings",
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

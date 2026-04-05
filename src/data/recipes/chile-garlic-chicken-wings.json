@@ -24,23 +24,23 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "recently ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "paprika",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "to 3 tablespoons chile garlic sauce (see this page; use the maximum if homemade)",
@@ -67,5 +67,10 @@
     "When the wings are done, let them rest for about 5 minutes, then toss in the sauce and transfer to a platter.",
     "Serve the wings with the cucumber slices on the side, if desired, for a cooling crunch. Have diners add a squeeze of lime juice for bright contrast, if they like."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

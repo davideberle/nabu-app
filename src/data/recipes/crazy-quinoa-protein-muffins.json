@@ -13,7 +13,7 @@
     },
     {
       "item": "ground chia seeds or chia seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "almond flour",
@@ -21,11 +21,11 @@
     },
     {
       "item": "vanilla protein powder",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dates, chopped small",
@@ -33,15 +33,15 @@
     },
     {
       "item": "coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "unsweetened shredded coconut",
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

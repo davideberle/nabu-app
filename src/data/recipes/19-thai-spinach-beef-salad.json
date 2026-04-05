@@ -48,5 +48,13 @@
     "Stir-fry the garlic for 1 minute. Turn off the heat when done.",
     "Add spinach, red pepper, cucumber, beef mixture (Step 3) to a large bowl. Drizzle the sauce (Step 1) over it and mix well. Serve immediately.",
     "Add spinach, red pepper, cucumber, beef mixture (Step 3) to a large bowl. Drizzle the sauce (Step 1) over it and mix well. Serve immediately."
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

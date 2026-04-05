@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "fine green beans, trimmed",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "olive oil",
@@ -35,7 +35,7 @@
     },
     {
       "item": "flaked almonds, toasted",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

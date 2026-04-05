@@ -50,17 +50,17 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "125g (1 cup)",
+      "amount": "125g",
       "group": "BATTER"
     },
     {
       "item": "cornflour (cornstarch)",
-      "amount": "30g (¼ cup)",
+      "amount": "30g",
       "group": "BATTER"
     },
     {
       "item": "rice flour, or more cornflour",
-      "amount": "40g (¼ cup)",
+      "amount": "40g",
       "group": "BATTER"
     },
     {
@@ -90,7 +90,7 @@
     },
     {
       "item": "plain passata (sieved tomatoes), or blended chopped tomatoes",
-      "amount": "125ml (½ cup)",
+      "amount": "125ml",
       "group": "SAUCE"
     },
     {
@@ -131,5 +131,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

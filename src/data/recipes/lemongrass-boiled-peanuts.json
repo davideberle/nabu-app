@@ -18,7 +18,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "lemongrass stalks, ends trimmed and thinly sliced",
@@ -32,5 +32,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

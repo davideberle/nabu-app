@@ -14,51 +14,51 @@
   "ingredients": [
     {
       "item": "silken tofu",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "soya milk",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml"
     },
     {
       "item": "instant coffee granules",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "boiling water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "150 ml (5 fl oz/scant ⅔ cup)"
+      "amount": "150 ml"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "150 g (5 oz/generous ¾ cup)"
+      "amount": "150 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "225 g (8 oz/1¾ cups)"
+      "amount": "225 g"
     },
     {
       "item": "cocoa powder",
-      "amount": "75 g (2½ oz/scant ⅔ cup)"
+      "amount": "75 g"
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "non-dairy vanilla ice cream, to serve",
@@ -66,27 +66,27 @@
     },
     {
       "item": "light brown soft sugar",
-      "amount": "95 g (3¼ oz/½ cup)",
+      "amount": "95 g",
       "group": "CARAMEL"
     },
     {
       "item": "white miso paste",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CARAMEL"
     },
     {
       "item": "instant coffee granules",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CARAMEL"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CARAMEL"
     },
     {
       "item": "boiling water",
-      "amount": "190 ml (6½ fl oz/generous ¾ cup)",
+      "amount": "190 ml",
       "group": "CARAMEL"
     }
   ],
@@ -103,5 +103,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

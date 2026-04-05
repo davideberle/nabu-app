@@ -57,5 +57,13 @@
     "Remove the lid and, if needed, increase the heat and allow any remaining liquid to evaporate. The base of the pan should be dry and have a bit of burnt caramel on it. Remove from the heat.",
     "Before serving, taste and add more molasses, salt, and pepper if needed; you want it sharp and sweet, so don’t be shy with your molasses. Serve warm, with a dollop of Greek yogurt."
   ],
-  "image": "/recipes/wheat-berries-and-swiss-chard-with-pomegranate-molasses.jpg"
+  "image": "/recipes/wheat-berries-and-swiss-chard-with-pomegranate-molasses.jpg",
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

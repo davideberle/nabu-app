@@ -14,39 +14,39 @@
   "ingredients": [
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sweetcorn (tinned, frozen or fresh)",
-      "amount": "150 g (5 oz/1 cup)"
+      "amount": "150 g"
     },
     {
       "item": "non-dairy double (heavy) cream",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml"
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "non-dairy condensed milk",
-      "amount": "100 ml (3½ fl oz/scant ½ cup)"
+      "amount": "100 ml"
     },
     {
       "item": "vanilla paste or 1 vanilla pod (bean), split and seeds scraped out",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "agar-agar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "plain non-dairy yoghurt",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "cornflour (cornstarch)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "toffee popcorn, to serve",
@@ -68,5 +68,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

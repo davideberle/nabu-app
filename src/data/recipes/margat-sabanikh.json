@@ -24,15 +24,15 @@
     },
     {
       "item": "tomato paste",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black pepper, plus more if needed",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "frozen chopped spinach, thawed for 5 minutes",
@@ -57,5 +57,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

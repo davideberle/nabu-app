@@ -60,5 +60,10 @@
     "Put the fondue pan in the middle of the table over a flame to keep the liquid lightly bubbling. With a fork, each person should spear a piece of bread and dip it into the fondue.",
     "At the end of the meal, leave a little bit of cheese in the bottom of the pot and break the egg into it. Scramble the egg and cheese together and serve it as a final taste. (This last step is optional but well worth trying.)"
   ],
-  "image": "/recipes/hot-cheese-dip.jpg"
+  "image": "/recipes/hot-cheese-dip.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

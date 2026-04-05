@@ -60,5 +60,13 @@
   "image": "/recipes/roasted-eggplant-with-fried-onion-and-chopped-lemon.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 53
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

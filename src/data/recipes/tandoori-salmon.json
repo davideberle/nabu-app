@@ -60,5 +60,13 @@
     "Thread the salmon pieces onto flat skewers and cook over the coals for about 5 minutes (longer if you want the salmon cooked right through), turning regularly so that it takes on that amazing and tasty char, with a slight blackening on the outside.",
     "Serve hot, simply with a green salad and nothing else. There is plenty of salt in the soy sauce, so I rarely add more."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

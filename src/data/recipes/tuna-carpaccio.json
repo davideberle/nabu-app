@@ -48,5 +48,13 @@
     "Heat the sunflower oil in a small saucepan until hot. Fry the capers until they turn crisp, then remove from the oil and drain on kitchen paper.",
     "Just before serving, arrange 3–4 slices of very thinly sliced tuna on each pastry base. Drizzle over a little olive oil and lemon juice, then sprinkle on the capers and chilli, if using. (There is no need to season further as the capers are salty enough.)"
   ],
-  "image": "/recipes/tuna-carpaccio.jpg"
+  "image": "/recipes/tuna-carpaccio.jpg",
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

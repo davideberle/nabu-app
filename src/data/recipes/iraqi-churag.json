@@ -16,7 +16,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "warm water",
@@ -28,7 +28,7 @@
     },
     {
       "item": "instant yeast",
-      "amount": "½ tablespoon"
+      "amount": "½ tbsp"
     },
     {
       "item": "granulated sugar",
@@ -65,5 +65,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

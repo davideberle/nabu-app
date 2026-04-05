@@ -30,5 +30,10 @@
     "Mix all the ingredients together well. When the sugar has completely dissolved, put into an ice cream machine and churn until fluffy and light coloured.",
     "Spoon the sorbet into glasses and finish off with a little more Campari on top. The sorbet should not be too sweet."
   ],
-  "image": "/recipes/pink-grapefruit-and-campari-sorbet.jpg"
+  "image": "/recipes/pink-grapefruit-and-campari-sorbet.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -26,7 +26,7 @@
     },
     {
       "item": "cayenne pepper 1/2 cup palm oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube",
@@ -34,7 +34,7 @@
     },
     {
       "item": "iru (fermented locust beans) or ogiri",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "jackfruit or other pre- cooked meat substitute of you choice",
@@ -42,11 +42,11 @@
     },
     {
       "item": "smoked paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sunflower oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

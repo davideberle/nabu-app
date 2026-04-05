@@ -19,7 +19,7 @@
     },
     {
       "item": "boneless lamb neck fillets, sliced into 2.5cm (1in) pieces",
-      "amount": "1kg (2lb 4oz)"
+      "amount": "1kg"
     },
     {
       "item": "turmeric",
@@ -35,7 +35,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "150g (5½oz)"
+      "amount": "150g"
     },
     {
       "item": "sea salt and freshly ground black peper",
@@ -47,7 +47,7 @@
     },
     {
       "item": "dried yellow split peas",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     }
   ],
   "method": [
@@ -55,5 +55,13 @@
     "Stir the turmeric into the mixture to give the meat an even coating of it. Do the same with the saffron and cinnamon, then add the tomato purée and a generous seasoning of sea salt and black pepper, give the meat a good stir and cook for 1 minute.",
     "Prick your dried limes several times with a fork, then add them to the meat. Add just enough cold water to barely cover the contents of the pan. Stir well, then reduce the heat to very low and slow cook the stew for 1½ hours. Add the yellow split peas, check the seasoning and cook for a further 1 hour. Serve the stew with basmati rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

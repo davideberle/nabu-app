@@ -18,11 +18,11 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "/ 106 grams whole unpeeled almonds, toasted and cooled (page 19)",
@@ -38,11 +38,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1½ teaspoons / 7.5 ml"
+      "amount": "1½ tsp / 7.5 ml"
     },
     {
       "item": "almond extract",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     }
   ],
   "method": [
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -12,11 +12,11 @@
   "ingredients": [
     {
       "item": "leg of lamb on the bone",
-      "amount": "2.5kg (5lb 8oz)"
+      "amount": "2.5kg"
     },
     {
       "item": "butter, softened",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "ground coriander",
@@ -75,5 +75,13 @@
     "Meanwhile, make the cumin dipping salt. Put the cumin seeds in a dry frying pan over a medium-high heat and toast, shaking the pan now and then, until they release an aroma, then grind with a pestle and mortar. Combine the ground cumin seeds with the sea salt and cinnamon and place the mixture in a small dish that is suitable for dipping the meat into.",
     "When rested, serve the lamb leg on a platter. The flesh will be moist and succulent and will literally fall off the bone. Serve with Turmeric & Cumin Roasted Potatoes."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -24,7 +24,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "1/3 cup (70 g) tomato paste",
@@ -46,5 +46,10 @@
     "Add the broth and remaining 1 teaspoon salt to the pot and stir. Bring the pot to a rolling boil. Taste and adjust the broth for salt (it should taste noticeably salty; you may need to add more salt depending on the broth you are using).",
     "Add the rice. Wait for it to come back to a rolling boil, then let boil for 2 to 3 minutes. Cover with a tight-fitting lid, reduce the heat to low, and let cook for 20 minutes, undisturbed.",
     "Remove from the heat and gently fluff the rice with a fork or wooden spoon. Cover again and let stand for another 10 minutes before serving."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

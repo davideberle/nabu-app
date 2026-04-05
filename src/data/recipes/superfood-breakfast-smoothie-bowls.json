@@ -25,7 +25,7 @@
     },
     {
       "item": "coconut flakes",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fresh blueberries",
@@ -41,15 +41,20 @@
     },
     {
       "item": "chopped almonds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
     "Add all the bowl ingredients to a high-speed blender and pulse until smooth.",
     "Divide into serving bowls along with the toppings. If desired, chill before serving, or serve immediately."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

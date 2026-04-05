@@ -34,7 +34,7 @@
     },
     {
       "item": "palm oil Salt to taste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -45,5 +45,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 7
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

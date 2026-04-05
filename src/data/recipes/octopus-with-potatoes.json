@@ -43,5 +43,13 @@
     "Boil the potatoes and when cooked, cut into bite-sized pieces.",
     "Pull off the octopus tentacles, remove the slimy skin and cut the flesh into bite-sized pieces. Add to the potatoes. Mix together the juice of the remaining 1 ½ lemons with the olive oil, salt, pepper and parsley. Pour this mixture over the octopus and potatoes. Serve at room temperature."
   ],
-  "image": "/recipes/octopus-with-potatoes.jpg"
+  "image": "/recipes/octopus-with-potatoes.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -36,5 +36,10 @@
     "Add the beef (Step 4) and toss quickly with the curry paste, separating the beef pieces as much as possible.",
     "Season with more fish sauce and/or sugar as needed.",
     "Season with more fish sauce and/or sugar as needed."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

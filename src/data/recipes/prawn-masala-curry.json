@@ -46,15 +46,15 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "400ml (scant 1¾ cups)"
+      "amount": "400ml"
     },
     {
       "item": "raw bite-size prawns (shrimp), peeled and cleaned",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "thick coconut milk",
-      "amount": "200ml (scant 1 cup)"
+      "amount": "200ml"
     },
     {
       "item": "light soy sauce or coconut amino*",
@@ -87,5 +87,10 @@
   "image": "/recipes/prawn-masala-curry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

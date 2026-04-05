@@ -13,19 +13,19 @@
     },
     {
       "item": "tamari",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "rice vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chili powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "large sweet potato, peeled and chopped into bite-size chunks",
@@ -62,5 +62,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "Soaked in a delicious honey-soy marinade and paired with grilled vegetables, these kabobs will please both meat-eaters and vegetarians .",
   "time": {
-    "prep": "30 mins"
+    "prep": "30 mins",
+    "total": 120
   },
   "ingredients": [
     {
@@ -98,5 +99,10 @@
     "Grill skewers, often turning to make sure everything is cooked evenly. These can also be done in the broiler.",
     "While grilling kabobs, combine vegetable stock, 1 tablespoon grated ginger, cumin, and salt. Bring to a light boil. Stir in couscous, raisins, and garbanzo beans; cover and remove from heat. Let sit for five minutes, or until fluffy. Just before serving, squeeze lemon over couscous and stir. Serve kabobs with reserved marinade."
   ],
-  "image": "/recipes/tempeh-kabobs-with-moroccan-couscous.jpg"
+  "image": "/recipes/tempeh-kabobs-with-moroccan-couscous.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

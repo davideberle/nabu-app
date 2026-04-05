@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "A great vegetarian meal that's really easy to make. Serve over steamed couscous.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 30
   },
   "ingredients": [
     {
@@ -85,5 +86,10 @@
     "Stir in the butternut squash and potato cubes, broth, garbanzo beans, and tomatoes, bringing the mixture to a boil. Reduce heat, cover the pot, and simmer about 20 minutes, occasionally stirring, until the squash and potatoes are tender. Remove the stew from heat, and stir in the olives and lemon zest.",
     "In a large saucepan, bring 1 3/4 cup water to a boil. Stir in couscous. Cover and remove from the heat; let stand for 5 minutes. Fluff with a fork; cool. Serve stew over cooked couscous. Garnish each serving with a dollop of yogurt and a sprinkle of cilantro leaves."
   ],
-  "image": "/recipes/vegetarian-moroccan-stew.jpg"
+  "image": "/recipes/vegetarian-moroccan-stew.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

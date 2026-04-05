@@ -14,23 +14,23 @@
   "ingredients": [
     {
       "item": "sprouts, trimmed and halved",
-      "amount": "500 g (1 lb 2 oz)"
+      "amount": "500 g"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chopped thyme",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "salt and black pepper",
@@ -38,7 +38,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "75 ml (2½ fl oz/5 tablespoons)",
+      "amount": "75 ml",
       "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
@@ -58,7 +58,7 @@
     },
     {
       "item": "flaked almonds (or 30 g/1 oz blanched almonds), plus extra to serve",
-      "amount": "50 g (2 oz/½ cup)",
+      "amount": "50 g",
       "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
@@ -68,17 +68,17 @@
     },
     {
       "item": "balsamic vinegar",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "stale bread (any type), toasted and cubed",
-      "amount": "100 g (3½ oz/3 tablespoons)",
+      "amount": "100 g",
       "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SCOTCH BONNET ROMESCO SAUCE"
     },
     {
@@ -98,5 +98,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

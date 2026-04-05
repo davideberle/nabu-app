@@ -40,5 +40,13 @@
     "In a bowl, mix together the breadcrumbs, garlic, parsley, olive oil, salt and pepper to a crumbly paste. Place a little of this mixture on every half mussel shell, pressing down well around the mussel.",
     "Cook under the hot grill for a few minutes until the topping starts to colour but not burn. This dish can be eaten hot or cold."
   ],
-  "image": "/recipes/grilled-mussels.jpg"
+  "image": "/recipes/grilled-mussels.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

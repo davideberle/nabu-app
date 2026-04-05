@@ -18,15 +18,15 @@
     },
     {
       "item": "/ 39 grams organic granulated sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus 1 teaspoon / 14 grams Dutch-process cocoa powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 9 grams instant coffee or espresso granules",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "⅜ teaspoon agar powder",
@@ -38,7 +38,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Organic granulated sugar, ground superfine in a blender, for the brûlée (use enough to make a ¼-inch coating for each layer)",
@@ -57,5 +57,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -105,5 +105,13 @@
     "Spoon the tahini sauce around the kofta so it covers the base of the pan. If you like, also drizzle some over the kofta, but leave some of the meat exposed. Place in the oven for a minute or two, just to warm up the sauce a little.",
     "Meanwhile, if you are using the butter, melt it in a small saucepan and allow it to brown a little, taking care that it doesn’t burn. Spoon the butter over the kofta as soon as they come out of the oven. Scatter with the pine nuts and parsley and then sprinkle with the paprika. Serve at once."
   ],
-  "image": "/recipes/kofta-b-siniyah.jpg"
+  "image": "/recipes/kofta-b-siniyah.jpg",
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

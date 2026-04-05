@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "palm oil or coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "green or just-ripe plantains (peeled and cut into bite-size pieces)",
@@ -30,11 +30,11 @@
     },
     {
       "item": "curry powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chilli powder Salt to taste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "shredded or finely chopped spinach",
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

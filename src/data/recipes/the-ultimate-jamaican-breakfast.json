@@ -14,27 +14,27 @@
   "ingredients": [
     {
       "item": "self-raising flour (or 4 cups all-purpose flour plus 3½ teaspoons baking powder)",
-      "amount": "400 g (14 oz)",
+      "amount": "400 g",
       "group": "DUMPLINGS"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "1 tablespoons",
+      "amount": "1 tbsp",
       "group": "DUMPLINGS"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "DUMPLINGS"
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DUMPLINGS"
     },
     {
       "item": "water",
-      "amount": "200 ml (7 fl oz/scant 1 cup)",
+      "amount": "200 ml",
       "group": "DUMPLINGS"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2–3 tablespoons",
+      "amount": "2–3 tbsp",
       "group": "ACKEE AND ‘SALT FISH’"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "kale",
-      "amount": "350 g (12 oz)",
+      "amount": "350 g",
       "group": "ACKEE AND ‘SALT FISH’"
     },
     {
@@ -89,12 +89,12 @@
     },
     {
       "item": "hearts of palm, roughly chopped",
-      "amount": "210 g (7½ oz)",
+      "amount": "210 g",
       "group": "ACKEE AND ‘SALT FISH’"
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ACKEE AND ‘SALT FISH’"
     },
     {
@@ -104,7 +104,7 @@
     },
     {
       "item": "tin of ackee, rinsed and drained",
-      "amount": "500 g (1 lb 2 oz)",
+      "amount": "500 g",
       "group": "ACKEE AND ‘SALT FISH’"
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "GARLICKY GREENS"
     },
     {
@@ -129,7 +129,7 @@
     },
     {
       "item": "spinach",
-      "amount": "350 g (12 oz)",
+      "amount": "350 g",
       "group": "GARLICKY GREENS"
     },
     {
@@ -155,5 +155,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

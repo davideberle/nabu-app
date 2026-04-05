@@ -54,5 +54,13 @@
     "When serving the fish, break the salt crust at the table, in front of your guests, as it looks impressive. Make sure you remove all the salt crust before eating – usually the skin of the fish will come off easily with the crust.",
     "If the fish is very large, don’t cover its head with salt so you will have enough to cover the body properly."
   ],
-  "image": "/recipes/fish-in-a-salt-crust.jpg"
+  "image": "/recipes/fish-in-a-salt-crust.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

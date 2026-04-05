@@ -12,7 +12,7 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "medium white onions, cut into ¼-inch strips",
@@ -28,7 +28,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "organic, free-range chicken liver, rinsed and cut into ¼-inch strips",
@@ -92,19 +92,19 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "black peppercorns",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "mustard seeds",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "jalapeño, halved lengthwise and seeds removed",
@@ -124,11 +124,11 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "bunch green onion, finely chopped",
@@ -168,7 +168,7 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "small eggplant, cut into 2-inch cubes",
@@ -184,7 +184,7 @@
     },
     {
       "item": "dried oregano",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baby arugula",
@@ -220,7 +220,7 @@
     },
     {
       "item": "red habanero chili oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
@@ -264,7 +264,7 @@
     },
     {
       "item": "baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "water",
@@ -280,7 +280,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "white onion, thinly sliced",
@@ -292,7 +292,7 @@
     },
     {
       "item": "dried oregano",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "water",
@@ -312,7 +312,7 @@
     },
     {
       "item": "Aleppo pepper",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canola oil 12 shishito peppers Kosher salt",
@@ -332,11 +332,11 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "salted butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "bunch green onions, finely chopped",
@@ -352,7 +352,7 @@
     },
     {
       "item": "grated ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "casarecce pasta",
@@ -384,7 +384,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "guanciale cut into ¾-inch strips",
@@ -392,7 +392,7 @@
     },
     {
       "item": "red pepper flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dry white wine",
@@ -420,7 +420,7 @@
     },
     {
       "item": "’nduja",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "creste di gallo pasta",
@@ -432,7 +432,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -498,5 +498,13 @@
     "In a large pan over medium heat, warm the olive oil. Add the shallot and sauté for 1 minute, stirring to avoid burning. Crumble in the sausage, cook for a couple of minutes, add the grapes, and stir. Add the rosemary and cook for 2 minutes more.",
     "Pour in the broth, reduce the heat to low, cover, and cook for 5 minutes. Season with salt and pepper to taste.",
     "In a small pan over high heat, add the canola oil, and fry the grape leaves until crispy. Remove leaves with a spider or slotted spoon, place on a paper towel, and sprinkle with salt."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

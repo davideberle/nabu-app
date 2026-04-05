@@ -10,39 +10,39 @@
   "ingredients": [
     {
       "item": "ground turmeric",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "coriander seeds, toasted",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cumin seeds, toasted",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fenugreek seeds, toasted",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "yellow mustard seeds, toasted",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "black peppercorns",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "allspice berries, toasted",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "whole cloves",
@@ -56,5 +56,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -20,11 +20,11 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fresh lemon juice",
@@ -52,5 +52,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

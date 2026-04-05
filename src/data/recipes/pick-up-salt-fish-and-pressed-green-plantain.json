@@ -18,11 +18,11 @@
     },
     {
       "item": "hearts of palm, rinsed, drained and sliced into half-moons",
-      "amount": "220 g (7¾ oz)"
+      "amount": "220 g"
     },
     {
       "item": "cherry tomatoes, quartered",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "garlic clove, very finely chopped",
@@ -79,5 +79,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

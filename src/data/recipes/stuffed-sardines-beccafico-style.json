@@ -69,5 +69,13 @@
     "Butter an ovenproof dish, around 18 × 30 cm. Arrange the stuffed sardines in the dish, packing them in tightly to prevent them from opening up. Tuck the bay leaves in between the sardines and sprinkle on any left-over stuffing mixture. Drizzle over the remaining oil and bake for 15 minutes until golden-brown.",
     "Remove from the oven and pour on the reserved lemon juice. Add the fresh herbs just before serving. You can serve this dish hot or cold, although I like it best at room temperature."
   ],
-  "image": "/recipes/stuffed-sardines-beccafico-style.jpg"
+  "image": "/recipes/stuffed-sardines-beccafico-style.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "basmati rice",
-      "amount": "370g (2 cups)"
+      "amount": "370g"
     },
     {
       "item": "milk",
@@ -50,7 +50,7 @@
     },
     {
       "item": "cold water or unsalted chicken stock",
-      "amount": "750ml (3¼ cups)"
+      "amount": "750ml"
     },
     {
       "item": "Indian bay leaves (cassia leaves)",
@@ -68,5 +68,10 @@
     "Add the garlic to the pan, followed by the drained rice. Stir this all up so that the rice is evenly coated in the ghee. Pour in the water or stock, add the bay leaves, then cover the pan. When the rice begins to boil and the water foams, remove from the heat and let it sit, covered and undisturbed, for 40 minutes.",
     "After 40 minutes, lift the lid and pour the saffron milk mixture on top. Carefully stir through the rice using a fork or chopstick until nice and fluffy. Don’t stir too vigorously as the basmati rice may split. Season with salt and transfer to a warm bowl to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

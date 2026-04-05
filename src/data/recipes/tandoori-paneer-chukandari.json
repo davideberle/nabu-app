@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "raw beetroot (beet), peeled",
-      "amount": "2kg (4lb 6oz)"
+      "amount": "2kg"
     },
     {
       "item": "fine sea salt",
@@ -42,11 +42,11 @@
     },
     {
       "item": "paneer cheese, cut into 7.5cm (3in) cubes or sliced 1cm (½ in) thick",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "balsamic vinegar",
-      "amount": "350ml (1½ cups)"
+      "amount": "350ml"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -75,5 +75,10 @@
   "image": "/recipes/tandoori-paneer-chukandari.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

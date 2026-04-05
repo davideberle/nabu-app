@@ -59,5 +59,13 @@
     "Meanwhile, melt the butter and half the oil in a large frying pan. Add the onion and fry gently until soft. Add the anchovies, capers and parsley and cook for just a few minutes. Add the remaining oil and the breadcrumbs and fry gently for a few minutes more, taking care not to burn the breadcrumbs. Add the pine nuts and basil, and season with a little salt and pepper.",
     "Stuff the mixture into the tomatoes, making sure you press it gently into all the internal chambers. Replace the tomato ‘lids’, if using, then arrange the tomatoes on an oven tray and bake for around an hour. The tomatoes can be eaten hot or cold."
   ],
-  "image": "/recipes/stuffed-tomatoes.jpg"
+  "image": "/recipes/stuffed-tomatoes.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

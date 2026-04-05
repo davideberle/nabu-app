@@ -14,7 +14,7 @@
     },
     {
       "item": "package Impossible brand sausage",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "salt, plus more to taste",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

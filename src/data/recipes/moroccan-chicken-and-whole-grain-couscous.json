@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "A flavorful chicken stew that uses exotic spices and nice vegetables served over whole-grain couscous. This recipe was actually a real chicken contest winner! Vegetables and even meat can vary according to taste, but I find squash, carrots, bell peppers, and lamb work well in this recipe. Even though the spices seem strange, the flavors are subtle but fragrant! A real favorite at home.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 35
   },
   "ingredients": [
     {
@@ -76,5 +77,10 @@
     "Heat the oil in a large pot over medium heat, and cook onion until tender. Mix in bay leaves, cloves, cinnamon, turmeric, and cayenne pepper. Place chicken in the pot, and cook until well browned. Pour garbanzo beans, tomatoes, and broth into the pot, and bring to a boil. Reduce heat to low, and simmer 25 minutes.",
     "Mix carrots and zucchini into the pot. Season with salt. Continue cooking for 10 minutes or until vegetables are tender. Serve stew over cooked couscous."
   ],
-  "image": "/recipes/moroccan-chicken-and-whole-grain-couscous.jpg"
+  "image": "/recipes/moroccan-chicken-and-whole-grain-couscous.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

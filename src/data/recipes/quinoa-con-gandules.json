@@ -38,7 +38,7 @@
     },
     {
       "item": "can gandules (pigeon peas)",
-      "amount": "½ (14-oz [397-g])"
+      "amount": "½"
     },
     {
       "item": "ground turmeric",
@@ -70,5 +70,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

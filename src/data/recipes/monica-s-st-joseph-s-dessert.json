@@ -58,5 +58,13 @@
     "Put the mixture into the mould, pressing it down well. Cover with plastic wrap and refrigerate for at least 6 hours or, better still, overnight.",
     "Carefully remove the cake from the mould, turn it over onto a serving plate and unwrap it. Melt the dark chocolate and pour it over the cake, if desired."
   ],
-  "image": "/recipes/monica-s-st-joseph-s-dessert.jpg"
+  "image": "/recipes/monica-s-st-joseph-s-dessert.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

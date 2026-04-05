@@ -24,7 +24,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     },
     {
       "item": "sea salt and freshly ground black pepper",
@@ -54,5 +54,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

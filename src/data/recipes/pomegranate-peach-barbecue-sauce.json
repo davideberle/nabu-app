@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "finely chopped red onion",
@@ -18,11 +18,11 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -50,23 +50,23 @@
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "tamari",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "tomato paste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "chopped chipotle chile in adobo sauce",
-      "amount": "1 to 3 tablespoons"
+      "amount": "1 to 3 tbsp"
     },
     {
       "item": "minced fresh sage",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -78,5 +78,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 27
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

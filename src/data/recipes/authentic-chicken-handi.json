@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "ghee",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "medium red onions, thinly sliced",
@@ -50,19 +50,19 @@
     },
     {
       "item": "skinless chicken thighs on or off the bone, cut into small pieces",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "water, unsalted chicken stock or spice stock",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "plain yoghurt, whisked until creamy smooth",
-      "amount": "250g (1 cup)"
+      "amount": "250g"
     },
     {
       "item": "single (light) cream (optional)",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -90,5 +90,10 @@
     "Stir in the ground spices and mix it all up. This is the base of your curry. Toss in the chicken thighs and stir continuously for 3–4 minutes to brown the meat in the sauce mixture. Add the water/stock, cover the pan and simmer for about 15 minutes over a medium heat until the chicken is cooked through and the stock is thick.",
     "Stir in the yoghurt 1 tablespoon at a time and continue to simmer until you are happy with the consistency of the sauce. If using cream, add it now, then sprinkle in the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers, followed by the garam masala. Season with salt and garnish with the coriander (cilantro) and ginger."
   ],
-  "image": "/recipes/authentic-chicken-handi.jpg"
+  "image": "/recipes/authentic-chicken-handi.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

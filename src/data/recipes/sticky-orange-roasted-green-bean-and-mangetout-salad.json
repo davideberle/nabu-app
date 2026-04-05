@@ -14,19 +14,19 @@
   "ingredients": [
     {
       "item": "fine green beans, topped and tailed",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "mangetout (snow peas)",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "blanched hazelnuts",
-      "amount": "60 g (2 oz/scant ½ cup)"
+      "amount": "60 g"
     },
     {
       "item": "cooked green lentils",
-      "amount": "250 g (9 oz/1¼ cups)"
+      "amount": "250 g"
     },
     {
       "item": "small shallot, finely sliced diced",
@@ -47,12 +47,12 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "ORANGE DRESSING"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ORANGE DRESSING"
     },
     {
@@ -76,5 +76,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

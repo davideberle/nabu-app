@@ -21,11 +21,11 @@
     },
     {
       "item": "chia seeds",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "unsweetened shredded coconut",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sunflower seed kernels",
@@ -33,7 +33,7 @@
     },
     {
       "item": "peanut butter, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "Sunflower seed kernels, for garnish (optional)",
@@ -47,5 +47,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

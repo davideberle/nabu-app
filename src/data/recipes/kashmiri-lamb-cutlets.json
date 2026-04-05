@@ -18,7 +18,7 @@
     },
     {
       "item": "full-fat (whole) milk",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "2.5cm (1in) piece of cinnamon stick or cassia bark",
@@ -82,7 +82,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "150g (generous ½ cup)",
+      "amount": "150g",
       "group": "BATTER"
     },
     {
@@ -104,5 +104,10 @@
     "Deep-fry until nicely browned, then remove with a wire-mesh spoon to a plate lined with paper towel to soak up any excess oil. Sprinkle with a little flaky sea salt and serve with the lime wedges. They are also great dipped into your favourite raita or chutney."
   ],
   "tips": "If cooking ahead of time, you can place the finished cutlets on a wire rack placed over a foil-lined baking tray in a low oven, for up to 30 minutes.",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

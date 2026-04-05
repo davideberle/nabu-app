@@ -8,7 +8,8 @@
   "servings": "6 servings",
   "intro": "Your Instant Pot replaces the traditional clay or ceramic cone-shaped cooking pot used in Moroccan cuisine (the tagine). The word 'tagine' also refers to the slow-cooked, stew-like dish that is prepared in it. This chicken tagine features the authentic flavors of preserved lemons and olives, with a delicious combination of spices typically used in Moroccan cooking.",
   "time": {
-    "prep": "25 mins"
+    "prep": "25 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -79,5 +80,10 @@
     "Place onions and lemon pulp into the hot pot and cook, occasionally stirring, until onions have softened, about 5 minutes. Add cinnamon stick, place chicken on top, and scatter olives and lemon peel over the chicken. Pour in chicken broth. Close and lock the lid. Select high pressure according to manufacturer's instructions; set timer for 10 minutes. Allow 10 to 15 minutes for pressure to build.",
     "Release pressure using the natural-release method according to manufacturer's instructions, about 10 minutes. Unlock and remove the lid carefully, turning it away from you. Transfer contents to a large serving bowl. Sprinkle with parsley and cilantro and serve immediately."
   ],
-  "image": "/recipes/instant-pot-moroccan-chicken-tagine.jpg"
+  "image": "/recipes/instant-pot-moroccan-chicken-tagine.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

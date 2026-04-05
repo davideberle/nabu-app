@@ -18,7 +18,7 @@
     },
     {
       "item": "skinless chicken wings, whole or cut in half",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "salt, or to taste",
@@ -46,7 +46,7 @@
     },
     {
       "item": "water or spice stock",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "large tomato, diced",
@@ -70,5 +70,10 @@
     "Add the water or spice stock and tomato, stirring continuously, then add half the coriander (cilantro) and the curry leaves. With this recipe it is really important to continue stirring so that the chicken cooks evenly. Fry until the water has almost evaporated but the chicken still looks nice and moist in a thick gravy.",
     "To serve, squeeze the lemon juice over the top and garnish with the remaining coriander. Check for seasoning, adding more salt or chilli powder if needed."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

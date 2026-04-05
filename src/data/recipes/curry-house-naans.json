@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "warm full-fat (whole) milk",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "eggs, lightly beaten",
@@ -34,11 +34,11 @@
     },
     {
       "item": "self-raising (self-rising) flour, plus extra as needed",
-      "amount": "500g (4 cups)"
+      "amount": "500g"
     },
     {
       "item": "rapeseed (canola) oil",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml"
     },
     {
       "item": "Ghee or butter, for brushing",
@@ -54,5 +54,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

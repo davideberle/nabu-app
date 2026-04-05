@@ -116,5 +116,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 37
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

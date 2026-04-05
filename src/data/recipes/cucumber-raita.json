@@ -8,7 +8,8 @@
   "servings": "12 servings",
   "intro": "Serve this cool, refreshing salad with my Lamb Tagine and Moroccan Couscous on this site. Make the salad early in the day and keep it in the refrigerator to let the flavors blend and intensify. Add more mint to taste, but do not substitute dried mint; the flavor is just not the same.",
   "time": {
-    "prep": "15 mins"
+    "prep": "15 mins",
+    "total": 180
   },
   "ingredients": [
     {
@@ -39,5 +40,10 @@
   "method": [
     "Stir together the cucumber, yogurt, lemon juice, mint, sugar, and salt in a bowl. Cover and refrigerate for at least 3 hours, preferably overnight."
   ],
-  "image": "/recipes/cucumber-raita.jpg"
+  "image": "/recipes/cucumber-raita.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

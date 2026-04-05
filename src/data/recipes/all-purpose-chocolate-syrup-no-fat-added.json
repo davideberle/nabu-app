@@ -26,11 +26,11 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "¾ teaspoon / 3.75 ml"
+      "amount": "¾ tsp / 3.75 ml"
     }
   ],
   "method": [
@@ -42,5 +42,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

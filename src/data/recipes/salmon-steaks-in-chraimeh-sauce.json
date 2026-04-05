@@ -81,5 +81,13 @@
     "Pour the remaining oil into the frying pan, heat well, and add the spice paste. Stir and fry for just 30 seconds, so that the spices don’t burn. Quickly but carefully (it may spit!) add the water and tomato paste to stop the spices from cooking. Bring to a simmer and add the sugar, lemon juice, ¾ teaspoon salt, and some pepper. Taste for seasoning.",
     "Put the fish in the sauce, bring to a gentle simmer, cover the pan and cook for 7 to 11 minutes, depending on the size of the fish, until it is just done. Remove the pan from the heat, take off the lid, and leave to cool down. Serve the fish just warm or at room temperature. Garnish each serving with the cilantro and a lemon wedge."
   ],
-  "image": "/recipes/salmon-steaks-in-chraimeh-sauce.jpg"
+  "image": "/recipes/salmon-steaks-in-chraimeh-sauce.jpg",
+  "time": {
+    "total": 11
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

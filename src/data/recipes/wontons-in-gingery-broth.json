@@ -20,7 +20,7 @@
     },
     {
       "item": "cornstarch, plus more for dusting",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Fine sea salt",
@@ -32,11 +32,11 @@
     },
     {
       "item": "sugar, plus more as needed",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "toasted sesame oil or chile oil, plus more for garnish",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Rounded ¼ teaspoon grated peeled ginger (optional, use for a zippy filling), plus 3 quarter-size slices unpeeled ginger, bruised",
@@ -80,11 +80,11 @@
     },
     {
       "item": "fish sauce, plus more as needed",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "maple syrup, or 1 teaspoon sugar (optional)",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "rounded tablespoons finely chopped fresh cilantro",
@@ -96,7 +96,7 @@
     },
     {
       "item": "fried onions or shallots (optional)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large Thai or medium serrano chile, thinly sliced, with seeds intact (optional)",
@@ -118,5 +118,10 @@
     "Rewarm the broth over medium-high heat and, as it heats up, add the fish sauce and season with the maple syrup and salt, if needed, to create a savory-sweet finish. Add the chicken, mushrooms, and noodles; as soon the soup returns to a boil, remove from the heat. The noodles will have become clear and plump. Taste again to recheck the seasonings, adding a glug of fish sauce or pinches of salt, as needed.",
     "Ladle the soup into individual bowls (use chopsticks or tongs to move slippery noodles into the ladle) and garnish with the green onion rings, cilantro, a generous sprinkling of pepper, and the fried onions, if desired. Serve immediately, passing the chile slices and lime wedges at the table."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

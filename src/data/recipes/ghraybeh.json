@@ -47,5 +47,13 @@
   "image": "/recipes/ghraybeh.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 82
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

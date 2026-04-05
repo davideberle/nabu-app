@@ -33,5 +33,10 @@
   ],
   "method": [
     "In a large mixing bowl, add the flour. Start slowly pouring in the water with one hand and mixing with the other one."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

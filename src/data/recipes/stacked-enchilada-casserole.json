@@ -21,15 +21,15 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt, divided",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "15-ounce can black beans, drained and rinsed",
@@ -41,11 +41,11 @@
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chili powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -61,11 +61,11 @@
     },
     {
       "item": "dairy-free butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "flour",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "dairy-free milk",
@@ -73,7 +73,7 @@
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -89,5 +89,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

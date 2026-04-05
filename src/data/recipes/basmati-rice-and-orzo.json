@@ -40,5 +40,13 @@
     "Heat the ghee and oil over medium-high heat in a medium heavy-bottomed saucepan for which you have a lid. Add the orzo and sauté for 3 to 4 minutes, until the grains turn dark golden. Add the stock, bring to a boil, and cook for 3 minutes. Add the drained rice and salt, bring to a gentle boil, stir once or twice, cover the pan, and simmer over very low heat for 15 minutes. Don’t be tempted to uncover the pan; you’ll need to allow the rice to steam properly.",
     "Turn off the heat, remove the lid, and quickly cover the pan with a clean tea towel. Place the lid back on top of the towel and leave for 10 minutes. Fluff the rice with a fork before serving."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

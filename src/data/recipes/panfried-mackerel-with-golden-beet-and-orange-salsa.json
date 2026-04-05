@@ -82,5 +82,13 @@
     "In a separate bowl, mix together the spices, the juice of the remaining lemon half, and the nut oil. Pour this onto the beet and orange mix, stir, and season to taste with salt. It’s best to allow the salsa to stand at room temperature for at least 10 minutes to allow all the flavors to mingle.",
     "Just before serving, heat the olive oil in a large nonstick frying pan over medium heat. Place the mackerel fillets skin side down in the pan, and cook, turning once, for about 3 minutes, until cooked through. Transfer to serving plates and spoon the salsa on top."
   ],
-  "image": "/recipes/panfried-mackerel-with-golden-beet-and-orange-salsa.jpg"
+  "image": "/recipes/panfried-mackerel-with-golden-beet-and-orange-salsa.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

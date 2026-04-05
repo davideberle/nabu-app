@@ -14,95 +14,95 @@
   "ingredients": [
     {
       "item": "desiccated (dried shredded) coconut",
-      "amount": "60 g (2 oz/⅔ cup)"
+      "amount": "60 g"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "250 g (9 oz/2 cups)"
+      "amount": "250 g"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "silken tofu",
-      "amount": "70 g (2¼ oz)"
+      "amount": "70 g"
     },
     {
       "item": "soya milk",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "creamed coconut",
-      "amount": "80 g (3 oz)"
+      "amount": "80 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "coconut oil",
-      "amount": "115 g (4 oz/½ cup)"
+      "amount": "115 g"
     },
     {
       "item": "caster (superfine) sugar",
-      "amount": "115 g (4 o/½ cup)"
+      "amount": "115 g"
     },
     {
       "item": "soft brown sugar",
-      "amount": "50 g (2 oz/generous ¼ cup)",
+      "amount": "50 g",
       "group": "CARAMEL"
     },
     {
       "item": "toasted coconut",
-      "amount": "30 g (1 oz/½ cup)",
+      "amount": "30 g",
       "group": "CARAMEL"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "CARAMEL"
     },
     {
       "item": "plain flour",
-      "amount": "50 g (2 oz/scant ½ cup)",
+      "amount": "50 g",
       "group": "STREUSEL"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "50 g (2 oz/generous ¼ cup)",
+      "amount": "50 g",
       "group": "STREUSEL"
     },
     {
       "item": "vegan block butter, plus extra for greasing",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "STREUSEL"
     },
     {
       "item": "toasted coconut",
-      "amount": "30 g (1 oz/½ cup)",
+      "amount": "30 g",
       "group": "STREUSEL"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "STREUSEL"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "STREUSEL"
     }
   ],
@@ -120,5 +120,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

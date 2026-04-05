@@ -27,7 +27,7 @@
     },
     {
       "item": "full-fat Greek yogurt",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "bunch of mint, leaves picked and finely chopped",
@@ -76,5 +76,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

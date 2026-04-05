@@ -41,5 +41,13 @@
     "Place the birds in an oven dish and bake for about 30 minutes, basting from time to time with the juices from the pan and with an extra 50 g of melted butter.",
     "Remove the birds from the oven and let them rest for a few minutes. Melt the remaining butter in a saucepan and add the leftover garlic and rosemary. Cook for a few minutes, being careful that the garlic doesn’t brown. Pour the sauce over the birds and serve."
   ],
-  "image": "/recipes/roast-spatchcock.jpg"
+  "image": "/recipes/roast-spatchcock.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

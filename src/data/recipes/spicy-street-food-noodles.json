@@ -18,7 +18,7 @@
     },
     {
       "item": "sunflower oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small red onion (finely chopped) 1/2 cup tofu (crumbled)",
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

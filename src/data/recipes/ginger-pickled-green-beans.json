@@ -14,7 +14,7 @@
     },
     {
       "item": "minced fresh ginger",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "white vinegar",
@@ -26,11 +26,11 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,11 +14,11 @@
     },
     {
       "item": "plus 2 teaspoons extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plus 1¾ teaspoons coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Swiss chard, stemmed and cut into bite-size pieces",
@@ -50,7 +50,7 @@
     },
     {
       "item": "red wine vinegar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Freshly ground black pepper",
@@ -73,5 +73,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 87
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

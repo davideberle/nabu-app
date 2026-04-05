@@ -34,7 +34,7 @@
     },
     {
       "item": "nori flakes",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "handful of crispy shallots",
@@ -52,7 +52,7 @@
     },
     {
       "item": "palm sugar, coconut sugar or brown sugar",
-      "amount": "2½ tablespoons",
+      "amount": "2½ tbsp",
       "group": "DRESSING"
     },
     {
@@ -62,7 +62,7 @@
     },
     {
       "item": "vegan fish sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "DRESSING"
     }
   ],
@@ -76,5 +76,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

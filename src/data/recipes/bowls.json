@@ -761,7 +761,7 @@
     },
     {
       "item": "raspberries and 2 small chunks of mango per popsicle mold",
-      "amount": "3 (frozen)"
+      "amount": "3"
     },
     {
       "item": "coconut palm sugar per popsicle mold",
@@ -1435,5 +1435,13 @@
     "Mix everything together in a bowl. Roll the batter into balls, and then roll the balls in grated coconut; or, eat the batter with a spoon directly from the bowl.",
     "Chop the cashews in a food processor until they are finely ground, add the remaining ingredients except the dried blueberries, and keep mixing until a dough forms. Fold in the dried blueberries. Roll out balls, or shape the dough into a circle and cut out small pie slices instead.",
     "Mix the nuts or seeds of your choice, or almonds, in a food processor, adding in the neutral oil and salt. Different nuts will call for different amounts of oil. Cashews only need about ¼ cup (½ dl) of oil, while almonds will need ¾ cup (1½ dl) to become a really creamy nut butter. Store the butter in a glass jar with a tight-fitting lid."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

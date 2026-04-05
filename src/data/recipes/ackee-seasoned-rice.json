@@ -14,19 +14,19 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground allspice",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "ground turmeric",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "onion, diced",
@@ -42,19 +42,19 @@
     },
     {
       "item": "chopped coriander (cilantro) stalks",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "jasmine or basmati rice, rinsed",
-      "amount": "300 g (10½ oz/1½ cups)"
+      "amount": "300 g"
     },
     {
       "item": "water",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "creamed coconut",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "vegetable stock cube",
@@ -62,7 +62,7 @@
     },
     {
       "item": "rinsed and drained ackee",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "salt and freshly ground black pepper to taste",
@@ -77,5 +77,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

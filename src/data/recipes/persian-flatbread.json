@@ -12,15 +12,15 @@
   "ingredients": [
     {
       "item": "sachet fast-action dried yeast",
-      "amount": "1 x 7g (1/6 oz)"
+      "amount": "1 x 7g"
     },
     {
       "item": "warm water",
-      "amount": "500ml (18fl oz)"
+      "amount": "500ml"
     },
     {
       "item": "strong white bread flour",
-      "amount": "700g (1lb 9oz)"
+      "amount": "700g"
     },
     {
       "item": "crushed sea salt",
@@ -28,11 +28,11 @@
     },
     {
       "item": "olive oil",
-      "amount": "75ml (2¾fl oz)"
+      "amount": "75ml"
     },
     {
       "item": "butter, melted",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "nigella seeds, to scatter on top (or use sesame seeds)",
@@ -49,5 +49,13 @@
   "image": "/recipes/persian-flatbread.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

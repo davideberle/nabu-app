@@ -88,5 +88,13 @@
   "image": "/recipes/channa-dhal.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

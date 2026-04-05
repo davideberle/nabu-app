@@ -27,15 +27,15 @@
     },
     {
       "item": "watercress",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "artichoke hearts preserved in oil, drained and halved",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "walnut pieces",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "packet of chives, each stem snipped into 3",
@@ -59,11 +59,11 @@
     },
     {
       "item": "feta cheese",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "Greek yogurt",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "fat garlic clove, crushed",
@@ -92,5 +92,13 @@
     "Put the watercress in a large mixing bowl along with the artichoke halves, walnuts, herbs, onions, chillies and just a little sea salt and black pepper. Then break the feta roughly into 2.5cm (1in) chunks and mix all the ingredients together well. Slice the chicken breasts thinly, almost shredding them, add them to the salad and toss the salad lightly until all the ingredients are evenly distributed.",
     "Arrange the salad on a large flat serving platter, then drizzle the dressing all over the salad before serving."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

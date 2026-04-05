@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "dried chickpeas (garbanzo beans)",
-      "amount": "300g (1½ cups)"
+      "amount": "300g"
     },
     {
       "item": "English tea teabags",
@@ -114,5 +114,10 @@
   "image": "/recipes/punjabi-chole.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

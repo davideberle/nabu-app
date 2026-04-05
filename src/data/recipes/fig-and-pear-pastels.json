@@ -22,27 +22,27 @@
     },
     {
       "item": "arrowroot powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground nutmeg",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "agave nectar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "Finely grated zest of 1 lemon",
@@ -50,11 +50,11 @@
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "unbleached all-purpose flour",
@@ -71,5 +71,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 110
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "each of masoor, chana and toor lentils",
-      "amount": "50g (¼ cup)"
+      "amount": "50g"
     },
     {
       "item": "ghee",
@@ -50,7 +50,7 @@
     },
     {
       "item": "cubed lamb or mutton, on or off the bone",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "Kashmiri chilli powder",
@@ -78,11 +78,11 @@
     },
     {
       "item": "butternut squash or pumpkin, cut into 1cm (½in) cubes",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "potato, peeled and cut into 1cm (½in) cubes",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "finely chopped coriander (cilantro)",
@@ -110,5 +110,10 @@
     "Add the lamb and brown it for about 2 minutes. Stir in the chilli powder, turmeric and 1½ tablespoons of the garam masala. Stir these spices in, then add the tomatoes, tamarind paste, aubergines (eggplants), squash and potato. Add just enough water to cover – about 1 litre (4¼ cups) – and simmer for 50 minutes, or until the lamb is really tender and the vegetables and lentils have all broken down into a thick sauce. Lentils can stick to the bottom of the pan, so be sure to top up the water if necessary.",
     "To finish, stir in the coriander (cilantro) and mint, then add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Stir it all up, season with salt and garnish with a colourful layer of coriander (cilantro)."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

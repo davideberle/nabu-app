@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "olive oil",
@@ -20,19 +20,19 @@
     },
     {
       "item": "seven spice",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sumac",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Juice of 1 large lemon",
@@ -48,7 +48,7 @@
     },
     {
       "item": "sumac",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely chopped fresh parsley",
@@ -72,5 +72,10 @@
     "TO MAKE THE GARNISH: In a small skillet, heat the olive oil over low heat, then add the pine nuts and toast for 2 to 3 minutes, until golden, stirring continuously.",
     "Remove the chicken from the sheet pan. Take one of the pieces of taboon bread and smear it in the chicken juices in the sheet pan to soak up some of the liquid, then place it on a large platter, juicy side up. Scoop half of the onions from the sheet pan and spread them on the bread in a thin layer. Repeat with the remaining piece of bread, placing it on another platter and adding the remaining onions on top. Place 3 chicken quarters on top of each piece of bread.",
     "Garnish with a dusting of the 2 tablespoons sumac and sprinkle the toasted almonds and chopped parsley over everything. Serve each person a piece of chicken with some bread and onions along with yogurt and salad."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

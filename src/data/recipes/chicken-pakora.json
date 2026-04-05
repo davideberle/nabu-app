@@ -67,5 +67,13 @@
     "Stir in the garlic and ginger paste, coriander (cilantro) and the egg white. Now start adding the chickpea (gram) flour a little at a time, coating the meat, adding a splash of sparkling water from time to time. Continue until all the flour is used up and it has the consistency of ketchup.",
     "Heat enough oil for deep-frying in a deep, heavy-based pan or deep-fat fryer, to between 170 and 180°C (338–356°F). Using a wire mesh spoon, slowly lower the pakora into the hot oil. You may need to fry in batches and cooking times will of depend on the size of your chicken chunks, but it should only take a few minutes to cook through."
   ],
-  "image": "/recipes/chicken-pakora.jpg"
+  "image": "/recipes/chicken-pakora.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

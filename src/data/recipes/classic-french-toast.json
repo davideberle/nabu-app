@@ -17,11 +17,11 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cardamom",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of kosher salt",
@@ -29,11 +29,11 @@
     },
     {
       "item": "slices challah bread",
-      "amount": "8 (1-inch-thick)"
+      "amount": "8"
     },
     {
       "item": "unsalted butter",
-      "amount": "3-4 tablespoons"
+      "amount": "3-4 tbsp"
     },
     {
       "item": "Maple syrup, for serving",
@@ -46,5 +46,13 @@
     "Melt the butter in a large nonstick frying pan over medium heat.",
     "Working in batches, pan-fry the bread for 2-3 minutes on each side.",
     "Serve with maple syrup."
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

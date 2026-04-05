@@ -41,5 +41,13 @@
     "Before serving, drizzle with melted dark chocolate, if desired.",
     "You can make the semifreddo in individual dishes if you prefer."
   ],
-  "image": "/recipes/hazelnut-semifreddo.jpg"
+  "image": "/recipes/hazelnut-semifreddo.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

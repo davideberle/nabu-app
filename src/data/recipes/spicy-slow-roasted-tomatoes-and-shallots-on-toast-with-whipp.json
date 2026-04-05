@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "baby shallot, sliced into rings",
@@ -22,15 +22,15 @@
     },
     {
       "item": "coriander seeds, roughly ground",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "chilli flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cherry tomatoes, half kept whole and half halved",
-      "amount": "285 g (10 oz)"
+      "amount": "285 g"
     },
     {
       "item": "garlic cloves, very finely chopped",
@@ -38,11 +38,11 @@
     },
     {
       "item": "chopped thyme leaves",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "balsamic glaze",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "slices of bread of your choice",
@@ -54,7 +54,7 @@
     },
     {
       "item": "silken tofu",
-      "amount": "175 g (6 oz)",
+      "amount": "175 g",
       "group": "WHIPPED TOFU"
     },
     {
@@ -88,5 +88,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

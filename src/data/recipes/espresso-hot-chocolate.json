@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "Bittersweet Chocolate Ganache Glaze page 264)",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "freshly made (1-ounce / 30-ml) shot espresso",
@@ -32,5 +32,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

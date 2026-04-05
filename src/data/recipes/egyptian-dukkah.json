@@ -12,31 +12,31 @@
   "ingredients": [
     {
       "item": "cumin seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sesame seeds",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chopped pistachios",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "chopped hazelnuts",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper, or more to taste",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -48,5 +48,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "large onions, cut in half and thinly sliced into half moons",
@@ -20,7 +20,7 @@
     },
     {
       "item": "green lentils",
-      "amount": "275g (10oz)"
+      "amount": "275g"
     },
     {
       "item": "cumin seeds",
@@ -28,7 +28,7 @@
     },
     {
       "item": "basmati rice",
-      "amount": "300g (10½oz)"
+      "amount": "300g"
     },
     {
       "item": "ground coriander",
@@ -52,7 +52,7 @@
     },
     {
       "item": "water",
-      "amount": "525ml (19fl oz)"
+      "amount": "525ml"
     }
   ],
   "method": [
@@ -65,5 +65,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 53
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

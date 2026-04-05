@@ -18,7 +18,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "1¾ teaspoons"
+      "amount": "1¾ tsp"
     },
     {
       "item": "extra-virgin olive oil",
@@ -30,11 +30,11 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "red wine vinegar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "diced seeded heirloom tomatoes, in ¼-inch pieces",
@@ -82,5 +82,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 145
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

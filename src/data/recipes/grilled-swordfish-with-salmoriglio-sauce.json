@@ -59,5 +59,13 @@
     "To prepare the sauce, whisk the oil in a mixing bowl and very slowly add the warm water and lemon juice, whisking continuously to form an emulsion. Add the garlic, herbs and chilli (if using).",
     "Pat the swordfish slices dry with kitchen paper and rub them all over with oil. Grill for around 2 minutes on each side. Remove the fish from the grill and season with salt and pepper. Serve straight away, with the sauce spooned over the fish. Alternatively, serve the sauce on the side in a warm jug."
   ],
-  "image": "/recipes/grilled-swordfish-with-salmoriglio-sauce.jpg"
+  "image": "/recipes/grilled-swordfish-with-salmoriglio-sauce.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

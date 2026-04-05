@@ -66,5 +66,13 @@
   "image": "/recipes/baby-spinach-salad-with-dates-and-almonds.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 26
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

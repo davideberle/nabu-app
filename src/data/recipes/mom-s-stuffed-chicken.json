@@ -19,42 +19,42 @@
     },
     {
       "item": "kosher salt",
-      "amount": "4 teaspoons",
+      "amount": "4 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "garlic powder",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "curry powder",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "dried lime powder (or substitute 1 tablespoon fresh lemon juice)",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "CHICKEN"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "VEGETABLES"
     },
     {
@@ -84,22 +84,22 @@
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "RICE STUFFING"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "RICE STUFFING"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "4 teaspoons",
+      "amount": "4 tsp",
       "group": "RICE STUFFING"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "RICE STUFFING"
     },
     {
@@ -129,5 +129,10 @@
     "Place the stuffed chicken in the roaster on top of the vegetables. Cover with the lid, place on the middle rack in the oven, and bake for 1 hour. Remove the pan from the oven and open the lid. Spoon the rest of the rice stuffing inside the pan, trying your best to place it on the bottom with the vegetables on top. Close the pan, place it back into the oven, and bake for another 30 to 40 minutes, until the chicken is fully cooked (white on the inside or has an internal temperature of 165°F, or 74°C).",
     "Let the stuffed chicken sit for 10 to 15 minutes before serving. You can serve it right from the roaster or transfer to a platter."
   ],
-  "image": "/recipes/mom-s-stuffed-chicken.jpg"
+  "image": "/recipes/mom-s-stuffed-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

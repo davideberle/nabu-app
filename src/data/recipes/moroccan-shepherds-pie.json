@@ -8,7 +8,8 @@
   "servings": "4 servings",
   "intro": "This is a Moroccan take on shepherd's pie. Delicious combinations of savory and sweet, with lamb and turmeric simmered with cinnamon, raisins, and sweet potato. This dish also looks pleasant, and each happy eater gets their own ramekin!",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 45
   },
   "ingredients": [
     {
@@ -96,5 +97,10 @@
     "Place sweet potatoes into a large pot and cover with salted water; bring to a boil. Reduce heat to medium-low and simmer until tender, about 10 minutes. Drain and cool for 5 minutes. Transfer sweet potatoes to a bowl and sprinkle with 1/4 teaspoon salt and 3/8 teaspoon cinnamon. Beat potato mixture with a hand mixer at high speed until smooth. Add egg; beat until incorporated.",
     "Spoon lamb mixture into each ramekin; spread sweet potato mixture over lamb mixture. Place ramekins on a baking sheet."
   ],
-  "image": "/recipes/moroccan-shepherds-pie.jpg"
+  "image": "/recipes/moroccan-shepherds-pie.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

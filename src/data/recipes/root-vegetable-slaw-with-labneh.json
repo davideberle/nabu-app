@@ -75,5 +75,13 @@
   "image": "/recipes/root-vegetable-slaw-with-labneh.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

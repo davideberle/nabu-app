@@ -13,7 +13,7 @@
     },
     {
       "item": "chopped shallot",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cloves garlic, minced",
@@ -21,7 +21,7 @@
     },
     {
       "item": "dried basil",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "dry white wine, such as chardonnay",
@@ -37,7 +37,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cornmeal",
@@ -45,7 +45,7 @@
     },
     {
       "item": "extra virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "button mushrooms, sliced",
@@ -53,7 +53,7 @@
     },
     {
       "item": "chopped shallots",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "clove garlic, finely chopped",
@@ -61,7 +61,7 @@
     },
     {
       "item": "flour",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vegetable broth",
@@ -69,11 +69,11 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pressure Cooker Tender Patties, crumbled (page 286)",
@@ -90,5 +90,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 85
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

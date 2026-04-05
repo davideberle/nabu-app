@@ -56,5 +56,13 @@
     "As soon as the pasta is cooked al dente, drain it, reserving about 125 ml of the cooking water.",
     "Tip the pasta into a warm serving dish and stir in the reserved water. Stir in the remaining olive oil then add the breadcrumb mixture, tomatoes and bottarga. Toss everything together gently, then taste and adjust the seasoning to your liking. Serve immediately."
   ],
-  "image": "/recipes/pasta-with-sun-dried-mullet-roe.jpg"
+  "image": "/recipes/pasta-with-sun-dried-mullet-roe.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

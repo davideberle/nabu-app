@@ -74,7 +74,7 @@
     },
     {
       "item": "double (heavy) cream",
-      "amount": "300ml (1¼ cups)"
+      "amount": "300ml"
     },
     {
       "item": "butter, chilled",
@@ -95,5 +95,10 @@
     "Add the paprika and ground cumin, coriander and turmeric, and simmer for about 3 minutes. At this stage you have a choice. You can either leave the sauce as it is or take the whole spices out and blend it to a smooth sauce. I’ll leave that one to you. I usually leave it as is.",
     "Reduce the heat to medium and place the grilled chicken pieces in the sauce to heat through. To finish, whisk in the cream and reserved marinade from preparing the chicken, and turn the heat back up to medium–high. Add the chilled butter, 1 tablespoon at a time, and check for seasoning, adding more salt if needed. Sprinkle with the garam masala and serve."
   ],
-  "image": "/recipes/butter-chicken.jpg"
+  "image": "/recipes/butter-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

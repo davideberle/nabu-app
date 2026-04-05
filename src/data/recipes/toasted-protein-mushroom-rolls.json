@@ -13,15 +13,15 @@
     },
     {
       "item": "plus 2 teaspoons dairy-free milk",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Pinch of ground black pepper",
@@ -37,7 +37,7 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "slices whole-grain bread",
@@ -56,5 +56,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 13
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

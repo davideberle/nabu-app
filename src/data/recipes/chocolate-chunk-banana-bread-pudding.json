@@ -26,15 +26,15 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber, or agave syrup",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons / 10 ml"
+      "amount": "2 tsp / 10 ml"
     },
     {
       "item": "/ 7 grams tapioca starch or organic cornstarch",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ripe medium-size banana",
@@ -57,5 +57,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

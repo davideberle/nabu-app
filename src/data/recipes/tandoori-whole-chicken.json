@@ -54,5 +54,10 @@
     "Remove the chicken from the fridge a good half an hour before cooking. When ready to cook, preheat the oven to its highest setting. Once the oven is hot, place the chicken in a roasting pan and roast for 40 minutes to 1 hour, basting regularly with the melted butter and cooking juices. Your chicken is ready when the juices run clear when you prick the thigh with a knife. If using a meat thermometer, aim for 75°C (165°F).",
     "Squeeze over the lime juice and season with salt."
   ],
-  "image": "/recipes/tandoori-whole-chicken.jpg"
+  "image": "/recipes/tandoori-whole-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

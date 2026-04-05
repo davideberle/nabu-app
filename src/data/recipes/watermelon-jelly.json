@@ -48,5 +48,13 @@
     "To serve, loosen the jelly by submerging the mould in warm water for a few seconds. Invert it onto a serving platter and decorate with grated chocolate, chopped pistachio nuts and jasmine flowers or rose petals.",
     "To make jasmine water, soak 10 fresh jasmine flowers overnight in 50 ml water. The next day, strain the water and use within 24 hours."
   ],
-  "image": "/recipes/watermelon-jelly.jpg"
+  "image": "/recipes/watermelon-jelly.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

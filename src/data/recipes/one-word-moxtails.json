@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans jackfruit, drained and rinsed",
-      "amount": "2 (14-oz [400-g])"
+      "amount": "2"
     },
     {
       "item": "Beyond Meat ground beef",
@@ -50,7 +50,7 @@
     },
     {
       "item": "packages rice paper wrappers",
-      "amount": "2 to 3 (4.7-oz [134-g])"
+      "amount": "2 to 3"
     },
     {
       "item": "vegetable oil",
@@ -106,7 +106,7 @@
     },
     {
       "item": "can butter beans, drained and rinsed",
-      "amount": "1 (15.5-oz [439-g])"
+      "amount": "1"
     }
   ],
   "method": [
@@ -122,5 +122,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

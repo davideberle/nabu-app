@@ -84,5 +84,13 @@
     "Cook on the bottom shelf of the oven for 30–40 minutes, or until golden-brown in colour.",
     "You can serve this onion tart with a salad for lunch, or as a starter before dinner. It can also be made without the cheese, which will make the tart a little lighter."
   ],
-  "image": "/recipes/onion-tart.jpg"
+  "image": "/recipes/onion-tart.jpg",
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

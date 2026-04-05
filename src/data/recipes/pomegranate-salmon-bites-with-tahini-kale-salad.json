@@ -14,12 +14,12 @@
   "ingredients": [
     {
       "item": "pomegranate molasses, divided",
-      "amount": "4 tablespoons",
+      "amount": "4 tbsp",
       "group": "SALMON BITES"
     },
     {
       "item": "honey",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SALMON BITES"
     },
     {
@@ -29,17 +29,17 @@
     },
     {
       "item": "chili flakes",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "SALMON BITES"
     },
     {
       "item": "olive oil, divided",
-      "amount": "1½ tablespoons",
+      "amount": "1½ tbsp",
       "group": "SALMON BITES"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SALMON BITES"
     },
     {
@@ -54,17 +54,17 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SUMAC PITA CHIPS"
     },
     {
       "item": "sumac",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "SUMAC PITA CHIPS"
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "SUMAC PITA CHIPS"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "fresh lemon juice",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "KALE CAESAR SALAD"
     },
     {
@@ -84,22 +84,22 @@
     },
     {
       "item": "Dijon mustard",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KALE CAESAR SALAD"
     },
     {
       "item": "mayonnaise",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KALE CAESAR SALAD"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "KALE CAESAR SALAD"
     },
     {
       "item": "black pepper",
-      "amount": "1/8 teaspoon",
+      "amount": "1/8 tsp",
       "group": "KALE CAESAR SALAD"
     },
     {
@@ -109,7 +109,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "KALE CAESAR SALAD"
     },
     {
@@ -127,5 +127,10 @@
     "Add the kale to a large salad bowl, then add the oil and massage it into the kale to soften the fibers. Add the dressing to the bowl and toss to coat the kale. Top with the crispy sumac pita chips and Parmesan.",
     "Serve the salmon bites alongside the salad, drizzling the remaining 1 tablespoon pomegranate molasses onto the salmon on each plate, if desired."
   ],
-  "image": "/recipes/pomegranate-salmon-bites-with-tahini-kale-salad.jpg"
+  "image": "/recipes/pomegranate-salmon-bites-with-tahini-kale-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

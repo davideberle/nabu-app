@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "LAMB AND BROTH"
     },
     {
@@ -49,17 +49,17 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3½ teaspoons",
+      "amount": "3½ tsp",
       "group": "LAMB AND BROTH"
     },
     {
       "item": "turmeric",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "LAMB AND BROTH"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "LAMB AND BROTH"
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MAQLUBA"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "MAQLUBA"
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "item": "olive oil (optional)",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -157,5 +157,10 @@
     "To serve, use a large, round, flat serving tray. Remove the lid and place the serving tray upside down, covering the pot like a lid. Grab the handles of the pot, at the same time gripping the edges of the tray, and gently but swiftly flip the pot upside down. Allow the flipped pot to stay in place over the tray for 5 to 10 minutes to help gravity slowly bring the maqluba down and hold its shape. Slowly remove the pot to reveal the maqluba. If there are some vegetables stuck to the bottom of the pan, gently spoon them on top.",
     "Garnish with the toasted almonds (if using) and chopped parsley and serve with yogurt and salad."
   ],
-  "image": "/recipes/lamb-maqlubaupside-down-rice.jpg"
+  "image": "/recipes/lamb-maqlubaupside-down-rice.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

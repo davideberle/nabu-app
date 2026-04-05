@@ -30,11 +30,11 @@
     },
     {
       "item": "mild tasting extra-virgin olive oil",
-      "amount": "2 tablespoons / 30 ml"
+      "amount": "2 tbsp / 30 ml"
     },
     {
       "item": "/ 21 grams vegan chocolate chips",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 129 grams organic all-purpose flour",
@@ -54,19 +54,19 @@
     },
     {
       "item": "/ 5 grams aluminum-free baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "/ 5 grams baking soda",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 1 tablespoon / 75 ml mild tasting extra-virgin olive oil",
@@ -82,15 +82,15 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure orange oil (optional)",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "/ 57 grams vegan chocolate chips",
@@ -114,5 +114,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 80
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

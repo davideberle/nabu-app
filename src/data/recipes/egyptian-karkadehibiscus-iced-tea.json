@@ -42,5 +42,10 @@
     "Refrigerate for at least 2 hours. If the tea is too strong, feel free to dilute it with more cold water, but do not dilute too much if serving with ice cubes.",
     "Serve with ice cubes (if using) and garnish with mint leaves."
   ],
-  "image": "/recipes/egyptian-karkadehibiscus-iced-tea.jpg"
+  "image": "/recipes/egyptian-karkadehibiscus-iced-tea.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

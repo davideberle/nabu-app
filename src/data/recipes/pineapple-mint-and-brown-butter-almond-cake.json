@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "vegan block butter, plus extra for greasing",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "aquafaba from 1 x 400 g (14 oz) tin of chickpeas",
@@ -22,7 +22,7 @@
     },
     {
       "item": "cream of tartar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "pinch of salt",
@@ -30,35 +30,35 @@
     },
     {
       "item": "light brown soft sugar",
-      "amount": "100 g (3½ oz/generous ½ cup)"
+      "amount": "100 g"
     },
     {
       "item": "soya milk",
-      "amount": "50 ml (1¾ fl oz/3 tablespoons)"
+      "amount": "50 ml"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "almond extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground almonds (almond meal)",
-      "amount": "235 g (8¼ oz/2⅓ cups)"
+      "amount": "235 g"
     },
     {
       "item": "gluten-free plain (all-purpose) flour",
-      "amount": "100 g (3½ oz/generous ¾ cup)"
+      "amount": "100 g"
     },
     {
       "item": "baking powder",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "fresh pineapple, chopped",
-      "amount": "350 g (12 oz)",
+      "amount": "350 g",
       "group": "MUDDLED PINEAPPLE"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "item": "light brown soft sugar",
-      "amount": "50 g (2 oz/generous ¼ cup)",
+      "amount": "50 g",
       "group": "MUDDLED PINEAPPLE"
     },
     {
@@ -89,5 +89,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -17,7 +17,7 @@
     },
     {
       "item": "milk",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Salt and pepper, to taste",
@@ -41,7 +41,7 @@
     },
     {
       "item": "diced tomatoes",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     }
   ],
   "method": [
@@ -51,5 +51,10 @@
     "Once heated, place tortillas into the bigger pan and, in even amounts, add cheese, a hash brown patty, eggs, bacon, avocado, and tomatoes in the center of the tortilla in that order.",
     "Using a wheel pattern, fold the tortilla around the filling with the edge facing up. Place heated smaller pan (such as a cast-iron skillet) on top for about 20 seconds or until browned.",
     "Serve immediately."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

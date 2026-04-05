@@ -13,7 +13,7 @@
     },
     {
       "item": "soy sauce, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "extra-firm tofu, drained, pressed (page 17), and cubed",
@@ -25,7 +25,7 @@
     },
     {
       "item": "coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "packaged organic udon noodles",
@@ -55,5 +55,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

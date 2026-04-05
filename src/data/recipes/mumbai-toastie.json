@@ -69,7 +69,7 @@
     },
     {
       "item": "mint and coriander sauce, but without the yoghurt",
-      "amount": "150ml (generous ½ cup)",
+      "amount": "150ml",
       "group": "POTATO FILLING"
     },
     {
@@ -116,5 +116,10 @@
   "image": "/recipes/mumbai-toastie.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -26,15 +26,15 @@
     },
     {
       "item": "sun-dried tomato oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "coriander seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

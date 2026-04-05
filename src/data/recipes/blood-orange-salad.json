@@ -39,5 +39,10 @@
     "When the caramel is cold, put it into a plastic bag and beat it with a meat tenderiser or rolling pin until you have small, crunchy pieces.",
     "Arrange the oranges on a serving dish, mixing the dates through them. Heap the raspberries in the middle then sprinkle the almond crunch on top. Serve just like this, or with some mascarpone sweetened with a little sugar, if desired."
   ],
-  "image": "/recipes/blood-orange-salad.jpg"
+  "image": "/recipes/blood-orange-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

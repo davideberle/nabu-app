@@ -14,15 +14,15 @@
     },
     {
       "item": "plus 2 teaspoons / 16 grams Dutch-process cocoa powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "plus 2 teaspoons / 40 ml boiling water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     }
   ],
   "method": [
@@ -33,5 +33,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

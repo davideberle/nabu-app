@@ -32,5 +32,13 @@
     "Brush each croissant with the whisked egg.",
     "Bake for 15 minutes or until puffed up and golden-brown in color.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

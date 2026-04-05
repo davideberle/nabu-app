@@ -19,7 +19,7 @@
     },
     {
       "item": "cauliflower florets",
-      "amount": "250g (9oz)",
+      "amount": "250g",
       "group": "VEGETABLES"
     },
     {
@@ -29,12 +29,12 @@
     },
     {
       "item": "fresh or frozen peas",
-      "amount": "100g (¾ cup)",
+      "amount": "100g",
       "group": "VEGETABLES"
     },
     {
       "item": "tin (can) chopped tomatoes",
-      "amount": "400g (14oz)",
+      "amount": "400g",
       "group": "VEGETABLES"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "200g (¾ cup)",
+      "amount": "200g",
       "group": "MASALA"
     },
     {
@@ -126,5 +126,10 @@
   "image": "/recipes/pav-bhaji.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

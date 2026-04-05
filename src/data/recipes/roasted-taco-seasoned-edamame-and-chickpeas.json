@@ -17,11 +17,11 @@
     },
     {
       "item": "taco seasoning",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "aquafaba",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -36,5 +36,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 150
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

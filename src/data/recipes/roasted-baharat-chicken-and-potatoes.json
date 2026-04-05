@@ -18,39 +18,39 @@
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "curry powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground nutmeg",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "ground cloves",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "olive oil",
@@ -58,7 +58,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "boneless, skinless chicken thighs (1½ pounds, or 665 g)",
@@ -96,5 +96,10 @@
     "Place the baking dish in the oven and bake for 15 minutes, uncovered. Remove the dish from the oven. Nestle the marinated chicken thighs on top of the potatoes and onions, add ¾ cup (180 ml) of water, and return the dish to the oven and bake, uncovered, for another 30 minutes. Test the chicken and potatoes for doneness. The potatoes should be soft and the chicken white on the inside or cooked to 165°F (74°C). Baste the chicken with the juices from the bottom of the pan, then broil for 3 to 5 minutes, until lightly golden on top.",
     "Garnish the dish with the chopped parsley and green onions and serve with salad or slaw."
   ],
-  "image": "/recipes/roasted-baharat-chicken-and-potatoes.jpg"
+  "image": "/recipes/roasted-baharat-chicken-and-potatoes.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

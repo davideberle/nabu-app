@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "millet",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
@@ -42,7 +42,7 @@
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

@@ -25,7 +25,7 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "orange liqueur",
@@ -44,5 +44,10 @@
     "In a large pitcher, mix the nectarines, strawberries, rosé wine, orange juice, sugar, orange liqueur, and sparkling water.",
     "Add lots of ice and mix until well-combined.",
     "Serve in chilled glasses."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

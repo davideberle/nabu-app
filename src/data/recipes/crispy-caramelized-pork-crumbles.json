@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "canola or other neutral oil, plus more as needed",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "finely chopped shallot or yellow onion",
@@ -24,15 +24,15 @@
     },
     {
       "item": "fish sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Caramel Sauce (this page), or 1 teaspoon molasses mixed with 1 teaspoon water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "green onions, green parts only, thinly sliced",
@@ -45,5 +45,10 @@
     "Remove the skillet from the heat and stir in the green onion. Using a slotted spoon, transfer to a serving dish or shallow bowl, leaving behind the excess fat. Let the meat rest for 5 minutes to darken some more, crisp up, and intensify in flavor.",
     "Serve the crumbles warm."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

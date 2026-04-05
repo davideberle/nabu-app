@@ -17,7 +17,7 @@
     },
     {
       "item": "chia seeds or ground chia seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "soy milk",
@@ -25,7 +25,7 @@
     },
     {
       "item": "vanilla",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "whole wheat flour",
@@ -37,15 +37,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking soda",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cocoa powder",
@@ -69,5 +69,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 28
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

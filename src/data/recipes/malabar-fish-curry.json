@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "fresh or frozen grated coconut",
-      "amount": "150g (1½ cups)"
+      "amount": "150g"
     },
     {
       "item": "ground turmeric",
@@ -38,7 +38,7 @@
     },
     {
       "item": "cod or other meaty fish like halibut or ling, cut into medium chunks",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "rapeseed (canola) oil",
@@ -66,5 +66,10 @@
     "Bring 500ml (2 cups) of water to the boil in a pot, preferably a clay pot if you have one. Add the coconut mixture, chilli powder, ginger, green chilli and kokum or tamarind concentrate and simmer for about 15 minutes. Add the fish and simmer with the pan covered for a further 7 minutes, or until the fish is just cooked through. Be careful not to overcook the fish or it will fall apart.",
     "Meanwhile, heat the oil in a small frying pan over a medium–high heat. When visibly hot, add the mustard seeds and when they begin to crackle (after about 30 seconds), reduce the heat to medium and stir in the curry leaves and shallots and fry until the shallots are soft and lightly browned. Pour over the curry. You can leave it as a garnish or stir the infused oil into the curry. Check for seasoning and season with salt if needed."
   ],
-  "image": "/recipes/malabar-fish-curry.jpg"
+  "image": "/recipes/malabar-fish-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

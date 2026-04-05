@@ -20,7 +20,7 @@
     },
     {
       "item": "podded fresh or frozen broad beans, skins removed",
-      "amount": "1kg (2lb 4oz)"
+      "amount": "1kg"
     },
     {
       "item": "turmeric",
@@ -54,5 +54,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 28
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

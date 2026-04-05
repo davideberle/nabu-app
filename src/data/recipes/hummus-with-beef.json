@@ -11,11 +11,11 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canned chickpeas, drained and ¾ cup (180 ml) of the liquid (aquafaba) reserved",
@@ -31,15 +31,15 @@
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "unsalted butter or ghee",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "pine nuts (30 g) or slivered almonds (35 g)",
@@ -63,5 +63,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
 }

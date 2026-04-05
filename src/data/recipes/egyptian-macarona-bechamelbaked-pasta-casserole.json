@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
@@ -29,32 +29,32 @@
     },
     {
       "item": "kosher salt, divided",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "ground allspice",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "black pepper",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "BEEF SAUCE AND PASTA"
     },
     {
@@ -89,17 +89,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "BECHAMEL SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BECHAMEL SAUCE"
     },
     {
       "item": "ground nutmeg",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "BECHAMEL SAUCE"
     }
   ],
@@ -111,5 +111,10 @@
     "Mix the pasta and beef sauce one more time and use a spoon to flatten its surface. Slowly pour the bechamel on top, spreading it evenly.",
     "Bake, uncovered, for 20 to 25 minutes. If the sauce starts to leak to the top and around the edges, that’s normal. Broil the top for 3 to 4 minutes, until golden, then serve immediately."
   ],
-  "image": "/recipes/egyptian-macarona-bechamelbaked-pasta-casserole.jpg"
+  "image": "/recipes/egyptian-macarona-bechamelbaked-pasta-casserole.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

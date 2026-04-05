@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "ground linseed (flaxseed)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "pitted dates, chopped",
@@ -26,43 +26,43 @@
     },
     {
       "item": "boiling water",
-      "amount": "60 ml (2 fl oz/¼ cup)"
+      "amount": "60 ml"
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "melted coconut oil or olive oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "golden (light corn) syrup",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "black treacle (molasses)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "non-dairy milk",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "20 g (¾ oz/2 tablespoons)"
+      "amount": "20 g"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "70 g (2¼ oz/generous ½ cup)"
+      "amount": "70 g"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "good pinch of salt",
@@ -78,12 +78,12 @@
     },
     {
       "item": "coconut milk",
-      "amount": "85 ml (3 fl oz/⅓ cup)",
+      "amount": "85 ml",
       "group": "CARAMEL"
     },
     {
       "item": "dark brown soft sugar",
-      "amount": "85 g (3 oz/scant ½ cup)",
+      "amount": "85 g",
       "group": "CARAMEL"
     },
     {
@@ -105,5 +105,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -25,7 +25,7 @@
     },
     {
       "item": "matcha powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of kosher salt",
@@ -33,7 +33,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "⅔ cups all-purpose flour",
@@ -49,11 +49,11 @@
     },
     {
       "item": "vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "whole milk",
-      "amount": "4-6 tablespoons"
+      "amount": "4-6 tbsp"
     }
   ],
   "method": [
@@ -64,5 +64,13 @@
     "Let them cool. Dust with powdered sugar before serving.",
     "While the doughnuts are cooling prepare the glaze. Mix all the glaze ingredient in a bowl and whisk until smooth. Add more or less milk to adjust the consistency.",
     "Spread some of the glaze on the top of each cooled doughnut. Let set before serving."
-  ]
+  ],
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,19 +11,19 @@
   "ingredients": [
     {
       "item": "freshly squeezed orange juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "allspice berries, toasted and ground",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "fuyu persimmons, peeled, seeded, and finely diced",
@@ -39,11 +39,11 @@
     },
     {
       "item": "chopped cilantro",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "minced fresh ginger",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "chopped hazelnuts, toasted",
@@ -55,7 +55,7 @@
     },
     {
       "item": "coconut oil, plus more for oiling",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "freshly squeezed orange juice",
@@ -63,31 +63,31 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoons"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsulfured molasses",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "finely grated orange zest",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "finely grated lemon zest",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "grated nutmeg",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -99,5 +99,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 140
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

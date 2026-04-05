@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "rendered chicken fat",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "1.5kg (3lb 5oz) whole chicken, cut into 20 pieces",
@@ -22,7 +22,7 @@
     },
     {
       "item": "tin (can) plum tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "green bird’s eye chillies, slit down the middle",
@@ -46,5 +46,10 @@
     "Tip in the tomatoes and the green chillies – remove the seeds if you don’t like really spicy curries. Continue cooking and stirring until the sauce thickens to your preferred consistency.",
     "Season with the black pepper and salt and garnish with the ginger."
   ],
-  "image": "/recipes/chicken-namkeen.jpg"
+  "image": "/recipes/chicken-namkeen.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

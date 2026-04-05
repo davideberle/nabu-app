@@ -26,11 +26,11 @@
     },
     {
       "item": "instant yeast",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "sugar (optional) 1/2 teaspoon chilli powder Pinch of salt (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "warm water",
@@ -50,5 +50,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

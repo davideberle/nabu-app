@@ -28,15 +28,15 @@
     },
     {
       "item": "recently ground black or white pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "egg, separated",
@@ -44,7 +44,7 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely chopped celery",
@@ -52,15 +52,15 @@
     },
     {
       "item": "finely chopped green onion, white and green parts",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "finely chopped fresh dill fronds (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "butter",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "Paprika for sprinkling",
@@ -77,5 +77,10 @@
     "Break up the egg yolk with a pastry brush. Brush the tops of the toasts with the egg and sprinkle on a touch of paprika for cheery color.",
     "Bake the toasts for about 10 minutes, until the shrimp paste has turned opaque and the toast bottoms are golden brown. Then, position a rack 4 or 5 inches from the broiler and broil the tops for 1 to 2 minutes, until slightly puffed. Let cool for 5 minutes, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

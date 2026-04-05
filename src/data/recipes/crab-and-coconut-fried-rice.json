@@ -16,7 +16,7 @@
     },
     {
       "item": "virgin coconut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large garlic clove, minced",
@@ -49,5 +49,10 @@
     "In the same skillet over medium-high heat, melt the remaining 1 tablespoon coconut oil. Add the rice and cook, stirring, until the rice is hot and the grains are separate, about 1 minute, then return the crab and cook for 15 to 30 seconds to combine the flavors.",
     "Transfer the rice to a serving plate, garnish with the cilantro, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

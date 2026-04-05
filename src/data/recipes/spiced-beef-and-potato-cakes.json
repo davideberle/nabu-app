@@ -12,15 +12,15 @@
   "ingredients": [
     {
       "item": "breadcrumbs, blitzed to a fine consistency in a food processor",
-      "amount": "115g (4oz)"
+      "amount": "115g"
     },
     {
       "item": "minced beef",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "cooked potato, peeled, mashed and cooled",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "onion, minced in a food processor or very finely chopped",
@@ -70,5 +70,13 @@
     "Take a ball of the mixture (slightly larger than a golf ball), roll it in between your palms and flatten it into a patty shape. Lay the patty gently into the breadcrumbs and coat each side with enough breadcrumbs to cover the surface on both sides. Set aside and repeat the process until all the patties are made and coated.",
     "Drizzle a little oil into the preheated frying pan and fry several patties at a time without overcrowding the pan for 6–8 minutes on each side, or until nicely browned. Carefully remove them and drain on a plate lined with kitchen paper, then transfer to the oven and keep the cooked batches warm while you fry the remaining patties. Serve either with Persian Flatbread or on their own."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

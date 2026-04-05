@@ -18,7 +18,7 @@
     },
     {
       "item": "pure vanilla extract or seeds from half a vanilla bean",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "to 4 tablespoons / 45 to 60 ml All-Purpose Chocolate Syrup (page 274) or Chocolate Maple Syrup (page 275)",
@@ -40,5 +40,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

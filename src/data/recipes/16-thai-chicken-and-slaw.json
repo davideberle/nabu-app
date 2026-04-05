@@ -42,5 +42,10 @@
     "Add peanut butter and salt to the remaining mixture (Step 2) and stir until combined. Pour over coleslaw mixture (Step 5) and toss well. Refrigerate until serving.",
     "Serve the chicken (Step 4) with the salad (Step 6). Top with green onions.",
     "Serve the chicken (Step 4) with the salad (Step 6). Top with green onions."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

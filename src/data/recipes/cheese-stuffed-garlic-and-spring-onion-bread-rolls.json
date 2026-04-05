@@ -14,35 +14,35 @@
   "ingredients": [
     {
       "item": "creamed coconut, chopped",
-      "amount": "85 g (3 oz)"
+      "amount": "85 g"
     },
     {
       "item": "soya milk",
-      "amount": "200 ml (7 fl oz/scant 1 cup)"
+      "amount": "200 ml"
     },
     {
       "item": "vegan block butter, plus extra for greasing",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "maple syrup",
-      "amount": "75 ml (2½ fl oz/5 tablespoons)"
+      "amount": "75 ml"
     },
     {
       "item": "active dry yeast",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "strong white bread flour",
-      "amount": "400 g (14 oz/scant 3¼ cups)"
+      "amount": "400 g"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegan sharp Cheddar, cubed",
-      "amount": "100 g (3½ oz)"
+      "amount": "100 g"
     },
     {
       "item": "spring onions (scallions), finely chopped",
@@ -54,7 +54,7 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "50 g (2 oz)",
+      "amount": "50 g",
       "group": "GARLIC BUTTER"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GARLIC BUTTER"
     },
     {
@@ -87,5 +87,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

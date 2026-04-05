@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "vegan block butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "hispi (sweetheart) cabbage, halved lengthways",
@@ -55,5 +55,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

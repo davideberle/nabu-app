@@ -13,35 +13,35 @@
   "ingredients": [
     {
       "item": "silken tofu",
-      "amount": "70 g (2¼ oz)"
+      "amount": "70 g"
     },
     {
       "item": "soya milk",
-      "amount": "250 ml (8½ fl oz/1 cup)"
+      "amount": "250 ml"
     },
     {
       "item": "vegan block butter",
-      "amount": "45 g (1¾ oz)"
+      "amount": "45 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "active dry yeast",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "strong white bread flour",
-      "amount": "400 g (14 oz/scant 3¼ cups)"
+      "amount": "400 g"
     },
     {
       "item": "white cane sugar",
-      "amount": "45 g (1¾ oz/scant ¼ cup)"
+      "amount": "45 g"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "vegetable oil, for greasing and frying",
@@ -54,12 +54,12 @@
     },
     {
       "item": "icing (confectioners’ sugar)",
-      "amount": "100 g (3½ oz/generous ¾ cup)",
+      "amount": "100 g",
       "group": "GLAZE"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "GLAZE"
     },
     {
@@ -80,5 +80,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

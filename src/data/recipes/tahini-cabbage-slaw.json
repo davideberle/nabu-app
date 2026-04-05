@@ -23,7 +23,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fresh lemon juice (about 2 lemons), plus more if needed",
@@ -31,15 +31,15 @@
     },
     {
       "item": "honey",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "clove garlic",
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

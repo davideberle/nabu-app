@@ -38,7 +38,7 @@
     },
     {
       "item": "can Nature Charm brand coconut custard",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "About 10 vegan vanilla sandwich cookies, such as Oreo®, with the filling removed, plus more for garnish",
@@ -58,5 +58,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 14
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

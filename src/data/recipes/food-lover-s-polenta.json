@@ -81,5 +81,13 @@
     "Transfer to a warm oven while you cook the rest, using more of the butter and sage as you go.",
     "This polenta dish is delicious served as an antipasto to go with drinks, or as a starter."
   ],
-  "image": "/recipes/food-lover-s-polenta.jpg"
+  "image": "/recipes/food-lover-s-polenta.jpg",
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

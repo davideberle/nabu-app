@@ -42,19 +42,19 @@
     },
     {
       "item": "tomato purée",
-      "amount": "70ml (¼ cup)"
+      "amount": "70ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked chicken, plus 70ml (¼ cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "single (light) cream",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "garam masala",
@@ -74,5 +74,10 @@
     "Bring this to a rolling simmer, stirring only if the sauce is obviously sticking to the pan. Be sure to scrape any sauce that caramelizes on the side of the pan back in as this adds fantastic flavour. Add the remaining base sauce and simmer until the sauce has thickened to your liking.",
     "To finish, swirl in the cream, garam masala, coriander (cilantro) and butter. When the butter has melted into the sauce, season with salt."
   ],
-  "image": "/recipes/chicken-rezala.jpg"
+  "image": "/recipes/chicken-rezala.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

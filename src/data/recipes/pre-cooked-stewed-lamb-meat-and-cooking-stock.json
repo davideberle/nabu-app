@@ -62,7 +62,7 @@
     },
     {
       "item": "leg of lamb, cut into 2.5cm (1in) pieces (keep the bone if you have it)",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "mild paprika",
@@ -88,5 +88,10 @@
     "Allow the meat and cooking sauce to cool for use in your curries. The meat and cooking stock (remove the bone, if using) can be stored in the fridge for up to 3 days and freeze well for up to 2 months. The stock is usually strained before adding to curries."
   ],
   "tips": "Double this recipe and you’ve got a nice meal for the day you cook as well as lots of tasty pre-cooked meat for your BIR curries. If serving as a curry, be sure to season it with salt.",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

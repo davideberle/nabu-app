@@ -18,15 +18,15 @@
     },
     {
       "item": "creamed coconut",
-      "amount": "30 g (1 oz)"
+      "amount": "30 g"
     },
     {
       "item": "hot vegetable stock",
-      "amount": "500 ml (17 fl oz/2 cups)"
+      "amount": "500 ml"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "red (bell) pepper, diced",
@@ -38,7 +38,7 @@
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Scotch bonnet, deseeded and finely chopped",
@@ -46,7 +46,7 @@
     },
     {
       "item": "chopped thyme leaves",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "garlic cloves, very finely chopped",
@@ -54,11 +54,11 @@
     },
     {
       "item": "risotto rice",
-      "amount": "150 g (5 oz/generous ⅔ cup)"
+      "amount": "150 g"
     },
     {
       "item": "white wine",
-      "amount": "80 ml (3 fl oz/⅓ cup)"
+      "amount": "80 ml"
     },
     {
       "item": "juice of ½ lemon",
@@ -70,11 +70,11 @@
     },
     {
       "item": "vegan block butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "nori flakes",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -82,22 +82,22 @@
     },
     {
       "item": "boiling water mixed with 1 tablespoon white miso paste",
-      "amount": "120 ml (4 fl oz/½ cup)",
+      "amount": "120 ml",
       "group": "MARINADE"
     },
     {
       "item": "apple cider vinegar",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "MARINADE"
     },
     {
       "item": "nori flakes",
-      "amount": "2 tablespoon",
+      "amount": "2 tbsp",
       "group": "MARINADE"
     },
     {
       "item": "soy sauce",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MARINADE"
     }
   ],
@@ -113,5 +113,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

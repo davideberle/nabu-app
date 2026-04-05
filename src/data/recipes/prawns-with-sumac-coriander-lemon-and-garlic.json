@@ -35,7 +35,7 @@
     },
     {
       "item": "large raw peeled tiger prawns",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     }
   ],
   "method": [
@@ -47,5 +47,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

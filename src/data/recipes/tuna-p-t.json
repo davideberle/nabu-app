@@ -52,5 +52,13 @@
     "Pour the mixture into a bowl and leave it in the refrigerator for about 2 hours, or until firm.",
     "You can add 1–2 large boiled, mashed potatoes to the pâté to make it go further or lighten the taste."
   ],
-  "image": "/recipes/tuna-p-t.jpg"
+  "image": "/recipes/tuna-p-t.jpg",
+  "time": {
+    "total": 130
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -14,15 +14,15 @@
     },
     {
       "item": "/ 15 grams Dutch-process cocoa powder, sifted",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "pure maple syrup, Grade B or dark amber, or agave syrup",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "/ 18 grams organic granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Pinch fine sea salt",
@@ -30,11 +30,11 @@
     },
     {
       "item": "/ 5 grams tapioca starch, organic cornstarch, or arrowroot",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "/ 7 grams grated dark chocolate",
@@ -52,5 +52,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

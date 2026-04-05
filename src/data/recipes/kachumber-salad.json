@@ -9,7 +9,8 @@
   "intro": "This is a popular salad in many Indian restaurants. Sometimes it’s on the menu but often it’s simply used to garnish dishes. It makes a nice side dish as it doesn’t compete with the other dishes served. It is colourful and crisp, and helps bring a meal together. It is pictured on picture 1, picture 2 and picture 3.",
   "time": {
     "prep": "15 MINS, PLUS SITTING TIME",
-    "cook": ""
+    "cook": "",
+    "total": 30
   },
   "ingredients": [
     {
@@ -52,5 +53,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

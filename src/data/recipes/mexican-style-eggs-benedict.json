@@ -13,7 +13,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Salt and black pepper to taste",
@@ -33,7 +33,7 @@
     },
     {
       "item": "white vinegar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "jalapeño, cored, seeded, and sliced",
@@ -41,7 +41,7 @@
     },
     {
       "item": "fresh cilantro, chopped",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large egg yolks",
@@ -49,15 +49,15 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "lime juice",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chopped chipotle pepper in adobo or 1 teaspoon chipotle powder or to taste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "unsalted butter, melted",
@@ -79,5 +79,13 @@
     "Arrange the squash slices on plates. Top each with mashed avocado and chorizo.",
     "Add the poached eggs to each and drizzle with the sauce. Top with the jalapeño and cilantro.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

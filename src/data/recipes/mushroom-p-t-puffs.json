@@ -16,7 +16,7 @@
     },
     {
       "item": "butter or olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely chopped shallot or yellow onion",
@@ -32,11 +32,11 @@
     },
     {
       "item": "recently ground black pepper",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "dried thyme leaves, or ½ teaspoon fresh thyme leaves (optional)",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "Rounded 1½ teaspoons cornstarch",
@@ -69,5 +69,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

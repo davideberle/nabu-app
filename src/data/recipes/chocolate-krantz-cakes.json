@@ -91,5 +91,13 @@
   "image": "/recipes/chocolate-krantz-cakes.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

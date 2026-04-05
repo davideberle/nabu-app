@@ -18,15 +18,15 @@
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "finely ground golden flaxseeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plus 3 tablespoons unsweetened almond milk, homemade or store-bought",
@@ -42,7 +42,7 @@
     },
     {
       "item": "extra-virgin olive oil, plus more as needed for panfrying",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Salty Lemon Cream with Parsley, for serving",
@@ -62,5 +62,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

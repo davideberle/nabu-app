@@ -17,7 +17,7 @@
     },
     {
       "item": "cornstarch",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vegetable oil",
@@ -25,23 +25,23 @@
     },
     {
       "item": "toasted sesame seeds, for garnish",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "soy sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Chinese rice cooking wine or water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "grated ginger",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -55,5 +55,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -24,7 +24,7 @@
     },
     {
       "item": "minced lamb",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "large tomatoes, chopped into 2.5cm (1in) dice",
@@ -49,5 +49,13 @@
     "Preheat the oven to 180°C/fan 160°C/gas mark 4. Choose an ovenproof dish that can hold all the aubergine halves.",
     "Using a knife and a spoon, slash the cut side of the fried aubergines without cutting all the way through to the bottom – leave about 1cm (½in) around the edges. Use the spoon to press down and create a cavity in the centre of each aubergine half. Divide the stuffing mixture between the aubergine halves. Don’t be afraid to pile it high and pat the mixture down with the spoon. Top each one with the remaining diced tomato and the pepper strips and place in the ovenproof dish. Scatter a little cold water over each aubergine to keep it moist in the oven, then bake for 20–25 minutes, or until the pepper is slightly blackened around the edges. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

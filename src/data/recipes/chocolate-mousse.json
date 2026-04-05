@@ -38,5 +38,10 @@
     "Beat the egg whites until stiff, then gradually fold them through the chocolate mixture. Pour the mousse into individual dishes and refrigerate overnight. Or, do as they do at the Kronenhalle restaurant in Zürich and refrigerate the mousse in a large bowl, bring the bowl to the table and spoon it onto dessert plates. Sprinkle with cocoa powder, if you like. Serve with whipped cream.",
     "This mousse is better if you make it the day before – somehow it becomes even more chocolatey. Nocino is an Italian liqueur made from walnuts and spices. You can use vin santo or oloroso sherry if you prefer."
   ],
-  "image": "/recipes/chocolate-mousse.jpg"
+  "image": "/recipes/chocolate-mousse.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

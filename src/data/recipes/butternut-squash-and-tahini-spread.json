@@ -59,5 +59,13 @@
   "image": "/recipes/butternut-squash-and-tahini-spread.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

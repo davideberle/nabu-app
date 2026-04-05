@@ -13,15 +13,15 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder, plus more to taste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "annatto oil, divided",
-      "amount": "4 teaspoons"
+      "amount": "4 tsp"
     },
     {
       "item": "vegetable oil, divided",
@@ -33,7 +33,7 @@
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plum tomatoes, cubed",
@@ -49,19 +49,19 @@
     },
     {
       "item": "salt, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vegetable or mushroom stock powder, plus more if needed",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tamarind paste or 1 teaspoon tamarind concentrate mixed with 2 teaspoons water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cubes store-bought or homemade chao (optional)",
@@ -69,11 +69,11 @@
     },
     {
       "item": "fermented soybean sauce (optional)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "dried rice vermicelli noodles",
@@ -105,5 +105,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

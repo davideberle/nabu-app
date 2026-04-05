@@ -21,15 +21,15 @@
     },
     {
       "item": "raw shelled hempseed",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "maple syrup",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fresh lemon juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -39,5 +39,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "double cream",
-      "amount": "600ml (20fl oz)"
+      "amount": "600ml"
     },
     {
       "item": "icing sugar",
@@ -31,7 +31,7 @@
     },
     {
       "item": "raspberries",
-      "amount": "450g (1lb)"
+      "amount": "450g"
     },
     {
       "item": "handful of Greek basil leaves or torn basil leaves",
@@ -39,11 +39,11 @@
     },
     {
       "item": "pistachio nut slivers or chopped pistachio nuts (optional)",
-      "amount": "75g (2¾oz)"
+      "amount": "75g"
     },
     {
       "item": "raspberries",
-      "amount": "225g (8oz)"
+      "amount": "225g"
     },
     {
       "item": "icing sugar (you may need more if using raspberries out of season)",
@@ -66,5 +66,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

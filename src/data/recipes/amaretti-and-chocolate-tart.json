@@ -64,5 +64,13 @@
     "To make the filling, beat the egg whites until they form stiff peaks, but are not dry. Fold in the chocolate, almonds and amaretti. Pour the filling into the pastry shell and bake for around 35 minutes.",
     "Remove the tin from the oven. Release the sides of the tin and remove the tart. Leave it to cool completely and serve dusted with icing sugar."
   ],
-  "image": "/recipes/amaretti-and-chocolate-tart.jpg"
+  "image": "/recipes/amaretti-and-chocolate-tart.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

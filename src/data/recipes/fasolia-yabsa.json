@@ -16,15 +16,15 @@
     },
     {
       "item": "kosher salt, divided, plus more if needed",
-      "amount": "2¼ teaspoons"
+      "amount": "2¼ tsp"
     },
     {
       "item": "black pepper, divided, plus more if needed",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "onions, finely chopped",
@@ -32,7 +32,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "dried white kidney beans (see Notes), soaked overnight and drained",
@@ -45,5 +45,10 @@
     "Add the onions and ½ teaspoon of the salt and cook, stirring often, for 5 minutes, until softened. Stir in the tomato paste and continue to cook for 2 to 3 minutes.",
     "Add the drained beans along with 5½ cups (1.3 L) of water, the remaining 1¼ teaspoons salt, and the remaining ¼ teaspoon pepper. Mix everything together. Increase the heat to high and bring to a boil, then reduce the heat to medium and cook for 1 to 1½ hours, until the veal and beans are tender. You may need to replenish the water as the level goes down; check every 20 minutes or so to adjust (the water should be enough to cover the beans and meat). Taste and adjust for salt and pepper if necessary. The stew will thicken slightly due to the beans but should still have enough liquid.",
     "Ladle into bowls and serve with rice and salad."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

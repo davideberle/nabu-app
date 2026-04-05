@@ -34,11 +34,11 @@
     },
     {
       "item": "grated ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "palm oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "vegetable stock cube Salt to taste",
@@ -53,5 +53,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

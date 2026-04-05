@@ -15,7 +15,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "fresh mint leaves",
@@ -35,7 +35,7 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Kosher salt and black pepper",
@@ -49,5 +49,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

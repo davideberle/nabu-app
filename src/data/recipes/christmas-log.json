@@ -91,5 +91,13 @@
     "Flip the sponge upside down onto a fresh piece of greaseproof paper and peel off the top layer of paper. Spread the filling over the cooled sponge and roll the sponge up widthways. Wrap the roll up tightly with the paper to hold it together. Refrigerate for 2 hours.",
     "Dust with icing sugar, slice and serve. Alternatively, mix the icing ingredients and spread it over the roll. For a wooden log effect, pull a fork in raking motions through the icing."
   ],
-  "image": "/recipes/christmas-log.jpg"
+  "image": "/recipes/christmas-log.jpg",
+  "time": {
+    "total": 125
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

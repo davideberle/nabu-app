@@ -42,5 +42,13 @@
   "method": [
     "In a saucepan on medium heat, add sugar, cornstarch, water, lemon juice, and lemon zest. Stir in butter. In a medium bowl. add beaten egg yolks, then slowly pour half of the hot cornstarch mixture into the egg yolks, folding gently. Now pour everything back into the saucepan with the other half of the mixture, and on low heat, mix until thick. Set aside.",
     "Beat egg whites until stiff peaks form, add sugar, and mix another minute. Scoop the hot filling into the 3/4 baked pie shell and then spoon the meringue on top, sealing edges so that the meringue doesn't shrink. Bake in a preheated 350° F oven until golden brown, about 10 minutes. Cool for an hour or two in the refrigerator. Serves 4-6. Olé"
-  ]
+  ],
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

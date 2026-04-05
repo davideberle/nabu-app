@@ -14,11 +14,11 @@
     },
     {
       "item": "/ 12 grams Dutch-process cocoa powder, sifted",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 26 grams organic granulated sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 57 grams dark chocolate (62 to 68%), finely chopped, or use vegan chocolate chips for a sweeter pudding",
@@ -26,7 +26,7 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "Dark chocolate shavings, for garnish (optional)",
@@ -40,5 +40,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

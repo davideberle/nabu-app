@@ -60,5 +60,13 @@
     "Butter an ovenproof dish that the artichokes will fit into. Dry the artichokes well with kitchen paper, then spoon 2 heaped tablespoons of the spinach mix into each artichoke heart, pressing it down. Sprinkle some breadcrumbs over the artichokes, then a drizzle of virgin olive oil and a knob of butter. Season with salt and pepper.",
     "Bake for 20–25 minutes. You can serve it immediately from the oven dish, but the artichokes are also nice eaten at room temperature."
   ],
-  "image": "/recipes/artichoke-hearts-with-spinach.jpg"
+  "image": "/recipes/artichoke-hearts-with-spinach.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -22,27 +22,27 @@
     },
     {
       "item": "/ 5 grams coriander seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 4 grams anise seeds",
-      "amount": "1⅛ teaspoons"
+      "amount": "1⅛ tsp"
     },
     {
       "item": "/ 2 grams cumin seeds",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "/ 2 grams black peppercorns",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "/ 3 grams flaked sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "extra-virgin olive oil, at room temperature",
-      "amount": "1½ tablespoons / 22.5 ml"
+      "amount": "1½ tbsp / 22.5 ml"
     },
     {
       "item": "Bittersweet Chocolate Ganache Glaze (page 264) warmed in a water bath until spreadable",
@@ -61,5 +61,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

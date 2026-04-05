@@ -14,19 +14,19 @@
   "ingredients": [
     {
       "item": "vegan dark (bittersweet) chocolate",
-      "amount": "30 g (1 oz)"
+      "amount": "30 g"
     },
     {
       "item": "non-dairy double (heavy) cream",
-      "amount": "60 ml (2 fl oz/¼ cup)"
+      "amount": "60 ml"
     },
     {
       "item": "tahini",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "agave syrup",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "drop of vanilla extract",
@@ -60,5 +60,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

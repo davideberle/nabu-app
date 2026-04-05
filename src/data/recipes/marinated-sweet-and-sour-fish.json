@@ -76,5 +76,13 @@
     "Meanwhile, heat the remaining 1 tablespoon oil in a separate frying pan over medium-high heat. Sprinkle the fish with some salt, dip in the flour, then in the eggs, and fry for about 3 minutes, turning once. Transfer the fish to paper towels to absorb the excess oil, then add to the pan with the peppers and onions, pushing the vegetables aside so the fish sits on the bottom of the pan. Add enough water just to immerse the fish (about 1 cup / 250 ml) in the liquid.",
     "Place the pan in the oven for 10 to 12 minutes, until the fish is cooked. Remove from the oven and leave to cool to room temperature. The fish can now be served, but it is actually better after a day or two in the fridge. Before serving, taste and add salt and pepper, if needed, and garnish with the cilantro."
   ],
-  "image": "/recipes/marinated-sweet-and-sour-fish.jpg"
+  "image": "/recipes/marinated-sweet-and-sour-fish.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

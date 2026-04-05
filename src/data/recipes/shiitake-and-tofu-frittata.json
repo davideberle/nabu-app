@@ -24,7 +24,7 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Rounded ⅛ teaspoon recently ground black pepper",
@@ -32,7 +32,7 @@
     },
     {
       "item": "Bragg Liquid Aminos, Maggi Seasoning sauce, or soy sauce",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "eggs",
@@ -48,7 +48,7 @@
     },
     {
       "item": "soy sauce (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -62,5 +62,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -74,5 +74,13 @@
     "Cook gently, without letting the mixture boil, for 20 minutes. Serve with raw capsicums (peppers) and cardoons.",
     "P.S. Avoid all contact with other people for at least three days after eating this!"
   ],
-  "image": "/recipes/mamma-s-raw-vegetables-with-anchovy-cream.jpg"
+  "image": "/recipes/mamma-s-raw-vegetables-with-anchovy-cream.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

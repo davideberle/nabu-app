@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "dried kidney beans",
-      "amount": "360 g (12½ oz/2 cups)"
+      "amount": "360 g"
     },
     {
       "item": "2.5 litres (85 fl oz/10 cups) water",
@@ -26,7 +26,7 @@
     },
     {
       "item": "allspice berries",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "bunch of fresh thyme, leaves picked",
@@ -62,16 +62,16 @@
     },
     {
       "item": "coconut milk",
-      "amount": "400 ml (13 fl oz/generous 1½ cups)"
+      "amount": "400 ml"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "250 g (9 oz/2 cups)",
+      "amount": "250 g",
       "group": "SPINNERS"
     },
     {
       "item": "water",
-      "amount": "250 ml (8½ fl oz/1 cup)",
+      "amount": "250 ml",
       "group": "SPINNERS"
     },
     {
@@ -91,5 +91,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

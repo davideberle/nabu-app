@@ -5,10 +5,11 @@
     "cookbook": "Tagine Cookbook",
     "author": "Various"
   },
-  "servings": "6 serving s",
+  "servings": "6 servings",
   "intro": "A flavorful and delicious meal. A must-try!",
   "time": {
-    "prep": "25 mins"
+    "prep": "25 mins",
+    "total": 50
   },
   "ingredients": [
     {
@@ -97,5 +98,10 @@
     "Place the carrots, sweet potatoes, eggplant, plum tomatoes, zucchini, and raisins in the pot with the onion mixture. Stir in the chicken broth, lemon juice, honey, and season with cumin, coriander, turmeric, and cinnamon. Bring the stew to a boil over high heat, cover, reduce the heat to medium-low, and simmer until the vegetables are tender about 30 minutes.",
     "Pour the garbanzo beans into the stew and season with salt and pepper. Stir to combine and cook the soup for an additional 10 to 15 minutes."
   ],
-  "image": "/recipes/vegetable-tagine.jpg"
+  "image": "/recipes/vegetable-tagine.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

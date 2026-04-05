@@ -26,11 +26,11 @@
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "granulated sugar",
@@ -38,7 +38,7 @@
     },
     {
       "item": "ground cardamom (optional)",
-      "amount": "3 teaspoons"
+      "amount": "3 tsp"
     },
     {
       "item": "eggs, at room temperature",
@@ -46,7 +46,7 @@
     },
     {
       "item": "powdered sugar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING"
     }
   ],
@@ -59,5 +59,10 @@
     "Bake for 45 minutes, or until a toothpick inserted into the center comes out clean. Let cool for 10 minutes, then carefully flip onto a cake plate or stand. Let cool completely.",
     "Dust with the powdered sugar, slice, and serve."
   ],
-  "image": "/recipes/orange-cake.jpg"
+  "image": "/recipes/orange-cake.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

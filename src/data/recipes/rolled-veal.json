@@ -55,5 +55,10 @@
     "Melt the butter and oil in a frying pan that is large enough to hold the veal roll comfortably. Brown the meat all over. Add the garlic and the remaining sage leaves, then pour the wine over the veal, turning it around several times. Put a lid on the pan, turn the heat down to low and cook the rotolo, basting and turning it from time to time, for about 1–1 ½ hours, depending on the thickness of the roll. If the meat looks too dry add a little stock to the pan.",
     "Remove from the oven and let the meat rest for a few minutes, then carve it into slices about 1 cm thick. Pour the meat juices over the veal and serve."
   ],
-  "image": "/recipes/rolled-veal.jpg"
+  "image": "/recipes/rolled-veal.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

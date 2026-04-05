@@ -22,7 +22,7 @@
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fresh mushrooms (enoki, oyster, white beech, or similar), stems trimmed and separated",
@@ -38,19 +38,19 @@
     },
     {
       "item": "soy sauce, plus more to taste if needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetarian oyster sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dried flat rice noodles or 21 ounces (600 g) fresh mì Quảng or flat rice noodles",
@@ -78,7 +78,7 @@
     },
     {
       "item": "crushed roasted peanuts, for garnish",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -93,5 +93,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

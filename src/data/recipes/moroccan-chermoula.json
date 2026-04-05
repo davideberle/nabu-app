@@ -23,23 +23,23 @@
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cumin",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground coriander",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper, or more to taste",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "olive oil",
@@ -47,11 +47,11 @@
     },
     {
       "item": "fresh lemon juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "grated lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     }
   ],
   "method": [
@@ -62,5 +62,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

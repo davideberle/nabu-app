@@ -59,5 +59,10 @@
   "image": "/recipes/grilled-spice-and-lime-corn-on-the-cob.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

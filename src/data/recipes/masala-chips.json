@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "frozen chips (preferably the kind you deep-fry, but oven-bake will do)",
-      "amount": "900g (2lb)"
+      "amount": "900g"
     },
     {
       "item": "Rapeseed (canola) oil, for deep-frying",
@@ -81,5 +81,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

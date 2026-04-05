@@ -13,7 +13,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "milk",
@@ -25,11 +25,11 @@
     },
     {
       "item": "melted butter",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "fresh dill",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "chicken breasts",
@@ -37,7 +37,7 @@
     },
     {
       "item": "butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "leeks, white parts, sliced",
@@ -53,19 +53,19 @@
     },
     {
       "item": "Worcestershire sauce",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "parsley, minced",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "flour",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "⅓ cup milk",
@@ -89,7 +89,7 @@
     },
     {
       "item": "freshly minced parsley",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "Preheat your oven to 375°F (191°C).",
@@ -188,5 +188,13 @@
     "Preheat your oven to 350°F (177°C).",
     "Bake the crepes for 12 minutes.",
     "Garnish with parsley and serve."
-  ]
+  ],
+  "time": {
+    "total": 59
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

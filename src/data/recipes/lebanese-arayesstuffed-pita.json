@@ -30,23 +30,23 @@
     },
     {
       "item": "olive oil, divided, plus more for greasing",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "seven spice (or substitute with ground allspice)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "pomegranate molasses",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small, thick Greek-style round pitas (4 inches, or 10 cm), cut in half (see Note)",
@@ -71,5 +71,10 @@
     "Preheat a medium or large cast-iron grill pan over high heat. Brush with olive oil, then place 2 or 3 pitas (however many you can fit) in the pan and sear for 2 minutes per side, pressing down lightly with a spatula. Sear the edges as well, especially the exposed meat side. Continue to cook, flipping the arayes every 1 to 2 minutes, until the beef is cooked through and the outside is golden, 5 to 7 minutes total. Repeat with the remaining pitas.",
     "Serve immediately with tarator, toum, and/or ketchup for dipping and french fries."
   ],
-  "image": "/recipes/lebanese-arayesstuffed-pita.jpg"
+  "image": "/recipes/lebanese-arayesstuffed-pita.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

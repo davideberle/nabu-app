@@ -25,7 +25,7 @@
     },
     {
       "item": "chopped fresh herbs of your choice, such as dill, parsley, oregano, and/or mint",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -33,5 +33,10 @@
     "While whisking, drizzle in the olive oil in a slow, steady stream and whisk until the mixture emulsifies. Whisk in the yogurt until smooth, followed by the garlic and herbs.",
     "Season to taste with salt and pepper. Use immediately or place in a jar with a tight-fitting lid and refrigerate for up to 3 days.",
     "To reconstitute, shake vigorously."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

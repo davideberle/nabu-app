@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "onions, roughly chopped",
-      "amount": "900g (2lb/about 7 medium)"
+      "amount": "900g"
     },
     {
       "item": "salt",
@@ -22,27 +22,27 @@
     },
     {
       "item": "rapeseed (canola) oil*",
-      "amount": "250ml (1 cup)"
+      "amount": "250ml"
     },
     {
       "item": "carrots, peeled and chopped",
-      "amount": "110g (3¾oz)"
+      "amount": "110g"
     },
     {
       "item": "cabbage, roughly chopped",
-      "amount": "60g (2oz)"
+      "amount": "60g"
     },
     {
       "item": "red (bell) pepper, deseeded and diced",
-      "amount": "85g (3oz)"
+      "amount": "85g"
     },
     {
       "item": "green (bell) pepper, deseeded and diced",
-      "amount": "85g (3oz)"
+      "amount": "85g"
     },
     {
       "item": "tinned (canned) chopped tomatoes, or about 4 medium fresh tomatoes, chopped",
-      "amount": "200g (1 cup)"
+      "amount": "200g"
     },
     {
       "item": "garlic and ginger paste",
@@ -85,5 +85,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

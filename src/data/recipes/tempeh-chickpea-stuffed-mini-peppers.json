@@ -29,7 +29,7 @@
     },
     {
       "item": "ground mustard",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "scallions, thinly sliced",
@@ -37,11 +37,11 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -52,5 +52,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

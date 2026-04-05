@@ -19,7 +19,7 @@
     },
     {
       "item": "boneless lamb neck fillets, cut into 2.5cm (1in) chunks",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "green cardamom pods",
@@ -47,7 +47,7 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "sea salt",
@@ -55,7 +55,7 @@
     },
     {
       "item": "basmati rice",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "generous pinches of saffron threads (optional)",
@@ -67,7 +67,7 @@
     },
     {
       "item": "butter",
-      "amount": "125g (4½oz)"
+      "amount": "125g"
     }
   ],
   "method": [
@@ -79,5 +79,13 @@
     "Back to the rice; return the paper-lined saucepan to the hob and pour in a generous drizzle of oil with a couple of good knobs of the butter. Add 1 tablespoon crushed sea salt. Scatter in just enough rice to cover the base of the pan with a good layer. Drizzle a little of the saffron water (if using) over this layer of rice. Take the yogurt-marinated pre-cooked lamb and divide it into two portions. Layer one portion over the rice, then cover with a thin layer of rice, sprinkle over some more saffron water (if using), then add a generous layer of crispy onions and dot more butter on top. Repeat the layers until the rice, lamb, crispy onions and butter are all used up.",
     "Wrap the pan lid in a tea towel, cover the pan and cook the rice on the lowest temperature possible if using gas, or low-medium heat if using electric, for 30–45 minutes, or until the rice is cooked. When ready to serve, either flip the rice on to a serving dish or decant on to a serving platter, then scrape out the crispy tahdig from the base of the pan and serve it on top of the rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 53
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -19,57 +19,57 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "parsley flakes",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
       "item": "saffron strands",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "ORZO"
     },
     {
       "item": "hot water",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "ORZO"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ORZO"
     },
     {
@@ -79,22 +79,22 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "ORZO"
     },
     {
       "item": "onion powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "ORZO"
     },
     {
       "item": "garlic powder",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "ORZO"
     },
     {
       "item": "paprika",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "ORZO"
     },
     {
@@ -114,7 +114,7 @@
     },
     {
       "item": "butter",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "ORZO"
     },
     {
@@ -142,5 +142,10 @@
     "Once boiling, add the chicken cutlets back into the skillet in a single layer, cover the skillet with a tight-fitting lid, and cook over medium heat for 5 minutes. Turn off the heat and let sit for 10 minutes. Check that the chicken cutlets are cooked through by using a meat thermometer and ensuring the interior is heated to 165°F (74°C), or by cutting a piece to check that it is white inside. If required, cover and cook for a few more minutes.",
     "Cut the 1 tablespoon butter into small pieces and add it over the orzo to finish, then garnish with the chopped parsley and a squeeze of lemon. Serve with salad."
   ],
-  "image": "/recipes/one-pot-chicken-and-saffron-orzo.jpg"
+  "image": "/recipes/one-pot-chicken-and-saffron-orzo.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

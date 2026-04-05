@@ -53,5 +53,13 @@
     "Peel the eggs, then grate two of them roughly and another two finely and add them to the liver mixture. Add the remaining fat, the dessert wine, and the salt and pepper and fold everything together gently. Transfer the mix to a nonmetallic flat dish and cover the surface tightly with plastic wrap. Leave it to cool down, then store in the fridge for at least 2 hours to firm up a little.",
     "To serve, finely chop the remaining egg. Spoon the chopped liver onto individual serving plates, garnish with the chopped egg, and sprinkle with the green onions and chives."
   ],
-  "image": "/recipes/chopped-liver.jpg"
+  "image": "/recipes/chopped-liver.jpg",
+  "time": {
+    "total": 145
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

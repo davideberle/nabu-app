@@ -121,5 +121,13 @@
     "For the sauce, put all the ingredients in a food processor and pulse to a coarse consistency (or, for a rustic look, chop the parsley, capers, and egg by hand and stir together with the rest of the ingredients). Taste and adjust the seasoning.",
     "To serve, remove the loaf from the towel, cut into slices ⅜ inch / 1 cm thick, and layer on a serving plate. Serve the sauce on the side."
   ],
-  "image": "/recipes/polpettone.jpg"
+  "image": "/recipes/polpettone.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

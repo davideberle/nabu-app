@@ -8,7 +8,8 @@
   "servings": "5 servings",
   "intro": "Harira is a famous Moroccan soup, and here's a hearty vegetarian (and vegan!) version - packed with tomatoes and chickpeas and flavored with paprika, turmeric, saffron, ginger, and harissa. The amount of water can be adjusted depending on the thickness you want.",
   "time": {
-    "prep": "20 mins"
+    "prep": "20 mins",
+    "total": 45
   },
   "ingredients": [
     {
@@ -84,5 +85,10 @@
     "Heat oil in a large pot over medium heat and cook onion until soft and translucent, about 5 minutes. Add tomatoes, chickpeas, cilantro, parsley, mint, paprika, turmeric, ginger, harissa, and saffron. Add water and cook over medium heat until flavors have combined for about 30 minutes.",
     "Mix a few tablespoons of soup liquid with flour and cornstarch in a small bowl and return to the soup, stirring in well. Add cherry tomatoes. Bring to a boil, reduce heat, and simmer over low heat until soup thickens about 10 minutes. Season with salt and pepper."
   ],
-  "image": "/recipes/vegetarian-moroccan-harira.jpg"
+  "image": "/recipes/vegetarian-moroccan-harira.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

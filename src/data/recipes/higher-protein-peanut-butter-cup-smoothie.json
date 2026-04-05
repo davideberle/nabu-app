@@ -22,7 +22,7 @@
     },
     {
       "item": "/ 34 grams organic granulated sugar, whole cane sugar, or coconut sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "/ 25 grams Dutch-process cocoa powder",
@@ -39,5 +39,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

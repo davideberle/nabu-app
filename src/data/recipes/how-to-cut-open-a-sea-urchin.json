@@ -12,7 +12,7 @@
     },
     {
       "item": "extra-virgin olive oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "medium organic lemon",
@@ -72,7 +72,7 @@
     },
     {
       "item": "Aleppo pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "rapini, divided into florets",
@@ -80,7 +80,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "cloves garlic, gently crushed",
@@ -112,7 +112,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small shallot, chopped",
@@ -128,7 +128,7 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cooked chickpeas, drained",
@@ -184,7 +184,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -200,7 +200,7 @@
     },
     {
       "item": "turmeric",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "grated Parmigiano",
@@ -220,11 +220,11 @@
     },
     {
       "item": "nigella seeds",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "bunch Italian parsley, finely minced",
@@ -236,7 +236,7 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "to 5 (0.14-ounce) sachets squid ink",
@@ -292,15 +292,15 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "red pepper flakes",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "canned San Marzano tomato puree",
-      "amount": "14 ounces (1¾ cups)"
+      "amount": "14 ounces"
     },
     {
       "item": "bucatini pasta",
@@ -308,7 +308,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "to 4 ounces pancetta",
@@ -336,7 +336,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "diced white onion",
@@ -360,7 +360,7 @@
     },
     {
       "item": "canned San Marzano tomato puree",
-      "amount": "16 ounces (2 cups)"
+      "amount": "16 ounces"
     },
     {
       "item": "water",
@@ -404,7 +404,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "cloves garlic, gently crushed",
@@ -416,11 +416,11 @@
     },
     {
       "item": "red pepper flakes",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "can whole peeled San Marzano tomatoes, drained",
@@ -436,7 +436,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "white onion, finely chopped",
@@ -512,5 +512,13 @@
     "Add the rabbit and pancetta, and cook for 4 to 5 minutes, stirring constantly. Add the rosemary and pink peppercorns. Season with salt to taste. Stir and continue cooking for another 2 to 3 minutes.",
     "Add a splash of the wine and let it evaporate. Add the stock, cover, reduce the heat to low, and simmer for about 2 hours. When the meat is cooked through and the sauce comes together, uncover and add half the pomegranate seeds (also called arils).",
     "Stir in half the Parmigiano, and divide among four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining pomegranate seeds, and a drizzle of oil. Enjoy with a glass or two of smooth and young red wine."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

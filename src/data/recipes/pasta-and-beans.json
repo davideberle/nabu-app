@@ -94,5 +94,13 @@
     "Now add the pasta to the beans and vegetables. If the dish looks dry at this point, add more stock or water (the finished dish should be quite moist, and the pasta will take up liquid). Cook until the pasta is al dente or for about 10–12 minutes, depending on what pasta you use. Taste for salt and pepper and season.",
     "Serve with freshly grated parmigiano and a little good-quality virgin olive oil on the table for drizzling."
   ],
-  "image": "/recipes/pasta-and-beans.jpg"
+  "image": "/recipes/pasta-and-beans.jpg",
+  "time": {
+    "total": 57
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

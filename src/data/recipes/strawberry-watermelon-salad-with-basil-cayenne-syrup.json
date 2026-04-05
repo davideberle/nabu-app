@@ -22,15 +22,15 @@
     },
     {
       "item": "Basil-Cayenne Syrup",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "freshly squeezed lime juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Basil Salt, or to taste",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     }
   ],
   "method": [
@@ -41,5 +41,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

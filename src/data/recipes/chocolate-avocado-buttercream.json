@@ -14,11 +14,11 @@
     },
     {
       "item": "any nondairy milk",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "to 1¾ cups / 164 to 191 grams organic confectioners’ sugar, sifted twice",
@@ -37,5 +37,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

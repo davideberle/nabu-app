@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "coconut oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red onion (finely chopped)",
@@ -22,7 +22,7 @@
     },
     {
       "item": "grated fresh ginger",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "and 1/2 cups tinned full-fat coconut milk",
@@ -42,11 +42,11 @@
     },
     {
       "item": "curry powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cayenne pepper (optional)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "finely chopped roasted mushrooms or tofu",
@@ -73,5 +73,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

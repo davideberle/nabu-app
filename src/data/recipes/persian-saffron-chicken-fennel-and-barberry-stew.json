@@ -60,5 +60,13 @@
     "Pour over just enough boiling water to cover the chicken, then add the fennel quarters and honey. Cover the pan with a lid, reduce the temperature to low and simmer for 1 hour, stirring after 30 minutes or so to prevent sticking. After the hour has passed, add the barberries and stir gently, then cover and cook for another hour. The slower and longer you cook this dish, the richer and better it will taste.",
     "After the full 2 hours of cooking, check the chicken and fennel to ensure they are still intact and give the ingredients another careful stir. Re-cover and cook for a further 20 minutes, then serve with basmati rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

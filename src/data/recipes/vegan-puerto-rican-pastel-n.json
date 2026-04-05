@@ -18,7 +18,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "Must-Have Picadillo",
@@ -26,7 +26,7 @@
     },
     {
       "item": "bags shredded vegan mozzarella cheese (I recommend Violife® brand)",
-      "amount": "2 (8-oz [227-g])"
+      "amount": "2"
     },
     {
       "item": "JUST Egg",
@@ -44,5 +44,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 37
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "peanut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "finely diced yellow onion",
@@ -19,7 +19,7 @@
     },
     {
       "item": "coarse sea salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "white basmati rice, soaked in water overnight and drained well",
@@ -35,7 +35,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "vegetable stock, homemade or store-bought",
@@ -43,11 +43,11 @@
     },
     {
       "item": "tamari",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "coarse sea salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "small to medium okra pods",
@@ -55,11 +55,11 @@
     },
     {
       "item": "peanut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "blackened seasoning, homemade or store-bought (see notes)",
-      "amount": "4 to 6 tablespoons"
+      "amount": "4 to 6 tbsp"
     }
   ],
   "method": [
@@ -71,5 +71,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -28,7 +28,7 @@
     },
     {
       "item": "canola or other neutral oil, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "medium-large yellow onion, cut into 1-inch chunks",
@@ -52,11 +52,11 @@
     },
     {
       "item": "fish sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "anchovy paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "About 2 teaspoons maple syrup, or 1 teaspoon sugar (optional)",
@@ -64,27 +64,27 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "red chili flakes",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "minced garlic",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "minced lemongrass, or 1½ tablespoons grated lemongrass",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "fish sauce",
-      "amount": "1¼ teaspoons"
+      "amount": "1¼ tsp"
     },
     {
       "item": "dried rice spaghetti, boiled in unsalted water until chewy-tender (cooking times vary with brand), rinsed under cool water, and drained",
@@ -132,5 +132,10 @@
     "Warm the broth over medium-high heat. Meanwhile, cut the ribs between the bones or through the cartilage; then debone the beef shank and cut or pull the meat into bite-size pieces. Add the pork and beef pieces to the broth. (Or, for more elegance and less stringiness, keep the beef in large pieces and slice at an angle or across the grain, then arrange on the noodles in each bowl; the broth will warm the beef.)",
     "Bring the broth to a boil, then divide the meat and broth among the soup bowls. Top with the yellow onion, green onion, and cilantro. Serve the lettuce, bean sprouts, lime, mint, and remaining chile-lemongrass mix at the table. Have diners add whatever add-ins they wish. The produce lends texture, lime and mint brighten, and the chile-lemongrass mixture injects a unique toasty note and oomph."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

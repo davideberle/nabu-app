@@ -15,7 +15,7 @@
     },
     {
       "item": "baby squid (frozen works well)",
-      "amount": "750g (1lb 10oz)"
+      "amount": "750g"
     },
     {
       "item": "black peppercorns",
@@ -39,7 +39,7 @@
     },
     {
       "item": "cornflour",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     }
   ],
   "method": [
@@ -53,5 +53,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "/ 142 grams whole raw cashews, rinsed and soaked 3 to 4 hours or overnight",
-      "amount": "5 ounces (about 1 cup)"
+      "amount": "5 ounces"
     },
     {
       "item": "water, at room temperature",
@@ -22,11 +22,11 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "guar gum",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     }
   ],
   "method": [
@@ -37,5 +37,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

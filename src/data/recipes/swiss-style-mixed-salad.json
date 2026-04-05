@@ -55,5 +55,10 @@
     "Put the vinegar, oil, salt and mayonnaise in a glass jar with a lid and shake vigorously until creamy. Pour the dressing over the salad and serve at once.",
     "Use Nüsslisalat for this winter salad, as it only grows during this season. Alternatively, you can use baby spinach leaves."
   ],
-  "image": "/recipes/swiss-style-mixed-salad.jpg"
+  "image": "/recipes/swiss-style-mixed-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

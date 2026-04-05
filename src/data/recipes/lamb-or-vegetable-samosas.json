@@ -18,7 +18,7 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "400g (2¾ cups)",
+      "amount": "400g",
       "group": "PASTRY"
     },
     {
@@ -88,7 +88,7 @@
     },
     {
       "item": "frozen peas",
-      "amount": "125g (1 cup)",
+      "amount": "125g",
       "group": "PASTRY"
     },
     {
@@ -113,5 +113,10 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

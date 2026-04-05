@@ -14,32 +14,32 @@
   "ingredients": [
     {
       "item": "ground coriander",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SPICE PASTE"
     },
     {
       "item": "ground cumin",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "SPICE PASTE"
     },
     {
       "item": "ground cloves",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SPICE PASTE"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SPICE PASTE"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "SPICE PASTE"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons",
+      "amount": "2 tbsp",
       "group": "SPICE PASTE"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "item": "kosher salt (use ¾ teaspoon per pound; adjust accordingly to size of leg)",
-      "amount": "4½ teaspoons",
+      "amount": "4½ tsp",
       "group": "LEG OF LAMB"
     },
     {
@@ -97,5 +97,10 @@
     "Bake for 4 to 5 hours, until the lamb is fork-tender and falling off the bone, checking the lamb for doneness after 3 hours. Let rest, covered, for 30 minutes.",
     "Garnish with pomegranate arils and mint leaves and serve over a bed of roz asfar with almonds and raisins (if using) and chermoula (if using) on the side for topping."
   ],
-  "image": "/recipes/slow-roasted-leg-of-lamb.jpg"
+  "image": "/recipes/slow-roasted-leg-of-lamb.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -13,7 +13,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "sliced mushrooms",
@@ -48,5 +48,13 @@
     "Lower the temperature to medium-low heat. Pour the egg mixture on top of the ingredients in the skillet. Cover and cook for 10 minutes.",
     "Flip the frittata and cook for 2-3 minutes more.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

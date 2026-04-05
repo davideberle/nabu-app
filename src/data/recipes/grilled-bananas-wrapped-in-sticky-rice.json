@@ -13,7 +13,7 @@
     },
     {
       "item": "sugar, divided",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "sticky rice, rinsed, soaked for 1 hour, and drained",
@@ -49,11 +49,11 @@
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "tapioca starch or cornstarch",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "pandan leaves, knotted into a set, or 1 teaspoon vanilla extract",
@@ -61,7 +61,7 @@
     },
     {
       "item": "crushed roasted peanuts, for garnish (optional)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -76,5 +76,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

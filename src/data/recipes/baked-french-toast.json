@@ -17,11 +17,11 @@
     },
     {
       "item": "granulated sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "ground cinnamon, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "Pinch of kosher salt",
@@ -29,11 +29,11 @@
     },
     {
       "item": "slices challah bread",
-      "amount": "10 (1-inch-thick)"
+      "amount": "10"
     },
     {
       "item": "brown sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     }
   ],
   "method": [
@@ -44,5 +44,13 @@
     "In a small mixing bowl, combine the brown sugar and remaining ground cinnamon. Top the bread slices with the mixture.",
     "Bake for 30-35 minutes or until golden-brown in color.",
     "Let the French toast cool slightly before serving with powdered sugar or a drizzle of honey or maple syrup."
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

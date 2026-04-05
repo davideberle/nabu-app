@@ -50,5 +50,13 @@
     "Add cooked chicken (Step 1), lemon juice, fish sauce, chili paste, brown sugar, and sriracha. Stir well.",
     "Serve with rice and Boston lettuce leaves.",
     "Serve with rice and Boston lettuce leaves."
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

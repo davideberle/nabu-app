@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Cloves from 2 heads garlic, peeled and finely chopped",
@@ -26,19 +26,19 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "tomato paste",
@@ -62,7 +62,7 @@
     },
     {
       "item": "dried mint",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "finely chopped fresh parsley",
@@ -88,5 +88,10 @@
     "Add the rice, stir, and continue to cook, covered, for 10 minutes. Uncover the pot and add the lemon juice and mint. Stir to combine and taste and adjust the salt if necessary. If the soup is too thick, add a bit of water to thin it out to desired consistency.",
     "Ladle into bowls and garnish with the parsley and mint and serve with lemon wedges for squeezing."
   ],
-  "image": "/recipes/unstuffed-cabbage-soup.jpg"
+  "image": "/recipes/unstuffed-cabbage-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

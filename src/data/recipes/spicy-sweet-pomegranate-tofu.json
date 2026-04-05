@@ -20,31 +20,31 @@
     },
     {
       "item": "water",
-      "amount": "3½ tablespoons"
+      "amount": "3½ tbsp"
     },
     {
       "item": "pomegranate molasses (see this page)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "soy sauce",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "sriracha, plus more as needed",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "to 1½ tablespoons light or dark brown sugar",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "¾ teaspoon"
+      "amount": "¾ tsp"
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "large cremini or white mushrooms, quartered, with stems intact",
@@ -74,5 +74,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

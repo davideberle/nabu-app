@@ -39,22 +39,22 @@
     },
     {
       "item": "curry powder",
-      "amount": "3 teaspoons",
+      "amount": "3 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "ground coriander",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CAULIFLOWER FRITTERS"
     },
     {
@@ -74,22 +74,22 @@
     },
     {
       "item": "mayonnaise",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "black pepper",
-      "amount": "1/8 teaspoon",
+      "amount": "1/8 tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     },
     {
       "item": "kosher salt",
-      "amount": "¼ teaspoon",
+      "amount": "¼ tsp",
       "group": "MINT YOGURT SAUCE (OPTIONAL)"
     }
   ],
@@ -101,5 +101,10 @@
     "In a small bowl, whisk together the yogurt, mayonnaise, mint, ⅛ teaspoon pepper, and ¼ teaspoon salt until combined.",
     "Serve the fritters with the sauce (if using) for dipping or into sandwiches."
   ],
-  "image": "/recipes/pan-fried-curried-cauliflower-fritters.jpg"
+  "image": "/recipes/pan-fried-curried-cauliflower-fritters.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

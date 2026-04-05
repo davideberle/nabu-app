@@ -25,11 +25,11 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plum tomatoes, cut into wedges",
@@ -37,15 +37,15 @@
     },
     {
       "item": "salt, plus more if needed",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "or 5 makrut lime leaves, roughly torn into chunks, center stems removed",
@@ -53,7 +53,7 @@
     },
     {
       "item": "vegan fish sauce (optional)",
-      "amount": "1 tablespoon (or to taste)"
+      "amount": "1 tbsp (or to taste)"
     },
     {
       "item": "straw or white button mushrooms, rinsed in salted water and halved",
@@ -75,5 +75,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

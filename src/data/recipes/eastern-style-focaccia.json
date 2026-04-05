@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "cold soured cream",
-      "amount": "125g (4½oz)"
+      "amount": "125g"
     },
     {
       "item": "cold water",
@@ -19,7 +19,7 @@
     },
     {
       "item": "boiling water",
-      "amount": "100ml (3½fl oz)"
+      "amount": "100ml"
     },
     {
       "item": "sea salt, crushed, plus extra for topping",
@@ -31,11 +31,11 @@
     },
     {
       "item": "sachet fast-action dried yeast",
-      "amount": "1 x 7g (1/6 oz)"
+      "amount": "1 x 7g"
     },
     {
       "item": "strong white bread flour",
-      "amount": "550g (1lb 4oz)"
+      "amount": "550g"
     },
     {
       "item": "cumin seeds",
@@ -78,5 +78,13 @@
   "image": null,
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 100
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

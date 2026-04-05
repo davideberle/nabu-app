@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vermicelli noodles (see Note)",
@@ -26,7 +26,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "long-grain white basmati rice, rinsed until the water runs clear and drained completely",
@@ -50,5 +50,10 @@
     "If garnishing with the pine nuts or almonds, in a small dry skillet, toast the nuts for 2 to 3 minutes over medium heat, until golden, stirring continuously.",
     "Serve the rice on a platter, topped with the toasted pine nuts or almonds (if using) and chopped parsley (if using)."
   ],
-  "image": "/recipes/roz-bi-shaariyavermicelli-rice.jpg"
+  "image": "/recipes/roz-bi-shaariyavermicelli-rice.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

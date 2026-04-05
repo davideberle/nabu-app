@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans hearts of palm, drained and rinsed",
-      "amount": "2 (14-oz [400-g])"
+      "amount": "2"
     },
     {
       "item": "nori furikake, divided",
@@ -18,7 +18,7 @@
     },
     {
       "item": "can jackfruit in brine, drained",
-      "amount": "1 (2-oz [55-g])"
+      "amount": "1"
     },
     {
       "item": "olive oil",
@@ -42,7 +42,7 @@
     },
     {
       "item": "can tomato sauce",
-      "amount": "1 (8-oz [225-g])"
+      "amount": "1"
     },
     {
       "item": "vegetable stock",
@@ -87,5 +87,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

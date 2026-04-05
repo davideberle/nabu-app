@@ -18,7 +18,7 @@
     },
     {
       "item": "chopped cilantro",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "tofu (200 g), finely crumbled with a fork",
@@ -30,15 +30,15 @@
     },
     {
       "item": "sugar, plus 1 tablespoon for soaking rice paper wrappers",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of freshly ground black pepper",
@@ -50,7 +50,7 @@
     },
     {
       "item": "lime juice, for soaking rice paper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water, to soften rice paper",
@@ -77,5 +77,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 23
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

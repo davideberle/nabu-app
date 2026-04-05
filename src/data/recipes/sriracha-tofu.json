@@ -16,11 +16,11 @@
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Bragg Liquid Aminos or Maggi Seasoning sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "to 3 tablespoons sriracha (use the maximum for a nice lick of heat)",
@@ -28,7 +28,7 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -41,5 +41,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

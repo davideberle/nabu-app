@@ -22,7 +22,7 @@
     },
     {
       "item": "smooth mango chutney (or shop-bought)",
-      "amount": "200ml (generous ¾ cup)"
+      "amount": "200ml"
     },
     {
       "item": "fresh green chillies, to taste, finely chopped",
@@ -48,5 +48,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

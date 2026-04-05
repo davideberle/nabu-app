@@ -31,5 +31,10 @@
     "Sprinkle the parmigiano on the tips of the asparagus. Melt the butter and, as soon as it is foaming, pour it over the parmigiano. (The heat of the butter will melt the cheese and make a delicious crust.) Add a little salt and pepper. Serve at once with some crunchy Italian ciabatta bread.",
     "For a more substantial meal you can fry 2 organic eggs per person and serve them on the plate with the asparagus. Make sure the yolks are still very runny."
   ],
-  "image": "/recipes/asparagus-with-melted-butter-and-parmigiano.jpg"
+  "image": "/recipes/asparagus-with-melted-butter-and-parmigiano.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

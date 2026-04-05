@@ -8,7 +8,8 @@
   "servings": "16 servings",
   "intro": "This simple Moroccan Ksra (or Kesra) features semolina and aniseed and is ideal for a Moroccan Tagine meal.",
   "time": {
-    "prep": "2 hrs"
+    "prep": "2 hrs",
+    "total": 55
   },
   "ingredients": [
     {
@@ -54,5 +55,10 @@
     "Preheat the oven to 400 degrees F (200 degrees C). Brush the top of each loaf with olive oil, and sprinkle with sesame seeds if you like. Prick the tops of the loaves all over using a fork.",
     "Bake for 20 to 25 minutes in the preheated oven or until the loaves are golden and sound hollow when tapped. Serve warm or cool."
   ],
-  "image": "/recipes/moroccan-ksra.jpg"
+  "image": "/recipes/moroccan-ksra.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

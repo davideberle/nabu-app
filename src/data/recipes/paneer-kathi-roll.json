@@ -31,12 +31,12 @@
     },
     {
       "item": "red cabbage, finely shredded",
-      "amount": "150g (5½oz)",
+      "amount": "150g",
       "group": "SALAD"
     },
     {
       "item": "white cabbage, finely shredded",
-      "amount": "150g (5½oz)",
+      "amount": "150g",
       "group": "SALAD"
     },
     {
@@ -91,7 +91,7 @@
     },
     {
       "item": "paneer cheese, grated",
-      "amount": "200g (7oz)",
+      "amount": "200g",
       "group": "FILLING"
     }
   ],
@@ -103,5 +103,10 @@
   "image": "/recipes/paneer-kathi-roll.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

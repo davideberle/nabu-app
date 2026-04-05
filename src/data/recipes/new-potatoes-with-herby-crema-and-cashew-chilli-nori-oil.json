@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "new potatoes",
-      "amount": "750 g (1 lb 10 oz)"
+      "amount": "750 g"
     },
     {
       "item": "olive oil, for roasting",
@@ -36,7 +36,7 @@
     },
     {
       "item": "silken tofu",
-      "amount": "300 g (10½ oz)",
+      "amount": "300 g",
       "group": "HERBY CREMA"
     },
     {
@@ -61,12 +61,12 @@
     },
     {
       "item": "olive oil",
-      "amount": "120 ml (4 fl oz/½ cup)",
+      "amount": "120 ml",
       "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "cashews, roughly chopped",
-      "amount": "70 g (2¼ oz/scant ½ cup)",
+      "amount": "70 g",
       "group": "CASHEW CHILLI NORI OIL"
     },
     {
@@ -86,12 +86,12 @@
     },
     {
       "item": "maple syrup",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CASHEW CHILLI NORI OIL"
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CASHEW CHILLI NORI OIL"
     }
   ],
@@ -107,5 +107,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

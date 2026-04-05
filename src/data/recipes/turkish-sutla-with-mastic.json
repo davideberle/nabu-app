@@ -20,11 +20,11 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "mastic gum (see Notes; optional)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "short-grain rice, rinsed until the water runs clear and drained completely",
@@ -44,5 +44,10 @@
   ],
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

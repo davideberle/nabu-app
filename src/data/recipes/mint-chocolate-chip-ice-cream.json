@@ -26,15 +26,15 @@
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "natural mint oil or ⅜ teaspoon mint extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "guar gum",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "/ 85 grams vegan mint chocolate, finely chopped",
@@ -56,5 +56,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

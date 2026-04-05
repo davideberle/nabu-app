@@ -12,7 +12,7 @@
   "ingredients": [
     {
       "item": "minced lamb (not too lean)",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "large onion, minced or very finely chopped",
@@ -36,7 +36,7 @@
     },
     {
       "item": "pine nuts, lightly toasted",
-      "amount": "50g (1¾oz)"
+      "amount": "50g"
     },
     {
       "item": "large handful of currants",
@@ -61,5 +61,10 @@
     "Take a small handful of mixture, slightly larger than a golf ball, and shape into small, elongated sausage-like koftas, just over 5cm (2in) long, with slightly pointed ends and fatter middles. This is the traditional kefta shape, but you can shape them into small or large patties or simply make meatballs – the choice is yours.",
     "Heat a drizzle of oil in the preheated frying pan over a medium-high heat and fry several of the patties at a time without overcrowding the pan. Don’t flip the kefta over until you see a little brown crust forming on the underside. Brown on all sides, then transfer to an ovenproof dish lined with nonstick baking paper and keep the cooked batches warm in the oven while you fry the remaining kefta."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

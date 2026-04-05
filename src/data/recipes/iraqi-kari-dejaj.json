@@ -12,11 +12,11 @@
   "ingredients": [
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "boneless, skinless chicken thighs, cut into 1-inch (2.5 cm) cubes",
@@ -24,11 +24,11 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "kosher salt, divided",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "cremini mushrooms (or any other mushroom variety), sliced",
@@ -40,11 +40,11 @@
     },
     {
       "item": "mild curry powder",
-      "amount": "2½ teaspoons"
+      "amount": "2½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "frozen peas",
@@ -56,7 +56,7 @@
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -67,5 +67,10 @@
     "Meanwhile, in a small bowl, mix the cornstarch with the remaining 1 cup (240 ml) broth and whisk until a smooth slurry forms.",
     "After the 10 minutes, uncover the pan and add the slurry. Add the chicken back into the pan, mix well, and cook for another 15 to 20 minutes, uncovered, or until the chicken is cooked through and the vegetables are tender.",
     "Serve with rice."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

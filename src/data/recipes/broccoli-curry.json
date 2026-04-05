@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "broccoli, cut into small florets",
-      "amount": "500g (1lb 2oz)"
+      "amount": "500g"
     },
     {
       "item": "ghee or coconut oil",
@@ -26,7 +26,7 @@
     },
     {
       "item": "grated fresh or frozen coconut",
-      "amount": "70g (2½oz)"
+      "amount": "70g"
     },
     {
       "item": "toasted sesame seeds",
@@ -34,7 +34,7 @@
     },
     {
       "item": "roasted peanuts",
-      "amount": "70g (½ cup)"
+      "amount": "70g"
     },
     {
       "item": "red chilli powder",
@@ -62,7 +62,7 @@
     },
     {
       "item": "tin (can) thick coconut milk",
-      "amount": "400ml (14fl oz)"
+      "amount": "400ml"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
@@ -87,5 +87,10 @@
   "image": "/recipes/broccoli-curry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

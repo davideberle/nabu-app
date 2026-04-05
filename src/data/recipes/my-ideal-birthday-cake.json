@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "dried sour cherries",
-      "amount": "150 g (5 oz/1 cup)"
+      "amount": "150 g"
     },
     {
       "item": "amaretto, for soaking the cherries",
@@ -22,15 +22,15 @@
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "200 g (7 oz/scant 2 cups)"
+      "amount": "200 g"
     },
     {
       "item": "ground hazelnuts",
-      "amount": "200 g (7 oz/2 cups)"
+      "amount": "200 g"
     },
     {
       "item": "cane sugar",
-      "amount": "200 g (7 oz/scant 1 cup)"
+      "amount": "200 g"
     },
     {
       "item": "zest of 1 lemon",
@@ -38,31 +38,31 @@
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "room temperature vegan block butter, cubed",
-      "amount": "200 g (7 oz)"
+      "amount": "200 g"
     },
     {
       "item": "soya milk",
-      "amount": "125 ml (4 fl oz/½ cup)"
+      "amount": "125 ml"
     },
     {
       "item": "silken tofu",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "plain non-dairy yoghurt",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "toasted hazelnuts, to decorate",
@@ -70,22 +70,22 @@
     },
     {
       "item": "70% vegan dark (bittersweet) chocolate, plus extra for decoration",
-      "amount": "150 g (5 oz)",
+      "amount": "150 g",
       "group": "DARK CHOCOLATE CREAM CHEESE ICING"
     },
     {
       "item": "room-temperature vegan cream cheese",
-      "amount": "250 g (9 oz)",
+      "amount": "250 g",
       "group": "DARK CHOCOLATE CREAM CHEESE ICING"
     },
     {
       "item": "icing (confectioners’) sugar, sifted",
-      "amount": "200 g (7 oz/generous 1½ cups)",
+      "amount": "200 g",
       "group": "DARK CHOCOLATE CREAM CHEESE ICING"
     },
     {
       "item": "vanilla extract",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "DARK CHOCOLATE CREAM CHEESE ICING"
     }
   ],
@@ -105,5 +105,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

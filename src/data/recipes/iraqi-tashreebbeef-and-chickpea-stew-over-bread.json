@@ -18,11 +18,11 @@
     },
     {
       "item": "kosher salt, divided, plus more if necessary",
-      "amount": "4 teaspoons"
+      "amount": "4 tsp"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "dried limes, soaked in boiling water for 5 minutes",
@@ -30,7 +30,7 @@
     },
     {
       "item": "avocado oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "medium yellow onions, cut into eighths",
@@ -81,5 +81,10 @@
     "Add the veal shanks back into the pot and bring to a boil. Once boiling, cover the pot with the lid and carefully place it in the oven. Braise the shanks for 3 hours, or until the meat is tender and falling off the bones. Check on them after 1½ hours to make sure the liquid level is adequate; there should be enough liquid to fill at least three-quarters of the pot. If required, add ½ to 1 cup (120 to 240 ml) of water. Add the chickpeas at the 1½-hour mark. After 3 hours, taste the broth and adjust for salt if necessary and check to ensure the veal is falling off the bones. Remove from the oven.",
     "Tear up the bread into bite-size pieces and place as much as preferred in the serving bowls. Ladle the stew over the bread in each bowl. Serve with parsley and green and white onions."
   ],
-  "image": "/recipes/iraqi-tashreebbeef-and-chickpea-stew-over-bread.jpg"
+  "image": "/recipes/iraqi-tashreebbeef-and-chickpea-stew-over-bread.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

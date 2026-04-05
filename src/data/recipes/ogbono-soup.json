@@ -26,7 +26,7 @@
     },
     {
       "item": "cayenne or cameroon pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "1/4 teaspoon ogiri (optional) Salt to taste",
@@ -40,5 +40,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 8
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

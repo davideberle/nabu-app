@@ -66,23 +66,23 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "625ml (2½ cups)"
+      "amount": "625ml"
     },
     {
       "item": "tandoori chicken tikka",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "spice stock or pre-cooked stewed chicken stock",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "block coconut, cut into small pieces",
-      "amount": "100g (3½oz)"
+      "amount": "100g"
     },
     {
       "item": "dried fenugreek leaves (kasoori methi)",
@@ -123,5 +123,10 @@
     "Now stir in about 250ml (1 cup) of the base curry sauce and let it reduce for about 1 minute, stirring the caramelized bits into the sauce. Add the pre-cooked chicken, the rest of the base curry sauce, the stock and block coconut pieces. Let the sauce simmer for about 5 minutes until you are happy with the consistency, only stirring if it looks like it is catching on the pan.",
     "Stir in the dried fenugreek leaves (kasoori methi), mango chutney and cashew paste (if using). Fish out the whole spices if you want and add salt and sugar to taste. Squeeze the lime juice over the top and sprinkle with the garam masala and chopped coriander (cilantro) to serve."
   ],
-  "image": "/recipes/chicken-ceylon.jpg"
+  "image": "/recipes/chicken-ceylon.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

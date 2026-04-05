@@ -18,7 +18,7 @@
     },
     {
       "item": "tin (can) chickpeas (garbanzo beans), drained and rinsed",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "large red onion, finely chopped",
@@ -49,5 +49,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -93,5 +93,13 @@
     "For the vegetables, heat the oil and 25 g of the butter in a saucepan and gently cook the onions until soft. Add the garlic, sage and cavolo nero and cook for a few more minutes. Remove from the heat and add the potatoes, beans, peas and spinach and gently mix together.",
     "Butter a large ovenproof dish. Bring a large pan of salted water to the boil and cook the pizzoccheri for just 1 minute. Drain and put the pasta into the dish. Add the vegetables, Gruyère and some salt and pepper and gently mix everything together. Sprinkle the parmigiano on top, then evenly dot the remaining butter over the top of the parmigiano. Bake the pizzoccheri in the oven for about 20 minutes, or until the top turns golden."
   ],
-  "image": "/recipes/buckwheat-pasta-with-vegetables.jpg"
+  "image": "/recipes/buckwheat-pasta-with-vegetables.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

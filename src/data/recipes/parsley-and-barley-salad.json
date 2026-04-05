@@ -75,5 +75,13 @@
   "image": "/recipes/parsley-and-barley-salad.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

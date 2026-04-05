@@ -50,7 +50,7 @@
     },
     {
       "item": "can gandules (pigeon peas)",
-      "amount": "1 (15-oz [425-g])"
+      "amount": "1"
     },
     {
       "item": "bay leaves",
@@ -75,5 +75,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

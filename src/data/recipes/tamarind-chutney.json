@@ -9,7 +9,8 @@
   "intro": "Tamarind chutney simply has to be on the table when my wife and I plan a curry party. It’s sweet, sour, savoury and spicy, and also has a nice crunch to it. What more could you ask for in a chutney?",
   "time": {
     "prep": "5 MINS, PLUS SITTING TIME",
-    "cook": ""
+    "cook": "",
+    "total": 60
   },
   "ingredients": [
     {
@@ -68,5 +69,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

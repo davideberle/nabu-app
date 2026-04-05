@@ -16,7 +16,7 @@
     },
     {
       "item": "fat, such as canola oil, peanut oil, coconut oil, rendered lard, or European-style butter",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic cloves, finely chopped",
@@ -32,7 +32,7 @@
     },
     {
       "item": "fish sauce, soy sauce, Bragg Liquid Aminos, or Maggi Seasoning sauce, plus more for serving",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "green onion, white and green parts, chopped",
@@ -49,5 +49,10 @@
     "Push the rice to the skillet’s perimeter to create a 4-inch-well in the middle. Add the remaining 1 tablespoon fat to the well, pour in the egg, then pour the fish sauce around the rim of the well (onto the rice). Quickly stir-fry to break up, scramble, and work the golden egg bits into the rice. Add the green onion and cook for 10 to 15 seconds longer, until just wilted. Turn off the heat, taste, and season with salt, if needed.",
     "Transfer the rice to a plate or shallow bowl. Serve with additional fish sauce, soy sauce, or Maggi Seasoning in case diners want an extra-savory punch."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

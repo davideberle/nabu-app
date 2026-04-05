@@ -51,5 +51,13 @@
     "Nocino is a traditional Italian liqueur made with walnuts. With this recipe you can make one bonèt in a single large mould, or eight smaller ones in individual moulds.",
     "Traditionally, bonèt is made with cocoa powder."
   ],
-  "image": "/recipes/maria-teresa-s-bon-t.jpg"
+  "image": "/recipes/maria-teresa-s-bon-t.jpg",
+  "time": {
+    "total": 85
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

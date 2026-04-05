@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "toor dhal",
-      "amount": "150g (1 cup)"
+      "amount": "150g"
     },
     {
       "item": "salt",
@@ -94,5 +94,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

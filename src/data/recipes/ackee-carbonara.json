@@ -14,23 +14,23 @@
   "ingredients": [
     {
       "item": "rinsed and drained ackee",
-      "amount": "250 g (9 oz)"
+      "amount": "250 g"
     },
     {
       "item": "nutritional yeast",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "miso paste",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "rigatoni",
-      "amount": "350 g (12 oz)"
+      "amount": "350 g"
     },
     {
       "item": "vegan Parmesan, grated, plus extra to serve",
-      "amount": "50 g (2 oz)"
+      "amount": "50 g"
     },
     {
       "item": "olive oil, for frying",
@@ -42,27 +42,27 @@
     },
     {
       "item": "smoked tofu, cut into lardons (thin strips)",
-      "amount": "100 g (3½ oz)",
+      "amount": "100 g",
       "group": "TOFU BACON"
     },
     {
       "item": "liquid smoke",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "TOFU BACON"
     },
     {
       "item": "smoked paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TOFU BACON"
     },
     {
       "item": "garlic granules",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TOFU BACON"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TOFU BACON"
     }
   ],
@@ -77,5 +77,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

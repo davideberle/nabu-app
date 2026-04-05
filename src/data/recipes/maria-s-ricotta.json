@@ -35,5 +35,10 @@
     "The watery liquid that remains behind in the pan is called the whey. If it still looks a little cloudy and milky, return it to the boil. You will see it coagulate to form a little more ricotta. Put the pan back into the sink of cold water and lift the ricotta out with a slotted spoon and transfer to the colander.",
     "The whey may be combined with more milk to make further batches of ricotta. I actually find the second, third and fourth batches are better, as they lose some of the acidity of the vinegar. If you don’t plan to make more ricotta straight away, you can pour the whey into a glass jar and keep it in the refrigerator for up to 4 days."
   ],
-  "image": "/recipes/maria-s-ricotta.jpg"
+  "image": "/recipes/maria-s-ricotta.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

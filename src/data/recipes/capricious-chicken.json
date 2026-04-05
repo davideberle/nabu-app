@@ -85,5 +85,13 @@
     "Cut all the vegetables into thin sticks.",
     "On your serving dish, arrange some baby iceberg or radicchio leaves. Mix the carrots and celery with 125 ml mayonnaise. Spoon onto the leaves then add the capsicum followed by the chicken pieces. Put the rocket leaves on top of the chicken and, finally, scatter over the pine nuts. Serve the remainder of the mayonnaise on the side."
   ],
-  "image": "/recipes/capricious-chicken.jpg"
+  "image": "/recipes/capricious-chicken.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

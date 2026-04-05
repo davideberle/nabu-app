@@ -59,5 +59,13 @@
     "Combine the ground rose petals, spices and grated orange and lime rind in a small bowl, add the olive oil and stir well to form a wet marinade for the salmon.",
     "Rub each salmon fillet well with the spice marinade and place it on the prepared baking sheet. (At this stage you can cover with clingfilm and leave overnight in the refrigerator to marinate, if you wish.) Once all the fillets are well coated in the marinade, season them well with sea salt and black pepper, then bake for 10–12 minutes until the fish is cooked through. I like to serve this with lemon wedges and a Fattoush Salad."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 12
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

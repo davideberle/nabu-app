@@ -34,7 +34,7 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "ground cumin",
@@ -58,11 +58,11 @@
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "smooth mango chutney, to taste",
@@ -91,5 +91,10 @@
     "To serve, stir in the mango chutney and lime juice. Season with salt, sprinkle with the garam masala and garnish with the coriander (cilantro)."
   ],
   "tips": "If you are looking for a more savoury flavour, spicy lime pickle can be substituted for the mango chutney.",
-  "image": "/recipes/lamb-madras.jpg"
+  "image": "/recipes/lamb-madras.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -50,5 +50,10 @@
     "Get your butcher to cut the scaloppine quite thick and then, with a meat tenderiser, flatten them into a round shape, as big as a plate. Dust the surface of the meat with a little flour, coat with some beaten egg, then press the meat into the breadcrumbs.",
     "Melt the butter in a frying pan and add the oil and sage leaves. When the butter foams, cook the scaloppine well on both sides until golden. Season with salt and pepper, and serve with a few wedges of lemon, or add some rocket and cherry tomatoes."
   ],
-  "image": "/recipes/thin-scaloppine.jpg"
+  "image": "/recipes/thin-scaloppine.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "cans jackfruit in brine",
-      "amount": "2 (14-oz [400-g])"
+      "amount": "2"
     },
     {
       "item": "Mojo Sauce",
@@ -78,5 +78,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 86
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

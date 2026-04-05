@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "plus ½ teaspoon coarse sea salt",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "mustard greens, stems and leaves chopped separately",
@@ -18,7 +18,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "large clove garlic, minced",
@@ -30,7 +30,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large yellow onions, sliced into thin rings",
@@ -38,15 +38,15 @@
     },
     {
       "item": "raw cane sugar",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "tomato paste",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "Hot-pepper vinegar, homemade or store-bought, for serving",
@@ -63,5 +63,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

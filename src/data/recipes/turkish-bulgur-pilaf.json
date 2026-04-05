@@ -14,11 +14,11 @@
   "ingredients": [
     {
       "item": "unsalted butter",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "large onion, finely chopped",
@@ -34,23 +34,23 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "black pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sweet red pepper paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried mint",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "coarse bulgur, rinsed and drained",
@@ -83,5 +83,10 @@
     "Add the dried mint, followed by the bulgur, mixing until well combined. Add the broth and bring to a boil for 3 minutes. Reduce the heat to low, cover with the lid, and let simmer for 25 minutes.",
     "Fluff up the bulgur, garnish with mint leaves (if using) and serve with yogurt sprinkled with dried mint."
   ],
-  "image": "/recipes/turkish-bulgur-pilaf.jpg"
+  "image": "/recipes/turkish-bulgur-pilaf.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

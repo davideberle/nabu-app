@@ -9,15 +9,15 @@
   "ingredients": [
     {
       "item": "instant coffee",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "milk",
@@ -25,7 +25,7 @@
     },
     {
       "item": "chocolate sauce",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Ice cubes",
@@ -37,5 +37,10 @@
     "Mix the foam with the milk.",
     "Drizzle some sauce on the sides of the serving glass.",
     "Fill the glass with ice cubes, add the coffee, and serve."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

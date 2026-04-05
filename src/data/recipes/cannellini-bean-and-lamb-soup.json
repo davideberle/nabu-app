@@ -83,5 +83,13 @@
     "Place the meat and water in a large saucepan or Dutch oven over medium-high heat, bring to a boil, lower the heat, and simmer for 10 minutes, skimming the surface frequently until you get a clear broth. Add the onion and celery root mix, the drained beans, cardamom, turmeric, tomato paste, and sugar. Bring to a boil, cover, and simmer gently for 1 hour, or until the meat is tender.",
     "Add the potatoes to the soup and season with 1 teaspoon salt and ½ teaspoon black pepper. Bring back to a boil, lower the heat, and simmer, uncovered, for a further 20 minutes, or until the potatoes and beans are tender. The soup should be thick. Let it bubble away a bit longer, if needed, to reduce, or add some water. Taste and add more seasoning to your liking. Serve the soup with bread and some lemon juice and fresh chopped cilantro, or zhoug."
   ],
-  "image": "/recipes/cannellini-bean-and-lamb-soup.jpg"
+  "image": "/recipes/cannellini-bean-and-lamb-soup.jpg",
+  "time": {
+    "total": 95
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -14,39 +14,39 @@
   "ingredients": [
     {
       "item": "chia seeds",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegan block butter",
-      "amount": "70 g (2¼ oz)"
+      "amount": "70 g"
     },
     {
       "item": "caster (superfine) sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "light brown soft sugar",
-      "amount": "45 g (1¾ oz/¼ cup)"
+      "amount": "45 g"
     },
     {
       "item": "vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "white miso paste",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "plain (all-purpose) flour",
-      "amount": "70 g (2¼ oz/generous ½ cup)"
+      "amount": "70 g"
     },
     {
       "item": "freshly ground black pepper",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "pinch of salt",
@@ -54,11 +54,11 @@
     },
     {
       "item": "bicarbonate of soda (baking soda)",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "vegan white chocolate, chopped",
-      "amount": "80 g (3 oz)"
+      "amount": "80 g"
     }
   ],
   "method": [
@@ -72,5 +72,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -58,5 +58,13 @@
     "Sprinkle the breadcrumbs and the remaining parmigiano on top of the semolina discs. Cut the butter into little cubes and place on top of the gnocchi and, finally, add the sage leaves, if using. Bake in the oven for about 20 minutes, or until golden-brown.",
     "To this basic recipe, you can add about 400 g finely chopped spinach to the milk, for green gnocchi. Alternatively, add about 300 g mashed baked pumpkin – these gnocchi will be softer than the basic recipe, therefore a little more difficult to handle, but the sweetness of the pumpkin is absolutely delicious."
   ],
-  "image": "/recipes/roman-gnocchi.jpg"
+  "image": "/recipes/roman-gnocchi.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

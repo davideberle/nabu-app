@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "/ 4.75 grams agar flakes",
-      "amount": "4¾ teaspoons"
+      "amount": "4¾ tsp"
     },
     {
       "item": "plus 2 tablespoons / 210 ml water, at room temperature, divided",
@@ -22,11 +22,11 @@
     },
     {
       "item": "pure maple syrup, Grade B or dark amber, or agave nectar",
-      "amount": "3 tablespoons / 45 ml"
+      "amount": "3 tbsp / 45 ml"
     },
     {
       "item": "fine sea salt",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "organic granulated sugar / 128 grams",
@@ -42,11 +42,11 @@
     },
     {
       "item": "/ 9.5 grams arrowroot",
-      "amount": "4¾ teaspoons"
+      "amount": "4¾ tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 tablespoon / 15 ml"
+      "amount": "1 tbsp / 15 ml"
     }
   ],
   "method": [
@@ -60,5 +60,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 136
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "rapeseed (canola) oil",
-      "amount": "100ml (scant ½ cup)"
+      "amount": "100ml"
     },
     {
       "item": "x 440ml (15fl oz) can of your favourite beer or lager",
@@ -22,7 +22,7 @@
     },
     {
       "item": "whole chicken",
-      "amount": "900g (2lb)"
+      "amount": "900g"
     },
     {
       "item": "garlic and ginger paste",
@@ -73,5 +73,10 @@
     "When cooked through, transfer to a serving plate and cover with foil to sit for about 10 minutes before serving."
   ],
   "tips": "You can also cook the chicken in the oven. Preheat the oven to 230°C (450°F/Gas 8). Place the chicken on a half-full beer can in a roasting tray and roast for 20 minutes. Reduce the heat to 200°C (400°F/Gas 6) and continue to roast until cooked through and the juices run clear, about another 30 minutes. Season with salt and black pepper. Let the chicken rest for about 10 minutes before carving.",
-  "image": "/recipes/tandoori-beer-can-chicken.jpg"
+  "image": "/recipes/tandoori-beer-can-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

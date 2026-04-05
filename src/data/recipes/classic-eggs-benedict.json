@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "white wine vinegar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large eggs",
@@ -25,7 +25,7 @@
     },
     {
       "item": "flat-leaf parsley, chopped",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "unsalted butter, at room temperature",
@@ -37,11 +37,11 @@
     },
     {
       "item": "white wine vinegar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "lemon juice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Pinch of kosher salt and freshly ground black pepper",
@@ -58,5 +58,13 @@
     "Cook the bacon in a medium nonstick pan over high heat until crispy, about 5-6 minutes. Set aside.",
     "Toast the English muffins. Once toasted, top each muffin with the sauce, bacon, and a cooked egg.",
     "Top with the parsley before serving."
-  ]
+  ],
+  "time": {
+    "total": 6
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

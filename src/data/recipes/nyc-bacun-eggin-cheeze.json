@@ -14,7 +14,7 @@
     },
     {
       "item": "block extra-firm tofu",
-      "amount": "1 (12-oz [340-g])"
+      "amount": "1"
     },
     {
       "item": "black salt",
@@ -51,5 +51,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

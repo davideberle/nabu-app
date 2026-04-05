@@ -32,7 +32,7 @@
     },
     {
       "item": "Calabrian chili oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "to 10 edible spring flowers",
@@ -64,7 +64,7 @@
     },
     {
       "item": "Aleppo pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil",
@@ -124,7 +124,7 @@
     },
     {
       "item": "jalapeño chili oil (recipe follows)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "extra-virgin olive oil 2 whole dry jalapeño peppers, stemmed",
@@ -164,7 +164,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -188,11 +188,11 @@
     },
     {
       "item": "finely chopped Italian parsley",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "saffron threads, soaked in ⅓ cup boiling water for 30 minutes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "pipe pasta",
@@ -212,7 +212,7 @@
     },
     {
       "item": "extra-virgin olive oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "cloves garlic, gently crushed",
@@ -224,7 +224,7 @@
     },
     {
       "item": "cayenne powder",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "pipe pasta",
@@ -232,7 +232,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small shallot, finely minced",
@@ -248,7 +248,7 @@
     },
     {
       "item": "dried oregano",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "fresh halibut fillet, cut into 1-inch strips",
@@ -260,11 +260,11 @@
     },
     {
       "item": "sumac",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "6 tablespoons"
+      "amount": "6 tbsp"
     },
     {
       "item": "medium white onion, diced",
@@ -292,7 +292,7 @@
     },
     {
       "item": "canned San Marzano tomato puree",
-      "amount": "32 ounces (4 cups)"
+      "amount": "32 ounces"
     },
     {
       "item": "reginette pasta",
@@ -312,7 +312,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -332,11 +332,11 @@
     },
     {
       "item": "brined capers, drained",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "dried oregano",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "to 7 cherry tomatoes, halved (optional)",
@@ -348,7 +348,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pancetta, cut into ½-inch cubes",
@@ -376,7 +376,7 @@
     },
     {
       "item": "extra-virgin olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "small shallot, finely chopped",
@@ -431,5 +431,13 @@
     "In a medium-large pan over medium-low heat, warm the olive oil for 1 minute. Add the shallot, mint, and wild fennel, and sauté for 2 minutes.",
     "Stir in the fava beans and cook for a minute. Add the water and cook for another 3 to 4 minutes. Season with salt and pepper to taste. Turn off the heat.",
     "In a blender or food processer, blend half the fava bean mixture until you obtain a creamy consistency. Set aside."
-  ]
+  ],
+  "time": {
+    "total": 42
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

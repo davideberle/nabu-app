@@ -22,7 +22,7 @@
     },
     {
       "item": "can plum tomatoes",
-      "amount": "400g (14oz)"
+      "amount": "400g"
     },
     {
       "item": "Concentrated tomato paste, to taste (optional)",
@@ -38,5 +38,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

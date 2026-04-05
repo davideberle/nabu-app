@@ -45,5 +45,13 @@
     "Place the bulgur or whole wheat kernels in a medium saucepan with 6 cups (1.4 L) water. Bring to a simmer over medium heat and add the cinnamon stick and milk. Reduce the heat to low and simmer, stirring, until creamy, about 10 minutes for bulgur and 45 minutes to 1 hour for whole wheat kernels.",
     "Season with the salt and honey, using more or less according to your taste. Just before removing from the heat, stir in the parsley, mint, raisins, and pomegranate seeds. Remove the cinnamon stick.",
     "Serve in shallow bowls, sprinkled with cinnamon."
-  ]
+  ],
+  "time": {
+    "total": 115
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

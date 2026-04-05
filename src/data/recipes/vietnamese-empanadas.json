@@ -12,11 +12,11 @@
   "ingredients": [
     {
       "item": "canola or other neutral oil",
-      "amount": "1½ tablespoons"
+      "amount": "1½ tbsp"
     },
     {
       "item": "finely chopped shallot or yellow onion",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large garlic clove, put through a press or minced and mashed",
@@ -36,11 +36,11 @@
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus ⅛ teaspoon fine sea salt",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "Rounded ⅛ teaspoon recently ground black pepper",
@@ -48,7 +48,7 @@
     },
     {
       "item": "chopped green onion, green part only (optional)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "egg",
@@ -56,7 +56,7 @@
     },
     {
       "item": "water",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "One 14- or 16-ounce box refrigerated or frozen piecrust dough, brought to room temperature as instructed on the package",
@@ -71,5 +71,10 @@
     "Brush some of the egg wash around the rim of each pastry round. Holding a round in one hand, use a spoon to position a brimming 1 tablespoon of filling slightly off center on the pastry round. Bring up one side to meet the other and press the edges to seal well and make a ½-inch-wide brim. For extra security, press with the tines of a fork, or get fancy and make a rope edge (see photos, below). Place the pastries on a prepared baking sheet. Repeat with the remaining dough rounds. Then tackle the second piecrust to make another eight empanadas. (If you end up with fewer, snack on the extra filling or add it to the fried rice on this page.)",
     "Use a fork to poke two or three sets of holes into each empanada for ventilation, then brush the tops with egg wash. Bake for 16 to 20 minutes, until golden and tinged with brown. Let cool for about 10 minutes, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

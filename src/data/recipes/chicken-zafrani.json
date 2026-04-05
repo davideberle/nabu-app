@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "skinless chicken thighs – on or off the bone",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "ghee or rapeseed (canola) oil",
@@ -105,7 +105,7 @@
     },
     {
       "item": "plain yoghurt",
-      "amount": "250g (1 cup)",
+      "amount": "250g",
       "group": "SECOND MARINADE"
     },
     {
@@ -123,5 +123,10 @@
     "Cover and simmer over a low heat for about 25 minutes, or until the chicken is cooked through. You can add a drop of water if the curry is looking thirsty but the chicken will release moisture to make the sauce. When the chicken is cooked through, stir in the saffron and cream and cook for a further 3 minutes, then add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Season with salt and serve."
   ],
   "tips": "This chicken zafrani, like all authentic curries, can be adjusted to your personal preference. Feel free to cut the chicken thighs into bite-size pieces. If you prefer more sauce, add a little water or stock and cook it down until you are happy with the consistency. If you like creamy curries, adding more cream, though not authentic, will do the job!",
-  "image": "/recipes/chicken-zafrani.jpg"
+  "image": "/recipes/chicken-zafrani.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

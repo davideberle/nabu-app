@@ -13,11 +13,11 @@
     },
     {
       "item": "powdered sugar",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground espresso coffee",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "hot water",
@@ -34,5 +34,10 @@
     "Add the brewed espresso to a serving cup.",
     "Add dollops of whipped cream on top of the coffee.",
     "Dust with cinnamon and serve hot."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

@@ -22,11 +22,11 @@
     },
     {
       "item": "peas",
-      "amount": "75g (½ cup)"
+      "amount": "75g"
     },
     {
       "item": "sweetcorn",
-      "amount": "75g (½ cup)"
+      "amount": "75g"
     },
     {
       "item": "carrot, peeled and finely chopped",
@@ -82,7 +82,7 @@
     },
     {
       "item": "double (heavy) cream or whisked plain yoghurt",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "Salt, to taste",
@@ -113,7 +113,7 @@
     },
     {
       "item": "thick coconut milk or creamed coconut",
-      "amount": "200ml (generous ¾ cup)",
+      "amount": "200ml",
       "group": "KORMA PASTE"
     },
     {
@@ -163,5 +163,10 @@
   "image": "/recipes/creamy-vegetable-korma.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

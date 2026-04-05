@@ -16,11 +16,11 @@
     },
     {
       "item": "canola or other neutral oil",
-      "amount": "2½ tablespoons"
+      "amount": "2½ tbsp"
     },
     {
       "item": "smoked paprika",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic cloves, finely chopped",
@@ -28,7 +28,7 @@
     },
     {
       "item": "fish sauce, or scant 1½ tablespoons soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "thinly sliced green onion, green and white parts",
@@ -45,5 +45,10 @@
     "Trim the stem end of the eggplant and cut the eggplant lengthwise into slices, each a good ½ inch thick. Cut each slice lengthwise into long spears as wide as your thumb. Leave as dramatic spears, or cut them crosswise to more easily maneuver. Transfer the spears to a serving plate, leaving behind the goopy liquid that the eggplant naturally releases. Top the eggplant spears with the sauce.",
     "At the table, gently mix the eggplant and sauce to combine the flavors, and serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

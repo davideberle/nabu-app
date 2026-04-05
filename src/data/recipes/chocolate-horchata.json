@@ -22,27 +22,27 @@
     },
     {
       "item": "/ 27 grams organic whole cane sugar or coconut sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "/ 18 grams Dutch-process cocoa or natural cocoa (15 grams)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "/ 2 grams ground cinnamon, more or less to taste",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "almond extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "guar gum (optional but recommended)",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "/ 210 grams ice cubes, more for serving",
@@ -62,5 +62,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

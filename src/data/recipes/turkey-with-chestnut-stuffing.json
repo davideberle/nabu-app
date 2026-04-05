@@ -86,5 +86,13 @@
     "In a small saucepan, heat the sunflower oil to a high temperature, then carefully pour it all over the bird to sear and seal the skin. This will keep the bird moist.",
     "Put the turkey in the oven. After 10 minutes turn the heat down to 180°C (gas mark 4). Cook for 35 minutes per kilogram of turkey, basting from time to time with plenty of vin santo. If the turkey seems to darken too quickly, cover the breasts with foil to prevent the turkey from burning. Before carving, let the bird rest for 15 minutes in a warm place covered with foil."
   ],
-  "image": "/recipes/turkey-with-chestnut-stuffing.jpg"
+  "image": "/recipes/turkey-with-chestnut-stuffing.jpg",
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

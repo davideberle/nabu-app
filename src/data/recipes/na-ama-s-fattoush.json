@@ -83,5 +83,13 @@
   "image": "/recipes/na-ama-s-fattoush.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

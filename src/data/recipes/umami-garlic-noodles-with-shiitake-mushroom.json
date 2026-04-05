@@ -24,27 +24,27 @@
     },
     {
       "item": "oyster sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "fish sauce",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "MSG, scant ½ teaspoon chicken stock base, or 2 tablespoons nutritional yeast flakes",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "salted, European-style butter",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "fresh shiitake mushroom or cremini mushrooms, sliced ⅛ to ¼ inch thick, stems included",
@@ -56,7 +56,7 @@
     },
     {
       "item": "minced shallot",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -68,5 +68,10 @@
     "When the sauce starts bubbling, add the noodles. Using tongs and a spoon, combine and coat the noodles in sauce. If the dish looks too thick or tastes too salty, add a tiny splash of water. Turn off the heat and let rest for a minute.",
     "Serve the noodles in individual pasta bowls."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

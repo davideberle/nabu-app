@@ -32,5 +32,10 @@
     "In a large pitcher, mix the peach purée and prosecco.",
     "Garnish with peach slices and a sprig of mint.",
     "Serve in chilled glasses with ice."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

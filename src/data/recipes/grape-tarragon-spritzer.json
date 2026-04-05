@@ -14,7 +14,7 @@
     },
     {
       "item": "freshly squeezed lemon juice",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "Lemon-Tarragon Syrup",
@@ -38,5 +38,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

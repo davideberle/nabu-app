@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "lean minced (ground) lamb",
-      "amount": "1kg (2lb 3oz)"
+      "amount": "1kg"
     },
     {
       "item": "egg",
@@ -50,5 +50,10 @@
     "Form the mixture into meatballs the size of tennis balls. Slide a meatball onto a large, flat skewer and squeeze with a wet hand into a sausage shape around the skewer. Turn the skewer over and do the same, squeezing again with your hand to make it longer. Continue this process until you have a long kebab with visible finger marks that is securely on the skewer. Repeat with the rest of the meat mixture.",
     "Heat the barbecue using the direct heat method, then place the kebabs over the heat. Char well on one side, then flip them over and do the same on the other side until nicely blackened and cooked through. You could also pan-fry the kebabs, but I tend not to. It just isn’t the same."
   ],
-  "image": "/recipes/lamb-seekh-kebabs.jpg"
+  "image": "/recipes/lamb-seekh-kebabs.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

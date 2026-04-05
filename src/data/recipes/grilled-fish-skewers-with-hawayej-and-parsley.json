@@ -76,5 +76,13 @@
     "Place a ridged griddle pan over high heat and leave for about 4 minutes until hot. Meanwhile, thread the fish chunks onto the skewers, 5 to 6 pieces on each, making sure to leave gaps between the pieces. Gently brush the fish with a little olive oil and place the skewers on the hot griddle in 3 to 4 batches so they aren’t too close together. Grill for about 1½ minutes on each side, until the fish is just cooked through. Alternatively, cook them on a grill or under a broiler, where they will take about 2 minutes on each side to cook.",
     "Serve immediately with the lemon wedges."
   ],
-  "image": "/recipes/grilled-fish-skewers-with-hawayej-and-parsley.jpg"
+  "image": "/recipes/grilled-fish-skewers-with-hawayej-and-parsley.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

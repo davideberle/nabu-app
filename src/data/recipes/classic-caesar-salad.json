@@ -37,11 +37,11 @@
     },
     {
       "item": "lemon juice",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "mustard powder",
-      "amount": "⅛ teaspoon"
+      "amount": "⅛ tsp"
     },
     {
       "item": "anchovy fillet, cleaned, optional",
@@ -49,7 +49,7 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "Freshly ground black pepper",
@@ -61,5 +61,10 @@
     "In a food processor, combine all dressing ingredients. Process until well blended. Adjust seasoning with salt and pepper to taste.",
     "Prior to serving, pour dressing on lettuce and toss.",
     "Add croutons, toss again, and serve immediately."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

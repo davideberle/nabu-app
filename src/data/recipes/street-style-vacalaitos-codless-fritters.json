@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "can hearts of palm, drained",
-      "amount": "1 (14-oz [400-g])"
+      "amount": "1"
     },
     {
       "item": "sea salt",
@@ -75,5 +75,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

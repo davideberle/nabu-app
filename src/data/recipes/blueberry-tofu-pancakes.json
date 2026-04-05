@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "item": "flaxseed meal",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "extra-firm tofu, drained and pressed (page 17)",
@@ -29,27 +29,27 @@
     },
     {
       "item": "coconut sugar",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "vanilla extract",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "baking powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "plus 1 tablespoon extra virgin olive oil, divided",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "maple syrup, for serving",
@@ -69,5 +69,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -90,5 +90,13 @@
     "Add 4 tbsp water, the bay leaves, cumin, chilli powder, turmeric and the reserved 2 tbsp pineapple paste. Cook for a further 2 minutes then add the chopped tomato and tomato purée.",
     "Throw in the prawns (shrimp) and stir into the sauce until cooked through. Check for seasoning and spoon into the hollowed-out pineapples. Top with chopped coriander and a squeeze of lime juice, and serve with the spicy pineapple paste, and some homemade naans or chapatis."
   ],
-  "image": "/recipes/ana-chingri-prawn-with-pineapple.jpg"
+  "image": "/recipes/ana-chingri-prawn-with-pineapple.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

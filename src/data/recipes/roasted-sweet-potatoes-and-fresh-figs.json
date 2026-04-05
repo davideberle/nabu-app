@@ -56,5 +56,13 @@
   "image": "/recipes/roasted-sweet-potatoes-and-fresh-figs.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

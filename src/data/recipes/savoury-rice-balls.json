@@ -47,5 +47,10 @@
     "Heat the oil in a medium saucepan. Deep-fry the arancine in batches over medium–high heat until golden, turning them frequently as they cook. Drain on kitchen paper and keep them warm while you cook the remainder. Serve immediately.",
     "To make black squid ink arancine, use risotto made with fish stock – you could use left-over fish stock from Cus-cus di Pesce. Add a little squid ink to the risotto to make it black. Follow the same method as for the arancine recipe above, simply substituting prawns for the ham."
   ],
-  "image": "/recipes/savoury-rice-balls.jpg"
+  "image": "/recipes/savoury-rice-balls.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

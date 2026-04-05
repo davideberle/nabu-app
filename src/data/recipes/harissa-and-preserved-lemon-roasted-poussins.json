@@ -27,7 +27,7 @@
     },
     {
       "item": "rose harissa",
-      "amount": "90g (3¼oz)"
+      "amount": "90g"
     },
     {
       "item": "whole poussins",
@@ -42,5 +42,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

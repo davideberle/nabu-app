@@ -14,35 +14,35 @@
   "ingredients": [
     {
       "item": "ground cumin",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "paprika",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground cloves",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "ground cardamom",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "Juice of ½ lemon",
@@ -50,7 +50,7 @@
     },
     {
       "item": "olive oil, divided",
-      "amount": "4 tablespoons"
+      "amount": "4 tbsp"
     },
     {
       "item": "boneless, skinless chicken thighs (about 7 large thighs)",
@@ -99,5 +99,10 @@
     "Carefully place the chicken in a single layer on the hot baking sheet and bake for 15 to 20 minutes, until fully cooked through. (Check that the chicken is white on the inside and the juices run clear.) The chicken should look charred and browned on the outside. You can broil for a few more minutes if you want additional color on the chicken.",
     "Serve with toum, bread, and assorted vegetables to make wraps, or alongside rice and salad."
   ],
-  "image": "/recipes/sheet-pan-chicken-shawarma.jpg"
+  "image": "/recipes/sheet-pan-chicken-shawarma.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -47,5 +47,13 @@
     "Boil some salted water, turn the heat down and drop about 5 balls at a time into the water. As soon as they float to the surface, they are ready (about 1 minute). With a small sieve, fish them out and put them on a heated serving dish, in a single layer. Sprinkle a generous amount of parmigiano over the nudi.",
     "Melt the butter with the sage. When it foams, pour it over the nudi and serve immediately."
   ],
-  "image": "/recipes/ricotta-and-spinach-gnocchi.jpg"
+  "image": "/recipes/ricotta-and-spinach-gnocchi.jpg",
+  "time": {
+    "total": 1
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

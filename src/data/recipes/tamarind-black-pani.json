@@ -14,7 +14,7 @@
   "ingredients": [
     {
       "item": "block of tamarind or 80g (6 tbsp) tamarind concentrate",
-      "amount": "200g (7oz)"
+      "amount": "200g"
     },
     {
       "item": "ground cumin",
@@ -58,5 +58,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

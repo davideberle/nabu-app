@@ -767,5 +767,13 @@
     "Mix the onion, cucumber and tomatoes together in a large bowl. Add the oil, lemon juice, coriander (cilantro) and cumin seeds and season with salt and black pepper. Place in the fridge for about 30 minutes before serving.",
     "Mix all the ingredients together in a bowl and season with salt and black pepper. Allow to sit for 15 minutes before serving."
   ],
-  "image": "/recipes/chapattis.jpg"
+  "image": "/recipes/chapattis.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

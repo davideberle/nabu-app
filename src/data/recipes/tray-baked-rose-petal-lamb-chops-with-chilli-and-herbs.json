@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "lamb chops or loin",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "olive oil",
@@ -80,5 +80,13 @@
     "While the lamb is cooking, combine all the ingredients for the drizzle in a small bowl and mix well. Season with sea salt and black pepper according to your preference.",
     "Remove the lamb from the oven and dot generously with the herb and chilli drizzle. Serve immediately, with steamed basmati rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 122
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

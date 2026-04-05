@@ -50,15 +50,15 @@
     },
     {
       "item": "tomato purée",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml (2 cups)"
+      "amount": "500ml"
     },
     {
       "item": "pre-cooked stewed chicken, plus 250ml (1 cup) of its cooking stock, or more base curry sauce",
-      "amount": "600g (1lb 5oz)"
+      "amount": "600g"
     },
     {
       "item": "onion paste made with yoghurt",
@@ -91,5 +91,10 @@
     "Stir in the garlic and ginger paste and let it sizzle until fragrant, then add the mixed powder, ground cumin, chilli powder and tomato purée. Give this all a good stir and then add 250ml (1 cup) of the base curry sauce. The curry sauce will begin to bubble rapidly and, when it does, add the rest of the sauce and the stock or extra sauce. Turn up the heat and simmer; some of the sauce may begin to caramelize on the side of the pan, so just stir this in from time to time for more flavour.",
     "Add the chicken pieces and continue to simmer, without stirring, for about 2 minutes until the chicken is warmed through. The sauce will cook down and become thicker, but if it becomes too thick for your liking, add a little more chicken or spice stock or base curry sauce. Stir in the onion paste 1 tablespoon at a time, then the dried fenugreek leaves (kasoori methi) and charred onion petals. Season with salt, then sprinkle with the coriander (cilantro), fried onions and garam masala to serve."
   ],
-  "image": "/recipes/chicken-dopiaza.jpg"
+  "image": "/recipes/chicken-dopiaza.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

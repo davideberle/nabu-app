@@ -21,7 +21,7 @@
     },
     {
       "item": "Greek yogurt, preferably full-fat",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "roasted cherry or teardrop tomatoes (see Note)",
@@ -29,20 +29,28 @@
     },
     {
       "item": "extra-virgin Greek olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "grated lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chopped fresh oregano leaves",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     }
   ],
   "method": [
     "Combine the garlic, feta, manouri, and yogurt in the bowl of a food processor and pulse to combine.",
     "Add the roasted tomatoes, olive oil, lemon zest, and oregano and pulse until the mixture is a slightly chunky paste.",
     "Transfer to a bowl or plastic container, cover, and refrigerate for at least 30 minutes or up to 1 week before serving. Serve as a dip with pita chips."
-  ]
+  ],
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

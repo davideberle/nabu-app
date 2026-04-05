@@ -22,12 +22,12 @@
     },
     {
       "item": "rice flour",
-      "amount": "200g (1¼ cup)",
+      "amount": "200g",
       "group": "BATTER"
     },
     {
       "item": "urad dhal flour",
-      "amount": "70g (½ cup)",
+      "amount": "70g",
       "group": "BATTER"
     },
     {
@@ -61,5 +61,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

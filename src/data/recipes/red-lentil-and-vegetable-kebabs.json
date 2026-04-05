@@ -34,7 +34,7 @@
     },
     {
       "item": "cauliflower (1 cup) grated",
-      "amount": "80g (3oz)"
+      "amount": "80g"
     },
     {
       "item": "salt",
@@ -42,7 +42,7 @@
     },
     {
       "item": "masoor (red) lentils, washed and soaked in water for 30 minutes",
-      "amount": "225g (1 cup)"
+      "amount": "225g"
     },
     {
       "item": "garlic and ginger paste",
@@ -54,7 +54,7 @@
     },
     {
       "item": "ground almonds",
-      "amount": "50g (½ cup)"
+      "amount": "50g"
     },
     {
       "item": "tandoori masala or garam masala",
@@ -103,5 +103,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

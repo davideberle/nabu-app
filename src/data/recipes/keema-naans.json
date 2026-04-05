@@ -30,7 +30,7 @@
     },
     {
       "item": "minced (ground) lamb",
-      "amount": "400g (14oz)",
+      "amount": "400g",
       "group": "KEEMA"
     },
     {
@@ -68,5 +68,10 @@
     "To serve, sprinkle with coriander (cilantro) and perhaps a little more melted ghee. Keep warm while you roll and bake the remaining naans."
   ],
   "tips": "If you don’t have a pizza stone, you can use a baking tray, although it will not get as hot.",
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

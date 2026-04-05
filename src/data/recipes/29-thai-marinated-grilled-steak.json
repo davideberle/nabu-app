@@ -30,5 +30,13 @@
     "Add onions and chili flakes into the bowl. Don't worry if lumps of sugar don’t dissolve.",
     "Add the rice powder (Step 8) and coriander into the sauce (Step 6). You may serve the steak with the Nam Jim Jeaw dipping sauce or keep the Nam Jim Jeaw dipping sauce for future use.",
     "Add the rice powder (Step 8) and coriander into the sauce (Step 6). You may serve the steak with the Nam Jim Jeaw dipping sauce or keep the Nam Jim Jeaw dipping sauce for future use."
-  ]
+  ],
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

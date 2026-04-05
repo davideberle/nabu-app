@@ -22,7 +22,7 @@
     },
     {
       "item": "/ 24 grams cacao nibs",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fresh or frozen organic blueberries",
@@ -42,15 +42,15 @@
     },
     {
       "item": "/ 9 grams lucuma powder",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "/ 6 grams maca powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "alcohol-free vanilla extract",
-      "amount": "1 teaspoon / 5 ml"
+      "amount": "1 tsp / 5 ml"
     },
     {
       "item": "/ 280 grams ice cubes",
@@ -63,5 +63,10 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

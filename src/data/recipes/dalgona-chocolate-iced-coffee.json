@@ -9,11 +9,11 @@
   "ingredients": [
     {
       "item": "instant coffee",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -25,7 +25,7 @@
     },
     {
       "item": "cocoa powder",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "Ice cubes",
@@ -37,5 +37,10 @@
     "Pour the milk and cocoa powder into a blender and blitz until combined and smooth.",
     "Fill a tall glass with ice cubes. Add the milk mixture to the glass, and top with the whipped coffee mixture.",
     "Dust with cocoa powder before serving."
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

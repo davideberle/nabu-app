@@ -78,5 +78,13 @@
     "Toast or grill 2 slices of ciabatta bread per person. Arrange them on a plate and spoon 2–3 generous spoonfuls of tomato sauce on top. Then, making sure the poached eggs are drained of all water, place them on top of the sauce.",
     "Chop the fresh basil, sprinkle it over the eggs and season with salt and pepper to taste."
   ],
-  "image": "/recipes/devilled-eggs.jpg"
+  "image": "/recipes/devilled-eggs.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

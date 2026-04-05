@@ -29,12 +29,12 @@
     },
     {
       "item": "kosher salt",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "VEGETABLES"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "VEGETABLES"
     },
     {
@@ -54,17 +54,17 @@
     },
     {
       "item": "kosher salt",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "2 teaspoons",
+      "amount": "2 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -101,5 +101,10 @@
     "Bake for 35 to 40 minutes, until the thighs are golden brown and cooked through. (Check that the chicken is white on the inside and the juices run clear.)",
     "Spoon the vegetables onto a platter and top with the chicken. Serve with pita bread and slaw or salad."
   ],
-  "image": "/recipes/sheet-pan-honey-za-atar-chicken.jpg"
+  "image": "/recipes/sheet-pan-honey-za-atar-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

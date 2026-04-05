@@ -17,23 +17,23 @@
     },
     {
       "item": "sesame oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetarian oyster sauce or soy sauce",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "char siu seasoning mix",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "store-bought or homemade seitan, cut into ½-inch (1 cm) thick steaks, or 3½ ounces (100 g) textured vegetable protein (see Note), soaked for 15 minutes in warm water and excess water squeezed out",
@@ -41,7 +41,7 @@
     },
     {
       "item": "vegetable oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "plus 1 tablespoon vegetable oil, divided",
@@ -69,11 +69,11 @@
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "sticky rice, rinsed and drained",
@@ -97,27 +97,27 @@
     },
     {
       "item": "vegetable or mushroom stock powder",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "sugar",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
       "item": "minced leek (white part only)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "cornstarch",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "annatto oil",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
       "item": "recipe scallion oil",
@@ -154,5 +154,13 @@
   "dietary": [
     "vegan",
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 135
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

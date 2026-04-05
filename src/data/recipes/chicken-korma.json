@@ -42,15 +42,15 @@
     },
     {
       "item": "base curry sauce (see quick and easy base cury sauce), heated",
-      "amount": "700ml (3 cups)"
+      "amount": "700ml"
     },
     {
       "item": "block coconut",
-      "amount": "100g (3½ oz)"
+      "amount": "100g"
     },
     {
       "item": "raw chicken breast, cut on the diagonal into 5mm (¼in) slices, or pre-cooked stewed chicken",
-      "amount": "800g (1lb 12oz)"
+      "amount": "800g"
     },
     {
       "item": "garam masala",
@@ -58,7 +58,7 @@
     },
     {
       "item": "single (light) cream, plus a little extra to finish",
-      "amount": "125ml (½ cup)"
+      "amount": "125ml"
     },
     {
       "item": "rose water, or to taste",
@@ -78,5 +78,10 @@
     "Pour in the rest of the base curry sauce, then add the chicken. If using raw chicken, press it right into the sauce so that it cooks quickly and evenly. You can add a little more base curry sauce if you need to, as it will boil down anyway. Swirl in the garam masala.",
     "When your chicken is cooked/heated through (about 10 minutes for raw or 2 minutes for pre-cooked), remove the cardamom pods and cinnamon, and stir in the cream. Add the rose water and finish with the butter, if you want. Season with salt and check the sweetness, adding more sugar if needed."
   ],
-  "image": "/recipes/chicken-korma.jpg"
+  "image": "/recipes/chicken-korma.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

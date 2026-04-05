@@ -53,5 +53,13 @@
     "Unmould the ricotta onto a serving dish or, if you are using individual moulds, onto small plates. Decorate with the caramelised walnuts and serve.",
     "If you are using vin santo, you can mix some finely grated organic lemon and orange zest into the ricotta mixture. You can then caramelise finely cut orange zest instead of the walnuts."
   ],
-  "image": "/recipes/sweet-ricotta.jpg"
+  "image": "/recipes/sweet-ricotta.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

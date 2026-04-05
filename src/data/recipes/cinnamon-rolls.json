@@ -29,7 +29,7 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "all-purpose flour",
@@ -53,11 +53,11 @@
     },
     {
       "item": "whole milk",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "pure vanilla extract",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     }
   ],
   "method": [
@@ -72,5 +72,13 @@
     "Arrange the cinnamon rolls on a baking sheet lined with a piece of parchment paper. Bake for 30-35 minutes or until golden-brown in color.",
     "To make the glaze, in a small mixing bowl, combine the powdered sugar, milk, and vanilla extract. Spread the glaze on top of the baked cinnamon rolls.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 135
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

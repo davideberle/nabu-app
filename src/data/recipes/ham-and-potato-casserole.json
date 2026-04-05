@@ -48,5 +48,13 @@
     "Pour in the milk mixture. Top with the cheddar cheese and mozzarella cheese.",
     "Bake for 45-50 minutes or until golden-brown in color.",
     "Serve warm."
-  ]
+  ],
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

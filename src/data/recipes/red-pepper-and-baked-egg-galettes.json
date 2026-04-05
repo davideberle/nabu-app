@@ -68,5 +68,13 @@
   "image": "/recipes/red-pepper-and-baked-egg-galettes.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "time": {
+    "total": 86
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

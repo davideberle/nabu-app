@@ -50,5 +50,10 @@
     "Gently combine the potato, onion, tomato, olives and capers in a large bowl.",
     "Add the basil, oregano and oil, and toss together gently but thoroughly. Season and serve with plenty of crusty Italian bread."
   ],
-  "image": "/recipes/potato-and-tomato-salad.jpg"
+  "image": "/recipes/potato-and-tomato-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

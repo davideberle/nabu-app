@@ -19,37 +19,37 @@
     },
     {
       "item": "kosher salt",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "paprika",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "CHICKEN"
     },
     {
       "item": "ground allspice",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "CHICKEN"
     },
     {
       "item": "olive oil, divided",
-      "amount": "3 tablespoons",
+      "amount": "3 tbsp",
       "group": "CHICKEN"
     },
     {
@@ -74,27 +74,27 @@
     },
     {
       "item": "kosher salt, plus more if needed",
-      "amount": "1½ teaspoons",
+      "amount": "1½ tsp",
       "group": "TAHINI SAUCE"
     },
     {
       "item": "black pepper",
-      "amount": "½ teaspoon",
+      "amount": "½ tsp",
       "group": "TAHINI SAUCE"
     },
     {
       "item": "garlic powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TAHINI SAUCE"
     },
     {
       "item": "onion powder",
-      "amount": "1 teaspoon",
+      "amount": "1 tsp",
       "group": "TAHINI SAUCE"
     },
     {
       "item": "olive oil",
-      "amount": "1 tablespoon",
+      "amount": "1 tbsp",
       "group": "FOR GARNISHING AND SERVING"
     },
     {
@@ -126,5 +126,10 @@
     "MAKE THE GARNISH: Heat the 1 tablespoon oil in a small skillet over low heat, then add the nuts and toast for 5 minutes, or until golden, stirring often.",
     "Garnish with the chopped parsley and toasted nuts and serve with rice and salad."
   ],
-  "image": "/recipes/lebanese-tahini-chicken.jpg"
+  "image": "/recipes/lebanese-tahini-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -62,7 +62,7 @@
     },
     {
       "item": "cooked chana dhal",
-      "amount": "200g (1 cup)"
+      "amount": "200g"
     },
     {
       "item": "Salt and freshly ground black pepper, to taste",
@@ -102,5 +102,10 @@
   "image": "/recipes/balti-dhal-fry.jpg",
   "dietary": [
     "vegetarian"
-  ]
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

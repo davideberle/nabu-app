@@ -45,5 +45,10 @@
     "Place a fine-mesh strainer over a large bowl or jug and pour the juice through it to strain out the large bits of grape skin.",
     "Pour the strained juice into a pitcher and either refrigerate or serve immediately over more ice cubes. Garnish with fresh mint leaves."
   ],
-  "image": "/recipes/baba-s-black-grapes-and-mint-juice.jpg"
+  "image": "/recipes/baba-s-black-grapes-and-mint-juice.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }
