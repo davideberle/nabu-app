@@ -2,18 +2,53 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCookbooks, getRecipesByCookbook, getDietary } from "@/lib/recipes";
+import { ChapterNav } from "./ChapterNav";
 
 function capitalize(str: string): string {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Chapter order by cookbook (as they appear in the book)
+const CHAPTER_ORDER: Record<string, string[]> = {
+  'The Curry Guy Bible': [
+    'Basics & Breads', 'Starters & Snacks', 'Curries', 'Accompaniments',
+    'Biryanis & Rice', 'Grills & Kebabs', 'Street Food', 'Desserts & Drinks',
+    'Base Sauces', 'Spice Blends'
+  ],
+  'Four Seasons': ['Spring', 'Summer', 'Autumn', 'Winter'],
+  'The High-Protein Vegan Cookbook': [
+    'Appetizers & Snacks', 'Breakfast', 'Soups & Stews', 'Salads', 'Main Courses', 'Desserts'
+  ],
+  'The Indian Vegan': [
+    'Essentials', 'Small Plates', 'Large Plates', 'Sides', 'Desserts & Drinks', 'Pulp Meal Ideas'
+  ],
+  'Plentiful': [
+    'Dreams', 'Salads', 'Cooking for One', 'Comfort Grub', 'Special Occasions',
+    'For Company', 'Sides', 'Desserts', 'Pickles & Condiments'
+  ],
+  'Afro-Vegan': [
+    'Spice Blends & Sauces', 'Appetizers & Snacks', 'Salads & Slaws', 'Vegetables',
+    'Grains & Legumes', 'Soups & Stews', 'Main Dishes', 'Desserts', 'Beverages', 'Kitchen Basics'
+  ],
+  'Black Rican Vegan': [
+    'Desayuno (Breakfast)', 'Appetizers', 'Salads & Sides', 'Soups & Stews', 'Main Dishes', 'Desserts'
+  ],
+  'Souk to Table': [
+    'Essentials', 'Dips & Spreads', 'Salads', 'Eggs', 'Grains & Legumes',
+    'Vegetables', 'Pasta & Dumplings', 'Meat', 'Fish & Seafood', 'Desserts', 'Drinks'
+  ]
+};
+
+const DEFAULT_CHAPTER_ORDER = [
+  'Starters & Appetizers', 'Soups & Stews', 'Sides', 'Main Dishes', 'Desserts', 'Drinks', 'Other'
+];
+
 export function generateStaticParams() {
   const cookbooks = getCookbooks();
   return cookbooks.map((c) => ({ slug: c.slug }));
 }
 
-// rebuilt
 export default async function CookbookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const cookbooks = getCookbooks();
@@ -37,17 +72,29 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
     chapters.get(key)!.push(recipe);
   }
   
-  // Convert to array - only use chapters if we actually have them
-  // If most recipes don't have chapters, treat as flat list
   const chapterCount = Array.from(chapters.keys()).filter(k => k !== '__uncategorized__').length;
   const uncategorizedCount = chapters.get('__uncategorized__')?.length || 0;
-  
-  // Use chapter grouping only if there are actual chapters and not too many uncategorized
   const useChapterGrouping = hasChapters && chapterCount > 0 && (uncategorizedCount < recipes.length * 0.5);
   
+  // Sort chapters by book order
+  const sortChapters = (a: string, b: string) => {
+    const order = CHAPTER_ORDER[cookbook.name] || DEFAULT_CHAPTER_ORDER;
+    const aIdx = order.indexOf(a);
+    const bIdx = order.indexOf(b);
+    if (aIdx === -1 && bIdx === -1) return a.localeCompare(b);
+    if (aIdx === -1) return 1;
+    if (bIdx === -1) return -1;
+    return aIdx - bIdx;
+  };
+  
   const groupedRecipes = useChapterGrouping 
-    ? Array.from(chapters.entries()).filter(([k]) => k !== '__uncategorized__').sort((a, b) => a[0].localeCompare(b[0]))
+    ? Array.from(chapters.entries())
+        .filter(([k]) => k !== '__uncategorized__')
+        .sort((a, b) => sortChapters(a[0], b[0]))
     : [];
+  
+  // For sticky nav
+  const chapterList = groupedRecipes.map(([name, recipes]) => ({ name, count: recipes.length }));
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -72,14 +119,22 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
         </div>
       </header>
 
+      {/* Sticky chapter nav */}
+      {useChapterGrouping && <ChapterNav chapters={chapterList} />}
+
       <main className="max-w-5xl mx-auto px-4 py-6">
         {useChapterGrouping ? (
-          // Grouped by chapter
           <div className="space-y-10">
             {groupedRecipes.map(([chapterName, chapterRecipes]) => (
-              <section key={chapterName}>
+              <section 
+                key={chapterName}
+                id={`chapter-${chapterName.replace(/\s+/g, '-').toLowerCase()}`}
+              >
                 <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4 pb-2 border-b border-stone-200 dark:border-stone-800">
                   {chapterName}
+                  <span className="ml-2 text-xs font-normal normal-case tracking-normal text-stone-400 dark:text-stone-500">
+                    ({chapterRecipes.length})
+                  </span>
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {chapterRecipes.map((recipe) => {
@@ -134,7 +189,6 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
             ))}
           </div>
         ) : (
-          // Flat list (no chapters)
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {recipes.map((recipe) => {
               const dietary = getDietary(recipe);
