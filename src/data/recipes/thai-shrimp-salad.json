@@ -1,0 +1,75 @@
+{
+  "id": "thai-shrimp-salad",
+  "name": "Thai Shrimp Salad",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "intro": "Here’s a deliciously different salad that combines grilled shrimp (a lean protein source) with low-calorie cucumbers and onions. It is made with a refreshing Thai blend of sesame seeds, coriander, lime and mint.",
+  "time": {
+    "prep": "35 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Lime juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Toasted sesame seeds - 1 ½ teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "Minced fresh mint - 1 ½ teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "Minced fresh cilantro - 1 ½ teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "A dash of crushed red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "Peeled and deveined uncooked large shrimp",
+      "amount": "½ lb"
+    },
+    {
+      "item": "Salt",
+      "amount": "1/8 tsp"
+    },
+    {
+      "item": "Pepper",
+      "amount": "1/8 tsp"
+    },
+    {
+      "item": "a sliced sweet onion",
+      "amount": "½"
+    },
+    {
+      "item": "a peeled and sliced cucumber",
+      "amount": "½"
+    },
+    {
+      "item": "Torn leaf lettuce",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "In a large bowl, combine the lime juice, sesame oil, soy sauce, sesame seeds, mint, cilantro, and red pepper flakes.",
+    "Sprinkle shrimp with salt and pepper. Thread the shrimps onto 2 metal or soaked wooden skewers.",
+    "Place skewers on an oiled grill. Cover and cook over medium heat for 2 to 4 minutes.",
+    "Add shrimp, onion, and cucumber into the sauce (Step 1) and stir well.",
+    "Divide lettuce leaf between 2 salad plates and top each one of them with shrimp mixture (Step 4). Serve immediately."
+  ],
+  "image": "/recipes/thai-shrimp-salad.jpg"
+}

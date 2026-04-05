@@ -1,0 +1,75 @@
+{
+  "id": "massaman-curry",
+  "name": "Massaman Curry",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "This curry is famous for a reason! I use beef short ribs, which is the best cut of beef, although other cuts suitable for braising will also work. Creamy sweet potatoes pair perfectly with this spicy coconut milk curry sauce. It's gluten-free, dairy-free, and easy to make! Massaman curry can also be made using an Instant Pot.",
+  "time": {
+    "prep": "5 hours 30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Bone-in beef short ribs",
+      "amount": "2 lb"
+    },
+    {
+      "item": "Coconut milk - 2 ½ cup",
+      "amount": ""
+    },
+    {
+      "item": "Massaman curry paste",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "Fish sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chopped palm sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Tamarind juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large white-flesh sweet potato",
+      "amount": "1"
+    },
+    {
+      "item": "a sliced large onion",
+      "amount": "½"
+    },
+    {
+      "item": "Roasted peanuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Jasmine rice",
+      "amount": "4 cups"
+    },
+    {
+      "item": "Oil",
+      "amount": ""
+    },
+    {
+      "item": "Water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the beef from the bone and, if necessary, cut it into large cubes.",
+    "In a heavy bottomed pan over medium heat, add enough oil to cover the bottom, then fry the beef in the oil until fully browned on both sides. Do this in batches as needed. Try not to overcrowd the pan",
+    "Once all the beef is seared, return it to the pan, together with the bones removed.",
+    "Add ½ cup coconut milk and water until everything is submerged.",
+    "Add 1 tablespoon of curry paste and 1 tablespoon of fish sauce and let it simmer for 2 - 2 ½ hours.",
+    "In a second heavy-bottomed pot, add about ¾ cup of the remaining coconut milk and bring to a boil. Let it boil until it reduces by half and the coconut milk thickens.",
+    "Add the rest of the curry paste into the coconut milk (Step 6) over medium heat, stirring constantly, until the coconut oil separates from the curry paste.",
+    "Add the remaining coconut milk. Stir well until it dissolves. Add 1 teaspoon of tamarind, palm sugar, and fish sauce.",
+    "Use tongs to remove the beef from the first pot (Step 5) and transfer it to the second pot (No need to move the bones over). Reserve the cooking liquid in the first pot."
+  ],
+  "image": "/recipes/massaman-curry.jpg"
+}

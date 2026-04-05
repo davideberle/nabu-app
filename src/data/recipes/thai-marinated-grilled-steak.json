@@ -1,0 +1,95 @@
+{
+  "id": "thai-marinated-grilled-steak",
+  "name": "Thai Marinated Grilled Steak",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "Although this is a classic Thai steak marinade, the flavor is neutral enough to serve with any dish. Rich in flavor and infinitely customizable, this is the only marinade recipe you'll ever need. The dipping sauce is an irresistible classic for Thais!",
+  "time": {
+    "prep": "3 hours 25 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Steak - 1.5 pounds",
+      "amount": ""
+    },
+    {
+      "item": "Black peppercorns - 0.5 teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Oyster sauce - 1.5 tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "Sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "the Nam Jim Jeaw Dipping Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "Tamarind paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Fish sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Palm sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Minced onions",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Roasted chili flakes - 0.5 teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Uncooked rice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coriander sprigs",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Grind the black peppercorns and garlic in a mortar.",
+    "To make the marinade, combine the black peppercorns, garlic, soy sauce, oyster sauce, sugar, lime juice, and oil in a large bowl.",
+    "Place the steaks into the marinade. Move the steak around to make sure it's coated properly. Let it marinate (refrigerated) for at least 3 hours (better if overnight). When done, remove steak from the refrigerator and let it rest for 1 hour.",
+    "Grill the steak to your liking.",
+    "To make the dipping sauce, combine the fish sauce, lime juice, palm sugar, and tamarind in a small bowl. Stir well.",
+    "Add onions and chili flakes into the bowl. Don't worry if lumps of sugar don’t dissolve.",
+    "To make toasted rice powder, stir-fry the rice in a dry skillet over medium heat until grains are dark brown.",
+    "When done, pour the rice onto a plate to cool, then grind it to a fine powder with a mortar and pestle or coffee grinder.",
+    "Add the rice powder (Step 8) and coriander into the sauce (Step 6). You may serve the steak with the Nam Jim Jeaw dipping sauce or keep the Nam Jim Jeaw dipping sauce for future use."
+  ],
+  "image": "/recipes/thai-marinated-grilled-steak.jpg"
+}

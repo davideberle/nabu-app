@@ -1,0 +1,70 @@
+{
+  "id": "thai-spinach-beef-salad",
+  "name": "Thai Spinach Beef Salad",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "This is a fun salad to eat. It is crunchy, dense, and a little spicy. Most importantly, it's good for you.",
+  "time": {
+    "prep": "20 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Lime juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Brown sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Dried basil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Dried mint",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Minced fresh gingerroot",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Sliced beef top sirloin steak",
+      "amount": "1 lb"
+    },
+    {
+      "item": "seeded and chopped jalapeno pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Fresh baby spinach",
+      "amount": "5 oz"
+    },
+    {
+      "item": "julienned sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "a julienned cucumber",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "To make the sauce, combine the lime juice, brown sugar, soy sauce, basil, mint, and gingerroot until combined.",
+    "Heat a large non-stick skillet coated with cooking spray over medium-high heat. Stir-fry the beef and jalapeños for 1-3 minutes.",
+    "Stir-fry the garlic for 1 minute. Turn off the heat when done.",
+    "Add spinach, red pepper, cucumber, beef mixture (Step 3) to a large bowl. Drizzle the sauce (Step 1) over it and mix well. Serve immediately."
+  ],
+  "image": "/recipes/thai-spinach-beef-salad.jpg"
+}

@@ -1,0 +1,94 @@
+{
+  "id": "vegan-thai-green-curry",
+  "name": "Vegan Thai Green Curry",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "A vegetarian curry that will satisfy even the most die-hard meat eaters. Rich in umami and vegetables, which are chosen for its chewy, satisfying texture. Not forgetting the secret ingredient that adds firmness and bright color to store-bought curry. For a gluten-free curry, add gluten-free soy sauce.",
+  "time": {
+    "prep": "40 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Vegan curry paste ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Green curry paste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Thai basil leaves",
+      "amount": "15"
+    },
+    {
+      "item": "dried shiitake mushroom",
+      "amount": "1"
+    },
+    {
+      "item": "Miso paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Vegan green curry ingredients",
+      "amount": ""
+    },
+    {
+      "item": "Coconut milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Fried tofu",
+      "amount": "7 oz"
+    },
+    {
+      "item": "Canned bamboo shoots strips - 5.3 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Winter melon",
+      "amount": "9 oz"
+    },
+    {
+      "item": "Palm sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "makrut lime leaves",
+      "amount": "6"
+    },
+    {
+      "item": "a red bell pepper",
+      "amount": "½"
+    },
+    {
+      "item": "Thai basil leaves",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Jasmine rice",
+      "amount": "4 cup"
+    }
+  ],
+  "method": [
+    "To make the curry paste, place the leafy greens, curry paste, miso, and mushroom into a blender and well.",
+    "Heat ¾ cup of coconut milk over medium heat in a heavy-bottomed pot for about 5 minutes.",
+    "Reduce heat to medium and add curry paste (Step 1). Stir for 3-5 minutes.",
+    "Add remaining coconut milk and water and let it boil.",
+    "Add fried tofu, bamboo shoots, winter melon, palm sugar and soy sauce.",
+    "Shred the makrut lime leaves, then add them into the pot. Simmer the curry for about 9 minutes",
+    "Add the red peppers and let it boil for 1 more minute. When done, turn off the stove, stir in the fresh basil and let it wilt in the curry.",
+    "Serve with jasmine rice immediately, or later (like most Thai curries, it tastes even better the next day!)"
+  ],
+  "image": "/recipes/vegan-thai-green-curry.jpg"
+}

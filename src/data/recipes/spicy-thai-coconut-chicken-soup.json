@@ -1,0 +1,91 @@
+{
+  "id": "spicy-thai-coconut-chicken-soup",
+  "name": "Spicy Thai Coconut Chicken Soup",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "Indulge in the simplicity and unique Thai twist of this delightful soup recipe, which holds a special place as your favorite. To enhance the flavor profile, opt for whole coconut milk, ensuring a rich and creamy texture that will elevate the taste to new heights. Prepare to savor the harmonious blend of ingredients in this soup, as it takes you on a culinary journey with its Thai-inspired goodness.",
+  "time": {
+    "prep": "1 hour"
+  },
+  "ingredients": [
+    {
+      "item": "Cubed boneless skinless chicken breasts",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Cornmeal",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "seeded and minced jalapeño pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "Red curry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Ground ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt - 0.75 teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Ground turmeric - 0.5 teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Sriracha chili paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Light coconut milk - 13.66 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Chicken stock",
+      "amount": "32 oz"
+    },
+    {
+      "item": "Thinly sliced cabbage",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Thinly sliced green onions",
+      "amount": "1 oz"
+    },
+    {
+      "item": "Thinly sliced fresh snow peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Wedge from 1 lime",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the chicken with the cornmeal.",
+    "Heat 2 tablespoons of oil in a 6-quart stock pot over medium-high heat, then fry the chicken for 2-3 minutes until lightly browned. Remove from the stockpot when done.",
+    "In the same stockpot, sauté the onion, jalapeños, and garlic in the remaining oil over medium-high heat for 3-4 minutes.",
+    "Add spices, chili paste, coconut milk and stock. Let it boil. When it starts boiling, reduce heat and let it simmer (covered) for 20 minutes.",
+    "Stir in cabbage, snow peas, and chicken. Cook for 3-4 minutes. Serve with green onions and lime."
+  ],
+  "image": "/recipes/spicy-thai-coconut-chicken-soup.jpg"
+}

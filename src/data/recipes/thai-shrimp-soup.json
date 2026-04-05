@@ -1,0 +1,93 @@
+{
+  "id": "thai-shrimp-soup",
+  "name": "Thai Shrimp Soup",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "intro": "This delicious soup is ready in minutes and is a hit. Its ingredients are also available at most grocery store, big or small",
+  "time": {
+    "prep": "40 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Reduced-sodium chicken broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "Water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Brown sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Minced fresh gingerroot",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Curry leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemongrass stalk",
+      "amount": "1"
+    },
+    {
+      "item": "Peeled and deveined uncooked shrimp",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Frozen shelled edamame - 1.5 cup",
+      "amount": ""
+    },
+    {
+      "item": "Light coconut milk - 13.66 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Sorghum - 8.75 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Bamboo shoots - 0.5 cup",
+      "amount": ""
+    },
+    {
+      "item": "Julienned fresh basil leaves - 0.25 cup",
+      "amount": ""
+    },
+    {
+      "item": "Minced fresh cilantro - 0.25 cup",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Grated lime peel - 1.5 teaspoons",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat oil in a Dutch oven, then sauté the onion until soft.",
+    "Add water, lemongrass, curry leaves, ginger, fish sauce, brown sugar, and chicken broth. Let it boil. When it starts boiling, reduce heat and add the edamame and shrimp. Cook for 5-6 mins, uncovered.",
+    "Add coconut milk, sorghum, bamboo shoots, basil, cilantro, lime juice, and lime peel. Let it boil. Discard the lemongrass before serving."
+  ],
+  "image": "/recipes/thai-shrimp-soup.jpg"
+}

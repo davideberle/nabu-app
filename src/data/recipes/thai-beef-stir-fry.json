@@ -1,0 +1,93 @@
+{
+  "id": "thai-beef-stir-fry",
+  "name": "Thai Beef Stir-fry",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "A unique peanut sauce complements the colorful combination of tender sirloin, cauliflower, carrots, broccoli and mushrooms. I like to serve it over spaghetti, but fried noodles work well too.",
+  "time": {
+    "prep": "40 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Packed brown sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Cornstarch",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Beef broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "Onion powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Ground ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Hot pepper sauce",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Sliced boneless beef sirloin steak",
+      "amount": "2 lb"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "Fresh broccoli florets",
+      "amount": "4 cups"
+    },
+    {
+      "item": "Fresh cauliflowers",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Julienned carrots - 1 ½ cups",
+      "amount": ""
+    },
+    {
+      "item": "Sliced fresh mushrooms",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Hot cooked spaghetti",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Chopped peanuts",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a small bowl, combine the brown sugar, cornstarch, beef broth, soy sauce, onion powder, garlic powder, ground ginger, and hot pepper sauce until smooth.",
+    "Heat 3 tablespoons of oil in a large cast iron skillet or wok, then sauté the beef until the meat is no longer pink. Transfer the beef to a plate.",
+    "In the same wok, heat the remaining oil, then sauté the broccoli, cauliflowers, and carrots for 5 minutes.",
+    "Sauté the mushrooms for 3-5 minutes.",
+    "Add the soup mixture (Step 1) to the wok. Let it boil. Cook, stirring, for about 2 minutes.",
+    "Reduce heat to medium, then add ground beef (Step 2) and peanut butter. Cook, stirring, until the peanut butter is incorporated.",
+    "Serve with pasta and top with peanuts before eating."
+  ],
+  "image": "/recipes/thai-beef-stir-fry.jpg"
+}

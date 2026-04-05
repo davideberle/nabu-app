@@ -1,0 +1,94 @@
+{
+  "id": "saucy-thai-beef-noodles",
+  "name": "Saucy Thai Beef Noodles",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "This dish has been a family favorite for a long time. I like to double the recipe and add extra veggies",
+  "time": {
+    "prep": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Creamy peanut butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Brown sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Sherry",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "Crushed red pepper flakes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "drops of hot pepper sauce",
+      "amount": "3"
+    },
+    {
+      "item": "Uncooked pasta",
+      "amount": "12 oz"
+    },
+    {
+      "item": "Thinly sliced beef top sirloin steak",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Canola oil - 1 ½ teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "Thinly sliced fresh carrot",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Julienned sweet red pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Fresh snow peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "2"
+    },
+    {
+      "item": "Chopped salted peanuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Minced fresh coriander",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Add the milk, creamy peanut butter, soy sauce, brown sugar, sherry, garlic cloves, crushed red pepper flakes, and hot pepper sauce into a small saucepan. Let it boil, stirring constantly. When it starts boiling, turn off the heat.",
+    "Cook pasta according to package directions.",
+    "Heat ½ teaspoon of oil in a large wok or sauté pan, then fry the beef until it is not pink. When done, remove the beef from the pan.",
+    "In the same pan, heat the remaining oil, then fry the carrots and red chilies for 3-4 minutes.",
+    "Stir-fry the snow peas and onions for another 2-3 minutes. Return the beef (Step 3) to the pan.",
+    "Drain the pasta (Step 2), then place it in the pan.",
+    "Add peanut butter and mix.",
+    "Sprinkle with peanuts and coriander."
+  ],
+  "image": "/recipes/saucy-thai-beef-noodles.jpg"
+}

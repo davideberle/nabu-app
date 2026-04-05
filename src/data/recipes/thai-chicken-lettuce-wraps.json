@@ -1,0 +1,92 @@
+{
+  "id": "thai-chicken-lettuce-wraps",
+  "name": "Thai Chicken Lettuce Wraps",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "This recipe is tasty and delicious. It's also fun to put the salad together.",
+  "time": {
+    "prep": "35 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Rice vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Mayonnaise",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Creamy peanut butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Brown sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Minced fresh gingerroot",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Chili sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Canola oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Cilantro",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Chicken salad ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Cubed cooked chicken breast",
+      "amount": "2 cups"
+    },
+    {
+      "item": "diced sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "Chopped green onions",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Shredded carrot",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Chopped unsalted dry roasted peanuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Boston lettuce leaves",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Add the rice vinegar, mayonnaise, creamy peanut butter, brown sugar, soy sauce, gingerroot, chili sauce, and garlic clove in a blender and blend.",
+    "Gradually add the oil in a steady steam into the blender as it processes. When done, stir in the cilantro.",
+    "In a large bowl, combine chicken, red pepper, onions, carrot and 1/4 cup peanuts.",
+    "Add dressing (Step 2) and toss well.",
+    "Distribute the mixture (Step 4) equally between the lettuce leaves.",
+    "Top each leaf with the remaining peanuts. Before serving, fold the lettuce to wrap the fillings."
+  ],
+  "image": "/recipes/thai-chicken-lettuce-wraps.jpg"
+}

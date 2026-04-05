@@ -1,0 +1,66 @@
+{
+  "id": "thai-style-green-beans",
+  "name": "Thai-Style Green Beans",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "intro": "Peanut butter, soy sauce and hoisin sauce give this delicious bean dish a nice boost in flavor.",
+  "time": {
+    "prep": "20 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Chopped onion",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Minced fresh gingerroot",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Canola oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Trimmed fresh green beans",
+      "amount": "½ lb"
+    },
+    {
+      "item": "Minced fresh cilantro",
+      "amount": "1 oz"
+    },
+    {
+      "item": "Chopped dry roasted peanuts",
+      "amount": "1 oz"
+    },
+    {
+      "item": "Sauce ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Hoisin sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Creamy peanut butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Crushed red pepper flakes",
+      "amount": "1/8 tsp"
+    }
+  ],
+  "method": [
+    "Mix all the sauce ingredients in a bowl.",
+    "Heat oil in a pan over medium heat, then sauté the onion and ginger for 2 minutes.",
+    "Sauté the green beans for 3 minutes.",
+    "Add the green bean (Step 3) to the sauce. Stir well. You may want to top it with cilantro and peanuts."
+  ],
+  "image": "/recipes/thai-style-green-beans.jpg"
+}

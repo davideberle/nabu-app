@@ -1,0 +1,94 @@
+{
+  "id": "thai-salad-with-peanut-sauce",
+  "name": "Thai Salad with Peanut Sauce",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "intro": "A fresh and delicious Thai salad accompanied with a satisfying crunch from the peanut sauce",
+  "time": {
+    "prep": "25 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Spring mix salad greens",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Fresh cilantro leaves",
+      "amount": "½ cup"
+    },
+    {
+      "item": "shredded napa cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "sliced cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "julienned red onion",
+      "amount": "1"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "2"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "2"
+    },
+    {
+      "item": "Peanut dressing ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Creamy peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Hot water",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Fish sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Rice vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Crushed red pepper flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Dry roasted peanut",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sliced jalapeno pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a large bowl, toss all the salad ingredients.",
+    "To make the dressing, whisk all the peanut dressing ingredients (except the dry roasted peanut and jalapeno pepper) in a small bowl.",
+    "Add the dressing to salad mixture (Step 1) and mix well.",
+    "Divide salad between 4 plates. Top with peanuts and jalapeños."
+  ],
+  "image": "/recipes/thai-salad-with-peanut-sauce.jpg"
+}

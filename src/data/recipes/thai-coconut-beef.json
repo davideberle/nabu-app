@@ -1,0 +1,77 @@
+{
+  "id": "thai-coconut-beef",
+  "name": "Thai Coconut Beef",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "intro": "Love Thai food but have no time to eat outside on a weeknight due to your busy schedules? You can make a double serving of this dish – one for tonight’s dinner, and another for tomorrow’s lunch. In my opinion, it is best to use beef, but it would be just as delicious if you used chicken or pork!",
+  "time": {
+    "prep": "8 hours 15 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Halved beef chuck roast",
+      "amount": "3 lb"
+    },
+    {
+      "item": "Salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sliced sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "Beans - 0.5 pound",
+      "amount": ""
+    },
+    {
+      "item": "Minced fresh coriander - 0.25 cup",
+      "amount": ""
+    },
+    {
+      "item": "Hot cooked brown rice",
+      "amount": "10 cups"
+    },
+    {
+      "item": "Beef seasoning ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Coconut milk - 13.66 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Beef stock - 0.75 cup",
+      "amount": ""
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Honey",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Minced fresh gingerroot",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Season the beef with salt and pepper.",
+    "Place the beef pieces and peppers into a slow cooker.",
+    "Mix all the beef seasoning ingredients in a bowl, then pour over the meat.",
+    "Cover the slow cooker and cook on low for 7 to 8 hours.",
+    "Remove beef from the slow cooker and let it cool down a bit. Remove the fat from the reserved juice. Shred the beef with 2 forks.",
+    "Add the beef and beans to the slow cooker. Cover and cook for another 45-60 minutes.",
+    "Add coriander and stir. Serve with rice"
+  ],
+  "image": "/recipes/thai-coconut-beef.jpg"
+}

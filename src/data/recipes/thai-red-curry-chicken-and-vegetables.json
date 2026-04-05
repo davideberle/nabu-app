@@ -1,0 +1,46 @@
+{
+  "id": "thai-red-curry-chicken-and-vegetables",
+  "name": "Thai Red Curry Chicken and Vegetables",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "The key to this chicken curry is to get the complex flavors. For vegetables, I like to use peanuts, sweet red peppers, and water chestnuts",
+  "time": {
+    "prep": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Cubed boneless skinless chicken breast - 1 ½ pounds",
+      "amount": ""
+    },
+    {
+      "item": "Light coconut milk - 1 1/3 cups",
+      "amount": ""
+    },
+    {
+      "item": "Red curry paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Frozen stir-fry vegetable blend",
+      "amount": "16 oz"
+    },
+    {
+      "item": "Hot cooked brown rice",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "Place chicken in an oiled 8-inch square baking dish.",
+    "In a small bowl, combine coconut milk, curry, and salt. Pour over chicken.",
+    "Place the chicken in an oven-safe dish and cover it. Bake the chicken in a preheated oven at 425°F (220°C) for 18-22 minutes, or until it is fully cooked and reaches the desired internal temperature. While the chicken is baking, prepare the vegetables according to the package directions, ensuring they are cooked to perfection.",
+    "Serve the chicken (Step 3) with rice and vegetables (Step 4)."
+  ],
+  "image": "/recipes/thai-red-curry-chicken-and-vegetables.jpg"
+}

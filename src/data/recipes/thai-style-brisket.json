@@ -1,0 +1,99 @@
+{
+  "id": "thai-style-brisket",
+  "name": "Thai-Style Brisket",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "intro": "This is an incredible brisket that will blow your mind. Peanut butter, soy, crunchy vegetables and spicy sauce give it the authentic Thai taste we love.",
+  "time": {
+    "prep": "9 hours 30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Halved fresh beef brisket",
+      "amount": "4 lb"
+    },
+    {
+      "item": "Olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chunky peanut butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Soy sauce",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "Sesame oil",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "Minced fresh cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Crushed red pepper flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Cornstarch",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Julienned carrots - 1 ¼ cups",
+      "amount": ""
+    },
+    {
+      "item": "sliced sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "sliced green pepper",
+      "amount": "1"
+    },
+    {
+      "item": "Chopped green onions",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Unsalted peanuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Hot cooked rice",
+      "amount": "8 cups"
+    }
+  ],
+  "method": [
+    "Heat 2 tablespoons of olive oil in a large skillet over medium heat, then fry the brisket on both sides.",
+    "Transfer the meat and its drippings to a 5-quart slow cooker.",
+    "In a small bowl, combine peanut butter, soy sauce, sesame oil, cilantro, lemon juice, garlic, pepper flakes and paprika",
+    "Pour the sauce (Step 3) over brisket. Cover the slow cooker and cook for 8 to 9 hours on low heat. When done, remove the brisket from the slow cooker.",
+    "Combine cornstarch and water in a bowl until smooth",
+    "Add the cornstarch (Step 5) into the slow cooker. Cover the slow cooker and cook on high for 30 minutes.",
+    "Heat the remaining olive oil in a large skillet or sauté pan, then sauté the carrots, peppers, and onions until crisp-tender. You may want to add peanuts too.",
+    "Add the cooking juices (Step 6) into the vegetable mixture (Step 7) and mix well.",
+    "Cut the meat into thin slices."
+  ],
+  "image": "/recipes/thai-style-brisket.jpg"
+}

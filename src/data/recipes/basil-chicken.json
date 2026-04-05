@@ -1,0 +1,60 @@
+{
+  "id": "basil-chicken",
+  "name": "Basil Chicken",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "This is a traditional Thai dish, where you stir-fry minced or sliced meat with basil, and top it with a tasty sauce. This is an easy meal that should take you no longer than 25 minutes to prepare, making it a quick option for lunch or dinner! So, are you ready to make one of the most famous Thai dishes in your kitchen?",
+  "time": {
+    "prep": "25 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Minced chicken",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Holy basil - 1.5 cups",
+      "amount": ""
+    },
+    {
+      "item": "fresh Thai chili",
+      "amount": "1"
+    },
+    {
+      "item": "Minced garlic",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Julienned red onion - 0.3 cup",
+      "amount": ""
+    },
+    {
+      "item": "Oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Oyster sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "Cooked Jasmine rice",
+      "amount": "4 cups"
+    }
+  ],
+  "method": [
+    "Heat 2 tablespoons of oil in a wok over medium-high heat. When the oil starts shimmering, crack an egg into the wok and cook the eggs according to your preference. When done, place on a plate lined with paper towel to let the oil drain.",
+    "Heat 2 tablespoons of oil in a separate skillet or wok over medium-high heat. When the oil starts to shimmer, fry the garlic, chili, and red onion for a minute.",
+    "Stir-fry the minced meat for 4 to 5 minutes. If you find the meat too dry, add some water.",
+    "Drizzle the oyster sauce into the wok (Step 3) and cook for another minute. Stir well",
+    "Add the holy basil and cook for another 30 seconds, stirring well. When done, turn off the heat",
+    "Serve on a plate with rice. Top the rice with stir-fry (Step 7) and its sauce. Finally, place the egg (Step 1) on top."
+  ],
+  "image": "/recipes/basil-chicken.jpg"
+}

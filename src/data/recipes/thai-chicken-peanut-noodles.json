@@ -1,0 +1,75 @@
+{
+  "id": "thai-chicken-peanut-noodles",
+  "name": "Thai Chicken Peanut Noodles",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "I love the spiciness of these Thai chicken noodles and often use chopsticks for a more immersive experience.",
+  "time": {
+    "prep": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "chopped sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "Julienned carrots - 1 ½ cups",
+      "amount": ""
+    },
+    {
+      "item": "Lean ground chicken",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Crushed red pepper flakes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Reduced-sodium soy sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Lemon juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Reduced-sodium chicken broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Creamy peanut butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Sriracha chili sauce",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "Uncooked multigrain pasta",
+      "amount": "12 oz"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Finely chopped unsalted peanuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Whisk peanut butter, chicken broth, lemon juice, soy sauce, chili sauce, and red pepper flakes in a small bowl until smooth.",
+    "Cook pasta according to package directions. Strain when done",
+    "In a large skillet, fry the carrots, pepper, garlic, and chicken over medium heat for 5-6 mins.",
+    "Stir in peanut butter mixture (Step 1). Let it boil. When it starts boiling, reduce heat and let it simmer for 3-5 mins.",
+    "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts."
+  ],
+  "image": "/recipes/thai-chicken-peanut-noodles.jpg"
+}

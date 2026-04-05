@@ -1,0 +1,57 @@
+{
+  "id": "thai-pasta-with-spicy-peanut-sauce",
+  "name": "Thai Pasta with Spicy Peanut Sauce",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "Embrace the wholesome goodness of whole grain pasta paired with crisp green vegetables, all coated in a luscious and creamy peanut sauce. The addition of fresh lime juice adds a zesty and invigorating touch to this dish. While some prefer to enjoy it hot, you can also savor its flavors when it has cooled to room temperature. Either way, this dish promises a delightful and satisfying culinary experience.",
+  "time": {
+    "prep": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Whole wheat linguine",
+      "amount": "12 oz"
+    },
+    {
+      "item": "Thai peanut butter - 11 ½ ounces",
+      "amount": ""
+    },
+    {
+      "item": "Lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Bean sprouts",
+      "amount": "2 cups"
+    },
+    {
+      "item": "peeled, seeded, and chopped cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "julienned carrots",
+      "amount": "2"
+    },
+    {
+      "item": "sliced green onions",
+      "amount": "5"
+    },
+    {
+      "item": "julienned sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "Minced fresh cilantro",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Cook linguine according to package directions. Strain it once done.",
+    "In a small bowl, combine the peanut butter and lemon juice.",
+    "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well."
+  ],
+  "image": "/recipes/thai-pasta-with-spicy-peanut-sauce.jpg"
+}

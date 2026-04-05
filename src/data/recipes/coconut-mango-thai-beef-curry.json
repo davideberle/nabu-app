@@ -1,0 +1,49 @@
+{
+  "id": "coconut-mango-thai-beef-curry",
+  "name": "Coconut Mango Thai Beef Curry",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "intro": "Experience a delightful combination of sweet and spicy flavors with this recipe. The tropical essence of mango and coconut milk brings a burst of freshness, while the curry paste adds a fiery kick. This dish is perfect for infusing traditional recipes with an exciting flavor profile. If you prefer a milder taste, simply reduce the amount of curry paste for a lighter variation. Get ready to elevate your culinary creations with this exquisite blend of sweet and spicy goodness.",
+  "time": {
+    "prep": "2 hours 25 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Peanut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Red curry paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Coconut milk - 2 ½ cups",
+      "amount": ""
+    },
+    {
+      "item": "Cubed boneless beef chuck roast - 2 ½ pounds",
+      "amount": ""
+    },
+    {
+      "item": "Chopped dried mango",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Pepper",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "Heat the peanut oil over the low heat, then stir-fry the curry paste in a Dutch oven, for 3-5 mins.",
+    "Add coconut milk into the Dutch oven and let it cook (stirring) for 3-5 minutes.",
+    "Add mango, beef, pepper, and salt into the Dutch oven. Increase heat to medium-high and let it boil. When it starts boiling, reduce heat and let it simmer (covered) for about 2 hours, stirring occasionally. When done, you may serve it with rice, onions, cilantro and/or lime wedges."
+  ],
+  "image": "/recipes/coconut-mango-thai-beef-curry.jpg"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "tom-kha-gai",
+  "name": "Tom Kha Gai",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 1",
+  "intro": "In this recipe, you will learn how to make Thai spices and use coconut milk to complement the flavors. Remember though, that it is worth the time and effort to make this bright cream soup! Serve this soup with cooked jasmine rice or rice noodles",
+  "time": {
+    "prep": "25 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Coconut milk",
+      "amount": "3 cups"
+    },
+    {
+      "item": "Water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Cubed chicken breast meat",
+      "amount": "12 oz"
+    },
+    {
+      "item": "Sliced 1-inch galangal piece",
+      "amount": ""
+    },
+    {
+      "item": "Juice from 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "wedged onion",
+      "amount": "1"
+    },
+    {
+      "item": "Paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "quartered cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "Mushrooms",
+      "amount": "¼ lb"
+    },
+    {
+      "item": "stemmed and quartered chilies",
+      "amount": "4"
+    },
+    {
+      "item": "rinsed and shredded makrut leaves",
+      "amount": "4"
+    },
+    {
+      "item": "Palm sugar",
+      "amount": "3 oz"
+    },
+    {
+      "item": "Fish sauce",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "Chopped coriander stalks",
+      "amount": "1 oz"
+    }
+  ],
+  "method": [
+    "Boil 1 cup of coconut milk on low heat",
+    "Pound the galangal pieces with a mallet or pestle",
+    "Add lemon juice, galangal (Step 2), and chicken into the boiling coconut milk and continue to simmer for 5-6 minutes.",
+    "Add 1 more cup of coconut milk and let it heat on medium-low heat",
+    "Add palm sugar, coriander stalks, Thai chilies, paprika, tomatoes, makrut and onions. Let it cook until the vegetables soften",
+    "Add 1 cup of water, fish sauce, the rest of the ingredients",
+    "Finally, after the herbs have been added to the broth and the vegetables have softened, add 1 cup of water, fish sauce, and mushrooms. Let it simmer for 5 minutes before serving."
+  ],
+  "image": "/recipes/tom-kha-gai.jpg"
+}

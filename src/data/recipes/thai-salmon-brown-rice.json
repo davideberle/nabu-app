@@ -1,0 +1,50 @@
+{
+  "id": "thai-salmon-brown-rice",
+  "name": "Thai Salmon Brown Rice",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "intro": "This quick salmon recipe is a pretty straightforward recipe. A store-bought dressing gives this healthy dish an enhanced flavor, without significantly lengthening the preparation time.",
+  "time": {
+    "prep": "15 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Salmon fillets",
+      "amount": "16 oz"
+    },
+    {
+      "item": "Sesame ginger dressing",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Brown rice",
+      "amount": "3 cups"
+    },
+    {
+      "item": "Chopped fresh coriander",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Julienned carrot",
+      "amount": "1 cup"
+    },
+    {
+      "item": "thinly sliced red cabbage",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place salmon on a 15×10×1-inch pan.",
+    "Brush with 1/4 cup dressing. Bake for 8-10 minutes at 400°F",
+    "Stir the rice with coriander and salt.",
+    "Divide rice mixture (Step 3) between 4 bowls. Add salmon, carrots, cabbage, and the remaining dressing onto each rice bowls."
+  ],
+  "image": "/recipes/thai-salmon-brown-rice.jpg"
+}

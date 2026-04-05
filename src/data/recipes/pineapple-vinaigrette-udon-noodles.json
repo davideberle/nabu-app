@@ -1,0 +1,75 @@
+{
+  "id": "pineapple-vinaigrette-udon-noodles",
+  "name": "Pineapple Vinaigrette Udon Noodles",
+  "source": {
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "intro": "Thai food is rich in flavor, but dishes are heavy and time-consuming. My answer is a refreshing salad with mango, ginger root and jalapeño.",
+  "time": {
+    "prep": "30 minutes"
+  },
+  "ingredients": [
+    {
+      "item": "Dried Japanese udon noodles - 12.8 ounces",
+      "amount": ""
+    },
+    {
+      "item": "Unsweetened pineapple juice - 0.5 cup",
+      "amount": ""
+    },
+    {
+      "item": "Sesame oil - 0.25 cup",
+      "amount": ""
+    },
+    {
+      "item": "White wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Grated fresh gingerroot",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Jalapeno pepper",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Sesame seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Toppings ingredients:",
+      "amount": ""
+    },
+    {
+      "item": "Fresh arugula",
+      "amount": "3 cups"
+    },
+    {
+      "item": "Mango",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Peanuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Cilantro leaves - 0.5 cup",
+      "amount": ""
+    },
+    {
+      "item": "Mint leaves - 0.25 cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook noodles according to package directions. When done, let it sit in a cold bath. Drain well.",
+    "In a small bowl, add the pineapple juice, sesame oil, white wine vinegar, gingerroot, and jalapeno pepper and stir.",
+    "Pour the mixture (Step 2) over noodles (Step 1). Mix well. Keep it in the refrigerator.",
+    "Add all the toppings ingredients to the noodles. Toss until well combined.",
+    "Sprinkle sesame seeds onto the noodles before serving."
+  ],
+  "image": "/recipes/pineapple-vinaigrette-udon-noodles.jpg"
+}
