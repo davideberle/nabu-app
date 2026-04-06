@@ -1,0 +1,61 @@
+{
+  "id": "kotosoupa",
+  "name": "Kotosoupa",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "large eggs",
+      "amount": "2"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "of water",
+      "amount": "5 cups"
+    },
+    {
+      "item": "short-grain rice",
+      "amount": "200g"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "chicken",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Clean the chicken carefully and put it in a large pan to make this",
+    "typical Greek lemon chicken noodle soup.",
+    "Place the pot on medium temperature, cover, and bring to the boil;",
+    "reduce the heat to low and cook the chicken for 1 hour and ten",
+    "minutes.",
+    "Take the chicken out of the broth and rinse it.",
+    "In a bowl, heat the broth, add the rice, sprinkle with salt, and cook",
+    "until the rice is cooked.",
+    "Crack an egg into a bowl and stir until soupy to make the egg-lemon",
+    "liquid for this Greek citrus chicken noodle soup.",
+    "Pour a ladle of hot soup into the mixing bowl and whisk rapidly.",
+    "Insert another spoon of milk and whisk to warm the eggs.",
+    "While the soup is still hot, serve it with a side of Greek curry chicken."
+  ],
+  "time": {
+    "total": 90
+  }
+}

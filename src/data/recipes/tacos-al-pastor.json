@@ -1,0 +1,65 @@
+{
+  "id": "tacos-al-pastor",
+  "name": "Tacos Al Pastor",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chili powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Pork shoulder, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Pineapple, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    },
+    {
+      "item": "Pineapple juice, half cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Marinate the pork shoulder and pineapple chunks in the spice mix,",
+    "chili powder, olive oil, salt and pepper.",
+    "Grill the pork shoulder for twenty minutes.",
+    "Then slice the pineapple chunks and pork shoulder into pieces.",
+    "Lightly heat the tortilla sheet and place the meat and pineapple on the",
+    "tortilla.",
+    "Add the avocado slices, and fresh cilantro leaves.",
+    "Roll the tortillas.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

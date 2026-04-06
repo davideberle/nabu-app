@@ -1,0 +1,77 @@
+{
+  "id": "loukoumades",
+  "name": "Loukoumades",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 25",
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "4 cups"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "honey",
+      "amount": "½ cup"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "packages of active dry yeast",
+      "amount": "2"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4 cups"
+    },
+    {
+      "item": "warm water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "white sugar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "warm milk",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a tiny bag, scatter the yeast over the hot water.",
+    "Allow sitting for five minutes, just until the fermentation softens and",
+    "forms a fluffy foam.",
+    "Combine the hot milk, sugar, and pinch of the salt mixing bowl and",
+    "whisk to absorb.",
+    "Add in the oil, eggs, and starch until the dough is smooth and fluffy.",
+    "In a frying pan, combine honey and ¼ cup liquid and bring to the boil",
+    "over moderate flame.",
+    "Preheat the oil in a heavy or a medium skillet to 350°F (175 degrees",
+    "In a cup of water, put a heavy table or soup spoon above the batter.",
+    "Into another hot grease, drop the balls of dough.",
+    "Cook until lightly browned on edge, then flip and fry the other side",
+    "for two or three minutes per dish in the hot oil."
+  ],
+  "time": {
+    "total": 60
+  }
+}

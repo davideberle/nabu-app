@@ -1,0 +1,47 @@
+{
+  "id": "slow-cooker-green-chili-chicken-tacos",
+  "name": "Slow Cooker Green Chili Chicken Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chicken breast, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Green chili paste, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable stock, two cups",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken in the stock and green chili paste for fifty minutes.",
+    "Now serve with tortillas, avocado slices, salsa, and add cilantro on",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "french-vegetarian-loaf",
+  "name": "French Vegetarian Loaf",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped shallots",
+      "amount": ""
+    },
+    {
+      "item": "One cup of diced green bell pepper",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One cup of diced eggplant",
+      "amount": ""
+    },
+    {
+      "item": "One cup of diced zucchini",
+      "amount": ""
+    },
+    {
+      "item": "One and a half cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of diced tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "One and a half cup of Swiss cheese",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil for brushing",
+      "amount": ""
+    },
+    {
+      "item": "Three whole eggs",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large skillet.",
+    "Add the two tablespoon olive oil and chopped shallots into the skillet.",
+    "Cook the shallots for a few minutes until they turn light brown.",
+    "Add the minced garlic, tomatoes, eggplant, zucchini and green bell",
+    "pepper into the skillet.",
+    "Cook the vegetables for ten minutes.",
+    "Add salt and black pepper into the skillet and mix well.",
+    "Switch off the stove and let the mixture cool down.",
+    "Take a large bowl.",
+    "Add the eggs and milk into the bowl.",
+    "Whisk well and then add the flour and vegetables into the bowl.",
+    "Mix everything well.",
+    "Pour the mixture into a greased loaf pan.",
+    "Add the Swiss cheese on top of the batter and grease the loaf",
+    "with olive oil on top.",
+    "Place the pan in a preheated oven and bake the loaf.",
+    "Dish out the loaf after forty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 75
+  }
+}

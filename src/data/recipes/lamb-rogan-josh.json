@@ -1,97 +1,64 @@
 {
   "id": "lamb-rogan-josh",
-  "name": "Lamb Rogan Josh",
+  "name": "LAMB ROGAN JOSH",
   "source": {
-    "cookbook": "The Curry Guy Bible",
-    "author": "Dan Toombs",
-    "chapter": "Biryanis & Rice"
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
   },
-  "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "Just like many of the British versions of Indian curries, our lamb rogan josh is quite a lot different to those made in India. Mutton or lamb rogan josh originates from the Kashmir region of India, where it is made with tempered whole spices such as cloves, cinnamon, bay leaves, cardamom and deseeded Kashmiri dried chillies. Meat on the bone is braised in a sauce that is deep red, from both the Kashmiri chillies and rattanjot, which is a natural red food colouring and difficult to come by in the West, where the red colouring is achieved with paprika and tomato. You might also want to try my authentic Kashmiri lamb rogan josh recipe.",
-  "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
-    "cook": "10 MINS"
-  },
+  "servings": "serves 4",
   "ingredients": [
     {
-      "item": "rapeseed (canola) oil or seasoned oil",
-      "amount": "4 tbsp"
-    },
-    {
-      "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "paprika",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "chilli powder, or more to taste",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "tomato purée",
-      "amount": "125ml"
-    },
-    {
-      "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "500ml"
-    },
-    {
-      "item": "ground cumin",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "mixed powder",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "pre-cooked stewed lamb, plus 200ml (generous ¾ cup) of its cooking stock",
-      "amount": "700g"
-    },
-    {
-      "item": "tomatoes, quartered",
-      "amount": "2"
-    },
-    {
-      "item": "raw cashew paste",
-      "amount": "2–3 tbsp"
-    },
-    {
-      "item": "plain yoghurt, plus extra to garnish",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "dried fenugreek leaves (kasoori methi)",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "garam masala",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "Salt, to taste",
+      "item": "I ~ pounds lamb leg steaks",
       "amount": ""
     },
     {
-      "item": "chopped coriander (cilantro) leaves",
-      "amount": "3 tbsp"
+      "item": "medium onions",
+      "amount": "2"
     },
     {
-      "item": "Chopped red onion, to garnish",
+      "item": "optional: 3Y'3 cups chicken broth",
+      "amount": ""
+    },
+    {
+      "item": "Y2 cup rogan josh or medium curry paste, such as",
+      "amount": ""
+    },
+    {
+      "item": "of red lentils",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "I cup natural yogurt",
+      "amount": ""
+    },
+    {
+      "item": "over. Chop t he remaining cilant ro, including the stalks",
       "amount": ""
     }
   ],
   "method": [
-    "Heat the oil in a large frying pan over a medium–high heat until hot. Add the garlic and ginger paste and let it sizzle for about 30 seconds, stirring continuously. Add the paprika and chilli powder and fry for about 30 seconds. The mixture should turn a darker red as it cooks. Pour in the tomato purée, which should start to bubble as soon as it hits the pan. Cook it down by about half, then stir in 250ml (1 cup) of the base curry sauce, the cumin and mixed powder.",
-    "Allow the sauce to simmer for about 2 minutes, without stirring unless it is obviously catching on the pan. Some of the sauce should caramelize to the sides of the pan; you want to scrape it off from time to time as it adds a nice smoky flavour. Add the pre-cooked lamb and the rest of the base sauce with the stock.",
-    "Let the sauce come to a boil until it reduces to your preferred consistency, only stirring if it is catching. Add the tomato wedges to the sauce.",
-    "To serve, swirl in the cashew paste, then add the yoghurt 1 tablespoon at a time, stirring continuously. Sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Top with coriander (cilantro) and garnish with chopped red onion and a little plain yoghurt."
+    "Put a large casserole-type pan on a medium to high heat and add a couple of lugs of oil and the butter.",
+    "the o nions, chile, ginger, cilantro stalks, and bay leaves and cook for 10 minutes, until the onions are",
+    "softened and golden • Add t he lamb pieces and a little salt and pepper and cook until lightly browned •",
+    "Add the balsamic vinegar and cook for 2 minutes, t hen add the tomatoes, stock (or 3 Y3 cups of hot water),",
+    "and rogan josh curry past e .",
+    "Stir in the lentils. Bring to a boil, then turn the heat down and simmer with",
+    "the lid on for about an hour . Check the curry regularly to make sure it's not sticking to the pan or",
+    "drying out, and add extra water if necessary . When the meat is tender and cooked, taste and add more",
+    "salt and pepper only if you think it needs it",
+    "To serve your curry",
+    "This will be fantastic served with any of my fluffy rice recipes (see pages 95-96), some pappadams, and",
+    "wit h a few spoonfuls of yogurt dolloped on t o p . Sprinkle over the cilantro leaves and serve with some",
+    "lemon wedges for squeezing over. Don't forget a little green salad",
+    "CHICKEN TIKKA MASALA",
+    "This is one of the most widely eaten Indian dishes in Brit ain, probably to the bemusement of mo st Indians,",
+    "as the regionality and diversity of their dishes is massive.To build up the popularity of just one dish would",
+    "probably be seen as ludicrous in India. There's a big debate over the exact o rigins of t his recipe -most",
+    "Indians would say it's a bastardized British dish.What is certain is that you'll love the combination of the",
+    "classic tikka flavors with the creamy, slightly sweet sauce. I've sprinkled my t ikka masala w ith raw sliced",
+    "almonds, but if you fancy toasting them first, simply pop them into a dry pan on t he he at for a few"
   ],
-  "image": "/recipes/lamb-rogan-josh.jpg",
-  "category": {
-    "dish_type": [
-      "main"
-    ]
+  "time": {
+    "total": 30
   }
 }

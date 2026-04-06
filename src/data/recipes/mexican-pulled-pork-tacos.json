@@ -1,0 +1,61 @@
+{
+  "id": "mexican-pulled-pork-tacos",
+  "name": "Mexican Pulled Pork Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chopped red onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Pork shoulder, two pounds",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, five tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chopped cilantro, a bunch",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Oregano, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the oregano, salt, cumin, pepper, and pork shoulder.",
+    "Cook for six hours straight.",
+    "Shred the pork slices and arrange the tacos.",
+    "Add the rest of the ingredients on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

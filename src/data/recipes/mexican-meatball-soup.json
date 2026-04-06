@@ -1,0 +1,95 @@
+{
+  "id": "mexican-meatball-soup",
+  "name": "Mexican Meatball Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped red onion",
+      "amount": "1"
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "jalapeño peppers, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 1/4 tsp."
+    },
+    {
+      "item": "zucchini, diced",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "quart of canned chicken broth",
+      "amount": "1"
+    },
+    {
+      "item": "of canned tomatoes",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "black pepper",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1 3/4 tsp."
+    },
+    {
+      "item": "beef, grounded",
+      "amount": "1/2 pound"
+    },
+    {
+      "item": "bread crumbs",
+      "amount": "2 1/2 tsp."
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "corn kernels",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat the oil in the pot over the low heat.",
+    "Add the onion in it with half of the jalapeños. Cook for about 5",
+    "minutes.",
+    "Put zucchini, cumin, dried oregano, and cook for almost 3 minutes.",
+    "Then add the water, broth, tomatoes, salt, and black pepper. Then",
+    "simmer it for about 15 minutes.",
+    "Take a bowl, mix beef, the remaining jalapeño, garlic, cumin, dried",
+    "oregano, salt, black pepper, egg, and the bread crumbs. Make",
+    "meatballs.",
+    "Put corn and meatballs to the soup, and then simmer for about 5",
+    "minutes.",
+    "Add lime juice and fresh oregano, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "por-pia-tod-spring-rolls",
+  "name": "Por Pia Tod Spring Rolls",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "us Bangkokians). This recipe also works with ground pork.",
+  "ingredients": [
+    {
+      "item": "MINUTES FOR SPRING ROLLS",
+      "amount": "40"
+    },
+    {
+      "item": "shallots",
+      "amount": "5"
+    },
+    {
+      "item": "fi nger-length chilies",
+      "amount": "3"
+    },
+    {
+      "item": "lemongrass, tender inner part of bottom third only",
+      "amount": "1 stalk"
+    },
+    {
+      "item": "unscented oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chicken breast, chopped into",
+      "amount": "1"
+    },
+    {
+      "item": "2-inch (5-cm) size pieces",
+      "amount": ""
+    },
+    {
+      "item": "chicken wings",
+      "amount": "4"
+    },
+    {
+      "item": "chicken carcass, broken up (about",
+      "amount": "1"
+    },
+    {
+      "item": "lbs/900 g)",
+      "amount": "2"
+    },
+    {
+      "item": "lemongrass, tender inner part of bottom third only, bruised",
+      "amount": "1 stalk"
+    },
+    {
+      "item": "chicken bouillon cubes",
+      "amount": "1–2"
+    },
+    {
+      "item": "carrots, optional",
+      "amount": "3 oz (85 g)"
+    },
+    {
+      "item": "baby corn, optional",
+      "amount": "3 oz (85 g)"
+    },
+    {
+      "item": "sliced mushrooms, optional (or any other vegetables)",
+      "amount": "½ cup (50 g)"
+    },
+    {
+      "item": "roasted rice kernels, page 34 (optional)",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Pound the Paste ingredients in a mortar until a paste is formed.",
+    "To make the Soup, place the",
+    "Paste and 1 tablespoon unscented oil in a medium pot and fry until aromatic. Add the chicken breast and wings and mix to coat thor- oughly with the Paste.",
+    "Add the chicken bones, lemon- grass and bouillon cubes to fl avor.",
+    "Add enough water to just cover the contents in the pot.",
+    "Once the Soup is boiling, add the veggies in order from longest to cook to shortest, if using. Add the dill. Add the fi sh sauce to taste. (If adding pla rah, must make sure the soup is boiling well, or the soup will smell). Boil for around 10 minutes or until all the chicken pieces and veg- gies (if using) are cooked through.",
+    "Remove the chicken bones from the pot. Before serving, add the roasted rice kernels (if using) to give the soup a roasted smell. You can eat this immediately or heat it up later. If eating later, do not add the rice kernels until ready to serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

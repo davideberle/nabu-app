@@ -1,0 +1,58 @@
+{
+  "id": "kingfish-ceviche-tacos-with-tabasco",
+  "name": "Kingfish Ceviche Tacos with Tabasco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Kingfish Ceviche, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and chili as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sugar, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Tabasco, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place lime juice, sugar, salt and chili in a bowl and stir until sugar and",
+    "salt dissolve.",
+    "Add tabasco and kingfish, gently stir to coat.",
+    "Cook the fish until done.",
+    "Drain ceviche, slice up the fish.",
+    "Serve with tortillas, and add all the rest ingredients on top."
+  ],
+  "time": {
+    "total": 15
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "grilled-eggplant-with-feta-relish",
+  "name": "Grilled Eggplant with Feta Relish",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Minced fresh basil",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "balsamic vinaigrette",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chopped red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "eggplant",
+      "amount": "8 slices"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "peeled cucumber",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "plum tomato",
+      "amount": "½ cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Whisk the vinaigrette and herb powder together in a small bowl when",
+    "blended.",
+    "Add the feta, cucumber, basil, and onions and mix.",
+    "Refrigerate before serving wrapped.",
+    "Brush with the oil on the eggplant; scatter with salt and black pepper.",
+    "Grill 4 inches, sealed, over medium-high heat or griddle.",
+    "Heat on either side for 4-5 minutes or until mild.",
+    "Cover the feta combination with eggplant. Scatter basil if needed."
+  ],
+  "time": {
+    "total": 25
+  }
+}

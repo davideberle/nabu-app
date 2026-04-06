@@ -1,0 +1,82 @@
+{
+  "id": "seasonal-tempura",
+  "name": "Seasonal tempura",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Here’s the perfect solution for all your vegetables. This tempura (pictured on page 31) is breathtakingly delicious.",
+  "ingredients": [
+    {
+      "item": "cardamom pods grated zest and juice of 4 limes (about",
+      "amount": "6"
+    },
+    {
+      "item": "fresh green chile",
+      "amount": "1"
+    },
+    {
+      "item": "cilantro (leaves and stalks)",
+      "amount": "2¾ cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cornstarch, plus extra to coat the vegetables",
+      "amount": "½ cup"
+    },
+    {
+      "item": "self-rising flour (see note, facing page)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "seltzer or sparkling water",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt chile flakes to taste",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "sunflower oil for deep-frying",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "To make the sauce. Break the cardamom pods using a mortar and pestle and transfer the seeds to a food-processor bowl.",
+    "Discard the pods. Add the rest of the ingredients and blitz to get a smooth, runny sauce.",
+    "Next prepare the vegetables. There aren’t any strict rules you must follow but try to keep them chunky and retain some of the natural shape of the vegetable where possible – for example, round vegetables cut into thin wedges and long ones into batons or strips. Here are a few useful suggestions. For cauliflower and broccoli, divide into medium florets; for beets, peel and cut into",
+    "8-inch-thick slices or wedges; for potatoes and sweet potatoes, leave the skin on and cut into ¼-inch-thick slices; for Jerusalem artichoke, carrot, parsnip, salsify, turnip and celeriac, peel and cut into ³",
+    "8-inch-thick sticks, not too perfect; for baby leeks just trim off the green ends.",
+    "Before you start frying the vegetables, prepare a large plate lined with paper towels. Scatter some cornstarch for coating the vegetables on another plate. Place the batter ingredients – flour, cornstarch, soda water, grapeseed oil and salt – in a bowl and whisk well to get a smooth, runny mix. Add some chile flakes for heat.",
+    "Pour the frying oil into a medium saucepan and place on high heat. Once very hot, turn the heat down to medium. When frying the vegetables, the oil should be hot enough so you get a good sizzle but not so hot that they burn.",
+    "Deep-fry four or five pieces of vegetable at a time. Take each piece and toss it in the cornstarch. Shake to remove any excess, then dip in the batter. Lift and shake again, then carefully put into the oil. As they fry, turn the pieces over to color evenly. Soft vegetables like leek should take about 1 minute to cook, harder ones like beets 2 minutes or more. When frying, occasionally remove any burnt bits that float in the oil. As they cook, transfer the vegetables onto the paper towels and keep warm.",
+    "When all the vegetables are cooked, serve them at once, with the dipping sauce on the side.",
+    "When I was a student in Tel Aviv in the early 1990s I lived in the trendy center of the city, around Shenkin",
+    "Street, and used to hang about in cafés with other students who, just like me, talked about meaningful things with an air of innocent self-importance. At the very heart of the center was a small café, called Orna and Ella’s, that epitomized the scene; everyone wanted to be seen there. And what symbolized Orna and",
+    "Ella’s was their legendary sweet potato cakes. Here’s a modified version.",
+    "Sweet potato cakes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

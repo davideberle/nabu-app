@@ -1,0 +1,153 @@
+{
+  "id": "cinnamon-swirl-bread",
+  "name": "Cinnamon Swirl Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "FOR THE SPONGE:",
+      "amount": ""
+    },
+    {
+      "item": "+ 1 tbsp. milk 1/3 c. plus 1",
+      "amount": "3/4 c."
+    },
+    {
+      "item": "tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": "1"
+    },
+    {
+      "item": "(0.25 oz.) active dry yeast package",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE DOUGH:",
+      "amount": ""
+    },
+    {
+      "item": "3 giant eggs, room",
+      "amount": "1 3/4 c."
+    },
+    {
+      "item": "temperature",
+      "amount": ""
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": ""
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "sugar granules",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": ""
+    },
+    {
+      "item": "of a cup",
+      "amount": "1/3"
+    },
+    {
+      "item": "softened butter",
+      "amount": ""
+    },
+    {
+      "item": "of a cup",
+      "amount": "1/3"
+    },
+    {
+      "item": "Raisins",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE FILLING:",
+      "amount": ""
+    },
+    {
+      "item": "Granulated sugar 1/2 c.",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE EGG WASH:",
+      "amount": ""
+    },
+    {
+      "item": "1 big egg",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "MAKE SPONGE:",
+    "Heat milk to around 100 degrees in the microwave or on the stovetop.",
+    "Warm milk, flour, and yeast are mixed in a small bowl until thoroughly",
+    "blended. Allow it to sit for 45 to 60 minutes, or until air pockets have",
+    "developed in the sponge.",
+    "MAKE DOUGH:",
+    "Add eggs, flour, sugar, water, and salt to the bowl of a stand",
+    "mixer fitted with a hook attachment after the sponge has",
+    "developed some air pockets. Mix on medium speed until well",
+    "mixed, then gradually raise to medium-high speed and continue",
+    "mixing, scraping down the bowl every 4 to 5 minutes, for 10 to",
+    "13 minutes, or until dough pulls away from the edges of the",
+    "bowl and becomes glossy and elastic.",
+    "While the mixer is running, gently add the butter, 1 tablespoon",
+    "at a time, allowing each tablespoon to integrate thoroughly",
+    "before adding the next. Continue mixing medium-high speed for",
+    "5 to 7 minutes, or until the dough passes the windowpane test.",
+    "(This will take 13 to 15 minutes.) Once the dough has reached",
+    "this point, stir in the raisins until they are evenly distributed",
+    "throughout the dough.",
+    "Cover bowl tightly with plastic wrap and set aside for 1 hour or",
+    "until it has doubled in size.",
+    "ASSEMBLE AND BAKE LOAF:",
+    "Sugar and cinnamon should be whisked together in a small",
+    "bowl. Remove from the equation.",
+    "Roll out the dough onto a well-floured work surface into a big",
+    "rectangle, about 8\" x 16\". Fold the short ends inside as if you",
+    "were folding a letter. Turn the dough 90 degrees and roll out",
+    "another 8\" × 16\" sheet from the short end.",
+    "Pull up on the covered end and roll the dough into a tight spiral.",
+    "Insert the role seam side down in a buttered 8 \"x5\" loaf pan,",
+    "cover, and let rise for 1 to 2 hours, or until dough begins to rise",
+    "over the edge of the pan.",
+    "preheat the oven to 375°F and spray the top of the dough with",
+    "egg wash. Bake for 30 minutes or until deeply brown on top and",
+    "center registers between 190° and 205°F. Let rest for 5 minutes",
+    "before turning the loaf out onto a cooling rack to cool fully."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "id": "chicken-souvlaki-with-tzatziki-sauce",
+  "name": "Chicken Souvlaki with Tzatziki Sauce",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "For the Chicken",
+      "amount": ""
+    },
+    {
+      "item": "chicken breast",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "medium cloves garlic",
+      "amount": "4"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "fresh oregano leaves",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "5 tablespoons"
+    },
+    {
+      "item": "For the Salad",
+      "amount": ""
+    },
+    {
+      "item": "crumbled feta",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "medium cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "¾ cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small red onions",
+      "amount": "2"
+    },
+    {
+      "item": "small tomatoes",
+      "amount": "6"
+    },
+    {
+      "item": "For the Tzatziki Sauce",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "medium clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "medium cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Put the lime juice, olive oil, vinegar, oregano, black pepper in a large",
+    "In a different medium dish, put the cubes of chicken.",
+    "Combine with rubbed garlic and seven teaspoons of dressing.",
+    "Toss the chicken to coat equally, cover, and cool for around 2 hours to",
+    "marinate, flipping periodically.",
+    "Put aside the rest of the dressing for the salad.",
+    "Work on the tzatziki sauce as the chicken marinates: put the cubed",
+    "cucumbers in a fine-mesh sieve set over the dish.",
+    "Mix with ½ teaspoon salt and let it rest for about thirty minutes to",
+    "drain.",
+    "Clean the cucumbers gently with a clean cloth, put them in a large",
+    "bowl, and mix them with the garlic, dairy, and dill.",
+    "Sprinkle with salt to satisfy. To eat, put it in the fridge until ready.",
+    "Bits of chicken on 12 to 15 skewers. Discard the marinade",
+    "Take barbecue pan and barbecue over moderate flame.",
+    "Put chicken skewers on the grill until well golden brown. The",
+    "core temperature reads 155°, rotating equally to grill in all directions",
+    "on the instantly read thermometer, about five minutes in total.",
+    "Remove the chicken from the serving dish and let it sit for",
+    "three minutes.",
+    "In the meantime, barbecue the pitas momentarily and keep",
+    "them warm.",
+    "Start preparing a salad well before serving: swirl the olive oil",
+    "into the stored chicken marinade.",
+    "Add the cabbage, tomato, cucumber, parsley, onions, and feta.",
+    "With salt and black pepper, scatter.",
+    "Serve the salad, pita, and tzatziki sauce on skewers.",
+    "Take the chicken from the skewers and cram it with sauces",
+    "and salad into the pitas."
+  ],
+  "time": {
+    "total": 120
+  }
+}

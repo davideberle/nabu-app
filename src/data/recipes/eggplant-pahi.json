@@ -1,0 +1,85 @@
+{
+  "id": "eggplant-pahi",
+  "name": "EGGPLANT PAHI",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "large serving platter or individual plates and serve warm, with a spoonful of",
+  "ingredients": [
+    {
+      "item": "large eggplants, halved lengthwise, each half cut into 1 by 2-inch/2.5 by 5-cm wedges (1⅔ lb/750 g)",
+      "amount": "2"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "medium onions, each cut into 8 wedges (15 oz/420 g)",
+      "amount": "3"
+    },
+    {
+      "item": "Romano or Ramiro peppers, halved lengthwise, seeded, and cut crosswise into strips ¾-inch/2- cm wide (about 4 cups/480 g)",
+      "amount": "4"
+    },
+    {
+      "item": "mild red chile, seeded and quartered",
+      "amount": "1"
+    },
+    {
+      "item": "1¼-inch/3-cm piece fresh ginger (about ⅓ oz/ 10 g), peeled and coarsely chopped",
+      "amount": ""
+    },
+    {
+      "item": "garlic, coarsely chopped",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "4-inch/10-cm pandan leaf, coarsely chopped (optional)",
+      "amount": ""
+    },
+    {
+      "item": "1¼-inch/3-cm piece lemongrass, soft white stem only, coarsely chopped about 12 fresh curry leaves",
+      "amount": ""
+    },
+    {
+      "item": "cup/60 ml cider vinegar",
+      "amount": "¼"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2½ tsp"
+    }
+  ],
+  "method": [
+    "Pour the oil into a very large sauté pan or Dutch oven and place over medium-high heat. Meanwhile, toss the eggplants with the turmeric in a bowl. Add to the oil in batches and fry for about 8 minutes, turning once, until lightly golden. Use a slotted spoon to transfer to a colander layered with paper towels, sprinkle with ¼ teaspoon salt, and leave to drain.",
+    "Add the onions to the oil and fry them for about 8 minutes, turning once, until golden brown, then add them to the eggplants, along with another ¼ teaspoon salt. Next, fry the peppers and chile for 5 minutes, until the edges begin to brown, and add to the rest, along with ¼ teaspoon salt. You should now have about 1 tablespoon oil in the pan. Add or remove some if you need.",
+    "Place the ginger, garlic, spices, pandan leaf, lemongrass, and curry leaves in the bowl of a small food processor or spice grinder and blitz to form a paste.",
+    "Fry this paste in the pan with the oil over medium heat for 2 to 3 minutes, until it begins to color. Return all of the vegetables to the pan, along with the vinegar, ¼ cup/60 ml boiling water, and sugar. Stir gently and simmer for 8 minutes, until most of the liquid has boiled away, before serving warm or at room temperature."
+  ],
+  "time": {
+    "total": 30
+  }
+}

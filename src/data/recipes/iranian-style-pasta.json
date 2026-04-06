@@ -1,0 +1,64 @@
+{
+  "id": "iranian-style-pasta",
+  "name": "IRANIAN-STYLE PASTA",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "finish with a drizzle of the herb oil, and serve at once.",
+  "ingredients": [
+    {
+      "item": "large eggplants (2¾ lb/1.2 kg) scant 1 cup/200 g kashk, or mix a scant ⅔ cup/140 g crème fraîche and a scant ⅔ cup/60 g grated Parmesan",
+      "amount": "3"
+    },
+    {
+      "item": "tbsp/75 ml olive oil, plus extra to finish",
+      "amount": "5"
+    },
+    {
+      "item": "large onion, finely chopped (1⅓ cups/200 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cup/150 g Greek yogurt",
+      "amount": "¾"
+    },
+    {
+      "item": "dried mint about 1 lb/500 g reshteh or linguine",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "saffron threads, soaked in 1½ tsp lukewarm water",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cup/10 g mint leaves, shredded salt and black pepper",
+      "amount": "⅓"
+    }
+  ],
+  "method": [
+    "Place the kashk in a small saucepan with 5 tablespoons/75 ml water. Bring to a simmer over medium heat, stir, and then set aside until ready to use.",
+    "Heat 2 tablespoons of the oil in a sauté pan over medium-high heat. Add the onion and cumin seeds and cook for 12 minutes, stirring occasionally, until soft. Add the eggplant flesh, garlic, 1 teaspoon salt, and some black pepper.",
+    "Cook for another 2 minutes before adding the lime juice. Stir through for a final minute and then remove from the heat.",
+    "Add the yogurt to the kashk pan and heat over low heat for 5 minutes, stirring from time to time. Keep an eye on the mixture, as you don’t want the yogurt to separate.",
+    "Mix the dried mint with 1 tablespoon of the oil and set aside.",
+    "Bring a large pan of salted water to a boil and add the pasta. Cook for 8 minutes, or according to the package instructions, until cooked but still retaining a bite. Stir the remaining 2 tablespoons oil through the pasta, mix, and then divide among shallow bowls or plates. Drizzle the mint oil over the top, followed by the eggplant. Top this with the kashk mixture, followed by the saffron water, fresh mint, and a final drizzle of oil. Serve at once.",
+    "STUFFED ZUCCHINI"
+  ],
+  "time": {
+    "total": 30
+  }
+}

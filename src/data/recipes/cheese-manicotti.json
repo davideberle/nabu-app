@@ -1,0 +1,104 @@
+{
+  "id": "cheese-manicotti",
+  "name": "Cheese Manicotti",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "pkg. manicotti",
+      "amount": "1 (8 oz.)"
+    },
+    {
+      "item": "Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "can tomatoes",
+      "amount": "1 (14.5 oz.)"
+    },
+    {
+      "item": "can tomato paste",
+      "amount": "1 (6 oz.)"
+    },
+    {
+      "item": "red wine",
+      "amount": "6 oz."
+    },
+    {
+      "item": "onion, sautéed",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "each of oregano or basil",
+      "amount": "1/2 to 1 tsp."
+    },
+    {
+      "item": "Filling:",
+      "amount": ""
+    },
+    {
+      "item": "Ricotta cheese",
+      "amount": "1 lb."
+    },
+    {
+      "item": "Prosciutto or cooked chopped spinach or omit",
+      "amount": "1/4 lb."
+    },
+    {
+      "item": "reduced fat mozzarella or Jack cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "eggs, lightly beaten",
+      "amount": "2"
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; drain.",
+    "Combine all sauce ingredients in a medium saucepan; simmer 30 to 60 minutes.",
+    "In a large bowl, combine all filling ingredients; mix well.",
+    "To Assemble:",
+    "Fill manicotti with filling mixture. Place in single layer in baking dish. Cover with sauce and extra Parmesan",
+    "cheese.",
+    "Bake at 350 degrees F. for 15 minutes, covered, and 15 minutes uncovered.",
+    "(21) Fettuccine with Gorgonzola",
+    "Attention all pasta lovers! Are you looking for a new dish to try? If so, this one is for you. This simple recipe will",
+    "have your taste buds singing in delight after one taste. Fettuccine with Gorgonzola is a hearty and filling dish that",
+    "will leave you feeling satisfied.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 90
+  }
+}

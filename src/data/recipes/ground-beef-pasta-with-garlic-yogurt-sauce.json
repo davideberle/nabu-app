@@ -1,0 +1,67 @@
+{
+  "id": "ground-beef-pasta-with-garlic-yogurt-sauce",
+  "name": "Ground Beef Pasta with Garlic-Yogurt Sauce",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "onion, finely cut",
+      "amount": "1"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "For the sauce:",
+      "amount": ""
+    },
+    {
+      "item": "yogurt",
+      "amount": "2 cups"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "4-5"
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine yogurt and garlic.",
+    "Gently sauté the onion in olive oil, for 2-3 minutes over medium heat. Add in the ground beef and cook for 10",
+    "minutes, or until the meat is cooked through.",
+    "Meanwhile, cook pasta, according package instructions. Drain and set aside. Melt the butter in a large pot and toss",
+    "the pasta in it.",
+    "Serve the pasta, top with the cooked ground beef and covered with the garlic-yogurt sauce.",
+    "(37) Baked Turkey Tetrazzini",
+    "This classic dish is a family favorite, and for a good reason. Baked Turkey Tetrazzini is rich, creamy comfort food.",
+    "It also happens to be very easy to make, as long as you have the ingredients on hand! This recipe only takes about",
+    "45 minutes from start to finish and tastes delicious with some crusty bread for dipping in the sauce.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 43
+  }
+}

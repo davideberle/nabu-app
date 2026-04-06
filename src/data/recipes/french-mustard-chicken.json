@@ -1,0 +1,90 @@
+{
+  "id": "french-mustard-chicken",
+  "name": "French Mustard Chicken",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "One cup of vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of dried rosemary",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "One pound of chicken pieces",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of dry white wine",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil and onion slices into it.",
+    "Fry the onion slices.",
+    "Add the garlic, chicken pieces, lemon juice and spices into the pan.",
+    "Cook the chicken pieces in the spices for five to ten minutes.",
+    "Add the rest of the ingredients into the mixture.",
+    "Cook the mixture until it starts boiling.",
+    "Bring the heat to low and cover the pan with a lid.",
+    "After ten minutes remove the lid.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "id": "easter-bread",
+  "name": "Easter Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "FOR THE BREAD",
+      "amount": ""
+    },
+    {
+      "item": "Spray for Cooking",
+      "amount": ""
+    },
+    {
+      "item": "milk, lukewarm",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cup",
+      "amount": "12"
+    },
+    {
+      "item": "+ 1 teaspoon granulated sugar (distributed)",
+      "amount": ""
+    },
+    {
+      "item": "teaspoons",
+      "amount": "2 1/2"
+    },
+    {
+      "item": "or 1 (0.25-oz.) active dry yeast packet",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "4 1/2 cup"
+    },
+    {
+      "item": "all-purpose flour, with a bit of extra for the",
+      "amount": ""
+    },
+    {
+      "item": "top",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "a lot of eggs",
+      "amount": "2"
+    },
+    {
+      "item": "cup",
+      "amount": "12"
+    },
+    {
+      "item": "stick softened butter, cut into cubes",
+      "amount": "1"
+    },
+    {
+      "item": "Brushing with egg wash",
+      "amount": ""
+    },
+    {
+      "item": "Topping with sprinkles",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE EGGS",
+      "amount": ""
+    },
+    {
+      "item": "4 giant eggs",
+      "amount": "1 c."
+    },
+    {
+      "item": "divided boiling water",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "divided distilled white vinegar",
+      "amount": ""
+    },
+    {
+      "item": "Colored food",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Using nonstick cooking spray, coat a large mixing bowl.",
+    "Combine milk and 1 teaspoon sugar in a small dish or liquid",
+    "measuring cup, then sprinkle yeast on top. Allow settling for 8",
+    "minutes or until foamy.",
+    "Combine flour, remaining 12 cup sugar, and salt in the bowl of a",
+    "stand mixer fitted with the dough hook. Combine the milk,",
+    "yeast, and eggs in a mixing bowl. Mix for about 5 minutes, or",
+    "until a very soft dough develops. Increase the mixer speed to",
+    "medium-high and gradually add the butter, a tablespoon at a",
+    "time, mixing thoroughly after each addition, until the dough",
+    "pulls away from the sides of the bowl, approximately 15",
+    "minutes.",
+    "Place dough in greased basin, cover, and set aside to rise for 1 to",
+    "1 1/2 hours in a warm place.",
+    "Meanwhile, create hard-boiled eggs by placing eggs in a",
+    "medium pot with enough water to cover them. Bring to a boil",
+    "over medium heat. Cover and remove from heat. Allow for 11",
+    "minutes of resting time before removing from the pan and",
+    "plunging into the icy water.",
+    "Pour 1 cup boiling water into two separate dishes. To each bowl,",
+    "add 1 teaspoon vinegar and the appropriate food coloring. One",
+    "egg at a time, add to the pan and set aside for 5 to 10 minutes,",
+    "depending on the desired color. Remove with a slotted spoon",
+    "from the bowl and dry on a wire rack placed over a baking",
+    "sheet.",
+    "Preheat the oven to 375 degrees Fahrenheit and prepare a large",
+    "baking sheet with parchment paper. Divide the dough into three",
+    "equal pieces on a lightly floured surface. Make a 16\" long rope",
+    "out of each component. Place the ropes lengthwise on the",
+    "baking sheet that has been prepared. Pinch the top ends of the",
+    "strings together, then braid them tightly together. Make a circle",
+    "with the limitations and squeeze them together.",
+    "Press colored eggs into the braid, then cover and let rise for 30",
+    "minutes or until the dough has doubled in size.",
+    "Finish with an egg wash and sprinkles—Bake for 30 minutes, or",
+    "until brown."
+  ],
+  "time": {
+    "total": 45
+  }
+}

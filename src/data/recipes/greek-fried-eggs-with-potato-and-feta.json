@@ -1,0 +1,49 @@
+{
+  "id": "greek-fried-eggs-with-potato-and-feta",
+  "name": "Greek Fried Eggs with Potato and Feta",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "One chopped potato",
+      "amount": ""
+    },
+    {
+      "item": "Sixty grams of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the potatoes and salt into the pan.",
+    "Cook the potatoes well and then add the black pepper into the pan.",
+    "Break the eggs into the pan.",
+    "Add the crumbled feta cheese on top.",
+    "Cook the ingredients well on both sides.",
+    "Dish out when the eggs are done",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

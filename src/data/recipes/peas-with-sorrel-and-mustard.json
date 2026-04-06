@@ -1,0 +1,64 @@
+{
+  "id": "peas-with-sorrel-and-mustard",
+  "name": "PEAS WITH SORREL AND MUSTARD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "with seeds as you go, and serve the sauce in a bowl on the side.",
+  "ingredients": [
+    {
+      "item": "cups/300 g fresh or defrosted frozen green peas",
+      "amount": "2"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oz/220 g green onions, white and green parts, trimmed and sliced on the diagonal into ⅜- inch-/1-cm-thick slices (2 cups/180 g)",
+      "amount": "8"
+    },
+    {
+      "item": "garlic, thinly sliced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "black mustard seeds, toasted",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tbsp/75 g Greek yogurt",
+      "amount": "6"
+    },
+    {
+      "item": "oz/100 g sorrel leaves and stems, coarsely shredded salt",
+      "amount": "3½"
+    }
+  ],
+  "method": [
+    "Bring a pan of water to a boil, add the peas, and blanch for just 30 seconds.",
+    "Drain into a colander, refresh under cold water, and set aside.",
+    "Place both mustards in a small bowl with the sugar, 3 tablespoons water, and",
+    "½ teaspoon salt. Mix together to form a smooth paste and set aside.",
+    "Place a large sauté pan over medium-high heat and add the oil. Once hot, add the green onions and garlic and fry for 8 minutes, stirring frequently, until golden brown. Turn down the heat to low and add the mustard sauce, peas, 2 teaspoons of the mustard seeds, and the yogurt. Stir for 1 minute until everything is well mixed and the yogurt is warmed through. Remove from the heat, stir in the sorrel, and serve at once, with the remaining 1 teaspoon mustard seeds sprinkled on top.",
+    "Tagliatelle with Walnuts and Lemon",
+    "TAGLIATELLE WITH WALNUTS AND"
+  ],
+  "time": {
+    "total": 30
+  }
+}

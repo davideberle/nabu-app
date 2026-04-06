@@ -1,0 +1,43 @@
+{
+  "id": "greek-fries",
+  "name": "Greek Fries",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One pound russet potatoes",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One cup salsa",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the potatoes into sticks.",
+    "Dip it in all-purpose flour.",
+    "Take a large frying pan.",
+    "Add oil into the pan and heat well.",
+    "Add the potato sticks and deep fry until they turn golden brown.",
+    "Dish out the fries and add the salsa and feta cheese on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 70
+  }
+}

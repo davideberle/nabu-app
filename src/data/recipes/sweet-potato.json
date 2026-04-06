@@ -1,0 +1,83 @@
+{
+  "id": "sweet-potato",
+  "name": "SWEET POTATO",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "• Preparation time: 30 minutes plus soaking and chilling",
+      "amount": "4"
+    },
+    {
+      "item": "For the curry:",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cups raw or sprouted buckwheat groats",
+      "amount": ""
+    },
+    {
+      "item": "walnut oil salt and freshly ground black pepper",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "large sweet potatoes",
+      "amount": "3"
+    },
+    {
+      "item": "large carrots",
+      "amount": "2"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon pinch of cayenne pepper",
+      "amount": "1"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "For the sauce:",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 cups cashews",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Put the buckwheat and the cashews for the sauce into separate bowls. Soak them overnight in cold water. Drain them just before using. If you are using sprouted buckwheat, rinse it in a sieve under cold running water, and pat dry.",
+    "Season with 2 tablespoons of oil and a bit of salt and pepper.",
+    "To make the sauce, place the cashews, lemon juice, curry powder, and salt into a food processor. Process until the sauce is really creamy and has no cashew clumps. Carefully add water, one tablespoon at a time, until the sauce has the desired consistency.",
+    "Peel the sweet potatoes and carrots. Grate them coarsely.",
+    "Peel the ginger, and grate it finely.",
+    "Pick the cilantro leaves and chop them coarsely. Put the sweet potatoes, carrots, cilantro, and the defrosted peas in a bowl. Add the rest of the oil and the curry powder, and combine. Fold in the buckwheat and the curry sauce. Juice the lemon.",
+    "Season the curry with the lemon juice and the cayenne pepper.",
+    "Marinate the curry in the refrigerator for 1 hour before serving.",
+    "Sprinkle the sweet potato curry with the sesame seeds, and serve.",
+    "PARSNIP&SWEET POTATO",
+    "Mushroom, parsnip &"
+  ],
+  "time": {
+    "total": 30
+  }
+}

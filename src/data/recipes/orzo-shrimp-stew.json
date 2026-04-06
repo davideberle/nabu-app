@@ -1,0 +1,55 @@
+{
+  "id": "orzo-shrimp-stew",
+  "name": "Orzo Shrimp Stew",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chicken broth",
+      "amount": "2 1/2 cups"
+    },
+    {
+      "item": "can Italian style tomatoes, diced, reserve liquid",
+      "amount": "1 (14.5 oz.)"
+    },
+    {
+      "item": "broccoli, coarsely chopped",
+      "amount": "5 cups"
+    },
+    {
+      "item": "orzo",
+      "amount": "1 cup"
+    },
+    {
+      "item": "raw shrimp, medium",
+      "amount": "1 lb."
+    },
+    {
+      "item": "margarine or butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large saucepan, heat broth to boil. Add tomatoes, broccoli and orzo.",
+    "When broth returns to boil, stir in shrimp. Simmer until shrimp becomes opaque and pasta is cooked. Stir in",
+    "margarine or butter. Season with salt and pepper.",
+    "(48) Farfalle with Salmon Sauce",
+    "A dish traditionally served in Italy and Japan, farfalle with salmon sauce is made from cheese, pasta, and salmon",
+    "cooked in a fish broth. Topped with fresh parsley, this dairy-free dish will not leave you feeling heavy like some",
+    "other traditional Italian pastas do. A fun experiment for any adventurous eater!",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

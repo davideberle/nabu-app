@@ -1,0 +1,163 @@
+{
+  "id": "milk-bread",
+  "name": "Milk Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "FOR THE TANGZHONG",
+      "amount": ""
+    },
+    {
+      "item": "water 4 tbsp.",
+      "amount": "4 tbsp. (60 ml.)"
+    },
+    {
+      "item": "milk in its entirety (60 ml.)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "4"
+    },
+    {
+      "item": "flour for bread (32 g.)",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE DOUGH",
+      "amount": ""
+    },
+    {
+      "item": "active dry yeast package (7 g.) 1/2",
+      "amount": "1 (0.25 oz.)"
+    },
+    {
+      "item": "lukewarm whole milk (120 g.)",
+      "amount": ""
+    },
+    {
+      "item": "split sweetened condensed milk (156",
+      "amount": "12 cup"
+    },
+    {
+      "item": "g.)",
+      "amount": ""
+    },
+    {
+      "item": "of a cup milk that has been evaporated",
+      "amount": "1/3"
+    },
+    {
+      "item": "(160 g.)",
+      "amount": ""
+    },
+    {
+      "item": "big beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "three c. flour for bread (384 g.)",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1 1/4"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "4"
+    },
+    {
+      "item": "(56 g) softened butter, diced, plus extra for the",
+      "amount": ""
+    },
+    {
+      "item": "pan",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE EGG WASH",
+      "amount": ""
+    },
+    {
+      "item": "Reserved 1 tbsp. Granulated sugar 1 tbsp. egg",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1/8"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "tbsp.",
+      "amount": "1"
+    },
+    {
+      "item": "Water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the tangzhong, mix water, milk, and flour in a small",
+    "pot over medium-low heat until entirely smooth. Continue to",
+    "boil, frequently whisking, until the mixture has thickened into a",
+    "soft, springy paste, about 1 to 2 minutes. Allow cooling to room",
+    "temperature before serving.",
+    "In the meantime, combine 1/2 cup lukewarm whole milk, 1",
+    "tablespoon condensed milk, and yeast in the bowl of a stand",
+    "mixer and set aside until frothy, about 15 minutes.",
+    "Take 1 tablespoon of the beaten egg and set it aside for the egg",
+    "wash. Mix on low speed until a loose dough forms, then add the",
+    "remaining beaten egg, the cooled tangzhong, remaining 7",
+    "tablespoons condensed milk, flour, evaporated milk, and salt to",
+    "the mixer bowl.",
+    "Increase the mixer's speed to medium and continue mixing for 3",
+    "minutes, or until a smooth dough forms. Distance - vector the",
+    "sides of the bowl, then increase the mixer speed to medium-high",
+    "for 3 minutes more. Continue to beat on medium-high speed",
+    "while gradually adding in the butter. Continue beating on",
+    "medium-high speed for another 12 to 15 minutes, scraping",
+    "down the sides of the bowl twice more. (Warning: you may",
+    "need to hold your mixer in place to keep it from slipping off the",
+    "counter!)",
+    "Cover the bowl and set aside for 1 hour 15 minutes to 1 hour 45",
+    "minutes, or until almost doubled in size.",
+    "Knead the dough and turn it out onto a floured board. Make",
+    "three equal pieces of dough. Flatten each piece of dough into a",
+    "12-inch-thick rectangle with your hands, then press into a letter-",
+    "fold: start with the short end, fold the top 13 percent of the",
+    "rectangle towards the center, and fold the bottom 13 percent of",
+    "the rectangle towards the middle. Next, turn the dough 90",
+    "degrees, flatten it out into a huge rectangle once more, and",
+    "repeat the letter-folding process. Finally, start rolling each",
+    "dough into a tight coil from the shorter side of the rectangle.",
+    "Using butter, grease a 9\" x 5\" loaf pan. Place each piece of",
+    "dough seam-side down in the prepared pan and let prove for 1",
+    "hour 15 minutes to 1 hour 45 minutes, or until slightly more",
+    "than doubled in size.",
+    "Preheat the oven to 375 degrees Fahrenheit 20 minutes before",
+    "baking. In a mixing bowl, whisk together the ingredients for the",
+    "egg wash. Egg wash the top of the proofed bread evenly.",
+    "Bake for 45 to 50 minutes, or until the top is golden brown and",
+    "the internal temperature of the loaf reaches 195°. (After 25",
+    "minutes, cover loosely with foil if the top of the loaf is turning",
+    "too black.)",
+    "Take off the heat in the pan for 10 minutes",
+    "before turning it out onto a cooling rack. Allow for at least 1",
+    "hour of cooling time before slicing."
+  ],
+  "time": {
+    "total": 45
+  }
+}

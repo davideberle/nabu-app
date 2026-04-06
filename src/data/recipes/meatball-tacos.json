@@ -1,0 +1,57 @@
+{
+  "id": "meatball-tacos",
+  "name": "Meatball Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chopped red onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Chicken mince, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, five tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Barbeque sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chopped cilantro, a bunch",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Red paprika powder, two tsp.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the mince in a bowl with the salt, red paprika, and pepper and",
+    "Make balls and cook it for ten minutes until done.",
+    "Now arrange your tacos, add meatballs, barbeque sauce, avocado,",
+    "onion and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

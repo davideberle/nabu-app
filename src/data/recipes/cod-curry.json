@@ -1,0 +1,89 @@
+{
+  "id": "cod-curry",
+  "name": "Cod Curry",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "medium onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "red curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cod fillets, sliced",
+      "amount": "1 lb."
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "coriander",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cardamom",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh jalapeno peppers, seeded and diced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "4 cups"
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "diced tomatoes with juice",
+      "amount": "28 oz."
+    }
+  ],
+  "method": [
+    "Heat a sizable skillet with oil over medium heat and add onions. Lower the",
+    "heat and stir in as you cook the onions for around 15 minutes or until",
+    "brown.",
+    "In a sizable skillet, combine the ginger and garlic paste and cook for 1",
+    "minute.",
+    "Add salt, turmeric, cardamom, coriander, and cumin and mix properly.",
+    "Add tomatoes with juice, red curry powder, lemon juice, cilantro, and",
+    "jalapeno, and stir properly from the skillet's bottom. Lower the heat before",
+    "simmering covered for around 20 minutes,",
+    "Boil the sauce again and add cod to the skillet.",
+    "Lower the heat to cook for around 15 minutes. Serve and enjoy!",
+    "Recipe 11: Creamy Chickpea Curry",
+    "To save time, use frozen onions, garlic, and ginger. Serve with microwave"
+  ],
+  "time": {
+    "total": 55
+  }
+}

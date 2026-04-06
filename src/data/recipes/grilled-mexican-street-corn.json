@@ -1,0 +1,60 @@
+{
+  "id": "grilled-mexican-street-corn",
+  "name": "Grilled Mexican Street Corn",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of mayonnaise",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "ears yellow corn",
+      "amount": "4"
+    },
+    {
+      "item": "of finely chopped cilantro",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "small pinch of cayenne pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "of Cotija cheese, finely crumbled",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Lime wedges, to serve",
+      "amount": ""
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1/2 tsp."
+    }
+  ],
+  "method": [
+    "1 Heat a grill over the medium heat.",
+    "2 Meanwhile, take a bowl, mix mayonnaise, garlic, cilantro, and",
+    "cayenne pepper.",
+    "3 Put cotija cheese in a dish.",
+    "4 When the grill is heated, put corn on the grill. Leave space between",
+    "corns.",
+    "5 Let it cook over grill. Make sure to turn it over to cook from all sides.",
+    "6 Brush all corn sides with mayonnaise mixture.",
+    "7 Roll it in cheese.",
+    "8 Take it out on a baking sheet or platter. Repeat this process with the",
+    "remaining corn.",
+    "9 Add chili powder and cayenne pepper on all sides.",
+    "10 Sprinkle with cilantro and use lime wedges to serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

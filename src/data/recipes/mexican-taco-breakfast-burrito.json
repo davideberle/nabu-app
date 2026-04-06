@@ -1,0 +1,66 @@
+{
+  "id": "mexican-taco-breakfast-burrito",
+  "name": "Mexican Taco Breakfast Burrito",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cooked ground beef, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Scrambled eggs, eight",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Minced garlic, three",
+      "amount": ""
+    },
+    {
+      "item": "Mixed cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Jalapeno, one",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, four",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In the center of each tortilla, spread the refried beans, add the ground",
+    "beef, the scrambled eggs, add the taco seasoning, some cheese, and",
+    "tomato pieces, jalapeno, and avocado.",
+    "Fold in the two sides and roll up tightly.",
+    "Lightly fry the burrito.",
+    "Serve with hot sauce."
+  ],
+  "time": {
+    "total": 15
+  }
+}

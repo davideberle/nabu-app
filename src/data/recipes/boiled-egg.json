@@ -1,0 +1,74 @@
+{
+  "id": "boiled-egg",
+  "name": "BOILED EGG",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "celery stalks, thinly sliced on the diagonal (4 cups/400 g)",
+      "amount": "8"
+    },
+    {
+      "item": "green peppers, halved, seeded, and cut lengthwise into strips ¼-inch-/5-mm wide",
+      "amount": "2"
+    },
+    {
+      "item": "medium onion, thinly sliced (1⅓ cups/150 g)",
+      "amount": "1"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemons",
+      "amount": "4"
+    },
+    {
+      "item": "cup/20 g celery leaves",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/15 g flat-leaf parsley leaves",
+      "amount": "½"
+    },
+    {
+      "item": "cup/15 g cilantro leaves",
+      "amount": "1"
+    },
+    {
+      "item": "capers",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "green chiles, seeded and finely sliced",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "oz/200 g feta, broken into ¾-inch/2-cm chunks (1 cup) salt and black pepper",
+      "amount": "7"
+    }
+  ],
+  "method": [
+    "Place the celery, green peppers, and onion in a bowl, sprinkle with the sugar and ½ teaspoon salt, and mix well. Set aside for 30 minutes to allow the",
+    "vegetables to soften and to draw out some of the juices, which will make up part of the dressing.",
+    "Using a small, sharp knife, slice off the top and tail of each lemon. Cut down the side of each lemon, following its natural line, to remove the skin and white pith. Over a small bowl, cut between the membranes to remove the individual segments.",
+    "Add the lemon segments, celery leaves, parsley, cilantro, capers, chiles, olive oil, and some black pepper to the softened vegetables. Mix gently to combine.",
+    "Just before you are about to serve, carefully spoon the eggs into a pan of boiling water and simmer gently for 6 minutes. Run under cold water until the eggs are just cool enough to handle but still warm inside, then peel them gently; the yolk should still be runny.",
+    "Arrange the salad on individual plates, dot each with the feta, and place a soft-boiled egg on top, broken in the middle. Finish with a few drops of olive oil and some freshly ground black pepper and serve at once."
+  ],
+  "time": {
+    "total": 30
+  }
+}

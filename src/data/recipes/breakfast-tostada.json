@@ -1,0 +1,73 @@
+{
+  "id": "breakfast-tostada",
+  "name": "Breakfast Tostada",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "vegetable oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "bacon",
+      "amount": "4 slices"
+    },
+    {
+      "item": "15-ounces canned black beans",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "tostada shells",
+      "amount": "4"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "Cheddar cheese",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "avocado, diced",
+      "amount": "1/4"
+    },
+    {
+      "item": "sour cream",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "salsa",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": "1 tbsp."
+    }
+  ],
+  "method": [
+    "Preheat oven to 400",
+    "Take a skillet, and cook the bacon over the medium heat till the point",
+    "it is crisp.",
+    "Take a saucepan and keep the medium heat. Put vegetable oil, salt,",
+    "black beans, and pepper. Mash the black beans.",
+    "Take a baking sheet and layer one tostada shell, one tbsp. Cheese and",
+    "two tbsp. Beans. Repeat this with all layers of tostada shells. Bake till",
+    "the point cheese is melted, and edges of tostadas start to turn into",
+    "golden color.",
+    "Take a pan and heat oil over the medium heat.",
+    "Cook egg in it for about 5 minutes.",
+    "Put tostada on a plate, and top it with diced avocado, the fried egg,",
+    "salsa, a remaining cheese, sour cream, and cilantro. Serve with bacon,",
+    "and enjoy."
+  ],
+  "time": {
+    "total": 30
+  }
+}

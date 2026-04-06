@@ -1,0 +1,73 @@
+{
+  "id": "french-parsnip-gratin-with-thyme-and-gruyere",
+  "name": "French Parsnip Gratin with Thyme and Gruyere",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of caster sugar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of parsnip slices",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of ground cloves",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cream of tartar",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup of shredded gruyere cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Heat it over medium high heat.",
+    "Add the sugar into it.",
+    "Heat it until it turns golden caramel.",
+    "Add the parsnip slices, cinnamon, cloves and nutmeg.",
+    "Increase the heat and cook it for five minutes.",
+    "Remove it from the heat and let it cool.",
+    "Take a large bowl and add cheese into it.",
+    "Add the cream of tartar and flour into it.",
+    "Add the cooked parsnip and rest of the ingredients into the",
+    "Add the ingredients into a baking dish.",
+    "Bake the ingredients for ten to fifteen minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

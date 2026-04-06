@@ -1,0 +1,99 @@
+{
+  "id": "greek-roasted-vegetables",
+  "name": "Greek Roasted Vegetables",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of oregano leaves",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of rosemary leaves",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of parsley leaves",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of crushed red pepper",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of fennel leaves",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of mixed vegetable pieces",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped chives",
+      "amount": ""
+    },
+    {
+      "item": "One cup of cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of savory summer sprigs",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of dried thyme",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil and chopped onions into it.",
+    "Cook the onions until they turn light brown in color.",
+    "Add the minced garlic into the pan.",
+    "Cook the mixture for five minutes.",
+    "Season the mixture with salt and pepper.",
+    "Add the spices and all the vegetables.",
+    "In a bowl, crush the cherry tomatoes and add the salt.",
+    "Dish the mixture out in a plate when the vegetables are done.",
+    "Add the crushed tomatoes into the pan.",
+    "Cook the tomatoes for ten minutes or until they turn soft.",
+    "Add the vegetable mixture into the pan again.",
+    "Add the rest of the ingredients into the pan and bake it for about",
+    "fifteen minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

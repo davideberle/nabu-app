@@ -1,0 +1,106 @@
+{
+  "id": "horchata-cupcakes",
+  "name": "Horchata Cupcakes",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Cake:",
+      "amount": ""
+    },
+    {
+      "item": "sticks of butter",
+      "amount": "2"
+    },
+    {
+      "item": "of vanilla extract",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "grams of granulated sugar",
+      "amount": "400"
+    },
+    {
+      "item": "egg whites",
+      "amount": "4"
+    },
+    {
+      "item": "grams of flour",
+      "amount": "360"
+    },
+    {
+      "item": "grams of sour cream",
+      "amount": "225"
+    },
+    {
+      "item": "of baking soda",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of baking powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "of salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of horchata",
+      "amount": "1 1/4 cup"
+    },
+    {
+      "item": "of ground cinnamon",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "For Buttercream:",
+      "amount": ""
+    },
+    {
+      "item": "grams of cream cheese",
+      "amount": "115"
+    },
+    {
+      "item": "stick of butter",
+      "amount": "1"
+    },
+    {
+      "item": "grams of powdered sugar",
+      "amount": "500"
+    },
+    {
+      "item": "of ground cinnamon",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of vanilla extract",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of horchata",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F.",
+    "Mix flour, baking powder, cinnamon, salt, and baking soda.",
+    "In a hand mixer, whisk the butter until it is creamy.",
+    "Mix sugar.",
+    "Put egg whites in it, and whip until the mixture is fluffy.",
+    "Put sour cream and vanilla in it.",
+    "Lower the heat, then mix dry ingredients.",
+    "Put horchata in it.",
+    "Fill the cupcake liners, and bake for around 15-18 minutes.",
+    "Let it cool before icing.",
+    "To prepare buttercream, whisk cream cheese, and butter.",
+    "Add powdered sugar.",
+    "Mix vanilla, cinnamon, and horchata in it. Mix until creamy",
+    "and smooth.",
+    "Pour on the cupcakes and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

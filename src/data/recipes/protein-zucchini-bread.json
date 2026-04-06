@@ -1,0 +1,83 @@
+{
+  "id": "protein-zucchini-bread",
+  "name": "Protein Zucchini Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "• 2 giant eggs • 1 small-medium zucchini (about 3/4 cup",
+      "amount": ""
+    },
+    {
+      "item": "shredded)",
+      "amount": ""
+    },
+    {
+      "item": "• 3/4 cup natural creamy peanut butter, drippy (if too firm,",
+      "amount": ""
+    },
+    {
+      "item": "heat for a few seconds)",
+      "amount": ""
+    },
+    {
+      "item": "• 1 tablespoon pure maple syrup",
+      "amount": ""
+    },
+    {
+      "item": "• a pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "• 1 tsp vanilla extract (pure)",
+      "amount": ""
+    },
+    {
+      "item": "• 1 teaspoon of baking soda",
+      "amount": ""
+    },
+    {
+      "item": "• 1/2 cup vanilla plant-based protein powder (Sun Warrior,",
+      "amount": ""
+    },
+    {
+      "item": "Aloha, or Owyn)",
+      "amount": ""
+    },
+    {
+      "item": "• 2 tbsp tiny chocolate chips + 1/3 cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Set the oven to 340 F and line a loaf pan with parchment paper.",
+    "Alternatively, you can oil the pan. Note: If baking at altitude,",
+    "raise the temperature to 375 degrees Fahrenheit.",
+    "Remove the zucchini's ends. Use a food processor or a cheese",
+    "grater to shred zucchini. Place shredded zucchini in a colander",
+    "wrapped in paper towels. Squeeze the zucchini to remove the",
+    "juice. You may need to repeat this process two or three times,",
+    "depending on how liquidy your zucchini is. Allow draining in a",
+    "colander while preparing the batter.",
+    "Whisk the eggs in a large mixing basin until they are gently",
+    "beaten. Fry in the peanut butter, vanilla extract, and maple",
+    "syrup until the mixture is smooth and creamy. Add the shredded",
+    "zucchini and a sprinkle of salt and mix gently (if peanut butter",
+    "unsalted).",
+    "Finally, add the baking soda. Slowly incorporate the protein",
+    "powder until the batter has thickened but is still liquid. Pour",
+    "batter into prepared loaf pan after folding in 1/3 cup tiny",
+    "chocolate chips. Top with the remaining 2 tbsp chocolate chips.",
+    "Bake for 40-50 minutes, or until the chicken is thoroughly",
+    "done. If you're baking at a high altitude, start checking the",
+    "bread after 35 minutes. Please take advantage of it for up to",
+    "three days! (Note: you may freeze slices wrapped in parchment",
+    "paper for up to 3 months.)"
+  ],
+  "time": {
+    "total": 45
+  }
+}

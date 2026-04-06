@@ -1,0 +1,101 @@
+{
+  "id": "greek-goddess-bowl",
+  "name": "Greek Goddess Bowl",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Chickpeas",
+      "amount": ""
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sea salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "shawarma spice blend",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "15-ounce can chickpeas",
+      "amount": "1"
+    },
+    {
+      "item": "Bowl",
+      "amount": ""
+    },
+    {
+      "item": "medium cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot",
+      "amount": "1"
+    },
+    {
+      "item": "Vegan Tzatziki",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "½ cup"
+    },
+    {
+      "item": "batch red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "For serving",
+      "amount": ""
+    },
+    {
+      "item": "Garlic Dill Sauce",
+      "amount": ""
+    },
+    {
+      "item": "Tahini Dressing",
+      "amount": ""
+    },
+    {
+      "item": "Traditional Vegan Falafel",
+      "amount": ""
+    },
+    {
+      "item": "Vegan Flatbread or Naan",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oven to 190C and placed a baking sheet in place.",
+    "Alongside oil, shawarma seasoning blend, golden syrup, and salt,",
+    "apply clean chickpeas to a blending cup. To mix, flip.",
+    "To the baking dish, add the prepared chickpeas.",
+    "Toast for 23 minutes or until lightly browned and the chickpeas are",
+    "somewhat crispy. Take it out of the oven and set it aside.",
+    "Divide the tzatziki, onions, tabbouleh, cucumber, olives, and",
+    "vegetables (optional) into two serving bowls to complete the dish.",
+    "Cover with cooked chickpeas and add fresh lime juice to garnish.",
+    "However, better when new, you can store leftover food in the fridge",
+    "for up to 3-4 days.",
+    "Place the remaining chickpeas individually in a sealed jar for up to 3",
+    "days at ambient temperature or up to one month in the refrigerator."
+  ],
+  "time": {
+    "total": 30
+  }
+}

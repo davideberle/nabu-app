@@ -1,0 +1,76 @@
+{
+  "id": "41-one-pot-pasta-a-la-puttanesca",
+  "name": "(41)     One-Pot Pasta a La Puttanesca",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "penne",
+      "amount": "12 oz."
+    },
+    {
+      "item": "garlic cloves, finely sliced",
+      "amount": "4"
+    },
+    {
+      "item": "anchovy fillets, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "fresh red chilies, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "2 cups"
+    },
+    {
+      "item": "water",
+      "amount": "4 1/2 cups"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "fresh basil leaves, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Parmesan cheese, to serve",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put pasta, garlic, chilies, basil, paprika, olive oil, olives, anchovies, tomatoes, salt and pepper in a large skillet. Add",
+    "in water.",
+    "Over high heat, bring to a boil. Boil mixture, stirring and keep turning the pasta, until pasta becomes al dente and",
+    "water has nearly evaporated, about 12-15 minutes. Serve with Parmesan.",
+    "(42) Elegant Spaghetti with Shrimp",
+    "The key ingredient for any pasta is always a good sauce, and this one will not disappoint: it's tangy, creamy, and",
+    "cheesy all in one. Topped off with fresh parsley or oregano to mask the scent of shrimp, this dish is perfect as a",
+    "date-dish because it looks impressive but requires little effort from you to prepare.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 30
+  }
+}

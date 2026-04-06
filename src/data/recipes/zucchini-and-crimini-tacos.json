@@ -1,0 +1,70 @@
+{
+  "id": "zucchini-and-crimini-tacos",
+  "name": "Zucchini and Crimini Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Pico de Galo, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Crimini, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Zucchini, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Creamy cilantro sauce, as required",
+      "amount": ""
+    },
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Garlic, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In the olive oil, add the onions.",
+    "Cook the onions until soft.",
+    "Add the Cremini crushed garlic.",
+    "Cook for two minutes and then add crimini and zucchini.",
+    "Add the mix spice, salt and pepper.",
+    "Lightly heat the taco shells.",
+    "Now add the above mixture into the taco shells.",
+    "Add the creamy cilantro sauce and pico de gallo on top.",
+    "Garnish with fresh cilantro leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

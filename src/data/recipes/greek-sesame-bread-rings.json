@@ -1,0 +1,55 @@
+{
+  "id": "greek-sesame-bread-rings",
+  "name": "Greek Sesame Bread Rings",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of flour",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of salt",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of yeast",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "One cup of sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "One cup of lukewarm water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the sugar, yeast, and lukewarm water into the bowl.",
+    "Mix well and keep aside until bubbles are formed.",
+    "Add the flour and salt into the mixture.",
+    "Knead the dough well and start forming ring structures from the dough",
+    "mixture.",
+    "Add the sesame seeds on top of the rings and place the rings on a",
+    "baking tray.",
+    "Bake the dish for about thirty minutes.",
+    "Your dish is ready to be served.",
+    "7 Greek Breakfast Ladenia (Flatbread with Tomatoes)"
+  ],
+  "time": {
+    "total": 60
+  }
+}

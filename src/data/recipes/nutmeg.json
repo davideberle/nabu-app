@@ -1,0 +1,868 @@
+{
+  "id": "nutmeg",
+  "name": "nutmeg",
+  "source": {
+    "cookbook": "The Classic Italian Cook Book",
+    "author": "Marcella Hazan"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "tablespoon",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "1ten-ounce",
+      "amount": ""
+    },
+    {
+      "item": "pound",
+      "amount": ""
+    },
+    {
+      "item": "152",
+      "amount": ""
+    },
+    {
+      "item": "1.Puttheonion",
+      "amount": ""
+    },
+    {
+      "item": "3.Add",
+      "amount": ""
+    },
+    {
+      "item": "and}iteaspoonsaltandsaute",
+      "amount": ""
+    },
+    {
+      "item": "201",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "4V^",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "1.Preheat",
+      "amount": ""
+    },
+    {
+      "item": "375°.",
+      "amount": ""
+    },
+    {
+      "item": "4quartsof",
+      "amount": ""
+    },
+    {
+      "item": "3.Meltthebutterin",
+      "amount": ""
+    },
+    {
+      "item": "4.Sprinkle",
+      "amount": ""
+    },
+    {
+      "item": "242),",
+      "amount": ""
+    },
+    {
+      "item": "265),",
+      "amount": ""
+    },
+    {
+      "item": "309),",
+      "amount": ""
+    },
+    {
+      "item": "296),",
+      "amount": ""
+    },
+    {
+      "item": "298",
+      "amount": ""
+    },
+    {
+      "item": "202",
+      "amount": ""
+    },
+    {
+      "item": "2quarts",
+      "amount": ""
+    },
+    {
+      "item": "200)",
+      "amount": ""
+    },
+    {
+      "item": "322)",
+      "amount": ""
+    },
+    {
+      "item": "201",
+      "amount": ""
+    },
+    {
+      "item": "242).",
+      "amount": ""
+    },
+    {
+      "item": "163)",
+      "amount": ""
+    },
+    {
+      "item": "200)",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "203",
+      "amount": ""
+    },
+    {
+      "item": "2.Bring",
+      "amount": ""
+    },
+    {
+      "item": "4quartsof",
+      "amount": ""
+    },
+    {
+      "item": "252",
+      "amount": ""
+    },
+    {
+      "item": "254).",
+      "amount": ""
+    },
+    {
+      "item": "304)",
+      "amount": ""
+    },
+    {
+      "item": "306).",
+      "amount": ""
+    },
+    {
+      "item": "204",
+      "amount": ""
+    },
+    {
+      "item": "acupboard",
+      "amount": ""
+    },
+    {
+      "item": "slicedand",
+      "amount": ""
+    },
+    {
+      "item": "20minutes'",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": ""
+    },
+    {
+      "item": "cups",
+      "amount": ""
+    },
+    {
+      "item": "1.Bring",
+      "amount": ""
+    },
+    {
+      "item": "6/2",
+      "amount": ""
+    },
+    {
+      "item": "cupsofwater",
+      "amount": ""
+    },
+    {
+      "item": "20minutes",
+      "amount": ""
+    },
+    {
+      "item": "205",
+      "amount": ""
+    },
+    {
+      "item": "toslice",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "pound",
+      "amount": ""
+    },
+    {
+      "item": "tablespoonsoliveoil",
+      "amount": ""
+    },
+    {
+      "item": "3-inchlengths",
+      "amount": ""
+    },
+    {
+      "item": "3tablespoonschoppedcarrot",
+      "amount": ""
+    },
+    {
+      "item": "1cupcannedItalian",
+      "amount": ""
+    },
+    {
+      "item": "3tablespoonschoppedcelery",
+      "amount": ""
+    },
+    {
+      "item": "pound",
+      "amount": ""
+    },
+    {
+      "item": "slicedpancetta,cutPolenta",
+      "amount": ""
+    },
+    {
+      "item": "1.Putthe",
+      "amount": ""
+    },
+    {
+      "item": "2.Addthe",
+      "amount": ""
+    },
+    {
+      "item": "3to4minutes,",
+      "amount": ""
+    },
+    {
+      "item": "10minutes,",
+      "amount": ""
+    },
+    {
+      "item": "200\"",
+      "amount": ""
+    },
+    {
+      "item": "206",
+      "amount": ""
+    },
+    {
+      "item": "204),",
+      "amount": ""
+    },
+    {
+      "item": "poundbutter",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "204)",
+      "amount": ""
+    },
+    {
+      "item": "207",
+      "amount": ""
+    },
+    {
+      "item": "1.Preparethe",
+      "amount": ""
+    },
+    {
+      "item": "slices%inch",
+      "amount": ""
+    },
+    {
+      "item": "2.Heattheoilin",
+      "amount": ""
+    },
+    {
+      "item": "manyslices",
+      "amount": ""
+    },
+    {
+      "item": "333).",
+      "amount": ""
+    },
+    {
+      "item": "296),",
+      "amount": ""
+    },
+    {
+      "item": "204),",
+      "amount": ""
+    },
+    {
+      "item": "coolandsliced",
+      "amount": ""
+    },
+    {
+      "item": "1.Preheatthebroilertoitsmaximum",
+      "amount": ""
+    },
+    {
+      "item": "toastedslicesandserveimmediately.",
+      "amount": ""
+    },
+    {
+      "item": "208",
+      "amount": ""
+    },
+    {
+      "item": "28)",
+      "amount": ""
+    },
+    {
+      "item": "2cups",
+      "amount": ""
+    },
+    {
+      "item": "127)",
+      "amount": ""
+    },
+    {
+      "item": "204),",
+      "amount": ""
+    },
+    {
+      "item": "cupfreshly",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": ""
+    },
+    {
+      "item": "1.Preheat",
+      "amount": ""
+    },
+    {
+      "item": "450^.",
+      "amount": ""
+    },
+    {
+      "item": "2.Makethe",
+      "amount": ""
+    },
+    {
+      "item": "3.Slicethe",
+      "amount": ""
+    },
+    {
+      "item": "4.Lightly",
+      "amount": ""
+    },
+    {
+      "item": "10to",
+      "amount": ""
+    },
+    {
+      "item": "15minutes,",
+      "amount": ""
+    },
+    {
+      "item": "145",
+      "amount": ""
+    },
+    {
+      "item": "209",
+      "amount": ""
+    },
+    {
+      "item": "210",
+      "amount": ""
+    },
+    {
+      "item": "211",
+      "amount": ""
+    },
+    {
+      "item": "212",
+      "amount": ""
+    },
+    {
+      "item": "slices,",
+      "amount": ""
+    },
+    {
+      "item": "6persons",
+      "amount": ""
+    },
+    {
+      "item": "12mussels,",
+      "amount": ""
+    },
+    {
+      "item": "directed2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "sliced",
+      "amount": ""
+    },
+    {
+      "item": "6medium",
+      "amount": ""
+    },
+    {
+      "item": "12tinyshrimpsJuice",
+      "amount": ""
+    },
+    {
+      "item": "21/2",
+      "amount": ""
+    },
+    {
+      "item": "teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "5or",
+      "amount": ""
+    },
+    {
+      "item": "2cloves",
+      "amount": ""
+    },
+    {
+      "item": "3V2",
+      "amount": ""
+    },
+    {
+      "item": "pounds),",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "Vscup",
+      "amount": ""
+    },
+    {
+      "item": "213",
+      "amount": ""
+    },
+    {
+      "item": "1.Putthe",
+      "amount": ""
+    },
+    {
+      "item": "2.Peel",
+      "amount": ""
+    },
+    {
+      "item": "3.Shuckthe",
+      "amount": ""
+    },
+    {
+      "item": "4.Preheattheovento",
+      "amount": ""
+    },
+    {
+      "item": "475°.",
+      "amount": ""
+    },
+    {
+      "item": "6.Spreadadoublethicknessofheavy-dutyaluminum",
+      "amount": ""
+    },
+    {
+      "item": "sliceit",
+      "amount": ""
+    },
+    {
+      "item": "214",
+      "amount": ""
+    },
+    {
+      "item": "33),",
+      "amount": ""
+    },
+    {
+      "item": "421),",
+      "amount": ""
+    },
+    {
+      "item": "142",
+      "amount": ""
+    },
+    {
+      "item": "195",
+      "amount": ""
+    },
+    {
+      "item": "412).",
+      "amount": ""
+    },
+    {
+      "item": "sliced",
+      "amount": ""
+    },
+    {
+      "item": "3sprigs",
+      "amount": ""
+    },
+    {
+      "item": "1bav",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "1cup",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "2poundshalibut,",
+      "amount": ""
+    },
+    {
+      "item": "slice,boneremoved",
+      "amount": ""
+    },
+    {
+      "item": "1tablespoon",
+      "amount": ""
+    },
+    {
+      "item": "2V^tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Itablespoon",
+      "amount": ""
+    },
+    {
+      "item": "teaspoonsancho^'^'paste",
+      "amount": ""
+    },
+    {
+      "item": "2teaspoonsall-purpose",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "tablespoonsred",
+      "amount": ""
+    },
+    {
+      "item": "4t\\vists",
+      "amount": ""
+    },
+    {
+      "item": "215",
+      "amount": ""
+    },
+    {
+      "item": "2hard-boiled",
+      "amount": ""
+    },
+    {
+      "item": "eggs,sliced",
+      "amount": ""
+    },
+    {
+      "item": "1lemon,slicedinto",
+      "amount": ""
+    },
+    {
+      "item": "slicedlengthwise",
+      "amount": ""
+    },
+    {
+      "item": "1.Puttheslicedonion,",
+      "amount": ""
+    },
+    {
+      "item": "sprigs,",
+      "amount": ""
+    },
+    {
+      "item": "1quart",
+      "amount": ""
+    },
+    {
+      "item": "10to12",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": ""
+    },
+    {
+      "item": "heat,swirlintheremainingtablespoon",
+      "amount": ""
+    },
+    {
+      "item": "slicedgherkins.Serve",
+      "amount": ""
+    },
+    {
+      "item": "33)",
+      "amount": ""
+    },
+    {
+      "item": "33).",
+      "amount": ""
+    },
+    {
+      "item": "192),",
+      "amount": ""
+    },
+    {
+      "item": "135).",
+      "amount": ""
+    },
+    {
+      "item": "216",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "4cloves",
+      "amount": ""
+    },
+    {
+      "item": "4mackerel(about",
+      "amount": ""
+    },
+    {
+      "item": "poundSalt",
+      "amount": ""
+    },
+    {
+      "item": "three-inchsprig",
+      "amount": ""
+    },
+    {
+      "item": "1.Wash",
+      "amount": ""
+    },
+    {
+      "item": "2.Heattheoilin",
+      "amount": ""
+    },
+    {
+      "item": "3.Add",
+      "amount": ""
+    },
+    {
+      "item": "100),",
+      "amount": ""
+    },
+    {
+      "item": "101),",
+      "amount": ""
+    },
+    {
+      "item": "192).",
+      "amount": ""
+    },
+    {
+      "item": "408),",
+      "amount": ""
+    },
+    {
+      "item": "415).",
+      "amount": ""
+    },
+    {
+      "item": "217",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "teaspoonchoppedgarlic",
+      "amount": ""
+    },
+    {
+      "item": "poundcrisp,freshmushrooms",
+      "amount": ""
+    },
+    {
+      "item": "3tablespoonsoliveoil",
+      "amount": ""
+    },
+    {
+      "item": "tablespoonbutter",
+      "amount": ""
+    },
+    {
+      "item": "2tablespoonsfinely",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": ""
+    },
+    {
+      "item": "largeclove",
+      "amount": ""
+    },
+    {
+      "item": "1teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "2teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "3teaspoons",
+      "amount": ""
+    },
+    {
+      "item": "V4teaspoonsalt",
+      "amount": ""
+    },
+    {
+      "item": "pounds),",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "V2cup",
+      "amount": ""
+    },
+    {
+      "item": "10)",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": ""
+    },
+    {
+      "item": "V4cupwateror",
+      "amount": ""
+    },
+    {
+      "item": "V2cup",
+      "amount": ""
+    },
+    {
+      "item": "1.Using",
+      "amount": ""
+    },
+    {
+      "item": "218",
+      "amount": ""
+    },
+    {
+      "item": "2.Ina",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Coverthepanandletthemushroomsandfishcooktogetherfor",
+    "courseaftertheantipasto,",
+    "FettuccinewithWhiteClam",
+    "required.FollowthefishwithMixedSalad",
+    "orlargercapersroughly",
+    "whenithascoloredlightlyaddtheoregano",
+    "onceortwice.Addthecut-uptomatoes",
+    "pepper.Stirwellandcookat",
+    "oruntilthetomatoesand",
+    "Rinsethefishfilletsincoldwaterand",
+    "remainingsauceoverthe",
+    "uponthethicknessofthe",
+    "untilitissufficiently",
+    "couldbeRisottowithClams",
+    ").Ifyouwantanantipasto,serveShrimps",
+    "TROUTINORANGEMARINADE",
+    "Aday'scatchusedtoresultin",
+    "treatedthiswayissoremarkablygood",
+    "fragrantlybutgentlyinto",
+    "unpeeledorangeslices,",
+    "anelegantfishdinner.It",
+    "secondcourse,preceded",
+    "withGenoeseBasilSauce",
+    "ThetunacompleteK'losesits"
+  ],
+  "time": {
+    "total": 45
+  }
+}

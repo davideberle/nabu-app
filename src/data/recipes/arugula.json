@@ -1,0 +1,47 @@
+{
+  "id": "arugula",
+  "name": "ARUGULA",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "intro": "until the sauce has emulsified, or mix briefly with",
+  "ingredients": [
+    {
+      "item": "• Preparation time: 20 minutes plus soaking",
+      "amount": "2"
+    },
+    {
+      "item": "heaping tbsp sunflower seeds",
+      "amount": "4"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "⁄2 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "nests glass noodles",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Soak the sunflower seeds overnight in cold water. Put a sieve over a bowl. Just before using, drain the sunflower seeds. Retain the soaking liquid. Peel the garlic. Juice the lemon.",
+    "Place the sunflower seeds, the remaining pesto ingredients, and 4 tablespoons of the soaking water into a blender. Purée on the lowest setting for 1–2 minutes.",
+    "Put 2 cups water in a pan, bring it to a boil, and boil briefly.",
+    "Remove the pan from the stove. When the water has stopped boiling, add the glass noodles, cover the pan, and leave the noodles to steep for 7–10 minutes. When the noodles have softened but still have a bite (they will continue to cook a bit), drain the noodles in a colander. Transfer them to a large bowl.",
+    "Pour the pesto over the noodles, toss well to combine, and serve.",
+    "Pesto and garlic are thought to go together hand in hand. I dislike having the smell of garlic waft about me for the rest of the day, so I make my pesto without garlic—and it tastes delicious!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

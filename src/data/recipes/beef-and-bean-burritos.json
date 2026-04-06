@@ -1,0 +1,46 @@
+{
+  "id": "beef-and-bean-burritos",
+  "name": "Beef and Bean Burritos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "taco seasoning",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "tortillas, flour",
+      "amount": "6"
+    },
+    {
+      "item": "Mexican cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "refried bean",
+      "amount": "16 ounces"
+    }
+  ],
+  "method": [
+    "Put beef in a skillet over the high heat; add taco seasoning in it.",
+    "Cook until it is brown, then drain and set aside.",
+    "Assemble burritos by putting flour tortilla in the microwave for",
+    "almost 20 seconds.",
+    "Put a layer of refried beans, cheese, and then cooked beef on it.",
+    "Fold the sides and bottom of the tortilla.",
+    "Wrap it in a parchment paper; if you like to store in the refrigerator",
+    "for up to 30 days.",
+    "To serve and eat, wrap it in the paper towel; microwave for around 2-",
+    "3 minutes, set it aside for almost one minute.",
+    "Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

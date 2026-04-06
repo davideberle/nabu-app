@@ -1,0 +1,125 @@
+{
+  "id": "marcelas-baja-style-fish-tacos",
+  "name": "Marcela's Baja-style Fish Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Beer Batter:",
+      "amount": ""
+    },
+    {
+      "item": "Mexican beer",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "For Cream Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "sour cream",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "of mayonnaise",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "lemon zest",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "water",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "For Fish Tacos:",
+      "amount": ""
+    },
+    {
+      "item": "flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Oil, to fry",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "of skinned halibut",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "of tomatillo salsa, for garnishing",
+      "amount": "2 cups"
+    },
+    {
+      "item": "f shredded cabbage",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Pickled jalapenos, optional",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "For Beer Batter:",
+    "Put salt, pepper, and flour in a bowl.",
+    "Pour beer and whisk.",
+    "Set it aside for almost 15 minutes.",
+    "For Cream Sauce:",
+    "Mix crema and mayonnaise in a bowl.",
+    "Add lemon juice, lemon zest, and water.",
+    "Add pepper and salt.",
+    "For Fish:",
+    "Take a skillet, heat oil over the medium heat.",
+    "Take a plate, and combine salt and flour.",
+    "Cover the fish pieces flour and season with pepper and salt.",
+    "Dip fillets in beer batter, then cover both sides.",
+    "Fry until it is golden brown. Cook it thoroughly and put it on",
+    "paper towels and drain.",
+    "Combine fish and tortillas.",
+    "Top with pickled jalapenos, shredded cabbage, cream, and",
+    "tomatillo salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

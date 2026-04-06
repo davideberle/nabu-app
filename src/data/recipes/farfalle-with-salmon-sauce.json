@@ -1,0 +1,57 @@
+{
+  "id": "farfalle-with-salmon-sauce",
+  "name": "Farfalle with Salmon Sauce",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "farfalle",
+      "amount": "12 oz."
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 1/2 to 2 tbsp."
+    },
+    {
+      "item": "dry white wine",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "heavy whipping cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped fresh dill",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "smoked salmon, cut into thin strips",
+      "amount": "1/4 lb."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; drain and set aside.",
+    "Cook lemon juice and wine to reduce; lower heat and add cream. Cook, stirring constantly, until sauce thickens,",
+    "about 10 minutes. Add salt, pepper, dill and salmon; heat. Ladle sauce over pasta and serve.",
+    "(49) Pasta with Asparagus and Shrimp",
+    "Pasta with Asparagus and Shrimp is a delicious and healthy dish that's quick to cook. One of the most popular",
+    "dishes from Italy, this pasta sauce is rich in garlic, olive oil, and lemon. It provides a lot of different flavors in one",
+    "dish. The shrimp and asparagus, along with the lemon zest, provide depth to the sauce, while the black olives add a",
+    "salty pop that makes this dish truly satisfying without any other palate-bothering ingredients.",
+    "Yield:"
+  ],
+  "time": {
+    "total": 40
+  }
+}

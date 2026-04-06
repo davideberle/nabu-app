@@ -1,0 +1,67 @@
+{
+  "id": "quorn-chili-tacos",
+  "name": "Quorn Chili Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Shallots, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili, one",
+      "amount": ""
+    },
+    {
+      "item": "Garlic, one",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Sweetcorn, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Water, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Quorn mince, two cups",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil to a saucepan and heat over a medium heat.",
+    "Sauté the garlic, shallots, chili, and red pepper.",
+    "Add the Quorn mince, using a wooden spoon, break up the mince.",
+    "Sprinkle in the spices and the whole rehydrated chili.",
+    "Cook for five minutes.",
+    "Add the chopped tomatoes, sweetcorn, and water.",
+    "Leave to cook over a low-medium heat for ten minutes, until all of the",
+    "ingredients are cooked through.",
+    "Add the mixture on to the preheated taco shells.",
+    "Add your preferred toppings.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

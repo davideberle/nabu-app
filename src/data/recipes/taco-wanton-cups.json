@@ -1,0 +1,54 @@
+{
+  "id": "taco-wanton-cups",
+  "name": "Taco Wanton Cups",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "Pico de Galo, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Shredded chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Wonton sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a muffin tray, add the wonton sheets and then a layer of refried",
+    "beans.",
+    "Next add a little cheese on top and then a layer of the shredded",
+    "chicken.",
+    "In the end add cheese again and bake for ten minutes.",
+    "Next add a spoon of Pico de Galo on top and some cilantro leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

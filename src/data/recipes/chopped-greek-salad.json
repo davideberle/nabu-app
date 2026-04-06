@@ -1,0 +1,92 @@
+{
+  "id": "chopped-greek-salad",
+  "name": "Chopped Greek Salad",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Greek Salad",
+      "amount": ""
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "medium red onion",
+      "amount": "½"
+    },
+    {
+      "item": "fresh parsley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "romaine lettuce",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "medium cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "1-pint cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Greek Vinaigrette",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "honey syrup",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "medium cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Mix the sliced lettuce, tomatoes, celery, peppers, onions, tarragon,",
+    "olives, and feta in a wide serving dish.",
+    "Combine the components in a mixing bowl and set them aside.",
+    "Mix all of the components in a fluid measuring cup to produce the",
+    "vinaigrette.",
+    "Mix until smooth.",
+    "If you want a tangier seasoning, add more vinegar; if you want a",
+    "milder dressing, add more syrup."
+  ],
+  "time": {
+    "total": 30
+  }
+}

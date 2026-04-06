@@ -1,0 +1,72 @@
+{
+  "id": "beef-barbacoa-tacos",
+  "name": "Beef Barbacoa Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "minced cloves garlic",
+      "amount": "4"
+    },
+    {
+      "item": "of beef chuck roast",
+      "amount": "3 pounds"
+    },
+    {
+      "item": "chopped white onion",
+      "amount": "1"
+    },
+    {
+      "item": "can of green chiles",
+      "amount": "1"
+    },
+    {
+      "item": "of lime juice",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "4"
+    },
+    {
+      "item": "of apple cider vinegar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sea salt",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "Mexican oregano, dried",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground cloves",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of beef stock",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "In the slow cooker, mix all ingredients.",
+    "Cook it for 6-8 hours while keeping it covered until beef is cooked.",
+    "Shred beef into pieces.",
+    "Season with lemon juice, and cover it. Leave it for 10 minutes.",
+    "Take out the bay leaves, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

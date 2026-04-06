@@ -1,0 +1,128 @@
+{
+  "id": "quesadillas",
+  "name": "Quesadillas",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "While all the meat-eaters are scoffing smoky joints of this, that or the other, try this Mexican sandwich as a",
+  "ingredients": [
+    {
+      "item": "cooked black beans (canned are fine)",
+      "amount": "½ cups"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cilantro (leaves and stalks, about 1 oz), chopped juice of 1 lime",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "small red onion, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "medium tomatoes, diced",
+      "amount": "5"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "mild fresh red chile, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "of cilantro (leaves and stalks, about 1 oz), finely chopped, plus extra leaves to garnish",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "salt juice of",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "lime",
+      "amount": "½"
+    },
+    {
+      "item": "ripe medium avocados, diced",
+      "amount": "2"
+    },
+    {
+      "item": "small tortillas (preferably corn)",
+      "amount": "8"
+    },
+    {
+      "item": "sour cream",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "good-quality sharp Cheddar, grated",
+      "amount": "½ oz"
+    },
+    {
+      "item": "drained and roughly chopped pickled jalapeños",
+      "amount": "6 tbsp"
+    }
+  ],
+  "method": [
+    "To make the black bean paste. Place all the ingredients in a food processor and quickly pulse until a rough paste has formed.",
+    "Make the salsa. First soak the red onion in the vinegar in a large bowl for a few minutes. Then add all of the other ingredients and stir well.",
+    "Prepare the barbecue, or heat a ridged griddle pan.",
+    "Take one of the tortillas and spread with 2 tablespoons of the bean paste, creating a large circle in the center but leaving about",
+    "¾ inch clear all around at the edge. Over one half of the bean circle spread a tablespoon of sour cream, a sprinkle of Cheddar, a tablespoon of salsa and some jalapeños. Fold over the other tortilla half.",
+    "To cook, gently place the quesadillas on the barbecue, or one at a time on the hot griddle pan. Leave for 2 to 3 minutes, then turn and cook for 2 to 3 minutes on the other side. The filling should be warm and the tortilla nicely charred.",
+    "Cut each tortilla into two at an angle and transfer to a serving dish. Spoon any remaining salsa alongside and garnish with cilantro leaves.",
+    "136 | To m at o e s",
+    "This Provençal-style starter is quick to prepare. Serve it with a little salad of seasonal leaves and a few broken pieces of robust goat cheese.",
+    "Herb-stuffed tomatoes",
+    "Serves 4 as a small starter",
+    "4 medium tomatoes (ripe but firm) salt",
+    "1 large onion, finely chopped",
+    "2 garlic cloves, finely chopped",
+    "12 wrinkly black olives, pitted and roughly chopped",
+    "2 tbsp olive oil",
+    "2 tbsp chopped oregano",
+    "3 tbsp chopped parsley",
+    "1 tbsp chopped mint",
+    "½ tbsp chopped capers black pepper",
+    "Preheat the oven to 325°F. Trim off about",
+    "³8 inch from the top of each tomato and discard. Use a little spoon or a melon baller to remove the seeds and most of the flesh, leaving a clean shell.",
+    "Lightly salt the inside of the tomatoes and place upside down in a colander, to drain off some moisture.",
+    "Meanwhile, put the onion, garlic, olives and 1 tablespoon of the oil in a medium pan and cook on low heat for 5 to 6 minutes, to soften the onion completely. Remove from the heat and stir in the panko, herbs, capers and some pepper. Taste and add salt, if you like.",
+    "Wipe the insides of the tomatoes with a paper towel, then fill them up with the herb stuffing, pressing down very gently as you go. You want a nice dome of stuffing on top.",
+    "Place the tomatoes in a greased ovenproof dish and drizzle lightly with the remaining oil. Bake for 35 to 45 minutes, or until the tomatoes soften. Serve hot or warm.",
+    "Leaves, Cooked and Raw",
+    "140 | Leaves, Cooked and Raw",
+    "Here’s my idea of comfort food and a perfect Sunday brunch treat. It is inspired by çılbır, which is Turkish poached eggs with yogurt. It calls for kırmızı biber, a common Turkish spice made from crushed chiles that have been rubbed with oil and often roasted. The Turks use it as a general condiment and also add it to melted butter to give the final touch to many dishes.",
+    "Kırmızı biber has a sweet aroma and can vary in spiciness. You can get it from Turkish grocers or kalustyans.com. Alternatively, use plain chile flakes mixed with some sweet paprika.",
+    "Baked eggs with yogurt and chile"
+  ],
+  "time": {
+    "total": 30
+  }
+}

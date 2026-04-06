@@ -1,0 +1,53 @@
+{
+  "id": "baked-rhubarb-with-sweet-labneh",
+  "name": "BAKED RHUBARB WITH SWEET LABNEH",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "chopped pistachios and put 3 or 4 black currants on top of each friand, if you",
+  "ingredients": [
+    {
+      "item": "cups/800 g natural yogurt",
+      "amount": "3¼"
+    },
+    {
+      "item": "cup/80 g confectioners’ sugar",
+      "amount": "⅔"
+    },
+    {
+      "item": "oz/400 g trimmed rhubarb (about 9 stalks)",
+      "amount": "14"
+    },
+    {
+      "item": "tbsp/100 ml muscat or another dessert wine",
+      "amount": "7"
+    },
+    {
+      "item": "tbsp/70 g superfine sugar",
+      "amount": "5½"
+    },
+    {
+      "item": "vanilla bean, halved lengthwise, seeds scraped",
+      "amount": "½"
+    },
+    {
+      "item": "lemon, rind shaved in strips from half, zest grated from the other half",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/20 g shelled pistachios, coarsely chopped salt",
+      "amount": "2½"
+    }
+  ],
+  "method": [
+    "Put the yogurt in a bowl with the confectioners’ sugar and ¼ teaspoon salt and mix well. Assemble a large quadruple-layered square of cheesecloth on a layered work surface and transfer the yogurt mixture to the center of it. Bring up the sides of the cloth to form a bundle, tie the top with a rubber band or string, and hang it over a bowl in the fridge for up to 18 hours, squeezing the bundle from time to time.",
+    "Preheat the oven to 400°F/200°C.",
+    "Cut the rhubarb into 2½-inch/6-cm lengths and mix with the muscat, superfine sugar, vanilla bean and seeds, and lemon rind strips. Transfer to a baking dish just large enough to accommodate the rhubarb snugly. Roast, uncovered, for 20 minutes, until the rhubarb is tender but not mushy. Set aside to cool.",
+    "Just before serving, take the yogurt from the fridge and give it a good squeeze to release any extra water. Remove from the cloth and place in a bowl. Stir in the grated lemon zest and spoon into serving dishes. Spoon the rhubarb on top with some of the cooking juices and then sprinkle with the pistachios."
+  ],
+  "time": {
+    "total": 30
+  }
+}

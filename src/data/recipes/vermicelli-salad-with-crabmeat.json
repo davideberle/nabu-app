@@ -1,0 +1,74 @@
+{
+  "id": "vermicelli-salad-with-crabmeat",
+  "name": "Vermicelli Salad with Crabmeat",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "vermicelli",
+      "amount": "8 oz."
+    },
+    {
+      "item": "black Chinese dried mushrooms",
+      "amount": "8"
+    },
+    {
+      "item": "crabmeat",
+      "amount": "1 lb."
+    },
+    {
+      "item": "scallions, sliced",
+      "amount": "4"
+    },
+    {
+      "item": "water chestnuts, drained and cut into thin strips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bamboo shoots, drained and cut into thin strips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "sweet and sour sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "drops hot chili sauce",
+      "amount": "3"
+    },
+    {
+      "item": "oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions until al dente; drain.",
+    "Place mushrooms in a bowl and cover with boiling water; let soak for 30 minutes. Drain and cut into strips.",
+    "In a large bowl, combine pasta, mushrooms, crabmeat, scallions, water chestnuts, bamboo shoots, soy sauce, sweet",
+    "and sour sauce, chili sauce, and oil; mix well.",
+    "Sprinkle salad with lemon juice, and serve.",
+    "(4) Caprese-style Pasta Salad",
+    "Caprese-style Pasta Salad is a luscious, chunky pasta salad that is quick to prepare with no cooking required! This",
+    "recipe uses easy-to-find ingredients and it mixes up beautifully in the bowl.",
+    "Along with being delicious, it's also full of fresh veggies like tomatoes, basil, and cucumbers that are high in",
+    "vitamins A and C.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

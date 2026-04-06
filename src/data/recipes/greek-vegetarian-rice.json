@@ -1,0 +1,81 @@
+{
+  "id": "greek-vegetarian-rice",
+  "name": "Greek Vegetarian Rice",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Three cups of chopped mixed vegetables",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of dried mint",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of chopped fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Two pounds of rice grains",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add the water into the pan and season it with salt.",
+    "Boil the water and then add the rice into the water.",
+    "Boil the rice and then drain it.",
+    "Take a large pan.",
+    "Add the olive oil and heat it well.",
+    "Add the chopped onions into the pan and cook it until it turns soft and",
+    "fragrant.",
+    "Add the chopped garlic into the pan.",
+    "Add the vegetables, tomato paste, lemon juice, salt, and crushed black",
+    "pepper into the pan.",
+    "Cook the ingredients for about ten minutes.",
+    "Add the boiled rice into the pan and mix well.",
+    "Add the dried mint and chopped dill into the pan.",
+    "Place a lid on top of the pan.",
+    "Cook the rice for about five minutes on low heat.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

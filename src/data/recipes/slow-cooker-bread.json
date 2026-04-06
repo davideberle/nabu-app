@@ -1,0 +1,74 @@
+{
+  "id": "slow-cooker-bread",
+  "name": "Slow-Cooker Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "active dry yeast from 1",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "envelope",
+      "amount": ""
+    },
+    {
+      "item": "sugar",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "1 1/2 cup"
+    },
+    {
+      "item": "lukewarm water",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "3 1/2 cup"
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the slow cooker and line it with parchment paper.",
+    "Combine yeast and sugar in a large mixing basin. Stir in the",
+    "water until it is thoroughly mixed. Stir in the flour, olive oil, and",
+    "salt until everything is mixed and a shaggy dough forms.",
+    "Knead the dough for about 5 minutes on a lightly floured board",
+    "until smooth and soft. Cut a ball out from the dough and place it",
+    "in the slow cooker. Cook on high for 2 hours, or until golden on",
+    "the bottom and cooked through. (The interior temperature of the",
+    "bread should be around 200°, but the top will not be brown.)",
+    "Remove the bread from the slow cooker with care.",
+    "To crisp up the crust, place the bread on a baking pan and broil",
+    "for 2 to 3 minutes, or until golden. Allow for at least 20 minutes",
+    "of cooling time.",
+    "Serve warm or at room temperature after slicing."
+  ],
+  "time": {
+    "total": 45
+  }
+}

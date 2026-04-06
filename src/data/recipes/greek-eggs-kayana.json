@@ -1,0 +1,67 @@
+{
+  "id": "greek-eggs-kayana",
+  "name": "Greek Eggs Kayana",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tablespoon"
+    },
+    {
+      "item": "Dry oregano",
+      "amount": ""
+    },
+    {
+      "item": "large tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "eggs organic free-range",
+      "amount": "6"
+    },
+    {
+      "item": "For Serving",
+      "amount": ""
+    },
+    {
+      "item": "Chili pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "Feta cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a saucepan, stir in the olive oil.",
+    "Stir in the diced cloves and sauté for two minutes over medium-high",
+    "Put some tomatoes. With salt and black pepper, mix.",
+    "Spray 1 tablespoon of oregano over everything.",
+    "Stir in the tomatoes and fry for 5-6 minutes, stirring regularly.",
+    "To the pot, add the egg mixture and gently blend it.",
+    "Stir in the tomatoes and egg combination three times.",
+    "Cook the eggs according to the texture you like.",
+    "Serve instantly with a swirl of hot chili flakes, a crumbled feta cheese,",
+    "or both.",
+    "If you like, add some chopped herbs, such as mint or basil."
+  ],
+  "time": {
+    "total": 6
+  }
+}

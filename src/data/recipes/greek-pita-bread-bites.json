@@ -1,0 +1,43 @@
+{
+  "id": "greek-pita-bread-bites",
+  "name": "Greek Pita Bread Bites",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One pound pita bread bites",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One cup salsa",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the pita bread into bite-size pieces.",
+    "Dip it in all-purpose flour.",
+    "Take a large frying pan.",
+    "Add oil into the pan and heat well.",
+    "Add the pita bread and deep fry until they turn golden brown.",
+    "Dish out the bread and add the salsa and feta cheese on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 70
+  }
+}

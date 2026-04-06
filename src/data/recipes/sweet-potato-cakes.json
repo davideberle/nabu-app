@@ -1,0 +1,70 @@
+{
+  "id": "sweet-potato-cakes",
+  "name": "Sweet potato cakes",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Ella’s was their legendary sweet potato cakes. Here’s a modified version.",
+  "ingredients": [
+    {
+      "item": "peeled sweet potatoes, cut into large chunks",
+      "amount": "2¼ lbs"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sour cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped cilantro salt and black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soy sauce scant ¾ cup all-purpose flour",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chopped green onion",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "finely chopped fresh red chile (or more if you want them hot) plenty of butter for frying",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "To make the sauce. Whisk together all the sauce ingredients until smooth; set aside.",
+    "Once the sweet potatoes have lost most of their liquid, place them in a mixing bowl and add the rest of the ingredients (except the butter). Mix everything together, preferably by hand, until the mix is smooth and even; do not over-mix. The mixture should be sticky; if it’s runny add some more flour.",
+    "Melt some butter in a non-stick frying pan. For each cake, use a tablespoon to lift some mix into the pan and flatten with the back of the spoon to create a not-too-perfect disc that is roughly 2 inches in diameter and ³",
+    "8 inch thick. Fry the cakes on medium heat for about 6 minutes on each side, or until you get a nice brown crust. Place in between two sheets of paper towels to soak up the excess butter. Serve hot or warm, with the sauce on the side.",
+    "36 | Funny Onions",
+    "My aunt, Yona Ashkenazi, makes the most heavenly leek fritters, inspired by her late husband Yaacov’s",
+    "Turkish descent. I have to admit I haven’t eaten her wonderful food for many years but these fritters in particular, and another version made with spinach, remain distinct and sweet childhood memories. I believe my leek fritters come quite close.",
+    "Don’t be put off by the long list of ingredients. You are likely to find many of them in your kitchen cupboard.",
+    "You also don’t have to make the sauce. A squirt of lemon or lime juice will suffice."
+  ],
+  "time": {
+    "total": 30
+  }
+}

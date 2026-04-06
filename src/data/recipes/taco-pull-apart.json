@@ -1,0 +1,71 @@
+{
+  "id": "taco-pull-apart",
+  "name": "Taco Pull Apart",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Crushed garlic, one",
+      "amount": ""
+    },
+    {
+      "item": "Red chili, one",
+      "amount": ""
+    },
+    {
+      "item": "Beef mince, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco spice mix, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, eight",
+      "amount": ""
+    },
+    {
+      "item": "Grated cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large frying pan heat the olive oil and then add the diced onion.",
+    "Next add the crushed garlic and diced red chili and fry for another",
+    "minute.",
+    "Finally add the beef mince and turn the heat up.",
+    "Add the taco spice mix and some seasoning and continue to fry the",
+    "mince.",
+    "Add the mixture in each tortilla.",
+    "Take each tortilla and neatly trim the edges so they are square.",
+    "Add grated cheese on top.",
+    "Bake them for thirty minutes.",
+    "Add cilantro on top and serve immediately."
+  ],
+  "time": {
+    "total": 45
+  }
+}

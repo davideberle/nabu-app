@@ -1,0 +1,81 @@
+{
+  "id": "breakfast-tortas",
+  "name": "Breakfast Tortas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "black beans, refried",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "ciabatta rolls",
+      "amount": "3"
+    },
+    {
+      "item": "sour cream",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "fresh cilantro",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "drops chipotle pepper sauce",
+      "amount": "4"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "salt",
+      "amount": "1/8 tsp."
+    },
+    {
+      "item": "Monterey Jack cheese, shredded",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "bacon strips, cooked and halved",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "1/2"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "2"
+    },
+    {
+      "item": "salsa",
+      "amount": "1/3 cup"
+    }
+  ],
+  "method": [
+    "Cut one third from the top of each roll, and empty the bottom part.",
+    "Put roll bottoms on a baking sheet.",
+    "Take a bowl, mix sour cream, beans, lime juice, cilantro, salt, and",
+    "chipotle pepper sauce.",
+    "Place 1/4 cup of this mixture inside each roll. Place an egg on it.",
+    "Bake it at 400° for almost 10 minutes.",
+    "Spread cheese over the eggs. Brush roll with olive oil and put it on",
+    "the baking sheet.",
+    "Put toppings of avocado, bacon, salsa, and onions on each roll.",
+    "Replace the roll tops, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

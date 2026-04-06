@@ -1,0 +1,66 @@
+{
+  "id": "french-caneles",
+  "name": "French Caneles",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of almond flour",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "A cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "A tablespoon of vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "A cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole wheat flour",
+      "amount": ""
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Water to kneed",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the flour into it.",
+    "Add the sugar into it.",
+    "Add lukewarm water in it.",
+    "Set aside for half an hour.",
+    "Add the whole wheat flour.",
+    "Add the salt and some water in it.",
+    "Add the eggs and vanilla extract into the mixture.",
+    "Add the almond flour and some of milk.",
+    "Mix the ingredients well so that a smooth mixture can be",
+    "obtained.",
+    "Add the oil if required for smoothness.",
+    "Steam the dish in a water bath for thirty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

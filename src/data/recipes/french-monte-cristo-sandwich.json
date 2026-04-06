@@ -1,0 +1,61 @@
+{
+  "id": "french-monte-cristo-sandwich",
+  "name": "French Monte Cristo Sandwich",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of ham",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Four teaspoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried oregano",
+      "amount": ""
+    },
+    {
+      "item": "Sourdough bread slices",
+      "amount": ""
+    },
+    {
+      "item": "One cup of parmesan cheese",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the chopped garlic into the pan.",
+    "Cook the garlic well.",
+    "Add the ham, dried oregano, salt and pepper into the pan as well.",
+    "Cook the ingredients well and then dish out.",
+    "Add the bread slices into the pan and toast them.",
+    "Add the ham mixture on one of the slices.",
+    "Add the parmesan cheese.",
+    "Add another slice of bread on top.",
+    "Toast on both sides so the cheese melts.",
+    "Garnish the sandwich with chopped dill.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

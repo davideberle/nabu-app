@@ -1,0 +1,62 @@
+{
+  "id": "roast-vegie-quesadillas",
+  "name": "Roast Vegie Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "peeled sweet potato",
+      "amount": "500g"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "broccoli",
+      "amount": "150g"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "8"
+    },
+    {
+      "item": "mozzarella or cheddar, grated",
+      "amount": "240g"
+    },
+    {
+      "item": "sour cream",
+      "amount": "85g"
+    },
+    {
+      "item": "pesto",
+      "amount": "1-2 tbsp."
+    }
+  ],
+  "method": [
+    "Preheat the oven to 200",
+    "C. Put the onions and the sweet potato in a",
+    "roasting pan, and drizzle it with season and oil.",
+    "Then roast it for 20 minutes.",
+    "Put broccoli to a pan. Mix the veggies, and roast them for another 10",
+    "minutes.",
+    "Take a frying pan and heat the oil over the medium heat.",
+    "Put one tortilla in the pan. Add 1/8 of the cheese. Then add 1/4 of the",
+    "veggie mixture.",
+    "Add another 1/8 of the cheese. Put another tortilla on it, and seal it.",
+    "Cook it for around 1-2 minutes",
+    "Turn it and cook for another 1-2 minutes. Repeat this with all",
+    "remaining tortillas, veggies, and cheese.",
+    "Mix pesto and sour cream in a bowl. Make pieces of quesadillas, and",
+    "serve with pesto cream."
+  ],
+  "time": {
+    "total": 30
+  }
+}

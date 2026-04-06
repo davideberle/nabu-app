@@ -1,0 +1,48 @@
+{
+  "id": "greek-breakfast-rice-pudding-rizogalo",
+  "name": "Greek Breakfast Rice Pudding (Rizogalo)",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of water",
+      "amount": ""
+    },
+    {
+      "item": "Four tablespoons of cornstarch",
+      "amount": ""
+    },
+    {
+      "item": "Four tablespoons of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of rice",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of cinnamon powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add the water and whole milk.",
+    "Let the liquid boil for five minutes.",
+    "Add the rice and sugar into the milk mixture.",
+    "Cook all the ingredients well for thirty minutes or until it starts to get",
+    "thick.",
+    "Add the cinnamon powder on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

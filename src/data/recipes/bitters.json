@@ -1,0 +1,68 @@
+{
+  "id": "bitters",
+  "name": "BITTERS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "cups/350 ml freshly squeezed orange juice (the juice of 4 to 5 oranges)",
+      "amount": "1½"
+    },
+    {
+      "item": "cup/80 g brown sugar",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/60 ml red wine vinegar",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/60 ml Angostura bitters",
+      "amount": "¼"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "sweet potatoes, unpeeled, halved crosswise, each half cut into 1-inch-/2.5-cm wide wedges (3⅓ lb/1.5 kg)",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "red chiles, slit open along the center",
+      "amount": "2"
+    },
+    {
+      "item": "sage sprigs (½ oz/15 g)",
+      "amount": "3"
+    },
+    {
+      "item": "thyme sprigs (⅓ oz/10 g)",
+      "amount": "10"
+    },
+    {
+      "item": "garlic, unpeeled and halved horizontally",
+      "amount": "2 heads"
+    },
+    {
+      "item": "oz/90 g chèvre (goat cheese) log, broken into pieces salt",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Place the orange juice in a saucepan with the sugar and vinegar. Bring to a boil over high heat, then turn down the heat to medium-high and simmer fairly rapidly for about 20 minutes, until the liquid has thickened and reduced",
+    "to a scant 1 cup/200 ml (about the amount in a large glass of wine). Add the bitters, olive oil, and 1½ teaspoons salt.",
+    "Place the potatoes in a large bowl, add the chiles, sage, thyme, and garlic, and then pour in the reduced sauce. Toss well so that everything is coated and then spread the mixture out in a single layer on a baking sheet on which it fits snugly, about 12 by 16-inches/30 by 40-cm.",
+    "Place in the oven and roast for 50 to 60 minutes, turning and basting the potatoes every 15 minutes or so. They need to remain coated in the liquid in order to caramelize, so add more orange juice if the pan is drying out. At the end, the potatoes should be dark and sticky. Remove from the oven and leave to cool slightly before arranging on a platter and dotting with the goat cheese.",
+    "Serve warm or at room temperature.",
+    "Curry-Roasted Root Vegetables with Lime Leaves and Juice",
+    "CURRY-ROASTED ROOT VEGETABLES",
+    "WITH LIME LEAVES AND JUICE"
+  ],
+  "time": {
+    "total": 30
+  }
+}

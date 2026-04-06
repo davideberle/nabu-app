@@ -1,0 +1,61 @@
+{
+  "id": "french-smoked-salmon-nicoise-salad",
+  "name": "French Smoked Salmon Nicoise Salad",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "One cup of carrot",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of smoked salmon",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped celery",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon honey",
+      "amount": ""
+    },
+    {
+      "item": "Goat cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard, half cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the all of the ingredients into a bowl.",
+    "Mix all the ingredients well to form a homogenous mixture.",
+    "Toss the salad to make sure everything is mixed properly.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

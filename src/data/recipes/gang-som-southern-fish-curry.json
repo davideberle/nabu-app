@@ -1,0 +1,56 @@
+{
+  "id": "gang-som-southern-fish-curry",
+  "name": "Gang Som Southern Fish Curry",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "which, you can add coconut milk to this, and it will be delicious in a different way.",
+  "ingredients": [
+    {
+      "item": "129",
+      "amount": ""
+    },
+    {
+      "item": "fi rm white fi sh like cod, halibut or hake, skinned and cut into fi lets",
+      "amount": "1 lb (500 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tapioca starch",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "baking powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "white pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Thai celery stalks, chopped (or the leaves of a celery plant)",
+      "amount": "3"
+    },
+    {
+      "item": "deep-fried garlic slivers",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "In a blender or food processor, blitz the white fi sh until it becomes a fi ne paste. With a spatula, scrape down the sides and blitz again with the salt, tapioca, baking powder and pepper until well blended.",
+    "Transfer the fi sh paste to a cut- ting board. With wet hands, knead the fi sh paste well, slapping it onto the board a couple of times. This makes the paste springy. Wrap the paste in plastic wrap and put it in the freezer for 30 minutes.",
+    "After half an hour, take it out of the freezer. It should fi rmed up well. Wet your hands with some water and take a big spoonful of the fi sh paste onto your palm and shape into a ball. Repeat until all the fi sh paste is used up.",
+    "In a pot of barely boiling water, add the fi sh balls and boil them carefully for about 15 minutes.",
+    "They will puff up and double in size. Once cooked, put them in a strainer and stop the cooking pro- cess by dunking them in a bowl of iced water.",
+    "Drain and serve with your Thai seafood dipping sauce, a garnish of",
+    "Thai celery leaves and deep-fried garlic, and fresh coriander leaves."
+  ],
+  "time": {
+    "total": 30
+  }
+}

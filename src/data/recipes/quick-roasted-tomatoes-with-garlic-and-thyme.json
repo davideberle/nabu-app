@@ -1,0 +1,60 @@
+{
+  "id": "quick-roasted-tomatoes-with-garlic-and-thyme",
+  "name": "Quick-Roasted Tomatoes with Garlic and Thyme",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "sumac",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chili pepper flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Kosher salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "thyme",
+      "amount": "2 teaspoon"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "smaller tomatoes",
+      "amount": "2 lb."
+    }
+  ],
+  "method": [
+    "Heat the oven to 450°F.",
+    "In a wide mixing cup, put the tomato pieces.",
+    "Add the chopped garlic, salt, peppers, seasoning, and clean thyme.",
+    "Sprinkle with a decent amount of extra virgin olive, around ¼ cup or",
+    "so. Toss it to coat it.",
+    "Use a rim to move the tomato to a baking tray. Place the tomatoes,",
+    "flesh lengthways in one single sheet.",
+    "Grill for 30 minutes to an hour in your hot oven just until the",
+    "tomatoes have fallen to your desired thickness.",
+    "Withdraw from the heat. Feel free to serve it with more fresh thyme",
+    "and a few splash of feta cheese if you intend to eat it soon.",
+    "Enjoy it at ambient temperature or hotter."
+  ],
+  "time": {
+    "total": 30
+  }
+}

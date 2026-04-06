@@ -1,0 +1,65 @@
+{
+  "id": "super-food-macaroni-salad",
+  "name": "Super food Macaroni Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "macaroni",
+      "amount": "2 cups"
+    },
+    {
+      "item": "smoked salmon",
+      "amount": "2 oz."
+    },
+    {
+      "item": "baby spinach",
+      "amount": "2 cups"
+    },
+    {
+      "item": "boiled eggs, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green onions, finely cut",
+      "amount": "4-5"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook macaroni as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
+    "Combine the mayonnaise, garlic and lemon juice in a bowl. Add the eggs, salmon, onions and spinach and toss to",
+    "coat with the dressing. Season with salt and freshly ground pepper to taste.",
+    "(10) Garden Pasta Salad",
+    "This summertime staple is easy, fast, and always a crowd-pleaser. It’ll work with any kind of vegetable and you can",
+    "even make it gluten-free if you need to.",
+    "Pasta salad is the perfect dish for those days when you are looking for something quick to throw together before",
+    "heading outside for a BBQ, so let’s get to it!",
+    "Yield: 8"
+  ],
+  "time": {
+    "total": 35
+  }
+}

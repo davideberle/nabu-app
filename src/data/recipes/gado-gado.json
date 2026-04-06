@@ -1,0 +1,111 @@
+{
+  "id": "gado-gado",
+  "name": "Gado-gado",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "meat or tofu, or just spoon over hot rice or rice noodles.",
+  "ingredients": [
+    {
+      "item": "garlic cloves, peeled",
+      "amount": "4"
+    },
+    {
+      "item": "lemongrass stalk, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sambal oelek (Indonesian crushed chile paste)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "small pieces of galangal (or peeled fresh ginger)",
+      "amount": "2"
+    },
+    {
+      "item": "medium shallots, peeled",
+      "amount": "4"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "thick tamarind water (tamarind pulp whisked with a little water and strained)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "roasted unsalted peanuts",
+      "amount": "½ cups"
+    },
+    {
+      "item": "water",
+      "amount": "¾ cups"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "medium potatoes, peeled and cut into wedges",
+      "amount": "2"
+    },
+    {
+      "item": "medium cabbage, cut into chunks",
+      "amount": "½"
+    },
+    {
+      "item": "bean sprouts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green beans, trimmed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "medium cucumber, thickly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "hard-boiled eggs, quartered",
+      "amount": "4"
+    },
+    {
+      "item": "firm tofu, cut into",
+      "amount": "4 oz"
+    },
+    {
+      "item": "cilantro leaves crisp-fried shallots",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "To make the satay sauce. Use a small food processor to blitz the garlic, lemongrass, sambal oelek, galangal and shallots into a homogenous paste. Add a little bit of the vegetable oil, if needed, to bring everything together.",
+    "Heat up the remaining oil in a medium saucepan. Add the paste and cook on a gentle heat for 40 to 50 minutes, or until the oil starts separating from the paste. Stir regularly. Once ready, combine the salt, sugar and paprika and add to the spice paste.",
+    "Also add the tamarind water. Cook for 10 minutes more.",
+    "While the paste is cooking, take the peanuts and crush them roughly in a food processor; they should be chunkier than ground almonds. Put the peanuts and water into a small saucepan and simmer on low heat for 20 to 25 minutes, or until the mixture thickens and most of the water has evaporated. Add the peanuts (plus water) to the cooked spice paste, stir in the coconut milk and there’s your satay sauce. Keep it somewhere warm.",
+    "Have ready two pots of boiling water; add the turmeric to one of them. Cook the potatoes in the turmeric water until tender, then drain. In the other pot blanch the cabbage for 1 minute; remove, and blanch the bean sprouts for 30 seconds. Remove those, then blanch the green beans for 4 minutes and drain (no need to refresh). Keep these vegetables warm.",
+    "Take a large communal serving plate and pile up all the vegetables, eggs, tofu and most of the chips. Generously spoon warm satay sauce on top (you’ll probably have a fair bit left over; you can keep it in the fridge for a few days), then sprinkle with the remaining chips, the cilantro and crisp shallots if you like. Serve warmish.",
+    "196 | Green Beans",
+    "This salad – offering a good balance of clean freshness from the beans with the punchy complexity of the herbs and spices – works in plenty of contexts. Try it next to Two-Potato Vindaloo (page 18), along with",
+    "Fried Lima Beans with Feta, Sorrel and Sumac (page 214), or as a side dish with grilled lamb chops.",
+    "Green bean salad with mustard seeds and tarragon"
+  ],
+  "time": {
+    "total": 30
+  }
+}

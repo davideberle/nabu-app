@@ -1,0 +1,109 @@
+{
+  "id": "beef",
+  "name": "Beef",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Paste",
+      "amount": ""
+    },
+    {
+      "item": "dried long red Thai or New Mexican chilis",
+      "amount": "4"
+    },
+    {
+      "item": "shallots, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "garlic, chopped",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "chopped turmeric, fresh or dried roots",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "finely chopped ginger",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "1⁄4 tsp. salt",
+      "amount": ""
+    },
+    {
+      "item": "minced cilantro stems",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "Soup",
+      "amount": ""
+    },
+    {
+      "item": "1⁄3 cup coconut cream",
+      "amount": ""
+    },
+    {
+      "item": "sliced beef sirloin",
+      "amount": "4 oz."
+    },
+    {
+      "item": "palm sugar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chicken stock or water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fresh egg noodles",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Lime wedges",
+      "amount": ""
+    },
+    {
+      "item": "deep-fried shallots, bought at the store",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Make the paste by roasting the chilies, shallots, garlic, turmeric, and ginger,",
+    "one at time, in a dry pan over low heat for 1–2 minutes each. Allow to cool",
+    "and pound the ingredients together with salt and cilantro stems using a",
+    "mortar and pestle until smooth.",
+    "In a fry pan, simmer coconut cream over low heat until it is thick and shiny",
+    "on the surface, about 2 minutes. Add the paste and let simmer at low heat",
+    "until fragrant, about 4 minutes. Add beef slices and simmer until beef is just",
+    "cooked, about 3 minutes.",
+    "Season with palm sugar and soy sauce. Add stock and continue to simmer",
+    "until beef is tender, about 25 minutes. Add more stock or water if needed.",
+    "Blanch egg noodles in water for about 15 seconds and place in a bowl.",
+    "Ladle the beef curry on top. Garnish with chopped onions, chopped",
+    "cilantro, wedges of lime, and fried shallots.",
+    "Recipe 20: Curried Meatballs in Sauce",
+    "Most meal experts believe that meatballs rhyme well in tomato sauce on",
+    "most occasions. You can also try it with a combination of curried meatballs",
+    "in curry sauce. Enjoy the beauty of this recipe and be nice enough to share"
+  ],
+  "time": {
+    "total": 30
+  }
+}

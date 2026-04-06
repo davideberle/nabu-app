@@ -1,0 +1,50 @@
+{
+  "id": "french-passion-fruit-and-lemon-meringue-tartlets",
+  "name": "French Passion Fruit and Lemon Meringue Tartlets",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of passion fruit",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A pack of tart dough",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of lemon zest",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the cream and beat it properly.",
+    "Make it frothy and then add the butter and sugar.",
+    "Beat the mixture properly and then add the passion fruit and lemon zest",
+    "in the butter.",
+    "Mix the mixture properly.",
+    "Lay the tart dough into greased tart dishes.",
+    "Add the mixture on top.",
+    "Bake the dish properly for ten to fifteen minutes.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

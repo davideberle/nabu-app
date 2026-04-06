@@ -1,0 +1,95 @@
+{
+  "id": "french-quiche-lorraine",
+  "name": "French Quiche Lorraine",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "One tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of goat cheese",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of pumpkin seeds",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of fresh chopped pumpkins",
+      "amount": ""
+    },
+    {
+      "item": "Crushed black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Four tablespoon of cream",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of freshly grated nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "For dough:",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of unsalted soft butter",
+      "amount": ""
+    },
+    {
+      "item": "Two whole eggs",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of ice water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the flour and sea salt into the bowl.",
+    "Mix the ingredients well and add the eggs, water and softened butter",
+    "into the bowl.",
+    "Mix all the ingredients well to form a dough.",
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the chopped pumpkin when the olive oil heats well.",
+    "Mix the onions and add the pumpkin seeds into the pan.",
+    "Cook the ingredients and then add the cream.",
+    "Switch off the heat.",
+    "Add the rest of the ingredients into the pan when it cools down.",
+    "Cook the ingredients for about five minutes.",
+    "Switch off the stove and let the mixture cool down.",
+    "Roll out the dough and lay half of it in a baking dish.",
+    "Add the cooked mixture on the dough.",
+    "Bake the quiche for about twenty to twenty five minutes.",
+    "Dish out the quiche when it is done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

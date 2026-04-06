@@ -1,0 +1,93 @@
+{
+  "id": "french-white-bean-stew",
+  "name": "French White Bean Stew",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One pound of white beans (half boiled)",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped cloves",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chopped shallots",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One cup of vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of Herbs de Provence",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh rosemary",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of mix spice powder",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the chopped ingredients into the bowl.",
+    "Mix all the ingredients well.",
+    "Add a little water into it.",
+    "Blend the mixture with a hand blender.",
+    "Make sure the ingredients turn smooth.",
+    "Add the beans into the mixture.",
+    "Marinate the half boiled beans in the mixture for fifteen minutes.",
+    "Take a large pan.",
+    "Add all the ingredients and olive oil into the pan.",
+    "Mix the stew well.",
+    "Cook the stew for ten to fifteen minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

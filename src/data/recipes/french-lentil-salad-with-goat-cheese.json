@@ -1,0 +1,70 @@
+{
+  "id": "french-lentil-salad-with-goat-cheese",
+  "name": "French Lentil Salad with Goat Cheese",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Three cups of vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "One cup of carrot",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of French lentils",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped celery",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of honey",
+      "amount": ""
+    },
+    {
+      "item": "One cup of goat cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of Dijon mustard",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add in the oil and lentils into the pan.",
+    "Stir fry the lentils and then add the vegetable broth into it.",
+    "Let the lentils cook for about thirty minutes or until the liquid dries out",
+    "in the sauce pan.",
+    "Add the rest of the ingredients into a bowl.",
+    "Mix all the ingredients well to form a homogenous mixture.",
+    "Add the cooked lentils on top of the mixture.",
+    "Toss the salad to make sure everything is mixed properly.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

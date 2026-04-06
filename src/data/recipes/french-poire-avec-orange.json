@@ -1,0 +1,51 @@
+{
+  "id": "french-poire-avec-orange",
+  "name": "French Poire Avec Orange",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half cup of brown sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Four whole pears",
+      "amount": ""
+    },
+    {
+      "item": "One and a half cup orange juice",
+      "amount": ""
+    },
+    {
+      "item": "Half cup walnuts",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of cinnamon powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add all the ingredients into the pan except the pears.",
+    "Cook the ingredients well.",
+    "Cook the mixture until the sugar dissolves.",
+    "Cover the pears in the sauce.",
+    "Refrigerate the pears for one hour.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

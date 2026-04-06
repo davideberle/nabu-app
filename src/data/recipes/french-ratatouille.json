@@ -1,0 +1,107 @@
+{
+  "id": "french-ratatouille",
+  "name": "French Ratatouille",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A pinch of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One cup of eggplant pieces",
+      "amount": ""
+    },
+    {
+      "item": "One cup of zucchini pieces",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of chopped marjoram dates",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped chives",
+      "amount": ""
+    },
+    {
+      "item": "One cup of cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of summer savory sprigs",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of Herbs de Provence",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "One cup of red bell pepper",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of crushed red pepper",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of fennel leaves",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil and chopped onions into it.",
+    "Cook the onions until they turn light brown in color.",
+    "Add the minced garlic into the pan.",
+    "Cook the mixture for five minutes.",
+    "Season the mixture with salt and pepper.",
+    "Add the spices and all the vegetables.",
+    "In a bowl crush the cherry tomatoes and add the salt.",
+    "Dish the mixture out in a plate when the vegetables are done.",
+    "Add the crushed tomatoes into the pan.",
+    "Cook the tomatoes for ten minutes or until they turn soft.",
+    "Add the vegetable mixture into the pan again.",
+    "Cook the mixture and add the chopped marjoram dates, basil",
+    "and parsley leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "vegan-birria-tacos",
+  "name": "Vegan Birria Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Mushrooms, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Dried chilies, three",
+      "amount": ""
+    },
+    {
+      "item": "Onion, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Garlic, one",
+      "amount": ""
+    },
+    {
+      "item": "Creamy red sauce, as required",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Mix cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning mix, one tsp.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the mushrooms in the olive oil.",
+    "Add onions into it and cook until soft and translucent.",
+    "Next, add the garlic, and dried chilies into the mixture.",
+    "Add the taco seasoning into the mixture and cook for five minutes.",
+    "Heat the taco shells in an oven.",
+    "Fill the taco sheets with the above mixture.",
+    "Add the creamy red sauce, and cilantro leaves on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

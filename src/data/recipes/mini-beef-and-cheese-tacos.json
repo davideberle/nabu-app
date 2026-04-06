@@ -1,0 +1,67 @@
+{
+  "id": "mini-beef-and-cheese-tacos",
+  "name": "Mini Beef and Cheese Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Beef, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Basil leaf, as required",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Garlic powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, small sized, eight to twelve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the beef mince in oil, add the spices into it.",
+    "When cooked, remove from the stove.",
+    "Heat the taco shells.",
+    "Now in the taco shells add the beef mixture and add cheese on top.",
+    "Bake for five minutes.",
+    "Now add the salsa and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

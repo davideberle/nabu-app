@@ -1,0 +1,74 @@
+{
+  "id": "cauliflower-walnut-taco",
+  "name": "Cauliflower Walnut Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Cauliflower, two cups",
+      "amount": ""
+    },
+    {
+      "item": "Paprika, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cumin powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Oregano, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper, as required",
+      "amount": ""
+    },
+    {
+      "item": "Chili flakes, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    },
+    {
+      "item": "Walnut, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Creamy cilantro sauce, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roast the cauliflower by adding all the spices and olive oil.",
+    "Roast for ten minutes.",
+    "Add the cauliflower in the taco shells; add salsa, sour cream, creamy",
+    "cilantro sauce, and cilantro on top.",
+    "Add the crushed walnuts on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

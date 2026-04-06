@@ -1,0 +1,75 @@
+{
+  "id": "legume-noodle-soup",
+  "name": "LEGUME (NOODLE) SOUP",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 8",
+  "intro": "spooned on top, followed by the grated lemon zest and the lemon juice.",
+  "ingredients": [
+    {
+      "item": "cup/125 g dried chickpeas, soaked in water overnight with 2 tbsp baking soda",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/125 g dried lima beans, soaked in water overnight with 1 tbsp baking soda",
+      "amount": "⅔"
+    },
+    {
+      "item": "tbsp/80 g clarified butter",
+      "amount": "5½"
+    },
+    {
+      "item": "large onions, thinly sliced (4 cups/400 g)",
+      "amount": "2"
+    },
+    {
+      "item": "garlic, thinly sliced",
+      "amount": "10 cloves"
+    },
+    {
+      "item": "ground turmeric rounded 1 cup/225 g yellow split peas",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cups/2 liters vegetable stock about 1 cup/35 g flat-leaf parsley leaves, chopped about 2 cups/35 g cilantro leaves, chopped",
+      "amount": "8½"
+    },
+    {
+      "item": "cup/15 g dill leaves, chopped rounded 1 cup (100 g) thinly sliced green onions, white and green parts",
+      "amount": "1"
+    },
+    {
+      "item": "cups/150 g baby spinach leaves",
+      "amount": "5"
+    },
+    {
+      "item": "oz/100 g reshteh or linguine",
+      "amount": "3½"
+    },
+    {
+      "item": "cup/150 g sour cream, plus 1 tsp per portion to finish",
+      "amount": "⅔"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "limes, halved salt and black pepper",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Drain and rinse the chickpeas and lima beans and place them in 2 separate saucepans with plenty of water. Place over medium heat, bring to a simmer, and cook until just tender. This should take anywhere between 20 and 40 minutes. Drain and set aside.",
+    "Put the butter, onions, and garlic in a large pan and place over medium heat.",
+    "Cook for 20 minutes, stirring occasionally, until soft and golden brown. Stir in the turmeric, ½ teaspoon salt, and some black pepper and remove one- third of this mix from the pan to use later.",
+    "Add the chickpeas and lima beans to the pan, then add the split peas and stock. Simmer for about 35 minutes, skimming the froth occasionally, until the peas are tender.",
+    "Add the herbs, green onions, and spinach, stir well, and cook for another 15 minutes; add more stock or water if the soup is very thick. Add the noodles and cook for about 10 minutes, until they are just done. Stir in the sour cream and vinegar and serve at once, garnished with 1 teaspoon of sour cream per portion and the reserved cooked onion. Serve lime halves to squeeze over each portion.",
+    "FREGOLA AND ARTICHOKE PILAF"
+  ],
+  "time": {
+    "total": 30
+  }
+}

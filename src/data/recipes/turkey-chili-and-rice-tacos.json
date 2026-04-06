@@ -1,0 +1,64 @@
+{
+  "id": "turkey-chili-and-rice-tacos",
+  "name": "Turkey Chili and Rice Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Turkey mince, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Rice, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cooked red beans, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Sweetcorn, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Red onions, one",
+      "amount": ""
+    },
+    {
+      "item": "Coriander, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the mince in a pan and cook until browned.",
+    "Add in the rice and beans, and mix well, then add the stock.",
+    "Cover and simmer for twenty minutes until the rice is tender, then stir",
+    "in the sweetcorn and scatter over the coriander.",
+    "Heat the taco shells.",
+    "Add the cooked mixture, and rest of the ingredients just before",
+    "serving in the taco shells.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 35
+  }
+}

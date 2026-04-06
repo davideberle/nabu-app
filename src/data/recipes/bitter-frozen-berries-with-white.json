@@ -1,0 +1,43 @@
+{
+  "id": "bitter-frozen-berries-with-white",
+  "name": "BITTER FROZEN BERRIES WITH WHITE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "a sprinkle of pomegranate seeds, some clotted cream, and a sprinkle of mint.",
+  "ingredients": [
+    {
+      "item": "oz/90 g white chocolate, chips or a block broken into very small pieces",
+      "amount": "3"
+    },
+    {
+      "item": "cups/400 ml heavy cream",
+      "amount": "1⅔"
+    },
+    {
+      "item": "oz/380 g fresh (see headnote) or frozen berries (raspberries, blackberries, black currants, and red currants; about 3 cups) generous 2½ tbsp/40 ml Angostura bitters, plus a few extra drops to finish",
+      "amount": "13½"
+    },
+    {
+      "item": "confectioners’ sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "biscotti or another hard cookie, to serve",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "First prepare a white chocolate ganache. Place the chocolate in a heatproof bowl. Pour ⅔ cup/160 ml of the cream into a small saucepan and bring to a boil, making sure it doesn’t spill over. Pour the cream over the chocolate and stir until all the chips have melted. Leave to cool before covering the bowl",
+    "with plastic wrap and chilling it in the fridge for at least 5 hours or overnight.",
+    "When ready to serve, place the remaining 1 cup/240 ml cream in a bowl and add the ganache. Whisk together—b y hand or with a handheld mixer—u ntil very runny peaks form. Take care not to pass this stage, as the cream will separate if it’s overwhipped.",
+    "Place the frozen berries in a plastic bag, place on a flat surface, and bash a few times with a rolling pin until the berries are roughly crushed. Pour them into a bowl, add the bitters and sugar, stir until the sugar dissolves, and leave to rest for 5 minutes, until the berries are semifrozen.",
+    "Divide the cream among glass bowls and spoon the berries on top.",
+    "Alternatively, place the cream in a mixing bowl, add the berries, and swirl through before spooning into individual bowls. Finish with a few drops of the bitters and serve with a cookie alongside."
+  ],
+  "time": {
+    "total": 30
+  }
+}

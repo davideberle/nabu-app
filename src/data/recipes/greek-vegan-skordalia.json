@@ -1,0 +1,52 @@
+{
+  "id": "greek-vegan-skordalia",
+  "name": "Greek Vegan Skordalia",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A quarter cup almond meal",
+      "amount": ""
+    },
+    {
+      "item": "Half cup olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One russet potato",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons red wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "Ten cloves of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a saucepan.",
+    "Boil the potatoes in the saucepan.",
+    "Drain the potatoes when done.",
+    "Mash the potatoes.",
+    "Add the garlic, lemon juice, almond meal, salt, red wine vinegar, and",
+    "olive oil into the mashed potatoes.",
+    "Mix everything well.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 70
+  }
+}

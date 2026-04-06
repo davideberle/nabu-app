@@ -1,0 +1,57 @@
+{
+  "id": "greek-cheese-pie-with-nuts-and-honey",
+  "name": "Greek Cheese Pie with Nuts and Honey",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Eight ounces of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One pack of phyllo sheets",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried mint",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped nuts (of your choice)",
+      "amount": ""
+    },
+    {
+      "item": "One cup of honey thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of strained Greek yoghurt",
+      "amount": ""
+    },
+    {
+      "item": "Seven ounces of butter",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the butter into it and beat well.",
+    "Add the Greek yoghurt and feta cheese into the butter bowl.",
+    "Mix the ingredients well.",
+    "Add the dried mint into the bowl and mix well.",
+    "Spread the phyllo sheets in a greased baking tray.",
+    "Add the cheese mixture into the phyllo sheets and cover it with more",
+    "phyllo sheets.",
+    "Bake the pie for about forty minutes.",
+    "Dish out the pie.",
+    "Drizzle the honey thyme on top of the pie.",
+    "Garnish the dish with chopped nuts",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "french-vegetable-french-bread-pizza",
+  "name": "French Vegetable French Bread Pizza",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half pound of mixed vegetables",
+      "amount": ""
+    },
+    {
+      "item": "One yellow onion",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of mozzarella cheese",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried rosemary",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One cup of tomato sauce",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of parmesan cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of sliced olives",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One pack of bread dough",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roll out the bread dough in a baking dish.",
+    "Spread the tomato sauce on the dough.",
+    "Add the vegetables and rest of the ingredients on top of the sauce.",
+    "Bake the pizza for about twenty minutes.",
+    "Dish out when done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

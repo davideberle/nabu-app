@@ -1,0 +1,112 @@
+{
+  "id": "corn-black-bean-and-spinach-enchiladas",
+  "name": "Corn, Black Bean, and Spinach Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "of tomato paste",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of vegetable broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "of all-purpose flour",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "of olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "onion powder",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "For Enchiladas:",
+      "amount": ""
+    },
+    {
+      "item": "corn",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "can black beans",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "fresh spinach",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "cilantro",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "green onions",
+      "amount": "6"
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "8"
+    },
+    {
+      "item": "vegan cheese, shredded",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat the oil in a skillet over the medium heat.",
+    "Put in tomato paste, cumin, flour, onion powder, garlic powder, and",
+    "chili powder, and cook for one minute.",
+    "Add broth, and bring it to boil. Cook for 8-10 minutes until it gets",
+    "slightly thickened.",
+    "Add pepper and salt to taste and put it aside.",
+    "Put spinach in a pan and heat for 2 minutes over the medium heat.",
+    "Take a bowl, and mix black beans, vegan cheese, wilted spinach,",
+    "green onions, corn, cilantro, and cumin.",
+    "Preheat the oven to 375",
+    "C. Spray a baking dish, and add some sauce",
+    "to the bottom.",
+    "Fill tortillas with the mixture, and roll-up.",
+    "Pour the remaining sauce on top of enchiladas.",
+    "Add 1/4 cup of cheese on the top.",
+    "Bake it for 20 minutes, garnish with green onions and cilantro.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

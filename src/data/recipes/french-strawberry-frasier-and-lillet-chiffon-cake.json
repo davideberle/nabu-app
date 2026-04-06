@@ -1,0 +1,65 @@
+{
+  "id": "french-strawberry-frasier-and-lillet-chiffon-cake",
+  "name": "French Strawberry Frasier and Lillet Chiffon Cake",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A quarter cup of lillet blanc",
+      "amount": ""
+    },
+    {
+      "item": "Half cup cream of tartar",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon ground cardamom",
+      "amount": ""
+    },
+    {
+      "item": "A cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "An egg",
+      "amount": ""
+    },
+    {
+      "item": "For dressing:",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of strawberry slices",
+      "amount": ""
+    },
+    {
+      "item": "A cup of whipped cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients except the strawberry slices into the bowl.",
+    "Make sure the baking dish is properly greased and lined with parchment",
+    "papers.",
+    "Bake the cake.",
+    "Dish it out when done.",
+    "Add the whipped cream on top of the cake.",
+    "Cover it with strawberry slices.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

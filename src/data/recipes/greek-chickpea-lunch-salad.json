@@ -1,0 +1,75 @@
+{
+  "id": "greek-chickpea-lunch-salad",
+  "name": "Greek Chickpea Lunch Salad",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "kosher salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "16"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "grape tomatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "English cucumber",
+      "amount": "2 cups"
+    },
+    {
+      "item": "torn romaine lettuce",
+      "amount": "6 cups"
+    },
+    {
+      "item": "can unsalted chickpeas",
+      "amount": "1 (15-oz.)"
+    },
+    {
+      "item": "vertically sliced red onion",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Arrange 1 ½ cups of greens in four bowls or pots, and two teaspoons",
+    "of onions.",
+    "Add half cup tomatoes, ¼ cup chickpeas, four olives, ¼ cup",
+    "cucumber, and two slices of cheese to each portion.",
+    "In a small cup, mix the butter, vinegar, thyme, salt, pepper, and",
+    "cloves.",
+    "For each dish, serve about two teaspoons of dressing."
+  ],
+  "time": {
+    "total": 20
+  }
+}

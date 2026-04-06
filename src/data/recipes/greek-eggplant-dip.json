@@ -1,0 +1,44 @@
+{
+  "id": "greek-eggplant-dip",
+  "name": "Greek Eggplant Dip",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One and a half cups of Greek yoghurt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Half chopped roasted eggplant",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of minced garlic",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients and mix well.",
+    "Garnish the dish with fresh dill.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

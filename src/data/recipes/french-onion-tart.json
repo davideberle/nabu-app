@@ -1,0 +1,61 @@
+{
+  "id": "french-onion-tart",
+  "name": "French Onion Tart",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of Herbs de Provence",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A pack of tart dough",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cream",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of onion",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Butter for greasing",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the oil and onion into the pan.",
+    "Cook the onion and add the spices and garlic into the mixture.",
+    "Cool it down once it is cooked.",
+    "Take a large bowl.",
+    "Add the cream and beat it properly.",
+    "Make it frothy and then add the butter.",
+    "Beat the mixture properly and then add the onion mixture in the butter.",
+    "Mix the mixture properly.",
+    "Lay the tart dough into greased tart dishes.",
+    "Bake the dish properly for ten to fifteen minutes.",
+    "Add the chopped cilantro on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

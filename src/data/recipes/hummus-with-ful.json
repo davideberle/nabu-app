@@ -1,0 +1,85 @@
+{
+  "id": "hummus-with-ful",
+  "name": "Hummus with ful",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "(pictured on page 212) and serve it warm or chilled (it can be kept in the fridge for up to 2 days).",
+  "ingredients": [
+    {
+      "item": "dried chickpeas",
+      "amount": "½ cups"
+    },
+    {
+      "item": "baking soda",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "tahini paste",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed salt",
+      "amount": "6"
+    },
+    {
+      "item": "dried fava beans",
+      "amount": "½ cups"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "4"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "roughly chopped parsley (optional)",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "eggs, hard-boiled and quartered",
+      "amount": "3"
+    },
+    {
+      "item": "medium onion, cut into 6 wedges (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Soak the chickpeas and fava beans overnight. Place them in two separate bowls and cover with double their volume of cold water.",
+    "Add 1 tablespoon baking soda to the chickpeas. Set both aside.",
+    "The next day, drain and rinse both.",
+    "Place the soaked chickpeas and remaining baking soda in a medium saucepan and cover with double their volume of cold water. Bring to the boil, then simmer very gently for 2 to 3 hours, or until totally soft and easy to mush. Add more water during cooking if necessary, to keep them immersed. Drain them, retaining the cooking liquid.",
+    "Transfer the warm chickpeas to a food processor, reserving a few to garnish at the end, and add the tahini, lemon juice, garlic and 1 teaspoon salt. Blitz for a minute or two until totally smooth.",
+    "Add some of the cooking liquid and blitz again. You want the mixture to be very soft, almost runny, but just holding its shape.",
+    "Taste and add more salt if you like. Keep warm.",
+    "To make the ful. Place the fava beans in a medium saucepan and cover with double their volume of water. Simmer gently for about",
+    "3 hours (they may take longer), adding more water if necessary.",
+    "By the end of the cooking time, hardly any liquid should be left in the pan (drain it out if needed) and the beans should have begun to disintegrate, or will do so easily when crushed with a fork.",
+    "Remove from the heat and add the olive oil, lemon juice, cumin, garlic and salt. Taste and adjust the seasoning.",
+    "To serve, spread the warm hummus in small individual plates.",
+    "Spoon the ful in the center and drizzle the olive oil and lemon juice on top and around. Sprinkle with paprika, garnish with the reserved chickpeas, plenty of parsley, if using, and serve egg and onion on the side.",
+    "This is a quick and simple dish (pictured on page 213) that is nice both warm and at room temperature.",
+    "When chard isn’t in season try a combination of spinach and arugula (you won’t need to blanch them) and sprinkle with sumac or ground Persian lime (see page 245).",
+    "Chickpea sauté with Greek yogurt"
+  ],
+  "time": {
+    "total": 30
+  }
+}

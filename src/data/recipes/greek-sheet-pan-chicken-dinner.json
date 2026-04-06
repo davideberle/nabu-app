@@ -1,0 +1,95 @@
+{
+  "id": "greek-sheet-pan-chicken-dinner",
+  "name": "Greek Sheet Pan Chicken Dinner",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Marinade",
+      "amount": ""
+    },
+    {
+      "item": "paprika",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "For Veggies and Chicken",
+      "amount": ""
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole lemons",
+      "amount": "2"
+    },
+    {
+      "item": "mixed color potatoes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "crumbled Feta",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Chicken breasts",
+      "amount": "4"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "whole garlic cloves",
+      "amount": "10"
+    },
+    {
+      "item": "red peppers",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Heat the oven to 400F.",
+    "Mix all the components in a shallow saucepan with the marinade.",
+    "Use a baking dish to put sliced vegetables.",
+    "Position the veggies in and around the meat.",
+    "Pour all the vegetables into the marinade and brush on the chicken.",
+    "Organize the mixture equally and nestle around the sheet pan with",
+    "sliced lemons.",
+    "Put in the oven and bake for 30-35 minutes or until the chicken hits",
+    "165 degrees and the vegetables are slightly orange.",
+    "Squeeze over the fried dish with sliced lemons.",
+    "Spray with olive oil with grated cheese and Kalamata."
+  ],
+  "time": {
+    "total": 40
+  }
+}

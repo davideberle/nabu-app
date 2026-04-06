@@ -1,0 +1,93 @@
+{
+  "id": "garlicky-italian-bread",
+  "name": "Garlicky Italian Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "flour (all-purpose)",
+      "amount": "2 1/2 cups"
+    },
+    {
+      "item": "a teaspoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "of baking soda",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "kosher salt (1/2 teaspoon)",
+      "amount": ""
+    },
+    {
+      "item": "oregano, dry",
+      "amount": "1/4 teaspoon"
+    },
+    {
+      "item": "big beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oil",
+      "amount": ""
+    },
+    {
+      "item": "a third of a gallon of whole",
+      "amount": ""
+    },
+    {
+      "item": "milk",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "mozzarella cheese,",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shredded",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, minced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "basil, finely chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "Parmesan cheese, grated",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Heat the oven at 300 Fahrenheit (180 degrees Celsius). Grease",
+    "and line an 8\" x 4\" loaf pan with parchment paper.",
+    "In a large dish for mix, combine flour, baking powder, baking",
+    "soda, salt, and oregano. Whisk together the egg, olive oil, and",
+    "milk in a separate large mixing basin.",
+    "Combine the dry and wet ingredients, then fold in the garlic,",
+    "mozzarella, tomatoes, and basil until thoroughly mixed. The",
+    "batter will be very thick.",
+    "Pour batter into loaf pan, top with Parmesan, and bake for 50 to",
+    "55 minutes, or until brown and toothpick inserted in center",
+    "comes out clean.",
+    "Cool for 10 minutes in the pan before transferring to a cooling",
+    "rack to cool completely."
+  ],
+  "time": {
+    "total": 40
+  }
+}

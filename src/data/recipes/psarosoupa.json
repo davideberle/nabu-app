@@ -1,0 +1,81 @@
+{
+  "id": "psarosoupa",
+  "name": "Psarosoupa",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "parsley",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "120ml"
+    },
+    {
+      "item": "fish fillets",
+      "amount": "600g"
+    },
+    {
+      "item": "carrots",
+      "amount": "3"
+    },
+    {
+      "item": "1.25 liters water",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "parsley stalks",
+      "amount": "6"
+    },
+    {
+      "item": "celery stalks",
+      "amount": "2"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "potatoes",
+      "amount": "2"
+    },
+    {
+      "item": "leek",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a wide saucepan over medium heat, combine the carrots, fennel,",
+    "leek, garlic, onions, coriander seeds, and tarragon stalks, as well as",
+    "the water.",
+    "Season with salt and pepper.",
+    "Fill a new pot with the stock and strain the vegetables through a fine",
+    "sieve onto a plate, removing the peppercorns and tarragon stalks.",
+    "Return half of the vegetables to the stock and smash with a fork.",
+    "Enable the soup to rise to a boil before adding the olive oil and",
+    "salmon fillets.",
+    "Cook for 20-30 minutes before adding the lime juice.",
+    "Remove from the heat after stirring.",
+    "Put the cooked vegetables and fish parts in individual bowls with the",
+    "soup and serve right away, coated with finely grated parmesan."
+  ],
+  "time": {
+    "total": 55
+  }
+}

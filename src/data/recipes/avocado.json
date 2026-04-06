@@ -1,0 +1,51 @@
+{
+  "id": "avocado",
+  "name": "AVOCADO",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "• Preparation time: 20 minutes plus marinating",
+      "amount": "2"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "avocados",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice salt and freshly ground black pepper pinch of cayenne pepper (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "orange",
+      "amount": "1"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Cut out the core from the cabbage. Grate it very finely using a grater or a food processor.",
+    "Combine the cabbage and sea salt, knead thoroughly for 2–3 minutes, and let it marinate for at least",
+    "Put the cabbage into a colander set over a bowl, and press out the juice. Let drain. Save the salty cabbage juices that have been released to drink later, if you choose.",
+    "Slice the avocados lengthwise in half, peel them, and remove the pits.",
+    "Using a fork, mash 1",
+    "⁄2 avocados in a bowl. Add 1 teaspoon of lemon juice and the cabbage. Mix well to combine. Season with a bit of pepper and, if needed, salt. Be careful since the cabbage will be a bit salty. Add the cayenne pepper if you want to give the salad a bit of heat.",
+    "Peel the orange, being careful to remove all the white pith.",
+    "Cut out the orange segments. Dice the remaining avocado into bite-size cubes. Add the avocado and orange to the cabbage, and toss.",
+    "To serve, place the salad on one or two plates, and sprinkle the pomegranate seeds over the top.",
+    "There is a great trick for seeding pomegranates.",
+    "Unfortunately, I just learned about it only after years of having my clothes splattered with their juice. Fill a large bowl with water. Make a cut in the pomegranate. Open up the cut under water. The seeds will plop into the water, and no juice will splatter!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

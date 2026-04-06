@@ -1,0 +1,58 @@
+{
+  "id": "french-rissoles",
+  "name": "French Rissoles",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "One chopped red onion",
+      "amount": ""
+    },
+    {
+      "item": "Two minced garlic cloves",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of beef mince",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of oregano",
+      "amount": ""
+    },
+    {
+      "item": "One egg",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the beef mince, spices, mint, onion, garlic and egg into the bowl.",
+    "Mix all the ingredients well and form round patty structures.",
+    "Fry the patty in olive oil until they turn golden brown in color.",
+    "Dish out the patty.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

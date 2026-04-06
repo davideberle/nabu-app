@@ -1,0 +1,59 @@
+{
+  "id": "eggplant-kuku",
+  "name": "EGGPLANT KUKU",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "trim the edge to get a nice round cake with distinct layers. Serve warm or at",
+  "ingredients": [
+    {
+      "item": "cup/120 ml sunflower oil, plus extra to brush the baking pan",
+      "amount": "½"
+    },
+    {
+      "item": "small onions, thinly sliced (about 4 cups/400 g)",
+      "amount": "4"
+    },
+    {
+      "item": "small eggplants, tops removed and peeled (1¼ lb/580 g)",
+      "amount": "3"
+    },
+    {
+      "item": "eggs, lightly beaten scant 3½ tbsp/25 g all-purpose flour",
+      "amount": "5"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cup/35 g fresh bread crumbs scant 1 cup/25 g flat-leaf parsley, finely chopped",
+      "amount": "¾"
+    },
+    {
+      "item": "saffron threads, soaked in 1 tbsp hot water",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "tbsp/20 g barberries salt and black pepper",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Pour the oil into a large, heavy pan and place over medium-high heat. Add the onions and sauté for 7 minutes, until they soften but don’t brown.",
+    "While the onions are cooking, cut the eggplants in half crosswise and then cut each half lengthwise into slices ⅜-inch/1-cm thick. Cut the slices into strips",
+    "⅜-inch/1-cm thick, so that you end up with batons 2¾ to 3¼-inches/7 to 8- cm long and ⅜-inch/1-cm-wide and thick. Add the batons and ½ teaspoon salt to the cooking onions and continue to cook over medium-high heat, stirring occasionally and gently so that the eggplant does not break up, for 12 to 14 minutes, until the eggplant is completely soft. Leave aside to cool down.",
+    "In a large bowl, whisk together the eggs, flour, baking powder, bread crumbs, parsley, saffron water, garlic, ½ teaspoon salt, and a good grind of black pepper. Once smooth, fold in the barberries and the eggplant and onion mixture.",
+    "Line the base and the sides of an 8-inch/20-cm cake pan with waxed paper and brush the paper lightly with oil. Pour the egg mixture into the pan and bake for about 35 minutes, until golden brown and completely cooked. Insert a skewer into the middle of the cake to make sure the egg has set.",
+    "Remove from the oven and leave to cool down. Serve warm or at room temperature, sprinkled with parsley, if you like. The kuku will keep in the fridge for 2 days."
+  ],
+  "time": {
+    "total": 30
+  }
+}

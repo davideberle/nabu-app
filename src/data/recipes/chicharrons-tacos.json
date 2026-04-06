@@ -1,0 +1,56 @@
+{
+  "id": "chicharrons-tacos",
+  "name": "Chicharrons Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Tomatillo salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Pork chops, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Garlic powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large, heavy skillet, add the pork meat, and other spices.",
+    "Cook over low heat for forty minutes.",
+    "Transfer the chicharrons to a large saucepan, add the tomatillo salsa.",
+    "Cook on medium-high heat until the sauce is almost dried up and",
+    "coats the chicharrons.",
+    "Add cilantro on top",
+    "Remove from the heat.",
+    "Serve immediately with tortillas."
+  ],
+  "time": {
+    "total": 50
+  }
+}

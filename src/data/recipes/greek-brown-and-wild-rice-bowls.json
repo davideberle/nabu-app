@@ -1,0 +1,50 @@
+{
+  "id": "greek-brown-and-wild-rice-bowls",
+  "name": "Greek Brown and Wild Rice Bowls",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "pitted Greek olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Minced fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "package whole grain rice",
+      "amount": "1"
+    },
+    {
+      "item": "medium ripe avocado",
+      "amount": "½"
+    },
+    {
+      "item": "Greek vinaigrette",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Merge the rice mixture and 2 teaspoons of vinaigrette in a microwave-",
+    "safe dish.",
+    "Wrap and cook for about two minutes, until fully cooked.",
+    "Split into two bowls.",
+    "Cover with avocado, onions, olives, dairy, leftover seasoning, and",
+    "parsley, if necessary."
+  ],
+  "time": {
+    "total": 15
+  }
+}

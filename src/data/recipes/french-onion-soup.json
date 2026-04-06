@@ -1,0 +1,97 @@
+{
+  "id": "french-onion-soup",
+  "name": "French Onion Soup",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of beef stock",
+      "amount": ""
+    },
+    {
+      "item": "Two crushed garlic",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of dried white wine",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of Worcestershire sauce",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of grated or sliced cheese",
+      "amount": ""
+    },
+    {
+      "item": "French bread slices",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped dill",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add the oil and onions into the pan.",
+    "Cook the onions until they turn golden brown.",
+    "Add the crushed garlic into the pan.",
+    "Add the spices into the mixture.",
+    "Add the all-purpose flour, Worcestershire sauce and dried white wine.",
+    "Add the butter and then add the beef stock.",
+    "Cover the pan with a lid for five minutes.",
+    "Let the soup cook properly.",
+    "Dish out the soup into soup bowls.",
+    "Add the grated or sliced cheese on top.",
+    "Bake the soup for ten minutes.",
+    "Switch off the oven when the cheese melts.",
+    "Add the chopped fresh dill on top.",
+    "Serve the soup with toasted bread slices.",
+    "The dish is ready to be served.",
+    "Chapter 3: The Famous French Dinner Recipes",
+    "French dinner recipes are extremely healthy and loved by people everywhere",
+    "in the world. Following are some classic dinner recipes that are rich in",
+    "healthy nutrients and you can easily make them with the detailed instructions",
+    "listed in each recipe:"
+  ],
+  "time": {
+    "total": 50
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "avocado-quinoa-and-fava-bean-salad",
+  "name": "Avocado, quinoa and fava bean salad",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "A simple salad for a spring brunch. Serve it with good bread and that’s it.",
+  "ingredients": [
+    {
+      "item": "quinoa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shelled fava beans (fresh or frozen)",
+      "amount": "1 lb (3 cups)"
+    },
+    {
+      "item": "medium lemons",
+      "amount": "2"
+    },
+    {
+      "item": "small ripe avocados",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "breakfast radishes, halved lengthways",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "purple radish cress (or small purple basil leaves)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chile flakes salt and black pepper",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "Place the quinoa in a saucepan with plenty of water, bring to the boil and simmer for 9 minutes. Drain in a fine sieve, rinse under cold water and leave to dry.",
+    "Throw the fava beans into a pan of boiling water, bring back to the boil and immediately drain in a colander. Refresh with cold water and leave to dry. Then gently press each bean with your fingers to remove the skins; discard these.",
+    "Take the lemons and use a small sharp knife to slice off the top and base. Stand each one on a chopping board and cut down the sides, following the natural curve, to remove the skin and white pith. Over a large mixing bowl, cut in between the membranes to release the individual segments into the bowl. Squeeze the juice from the membrane into the bowl with the segments.",
+    "Peel and stone the avocados. Slice thinly, then add to the bowl and toss to cover in the lemon juice. Once the quinoa is dry, transfer it to the bowl. Add the fava beans, garlic, radishes, half the radish cress, the cumin, olive oil, chile flakes and some salt and pepper.",
+    "Toss very gently, without breaking the avocado. Taste and add more salt and pepper, if you wish. Plate and garnish with the remaining cress.",
+    "Breakfast is the one meal in the day when cultural boundaries aren’t easily crossed – even the most experimental and daring of eaters revert to what they know and like, which is their mom’s cooking. My friend Helen Goh, who was brought up in Malaysia, finds it excruciatingly difficult to have anything in the morning but the national breakfast grub, nasi lemak. Nothing else turns her on. My dish (pictured on page",
+    "232) is inspired by nasi lemak. I dare you to serve it for breakfast! And be warned: it is very hot.",
+    "Crisp-fried shallots are available from Asian grocers. You can also make them yourself, or substitute dried onion flakes.",
+    "Coconut rice with sambal and okra"
+  ],
+  "time": {
+    "total": 30
+  }
+}

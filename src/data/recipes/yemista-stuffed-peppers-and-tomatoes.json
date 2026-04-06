@@ -1,0 +1,86 @@
+{
+  "id": "yemista-stuffed-peppers-and-tomatoes",
+  "name": "Yemista (Stuffed Peppers and Tomatoes)",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "potatoes",
+      "amount": "4"
+    },
+    {
+      "item": "toasted breadcrumbs",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "parsley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "fresh mint",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "of garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "lean mince",
+      "amount": "½ cup"
+    },
+    {
+      "item": "medium onion",
+      "amount": "1"
+    },
+    {
+      "item": "large red peppers",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Heat the oven to 180C.",
+    "Trim the ends off between 1-2 cm from the edge of the tomatoes and",
+    "peppers.",
+    "Strip the juice from the tomatoes and peppers.",
+    "Slice the onions.",
+    "Finely cut the cloves and sauté this in a bowl with onions.",
+    "Transfer the pulp as well as the other spices and herbs from the",
+    "tomato.",
+    "Add the paste of tomatoes.",
+    "Cover the solution with the veggies and swap the tops.",
+    "With the roasted potatoes, cover the veggies.",
+    "Sprinkle with oil appropriately.",
+    "Spray with breadcrumbs and end with salt and black pepper.",
+    "Cook for 1 hour in the oven."
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "quick-and-light-greek-salad",
+  "name": "Quick and Light Greek Salad",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "crumbled feta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "black Greek olives",
+      "amount": "6"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 ½ teaspoons"
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "large ripe tomatoes",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "4 teaspoons"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "cucumbers",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Conjoin tomatoes, celery, and onions in a deep serving bowl or on a",
+    "baking tray.",
+    "Season with salt and pepper and drizzle with oil, lime juice, oregano,",
+    "and season with salt and pepper.",
+    "Toss the salad with feta cheese and artichokes. Serve the food.",
+    "Chapter 6: Greek Soups and Sides"
+  ],
+  "time": {
+    "total": 15
+  }
+}

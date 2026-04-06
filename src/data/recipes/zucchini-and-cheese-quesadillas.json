@@ -1,0 +1,64 @@
+{
+  "id": "zucchini-and-cheese-quesadillas",
+  "name": "Zucchini and Cheese Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "flour tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "zucchini",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Cotija cheese, Monterey Jack, or shredded cheddar",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "jalapeño chile, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "scallions",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 1/3 tbsp."
+    },
+    {
+      "item": "tomato salsa",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "diced avocado",
+      "amount": "1"
+    },
+    {
+      "item": "Lime wedges, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put half of the zucchini in between two tortillas. Top it with half of",
+    "the cheese.",
+    "Then add the remaining cheese and zucchini.",
+    "Sprinkle half of the scallions and chile.",
+    "Put the remaining two tortillas on top of it, and seal it gently.",
+    "Take a nonstick skillet and heat oil over the medium heat. Then brush",
+    "the pan with one teaspoon of oil.",
+    "Put one quesadilla in the pan and cook until it is golden brown.",
+    "Brush the top with one teaspoon of more oil and flip the quesadilla.",
+    "Repeat this with the second quesadilla.",
+    "Cut out quesadillas into pieces.",
+    "Add remaining scallions, avocado and chile. Then serve with",
+    "lime and salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

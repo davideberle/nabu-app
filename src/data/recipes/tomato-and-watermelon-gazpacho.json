@@ -1,0 +1,70 @@
+{
+  "id": "tomato-and-watermelon-gazpacho",
+  "name": "TOMATO AND WATERMELON GAZPACHO",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "with ½ teaspoon chile oil drizzled over each portion.",
+  "ingredients": [
+    {
+      "item": "lb/2 kg tomatoes (about 20), blanched, peeled, and coarsely chopped (10½ cups/1.9 kg)",
+      "amount": "4½"
+    },
+    {
+      "item": "garlic, coarsely chopped",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "celery stalks, white parts and leaves finely chopped (about 3 cups/450 g)",
+      "amount": "6"
+    },
+    {
+      "item": "small onion, finely chopped (1 cup/140 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cups/400 g seeded and coarsely chopped watermelon flesh",
+      "amount": "2⅔"
+    },
+    {
+      "item": "oz/100 g crustless white bread (about 4 slices), broken into small chunks",
+      "amount": "3½"
+    },
+    {
+      "item": "cup/150 ml passata (tomato purée) or tomato juice",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/15 g basil leaves",
+      "amount": "½"
+    },
+    {
+      "item": "red wine vinegar scant 1 cup/200 ml olive oil, plus extra to finish salt and black pepper coarse sea salt, to serve",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oz/150 g crustless white bread (about 5 slices), broken into ¾ to 1¼-inch/2 to 3-cm chunks",
+      "amount": "5"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red wine vinegar salt",
+      "amount": "1½ tbsp"
+    }
+  ],
+  "method": [
+    "First make the croutons. Preheat the oven to 400°F/200°C. Place the bread in a bowl along with the oil, vinegar, and ½ teaspoon salt. Place a grill pan over high heat, add the croutons, and cook for 2 minutes, turning until all sides are",
+    "slightly charred and starting to crisp. Transfer the croutons to a baking sheet and place in the oven for about 12 minutes, until golden brown and crispy. Set aside to cool.",
+    "Place the tomatoes, garlic, celery, onion, watermelon, bread, passata, and two-thirds of the basil in a blender (or large bowl, if using a handheld blender) along with ¾ teaspoon salt and a good grind of black pepper. Blend until smooth and then, with the blender still going, add the vinegar and olive oil. Refrigerate until needed.",
+    "To serve, pour the soup into individual bowls and top with the croutons.",
+    "Scatter the remaining basil leaves over each portion, along with a final drizzle of oil. Finish with a little coarse salt and serve at once."
+  ],
+  "time": {
+    "total": 30
+  }
+}

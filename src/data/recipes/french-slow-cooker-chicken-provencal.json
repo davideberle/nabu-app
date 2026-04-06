@@ -1,0 +1,88 @@
+{
+  "id": "french-slow-cooker-chicken-provencal",
+  "name": "French Slow Cooker Chicken Provencal",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "One pound of chicken thigh",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of dry white wine",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried rosemary",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chicken broth",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil and onion slices into it.",
+    "Fry the onion slices and then dish them out.",
+    "Add the garlic, chicken pieces and spices into the pan.",
+    "Cook the chicken pieces in the spices for five to ten minutes.",
+    "Add the rest of the ingredients into the mixture.",
+    "Cook the mixture until it starts boiling.",
+    "Bring the heat to low and cover the pan with a lid.",
+    "After ten minutes remove the lid.",
+    "Check the chicken pieces before dishing out.",
+    "Crumble the cooked onion slices on top before serving.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

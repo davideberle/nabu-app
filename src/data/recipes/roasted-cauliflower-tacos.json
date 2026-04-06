@@ -1,0 +1,44 @@
+{
+  "id": "roasted-cauliflower-tacos",
+  "name": "Roasted Cauliflower Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Cauliflower, two cups",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roast the cauliflower by adding the mix spice and olive oil.",
+    "Roast for ten minutes.",
+    "Add the cauliflower in the taco shells; add salsa, and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "greek-honey-cake",
+  "name": "Greek Honey Cake",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "honey",
+      "amount": "1 cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 ½ teaspoons"
+    },
+    {
+      "item": "white sugar",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "orange zest",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "butter",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees Fahrenheit.",
+    "A 9-inch square pan should be greased and floured.",
+    "Stir to combine cooking powder, salt, spice, and orange rind in a large",
+    "mixing bowl.",
+    "Softened butter and ¾ cup sugar once smooth and creamy in a wide",
+    "mixing bowl.",
+    "One at the moment beat throughout the eggs. Add the walnuts and",
+    "blend well.",
+    "Pour the batter into the pan that has been prepared.",
+    "Preheat the oven to 400°F and bake for thirty minutes.",
+    "Enable fifteen minutes for cooling before cutting into diamond",
+    "shapes.",
+    "Then use a spoon, drizzle honey syrup over the cake.",
+    "To make the honey syrup, add honey, 1 cup sugar, and liquid",
+    "to a frying pan.",
+    "Cook for five minutes on low heat.",
+    "Bring to a boil, then reduce to a simmer for two minutes."
+  ],
+  "time": {
+    "total": 60
+  }
+}

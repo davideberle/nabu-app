@@ -1,0 +1,137 @@
+{
+  "id": "garlic-beef-enchiladas",
+  "name": "Garlic Beef Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "rubbed sage",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "can stewed tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "For Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "5"
+    },
+    {
+      "item": "butter",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "of all-purpose flour",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "1"
+    },
+    {
+      "item": "can beef broth",
+      "amount": "1"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "rubbed sage",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "Monterey Jack cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "10"
+    },
+    {
+      "item": "Optional Toppings:",
+      "amount": ""
+    },
+    {
+      "item": "Fresh cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Grape tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Chopped red onion",
+      "amount": ""
+    },
+    {
+      "item": "Jalapeno peppers, sliced.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°.",
+    "Take a skillet, and cook onion and beef over the medium heat.",
+    "Add seasonings and flour.",
+    "Stir in tomatoes and bring it to boil. Lower the heat, then simmer for",
+    "15 minutes.",
+    "Heat butter in a pan over the medium heat.",
+    "Cook garlic in it for around 1 minute. Mix flour, and blend it",
+    "gradually.",
+    "Add broth, and bring it to boil. Cook for almost 2 minutes.",
+    "Add seasonings and tomato sauce.",
+    "Pour sauce into a baking dish. Place beef mixture on each tortilla.",
+    "Add cheese on top of it.",
+    "Top with some more sauce.",
+    "Bake it covered for around 30-35 minutes.",
+    "Then add the remaining cheese.",
+    "Bake it while keeping it uncovered till the point cheese is",
+    "melted, 10-15.",
+    "Serve with your favorite toppings."
+  ],
+  "time": {
+    "total": 30
+  }
+}

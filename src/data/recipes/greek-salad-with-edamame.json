@@ -1,0 +1,67 @@
+{
+  "id": "greek-salad-with-edamame",
+  "name": "Greek Salad with Edamame",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Kalamata olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "slivered red onion",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh basil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "European cucumber",
+      "amount": "½"
+    },
+    {
+      "item": "red-wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "romaine",
+      "amount": "8 cups"
+    },
+    {
+      "item": "edamame",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "ground pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "In a big mixing bowl, combine the vinegar, oil, pepper, and salt.",
+    "Toss in the iceberg lettuce, edamame, peppers, tomato, tzatziki,",
+    "spinach, artichokes, and onion."
+  ],
+  "time": {
+    "total": 20
+  }
+}

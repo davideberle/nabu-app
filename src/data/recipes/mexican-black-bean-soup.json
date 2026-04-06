@@ -1,0 +1,83 @@
+{
+  "id": "mexican-black-bean-soup",
+  "name": "Mexican Black Bean Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "diced red capsicum",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "finely chopped brown onion",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "finely chopped garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of chili flakes, dried",
+      "amount": ""
+    },
+    {
+      "item": "can of diced tomatoes",
+      "amount": "400g"
+    },
+    {
+      "item": "of vegetable stock",
+      "amount": "3 cups"
+    },
+    {
+      "item": "corn kernels, frozen",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "can o black beans",
+      "amount": "425g"
+    },
+    {
+      "item": "packet of corn chips",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1/2"
+    },
+    {
+      "item": "chopped coriander leaves",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "crumbled fetta",
+      "amount": "80g"
+    }
+  ],
+  "method": [
+    "Take a pan and heat the oil.",
+    "Put onion and capsicum in a pan. Cook for 5 minutes, and stir",
+    "constantly.",
+    "Put cumin, garlic, and chili in it.",
+    "Then add tomatoes, stock, beans, and corn. Bring it to simmer. Then",
+    "lower the heat.",
+    "Add lime juice, and season it with pepper and salt.",
+    "Sprinkle corn chips, avocado, coriander, and fetta."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "id": "grilled-eggplant-pita-pizzas",
+  "name": "Grilled Eggplant Pita Pizzas",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "red pepper flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "basil leaves",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh mozzarella cheese",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "pitted ripe olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "whole pita breads",
+      "amount": "4"
+    },
+    {
+      "item": "large tomato",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "small eggplants",
+      "amount": "2"
+    },
+    {
+      "item": "medium onion",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "12"
+    },
+    {
+      "item": "large sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Split the ¾-inch pieces of eggplant.",
+    "Position it over a sheet in a saucepan; season with salt and flip.",
+    "Enable thirty minutes to stand.",
+    "In the meantime, in a cup, toss 1 tablespoon of oil with red pepper,",
+    "garlic, and onion.",
+    "Shift to a griddle or clear grill basket for grilling; put on the grill rack.",
+    "Barbecue, exposed, 8-12 minutes over a moderate flame or until",
+    "veggies are finely charred and crunchy, stirring regularly.",
+    "Rinse the eggplants and drain them; dry them with towels.",
+    "Rub one tablespoon of oil with the eggplants; spray with pepper.",
+    "Grill, sealed, 4-5 minutes on either side until it is soft, over a",
+    "moderate fire.",
+    "Break into quarters for each piece.",
+    "Brush the pita bread on both edges with the remaining butter.",
+    "Grill, sealed, for two minutes over medium-high heat or until",
+    "the bottoms are finely browned. Retract from the fire.",
+    "Layer the grilled pitas with grilled peppers, onions, olives, and",
+    "cheese.",
+    "Sprinkle with pepper seasoning if necessary.",
+    "Return to the grill; cook three minutes, covered, or until the",
+    "cheese is melted.",
+    "Toss basil with that too.",
+    "Chapter 5: Vegetarian Greek Recipes"
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "greek-salad-skewers",
+  "name": "Greek Salad Skewers",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes",
+      "amount": "12"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "12"
+    },
+    {
+      "item": "big block of feta",
+      "amount": "1"
+    },
+    {
+      "item": "parsley",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Flaky sea salt",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "dill",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "To make the feta marinade, mix the feta, olive oil, lime juice, cloves,",
+    "dill, and parsley in a small cup.",
+    "Season with salt, then mix in the sauce until the cheese is fully",
+    "wrapped.",
+    "Enable for fifteen minutes of resting time.",
+    "Pour feta, olives, grape tomatoes, and cucumber onto large forks to",
+    "make skewers."
+  ],
+  "time": {
+    "total": 25
+  }
+}

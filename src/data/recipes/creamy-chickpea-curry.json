@@ -1,0 +1,59 @@
+{
+  "id": "creamy-chickpea-curry",
+  "name": "Creamy Chickpea Curry",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "oil",
+      "amount": "½ tbsp."
+    },
+    {
+      "item": "medium onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "ginger, finely chopped",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "curry paste",
+      "amount": "3 tsp."
+    },
+    {
+      "item": "cans (30 oz.) chickpeas, drained",
+      "amount": "2"
+    },
+    {
+      "item": "can (14.5 oz.) chopped tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "can (15 oz.) coconut milk",
+      "amount": "1"
+    },
+    {
+      "item": "Rice and chopped fresh coriander to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat and oil the pan, add the onions, garlic, ginger, and fry for 4 to 5",
+    "minutes.",
+    "Then add the chopped tomatoes, chickpeas, and coconut milk. Stir well and",
+    "bring to a boil, then reduce the heat and simmer for 15 minutes.",
+    "Serve with rice and chopped coriander.",
+    "Recipe 12: Creamy Turmeric Veggie Curry",
+    "Turmeric is very good for the health. Thai cuisine also incorporates"
+  ],
+  "time": {
+    "total": 20
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": "greek-chicken-and-potatoes",
+  "name": "Greek Chicken and Potatoes",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "For Chicken and Potatoes",
+      "amount": ""
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "12"
+    },
+    {
+      "item": "Fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "black pepper",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "lemon",
+      "amount": "1"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "gold potatoes",
+      "amount": "4"
+    },
+    {
+      "item": "medium yellow onion",
+      "amount": "1"
+    },
+    {
+      "item": "chicken pieces",
+      "amount": "3 lb."
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "For the Lemon-Garlic Sauce",
+      "amount": ""
+    },
+    {
+      "item": "dried rosemary",
+      "amount": "1 ½ tablespoon"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh garlic cloves",
+      "amount": "12"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Sides",
+      "amount": ""
+    },
+    {
+      "item": "Tzatziki Sauce",
+      "amount": ""
+    },
+    {
+      "item": "Pita Bread",
+      "amount": ""
+    },
+    {
+      "item": "Greek Salad",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oven to 350°F.",
+    "Pat clean chicken and carefully sprinkle with salt.",
+    "Organize the top of a baking dish or plate with fried potatoes and",
+    "vegetables.",
+    "Dress with one teaspoon of salt and black pepper. Insert bits of",
+    "chicken.",
+    "Take a sauce consisting of lemon-garlic. Stir ¼ cup of olive oil with",
+    "lime juice, garlic powder, thyme, and nutmeg together in such a small",
+    "mixing dish.",
+    "Over the chicken and potatoes, mix equally.",
+    "On edge, arrange the lemon wedges. Load the chicken stock from one",
+    "hand into the saucepan.",
+    "Fry up for 45 minutes to one hour in an exposed warm oven, until",
+    "meat and vegetables are tender.",
+    "Turn off the heat and substitute, if you prefer, Kalamata olives.",
+    "Add a little bit of clean parsley to the garnish.",
+    "Present with Taztaziki salad and a piece of flatbread, if you",
+    "choose."
+  ],
+  "time": {
+    "total": 45
+  }
+}

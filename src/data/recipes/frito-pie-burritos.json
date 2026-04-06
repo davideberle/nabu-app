@@ -1,0 +1,80 @@
+{
+  "id": "frito-pie-burritos",
+  "name": "Frito Pie Burritos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Burritos:",
+      "amount": ""
+    },
+    {
+      "item": "of chili con carne",
+      "amount": "1 cup"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "of Fritos",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of refried beans",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "of corn kernels",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of cheddar cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "For Toppings:",
+      "amount": ""
+    },
+    {
+      "item": "of minced red onions",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of fresh diced tomatoes",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of chopped cilantro",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "of shredded lettuce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Lime wedges",
+      "amount": ""
+    },
+    {
+      "item": "sliced jalapeno",
+      "amount": "1"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1/4 cup"
+    }
+  ],
+  "method": [
+    "Fill tortillas with corn, chili, Fritos, cheese, and refried beans.",
+    "Heat a skillet over the medium heat; grease with pan spray.",
+    "Cook each side of burritos for about 3 minutes until it is golden",
+    "brown.",
+    "Serve with toppings."
+  ],
+  "time": {
+    "total": 30
+  }
+}

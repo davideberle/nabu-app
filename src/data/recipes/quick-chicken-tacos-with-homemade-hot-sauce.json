@@ -1,0 +1,68 @@
+{
+  "id": "quick-chicken-tacos-with-homemade-hot-sauce",
+  "name": "Quick Chicken Tacos with Homemade Hot Sauce",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chicken breast, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Tomato sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Vinegar, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Worcestershire sauce, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Mustard paste, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili sauce, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sugar, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the tomato sauce, sugar, vinegar, Worcestershire, mustard and",
+    "chili in a saucepan over medium heat.",
+    "Bring to a simmer and cook for a few minutes until the sugar is",
+    "dissolved and sauce is sticky.",
+    "Cook the chicken, and then slice it up.",
+    "Now add the filling in the taco shells, add the sauce and rest of the",
+    "toppings.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

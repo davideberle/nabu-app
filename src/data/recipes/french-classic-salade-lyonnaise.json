@@ -1,0 +1,62 @@
+{
+  "id": "french-classic-salade-lyonnaise",
+  "name": "French Classic Salade Lyonnaise",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One pound of cooked pancetta chunks",
+      "amount": ""
+    },
+    {
+      "item": "Four cups of mixed greens",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two garlic cloves",
+      "amount": ""
+    },
+    {
+      "item": "One cup of red onion",
+      "amount": ""
+    },
+    {
+      "item": "Four boiled eggs",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of vinegar",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the wet ingredients into the bowl.",
+    "Mix well.",
+    "Add the rest of the ingredients into the bowl.",
+    "Mix well to get a homogenized mixture.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

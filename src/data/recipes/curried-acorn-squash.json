@@ -1,0 +1,37 @@
+{
+  "id": "curried-acorn-squash",
+  "name": "Curried Acorn Squash",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "acorn squash, wedges",
+      "amount": "1"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "curry powder or garam masala",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp."
+    }
+  ],
+  "method": [
+    "Preheat the water bath to 185°F. Combine squash, butter, spice mix, and salt",
+    "in a bag.",
+    "Seal and place in water bath. Cook 1 ½ to 2 hours.",
+    "Recipe 14: Curried Celery",
+    "Curried celery takes a short time to prepare. It is a crucial choice during"
+  ],
+  "time": {
+    "total": 120
+  }
+}

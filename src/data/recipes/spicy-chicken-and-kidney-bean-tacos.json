@@ -1,0 +1,57 @@
+{
+  "id": "spicy-chicken-and-kidney-bean-tacos",
+  "name": "Spicy Chicken and Kidney Bean Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Kidney beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Chicken breast, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, four tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    },
+    {
+      "item": "Chicken stock, half cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken and red beans in the chicken stock.",
+    "Add the mix spice into it and olive oil.",
+    "Heat the taco shells; add the chicken and red bean mixture into it.",
+    "Top with sour cream, salsa, and cilantro.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

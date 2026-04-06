@@ -1,0 +1,56 @@
+{
+  "id": "greek-breakfast-bagel",
+  "name": "Greek Breakfast Bagel",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "baby spinach",
+      "amount": "½ cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Plain Bagel",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "8"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "Freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "Pinch each salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Beat the eggs, spice, and peppers together; set them aside.",
+    "Heat the olive oil over medium-high heat in a frying pan; fry the",
+    "vegetables for about four minutes, or begin to soften.",
+    "Insert spinach; fry for around two minutes until it is wilted",
+    "moderately.",
+    "Put in beaten egg; fry for three or four minutes or until soft curds",
+    "begin to develop from the egg mixture.",
+    "Mix in cheese from the feta. Spoon over the halves of bagels."
+  ],
+  "time": {
+    "total": 5
+  }
+}

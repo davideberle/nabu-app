@@ -1,0 +1,56 @@
+{
+  "id": "grilled-cumin-lime-chicken",
+  "name": "Grilled Cumin Lime Chicken",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "limes",
+      "amount": "3-4"
+    },
+    {
+      "item": "chicken breasts",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "black pepper",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "7 tbsp."
+    },
+    {
+      "item": "salt",
+      "amount": "2-3 tbsp."
+    }
+  ],
+  "method": [
+    "Cut the chicken breast horizontally.",
+    "Put all chicken breast slices in a bowl. Add salt and put some water",
+    "over chicken. Refrigerate it overnight for better taste.",
+    "Take it out and then pat dry it. Add lime juice and olive oil to it.",
+    "Marinate the chicken and refrigerate it for another 3-7 hours.",
+    "Mix the ground pepper, cumin, and kosher salt in a bowl. Rub this",
+    "mixture on the chicken.",
+    "Grill the chicken from each side.",
+    "Serve with chimichurri sauce and salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

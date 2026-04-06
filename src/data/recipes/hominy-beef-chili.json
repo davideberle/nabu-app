@@ -1,0 +1,82 @@
+{
+  "id": "hominy-beef-chili",
+  "name": "Hominy Beef Chili",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "beef chuck",
+      "amount": "1"
+    },
+    {
+      "item": "of canola oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "can hominy",
+      "amount": "1"
+    },
+    {
+      "item": "can diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "can beef broth",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "can green chiles, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of frozen corn",
+      "amount": "1 1/2 cups"
+    }
+  ],
+  "method": [
+    "Take a skillet and heat the oil in a pan over the medium heat.",
+    "Add beef in it.",
+    "Stir in broth, hominy, red pepper, tomatoes, onion, garlic, chiles, and",
+    "seasonings.",
+    "Cover it and cook for almost 6-7 hours on low heat.",
+    "Mix corn and cook.",
+    "Serve with sour cream and cheese, and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

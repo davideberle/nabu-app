@@ -1,0 +1,66 @@
+{
+  "id": "mexican-style-stuffed-peppers",
+  "name": "Mexican-Style Stuffed Peppers",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "lean beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "red or green bell peppers",
+      "amount": "4"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "of chili powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "minced cloves garlic",
+      "amount": "3"
+    },
+    {
+      "item": "cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "can divided enchilada sauce",
+      "amount": "1"
+    },
+    {
+      "item": "can tomatoes diced with peppers",
+      "amount": "1"
+    },
+    {
+      "item": "of cheddar cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "rice, cooked",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375",
+    ". Cut bell peppers into half. Put it in a baking",
+    "Fry garlic, beef, and onion in a skillet. Pour in cumin, chili powder,",
+    "diced tomatoes, and 2/3 cup enchilada sauce. Then let it simmer for 2-",
+    "3 minutes.",
+    "Turn down the heat and add cooked rice in it.",
+    "Put beef mixture into the pepper. Add remaining cheese and enchilada",
+    "sauce.",
+    "Bake while keeping uncovered till the point peppers and cheese is",
+    "cooked. It might take around 30 minutes.",
+    "Put some taco toppings on it and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

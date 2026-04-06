@@ -1,0 +1,50 @@
+{
+  "id": "french-beignets",
+  "name": "French Beignets",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "Four eggs",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "Icing sugar, one cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Mix all the ingredients except the icing sugar in a large bowl.",
+    "Form semi-thick dough from the mixture.",
+    "Heat a pan full of oil.",
+    "Add spoonful size of the batter into the oil.",
+    "Fry the beignets.",
+    "Dish out the beignets when they turn golden brown.",
+    "Cool down the beignets.",
+    "Add the icing sugar all over the beignets.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

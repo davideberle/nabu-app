@@ -1,0 +1,144 @@
+{
+  "id": "greek-inspired-snack-board",
+  "name": "Greek-inspired Snack Board",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 20",
+  "ingredients": [
+    {
+      "item": "Dip",
+      "amount": ""
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "dill weed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "cream cheese",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Greek seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Snack Board",
+      "amount": ""
+    },
+    {
+      "item": "blackberries",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "chickpeas",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "pepperoni",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "can roasted almonds",
+      "amount": "1"
+    },
+    {
+      "item": "jar pickled cauliflower",
+      "amount": "1"
+    },
+    {
+      "item": "package pita chips",
+      "amount": "1"
+    },
+    {
+      "item": "salami",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "can artichoke hearts",
+      "amount": "1"
+    },
+    {
+      "item": "English cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "box wheat crackers",
+      "amount": "1"
+    },
+    {
+      "item": "jar pickled okra",
+      "amount": "1"
+    },
+    {
+      "item": "baby carrots",
+      "amount": "20"
+    },
+    {
+      "item": "red bell peppers",
+      "amount": "2"
+    },
+    {
+      "item": "container hummus",
+      "amount": "1"
+    },
+    {
+      "item": "jar Kalamata olives",
+      "amount": "1"
+    },
+    {
+      "item": "basket cherry tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "red grapes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Cheddar cheese",
+      "amount": "14 ounces"
+    }
+  ],
+  "method": [
+    "In a mixing bowl, mix feta cheese, cream cheese, yogurt, lime juice,",
+    "Greek spice, garlic, tarragon, and garlic powder.",
+    "Blend until fully smooth.",
+    "Serve in a bowl of red pepper flakes on top.",
+    "In small separate two bowls, put pickled cabbage, black olives,",
+    "marinated okra, hummus, and onions.",
+    "On a broad cutting board or platter, arrange the bowls.",
+    "Fill the bowls halfway with Cream cheese, onions, oranges, broccoli,",
+    "celery, bell peppers, tortilla chips, crackers, pepperoni, salami,",
+    "almonds, blueberries, and chickpeas.",
+    "Refrigerate extra materials in sealed containers so you can restock the",
+    "board as required."
+  ],
+  "time": {
+    "total": 40
+  }
+}

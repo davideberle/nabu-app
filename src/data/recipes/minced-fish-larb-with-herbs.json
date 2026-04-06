@@ -1,0 +1,53 @@
+{
+  "id": "minced-fish-larb-with-herbs",
+  "name": "Minced Fish Larb with Herbs",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "This one is inspired by the larb I had at Raan Larb Pa Tan in Chiang Mai.",
+  "ingredients": [
+    {
+      "item": "101",
+      "amount": ""
+    },
+    {
+      "item": "big dried chilies",
+      "amount": "7"
+    },
+    {
+      "item": "small Thai shallots, peeled (if using regular shallots reduce to",
+      "amount": "4–7"
+    },
+    {
+      "item": "small)",
+      "amount": "2–4"
+    },
+    {
+      "item": "Thai garlic, peeled ( if using regular garlic, use 1 small head)",
+      "amount": "2 heads"
+    },
+    {
+      "item": "Thai anchovies (pla rah), regular anchovies if Thai anchovies is not available",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "dried grilled fi sh, fl esh only, already pounded (Thais use roasted snakehead fi sh or catfi sh fl esh)",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Roast the shallots and garlic until very aromatic and slightly charred. Set aside to cool.",
+    "Wrap the anchovies in nam wah banana leaves or aluminum foil and roast until fragrant.",
+    "In a mortar and pestle, pound the dried chilies with the salt until well ground. Add the shallots and garlic and pound well to incorpo- rate.",
+    "Add the anchovies and dried fi sh and pound until everything is well mixed together. Decant into a bowl and serve with the suggested accompaniments."
+  ],
+  "time": {
+    "total": 30
+  }
+}

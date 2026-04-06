@@ -2,96 +2,108 @@
   "id": "drunken-noodles",
   "name": "Drunken Noodles",
   "source": {
-    "cookbook": "The Best Pasta Recipes",
-    "author": "Jaydon Mack"
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
   },
-  "servings": "serves 6",
+  "servings": "serves 4",
+  "intro": "without it. Less important but still nice to have: holy basil leaves, and shavings of wild ginger.",
   "ingredients": [
     {
-      "item": "rice vinegar",
-      "amount": "¼ cup"
-    },
-    {
-      "item": "fish sauce",
-      "amount": "2 tbsp."
-    },
-    {
-      "item": "Juice of half a lemon",
+      "item": "51",
       "amount": ""
     },
     {
-      "item": "brown sugar",
-      "amount": "1 tbsp."
+      "item": "pad Thai or similar dried, thin rice noodles",
+      "amount": "8 oz (226 g)"
     },
     {
-      "item": "sriracha sauce",
-      "amount": "1 tbsp."
+      "item": "large shrimp or protein of your choice (can be a mix)",
+      "amount": "12 oz (340 g)"
     },
     {
-      "item": "chopped chicken meat",
-      "amount": "¾ cup"
+      "item": "vegetable oil",
+      "amount": "2 tablespoons"
     },
     {
-      "item": "wide rice noodles – cooked according to package instructions",
-      "amount": "16 oz."
-    },
-    {
-      "item": "canola oil",
-      "amount": "¼ cup"
-    },
-    {
-      "item": "minced garlic cloves",
+      "item": "large eggs, lightly beaten",
       "amount": "4"
     },
     {
-      "item": "small, diced onion",
+      "item": "green onions (scallions), thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "tamarind pulp",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "hot water",
+      "amount": "¼ cup (65 ml)"
+    },
+    {
+      "item": "Sriracha Chili",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "shaved palm sugar or loosely packed brown sugar, to taste",
+      "amount": "3–4 tablespoons"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 teaspoon"
+    },
+    {
+      "item": "garlic, coarsely chopped",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "pickled garlic cloves (store- bought), coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "pickled garlic brine, from the jar",
+      "amount": "½ cup (120 ml)"
+    },
+    {
+      "item": "dried bird’s eye chiles, stems removed, to taste",
+      "amount": "1–3"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups (470 ml)"
+    },
+    {
+      "item": "roasted peanuts",
+      "amount": "½ cup (125g)"
+    },
+    {
+      "item": "bean sprouts, blanched",
+      "amount": "2 cups (255 g)"
+    },
+    {
+      "item": "lime (cut into wedges)",
       "amount": "1"
-    },
-    {
-      "item": "oyster sauce",
-      "amount": "½ cup"
-    },
-    {
-      "item": "soy sauce",
-      "amount": "2 tbsp."
-    },
-    {
-      "item": "peeled and grated carrots",
-      "amount": "3"
-    },
-    {
-      "item": "diced tomato",
-      "amount": "1"
-    },
-    {
-      "item": "sliced mushrooms",
-      "amount": "1 cup"
-    },
-    {
-      "item": "baby corn",
-      "amount": "½"
-    },
-    {
-      "item": "chopped scallions",
-      "amount": "3 tbsp."
-    },
-    {
-      "item": "chopped cilantro",
-      "amount": "1 cup"
     }
   ],
   "method": [
-    "Combine the rice vinegar, fish sauce, lemon juice, brown sugar, and sriracha sauce in a bowl.",
-    "Add the chicken and coat well.",
-    "Marinade the chicken for 1 hour.",
-    "Heat the canola oil in a skillet",
-    "Sauté the garlic and onion for 5 minutes.",
-    "Add the chicken with the marinade and stir well.",
-    "Simmer for 10 minutes.",
-    "Stir in the remaining ingredients and keep stirring for 5 minutes."
+    "To make the Pad Thai Sauce: Put the tamarind pulp and hot water in a ramekin or small dish and set aside for 5 minutes. Squish the softened pulp between your fi ngers and discard any hard seeds, if nec- essary. Put the tamarind pulp and water, Sriracha Chili Sauce, palm or brown sugar, fi sh sauce, vinegar, chopped fresh and pickled garlic, pickled garlic brine and bird’s eye chilies in a blender and puree until smooth.",
+    "Transfer the tamarind mixture to a medium saucepan, add the water. Bring to a low boil, and cook the sauce until thickened and reduced by about a third, stir- ring often, about 15 minutes. You should have about 2 cups of sauce.",
+    "Put the dried rice noodles in a large bowl and cover with luke- warm water (make sure the noo- dles are completely submerged).",
+    "Soak the noodles until softened, about 30 minutes, then strain. Pre- pare your protein. If using shrimp, devein and remove the shells.",
+    "Heat a large wok or stainless steel sauté pan with tall sides over medium-high heat until very hot.",
+    "Add the oil, let it heat up for a few seconds, then add the shrimp/pro- tein of your choice and eggs and stir a few times to evenly distribute the eggs. Add the rice noodles and about a quarter of the Pad",
+    "Thai Sauce and cook, stirring con- stantly, until the noodles soak up the sauce, about 30 seconds. If you are using a sauté pan, use tongs to gently help lift up the noodles and re-distribute them in the sauce, being careful to keep them in the pan. Continue adding the sauce, about a quarter at a time, until the noodles are al dente, 3 to 4 min- utes. If the noodles are still fi rm, add 2 tablespoons of water and stir until they are softened.",
+    "Add the green onions, toss the noodles one more time, and trans- fer the pad thai to serving bowls.",
+    "Sprinkle the chili powder and peanuts on top of each serving and divide the blanched bean sprouts among the bowls. Serve with lime wedges.",
+    "Tip Tamarind pulp is pure dried tamarind (unlik e tama- rind paste, which t ypically contains sweeteners). Thai pickled garlic is cured in a slightly sweet, vinegar-based brine. It is not the same as",
+    "European style oil-packed pickled garlic.",
+    "This is probably the most well-known of Thailand’s dishes. Although you may have your own favorite version of pad Thai, this one is fairly “authentic,” by which I mean that it will be the most likely version that you would fi nd in Thailand. This also means you won’t fi nd any soy sauce in the sauce."
   ],
-  "image": "/recipes/drunken-noodles.jpg",
   "time": {
-    "total": 20
+    "total": 30
   }
 }

@@ -1,0 +1,56 @@
+{
+  "id": "greek-layer-dip",
+  "name": "Greek Layer Dip",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "parsley",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Pita chips, broccoli, bell peppers, carrots",
+      "amount": ""
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "seeded cucumber",
+      "amount": "½ cup"
+    },
+    {
+      "item": "container hummus",
+      "amount": "1"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Place the hummus on the base of an 8x8-inch round roasting pan, a",
+    "deep pie dish, or a specific glass baking dish in a smooth coat.",
+    "Spoonful the Greek yogurt over the top with a tiny spoonful, then",
+    "sprinkle lightly to make a fresh coat.",
+    "Spread the top of onions, cucumbers, feta, and olives.",
+    "Use clean parsley to scatter.",
+    "Put it in the fridge until prepared to eat, then mix as needed with",
+    "crackers, pita chips, and diced vegetables."
+  ],
+  "time": {
+    "total": 20
+  }
+}

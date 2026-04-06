@@ -1,0 +1,44 @@
+{
+  "id": "fried-lacey-eggs-with-thai-style-dressing",
+  "name": "Fried Lacey Eggs with Thai-style Dressing",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "That is because the oil they are cooking in is very hot. The sauce is a typical",
+  "ingredients": [
+    {
+      "item": "75",
+      "amount": ""
+    },
+    {
+      "item": "unscented cooking oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "green leafy vegetables (even lettuce works), washed well",
+      "amount": "1 lb (500 g)"
+    },
+    {
+      "item": "small cloves garlic, peeled and chopped",
+      "amount": "5–6"
+    },
+    {
+      "item": "fermented brown bean sauce (tao jiew)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "white pepper",
+      "amount": "2 teaspoons"
+    }
+  ],
+  "method": [
+    "If you don’t want to use oil in your stir-fried greens, you can use this method I learned from Pani- sha Chan of the “Thai Plant Based",
+    "Recipes” group on Facebook.",
+    "Ready your brown bean sauce on the side. In a hot non-stick pan, put some water or stock to cover the bottom. Once it starts boiling, add the garlic, and then the sauce that you set on the side. Once they all start boiling again, add the vegetables and stir until the veg- etables wilt. Turn off the stove and serve immediately on a plate."
+  ],
+  "time": {
+    "total": 30
+  }
+}

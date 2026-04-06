@@ -1,0 +1,45 @@
+{
+  "id": "chicken-and-avocado-taco-with-creamy-cilantro-sauce",
+  "name": "Chicken and Avocado Taco with Creamy Cilantro Sauce",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chicken breast, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro sauce, four tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken breast and then slice it up.",
+    "Now heat the taco shells and add chicken, avocado slices and creamy",
+    "cilantro sauce on top.",
+    "Add cilantro in the end.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "yogurt-and-kaffir-lime-leaf-spread",
+  "name": "YOGURT AND KAFFIR LIME LEAF SPREAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "or some sweet chutney on the side.",
+  "ingredients": [
+    {
+      "item": "small zucchini, grated (1⅓ cups/150 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, grated (5 oz/150 g)",
+      "amount": "½"
+    },
+    {
+      "item": "large fresh Kaffir lime leaves, or 12 dried, coarsely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "cups/250 g Greek yogurt",
+      "amount": "1¼"
+    },
+    {
+      "item": "tsp/20 g unsalted butter",
+      "amount": "4"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "shredded mint leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic, crushed salt",
+      "amount": "1 clove"
+    }
+  ],
+  "method": [
+    "Mix the zucchini and cucumber in a colander with ½ teaspoon salt. Leave to drain for about 20 minutes and then squeeze with your hands to remove as much liquid as you can. Transfer to a large bowl.",
+    "Process the lime leaves in a spice grinder to a fine powder (you can also chop them finely with a knife or crush with a pestle and mortar) and add most of it to the zucchini and cucumber, along with the yogurt.",
+    "Melt the butter in a small saucepan over medium heat and cook for 3 to 4 minutes, until it turns light brown and smells a little nutty. Add most of the butter to the dip along with all the remaining ingredients, mix well, and",
+    "spread on a plate. Drizzle over the reserved butter, sprinkle with the reserved lime leaves, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "id": "steak-burrito",
+  "name": "Steak Burrito",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of ground cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "of skirt steak",
+      "amount": "1/2 pound"
+    },
+    {
+      "item": "minced cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "limes, juiced",
+      "amount": "2"
+    },
+    {
+      "item": "can of black beans",
+      "amount": "1"
+    },
+    {
+      "item": "kosher salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, finely diced",
+      "amount": "3"
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "of red onion, minced",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "diced avocado",
+      "amount": "1"
+    },
+    {
+      "item": "of chopped cilantro",
+      "amount": "5 tbsp."
+    },
+    {
+      "item": "of rice, cooked",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of romaine lettuce, thinly sliced",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    },
+    {
+      "item": "tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "Cheddar cheese, shredded",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl, and add steak with garlic clove, cumin, lime juice, and",
+    "olive oil.",
+    "Take a skillet, and heat oil over the medium heat.",
+    "Put remaining garlic and cook for 1 minute.",
+    "Put black beans in it and cook for 4-5 minutes.",
+    "Add pepper and salt and mix lime juice.",
+    "Take a bowl, and stir tomatoes, cilantro, red onion, lime juice, and",
+    "olive oil, avocado, pepper, and salt.",
+    "Heat the grill pan over the high heat.",
+    "Add steak, pepper, and salt; cook for 2-3 minutes.",
+    "In a bowl, mix rice, cilantro, pepper, and salt.",
+    "Brush a skillet with olive oil.",
+    "Put tortillas in it, and crisp each side for 30 seconds.",
+    "On each tortilla, put rice, beans, pico de gallo, avocado, steak",
+    "slices, lettuce, cheese, and sour cream.",
+    "Roll the tortilla. Put burritos back to the skillet, and cook for",
+    "30 seconds.",
+    "Cut in half and serve.",
+    "Chicken and Avocado Burritos",
+    "Instructions",
+    "1 package of taco seasoning",
+    "1 pound chicken",
+    "1 tbsp. olive oil",
+    "2 avocados, diced",
+    "4 flour tortillas",
+    "1/4 cup of cilantro leaves, chopped",
+    "1 cup mozzarella cheese, shredded",
+    "1/4 cup of Ranch dressing",
+    "1/4 cup of sour cream",
+    "Instructions",
+    "Take a skillet and heat oil over the medium heat.",
+    "Add taco seasoning to chicken.",
+    "Cook chicken in the skillet until golden for around 3-4 minutes, then",
+    "set it aside.",
+    "Warm the tortillas.",
+    "Take a tortilla and place chicken, cheese, avocado, sour cream,",
+    "cilantro, and Ranch. Fold it, and continue this process with all",
+    "tortillas.",
+    "Take a pan, and heat it over the medium heat.",
+    "Put burritos in it; cook each side for around 3 to 4 minutes until it is",
+    "golden brown.",
+    "Serve immediately.",
+    "3 Quesadillas Recipes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

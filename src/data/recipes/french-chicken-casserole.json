@@ -1,0 +1,79 @@
+{
+  "id": "french-chicken-casserole",
+  "name": "French Chicken Casserole",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One tablespoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chicken pieces",
+      "amount": ""
+    },
+    {
+      "item": "One cup of French cheese",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of dried white wine",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "one cup of crème fraiche",
+      "amount": ""
+    },
+    {
+      "item": "one teaspoon of herb powder",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of chopped garlic",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a pan.",
+    "Add in the oil and onions.",
+    "Cook the onions until they become soft and fragrant.",
+    "Add the spices.",
+    "Mix the ingredients carefully and cover the pan.",
+    "Mix the chicken and dry white wine into the mixture.",
+    "Cook the chicken well.",
+    "Switch off the stove.",
+    "Add the rest of the ingredients into it when the mixture cools down.",
+    "Pour the casserole mixture in a baking dish.",
+    "Sprinkle the shredded French cheese on top.",
+    "Bake the casserole for twenty minutes.",
+    "Dish out the casserole when done.",
+    "Sprinkle the cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

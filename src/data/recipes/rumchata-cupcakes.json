@@ -1,0 +1,73 @@
+{
+  "id": "rumchata-cupcakes",
+  "name": "Rumchata Cupcakes",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Cupcakes:",
+      "amount": ""
+    },
+    {
+      "item": "of Rumchata",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "box of vanilla cake mix",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "For Frosting:",
+      "amount": ""
+    },
+    {
+      "item": "of butter",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of powdered sugar",
+      "amount": "4 cups"
+    },
+    {
+      "item": "of Rumchata",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "of cinnamon",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of vanilla extract",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of kosher salt",
+      "amount": "1 pinch"
+    }
+  ],
+  "method": [
+    "Put the cupcake wrappers on the cupcake pan, and preheat the oven to",
+    "350 C.",
+    "Mix ingredients until smooth.",
+    "Put batter into the liners, and bake for 25 minutes. Make sure the",
+    "toothpick comes out clean. When ready, let it cool.",
+    "Mix 2 cups of powdered sugar with other ingredients. Mix well until",
+    "creamy.",
+    "Add powdered sugar in it, and beat until fluffy and light.",
+    "Pour Rumchata frosting on the cupcakes.",
+    "Garnish with cinnamon sticks and cinnamon, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

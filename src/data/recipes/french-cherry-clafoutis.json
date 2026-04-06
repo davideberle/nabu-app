@@ -1,0 +1,73 @@
+{
+  "id": "french-cherry-clafoutis",
+  "name": "French Cherry Clafoutis",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of milk",
+      "amount": ""
+    },
+    {
+      "item": "AA teaspoon of cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of lemon extract",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of almond extract",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "A cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A cup of pitted cherries",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a medium bowl.",
+    "Add the melted butter in it.",
+    "Add the heavy cream and cinnamon into it.",
+    "Add flour and mix well.",
+    "Add the milk and salt as required.",
+    "Add the sugar and salt as needed.",
+    "Mix them well.",
+    "Add the eggs, cherries, lemon extract and almond extract together.",
+    "Stir it for few minutes.",
+    "Add the material on baking sheet.",
+    "Bake the material for twenty minutes until they become slightly",
+    "brown.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

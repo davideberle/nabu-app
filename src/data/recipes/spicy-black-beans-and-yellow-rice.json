@@ -1,0 +1,87 @@
+{
+  "id": "spicy-black-beans-and-yellow-rice",
+  "name": "Spicy Black Beans and Yellow Rice",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Beans",
+      "amount": ""
+    },
+    {
+      "item": "finely minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "small white onion",
+      "amount": "1"
+    },
+    {
+      "item": "black beans, cooked",
+      "amount": "3 cups"
+    },
+    {
+      "item": "jalapeno, minced",
+      "amount": "1"
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "2 1/2 cups"
+    },
+    {
+      "item": "cumin powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "bell pepper, red",
+      "amount": "1/2"
+    },
+    {
+      "item": "For Rice",
+      "amount": ""
+    },
+    {
+      "item": "turmeric",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "coriander",
+      "amount": "1/4 tsp."
+    }
+  ],
+  "method": [
+    "In a pot, heat olive oil, garlic cloves, and jalapeño pepper on low heat.",
+    "Then add chili powder, beans, 1/2 cup of stock, cumin, and cook for",
+    "25-35 minutes. In the end, add bell pepper and salt.",
+    "Add garlic cloves in the remaining olive oil",
+    "and heat them. Pour the remaining stock, bring it to boil. Add rice,",
+    "reduce the heat, and cook for almost 15-20 minutes.",
+    "When rice is cooked, add spices.",
+    "Arrange black beans and rice on a serving platter."
+  ],
+  "time": {
+    "total": 30
+  }
+}

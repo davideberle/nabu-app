@@ -1,0 +1,70 @@
+{
+  "id": "french-cruller-donuts",
+  "name": "French Cruller Donuts",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "Eight eggs",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of sugar",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of sour cream",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of baking soda",
+      "amount": ""
+    },
+    {
+      "item": "For icing:",
+      "amount": ""
+    },
+    {
+      "item": "Melted chocolate ganache, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Icing sugar, one cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Mix all the ingredients well in a large bowl.",
+    "Form semi-thick dough from the mixture.",
+    "Heat a pan full of oil.",
+    "Make a cruller donut like structure.",
+    "Fry the donuts.",
+    "Cool down the donuts.",
+    "Add the icing sugar all over the donuts.",
+    "Add the chocolate ganache in between the donuts through a pipping",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

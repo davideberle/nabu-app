@@ -1,0 +1,93 @@
+{
+  "id": "gang-gradang-cold-pork-jelly",
+  "name": "Gang Gradang Cold Pork Jelly",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "complicated Chiang Rai version, which includes a spice paste.",
+  "ingredients": [
+    {
+      "item": "95",
+      "amount": ""
+    },
+    {
+      "item": "feet (7 meters) sausage casing or",
+      "amount": "20"
+    },
+    {
+      "item": "individual sausage casings",
+      "amount": "20"
+    },
+    {
+      "item": "ground pork",
+      "amount": "2 lbs (approx 1 kg)"
+    },
+    {
+      "item": "ground pork fat",
+      "amount": "2 lbs (approx 1 kg)"
+    },
+    {
+      "item": "shallots, minced",
+      "amount": "5"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "kaffi r lime leaves, fi nely sliced",
+      "amount": "8–10"
+    },
+    {
+      "item": "fi nely sliced or grated lemongrass, tender inner part of bottom third only",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coriander leaves (cilantro)",
+      "amount": "1 cup (50 g)"
+    },
+    {
+      "item": "peeled and minced fresh turmeric (careful, it will stain your hands yellow)",
+      "amount": "¼ cup (32 g)"
+    },
+    {
+      "item": "chopped sawtooth coriander (optional)",
+      "amount": "½ cup (30 g)"
+    },
+    {
+      "item": "dried chilies, soaked and minced (or more if prefer spicier)",
+      "amount": "¼ cup (32 g)"
+    },
+    {
+      "item": "pre-mix Southern",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "Thai orange curry paste, mixed with 4 tablespoons pre-mix yellow curry paste (store-bought is fi ne)",
+      "amount": ""
+    },
+    {
+      "item": "salt, to taste",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fi sh sauce, to taste",
+      "amount": "3–4 tablespoons"
+    }
+  ],
+  "method": [
+    "Rinse the sausage casings and then soak in warm water for an hour.",
+    "Mix all the ingredients, except the sausage casings, together. Taste the sausage mix by frying a little of it in a pan with a little vegetable oil; adjust seasoning if necessary.",
+    "Stuff the sausage casings either by hand or with a sausage stuffi ng machine, twisting the ends to seal.",
+    "It should make about 20 sausages.",
+    "To cook the sausages, prick each link with a fork and bake in the oven at 400°F (200°C). Bake until the sausages turn a burnished brown, the color of mahogany, approx 45 minutes to 1 hour.",
+    "Sausages may also be grilled.",
+    "Serve with Sticky Rice and a chili dip, ideally Nam Prik Num Roasted",
+    "Green Chili Dip (page 93) and some fresh vegetables."
+  ],
+  "time": {
+    "total": 30
+  }
+}

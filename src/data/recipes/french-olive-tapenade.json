@@ -1,0 +1,50 @@
+{
+  "id": "french-olive-tapenade",
+  "name": "French Olive Tapenade",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One and a half cup of anchovies",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped capers",
+      "amount": ""
+    },
+    {
+      "item": "Half cup black olives",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a blender.",
+    "Add all the ingredients into the blender.",
+    "Blend all the ingredients.",
+    "Dish out when blended properly.",
+    "Serve it with bread slices.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

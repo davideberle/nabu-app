@@ -1,0 +1,61 @@
+{
+  "id": "socca",
+  "name": "Socca",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "chickpea flour, water and olive oil. He was generous enough to give me the recipe.",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "2 cups"
+    },
+    {
+      "item": "olive oil, plus more for drizzling",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "white onions, cut into thin rings",
+      "amount": "¾ lbs"
+    },
+    {
+      "item": "thyme leaves salt and black pepper",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chickpea flour",
+      "amount": "¾ cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "egg whites crème fraîche to serve",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 275°F. Spread the tomatoes cut-side up on a small baking pan and sprinkle them with some salt and pepper and a drizzle of oil. Roast for 25 minutes, or until semi-cooked.",
+    "They are not supposed to dry out completely.",
+    "Meanwhile, heat up 4 tablespoons olive oil in a large frying pan.",
+    "Add the onions, thyme and some salt and pepper and cook on high heat, stirring, for about a minute. Reduce the heat to low and continue cooking for 20 minutes, stirring occasionally. You want the onions completely soft, sweet and golden brown, but not very dark. At the end, stir in the vinegar, then taste and adjust the seasoning.",
+    "When you take the tomatoes out of the oven, increase the temperature to 325°F.",
+    "Put the chickpea flour, water, 1",
+    "½ tablespoons olive oil, ¾ teaspoon salt and some pepper in a bowl. Mix well with a hand whisk until the batter is totally homogenous. In a separate bowl whisk the egg whites to soft peaks and gently fold into the batter.",
+    "Line two baking sheets with parchment paper and brush the paper with a little bit of oil; set on the side. Then take a small nonstick frying pan, roughly 6 inches diameter at its base, and brush it with the smallest amount of olive oil. Put on high heat for a couple of minutes, then reduce heat to medium–high and pour in one-quarter of the socca batter. It should be about scant",
+    "¼ inch thick. After about 2 minutes air bubbles will appear on the surface and the pancake will have set on its base. Use an offset spatula to release its edges from the pan, then carefully lift and turn it over. Cook for another minute. Transfer to the lined baking sheet. Repeat with the rest of the batter. When all the pancakes have been made, place in the oven for 5 minutes.",
+    "To serve, spread the onion over the pancakes; they should be totally covered. Arrange tomato halves on top. Place in the oven to warm up for about 4 minutes. Serve warm, with crème fraîche on the side.",
+    "A simple salad for a spring brunch. Serve it with good bread and that’s it.",
+    "Avocado, quinoa and fava bean salad"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "french-tart-fillete",
+  "name": "French Tart fillete",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped bacon",
+      "amount": ""
+    },
+    {
+      "item": "Three garlic cloves",
+      "amount": ""
+    },
+    {
+      "item": "Three diced shallots",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of potatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of crème fraiche",
+      "amount": ""
+    },
+    {
+      "item": "One cup of shredded cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a saucepan.",
+    "Add the olive oil in it.",
+    "Add the shallots, garlic, bay leaf and red pepper flakes in it.",
+    "Cook it until mixture becomes fragrant.",
+    "Add the potatoes and bacon in the cooking mixture.",
+    "Add the lemon juice, crème fraiche, kosher salt and black pepper into",
+    "the cooking mixture.",
+    "Add the cooking mixture into a baking dish.",
+    "Add the cheese on top of the mixture.",
+    "Bake the dish for twenty minutes.",
+    "Garnish the dish with fresh chopped parsley.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

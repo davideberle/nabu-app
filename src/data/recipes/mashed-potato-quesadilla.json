@@ -1,0 +1,56 @@
+{
+  "id": "mashed-potato-quesadilla",
+  "name": "Mashed Potato Quesadilla",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of bacon, cooked and crumbled",
+      "amount": "6 slices"
+    },
+    {
+      "item": "of mashed potatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "of green onions, sliced",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "of Cheddar cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "8"
+    },
+    {
+      "item": "of salsa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of softened butter",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Mix mashed potatoes, green onions, and bacon.",
+    "Put this mixture on the tortillas.",
+    "Add shredded cheese on the top and put remaining tortillas on the top.",
+    "Put butter on each side of quesadillas.",
+    "Heat a skillet over the medium heat.",
+    "Put quesadilla in the pan; cook each side until it is crispy and golden",
+    "brown.",
+    "Repeat this process with all quesadillas, then serve with sour cream",
+    "and salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

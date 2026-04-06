@@ -1,0 +1,61 @@
+{
+  "id": "perfect-roast-beef",
+  "name": "PERFECT ROAST BEEF",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Y. pounds beef top round",
+      "amount": "3"
+    },
+    {
+      "item": "medium onions",
+      "amount": "2"
+    },
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "celery stalks",
+      "amount": "2"
+    },
+    {
+      "item": "I bulb of garlic",
+      "amount": ""
+    },
+    {
+      "item": "475°F · There's no need to peel the vegetables -just give them a wash and roughly chop t hem. Break",
+      "amount": ""
+    },
+    {
+      "item": "pepper, r ubbing it all over the meat. Place the beef on top o f the vegetables",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the roasting pan in the preheated oven. Turn the heat down immediate ly to 400°F and cook for I",
+    "hour for medium beef. If you prefer it medium-rare, take it out 5 to 10 minutes earlier. For well done,",
+    "leave it in for a nother IOta 15 minutes. If you're doing roasted potatoes and veggies, this is the time to",
+    "crack on with them (see page 202) -get them into the oven for the last 45 minutes of cooking . Baste",
+    "halfway through cooking and if the vegetables look dry, add a sp lash of water to th e pan to stop",
+    "them burning . When the beef is cooked to your liking, take the pan out of t he oven and transfer t he",
+    "beef to a board to rest for 15 minutes or so • Cover it with a layer o f aluminum foil and a kitchen towel",
+    "and put aside while you make your gravy (see page 205), horseradish sauce (see page 210), and Yorkshire",
+    "puddings (see page 209)",
+    "To carve your beef",
+    "Remove th e string from the meat. Use a good, long, sharp knife to carve the meat and a fork (preferably",
+    "ing fork) to hold it steady. Serve w ith your piping hot gravy, your horseradish sauce, roasted",
+    "veggies, and Yorkshire puddings",
+    "PERFECT ROAST PORK",
+    "Your pork loin will come in one of two ways, either on or off the bone. Either way it's fi ne, but if it's on",
+    "the bone you'll have to cook it for an extra 20 minutes.You'll need a box cutter knife to score the fat (or",
+    "ask your butche r to do t his for you)."
+  ],
+  "time": {
+    "total": 30
+  }
+}

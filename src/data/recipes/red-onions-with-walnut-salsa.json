@@ -1,0 +1,61 @@
+{
+  "id": "red-onions-with-walnut-salsa",
+  "name": "RED ONIONS WITH WALNUT SALSA",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "or at room temperature, with a spoonful of sauce on top, scattered with the",
+  "ingredients": [
+    {
+      "item": "medium red onions (1⅓ lb/600 g)",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cup/20 g arugula",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g small flat-leaf parsley leaves",
+      "amount": "½"
+    },
+    {
+      "item": "oz/60 g soft goat cheese, broken into ¾-inch/2-cm chunks salt and black pepper",
+      "amount": "2"
+    },
+    {
+      "item": "cup/65 g walnuts, coarsely chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil salt",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "While the onions are cooking, put all of the salsa ingredients in a small bowl, add ¼ teaspoon salt, stir, and set aside.",
+    "To serve, put the arugula and parsley in a large bowl. Add the warm onions, the cheese, and half the salsa and toss carefully so the onions don’t fall apart.",
+    "Divide among shallow plates, spoon the remaining salsa over the top, and serve.",
+    "CAULIFLOWER, GRAPE, AND CHEDDAR"
+  ],
+  "time": {
+    "total": 30
+  }
+}

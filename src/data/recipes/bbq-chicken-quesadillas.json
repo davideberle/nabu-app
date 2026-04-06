@@ -1,0 +1,48 @@
+{
+  "id": "bbq-chicken-quesadillas",
+  "name": "BBQ Chicken Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of cooked chicken breast",
+      "amount": "3 cups"
+    },
+    {
+      "item": "of rice, cooked",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "can of kidney or red beans",
+      "amount": "1"
+    },
+    {
+      "item": "Cheddar cheese, shredded",
+      "amount": "3 cups"
+    },
+    {
+      "item": "of barbecue sauce",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tortillas",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Take a pan and heat beans and chicken with the BBQ sauce.",
+    "Add cooked rice, the bean and chicken mixture.",
+    "Put more sauce if you like.",
+    "To assemble the quesadillas, sprinkle cheddar cheese.",
+    "Then add cheese on chicken mixture. Use additional cheese if you",
+    "On each quesadilla, place another tortilla, and set aside.",
+    "Take a pan and toast quesadillas over the medium heat, then cook",
+    "them until they are brown.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

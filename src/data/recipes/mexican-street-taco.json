@@ -1,0 +1,60 @@
+{
+  "id": "mexican-street-taco",
+  "name": "Mexican Street Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Canola oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili powder, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Soy sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Dried oregano, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Beef steak, one and a half pounds",
+      "amount": ""
+    },
+    {
+      "item": "Minced garlic, three",
+      "amount": ""
+    },
+    {
+      "item": "Onion, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Ground cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, twelve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add all the spices and oil on the steak.",
+    "Grill the steak and then cut into slices.",
+    "Lightly fry the tortilla bread and line the steak slices.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

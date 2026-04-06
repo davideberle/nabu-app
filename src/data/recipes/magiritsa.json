@@ -1,0 +1,81 @@
+{
+  "id": "magiritsa",
+  "name": "Magiritsa",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "For the Magiritsa",
+      "amount": ""
+    },
+    {
+      "item": "a cup olive oil",
+      "amount": "½"
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "fresh dill",
+      "amount": "5 tablespoon"
+    },
+    {
+      "item": "rice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lamb offal",
+      "amount": "1kg"
+    },
+    {
+      "item": "spring onions",
+      "amount": "5–6"
+    },
+    {
+      "item": "medium romaine lettuce",
+      "amount": "3"
+    },
+    {
+      "item": "large red onion",
+      "amount": "1"
+    },
+    {
+      "item": "Intestines from 1 lamb",
+      "amount": ""
+    },
+    {
+      "item": "For the Egg Lemon Sauce",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Wash and clean the organs completely before preparing this ancient",
+    "Greece magiritsa dish.",
+    "Carry the organs as well as plenty of water on the stove in a big pot.",
+    "Caramelize the organs for five minutes in boiling water. Add the",
+    "intestines and continue to blanch for another five minutes.",
+    "Heat the oil, minced veggies, and meat in a large saucepan over",
+    "medium heat.",
+    "Put the pan on and add the finely chopped lettuce, pressing it down to",
+    "match.",
+    "In a separate cup, whisk the egg whites with a hand mixer until they",
+    "are foamy and heavy.",
+    "Slowly pour the yolk combination into the egg whites when stirring.",
+    "While the magiritsa is still soft, ladle it into cups."
+  ],
+  "time": {
+    "total": 70
+  }
+}

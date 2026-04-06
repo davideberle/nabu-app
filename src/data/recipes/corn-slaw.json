@@ -1,0 +1,72 @@
+{
+  "id": "corn-slaw",
+  "name": "CORN SLAW",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "Allow to cool for 5 minutes before serving with a final drizzle of oil.",
+  "ingredients": [
+    {
+      "item": "tbsp/100 ml white wine vinegar",
+      "amount": "7"
+    },
+    {
+      "item": "white cabbage, shredded (4¼ cups/300 g)",
+      "amount": "¼ head"
+    },
+    {
+      "item": "small carrots, peeled and cut into fine strips (1½ cups/175 g)",
+      "amount": "3"
+    },
+    {
+      "item": "medium red onion, thinly sliced (scant 1½ cups/140 g)",
+      "amount": "1"
+    },
+    {
+      "item": "ears corn, husks removed (1⅓ lb/600 g), then lightly brushed with olive oil",
+      "amount": "4"
+    },
+    {
+      "item": "red chiles, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "cups/20 g cilantro leaves",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/20 g mint leaves olive oil salt and black pepper",
+      "amount": "⅔"
+    },
+    {
+      "item": "tbsp/50 g mayonnaise",
+      "amount": "3½"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    }
+  ],
+  "method": [
+    "Place the vinegar and a scant 1 cup/200 ml water in a small saucepan along with 1 tablespoon salt. Bring to a boil and then remove from the heat. Place the cabbage and carrots in a bowl and pour in two-thirds of the salty liquid. In a separate bowl, pour the remaining liquid over the onion and set both bowls aside for 20 minutes. Rinse the vegetables and onion well, pat dry, place together in a large bowl, and set aside.",
+    "Place a ridged grill pan over high heat, and when it starts to smoke, lay the corn on it. Grill for 10 to 12 minutes, turning so that all sides get some color (this will create quite a lot of smoke, so put the exhaust fan on, if you have one). Remove from the heat and, when cool enough to handle, use a large knife to shave off the corn in clumps and add to the salad bowl.",
+    "Whisk together all the dressing ingredients, pour over the salad, and stir gently. Add the chile, cilantro, and mint, along with a grind of black pepper, give everything another gentle stir, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

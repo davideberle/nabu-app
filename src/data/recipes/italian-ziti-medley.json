@@ -1,0 +1,75 @@
+{
+  "id": "italian-ziti-medley",
+  "name": "Italian Ziti Medley",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "ziti",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "sliced Italian sausage",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "butter or margarine",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green bell pepper strips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "flour",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "low fat milk",
+      "amount": "2 1/4 cups"
+    },
+    {
+      "item": "Cheddar cheese, shredded, divided",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Parmesan cheese, grated",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook ziti according to package directions; drain",
+    "In Dutch oven, brown sausage. Remove meat with slotted spoon and discard grease from pan. Set aside.",
+    "In the same pan, sauté bell peppers, mushrooms and onion in butter until soft; whisk in flour and slowly incorporate",
+    "milk. Continue stirring until mixture thickens. Add Parmesan cheese and 1 1/2 cups Cheddar cheese; stir until",
+    "melted and smooth.",
+    "Stir ziti and sausage into vegetable-cheese mixture. Place in baking dish and top with remaining Cheddar cheese.",
+    "Bake at 350 degrees F. for 30 minutes.",
+    "(31) Pasta with Chicken and Broccoli Pesto",
+    "Pasta with chicken and broccoli pesto because it is so filling, healthy, delicious, and easy. This meal is also really",
+    "good, made with turkey bacon and cream cheese instead of regular bacon.",
+    "Yield:"
+  ],
+  "time": {
+    "total": 60
+  }
+}

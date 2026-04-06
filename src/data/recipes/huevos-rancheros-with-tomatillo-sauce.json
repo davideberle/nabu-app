@@ -1,0 +1,79 @@
+{
+  "id": "huevos-rancheros-with-tomatillo-sauce",
+  "name": "Huevos Rancheros with Tomatillo Sauce",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped onion",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "tomatillos, cut in half",
+      "amount": "5"
+    },
+    {
+      "item": "serrano pepper",
+      "amount": "1"
+    },
+    {
+      "item": "chicken bouillon granules",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "can Southwestern black beans",
+      "amount": "1"
+    },
+    {
+      "item": "Manchego cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "8"
+    },
+    {
+      "item": "tostada shells",
+      "amount": "8"
+    },
+    {
+      "item": "sour cream",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "For Topping:",
+      "amount": ""
+    },
+    {
+      "item": "Sliced avocado",
+      "amount": ""
+    },
+    {
+      "item": "Chopped tomato",
+      "amount": ""
+    },
+    {
+      "item": "Minced cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Finely chopped onion, the tomatillos, garlic, pepper, and bouillon,",
+    "and set aside.",
+    "Take a saucepan, and cook the beans on low heat.",
+    "Break eggs into a skillet. Cover it and cook the eggs on low heat",
+    "Add cheese.",
+    "While serving, put beans over the tostada shells.",
+    "Put toppings of sour cream, tomatillo sauce, and eggs.",
+    "Garnish with avocado, tomato, and cilantro."
+  ],
+  "time": {
+    "total": 30
+  }
+}

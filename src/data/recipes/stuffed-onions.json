@@ -1,97 +1,90 @@
 {
   "id": "stuffed-onions",
-  "name": "Stuffed Onions",
+  "name": "Stuffed onions",
   "source": {
-    "cookbook": "Jerusalem",
-    "author": "Yotam Ottolenghi & Sami Tamimi",
-    "chapter": "Stuffed Vegetables"
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4makes about 16 stuffed onions",
-  "tips": "As a result of the long cooking and the sharp sweetness of the pomegranate molasses, these onions have a surprisingly deep, yet fresh flavor. Serve them at the start of a meat-centered meal, or alongside a selection of small vegetable dishes, such as Charred okra with tomato, garlic, and preserved lemon or Fried cauliflower with tahini. Consider a variation based on a Syrian Jewish dish: stuff the onions with ground beef flavored with cinnamon and allspice and braise in a sauce made with water, tamarind, lemon juice, sugar, and a little oil.",
+  "servings": "serves 4",
+  "intro": "desperately urge you not to waste the flavored stock and onion cores; cook them together to make a",
   "ingredients": [
     {
-      "item": "large onions (2 lb / 900 g in total, peeled weight) about 1⅔ cups / 400 ml vegetable stock",
+      "item": "vegetable stock",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "white wine",
+      "amount": "½ cups"
+    },
+    {
+      "item": "large onions",
       "amount": "4"
     },
     {
-      "item": "pomegranate molasses",
-      "amount": "1½ tbsp"
+      "item": "small tomatoes",
+      "amount": "3"
     },
     {
-      "item": "salt and freshly ground black pepper",
+      "item": "feta, crumbled",
+      "amount": "¼ oz"
+    },
+    {
+      "item": "³ cups parsley leaves (loosely packed), finely chopped",
       "amount": ""
     },
     {
-      "item": "olive oil",
-      "amount": "1½ tbsp"
+      "item": "olive oil, plus extra to finish",
+      "amount": "3 tbsp"
     },
     {
-      "item": "finely chopped shallots",
-      "amount": "1 cup / 150 g"
+      "item": "garlic cloves, crushed",
+      "amount": "2"
     },
     {
-      "item": "short-grain rice",
-      "amount": "½ cup / 100 g"
+      "item": "green onions, thinly sliced",
+      "amount": "3"
     },
     {
-      "item": "pine nuts, crushed",
-      "amount": "¼ cup / 35 g"
-    },
-    {
-      "item": "chopped fresh mint",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "chopped flat-leaf parsley",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "dried mint",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "ground cumin",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "ground clove",
-      "amount": "⅛ tsp"
-    },
-    {
-      "item": "ground allspice",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "salt",
+      "item": "salt black pepper",
       "amount": "¾ tsp"
-    },
-    {
-      "item": "freshly ground black pepper",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "lemon wedges (optional)",
-      "amount": "4"
     }
   ],
   "method": [
-    "Peel and cut about ¼ inch / 0.5 cm off the tops and tails of the onions, place the trimmed onions in a large saucepan with plenty of water, bring to a boil, and cook for 15 minutes. Drain and set aside to cool down.",
-    "To prepare the stuffing, heat the olive oil in a medium frying pan over medium-high heat and add the shallots. Sauté for 8 minutes, stirring often, then add all the remaining ingredients except the lemon wedges. Turn the heat to low and continue to cook and stir for 10 minutes.",
-    "Using a small knife, make a long cut from the top of the onion to the bottom, running all the way to its center, so that each layer of onion has only one slit running through it. Start gently separating the onion layers, one after another, until you reach the core. Don’t worry if some of the layers tear a little through the peeling; you can still use them.",
-    "Hold a layer of onion in one cupped hand and spoon about 1 tablespoon of the rice mixture into one-half of the onion, placing the filling near to one end of the opening. Don’t be tempted to fill it up more, as it needs to be wrapped up nice and snug. Fold the empty side of the onion over the stuffed side and roll it up tightly so the rice is covered with a few layers of onion with no air in the middle. Place in a medium frying pan for which you have a lid, seam side down, and continue with the remaining onions and rice mixture. Lay the onions side by side in the pan, so that there is no space to move about. Fill any spaces with parts of the onion that have not been stuffed. Add enough stock so that the onions are three-quarters covered, along with the pomegranate molasses, and season with ¼ teaspoon salt.",
-    "Cover the pan and cook on the lowest possible simmer for 1½ to 2 hours, until the liquid has evaporated. Serve warm or at room temperature, with lemon wedges if you like."
-  ],
-  "image": null,
-  "dietary": [
-    "vegan",
-    "vegetarian"
+    "Preheat the oven to 350°F. Have ready a small buttered ovenproof dish.",
+    "Place the stock and white wine in a medium saucepan and bring to the boil. Meanwhile, trim",
+    "¼ inch off the top and bottom of the onions. Cut them lengthways in half and remove the brown skin.",
+    "Gently remove most of the insides (keep these for another use), retaining two or three of the outer layers. Carefully separate the outer layers from each other and place them in the simmering stock, a few at a time. Cook for 3 to 4 minutes, or until just tender.",
+    "Drain well and cool slightly. Keep the stock.",
+    "Use a coarse cheese grater to grate the tomatoes (you’ll be left with most of the skin in your hand; discard it). Place the grated tomato in a large bowl and add the breadcrumbs, feta, parsley, olive oil, garlic, green onions, salt and some pepper.",
+    "Fill each onion layer generously with stuffing. Pull the sides together so you end up with a fat cigar shape. Place the stuffed onions, seam-side down, in the buttered dish and pour over about",
+    "³ cup of the reserved stock, just to cover the bottom of the dish.",
+    "Bake for 45 to 50 minutes, or until the onions are soft and lightly colored and the stuffing is bubbling; add more stock if they dry completely before the end of the cooking process. Drizzle with oil and serve warm.",
+    "42 | Funny Onions",
+    "The sharp and sweet pickled red peppers used here are the sort of thing you can always keep in the fridge, ready to add to salads, roasted vegetables or salsas for fish.",
+    "Serves 4 as a starter",
+    "1 red bell pepper",
+    "½ tbsp cider vinegar",
+    "10 pink peppercorns",
+    "½ tsp coriander seeds",
+    "3 cardamom pods, crushed salt",
+    "¾ cup crème fraîche",
+    "½ tbsp chopped capers",
+    "2 green onions, sliced thinly at an angle, plus extra to garnish",
+    "1 tbsp lemon juice",
+    "½ tbsp olive oil white pepper",
+    "³ cup sunflower oil",
+    "Clean the pepper and cut it into",
+    "¼-inch-thick strips. Place in a small saucepan and add the sugar, water, vinegar, peppercorns, coriander seeds, cardamom and some salt. Bring to the boil, then simmer for about 20 minutes, or until the pepper is cooked. Set aside to cool down.",
+    "Meanwhile, remove and discard the hard green leaves from the leeks and cut them into roughly 1-inch-long segments. Cook in boiling salted water for 15 minutes, or until semi-soft. Drain and let dry.",
+    "While you wait for the vegetables, stir together the crème fraîche, capers, green onions, lemon juice, olive oil and some salt and pepper. Taste and adjust the seasoning.",
+    "Heat up the sunflower oil in a medium saucepan. Place the panko and egg in two small separate plates and season with salt. Take the cooked leeks and roll them first in the egg and then in panko to coat all over. Fry them in the hot oil for about",
+    "30 seconds on each side; do this in a few batches so you don’t crowd them in the pan. Once they are nice and golden, transfer the leeks to paper towels.",
+    "Serve about five chunks of hot leeks per portion, topped with a good dollop of the crème fraîche sauce. Lift the strips of red pepper out of the pan, shake away most of the syrup and place them over the leeks (the coriander seeds and peppercorns are fine too). Garnish with green onion and serve at once.",
+    "44 | Funny Onions",
+    "You will definitely surprise yourself with this one. It is an extremely delicious dish that’s quick and straight- forward to make, but looks as if it’s been prepared at a top Chinese restaurant. It is fiery, both from the chiles and the black pepper; you can moderate this by reducing their quantity a little. However, the whole point is spiciness so don’t go too far.",
+    "Black pepper tofu"
   ],
   "time": {
-    "total": 153
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
+    "total": 30
   }
 }

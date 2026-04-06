@@ -1,0 +1,99 @@
+{
+  "id": "chipotle-chicken-meatball-tacos",
+  "name": "Chipotle Chicken Meatball Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "of white bread",
+      "amount": "2 slices"
+    },
+    {
+      "item": "finely chopped white onion",
+      "amount": "1"
+    },
+    {
+      "item": "fresh cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "of ground chicken",
+      "amount": "3/4 pound"
+    },
+    {
+      "item": "Kosher salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Ground pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "chipotle chile pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "jalapeno pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "can of diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "Taco shells, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put egg and bread in a bowl.",
+    "Add water and then mash them.",
+    "Add garlic and onion, then put cilantro, chicken, pepper, and salt. Mix",
+    "it well.",
+    "Brush a baking sheet with olive oil.",
+    "Make meatballs from the mixture and place on baking sheet, then pun",
+    "in the refrigerator for around 15 minutes.",
+    "Preheat oven to 475",
+    "Mix the remaining garlic and onion, jalapeno, chipotle, thyme,",
+    "tomatoes, and cinnamon, and blend until smooth.",
+    "In the oven, heat olive oil over the medium heat.",
+    "Add tomato puree, and add bay leaves; cook until sauce thickens.",
+    "Add 1 1/2 cups of water.",
+    "Lower the heat and simmer; stir occasionally.",
+    "Add salt.",
+    "Bake meatballs until brown for 8 minutes.",
+    "Put it in the sauce and simmer.",
+    "Spoon sauce over meatballs, until they are thoroughly cooked",
+    "Remove bay leaves, and cut meatballs into halves.",
+    "Serve in tacos with toppings."
+  ],
+  "time": {
+    "total": 30
+  }
+}

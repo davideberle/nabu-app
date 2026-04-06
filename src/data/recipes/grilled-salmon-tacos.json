@@ -1,0 +1,53 @@
+{
+  "id": "grilled-salmon-tacos",
+  "name": "Grilled Salmon Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chopped red onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Salmon filet one pound",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, five tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chopped coriander, a bunch",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil, salt, pepper, and taco seasoning on the salmon filet.",
+    "Grill the filet for ten minutes and then slice it up.",
+    "Heat the taco shells and start filling it with salmon filet slices, red",
+    "onions, avocado slices and coriander on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

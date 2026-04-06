@@ -1,0 +1,51 @@
+{
+  "id": "greek-almond-syrup-pastries",
+  "name": "Greek Almond Syrup Pastries",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Eight ounces of almond syrup",
+      "amount": ""
+    },
+    {
+      "item": "A pack of phyllo sheets",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of dried nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped nuts (of your choice)",
+      "amount": ""
+    },
+    {
+      "item": "A cup of honey thyme",
+      "amount": ""
+    },
+    {
+      "item": "Seven ounces of butter",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the butter into it and beat well.",
+    "Add the nuts and almond syrup into the butter bowl.",
+    "Mix the ingredients well.",
+    "Spread the phyllo sheets in a greased baking tray.",
+    "Add the nut mixture into the phyllo sheets and cover it with more",
+    "phyllo sheets.",
+    "Bake the pastry for about forty minutes.",
+    "Dish out the pastry.",
+    "Drizzle the honey thyme on top of the pie.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

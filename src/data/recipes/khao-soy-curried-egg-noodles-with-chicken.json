@@ -1,0 +1,66 @@
+{
+  "id": "khao-soy-curried-egg-noodles-with-chicken",
+  "name": "Khao Soy Curried Egg Noodles with Chicken",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "on menus all over the globe. Serve this when you need a pick-me-up (or even when you don’t!).",
+  "ingredients": [
+    {
+      "item": "61",
+      "amount": ""
+    },
+    {
+      "item": "63",
+      "amount": ""
+    },
+    {
+      "item": "sashimi- grade salmon, hamachi, scallops, or lightly poached shrimp, lobster, crab legs or surimi",
+      "amount": "1 lb (approx 500 g)"
+    },
+    {
+      "item": "bird’s eye chilies, fi nely sliced",
+      "amount": "5–10"
+    },
+    {
+      "item": "chopped Thai garlic or 1 teaspoon if using regular garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped coriander (cilantro) root",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "lime juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "small bitter melon, sliced and blanched",
+      "amount": "1"
+    },
+    {
+      "item": "Thai garlic, peeled, cloves fi nely sliced. If using regular garlic, use less and add to taste",
+      "amount": "1 head"
+    },
+    {
+      "item": "mint leaves, shredded",
+      "amount": "1 handful"
+    }
+  ],
+  "method": [
+    "If you cannot fi nd ready-sliced fi sh, you slice it against the grain in half-inch-wide pieces or, if using lobster tail, slice it cross-wise (make sure your knife is very sharp)."
+  ],
+  "time": {
+    "total": 30
+  }
+}

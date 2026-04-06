@@ -1,0 +1,96 @@
+{
+  "id": "fried-greek-pastry-with-honey-and-nuts",
+  "name": "Fried Greek Pastry with Honey and Nuts",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "honey",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Two 1-inch orange zest",
+      "amount": ""
+    },
+    {
+      "item": "One 3-inch cinnamon stick",
+      "amount": ""
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "Pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "1 ½ cups"
+    },
+    {
+      "item": "Vegetable oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Ground cinnamon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take the honey, milk, butter, lime zest, bay leaf, and lime juice to a",
+    "boil in a medium skillet.",
+    "In a medium mixing cup, whisk together the eggs, vegetable oil, and",
+    "salt with a rolling pin.",
+    "Stir in the flour until you have a stiff, bushy dough.",
+    "Create 4-inch squares out of the string. Repeat with the rest of the",
+    "dough.",
+    "Warm 2 inches of peanut oil to 360° in a big saucepan.",
+    "Bake 3 minutes over medium fire, rotating once, until golden brown.",
+    "Heat the sugar syrup again.",
+    "Transfer a few baked goods at a time to the honey syrup and switch to",
+    "cover with tongs.",
+    "Move to a big mixing bowl and toss with chopped nuts and spices.",
+    "Repeat the process till all the pastries have been coated.",
+    "Conclusion",
+    "Greek cuisine is famed for its complex flavors, but it is also recognized as",
+    "one of the world's healthful foods. The use of spices and herbs to produce",
+    "globally famous dishes has been refined by Greek cuisine through time.",
+    "Spices and herbs offer different advantages. A few common options include",
+    "allspice, which can help improve the immune function and alleviate pain;",
+    "antioxidant-rich oregano; and basil, an aid against stomach aches and",
+    "inflammatory. In Greek cooking, pasta and bread are popular, rendering",
+    "wheat a significant aspect of the food. Wheat, particularly whole grains,",
+    "provides main nutrients like zinc, protein nutrients, B vitamins, and even",
+    "fiber. Its crucial value is that three rules are based on the Greek meal:",
+    "Balance, Moderation, and Variety. Greek food has these three basic",
+    "principles, and thus it is rich in health benefits. If you are thinking of",
+    "introducing Greek food into your daily life, go for it and try your best with"
+  ],
+  "time": {
+    "total": 60
+  }
+}

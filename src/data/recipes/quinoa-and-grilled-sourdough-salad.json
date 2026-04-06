@@ -1,0 +1,71 @@
+{
+  "id": "quinoa-and-grilled-sourdough-salad",
+  "name": "Quinoa and grilled sourdough salad",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the prepared salad to sit a little so the bread croutons can soften up – unless you want them mega-crunchy.",
+  "ingredients": [
+    {
+      "item": "quinoa",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sourdough bread",
+      "amount": "4 slices"
+    },
+    {
+      "item": "ripe medium tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "small cucumbers, unpeeled",
+      "amount": "3"
+    },
+    {
+      "item": "small red onion, very thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chopped mint",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¾ tbsp"
+    },
+    {
+      "item": "small garlic cloves, crushed black pepper",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Place the quinoa in a saucepan of boiling water and cook for 9 minutes, or until tender. Drain in a fine sieve, rinse under cold water and leave to dry.",
+    "Brush the bread with a little bit of olive oil and sprinkle with some salt. Lay the slices on a baking sheet and bake for about",
+    "10 minutes, turning them over halfway through. The bread should be completely dry and crisp. Remove from the oven and allow to cool down, then break by hand into different-sized pieces.",
+    "Cut the tomatoes into roughly",
+    "¾-inch dice and put in a mixing bowl. Cut the cucumbers into similar-size pieces and add to the tomatoes. Add all the remaining ingredients, including the quinoa and croutons, and stir gently until everything is mixed well together. Taste and adjust the seasoning.",
+    "130 | To m at o e s",
+    "Straightforward comfort food at my dad’s home was simply cooked semolina with butter and Parmesan.",
+    "I was looking for a soup containing semolina when I came across a recipe by the famous Israeli chef, Rafi",
+    "Cohen, whose Moroccan grandmother made a semolina-based soup (as did my Italian grandmother). Here’s my variation on his theme.",
+    "Tomato, semolina and cilantro soup"
+  ],
+  "time": {
+    "total": 30
+  }
+}

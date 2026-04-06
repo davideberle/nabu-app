@@ -1,0 +1,66 @@
+{
+  "id": "fettuccine-with-gorgonzola",
+  "name": "Fettuccine with Gorgonzola",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "fresh spinach",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "heavy cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Gorgonzola cheese, grated",
+      "amount": "3 oz."
+    },
+    {
+      "item": "butter",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "vodka",
+      "amount": "1 oz."
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "reduced fat ricotta cheese, grated",
+      "amount": "1/4 lb."
+    },
+    {
+      "item": "fettuccine",
+      "amount": "1 lb."
+    },
+    {
+      "item": "shredded Parmesan cheese",
+      "amount": "3 oz."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash spinach and shake to remove excess water. Cook spinach in the water clinging to the leaves; drain and chop.",
+    "In a saucepan, bring cream to a simmer. Add Gorgonzola cheese, butter and vodka. Blend; add salt and pepper to",
+    "taste. Add spinach and ricotta; simmer and stir until blended.",
+    "Cook noodles according to package directions; drain. Pour sauce over noodles and toss to coat. Sprinkle with",
+    "Parmesan cheese and toss again. Serve immediately.",
+    "(22) Linguine Carbonara",
+    "This is a simple yet mouth-watering Italian recipe that can be made by anyone. Have the kids help make it while",
+    "you take care of the sauce or do it all in one go with ease, giving the kids a break to play at some point. This simple",
+    "yet flavorful dish requires just three main ingredients: linguine, eggs, and bacon.",
+    "Yield:"
+  ],
+  "time": {
+    "total": 35
+  }
+}

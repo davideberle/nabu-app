@@ -1,0 +1,53 @@
+{
+  "id": "spring-roast-chicken-with-preserved-lemon",
+  "name": "Spring roast chicken with preserved lemon",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "hours in advance if you like, and then just place in the oven when ready to cook.",
+  "ingredients": [
+    {
+      "item": "tbsp/70g unsalted butter, at room temperature",
+      "amount": "5"
+    },
+    {
+      "item": "thyme leaves",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "small preserved lemon, seeds discarded,  esh and skin roughly chopped (2½ tbsp)",
+      "amount": "½"
+    },
+    {
+      "item": "lemon:  nely zest to get 1 tsp, then juice to get 1½ tbsp salt and black pepper",
+      "amount": "1"
+    },
+    {
+      "item": "whole chicken (3⅓ lb/1.5kg)",
+      "amount": "1"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the butter, thyme, garlic, preserved lemon, lemon zest, ¼ tsp salt, and a generous grind of pepper in a food processor. Blitz to combine.",
+    "With the chicken’s legs pointing toward you, use your hands to loosen the skin away from the breasts and spread most of the butter mixture evenly under the skin and over the breasts. Spread the remaining butter over the legs.",
+    "Place the chicken in a medium high-sided baking pan, drizzle with the lemon juice, and sprinkle with ½ tsp salt and plenty of pepper. Roast for roughly 70 minutes, basting every 20 minutes or so, until the skin is golden brown and crisp and the juices run clear when the meat is pierced with a small knife.",
+    "Remove from the oven and set aside to rest for 10 minutes before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

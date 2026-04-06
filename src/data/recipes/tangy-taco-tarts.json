@@ -1,0 +1,77 @@
+{
+  "id": "tangy-taco-tarts",
+  "name": "Tangy Taco Tarts",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Corn kernels, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Chopped tomatoes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cheddar cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Jalapeno, two",
+      "amount": ""
+    },
+    {
+      "item": "Green chili paste, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili flakes, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Oregano, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Baked tarts, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pan heat the oil and add chopped bell peppers.",
+    "Now add corn kernels, jalapeno, green chilies, salt, chili flakes,",
+    "ground cumin, and oregano into it.",
+    "Add the chopped tomato into the mixture.",
+    "Add cheddar cheese, mix for a while and take out in a bowl.",
+    "Fill the baked tarts with the topping and put some grated cheese on",
+    "the top.",
+    "Serve with your proffered dip or sauce.",
+    "Chapter 5: Mexican Taco Vegetarian Recipes",
+    "Mexican cuisine is mostly composed of carnivorous diet but if you look",
+    "into the cuisine you may also find the vegetarian recipes that have the",
+    "similar taste just as the non-vegetarian recipes. Following are some",
+    "vegetarian recipes that you can follow:"
+  ],
+  "time": {
+    "total": 25
+  }
+}

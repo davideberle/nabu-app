@@ -1,0 +1,61 @@
+{
+  "id": "french-egg-and-tomato-breakfast-tartine",
+  "name": "French Egg and Tomato Breakfast Tartine",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of mayonnaise",
+      "amount": ""
+    },
+    {
+      "item": "Salad leaves",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "French tartine bread",
+      "amount": ""
+    },
+    {
+      "item": "One cup of dried cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "Four fried eggs",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Mix the mayonnaise, heavy cream, lemon juice and sugar until forms a",
+    "homogenous mixture in the bowl.",
+    "Toast the bread slices.",
+    "Add the salad leaves on the bread slices.",
+    "Add the mayonnaise mixture on top of the slices.",
+    "Add the fried eggs and sun-dried tomatoes on top.",
+    "Drizzle the Dijon mustard on top of each slice.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

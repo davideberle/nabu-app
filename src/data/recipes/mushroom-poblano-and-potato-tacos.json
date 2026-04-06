@@ -1,0 +1,92 @@
+{
+  "id": "mushroom-poblano-and-potato-tacos",
+  "name": "Mushroom, Poblano, and Potato Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "medium potatoes, cut into pieces",
+      "amount": "3"
+    },
+    {
+      "item": "poblano chile peppers",
+      "amount": "4"
+    },
+    {
+      "item": "Kosher salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "fresh cilantro finely chopped",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "fresh parsley, finely chopped",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "white mushrooms, sliced",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "of creme fraiche, Mexican crema, or sour cream",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "limes, juiced",
+      "amount": "2"
+    },
+    {
+      "item": "Corn tortillas, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Ground pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Get a boiler or a gas burner, and roast poblanos for around 10",
+    "minutes.",
+    "Take it out in a bowl, then cover. Let it cool for around 10 minutes.",
+    "Cut them into strips.",
+    "Place potatoes in a nonstick skillet; cover them with cold water, and",
+    "season with the salt.",
+    "Cook over the medium heat. Cook until they are tender, then drain.",
+    "Take a skillet and heat oil over the medium heat.",
+    "Put potatoes in it; cook until they are crisp and golden for 4 minutes.",
+    "Drain them on paper towels.",
+    "Sprinkle with salt and herbs.",
+    "Remove excess oil.",
+    "Take a skillet and heat butter over the medium heat.",
+    "Put the onion in it, and cook until it is golden.",
+    "Put mushrooms in it, and cook until they are golden.",
+    "Mix garlic and herbs; cook for 1 minute.",
+    "Put roasted poblanos, lime juice, crema, and some water; stir",
+    "for 1-2 minutes.",
+    "Add pepper and salt.",
+    "Serve mushroom mixture and potatoes in tortillas with",
+    "toppings."
+  ],
+  "time": {
+    "total": 30
+  }
+}

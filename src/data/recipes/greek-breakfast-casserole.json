@@ -1,0 +1,84 @@
+{
+  "id": "greek-breakfast-casserole",
+  "name": "Greek Breakfast Casserole",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "large egg whites",
+      "amount": "6"
+    },
+    {
+      "item": "fat-free milk",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "turkey sausage links",
+      "amount": "½ pound"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large eggs",
+      "amount": "6"
+    },
+    {
+      "item": "green pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "artichoke hearts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh broccoli",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shallot",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees.",
+    "Cook the sausage, bell pepper, and shallot in a large frying pan until",
+    "the sausage are no longer yellow, breaking the sausage into crumbles,",
+    "ten minutes; rinse.",
+    "Move the blend to an 8-inch baking sheet dish sprayed with oil for",
+    "frying. Artichokes, lettuce, and tomatoes are on top.",
+    "Whisk the eggs, egg whites, dairy, and spices in a wide bowl until",
+    "blended; spill over the top—drizzle feta over it.",
+    "Toast, exposed, for 45-50 minutes until a fork inserted in the middle",
+    "looks dry. Let it stand until serving for ten minutes.",
+    "The choice to freeze: Cold baked casserole; seal and freeze. Partly",
+    "thaw nightly in the refrigerator for storage.",
+    "Draw from the fridge 30 minutes before cooking.",
+    "Preheat the oven to 325 degrees.",
+    "Bake the casserole as guided, and a thermometer placed in the middle",
+    "reads 165°."
+  ],
+  "time": {
+    "total": 75
+  }
+}

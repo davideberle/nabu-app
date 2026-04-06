@@ -1,0 +1,42 @@
+{
+  "id": "chorizo-soup",
+  "name": "CHORIZO SOUP",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "carrots / 2 celery stalks / 2 medium onions / 2 cloves of garlic / 17:1",
+      "amount": "2"
+    },
+    {
+      "item": "roug",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the broth in a saucepan and heat until boiling",
+    "• Put a large pan o n a high heat and add 2 tablespoons of olive oil",
+    "• Add all your chopped and sliced ingredients with the curry",
+    "powder and mix together with a wooden spoon. Cook for around",
+    "10 minut es with the lid askew, until the carrots have softened but",
+    "ill holding their shape, and the onion is lightly golden • Add",
+    "the boiling broth to the vegetables. Give the soup a good stir and",
+    "to a boil. Reduce t he heat and simmer for 10 minutes, until",
+    "the sweet potato is cooked through",
+    "To serve your soup",
+    "Season with salt and pepper • Using an immersion blender or",
+    "liquidizer, pulse the soup until smooth and scatter over a little",
+    "chopped chile • Divide between your serving bowls and",
+    "SIMPLE SOUPS 131",
+    "PEA AND MINT SOUP",
+    "A delicious soup which is lovely hot, o r cold with a squeeze of",
+    "lemon juice in the summer. My wife likes hers wit h a port ion of",
+    "the side, to dip into the soup - naughty but nice!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "chicken-and-bean-enchiladas",
+  "name": "Chicken and Bean Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sliced red onion",
+      "amount": "2"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sliced red peppers",
+      "amount": "2"
+    },
+    {
+      "item": "chipotle paste",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "crushed garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "chicken breasts",
+      "amount": "2"
+    },
+    {
+      "item": "Chopped coriander, a small bunch",
+      "amount": ""
+    },
+    {
+      "item": "passata",
+      "amount": "500ml"
+    },
+    {
+      "item": "can kidney beans or black beans",
+      "amount": "400g"
+    },
+    {
+      "item": "sugar or ketchup",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "cheddar, grated",
+      "amount": "50g"
+    },
+    {
+      "item": "tortillas",
+      "amount": "6"
+    },
+    {
+      "item": "Green salad, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oven to 200",
+    "Heat oil in a pan. Add peppers, onions, and garlic.",
+    "Then, cook for around 15 minutes.",
+    "Add the chipotle paste, and fry for 2 minutes.",
+    "Add chicken, and cook.",
+    "Add coriander, beans, and 140 ml of passata, then turn down the heat.",
+    "Pour remaining passata, ketchup, and the crushed garlic.",
+    "Put the mixture over the tortillas, and fold its sides, and roll it up.",
+    "Put the passata in a baking dish, and put enchiladas on the top.",
+    "Pour the remaining sauce, then add grated cheese.",
+    "Bake it for around 25-30 minutes.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

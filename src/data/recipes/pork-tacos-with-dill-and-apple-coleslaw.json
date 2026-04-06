@@ -1,0 +1,54 @@
+{
+  "id": "pork-tacos-with-dill-and-apple-coleslaw",
+  "name": "Pork Tacos with Dill and Apple Coleslaw",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Apple chunks, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Pork meat, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Dill, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the pork meat in olive oil for ten minutes.",
+    "Now mix the apple chunks, dill, salt, pepper, lime juice and cilantro",
+    "in a bowl.",
+    "Heat the taco shells.",
+    "Add the pork meat and apple and dill coleslaw on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

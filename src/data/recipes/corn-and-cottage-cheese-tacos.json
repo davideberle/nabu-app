@@ -1,0 +1,63 @@
+{
+  "id": "corn-and-cottage-cheese-tacos",
+  "name": "Corn and Cottage Cheese Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Cottage cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Corn kernels, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco spice mix, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Green chili sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the cottage cheese crumbs, corn kernels, salt, pepper, taco spice",
+    "mix in a bowl.",
+    "Heat the taco shells in an oven.",
+    "Add the cottage cheese and corn mixture into the taco shells.",
+    "Add the green chili sauce on top with onion, avocado slices, and",
+    "cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "melitzanosalata-recipe-greek-eggplant-dip",
+  "name": "Melitzanosalata Recipe (Greek Eggplant Dip)",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Kalamata olives sliced",
+      "amount": ""
+    },
+    {
+      "item": "Feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "lemon zested",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large eggplants",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "large garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "fresh parsley",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Kosher salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "red onion",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "Hold the eggplant whole and penetrate it in a few locations with a",
+    "spoon.",
+    "Get the eggplant smoked.",
+    "Position the eggplant over a gas burner, barbecue, or under a broiler,",
+    "and roast until the skin is completely fried and the eggplant is very",
+    "tender, flipping it around with a pair of tweezers.",
+    "Cool the eggplant and remove it. Put the eggplant in a pan and put it",
+    "aside until it is cold enough to treat.",
+    "Slice off the burnt skin and discard it. Break the eggplant into pieces",
+    "and put it in a colander to get out of any extra juices leftover.",
+    "To a mixing cup, pass the eggplant. Add the cabbage, coriander, lime",
+    "juice, olive oil, and garlic.",
+    "Transfer salt and black pepper and seasoning. Mix to blend and divide",
+    "the eggplant into smaller pieces with your fork.",
+    "At this stage, it is a smart idea to protect and cold the eggplant",
+    "dipping in the refrigerator for a few short minutes if you have the",
+    "opportunity.",
+    "To a serving dish, pass the eggplant dipping and scatter.",
+    "Toss in the olive oil. Garnish with lime zest, coriander, sweet",
+    "onions, olives, and a feta sprinkle.",
+    "Use crumbly bread or flatbread to serve."
+  ],
+  "time": {
+    "total": 20
+  }
+}

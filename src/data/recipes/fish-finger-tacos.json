@@ -1,0 +1,48 @@
+{
+  "id": "fish-finger-tacos",
+  "name": "Fish Finger Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "Finger fish, one pack",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the fish fingers.",
+    "Heat the taco shells.",
+    "Arrange all the ingredients in the taco shells.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 12
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "greek-walnut-cake",
+  "name": "Greek Walnut Cake",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of vanilla sauce",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of ground cardamom",
+      "amount": ""
+    },
+    {
+      "item": "A cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of baking soda,",
+      "amount": ""
+    },
+    {
+      "item": "One egg",
+      "amount": ""
+    },
+    {
+      "item": "A cup of sliced almonds",
+      "amount": ""
+    },
+    {
+      "item": "For Frosting",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of vanilla sauce",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of brown sugar",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of cinnamon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the cake batter and mix all the ingredients.",
+    "Make the batter and pour it into a baking dish.",
+    "Make sure the baking dish is properly greased and lined with parchment",
+    "paper.",
+    "Add the walnut mixture and mix up all the ingredients.",
+    "Bake the cake.",
+    "Dish it out when done.",
+    "Make the vanilla and cream frosting by first beating the butter and",
+    "cream until they turn fluffy.",
+    "Add in the rest of the ingredients and beat for five minutes.",
+    "Add the vanilla and cream frosting on top of the cake.",
+    "Make sure to cover all the sides of the cake with frosting.",
+    "Cut the cake into slices.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

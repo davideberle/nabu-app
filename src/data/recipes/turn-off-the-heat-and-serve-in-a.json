@@ -1,0 +1,54 @@
+{
+  "id": "turn-off-the-heat-and-serve-in-a",
+  "name": "Turn off the heat and serve in a",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "Western bananas). If using Western bananas, they will cook faster.",
+  "ingredients": [
+    {
+      "item": "uncooked sticky rice (khao niew)",
+      "amount": "3 cups (600 g)"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "1 cup (250 ml)"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "1½ cups (375 ml)"
+    },
+    {
+      "item": "salt (or to taste)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "yellow mung beans (aka yellow mung dal), dry- roasted until crispy (toasted sesame seeds, grape nuts cereal or even cornfl akes may be used as substitutes)",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Make the Coconut Cream Top- ping. Heat the coconut cream and salt over very high heat. Taste and add more salt if you prefer.",
+    "To make the Sticky Rice, soak the sticky rice grains overnight or in hot water for at least 2 hours.",
+    "Steam the sticky rice until cooked, about 30–45 minutes.",
+    "Heat the coconut cream with the sugar and salt, and stir until the sugar dissolved.",
+    "In a deep bowl, place the hot",
+    "Sticky Rice and pour the coconut cream over it. Mix together until the grains are coated with the co- conut cream. Cover the rice and wait for 15 minutes, then mix the rice grains again.",
+    "To serve the rice, pour the Co- conut Cream Topping on top of the rice and pepper with the dry- roasted crispy mung beans.",
+    "Pair with ripe, fresh cut mango.",
+    "If you don’t have mango, you can use anything sweet and slightly tart, like peaches, pineapple or even strawberries."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "curry-salmon-with-broccoli",
+  "name": "Curry Salmon with Broccoli",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "of uncooked long grain white rice",
+      "amount": "1 ½ cups"
+    },
+    {
+      "item": "water",
+      "amount": "3 cups"
+    },
+    {
+      "item": "broccoli, chopped",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "cans condensed cream of celery soup",
+      "amount": "2"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "white wine",
+      "amount": "1 cup"
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "salmon fillets, bones and skin removed",
+      "amount": "2 pounds"
+    }
+  ],
+  "method": [
+    "Preheat an oven to a heat 200°C/400°F. Grease the 9x13-in. baking dish.",
+    "Boil water and rice in a pot. Cover. Lower heat to low. Simmer for 25",
+    "minutes.",
+    "On baking dish’s bottom, put broccoli. In a bowl, mix curry, wine,",
+    "mayonnaise and cream of celery soup. Evenly pour ½ over broccoli. Slice",
+    "salmon to chunks. Put into baking dish. Put leftover soup mixture over.",
+    "In preheated oven, bake for approximately about 45 minutes till fish easily",
+    "flakes with a fork and broccoli is tender. Serve it on cooked rice.",
+    "Recipe 41: Curry Salmon with Mango",
+    "Immediately serve this curried salmon with mango recipe for the best"
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "fancy-coleslaw",
+  "name": "FANCY COLESLAW",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "Sort-of-Waldorf (left), Fancy Coleslaw (center), Spiced cashews (right)",
+  "ingredients": [
+    {
+      "item": "medium carrots, peeled and cut into thin matchsticks (scant 1¼ cups/140 g)",
+      "amount": "2"
+    },
+    {
+      "item": "small fennel bulb, shredded ⅛-inch/3-mm thick (1⅓ cups/120 g)",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/60 ml lemon juice",
+      "amount": "4"
+    },
+    {
+      "item": "small head savoy cabbage, shredded ⅛-inch/3-mm thick (1¾ cups/120 g)",
+      "amount": "¼"
+    },
+    {
+      "item": "large head radicchio, shredded ⅛-inch/3-mm thick (scant 3 cups/200 g)",
+      "amount": "1"
+    },
+    {
+      "item": "medium red pepper, seeded and thinly sliced (⅔ cup/100 g)",
+      "amount": "1"
+    },
+    {
+      "item": "red chile, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "cup/100 g Greek yogurt scant 3 tbsp/40 g mayonnaise",
+      "amount": "½"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cup/30 g flat-leaf parsley leaves, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cups/20 g dill leaves, chopped",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/10 g tarragon leaves, chopped salt and white pepper",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/120 g cashew nuts, coarsely chopped",
+      "amount": "¾"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    }
+  ],
+  "method": [
+    "Place the carrots, fennel, and 2 tablespoons of the lemon juice in a large bowl and mix well. Set aside for 20 minutes and then drain.",
+    "To make the nuts, in a small bowl, combine the nuts, turmeric, cumin, paprika, sugar, and a pinch of salt. Stir 1 tablespoon water through the mixture so the spices cling to the nuts. Spread out on a parchment-lined baking sheet and roast for about 12 minutes, until golden and crunchy.",
+    "Remove and leave aside to cool.",
+    "Return the carrots and fennel to the large bowl, add the cabbage, radicchio, red pepper, and chile, and stir well.",
+    "To make the dressing, whisk together the yogurt, mayonnaise, mustard, honey, olive oil, the remaining 2 tablespoons lemon juice, ¼ teaspoon salt, and a pinch of white pepper. Pour this over the vegetables and mix well. Add the herbs and spiced nuts, stir to combine, and serve.",
+    "RAW BEET AND HERB SALAD"
+  ],
+  "time": {
+    "total": 30
+  }
+}

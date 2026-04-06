@@ -1,0 +1,56 @@
+{
+  "id": "mexican-sweet-potato-soup",
+  "name": "Mexican Sweet Potato Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "finely chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of chipotle paste",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sweet potato",
+      "amount": "750g"
+    },
+    {
+      "item": "cube of vegetable stock",
+      "amount": "1"
+    },
+    {
+      "item": "Coriander leaves",
+      "amount": ""
+    },
+    {
+      "item": "bread rolls",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Take a pan and heat the oil.",
+    "Put the onion in it and cook for 4-5 minutes.",
+    "Add chipotle paste.",
+    "Add stock cube in boiling water, and then add it to the pan.",
+    "Add sweet potatoes. Then bring it to boil. Simmer it while keeping it",
+    "covered for about 10 minutes. Use a blender to make it smooth.",
+    "Take out in a bowl. Sprinkle coriander leaves and bread rolls, and",
+    "serve.",
+    "Chapter 7: Vegetarian Mexican",
+    "Recipes",
+    "Here are given the most delicious vegetarian Mexican recipes in this",
+    "chapter. Try these cuisines for having perfect plant-based food in your",
+    "menu, and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

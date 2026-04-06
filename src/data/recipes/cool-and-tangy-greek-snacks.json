@@ -1,0 +1,31 @@
+{
+  "id": "cool-and-tangy-greek-snacks",
+  "name": "Cool and Tangy Greek Snacks",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "red peppers 8 woven wheat crackers",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "reduced-fat feta cheese",
+      "amount": "8 teaspoon"
+    },
+    {
+      "item": "cucumber",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Add all the ingredients on top of the crackers.",
+    "It matches well with a Sauvignon Blanc bottle.",
+    "Mix and serve."
+  ],
+  "time": {
+    "total": 5
+  }
+}

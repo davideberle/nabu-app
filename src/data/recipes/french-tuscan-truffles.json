@@ -1,0 +1,39 @@
+{
+  "id": "french-tuscan-truffles",
+  "name": "French Tuscan Truffles",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of cooking chocolate",
+      "amount": ""
+    },
+    {
+      "item": "One cup of walnuts",
+      "amount": ""
+    },
+    {
+      "item": "One cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of condensed milk",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add everything into the bowl and mix well.",
+    "Make round structures from the mixture.",
+    "Place it on a baking dish.",
+    "Bake for fifteen minutes.",
+    "Dish out when done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "total-prep-time-5-minutes",
+  "name": "Total Prep Time: 5 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "3 cups"
+    },
+    {
+      "item": "baby mozzarella",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "2 cups"
+    },
+    {
+      "item": "spring onions, finely cut",
+      "amount": "1-2"
+    },
+    {
+      "item": "basil pesto",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "white balsamic vinegar",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2-3 tbsp."
+    }
+  ],
+  "method": [
+    "How to Cook:"
+  ],
+  "time": {
+    "total": 5
+  }
+}

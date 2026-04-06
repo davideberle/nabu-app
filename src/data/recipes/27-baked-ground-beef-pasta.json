@@ -1,0 +1,78 @@
+{
+  "id": "27-baked-ground-beef-pasta",
+  "name": "(27)     Baked Ground Beef Pasta",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "mushrooms, chopped",
+      "amount": "3-4"
+    },
+    {
+      "item": "gherkins, chopped",
+      "amount": "5-6"
+    },
+    {
+      "item": "small tomato, diced",
+      "amount": "1"
+    },
+    {
+      "item": "parsley leaves, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "can mushroom soup",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "mozzarella cheese, grated",
+      "amount": "1 cup"
+    },
+    {
+      "item": "egg, whisked",
+      "amount": "1"
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Prepare the pasta according to package directions. Drain and place in an ovenproof baking dish.",
+    "Heat olive oil in a large pot and then gently sauté the onion until transparent. Add in ground beef, mushrooms,",
+    "garlic and tomato. Stir and cook on low heat for about 10 minutes. When the meat is almost done, add in the",
+    "gherkins and parsley.",
+    "Toss everything with the pasta. Add in the mushroom soup and stir to combine.",
+    "Whisk the egg with mozzarella cheese and spread all over the pasta equally.",
+    "Bake in a preheated to 350 F oven for 10 minutes or until the cheese turns golden.",
+    "(28) Easy Homemade Lasagna",
+    "Lazy Sundays are perfect for spending a few hours preparing and cooking this classic dish. It will provide you with",
+    "an abundant amount of leftovers for the rest of the week, and your family will love coming home to it.",
+    "Yield: 5"
+  ],
+  "time": {
+    "total": 30
+  }
+}

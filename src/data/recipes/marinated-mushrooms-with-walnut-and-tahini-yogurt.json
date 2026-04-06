@@ -1,0 +1,74 @@
+{
+  "id": "marinated-mushrooms-with-walnut-and-tahini-yogurt",
+  "name": "Marinated mushrooms with walnut and tahini yogurt",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Shimeji are the clustered small mushrooms that you often get in “exotic” selections.",
+  "ingredients": [
+    {
+      "item": "white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maple syrup juice of 2 medium lemons salt and black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sliced button mushrooms",
+      "amount": "3 cups"
+    },
+    {
+      "item": "beech mushrooms, large base removed",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tahini",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "small garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "shelled fava beans (frozen or fresh)",
+      "amount": "3 cups"
+    },
+    {
+      "item": "³ cup walnuts, toasted and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped oregano",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Start by marinating the mushrooms. Whisk together the olive oil, vinegar, maple syrup, half the lemon juice, about",
+    "½ teaspoon salt and some black pepper. Pour this over the mixed mushrooms in a large bowl and toss well, making sure all the mushrooms are coated. Leave them to marinate for an hour.",
+    "While you wait, mix together in a small bowl the yogurt, tahini, garlic, remaining lemon juice and",
+    "½ teaspoon salt. Use a fork or a small whisk to whip everything together to a light paste. (You can refrigerate this sauce for up to a day.)",
+    "Next, pour plenty of boiling water over the fava beans in a bowl and leave for a minute, then drain well and leave to cool down.",
+    "Now squeeze each bean gently to remove the skin and discard it (if you don’t mind the skin you can skip this stage).",
+    "Add the beans, walnuts and cumin to the marinated mushrooms and stir to mix. Taste and adjust the seasoning. Serve the mushrooms in small bowls or plates, each portion topped with a dollop of thick tahini sauce and sprinkled with herbs.",
+    "It took the aid of Cook’s Illustrated, a magazine for food nerds like me, to enable me to crack the secret for a perfect cheesy lasagne. Serve this with an arugula and tomato salad.",
+    "Mushroom lasagne"
+  ],
+  "time": {
+    "total": 30
+  }
+}

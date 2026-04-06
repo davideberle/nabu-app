@@ -1,0 +1,75 @@
+{
+  "id": "french-sea-bass-au-pistou",
+  "name": "French Sea Bass Au Pistou",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Half cup of virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two garlic cloves",
+      "amount": ""
+    },
+    {
+      "item": "Two celery stalks",
+      "amount": ""
+    },
+    {
+      "item": "One sweet onion",
+      "amount": ""
+    },
+    {
+      "item": "One potato",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of white wine",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of fish broth",
+      "amount": ""
+    },
+    {
+      "item": "One cup of sea bass",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of classic pistou",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Heat the oil in a pan.",
+    "Add the garlic, celery stalks and onion into it.",
+    "Cook it with stirring for ten minutes.",
+    "Add the sea bass, herbs, salt and pepper as needed.",
+    "Add the smoked paprika into it and cook for one minute.",
+    "Add the wine and mix well and cook for one minute more.",
+    "Add the rest of the ingredients in cooking mixture.",
+    "Cook the dish for twenty minutes.",
+    "Garnish the dish with pistou in the end.",
+    "Your soup is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

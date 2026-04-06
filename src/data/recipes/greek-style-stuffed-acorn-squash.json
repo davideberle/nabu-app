@@ -1,0 +1,79 @@
+{
+  "id": "greek-style-stuffed-acorn-squash",
+  "name": "Greek-Style Stuffed Acorn Squash",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "french-fried onions",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Additional crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Greek seasoning",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "bulk pork sausage",
+      "amount": "1 pound"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "medium acorn squash",
+      "amount": "3"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "uncooked orzo pasta",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "lentils",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees.",
+    "Position the squash pieces, split side up, on a wide baking tray; roast",
+    "for around thirty minutes until they can only be penetrated with a",
+    "To chill, transfer to a cutting board.",
+    "In the meantime, in a large saucepan, put the lentils; add water to fill.",
+    "Just get it to a boil.",
+    "Reduce heat; simmer until tender, sealed, for 25 minutes. Withdraw",
+    "and put aside.",
+    "Simmer the chicken stock in the same frying pan. Insert orzo; cook al",
+    "dente according to the box instructions.",
+    "Cook meat, crumbling beef, once no longer yellow, eight minutes in a",
+    "wide skillet; rinse.",
+    "To the skillet, insert lentils and orzo; extract from the heat. Add feta",
+    "cheese and Greek spices to two tablespoons; blend well.",
+    "Return the stored chicken broth to the saucepan.",
+    "Stir in the starch over medium-high heat until it thickens, then",
+    "mix into the meat combination.",
+    "Quarter squash when cold enough to treat and return to the",
+    "baking sheet.",
+    "Cover the mixture of meat. Bake for 30 minutes, until the",
+    "squash is soft.",
+    "Stir with french-fried vegetables and, if necessary, extra feta",
+    "before eating."
+  ],
+  "time": {
+    "total": 75
+  }
+}

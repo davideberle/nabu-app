@@ -1,0 +1,67 @@
+{
+  "id": "migas-breakfast-taco",
+  "name": "Migas Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salt, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Egg, six",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla chips, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Pepper jack cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Onion, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, six",
+      "amount": ""
+    },
+    {
+      "item": "Poblano pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro leaves, a quarter cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add vegetable oil in a pan.",
+    "Add the onions, eggs, salt, pepper, poblano pepper, and cilantro.",
+    "Add the avocados and cook for ten minutes.",
+    "Add the cheese and lightly fry the tortillas.",
+    "Arrange all the things in the tortillas and add the crushed tortilla chips",
+    "on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

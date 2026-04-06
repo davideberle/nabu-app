@@ -1,0 +1,82 @@
+{
+  "id": "black-beans-and-zucchini-tacos",
+  "name": "Black Beans and Zucchini Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Bean stew powder, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Coriander, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt as required",
+      "amount": ""
+    },
+    {
+      "item": "Coleslaw, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required, pepper, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cumin powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Zucchini, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Black beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Green onions, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Paprika, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Oregano, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the zucchini with the salt, oregano, paprika, coriander, and bean",
+    "stew powder.",
+    "Put together the coleslaw, cilantro, and green onions.",
+    "Season with salt, pepper, and cumin.",
+    "Add lime juice and mix effectively to make it yummy and flavorful.",
+    "Add the chopped avocado.",
+    "Warm the olive oil over medium high heat.",
+    "Add the zucchini.",
+    "Cook for approximately five minutes.",
+    "Add the dark beans and cook until they are ready.",
+    "Lightly heat tortillas on anything available to you.",
+    "Fill the tortillas with all the ingredients above.",
+    "Add cilantro to garnish.",
+    "Your meal is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

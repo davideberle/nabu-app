@@ -1,0 +1,71 @@
+{
+  "id": "lentil-tacos",
+  "name": "Lentil Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Brown lentils, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Paprika, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cumin powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable stock, one cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add all the spices, along with the lentils in a deep pan.",
+    "Now mix all the spices including the taco mix, and add the vegetable",
+    "stock.",
+    "Cook it for thirty minutes until the lentils are cooked properly.",
+    "Now move the tortillas in a pan.",
+    "Place the lentils, a little sour cream, salsa, and a few leaves of cilantro",
+    "on top.",
+    "Roll the tortilla sheets.",
+    "You can add any other topping if you like; the toppings are always",
+    "according to your personal preferences.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

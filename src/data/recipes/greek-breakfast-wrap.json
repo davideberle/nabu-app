@@ -1,0 +1,46 @@
+{
+  "id": "greek-breakfast-wrap",
+  "name": "Greek Breakfast Wrap",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Kalamata olives",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "3 tablespoon"
+    },
+    {
+      "item": "scrambled eggs",
+      "amount": "4"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "tzatziki sauce",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "tortillas",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the tortillas on a floured work surface and scatter the tzatziki",
+    "down the middle of each one.",
+    "Scrambled eggs, onions, olives, and parmesan cheese are uniformly",
+    "distributed on top.",
+    "Fold the tortillas' bottoms out over the stuffing, then pull in the sides",
+    "and roll them up securely."
+  ],
+  "time": {
+    "total": 15
+  }
+}

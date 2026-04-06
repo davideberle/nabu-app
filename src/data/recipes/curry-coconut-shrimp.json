@@ -1,0 +1,78 @@
+{
+  "id": "curry-coconut-shrimp",
+  "name": "Curry Coconut Shrimp",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "flour",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "coconut milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "peeled and deveined jumbo shrimp",
+      "amount": "1 pound"
+    },
+    {
+      "item": "shredded coconuts",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Heat the prepared butter in a medium pan and sauté the onion, pepper, and",
+    "garlic for 5 minutes.",
+    "Stir in the cumin, ginger, turmeric, and curry powder and keep stirring for 2",
+    "minutes.",
+    "Add the flour and stir for another 3 minutes.",
+    "Pour in the coconut milk and sugar.",
+    "Stir it very well and bring the liquid to a boil.",
+    "Reduce the heat and simmer for 5 minutes.",
+    "Add the shrimp and shredded coconuts and simmer for 5 minutes.",
+    "Recipe 32: Curry Couscous and Quinoa Pilaf"
+  ],
+  "time": {
+    "total": 20
+  }
+}

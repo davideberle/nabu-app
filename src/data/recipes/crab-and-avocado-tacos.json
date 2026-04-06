@@ -1,0 +1,44 @@
+{
+  "id": "crab-and-avocado-tacos",
+  "name": "Crab and Avocado Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Crab meat, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the crab meat in the oil and add salt and pepper to it.",
+    "Heat up the taco shells.",
+    "Arrange all the ingredients in the taco shells.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

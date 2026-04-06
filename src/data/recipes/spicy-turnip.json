@@ -1,0 +1,78 @@
+{
+  "id": "spicy-turnip",
+  "name": "SPICY TURNIP",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "mango, peanuts, sesame seeds, lime juice, oil, cilantro, and mint and stir to",
+  "ingredients": [
+    {
+      "item": "ancho chile (⅔ oz/20 g), stem and seeds removed",
+      "amount": "1"
+    },
+    {
+      "item": "Aleppo chile flakes, or just a pinch if using other very hot chile flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "small cloves garlic, coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "caraway seeds, toasted",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "or 6 small turnips, stems removed but unpeeled (1½ lb/700 g)",
+      "amount": "5"
+    },
+    {
+      "item": "oz/90 g preserved lemon, halved, flesh and skin thinly sliced, seeds removed",
+      "amount": "3"
+    },
+    {
+      "item": "cup/15 g cilantro leaves, chopped salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the ancho chile in a small heatproof bowl and pour in boiling water just to cover. Leave to soak for 30 minutes, until soft. Remove the chile from the water and squeeze out some of the moisture. Set aside 2 tablespoons of the chile water and discard the rest.",
+    "Place the ancho in the bowl of a small food processor and add the chile flakes, garlic, cumin, cardamom, caraway, oils, sugar, vinegar, lemon juice, and 1 teaspoon salt. Add the reserved chile water and blitz to form a rough paste. Transfer to a medium bowl and set aside.",
+    "Bring a pan of water to a boil, add the turnips, and blanch for 3 minutes.",
+    "Drain and refresh under cold water, pat dry, and cut into wedges ⅜ inch/1 cm wide. Add these to the chile paste, along with the preserved lemon, and mix well. Cover and leave to marinate for at least 1 hour. Sprinkle with the cilantro and serve.",
+    "SOBA NOODLES WITH QUICK-PICKLED"
+  ],
+  "time": {
+    "total": 30
+  }
+}

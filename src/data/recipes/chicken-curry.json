@@ -2,107 +2,66 @@
   "id": "chicken-curry",
   "name": "Chicken Curry",
   "source": {
-    "cookbook": "The Curry Guy Bible",
-    "author": "Dan Toombs",
-    "chapter": "Biryanis & Rice"
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
   },
-  "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "The first time I was invited back to a curry-house kitchen to learn a recipe, it went something like this chicken curry. The chef assumed that I had no idea what a base sauce was and wanted to show me how to cook a curry house-style curry, but without the need of a base sauce. Following this example, you could cook all of the following traditional British curries without base sauce or pre-cooked ingredients. This basic mild chicken curry, like those on most curry-house menus, can easily be spiced up with more chilli powder or chopped fresh chillies to taste. You will notice that it does take longer to cook a curry in this way than if you were doing it with a base sauce and pre-cooked ingredients, but the end result is delicious.",
-  "time": {
-    "prep": "10 MINS",
-    "cook": "25 MINS"
-  },
+  "servings": "serves 6",
   "ingredients": [
     {
-      "item": "rapeseed (canola) oil",
-      "amount": "3 tbsp"
+      "item": "green chili, deseeded and finely chopped",
+      "amount": "1"
     },
     {
-      "item": "2.5cm (1in) piece of cinnamon stick",
-      "amount": ""
+      "item": "of coconut milk, unsweetened",
+      "amount": "2 cups"
     },
     {
-      "item": "Seeds from 3 green cardamom pods",
-      "amount": ""
+      "item": "chicken breasts, cut into cubes",
+      "amount": "4"
     },
     {
-      "item": "star anise",
-      "amount": "2"
+      "item": "of soy sauce",
+      "amount": "3 tbsp."
     },
     {
-      "item": "cumin seeds",
-      "amount": "1 tsp"
+      "item": "of red curry paste",
+      "amount": "1 tbsp."
     },
     {
-      "item": "onions, finely chopped",
-      "amount": "2"
+      "item": "of honey, raw",
+      "amount": "¼ cup"
     },
     {
-      "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "item": "can (8 oz.) bamboo shoots, fully drained",
+      "amount": "1"
     },
     {
-      "item": "tomato purée or plain passata (sieved tomatoes)",
-      "amount": "125ml"
+      "item": "red bell pepper, chopped",
+      "amount": "1"
     },
     {
-      "item": "mixed powder or curry powder",
-      "amount": "2 tbsp"
+      "item": "onion, finely chopped",
+      "amount": "1"
     },
     {
-      "item": "ground cumin",
-      "amount": "2 tsp"
+      "item": "of pineapple chunks, drained",
+      "amount": "1 cup"
     },
     {
-      "item": "ground coriander",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "ground turmeric",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "paprika",
-      "amount": "1–2 tbsp"
-    },
-    {
-      "item": "garam masala",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "medium tomatoes, diced",
-      "amount": "2"
-    },
-    {
-      "item": "chicken thighs or breast, cut into bite-size pieces",
-      "amount": "900g"
-    },
-    {
-      "item": "Pinch of dried fenugreek leaves (kasoori methi)",
-      "amount": ""
-    },
-    {
-      "item": "Salt, to taste",
-      "amount": ""
-    },
-    {
-      "item": "melted ghee (optional)",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "finely chopped coriander (cilantro), to garnish",
-      "amount": "2 tbsp"
+      "item": "a coconut, fresh and finely diced",
+      "amount": "½"
     }
   ],
   "method": [
-    "Heat the oil over a medium–high heat in a large frying pan. When visibly hot, add the cinnamon stick, cardamom seeds, star anise and cumin seeds. Stir these spices around in the oil for about 30 seconds, then add the onions. Fry the onions for about 5 minutes until soft and translucent, then stir in the garlic and ginger paste and fry for a further 30 seconds. Now stir in the tomato purée and bring to a simmer. You are aiming to achieve a smooth sauce like you get when you use a prepared base sauce, so add about 250ml (1 cup) of water and simmer until the water has almost evaporated. This will help break the onions down into the sauce.",
-    "Add the ground spices and tomatoes and give it all a good stir to combine. By now, you should have a nice saucy mixture, but the onions will still need to break down some more. Add another 250ml (1 cup) of water and simmer until the water has almost evaporated. You will be left with a thick sauce and the onions will be melting into the sauce. Add the chicken and coat it well with the sauce, then cover the pan to simmer until the meat is cooked through – about 10 minutes. You will need to stir from time to time so that it cooks evenly. Remove the lid and you will have a chicken curry with a very thick sauce. It will be nice this way but if you prefer more sauce, add more water and continue to simmer until you are happy with the consistency.",
-    "To finish, rub the dried fenugreek leaves (kasoori methi) between your fingers into the sauce and season with salt. If you’re not watching the calories, drizzle some ghee over the top and stir it in before serving. Garnish with the coriander (cilantro)."
+    "Using a medium to prepared large sized slow cooker, combine all of your",
+    "ingredients into it.",
+    "Cover and cook for the next 4 hours on the highest setting.",
+    "After this time serve while still hot and enjoy.",
+    "Recipe 47: Duck Curry",
+    "If chicken curry is overrated for you, why don’t you try this recipe? This is",
+    "duck curry made with green curry paste. It’s unique, flavorful and easy to"
   ],
-  "image": null,
-  "category": {
-    "dish_type": [
-      "main"
-    ]
+  "time": {
+    "total": 180
   }
 }

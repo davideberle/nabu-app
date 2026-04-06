@@ -1,0 +1,61 @@
+{
+  "id": "curd-and-currants",
+  "name": "CURD AND CURRANTS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "small leeks, white part only",
+      "amount": "8"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "garlic, thinly sliced scant 1 cup/200 ml dry white wine",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small red onion, finely chopped (⅔ cup/100 g) scant 2½ tbsp/20 g dried currants",
+      "amount": "1"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oz/100 g goat’s curd or a creamy goat cheese",
+      "amount": "3½"
+    },
+    {
+      "item": "chervil or flat-leaf parsley leaves salt and black pepper",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Cut the leeks crosswise into two segments, each about 4-inches/10-cm long, and wash well. Lay all the leeks on the bottom of a large, shallow pan and add the bay leaves, garlic, wine, olive oil, and about 1 cup/250 ml water, so that the leeks are half covered in liquid. Add ¾ teaspoon salt and some black pepper, place over medium heat, and simmer gently for about 30 minutes,",
+    "until a knife can be inserted into the leeks without any resistance. Turn the leeks over once or twice during cooking so that they are cooked evenly.",
+    "Using a slotted spoon, remove the leeks from the pan and place on a plate to one side. Strain the remaining cooking liquid into a small saucepan and reduce over high heat until you are left with just 3 tablespoons. This should take between 12 and 15 minutes. Remove from the heat and add the onion, currants, vinegar, sugar, ¼ teaspoon salt, and some black pepper. Set aside to soften and marinate.",
+    "Heat the sunflower oil in a large sauté pan over medium-high heat. Carefully add the leeks and fry for 2 minutes on each side, until lightly golden. Transfer to a plate and set aside to cool.",
+    "To serve, divide the leeks among 4 plates. Dot with the cheese, spoon the onion and currant dressing over the top, and finish with the chervil."
+  ],
+  "time": {
+    "total": 30
+  }
+}

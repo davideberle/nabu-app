@@ -1,0 +1,43 @@
+{
+  "id": "char-grilled-asparagus",
+  "name": "Char-grilled asparagus",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "(see Dates and Turkish Sheep's Cheese, page 280). Serve warm, as a starter, or as part of a mezze spread.",
+  "ingredients": [
+    {
+      "item": "of asparagus",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "grapeseed oil, plus extra to finish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Maldon sea salt black pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "thin slices good-quality feta (2",
+      "amount": "8"
+    },
+    {
+      "item": "in total), or a few spoonfuls of ricotta grated zest of 1 lemon",
+      "amount": "½ oz"
+    }
+  ],
+  "method": [
+    "Arrange the asparagus on four serving plates. Add the slices of feta and drizzle some grapeseed oil on top and around the plate.",
+    "Finish with the lemon zest and a bit of black pepper.",
+    "184 | Green Things",
+    "My love for cold soups comes from my parents. When I was a child my mother used to make the most refreshing gazpacho for us, to alleviate the dry heat of the Jerusalem summer. It was marvelous – a little sweet, a little sour and totally light. When I recently shut myself up at my parents’ house, to finally get on with all the recipe intros for this book, my father made one of his glorious creations: a cold creamy soup of potato, freshly picked basil, cucumber chunks and loads of goat’s milk yogurt from the neighboring goat farm. I am afraid I can’t replicate this in London.",
+    "The ideal time for making my cold soup is toward the end of the asparagus season, in the early summer, when the spears are often thick and woody and not good enough to eat as they are. Serve with crusty bread dipped in olive oil.",
+    "Asparagus vichyssoise"
+  ],
+  "time": {
+    "total": 30
+  }
+}

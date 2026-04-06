@@ -1,0 +1,62 @@
+{
+  "id": "zucchini-baba-ghanoush",
+  "name": "ZUCCHINI “BABA GHANOUSH”",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "transfer to a serving plate, spoon the remaining dressing over the top, and",
+  "ingredients": [
+    {
+      "item": "large zucchini (about 2¾ lb/1.2 kg)",
+      "amount": "5"
+    },
+    {
+      "item": "cup/80 g goat’s milk yogurt",
+      "amount": "⅓"
+    },
+    {
+      "item": "tbsp/15 g coarsely grated Roquefort",
+      "amount": "2"
+    },
+    {
+      "item": "egg, lightly beaten",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/15 g unsalted butter",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/20 g pine nuts",
+      "amount": "2½"
+    },
+    {
+      "item": "Urfa chile flakes, or a pinch of regular chile flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "za’atar, to finish salt and black pepper",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Preheat the broiler. Place the zucchini on a baking sheet lined with parchment paper and broil for about 45 minutes, turning once or twice during the cooking, until the skin crisps and browns nicely. Remove from the oven and, once cool enough to handle, peel off the zucchini skin, discard it, and set the flesh aside in a colander to drain; you can also scoop out the flesh with a spoon. The zucchini can be served warm or at room temperature.",
+    "Put the yogurt in a small saucepan with the Roquefort and egg. Heat very gently for about 3 minutes, stirring often. You want the yogurt to heat through but not quite reach the simmering point. Set aside and keep warm.",
+    "Melt the butter in a small sauté pan with the pine nuts over low heat and cook, stirring often, for 3 to 4 minutes, until the nuts turn golden brown. Stir in the chile flakes and lemon juice and set aside.",
+    "To serve, put the zucchini in a bowl and add the garlic, a scant ½ teaspoon salt, and a good grind of black pepper. Gently mash everything together with a fork and then spread the mixture out on a large serving platter. Spoon the warm yogurt sauce on top, followed by a drizzle of the warm chile butter and the pine nuts. Finish with a sprinkle of za’atar and serve at once.",
+    "CORN ON THE COB WITH MISO"
+  ],
+  "time": {
+    "total": 30
+  }
+}

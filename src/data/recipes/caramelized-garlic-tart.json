@@ -1,0 +1,81 @@
+{
+  "id": "caramelized-garlic-tart",
+  "name": "Caramelized garlic tart",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 8",
+  "intro": "out for me. What else can I add?",
+  "ingredients": [
+    {
+      "item": "puff pastry",
+      "amount": "13 oz"
+    },
+    {
+      "item": "medium heads of garlic, cloves separated and peeled",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "¾ tbsp"
+    },
+    {
+      "item": "chopped rosemary",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped thyme, plus a few whole sprigs to finish salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "soft, creamy goat cheese (such as chèvre)",
+      "amount": "½ oz"
+    },
+    {
+      "item": "hard, mature goat cheese (such as goat gouda)",
+      "amount": "½ oz"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "crème fraîche black pepper",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Roll out the puff pastry into a circle that will line the bottom and sides of the pan, plus a little extra. Line the pan with the pastry.",
+    "Place a large circle of waxed paper on the bottom and fill up with pie weights or dried beans. Leave to rest in the fridge for about",
+    "Preheat the oven to 350°F. Place the tart shell in the oven and blind bake for 20 minutes. Remove the weights and paper, then bake for 5 to 10 minutes more, or until the pastry is golden. Set aside. Leave the oven on.",
+    "While the tart shell is baking, make the caramelized garlic. Put the cloves in a small saucepan and cover with plenty of water.",
+    "Bring to a simmer and blanch for 3 minutes, then drain well. Dry the saucepan, return the cloves to it and add the olive oil. Fry the garlic cloves on high heat for 2 minutes. Add the balsamic vinegar and water and bring to the boil, then simmer gently for 10 minutes. Add the sugar, rosemary, chopped thyme and",
+    "¼ teaspoon salt. Continue simmering on a medium flame for",
+    "10 minutes, or until most of the liquid has evaporated and the garlic cloves are coated in a dark caramel syrup. Set aside.",
+    "To assemble the tart, break both types of goat cheese into pieces and scatter in the tart shell. Spoon the garlic cloves and syrup evenly over the cheese. In a jug whisk together the eggs, cream, crème fraîche,",
+    "½ teaspoon salt and some black pepper. Pour this custard over the tart filling to fill the gaps, making sure that you can still see the garlic and cheese over the surface.",
+    "Reduce the oven temperature to 325°F and place the tart inside.",
+    "Bake for 35 to 45 minutes, or until the tart filling has set and the top is golden brown. Remove from the oven and leave to cool a little. Then take out of pan, trim the pastry edge if needed, lay a few sprigs of thyme on top and serve warm (it reheats well!) with a crisp salad.",
+    "This is an unusual yet delectable main course where the flavorful filling takes center stage. Consider creating a variation by spooning over a light tomato sauce before baking and sprinkling with cheese toward the end. Serve the onions (pictured on page 41) warm with a Lettuce Salad (page 146). I desperately urge you not to waste the flavored stock and onion cores; cook them together to make a base for a hearty onion soup."
+  ],
+  "time": {
+    "total": 30
+  }
+}

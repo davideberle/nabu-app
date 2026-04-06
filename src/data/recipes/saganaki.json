@@ -1,0 +1,59 @@
+{
+  "id": "saganaki",
+  "name": "Saganaki",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "lemon, or to taste",
+      "amount": "½"
+    },
+    {
+      "item": "Italian parsley",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "brandy",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "package kasseri cheese",
+      "amount": "1"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Water should be brushed on both sides of the kasseri cheese.",
+    "Dredge all sides in starch, ensuring to cover the entire surface.",
+    "Steam a well-seasoned stainless steel skillet over medium-high heat",
+    "until it begins to smoke.",
+    "Pour in the extra virgin olive oil.",
+    "Position the floured cheese in the hot oil with care.",
+    "Heat for about two minutes, or until the cheese starts to ooze and a",
+    "light golden crust emerges.",
+    "With a spoon, quickly turn the cheese over. Fry till the bottom of the",
+    "pan is nicely browned.",
+    "Remove the skillet from the heat and put it on a plate lined with tea",
+    "towels.",
+    "Brandy should be poured over the cheese.",
+    "Then use a fireplace flame, light the brandy.",
+    "To put out the last few fires, pour some lime juice on edge."
+  ],
+  "time": {
+    "total": 13
+  }
+}

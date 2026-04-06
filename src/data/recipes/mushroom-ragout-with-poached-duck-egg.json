@@ -1,0 +1,85 @@
+{
+  "id": "mushroom-ragout-with-poached-duck-egg",
+  "name": "Mushroom ragout with poached duck egg",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "use as part of the mixed fresh mushrooms here.",
+  "ingredients": [
+    {
+      "item": "dried porcini mushrooms",
+      "amount": "½ oz"
+    },
+    {
+      "item": "water",
+      "amount": "½ cups"
+    },
+    {
+      "item": "mixed fresh mushrooms (wild or cultivated)",
+      "amount": "¼ lbs"
+    },
+    {
+      "item": "sourdough bread, crusts removed",
+      "amount": "¾ lb"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "medium onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot, peeled and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalks, sliced",
+      "amount": "3"
+    },
+    {
+      "item": "white wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thyme sprigs salt",
+      "amount": "3"
+    },
+    {
+      "item": "duck eggs vinegar for poaching",
+      "amount": "4"
+    },
+    {
+      "item": "sour cream",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped tarragon",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped parsley black pepper truffle oil (or olive oil if you prefer)",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Cut the bread into 1-inch cubes. Toss them with 2 tablespoons of the oil, the garlic and salt. Spread out on a baking sheet and toast in the oven for 15 minutes, or until brown.",
+    "Next, pour 1 tablespoon of oil into a medium-sized heavy pan and heat well over medium-high heat. Add some of the fresh mushrooms and leave for 1 to 2 minutes, without stirring. Don’t crowd the mushrooms in the pan. Once lightly browned, turn them over to cook for another minute. Remove from the pan and continue with more batches, adding oil as needed. Once all the mushrooms have been removed from the pan, add another tablespoon of oil and throw in the onion, carrot and celery. Sauté on medium heat for 5 minutes, without browning. Add the wine and let it bubble away for a minute.",
+    "Lift the porcini out of the soaking liquid, squeezing out the excess liquid. Add the soaking liquid to the pan, leaving behind any grit in the bowl. Add the remaining 1",
+    "½ cups of water, the thyme and a little salt, then simmer gently for about 20 minutes, or until you are left with about 1 cup of liquid. Strain this stock and discard the vegetables; return the stock to the pan and set it aside.",
+    "To poach the eggs, fill a shallow saucepan with enough water for a whole egg to cook in. Add a splash of vinegar and bring to a rapid boil. Carefully break an egg into a small cup and gently pour it into the boiling water. Immediately remove the pan from the heat and set it aside. After 6 minutes the egg should be poached to perfection. Lift it out of the pan and into a bowl of warm water. Once all the eggs are done, dry them on paper towels.",
+    "While you are poaching the final egg, heat up the stock and add all the mushrooms, the sour cream, most of the chopped herbs (reserving some to garnish) and salt and pepper to taste. As soon as the mushrooms are hot, place about four croutons in each serving dish and top with mushrooms. Add an egg, the remaining herbs, a drizzle of truffle oil and some black pepper.",
+    "In 2007 I visited Hanoi with my friend, Alex Meitlis, and found myself squatting in the dingiest of family-run street kitchens, experiencing the best food I’ve ever tasted. The freshness of the vegetables and herbs was mind-blowing.",
+    "Here’s a vegetarian adaptation of a traditional Vietnamese pancake, normally consisting of fatty pork and prawns. I added sweet soy to the dipping sauce to make up for omitting the ubiquitous Vietnamese fish sauce, nuoc mam."
+  ],
+  "time": {
+    "total": 30
+  }
+}

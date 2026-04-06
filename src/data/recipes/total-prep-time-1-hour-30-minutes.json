@@ -1,0 +1,76 @@
+{
+  "id": "total-prep-time-1-hour-30-minutes",
+  "name": "Total Prep Time: 1 hour 30 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "beef short ribs",
+      "amount": "4 lb."
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "flour",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "celery, coarsely chopped",
+      "amount": "4 stalks"
+    },
+    {
+      "item": "carrots, coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "large onion, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "thyme",
+      "amount": "1/8 tsp."
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "garlic",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "can of tomato puree",
+      "amount": "29 oz."
+    },
+    {
+      "item": "bottle burgundy wine",
+      "amount": "1/2"
+    },
+    {
+      "item": "cornstarch, mixed with 1/2 cup water",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "orzo pasta",
+      "amount": "1 lb."
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "Heat vegetable oil in Dutch oven until hot. Toss short ribs in flour seasoned with pepper and salt and place in pre-",
+    "heated pan; brown well on all sides.",
+    "Add celery, carrots, onion, thyme, bay leaves and garlic. Add tomato puree, burgundy wine and enough water to",
+    "cover meat and vegetables."
+  ],
+  "time": {
+    "total": 1
+  }
+}

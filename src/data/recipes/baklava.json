@@ -2,99 +2,62 @@
   "id": "baklava",
   "name": "Baklava",
   "source": {
-    "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "Sweet Ends"
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
   },
-  "servings": "serves 8",
+  "servings": "serves 18",
   "ingredients": [
     {
-      "item": "filo pastry, at room temperature",
-      "amount": "1 lb"
-    },
-    {
-      "item": "butter, softened",
-      "amount": "1 cup"
-    },
-    {
-      "item": "sugar, divided",
-      "amount": "¾ cup"
-    },
-    {
-      "item": "ground cinnamon",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "walnuts, chopped",
-      "amount": "2 cups"
-    },
-    {
-      "item": "cold water",
-      "amount": "½ cup"
-    },
-    {
-      "item": "lemon juice",
-      "amount": "¼ cup"
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
     },
     {
       "item": "honey",
-      "amount": "¼ cup"
+      "amount": "½ cup"
     },
     {
-      "item": "Preheat the oven to 325°F, and grease an 11x17 baking dish with some olive oil.",
-      "amount": ""
+      "item": "water",
+      "amount": "1 cup"
     },
     {
-      "item": "Layer half of the filo sheets in the greased dish, brushing each sheet with butter as you go.",
-      "amount": ""
+      "item": "white sugar",
+      "amount": "1 cup"
     },
     {
-      "item": "In a bowl, combine ¼ cup of the sugar with the cinnamon, and mix in the walnuts.",
-      "amount": ""
+      "item": "package phyllo dough",
+      "amount": "1"
     },
     {
-      "item": "Top the arranged sheets with the walnut mixture.",
-      "amount": ""
+      "item": "butter",
+      "amount": "1 cup"
     },
     {
-      "item": "Top with the remaining filo after brushing each of them with more butter.",
-      "amount": ""
+      "item": "ground cinnamon",
+      "amount": "1 teaspoon"
     },
     {
-      "item": "Using a very sharp knife, cut diagonally into squares or diamonds, cutting through all the layers.",
-      "amount": ""
-    },
-    {
-      "item": "Bake until golden and crisp, 55–60 minutes.",
-      "amount": ""
-    },
-    {
-      "item": "Place a medium saucepan over medium-high heat. Add the remaining sugar, together with the water, lemon juice, and honey. Cook, stirring, until the sugar dissolves.",
-      "amount": ""
-    },
-    {
-      "item": "Pour the syrup over the hot baklava. Allow it to cool down, and serve.",
-      "amount": ""
+      "item": "nuts",
+      "amount": "1 pound"
     }
   ],
   "method": [
-    "Preheat the oven to 325°F, and grease an 11x17 baking dish with some olive oil.",
-    "Layer half of the filo sheets in the greased dish, brushing each sheet with butter as you go.",
-    "In a bowl, combine ¼ cup of the sugar with the cinnamon, and mix in the walnuts.",
-    "Top the arranged sheets with the walnut mixture.",
-    "Top with the remaining filo after brushing each of them with more butter.",
-    "Using a very sharp knife, cut diagonally into squares or diamonds, cutting through all the layers.",
-    "Bake until golden and crisp, 55–60 minutes.",
-    "Place a medium saucepan over medium-high heat. Add the remaining sugar, together with the water, lemon juice, and honey. Cook, stirring, until the sugar dissolves.",
-    "Pour the syrup over the hot baklava. Allow it to cool down, and serve."
+    "Preheat the oven to 350 degrees Fahrenheit.",
+    "Toss nuts with cocoa powder after they've been chopped.",
+    "To suit the pan, cut the entire stack in a quarter.",
+    "As you operate, cover the phyllo with a softened cloth to prevent it",
+    "from drying out.",
+    "Butter 2 layers of dough and put them in the pan.",
+    "Place two sheets of flour, butter, and nuts on top as you go.",
+    "Slice diamond forms to the sides of the hole with a paring blade.",
+    "Baklava should be crispy and fluffy after around 50 minutes in the",
+    "While the baklava is cooking, make the sauce.",
+    "Bring sugar and water to a boil until the sugar has melted.",
+    "Mix in the vanilla and honey. Cook for about 20 minutes on",
+    "low heat.",
+    "Remove the baklava from the oven and pour the sauce over it",
+    "right away. Cupcake papers can be used for serving."
   ],
-  "image": null,
   "time": {
-    "total": 60
-  },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ]
+    "total": 40
   }
 }

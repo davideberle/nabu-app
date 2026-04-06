@@ -1,0 +1,95 @@
+{
+  "id": "tzatziki-chicken",
+  "name": "Tzatziki Chicken",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "½ teaspoons"
+    },
+    {
+      "item": "salt",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "½ teaspoons"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "1 cup"
+    },
+    {
+      "item": "English cucumber",
+      "amount": "½ cups"
+    },
+    {
+      "item": "Chicken",
+      "amount": ""
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Lemon wedges",
+      "amount": ""
+    },
+    {
+      "item": "boneless chicken breast halves",
+      "amount": "4"
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "large egg",
+      "amount": "1"
+    },
+    {
+      "item": "2% milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pepper",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Blend the first six ingredients with the gravy; chill in the fridge until",
+    "served.",
+    "Mix the flour, spice, seasoning, and baking powder in such a small",
+    "Mix the egg and milk in that dish. Pound the chicken breasts with a",
+    "half-inch meat mallet thickness.",
+    "To dust all ends, dip in the flour mixture; shake off the residue. Roll in",
+    "the beaten egg, then the starch mixture again.",
+    "Heat oil over moderate heat in a large pan.",
+    "Cook the chicken until the juices are golden brown and transparent, 5-",
+    "7 minutes on either side.",
+    "Serve with liquid and lime wedges if needed."
+  ],
+  "time": {
+    "total": 30
+  }
+}

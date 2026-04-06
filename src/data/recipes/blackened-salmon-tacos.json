@@ -1,0 +1,49 @@
+{
+  "id": "blackened-salmon-tacos",
+  "name": "Blackened Salmon Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salmon filet, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the salmon filet in the mix spice and olive oil.",
+    "Now slice it up and add it in the heated taco shells.",
+    "Add the rest of the ingredients on top.",
+    "Your dish is ready to be served.",
+    "10 Spicy Shrimp Tacos with Creamy Sirarcha Sauce and Cilantro"
+  ],
+  "time": {
+    "total": 15
+  }
+}

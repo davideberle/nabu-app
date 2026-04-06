@@ -1,92 +1,68 @@
 {
   "id": "salad",
-  "name": "Salad",
-  "persianName": "Fattoush",
+  "name": "SALAD",
   "source": {
-    "cookbook": "Persiana",
-    "author": "Sabrina Ghayour",
-    "chapter": "Salads & vegetables"
+    "cookbook": "Raw Food",
+    "author": "DK"
   },
-  "servings": "serves 6",
-  "intro": "If you have ever been to a Lebanese restaurant, two salads always feature on the menu – tabbouleh and, of course, fattoush. While I love tabbouleh, fattoush feels more like a proper salad to me and has the added bonus of croutons or deep-fried pieces of bread. There is so much crunch to this salad and I believe that is what wins me over… plus the fact that the simple dressing cuts through a heavy Middle Eastern meal beautifully.",
+  "servings": "serves 1",
   "ingredients": [
     {
-      "item": "large pittas or khobz flatbreads (or any flatbread you like)",
-      "amount": "2 (preferably stale)"
+      "item": "• Preparation time: 15 minutes",
+      "amount": "2"
     },
     {
-      "item": "cherry or baby plum tomatoes, roughly chopped",
-      "amount": "400g"
-    },
-    {
-      "item": "heads of Baby Gem or romaine lettuce, halved lengthways and roughly chopped",
-      "amount": "4"
-    },
-    {
-      "item": "large cucumber, halved lengthways and cut into 1cm- (½in-) thick half moons",
-      "amount": "1"
-    },
-    {
-      "item": "red pepper, cored, deseeded and cut into 2.5cm (1in) dice",
-      "amount": "1"
-    },
-    {
-      "item": "green pepper, cored, deseeded and cut into 2.5cm (1in) dice",
-      "amount": "1"
-    },
-    {
-      "item": "radishes, trimmed and cut into quarters",
-      "amount": "200g"
-    },
-    {
-      "item": "bunch of spring onions, thinly sliced",
-      "amount": "1"
-    },
-    {
-      "item": "packet of flat leaf parsley, leaves picked and finely chopped",
-      "amount": "1 x 20g"
-    },
-    {
-      "item": "packet of mint, leaves picked and finely chopped",
-      "amount": "1 x 20g"
-    },
-    {
-      "item": "sumac, plus extra to garnish",
-      "amount": "1 heaped tbsp"
-    },
-    {
-      "item": "olive oil",
-      "amount": "5 tbsp"
-    },
-    {
-      "item": "juice of 1½ lemons",
+      "item": "For the salad:",
       "amount": ""
     },
     {
-      "item": "sea salt",
+      "item": "mango",
+      "amount": "1"
+    },
+    {
+      "item": "kohlrabi",
+      "amount": "1"
+    },
+    {
+      "item": "large handfuls baby spinach",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 cup dried cranberries",
       "amount": ""
     },
     {
-      "item": "freshly ground black pepper",
+      "item": "⁄4 cup pine nuts",
       "amount": ""
+    },
+    {
+      "item": "For the dressing:",
+      "amount": ""
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "orange juice salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tsp"
     }
   ],
   "method": [
-    "Preheat the oven to 200°C/fan 180°C/gas mark 6. Line a baking sheet with nonstick baking paper.",
-    "Cut the pittas or flatbread roughly into 4cm (1½in) squares and lay them on the baking sheet. Toast them in the oven for 15 minutes, or until they are dry and completely crunchy.",
-    "Put all the salad ingredients into a large salad or mixing bowl and sprinkle over the sumac, olive oil, lemon juice and sea salt and black pepper to taste. Toss the salad well, ensuring everything gets a good coating of dressing. Serve it piled high, topped with the toasted croutons and an extra sprinkling of sumac."
-  ],
-  "image": "/recipes/salad.jpg",
-  "dietary": [
-    "vegan",
-    "vegetarian"
+    "To make the salad, peel the mango. Cut the flesh from the pit, and then chop it into bite-size pieces. Peel the kohlrabi and slice it into cubes, making sure they are not too small. Cut the stem end off the chili pepper, seed it, and finely chop the chili. (Be sure to wash your hands immediately afterward and avoid contact with your eyes.) Pick the cilantro leaves. Quarter the cranberries, or chop them coarsely, depending on their size. Stand the cob of corn upright on a cutting board. Working from the top downward, use a large, sharp knife to slice the kernels off the cob.",
+    "Carefully combine all the ingredients for the dressing in a bowl. Add all the salad ingredients and toss gently. Add the raw pine nuts or, to increase the flavor, pine nuts that you have toasted in a frying pan without using any oil.",
+    "Adjust the amount of chili pepper you use according to how hot the chili is. I don’t use very hot chilies, since the salad can become unpalatable very quickly.",
+    "While it is true you can better gauge the heat by using chili powder, the fresh chili added to this salad makes it more delicious when used judiciously. If you usually shy away from using fresh chili peppers, be brave, and give it a try. It isn’t all that hard!"
   ],
   "time": {
-    "total": 15
-  },
-  "category": {
-    "dish_type": [
-      "side"
-    ]
+    "total": 30
   }
 }

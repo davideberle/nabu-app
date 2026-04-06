@@ -1,0 +1,72 @@
+{
+  "id": "coconut-curry-chicken",
+  "name": "Coconut Curry Chicken",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "of chicken breasts, small pieces",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "of salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Dash of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1 ½ Tbsp."
+    },
+    {
+      "item": "of powdered curry",
+      "amount": "2 Tbsp."
+    },
+    {
+      "item": "of an onion, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "of garlic, crushed",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "can of coconut milk",
+      "amount": "1 (14 oz.)"
+    },
+    {
+      "item": "can of tomatoes, chopped",
+      "amount": "1 (14.5 oz.)"
+    },
+    {
+      "item": "can of tomato sauce",
+      "amount": "1 (8 oz.)"
+    },
+    {
+      "item": "of white sugar",
+      "amount": "3 Tbsp."
+    }
+  ],
+  "method": [
+    "Season the prepared chicken with a dash of salt and black pepper.",
+    "In a skillet set over medium to high heat, add in the vegetable oil and",
+    "powdered curry. Add in the prepared chopped onions and minced garlic.",
+    "Stir well to actually mix and continue to cook for 1 minute.",
+    "Add in the seasoned chicken pieces. Toss well to mix.",
+    "Lower the heat to an actual medium and cook for 8 to 10 minutes or until",
+    "cooked through.",
+    "Add in the coconut milk, chopped tomatoes, tomato sauce and white sugar.",
+    "Stir well to mix.",
+    "Cover and cook for approximately about 35 to 40 minutes.",
+    "Remove and serve immediately.",
+    "Recipe 4: Coconut Curry Haddock"
+  ],
+  "time": {
+    "total": 60
+  }
+}

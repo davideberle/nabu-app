@@ -1,0 +1,71 @@
+{
+  "id": "french-chocolate-pastry",
+  "name": "French Chocolate Pastry",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of milk",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of cocoa powder",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of lemon extract",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of almond extract",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "A cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of dry yeast",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a medium bowl.",
+    "Add the butter in it.",
+    "Add the flour and mix well.",
+    "Refrigerate the mixture.",
+    "Take a large bowl and add the yeast into it.",
+    "Add the sugar, salt and milk.",
+    "Mix the milk mixture with the flour.",
+    "Add the cocoa powder, eggs, lemon extract and the almond extract",
+    "together.",
+    "Knead the dough until uniform.",
+    "Place butter on dough and fold it.",
+    "Make pastries from the dough roll.",
+    "Add the heavy cream in the pastry dough.",
+    "Bake them for ten minutes.",
+    "The pastry is ready to be served."
+  ],
+  "time": {
+    "total": 12
+  }
+}

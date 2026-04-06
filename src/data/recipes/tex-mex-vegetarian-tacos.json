@@ -1,0 +1,74 @@
+{
+  "id": "tex-mex-vegetarian-tacos",
+  "name": "Tex- Mex Vegetarian Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Jalapeño, one to two",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, two",
+      "amount": ""
+    },
+    {
+      "item": "Green bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Red potatoes, two to three",
+      "amount": ""
+    },
+    {
+      "item": "Freshly chopped parsley and cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, eight",
+      "amount": ""
+    },
+    {
+      "item": "Shredded cheese, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Red bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro creamy sauce, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add a little olive oil in the pan.",
+    "Cut the tomatoes, jalapenos, onions, and cilantro.",
+    "Cook the red bell pepper, green bell pepper, peas, and red onion.",
+    "Chop the potatoes into small cubes and cook with a little bit of olive",
+    "oil, garlic, salt and pepper until they are slightly crispy.",
+    "Heat the tortilla in a frying pan and add the shredded cheese.",
+    "Combine the potatoes, and mix vegetables.",
+    "Add the ingredients on the tortillas.",
+    "Top with sour cream, and cilantro creamy sauce.",
+    "Serve your dish with fresh salsa."
+  ],
+  "time": {
+    "total": 15
+  }
+}

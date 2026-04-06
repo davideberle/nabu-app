@@ -1,0 +1,145 @@
+{
+  "id": "whole-wheat-sandwich-bread",
+  "name": "Whole Wheat Sandwich Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "FOR THE TANGZHONG",
+      "amount": ""
+    },
+    {
+      "item": "c.",
+      "amount": "1/2"
+    },
+    {
+      "item": "water",
+      "amount": ""
+    },
+    {
+      "item": "tbsp.",
+      "amount": "2"
+    },
+    {
+      "item": "whole-wheat flour",
+      "amount": ""
+    },
+    {
+      "item": "FOR THE BREAD",
+      "amount": ""
+    },
+    {
+      "item": "instant yeast 1 (0.25-oz.) package or 2 1/4 tsp. instant",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "yeast",
+      "amount": ""
+    },
+    {
+      "item": "lukewarm evaporated milk",
+      "amount": ""
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "lukewarm water",
+      "amount": ""
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "honey",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "2 34"
+    },
+    {
+      "item": "flour made from whole wheat (390 g.)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "grapeseed oil, for example",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "melting butter",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1 1/2"
+    },
+    {
+      "item": "salt (kosher) (9 g.)",
+      "amount": ""
+    },
+    {
+      "item": "Using an egg wash (optional)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "seeds or oats (assorted) for sprinkling (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make tangzhong, stir together 12 cup water and 2",
+    "tablespoons flour in a small saucepan over medium-low heat",
+    "until a thicker slurry develops, about 2 to 3 minutes. Allow",
+    "cooling to room temperature after removing from the heat.",
+    "In a large mixing basin, combine yeast, milk, 1/4 cup water, and",
+    "honey; set aside for 15 minutes until frothy.",
+    "To the yeast mixture, add 2 34 cups whole wheat flour, cooled",
+    "tangzhong, oil, butter, and salt. During 2 minutes, or until the",
+    "dough is cohesive and sticky, mix for 1 to 2 minutes. Allow for",
+    "a 20-minute rest period after covering the bowl.",
+    "Gently take up one edge of the dough and pull softly to fold it",
+    "toward the other edge, using moist hands to prevent sticking and",
+    "handling the dough loosely to avoid ripping. Pour the mixture",
+    "over so that the insensitive is facing up; stretch and fold the",
+    "dough over the basin again. Allow 20 minutes for resting.",
+    "Continue the extending and folding technique two more times,",
+    "stopping between folds for 20 to 30 minutes.",
+    "Grease a 9\" x 5\" loaf pan lightly. Using oiled hands, pat dough",
+    "into a 9\" × 11\" rectangle on a lightly greased board. With the",
+    "dough, make a letter fold by folding one-third of the rectangle",
+    "over the center third, then folding the remaining third over the",
+    "middle third. Flatten the dough with your fingers, then roll it",
+    "into a log, starting on the short side. Place the log seam-side",
+    "down in the prepared pan, flatten it with even pressure to fill the",
+    "pan's bottom.",
+    "Lightly brush the top of the loaf with egg wash, then sprinkle",
+    "with various seeds or oats, if desired. To incorporate sources in",
+    "the dough, apply equal pressure. Allow 1 hour for proofing until",
+    "the middle of the loaf domes 12\" over the top of the loaf pan.",
+    "Nearly an hour before you want to bake, preheat the oven to 375",
+    "degrees Fahrenheit.",
+    "Bake for 45 to 50 minutes, or until brown on top and internal",
+    "temperature reaches 200°."
+  ],
+  "time": {
+    "total": 45
+  }
+}

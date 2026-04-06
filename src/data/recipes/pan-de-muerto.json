@@ -1,0 +1,80 @@
+{
+  "id": "pan-de-muerto",
+  "name": "Pan de Muerto",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of yeast",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "grams of flour",
+      "amount": "500"
+    },
+    {
+      "item": "grams of sugar",
+      "amount": "100"
+    },
+    {
+      "item": "grams of butter",
+      "amount": "80"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "grams of unsalted margarine",
+      "amount": "80"
+    },
+    {
+      "item": "oranges",
+      "amount": "2"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "of warm water",
+      "amount": "60 ml."
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "of orange essence",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Sugar, for decoration",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place eggs, margarine, sugar, and salt in a mixer bowl.",
+    "Add the flour with the water. Then add yeast and mix to combine.",
+    "Add butter, orange zest, sugar, and orange essence. Mix to make a",
+    "soft dough.",
+    "Knead the dough, and transfer it back to the bowl. Cover it with",
+    "plastic wrap, and set aside for about 45 minutes.",
+    "Make pieces from the dough, and prepare greased baking sheets.",
+    "Place these pieces onto baking sheets. And press them slightly.",
+    "Preheat the oven to 350",
+    "Mix a pinch of salt to the mixture of water and egg.",
+    "Brush it on the buns.",
+    "Transfer the buns/pieces to the oven. Bake until it is golden",
+    "brown.",
+    "Let it cool at room temperature.",
+    "When the Pan de Muerto bread is cooled, brush it with butter",
+    "and sprinkle with sugar.",
+    "Serve and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "refried-beans",
+  "name": "Refried Beans",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sea salt",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "cumin",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "water",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "cans pinto beans",
+      "amount": "2"
+    },
+    {
+      "item": "lime juice, to taste",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a saucepan. Add salt and onions. Cook for 5-8",
+    "minutes.",
+    "Then add cumin, chili powder, and garlic. Stir constantly.",
+    "Add water and beans. Stir, and cook for about 5 minutes.",
+    "Lower the heat a little bit and use a masher to mash up beans.",
+    "Continue cooking, and often stir for some more minutes.",
+    "Add lime juice and cilantro.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

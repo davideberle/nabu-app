@@ -1,0 +1,52 @@
+{
+  "id": "speedy-beef-tacos",
+  "name": "Speedy Beef Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Tomatoes, eight",
+      "amount": ""
+    },
+    {
+      "item": "Beef, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Guacamole, eight tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sweetcorn, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Lettuce, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the beef in the taco seasoning, salt, and pepper.",
+    "Heat the taco shells and add the beef slices along with tomatoes,",
+    "guacamole, lettuce and sweetcorn.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

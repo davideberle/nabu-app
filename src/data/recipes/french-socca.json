@@ -1,0 +1,44 @@
+{
+  "id": "french-socca",
+  "name": "French Socca",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Herbs de Provence, one teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Chickpea flour, three and a half cup",
+      "amount": ""
+    },
+    {
+      "item": "Salted butter, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Large eggs, two",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt, half teaspoon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients into the bowl.",
+    "Mix well.",
+    "Take a large frying pan.",
+    "Spread a thin layer of the batter.",
+    "Cook the flatbread on both sides and dish out.",
+    "Cut into pieces.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

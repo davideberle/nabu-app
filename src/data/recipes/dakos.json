@@ -1,0 +1,60 @@
+{
+  "id": "dakos",
+  "name": "DAKOS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "chile, oils, lemon juice, sesame seeds, nigella seeds, and ½ teaspoon salt, stir",
+  "ingredients": [
+    {
+      "item": "large tomatoes, cut into ⅜-inch/1-cm dice (2¾ cups/500 g)",
+      "amount": "6"
+    },
+    {
+      "item": "red onion, cut into ¼-inch/5-mm dice (⅓ cup/50 g)",
+      "amount": "½"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "oz/150 g Cretan dakos or other rusks, coarsely broken",
+      "amount": "5"
+    },
+    {
+      "item": "cup/70 g coarsely crumbled feta",
+      "amount": "½"
+    },
+    {
+      "item": "cup/40 g black olives, pitted and halved",
+      "amount": "⅓"
+    },
+    {
+      "item": "tbsp/30 g capers, whole or very coarsely chopped",
+      "amount": "3½"
+    },
+    {
+      "item": "tbsp/5 g chopped flat-leaf parsley, to serve salt and black pepper",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the tomatoes, onion, vinegar, 2 tablespoons of the oil, the allspice, a scant ½ teaspoon salt, and a good grind of black pepper in a large bowl. Stir",
+    "gently and set aside.",
+    "Spread out the dakos on a serving platter and spoon the tomato mixture on top. Sprinkle the feta, olives, and capers over the tomato mixture, followed by the parsley and the remaining 1 tablespoon olive oil. Leave to sit for 5 minutes before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

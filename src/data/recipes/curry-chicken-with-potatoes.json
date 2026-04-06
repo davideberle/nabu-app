@@ -1,0 +1,100 @@
+{
+  "id": "curry-chicken-with-potatoes",
+  "name": "Curry Chicken with Potatoes",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "cubed chicken breast",
+      "amount": "1 pound"
+    },
+    {
+      "item": "cubed potatoes",
+      "amount": "3"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "Thai curry powder",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Ketchup",
+      "amount": "1½ tbsp."
+    },
+    {
+      "item": "ginger piece",
+      "amount": "1"
+    },
+    {
+      "item": "A handful of coriander",
+      "amount": ""
+    },
+    {
+      "item": "chicken stock",
+      "amount": "½ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "chopped shallots",
+      "amount": "2"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Kaffir lime leaves",
+      "amount": "2"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "can (15 oz.) thick coconut milk",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 F.",
+    "Add curry powder, cayenne, bay leaf, and cinnamon stick in a large pan.",
+    "Roast the ingredients for 2 minutes until aromatic.",
+    "Add 2 tbsp. oil and add ginger, shallots, and garlic.",
+    "Add 3 tbsp. of chicken stock and stir fry for 1 minute.",
+    "Now, add chicken cubes and potatoes. Fry for 1 minute and mix well.",
+    "Add chicken stock and ketchup. Combine well.",
+    "Stir coconut milk, sugar, and kaffir leaves, and fish sauce. Combine well.",
+    "Have the mixture to a casserole and cover. Bake for 1 hour.",
+    "During the last 15 minutes, add tomatoes.",
+    "Garnish with coriander leaves and serve.",
+    "Recipe 31: Curry Coconut Shrimp"
+  ],
+  "time": {
+    "total": 60
+  }
+}

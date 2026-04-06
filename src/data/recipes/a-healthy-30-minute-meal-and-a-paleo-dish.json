@@ -1,0 +1,78 @@
+{
+  "id": "a-healthy-30-minute-meal-and-a-paleo-dish",
+  "name": "A healthy 30-minute meal and a paleo dish.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "shallot",
+      "amount": "1"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "2 cups"
+    },
+    {
+      "item": "haddock",
+      "amount": "1 pound"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "shelled edamame",
+      "amount": "1 cup"
+    },
+    {
+      "item": "can full-fat coconut milk",
+      "amount": "1 (13.5 oz.)"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "green onions, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "red curry paste",
+      "amount": "2 tsp."
+    }
+  ],
+  "method": [
+    "In a large-sized pot, heat the olive oil till extremely hot. Put the haddock; let",
+    "cook for 3 minutes each side till browned. Put the garlic, shallot and red",
+    "bell pepper; cook and mix for 3 minutes till shallot softens.",
+    "Into the pot, add the coconut milk. Mix in the turmeric, coriander, curry",
+    "powder and curry paste. Lower the heat; allow to simmer for 6 to 7 minutes",
+    "till coconut milk is cooked down by 1/4. Mix in edamame and spinach.",
+    "Allow to cook for approximately about 3 to 4 minutes till edamame is",
+    "heated completely and spinach is wilted. Scatter green onions on top of",
+    "curry.",
+    "Recipe 5: Coconut Curry Shrimp",
+    "Shrimp and sweet red pepper in coconut curry sauce—this is the dish that"
+  ],
+  "time": {
+    "total": 38
+  }
+}

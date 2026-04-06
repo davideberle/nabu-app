@@ -1,0 +1,77 @@
+{
+  "id": "chicken-cheese-and-chili-quesadillas",
+  "name": "Chicken, Cheese, and Chili Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Quesadillas:",
+      "amount": ""
+    },
+    {
+      "item": "Colby, Monterey, Cheddar, or Jack cheese",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "12"
+    },
+    {
+      "item": "jalapenos",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "butter",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "chicken, cooked",
+      "amount": "1 cup"
+    },
+    {
+      "item": "For Salsa and Topping:",
+      "amount": ""
+    },
+    {
+      "item": "red onion",
+      "amount": "1/4"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "cilantro",
+      "amount": "2-3 tbsp."
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Hot sauce, to taste",
+      "amount": ""
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Put tortillas on a surface, and equally divide the jalapenos, cheese,",
+    "and the chicken.",
+    "Put remaining tortillas on the top and seal them gently.",
+    "Melt butter in a skillet. Fry both sides of quesadilla carefully. Make",
+    "sure it does not burn. Add more butter if required.",
+    "In the meantime, prepare the salsa.",
+    "Take tomatoes, and cut them into halves. Peel off their skin. Then add",
+    "onion, cilantro, salt, and hot sauce to taste.",
+    "Then, cut the quesadillas into 4 pieces.",
+    "Serve with avocado and salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

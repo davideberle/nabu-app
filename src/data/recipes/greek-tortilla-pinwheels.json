@@ -1,0 +1,63 @@
+{
+  "id": "greek-tortilla-pinwheels",
+  "name": "Greek Tortilla Pinwheels",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "0.25 teaspoon oregano",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper",
+      "amount": ""
+    },
+    {
+      "item": "black olives",
+      "amount": "5"
+    },
+    {
+      "item": "0.25 green bell pepper",
+      "amount": ""
+    },
+    {
+      "item": "tortilla",
+      "amount": "1"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "0.2 cucumber",
+      "amount": ""
+    },
+    {
+      "item": "1.75 ounces feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "3 tablespoons"
+    }
+  ],
+  "method": [
+    "Arrange all of your items ahead of time.",
+    "Place the feta cheese and Greek yogurt combination on a tortilla on a",
+    "surface or other dry worktop.",
+    "Keep a small border from around the surface clear.",
+    "The salad vegetables should be uniformly distributed around the",
+    "cheese, followed by the oregano and peppers.",
+    "Cover the tortilla in bubble wrap and roll it up as tightly as possible.",
+    "Place in the fridge for about 30 minutes to firm up.",
+    "Remove the tortilla from the wrapper and cut it into 8 even pieces.",
+    "Layout flat on a tray to serve.",
+    "Chapter 3: Greek Lunch Recipes"
+  ],
+  "time": {
+    "total": 15
+  }
+}

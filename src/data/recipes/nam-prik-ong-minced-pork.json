@@ -1,0 +1,51 @@
+{
+  "id": "nam-prik-ong-minced-pork",
+  "name": "Nam Prik Ong Minced Pork",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "rinds, boiled cabbage wedges and sticky rice.",
+  "ingredients": [
+    {
+      "item": "93",
+      "amount": ""
+    },
+    {
+      "item": "young Northern Thai green chilies (prik num) roasted on a baking tray in the oven and peeled after cooling",
+      "amount": "15"
+    },
+    {
+      "item": "small shallots, roasted and peeled",
+      "amount": "5"
+    },
+    {
+      "item": "garlic, roasted and peeled",
+      "amount": "10 cloves"
+    },
+    {
+      "item": "mashed anchovies or other salted fi sh meat",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "1–2 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "shaved palm sugar",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "In a mortar and pestle, pound together the chilies, shallots and garlic.",
+    "Add the anchovies, fi sh sauce, lime juice and palm sugar. Mix well and taste. Flavors should be salty and spicy."
+  ],
+  "time": {
+    "total": 30
+  }
+}

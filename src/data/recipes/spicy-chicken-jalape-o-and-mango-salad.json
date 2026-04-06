@@ -1,0 +1,65 @@
+{
+  "id": "spicy-chicken-jalape-o-and-mango-salad",
+  "name": "Spicy Chicken, Jalapeño and Mango Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of jalapeños, finely chopped",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "pack of sliced cherry tomato",
+      "amount": "250g"
+    },
+    {
+      "item": "Small bunch of chopped coriander",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped red onion",
+      "amount": "1"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "lettuces, cut into pieces",
+      "amount": "2"
+    },
+    {
+      "item": "chicken breasts, cooked and torn into shreds",
+      "amount": "4"
+    },
+    {
+      "item": "sliced red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "A handful of tortilla chips",
+      "amount": ""
+    },
+    {
+      "item": "ripe diced mango",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix jalapeños, cherry tomatoes, lime juice, coriander, oil, and onion",
+    "in a bowl. Add some seasoning.",
+    "Top with the remaining ingredients.",
+    "Mix to coat.",
+    "Put tortilla chips on the top of it,",
+    "Serve with lime wedges, and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

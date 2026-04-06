@@ -1,0 +1,65 @@
+{
+  "id": "rolled-taco-dip",
+  "name": "Rolled Taco Dip",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Cooked chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Pepper jack cheese, three cups",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla chips, as required",
+      "amount": ""
+    },
+    {
+      "item": "Green onions, a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Green salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Garlic powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice, four tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Onion powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix all the ingredients together in a bowl.",
+    "Add the mixture into a baking tray and let it bake for twenty to",
+    "twenty-five minutes.",
+    "Add some extra cheese on top and bake for extra five minutes.",
+    "Serve your dip with the tortilla chips and enjoy."
+  ],
+  "time": {
+    "total": 30
+  }
+}

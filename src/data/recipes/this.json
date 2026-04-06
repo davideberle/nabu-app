@@ -1,0 +1,72 @@
+{
+  "id": "this",
+  "name": "This",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "I pound fresh lasagne, defrosted if frozen",
+      "amount": ""
+    },
+    {
+      "item": "pats of butter",
+      "amount": "2"
+    },
+    {
+      "item": "J4 cup balsamic vinegar",
+      "amount": ""
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "4 ounces"
+    }
+  ],
+  "method": [
+    "Bring a large pan of salted water to a boil. Put a large frying pan over a medium heat and add a couple",
+    "lugs of olive oil and the garlic. Add the butter and let it melt. When the garlic starts to brown, add",
+    "the tomatoes • Give everything a good stir, then add the basil stalks and half the leaves. Add the vinegar",
+    "and season w ith salt and",
+    "pepper. Drop your fresh pasta strips into the pan of boiling water and cook",
+    "for 3 minutes . Drain in a colander over a large bowl, reserving some of the cooking water. Add the",
+    "pasta to the frying pan with a splash of the cooking water and half the Parmesan • Give it a good stir. Taste",
+    "dd a little more sa lt and pepper if you think it needs it",
+    "To serve yo ur pasta",
+    "Divide the pasta between your plates or bowls, or put the pan in the middle of the table and let everyone",
+    "help t hemselves. Sprink",
+    "le over the rest of the Parmesan and the basil leaves, tearing any larger ones up •",
+    "Lovely with a simple side salad",
+    "Everyone loves stir-fries. Even the school kids I came across in jamie's Dinners",
+    "loved them. I've picked a handful of the most commonly enjoyed stir-fries, the",
+    "ones we t end to buy as take-out, and have given you my versions.The idea of this",
+    "to get you rattling out consistently delicious stir-fries for lunch and",
+    "ow this is all pretty simple, but there are a few things to bear in mind to",
+    "make sure you get it right:",
+    "I. Obviously the wok is a very important cooking implement for making a stir-",
+    "If you have n't got one, a very large frying pan can give good results.",
+    "2. If you've got a gas stovetop, you'll be well away. If you've got an electric or",
+    "induct ion stovetop, make sure your wok has an extra-thick bottom to retain",
+    "the se ~ing heat.",
+    "I've w ritten ail the recipes to serve 2 in this chapter, because if you try to cook",
+    "a larger batch, the wok will get overloaded with ingredients. If you do want to",
+    "cook for 4 people, just double the ingredients and make two batches.",
+    "You must get your wok or pan really hot before you start cooking. And it's",
+    "rtant that all your ingredients are ready and prepared in advance.",
+    "5. Instead of chicken or shrimp in these recipes, a delicious vegetarian alternative",
+    "is diced tofu, which is made from beancurd.",
+    "Although stir-frying is a simple method of cooking, it does require you to be",
+    "vigilant and hands-on - it might take only 3 or 4 minutes to cook a stir-fry, but if",
+    "you don't keep tossing it and moving it around, parts will catch and burn. But",
+    "don't let me scare you off, because it's exciting and alive and real cooking.",
+    "CHICKEN CHOW MEIN",
+    "This dish makes use of a tender, juicy Asian cabbage called bok choy, which is simple to cook and really tasty.",
+    "You should be able to find bok choy (a lso know as pak choy, C hinese white cabbage, or hakusai) in your local",
+    "grocery store, but, if not, a nice heart of romaine (halved) or a handful or two of baby spinach thrown into",
+    "the wok for the last 2 or 3 minutes of cooking will do the trick."
+  ],
+  "time": {
+    "total": 30
+  }
+}

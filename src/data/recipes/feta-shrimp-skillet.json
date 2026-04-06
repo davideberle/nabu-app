@@ -1,0 +1,70 @@
+{
+  "id": "feta-shrimp-skillet",
+  "name": "Feta Shrimp Skillet",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "minced parsley",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "medium shrimp",
+      "amount": "1 pound"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cans diced tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "medium onion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat oil over moderate heat in a large fry pan.",
+    "Insert the onion; continue cooking until tender, about 6 minutes.",
+    "Insert the garlic and spices and simmer for two minutes.",
+    "Stir in the tomatoes and wine if necessary. Just get it to a boil.",
+    "Reduce the heat; boil, uncovered, 7 minutes or until mildly thickened",
+    "with sauce.",
+    "Add the shrimp and parsley; simmer for 5-6 minutes or until yellow,",
+    "stirring periodically.",
+    "Remove from the heat; insert cheese and scatter. Let rest, wrapped",
+    "until softened with cheese."
+  ],
+  "time": {
+    "total": 30
+  }
+}

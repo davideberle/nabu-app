@@ -1,0 +1,82 @@
+{
+  "id": "44-pasta-with-asparagus-and-shrimp",
+  "name": "(44)     Pasta with Asparagus and Shrimp",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "linguine",
+      "amount": "12 oz."
+    },
+    {
+      "item": "asparagus spears",
+      "amount": "24"
+    },
+    {
+      "item": "shrimp",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "2 1/2 tbsp."
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "fresh parsley",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "+ 3 tbsp. olive or saffron oil, divided",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "large red bell pepper or roasted peppers",
+      "amount": "1"
+    },
+    {
+      "item": "black olives, halved",
+      "amount": "1 cup"
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; drain and coat with 3 tbsp. olive oil.",
+    "Steam asparagus; reserve 3 tbsp. of the water. Use remaining asparagus water to steam shrimp 3 to 5 minutes.",
+    "Whisk reserved 3 tbsp. water, lemon zest, lemon juice, garlic, parsley, pepper, salt and mustard with 1/3 cup olive",
+    "oil or saffron oil. Toss together linguine, shrimp, asparagus, peppers and olives with lemon juice mixture.",
+    "Cool before serving.",
+    "(45) Scallops and Shrimp with Linguine",
+    "Scallops and shrimp are a delicious combination of texture and flavor that make for a wonderfully elegant dish. A",
+    "healthy, delicious seafood dish made with linguine. Scallops and shrimp are sautéed in garlic and herbs before",
+    "being added to a sauce of white wine, tomatoes, lemon juice, crunchy pecans, and celery. This recipe is perfect for a",
+    "weeknight meal or dinner party appetizer!",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 30
+  }
+}

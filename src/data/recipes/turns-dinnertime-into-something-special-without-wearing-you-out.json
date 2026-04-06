@@ -1,0 +1,76 @@
+{
+  "id": "turns-dinnertime-into-something-special-without-wearing-you-out",
+  "name": "turns dinnertime into something special without wearing you out.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "coconut milk",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 ½ tsp."
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "shrimp, peeled and deveined",
+      "amount": "1 pound"
+    },
+    {
+      "item": "green onions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "sweet red pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh cilantro, minced",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "For serving",
+      "amount": ""
+    },
+    {
+      "item": "Lime wedges",
+      "amount": ""
+    },
+    {
+      "item": "Cooked rice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the coconut milk, fish sauce, curry powder, brown sugar, salt and",
+    "pepper in a bowl.",
+    "Add the shrimp to a pan over medium heat.",
+    "Take 2 tbsp. of the coconut milk mixture and add this to the pan.",
+    "Cook while stirring for 3 minutes. Transfer to a plate.",
+    "Add the green onion and red pepper to the pan.",
+    "Pour in the remaining coconut milk mixture. Bring to a boil.",
+    "Reduce heat and simmer for 3 minutes.",
+    "Put the shrimp back to the pan along with the cilantro.",
+    "Heat through for 2 minutes.",
+    "Garnish with the lime wedges. Serve with the hot cooked rice.",
+    "Recipe 6: Coconut Curry Tofu",
+    "Tofu is also called bean curd. It is simply a soy product full of proteins. It is"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "sausage-tortilla-breakfast-bake",
+  "name": "Sausage Tortilla Breakfast Bake",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "tomatoes",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green chiles",
+      "amount": "1/2"
+    },
+    {
+      "item": "turkey breakfast sausage",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "corn tortillas (8 inches)",
+      "amount": "4"
+    },
+    {
+      "item": "pepper jack cheese, shredded",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "Monterey Jack cheese, shredded",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green onions",
+      "amount": "2"
+    },
+    {
+      "item": "milk, fat-free",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "6"
+    },
+    {
+      "item": "paprika",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "Salsa, optional",
+      "amount": ""
+    },
+    {
+      "item": "Green onions chopped, optional",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°. Take a skillet and cook sausage over the",
+    "medium heat. Make sure its color is not pink anymore. Put",
+    "tomatoes in it.",
+    "In a dish plate, place half of the tortillas. Put half of the mixture,",
+    "green onions, and cheeses. Repeat this process while making",
+    "layers.",
+    "Whisk eggs, paprika, milk, and cumin in a bowl. Then pour it over",
+    "the layers.",
+    "Bake while keeping it uncovered for about half an hour.",
+    "Serve with green onions, sour cream, and salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

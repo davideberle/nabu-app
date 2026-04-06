@@ -1,0 +1,77 @@
+{
+  "id": "spicy-scrambled-eggs",
+  "name": "SPICY SCRAMBLED EGGS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the rest, adding more butter as necessary. Serve warm, alongside the lime",
+  "ingredients": [
+    {
+      "item": "sunflower oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "small onion, finely diced (⅔ cup/100 g)",
+      "amount": "1"
+    },
+    {
+      "item": "1¼-inch/3-cm piece fresh ginger (about ⅓ oz/10 g), peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "medium red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "medium tomatoes, peeled and cut into ¾-inch/2-cm dice (1⅔ cups/300 g)",
+      "amount": "4"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "8"
+    },
+    {
+      "item": "green onions, white and green parts, thinly sliced (about ½ cup/50 g)",
+      "amount": "3"
+    },
+    {
+      "item": "cup/10 g cilantro leaves, chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "Urfa chile flakes, or ¼ tsp regular chile flakes salt",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Put a large, preferably nonstick sauté pan over medium heat and add the oil, cumin, caraway, onion, ginger, and chile. Cook for 8 minutes, stirring occasionally, until the onion is soft. Add the ground spices, tomato paste, and",
+    "¾ teaspoon salt and cook and stir for 2 minutes. Add the tomatoes and cook for a further 8 to 10 minutes, until most of the liquid has evaporated. Add the eggs, turn down the heat to medium-low, and continuously, but very gently, scrape the base of the pan with a wooden spatula. You want to end up with large, curd-like folds and you want the eggs to be soft and very moist. Cook",
+    "the mixture for a total of about 3 minutes. Sprinkle with the green onions, cilantro, and chile flakes and serve at once.",
+    "KALE AND CHEESE PIKELETS"
+  ],
+  "time": {
+    "total": 30
+  }
+}

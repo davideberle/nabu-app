@@ -1,0 +1,106 @@
+{
+  "id": "greek-chicken-rice-bowl",
+  "name": "Greek Chicken Rice Bowl",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Greek Marinade",
+      "amount": ""
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 ½ tablespoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Rice Bowl",
+      "amount": ""
+    },
+    {
+      "item": "Hummus",
+      "amount": ""
+    },
+    {
+      "item": "Family Bowls white rice",
+      "amount": ""
+    },
+    {
+      "item": "medium red onion",
+      "amount": "1"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "boneless skinless chicken thighs",
+      "amount": "12"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "seedless cucumbers",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Transfer the dressing components to a large mixing bowl to blend",
+    "properly. Save ½ of the filling in an enclosed jar.",
+    "Transfer the remaining dressing to a big plastic sealed plastic chicken",
+    "thigh package.",
+    "Cover the bag and rub the chicken with the marinade. If needed, put it",
+    "in the fridge for several hours.",
+    "Over a medium-high flame, heat a skillet, then sleet a bit of sesame",
+    "oil into the pan.",
+    "To extract excess sauce, pat the chicken thighs with a clean cloth and",
+    "cook the chicken, about 4-5 minutes each side, until crispy and fried",
+    "through.",
+    "Remove the chicken from a dish to cool whereas the other",
+    "components are cooked.",
+    "Put down and cut the cucumber, cabbage, peppers, and olives",
+    "together.",
+    "Microwave rice cups and divided equally between 4 cups according to",
+    "box instructions.",
+    "Add a few feta cheese, cucumbers, onions, tomatoes, and olives to",
+    "each cup.",
+    "Add a spoonful of cream cheese to the cups and add 2-3",
+    "pieces of chicken per dish.",
+    "If needed, eat with whole wheat pita or tortilla."
+  ],
+  "time": {
+    "total": 20
+  }
+}

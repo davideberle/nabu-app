@@ -1,0 +1,53 @@
+{
+  "id": "tau-fu-fa",
+  "name": "TAU FU FA",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "crushed sesame seeds, and serve.",
+  "ingredients": [
+    {
+      "item": "pandan leaves (see headnote) (1 oz/30 g)",
+      "amount": "10"
+    },
+    {
+      "item": "cups/1 liter unsweetened soy milk",
+      "amount": "4½"
+    },
+    {
+      "item": "tbsp/40 g superfine sugar",
+      "amount": "3½"
+    },
+    {
+      "item": "oz/100 g palm sugar, crushed into ⅜ -inch/1-cm chunks",
+      "amount": "3½"
+    },
+    {
+      "item": "⅔-inch/1.5-cm piece fresh ginger, peeled and cut into thin strips",
+      "amount": ""
+    },
+    {
+      "item": "small pineapple, peeled, quartered lengthwise, core removed, then cut crosswise into paper- thin slices",
+      "amount": "½"
+    },
+    {
+      "item": "tsp/2 g powdered agar agar",
+      "amount": "¾"
+    },
+    {
+      "item": "coconut cream salt",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Put the palm sugar, ¼ teaspoon salt, the ginger, and 3½ tablespoons/50 ml water in a saucepan. Place over medium-high heat and cook, stirring from time to time, until the sugar dissolves. Increase the heat and boil for 2 minutes before adding the pineapple and the remaining pandan leaves, also tied in a knot. Turn down the heat a little and simmer for 8 minutes, stirring once or twice, until the liquid starts to thicken. Remove from the heat and set aside. It will continue to thicken as it cools. Pour into a bowl, cover, and leave in the fridge to infuse overnight.",
+    "Line a sieve with a quadruple layer of cheesecloth and strain the soy milk infusion straight into a saucepan. Place over medium-high heat and cook until the mixture is hot, about 5 minutes. Remove from the heat and transfer 3 tablespoons of the hot mixture to a small bowl. Whisk in the agar agar and set aside until dissolved, about 5 minutes. Add this to the hot pan and whisk everything well. Place over medium-high heat, bring to a gentle boil, and stir constantly for 5 minutes. Remove from the heat, strain the soy milk infusion into a bowl, then ladle into 6 individual glasses. Set aside to cool, then place in the fridge to firm up for at least 2 hours. You want the mixture to set but still have a good wobble.",
+    "Place the coconut cream in a small bowl, add 1 tablespoon water, and stir until the cream is just runny enough to pour; add more water if needed. Keep in the fridge until serving.",
+    "Half an hour before serving, remove the pineapple from the fridge so it’s not cold. When ready to serve, spoon 2 tablespoons of the pineapple and sauce on top of the set milk, followed by a drizzle of the coconut cream."
+  ],
+  "time": {
+    "total": 30
+  }
+}

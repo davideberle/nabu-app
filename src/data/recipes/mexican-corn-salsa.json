@@ -1,0 +1,50 @@
+{
+  "id": "mexican-corn-salsa",
+  "name": "Mexican Corn Salsa",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "minced red onion minced",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "fresh corn kernels",
+      "amount": "2 cups"
+    },
+    {
+      "item": "minced bell pepper, green or red",
+      "amount": "1/3 cups"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1/3 tsp."
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 1/2"
+    },
+    {
+      "item": "fresh Jalapeño",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "finely chopped cilantro",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Ground pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl, and mix corn kernels, bell pepper, red onion,",
+    "jalapeño, lime juice, cilantro, and salt.",
+    "Refrigerate it for about 24 hours to get the best taste."
+  ],
+  "time": {
+    "total": 30
+  }
+}

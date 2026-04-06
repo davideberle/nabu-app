@@ -1,0 +1,83 @@
+{
+  "id": "wild-rice",
+  "name": "WILD RICE",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "wild rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "celery sticks",
+      "amount": "4"
+    },
+    {
+      "item": "scallions",
+      "amount": "7"
+    },
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "flat-leaf parsley",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "onion powder (see p.152)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "white-miso paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "persimmons",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 tsp paprika salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the wild rice into a large bowl. Add 4 cups water, and soak the grains overnight. Then, put the bowl into the dehydrator to warm for about 24 hours at",
+    "Drain the rice into a fine- meshed sieve. Rinse thoroughly under cold running water. Press the surface lightly to extract the excess moisture from the grains, and dry them on a kitchen towel.",
+    "Dice the celery finely. Coarsely chop the scallions, including the greens. Peel and grate the carrots.",
+    "Pick the parsley leaves and chop them, but not too finely. Coarsely chop the cranberries.",
+    "In a large bowl, combine the wild rice, vegetables, cranberries, and the remaining ingredients (except for the persimmons, dill, paprika, and seasoning). Let stand briefly. Cut the stems off the persimmons and purée them in a food processor, or with an electric mixer. The purée should still be a bit chunky. Season to taste with the paprika, salt, and pepper. Chop the dill finely.",
+    "Divide the rice dish between the plates and sprinkle with dill. Serve the puréed persimmon on the side.",
+    "This is an uncomplicated, lovely dish, especially if you enjoy chopping. The photo shows the quick version, but the dish tastes even more delicious when the ingredients are finely chopped.",
+    "1 small red onion",
+    "1 medium red pepper",
+    "1 medium yellow bell pepper",
+    "⁄2 bunch mint, or 2 tbsp dried mint",
+    "⁄2 bunch flat-leaf parsley",
+    "⁄2 cup black olives, pitted",
+    "2 tbsp cold-pressed olive oil",
+    "3–4 lemon wedges, to serve"
+  ],
+  "time": {
+    "total": 30
+  }
+}

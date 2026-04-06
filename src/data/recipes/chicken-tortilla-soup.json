@@ -1,0 +1,85 @@
+{
+  "id": "chicken-tortilla-soup",
+  "name": "Chicken Tortilla Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chicken broth",
+      "amount": "6 cups"
+    },
+    {
+      "item": "finely diced jalapenos",
+      "amount": "2"
+    },
+    {
+      "item": "14.5 ounces can diced tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "chicken breasts",
+      "amount": "3"
+    },
+    {
+      "item": "14.5 ounces can black beans",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "limes",
+      "amount": "2"
+    },
+    {
+      "item": "Monterrey cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "8-inch tortilla",
+      "amount": ""
+    },
+    {
+      "item": "cilantro leaves, roughly chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sliced avocado",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a saucepan and heat the oil.",
+    "Add onions. Cook for around 2 minutes.",
+    "Add jalapenos and garlic.",
+    "Add tomatoes, chicken broth, and beans to the pot. Bring it to boil.",
+    "Lower the heat and add chicken breasts, and cook for 20-25 minutes.",
+    "When it is cook, take it out and let it cool so you could easily shred it.",
+    "Add fresh cilantro and lime juice.",
+    "Take a bowl and add shredded chicken in it. Pour soup over it.",
+    "Put a grilled tortilla, lime wedge, cheese, and avocado slices on top,",
+    "and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

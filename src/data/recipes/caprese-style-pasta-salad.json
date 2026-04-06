@@ -1,0 +1,57 @@
+{
+  "id": "caprese-style-pasta-salad",
+  "name": "Caprese-style Pasta Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "3 cups"
+    },
+    {
+      "item": "baby mozzarella",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "2 cups"
+    },
+    {
+      "item": "spring onions, finely cut",
+      "amount": "1-2"
+    },
+    {
+      "item": "basil pesto",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "white balsamic vinegar",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2-3 tbsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
+    "Combine pesto, vinegar, and olive oil in a small cup.",
+    "Place tomatoes, mozzarella, spring onions and cooled pasta in a salad bowl. Next, season with the salt and pepper.",
+    "Then, add the pesto mixture and toss to combine and serve.",
+    "(5) Mediterranean Chicken and Pasta Salad",
+    "Do you want to impress family and friends with a delicious, healthy, easy dinner that they will love? This",
+    "Mediterranean Chicken and Pasta Salad will do just that. If you like chicken, vegetables, or pasta salad, then give",
+    "this one a try. You'll love the combination of flavors and textures found in this tasty meal.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

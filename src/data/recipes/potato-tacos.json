@@ -1,0 +1,69 @@
+{
+  "id": "potato-tacos",
+  "name": "Potato Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Fresh salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cooked potatoes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Creamy red sauce, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Red onions, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil in a pan.",
+    "Add the cooked potatoes and refried beans into it.",
+    "Add the mix spices, taco seasoning, salt and pepper.",
+    "Cook for five minutes.",
+    "Next, heat the taco shells in an oven for a few minutes.",
+    "Add the above made mixture into the taco shells.",
+    "Top with creamy red sauce and cilantro.",
+    "Add the red onion slices.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "coated-olives-with-spicy-yogurt",
+  "name": "COATED OLIVES WITH SPICY YOGURT",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "oil, a sprinkle of the sumac and cilantro, and the last of the lemon juice.",
+  "ingredients": [
+    {
+      "item": "green chile, with seeds, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "⅛ tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "cups/20 g cilantro leaves, coarsely chopped",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/20 g flat-leaf parsley leaves, coarsely chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "medium preserved lemon (1½ oz/45 g), skin and flesh coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cup/60 ml olive oil",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/80 g panko bread crumbs, processed to a very fine crumb",
+      "amount": "¾"
+    },
+    {
+      "item": "tbsp/50 g all-purpose flour",
+      "amount": "6½"
+    },
+    {
+      "item": "eggs, beaten rounded 1 cup/160 g pitted green olives sunflower oil, for frying",
+      "amount": "2"
+    },
+    {
+      "item": "cups/300 g Greek yogurt",
+      "amount": "1½"
+    }
+  ],
+  "method": [
+    "Place the chile, spices, sugar, cilantro, parsley, preserved lemon, and olive oil in a small blender and blitz to a rough paste. Pour into a small bowl and set aside until required.",
+    "Place the bread crumbs, flour, and eggs in 3 separate small bowls.",
+    "Drain the olives from their preserving juices and pat dry with paper towels.",
+    "Once dry, take 1 olive and dip in the flour, then the egg, then finally coat well in the panko. Place on a plate to one side. Repeat with the rest of the olives.",
+    "Pour the sunflower oil to a depth of 1¼-inches/3-cm into a small saucepan and place over medium-high heat. Once the oil is hot, add a couple of the olives. They should take 1 minute to go golden brown and need to be turned over during the process. If they brown too quickly, turn the heat down.",
+    "Remove the olives from the oil and transfer to paper towels. Repeat with the rest of the olives until they are all cooked.",
+    "Spoon the yogurt into a shallow bowl, then swirl the green paste into it (don’t mix them completely). Pile the olives, warm or at room temperature, into the center and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

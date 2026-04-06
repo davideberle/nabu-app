@@ -1,0 +1,79 @@
+{
+  "id": "french-smoked-salmon-canap-s",
+  "name": "French Smoked Salmon Canapés",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "One cup of smoked salmon",
+      "amount": ""
+    },
+    {
+      "item": "Bread slices",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of mix spice powder",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One cup of crème fraiche",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of butter",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a pan.",
+    "Add in the oil and onions.",
+    "Cook the onions until they become soft and fragrant.",
+    "Add the smoked salmon into it.",
+    "Add the spices.",
+    "Add the rest of the ingredients into the mixture.",
+    "Take the bread slices and apply butter on both the sides.",
+    "Roll them and place in a baking dish.",
+    "Add the mixture on top of the bread slices.",
+    "Bake the bread slices for twenty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

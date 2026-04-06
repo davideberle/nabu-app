@@ -2,83 +2,44 @@
   "id": "pad-thai",
   "name": "Pad Thai",
   "source": {
-    "cookbook": "The Best Pasta Recipes",
-    "author": "Jaydon Mack"
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
   },
-  "servings": "serves 6",
+  "servings": "serves 4",
+  "intro": "version that you would fi nd in Thailand. This also means you won’t fi nd any soy sauce in the sauce.",
   "ingredients": [
     {
-      "item": "oz, rice noodles",
-      "amount": "12"
+      "item": "53",
+      "amount": ""
     },
     {
-      "item": "peanut oil",
-      "amount": "2 tbsp."
-    },
-    {
-      "item": "cubed chicken",
-      "amount": "½ cups"
-    },
-    {
-      "item": "minced garlic cloves",
-      "amount": "3"
-    },
-    {
-      "item": "chopped scallions",
-      "amount": "3"
-    },
-    {
-      "item": "olive oil",
-      "amount": "1 tbsp."
+      "item": "vegetable oil",
+      "amount": "1 teaspoon"
     },
     {
       "item": "eggs",
-      "amount": "4"
+      "amount": "6"
     },
     {
-      "item": "sweet chili sauce",
-      "amount": "2 tsp."
+      "item": "fresh oysters",
+      "amount": "1 cup (200g)"
     },
     {
-      "item": "white wine vinegar",
-      "amount": "1 tbsp."
+      "item": "fi sh sauce",
+      "amount": "2 teaspoons"
     },
     {
-      "item": "fish sauce",
-      "amount": "2 tbsp."
-    },
-    {
-      "item": "tsp, lime juice",
-      "amount": "1"
-    },
-    {
-      "item": "peanut sauce",
-      "amount": "1 tbsp."
-    },
-    {
-      "item": "tbsp, sugar",
+      "item": "green onions (scallions), chopped",
       "amount": "2"
-    },
-    {
-      "item": "crushed peanuts",
-      "amount": "¼ cup"
     }
   ],
   "method": [
-    "Soak the rice noodles in a bowl of water for 5 minutes. Drain and set aside.",
-    "Heat the peanut oil in a large skillet.",
-    "Brown the garlic, scallions, and chicken for 5 minutes.",
-    "Transfer the chicken to a plate and set aside.",
-    "Heat the olive oil in the same skillet and crack the eggs into the skillet.",
-    "Scramble the eggs until they are firm, about 5 minutes.",
-    "Stir in the chili sauce, white wine vinegar, fish sauce, lime juice, peanut sauce, and sugar.",
-    "Stir well.",
-    "Return the chicken to the skillet and cook for 3 minutes.",
-    "Transfer the noodles into the skillet and toss well.",
-    "Top with the crushed peanuts."
+    "Heat a wok over high heat and add the oil. Break the eggs into a bowl and beat gently with a fork, sea- soning with the fi sh sauce before adding to the hot wok.",
+    "Turn the heat to low, then cook the eggs until the bottom sets. Use a spoon or fork to fl uff the egg mix slightly as you go while making sure you do not overcook or, even worse, blacken them. They should be a uniform bright yellow color.",
+    "Add the oysters to the top after the bottom forms, making sure to continue moving the eggs to en- sure they don’t overcook.",
+    "Once the eggs are cooked through and the oysters warmed, transfer to a plate and garnish with chopped green onions and black pepper. The eggs should be slightly runny."
   ],
-  "image": "/recipes/pad-thai.jpg",
   "time": {
-    "total": 18
+    "total": 30
   }
 }

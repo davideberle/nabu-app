@@ -1,0 +1,85 @@
+{
+  "id": "warm-glass-noodles-and-edamame",
+  "name": "Warm glass noodles and edamame",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "upgrade it by adding fried tofu and/or roasted peanuts.",
+  "ingredients": [
+    {
+      "item": "glass (cellophane) noodles",
+      "amount": "7 oz"
+    },
+    {
+      "item": "grated galangal or fresh ginger juice of 4 limes",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "palm sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "seedless tamarind pulp or paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fine sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "shelled cooked edamame",
+      "amount": "½ cups"
+    },
+    {
+      "item": "green onions, thinly sliced (including the green parts)",
+      "amount": "3"
+    },
+    {
+      "item": "fresh red chile, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "chopped cilantro, plus a few whole leaves to garnish",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "shredded fresh mint",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sesame seeds, toasted salt (optional)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Soak the noodles in a bowl of hot water for about 5 minutes, or until soft (don’t leave them in the water for too long or they will get soggy). Drain and leave to dry.",
+    "To make the sauce. In a small bowl whisk together all of the sauce ingredients and set aside.",
+    "Heat the sunflower oil in a large frying pan or a wok and add the garlic. When it starts to turn golden, remove the pan from the heat and add the sauce and noodles. Gently stir together, then add most of the edamame and the green onions, chile, cilantro and mint. Stir everything together while you return the pan to the heat for a few seconds, just to warm through. Taste and season with salt, if you like.",
+    "Pile up on a large platter or in a shallow bowl and scatter over the remaining edamame and the sesame seeds. Garnish with cilantro leaves and serve. You can also serve this dish at room temperature, adjusting the seasoning when it is cool.",
+    "200 | Green Beans",
+    "202 | Green Beans",
+    "I came up with this soup when asked to contribute a seasonal recipe to the Royal Horticultural Society’s flower show at Hampton Court Palace. It involves a bit of work but the result is, quite fittingly, majestic.",
+    "Hot yogurt and fava bean soup"
+  ],
+  "time": {
+    "total": 30
+  }
+}

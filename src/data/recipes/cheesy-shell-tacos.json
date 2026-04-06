@@ -1,0 +1,61 @@
+{
+  "id": "cheesy-shell-tacos",
+  "name": "Cheesy Shell Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Crushed garlic, one",
+      "amount": ""
+    },
+    {
+      "item": "Red chili, one",
+      "amount": ""
+    },
+    {
+      "item": "Beef mince, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco spice mix, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Grated cheddar cheese, two cups",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Melt the cheese in the form of round shapes and cook it in the form of",
+    "tacos.",
+    "Cook the beef mince, onions, taco mix, and spices.",
+    "Add the beef mixture, and rest of the ingredients in the cheese taco",
+    "shells.",
+    "Your dish is ready to be served.",
+    "Chapter 4: Mexican Taco Snack Recipes",
+    "Mexican taco snacks are diverse and very tasty in flavor. Following are",
+    "some easy snack recipes that you can make at home:"
+  ],
+  "time": {
+    "total": 25
+  }
+}

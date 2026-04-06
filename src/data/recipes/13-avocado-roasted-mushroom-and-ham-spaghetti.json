@@ -1,0 +1,65 @@
+{
+  "id": "13-avocado-roasted-mushroom-and-ham-spaghetti",
+  "name": "(13)     Avocado, Roasted Mushroom, and Ham Spaghetti",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "12 oz."
+    },
+    {
+      "item": "ham, cut in cubes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "avocados, peeled and diced",
+      "amount": "2"
+    },
+    {
+      "item": "white mushrooms, halved",
+      "amount": "10-15"
+    },
+    {
+      "item": "green olive paste",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil spay",
+      "amount": ""
+    },
+    {
+      "item": "salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Line a baking tray with baking paper and place mushrooms on it. Spray with olive oil and season with salt and",
+    "black pepper to taste. Roast in a preheated to 375 F oven for 15 minutes, or until golden and tender.",
+    "Bring salted water to boil in a large pot and then cook spaghetti as per the directions on the package. Drain and set",
+    "aside in a large bowl.",
+    "In a blender, combine lemon juice, garlic, olive paste and avocados and blend until smooth.",
+    "Combine pasta, diced ham, mushrooms and avocado sauce. Sprinkle with Parmesan cheese and serve immediately.",
+    "(14) Cheese Ravioli",
+    "One of the most popular dishes in Italy, cheese ravioli, is a soft dough wrapped around a filling of Parmesan,",
+    "ricotta, or mozzarella. The dough can be stuffed with bread crumbs and any other ingredient such as spinach or",
+    "mushrooms, which enhances the flavor of the dish."
+  ],
+  "time": {
+    "total": 30
+  }
+}

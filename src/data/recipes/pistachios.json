@@ -1,0 +1,46 @@
+{
+  "id": "pistachios",
+  "name": "PISTACHIOS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tbsp/15 g unsalted butter",
+      "amount": "1"
+    },
+    {
+      "item": "large carrots (2¼ lb/1 kg), peeled and cut into slices ¾-inch/2-cm thick scant 1 cup/200 ml vegetable stock grated zest of 1 orange",
+      "amount": "10"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "harissa paste grated zest of 1 lemon, plus 1 tbsp lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cup/200 g Greek yogurt scant 3½ tbsp/25 g shelled unsalted pistachios, coarsely chopped salt and black pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the olive oil and butter in a large sauté pan over medium-high heat. Add the carrots and sauté for 6 minutes, stirring often; they need to soften and take on a bit of color. Add the stock, turn down the heat to medium-low, cover the pan, and cook for another 25 minutes, until the carrots are completely soft and there is hardly any liquid left. Transfer the carrots to a",
+    "food processor, add ¾ teaspoon salt, and blitz briefly to form a coarse paste.",
+    "Leave to cool and then add the orange zest, garlic, harissa, half the lemon zest, and some black pepper. Stir to combine.",
+    "Mix together the yogurt, lemon juice, the remaining lemon zest, and ¼ teaspoon salt.",
+    "Spread the yogurt out on a serving platter and spoon the carrot mixture on top. Sprinkle with the pistachios, drizzle with a little olive oil, and serve.",
+    "SPICE-STUFFED POTATO CAKES"
+  ],
+  "time": {
+    "total": 30
+  }
+}

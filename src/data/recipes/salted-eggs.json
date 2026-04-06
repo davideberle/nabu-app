@@ -1,0 +1,56 @@
+{
+  "id": "salted-eggs",
+  "name": "Salted Eggs",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "with duck eggs, but chicken eggs will do.",
+  "ingredients": [
+    {
+      "item": "unscented cooking oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "6 tablespoons"
+    },
+    {
+      "item": "shaved palm sugar or white sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "bird’s eye chilies, fi nely sliced, or to taste",
+      "amount": "2–4"
+    },
+    {
+      "item": "small shallot, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "small cloves garlic, thinly sliced",
+      "amount": "1–2"
+    },
+    {
+      "item": "bird’s eye chilies, sliced",
+      "amount": "2–4"
+    }
+  ],
+  "method": [
+    "Heat a large pan until a drop of water sizzles on the surface. Add the oil. Carefully crack the eggs, one by one or two by two (depend- ing on the size of the pan). Don’t crowd. The edges should bubble up like froth on the edge of the ocean. Thais typically leave their yolks runny but you can cook yours through. When the eggs are cooked, set aside on a plate covered with a paper towel to drain the oil.",
+    "Make the Thai Dressing by combining all the ingredients in a bowl. Stir until the sugar is dissolved.",
+    "Carefully place the eggs on a serving dish and pour the dressing over. Garnish with fresh coriander leaves, thinly sliced shallots and garlic, chilies and fresh cracked black peppercorns, to taste."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "cheese-tortellini-pasta-salad",
+  "name": "Cheese Tortellini Pasta Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes, sliced",
+      "amount": "2 1/2 cups"
+    },
+    {
+      "item": "snow peas",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fresh mushrooms",
+      "amount": "2 cups"
+    },
+    {
+      "item": "broccoli",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can black olives, drained and sliced",
+      "amount": "1 (6 oz.)"
+    },
+    {
+      "item": "pkg. cheese tortellini",
+      "amount": "1 (8 oz.)"
+    },
+    {
+      "item": "fettuccini",
+      "amount": "3 oz."
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Dressing:",
+      "amount": ""
+    },
+    {
+      "item": "green onions",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "parsley",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "basil",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "dill weed",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "oregano",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Blanch snow peas and broccoli for 1 minute. Drain and cool. In a large bowl, combine tomatoes, peas, mushrooms,",
+    "broccoli and black olives. Cook pasta according to package directions; drain and cool. Add vegetables to pasta and",
+    "add cheese.",
+    "Dressing: Combine ingredients in a jar and shake vigorously. Toss with pasta mixture. Chill at least 4 hours.",
+    "(2) Tuna and Mushroom Pasta Salad",
+    "This recipe is a delicious way to use up leftovers. It’s quick, easy, and perfect for any summer day or picnic. It also",
+    "happens to be low-carb and vegan! So, come on in and enjoy this tasty dish!",
+    "Yield: 5"
+  ],
+  "time": {
+    "total": 35
+  }
+}

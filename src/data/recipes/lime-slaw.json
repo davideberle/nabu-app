@@ -1,0 +1,57 @@
+{
+  "id": "lime-slaw",
+  "name": "Lime Slaw",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Shrimp, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Paprika, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Creamy sirarcha sauce, four tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro lime slaw, four tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, four",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil, shrimps, and paprika in a bowl.",
+    "Grill the shrimps until they are done.",
+    "Heat the taco shells; add the shrimps, creamy sirarcha sauce, cilantro",
+    "lime slaw and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

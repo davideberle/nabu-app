@@ -1,0 +1,51 @@
+{
+  "id": "black-bean-corn-and-wild-rice-quesadillas",
+  "name": "Black Bean, Corn, and Wild-rice Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of Cheddar cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of rice, cooked",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "of black beans",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "2"
+    },
+    {
+      "item": "of mild salsa",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of sweet corn, frozen",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Add rice, beans, shredded cheese, green onions, and corn in a bowl.",
+    "Put 1/4 of this mixture on a tortilla.",
+    "Add mild salsa on the top. Fold the tortilla.",
+    "Heat a pan over the medium heat.",
+    "Put a quesadilla in the pan, and cook until it is golden brown.",
+    "Cook all the remaining quesadillas.",
+    "Let them cool, and then cut them in half.",
+    "Serve with salsa."
+  ],
+  "time": {
+    "total": 30
+  }
+}

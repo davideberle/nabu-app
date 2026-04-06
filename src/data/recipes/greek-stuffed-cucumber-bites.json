@@ -1,0 +1,67 @@
+{
+  "id": "greek-stuffed-cucumber-bites",
+  "name": "Greek Stuffed Cucumber Bites",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "large cucumbers",
+      "amount": "4"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "1-pint cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "crumbled feta",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Cucumbers should be sliced into 3” bits.",
+    "Make a well in each cucumber with a melon baller or a fork.",
+    "Toss together tomatoes, artichokes, feta, tarragon, lime juice, garlic,",
+    "canola oil, and oregano in a big mixing bowl.",
+    "Salt and pepper to taste.",
+    "Cover cucumbers with salad combination.",
+    "If needed, top with more dill before serving."
+  ],
+  "time": {
+    "total": 15
+  }
+}

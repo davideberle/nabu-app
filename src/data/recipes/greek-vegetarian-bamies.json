@@ -1,0 +1,95 @@
+{
+  "id": "greek-vegetarian-bamies",
+  "name": "Greek Vegetarian Bamies",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One cup of vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "One cup of water",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One pound of okra",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chopped tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh oregano",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of mixed spice powder",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the chopped onions and olive oil into it.",
+    "Mix the ingredients well.",
+    "Add the chopped garlic into the pan.",
+    "Add the tomatoes, oregano, bay leaf, salt, black pepper, thyme, smoked",
+    "paprika, mix spice powder, and chives into the pan.",
+    "Cook the ingredients well.",
+    "Add the okra pieces into the mixture.",
+    "Add the vegetable stock and water into the pan.",
+    "Mix the stew well.",
+    "Place a lid on top of the pan.",
+    "Cook the stew for ten to fifteen minutes.",
+    "Dish out the stew when the vegetables are done.",
+    "Garnish the dish with chopped parsley on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

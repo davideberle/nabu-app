@@ -1,0 +1,72 @@
+{
+  "id": "seaweed-ginger-and-carrot-salad",
+  "name": "SEAWEED, GINGER, AND CARROT SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "salt. Stir well, sprinkle the lime zest over the top, and serve at once, with the",
+  "ingredients": [
+    {
+      "item": "oz/40 g dried sea spaghetti or another dried seaweed",
+      "amount": "1½"
+    },
+    {
+      "item": "2-inch/5-cm piece fresh ginger (about 1½ oz/40 g), peeled and cut into very thin strips",
+      "amount": ""
+    },
+    {
+      "item": "medium carrots, peeled and cut into very thin matchsticks (1½ cups/200 g)",
+      "amount": "3"
+    },
+    {
+      "item": "tbsp/80 ml rice vinegar",
+      "amount": "5"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "large cucumber, peeled, quartered lengthwise, seeded, and cut into very thin strips (about 2 cups/275 g)",
+      "amount": "1"
+    },
+    {
+      "item": "large mango, peeled and cut into very thin strips (1½ cups/260 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/100 g peanuts, toasted and salted, then coarsely chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "sesame seeds, toasted",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cups/20 g cilantro leaves, chopped",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/20 g mint leaves, shredded salt",
+      "amount": "⅔"
+    }
+  ],
+  "method": [
+    "Start by rinsing the seaweed in cold water, drain, and then cover generously with cold water. Set aside for 30 minutes.",
+    "Bring a large pot of water to a boil. Drain the seaweed and add it to the boiling water along with the ginger. Boil for 2 minutes and then add the carrots. Boil for another 2 minutes, drain, and immediately pat dry. Transfer everything to a large bowl and immediately add the vinegar, sugar, and 1¼ teaspoons salt. Mix well and leave aside to cool.",
+    "Once the mixture is cool and you are ready to serve, add the cucumber, mango, peanuts, sesame seeds, lime juice, oil, cilantro, and mint and stir to mix well, then serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

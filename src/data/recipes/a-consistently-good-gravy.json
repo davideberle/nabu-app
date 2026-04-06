@@ -1,0 +1,37 @@
+{
+  "id": "a-consistently-good-gravy",
+  "name": "A CONSISTENTLY GOOD GRAVY",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "I heaped dessertspoon all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "To serve your g ra vy",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Get yourself a large jug, bowl, or saucepan and put a coarse strainer over it • Pour your gravy through",
+    "the strainer, using a ladle to really push all the goodness through. Discard any vegetables or meat left",
+    "behind. At this point you've got a really cracking gravy, and you can either serve it straightaway or put",
+    "it back on the heat to simmer and thicken up • Depending on which meat I'm serving it with, I'll add a",
+    "of horseradish, mustard, red-currant jelly, cranberry, mint, or apple sauce - you certainly don't",
+    "have to, but I think the little edge of complementary flavor you get from doing this is brilliant",
+    "DELICIOUS SAGE AND ONION",
+    "This is a classic recipe, and I like to cook it in an earthenware pot so it gets nice and crispy on the sides",
+    "the top. Obviously, the better the sausage meat and the bread, the better the stuffing will be. Little",
+    "like chestnuts and dried fruits add lovely textures and flavors.lt goes well with any type of roasted",
+    "meat, and leftover stuffing is great in cold meat sandwiches.",
+    "Start making this as soon as your meat goes into the oven, so the mixture has time to cool completely",
+    "before you add the sausage meat. T hen simply put it into the oven 50 minutes before you're ready to eat."
+  ],
+  "time": {
+    "total": 30
+  }
+}

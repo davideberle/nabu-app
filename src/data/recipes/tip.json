@@ -1,0 +1,36 @@
+{
+  "id": "tip",
+  "name": "TIP",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 3",
+  "intro": "does, however, provide a lot of flavor.",
+  "ingredients": [
+    {
+      "item": "dehydrating trays • Preparation time:",
+      "amount": "4"
+    },
+    {
+      "item": "minutes plus dehydration",
+      "amount": "40"
+    }
+  ],
+  "method": [
+    "Place the carrots, zucchini, and garlic into a food processor and purée until smooth. Add the almond pulp, ground flaxseed, and curry powder. Using a kitchen spoon or wire whisk, combine all the ingredients well, making sure that there are no lumps. Season to taste.",
+    "1 small zucchini (about 3oz/80g)",
+    "1 cup almond pulp (see tip, p.45 and p.143)",
+    "⁄2 tbsp ground flaxseed",
+    "1 tsp mild curry powder salt and freshly ground black pepper",
+    "You will also need:",
+    "3–4 dehydrating trays food dehydrator",
+    "Spread the mixture on the dehydrating trays",
+    "⁄4in (5mm) thick. Dry in the food dehydrator for",
+    "4–5 hours at 104°F (40°C). After the time is up, test to see whether the crispbread is hard enough to turn over. If it is not, dry it for",
+    "⁄2–1 hour more. Test the crispbread again, turn it over, and leave it on the trays to dry completely. Before serving, carefully break the crispbread into large pieces."
+  ],
+  "time": {
+    "total": 30
+  }
+}

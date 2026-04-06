@@ -1,0 +1,61 @@
+{
+  "id": "paleo-breakfast-taco",
+  "name": "Paleo Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Egg, six",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Avocado oil, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime, one",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, two",
+      "amount": ""
+    },
+    {
+      "item": "Bacon, four strips",
+      "amount": ""
+    },
+    {
+      "item": "Chopped cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the avocado oil in a pan.",
+    "Add the egg and mix it until it gets firm.",
+    "Add salt and pepper.",
+    "Arrange the tortillas; add the egg, cilantro, chopped avocado, salsa,",
+    "and lime on top of the eggs.",
+    "Your dish is ready to be served.",
+    "Chapter 2: Mexican Taco Lunch Recipes",
+    "Mexican Taco lunch recipes are amazing, healthy and you will love making",
+    "them on your own. Following are some amazing recipes below:"
+  ],
+  "time": {
+    "total": 15
+  }
+}

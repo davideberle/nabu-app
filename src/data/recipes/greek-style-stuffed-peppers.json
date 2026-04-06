@@ -1,0 +1,92 @@
+{
+  "id": "greek-style-stuffed-peppers",
+  "name": "Greek-Style Stuffed Peppers",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "red pepper flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Chopped fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "Greek olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cooked barley",
+      "amount": "1 cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "can crushed tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "ground lamb",
+      "amount": "1 pound"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1-½ teaspoons"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "3"
+    },
+    {
+      "item": "medium peppers",
+      "amount": "2"
+    },
+    {
+      "item": "small fennel bulb",
+      "amount": "1"
+    },
+    {
+      "item": "package frozen spinach",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Heat the oil over moderate heat in a large pan.",
+    "Insert fennel and onions; continue cooking for ten minutes until soft.",
+    "Add the garlic and veggies; cook for one minute longer. Mildly cool.",
+    "Break the peppers and save the tops; extract and discard the seeds.",
+    "Pour 1 cup of chopped tomatoes into the 6- or 7-quarter rim.",
+    "Combine the lamb, rye, 1 cup of feta cheese, olives, and spices in a",
+    "large mixing bowl; add the mixture of fennel.",
+    "Mix the spoon into the peppers; place in a slow cooker.",
+    "Pour the remainder of the crushed tomatoes over the peppers; replace",
+    "the tops with pepper.",
+    "Cook, wrapped, until peppers are soft, 4 to 5 hours on medium.",
+    "Serve with extra feta and minced parsley if needed."
+  ],
+  "time": {
+    "total": 30
+  }
+}

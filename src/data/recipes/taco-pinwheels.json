@@ -1,0 +1,60 @@
+{
+  "id": "taco-pinwheels",
+  "name": "Taco Pinwheels",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Shredded chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Bell peppers, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Cheddar cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cream cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, mix together the cream cheese, taco seasoning and",
+    "cheddar cheese until well combined.",
+    "Add the chicken, bell peppers and cilantro into the cream cheese",
+    "mixture and stir until combined.",
+    "Lay one of the tortillas flat on a cutting board and spread some of the",
+    "chicken mixture all over the tortilla.",
+    "Roll up tightly.",
+    "Repeat the process with the remaining tortillas.",
+    "Place the tortilla rolls on a plate and cover with plastic wrap.",
+    "Chill for at least one hour or up to one day.",
+    "Slice up the tortilla rolls, and serve the tortilla pinwheels with your",
+    "preferred toppings."
+  ],
+  "time": {
+    "total": 15
+  }
+}

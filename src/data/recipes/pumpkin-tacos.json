@@ -1,0 +1,55 @@
+{
+  "id": "pumpkin-tacos",
+  "name": "Pumpkin Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Fresh salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Pumpkin cubes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the pumpkin cubes in the olive oil.",
+    "Add the mix spice, salt, and pepper in it.",
+    "Lightly fry the tortillas.",
+    "Add the mixture above on the tortillas.",
+    "Add the fresh salsa, sour cream on top.",
+    "Garnish it with freshly chopped cilantro leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

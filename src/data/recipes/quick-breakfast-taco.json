@@ -1,0 +1,35 @@
+{
+  "id": "quick-breakfast-taco",
+  "name": "Quick Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "Shredded cheddar cheese, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, two",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, two",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the egg and add cheddar cheese into it.",
+    "Arrange the taco by adding the egg mixture and salsa.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

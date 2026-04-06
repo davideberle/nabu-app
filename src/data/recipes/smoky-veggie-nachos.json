@@ -1,0 +1,83 @@
+{
+  "id": "smoky-veggie-nachos",
+  "name": "Smoky Veggie Nachos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "corn tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "can of black beans",
+      "amount": "400g"
+    },
+    {
+      "item": "red peppers",
+      "amount": "2"
+    },
+    {
+      "item": "of finely chopped parsley",
+      "amount": "1/2 bunch"
+    },
+    {
+      "item": "finely sliced jalapeño",
+      "amount": "1"
+    },
+    {
+      "item": "of yogurt",
+      "amount": "50g"
+    },
+    {
+      "item": "finely sliced spring onions",
+      "amount": "4"
+    },
+    {
+      "item": "avocado, peeled and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "of finely chopped coriander",
+      "amount": "1/2 bunch"
+    },
+    {
+      "item": "lime, juiced",
+      "amount": "1"
+    },
+    {
+      "item": "finely grated garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "of rapeseed oil",
+      "amount": "1 tbsp."
+    }
+  ],
+  "method": [
+    "1 Preheat the oven to 180C.",
+    "2 Make pieces of the tortillas, and make triangles. Spread them over",
+    "two baking sheets.",
+    "3 Put oil on it, then add paprika. Bake it for around 7-8 minutes. When",
+    "it is crisp, leave it to cool down.",
+    "4 Heat grill over high heat, then grill peppers for around 7-10 minutes.",
+    "Leave it to cool down, then peel it off. Toss it with parsley and the",
+    "beans.",
+    "5 Combine all ingredients to make salsa.",
+    "6 Put nachos on a plate, and top it with salsa, the bean mix, jalapeño,",
+    "and yogurt.",
+    "7 Pour some paprika, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

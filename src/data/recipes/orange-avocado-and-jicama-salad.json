@@ -1,0 +1,65 @@
+{
+  "id": "orange-avocado-and-jicama-salad",
+  "name": "Orange, Avocado, and Jicama Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of lime juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "oranges",
+      "amount": "3"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "thinly sliced avocados",
+      "amount": "2"
+    },
+    {
+      "item": "jicama, peeled and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "of feta cheese, crumbled",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Squeeze oranges",
+    "To extract orange juice. Mix it with lime juice, oil, vinegar, and",
+    "cayenne.",
+    "Add jicama, pepper, and salt. Set aside for about 15 minutes.",
+    "Add orange juice, avocado, cilantro, and feta.",
+    "Serve, and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

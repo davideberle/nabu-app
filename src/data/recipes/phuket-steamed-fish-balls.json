@@ -1,0 +1,117 @@
+{
+  "id": "phuket-steamed-fish-balls",
+  "name": "Phuket Steamed Fish Balls",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "recipe as an example of an heirloom-quality Phuket dish that’s become increasingly harder to fi nd.",
+  "ingredients": [
+    {
+      "item": "pork shoulder, thinly sliced",
+      "amount": "3 lb (150 g)"
+    },
+    {
+      "item": "pork liver, sliced ½ inch (12.5 mm) thick",
+      "amount": "3 lb (80 g)"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Chinese rice wine",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "big whole prawns (8 oz/200 g) peeled and deveined with tails left on (reserve heads and shells)",
+      "amount": "6"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "packet or roughly 14 oz (400 g)",
+      "amount": "1"
+    },
+    {
+      "item": "lard or vegetable oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "ginger, peeled and sliced into thin slivers",
+      "amount": "1 inch (2.5 cm)"
+    },
+    {
+      "item": "garlic, coarsely chopped",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "fi nely sliced deseeded fi nger-length chili or chili powder (prik pon)",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "chicken stock (or water with a little stock cube)",
+      "amount": "¾ cup (200 ml)"
+    },
+    {
+      "item": "green cabbage, cut into",
+      "amount": "1 cup (80 g)"
+    },
+    {
+      "item": "wide slices",
+      "amount": "½ inch (1.25 cm)"
+    },
+    {
+      "item": "green onions (scallions), cut into 1 inch (2.5 cm) pieces",
+      "amount": "2"
+    },
+    {
+      "item": "sunny-side up eggs with runny yolk, as topping",
+      "amount": "4"
+    },
+    {
+      "item": "oyster sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "1½ teaspoons"
+    },
+    {
+      "item": "thick soy sauce",
+      "amount": "2½ tablespoons"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Make the Sauce by mixing all the ingredients together in a small bowl before you start cooking. Set aside.",
+    "Prepare the pork shoulder and liver. It’s easier to slice when the meat is slightly frozen. Season with the salt, soy sauce and rice wine.",
+    "Mix well. Add the cornstarch and mix again. Set aside for at least 10 minutes while continuing to prep.",
+    "Wash and dry the prawns. Re- move the head, pull off the tail and peel off the shell and legs. Reserve the shells and heads. Devein the prawns by cutting a slit into the rounded side and removing the black vein. Sprinkle with the salt and the baking powder and mix thoroughly. Leave to marinate for",
+    "Wash the noodles in 2 changes of water and drain in a colander.",
+    "Heat the lard or vegetable oil in a wok. Add the reserved prawn heads and shells and fry for a minute to infuse the oil. Remove and discard the prawn heads and shells. If the shells soaked up some of the lard, add a little more lard to the wok.",
+    "Make sure the lard is hot, then quickly fry the prawns to just cook them. The time for this will depend on the thickness and temperature of the prawns, but will rarely be more than two minutes. Remove and set aside.",
+    "Check that the lard is smoking hot, then add the ginger. Stir and immediately add the garlic. As soon as the garlic takes the lightest"
+  ],
+  "time": {
+    "total": 30
+  }
+}

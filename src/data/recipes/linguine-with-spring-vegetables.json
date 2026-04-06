@@ -1,0 +1,99 @@
+{
+  "id": "linguine-with-spring-vegetables",
+  "name": "Linguine with Spring Vegetables",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "light olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "medium onion, minced",
+      "amount": "1"
+    },
+    {
+      "item": "large cloves garlic, minced",
+      "amount": "2"
+    },
+    {
+      "item": "mushrooms, thinly sliced",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "medium zucchini, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot, julienned",
+      "amount": "1"
+    },
+    {
+      "item": "fresh asparagus, sliced diagonally",
+      "amount": "1 lb."
+    },
+    {
+      "item": "heavy cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green onions with tops, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "broccoli florets, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh basil, chopped, or 3 tsp. dried basil",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "Salt and black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "linguine",
+      "amount": "1 lb."
+    },
+    {
+      "item": "freshly grated Parmesan cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "minced fresh parsley",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sauté onion and garlic in olive oil and butter in a large saucepan until soft. Add mushrooms, zucchini, carrots and",
+    "asparagus; cook 2 to 3 minutes.",
+    "Add heavy cream and chicken stock; cook until liquid is reduced. Add green onions, broccoli, and basil. Season",
+    "with salt and pepper.",
+    "Cook pasta according to package directions. Add vegetables to pasta and toss with cheese to coat. Garnish with",
+    "parsley.",
+    "(25) Pasta Primavera",
+    "This is a very easy and delicious pasta dish that is made with ribbons of fettuccine noodles, fresh peas, asparagus,",
+    "and cherry tomatoes. It's quick to make and all the ingredients can be purchased at your local grocery store. It's a",
+    "great addition to the spring/summer dinner season!",
+    "Yield:"
+  ],
+  "time": {
+    "total": 33
+  }
+}

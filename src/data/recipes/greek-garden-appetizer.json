@@ -1,0 +1,67 @@
+{
+  "id": "greek-garden-appetizer",
+  "name": "Greek Garden Appetizer",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "ripe olives",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Miniature pita pockets",
+      "amount": ""
+    },
+    {
+      "item": "pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1-½ cups"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "green onions",
+      "amount": "½ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "plain yogurt",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carton garden cream cheese",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Mix the sour cream, feta, yogurt, garlic, oregano, and peppers in a big",
+    "mixing bowl.",
+    "Fill a 9-inch pie plate halfway with the mixture.",
+    "Over the cheese mixture, scatter the cucumber, onions, tomatoes, and",
+    "artichokes.",
+    "Pita bread is a good component.",
+    "Keep leftovers refrigerated."
+  ],
+  "time": {
+    "total": 15
+  }
+}

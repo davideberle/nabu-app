@@ -1,0 +1,50 @@
+{
+  "id": "chipotle-cod-tacos",
+  "name": "Chipotle Cod Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Cod, two",
+      "amount": ""
+    },
+    {
+      "item": "Lime slaw, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Chipotle paste, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Lettuce, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Slice the cod and mix with the chipotle paste, lime juice and olive oil.",
+    "Leave to marinate while you make the slaw.",
+    "Mix all the slaw ingredients together, season and set aside.",
+    "Put the cod on a baking tray and roast for ten minutes.",
+    "Heat the taco shells properly.",
+    "Arrange all the things in the taco shell and serve immediately."
+  ],
+  "time": {
+    "total": 12
+  }
+}

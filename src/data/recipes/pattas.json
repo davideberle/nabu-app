@@ -1,0 +1,46 @@
+{
+  "id": "pattas",
+  "name": "Pattas",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "small chili pepper",
+      "amount": "1"
+    },
+    {
+      "item": "gram of pork leg",
+      "amount": "600"
+    },
+    {
+      "item": "lemons",
+      "amount": "2"
+    },
+    {
+      "item": "gram of pork belly",
+      "amount": "500"
+    }
+  ],
+  "method": [
+    "Start by washing the meat and cutting the pork belly into very small",
+    "cubes.",
+    "Cut the pork leg into four pieces so that it will fit in the pot.",
+    "Clear the kettle, refill it with fresh water, bring it back to a boil, and",
+    "add the poultry.",
+    "Hold it on the stove for 2 to 3 hours.",
+    "Return the meat to the pan, boneless, season with salt, spice, the juice",
+    "of two lemons, and the chili peppers.",
+    "Start to boil for 30-40 minutes, stirring regularly to ensure that it gets",
+    "everywhere."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "id": "fried-upma-with-poached-egg",
+  "name": "FRIED UPMA WITH POACHED EGG",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the sour cream and the basil oil. Serve at once.",
+  "ingredients": [
+    {
+      "item": "cup/100 g channa dal",
+      "amount": "½"
+    },
+    {
+      "item": "sunflower oil, plus extra for greasing the tray",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "small onion, chopped (about ⅔ cup/90 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "1½-inch/4-cm piece fresh ginger (about 1 oz/30 g), peeled and finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "small green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh curry leaves (about 3 stems)",
+      "amount": "20"
+    },
+    {
+      "item": "black mustard seeds, toasted scant ½ tsp curry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "tbsp/30 g unsalted peanuts, toasted and coarsely chopped scant 1¼ cups/200 g coarse semolina about ¼ cup/60 g ghee or clarified butter",
+      "amount": "3½"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "oz/100 g Indian lime pickle (Patak’s or another store-bought variety; optional) scant ⅔ cup/120 g Greek yogurt salt",
+      "amount": "3½"
+    }
+  ],
+  "method": [
+    "Bring a small pan of water to a boil and add the dal. Cook for 30 minutes, until just cooked. Drain, refresh under cold water, and set aside.",
+    "Heat the oil in a large sauté pan over medium heat. Add the onion and cumin and cook for 4 minutes. Add the ginger, chile, curry leaves, black mustard seeds, curry powder, and turmeric and cook for 2 minutes more, stirring often. Add the peanuts, cooked dal, and 1 teaspoon salt and fry for another minute, stirring from time to time. Add the semolina and 1⅔ cups/400 ml water and cook for a final 2 minutes, stirring continuously.",
+    "Lightly oil an 8-inch/20-cm square tray and spread out the semolina mix. Use an offset spatula to flatten it down before setting aside for about 20 minutes, to cool and set. Wipe out the sauté pan, add the ghee, and place over high heat. Use a knife to cut the upma into 4 squares and then cut each square in half on the diagonal. Add the triangles to the pan and fry for about 6 minutes, turning once, so that both sides turn golden and crispy. You will need to do this in two batches, so keep them warm, in a low oven, while you continue with the second batch, adding more butter if needed.",
+    "Finally, poach the eggs. Fill a shallow saucepan with enough water for a whole egg to cook in. Add the vinegar and bring to a rapid boil. To poach each egg, carefully break it into a cup, then gently pour it into the boiling water. Immediately remove the pan from the heat and set it aside. After about",
+    "4 minutes the egg should be poached to perfection. Using a slotted spoon, carefully transfer the poached egg to a bowl of warm water to keep it from cooling down. Once all the eggs are done, dry them on paper towels.",
+    "Put 2 triangles on each plate, leaning one up against the other. Spoon a poached egg alongside, with some pickle and some yogurt. Serve at once.",
+    "FRIED CAULIFLOWER WITH MINT AND",
+    "TAMARIND DIPPING SAUCE"
+  ],
+  "time": {
+    "total": 30
+  }
+}

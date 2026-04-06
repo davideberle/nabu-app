@@ -1,0 +1,61 @@
+{
+  "id": "total-prep-time-18-minutes",
+  "name": "Total Prep Time: 18 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "mini shell pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "smoked streaky bacon or pancetta, diced",
+      "amount": "2-3 slices"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "onion, finely cut",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "frozen peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water or chicken broth",
+      "amount": "4 1/2 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "heaped tbsp. mascarpone cheese",
+      "amount": "2"
+    },
+    {
+      "item": "fresh dill, finely cut",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Parmesan cheese, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "In a skillet, gently cook bacon for 2-3 minutes, stirring. Add in pasta, onion, garlic, olive oil, salt, pepper, peas and"
+  ],
+  "time": {
+    "total": 18
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "mexican-corn-and-chorizo-soup",
+  "name": "Mexican Corn and Chorizo Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "chorizo or pork sausage",
+      "amount": "3/4 pound"
+    },
+    {
+      "item": "chopped sweet red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "chopped poblano pepper",
+      "amount": "1"
+    },
+    {
+      "item": "flour",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of potatoes",
+      "amount": "1 1/2 pounds"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "cartons of chicken broth",
+      "amount": "2"
+    },
+    {
+      "item": "of frozen corn",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "In a pan, cook chorizo over the medium heat for around 4-6 minutes.",
+    "Crumble it and remove chorizo from pan to paper towels.",
+    "Put onion, poblano, and red peppers in the pan, and saute over the",
+    "medium heat for 8-10 minutes.",
+    "Put garlic in it, and cook for 1 minute.",
+    "Mix seasonings and flour and cook for 3 minutes.",
+    "Add broth, and stir constantly.",
+    "Add corn and potatoes, and bring it to boil.",
+    "Lower the heat, and cook while keeping it uncovered.",
+    "When potatoes are cooked, add chorizo and sour cream.",
+    "Serve with cilantro and cheese."
+  ],
+  "time": {
+    "total": 30
+  }
+}

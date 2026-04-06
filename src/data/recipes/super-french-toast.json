@@ -1,0 +1,69 @@
+{
+  "id": "super-french-toast",
+  "name": "SUPER FRENCH TOAST",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 8",
+  "intro": "sprinkle with the sea salt. Serve at once.",
+  "ingredients": [
+    {
+      "item": "cups/600 ml whole milk",
+      "amount": "2½"
+    },
+    {
+      "item": "plus 1 tbsp/200 ml heavy cream",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "orange, rind shaved into long strips",
+      "amount": "1"
+    },
+    {
+      "item": "long cinnamon sticks, broken in half",
+      "amount": "3"
+    },
+    {
+      "item": "vanilla bean, sliced lengthwise, seeds scraped",
+      "amount": "1"
+    },
+    {
+      "item": "oz/400 g brioche loaf, crusts removed, cut into 8 slices each 1 inch/2.5 cm thick",
+      "amount": "14"
+    },
+    {
+      "item": "eggs",
+      "amount": "6"
+    },
+    {
+      "item": "tsp/40 g superfine sugar",
+      "amount": "8"
+    },
+    {
+      "item": "tbsp/60 g unsalted butter",
+      "amount": "4"
+    },
+    {
+      "item": "cup/40 g confectioners’ sugar",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/240 g sour cream maple syrup, to serve",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the milk, cream, orange rind, cinnamon, and vanilla bean and seeds in a saucepan. Heat gently over medium-low heat and remove just before it comes to a boil, about 5 minutes. Set aside for about 20 minutes, for the cream to cool a little and for the flavors to infuse.",
+    "Meanwhile, line a 12½ by 8½-inch/32 by 22-cm baking dish with parchment paper and lay the brioche slices flat on the base.",
+    "Place the eggs and superfine sugar in a bowl and whisk well. Gradually pour the warm milk into the eggs, continuing to whisk the whole time. Strain the custard and then pour two-thirds of it over the brioche, so that it’s fully covered. Place the remaining custard in a wide, shallow bowl and set aside.",
+    "Bake the brioche for 20 minutes, until the custard is cooked through and golden brown. Set aside to cool and then cut into 8 square pieces.",
+    "Put half the butter in a large nonstick sauté pan and place over medium-high heat. Dip half the bread squares into the remaining custard, transfer to a plate, and sprinkle ½ teaspoon of the confectioners’ sugar over each square.",
+    "Immediately put them, sugar side down, in the pan and fry for 30 seconds to",
+    "1 minute, to caramelize the sugar. While they are frying, sprinkle ½ teaspoon of the confectioners’ sugar over each slice. Flip over and cook for the same amount of time, until the sugar is dark brown and crispy. Remove from the pan, let rest on a wire rack, and repeat with the remaining brioche slices and butter.",
+    "To serve, place 1 slice of toast on each plate with 2 tablespoons of the sour cream and as much maple syrup as you like."
+  ],
+  "time": {
+    "total": 30
+  }
+}

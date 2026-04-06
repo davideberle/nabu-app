@@ -1,0 +1,57 @@
+{
+  "id": "vegetarian-mushroom-fajitas",
+  "name": "Vegetarian Mushroom Fajitas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of fresh mushrooms",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "bell peppers, red",
+      "amount": "2"
+    },
+    {
+      "item": "sliced onion",
+      "amount": "1"
+    },
+    {
+      "item": "of curry powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "of cumin",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "Sour cream, optional",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "1 Heat mushrooms, the peppers, and the onion in the olive oil for 3-5",
+    "minutes.",
+    "2 Put spices in it, and cook for about 2 minutes. Make sure the veggies",
+    "are tender.",
+    "3 Put some mixture on a tortilla, the top sour cream over it.",
+    "4 Serve and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

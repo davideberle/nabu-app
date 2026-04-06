@@ -1,0 +1,70 @@
+{
+  "id": "chicken-tostadas",
+  "name": "Chicken Tostadas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "tomatoes, diced",
+      "amount": "3"
+    },
+    {
+      "item": "tostada shells or corn tortillas",
+      "amount": "8"
+    },
+    {
+      "item": "avocados, diced",
+      "amount": "4"
+    },
+    {
+      "item": "finely chopped cilantro",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "finely chopped red onion",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Lime juice",
+      "amount": ""
+    },
+    {
+      "item": "chicken, shredded",
+      "amount": "3 cups"
+    },
+    {
+      "item": "can drained and rinsed black beans",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "Cotija or feta cheese",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "For making tostada shells, arrange tortillas in a baking sheet, ad make",
+    "a single layer. Bake each side at 400",
+    "for around 6 minutes.",
+    "Meanwhile, make guacamole salsa by mixing avocado, tomato, red",
+    "onion, cumin, cilantro, chili powder, lime juice, and salt.",
+    "For assembly, put guacamole salsa, chicken, beans, and cheese on",
+    "each shell."
+  ],
+  "time": {
+    "total": 30
+  }
+}

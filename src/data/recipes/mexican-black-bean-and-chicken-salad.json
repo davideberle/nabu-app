@@ -1,0 +1,91 @@
+{
+  "id": "mexican-black-bean-and-chicken-salad",
+  "name": "Mexican Black Bean and Chicken Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of chicken breast, cooked",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "of torn lettuce",
+      "amount": "6 cups"
+    },
+    {
+      "item": "can black beans",
+      "amount": "1"
+    },
+    {
+      "item": "of shredded cheddar cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of green pepper, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "seeded tomatoes, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red onion, sliced",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "seeded tomato, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "fresh cilantro, minced",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "lime zest",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/4 teaspoon"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "pepper",
+      "amount": "1/4 tsp."
+    }
+  ],
+  "method": [
+    "Take a large bowl, mix chicken, lettuce, beans, cheese, green pepper,",
+    "tomatoes, and onion. Take a blender, and combine the ingredients for",
+    "the vinaigrette.",
+    "Then cover it. Make sure it is smooth before pouring over the salad.",
+    "Serve and enjoy!",
+    "Chapter 9: Mexican Desserts",
+    "Try this fantastic collection of Mexican dessert recipes given in this chapter,",
+    "and make your day."
+  ],
+  "time": {
+    "total": 30
+  }
+}

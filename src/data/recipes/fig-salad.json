@@ -1,0 +1,54 @@
+{
+  "id": "fig-salad",
+  "name": "FIG SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "spoon the pomegranate seeds over the top, and serve.",
+  "ingredients": [
+    {
+      "item": "small red onions (7 oz/200 g)",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cup/50 g hazelnuts, with skin",
+      "amount": "⅓"
+    },
+    {
+      "item": "oz/60 g radicchio leaves (about 7), coarsely torn",
+      "amount": "2"
+    },
+    {
+      "item": "cups/40 g basil leaves",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cups/40 g watercress leaves",
+      "amount": "1⅓"
+    },
+    {
+      "item": "large ripe figs (10½ oz/300 g)",
+      "amount": "6"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cinnamon salt and black pepper",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "In a small cup, whisk together the remaining 2½ tablespoons olive oil, the vinegar, and cinnamon with a pinch of salt and some black pepper. Drizzle this over the salad, finish with the hazelnuts, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

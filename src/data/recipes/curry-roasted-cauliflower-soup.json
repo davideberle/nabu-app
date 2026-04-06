@@ -1,0 +1,71 @@
+{
+  "id": "curry-roasted-cauliflower-soup",
+  "name": "Curry Roasted Cauliflower Soup",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "cauliflower, cut into florets",
+      "amount": "1 head"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "curry powder, or more to taste",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "butter, divided",
+      "amount": "5 tbsp."
+    },
+    {
+      "item": "chopped sweet onion",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "6 cups"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Set the oven to preheating at a heat 350°F (175°C).",
+    "In a baking pan, mix curry powder, mustard seeds, cauliflower, and olive",
+    "oil. Toss well to coat the cauliflower.",
+    "Let it bake inside the preheated oven for 35-40 minutes until the cauliflower",
+    "begins to brown.",
+    "Put 2 tbsp. of butter in a saucepan and heat it over medium heat. Cook and",
+    "stir onion for 5-10 minutes until the onion is softened. Add the cauliflower",
+    "and chicken broth. Let it boil. Adjust the heat to a heat low and let the",
+    "mixture simmer.",
+    "In a small saucepan, mix the flour and 3 tbsp. of butter. Cook and stir over",
+    "medium-low heat for approximately about 5 minutes until the roux is",
+    "slightly browned and thickened. Add the milk. Continue cooking for 5-10",
+    "minutes, stirring until the mixture is thick. Combine the roux into the soup",
+    "until smooth. Season the soup with pepper and salt.",
+    "Recipe 40: Curry Salmon with Broccoli"
+  ],
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "barley-and-pomegranate-salad",
+  "name": "Barley and pomegranate salad",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "promise that it is going to become a daily affair! It will go well with Fried Leeks (page 42) as well as many",
+  "ingredients": [
+    {
+      "item": "pearl barley",
+      "amount": "1 cup"
+    },
+    {
+      "item": "celery stalks (leaves picked and reserved), cut into small dice",
+      "amount": "6"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped parsley seeds from 2 large pomegranates (see page 110)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Rinse the barley with cold water, then place in a medium saucepan and cover with plenty of fresh water. Simmer for 30 to 35 minutes, or until tender but still with a bite.",
+    "Drain the barley and transfer to a mixing bowl. While it is still hot, add the celery, olive oil, vinegar, garlic, allspice and some salt and pepper. Stir, then leave to cool down completely.",
+    "Once cool, add the herbs, celery leaves and pomegranate seeds and mix in. Taste and adjust the seasoning to your liking, then serve.",
+    "This is my take on a classic Turkish dish that resonates with variations all over the Levant. Serve it with butter lettuce leaves as part of a mezze selection."
+  ],
+  "time": {
+    "total": 30
+  }
+}

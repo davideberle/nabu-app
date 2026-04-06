@@ -1,0 +1,88 @@
+{
+  "id": "youvarlakia",
+  "name": "Youvarlakia",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "For the Meatballs",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of coriander",
+      "amount": ""
+    },
+    {
+      "item": "Freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "fresh dill",
+      "amount": "3 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "lean beef",
+      "amount": "500g"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "carrot",
+      "amount": "½"
+    },
+    {
+      "item": "of a cup rice",
+      "amount": "¼"
+    },
+    {
+      "item": "medium-sized onion",
+      "amount": "1"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "parsley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "For the Egg Lemon Sauce",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Begin to make the meatballs for this Greek sausage soup.",
+    "In a large mixing bowl, combine all of the meatball components and",
+    "whisk until soft, squeezing the components with your arm.",
+    "Enable fifteen minutes for the combination to rest in the refrigerator.",
+    "2 1/2 cup water, brought to a boil in a big saucepan.",
+    "Reduce the heat to low and carefully drop the meatballs into the",
+    "water.",
+    "Crack an egg into a bowl and stir to make the egg-lemon salsa for the",
+    "Greek meatball broth. Whisk in the lime juice thoroughly.",
+    "Pour a ladle of hot soup into the mixing bowl and whisk easily.",
+    "Add another ladle and swirl until all is well mixed.",
+    "Toss the youvarlakia soup with the egg cream sauce."
+  ],
+  "time": {
+    "total": 40
+  }
+}

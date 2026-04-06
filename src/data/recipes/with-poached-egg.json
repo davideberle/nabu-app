@@ -1,0 +1,71 @@
+{
+  "id": "with-poached-egg",
+  "name": "WITH POACHED EGG",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil, plus 1 tbsp to finish",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium onion, coarsely chopped (about 1 cup/140 g)",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "medium red peppers, cut into ¼-inch/5-mm dice (about 1¼ cups/180 g)",
+      "amount": "2"
+    },
+    {
+      "item": "beefsteak tomato, peeled and coarsely chopped (1⅔ cups/300 g)",
+      "amount": "1"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sourdough bread, brushed with olive oil and grilled on both sides",
+      "amount": "4 slices"
+    },
+    {
+      "item": "eggs, freshly poached (see for poaching instructions)",
+      "amount": "4"
+    },
+    {
+      "item": "za’atar",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Drain and rinse the chickpeas and place them in a large saucepan with plenty of water. Place over high heat, bring to a boil, skim the surface, and boil for 5 minutes. Drain and set aside.",
+    "Place the oil, onion, garlic, tomato paste, cayenne, paprika, red peppers, 1 teaspoon salt, and some black pepper in a food processor and blitz to form a paste.",
+    "Wipe out the chickpea saucepan, return it to the stove over medium heat, and add the paste. Fry for 5 minutes (there’s enough oil there to allow for this), stirring occasionally, before adding the tomato, sugar, chickpeas, and a scant",
+    "1 cup/200 ml water. Bring to a low simmer, cover the pan, and cook over very low heat for 4 hours, stirring from time to time and adding more water when needed to retain a sauce-like consistency. Remove the lid and cook for a final hour: the sauce needs to thicken without the chickpeas becoming dry.",
+    "Place a piece of warm grilled bread on each plate and spoon the chickpeas over the bread. Lay a poached egg on top, followed by a sprinkle of za’atar and a drizzle of oil. Serve at once.",
+    "Quinoa and Fennel Salad",
+    "QUINOA AND FENNEL SALAD"
+  ],
+  "time": {
+    "total": 30
+  }
+}

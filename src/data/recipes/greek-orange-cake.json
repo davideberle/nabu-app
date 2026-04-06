@@ -1,0 +1,57 @@
+{
+  "id": "greek-orange-cake",
+  "name": "Greek Orange Cake",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A cup of orange juice",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon ground cardamom",
+      "amount": ""
+    },
+    {
+      "item": "A cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of baking soda,",
+      "amount": ""
+    },
+    {
+      "item": "An egg",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of orange zest",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the cake batter and mix all the ingredients.",
+    "Make the batter and pour it into a baking dish.",
+    "Make sure the baking dish is properly greased and lined with parchment",
+    "paper.",
+    "Bake the cake.",
+    "Dish it out when done.",
+    "Cut the cake into slices.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

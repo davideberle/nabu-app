@@ -1,0 +1,71 @@
+{
+  "id": "french-breakfast-croissant",
+  "name": "French Breakfast Croissant",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "Plastic wrappers",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole wheat flour",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of water",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of yeast",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the flour into it.",
+    "Add the yeast and sugar into it.",
+    "Add lukewarm water in it.",
+    "Set aside for half an hour.",
+    "Take the whole wheat flour in another bowl.",
+    "Add the yeast dough in it.",
+    "Add the salt and some water in it.",
+    "Combine the ingredients to form a soft dough.",
+    "Make round forms of dough with the help of the oil.",
+    "Wrap it in plastic wrappers.",
+    "After twenty minutes, roll out the dough into triangles.",
+    "Roll the triangles to form a croissant shape.",
+    "Bake the croissants for twenty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "greek-omelette",
+  "name": "Greek Omelette",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "fresh mint",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "feta",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "milk",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "tomato",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "onion",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "spinach",
+      "amount": "2 tablespoon"
+    }
+  ],
+  "method": [
+    "In a non-stick dish, heat the olive oil.",
+    "Add the spinach, tomatoes, olives, and onions and cook for three",
+    "minutes.",
+    "In a pan, stir in the eggs, sugar, salt, and black pepper.",
+    "Spoon the mixture of eggs into the pan.",
+    "Place the bowl and cook till the base is formed on the egg.",
+    "Spray on top of the omelet with fresh basil and feta.",
+    "Flip it in half with the knife.",
+    "Pick and eat hot on a tray."
+  ],
+  "time": {
+    "total": 20
+  }
+}

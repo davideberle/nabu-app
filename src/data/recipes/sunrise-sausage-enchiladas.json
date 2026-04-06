@@ -1,0 +1,88 @@
+{
+  "id": "sunrise-sausage-enchiladas",
+  "name": "Sunrise Sausage Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "pork sausage",
+      "amount": "1 pound"
+    },
+    {
+      "item": "hash brown shredded potatoes",
+      "amount": "20 ounces"
+    },
+    {
+      "item": "canola oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "pepper",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can green chiles, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "flour tortillas (8 inches)",
+      "amount": "8"
+    },
+    {
+      "item": "cans enchilada sauce",
+      "amount": "2"
+    },
+    {
+      "item": "For Topping:",
+      "amount": ""
+    },
+    {
+      "item": "Red onion, chopped",
+      "amount": ""
+    },
+    {
+      "item": "Red pepper, sweet and chopped",
+      "amount": ""
+    },
+    {
+      "item": "Fresh cilantro, chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a skillet and cook sausage on medium heat. Make sure it is not",
+    "pink anymore. Remove drippings from it while taking it out of the",
+    "skillet.",
+    "Heat oil in a pan over medium heat. Cook potatoes until its color is",
+    "brown. Then turn off the heat.",
+    "Mix in chiles, seasonings, sausage, and cheese.",
+    "Put 1/2 cup of filling on a tortilla; fold it and place it in a baking dish.",
+    "Top it with sauce, then cover and refrigerate it overnight.",
+    "Preheat the oven to 375°. Take out enchiladas from the refrigerator.",
+    "Bake it for 30 minutes while being covered.",
+    "Put the remaining cheese. Then bake while being uncovered till the",
+    "point it is lightly brown.",
+    "Put toppings and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

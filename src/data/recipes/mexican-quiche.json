@@ -1,0 +1,71 @@
+{
+  "id": "mexican-quiche",
+  "name": "Mexican Quiche",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "shredded cheddar cheese",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "pie crust, refrigerated",
+      "amount": "1"
+    },
+    {
+      "item": "can tomatoes with green chilies",
+      "amount": "1"
+    },
+    {
+      "item": "black olives",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "can green chilies",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "paprika",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1/8 tsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1/8 tsp."
+    }
+  ],
+  "method": [
+    "Place the pie crust on the pie plate.",
+    "Put cheddar over the bottom of the crust.",
+    "Then put tomatoes with green chilis and olives on it.",
+    "Mix eggs, chili powder, sour cream, paprika, cayenne, cumin, and",
+    "garlic powder. Pour this mixture over the pie crust.",
+    "Bake at 350",
+    "for an hour.",
+    "Wait for 5 minutes to let it settle and then serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

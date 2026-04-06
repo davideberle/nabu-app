@@ -1,0 +1,101 @@
+{
+  "id": "coconut-red-curry-stew",
+  "name": "Coconut Red Curry Stew",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "canola oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "red curry paste",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "sweet red pepper, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "green pepper, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "chickpeas, rinsed and drained",
+      "amount": "15 oz."
+    },
+    {
+      "item": "butternut squash, diced",
+      "amount": "3 cups"
+    },
+    {
+      "item": "eggplant, diced",
+      "amount": "4 cups"
+    },
+    {
+      "item": "vegetable broth, divided",
+      "amount": "32 oz."
+    },
+    {
+      "item": "coconut milk",
+      "amount": "13 oz."
+    },
+    {
+      "item": "canned crushed tomatoes",
+      "amount": "15 oz."
+    },
+    {
+      "item": "For serving",
+      "amount": ""
+    },
+    {
+      "item": "Fresh cilantro, chopped",
+      "amount": ""
+    },
+    {
+      "item": "Lime wedges",
+      "amount": ""
+    },
+    {
+      "item": "Hot cooked rice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Pour the oil into a pot over medium high heat.",
+    "Cook the onion for 3 minutes.",
+    "Stir in the garlic.",
+    "Cook while stirring for 1 minute.",
+    "Add the sugar and curry paste.",
+    "Stir in the sweet red pepper, green pepper, chickpeas, butternut squash and",
+    "eggplant.",
+    "Pour in 3 cups of the broth, coconut milk and tomatoes.",
+    "Bring to a boil.",
+    "Reduce heat and simmer for 40 minutes.",
+    "Pour in the remaining broth.",
+    "Heat through for 5 minutes.",
+    "Top with the cilantro.",
+    "Serve with the lime wedges and hot cooked rice.",
+    "Recipe 9: Coconut Shrimp Curry with Red",
+    "Bell Peppers",
+    "This easy-to-make shrimp recipe will be better than what you find in"
+  ],
+  "time": {
+    "total": 60
+  }
+}

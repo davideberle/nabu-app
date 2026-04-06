@@ -1,0 +1,113 @@
+{
+  "id": "quick-vegetarian-tacos",
+  "name": "Quick Vegetarian Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "summer squash, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Japanese eggplant, cut into pieces",
+      "amount": "1"
+    },
+    {
+      "item": "bell pepper, red",
+      "amount": "1"
+    },
+    {
+      "item": "Olive oil, to drizzle",
+      "amount": ""
+    },
+    {
+      "item": "of cherry tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tortillas",
+      "amount": "6"
+    },
+    {
+      "item": "diced avocados",
+      "amount": "1"
+    },
+    {
+      "item": "of black beans, cooked",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Chopped cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Cotija cheese, crumbled, optional",
+      "amount": ""
+    },
+    {
+      "item": "serrano pepper, optional",
+      "amount": "1"
+    },
+    {
+      "item": "Sea salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "For Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "of pepitas",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of tomatillo salsa",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "avocado",
+      "amount": "1/2"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of spinach",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Sea salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 400 degrees F.",
+    "Put chopped eggplant, red pepper, tomatoes, and squash in a baking",
+    "sheet.",
+    "Add olive oil, pepper, and salt onto it, then roast until it is golden",
+    "brown.",
+    "Blend tomatillo salsa, avocado, pepitas, spinach, olive oil, salt, lime",
+    "juice, and pepper, and set aside.",
+    "Make tacos with roasted vegetables, black beans, diced avocado,",
+    "serrano, cilantro, and cotija.",
+    "Serve with more sauce."
+  ],
+  "time": {
+    "total": 30
+  }
+}

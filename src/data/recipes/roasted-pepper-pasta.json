@@ -1,0 +1,62 @@
+{
+  "id": "roasted-pepper-pasta",
+  "name": "Roasted Pepper Pasta",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "red peppers, halved and de-seeded",
+      "amount": "4-5"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garlic cloves, sliced",
+      "amount": "3-4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "sugar",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "pesto",
+      "amount": "5-6 tbsp."
+    },
+    {
+      "item": "Parmesan cheese, to serve",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Line a baking tray with baking paper and place the peppers, tomatoes and garlic on it. Sprinkle with olive oil and",
+    "sugar and season with salt and black pepper to taste.",
+    "Roast in a preheated to 375 F oven for 15 minutes, or until the vegetables are slightly charred around the edges.",
+    "Prepare the pasta according to package directions.",
+    "Toss it with the roasted vegetables and serve with pesto and Parmesan cheese.",
+    "(16) Greek-style Baked Pasta",
+    "Do you feel like something’s missing from your usual pasta dish? Spice? Texture? Flavor? You need to try Greek-",
+    "style baked pasta! The key ingredient is feta cheese, which gives it a tangy and savory flavor. Plus, the cool and",
+    "creamy texture is a refreshing change from the usual gooey hot mess of spaghetti that we all love so much.",
+    "Yield: 5"
+  ],
+  "time": {
+    "total": 45
+  }
+}

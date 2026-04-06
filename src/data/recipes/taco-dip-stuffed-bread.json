@@ -1,0 +1,107 @@
+{
+  "id": "taco-dip-stuffed-bread",
+  "name": "Taco Dip Stuffed Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "large loaf of crusty bread (ciabatta or baguette, for",
+      "amount": "1"
+    },
+    {
+      "item": "example)",
+      "amount": ""
+    },
+    {
+      "item": "divided extra-virgin olive oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "poundbeef in the ground",
+      "amount": "1"
+    },
+    {
+      "item": "2garlic cloves, minced",
+      "amount": ""
+    },
+    {
+      "item": "tbspseasoning for tacos",
+      "amount": "2"
+    },
+    {
+      "item": "salt kosher",
+      "amount": ""
+    },
+    {
+      "item": "black pepper, freshly ground",
+      "amount": ""
+    },
+    {
+      "item": "1Can of refried beans (16 oz.)",
+      "amount": ""
+    },
+    {
+      "item": "1green chilies, diced (4.5 oz.)",
+      "amount": ""
+    },
+    {
+      "item": "cream cheese block",
+      "amount": "8 oz."
+    },
+    {
+      "item": "pepper Jack cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": ""
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "quartered cherry tomatoes, chopped",
+      "amount": ""
+    },
+    {
+      "item": "cilantro, finely chopped, to serve as a garnish",
+      "amount": ""
+    },
+    {
+      "item": "To serve tortilla chips.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees Fahrenheit. Cut a 1\" deep slit",
+    "on the top of the bread. Bread should be ripped into big pieces",
+    "after hollowing out the middle. Place the bread that has been",
+    "hollowed out on a large baking pan. Drizzle 1 tablespoon oil",
+    "over it and scatter bread bits over it.",
+    "Heat the remaining tablespoon of oil in a large pan over medium",
+    "heat. Cook for 6 minutes, breaking up the ground beef with a",
+    "wooden spoon until it is no longer pink. Fat should be drained.",
+    "Bring the pan to the flame and set it to medium. Cook for 1",
+    "minute or until garlic is aromatic. Taco seasoning, salt, and",
+    "pepper to taste. Refried beans and green chilies should be added",
+    "at this point. Stir in the cream cheese and pepper jack until",
+    "completely melted.",
+    "Spoon the mixture into the bread that has been hollowed out.",
+    "Cheddar should be sprinkled on top—Bake for 20 minutes, or",
+    "until the bread is toasted and the cheese has melted.",
+    "Serve with toasted bread and chips and top with tomatoes and",
+    "cilantro.",
+    "Easy, Energizing Breakfast Bread Recipes"
+  ],
+  "time": {
+    "total": 40
+  }
+}

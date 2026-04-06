@@ -1,0 +1,75 @@
+{
+  "id": "cheesy-greek-swirls",
+  "name": "Cheesy Greek Swirls",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "pepper",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Swiss cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "frozen puff pastry",
+      "amount": "17 oz."
+    },
+    {
+      "item": "spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "jarred red peppers",
+      "amount": "1 cup"
+    },
+    {
+      "item": "8-oz. cream cheese",
+      "amount": ""
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "artichoke hearts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees Fahrenheit.",
+    "Puff pie should be thawed as per the package instructions.",
+    "Place one sheet of puff pastry on a solid floor and place half of the",
+    "cream cheese mixture on it.",
+    "Part of the cheddar cheese, olives, artichokes, broccoli, red peppers,",
+    "and Rye bread is layered.",
+    "Season with a quarter teaspoon of salt, powder, and garlic salt.",
+    "Shape a log by rolling the dough tightly.",
+    "Slice the logs into 1 inch thick slices and arrange them 1 inch apart on",
+    "a cooking sheet lined with parchment paper.",
+    "Then using leftover dough and products, repeat the procedure.",
+    "Preheat oven to 400°F and bake for fifteen minutes, or until lightly",
+    "browned.",
+    "Warm or at ambient temperature is fine. Any leftovers should",
+    "be kept refrigerated."
+  ],
+  "time": {
+    "total": 35
+  }
+}

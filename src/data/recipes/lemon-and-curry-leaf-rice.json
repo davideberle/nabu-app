@@ -1,0 +1,40 @@
+{
+  "id": "lemon-and-curry-leaf-rice",
+  "name": "LEMON AND CURRY LEAF RICE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "pepper. Mix well and set aside for at least 10 minutes before serving.",
+  "ingredients": [
+    {
+      "item": "short cinnamon sticks, each about 2-inches/5-cm long",
+      "amount": "5"
+    },
+    {
+      "item": "whole cloves shaved rind of 1 lemon, plus 1 tbsp lemon juice",
+      "amount": "10"
+    },
+    {
+      "item": "stems fresh curry leaves (about 25 leaves), or 35 dried curry leaves rounded 2 cups/400 g basmati rice, rinsed, soaked in water for 15 minutes, and drained well",
+      "amount": "3"
+    },
+    {
+      "item": "cup/60 g unsalted butter salt and white pepper",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "Put the cinnamon sticks, cloves, lemon rind, curry leaves, 1½ teaspoons salt, and ½ teaspoon pepper in a saucepan. Cover with 2¾ cups/680 ml water and place over high heat. As soon as the water boils, remove the pan from the heat.",
+    "Spread the rice out in a baking dish or roasting pan approximately 9½ by 12- inches/24 by 30-cm, cover with the boiled water and aromatics, and stir well.",
+    "Lay a piece of waxed paper over the surface of the water and cover the dish with aluminum foil. Cook in the oven for 25 minutes, then remove and leave to sit, covered, for 8 to 10 minutes.",
+    "Just before serving, melt the butter in a small saucepan. Once it’s melted and very hot, carefully add the lemon juice and swirl together to mix. Pour this over the hot rice and fluff up the rice with a fork. Transfer to a serving bowl",
+    "and serve at once (you can remove the curry stems and cinnamon sticks or keep for the look).",
+    "Saffron, Date, and Almond Rice",
+    "SAFFRON, DATE, AND ALMOND RICE"
+  ],
+  "time": {
+    "total": 30
+  }
+}

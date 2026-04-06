@@ -1,0 +1,82 @@
+{
+  "id": "greek-spanakopita-spring-rolls",
+  "name": "Greek Spanakopita Spring Rolls",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "One pack of spring roll wrappers",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "For filling:",
+      "amount": ""
+    },
+    {
+      "item": "One cup of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Four eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of freshly grated nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of milk",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped spinach",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of crushed black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the onions and garlic when the oil heats up.",
+    "Cook the onions until they turn soft.",
+    "Mix the eggs and add the chopped spinach into the pan.",
+    "Cook the ingredients until the spinach is wilted.",
+    "Add the feta cheese, milk, black pepper, salt, and freshly grated nutmeg",
+    "into the pan.",
+    "Cook the ingredients for about five minutes.",
+    "Switch off the stove and let the mixture cool down.",
+    "Add the mixture on the spring roll wrappers and roll it.",
+    "Deep fry the spring rolls until they turn golden brown.",
+    "Dish out the spanakopita when it is done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

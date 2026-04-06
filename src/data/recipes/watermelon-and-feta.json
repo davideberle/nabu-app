@@ -1,0 +1,48 @@
+{
+  "id": "watermelon-and-feta",
+  "name": "Watermelon and feta",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "cheeses you can use here, see Dates and Turkish Sheep's Cheese, page 280).",
+  "ingredients": [
+    {
+      "item": "feta",
+      "amount": "10 oz"
+    },
+    {
+      "item": "large chunks of watermelon",
+      "amount": "½ cups"
+    },
+    {
+      "item": "basil leaves",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "small red onion, very thinly sliced (optional) olive oil",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Slice the feta into large but thin pieces, or just break it by hand into rough chunks.",
+    "Arrange all the ingredients, except the olive oil, on a platter, mixing them up a little. Drizzle over some oil and serve at once.",
+    "284 | Index aioli, tarragon 120 apricots, ultimate winter couscous 262 artichokes globe, with crushed fava beans 176 gratin 178 lemony globe 168 multi-vegetable paella 80 arugula baked eggs with yogurt and chile 140 dates and Turkish sheep's cheese 280 figs with basil, goat cheese and pomegranate vinaigrette 272 green couscous 255 asparagus char-grilled 182 fennel, beets and, with verjus 170 green lentils, watercress and 220 mimosa 182 poached baby vegetables with caper mayonnaise 12 vichyssoise 184 avocados salad, quinoa, fava bean and 228 salsa 134",
+    "Bánh xèo 54 barley and pomegranate salad 238 yogurt flatbreads with mushrooms and 236 basil figs with goat cheese, pomegranate vinaigrette, and 272 oil 24 beans see also black beans; chickpeas; edamame; fava beans; lima beans broccolini and sweet sesame salad 94 gado-gado 195 green bean salad with mustard seeds and tarragon 196 mee goreng 185 mixed, with many spices and lovage 192",
+    "Tamara's ratatouille 74",
+    "Béchamel 178 beets asparagus, fennel and, with verjus 170 relish, yogurt, preserved lemon and 19 salad, orange, black olive and 15 black beans paste 134 quesadillas 134 bread mushroom ragout with poached duck egg 50 pear crostini 278 quinoa and grilled sourdough salad 128 scrambled smoky duck eggs on sourdough 86 soup, chickpea, tomato and 218 yogurt flatbreads with barley and mushrooms 236 broccoli and Gorgonzola pie 92 purple sprouting, with rice noodles 98 broccolini crunchy pappardelle 252 and sweet sesame salad 94",
+    "Brussels sprouts and tofu 105 bulgar kısır 239 pilaf, Itamar's 242 burgers, fava bean 194 butter lime 150 spiced 260 buttermilk sauce, eggplant with 110 cabbage gado-gado 195 and kohlrabi salad 99",
+    "Savoy, and Parmesan rind soup 104 stuffed 95 sweet winter slaw 102 capers mayonnaise 12 vinaigrette 16 cardamom rice with poached eggs and yogurt 240 carrots poached baby vegetables with caper mayonnaise 12 salad, spicy Moroccan 14 cauliflower saffron 106 smoky frittata 96 celeriac and lentils with hazelnut and mint 216 parsnip dumplings in broth 28 chard see Swiss chard",
+    "Cheddar quesadillas 134 smoky frittata 96 cheese see individual cheeses cherries cabbage and kohlrabi salad 99 chickpeas hummus with ful 210 sauté with Greek yogurt 211 socca 224 soup, tomato, bread and 218 stew, Swiss chard, tamarind and 148 ultimate winter couscous 262 choi sum mee goreng 185 cilantro cardamom rice with poached eggs and yogurt 240 herb paste 255 okra with tomato, lemon and 179 soba noodles with wakame 188 soup, tomato, semolina and 130 steamed rice with herbs 235 ultimate winter couscous 262 coconut and coconut milk",
+    "Bánh xèo 54 purple sprouting broccoli with rice noodles 98 rice and mango salad 244 rice with sambal and okra 230 satay sauce 195 corn polenta, sweet 266 couscous green 255 tomato party 131 ultimate winter 262 crostini, pear 278 cucumbers burnt eggplant with tahini 122 gado-gado 195 green gazpacho 180 quinoa and grilled sourdough salad 128 salad with smashed garlic and ginger 166 soba noodles with wakame 188 yogurt, spiced red lentils with 221 dates and Turkish sheep's cheese 280 duck eggs poached, mushroom ragout with 50 scrambled smoky, on sourdough 86 dumplings, parsnip, in broth 28 edamame pasta and fried zucchini salad 254 warm glass noodles and 198 eggplant broiled vegetable soup 115 burnt, with tahini 122 with buttermilk sauce 110 croquettes 120 grilled, lentils with 116 and lemon risotto 231",
+    "“mixed grill” with parsley oil 68 sauce 266 soba noodles with mango and 112",
+    "Tamara's ratatouille 74 tricolore (and more) 114 very full tart 84–85 eggs see also duck eggs asparagus mimosa 182",
+    "Plenty | 285 baked, with yogurt and chile 140 chard and saffron omelettes 142 gado-gado 195 goat cheese soufflés with vanilla-poached peach 274",
+    "Halloween soufflés 64 pizza, spinach, pecorino and 156 poached, cardamom rice with yogurt and 240 royal potato salad 20 shakshuka, 87 smoky frittata 96 endive caramelized, with Gruyère 157",
+    "Jerusalem artichokes with manouri and basil oil 24 nutty, with Roquefort 160 farro and roasted pepper salad 234 fava beans burgers 194 crushed, globe artichokes with 176 and hot yogurt soup 202 hummus with ful 210 marinated mushrooms with walnut and tahini yogurt 58 mixed beans with many spices and lovage 192 multi-vegetable paella 80 salad, avocado, quinoa and 228 fennel asparagus, beets and, with verjus 170 caramelized, with goat cheese 172 chickpea, tomato and bread soup 218 multi-vegetable paella 80 poached baby vegetables with caper mayonnaise 12 feta char-grilled asparagus 182 eggplant croquettes 120 farro and roasted pepper salad 234 fried lima beans with sorr"
+  ],
+  "time": {
+    "total": 30
+  }
+}

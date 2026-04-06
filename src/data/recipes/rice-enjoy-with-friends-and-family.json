@@ -1,0 +1,77 @@
+{
+  "id": "rice-enjoy-with-friends-and-family",
+  "name": "rice. Enjoy with friends and family.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "tomato sauce",
+      "amount": "8 oz."
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sliced onions",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "diced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "cubed chicken meat",
+      "amount": "2 lbs."
+    },
+    {
+      "item": "coconut milk",
+      "amount": "14 oz."
+    },
+    {
+      "item": "stewed tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red curry paste",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Properly season the chicken with salt and pepper.",
+    "In a sizable skillet, heat olive oil before sautéing the garlic and onions.",
+    "Stir in the curry powder and the red curry paste. It should take a minute.",
+    "Brown the chicken sides for around 10 minutes.",
+    "Add fish sauce, chili sauce, sugar, stewed tomatoes, coconut milk, and",
+    "tomato sauce.",
+    "Stir the mixture properly and simmer for around 50 minutes.",
+    "Serve and enjoy!",
+    "Recipe 16: Curried Chicken Meatballs with",
+    "If you like curry, these chicken meatballs are a real treat. Packed with the"
+  ],
+  "time": {
+    "total": 60
+  }
+}

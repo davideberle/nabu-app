@@ -1,0 +1,52 @@
+{
+  "id": "celery-ribs-plus-grilled-chicken-make-the-salad-tastier",
+  "name": "Celery ribs plus grilled chicken make the salad tastier",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "of skinless, boneless grilled chicken, chopped",
+      "amount": "2 cups"
+    },
+    {
+      "item": "small apple, diced",
+      "amount": "1"
+    },
+    {
+      "item": "of celery ribs, diced",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of green olives from a jar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of curry powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of raisins",
+      "amount": "3 tbsp."
+    }
+  ],
+  "method": [
+    "Combine mayonnaise and curry powder in a medium bowl, stirring until",
+    "very well blended.",
+    "Add the grilled chicken, the apple, celery, raisins, olives and then stir the",
+    "salad again. Cover and chill.",
+    "Recipe 18: Curried Chicken Wings",
+    "Just when you thought we had enough of Asian flavors to pair up with",
+    "chicken wings, here is another dish of that kind. It’s made of everybody’s",
+    "favorite curry, plus some veggies and additional seasoning. Get ready with"
+  ],
+  "time": {
+    "total": 25
+  }
+}

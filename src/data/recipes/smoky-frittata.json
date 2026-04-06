@@ -1,0 +1,60 @@
+{
+  "id": "smoky-frittata",
+  "name": "Smoky frittata",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "it is highly effective in adding depth and pungency to vegetarian dishes.",
+  "ingredients": [
+    {
+      "item": "small cauliflower, cut into medium florets",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "6"
+    },
+    {
+      "item": "crème fraîche",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sweet smoked paprika",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "finely chopped chives",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "smoked scamorza, grated (including the skin for extra flavor)",
+      "amount": "5 oz"
+    },
+    {
+      "item": "mature Cheddar, grated salt and black pepper",
+      "amount": "2 oz"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Simmer the cauliflower in a large pan of boiling salted water for only 4 to 5 minutes, or until semi-cooked. Drain and dry.",
+    "Preheat the oven to 375°F. Break the eggs into a large bowl. Add the crème fraîche, mustard and paprika and whisk well, making sure the eggs and crème fraîche are thoroughly blended. Now stir in the chives and three-quarters of the cheeses, and season well with salt and pepper.",
+    "Heat up the olive oil in a large ovenproof frying pan. Fry the cauliflower for about 5 minutes, or until golden brown on one side. Pour over the egg mixture and use a fork to spread the cauliflower evenly in the pan. Cook on medium heat for about",
+    "Scatter the remaining cheeses on top, then carefully transfer the pan to the oven. Cook for 10 to 12 minutes, or until the frittata is set.",
+    "Remove from the oven and let rest for 2 to 3 minutes before cutting into wedges. Eat immediately, with a peppery green salad.",
+    "Yes, there’s a long list of ingredients here, but I am ready to be extra-kind and allow you to adapt the recipe, to use commercial Thai curry paste instead of having to schlep and get all the individual items. This “dry” variation of a green curry makes one of the most satisfying supper dishes for the late winter and early months of spring.",
+    "Purple sprouting broccoli with rice noodles"
+  ],
+  "time": {
+    "total": 30
+  }
+}

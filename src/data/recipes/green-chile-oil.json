@@ -1,0 +1,78 @@
+{
+  "id": "green-chile-oil",
+  "name": "GREEN CHILE OIL",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large plum tomatoes, each cut into 6 wedges (10½ oz/300 g) sunflower oil, for frying",
+      "amount": "3"
+    },
+    {
+      "item": "medium zucchini, cut into ¾-inch/2-cm chunks (about 3 cups/400 g)",
+      "amount": "2"
+    },
+    {
+      "item": "large eggplant, cut into ¾-inch/2-cm chunks (about 5 cups/450 g)",
+      "amount": "1"
+    },
+    {
+      "item": "large red peppers, stalks and seeds removed, cut into ¾-inch/2-cm chunks (about 3½ cups/420 g)",
+      "amount": "2"
+    },
+    {
+      "item": "cup/150 g Greek yogurt",
+      "amount": "¾"
+    },
+    {
+      "item": "large clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "shredded fresh mint",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "lemon juice salt and black pepper",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "green chile, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "oz/20 g flat-leaf parsley",
+      "amount": "⅔"
+    },
+    {
+      "item": "chopped mint",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cup/60 ml olive oil salt",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "Place the zucchini and eggplant in a colander and sprinkle with 1 teaspoon salt. Set aside for 1 hour, allowing some of the water to release, then drain.",
+    "Spread out the tomatoes on a baking sheet, sprinkle with ¼ teaspoon salt, and place in the oven for 40 minutes to dry out a little. Remove and set aside to cool.",
+    "To make the herb oil, place all the ingredients in the bowl of a small food processor with a pinch of salt and process to a smooth, thick sauce.",
+    "Pour the sunflower oil to a depth of 2-inches/5-cm into a saucepan and heat over medium-high heat. Once the oil is hot, turn down the heat to medium.",
+    "Pat the zucchini and eggplant dry and deep-fry them and the red pepper in batches for 12 to 15 minutes for each. The eggplant might take a little longer than the other vegetables: you want it to be golden brown. Drain in a colander, sprinkle with salt, and set aside to cool.",
+    "Finally, in a bowl, stir together the yogurt, garlic, fresh and dried mint, lemon juice, and plenty of black pepper. Add the vegetables and tomatoes and stir very gently. Spoon the herb oil on top and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

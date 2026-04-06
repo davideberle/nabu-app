@@ -1,0 +1,79 @@
+{
+  "id": "crispy-chicken-mini-tacos",
+  "name": "Crispy Chicken Mini Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "white onion, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "tomato, chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "jalapeno",
+      "amount": "1"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped cilantro leaves",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chicken breast",
+      "amount": "1"
+    },
+    {
+      "item": "Vegetable oil, to fry",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 1/2 tbsp."
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "8"
+    },
+    {
+      "item": "iceberg lettuce, shredded",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "sour cream",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "feta or queso fresco cheese",
+      "amount": "3 tbsp."
+    }
+  ],
+  "method": [
+    "Mix onion, cilantro, tomato, and jalapeno in a bowl.",
+    "Add pepper and salt to taste. Then set it aside.",
+    "Preheat oven to the 350",
+    "Apply olive oil on the chicken breast. Sprinkle with pepper and salt,",
+    "to taste.",
+    "Roast the chicken for about 25 minutes.",
+    "Let it cool, then shred it.",
+    "Take a skillet and heat vegetable oil.",
+    "Put shredded chicken in the center of corn tortilla, then roll it.",
+    "Fry tacos until it is golden brown, then cut into half.",
+    "Top it with salsa and shredded lettuce.",
+    "Put queso fresco on it, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -2,85 +2,105 @@
   "id": "banana-bread",
   "name": "Banana Bread",
   "source": {
-    "cookbook": "Brunch Cookbook",
-    "author": "Louise Davidson",
-    "chapter": "Sides"
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
   },
-  "servings": "serves 12 | prep. time 10 minutes | cooking time 45-50 minutes",
+  "servings": "serves 6",
   "ingredients": [
     {
-      "item": "ripe bananas, mashed",
-      "amount": "3"
+      "item": "baking powder 2 c. all-purpose",
+      "amount": "1 tsp."
     },
     {
-      "item": "brown sugar",
-      "amount": "½ cup"
-    },
-    {
-      "item": "whole milk",
-      "amount": "¾ cup"
-    },
-    {
-      "item": "vegetable oil",
-      "amount": "⅓ cup"
-    },
-    {
-      "item": "pure vanilla extract",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "apple cider vinegar",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "all-purpose flour",
-      "amount": "2 cups"
-    },
-    {
-      "item": "baking powder",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "baking soda",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "Pinch of kosher salt",
+      "item": "flour",
       "amount": ""
     },
     {
-      "item": "ground cinnamon",
-      "amount": "½ tsp"
+      "item": "soda bicarbonate",
+      "amount": ""
     },
     {
-      "item": "ground nutmeg",
-      "amount": "¼ tsp"
+      "item": "tbsp.",
+      "amount": "1"
     },
     {
-      "item": "chopped walnuts",
-      "amount": "½ cup"
+      "item": "salt (kosher)",
+      "amount": ""
     },
     {
-      "item": "chocolate chips",
-      "amount": "½ cup"
+      "item": "cup",
+      "amount": "12"
+    },
+    {
+      "item": "unsalted butter stick, melted",
+      "amount": "1"
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "sugar granules",
+      "amount": "1"
+    },
+    {
+      "item": "egg yolk plus 1 big egg",
+      "amount": "1"
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "soured milk",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "vanilla extract (pure)",
+      "amount": ""
+    },
+    {
+      "item": "mashed ripe bananas",
+      "amount": "3"
+    },
+    {
+      "item": "cup",
+      "amount": "12"
+    },
+    {
+      "item": "chocolate chips, semi-sweet",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "12"
+    },
+    {
+      "item": "walnuts, roasted, chopped",
+      "amount": ""
     }
   ],
   "method": [
-    "Preheat oven to 350°F (177°C).",
-    "In a large mixing bowl, combine the mashed bananas, brown sugar, milk, vegetable oil, vanilla extract, and apple cider vinegar.",
-    "Stir in the flour, baking powder, baking soda, salt, ground cinnamon, and ground nutmeg. Mix until well-combined.",
-    "Fold in the chopped walnuts and chocolate chips.",
-    "Transfer the batter into a 13-inch loaf pan lined with parchment paper or sprayed with cooking spray.",
-    "Bake for 45-50 minutes or until a toothpick inserted in the center of the cake comes out clean.",
-    "Let cool before serving."
+    "Preheat oven to 325 degrees Centigrade (180 degrees Celsius).",
+    "Grease a loaf pan with cooking spray and line it with parchment",
+    "paper.",
+    "Combine flour, baking soda, and salt in a large mixing basin.",
+    "Combine melted butter, sugar, egg and egg yolk, sour cream,",
+    "and vanilla in a separate large mixing basin. Stir in the mashed",
+    "bananas until everything is well mixed. Add the dry ingredients",
+    "to the wet components quickly, steady stream until everything is",
+    "just mixed.",
+    "Transfer to prepared loaf pan and fold in chocolate chips and",
+    "walnuts.",
+    "Bake for 1 hour or until a toothpick inserted in the center comes",
+    "out clean. Allow 10 minutes for cooling in the pan before",
+    "transferring out onto a cooling rack to cool completely."
   ],
   "time": {
-    "total": 50
-  },
-  "category": {
-    "dish_type": [
-      "side"
-    ]
-  },
-  "image": null
+    "total": 45
+  }
 }

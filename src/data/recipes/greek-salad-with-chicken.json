@@ -1,0 +1,81 @@
+{
+  "id": "greek-salad-with-chicken",
+  "name": "Greek Salad with Chicken",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Kalamata olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Mediterranean tomato salad",
+      "amount": "2 cups"
+    },
+    {
+      "item": "hothouse cucumber",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lettuce romaine",
+      "amount": "6 cups"
+    },
+    {
+      "item": "8- ounce Chicken Breast",
+      "amount": "1"
+    },
+    {
+      "item": "For the Greek Dressing",
+      "amount": ""
+    },
+    {
+      "item": "kosher salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "For a large baking dish or two independent salad dishes, add the",
+    "lettuce.",
+    "Cut the meat, tomatoes, salad, olives, cucumber, and feta cheese",
+    "together.",
+    "Add the wine vinegar, olive oil, cloves, oregano, butter, salt, and",
+    "black pepper to a small container to create the dressing.",
+    "Cover and move well with the cap until combined and mixed.",
+    "To satisfy, sprinkle with more salt and sugar, and peppers.",
+    "Sprinkle over the salad with the dressing and mix to adjust."
+  ],
+  "time": {
+    "total": 14
+  }
+}

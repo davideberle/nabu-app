@@ -1,0 +1,69 @@
+{
+  "id": "spiced-apple-cake",
+  "name": "Spiced apple cake",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 10",
+  "intro": "day it is baked, or the day after; store in an airtight container to keep it at its",
+  "ingredients": [
+    {
+      "item": "plus 1½ tbsp/130g unsalted butter, at room temperature and cubed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cup/150g granulated sugar",
+      "amount": "¾"
+    },
+    {
+      "item": "large eggs, lightly beaten",
+      "amount": "3"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "plus 2 tbsp/300g all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "baking powder rounded ¼ tsp salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cup/200g sour cream",
+      "amount": "¾"
+    },
+    {
+      "item": "large Granny Smith apples, peeled, cored and cut into ½-inch/1½ cm wedges (3¾ cups/590g)",
+      "amount": "3–4"
+    },
+    {
+      "item": "cup/130g demerara sugar",
+      "amount": "⅔"
+    },
+    {
+      "item": "apple pie spice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Grease a high-sided 9-inch/23cm cake pan and line the base and sides with parchment paper.",
+    "Place the butter and granulated sugar in the bowl of a stand mixer  tted with the paddle attachment. Beat on medium speed, until light and  uffy. Add the eggs and vanilla, a little at a time, mixing until incorporated. Sift together the",
+    "our, baking powder, and salt and add this in a couple of batches to the batter, alternating with the sour cream. Turn the machine off as soon as everything is incorporated. Spoon the batter into the cake pan and set aside.",
+    "Place all the apple slices in a large bowl. Mix the demerara sugar and apple pie spice and sprinkle over the apples. Toss to coat, then spoon over the cake batter. Bake for 60–65 minutes, until the mixture has risen up around the apple and the top is crisp,  rm, and golden brown. A knife inserted into the cake will not come out clean, as the apples are wet, but you can tell the cake is done when you give the pan a little shake and the top doesn’t wobble.",
+    "Remove from the oven and set aside for about 30 minutes before removing from the pan.",
+    "Serve either slightly warm or at room temperature. When slicing, use a serrated knife to prevent the apples from tearing.",
+    "Nutella, sesame, and hazelnut rolls",
+    "Two assumptions qualify these for Ottolenghi SIMPLE: one is that everyone has a jar of Nutella in their cupboard (hence “P” for pantry-led—a bit of a stretch we know!) and second, for the “E,” that making your own dough and rolling it up into all sorts of deliciousness is easier than it looks. The result is something between a cake and a cookie, best enjoyed as a treat with a cup of tea or coffee. The dough is delicate so it’s important that you soften the Nutella (until it’s nearly runny) before spreading it. Inspired by a similar pastry served at Landwer Cafe in Tel"
+  ],
+  "time": {
+    "total": 30
+  }
+}

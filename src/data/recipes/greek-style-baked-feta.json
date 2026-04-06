@@ -1,0 +1,69 @@
+{
+  "id": "greek-style-baked-feta",
+  "name": "Greek-Style Baked Feta",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Fresh mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "Crusty bread",
+      "amount": ""
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "feta cheese",
+      "amount": "8 oz."
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "fresh thyme sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoon"
+    },
+    {
+      "item": "red onion",
+      "amount": "½"
+    },
+    {
+      "item": "green bell pepper",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Preheat oven to 400 degrees F and modify a tray in the center.",
+    "Organize the onions, green peppers, and grape tomatoes at the lower",
+    "part of a ramekin or stove dish.",
+    "Spray some of the new thyme with 1 teaspoon oregano, chili flakes,",
+    "and apply most of it. Drizzle some extra-virgin olive oil with it.",
+    "On top of the prepared vegetables, add the feta.",
+    "Prepare the leftover dried oregano with both the feta cube, a touch of",
+    "chili flakes, and whatever is left of the fresh thyme.",
+    "Sprinkle the feta with a thick layer of olive oil and ensure to rub some",
+    "of the butter on the edges.",
+    "Position the baking sheet on the oven's center rack and bake for 20",
+    "minutes.",
+    "Serve it with tortilla chips or Spanish toasted bread."
+  ],
+  "time": {
+    "total": 30
+  }
+}

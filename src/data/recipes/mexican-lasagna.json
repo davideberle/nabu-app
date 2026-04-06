@@ -1,0 +1,76 @@
+{
+  "id": "mexican-lasagna",
+  "name": "Mexican Lasagna",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "can refried beans",
+      "amount": "1"
+    },
+    {
+      "item": "beef",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "can green chilies, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "hot salsa",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "envelope of taco seasoning",
+      "amount": "1"
+    },
+    {
+      "item": "lasagna noodles, uncooked",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "jar mild salsa",
+      "amount": "1"
+    },
+    {
+      "item": "Monterey Jack cheese, shredded",
+      "amount": "4 cups"
+    },
+    {
+      "item": "of water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can ripe olives, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped tomato",
+      "amount": "1"
+    },
+    {
+      "item": "chopped green onions",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°.",
+    "Take a skillet, and cook beef over the medium heat.",
+    "Add beans, chilies, hot salsa, and taco seasoning.",
+    "In a baking dish, put meat mixture and 1/3 of noodles. Add one cup",
+    "of cheese. Then, repeat these layers twice.",
+    "Add water and salsa. Cover it and bake for around one hour.",
+    "Add sour cream, onions, olives, tomatoes, and the remaining cheese.",
+    "Bake it while keeping it uncovered for 5 minutes.",
+    "Cut and server."
+  ],
+  "time": {
+    "total": 30
+  }
+}

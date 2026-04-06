@@ -1,0 +1,135 @@
+{
+  "id": "mexican-chopped-salad",
+  "name": "Mexican Chopped Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Dressing:",
+      "amount": ""
+    },
+    {
+      "item": "of honey",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of lime juice",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "of salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "finely minced clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "of canola oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "For Tortilla Strips:",
+      "amount": ""
+    },
+    {
+      "item": "of canola oil",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "corn tortillas (6-inches)",
+      "amount": "6"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "For Salad:",
+      "amount": ""
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "diced bell pepper, any color",
+      "amount": "1"
+    },
+    {
+      "item": "lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "diced red onion",
+      "amount": "1/2"
+    },
+    {
+      "item": "diced zucchini",
+      "amount": "1"
+    },
+    {
+      "item": "corn",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "diced jicama",
+      "amount": "1/2"
+    },
+    {
+      "item": "of black beans",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "corn",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "cilantro, finely chopped",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "To prepare the dressing, mix lime juice, cumin, honey, salt, and",
+    "garlic.",
+    "Gradually pour the oils while stirring it continuously.",
+    "Season to taste and put more pepper and salt, if required. Then set it",
+    "aside.",
+    "Preheat the oven to 400 degrees F to get it ready for preparing tortilla",
+    "strips.",
+    "Put tortillas on the cutting board, and cut them half.",
+    "Transfer the tortilla strips to a pan, then drizzle them with oil.",
+    "Add salt, then bake for around 15-20 minutes, while stirring it",
+    "continuously until it is golden brown. Set aside.",
+    "To prepare the salad, put corn in the oven, the cook for almost 3",
+    "minutes.",
+    "Cut out the bottom of the corn, then pull back silks and husks and",
+    "silks.",
+    "Cut corn kernels from the husks. Set them aside.",
+    "Mix other ingredients and corn in a bowl. Mix to combine.",
+    "Pour dressing and stir well.",
+    "Add cilantro leaves for garnishing.",
+    "Serve with the tortilla strips on the top."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "mexican-salad-with-tortilla-croutons",
+  "name": "Mexican Salad with Tortilla Croutons",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "3"
+    },
+    {
+      "item": "of Mexican seasoning mix",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "can of black bean",
+      "amount": "400g"
+    },
+    {
+      "item": "shredded iceberg lettuce,",
+      "amount": "1"
+    },
+    {
+      "item": "pack of cherry tomato",
+      "amount": "200g"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "sliced avocados",
+      "amount": "2"
+    },
+    {
+      "item": "of coriander leaves",
+      "amount": "1/2 bunch"
+    }
+  ],
+  "method": [
+    "Heat the oven to 200 degrees Celsius. Put seasoning mix and oil on",
+    "pieces of tortilla, and put it on the baking tray. Cook for around 10-12",
+    "minutes until it is crisped.",
+    "Take a bowl. Put tomatoes, beans, avocado, lime juice, and the",
+    "iceberg in it.",
+    "Drizzle over the dressings and mix it thoroughly.",
+    "Sprinkle coriander and croutons on it, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

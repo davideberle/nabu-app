@@ -1,0 +1,58 @@
+{
+  "id": "jalape-o-popper-pull-apart-bread",
+  "name": "Jalapeño Popper Pull-Apart Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "crusty loaf of bread, such as",
+      "amount": "1"
+    },
+    {
+      "item": "sourdough",
+      "amount": ""
+    },
+    {
+      "item": "package softened cream cheese (8",
+      "amount": "1"
+    },
+    {
+      "item": "oz.)",
+      "amount": ""
+    },
+    {
+      "item": "Cheddar cheese, shredded",
+      "amount": "2 c."
+    },
+    {
+      "item": "mozzarella shredded",
+      "amount": "2 c."
+    },
+    {
+      "item": "jalapeno slices (about three",
+      "amount": "2 c."
+    },
+    {
+      "item": "jalapenos)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees Fahrenheit.",
+    "Cut the top of the loaf long ways and then crossways, taking",
+    "care not to cut through the loaf.",
+    "Gently open the bread slices and put cream cheese within,",
+    "ensuring it seeps deep into the crevices. Then spread both kinds",
+    "of cheese over the bread, pressing them into the gaps. Half of",
+    "the jalapenos should be tucked into slices, and the remainder",
+    "should be used to top the bread.",
+    "Transfer the bread to a baking sheet and bake for 20 minutes or",
+    "until the cheese has melted. Serve right away."
+  ],
+  "time": {
+    "total": 35
+  }
+}

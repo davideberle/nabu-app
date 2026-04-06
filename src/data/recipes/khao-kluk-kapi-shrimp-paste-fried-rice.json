@@ -1,0 +1,55 @@
+{
+  "id": "khao-kluk-kapi-shrimp-paste-fried-rice",
+  "name": "Khao Kluk Kapi Shrimp Paste Fried Rice",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "formerly the head of food and beverage at the Royal Bangkok Sports Club.",
+  "ingredients": [
+    {
+      "item": "71",
+      "amount": ""
+    },
+    {
+      "item": "unscented oil",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "thinly sliced shallots",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "shaved palm sugar (brown or white sugar may be substituted)",
+      "amount": "¾ cup (180 g)"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "1½ tablespoons"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "pork loin cut into small pieces, roughly 1 inch by ½ inch (2.5 cm x 1.25 cm) thick",
+      "amount": "½ lb (225 g)"
+    },
+    {
+      "item": "water (only if sauce is dry)",
+      "amount": "1–2 tablespoons"
+    }
+  ],
+  "method": [
+    "In a pan over medium heat add the oil, then the shallots. Cook until opaque, then add the sugar, fi sh sauce and both soy sauces. Cook until the sugar melts and bubbles and caramelizes, around 5–10 min- utes. Add the pork, fry until cooked through (no longer pink). If too dry, add the water. The sauce should be a little gooey. Serve immediately with a little ground pepper to taste.",
+    "If you live in Asia, sweet soy pork can be easily purchased at your local grocery store. If you don’t, make this recipe, which should be a quick and easy way to cook a pork dish that everyone in the family will like."
+  ],
+  "time": {
+    "total": 30
+  }
+}

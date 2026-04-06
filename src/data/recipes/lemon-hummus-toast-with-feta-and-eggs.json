@@ -1,0 +1,50 @@
+{
+  "id": "lemon-hummus-toast-with-feta-and-eggs",
+  "name": "Lemon Hummus Toast with Feta & Eggs",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "parsley",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Pinch of sweet paprika",
+      "amount": ""
+    },
+    {
+      "item": "Greek feta",
+      "amount": "8 teaspoons"
+    },
+    {
+      "item": "eggs boiled",
+      "amount": "2"
+    },
+    {
+      "item": "sourdough bread",
+      "amount": "4 slices"
+    },
+    {
+      "item": "firm-ripe tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "lemon hummus",
+      "amount": "8 tablespoons"
+    }
+  ],
+  "method": [
+    "The eggs should be peeled and quartered.",
+    "On the buttered toast, scatter the avocado hummus.",
+    "Over the hummus, arrange the tomato slices.",
+    "Serve with feta crumbles on top.",
+    "On top of that, put the eggs.",
+    "Offer with a garnish of parsley and parmesan."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "french-potato-dauphinoise",
+  "name": "French Potato Dauphinoise",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of caster sugar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of potato slices",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cream of tartar",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "One cup of shredded cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add water into the pan.",
+    "Heat it over medium high heat.",
+    "Add the sugar into it.",
+    "Heat it until it turns golden.",
+    "Add the potato slices, cinnamon, garlic and nutmeg.",
+    "Increase the heat and cook it for five minutes.",
+    "Remove it from the heat and let it cool.",
+    "Take a large bowl.",
+    "Add the cheese into it.",
+    "Add the cream of tartar and flour into it.",
+    "Add the butter into it.",
+    "Mix it until the dough is formed.",
+    "Add the dough on the potato mixture.",
+    "Bake the dish for fifteen minutes.",
+    "Your dish is ready to be served.",
+    "11 French Lamb Chops with Cognac Dijon Cream Sauce"
+  ],
+  "time": {
+    "total": 100
+  }
+}

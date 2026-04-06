@@ -1,0 +1,53 @@
+{
+  "id": "taco-rice-with-grilled-chicken-and-green-chili-salsa",
+  "name": "Taco Rice with Grilled Chicken and Green Chili Salsa",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chicken, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Green chili salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cooked rice, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken by adding the seasonings.",
+    "Slice the chicken once it is cooked properly.",
+    "Now arrange the chicken slices on the taco shells, add the cooked",
+    "rice, green chili salsa, and cilantro.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

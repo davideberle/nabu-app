@@ -1,0 +1,75 @@
+{
+  "id": "greek-scrambled-eggs",
+  "name": "Greek Scrambled Eggs",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Toast or toasted pita bread",
+      "amount": ""
+    },
+    {
+      "item": "medium yellow onion",
+      "amount": "½"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "large eggs",
+      "amount": "10"
+    },
+    {
+      "item": "milk",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fine salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "Beat the eggs, feta, dairy, half teaspoon salt, and ¼ teaspoon",
+    "spice in a large mixing bowl to merge; set it aside.",
+    "Place the butter in a pan nonstick deep fryer or stainless cast",
+    "iron pan over medium-high heat until glinting.",
+    "Insert the onions, sprinkle with salt, and simmer for about five",
+    "minutes, stirring periodically, until softened.",
+    "Add the spinach once thoroughly wilted, and any moisture has",
+    "evaporated, flipping continuously for around three minutes.",
+    "Lower the heat to moderate and put in the combination of the",
+    "Let sit uninterrupted, 2 minutes, before the eggs begin to set",
+    "around the sides.",
+    "Move the placed eggs from the sides towards the middle using",
+    "a slotted spoon.",
+    "Back into a layer, scatter the raw eggs.",
+    "Repeat for a cumulative cooking time of around four to six",
+    "minutes, moving the prepared eggs from the sides to the middle every",
+    "thirty seconds until almost complete.",
+    "Drop the heat from the skillet and place the tomatoes in it.",
+    "Serve with bread or baked pita bread right away."
+  ],
+  "time": {
+    "total": 15
+  }
+}

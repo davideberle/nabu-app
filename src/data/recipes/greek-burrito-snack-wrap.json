@@ -1,0 +1,62 @@
+{
+  "id": "greek-burrito-snack-wrap",
+  "name": "Greek Burrito Snack Wrap",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "tzatziki sauce",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "whole wheat flour tortillas",
+      "amount": "2"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "oregano",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "1 cup"
+    },
+    {
+      "item": "teaspoonsalt and pepper",
+      "amount": "¼"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "In a wide nonstick saucepan over medium heat, add the oil; add the",
+    "eggs, salt, peppers, and oregano.",
+    "Lessen heat and add and cook, scraping the skillet's bottom and sides",
+    "with a spatula as the mixture starts to shape big, soft curds.",
+    "Cook, constantly stirring, until the eggs have thickened to your liking.",
+    "Tzatziki sauce should be spread down the middle of each tortilla,",
+    "leaving a 1 ½ -inch (2.5 cm) border at the left and right sides.",
+    "Add fried egg combination, onions, and feta cheese on top.",
+    "Cover the bottom of the flatbread over the stuffing, then pull in the",
+    "sides; load up firmly from the edge."
+  ],
+  "time": {
+    "total": 5
+  }
+}

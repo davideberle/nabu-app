@@ -1,0 +1,75 @@
+{
+  "id": "quinoa-taco-meat",
+  "name": "Quinoa Taco Meat",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Walnuts, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tamari, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chili powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Quinoa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Tomato paste, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Corn tortillas, four",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Green bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Red bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable broth, two cups",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the quinoa in the vegetable broth.",
+    "Add tomato paste, onion, green and red bell pepper, cumin and chili",
+    "powder into it.",
+    "Place the mixture on the corn tortillas; add the walnuts, tamari sauce",
+    "or sour cream on top.",
+    "Garnish with cilantro leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

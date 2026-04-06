@@ -1,0 +1,74 @@
+{
+  "id": "mexican-fiesta-rice",
+  "name": "Mexican Fiesta Rice",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "finely chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "peppers, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "of cumin seeds",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of ground cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "finely chopped garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "of tomato purée",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of rice",
+      "amount": "250g"
+    },
+    {
+      "item": "Paprika, a small pinch",
+      "amount": ""
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "450ml"
+    },
+    {
+      "item": "Coriander, finely chopped for serving",
+      "amount": ""
+    },
+    {
+      "item": "Sliced onions, for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a skillet, and heat oil, and add the pepper, onion, cumin, and",
+    "garlic—sizzle for 8-10 minutes.",
+    "When the vegetables are golden and soft, add tomato purée and",
+    "paprika, then cook for about 1 min.",
+    "Add rice.",
+    "Pour stock in it, then cover. Bring it to boil.",
+    "Lower the heat, then cook for around 10 minutes.",
+    "Turn down the heat and keep it covered for another 10 minutes.",
+    "To serve immediately, add spring onions and coriander.",
+    "To serve it later, cool down the rice, then refry it before serving. Then",
+    "add spring onions and coriander."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "greek-spanakopita",
+  "name": "Greek Spanakopita",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "For dough:",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of fine sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of unsalted soft butter",
+      "amount": ""
+    },
+    {
+      "item": "Two whole egg",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of ice water",
+      "amount": ""
+    },
+    {
+      "item": "For filling:",
+      "amount": ""
+    },
+    {
+      "item": "One cup of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Four eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of freshly grated nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of milk",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped spinach",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of crushed black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the flour and sea salt into the bowl.",
+    "Mix the ingredients well and add the eggs, water, and softened butter",
+    "into the bowl.",
+    "Mix all the ingredients well to form a dough.",
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the onions and garlic when the oil heats up.",
+    "Cook the onions until they turn soft.",
+    "Mix the eggs and add the chopped spinach into the pan.",
+    "Cook the ingredients until the spinach is wilted.",
+    "Add the feta cheese, milk, black pepper, salt, and freshly grated",
+    "nutmeg into the pan.",
+    "Cook the ingredients for about five minutes.",
+    "Switch off the stove and let the mixture cool down.",
+    "Roll out the dough and lay half of it in a round baking dish.",
+    "Add the cooked mixture to the dough and cover the mixture",
+    "with the rest of the dough.",
+    "Bake the spanakopita for about twenty to twenty-five minutes.",
+    "Dish out the spanakopita when it is done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

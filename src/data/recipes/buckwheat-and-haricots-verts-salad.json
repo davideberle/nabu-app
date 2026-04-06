@@ -1,0 +1,80 @@
+{
+  "id": "buckwheat-and-haricots-verts-salad",
+  "name": "Buckwheat and haricots verts salad",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "can be made 1 day ahead and kept separately in the fridge, ready for the dish to",
+  "ingredients": [
+    {
+      "item": "small red onions, peeled and cut into ¾-inch/2cm wedges (3 cups/300g)",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cup/90g buckwheat groats",
+      "amount": "½"
+    },
+    {
+      "item": "oz/350g haricots verts, trimmed and cut in half",
+      "amount": "12¼"
+    },
+    {
+      "item": "cup/5g mint leaves, roughly chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/5g tarragon leaves, roughly chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "Urfa chile flakes (or ½ tsp other crushed red pepper  akes), to serve",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tbsp/100g Greek-style yogurt",
+      "amount": "6"
+    },
+    {
+      "item": "small garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dried mint",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the onions in a large bowl with 1 tbsp of oil and ⅛ tsp of salt. Spread out on a large parchment-lined baking sheet and roast for 18–20 minutes, until cooked through and golden. Remove from the oven and set aside to cool.",
+    "Bring a medium saucepan with slightly salted water to a boil. Add the buckwheat and cook for 8 minutes. Add the green beans and cook for 5 minutes, until both the green beans and buckwheat are al dente. Drain, refresh under cold water, and then set aside to dry well.",
+    "Mix together all the ingredients for the sauce with ⅛ tsp of salt in a bowl and set aside.",
+    "When ready to serve, mix the onions, buckwheat, green beans, mint, and tarragon with the remaining 1 tbsp of oil and ½ tsp of salt. Transfer the salad to a serving bowl and serve the sauce on the side or swirl the sauce through the salad before transferring it to the serving bowl. Sprinkle with the chile",
+    "akes and serve.",
+    "Couscous, cherry tomato, and herb salad",
+    "This salad is perfect at a summer barbecue, great alongside all sorts of grilled meats and grilled vegetables. Make the couscous, onion, and raisin mix 1 day in advance, if you like, and keep separately in the fridge—just bring back to room temperature before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

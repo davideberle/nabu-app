@@ -1,0 +1,72 @@
+{
+  "id": "fritter-roulette",
+  "name": "FRITTER ROULETTE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "brush this gently over the top and sides of the cake, and serve.",
+  "ingredients": [
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "cup/120 ml coconut milk scant ⅔ cup/75 g self-rising flour",
+      "amount": "½"
+    },
+    {
+      "item": "cup/30 g cornstarch",
+      "amount": "¼"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "coriander seeds, toasted and lightly crushed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "butternut squash, peeled and coarsely grated (about 1⅔ cups/225 g) about 2¼ cups/300 g fresh or frozen corn kernels (from 2 ears if using fresh)",
+      "amount": "½"
+    },
+    {
+      "item": "green onions, white and green parts, thinly sliced (about ⅓ cup/30 g)",
+      "amount": "3"
+    },
+    {
+      "item": "cup/15 g cilantro leaves, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "red chile, seeded and finely chopped about 1 cup/250 ml sunflower oil, for frying",
+      "amount": "½"
+    },
+    {
+      "item": "oz/150 g Padrón peppers",
+      "amount": "5"
+    },
+    {
+      "item": "limes, cut into wedges salt and black pepper",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Place the first 8 ingredients (up to and including the coriander seeds) in a large bowl, along with 1½ teaspoons salt and a good grind of black pepper.",
+    "Whisk to form a smooth batter. Add the butternut squash, corn, green onions, cilantro, and chile and stir well.",
+    "Pour the oil to a depth of ⅜-inch/1-cm into a sauté pan and place over high heat. Scoop 3 tablespoons of the batter into the oil and cook for about 2 minutes. Using your hands, carefully push 1 to 3 peppers (depending on size) into the surface of the fritter and fry for another minute. Flip the fritter over and fry for another 3 minutes, until golden brown. Transfer to a plate lined with paper towels and keep somewhere warm while you continue with the remaining batter. Serve warm, with a wedge of lime alongside."
+  ],
+  "time": {
+    "total": 30
+  }
+}

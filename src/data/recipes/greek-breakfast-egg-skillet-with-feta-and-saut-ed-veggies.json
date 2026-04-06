@@ -1,0 +1,62 @@
+{
+  "id": "greek-breakfast-egg-skillet-with-feta-and-saut-ed-veggies",
+  "name": "Greek Breakfast Egg Skillet with Feta and Sautéed Veggies",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large eggs",
+      "amount": "4"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "baby spinach",
+      "amount": "12 cups"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "medium red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "medium onion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Drizzle vegetable oil into a large nonstick saucepan over medium",
+    "Sauté the onions and peppers for about 4-5 minutes, or until they are",
+    "tender.",
+    "Season to taste with garlic powder, marjoram, and salt, and black",
+    "pepper.",
+    "Cook, occasionally stirring, until the spinach has wilted, around 1-2",
+    "minutes.",
+    "Serve the sautéed vegetables on four plates, via an egg cooked to",
+    "order on top of each plate.",
+    "Before serving, top each dish with a tablespoon of cheddar cheese."
+  ],
+  "time": {
+    "total": 15
+  }
+}

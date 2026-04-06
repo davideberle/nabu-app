@@ -1,0 +1,71 @@
+{
+  "id": "taco-cupcakes",
+  "name": "Taco Cupcakes",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 18",
+  "ingredients": [
+    {
+      "item": "Wonton wrapper, as required",
+      "amount": ""
+    },
+    {
+      "item": "Mix shredded cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Minced beef, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla chips, as required",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven.",
+    "Spray the muffin cups with cooking spray.",
+    "Cook the beef in a skillet.",
+    "Add the taco seasoning mix and cook for five minutes.",
+    "Place one wonton wrapper in the bottom of each muffin cup.",
+    "Layer some of the refried beans on top of each wonton.",
+    "Crush one tortilla chip on top of the beans.",
+    "Add the taco meat and some of the shredded cheese.",
+    "Bake for ten minutes until the cheese melts.",
+    "Add your favorite toppings on it.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

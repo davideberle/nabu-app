@@ -1,0 +1,60 @@
+{
+  "id": "coated-scallops",
+  "name": "coated scallops.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "dry sea scallops",
+      "amount": "8 oz. (about 6 large)"
+    },
+    {
+      "item": "curry powder",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "salt, divided",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "freshly ground pepper",
+      "amount": "⅛ tsp."
+    },
+    {
+      "item": "butter",
+      "amount": "½ tbsp."
+    },
+    {
+      "item": "cooked instant or quick-cooking brown rice",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "chopped fresh cilantro",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Pat the prepared scallops dry and season both sides with the pepper, 1/8 tsp.",
+    "of the salt and curry powder. Heat the butter in the medium-sized nonstick",
+    "skillet on medium heat till starting to sizzle. Put in scallops and cook 2-3",
+    "minutes on each side or till turning golden brown. Transfer out to a dish.",
+    "Put the rest 1/8 tsp. of the salt, lemon juice, scallions, cilantro and cooked",
+    "rice into pan. Cook and stir for roughly 60 seconds or till thoroughly heated.",
+    "Serve scallops with rice.",
+    "Recipe 43: Curry Stew",
+    "Very flavorful and just what you need to get warm on a chilly night. Great"
+  ],
+  "time": {
+    "total": 25
+  }
+}

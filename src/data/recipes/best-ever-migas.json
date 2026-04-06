@@ -1,0 +1,80 @@
+{
+  "id": "best-ever-migas",
+  "name": "Best-Ever Migas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "corn tortillas",
+      "amount": "6"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "jalapeño, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "1/2"
+    },
+    {
+      "item": "garlic, chopped",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "eggs",
+      "amount": "5"
+    },
+    {
+      "item": "mild salsa",
+      "amount": "1/2 cups"
+    },
+    {
+      "item": "Kosher salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": "1/4 cups"
+    },
+    {
+      "item": "radishes, sliced",
+      "amount": "2"
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "crumbled cotija cheese",
+      "amount": "1/4 cups"
+    },
+    {
+      "item": "Hot sauce",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a pan and heat oil over the medium heat. Add corn tortillas in it,",
+    "and cook for 5 minutes.",
+    "Put onion, garlic, and jalapeño in it, and cook for 4 minutes. Put the",
+    "heat down to low.",
+    "Add eggs and salt.",
+    "Stir continuously till the point everything is mixed well.",
+    "Add salsa.",
+    "Top with radishes, cilantro, cheese, avocado, and hot sauce.",
+    "Serve and Enjoy!",
+    "Chapter 4: Mexican Lunch Recipes",
+    "Here are given some delicious and easy Mexican lunch recipes in this",
+    "chapter. These recipes are fun to cook at home and perfect to enjoy with",
+    "your family."
+  ],
+  "time": {
+    "total": 30
+  }
+}

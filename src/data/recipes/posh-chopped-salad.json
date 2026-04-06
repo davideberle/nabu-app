@@ -1,0 +1,32 @@
+{
+  "id": "posh-chopped-salad",
+  "name": "Posh chopped salad",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "I bulb of fennel",
+      "amount": ""
+    },
+    {
+      "item": "smoked salmon",
+      "amount": "8 ounces"
+    }
+  ],
+  "method": [
+    "Get yourself a large chopping board and a large sharp knife. Star t chopping the harder, cr unchier veggies",
+    "first. Peel, trim, and chop your carrot, fennel (plus it s herby t ops) and radishes. Bring it all into the",
+    "center of the board and continue chopping and mixing t ogether. Add the lettuce and endive leaves and",
+    "too. When everyt hing is well chopped, you'll have a big mound of salad on the bo ard.",
+    "Slice the salmon up into small pieces and mix in • Make a well in the middle and drizzle in 6 tablespoons",
+    "of olive oil, 2 tablespoons of lemon juice, and a good pinch of salt and pepper. Mix up so everything get s",
+    "sprinkle with some chopped dill, and serve st raight from the board or in a bowl",
+    "Mediterranean chopped salad"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "jackfruit-tacos",
+  "name": "Jackfruit Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Jackfruit, two cups",
+      "amount": ""
+    },
+    {
+      "item": "Onion, one",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable broth, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Chili powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Smoked paprika, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Agave, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, a bunch",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the jackfruit chunks in vegetable oil.",
+    "Add agave, onions, chili powder, smoked paprika powder, and",
+    "vegetable broth in it.",
+    "Cook the mixture for ten minutes.",
+    "Heat the taco shells in an oven for a few minutes.",
+    "Add the above cooked mixture into it.",
+    "Next, add your preferred toppings.",
+    "Add avocado and cilantro on top.",
+    "Your meal is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

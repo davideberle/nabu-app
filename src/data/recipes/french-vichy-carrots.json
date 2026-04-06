@@ -1,0 +1,69 @@
+{
+  "id": "french-vichy-carrots",
+  "name": "French Vichy Carrots",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "One pound of carrots",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of dry white wine",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of dried rosemary",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Dried thyme, one teaspoon",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into it.",
+    "Add the garlic, carrots and spices in the pan.",
+    "Cook the carrots in the spices for five to ten minutes.",
+    "Add the rest of the ingredients into the mixture.",
+    "Cook the mixture until it starts boiling.",
+    "Bring the heat to low and cover the pan with a lid.",
+    "After ten minutes, remove the lid.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 55
+  }
+}

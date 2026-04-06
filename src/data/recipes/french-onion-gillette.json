@@ -1,0 +1,51 @@
+{
+  "id": "french-onion-gillette",
+  "name": "French Onion Gillette",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One and a half cup of dough",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Half cup onion sauce",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One cup mozzarella cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients except the dough into the bowl.",
+    "Cut the dough into long strips.",
+    "Add the mixture on the strips.",
+    "Bake the strips for ten minutes.",
+    "Dish out when done.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

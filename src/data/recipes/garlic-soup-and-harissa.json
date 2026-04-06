@@ -1,0 +1,118 @@
+{
+  "id": "garlic-soup-and-harissa",
+  "name": "Garlic soup and harissa",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "condiment to keep in your fridge and add to roasted eggplant, vegetable stews and many rice and couscous",
+  "ingredients": [
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "small red onion, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "medium–hot fresh red chiles, seeded and roughly chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "2 to 3 tsp"
+    },
+    {
+      "item": "medium shallots, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "celery stalks, finely diced",
+      "amount": "3"
+    },
+    {
+      "item": "butter",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "medium garlic cloves, finely sliced",
+      "amount": "25"
+    },
+    {
+      "item": "chopped fresh ginger",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "finely chopped thyme",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white wine generous pinch of saffron threads",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "4"
+    },
+    {
+      "item": "quart good-quality vegetable stock",
+      "amount": "1"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "roughly chopped parsley roughly chopped cilantro",
+      "amount": "4 tbsp"
+    }
+  ],
+  "method": [
+    "To make the harissa. Preheat the grill to high, then grill the bell pepper for 15 to 20 minutes, or until blackened all over. Transfer to a bowl, cover it with plastic wrap and allow to cool. Then peel the pepper and discard its seeds.",
+    "Place a frying pan on low heat and lightly dry-roast the coriander, cumin and caraway seeds for 2 minutes. Remove them to a mortar and use a pestle to grind to a powder.",
+    "Add the olive oil to the frying pan and heat, then fry the onion, garlic and chiles on medium heat for 6 to 8 minutes, to a dark smoky color. Cool slightly, then tip into a blender or a food processor. Add the remaining harissa ingredients, including the grilled pepper and ground spices, and blitz together to make a paste. Set aside.",
+    "Gently fry the shallots and celery with the butter and oil for about",
+    "10 minutes, or until soft and translucent. Add the garlic and cook for a further 5 minutes. Stir in the ginger and thyme. Pour in the wine and leave to simmer for a few minutes, then add the saffron, bay leaves, stock and salt. Simmer for about 10 minutes.",
+    "Remove the bay leaves and add the parsley. Blitz with an immersion blender (or regular blender) or a food processor. Do not blend to a complete purée; keep some bits of vegetable for texture.",
+    "Divide the soup among shallow bowls. Swirl in some harissa and sprinkle with chopped cilantro. Finish with a dollop of Greek yogurt, if you like.",
+    "Here is my ideal solace for a gloomy winter night, even without the egg if you want to keep it simpler. If you can get fresh porcini (also called ceps), available during the autumn months, grab them with both hands and use as part of the mixed fresh mushrooms here.",
+    "Mushroom ragout with poached duck egg"
+  ],
+  "time": {
+    "total": 30
+  }
+}

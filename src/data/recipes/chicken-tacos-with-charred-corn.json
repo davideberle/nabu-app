@@ -1,0 +1,53 @@
+{
+  "id": "chicken-tacos-with-charred-corn",
+  "name": "Chicken Tacos with Charred Corn",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chicken, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Lime juice, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Charred corns, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken by adding the seasonings.",
+    "Slice the chicken once it is cooked properly.",
+    "Now arrange the chicken slices on the taco shells, add the corns, sour",
+    "cream, and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

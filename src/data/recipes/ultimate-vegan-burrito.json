@@ -1,0 +1,82 @@
+{
+  "id": "ultimate-vegan-burrito",
+  "name": "Ultimate Vegan Burrito",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "mushroom caps",
+      "amount": "2"
+    },
+    {
+      "item": "of Spanish Rice, cooked",
+      "amount": "2 cups"
+    },
+    {
+      "item": "red onion",
+      "amount": "1/2"
+    },
+    {
+      "item": "cans of black beans",
+      "amount": "2"
+    },
+    {
+      "item": "bell pepper, orange",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "kosher salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "large tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Remove stems from mushroom caps; cut into slices.",
+    "Slice bell pepper and red onion.",
+    "Take a skillet, and heat oil over the medium heat.",
+    "Cook veggies for almost 6-7 minutes.",
+    "Put black beans, garlic powder, onion powder, cumin, paprika, lime",
+    "juice, kosher salt, and some water. Cook until liquid evaporates.",
+    "Add kosher salt to the mashed avocado.",
+    "To assemble tortilla, put 1/2 cup of rice on it. Top with the bean",
+    "mixture, avocado, and vegetable.",
+    "Fold in all sides of burritos.",
+    "Cut them, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

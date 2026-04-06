@@ -1,0 +1,49 @@
+{
+  "id": "scrambled-egg-taco",
+  "name": "Scrambled Egg Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Unsalted butter, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, four",
+      "amount": ""
+    },
+    {
+      "item": "Corn tortillas, four",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Monetary Jack cheese, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the egg and keep stirring.",
+    "Add the rest of the ingredients and warm the corn tortillas.",
+    "Arrange the scrambled egg in the tortillas.",
+    "Garnish with cilantro.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

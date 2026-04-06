@@ -1,0 +1,77 @@
+{
+  "id": "traditional-greek-galaktoboureko",
+  "name": "Traditional Greek Galaktoboureko",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 15",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "butter, melted",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "sheets phyllo dough",
+      "amount": "12"
+    },
+    {
+      "item": "whole milk",
+      "amount": "6 cups"
+    },
+    {
+      "item": "white sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "eggs",
+      "amount": "6"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "3 ½ tablespoons"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "semolina flour",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "In a medium skillet, bring the milk to a boil on medium-high heat.",
+    "Mix all the semolina, cornflour, 1 cup honey, and salt in a small bowl",
+    "until there are no cornflour clumps.",
+    "Eggs should be whisked at high speed in a big mixing bowl.",
+    "Toss in ½ cup sugar for ten minutes, or until smooth and pale.",
+    "In a large mixing bowl, whisk together the scrambled eggs and apply",
+    "them to the hot semolina combination.",
+    "Preheat the oven to 400 Fahrenheit.",
+    "Brush each sheet of phyllo with oil as you put it in the bowl with the",
+    "custard.",
+    "In a roasting tin, bake for 35 to 40 minutes, just until the top layer is",
+    "crispy and the sauce filling has set.",
+    "Combine the leftover cup of sugar and water in a shallow frying pan."
+  ],
+  "time": {
+    "total": 60
+  }
+}

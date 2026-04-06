@@ -1,0 +1,82 @@
+{
+  "id": "aunt-priew-s-halo-halo",
+  "name": "Aunt Priew’s Halo Halo",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "dessert at every big family gathering at her house. The very look of it makes me smile.",
+  "ingredients": [
+    {
+      "item": "147",
+      "amount": ""
+    },
+    {
+      "item": "cooking oil",
+      "amount": "1 cup (250 ml)"
+    },
+    {
+      "item": "ghee",
+      "amount": "1 cup (225 g)"
+    },
+    {
+      "item": "fl our",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "cornstarch",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "turmeric",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "yogurt",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "water (or as much to create a pourable batter)",
+      "amount": "3 cup (150 ml)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (250 ml)"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 cups (400 g)"
+    },
+    {
+      "item": "saffron",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "cardamom pods",
+      "amount": "6"
+    },
+    {
+      "item": "cloves",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Make the Jalebi Batter. In a bowl, mix the fl our, cornstarch, baking powder, turmeric and yogurt until well incorporated. Gradually add the water, whisking until a pour- able batter forms. Depending on how thick the yogurt is you may need to add additional water.",
+    "Cover and set aside for 15 minutes.",
+    "Prepare the Syrup. In a sauce- pan, boil the water and mix in the sugar until it dissolves. Add the saff ron, cardamom and cloves.",
+    "Reduce the heat and stir occasion- ally until the contents take on a syrupy consistency, approximately",
+    "In a Thai copper dessert pot or wide-mouthed pot like a wok, heat the oil and ghee together. Put the dough in a piping bag or large zip lock bag. Cut off the end leaving a very small opening or about the size of a tine of fork. A squeeze bottle may also be used. Heat the oil to medium high heat. Squeeze the dough in a circular spiral into the hot oil (or, if you are a stickler for accuracy, make into the shape of the Thai number “8” to repre- sent “eternity”). Jalebi should puff up; if it doesn’t, increase the heat.",
+    "If the batter disperse in the oil as you pipe, it is too thin and you will need to add more fl our to it. If you are not able to pipe it, add a little water but always remember to add",
+    "1 teaspoon at a time until you have the desired consistency.",
+    "Fry the jalebi until crispy on both sides and when done, scoop out of the oil to drain on paper towels. Dunk right away while still hot in the saff ron Syrup and leave to soak for 5 minutes. The Syrup should be medium hot to warm while you are dropping the fried jalebis. If the Syrup is too hot the jalebis will not be crisp.",
+    "Pull out and the jalebi is ready to eat. Congratulations, you have made one jalebi! Repeat the same procedure with the rest of the dough and Syrup."
+  ],
+  "time": {
+    "total": 30
+  }
+}

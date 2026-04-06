@@ -1,0 +1,51 @@
+{
+  "id": "greek-salad-with-homemade-vinaigrette",
+  "name": "Greek Salad with Homemade Vinaigrette",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "Dijon Mustard",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "lemon",
+      "amount": "1"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1/3 cup"
+    }
+  ],
+  "method": [
+    "In a mixing bowl, mix some of the components except the olive oil.",
+    "Slowly drizzle in the olive oil, constantly whisking as you pour until",
+    "the dressing is caramelized."
+  ],
+  "time": {
+    "total": 5
+  }
+}

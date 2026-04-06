@@ -1,0 +1,56 @@
+{
+  "id": "mexican-sweet-potato-hash",
+  "name": "Mexican Sweet Potato Hash",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "sweet potatoes",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "bell pepper, green",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "bell pepper, red",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "soy chorizo",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "Boil water in a pot, and add sweet potatoes to it. Boil till the point",
+    "potatoes are tender. Then drain them and set aside.",
+    "Take a skillet and heat the oil over the medium heat. Add onion, red",
+    "and green bell pepper in it. Saute it for almost 5 minutes",
+    "Add sweet potatoes and garlic. Saute for almost 4 minutes.",
+    "Add chorizo, and cook for almost 5 minutes.",
+    "Put the flame low and add eggs on the top of potato hash.",
+    "Cover it, and cook for 5 minutes",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

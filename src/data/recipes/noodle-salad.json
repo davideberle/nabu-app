@@ -1,0 +1,77 @@
+{
+  "id": "noodle-salad",
+  "name": "NOODLE SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "cup/120 ml rice vinegar",
+      "amount": "½"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "⅓-inch/3.5-cm piece fresh ginger, (about 1 oz/25 g) peeled and cut into very fine matchsticks",
+      "amount": "1"
+    },
+    {
+      "item": "small butternut squash, peeled, seeded, and cut into 2 by ¼ by ¼-inch/5 cm by 5 mm by 5-mm batons (1¼ lb/600 g)",
+      "amount": "1"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "oz/160 g dried udon noodles",
+      "amount": "5½"
+    },
+    {
+      "item": "radishes, thinly sliced (⅔ cup/75 g)",
+      "amount": "7"
+    },
+    {
+      "item": "oz/50 g snow peas (about 15), cut into very fine matchsticks",
+      "amount": "1¾"
+    },
+    {
+      "item": "baby or Lebanese cucumbers, unpeeled and cut into very fine strips (10½ oz/300 g)",
+      "amount": "3"
+    },
+    {
+      "item": "mild red chiles, cut into long, thin strips",
+      "amount": "2"
+    },
+    {
+      "item": "oz/20 g baby shiso leaves, or 5 normal shiso leaves, chopped, or any baby cress",
+      "amount": "⅔"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "black sesame seeds (or white, if unavailable)",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cup/10 g cilantro leaves salt",
+      "amount": "⅔"
+    }
+  ],
+  "method": [
+    "Place a ridged grill pan over high heat and wait until it is red hot. Toss the butternut in the peanut oil and sear in batches for 3 minutes, turning once so that both sides get charred. You might need to do this in four batches, as you don’t want to crowd the pan. Transfer the batons to a large bowl, pour over half the ginger dressing, and set aside to cool, stirring gently once or twice.",
+    "Bring a large pan of water to a boil. Add the noodles and cook for 6 to 7 minutes, or according to the package instructions, until al dente. Drain, refresh under cold water, and set aside to dry.",
+    "Add the noodles to the butternut, followed by the radishes, snow peas, cucumbers, chiles, shiso, sesame oil, sesame seeds, and cilantro. Stir gently, transfer to a serving plate, spoon the remaining dressing over the top, and serve.",
+    "Zucchini “Baba Ghanoush”",
+    "ZUCCHINI “BABA GHANOUSH”"
+  ],
+  "time": {
+    "total": 30
+  }
+}

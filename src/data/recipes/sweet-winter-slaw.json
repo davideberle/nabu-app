@@ -1,0 +1,99 @@
+{
+  "id": "sweet-winter-slaw",
+  "name": "Sweet winter slaw",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "Cakes (page 149) or roast chicken.",
+  "ingredients": [
+    {
+      "item": "lime juice",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "lemongrass stalk, chopped into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "toasted sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "light olive oil or sunflower oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "macadamia nuts",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "inner leaves of Savoy cabbage (6 oz in total), finely shredded",
+      "amount": "7"
+    },
+    {
+      "item": "red cabbage (10 oz), finely shredded",
+      "amount": "½"
+    },
+    {
+      "item": "mango, cut into thin strips",
+      "amount": "1"
+    },
+    {
+      "item": "papaya, cut into strips",
+      "amount": "1"
+    },
+    {
+      "item": "fresh red chile, seeded and finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "mint, leaves picked and roughly chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cilantro, leaves picked and roughly chopped",
+      "amount": "½ cups"
+    }
+  ],
+  "method": [
+    "To make the dressing. Place all the ingredients, except the oil, in a small saucepan and reduce over high heat for 5 to 10 minutes, or until thick and syrupy. Remove from the heat. Once cooled down, strain the sauce into a bowl and add the oil. Put aside for later.",
+    "Place the macadamias in a frying pan over medium heat and dry- roast for a few minutes, stirring occasionally, until they are lightly colored on all sides. Add the butter. When it has melted add the sugar, salt and chile flakes. Use a wooden spoon to stir constantly to coat the nuts in the sugar as it caramelizes. Watch carefully as it will only take 1 to 2 minutes and the sugar can burn quickly.",
+    "Turn out onto a sheet of parchment paper. Cool the nuts, then roughly chop them.",
+    "Place the shredded cabbages in a large mixing bowl with the rest of the salad ingredients, including the nuts. Add the dressing and toss together. Taste and add more salt if you need to, then serve.",
+    "This recipe is a bit of a solution – what to do with all the Parmesan rinds left after grating. In restaurants you get loads, so it’s common to use them for soups and sauces. At home, you can collect the skins over time and keep them in the freezer. If you don’t have enough you can always add more grated Parmesan.",
+    "Savoy cabbage and Parmesan rind soup"
+  ],
+  "time": {
+    "total": 30
+  }
+}

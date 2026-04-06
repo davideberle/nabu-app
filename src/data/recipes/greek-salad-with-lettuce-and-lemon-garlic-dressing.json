@@ -1,0 +1,87 @@
+{
+  "id": "greek-salad-with-lettuce-and-lemon-garlic-dressing",
+  "name": "Greek Salad with Lettuce and Lemon Garlic Dressing",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper",
+      "amount": ""
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "romaine lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "whole olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tablespoons"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "medium cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "bell pepper",
+      "amount": "½"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "large tomato",
+      "amount": "1"
+    },
+    {
+      "item": "small onion",
+      "amount": "1"
+    },
+    {
+      "item": "radishes",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Collect the required components.",
+    "If the cucumber's skin is too thick, peel it.",
+    "It should be sliced into thin rounds.",
+    "Slice the tomato after cutting the stem and heart.",
+    "Cut the radishes and onion very finely.",
+    "Bell peppers can be sliced into strips.",
+    "In a large mixing bowl, mix the cucumber, cabbage, sliced bell",
+    "peppers, and onion.",
+    "Combine the feta cheese and artichokes in a mixing dish.",
+    "Merge the olive oil, lime juice, cloves, and oregano in a small cup. To",
+    "mix ingredients, whisk them together.",
+    "Toss the veggies in a bowl with lemon juice and vegetable oil.",
+    "Place sliced lettuce in separate salad bowls or sheets and top",
+    "with the salad mixture.",
+    "Season with coarse salt and black pepper to taste."
+  ],
+  "time": {
+    "total": 20
+  }
+}

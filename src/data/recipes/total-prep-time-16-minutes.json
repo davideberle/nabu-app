@@ -1,0 +1,61 @@
+{
+  "id": "total-prep-time-16-minutes",
+  "name": "Total Prep Time: 16 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "package (9 oz). spaghetti",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove, minced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh mushrooms, sliced",
+      "amount": "8 oz."
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "catfish fillets, cut into 1-inch pieces",
+      "amount": "1 1/2 lb."
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "Cook spaghetti as per the directions on the package and drain."
+  ],
+  "time": {
+    "total": 16
+  }
+}

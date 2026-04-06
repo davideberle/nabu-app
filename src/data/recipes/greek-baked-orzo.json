@@ -1,0 +1,80 @@
+{
+  "id": "greek-baked-orzo",
+  "name": "Greek Baked Orzo",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of uncooked orzo",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chicken pieces",
+      "amount": ""
+    },
+    {
+      "item": "Eight ounces of freshly cut spinach",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Four teaspoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried oregano",
+      "amount": ""
+    },
+    {
+      "item": "Two cloves of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "Five ounces of sun-dried tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "One cup of crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of lemon pepper",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the pepper, lemon pepper, fresh dill, dried oregano, and salt into",
+    "the bowl.",
+    "Mix all the ingredients well.",
+    "Add the chicken pieces, orzo, olive oil, and spinach into the bowl.",
+    "Mix the ingredients well and add the chopped garlic and the rest of the",
+    "ingredients.",
+    "Mix all the ingredients of both the bowls together.",
+    "Pour the mixture into a greased baking dish.",
+    "Bake the orzo for twenty-five to thirty minutes.",
+    "Dish out the orzo when done.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

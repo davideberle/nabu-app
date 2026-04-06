@@ -1,0 +1,52 @@
+{
+  "id": "curry-and-cheese-cauliflower",
+  "name": "Curry and Cheese Cauliflower",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "cauliflower",
+      "amount": "1 head"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "yellow curry powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "of shredded Cheddar-Monterey Jack cheese blend",
+      "amount": "3/4 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 190 degrees C (375 degrees F).",
+    "Boil the big pot of salted water; cook the cauliflower in boiling water",
+    "roughly 10 minutes or till becoming softened a bit. Gently take the",
+    "cauliflower out and put onto the baking sheet with the stem-side facing",
+    "downward. Halve the cauliflower through stem; lay the cut-side facing",
+    "downward onto baking sheet.",
+    "Mix the curry powder and mayonnaise in the bowl; spread on top of",
+    "cauliflower halves. Sprinkle the Monterey Jack cheese and Cheddar cheese",
+    "on top of the curry-mayonnaise layer.",
+    "Bake in preheated oven roughly 10 minutes or till the cheese melted and",
+    "bubbly.",
+    "Recipe 26: Curry and Grape Chicken Salad",
+    "Lettuce Cups",
+    "This childhood favorite was often served at our kitchen table. The earthy",
+    "flavor of the curry and the sweet grapes play so well together. Then the",
+    "crunch from the almonds brings it all together to make your taste buds"
+  ],
+  "time": {
+    "total": 30
+  }
+}

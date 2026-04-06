@@ -1,0 +1,65 @@
+{
+  "id": "asparagus-vichyssoise",
+  "name": "Asparagus vichyssoise",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "when the spears are often thick and woody and not good enough to eat as they are. Serve with crusty bread",
+  "ingredients": [
+    {
+      "item": "medium potato",
+      "amount": "1"
+    },
+    {
+      "item": "medium leeks",
+      "amount": "2"
+    },
+    {
+      "item": "asparagus",
+      "amount": "1 lb"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "good-quality vegetable stock",
+      "amount": "½ cups"
+    },
+    {
+      "item": "sugar salt and white pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Greek yogurt grated zest of",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "lemon",
+      "amount": "½"
+    },
+    {
+      "item": "¾-inch pieces, keeping the tips separate. Reserve whole spears.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the vegetables, except for the asparagus tips, with the butter in a medium saucepan and sauté on medium heat for about 4 minutes; make sure they don’t take on any color. Cover the vegetables with the stock and add the sugar and some salt and white pepper. Bring to a boil, then simmer, covered, for",
+    "40 minutes. At the end of this time add the asparagus tips and continue cooking for 10 minutes.",
+    "Once done, blitz the soup well in a blender until very smooth.",
+    "Gently fold in the cream and half the yogurt. Allow the soup to come to room temperature, then chill.",
+    "While the soup is cooling down, bring a pan of water to the boil and blanch the reserved asparagus for 2 minutes; drain and refresh under plenty of cold water. Shred.",
+    "Pour the cold soup into bowls. Spoon a dollop of yogurt on top of each and swirl with the tip of a skewer. Place the shredded asparagus in the center and garnish with lemon zest.",
+    "All over Malaysia a profusion of street food is served in big open-air complexes. The different stalls prepare cheap, cheerful and incredibly delicious dishes from Malay, Chinese or Indian cuisines. Since everything is so tempting you often end up with a table still piled with delicacies and no stomach capacity. The attraction of this type of dining is that it is both fresh and complex. Many dishes are prepared from raw in front of your eyes, using great ingredients, which makes it far superior to many Western solutions for fast food. I was guided through a recent Malaysian adventure by Helen Goh and her affectionate family, the Lees, who have taught me many culinary secrets.",
+    "This Malay dish (pictured on pages 186 to 187) takes only a few minutes to make (once you have a little bit of prep out of the way) and is unique in its many layers and depth of flavors. If you want to serve more than two people you’ll need to start again with a second batch, because double quantities will be too much for one wok."
+  ],
+  "time": {
+    "total": 30
+  }
+}

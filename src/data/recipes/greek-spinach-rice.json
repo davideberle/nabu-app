@@ -1,0 +1,64 @@
+{
+  "id": "greek-spinach-rice",
+  "name": "Greek Spinach Rice",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "salt and pepper",
+      "amount": "⅛ teaspoon"
+    },
+    {
+      "item": "Juice of ½ a lemon",
+      "amount": ""
+    },
+    {
+      "item": "boiling water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 teaspoon"
+    },
+    {
+      "item": "fresh dill",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "white long-grain rice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "onion diced",
+      "amount": "1"
+    },
+    {
+      "item": "450g fresh spinach",
+      "amount": "1 pound"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Add the oil over medium-high heat in a wide pan, add the onions",
+    "softly for 7 minutes until it is soft but not golden brown.",
+    "Cook, tossing, till the spinach has softened, and all moisture has",
+    "vanished.",
+    "Add the spinach and quarter the dill.",
+    "Add the flour, liquid, and tomato paste to the mixture, and bring to a",
+    "simmer.",
+    "Lower the heat and boil, sealed, for 20 minutes or until all water has",
+    "been absorbed and consumed by the rice.",
+    "When required, add more water.",
+    "Add the remaining lime juice, then dill, and sprinkle with salt.",
+    "Chapter 4: Greek Delicious Dinner Recipes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

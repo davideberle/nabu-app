@@ -1,0 +1,49 @@
+{
+  "id": "greek-milk-custard-pudding",
+  "name": "Greek Milk Custard Pudding",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of water",
+      "amount": ""
+    },
+    {
+      "item": "Four tablespoon of cornstarch",
+      "amount": ""
+    },
+    {
+      "item": "Four tablespoon of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two egg yolks",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of cinnamon powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add the water and whole milk.",
+    "Let the liquid boil for five minutes.",
+    "Add the egg yolks and sugar into the milk mixture.",
+    "Cook all the ingredients well for thirty minutes or until it starts to get",
+    "thick.",
+    "Keep stirring continuously.",
+    "Add the cinnamon powder on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "elegant-spaghetti-with-shrimp",
+  "name": "Elegant Spaghetti with Shrimp",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "white wine",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "frozen shrimp, deveined",
+      "amount": "6 to 8 oz."
+    },
+    {
+      "item": "spaghetti",
+      "amount": "8 oz."
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "Parmesan or Romano cheese, grated",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a medium saucepan, slowly heat the olive oil on medium heat. Add garlic and oregano; sauté until garlic begins",
+    "to brown. Remove from heat; cool. Remove the garlic and discard.",
+    "Add wine to oil and heat until bubbling. Add shrimp and cook. Shrimp should be thawed and patted dry on paper",
+    "towels.",
+    "Bring 4 quarts salted water to a boil in large pot. Stirring constantly, gradually add spaghetti to boiling water. When",
+    "spaghetti and water reach a full boil, cover and turn off heat. Let it stand exactly 10 minutes, stirring several times.",
+    "Pour spaghetti into large colander and drain; do not rinse. Shake and pour spaghetti back into hot pot. Pour hot oil,",
+    "wine and shrimp sauce over spaghetti and toss. Add salt, pepper and cheese as desired.",
+    "(43) Green Fettuccine with Scallop and Parsley Sauce",
+    "Green Fettuccine with Scallop and Parsley Sauce is a delicious, nutritious main course that can be whipped up in",
+    "less than 10 minutes. It's easy to make and very impressive for the company. Plus, since it’s green! You don't need",
+    "to worry about any difficult-to-pronounce ingredients or complicated cooking techniques, just simple pasta with a",
+    "creamy homemade sauce. The trickiest part of this recipe may be convincing your guests that the dish is not green,",
+    "but once they try it, they'll surely change their minds.",
+    "Yield: 10"
+  ],
+  "time": {
+    "total": 40
+  }
+}

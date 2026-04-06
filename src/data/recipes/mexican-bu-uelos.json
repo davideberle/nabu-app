@@ -1,0 +1,62 @@
+{
+  "id": "mexican-bu-uelos",
+  "name": "Mexican Buñuelos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Buñuelos:",
+      "amount": ""
+    },
+    {
+      "item": "baking powder",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "of flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "oil, for frying",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "of warm water",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "For Topping:",
+      "amount": ""
+    },
+    {
+      "item": "of ground cinnamon",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of granulated sugar",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "Take a bowl, add salt, baking powder, and flour in it.",
+    "Add oil and warm water. Mix with your hands.",
+    "Make the dough and knead it for 8-10 minutes to make it smooth.",
+    "Cover it and set aside for 30 minutes.",
+    "Take a pan with frying oil in it and make a topping of cinnamon",
+    "sugar.",
+    "Make balls from the dough, then shape them into circles.",
+    "Heat oil to 350 F, and fry each circle for 60 seconds, until it is golden",
+    "brown from both sides.",
+    "Remove any excess oil, and sprinkle cinnamon sugar topping.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

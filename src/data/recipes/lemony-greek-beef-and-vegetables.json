@@ -1,0 +1,75 @@
+{
+  "id": "lemony-greek-beef-and-vegetables",
+  "name": "Lemony Greek Beef and Vegetables",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "minced fresh oregano",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "can navy beans",
+      "amount": "1"
+    },
+    {
+      "item": "baby bok choy",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "medium carrots",
+      "amount": "5"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "Cut and dispose of the bok choy root edge.",
+    "Chop the leaves thinly sliced. Break into 1-inch stalks. Now put aside.",
+    "Heat beef on moderate heat in a large pan until no longer pink,",
+    "splitting into crumbles, 5-7 minutes; rinse.",
+    "Cover and set it aside from the skillet.",
+    "Heat the oil over moderate to high flame in the same pan.",
+    "Insert bok choy stalks and vegetables; continue cooking until crisp-",
+    "tender, 5-7 minutes.",
+    "Boost heat to high; stir in cloves, bok choy leaf, and ¼ cup liquor.",
+    "Heat, stirring, until the leaves wilt, five minutes, to loosen the",
+    "browned bits from the pot.",
+    "Incorporate ground beef, rice, oregano, salts, and ample residual wine",
+    "to keep the mixture wet.",
+    "Stir in the juice from the lemon; scatter with the Parmesan",
+    "cheese."
+  ],
+  "time": {
+    "total": 30
+  }
+}

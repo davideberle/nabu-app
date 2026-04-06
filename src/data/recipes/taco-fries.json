@@ -1,0 +1,54 @@
+{
+  "id": "taco-fries",
+  "name": "Taco Fries",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Shredded chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Potatoes, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the potatoes and fry it properly.",
+    "Add the taco seasoning on top and mix.",
+    "Arrange the fries in a plate and add olive oil, salsa, salt, pepper, and",
+    "cheese and let it bake for five minutes until the cheese melts.",
+    "Add cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

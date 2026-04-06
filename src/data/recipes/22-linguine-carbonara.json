@@ -1,0 +1,71 @@
+{
+  "id": "22-linguine-carbonara",
+  "name": "(22)     Linguine Carbonara",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "shallot, minced",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "bacon or Pancetta, chopped",
+      "amount": "1/4 lb."
+    },
+    {
+      "item": "dry white wine",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "3"
+    },
+    {
+      "item": "freshly grated parmesan cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "pepper",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "linguine",
+      "amount": "1 lb."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sauté onion, shallot and bacon in butter for 5 minutes or until bacon is browned. Add wine and simmer uncovered,",
+    "until wine evaporates.",
+    "In a medium bowl, whisk eggs, cheese, pepper and parsley.",
+    "Cook pasta as per the directions on the package; drain. Place pasta in a heated serving bowl and toss with egg",
+    "mixture. Pour on bacon mix and toss.",
+    "Serve while hot.",
+    "(23) Baked Penne with Spinach, Feta and Fontina",
+    "If you're not in the mood for a super-rich pasta dish or you just want to make a really quick and easy dish,",
+    "homemade penne is your answer. It means having just two ingredients’ penne and cheese. That's it! And don't",
+    "worry about flavor; adding salt, pepper, hot sauce, or crushed red pepper flakes only takes seconds of prep time and",
+    "doesn't affect the taste much.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 30
+  }
+}

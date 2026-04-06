@@ -1,0 +1,82 @@
+{
+  "id": "mee-goreng",
+  "name": "Mee goreng",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "two people you’ll  need to start again with a second batch, because double quantities will be too much for",
+  "ingredients": [
+    {
+      "item": "peanut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion, diced",
+      "amount": "½"
+    },
+    {
+      "item": "firm tofu, cut into",
+      "amount": "8 oz"
+    },
+    {
+      "item": "green beans, trimmed and cut in half at an angle",
+      "amount": "4 oz"
+    },
+    {
+      "item": "choi sum (or bok choy), cut into large chunks (both leaves and stalks)",
+      "amount": "4 oz"
+    },
+    {
+      "item": "fresh egg noodles",
+      "amount": "11 oz"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sambal oelek (or another savory chile paste), plus extra to serve",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "thick soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Mung bean sprouts handful of shredded iceberg lettuce",
+      "amount": "2 oz"
+    },
+    {
+      "item": "crisp-fried shallots lemon wedges to serve",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Set a wok or a large pan on high heat. Once hot, add the oil and then the onion, and cook for about 1 minute to soften a bit.",
+    "Add the tofu and French beans and cook for 2 to 3 minutes to give the tofu a bit of color. Stir gently as you cook, trying not to break up the tofu.",
+    "Next, add the choi sum. When it wilts add the noodles and carefully spread them in the wok using tongs or large chopsticks.",
+    "You want the noodles to get a lot of heat, almost to fry. Mix gently, cooking the noodles for about 2 minutes. Now add the spices, sambal oelek, soy sauces, water and bean sprouts and toss carefully. Cook for about a minute, or until the noodles are semisoft.",
+    "When ready, top with lettuce, transfer to serving bowls and sprinkle with crisp shallots. On the side, serve lemon wedges and a small bowl of extra sambal olek.",
+    "188 | Green Things",
+    "In 2009 I travelled to Tokyo with the sole purpose of eating. I have always liked Japanese food but this time I was blown away, completely taken over by food and by the fact that the Japanese, like no other culture that I know of, are all foodies. It was fantastic being in the company of so many who, just like me, are willing to line up for the best sponge cake in the world, the finest slice of raw fish or the greatest soba noodles. The latter I tasted, along with dozens of businessmen in fancy suits, at Yabusoba, an unassuming restaurant in the old neighborhood of Kanda.",
+    "Soba noodles, made of buckwheat, are often served cold with a flavorful dipping sauce. Wakame is a sea vegetable with a mild salty flavor and a slurpy texture. Other varieties of seaweed can be used as substitutes here. Or, if ocean flavor is not your thing, replace with thinly sliced radishes.",
+    "Soba noodles with wakame"
+  ],
+  "time": {
+    "total": 30
+  }
+}

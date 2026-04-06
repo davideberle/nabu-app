@@ -1,0 +1,81 @@
+{
+  "id": "french-coq-au-vin",
+  "name": "French Coq Au Vin",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "One cup of chicken pieces",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of red wine",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two thyme sprigs",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of diced bacon",
+      "amount": ""
+    },
+    {
+      "item": "One cup of carrots",
+      "amount": ""
+    },
+    {
+      "item": "One onions",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "Parsley",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the chicken pieces into it.",
+    "Season the chicken with pepper and salt.",
+    "Combine the chicken with red wine, bay leaf and thyme.",
+    "Cover it and marinate for thirty minutes.",
+    "Cook the bacons until they become crispy.",
+    "Add the marinated chicken into it.",
+    "Cook it until the chicken becomes golden brown.",
+    "Add the onions, carrots, and all the vegetables.",
+    "Add the garlic, tomato paste and cook for one minute.",
+    "Add the rest of the ingredients into the mixture.",
+    "Cook the ingredients for ten to fifteen minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

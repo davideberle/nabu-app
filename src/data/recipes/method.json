@@ -1,0 +1,116 @@
+{
+  "id": "method",
+  "name": "Method:",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "Meze Platter Ingredients",
+      "amount": ""
+    },
+    {
+      "item": "4.2 oz. breadsticks",
+      "amount": ""
+    },
+    {
+      "item": "4.2 oz. mini bruschetta",
+      "amount": ""
+    },
+    {
+      "item": "pita bread",
+      "amount": "14 oz."
+    },
+    {
+      "item": "can dolmas",
+      "amount": "1 (7 oz.)"
+    },
+    {
+      "item": "hard Greek cheese",
+      "amount": "8 oz."
+    },
+    {
+      "item": "long fresh baguette",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "6 oz."
+    },
+    {
+      "item": "large bell pepper",
+      "amount": "2"
+    },
+    {
+      "item": "mini seedless cucumbers",
+      "amount": "6"
+    },
+    {
+      "item": "roasted peppers",
+      "amount": "1 12 oz."
+    },
+    {
+      "item": "feta block",
+      "amount": "7 oz."
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "1 (11.6 oz.)"
+    },
+    {
+      "item": "pepperoncini",
+      "amount": "1 (12 oz.)"
+    },
+    {
+      "item": "celery stalks",
+      "amount": "2"
+    },
+    {
+      "item": "marinated artichoke hearts",
+      "amount": "1 (12 oz.)"
+    },
+    {
+      "item": "green olives",
+      "amount": "1 (11.6 oz.)"
+    },
+    {
+      "item": "Meze Spreads and Dips",
+      "amount": ""
+    },
+    {
+      "item": "Spicy Feta Spread",
+      "amount": ""
+    },
+    {
+      "item": "Skordalia Spread",
+      "amount": ""
+    },
+    {
+      "item": "Melitzanosalata Spread",
+      "amount": ""
+    },
+    {
+      "item": "Tzatziki Dip",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a broad platter or sharp knife.",
+    "In little plates, insert the eggplant spreads, spicy feta spreads, and",
+    "potato spreads plates or spoons on your board directly.",
+    "Organize the spreads around all of the other components so that the",
+    "colors are nicely scattered.",
+    "In order to do this, there is no wrong or right path. Only try to stop",
+    "putting all the green vegetables next to each other.",
+    "The same for orange. To each mix, add micro spoons so that your",
+    "guests can quickly scatter each dip.",
+    "Keep the rest of the baked goods (pita, bruschetta, grilled bread, and",
+    "breadsticks), so they are not dry.",
+    "Just before eating, warm pita bread and cut it into pieces!"
+  ],
+  "time": {
+    "total": 15
+  }
+}

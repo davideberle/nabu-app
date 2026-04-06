@@ -1,0 +1,101 @@
+{
+  "id": "paleo-morning-glory-bread",
+  "name": "Paleo Morning Glory Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "• 65 grams of heated coconut oil (a third of a cup)",
+      "amount": ""
+    },
+    {
+      "item": "• 200 grams blanched almond flour (2 cups)",
+      "amount": ""
+    },
+    {
+      "item": "• 30 grammes tapioca flour, 1/4 cup",
+      "amount": ""
+    },
+    {
+      "item": "• 12 tbsp baking powder",
+      "amount": ""
+    },
+    {
+      "item": "• 1 teaspoon bicarbonate of soda",
+      "amount": ""
+    },
+    {
+      "item": "• 1/2 tsp cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "• a quarter teaspoon of Celtic sea salt",
+      "amount": ""
+    },
+    {
+      "item": "• 60 grams dried cranberries, raisins, or chopped dates",
+      "amount": ""
+    },
+    {
+      "item": "• 46 grams, 1/2 cup shredded or grated carrots",
+      "amount": ""
+    },
+    {
+      "item": "grams 1/2 cup finely chopped apples or pears",
+      "amount": "75"
+    },
+    {
+      "item": "• three eggs",
+      "amount": ""
+    },
+    {
+      "item": "• 50 g coconut sugar (1/4 cup)",
+      "amount": ""
+    },
+    {
+      "item": "• 1/2 cup walnuts, chopped (46 grammes + extra for",
+      "amount": ""
+    },
+    {
+      "item": "topping) (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees Fahrenheit. Set aside a bread",
+    "pan greased with coconut oil or lined with parchment paper.",
+    "Melt the coconut oil and set it aside while you finish the other",
+    "ingredients.",
+    "Sift together almond flour, tapioca flour, baking powder, baking",
+    "soda, cinnamon, and salt in a medium mixing basin.",
+    "Toss the flour mixture with cranberries, raisins, or dates. To",
+    "keep the dry fruit from sticking together, mix it. Remove from",
+    "the equation.",
+    "Peel and core the carrots and apples.",
+    "Whisk eggs in a mixing basin with a hand whisker. In a mixing",
+    "dish, combine the melted coconut oil and coconut sugar.",
+    "Combine until all of the components are well combined.",
+    "Using a rubber spatula, fold in the carrots and apples.",
+    "Combine the wet and dry ingredients. With a rubber spatula,",
+    "gradually mix in the dry ingredients until they are well",
+    "integrated. Don't overmix the ingredients.",
+    "Mix in the walnuts. Inside a large bowl, mix all of the",
+    "ingredients until they are equally spread. Make sure the",
+    "elements aren't overmixed.",
+    "Fill the loaf pan halfway with the thick batter.",
+    "Then, with a spatula, smooth out the top.",
+    "If desired, garnish with chopped walnuts.",
+    "(optional)",
+    "Bake 45-48 minutes, or until a toothpick",
+    "inserted in the center comes out clean.",
+    "Take the pan out of the oven and set it aside for",
+    "at least 15 minutes before removing it.",
+    "Set aside for another 30 minutes before cutting."
+  ],
+  "time": {
+    "total": 50
+  }
+}

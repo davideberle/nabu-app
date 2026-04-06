@@ -1,0 +1,62 @@
+{
+  "id": "greek-avocado-tartine",
+  "name": "Greek Avocado Tartine",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half cup of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "Four slices of Tartine bread",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of crumbled cheese",
+      "amount": ""
+    },
+    {
+      "item": "Crushed red chilies",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of dill",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chopped avocado",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients except the bread slices.",
+    "Mix all the ingredients.",
+    "Toast the tartine bread slices",
+    "Spread the mixture on top of the bread slices.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "eggplant-cheesecake",
+  "name": "EGGPLANT CHEESECAKE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "temperature, sprinkled with parsley, if you like. The kuku will keep in the",
+  "ingredients": [
+    {
+      "item": "plus 1 tsp/65 ml olive oil, plus extra for brushing foil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "medium eggplants, cut crosswise into slices ¾-inch/2-cm thick (1½ lb/700 g)",
+      "amount": "2"
+    },
+    {
+      "item": "oz/150 g feta, crumbled into large chunks",
+      "amount": "5"
+    },
+    {
+      "item": "oz/150 g cream cheese",
+      "amount": "5"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "cup/60 ml heavy cream",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/150 g baby plum tomatoes, halved lengthwise",
+      "amount": "1"
+    },
+    {
+      "item": "cup/10 g oregano leaves, torn",
+      "amount": "⅓"
+    },
+    {
+      "item": "za’atar salt and black pepper",
+      "amount": "1½ tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F/210°C. Line the base and sides of a deep 7½- inch/19-cm square baking pan (or a round baking pan 8-inches/20-cm in diameter) with aluminum foil and brush with a little olive oil.",
+    "Lay the eggplant slices on a baking sheet lined with parchment paper and brush with ¼ cup of the olive oil, making sure the eggplants absorb plenty of oil. Sprinkle with ¼ teaspoon salt and a generous grind of black pepper.",
+    "Roast for 40 minutes, until the eggplant slices are soft and golden. Set aside to cool. Turn down the oven temperature to 325°F/170°C.",
+    "Place the feta, cream cheese, eggs, cream, and some black pepper in a bowl and beat with a handheld mixer until smooth and thick.",
+    "Arrange the eggplant slices in the prepared baking pan; they should fill up the pan as they lean against one another, almost standing on their sides. Fill the gaps between the pieces with tomatoes and sprinkle with half the oregano.",
+    "Pour the cream mixture into the pan, just enough to leave some eggplant pieces and tomatoes exposed, sprinkle with the remaining oregano, and bake in the oven for 35 to 40 minutes, until the custard sets and turns golden.",
+    "Remove from the oven and let cool to room temperature.",
+    "Remove the cake from the pan and cut into 4 squares (or into wedges, if using a round dish). Mix the za’atar with the remaining 1 teaspoon olive oil, brush this gently over the top and sides of the cake, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

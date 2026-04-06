@@ -1,0 +1,109 @@
+{
+  "id": "hot-and-sour-mushroom-soup",
+  "name": "HOT-AND-SOUR MUSHROOM SOUP",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "spoonful of the chile sauce on top.",
+  "ingredients": [
+    {
+      "item": "sunflower oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "small onions, coarsely chopped (3 cups/350 g)",
+      "amount": "3"
+    },
+    {
+      "item": "medium carrots, peeled and coarsely chopped (2 cups/250 g)",
+      "amount": "3"
+    },
+    {
+      "item": "celery stalks, coarsely chopped (3½ cups/350 g)",
+      "amount": "6"
+    },
+    {
+      "item": "garlic, left whole",
+      "amount": "6 cloves"
+    },
+    {
+      "item": "4-inch/10-cm piece fresh ginger (2½ oz/75 g), peeled and coarsely chopped",
+      "amount": ""
+    },
+    {
+      "item": "lemongrass stalks, coarsely chopped (¾ cup/50 g)",
+      "amount": "3"
+    },
+    {
+      "item": "prunes (4 oz/120 g)",
+      "amount": "12"
+    },
+    {
+      "item": "red chiles, coarsely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "star anise pods",
+      "amount": "6"
+    },
+    {
+      "item": "tamari soy sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime leaves",
+      "amount": "6"
+    },
+    {
+      "item": "oz/30 g cilantro roots, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oz/150 g enoki mushrooms",
+      "amount": "5"
+    },
+    {
+      "item": "oz/150 g white mushrooms, sliced",
+      "amount": "5"
+    },
+    {
+      "item": "oz/150 g buna-shimeji (brown beech) mushrooms",
+      "amount": "5"
+    },
+    {
+      "item": "plus 1 tsp/65 ml lime juice (about 2 limes)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cups/20 g cilantro leaves, plus extra to garnish",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/20 g Thai basil leaves",
+      "amount": "⅔"
+    },
+    {
+      "item": "cups/160 g bean sprouts",
+      "amount": "1½"
+    },
+    {
+      "item": "oz/160 g green beans, trimmed, cut crosswise into thirds, boiled for 4 minutes, and refreshed toasted sesame oil, to finish salt",
+      "amount": "5½"
+    }
+  ],
+  "method": [
+    "Heat the sunflower oil in a large saucepan over high heat and add the onions, carrots, celery, garlic, and ginger. Cook for about 5 minutes, until the edges of the vegetables begin to color. Pour in 2½ quarts/2.2 liters water and add the lemongrass, prunes, chile, star anise, soy, lime leaves, and cilantro roots.",
+    "Bring to a boil, then turn down the heat to a low simmer, add the tamarind paste, followed by the enoki and white mushrooms, and cook for 45 minutes.",
+    "Strain the stock and return it to the pan. You can discard the vegetables and prunes, though I love eating the carrot and celery. Bring the stock back to a very low simmer, add the enoki and white mushrooms, and cook for 1 minute. Then add the buna-shimeji mushrooms, lime juice, cilantro leaves, basil, bean sprouts, green beans, tamarind, and 1½ teaspoons salt and cook for 1 minute to heat through. Ladle into warmed bowls and finish with a little drizzle of sesame oil, no more than a few drops in each bowl.",
+    "SPICY CHICKPEA AND BULGUR SOUP"
+  ],
+  "time": {
+    "total": 30
+  }
+}

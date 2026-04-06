@@ -1,0 +1,76 @@
+{
+  "id": "grecian-chicken",
+  "name": "Grecian Chicken",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "ripe olives",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Hot cooked orzo pasta",
+      "amount": ""
+    },
+    {
+      "item": "medium garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "of water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon-pepper seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Greek seasoning",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "capers",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 teaspoons"
+    },
+    {
+      "item": "medium tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "fresh mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chicken tenderloins",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "Heat two teaspoons of oil over the moderate flame in a wide skillet.",
+    "Add the chicken; sauté for ten minutes until it is no longer pink.",
+    "Remove it and keep it hot.",
+    "Heat and cook oil in the same pan; add the remaining ingredients.",
+    "For 2-3 minutes, continue cooking until the onion is transparent.",
+    "Stir in garlic; simmer for an additional two minutes. Insert water; put",
+    "to a boil.",
+    "Reduce heat; boil, exposed, 3-4 minutes until the vegetables are",
+    "tender.",
+    "Set the chicken back in the skillet; add the olives.",
+    "Simmer, uncovered, 2-minute before the chicken is cooked",
+    "thoroughly. Present with orzo if needed."
+  ],
+  "time": {
+    "total": 30
+  }
+}

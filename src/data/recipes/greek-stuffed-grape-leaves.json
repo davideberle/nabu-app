@@ -1,0 +1,91 @@
+{
+  "id": "greek-stuffed-grape-leaves",
+  "name": "Greek Stuffed Grape Leaves",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Half cup of cooked rice",
+      "amount": ""
+    },
+    {
+      "item": "One cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoons of granulated sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of cooked beef",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced ginger",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of mixed cheese",
+      "amount": ""
+    },
+    {
+      "item": "Chopped fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One pound of grape leaves",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped red onions",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of minced garlic",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the butter and chopped onions into the pan.",
+    "Cook the onion until it turns soft.",
+    "Add the garlic and ginger as well as the beef mince, tomatoes, and",
+    "tomato paste.",
+    "Cook the beef well for about ten minutes.",
+    "Add the granulated sugar, cooked rice, salt and pepper.",
+    "Mix everything well and dish out.",
+    "Clean the grape leaves and add the cooked mixture into it.",
+    "Roll the grape leaves.",
+    "Add the mixed cheese on top and place the grape leaves on a",
+    "greased baking tray.",
+    "Steam the grape leaves for about ten to fifteen minutes.",
+    "Garnish the grape leaves with freshly chopped parsley leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

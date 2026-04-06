@@ -1,0 +1,64 @@
+{
+  "id": "tuna-and-mushroom-pasta-salad",
+  "name": "Tuna and Mushroom Pasta Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "2 cups"
+    },
+    {
+      "item": "white button mushrooms, sliced",
+      "amount": "10"
+    },
+    {
+      "item": "can tuna in oil, drained, flaked",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "large apple, peeled and diced",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions, finely cut",
+      "amount": "4-5"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
+    "Combine mayonnaise, lemon juice, oil and salt and pepper in a cup.",
+    "Add tuna, apple, pepper and mushrooms to pasta. Pour over dressing and toss until well combined.",
+    "(3) Vermicelli Salad with Crabmeat",
+    "This salad brings together a selection of ingredients that are both delicious to eat and visually appealing, meaning",
+    "there's something for everyone to enjoy! It's also great served alongside a warm dish such as chicken curry or",
+    "steamed vegetables.",
+    "Yield:"
+  ],
+  "time": {
+    "total": 35
+  }
+}

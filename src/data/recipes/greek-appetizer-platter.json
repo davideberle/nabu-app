@@ -1,0 +1,80 @@
+{
+  "id": "greek-appetizer-platter",
+  "name": "Greek Appetizer Platter",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "Spicy marinated feta",
+      "amount": ""
+    },
+    {
+      "item": "Cucumbers",
+      "amount": ""
+    },
+    {
+      "item": "Carrots",
+      "amount": ""
+    },
+    {
+      "item": "Pita",
+      "amount": ""
+    },
+    {
+      "item": "Bell peppers",
+      "amount": ""
+    },
+    {
+      "item": "Tzatziki",
+      "amount": ""
+    },
+    {
+      "item": "Pepper salami",
+      "amount": ""
+    },
+    {
+      "item": "Pistachios",
+      "amount": ""
+    },
+    {
+      "item": "Sriracha garlic hummus",
+      "amount": ""
+    },
+    {
+      "item": "Genoa salami",
+      "amount": ""
+    },
+    {
+      "item": "Hot soppressata",
+      "amount": ""
+    },
+    {
+      "item": "Sun-dried tomato hummus",
+      "amount": ""
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": ""
+    },
+    {
+      "item": "Black olives",
+      "amount": ""
+    },
+    {
+      "item": "Artichoke dip",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Prepare the ingredients in the quantity of your choice.",
+    "Insert olives, bowls of dips, and nuts.",
+    "On a wide cheese plate, organize all the components, making a nice",
+    "pattern."
+  ],
+  "time": {
+    "total": 45
+  }
+}

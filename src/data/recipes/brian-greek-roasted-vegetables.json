@@ -1,0 +1,85 @@
+{
+  "id": "brian-greek-roasted-vegetables",
+  "name": "Brian Greek Roasted Vegetables",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "can diced tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "thyme",
+      "amount": "3 sprigs"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "large potato",
+      "amount": "1"
+    },
+    {
+      "item": "garlic minced",
+      "amount": "1 cloves"
+    },
+    {
+      "item": "large tomato",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "zucchini",
+      "amount": "1"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "eggplant",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Begin with the veggies getting cut.",
+    "For slicing through circular forms, you can either choose a mandolin",
+    "cutter or a razor blade.",
+    "To make a lovely Briam and vegetables to bake uniformly, try to",
+    "choose veggies identical in volume.",
+    "Add the cut vegetables to a big bowl and stir and rain with the",
+    "vegetable oil.",
+    "Add the oregano, garlic, pepper, and salt.",
+    "Give a decent mix to all so that the vegetables are prepared well.",
+    "Add the tomato sauce and ½ cup of water to an oven-proof pan. Then",
+    "organize, in lines, the seasoned veggies.",
+    "In the blending cup, if there is any coconut oil remaining, pour it over",
+    "the veggies.",
+    "Mold the baking sheet with foil and put it in an oven, and bake.",
+    "Cook for thirty minutes at 390°F (200°C), test if the",
+    "vegetables are tender, and cover the foil.",
+    "Roast for another 10-20 minutes to minimize the fluid and the",
+    "veggies get their golden brown hue.",
+    "To get the vegetables to caramelize a little, you might want to",
+    "put the dish underneath the grill for five minutes.",
+    "Serve with olives, feta cheese, and moldy rolls."
+  ],
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "tomato-and-roasted-lemon-salad",
+  "name": "TOMATO AND ROASTED LEMON SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "medium lemons, halved crosswise, seeds removed, and cut into paper-thin slices (9 oz/260 g)",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sage leaves, finely shredded",
+      "amount": "8"
+    },
+    {
+      "item": "cups/400 g baby tomatoes, yellow or red or a mixture of both, halved scant ½ tsp ground allspice",
+      "amount": "2⅔"
+    },
+    {
+      "item": "cup/10 g flat-leaf parsley leaves",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/15 g mint leaves seeds of 1 small pomegranate (⅔ cup/120 g)",
+      "amount": "½"
+    },
+    {
+      "item": "pomegranate molasses",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "small red onion, thinly sliced (about ½ cup/50 g) salt and black pepper",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Bring a small saucepan of water to a boil, add the lemon slices, and blanch for",
+    "2 minutes. Drain well, place the lemon in a bowl, and add 1 tablespoon of the oil, ½ teaspoon salt, the sugar, and the sage. Gently mix and then spread the lemon mixture out on a baking sheet lined with parchment paper. Place in the oven and cook for 20 minutes, until the lemons have dried out a little.",
+    "Remove and set aside to cool.",
+    "In a bowl, combine the tomatoes, allspice, parsley, mint, pomegranate seeds, pomegranate molasses, onion, the remaining 2 tablespoons oil, ¼ teaspoon salt, and some freshly ground pepper. Add the lemon slices, stir gently, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

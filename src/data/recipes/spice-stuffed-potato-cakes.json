@@ -1,0 +1,63 @@
+{
+  "id": "spice-stuffed-potato-cakes",
+  "name": "SPICE-STUFFED POTATO CAKES",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "top. Sprinkle with the pistachios, drizzle with a little olive oil, and serve.",
+  "ingredients": [
+    {
+      "item": "lb/1 kg medium russet potatoes or another starchy variety, peeled and halved",
+      "amount": "2¼"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "black mustard seeds, toasted",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cups/60 g cilantro",
+      "amount": "3¾"
+    },
+    {
+      "item": "cups/40 g mint leaves",
+      "amount": "1⅓"
+    },
+    {
+      "item": "green chiles, coarsely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "superfine sugar sunflower oil, for frying",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "lemon, cut into wedges, or a sweet chutney, to serve salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Bring a large pan of salted water to a boil. Add the potatoes and cook for 15 minutes, until soft. Drain well and transfer to a mixing bowl with the turmeric, mustard seeds, and ¼ teaspoon salt. Mash well and leave to cool.",
+    "Place the cilantro, mint, chiles, tamarind, garlic, sugar, and ¼ teaspoon salt in a food processor and blitz to form a smooth, dry paste.",
+    "Shape a small handful of the potato mixture—w eighing about 1½ oz/40 g— into a ball. Place the ball in the palm of one hand and use the thumb of the other to create a dent large enough to fill with 1 teaspoon of the spice mixture. Once the mixture is added, shape the potato back into a ball, with the stuffing sealed inside, and then flatten it between both hands so that the cakes are ⅔-inch/1.5-cm thick. Continue with the rest of the potato and spice mixture until you have about 20 cakes, and then place them in the fridge for",
+    "Smear the base of a large nonstick sauté pan with sunflower oil. Place over medium heat and fry the cakes for 5 to 8 minutes, turning once, until they are light, golden, and crisp on the outside. Serve at once, with a wedge of lemon or some sweet chutney on the side.",
+    "Yogurt and Kaffir Lime Leaf Spread",
+    "YOGURT AND KAFFIR LIME LEAF SPREAD"
+  ],
+  "time": {
+    "total": 30
+  }
+}

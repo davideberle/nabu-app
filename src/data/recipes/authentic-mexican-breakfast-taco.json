@@ -1,0 +1,62 @@
+{
+  "id": "authentic-mexican-breakfast-taco",
+  "name": "Authentic Mexican Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salt, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, six",
+      "amount": ""
+    },
+    {
+      "item": "Corn tortillas, eight",
+      "amount": ""
+    },
+    {
+      "item": "Milk, a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "Chorizo sausage, six ounces",
+      "amount": ""
+    },
+    {
+      "item": "Hot pepper sauce, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Shredded Monterey jack cheese, half cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the sausage until evenly brown.",
+    "In a bowl, whisk together the eggs, milk, salt and pepper.",
+    "Cook the eggs until they turn firm.",
+    "Add the sausage, and continue cooking for few minutes.",
+    "Meanwhile, warm tortillas for about forty-five seconds per side in the",
+    "other skillet, so they are hot and crispy on the edges, but still pliable.",
+    "Sprinkle a little shredded cheese onto each tortilla while it is still hot.",
+    "Top with some of the scrambled egg and sausage, and then add hot",
+    "pepper sauce as well as salsa according to your preference.",
+    "Your meal is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

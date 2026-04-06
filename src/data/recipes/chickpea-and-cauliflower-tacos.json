@@ -1,0 +1,68 @@
+{
+  "id": "chickpea-and-cauliflower-tacos",
+  "name": "Chickpea and Cauliflower Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Pico de Galo, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix spice, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cooked chickpeas, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Roasted cauliflower, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tap.",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Creamy cilantro sauce, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the chickpeas in the olive oil.",
+    "Add the roasted cauliflower on top.",
+    "Add the mix spice, salt, taco seasoning, and pepper.",
+    "Lightly fry the tortillas.",
+    "Add the above mixture on top, add the sour cream, and creamy",
+    "cilantro sauce on top.",
+    "Garnish it with fresh cilantro leaves.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

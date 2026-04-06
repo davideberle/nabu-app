@@ -1,0 +1,44 @@
+{
+  "id": "gang-pak-plang-soup-with-pork-sausage",
+  "name": "Gang Pak Plang Soup with Pork Sausage",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "refreshing, even with the fermented pork sausage.",
+  "ingredients": [
+    {
+      "item": "minutes, or until they become slightly translucent. Drain through a fi ne mesh sieve and place the sieve (with the rice grains) across a stock pot fi lled with an inch of water. Cover the pot with a lid.",
+      "amount": "5"
+    },
+    {
+      "item": "91",
+      "amount": ""
+    },
+    {
+      "item": "chicken wings",
+      "amount": "2 lbs (1 kg)"
+    },
+    {
+      "item": "all-purpose fl our, seasoned with salt and pepper",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 cups (500 ml)"
+    }
+  ],
+  "method": [
+    "Sliced red chilies and coriander leaves (cilantro) for garnish, optional",
+    "Heat 2–3 inches (5–7.5 cm) inches of oil in a pan or wok to fry temperature: 350°F (175°C).",
+    "Dredge the wings in the fl our, then fry the wings in batches until golden brown, about 10 minutes per batch.",
+    "Drain on paper towels and transfer to a plate. Season with salt and pepper to taste.",
+    "Garnish with sliced red chilies and coriander leaves, if using.",
+    "Serve immediately with Jaew",
+    "Chili Sauce and Sticky Rice."
+  ],
+  "time": {
+    "total": 30
+  }
+}

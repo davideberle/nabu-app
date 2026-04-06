@@ -1,0 +1,72 @@
+{
+  "id": "raw-beet-and-herb-salad",
+  "name": "RAW BEET AND HERB SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the herbs and spiced nuts, stir to combine, and serve.",
+  "ingredients": [
+    {
+      "item": "cup/30 g sliced almonds",
+      "amount": "¼"
+    },
+    {
+      "item": "tbsp/15 g sesame seeds",
+      "amount": "2"
+    },
+    {
+      "item": "cup/45 g pumpkin seeds",
+      "amount": "⅓"
+    },
+    {
+      "item": "medium beets, peeled and cut into thin strips (2¼ cups/300 g)",
+      "amount": "3"
+    },
+    {
+      "item": "cups/40 g basil leaves, torn",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/20 g flat-leaf parsley leaves",
+      "amount": "⅔"
+    },
+    {
+      "item": "cups/30 g dill leaves",
+      "amount": "2"
+    },
+    {
+      "item": "cups/20 g cilantro leaves",
+      "amount": "1¼"
+    },
+    {
+      "item": "cup/10 g tarragon leaves",
+      "amount": "⅓"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "grated lemon zest",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "tbsp/75 ml olive oil salt and black pepper",
+      "amount": "5"
+    }
+  ],
+  "method": [
+    "Mix together the almonds and sesame and pumpkin seeds and spread out on a baking sheet. Place in the oven and roast for 6 minutes. Remove from the oven and set aside to cool.",
+    "Place the beets, herbs, chile flakes, and lemon zest in a large bowl. Add the seeds and nuts, lemon juice, olive oil, ¼ teaspoon salt, and a grind of black",
+    "pepper. Toss together and serve at once."
+  ],
+  "time": {
+    "total": 30
+  }
+}

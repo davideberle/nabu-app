@@ -1,0 +1,80 @@
+{
+  "id": "slow-cooker-enchiladas",
+  "name": "Slow-Cooker Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "can black beans",
+      "amount": "1"
+    },
+    {
+      "item": "beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "frozen, roasted, or canned corn kernels,",
+      "amount": "1 cup"
+    },
+    {
+      "item": "can chopped green chiles",
+      "amount": "1"
+    },
+    {
+      "item": "salsa,",
+      "amount": "1 cup"
+    },
+    {
+      "item": "taco seasoning mix",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "can enchilada sauce",
+      "amount": "1"
+    },
+    {
+      "item": "Mexican blend cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "For Serving",
+      "amount": ""
+    },
+    {
+      "item": "diced tomato",
+      "amount": "1"
+    },
+    {
+      "item": "diced avocado",
+      "amount": "1"
+    },
+    {
+      "item": "chopped cilantro leaves",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Take a skillet and heat oil over the medium heat. Then, add beef and",
+    "cook for 3-5 minutes. Crumble the beef, and drain any excess fat,",
+    "then turn down the heat.",
+    "Add corn, black beans, green chiles, salsa, enchilada sauce, and taco",
+    "seasoning.",
+    "Coat the slow cooker from inside with a nonstick spray. Then put one",
+    "tortilla in a slow cooker.",
+    "Place one-third of beef mixture on top of it, and sprinkle with a half",
+    "cup of cheese. Repeat this with two more layers.",
+    "Put tortilla, cheese, and enchilada sauce.",
+    "Cook it on the low heat for around 3-4 hours.",
+    "Garnish with tomato, avocado, and cilantro.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

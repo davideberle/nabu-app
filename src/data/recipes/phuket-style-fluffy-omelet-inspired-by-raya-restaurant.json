@@ -1,0 +1,30 @@
+{
+  "id": "phuket-style-fluffy-omelet-inspired-by-raya-restaurant",
+  "name": "Phuket-style Fluffy Omelet (inspired by Raya Restaurant)",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 2",
+  "intro": "cook the omelet in, as well as a fi ne-meshed sieve. Two wooden cooking spoons are also recommended.",
+  "ingredients": [
+    {
+      "item": "unscented cooking oil (vegetable oil is best)",
+      "amount": "1 cup (250 ml)"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "Deep-fry Pork Rinds (for garnish, optional, recipe on page 131)"
+  ],
+  "time": {
+    "total": 30
+  }
+}

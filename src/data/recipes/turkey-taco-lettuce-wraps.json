@@ -1,0 +1,98 @@
+{
+  "id": "turkey-taco-lettuce-wraps",
+  "name": "Turkey Taco Lettuce Wraps",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "yellow onion, chopped",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground turkey",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of tomato sauce",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of paprika",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "For Serving",
+      "amount": ""
+    },
+    {
+      "item": "Iceberg or lettuce leaves",
+      "amount": ""
+    },
+    {
+      "item": "Mexican cheese",
+      "amount": ""
+    },
+    {
+      "item": "Roma tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Red onion",
+      "amount": ""
+    },
+    {
+      "item": "Avocado",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a skillet.",
+    "Saute onion for 2 minutes. Then add garlic and turkey, pepper, and",
+    "salt. Cook for 5 minutes.",
+    "Then add cumin, chili powder, paprika, chicken broth, and tomato",
+    "sauce. Reduce the heat to simmer. Cook for 5 minutes.",
+    "Put the mixture on top of lettuce leaves, and serve with toppings of",
+    "your choice."
+  ],
+  "time": {
+    "total": 30
+  }
+}

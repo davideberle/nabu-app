@@ -1,0 +1,64 @@
+{
+  "id": "pudding",
+  "name": "PUDDING",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "oz/400 g white sourdough bread, cut into slices ¾-inch/2-cm thick",
+      "amount": "14"
+    },
+    {
+      "item": "cups/800 ml whole milk",
+      "amount": "3⅓"
+    },
+    {
+      "item": "cup/250 ml heavy cream",
+      "amount": "1"
+    },
+    {
+      "item": "rosemary sprigs, plus 1½ tsp chopped rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "large onion, quartered (5½ oz/160 g)",
+      "amount": "1"
+    },
+    {
+      "item": "grated nutmeg",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "8"
+    },
+    {
+      "item": "medium turnips, peeled and cut into slices ⅜-inch/1-cm thick (about 2¼ cups/260 g) generous ¾ cup/200 g ricotta",
+      "amount": "2"
+    },
+    {
+      "item": "cup/90 g coarsely grated Parmesan",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/20 g finely chopped chives olive oil, to finish salt and white pepper",
+      "amount": "7"
+    }
+  ],
+  "method": [
+    "Spread out the sourdough slices on a baking sheet and bake in the oven for 30 minutes, turning once, until dry.",
+    "Place the milk, cream, rosemary stalks, onion, and nutmeg in a saucepan and bring to a gentle simmer, then remove from the heat and set aside to cool.",
+    "Once tepid, strain and discard the onion and rosemary. Put the eggs in a bowl and whisk as you pour the milk mixture over them, forming a smooth custard. Season the custard with ½ teaspoon salt and ¼ teaspoon white pepper.",
+    "Meanwhile, bring a saucepan of water to a boil and blanch the turnip slices for 2 minutes. Drain, refresh under cold water, drain again, and dry. Layer the slices in a rectangular baking dish about 8½ by 12-inches/22 by 30-cm, covering the bottom completely.",
+    "Mix together the ricotta, Parmesan, chopped rosemary, and chives and spread over one side of each bread slice. Place the slices, cheese side up, in the dish, slightly overlapping them. Spoon the custard over the bread and gently press down so that the bread is immersed and soaks up the custard well. Leave to sit for about 1½ hours, gently pressing down the bread from time to time.",
+    "Preheat the oven to 400°F/200°C.",
+    "Cover the pudding with aluminum foil and bake for 20 minutes. Remove the foil and continue baking for about 30 minutes, until golden brown and crusty.",
+    "Poke a knife into the center and press down gently; if no cream surfaces, the pudding is ready. Allow to sit for 10 minutes before brushing the top with oil and serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "total-prep-time-30-minutes",
+  "name": "Total Prep Time: 30 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "ziti",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "sliced Italian sausage",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "butter or margarine",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green bell pepper strips",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mushrooms, sliced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "flour",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "low fat milk",
+      "amount": "2 1/4 cups"
+    },
+    {
+      "item": "Cheddar cheese, shredded, divided",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Parmesan cheese, grated",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/2 tsp."
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "Cook ziti according to package directions; drain"
+  ],
+  "time": {
+    "total": 30
+  }
+}

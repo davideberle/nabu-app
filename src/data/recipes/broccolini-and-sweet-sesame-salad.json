@@ -1,0 +1,79 @@
+{
+  "id": "broccolini-and-sweet-sesame-salad",
+  "name": "Broccolini and sweet sesame salad",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "of making. Served with the Quinoa Salad with Dried Persian Lime on page 245 this dish would make a",
+  "ingredients": [
+    {
+      "item": "tahini",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "small garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "tamari",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "¾ tbsp"
+    },
+    {
+      "item": "mirin pinch of salt",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "broccolini or purple sprouting broccoli",
+      "amount": "¾ lb (3½ cups)"
+    },
+    {
+      "item": "green beans",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "snow peas",
+      "amount": "2 cups"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": "½ cups"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "To make the sauce. Whisk together all the ingredients in a bowl (reduce the amount of honey if you don’t like it too rich).",
+    "The sauce should be smooth and thick but with a pourable consistency, so adjust the amount of water as necessary. Taste and add more salt, if you like.",
+    "Trim off any leaves from the broccolini. If the stalks are thick cut them lengthways into two or four, so you are left with long and thinner stalks, similar in size to the green beans. Trim off the stalk ends of the beans and snow peas, keeping them separate.",
+    "Bring a medium pan of unsalted water to the boil. Blanch the green beans for 3 to 5 minutes, or until just tender but still crunchy. Lift into a colander and refresh under running cold water; drain and dry well with a tea towel. In the same water blanch the snow peas for 2 minutes; refresh, drain and dry. Repeat the process with the broccoli, blanching it for 2 to 3 minutes.",
+    "Mix all the vegetables together in a bowl with the oil. You can now serve the salad in two ways. For one, stir most of the cilantro leaves and sesame and nigella seeds in with the vegetables and pile up on a serving dish; pour the sauce on top and finish with the remaining cilantro and seeds. Alternatively, pile the vegetables on a serving plate, dotting with cilantro leaves and sprinkling with seeds as you go; serve the sauce in a bowl on the side.",
+    "This comforting main course makes use of a combination common to Arab and Turkish cuisines – it mixes rice and little vermicelli noodles to create an attractive texture that is light and delicate."
+  ],
+  "time": {
+    "total": 30
+  }
+}

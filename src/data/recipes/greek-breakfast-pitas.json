@@ -1,0 +1,100 @@
+{
+  "id": "greek-breakfast-pitas",
+  "name": "Greek Breakfast Pitas",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "thick-cut bacon",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Tzatziki Sauce",
+      "amount": ""
+    },
+    {
+      "item": "eggs",
+      "amount": "8"
+    },
+    {
+      "item": "Ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "white onion",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "bag mix greens",
+      "amount": "1 (16 ounces)"
+    },
+    {
+      "item": "Roma tomatoes",
+      "amount": "3"
+    },
+    {
+      "item": "plain Greek yogurt",
+      "amount": "2 cups"
+    },
+    {
+      "item": "breakfast sausage",
+      "amount": "1 ½ pounds"
+    },
+    {
+      "item": "pita bread rounds",
+      "amount": "4"
+    },
+    {
+      "item": "cucumbers",
+      "amount": "2"
+    },
+    {
+      "item": "ground white pepper",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic",
+      "amount": "3 cloves"
+    }
+  ],
+  "method": [
+    "Heat the oven to 400 degrees Fahrenheit.",
+    "Organize bacon on the paper in a thin layer.",
+    "Place in the preheated oven and cook for 10 to 15 minutes before the",
+    "optimal amount of crispiness is achieved.",
+    "Move bacon to a lined plate of clean cloth to soak and retain bacon",
+    "Place it in a bowl of Greek yogurt.",
+    "Halve 1 cucumber and grind part of it into the yogurt.",
+    "To create tzatziki dip, whisk in garlic powder, white pepper, and salt.",
+    "The leftover cucumber can be sliced into thin pieces and put aside.",
+    "Over moderate flame, heat a skillet.",
+    "Insert the sausage; roast and stir for five minutes, until golden",
+    "brown.",
+    "Switch to a pan.",
+    "Move the bacon fat over medium-high heat to a pan.",
+    "Insert pita rounds; roast on each side once lightly browned,",
+    "about 30 seconds. Absorb on towels.",
+    "Cover with sausage and bacon from each pita.",
+    "On each pita, arrange tzatziki dip, spring mixture, Roma",
+    "tomato, cucumber pieces, and onions.",
+    "In a shallow pan, add the remaining tablespoon of oil.",
+    "Crack in one egg; cook approximately 1½ minutes per side",
+    "once set but still tender.",
+    "Place the egg on a baked pita top.",
+    "Continue with the oil and eggs available."
+  ],
+  "time": {
+    "total": 60
+  }
+}

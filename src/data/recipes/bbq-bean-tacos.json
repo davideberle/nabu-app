@@ -1,0 +1,60 @@
+{
+  "id": "bbq-bean-tacos",
+  "name": "BBQ Bean Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Black beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable stock, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Barbeque sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the red beans in oil, vegetable stock, and barbeque sauce for ten",
+    "to fifteen minutes.",
+    "Arrange the beans, and rest of the ingredients in the taco shells.",
+    "Your dish is ready to be served.",
+    "Chapter 3: Mexican Taco Dinner Recipes",
+    "Mexico is a very diverse food cultured nation. The dinner recipes are",
+    "amazing and extremely delicious to consume. Following are some amazing",
+    "dinner taco recipes that you can make at home:"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "greek-beef-pitas",
+  "name": "Greek Beef Pitas",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "whole pita breads",
+      "amount": "4"
+    },
+    {
+      "item": "Chopped tomatoes and cucumber",
+      "amount": ""
+    },
+    {
+      "item": "chopped cucumber",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dill weed",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "1 cup"
+    },
+    {
+      "item": "medium tomato, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "small onion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Cook meat, garlic, and onion in a frying pan over medium heat for ten",
+    "minutes or until beef is no redder and veggies are soft, splitting meat",
+    "into crumbles; clean.",
+    "Insert the oregano and half a teaspoon of salt.",
+    "Mix the yogurt, onion, cucumber, dill, and the leftover salt in a",
+    "shallow dish.",
+    "Pour the mixture over each pita bread with ¾ cup meat combination;",
+    "finish with two tablespoons of yogurt sauce.",
+    "Cover with optional tomatoes and cucumbers if needed. With the",
+    "leftover yogurt sauce, eat."
+  ],
+  "time": {
+    "total": 25
+  }
+}

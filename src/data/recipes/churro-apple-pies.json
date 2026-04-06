@@ -1,0 +1,80 @@
+{
+  "id": "churro-apple-pies",
+  "name": "Churro Apple Pies",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For the Apple Pie Filling:",
+      "amount": ""
+    },
+    {
+      "item": "of fresh lemon juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "apples diced into pieces",
+      "amount": "5"
+    },
+    {
+      "item": "of cup water",
+      "amount": "1 1/4"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "of brown sugar",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of cornstarch",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of ground cinnamon",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "For the Caramel Sauce:",
+      "amount": ""
+    },
+    {
+      "item": "of butter",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of brown sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of thickened cream",
+      "amount": "1/2 cup"
+    }
+  ],
+  "method": [
+    "Mix apples with lemon juice in a saucepan.",
+    "Whisk water and cornstarch until it is lump-free.",
+    "Put the mixture into a saucepan over the medium heat.",
+    "Add brown sugar, nutmeg, and cinnamon.",
+    "Mix to combine it well. Bring it to boil. Whisk continuously.",
+    "When the mixture starts to thicken, put the diced apple in it.",
+    "Lower the heat and cover the pan.",
+    "Let it cook for around 8-10 minutes until soft.",
+    "Turn down the heat while keeping it covered, and let it cool.",
+    "Fill each churro bowl with apple pie filling.",
+    "Drizzle ice cream and caramel sauce.",
+    "To prepare caramel sauce, mix heavy cream and brown sugar",
+    "into a saucepan over the medium heat. When sugar just starts to melt,",
+    "put butter in it.",
+    "Lower heat and continue cooking until sauce thickens.",
+    "Let it cool, then pour onto the Apple Pie Churros.",
+    "Server and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

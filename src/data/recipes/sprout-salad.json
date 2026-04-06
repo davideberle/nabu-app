@@ -1,0 +1,69 @@
+{
+  "id": "sprout-salad",
+  "name": "SPROUT SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "stir everything together, pile into a large but shallow bowl, and serve.",
+  "ingredients": [
+    {
+      "item": "cumin seeds",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "lb/450 g mixed sprouts (such as mung bean, chickpea, aduki bean, and lentil)",
+      "amount": "1"
+    },
+    {
+      "item": "daikon, peeled and thinly sliced (about 2 cups/250 g), or common radishes or kohlrabi if unavailable",
+      "amount": "1"
+    },
+    {
+      "item": "large carrots, peeled and thinly sliced (about 2 cups/250 g)",
+      "amount": "2"
+    },
+    {
+      "item": "cup/20 g flat-leaf parsley leaves, coarsely chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/10 g cilantro leaves, coarsely chopped",
+      "amount": "⅔"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "canola oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cups/300 g baby plum tomatoes, halved lengthwise scant 3 cups/80 g baby spinach leaves salt and black pepper",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the cumin seeds in a small sauté pan. Toast over high heat for a minute or two, shaking the pan to move the seeds around, until they give off their aroma and begin to pop. Transfer to a mortar and crush with a pestle until powdery.",
+    "Put the sprouts, daikon, and carrots in a large bowl. Add the herbs, garlic, oils, vinegars, ground cumin seeds, 1 teaspoon salt, and some black pepper.",
+    "Stir well, taste, and adjust the seasoning if you need. Add the tomatoes and spinach leaves, stir gently, and serve.",
+    "SPROUT SALAD, PART TWO"
+  ],
+  "time": {
+    "total": 30
+  }
+}

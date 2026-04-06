@@ -1,0 +1,85 @@
+{
+  "id": "stuffed-cabbage",
+  "name": "Stuffed cabbage",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "rice and little vermicelli noodles to create an attractive texture that is light and delicate.",
+  "ingredients": [
+    {
+      "item": "unsalted butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "vermicelli noodles (not the rice variety)",
+      "amount": "½ oz"
+    },
+    {
+      "item": "basmati rice",
+      "amount": "8 cup"
+    },
+    {
+      "item": "water salt",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "medium white cabbage",
+      "amount": "1"
+    },
+    {
+      "item": "³ cup pine nuts, toasted and roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "ricotta",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "grated Parmesan",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped mint",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped parsley, plus extra to finish",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed black pepper",
+      "amount": "3"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    }
+  ],
+  "method": [
+    "Melt the butter in a small saucepan over a medium heat. Break the vermicelli with your hands into",
+    "¾-inch-long pieces and add them to the pan. Stir as you fry them for 1 to 2 minutes. Take care! They can burn in a second. As soon as the noodles start turning golden add the rice and stir well. Then add the water and",
+    "½ teaspoon salt and bring to the boil. Turn the heat down to the minimum, cover and cook for 20 minutes. Remove from the heat and leave to sit for 10 minutes before removing the lid and allowing to cool down a bit.",
+    "While the rice is cooking, cut the cabbage vertically in half. Peel off the leaves and blanch them in boiling water for 6 to 8 minutes, or until semisoft. You may need to do this in a few batches, depending on the size of your pan. (Alternatively, trim off the base of the cabbage, then put it whole into a pot of boiling water; gradually remove the outer leaves as they cook.) Refresh the leaves under cold running water, drain and pat dry.",
+    "Preheat the oven to 350°F. To the cooked rice add the pine nuts, ricotta, half the Parmesan, the herbs, garlic and salt and pepper to taste; mix well with a fork. Use the cooked cabbage leaves to make parcels of whatever size you choose, each one containing a generous amount of the rice filling. Alternatively, make rolls by placing some rice filling at the base of a rectangular-shaped piece of cabbage and then rolling it up; don’t worry that the sides remain open.",
+    "Arrange the cabbage parcels close together in an ovenproof dish (if you can’t fill up the dish completely use cabbage trimmings to fill in the gaps). Whisk together the wine, stock, sugar, olive oil and plenty of salt and pepper. Pour this over the cabbage parcels and put the dish in the oven. Bake for about 40 minutes, or until almost all the liquid is gone. Sprinkle with the remaining",
+    "Parmesan, return to the oven and bake for a further 10 minutes for the cheese to melt and turn golden. Remove from the oven and allow to rest for 5 minutes before serving.",
+    "Scamorza affumicata is an Italian cheese that melts fantastically well. Often labelled “smoked mozzarella,” it is highly effective in adding depth and pungency to vegetarian dishes."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "french-vegan-cassoulet",
+  "name": "French Vegan Cassoulet",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "One pound beans",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of butter",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Parsley",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of garlic powder",
+      "amount": ""
+    },
+    {
+      "item": "Two celery stalks",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onions",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of mixed vegetables",
+      "amount": ""
+    },
+    {
+      "item": "Two bay leaves",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the beans and water as needed.",
+    "Add the salt and pepper in the beans.",
+    "Heat the butter.",
+    "Add the salt and cook it until becomes brown.",
+    "Season the vegetable pieces with pepper.",
+    "Add the onions into the cooking mixture.",
+    "Add the garlic, celery stalks, parsley, bay leaves, and add the bean",
+    "mixture.",
+    "Cook the beans along with all the ingredients for forty five minutes.",
+    "Make sure all the vegetables and beans are mixed well.",
+    "Add the chopped parsley on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 65
+  }
+}

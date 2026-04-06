@@ -1,0 +1,56 @@
+{
+  "id": "mexican-brownies",
+  "name": "Mexican Brownies",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of dark chocolate chips",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "package of fudge brownie mix",
+      "amount": "1"
+    },
+    {
+      "item": "of ancho chili pepper",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of canola oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "of water",
+      "amount": "1/4 cup"
+    }
+  ],
+  "method": [
+    "Add brownie mix to spices.",
+    "Transfer this mixture to a glass jar.",
+    "Add chocolate chips, then cover it. You can store it in a cool and dry",
+    "place for up to 3 months.",
+    "For brownies, preheat the oven to 350 degrees C.",
+    "Whisk together oil, eggs, and water.",
+    "Slowly add brownie mix and chocolate chips.",
+    "Spread it on a baking pan, then bake until or around 20-25 minutes.",
+    "Let it cool completely, and then serve.",
+    "Chapter 10: Most Famous Mexican Recipes",
+    "Cook and enjoy some of the most popular Mexican recipes, including tacos,",
+    "burritos, and quesadillas.",
+    "1 Tacos Recipes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

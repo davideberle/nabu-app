@@ -1,0 +1,64 @@
+{
+  "id": "chunky-taco-soup",
+  "name": "Chunky Taco Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped medium onion",
+      "amount": "1"
+    },
+    {
+      "item": "beef",
+      "amount": "1 1/2 pounds"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cans diced tomatoes with green chiles",
+      "amount": "2"
+    },
+    {
+      "item": "cans pinto beans",
+      "amount": "2"
+    },
+    {
+      "item": "of water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can of corn",
+      "amount": "1"
+    },
+    {
+      "item": "can of black beans",
+      "amount": "1"
+    },
+    {
+      "item": "envelope of salad dressing mix",
+      "amount": "1"
+    },
+    {
+      "item": "of minced cilantro",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "envelope of taco seasoning",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a pan and heat onion and beef and onion in the oil.",
+    "Put tomatoes, pinto beans, black beans, water, salad dressing mix,",
+    "corn, and taco seasoning. Then bring it to boil. Lower the heat.",
+    "Simmer while keeping it covered for about 20-30 minutes.",
+    "Add cilantro, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

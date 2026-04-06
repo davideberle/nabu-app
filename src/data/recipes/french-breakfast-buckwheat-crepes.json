@@ -1,0 +1,44 @@
+{
+  "id": "french-breakfast-buckwheat-crepes",
+  "name": "French Breakfast Buckwheat Crepes",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of creamy softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One cup of buckwheat flour",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of chocolate powder",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of vanilla extract",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the creamy softened butter into the bowl.",
+    "Add in the buckwheat flour, chocolate powder, vanilla extract, and",
+    "Mix the ingredients carefully.",
+    "Add the mixture in small quantities in a pan.",
+    "Let the crepes turn golden on both sides.",
+    "You can garnish the crepes with any other thing that you prefer.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

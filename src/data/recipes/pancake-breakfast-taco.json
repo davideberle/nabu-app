@@ -1,0 +1,49 @@
+{
+  "id": "pancake-breakfast-taco",
+  "name": "Pancake Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "Eggs, two",
+      "amount": ""
+    },
+    {
+      "item": "Milk, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Brown sugar, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Bisquick, one and a half cup",
+      "amount": ""
+    },
+    {
+      "item": "Chopped chives, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Bacon, six strips",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the egg, add chopped chives, salt, and pepper.",
+    "Mix one egg, brown sugar, bisquick, and milk in a bowl.",
+    "Cook the pan cakes.",
+    "Arrange the pancakes; add the cooked eggs, and bacon on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

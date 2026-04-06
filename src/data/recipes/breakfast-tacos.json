@@ -1,0 +1,74 @@
+{
+  "id": "breakfast-tacos",
+  "name": "Breakfast Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "black beans",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "pico de gallo",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "avocado, cubed",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "pork sausage",
+      "amount": "1/2 pound"
+    },
+    {
+      "item": "O'Brien potatoes, frozen",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large eggs",
+      "amount": "7"
+    },
+    {
+      "item": "Monterey Jack shredded cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "milk",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "flour tortillas (8 inches), warmed",
+      "amount": "6"
+    },
+    {
+      "item": "Fresh cilantro, optional",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix avocado, black beans, lime juice, and pico de gallo. Set the",
+    "mixture aside.",
+    "Take a large skillet, and cook crumble sausage and potatoes. Keep the",
+    "heat medium for 5-6 minutes until potatoes are cooked.",
+    "Mix eggs and milk together. Cook the mixture, and stir continuously",
+    "and keep the heat medium until eggs are cooked.",
+    "Pour in the cheese.",
+    "Put egg mixture into each tortilla.",
+    "Put a mixture of black bean over top of it.",
+    "Garnish with cilantro and sour cream.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

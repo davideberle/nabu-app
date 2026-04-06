@@ -1,0 +1,95 @@
+{
+  "id": "homemade-pita-bread",
+  "name": "Homemade Pita Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "1 c. warm",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "water",
+      "amount": ""
+    },
+    {
+      "item": "active dry yeast",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "sugar granules",
+      "amount": ""
+    },
+    {
+      "item": "three c.",
+      "amount": ""
+    },
+    {
+      "item": "split all-purpose",
+      "amount": ""
+    },
+    {
+      "item": "flour",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "extra-virgin olive",
+      "amount": ""
+    },
+    {
+      "item": "oil",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1 1/2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large mixing basin, whisk together warm water, yeast, and",
+    "sugar until completely dissolved. 12 cup flour, stirred in and set",
+    "aside for 15 minutes, or until mixture foams.",
+    "Stir in the oil, salt, and 2 cups flour (reserving 12 cups) until a",
+    "shaggy mass forms using a wooden spoon. Dust a clean surface",
+    "with part of the saved flour and knead the dough for about 7",
+    "minutes, or until smooth and elastic, adding additional reserved",
+    "flour if the dough is too sticky. Soft and wet dough is ideal. (If",
+    "you need a break from kneading, cover the dough and set it",
+    "aside for 10 minutes.)",
+    "Cover dough with plastic wrap in a clean big mixing basin.",
+    "Allow to rise in a warm area for 1 hour or until the dough has",
+    "doubled in size.",
+    "Preheat your oven to 500° with a pizza stone or a big cast-iron",
+    "pan inside. Dust a clean surface lightly with flour. Turn the",
+    "dough out onto the surface after punching it down. Divide the",
+    "dough into eight pieces and shape each piece into a ball. Allow",
+    "10 minutes to rest after covering with a towel or plastic wrap.",
+    "Working one at a time, roll each round into a 14\"-thick, 8\"-wide",
+    "circle, sprinkling additional flour on the dough if it starts to",
+    "stick.",
+    "As fast as possible, open your oven and arrange as many pitas as",
+    "will fit without touching on the pan or stone. Allow 3 to 5",
+    "minutes for an air pocket to form and the pita to turn golden",
+    "brown. Continue with the remaining rounds.",
+    "To keep cooked pitas warm, cover them with a clean kitchen",
+    "towel."
+  ],
+  "time": {
+    "total": 35
+  }
+}

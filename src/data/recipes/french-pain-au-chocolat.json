@@ -1,0 +1,70 @@
+{
+  "id": "french-pain-au-chocolat",
+  "name": "French Pain Au Chocolat",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half teaspoon of nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "One egg",
+      "amount": ""
+    },
+    {
+      "item": "One cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of white sugar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of margarine",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of cocoa powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the margarine and softened butter into the bowl.",
+    "Beat the mixture well to form a homogenized mixture.",
+    "Add the rest of the wet ingredients into the bowl.",
+    "Mix all the ingredients well.",
+    "Take a separate bowl.",
+    "Add the dried ingredients into the separate bowl.",
+    "Mix the dried ingredients well.",
+    "Add the dried ingredients into the wet ingredients.",
+    "Mix the ingredients to form a batter.",
+    "Grease a muffin tray.",
+    "Add the batter into the muffin tray.",
+    "Bake the batter for twenty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

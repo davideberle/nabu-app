@@ -1,0 +1,77 @@
+{
+  "id": "turkey-posole",
+  "name": "Turkey Posole",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "yellow onions",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "poblano chile peppers",
+      "amount": "2"
+    },
+    {
+      "item": "minced cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "of cooked turkey",
+      "amount": "4 cups"
+    },
+    {
+      "item": "quarts of turkey broth",
+      "amount": "2"
+    },
+    {
+      "item": "can of green chile peppers, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cans cannellini beans",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil over the medium heat.",
+    "Cook poblano chiles and onions in oil.",
+    "Put garlic.",
+    "Mix cumin, chile powder, and oregano.",
+    "Add cooked turkey, turkey broth, green chile peppers, hominy, and",
+    "cannellini beans.",
+    "Add water if needed at this stage.",
+    "Add salt and pepper. Then bring it to boil.",
+    "Lower the heat, and simmer while keeping it covered for about one",
+    "Take out in a bowl and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

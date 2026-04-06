@@ -1,0 +1,92 @@
+{
+  "id": "mexican-lunch-loaf",
+  "name": "Mexican Lunch Loaf",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "baking powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "plain flour",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Mexican chilli powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "caster sugar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "polenta",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "can of corn kernels",
+      "amount": "125g"
+    },
+    {
+      "item": "red capsicum, diced",
+      "amount": "1"
+    },
+    {
+      "item": "grated cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "finely chopped coriander leaves",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "onions, sliced",
+      "amount": "3"
+    },
+    {
+      "item": "buttermilk",
+      "amount": "1 1/4 cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "red chilli, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "Cherry tomatoes and Sliced avocado for serving",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180",
+    "C, and grease a loaf pan.",
+    "Mix baking powder, chilli powder, and flour in a bowl.",
+    "Add sugar, polenta, salt, corn, capsicum, onion, cheese, and coriander.",
+    "Add pepper. Make space at the center.",
+    "Put buttermilk, oil, and egg in it. Transfer this mixture to the pan, and",
+    "top it with sliced chilli.",
+    "Bake for almost 1 hour.",
+    "Make slices and serve with cherry tomatoes and avocado.",
+    "Chapter 5: Mexican Dinner Recipes",
+    "In this chapter, you will have some amazing, tasty, and fresh Mexican",
+    "dinner recipes. Enjoy cooking, and have fun with an exciting mix of",
+    "flavors."
+  ],
+  "time": {
+    "total": 30
+  }
+}

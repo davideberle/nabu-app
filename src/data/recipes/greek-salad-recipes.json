@@ -1,0 +1,105 @@
+{
+  "id": "greek-salad-recipes",
+  "name": "Greek Salad Recipes",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "For the dressing:",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of red wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of fresh oregano",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of dried oregano",
+      "amount": ""
+    },
+    {
+      "item": "For salad:",
+      "amount": ""
+    },
+    {
+      "item": "One cup of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of parmesan cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half pound of bread slices",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of Kalamata olives",
+      "amount": ""
+    },
+    {
+      "item": "One cup of red-orange bell pepper",
+      "amount": ""
+    },
+    {
+      "item": "One cup of English cucumber",
+      "amount": ""
+    },
+    {
+      "item": "One cup of cherry tomatoes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a small bowl.",
+    "Add the olive oil and minced garlic into it.",
+    "Mix it well and spread it on the bread slices.",
+    "Add the parmesan cheese on top of the slices.",
+    "Bake the slices for ten minutes.",
+    "Dish out the bread slices when they are done.",
+    "Take a large bowl.",
+    "Add the English cucumber, Kalamata olives, red-orange bell pepper,",
+    "cherry tomatoes, and feta cheese into the bowl.",
+    "Mix everything well and set it aside.",
+    "Take a small bowl.",
+    "Add the olive oil, red wine vinegar, kosher salt, minced garlic,",
+    "freshly crushed black pepper, fresh oregano, and dried oregano.",
+    "Mix everything well.",
+    "Pour this dressing on the prepared salad.",
+    "Mix everything well and add the toasted bread slices to the side.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 35
+  }
+}

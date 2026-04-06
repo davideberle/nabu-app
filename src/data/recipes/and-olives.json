@@ -1,0 +1,77 @@
+{
+  "id": "and-olives",
+  "name": "& Olives",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Oregano, dried",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Extra virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper",
+      "amount": ""
+    },
+    {
+      "item": "shallot",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "Kalamata olives pitted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large flour tortillas",
+      "amount": "4"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ (4 oz.)"
+    },
+    {
+      "item": "green bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "eggs",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "In a medium mixing dish, finely dice the tomato and bell pepper.",
+    "Transfer the olives, onions, and bell pepper to the bowl after halving",
+    "them down the middle.",
+    "Chop and mince the spring onions, then blend them with canola oil,",
+    "oregano, and pepper in a mixing bowl. To mix, stir all together.",
+    "Over moderate flame, preheat a nonstick skillet.",
+    "In a medium mixing cup, break the eggs.",
+    "Add water and sprinkle with salt before whisking it together.",
+    "Sprinkle the oil around in the skillet to cover the rim.",
+    "Fill the skillet with the beaten egg.",
+    "Choose a combination of swirling and tossing to scramble the eggs,",
+    "being sure to pull in all of the ingredients from the pan's sides.",
+    "Heat the eggs until they are no runnier.",
+    "Switch off the heat in the skillet.",
+    "Cover tortillas with beaten egg, steamed vegetables, and feta",
+    "cheese on a level surface. Roll securely to close and eat!",
+    "Chapter 2: Greek Appetizers and Snacks"
+  ],
+  "time": {
+    "total": 15
+  }
+}

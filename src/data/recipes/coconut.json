@@ -1,0 +1,80 @@
+{
+  "id": "coconut",
+  "name": "COCONUT",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "oz/420 g purple sprouting broccoli, trimmed, or 12 oz/350 g broccolini",
+      "amount": "14½"
+    },
+    {
+      "item": "oz/220 g haricots verts, trimmed",
+      "amount": "7½"
+    },
+    {
+      "item": "cups/200 g shelled frozen edamame (soybeans)",
+      "amount": "1⅓"
+    },
+    {
+      "item": "olive oil, plus 1 tbsp to finish",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "medium onion, finely diced (1 cup/150 g)",
+      "amount": "1"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "fresh curry leaves, or 40 if using dried curry leaves",
+      "amount": "30"
+    },
+    {
+      "item": "whole dried chiles (or fewer, depending on how hot they are) shaved rind of 1 lime, plus 1½ tbsp lime juice",
+      "amount": "3"
+    },
+    {
+      "item": "cup/10 g cilantro leaves",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/50 g coarsely grated fresh coconut salt",
+      "amount": "⅔"
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water to a boil. Add the broccoli and haricots verts and blanch for 3 to 4 minutes, until they are cooked but still have bite. Use a",
+    "slotted spoon to transfer the vegetables to a colander and run them under cold water. Drain, pat dry well, transfer to a large bowl, and set aside.",
+    "Return the pan of water to a boil, add the edamame, and blanch for 2 minutes. Transfer to the colander, run under cold water, pat dry, and add to the broccoli and beans. Sprinkle ½ teaspoon salt over the vegetables, stir, and set aside.",
+    "Heat the olive oil in a sauté pan over medium-high heat. Add the onion and ¼ teaspoon salt and cook for about 4 minutes, until soft. Add the black mustard seeds and, when they begin to pop, add the curry leaves, chiles, and lime rind.",
+    "Fry for a final 2 minutes before pouring everything over the vegetables. Stir and set aside for 10 minutes.",
+    "Just before serving, add the lime juice, cilantro, and coconut. Give everything a very gentle stir and serve.",
+    "BEET, AVOCADO, AND PEA SALAD",
+    "SERVES FOUR TO SIX",
+    "The possibility of blanching beets could do with some championing to those who always incline toward the hour-long boil or roast: keeping a bite on the purple root adds another layer of texture in a salad. Prepare everything in advance (keep the herbs in the fridge), combine when you’r e ready, and serve with something substantial, like Bread and Pumpkin “Fondue.”",
+    "4 medium beets, peeled and cut into paper-thin slices (about 3 cups/400 g; if the beets are large, halve them after peeling)",
+    "1 small red onion, thinly sliced (scant 1 cup/100 g)",
+    "3 tbsp sherry vinegar",
+    "¼ cup/60 ml olive oil, plus extra to finish",
+    "½ tsp superfine sugar",
+    "1 to 3 tsp savory chile sauce or paste such as Tabasco or Mexican Cholula Hot Sauce",
+    "2 medium avocados, peeled, pitted, and thinly sliced (1⅓ cups/200 g)",
+    "⅔ cup/10 g cilantro leaves",
+    "⅓ cup/10 g mint leaves",
+    "⅔ cup/20 g pea shoots, or mâche if you can’t get them",
+    "1 cup/150 g fresh or frozen green peas, quickly blanched and refreshed salt and black pepper",
+    "Bring a large pot of water to a boil and add the beets. Blanch for 3 to 5 minutes, until semicooked but still retaining a bite. Refresh under cold water and pat dry before transferring to a large bowl. Add the onion, vinegar, oil, sugar, chile sauce, 1 teaspoon salt, and some freshly ground black pepper.",
+    "Toss gently and then leave aside for 15 minutes.",
+    "When ready to serve, spread half of the beet mixture on a large platter or shallow bowl. Top with half the avocado, cilantro, mint, pea shoots, and peas.",
+    "Add the rest of the beet mixture and arrange the remaining ingredients on top. Finish with a drizzle of oil and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

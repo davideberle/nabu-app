@@ -1,0 +1,52 @@
+{
+  "id": "french-toast-roll-ups",
+  "name": "French Toast Roll Ups",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Four bread slices",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One egg",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the egg in a large bowl.",
+    "Mix the eggs until a smooth mixture is formed.",
+    "Add in the rest of the ingredients one by one ensuring not to form any",
+    "lumps.",
+    "Heat a large pan.",
+    "Add the softened butter and heat it.",
+    "Dip the bread slices into the bowl.",
+    "Roll the bread slices.",
+    "Place the roll ups in the pan and cook on all sides.",
+    "Cook the bread slices until they turn golden brown.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 25
+  }
+}

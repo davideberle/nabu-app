@@ -1,0 +1,40 @@
+{
+  "id": "greek-breakfast-egg-muffins",
+  "name": "Greek Breakfast Egg Muffins",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 16",
+  "ingredients": [
+    {
+      "item": "tomatoes",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "pitted black olives",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "crumbled Feta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cream heavy cream",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "10"
+    }
+  ],
+  "method": [
+    "Set the oven to 350°F. In a muffin tray, put sixteen muffin trays.",
+    "Beat and combine the eggs with all the other components.",
+    "On a muffin plate, load into muffin lining and bake in the oven center",
+    "for twenty minutes until crispy and hardened."
+  ],
+  "time": {
+    "total": 25
+  }
+}

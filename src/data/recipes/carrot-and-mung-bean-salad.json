@@ -1,0 +1,71 @@
+{
+  "id": "carrot-and-mung-bean-salad",
+  "name": "CARROT AND MUNG BEAN SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Spoon the crushed chickpeas on top, followed by a drizzle of the yogurt, and",
+  "ingredients": [
+    {
+      "item": "cup/140 g dried green mung beans",
+      "amount": "⅔"
+    },
+    {
+      "item": "tbsp/60 ml olive oil, plus extra to finish",
+      "amount": "4"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "large carrots, peeled and cut into 2 by ⅜-inch/5 by 1-cm batons (11 oz/320 g)",
+      "amount": "3"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cups/20 g cilantro leaves, chopped grated zest of 1 lemon",
+      "amount": "1⅓"
+    },
+    {
+      "item": "oz/140 g feta, broken into ¾-inch/2-cm chunks salt",
+      "amount": "4½"
+    }
+  ],
+  "method": [
+    "Bring a saucepan of water to a boil, add the mung beans, and simmer for 20 to 25 minutes, until the beans are cooked but still retain a bite. Drain, shake well, and transfer to a large bowl. About 3 minutes before the beans are cooked, heat 2 tablespoons of the olive oil in a small sauté pan over medium heat and add the cumin, caraway, and fennel seeds. Cook, stirring often, for about 3 minutes, until the seeds start to pop. Pour the hot oil and seeds over",
+    "the hot beans, along with the garlic, vinegar, chile flakes, and ½ teaspoon salt.",
+    "Set aside to cool.",
+    "While the beans are cooking, mix the carrots in a bowl with about ⅔ cup/150 ml water, the remaining 2 tablespoons oil, the sugar, and ½ teaspoon salt.",
+    "Pour into an 8 by 12-inch/20 by 30-cm baking dish and roast in the oven for",
+    "25 to 30 minutes until all the water has evaporated and the carrots are nicely roasted and slightly caramelized. Remove from the oven and add the carrots to the mung beans along with the cilantro and stir gently. Transfer to a large platter, sprinkle the lemon zest over the top, dot with the feta, finish with a final drizzle of oil, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

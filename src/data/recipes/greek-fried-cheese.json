@@ -1,0 +1,34 @@
+{
+  "id": "greek-fried-cheese",
+  "name": "Greek Fried Cheese",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One pound hard cheese",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup all-purpose flour",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the cheese into slices.",
+    "Dip it in all-purpose flour.",
+    "Take a large frying pan.",
+    "Add oil into the pan and heat well.",
+    "Add the cheese slices and deep fry until they turn golden brown.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 70
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "tomato-party",
+  "name": "Tomato party",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Eastern grocers) or Israeli couscous. Or just leave out the fregola and double the quantity of couscous.",
+  "ingredients": [
+    {
+      "item": "couscous salt olive oil",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "fregola",
+      "amount": "1 cup"
+    },
+    {
+      "item": "medium vine-ripened tomatoes, quartered",
+      "amount": "3"
+    },
+    {
+      "item": "brown sugar black pepper",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "yellow cherry tomatoes, halved",
+      "amount": "1 cup"
+    },
+    {
+      "item": "roughly chopped oregano",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "roughly chopped tarragon",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "roughly chopped mint",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "small green tomato, cut into thin wedges",
+      "amount": "1"
+    },
+    {
+      "item": "red cherry tomatoes, halved",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 325°F. Put the couscous in a bowl with a pinch of salt and a drizzle of oil. Pour over the boiling water, stir and cover the bowl with plastic wrap. Set aside for 12 minutes, then remove the plastic wrap, separate the grains with a fork and leave to cool.",
+    "Place the fregola in a pan of boiling salted water and simmer for",
+    "18 minutes, or until al dente. Drain in a colander and rinse under cold running water. Leave to dry completely.",
+    "Meanwhile, spread the quartered vine tomatoes over half of a large baking pan and sprinkle with the sugar and some salt and pepper. Drizzle the balsamic vinegar and some oil over the top.",
+    "Place in the oven. After about 20 minutes remove from the oven and increase the temperature to 400°F. On the empty side of the baking pan, spread the yellow tomatoes. Season them with salt and pepper and drizzle over some oil. Return to the oven and roast for 12 minutes. Remove the tomatoes and allow to cool down.",
+    "Mix together the couscous and fregola in a large bowl. Add the herbs, garlic, cooked tomatoes with all their juices, the green tomato and cherry tomatoes. Very gently mix together using your hands. Taste for seasoning: you might need to add salt, pepper and some olive oil.",
+    "134 | To m at o e s",
+    "While all the meat-eaters are scoffing smoky joints of this, that or the other, try this Mexican sandwich as a vegetarian barbecue dish."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "nigella-seeds",
+  "name": "NIGELLA SEEDS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "tbsp/20 g unsalted butter",
+      "amount": "1½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "large red onion, halved and thinly sliced (1½ cups/170 g)",
+      "amount": "1"
+    },
+    {
+      "item": "large butternut squash, peeled, seeded, and cut into 1¼-inch/3-cm chunks (2¾ lb/1 kg)",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/30 g pumpkin seeds",
+      "amount": "3½"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1¼ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cardamom pods, lightly crushed",
+      "amount": "4"
+    },
+    {
+      "item": "large cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "green chile, halved lengthwise",
+      "amount": "1"
+    },
+    {
+      "item": "superfine sugar scant 1 cup/200 ml vegetable stock",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cup/150 g Greek yogurt",
+      "amount": "¾"
+    },
+    {
+      "item": "cilantro, chopped salt",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place the butter and oil in a large sauté pan over medium heat. Add the onion and fry for about 8 minutes, until soft. Add the squash, increase the heat to medium-high, and cook for a further 10 minutes, stirring occasionally, until it starts to color. Remove from the heat and add the pumpkin seeds, 1 teaspoon of the nigella seeds, the cumin, coriander, turmeric, cardamom, cinnamon, chile, sugar, and ¾ teaspoon salt. Mix well and transfer to a baking sheet large enough to hold the vegetables in a single but snug layer, about 10 by 12- inches/25 by 30-cm. Pour the stock over the squash and roast for 30 minutes, until the squash is tender. Set aside for about 10 minutes: the liquid in the pan will continue to be absorbed.",
+    "Serve warm, with the yogurt spooned on top or on the side, along with a sprinkling of the cilantro and the remaining ¼ teaspoon nigella seeds.",
+    "Honey-Roasted Carrots with Tahini Yogurt",
+    "HONEY-ROASTED CARROTS WITH TAHINI"
+  ],
+  "time": {
+    "total": 30
+  }
+}

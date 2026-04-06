@@ -1,0 +1,57 @@
+{
+  "id": "greek-savory-snacks",
+  "name": "Greek Savory Snacks",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 30",
+  "ingredients": [
+    {
+      "item": "Pepper",
+      "amount": ""
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "packages of phyllo pastry",
+      "amount": "2"
+    },
+    {
+      "item": "Cottage cheese",
+      "amount": "½ lb."
+    },
+    {
+      "item": "Feta cheese",
+      "amount": "½ lb."
+    }
+  ],
+  "method": [
+    "Use the hands, crush the feta cheese and place it in a pan.",
+    "Cottage cheese, salt, and pepper, eggs, are added and blend until well",
+    "mixed.",
+    "Place the Phillo sheet on a broad workpiece and take one sheet at the",
+    "moment.",
+    "On each, spray some sunflower oil.",
+    "At 356°F, turn on the stove.",
+    "At the start of a stripe, insert a teaspoon of the combination and then",
+    "\"cover\" it, placing the extreme left end on the right-hand side.",
+    "Go forward and roll it into a triangle and place it on a baking sheet",
+    "coated with paper towels.",
+    "Sprinkle some olive oil in the pan of all of them when done.",
+    "Bake for 20 minutes or before it turns golden."
+  ],
+  "time": {
+    "total": 50
+  }
+}

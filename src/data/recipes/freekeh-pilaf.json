@@ -1,0 +1,81 @@
+{
+  "id": "freekeh-pilaf",
+  "name": "Freekeh pilaf",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "stock, I suggest reducing a good vegetable stock by half to intensify it.",
+  "ingredients": [
+    {
+      "item": "medium onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freekeh (or bulgur wheat)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "good-quality reduced vegetable stock salt and black pepper",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "½"
+    },
+    {
+      "item": "¹8 cup finely chopped parsley, plus extra to garnish",
+      "amount": ""
+    },
+    {
+      "item": "¹8 cup finely chopped mint",
+      "amount": ""
+    },
+    {
+      "item": "³ cup finely chopped cilantro",
+      "amount": ""
+    },
+    {
+      "item": "pine nuts, toasted and roughly broken",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Place the onions, butter and olive oil in a large heavy pot and sauté on a medium heat, stirring occasionally, for 15 to 20 minutes, or until the onion is soft and brown.",
+    "Meanwhile, soak the freekeh in cold water for 5 minutes. Drain in a sieve and rinse well under cold running water. Drain well.",
+    "Add the freekeh and spices to the onions, followed by the stock and some salt and pepper. Stir well. Bring to the boil, then cover, reduce the heat to a bare minimum and leave to simmer for",
+    "15 minutes. Remove the pan from the heat and leave it covered for 5 minutes. Finally, remove the lid and leave the pilaf to cool down a little, about another 5 minutes.",
+    "While you wait, mix the yogurt with the lemon juice, garlic and some salt.",
+    "Stir the herbs into the warm (not hot) pilaf. Taste and adjust the seasoning. Spoon onto serving dishes and top each portion with a generous dollop of yogurt. Sprinkle with pine nuts and parsley and finish with a trickle of olive oil.",
+    "Full of little surprises – whole pink peppercorns, currants, coriander seeds – this is one of the most comforting dishes I’ve come across. You can serve it with Leek Fritters (page 36) and their sauce to create a light meal from heaven, or next to Smoky Frittata (page 96) with some Greek yogurt on the side. A million thank-yous to Itamar Srulovich.",
+    "Itamar’s bulgur pilaf"
+  ],
+  "time": {
+    "total": 30
+  }
+}

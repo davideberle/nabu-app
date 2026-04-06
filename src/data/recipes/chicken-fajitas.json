@@ -1,0 +1,113 @@
+{
+  "id": "chicken-fajitas",
+  "name": "Chicken Fajitas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Chicken:",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "chicken breasts",
+      "amount": "1 1/4 pounds"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "bell peppers, different colors",
+      "amount": "3"
+    },
+    {
+      "item": "onion",
+      "amount": "1"
+    },
+    {
+      "item": "For Marinade:",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "minced jalapeño",
+      "amount": "1/2"
+    },
+    {
+      "item": "For Serving:",
+      "amount": ""
+    },
+    {
+      "item": "Salsa",
+      "amount": ""
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "10"
+    },
+    {
+      "item": "Sliced avocado",
+      "amount": ""
+    },
+    {
+      "item": "Iceberg lettuce",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut chicken breasts into slices horizontally.",
+    "Mix together all the ingredients. Then put the chicken in it to",
+    "marinate and mix well. Marinate for up to 9-10 hours in the",
+    "refrigerator.",
+    "Take the chicken out, and sprinkle salt on the chicken slices.",
+    "Heat oil in a frying pan, and heat chicken for around 2-3 minutes on",
+    "high heat. Turnover and cook the other side until it is well seared.",
+    "Cover seared breasts with foil then set aside.",
+    "Cook the onions and peppers on high heat. Spread the peppers and",
+    "onions in the pan for around 2 minutes.",
+    "Put vegetables and cook for 2-3 minutes.",
+    "Cut chicken pieces, and serve with warm tortillas, onions and",
+    "peppers, shredded cheese, guacamole, salsa, and iceberg lettuce,",
+    "whatever you like."
+  ],
+  "time": {
+    "total": 30
+  }
+}

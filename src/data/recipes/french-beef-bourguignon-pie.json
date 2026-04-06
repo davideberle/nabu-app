@@ -1,0 +1,101 @@
+{
+  "id": "french-beef-bourguignon-pie",
+  "name": "French Beef Bourguignon Pie",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of chopped bacon",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of white chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoons of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of minced beef",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of beef chunks",
+      "amount": ""
+    },
+    {
+      "item": "One beef bouillon cube",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of red wine",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One pound of brown mushrooms",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One cup of mixed cheese",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of fresh chopped rosemary",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of fresh chopped thyme",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of chopped fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of beef stock",
+      "amount": ""
+    },
+    {
+      "item": "One pack of pie dough",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the butter and onions into the pan.",
+    "Add the spices, herbs and tomatoes into the pan.",
+    "Cook the mixture well.",
+    "Add the beef mince and beef pieces into the pan.",
+    "Add the beef stock and cover the pan so that the meat cooks properly.",
+    "Add the rest of the ingredients when the beef mixture dries out.",
+    "Cook the mixture well.",
+    "Lay the pie dough in a greased baking dish.",
+    "Pour the bourguignon mixture and cover it with more dough.",
+    "Bake the dish for ten minutes.",
+    "Add the chopped parsley on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "french-eggs-en-cocotte",
+  "name": "French Eggs En Cocotte",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of butter",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "Four eggs",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of Herbs de Provence",
+      "amount": ""
+    },
+    {
+      "item": "French bread slices",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients except the chives in it.",
+    "Mix everything well.",
+    "Pour the mixture into a baking dish.",
+    "Place the dish in a water bath.",
+    "Bake the eggs for ten to fifteen minutes.",
+    "Dish out when done.",
+    "Add the fresh chopped chives on top.",
+    "Your dish is ready to be served.",
+    "Chapter 2: The Famous French Lunch Recipes",
+    "Classic French lunch recipes are known for its flavors and fragrance all over",
+    "the world. Following are some classic French recipes that are rich in healthy",
+    "nutrients and you can easily make them with the detailed instructions given in",
+    "each recipe:"
+  ],
+  "time": {
+    "total": 25
+  }
+}

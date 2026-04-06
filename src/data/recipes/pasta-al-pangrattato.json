@@ -1,0 +1,47 @@
+{
+  "id": "pasta-al-pangrattato",
+  "name": "PASTA AL PANGRATTATO",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "doves of garlic",
+      "amount": "2"
+    },
+    {
+      "item": "dried chiles, to your taste",
+      "amount": "1-2"
+    },
+    {
+      "item": "anchovies in oil",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "Bring a large pan of salted water to a boil • Add the fusilli and cook according t o the package",
+    "nstructions. Halfway through the cooking t ime, put a large frying pan o n a medium heat and let it get",
+    "hot. Pour about 2 tablespoons of the oil from the tin of anchovies into t he pan, let it get hot, then stir",
+    "in your breadcrumbs • Add the garlic, chile, thyme leaves and anchovies (but not t he re maining oil in the",
+    "tin) and cook for 4 to 5 minutes, stirring every so oft en, until t he breadcrumbs are golde n brown. Drain",
+    "the fusilli in a colander over a bowl, reserving some of the cooking water in case you want to add a",
+    "splash to loosen up the pasta. Add to the frying pan and stir well. Squeeze the juice of half the lemon",
+    "over the pasta. Give the pan a shake • Have a taste, and if you t hink it needs a little more lemon,",
+    "squeeze the other half over too",
+    "To serve your pasta",
+    "Divide the pasta between your serving bowls, o r put it on the t able in a large serving dish with a nice crisp",
+    "salad and let everyone help themselves",
+    "MINI SHELL PASTA WITH A",
+    "CREAMY SMOKED BACON",
+    "This is one of the dishes I cook for my kids, but to be honest, it's so good that me and Jools always eat it",
+    "too! Mini pasta shells are actually meant to be added to soups, but they're quick and easy to cook, which",
+    "makes them a good thing to serve with pasta sauces. All in all this should take you no more than five",
+    "and a half minutes to cook. However, if you decide to go for a bigger type of pasta, remember that it will",
+    "need more time to cook than these mini shells."
+  ],
+  "time": {
+    "total": 30
+  }
+}

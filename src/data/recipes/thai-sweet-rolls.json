@@ -1,0 +1,40 @@
+{
+  "id": "thai-sweet-rolls",
+  "name": "Thai Sweet Rolls",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 15",
+  "intro": "Of course, these rolls are also nice on their own or even as hot dog buns!.",
+  "ingredients": [
+    {
+      "item": "153",
+      "amount": ""
+    },
+    {
+      "item": "155",
+      "amount": ""
+    },
+    {
+      "item": "strong black coffee",
+      "amount": "2 cups (500 ml)"
+    },
+    {
+      "item": "can sweetened condensed milk (add to taste)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Add the condensed milk to taste—the sweeter it is, the more",
+    "“authentic” it is. Add a pinch of ground cardamom to each cup before serving.",
+    "4 cups (1 l) water",
+    "6 heaping tablespoons Thai tea mix (like Cha Tra Mue). If you can’t fi nd Cha Tra Mue steep the following in 4 cups (1 l) water:",
+    "4 tablespoons loose-leaf black tea (or 4 tea bags), 2 star anise pod,",
+    "4 cardamom pods, 1 cinnamon stick, 4 cloves, pinch of turmeric,",
+    "½ vanilla bean or 1 teaspoon extract (almond extract may be substituted), tamarind powder, to taste (if you can get it)"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "flaxseed-bread",
+  "name": "Flaxseed Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "• 1 cup warm or hot water + 2 1/3 cup + 1 tbsp golden",
+      "amount": ""
+    },
+    {
+      "item": "flaxseed meal",
+      "amount": ""
+    },
+    {
+      "item": "• 1 tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "• 1 teaspoon of baking soda**",
+      "amount": ""
+    },
+    {
+      "item": "• 1 teaspoon apple cider vinegar",
+      "amount": ""
+    },
+    {
+      "item": "• 1/2 teaspoon salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Set the oven to 180 Celsius/360 degrees Fahrenheit.",
+    "Make a fine flour out of the flaxseeds. If possible, sift the",
+    "flaxseed flour to remove any natural \"seeds.\"",
+    "Combine the flaxseed meal, baking powder, baking soda, and",
+    "salt in a large mixing basin. Stir in the apple cider vinegar and",
+    "water for approximately 30 seconds, or until the flaxseed meal",
+    "turns sticky and holds together in a lump. Then, loosely form the",
+    "dough into a loaf shape with your hands. (Be careful not to over-",
+    "knead the dough.) It should be handled as little as possible). The",
+    "surface of the bread should be beautiful and smooth.",
+    "Place the bread in a loaf pan that has been oiled (or lined with",
+    "parchment paper). A 1-pound loaf pan fits the bread nicely (8.5\"",
+    "x 4.5\"). However, if you have a 1.5-pound loaf pan (10\" x 5\"),",
+    "as I have, it will suffice. (If you're using a bigger loaf pan, shape",
+    "the loaf, then set it in the pan without pressing it into the",
+    "corners.) Alternatively, a baking sheet coated with parchment",
+    "paper can be used. Because the bread retains its shape nicely",
+    "after baking, a loaf pan is not required.",
+    "Sprinkle some seeds on top and mist with water (I use a mix of",
+    "flaxseeds, sesame seeds, and sunflower seeds). To help the",
+    "seeds stick better, gently push down on them with your palm.",
+    "If you watched the video that accompanies this recipe, you'll see",
+    "that I mentioned I let the bread rest for a few minutes, covered.",
+    "If you're using baking soda, though, you should do the reverse.",
+    "A chemical reaction occurs when baking soda (base) and apple",
+    "cider vinegar (acid) are combined. Carbon dioxide is produced",
+    "as a byproduct of this process, giving your baked products a",
+    "boost. As soon as the primary and acid are combined, the",
+    "reaction begins. So, as soon as you combine the two, pop the",
+    "bread in the oven before the response cools down.",
+    "Set the oven to 350°F and bake the bread for 60 minutes. It's",
+    "best if the crust is golden brown (if using golden flaxseeds).",
+    "Remove the bread from the oven and cool for 10 minutes in the",
+    "loaf pan. Before slicing the bread, place it on a cooling rack to",
+    "cool fully.",
+    "Refrigerate the flaxseed bread for up to 7 days in an airtight",
+    "container. Then refrigerate for up to 3 months in an airtight",
+    "container for long-term storage. I prefer to slice the bread before",
+    "freezing it, but the whole loaf may be frozen as well."
+  ],
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "ladolemono-greek-salad-dressing",
+  "name": "Ladolemono Greek Salad Dressing",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "black pepper",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "to large garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a mixing bowl, combine the lime juice, oregano, cloves, salt, and",
+    "peppers.",
+    "To mix the ingredients, whisk them together.",
+    "Steadily drizzle in the olive oil when stirring vigorously."
+  ],
+  "time": {
+    "total": 10
+  }
+}

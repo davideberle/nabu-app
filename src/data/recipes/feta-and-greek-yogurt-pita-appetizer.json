@@ -1,0 +1,48 @@
+{
+  "id": "feta-and-greek-yogurt-pita-appetizer",
+  "name": "Feta and Greek Yogurt Pita Appetizer",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Fresh ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Four tablespoons Greek yogurt",
+      "amount": ""
+    },
+    {
+      "item": "mint",
+      "amount": "2-3 tablespoons"
+    },
+    {
+      "item": "crumbled feta",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "round medium pita bread",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees F.",
+    "Stir the feta with the yogurt in a medium bowl until smooth.",
+    "Mix in the mint and olive oil thoroughly.",
+    "Around each pita, distribute the yogurt-feta mixture.",
+    "Bake for about ten minutes, just until the tops of the pita begin to",
+    "brown.",
+    "Remove the pitas and cut them into 6 or 8 pieces with a pizza cutter",
+    "before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

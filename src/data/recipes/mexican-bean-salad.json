@@ -1,0 +1,98 @@
+{
+  "id": "mexican-bean-salad",
+  "name": "Mexican Bean Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "red wine vinegar",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "can of drained kidney beans",
+      "amount": "1"
+    },
+    {
+      "item": "can of drained black beans",
+      "amount": "1"
+    },
+    {
+      "item": "can of cannellini beans",
+      "amount": "1"
+    },
+    {
+      "item": "package of corn kernels, frozen",
+      "amount": "1"
+    },
+    {
+      "item": "bell pepper, red",
+      "amount": "1"
+    },
+    {
+      "item": "bell pepper, green",
+      "amount": "1"
+    },
+    {
+      "item": "chopped red onion",
+      "amount": "1"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of lime juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of salt",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of lemon juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of white sugar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "of ground cumin",
+      "amount": "1/2 tbsp."
+    },
+    {
+      "item": "fresh cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "of black pepper",
+      "amount": "1/2 tbsp."
+    },
+    {
+      "item": "of chili powder",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "dash pepper sauce",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a bowl, and mix bell peppers, beans, red onion, and frozen corn.",
+    "Take another bowl, mix red wine vinegar, olive oil, lemon juice, lime",
+    "juice, salt, sugar, garlic, cumin, cilantro, and black pepper.",
+    "Season with chili powder and hot sauce.",
+    "Add olive oil over vegetables, and mix it well.",
+    "Chill before serving.",
+    "Enjoy your salad."
+  ],
+  "time": {
+    "total": 30
+  }
+}

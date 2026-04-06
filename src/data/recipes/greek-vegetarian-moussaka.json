@@ -1,0 +1,84 @@
+{
+  "id": "greek-vegetarian-moussaka",
+  "name": "Greek Vegetarian Moussaka",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "One tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of fresh chopped dill",
+      "amount": ""
+    },
+    {
+      "item": "One cup of feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of zucchini pieces",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of crushed black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One cup of eggplant pieces",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of baby spinach",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of russet potatoes",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of tomato sauce",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of béchamel sauce",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the eggplant, zucchini pieces, potatoes, baby spinach into a bowl.",
+    "Mix the olive oil, salt, and crushed black pepper into the bowl.",
+    "Bake the ingredients in an oven for about twenty minutes.",
+    "Take a large pan.",
+    "Add the olive oil and onion into the pan.",
+    "Cook the onions until they turn soft.",
+    "Add the minced garlic into the pan.",
+    "Cook the ingredients well.",
+    "Add the feta cheese, salt, and black pepper into the pan.",
+    "Mix all the ingredients well and add the chopped dill into the",
+    "Add the baked vegetables into the pan and then mix everything",
+    "Add the tomato sauce and béchamel sauce on top of the",
+    "vegetable mixture.",
+    "Bake for another ten minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 120
+  }
+}

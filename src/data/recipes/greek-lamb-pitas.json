@@ -1,0 +1,77 @@
+{
+  "id": "greek-lamb-pitas",
+  "name": "Greek Lamb Pitas",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two slices of pita bread",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "One ripe cherry tomato",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of lamb pieces",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped basil",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "A bunch of chopped cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the onion and salt into the pan.",
+    "Cook the onions well and then add the black pepper into the pan.",
+    "Add the lamb pieces into the mixture.",
+    "Add the chopped basil into the mixture.",
+    "Cook the ingredients well for about fifteen minutes.",
+    "Dish out when the lamb pieces are done.",
+    "Let the meat cool down and then add the crumbled feta cheese into it.",
+    "Mix well.",
+    "Heat the pita breads.",
+    "Cut a hole into the bread and add the cooked mixture into it.",
+    "Garnish the bread with chopped cilantro.",
+    "Your dish is ready to be served.",
+    "Chapter 4: The Famous Greek Dessert Recipes",
+    "You should really try Greek desserts if you are a sweet tooth. Following are",
+    "some yummy dessert recipes that are rich in healthy nutrients:"
+  ],
+  "time": {
+    "total": 25
+  }
+}

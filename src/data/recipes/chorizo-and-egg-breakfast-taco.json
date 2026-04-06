@@ -1,0 +1,65 @@
+{
+  "id": "chorizo-and-egg-breakfast-taco",
+  "name": "Chorizo and Egg Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Salt, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper, half tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Egg, twelve",
+      "amount": ""
+    },
+    {
+      "item": "Milk, six tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cotija cheese, four tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, twelve",
+      "amount": ""
+    },
+    {
+      "item": "Hot sauce, as preferred",
+      "amount": ""
+    },
+    {
+      "item": "Breakfast sausage, one roll",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro leaves, a quarter cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the egg in a scrambled form.",
+    "Mix the rest of the things together.",
+    "Lightly fry the tortilla bread and then arrange all the mixture on the",
+    "tortillas.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

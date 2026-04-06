@@ -1,0 +1,46 @@
+{
+  "id": "spicy-mexican-salad",
+  "name": "Spicy Mexican Salad",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of shredded Monterey and Cheddar cheese",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "package of chopped lettuce",
+      "amount": "1"
+    },
+    {
+      "item": "can of pinto beans",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "can of black beans",
+      "amount": "1"
+    },
+    {
+      "item": "bag of corn chips",
+      "amount": "1"
+    },
+    {
+      "item": "bottle of salad dressing",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a bowl, and combine cheese, romaine, pinto beans, tomatoes,",
+    "and black beans.",
+    "Add corn chips and dressing, toss it well, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

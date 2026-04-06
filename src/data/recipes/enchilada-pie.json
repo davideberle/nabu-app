@@ -1,0 +1,87 @@
+{
+  "id": "enchilada-pie",
+  "name": "Enchilada Pie",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, diced",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of ground beef",
+      "amount": "1 pound"
+    },
+    {
+      "item": "minced cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "can of green chilies",
+      "amount": "1"
+    },
+    {
+      "item": "can of Tex Mex-style tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "fresh cilantro, chopped",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "can of refried black beans",
+      "amount": "1"
+    },
+    {
+      "item": "packet of taco seasoning mix",
+      "amount": "1"
+    },
+    {
+      "item": "cans of red enchilada sauce",
+      "amount": "2"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of Monterey Jack cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "of pepper jack cheese, shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "8"
+    }
+  ],
+  "method": [
+    "1 Preheat the oven to 200 degrees C.",
+    "2 Cook onions and beef in a skillet over the medium heat for about 7-10",
+    "minutes.",
+    "3 Put garlic in it, and cook for about 30 seconds.",
+    "4 Add green chiles, diced tomatoes, taco seasoning mix, and cilantro.",
+    "Remove it from the heat.",
+    "5 Take a bow, and add black beans and red enchilada sauce.",
+    "6 Mix Monterey Jack cheese and pepper jack cheese together in a bowl.",
+    "7 Heat a skillet over the medium heat, and cook tortillas in it. When",
+    "they are crisp, take them out.",
+    "8 Put a tortilla in a pan, and spread a layer of black bean mixture, then a",
+    "layer of beef mixture.",
+    "9 Add 1 cup of cheese mixture and 1/4 cup of red enchilada sauce on",
+    "top of it.",
+    "10 Repeat this process for all tortillas.",
+    "11 Cover the pan with an aluminum foil. Bake in the oven until the",
+    "enchiladas are cooked, and the cheese is bubbling. It will take around",
+    "40 minutes.",
+    "12 Cool it down for around 15 minutes.",
+    "13 Serve it with sour cream."
+  ],
+  "time": {
+    "total": 30
+  }
+}

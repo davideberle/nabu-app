@@ -1,0 +1,73 @@
+{
+  "id": "spicy-jalapeno-eggs-and-sweet-pepper",
+  "name": "Spicy Jalapeno Eggs and Sweet Pepper",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sourdough",
+      "amount": "4 slices"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "vine tomatoes",
+      "amount": "10"
+    },
+    {
+      "item": "jalapeno",
+      "amount": "1"
+    },
+    {
+      "item": "small sweet bell pepper, yellow, orange, or red",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Basil, for garnishing",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to the high broil.",
+    "Put tomatoes slices in an oven pan. Add salt, pepper, and olive oil.",
+    "Then broil for almost 8 minutes.",
+    "Chop garlic. And add butter in it.",
+    "Spread mixture onto sourdough slices.",
+    "Cut jalapeno and sweet pepper.",
+    "When tomatoes are cooked, take the pan out of the oven and push",
+    "tomatoes to the oven pan's edges.",
+    "Break eggs in the middle, and put the sliced jalapeno and pepper",
+    "around eggs.",
+    "Add pepper and salt, and put it back for almost 6-8 minutes.",
+    "Put garlic slices of sourdough to toast.",
+    "Take a sourdough slice and top it with tomatoes, and egg.",
+    "Garnish it with basil, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

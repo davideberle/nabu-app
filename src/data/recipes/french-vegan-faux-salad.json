@@ -1,0 +1,62 @@
+{
+  "id": "french-vegan-faux-salad",
+  "name": "French Vegan Faux Salad",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Four tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of ricotta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One cup of mozzarella cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half cup basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of oregano",
+      "amount": ""
+    },
+    {
+      "item": "Half cup parmesan cheese",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of green peas",
+      "amount": ""
+    },
+    {
+      "item": "One cup of pickles",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of mayonnaise",
+      "amount": ""
+    },
+    {
+      "item": "One cup of apples",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add all the wet ingredients into the bowl.",
+    "Mix all the ingredients well.",
+    "Add the rest of the ingredients into the bowl.",
+    "Mix well until the dry ingredients are coated well.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

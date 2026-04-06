@@ -1,0 +1,78 @@
+{
+  "id": "mediterranean",
+  "name": "MEDITERRANEAN",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "nests of glass noodles",
+      "amount": "2"
+    },
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "⁄4 cup cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cups brown mushrooms",
+      "amount": ""
+    },
+    {
+      "item": "scallions",
+      "amount": "2"
+    },
+    {
+      "item": "medium romaine lettuce leaves",
+      "amount": "4"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "For the sauce:",
+      "amount": ""
+    },
+    {
+      "item": "celery stick",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "zucchini celery salt (see p.150) or sea salt",
+      "amount": "1"
+    },
+    {
+      "item": "dried tomatoes soaking water, or water",
+      "amount": "2–3 tbsp"
+    }
+  ],
+  "method": [
+    "To prepare the glass noodles, briefly boil 2 cups water in a pan, and remove the pan from the stove. When the water has stopped boiling, add the glass noodles and let them steep for 7–10 minutes. Drain the noodles when soft but not too soft. (They will continue cooking a bit.)",
+    "Peel the carrots. Thinly slice or dice the unpeeled cucumber, the tomatoes, and the mushrooms, and place them in a large bowl. Finely slice the scallions and the lettuce leaves into long, thin strips and add them to the bowl. Add the drained noodles to the bowl, and toss.",
+    "To make the sauce, place all the ingredients in a blender. Purée on a low setting so that the sauce will still be a bit chunky. If the sauce is too thick, thin it with a bit of dried tomato soaking water, or water. Pick the cilantro leaves and place them in a small bowl. Add the sesame seeds, sunflower seeds, and pine nuts, and stir.",
+    "Pour the sauce over the noodles and vegetables, and toss well to combine. Sprinkle the chopped cilantro, sesame and sunflower seeds, and pine nuts on top, and serve.",
+    "You can, of course, make a smooth sauce, too. Put all the ingredients for the sauce in a blender, and purée on the highest setting for 2–3 minutes until nice and creamy.",
+    "Personally, I prefer the chunkier version for this dish."
+  ],
+  "time": {
+    "total": 30
+  }
+}

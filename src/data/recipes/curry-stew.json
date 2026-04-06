@@ -1,0 +1,96 @@
+{
+  "id": "curry-stew",
+  "name": "Curry Stew",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small onions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "ginger, grated",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "lemongrass stalk",
+      "amount": "1"
+    },
+    {
+      "item": "curry powder",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "red bell pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "carrots, peeled and diagonally sliced",
+      "amount": "4"
+    },
+    {
+      "item": "fried tofu cubes",
+      "amount": "1 lb."
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "hot sauce",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "lime zest",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "sweet potatoes, cubed",
+      "amount": "2"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "1 ½ cups"
+    },
+    {
+      "item": "cilantro",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in your soup pot. Sauté the onion for 5 minutes.",
+    "Stir in the garlic, ginger, lemongrass, and curry powder. Stir for 5 minutes.",
+    "Add the red pepper, carrots, and tofu cubes, vegetable broth, and water. Stir",
+    "Add the soy sauce, hot sauce, bay leaf, sweet potatoes, coconut milk, and",
+    "bay leaf to the pot and bring the liquid to boil.",
+    "Lower heat to simmer and cook for 50 minutes. Garnish the stew with",
+    "cilantro.",
+    "Recipe 44: Curry Tuna and Rice Casserole"
+  ],
+  "time": {
+    "total": 60
+  }
+}

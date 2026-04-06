@@ -1,0 +1,100 @@
+{
+  "id": "curry-laksa",
+  "name": "CURRY LAKSA",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "candied rind on top and drizzle with a tiny amount of the syrup. Finish with a",
+  "ingredients": [
+    {
+      "item": "baby shallots, peeled and coarsely chopped (⅔ cup/100 g)",
+      "amount": "8"
+    },
+    {
+      "item": "garlic, peeled and roughly chopped",
+      "amount": "8 cloves"
+    },
+    {
+      "item": "1½-inch/4-cm piece fresh ginger (1 oz/30 g), peeled and sliced",
+      "amount": ""
+    },
+    {
+      "item": "large lemongrass stalk, soft white stem only, sliced (about ⅓ cup/20 g)",
+      "amount": "1"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "large dried red chiles",
+      "amount": "3"
+    },
+    {
+      "item": "sambal oelek or another savory chile paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tbsp/60 ml vegetable oil",
+      "amount": "4"
+    },
+    {
+      "item": "oz/40 g cilantro, leaves and stems (about 18 sprigs)",
+      "amount": "1½"
+    },
+    {
+      "item": "cups/1.2 liters vegetable stock",
+      "amount": "5"
+    },
+    {
+      "item": "branches laksa leaves or fresh curry leaves or a mixture of both",
+      "amount": "3"
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cups/400 ml coconut milk",
+      "amount": "1⅔"
+    },
+    {
+      "item": "cups/300 g bean sprouts",
+      "amount": "3"
+    },
+    {
+      "item": "oz/150 g haricots verts, trimmed and halved",
+      "amount": "5"
+    },
+    {
+      "item": "oz/100 g rice vermicelli",
+      "amount": "3½"
+    },
+    {
+      "item": "oz/250 g fried tofu puffs (optional)",
+      "amount": "9"
+    },
+    {
+      "item": "limes, halved salt",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the shallots, garlic, ginger, lemongrass, coriander, chiles, and sambal oelek in the bowl of a small food processor. Add half the oil and the stems of the cilantro and process to form a semismooth paste. Coarsely shred the cilantro leaves and set aside for later.",
+    "Heat the remaining 2 tablespoons oil in a saucepan over medium-low heat and fry the spice paste for 15 to 20 minutes, stirring very frequently. You want to cook it slowly without burning. Add the stock, laksa leaves, curry powder, sugar, coconut milk, and 1½ teaspoons salt. Increase the heat, bring to a gentle simmer, and leave to cook for 30 minutes.",
+    "Throw the bean sprouts into a pan of boiling water, drain at once, and refresh.",
+    "Cook the haricots verts in boiling water for 3 minutes, drain, and refresh.",
+    "Once your broth is ready, steep the rice noodles in boiling water for 3 minutes and drain. Just before serving, remove the laksa branches and discard (the leaves can stay in the soup). Add the haricots verts, noodles, and half the bean sprouts and heat through. Spoon the soup into large bowls and top with the remaining bean sprouts, the tofu puffs, and the cilantro leaves. Squeeze ½ teaspoon lime juice on top—or more, if you want—a nd throw a squeezed lime half into each bowl. Serve at once.",
+    "QUINOA PORRIDGE WITH GRILLED",
+    "TOMATOES AND GARLIC"
+  ],
+  "time": {
+    "total": 30
+  }
+}

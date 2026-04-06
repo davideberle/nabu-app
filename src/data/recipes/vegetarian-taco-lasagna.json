@@ -1,0 +1,62 @@
+{
+  "id": "vegetarian-taco-lasagna",
+  "name": "Vegetarian Taco Lasagna",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Pico de Galo, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mix vegetable, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Shredded chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Mix cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the mix vegetables in a pan and cook for few minutes.",
+    "Add all the spices and refried beans.",
+    "Add salt and pepper.",
+    "Once cooked add the mixture into the tortillas.",
+    "Add Pico de Galo on top.",
+    "Roll and place it in a baking tray.",
+    "Add cheese on top and bake.",
+    "Bake for five minutes until cheese is melted.",
+    "Add some fresh cilantro leaves on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

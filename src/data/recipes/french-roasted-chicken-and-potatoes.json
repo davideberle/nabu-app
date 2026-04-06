@@ -1,0 +1,87 @@
+{
+  "id": "french-roasted-chicken-and-potatoes",
+  "name": "French Roasted Chicken and Potatoes",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two cups of potato slices",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of red wine",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "One cup of carrot",
+      "amount": ""
+    },
+    {
+      "item": "One onions",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chicken pieces",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of garlic paste",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Chopped parsley",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the potato slices and chicken into the bowl.",
+    "Season the ingredients with pepper and salt.",
+    "Combine the red wine, bay leaf and thyme.",
+    "Cover the potatoes and chicken in the marinate for thirty minutes.",
+    "Take a large baking pan.",
+    "Add the unsalted butter into the pan.",
+    "Add the marinated ingredients into it.",
+    "Add the rest of the ingredients into the mixture.",
+    "Roast the dish for thirty minutes and then dish out.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

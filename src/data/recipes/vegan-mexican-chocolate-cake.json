@@ -1,0 +1,66 @@
+{
+  "id": "vegan-mexican-chocolate-cake",
+  "name": "Vegan Mexican Chocolate Cake",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of flour",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "of cocoa",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "3/4 tsp."
+    },
+    {
+      "item": "white vinegar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "vanilla",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "5 tbsp."
+    },
+    {
+      "item": "of powdered sugar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of cold water",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F.",
+    "Grease a cake pan.",
+    "Take a bowl, and combine sugar, flour, cocoa, cinnamon, baking",
+    "soda, and cayenne.",
+    "Mix vanilla, oil, vinegar, and water.",
+    "Put the mixture in the cake pan, then bake for almost 30 minutes.",
+    "Sprinkle powdered sugar, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

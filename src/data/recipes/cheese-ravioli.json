@@ -2,85 +2,94 @@
   "id": "cheese-ravioli",
   "name": "Cheese Ravioli",
   "source": {
-    "cookbook": "Zagami Family Cookbook",
-    "author": "Zagami Family",
-    "chapter": "Main Dishes"
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
   },
   "ingredients": [
     {
-      "item": "shredded mozzarella",
-      "amount": "1 cup"
+      "item": "To make 3/4 lb. of noodles:",
+      "amount": ""
     },
     {
-      "item": "ricotta",
-      "amount": "1 cup"
-    },
-    {
-      "item": "grated pecorino or parmesan cheese",
-      "amount": "¼ cup"
-    },
-    {
-      "item": "parsley",
-      "amount": "¼ cup"
-    },
-    {
-      "item": "beaten egg",
+      "item": "to 1-1/2 cups flour",
       "amount": "1"
     },
     {
-      "item": "salt",
-      "amount": "1 t"
-    },
-    {
-      "item": "pepper",
-      "amount": "1 t"
-    },
-    {
-      "item": "can of San Marzano tomatoes plus one can water",
-      "amount": "8 oz"
-    },
-    {
-      "item": "clove crushed garlic",
+      "item": "egg",
       "amount": "1"
     },
     {
-      "item": "salt",
-      "amount": "1 t"
-    },
-    {
-      "item": "pepper",
-      "amount": "1 t"
-    },
-    {
-      "item": "fresh torn basil leaves",
-      "amount": "4-5"
+      "item": "egg white",
+      "amount": "1"
     },
     {
       "item": "olive oil",
-      "amount": "2 T"
+      "amount": "1 tbsp."
     },
     {
-      "item": "00 flour plus extra to handle dough",
-      "amount": "2 cups"
+      "item": "salt",
+      "amount": "1 tsp."
     },
     {
-      "item": "eggs",
-      "amount": "2"
+      "item": "Few drops of water",
+      "amount": ""
+    },
+    {
+      "item": "Cheese filling:",
+      "amount": ""
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "1 1/2 lb."
+    },
+    {
+      "item": "Romano cheese, grated",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "onion, grated",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "egg yolks",
+      "amount": "3"
+    },
+    {
+      "item": "salt",
+      "amount": "1 1/2 tsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
     }
   ],
   "method": [
-    "Crack eggs into the hole and mix the egg part with your hands. Scoop the flour towards the egg mixture and slowly mix, it’s a little tricky but practice controlling the eggs so they don’t spread across your work space. Knead the flour into the eggs until well mixed and it starts to form a ball, kneading and turning the dough as you would when you make bread. The perfect dough will be easily pliable and a little bit soft. If your dough seems too stiff you can add a little water to make it easier to knead. Form a ball, cover with a small bowl and let rest.",
-    "In the meantime, set up your pasta machine and flour a large cutting board. After 5 minutes remove dough from bowl and break ball in half, flattening the half with your hands. Flour both sides to avoid sticking, and run the dough through pasta machine to make it flat, start at 6-7 and go down to 3. Sprinkle dough strips with flour on both sides and lay on a cutting board. Make two flat long pieces roughly the same size. Scoop 1 T of cheese filling two inches apart, and continue down the strip. Take your top piece of pasta and lay over the strip and cheese. With fingers dipped in water, form the center of the dough around the cheese. With a ravioli cutter center the middle cheese part and press down. Always sprinkle flour on your work surface otherwise it could stick and become messy. Lift with a spatula and transfer to a floured surface. Line up your pasta and let it dry. You can store the dried ravioli in an airtight container in your freezer, if you would like to make it for a later time.",
-    "In a frying pan on medium heat, add 2 T olive oil and crushed garlic clove, saute for a minute. Add, tomatoes, water, salt, pepper and 4 torn basil leaves. Let simmer for 20 minutes. Now, boil a pot of salted water, add ravioli and cook until they rise to the surface. Remove carefully and transfer to simmering sauce.",
-    "Mix and manticare a couple times. Arrange ravioli and sprinkle grated parmesan on top, and garnish with a basil leaf. Serves 2. Serving suggestion: bruschetta and salad! Olé"
+    "Pour flour in a large mixing bowl or in a pile on pastry board; create a well in center of flour. Place egg, egg white,",
+    "oil and salt in the well; mix with a fork or fingers until dough can be gathered into a ball. Moisten any remaining",
+    "dry pieces of flour with drops of water; press into the ball.",
+    "In a medium bowl, combine ricotta cheese, Romano cheese, onion, egg yolks and salt. Carefully stir together until",
+    "well mixed. Set aside until dough is rolled out.",
+    "Separate dough into 4 pieces; roll one piece as thin as possible. Cover rolled pasta with damp towel to prevent",
+    "drying. Roll out second piece of dough to same size and shape; place 1 tbsp. cheese mixture every 2 inches on the",
+    "pasta, across and down.",
+    "Dip pastry brush or index finger in water. Make vertical and horizontal lines between the mounds of filling. Use",
+    "enough water to wet lines evenly, as water acts to bond finished ravioli together.",
+    "Carefully spread second sheet of rolled-out pasta on top of first, pressing down firmly around filling along wet",
+    "lines. Using a ravioli cutter, pastry wheel or small knife, cut pasta into squares along wetted lines. Separate mounds",
+    "and set them aside on waxed paper.",
+    "Roll out and prepare other portions of dough similarly.",
+    "To cook, drop pasta into 6 to 8 quarts rapidly boiling, salted water and stir gently with wooden spoon to keep pasta",
+    "from sticking to one another or going to the bottom of the pan. Boil about 8 minutes, until tender. Drain thoroughly",
+    "in large sieve.",
+    "Serve with tomato sauce or add butter and freshly-grated Romano cheese and gently stir all together immediately",
+    "before serving.",
+    "(15) Roasted Pepper Pasta",
+    "Roasted peppers and garlic are the perfect match for a pasta dish, because the roasted pepper's strong flavor can",
+    "hold its own against the pungency of the raw garlic. The result is a creamy, delicious sauce with a hint of sweetness",
+    "that will leave your mouth watering for more.",
+    "Yield: 5"
   ],
   "time": {
-    "total": 25
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  },
-  "image": "/recipes/cheese-ravioli.jpg"
+    "total": 40
+  }
 }

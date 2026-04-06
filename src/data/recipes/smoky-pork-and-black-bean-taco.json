@@ -1,0 +1,67 @@
+{
+  "id": "smoky-pork-and-black-bean-taco",
+  "name": "Smoky Pork and Black Bean Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chopped red onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Shredded ice berg lettuce, half",
+      "amount": ""
+    },
+    {
+      "item": "Minced pork meat, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Barbeque sauce, five tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Black beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Ground cumin and paprika two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Passata, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chopped coriander, a bunch",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large frying pan, add the onion.",
+    "Cook for five minutes until softened.",
+    "Sprinkle over the spices and cook for a while.",
+    "Add the mince, and add the passata and barbecue sauce into the pan.",
+    "Increase the heat and add the beans.",
+    "Use the pork and bean mix to fill the tacos.",
+    "Top with slices of avocado, shredded iceberg lettuce and sour cream."
+  ],
+  "time": {
+    "total": 15
+  }
+}

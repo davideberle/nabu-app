@@ -1,0 +1,75 @@
+{
+  "id": "34-mini-shell-bacon-and-pea-pasta",
+  "name": "(34)     Mini Shell Bacon and Pea Pasta",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "mini shell pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "smoked streaky bacon or pancetta, diced",
+      "amount": "2-3 slices"
+    },
+    {
+      "item": "Salt and freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "onion, finely cut",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "frozen peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "water or chicken broth",
+      "amount": "4 1/2 cups"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "heaped tbsp. mascarpone cheese",
+      "amount": "2"
+    },
+    {
+      "item": "fresh dill, finely cut",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Parmesan cheese, to serve",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a skillet, gently cook bacon for 2-3 minutes, stirring. Add in pasta, onion, garlic, olive oil, salt, pepper, peas and",
+    "water.",
+    "Over medium heat, bring to a boil. Boil, frequently stirring until pasta is al dente and water has nearly evaporated,",
+    "about 15 minutes. Add the mascarpone cheese and dill and stir.",
+    "Serve with Parmesan.",
+    "(35) Chicken-Macaroni Supreme",
+    "A fun, easy, and healthy recipe for a macaroni and cheese dish.",
+    "Delicious, even the kids will love!",
+    "Many food recipes call for chicken or bacon. You can keep this recipe vegetarian by using vegetarian cheese and",
+    "adding vegetables such as broccoli to the mix.",
+    "This recipe is great if you're looking for a quick dinner or a meal that both adults and children enjoy.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 30
+  }
+}

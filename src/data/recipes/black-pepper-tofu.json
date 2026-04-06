@@ -1,0 +1,77 @@
+{
+  "id": "black-pepper-tofu",
+  "name": "Black pepper tofu",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "point is spiciness so don’t go too far.",
+  "ingredients": [
+    {
+      "item": "firm tofu vegetable oil for frying cornstarch to dust the tofu",
+      "amount": "¾ lbs"
+    },
+    {
+      "item": "butter",
+      "amount": "11 tbsp"
+    },
+    {
+      "item": "small shallots (12 oz in total), thinly sliced",
+      "amount": "12"
+    },
+    {
+      "item": "fresh red chiles (fairly mild ones), thinly sliced",
+      "amount": "8"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "12"
+    },
+    {
+      "item": "chopped fresh ginger",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sweet soy sauce (kecap manis)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "light soy sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dark soy sauce",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coarsely crushed black peppercorns (use a mortar and pestle or a spice grinder)",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "small and thin green onions, cut into",
+      "amount": "16"
+    },
+    {
+      "item": "¼-inch segments",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Start with the tofu. Pour enough oil into a large frying pan or wok to come",
+    "¼ inch up the sides and heat. Cut the tofu into large cubes, about 1 x 1 inch. Toss them in some cornstarch and shake off the excess, then add to the hot oil. (You’ll need to fry the tofu pieces in a few batches so they don’t stew in the pan.) Fry, turning them around as you go, until they are golden all over and have a thin crust. As they are cooked, transfer them onto paper towels.",
+    "Remove the oil and any sediment from the pan, then put the butter inside and melt it. Add the shallots, chiles, garlic and ginger. Sauté on low to medium heat for about 15 minutes, stirring occasionally, until the ingredients have turned shiny and are totally soft. Next, add the soy sauces and sugar and stir, then add the crushed black pepper.",
+    "Add the tofu to warm it up in the sauce for about a minute.",
+    "Finally, stir in the green onions. Serve hot, with steamed rice.",
+    "46 | Funny Onions",
+    "This soup is sweetly delicious and relatively easy to prepare, if you don’t mind a bit of garlic peeling. The harissa adds work but you could substitute a good commercial variety. Still, this one makes a fantastic condiment to keep in your fridge and add to roasted eggplant, vegetable stews and many rice and couscous dishes.",
+    "Garlic soup and harissa"
+  ],
+  "time": {
+    "total": 30
+  }
+}

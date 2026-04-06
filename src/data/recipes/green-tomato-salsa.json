@@ -1,0 +1,49 @@
+{
+  "id": "green-tomato-salsa",
+  "name": "Green Tomato Salsa",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "diced white onion",
+      "amount": "½"
+    },
+    {
+      "item": "green tomatoes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "thinly sliced Serrano peppers",
+      "amount": "1-2"
+    },
+    {
+      "item": "of chopped cilantro",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of salt",
+      "amount": "1/2 tsp."
+    }
+  ],
+  "method": [
+    "1 Cut tomatoes into quarters. Place them on a baking sheet having a",
+    "2 Put the baking sheet in the oven. Broil them for 5 minutes.",
+    "3 Meanwhile, put the diced onions in a bowl. Fill it with cold water,",
+    "and soak for 5-10 minutes.",
+    "4 Put the broiled tomatoes to a food processor, and break into pieces.",
+    "5 Remove water from onion and mix it with peppers, salt, lime juice,",
+    "and cilantro. Then pulse it again until having the desired texture.",
+    "6 Season it with more lime juice and salt if needed.",
+    "7 Serve immediately, put it in the fridge for 1-2 hours for additional",
+    "flavor."
+  ],
+  "time": {
+    "total": 30
+  }
+}

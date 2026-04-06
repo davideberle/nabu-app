@@ -1,0 +1,85 @@
+{
+  "id": "mexican-baked-eggs",
+  "name": "Mexican Baked Eggs",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "chili flakes",
+      "amount": "1/3 tsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "kidney beans",
+      "amount": "450g"
+    },
+    {
+      "item": "large red capsicum, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, diced",
+      "amount": "450g"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "water",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "coriander",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "avocado, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "Salt, to season",
+      "amount": ""
+    },
+    {
+      "item": "Pepper, to season",
+      "amount": ""
+    },
+    {
+      "item": "Lime wedges, Sour cream, and tortillas, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180°C. Take a pan and heat oil over the medium",
+    "Put chili, onion, paprika, salt, cumin, and pepper, and cook for 5",
+    "minutes.",
+    "Add kidney beans, capsicum, water, and tomatoes in it.",
+    "After bringing it to boil, put the heat down, and cook for almost 10",
+    "minutes.",
+    "Put the mixture into four dishes. Fill them with each bean mixture,",
+    "and put the egg.",
+    "Bake for 15-16 minutes.",
+    "Serve with sour cream, coriander, lime, avocado, and tortillas."
+  ],
+  "time": {
+    "total": 30
+  }
+}

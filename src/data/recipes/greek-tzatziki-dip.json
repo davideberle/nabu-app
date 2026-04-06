@@ -1,0 +1,50 @@
+{
+  "id": "greek-tzatziki-dip",
+  "name": "Greek Tzatziki Dip",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One and a half cups of Greek yoghurt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped fresh dill",
+      "amount": ""
+    },
+    {
+      "item": "Half chopped cucumber",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoons of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of white vinegar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the dried ingredients into the bowl.",
+    "Mix well and refrigerate for ten minutes.",
+    "Add the wet ingredients into the bowl.",
+    "Mix well.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 45
+  }
+}

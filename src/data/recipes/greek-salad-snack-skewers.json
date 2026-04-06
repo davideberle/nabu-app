@@ -1,0 +1,67 @@
+{
+  "id": "greek-salad-snack-skewers",
+  "name": "Greek Salad Snack Skewers",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes",
+      "amount": "12"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "12"
+    },
+    {
+      "item": "fresh parsley",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Flaky sea salt",
+      "amount": ""
+    },
+    {
+      "item": "big block of feta",
+      "amount": "1"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fresh dill",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "To make the feta marinade, mix the feta, canola oil, lime juice, cloves,",
+    "dill, and tarragon in a small cup.",
+    "Add salt and pepper, then mix in the sauce until the cheese is fully",
+    "wrapped.",
+    "Allow for fifteen minutes of resting time.",
+    "Layer feta, artichokes, grape tomatoes, and cucumber onto small forks",
+    "to make skewers."
+  ],
+  "time": {
+    "total": 25
+  }
+}

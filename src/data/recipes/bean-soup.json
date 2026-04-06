@@ -1,100 +1,31 @@
 {
   "id": "bean-soup",
-  "name": "Bean Soup",
+  "name": "BEAN SOUP",
   "source": {
-    "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various",
-    "chapter": "More Than Greek Salad"
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
   },
   "servings": "serves 6",
-  "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
-  },
   "ingredients": [
     {
-      "item": "navy beans",
-      "amount": "1 lb"
+      "item": "carrots / 2 celery stalks I 2 medium onions / 2 cloves of garlic I J ~ quarts chicken or vegetable broth, preferably",
+      "amount": "2"
     },
     {
-      "item": "olive oil",
-      "amount": "½ cup"
-    },
-    {
-      "item": "chopped onion",
-      "amount": "2 cups"
-    },
-    {
-      "item": "minced garlic, optional",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "large carrot, chopped",
-      "amount": "1"
-    },
-    {
-      "item": "celery, chopped",
-      "amount": "2 stalks"
-    },
-    {
-      "item": "one 6-ounce can tomato puree",
-      "amount": ""
-    },
-    {
-      "item": "quarts water",
-      "amount": "3"
-    },
-    {
-      "item": "chopped parsley",
-      "amount": "1 cup"
-    },
-    {
-      "item": "salt and pepper to taste",
-      "amount": ""
-    },
-    {
-      "item": "Soak beans in hot water to cover for 30 minutes.",
-      "amount": ""
-    },
-    {
-      "item": "Sauté onion, garlic, carrot, and celery in oil until limp.",
-      "amount": ""
-    },
-    {
-      "item": "Add tomato puree and water.",
-      "amount": ""
-    },
-    {
-      "item": "Bring to a boil.",
-      "amount": ""
-    },
-    {
-      "item": "Add drained beans and salt and pepper.",
-      "amount": ""
-    },
-    {
-      "item": "Simmer for about 2 hours, or until beans are tender.",
-      "amount": ""
-    },
-    {
-      "item": "Add parsley after 1¾ hours.",
-      "amount": ""
+      "item": "minutes with the lid on",
+      "amount": "10"
     }
   ],
   "method": [
-    "Soak beans in hot water to cover for 30 minutes.",
-    "Sauté onion, garlic, carrot, and celery in oil until limp.",
-    "Add tomato puree and water.",
-    "Bring to a boil.",
-    "Add drained beans and salt and pepper.",
-    "Simmer for about 2 hours, or until beans are tender.",
-    "Add parsley after 1¾ hours."
+    "Add the spinach to t he pan and cook for a further 30 seconds, then remove the pan from the heat. If",
+    "you like your soup a little less chunky, you can take out half of it, blend it using an immersion blender or",
+    "liquidizer, then stir it back into the pan • Season carefully with salt and pepper. Ladle the soup into",
+    "bowls and finish with a drizzle of extra virgin olive oil. See page 141 for some great soup topping",
+    "What a classic soup! Usually eaten hot, it's also surprisingly",
+    "delicious eaten refrigerator-cold on a summe r's day with a",
+    "squeeze of lemon juice and a dollop of natural yogurt."
   ],
-  "image": "/recipes/bean-soup.jpg",
-  "category": {
-    "dish_type": [
-      "soup"
-    ]
+  "time": {
+    "total": 30
   }
 }

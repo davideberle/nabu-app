@@ -1,0 +1,81 @@
+{
+  "id": "traditional-greek-lentil-soup",
+  "name": "Traditional Greek Lentil Soup",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "rosemary",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "1-quart water",
+      "amount": ""
+    },
+    {
+      "item": "oregano",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "medium onion",
+      "amount": "1"
+    },
+    {
+      "item": "large carrot",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "brown lentils",
+      "amount": "8 ounces"
+    }
+  ],
+  "method": [
+    "In a medium skillet, position lentils and enough water to make by 1",
+    "Bring a pot of water to a boil, then simmer for ten minutes before",
+    "draining.",
+    "In a small saucepan, heat the olive oil.",
+    "Cover and mix in the garlic, carrot, and onion for about five minutes,",
+    "or until the onion has hardened and become transparent.",
+    "In a large mixing bowl, combine the lentils, 1-quart water, marjoram,",
+    "thyme, and garlic cloves.",
+    "Season with salt and pepper after adding the tomato sauce.",
+    "Cover and cook, stirring periodically, for thirty minutes, or until the",
+    "lentils have weakened.",
+    "Add 1 teaspoon vegetable oil and 1 teaspoon white wine vinegar to",
+    "Chapter 7: Greek Desserts"
+  ],
+  "time": {
+    "total": 60
+  }
+}

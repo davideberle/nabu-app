@@ -1,0 +1,107 @@
+{
+  "id": "hot-dog-and-hamburger-buns",
+  "name": "Hot Dog and Hamburger Buns",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "cooking spray",
+      "amount": "1 1/4 cup"
+    },
+    {
+      "item": "lukewarm milk",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "+ 1 tsp sugar granules, divided",
+      "amount": ""
+    },
+    {
+      "item": "(0.25 oz.) active dry yeast package",
+      "amount": ""
+    },
+    {
+      "item": "c. 5",
+      "amount": ""
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "a quarter cup",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "3"
+    },
+    {
+      "item": "softened butter",
+      "amount": ""
+    },
+    {
+      "item": "Brushing with egg wash",
+      "amount": ""
+    },
+    {
+      "item": "Toppings: sesame seeds or poppy seeds",
+      "amount": ""
+    },
+    {
+      "item": "(optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Using nonstick cooking spray, coat a large mixing bowl.",
+    "Combine lukewarm milk and 1 teaspoon sugar in a glass",
+    "measuring cup or small bowl. Sprinkle yeast on top and set",
+    "aside about 5 minutes, or until frothy. To dissolve the yeast, stir",
+    "it in.",
+    "Combine flour, remaining tablespoon sugar, and salt in the bowl",
+    "of a stand mixer equipped with a dough hook. In a mixing dish,",
+    "combine the yeast and water. While the mixer is running, beat",
+    "on medium speed and add butter 1 tablespoon at a time, making",
+    "sure each piece is well incorporated before adding the next.",
+    "Continue mixing for at least 5 minutes or until a smooth dough",
+    "develops—place dough in a greased mixing basin. Cover with a",
+    "kitchen towel and set aside for 1 hour to double in size.",
+    "Deflate the dough by punching it down and turning it out onto a",
+    "lightly floured board. Divide the mixture into 12 equal portions.",
+    "Using parchment paper, line a large baking sheet.",
+    "Roll each piece of dough into a ball and flatten it into a 3\" circle",
+    "to make hamburger buns. Place about 12\" apart on a baking",
+    "sheet that has been prepped.",
+    "To create hot dog buns, stretch each piece of dough into a 4 12\"",
+    "long, 2\" broad cylinder. Place about 12\" apart on a baking sheet",
+    "that has been prepped.",
+    "Cover the dough and set it for another 45 minutes to rise.",
+    "Preheat the oven to 400 degrees Fahrenheit. Brush the buns with",
+    "egg wash and, if preferred, sprinkle with sesame seeds or poppy",
+    "seeds.",
+    "Bake for 20 minutes, or until brown."
+  ],
+  "time": {
+    "total": 40
+  }
+}

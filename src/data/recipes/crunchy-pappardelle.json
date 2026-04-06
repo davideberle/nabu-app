@@ -1,0 +1,75 @@
+{
+  "id": "crunchy-pappardelle",
+  "name": "Crunchy pappardelle",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "easily so I add some of the pasta’s cooking liquid before serving; make sure it is quite runny.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "button mushrooms, halved",
+      "amount": "½ cups"
+    },
+    {
+      "item": "white wine",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "thyme sprigs, leaves picked and chopped",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "³ cup heavy cream salt and black pepper grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "panko",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "broccolini",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "dried pappardelle",
+      "amount": "9 oz"
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water and a small pot of salted water to a boil. Heat the olive oil over medium-high heat in a large saucepan and sauté the mushrooms until they start taking on color, stirring occasionally. Add the wine, bay leaf, thyme and sugar. Bring to the boil and reduce the liquid by two-thirds.",
+    "Add the cream and stir to mix. Taste and add plenty of salt and pepper. Keep warm.",
+    "Mix together the lemon zest, garlic and parsley. In a pan over medium heat, toast the panko until golden, stirring occasionally.",
+    "Pick any leaves from the broccolini, then cut into 2",
+    "½-inch-long pieces (stalks and florets). If the stalks are thick, cut them along the center in half or into quarters. Blanch in the small pot of boiling water for 2 minutes and drain.",
+    "Add the pasta to the large pot of boiling water. When the pasta is just ready, add the broccolini to the cream sauce to reheat. Drain the pappardelle, keeping some of the cooking liquid, and stir with the cream sauce; add half of the parsley mix. If the sauce seems dry, add some of the reserved cooking liquid.",
+    "Transfer the pasta to a serving bowl. Stir the rest of the parsley mix into the panko and sprinkle generously over the pappardelle, then serve immediately.",
+    "254 | Pasta, Polenta, Couscous",
+    "I put to good use here my grandmother’s fried zucchini, her signature Passover dish. They are as beautiful on their own as they are in this salad (pictured on page 256), which makes ideal picnic grub. The pasta I’ve used is strozzapreti, which literally means “priest choker”! Feel free to substitute another interesting short pasta shape.",
+    "Pasta and fried zucchini salad"
+  ],
+  "time": {
+    "total": 30
+  }
+}

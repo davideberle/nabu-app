@@ -1,0 +1,50 @@
+{
+  "id": "french-cheese-souffl",
+  "name": "French Cheese Soufflé",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Eight eggs",
+      "amount": ""
+    },
+    {
+      "item": "Four drops of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of milk",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "Five ounces of gruyere cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "Five tablespoon of butter",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients into the bowl.",
+    "Mix all the ingredients well.",
+    "Pour the mixture into a baking dish.",
+    "Bake the dish for twenty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

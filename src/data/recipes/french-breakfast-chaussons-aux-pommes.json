@@ -1,0 +1,61 @@
+{
+  "id": "french-breakfast-chaussons-aux-pommes",
+  "name": "French Breakfast Chaussons Aux Pommes",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half cup of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of sugar",
+      "amount": ""
+    },
+    {
+      "item": "One cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "Five tablespoon of butter",
+      "amount": ""
+    },
+    {
+      "item": "One cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "One cup of apples",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a saucepan and add the water in it.",
+    "Add the milk, butter, sugar, cream, vanilla extract and salt into it.",
+    "Boil the whole mixture.",
+    "Add the flour into it and mix well.",
+    "Cook the mixture for two minutes.",
+    "Remove it when the dough is formed.",
+    "Transfer the dough into a bowl.",
+    "Add the eggs into it.",
+    "Best the mixture until dough becomes smooth.",
+    "Make the puffs of desired shape.",
+    "Add the chopped apples in between the puffs.",
+    "Bake it for twenty minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

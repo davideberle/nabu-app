@@ -1,0 +1,54 @@
+{
+  "id": "greek-orzo-pasta-salad-with-vegan-feta",
+  "name": "Greek Orzo Pasta Salad with Vegan Feta",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One chopped red onion",
+      "amount": ""
+    },
+    {
+      "item": "Eight ounces of orzo pasta",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of Kalamata olives",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of vegan cheese",
+      "amount": ""
+    },
+    {
+      "item": "One chopped cucumber",
+      "amount": ""
+    },
+    {
+      "item": "One cup of lemon dressing",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a saucepan and add the water in it.",
+    "Boil the water and add the orzo pasta into it.",
+    "Drain the orzo pasta when done.",
+    "Add the rest of the ingredients into the pasta.",
+    "Mix everything well.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "egg-burritos",
+  "name": "Egg Burritos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "eggs",
+      "amount": "12"
+    },
+    {
+      "item": "chopped bacon strips",
+      "amount": "12"
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "flour tortillas (6 inches)",
+      "amount": "12"
+    },
+    {
+      "item": "pepper",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "cheddar cheese",
+      "amount": "1 1/3 cups"
+    },
+    {
+      "item": "thinly sliced green onions",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Take a skillet, and cook in it the bacon until it is crisp.",
+    "Whisk together salt, eggs, and pepper.",
+    "Over the medium heat, cook egg mixture in a skillet. Stir",
+    "continuously till the eggs are cooked, and then remove the skillet",
+    "from heat.",
+    "Pour 1/4 cup of egg mixture on each tortilla, and sprinkle with bacon,",
+    "cheese, and green onions.",
+    "Make burritos, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

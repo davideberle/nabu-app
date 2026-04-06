@@ -1,0 +1,75 @@
+{
+  "id": "chorizo-and-potato-breakfast-taco",
+  "name": "Chorizo and Potato Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Mexican chorizo, half pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, four",
+      "amount": ""
+    },
+    {
+      "item": "Corn tortillas, four",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Serrano pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Red bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, as required",
+      "amount": ""
+    },
+    {
+      "item": "Potatoes, two",
+      "amount": ""
+    },
+    {
+      "item": "Monetary Jack cheese, half cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add onion and cook until they turn soft.",
+    "Then add the chorizo and potatoes.",
+    "Let them cook properly for fifteen minutes.",
+    "Add the rest of the ingredients including the cheese.",
+    "Arrange all the mixture on the tortillas.",
+    "Garnish it with a little cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "tomato-semolina-and-cilantro-soup",
+  "name": "Tomato, semolina and cilantro soup",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "Cohen, whose Moroccan grandmother made a semolina-based soup (as did my Italian grandmother). Here’s",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "medium onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalk, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "finely chopped thyme",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cilantro leaves, roughly chopped",
+      "amount": "½ cups"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "medium tomatoes (1 lb in total), peeled and finely chopped salt and black pepper about 6",
+      "amount": "5"
+    },
+    {
+      "item": "water",
+      "amount": "½ cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "semolina",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "Greek yogurt (optional)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Heat up the olive oil in a medium pot. Add the onion, celery, ground coriander, ground cumin, paprika, thyme and half the chopped cilantro. Sauté on medium heat until the onion is golden and soft. Add the tomato paste and stir for a minute. Add the tomatoes and some salt and pepper, and cook for a few more minutes. Add the water and sugar and bring to the boil, then simmer for 20 minutes.",
+    "Next, add the semolina to the simmering soup in a slow stream as you whisk vigorously. Keep on cooking for 10 minutes, whisking occasionally to avoid lumps (don’t worry if you do get some after all; they will turn into little dumplings with an appealing texture).",
+    "Before serving, add more water if the soup is too thick for your liking. Taste and add more salt and pepper and the lemon juice, if needed. Ladle into bowls, spoon yogurt on top, if you like, and garnish with the remaining chopped cilantro.",
+    "The purpose of this salad (pictured on pages 132 to 133) is to make use of as many as possible of the infinite types of tomatoes that are available now. Some I cook a little, others more, and some I leave completely raw, to maximize the “tomatoey” effect with diverse flavors and textures. Choose whatever tomato selection you can get; the one below is just a suggestion.",
+    "Instead of the Sardinian fregola (available from kalustyans.com), you can use Arab mograbiah (from Middle",
+    "Eastern grocers) or Israeli couscous. Or just leave out the fregola and double the quantity of couscous."
+  ],
+  "time": {
+    "total": 30
+  }
+}

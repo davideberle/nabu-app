@@ -1,0 +1,82 @@
+{
+  "id": "greek-vegetarian-stuffed-zucchini",
+  "name": "Greek Vegetarian Stuffed Zucchini",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "8"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cooked quinoa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "diced plum tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "medium zucchini",
+      "amount": "4"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "¾ teaspoon"
+    },
+    {
+      "item": "chopped fresh oregano",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "garlic",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground pepper",
+      "amount": "½ teaspoon"
+    }
+  ],
+  "method": [
+    "Heat the oven to 350 degrees F.",
+    "Break each zucchini in quarter lengthwise, use a fork, scrape much of",
+    "the skin, preserving ½-inch-thick cores.",
+    "Chop quarter the flesh thinly sliced; waste the remainder flesh or save",
+    "it for some purpose.",
+    "Cover a baking dish with the zucchini pellets; brush with salt and",
+    "black pepper.",
+    "Bake for 15 to 20 minutes before the zucchini begins to soften.",
+    "In the meantime, over a moderate flame, heat the oil in a large skillet.",
+    "Add the sliced zucchini, onions, cloves, paprika, and two tablespoons",
+    "of oregano; boil for approximately 3 minutes, stirring regularly, until",
+    "the onion begins to soften.",
+    "Stir in the quinoa, olives, tomatoes, and feta, and extract from the",
+    "heat. Split the zucchini cores equally.",
+    "Turn to broil the oven and put a rack 8 inches away from the heat.",
+    "Broil the cores of packed zucchini till the edges are finely",
+    "browned for four to six minutes.",
+    "Stir with 1 teaspoon of the leftover oregano."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "duck-curry",
+  "name": "Duck Curry",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "duck breast fillet (skinless), sliced into strips",
+      "amount": "12 oz."
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "bell peppers, sliced into smaller pieces",
+      "amount": "2"
+    },
+    {
+      "item": "eggplant, sliced into cubes",
+      "amount": "1 lb."
+    },
+    {
+      "item": "low-sodium chicken broth",
+      "amount": "1 cup"
+    },
+    {
+      "item": "light coconut milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "green curry paste",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "brown sugar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "freshly squeezed lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "fish sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "fresh basil leaves, sliced",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Pour the oil into a prepared pan over medium heat.",
+    "Once hot, add the duck and cook for 3 minutes.",
+    "Transfer the duck to a plate and keep warm.",
+    "In the same pan, add the bell peppers and eggplant.",
+    "Pour in the rest of the ingredients except the fresh basil leaves.",
+    "Bring to a boil.",
+    "Reduce heat and simmer for 10 minutes.",
+    "Add the duck back to the pan.",
+    "Coat with the sauce.",
+    "Cook for 1 minute.",
+    "Garnish with the basil leaves and serve.",
+    "Recipe 48: Duck Curry Lust",
+    "Duck is among the sought-after Thai fowl to have it at dinner table. Duck is",
+    "a secret ingredient to make splendid Thai curry. Made it with perfection, the"
+  ],
+  "time": {
+    "total": 35
+  }
+}

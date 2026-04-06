@@ -1,0 +1,72 @@
+{
+  "id": "oatmeal-blueberry-bread",
+  "name": "Oatmeal Blueberry Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 9",
+  "ingredients": [
+    {
+      "item": "• 1 cup sugar • 2 cups all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "• 2 tbsp. baking powder",
+      "amount": ""
+    },
+    {
+      "item": "• a pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "• 1-gallon Greek yogurt",
+      "amount": ""
+    },
+    {
+      "item": "• two eggs",
+      "amount": ""
+    },
+    {
+      "item": "• 12 cups 1 stick butter, melted and",
+      "amount": ""
+    },
+    {
+      "item": "gently chilled",
+      "amount": ""
+    },
+    {
+      "item": "• 1 teaspoon vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "• 12 cups of oats",
+      "amount": ""
+    },
+    {
+      "item": "• 1 cup blueberries, fresh",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "set the oven to 370 degrees Fahrenheit. Spray or gently grease a",
+    "9-inch loaf pan with baking spray or canola oil, line with",
+    "parchment paper, or lightly butter the pan and sprinkle with",
+    "flour.",
+    "Combine the flour, sugar, baking powder, and salt in a large",
+    "mixing basin. Combine the yogurt, eggs, melted butter, and",
+    "vanilla in a separate dish with a fork, then stir into the dry",
+    "ingredients. Combine in the oats, then mix in the blueberries",
+    "carefully, reserving a few to sprinkle across the top of the batter.",
+    "It's best if the batter is thick and a bit sticky.",
+    "Scrape the batter into the loaf pan using a spatula. Bake for 45-",
+    "55 minutes, or until golden brown and a toothpick inserted into",
+    "the center of the bread comes out clean. Erase from the oven and",
+    "cool for 10 minutes in the pan before transferring to a wire rack",
+    "to cool completely. Warm or at room temperature is OK. After",
+    "the bread has cooled thoroughly, it will be firmer."
+  ],
+  "time": {
+    "total": 40
+  }
+}

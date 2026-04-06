@@ -1,0 +1,53 @@
+{
+  "id": "fish-tacos-with-chili-cream-and-jalape-o-salsa",
+  "name": "Fish Tacos with Chili Cream and Jalapeño Salsa",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "Finger fish, one pack",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chili cream, ten tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Jalapeno salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the finger fish according to the pack instructions.",
+    "Heat the tacos.",
+    "Add the finger fish, chili cream, jalapeno salsa, avocado, and cilantro",
+    "on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 12
+  }
+}

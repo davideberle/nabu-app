@@ -1,0 +1,81 @@
+{
+  "id": "breakfast-taco-with-avocado-cream",
+  "name": "Breakfast Taco with Avocado Cream",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Smoked paprika, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, eight",
+      "amount": ""
+    },
+    {
+      "item": "Corn tortillas, eight",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Black beans, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Mushrooms, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Red bell pepper, one",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado slices, as required",
+      "amount": ""
+    },
+    {
+      "item": "Salsa, as required",
+      "amount": ""
+    },
+    {
+      "item": "Jalapeno slices, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Monetary Jack cheese, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Avocado cream, one cup",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the eggs; add the ingredients into the mixture.",
+    "Arrange the egg mixture on the tortillas.",
+    "Add the avocado cream on top of it, place jalapeno slices, avocado",
+    "slices and salsa on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "nam-prik-tha-dang-red-eye-chili-dip",
+  "name": "Nam Prik Tha Dang “Red Eye” Chili Dip",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "are very understanding about that kind of thing when it comes to food.",
+  "ingredients": [
+    {
+      "item": "103",
+      "amount": ""
+    },
+    {
+      "item": "pork chops, without bone (raw pork scallopini cutlets)",
+      "amount": "2 lbs (1 kg)"
+    },
+    {
+      "item": "large eggs",
+      "amount": "3"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "ground black pepper",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "unscented oil like canola",
+      "amount": "1 cup (250 ml)"
+    },
+    {
+      "item": "all-purpose fl our (or more if needed)",
+      "amount": "½ cup (75 g)"
+    },
+    {
+      "item": "garlic, coarsely cut (skins can still be on)",
+      "amount": "1 head"
+    }
+  ],
+  "method": [
+    "Place the chops between two pieces of waxed paper on a cutting board and pound until thin with a meat tenderizer, pestle or pan. Get it as thin as possible.",
+    "In a large bowl, beat the eggs.",
+    "Season with the fi sh sauce and black pepper.",
+    "Heat the oil in a wok until hot.",
+    "Dredge the cutlets in the fl our, then into the egg and deep-fry the cutlets (about 2–3 minutes per side. Best to err on the side of caution without actually burning them). Set on a paper towel-lined plate to drain.",
+    "Fry the garlic in the oil until crispy. Scatter over the pork when done.",
+    "Serve on a platter with plenty of Sticky Rice and chili dips with vegetables."
+  ],
+  "time": {
+    "total": 30
+  }
+}

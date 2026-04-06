@@ -1,0 +1,85 @@
+{
+  "id": "recipe",
+  "name": "Recipe",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "One cup of Worcestershire sauce",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of chopped capers",
+      "amount": ""
+    },
+    {
+      "item": "One pound of lamb chops",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of brandy",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of Pernod",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cognac",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the dried ingredients into the bowl.",
+    "Mix well.",
+    "Add the brandy, Pernod and spices.",
+    "Add the lamb chops and rest of the ingredients.",
+    "Mix the ingredients well.",
+    "Add the salt and black pepper on the lamb chops.",
+    "Grill the lamb chops.",
+    "Dish out the lamb chops when they are cooked on both sides.",
+    "Take a bowl.",
+    "Add the heavy cream, cognac and Dijon mustard into the bowl.",
+    "Mix well.",
+    "Pour the cognac Dijon cream sauce on top.",
+    "Your dish is ready to be served.",
+    "Chapter 4: The Famous French Dessert Recipes",
+    "The French have been the leaders in dessert industries. Following are some",
+    "yummy dessert recipes that are rich in healthy nutrients:"
+  ],
+  "time": {
+    "total": 30
+  }
+}

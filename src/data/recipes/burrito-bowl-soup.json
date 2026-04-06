@@ -1,0 +1,94 @@
+{
+  "id": "burrito-bowl-soup",
+  "name": "Burrito Bowl Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "large onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "of canola oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "canned tomatoes",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "of cumin",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "canned black beans",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "of chicken broth",
+      "amount": "6 cups"
+    },
+    {
+      "item": "of frozen corn",
+      "amount": "2 cups"
+    },
+    {
+      "item": "green chile sauce",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "of mozzarella",
+      "amount": "2 cups"
+    },
+    {
+      "item": "of white rice",
+      "amount": "1 cups"
+    },
+    {
+      "item": "Kosher salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado",
+      "amount": ""
+    },
+    {
+      "item": "For Serving:",
+      "amount": ""
+    },
+    {
+      "item": "Hot sauce",
+      "amount": ""
+    },
+    {
+      "item": "Crushed tortilla chips",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pot and heat oil over the medium heat.",
+    "Put garlic cloves and onion in it and cook for 6-8 minutes.",
+    "Put cumin.",
+    "Add black beans, frozen corn, and tomatoes. Stir constantly.",
+    "Add green chile sauce, chicken broth, and white rice in it and bring it",
+    "to boil.",
+    "Lower the heat and cook while keeping it covered.",
+    "Stir constantly. When rice is tender, add mozzarella in it. Cook until it",
+    "is melted.",
+    "Add salt and put avocado, hot sauce, tortilla chips, and sour cream on",
+    "the top."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "mini-shrimp-tacos",
+  "name": "Mini Shrimp Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Beef mince, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Oregano, two tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Garlic, one",
+      "amount": ""
+    },
+    {
+      "item": "Mini taco shells, twelve",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Red onions, one",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat a large frying pan, and then cook the shrimps.",
+    "Season with salt and pepper.",
+    "Add the oil to the pan and fry the garlic, oregano and spices for a few",
+    "minutes.",
+    "Heat the taco shells.",
+    "Add cilantro, avocado slices and red onion on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 20
+  }
+}

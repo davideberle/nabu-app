@@ -1,0 +1,71 @@
+{
+  "id": "total-prep-time-57-minutes",
+  "name": "Total Prep Time: 57 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "lean pork chops, 1 inch thick",
+      "amount": "4"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "butter, melted, divided",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "large garlic cloves, mashed",
+      "amount": "2"
+    },
+    {
+      "item": "red pepper",
+      "amount": "1/8 tsp."
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1/3 tsp."
+    },
+    {
+      "item": "dried rosemary",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "fresh parsley sprigs, leaves only, chopped",
+      "amount": "10"
+    },
+    {
+      "item": "medium-sized ripe tomatoes, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "spaghetti",
+      "amount": "3/4 lb."
+    },
+    {
+      "item": "Parmesan cheese, grated",
+      "amount": "1/4 cup"
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "In a large heavy skillet, combine 1/4 cup of butter and olive oil and heat. Add red and black pepper and garlic and",
+    "cook for about 3 minutes.",
+    "Add pork chops, drizzle with rosemary, and cook for 5 minutes on each side. Lower heat and add parsley, tomatoes",
+    "and salt. Cover with a lid and continue cooking for about 19 minutes.",
+    "Remove the lid and cook until ready, or for 20 minutes.",
+    "Bring salted water to boil in a large pot and cook spaghetti for about 10 minutes and drain. Put it back in the pot and",
+    "add remaining butter and stir."
+  ],
+  "time": {
+    "total": 57
+  }
+}

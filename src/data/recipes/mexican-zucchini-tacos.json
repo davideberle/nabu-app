@@ -1,0 +1,82 @@
+{
+  "id": "mexican-zucchini-tacos",
+  "name": "Mexican Zucchini Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Pico de Galo, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Mexican mix spice, one tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Shredded zucchini, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco seasoning, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream, as required",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the zucchini in the olive oil.",
+    "Add the salt, pepper, Mexican spice mix, and tomatoes.",
+    "Cook properly for ten minutes.",
+    "Heat the taco shells for five minutes.",
+    "Add the mixture in the taco shells.",
+    "Add Pico de Galo on top.",
+    "Add the sour cream and cilantro leaves on top.",
+    "Your dish is ready to be served.",
+    "The above recipes are easy to make, delicious, and nutritious at the same",
+    "time. So, start cooking your yummy Mexican taco meals at home.",
+    "Conclusion",
+    "Mexican cuisine is extremely versatile and diverse cuisine. It originated",
+    "from Mexico but has spread worldwide and it is presently loved and eaten",
+    "everywhere in the world. The people of the United Stated of America love",
+    "Mexican food and they consume it on daily basis.",
+    "The reason behind the high popularity of the Mexican food is due to the",
+    "recent fashion of street food. Street style food items are loved all over the",
+    "world. Mexican food contains the ever-famous street food me the tacos that",
+    "are consumed in a very high ratio in America. In this book, we have given",
+    "seventy-seven different recipes of tacos that comprise of diverse dishes that",
+    "you would love to consume.",
+    "The recipes include healthy breakfast, lunch, dinner, snacks, and vegetarian",
+    "recipes. A person who does not usually cook, can easily make all these",
+    "recipes with the detailed ingredient list and easy to follow instructions that",
+    "are mentioned with each recipe in the book. After reading this book, you",
+    "will be able to make your food all by your own without the need of going"
+  ],
+  "time": {
+    "total": 15
+  }
+}

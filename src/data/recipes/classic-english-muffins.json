@@ -1,0 +1,99 @@
+{
+  "id": "classic-english-muffins",
+  "name": "Classic English Muffins",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 15",
+  "ingredients": [
+    {
+      "item": "flour for bread",
+      "amount": "3 1/2 cups"
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "sugar granules",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "1 1/2 cup"
+    },
+    {
+      "item": "milk, lukewarm",
+      "amount": "1"
+    },
+    {
+      "item": "(0.25 oz.) quick yeast",
+      "amount": ""
+    },
+    {
+      "item": "envelope",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "3"
+    },
+    {
+      "item": "softened butter",
+      "amount": ""
+    },
+    {
+      "item": "big beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "Spray for Cooking",
+      "amount": ""
+    },
+    {
+      "item": "Cornmeal, coarse",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Throughout the mixing bowl fitted with the dough hook,",
+    "combine flour, sugar, and salt. Whisk together the milk and",
+    "yeast in a small dish or measuring cup. Toss the dry ingredients",
+    "with the milk mixture, butter, and egg. 15 minutes of mixing on",
+    "medium-high speed until dough forms a ball and is glossy and",
+    "elastic. The dough will remain slightly sticky.",
+    "Spray a large mixing basin with cooking spray, then scrape the",
+    "dough into it—cover and chill for at least 8 hours or overnight.",
+    "Remove dough from the fridge and set aside for 1 hour at room",
+    "temperature.",
+    "Preheat the oven to 350 degrees Fahrenheit. Line two large",
+    "baking sheets with parchment paper and sprinkle with cornmeal.",
+    "Prepare a work surface by lightly flouring it and dividing the",
+    "dough into 15 equal pieces. Pinch the seams together and roll",
+    "each element on the counter with a cupped palm to form a",
+    "smooth ball. Place on prepared baking pans. Sprinkle a little",
+    "cornmeal on top of each ball. Cover loosely and set aside for 45",
+    "minutes at room temperature.",
+    "Preheat a medium skillet over low heat, ideally cast iron. Flatten",
+    "each ball to 1\" thick by lightly pressing it down. Cook in",
+    "batches of 3 to 4 until the bottoms are golden brown,",
+    "approximately 7 minutes. Flip the dough over and push it down",
+    "again. Cook for a further 5–7 minutes, or until golden. Rep with",
+    "the rest of the dough.",
+    "Return muffins to a large baking sheet and bake for 10 minutes,",
+    "or until cooked through.",
+    "Cut open muffins with a fork and serve warm."
+  ],
+  "time": {
+    "total": 50
+  }
+}

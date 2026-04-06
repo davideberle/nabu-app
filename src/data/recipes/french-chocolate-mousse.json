@@ -1,0 +1,65 @@
+{
+  "id": "french-chocolate-mousse",
+  "name": "French Chocolate Mousse",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of almond flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chocolate",
+      "amount": ""
+    },
+    {
+      "item": "Two eggs",
+      "amount": ""
+    },
+    {
+      "item": "A tablespoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "A cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "A tablespoon of vegetable oil",
+      "amount": ""
+    },
+    {
+      "item": "A cup of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole wheat flour",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the flour into it.",
+    "Add the melted chocolate and sugar into it.",
+    "Add lukewarm water in it.",
+    "Set aside for half an hour.",
+    "Add the whole wheat flour.",
+    "Add the salt and some water in it.",
+    "Add the eggs and vanilla extract into the mixture.",
+    "Add the almond flour and some of the milk.",
+    "Mix the ingredients well so that a smooth mixture can be",
+    "obtained.",
+    "Refrigerate the material for one hour.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

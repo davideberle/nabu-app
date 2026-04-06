@@ -1,0 +1,88 @@
+{
+  "id": "greek-salad-recipe-with-lemon-dressing",
+  "name": "Greek Salad Recipe with Lemon Dressing",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Greek Salad",
+      "amount": ""
+    },
+    {
+      "item": "feta cheese",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "Garlic lemon vinaigrette",
+      "amount": ""
+    },
+    {
+      "item": "red onion",
+      "amount": "½"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "Romaine lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "Garlic Lemon Vinaigrette",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "black pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tablespoon"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tablespoon"
+    }
+  ],
+  "method": [
+    "Toss all components in a large mixing bowl with the required size of",
+    "dressing until well combined.",
+    "Combine all ingredients in a mixing bowl and whisk until smooth.",
+    "If required, season with more salt and pepper."
+  ],
+  "time": {
+    "total": 15
+  }
+}

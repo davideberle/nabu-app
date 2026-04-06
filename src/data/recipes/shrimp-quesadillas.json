@@ -1,0 +1,80 @@
+{
+  "id": "shrimp-quesadillas",
+  "name": "Shrimp Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "sliced onion",
+      "amount": "1"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "bell pepper, red",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "bell pepper, green",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "shrimp, uncooked",
+      "amount": "1 pound"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Mexican cheese, shredded",
+      "amount": "3 cups"
+    },
+    {
+      "item": "jalapeno pepper, minced",
+      "amount": "1"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "lime, juiced",
+      "amount": "1"
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Heat oil in a pan over the medium heat.",
+    "Add onion, green, and red bell pepper; stir frequently. Cook for 6-8",
+    "minutes.",
+    "Add cumin, salt, and chili powder.",
+    "Add shrimp and cook for 3-5 minutes.",
+    "Turn off the heat.",
+    "Add lime juice and jalapeno pepper in shrimp mixture.",
+    "Heat a pan over the medium heat; brush it with vegetable oil.",
+    "Put a tortilla in it. Place shrimp filling and cheese blend on it, and",
+    "then fold the tortilla.",
+    "Cook each side for around 5 minutes.",
+    "Repeat the same process with all tortillas.",
+    "Serve and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "mini-chicken-taco-cups",
+  "name": "Mini Chicken Taco Cups",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Salsa, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cotija cheese, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Shredded chicken, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Refried beans, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Cumin, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Garlic powder, one tsp.",
+      "amount": ""
+    },
+    {
+      "item": "Tortilla sheets, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425 degrees.",
+    "Add olive oil in the bottom of each muffin cup.",
+    "Press the tortilla into the cup.",
+    "Bake the tortillas for five minutes until golden brown.",
+    "Place the shredded chicken in a bowl and mix with two tablespoons",
+    "of salsa.",
+    "Mix the refried beans, with two tablespoons of salsa, cumin, and",
+    "garlic powder.",
+    "Place a teaspoon of the refried bean filling in the bottom of each taco",
+    "shell.",
+    "Place one tablespoon of shredded chicken and top with cotija cheese",
+    "crumbles.",
+    "Bake the taco cups for ten minutes or until the cheese is melted.",
+    "Add cilantro on top and serve immediately."
+  ],
+  "time": {
+    "total": 25
+  }
+}

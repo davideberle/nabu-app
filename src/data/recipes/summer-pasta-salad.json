@@ -1,0 +1,64 @@
+{
+  "id": "summer-pasta-salad",
+  "name": "Summer Pasta Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "2 cups"
+    },
+    {
+      "item": "hardboiled eggs, peeled and diced",
+      "amount": "2"
+    },
+    {
+      "item": "ham, diced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red bell pepper, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "spring onions, finely cut",
+      "amount": "1-2"
+    },
+    {
+      "item": "fresh dill, chopped",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Freshly ground black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
+    "Put the onions into a salad bowl and toss with the lemon juice. Add in the ham, pasta and all other ingredients.",
+    "Season with salt and pepper to taste and serve.",
+    "(8) Rotini Salad",
+    "Rotini Salad is always a crowd-pleaser. It's so easy to make and it can be eaten hot or cold. To give the salad a fresh",
+    "taste, we added greens (arugula), tomatoes, avocados, onion, jalapeños, and cilantro and lime juice. The lemon",
+    "vinaigrette is made with olive oil, apple cider vinegar and zest from one lemon for a tangy twist on an old favorite.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

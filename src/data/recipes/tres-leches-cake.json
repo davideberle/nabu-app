@@ -1,0 +1,74 @@
+{
+  "id": "tres-leches-cake",
+  "name": "Tres Leches Cake",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "baking powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of flour",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "butter, unsalted",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "eggs",
+      "amount": "5"
+    },
+    {
+      "item": "of white sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "can of condensed milk, sweetened",
+      "amount": "1"
+    },
+    {
+      "item": "of whole milk",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can of evaporated milk",
+      "amount": "1"
+    },
+    {
+      "item": "of white sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of cream",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "of vanilla extract",
+      "amount": "1 tsp."
+    }
+  ],
+  "method": [
+    "Put flour and grease on a baking pan, and preheat the oven to 175 C.",
+    "Mix baking powder and flour.",
+    "Mix cream butter and 1 cup of sugar until fluffy.",
+    "Put eggs and vanilla extract in it and beat well.",
+    "Gradually pour butter mixture to the flour mixture, mix well.",
+    "Bake it for around 30 minutes.",
+    "Mix condensed milk, and whole milk, and evaporated milk.",
+    "Put on the cake.",
+    "Mix whipping cream, remaining sugar, and remaining vanilla until it",
+    "is thick. Pour on the cake.",
+    "Make sure to keep the cake in the refrigerator, enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

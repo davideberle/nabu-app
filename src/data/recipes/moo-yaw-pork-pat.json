@@ -1,0 +1,75 @@
+{
+  "id": "moo-yaw-pork-pat",
+  "name": "Moo Yaw Pork Paté",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "chilies, fi sh sauce and lime juice and making it into a salad.",
+  "ingredients": [
+    {
+      "item": "glass vermicelli (woon sen)",
+      "amount": "4 oz (100 g)"
+    },
+    {
+      "item": "Moo Yaw Pork Paté (recipe on left), cut into bite- sized pieces",
+      "amount": "½ cup (100 g)"
+    },
+    {
+      "item": "chopped cabbage",
+      "amount": "1 cup (100 g)"
+    },
+    {
+      "item": "tomato, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "chopped Thai celery, (or just the leaves of the celery stalks)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "Green onions (scallions), chopped, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "bird’s eye chilies, crushed or sliced, depending on your heat tolerance",
+      "amount": "2–4"
+    }
+  ],
+  "method": [
+    "Soak the glass vermicelli in boiling water for about 3 min- utes or until completely soft.",
+    "Make the Dressing by mix- ing the fi sh sauce, lime juice and sugar together. Taste and adjust seasoning if necessary.",
+    "Add the chilies. Set aside.",
+    "Combine the Moo Yaw, glass vermicelli, cabbage, tomato, onion and Thai celery in a large bowl. Drizzle with the Dressing and mix well to combine. The Dressing should be abundant, but not soak the salad completely.",
+    "Garnish with the green onions and peanuts. Serve immediately.",
+    "One of the most famous and oldest sayings in Siam is an inscription dating back to the Sukhothai Era, more than 600 years ago, basically reading “there is fi sh in the water, and rice in the fi elds.” Whether the inscription is truly genuine or not, the premise is the same: Thailand is a land of abun- dance and fertility, never lacking in food for its people.",
+    "Thailand did face a protein shortage in its rural provinces during the middle of the past century, enough to prompt the Japanese then-Prince Akihito to send over 50 Japanese tilapia that he hoped would fl ourish in Thai waters. Although",
+    "40 died on the way to Thailand, the remaining 10 were kept at Chitralada Palace by King Bhumibol Adulyadej. These became the forebears to the most popular Tilapia breed farmed in Thailand today—the pla nin (derived from its",
+    "English-language name, the Nile River fi sh). From then on, said King Bhumibol, even the poorest of Thais would be able to have access to fi sh, a nutritious and versatile protein.",
+    "In the Isaan region, Thais took the tilapia fi sh and gifted the rest of the country with pla pow, or salt-encrusted grilled fi sh. The tilapia is gutted and stuff ed with lemongrass and kaffi r lime leaves, then coated with a mix of fl our and salt and grilled over a low but steady fl ame. When the fi sh is cooked (about 20 minutes on each side), the salty skin is cut open to reveal glistening, tender fl esh that can be enjoyed with any number of dipping sauces. Today, these grilling fi sh are a common sight on the sidewalks of every town in Thailand.",
+    "Although pla pow is lovely to eat as part of a big Isaan meal, or even on its own with steamed rice, I prefer it as part of one of my favorite Thai street side dishes, mieng pla. There are several types of mieng pla, one with fried Thai mackerel, but I prefer the other one with the grilled salt-encrusted tilapia. The fi sh is accompanied by lettuce leaves, herbs and maybe some thin rice noodles, rolled up Korean barbecue- style and adorned with your choice of dipping sauce, some peanuts, and maybe some slivered ginger. It’s one of the best meals I know, and two kings helped make that happen.",
+    "Obviously, it’s great with seabass or grouper too.",
+    "Choose a fi rm, white-fl eshed fi sh that won’t fi ght with the fl avors of the all-important dipping sauces (up to three!).",
+    "Because I hate being hot, I include an option for baking the fi sh, Mediterranean-style, in the oven under a mound of sea salt. It works! And it’s easy."
+  ],
+  "time": {
+    "total": 30
+  }
+}

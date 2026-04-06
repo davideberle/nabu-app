@@ -1,0 +1,97 @@
+{
+  "id": "cheesy-mexican-cauliflower-rice",
+  "name": "Cheesy Mexican Cauliflower Rice",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "crushed garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "oregano, dried",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "cauliflower, grated",
+      "amount": "65 g"
+    },
+    {
+      "item": "Black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "tomato pureé",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "can black beans",
+      "amount": "1"
+    },
+    {
+      "item": "rotisserie chicken, shredded",
+      "amount": "250 g"
+    },
+    {
+      "item": "sweetcorn",
+      "amount": "175 g"
+    },
+    {
+      "item": "thinly sliced jalapeños",
+      "amount": "2"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "200 g"
+    },
+    {
+      "item": "coriander, freshly chopped",
+      "amount": "5 g"
+    },
+    {
+      "item": "Monterey jack cheese, grated",
+      "amount": "100 g"
+    },
+    {
+      "item": "cheddar cheese, grated",
+      "amount": "100 g"
+    },
+    {
+      "item": "Lime wedges, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat oil in a skillet over the medium heat.",
+    "Put the onion in it and cook for around 5 minutes.",
+    "Then add oregano, garlic, and cumin. Cook for 1 minute.",
+    "Add cauliflower in a dishtowel and drain any excess liquid.",
+    "Add more oil if required, and add grated cauliflower, pepper, and salt.",
+    "Stir occasionally while cooking.",
+    "Add the tomato paste, black beans, chicken, tomatoes, corn,",
+    "coriander, and jalapenos.",
+    "Add cheeses over it, then cover and cook until it melts.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

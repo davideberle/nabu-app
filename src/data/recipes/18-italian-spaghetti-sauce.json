@@ -1,0 +1,75 @@
+{
+  "id": "18-italian-spaghetti-sauce",
+  "name": "(18)     Italian Spaghetti Sauce",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "onion, chopped",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "vegetable or olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "cans, or 4 cups tomatoes, cut up",
+      "amount": "2 (1 lb. each)"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 (6 oz. each)"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "salt",
+      "amount": "1 ½ tsp."
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 ½ tsp."
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "pkg. spaghetti",
+      "amount": "1 (16 oz.)"
+    },
+    {
+      "item": "black pepper",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sauté garlic and onion in oil until tender, but not brown. Put in water, tomato paste, tomatoes, brown sugar, salt,",
+    "pepper, oregano and bay leaf; simmer uncovered 1 hour. If adding meatballs, add after ½ hour of simmering.",
+    "Cook spaghetti as per the directions on the package; drain. Discard bay leaf and serve sauce over spaghetti.",
+    "(19) Baked Pasta with Broccoli, Olives and Pancetta",
+    "A creamy, cheesy, savory, autumnal meal bursting with flavor.",
+    "Broccoli and pasta are a classic combo. This is an easy thing to make for when you're looking for something quick",
+    "to put together and satisfying at the same time.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 30
+  }
+}

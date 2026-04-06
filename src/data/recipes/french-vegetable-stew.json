@@ -1,0 +1,85 @@
+{
+  "id": "french-vegetable-stew",
+  "name": "French Vegetable Stew",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One pound of mixed vegetables",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chopped shallots",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One cup of vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of Herbs de Provence",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh rosemary",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of mix spice powder",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add all the ingredients and olive oil into the pan.",
+    "Mix the stew well.",
+    "Cook the stew for ten to fifteen minutes.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

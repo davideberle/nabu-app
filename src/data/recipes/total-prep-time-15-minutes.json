@@ -1,0 +1,54 @@
+{
+  "id": "total-prep-time-15-minutes",
+  "name": "Total Prep Time: 15 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "12 oz."
+    },
+    {
+      "item": "ham, cut in cubes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "avocados, peeled and diced",
+      "amount": "2"
+    },
+    {
+      "item": "white mushrooms, halved",
+      "amount": "10-15"
+    },
+    {
+      "item": "green olive paste",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil spay",
+      "amount": ""
+    },
+    {
+      "item": "salt and black pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "1/4 cup"
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "Line a baking tray with baking paper and place mushrooms on it. Spray with olive oil and season with salt and",
+    "black pepper to taste. Roast in a preheated to 375 F oven for 15 minutes, or until golden and tender."
+  ],
+  "time": {
+    "total": 15
+  }
+}

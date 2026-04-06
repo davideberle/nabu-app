@@ -1,0 +1,72 @@
+{
+  "id": "prawn-and-chorizo-quesadilla",
+  "name": "Prawn and Chorizo Quesadilla",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "red onion",
+      "amount": "1/2"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "red pepper",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "chorizo, chopped",
+      "amount": "70g"
+    },
+    {
+      "item": "of chipotle paste",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "coriander",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "cumin",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "2"
+    },
+    {
+      "item": "lime",
+      "amount": "1"
+    },
+    {
+      "item": "prawns, chopped",
+      "amount": "100g"
+    },
+    {
+      "item": "Guacamole, optional",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take oil in a pan, and fry pepper and onion for almost 10 minutes.",
+    "Put the chorizo in it, and cook for another 5 minutes. Add the chipotle",
+    "paste, garlic, cumin, prawns, and ground coriander, then cook for",
+    "another 2 minutes.",
+    "Season with lime juice.",
+    "Put the mixture on a tortilla and place the second tortilla on it.",
+    "In a frying pan over high heat, add quesadilla and cook each side for",
+    "almost 2 minutes.",
+    "Cut into pieces and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

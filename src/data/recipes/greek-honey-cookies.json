@@ -1,0 +1,61 @@
+{
+  "id": "greek-honey-cookies",
+  "name": "Greek Honey Cookies",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half teaspoon of nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Three and a half cups of flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of honey",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of oil",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of yeast",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of kosher salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the dry ingredients in a bowl.",
+    "Mix all the ingredients well.",
+    "Add the honey and yeast in a bowl with two tablespoons of hot",
+    "water.",
+    "Place the yeast mixture in a damp place.",
+    "Add the oil into the wet ingredients.",
+    "Add the yeast mixture and eggs into the cookie mixture.",
+    "Add the formed mixture into a piping bag.",
+    "Make small round cookies on a baking dish and bake the",
+    "cookies.",
+    "Dish out the cookies when done.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "greek-almond-shortbread",
+  "name": "Greek Almond Shortbread",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half teaspoon of vanilla bean paste",
+      "amount": ""
+    },
+    {
+      "item": "Two and a half cups flour",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon baking powder",
+      "amount": ""
+    },
+    {
+      "item": "A cup of unsalted butter",
+      "amount": ""
+    },
+    {
+      "item": "An egg yolk",
+      "amount": ""
+    },
+    {
+      "item": "Two cups icing sugar",
+      "amount": ""
+    },
+    {
+      "item": "Half cup chopped almonds",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the vanilla bean paste, flour, baking powder, unsalted butter, egg",
+    "yolk, and almonds into the bowl.",
+    "Mix all the ingredients and add them to a baking tray.",
+    "Bake the mixture for thirty minutes.",
+    "Dish out the bread and cut it into slices.",
+    "Dust the bread with icing sugar.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

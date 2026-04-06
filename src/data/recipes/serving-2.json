@@ -1,0 +1,45 @@
+{
+  "id": "serving-2",
+  "name": "Serving: 2",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Four bread slices",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of whole milk",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One egg",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the egg in a large bowl.",
+    "Mix the eggs until a smooth mixture is formed.",
+    "Add in the rest of the ingredients one by one ensuring not to form any",
+    "Heat a large pan."
+  ],
+  "time": {
+    "total": 30
+  }
+}

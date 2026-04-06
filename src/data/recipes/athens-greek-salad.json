@@ -1,0 +1,70 @@
+{
+  "id": "athens-greek-salad",
+  "name": "Athens Greek Salad",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Coarse salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "White pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "capers",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "Greek oregano",
+      "amount": ""
+    },
+    {
+      "item": "large tomato",
+      "amount": "1"
+    },
+    {
+      "item": "green bell pepper",
+      "amount": "½"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": ""
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "To make this dish, choose a medium-sized dish.",
+    "To make four bits, cut the tomatoes in half lengthwise, then in the",
+    "quarter again.",
+    "Put in a mixing bowl. Put the cucumber in the bowl after peeling it",
+    "and cutting it into ½ -inch sections.",
+    "Position the spring onions and green bell pepper in the bowl after",
+    "slicing them. Toss in the olives.",
+    "Add the capers, marjoram, salt, and white pepper to taste.",
+    "On top of the veggies, sprinkle the feta cheese.",
+    "Mix thoroughly with a gentle drizzle of olive oil."
+  ],
+  "time": {
+    "total": 10
+  }
+}

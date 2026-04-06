@@ -1,0 +1,112 @@
+{
+  "id": "mexican-white-chili",
+  "name": "Mexican White Chili",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of chicken breast",
+      "amount": "3 pounds"
+    },
+    {
+      "item": "chile powder",
+      "amount": "2 1/2 tbsp."
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "cumin",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Cayenne pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "minced garlic",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of chopped onion",
+      "amount": "3 cups"
+    },
+    {
+      "item": "can of white beans",
+      "amount": "1"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "cheese, shredded",
+      "amount": "6 cups"
+    },
+    {
+      "item": "can green chiles, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "of chicken broth",
+      "amount": "4–6 cups"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "2 cups"
+    },
+    {
+      "item": "For Garnishing:",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro leaves, chopped",
+      "amount": ""
+    },
+    {
+      "item": "Scallions, chopped",
+      "amount": ""
+    },
+    {
+      "item": "Hot sauce",
+      "amount": ""
+    },
+    {
+      "item": "Monterey Jack or Shredded cheddar cheese",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 350ºF.",
+    "Put the chicken in a pan. Add olive oil and chili powder, cumin, salt,",
+    "and a pinch of cayenne in it.",
+    "Roast them for half an hour. Shred the chicken pieces and set aside.",
+    "Take a pot and heat the remaining olive oil. Put garlic and onion, and",
+    "cook for 5 minutes.",
+    "Add shredded chicken, beans, oregano, chilies, chile powder, cumin,",
+    "salt, and cayenne.",
+    "Add chicken broth.",
+    "Stir and simmer for 20 minutes on low heat.",
+    "Remove the pan from heat and set aside for 5 minutes.",
+    "Add cheese to the pot, and stir in sour cream.",
+    "Bring the pan back to simmer on low heat.",
+    "Cook chili for another 15-20 minutes. Add texture by using a",
+    "masher to mash beans and the chicken.",
+    "Stir to mix everything.",
+    "Garnish and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "greek-donuts-loukoumades",
+  "name": "Greek Donuts (Loukoumades)",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "Eight eggs",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of sugar",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of flour",
+      "amount": ""
+    },
+    {
+      "item": "A cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "A tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of sour cream",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of cardamom sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of baking soda",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of honey",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, mix all the ingredients except the cardamom",
+    "sugar and honey.",
+    "Form semi-thick dough from the mixture.",
+    "Heat a pan full of oil.",
+    "Make a round doughnut-like structure with the help of a",
+    "doughnut cutter.",
+    "Fry the doughnuts.",
+    "Let the doughnuts cool down.",
+    "Drizzle the honey on top of the doughnuts.",
+    "Add the cinnamon sugar all over the doughnuts.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

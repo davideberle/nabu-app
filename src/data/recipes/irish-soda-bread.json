@@ -1,0 +1,95 @@
+{
+  "id": "irish-soda-bread",
+  "name": "Irish Soda Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "all-purpose flour 1/2 cup flour (all-purpose)",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "1+ 2 tbsp. granulated sugar (distributed) (optional)",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "soda bicarbonate",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1 1/2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "3"
+    },
+    {
+      "item": "cold butter (diced)",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "1 1/2 cup"
+    },
+    {
+      "item": "buttermilk",
+      "amount": ""
+    },
+    {
+      "item": "big beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "butter that has melted",
+      "amount": ""
+    },
+    {
+      "item": "of sugar",
+      "amount": "1 1/2 cup"
+    },
+    {
+      "item": "tiny chocolate chips, raisins, or currents are all excellent",
+      "amount": ""
+    },
+    {
+      "item": "options (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bake at 400 degrees Fahrenheit (190 degrees Celsius). Cooking",
+    "sprays an ovenproof 10\" skillet and layers the bottom with",
+    "parchment paper.",
+    "Combine flour, 14 cup sugar, baking soda, and salt in a medium",
+    "mixing basin. Work in the butter with a pastry cutter or your",
+    "fingertips until it's evenly distributed.",
+    "Combine buttermilk and egg in a separate medium bowl. Stir in",
+    "the wet ingredients until just mixed. Make sure not to overmix!",
+    "If using, fold in chocolate chips, raisins, or currents.",
+    "With a sharp knife, score an \"X\" on top of the dough in the",
+    "skillet. Brush with melted butter and, if desired, sprinkle with",
+    "the remaining sugar. Cook for 45–55 minutes, or till golden",
+    "brown and a toothpick inserted in the middle comes out clean.",
+    "The bread should sound hollow when you tap it. Allow 10",
+    "minutes to cool before slicing and serving."
+  ],
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eggs-and-chorizo-wraps",
+  "name": "Eggs and Chorizo Wraps",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chorizo",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "milk",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "eggs, large",
+      "amount": "6"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tortillas (6 inches)",
+      "amount": "6"
+    },
+    {
+      "item": "Green onions, thinly sliced",
+      "amount": ""
+    },
+    {
+      "item": "Fresh cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Salsa (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large skillet and cook the chorizo. Keep the heat medium until",
+    "it is cooked. Drain and put it back to the pan.",
+    "Take a bowl, and whisk milk and eggs until blended.",
+    "Pour egg mixture into chorizo. Stir continuously until eggs are",
+    "thoroughly cooked.",
+    "Pour cheese in it.",
+    "Place 1/2 cup mixture in each tortilla.",
+    "Then add onion, cilantro, and salsa. Fold the tortilla and roll-up.",
+    "Serve and Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

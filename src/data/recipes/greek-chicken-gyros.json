@@ -1,0 +1,95 @@
+{
+  "id": "greek-chicken-gyros",
+  "name": "Greek Chicken Gyros",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Four flatbreads",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of lemon juice",
+      "amount": ""
+    },
+    {
+      "item": "One cup of tzatziki sauce",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of sliced red onion",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of sliced tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of romaine lettuce",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "One cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of garlic powder",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of dried thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of chili powder",
+      "amount": ""
+    },
+    {
+      "item": "A quarter teaspoon of fresh nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of chicken pieces",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil and garlic into the pan.",
+    "Add the oregano, tomato paste, smoked paprika, nutmeg, chili powder,",
+    "thyme, and salt.",
+    "Add the vegetable broth, lemon juice, and chicken pieces into the pan.",
+    "Cook the ingredients well for about fifteen minutes.",
+    "Bake the flatbreads for about two to three minutes.",
+    "Cut the flatbreads in between to form a pouch structure.",
+    "Add the cooked mixture into the flatbread and line it with tzatziki",
+    "sauce, romaine lettuce, sliced tomatoes, and red onions.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

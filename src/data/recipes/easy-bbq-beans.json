@@ -1,0 +1,44 @@
+{
+  "id": "easy-bbq-beans",
+  "name": "Easy BBQ beans",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "of Barbecue Sauce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "can of pinto or cannellini beans",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "chopped green bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "of liquid smoke",
+      "amount": "1–2 tsp."
+    },
+    {
+      "item": "chopped yellow onion",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "1 Preheat a saucepan over the medium heat.",
+    "2 Then drain and rinse the beans.",
+    "3 Put bell pepper, onion, and 2-3 tbsp. of veggie stock or water for",
+    "cooking.",
+    "4 Cook it for about 3-4 minutes.",
+    "5 Lower the heat. Then add beans, liquid smoke, and BBQ Sauce.",
+    "6 Stir constantly until the beans are coated thoroughly.",
+    "7 Simmer it for around 10-15 minutes, then turn off the heat.",
+    "8 Serve and enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

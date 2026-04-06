@@ -1,0 +1,107 @@
+{
+  "id": "root-vegetable-pies",
+  "name": "ROOT VEGETABLE PIES",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "teaspoon salt and whisk a little longer. Taste, add more salt if you like, and",
+  "ingredients": [
+    {
+      "item": "plus 1½ tbsp/190 g unsalted butter, fridge-cold, diced",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "cup/60 g sour cream",
+      "amount": "¼"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "medium curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "large onion, coarsely chopped (about 1⅓ cups/180 g)",
+      "amount": "1"
+    },
+    {
+      "item": "green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "thyme leaves, chopped",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "small russet potato, peeled and cut into ¾-inch/2-cm dice (about 1 cup/160 g)",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrot, peeled and cut into ¾-inch/2-cm dice (about ¾ cup/100 g)",
+      "amount": "1"
+    },
+    {
+      "item": "medium parsnip, peeled and cut into ¾-inch/2-cm dice (about ¾ cup/100 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/250 ml vegetable stock",
+      "amount": "1"
+    },
+    {
+      "item": "small butternut squash, peeled and cut into ¾-inch/2-cm dice (about 1¾ cups/250 g)",
+      "amount": "½"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cup/120 g coarsely grated aged Cheddar",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g cilantro, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "egg, beaten salt and black pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the flour, butter, sour cream, and ½ teaspoon salt in a food processor and work until the mixture comes together. Transfer to a work surface and gently knead for 1 minute, adding a little flour if needed, until soft and malleable. Wrap in plastic wrap and let rest in the fridge for 30 minutes.",
+    "Place a large sauté pan for which you have a lid over medium-high heat. Add",
+    "2 tablespoons of the oil and, once hot, add the curry powder, caraway seeds, mustard seeds, and cardamom. Cook for just a few seconds, stirring and making sure the spices don’t burn, before adding the onion, chile, and thyme.",
+    "Cook for another 4 minutes, add the garlic, and cook for another minute, stirring. Add the potato, carrot, and parsnip, stir, and then pour in the stock.",
+    "Turn down the heat to medium, cover, and cook for 5 minutes. Add the squash, sugar, ¾ teaspoon salt, a generous grind of black pepper and continue to simmer, covered, for 10 minutes, stirring from time to time, until the vegetables are cooked through and most of the liquid has evaporated. You should have about 3 tablespoons liquid left; add a little water if needed.",
+    "Uncover, remove from the heat, and set aside to cool totally before stirring in the cheese and cilantro.",
+    "Preheat the oven to 400°F/200°C.",
+    "Use the remaining 1 tablespoon oil to brush the sides and bases of a large 6- cup muffin tin (each cup should be 2½-inches/6-cm wide and 1½-inches/4- cm deep). Line the bases with circles of parchment paper and place the tin in the fridge. Roll out the pastry",
+    "/16 to ⅛-inch/2 to 3-mm thick, cut out 6 circles each 5½-inches/14-cm in diameter, and press down into the tin. Trim the edges, reusing the spare pastry to roll out for a second time. Cut out 6 more circles, 3¼-inches/8-cm in diameter—these will form lids.",
+    "Fill each pie with about ½ cup/120 g of filling, brush the rims with egg, and place the lids on top. Pinch the edges together securely, brush the lids with the remaining egg, and prick each pie with a fork in a few places. Allow to rest in the fridge for 10 minutes. Place in the oven and bake for 30 to 35 minutes, until golden brown. Remove from the oven and set aside for 5 minutes before serving warm, or serve at room temperature."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,88 +1,98 @@
 {
   "id": "chicken-korma",
-  "name": "Chicken Korma",
+  "name": "CHICKEN KORMA",
   "source": {
-    "cookbook": "The Curry Guy Bible",
-    "author": "Dan Toombs",
-    "chapter": "Biryanis & Rice"
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
   },
-  "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "There are hundreds of recipes for authentic Indian korma. Korma, which means ‘braising’ in Hindi, is actually a style of cooking where meat and vegetables are braised in a sealed pot with a little liquid. The sauce can be creamy, nutty and mild like our British kormas but they can also be quite spicy and cooked in stock or water. What we know as a korma may share the same name but it isn’t really a korma at all.\n\nI prefer to use a combination of block coconut and coconut flour to give my kormas a nice coconut flavour, but you could substitute thick coconut milk, adding it with the first batch of base curry sauce and letting it cook down to your preferred consistency (you might want to reduce the amount of base curry sauce). Never use desiccated coconut or your sauce will become grainy. My recipe will achieve a nice yellow colour, as expected. If you desire the more intense yellow colour found at many restaurants, you will need to add yellow food colouring powder to your dish. Chicken korma is best served with white rice and a good mild dhal.",
-  "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
-    "cook": "10 MINS"
-  },
+  "servings": "serves 4",
   "ingredients": [
     {
-      "item": "ghee, rapeseed (canola) oil or seasoned oil",
-      "amount": "4 tbsp"
+      "item": "medium onions",
+      "amount": "2"
     },
     {
-      "item": "2.5cm (1in) piece of cinnamon stick or cassia bark",
+      "item": "!i2 cup korma or mild curry paste, such as Patak's, or",
       "amount": ""
     },
     {
-      "item": "green cardamom pods, lightly bruised",
-      "amount": "4"
+      "item": "a small handful of sliced almonds, plus extra for",
+      "amount": ""
     },
     {
-      "item": "garlic and ginger paste",
-      "amount": "1 tsp"
+      "item": "serving",
+      "amount": ""
     },
     {
-      "item": "sugar, or to taste",
-      "amount": "3 tbsp"
+      "item": "heaped tablespoons unsweetened shredded coconut",
+      "amount": "2"
     },
     {
-      "item": "ground almonds",
-      "amount": "6 tbsp"
-    },
-    {
-      "item": "coconut flour",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "base curry sauce (see quick and easy base cury sauce), heated",
-      "amount": "700ml"
-    },
-    {
-      "item": "block coconut",
-      "amount": "100g"
-    },
-    {
-      "item": "raw chicken breast, cut on the diagonal into 5mm (¼in) slices, or pre-cooked stewed chicken",
-      "amount": "800g"
-    },
-    {
-      "item": "garam masala",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "single (light) cream, plus a little extra to finish",
-      "amount": "125ml"
-    },
-    {
-      "item": "rose water, or to taste",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "cold butter (optional)",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "Salt, to taste",
+      "item": "cups natural yogurt",
       "amount": ""
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large frying pan over a medium heat. When small bubbles begin to appear, toss in the cinnamon stick or cassia bark and cardamom pods. Let the whole spices flavour the oil for about 30 seconds, then stir in the garlic and ginger paste. Fry for about 20 seconds before adding the sugar, ground almonds and coconut flour. Mix into the oil and pour in about 250ml (1 cup) of the base curry sauce; it will bubble up nicely. Break up the block coconut and add it to the simmering sauce. It will dissolve and give your korma a nice light yellow tone.",
-    "Pour in the rest of the base curry sauce, then add the chicken. If using raw chicken, press it right into the sauce so that it cooks quickly and evenly. You can add a little more base curry sauce if you need to, as it will boil down anyway. Swirl in the garam masala.",
-    "When your chicken is cooked/heated through (about 10 minutes for raw or 2 minutes for pre-cooked), remove the cardamom pods and cinnamon, and stir in the cream. Add the rose water and finish with the butter, if you want. Season with salt and check the sweetness, adding more sugar if needed."
+    "Put a large casserole-type pan on a high heat a nd add a couple of lugs of oil. Add the onions, chile, ginger,",
+    "cilantro stalks with the butter. Keep stirr ing it e nough so it doesn't catch a nd burn but turns evenly",
+    "Cook for around 10 minutes. Add the curry paste, coconut milk, half your slice d almonds, the",
+    "drained garbanzo beans, unsweetened shredded coco nut, a nd sliced chicken bre ast s . Half fill the empty",
+    "can with water, pour it into the pan, and stir again . Bring t o a boil, then turn the heat down and simmer for",
+    "30 minutes with the lid on • Check the curry regularly to ma ke sure it's not drying out, a nd add extra water",
+    "if necessary • When the chicken is tender and cooked, taste and season w ith salt a nd peppe r -please",
+    "season carefully",
+    "To serve your curry",
+    "Feel free to serve this with any of my fluffy rice recipes (see pages 95-96) • Add a few spoonfuls of",
+    "natural yogurt dolloped on top, and sprinkle over the rest of the sliced almo nds . Finish by scattering",
+    "over the cilantro leaves, and serve with lemon wedges fo r squeezing over",
+    "VEGETABLEJALFREZI",
+    "The great thing about this curry is the slight ly sweet and sour flavor from the bell peppers. Do experiment",
+    "with othe r combinations of vegetables such as zucchini, eggplant, or potatoes once you've mastered this",
+    "versio n -bigger, chunkier veggies need lo nge r cooking times, so add them at the start, and delicate",
+    "veggie s like pe as and spinach need only m inutes, so they can go in right at the end. This will serve",
+    "8 people -just halve the recipe if you r pan isn't large enough, or else freeze any leftovers.",
+    "I fresh red chile",
+    "a thumb-sized piece of fresh root ginger",
+    "2 cloves of garlic",
+    "a small bunch of fresh cilantro",
+    "2 red bell peppers",
+    "small butternut squash",
+    "x IS-ounce can of garbanzo beans",
+    "To prepare your curry",
+    "peanut or vegetable oil",
+    "~ cup ofjalfrezi or medium curry paste, such as",
+    "Patak's, or my jalfrezi paste (see page 99)",
+    "2 x 14-ounce cans of diced tomatoes",
+    "!.4 cup balsamic vinegar",
+    "sea salt and freshly ground black pepper",
+    "cup natural yogurt",
+    "Peel, halve, a d roughly c ho p your onion • Finel y slice the chile. Peel and finely slice the ginger and",
+    "garlic • Pick the cilantro leaves and finely cho p the stalks • Halve, seed, and roughly chop the bell",
+    "peppers. Break the gree n leaves off the cauliflower and discard • Break the cauliflower into florets",
+    "and roughly chop the stalk. Quarter the tomatoes. Carefully halve the butternut squash, then scoop",
+    "o ut the seeds with a spoon and discard • Slice the squash into inch-size wedges, leaving the peel on",
+    "but removing any thick skin, then roughly chop into smaller pieces. Drain the garbanzo beans",
+    "To cook your curry",
+    "Put a large casserole-type pan on a medium to high heat and add a couple of lugs of oil and the butter. Add",
+    "the onions, chile, ginger, garlic, and cilantro stalks a nd cook for 10 minutes, until softened and golden •",
+    "Add the peppers, butternut squash, drained garbanzo beans, and jalfrezi curry paste. Stir well to coat",
+    "everything with the paste. A dd the cauliflower, the fresh and canned tomatoes, and the vinegar. Fill I",
+    "empty can with water, pou r into the pa n, and stir again. Bring to a boil, then turn the heat down and",
+    "simmer fo r 45 minutes with the lid on • Check the curry after 30 minutes and, if it still looks too liquid,",
+    "the lid off for the rest of the cooking time. When the veggies are tender, taste and add salt and",
+    "pepper -please season carefully -and a squeeze of lemon juice",
+    "To serve your curry",
+    "Delicious w ith pappadams or any of my fluffy rice recipes (see pages 95-96) and with a few spoonfuls of",
+    "natural yogurt, a sprinkle of cilantro leaves, and a fe w lemon wedges for squeezing over",
+    "EASY CURRIES 7 7",
+    "LEFTOVER CURRY BIRIANI",
+    "This is a delicious dish that can be made using any t ype of leftover homemade curry. If you don't have any",
+    "leftovers to use up, it's well worth making a curry especially for the recipe. Don't use take-out curries to",
+    "make this, as you don't know how many times they've be en reheated. Unlike the other curries in this",
+    "chapter, this is a baked dish , made by layering rice, meat, and onions -think of it as a sort of Indian lasagne!",
+    "It gives you a slightly d rier dish w ith loads of flavor and a go rgeous, crispy texture."
   ],
-  "image": "/recipes/chicken-korma.jpg",
-  "category": {
-    "dish_type": [
-      "main"
-    ]
+  "time": {
+    "total": 30
   }
 }

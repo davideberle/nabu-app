@@ -1,0 +1,72 @@
+{
+  "id": "ramonas-chilaquiles",
+  "name": "Ramona's Chilaquiles",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chorizo or pork sausage",
+      "amount": "1/2 pound"
+    },
+    {
+      "item": "ground beef",
+      "amount": "1/2 pound"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "can tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "Monterey Jack cheese, shredded",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tortilla chips",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "Chopped cilantro",
+      "amount": ""
+    },
+    {
+      "item": "For Topping:",
+      "amount": ""
+    },
+    {
+      "item": "Diced avocado",
+      "amount": ""
+    },
+    {
+      "item": "Sour cream",
+      "amount": ""
+    },
+    {
+      "item": "Red onion, sliced",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°.",
+    "Take a skillet, and cook chorizo and beef with garlic and onion over",
+    "the medium heat.",
+    "Stir in tomatoes and bring it to boil.",
+    "Take a greased baking dish and layer half of the beef mixture, 2 cups",
+    "of chips, and 1/2 cup of cheese. Repeat this in layers.",
+    "In the end, bake it while being uncovered till the point cheese is",
+    "melted.",
+    "Serve with toppings on it."
+  ],
+  "time": {
+    "total": 30
+  }
+}

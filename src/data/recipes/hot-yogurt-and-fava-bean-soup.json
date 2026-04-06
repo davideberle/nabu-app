@@ -1,0 +1,86 @@
+{
+  "id": "hot-yogurt-and-fava-bean-soup",
+  "name": "Hot yogurt and fava bean soup",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "flower show at Hampton Court Palace. It involves a bit of work but the result is, quite fittingly, majestic.",
+  "ingredients": [
+    {
+      "item": "good-quality olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "medium onion, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalks, quartered",
+      "amount": "4"
+    },
+    {
+      "item": "large carrot, peeled and cut into 1-inch chunks",
+      "amount": "1"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "5"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "flat-leaf parsley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "quarts water",
+      "amount": "½"
+    },
+    {
+      "item": "shelled fava beans (fresh or frozen)",
+      "amount": "¼ cups"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "2 cups"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "roughly chopped dill",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "roughly chopped chervil grated zest and juice of 1 lemon (optional)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Pour 2 tablespoons of the olive oil into a large pot. Heat up the oil and add the onion, celery and carrot. Sauté on medium heat for about 5 minutes; you want to soften up the vegetables without browning them. Next, add the thyme, bay leaves and parsley and cover with the water. Bring to the boil, then reduce the heat, cover and simmer gently for 30 minutes.",
+    "While the stock is cooking, get on with the arduous bit – preparing the fava beans. Bring a saucepan of water to the boil.",
+    "Throw in the beans and simmer for just 1 minute. Drain, then refresh the beans under running cold water to stop the cooking.",
+    "Next, remove the skins by gently pressing with your fingers against the sides of each bean, causing the soft bean to pop out; discard the skins.",
+    "When the stock is ready, pass it through a sieve into a medium saucepan; discard the vegetables and flavorings in the sieve. Add the rice to the stock. Bring to the boil, then simmer, covered, for",
+    "20 minutes. Now add half the skinned fava beans and some salt and pepper and use an immersion blender (or a regular blender) to blitz the soup until it is completely smooth.",
+    "Whisk together the yogurt, garlic and egg in a large heatproof bowl. Add a ladleful of the hot soup and whisk together. Continue gradually adding the soup until you’ve mixed in at least half of it. (It is important to do this slowly, otherwise the yogurt might split due to the difference in temperatures.)",
+    "Pour the tempered yogurt into the pan containing the rest of the soup. Place it on medium heat and warm up the soup while stirring constantly. Make sure the soup doesn’t boil! Taste and add more salt and pepper, if you like.",
+    "Ladle the soup into four shallow bowls and drop in the remaining fava beans. Garnish generously with dill, chervil and lemon zest, and drizzle with the remaining 4 tablespoons olive oil (this is important), plus some lemon juice, if you like.",
+    "These may seem a bit outdated, reminiscent of the old vol-au-vents, but all good things eventually make a comeback and I am sure this modernized version will score you many points on the imaginative-host scale.",
+    "The lentils are also delicious on their own, without the puff base.",
+    "You can skip the toasting and grinding of the seeds, if you prefer, and use ready-ground spices instead; just halve the quantity.",
+    "Puy lentil galettes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

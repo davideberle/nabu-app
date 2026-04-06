@@ -1,0 +1,63 @@
+{
+  "id": "total-prep-time-33-minutes",
+  "name": "Total Prep Time: 33 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "lean ground lamb",
+      "amount": "1 lb."
+    },
+    {
+      "item": "marinara sauce",
+      "amount": "3 cups"
+    },
+    {
+      "item": "onion, finely cut",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "fresh ricotta cheese",
+      "amount": "3 cups"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "Black pepper and salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "Gently sauté the onion in olive oil, for 2-3 minutes over medium heat. Add in the ground lamb and garlic and cook",
+    "for 10 minutes, or until the meat cooks well. Stir in the marinara sauce. Season with pepper and salt, to taste.",
+    "In a blender, blend 2 cups of the ricotta with the eggs, nutmeg and 1/2 cup of the Parmesan cheese until smooth."
+  ],
+  "time": {
+    "total": 33
+  }
+}

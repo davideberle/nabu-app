@@ -1,0 +1,92 @@
+{
+  "id": "soba-noodles-with-wakame",
+  "name": "Soba noodles with wakame",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "substitutes here. Or, if ocean flavor is not your thing, replace with thinly sliced radishes.",
+  "ingredients": [
+    {
+      "item": "large cucumbers (skin on)",
+      "amount": "2"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "soba noodles one 2-oz package wakame",
+      "amount": "11 oz"
+    },
+    {
+      "item": "rice vinegar grated zest of 2 limes",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated fresh ginger",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh red chiles, finely chopped (or less if you don’t like it too hot)",
+      "amount": "2"
+    },
+    {
+      "item": "palm sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "toasted sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sweet chile sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cilantro leaves, roughly chopped",
+      "amount": "2 cups"
+    },
+    {
+      "item": "mint leaves, roughly chopped",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "Put the noodles in a pan of boiling water and cook for 4 to",
+    "5 minutes, or as instructed on the packet. Drain and rinse in a stream of cold water to stop the cooking. Leave to dry.",
+    "Soak the wakame in warm water for about 10 minutes, or until it softens up; drain. Remove the tough “stalks” and discard. Cut or tear the rest into large pieces and put into a large mixing bowl.",
+    "Add the cooked noodles and cucumber to the wakame.",
+    "To make the sauce. Whisk together all of the sauce ingredients.",
+    "Add to the noodle mix. Stir gently, then add the sesame seeds, cilantro, mint and sprouts. Stir well again and taste – you want a sweetish tart flavor with a kick. If needed, add more salt, vinegar or sugar.",
+    "To serve, pile the noodles in serving bowls and garnish with radish sprouts.",
+    "192 | Green Beans",
+    "This is a wonderfully aromatic dish that uses an abundance of spices, resulting in a curry-like delicacy. It can be served warm with a mix of basmati and wild rice or at room temperature as a side dish.",
+    "Lovage looks like flat-leaf parsley but tastes like intense celery. Use it sparingly and you’ll find it adds tons of character to salads, lentil dishes and creamy sauces. If you can't get hold of it, substitute with cilantro or tarragon.",
+    "Mixed beans with many spices and lovage"
+  ],
+  "time": {
+    "total": 30
+  }
+}

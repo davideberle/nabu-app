@@ -1,0 +1,75 @@
+{
+  "id": "french-mushroom-bourguignon",
+  "name": "French Mushroom Bourguignon",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of white chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of mushroom slices",
+      "amount": ""
+    },
+    {
+      "item": "Three cups of red wine",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoon of softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of fresh chopped rosemary",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of fresh chopped thyme",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of chopped fresh parsley",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of vegetable stock",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the butter and onions into the pan.",
+    "Add the spices, herbs and tomatoes into the pan.",
+    "Cook the mixture well.",
+    "Add the mushroom slices into the pan.",
+    "Add the vegetable stock and cover the pan so that the vegetables cook",
+    "properly.",
+    "Add the rest of the ingredients when the vegetable mixture dries out.",
+    "Cook the dish for ten minutes.",
+    "Add the chopped parsley on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

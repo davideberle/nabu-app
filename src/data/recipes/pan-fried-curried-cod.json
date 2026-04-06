@@ -1,0 +1,45 @@
+{
+  "id": "pan-fried-curried-cod",
+  "name": "PAN-FRIED CURRIED COD",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "mild curry powder",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "chunky",
+      "amount": "2"
+    },
+    {
+      "item": "a few sprigs of fresh cilantro",
+      "amount": ""
+    },
+    {
+      "item": "natural yogurt",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Put a non-stick frying pan on a high heat and add your pat of butter and a lug of olive oil. Lay your fillets,",
+    "skin-side down, in the pan. Keep spooning the hot oil over the fillets as they cook t o get them nice and",
+    "crisp - the easiest way to do this is by angling the pan to collect the oil. Cook them for 2 to 3 minutes",
+    "each side - this is about right for a 7-ounce fillet, so give them a little lo nger if you have a chunkier",
+    "fillet -until they're cooked through and the flesh is flaking away from the skin",
+    "To serve your cod",
+    "This is lovely served up on a bed of fluffy rice (see pages 95-96), with a spoonful of natural yogurt and",
+    "some cilantro leaves sprinkled on top",
+    "258 QUICK-COOKING MEAT AND FISH",
+    "GRIL L E D TUNA AND",
+    "Ano the r great, quick meal. In a screaming hot pan, a thin slice of tuna will cook at roughly the same time",
+    "as your asparagus, and while t he pan is heating you can get on with making up the amazing lemon dressing.",
+    "Very zingy, ve r y brilliant ."
+  ],
+  "time": {
+    "total": 30
+  }
+}

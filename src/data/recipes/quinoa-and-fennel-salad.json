@@ -1,0 +1,64 @@
+{
+  "id": "quinoa-and-fennel-salad",
+  "name": "QUINOA AND FENNEL SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "and a drizzle of oil. Serve at once.",
+  "ingredients": [
+    {
+      "item": "tbsp/75 ml olive oil",
+      "amount": "5"
+    },
+    {
+      "item": "large fennel bulbs, trimmed and thinly sliced (about 1½ lb/700 g)",
+      "amount": "3"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cider vinegar scant 1 cup/150 g quinoa",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cups/300 g fresh or frozen shelled fava beans, blanched and skins removed",
+      "amount": "2¾"
+    },
+    {
+      "item": "green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin scant 1 cup/25 g mint leaves, chopped",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "cups/25 g cilantro leaves, chopped",
+      "amount": "1⅔"
+    },
+    {
+      "item": "cups/25 g dill leaves, chopped",
+      "amount": "1⅔"
+    },
+    {
+      "item": "tbsp/40 g dried currants",
+      "amount": "4½"
+    },
+    {
+      "item": "limes salt and black pepper",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Pour 3 tablespoons of the olive oil into a large sauté pan, place over high heat, add the fennel, and sear for 5 minutes, stirring once, to get some color. Turn down the heat to medium and cook for another 10 minutes, stirring occasionally, until the fennel is completely soft and golden. Add the sugar, vinegar, and ¾ teaspoon salt and cook for another 2 minutes. Remove from the heat and set aside.",
+    "Pour the quinoa into a pot of boiling water and cook for 9 minutes. Drain into a fine sieve and refresh under cold water. Shake well to dry and then add to the fennel along with the fava beans, chile, cumin, herbs, currants, ½ teaspoon salt, and a good grind of black pepper. Stir gently and set aside.",
+    "Using a small, sharp serrated knife, slice off the top and tail of each lime. Cut down the sides of each lime, following its natural line, to remove the skin and white pith. Over a small bowl, remove the segments from the limes by slicing between the membranes. Squeeze out any remaining juice from the membranes over the segments and discard the rest. Cut each segment into thirds and add them, along with the juice and the remaining 2 tablespoons olive oil, to the salad. Give everything a final stir and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

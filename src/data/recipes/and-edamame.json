@@ -1,0 +1,62 @@
+{
+  "id": "and-edamame",
+  "name": "AND EDAMAME",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "oz/250 g dried wide rice noodles",
+      "amount": "8"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "lb/450 g green onions (about 35 small ones), white and green parts, trimmed and cut on the diagonal into slices 1¼-inches/3-cm long",
+      "amount": "1"
+    },
+    {
+      "item": "or 3 green chiles, depending on heat, seeded and thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "cups/250 g frozen shelled edamame (soybeans), blanched for 3 minutes, refreshed, and left to dry",
+      "amount": "1⅔"
+    },
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sesame seeds (a mix of black and toasted white or just toasted white)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cup/15 g cilantro leaves, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "lime, zest finely grated and then cut into 6 wedges salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water to a boil and cook the noodles for about 5 minutes, or as instructed on the package, until al dente. Drain well, rinse under hot water, and set aside in a large bowl with 1½ teaspoons of the sunflower oil stirred through. Keep the bowl somewhere warm, covered, until ready to use.",
+    "Heat the remaining 2 tablespoons sunflower oil in a large wok or sauté pan over high heat. Add the green onions and chiles and cook for 2 to 3 minutes",
+    "over high heat, stirring frequently, until the onions soften a little but don’t turn mushy. Add the edamame and heat them for about 30 seconds.",
+    "Give the noodles a quick rinse under warm water if they have become stuck together and then, when drained, pour the contents of the wok over them, followed by the sesame oil, sesame seeds, vinegar, cilantro, and ¾ teaspoon salt. Stir well, sprinkle the lime zest over the top, and serve at once, with the wedges alongside.",
+    "Seaweed, Ginger, and Carrot Salad",
+    "SEAWEED, GINGER, AND CARROT SALAD"
+  ],
+  "time": {
+    "total": 30
+  }
+}

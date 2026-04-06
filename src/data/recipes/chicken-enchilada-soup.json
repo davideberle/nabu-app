@@ -1,0 +1,102 @@
+{
+  "id": "chicken-enchilada-soup",
+  "name": "Chicken Enchilada Soup",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "chopped onion",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "minced garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "can tomato sauce",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "3 cups"
+    },
+    {
+      "item": "Chipotle chili, to taste",
+      "amount": ""
+    },
+    {
+      "item": "can black beans",
+      "amount": "15 ounces"
+    },
+    {
+      "item": "cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "14.5 ounces can diced tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "chicken breasts",
+      "amount": "2"
+    },
+    {
+      "item": "of frozen corn",
+      "amount": "2 cups"
+    },
+    {
+      "item": "oregano",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "For Topping:",
+      "amount": ""
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "cheddar cheese, shredded",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "cilantro, chopped",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "sour cream",
+      "amount": "6 tbsp."
+    },
+    {
+      "item": "small avocado, diced",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a saucepan and heat oil over the medium heat.",
+    "Put garlic and onion and cook for 3-4 minutes.",
+    "Add chipotle adobo sauce, tomato sauce, and chicken broth, and bring",
+    "it to boil.",
+    "Put cilantro in it and turn down the heat.",
+    "Add diced tomatoes, oregano, drained beans, cumin, corn, and stir.",
+    "Put chicken breasts, and cook for 5-6 hours on the low heat.",
+    "Shred the chicken and put it back to the soup.",
+    "Add cumin and salt to taste.",
+    "Pour in bowls and put avocado, cheese, cilantro, sour cream, tortilla",
+    "chips, and scallions. Enjoy!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

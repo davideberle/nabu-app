@@ -1,0 +1,61 @@
+{
+  "id": "fasolada",
+  "name": "Fasolada",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "A pinch of paprika",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "130ml"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "dry white beans",
+      "amount": "500g"
+    },
+    {
+      "item": "large white onion",
+      "amount": "1"
+    },
+    {
+      "item": "of celery",
+      "amount": "3 stalks"
+    },
+    {
+      "item": "carrots",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Position the beans in a frying pan with enough cold water to cover",
+    "them to make the fasolada.",
+    "Bring to the boil, then reduce to low heat and cook for 30-35 minutes,",
+    "or until somewhat tender.",
+    "Slice the onions, celery, and vegetables thinly. In a large pan, heat 3-4",
+    "tablespoons of canola oil, then add the remaining vegetables and",
+    "blend.",
+    "Sauté for two minutes, then add the tomato sauce and cook for",
+    "another minute.",
+    "Cover and cook the fasolada for approximately 35 minutes, just until",
+    "the beans are soft.",
+    "Load in the leftover olive oil and sprinkle with salt at the end of the",
+    "cooking period."
+  ],
+  "time": {
+    "total": 80
+  }
+}

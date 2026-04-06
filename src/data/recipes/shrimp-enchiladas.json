@@ -1,0 +1,90 @@
+{
+  "id": "shrimp-enchiladas",
+  "name": "Shrimp Enchiladas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "bell pepper, red",
+      "amount": "1"
+    },
+    {
+      "item": "of olive oil",
+      "amount": "1 1/2 tbsp."
+    },
+    {
+      "item": "diced sweet onion",
+      "amount": "1/2"
+    },
+    {
+      "item": "minced jalapeno",
+      "amount": "1"
+    },
+    {
+      "item": "Corn kernels",
+      "amount": ""
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 clove"
+    },
+    {
+      "item": "package seasoning mix",
+      "amount": "1"
+    },
+    {
+      "item": "shrimp",
+      "amount": "1 pound"
+    },
+    {
+      "item": "can green chilies",
+      "amount": "1"
+    },
+    {
+      "item": "package of Colby Jack cheese",
+      "amount": "1"
+    },
+    {
+      "item": "of sour cream",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "10"
+    },
+    {
+      "item": "Monterey Jack cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cans enchilada sauce",
+      "amount": "2"
+    },
+    {
+      "item": "Fresh cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350",
+    "and take a baking dish.",
+    "Take a skillet and heat oil over the medium heat. Add onion, red",
+    "pepper, jalapeno, and corn. Cook until tender.",
+    "Add shrimp and garlic. Cook for almost 2 minutes. Then put taco",
+    "seasoning mix in it, and cook.",
+    "Turn down the heat.",
+    "Add green chilies, Colby Jack cheese, and sour cream.",
+    "Put tortillas in the microwave for 30-35 seconds, till the point they are",
+    "Place the mixture in the center of a tortilla, then roll it up. Put it in the",
+    "baking dish.",
+    "Put enchilada sauce on the tortilla.",
+    "Add Monterey Jack cheese on top of it.",
+    "Bake for almost 30 minutes.",
+    "Take out and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

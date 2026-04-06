@@ -1,0 +1,85 @@
+{
+  "id": "greek-pasta-salad",
+  "name": "Greek Pasta Salad",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "sliced black olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber",
+      "amount": "½"
+    },
+    {
+      "item": "penne pasta",
+      "amount": "2 cups"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "green bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "10"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "oregano",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    }
+  ],
+  "method": [
+    "Bring a big pot halfway with water and bring to the boil over medium",
+    "temperature, lightly salted.",
+    "When the water boils, add the penne and bring it back to a boil.",
+    "Heat the pasta uncovered, mixing periodically, for 11 minutes, or until",
+    "it is heated through and still strong to the touch.",
+    "Drain well with a colander placed in the sink after rinsing with cold",
+    "water.",
+    "Combine the vinegar, lime juice, cloves, oregano, pepper, salt, and",
+    "vegetable oil in a mixing bowl.",
+    "In a big mixing bowl, combine the spaghetti, tomatoes, onion, red and",
+    "green beans, cucumber, artichokes, and feta cheese.",
+    "Combine the spaghetti and vinaigrette in a mixing bowl.",
+    "Before serving, cover and relax for 3 hours."
+  ],
+  "time": {
+    "total": 180
+  }
+}

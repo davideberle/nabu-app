@@ -1,0 +1,56 @@
+{
+  "id": "balls",
+  "name": "BALLS",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "coconut water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "carob powder (see tip)",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "drops vanilla extract",
+      "amount": "2–3"
+    },
+    {
+      "item": "raisins or chopped dates",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "For the topping:",
+      "amount": ""
+    },
+    {
+      "item": "mango",
+      "amount": "1"
+    },
+    {
+      "item": "coconut oil drop of vanilla extract",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Put the chia seeds and the coconut water into a large bowl.",
+    "Set aside to soak for 30 minutes, stirring occasionally so the seeds do not clump together.",
+    "In the meantime, make the topping. Peel the mango and cut the flesh from the pit. Melt the coconut oil over a warm water bath.",
+    "Place the mango, coconut oil, and vanilla into a powerful blender or food processor and purée them on the highest setting for 2–3 minutes.",
+    "Stir the carob powder and drops of vanilla extract into the chia and coconut water mixture. Stir in the raisins or chopped dates.",
+    "Divide the pudding between small bowls or dessert glasses and top with the mango purée. You can also serve the purée on the side, if you wish.",
+    "Chia & pudding with",
+    "CHOCOLATE CHIP mousse"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "appetizing",
+  "name": "appetizing.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "1 ¾ cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "rice pilaf mix",
+      "amount": "7 oz."
+    },
+    {
+      "item": "curry powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "green peas",
+      "amount": "4 oz."
+    },
+    {
+      "item": "canned diced tomatoes with chili",
+      "amount": "14 ½ oz."
+    },
+    {
+      "item": "rotisserie chicken, cooked and shredded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "cashews, roasted",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Pour the prepared water and oil into a pot over medium high heat.",
+    "Bring to a boil.",
+    "Stir in the rice mix and the curry powder.",
+    "Return to a boil.",
+    "Reduce heat.",
+    "Cover the pot and simmer for 15 minutes.",
+    "Stir in the green peas, diced tomatoes with chili and shredded chicken.",
+    "Cover and cook for 10 minutes.",
+    "Top with the cashews and serve.",
+    "Recipe 29: Curry Chicken Wings with",
+    "Mango Chutney",
+    "Flavor up your chicken wings with curry and mango chutney for an"
+  ],
+  "time": {
+    "total": 30
+  }
+}

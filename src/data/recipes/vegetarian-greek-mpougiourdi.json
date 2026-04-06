@@ -1,0 +1,47 @@
+{
+  "id": "vegetarian-greek-mpougiourdi",
+  "name": "Vegetarian Greek Mpougiourdi",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "oregano",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "splash olive oil",
+      "amount": "1"
+    },
+    {
+      "item": "green hot pepper",
+      "amount": "½"
+    },
+    {
+      "item": "sliced tomato",
+      "amount": "½"
+    },
+    {
+      "item": "yellow cheese",
+      "amount": "1 slice"
+    },
+    {
+      "item": "Greek feta cheese",
+      "amount": "1 slice"
+    }
+  ],
+  "method": [
+    "Cut the tomatoes and the spice pepper.",
+    "Put the feta cheese in an oven-safe dish and then cover that with some",
+    "sliced tomatoes and some chili pepper.",
+    "Close and cover again with tomato and chili pepper with a strong",
+    "melted yellow cheese.",
+    "Add a little canola oil and a dash of oregano to the mixture.",
+    "Toast for ten minutes in a preheated oven or two minutes on the stove."
+  ],
+  "time": {
+    "total": 10
+  }
+}

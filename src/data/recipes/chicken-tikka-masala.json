@@ -1,106 +1,85 @@
 {
   "id": "chicken-tikka-masala",
-  "name": "Chicken Tikka Masala",
+  "name": "CHICKEN TIKKA MASALA",
   "source": {
-    "cookbook": "The Curry Guy Bible",
-    "author": "Dan Toombs",
-    "chapter": "Biryanis & Rice"
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
   },
-  "servings": "serves 4 or more as part of a multi-course meal",
-  "intro": "When people order a chicken tikka masala, they know what they want, and if it isn’t just like they expect it to be, you can see the disappointment in their faces. The thing is, there are hundreds of recipes for this world-famous curry. Some chefs add loads of coconut flour or block coconut, whereas others leave the coconut out. And many people like this curry super-sweet, whereas others prefer it to be more savoury. This BIR combo is my favourite version and should get you the result you’re looking for. If you use this as a guide, you can then adjust the sweetness and coconut flavour to taste. Be sure to use tandoori chicken tikka for this one.\n\nFor the photograph, I made two curries from the same batch but used red food colouring powder for the dish on the left. This is how the famous bright red colour of this curry is achieved. The two dishes tasted identical.",
-  "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
-    "cook": "10 MINS"
-  },
+  "servings": "serves 4",
   "ingredients": [
     {
-      "item": "ghee, rapeseed (canola) oil or seasoned oil",
-      "amount": "4 tbsp"
+      "item": "skinless chicken breast fillets, preferably free-range",
+      "amount": "4"
     },
     {
-      "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
+      "item": "medium onions",
+      "amount": "2"
     },
     {
-      "item": "sugar, or to taste",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "ground almonds",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "coconut flour (optional)",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "tomato purée",
-      "amount": "6 tbsp"
-    },
-    {
-      "item": "mixed powder",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "tandoori masala",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "sweet paprika",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "base curry sauce (see quick and easy base curry sauce), heated",
-      "amount": "700ml"
-    },
-    {
-      "item": "About 125ml (½ cup) cooking stock or spice stock, (optional)",
+      "item": "Yz cup tikka masala or mild curry paste, such as",
       "amount": ""
     },
     {
-      "item": "grilled chicken tikka",
-      "amount": "800g"
-    },
-    {
-      "item": "single (light) cream, plus a little more to finish",
-      "amount": "200ml"
-    },
-    {
-      "item": "red food colouring powder (optional)",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "Salt, to taste",
+      "item": "I cup natural yogurt",
       "amount": ""
     },
     {
-      "item": "Juice of 1 lemon",
+      "item": "a small handful of sliced almonds",
       "amount": ""
-    },
-    {
-      "item": "Small bunch of coriander (cilantro), chopped",
-      "amount": ""
-    },
-    {
-      "item": "dried fenugreek leaves (kasoori methi)",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "garam masala",
-      "amount": "1 tsp"
     }
   ],
   "method": [
-    "Heat the ghee or oil in a large pan over a medium–high heat. When small bubbles begin to appear, stir in the garlic and ginger paste; it will sizzle. Add the sugar, ground almonds and coconut flour (if using) followed by the tomato purée. This will cool the pan slightly.",
-    "Swirl this all together into one big happy tomato party, then stir in the mixed powder, tandoori masala and paprika, followed by 250ml (1 cup) of the base curry sauce. When the sauce begins to bubble, add the rest of the base curry sauce and let it simmer nicely for a few minutes. As it simmers, the sauce will begin to brown on the side of the pan. Stir this in from time to time.",
-    "If you have some cooking stock from pre-cooked stewed chicken or spice stock, you can add it for extra flavour. Add the grilled chicken to the simmering sauce to heat through.",
-    "When the sauce has cooked down to your desired thickness, add the cream and food colouring (if using) and simmer for a further 2 minutes. If the sauce becomes too thick, you can add a little more base sauce, cooking stock or spice stock.",
-    "To finish, taste and season with salt. If you like your CTMs sweet, add a little more sugar. Squeeze in the lemon juice and sprinkle with the chopped coriander (cilantro), dried fenugreek leaves (kasoori methi) and the garam masala. A swirl of cream on top adds a nice finishing touch."
+    "Put a large casserole-type pan on a medium to high heat and add a couple of lugs of oil and th e butter.",
+    "the onions, chile, ginger, and coriander stalks and coo k for 10 minutes, until softe ned and golden.",
+    "Add the curry paste and the strips of chicken • Stir well t o coat everything with t he paste and se ason",
+    "salt and pepper. Add the tomatoes and the coconut milk. Fill one of the e mpty cans wit h w ater,",
+    "pour into the pan, and stir again. Bring to a boil, t hen turn t he heat down and simmer for 20 minutes",
+    "the lid on • Check the curry regularly to make sure it 's not drying out and add ext ra water if",
+    "necessary • When the meat is tender and cooked, taste and add a bit more salt and pe pper -please",
+    "season carefully",
+    "To serve your curry",
+    "This will be fantastic served wit h any of my fluffy r ice recipes (see pages 95-96) and with a few spoonfuls",
+    "dolloped on top. Sprinkle over tf)e almonds and cilantro leaves and se rve wit h some lemon",
+    "wedges for squeezing over. And a little lemon-dressed green salad would ro und it off",
+    "Now we're talking! I've loved eating vindalo o eve r since I was a kid, and it's where my passion for eating",
+    "chiles first started. This type of curry is the beaut iful result of European and Indian cooking coming",
+    "together. The word \"vindaloo\" means \"vinegar and garlic.\" T hanks to Portuguese settlers bringing their",
+    "original recipe to Goa, this dish got the Indian treatment, which added plenty of wonderful spices to the",
+    "mix . I'm using pork here, but it will work just as well with chicken or lamb. A word of warning, though -",
+    "curry and not fo r the faint-hearted, but you can always remove the chile.",
+    "4 cloves of garlic",
+    "1-2 fresh red chiles, to your taste",
+    "a thumb-sized piece of fresh root ginger",
+    "a small bunch offresh cilantro",
+    "peanut or vegetable oil",
+    "13,4 pounds diced pork shoulder, preferably free-range",
+    "To prepare our curry",
+    "Y2 cup vindaloo or hot curry paste, such as Patak's, or",
+    "my vindaloo paste (see page 99)",
+    "sea salt and freshly ground black pepper",
+    "13 cup balsamic vinegar",
+    "I tablespoon honey",
+    "I cup natural yogurt",
+    "Peel, halve, and fine ly slice your onions. Peel and finely slice the garlic. Finely slice the chile. Peel and finely",
+    "t he ginger . Pick the cilantro leaves and finely chop the stalks. Cut the tomatoes into quarters",
+    "To cook your curry",
+    "Get a large casserole-type pan on a medium to high heat and add a couple of lugs of peanut oil and the",
+    "butter . Add t he onions, garlic, chile, ginger, and cilantro stalks and cook for 10 minutes, until softened",
+    "go lden. Add the pork and the curry paste. Sti r well to coat everything with the paste and season",
+    "wit h salt and pepper. Add t he tomatoes, balsamic vinegar, honey, and about 1",
+    "13 cups of water, enough",
+    "ver ever ything, and stir ag ain. Bring to a boil, t hen turn the heat down and simmer for 45 minutes",
+    "wit h the lid o n • Check the curry regularly to make sure it's not sticking to the pan, and add extra water",
+    "if necessary . Only when t he meat is tender and cooked, taste and season with salt and pepper -please",
+    "season carefully",
+    "To serve your curry",
+    "Fe e l free to serve with any of my fluffy r ice recipes (see pages 95-96) and with a few spoonfuls of natural",
+    "yogurt dollope d on top • Sprinkle over the cilantro leaves and serve with some lemon wedges for",
+    "I often think of this as a vegetable side dish but it's actually a curry in its own right. It's a really delicious",
+    "combination of potato and cauliflower with spices, and it get s its gorgeous yellow color from the turmeric",
+    "that is used to flavor it."
   ],
-  "image": "/recipes/chicken-tikka-masala.jpg",
-  "category": {
-    "dish_type": [
-      "main"
-    ]
+  "time": {
+    "total": 30
   }
 }

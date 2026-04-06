@@ -1,0 +1,70 @@
+{
+  "id": "french-sole-meuni-re",
+  "name": "French Sole Meunière",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two tablespoon of flour",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of Dijon mustard",
+      "amount": ""
+    },
+    {
+      "item": "One cup of Worcestershire sauce",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of chopped capers",
+      "amount": ""
+    },
+    {
+      "item": "One pound of fish filets",
+      "amount": ""
+    },
+    {
+      "item": "One cup of anchovy paste",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of Pernod",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of salt",
+      "amount": ""
+    },
+    {
+      "item": "Chopped fresh chives",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the dried ingredients into the bowl.",
+    "Mix well.",
+    "Add the anchovy puree into the bowl.",
+    "Add the Pernod and spices.",
+    "Add the steak and rest of the ingredients.",
+    "Mix the ingredients well.",
+    "Grill the fish pieces.",
+    "Dish out the pieces when the fish is cooked on both sides.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

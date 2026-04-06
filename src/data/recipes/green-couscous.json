@@ -1,0 +1,90 @@
+{
+  "id": "green-couscous",
+  "name": "Green couscous",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "with fish. Adding some feta will make it a bit more substantial.",
+  "ingredients": [
+    {
+      "item": "couscous",
+      "amount": "1 cup"
+    },
+    {
+      "item": "boiling water or vegetable stock",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "small onion, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "³ cup chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped tarragon",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "unsalted pistachios, toasted and roughly chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "green onions, finely sliced",
+      "amount": "3"
+    },
+    {
+      "item": "fresh green chile, finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "arugula leaves, chopped",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Place the couscous in a large bowl and cover with the boiling water or stock. Cover the bowl with plastic wrap and leave for",
+    "Meanwhile, fry the onion in the olive oil on medium heat until golden and completely soft. Add the salt and cumin and mix well.",
+    "Leave to cool slightly.",
+    "To make the herb paste. Place all the ingredients in a food processor and blitz until smooth.",
+    "Add the herb paste to the couscous and mix everything together well with a fork to fluff it up. Now add the cooked onion, the pistachios, green onions, green chile and arugula and gently mix.",
+    "Serve at room temperature.",
+    "260 | Pasta, Polenta, Couscous",
+    "Counterintuitive as this combination of pasta with Moroccan-style butter may seem, it is absolutely delicious and I am sure that once tried you’ll keep on coming back to it. Instead of homemade you can go for a good variety of dried pasta and add a decent pinch of saffron threads to the cooking water.",
+    "Saffron tagliatelle with spiced butter"
+  ],
+  "time": {
+    "total": 30
+  }
+}

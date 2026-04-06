@@ -1,0 +1,65 @@
+{
+  "id": "revithia",
+  "name": "Revithia",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "flour",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "Vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 tablespoon"
+    },
+    {
+      "item": "large red onion",
+      "amount": "1"
+    },
+    {
+      "item": "a cup olive oil",
+      "amount": "½"
+    },
+    {
+      "item": "dry chickpeas",
+      "amount": "500g"
+    }
+  ],
+  "method": [
+    "Wash the chickpeas and remove the soaked water when prepared to",
+    "make this Greek chickpea pasta dish.",
+    "Wash the chickpeas thoroughly in a colander that has plenty of water.",
+    "Fill a wide pan halfway with cold water to cover the revithia.",
+    "Increase the heat to high and bring to a boil.",
+    "Wipe the chickpeas, then return them to the bowl with enough hot",
+    "water to cover them fully.",
+    "Reduce the heat to low heat and cover the pot.",
+    "Enable the revithia to cook for 1-2 hours, based on the size of the",
+    "chickpeas.",
+    "Sprinkle with salt as you slowly pour the combination into the pan",
+    "with the chickpeas.",
+    "Mix the soup slowly for 2-3 minutes or until it softens."
+  ],
+  "time": {
+    "total": 110
+  }
+}

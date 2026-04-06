@@ -1,0 +1,89 @@
+{
+  "id": "pomelo-salad",
+  "name": "POMELO SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "this over the salad, finish with the hazelnuts, and serve.",
+  "ingredients": [
+    {
+      "item": "tbsp/75 ml rice wine vinegar",
+      "amount": "5"
+    },
+    {
+      "item": "cup/40 g palm (or superfine) sugar",
+      "amount": "¼"
+    },
+    {
+      "item": "orange blossom water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "star anise pods",
+      "amount": "2"
+    },
+    {
+      "item": "cinnamon stick, broken in two",
+      "amount": "1"
+    },
+    {
+      "item": "1¼-inch/3-cm piece fresh ginger (about ⅓ oz/10 g), peeled and cut into thin strips",
+      "amount": ""
+    },
+    {
+      "item": "red chiles, seeded and cut into thin strips",
+      "amount": "2"
+    },
+    {
+      "item": "large (or 2 small) pomelo (2¼ lb/1 kg in total; 2 cups/350 g once peeled and segmented)",
+      "amount": "1"
+    },
+    {
+      "item": "small green or regular mango, peeled and cut into thin strips (scant 1 cup/140 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/10 g cilantro leaves",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/10 g mint leaves",
+      "amount": "⅓"
+    },
+    {
+      "item": "baby red or regular shallots, thinly sliced (⅓ cup/40 g)",
+      "amount": "4"
+    },
+    {
+      "item": "cups/60 g watercress leaves",
+      "amount": "2"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "black sesame seeds (or white, if unavailable)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cup/40 g roasted peanuts, coarsely chopped salt",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "First make the marinade. Place the vinegar and sugar in a small saucepan and warm gently, stirring, until the sugar dissolves. Remove from the heat, add the orange blossom water, star anise, cinnamon, ginger, and chiles and set aside.",
+    "Use a sharp knife to peel the pomelo skin. Divide into segments and use the knife to remove and discard the pith and membrane. Break the fruit segments into 1 or 2 bite-size chunks, put in a shallow dish, and pour in the marinade.",
+    "Leave for at least 30 minutes—the longer, the better.",
+    "Remove and discard the star anise and cinnamon. Drain and save the marinade. Place the pomelo, ginger, and chiles in a large bowl and add 3 tablespoons of the reserved marinade along with the mango, cilantro, mint, shallots, watercress, peanut oil, lime juice, and ¼ teaspoon salt. Gently toss, add more marinade, if needed, and then sprinkle with the sesame seeds and peanuts and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

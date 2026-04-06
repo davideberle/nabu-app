@@ -1,0 +1,82 @@
+{
+  "id": "croutons",
+  "name": "CROUTONS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "cups/250 g cannellini beans, soaked in water overnight with 2 tsp baking soda scant 3½ tbsp/50 g tahini paste",
+      "amount": "1⅓"
+    },
+    {
+      "item": "tbsp/100 ml olive oil",
+      "amount": "7"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pita breads (4 oz/120g), torn into 1¼-inch/3-cm pieces",
+      "amount": "2"
+    },
+    {
+      "item": "chopped flat-leaf parsley, to garnish salt and white pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cup/160 ml cider vinegar",
+      "amount": "⅔"
+    },
+    {
+      "item": "brown miso scant 3 oz/80 g button mushrooms, cut into slices ¼-inch/5-mm thick",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium red onion, very thinly sliced into rounds (about ⅔ cup/60 g)",
+      "amount": "½"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "red peppercorns",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "allspice berries",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Prepare the pickle a day before serving. Place the sugar, vinegar, miso, and ¾ cup/180 ml water in a saucepan with 1 teaspoon salt. Bring to a boil and then pour into a heatproof, nonreactive bowl containing the mushrooms, onion, both peppercorns, allspice, and bay leaves. Leave to cool, then cover and refrigerate overnight. Take out of the fridge at least 1 hour before using.",
+    "The next day, drain and rinse the beans, put them in a large saucepan, and cover with plenty of water. Bring to a boil and then simmer gently for 30 to",
+    "60 minutes (beans vary greatly in cooking time), topping up the water if needed, until completely soft. You’ll need to skim the surface a few times during cooking. Drain, keeping some of the cooking liquid, and transfer to a food processor, along with the tahini, 4 tablespoons of the olive oil, the garlic, lemon juice, ¾ teaspoon salt, and ½ teaspoon white pepper. Blitz well, until a very smooth paste has formed, and set aside. Once ready to serve, add a little cooking liquid if you need to get a soft and fluffy consistency (like runny mashed potatoes).",
+    "Pour the remaining 3 tablespoons olive oil and all of the sunflower oil into a sauté pan and place over high heat. When hot, add the pita and fry for about 3 minutes, shaking the pan from time to time, until golden and crisp all over.",
+    "Transfer to a colander lined with paper towels and sprinkle with a pinch of salt.",
+    "When ready to serve, spread the puree out on a large platter. Spoon the mushrooms and onions, a few tablespoons of the pickling liquid, and a teaspoon or two of the aromatics over the puree. Dot with some of the pita croutons (serve the rest on the side), sprinkle with the parsley, and serve at once."
+  ],
+  "time": {
+    "total": 30
+  }
+}

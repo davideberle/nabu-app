@@ -1,0 +1,99 @@
+{
+  "id": "homemade-bread",
+  "name": "Homemade Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "a quarter cup of lukewarm water",
+      "amount": ""
+    },
+    {
+      "item": "(1/4-oz.) active dry yeast package",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "1+ 1 tsp honey (distributed)",
+      "amount": ""
+    },
+    {
+      "item": "Spray for Cooking",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "room temperature buttermilk",
+      "amount": ""
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "melted butter, plus softened",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "butter",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "1 1/4"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "three c.",
+      "amount": ""
+    },
+    {
+      "item": "flour for bread",
+      "amount": ""
+    },
+    {
+      "item": "Dust with all-purpose flour.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl of lukewarm water, combine yeast and 1 teaspoon",
+    "honey. Set aside for 10 minutes to allow flavors to meld.",
+    "Spray a large mixing bowl lightly with cooking spray and leave",
+    "aside. Knead yeast mixture, buttermilk, remaining 2 tablespoons",
+    "honey, melted butter, salt, and half of the flour in a stand mixer",
+    "equipped with a dough hook or another large mixing basin.",
+    "Continue kneading with the remaining flour until the dough",
+    "pulls away from the sides of the bay, about 7 to 10 minutes.",
+    "Place in a greased mixing bowl and cover with plastic wrap until",
+    "doubled in size.",
+    "Preheat the oven to 400 degrees Fahrenheit and set an oven-safe",
+    "pan on the bottom shelf. Fill the pan with 2 cups of boiling",
+    "water.",
+    "Turn dough out onto a lightly floured board and gently press all",
+    "over to eliminate air pockets. Pat into a 9\" x 12\" rectangle, then",
+    "roll into a tight cylinder from the short side. Place dough seam-",
+    "side down in a greased 8.5\" x 4\" loaf pan and gently press to",
+    "close seam and tuck in ends—cover and proof for 30 to 45",
+    "minutes, or until doubled.",
+    "Brush loaf with melted butter and bake for 30 minutes, or until",
+    "golden brown and internal temperature reaches 195°.",
+    "Allow cooling for 10 minutes before removing from loaf pan",
+    "and placing on a cooling rack."
+  ],
+  "time": {
+    "total": 40
+  }
+}

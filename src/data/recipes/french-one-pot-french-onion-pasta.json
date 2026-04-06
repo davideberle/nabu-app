@@ -1,0 +1,77 @@
+{
+  "id": "french-one-pot-french-onion-pasta",
+  "name": "French One Pot French Onion Pasta",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "One cup of diced onion",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "One pack of pasta",
+      "amount": ""
+    },
+    {
+      "item": "One cup of vegetable broth",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of thyme powder",
+      "amount": ""
+    },
+    {
+      "item": "One cup of shredded cheese",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One cup of water",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced garlic",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of minced ginger",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a pan.",
+    "Add in the oil and onions.",
+    "Cook the onions until they become soft and fragrant.",
+    "Add in the chopped garlic and ginger.",
+    "Cook the mixture well.",
+    "Add the spices.",
+    "Add in the broth.",
+    "Mix the ingredients carefully and cover your pan.",
+    "Boil the pasta according to the instructions on the package.",
+    "Add in the cherry tomatoes.",
+    "Mix the pasta and shredded cheese into the mixture.",
+    "Add the cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 35
+  }
+}

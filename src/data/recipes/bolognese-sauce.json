@@ -1,95 +1,63 @@
 {
   "id": "bolognese-sauce",
-  "name": "Bolognese Sauce",
+  "name": "BOLOGNESE SAUCE",
   "source": {
-    "cookbook": "The Best Pasta Recipes",
-    "author": "Jaydon Mack"
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
   },
+  "servings": "serves 4",
   "ingredients": [
     {
-      "item": "olive oil",
-      "amount": "1 tbsp."
+      "item": "of smoked bacon, preferably free-range or",
+      "amount": "2 slices"
     },
     {
-      "item": "cut-up pancetta",
-      "amount": "3 oz."
-    },
-    {
-      "item": "chopped onion",
-      "amount": "1"
-    },
-    {
-      "item": "minced garlic cloves",
+      "item": "medium onions",
       "amount": "2"
     },
     {
-      "item": "sliced mushrooms",
-      "amount": "1 cup"
+      "item": "of gorlic",
+      "amount": "2 cloves"
     },
     {
-      "item": "shredded carrots",
+      "item": "carrots",
       "amount": "2"
     },
     {
-      "item": "chopped celery stalks",
+      "item": "celery stalks",
       "amount": "2"
     },
     {
-      "item": "ground beef",
-      "amount": "1 lb."
+      "item": "heaped teaspoons dried oregano",
+      "amount": "2"
     },
     {
-      "item": "ground pork",
-      "amount": "¾ lb."
+      "item": "x f 4-ounce cans of diced tomatoes",
+      "amount": "2"
     },
     {
-      "item": "crushed canned tomatoes",
-      "amount": "28 oz."
+      "item": "Parmesan cheese",
+      "amount": "4 ounces"
     },
     {
-      "item": "tomato paste",
-      "amount": "6 oz."
-    },
-    {
-      "item": "dry white wine",
-      "amount": "½ cup"
-    },
-    {
-      "item": "chicken stock",
-      "amount": "¾ cup"
-    },
-    {
-      "item": "milk",
-      "amount": "½ cup"
-    },
-    {
-      "item": "Italian seasoning or to taste",
-      "amount": "1 tsp."
-    },
-    {
-      "item": "Salt and pepper to taste",
+      "item": "basil leaves, keeping",
       "amount": ""
-    },
-    {
-      "item": "grated Pecorino Romano",
-      "amount": "¼ cup"
-    },
-    {
-      "item": "prepared pasta",
-      "amount": "1 lb."
     }
   ],
   "method": [
-    "Heat the oil in a large skillet and sauté the pancetta, onion, and garlic for 5 minutes.",
-    "Use the skillet the brown both meats for 5 minutes.",
-    "Drain off any fat.",
-    "Add the pancetta mixture back to the skillet and stir in the beef and pork.",
-    "Stir in the remaining ingredients and combine well.",
-    "Cover the skillet and simmer for 1 hour while frequently stirring.",
-    "Serve over the cooked pasta."
+    "Bring a large pan of salted water to a boil. Add your pasta and stir, following the package cooking times",
+    "don't let it cook any longer or it will become too soft - you want it to have a bit of bite. Saving a little",
+    "of the cooking water, drain the pasta in a colander. Put the drained pasta back into the pan. Add half",
+    "the Bolognese sauce to the cooked pasta and mix well, adding a little of the reserved cooking water to",
+    "loosen. Divide between your plates and spoon the remaining sauce over the top. Drizzle with olive oil,",
+    "over the rest of the Parmesan, and scatter with the small basil leaves -bellissima!",
+    "I couldn't do a ground chapter without in cluding",
+    "lasagne. The ground beef sed here is basically the same",
+    "recipe as for the Bologne sauce on page 165, with added",
+    "for how to build up a lasagne and make a",
+    "quick white sauce."
   ],
-  "image": "/recipes/bolognese-sauce.jpg",
   "time": {
-    "total": 10
+    "total": 30
   }
 }

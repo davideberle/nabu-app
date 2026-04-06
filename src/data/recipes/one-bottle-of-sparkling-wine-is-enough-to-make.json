@@ -1,0 +1,37 @@
+{
+  "id": "one-bottle-of-sparkling-wine-is-enough-to-make",
+  "name": "One bottle of sparkling wine is enough to make",
+  "source": {
+    "cookbook": "The Best of Fine Cooking: Breakfast",
+    "author": "Fine Cooking"
+  },
+  "servings": "serves 6",
+  "intro": "about six cocktails. You can  easily double or",
+  "ingredients": [
+    {
+      "item": "plus 2 Tbs. unsweetened pure pomegranate juice (such as Pom brand), chilled",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Tbs. sugar syrup (recipe below), chilled",
+      "amount": "3"
+    },
+    {
+      "item": "bottle dry sparkling wine or",
+      "amount": "1 750ml"
+    }
+  ],
+  "method": [
+    "In a small pitcher, stir the pomegranate juice and sugar syrup. Fill each flute about one-third full with the pomegranate mixture. Top with the sparkling wine, dividing it evenly among the flutes.",
+    "Serve immediately. sugar syrup",
+    "Yields a scant  cup, enough to make about",
+    "½ cup granulated sugar",
+    "In a small saucepan, bring the sugar and water to a boil over high heat, stirring until the sugar is dissolved. Boil for 1 minute. Let cool and then refrigerate until ready to use. masala chai",
+    "If you find typical coffeehouse chai over powering, try this version of the well-known Indian spiced tea. Its judicious use of spices results in a kinder, gentler drink.",
+    "Yields 3¾ cups; serves 4",
+    "1 Tbs. loose black tea, such as"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "french-palmier-cookies",
+  "name": "French Palmier Cookies",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half teaspoon of nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Three and a half cup of flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A cup of salted butter",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of palmier sugar for sprinkling",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of kosher salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the dry ingredients in a bowl.",
+    "Mix all the ingredients well.",
+    "Add the butter and the rest of the ingredients into the bowl.",
+    "Add the formed mixture into a pipping bag.",
+    "Make small heart shaped cookies on a baking dish and sprinkle the",
+    "palmier sugar on top.",
+    "Bake the cookies for twenty minutes.",
+    "Dish out the cookies when done.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

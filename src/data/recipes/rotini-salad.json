@@ -1,0 +1,95 @@
+{
+  "id": "rotini-salad",
+  "name": "Rotini Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "rotini",
+      "amount": "10 to 16 oz."
+    },
+    {
+      "item": "vegetables, cut into bite-size pieces",
+      "amount": "1 cup"
+    },
+    {
+      "item": "medium onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, quartered and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "green bell pepper, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small jar pimientos",
+      "amount": "1"
+    },
+    {
+      "item": "of celery, chopped",
+      "amount": "1 stalk"
+    },
+    {
+      "item": "Dressing:",
+      "amount": ""
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "pepper",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "garlic salt",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "dry mustard",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "parsley flakes",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Accent",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; drain, rinse with cold water.",
+    "Blend together dressing ingredients: vinegar, sugar, salt, pepper, garlic salt, dry mustard, parsley and Accent in a",
+    "small bowl.",
+    "Mix vegetables, onion, cucumber, bell pepper, pimentos and celery with pasta in a large container.",
+    "Toss with vinegar dressing and chill before serving.",
+    "(9) Super food Macaroni Salad",
+    "In a country where it is often difficult to find fresh vegetables, macaroni salad is one of the few foods that are",
+    "inexpensive and can be made from ingredients found at any grocery store. Macaroni salad in particular features",
+    "macaroni noodles, mayonnaise, vinegar, sugar and seasoning. This recipe also includes carrots and celery for a",
+    "more hearty meal!",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

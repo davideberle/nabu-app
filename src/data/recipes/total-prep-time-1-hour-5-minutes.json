@@ -1,0 +1,62 @@
+{
+  "id": "total-prep-time-1-hour-5-minutes",
+  "name": "Total Prep Time: 1 hour 5 minutes",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "lean ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "bag frozen spinach",
+      "amount": "1"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "can tomatoes",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2-3"
+    },
+    {
+      "item": "dried basil",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mozzarella cheese, shredded",
+      "amount": "2 cup"
+    },
+    {
+      "item": "no-cook lasagna noodles",
+      "amount": "12"
+    }
+  ],
+  "method": [
+    "How to Cook:",
+    "In a skillet, sauté onion and garlic for a few minutes. Add in beef and cook over medium heat until the meat is no",
+    "longer pink. Stir in tomatoes, basil and oregano. Simmer for 10-12 minutes.",
+    "In a bowl, combine the thawed spinach with half the ricotta and mozzarella cheese.",
+    "Spread one-third of the meat mixture over the bottom of a greased 13x9x2-inch baking dish. Sprinkle with one-",
+    "fourth of the spinach-cheese mixture. Top with noodles. Repeat layering meat, spinach mixture, and noodles two",
+    "more times."
+  ],
+  "time": {
+    "total": 1
+  }
+}

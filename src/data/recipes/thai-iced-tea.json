@@ -1,0 +1,32 @@
+{
+  "id": "thai-iced-tea",
+  "name": "Thai Iced Tea",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 2",
+  "intro": "are listed below courtesy of thespruceeats.com.",
+  "ingredients": [
+    {
+      "item": "of water",
+      "amount": "4 cups (1 liter)"
+    },
+    {
+      "item": "Ginger, large hand sized root (8 oz/200 g) peeled, the older the better",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut up the ginger and place in a big pot of water on the stove. Sim- mer over low heat for at least 2 hours, until the water is infused with the ginger.",
+    "Drain and drink hot imme- diately, or save in the freezer for whenever you need it. If you prefer it a little sweet, just add a teaspoon of sugar or honey.",
+    "This ginger drink, when sweet- ened, is also a good base for fresh tofu and deep-fried dough bits—a common street food breakfast.",
+    "½ cup (125 ml) lime juice (fresh preferable)",
+    "1 cup (250 ml) soda water",
+    "1 cup (250 ml) water",
+    "1 cup (200 g) sugar"
+  ],
+  "time": {
+    "total": 30
+  }
+}

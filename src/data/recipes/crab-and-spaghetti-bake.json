@@ -1,0 +1,87 @@
+{
+  "id": "crab-and-spaghetti-bake",
+  "name": "Crab and Spaghetti Bake",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "spaghetti or vermicelli",
+      "amount": "6 oz."
+    },
+    {
+      "item": "large onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "butter or margarine",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "can low fat cream of mushroom soup",
+      "amount": "1"
+    },
+    {
+      "item": "half-and-half",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cooked fresh or canned crab",
+      "amount": "1/2 lb."
+    },
+    {
+      "item": "hard-cooked eggs, diced",
+      "amount": "2"
+    },
+    {
+      "item": "sliced water chestnuts",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "jar sliced pimentos, drained",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and cayenne pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "shredded sharp Cheddar cheese",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "Non-stick cooking spray",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; drain.",
+    "In a large skillet, sauté onion in butter or margarine until soft. Blend in soup, half-and-half, Worcestershire sauce",
+    "and mustard. Add spaghetti, crab, eggs, water chestnuts, and pimentos; toss gently. Season to taste with salt and red",
+    "pepper.",
+    "Spoon spaghetti mixture into a shallow 2-quart casserole dish or 9-inch square baking dish, lightly sprayed with",
+    "non-stick cooking spray. Sprinkle with cheese.",
+    "Bake uncovered at 375 degrees for about 25 minutes or until bubbly and heated through.",
+    "(13) Avocado, Roasted Mushroom, and Ham Spaghetti",
+    "Mushrooms, avocado, and ham are perfect for this winter-inspired pasta dish. You combine crunchy mushrooms",
+    "with creamy avocados to create a hearty sauce that will keep you warm as the weather gets colder.",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 55
+  }
+}

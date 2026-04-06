@@ -1,0 +1,39 @@
+{
+  "id": "serving-3",
+  "name": "Serving: 3",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of creamy softened butter",
+      "amount": ""
+    },
+    {
+      "item": "One cup of buckwheat flour",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of chocolate powder",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of vanilla extract",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a bowl.",
+    "Add the creamy softened butter into the bowl.",
+    "Add in the buckwheat flour, chocolate powder, vanilla extract, and"
+  ],
+  "time": {
+    "total": 30
+  }
+}

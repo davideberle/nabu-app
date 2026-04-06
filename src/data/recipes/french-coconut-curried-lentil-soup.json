@@ -1,0 +1,88 @@
+{
+  "id": "french-coconut-curried-lentil-soup",
+  "name": "French Coconut Curried Lentil Soup",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two cups of vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of crushed garlic",
+      "amount": ""
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Black pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "One cup of dried white wine",
+      "amount": ""
+    },
+    {
+      "item": "One cup of onion",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of all-purpose flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of heavy cream",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of lentils",
+      "amount": ""
+    },
+    {
+      "item": "One cup of coconut milk",
+      "amount": ""
+    },
+    {
+      "item": "One bay leaf",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "French bread slices",
+      "amount": ""
+    },
+    {
+      "item": "Chopped dill",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large saucepan.",
+    "Add the oil and onions into the pan.",
+    "Cook the onions until they turn golden brown.",
+    "Add the crushed garlic into the pan.",
+    "Add the spices and lentils into the mixture.",
+    "Add the all-purpose flour, heavy cream and dried white wine.",
+    "Add the coconut milk and then add the vegetable stock.",
+    "Cover the pan with a lid for five minutes.",
+    "Let the soup cook properly.",
+    "Dish out the soup into soup bowls.",
+    "Add the chopped fresh dill on top.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

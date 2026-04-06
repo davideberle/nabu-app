@@ -1,0 +1,75 @@
+{
+  "id": "makes-1-large-glass-preparation-time-10-minutes",
+  "name": "Makes 1 large glass • Preparation time: 10 minutes",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "glasses • Preparation time: 10 minutes",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 cup orange juice",
+      "amount": ""
+    },
+    {
+      "item": "celery juice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cilantro juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "parsley juice pinch of Himalayan salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2–3"
+    },
+    {
+      "item": "⁄4 cups pineapple",
+      "amount": ""
+    },
+    {
+      "item": "small piece (",
+      "amount": "1"
+    },
+    {
+      "item": "celery stick, including the leaves",
+      "amount": "1"
+    },
+    {
+      "item": "of mâche or baby spinach",
+      "amount": "1 handful"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1 piece (2in/5cm)"
+    },
+    {
+      "item": "of ground cayenne pepper",
+      "amount": "1 pinch"
+    },
+    {
+      "item": "spirulina powder",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "If you have a juicer that can extract the juice from greens, then this smoothie, in terms of both taste and health, is the ultimate for vitality! It purges and is also chock-full of vitamins. It’s a great wake-up drink in the morning! smoothie juice",
+    "Makes 1 glass • Preparation time: 5 minutes",
+    "Makes 1 glass • Preparation time: 5 minutes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

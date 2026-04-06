@@ -1,0 +1,78 @@
+{
+  "id": "cucumber-salad-with-smashed-garlic-and-ginger",
+  "name": "Cucumber salad with smashed garlic and ginger",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Coconut Rice with Sambal and Okra (page 230).",
+  "ingredients": [
+    {
+      "item": "as a condiment or a side dish",
+      "amount": "6"
+    },
+    {
+      "item": "rice wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "toasted sesame oil",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "small red onion, very thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, peeled and sliced",
+      "amount": "½ inches"
+    },
+    {
+      "item": "Maldon sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "large garlic cloves, peeled",
+      "amount": "2"
+    },
+    {
+      "item": "small (or 8 mini) cucumbers (1",
+      "amount": "4"
+    },
+    {
+      "item": "lbs), peeled",
+      "amount": "¼"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "To make the dressing. Whisk together all the dressing ingredients in a medium mixing bowl.",
+    "Add the sliced red onion, mix well and leave aside to marinate for about an hour.",
+    "Place the ginger and salt in a mortar and pound well with a pestle. Add the garlic and continue pounding until it is also well crushed and broken into pieces (stop pounding before it disintegrates into a paste). Use a spatula to scrape the contents of the mortar into the bowl with the onion and dressing. Stir together.",
+    "Cut the cucumbers lengthways in half, then cut each half on an angle into",
+    "¼-inch-thick slices. Add the cucumber to the bowl, followed by the sesame seeds and cilantro. Stir well and leave to sit for 10 minutes.",
+    "Before serving, stir the salad again, tip out some of the liquid that has accumulated at the bottom of the bowl and adjust the seasoning.",
+    "168 | Green Things",
+    "This is a majestic dish, perfect for starting off a light summer’s supper. Eat it warm or at room temperature, on its own or with some good mayonnaise.",
+    "Lemony globe artichokes"
+  ],
+  "time": {
+    "total": 30
+  }
+}

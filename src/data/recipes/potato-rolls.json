@@ -1,0 +1,99 @@
+{
+  "id": "potato-rolls",
+  "name": "Potato Rolls",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "1 1/4 c. lukewarm water",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "1+ 1 teaspoon granulated sugar (distributed)",
+      "amount": ""
+    },
+    {
+      "item": "(0.25 oz.) active dry yeast package",
+      "amount": ""
+    },
+    {
+      "item": "c. 5",
+      "amount": ""
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "potato, cooked and mashed (from about 1 large russet",
+      "amount": ""
+    },
+    {
+      "item": "potato)",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "6"
+    },
+    {
+      "item": "softened butter",
+      "amount": ""
+    },
+    {
+      "item": "Spray for Cooking",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "butter that has melted",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine 1 teaspoon sugar and lukewarm water in a glass",
+    "measuring cup or small dish. Sprinkle yeast on top and set aside",
+    "about 5 minutes, or until frothy. In a small bowl, dissolve yeast",
+    "in water.",
+    "Combine flour, remaining tablespoon sugar, and salt in the bowl",
+    "of a stand mixer fitted with the dough hook. Next, combine the",
+    "yeast mixture and the potatoes in a mixing bowl. While the",
+    "mixer is running, add the butter a tablespoon until it is",
+    "completely incorporated. Continue mixing for another 5",
+    "minutes, or until a smooth dough develops.",
+    "Spray a large mixing bowl with cooking spray and place the",
+    "dough in it. Cover with a kitchen towel and rise for 1 hour, or",
+    "until doubled in size.",
+    "Deflate the dough by punching it down, then turn it out onto a",
+    "lightly floured surface. Make 12 equal portions of dough and",
+    "roll each into a smooth ball.",
+    "Spray a 9\" x13\" baking sheet with cooking spray and arrange",
+    "the balls in it, leaving an inch between them. Cover and set",
+    "aside for another 45 minutes to rise.",
+    "Preheat oven to 400 degrees Fahrenheit (200 degrees Celsius)",
+    "(200 degrees Celsius).Using melted butter, brush the tops of the",
+    "dough—Bake for about 25 minutes, or until brown.",
+    "Drizzle with extra melted butter and serve while still warm."
+  ],
+  "time": {
+    "total": 50
+  }
+}

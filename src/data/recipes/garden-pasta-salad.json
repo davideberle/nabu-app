@@ -1,0 +1,85 @@
+{
+  "id": "garden-pasta-salad",
+  "name": "Garden Pasta Salad",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "rotini",
+      "amount": "2 cups"
+    },
+    {
+      "item": "small broccoli flowerets",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "tomato, diced",
+      "amount": "1 cup"
+    },
+    {
+      "item": "small zucchini, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "black olives, sliced",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "green bell pepper, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "red onion, chopped",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Dressing:",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook pasta according to package directions; rinse and drain.",
+    "Mix pasta with broccoli, tomato, zucchini, black olives, bell pepper, and onion and Parmesan cheese. Blend oil,",
+    "vinegar, mustard, garlic, salt and pepper in a small container.",
+    "Toss with salad and refrigerate before serving.",
+    "(11) Tuna Pasta Salad",
+    "This Tuna Pasta Salad is a classic Italian dish that has been around for decades! This pasta salad is a great healthy",
+    "alternative to standard pasta dishes. Great for lunch, dinner, and parties; this dish goes great with all kinds of breads",
+    "and crackers!",
+    "Yield: 6"
+  ],
+  "time": {
+    "total": 35
+  }
+}

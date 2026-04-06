@@ -1,0 +1,86 @@
+{
+  "id": "greek-vegetable-pitas",
+  "name": "Greek Vegetable Pitas",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two pieces of pita breads",
+      "amount": ""
+    },
+    {
+      "item": "Two large eggs",
+      "amount": ""
+    },
+    {
+      "item": "One ripe cherry tomato",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of mixed vegetables",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped basil",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of crumbled feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "A bunch of chopped cilantro",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the olive oil into the pan.",
+    "Add the onion and salt into the pan.",
+    "Cook the onions well and then add the black pepper into the pan.",
+    "Add the mixed vegetables into the mixture.",
+    "Add the chopped basil into the mixture.",
+    "Cook the ingredients well for about fifteen minutes.",
+    "Dish out when the vegetables are done.",
+    "Let the meat cool down, and then add the crumbled feta cheese into it.",
+    "Mix well.",
+    "Heat the pita bread.",
+    "Cut a hole into the bread and add the cooked mixture into it.",
+    "Garnish the bread with chopped cilantro.",
+    "Your dish is ready to be served.",
+    "Conclusion",
+    "The establishment of Greek cooking lies in the dietary patterns of Southern",
+    "European nations, explicitly the Mediterranean nations. Mediterranean",
+    "gastronomy is based to a great extent around natural products, entire grains,",
+    "and lean protein like fish and chicken. In Greece, proteins from non-meat",
+    "sources like beans and vegetables are additionally well known in soups,",
+    "stews, and mixed greens.",
+    "This book covers the life of a Greek, making it easy for them to prepare their",
+    "favourite recipes inside their kitchen without any stress. This cookbook",
+    "incorporates 75 healthy plans that contain breakfast recipes, lunch and dinner",
+    "recipes, snack recipes, dessert recipes, and vegetarian recipes that you can",
+    "undoubtedly make at home very easily. So, start cooking today with this"
+  ],
+  "time": {
+    "total": 25
+  }
+}

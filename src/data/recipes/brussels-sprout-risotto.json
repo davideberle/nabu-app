@@ -1,0 +1,71 @@
+{
+  "id": "brussels-sprout-risotto",
+  "name": "BRUSSELS SPROUT RISOTTO",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the mix, stir in the lemon juice, and serve at once.",
+  "ingredients": [
+    {
+      "item": "tbsp/30 g unsalted butter",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small onions, finely chopped (1⅓ cups/200 g)",
+      "amount": "2"
+    },
+    {
+      "item": "large cloves garlic, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "thyme leaves",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lemons, rind shaved in long strips from one, finely grated zest from the other",
+      "amount": "2"
+    },
+    {
+      "item": "cups/300 g Arborio or another risotto rice",
+      "amount": "1½"
+    },
+    {
+      "item": "oz/500 g trimmed brussels sprouts, 7 oz/200 g shredded and 11 oz/300 g quartered lengthwise scant 1 cup/200 ml dry white wine scant 4 cups/900 ml hot vegetable stock about 1⅔ cups/400 ml sunflower oil",
+      "amount": "18"
+    },
+    {
+      "item": "cups/40 g coarsely grated Parmesan",
+      "amount": "1½"
+    },
+    {
+      "item": "oz/60 g Dolcelatte, broken into ¾-inch/2-cm chunks",
+      "amount": "2"
+    },
+    {
+      "item": "cup/10 g tarragon leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Place the butter and olive oil in a large sauté pan over medium-high heat. Add the onions and fry for 10 minutes, stirring occasionally, until soft and lightly caramelized. Add the garlic, thyme, and lemon rind strips and cook for a further 2 minutes. Add the rice and shredded sprouts and cook for another minute, stirring frequently. Pour in the wine and let it simmer for a minute before you start adding the stock, 1 teaspoon salt, and a good grind of pepper.",
+    "Turn down the heat to medium and carry on adding the stock in ladlefuls, stirring often, until the rice is cooked but still retains a bite and all the stock is used up.",
+    "While the rice is cooking, pour the sunflower oil into a separate large saucepan; it should rise ¾-inch/2-cm up the sides. Place over high heat and, once the oil is very hot, use a slotted spoon to add a handful of the quartered sprouts. (Take care that they are completely dry before you add them; they will still splatter, so be careful.) Fry the sprouts for less than 1 minute, until golden and crispy, then transfer them to a plate lined with paper towels. Keep them somewhere warm while you fry the remaining sprouts.",
+    "Add the Parmesan, Dolcelatte, tarragon, and half the fried sprouts to the cooked risotto and stir gently. Serve at once with the remaining sprouts spooned on top, followed by the grated lemon zest and the lemon juice.",
+    "Legume (Noodle) Soup",
+    "LEGUME (NOODLE) SOUP"
+  ],
+  "time": {
+    "total": 30
+  }
+}

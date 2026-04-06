@@ -1,0 +1,56 @@
+{
+  "id": "mieng-pla-pow-baked-fish",
+  "name": "Mieng Pla Pow Baked Fish",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 6",
+  "intro": "dish that we are seeking to emulate (eatingthaifood.com/thai-grilled-fi sh-recipe-pla-pao/).",
+  "ingredients": [
+    {
+      "item": "bird’s eye or fi nger-length chilies (prik chee fah)",
+      "amount": "4"
+    },
+    {
+      "item": "coriander (cilantro) root, cleaned",
+      "amount": "2"
+    },
+    {
+      "item": "garlic, or to taste",
+      "amount": "7 cloves"
+    },
+    {
+      "item": "tua thad, or peanut brittle",
+      "amount": "6 pieces"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "honey or golden syrup",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "In a mortar and pestle, pound the chilies, coriander root and garlic together into a paste. Scrape out of the mortar and set aside.",
+    "Pound the peanut brittle until it is pulverized, then add the chili paste. Mix well. Season with the lime juice and fi sh sauce. Taste. It should be a balance between salty, acidic, spicy and sweet.",
+    "Add the honey or golden syrup if it is not sweet enough. Surprisingly, the sweetness will amplify all the other fl avors.",
+    "This dipping sauce is made from tamarind paste and is the more traditional of the sauces you will fi nd to accompany this dish. It has the same base as tua thad.",
+    "4 bird’s eye or fi nger-length chilies (prik chee fah)",
+    "2 coriander (cilantro) root, cleaned",
+    "7 small cloves garlic, or to taste",
+    "2 tablespoons tamarind paste",
+    "3 tablespoons fi sh sauce",
+    "3 tablespoons shaved palm sugar",
+    "Water (as needed)",
+    "In a mortar and pestle, pound the chilies, coriander root and garlic together into a paste. Add the tamarind paste, lime juice, fi sh sauce and palm sugar. Taste to adjust seasoning. If the sauce is too thick, add a little warm water to thin.",
+    "Sauce (recipe on page 33)",
+    "This is the other traditional dipping sauce used in tandem with the tamarind paste one.",
+    "Thais can’t get enough of their sauces!"
+  ],
+  "time": {
+    "total": 30
+  }
+}

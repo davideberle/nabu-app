@@ -1,0 +1,75 @@
+{
+  "id": "greek-cheese-pies-tiropita",
+  "name": "Greek Cheese Pies (Tiropita)",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A quarter cup of Greek feta cheese",
+      "amount": ""
+    },
+    {
+      "item": "One cup of gruyere cheese",
+      "amount": ""
+    },
+    {
+      "item": "One cup of milk",
+      "amount": ""
+    },
+    {
+      "item": "Four whole eggs",
+      "amount": ""
+    },
+    {
+      "item": "A quarter cup of Philadelphia cheese",
+      "amount": ""
+    },
+    {
+      "item": "half cup of Melted butter",
+      "amount": ""
+    },
+    {
+      "item": "One pack of organic phyllo sheets",
+      "amount": ""
+    },
+    {
+      "item": "One sprig of fresh thyme leaves",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of freshly crushed black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the butter into the pan and melt it.",
+    "Add the sesame seeds, eggs, salt, and pepper into the pan.",
+    "Cook the eggs well, and then add the thyme into the pan.",
+    "Cook the dish for two to three minutes and then dish out.",
+    "Add the milk, Philadelphia cheese, Greek feta cheese, and gruyere",
+    "cheese when the mixture cools down.",
+    "Mix everything well.",
+    "Cut the phyllo sheets in the desired shape and add the above mixture",
+    "into the middle.",
+    "Place the pies on a greased baking tray.",
+    "Place the baking tray in a preheated oven.",
+    "Bake the pies for about forty-five to fifty minutes.",
+    "Dish out the pies when they attain a golden brown color.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 80
+  }
+}

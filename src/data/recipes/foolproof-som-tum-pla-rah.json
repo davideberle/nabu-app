@@ -1,0 +1,77 @@
+{
+  "id": "foolproof-som-tum-pla-rah",
+  "name": "Foolproof Som Tum Pla Rah",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 2",
+  "intro": "with pla rah for me). This is her recipe for Som Tum Pla Rah.",
+  "ingredients": [
+    {
+      "item": "DEPENDING ON THE AMOUNT OF SALAD INGREDIENTS USED",
+      "amount": "4"
+    },
+    {
+      "item": "115",
+      "amount": ""
+    },
+    {
+      "item": "small bird’s eye chilies (or to taste depending on desired spice tolerance)",
+      "amount": "2–4"
+    },
+    {
+      "item": "shaved palm sugar",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "small cloves garlic, peeled",
+      "amount": "1–3"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "dried shrimp, ground to a powder in the spice grinder",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "roasted peanuts, coarsely chopped",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "long beans, cut into inch-long (2.5 cm) lengths and bruised in a mortar and pestle",
+      "amount": "1 cup (100 g)"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "seedless grapes, halved",
+      "amount": "1 cup (150 g)"
+    },
+    {
+      "item": "apple or pineapple, cubed",
+      "amount": "1 cup (200 g)"
+    },
+    {
+      "item": "pomelo or orange, cut into bite-sized pieces",
+      "amount": "1 cup (175 g)"
+    }
+  ],
+  "method": [
+    "Place the chilies in a mortar and pestle and grind, then add the palm sugar and garlic cloves and pulverize.",
+    "Next add the wet ingredients: fi sh sauce and lime juice and mix together. Set this dressing aside.",
+    "In a bowl add the Salad ingre- dients and the dried shrimp pow- der. Spoon over the dressing and mix together. Decant onto a plate.",
+    "Garnish with the roasted peanuts."
+  ],
+  "time": {
+    "total": 30
+  }
+}

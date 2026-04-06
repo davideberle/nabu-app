@@ -1,0 +1,64 @@
+{
+  "id": "chickpea-saut-with-greek-yogurt",
+  "name": "Chickpea sauté with Greek yogurt",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "sprinkle with sumac or ground Persian lime (see page 245).",
+  "ingredients": [
+    {
+      "item": "Swiss chard",
+      "amount": "¾ lb (8 cups)"
+    },
+    {
+      "item": "medium carrots, peeled and cut into",
+      "amount": "4"
+    },
+    {
+      "item": "caraway seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly cooked chickpeas (canned are fine too)",
+      "amount": "½ cups"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "chopped mint",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice salt and black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Greek yogurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Heat up the olive oil in a large, heavy saucepan. Add the carrots and caraway seeds and sauté for 5 minutes on medium heat. Add the chard and chickpeas and continue cooking for 6 minutes.",
+    "Now add the garlic, herbs, lemon juice and some salt and pepper.",
+    "Remove from the heat and cool down a little. Taste and adjust the seasoning.",
+    "To serve, mix together the yogurt, olive oil and some salt and pepper. Pile the vegetables on serving dishes and spoon the yogurt on top. Sprinkle with freshly ground pepper and drizzle over more olive oil.",
+    "I knew something was achieved when I recently spotted sumac in the spice section of my local supermarket.",
+    "Who had even heard of sumac, or za’atar, a couple of years ago? Although I can’t take full credit for it, this is a first step toward introducing a new exciting spice to the home cook and my answer to skeptics who often ask me why I use all these exotic ingredients that are impossible to find. Just in case you don’t live near me, you can get both za’atar and sumac from Middle Eastern shops, or buy them online from penzeys.com. If you can’t find sorrel, use spinach and double the amount of lemon juice.",
+    "Fried lima beans with feta, sorrel and sumac"
+  ],
+  "time": {
+    "total": 30
+  }
+}

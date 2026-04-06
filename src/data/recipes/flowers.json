@@ -1,0 +1,81 @@
+{
+  "id": "flowers",
+  "name": "FLOWERS",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra for brushing",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small red onion, thinly sliced (about ¾ cup/85 g)",
+      "amount": "½"
+    },
+    {
+      "item": "celery stalks and leaves, thinly sliced (8 oz/220 g)",
+      "amount": "3"
+    },
+    {
+      "item": "large Swiss chard leaves, white stalks discarded, coarsely chopped (about 4 cups/175 g)",
+      "amount": "8"
+    },
+    {
+      "item": "garlic, thinly sliced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "torn mint leaves",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped sage",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cup/75 g crumbled feta",
+      "amount": "½"
+    },
+    {
+      "item": "cup/50 g finely grated pecorino",
+      "amount": "½"
+    },
+    {
+      "item": "tbsp/15 g pine nuts, lightly toasted grated zest of 1 lemon",
+      "amount": "2"
+    },
+    {
+      "item": "oz/350 g all-butter puff pastry",
+      "amount": "12"
+    },
+    {
+      "item": "tbsp/100 g brocciu or ricotta",
+      "amount": "6½"
+    },
+    {
+      "item": "zucchini flowers, cut in half lengthwise if large, or 6 to 7 long, shaved strips of raw zucchini (optional)",
+      "amount": "6 to 7"
+    },
+    {
+      "item": "egg, lightly beaten salt and black pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the olive oil in a large sauté pan over medium-high heat and sauté the onion, celery, chard, garlic, mint, parsley, and sage. Cook, stirring continuously, for 15 minutes, until the greens have wilted and the celery has softened completely. Remove from the heat and stir in the feta, pecorino, pine nuts, lemon zest, ¼ teaspoon salt, and a hearty grind of black pepper.",
+    "Leave aside to cool.",
+    "Preheat the oven to 425°F/220°C.",
+    "Roll out the pastry ⅛-inch/3-mm thick, then cut it into a circle about 12- inches/30-cm in diameter. Place on a baking sheet lined with parchment paper. Spread the filling out on the pastry, leaving a 1¼-inch/3-cm border all the way around. Dot the filling with large chunks of brocciu and top with zucchini flowers. Bring the pastry up around the sides of the filling and pinch the edges together firmly to form a secure, decorative lip over the edge of the tart. Alternatively, press with the tines of a fork. Brush the pastry with the egg and refrigerate for 10 minutes.",
+    "Bake the tart for 30 minutes, until the pastry is golden and cooked on the base. Remove from the oven and brush with a little olive oil. Serve warm or at room temperature."
+  ],
+  "time": {
+    "total": 30
+  }
+}

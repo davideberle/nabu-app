@@ -1,0 +1,81 @@
+{
+  "id": "orange-and-date-salad",
+  "name": "ORANGE AND DATE SALAD",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "pepper. Stir together and serve.",
+  "ingredients": [
+    {
+      "item": "medium oranges (2¼ lb/1 kg in total; about 3 cups/500 g after peeling and slicing)",
+      "amount": "5"
+    },
+    {
+      "item": "large Medjool dates, pitted and quartered lengthwise (2 oz/60 g)",
+      "amount": "3"
+    },
+    {
+      "item": "oz/120 g radishes, sliced paper-thin",
+      "amount": "4"
+    },
+    {
+      "item": "small red onion, very thinly sliced into rings (⅓ cup/30 g)",
+      "amount": "⅓"
+    },
+    {
+      "item": "cups/60 g arugula",
+      "amount": "3"
+    },
+    {
+      "item": "oz/30 g Lollo Rosso lettuce (2 to 3 leaves), torn into 1¼-inch/3-cm pieces",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g cilantro leaves, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g flat-leaf parsley leaves, coarsely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "cup/15 g mint leaves, coarsely torn",
+      "amount": "½"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "orange blossom water",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fennel seeds, toasted and lightly crushed",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "olive oil salt and black pepper",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "To make the dressing, whisk together the lemon juice, garlic, orange blossom water, cinnamon, and fennel seeds. Add the olive oil, ½ teaspoon salt, and a generous grind of pepper and whisk until well combined. Set aside.",
+    "Using a small, sharp serrated knife, slice off the top and tail of each orange.",
+    "Cut down the sides of each orange, following its natural curve, to remove the skin and white pith. Cut crosswise into slices ¼ inch/5 mm thick and remove the seeds.",
+    "Put the oranges, dates, radishes, onion, arugula, lettuce, cilantro, parsley, and mint in a large salad bowl. Stir the dressing and pour it over the salad. Gently stir everything together, pile into a large but shallow bowl, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

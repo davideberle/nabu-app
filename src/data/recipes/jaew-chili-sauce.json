@@ -1,0 +1,48 @@
+{
+  "id": "jaew-chili-sauce",
+  "name": "Jaew Chili Sauce",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "friends which they prefer, and they all chose my dad’s. Enjoy!",
+  "ingredients": [
+    {
+      "item": "ground dried red chilies (mildly roasted)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "shaved palm sugar",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "rice kernels, lightly roasted and ground (see above)",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "fi sh sauce",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tablespoon"
+    },
+    {
+      "item": "chopped coriander leaves (cilantro)",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "sliced green onions (scallions)",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Mix together in a small bowl the ground dried red chilies, palm sugar, ground roasted rice ker- nels and fi sh sauce. Stir until the palm sugar is fully melted. Add the lime juice and mix. Top with the coriander leaves and green onions before serving.",
+    "Jaew: The Quintessential Isaan Sauce",
+    "AUTHENTIC THAI DIPS AND SAUCES"
+  ],
+  "time": {
+    "total": 30
+  }
+}

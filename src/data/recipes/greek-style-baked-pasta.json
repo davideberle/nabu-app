@@ -1,0 +1,77 @@
+{
+  "id": "greek-style-baked-pasta",
+  "name": "Greek-style Baked Pasta",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "small pasta",
+      "amount": "12 oz."
+    },
+    {
+      "item": "lean ground lamb",
+      "amount": "1 lb."
+    },
+    {
+      "item": "marinara sauce",
+      "amount": "3 cups"
+    },
+    {
+      "item": "onion, finely cut",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "fresh ricotta cheese",
+      "amount": "3 cups"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "Black pepper and salt",
+      "amount": ""
+    },
+    {
+      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Gently sauté the onion in olive oil, for 2-3 minutes over medium heat. Add in the ground lamb and garlic and cook",
+    "for 10 minutes, or until the meat cooks well. Stir in the marinara sauce. Season with pepper and salt, to taste.",
+    "In a blender, blend 2 cups of the ricotta with the eggs, nutmeg and 1/2 cup of the Parmesan cheese until smooth.",
+    "Meanwhile, cook the pasta according package instructions. Drain and set aside in an oiled baking dish.",
+    "Add the lamb mixture to the pasta and toss to combine. Pour the ricotta mixture on top and sprinkle with the",
+    "remaining Parmesan cheese.",
+    "Bake the pasta until the cheese turns golden, 15-20 minutes.",
+    "(17) Summer Pasta with Pesto",
+    "One of the easiest, most delicious meals to make in the summer is pasta with pesto. It’s super quick to prepare. All",
+    "you need is some fresh basil, a couple cloves of garlic, pine nuts or walnuts (both work well), olive oil, Parmesan",
+    "cheese, and salt and pepper if desired. It's tasty, nutritious, and easy on the budget. You'll love how this pasta dish",
+    "takes advantage of fresh vegetables and herbs grown at home too!",
+    "Yield:"
+  ],
+  "time": {
+    "total": 63
+  }
+}

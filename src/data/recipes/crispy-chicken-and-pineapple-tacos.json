@@ -1,0 +1,48 @@
+{
+  "id": "crispy-chicken-and-pineapple-tacos",
+  "name": "Crispy Chicken and Pineapple Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 5",
+  "ingredients": [
+    {
+      "item": "Chicken breast, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper as required",
+      "amount": ""
+    },
+    {
+      "item": "Vegetable oil, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Pineapple slices, one cup",
+      "amount": ""
+    },
+    {
+      "item": "Cilantro, as required",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the chicken breast in the oil and add salt and pepper to it.",
+    "Slice up the chicken pieces and heat the taco shells.",
+    "Arrange all the ingredients in the taco shells.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 10
+  }
+}

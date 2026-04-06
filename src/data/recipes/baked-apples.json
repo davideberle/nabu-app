@@ -1,0 +1,59 @@
+{
+  "id": "baked-apples",
+  "name": "BAKED APPLES",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "!4 cup unsafted butter",
+      "amount": ""
+    },
+    {
+      "item": "bay leaves, dried or fresh",
+      "amount": "2"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "Yz cup sliced almonds",
+      "amount": ""
+    },
+    {
+      "item": "y, cup packed, soft light brown sugar",
+      "amount": ""
+    },
+    {
+      "item": "Yl cup raisins",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "to finely chop them. Place into a pestle and mortar with the cloves and bash up • Put into a large bowl",
+    "most of the almonds and grate over the zest of the orange and lemon. Add the rest of the",
+    "ingredients. Using your hands, mix well, squeezing all the flavors into the butter. Stuff this mixture into",
+    "in each apple (where you removed the core) and rub the outside of each fr uit with any leftover",
+    "mixture. Toss the remaining almonds",
+    "in the bowl so they become lightly coated in any leftover juices,",
+    "then sprinkle over",
+    "the top of the apples",
+    "To bake your apple s",
+    "Place in the preheated oven for 35 to 40 minutes, until golden and soft. Remove from the oven and leave",
+    "to cool down for about 5 minutes before serving. Put each apple into a small bowl and spoon over the",
+    "lovely caramelized juices from",
+    "the pan. These apples are absolutely cracking with a dollop of good vanilla",
+    "ice cream or custard",
+    "CHOCOLATE FRUIT AND",
+    "This is a great tart, because you can add so many different t hings to the filling, like quick cook oats, or",
+    "unsweetened shredded coconut, or any other type of nuts -if you want to give your kids a treat, this is the",
+    "tart for them! Buy good-quality bittersweet chocolate with a minimum 60% cocoa solids. And for those of",
+    "you who'd like a new challenge, why not make your own past ry (see page 346)."
+  ],
+  "time": {
+    "total": 30
+  }
+}

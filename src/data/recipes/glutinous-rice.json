@@ -1,0 +1,69 @@
+{
+  "id": "glutinous-rice",
+  "name": "GLUTINOUS RICE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "shallots, chopped (⅔ cup/100 g)",
+      "amount": "6"
+    },
+    {
+      "item": "lemons, rind shaved in long strips from one, ½ tsp finely grated zest from the other, plus extra to finish",
+      "amount": "2"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "cup/200 g black glutinous rice, soaked overnight",
+      "amount": "1"
+    },
+    {
+      "item": "lb/600 g chanterelle mushrooms",
+      "amount": "1⅓"
+    },
+    {
+      "item": "truffle oil",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chopped tarragon",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "oz/120 g soft and mild goat cheese (optional) salt and black pepper",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "Pour 1 tablespoon of the olive oil into a saucepan. Add the shallots, lemon rind, thyme, bay leaf, ½ teaspoon salt, and some black pepper and place over medium-low heat. Cook for 5 to 6 minutes, until the shallots are soft. Drain",
+    "the black rice and add to the pan. Pour in 1⅔ cups/400 ml water, bring to a boil, turn down the heat to a gentle simmer, cover the pan, and cook for 35 to",
+    "40 minutes, stirring from time to time, until the rice is well cooked and has a starchy consistency. Remove the lemon, thyme, and bay leaf and keep the rice somewhere warm until serving.",
+    "Place the remaining 1½ tablespoon olive oil in a large sauté pan and add the mushrooms, ¼ teaspoon salt, and some black pepper. Sauté for about 5 minutes, stirring so that all sides get a bit of color. Remove from the heat and add the truffle oil, butter, grated lemon zest, lemon juice, and tarragon.",
+    "Spoon the black rice onto individual plates. Top with the mushrooms, followed by the goat cheese. Drizzle with a little olive oil and more grated lemon zest and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "membrillo-and-stilton-quiche",
+  "name": "MEMBRILLO AND STILTON QUICHE",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "rather than hot, or at room temperature.",
+  "ingredients": [
+    {
+      "item": "medium butternut squash, peeled and cut into ¾-inch/2-cm cubes (5 cups/700 g)",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "oz/250 g best-quality shortcrust pastry",
+      "amount": "9"
+    },
+    {
+      "item": "oz/200 g Stilton, crumbled",
+      "amount": "7"
+    },
+    {
+      "item": "oz/75 g membrillo (quince paste), cut into ⅜-inch/1-cm dice",
+      "amount": "2½"
+    },
+    {
+      "item": "eggs",
+      "amount": "3"
+    },
+    {
+      "item": "cup/150 ml heavy cream",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/150 ml crème fraîche salt and black pepper",
+      "amount": "⅔"
+    }
+  ],
+  "method": [
+    "Toss the squash with the oil, ¼ teaspoon salt, and some black pepper and spread the cubes out on a baking sheet. Roast for 30 minutes, turning once, until golden brown. Set aside to cool and turn down the oven temperature to",
+    "On a floured work surface, roll out the pastry roughly ⅛- inch/3-mm thick and transfer it to a 9½-inch/24-cm quiche pan or fluted tart pan with a removable bottom. When lining, leave some pastry hanging over the edge. Prick the base of the pastry with a fork and chill for 20 minutes in the fridge. Line the pastry shell with parchment paper, fill it with dried beans or pie weights, and",
+    "bake for 30 minutes. Remove the beans and paper and continue to bake for",
+    "10 minutes, until the pastry is golden brown. Remove and leave to cool.",
+    "Spread the roasted squash in the cooled pastry shell, dot the Stilton between the pieces, and sprinkle the membrillo over the top. Place the eggs, cream, and crème fraîche in a bowl with ¼ teaspoon salt and some black pepper.",
+    "Whisk together and then pour this mixture over the squash, leaving some of the filling exposed. Place in the oven for about 40 minutes, until the custard has set. Remove from the oven and allow to rest before removing from the pan and breaking off the hanging pastry. Serve warm or at room temperature.",
+    "CORN AND GREEN ONION PANCAKES",
+    "SERVES FOUR TO SIX"
+  ],
+  "time": {
+    "total": 30
+  }
+}

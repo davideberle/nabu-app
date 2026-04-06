@@ -1,0 +1,70 @@
+{
+  "id": "tacos-carne-asada",
+  "name": "Tacos Carne Asada",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "fresh lime juice",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "canola oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "minced garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "of skirt steak",
+      "amount": "1 1/2 pounds"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "flour tortillas",
+      "amount": "6"
+    },
+    {
+      "item": "of cilantro leaves",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "red onion, diced",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "lime",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Take a bowl, mix lime juice, soy sauce, oregano, canola oil, chili",
+    "powder, garlic, and cumin.",
+    "Take a bowl, mix steak, and soy sauce mixture. Marinate for 1-4",
+    "hours.",
+    "Heat the remaining canola oil over the medium heat.",
+    "Put the steak in it and cook until brown.",
+    "Serve in tortillas and top with cilantro, onion, and lime."
+  ],
+  "time": {
+    "total": 30
+  }
+}

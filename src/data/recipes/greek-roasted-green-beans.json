@@ -1,0 +1,83 @@
+{
+  "id": "greek-roasted-green-beans",
+  "name": "Greek Roasted Green Beans",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Four cups of diced green beans",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onion",
+      "amount": ""
+    },
+    {
+      "item": "Half tablespoon of chopped garlic,",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of granulated sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of fresh oregano",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of vegetable stock",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped tomatoes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the chopped onions and olive oil to it.",
+    "Mix the ingredients well.",
+    "Add the chopped garlic into the pan.",
+    "Add the tomatoes, oregano, salt, black pepper, granulated sugar, thyme,",
+    "and smoked paprika into the pan.",
+    "Cook the ingredients well.",
+    "Add the diced green beans to the mixture.",
+    "Add the vegetable stock into the pan.",
+    "Mix the ingredients well.",
+    "Place a lid on top of the pan.",
+    "Cook the green beans for ten to fifteen minutes.",
+    "Dish out the food when the green beans are done.",
+    "Garnish the dish with chopped parsley on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 50
+  }
+}

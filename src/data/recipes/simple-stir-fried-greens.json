@@ -1,0 +1,46 @@
+{
+  "id": "simple-stir-fried-greens",
+  "name": "Simple Stir-fried Greens",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "pumpkin shoots, bok choy, Swiss chard, pea or sunfl ower sprouts, kale, and of course, spinach.",
+  "ingredients": [
+    {
+      "item": "77",
+      "amount": ""
+    },
+    {
+      "item": "beef sirloin tip (Thais calls it “coconut skin” beef because it’s striated with fat)",
+      "amount": "1 lb (½ kg)"
+    },
+    {
+      "item": "fi sh sauce (try to use",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "shaved palm sugar",
+      "amount": "½ tablespoon"
+    },
+    {
+      "item": "salt",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "black peppercorns, or a healthy grind to taste",
+      "amount": "1 tablespoon"
+    }
+  ],
+  "method": [
+    "Slice the meat into ½ inch (12.5 mm), strips. Pound the meat on a cutting board with the fl at side of a meat tenderizer to break apart the strands a bit. Mix in all the ingredients and marinate for 2–3 hours in the refrigerator.",
+    "Set the dehydrator or oven to 70°F (21°C), lay out the meat so that the pieces do not touch or overlap. Slow cook for 60 minutes. After half an hour, dab away any liquid underneath each piece with a tissue and cook for another half an hour.",
+    "Beef can be kept in the freezer until ready to eat. Otherwise, fry in",
+    "2–3 tablespoons of unscented oil over medium heat and taste the fi rst few pieces. If not salty enough, marinate the rest of the pieces in fi sh sauce only for 5 minutes before frying the rest.",
+    "Serve with Sticky Rice (page 90) or steamed white rice with Nam Pla Prik (page 30)."
+  ],
+  "time": {
+    "total": 30
+  }
+}

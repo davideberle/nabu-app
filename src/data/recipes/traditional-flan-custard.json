@@ -1,0 +1,78 @@
+{
+  "id": "traditional-flan-custard",
+  "name": "Traditional Flan Custard",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "eggs",
+      "amount": "6"
+    },
+    {
+      "item": "of sugar",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "14-ounce can of condensed milk",
+      "amount": "1"
+    },
+    {
+      "item": "of vanilla",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "can of evaporated milk",
+      "amount": "1"
+    },
+    {
+      "item": "of salt",
+      "amount": "1 pinch"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 325 degrees F.",
+    "To prepare caramel sauce, pour sugar into a pan over the medium",
+    "heat. Stir constantly.",
+    "When it is brown and fully melted, it will become caramel.",
+    "Once the color reaches golden brown, transfer it to the pie plate.",
+    "To prepare the custard, whisk the eggs for one minute or until they are",
+    "frothy.",
+    "Gradually put condensed milk in it, then the evaporated milk. Slowly",
+    "mix the vanilla and sugar.",
+    "To bake the flan, put the custard mixture in the caramel pie plate.",
+    "Put the pie plate in a baking dish.",
+    "Bake the flan for around 45 minutes. Use a knife to check its status. If",
+    "it is clean, then your flan is ready.",
+    "Remove the flan from the baking dish. Let it cool for",
+    "overnight in the refrigerator for better taste.",
+    "Serve and enjoy!",
+    "8 Mexican Churros",
+    "Instructions",
+    "1 cup of water",
+    "4 cups of vegetable oil",
+    "1/2 cups of salted butter",
+    "1/4 tsp. of salt",
+    "1 tsp. of vanilla extract",
+    "1 cup flour",
+    "1 cup of sugar",
+    "3 eggs",
+    "1 tsp. of ground cinnamon",
+    "Instructions",
+    "Make the dough by mixing water, vanilla, salt, and butter in a",
+    "saucepan. When the mixture starts to simmer, turn off the heat.",
+    "Add eggs one by one, mashing and stirring the dough until it is fully",
+    "incorporated.",
+    "Put the mixture to a pastry bag.",
+    "Put the dough into the hot oil.",
+    "Cook it until it is puffy. Cook evenly from all sides. It will take 2-4",
+    "minutes.",
+    "Carefully take out churro from the oil, and use a paper towel to drain",
+    "When churros are cooled, put the cinnamon and sugar into a plastic",
+    "Put churros in it and shake until they are coated."
+  ],
+  "time": {
+    "total": 30
+  }
+}

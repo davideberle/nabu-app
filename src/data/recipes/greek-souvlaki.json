@@ -1,0 +1,71 @@
+{
+  "id": "greek-souvlaki",
+  "name": "Greek Souvlaki",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Half tablespoon of chopped garlic,",
+      "amount": ""
+    },
+    {
+      "item": "Three tablespoons of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of granulated sugar",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of chopped parsley",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of fresh oregano",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoons of fresh thyme",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped fresh chives",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of mixed spice powder",
+      "amount": ""
+    },
+    {
+      "item": "Half teaspoon of smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "One pound of chicken thighs",
+      "amount": ""
+    },
+    {
+      "item": "Pita bread",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add all the ingredients in the bowl.",
+    "Mix the marinade well.",
+    "Roast the chicken pieces over a grill pan.",
+    "Dish out when the chicken pieces are golden brown on both sides.",
+    "Serve the souvlaki with pita bread on the side.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 40
+  }
+}

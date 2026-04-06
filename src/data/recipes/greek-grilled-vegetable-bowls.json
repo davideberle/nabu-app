@@ -1,0 +1,132 @@
+{
+  "id": "greek-grilled-vegetable-bowls",
+  "name": "Greek Grilled Vegetable Bowls",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "For the Grilled Vegetables",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "medium bell peppers",
+      "amount": "2"
+    },
+    {
+      "item": "mushrooms",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "medium zucchini",
+      "amount": "2"
+    },
+    {
+      "item": "red onion",
+      "amount": "1"
+    },
+    {
+      "item": "For the Bowls",
+      "amount": ""
+    },
+    {
+      "item": "Salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Pita chips",
+      "amount": ""
+    },
+    {
+      "item": "Fresh dill and basil",
+      "amount": ""
+    },
+    {
+      "item": "Avocado Tzatziki",
+      "amount": ""
+    },
+    {
+      "item": "cooked farro",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chickpeas",
+      "amount": "15 oz."
+    },
+    {
+      "item": "halved grape tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "For the Lemon Dressing",
+      "amount": ""
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 teaspoon"
+    },
+    {
+      "item": "Kosher salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "½ teaspoon"
+    },
+    {
+      "item": "garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Heat the grill to high.",
+    "Sprinkle with olive oil over the veggies and add salt and pepper.",
+    "Roast the veggies until crispy and grill marks emerge, flipping once.",
+    "Take it from the fire.",
+    "Mix the olive oil, Dijon mustard, white wine vinegar, lime juice,",
+    "cloves, oregano, pepper, and salt in a shallow saucepan or container to",
+    "make the coating.",
+    "Thinly slice the roasted veggies to fill the bowls.",
+    "Cover each dish with the grilled peppers, cucumber, chickpeas,",
+    "Kalamata olives, tomatoes, and feta cheese and split the farro into 4",
+    "Garnish with spices and, to taste, sprinkle with salt. Sprinkle and eat",
+    "with tzatziki and pita chips with seasoning."
+  ],
+  "time": {
+    "total": 35
+  }
+}

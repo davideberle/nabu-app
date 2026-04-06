@@ -1,0 +1,77 @@
+{
+  "id": "greek-potato-breakfast-skillet",
+  "name": "Greek Potato Breakfast Skillet",
+  "source": {
+    "cookbook": "The Complete Greek Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "flat-leaf parsley",
+      "amount": "2 tablespoons"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "Kalamata olives",
+      "amount": "¾ ounce"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "3 tablespoons"
+    },
+    {
+      "item": "kosher salt",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "garlic",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "spinach",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ground pepper",
+      "amount": "¼ teaspoon"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 teaspoons"
+    },
+    {
+      "item": "grape or cherry tomatoes",
+      "amount": "12"
+    },
+    {
+      "item": "package potatoes",
+      "amount": "1 pound"
+    }
+  ],
+  "method": [
+    "Prepare the potato as per the box instructions, stirring the spice",
+    "package with two tablespoons of olive oil.",
+    "Over moderate flame, heat a large sauté pan.",
+    "Stir in the potatoes, then simmer for two minutes.",
+    "Mix in the tomatoes and simmer until the potatoes begin to yellow",
+    "and the tomatoes begin to peel, stirring periodically.",
+    "To one bottom of the plate, move the tomatoes and potatoes and add",
+    "the remaining two teaspoons' olive oil.",
+    "Transfer the cloves and spinach to the olive oil.",
+    "Cook for about two minutes, stirring continuously until the spinach is",
+    "wilting.",
+    "Free from the heat. Mix in the pine nuts, coriander, and feta.",
+    "Cook the eggs, crispy side up, in a small nonstick pan while the",
+    "potatoes and tomato combination is frying.",
+    "Divide the mixture of potatoes into four plates.",
+    "Cover with a fried egg for each meal.",
+    "Chapter 3: Best Greek Lunch Recipes"
+  ],
+  "time": {
+    "total": 20
+  }
+}

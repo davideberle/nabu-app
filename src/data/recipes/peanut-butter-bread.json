@@ -1,0 +1,104 @@
+{
+  "id": "peanut-butter-bread",
+  "name": "Peanut Butter Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "giant eggs, sprayed with cooking",
+      "amount": "2"
+    },
+    {
+      "item": "spray",
+      "amount": ""
+    },
+    {
+      "item": "of a cup",
+      "amount": "1/3"
+    },
+    {
+      "item": "sugar granules",
+      "amount": ""
+    },
+    {
+      "item": "teaspoon",
+      "amount": "3/4"
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tablespoon",
+      "amount": "1"
+    },
+    {
+      "item": "vinegar (white)",
+      "amount": ""
+    },
+    {
+      "item": "of a cup",
+      "amount": "1/3"
+    },
+    {
+      "item": "pistachio butter",
+      "amount": ""
+    },
+    {
+      "item": "tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "powdered sugar",
+      "amount": ""
+    },
+    {
+      "item": "tbsp.",
+      "amount": "1"
+    },
+    {
+      "item": "soda bicarbonate",
+      "amount": ""
+    },
+    {
+      "item": "and a half cup",
+      "amount": "1"
+    },
+    {
+      "item": "flour (all-purpose)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oven degrees Fahrenheit (180 degrees Celsius) (180",
+    "degrees Celsius). (180 degrees Fahrenheit) LineLine an 8 1/2\" x",
+    "4 1/2\" loaf pan with parchment paper and coat with cooking",
+    "spray.",
+    "Whisk eggs in a stand mixer or with a hand mixer until light and",
+    "foamy, about 3 minutes. Continue to beat, gradually pouring in",
+    "the sugar and salt until the eggs are frothy and ribbony, about 4",
+    "to 5 minutes longer.",
+    "Meanwhile, whisk together milk, vinegar, and peanut butter in a",
+    "medium mixing bowl until reasonably smooth. In a mixing",
+    "bowl, combine the baking powder, baking soda, and flour.",
+    "Slowly add half of the flour combination and half of the milk",
+    "mixture to the egg mixture, stirring for 5 to 10 seconds between",
+    "additions. Fold the batter together gently until it is smooth, then",
+    "pour into the prepared pan.",
+    "Baked for 10 min, or until the top is golden brown and the edges",
+    "are pulling away from the pan.",
+    "Allow cooling in the pan for 5 minutes before transferring to a",
+    "cooling rack. Allow the bread to cool fully before slicing for",
+    "clean slices."
+  ],
+  "time": {
+    "total": 40
+  }
+}

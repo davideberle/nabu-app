@@ -1,0 +1,59 @@
+{
+  "id": "french-custard-pie",
+  "name": "French Custard Pie",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "Two egg yolk",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of water",
+      "amount": ""
+    },
+    {
+      "item": "A cup of self-rising flour",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of butter",
+      "amount": ""
+    },
+    {
+      "item": "A tablespoon of milk",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of baking powder",
+      "amount": ""
+    },
+    {
+      "item": "A cup of brown sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a pan.",
+    "Add the butter.",
+    "When it melts down.",
+    "Add the milk and flour.",
+    "Mix the ingredients to form a dough.",
+    "Switch off the stove once the dough is formed.",
+    "Add the mixture into a bowl.",
+    "Add the rest of the ingredients into the bowl and mix.",
+    "Mix all the ingredients and separate the dough in a pie dish.",
+    "Bake the mixture for forty five minutes.",
+    "Your dish is ready to be served.",
+    "Chapter 5: The Famous French Snack Recipes",
+    "French snacks are famous all around the world. Following are some amazing",
+    "French snack recipes that are rich in healthy nutrients and you can easily",
+    "make them with the detailed instructions written in each recipe:"
+  ],
+  "time": {
+    "total": 60
+  }
+}

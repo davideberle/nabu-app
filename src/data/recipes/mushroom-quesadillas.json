@@ -1,0 +1,72 @@
+{
+  "id": "mushroom-quesadillas",
+  "name": "Mushroom Quesadillas",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "mushrooms, thickly sliced",
+      "amount": "1 pound"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "finely chopped clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "1/4 tsp."
+    },
+    {
+      "item": "thinly sliced bunch scallions",
+      "amount": "1/2"
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/8 tsp."
+    },
+    {
+      "item": "Cilantro leaves",
+      "amount": ""
+    },
+    {
+      "item": "grated cheddar and Monterey Jack",
+      "amount": "1 1/2 cups"
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "10"
+    },
+    {
+      "item": "For Serving:",
+      "amount": ""
+    },
+    {
+      "item": "Salsa",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a skillet over the medium heat the oil.",
+    "Put mushrooms in the pan. Cook for 5 minutes.",
+    "Put scallions and garlic to the pan. Cook for 2-4 minutes, then add",
+    "pepper and salt.",
+    "Place one tortilla in a pan and add 2 tablespoons mushrooms and",
+    "cheese. Add 2 tablespoons more cheese and cilantro leaves.",
+    "Put one more tortilla on the top and seal it lightly.",
+    "Cook both sides and repeat this with all tortillas, filling, and cheese.",
+    "Cut all quesadilla into pieces.",
+    "Serve hot with salsa and jalapeño peppers.",
+    "Chapter 6: Mexican Soup Recipes",
+    "Cook and enjoy some of the most satisfying Mexican soup recipes given in",
+    "this chapter to satisfy your cravings."
+  ],
+  "time": {
+    "total": 30
+  }
+}

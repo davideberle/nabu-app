@@ -1,0 +1,106 @@
+{
+  "id": "french-bouillabaisse",
+  "name": "French Bouillabaisse",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Two strips of orange peel",
+      "amount": ""
+    },
+    {
+      "item": "Three bay leaves",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped onions",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "One cup of chopped leek",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Eight dried chilies",
+      "amount": ""
+    },
+    {
+      "item": "Two teaspoon of chopped garlic",
+      "amount": ""
+    },
+    {
+      "item": "One cup of mussels",
+      "amount": ""
+    },
+    {
+      "item": "One cup of mixed Mediterranean fish",
+      "amount": ""
+    },
+    {
+      "item": "One cup of tomato paste",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of saffron",
+      "amount": ""
+    },
+    {
+      "item": "One teaspoon of black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of ripe tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "Two cups of fish stock",
+      "amount": ""
+    },
+    {
+      "item": "Two tablespoon of pernod",
+      "amount": ""
+    },
+    {
+      "item": "One Star anise",
+      "amount": ""
+    },
+    {
+      "item": "A pinch of salt",
+      "amount": ""
+    },
+    {
+      "item": "One tablespoon of chopped fresh chives",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large pan.",
+    "Add the oil and onions into the pan.",
+    "Cook the onions until they turn soft and translucent.",
+    "Add the garlic into the pan.",
+    "Cook the mixture well.",
+    "Add the tomato paste, chopped ripe tomatoes and spices.",
+    "Cook the mixture for five minutes.",
+    "Add the mussels, and Mediterranean fish into the pan.",
+    "Cook the ingredients well.",
+    "Add the rest of the ingredients.",
+    "Add the fish stock and rest of the ingredients.",
+    "Cover the pan and cook for ten minutes.",
+    "Garnish the dish with chopped fresh chives.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 30
+  }
+}

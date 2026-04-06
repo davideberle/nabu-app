@@ -1,0 +1,80 @@
+{
+  "id": "cheesy-garlic-pull-apart-bread",
+  "name": "Cheesy Garlic Pull-Apart Bread",
+  "source": {
+    "cookbook": "Bread Cookbook",
+    "author": "Various"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "baguette, big",
+      "amount": "1"
+    },
+    {
+      "item": "1melting piece of butter",
+      "amount": ""
+    },
+    {
+      "item": "6garlic cloves, minced",
+      "amount": ""
+    },
+    {
+      "item": "tablespoons",
+      "amount": "2"
+    },
+    {
+      "item": "Parsley, freshly chopped",
+      "amount": ""
+    },
+    {
+      "item": "salt (kosher)",
+      "amount": ""
+    },
+    {
+      "item": "black pepper, freshly",
+      "amount": ""
+    },
+    {
+      "item": "ground",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "mozzarella cheese,",
+      "amount": ""
+    },
+    {
+      "item": "shredded",
+      "amount": ""
+    },
+    {
+      "item": "cup",
+      "amount": "1"
+    },
+    {
+      "item": "fontina cheese, shredded",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees Fahrenheit. Crosshatch bread",
+    "using a serrated knife, cutting slices every inch in both",
+    "directions but not through the bottom of the baguette.",
+    "Combine melted butter, garlic, and parsley in a small bowl—",
+    "Salt & pepper to taste.",
+    "Brush the melted butter mixture within the crosshatches of the",
+    "baguette.",
+    "Stuff mozzarella and fontina into each crosshatch and wrap the",
+    "bread in foil thoroughly.",
+    "Baked for 20 minutes, or until the butter cheese has melted and",
+    "the bread is toasty warm.",
+    "Allow cooling for 5 minutes before serving."
+  ],
+  "time": {
+    "total": 50
+  }
+}

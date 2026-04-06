@@ -1,0 +1,75 @@
+{
+  "id": "pork-carnitas-tacos",
+  "name": "Pork Carnitas Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "For Canitas:",
+      "amount": ""
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of pork shoulder",
+      "amount": "2 1/2 pounds"
+    },
+    {
+      "item": "sea salt",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "of broth, vegetable, chicken or beef",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chili powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "ground cumin",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "onion powder",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "black pepper",
+      "amount": "1/2 tsp."
+    }
+  ],
+  "method": [
+    "For Slow Cooker:",
+    "Make pieces of pork shoulder, and put them in a slow cooker.",
+    "Mix chili powder, salt, lime juice, ground cumin, garlic powder, dried",
+    "oregano, onion powder, and black pepper.",
+    "Then coat the pork slices with seasonings.",
+    "Cook while keeping it covered for around 4 hours on medium heat.",
+    "When it is cooked, take out and shred.",
+    "Put chopped cilantro in it and serve in tacos.",
+    "For Instant Pot:",
+    "Make pieces of pork shoulder. Put them in an Instant Pot.",
+    "Mix salt, lime juice, ground cumin, garlic powder, chili powder, dried",
+    "oregano, onion powder, broth, and black pepper.",
+    "Then coat the pork slices with seasonings.",
+    "Cook for around 40 minutes on high pressure.",
+    "Shred the pieces.",
+    "Add chopped cilantro, and serve in tacos."
+  ],
+  "time": {
+    "total": 30
+  }
+}

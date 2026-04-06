@@ -1,0 +1,53 @@
+{
+  "id": "chipotle-chicken-tacos",
+  "name": "Chipotle Chicken Tacos",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Chopped red onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Chicken breast filet, one pound",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil, five tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Taco shells, eight",
+      "amount": ""
+    },
+    {
+      "item": "Chipotle sauce, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Chopped avocado, one",
+      "amount": ""
+    },
+    {
+      "item": "Chopped cilantro, a bunch",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the olive oil, salt, and pepper on the chicken filet.",
+    "Grill the filet for ten minutes and then slice it up.",
+    "Heat the taco shells and start filling it with chicken slices, chipotle",
+    "sauce, red onions, avocado slices and cilantro on top.",
+    "Your dish is ready to be served."
+  ],
+  "time": {
+    "total": 15
+  }
+}

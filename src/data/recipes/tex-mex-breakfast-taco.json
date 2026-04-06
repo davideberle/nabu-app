@@ -1,0 +1,65 @@
+{
+  "id": "tex-mex-breakfast-taco",
+  "name": "Tex-Mex Breakfast Taco",
+  "source": {
+    "cookbook": "Mexican Home Cooking",
+    "author": "Various"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "Jalapeño, one to two",
+      "amount": ""
+    },
+    {
+      "item": "Tomatoes, two",
+      "amount": ""
+    },
+    {
+      "item": "Eggs, four",
+      "amount": ""
+    },
+    {
+      "item": "Red potatoes, two to three",
+      "amount": ""
+    },
+    {
+      "item": "Freshly chopped parsley and cilantro, two tbsp.",
+      "amount": ""
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Onion, half",
+      "amount": ""
+    },
+    {
+      "item": "Tortillas, eight",
+      "amount": ""
+    },
+    {
+      "item": "Shredded cheese, half cup",
+      "amount": ""
+    },
+    {
+      "item": "Breakfast sausage, one roll",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add a little olive oil in the pan.",
+    "Cut the tomatoes, jalapenos, onions, and cilantro.",
+    "Cook the Smithfield Breakfast Sausage per package instructions.",
+    "Add the beaten eggs and scramble, set aside.",
+    "Chop the potatoes into small cubes and cook with a little bit of olive",
+    "oil, garlic, salt and pepper until they are slightly crispy.",
+    "Heat the tortilla in a frying pan and add the shredded cheese.",
+    "Combine the potatoes, eggs, and sausage and mix well.",
+    "Serve your dish with fresh salsa."
+  ],
+  "time": {
+    "total": 15
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "perfectly-done-fried-chicken",
+  "name": "Perfectly done fried chicken",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "of soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "zucchini",
+      "amount": "1"
+    },
+    {
+      "item": "of dry sherry",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "of boneless chicken breast",
+      "amount": "6 tbsp."
+    },
+    {
+      "item": "large green bell pepper, cut into squares",
+      "amount": "1"
+    },
+    {
+      "item": "of cornstarch",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "of chicken broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of broccoli florets",
+      "amount": "1 cup"
+    },
+    {
+      "item": "of garlic, minced",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "of vegetable oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "green onions, chopped",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "In a large bowl, mix the soy sauce, chicken, sherry and cornstarch,",
+    "Heat 2 tbsp. of the oil and fry the vegetables and garlic for 5 minutes.",
+    "Stir in the broth and simmer, covered for about 4-5 minutes.",
+    "Transfer the vegetable mixture in a bowl and keep aside.",
+    "With a paper towel, wipe out the skillet.",
+    "Add the vegetable mixture and cook the chicken for about 2-3 minutes.",
+    "Serve with a garnishing of green onions.",
+    "Recipe 36: Curry Infused Meatballs",
+    "Curry is traditionally found in Indian foods. It is technically a combination",
+    "of some spices, some of which change depending on the type of curry you",
+    "purchase. Add as much curry or as little as you like. This simple recipe has"
+  ],
+  "time": {
+    "total": 45
+  }
+}

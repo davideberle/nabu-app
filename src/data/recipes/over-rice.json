@@ -1,0 +1,63 @@
+{
+  "id": "over-rice",
+  "name": "over rice.",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3"
+    },
+    {
+      "item": "chopped red chili pepper",
+      "amount": "1"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "curry powder",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "coconut cream (not milk!)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cubed tilapia",
+      "amount": "1 lb."
+    },
+    {
+      "item": "peeled and deveined smallish shrimp",
+      "amount": "½ lb."
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a pan.",
+    "Sauté the onion, scallions, chili pepper and bell pepper for 5 minutes while",
+    "stirring.",
+    "Add the prepared curry powder and stir for 2 more minutes.",
+    "Pour the coconut cream and chicken broth into the pan and combine.",
+    "Simmer for 10 minutes, until the sauce has thickened.",
+    "Add the tilapia and shrimp and simmer for 5 minutes.",
+    "Recipe 35: Curry Fried Chicken"
+  ],
+  "time": {
+    "total": 22
+  }
+}

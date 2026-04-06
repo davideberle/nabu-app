@@ -1,0 +1,62 @@
+{
+  "id": "greek-orange-blossom-baklava",
+  "name": "Greek Orange Blossom Baklava",
+  "source": {
+    "cookbook": "Italian And Lebanese Cookbook",
+    "author": "Maya Zein"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "Eight ounces of butter",
+      "amount": ""
+    },
+    {
+      "item": "A pack of phyllo sheets",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "Half cup of chopped nuts (of your choice)",
+      "amount": ""
+    },
+    {
+      "item": "A cup of honey",
+      "amount": ""
+    },
+    {
+      "item": "A cup of sugar",
+      "amount": ""
+    },
+    {
+      "item": "A teaspoon of a ground orange powder",
+      "amount": ""
+    },
+    {
+      "item": "A cup of water",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Take a large bowl.",
+    "Add the butter into it and beat well.",
+    "Add the nuts, orange powder, and honey into the butter bowl.",
+    "Mix the ingredients well.",
+    "Add the dried mint into the bowl and mix well.",
+    "Spread the phyllo sheets in a greased baking tray.",
+    "Add the nut mixture into the phyllo sheets and cover it with more",
+    "phyllo sheets.",
+    "Bake the baklava for about forty minutes.",
+    "Add sugar and water to a saucepan and cook.",
+    "Dish out the baklava and cut it into pieces.",
+    "Pour the sugar syrup on top of the baklava",
+    "Dish out the baklava.",
+    "The dish is ready to be served."
+  ],
+  "time": {
+    "total": 60
+  }
+}

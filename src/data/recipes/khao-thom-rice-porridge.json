@@ -1,0 +1,44 @@
+{
+  "id": "khao-thom-rice-porridge",
+  "name": "Khao Thom Rice Porridge",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 4",
+  "intro": "reminiscent of what Chinese workers used to eat while doing construction jobs in Bangkok.",
+  "ingredients": [
+    {
+      "item": "73",
+      "amount": ""
+    },
+    {
+      "item": "small head Chinese or green cabbage (approx 1½ lbs/675 g), cleaned, cored and chopped into bite-sized pieces",
+      "amount": "1"
+    },
+    {
+      "item": "+ 1 cup (250 ml) water",
+      "amount": "2 cups (500 ml)"
+    },
+    {
+      "item": "salt",
+      "amount": "2 tablespoons"
+    }
+  ],
+  "method": [
+    "Wash the cabbage in a colander three times, draining each time.",
+    "In a large bowl, pour in 2 cups of water and add the salt. Add the cabbage. With your hands, “mas- sage” the cabbage pieces in the salt water. Remove the cabbage from the brine and rinse under cold wa- ter to remove some of the salt.",
+    "Add 1 more cup of water to the brine to dilute. In a repurposed glass jar or bowl, place the cabbage pieces and any optional additives (if using) and the brine. Cover well.",
+    "Leave to ferment on the counter top for 24 hours. Taste, and if it’s sour enough, it’s ready. If not, leave it for another day. Store in the refrigerator until ready to use.",
+    "1 cup (100 g) salt",
+    "2 cups (500 ml) water",
+    "Rinse the eggs and put them in a repurposed glass jar or glass bowl with a well-fi tting lid.",
+    "Combine the salt with the water and bring to a boil in a pan, stir- ring. Boil well until salt crystals form on the pot’s side. Once that has happened, turn off the heat and allow to cool. Pour the cooled salt brine over the eggs. The eggs need to be completely submerged under the surface of the water.",
+    "Leave on the counter top for one month. If in the USA and using non home hatched eggs, refrigerate during brining.",
+    "When ready to use, hard boil the eggs, peel and serve.",
+    "Asian markets sell pickled cabbage in the jar or can. However, if you want to make your own, this is a relatively easy recipe. You can also do this with Chinese mustard greens. Pickled cabbage is a popular accompaniment to noodles like Khao Soy Curried Egg Noodles with Chicken (page 59)."
+  ],
+  "time": {
+    "total": 30
+  }
+}
