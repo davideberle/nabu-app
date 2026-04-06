@@ -1,0 +1,91 @@
+{
+  "id": "cg-tandoori-style-king-prawns",
+  "name": "Tandoori-Style King Prawns",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Grilling, Barbecue and Roasting"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "These prawns (shrimp) are addictive. They are superb served on their own, dipped into a tasty raita, or added to a curry. That said, I think they are much too good to be thrown in a curry. I like to serve them drizzled with my honey mustard raita that goes so well with most seafood.",
+  "ingredients": [
+    {
+      "item": "raw king prawns (jumbo shrimp), peeled and de-veined with head and tail intact",
+      "amount": "500g"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely ground white pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Greek yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cream cheese",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "single (light) cream",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "piece of ginger, peeled and finely chopped",
+      "amount": "1cm (½ in)"
+    },
+    {
+      "item": "fresh green chilli, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "chopped fresh coriander (cilantro)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mace and cardamom powder (see above)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Prepare your barbecue for direct heat cooking.",
+    "Mix the prawns (shrimp) with the ingredients for the first marinade and set aside. Combine all the ingredients for the second marinade and work them together with your hands until you have a smooth emulsion. Cover the prawns with this marinade and leave for about 20 minutes.",
+    "Thread the prawns onto skewers and place over the hot fire. (You can also cook them directly on a barbecue grill.) Cook, turning frequently, until lightly charred and cooked through."
+  ],
+  "image": "/recipes/curry-guy-cg-tandoori-style-king-prawns.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 20
+  }
+}

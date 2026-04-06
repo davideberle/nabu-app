@@ -1,18 +1,18 @@
 {
   "id": "butternut-squash-m-tabbal",
-  "name": "Butternut squash m’tabbal",
+  "name": "Butternut Squash M’tabbal",
   "subtitle": "M’tabbal qarae",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c02"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "introduction": "The difference between m’tabbal and baba ganoush is the addition of tahini. For us, if it has tahini in it, then it’s m’tabbal. Other opinions, as always, are available. Whatever you call this sort of dip, three rules remain absolute: it’s all about the smokiness of the eggplants, lemons will be squeezed, and there will be garlic. The squash is our own (quite literally) sweet addition.\n\nServe this as a dip, to scoop up with warm pita, or as a side to all sorts of things—grilled meat or fish, for example, or a range of roasted veg.\n\nKeeping notes: Double the batch and make more than you need, if you like; it keeps well in the fridge for up to three days. Just bring it back to room temperature rather than serving it fridge-cold.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "servings": "serves eight as a dip, or six as part of a spread",
   "time": {
@@ -112,5 +112,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/butternut-squash-m-tabbal.jpg"
 }

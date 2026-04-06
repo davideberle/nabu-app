@@ -1,9 +1,10 @@
 {
   "id": "green-soybeans-with-snow-vegetable",
-  "name": "Green soybeans with snow vegetable",
+  "name": "Green Soybeans with Snow Vegetable",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "xue cai mao dou 雪菜毛豆",
   "intro": "This simple, gorgeous recipe is typical of Shanghainese home cooking. Bright green soybeans are tossed in a wok with pickled snow vegetable and slivers of pork and bamboo shoot. It’s the kind of dish that, served with plain rice, can be a meal on its own. Shanghainese cooks tend to add a little bamboo shoot for crunch and extra umami, but it can seem like a waste to break open a package of brined bamboo for such a small amount, so feel free to omit this if you wish. There are other variations on the theme of this dish; some people prefer not to add ginger and garlic, while others might pep it up with a little dried chilli and Sichuan pepper, added to the wok with the garlic and ginger. Vegetarians may simply omit the pork. The same method works well with peas and fava beans.",
@@ -58,5 +59,13 @@
     "Heat 1 tablespoon oil in a seasoned wok over a high flame, add the soybeans and stir-fry over a medium flame until piping hot. Remove from the wok and set aside. Return the wok to a high flame with 1 tablespoon oil, add the pork and stir-fry until the strips have turned pale. Add the Shaoxing wine and allow it to evaporate. Add the ginger and garlic and stir-fry for a few seconds until you can smell them. Tip in the snow vegetable and bamboo shoot and stir-fry until hot and fragrant. Stir in the beans and season with the sugar, a good pinch of pepper and salt if you need it; the salty pickled vegetable may mean you don’t. When everything is piping hot and smells wonderful, remove from the heat and stir in the sesame oil. Serve.",
     "This is a typical Hangzhou supper dish. Cut 100g lean pork into 1cm cubes, add 1 tsp Shaoxing wine and ⅛ tsp salt and mix well. Cut 40g Sichuan preserved vegetable and 40g bamboo shoot into smaller cubes. Boil 250g frozen green soybeans until hot and tender. Heat 1 tbsp cooking oil in a seasoned wok over a high flame. Add the pork, stir-fry until cooked through, then remove and set aside. Stir-fry the preserved vegetable and bamboo shoot until they smell delicious. Add the beans. When everything is piping hot, add the pork and season with salt. Off the heat, stir in 1 tsp sesame oil and serve. Frozen peas can be used instead of soybeans, and can be added directly to the wok."
   ],
-  "image": "/recipes/green-soybeans-with-snow-vegetable.jpg"
+  "image": "/recipes/green-soybeans-with-snow-vegetable.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

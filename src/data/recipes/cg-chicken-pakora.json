@@ -1,0 +1,79 @@
+{
+  "id": "cg-chicken-pakora",
+  "name": "Chicken Pakora",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Starters"
+  },
+  "servings": "serves 2 or 4 as part of a multi-course meal",
+  "intro": "Chicken pakora is served in so many different ways at restaurants across the UK. The chicken breast meat can be cut into long strips or simple bite-sized cubes that are perfect served as finger food. Often, the meat is dyed bright red to make it look spicy hot, although usually it’s not very spicy at all.",
+  "ingredients": [
+    {
+      "item": "boneless chicken breast, cubed or sliced",
+      "amount": "250g"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "chilli powder, to taste",
+      "amount": "½–1 tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "1 small egg",
+      "amount": "White of"
+    },
+    {
+      "item": "chickpea (gram) flour",
+      "amount": "65g"
+    },
+    {
+      "item": "Sparkling water",
+      "amount": ""
+    },
+    {
+      "item": "Rapeseed oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Lemon wedges, onion rings and lettuce, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the chicken in a large bowl and mix with the turmeric, ajwain, garam masala, chilli powder and a little salt so that the meat is evenly coated. Let this sit for about 20 minutes.",
+    "Stir in the garlic and ginger paste, coriander (cilantro) and the egg white. Now start adding the chickpea (gram) flour a little at a time, coating the meat, adding a splash of sparkling water from time to time. Continue until all the flour is used up and it has the consistency of ketchup.",
+    "Heat enough oil for deep-frying in a deep, heavy-based pan or deep-fat fryer, to between 170 and 180°C (338–356°F). Using a wire mesh spoon, slowly lower the pakora into the hot oil. You may need to fry in batches and cooking times will of depend on the size of your chicken chunks, but it should only take a few minutes to cook through."
+  ],
+  "image": "/recipes/curry-guy-cg-chicken-pakora.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  },
+  "time": {
+    "total": 20
+  }
+}

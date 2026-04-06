@@ -1,0 +1,31 @@
+{
+  "id": "cold-brewed-green-tea",
+  "name": "Cold-Brewed Green TEA",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "green tea",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 quart"
+    }
+  ],
+  "method": [
+    "Mix the tea leaves with the water inside a bottle. Let it steep at room temperature or in the refrigerator for about 4 to 8 hours."
+  ],
+  "image": "/recipes/cold-brewed-green-tea.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

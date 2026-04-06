@@ -1,18 +1,18 @@
 {
   "id": "labneh-balls",
-  "name": "Labneh balls",
+  "name": "Labneh Balls",
   "subtitle": "Labneh tabat",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c02"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "introduction": "Playing around: Play around with coatings and combinations here; a clash of colors and flavors works really well as part of a larger mezzeh spread. We’ve given instructions for a combination of chile flakes and za’atar, but all sorts of coatings work—Nigella seeds, sesame seeds, other chile flakes (smoky Urfa or sweet Aleppo look great), sumac, chopped pistachios, or a combination of crushed garlic, chopped walnuts, and finely diced red chile. Play around with the size of the balls as well—large balls work well as a snack or as part of a mezzeh spread; smaller balls work well for nibbles with drinks.\n\nKeeping notes: The balls keep for up to two months in the fridge. The oil will set in the fridge, so you’ll have to bring it back to room temperature before being able to remove the balls and coat them. Save the oil; it can be used again to preserve future batches of labneh.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "servings": "makes about 20 balls; serves ten as part of a larger spread",
   "time": {
@@ -76,5 +76,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/labneh-balls.jpg"
 }

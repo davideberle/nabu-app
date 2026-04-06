@@ -53,5 +53,10 @@
     "In a small bowl, combine the peanut butter and lemon juice.",
     "Add peanut butter mixture (Step 1), all the vegetables, linguine (Step 1), and cilantro to skillet. Toss well."
   ],
-  "image": "/recipes/thai-pasta-with-spicy-peanut-sauce.jpg"
+  "image": "/recipes/thai-pasta-with-spicy-peanut-sauce.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

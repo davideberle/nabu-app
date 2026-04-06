@@ -1,0 +1,103 @@
+{
+  "id": "cucumber-and-yogurt-dip",
+  "name": "Cucumber and Yogurt Dip",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "plain yogurt",
+      "amount": "2 cups"
+    },
+    {
+      "item": "large cucumbers",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Put yogurt in a cheesecloth-lined sieve over a bowl.",
+      "amount": ""
+    },
+    {
+      "item": "Drain several hours or overnight in the refrigerator.",
+      "amount": ""
+    },
+    {
+      "item": "Peel, seed, and coarsely grate cucumbers.",
+      "amount": ""
+    },
+    {
+      "item": "Drain well.",
+      "amount": ""
+    },
+    {
+      "item": "Add garlic, vinegar, olive oil, salt, and pepper to cucumbers and mix well.",
+      "amount": ""
+    },
+    {
+      "item": "Add drained yogurt and blend.",
+      "amount": ""
+    },
+    {
+      "item": "Serve with toast points or crackers.",
+      "amount": ""
+    },
+    {
+      "item": "Grate peeled and seeded cucumber; set aside to drain.",
+      "amount": ""
+    },
+    {
+      "item": "Add garlic, vinegar, olive oil, salt, and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Pulse with a quick on-off.",
+      "amount": ""
+    },
+    {
+      "item": "Place in a bowl and combine with cucumber and yogurt.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put yogurt in a cheesecloth-lined sieve over a bowl.",
+    "Drain several hours or overnight in the refrigerator.",
+    "Peel, seed, and coarsely grate cucumbers.",
+    "Drain well.",
+    "Add garlic, vinegar, olive oil, salt, and pepper to cucumbers and mix well.",
+    "Add drained yogurt and blend.",
+    "Serve with toast points or crackers.",
+    "Grate peeled and seeded cucumber; set aside to drain.",
+    "Add garlic, vinegar, olive oil, salt, and pepper.",
+    "Pulse with a quick on-off.",
+    "Place in a bowl and combine with cucumber and yogurt."
+  ],
+  "image": "/recipes/cucumber-and-yogurt-dip.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
+}

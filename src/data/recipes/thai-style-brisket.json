@@ -8,7 +8,8 @@
   "servings": "serves 8",
   "intro": "This is an incredible brisket that will blow your mind. Peanut butter, soy, crunchy vegetables and spicy sauce give it the authentic Thai taste we love.",
   "time": {
-    "prep": "9 hours 30 minutes"
+    "prep": "9 hours 30 minutes",
+    "total": 180
   },
   "ingredients": [
     {
@@ -95,5 +96,10 @@
     "Add the cooking juices (Step 6) into the vegetable mixture (Step 7) and mix well.",
     "Cut the meat into thin slices."
   ],
-  "image": "/recipes/thai-style-brisket.jpg"
+  "image": "/recipes/thai-style-brisket.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

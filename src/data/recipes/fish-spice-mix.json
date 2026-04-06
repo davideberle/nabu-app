@@ -1,18 +1,18 @@
 {
   "id": "fish-spice-mix",
-  "name": "Fish spice mix",
+  "name": "Fish Spice Mix",
   "subtitle": "Baharat samak",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c06"
+    "chapter": "Fish"
   },
   "introduction": "This mix is used throughout the chapter—in dishes such as the fish kofta, roasted cod, spiced fish, and baked mackerel—so double or triple the batch, if you like. It keeps well in an airtight container at room temperature for up to a month, and much longer in the freezer. It’s also great to use as a rub for all sorts of things—cubes of chicken or tofu, prawns for the barbecue, or roasted mixed vegetables.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Fish"
   },
   "servings": "makes 7 tsp",
   "time": {

@@ -1,0 +1,38 @@
+{
+  "id": "smoothie-with-maca-and-goji-berries",
+  "name": "Smoothie with Maca AND Goji Berries",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "serves 2",
+  "intro": "Our body requires antioxidants to protect itself against free radicals, which affect aging. Both raw cacao and goji berries feature extremely high levels of antioxidants, and along with a boost of maca powder you’ll also get all the amino acids you need. In other words, it’s both tasty and healthy! You can replace the banana with avocado, and maybe add something for sweetness. If you want, you can soak the goji berries for 30 minutes to make them easier to blend. Then, use the soaking water and reduce the amount of coconut water accordingly.",
+  "ingredients": [
+    {
+      "item": "coconut water",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "raw maca powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "goji berries",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "frozen or fresh bananas",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Blend all the ingredients to a smooth consistency."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

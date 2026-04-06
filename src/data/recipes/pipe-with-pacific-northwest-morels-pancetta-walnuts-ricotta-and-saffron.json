@@ -1,0 +1,76 @@
+{
+  "id": "pipe-with-pacific-northwest-morels-pancetta-walnuts-ricotta-and-saffron",
+  "name": "Pipe with Pacific Northwest Morels, Pancetta, Walnuts, Ricotta, and Saffron",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "One of the most foraged (and desirable) items in the PNW, morels can be found from mid-April until June in the woods of the Olympic Peninsula, the Okanogan-Wenatchee National Forest, the San Juan Islands, and a host of other secret spots across Washington State and Oregon.\n\nSpugnole (or spongy ones) in Italian, morels represent the new season that is about to start: spring. This recipe uses a classic Italian combo—parsley, walnuts, pancetta, and saffron. Fresh cow ricotta is added at the end, offering a great alternative to a cream- or butter-based sauce. The result is a seasonal, luscious pasta dish that showcases the morel mushrooms with their nutty and earthy flavor and is perfectly balanced with the other ingredients.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh morels, halved lengthwise",
+      "amount": "8 ounces"
+    },
+    {
+      "item": "finely chopped Italian parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "saffron threads, soaked in ⅓ cup boiling water for 30 minutes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "fresh cow ricotta",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large pan over medium heat, warm the olive oil. Add the shallot and garlic and sauté for 2 minutes, stirring to avoid burning. Add the pancetta and walnuts, and cook for 2 minutes, stirring with a wooden spoon.",
+    "Add the morels and continue cooking for 1 minute. Add the parsley, saffron water, and salt and pepper to taste, and continue cooking for another 2 minutes. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pipe until al dente, drain, and transfer to the pan. Energetically stir in the ricotta, making sure the pasta is blended. Add two-thirds of the Parmigiano, and stir to combine.",
+    "Plate in four bowls. Finish with additional walnuts, the remaining Parmigiano, and a drizzle of oil."
+  ],
+  "image": "/recipes/pipe-with-pacific-northwest-morels-pancetta-walnuts-ricotta-and-saffron.jpg",
+  "time": {
+    "total": 17
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

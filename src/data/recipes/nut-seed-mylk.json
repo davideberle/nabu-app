@@ -1,0 +1,36 @@
+{
+  "id": "nut-seed-mylk",
+  "name": "Nut/seed Mylk",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "nuts/seeds",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "1 quart (1 liter)"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "Two pinches of"
+    }
+  ],
+  "method": [
+    "Soak the nuts/seeds, if you wish. Process all the ingredients in a blender. Place a fine-meshed sieve over a deep bowl, or use a nut-milk bag, for draining the mylk. Pour the mylk into bottles and keep them refrigerated. Mylk made with soaked nuts/seeds has a shelf life of 2 days, non-soaked, up to 3–4 days."
+  ],
+  "image": "/recipes/nut-seed-mylk.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

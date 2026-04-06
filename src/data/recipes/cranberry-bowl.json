@@ -1,0 +1,64 @@
+{
+  "id": "cranberry-bowl",
+  "name": "Cranberry Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "Take this opportunity to use fresh berries when they’re in season. You can also replace the cranberries with raspberries or other frozen berries for a bit of variety. If you want some extra fat, just add in coconut oil.",
+  "ingredients": [
+    {
+      "item": "buckwheat, without hulls",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "fresh cranberries, or defrosted if frozen",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut oil (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water or coconut water (optional)",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "Fresh or frozen cranberries",
+      "amount": "",
+      "group": "SUGGESTED TOPPINGS"
+    },
+    {
+      "item": "Dehydrated buckwheat",
+      "amount": "",
+      "group": "SUGGESTED TOPPINGS"
+    },
+    {
+      "item": "Liquid honey or yacon syrup",
+      "amount": "",
+      "group": "SUGGESTED TOPPINGS"
+    }
+  ],
+  "method": [
+    "Soak the hulled buckwheat (it will swell when soaking) for 8 hours or overnight. Rinse the soaked buckwheat thoroughly in a fine-meshed sieve. Mix the buckwheat with the remaining ingredients (except toppings) in a food processor or blender until you have a creamy consistency. Spoon it in bowls and top with cranberries, dehydrated buckwheat (find out how to dehydrate buckwheat on p. 63), and the sweetener."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

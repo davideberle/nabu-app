@@ -1,0 +1,61 @@
+{
+  "id": "conchiglie-rigate-with-pacific-northwest-wild-fiddlehead-fern-leek-and-walnut-pe",
+  "name": "Conchiglie Rigate with Pacific Northwest Wild Fiddlehead Fern, Leek, and Walnut Pesto, Fiore Sardo, and Aleppo Pepper",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Fiddlehead ferns are a signal that spring has arrived, and luckily, they grow spontaneously and are widespread in PNW forests. Their color reflects their flavor—they taste like the deep, moist green of the trees, yet they carry a delicate, unique taste. Fiddlehead hunting is fun and rewarding. They are easy to recognize, even by kids, with that curled top at the end of beautiful fern leaves. Let the weather be your foraging guide: those gorgeous delicacies can grow up to six inches overnight after a warm spring rain!",
+  "ingredients": [
+    {
+      "item": "fiddlehead ferns, well cleaned, dirty parts trimmed and discarded",
+      "amount": "2 cups"
+    },
+    {
+      "item": "leek, roots and thick green stems trimmed and discarded",
+      "amount": "1"
+    },
+    {
+      "item": "raw walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Fiore Sardo DOP, divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "conchiglie rigate pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a large pot of boiling salted water, blanch the fiddleheads for 5 minutes. Leave the water boiling, and use a slotted spoon or spider to remove the fiddleheads. Rinse them with cold water, and set aside, reserving about a dozen for finishing.",
+    "In the same pot, blanch the leek for 2 minutes and set aside.",
+    "When both fiddleheads and leek are cool, in a food processor, blend the fiddleheads, leek, walnuts, half the Fiore Sardo, and the olive oil until creamy like a puree. If the result is too thick, add water until you have the desired consistency. Season with salt and pepper to taste.",
+    "Return the water in the same pot to a boil, then cook the conchiglie rigate until al dente and drain. In a medium-large pan over medium heat, quickly sauté the pasta and pesto, adding pasta water as necessary to bind the ingredients. Add 2 tablespoons of the Fiore Sardo, and stir to combine.",
+    "Plate in four bowls. Finish with the reserved fiddleheads, the remaining ¼ cup Fiore Sardo, the Aleppo pepper, and a drizzle of oil."
+  ],
+  "image": "/recipes/conchiglie-rigate-with-pacific-northwest-wild-fiddlehead-fern-leek-and-walnut-pe.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

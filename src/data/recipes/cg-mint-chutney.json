@@ -1,0 +1,52 @@
+{
+  "id": "cg-mint-chutney",
+  "name": "Mint Chutney",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes enough for 4–6 as an accompaniment",
+  "intro": "This is probably the most popular chutney served in Indian restaurants. Some chefs add a little food colouring to make it bright green.",
+  "ingredients": [
+    {
+      "item": "plain yoghurt",
+      "amount": "270g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bird’s-eye green chillies, to taste, very finely chopped",
+      "amount": "1–3"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "commercial mint sauce of your choice, to taste",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    }
+  ],
+  "method": [
+    "Place the ingredients in a mixing bowl and whisk to combine until smooth. Cover and place in the fridge for at least 30 minutes, before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  },
+  "time": {
+    "total": 30
+  }
+}

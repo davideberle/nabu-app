@@ -1,0 +1,99 @@
+{
+  "id": "cumin-sticks",
+  "name": "Cumin Sticks",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "grated kefalotiri cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(½ pound) butter or margarine, melted",
+      "amount": "2 sticks"
+    },
+    {
+      "item": "egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "ouzo",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "egg white",
+      "amount": "1"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Preheat oven to 350 degrees.",
+      "amount": ""
+    },
+    {
+      "item": "Blend together flour, salt, mustard, and cheese.",
+      "amount": ""
+    },
+    {
+      "item": "Add melted butter, egg yolk, ouzo, and water, mixing to form a soft dough.",
+      "amount": ""
+    },
+    {
+      "item": "Roll out dough to a thickness of ¼ inch and cut into 3 × ½-inch strips, or cut into various shapes with a cookie cutter.",
+      "amount": ""
+    },
+    {
+      "item": "Place on a greased cookie sheet.",
+      "amount": ""
+    },
+    {
+      "item": "Brush with egg white and sprinkle with cumin seeds.",
+      "amount": ""
+    },
+    {
+      "item": "Bake for 15 minutes or until light brown.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 350 degrees.",
+    "Blend together flour, salt, mustard, and cheese.",
+    "Add melted butter, egg yolk, ouzo, and water, mixing to form a soft dough.",
+    "Roll out dough to a thickness of ¼ inch and cut into 3 × ½-inch strips, or cut into various shapes with a cookie cutter.",
+    "Place on a greased cookie sheet.",
+    "Brush with egg white and sprinkle with cumin seeds.",
+    "Bake for 15 minutes or until light brown."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

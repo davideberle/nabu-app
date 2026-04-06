@@ -1,0 +1,81 @@
+{
+  "id": "pappardelle-with-venetian-style-chicken-liver-and-mama-lil-s-spicy-peppers",
+  "name": "Pappardelle with Venetian-Style Chicken Liver and Mama Lil’s Spicy Peppers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Fegato alla veneziana is a traditional Italian secondo piatto originally from Venice but served all over Italy. It was one of my favorite meat dishes growing up and my mom served a lot of it during my childhood under my pediatrician’s advice to add more iron in my diet.\n\nThis is a reinterpretation of the recipe, pasta being an unheard-of ingredient in the dish in Italy. I have substituted veal liver, which is harder to find, with the more common chicken liver, which is also milder. This dish is for everyone who loves liver and doesn’t get to see it often on the menu. It has been a hit at my restaurant.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "medium white onions, cut into ¼-inch strips",
+      "amount": "2"
+    },
+    {
+      "item": "sage leaves, finely chopped",
+      "amount": "8"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "organic, free-range chicken liver, rinsed and cut into ¼-inch strips",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Mama Lil’s spicy peppers, or pickled red onions (this page)",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil and butter for a couple of minutes.",
+    "Add the onions, sage, and red pepper flakes, and sauté for 2 to 4 minutes. Add the water and vinegar, reduce the heat to medium-low, and cook for 5 minutes.",
+    "Increase the heat to medium, add the liver, and cook for another 5 to 7 minutes, or until the sauce is not too loose and watery. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pappardelle until al dente, drain, and transfer the pasta and ¼ cup of the Parmigiano to the skillet. Quickly sauté the pasta, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the remaining Parmigiano, a drizzle of oil, and a few Mama Lil’s spicy peppers. Enjoy!"
+  ],
+  "tips": [
+    "Be careful not to overcook the liver; otherwise, it will become extremely hard.",
+    "I often make this recipe with pickled red onions instead of Mama Lil’s peppers, which is a great alternative."
+  ],
+  "image": "/recipes/pappardelle-with-venetian-style-chicken-liver-and-mama-lil-s-spicy-peppers.jpg",
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

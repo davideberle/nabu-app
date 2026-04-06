@@ -26,7 +26,7 @@
     },
     {
       "item": "ground ehuru (calabash nutmeg)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "1/4 teaspoon ogiri Salt to taste",
@@ -34,11 +34,11 @@
     },
     {
       "item": "uziza leaves (washed, drained and roughly chopped)",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "utazi leaves (washed, drained and roughly chopped)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     }
   ],
   "method": [
@@ -49,5 +49,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ofe-nsala-white-soup.jpg"
+  "image": "/recipes/ofe-nsala-white-soup.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

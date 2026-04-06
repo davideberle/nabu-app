@@ -1,0 +1,45 @@
+{
+  "id": "crunchy-raspberry-and-coconut-cookies",
+  "name": "Crunchy Raspberry & Coconut Cookies",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 20 cookies",
+  "intro": "Oh boy—these small crunchy cookies are so good! I suggest making lots of them and sharing them with family and friends, or passing them around during the coffee break at work. They’ll all be gone in the blink of an eye!",
+  "ingredients": [
+    {
+      "item": "frozen raspberries, defrosted—do not use the liquid",
+      "amount": "8 oz (225 g)"
+    },
+    {
+      "item": "(75 g)—approx. 1¼ cup (2½ dl) coconut chips",
+      "amount": "2¾ oz"
+    },
+    {
+      "item": "baobab or lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "scant ¼ tsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "¼ cup (½ dl)"
+    }
+  ],
+  "method": [
+    "Stir together all the ingredients, but make sure to not include the liquid from the defrosted raspberries (save that juice in a glass and drink it!). Dot tablespoons of the mixture on waxed parchment paper and let the cookies dehydrate at 107°F (42°C) for about 20 hours. Store the cookies in an airtight jar."
+  ],
+  "image": "/recipes/crunchy-raspberry-and-coconut-cookies.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

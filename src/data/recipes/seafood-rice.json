@@ -1,0 +1,132 @@
+{
+  "id": "seafood-rice",
+  "name": "Seafood Rice",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Main Dishes"
+  },
+  "servings": "serves 6",
+  "time": {
+    "prep": 10,
+    "cook": 40,
+    "total": 50
+  },
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil, plus 1 teaspoon, divided",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "seafood (squid, cut into rounds, large shrimp, and mussels)",
+      "amount": "1½ lb"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "4"
+    },
+    {
+      "item": "chopped celery",
+      "amount": "1 cup"
+    },
+    {
+      "item": "medium tomatoes, chopped, or 8 ounces cherry tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "arborio rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chicken, vegetable, or fish broth, divided",
+      "amount": "4¼ cups"
+    },
+    {
+      "item": "Lemon wedges, for serving",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet over medium-high heat, heat 1 tablespoon of olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Add the squid and cook for about 2 minutes. Remove the squid and set aside.",
+      "amount": ""
+    },
+    {
+      "item": "Add the remaining 1 teaspoon of olive oil to the skillet to heat.",
+      "amount": ""
+    },
+    {
+      "item": "Add the onion and salt. Cook for 5 minutes, until translucent.",
+      "amount": ""
+    },
+    {
+      "item": "Add the garlic and cook for 1 minute more.",
+      "amount": ""
+    },
+    {
+      "item": "Add the celery and tomatoes. Cook for 3 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Pour in the wine and cook for about 3 minutes, stirring frequently.",
+      "amount": ""
+    },
+    {
+      "item": "Stir in the rice, parsley, dill, and 4 cups of broth. Cover the skillet and simmer for 15 minutes. After 15 minutes, most of the liquid should be absorbed, but there should still be a little left. If there isn’t, add the remaining broth.",
+      "amount": ""
+    },
+    {
+      "item": "Top the rice mixture with the shrimp and mussels, cover the skillet, and simmer for 5 minutes more, until the shrimp are just cooked.",
+      "amount": ""
+    },
+    {
+      "item": "Return the squid to the skillet. Discard any unopened mussels. Serve with the lemon wedges on the side.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and refrigerate any leftovers for up to 3 days.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large skillet over medium-high heat, heat 1 tablespoon of olive oil.",
+    "Add the squid and cook for about 2 minutes. Remove the squid and set aside.",
+    "Add the remaining 1 teaspoon of olive oil to the skillet to heat.",
+    "Add the onion and salt. Cook for 5 minutes, until translucent.",
+    "Add the garlic and cook for 1 minute more.",
+    "Add the celery and tomatoes. Cook for 3 minutes.",
+    "Pour in the wine and cook for about 3 minutes, stirring frequently.",
+    "Stir in the rice, parsley, dill, and 4 cups of broth. Cover the skillet and simmer for 15 minutes. After 15 minutes, most of the liquid should be absorbed, but there should still be a little left. If there isn’t, add the remaining broth.",
+    "Top the rice mixture with the shrimp and mussels, cover the skillet, and simmer for 5 minutes more, until the shrimp are just cooked.",
+    "Return the squid to the skillet. Discard any unopened mussels. Serve with the lemon wedges on the side.",
+    "Cover and refrigerate any leftovers for up to 3 days."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

@@ -1,9 +1,10 @@
 {
   "id": "fried-gluten-puffs",
-  "name": "Fried gluten puffs",
+  "name": "Fried Gluten Puffs",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "you mian jin 油面筋",
   "ingredients": [
@@ -20,5 +21,13 @@
     "There is a kind of magic in deep-frying gluten, because when the little pieces enter the hot oil, they puff up dramatically like zeppelins, until they are five or six times their original size and become light, papery and fragile.",
     "Break the gluten into pieces the size of large cherries. Heat oil for deep-frying to 350–400°F (180–200°C). Working in batches, drop some pieces of gluten into the hot oil. Don’t put them too close together, to prevent sticking. Fry, stirring occasionally for even coloring, for 2–3 minutes, until they are puffy and golden and float on the surface of the oil. Drain and set aside. The puffs can be kept for a week or so in the fridge, and longer in the freezer."
   ],
-  "image": "/recipes/fried-gluten-puffs.jpg"
+  "image": "/recipes/fried-gluten-puffs.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

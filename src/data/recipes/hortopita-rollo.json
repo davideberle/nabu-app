@@ -3,21 +3,26 @@
   "name": "Hortopita Rollo",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
   },
-  "servings": "prep time: 10 minutes | cook time: 1 hour |serves 8 to 10",
+  "servings": "serves 8",
+  "time": {
+    "prep": 10,
+    "total": 83
+  },
   "ingredients": [
     {
-      "item": "all-purpose flour",
-      "amount": "4–4½ cups"
+      "item": "4–4½ cups all-purpose flour",
+      "amount": ""
     },
     {
       "item": "baking powder",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
     },
     {
-      "item": "olive oil",
-      "amount": "⅔ cup"
+      "item": "cup olive oil",
+      "amount": ""
     },
     {
       "item": "dry white wine or beer",
@@ -25,7 +30,7 @@
     },
     {
       "item": "mixed greens (such as spinach, Swiss chard, dandelion greens, arugula and/or mesclun)",
-      "amount": "2 pounds"
+      "amount": "2 lb"
     },
     {
       "item": "olive oil",
@@ -54,6 +59,42 @@
     {
       "item": "Zante currants",
       "amount": "1 cup"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Salt (optional)",
+      "amount": ""
+    },
+    {
+      "item": "In a large bowl, mix 4 cups flour with the baking powder. Add the oil and wine or beer and mix briefly with a food processor until a soft dough forms. If necessary, add a bit more flour. Shape the dough into a ball and let rest in the food processor for 15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Rinse the greens, drain briefly and place in a large pot while still wet. Cook over high heat, stirring, until wilted. Let cool.",
+      "amount": ""
+    },
+    {
+      "item": "Squeeze the excess liquid from the wilted greens with your hands, then coarsely chop them.",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, heat ¼ cup of the oil and sauté the leeks over medium heat for 6 to 8 minutes, or until tender. Add the scallions and sauté for 3 minutes more. Add the wilted greens, the parsley and 3 tablespoons of the oil and sauté for 4 minutes, or until most of the liquid has evaporated. Remove from the heat and add the cheese, fennel or dill, currants and pepper to taste. Taste and add salt if necessary—feta is usually quite salty. Set aside to cool.",
+      "amount": ""
+    },
+    {
+      "item": "Preheat the oven to 375°F. Pour the remaining oil into a small bowl and use some of it to oil a 12- inch pie pan.",
+      "amount": ""
+    },
+    {
+      "item": "Divide the dough into 4 pieces. Cover 3 of the pieces with plastic wrap. On a floured surface, roll 1 piece into a 15-x-10-inch rectangle. Brush both sides of the phyllo sheet with oil and place one-quarter of the filling on it, leaving a 1-inch border all around. Roll it up from a long side like a cigar and then coil it into a spiral shape and place seam side down in the center of the pan (see illustrations). Continue with the remaining phyllo and filling, coiling the rolled pieces, starting the next one where the last one leaves off. Brush the dough generously with oil and prick with a fork in several places.",
+      "amount": ""
+    },
+    {
+      "item": "Bake for 45 minutes, or until golden brown. Let cool for 15 minutes before cutting. Serve warm or at room temperature.",
+      "amount": ""
     }
   ],
   "method": [
@@ -65,5 +106,10 @@
     "Divide the dough into 4 pieces. Cover 3 of the pieces with plastic wrap. On a floured surface, roll 1 piece into a 15-x-10-inch rectangle. Brush both sides of the phyllo sheet with oil and place one-quarter of the filling on it, leaving a 1-inch border all around. Roll it up from a long side like a cigar and then coil it into a spiral shape and place seam side down in the center of the pan (see illustrations). Continue with the remaining phyllo and filling, coiling the rolled pieces, starting the next one where the last one leaves off. Brush the dough generously with oil and prick with a fork in several places.",
     "Bake for 45 minutes, or until golden brown. Let cool for 15 minutes before cutting. Serve warm or at room temperature."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

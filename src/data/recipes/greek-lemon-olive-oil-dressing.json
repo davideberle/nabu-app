@@ -1,0 +1,60 @@
+{
+  "id": "greek-lemon-olive-oil-dressing",
+  "name": "Greek Lemon–olive Oil Dressing",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
+  "ingredients": [
+    {
+      "item": "Fresh lemon juice, strained",
+      "amount": ""
+    },
+    {
+      "item": "Extra-virgin Greek olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Salt and freshly ground black pepper (optional)",
+      "amount": ""
+    },
+    {
+      "item": "The basic ratio is 1:3—that is, one part fresh lemon juice to three parts olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Put the lemon juice in a bowl and, while whisking vigorously, drizzle in the oil.",
+      "amount": ""
+    },
+    {
+      "item": "Add a pinch each of salt and pepper, if you like, and",
+      "amount": ""
+    },
+    {
+      "item": "—that’s “voilà” in Greece—you have",
+      "amount": ""
+    },
+    {
+      "item": ", the most basic Greek sauce and dressing.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "The basic ratio is 1:3—that is, one part fresh lemon juice to three parts olive oil.",
+    "Put the lemon juice in a bowl and, while whisking vigorously, drizzle in the oil.",
+    "Add a pinch each of salt and pepper, if you like, and oriste—that’s “voilà” in Greece—you have ladolemono, the most basic Greek sauce and dressing."
+  ],
+  "image": "/recipes/greek-lemon-olive-oil-dressing.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

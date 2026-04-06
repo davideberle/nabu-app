@@ -8,7 +8,8 @@
   "servings": "serves 2",
   "intro": "Here’s a deliciously different salad that combines grilled shrimp (a lean protein source) with low-calorie cucumbers and onions. It is made with a refreshing Thai blend of sesame seeds, coriander, lime and mint.",
   "time": {
-    "prep": "35 minutes"
+    "prep": "35 minutes",
+    "total": 4
   },
   "ingredients": [
     {
@@ -71,5 +72,10 @@
     "Add shrimp, onion, and cucumber into the sauce (Step 1) and stir well.",
     "Divide lettuce leaf between 2 salad plates and top each one of them with shrimp mixture (Step 4). Serve immediately."
   ],
-  "image": "/recipes/thai-shrimp-salad.jpg"
+  "image": "/recipes/thai-shrimp-salad.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,9 +1,10 @@
 {
   "id": "spiced-wheat-gluten-with-four-delights",
-  "name": "Spiced wheat gluten with four delights",
+  "name": "Spiced Wheat Gluten with Four Delights",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "si xi kao fu 四喜烤麸",
   "intro": "This dark golden tumble, aromatic with spices, looks almost like cubes of brown bread threaded with strands of lily flower and pieces of mushroom. Juicily delicious and a little sweet, it is one of Shanghai’s most distinctive appetizers. It is almost unknown in the West, but every friend to whom I’ve served it at home has loved it immediately. The dish is made with kao fu: wheat gluten that has been leavened with yeast and then steamed to make a kind of loaf with a springy, spongey consistency. In Shanghai markets you can buy it fresh; elsewhere, you will find it in packets, cubed and dried. This dish is thought to have evolved from a simpler version that was once served at the vast Tiantong Buddhist temple near Ningbo, one of the centers of Zen Buddhism in China. Chefs in the vegetarian restaurants of Shanghai refined the recipe using techniques borrowed from Suzhou and Yangzhou cooking, adding dried mushrooms and lily flowers and giving it a delicate sweetness. The recipe has several stages, which makes it something of a hassle to make, but in my experience it’s worth it. The finished dish keeps well in the fridge, and seems to taste most delicious after it’s been kept for two days. The degree of sweetness is a matter of taste: do add extra sugar if you wish.",
@@ -67,5 +68,13 @@
     "Brush out the wok and reheat it with 1 tablespoon oil. Add the ginger and shiitake and stir-fry briefly until fragrant. Add the mushroom-soaking liquid topped up with hot water to make 3 cups (750ml). Add the kao fu and peanuts, along with the soy sauces, wine, sugar and star anise. Bring to the boil, then cover and simmer gently for 20 minutes, stirring occasionally.",
     "Add the wood-ears and lily flowers, then increase the heat to high. Cook, stirring, to reduce the sauce to a shallow, flavorful pool of liquid. Allow to cool. Before serving, sprinkle over the sesame oil and stir it gently in."
   ],
-  "image": "/recipes/spiced-wheat-gluten-with-four-delights.jpg"
+  "image": "/recipes/spiced-wheat-gluten-with-four-delights.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

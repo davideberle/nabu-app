@@ -1,0 +1,34 @@
+{
+  "id": "trail-mix",
+  "name": "Trail MIX",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "ingredients": [
+    {
+      "item": "cacao nibs, ½ cup (1 dl) goji berries, ¾ cup (1½ dl) pumpkin seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "ground-cherries, 1 cup (2 dl) cashews, ½ cup (1 dl) cacao nibs",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mulberries, ½ cup (1dl) coarsely chopped almonds, ½ cup (1 dl) grated coconut",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "raisins, ½ cup (1 dl) hazelnuts (filberts), 3 tbsp whole cacao beans, ½ cup (1 dl) sunflower seeds",
+      "amount": "½ cup (1 dl)"
+    }
+  ],
+  "method": [],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

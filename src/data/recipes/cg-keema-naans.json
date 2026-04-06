@@ -1,0 +1,71 @@
+{
+  "id": "cg-keema-naans",
+  "name": "Keema Naans",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes enough to serve 8–10",
+  "intro": "I’ve found that keema naans are best cooked in a tandoor or very hot oven on a pizza stone. They are difficult to get right in a frying pan because of the meat inside.",
+  "ingredients": [
+    {
+      "item": "quantity naan dough, ready to shape",
+      "amount": "1"
+    },
+    {
+      "item": "Flour, for dusting",
+      "amount": ""
+    },
+    {
+      "item": "Melted ghee, for brushing",
+      "amount": ""
+    },
+    {
+      "item": "Fresh coriander (cilantro), to finish",
+      "amount": ""
+    },
+    {
+      "item": "lamb mince",
+      "amount": "400g"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "green chillies, finely chopped or mashed into a paste",
+      "amount": "2"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "each of salt and freshly ground pepper",
+      "amount": "Pinch"
+    }
+  ],
+  "method": [
+    "Preheat the oven to its highest setting and place a pizza stone on a rack to heat for about 1 hour.",
+    "Meanwhile, combine all the keema ingredients in a large mixing bowl. Knead the meat for about 5 minutes, scraping the meat against the bottom of the bowl as you do so. You want to see streaks of minced meat clinging to the surface.",
+    "Pull off a piece of naan dough the size of a tennis ball and roll out on a floured surface to about 3mm thick. Place a ball of minced meat, slightly larger than a golf ball, in the middle of the disc and wrap the dough around it.",
+    "Lightly roll out the filled disc, flipping it over a couple of times as you do. Be careful not to press too hard while rolling, or the meat will become exposed. If this happens, patch the area with a small piece of dough.",
+    "Brush the shaped naan with just a little melted ghee and place on the heated pizza stone in the oven. Bake for about 3 minutes, then flip it over and cook for another 3 minutes. Check the dough and filling are done, and cook for longer if needed.",
+    "To serve, sprinkle with coriander (cilantro) and perhaps a little more melted ghee. Keep warm while you roll and bake the remaining naans.",
+    "TIP: If you don’t have a pizza stone, you can use a baking tray, although it will not get as hot."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "bread"
+    ]
+  },
+  "time": {
+    "total": 65
+  }
+}

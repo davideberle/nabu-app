@@ -1,9 +1,10 @@
 {
   "id": "lotus-pond-stir-fry",
-  "name": "Lotus pond stir-fry",
+  "name": "Lotus Pond Stir-Fry",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "he tang xiao chao 荷塘小炒",
   "intro": "Ponds are an important part of the traditional system of farming in the Jiangnan region. They are used to grow vegetables including lotus, water chestnuts, water caltrops, foxnuts and water shield, and to rear fish and eels, which live on the snails and insects the water also supports. My friend and teacher, chef Zhu Yinfeng, says that when he was a child, the people in his village would catch all the fish in their collective ponds after the rice harvest each year and divide them up according to the number of mouths in the family. They would then drain the ponds and spread the mulch at the bottom on the fields as fertilizer. This stir-fry, made with two pond-grown vegetables, will perk you up with its surprising and delightful variations on the theme of crispness: the short, sweet, snappy crispness of water chestnuts, the slightly stickier crispness of lotus root, the very delicate crispness of lily bulb, and the tauter, greener crispness of celery.",
@@ -62,5 +63,13 @@
     "Bring a pan of water to the boil and add ½ tablespoon cooking oil and ½ tablespoon salt. Tip in the lotus root, celery and carrot or red bell pepper, if using, and blanch for 1–2 minutes, just to “break their rawness.” Add the water chestnuts and lily bulb and return to the boil. Tip everything into a colander and drain.",
     "Heat the remaining cooking oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry briefly until you can smell them. Add all the blanched vegetables and stir-fry until piping hot. Season with salt, give the sauce a stir and serve."
   ],
-  "image": "/recipes/lotus-pond-stir-fry.jpg"
+  "image": "/recipes/lotus-pond-stir-fry.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

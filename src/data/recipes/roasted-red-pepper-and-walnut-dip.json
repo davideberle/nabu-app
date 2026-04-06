@@ -1,18 +1,18 @@
 {
   "id": "roasted-red-pepper-and-walnut-dip",
-  "name": "Roasted red pepper and walnut dip",
+  "name": "Roasted Red Pepper and Walnut Dip",
   "subtitle": "Muhammara",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c02"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "introduction": "The word muhammara can mean both “roasted” and “red” and can also (though not here) refer to the use of paprika in a dish to bring a smoky depth of flavor and reddish color. Muhammara is Syrian in origin, moving freely to Palestine and Lebanon when the Levant was a single territory. It still moves freely now, across whichever table it is served at, acting as a dip, spread, or side in all sorts of contexts. Scoop it up with warm toasted pita, spoon it alongside some cooked lima beans or lentils or any roast meat, pair it with some creamy hummus or cheese, or use it as part of a mezzeh spread. You can’t really go wrong.\n\nKeeping notes: This keeps well in the fridge for up to three days.\n\nGluten-free note: Adding the panko makes the mix firm up and slightly dry, in a good way. For a gluten-free alternative, use an equal quantity of ground almonds or increase the quantity of walnuts by about 2 tbsp/20g.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Snacks, Spreads, and Sauces"
   },
   "servings": "serves four as part of a mezzeh spread",
   "time": {
@@ -126,5 +126,5 @@
       "vegan"
     ]
   },
-  "image": null
+  "image": "/recipes/roasted-red-pepper-and-walnut-dip.jpg"
 }

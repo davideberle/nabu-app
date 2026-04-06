@@ -1,18 +1,18 @@
 {
   "id": "zucchini-garlic-and-yogurt",
-  "name": "Zucchini, garlic, and yogurt",
+  "name": "Zucchini, Garlic, and Yogurt",
   "subtitle": "M’tawaneh",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c03"
+    "chapter": "Veggie Sides and Salads"
   },
   "introduction": "M’tawaneh is traditionally made with the scooped-out flesh of zucchini after they’ve been hollowed in order to be stuffed. Here, however, we’re short-cutting the process by starting with the whole zucchini, skin and all. It has a bit more texture as a result, which we love, making it more of a veggie side or condiment than a completely smooth dip. The result is rich, light, and comforting all at once.\n\nServe this either as it is, scooped up with some warm pita for a light lunch with some black olives, or as a side to all sorts of things. Pan-fried fish, grilled chicken, or roasted beets, for example, all work particularly well.\n\nKeeping notes: This keeps well in the fridge for up to three days.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Veggie Sides and Salads"
   },
   "servings": "serves four as a dip or side",
   "time": {
@@ -87,5 +87,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/zucchini-garlic-and-yogurt.jpg"
 }

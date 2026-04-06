@@ -1,9 +1,10 @@
 {
   "id": "shanghai-smoked-fish",
-  "name": "Shanghai “smoked” fish",
+  "name": "Shanghai “smoked” Fish",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "lao shang hai xun yu 老上海熏鱼",
   "intro": "Strangely, “smoked” fish, a popular Shanghainese appetizer, isn’t smoked at all: it seems to derive its name from the resemblance to smoked fish with its caramel-dark color and smoky intensity of flavor. It is made by marinating boneless slices of fish, then deep-frying them and steeping them in a flavoring broth that is dark with soy sauce and aromatic with spices, with a hint of sweetness. This recipe is a particular speciality of Shanghai, but versions of it are served across the region. In Shaoxing, where cooks like to reduce the flavoring broth to a treacly glaze, it used to be regarded as a special treat, eaten only at the New Year and other festivals. The dish is normally made with the middle section of a grass carp, which yields good, boneless slices. As an alternative, gray mullet works well: a whole gray mullet weighing 3 lbs (1.5kg) will give you a fillet of about 1¾ lbs (750g). You can also use sea bass, chopped through the backbone into thick diagonal slices.",
@@ -87,5 +88,13 @@
     "Remove the ginger and spring onions from the marinade. Place the fish slices on paper towels to drain. Bring the broth to the boil, then set aside.",
     "Heat the cooking oil in a wok to 350°F (180°C). Fry the fish slices in batches until crisp and golden. Remove them with chopsticks and drop into the hot flavoring broth to steep for 2–3 minutes. Fish them out and set them aside to cool. Repeat with the rest of the fish, then pile the pieces up neatly on a serving dish. Sprinkle with 2 teaspoons sesame oil and a little five-spice powder, if desired. Serve at room temperature."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 65
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

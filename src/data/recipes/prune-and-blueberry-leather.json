@@ -1,0 +1,34 @@
+{
+  "id": "prune-and-blueberry-leather",
+  "name": "Prune AND Blueberry Leather",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 3 sheets",
+  "intro": "If you don’t want to make strips, it can also be nice to use, say, gingerbread men molds to make little figures. Children love this—grown-ups, too. Prunes are very rich in vitamin A and K. And of course, a few prunes a day is excellent for intestinal health.",
+  "ingredients": [
+    {
+      "item": "prunes",
+      "amount": "25"
+    },
+    {
+      "item": "frozen blueberries, defrosted",
+      "amount": "9 oz (250 g)"
+    }
+  ],
+  "method": [
+    "Soak the prunes for about 8 hours. Mix the prunes and the blueberries in a food processor to make a fruit batter.",
+    "Spread the batter onto waxed parchment paper, or pour a thin layer in molds. Let dry for about 15 hours. The leathers should be a bit chewy; cut them into strips and roll them up. Keep the leathers in an airtight jar."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

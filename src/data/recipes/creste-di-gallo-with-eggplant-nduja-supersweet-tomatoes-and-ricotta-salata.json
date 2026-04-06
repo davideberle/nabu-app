@@ -1,0 +1,56 @@
+{
+  "id": "creste-di-gallo-with-eggplant-nduja-supersweet-tomatoes-and-ricotta-salata",
+  "name": "Creste di Gallo with Eggplant, ’nduja, Supersweet Tomatoes, and Ricotta Salata",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "When the weather turns warmer, I crave juicy, flavorful seasonal vegetables. Both eggplant and tomatoes can be easily found in local farmers’ markets and in our gardens in July and August.\n\nHere is a quick recipe that features eggplant and supersweet tomatoes, a variety of small tomatoes similar to cherry tomatoes, but sweeter as the name suggests. The little touch of handmade ’nduja and grated ricotta salata on top makes this simple pasta an exquisite summer dish. (’Nduja is a spreadable fermented salume made of pork and Calabrian chili pepper, which gives it a vibrant red color. It originated in Calabria, Italy, and is something that everyone should try at least once.)",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "eggplant, cut into ½-inch cubes",
+      "amount": "½"
+    },
+    {
+      "item": "supersweet tomatoes, halved",
+      "amount": "1 pound"
+    },
+    {
+      "item": "’nduja",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "creste di gallo pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated ricotta salata",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "In a large sauté pan over medium heat, warm the olive oil. When hot (it will bubble if you sprinkle in some flour), fry the eggplant, flipping occasionally, until golden on all sides. Transfer to a tray or large plate covered with paper towel and set aside.",
+    "To the sauté pan, add the tomatoes, reduce the heat to medium-low, and cook for 6 to 7 minutes. Using a wooden spoon, gently mix in the ’nduja until it dissolves into the tomatoes. Continue cooking for 6 to 7 minutes, then stir in the eggplant, season with salt and pepper to taste, and turn off the heat.",
+    "Meanwhile, in a large pot of boiling salted water, cook the creste di gallo until al dente, drain, and transfer to the sauté pan. Return to medium heat and sauté the pasta and sauce, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the ricotta salata, a drizzle of oil, and more pepper."
+  ],
+  "image": "/recipes/creste-di-gallo-with-eggplant-nduja-supersweet-tomatoes-and-ricotta-salata.jpg",
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

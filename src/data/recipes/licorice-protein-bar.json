@@ -1,0 +1,48 @@
+{
+  "id": "licorice-protein-bar",
+  "name": "Licorice Protein BAR",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "ingredients": [
+    {
+      "item": "black sesame seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "hemp protein powder",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "15"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "A large pinch of"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Mix sesame and pumpkin seeds in a food processor. Add the remaining ingredients and process until everything is thoroughly mixed. Spread the mixture on a sheet of parchment paper and shape the mixture into a rectangle using another piece of parchment paper placed on top. The rectangle should be ⅓” to ¾” thick (1 to 2 cm), and measure about 4” x 8” (10 cm x 20 cm). Cut it into bars of desired size. Lay some parchment paper between the bars, as if you were wrapping a sandwich."
+  ],
+  "image": "/recipes/licorice-protein-bar.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

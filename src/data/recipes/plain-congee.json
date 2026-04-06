@@ -1,9 +1,10 @@
 {
   "id": "plain-congee",
-  "name": "Plain congee",
+  "name": "Plain Congee",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "bai zhou 白粥",
   "intro": "Congee is the kindest breakfast food: silky and gentle on the stomach, quiet and soothing. In the Jiangnan region, it is usually served unseasoned, accompanied by steamed buns and perky little relishes such as salted duck eggs, pickles and fermented tofu. Fried or poached eggs or other little dishes, perhaps leftovers from last night’s dinner, may also be served. Eat the congee with a spoon and use your chopsticks for the relishes, buns and other dishes. In China, congee is regarded as the ultimate comfort food. The Song dynasty poet Lu You, who lived in Shaoxing, even suggested that eating it could be a way of achieving immortality. Eating congee can also be a subtle moral statement; the Qing dynasty gourmet Yuan Mei wrote an excoriating description of contemporaries who preferred ostentatious delicacies to plain, well-cooked food, and recounted going home after a confusing banquet of 40 dishes and 16 snacks and having to eat congee to appease his hunger. Serve your congee with a strong, salty relish, such as cubes of fermented tofu, a dish of pickles (homemade or bought in easy sachets in a Chinese shop) or hard-boiled salted duck eggs. If you like, add steamed buns, sweet or savory, reheated leftover dishes or fried peanuts.",
@@ -30,5 +31,10 @@
     "Bring the measured water to the boil in a heavy-bottomed pan over a high flame, add the rice, return to the boil, partially cover the pan with a lid and simmer gently for about 1½ hours, stirring the mixture from time to time. After a while the rice grains will burst open; by the end of the cooking they will have melted into the water to form one soft mass. Serve the congee with your choice of accompaniments.",
     "Instead of using just one kind of rice, use 2 oz (50g) black glutinous rice, 2 oz (50g) white glutinous rice and 2 oz (50g) Thai fragrant rice. Omit the salt and oil, but otherwise proceed as in the main recipe. The black rice colors the congee a beautiful purple. This variation is served for breakfast at the Yechun Teahouse in Yangzhou."
   ],
-  "image": "/recipes/plain-congee.jpg"
+  "image": "/recipes/plain-congee.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

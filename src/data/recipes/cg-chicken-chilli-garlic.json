@@ -1,0 +1,93 @@
+{
+  "id": "cg-chicken-chilli-garlic",
+  "name": "Chicken Chilli Garlic",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "The Classic British Curries"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Garlicky and spicy, chicken chilli garlic curries are one of my curry house favourites – I do love my garlic. I have experimented with this recipe many times and I think it’s a winner.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic cloves, cut into thin slivers",
+      "amount": "15"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh green chillies, sliced into thin rings, plus extra to serve (optional)",
+      "amount": "3 (or more)"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "base curry sauce, heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "tandoori chicken tikka plus 125ml (½ cup) pre-cooked stewed chicken stock or Spice stock",
+      "amount": "800g"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "of coriander (cilantro), finely chopped",
+      "amount": "Small bunch"
+    },
+    {
+      "item": "Dried garlic flakes, to serve (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a pan over a medium heat and add the garlic slivers. It is very important not to burn the garlic, so watch the pan and move the slivers around in the pan until they become soft and are just beginning to brown.",
+    "Now add the onion and fry for about 3 minutes until soft and translucent, sprinkling a little salt over the onions to help release moisture. Stir in the garlic and ginger paste and chillies, and fry for about 20 seconds.",
+    "Increase the heat to medium-high, add the ground spices and tomato purée and sizzle for a further 30 seconds, stirring continuously. Add half the base curry sauce and bring to a rolling simmer. (You don’t need to stir the sauce unless it is obviously catching on the pan.) Be sure to scrape any sauce that caramelizes on the sides of the pan back into the sauce.",
+    "Pour in the rest of the base sauce, the chicken and cooking stock and let this bubble without disturbing until the chicken is heated through and your sauce consistency is how you like it.",
+    "Stir in the dried fenugreek leaves and check for seasoning, adding salt to taste. Sprinkle with the chopped coriander (cilantro), dried garlic flakes and a few more chilli rings, if you like."
+  ],
+  "image": "/recipes/curry-guy-cg-chicken-chilli-garlic.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 3
+  }
+}

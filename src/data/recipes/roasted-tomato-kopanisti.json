@@ -1,43 +1,65 @@
 {
   "id": "roasted-tomato-kopanisti",
-  "name": "Roasted Tomato “Kopanisti”",
+  "name": "Roasted Tomato “kopanisti”",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:30 minutes |serves 3",
+  "servings": "serves 3",
+  "time": {
+    "prep": 5,
+    "cook": 30,
+    "total": 35
+  },
   "ingredients": [
     {
       "item": "garlic clove, chopped",
       "amount": "1"
     },
     {
-      "item": "crumbled Greek feta",
-      "amount": "1 cup (150 g)"
+      "item": "(150 g) crumbled Greek feta",
+      "amount": "1 cup"
     },
     {
-      "item": "crumbled manouri or ricotta salata cheese",
-      "amount": "1 cup (150 g)"
+      "item": "(150 g) crumbled manouri or ricotta salata cheese",
+      "amount": "1 cup"
     },
     {
       "item": "Greek yogurt, preferably full-fat",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
-      "item": "roasted cherry or teardrop tomatoes (see Note)",
-      "amount": "1½ cups (250 g)"
+      "item": "(250 g) roasted cherry or teardrop tomatoes (see Note)",
+      "amount": "1½ cups"
     },
     {
       "item": "extra-virgin Greek olive oil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "grated lemon zest",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "chopped fresh oregano leaves",
-      "amount": "2 teaspoons"
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Pita chips, store bought or homemade",
+      "amount": ""
+    },
+    {
+      "item": "Combine the garlic, feta, manouri, and yogurt in the bowl of a food processor and pulse to combine.",
+      "amount": ""
+    },
+    {
+      "item": "Add the roasted tomatoes, olive oil, lemon zest, and oregano and pulse until the mixture is a slightly chunky paste.",
+      "amount": ""
+    },
+    {
+      "item": "Transfer to a bowl or plastic container, cover, and refrigerate for at least 30 minutes or up to 1 week before serving. Serve as a dip with pita chips.",
+      "amount": ""
     }
   ],
   "method": [
@@ -45,5 +67,10 @@
     "Add the roasted tomatoes, olive oil, lemon zest, and oregano and pulse until the mixture is a slightly chunky paste.",
     "Transfer to a bowl or plastic container, cover, and refrigerate for at least 30 minutes or up to 1 week before serving. Serve as a dip with pita chips."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

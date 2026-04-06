@@ -1,0 +1,75 @@
+{
+  "id": "cg-chickpea-carrot-and-garlic-pickle",
+  "name": "Chickpea, Carrot AND Garlic Pickle",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "this makes enough for 4–6 people as an accompaniment. you can easily double or triple the recipe",
+  "intro": "This one is so unique and tasty, you’ll have your friends begging for the recipe. I make it all the time when I entertain and there is never any left over. It’s great on papadams, naans or simply on its own.",
+  "ingredients": [
+    {
+      "item": "citric acid powder (see note)",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "panch poran",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    },
+    {
+      "item": "garlic cloves, peeled",
+      "amount": "20"
+    },
+    {
+      "item": "carrots, finely diced",
+      "amount": "2"
+    },
+    {
+      "item": "bird’s-eye green chillies",
+      "amount": "6"
+    },
+    {
+      "item": "tin (1½ cups) chickpeas, drained",
+      "amount": "1 x 400g"
+    },
+    {
+      "item": "mustard oil",
+      "amount": "100ml"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place all of the ingredients except the mustard oil and bay leaves in a glass bowl. Stir it all up and place in the fridge to marinate for 24 hours.",
+    "The next day, heat the mustard oil in a saucepan. When visibly hot, add the bay leaves and the marinated vegetables. Cook for 3–5 minutes and no longer. Set aside to cool completely before eating, although I have to admit I find it hard to wait for this pickle to cool before I start snacking.",
+    "NOTE: Citric acid powder is used in commercially available curry pastes and pickles. You could substitute amchoor (dried mango powder) if you want a natural alternative, but it isn’t as strong. Citric acid is available from Asian grocers and in chemist shops."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  },
+  "time": {
+    "total": 180
+  }
+}

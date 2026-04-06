@@ -1,0 +1,88 @@
+{
+  "id": "cg-lamb-bhuna",
+  "name": "Lamb Bhuna",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "The Classic British Curries"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Authentic Indian bhunas are quite a lot more difficult to make than this British restaurant-style version. Bhuna is a style of cooking where hot oil or ghee is used to release the flavours of whole spices before raw meat is added, often as small pieces still on the bone.",
+  "ingredients": [
+    {
+      "item": "ghee, rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper (bell pepper), deseeded and roughly chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) stalks (from the bunch below)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "base curry sauce, heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "pre-cooked stewed lamb, plus 250ml (1 cup) of its cooking stock, or more base sauce",
+      "amount": "800g"
+    },
+    {
+      "item": "Greek yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "of coriander (cilantro), leaves finely chopped",
+      "amount": "Small bunch"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 or 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "Sliced red chilli, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the ghee or oil in a large pan over a medium-high heat. When it is bubbling, add the onion and pepper (bell pepper) and sizzle them in the oil for about 5 minutes until the onion is translucent and soft. Stir in the garlic and ginger paste, and coriander (cilantro) stalks and stir these around in the oil for about 30 seconds.",
+    "Add the tomato purée and, when it starts to bubble, stir in the mixed powder and tandoori masala, followed by 250ml (1 cup) of the base curry sauce. Let this simmer for a couple of minutes, without stirring unless it is obviously catching on the pan. Scrape any caramelized sauce at the edges of the pan back in.",
+    "Increase the heat to high and add the pre-cooked lamb and the rest of the sauce, with the stock. Let this bubble undisturbed until it reduces down to a thick sauce.",
+    "To finish, reduce the heat to medium and whisk in the yoghurt 1 tbsp at a time. Check for seasoning and add salt and pepper to taste. Top with the fresh coriander and serve with a good squeeze of lime juice and/or some sliced red chilli, if you like."
+  ],
+  "image": "/recipes/curry-guy-cg-lamb-bhuna.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 5
+  }
+}

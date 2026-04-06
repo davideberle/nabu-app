@@ -1,0 +1,53 @@
+{
+  "id": "creamy-cacao-mylk-with-buckwheat",
+  "name": "Creamy Cacao Mylk with Buckwheat",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 2 glasses",
+  "intro": "This recipe is kind of like chocolate milk. If you want it lukewarm, just add some warm water. Cinnamon also helps warm the body from within. Sometimes it’s nice to have something lukewarm! Buckwheat provides good satiety and contains complete protein, so it’s perfect if you are physically active! You can read about how to soak buckwheat on page 63.",
+  "ingredients": [
+    {
+      "item": "whole, de-hulled buckwheat",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "4"
+    },
+    {
+      "item": "mylk",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    }
+  ],
+  "method": [
+    "Soak the buckwheat for about 8 hours and rinse it thoroughly. Pit the dates. Process all the ingredients in a blender to a smooth consistency."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "id": "chile-garlic-chicken-wings",
-  "name": "CHILE GARLIC chicken wings",
+  "name": "Chile Garlic Chicken Wings",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Snacks"
   },
   "servings": "serves 6 to 8",
   "time": "TAKES 1 HOUR",
@@ -67,7 +67,7 @@
     "When the wings are done, let them rest for about 5 minutes, then toss in the sauce and transfer to a platter.",
     "Serve the wings with the cucumber slices on the side, if desired, for a cooling crunch. Have diners add a squeeze of lime juice for bright contrast, if they like."
   ],
-  "image": null,
+  "image": "/recipes/chile-garlic-chicken-wings.jpg",
   "category": {
     "dish_type": [
       "main"

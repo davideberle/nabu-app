@@ -1,0 +1,51 @@
+{
+  "id": "delectable-mango-ball-with-licorice",
+  "name": "Delectable Mango Ball with Licorice",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 10 balls",
+  "intro": "There’s room for many flavor nuances in this ball—mango meets ginger, which gets a hint of coconut and a touch of salty licorice. Many different healthy ingredients get paired up, too: Mango contributes vitamins A and C; ginger gets the digestion running smoothly; the good fats from coconut and cashews ensure that you have a complete snack.",
+  "ingredients": [
+    {
+      "item": "dried mango, soaked",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (5 dl)"
+    },
+    {
+      "item": "1¼” (3 cm) piece of fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "½ cup (1 dl)",
+      "group": "GARNISH"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "2 tsp",
+      "group": "GARNISH"
+    }
+  ],
+  "method": [
+    "Soak the dried mango for 4 to 8 hours. Grind the cashews in a food processor; add in the mango slices. Reserve the soaking water if you need to dilute the mix (otherwise you can use it as a liquid base for a smoothie)."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

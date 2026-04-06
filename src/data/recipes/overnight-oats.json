@@ -1,0 +1,60 @@
+{
+  "id": "overnight-oats",
+  "name": "Overnight Oats",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "I use high-quality naked oats in this recipe, but you can try using buckwheat, quinoa, or spelt flakes instead. The fiber will keep your blood sugar stable and you feel full longer.",
+  "ingredients": [
+    {
+      "item": "rolled oats, preferably naked oats",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "+ 2 tsp (5 dl) apple juice or water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "goji berries",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "apple",
+      "amount": "1",
+      "group": "TOPPING"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "coconut palm sugar (optional)",
+      "amount": "1 tbsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Soak the oats in apple juice or water, and add in a pinch of salt. Fold in the sunflower seeds and the goji berries. Let sit for 1 to 8 hours. Serve the bowl topped with an apple cut into chunks and the cinnamon. If you want to make the bowl sweeter, sprinkle the oat mix with some coconut palm sugar."
+  ],
+  "image": "/recipes/overnight-oats.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

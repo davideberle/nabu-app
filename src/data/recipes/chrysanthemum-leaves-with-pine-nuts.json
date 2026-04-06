@@ -1,9 +1,10 @@
 {
   "id": "chrysanthemum-leaves-with-pine-nuts",
-  "name": "Chrysanthemum leaves with pine nuts",
+  "name": "Chrysanthemum Leaves with Pine Nuts",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "song ren hao cai 松仁蒿菜",
   "intro": "The green leaves of the garland chrysanthemum, or crown daisy, have a meadowy, herby taste that is most refreshing. They can be found in good Chinese supermarkets, where they are sold as tong hao or hao cai (there are two common varieties with differently shaped leaves but similar flavors). The leaves may be blanched and then stir-fried with lard, garlic and salt, but they are more usually made into salads, often with added pine nuts or finely chopped tofu; my friend Rose calls these dishes “Chinese tabbouleh.” This recipe comes from the Dragon Well Manor restaurant in Hangzhou. Don’t try to use any other type of chrysanthemum leaf that you might find in your garden, as most are inedible. The same method can be used to serve curly green kale, to delicious effect. A similar salad is made in the region with the tender spring leaves of ma lan tou or Indian aster (Kalimeris indica), a herbaceous plant with daisy-like flowers with yellow hearts and purple petals.",
@@ -35,5 +36,13 @@
     "Mix the leaves and tofu in a bowl, add the sesame oil and season with salt. Stir well. Pile the leaves on a serving dish, or press them into a cup and invert it to make a tidy mound. Garnish with the pine nuts.",
     "Blanch approximately 200g tofu sheet in boiling water, then refresh under the cold tap, shake well and spread out to dry. Blanch, chop and season the chrysanthemum leaves as in the main recipe. Place the tofu on your work surface and arrange a ½ in (1.5cm) deep row of chopped greens along one end; roll up until the tofu is two or three layers thick. Trim off any excess tofu. Cut the roll into 2½ in (6cm) sections. Repeat with the rest of the tofu, then pile the rolls up on a serving plate."
   ],
-  "image": "/recipes/chrysanthemum-leaves-with-pine-nuts.jpg"
+  "image": "/recipes/chrysanthemum-leaves-with-pine-nuts.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

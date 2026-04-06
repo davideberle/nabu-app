@@ -1,0 +1,91 @@
+{
+  "id": "pork-chops-with-sauerkraut",
+  "name": "Pork Chops with Sauerkraut",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Main Dishes"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "Pork is frequently served in northern Greece, particularly in Kastoria.",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pork chops, center cut, trimmed",
+      "amount": "6 to 8"
+    },
+    {
+      "item": "sauerkraut",
+      "amount": "2 lb"
+    },
+    {
+      "item": "tomato paste, diluted in ½ cup water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "paprika or caraway seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "In skillet melt butter and brown pork chops well.",
+      "amount": ""
+    },
+    {
+      "item": "Drain sauerkraut and place in a casserole.",
+      "amount": ""
+    },
+    {
+      "item": "Add diluted tomato paste, olive oil, and paprika or caraway seeds to sauerkraut.",
+      "amount": ""
+    },
+    {
+      "item": "Place chops on top of sauerkraut and add pan drippings.",
+      "amount": ""
+    },
+    {
+      "item": "Add water, salt, and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and simmer for about 1 hour, or until chops are very tender.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In skillet melt butter and brown pork chops well.",
+    "Drain sauerkraut and place in a casserole.",
+    "Add diluted tomato paste, olive oil, and paprika or caraway seeds to sauerkraut.",
+    "Place chops on top of sauerkraut and add pan drippings.",
+    "Add water, salt, and pepper.",
+    "Cover and simmer for about 1 hour, or until chops are very tender."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

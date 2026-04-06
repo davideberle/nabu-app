@@ -1,18 +1,18 @@
 {
   "id": "butternut-squash-and-saffron-soup-with-caramelized-pistachio",
-  "name": "Butternut squash and saffron soup with caramelized pistachios and herb oil",
+  "name": "Butternut Squash and Saffron Soup with Caramelized Pistachios and Herb Oil",
   "subtitle": "",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c04"
+    "chapter": "Soups"
   },
   "introduction": "This is the soup to launch your autumn cooking, whether you’re looking for a comforting midweek meal or an impressive starter for a feast. Don’t make both toppings if you don’t want to; the soup works well with either the pistachios or the herb oil alone. The combination of all three, though, is a special one.\n\nGetting ahead: All the elements can be made well in advance. The soup keeps in the fridge for up to three days (or longer in the freezer). The herb oil can also be made a day or two ahead; it keeps its color well. The pistachios keep well in a sealed container at room temperature; they’ll get less crunchy with time but still taste good. Double the batch for these, if you can; they’re lovely sprinkled over salads or just to have around to snack on.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Soups"
   },
   "servings": "serves four generously, or six as a starter",
   "time": {
@@ -196,5 +196,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/butternut-squash-and-saffron-soup-with-caramelized-pistachio.jpg"
 }

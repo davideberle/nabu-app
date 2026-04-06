@@ -3,17 +3,22 @@
   "name": "Kritiko Phylo",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
   },
-  "servings": "prep time: 5 minutes | cook time: 20 to 30 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "total": 45
+  },
   "ingredients": [
     {
-      "item": "all-purpose flour",
-      "amount": "3½–4 cups"
+      "item": "3½–4 cups all-purpose flour",
+      "amount": ""
     },
     {
       "item": "coarse sea salt or kosher salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "vodka",
@@ -28,7 +33,23 @@
       "amount": "¼ cup"
     },
     {
-      "item": "About ⅔ cup water",
+      "item": "About",
+      "amount": ""
+    },
+    {
+      "item": "cup water",
+      "amount": ""
+    },
+    {
+      "item": "Place 3½ cups flour and the salt in a food processor. Pulse a few times to mix. with the motor running, add the vodka, lemon juice and oil, then add just enough water to make a soft dough.",
+      "amount": ""
+    },
+    {
+      "item": "Let the dough rest in the processor for 15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Process the dough for 1 to 2 minutes longer, or until it is slightly elastic. Let rest in the food processor for 20 to 30 minutes.",
       "amount": ""
     }
   ],
@@ -38,5 +59,10 @@
     "Process the dough for 1 to 2 minutes longer, or until it is slightly elastic. Let rest in the food processor for 20 to 30 minutes.",
     "On a lightly floured surface, knead the dough briefly, until it is smooth and elastic, adding a little more flour if it is sticky. Divide the dough into 4 pieces. Cover 3 of them with plastic wrap and, with a rolling pin, roll out the dough as thin as possible, dusting often with a little flour. Or, if you have a pasta machine, roll out strips of phyllo as described in the manufacturer’s instructions. Repeat with the remaining dough. Use immediately, and proceed as instructed in the individual recipes."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

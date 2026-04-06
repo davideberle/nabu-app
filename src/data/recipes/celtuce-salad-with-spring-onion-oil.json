@@ -1,9 +1,10 @@
 {
   "id": "celtuce-salad-with-spring-onion-oil",
-  "name": "Celtuce salad with spring onion oil",
+  "name": "Celtuce Salad with Spring Onion Oil",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "cong you wo sun 葱油莴笋",
   "intro": "Celtuce, also known as stem or asparagus lettuce, can be hard to find outside China, but it’s an extraordinarily delicious and versatile vegetable and I wanted to include a couple of recipes for it here. If you do find it in a Chinese supermarket or farmers’ market, snap it up immediately! The leafy tips are fabulous stir-fried with nothing more than oil and salt, but they must be used very fresh because they wilt quickly. The stems, however, are the real treasures. Shorn of their fibrous outer layer, they are delicate, translucent and the prettiest pale green (see photograph here), with a subtle, nutty flavor that one of my friends has described as being like buttery popcorn. They are often eaten uncooked, as in this recipe, but can also be stir-fried or added to slow-simmered stews. Their jade-like color, light flavor and crispness offer a particularly pleasing contrast to meaty ingredients. This easy salad makes a fine accompaniment to noodles or dumplings for lunch, and can also be served as an appetizer with other dishes.",
@@ -35,5 +36,10 @@
     "Heat the oil in a seasoned wok until the edges of the wok are beginning to smoke. Pour the hot oil over the spring onions: it should sizzle fiercely. Pour the spring onions and oil onto the celtuce, add the sugar and extra salt to taste and mix well. Pile up on a dish to serve.",
     "Exactly the same method can be used to prepare slivers of peeled white Asian radish."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

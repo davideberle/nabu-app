@@ -1,0 +1,36 @@
+{
+  "id": "carrot-juice",
+  "name": "Carrot Juice",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "carrots",
+      "amount": "2¼ lbs (1 kg)"
+    },
+    {
+      "item": "1¼” (3 cm) piece of fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "liquid coconut oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Wash the carrots if they’re organic, otherwise peel them. Process the carrots with the ginger in a centrifugal juicer. Or, if you have a blender with a strong motor, you can mix the carrots with the ginger and 1 cup (2 dl) of water instead, then strain the juice through a fine-meshed sieve or a nut-milk bag. Stir in the coconut oil before serving."
+  ],
+  "image": "/recipes/carrot-juice.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

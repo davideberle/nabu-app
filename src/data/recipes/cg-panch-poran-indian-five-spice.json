@@ -1,0 +1,49 @@
+{
+  "id": "cg-panch-poran-indian-five-spice",
+  "name": "Panch Poran (Indian Five Spice)",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "intro": "This whole spice blend is available in Asian spice shops already mixed, so you don’t actually need to make your own. Panch poran does vary from region to region in the subcontinent but this is the most common blend in UK curry houses.",
+  "ingredients": [
+    {
+      "item": "Equal amounts of:",
+      "amount": ""
+    },
+    {
+      "item": "Cumin seeds",
+      "amount": ""
+    },
+    {
+      "item": "Fenugreek seeds",
+      "amount": ""
+    },
+    {
+      "item": "Brown mustard seeds",
+      "amount": ""
+    },
+    {
+      "item": "Fennel seeds",
+      "amount": ""
+    },
+    {
+      "item": "Nigella seeds (black onion seeds)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "For best results, roast the spices in a dry frying pan over a medium-high heat until fragrant. I usually roast them just before using."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "superfood-smoothie",
+  "name": "Superfood Smoothie",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 1 glass",
+  "intro": "A sprinkle of this powder and a dash of another powder—that’s often what my morning smoothies look like. Then I feel charged up in the best way for the rest of the day. I often make a larger batch and save some for the afternoon, so my snack is already made when I feel hungry.",
+  "ingredients": [
+    {
+      "item": "almond mylk",
+      "amount": "Approx. 1¼ cup (3 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw carob powder or raw cacao powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "mesquite powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "honey or yacon syrup (or add more to taste)",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Process all ingredients in a blender (or use an immersion blender) until you have a smooth texture."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

@@ -3,9 +3,10 @@
   "name": "Greek-Style Ice Cream",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Sweet Ends"
   },
-  "servings": "prep. time 20 min. plus 4–6 hours freezing time | cooking time 15 min. | serves 10–12",
+  "servings": "serves 10",
   "ingredients": [
     {
       "item": "½ cups 2% milk, divided",
@@ -33,11 +34,39 @@
     },
     {
       "item": "chopped Greek basil",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "ground cinnamon",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "In a medium saucepan over medium heat, warm ½ cup of milk, ½ cup of heavy cream, the sugar, eggs, and ¼ cup olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Cook for about 15 minutes, until the base turns a light yellow and thickens. Do not let it boil.",
+      "amount": ""
+    },
+    {
+      "item": "Remove the pot from the heat and let it cool down completely. Cover and refrigerate for 40–60 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "When it is chilled, add the remaining ingredients. Mix well.",
+      "amount": ""
+    },
+    {
+      "item": "Churn the mixture in an ice cream maker for 30–45 minutes, until it is thick and creamy. Freeze in an airtight container for at least 4 hours before serving.",
+      "amount": ""
+    },
+    {
+      "item": "Alternatively, to make without an ice cream maker, freeze the mixture in a baking pan in your freezer for 2 hours. Take it out and stir to combine the mixture.",
+      "amount": ""
+    },
+    {
+      "item": "Place it back in the freezer for 1 ½ hours, then freeze and churn again. Repeat until you get an ice cream consistency.",
+      "amount": ""
     }
   ],
   "method": [
@@ -49,5 +78,13 @@
     "Alternatively, to make without an ice cream maker, freeze the mixture in a baking pan in your freezer for 2 hours. Take it out and stir to combine the mixture.",
     "Place it back in the freezer for 1 ½ hours, then freeze and churn again. Repeat until you get an ice cream consistency."
   ],
-  "image": "/recipes/greek-style-ice-cream.jpg"
+  "image": "/recipes/greek-style-ice-cream.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

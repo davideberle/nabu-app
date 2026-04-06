@@ -1,9 +1,10 @@
 {
   "id": "dai-jianjun-s-vegetarian-crabmeat",
-  "name": "Dai Jianjun’s vegetarian “crabmeat”",
+  "name": "Dai Jianjun’s Vegetarian “crabmeat”",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "a dai su xie fen 啊戴素蟹粉",
   "intro": "Dai Jianjun, the owner of the Dragon Well Manor restaurant in Hangzhou, normally takes the role of gentleman instructor to his personal chef, but on one occasion he gave me a dish he said he had cooked himself. We were visiting a chicken farm in the hills outside Hangzhou and he disappeared into the kitchen, reappearing a few minutes later with a fragrant dish of “vegetarian crabmeat”: scrambled eggs laced with the traditional crabmeat seasonings of ginger and vinegar. Dai is a bit of a tease, and I’ll never know if he really cooked the dish himself, but it was delicious, and strikingly reminiscent of stir-fried hairy crab, so I thought it should bear his name in this book. The dish is a soft tangle of yellow yolk and egg white, with just a hint of sweetness amid the scintillating fragrance of ginger and rice vinegar. The cooked eggs have the same rich curdiness as stir-fried crabmeat, and will make anyone who has tasted the latter smile in surprise and recognition. The key to this recipe is to add the eggs unbeaten to the wok, so they are not evenly blended in the final dish, creating the illusion of the white and brown meat of the crab. The dish will look most convincing if you use eggs with deeply colored yolks.",
@@ -41,5 +42,10 @@
     "Break the eggs into a bowl. Add 1 tablespoon of the chopped ginger, along with the salt, sugar and pepper. Do not mix.",
     "Heat the cooking oil in a seasoned wok over a high flame. Add the remaining ginger and stir-fry very briefly until you can smell its fragrance, then add the egg mixture and stir-fry gently to scramble. When the eggs are just about cooked, stir in the vinegar. Remove from the wok and serve immediately."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

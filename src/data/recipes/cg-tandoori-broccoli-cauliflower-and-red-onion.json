@@ -1,0 +1,75 @@
+{
+  "id": "cg-tandoori-broccoli-cauliflower-and-red-onion",
+  "name": "Tandoori Broccoli, Cauliflower AND RED Onion",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Grilling, Barbecue and Roasting"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This is a tasty way of serving these vegetables. They can be served as a side dish or you could add the vegetables to any curries in this book to make a vegetarian version. The gram (chickpea) flour adds flavour and makes the marinade thicker, which is really nice grilled.",
+  "ingredients": [
+    {
+      "item": "head of broccoli, separated into bite-sized florets",
+      "amount": "1"
+    },
+    {
+      "item": "head of cauliflower, separated into bite-sized florets",
+      "amount": "1"
+    },
+    {
+      "item": "red onion, quartered and divided into individual petals",
+      "amount": "1"
+    },
+    {
+      "item": "gram (chickpea) flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "of ground turmeric",
+      "amount": "Pinch"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a pan of water to a boil and add the broccoli and cauliflower florets. Boil for 2–3 minutes to par-cook them. Drain and leave to cool.",
+    "Put the cooled vegetables in a large bowl with the onion. Mix together the chickpea (gram) flour, yoghurt, oil, garam masala, chilli powder, turmeric and lemon juice, and pour over the vegetables. Stir so that all of the vegetables are equally coated.",
+    "When ready to cook, prepare your barbecue for direct heat grilling. Thread the vegetables onto skewers and cook directly over the hot coals until cooked through and charred.",
+    "Season with salt and serve immediately."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 3
+  }
+}

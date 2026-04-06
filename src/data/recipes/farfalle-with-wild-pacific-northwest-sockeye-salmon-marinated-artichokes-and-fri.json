@@ -1,0 +1,60 @@
+{
+  "id": "farfalle-with-wild-pacific-northwest-sockeye-salmon-marinated-artichokes-and-fri",
+  "name": "Farfalle with Wild Pacific Northwest Sockeye Salmon, Marinated Artichokes, and Fried Capers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Gorgeous with bright-orange flesh, sockeye salmon are native to the western coast of North America and pair well with several vegetables and lemony flavors. I adore cooking them with artichokes, capers, and pasta. The combination of these ingredients—artichokes are full of antioxidants and the salmon is rich in omega-3 fatty acids—makes this dish a joy for il nostro corpo e la nostra mente, our body and soul.",
+  "ingredients": [
+    {
+      "item": "canola oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "bunch green onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "marinated artichoke hearts, drained and cut into strips",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "wild sockeye salmon fillet",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "farfalle pasta Ground white pepper",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a small sauté pan over high heat, warm the canola oil. When the oil is hot, add the capers and fry for 2 to 3 minutes. Scoop them out onto a paper towel to drain. Sprinkle with a pinch or two of salt and set aside.",
+    "In a large skillet over medium heat, warm the olive oil. Add the green onion and sauté for a minute, stirring to avoid burning, then add the artichokes and sauté for 2 minutes more. Add the salmon and cook, flipping occasionally, for a couple more minutes. Season with salt and pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the farfalle until al dente, drain, and transfer to the skillet. Combine the pasta with the salmon and artichokes, increase the heat to medium-high, and sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the capers, a drizzle of olive oil, and some white pepper."
+  ],
+  "image": "/recipes/farfalle-with-wild-pacific-northwest-sockeye-salmon-marinated-artichokes-and-fri.jpg",
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

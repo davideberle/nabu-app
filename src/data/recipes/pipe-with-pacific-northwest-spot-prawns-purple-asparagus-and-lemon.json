@@ -1,0 +1,65 @@
+{
+  "id": "pipe-with-pacific-northwest-spot-prawns-purple-asparagus-and-lemon",
+  "name": "Pipe with Pacific Northwest Spot Prawns, Purple Asparagus, and Lemon",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Two ingredients announce the arrival of spring in the PNW: spot prawns and asparagus. Pacific Northwesterners impatiently wait for the spot prawn season, which usually starts in May and runs through the end of September. Those sweet sea creatures, with their distinctive briny and buttery flavor, can be found from the Salish Sea to Hood Canal.\n\nThen there’s asparagus. Asparagus is grown in Washington State over almost five thousand acres, which makes Washington the nation’s top producer. Harvested primarily from April through June in the Columbia Valley, asparagus is among my favorite vegetables for its crunchiness and unique taste.",
+  "ingredients": [
+    {
+      "item": "purple or green asparagus, trimmed, tips and stems separated",
+      "amount": "1 pound"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "fresh wild spot prawns, washed, peeled, and heads removed",
+      "amount": "1 pound"
+    },
+    {
+      "item": "cayenne powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Zest from 1 medium lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a medium pot of boiling water, blanch the asparagus stems for 5 minutes, then drain. In a food processor, blend the asparagus stems and 1 tablespoon of the olive oil until you obtain a creamy consistency. Set aside.",
+    "In a medium-large skillet over medium heat, warm the remaining 3 tablespoons olive oil. Add the garlic and sauté for a couple of minutes, stirring to avoid burning.",
+    "Increase the heat to medium-high, stir in the spot prawns and asparagus tips, and cook, stirring occasionally, for 3 to 4 minutes, until the spot prawns turn pink. Add the cayenne and salt and pepper to taste, and stir. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pipe until al dente, drain, and transfer to the skillet. Quickly stir in the blended asparagus stems.",
+    "Plate in four bowls. Finish with the lemon zest and a drizzle of oil, and enjoy."
+  ],
+  "tips": [
+    "Don’t throw away the spot prawn heads; use them for a delicious stock or broth.",
+    "When zesting a lemon, take care to only grate the yellow peel and avoid the bitter white pith below."
+  ],
+  "image": "/recipes/pipe-with-pacific-northwest-spot-prawns-purple-asparagus-and-lemon.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

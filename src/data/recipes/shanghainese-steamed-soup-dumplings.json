@@ -1,9 +1,10 @@
 {
   "id": "shanghainese-steamed-soup-dumplings",
-  "name": "Shanghainese steamed “soup” dumplings",
+  "name": "Shanghainese Steamed “soup” Dumplings",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Dumplings and Snacks"
   },
   "subtitle": "xiao long man tou 小笼馒头",
   "intro": "At its best, the Shanghainese xiao long man tou or “little steamer dumpling,” often known outside the region as xiao long bao or “soup dumpling,” is a work of pastry perfection. You take its twirly neck between your chopsticks and lift it gently from its bamboo steamer, dipping it into vinegar before lowering it into the cradle of your china spoon. You add a few strands of ginger, then you pierce its swollen skirts with a chopstick and out rushes a flush of savory stock. This snack is a dainty version of the larger stock-filled buns (tang bao) found all over the Jiangnan region. A cluster of restaurants around the Guyi Garden in Nanxiang, on the outskirts of Shanghai, claim to be custodians of the original recipe; the women who wrap the dumplings there can each make 400 in an hour. In the autumn hairy crab season, crabmeat is often mixed into the pork stuffing, which gives the dumplings a golden glow. A local Yangzhou speciality is a soup dumpling served in an individual steamer, so generously proportioned that its juices must be sucked out with a straw before it can be lifted. The key to the juiciness of the dumplings is a jellied stock that melts during the steaming. You can make your own the traditional way from pig’s skin or trotters or take a short cut by using gelatine, which is much easier and equally satisfying. Be warned that these are a little fiddly—Chinese people don’t normally make xiao long bao at home. Makes about 20 dumplings.",
@@ -72,5 +73,13 @@
     "Make the dumplings. Brush the base of a bamboo steamer with oil. Holding a circle of dough in one hand, use a blunt knife or bamboo spatula to place about ¾ oz (20g) of stuffing in the center. Use your other hand to pinch the edge of the dough to enclose the stuffing (see here). Make sure the mouth of the dumpling is sealed, then pinch it up into a point. Put the finished dumplings in your oiled steamer, leaving gaps of at least 1½ in (3cm) between them.",
     "To cook and serve the dumplings, steam them over a high flame for 8 minutes, either in batches or in stacked layers of the steamer. While they are steaming, peel the ginger and cut it into thin slices, then into fine slivers. Put the vinegar and ginger into dipping dishes. Serve the dumplings in the steamer with the dipping dishes alongside. To eat them, pick one up with chopsticks, dip it in vinegar, then put it in a small bowl or Chinese spoon. Add a few slivers of ginger. Pierce the dumpling with a chopstick and let the stock flow out, then raise the bowl or spoon to your lips and part-bite, part-slurp the dumpling and its juices."
   ],
-  "image": "/recipes/shanghainese-steamed-soup-dumplings.jpg"
+  "image": "/recipes/shanghainese-steamed-soup-dumplings.jpg",
+  "time": {
+    "total": 38
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

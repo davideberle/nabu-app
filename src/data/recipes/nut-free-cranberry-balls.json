@@ -1,0 +1,50 @@
+{
+  "id": "nut-free-cranberry-balls",
+  "name": "Nut-Free Cranberry Balls",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 10 balls",
+  "intro": "Dried cranberry powder is a concentrated form of cranberry; it’s an awesome alternative to fresh berries because the wholesome cranberries become even better for you! These balls are also boosted with pumpkin seeds, a superb source for zinc that maintains our body’s metabolism.",
+  "ingredients": [
+    {
+      "item": "pumpkin seeds",
+      "amount": "1¼ cup (2½ dl)"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "coconut oil, softened",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "+ 1 tsp honey (¾ dl)",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cranberry powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    },
+    {
+      "item": "cranberry powder, for dusting (optional)",
+      "amount": "some"
+    }
+  ],
+  "method": [
+    "Mix the pumpkin and sunflower seeds in a food processor until they are finely ground. Add in the remaining ingredients and process until you can make balls out of the mixture. Try rolling the balls in cranberry powder."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "tagliolini-with-oregon-white-truffle",
+  "name": "Tagliolini with Oregon White Truffle",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Very few culinary experiences can compare to the luscious flavor of Oregon white truffle freshly shaved on top of tagliolini pasta. These precious tubers can be found in Washington State from early fall through spring. Tartufo—nero and bianco—is a point of national pride in the Piedmont region where I grew up, and is the highlight of the autumn season on the hills of Langhe-Roero and Monferrato.\n\nWhen cooking with truffles, I apply the same approach as I have with oysters: I touch them as little as possible. To preserve their unique musky and garlicky taste, a little butter and Parmigiano-Reggiano are all that is needed.",
+  "ingredients": [
+    {
+      "item": "Oregon white truffle (about 40 grams)",
+      "amount": "1"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Clean the truffle with a mushroom brush or a wet cloth to remove the dirt. Using a truffle shaver (or a sharp vegetable peeler), start shaving the truffle. Allow at least 10 grams of truffle per person (or more if you are a truffle lover like me)—half will be placed raw on top of the pasta at the end.",
+    "In a medium-large pan over medium heat, melt the butter. Add half the truffle and immediately turn off the heat.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pasta until al dente, drain, and transfer to the pan. Over high heat, sauté for a minute or so, stirring in the Parmigiano and pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Top with the remaining shaved truffle and finish with a drizzle of oil. Pair with a glass or two of Dolcetto d’Alba and celebrate the autumnal season."
+  ],
+  "image": "/recipes/tagliolini-with-oregon-white-truffle.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

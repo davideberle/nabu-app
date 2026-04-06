@@ -1,0 +1,71 @@
+{
+  "id": "kale-salad-with-creamy-dressing",
+  "name": "Kale Salad with Creamy Dressing",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 3 to 4",
+  "intro": "This creamy dressing can also double as a delicious dip for Friday evening cozy get-togethers. Change it up by adding in chopped black olives and sun-dried tomatoes, or capers and finely chopped green olives. Cut up some vegetable sticks, and you’re ready to start dipping!",
+  "ingredients": [
+    {
+      "item": "kale or black cabbage leaves",
+      "amount": "7"
+    },
+    {
+      "item": "cashews",
+      "amount": "1 cup (2 dl)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "hemp hearts",
+      "amount": "½ cup (1 dl)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp",
+      "group": "DRESSING"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp",
+      "group": "DRESSING"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of",
+      "group": "DRESSING"
+    },
+    {
+      "item": "water",
+      "amount": "1–1¾ cup (2–3½ dl)",
+      "group": "DRESSING"
+    },
+    {
+      "item": "white miso",
+      "amount": "1 tbsp",
+      "group": "DRESSING"
+    },
+    {
+      "item": "sauerkraut",
+      "amount": "3 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "Seeds from ½ pomegranate",
+      "amount": "",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Rinse and strip the kale from the stem. Chop the kale into smaller pieces. Process the ingredients for the dressing in a blender. Start with a small amount of water and add a little bit by bit. Add and mix the dressing into the kale leaves, preferably using your hands. If you want to make a dip, process all the dressing’s ingredients in a food processor instead. Top the salad with sauerkraut and pomegranate seeds."
+  ],
+  "image": "/recipes/kale-salad-with-creamy-dressing.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

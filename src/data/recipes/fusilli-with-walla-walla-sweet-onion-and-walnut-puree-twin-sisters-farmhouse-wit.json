@@ -1,0 +1,64 @@
+{
+  "id": "fusilli-with-walla-walla-sweet-onion-and-walnut-puree-twin-sisters-farmhouse-wit",
+  "name": "Fusilli with Walla Walla Sweet Onion and Walnut Puree, Twin Sisters Farmhouse with Whole Peppercorn Cheese, and Pickled Red Onions",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "This recipe offers multiple tributes to Washington State. Stunning Walla Walla County is represented by its large sweet onions. When I had Walla Walla sweet onions for the first time, I was surprised by their mild, juicy flavor. The round shape made me want to bite into them raw! This PNW ingredient marks the beginning of summer; the harvest usually starts in mid-June. Travel next to the Twin Sisters Creamery, located in Ferndale, in the northwest corner of the state, just south of the Canadian border near the Nooksack River. There, they produce their Farmhouse with Whole Peppercorns, one of the best artisan cheeses I have discovered in Washington. These local ingredients come together and shine in this celebration of a PNW summer.",
+  "ingredients": [
+    {
+      "item": "Walla Walla sweet onions, halved",
+      "amount": "2"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "whole walnuts",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Twin Sisters Creamery’s Farmhouse with Whole Peppercorns",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "pickled red onions (recipe follows), or 8 Mama Lil’s spicy peppers (see Tip)",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F. On a deep-rimmed baking sheet, place the onion halves, season with salt and pepper to taste, and cover with the water. Drizzle with half the olive oil, cover with aluminum foil, and bake for 45 minutes. Transfer the onions and the cooking liquid to a container. Let cool for a few hours.",
+    "In a food processor, blend the onions with liquid, the remaining olive oil, walnuts, and Parmigiano until you have a creamy puree. Take care not to liquefy the sauce.",
+    "Meanwhile, in a large pot of boiling salted water, cook the fusilli until al dente, drain, and transfer to a mixing bowl. Add the onion puree and mix well, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the farmhouse cheese and pickled red onions. Enjoy!"
+  ],
+  "image": "/recipes/fusilli-with-walla-walla-sweet-onion-and-walnut-puree-twin-sisters-farmhouse-wit.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

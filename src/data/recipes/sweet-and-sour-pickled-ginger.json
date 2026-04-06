@@ -1,9 +1,10 @@
 {
   "id": "sweet-and-sour-pickled-ginger",
-  "name": "Sweet-and-sour pickled ginger",
+  "name": "Sweet-and-Sour Pickled Ginger",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "tang cu pao jiang 糖醋泡姜",
   "intro": "This is a perky little relish from the Dragon Well Manor restaurant in Hangzhou: sweet, sour and peppery from the ginger. Chef Yang Aiping taught me how to make it. Serve this pickle with appetizers or breakfast congee, or just have a piece between dishes to refresh your palate, like a sorbet. Many Chinese people would advise that it’s best to eat ginger in the summer, according to the adage: “Eat radish in the winter, ginger in the summer” (dong chi luo bo xia chi jiang).",
@@ -30,5 +31,13 @@
     "Drain off any liquid from the ginger, then rinse it in the cooled boiled water. Squeeze out as much liquid as possible from the ginger, then squeeze dry. Put it in a non-reactive pot or jar with the vinegar and sugar. Steep for at least 2 days before using. The pickle will keep in the fridge for a few weeks at least.",
     "This is a recipe from my Shanghainese friend and teacher, He Yuxiu, who advises that it should be eaten in the morning rather than the evening. Enjoy it with breakfast congee or steamed buns. Peel 7 oz (200g) fresh, plump ginger and cut lengthways into fairly thin slices. Salt, rinse and squeeze as in the main recipe, then put it into a jam jar. Mix 4 tbsp light soy sauce with 1 tbsp sugar and 2 tbsp cooled boiled water, and pour over the ginger. Steep for at least 2 days before using."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

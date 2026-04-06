@@ -1,0 +1,132 @@
+{
+  "id": "cg-chicken-ceylon",
+  "name": "Chicken Ceylon",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "The Classic British Curries"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Based on the bright flavours of Sri Lanka, chicken Ceylon is a good all-rounder. I prefer it really spicy hot and add a lot more fresh chillies and chilli powder than suggested in this recipe, so feel free to do that too. I’ve also taken the liberty of adding a few ingredients that are rarely included in curry-house Ceylon curries but are very Sri Lankan all the same.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "2"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "7.5cm (3in)"
+    },
+    {
+      "item": "green cardamom pods, bashed",
+      "amount": "4"
+    },
+    {
+      "item": "fresh or frozen curry leaves",
+      "amount": "20"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s-eye chillies, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "coconut flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro) stalks",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Kashmiri hot chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "base curry sauce, heated",
+      "amount": "625ml"
+    },
+    {
+      "item": "tandoori chicken tikka",
+      "amount": "800g"
+    },
+    {
+      "item": "Spice stock or pre-cooked stewed chicken stock",
+      "amount": "125ml"
+    },
+    {
+      "item": "block coconut, cut into small pieces",
+      "amount": "100g"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "smooth mango chutney",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw cashew paste, optional",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "Sugar, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly chopped coriander, to finish",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large pan over a medium-high heat until it is visibly hot. Add the star anise, cinnamon stick and cardamom pods, and stir around for about 30 seconds until fragrant; be careful not to burn them. Add the curry leaves and fry for 30 seconds until their scent fills the room.",
+    "Add the garlic and ginger paste and the chopped chillies. Both will sizzle in the pan as they release their moisture and flavour into the oil. When they quieten down, after about 30 seconds, add the coconut flour and mix it all together for a few seconds before adding the coriander stalks, chilli powder, mixed powder, tandoori masala, black pepper and tomato purée.",
+    "Now stir in about 250ml (1 cup) of the base curry sauce and let it reduce for about a minute, stirring the caramelized bits into the sauce. Add the pre-cooked chicken, the rest of the base curry sauce, the stock and block coconut pieces. Let the sauce simmer for about 5 minutes until you are happy with the consistency, only stirring if it looks like it is catching on the pan.",
+    "Stir in the dried fenugreek leaves, mango chutney and cashew paste, if using. Fish out the whole spices if you want and add salt and sugar to taste. Squeeze the lime juice over the top and sprinkle with the garam masala and chopped coriander to serve."
+  ],
+  "image": "/recipes/curry-guy-cg-chicken-ceylon.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 5
+  }
+}

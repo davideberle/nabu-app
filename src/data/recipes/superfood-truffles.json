@@ -1,0 +1,50 @@
+{
+  "id": "superfood-truffles",
+  "name": "Superfood Truffles",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 15 truffles",
+  "intro": "Do you have three minutes to spare? Do you crave something sweet but still want to provide your body with the very best? Superfood truffles are a daily luxury; in our home they are often the delicious ending to a meal midweek. You can combine half amounts of tahini and almond butter, if you wish.",
+  "ingredients": [
+    {
+      "item": "tahini, or other type of nut or seed butter",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "maca powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw carob powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    }
+  ],
+  "method": [
+    "In a bowl, stir together all the ingredients. Shape the mixture into small, pointy truffles; if it crumbles a bit, add in some more honey. Or if you’re in a hurry, eat the mixture directly with a spoon. You can roll the truffles in extra cacao powder."
+  ],
+  "image": "/recipes/superfood-truffles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

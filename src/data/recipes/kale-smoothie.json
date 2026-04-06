@@ -1,0 +1,46 @@
+{
+  "id": "kale-smoothie",
+  "name": "Kale Smoothie",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "serves 2",
+  "intro": "Does it still sound weird to drink kale? Once you’ve tested this smoothie, you’ll be wondering what took you so long to try it. Kale is more full-bodied than delicate leafy greens.",
+  "ingredients": [
+    {
+      "item": "branches of kale",
+      "amount": "2–3"
+    },
+    {
+      "item": "4” (10 cm) English (hothouse) cucumber",
+      "amount": ""
+    },
+    {
+      "item": "dried and reconstituted mango or 4½ oz (125 g) frozen mango, defrosted",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "¾” (2 cm) piece of fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "water or apple juice",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "Spirulina powder (optional)",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Strip the kale leaf from the stem and cut it into pieces. Cut the cucumber into chunks. Process all ingredients in a blender (or use an immersion blender) until you have a smooth texture."
+  ],
+  "image": "/recipes/kale-smoothie.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

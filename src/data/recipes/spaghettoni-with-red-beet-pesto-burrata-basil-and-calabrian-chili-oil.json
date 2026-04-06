@@ -1,0 +1,72 @@
+{
+  "id": "spaghettoni-with-red-beet-pesto-burrata-basil-and-calabrian-chili-oil",
+  "name": "Spaghettoni with Red Beet Pesto, Burrata, Basil, and Calabrian Chili Oil",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "Beets are not the most common vegetable in Italy, but my mother always loved them, and consequently, I have fond childhood memories of their distinctive earthy smell when baked. In particular, she used to make a sort of caprese salad with them, pairing a slice of red beet with a slice of mozzarella, which took on a beautiful pink tone. As a kid, I was fascinated by this and ate it more for the color than the flavor. Seattle is much more beet-forward, and it has been a joy to cook with them, especially golden beets. This dish is a stunner for the eyes and the taste buds.",
+  "ingredients": [
+    {
+      "item": "large red beets, well scrubbed",
+      "amount": "2"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "grated pecorino romano, divided",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "small Yukon Gold potato, boiled and cooled",
+      "amount": "1"
+    },
+    {
+      "item": "spaghettoni pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "(2-ounce) balls burrata",
+      "amount": "2"
+    },
+    {
+      "item": "Calabrian chili oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh basil leaves",
+      "amount": "8"
+    },
+    {
+      "item": "Freshly cracked black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F. In a baking pan, place the beets, water, ⅓ cup of the olive oil, and salt and pepper to taste. Cover with foil and bake for about 1 hour, or until the beets can be easily pierced by a fork.",
+    "Remove the beets from the oven, uncover, and allow to cool. In a large bowl, add the beets and their cooking liquid, 1 cup of the pecorino, the potato, and salt and pepper to taste. Using an immersion blender or a mixer on low speed, blend until creamy but not liquid. Pour the puree into a large skillet and set aside.",
+    "Meanwhile, in a large pot of boiling salted water, cook the spaghettoni until al dente, drain, and transfer to the skillet. Over high heat, sauté the pasta and beet puree for a minute, adding pasta water as necessary to bind the ingredients. Sprinkle the remaining ½ cup pecorino into the skillet, stir, and remove from heat.",
+    "Plate in four bowls, using a large serving fork to twist the pasta so that it resembles a nest. Top with a spoonful of burrata, a drizzle of Calabrian chili oil, and a couple of fresh basil leaves. Finish with cracked black pepper."
+  ],
+  "image": "/recipes/spaghettoni-with-red-beet-pesto-burrata-basil-and-calabrian-chili-oil.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

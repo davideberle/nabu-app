@@ -1,0 +1,38 @@
+{
+  "id": "the-simplest-raw-brownie",
+  "name": "THE Simplest RAW Brownie",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 10 brownies",
+  "intro": "Once you’ve tried this recipe, you’ll wonder how something so simple can taste so good! This raw brownie easily beats regular brownies, both in wholesomeness and in flavor.",
+  "ingredients": [
+    {
+      "item": "+ ½ cup (1 dl) walnuts",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    }
+  ],
+  "method": [
+    "Pulverize 1 cup (2 dl) walnuts in the food processor. Remove the pits from the dates. Add in the dates, cacao powder and salt, and process until you have a dough. Stir in the remaining walnuts. Press the dough into a small mold, or shape it into a square and cut into smaller squares. Store in the refrigerator."
+  ],
+  "image": "/recipes/the-simplest-raw-brownie.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

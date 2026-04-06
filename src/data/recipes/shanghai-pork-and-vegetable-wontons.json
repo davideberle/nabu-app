@@ -1,9 +1,10 @@
 {
   "id": "shanghai-pork-and-vegetable-wontons",
-  "name": "Shanghai pork and vegetable wontons",
+  "name": "Shanghai Pork and Vegetable Wontons",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Dumplings and Snacks"
   },
   "subtitle": "cai rou da hun dun 菜肉大馄炖",
   "intro": "One day my friend Rose took me to visit her aunt in a tiny, higgledy-piggledy cottage on the banks of the Suzhou creek in the Hongkou district of Shanghai. We climbed a narrow wooden staircase to the bright living room, which was filled with Rose’s aunts, uncles and cousins. There we drank some cooling chrysanthemum tea while our hostess, Xun Naifen, showed us how to make Shanghainese wontons. Wontons can be found the length and breadth of China, with different names, forms and fillings—in the Cantonese south they’re known as “swallowing clouds” (yun tun), in Sichuan as “folded arms” (chao shou) and in Shanghai as hun dun, a homonym for “primordial chaos.” The Shanghainese are known for two kinds of wontons: the “small wontons” made from mere pinches of minced pork loosely gathered into tiny squares of pastry and served in broth; and the “big wontons” of the following recipe, which I’ve always found more exciting. Big wontons are typically stuffed with finely chopped shepherd’s purse, a wild relative of cabbage. Mrs. Xun had mixed her shepherd’s purse with minced pork, uncooked shrimp and a little dried shiitake mushroom to make a delectable stuffing. Shepherd’s purse is rarely sold outside Jiangnan, so at home I use blanched kale, the flavor of which recalls the fresh grassiness of shepherd’s purse, or bunched spinach, which is also delicious. Large square Shanghai wonton wrappers can be found in many Chinese supermarkets. The same filling can be used to stuff round dumpling wrappers. Makes about 20 wontons.",
@@ -84,5 +85,13 @@
     "Tear the laver seaweed into tiny pieces. Put all the serving ingredients except the stock in a deep serving bowl and season with salt and pepper. Bring the stock, if using, to the boil in a separate pan and keep it hot. Drop the dumplings into the boiling water, stirring gently to separate, and cook them for about 5 minutes. Each time the water comes back to a rolling boil, add a small cup of cold water to reduce the temperature, so the dumplings do not jostle too vigorously and fall apart. (You should need to do this a couple of times before the dumplings are cooked.) The dumplings will rise to the surface of the water when they are cooked. Break one open to check that the pork is cooked through if you’re uncertain.",
     "When the dumplings are nearly cooked, pour the hot stock into the serving bowl. Remove the cooked dumplings with a slotted spoon and transfer them to the bowl. (Otherwise, simply transfer the wontons and their cooking water to your serving bowl.)"
   ],
-  "image": "/recipes/shanghai-pork-and-vegetable-wontons.jpg"
+  "image": "/recipes/shanghai-pork-and-vegetable-wontons.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

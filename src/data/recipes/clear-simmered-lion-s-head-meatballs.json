@@ -1,9 +1,10 @@
 {
   "id": "clear-simmered-lion-s-head-meatballs",
-  "name": "Clear-simmered lion’s head meatballs",
+  "name": "Clear-Simmered Lion’s Head Meatballs",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "qing dun shi zi tou 清炖狮子头",
   "intro": "Lion’s head meatballs are one of the crowning glories of Jiangnan cooking—almost cloud-like spheres of pork so tender they can be eaten with a spoon. One of the centerpieces of the famous Three-Head Feast of Yangzhou, they epitomise the phrase “richly fat without being greasy” (fei er bu ni). Legend says that the dish, originally called Sunflower Chopped Pork, was invented during the Sui dynasty by a Yangzhou chef who wanted to please the emperor by composing dishes in honor of local scenic spots—in this case, Sunflower Hill. Later, during the Tang dynasty, a local nobleman’s chef re-created the dish to the delight of his guests, who thought the meatballs so resembled lion’s heads with their flowing manes of leafy vegetables that they renamed them on the spot. Personally, I’ve never been struck by the resemblance, but I adore the dish. Even the cooking juices are exquisite drizzled over a bowl of plain white rice. The essential trick for this recipe is to cut the pork by hand; if you cheat by using machine-minced pork, the meatballs will have a mealy rather than voluptuous texture (true lion’s heads, made with hand-chopped meat, always look slightly coarse and chunky). I advise you to chill the meat in the freezer for an hour or so beforehand, otherwise the cutting is extremely hard work. Don’t even think of using lean pork. As Zhang Hao, the Yangzhou chef who tutored me in this recipe, explained: “The lion’s heads must melt in your mouth; they should be as tender as tofu. Lean meat will make them leathery, like a steak” (this comment gives you some clue as to what many Chinese people think about “Western” food!). In Yangzhou restaurants the meatballs are normally removed from their cooking liquid and served individually in a clear broth, with another ingredient that varies with the season: blanched bok choy or Chinese cabbage in winter, bamboo shoot in spring, freshwater mussels in the summer. In the autumn, the pork is often enriched with hairy crab meat, and a morsel of crab coral is pressed into the top of each meatball like the jewel in a crown. Lion’s head meatballs may also be deep-fried and then red-braised. Some people like to stir some coarsely chopped water chestnut into the meat, for a bit of crunch amid the tenderness.",
@@ -78,5 +79,13 @@
     "Mix 4 oz (100g) crabmeat into the pork mixture with a little ground pepper, then make an indentation in the top of each meatball and press in some crab coral. I have made this recipe with saltwater crabmeat; it was pretty delicious, but not quite the same thing.",
     "This variation is particularly popular in Shanghai. Make meatballs the size of small tangerines, deep-fry them until golden, then red-braise in the manner of red-braised pork (see here). Reduce the sauce until syrupy. Serve the meatballs on a bed of blanched green bok choy, with the reduced sauce poured over them."
   ],
-  "image": "/recipes/clear-simmered-lion-s-head-meatballs.jpg"
+  "image": "/recipes/clear-simmered-lion-s-head-meatballs.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

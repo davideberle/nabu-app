@@ -1,18 +1,18 @@
 {
   "id": "za-atar-bread",
-  "name": "Za’atar bread",
+  "name": "Za’atar Bread",
   "subtitle": "Aqras za’atar",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c08"
+    "chapter": "Breads and Pastries"
   },
   "introduction": "Za’atar bread is also known as fatayer fallahi, which means “villagers’ pie.” Traditionally, it’s made in spring, when the season for collecting fresh wild za’atar begins. We’ve used fresh oregano and dried za’atar, though, freeing up the option to make this year-round. The bread can be shaped all sorts of ways—into a flatbread, a loaf, or individual buns, as here. In any case, it should always be super soft—almost moist—in the middle, with a really crunchy crust. A mixture of black and white sesame seeds is preferable, but it’s fine to use just white.\n\nServe this either warm, fresh from the oven, or at room temperature the same day, with some labneh (or feta), fresh chopped salad (see this page), olives, or Hassan’s easy eggs (see this page).\n\nGetting ahead: The dough can be made up to two days ahead and kept in the fridge, ready to be rolled and baked. Once baked, the buns also freeze well, ready to be toasted or warmed through in the oven straight from frozen.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Breads and Pastries"
   },
   "servings": "makes 12 rolls",
   "time": {
@@ -132,5 +132,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/za-atar-bread.jpg"
 }

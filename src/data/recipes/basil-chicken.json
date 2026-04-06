@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "This is a traditional Thai dish, where you stir-fry minced or sliced meat with basil, and top it with a tasty sauce. This is an easy meal that should take you no longer than 25 minutes to prepare, making it a quick option for lunch or dinner! So, are you ready to make one of the most famous Thai dishes in your kitchen?",
   "time": {
-    "prep": "25 minutes"
+    "prep": "25 minutes",
+    "total": 5
   },
   "ingredients": [
     {
@@ -56,5 +57,10 @@
     "Add the holy basil and cook for another 30 seconds, stirring well. When done, turn off the heat",
     "Serve on a plate with rice. Top the rice with stir-fry (Step 7) and its sauce. Finally, place the egg (Step 1) on top."
   ],
-  "image": "/recipes/basil-chicken.jpg"
+  "image": "/recipes/basil-chicken.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

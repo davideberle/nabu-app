@@ -67,26 +67,25 @@ function getCuisineFromCookbook(cookbook?: string): string | null {
 }
 
 // Format cooking time - round to nice intervals
-function formatTime(time?: { prep?: string; cook?: string; total?: string | number }): string | null {
+function formatTime(time?: { prep?: string | number; cook?: string | number; total?: string | number }): string | null {
   if (!time) return null;
-  
+
+  function extractMins(val?: string | number): number {
+    if (typeof val === 'number') return val;
+    if (typeof val === 'string') {
+      const match = val.match(/(\d+)/);
+      return match ? parseInt(match[1]) : 0;
+    }
+    return 0;
+  }
+
   let totalMins = 0;
-  
+
   // If we have total, use that
   if (time.total) {
-    if (typeof time.total === 'number') {
-      totalMins = time.total;
-    } else {
-      const match = time.total.match(/(\d+)/);
-      if (match) totalMins = parseInt(match[1]);
-    }
+    totalMins = extractMins(time.total);
   } else {
-    // Try to extract numbers from prep/cook strings
-    const prepMatch = time.prep?.match(/(\d+)/);
-    const cookMatch = time.cook?.match(/(\d+)/);
-    const prep = prepMatch ? parseInt(prepMatch[1]) : 0;
-    const cook = cookMatch ? parseInt(cookMatch[1]) : 0;
-    totalMins = prep + cook;
+    totalMins = extractMins(time.prep) + extractMins(time.cook);
   }
   
   if (totalMins === 0) return null;

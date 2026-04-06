@@ -1,0 +1,65 @@
+{
+  "id": "mango-bowl-with-coconut",
+  "name": "Mango Bowl with Coconut",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "My favorite topping, particularly with mango, is large coconut chips. They provide such wonderful crunch against the smooth cream. If you want an even creamier bowl, use coconut cream only. For a chilled version, use frozen mango.",
+  "ingredients": [
+    {
+      "item": "bananas",
+      "amount": "3"
+    },
+    {
+      "item": "frozen mango, or a scant ½ cup (1 dl) dried and soaked mango",
+      "amount": "4½ oz (125 g)"
+    },
+    {
+      "item": "(½ tin) coconut milk",
+      "amount": "6¾ fl oz (2 dl)"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "Lemon oil or grated lemon peel (optional)",
+      "amount": ""
+    },
+    {
+      "item": "sliced banana",
+      "amount": "1",
+      "group": "TOPPING"
+    },
+    {
+      "item": "fresh strawberries",
+      "amount": "12",
+      "group": "TOPPING"
+    },
+    {
+      "item": "raw coconut chips",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "Grated peel from one lemon",
+      "amount": "",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "If you’re using dehydrated mango, soak it in water for 2 to 8 hours. Blend all the ingredients (except toppings) to a smooth cream and pour into two bowls. Top with sliced banana and sliced strawberries, coconut chips, and grated lemon peel."
+  ],
+  "image": "/recipes/mango-bowl-with-coconut.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

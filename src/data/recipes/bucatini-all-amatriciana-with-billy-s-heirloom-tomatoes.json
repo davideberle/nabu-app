@@ -1,0 +1,61 @@
+{
+  "id": "bucatini-all-amatriciana-with-billy-s-heirloom-tomatoes",
+  "name": "Bucatini All’amatriciana with Billy’s Heirloom Tomatoes",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "This is a classic all’Amatriciana recipe expressly made to emphasize Billy’s heirloom tomatoes. For Seattle food enthusiasts and restaurateurs, Billy’s Gardens is an institution when it comes to local prime produce. In the ’80s, visionary Billy Allstot and his wife, Stephanie Blackstad, began growing a large selection of vegetables, herbs, plants, and flowers on their Tonasket farm in Okanogan County.\n\nBilly’s heirloom tomatoes are the best I have ever had in the region. This is a wonderful example of how nurturing an organic soil can pay off in juiciness and flavor in a pomodoro and, consequently, how that perfect tomato can create a spectacular all’Amatriciana when combined with guanciale and perfectly cooked pasta.",
+  "ingredients": [
+    {
+      "item": "medium heirloom tomatoes",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "guanciale cut into ¾-inch strips",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "bucatini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large pot of boiling salted water, blanch the tomatoes for 30 seconds. Remove and quickly run under cold water. Remove the pot from the heat, but do not discard the blanching water. Peel off the tomato skins and remove all the seeds. Crush the tomatoes thoroughly with your clean hands or a fork. Set aside.",
+    "In a medium cast-iron skillet over medium-low heat, warm the olive oil for 1 to 2 minutes. Add the guanciale and red pepper flakes, and sauté for 2 minutes. Add the wine and continue cooking until the alcohol has evaporated, 3 to 4 minutes. Remove the guanciale from the pan and set aside, leaving all the oil and liquid it released in the skillet.",
+    "Add the tomatoes and cook, stirring occasionally, for 10 to 15 minutes. Season with salt and pepper to taste, keeping in mind that the guanciale and pecorino are rather salty.",
+    "In the same pot used to blanch the tomatoes, bring the water back to a boil. Cook the bucatini until al dente, drain, and transfer to the skillet along with the guanciale and half the pecorino. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls, top with the remaining ¼ cup pecorino, and serve immediately."
+  ],
+  "image": "/recipes/bucatini-all-amatriciana-with-billy-s-heirloom-tomatoes.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

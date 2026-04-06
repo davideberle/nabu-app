@@ -1,9 +1,10 @@
 {
   "id": "shanghai-noodles-with-dried-shrimp-and-spring-onion-oil",
-  "name": "Shanghai noodles with dried shrimp and spring onion oil",
+  "name": "Shanghai Noodles with Dried Shrimp and Spring Onion Oil",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Noodles"
   },
   "subtitle": "kai yang cong you mian 开洋葱油面",
   "intro": "This Shanghainese recipe also appears in Every Grain of Rice, but I had to include it here because I find it one of the most indispensable Jiangnan recipes. The combination of oil infused with the fragrance of spring onion and dried shrimp and the umami savoriness of soy sauce is irresistible, however simple it sounds. I eat this dish so often that I have taken to making the flavored oil in large quantities and keeping it in the fridge—although I’m not even sure it requires refrigeration. I keep fresh Chinese noodles in my freezer too, which means that I can have a bowlful of this gorgeous snack a mere 10 minutes after thinking of it: all that’s required is to boil some water, cook the noodles from frozen and dress them in the fragrant oil and light soy sauce. I eat them for breakfast, lunch and midnight feasts, sometimes with a salad on the side. The recipe is said to have been invented by a street vendor near the City God Temple in Shanghai. Serves 2.",
@@ -42,5 +43,10 @@
     "Heat the oil in a seasoned wok over a high flame. Add the spring onions and stir-fry until they are turning a little golden. Drain the shrimp, add them to the wok and continue to stir-fry until the spring onions are well browned and wonderfully fragrant, but not burned. Then set aside this fragrant oil, along with the spring onions and shrimp.",
     "Bring a large pan of water to the boil and cook the noodles to your liking, then drain them well and put them in the serving bowl. Put the spring onions, shrimp and their fragrant oil on top and serve. Mix everything together very well with a pair of chopsticks before eating."
   ],
-  "image": "/recipes/shanghai-noodles-with-dried-shrimp-and-spring-onion-oil.jpg"
+  "image": "/recipes/shanghai-noodles-with-dried-shrimp-and-spring-onion-oil.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "Savor the vibrant flavors of Larb Gai, a delectable Thai chicken salad featuring fragrant ground chicken, zesty chilies, and aromatic mint and basil. This versatile dish can be enjoyed as a refreshing main course salad or served as an appetizer to tantalize your taste buds. For a heartier meal, pair it with rice to create a truly satisfying dining experience.",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": 10
   },
   "ingredients": [
     {
@@ -76,5 +77,10 @@
     "Add coriander and mint.",
     "Serve with rice and Boston lettuce leaves."
   ],
-  "image": "/recipes/larb-gai.jpg"
+  "image": "/recipes/larb-gai.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

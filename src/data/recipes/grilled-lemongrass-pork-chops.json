@@ -1,10 +1,10 @@
 {
   "id": "grilled-lemongrass-pork-chops",
-  "name": "GRILLED LEMONGRASS pork chops",
+  "name": "Grilled Lemongrass Pork Chops",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
   "time": "TAKES 45 MINUTES",
@@ -57,7 +57,7 @@
     "Warm a cast-iron stove-top grill pan over medium-high heat, prepare a medium-hot charcoal fire, or preheat a gas grill to medium-high (you can hold your hand 6 inches above the grill for 3 to 4 seconds). Grill the pork chops for 5 to 7 minutes, turning frequently, until firm and cooked through. Pierce with the sharp point of a knife to test (it’s okay if the center is faintly pink). Transfer to a plate and let rest for 5 to 10 minutes.",
     "Serve the chops warm, passing the dipping sauce at the table, if desired."
   ],
-  "image": null,
+  "image": "/recipes/grilled-lemongrass-pork-chops.jpg",
   "category": {
     "dish_type": [
       "main"

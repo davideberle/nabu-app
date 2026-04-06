@@ -1,10 +1,10 @@
 {
   "id": "use-it-up-fried-rice",
-  "name": "USE-IT-UP fried rice",
+  "name": "Use-It-up Fried Rice",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Rice and Noodles"
   },
   "servings": "serves 4 as a side dish",
   "time": "TAKES ABOUT 20 MINUTES",
@@ -49,7 +49,7 @@
     "Push the rice to the skillet’s perimeter to create a 4-inch-well in the middle. Add the remaining 1 tablespoon fat to the well, pour in the egg, then pour the fish sauce around the rim of the well (onto the rice). Quickly stir-fry to break up, scramble, and work the golden egg bits into the rice. Add the green onion and cook for 10 to 15 seconds longer, until just wilted. Turn off the heat, taste, and season with salt, if needed.",
     "Transfer the rice to a plate or shallow bowl. Serve with additional fish sauce, soy sauce, or Maggi Seasoning in case diners want an extra-savory punch."
   ],
-  "image": null,
+  "image": "/recipes/use-it-up-fried-rice.jpg",
   "category": {
     "dish_type": [
       "side"

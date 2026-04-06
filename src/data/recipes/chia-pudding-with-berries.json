@@ -1,0 +1,38 @@
+{
+  "id": "chia-pudding-with-berries",
+  "name": "Chia Pudding with Berries",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "This is really the simplest snack or breakfast. Only three ingredients, and you have a meal packed with nutrients that counteract aging and keep skin soft! The frozen berries will defrost as the chia seeds soak.",
+  "ingredients": [
+    {
+      "item": "mylk",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "berries—raspberries, blueberries, or blackberries, for example",
+      "amount": "½ cup (1 dl)"
+    }
+  ],
+  "method": [
+    "Mix mylk with the chia seeds and fold in the berries. Let stand for at least 30 minutes. Top or sweeten if you so wish.",
+    "Smoothies are a classic snack—simple to make and easy to bring along. You can also add variety depending on what you already have at home—sometimes by using lots of leafy greens, other times bringing out a fruitier side, or going decadent with cacao and something sweet. The simplest way for you to prepare a smoothie is to use a blender, because it shreds fiber very finely. This will make it easier for you to consume lots of fresh, raw ingredients."
+  ],
+  "image": "/recipes/chia-pudding-with-berries.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

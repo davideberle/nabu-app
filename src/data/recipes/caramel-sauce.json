@@ -1,10 +1,10 @@
 {
   "id": "caramel-sauce",
-  "name": "CARAMEL sauce",
+  "name": "Caramel Sauce",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about ½ cup",
   "time": "TAKES 15 MINUTES",
@@ -31,7 +31,7 @@
     "Remove the pan from the heat and return to the water in the sink for about 1 minute, stirring, to stop the cooking process and cool the caramel sauce to room temperature.",
     "Use the sauce immediately, or transfer to a small heatproof glass jar, let cool completely, and then cap and store in a cool, dark place indefinitely."
   ],
-  "image": null,
+  "image": "/recipes/caramel-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

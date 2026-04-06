@@ -3,29 +3,63 @@
   "name": "Tsoureki French Toast",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time: 30 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 30,
+    "total": 35
+  },
   "ingredients": [
     {
       "item": "large eggs",
       "amount": "2"
     },
     {
-      "item": "whole milk",
-      "amount": "½ cup (120 ml)"
+      "item": "(120 ml) whole milk",
+      "amount": "½ cup"
     },
     {
       "item": "Scant 1 teaspoon ground cinnamon, plus more for garnish",
       "amount": ""
     },
     {
-      "item": "to 4 tablespoons (45 to 55 g) unsalted butter",
-      "amount": "3"
+      "item": "(45 to 55 g) unsalted butter",
+      "amount": "3 to 4 tbsp"
     },
     {
-      "item": "slices stale leftover tsoureki or vasilopita (Greek Easter or New Year’s bread) or challah",
-      "amount": "12"
+      "item": "stale leftover",
+      "amount": "12 slices"
+    },
+    {
+      "item": "(Greek Easter or New Year’s bread) or challah",
+      "amount": ""
+    },
+    {
+      "item": "Greek honey, for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Whisk together the eggs, milk, and cinnamon in a wide, shallow bowl.",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, melt 1 tablespoon of the butter over medium heat.",
+      "amount": ""
+    },
+    {
+      "item": "One at a time, dip 3 of the bread slices into the egg-milk mixture. As soon as the butter stops bubbling and before it turns brown, place the bread in the skillet and cook until golden brown on both sides. Transfer to a platter and cover or tent with aluminum foil to keep warm. Repeat with the remaining bread, adding another tablespoon or so of the butter to the skillet between batches as needed.",
+      "amount": ""
+    },
+    {
+      "item": "Serve the",
+      "amount": ""
+    },
+    {
+      "item": "French toast hot, drizzled with Greek honey and dusted with a little cinnamon.",
+      "amount": ""
     }
   ],
   "method": [
@@ -34,5 +68,10 @@
     "One at a time, dip 3 of the bread slices into the egg-milk mixture. As soon as the butter stops bubbling and before it turns brown, place the bread in the skillet and cook until golden brown on both sides. Transfer to a platter and cover or tent with aluminum foil to keep warm. Repeat with the remaining bread, adding another tablespoon or so of the butter to the skillet between batches as needed.",
     "Serve the tsoureki French toast hot, drizzled with Greek honey and dusted with a little cinnamon."
   ],
-  "image": "/recipes/tsoureki-french-toast.jpg"
+  "image": "/recipes/tsoureki-french-toast.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

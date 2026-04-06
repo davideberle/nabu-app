@@ -1,0 +1,102 @@
+{
+  "id": "cg-tandoori-chicken-tikka",
+  "name": "Tandoori Chicken Tikka",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Grilling, Barbecue and Roasting"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Red food colouring powder is often added to chicken tikka to give it the appearance of being spicy hot. I often add red food colouring to my chicken tikka but it doesn’t add any flavour and can be left out. Beetroot powder is often used as a substitute but it doesn’t achieve that bright red curry-house look.",
+  "ingredients": [
+    {
+      "item": "skinless, boneless chicken breasts, cut into bite-sized pieces (tikka)",
+      "amount": "1kg"
+    },
+    {
+      "item": "Juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Red food colouring powder (optional)",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Greek yoghurt, whisked",
+      "amount": "210g"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "paprika or chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh green chillies, finely chopped or green chilli paste",
+      "amount": "2"
+    },
+    {
+      "item": "finely grated Parmesan cheese",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "coriander (cilantro) leaves, finely chopped",
+      "amount": "20g"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place the chicken pieces (tikka) in a large bowl, squeeze the lemon juice over them and sprinkle with a little salt. Stir in the garlic and ginger paste and some red food colouring, if you want the authentic chicken tikka colour. Mix it all up really well and set aside while you make the marinade.",
+    "Place the marinade ingredients in a bowl and mix with your hands until good and smooth. Cover the chicken pieces with the marinade, ensuring they are completely coated. Cover and marinate in the fridge for at least 6 hours or up to 48 hours; the longer the better.",
+    "When ready to cook, prepare your barbecue for direct cooking. When your coals are white hot, thread the chicken tikka onto skewers and place over the coals, turning occasionally until the chicken is cooked through and the edges are blackened. You can also do this on a grill.",
+    "Season with salt to taste and serve hot, or use in your curries.",
+    "★When grilling skewered chicken, the raw pieces will move around a lot when turned. I suggest leaving to cook through on one side before turning. The meat will expand as it cooks and you will not experience as much annoying movement on the skewers.",
+    "★Try to leave a little space between each piece of chicken on the skewer so that it cooks evenly. For better presentation, you could move the meat chunks closer together, once cooked through, if serving on the skewers."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 180
+  }
+}

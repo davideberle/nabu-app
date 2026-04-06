@@ -1,9 +1,10 @@
 {
   "id": "sliced-chayote-with-ham-and-fava-beans",
-  "name": "Sliced chayote with ham and fava beans",
+  "name": "Sliced Chayote with Ham and Fava Beans",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "can dou fo shou gua 蚕豆佛手瓜",
   "intro": "This recipe is based on a seasonal springtime dish served at Old Jesse, one of my favorite Shanghai restaurants. It’s a delightful mix of fine, slightly crisp gourd and tender fava beans in a sauce enlivened by ham, spring onion and ginger. At Old Jesse, they make it with the long, shiny, light green variety of calabash gourd known as “blossom-by-night.” I haven’t been able to find this particular gourd in the US but the chayote, also known as chow chow, makes a magnificent substitute. This vegetable (or, strictly speaking, fruit) is native to the Americas but has been grown since the early twentieth century in southern China, where they call it the “Buddha’s hand gourd” because of its row of ridged “knuckles.” Chayotes (mostly grown in Costa Rica) are easy to find in Asian and African food shops and are often used by Chinese chefs abroad. The peeled, cored, raw gourd strongly resembles an unripe pear. In the original recipe the fava beans are cooked only briefly and hold their shape. At home, I like to cook them a little longer because the disintegrating beans add a delicious richness to the sauce. If you’d like the beans to remain whole, stir-fry them briefly before you begin, remove them from the wok and return them when the gourd is just tender, then heat them through and thicken the sauce if desired.",
@@ -50,5 +51,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onions and stir-fry briefly until they smell wonderful. Add the ham, stir a couple of times, then tip in the fava beans and sliced chayote or gourd. Stir-fry until piping hot, then add the stock or water, bring to the boil and season with salt. Cover and simmer for 3–5 minutes until the gourd is tender, stirring from time to time.",
     "If using the starch mixture to thicken the sauce, mix it well, pour it into the wok and stir briefly over a high flame until the sauce clings to the vegetables. Serve."
   ],
-  "image": "/recipes/sliced-chayote-with-ham-and-fava-beans.jpg"
+  "image": "/recipes/sliced-chayote-with-ham-and-fava-beans.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

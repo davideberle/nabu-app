@@ -1,0 +1,88 @@
+{
+  "id": "cg-madras-curry-powder",
+  "name": "Madras Curry Powder",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 285g, 27 generous tbsp, 2½ cups",
+  "intro": "Commercially prepared curry powders date back to the 18th century, when spice blends were prepared by Indian merchants to sell to British army and government officials returning to Britain during the British Raj. It was a way of taking the flavours of India home with them.",
+  "ingredients": [
+    {
+      "item": "coriander seeds",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "12cm (4½ in)"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "4"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "star anise",
+      "amount": "3"
+    },
+    {
+      "item": "cardamom pods, lightly bruised",
+      "amount": "15"
+    },
+    {
+      "item": "Kashmiri dried red chillies (optional)",
+      "amount": "8"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "hot chilli powder (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Roast all the whole spices, including the dried chillies, if using, in a dry frying pan over a medium-high heat until warm to the touch and fragrant, moving them around in the pan as they roast and being careful not to burn them. If they begin to smoke, take them off the heat.",
+    "Tip the warm spices onto a plate and leave to cool, then grind to a fine powder in a spice grinder or pestle and mortar. Add the turmeric, chilli powder, if using, garlic powder and onion powder, and stir to combine.",
+    "Store in an airtight container in a cool, dark place and use within 2 months for optimal flavour."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

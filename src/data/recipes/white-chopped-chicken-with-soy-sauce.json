@@ -1,9 +1,10 @@
 {
   "id": "white-chopped-chicken-with-soy-sauce",
-  "name": "White chopped chicken with soy sauce",
+  "name": "White Chopped Chicken with Soy Sauce",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "bai zhan ji 白斩鸡",
   "intro": "White chopped chicken is served as an appetizer across the Jiangnan region, as it is in the Cantonese south. The simplest of Chinese chicken dishes, it relies not only on careful control of cooking temperature, but also on the quality of the bird. In Shanghai, where it’s a particular favorite, they like to use the local “triple yellow” chickens, so named because of their yellow skin, beaks and feet. Do make sure you use a fine free-range chicken, preferably one with golden skin. The bird is steeped in very hot water, then chilled quickly in iced water, so the flesh has a magnificent succulence with just a hint of tautness. Even the breast, so often cottony in texture when cooked by other methods, should be sleek, juicy and delicious. In China, they serve the meat chopped, on the bone, into bite-sized strips, but you can remove it from the bone if you wish. For maximum simplicity, eat it with just a dip of a really good, rich soy sauce. At home I often use an organic Japanese-style tamari that has both the dark treacly color and the saltiness of old-fashioned Chinese soy sauces. Otherwise, you might like to dip it in a zesty relish made from spring onion and ginger (see variation). This cooking method can leave the chicken a little pink at the bones; if this bothers you, return it to the boil for a third time and steep for a further 5 minutes. To make sure the chicken is cooked to internationally approved standards, use a meat thermometer to check that the innermost parts are heated to 165°F (74°C).",
@@ -33,5 +34,13 @@
     "Before serving, cut the chicken, on or off the bone as you please, into bite-sized pieces. Use the cooking liquid as stock, perhaps to make a chicken congee (see here). Serve with soy sauce to dip.",
     "This relish is unbelievably delicious and can be served alongside the soy sauce dip. Put 2 tbsp very finely chopped fresh ginger and 1 tbsp very finely chopped spring onion white in a dish. Heat 1½ tbsp cooking oil until very hot, then pour it over them, producing a vigorous sizzle. Stir in 1 tbsp very finely chopped spring onion greens, 1 tsp salt and ½ tsp sugar."
   ],
-  "image": "/recipes/white-chopped-chicken-with-soy-sauce.jpg"
+  "image": "/recipes/white-chopped-chicken-with-soy-sauce.jpg",
+  "time": {
+    "total": 58
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

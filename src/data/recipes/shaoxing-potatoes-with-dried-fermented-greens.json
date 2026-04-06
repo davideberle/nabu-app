@@ -1,9 +1,10 @@
 {
   "id": "shaoxing-potatoes-with-dried-fermented-greens",
-  "name": "Shaoxing potatoes with dried fermented greens",
+  "name": "Shaoxing Potatoes with Dried Fermented Greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "mei gan cai shao tu dou 霉干菜烧土豆",
   "intro": "The culinary uses of Shaoxing’s most famous preserve, the dried fermented vegetable known as mei gan cai, are many and varied, but this dish is one of the most common, and expresses the famous thriftiness of Shaoxing cooking in its use of a cheap pickle to lend rich and satisfying umami flavors to humble vegetables. The mei gan cai gives the potatoes an alluring, almost mushroomy flavor, and it’s particularly good when reheated the next day, giving the flavors time to deepen. You can buy it in Chinese supermarkets or make your own (see here). The same method can be used to cook green gourds of various kinds, bamboo shoots, fried tofu and French beans. I’ve made similar dishes with the mui choy preserved mustard used in Hakka dishes; the flavor is sweeter than the Shaoxing version, but it’s also rather nice.",
@@ -34,5 +35,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the potatoes and stir-fry for about 1 minute. Add 1⅓ cups (300ml) of the soaking water, topped up with hot water from the kettle if you don’t have enough. Bring to the boil, season with salt and cover and simmer until the potatoes are just cooked.",
     "Add the soaked greens and heat for another 30 seconds or so. Adjust the seasoning if necessary, then serve with a sprinkling of spring onion greens."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

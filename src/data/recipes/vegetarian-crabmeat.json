@@ -3,7 +3,8 @@
   "name": "Vegetarian “crabmeat”",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "qing chao su xie fen 清炒素蟹粉",
   "intro": "On the first day of each lunar month people throng the Jade Buddha Temple in Shanghai, lighting incense sticks and kowtowing as they make their ritual offerings. In one of the shrine rooms Buddhist monks chant for the departed soul of an elderly man. His photograph stands on an altar, and his family have laid out dishes of vegetables and tofu, a bowl of rice, a pair of chopsticks and a glass of green tea as sustenance for his afterlife. At lunchtime, visitors pile into the snack restaurant at the back of the temple for a quick bowl of mushroom noodles in stock. A few venture upstairs for a more elaborate set menu of Buddhist vegetarian food: a selection of appetizers that include “roast duck” and “ham” made from tofu and main dishes such as vegetarian “pork chops” and “stir-fried crabmeat.” The crabmeat, in particular, is a wonder of culinary artifice: a rich tumble of potato, carrot and egg white infused with the scents of ginger and vinegar, vividly evoking that legendary autumn delicacy, the stir-fried meat of the hairy crab. For me, this classic dish is an expression of the exquisite creativity of Chinese cooking. A trompe l’oeil of color, fragrance, flavor and texture, it mimics the sensation of eating real hairy crab meat in so many details: the pale crab flesh mixed with bright orange coral, the gleaming oil, the white wisps of membrane, the strandy darkness on the outside of the leg meat, the slight sweetness, the aromas of ginger and vinegar. This is my attempt to re-create the particularly amazing version at the Gongdelin vegetarian restaurant in Shanghai.",
@@ -62,5 +63,10 @@
     "Mix the potatoes and carrots together. Add the salt, sugar and potato starch mixture and mix well. Add the egg whites and stir once or twice with a fork to make a couple of ribbons through the mash—do not mix in thoroughly.",
     "Pour the oil into a seasoned wok over a high flame. Add the ginger and shiitake and stir-fry briefly until the ginger smells wonderful. Add the potato and carrot mixture and stir rapidly, scraping the wok to prevent sticking, until piping hot (make sure it is heated through to cook the egg white and starch mixture). If the mash sticks to the sides of the wok, drip a little extra oil around the edges. Finally, add the pepper and vinegar and stir until thoroughly mixed. Garnish with cilantro, if using, and serve."
   ],
-  "image": "/recipes/vegetarian-crabmeat.jpg"
+  "image": "/recipes/vegetarian-crabmeat.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,0 +1,97 @@
+{
+  "id": "semolina-halva",
+  "name": "Semolina Halva",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "corn oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thin semolina",
+      "amount": "½ cup"
+    },
+    {
+      "item": "½ cups coarse semolina",
+      "amount": "1"
+    },
+    {
+      "item": "raisins",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Walnut, raisins, cinnamon for garnish",
+      "amount": ""
+    },
+    {
+      "item": "honey",
+      "amount": "1 cup"
+    },
+    {
+      "item": "quart water",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 cups"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "whole clove",
+      "amount": "1"
+    },
+    {
+      "item": "Combine all the sauce ingredients in a medium saucepan and place it over medium-high heat. Bring it to a boil, and cook until the sugar has completely dissolved, and the mixture thickens. Remove the clove.",
+      "amount": ""
+    },
+    {
+      "item": "In a separate pot, heat the oils and then add both the semolina flours. Cook and stir over low heat until golden brown.",
+      "amount": ""
+    },
+    {
+      "item": "Mix in the syrup and cook until the mixture thickens.",
+      "amount": ""
+    },
+    {
+      "item": "Take it off the heat and mix in the raisins.",
+      "amount": ""
+    },
+    {
+      "item": "Place in a mold and let cool down in the refrigerator for at least 1–2 hours before serving.",
+      "amount": ""
+    },
+    {
+      "item": "Sprinkle with cinnamon and garnish with walnuts and raisins.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine all the sauce ingredients in a medium saucepan and place it over medium-high heat. Bring it to a boil, and cook until the sugar has completely dissolved, and the mixture thickens. Remove the clove.",
+    "In a separate pot, heat the oils and then add both the semolina flours. Cook and stir over low heat until golden brown.",
+    "Mix in the syrup and cook until the mixture thickens.",
+    "Take it off the heat and mix in the raisins.",
+    "Place in a mold and let cool down in the refrigerator for at least 1–2 hours before serving.",
+    "Sprinkle with cinnamon and garnish with walnuts and raisins."
+  ],
+  "image": null,
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

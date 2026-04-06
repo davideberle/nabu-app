@@ -1,18 +1,18 @@
 {
   "id": "rice-tabbouleh",
-  "name": "Rice tabbouleh",
+  "name": "Rice Tabbouleh",
   "subtitle": "Tabboulet ruz",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c03"
+    "chapter": "Veggie Sides and Salads"
   },
   "introduction": "This is a great way to use up leftover cooked rice, if you have any (but also delicious enough to start from scratch if you don’t!). If you do this you’ll need to start with 1 cup/190g of cooked rice. Using leftover rice is fine, as long as you chill what you are not going to use soon after it’s made, rather than letting it sit around at room temperature for too long. Take it out of the fridge about 20 minutes before you want to eat the tabbouleh, though; you don’t want it to be fridge-cold. You won’t need the olive oil, turmeric, or water here; just add the rice as it is with all the remaining ingredients.\n\nPlaying around: The rice can just as well be replaced by other grains, if you want. Quinoa is a gluten-free option, like the rice, and couscous and fregola also work well.\n\nGetting ahead: Do all the chopping ahead of time, if you like—up to about 4 hours—and the rice can be made a full day ahead. It can be mixed in an hour or so before serving, but not much more than this.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Veggie Sides and Salads"
   },
   "servings": "serves four to six",
   "time": {
@@ -144,5 +144,5 @@
       "vegan"
     ]
   },
-  "image": null
+  "image": "/recipes/rice-tabbouleh.jpg"
 }

@@ -1,10 +1,10 @@
 {
   "id": "banana-coconut-bread-pudding-cake",
-  "name": "BANANA-COCONUT bread-pudding cake",
+  "name": "Banana-Coconut Bread-Pudding Cake",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Sweets and Coffee"
   },
   "servings": "serves 6 to 8",
   "time": "TAKES 30 MINUTES, PLUS 2½ HOURS TO BAKE AND COOL",
@@ -55,7 +55,7 @@
     "Bake for 1¼ to 1½ hours, until puffed up and richly browned. The top should feel dry to the touch and a toothpick or skewer inserted in the center should come out clean. Let cool on a wire rack for 1 hour (expect quick deflation), then run a blunt knife around the pan edge and unmold onto the rack. Remove the paper and reinvert onto a plate to showcase the attractive decorated side.",
     "Enjoy the cake warm or let cool completely, to firm up, and eat at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/banana-coconut-bread-pudding-cake.jpg",
   "dietary": [
     "vegetarian"
   ],

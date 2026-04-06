@@ -1,0 +1,43 @@
+{
+  "id": "licorice-leather",
+  "name": "Licorice Leather",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 2 sheets",
+  "intro": "Licorice—it’s almost impossible to resist! You can check on and adjust the licorice flavor by sampling it as you go along, but keep in mind that the flavor ‘settles’ during the dehydration process. Also, different licorice powders have different strengths. You can swap out the licorice powder for raw cacao powder or berry powder to vary the flavor of your leathers—but omit the salt flakes if you do.",
+  "ingredients": [
+    {
+      "item": "bananas",
+      "amount": "6"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "3–4 tsp"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt flakes",
+      "amount": "two pinches of"
+    }
+  ],
+  "method": [
+    "In a blender, mix all ingredients except the salt flakes. Taste-test, and add more licorice powder if needed.",
+    "With a frying spatula, spread the mixture thinly over a sheet of waxed parchment paper; sprinkle with the salt flakes. Let the mixture dry on your oven’s lowest temperature setting, about 107°F (42°C), for about 15 hours, or until all the mixture has dried out.",
+    "The mixture will dry a little more slowly in the middle, but you shouldn’t dry it for too long or the leather will become brittle. The leather is meant to be slightly chewy. Cut the leather into strips and roll them up; store them in an airtight jar."
+  ],
+  "image": "/recipes/licorice-leather.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

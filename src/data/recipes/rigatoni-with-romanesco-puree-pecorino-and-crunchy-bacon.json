@@ -1,0 +1,62 @@
+{
+  "id": "rigatoni-with-romanesco-puree-pecorino-and-crunchy-bacon",
+  "name": "Rigatoni with Romanesco Puree, Pecorino, and Crunchy Bacon",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "This is an easy, approachable dish that belongs firmly in fall, when romanesco is at its best. Rich in vitamins C and K, romanesco is not just delicious but also gorgeous with its distinctive texture and bright-green color. I added bacon to this recipe for two reasons: first, it provides a crispy, crunchy topping, and second, it’s a fridge staple that many of us have on hand.",
+  "ingredients": [
+    {
+      "item": "strips bacon",
+      "amount": "4"
+    },
+    {
+      "item": "medium head romanesco, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "pinches red pepper flakes, or 1 small peperoncino, minced",
+      "amount": "1 to 2"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "rigatoni pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees F. On a baking sheet (lined with parchment paper, if you like), place the bacon, and bake for 15 to 18 minutes, or until crispy. Set aside until cool, then cut into ½-inch pieces.",
+    "In a large pot of boiling salted water, put half the romanesco. Cook until soft, 5 to 6 minutes. Using a spider, remove the romanesco and set aside. Turn off the heat, but keep the pot of water to use later for cooking the pasta.",
+    "In a blender, blend the cooked romanesco, half the pecorino, and 1 tablespoon of the olive oil until creamy and smooth.",
+    "In a medium-large pan over medium heat, warm the remaining 2 tablespoons olive oil, the garlic, and red pepper flakes for a minute. Stir in the romanesco puree, and continue cooking for another couple of minutes. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, bring the pot of water back to a boil, add the remaining romanesco and the rigatoni and cook until al dente. Drain and transfer to the pan. Quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls, and finish with the remaining pecorino, the bacon pieces, and a drizzle of oil. Enjoy!"
+  ],
+  "image": "/recipes/rigatoni-with-romanesco-puree-pecorino-and-crunchy-bacon.jpg",
+  "time": {
+    "total": 33
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

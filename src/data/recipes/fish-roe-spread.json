@@ -1,0 +1,108 @@
+{
+  "id": "fish-roe-spread",
+  "name": "Fish Roe Spread",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "The eggs are small and pale orange.",
+      "amount": ""
+    },
+    {
+      "item": "tarama",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "white bread, crusts removed",
+      "amount": "8 slices"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "grated onion",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Place tarama in a mortar and pound it until the roe splits.",
+      "amount": ""
+    },
+    {
+      "item": "Moisten bread under running water; squeeze out any excess.",
+      "amount": ""
+    },
+    {
+      "item": "Add bread to tarama in the mortar and pound until they are completely blended, about 5 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Put this mixture in a mixing bowl and beat with an electric mixer or a wooden spoon, adding small amounts of olive oil alternately with lemon juice.",
+      "amount": ""
+    },
+    {
+      "item": "Beat for 5 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Add onion and mix well.",
+      "amount": ""
+    },
+    {
+      "item": "Serve in a bowl surrounded by crackers.",
+      "amount": ""
+    },
+    {
+      "item": "Keep refrigerated.",
+      "amount": ""
+    },
+    {
+      "item": "Moisten bread under running water.",
+      "amount": ""
+    },
+    {
+      "item": "Squeeze out any excess.",
+      "amount": ""
+    },
+    {
+      "item": "Place tarama in bowl and process for 1 minute.",
+      "amount": ""
+    },
+    {
+      "item": "with motor running, add bread, all the olive oil, lemon juice, and onion alternately to form a creamy mixture.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place tarama in a mortar and pound it until the roe splits.",
+    "Moisten bread under running water; squeeze out any excess.",
+    "Add bread to tarama in the mortar and pound until they are completely blended, about 5 minutes.",
+    "Put this mixture in a mixing bowl and beat with an electric mixer or a wooden spoon, adding small amounts of olive oil alternately with lemon juice.",
+    "Beat for 5 minutes.",
+    "Add onion and mix well.",
+    "Serve in a bowl surrounded by crackers.",
+    "Keep refrigerated.",
+    "Moisten bread under running water.",
+    "Squeeze out any excess.",
+    "Place tarama in bowl and process for 1 minute.",
+    "with motor running, add bread, all the olive oil, lemon juice, and onion alternately to form a creamy mixture."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

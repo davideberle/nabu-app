@@ -1,9 +1,10 @@
 {
   "id": "spicy-chinese-cabbage",
-  "name": "Spicy Chinese cabbage",
+  "name": "Spicy Chinese Cabbage",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "la bai cai 辣白菜",
   "intro": "This is a gorgeous little Shanghainese starter that can be made well in advance of your meal. After a long salting and draining, the cabbage is soft but retains a little bite, and is thrillingly infused with scorched chilli. The salting greatly reduces the volume, so you’ll end up with a fairly small portion, but it’s easy to double the recipe if you are cooking for a crowd. The chilli plays a marginal role in Jiangnan cooking, and it’s tempting to see dishes like this one as the product of Sichuanese influences in Shanghai, which has long been a melting pot of cultural and culinary influences from across China and the world. The city even has its own, somewhat toned-down version of Sichuanese flavors in hai pai chuan cai, the so-called “Shanghai-style” Sichuan cuisine.",
@@ -35,5 +36,10 @@
     "Heat the oil in a seasoned wok until smoking. Turn off the heat, immediately add the chillies and stir them for a few seconds until fragrant and darkening, but not burned. Swiftly add the drained cabbage and stir to clothe it in the fragrant oil. Serve at room temperature.",
     "Add 1½ tsp Chinkiang vinegar and ¾ tsp sesame oil to the main recipe."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,9 +1,10 @@
 {
   "id": "stir-fried-spinach-with-sorghum-liquor",
-  "name": "Stir-fried spinach with sorghum liquor",
+  "name": "Stir-Fried Spinach with Sorghum Liquor",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "jiu xiang bo cai 酒香菠菜",
   "intro": "This recipe is based on a Shanghai classic: stir-fried alfalfa sprouts with sorghum liquor. Given the difficulty of finding alfalfa, I’ve followed the example of the Din Tai Fung restaurant in Shanghai by cooking spinach leaves in the same way. The shot of liquor gives the spinach a sharp, edgy aroma that is most delicious. According to legend, alfalfa was one of the crops introduced to China by the Han-dynasty envoy Zhang Qian after his adventures in Central Asia some 2,000 years ago; it has been cultivated in the Jiangnan region since the fifteenth century. The plant is used mainly to feed animals and as a fertilizer, but its tender spring leaves are enjoyed as a seasonal delicacy in some places, particularly Shanghai, where they are traditionally eaten around Qingming, the Festival of Pure Brightness. If you live in Shanghai or grow your own alfalfa, try using the tender spring leaves instead of spinach. When making this at home I use a widely available sorghum liquor called er guo tou, which can be found in good Chinese supermarkets. Make sure you heat the liquor enough to evaporate the alcohol, leaving only its fragrance behind.",
@@ -33,5 +34,10 @@
     "Thoroughly wash and trim the spinach. If the leaves are large, you may wish to cut them in half lengthways. Dry the spinach as far as possible in a salad spinner or by spreading it out on a clean tea towel.",
     "Heat the oil in a seasoned wok over a high flame until very hot. Add the spinach and stir-fry vigorously until wilted and greatly reduced in volume. Pour the liquor around the edges of the wok so it sizzles, then stir it into the spinach. When everything is hot and fragrant, season with the soy sauce and with salt, if necessary. Serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

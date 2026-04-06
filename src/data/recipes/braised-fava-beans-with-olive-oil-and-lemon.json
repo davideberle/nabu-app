@@ -1,18 +1,18 @@
 {
   "id": "braised-fava-beans-with-olive-oil-and-lemon",
-  "name": "Braised fava beans with olive oil and lemon",
+  "name": "Braised Fava Beans with Olive Oil and Lemon",
   "subtitle": "Foul akdar",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c03"
+    "chapter": "Veggie Sides and Salads"
   },
   "introduction": "This is a very simple dish but, thanks to the generous amount of lemon juice and the even more generous olive oil, also wonderfully sharp and rich. It’s lovely as it is, warm or at room temperature, with a bowl of rice or some plain yogurt alongside, or as a side or as part of a mezzeh spread. Leftovers are also delicious and keep well for a couple of days, so double or triple the batch if you have a glut of beans.\n\nIngredients note: For those used to taking fava beans out of both their pods and their individual fibrous skins, braising them whole will be a revelation. The younger and more tender the beans that you start with, the more melt-in-the-mouth they will feel.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Veggie Sides and Salads"
   },
   "servings": "serves four as a side or part of a spread",
   "time": {
@@ -99,5 +99,5 @@
   "tags": {
     "dietary": []
   },
-  "image": null
+  "image": "/recipes/braised-fava-beans-with-olive-oil-and-lemon.jpg"
 }

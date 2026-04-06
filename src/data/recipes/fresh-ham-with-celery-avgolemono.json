@@ -1,0 +1,122 @@
+{
+  "id": "fresh-ham-with-celery-avgolemono",
+  "name": "Fresh Ham with Celery, Avgolemono",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Main Dishes"
+  },
+  "servings": "serves 8",
+  "time": {
+    "prep": 15,
+    "cook": 20,
+    "total": 35
+  },
+  "ingredients": [
+    {
+      "item": "one 4- to 5-pound fresh ham",
+      "amount": ""
+    },
+    {
+      "item": "butter",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "celery",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "flour",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Cut ham into 2-inch cubes.",
+      "amount": ""
+    },
+    {
+      "item": "Brown in butter with onion.",
+      "amount": ""
+    },
+    {
+      "item": "Add water to cover and salt and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Bring to a boil, cover, and simmer until meat is almost done, about 1 hour.",
+      "amount": ""
+    },
+    {
+      "item": "Scrub and scrape celery and cut into 2-inch pieces.",
+      "amount": ""
+    },
+    {
+      "item": "Add celery to meat and more water to cover; simmer an additional 30 minutes, until meat and vegetable are done.",
+      "amount": ""
+    },
+    {
+      "item": "Beat eggs in a small bowl until frothy.",
+      "amount": ""
+    },
+    {
+      "item": "Add flour and lemon juice, beating well.",
+      "amount": ""
+    },
+    {
+      "item": "Slowly add 2 cups hot liquid from the pot, beating constantly.",
+      "amount": ""
+    },
+    {
+      "item": "Remove pot from heat.",
+      "amount": ""
+    },
+    {
+      "item": "Pour sauce back into pot, shaking gently to distribute.",
+      "amount": ""
+    },
+    {
+      "item": "Do not allow sauce to boil.",
+      "amount": ""
+    },
+    {
+      "item": "Serve immediately.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut ham into 2-inch cubes.",
+    "Brown in butter with onion.",
+    "Add water to cover and salt and pepper.",
+    "Bring to a boil, cover, and simmer until meat is almost done, about 1 hour.",
+    "Scrub and scrape celery and cut into 2-inch pieces.",
+    "Add celery to meat and more water to cover; simmer an additional 30 minutes, until meat and vegetable are done.",
+    "Beat eggs in a small bowl until frothy.",
+    "Add flour and lemon juice, beating well.",
+    "Slowly add 2 cups hot liquid from the pot, beating constantly.",
+    "Remove pot from heat.",
+    "Pour sauce back into pot, shaking gently to distribute.",
+    "Do not allow sauce to boil.",
+    "Serve immediately."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

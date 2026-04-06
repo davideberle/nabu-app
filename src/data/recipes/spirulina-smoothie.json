@@ -1,0 +1,58 @@
+{
+  "id": "spirulina-smoothie",
+  "name": "Spirulina Smoothie",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 4 glasses",
+  "intro": "A rehydrating and revitalizing beverage! I recommend swapping all the water out for coconut water if it’s hot outside. Coconut water supplies the body with vital electrolytes that restore salt and mineral levels as you sweat. Spirulina has a cooling effect on the body. It also provides you with vital minerals, chlorophyll, and the fatty acid GLA, which can be helpful with PMS (premenstrual syndrome), skin problems, and eczema.",
+  "ingredients": [
+    {
+      "item": "pears",
+      "amount": "2"
+    },
+    {
+      "item": "(1 dl), approx. 1/3 fennel bulb",
+      "amount": "½ cup"
+    },
+    {
+      "item": "spinach—approx. 3½ oz (100 g)",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "water + 1 cup (2 dl) coconut water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "spirulina powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "frozen raspberries",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "freshly squeezed lemon or lime juice",
+      "amount": "some"
+    },
+    {
+      "item": "½” (1 cm) piece of fresh ginger",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut the pears and fennel into chunks. Mix them together with the spinach, water, and coconut water. Add the remaining ingredients and blend to a smooth consistency."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

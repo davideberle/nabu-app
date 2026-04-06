@@ -79,5 +79,10 @@
     "Add the beef (Step 4) and toss quickly with the curry paste, separating the beef pieces as much as possible.",
     "When the beef is about 50% cooked, add the remaining coconut milk and stir for another 30 seconds. Turn off the heat when done. If it seems too dry, add some water."
   ],
-  "image": "/recipes/panang-curry.jpg"
+  "image": "/recipes/panang-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

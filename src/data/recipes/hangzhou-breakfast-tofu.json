@@ -1,9 +1,10 @@
 {
   "id": "hangzhou-breakfast-tofu",
-  "name": "Hangzhou breakfast tofu",
+  "name": "Hangzhou Breakfast Tofu",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Tofu"
   },
   "subtitle": "hang zhou dou hua 杭州豆花",
   "ingredients": [
@@ -53,5 +54,13 @@
     "When the tofu is ready, use a slotted spoon to transfer it to a serving bowl and break up the chunks into smaller pieces. Scatter the rest of the ingredients over it and serve. This dish is best eaten with a spoon.",
     "Instead of the garnishes in the main recipe, put 2 tsp papery dried shrimp and 1 tbsp dried laver seaweed, torn into tiny pieces, in the serving bowl. Add the warm tofu and scatter with 1 tbsp finely chopped Sichuan preserved vegetable, 1½ tbsp thinly sliced spring onion greens, 2 tsp light soy sauce and 1 tsp sesame oil. Mix well before eating. This version is served as part of the lavish breakfast buffet at the Wumen Renjia restaurant in Suzhou."
   ],
-  "image": "/recipes/hangzhou-breakfast-tofu.jpg"
+  "image": "/recipes/hangzhou-breakfast-tofu.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

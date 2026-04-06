@@ -1,9 +1,10 @@
 {
   "id": "shanghai-double-pork-soup-with-bamboo-shoot",
-  "name": "Shanghai double-pork soup with bamboo shoot",
+  "name": "Shanghai Double-Pork Soup with Bamboo Shoot",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "yan du xian 腌笃鲜",
   "intro": "After a long simmering, the salt pork, fresh pork and bamboo shoot in this Shanghainese soup develop a rich, exquisite sweetness that will make you feel at peace with the world. This was originally a dish for early spring, when the first bamboo shoots of the season would thrust their way up out of the earth, and its glorious scent would drift on the air of many old Shanghai neighborhoods. If you can find fresh spring bamboo shoot, please use it. Otherwise, it is magnificent even when made with bamboo shoot preserved in brine. What is critical is to use really excellent pork. The name of this dish in Chinese has a delightful ring to it because the words for “salted” (yan) and “fresh” (xian) rhyme with each other. Although the dish is often regarded as typically Shanghainese, Hangzhou master chef Hu Zhongying tells me it originates in Hangzhou. The character du in the name is an onomatopoeic dialect word for simmering over a low flame. If your salt pork is excessively salty, you may wish to soak it overnight in plenty of cold water before cooking. Some cooks add a handful of tofu knots to the broth for added texture. It is traditionally cooked in a Chinese clay pot.",
@@ -46,5 +47,13 @@
     "Put the pork belly in a pan, cover with cold water, bring to the boil and then blanch for 2 minutes. Drain, discarding the water. Put the pork belly in your cooking pot, along with the gammon and bamboo shoot. Cover with 1½ quarts (1.5 liters) cold water and bring to the boil, skimming if necessary. Add the ginger, spring onion and Shaoxing wine. Boil rapidly for 5 minutes, then half-cover, turn the heat down low and simmer very gently for about 3 hours, by which stage wonderful aromas will fill your kitchen and the broth will taste delicious, with a natural sweetness. Before serving, add a little salt if you need it (you probably won’t). Scatter with the spring onion greens, then serve.",
     "Bring a pan of water to the boil. Add some pieces of salt pork, return to the boil and skim. Add thick slices of peeled winter melon with a dash of Shaoxing wine and, if you like, some green soybeans. Return to the boil, simmer until tender and serve with a scattering of sliced spring onion greens."
   ],
-  "image": "/recipes/shanghai-double-pork-soup-with-bamboo-shoot.jpg"
+  "image": "/recipes/shanghai-double-pork-soup-with-bamboo-shoot.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

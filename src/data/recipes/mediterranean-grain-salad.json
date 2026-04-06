@@ -1,0 +1,64 @@
+{
+  "id": "mediterranean-grain-salad",
+  "name": "Mediterranean Grain Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "crumbled feta cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "bulgur wheat",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "very finely chopped spring onion",
+      "amount": "2"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "Finely chopped Sprig garden mint (optional)",
+      "amount": ""
+    },
+    {
+      "item": "In a heatproof bowl, mix the bulgur with 1½ cups boiling water and ¼ teaspoon salt. Cover, and let stand until tender but slightly chewy, about 30 minutes. Drain the bulgur in a fine-mesh sieve, pressing to remove any liquid and return to the bowl. Add the spring onion, tomatoes, parsley, vinegar, and oil. Season with salt and pepper. Toss to combine. Top with cheese and sprinkle with chopped mint.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a heatproof bowl, mix the bulgur with 1½ cups boiling water and ¼ teaspoon salt. Cover, and let stand until tender but slightly chewy, about 30 minutes. Drain the bulgur in a fine-mesh sieve, pressing to remove any liquid and return to the bowl. Add the spring onion, tomatoes, parsley, vinegar, and oil. Season with salt and pepper. Toss to combine. Top with cheese and sprinkle with chopped mint."
+  ],
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

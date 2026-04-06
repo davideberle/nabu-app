@@ -1,0 +1,72 @@
+{
+  "id": "radiatori-with-pacific-northwest-winter-carrot-puree-buffalo-mozzarella-nigella-",
+  "name": "Radiatori with Pacific Northwest Winter Carrot Puree, Buffalo Mozzarella, Nigella Seeds, and Turmeric",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "This recipe from my childhood carries the sweetness and color of cooked carrots. It’s accentuated by the curcuma (turmeric), resulting in an explosion of flavor.\n\nLike many root crops, carrots grow very well in all regions of Washington and Oregon. Although they are a year-round veggie, I love to consider them a winter one, especially when cooked. Buffalo mozzarella, with its slightly sour taste, is the cherry on top—literally—of this recipe.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrots (8 to 10 ounces), cut into ½-inch rounds",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh cow ricotta",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "radiatori pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "(2-ounce) balls buffalo mozzarella",
+      "amount": "2"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the shallot and sauté for a couple of minutes, then stir in the carrots. Add the water and turmeric, stir again, and cover. Reduce the heat to medium-low and cook for 10 to 15 minutes, or until the carrots are soft.",
+    "Uncover and transfer to a blender with the Parmigiano, ricotta, and salt and pepper to taste. Blend until creamy. Return the carrot puree to the skillet.",
+    "Meanwhile, in a large pot of boiling salted water, cook the radiatori until al dente, drain, and transfer to the skillet. Increase the heat to high, and sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls and top each with a spoonful of buffalo mozzarella in the center. Finish with an additional sprinkle of turmeric, the nigella seeds, and a drizzle of oil."
+  ],
+  "image": "/recipes/radiatori-with-pacific-northwest-winter-carrot-puree-buffalo-mozzarella-nigella-.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

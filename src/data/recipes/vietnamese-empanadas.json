@@ -1,10 +1,10 @@
 {
   "id": "vietnamese-empanadas",
-  "name": "VIETNAMESE empanadas",
+  "name": "Vietnamese Empanadas",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Snacks"
   },
   "servings": "makes 16 empanadas, to serve 6 to 8",
   "time": "TAKES ABOUT 1¼ HOURS",
@@ -71,7 +71,7 @@
     "Brush some of the egg wash around the rim of each pastry round. Holding a round in one hand, use a spoon to position a brimming 1 tablespoon of filling slightly off center on the pastry round. Bring up one side to meet the other and press the edges to seal well and make a ½-inch-wide brim. For extra security, press with the tines of a fork, or get fancy and make a rope edge (see photos, below). Place the pastries on a prepared baking sheet. Repeat with the remaining dough rounds. Then tackle the second piecrust to make another eight empanadas. (If you end up with fewer, snack on the extra filling or add it to the fried rice on this page.)",
     "Use a fork to poke two or three sets of holes into each empanada for ventilation, then brush the tops with egg wash. Bake for 16 to 20 minutes, until golden and tinged with brown. Let cool for about 10 minutes, and serve."
   ],
-  "image": null,
+  "image": "/recipes/vietnamese-empanadas.jpg",
   "category": {
     "dish_type": [
       "main"

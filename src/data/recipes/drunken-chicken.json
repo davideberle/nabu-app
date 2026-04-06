@@ -1,9 +1,10 @@
 {
   "id": "drunken-chicken",
-  "name": "Drunken chicken",
+  "name": "Drunken Chicken",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "zui ji 醉鸡",
   "intro": "Drunken dishes form a whole genre of delicacies in the ancient wine-producing city of Shaoxing. In some of them the ingredients are more literally drunken than you might want to imagine: live crabs and shrimp are immersed in a boozy liquor until they expire. Served cold, these sozzled sea creatures have a cool, slimy texture and an ambrosial taste, especially the female freshwater crabs adorned with shining red coral. The first time I tried one, in Shanghai, I was almost speechless with pleasure and amazement. Happily, drunken chicken—a Shaoxing speciality—does not demand the sousing of live creatures in alcohol. The chicken is simply poached and then steeped in a seasoned wine liquor. Traditionally, it is served very cold in a Shaoxing clay wine jar; the texture of the meat should be a little firm and brisk. In the days before refrigeration, drunken dishes were only eaten in cold weather—in Yangzhou people say you should stop eating drunken crab after the Lantern Festival that concludes the Lunar New Year holiday. For dishes like this, in which wine is the dominant flavor, do buy one intended for drinking, rather than a cooking wine. To make sure the chicken is cooked to internationally approved standards, use a meat thermometer to check that the innermost parts are heated to 165°F (74°C).",
@@ -47,5 +48,13 @@
     "Strain 1¼ cups (275ml) of the chicken cooking liquid into a jug. Add the salt and stir to dissolve, then add the Shaoxing wine and strong liquor, if using. Set aside to cool completely.",
     "Remove the bones from the chicken thighs and drumsticks. Cut the meat widthways into ½–1 in (1–2cm) strips through the skin. Put the cooled chicken pieces in a pot just large enough to hold them and pour over the cooled stock mixture. Cover and leave in the fridge for at least 24 hours (it keeps well in the fridge for a few days). Serve cold."
   ],
-  "image": "/recipes/drunken-chicken.jpg"
+  "image": "/recipes/drunken-chicken.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

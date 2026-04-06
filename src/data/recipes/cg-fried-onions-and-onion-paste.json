@@ -1,0 +1,38 @@
+{
+  "id": "cg-fried-onions-and-onion-paste",
+  "name": "Fried Onions AND Onion Paste",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "recipe can be adjusted for your requirements",
+  "intro": "It’s no secret that fried onions taste amazing. They are an essential ingredient for dopiaza curries and biryanis and also work well in marinades. You can even blend the onions with a little water or to form a paste that can be added to almost any curry to make them a little more interesting.",
+  "ingredients": [
+    {
+      "item": "Rapeseed oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "large onions, finely sliced",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Heat enough oil for deep-frying in a large, heavy-based pan over a high heat. Test to see if it is hot enough by dropping a piece of onion in the oil; if it sizzles immediately and floats to the top, the oil is ready. Add the sliced onions and fry until they turn light brown, about 5 minutes. They will continue to cook once out of the oil so be sure to get them out when they are still light brown in colour.",
+    "Using a wire mesh spoon, remove the fried onions to a plate lined with kitchen paper, to soak up the excess fat. Store in a cool, dry place in an airtight container until ready to use. These will keep for up to a week."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  },
+  "time": {
+    "total": 5
+  }
+}

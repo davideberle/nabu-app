@@ -1,0 +1,98 @@
+{
+  "id": "lagana",
+  "name": "Lagana",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "(1oz) fresh yeast",
+      "amount": "30g"
+    },
+    {
+      "item": "(7fl oz) warm water",
+      "amount": "200ml"
+    },
+    {
+      "item": "(1lb 9oz) plain flour, plus extra for dusting",
+      "amount": "700g"
+    },
+    {
+      "item": "table salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "caster sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground star anise",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(6¼fl oz) Muscat sweet wine",
+      "amount": "180ml"
+    },
+    {
+      "item": "(3½fl oz) extra virgin olive oil, plus extra for oiling",
+      "amount": "100ml"
+    },
+    {
+      "item": "white",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "Crumble the yeast into a small bowl and add 2 tablespoons of the measured warm water, then stir briefly to dissolve the yeast.",
+      "amount": ""
+    },
+    {
+      "item": "Add the remaining ingredients, except the sesame seeds, to a large bowl. Carefully pour in the yeast mixture, ensuring that the salt and yeast are at opposite sides of the bowl so they don’t come into direct contact. Mix together to form a dough.",
+      "amount": ""
+    },
+    {
+      "item": "Knead the dough by hand in the bowl or in a stand mixer fitted with a dough hook until it is firm – how long this takes will vary, so you can only judge by the feel of the dough. Transfer to a clean, lightly oiled large bowl, cover with clingfilm and leave the dough to rise in a warm place for 30–40 minutes until it has doubled in size.",
+      "amount": ""
+    },
+    {
+      "item": "When the dough is ready, flatten it and stretch it into a squarish shape no thicker than the width of your finger.",
+      "amount": ""
+    },
+    {
+      "item": "Place the dough on a baking tray lined with baking parchment and use 2 fingers to make indentations all over the surface. Cover with clingfilm and leave to rise for a further 20 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Meanwhile, preheat the oven to 190°C (375°F), Gas Mark 5.",
+      "amount": ""
+    },
+    {
+      "item": "Sprinkle the dough with warm water and then the sesame seeds. Bake for about 45 minutes until the bread is golden. This is great served warm.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Crumble the yeast into a small bowl and add 2 tablespoons of the measured warm water, then stir briefly to dissolve the yeast.",
+    "Add the remaining ingredients, except the sesame seeds, to a large bowl. Carefully pour in the yeast mixture, ensuring that the salt and yeast are at opposite sides of the bowl so they don’t come into direct contact. Mix together to form a dough.",
+    "Knead the dough by hand in the bowl or in a stand mixer fitted with a dough hook until it is firm – how long this takes will vary, so you can only judge by the feel of the dough. Transfer to a clean, lightly oiled large bowl, cover with clingfilm and leave the dough to rise in a warm place for 30–40 minutes until it has doubled in size.",
+    "When the dough is ready, flatten it and stretch it into a squarish shape no thicker than the width of your finger.",
+    "Place the dough on a baking tray lined with baking parchment and use 2 fingers to make indentations all over the surface. Cover with clingfilm and leave to rise for a further 20 minutes.",
+    "Meanwhile, preheat the oven to 190°C (375°F), Gas Mark 5.",
+    "Sprinkle the dough with warm water and then the sesame seeds. Bake for about 45 minutes until the bread is golden. This is great served warm."
+  ],
+  "image": null,
+  "time": {
+    "total": 105
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

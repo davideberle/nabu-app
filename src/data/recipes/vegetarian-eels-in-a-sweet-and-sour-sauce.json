@@ -1,9 +1,10 @@
 {
   "id": "vegetarian-eels-in-a-sweet-and-sour-sauce",
-  "name": "Vegetarian “eels” in a sweet-and-sour sauce",
+  "name": "Vegetarian “eels” in a Sweet-and-Sour Sauce",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "xiang you shan si 香油鳝丝",
   "intro": "If you visit any fresh-food market in Jiangnan, you will probably see tubs filled with the fluid, yellow-brown snakiness of live paddy eels. Filleted, these savory creatures are the subject of many notable Jiangnan dishes. In Suzhou, people like to make “hissing-oil eels” (xiang you shan si) in which the eel fillets, swiftly cooked with soy sauce and sugar, are finished with a great pile of garlic and a libation of fiercely hot oil that produces a puff of steam and the hissing sound of the name. In Ningbo, the eels are cooked most tenderly with yellow chives and peeled fava beans, while in Wuxi they like to deep-fry them crisp and then clothe them in a glossy sweet-sour sauce. Paddy eels are hard to find outside China, but Buddhist vegetarian restaurants in the region often serve imitation eel dishes like this one, made with strips of dried shiitake mushroom. The following recipe is based on a dish I’ve eaten at the Gongdelin restaurant in Shanghai.",
@@ -63,5 +64,10 @@
     "Heat the oil for deep-frying to 350–400°F (180–200°C). Scatter the starched mushroom strips into the hot oil and deep-fry briefly until they are no longer floppy. Remove from the oil with a slotted spoon and set aside. Let the oil return to its original temperature, then add the “eels” and fry until golden and crisp. Remove from the oil and set aside.",
     "Return the wok to a high flame with 1 tablespoon of the deep-frying oil. Add the ginger and stir-fry briefly until fragrant. Add the sauce and stir to dissolve the sugar as it boils. Tip the “eels” into the sauce and stir rapidly to clothe them evenly. Add the pepper strips and quickly mix them in. Off the heat, stir in the sesame oil and serve."
   ],
-  "image": "/recipes/vegetarian-eels-in-a-sweet-and-sour-sauce.jpg"
+  "image": "/recipes/vegetarian-eels-in-a-sweet-and-sour-sauce.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

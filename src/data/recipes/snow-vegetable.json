@@ -1,9 +1,10 @@
 {
   "id": "snow-vegetable",
-  "name": "Snow vegetable",
+  "name": "Snow Vegetable",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "xue cai 雪菜",
   "intro": "This brisk, salt-sour, mustardy pickle is one of the staples of the Jiangnan kitchen, and is extremely easy to make. In the region, they make it with Chinese potherb mustard (xue li hong), but local chefs working abroad achieve similar and very satisfactory results with radish tops and small mustard greens. When freshly made, the pickled greens are emerald-bright; after a week or two they will fade to a darker, dimmer green. The pickle derives its curious name from the fact that potherb mustard flourishes in cold, snowy weather. Local people say the vegetable should be gathered and pickled before Li Chun, the Beginning of Spring, while its leaves are still young and tender. This is one of the easiest Jiangnan pickles to make and has myriad culinary applications. It has a particular affinity with fish and seafood—just try steaming a fish or some clams with some of the juices from your pickle jar, a dash of Shaoxing wine and a little crushed ginger and spring onion, for a simple and delicious dish. Once you’ve seen how easy and rewarding it is to make snow vegetable, you’ll probably find yourself keeping a constant supply on hand, as I do. This is a fresh, quick pickle that is ready to eat after a week. I worked out this recipe with the guidance of chefs Hu Zhongying and Zhu Yinfeng.",
@@ -22,5 +23,10 @@
     "The following day, chop the greens coarsely into ½ in (1cm) pieces and put them in a large basin. Sprinkle with the salt, then scrunch it into the greens, using similar movements to those you would use if kneading bread dough (your eyes may water slightly from the hot, mustardy fumes). Knead until the salt is thoroughly incorporated, and the greens look wet and are already exuding their juices.",
     "Pack the greens into a sterilized glass jar with a tight-fitting lid. Use the end of a wooden rolling pin to press them tightly into the jar, so they are covered with a thin layer of their own liquid. Seal with the lid and leave at room temperature to ferment. Open the jar once a day to allow any gases to escape during the initial fermentation. You want the greens to acquire a delicious sour-savory taste; the exact timing will depend on temperature, but I’ve found about a week at room temperature is fine, with less time when the weather is hot, and more in a colder place. When the pickle is ready, keep it in the fridge for a month or two, or store it in the freezer."
   ],
-  "image": "/recipes/snow-vegetable.jpg"
+  "image": "/recipes/snow-vegetable.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

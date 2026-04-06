@@ -51,5 +51,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/miyan-ridi-sesame-seed-soup.jpg"
+  "image": "/recipes/miyan-ridi-sesame-seed-soup.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

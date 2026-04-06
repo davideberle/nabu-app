@@ -1,0 +1,62 @@
+{
+  "id": "zoodles-with-best-ever-tomato-sauce",
+  "name": "Zoodles with Best Ever Tomato Sauce",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "Noodles without the carbohydrates are all the rage. Zucchini is a good alternative to regular noodles—preferably with a ridiculously tasty tomato sauce. You’ll need a spiralizer to make the noodles, but you can make ’tagliatelle’ strips just as effectively with a vegetable peeler. For a bit more “chew,” layer the zucchini with carrot, parsnip, or daikon radish; it’s nice also to mix zucchini noodles with kelp noodles. It’s a great boost! Kelp noodles contain hardly any carbohydrates or calories but are rich in iodine, which is vital to our hormonal balance.",
+  "ingredients": [
+    {
+      "item": "zucchini or 1 package kelp noodles",
+      "amount": "2"
+    },
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "½ cup (¾ dl)",
+      "group": "BEST EVER TOMATO SAUCE"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2",
+      "group": "BEST EVER TOMATO SAUCE"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "2 tsp",
+      "group": "BEST EVER TOMATO SAUCE"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½–1 tbsp",
+      "group": "BEST EVER TOMATO SAUCE"
+    },
+    {
+      "item": "A few pinches of rosemary",
+      "amount": "",
+      "group": "BEST EVER TOMATO SAUCE"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)",
+      "group": "BEST EVER TOMATO SAUCE"
+    }
+  ],
+  "method": [
+    "Start by soaking the sun-dried tomatoes for 1 to 8 hours.",
+    "Turn the zucchini into noodles with a spiralizer, or make ‘tagliatelle’ using a vegetable peeler. If you’re making kelp noodles, rinse them in a fine-meshed sieve, place them in a bowl, and cut them in half with a pair of scissors.",
+    "Cut the tomatoes into large chunks. Process them in a blender or food processor together with the remaining sauce ingredients, except for the pumpkin seeds. Add the seeds in and pulse them.",
+    "Fold the noodles into the sauce."
+  ],
+  "image": "/recipes/zoodles-with-best-ever-tomato-sauce.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

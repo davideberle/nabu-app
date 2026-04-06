@@ -1,0 +1,61 @@
+{
+  "id": "greek-country-salad-horiatiki",
+  "name": "Greek Country Salad (Horiatiki)",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "thinly sliced onion",
+      "amount": "1"
+    },
+    {
+      "item": "small thinly sliced green pepper (pith and seeds removed)",
+      "amount": "1"
+    },
+    {
+      "item": "diced tomatoes",
+      "amount": "1 lb"
+    },
+    {
+      "item": "peeled and sliced cucumber",
+      "amount": "1/2"
+    },
+    {
+      "item": "feta cheese",
+      "amount": "5 oz"
+    },
+    {
+      "item": "black olives",
+      "amount": "12"
+    },
+    {
+      "item": "Pinch of oregano",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Salt and pepper, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Place onion, tomatoes, cucumber, and pepper in a bowl. Dress with olive oil, salt, and pepper. Arrange the olives and feta cheese on the top and sprinkle with the oregano.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place onion, tomatoes, cucumber, and pepper in a bowl. Dress with olive oil, salt, and pepper. Arrange the olives and feta cheese on the top and sprinkle with the oregano."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

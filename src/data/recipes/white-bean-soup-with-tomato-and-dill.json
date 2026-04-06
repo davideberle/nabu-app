@@ -3,13 +3,22 @@
   "name": "White Bean Soup with Tomato & Dill",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
   },
-  "servings": "prep time: 5 minutes | cook time:30 to 40 minutes |serves 8",
+  "servings": "serves 8",
+  "time": {
+    "prep": 5,
+    "total": 95
+  },
   "ingredients": [
     {
       "item": "dried Great Northern or",
       "amount": "2 cups"
+    },
+    {
+      "item": "cannellini beans, soaked overnight",
+      "amount": ""
     },
     {
       "item": "quarts chicken or vegetable stock or water",
@@ -28,31 +37,51 @@
       "amount": "2"
     },
     {
-      "item": "cloves garlic, chopped",
-      "amount": "3"
+      "item": "garlic, chopped",
+      "amount": "3 cloves"
     },
     {
-      "item": "to 3 bay leaves",
-      "amount": "2"
+      "item": "bay leaves",
+      "amount": "2 to 3"
     },
     {
       "item": "long strip orange zest",
       "amount": "1"
     },
     {
-      "item": "1/4 cup chopped fresh flat-leaf parsley",
+      "item": "cup chopped fresh flat-leaf parsley",
       "amount": ""
     },
     {
-      "item": "1/4 cup chopped fresh dill",
+      "item": "cup chopped fresh dill",
       "amount": ""
+    },
+    {
+      "item": "cups",
+      "amount": "2"
     },
     {
       "item": "Kokkari Tomato Sauce",
-      "amount": "2 cups"
+      "amount": ""
     },
     {
-      "item": "1/2 cup extra-virgin olive oil",
+      "item": "cup extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Drain the beans and put them in a large pot. Add the stock and bring to a boil over high heat, skimming any foam, then reduce the heat to maintain a simmer.",
+      "amount": ""
+    },
+    {
+      "item": "Cook until the beans begin to soften, 30 to 40 minutes, then add the onion, carrots, celery, garlic, bay leaves, orange zest, parsley, dill, tomato sauce, olive oil, and salt to taste. Simmer, uncovered, until the beans are completely tender, about 45 minutes longer depending on their age.",
+      "amount": ""
+    },
+    {
+      "item": "Let cool for 10 minutes, then taste and adjust the seasoning. Remove the bay leaves and orange zest. Ladle into bowls to serve.",
       "amount": ""
     }
   ],
@@ -61,5 +90,10 @@
     "Cook until the beans begin to soften, 30 to 40 minutes, then add the onion, carrots, celery, garlic, bay leaves, orange zest, parsley, dill, tomato sauce, olive oil, and salt to taste. Simmer, uncovered, until the beans are completely tender, about 45 minutes longer depending on their age.",
     "Let cool for 10 minutes, then taste and adjust the seasoning. Remove the bay leaves and orange zest. Ladle into bowls to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -1,0 +1,36 @@
+{
+  "id": "cashew-yogurt",
+  "name": "Cashew Yogurt",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "2 cups (4½ dl)"
+    },
+    {
+      "item": "lukewarm water",
+      "amount": "2 cups (4½ dl)"
+    },
+    {
+      "item": "probiotics capsules",
+      "amount": "4"
+    },
+    {
+      "item": "vanilla powder (optional)",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "In a blender, mix the cashews with the water. Open the probiotics capsules and add the contents to the mixed cashews with the optional vanilla powder, and mix again. Pour the mixture into a glass bowl (do not use a metal bowl, or the yogurt culture will not grow) and cover it with a kitchen towel. Let the bowl sit at room temperature for the day, or overnight, to let the process begin. The yogurt will keep for up to a week in the refrigerator, in a bowl or jar with a tight-fitting lid."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

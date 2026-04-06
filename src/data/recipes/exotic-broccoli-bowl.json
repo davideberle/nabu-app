@@ -1,0 +1,46 @@
+{
+  "id": "exotic-broccoli-bowl",
+  "name": "Exotic Broccoli Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "Broccoli is green and contains chlorophyll—just like leafy greens. But broccoli also contains Vitamin C and other antioxidants. Together with pineapple’s nutritional wholesomeness (the enzyme bromelain is great for the gut and fights inflammation), this is a real boost for your health.",
+  "ingredients": [
+    {
+      "item": "broccoli florets, fresh or frozen",
+      "amount": "5 fl oz (1½ dl)"
+    },
+    {
+      "item": "frozen pineapple or tropical fruit mix",
+      "amount": "8¾ oz (250 g)"
+    },
+    {
+      "item": "coconut water",
+      "amount": "6¾ fl oz (2 dl)"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "A splash of"
+    }
+  ],
+  "method": [
+    "Cut the broccoli florets into smaller chunks. Blend all ingredients into a smooth texture."
+  ],
+  "image": "/recipes/exotic-broccoli-bowl.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

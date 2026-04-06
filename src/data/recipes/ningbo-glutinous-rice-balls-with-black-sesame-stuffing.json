@@ -1,9 +1,10 @@
 {
   "id": "ningbo-glutinous-rice-balls-with-black-sesame-stuffing",
-  "name": "Ningbo glutinous rice balls with black sesame stuffing",
+  "name": "Ningbo Glutinous Rice Balls with Black Sesame Stuffing",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Sweet Dishes"
   },
   "subtitle": "ning bo tang yuan 宁波汤圆",
   "intro": "Large glutinous rice balls stuffed with sweet black sesame paste are known as tang yuan. Their origins can be traced back to the Song dynasty, and they are traditionally eaten at the Lantern Festival at the end of the Chinese New Year. The best tang yuan in Jiangnan are said to be made by the Crock-Duck-Dog snack restaurant in Ningbo, where they are the signature dish (the restaurant’s curious name puns on the nickname of the man who founded it in 1926). In early spring, tang yuan dough may be colored green with Chinese mugwort juice to ward off the ill humors of the season. The rice balls may also have savory stuffings, such as minced pork or shepherd’s purse. Makes enough for 6 rice bowls.",
@@ -42,5 +43,10 @@
     "Put the glutinous rice flour in a bowl and gradually mix in the cooking oil and enough tepid water to make a putty-like dough; it should not stick to your fingers. Break the dough into pieces and roll into balls a little larger than the stuffing balls, dusting the work surface with rice flour as necessary. Press your thumb into the center of each ball to make a cup. Press a frozen stuffing ball into each cup and draw up the dough around it to enclose it completely.",
     "Bring a pan of water to the boil, add the rice balls and simmer until they float. Serve about 4 balls per person in a bowl of the hot cooking water. Sprinkle over a few osmanthus blossoms, if you have them."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

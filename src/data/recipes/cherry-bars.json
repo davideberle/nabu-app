@@ -1,0 +1,53 @@
+{
+  "id": "cherry-bars",
+  "name": "Cherry Bars",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 12 bars",
+  "intro": "Protein bars provide a boost when you’re in training—you can easily make them at home and load up quickly as needed for your activity. Protein bars often taste more ’good-for-you’ than a yummy ball, but your homemade bars are free of added white sugar and preservatives, and they’ll provide you with all necessary amino acids.",
+  "ingredients": [
+    {
+      "item": "+ ¼ cup (½ dl) pumpkin seeds",
+      "amount": "heaped ½ cup (1½ dl)"
+    },
+    {
+      "item": "almonds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "Grated zest from one lemon",
+      "amount": ""
+    },
+    {
+      "item": "frozen cherries, defrosted",
+      "amount": "½ lb (225 g)"
+    },
+    {
+      "item": "hemp powder",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ cup (½ dl)"
+    }
+  ],
+  "method": [
+    "Chop all the pumpkin seeds in a food processor. Remove them and transfer ¼ cup (½ dl) of the chopped pumpkin seeds to a bowl. Put the almonds in the food processor and grind them together with the pumpkin seeds until they are mixed into flour.",
+    "Remove the pits from the dates, and add the dates, grated lemon zest, cherries (reserving their liquid), hemp powder, and chia seeds to the food processor and mix everything into a batter, diluting it if necessary with some cherry juice. The mixture shouldn’t be completely dry, but not too sticky either.",
+    "Shape the mixture into a rectangle measuring about 4” x 8” (10 x 20 cm) on a sheet of parchment paper. Dip the rectangle into the saved pumpkin mix so you have mixed seeds on both sides. Cut into approximately 12 pieces. Store the bars wrapped in parchment paper, in the freezer.",
+    "Remove the bars from the freezer when you’re ready to eat them. They will defrost in no time and have the perfect texture."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

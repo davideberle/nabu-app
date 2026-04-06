@@ -1,0 +1,77 @@
+{
+  "id": "casarecce-with-pacific-northwest-manila-clams-chickpeas-and-cherry-tomatoes",
+  "name": "Casarecce with Pacific Northwest Manila Clams, Chickpeas, and Cherry Tomatoes",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "I love Manila clams, especially in the winter months, because like many other bivalves, they are best harvested and enjoyed during colder weather. The Pacific Northwest is also home to savory and varnish clams, great alternatives to Manilas. They are less meaty but juicy and have a gorgeous purple shell. Clam digging on the Olympic Peninsula was one of the first outdoor activities I did when I moved to Seattle.",
+  "ingredients": [
+    {
+      "item": "Manila clams",
+      "amount": "2½ pounds"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small shallot, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "cooked chickpeas, drained",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "10"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "To clean the clams, soak them in plenty of cold water, rinsing several times and checking that the sand is completely removed.",
+    "In a large sauté pan over medium heat, warm the olive oil. Add the shallot, parsley, garlic, capers, and black pepper and red pepper flakes to taste, and sauté for 2 to 3 minutes. Then add the chickpeas.",
+    "Drain the clams, add them to the pan, and sauté for about 2 minutes. Add the tomatoes and wine, and cook for about 3 minutes, or until the alcohol has evaporated. Cover and cook until the clams have opened, 4 to 5 minutes.",
+    "Meanwhile, in a large pot of boiling salted water, cook the casarecce until al dente, drain, and transfer to the pan. Increase the heat to high, and sauté for 1 minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with some parsley, a drizzle of oil, and more black pepper to taste."
+  ],
+  "image": "/recipes/casarecce-with-pacific-northwest-manila-clams-chickpeas-and-cherry-tomatoes.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

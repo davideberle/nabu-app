@@ -18,7 +18,7 @@
     },
     {
       "item": "sunflower oil Salt to taste (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -30,5 +30,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ekuru-white-moin-moin.jpg"
+  "image": "/recipes/ekuru-white-moin-moin.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

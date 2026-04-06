@@ -1,0 +1,44 @@
+{
+  "id": "clarified-butter",
+  "name": "Clarified Butter",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 5,
+    "total": 10
+  },
+  "ingredients": [
+    {
+      "item": "(2 sticks) unsalted butter",
+      "amount": "8 oz"
+    },
+    {
+      "item": "Melt the butter in a small saucepan over medium-low heat.",
+      "amount": ""
+    },
+    {
+      "item": "Skim the surface foam, then slowly pour the clear butter into a clean container, leaving the solids on the bottom of the pan.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and refrigerate indefinitely.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Melt the butter in a small saucepan over medium-low heat.",
+    "Skim the surface foam, then slowly pour the clear butter into a clean container, leaving the solids on the bottom of the pan.",
+    "Cover and refrigerate indefinitely."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

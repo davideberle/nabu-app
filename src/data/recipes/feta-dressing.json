@@ -1,0 +1,72 @@
+{
+  "id": "feta-dressing",
+  "name": "Feta Dressing",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "mayonnaise (preferably",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Homemade Mayonnaise",
+      "amount": ""
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Combine all ingredients except feta in a bowl and blend well.",
+      "amount": ""
+    },
+    {
+      "item": "Crumble feta and add to mixture.",
+      "amount": ""
+    },
+    {
+      "item": "Refrigerate in a covered jar.",
+      "amount": ""
+    },
+    {
+      "item": "Add feta and refrigerate.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine all ingredients except feta in a bowl and blend well.",
+    "Crumble feta and add to mixture.",
+    "Refrigerate in a covered jar.",
+    "Add feta and refrigerate."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "tagliolini-with-halibut-asparagus-almonds-and-sumac",
+  "name": "Tagliolini with Halibut, Asparagus, Almonds, and Sumac",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Native to the northern Pacific Ocean, these gorgeous diamond-shaped fish are extensively caught from March until November. In my mind, halibut qualifies as a spring delicacy when it first appears on fish market counters, although it is available for several months. Popular for its gentle and mild flavor, halibut is best cooked lightly because it can go from flaky and delicious to tough if overcooked. I grew up eating it occasionally in Italy, where it is considered a special treat since it’s not native to Italian waters. Seeing halibut so fresh and available in the PNW is a joy. This recipe uses tagliolini pasta and goes for a classic combination of halibut and asparagus. Add to that some crunchiness from the almonds and a little kick from the sumac and you’ve got a stunner of a dish.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small shallot, finely minced",
+      "amount": "½"
+    },
+    {
+      "item": "asparagus, stems cut into 1-inch pieces and tips set aside",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "toasted almonds, crushed",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "fresh halibut fillet, cut into 1-inch strips",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the shallot and sauté for 2 to 3 minutes.",
+    "Add the asparagus stems, almonds, oregano, red pepper flakes, and salt and pepper to taste, reduce the heat to medium-low, and cook, covered, for 5 to 6 minutes, or until thick and saucy.",
+    "Uncover, increase the heat to medium, add the halibut and asparagus tips, and cook for 2 to 3 minutes, flipping a few times but being careful not to shred the halibut.",
+    "Meanwhile, in a large pot of boiling salted water, cook the tagliolini until al dente, drain, and transfer to the skillet. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Top with more crushed almonds, the sumac, and a drizzle of oil."
+  ],
+  "image": "/recipes/tagliolini-with-halibut-asparagus-almonds-and-sumac.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

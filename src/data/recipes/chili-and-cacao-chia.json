@@ -1,0 +1,60 @@
+{
+  "id": "chili-and-cacao-chia",
+  "name": "Chili & Cacao Chia",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "We all have our favorite spices—cinnamon and cardamom are a couple of mine. But why not make a chili and cacao pudding? The chili doesn’t just add heat, it also stabilizes blood sugar and boosts metabolism, and can help kick-start weight loss. Other suggested flavorings are dried ginger, nutmeg, and a pinch of saffron.",
+  "ingredients": [
+    {
+      "item": "mylk",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dried chili powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Your choice of chopped nuts",
+      "amount": "",
+      "group": "TOPPING"
+    },
+    {
+      "item": "Mulberries",
+      "amount": "",
+      "group": "TOPPING"
+    },
+    {
+      "item": "Dried buckwheat (see p. 63)",
+      "amount": "",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Mix together all the ingredients for the pudding. Let it sit for at least 30 minutes, and top it with chopped nuts, mulberries, and dried buckwheat before serving."
+  ],
+  "image": "/recipes/chili-and-cacao-chia.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

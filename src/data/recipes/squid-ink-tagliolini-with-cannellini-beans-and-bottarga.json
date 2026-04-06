@@ -1,0 +1,82 @@
+{
+  "id": "squid-ink-tagliolini-with-cannellini-beans-and-bottarga",
+  "name": "Squid Ink Tagliolini with Cannellini Beans and Bottarga",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "This gorgeous dish beautifully marries the tangy ocean flavor of squid ink and the rich, briny taste of bottarga (fish-cured roe).\n\nSquidding is a fun winter activity best done at night on your local pier with the help of a rod outfitted with a specific squid jig and a good LED light panel. Extracting the ink out of a squid is not difficult, although it requires some technique (see this page). It’s very satisfying to see the dramatic black ink coming out of the glands and sacs of the squid, and the taste is unique. Bottarga is an ancient Italian specialty that carries with it the taste of Mediterranean caviar. It can be found in other countries such as Portugal, Tunisia, Turkey, and Japan, and is usually made of mullet or tuna roe.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "bunch Italian parsley, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "3"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "(0.14-ounce) sachets squid ink",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "squid, cut into small pieces",
+      "amount": "1 pound"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "cooked cannellini beans, drained",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "8"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "bottarga (about 5 ounces)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "In a large pan over medium-high heat, warm the olive oil. Add the parsley, garlic, capers, and red pepper flakes and sauté for 2 minutes. Stir in the squid ink.",
+    "Add the squid meat, cook for a minute, stir, and add the wine. Reduce the heat to medium-low and cook for 5 to 7 minutes, or until the alcohol evaporates.",
+    "Add the cannellini beans and tomatoes, season with salt and pepper to taste, stir, and turn off the heat.",
+    "Meanwhile, in a large pot of boiling salted water, cook the tagliolini until al dente, drain, and transfer to the skillet. Over high heat, sauté the pasta for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Carefully plate (squid ink will stain) in four bowls, and wipe each with a wet paper towel around the edges for a clean presentation.",
+    "Using a microplane, shave a couple of paper-thin pieces of the bottarga on top of each dish. Finish with fresh parsley, a drizzle of oil, and more black pepper. Enjoy immediately."
+  ],
+  "image": "/recipes/squid-ink-tagliolini-with-cannellini-beans-and-bottarga.jpg",
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

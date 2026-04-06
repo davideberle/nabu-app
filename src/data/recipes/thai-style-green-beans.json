@@ -8,7 +8,8 @@
   "servings": "serves 2",
   "intro": "Peanut butter, soy sauce and hoisin sauce give this delicious bean dish a nice boost in flavor.",
   "time": {
-    "prep": "20 minutes"
+    "prep": "20 minutes",
+    "total": 3
   },
   "ingredients": [
     {
@@ -62,5 +63,10 @@
     "Sauté the green beans for 3 minutes.",
     "Add the green bean (Step 3) to the sauce. Stir well. You may want to top it with cilantro and peanuts."
   ],
-  "image": "/recipes/thai-style-green-beans.jpg"
+  "image": "/recipes/thai-style-green-beans.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

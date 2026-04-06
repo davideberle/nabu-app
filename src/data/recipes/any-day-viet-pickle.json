@@ -1,10 +1,10 @@
 {
   "id": "any-day-viet-pickle",
-  "name": "ANY DAY viet pickle",
+  "name": "ANY DAY Viet Pickle",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 3 cups",
   "time": "TAKES 10 TO 30 MINUTES, PLUS 1 HOUR TO MATURE",
@@ -41,7 +41,7 @@
     "Rinse the vegetables with water, drain in a mesh strainer or colander, and press or shake to expel excess water. Transfer to a 4-cup jar.",
     "In a medium bowl, stir together the remaining ½ cup sugar with the vinegar and 1 cup water until dissolved. Pour enough of the liquid into the jar to cover the vegetables, discard any excess, and let sit for 1 hour. Use immediately, or refrigerate for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/any-day-viet-pickle.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

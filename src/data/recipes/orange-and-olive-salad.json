@@ -1,0 +1,65 @@
+{
+  "id": "orange-and-olive-salad",
+  "name": "Orange and Olive Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "navel oranges, peeled, pith removed, sliced into 1/4-inch rounds",
+      "amount": "4"
+    },
+    {
+      "item": "small red onion, peeled and cut into very thin rings",
+      "amount": "1"
+    },
+    {
+      "item": "fresh strained orange juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "rinsed and halved kalamata olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1/2 tsp"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1/2 tsp"
+    },
+    {
+      "item": "arugula leaves, washed, patted dry, and shredded",
+      "amount": "4"
+    },
+    {
+      "item": "Arrange the oranges, onions, and olives on a platter. Using a mortar and pestle, crush together the garlic, thyme, and peppercorns. Combine the orange juice, vinegar, olive oil and crushed spices in a jar and shake very well. Sprinkle the shredded arugula leaves over the oranges and onion slices, and drizzle with the dressing. Serve immediately.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Arrange the oranges, onions, and olives on a platter. Using a mortar and pestle, crush together the garlic, thyme, and peppercorns. Combine the orange juice, vinegar, olive oil and crushed spices in a jar and shake very well. Sprinkle the shredded arugula leaves over the oranges and onion slices, and drizzle with the dressing. Serve immediately."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

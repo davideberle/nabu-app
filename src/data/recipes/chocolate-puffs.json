@@ -1,0 +1,46 @@
+{
+  "id": "chocolate-puffs",
+  "name": "Chocolate Puffs",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 6 muffin cups",
+  "intro": "Quinoa is rich in protein, and quinoa puffs are scrumptious when mixed into balls and chocolate. The puffs are not categorized as raw food, but they’re still a superfood! Use paper or silicone muffin cups, or try silicone ice cream molds.",
+  "ingredients": [
+    {
+      "item": "cacao butter",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "quinoa puffs",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "agave, maple, or yacon syrup",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "lucuma powder (optional)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Melt the cacao butter and coconut oil over a lukewarm water bath. Stir in the quinoa puffs, cacao powder, syrup, and lucuma powder. With a spoon, fill the muffin cups halfway. Store in the freezer. These taste best eaten while still chilled, since the cocoa butter and coconut oil will melt after a while."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

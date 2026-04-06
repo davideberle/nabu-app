@@ -1,0 +1,42 @@
+{
+  "id": "2-minute-carrot-soup",
+  "name": "2-Minute Carrot Soup",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "Speedy, raw, and tasty! For variety, replace the carrot juice with tomato or beet juice.",
+  "ingredients": [
+    {
+      "item": "carrot juice",
+      "amount": "2 cups (5 dl)"
+    },
+    {
+      "item": "acovados, scooped",
+      "amount": "2"
+    },
+    {
+      "item": "⅓” (1 cm) chili or dried chili",
+      "amount": ""
+    },
+    {
+      "item": "½” (1 cm) piece of fresh ginger",
+      "amount": ""
+    },
+    {
+      "item": "tamari sauce (optional)",
+      "amount": "1–2 tsp"
+    }
+  ],
+  "method": [
+    "Process all the ingredients in a blender. Taste, and add more seasoning if needed."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

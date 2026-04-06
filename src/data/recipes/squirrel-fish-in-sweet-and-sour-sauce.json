@@ -1,9 +1,10 @@
 {
   "id": "squirrel-fish-in-sweet-and-sour-sauce",
-  "name": "“Squirrel fish” in sweet-and-sour sauce",
+  "name": "“squirrel Fish” in Sweet-and-Sour Sauce",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Fish and Seafood"
   },
   "subtitle": "song shu yu 松鼠鱼",
   "intro": "The old city of Suzhou was a center of Jiangnan literati culture. Within the whitewashed walls of landscaped gardens commissioned by the wealthy, people could rest in a pavilion and gaze at carefully composed views of lakes, rockeries, miniature hills and stands of quivering bamboo, the wildness of nature framed for their delectation. Sweet-and-sour “squirrel fish” is a Suzhou classic and the signature dish of the old Pine and Crane restaurant, where the Qianlong emperor is said to have tasted and praised it during one of his incognito forays into the city. It’s a dazzling performance of knifework: a mandarin fish is boned and then scored into frills that separate in the deep-frying oil into a delight of golden crispness. The fish, reunited with its head on the serving dish, bathed in a gorgeous red sauce and garnished with tiny river shrimp and peas, is thought to resemble a squirrel, hence the name. In its sweetness and dainty appearance, the dish is typical of Suzhou cooking. The modern dish is thought to have evolved from an older recipe of the same name that appears in the Qing dynasty cookbook The Harmonious Cauldron (tiao ding ji). The classic dish is extremely complicated to make, but fantastically delicious and with almost universal appeal. In the following recipe, I have slightly simplified the cutting by using two fish fillets instead of a boned, split fish, but the preparation still demands care and concentration. If you’d like to make it easier still, use the variation, made with a straightforward pan-fried fish, and inspired by a version made by my friends Jason Li and He Yuxiu.",
@@ -83,5 +84,13 @@
     "This is an easier version of the dish. Instead of sea bass fillets, use a whole sea bream (about 1¼ lbs/550g), scaled and gutted. Slice off the head (discard or use this, as you wish). Put the fish on a chopping board and make deep parallel diagonal cuts into the flesh at 1 in (2cm) intervals. Make similar cuts at right angles to these, so you end up with a crisscross pattern. Marinate as in the main recipe.",
     "Instead of deep-frying, heat 5 tbsp oil over a high flame in a seasoned wok. Sprinkle a little salt on the base of the wok to prevent sticking. Pat dry the fish and its head (if using), and slide into the oil. Cover the wok and fry the fish for about 3 minutes, then turn and do the same on the other side. Do not move the fish around until each side is golden and crisp—this will encourage the skin to remain intact. Make sure the fish is cooked through by poking a chopstick into the thickest part of the flesh. Remove the fish from the wok and place it on a serving dish, along with its head if you wish. Make the sauce and pour it over as in the main recipe, and scatter with peas and pine nuts to serve."
   ],
-  "image": "/recipes/squirrel-fish-in-sweet-and-sour-sauce.jpg"
+  "image": "/recipes/squirrel-fish-in-sweet-and-sour-sauce.jpg",
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

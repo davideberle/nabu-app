@@ -1,9 +1,10 @@
 {
   "id": "nanjing-new-year-s-salad",
-  "name": "Nanjing New Year’s salad",
+  "name": "Nanjing New Year’s Salad",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "jin ling su shen jin 金陵素什锦",
   "intro": "In Nanjing, the capital of Jiangsu province, a colorful cooked salad like this is an essential part of the New Year’s Eve feast, and makes a pleasing contrast to the lavish “big fish, big meat” (da yu da rou) character of the other celebratory dishes. It is traditionally made in large quantities so that it can be eaten gradually over the lazy first few days of the year. The salad should include at least ten different vegetables; some restaurants make it with eighteen, which is why another name for the dish is Eighteen Fresh Ingredients (shi ba xian). Some of the vegetables typically included have an auspicious symbolism, like “golden” lily flowers, “silver” bamboo shoot and soybean sprouts, which resemble the archaic ruyi scepter, an ornamental backscratcher made from precious materials. In Shanghai restaurants, red and green bell peppers and cucumber are often added. Celtuce, lotus root, arrowhead, winter bamboo shoot, tofu skin, snow peas and fresh mushrooms all make fine additions. I’ve tasted many different versions of this dish in Nanjing and Shanghai; the following recipe is my own amalgam. Feel free to tweak it as you see fit, and compose your own salad like a symphony of color. What you want is a pretty mix of hues, made harmonious by the strandy cut of all the ingredients; a hint of sweetness shot through with pickle pungency; and a gentle toastiness from the sesame oil. Double the quantities if you want a salad to tide you through the New Year holiday.",
@@ -72,5 +73,10 @@
     "Heat a seasoned wok over a high flame. Add ½ tablespoon cooking oil, tip in the ginger and stir-fry until it smells wonderful. Add the mushrooms and lily flowers and stir-fry until hot and fragrant, seasoning with salt. Remove from the wok and set aside.",
     "Return the wok to a high flame, add another ½ tablespoon cooking oil, tip in the celery strips and stir-fry until hot—just to “break their rawness.” Season with salt, then remove and set aside. Repeat for all the other vegetable ingredients individually, adding a little more oil each time and seasoning lightly to taste with salt. When the vegetables have cooled, mix them together in a big salad bowl. Add the sugar and sesame oil, stir thoroughly and serve."
   ],
-  "image": "/recipes/nanjing-new-year-s-salad.jpg"
+  "image": "/recipes/nanjing-new-year-s-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

@@ -1,0 +1,85 @@
+{
+  "id": "pappardelle-with-tomato-less-rabbit-ragu-pomegranate-and-pink-pepper",
+  "name": "Pappardelle with Tomato-Less Rabbit Ragù, Pomegranate, and Pink Pepper",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "I grew up with coniglio al forno—roasted rabbit—for our Sunday lunch. It was a delicious, juicy, and crunchy secondo piatto that my mom still prepares for me when I go back home. This version is a colorful holiday pasta dish inspired by my childhood, pairing the tenderness of the rabbit with tart pomegranate, a holiday symbol of prosperity and good luck.\n\nWe have wonderful organic rabbit farms in Washington, and Valley Rabbits is one of them. Sourcing from small sustainable farms means you’re purchasing great meat and getting to know the territory better.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "white onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "carrot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "stick celery, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground local rabbit",
+      "amount": "1 pound"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "sprigs rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "pink peppercorns",
+      "amount": "10 to 15"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "organic chicken stock",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Seeds from 1 pomegranate, divided",
+      "amount": ""
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a medium deep saucepan over medium heat, warm the olive oil for a minute. Add the onion, carrots, and celery, and sauté for 2 minutes.",
+    "Add the rabbit and pancetta, and cook for 4 to 5 minutes, stirring constantly. Add the rosemary and pink peppercorns. Season with salt to taste. Stir and continue cooking for another 2 to 3 minutes.",
+    "Add a splash of the wine and let it evaporate. Add the stock, cover, reduce the heat to low, and simmer for about 2 hours. When the meat is cooked through and the sauce comes together, uncover and add half the pomegranate seeds (also called arils).",
+    "Meanwhile, in a large pot of boiling salted water, cook the pappardelle until al dente, drain, and transfer to the saucepan. Quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Stir in half the Parmigiano, and divide among four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining pomegranate seeds, and a drizzle of oil. Enjoy with a glass or two of smooth and young red wine."
+  ],
+  "image": "/recipes/pappardelle-with-tomato-less-rabbit-ragu-pomegranate-and-pink-pepper.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

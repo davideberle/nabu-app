@@ -1,10 +1,10 @@
 {
   "id": "super-simple-overnight-rice-porridge",
-  "name": "SUPER-SIMPLE overnight rice porridge",
+  "name": "Super-Simple Overnight Rice Porridge",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Soups"
   },
   "servings": "serves 4",
   "time": "TAKES 30 MINUTES, PLUS OVERNIGHT SOAKING",
@@ -44,7 +44,7 @@
     "The next morning, add the ginger and the white parts of the green onions to the pot. Partially cover (a small gap is perfect to minimize evaporation and avoid a boil over) and bring to vigorous simmer over high heat. Lower the heat and gently simmer, partially covered, for 15 minutes, stirring occasionally and adjusting the heat as needed. When done, most of the liquid will have been absorbed (you’ll see little separation between the rice and liquid). Discard the ginger and green onions. Stir the pot, cover tightly, turn off the heat, and let rest for 10 minutes to finish thickening. The desired thickness of the porridge can vary according to taste; it can be rustic and thick, or elegant and thin, or somewhere in between. If needed, add a splash of water to thin or cook a little longer to thicken. Taste and season with the salt.",
     "When ready to serve, reheat the porridge to a simmer, then ladle into individual bowls. Garnish with sliced green onions and pepper."
   ],
-  "image": null,
+  "image": "/recipes/super-simple-overnight-rice-porridge.jpg",
   "category": {
     "dish_type": [
       "side"

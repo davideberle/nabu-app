@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes 24 (1½-inch / 4-cm) candy logs, 24 truffles, or one (6-inch / 15-cm) tart crust",
   "intro": "Take a handful of ingredients, a food processor, a quick pass with a rolling pin, and in 10 minutes you’ll be snacking on a nutritious and satisfying chocolate-scented, sugar-free candy that can easily be made raw by using raw cacao powder and alcohol-free vanilla. The recipe calls for Medjool dates, but Deglet Noor or Halawi dates work as well. A little hot water may be needed if the dates are very dry, but rarely have I found this to be the case. What I have found to be the case in this recipe is the flavor-boosting power of soy sauce. I asked Elizabeth Andoh, a leading English-language expert on Japanese cuisine, if I was imagining this flavor boost, and she confirmed it exists. My preference is to add a dash of unpasteurized soy sauce (nama shoyu) to boost the chocolate flavor, but you can substitute any quality soy sauce or tamari, or just leave it out altogether and add a pinch of salt.",
@@ -47,7 +47,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   },
   "image": "/recipes/chewy-date-candies.jpg"

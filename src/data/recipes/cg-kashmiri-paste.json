@@ -1,0 +1,74 @@
+{
+  "id": "cg-kashmiri-paste",
+  "name": "Kashmiri Paste",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 1 jar",
+  "ingredients": [
+    {
+      "item": "coriander seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "3cm"
+    },
+    {
+      "item": "Kashmiri dried red chillies, or to taste",
+      "amount": "10"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "3"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "rapeseed oil, plus more if needed",
+      "amount": "125ml"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "100ml"
+    }
+  ],
+  "method": [
+    "Heat a dry frying pan over a medium-high heat. Add the whole spices, dried chillies and Indian bay leaves and roast until warm to the touch and fragrant. Remove the spices from the heat if they begin to smoke. Tip onto a plate to cool, then grind to a very fine powder in a spice grinder or using a pestle and mortar.",
+    "Return the ground spices to the frying pan, and add the turmeric and just enough water to make a thick paste. Add the oil to the pan and place over a medium-high heat.",
+    "Stir continuously until the spices begin to sizzle a bit and the oil rises to the top, 30 seconds to 1 minute. Take off the heat, add the vinegar and stir well. Spoon into a sterilized jar with an airtight lid. This will keep in the fridge for at least 2 months. Use as required."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  },
+  "time": {
+    "total": 1
+  }
+}

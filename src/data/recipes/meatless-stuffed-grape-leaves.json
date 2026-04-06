@@ -1,0 +1,157 @@
+{
+  "id": "meatless-stuffed-grape-leaves",
+  "name": "Meatless Stuffed Grape Leaves",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
+  "ingredients": [
+    {
+      "item": "minced onion",
+      "amount": "2 cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cup converted rice",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chopped scallion, including greens",
+      "amount": "3 cups"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "chopped parsley (reserve stems for lining pot)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped dill (reserve stems for lining pot)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "one 12-ounce jar grape leaves",
+      "amount": ""
+    },
+    {
+      "item": "boiling water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "parsley and lemon wedges for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Sweat onion over very low heat with 1 teaspoon salt for 5 to 10 minutes, until wilted.",
+      "amount": ""
+    },
+    {
+      "item": "Increase heat and add rice, ½ cup of the olive oil, scallion, and 1½ tablespoons lemon juice.",
+      "amount": ""
+    },
+    {
+      "item": "Sauté for 2 minutes. Add parsley, dill, salt, and pepper. Sauté for 4 minutes. Set aside to cool.",
+      "amount": ""
+    },
+    {
+      "item": "Wash grape leaves under cold running water to thoroughly remove all brine.",
+      "amount": ""
+    },
+    {
+      "item": "Separate leaves carefully. Remove thick stem portions. Cut large leaves in half.",
+      "amount": ""
+    },
+    {
+      "item": "Place 1 tablespoon filling on underside of leaf.",
+      "amount": ""
+    },
+    {
+      "item": "Starting at base, fold over, and fold in sides, rolling tightly toward point.",
+      "amount": ""
+    },
+    {
+      "item": "(See illustration.)",
+      "amount": ""
+    },
+    {
+      "item": "Place parsley and dill stalks on bottom of a saucepan.",
+      "amount": ""
+    },
+    {
+      "item": "Arrange dolmadakia in layers.",
+      "amount": ""
+    },
+    {
+      "item": "Add remaining ¼ cup oil and 1½ tablespoons lemon juice.",
+      "amount": ""
+    },
+    {
+      "item": "Weigh down dolmadakia with a heavy plate.",
+      "amount": ""
+    },
+    {
+      "item": "Cover with boiling water to the level of the plate.",
+      "amount": ""
+    },
+    {
+      "item": "Bring to a boil, reduce heat, and simmer for 45 minutes, or until water is absorbed.",
+      "amount": ""
+    },
+    {
+      "item": "Remove plate, and sprinkle 3 tablespoons fresh lemon juice over dolmadakia.",
+      "amount": ""
+    },
+    {
+      "item": "Let cool thoroughly in pot.",
+      "amount": ""
+    },
+    {
+      "item": "Remove to a serving plate and garnish with parsley and lemon wedges.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Sweat onion over very low heat with 1 teaspoon salt for 5 to 10 minutes, until wilted.",
+    "Increase heat and add rice, ½ cup of the olive oil, scallion, and 1½ tablespoons lemon juice.",
+    "Sauté for 2 minutes. Add parsley, dill, salt, and pepper. Sauté for 4 minutes. Set aside to cool.",
+    "Wash grape leaves under cold running water to thoroughly remove all brine.",
+    "Separate leaves carefully. Remove thick stem portions. Cut large leaves in half.",
+    "Place 1 tablespoon filling on underside of leaf.",
+    "Starting at base, fold over, and fold in sides, rolling tightly toward point.",
+    "(See illustration.)",
+    "Place parsley and dill stalks on bottom of a saucepan.",
+    "Arrange dolmadakia in layers.",
+    "Add remaining ¼ cup oil and 1½ tablespoons lemon juice.",
+    "Weigh down dolmadakia with a heavy plate.",
+    "Cover with boiling water to the level of the plate.",
+    "Bring to a boil, reduce heat, and simmer for 45 minutes, or until water is absorbed.",
+    "Remove plate, and sprinkle 3 tablespoons fresh lemon juice over dolmadakia.",
+    "Let cool thoroughly in pot.",
+    "Remove to a serving plate and garnish with parsley and lemon wedges."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

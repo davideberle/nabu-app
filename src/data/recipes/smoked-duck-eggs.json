@@ -1,9 +1,10 @@
 {
   "id": "smoked-duck-eggs",
-  "name": "Smoked duck eggs",
+  "name": "Smoked Duck Eggs",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "yan xun tang xin dan 烟熏溏心蛋",
   "intro": "With their shiny, molten yolks and delicate smoky aroma, these eggs make an irresistible appetizer. I first tasted them at the Ningbo Residents’ Association in Hong Kong, and have been enjoying them practically ever since at one of my favorite Shanghai restaurants, Fu 1088. At Fu 1088, they top each egg with a tiny leaf of cilantro and about half a teaspoon of black caviar, which looks pretty and tastes delicious. The eggs are also delectable when dipped into Sichuan pepper salt or, less authentically, celery salt.",
@@ -52,5 +53,13 @@
     "Put the tea leaves in a bowl and add just enough hot water to cover them. Soak for a minute, then drain and, when cool enough to handle, squeeze them dry. Line the base of a seasoned wok with two layers of aluminum foil. Scatter the sugar, then the damp tea leaves, over the foil. Heat the wok over a high flame until plenty of smoke is rising from the tea leaves. Put the steamer basket with the eggs into the wok, cover with a lid, then turn off the heat and let them sit in the smoke for 3 minutes.",
     "To serve, cut the eggs in half and arrange on a serving dish. Garnish each egg with a tiny piece of cilantro, if you wish. Serve with salt or Sichuan pepper salt."
   ],
-  "image": "/recipes/smoked-duck-eggs.jpg"
+  "image": "/recipes/smoked-duck-eggs.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

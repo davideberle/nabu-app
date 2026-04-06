@@ -1,9 +1,10 @@
 {
   "id": "warm-pumpkin-juice-with-honey",
-  "name": "Warm pumpkin juice with honey",
+  "name": "Warm Pumpkin Juice with Honey",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Drinks"
   },
   "subtitle": "nan gua zhi 南瓜汁",
   "intro": "In Hangzhou, the Dragon Well Manor restaurant often serves juices made with the fresh fruits of the season. Perhaps there will be the pale minty-green juice of wild kiwi fruits, the pale gold of loquats, the cool bronze of sugar cane or the milky purity of water chestnuts. Since the Chinese tend to be unencumbered by arbitrary distinctions between fruits and vegetables, they might also offer the warm juices of sweetcorn, pea shoots or pumpkin, lightly sweetened with honey. Drunk before or during a meal, these juices smooth the throat and soothe the spirits. Pumpkins, which are usually known as “southern squashes” (nan gua), are widely grown in China, where they have many culinary uses. In rural areas, people stir-fry the tender leaves of the plant as a vegetable and, in hard times, add their flesh to the rice-pot to make the rice go further. Pumpkin meat may be stir-fried, steamed or made into sweet dumplings. It can also be used to make this golden, satiny drink, which will slip dreamily down your throat. Serves 4. See here for a photograph that includes a Crown Prince pumpkin; the juice is pictured at the top of here.",
@@ -23,5 +24,10 @@
     "Boil or steam sweetcorn cobs, then cut off the kernels and blend to a smooth, creamy juice. Sweeten with diluted honey, if desired.",
     "Make it in the same way as the pumpkin juice, with just a hint of added sweetness from diluted honey."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

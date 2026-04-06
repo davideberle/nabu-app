@@ -71,5 +71,10 @@
     "Add all the toppings ingredients to the noodles. Toss until well combined.",
     "Sprinkle sesame seeds onto the noodles before serving."
   ],
-  "image": "/recipes/pineapple-vinaigrette-udon-noodles.jpg"
+  "image": "/recipes/pineapple-vinaigrette-udon-noodles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

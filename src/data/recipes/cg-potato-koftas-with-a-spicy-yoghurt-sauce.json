@@ -1,0 +1,112 @@
+{
+  "id": "cg-potato-koftas-with-a-spicy-yoghurt-sauce",
+  "name": "Potato Koftas with a Spicy Yoghurt Sauce",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Starters"
+  },
+  "servings": "serves 4 as a main course or many as a canapé",
+  "intro": "Back in 2012, I was invited to Sachins in Newcastle by the owner and excellent chef Bob Arora. That day he taught me a few authentic Punjabi recipes that I still make often. This potato kofta recipe is one of them.",
+  "ingredients": [
+    {
+      "item": "large potatoes",
+      "amount": "3"
+    },
+    {
+      "item": "of ground turmeric",
+      "amount": "Pinch"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    },
+    {
+      "item": "finely chopped coriander seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "of fresh coriander (cilantro), chopped",
+      "amount": "Handful"
+    },
+    {
+      "item": "self-raising (self-rising) flour",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "Rapeseed oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "420g"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cornflour (cornstarch) (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped coriander seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fenugreek seeds",
+      "amount": "6"
+    },
+    {
+      "item": "fresh curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "finely chopped fresh coriander (cilantro)",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Boil the potatoes in their skins until about 80% cooked, then drain. When cool enough to handle, peel then grate them into a large bowl. Stir in the turmeric, salt, chopped coriander seeds, garam masala, fresh coriander (cilantro) and 2 tbsp flour. Form into koftas the size of golf balls, adding more flour if the mix is too sticky.",
+    "Now make the sauce. Pour the yoghurt into a large bowl and add the chilli powder, turmeric, tomato paste, cornflour (cornstarch) and salt. Whisk until smooth. Heat the oil over a medium-high heat and toss in the whole spices followed by the curry leaves. Sizzle for about 20 seconds until fragrant and then slowly pour in the yoghurt mixture, whisking continuously. The yoghurt may splatter a bit when it hits the oil, so reduce the heat if necessary.",
+    "Whisk it all up and simmer for about 3 minutes, then skim the excess oil off the top. Set aside and keep warm.",
+    "Heat about 10 cm (4 in) of rapeseed oil in a deep, heavy-based pan, until hot enough for a piece of the potato mixture to sizzle immediately it hits the oil (about 170°C/338°F). Deep-fry the koftas in batches of six until nicely browned and crunchy on the outside. Remove to a plate lined with kitchen paper, to absorb any excess oil, then move to a wire rack and keep warm while you fry the rest.",
+    "Check the sauce for seasoning. If serving as a curry, stir the kofta into the sauce and serve immediately while still crunchy, or serve as an hors d’oeuvre, placing each kofta on top of a spoonful of sauce."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  },
+  "time": {
+    "total": 3
+  }
+}

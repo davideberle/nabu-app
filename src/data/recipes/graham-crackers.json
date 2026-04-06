@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes 24 (2 x 2-inch / 5 x 5-cm) square cookies, 18 (2-inch / 5-cm) rounds, or 2 cups / 250 grams fine crumbs",
   "intro": "Most people buy graham crackers from a box in the store, but making homemade grahams is tasty and fun, and requires relatively few ingredients. Plus, it’s hard to find healthy authentic vegan graham crackers in stores. Make your own and say hello to vegan Moon Pies (page 141), Magic Cookie Bars with a graham cracker crust (page 142), or S’mores (page 139) for all-around good snacking.",
@@ -65,7 +65,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   },
   "image": "/recipes/graham-crackers.jpg"

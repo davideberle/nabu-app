@@ -1,0 +1,29 @@
+{
+  "id": "cg-green-chilli-paste",
+  "name": "Green Chilli Paste",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "intro": "Whenever green chillies are called for in a recipe, you could use an equal amount of this paste. Any fresh green chillies will do. Generally speaking, the larger the chilli, the milder it is.",
+  "ingredients": [
+    {
+      "item": "I usually use green chillies like bird’s eye or bullet chillies",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Simply blend the amount you require with just enough water to make a paste and use as required. The chilli paste can be frozen in ice cube trays just like garlic and ginger paste."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

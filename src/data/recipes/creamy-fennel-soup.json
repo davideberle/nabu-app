@@ -1,0 +1,64 @@
+{
+  "id": "creamy-fennel-soup",
+  "name": "Creamy Fennel Soup",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "Fresh fennel has a slight aniseed flavor; it has a cleansing effect and is good for the digestion. This almond mylk-based soup is inspired by a Spanish potage.",
+  "ingredients": [
+    {
+      "item": "fennel bulb",
+      "amount": "½"
+    },
+    {
+      "item": "hothouse cucumber",
+      "amount": "¼"
+    },
+    {
+      "item": "almond mylk",
+      "amount": "1¾ cup (3 dl)"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "Some"
+    },
+    {
+      "item": "avocado, scooped",
+      "amount": "1"
+    },
+    {
+      "item": "mint leaves (depending on strength of flavor; start off with 5)",
+      "amount": "5–10"
+    },
+    {
+      "item": "lemon balm leaves",
+      "amount": "5–10"
+    },
+    {
+      "item": "Herb salt",
+      "amount": ""
+    },
+    {
+      "item": "chopped almonds",
+      "amount": "3 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "grated Parmesan cheese or nutritional yeast",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Cut the fennel and cucumber into smaller chunks. Process them in a blender together with the other ingredients—except the topping—and season with more herb salt if needed. Top with Parmesan or—if you’re a vegan—nutritional yeast."
+  ],
+  "image": "/recipes/creamy-fennel-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

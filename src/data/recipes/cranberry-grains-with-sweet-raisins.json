@@ -1,0 +1,59 @@
+{
+  "id": "cranberry-grains-with-sweet-raisins",
+  "name": "Cranberry Grains with Sweet Raisins",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "It doesn’t matter whether you steep the grains during the day or overnight. Prepare jars with the dry ingredients in advance, and add berries and water. You can sweeten the grains with honey or maple syrup at the table instead of adding coconut sugar to the mix.",
+  "ingredients": [
+    {
+      "item": "grains, such as rolled oats, buckwheat or quinoa",
+      "amount": "1 (2 dl)"
+    },
+    {
+      "item": "water or almond mylk",
+      "amount": "1–1¼ cup (2–3 dl)"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "cranberries, frozen or fresh",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raisins",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pecans",
+      "amount": "¼ cup (½ dl)",
+      "group": "TOPPING"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "1 tsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Stir the grains with water or mylk (use the lesser quantity of either if you’re using frozen berries, because the berries will produce liquid as they defrost) and the remaining ingredients, except toppings. Let the mix stand for 1 to 8 hours. Top the mix with chopped pecans and cardamom."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

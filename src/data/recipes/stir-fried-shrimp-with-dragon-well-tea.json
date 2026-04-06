@@ -1,9 +1,10 @@
 {
   "id": "stir-fried-shrimp-with-dragon-well-tea",
-  "name": "Stir-fried shrimp with Dragon Well tea",
+  "name": "Stir-Fried Shrimp with Dragon Well Tea",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Fish and Seafood"
   },
   "subtitle": "long jing xia ren 龙井虾仁",
   "intro": "Just beyond the willow-lined shores of the West Lake in Hangzhou rise the Dragon Well hills, where tea-pickers in straw hats pluck the tenderest new leaves from rows of tea bushes. True Dragon Well tea, which is grown only in this small area on the western outskirts of the city, has a delicate, nutty flavor and is one of the most prized green teas in China. The tea leaves are graded by size and season: the finest are picked early in the year, before Qingming, the Festival of Pure Brightness. This dish, a seasonal delicacy, is very similar to “clear-fried shrimp” (qing chao xia ren), but has a delightful hint of the fragrance of Dragon Well tea. Once, a local chef made it for me with tea leaves he had picked himself only an hour or two before in the Dragon Well tea fields. It is traditionally made with tiny freshwater shrimp, which are laboriously peeled by hand and have an impeccably tender, silky and springy texture. At home I make it with saltwater shrimp. Dragon Well tea is sold by specialist tea vendors in the West; if you can’t find it, use another green tea in its place. The pre-frying in hot but not sizzling oil is a technique used across Jiangnan for keeping delicate seafood such as shrimp and sliced fish tender and slippery. The oil temperature is critical: as veteran Suzhou chef Sun Fugen told me, if the oil is too hot, the shrimp acquire a yellow tinge; if it’s too cold, “their clothes fall off”—which is to say that they lose their slippery starch coating.",
@@ -51,5 +52,13 @@
     "Stir 2 teaspoons oil into the shrimp to separate them as they cook. Heat the remaining oil in a seasoned wok over a high flame to 250–260°F (120–130°C). Add the shrimp and separate them with chopsticks. Stir them gently until they have curled up, become opaque and are very nearly cooked through; remove them with a slotted spoon. Take great care not to let the oil overheat. The idea is to keep the shrimp very tender and succulent, not to sizzle them; if the oil reaches 275°F (140°C) you will begin to lose some of their succulence.",
     "Drain all but 1 tablespoon oil from the wok. Return it to a high flame and add the shrimp, Shaoxing wine, tea leaves and 2 tablespoons of the tea infusion, and stir rapidly to incorporate. Stir the starch mixture and pour it into the wok, stirring. As soon as the juices have thickened, remove the shrimp from the wok and serve with a dish of vinegar for dipping."
   ],
-  "image": "/recipes/stir-fried-shrimp-with-dragon-well-tea.jpg"
+  "image": "/recipes/stir-fried-shrimp-with-dragon-well-tea.jpg",
+  "time": {
+    "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

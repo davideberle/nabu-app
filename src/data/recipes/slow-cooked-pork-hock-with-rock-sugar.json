@@ -1,9 +1,10 @@
 {
   "id": "slow-cooked-pork-hock-with-rock-sugar",
-  "name": "Slow-cooked pork hock with rock sugar",
+  "name": "Slow-Cooked Pork Hock with Rock Sugar",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "bing tang yuan ti 冰糖元蹄",
   "intro": "A slow-cooked pork hock makes a magnificent centerpiece for a family meal, and this particular recipe is glorious, with its glossy rock-sugar sauce. The skin and fat become soft and voluptuous, and the meat so tender it slips easily from the bone. You can make the dish in advance and simply reheat and reduce the liquid before you wish to serve it. As you can imagine, it’s wildly rich, and best served with plain white rice or lotus leaf buns (see here). The recipe is based on instructions given to me by two village ladies at the Pig’s Inn in southern Anhui Province, a guest house in a rambling mansion that once belonged to a Huizhou merchant. Like the other grand old houses of the region, it has tall, whitewashed walls with ornately carved lintels fashioned from pale gray stone. Inside there are courtyards, gardens and wood-paneled rooms. When I visited in November, bright red persimmons hung on the bare, dark branches of a tree in the front courtyard like Chinese lanterns.",
@@ -59,5 +60,13 @@
     "If you plan to garnish it, blanch the bok choy in boiling water with a little salt and a dash of cooking oil, then refresh in cold water. Drain well just before using.",
     "Strain the cooking liquid into a wok, turn the heat up high and stir as the liquid reduces. When it is starting to become syrupy, add the hock (discard the ginger, spring onion and spices) and spoon the sauce over it. When you have a dark, glossy pool of sauce that makes the hock look gorgeous and shining, transfer it to a serving dish and spoon over the remains of the sauce. Surround it with a halo of blanched green bok choy, if you wish."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

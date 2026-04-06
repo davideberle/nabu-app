@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "This dish has been a family favorite for a long time. I like to double the recipe and add extra veggies",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": 4
   },
   "ingredients": [
     {
@@ -90,5 +91,10 @@
     "Add peanut butter and mix.",
     "Sprinkle with peanuts and coriander."
   ],
-  "image": "/recipes/saucy-thai-beef-noodles.jpg"
+  "image": "/recipes/saucy-thai-beef-noodles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

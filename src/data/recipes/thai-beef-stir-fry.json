@@ -1,6 +1,6 @@
 {
   "id": "thai-beef-stir-fry",
-  "name": "Thai Beef Stir-fry",
+  "name": "Thai Beef Stir-Fry",
   "source": {
     "cookbook": "Thai Spice Recipes",
     "author": "Various"
@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "A unique peanut sauce complements the colorful combination of tender sirloin, cauliflower, carrots, broccoli and mushrooms. I like to serve it over spaghetti, but fried noodles work well too.",
   "time": {
-    "prep": "40 minutes"
+    "prep": "40 minutes",
+    "total": 10
   },
   "ingredients": [
     {
@@ -89,5 +90,10 @@
     "Reduce heat to medium, then add ground beef (Step 2) and peanut butter. Cook, stirring, until the peanut butter is incorporated.",
     "Serve with pasta and top with peanuts before eating."
   ],
-  "image": "/recipes/thai-beef-stir-fry.jpg"
+  "image": "/recipes/thai-beef-stir-fry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

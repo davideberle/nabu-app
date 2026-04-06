@@ -1,0 +1,71 @@
+{
+  "id": "pappardelle-with-golden-chanterelles-sausage-and-thyme",
+  "name": "Pappardelle with Golden Chanterelles, Sausage, and Thyme",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Chanterelles are probably the most foraged mushrooms in the PNW, and keen eyes spot them in the forest under Douglas firs and western hemlocks. Among the several varieties—white, black, and winter or “yellow feet,” to mention a few—the golden ones have always been my favorite, not just because of their apricot color, which makes them easier to find, but for their delicate texture. It’s a mushroom close to my heart because foraging for finferli (Italian for chanterelles) was a common weekend activity for my family when I was growing up in the wet forests of Piedmont.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fennel pork sausage, casing removed",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "thyme sprigs, stemmed",
+      "amount": "2 to 3"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "golden chanterelles, trimmed",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pappardelle pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated pecorino or Parmigiano",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a large sauté pan over medium heat, warm the olive oil. Add the shallot, garlic, and parsley, and sauté for 2 minutes, or until soft. Add the sausage, using a wooden spoon to break it into pieces. Add the thyme, increase the heat to medium-high, and cook for about 3 minutes. Add the wine and cook it down to let the alcohol evaporate. Add the chanterelles and stir. Season with salt and pepper to taste, reduce the heat to medium, and cook for another 5 to 6 minutes, or until the sausage is cooked through and the mushrooms are crunchy and not mushy.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pappardelle until al dente, drain, and transfer to the sauté pan. Increase the heat to high, and sauté for a minute or so, stirring in some pecorino and pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls, and finish with some more pecorino, oil, pepper, and thyme. Pair with a glass of young Sangiovese and buon appetito!"
+  ],
+  "image": "/recipes/pappardelle-with-golden-chanterelles-sausage-and-thyme.jpg",
+  "time": {
+    "total": 21
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

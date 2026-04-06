@@ -1,9 +1,10 @@
 {
   "id": "hangzhou-blanched-slice-noodles",
-  "name": "Hangzhou “blanched slice” noodles",
+  "name": "Hangzhou “blanched Slice” Noodles",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Noodles"
   },
   "subtitle": "pian’er chuan mian 片儿川面",
   "intro": "Nearly 1,000 years ago, the Song dynasty court was chased south to Hangzhou by barbarian invaders, which is held to explain some of the northern influences, not only in the city’s cooking, but also in the local dialect. Unusually for the southern Chinese, the people of Hangzhou pepper their speech with the burred ‘r’s normally associated with northern tongues, as in the name of this typical Hangzhou noodle dish, pian’er chuan. It’s a simple, satisfying concoction of soupy noodles, pickled greens, pork and bamboo shoot. Originally, it was called “blanched slices” (pian’er cuan) because the thinly sliced pork and bamboo shoot were briefly cooked in boiling water; later, the character for “blanch” (cuan) was replaced by one with a similar sound (chuan). Legend says this dish was inspired by the Song dynasty poet and onetime governor of Hangzhou, Su Dongpo, who famously loved pork but wrote that he would rather renounce it than live in a home without bamboo, that traditional symbol of moral strength and poetic sensibility: “A man may become thin without pork,” he wrote, “But without bamboo, he will become vulgar; and while a thin man may regain his plumpness, there is no cure for the scholar who has lost his refinement.” Rest assured that in eating this dish of pork and bamboo, you can avoid both emaciation and vulgarity. It’s a satisfying, hearty dish, and a meal in itself. Chef Dong Jinmu of the Dragon Well Manor restaurant showed me how to make it. Serves 2.",
@@ -58,5 +59,10 @@
     "Heat the cooking oil or lard in a seasoned wok over a high flame. Add the pork and stir-fry to separate the slices, adding the Shaoxing wine as the meat turns pale. Add the bamboo shoot, stir-fry briefly, then tip in the snow vegetable. Stir-fry until it’s all hot and fragrant, then add the soy sauces and 1⅓ cups (300ml) hot water. Bring to the boil, then turn the heat down low to keep warm.",
     "Fill another pan with boiling water, add the noodles and stir with chopsticks to separate. When they are just cooked, drain the noodles and rinse briefly under the cold tap. Add them to the broth in the wok, with extra hot water if necessary to nearly cover the noodles. Return to the boil and season with salt, along with the lard for extra richness, if desired. Use tongs or chopsticks to transfer the noodles to serving bowls. Spoon over the soupy liquid and the pile the solid ingredients on top. Serve with a sprinkling of spring onions."
   ],
-  "image": "/recipes/hangzhou-blanched-slice-noodles.jpg"
+  "image": "/recipes/hangzhou-blanched-slice-noodles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

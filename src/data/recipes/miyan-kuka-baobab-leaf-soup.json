@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "groundnut oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "onion (finely chopped)",
@@ -18,7 +18,7 @@
     },
     {
       "item": "grated ginger",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "water",
@@ -30,11 +30,11 @@
     },
     {
       "item": "ground/grated dawadawa",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "baobab leaves powder (kuka powder)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "pre-cooked meat alternative of your choice (such as mushrooms, seitan or tofu)",
@@ -51,5 +51,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/miyan-kuka-baobab-leaf-soup.jpg"
+  "image": "/recipes/miyan-kuka-baobab-leaf-soup.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

@@ -1,9 +1,10 @@
 {
   "id": "plain-stir-fried-greens",
-  "name": "Plain stir-fried greens",
+  "name": "Plain Stir-Fried Greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "qing chao qing cai 清炒青菜",
   "intro": "Few recipes are easier than this one, yet it’s so delicious. I’ve included it simply to highlight the use of stir-frying to swiftly cook one of the archetypal Chinese vegetables, one of the great family of brassicas, and to transform it into something not only palatable, but fragrant, juicy and extremely nutritious. You don’t need garlic, or ginger, or anything—just try it. Salt is always added at the end of this kind of dish: if you add it too early, it will draw water out of the leaves and result in a watery dish with stringy vegetables.",
@@ -28,5 +29,10 @@
     "Crisp lettuces such as romaine are wonderful stir-fried like this.",
     "With its deep green, purple-hearted leaves, this vegetable is unmistakable, and can often be found in Chinese food shops. Blanch the leaves in boiling water with a little oil, then stir-fry with finely chopped garlic and salt. The purple of the leaves will give the cooking juices a magnificent magenta color. The vegetable is traditionally eaten around the Dragon Boat Festival in late spring. A handful of fava beans, skinned and then boiled until tender, makes a delightful addition to the dish."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

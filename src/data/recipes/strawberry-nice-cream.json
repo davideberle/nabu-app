@@ -1,0 +1,45 @@
+{
+  "id": "strawberry-nice-cream",
+  "name": "Strawberry Nice Cream",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "servings": "makes 4 ice cream popsicles",
+  "intro": "Nice cream can be made in several ways, the simplest being to just blend bananas and berries. For a fancier presentation, slice the fruit and berries, set them in the ice cream container, and cover the nice cream with a layer of chocolate.",
+  "ingredients": [
+    {
+      "item": "bananas",
+      "amount": "3",
+      "group": "BASIC RECIPE"
+    },
+    {
+      "item": "fresh strawberries, or defrosted if frozen",
+      "amount": "20–25",
+      "group": "BASIC RECIPE"
+    },
+    {
+      "item": "almond butter",
+      "amount": "2 tbsp",
+      "group": "BASIC RECIPE"
+    },
+    {
+      "item": "optional, your choice of sweetener (4 dates, 1 tbsp honey or 1 tbsp maple syrup, for example)",
+      "amount": "",
+      "group": "BASIC RECIPE"
+    }
+  ],
+  "method": [
+    "In a food processor, blend the bananas and strawberries together with the almond butter. Add in your choice of sweetener, if desired. Freeze the mixture in popsicle molds for at least 6 hours."
+  ],
+  "image": "/recipes/strawberry-nice-cream.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

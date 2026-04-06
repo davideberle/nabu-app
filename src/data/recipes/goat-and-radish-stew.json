@@ -1,9 +1,10 @@
 {
   "id": "goat-and-radish-stew",
-  "name": "Goat and radish stew",
+  "name": "Goat and Radish Stew",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "bai tang yang rou 白汤羊肉",
   "intro": "We sat in a drawing room stacked with old paintings and calligraphies. Large picture windows opened onto an orchard and a meadow of grass and wildflowers, red, pink and white. Inside, there was a tea table, a great slab of wood scattered with teapots and bowls—the paraphernalia of the tea-drinking scholar. As we chatted, we sipped delicate, almost transparent tea made from the white tea leaves of Anyi in Zhejiang province. My friend Sansan and I were visiting another friend in Gaochun, a well-preserved old town in southern Jiangsu. After tea, we wandered through the streets at dusk, among the terracotta-painted wooden shop fronts and whitewashed brick walls. This is one of the dishes we had for supper that day: a refreshing soup of goat meat and radish. As you will have gathered from the predominance of pork dishes in this chapter, pork is the principal meat of the Jiangnan region, but goat and beef make occasional appearances. In the last couple of years, goat meat has become more widely available at farmers’ markets, specialist shops and halal butchers, and it has a wonderful, edgy flavor that is perfectly complemented by the pure white radish. I first made this dish at home to mark the new Year of the Goat. Mutton or lamb shanks would work equally well.",
@@ -55,5 +56,13 @@
     "Peel and trim the radish and roll-cut it (see here) into bite-sized pieces. Bring a pan of water to the boil, add the radish and cook for 3 minutes to dispel any pepperiness. Drain. Add the radish to the pan, bring it to the boil and simmer until the radish is tender—about 20 minutes.",
     "Before serving, discard the bone, season with salt, then garnish with the spring onion. Serve with a dip of chilli sauce for the meat."
   ],
-  "image": "/recipes/goat-and-radish-stew.jpg"
+  "image": "/recipes/goat-and-radish-stew.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

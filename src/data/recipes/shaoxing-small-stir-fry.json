@@ -1,9 +1,10 @@
 {
   "id": "shaoxing-small-stir-fry",
-  "name": "Shaoxing “small stir-fry”",
+  "name": "Shaoxing “small Stir-Fry”",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "shao xing xiao chao 绍兴小炒",
   "intro": "On one of my longer visits to Shaoxing, I dined with chef Mao Tianyao at the famous Xianheng Tavern many times; we would share a few dishes with a cup or two of Shaoxing wine and he would dazzle me with his passion and erudition on the subject of Shaoxing food. After a couple of meals I realized that we had abandoned the restaurant menu, and that he was asking the kitchen to rustle up the kinds of simple, healthy and delectable dishes local people ate at home. Many, in classic Shaoxing style, were vegetables cooked with pickles and preserves to give them funky or deeply savory flavors. One of the most amazing was a stir-fry of fresh amaranth greens with young rape shoots that had been cured in a stinky tofu brine. When I asked him to tell me about his own favorite dish, Mao didn’t hesitate: it was a Shaoxing xiao chao, or “small stir-fry,” made with pork, preserved mustard tuber, bamboo shoot and yellow chives, perhaps with some firm tofu or mushrooms added. This everyday dish, he said, was the archetypal dish for a household supper, the equivalent, perhaps, of twice-cooked pork for the Sichuanese. Xiao chao is the term used across Jiangnan to describe a simple stir-fried medley of whatever odds and ends you have in your kitchen, typically including a variety of vegetable ingredients and a little meat. The following recipe is based on the Shaoxing xiao chao we shared that evening.",
@@ -61,5 +62,10 @@
     "Cut the pork into thin slices, and then into slivers. Put them in a bowl, add the wine and soy sauces and mix well. Cut the chives into 2½ in (6cm) lengths. Cut the bamboo shoot into slivers and blanch in boiling water; drain well. Rinse the preserved mustard tuber and cut it into slivers.",
     "Heat the oil in a seasoned wok over a high flame. Add the pork and stir-fry. As soon as the pieces have separated, add the preserved mustard tuber and bamboo shoot and continue to stir-fry until the pork is just cooked and everything is piping hot. Add the stock and stir until it has mostly evaporated. Add the chives and continue to stir until hot and fragrant, then season with salt. Stir in the vinegar, then remove from the wok and serve with a scattering of spring onion greens."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

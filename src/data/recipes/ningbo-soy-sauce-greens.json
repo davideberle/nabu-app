@@ -1,9 +1,10 @@
 {
   "id": "ningbo-soy-sauce-greens",
-  "name": "Ningbo soy sauce greens",
+  "name": "Ningbo Soy Sauce Greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "ning bo kao cai 宁波菜",
   "intro": "At first glance, these sleek, darkened vegetables might not compete for your attention with more glamorous Zhejiang specialities, but they are absolutely scrumptious and juicily aromatic. Fresh greens are blanched, briefly stir-fried and then simmered gently in soy sauce, wine and sugar until the liquid has reduced to a dark, roasty glaze. They’re normally served at room temperature and have a lazy, bittersweet flavor reminiscent of roasted chicory and Italian slow-grilled vegetables. The dish is a speciality of Ningbo, where it’s made with a local variety of mustard green known as tian cai xin, but I’ve followed the practice in nearby Shanghai and used green bok choy. Smaller heads with a greater proportion of dark leaf to fleshy stem are best, if you can find them. I’ve also used the same method with curly kale, which tastes delicious but looks less pretty. Some people add a little blanched, sliced bamboo shoot to the greens. I learned how to make this dish in the kitchens of the Zhuangyuan Lou restaurant in Ningbo, thanks to chef Chen Xiaoliang.",
@@ -51,5 +52,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the spring onions and stir-fry until they smell wonderful. Add the bok choy pieces and stir-fry for a minute or two to clothe them in the oil, then add the whole shiitake mushroom, wine, both soy sauces and sugar and mix well. Bring to the boil, cover and reduce the heat to medium. Simmer gently for 20–30 minutes, stirring occasionally. You will find that a lot of water initially emerges from the bok choy; when this happens, remove the lid and allow it to evaporate. Keep an eye on the wok to make sure the vegetables don’t boil dry.",
     "When the vegetables are sleek, dark and much reduced in volume, and only a little syrupy sauce is left, turn off the heat and stir in the sesame oil. Use chopsticks to pile the bok choy neatly in a serving dish and top with the shiitake mushroom. Allow to cool before serving at room temperature."
   ],
-  "image": "/recipes/ningbo-soy-sauce-greens.jpg"
+  "image": "/recipes/ningbo-soy-sauce-greens.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

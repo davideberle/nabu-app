@@ -1,9 +1,10 @@
 {
   "id": "steamed-sea-bass-with-snow-vegetable",
-  "name": "Steamed sea bass with snow vegetable",
+  "name": "Steamed Sea Bass with Snow Vegetable",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Fish and Seafood"
   },
   "subtitle": "xue cai zheng lu yu 雪菜蒸鲈鱼",
   "intro": "In the past, when the cities of Jiangnan were threaded by canals, and the rivers, lakes and streams all teemed with fish and other creatures, water was the focus of local life. Traders and fisherfolk lived and worked on their boats, farmers gathered underwater crops from their liquid fields, and the rich hired pleasure craft for floating excursions. These days, most of the city canals have been filled and the water-dwellers have moved onto dry land, but in a few places the old way of life lingers. Once, in rural Jiangsu, I met an old fisherman who had spent his whole life on a wooden sampan like his father and grandfather before him. He sat on his boat patiently hooking worms onto his long fishing line. This is a simply gorgeous way to cook a good, fresh fish. The gently sour flavor of the snow vegetable, enriched by a hint of lard or oil, perfectly complements the delicacy of its flesh, and the juices of fish and pickle mingle in the most delicious manner at the bottom of the dish. Like many recipes in this book, this one comes from chef Zhu Yinfeng, who demonstrated it with a Chinese mandarin fish plucked from a nearby lake barely an hour before, and his home-pickled snow vegetable. If you can’t fit a whole fish in your steamer, you can either hold your knife at an angle, cut the fish in half widthways and steam the halves together or, as I’ve done here, curve it into a bowl. If you have a large steamer and would like to try a more professional approach, please see the method on the opposite page. The same seasonings can be used to steam fillets of fish.",
@@ -48,5 +49,13 @@
     "Remove the dish from the steamer and carefully pour the cooking juices into a small bowl. Remove and discard the ginger and spring onion. Scatter the spring onion greens over the fish, and then pour over the cooking juices, which will moisten the top of the fish and make it look most appetizing. Serve.",
     "This method is used mainly in restaurants. Put the fish on your chopping board. Holding your cleaver or knife parallel to the board, cut the flesh away from the top side of the tail, then extend the belly opening so you have one long cut running from head to tail. Open out the fish by pulling apart both sides of the belly and using a heavy knife or cleaver to cut through the little bones along one side of the backbone, without cutting through the flesh: this will enable you to open the fish and lay it flat. Use the same heavy knife or cleaver to make a chop down the center of the underside of the head, so you can open it out too. The two fish halves, attached along one side and placed on your board with the skin facing up, will look like a pair of fish. Proceed as in the main recipe, but reduce the cooking time to 6–8 minutes, until you can push a blunt chopstick easily into the thickest part of the flesh."
   ],
-  "image": "/recipes/steamed-sea-bass-with-snow-vegetable.jpg"
+  "image": "/recipes/steamed-sea-bass-with-snow-vegetable.jpg",
+  "time": {
+    "total": 32
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

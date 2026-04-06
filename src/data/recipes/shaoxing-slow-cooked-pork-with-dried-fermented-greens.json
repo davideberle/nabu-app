@@ -1,9 +1,10 @@
 {
   "id": "shaoxing-slow-cooked-pork-with-dried-fermented-greens",
-  "name": "Shaoxing slow-cooked pork with dried fermented greens",
+  "name": "Shaoxing Slow-Cooked Pork with Dried Fermented Greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "gan cai men rou 干菜焖肉",
   "intro": "Many old canal towns in the Jiangnan region have been spoiled by reckless development, but pockets of Shaoxing still retain their historic charm. In the alleys around Cangqiao street, residents play cards and drink tea on canalside terraces. Little silvery fish lie drying on bamboo mats in the sun. Doorways offer glimpses of local life: a family sitting around a square table with bowls of food, chopsticks in hand; old men chatting in a teahouse near an ancient stone bridge clothed in creepers. On warm days, everywhere in the city’s old streets hangs the scent of mei gan cai (dried fermented greens), the city’s most famous preserve, made by pickling and sun-drying mustard greens. Mei gan cai was originally a poor man’s food, used to bring a savory deliciousness to cheap vegetable ingredients, but these days it is most famously used in a pork belly stew. According to legend, this dish was first cooked in the Ming dynasty by Xu Wei, a poor Shaoxing artist who was given some pork but had no money to spend on seasonings. All he had at home was a clay jar of mei gan cai, so he cooked the pork with some of it, and the result was so bewitchingly fragrant that all his neighbors asked him what he was eating. In Shaoxing restaurants, the cooked meat and fermented greens are normally packed into a bowl and steamed before being turned out, dome-like, onto a serving dish, but you can simply stew them together if you prefer.",
@@ -71,5 +72,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry briefly until fragrant. Add the meat and stir-fry for a few minutes until fragrant and slightly tinged with gold. Add the stock or water, along with the fermented greens, soy sauces, sugar, wine and spices. Bring to the boil over a high flame, then cover and cook very gently for 2 hours. Before serving, turn the heat up high to reduce the sauce, seasoning with salt to taste if you need it (you probably won’t). Remove the ginger and spring onion before serving.",
     "An optional final step is to use chopsticks to pluck the pieces of pork out of the stew and place them, skin-side down, in the base of a bowl that will fit into your steamer. Fill the sides and top of the bowl with the fermented greens. Steam over a high flame for about 20 minutes to heat through, then turn out onto a dish to serve."
   ],
-  "image": "/recipes/shaoxing-slow-cooked-pork-with-dried-fermented-greens.jpg"
+  "image": "/recipes/shaoxing-slow-cooked-pork-with-dried-fermented-greens.jpg",
+  "time": {
+    "total": 145
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

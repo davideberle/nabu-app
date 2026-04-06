@@ -1,0 +1,69 @@
+{
+  "id": "fusilli-with-zucchini-lemon-mint-toasted-almonds-and-fried-zucchini-blossoms",
+  "name": "Fusilli with Zucchini, Lemon, Mint, Toasted Almonds, and Fried Zucchini Blossoms",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Zucchini, lemons, mint, almonds, and zucchini blossoms—all ingredients reminiscent of summer. Zucchini and their blossoms absolutely explode off the vine in Seattle neighborhoods and community gardens during the summer months. In raised boxes, front yards, P-Patches, and parking strips, they are everywhere. And it’s no wonder: it’s one of the easiest veggies to grow in the PNW, and this recipe makes great use of them.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "clove garlic, gently crushed",
+      "amount": "1"
+    },
+    {
+      "item": "zucchini, cut into ½-inch cubes",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "spearmint leaves, finely chopped",
+      "amount": "7 to 8"
+    },
+    {
+      "item": "Zest of 1 medium organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "crushed toasted almonds",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "fried zucchini blossoms (recipe follows)",
+      "amount": "8 to 12"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the garlic and sauté for 1 minute, stirring to avoid burning.",
+    "Add the zucchini, and cook, stirring occasionally, for 3 to 4 minutes.",
+    "Season with salt and pepper to taste, add the mint and lemon zest, and cook for another 2 minutes. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the fusilli until al dente, drain, and transfer to the skillet. Add the Parmigiano and sauté quickly for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls and finish with the almonds and zucchini blossoms. Enjoy such a fresh summer pasta dish with a cold glass of white wine."
+  ],
+  "image": "/recipes/fusilli-with-zucchini-lemon-mint-toasted-almonds-and-fried-zucchini-blossoms.jpg",
+  "time": {
+    "total": 19
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

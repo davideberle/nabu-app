@@ -1,0 +1,58 @@
+{
+  "id": "superfood-chocolate-cake",
+  "name": "Superfood Chocolate Cake",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 1 large cake or 15 individual pieces",
+  "intro": "So, who doesn’t enjoy a piece of dark chocolate in the afternoon? Or after lunch, or, well, at any time of the day? You can turn your square of chocolate into a super boost by adding in superfoods to it. It becomes total deliciousness that provides you with good fats, wholesome sweetness, and boosting powders rich in antioxidants.",
+  "ingredients": [
+    {
+      "item": "or 3¼ oz (90 g) cacao butter",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "Brazil nuts",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "hemp hearts",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "licorice powder",
+      "amount": "tiny pinch of"
+    }
+  ],
+  "method": [
+    "Break the cacao butter into smaller chunks and melt it over a lukewarm water bath. Chop the Brazil nuts coarsely. Place all the ingredients (except the cacao butter) in a bowl and mix well. Stir in the liquid cacao butter. Pour the mixture into a small baking pan lined with parchment paper or into muffin cups, and let the mixture set."
+  ],
+  "image": "/recipes/superfood-chocolate-cake.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ziti-with-potatoes-pancetta-and-smoked-scamorza",
+  "name": "Ziti with Potatoes, Pancetta, and Smoked Scamorza",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "This classic pasta dish is a tribute to Naples. It is traditionally served with pasta mista (a mixture of different types of short pasta). Beyond the terrific combination of ingredients, its preparation is unusual because the pasta is cooked along with the rest of the dish and not separately in a pot of boiling salted water. It’s basically a pasta risottata, a pasta cooked like a risotto.\n\nFor me, what makes this a specifically PNW pasta is using the amazing scamorza affumicata from Twin Sisters Creamery in Whatcom County, in northwestern Washington near the Canadian border. This recipe calls for any smoked provola or scamorza, so feel free to pick up one from your favorite local creamery.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pancetta",
+      "amount": "3 to 4 ounces"
+    },
+    {
+      "item": "medium Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "sprigs rosemary",
+      "amount": "2"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "smoked scamorza or provola, shredded",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano or Grana Padano",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium-high heat, warm the olive oil. Add the pancetta and sauté for a couple of minutes, or until crispy.",
+    "Add the potatoes and rosemary and cook for 2 minutes. Stir in 1 cup of water. Reduce the heat to medium-low and add the pasta. Stir constantly, as if you are making risotto, adding more water, a little bit at a time as needed, until both the pasta and potatoes are cooked through. It should be a loose consistency, not too soupy or too thick. Season with salt and pepper to taste. Remove the rosemary sprigs from the skillet.",
+    "Turn off the heat, energetically stir in the smoked scamorza and Parmigiano. Serve hot and finish with more pepper."
+  ],
+  "tips": [
+    "Bacon can be used instead of pancetta.",
+    "This recipe usually requires about 2 cups of water, but the exact amount can vary since each pasta cooks differently.",
+    "Use the cooking time on the pasta package as a guideline for how long it will take."
+  ],
+  "image": "/recipes/ziti-with-potatoes-pancetta-and-smoked-scamorza.jpg",
+  "time": {
+    "total": 17
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "id": "thai-shrimp-stir-fry",
-  "name": "Thai Shrimp Stir-fry",
+  "name": "Thai Shrimp Stir-Fry",
   "source": {
     "cookbook": "Thai Spice Recipes",
     "author": "Various"
@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "Elevate your culinary experience with this vibrant dish that combines the flavors of Thai cuisine. The delightful combination of red pepper, snow peas, and shrimp is enhanced by the rich and flavorful peanut sauce. A touch of ginger and red pepper flakes adds an extra kick of deliciousness. To complete the dish, serve this colorful main course over a bed of pasta, creating a fusion of Thai and Italian influences that will surely impress your taste buds.",
   "time": {
-    "prep": "25 minutes"
+    "prep": "25 minutes",
+    "total": 3
   },
   "ingredients": [
     {
@@ -76,5 +77,10 @@
     "Return red pepper mixture (Step 2) to the wok.",
     "Serve with fettuccine."
   ],
-  "image": "/recipes/thai-shrimp-stir-fry.jpg"
+  "image": "/recipes/thai-shrimp-stir-fry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

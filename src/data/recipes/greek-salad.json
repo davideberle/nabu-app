@@ -1,0 +1,65 @@
+{
+  "id": "greek-salad",
+  "name": "Greek Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "medium tomatoes, cored and cut into wedges",
+      "amount": "6"
+    },
+    {
+      "item": "cucumbers, peeled and sliced 1/2 inch thick",
+      "amount": "6"
+    },
+    {
+      "item": "feta cheese, crumbled (about 1 1/2 cups)",
+      "amount": "1/2 lb"
+    },
+    {
+      "item": "black olives, pitted (6 ounces)",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra−virgin olive oil",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "chopped oregano",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    },
+    {
+      "item": "romaine lettuce, torn",
+      "amount": "4"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "In a small bowl, whisk together the lemon juice, olive oil, vinegar, and oregano. Season with salt and pepper. In a large bowl, combine the cucumbers, cheese, romaine, tomatoes, and olives. Toss the salad with the dressing and serve at once.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, whisk together the lemon juice, olive oil, vinegar, and oregano. Season with salt and pepper. In a large bowl, combine the cucumbers, cheese, romaine, tomatoes, and olives. Toss the salad with the dressing and serve at once."
+  ],
+  "image": "/recipes/greek-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

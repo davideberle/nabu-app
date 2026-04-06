@@ -1,9 +1,10 @@
 {
   "id": "wheat-gluten-with-mixed-vegetables",
-  "name": "Wheat gluten with mixed vegetables",
+  "name": "Wheat Gluten with Mixed Vegetables",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "mian jin chao su 面筋炒素",
   "intro": "This colorful stir-fry is based on one I learned from my friends Jason Li and He Yuxiu. You can vary the vegetables as you please; add a few slices of waxy potato, Chinese yam or shiitake mushroom, a handful of peas or green soybeans, or some leafy greens.",
@@ -74,5 +75,13 @@
     "Heat the cooking oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry briefly until you can smell them. Add the carrot and stir a few times. Tip in both types of gluten puff and the wood-ears and stir-fry until piping hot. Add the stock or water, soy sauce and sugar and season with salt. Cover and cook over a medium flame for 1–2 minutes.",
     "Stir in the red and green pepper. Remove the lid and turn the heat up high to reduce the liquid; alternatively, if using, give the starch mixture a stir and mix in just enough to thicken it to a sauce that clings to the vegetables. Off the heat, stir in the sesame oil and serve."
   ],
-  "image": "/recipes/wheat-gluten-with-mixed-vegetables.jpg"
+  "image": "/recipes/wheat-gluten-with-mixed-vegetables.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

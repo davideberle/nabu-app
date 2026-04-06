@@ -3,45 +3,70 @@
   "name": "Greek Farmers’ Breakfast Porridge",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:1 hour 10 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "total": 115
+  },
   "ingredients": [
     {
-      "item": "bulgur wheat or whole wheat kernels (see headnote)",
-      "amount": "2 cups (280 g)"
+      "item": "(280 g) bulgur wheat or whole wheat kernels (see headnote)",
+      "amount": "2 cups"
     },
     {
       "item": "cinnamon stick",
       "amount": "1"
     },
     {
-      "item": "milk",
-      "amount": "2 cups (480 ml)"
+      "item": "(480 ml) milk",
+      "amount": "2 cups"
     },
     {
       "item": "Pinch of salt",
       "amount": ""
     },
     {
-      "item": "to 6 tablespoons (60 to 90 ml) Greek honey",
-      "amount": "4"
+      "item": "(60 to 90 ml) Greek honey",
+      "amount": "4 to 6 tbsp"
     },
     {
-      "item": "finely chopped fresh parsley",
-      "amount": "½ cup (25 g)"
+      "item": "(25 g) finely chopped fresh parsley",
+      "amount": "½ cup"
     },
     {
-      "item": "finely chopped fresh mint",
-      "amount": "½ cup (25 g)"
+      "item": "(25 g) finely chopped fresh mint",
+      "amount": "½ cup"
     },
     {
-      "item": "seedless raisins",
-      "amount": "⅔ cup (95 g)"
+      "item": "cup (95 g) seedless raisins",
+      "amount": ""
     },
     {
-      "item": "pomegranate seeds",
-      "amount": "1½ cups (350 ml)"
+      "item": "(350 ml) pomegranate seeds",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "Ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "If using whole wheat kernels, rinse them, put them in a bowl with water to cover, and soak them overnight. Drain.",
+      "amount": ""
+    },
+    {
+      "item": "Place the bulgur or whole wheat kernels in a medium saucepan with 6 cups (1.4 L) water. Bring to a simmer over medium heat and add the cinnamon stick and milk. Reduce the heat to low and simmer, stirring, until creamy, about 10 minutes for bulgur and 45 minutes to 1 hour for whole wheat kernels.",
+      "amount": ""
+    },
+    {
+      "item": "Season with the salt and honey, using more or less according to your taste. Just before removing from the heat, stir in the parsley, mint, raisins, and pomegranate seeds. Remove the cinnamon stick.",
+      "amount": ""
+    },
+    {
+      "item": "Serve in shallow bowls, sprinkled with cinnamon.",
+      "amount": ""
     }
   ],
   "method": [
@@ -50,5 +75,10 @@
     "Season with the salt and honey, using more or less according to your taste. Just before removing from the heat, stir in the parsley, mint, raisins, and pomegranate seeds. Remove the cinnamon stick.",
     "Serve in shallow bowls, sprinkled with cinnamon."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,0 +1,80 @@
+{
+  "id": "cg-chicken-pasanda",
+  "name": "Chicken Pasanda",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "The Classic British Curries"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Authentic Indian pasandas can be spicy or mild, sweet and/or savoury. What makes them ‘pasanda’ has nothing to do with the sauces, which can vary greatly, but with the use of flattened meat, tenderized with a meat mallet before being added to the pan.",
+  "ingredients": [
+    {
+      "item": "almond flakes",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "coconut flour",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground almonds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sultanas",
+      "amount": "About 20"
+    },
+    {
+      "item": "base curry sauce",
+      "amount": "500ml"
+    },
+    {
+      "item": "block coconut, cut into small pieces",
+      "amount": "100g"
+    },
+    {
+      "item": "skinless, boneless chicken breast, cut into thin slices on the diagonal",
+      "amount": "800g"
+    },
+    {
+      "item": "A splash of red wine (125ml/½ cup), (optional)",
+      "amount": ""
+    },
+    {
+      "item": "single (light) cream",
+      "amount": "100ml"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Toast the almond flakes in a dry pan over a medium-high heat until nicely browned. Transfer to a plate and set aside.",
+    "Add the oil to the pan. When nice and bubbly, add the coconut flour, ground almonds and sugar. Stir this around for about 30 seconds then add the sultanas, base curry sauce and block coconut pieces. When the sauce begins to simmer, stir in the chicken.",
+    "Let this simmer for about 5 minutes until the chicken is cooked through and the sauce has cooked to your preferred consistency. If the sauce caramelizes to the sides, stir it back into the sauce. At this time, you could add a splash of red wine to simmer in the sauce until the alcohol cooks out.",
+    "To serve, check for seasoning, adding salt, more coconut and sugar if desired, to taste. Stir in the cream and sprinkle with the garam masala and toasted almond flakes."
+  ],
+  "image": "/recipes/curry-guy-cg-chicken-pasanda.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 5
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "sour-cherry-preserves",
+  "name": "Sour Cherry Preserves",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "See original cookbook",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash and pit cherries, reserving pits in a small bowl.",
+    "Add water to the pits and set aside.",
+    "Put 1 cup sugar in a medium-sized saucepan.",
+    "Place a layer of cherries on top, and then ½ cup sugar, another layer of cherries, and remaining sugar.",
+    "Strain water from cherry pits, and add to the cherries.",
+    "Let mixture stand for 1 hour, then bring to a boil and simmer for 30 minutes, or until syrup thickens to consistency of honey.",
+    "Stir gently at intervals while cooking and skim off any scum that rises to top.",
+    "Add lemon juice at end of cooking time to prevent syrup from crystallizing.",
+    "Spoon into sterilized jars, cool, and refrigerate."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

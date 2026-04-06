@@ -1,0 +1,59 @@
+{
+  "id": "tagliolini-with-salmon-roe-caviar-lemon-and-sichuan-pepper",
+  "name": "Tagliolini with Salmon Roe Caviar, Lemon, and Sichuan Pepper",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Some dishes have one main ingredient that takes center stage, keeping the others in the back like the chorus in an opera performance. In this recipe, Alaskan caviar is the soprano, and the lemon, butter, thyme, and Sichuan pepper are working to make those succulent bright red-orange eggs shine. Salmon roe are unique, with both a briny and sweet taste. Like many luscious ingredients, the best way to prepare them is to touch them as little as possible.",
+  "ingredients": [
+    {
+      "item": "salted artisanal butter",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "small shallot, minced",
+      "amount": "⅓"
+    },
+    {
+      "item": "sprig thyme, stemmed and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Zest of 1 medium organic lemon",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt and freshly ground white Sichuan pepper",
+      "amount": ""
+    },
+    {
+      "item": "tagliolini pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "or ⅓ ounce salmon roe caviar",
+      "amount": "10 grams"
+    },
+    {
+      "item": "Extra-virgin olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium-low heat, warm the butter for a minute. Add the shallot, thyme, and half the lemon zest, and sauté for 2 to 3 minutes. Season with salt and Sichuan pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the tagliolini until al dente. Scoop a bit of the pasta water into the skillet and stir the sauce. Drain the pasta and transfer it to the skillet. Sauté quickly, adding more pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the caviar, the remaining lemon zest, a drizzle of oil, and more Sichuan pepper."
+  ],
+  "image": "/recipes/tagliolini-with-salmon-roe-caviar-lemon-and-sichuan-pepper.jpg",
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

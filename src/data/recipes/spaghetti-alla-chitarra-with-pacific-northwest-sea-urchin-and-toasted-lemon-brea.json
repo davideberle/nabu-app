@@ -1,0 +1,64 @@
+{
+  "id": "spaghetti-alla-chitarra-with-pacific-northwest-sea-urchin-and-toasted-lemon-brea",
+  "name": "Spaghetti Alla Chitarra with Pacific Northwest Sea Urchin and Toasted Lemon Bread Crumbs",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "If I had to pick a last meal, this would probably be it. Spaghetti ai ricci di mare evokes the clean ocean scent: sweet and crisp at the same time. Sea urchin is the quintessential sensual fruit of the sea—the parts that we eat are the gonads of both male and female urchins! They offer up a flavor reminiscent of my childhood, when dive masters and a few adventurous family friends would dive to the bottom of the Mediterranean Sea and return with these gifts from Mother Nature, ready to be opened and cooked with spaghetti. In the Pacific Northwest, sea urchins are caught by commercial dive masters in December and January when the cold temperatures of the water allow the urchins to spawn. These gorgeous Pacific purple sea urchins with pasta is something everyone should try at least once in their lives.",
+  "ingredients": [
+    {
+      "item": "slices rustic bread",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "medium organic lemon",
+      "amount": "1"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "Calabrian chili pepper",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic",
+      "amount": "2"
+    },
+    {
+      "item": "sea urchin roe",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "spaghetti alla Chitarra pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F. On a baking sheet, place the bread, and drizzle 1 tablespoon of the olive oil over it. Bake for about 20 minutes. Remove the bread from the oven and let cool to room temperature. Put the bread slices in a blender. Using a microplane, zest the lemon into the blender. Pulse until you obtain a fine consistency, then set aside.",
+    "In a medium skillet over medium-low heat, warm the remaining 3 tablespoons olive oil. Add three-quarters of the parsley, the chili pepper, and garlic, and cook for about 2 minutes, stirring to avoid burning. Increase the heat to medium and add half the roe, stirring for 1 minute. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the spaghetti until al dente, drain, and transfer to the skillet, adding some of the pasta water as necessary to bind the ingredients. Add the remaining parsley and sauté for a minute. Season with salt and pepper to taste.",
+    "Plate in four bowls. Finish with the bread crumbs, the remaining roe, and a drizzle of oil. Eat while hot."
+  ],
+  "image": "/recipes/spaghetti-alla-chitarra-with-pacific-northwest-sea-urchin-and-toasted-lemon-brea.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

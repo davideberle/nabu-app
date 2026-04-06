@@ -1,0 +1,47 @@
+{
+  "id": "cg-red-onion-chutney",
+  "name": "RED Onion Chutney",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "this makes enough for 4–6 people as an accompaniment. you can easily double or triple the recipe",
+  "intro": "This onion chutney is about as easy as it gets. It’s too simple for words, but then who said that delicious Indian dinners had to be complicated? Find yourself a nice, fresh red onion and it will do all the work for you. This is a very popular accompaniment, often served with papadams or piled high on kebabs and naans. It is essential to serve it very cold. See photograph.",
+  "ingredients": [
+    {
+      "item": "large red onion, halved and finely sliced",
+      "amount": "1"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    },
+    {
+      "item": "of sugar (optional)",
+      "amount": "Pinch"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "fresh green chilli, finely chopped (optional)",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Put the sliced onion in a bowl of cold water with ice cubes added, and put in the fridge for about an hour. Once good and cold, drain and pat the slices dry with a clean cloth.",
+    "Season with salt, and sugar if using, and squeeze the lemon juice over the top. For a spicier chutney, mix in the finely chopped chilli. Serve very cold right from the fridge."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  }
+}

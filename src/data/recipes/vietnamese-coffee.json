@@ -1,10 +1,10 @@
 {
   "id": "vietnamese-coffee",
-  "name": "VIETNAMESE coffee",
+  "name": "Vietnamese Coffee",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Sweets and Coffee"
   },
   "servings": "makes a brimming ½ cup",
   "time": "TAKES 5 MINUTES",
@@ -22,7 +22,7 @@
   "method": [
     "Assemble the Aeropress with a metal or paper filter in place and set over a coffee cup. Add the ground coffee, then shake the chamber to distribute. Pour in 3 tablespoons of the hot water to moisten and bloom the coffee. After the water passes through, about 30 seconds, add the remaining ½ cup hot water. Stir five times, then wait for the water to pass through until half of the original volume remains, 30 to 90 seconds. Slowly plunge to express the remaining coffee before serving."
   ],
-  "image": null,
+  "image": "/recipes/vietnamese-coffee.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

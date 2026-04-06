@@ -1,0 +1,38 @@
+{
+  "id": "cinnacino",
+  "name": "Cinnacino",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 1 cup",
+  "intro": "Cinnamon luxury! Cinnacino is like a cappuccino, with cinnamon to make you feel warm if you eat a raw-food meal. It helps to stabilize blood sugar and will also stand in for a sweet treat after the meal. You can make it with either warm or cold water. Here, I use white almond butter or unsalted cashew butter.",
+  "ingredients": [
+    {
+      "item": "water",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "nut butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "3 tsp"
+    }
+  ],
+  "method": [
+    "Heat up the water if you want a warm Cinnacino. Mix water, nut butter, coconut palm sugar, and cinnamon in a blender."
+  ],
+  "image": "/recipes/cinnacino.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

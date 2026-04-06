@@ -1,0 +1,100 @@
+{
+  "id": "cg-channa-dhal",
+  "name": "Channa Dhal",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Popular Vegetable and Side Dishes"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "This recipe was inspired by a visit to Prashad in Bradford. The head chef Minal Patel showed me her recipe for channa dhal and it was amazing. She used four different types of lentils, cooked separately then blended together with all the other ingredients.",
+  "ingredients": [
+    {
+      "item": "channa dhal, soaked in water for 30 minutes",
+      "amount": "300g"
+    },
+    {
+      "item": "tbsp rapeseed oil or seasoned oil",
+      "amount": "About 1"
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "brown mustard seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "of asafoetida",
+      "amount": "Pinch"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic cloves, cut into slivers",
+      "amount": "5"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh green bullet chillies, to taste, finely chopped",
+      "amount": "1–5"
+    },
+    {
+      "item": "tomatoes, roughly chopped",
+      "amount": "3"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Chopped fresh coriander (cilantro), to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Drain the lentils and rinse in several changes of water, then place in a saucepan with 700ml (3 cups) fresh water. Bring to a boil and drizzle the oil on top to stop the water from foaming over the top.",
+    "Reduce the heat and simmer until the lentils are soft but with just a little bite to them, 45–60 minutes, skimming off any foam that does form. Do not strain; allow the water to reduce down.",
+    "Meanwhile, in a separate pan, melt the ghee over a high heat. When it is visibly very hot, toss in the mustard seeds. They will begin to pop. Reduce the heat to medium-high and add the cumin seeds and asafoetida. Temper in the oil for about 30 seconds and then add the turmeric and onion and fry until soft and translucent, 3–5 minutes should do the job. Stir in the slivered garlic, garlic and ginger paste and chillies, and cook, stirring continuously, for another 30 seconds.",
+    "Returning to the dhal, reduce the heat to medium and stir in the chopped tomatoes, coriander and cumin, and bring to a happy simmer. Keep warm.",
+    "You can leave the dhal as it is once cooked, or whisk or blend until creamy. Stir the onion and ghee mixture into the lentils and sprinkle with garam masala. To serve, add salt to taste and top with a little chopped coriander (cilantro)."
+  ],
+  "image": "/recipes/curry-guy-cg-channa-dhal.jpg",
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  },
+  "time": {
+    "total": 65
+  }
+}

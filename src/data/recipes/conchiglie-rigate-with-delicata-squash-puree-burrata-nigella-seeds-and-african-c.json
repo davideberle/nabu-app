@@ -1,0 +1,72 @@
+{
+  "id": "conchiglie-rigate-with-delicata-squash-puree-burrata-nigella-seeds-and-african-c",
+  "name": "Conchiglie Rigate with Delicata Squash Puree, Burrata, Nigella Seeds, and African Cayenne",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "When autumn arrives and you crave pasta but also want a satisfying, comforting soup using the colorful produce from the farmers’ market, this is your recipe. It combines the sweetness of the delicata squash and burrata, the heat of the African cayenne, and the crunchiness of the nigella seeds.",
+  "ingredients": [
+    {
+      "item": "medium delicata squashes, halved lengthwise and seeded",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "nutmeg",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "conchiglie rigate pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(8-ounce) burrata",
+      "amount": "2"
+    },
+    {
+      "item": "toasted nigella seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "African cayenne",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F. On a baking sheet, place the squash, drizzle with the olive oil, add the water, and season with salt and pepper to taste. Bake for 45 minutes, or until fork-tender. Remove from the oven and let cool.",
+    "When cool enough to handle, spoon all the squash pulp into a blender, trying to remove as much skin as you can. Add half the Parmigiano and the nutmeg, and blend on low speed until creamy. Transfer to a medium-large skillet.",
+    "Meanwhile, in a large pot of boiling salted water, cook the conchiglie rigate until al dente, drain, and transfer to the skillet. Place over medium-high heat, add the butter, and quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Top with the remaining ¼ cup Parmigiano, half a burrata each, the nigella seeds, and the African cayenne. Serve hot."
+  ],
+  "image": "/recipes/conchiglie-rigate-with-delicata-squash-puree-burrata-nigella-seeds-and-african-c.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

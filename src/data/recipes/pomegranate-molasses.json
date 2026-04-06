@@ -1,10 +1,10 @@
 {
   "id": "pomegranate-molasses",
-  "name": "POMEGRANATE molasses",
+  "name": "Pomegranate Molasses",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes a scant ½ cup",
   "time": "TAKES 30 MINUTES, PLUS ABOUT 1 HOUR TO COOL",
@@ -29,7 +29,7 @@
     "Regardless of your cooking method, let the hot syrup cool for 15 minutes, then transfer to a glass jar and let cool completely, uncovered, to further concentrate and thicken. Taste the molasses, and if a tart edge is needed, add more lemon juice, ½ teaspoon at a time, whisking or stirring well to combine.",
     "Store the molasses, refrigerated, for up to 6 months. If it firms up, warm it to liquify before using."
   ],
-  "image": null,
+  "image": "/recipes/pomegranate-molasses.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

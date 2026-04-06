@@ -1,9 +1,10 @@
 {
   "id": "stir-fried-potato-slivers-with-spring-onion",
-  "name": "Stir-fried potato slivers with spring onion",
+  "name": "Stir-Fried Potato Slivers with Spring Onion",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "cong you tu dou si 葱油土豆丝",
   "intro": "A Shaoxing rickshaw driver once told me he had subsisted mainly on potatoes during his rural childhood because his family was so extremely poor. “Tian a! (Heavens!),” he said when I told him that many of my own compatriots actually regarded them as a delicious treat and even a staple food. Although the Chinese don’t hold potatoes in the same esteem as my own countrymen, they do have several fine ways of cooking them. This recipe, in which potatoes are simply stir-fried with spring onions and salt, is unexpectedly tasty, and makes a fine accompaniment to rice with another dish or two. I’ve included it in this collection partly in homage to Mao Cailan, a villager in Zhejiang province who cooked it as part of a radiantly beautiful farmhouse lunch I enjoyed several years ago.",
@@ -29,5 +30,10 @@
     "Peel the potatoes. Cut them into ⅛ in (3–4mm) slices, then into ⅛ in (3–4mm) slivers. If not cooking immediately, cover them in lightly salted cold water until needed.",
     "Heat the oil in a seasoned wok over a high flame. Add the potatoes and stir-fry for a few minutes until just cooked but still a little crisp. Season with salt. Add the spring onions and stir to give them a lick of heat, then serve."
   ],
-  "image": "/recipes/stir-fried-potato-slivers-with-spring-onion.jpg"
+  "image": "/recipes/stir-fried-potato-slivers-with-spring-onion.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

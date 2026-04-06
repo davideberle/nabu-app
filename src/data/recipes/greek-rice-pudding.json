@@ -1,0 +1,100 @@
+{
+  "id": "greek-rice-pudding",
+  "name": "Greek Rice Pudding",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 7",
+  "time": {
+    "prep": 15,
+    "cook": 20,
+    "total": 35
+  },
+  "ingredients": [
+    {
+      "item": "short grain rice",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "cinnamon stick",
+      "amount": "1"
+    },
+    {
+      "item": "milk",
+      "amount": "6 cups"
+    },
+    {
+      "item": "1/2 tablespoons cornstarch mixed with 2 tablespoons milk",
+      "amount": "1"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "Zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "A grating of fresh nutmeg",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Ground cinnamon (for garnish)",
+      "amount": ""
+    },
+    {
+      "item": "Combine water, rice and cinnamon stick in a saucepan and bring to a boil.",
+      "amount": ""
+    },
+    {
+      "item": "Lower the heat and simmer covered for 16 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Add the sugar, milk and cornstarch mixture to the pan.",
+      "amount": ""
+    },
+    {
+      "item": "Increase the heat to moderate and constantly stir 16 minutes, until the mixture thickens.",
+      "amount": ""
+    },
+    {
+      "item": "Add vanilla extract, lemon zest, and nutmeg and stir to combine.",
+      "amount": ""
+    },
+    {
+      "item": "Spoon into individual glasses or serving bowls and refrigerate for at least 3 hours.",
+      "amount": ""
+    },
+    {
+      "item": "Dust with a little cinnamon before serving.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine water, rice and cinnamon stick in a saucepan and bring to a boil.",
+    "Lower the heat and simmer covered for 16 minutes.",
+    "Add the sugar, milk and cornstarch mixture to the pan.",
+    "Increase the heat to moderate and constantly stir 16 minutes, until the mixture thickens.",
+    "Add vanilla extract, lemon zest, and nutmeg and stir to combine.",
+    "Spoon into individual glasses or serving bowls and refrigerate for at least 3 hours.",
+    "Dust with a little cinnamon before serving."
+  ],
+  "image": "/recipes/greek-rice-pudding.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

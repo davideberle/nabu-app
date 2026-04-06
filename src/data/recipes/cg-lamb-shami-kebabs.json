@@ -1,0 +1,80 @@
+{
+  "id": "cg-lamb-shami-kebabs",
+  "name": "Lamb Shami Kebabs",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Starters"
+  },
+  "servings": "serves 6 or more as part of a multi-course meal",
+  "intro": "When you bite into these shami kebabs, they simply melt in your mouth. Crisp on the exterior and fall-apart tender inside, I can’t get enough of them. Although I use lamb for this recipe, mutton is a popular alternative. If you’ve got the bone from the shoulder, simmer it with the meat for even more fantastic flavour.",
+  "ingredients": [
+    {
+      "item": "lamb shoulder, roughly chopped and trimmed of excess fat",
+      "amount": "1kg"
+    },
+    {
+      "item": "chana dhal, rinsed and soaked for 30 minutes",
+      "amount": "150g"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Kashmiri dried red chillies",
+      "amount": "3"
+    },
+    {
+      "item": "onion, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "of coriander (cilantro)",
+      "amount": "Small bunch"
+    },
+    {
+      "item": "chopped mint leaves",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "green bird’s-eye chillies, or to taste",
+      "amount": "2"
+    },
+    {
+      "item": "Rapeseed oil, for shallow-frying",
+      "amount": ""
+    },
+    {
+      "item": "large eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the lamb in a large saucepan, add water to cover and bring to the boil, skimming off the foam that rises to the top. Add the chana dhal, garlic and ginger paste, dried chillies, onion and mixed powder.",
+    "Cover and simmer for about an hour until the water evaporates and the meat is fork tender, stirring in the garam masala after 45 minutes. Watch the pan carefully so that the dhal doesn’t scorch on the bottom, adding more water if required.",
+    "Allow to cool, then transfer the mixture to a food processor with the fresh coriander (cilantro), mint and chillies. Blend until fine, with the consistency of thick clay. Add salt to taste and form into patties. This can all be done well ahead of serving.",
+    "When ready to fry, heat enough oil for shallow-frying in a large frying pan. Brush both sides of each patty with the beaten egg, place in the hot oil and cook until browned, about 1 minute per side. Remove from the oil to a plate lined with kitchen paper."
+  ],
+  "image": "/recipes/curry-guy-cg-lamb-shami-kebabs.jpg",
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  },
+  "time": {
+    "total": 45
+  }
+}

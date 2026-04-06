@@ -1,0 +1,90 @@
+{
+  "id": "cg-pre-cooked-stewed-potatoes",
+  "name": "Pre-Cooked Stewed Potatoes",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes enough for 4 servings*",
+  "intro": "This pre-cooked potato dish can be eaten on its own or used in other British Indian restaurant-style dishes. Serve it as is and it could be a delicious, authentic style Bombay aloo, in which case I recommend cutting the potato cubes smaller (there is also a BIR version of Bombay Aloo) in which you can use these pre-cooked potatoes. Be sure to cook the potatoes until they are soft. Nobody likes an 80% cooked, hard potato.",
+  "ingredients": [
+    {
+      "item": "rapeseed or seasoned oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ghee",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "brown mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "7.5cm (3in)"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "5"
+    },
+    {
+      "item": "large onions, finely sliced",
+      "amount": "3"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tin (2 cups) chopped tomatoes",
+      "amount": "1 x 400g"
+    },
+    {
+      "item": "Kashmiri mild chilli powder, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "potatoes, peeled and each cut into 3",
+      "amount": "500g"
+    },
+    {
+      "item": "Spice stock or water",
+      "amount": "650ml"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil and ghee over a high heat in a large saucepan then throw in the mustard seeds. When they begin to pop, reduce the heat to medium high and toss in the cumin seeds, cinnamon stick and cardamom pods, and temper in the oil for a further 30 seconds. Stir in the onions and fry for about 5 minutes until soft and translucent, stirring regularly, then add the garlic and ginger paste and let it sizzle in the oil for about 1 minute. Tip in the tomatoes, chilli powder and turmeric, and stir it all up nicely.",
+    "Now add the potato pieces and cover with the spice stock or water. Cover and simmer until the potatoes are soft and cooked through, about 30 minutes. Sprinkle with the garam masala and salt and pepper to taste, and give it all a good stir. Serve the potatoes as they are immediately or remove the potato pieces and strain the stock for use in your curries. This will keep for at least 3 days in the fridge and can also be frozen. The strained cooking stock adds a nice flavour to vegetarian curries.",
+    "TIP: If serving this as a dish on its own, you might like to spice it up a bit by adding chilli powder and/or chopped green chillies to taste. Garnish with chopped fresh coriander (cilantro)."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  },
+  "time": {
+    "total": 35
+  }
+}

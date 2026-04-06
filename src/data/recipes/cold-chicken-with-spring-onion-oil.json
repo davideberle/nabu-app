@@ -1,9 +1,10 @@
 {
   "id": "cold-chicken-with-spring-onion-oil",
-  "name": "Cold chicken with spring onion oil",
+  "name": "Cold Chicken with Spring Onion Oil",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "cong you ji 葱油鸡",
   "intro": "This understated, refreshing dish is popular in Shanghai, where it is made with the small, yellow-skinned local chicken, which is poached whole, chopped on the bone and then dressed in an aromatic oil speckled with the greens of spring onion. I’m suggesting boned chicken legs, but if you prefer to use breasts, or indeed a whole chicken, please go ahead. As with any dish of this simplicity, success depends on the quality of your ingredients, so make sure you choose good free-range chicken and a rich stock. Chinese cooks like to poach their chicken until only just cooked and still a little pink at the bones. To make sure the chicken is cooked to internationally approved standards, use a meat thermometer to check that the innermost parts are heated to 165°F (74°C).",
@@ -58,5 +59,13 @@
     "Fill a large saucepan with iced water. When the chicken pieces have been steeped, remove them from their pan and place in the iced water for 10 minutes, then drain well. Pat the skin dry with paper towels, then brush with the sesame oil. Leave to cool completely.",
     "Cut the chicken into bite-sized strips and pile up tidily in a serving dish. Shortly before serving, heat the oil over a high flame until the surface is beginning to shimmer. Turn off the heat, add the spring onion greens and chopped ginger and stir rapidly until fragrant (the spring onions should remain green). Add the stock, bring to the boil and season with salt and pepper: the sauce needs to be quite salty to season the chicken. Pour over the chicken and serve."
   ],
-  "image": "/recipes/cold-chicken-with-spring-onion-oil.jpg"
+  "image": "/recipes/cold-chicken-with-spring-onion-oil.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

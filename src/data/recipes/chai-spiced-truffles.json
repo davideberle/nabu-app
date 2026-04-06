@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Drinks"
+    "chapter": "Desserts"
   },
   "servings": "makes about 26 to 28 (1-inch/2.5-cm) truffles",
   "intro": "For most Americans, chai (rhymes with “pie”) is synonymous with tea bags, or a drink at Starbucks. In India, chai refers to a spiced milk tea that is generally made from rich black tea, heavy milk, a regional combination of spices, and sweetener. Indian chai produces a warming soothing effect, and is said to be a natural digestive aid; the spices used are anti-inflammatory. In this recipe, rich coconut milk stands in for the heavy milk. The strong black tea can be brewed from either bags or leaves.",
@@ -90,7 +90,7 @@
   },
   "category": {
     "dish_type": [
-      "drink"
+      "dessert"
     ]
   }
 }

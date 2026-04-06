@@ -1,0 +1,73 @@
+{
+  "id": "greek-avocado-salad",
+  "name": "Greek Avocado Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "halved lengthways and sliced large cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "deseeded and sliced green pepper (capsicum)",
+      "amount": "1"
+    },
+    {
+      "item": "sliced thinly red onion",
+      "amount": "½"
+    },
+    {
+      "item": "vine ripened tomatoes, cut into wedges",
+      "amount": "4"
+    },
+    {
+      "item": "cubed good quality creamy feta cheese",
+      "amount": "7 oz"
+    },
+    {
+      "item": "pitted Kalamata olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "diced large avocado",
+      "amount": "1"
+    },
+    {
+      "item": "Whisk together dressing the ingredients in jug or jar and mix together all of the salad ingredients in a large bowl. Toss with the dressing. Season with extra salt, if needed. To serve, sprinkle over extra oregano to taste. Serve with any meat (or without)!",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Whisk together dressing the ingredients in jug or jar and mix together all of the salad ingredients in a large bowl. Toss with the dressing. Season with extra salt, if needed. To serve, sprinkle over extra oregano to taste. Serve with any meat (or without)!"
+  ],
+  "image": "/recipes/greek-avocado-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

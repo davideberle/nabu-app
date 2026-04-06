@@ -1,0 +1,37 @@
+{
+  "id": "cg-cumin-and-coriander-powder",
+  "name": "Cumin & Coriander Powder",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "intro": "I am a collector of Indian cookbooks and read and cook from them often. One thing I’ve noticed over the years is that in authentic Indian cookery, cumin and coriander powders are usually added in equal measures. I find it so convenient to have this simple roasted spice blend on hand.",
+  "ingredients": [
+    {
+      "item": "Equal amounts of:",
+      "amount": ""
+    },
+    {
+      "item": "Cumin seeds",
+      "amount": ""
+    },
+    {
+      "item": "Coriander seeds",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roast in a dry frying pan until warm to the touch and fragrant. Let cool and then grind into a fine powder. Store in an airtight container for up to 2 months."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

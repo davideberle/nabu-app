@@ -1,0 +1,75 @@
+{
+  "id": "cg-pilau-rice",
+  "name": "Pilau Rice",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "intro": "Pilau rice is one of those dishes I insist on cooking with ghee. I also prefer to steam it, as the flavour of the spices infuses better with the rice. If you are cooking for a large group, you might be better off frying cold cooked basmati rice, as in the fried rice recipe below.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "370g"
+    },
+    {
+      "item": "milk",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "of saffron threads",
+      "amount": "Pinch"
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "6"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "5cm (2in)"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove, smashed",
+      "amount": "1"
+    },
+    {
+      "item": "cold water or unsalted chicken stock",
+      "amount": "750ml"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse and soak the rice following the method on Basmati rice recipes. While it is soaking, heat the milk in a small pan until it begins to simmer. Take off the heat and stir in the saffron. Leave to infuse for about 15 minutes.",
+    "Meanwhile, melt the ghee over a medium high-heat in a saucepan that has a tight-fitting lid. When good and hot and beginning give off a nutty aroma, toss in the whole spices and cook for about 30 seconds until they become fragrant. Add the onion and sizzle for about 5 minutes until it is translucent and soft.",
+    "Add the garlic to the pan, followed by the drained rice. Stir this all up so that the rice is evenly coated in the ghee. Pour in the water or stock, add the bay leaves, then cover the pan. When the rice begins to boil and the water foams, remove from the heat and let it sit, covered and undisturbed for 40 minutes.",
+    "After 40 minutes, lift the lid and pour the saffron milk mixture over the top. Carefully stir through the rice using a fork or chopstick, until the grains of rice are nice and fluffy. Don’t stir too vigorously as basmati rice has a tendency to split. Season with salt to taste and transfer to a warm bowl to serve."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  },
+  "time": {
+    "total": 100
+  }
+}

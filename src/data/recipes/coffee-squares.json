@@ -1,0 +1,46 @@
+{
+  "id": "coffee-squares",
+  "name": "Coffee Squares",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 10 squares",
+  "intro": "Calling all coffee lovers! This is the square (or ball—whichever you like) for you. I’m not a coffee drinker but I won’t say no thanks to a hint of coffee flavor. You can choose your preferred flavor strength by adding more or less coffee granules. As you know, coffee will perk you up because it contains caffeine, but the coffee bean also contains antioxidants. You can also use decaffeinated coffee.",
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (5 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "10"
+    },
+    {
+      "item": "instant coffee granules (decaffeinated works, too)",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "reishi powder (optional)",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Chop the cashews in a food processor until they are finely ground. Remove the pits from the dates and add to the cashews. Add in 1 tablespoon coffee granules, 1 table-spoon water, and then the remaining ingredients. Taste, and add more coffee granules and water if needed. Shape into small squares measuring about 1¼ x 1¼\" (3 x 3 cm)."
+  ],
+  "image": "/recipes/coffee-squares.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

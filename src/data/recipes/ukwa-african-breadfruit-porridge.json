@@ -26,7 +26,7 @@
     },
     {
       "item": "palm oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "scotch bonnet chilli (finely chopped)",
@@ -58,5 +58,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ukwa-african-breadfruit-porridge.jpg"
+  "image": "/recipes/ukwa-african-breadfruit-porridge.jpg",
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

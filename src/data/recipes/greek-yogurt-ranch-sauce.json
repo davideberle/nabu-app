@@ -4,21 +4,30 @@
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
     "author": "Various",
-    "chapter": "Sides"
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
   "ingredients": [
     {
-      "item": "strained fresh lemon juice",
-      "amount": "⅓ cup (80 ml)"
+      "item": "cup (80 ml) strained fresh lemon juice",
+      "amount": ""
     },
     {
-      "item": "extra-virgin Greek olive oil",
-      "amount": "1 cup (240 ml)"
+      "item": "Scant 1 tablespoon Dijon or Greek mustard",
+      "amount": ""
     },
     {
-      "item": "Greek yogurt, preferably full-fat",
-      "amount": "⅓ cup (80 ml)"
+      "item": "(240 ml) extra-virgin Greek olive oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cup (80 ml) Greek yogurt, preferably full-fat",
+      "amount": ""
     },
     {
       "item": "garlic clove, minced",
@@ -27,6 +36,26 @@
     {
       "item": "chopped fresh herbs of your choice, such as dill, parsley, oregano, and/or mint",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Put the lemon juice in a medium bowl and whisk in the mustard.",
+      "amount": ""
+    },
+    {
+      "item": "While whisking, drizzle in the olive oil in a slow, steady stream and whisk until the mixture emulsifies. Whisk in the yogurt until smooth, followed by the garlic and herbs.",
+      "amount": ""
+    },
+    {
+      "item": "Season to taste with salt and pepper. Use immediately or place in a jar with a tight-fitting lid and refrigerate for up to 3 days.",
+      "amount": ""
+    },
+    {
+      "item": "To reconstitute, shake vigorously.",
+      "amount": ""
     }
   ],
   "method": [
@@ -35,6 +64,7 @@
     "Season to taste with salt and pepper. Use immediately or place in a jar with a tight-fitting lid and refrigerate for up to 3 days.",
     "To reconstitute, shake vigorously."
   ],
+  "image": null,
   "category": {
     "dish_type": [
       "side"

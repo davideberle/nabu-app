@@ -1,0 +1,116 @@
+{
+  "id": "mykonos-ice-dessert",
+  "name": "Mykonos Ice Dessert",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 3",
+  "time": {
+    "prep": 55,
+    "cook": 20,
+    "total": 75
+  },
+  "ingredients": [
+    {
+      "item": "pints butter pecan ice cream, softened",
+      "amount": "2"
+    },
+    {
+      "item": "pecan halves, toasted",
+      "amount": "9"
+    },
+    {
+      "item": "maraschino cherries",
+      "amount": "4"
+    },
+    {
+      "item": "miniature marshmallows",
+      "amount": "1 cup"
+    },
+    {
+      "item": "evaporated milk",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "semisweet chocolate chips",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "butterscotch chips",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "milk chocolate chips",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "vanilla wafers",
+      "amount": "10"
+    },
+    {
+      "item": "In a saucepan, combine the chips, milk and marshmallows.",
+      "amount": ""
+    },
+    {
+      "item": "Cook and stir over low heat until mixture is melted and smooth.",
+      "amount": ""
+    },
+    {
+      "item": "Remove from the heat and refrigerate until chilled.",
+      "amount": ""
+    },
+    {
+      "item": "Line the bottom of a 6-inch springform pan with vanilla wafers.",
+      "amount": ""
+    },
+    {
+      "item": "Top with about 1 cup ice cream; press into a smooth layer.",
+      "amount": ""
+    },
+    {
+      "item": "Top with a third of the fudge sauce.",
+      "amount": ""
+    },
+    {
+      "item": "Freeze for 40 minutes or until set.",
+      "amount": ""
+    },
+    {
+      "item": "Repeat layers twice, freezing in between layers.",
+      "amount": ""
+    },
+    {
+      "item": "Top with pecans and cherries.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and freeze until firm.",
+      "amount": ""
+    },
+    {
+      "item": "Remove from freezer 12 -16 minutes before serving.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a saucepan, combine the chips, milk and marshmallows.",
+    "Cook and stir over low heat until mixture is melted and smooth.",
+    "Remove from the heat and refrigerate until chilled.",
+    "Line the bottom of a 6-inch springform pan with vanilla wafers.",
+    "Top with about 1 cup ice cream; press into a smooth layer.",
+    "Top with a third of the fudge sauce.",
+    "Freeze for 40 minutes or until set.",
+    "Repeat layers twice, freezing in between layers.",
+    "Top with pecans and cherries.",
+    "Cover and freeze until firm.",
+    "Remove from freezer 12 -16 minutes before serving."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

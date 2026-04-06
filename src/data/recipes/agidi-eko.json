@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "corn flour",
-      "amount": "5 tablespoons"
+      "amount": "5 tbsp"
     },
     {
       "item": "cold water",
@@ -30,5 +30,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/agidi-eko.jpg"
+  "image": "/recipes/agidi-eko.jpg",
+  "time": {
+    "total": 132
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

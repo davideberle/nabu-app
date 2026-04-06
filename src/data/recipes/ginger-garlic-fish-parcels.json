@@ -1,10 +1,10 @@
 {
   "id": "ginger-garlic-fish-parcels",
-  "name": "GINGER-GARLIC FISH parcels",
+  "name": "Ginger-Garlic Fish Parcels",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
   "time": "TAKES 25 MINUTES",
@@ -62,7 +62,7 @@
     "Bake the fish for 8 minutes, then rotate and swap the baking sheets and bake for another 6 to 7 minutes, until the parcels have puffed.",
     "Serve the fish immediately, letting diners cut open the parcels themselves."
   ],
-  "image": null,
+  "image": "/recipes/ginger-garlic-fish-parcels.jpg",
   "category": {
     "dish_type": [
       "main"

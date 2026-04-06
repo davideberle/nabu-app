@@ -1,0 +1,46 @@
+{
+  "id": "easy-chocolate-balls",
+  "name": "Easy Chocolate Balls",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 10 balls",
+  "intro": "This is such a simple recipe that kids can make these balls by themselves. The recipe requires neither a food processor nor a blender—just a bowl and a big spoon. When my daughter Saga wants something sweet to snack on, she declares: ”I’m going to make batter!” She then pulls a bit of this and a little of that out of the pantry, mixes up a batter and eats it by spoonful straight from the bowl. Oats are rich in good fats, which actually helps with weight loss.",
+  "ingredients": [
+    {
+      "item": "nut butter",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mylk, water, or cold coffee",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "¼ cup (½ dl)"
+    }
+  ],
+  "method": [
+    "Mix everything together in a bowl. Roll the batter into balls, and then roll the balls in grated coconut; or, eat the batter with a spoon directly from the bowl."
+  ],
+  "image": "/recipes/easy-chocolate-balls.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

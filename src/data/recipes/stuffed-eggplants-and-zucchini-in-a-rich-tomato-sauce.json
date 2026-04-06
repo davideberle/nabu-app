@@ -1,18 +1,18 @@
 {
   "id": "stuffed-eggplants-and-zucchini-in-a-rich-tomato-sauce",
-  "name": "Stuffed eggplants and zucchini in a rich tomato sauce",
+  "name": "Stuffed Eggplants and Zucchini in a Rich Tomato Sauce",
   "subtitle": "Baatingan w kusaa bil banadoura",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c07"
+    "chapter": "Meat"
   },
   "introduction": "Stuffing vegetables is such an everyday event in the Palestinian kitchen that most cooks have a special knife to help them with the task. It’s called a manakra, with a thin blade curved into a semicircle and both sides serrated. You can get them online or in specialty shops but, for a good alternative, a swivel peeler (a straight one, as opposed to a Y-shaped one) or a corer both work very well. Sami and Tara were also shown how to use a power drill, by some ladies serving lunch out of a garage in a parking lot in Jerusalem, to core carrots and zucchini, but such a recommendation comes with obvious health and safety warnings!\n\nServe these either as a side or as a main, with a salad or some other cooked vegetables alongside. Some bread is also good, to mop up the juices.\n\nGetting ahead: The stuffing mixture can be made up to a day ahead. The tomato sauce keeps well in the fridge for up to three days, and also freezes well. Double the recipe for the sauce, if you can, so that you have a batch ready to go when you next need it.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Meat"
   },
   "servings": "serves six as a main, or twelve as a side",
   "time": {
@@ -259,5 +259,5 @@
   "tags": {
     "dietary": []
   },
-  "image": null
+  "image": "/recipes/stuffed-eggplants-and-zucchini-in-a-rich-tomato-sauce.jpg"
 }

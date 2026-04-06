@@ -1,0 +1,41 @@
+{
+  "id": "coconut-nice-cream",
+  "name": "Coconut Nice Cream",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "servings": "makes 4–6 popsicles",
+  "intro": "Try making chocolate nice cream by adding in raw cacao powder, or make half the nice cream plain and swirl the two creams beautifully inside the molds.",
+  "ingredients": [
+    {
+      "item": "bananas",
+      "amount": "4"
+    },
+    {
+      "item": "coconut cream",
+      "amount": "¾ cup (1½ dl)"
+    },
+    {
+      "item": "raw cacao nibs",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw cacao powder (optional)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Mix the bananas with the coconut cream in a blender. If you wish to add two colors to one mold, transfer half the ice cream to another bowl. Add cacao powder to the blender and mix. Stir cacao nibs into the ice cream in the bowl. Mix the two nice creams attractively in the molds and place the molds the freezer until the nice cream has set. This will take about 6 hours."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

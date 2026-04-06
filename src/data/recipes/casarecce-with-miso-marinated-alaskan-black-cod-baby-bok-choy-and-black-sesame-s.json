@@ -1,0 +1,78 @@
+{
+  "id": "casarecce-with-miso-marinated-alaskan-black-cod-baby-bok-choy-and-black-sesame-s",
+  "name": "Casarecce with Miso-Marinated Alaskan Black Cod, Baby Bok Choy, and Black Sesame Seeds",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Carbonaro—or, as it is commonly known in Italy, pesce burro (which literally translates to “butterfish”)—belongs to a category of fish unavailable in Europe, causing us to dream about the deep, cold, remote Alaskan ocean waters, an extension of those in Washington State. Living in the PNW, I am always excited for the sablefish season that runs from March to mid-November each year. This recipe is a tribute to Nobu Matsuhisa and his signature dish, black cod in miso, but with the addition of pasta. It’s a new take on the classic recipe that still calls for marinating the black cod but skips the oven and uses the stove instead. The result is a quick, irresistible fusion of the Japanese kasuzuke tradition (fish or vegetables pickled in sake lees) with Italian pasta. The fish should be marinated for two to three days prior to cooking, so plan accordingly.",
+  "ingredients": [
+    {
+      "item": "mirin",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sake",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "white miso paste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "black cod fillets",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small baby bok choy, cut into thin strips",
+      "amount": "2"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "To prepare the marinade, in a medium saucepan over high heat, bring the mirin and sake to a boil. Wait until the alcohol has evaporated, about a minute, and reduce the heat to low. Slowly stir in the miso paste until it has melted. Increase the heat to high. Add the sugar and energetically whisk until it has dissolved. Transfer the marinade to a mixing bowl and set aside to cool completely.",
+    "Place the black cod in a 10-by-12-inch hotel pan or baking dish, pour the marinade over it, cover with plastic wrap, and refrigerate for 2 to 3 days.",
+    "When ready to cook, remove the black cod from the marinade and set aside. In a medium nonstick pan over medium heat, warm the olive oil. Add the shallot and sauté for 1 minute, stirring to avoid burning. Add the baby bok choy, increase the heat medium-high, and stir for a couple of minutes.",
+    "Reduce the heat to medium and add the black cod. Cook for 1 minute, allowing the fish to break apart without disintegrating. Add the salt, pepper, and red pepper flakes to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the casarecce until al dente. Drain, and transfer to the pan; sauté for a minute over medium heat, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the black sesame seeds, a drizzle of oil, and more black pepper. Enjoy with sake or a mineral white wine."
+  ],
+  "image": "/recipes/casarecce-with-miso-marinated-alaskan-black-cod-baby-bok-choy-and-black-sesame-s.jpg",
+  "time": {
+    "total": 16
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

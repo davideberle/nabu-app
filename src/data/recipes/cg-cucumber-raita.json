@@ -1,0 +1,45 @@
+{
+  "id": "cg-cucumber-raita",
+  "name": "Cucumber Raita",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes 550ml (2¼ cups)",
+  "intro": "Delicious spooned over biryanis and kebabs. If you want to make it even more exciting, try adding a few small chunks of cooked potato and/or finely chopped green chilli.",
+  "ingredients": [
+    {
+      "item": "Greek yoghurt",
+      "amount": "420g"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "English cucumber, grated",
+      "amount": "½"
+    },
+    {
+      "item": "Juice of 1 or 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "each of salt and freshly ground pepper",
+      "amount": "Pinch"
+    }
+  ],
+  "method": [
+    "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about an hour before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  }
+}

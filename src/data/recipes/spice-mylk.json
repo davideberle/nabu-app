@@ -1,0 +1,42 @@
+{
+  "id": "spice-mylk",
+  "name": "Spice Mylk",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 1 glass",
+  "intro": "During wintertime, spices are great for raising body heat and increasing circulation. You can also warm the mylk in a saucepan till it’s lukewarm; use your finger to check the temperature—it works great. Spiced mylk is the perfect snack when you’re craving something but aren’t really hungry.",
+  "ingredients": [
+    {
+      "item": "mylk",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "pinch of"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "scant ¼ tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "½ tbsp"
+    }
+  ],
+  "method": [
+    "Mix everything together in a cup or in a saucepan. Drink as is, or warm it carefully till it reaches body temperature."
+  ],
+  "image": "/recipes/spice-mylk.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

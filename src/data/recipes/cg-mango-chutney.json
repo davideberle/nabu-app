@@ -1,0 +1,71 @@
+{
+  "id": "cg-mango-chutney",
+  "name": "Mango Chutney",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes 2 jars",
+  "intro": "Mango chutney is easy to prepare. You can make it either sweet, or sweet and spicy – adding a teaspoon or so of chilli powder really gives this chutney a kick. Once you have finished cooking the chutney, you can serve it chunky or blend it until smooth. I usually make both versions from one batch.",
+  "ingredients": [
+    {
+      "item": "sugar",
+      "amount": "400g"
+    },
+    {
+      "item": "distilled white vinegar",
+      "amount": "250ml"
+    },
+    {
+      "item": "green mangoes, peeled and cubed",
+      "amount": "4–5"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "of raisins",
+      "amount": "Large handful"
+    },
+    {
+      "item": "ginger, peeled and finely chopped",
+      "amount": "5cm (2 in)"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "black mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Salt (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the sugar and vinegar in a large saucepan and bring to a boil, stirring continuously until the sugar dissolves. Add the remaining ingredients and simmer for about 1 hour, stirring regularly until syrupy.",
+    "When it is sticky and thick to your liking you can either leave it as it is or blend until smooth (or blend half, see introduction). Transfer to hot sterilized jars, leaving a little space at the top.",
+    "Clockwise, from top left: red onion chutney; kashmiri red chilli and garlic chutney; mint, coriander and mango chutney; tamarind chutney."
+  ],
+  "image": "/recipes/curry-guy-cg-mango-chutney.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  },
+  "time": {
+    "total": 60
+  }
+}

@@ -1,9 +1,10 @@
 {
   "id": "lotus-root-stuffed-with-glutinous-rice",
-  "name": "Lotus root stuffed with glutinous rice",
+  "name": "Lotus Root Stuffed with Glutinous Rice",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "gui hua tang ou 桂花糖藕",
   "intro": "In one of the old canal lanes of Shaoxing I came across a man selling stuffed lotus root from a cart on the back of his bicycle. He had a great cooking pot filled with them and a metal basin displaying a few, glossy with syrup. This sticky, fragrant delicacy is served as an appetizer or snack all over Zhejiang and in Shanghai, usually alongside savory dishes. The best is said to be made with plump lotus roots from Huzhou in northern Zhejiang, which have about nine round holes running through them. In the past, the roots were cooked with lye water made from the ash left after burning rice husks, which helped to tenderize them and lent them a distinctive alkaline flavor. Some cooks simply serve slices of this stuffed lotus root with a sprinkling of white sugar, but I like the luxurious gloss of a syrup. If you can lay your hands on a jar of osmanthus blossom jam, add some for a wonderful fragrance, and use short-grain glutinous rice if you can find it (Japanese shops sell this as “sweet rice”).",
@@ -31,5 +32,13 @@
     "Put the roots in a saucepan and cover generously with water. Bring to the boil over a high flame, then half-cover and simmer for 2 hours, topping up with hot water as necessary. (Alternatively, cover with water and pressure-cook at high pressure for 30 minutes, then allow to reduce pressure naturally.) As it cooks, the lotus and the water it cooks in will blush a deep, rosy pink. When they are tender, remove the roots from the liquid and allow to cool.",
     "When the roots are cool, remove and discard the lids and skewers. Cut the roots into ½ in (1cm) slices. Put ½ cup (100ml) of the pink cooking liquid in a small pan with the sugar and heat gently, stirring, to dissolve it. Increase the heat and boil for 1 minute, or until syrupy. Add the osmanthus blossom jam, if using, stir well, and pour over the sliced lotus roots. Serve at room temperature."
   ],
-  "image": "/recipes/lotus-root-stuffed-with-glutinous-rice.jpg"
+  "image": "/recipes/lotus-root-stuffed-with-glutinous-rice.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

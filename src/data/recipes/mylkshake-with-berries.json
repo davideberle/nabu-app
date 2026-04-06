@@ -1,0 +1,46 @@
+{
+  "id": "mylkshake-with-berries",
+  "name": "Mylkshake with Berries",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 1 glass",
+  "intro": "With some extra oats your mylkshake gains volume and becomes more filling, and you load up on carbohydrates.",
+  "ingredients": [
+    {
+      "item": "mylk",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "mixed berries, fresh or frozen",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "banana",
+      "amount": "½"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Mix all the ingredients in a blender to a smooth consistency."
+  ],
+  "image": "/recipes/mylkshake-with-berries.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

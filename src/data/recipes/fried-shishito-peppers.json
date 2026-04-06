@@ -1,0 +1,38 @@
+{
+  "id": "fried-shishito-peppers",
+  "name": "Fried Shishito Peppers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "12 FRIED PEPPERS servings",
+  "ingredients": [
+    {
+      "item": "canola oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "shishito peppers",
+      "amount": "12"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a medium pan over medium heat, warm the canola oil until it is shimmering hot. Add the shishito peppers, and fry them on both sides until they are brown but not burned.",
+    "Using a spider or a slotted spoon, remove the peppers and place them on paper towels to absorb the excess oil.",
+    "Sprinkle with the salt."
+  ],
+  "image": "/recipes/fried-shishito-peppers.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

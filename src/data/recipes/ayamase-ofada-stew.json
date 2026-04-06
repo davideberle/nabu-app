@@ -38,5 +38,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ayamase-ofada-stew.jpg"
+  "image": "/recipes/ayamase-ofada-stew.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

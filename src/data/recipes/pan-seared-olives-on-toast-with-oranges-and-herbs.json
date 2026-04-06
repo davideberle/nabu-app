@@ -1,0 +1,56 @@
+{
+  "id": "pan-seared-olives-on-toast-with-oranges-and-herbs",
+  "name": "Pan-Seared Olives on Toast with Oranges and Herbs",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 5,
+    "total": 10
+  },
+  "ingredients": [
+    {
+      "item": "small orange, preferably organic",
+      "amount": "½"
+    },
+    {
+      "item": "extra-virgin Greek olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(310 g) wrinkled black Greek olives, preferably either Thassos or Halkidiki",
+      "amount": "2 cups"
+    },
+    {
+      "item": "large garlic clove, cut into very thin slivers",
+      "amount": "1"
+    },
+    {
+      "item": "Scant 1 teaspoon dried Greek oregano, or 2 teaspoons chopped fresh oregano leaves",
+      "amount": ""
+    },
+    {
+      "item": "Keep the peel on the orange and cut the orange into 3 wedges. Cut each wedge into small triangular slices, about ⅛ inch (3 mm) thick.",
+      "amount": ""
+    },
+    {
+      "item": "In a heavy skillet or stovetop grill pan, heat the olive oil over medium heat. Add the olives and orange wedges to the pan and shake the pan back and forth to combine them. Stir in the garlic. Continue to shake the pan back and forth or gently stir for about 5 minutes, until the olives are warmed through, the garlic is soft and shiny, and the orange slices are slightly wilted. Stir in the oregano and transfer to a bowl. Serve.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Scant 1 teaspoon dried Greek oregano, or 2 teaspoons chopped fresh oregano leaves",
+    "Keep the peel on the orange and cut the orange into 3 wedges. Cut each wedge into small triangular slices, about ⅛ inch (3 mm) thick.",
+    "In a heavy skillet or stovetop grill pan, heat the olive oil over medium heat. Add the olives and orange wedges to the pan and shake the pan back and forth to combine them. Stir in the garlic. Continue to shake the pan back and forth or gently stir for about 5 minutes, until the olives are warmed through, the garlic is soft and shiny, and the orange slices are slightly wilted. Stir in the oregano and transfer to a bowl. Serve."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

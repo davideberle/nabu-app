@@ -1,0 +1,49 @@
+{
+  "id": "pomegranate-orange-and-baby-spinach-salad",
+  "name": "Pomegranate Orange and Baby Spinach Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "handfuls baby spinach",
+      "amount": "2"
+    },
+    {
+      "item": "seeded pomegranate",
+      "amount": "½"
+    },
+    {
+      "item": "pomegranate juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "orange in separated segments",
+      "amount": "1"
+    },
+    {
+      "item": "Juice of 1 orange",
+      "amount": ""
+    },
+    {
+      "item": "caster sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Place the washed baby spinach on a plate. Mix the juice of half the orange with sugar and the pomegranate juice for dressing. Place the orange segments and pomegranate seeds on the spinach. Pour the dressing over the salad.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the washed baby spinach on a plate. Mix the juice of half the orange with sugar and the pomegranate juice for dressing. Place the orange segments and pomegranate seeds on the spinach. Pour the dressing over the salad."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "penne-with-pancetta-sweet-peas-leeks-and-creme-fra-che",
+  "name": "Penne with Pancetta, Sweet Peas, Leeks, and Crème Fraîche",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "This is an incredibly easy and fast recipe inspired by the French soup vichyssoise. It’s ideal for the spring months when fresh peas are available, but you can substitute frozen ones for an affordable, delicious, and year-round pasta dish. Additionally, you can use bacon instead of the pancetta, and the crème fraîche can be replaced with fresh ricotta.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "medium leek, thinly sliced, roots and thick green stems trimmed and discarded",
+      "amount": "1"
+    },
+    {
+      "item": "Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "bunch thyme, stemmed",
+      "amount": "1"
+    },
+    {
+      "item": "fresh English peas",
+      "amount": "14 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "penne pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "crème fraîche",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium heat, warm the olive oil. Add the pancetta and sauté until it becomes crispy, stirring to avoid burning.",
+    "Add the leek and the potatoes, and cook until firm but soft enough to put a fork through. Stir in the thyme. Add the peas and cook, stirring occasionally, for 5 to 6 minutes. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the penne until al dente, drain, and transfer to the skillet. Add the Parmigiano and quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with a spoonful of crème fraîche, a drizzle of oil, more pepper, and a thyme sprig for decoration."
+  ],
+  "image": "/recipes/penne-with-pancetta-sweet-peas-leeks-and-creme-fra-che.jpg",
+  "time": {
+    "total": 21
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

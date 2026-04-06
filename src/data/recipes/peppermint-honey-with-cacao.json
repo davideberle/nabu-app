@@ -1,0 +1,32 @@
+{
+  "id": "peppermint-honey-with-cacao",
+  "name": "Peppermint Honey with Cacao",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "2 oz (500 g) honey",
+      "amount": "1 lb"
+    },
+    {
+      "item": "drops peppermint oil",
+      "amount": "3–5"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "7 tbsp"
+    }
+  ],
+  "method": [
+    "In a bowl, mix the honey with the peppermint oil and the cacao powder, then pour it all back into the honey jar. Use 1 or 2 teaspoons in a cup of warm water or warm mylk."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

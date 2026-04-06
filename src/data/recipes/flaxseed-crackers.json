@@ -1,0 +1,60 @@
+{
+  "id": "flaxseed-crackers",
+  "name": "Flaxseed Crackers",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 2 sheets",
+  "intro": "A sandwich for a snack? Sure! Layer avocado and tomato, put sunflower sprouts on top, or spread coconut oil instead of butter and top with sprouts and herb salt. It’s a winning combo! Flaxseeds are rich in omega-3s, and wakame seaweed isn’t merely salty and tasty, it’s also loaded with minerals.",
+  "ingredients": [
+    {
+      "item": "golden flaxseeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "brown flaxseeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "5 cup (6 dl)"
+    },
+    {
+      "item": "hulled sesame seeds, with hulls",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "stock powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "wakame seaweed",
+      "amount": "½ cup (1 dl)"
+    }
+  ],
+  "method": [
+    "Soak the flaxseeds and chia seeds in 2½ cups (6 dl) of water for about 8 hours. Soak the sesame seeds and pumpkin seeds in a separate bowl with the remaining water for about 8 hours. Drain the water and mix the flaxseeds and chia seeds with the sesame and pumpkin seeds. Stir in the stock powder.",
+    "Cut the wakame seaweed into smaller bits and add them to the seed mixture. Spread the mixture thinly and evenly on a sheet of parchment paper or Teflex. Mark out squares with the back of a knife.",
+    "If you’re making the crackers in a dehydrator, let them dry for about 5 hours at 107°F (42°C). Then take an empty tray and turn the crackers upside down onto the ‘squared’ side. Remove the parchment paper carefully and let the crackers dry for another 5 to 10 hours.",
+    "If you’re using a conventional oven, turn the crackers over when you can loosen them from the parchment paper, and continue to dry the crackers until they are dry straight through. Break the crackers into the desired size."
+  ],
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

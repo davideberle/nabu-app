@@ -1,0 +1,43 @@
+{
+  "id": "cg-steamed-rice",
+  "name": "Steamed Rice",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "intro": "Never fill your pan more than one-third full or the rice will not cook correctly. If making a larger batch, remember the uncooked rice-to-water volume (not weight) ratio is always 1 measure of rice to 1½ water.",
+  "ingredients": [
+    {
+      "item": "basmati rice",
+      "amount": "370g"
+    },
+    {
+      "item": "cold water",
+      "amount": "750ml"
+    },
+    {
+      "item": "of salt",
+      "amount": "Pinch"
+    },
+    {
+      "item": "ghee or butter",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Rinse and soak the rice as above, then drain. Place the rice, water, salt and ghee or butter in a saucepan. Cover with a tight-fitting lid and bring to a boil over a high heat. As soon as the water boils, remove from the heat and let it sit, lid on, for 40 minutes. Don’t remove the lid. After 40 minutes, your rice will be perfectly done. Using a fork or chopstick, separate the rice grains, stirring very slowly. Basmati rice has a tendency to turn to mush if stirred too vigorously."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  },
+  "time": {
+    "total": 80
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "greek-butter-biscuits-koulourakia-voutirou",
+  "name": "Greek Butter Biscuits (Koulourakia Voutirou)",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 40",
+  "time": {
+    "prep": 10,
+    "cook": 15,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "granulated sugar",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "1/2 cups flour",
+      "amount": "3"
+    },
+    {
+      "item": "beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "baking powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Cream butter and sugar",
+      "amount": ""
+    },
+    {
+      "item": "Add the egg yolks and eggs and beat until fluffy and light.",
+      "amount": ""
+    },
+    {
+      "item": "Add flour, sifted with baking powder.",
+      "amount": ""
+    },
+    {
+      "item": "Knead to make a soft dough, chill for at least 50 minutes and form into small rings.",
+      "amount": ""
+    },
+    {
+      "item": "Arrange on greased baking sheets, brush with beaten egg.",
+      "amount": ""
+    },
+    {
+      "item": "Bake in a moderate oven for about 12 minutes.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Add the egg yolks and eggs and beat until fluffy and light.",
+    "Add flour, sifted with baking powder.",
+    "Knead to make a soft dough, chill for at least 50 minutes and form into small rings.",
+    "Arrange on greased baking sheets, brush with beaten egg.",
+    "Bake in a moderate oven for about 12 minutes."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

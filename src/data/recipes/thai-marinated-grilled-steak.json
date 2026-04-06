@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "Although this is a classic Thai steak marinade, the flavor is neutral enough to serve with any dish. Rich in flavor and infinitely customizable, this is the only marinade recipe you'll ever need. The dipping sauce is an irresistible classic for Thais!",
   "time": {
-    "prep": "3 hours 25 minutes"
+    "prep": "3 hours 25 minutes",
+    "total": 180
   },
   "ingredients": [
     {
@@ -91,5 +92,10 @@
     "When done, pour the rice onto a plate to cool, then grind it to a fine powder with a mortar and pestle or coffee grinder.",
     "Add the rice powder (Step 8) and coriander into the sauce (Step 6). You may serve the steak with the Nam Jim Jeaw dipping sauce or keep the Nam Jim Jeaw dipping sauce for future use."
   ],
-  "image": "/recipes/thai-marinated-grilled-steak.jpg"
+  "image": "/recipes/thai-marinated-grilled-steak.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

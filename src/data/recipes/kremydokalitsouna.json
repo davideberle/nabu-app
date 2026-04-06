@@ -3,33 +3,71 @@
   "name": "Kremydokalitsouna",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
   },
-  "servings": "prep time: 10 minutes | cook time: 14 minutes |serves 6 to 8",
+  "servings": "serves 6",
+  "time": {
+    "prep": 10,
+    "cook": 14,
+    "total": 24
+  },
   "ingredients": [
     {
-      "item": "olive oil",
-      "amount": "⅓ cup"
+      "item": "cup olive oil",
+      "amount": ""
     },
     {
       "item": "thinly sliced onions",
       "amount": "2½ cups"
     },
     {
-      "item": "grated ripe tomatoes ½–1 teaspoon Aleppo pepper or ¼–½ teaspoon crushed red pepper flakes",
-      "amount": "⅔ cup"
+      "item": "cup grated ripe tomatoes ½–1 teaspoon Aleppo pepper or ¼–½ teaspoon crushed red pepper flakes",
+      "amount": ""
     },
     {
-      "item": "dried whole wheat bread crumbs",
-      "amount": "2–3 tablespoons"
+      "item": "2–3 tablespoons dried whole wheat bread crumbs",
+      "amount": ""
     },
     {
       "item": "crumbled feta cheese",
       "amount": "1 cup"
     },
     {
-      "item": "recipe Cretan Phyllo",
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "recipe",
       "amount": "1"
+    },
+    {
+      "item": "Cretan Phyllo",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil and safflower oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, heat",
+      "amount": ""
+    },
+    {
+      "item": "cup oil and sauté the onions over medium heat until soft, about 5 minutes. Add the tomatoes and pepper or pepper flakes and cook until most of the juices have evaporated, 4 to 5 minutes. Remove from the heat and add the bread crumbs as needed to thicken the filling. Let cool completely, then add the cheese and salt to taste.",
+      "amount": ""
+    },
+    {
+      "item": "Working with 1 portion at a time, cut the phyllo into 3½-inch rounds, using a cookie cutter, biscuit cutter or glass. Place 1 tablespoon of the filling in the middle of each round, fold over the dough to make a half circle and press the edges with the tines of a fork to seal. Set aside on paper towels. (If you are not going to fry the turnovers immediately, arrange them on baking sheets, cover and refrigerate for up to 1 day.)",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, heat 2 inches of a combination of olive and safflower oil over medium-high heat to 350°F. In batches, fry the",
+      "amount": ""
+    },
+    {
+      "item": ", turning once, until golden brown, 3 to 4 minutes. with tongs, transfer to paper towels to drain. Serve warm or at room temperature.",
+      "amount": ""
     }
   ],
   "method": [
@@ -37,5 +75,10 @@
     "Working with 1 portion at a time, cut the phyllo into 3½-inch rounds, using a cookie cutter, biscuit cutter or glass. Place 1 tablespoon of the filling in the middle of each round, fold over the dough to make a half circle and press the edges with the tines of a fork to seal. Set aside on paper towels. (If you are not going to fry the turnovers immediately, arrange them on baking sheets, cover and refrigerate for up to 1 day.)",
     "In a large skillet, heat 2 inches of a combination of olive and safflower oil over medium-high heat to 350°F. In batches, fry the kalitsouna, turning once, until golden brown, 3 to 4 minutes. with tongs, transfer to paper towels to drain. Serve warm or at room temperature."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

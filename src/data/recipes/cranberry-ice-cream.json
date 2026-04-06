@@ -1,0 +1,47 @@
+{
+  "id": "cranberry-ice-cream",
+  "name": "Cranberry ICE Cream",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "servings": "makes 4–6 popsicles",
+  "intro": "Once, when I offered this nice cream to my family, they said, “This tastes just like store-bought!” I wondered if that was good or bad. But when my husband and children quickly tucked into their nice creams, I took that as a good sign.",
+  "ingredients": [
+    {
+      "item": "cashew butter or almond butter",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "frozen cranberries, defrosted",
+      "amount": "7 oz (200 g)"
+    },
+    {
+      "item": "maple syrup or 3 tbsp honey",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "cacao butter, melted",
+      "amount": "¼ cup (½ dl)",
+      "group": "TOPPING"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "In a blender, mix the cranberries and nut butter together with the maple syrup. Pour the mixture into molds and put them in the freezer for at least 6 hours. Melt the cacao butter in a warm water bath; stir in the coconut palm sugar. Remove the popsicles from the freezer and dip them quickly, one by one, in the cacao butter. Enjoy them immediately, or put them back in the freezer."
+  ],
+  "image": "/recipes/cranberry-ice-cream.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

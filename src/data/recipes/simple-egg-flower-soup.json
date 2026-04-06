@@ -1,9 +1,10 @@
 {
   "id": "simple-egg-flower-soup",
-  "name": "Simple egg-flower soup",
+  "name": "Simple Egg-Flower Soup",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "hu lu gua dan hua tang 葫芦瓜蛋花汤",
   "intro": "Many traditional Chinese meals include a refreshing soup like this one: a simple broth made with stock, an everyday vegetable and an egg or two. I’ve written the recipe to use the long, shiny green gourd that’s often known by its Indian name, dudhi, but silk gourd, chayote or winter melon will give a similar effect. You could also use sliced tomatoes, leafy greens or another vegetable of your choice. The cooking method allows the beaten egg to set into “flowers”—delicate, frondy blooms that drift among the jade-green slices of vegetable. You can use any kind of stock for this kind of soup. Recently, I used a stock made from the leftovers of a roast duck, which was marvelous. Chinese cooks often add a little lard at the end of cooking to enrich the broth.",
@@ -33,5 +34,13 @@
     "Peel and trim the dudhi and slice it in half lengthways, then slice it into semicircles about ⅛ in (4mm) thick. Beat the eggs in a bowl.",
     "Bring the stock to the boil. Add the sliced dudhi and boil for about 10 minutes, until tender. Season with salt and pepper and stir in the lard, if using. Turn the heat down low, then drizzle the egg all over the surface of the soup. When the egg has set into “flowers,” turn off the heat, stir gently and serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

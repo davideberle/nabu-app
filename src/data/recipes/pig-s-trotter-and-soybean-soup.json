@@ -1,9 +1,10 @@
 {
   "id": "pig-s-trotter-and-soybean-soup",
-  "name": "Pig’s trotter and soybean soup",
+  "name": "Pig’s Trotter and Soybean Soup",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "zhu ti huang dou tang 猪蹄黄豆汤",
   "intro": "The Chinese rarely use unprocessed soybeans in their cookery (except for the tender young beans usually known in English by their Japanese name, edamame). Such beans are somewhat indigestible, their rich proteins locked up a form inaccessible to humans, which is why they are almost always fermented, sprouted or transformed into tofu. However, there are exceptions, as with this satisfying Shanghainese soup, in which soaking and a long simmering renders the beans fragrant and nutritious, and the collagen in the trotters melts away to give a most luxurious mouthfeel. Do make sure you cook the beans until they’re as tender as baked beans: this is important, because undercooked soybeans contain harmful compounds. Trotters are especially popular with Chinese women because they are said to enhance the complexion.",
@@ -34,5 +35,13 @@
     "Cut the trotters in half lengthways, then chop them into 1½ in (3cm) chunks, discarding the very knobbly foot end. Blanch them in boiling water for 2 minutes, then rinse them in cold water. Use tweezers to pluck out any remaining bristles. Smack the ginger and spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
     "Put the soybeans and trotter pieces in a pan with 2½ quarts (2.5 liters) cold water and bring to the boil. Skim. Add the ginger and spring onions, then cover, reduce the heat and simmer for about 4 hours, until the beans are completely tender. Season with salt and pepper before serving."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

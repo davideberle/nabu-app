@@ -1,6 +1,6 @@
 {
   "id": "scrambled-egg-and-bread-with-sweet-tea",
-  "name": "Scrambled “Egg” and Bread with Sweet Tea",
+  "name": "Scrambled “egg” and Bread with Sweet Tea",
   "source": {
     "cookbook": "Vegan Nigerian Kitchen",
     "author": "Tomi Makanjuola"
@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "sunflower oil",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "small onion (finely chopped)",
@@ -30,7 +30,7 @@
     },
     {
       "item": "curry powder 1/2 teaspoon turmeric",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     }
   ],
   "method": [
@@ -42,5 +42,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/scrambled-egg-and-bread-with-sweet-tea.jpg"
+  "image": "/recipes/scrambled-egg-and-bread-with-sweet-tea.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

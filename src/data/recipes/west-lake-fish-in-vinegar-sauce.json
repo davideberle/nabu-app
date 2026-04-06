@@ -1,9 +1,10 @@
 {
   "id": "west-lake-fish-in-vinegar-sauce",
-  "name": "West Lake fish in vinegar sauce",
+  "name": "West Lake Fish in Vinegar Sauce",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Fish and Seafood"
   },
   "subtitle": "xi hu cu yu 西湖醋鱼",
   "intro": "This is one of Hangzhou’s most celebrated dishes, and a speciality of the Louwailou restaurant at the edge of the West Lake. Traditionally, it is made with a grass carp that has been fasted for two days to purge it of any muddiness of flavor. The fish, briefly boiled, is bathed in a sauce fragrant with vinegar and ginger, with a chorus of sweetness and a base note of salt; its flesh is tender with an edge of tautness. At its best, the dish is said to recall, in its harmony of flavors, the taste of freshwater crab. Like many Hangzhou dishes, this one comes with a tale of its origin. Two brothers named Song, they say, plied their trade as fishermen on the West Lake. One day, a brutal local official took a fancy to the elder brother’s wife, and killed him with the aim of forcing her to become his concubine. The younger brother and the widow rushed to the local government to report this crime, but they were rudely evicted and the brother beaten. Fearing for his life, the younger brother prepared to flee the city. The night before his departure, his sister-in-law cooked him a fish with sugar and vinegar. It was, she said, meant to remind him that in future, sweeter times, he should never forget the bitter suffering of the past, and that he should come back one day and avenge his brother’s death. Years passed, and the younger brother became an official himself and returned to Hangzhou, but he was unable to find his sister-in-law. However, one day, dining in a local household, he tasted a fish dish that reminded him of the flavors of that parting meal. It turned out that the household’s cook was indeed his long-long sister-in-law, and the two were joyfully reunited. The fish evoked in him such nostalgia that he resigned his official commission and returned to his former life as a fisherman. For best results, use Zhejiang “rose” rice vinegar or Chinese red vinegar. This recipe follows exactly the method shown to me by chef Dong Jinmu, veteran of the Louwailou restaurant in Hangzhou. The fish is boiled rather than poached to keep the flesh a little taut.",
@@ -41,5 +42,13 @@
     "Return the liquid to a medium flame, add the sugar and stir to dissolve. Add the vinegar, return to a vigorous boil and immediately turn down the heat. Don’t overheat the sauce once you’ve added the vinegar, or you’ll lose much of its fragrance. Give the potato starch mixture a stir and add it in stages, mixing well between each addition, until the sauce has thickened to a lazy gravy that will cling to the fish.",
     "Pour the sauce evenly over the fish. Sprinkle over the remaining ginger as a garnish and serve."
   ],
-  "image": "/recipes/west-lake-fish-in-vinegar-sauce.jpg"
+  "image": "/recipes/west-lake-fish-in-vinegar-sauce.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,0 +1,36 @@
+{
+  "id": "a-quick-cup-of-chocolate-instant-chocolate-drink-powder",
+  "name": "A Quick CUP OF Chocolate—instant Chocolate Drink Powder",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp",
+      "group": "CHOCOLATE MIXTURE"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp",
+      "group": "CHOCOLATE MIXTURE"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "2 tbsp",
+      "group": "CHOCOLATE MIXTURE"
+    }
+  ],
+  "method": [
+    "Mix the ingredients and store them in a jar with a tight-fitting lid.",
+    "Blend the ingredients or whisk them together in a large cup."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

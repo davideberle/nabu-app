@@ -1,0 +1,49 @@
+{
+  "id": "fried-zucchini-blossoms",
+  "name": "Fried Zucchini Blossoms",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "intro": "This is the traditional way we fry zucchini blossoms in Italy: by dipping them in pastella, a simple yet delicious coating.",
+  "ingredients": [
+    {
+      "item": "all-purpose flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kosher salt",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "zucchini blossoms",
+      "amount": "8 to 10"
+    }
+  ],
+  "method": [
+    "In a mixing bowl, whisk together the flour, baking soda, and salt. Slowly add the water, stirring, until you obtain a smooth, runny consistency.",
+    "In a skillet over medium heat, warm the vegetable oil. Test the oil by dropping in a bit of the pastella. If it starts bubbling, it’s ready. Dip the zucchini blossom into the pastella, thoroughly coating, and fry each for a minute or so, flipping them halfway through, until golden brown and crispy. Remove with a spider or slotted spoon, and place on a paper towel to absorb the excess oil."
+  ],
+  "image": "/recipes/fried-zucchini-blossoms.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

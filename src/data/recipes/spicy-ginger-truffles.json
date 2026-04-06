@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes about 30 (1-inch / 2.5-cm) truffles",
   "intro": "The pungent ground ginger cooked into coconut milk to flavor these ultra creamy truffles elicited this comment from my friend Lisa Pitman, an accomplished cook from Toronto: “Not only are these exquisite, they are perfect for sharing when you want to spice things up with a certain someone.” How you spice things up is up to you, but make sure you add enough ground ginger to ensure that at least these truffles are up to the task. Remember: bittersweet chocolate will temper the flavor of the ginger. Using coconut sugar adds a subtle caramel note to the spiciness, but mixing organic granulated sugar and whole cane sugar works just as well. Either way, just follow the recipe carefully and your reward will be luxurious truffles to serve after a meal of vegetable curry.",
@@ -70,7 +70,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   }
 }

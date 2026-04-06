@@ -1,0 +1,72 @@
+{
+  "id": "creste-di-gallo-with-yellow-bell-pepper-puree-ricotta-salata-shishito-peppers-an",
+  "name": "Creste di Gallo with Yellow Bell Pepper Puree, Ricotta Salata, Shishito Peppers, and Aleppo Pepper",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "This dish could be called three peppers on a plate. It’s a delightful pasta dish for the palate and the eyes, with the bright yellow of the bell peppers, the crunchiness of the fried shishito peppers, and the rich burgundy color of the Aleppo pepper. Inspired by peperonata (a classic Italian summer onion-and-pepper stew that my aunt Grazia used to make all the time), this pasta is seasonal, gorgeous, and easy.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "white onion, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "medium yellow peppers, trimmed and cut into 1-inch strips",
+      "amount": "3"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "creste di gallo pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ricotta salata, shaved",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "Fried shishito peppers (recipe follows)",
+      "amount": ""
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "In a medium saucepan over medium heat, warm the olive oil. Add the onions and sauté for 1 minute, then add the bell peppers and cook for 2 to 3 minutes. Add the oregano, season with salt and pepper to taste, and stir.",
+    "Add the water, and cover. Let the bell peppers cook for about 10 minutes, or until soft. Turn off the heat. Using an immersion blender, blend until the consistency is creamy but not liquid.",
+    "Meanwhile, in a large pot of boiling salted water, cook the creste di gallo until al dente, drain, and transfer to the saucepan. Return the heat to medium, add the Parmigiano, and combine, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the ricotta salata, shishito peppers, Aleppo pepper, and a drizzle of oil. Buon appetito!"
+  ],
+  "image": "/recipes/creste-di-gallo-with-yellow-bell-pepper-puree-ricotta-salata-shishito-peppers-an.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

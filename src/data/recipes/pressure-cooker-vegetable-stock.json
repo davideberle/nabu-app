@@ -1,10 +1,10 @@
 {
   "id": "pressure-cooker-vegetable-stock",
-  "name": "PRESSURE-COOKER vegetable stock",
+  "name": "Pressure-Cooker Vegetable Stock",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 6 cups",
   "time": "TAKES 1 HOUR",
@@ -54,7 +54,7 @@
     "Position a muslin-lined strainer over a 2- to 3-quart saucepan and then ladle or pour the stock through. Let cool briefly, then press or twist the fabric to get more stock from the solids.",
     "Use the stock immediately, or transfer to airtight containers and refrigerate for up to 3 days or freeze for up to 3 months."
   ],
-  "image": null,
+  "image": "/recipes/pressure-cooker-vegetable-stock.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

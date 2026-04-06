@@ -1,0 +1,58 @@
+{
+  "id": "chia-bars-with-matcha-tea-and-dried-ground-cherries",
+  "name": "Chia Bars with Matcha TEA AND Dried Ground-Cherries",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 12 bars",
+  "intro": "If you go straight from work to your exercise session, you are likely to need a boost! Matcha tea and maca powder both provide you with extra energy. This bar has all the essential amino acids; the ground-cherries are loaded with vitamin C, and they also contain plenty of protein!",
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "2¼ cup (2½ dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "¼ cup (½ dl)"
+    },
+    {
+      "item": "matcha powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "maca powder",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    },
+    {
+      "item": "soft figs (if not soft, soak them for a while)",
+      "amount": "12–14"
+    },
+    {
+      "item": "ground-cherries",
+      "amount": "½ cup (1 dl)"
+    }
+  ],
+  "method": [
+    "Mix the cashews with the chia seeds in a food processor. Add all the ingredients—except the ground-cherries—and process some more. Fold in the ground-cherries and shape into bars with the help of a sheet of parchment paper."
+  ],
+  "image": "/recipes/chia-bars-with-matcha-tea-and-dried-ground-cherries.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

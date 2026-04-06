@@ -1,0 +1,61 @@
+{
+  "id": "cg-kachumber-salad",
+  "name": "Kachumber Salad",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes: this makes enough for 4–6 people as an accompaniment. you can easily double or triple the recipe",
+  "intro": "This is a popular salad in many Indian restaurants. Sometimes it’s on the menu but often it’s simply used to garnish dishes. It makes a nice side dish as it doesn’t compete with the other dishes served. It is colourful and crisp, and really helps to bring a meal together.",
+  "ingredients": [
+    {
+      "item": "red onion, very finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, very finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, very finely diced",
+      "amount": "1–2"
+    },
+    {
+      "item": "olive or vegetable oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped fresh coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "roasted cumin seeds Spice Blends",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the onion, cucumber and tomatoes together in a large bowl. Add the oil, lemon juice, chopped coriander (cilantro), cumin seeds and some salt and pepper to taste. Place in the fridge for about 30 minutes before serving."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  },
+  "time": {
+    "total": 30
+  }
+}

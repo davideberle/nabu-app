@@ -1,0 +1,82 @@
+{
+  "id": "kalamata-olive-bread",
+  "name": "Kalamata Olive Bread",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "(7fl oz) olive oil, plus a little extra for sautéeing the onion",
+      "amount": "200ml"
+    },
+    {
+      "item": "large onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(2lb 4oz) plain flour",
+      "amount": "1kg"
+    },
+    {
+      "item": "dried active yeast",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(2½ teaspoons) table salt",
+      "amount": "12g"
+    },
+    {
+      "item": "(7oz) pitted Kalamata olives",
+      "amount": "200g"
+    },
+    {
+      "item": "Heat a little olive oil in a sauté or frying pan, add the onion and sauté over a medium heat until soft. Leave to cool.",
+      "amount": ""
+    },
+    {
+      "item": "If you have a marble work surface, we recommend using it for kneading the dough, otherwise a large bowl is fine.",
+      "amount": ""
+    },
+    {
+      "item": "Combine the flour, yeast and salt on the marble work surface or in the large bowl and mix in enough warm water to form a dough, then knead until the dough is no longer sticking to your hands. Cover with a clean tea towel and leave in a warm place for about 15 minutes until the dough has risen.",
+      "amount": ""
+    },
+    {
+      "item": "Preheat the oven to 200°C (400°F), Gas Mark 6.",
+      "amount": ""
+    },
+    {
+      "item": "Add the remaining ingredients to the dough and knead until evenly incorporated. Divide the dough into 3 pieces and shape each into a round.",
+      "amount": ""
+    },
+    {
+      "item": "Place your loaves on a baking tray or trays, cover again and leave them to rise for a further 10–15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Bake for 30–40 minutes until browned and crusty on the outside. This is lovely served warm soon after baking, but the bread will also keep well to serve the following day.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat a little olive oil in a sauté or frying pan, add the onion and sauté over a medium heat until soft. Leave to cool.",
+    "If you have a marble work surface, we recommend using it for kneading the dough, otherwise a large bowl is fine.",
+    "Combine the flour, yeast and salt on the marble work surface or in the large bowl and mix in enough warm water to form a dough, then knead until the dough is no longer sticking to your hands. Cover with a clean tea towel and leave in a warm place for about 15 minutes until the dough has risen.",
+    "Preheat the oven to 200°C (400°F), Gas Mark 6.",
+    "Add the remaining ingredients to the dough and knead until evenly incorporated. Divide the dough into 3 pieces and shape each into a round.",
+    "Place your loaves on a baking tray or trays, cover again and leave them to rise for a further 10–15 minutes.",
+    "Bake for 30–40 minutes until browned and crusty on the outside. This is lovely served warm soon after baking, but the bread will also keep well to serve the following day."
+  ],
+  "image": null,
+  "time": {
+    "total": 70
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

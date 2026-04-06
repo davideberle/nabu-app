@@ -1,9 +1,10 @@
 {
   "id": "traditional-jellied-stock",
-  "name": "Traditional jellied stock",
+  "name": "Traditional Jellied Stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "pi dong 皮冻",
   "intro": "This is a recipe for old-fashioned jellied stock made by extracting the natural gelatine from pig’s trotters with a long simmering (its name in Chinese means “skin jelly”). It has a rich and wonderful flavor; make more than you need, freeze the surplus and use it to add richness to soups, stews and other dishes.",
@@ -38,5 +39,13 @@
     "Return the trotters and carcasses to the saucepan, cover with 3½ quarts (3.5 liters) water and bring to the boil. Skim, then add the ginger, spring onion and Shaoxing wine. Return to the boil, then turn down the heat and simmer gently for 3 hours.",
     "Strain and discard the trotters and carcasses. Boil to reduce the liquid to about 1 quart (1 liter). Season with salt and pepper. Allow to cool completely, then chill in the fridge overnight, or until set."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

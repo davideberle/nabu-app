@@ -3,24 +3,42 @@
   "name": "Honey-Roasted Pears",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:45 minutes |serves 3",
+  "servings": "serves 3",
+  "time": {
+    "prep": 5,
+    "cook": 45,
+    "total": 50
+  },
   "ingredients": [
     {
       "item": "large Bosc or other pears, halved, peeled, and cored",
       "amount": "3"
     },
     {
-      "item": "1/4 cup packed light brown sugar",
+      "item": "cup packed light brown sugar",
       "amount": ""
     },
     {
       "item": "warm honey",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "1-inch piece of vanilla bean, split lengthwise",
+      "amount": ""
+    },
+    {
+      "item": "Preheat the oven to 350°F. Put the pears, cut side down, in a baking dish just large enough to hold them in 1 layer.",
+      "amount": ""
+    },
+    {
+      "item": "Sprinkle with the brown sugar and drizzle with the honey. Scrape the seeds from the vanilla bean into the baking dish, then add the pod.",
+      "amount": ""
+    },
+    {
+      "item": "Bake, uncovered, using a pastry brush to baste the pears occasionally with the accumulated juices in the dish, until the pears are tender when pierced, about 45 minutes. Turn the pears cut side up and baste again with the syrupy juices. Let cool until just warm.",
       "amount": ""
     }
   ],
@@ -29,5 +47,10 @@
     "Sprinkle with the brown sugar and drizzle with the honey. Scrape the seeds from the vanilla bean into the baking dish, then add the pod.",
     "Bake, uncovered, using a pastry brush to baste the pears occasionally with the accumulated juices in the dish, until the pears are tender when pierced, about 45 minutes. Turn the pears cut side up and baste again with the syrupy juices. Let cool until just warm."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

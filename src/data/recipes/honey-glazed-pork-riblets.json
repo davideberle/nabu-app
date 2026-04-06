@@ -1,10 +1,10 @@
 {
   "id": "honey-glazed-pork-riblets",
-  "name": "HONEY-GLAZED pork riblets",
+  "name": "Honey-Glazed Pork Riblets",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
   "time": "TAKES ABOUT 45 MINUTES",
@@ -61,7 +61,7 @@
     "Unlock the cooker and, using tongs, place the ribs, bone-side up, on the prepared pan. Brush the ribs with some of the honey glaze, then broil for 4 to 5 minutes, until sizzling and browned here and there. Flip the ribs and repeat the glazing and broiling. Remove from the oven and let cool for a few minutes, then brush on any remaining glaze for extra shine. Cut between the bones.",
     "Serve the ribs hot, warm, or at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/honey-glazed-pork-riblets.jpg",
   "category": {
     "dish_type": [
       "main"

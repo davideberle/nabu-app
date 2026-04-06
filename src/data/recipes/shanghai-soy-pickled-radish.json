@@ -1,9 +1,10 @@
 {
   "id": "shanghai-soy-pickled-radish",
-  "name": "Shanghai soy-pickled radish",
+  "name": "Shanghai Soy-Pickled Radish",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "jiang luo bo 酱萝卜",
   "intro": "This crisp, juicy pickle is totally addictive, and a wonderful standby to keep in the fridge. In Shanghai, I’ve often eaten it as an appetizer alongside other dishes; at home, I might have a few slices with breakfast congee or, in a non-Chinese context, with cold meats or cheese. Just a slice or two perks up almost any meal. Do make it with fresh, firm, clean-looking radishes, ideally those picked after a winter frost, when they are sweetest. Don’t use radishes with flesh that is holey or cottony in texture. Some people add a dried chilli or two to the pickling brine. In restaurants, they often arrange the curved slices of pickled radish in concentric circles on the serving dish, like the petals of a flower.",
@@ -43,5 +44,13 @@
     "To serve, remove some of the radish from the pickling liquid and dress with a tiny amount of sesame oil.",
     "Many Jiangnan people adore the pickled skin of the radish, because it has a tighter, more distinctive crispness. Take 3 white radishes and trim, top and tail them as described above. Put each radish on your chopping board and thickly slice off one of its sides, including the skin and about ½ in (1cm) of flesh at the thickest part. Rotate the radish by 90 degrees and do the same again. Repeat twice, so that you end up with one long baton of inner radish that is square in cross-section, and four long, thick strips of skin. Use the inner flesh of the radish for other recipes (it will be delicious in soups and stews, or slivered and made into a salad – see here). Put a piece of radish skin on your chopping board and cut it diagonally into ½–1 in (1–2cm) strips. Salt and pickle it in the soy-sauce brine as in the main recipe."
   ],
-  "image": "/recipes/shanghai-soy-pickled-radish.jpg"
+  "image": "/recipes/shanghai-soy-pickled-radish.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

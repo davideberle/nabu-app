@@ -1,10 +1,10 @@
 {
   "id": "lemongrass-tempeh-crumbles",
-  "name": "LEMONGRASS tempeh crumbles",
+  "name": "Lemongrass Tempeh Crumbles",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4",
   "time": "TAKES 25 MINUTES",
@@ -69,7 +69,7 @@
     "Toward the end of the 10 minutes, when some of the tempeh is golden brown, add the sesame seeds (if using) and cook, stirring frequently, for about 2 minutes longer to brown the tempeh further. The mixture will feel lighter under the weight of your spatula. When most of the tempeh is golden brown, remove from the heat, stir in the green onions, and let rest for 5 minutes to deepen in flavor. Taste and, if needed, add salt, a pinch at a time.",
     "Serve the tempeh warm or at room temperature, with the cucumber, if desired. If diners want more heat, pass additional sriracha."
   ],
-  "image": null,
+  "image": "/recipes/lemongrass-tempeh-crumbles.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

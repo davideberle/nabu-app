@@ -1,0 +1,65 @@
+{
+  "id": "cg-honey-mustard-raita",
+  "name": "Honey Mustard Raita",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes just over 250ml (1 cup)",
+  "intro": "This is a delicious dip for papadams, kebabs, samosas and chicken pakora. I love to serve it with crab samosas.",
+  "ingredients": [
+    {
+      "item": "plain yoghurt",
+      "amount": "210g"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh curry leaves (optional, but don’t use dried)",
+      "amount": "10"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the yogurt, coriander (cilantro), honey and lime juice in a bowl and whisk until smooth and creamy. Set aside. Heat the oil in a small frying pan over a high heat and add the mustard seeds. When they begin to pop, reduce the heat and add the curry leaves, turmeric and garlic and ginger paste. Stir for about 30 seconds. Pour the hot oil over the yoghurt mixture and whisk briskly again to prevent the yoghurt from curdling. Check for seasoning and sprinkle with salt to taste."
+  ],
+  "image": null,
+  "dietary": [
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  }
+}

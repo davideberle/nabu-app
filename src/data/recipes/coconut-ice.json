@@ -1,0 +1,35 @@
+{
+  "id": "coconut-ice",
+  "name": "Coconut ICE",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "ingredients": [
+    {
+      "item": "coconut water per popsicle mold",
+      "amount": "¼–½ cup (½–¾ dl)"
+    },
+    {
+      "item": "raspberries and 2 small chunks of mango per popsicle mold",
+      "amount": "3"
+    },
+    {
+      "item": "coconut palm sugar per popsicle mold",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Place the mango chunks and frozen raspberries in each mold, and fill the molds up with coconut water. Sprinkle with coconut palm sugar, and put the molds in the freezer for about 6 hours."
+  ],
+  "image": "/recipes/coconut-ice.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

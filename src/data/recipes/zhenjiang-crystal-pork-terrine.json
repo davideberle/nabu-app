@@ -1,9 +1,10 @@
 {
   "id": "zhenjiang-crystal-pork-terrine",
-  "name": "Zhenjiang crystal pork terrine",
+  "name": "Zhenjiang Crystal Pork Terrine",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "zhen jiang shui jing xiao rou 镇江水晶肴肉",
   "intro": "In China, the old Yangtze river town of Zhenjiang is famed not only for its vinegar, but also for this delectable terrine, a speciality of the Yanchun restaurant. Made with pork hock, which is traditionally cured with saltpeter, boiled and then pressed, it has a pretty pink-and-white color, with a halo of “crystal” clear aspic. The terrine is usually eaten as an appetizer with a dip of vinegar spiked with ginger. In 1949, it received the accolade of being included on the menu of a banquet held in Beijing to mark the founding of the People’s Republic of China. According to legend, one of the Taoist Immortals, Zhang Guolao, was once flying over Zhenjiang on his white mule when he sniffed the glorious perfume of crystal pork terrine on the wind. He was on his way to a party in honor of the Queen Mother of the West, but its scent so beguiled him that he forgot all about the feast, and instead whooshed himself down into the mortal world to taste it. This recipe is based on one in a textbook by Chen Zhongming of the culinary department of the Yangzhou Business School. You need to start curing the meat 4–5 days before you wish to eat it. You’ll need a pair of rectangular containers about 2 in (5cm) deep; one to hold the meat and one to place on top so you can weigh it down to press it. You will also need curing salts: I use “continental curing salts,” which are 99.6 percent salt and 0.4 percent sodium nitrite. The powdered alum, which helps clarify the aspic, can be found in Indian groceries or online. Ask your butcher to bone the pork hocks for you so that they can be laid out flat.",
@@ -46,7 +47,7 @@
     },
     {
       "item": "Chinkiang vinegar, to serve",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "fresh ginger, cut into slivers, to serve",
@@ -60,5 +61,13 @@
     "Once cooked, discard the spice bundle. Gently place the hocks next to each other, skin-side down, in a 2 in (5cm) deep rectangular container. Put another container the same size on top, add some heavy weights and press the meat for 20 minutes. Carefully strain the cooking liquor back into the pan and return it to the boil. Add the alum, then strain 2 cups (500ml) of the liquid over the pork, prodding it with a chopstick to make sure any air pockets are filled. Cool, then chill overnight, until set.",
     "Turn the terrine out of the container, cut it into ½ in (1cm) slices and pile them neatly on a plate. Pour the vinegar into dipping dishes, add the slivered ginger and serve alongside the pork for dipping."
   ],
-  "image": "/recipes/zhenjiang-crystal-pork-terrine.jpg"
+  "image": "/recipes/zhenjiang-crystal-pork-terrine.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

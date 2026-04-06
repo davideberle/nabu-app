@@ -1,0 +1,59 @@
+{
+  "id": "radiatori-with-pea-shoot-and-pistachio-pesto-pecorino-and-jalape-o-chili-oil",
+  "name": "Radiatori with Pea Shoot and Pistachio Pesto, Pecorino, and Jalapeño Chili Oil",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Sweet and grassy at the same time, pea shoots are cultivated in the PNW and are ready to be harvested in the late spring. With their delicious tendrils, they are perfect in a salad and can also be used in a delicate pesto for a spring vegetarian pasta dish.",
+  "ingredients": [
+    {
+      "item": "pea shoots",
+      "amount": "4 cups"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "shelled pistachios",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Juice of 1 medium lemon",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "radiatori pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "jalapeño chili oil (recipe follows)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a food processor, pulse the pea shoots (reserving a few shoots for finishing), pecorino, pistachios, and lemon juice, adding the olive oil slowly until you obtain a creamy consistency. Season with salt and pepper to taste. In a medium pan over low heat, warm the pesto.",
+    "Meanwhile, in a large pot of boiling salted water, cook the radiatori until al dente, drain, and transfer to the pan. Quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with pecorino, the reserved pea shoots, and a nice drizzle of jalapeño chili oil."
+  ],
+  "image": "/recipes/radiatori-with-pea-shoot-and-pistachio-pesto-pecorino-and-jalape-o-chili-oil.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "homemade-mayonnaise",
+  "name": "Homemade Mayonnaise",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "powdered mustard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "dash of white pepper",
+      "amount": ""
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "cups olive oil",
+      "amount": ""
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Combine mustard, sugar, pepper, and salt.",
+      "amount": ""
+    },
+    {
+      "item": "Add vinegar and egg yolks and beat together with whisk until well combined.",
+      "amount": ""
+    },
+    {
+      "item": "Add oil one drop at a time, beating constantly.",
+      "amount": ""
+    },
+    {
+      "item": "When mayonnaise starts to thicken, thin with lemon juice and continue beating, alternately adding lemon juice and oil.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine mustard, sugar, pepper, and salt.",
+    "Add vinegar and egg yolks and beat together with whisk until well combined.",
+    "Add oil one drop at a time, beating constantly.",
+    "When mayonnaise starts to thicken, thin with lemon juice and continue beating, alternately adding lemon juice and oil."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

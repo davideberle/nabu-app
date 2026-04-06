@@ -1,10 +1,10 @@
 {
   "id": "green-mango-cabbage-and-jicama-salad",
-  "name": "GREEN MANGO, CABBAGE, AND jicama salad",
+  "name": "Green Mango, Cabbage, AND Jicama Salad",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4 to 6",
   "time": "TAKES 40 MINUTES",
@@ -60,7 +60,7 @@
     "Using a fine rasp grater, such as a Microplane, zest the lime directly into a small bowl. Squeeze the lime to get 2 tablespoons of juice; if you’re short, add vinegar to make up the difference. Add the lime juice to the zest and then add 1½ tablespoons sugar. Stir to dissolve the sugar, then taste and add more sugar, if needed, for a strong tart-sweet finish. Add enough of the fish sauce to arrive at a bold, salty-tangy finish. Add the garlic and chile, stir, and then set the dressing aside.",
     "Toss the vegetables and fruit well with the dressing, mint, and peanuts, until the cabbage and jicama soften slightly. Transfer to a shallow serving bowl, leaving excess dressing behind."
   ],
-  "image": null,
+  "image": "/recipes/green-mango-cabbage-and-jicama-salad.jpg",
   "category": {
     "dish_type": [
       "side"

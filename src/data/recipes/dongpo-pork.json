@@ -1,9 +1,10 @@
 {
   "id": "dongpo-pork",
-  "name": "Dongpo pork",
+  "name": "Dongpo Pork",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "dong po rou 东坡肉",
   "intro": "This sumptuous dish, named after the Song dynasty poet Su Dongpo, is a Hangzhou speciality. Large square chunks of pork belly are slow-cooked with soy sauce, sugar and Shaoxing wine until they are so exquisitely tender that they melt away at a chopstick’s touch. While serving as governor of Hangzhou in the late eleventh century, Su Dongpo organized the dredging of the city’s beautiful West Lake, which had become clogged. According to local lore, the grateful townspeople sent him gifts of his favorite meat for Chinese New Year; touched by their kindness, the poet-governor instructed a servant to red-braise the pork and return it with a gift of wine. The servant mistakenly thought he’d been told to cook the pork with the wine, and the resulting dish was so magnificent it has never been forgotten. The supposed rule with Dongpo pork is to let wine take the place of water in the stew, but in practice most chefs add a little water. Although it’s traditionally cooked on the stovetop, a low oven works very well too. The final dish is so rich and intense that one square of pork, served with plain rice, is usually enough for each person. Make it a day in advance and chill it if you want to remove the layer of solid fat that will collect on the surface. Do not make this dish with everyday Shaoxing cooking wine; invest in a bottle of five- or ten-year aged drinking wine, which can be found in good Chinese supermarkets. Happily, although this is one of the finest dishes in the whole pantheon of Chinese cooking, it’s very easy to make.",
@@ -47,5 +48,13 @@
     "Remove and discard the ginger and spring onions. For best results, leave the pork to cool in the pan and chill overnight. Scrape off and remove the layer of white fat on the surface (this can be used for other purposes, such as frying potatoes or stir-frying mushrooms).",
     "Reheat the pork in the pan, turning the pieces skin-side up as soon as the juices have loosened. You want to end up with a dark, slightly syrupy sauce: if there is too much liquid, strain it off, fast-boil to reduce it, then return it to the pan. Serve the meat and its juices with plain white rice or steamed lotus leaf buns."
   ],
-  "image": "/recipes/dongpo-pork.jpg"
+  "image": "/recipes/dongpo-pork.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

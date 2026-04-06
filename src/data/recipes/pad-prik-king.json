@@ -8,7 +8,8 @@
   "servings": "serves 3",
   "intro": "This dish combines the special flavors of Thailand into a quick and easy stir-fry. Crispy chicken and long beans dipped in a sweet salty red curry paste and served with a creamy salted duck egg. Try a vegan version by using fried tofu!",
   "time": {
-    "prep": "35 minutes"
+    "prep": "35 minutes",
+    "total": 15
   },
   "ingredients": [
     {
@@ -67,5 +68,10 @@
     "Add the long beans and cook until the chicken is fully cooked, the sauce is no longer sticky and the curry has coated the chicken and beans. You may also add salted duck eggs (Step 2) at this Step. Stir well.",
     "Remove from heat and transfer to a plate. Garnish with finely sliced kaffir lime leaves."
   ],
-  "image": "/recipes/pad-prik-king.jpg"
+  "image": "/recipes/pad-prik-king.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

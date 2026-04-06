@@ -1,0 +1,77 @@
+{
+  "id": "sesame-seed-sauce",
+  "name": "Sesame Seed Sauce",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Basics"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "minced garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tahini (sesame seed paste)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "approximately",
+      "amount": ""
+    },
+    {
+      "item": "cup cold water",
+      "amount": ""
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Beat garlic into tahini, then gradually beat in lemon juice and enough cold water to make a smooth, creamy dressing.",
+      "amount": ""
+    },
+    {
+      "item": "Add cumin and salt.",
+      "amount": ""
+    },
+    {
+      "item": "Combine garlic and tahini in work bowl.",
+      "amount": ""
+    },
+    {
+      "item": "Pulse briefly.",
+      "amount": ""
+    },
+    {
+      "item": "Add remaining ingredients and blend quickly.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Beat garlic into tahini, then gradually beat in lemon juice and enough cold water to make a smooth, creamy dressing.",
+    "Add cumin and salt.",
+    "Combine garlic and tahini in work bowl.",
+    "Pulse briefly.",
+    "Add remaining ingredients and blend quickly."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

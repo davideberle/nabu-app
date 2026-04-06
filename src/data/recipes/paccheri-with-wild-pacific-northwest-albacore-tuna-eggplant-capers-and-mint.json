@@ -1,0 +1,80 @@
+{
+  "id": "paccheri-with-wild-pacific-northwest-albacore-tuna-eggplant-capers-and-mint",
+  "name": "Paccheri with Wild Pacific Northwest Albacore Tuna, Eggplant, Capers, and Mint",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Every summer I wait impatiently for the arrival of the tuna-fishing season, so I can make this traditional Italian pasta dish that incorporates the classic Sicilian combo of eggplant, mint, and capers.\n\nNorth Pacific albacore tuna are typically fished between July and September by troller boats off the Washington State coastline. The taste of fresh-caught albacore, with its firm, steak-like texture, is a delight for any palate, and I’m transported straight to the southern coast of Italy every time I make this recipe.",
+  "ingredients": [
+    {
+      "item": "medium zucchini, cut into ½-inch rounds",
+      "amount": "1"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "spearmint leaves, finely chopped",
+      "amount": "8 to 10"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "small eggplant, cut into 2-inch cubes",
+      "amount": "1"
+    },
+    {
+      "item": "albacore tuna fillet",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "paccheri pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Cherry tomatoes, halved, for garnish (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large pot of boiling salted water, blanch the zucchini for 5 minutes, drain, and put in a food processor with the red pepper flakes, a pinch of salt and pepper, and 2 tablespoons of the olive oil. Blend until creamy and set aside.",
+    "In a large pan over medium heat, warm the remaining 2 tablespoons olive oil. Add the shallot, garlic, three-quarters of the mint, and the capers, and sauté for 1 minute. Stir in the eggplant so that all the pieces are coated with olive oil. Season with salt and pepper to taste, cover, and reduce the heat to medium-low. Cook for 3 to 4 minutes, then uncover, increase the heat to medium, stir in the tuna, and cook for 1 minute.",
+    "Meanwhile, in a large pot of boiling salted water, cook the paccheri until al dente, drain, and transfer to the pan. Add the zucchini sauce and oregano and sauté for 1 minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls, top with the remaining mint, and serve."
+  ],
+  "image": "/recipes/paccheri-with-wild-pacific-northwest-albacore-tuna-eggplant-capers-and-mint.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

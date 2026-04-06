@@ -1,0 +1,52 @@
+{
+  "id": "strawberry-coconut-yogurt",
+  "name": "Strawberry Coconut Yogurt",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "A kid-friendly and good vegetarian yogurt for newbies. It’s beautiful and amazingly delicious! Good-for-you fats, antioxidants from the “super-berry” strawberry, naturally sweetened with dates. Psst—make some extra yogurt and pour it into ice cream molds and serve it as a refreshing and delicious frozen yogurt.",
+  "ingredients": [
+    {
+      "item": "dates",
+      "amount": "4"
+    },
+    {
+      "item": "strawberries, fresh or frozen",
+      "amount": "15"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "5 fl oz (1½ dl)"
+    },
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "fresh strawberries",
+      "amount": "6",
+      "group": "TOPPINGS"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp",
+      "group": "TOPPINGS"
+    }
+  ],
+  "method": [
+    "Remove the stones from the dates. In a food processor or blender, mix all the ingredients (except toppings) to a creamy consistency. Spoon into bowls and top with sliced fresh strawberries and bee pollen."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

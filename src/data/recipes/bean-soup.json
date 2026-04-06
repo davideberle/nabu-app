@@ -1,0 +1,100 @@
+{
+  "id": "bean-soup",
+  "name": "Bean Soup",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 6",
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "ingredients": [
+    {
+      "item": "navy beans",
+      "amount": "1 lb"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "2 cups"
+    },
+    {
+      "item": "minced garlic, optional",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "large carrot, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "celery, chopped",
+      "amount": "2 stalks"
+    },
+    {
+      "item": "one 6-ounce can tomato puree",
+      "amount": ""
+    },
+    {
+      "item": "quarts water",
+      "amount": "3"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Soak beans in hot water to cover for 30 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Sauté onion, garlic, carrot, and celery in oil until limp.",
+      "amount": ""
+    },
+    {
+      "item": "Add tomato puree and water.",
+      "amount": ""
+    },
+    {
+      "item": "Bring to a boil.",
+      "amount": ""
+    },
+    {
+      "item": "Add drained beans and salt and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Simmer for about 2 hours, or until beans are tender.",
+      "amount": ""
+    },
+    {
+      "item": "Add parsley after 1¾ hours.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak beans in hot water to cover for 30 minutes.",
+    "Sauté onion, garlic, carrot, and celery in oil until limp.",
+    "Add tomato puree and water.",
+    "Bring to a boil.",
+    "Add drained beans and salt and pepper.",
+    "Simmer for about 2 hours, or until beans are tender.",
+    "Add parsley after 1¾ hours."
+  ],
+  "image": "/recipes/bean-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

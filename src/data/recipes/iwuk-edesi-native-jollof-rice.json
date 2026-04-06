@@ -22,7 +22,7 @@
     },
     {
       "item": "tomato paste",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "and 1/2 cups water",
@@ -34,7 +34,7 @@
     },
     {
       "item": "iru (fermented locust beans)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cubes",
@@ -54,5 +54,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/iwuk-edesi-native-jollof-rice.jpg"
+  "image": "/recipes/iwuk-edesi-native-jollof-rice.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

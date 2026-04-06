@@ -1,9 +1,10 @@
 {
   "id": "steamed-pork-in-lotus-leaves",
-  "name": "Steamed pork in lotus leaves",
+  "name": "Steamed Pork in Lotus Leaves",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "he ye fen zheng rou 荷叶粉蒸肉",
   "intro": "In the summer, lotus leaves sprawl languidly over glittering ponds and lakes all over the Jiangnan region. Here, they are used to wrap marinated pork clothed in a spiced rice meal that becomes soft, sticky and soothing after steaming, rather like a savory version of an English steamed treacle pudding. The pork, as you might imagine, is hauntingly soft and aromatic. If you are using a traditional steamer for this recipe, make sure the water doesn’t boil dry during the long cooking. Alternatively, use a pressure cooker and steam for half an hour; in my experience, this gives an even more fabulous result. Chinese supermarkets sometimes sell ready-made spiced rice meal for making dishes like this, which is usually labeled “steam powder” (zheng rou fen). Otherwise, you can make your own: put 7 oz (200g) Thai fragrant rice, one star anise and a couple of pieces of cassia bark or cinnamon stick in a dry wok and stir over a medium flame for 10–15 minutes, until the rice is brittle, yellowed and aromatic. Allow to cool, then pick out and discard the spices. Grind in a food processor until the rice has a consistency like fine couscous. If by any chance you can use fresh lotus leaves, blanch them in boiling water before using.",
@@ -58,5 +59,13 @@
     "Soak the lotus leaf for a few minutes in boiling water to make it supple. You may have to turn it as you dunk it in the hot water until it softens enough to fit into your bowl.",
     "When you are ready to start cooking, add the rice meal to the pork and mix well so that every slice of meat is coated. Lay the lotus leaf, shiny side up, in a shallow heatproof bowl large enough to take the pork, but that will fit into your steamer (you will need to tuck the center of the leaf under so that it will lie flat). The leaf will flop over the edges of the bowl. Place the slices of pork, skin-side up, in neat rows to fill the bowl. Fold the leaf over to cover the pork snugly, then trim off the excess with a pair of scissors. Put it in a steamer and steam over a high flame for 2 hours. If you have a pressure cooker, steam at high pressure for 30 minutes, then allow the pressure to release naturally. Lift the top part of the leaf and sprinkle with sesame oil before serving."
   ],
-  "image": "/recipes/steamed-pork-in-lotus-leaves.jpg"
+  "image": "/recipes/steamed-pork-in-lotus-leaves.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

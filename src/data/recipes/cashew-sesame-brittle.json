@@ -1,10 +1,10 @@
 {
   "id": "cashew-sesame-brittle",
-  "name": "CASHEW SESAME brittle",
+  "name": "Cashew Sesame Brittle",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Sweets and Coffee"
   },
   "servings": "makes about 8 ounces, to serve 6",
   "time": "TAKES 45 MINUTES",
@@ -51,7 +51,7 @@
     "Add the baking soda to the pan, stirring vigorously; the mixture will bubble, rise, and turn opaque. Immediately pour it onto the parchment paper and use the spatula to spread it out so it’s roughly ¼ inch thick. Let sit for 5 minutes to set, then put the parchment on the rack to cool completely, about 30 minutes. Lift the brittle off the paper, check the underside, and, if needed, blot the bottom with paper towels to remove excess oil. Break the brittle into shards.",
     "Eat soon or store in an airtight container at room temperature for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/cashew-sesame-brittle.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

@@ -54,5 +54,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

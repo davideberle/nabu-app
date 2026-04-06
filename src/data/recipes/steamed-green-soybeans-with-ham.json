@@ -1,9 +1,10 @@
 {
   "id": "steamed-green-soybeans-with-ham",
-  "name": "Steamed green soybeans with ham",
+  "name": "Steamed Green Soybeans with Ham",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Vegetables"
   },
   "subtitle": "huo tui zheng qing dou 火腿蒸青豆",
   "intro": "This simple, healthy dish is exquisitely delicious, and looks beautiful too. The recipe comes from the Dragon Well Manor restaurant in Hangzhou, but the basic method is typical of traditional cooking across the region. In the past, farmers would often economize on fuel by cooking a whole meal over a single fire in the wood-burning range. In the bottom of the wok, set into the top of the range, rice would boil and then steam; above it, sitting on a bamboo frame, a few bowls containing other ingredients would also steam in the heat, under a tall wooden lid; everything would be ready to eat at the same moment, with a few homemade pickles from an earthware jar. In Shaoxing they have a specific dialect word (pronounced hing) for this way of steaming dishes over the rice. In characteristic Jiangnan style, the flavor of the fresh vegetable is enhanced by the strong umami taste of a preserve, in this case ham, and some meaty savoriness in the form of stock and lard. The same pattern can be seen in countless dishes: steamed bamboo shoots or sliced taro with ham, Chinese cabbage with salt pork, Asian radish with salted fish, plain silken tofu with fermented amaranth stalks, to name but a few. You might like to try the following recipe with peas, or fava beans. Bacon or sliced Chinese wind-dried sausage may be substituted for the ham. In China they steam the ham before slicing it; this fixes its shape, which makes for neater cutting and a more professional appearance.",
@@ -37,5 +38,13 @@
     "Put the beans in a heatproof bowl. Add the stock, wine, lard or oil, season with salt and mix together well. Slice the ham and arrange it on top of the beans.",
     "Put the bowl, uncovered, in a steamer basket and steam over a high flame for 15 minutes (add an extra 5 minutes if cooking the soybeans from frozen). Serve."
   ],
-  "image": "/recipes/steamed-green-soybeans-with-ham.jpg"
+  "image": "/recipes/steamed-green-soybeans-with-ham.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,0 +1,61 @@
+{
+  "id": "raw-crumble",
+  "name": "RAW Crumble",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 1 small pie",
+  "intro": "A perfect, delicious, and awesomely good-for-you snack!",
+  "ingredients": [
+    {
+      "item": "almonds",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "dates",
+      "amount": "8"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "rolled oats",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "coconut oil, softened",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh berries",
+      "amount": "1¼–1¾ cup (3–4 dl)",
+      "group": "SUGGESTIONS FOR 3 DIFFERENT FILLINGS"
+    },
+    {
+      "item": "frozen berries, defrosted",
+      "amount": "½ lb (225 gr)",
+      "group": "SUGGESTIONS FOR 3 DIFFERENT FILLINGS"
+    },
+    {
+      "item": "apples, chopped in the food processor with 8 soaked (dried) apricots",
+      "amount": "4",
+      "group": "SUGGESTIONS FOR 3 DIFFERENT FILLINGS"
+    }
+  ],
+  "method": [
+    "Run the almonds in a food processor until they are finely chopped. Remove the pits from the dates. Add the remaining ingredients, except the filling, and process until everything is mixed to make a dough. Set ¼ of the dough aside to make a crumble to sprinkle over the filling, and press out the remaining dough into a pie pan measuring about 8” (20 cm) in diameter. Fill the pie shell with any of the suggested fillings and sprinkle crumbs of the set aside dough over the top."
+  ],
+  "image": "/recipes/raw-crumble.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

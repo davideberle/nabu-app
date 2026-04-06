@@ -1,10 +1,10 @@
 {
   "id": "char-siu-chicken",
-  "name": "CHAR SIU chicken",
+  "name": "Char SIU Chicken",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
   "time": "TAKES 45 MINUTES",
@@ -48,7 +48,7 @@
     "In a large bowl, stir together the garlic, five-spice powder, honey, hoisin, soy sauce, ketchup, and sesame oil. Remove 3 tablespoons and set aside for glazing the chicken. Add the chicken to the bowl, coating the pieces well. Cover with plastic wrap and marinate at room temperature for 30 minutes, or refrigerate up to 24 hours (return to room temperature before cooking).",
     "Lightly oil a cast-iron stove-top grill pan and set over medium-high heat. Add the chicken and cook for 6 to 10 minutes, turning several times. To test for doneness, pierce the flesh with the tip of a knife; the chicken is cooked when clear juices flow out. During the last 2 minutes, when the chicken feels firmish, baste with the reserved marinade to freshen flavor and add sheen. Transfer to a platter and let rest for 5 to 10 minutes before serving."
   ],
-  "image": null,
+  "image": "/recipes/char-siu-chicken.jpg",
   "category": {
     "dish_type": [
       "main"

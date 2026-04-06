@@ -1,10 +1,10 @@
 {
   "id": "rice-noodle-salad-bowl",
-  "name": "RICE NOODLE salad bowl",
+  "name": "Rice Noodle Salad Bowl",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
   "time": "TAKES ABOUT 1½ HOURS",
@@ -94,7 +94,7 @@
     "Cook the skewers for 8 to 12 minutes, turning frequently and basting with oil, until the meat is slightly charred and cooked through. Nick a piece with the point of a knife to check. Divide the meat among the bowls, either keeping it on the skewers or sliding it off. Crown with the nuts, fried onions, and reserved herbs.",
     "Serve the bowls with the sauce on the side. Have diners dress and toss their own bowls."
   ],
-  "image": null,
+  "image": "/recipes/rice-noodle-salad-bowl.jpg",
   "category": {
     "dish_type": [
       "side"

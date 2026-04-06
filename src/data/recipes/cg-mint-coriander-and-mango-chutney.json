@@ -1,0 +1,54 @@
+{
+  "id": "cg-mint-coriander-and-mango-chutney",
+  "name": "Mint, Coriander AND Mango Chutney",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Accompaniments"
+  },
+  "servings": "makes enough for 4–6 as an accompaniment",
+  "intro": "I love this simple chutney. It’s so good spooned over the lamb seekh kebabs: you will be amazed how the flavours work together. If you’re serving this to guests, they’ll probably be wondering what the heck went into it, it’s such an interesting flavour combo.",
+  "ingredients": [
+    {
+      "item": "of coriander (cilantro), leaves only",
+      "amount": "Small bunch"
+    },
+    {
+      "item": "of mint, leaves only",
+      "amount": "Large bunch"
+    },
+    {
+      "item": "smooth mango chutney",
+      "amount": "200ml"
+    },
+    {
+      "item": "fresh green chillies, to taste, finely chopped",
+      "amount": "1–4"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Finely chop the coriander (cilantro) and mint leaves and place in a blender with the remaining ingredients, adding salt to taste. Blend until smooth and use within three days."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "condiment"
+    ]
+  }
+}

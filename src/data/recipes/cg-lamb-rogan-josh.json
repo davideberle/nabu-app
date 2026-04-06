@@ -1,0 +1,93 @@
+{
+  "id": "cg-lamb-rogan-josh",
+  "name": "Lamb Rogan Josh",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "The Classic British Curries"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Just like many of the British versions of Indian curries, our lamb rogan josh is quite a lot different to those made in India. Mutton or lamb rogan josh originates from the Kashmir region of India where it is made with tempered whole spices such as cloves, cinnamon, bay leaves, cardamom and deseeded Kashmiri dried chillies. Meat on the bone is braised in a sauce that is deep red in colour, both from the Kashmiri chillies and roton jot, which is a natural red food colouring and difficult to come by in the West, where the red colouring is achieved with paprika and tomato.",
+  "ingredients": [
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chilli powder, or more to taste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "125ml"
+    },
+    {
+      "item": "base curry sauce, heated",
+      "amount": "500ml"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "pre-cooked stewed lamb, plus 200ml (scant 1 cup) of its cooking stock",
+      "amount": "700g"
+    },
+    {
+      "item": "tomatoes, quartered",
+      "amount": "2"
+    },
+    {
+      "item": "raw cashew paste",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped coriander (cilantro) leaves",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chopped red onion, to garnish",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil in a large frying pan over a medium-high heat until hot. Add the garlic and ginger paste and let it sizzle for about 30 seconds, stirring continuously. Add the paprika and chilli powder and fry for about 30 seconds. The mixture should turn a darker red as it cooks. Pour in the tomato purée, which should start to bubble as soon as it hits the pan. Cook it down by about half then stir in 250ml (1 cup) of the base curry sauce, the cumin and mixed powder.",
+    "Allow the sauce to simmer for a couple of minutes, without stirring unless it is obviously catching on the pan. Some of the sauce should caramelize to the sides of the pan; you want to scrape it off from time to time as it adds a nice smoky flavour. Add the pre-cooked lamb and the rest of the base sauce with the stock.",
+    "Let the sauce come to a boil until it reduces to your preferred consistency, only stirring if it is catching. Add the tomato wedges to the sauce.",
+    "To serve, swirl in the cashew paste then add the yoghurt 1 tbsp at a time, stirring continuously. Sprinkle with the dried fenugreek leaves, garam masala and add salt to taste. Top with the coriander (cilantro) and garnish with chopped red onion and a little plain yoghurt."
+  ],
+  "image": "/recipes/curry-guy-cg-lamb-rogan-josh.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

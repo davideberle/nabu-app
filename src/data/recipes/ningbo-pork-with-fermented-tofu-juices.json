@@ -1,9 +1,10 @@
 {
   "id": "ningbo-pork-with-fermented-tofu-juices",
-  "name": "Ningbo pork with fermented tofu juices",
+  "name": "Ningbo Pork with Fermented Tofu Juices",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "tai cai xiao fang kao 苔菜小方",
   "intro": "Ningbo chefs are best known for their delicate ways with fish and seafood, but the city also prides itself on some rich stewed dishes, such as turtle, slow-cooked with rock sugar into an ecstasy of sticky voluptuousness. Fresh turtles are even harder to come by in the West than they are in China, but I hope you’ll be satisfied by this fragrant slow-cooked pork, another classic Ningbo stew. The pork is traditionally served with a garnish of deep-fried branched string lettuce seaweed from the Ningbo coast, but it’s also delicious on its own. If you wish to achieve a similar flavor and mouthfeel to the seaweed, I suggest deep-fried cabbage leaves, which sound unlikely but are remarkably good (see here). If you can find the seaweed, whole or flaked and ready-to-use, it will add a sparkle of magic to the recipe. This dish is just one of the many versions of pork slow-cooked with the pink juices of red fermented tofu or, in Suzhou and Wuxi, with red yeasted rice, wine and sugar.",
@@ -63,5 +64,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the spring onions and ginger and stir-fry until they smell wonderful, then add the pork, wine, fermented tofu liquid, sugar, light soy sauce and ½ teaspoon of the dark soy sauce, with enough stock or water to just cover the meat. Bring to the boil, then cover and simmer over a low flame or in the oven for 1 hour, until tender. Spoon the liquid over the pork occasionally.",
     "When the pork has cooked, transfer the pan to a high flame, remove the lid and boil rapidly, spooning the liquid over the pork, until it has reduced to a thick, syrupy consistency. Add the remaining dark soy sauce as the liquid reduces. If you are using the deep-fried cabbage or seaweed, first arrange the pork chunks on a serving dish and pour a little sauce over them, then pile up the cabbage or seaweed on the other end of the dish and sprinkle lightly with granulated sugar. If using aonori-ko seaweed flakes, simply sprinkle them over the finished dish. Serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 75
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

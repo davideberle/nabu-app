@@ -3,9 +3,15 @@
   "name": "Grec-Mex Whipped Feta",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Appetizers"
   },
-  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 3",
+  "servings": "serves 3",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
   "ingredients": [
     {
       "item": "garlic clove",
@@ -16,33 +22,66 @@
       "amount": "1"
     },
     {
-      "item": "to 3 pickled jalapeños, drained, seeded, and chopped",
-      "amount": "1"
+      "item": "pickled jalapeños, drained, seeded, and chopped",
+      "amount": "1 to 3"
     },
     {
       "item": "chopped canned chipotles in adobo sauce",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
-      "item": "chopped fresh cilantro",
-      "amount": "½ cup (25 g)"
+      "item": "(25 g) chopped fresh cilantro",
+      "amount": "½ cup"
     },
     {
-      "item": "crumbled Greek feta",
-      "amount": "3 cups (450 g)"
+      "item": "(450 g) crumbled Greek feta",
+      "amount": "3 cups"
     },
     {
-      "item": "to ⅔ cup (120 to 160 ml) extra-virgin Greek olive oil",
+      "item": "to",
       "amount": "½"
     },
     {
-      "item": "to 3 tablespoons strained fresh lemon juice",
-      "amount": "2"
+      "item": "cup (120 to 160 ml) extra-virgin Greek olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Grated zest of 1 small lemon",
+      "amount": ""
+    },
+    {
+      "item": "strained fresh lemon juice",
+      "amount": "2 to 3 tbsp"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Pita chips, store-bought or homemade (",
+      "amount": ""
+    },
+    {
+      "item": "here",
+      "amount": ""
+    },
+    {
+      "item": "Place the garlic clove, chile, pickled jalapeños, and chipotles in the bowl of a food processor and pulse to a paste. Add the cilantro and pulse to combine.",
+      "amount": ""
+    },
+    {
+      "item": "Add the feta. with the motor running, steadily stream in enough of the olive oil to make a smooth, spreadable paste. Add the lemon zest, 2 tablespoons of the lemon juice, and black pepper to taste. Pulse to combine, taste, and adjust the texture and flavor with the remaining olive oil and/or lemon juice. Serve as a dip with pita chips.",
+      "amount": ""
     }
   ],
   "method": [
     "Place the garlic clove, chile, pickled jalapeños, and chipotles in the bowl of a food processor and pulse to a paste. Add the cilantro and pulse to combine.",
     "Add the feta. with the motor running, steadily stream in enough of the olive oil to make a smooth, spreadable paste. Add the lemon zest, 2 tablespoons of the lemon juice, and black pepper to taste. Pulse to combine, taste, and adjust the texture and flavor with the remaining olive oil and/or lemon juice. Serve as a dip with pita chips."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

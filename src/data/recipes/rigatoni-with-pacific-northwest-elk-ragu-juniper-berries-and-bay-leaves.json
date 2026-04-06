@@ -1,0 +1,88 @@
+{
+  "id": "rigatoni-with-pacific-northwest-elk-ragu-juniper-berries-and-bay-leaves",
+  "name": "Rigatoni with Pacific Northwest Elk Ragù, Juniper Berries, and Bay Leaves",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "A slow-cooked ragù recipe is perfect during cold and rainy months, and elk is among my favorite game meat for its clean, sweet taste. The Northwest has an abundance of elk, and hunting them is a common activity across Washington State, from Yakima to Mount St. Helens and the Olympic Peninsula. Juniper berries, bay leaves, and cloves blend with all the other flavors to make this pasta a truly special dish to serve.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "diced white onion",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "diced carrots",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "diced celery",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "ground elk",
+      "amount": "1 pound"
+    },
+    {
+      "item": "red wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(2 cups) canned San Marzano tomato puree",
+      "amount": "16 ounces"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "juniper berries",
+      "amount": "10"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "2"
+    },
+    {
+      "item": "rigatoni pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "In a deep medium skillet over medium heat, warm the olive oil. Add the onion, carrots, and celery (the trio is called soffritto in Italian cooking), and sauté for 2 to 3 minutes. Add the elk and cook, stirring occasionally, for 3 to 4 minutes. Add the wine and continue cooking for another 2 to 3 minutes, until the alcohol evaporates. Stir in the tomato puree and water.",
+    "Add the juniper berries, black peppercorns, bay leaves, and cloves, reduce the heat to low, and simmer for about 3 hours, stirring occasionally. If the ragù is getting too thick, add a little bit of extra water.",
+    "Meanwhile, in a large pot of boiling salted water, cook the rigatoni until al dente and drain. In a mixing bowl, quickly stir together the rigatoni, half the ragù, and the butter, until the butter has melted, adding pasta water as necessary to bind the ingredients.",
+    "Stir in half the Parmigiano, and divide among four bowls. Finish each bowl with a scoop of the remaining ragù and the remaining Parmigiano. Enjoy with a full-bodied red wine."
+  ],
+  "image": "/recipes/rigatoni-with-pacific-northwest-elk-ragu-juniper-berries-and-bay-leaves.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

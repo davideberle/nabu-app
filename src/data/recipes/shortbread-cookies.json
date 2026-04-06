@@ -1,18 +1,18 @@
 {
   "id": "shortbread-cookies",
-  "name": "Shortbread cookies",
+  "name": "Shortbread Cookies",
   "subtitle": "Ghraybeh",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c09"
+    "chapter": "Sweets"
   },
   "introduction": "Ghraybeh means “swoon” in Arabic. Aptly, these little sugar cookies are often served at celebrations such as baptisms or weddings, when the air is thick with “swooning.” They’re a popular choice for large events for practical reasons—the recipe scales up wonderfully, if there are many mouths to feed, and they are quick and easy to prepare. Use them for everyday baking as well; they’re lovely to have around to snack on.\n\nPlaying around: Play around with the shape and flavorings, if you like. We’ve gone for a thin bracelet with the ends “cemented” together with a nut, but a little round cake or a diamond also looks good. You can also stick two cookies together with any sort of jam—to create a sort of Palestinian Linzer cookie. Flavor-wise, the orange blossom and rose water can be replaced with vanilla extract and lemon zest.\n\nGetting ahead: The dough can be made up to three days in advance and kept in the fridge (or longer in the freezer). The cookies can also be shaped and frozen, then baked straight from frozen; they’ll just need an extra minute in the oven. Once baked, the cookies keep well in an airtight container for up to five days.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Sweets"
   },
   "servings": "makes about 35 cookies",
   "time": {
@@ -82,5 +82,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/shortbread-cookies.jpg"
 }

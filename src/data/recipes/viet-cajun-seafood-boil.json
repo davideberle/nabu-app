@@ -1,10 +1,10 @@
 {
   "id": "viet-cajun-seafood-boil",
-  "name": "VIET-CAJUN seafood boil",
+  "name": "Viet-Cajun Seafood Boil",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4 to 6",
   "time": "TAKES 45 MINUTES",
@@ -77,7 +77,7 @@
     "Set a large colander in the sink, then pour the pot of boiled ingredients into it to drain. Return half of the boiled ingredients to the pot, pour in half of the garlic butter, stir with a large spoon to coat, and then dump onto a rimmed baking sheet. Repeat with the rest of the boil. Combine the black pepper and 1 teaspoon salt and divide among individual small dishes.",
     "Bring the boil to the table to serve. Invite diners to make their own sauce by squeezing lime juice over the salt and pepper and stirring it together. Don’t forget paper towels for easy cleanup."
   ],
-  "image": null,
+  "image": "/recipes/viet-cajun-seafood-boil.jpg",
   "category": {
     "dish_type": [
       "main"

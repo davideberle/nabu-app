@@ -1,9 +1,10 @@
 {
   "id": "wuxi-meaty-pork-ribs",
-  "name": "Wuxi meaty pork ribs",
+  "name": "Wuxi Meaty Pork Ribs",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "wu xi rou gu tou 无锡肉骨头",
   "intro": "A speciality of the old canal town of Wuxi, these chunky pork ribs are clothed in a gorgeous, aromatic gravy with a bit of the sweetness for which the local cooking is renowned. According to local lore, the recipe originated in the Nanchan Buddhist Temple. The gist of the story is that during the Southern Song dynasty, a visiting monk called Jigong gave the owner of a local cooked-meat shop some invaluable tips on the art of stewing meat (somewhat curiously, since Chinese Buddhist monks are normally vegetarians). Jigong cooked his meat slowly, overnight, in one of the temple’s incense burners, making all the young monks “drool with greed,” and the shop owner adopted his method. This is one of several Jiangnan legends about meat-eating Buddhist monks; I’m not sure if this means that a little meat-eating was tolerated in monastic communities, that laypeople just enjoy telling tales about the hypocrisy of clerics, or if it’s simply an illustration of the Chinese infatuation with pork, a meat so delicious that even committed vegetarians are not immune to its delights. You’ll need a big, meaty tranche of spare ribs. I’ve given instructions for cutting them in the traditional Wuxi way, but you can, of course, use other cuts of rib. The red yeasted rice gives a gorgeous pink tint to the sauce but is unnecessary in terms of flavor. Note that the ribs must be salted overnight before cooking.",
@@ -67,5 +68,13 @@
     "Put the ribs in the cleaned pan or a clay pot. Add the ginger and spring onions, Shaoxing wine, spices, soy sauces, sugar and stock or water. If you are using the red yeasted rice, strain the mashed rice liquid through a tea strainer into the pot. For best results, rinse the residue a few times with the liquid in the pot to extract as much color as possible, then discard the residue. Bring everything to the boil, then cover and simmer over a medium flame for 1 hour.",
     "Remove the lid, discard the ginger, spring onion and spices, then turn up the heat to reduce the sauce to about 1 in (2cm) deep, stirring frequently and spooning the liquid over the meat. Give the potato starch mixture a stir and add just enough to thicken it to a luxurious gravy, then serve."
   ],
-  "image": "/recipes/wuxi-meaty-pork-ribs.jpg"
+  "image": "/recipes/wuxi-meaty-pork-ribs.jpg",
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,0 +1,28 @@
+{
+  "id": "cg-raw-cashew-paste",
+  "name": "RAW Cashew Paste",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "intro": "Raw cashew paste is used in curries – both authentic and BIR – to thicken the sauce and to add flavour.",
+  "ingredients": [],
+  "method": [
+    "Soak raw cashews (quantity as needed) in cold water for about 30 minutes. Drain and place the cashews in a spice grinder or blender. Add just enough fresh water to blend to a paste. That’s it. You’re done.",
+    "Transfer to a bowl and store in the fridge for up to 3 days."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  },
+  "time": {
+    "total": 30
+  }
+}

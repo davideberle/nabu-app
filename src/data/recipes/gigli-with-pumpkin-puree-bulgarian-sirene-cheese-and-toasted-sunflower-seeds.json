@@ -1,0 +1,73 @@
+{
+  "id": "gigli-with-pumpkin-puree-bulgarian-sirene-cheese-and-toasted-sunflower-seeds",
+  "name": "Gigli with Pumpkin Puree, Bulgarian Sirene Cheese, and Toasted Sunflower Seeds",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Pumpkin equals autumn, and you can customize this lovely seasonal recipe to your own personal taste. Sugar pumpkins work perfectly, but you can use the Italian stripe variety if you prefer something less sweet. I often reach for an international ingredient to make things interesting; here, Bulgarian sirene cheese proves pretty, pungent, and briny. Not to bring up the ubiquitous pumpkin spice latte, but cinnamon also comes to mind when we talk about fall, so I’ve added it here in the puree. This dish can transform into a soup if the pasta is taken out of the equation.",
+  "ingredients": [
+    {
+      "item": "small pumpkin, halved and seeded",
+      "amount": "1"
+    },
+    {
+      "item": "sprigs rosemary, plus few more for garnish",
+      "amount": "2"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "pecorino, grated",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kosher salt and ground white pepper",
+      "amount": ""
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "gigli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Bulgarian sirene cheese",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "toasted sunflower seeds",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees F.",
+    "Place the pumpkin on a baking sheet. Add the rosemary, olive oil, and water, lightly mix, and cover with aluminum foil. Bake for 40 minutes, or until soft when poked with a fork. Remove the aluminum foil and let the pumpkin cool. Discard the rosemary. Using a spoon, put all the pumpkin pulp in a blender, making sure to add all the juice from the baking sheet. Add the pecorino, cinnamon, and salt and pepper to taste, and blend until creamy.",
+    "In a medium pan over medium heat, stir together the pumpkin puree and butter.",
+    "Meanwhile, in a large pot of boiling salted water, cook the gigli until al dente, drain, and transfer to the pan. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls and crumble the Bulgarian sirene cheese on top. Finish with the sunflower seeds, and garnish with the rosemary sprigs."
+  ],
+  "image": "/recipes/gigli-with-pumpkin-puree-bulgarian-sirene-cheese-and-toasted-sunflower-seeds.jpg",
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

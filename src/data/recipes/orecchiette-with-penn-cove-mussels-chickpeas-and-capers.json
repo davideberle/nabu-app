@@ -1,0 +1,84 @@
+{
+  "id": "orecchiette-with-penn-cove-mussels-chickpeas-and-capers",
+  "name": "Orecchiette with Penn Cove Mussels, Chickpeas, and Capers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Available year-round, Penn Cove mussels are one of Washington’s most iconic shellfish and are shipped all over the country. These succulent bivalves are harvested about sixty miles northwest of Seattle in the waters off Whidbey Island; there, you’ll find the oldest commercial mussel farm in North America. Meaty and sweet at the same time, Penn Cove mussels go great with simple ingredients that don’t overpower them. This pasta dish is inspired by the southern Italian tradition of cozze (mussels) and legumes.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "shallot, minced",
+      "amount": "½"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "4"
+    },
+    {
+      "item": "bunch Italian parsley, stemmed and leaves minced",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small fresh peperoncino, minced, or ¼ teaspoon red pepper flakes",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes, halved (optional)",
+      "amount": "10"
+    },
+    {
+      "item": "Penn Cove mussels",
+      "amount": "3 pounds"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cooked chickpeas, drained",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Pitted Gaeta olives, for garnish",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large deep skillet over medium heat, warm the olive oil for a minute. Add the shallot, garlic, half the parsley, the capers, pepper to taste, and the peperoncino, and cook for about 2 minutes. Add the tomatoes and the mussels, stir, and cook for 1 minute.",
+    "Add the wine and continue cooking until the alcohol evaporates, 2 to 3 minutes. Reduce the heat to low, add the chickpeas, cover, and let cook for 5 minutes.",
+    "Meanwhile, in a large pot of boiling salted water, cook the orecchiette until al dente, drain, and transfer to the skillet. Increase the heat to medium-high, and sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the remaining parsley, a few Gaeta olives, and a drizzle of oil."
+  ],
+  "image": "/recipes/orecchiette-with-penn-cove-mussels-chickpeas-and-capers.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

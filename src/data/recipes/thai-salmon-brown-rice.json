@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "This quick salmon recipe is a pretty straightforward recipe. A store-bought dressing gives this healthy dish an enhanced flavor, without significantly lengthening the preparation time.",
   "time": {
-    "prep": "15 minutes"
+    "prep": "15 minutes",
+    "total": 10
   },
   "ingredients": [
     {
@@ -46,5 +47,10 @@
     "Stir the rice with coriander and salt.",
     "Divide rice mixture (Step 3) between 4 bowls. Add salmon, carrots, cabbage, and the remaining dressing onto each rice bowls."
   ],
-  "image": "/recipes/thai-salmon-brown-rice.jpg"
+  "image": "/recipes/thai-salmon-brown-rice.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

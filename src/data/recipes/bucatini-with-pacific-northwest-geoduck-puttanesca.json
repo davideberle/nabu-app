@@ -1,0 +1,72 @@
+{
+  "id": "bucatini-with-pacific-northwest-geoduck-puttanesca",
+  "name": "Bucatini with Pacific Northwest Geoduck Puttanesca",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "A magnificent clam lives in the waters of the PNW, from Puget Sound to British Columbia and all the way north to Alaska. I’m talking about the geoduck. Both sweet and briny, this impressive creature can be harvested in the winter months during low tide at certain beaches and state parks.\n\nI still remember the first time I tagged along with my friend Nathan and his crew on the Olympic Peninsula and helped the diggers wading in cold, muddy waters to harvest geoducks. It was not easy extracting them, because you need enough strength to pull them at least two feet to the surface, but it was definitely rewarding to bring them back to the kitchen to create some delicious dishes. Here, I offer my reinterpretation of classic puttanesca…with a PNW twist.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "4 to 5 tbsp"
+    },
+    {
+      "item": "drained anchovy fillets",
+      "amount": "5 to 7"
+    },
+    {
+      "item": "bunch Italian parsley, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "3"
+    },
+    {
+      "item": "geoduck, cut into thin slices",
+      "amount": "½ pound"
+    },
+    {
+      "item": "Gaeta olives, pitted",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(1¾ cups) canned San Marzano tomato puree",
+      "amount": "14 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "bucatini pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a medium-large sauté pan over medium heat, warm the olive oil. Add the anchovy fillets, parsley, and garlic, and sauté for about 2 minutes, or until the anchovies can break into pieces.",
+    "Add the geoduck and cook for a minute. Add the olives, capers, and red pepper flakes, and cook for another minute. Reduce the heat to medium-low, add the tomato puree, and cook for about 10 minutes. Season with salt and pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the bucatini until al dente, drain, and transfer to the sauté pan. Increase the heat to high and sauté the pasta for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls and finish with some fresh parsley."
+  ],
+  "image": "/recipes/bucatini-with-pacific-northwest-geoduck-puttanesca.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "id": "shaking-beef",
-  "name": "SHAKING beef",
+  "name": "Shaking Beef",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
   "time": "TAKES 30 MINUTES",
@@ -89,7 +89,7 @@
     "Set a large skillet that can get very hot (such as carbon steel or cast iron) over high heat and add enough of the canola oil to film the bottom. When the oil is shimmering, carefully add the beef, spreading it out in one layer, and cook for 3 to 4 minutes, shaking the pan every 30 to 60 seconds to sear the beef on all sides; it should be medium-rare. (If you want to minimize mess, cover the pan with a splatter guard, and flip the meat with a spatula.) Remove from the heat.",
     "Quickly toss the salad and transfer everything, including the dressing, to a platter or serving dish. Pile the cooked beef and its juices on top, and serve immediately. At the table, ceremoniously combine all the ingredients and invite diners to dive in."
   ],
-  "image": null,
+  "image": "/recipes/shaking-beef.jpg",
   "category": {
     "dish_type": [
       "main"

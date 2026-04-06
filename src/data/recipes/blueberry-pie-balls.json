@@ -1,0 +1,50 @@
+{
+  "id": "blueberry-pie-balls",
+  "name": "Blueberry PIE Balls",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 10 balls",
+  "intro": "A traditional blueberry pie is made with pie pastry and blueberries, and served with cream or vanilla custard. Here you get it all in one go, and all the essential nutrients are kept intact. Be careful when you share these blueberry balls—all of a sudden there may be none left for you . . .",
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "honey",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch of"
+    },
+    {
+      "item": "dried blueberries",
+      "amount": "heaped ¼ cup (¾ dl)"
+    }
+  ],
+  "method": [
+    "Chop the cashews in a food processor until they are finely ground, add the remaining ingredients except the dried blueberries, and keep mixing until a dough forms. Fold in the dried blueberries. Roll out balls, or shape the dough into a circle and cut out small pie slices instead."
+  ],
+  "image": "/recipes/blueberry-pie-balls.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

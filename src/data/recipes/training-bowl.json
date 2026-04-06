@@ -1,0 +1,46 @@
+{
+  "id": "training-bowl",
+  "name": "Training Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "To achieve good results from working out, the body needs to be replenished with good fuel.",
+  "ingredients": [
+    {
+      "item": "stalks celery",
+      "amount": "3"
+    },
+    {
+      "item": "fresh dates",
+      "amount": "5"
+    },
+    {
+      "item": "almond mylk (see pp. 80–81)",
+      "amount": "1¼ cup (3 dl)"
+    },
+    {
+      "item": "avocados, peeled, pitted, and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "hemp protein powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water (optional)",
+      "amount": "Some"
+    }
+  ],
+  "method": [
+    "Cut the celery stalks into chunks. Remove the stones from the dates. In a food processor or blender, mix it all to a smooth consistency, and dilute with some water if needed."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

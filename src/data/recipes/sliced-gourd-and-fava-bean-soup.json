@@ -1,9 +1,10 @@
 {
   "id": "sliced-gourd-and-fava-bean-soup",
-  "name": "Sliced gourd and fava bean soup",
+  "name": "Sliced Gourd and Fava Bean Soup",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "chang gua dou ban geng 长瓜豆瓣羹",
   "intro": "This is a delightful, easy soup. The original recipe, from a Ningbo cookery book, calls for the local long, shiny green gourd, but I’ve made it with sliced chayote. The sliced ham gives an umami lift to the soup and sets off its green colors prettily. For best results, steam the ham first.",
@@ -41,5 +42,13 @@
     "Peel the chayote or gourd and cut it neatly into ⅛ in (3mm) slices. Trim off any fat from the ham and cut it into neat little slices. Bring the stock to the boil in a large pan, then keep it warm.",
     "Heat the oil in a seasoned wok over a high flame. Add the fava beans and sliced gourd and stir-fry for about a minute. Add the stock and ham, bring to the boil and simmer gently for 2 minutes until the vegetables are tender. Season with salt. Give the potato starch mixture a stir and add it to the soup in 2 or 3 stages, stirring as the liquid thickens. Add just enough to give the soup a lazy, gravy-like consistency. Serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

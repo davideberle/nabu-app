@@ -1,10 +1,10 @@
 {
   "id": "no-churn-vietnamese-coffee-ice-cream",
-  "name": "NO-CHURN VIETNAMESE COFFEE ice cream",
+  "name": "No-Churn Vietnamese Coffee Ice Cream",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Sweets and Coffee"
   },
   "servings": "makes about 2 cups",
   "time": "TAKES 10 MINUTES, PLUS 5 TO 6 HOURS TO FREEZE",
@@ -40,7 +40,7 @@
     "With an electric handheld mixer fitted with two beaters or a whisk attachment, whip the mixture at high speed for about 3 minutes, until you get a firm, spreadable texture like fluffy whipped cream or frosting. Transfer to a 3- to 4-cup storage container, cover, and freeze until firm, 5 to 6 hours, or up to 2 weeks.",
     "Let the ice cream sit at room temperature for 10 to 15 minutes to soften to a scoopable texture before serving."
   ],
-  "image": null,
+  "image": "/recipes/no-churn-vietnamese-coffee-ice-cream.jpg",
   "dietary": [
     "vegetarian"
   ],

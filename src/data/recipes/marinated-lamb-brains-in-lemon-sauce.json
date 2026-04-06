@@ -1,0 +1,92 @@
+{
+  "id": "marinated-lamb-brains-in-lemon-sauce",
+  "name": "Marinated Lamb Brains in Lemon Sauce",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "servings": "serves 8",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "Lamb brains are available in Greek meat markets.",
+      "amount": ""
+    },
+    {
+      "item": "lamb brains (1 pound)",
+      "amount": "2"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped dill or flat-leaf parsley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Wash brains thoroughly and soak in lukewarm water for 10 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "with sharp knife, remove membranes.",
+      "amount": ""
+    },
+    {
+      "item": "Rinse.",
+      "amount": ""
+    },
+    {
+      "item": "Place brains in boiling salted water to cover; add vinegar and simmer, covered, for 20 to 30 minutes, or until soft. Drain.",
+      "amount": ""
+    },
+    {
+      "item": "Cut into ½-inch cubes and let cool.",
+      "amount": ""
+    },
+    {
+      "item": "Add olive oil, lemon juice, salt, pepper, and dill or parsley.",
+      "amount": ""
+    },
+    {
+      "item": "Marinate 4 hours or overnight.",
+      "amount": ""
+    },
+    {
+      "item": "Serve at room temperature or cold.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash brains thoroughly and soak in lukewarm water for 10 minutes.",
+    "with sharp knife, remove membranes.",
+    "Place brains in boiling salted water to cover; add vinegar and simmer, covered, for 20 to 30 minutes, or until soft. Drain.",
+    "Cut into ½-inch cubes and let cool.",
+    "Add olive oil, lemon juice, salt, pepper, and dill or parsley.",
+    "Marinate 4 hours or overnight.",
+    "Serve at room temperature or cold."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

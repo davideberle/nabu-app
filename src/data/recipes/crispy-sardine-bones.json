@@ -3,20 +3,46 @@
   "name": "Crispy Sardine Bones",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
   "ingredients": [
     {
       "item": "sea salt, plus more to taste",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
-      "item": "to 1½ cups (125 to 190 g) all-purpose flour, for dredging",
-      "amount": "1"
+      "item": "Whole sardine bones from 20 to 30 small fresh sardines (see Note)",
+      "amount": ""
+    },
+    {
+      "item": "Sunflower oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "(125 to 190 g) all-purpose flour, for dredging",
+      "amount": "1 to 1½ cups"
     },
     {
       "item": "Scant 2 tablespoons smoked paprika",
+      "amount": ""
+    },
+    {
+      "item": "Lemon wedges, for serving",
+      "amount": ""
+    },
+    {
+      "item": "Salt the bones with 2 tablespoons of the sea salt and leave them out at room temperature, covered with paper towels, for 2 hours.",
+      "amount": ""
+    },
+    {
+      "item": "In a deep wide pot or skillet, heat ½ inch (1.5 cm) sunflower oil over medium-high heat until just below the smoke point. In a wide shallow bowl, combine the flour with salt to taste and the smoked paprika. Dredge the sardine bones lightly in the seasoned flour and shake off the excess. Fry the bones in the hot oil for a few minutes, until they turn lightly golden. Remove and drain on paper towels. Serve as is, with lemon wedges for squeezing over the top.",
       "amount": ""
     }
   ],
@@ -24,5 +50,10 @@
     "Salt the bones with 2 tablespoons of the sea salt and leave them out at room temperature, covered with paper towels, for 2 hours.",
     "In a deep wide pot or skillet, heat ½ inch (1.5 cm) sunflower oil over medium-high heat until just below the smoke point. In a wide shallow bowl, combine the flour with salt to taste and the smoked paprika. Dredge the sardine bones lightly in the seasoned flour and shake off the excess. Fry the bones in the hot oil for a few minutes, until they turn lightly golden. Remove and drain on paper towels. Serve as is, with lemon wedges for squeezing over the top."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

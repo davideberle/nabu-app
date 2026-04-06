@@ -1,0 +1,78 @@
+{
+  "id": "greek-chocolate-balls",
+  "name": "Greek Chocolate Balls",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
+  "ingredients": [
+    {
+      "item": "walnut meats",
+      "amount": "1/2 lb"
+    },
+    {
+      "item": "sweet cooking chocolate",
+      "amount": "1/2 lb"
+    },
+    {
+      "item": "zwieback",
+      "amount": "9 pieces"
+    },
+    {
+      "item": "1/2 tablespoons granulated sugar",
+      "amount": "1"
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1/2 tsp"
+    },
+    {
+      "item": "rose water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Confectioners’ sugar",
+      "amount": ""
+    },
+    {
+      "item": "Put walnut pieces, cooking chocolate and zwieback through the fine blade of a food chopper.",
+      "amount": ""
+    },
+    {
+      "item": "Add rose water, sugar, and cinnamon.",
+      "amount": ""
+    },
+    {
+      "item": "Form into 36 small balls.",
+      "amount": ""
+    },
+    {
+      "item": "Roll in confectioners' sugar.",
+      "amount": ""
+    },
+    {
+      "item": "Store the balls airtight.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put walnut pieces, cooking chocolate and zwieback through the fine blade of a food chopper.",
+    "Add rose water, sugar, and cinnamon.",
+    "Form into 36 small balls.",
+    "Roll in confectioners' sugar.",
+    "Store the balls airtight."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

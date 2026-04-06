@@ -3,41 +3,71 @@
   "name": "Greek Yogurt Pancakes",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time: 15 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 15,
+    "total": 20
+  },
   "ingredients": [
     {
-      "item": "all-purpose flour",
-      "amount": "1½ cups (190 g)"
+      "item": "(190 g) all-purpose flour",
+      "amount": "1½ cups"
     },
     {
-      "item": "whole wheat flour",
-      "amount": "½ cup (65 g)"
+      "item": "(65 g) whole wheat flour",
+      "amount": "½ cup"
     },
     {
       "item": "baking powder",
-      "amount": "1½ teaspoons"
+      "amount": "1½ tsp"
     },
     {
       "item": "baking soda",
-      "amount": "¼ teaspoon"
+      "amount": "¼ tsp"
     },
     {
       "item": "salt",
-      "amount": "½ teaspoon"
+      "amount": "½ tsp"
     },
     {
-      "item": "Greek yogurt, preferably full-fat",
-      "amount": "¾ cup (180 ml)"
+      "item": "(180 ml) Greek yogurt, preferably full-fat",
+      "amount": "¾ cup"
     },
     {
       "item": "large egg, lightly beaten",
       "amount": "1"
     },
     {
-      "item": "whole milk",
-      "amount": "¾ cup (180 ml)"
+      "item": "(180 ml) whole milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Butter or olive oil, for the skillet",
+      "amount": ""
+    },
+    {
+      "item": "Toppings (see Note)",
+      "amount": ""
+    },
+    {
+      "item": "Mix together the flours, baking powder, baking soda, and salt in a large bowl.",
+      "amount": ""
+    },
+    {
+      "item": "In a separate medium bowl, whisk together the yogurt, egg, and milk. Add the dry ingredients to the wet ingredients in three or four increments, whisking until smooth. Cover with plastic wrap and let the batter rest in the refrigerator for at least 15 minutes or up to overnight.",
+      "amount": ""
+    },
+    {
+      "item": "When ready to make the pancakes, in a nonstick skillet, melt 2 teaspoons butter over medium-high heat, tilting the pan so the butter is evenly distributed over the surface.",
+      "amount": ""
+    },
+    {
+      "item": "Pour the batter into the skillet, a ladleful at a time, to form pancakes that are about 4 inches (10 cm) in diameter. Don’t overcrowd the skillet. Flip the pancakes when the underside is golden brown and continue to cook until both sides are golden. Transfer to a plate, dabbing each pancake with a little butter as you stack them. Continue until the all the batter has been used, adding butter to the skillet between batches as needed. Serve hot.",
+      "amount": ""
     }
   ],
   "method": [
@@ -46,5 +76,10 @@
     "When ready to make the pancakes, in a nonstick skillet, melt 2 teaspoons butter over medium-high heat, tilting the pan so the butter is evenly distributed over the surface.",
     "Pour the batter into the skillet, a ladleful at a time, to form pancakes that are about 4 inches (10 cm) in diameter. Don’t overcrowd the skillet. Flip the pancakes when the underside is golden brown and continue to cook until both sides are golden. Transfer to a plate, dabbing each pancake with a little butter as you stack them. Continue until the all the batter has been used, adding butter to the skillet between batches as needed. Serve hot."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

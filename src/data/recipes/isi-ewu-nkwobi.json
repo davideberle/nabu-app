@@ -22,15 +22,15 @@
     },
     {
       "item": "warm water",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "ground ehuru (calabash nutmeg)",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "ground black pepper or cameroon pepper",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "vegetable stock cube",
@@ -38,7 +38,7 @@
     },
     {
       "item": "seaweed flakes (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "red onion (half roughly chopped; half sliced into rings)",
@@ -54,5 +54,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/isi-ewu-nkwobi.jpg"
+  "image": "/recipes/isi-ewu-nkwobi.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

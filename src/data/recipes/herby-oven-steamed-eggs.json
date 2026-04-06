@@ -1,10 +1,10 @@
 {
   "id": "herby-oven-steamed-eggs",
-  "name": "HERBY OVEN-STEAMED eggs",
+  "name": "Herby Oven-Steamed Eggs",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4 to 6",
   "time": "TAKES ABOUT 1 HOUR",
@@ -64,7 +64,7 @@
     "Remove from the oven and let the ramekins rest in the baking dish for 5 minutes, loosely covered by the foil. Then, using tongs or oven mitts, carefully remove the ramekins. When cooling, the buttercup-colored tops will turn a less pretty light beige, but the good flavor will remain.",
     "Serve the eggs hot, warm, or at room temperature, with the chile sauce, if you like."
   ],
-  "image": null,
+  "image": "/recipes/herby-oven-steamed-eggs.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -1,0 +1,37 @@
+{
+  "id": "chia-seeds-with-pomegranate",
+  "name": "Chia Seeds with Pomegranate",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "Chia fresca, a popular drink in South America, is made from chia seeds mixed with water, lime juice, and some type of sweetener. I made a fresh, pumped up version of the drink that includes pomegranate seeds and coconut water. Vary the amount of liquid depending on if you want to make a chia drink or a pudding. Sweeten it with honey, if you prefer.",
+  "ingredients": [
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coconut water",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "pomegranate seeds, frozen",
+      "amount": "½ cup (1 dl)"
+    }
+  ],
+  "method": [
+    "Mix the chia seeds and the coconut water, and stir in the pomegranate seeds. Let sit for at least 30 minutes before serving."
+  ],
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

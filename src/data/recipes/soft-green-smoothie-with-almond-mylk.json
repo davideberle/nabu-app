@@ -1,0 +1,50 @@
+{
+  "id": "soft-green-smoothie-with-almond-mylk",
+  "name": "Soft Green Smoothie with Almond Mylk",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 2 glasses",
+  "intro": "Creamy smoothies—I love them! With just enough sweetness from the pear and creaminess from the avocado, this smoothie is so soothing for the stomach. If you’re active and want a boost, you can add in some hemp powder, rice protein, or rice bran.",
+  "ingredients": [
+    {
+      "item": "hothouse (English) cucumber",
+      "amount": "½"
+    },
+    {
+      "item": "pear",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "handfuls of spinach, approx. 2½ oz (70 g)",
+      "amount": "3"
+    },
+    {
+      "item": "almond mylk",
+      "amount": "1¾ cup (4 dl)"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "handful of fresh basil",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Cut the cucumber and the pear into chunks. Scoop out the avocado. Blend all the ingredients to a smooth texture."
+  ],
+  "image": "/recipes/soft-green-smoothie-with-almond-mylk.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

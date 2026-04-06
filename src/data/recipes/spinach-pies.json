@@ -1,18 +1,18 @@
 {
   "id": "spinach-pies",
-  "name": "Spinach pies",
+  "name": "Spinach Pies",
   "subtitle": "Fatayer sabanekh",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c08"
+    "chapter": "Breads and Pastries"
   },
   "introduction": "These take Sami straight back home. He used to have them, once or twice a week, eaten fresh from the oven when he got home from school. The filling would vary—cheese, ground meat, mashed root vegetables—but spinach was always the firm favorite. If you want to make a meal of them, serve them with a simple chopped salad (see this page) and a spoonful of plain yogurt.\n\nGetting ahead: Both the dough and the filling can be made up to three days ahead and kept, separately, in the fridge. Once assembled, the pies freeze well and can be cooked from frozen; you’ll just need to add an extra minute or more to the cooking time.\n\nBatch cooking: The dough here is similar to the dough used to make sfiha pies (see this page) and za’atar bread (see this page), so make more than you need for this recipe and freeze what you don’t use to have at the ready.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Breads and Pastries"
   },
   "servings": "makes 12 pies; serves four to six as a light lunch or snack",
   "time": {
@@ -155,5 +155,5 @@
       "vegetarian"
     ]
   },
-  "image": null
+  "image": "/recipes/spinach-pies.jpg"
 }

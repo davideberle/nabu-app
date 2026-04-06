@@ -1,0 +1,48 @@
+{
+  "id": "besciamella",
+  "name": "Besciamella",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Anytime"
+  },
+  "servings": "ABOUT 4 CUPS",
+  "intro": "Originally invented by our cousins behind the Alps, who call it béchamel, besciamella is an essential component of several Italian primi piatti, as well as cannelloni and pasta al forno in all its variations. I love mine with a good amount of nutmeg and delicate white pepper.",
+  "ingredients": [
+    {
+      "item": "whole milk",
+      "amount": "4 cups"
+    },
+    {
+      "item": "unsalted butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "freshly ground nutmeg",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Kosher salt and ground white pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a medium pot over medium heat, warm the milk, turning off the heat just before it starts to boil.",
+    "Meanwhile, in a medium saucepan over low heat, melt the butter. Once the butter is completely melted, turn off the heat, add the flour, and whisk constantly to create a roux.",
+    "Pour a scoop of the hot milk into the saucepan and continue to whisk energetically to obtain a smooth consistency. Turn the heat back on to medium-low and slowly add the rest of the milk. Cook, stirring constantly, for 5 to 7 minutes, or until the besciamella coats the back of a spoon.",
+    "Stir in the nutmeg, season with salt and pepper to taste, and let cool completely before layering the lasagna."
+  ],
+  "image": "/recipes/besciamella.jpg",
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

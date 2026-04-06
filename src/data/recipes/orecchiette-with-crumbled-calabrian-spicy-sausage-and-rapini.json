@@ -1,0 +1,64 @@
+{
+  "id": "orecchiette-with-crumbled-calabrian-spicy-sausage-and-rapini",
+  "name": "Orecchiette with Crumbled Calabrian Spicy Sausage and Rapini",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "This is a quintessential dish of Apulia, a region in southern Italy. There are two reasons why I’ve included it here. The first is that rapini grows magnificently in the PNW—it loves the mild climate. The second is that there are several local sustainable meat producers that make delicious spicy Italian sausage (see this page). The result is an ideal example of how to make a traditional Italian recipe using local ingredients.",
+  "ingredients": [
+    {
+      "item": "rapini, divided into florets",
+      "amount": "2 pounds"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "spicy Calabrian chili sausages, casings removed",
+      "amount": "4"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "fresh Italian peperoncino, cut into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "pecorino",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "In a medium-large pot of boiling salted water, blanch the rapini for 3 minutes. Using a spider or slotted spoon, remove them and set aside. Keep the water for cooking the pasta later.",
+    "In a medium pan over medium heat, warm the olive oil and garlic. Once the garlic has infused the oil but before it burns, add the sausage, breaking it up as much as possible. Cook for a couple of minutes, add the wine, and continue cooking until the alcohol evaporates. Season with salt and pepper to taste, add the peperoncino and rapini, and sauté for about 2 minutes.",
+    "Bring the blanching water back to a boil, cook the orecchiette until al dente, drain, and transfer to the pan. Increase the heat to medium-high, and sauté for a minute, adding pasta water as necessary to bind the ingredients. Stir in the pecorino.",
+    "Plate in four bowls. Finish with more pecorino and a drizzle of oil. Enjoy with a great medium-bodied red wine."
+  ],
+  "image": "/recipes/orecchiette-with-crumbled-calabrian-spicy-sausage-and-rapini.jpg",
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

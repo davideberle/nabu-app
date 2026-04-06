@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes 26 to 30 (1-inch / 2.5-cm) truffles",
   "intro": "Turmeric, a strongly flavored orange and yellow spice used in curry dishes and South Asian and Middle Eastern cuisine, contains curcumin, a compound that is widely believed to help to prevent infection. (The spice has also been used in India’s traditional Ayurvedic remedies for 2,500 years.) Turmeric is also said to be anti-inflammatory. The flavor is very pungent and a little goes a long way, so many people choose to swallow turmeric capsules instead of eating a daily quotient. Here’s a delicious answer. Use a teaspoon or more of mild, medium, or hot curry to flavor nondairy milk and healthy, sinfully easy curry truffles become a super way to help the “medicine” go down.",
@@ -59,7 +59,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   },
   "image": "/recipes/curry-in-a-hurry-truffles.jpg"

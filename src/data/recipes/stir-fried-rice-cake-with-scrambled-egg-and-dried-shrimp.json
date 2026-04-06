@@ -1,9 +1,10 @@
 {
   "id": "stir-fried-rice-cake-with-scrambled-egg-and-dried-shrimp",
-  "name": "Stir-fried rice cake with scrambled egg and dried shrimp",
+  "name": "Stir-Fried Rice Cake with Scrambled Egg and Dried Shrimp",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "qing cai chao nian gao 青菜炒年糕",
   "intro": "The Chinese name of New Year’s rice cake is nian gao, which means “higher every year”—a typically auspicious name for a food traditionally made during the Lunar New Year holiday, but now eaten all year round. It’s a squishy, sticky foodstuff made by pounding cooked rice with a wooden cudgel until smooth and elastic, then forming it into cakes that are sliced before cooking, and is a particular speciality of Ningbo and Shanghai. Its culinary applications are many and varied: it can be stir-fried with all kinds of ingredients, simmered in a broth with vegetables, wokked in a brown sugar syrup, or frosted with fine sugar and powdered seaweed. Many Chinese supermarkets sell dried sliced nian gao, which must be soaked in cold water to soften it, but I recommend buying fresh or frozen Korean nian gao, which is increasingly sold in Chinese supermarkets and can be used directly from the package. It normally comes in the form of oval slices or strips. This fresh or frozen nian gao has become one of my go-to ingredients for fast, delicious, healthy suppers made with whatever odds and ends I have in the fridge. Just keep a pack in the fridge or freezer (unopened, it keeps well in the fridge), and the most fabulous one-dish lunch can be ready in half an hour. At home, I generally stir-fry it with some protein (perhaps an egg, or a little pork or chicken), at least one ingredient for umami flavors (such as dried shrimp or shiitake, or a little bacon) and some fresh leafy greens.",
@@ -47,5 +48,13 @@
     "Return the wok to a high flame with the remaining tablespoon of oil. Add the shiitake slivers and stir-fry until fragrant. Add the bok choy and stir-fry until the leaves have wilted. Put the sliced rice cake on top of the greens in the wok, pour the stock or water around the edges and bring to the boil. Cover the wok with a lid, turn the heat down very low and cook gently for 2–3 minutes, until the rice cake has softened and is piping hot. Stir in egg and shrimp and season with salt and pepper. Serve immediately.",
     "This variation is my own invention. Beat an egg and stir-fry until barely cooked; set aside. Stir-fry some chopped bacon until crisp; remove from the wok and set aside. Fry a spring onion white in the bacon-laced oil until fragrant; add soaked and sliced dried shiitake mushrooms and stir until they too smell wonderful. Add chopped choy sum or green bok choy and wilt in the hot oil. Add stock or water and cook gently as in the main recipe. Finally, stir in the egg and bacon with some thinly sliced spring onion greens, and season with salt and pepper."
   ],
-  "image": "/recipes/stir-fried-rice-cake-with-scrambled-egg-and-dried-shrimp.jpg"
+  "image": "/recipes/stir-fried-rice-cake-with-scrambled-egg-and-dried-shrimp.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

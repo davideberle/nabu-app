@@ -71,5 +71,10 @@
     "Add the remaining coconut milk. Stir well until it dissolves. Add 1 teaspoon of tamarind, palm sugar, and fish sauce.",
     "Use tongs to remove the beef from the first pot (Step 5) and transfer it to the second pot (No need to move the bones over). Reserve the cooking liquid in the first pot."
   ],
-  "image": "/recipes/massaman-curry.jpg"
+  "image": "/recipes/massaman-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

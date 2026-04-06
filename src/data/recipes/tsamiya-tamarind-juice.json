@@ -14,7 +14,7 @@
     },
     {
       "item": "fresh grated ginger (optional)",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "water",
@@ -34,7 +34,7 @@
     },
     {
       "item": "whole cloves",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "sugar or syrup of choice",
@@ -54,5 +54,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/tsamiya-tamarind-juice.jpg"
+  "image": "/recipes/tsamiya-tamarind-juice.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
 }

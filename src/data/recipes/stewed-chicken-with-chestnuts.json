@@ -1,9 +1,10 @@
 {
   "id": "stewed-chicken-with-chestnuts",
-  "name": "Stewed chicken with chestnuts",
+  "name": "Stewed Chicken with Chestnuts",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "ban li shao ji 板栗烧鸡",
   "intro": "The Jiangnan chestnut season begins in September, when the tender young nuts, pale and crisp, can be harvested. Later in the season and during the winter, after they have swelled, they may be used in sweetmeats, soups or stews like this one. There are many versions of the dish; this one, from Suzhou, includes the textural contrasts of crunchy bamboo shoot and succulent mushrooms. In China, it would normally be made with chopped chicken on the bone, but the recipe works well with boned leg meat. If you wish, you can turn up the heat at the end to reduce the broth to a thicker sauce, or thicken the liquid with a mixture of potato starch and cold water. The recipe is strikingly similar to one in Yuan Mei’s eighteenth-century cookbook. This dish is one of a family of what are known as “yellow-smothered” or “yellow-stewed” (huang men) dishes, in which the main ingredient is simmered in a covered pot, usually with some soy sauce for color, but not enough to give the dark treacliness characteristic of red-braised dishes. I normally use tinned or vacuum-packed chestnuts, but if you wish to cook and peel your own, slice off the bases of the raw chestnuts and boil them for a couple of minutes, then drain. When cool enough to handle, remove their shells and inner skins as far as possible.",
@@ -74,5 +75,13 @@
     "Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onion whites and stir-fry until they smell wonderful. Push them to the side of the wok, add the chicken and spread it out into a single layer. Fry until it colors lightly without moving it around too much, except to turn it. Add all the other ingredients except the spring onion greens and sesame oil. Bring to the boil, then cover and simmer for 15–20 minutes (I usually transfer the mixture from the wok to a saucepan or clay pot for the simmering, and to serve).",
     "Before serving, increase the heat to reduce the sauce if you wish, and season with a little extra salt if desired. Add the spring onion greens and cover for a few seconds to give them a lick of heat. Off the heat, stir in the sesame oil, then serve."
   ],
-  "image": "/recipes/stewed-chicken-with-chestnuts.jpg"
+  "image": "/recipes/stewed-chicken-with-chestnuts.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

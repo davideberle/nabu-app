@@ -1,9 +1,10 @@
 {
   "id": "fine-banquet-stock",
-  "name": "Fine banquet stock",
+  "name": "Fine Banquet Stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "gao tang 高汤",
   "intro": "In smart restaurants and for special occasions, cooks will make banquet stock (literally “high stock,” gao tang, or “superior stock,” shang tang) from chicken and pork enriched with other ingredients that might include lean ham, dried scallops and sometimes duck or pigeon. Some chefs fry their chickens and pork for extra fragrance before making stock, but in my experience this isn’t common. If you can, use a mature hen to make this stock; and as with any chicken, do choose a good free-range bird. A couple of dried scallops, an expensive luxury ingredient, will add an extra umami kick.",
@@ -42,5 +43,13 @@
     "Return the ingredients to the pan. Cover generously with water and bring to the boil. Smack the ginger and spring onions lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
     "When the stock has come to the boil, skim it well. Add the dried scallops, if using, ginger, spring onions and Shaoxing wine. Return to the boil, then turn down the heat and simmer very gently, uncovered, for at least 3 hours, preferably longer. Strain out the solid ingredients. Strain through muslin if you wish, for an even clearer finish. Allow to cool completely before chilling."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

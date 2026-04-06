@@ -1,10 +1,10 @@
 {
   "id": "tangy-seafood-stew",
-  "name": "TANGY SEAFOOD stew",
+  "name": "Tangy Seafood Stew",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Soups"
   },
   "servings": "serves 4",
   "time": "TAKES 45 MINUTES",
@@ -84,7 +84,7 @@
     "Add the fish fillet, shrimp, and clams to the pan and cook for 3 to 4 minutes, just until the fish is opaque, the shrimp curls, and the clams open. Add the celery and cook for about 2 minutes, until slightly softened. Add the tomato and bean sprouts and cook for 1 minute more, until slightly softened, then turn off the heat. Add the herbs, cumin, and chile to the pan and then let sit for 5 minutes. Taste and, if needed, adjust the flavor with additional brown sugar, fish sauce, or pomegranate molasses to arrive at a tart-sweet-savory balance.",
     "Using a two-handed approach with a ladle in one hand and chopsticks or tongs in the other, transfer the soup to a large bowl or divide among individual soup bowls. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/tangy-seafood-stew.jpg",
   "category": {
     "dish_type": [
       "soup"

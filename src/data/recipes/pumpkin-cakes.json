@@ -1,9 +1,10 @@
 {
   "id": "pumpkin-cakes",
-  "name": "Pumpkin cakes",
+  "name": "Pumpkin Cakes",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Sweet Dishes"
   },
   "subtitle": "nan gua bing 南瓜饼",
   "intro": "In the kitchen of Wang’s mansion in the old city of Yangzhou is an enormous, old-fashioned cooking range. Built from bricks and whitewashed clay, it rises imposingly at one end of the room. There are five wok stations with fire-beds beneath and cubbyholes behind, for storing seasonings; above, two great chimneys rise to the raftered roof. Perched on top of the range, with a good view of the room, is the Kitchen God’s shrine. The Kitchen God (zao jun) is the watchman of the Chinese family. Once a year, he reports on their behavior to the Jade Emperor in Heaven, who then decides whether they deserve reward or punishment. To bribe him, family members traditionally make offerings on the twenty-third of the last lunar month of the year, the day of his departure. They light candles and incense before his shrine, burn paper money and, most importantly, give him sweet and sticky things to eat, to seal his lips or, failing that, to sweeten his words. These gorgeous little pumpkin cakes would do the job perfectly. They are crunchy and golden on the outside, soft and sticky within, with a rich, sweet stuffing. Fill them with red bean paste as in the main recipe, or the jujube paste here.",
@@ -35,5 +36,13 @@
     "Break off an apricot-sized lump of dough, about 1 oz (35g). Roll it into a ball, then gently flatten it between your palms. Make an indentation in the center and press in a ball of red bean paste stuffing. Draw up the sides of the dough to enclose the stuffing completely. Roll it into a ball again, then flatten it into a disc about ½ in (1.5 cm) thick. Repeat with the remaining dough and stuffing.",
     "Heat the oil for deep-frying to 300°F (150°C). Fry the pumpkin cakes in batches over a medium flame for about 8 minutes, until golden. The oil should fizz around the cakes, but not too aggressively—you want them to cook slowly enough to melt the lard in the stuffing, and to avoid bursting them open. Serve hot."
   ],
-  "image": "/recipes/pumpkin-cakes.jpg"
+  "image": "/recipes/pumpkin-cakes.jpg",
+  "time": {
+    "total": 18
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,18 +1,18 @@
 {
   "id": "oxtail-stew-with-chard-sumac-and-tahini",
-  "name": "Oxtail stew with chard, sumac, and tahini",
+  "name": "Oxtail Stew with Chard, Sumac, and Tahini",
   "subtitle": "Sumaqqiyeh",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c07"
+    "chapter": "Meat"
   },
   "introduction": "The green chile, the dill seeds, the tahini sauce—the roll call of typical Gazan ingredients makes this a classic Gazan dish. In Gaza, the tahini would be red tahini, which is nuttier and richer than regular tahini. The difference between the two is the sort of heat the sesame seeds are roasted with; steam heating in the case of regular tahini, and roasting with direct heat in the case of red tahini. As long as you are starting with what we call “proper tahini,” though (see this page for the sermon), any regular creamy Arabic tahini is just fine.\n\nGetting ahead: The oxtail needs a long cooking time—4 hours—to ensure that it falls off the bone as much as you want it to. You can make it a day or two in advance, though, taking it up to the point before the chard leaves and fresh dill get added. These should always go in at the last stage, so that they retain their color and freshness.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Meat"
   },
   "servings": "serves four generously",
   "time": {
@@ -204,5 +204,5 @@
       "vegan"
     ]
   },
-  "image": null
+  "image": "/recipes/oxtail-stew-with-chard-sumac-and-tahini.jpg"
 }

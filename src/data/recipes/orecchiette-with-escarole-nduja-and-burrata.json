@@ -1,0 +1,60 @@
+{
+  "id": "orecchiette-with-escarole-nduja-and-burrata",
+  "name": "Orecchiette with Escarole, ’nduja, and Burrata",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Fall is the best time for escarole, and the PNW offers an ideal climate for planting and harvesting these greens, which are crunchy and slightly bitter when raw but sweeter when cooked. In this recipe, I am using a local ’nduja made by my friend Stano Riccio, but you can often find it at Italian specialty stores. ’Nduja is a soft, spreadable spicy pork salume originally from Calabria. Good ’nduja should have zero preservatives because of the chili, which acts as a natural preservative. In addition, authentic ’nduja shouldn’t contain garlic or other spices.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "medium head escarole, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "artisanal ’nduja, divided",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "orecchiette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "½ cup"
+    },
+    {
+      "item": "burrata",
+      "amount": "9 ounces"
+    }
+  ],
+  "method": [
+    "In a medium-large sauté pan over medium heat, warm the olive oil and garlic for a couple of minutes, stirring to avoid burning.",
+    "Add the escarole, cover, and cook for 8 to 10 minutes, or until the escarole has wilted. Add half the ’nduja and stir until it melts into the escarole mixture. Season with salt and pepper to taste. Turn off the heat, but leave the pan on the burner.",
+    "Meanwhile, in a large pot of boiling salted water, cook the orecchiette until al dente, drain, and transfer to the sauté pan. Over medium-high heat, sauté the pasta for a minute, adding half the Parmigiano and pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining 1 ounce ’nduja, scoops of the burrata, and a drizzle of oil. Enjoy!"
+  ],
+  "image": "/recipes/orecchiette-with-escarole-nduja-and-burrata.jpg",
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

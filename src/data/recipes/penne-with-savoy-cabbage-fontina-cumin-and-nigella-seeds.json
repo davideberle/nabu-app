@@ -1,0 +1,64 @@
+{
+  "id": "penne-with-savoy-cabbage-fontina-cumin-and-nigella-seeds",
+  "name": "Penne with Savoy Cabbage, Fontina, Cumin, and Nigella Seeds",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "This comforting pasta dish is perfect for colder months, when cabbage is ready to be harvested in Oregon, Washington, and British Columbia. The crinkly leaf savoy type is a favorite; great for casseroles and slaw, it’s delicious in this satisfying pasta with the melty consistency of the fontina and the aromatic note of the cumin.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "small head savoy cabbage, cut into thin strips",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "penne pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "fontina, shredded",
+      "amount": "4 ounces"
+    },
+    {
+      "item": "nigella seeds",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "In a medium-large pan over medium heat, warm the olive oil and garlic.",
+    "When the garlic has infused the oil and becomes slightly brown—but not burnt—add the cabbage. Stir in the cumin and red pepper flakes. Reduce the heat to medium-low, cover, and cook for 10 minutes, or until the cabbage is cooked but still crunchy and not completely soft. Season with salt and pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the penne until al dente, drain, and transfer to the pan. Increase the heat to medium-high, and sauté for 1 minute. Add the fontina and pasta water as necessary to bind the ingredients, and stir energetically until it is incorporated and no big cheese clumps remain.",
+    "Plate in four bowls. Finish with a drizzle of oil and a sprinkle of nigella seeds."
+  ],
+  "image": null,
+  "time": {
+    "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

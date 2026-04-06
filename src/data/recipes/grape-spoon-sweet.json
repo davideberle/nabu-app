@@ -1,0 +1,49 @@
+{
+  "id": "grape-spoon-sweet",
+  "name": "Grape Spoon Sweet",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "time": {
+    "prep": 5,
+    "total": 60
+  },
+  "ingredients": [
+    {
+      "item": "red grapes",
+      "amount": "5 cups"
+    },
+    {
+      "item": "sugar",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "water",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "cinnamon powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "clove powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Remove from heat, and cool for several hours before adding into preserve jars. Refrigerate.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Clean and destem the grapes. In a saucepan, combine the grapes, sugar, water, cinnamon powder and clove powder. Bring to a boil. Then, lower the heat to medium. Cook time for 1 hour, stirring occasionally.",
+    "Remove from heat, and cool for several hours before adding into preserve jars. Refrigerate."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

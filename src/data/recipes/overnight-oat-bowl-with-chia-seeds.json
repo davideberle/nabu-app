@@ -1,0 +1,64 @@
+{
+  "id": "overnight-oat-bowl-with-chia-seeds",
+  "name": "Overnight OAT Bowl with Chia Seeds",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "This is a real skier’s breakfast; it’s great for when you need to feel full over a long period of time! Both the chia seeds and rolled oats are packed with fiber. You’ll get extra energy from the almond butter. You can read up on how to make your own almond butter on p. 141. You should season the bowl a bit more in wintertime with 1 teaspoon each of ground cardamom, cinnamon, and ginger.",
+  "ingredients": [
+    {
+      "item": "rolled oats",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "mylk",
+      "amount": "2 cups (4 dl)"
+    },
+    {
+      "item": "grated coconut",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "Ground spices (optional)",
+      "amount": ""
+    },
+    {
+      "item": "almond butter",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "fresh or frozen blueberries and raspberries",
+      "amount": "4 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "banana",
+      "amount": "1",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Put everything (except toppings) together in a jar and stir to mix thoroughly. Let the mix sit for at least 30 minutes in the refrigerator, and serve with almond mylk and toppings."
+  ],
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

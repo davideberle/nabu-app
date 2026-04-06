@@ -1,9 +1,10 @@
 {
   "id": "vegetarian-stocks",
-  "name": "Vegetarian stocks",
+  "name": "Vegetarian Stocks",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "su xian tang 素鲜汤",
   "intro": "In Jiangnan, meaty stocks are used to enrich and flavor many vegetable dishes, but pure vegetarian food is served in the restaurants of Buddhist monasteries. Here are a few suggestions for making vegetarian stocks. This is a recipe from the vegetarian restaurant at the Jade Buddha Temple in Shanghai, where they use it for their noodle and wonton soups. Simply season hot water with light soy sauce and a little sesame oil (for 1 quart/1 liter water, about 2½ tsp light soy sauce and ½ tsp sesame oil will do). Simple, but very savory. Bring 1 quart (1 liter) water to the boil with 2 oz (50g) black fermented beans, rinsed and drained, then simmer for about 20 minutes. Strain out and discard the black beans if you wish. Sprouted soybeans are a classic vegetarian soup base. The beansprouts, which are longer and thicker than the more common mung beansprouts, are easily available in China but hard to come by in the West, so you may have to sprout your own. To make a “milky” broth, bring a panful of water to the boil, add plenty of soybean sprouts, cover with a lid and boil for 10–20 minutes, until the liquid is richly savory. To make a clear broth, boil the water, add the sprouts, return to the boil and simmer gently, uncovered, for about 30 minutes. Strain the broth, or add the beansprouts to your soups if you wish. (Dried soybeans can also be used to make stock, but they need extremely lengthy cooking to make them digestible—around 4 hours.) If you boil slivers or slices of preserved mustard tuber in boiling water for a few minutes, they will yield a broth with a delicate salty-sour umami flavor. Use this to make simple, cleansing vegetable soups. See here for an example. Other classic ingredients in vegetarian stocks are fresh bamboo shoot, simmered for a while like the soybean sprouts, and shiitake mushrooms. For a rich vegetarian stock, use a mixture of soybean sprouts, peeled bamboo shoot and reconstituted dried shiitake mushrooms.",
@@ -24,5 +25,13 @@
   "method": [
     "Bring the stock to the boil, then set it aside. Season with salt and pepper. When the stock has cooled to tea-drinking temperature, put the gelatine in a bowl of cold water for about 4 minutes, until softened and floppy, then stir it into the warm stock until dissolved. Set aside to cool completely, then chill in the fridge overnight to set."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 4
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

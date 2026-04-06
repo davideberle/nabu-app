@@ -1,9 +1,10 @@
 {
   "id": "beggar-s-chicken",
-  "name": "Beggar’s chicken",
+  "name": "Beggar’s Chicken",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "jiao hua tong ji 叫化童鸡",
   "intro": "Beggar’s chicken is a dramatic centerpiece of a dish: a whole chicken wrapped in leaves and encased in baked mud that must be smashed apart with a mallet. The method used to make it is a relic of ancient times. Legend tells that a local beggar once stole a chicken for his supper. Lacking a pot, he simply wrapped the bird in mud and baked it in the embers of his fire. When it was done, he cracked open the clay sarcophagus, stripped off the skin and feathers, and the bird inside was so wondrously fragrant that people nearby came rushing to see what he’d done. Later, chefs refined the original recipe, which became a famous speciality of Hangzhou and of Changshu, both of which cities lay claim to it. In Hangzhou, the bird is wrapped in clay mixed with the aromatic mulch left over from making Shaoxing wine. At home, I use a salted pastry crust, which works just as well as a means of encasing the bird, and can be smashed apart at the table like clay. Both methods keep the chicken wondrously juicy, infused with the haunting fragrance of lotus leaves. Don’t throw away the leftover lotus leaves: add them to a pot of rice or congee the next day, with any leftover scraps of chicken and juices salvaged from the pan, and they will transform it into something ambrosial. A kind of dried ginger known as shan nai or sha jiang (“sand ginger”) is used in seasoning the chicken. This can be found in good Chinese supermarkets, but the recipe will work without it.",
@@ -98,5 +99,13 @@
     "Remove the chicken from the marinade and put it breast-side up in the center of the leaves. Discard the ginger and spring onion. Put the stuffing and its juices in the cavity of the bird. Fold the flap of skin at the base of the bird over the body. If the head remains, fold it into the body too. Pull the legs and fold them tightly across the body, then pull in the wings and fold them tightly across, on the diagonal. Press the lard into the body at the base of the bird. Wrap the bird tightly in the first leaf, then in the foil, and finally in the outer leaf. Use kitchen twine to tie it tightly like a parcel, then tie it across both diagonals so you have a British flag pattern of twine.",
     "Roll the dough into a large rectangle, ⅙ in (4–5mm) thick and wide enough to enclose the bird. Put the chicken upside down on the pastry and wrap it tightly, sealing the overlapping edges with a little water. Turn the bird over and put it on a rectangle of parchment paper in a baking tray. Roast for 40 minutes, then reduce the temperature to 300–325°F (150–160°C) and cook for another 2 hours. The crust will be hard and dark brown. Allow to rest for 20 minutes before serving, then put the parcel on a wooden board and take it to the table with a wooden mallet to smash open the shell (do not serve it on a ceramic plate, which will very likely end up in pieces!). Be prepared for small pieces of pastry to fly about as you crack open the crust. Remove the crust, use scissors to snip the twine, and unwrap your gorgeous, juicy, steaming bird, curled lazily in an aromatic cradle of leaf."
   ],
-  "image": "/recipes/beggar-s-chicken.jpg"
+  "image": "/recipes/beggar-s-chicken.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

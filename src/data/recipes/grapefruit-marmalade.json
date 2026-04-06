@@ -1,0 +1,38 @@
+{
+  "id": "grapefruit-marmalade",
+  "name": "Grapefruit Marmalade",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "See original cookbook",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Wash and dry grapefruits thoroughly.",
+    "Remove pulp from grapefruit shells, slice rinds into strips, then slice strips thin.",
+    "Place rind in saucepan and cover with water.",
+    "Soak overnight. (It is important to soak overnight so that the bitterness in the grapefruit is eliminated.) Next day, place saucepan with water and rind over moderate heat; bring to a boil.",
+    "Reduce heat and simmer until rind is transparent, about 1 hour, adding more water if needed.",
+    "Measure cooked rind with its liquid (it should be about 4 cups).",
+    "Add an equal amount of sugar (about 4 cups).",
+    "Simmer until the jelly stage is reached (jelly sticks to spoon when tilted).",
+    "Add lemon juice and simmer for another 5 minutes.",
+    "Pour into sterilized jars and seal tightly."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

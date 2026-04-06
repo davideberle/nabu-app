@@ -1,0 +1,68 @@
+{
+  "id": "fig-bowl",
+  "name": "FIG Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "Figs are chock full of goodness. Dried figs have more concentrated sweetness and a higher sugar content, but still, they’re a far superior alternative to regular table sugar and candy. And you’ll get fiber, minerals, and vitamins in the bargain!",
+  "ingredients": [
+    {
+      "item": "dried figs (soft or pre-soaked)",
+      "amount": "6"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "apples",
+      "amount": "2"
+    },
+    {
+      "item": "frozen blueberries",
+      "amount": "Scant ½ cup"
+    },
+    {
+      "item": "flaxseed oil or Udo’s choice oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "¾” (2 cm) piece of ginger",
+      "amount": ""
+    },
+    {
+      "item": "water (or use the soaking water from the figs)",
+      "amount": "3⅓–6¾ fl oz (1–2 dl)"
+    },
+    {
+      "item": "hemp seeds",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "1 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "fresh figs",
+      "amount": "2",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Soak the figs for about 8 hours. Peel the avocado and remove the stone. Core and cut the apples into chunks. Blend everything except topping ingredients to a smooth cream and pour into two bowls. Top with hemp seeds, bee pollen, and fresh figs cut into smaller chunks."
+  ],
+  "image": "/recipes/fig-bowl.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

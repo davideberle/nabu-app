@@ -1,0 +1,77 @@
+{
+  "id": "reginette-with-lopez-island-lamb-sugo",
+  "name": "Reginette with Lopez Island Lamb Sugo",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Lamb meat can be found on many Italian tables, especially around Easter, and it can take different forms. Here is a classic sugo di agnello made with 100-percent grass-raised lambs from Lopez Island. Lopez, and other islands in the San Juans, has a tradition of natural farming without sprays, chemicals, or fertilized grass. Stonecrest Farm & Graziers is a great example of responsible farming: baby lambs are raised and nurtured by their mothers, running and playing on the hills overlooking the island’s central valley.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "medium white onion, diced",
+      "amount": "½"
+    },
+    {
+      "item": "carrots, cut into 1-inch rounds",
+      "amount": "2"
+    },
+    {
+      "item": "lamb shoulder, cut into 1-inch cubes",
+      "amount": "½ pound"
+    },
+    {
+      "item": "lamb ribs",
+      "amount": "2"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3 to 4"
+    },
+    {
+      "item": "dry red wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(4 cups) canned San Marzano tomato puree",
+      "amount": "32 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "reginette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "knobs unsalted butter",
+      "amount": "3"
+    },
+    {
+      "item": "grated pecorino",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a medium saucepan over medium-low heat, warm the olive oil. Add the onions and carrots; sauté for 2 to 3 minutes.",
+    "Increase the heat to medium, add the lamb shoulder and ribs and the bay leaves, and cook, stirring occasionally, for 4 to 5 minutes. Add the wine and continue cooking for 2 to 3 minutes, or until the alcohol evaporates.",
+    "Reduce the heat to low, stir in the tomato puree, season with salt and pepper to taste, and cook, stirring occasionally, for 45 to 60 minutes, or until the sauce has a dense consistency.",
+    "Meanwhile, in a large pot of boiling salted water, cook the reginette until al dente, drain, and transfer to a large mixing bowl. Add half the lamb sauce and the butter, stir, then add the pecorino and stir until the butter is melted.",
+    "Plate in four bowls and finish with a scoop of the sauce, more pecorino, and a drizzle of oil. Enjoy with a glass of full-bodied red wine."
+  ],
+  "image": "/recipes/reginette-with-lopez-island-lamb-sugo.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

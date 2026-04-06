@@ -22,7 +22,7 @@
     },
     {
       "item": "seaweed flakes",
-      "amount": "1 tablespoon"
+      "amount": "1 tbsp"
     },
     {
       "item": "and 1/2 tablespoons ground Banga spice mix",
@@ -46,5 +46,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/banga-soup-ofe-akwu.jpg"
+  "image": "/recipes/banga-soup-ofe-akwu.jpg",
+  "time": {
+    "total": 15
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

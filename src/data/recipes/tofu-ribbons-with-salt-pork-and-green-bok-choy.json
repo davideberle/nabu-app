@@ -1,9 +1,10 @@
 {
   "id": "tofu-ribbons-with-salt-pork-and-green-bok-choy",
-  "name": "Tofu ribbons with salt pork and green bok choy",
+  "name": "Tofu Ribbons with Salt Pork and Green Bok Choy",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Tofu"
   },
   "subtitle": "xian rou bai ye tang cai 咸肉百叶棠菜",
   "intro": "This is a particularly harmonious combination of pale, ribbony tofu, savory salt pork and fresh, juicy greens. The recipe is based on some advice from a salt pork vendor in a Shanghai market. It’s typical of Jiangnan cooking in the use of a little meat and stock to make vegetarian ingredients taste sumptuous. With rice, it could suffice as a simple meal for two. Some cooks might add sliced bamboo shoot; in Yangzhou I had a version that included both sliced carrot and bamboo shoot, along with fresh green soybeans and wood-ear mushrooms. All of which is to say, go ahead and vary the recipe according to what you have in your fridge or larder.",
@@ -38,5 +39,13 @@
     "Bring a pan of water to the boil, add the tofu and blanch to refresh and reheat. Remove it from the pan with a slotted spoon and drain on paper towels. Tip the bacon into the boiling water and blanch until just cooked. Remove with a slotted spoon. Blanch the bok choy very briefly, just to wilt the leaves. Remove and drain.",
     "Put the stock in a wok or saucepan with the tofu, pork and lard, if using, bring to the boil and boil for about 3 minutes. Season with salt and pepper. Add the blanched greens, heat through and turn everything into a deep serving dish to serve."
   ],
-  "image": "/recipes/tofu-ribbons-with-salt-pork-and-green-bok-choy.jpg"
+  "image": "/recipes/tofu-ribbons-with-salt-pork-and-green-bok-choy.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

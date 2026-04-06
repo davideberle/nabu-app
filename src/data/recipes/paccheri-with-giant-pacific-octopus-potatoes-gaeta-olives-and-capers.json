@@ -1,0 +1,78 @@
+{
+  "id": "paccheri-with-giant-pacific-octopus-potatoes-gaeta-olives-and-capers",
+  "name": "Paccheri with Giant Pacific Octopus, Potatoes, Gaeta Olives, and Capers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "Giant Pacific octopi are beautiful local creatures able to grow up to 150 pounds, although their average weight is closer to 50. They are delicious; I love the slow, low-temperature oven cooking that makes their tentacles soft and juicy. Classic Italian ingredients like Gaeta or Castelvetrano olives, capers, and parsley pair perfectly with it. Without overshadowing the octopus, they bring out its flavor and texture, allowing it to really shine. And the shape of paccheri is simply heavenly for this recipe.",
+  "ingredients": [
+    {
+      "item": "giant Pacific octopus tentacle, rinsed until clean (see Tip)",
+      "amount": "1 pound"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "small Yukon Gold potatoes, cut into ½-inch cubes",
+      "amount": "2"
+    },
+    {
+      "item": "Gaeta or Castelvetrano olives, pitted and halved",
+      "amount": "12 to 15"
+    },
+    {
+      "item": "bunch Italian parsley, minced, divided",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "cherry tomatoes, halved (optional)",
+      "amount": "6 to 7"
+    },
+    {
+      "item": "paccheri pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 180 degrees F.",
+    "On a baking sheet, place the octopus, cover it with foil, and bake for about 2 hours, draining every 20 to 30 minutes to prevent it from boiling in its own juices. Reserve the juices to use in future recipes or toss it.",
+    "Once the octopus is soft and fork-tender, let it cool down—it will be easier to cut without it breaking apart. When cool enough to handle, cut the tentacles in ½-inch rounds.",
+    "In a medium-large sauté pan over medium heat, warm the olive oil for a minute. Add the shallot and sauté for about 1 minute, or until softened. Add the potatoes and cook, stirring, for 3 to 4 minutes. Add the olives, half the parsley, the capers, oregano, and red pepper flakes. Reduce the heat to medium-low, and cook for 2 minutes. Add the octopus and gently stir. Season with salt and pepper to taste. Add the tomatoes, reduce the heat to low, and cover with a lid. Continue cooking for 3 to 4 minutes, or until the tomatoes are breaking down and creating some juice.",
+    "Meanwhile, in a large pot of boiling salted water, cook the paccheri until al dente, drain, and transfer to the sauté pan. Quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the remaining parsley, some black pepper, and a drizzle of oil."
+  ],
+  "image": "/recipes/paccheri-with-giant-pacific-octopus-potatoes-gaeta-olives-and-capers.jpg",
+  "time": {
+    "total": 45
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

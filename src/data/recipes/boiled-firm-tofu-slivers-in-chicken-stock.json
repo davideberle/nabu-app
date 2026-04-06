@@ -1,9 +1,10 @@
 {
   "id": "boiled-firm-tofu-slivers-in-chicken-stock",
-  "name": "Boiled firm tofu slivers in chicken stock",
+  "name": "Boiled Firm Tofu Slivers in Chicken Stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Tofu"
   },
   "subtitle": "ji huo zhu gan si 鸡火煮干丝",
   "intro": "In the past, Yangzhou was regarded as one of China’s most elegant destinations for pleasure and relaxation, and the historic quarter of the city, with its lanes and canals, salt merchants’ mansions and Slender West Lake Park, still has an old-fashioned charm. For centuries it was also one of the centers of Chinese gastronomy, and the city lays claim to many famous dishes, including this one. Several sources trace its origins back to a more elaborate “nine-sliver soup” (jiu si tang) that was served as a banquet dish for the Qianlong emperor, and which included slivered sea cucumber, dried razor clams and bird’s nest among its ingredients. These days, many ostentatious restaurant versions involve freshwater shrimp, chicken slivers, chicken gizzard and liver, dried shrimp eggs and sliced bamboo shoot, while more elegant, pared-down renditions employ only pea shoots and slivers of ham. This recipe is somewhere between the two, and I hope you’ll find it delicious. The tofu slivers are twice soaked in boiling water to dispel what the Chinese refer to as their “beany fishy taste” (dou xing wei)—that is, the less appealing aspect of the flavor of soybeans. Typically of Yangzhou cooking, this dish involves careful attention to color, with green leaves and needles of dark pink ham used as a counterpoint to the pallor of the tofu.",
@@ -45,5 +46,13 @@
     "Pile the tofu up in a deep serving dish with the chicken slivers on top. Pour over the rest of the stock. Arrange the green leaves prettily around the tofu, garnish with the slivered ham and serve.",
     "(If you wish to make the full, classic version of this dish, you will also need small amounts of cooked chicken gizzard and liver, cut into slivers, sliced bamboo shoot, blanched pea shoots, dried shrimp eggs and a few uncooked shrimp, which should be lightly coated in starch paste and briefly stir-fried in lard. Add the chicken offal, shrimp eggs and bamboo shoot to the wok along with the chicken slivers. Garnish with the cooked shrimp, pea shoots and ham.)"
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

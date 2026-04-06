@@ -1,9 +1,10 @@
 {
   "id": "shanghai-fried-rice-with-salt-pork-and-green-bok-choy",
-  "name": "Shanghai fried rice with salt pork and green bok choy",
+  "name": "Shanghai Fried Rice with Salt Pork and Green Bok Choy",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "xian rou cai fan 咸肉菜饭",
   "intro": "In a backstreet not far from Nanjing Road in the heart of Shanghai, there’s a small diner that serves one of the most delicious versions of this classic local rice dish I’ve tasted. The plump, glossy rice, studded with salt pork, threaded with the bright green of bok choy, is irresistible. Everyone eats it, in the Chinese manner, with a bowl of broth to refresh the palate (a simple stock with sliced spring onion greens will do). This is my version of their recipe, which includes red onion and shiitake mushrooms. This dish is usually made with short-grain white rice—Japanese sushi rice is what I use at home—but it will also taste delicious with long-grain Thai fragrant rice. For the most sizzlingly delicious results, use lard as your cooking oil. Feel free to vary the quantities of pork or vegetables as you please. Spinach may be used as a substitute for the bok choy. Another traditional way to make this dish is to begin by frying the salt pork and greens, preferably in lard, then add raw washed rice and water. Bring to the boil, then cover and slow cook, as in the recipe for plain white rice.",
@@ -51,5 +52,10 @@
     "Tip in the rice and stir-fry over a high heat, breaking it up as you go. When the rice is piping hot and smells delicious, season with salt and pepper. (If you are eating the rice as a main meal, it will need to be saltier than if you are eating it with other dishes.) Add the bok choy and continue to stir-fry until the vegetable is piping hot and just cooked. Remove from the heat, stir in the sesame oil and serve.",
     "Vegetarians can simply omit the meat in either the main recipe or its variation to make simple cai fan (“vegetable rice”)—although Chinese cooks would still tend to stir-fry the rice with lard to enhance its fragrance."
   ],
-  "image": "/recipes/shanghai-fried-rice-with-salt-pork-and-green-bok-choy.jpg"
+  "image": "/recipes/shanghai-fried-rice-with-salt-pork-and-green-bok-choy.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

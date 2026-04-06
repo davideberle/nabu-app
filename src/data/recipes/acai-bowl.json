@@ -1,0 +1,54 @@
+{
+  "id": "acai-bowl",
+  "name": "Acai Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "The classic acai bowl is made with pureed fruit from frozen acai ’pucks’, which you can find in the frozen foods section of your grocery store. To prepare a chilled version of this bowl, simply defrost the puck a little, or else defrost the acai puck completely in the bowl, and mix it with bananas. It’s perfectly fine to use avocado instead of banana to make a slightly less sweet purée. And if you boost the bowl with chia seeds, you not only increase its nutrient content, you also end up with a more satisfying and heartier texture.",
+  "ingredients": [
+    {
+      "item": "frozen acai berries, or 1 tbsp acai powder and 7 oz (200 g) frozen blueberries",
+      "amount": "7 oz (200 g)"
+    },
+    {
+      "item": "bananas",
+      "amount": "3"
+    },
+    {
+      "item": "chia seeds (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "4 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "sprigs of lemon balm",
+      "amount": "2",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "In a food processor, mix acai and banana to a smooth consistency. Add 2 tablespoons chia seeds, if desired. Pour the mixture into two bowls, dust with lucuma powder, sprinkle with mulberries and pomegranate seeds, and top with lemon balm."
+  ],
+  "image": "/recipes/acai-bowl.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": "cg-sho-coo-tee",
+  "name": "Sho-Coo-Tee",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Chef's Specials"
+  },
+  "servings": "serves 4 or more as part of a multi-course meal",
+  "intro": "Xacutti is one of the most popular Indian dishes from Goa. As with many of the authentic dishes from the Indian subcontinent, restaurateurs here in the UK have taken to reinventing it with spices and techniques that they prefer to use. Sho-coo-tee is the Bangladeshi pronunciation of xacutti and this version is just as good as, if not better, than the original.",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "15–20"
+    },
+    {
+      "item": "rapeseed oil or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ghee",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "panch poran",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "3"
+    },
+    {
+      "item": "fresh curry leaves",
+      "amount": "10"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "fresh green bullet chillies, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "of ground turmeric",
+      "amount": "Pinch"
+    },
+    {
+      "item": "quantity fried onions",
+      "amount": "1"
+    },
+    {
+      "item": "thick coconut milk",
+      "amount": "400ml"
+    },
+    {
+      "item": "date molasses or regular molasses, to taste",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "skinless, boneless, large chicken breasts, sliced horizontally into 2 equal-sized, flat pieces",
+      "amount": "8"
+    },
+    {
+      "item": "raw minced lamb prepared as with seekh kebabs",
+      "amount": "400g"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped coriander (cilantro)",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Salt and freshly ground pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 140°C/275°F/gas mark 1. Put the tomatoes cut side up in a baking tray, sprinkle with 1 tbsp of the oil and some salt and pepper. Bake for about 60 minutes or until reduced in size by about a third. Set aside.",
+    "Melt the ghee in a large saucepan over a medium-high heat. Toss in the panch poran, bay and curry leaves and let it all sizzle for about 30 seconds. Add the garlic and ginger paste, fresh chillies, paprika and turmeric and fry for a further 30 seconds.",
+    "Add the baked tomatoes, fried onions, coconut milk and molasses (date molasses is intensely sweet). Simmer for 5 minutes over a low heat, stirring continuously. Blend this sauce until silky smooth. Set aside or refrigerate until ready to cook the chicken.",
+    "Using a meat mallet, pound each chicken breast half until thin and flat. Place one of the flattened breast halves in the centre of a large piece of cling film (plastic wrap). Spread about 3 tbsp of the prepared minced lamb down the centre and wrap the chicken breast around the lamb, into a sausage shape. Twist the ends of the cling film to ensure the meat is tightly wrapped. Repeat with the other chicken breast halves.",
+    "Bring a large pan of water to a boil and place the roulades in it. Simmer for about 10 minutes until completely cooked through. Using a slotted spoon, transfer the roulades to a plate. Unwrap and slice the roulades into bite-sized pieces. Heat the remaining oil in a frying pan and sear the roulade pieces on the cut ends.",
+    "Bring the blended sauce to a simmer and stir in the roulade pieces. Check for seasoning and stir in the garam masala. Serve topped with the chopped coriander (cilantro)."
+  ],
+  "image": "/recipes/curry-guy-cg-sho-coo-tee.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 75
+  }
+}

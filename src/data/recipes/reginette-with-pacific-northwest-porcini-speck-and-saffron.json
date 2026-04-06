@@ -1,0 +1,76 @@
+{
+  "id": "reginette-with-pacific-northwest-porcini-speck-and-saffron",
+  "name": "Reginette with Pacific Northwest Porcini, Speck, and Saffron",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Characterized by a rich, deep forest flavor, little pigs—porcini in Italian—are among the most desirable foraged mushrooms. In the PNW, they can be found among pine and fir trees twice a year, during the spring and fall. Porcini mushroom hunters search deep into the wild to find the right soil months before picking them. It’s not an easy mushroom to find, but when discovered, it’s joy all around! Fresh porcini can be used for a delicious meal right away or can be dried for use throughout the year. For this recipe, we are cooking with fresh porcini.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic, gently crushed",
+      "amount": "1"
+    },
+    {
+      "item": "speck, diced",
+      "amount": "6 ounces"
+    },
+    {
+      "item": "bunch Italian parsley, finely chopped, divided",
+      "amount": "1"
+    },
+    {
+      "item": "fresh porcini mushrooms, cut into ¼-inch slices",
+      "amount": "½ pound"
+    },
+    {
+      "item": "saffron threads, soaked in 1 tablespoon of boiling water for 15 minutes",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Kosher salt and ground white pepper",
+      "amount": ""
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "reginette pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano, divided",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "In a large skillet over medium heat, warm the olive oil. Add the shallot and garlic, and cook for a couple of minutes, stirring to avoid burning. Add the speck and cook for another couple of minutes, or until crispy. Add half the parsley and the porcini, and cook for about a minute more. Add the saffron and season with salt and white pepper to taste.",
+    "Add the wine and cook for 6 to 7 minutes.",
+    "Meanwhile, in a large pot of boiling salted water, cook the reginette until al dente, drain, and transfer to the skillet. Increase the heat to high, and sauté for a minute or so. Stir in half the Parmigiano and pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the remaining Parmigiano and parsley, a drizzle of oil and more white pepper."
+  ],
+  "tips": [
+    "If you have trouble finding speck, you can substitute good-quality bacon.",
+    "Trim the earthy base of the porcini with a small paring knife. See this page for mushroom-cleaning instructions."
+  ],
+  "image": "/recipes/reginette-with-pacific-northwest-porcini-speck-and-saffron.jpg",
+  "time": {
+    "total": 22
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "tuna-fish-with-chick-peas",
+  "name": "Tuna Fish with Chick-Peas",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "one 20-ounce can chick-peas",
+      "amount": ""
+    },
+    {
+      "item": "two 6½-ounce cans tuna fish",
+      "amount": ""
+    },
+    {
+      "item": "scallions, white parts only, minced",
+      "amount": "4"
+    },
+    {
+      "item": "minced celery",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "chopped fresh parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped fresh dill",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "Drain chick-peas and tuna.",
+      "amount": ""
+    },
+    {
+      "item": "Mix together with chopped vegetables.",
+      "amount": ""
+    },
+    {
+      "item": "In a screw-top jar, combine dressing ingredients and shake well.",
+      "amount": ""
+    },
+    {
+      "item": "Pour dressing over chick-pea-tuna mixture and stir well.",
+      "amount": ""
+    },
+    {
+      "item": "Chill for several hours for the flavors to blend.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Drain chick-peas and tuna.",
+    "Mix together with chopped vegetables.",
+    "In a screw-top jar, combine dressing ingredients and shake well.",
+    "Pour dressing over chick-pea-tuna mixture and stir well.",
+    "Chill for several hours for the flavors to blend."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

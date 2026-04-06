@@ -1,0 +1,85 @@
+{
+  "id": "cg-crab-samosas",
+  "name": "Crab Samosas",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Starters"
+  },
+  "servings": "makes 18–20",
+  "intro": "I first tried making this recipe after a visit to a restaurant called Simla in Dordon near Tamworth. Mohammed Nanu, the owner, asked his head chef to make several dishes for me, knowing I needed ideas for this book. They served this crab in deep-fried pastry shells and it was so good. I decided to use the crab filling for samosas. I think my friends at Simla will approve. Try dipping these into the honey mustard raita.",
+  "ingredients": [
+    {
+      "item": "quantity homemade samosa pastry",
+      "amount": "1"
+    },
+    {
+      "item": "Rapeseed oil, for deep-frying",
+      "amount": ""
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh curry leaves, finely chopped",
+      "amount": "10"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "3½ tbsp"
+    },
+    {
+      "item": "Spice stock or water",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "fresh white crabmeat",
+      "amount": "250g"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "To make the crab filling, heat the oil in a frying pan until bubbly hot. Sprinkle in the mustard seeds and, when they begin to pop, stir in the curry leaves and onion, and fry until the onion is soft and translucent. Add the garlic and ginger paste and the salt and mix it all up in the pan for about 30 seconds. Stir in the mixed powder, chilli powder and tomato purée, along with the spice stock or water.",
+    "Let this sizzle for about a minute and then pour it all into a bowl. Stir in the crabmeat (it will already be cooked) and the soy sauce. Check for seasoning.",
+    "Roll out the pastry as described opposite and use the crab filling to shape into samosas. Either freeze at this stage, or set aside until ready to cook.",
+    "Deep-fry the samosas in batches following the method opposite and serve with the honey mustard raita."
+  ],
+  "image": "/recipes/curry-guy-cg-crab-samosas.jpg",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
+}

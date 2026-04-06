@@ -1,0 +1,34 @@
+{
+  "id": "nut-butter",
+  "name": "NUT Butter",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes 1 jar",
+  "intro": "Homemade nut butter—it’s simple and delicious, and you know it’s made fresh. Nut butter is the perfect topping, whether on a sandwich or on slices of apple, hothouse cucumber or zucchini. It’s also a scrumptious base for raw food balls. The neutral oil is flavorless, but if you like the taste of cold-pressed canola, that will work too.",
+  "ingredients": [
+    {
+      "item": "cup, heaped (5 dl) nuts/seeds/almonds",
+      "amount": "1"
+    },
+    {
+      "item": "cup–¾ cup (½ dl–1½ dl) neutral-tasting oil",
+      "amount": "¼"
+    },
+    {
+      "item": "salt (optional)",
+      "amount": "pinch of"
+    }
+  ],
+  "method": [
+    "Mix the nuts or seeds of your choice, or almonds, in a food processor, adding in the neutral oil and salt. Different nuts will call for different amounts of oil. Cashews only need about ¼ cup (½ dl) of oil, while almonds will need ¾ cup (1½ dl) to become a really creamy nut butter. Store the butter in a glass jar with a tight-fitting lid."
+  ],
+  "image": "/recipes/nut-butter.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

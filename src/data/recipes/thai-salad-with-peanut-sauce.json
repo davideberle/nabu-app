@@ -90,5 +90,10 @@
     "Add the dressing to salad mixture (Step 1) and mix well.",
     "Divide salad between 4 plates. Top with peanuts and jalapeños."
   ],
-  "image": "/recipes/thai-salad-with-peanut-sauce.jpg"
+  "image": "/recipes/thai-salad-with-peanut-sauce.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

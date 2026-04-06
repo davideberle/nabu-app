@@ -1,18 +1,18 @@
 {
   "id": "stuffed-sardines-with-spicy-tomato-dagga",
-  "name": "Stuffed sardines with spicy tomato dagga",
+  "name": "Stuffed Sardines with Spicy Tomato Dagga",
   "subtitle": "Sardine ma’ daggit banadora",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c06"
+    "chapter": "Fish"
   },
   "introduction": "Green chile, garlic, dill seeds, sardines—this is a roll call of ingredients that typify Gazan cuisine. As well as being the general term for all pounded dressings or sauces, dagga is also the name of Gaza’s famous spicy tomato salad. It’s traditionally paired with oily fish—sardines, mackerel, salmon—to offset their richness, but really, it can be eaten in abundance alongside anything. It’s wonderful with Baked Fish in Tahini Sauce (this page), Kofta with Tahini, Potato, and Onion (this page), or Chicken Shawarma Pie (this page).\n\nGetting ahead: You can prepare the stuffing a couple of days ahead and even stuff the sardines in advance; they’ll keep well in the fridge for a day. The dagga can also be made up to a day in advance and kept in the fridge until serving.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Fish"
   },
   "servings": "serves six",
   "time": {
@@ -194,5 +194,5 @@
   "tags": {
     "dietary": []
   },
-  "image": null
+  "image": "/recipes/stuffed-sardines-with-spicy-tomato-dagga.jpg"
 }

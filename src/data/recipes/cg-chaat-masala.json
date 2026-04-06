@@ -1,0 +1,68 @@
+{
+  "id": "cg-chaat-masala",
+  "name": "Chaat Masala",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 160g, 12 generous tbsp, scant 1¼ cups",
+  "intro": "Chaat masala, which has a quite distinctive flavour, is usually used in small amounts, sprinkled over finished dishes and included in marinades to give them a bit more kick. Citric acid is used in a lot of commercial brands but I’ve chosen to use the more authentic and healthier amchoor (dried mango powder), which gives the spice blend a nice citric flavour.",
+  "ingredients": [
+    {
+      "item": "cumin seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "amchoor (dried mango powder)",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "powdered black salt",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "of asafoetida powder",
+      "amount": "Pinch"
+    },
+    {
+      "item": "dried mint (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ajwain (carom) seeds",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Roast the cumin and coriander seeds in a dry frying pan over a medium heat until warm to the touch and fragrant, moving them around in the pan as they roast and being careful not to burn them. If they begin to smoke, take them off the heat. Tip onto a plate to cool.",
+    "Grind the roasted seeds to a fine powder in a spice grinder or pestle and mortar. Add the remaining ingredients and grind some more until you have a very fine powder.",
+    "Store in an airtight container in a cool, dark place and use as needed, within 2 months for optimal flavour."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

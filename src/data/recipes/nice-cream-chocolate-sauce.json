@@ -1,0 +1,33 @@
+{
+  "id": "nice-cream-chocolate-sauce",
+  "name": "Nice Cream Chocolate Sauce",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "raw cacao powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "maple syrup or agave syrup",
+      "amount": "4 tbsp"
+    }
+  ],
+  "method": [
+    "Make sure the coconut oil is liquid, and then stir in the remaining ingredients. Drizzle the chocolate sauce over the nice cream, or dip the popsicles in the sauce.",
+    "Psst! If you have some cacao butter at home, try using ½ cup of this instead of the coconut oil. If you can find cacao paste, you can skip half the coconut oil and all the cacao powder, and just add in the sweetener. Adding in different ingredients will modify the flavors."
+  ],
+  "image": "/recipes/nice-cream-chocolate-sauce.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

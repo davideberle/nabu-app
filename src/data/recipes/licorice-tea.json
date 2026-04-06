@@ -1,0 +1,31 @@
+{
+  "id": "licorice-tea",
+  "name": "Licorice TEA",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "ingredients": [
+    {
+      "item": "licorice root or ¼ cup (½ dl) finely chopped licorice root or 2 tsp licorice powder",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "1 quart (1 liter)"
+    }
+  ],
+  "method": [
+    "Bring the water and the root to a boil and let boil for about 10 minutes. Strain the liquid. It’s also fine to simply heat the water and stir in the licorice powder. Drink the beverage warm, or chill it to make iced tea and serve it with lemon and coconut palm sugar. Measure half a sliced lemon and 2 tablespoons of coconut palm sugar or honey per quart of tea."
+  ],
+  "image": "/recipes/licorice-tea.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

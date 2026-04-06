@@ -1,9 +1,10 @@
 {
   "id": "eight-treasure-stuffed-calabash-duck",
-  "name": "Eight-treasure stuffed calabash duck",
+  "name": "Eight-Treasure Stuffed Calabash Duck",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "ba bao hu lu ya 八宝葫芦鸭",
   "intro": "At the highest echelons of banquet cookery, Jiangnan chefs are known for their Kung Fu dishes: elaborate concoctions that demand time, expense, virtuouso cooking skills, and often a bit of madness. In the past, the salt merchants of Yangzhou and the rich citizens of Suzhou feted visiting emperors with multiple Kung Fu delicacies; one historical account of a banquet describes a host of complex dishes including steamed camel’s hump and mock leopard’s fetus! These days, few restaurants are equipped to serve the more elaborate traditional dishes, but one exception is the Lu Mansion in Yangzhou, which is encouraged by the local government to fly the flag of classic Yangzhou cooking. I was lucky enough to spend a few days in the kitchen there, learning the ropes of the Three-Head Feast, including legendary dishes such as slow-cooked pig’s head and this extraordinary eight-treasure duck. The boned duck is stuffed with glutinous rice, sewn up, tied around the waist to resemble a lucky calabash gourd, deep-fried, stewed, and finally served with a sauce reduction. This, then, is a just a taste of crazy, complicated, wonderful Kung Fu cooking, and it’s probably the most challenging recipe in the book, but a fantastic dish for a special occasion. To make it, you will need a pair of good kitchen scissors; a heavy chopping cleaver; a needle and strong cotton thread; a thin ribbon or some string made of uncolored, natural fiber; and a certain amount of patience. While the recipe may take time, I hope you’ll agree that the end result is spectacular.",
@@ -120,5 +121,13 @@
     "In a stable, seasoned wok, heat the oil for deep-frying to 320°F (160°C). Very carefully, lower the bird into the oil and deep-fry until golden brown, turning it once for even coloring. Carefully remove it from the oil and set aside.",
     "In a saucepan large enough to take your duck lying down, heat 2 tablespoons of the deep-frying oil over a high flame. Add the sliced ginger, spring onions and star anise and stir-fry until wonderfully fragrant. Add some hot water from the kettle, add the duck, then top with enough hot water to cover. Add the Shaoxing wine, light soy sauce, 2 teaspoons of the dark soy sauce and the sugar. Bring to the boil and season with salt. Cover the pan, turn down the heat and simmer for 1½ hours."
   ],
-  "image": "/recipes/eight-treasure-stuffed-calabash-duck.jpg"
+  "image": "/recipes/eight-treasure-stuffed-calabash-duck.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

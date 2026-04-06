@@ -3,34 +3,57 @@
   "name": "Feta-Herb Ladolemono",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:5 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 5,
+    "total": 10
+  },
   "ingredients": [
     {
-      "item": "strained fresh lemon juice",
-      "amount": "⅓ cup (80 ml)"
+      "item": "cup (80 ml) strained fresh lemon juice",
+      "amount": ""
     },
     {
-      "item": "crumbled Greek feta",
-      "amount": "⅓ cup (50 g)"
+      "item": "cup (50 g) crumbled Greek feta",
+      "amount": ""
     },
     {
       "item": "chopped fresh oregano",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "garlic clove, minced (optional)",
       "amount": "1"
     },
     {
-      "item": "extra-virgin Greek olive oil",
-      "amount": "1 cup (240 ml)"
+      "item": "(240 ml) extra-virgin Greek olive oil",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Whisk together the lemon juice, feta, oregano, and garlic, if using, in a medium bowl. While whisking, drizzle in the olive oil in a slow, steady stream and whisk until smooth and creamy.",
+      "amount": ""
+    },
+    {
+      "item": "Season to taste with salt and pepper.",
+      "amount": ""
     }
   ],
   "method": [
     "Whisk together the lemon juice, feta, oregano, and garlic, if using, in a medium bowl. While whisking, drizzle in the olive oil in a slow, steady stream and whisk until smooth and creamy.",
     "Season to taste with salt and pepper."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

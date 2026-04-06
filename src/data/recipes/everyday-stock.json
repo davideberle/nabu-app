@@ -1,10 +1,10 @@
 {
   "id": "everyday-stock",
-  "name": "Everyday stock",
+  "name": "Everyday Stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
-    "chapter": "Main Dishes"
+    "chapter": "Basic Recipes"
   },
   "ingredients": [
     {

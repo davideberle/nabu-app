@@ -1,0 +1,84 @@
+{
+  "id": "lemon-flavored-souzoukakia",
+  "name": "Lemon-Flavored Souzoukakia",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "Souzoukakia are meatballs flavored with cumin and garlic and shaped like little sausages.",
+      "amount": ""
+    },
+    {
+      "item": "ground round",
+      "amount": "1 lb"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "breadcrumbs",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "garlic, minced",
+      "amount": "1 clove"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "(¼ pound) butter",
+      "amount": "1 stick"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Combine meat, cumin, breadcrumbs, garlic, egg, salt, and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Shape teaspoonfuls of the meat mixture into oval or oblong shapes (wetting your hands to facilitate handling).",
+      "amount": ""
+    },
+    {
+      "item": "Fry in butter over medium heat, turning frequently.",
+      "amount": ""
+    },
+    {
+      "item": "Combine lemon juice and water and pour over the souzoukakia.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine meat, cumin, breadcrumbs, garlic, egg, salt, and pepper.",
+    "Shape teaspoonfuls of the meat mixture into oval or oblong shapes (wetting your hands to facilitate handling).",
+    "Fry in butter over medium heat, turning frequently.",
+    "Combine lemon juice and water and pour over the souzoukakia."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "fusilli-with-pine-nut-and-sage-pesto-quail-eggs-and-aleppo-pepper",
+  "name": "Fusilli with Pine Nut and Sage Pesto, Quail Eggs, and Aleppo Pepper",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Winter"
+  },
+  "servings": "4 servings",
+  "intro": "Sage is all the rage in the Pacific Northwest: clary sage, silver sage, cooking sage, the variations go on. It grows profusely with almost zero care and embellishes many front yards all year long. High in antioxidants, this aromatic herb can be of great use in a pesto. Here’s a recipe for those who like pungent flavors, sweetened by a raw quail egg and spiced up by Aleppo pepper.",
+  "ingredients": [
+    {
+      "item": "clove garlic",
+      "amount": "1"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "1 ounce"
+    },
+    {
+      "item": "medium sage leaves",
+      "amount": "35"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fusilli pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "quail eggs",
+      "amount": "4"
+    },
+    {
+      "item": "Aleppo pepper",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Using a mortar and pestle, grind the garlic and pine nuts into a paste. Add 30 of the sage leaves and continue to grind against the walls of the mortar until the sage leaves are reduced to small pieces. Slowly drizzle in the olive oil, continuing to grind, and add the Parmigiano. Season with salt and pepper to taste, and grind until the pesto is creamy. Set aside.",
+    "In a small pan over high heat, warm the canola oil. When the oil is hot, fry the remaining 5 sage leaves for about 1 minute. Once fried, remove with a slotted spoon, place on a paper towel, and set aside.",
+    "Meanwhile, in a large pot of boiling salted water, cook the fusilli until al dente, drain, and transfer to a mixing bowl. Add the pesto and quickly combine.",
+    "Plate in four bowls, and crack one quail egg on top of each bowl, keeping the yolk intact. Sprinkle with the Aleppo pepper, and finish with the sage leaves and a drizzle of oil."
+  ],
+  "tips": [
+    "You can use a food processor or blender if you don’t have a mortar and pestle. Just make sure to use the pulse setting.",
+    "Pecorino can be substituted for Parmigiano-Reggiano, walnuts for pine nuts, and you can cook the eggs over easy or lightly boil them if you want to avoid raw eggs."
+  ],
+  "image": "/recipes/fusilli-with-pine-nut-and-sage-pesto-quail-eggs-and-aleppo-pepper.jpg",
+  "time": {
+    "total": 16
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

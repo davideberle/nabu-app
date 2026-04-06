@@ -1,0 +1,58 @@
+{
+  "id": "super-celery-soup",
+  "name": "Super Celery Soup",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "Soup makes a great light supper or a hearty snack. For a day at the beach, bring this soup along in a thermos with ice cubes. Celery and cucumber regulate the body’s balance of fluids and provides you with minerals that are beneficial for your skin.",
+  "ingredients": [
+    {
+      "item": "4” (10 cm) hothouse cucumber",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "stalks celery",
+      "amount": "3"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried Mediterranean oregano",
+      "amount": "A large pinch of"
+    },
+    {
+      "item": "dried basil",
+      "amount": "A large pinch of"
+    },
+    {
+      "item": "herb salt",
+      "amount": "1–2 tsp"
+    },
+    {
+      "item": "freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Cut cucumber, tomatoes, and celery into chunks. Process them in a blender with the remaining ingredients, taste and adjust the soup for salt."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

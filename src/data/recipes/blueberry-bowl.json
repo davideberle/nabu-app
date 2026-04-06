@@ -1,0 +1,60 @@
+{
+  "id": "blueberry-bowl",
+  "name": "Blueberry Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "It’s difficult for me not to sneak in some leafy greens, even in a bowl. Spinach is good here because its flavor isn’t overpowering, and when combined with the blueberries its color is not discernible. However, all the nutrients are in there! Chlorophyll and fiber from the spinach, fiber from the chia seeds, too, and antioxidants from both the chia seeds and the blueberries. It is, quite simply, a terrific health boost. Make it even better with some blueberry powder, if you like.",
+  "ingredients": [
+    {
+      "item": "bananas",
+      "amount": "2"
+    },
+    {
+      "item": "blueberries, frozen or defrosted",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "handful of green leaves",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "water (optional)",
+      "amount": "¼–½ cup (½–1 dl)"
+    },
+    {
+      "item": "blueberry powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen blueberries",
+      "amount": "¼ cup (½ dl)",
+      "group": "TOPPING"
+    },
+    {
+      "item": "banana, sliced",
+      "amount": "1",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Blend everything to a smooth puree. The chia seeds don’t need to be soaked, they just add some firmness to the bowl if you let the mixture sit for a bit. Top the bowl with blueberries and banana."
+  ],
+  "image": "/recipes/blueberry-bowl.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

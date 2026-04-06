@@ -3,16 +3,22 @@
   "name": "Lentil & Mushroom Soup",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
   },
-  "servings": "prep time: 10 minutes | cook time:45 minutes |serves 8",
+  "servings": "serves 8",
+  "time": {
+    "prep": 10,
+    "cook": 45,
+    "total": 55
+  },
   "ingredients": [
     {
       "item": "green or brown lentils (not French lentilles de Puy)",
-      "amount": "1 pound"
+      "amount": "1 lb"
     },
     {
-      "item": "21/2 quarts chicken or vegetable stock",
+      "item": "quarts chicken or vegetable stock",
       "amount": ""
     },
     {
@@ -28,24 +34,52 @@
       "amount": "3"
     },
     {
-      "item": "cloves garlic, minced",
-      "amount": "3"
+      "item": "garlic, minced",
+      "amount": "3 cloves"
     },
     {
       "item": "bay leaves",
       "amount": "3"
     },
     {
-      "item": "Kokkari Tomato Sauce or canned tomato sauce",
-      "amount": "2 cups"
+      "item": "cups",
+      "amount": "2"
     },
     {
-      "item": "3/4 cup extra-virgin olive oil",
+      "item": "Kokkari Tomato Sauce",
+      "amount": ""
+    },
+    {
+      "item": "or canned tomato sauce",
+      "amount": ""
+    },
+    {
+      "item": "cup extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "Sea salt and freshly ground pepper",
       "amount": ""
     },
     {
       "item": "mushrooms, halved and sliced",
-      "amount": "1 pound"
+      "amount": "1 lb"
+    },
+    {
+      "item": "In a large pot, combine the lentils, stock, onion, carrots, celery, garlic, bay leaves, tomato sauce, olive oil, and salt to taste.",
+      "amount": ""
+    },
+    {
+      "item": "Cover partially and bring to a simmer over medium heat. Simmer for about 15 minutes, then add the mushrooms.",
+      "amount": ""
+    },
+    {
+      "item": "Continue simmering until the lentils and vegetables are soft, about 45 minutes longer.",
+      "amount": ""
+    },
+    {
+      "item": "Let cool for 10 minutes, then add several grinds of pepper and more salt if necessary. Remove the bay leaves. Ladle into bowls to serve.",
+      "amount": ""
     }
   ],
   "method": [
@@ -54,5 +88,10 @@
     "Continue simmering until the lentils and vegetables are soft, about 45 minutes longer.",
     "Let cool for 10 minutes, then add several grinds of pepper and more salt if necessary. Remove the bay leaves. Ladle into bowls to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

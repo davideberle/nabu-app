@@ -1,0 +1,74 @@
+{
+  "id": "chia-crackers-with-turmeric-guacamole",
+  "name": "Chia Crackers with Turmeric Guacamole",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "ingredients": [
+    {
+      "item": "chia seeds",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "10 tbsp"
+    },
+    {
+      "item": "almond pulp",
+      "amount": "1½ cup (3 dl)"
+    },
+    {
+      "item": "nutritional yeast",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "pinches of salt",
+      "amount": "2"
+    },
+    {
+      "item": "avocados",
+      "amount": "3",
+      "group": "TURMERIC GUACAMOLE"
+    },
+    {
+      "item": "tomato",
+      "amount": "1",
+      "group": "TURMERIC GUACAMOLE"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1",
+      "group": "TURMERIC GUACAMOLE"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of",
+      "group": "TURMERIC GUACAMOLE"
+    },
+    {
+      "item": "turmeric",
+      "amount": "1 tsp",
+      "group": "TURMERIC GUACAMOLE"
+    },
+    {
+      "item": "chili powder or chili flakes",
+      "amount": "A pinch of",
+      "group": "TURMERIC GUACAMOLE"
+    }
+  ],
+  "method": [
+    "Soak the chia seeds in 10 tablespoons of water for about one hour. In a bowl, mix together the chia seeds, almond pulp, nutritional yeast, and salt. Spread the mixture very thinly over a sheet of parchment paper. With the back of a knife, mark out 2\" x 2\" squares, which you divide diagonally. Dehydrate the crackers at 107°F (42°C) for about 20 hours, or until the crackers are thoroughly dried out. Store the crackers in a tin with a tight-fitting lid.",
+    "GUACAMOLE: In a bowl, mash the avocados with a fork (or mix them in a food processor) until you have a smooth cream. Dice the tomato and chop the onion, then mix them with the avocado. Add salt, turmeric, and chili. Taste and adjust for more salt or heat."
+  ],
+  "image": "/recipes/chia-crackers-with-turmeric-guacamole.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

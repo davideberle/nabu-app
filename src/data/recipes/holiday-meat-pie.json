@@ -1,0 +1,218 @@
+{
+  "id": "holiday-meat-pie",
+  "name": "Holiday Meat Pie",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
+  },
+  "servings": "serves 8",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "lean boneless shoulder or leg of lamb, cut into cubes",
+      "amount": "2½ lb"
+    },
+    {
+      "item": "warm water",
+      "amount": "4½ cups"
+    },
+    {
+      "item": "minced onions",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped celery",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "minced parsley",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "minced fresh mint, or ½ teaspoon dried mint",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "all-purpose flour, sifted",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "warm water",
+      "amount": "2 to 3 tbsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "grated kefalotiri or Parmesan cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "raw converted rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "each, butter and olive oil for greasing pan",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil for brushing crust",
+      "amount": ""
+    },
+    {
+      "item": "Place meat in a large covered casserole with warm water; bring to a boil.",
+      "amount": ""
+    },
+    {
+      "item": "Add the onions, celery, parsley, garlic, mint, tomato sauce, olive oil, salt, and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and cook over low heat for 1 hour.",
+      "amount": ""
+    },
+    {
+      "item": "Put sifted flour, salt, and olive oil into a bowl and mix well with a fork.",
+      "amount": ""
+    },
+    {
+      "item": "Add egg.",
+      "amount": ""
+    },
+    {
+      "item": "Gradually add warm water and stir until dough is well blended.",
+      "amount": ""
+    },
+    {
+      "item": "Knead for 5 minutes, or until dough is firm.",
+      "amount": ""
+    },
+    {
+      "item": "Chill thoroughly for at least 1 hour.",
+      "amount": ""
+    },
+    {
+      "item": "Preheat oven to 400 degrees.",
+      "amount": ""
+    },
+    {
+      "item": "Remove lamb from heat.",
+      "amount": ""
+    },
+    {
+      "item": "Beat 4 eggs lightly and add grated cheese and cinnamon.",
+      "amount": ""
+    },
+    {
+      "item": "Mix well, and add to meat mixture, along with rice.",
+      "amount": ""
+    },
+    {
+      "item": "Divide chilled dough into two balls.",
+      "amount": ""
+    },
+    {
+      "item": "Roll each ball out on a lightly floured surface to ⅛-inch thickness, making one piece big enough to line a 15 x 11-inch baking pan with a lip to turn over the top.",
+      "amount": ""
+    },
+    {
+      "item": "The other piece should be large enough to fit the top of the pan.",
+      "amount": ""
+    },
+    {
+      "item": "Grease pan with butter and olive oil; line with the larger piece of dough.",
+      "amount": ""
+    },
+    {
+      "item": "Pour in meat mixture, spreading evenly.",
+      "amount": ""
+    },
+    {
+      "item": "Cover with the second crust, turning the lip of the lower crust over, and crimp the edges.",
+      "amount": ""
+    },
+    {
+      "item": "Brush lightly with olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Prick with a fork.",
+      "amount": ""
+    },
+    {
+      "item": "Bake for 45 minutes, or until crust is golden brown.",
+      "amount": ""
+    },
+    {
+      "item": "Allow to set for a few minutes before cutting into squares.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place meat in a large covered casserole with warm water; bring to a boil.",
+    "Add the onions, celery, parsley, garlic, mint, tomato sauce, olive oil, salt, and pepper.",
+    "Cover and cook over low heat for 1 hour.",
+    "Put sifted flour, salt, and olive oil into a bowl and mix well with a fork.",
+    "Gradually add warm water and stir until dough is well blended.",
+    "Knead for 5 minutes, or until dough is firm.",
+    "Chill thoroughly for at least 1 hour.",
+    "Preheat oven to 400 degrees.",
+    "Remove lamb from heat.",
+    "Beat 4 eggs lightly and add grated cheese and cinnamon.",
+    "Mix well, and add to meat mixture, along with rice.",
+    "Divide chilled dough into two balls.",
+    "Roll each ball out on a lightly floured surface to ⅛-inch thickness, making one piece big enough to line a 15 x 11-inch baking pan with a lip to turn over the top.",
+    "The other piece should be large enough to fit the top of the pan.",
+    "Grease pan with butter and olive oil; line with the larger piece of dough.",
+    "Pour in meat mixture, spreading evenly.",
+    "Cover with the second crust, turning the lip of the lower crust over, and crimp the edges.",
+    "Brush lightly with olive oil.",
+    "Prick with a fork.",
+    "Bake for 45 minutes, or until crust is golden brown.",
+    "Allow to set for a few minutes before cutting into squares."
+  ],
+  "image": "/recipes/holiday-meat-pie.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

@@ -8,7 +8,8 @@
   "servings": "serves 4",
   "intro": "A vegetarian curry that will satisfy even the most die-hard meat eaters. Rich in umami and vegetables, which are chosen for its chewy, satisfying texture. Not forgetting the secret ingredient that adds firmness and bright color to store-bought curry. For a gluten-free curry, add gluten-free soy sauce.",
   "time": {
-    "prep": "40 minutes"
+    "prep": "40 minutes",
+    "total": 19
   },
   "ingredients": [
     {
@@ -90,5 +91,10 @@
     "Add the red peppers and let it boil for 1 more minute. When done, turn off the stove, stir in the fresh basil and let it wilt in the curry.",
     "Serve with jasmine rice immediately, or later (like most Thai curries, it tastes even better the next day!)"
   ],
-  "image": "/recipes/vegan-thai-green-curry.jpg"
+  "image": "/recipes/vegan-thai-green-curry.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

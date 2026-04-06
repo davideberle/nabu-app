@@ -1,0 +1,116 @@
+{
+  "id": "braised-chicken-with-tomato-sauce-and-spices",
+  "name": "Braised Chicken with Tomato Sauce and Spices",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Main Dishes"
+  },
+  "servings": "serves 6",
+  "time": {
+    "prep": 20,
+    "total": 144
+  },
+  "ingredients": [
+    {
+      "item": "chicken thighs, or 1 (4- to 4.5-pound) whole chicken, cut into 8 pieces",
+      "amount": "3 lb"
+    },
+    {
+      "item": "extra-virgin olive oil, divided",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "onion, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "5"
+    },
+    {
+      "item": "carrots, diced",
+      "amount": "3"
+    },
+    {
+      "item": "celery stalks, diced",
+      "amount": "3"
+    },
+    {
+      "item": "ground cinnamon, or 2 cinnamon sticks",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white wine",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "honey",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "2 cups"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "Preheat the oven to 325°F.",
+      "amount": ""
+    },
+    {
+      "item": "In a heated 7- to 9-quart Dutch oven over medium-high heat, cook the chicken in 1 tablespoon of olive oil for 5 to 7 minutes, until brown. Cook it in batches, if needed, so as not to crowd the pan. Drain any excess fat that accumulates. Transfer the chicken to a plate.",
+      "amount": ""
+    },
+    {
+      "item": "Return the pot to the heat and heat the remaining 1 tablespoon of olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Add the onion and stir. Cook for 5 minutes, scraping up any browned bits (fond) from the bottom of the pot.",
+      "amount": ""
+    },
+    {
+      "item": "Add the garlic and cook for 1 minute more.",
+      "amount": ""
+    },
+    {
+      "item": "Add the carrots, celery, and cinnamon. Cook for 5 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Stir in the wine, vinegar, honey, and tomato paste. Simmer for 5 to 7 minutes, until reduced by half.",
+      "amount": ""
+    },
+    {
+      "item": "Return the chicken to the pot. Cover it with the chicken broth, add the bay leaf, cover the pot, and place it in the oven. Braise for 2 hours.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 325°F.",
+    "In a heated 7- to 9-quart Dutch oven over medium-high heat, cook the chicken in 1 tablespoon of olive oil for 5 to 7 minutes, until brown. Cook it in batches, if needed, so as not to crowd the pan. Drain any excess fat that accumulates. Transfer the chicken to a plate.",
+    "Return the pot to the heat and heat the remaining 1 tablespoon of olive oil.",
+    "Add the onion and stir. Cook for 5 minutes, scraping up any browned bits (fond) from the bottom of the pot.",
+    "Add the garlic and cook for 1 minute more.",
+    "Add the carrots, celery, and cinnamon. Cook for 5 minutes.",
+    "Stir in the wine, vinegar, honey, and tomato paste. Simmer for 5 to 7 minutes, until reduced by half.",
+    "Return the chicken to the pot. Cover it with the chicken broth, add the bay leaf, cover the pot, and place it in the oven. Braise for 2 hours."
+  ],
+  "image": "/recipes/braised-chicken-with-tomato-sauce-and-spices.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

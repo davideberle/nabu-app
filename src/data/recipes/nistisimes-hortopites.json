@@ -3,13 +3,19 @@
   "name": "Nistisimes Hortopites",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Savory Pitas and Pies"
   },
-  "servings": "prep time: 5 minutes | cook time: 10 minutes |serves 3",
+  "servings": "serves 3",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
   "ingredients": [
     {
-      "item": "olive oil",
-      "amount": "⅓ cup"
+      "item": "cup olive oil",
+      "amount": ""
     },
     {
       "item": "small fennel bulb, trimmed and finely chopped",
@@ -29,7 +35,7 @@
     },
     {
       "item": "mixed greens (such as spinach, Swiss chard, dandelion greens, arugula and/or mesclun), coarsely chopped",
-      "amount": "1 pound"
+      "amount": "1 lb"
     },
     {
       "item": "coarsely chopped fresh flat-leaf parsley",
@@ -40,8 +46,40 @@
       "amount": "½ cup"
     },
     {
-      "item": "recipe Cretan Phyllo",
+      "item": "Salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "recipe",
       "amount": "1"
+    },
+    {
+      "item": "Cretan Phyllo",
+      "amount": ""
+    },
+    {
+      "item": "Olive oil and safflower oil for frying",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, heat the oil and sauté the fennel, leek and onion for 4 minutes, or until soft. Add the scallions and sauté for 1 minute more. Add the greens and sauté, stirring frequently, until they start to wilt. Stir in the parsley and dill and cook just until wilted. Remove from the heat and add salt and pepper to taste. Let cool.",
+      "amount": ""
+    },
+    {
+      "item": "Working with 1 portion at a time, cut the phyllo into 4-inch squares. Place 1 tablespoon of the filling near the bottom of each phyllo square, fold over about ¼ inch of each side, fold the bottom edge over the filling and then roll up like a cigar. Set aside on a plate. (If you are not going to fry the",
+      "amount": ""
+    },
+    {
+      "item": "immediately, arrange them on baking sheets lined with paper towels, cover and refrigerate for up to 1 day.)",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet, heat 2 inches of a combination of olive and safflower oil over medium high heat to 350°F. In batches, fry the",
+      "amount": ""
+    },
+    {
+      "item": ", turning once, until golden brown, about 3 minutes. with tongs, transfer to paper towels to drain. Serve warm or at room temperature.",
+      "amount": ""
     }
   ],
   "method": [
@@ -49,5 +87,10 @@
     "Working with 1 portion at a time, cut the phyllo into 4-inch squares. Place 1 tablespoon of the filling near the bottom of each phyllo square, fold over about ¼ inch of each side, fold the bottom edge over the filling and then roll up like a cigar. Set aside on a plate. (If you are not going to fry the hortopites immediately, arrange them on baking sheets lined with paper towels, cover and refrigerate for up to 1 day.)",
     "In a large skillet, heat 2 inches of a combination of olive and safflower oil over medium high heat to 350°F. In batches, fry the hortopites, turning once, until golden brown, about 3 minutes. with tongs, transfer to paper towels to drain. Serve warm or at room temperature."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

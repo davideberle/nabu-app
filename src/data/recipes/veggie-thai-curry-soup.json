@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "Indulge in the delightful flavors of this curry soup, inspired by your favorite Thai restaurant. While shiitake mushrooms are the preferred choice, you can use any fresh mushroom variety to create this delicious dish. Enhancing the soup's taste, fresh basil and lime infuse a vibrant and refreshing flavor profile.",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": 5
   },
   "ingredients": [
     {
@@ -73,5 +74,10 @@
     "Drain the noodles (Step 1), then add to the soup (Step 5). Divide the soup into bowls",
     "Serve each dish with basil and lime wedges."
   ],
-  "image": "/recipes/veggie-thai-curry-soup.jpg"
+  "image": "/recipes/veggie-thai-curry-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

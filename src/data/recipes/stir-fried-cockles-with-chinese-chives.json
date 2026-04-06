@@ -1,9 +1,10 @@
 {
   "id": "stir-fried-cockles-with-chinese-chives",
-  "name": "Stir-fried cockles with Chinese chives",
+  "name": "Stir-Fried Cockles with Chinese Chives",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Fish and Seafood"
   },
   "subtitle": "jiu cai chao wu ge 韭菜炒乌蛤",
   "intro": "This incredibly quick and extremely delicious stir-fry is based on a similar dish made with small freshwater snails from the Dragon Well Manor restaurant in Hangzhou. I’ve made it with shelled cockles, but you could equally use clams or other shellfish. If you buy live cockles or clams, put them in a saucepan with water to a depth of ½ in (1cm); heat over a high flame for a couple of minutes, until the shells have all opened, then pick out the meat; strain the cooking liquor and use it in place of the stock in the recipe.",
@@ -33,5 +34,10 @@
     "Trim the chives and cut them into 1 in (2cm) sections. Heat a seasoned wok over a high flame. Add the oil, heat until very hot, then add the chives. Stir-fry briefly until you can smell their wonderful fragrance, then add the cockles. Continue to stir-fry just until everything is piping hot. Add the stock, bring to the boil, stir and season with salt. Serve.",
     "This is a lovely vegetarian dish I ate in Ningbo. Instead of cockles, use shelled, peeled fava beans which you havepre-cooked in boiling water."
   ],
-  "image": "/recipes/stir-fried-cockles-with-chinese-chives.jpg"
+  "image": "/recipes/stir-fried-cockles-with-chinese-chives.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

@@ -1,9 +1,10 @@
 {
   "id": "crabmeat-tomato-and-potato-soup",
-  "name": "Crabmeat, tomato and potato soup",
+  "name": "Crabmeat, Tomato and Potato Soup",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "xie fen fan qie tu dou nong tang 蟹粉番茄土豆浓汤",
   "intro": "The tomato was known as a “barbarian eggplant” (fan qie) by the Chinese coastal people who first encountered it after its long voyage from the Americas (in other parts of China, they call it “Western red persimmon,” xi hong shi). This substantial soup is made with both tomatoes and potatoes, another New World vegetable, along with the white flesh of saltwater crabs, and is a perfect expression of Shanghai’s polyglot history and deep “barbarian” influences. It’s a gorgeous sunset of a soup, savory with a hint of sweetness, and finished with a sprinkling of “barbarian pepper,” as the Chinese call black pepper. Serve it as part of a Chinese meal, as a European-style first course, or as a meal in itself, perhaps with just bread and a salad on the side. I often order this soup in two of my favorite Shanghai restaurants, Old Jesse and Fu 1088, and I’m grateful to Fu 1088 executive chef Tony Lu for explaining his recipe to me. At home I make it with freshly picked Cornish crabmeat from my local fishmonger. If you are cooking several dishes and want to make life easier, I suggest you make the soup mostly in advance, and just bring it to the boil and add the starch mixture to thicken when you wish to serve it.",
@@ -53,5 +54,10 @@
     "Bring a pan of water to the boil. Peel the potatoes, steam or boil them until tender, then mash them coarsely. Cut a cross through the skin of each tomato and put them all in a bowl. Cover them with boiling water and leave to cool. When cool enough to handle, peel off the skins, then core them, discarding the seeds, and chop the flesh into fine dice. Bring the stock to the boil.",
     "Heat half the butter with ½ teaspoon cooking oil in a seasoned wok or frying pan. Add the crabmeat and fry until hot and fragrant, then remove and set aside. Heat the remaining butter and oil in the same pan. Add the tomatoes and stir-fry over a high flame until fragrant and partially disintegrated. Add the tomato purée and stir-fry until it smells delicious. Add the hot stock and mashed potatoes and bring to the boil, pressing the potatoes so they spread throughout the soup. Season with the sugar and salt. Add the crabmeat and return to the boil, then give the starch mixture a stir and add it a little at a time, mixing well, to thicken the soup. Serve with a generous scattering of black pepper."
   ],
-  "image": "/recipes/crabmeat-tomato-and-potato-soup.jpg"
+  "image": "/recipes/crabmeat-tomato-and-potato-soup.jpg",
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

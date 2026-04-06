@@ -1,0 +1,125 @@
+{
+  "id": "eggplant-spread",
+  "name": "Eggplant Spread",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "medium eggplants, about 1 pound each",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "medium ripe tomato, peeled, seeded, and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "pitted black Kalamata oil-cured olives",
+      "amount": "6"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Preheat oven to 450 degrees.",
+      "amount": ""
+    },
+    {
+      "item": "Prick eggplants in a few places and put on a square of aluminum foil in pan.",
+      "amount": ""
+    },
+    {
+      "item": "Bake about 40 minutes, or until soft.",
+      "amount": ""
+    },
+    {
+      "item": "Cool.",
+      "amount": ""
+    },
+    {
+      "item": "Remove stems and peel eggplants, scraping any flesh from skin.",
+      "amount": ""
+    },
+    {
+      "item": "Remove excess seeds, discard skin, and chop eggplant.",
+      "amount": ""
+    },
+    {
+      "item": "Place in a bowl.",
+      "amount": ""
+    },
+    {
+      "item": "Blend in olive oil and onion well with eggplant.",
+      "amount": ""
+    },
+    {
+      "item": "Add chopped tomato.",
+      "amount": ""
+    },
+    {
+      "item": "Season with lemon juice, salt, pepper, 3 pitted olives, sliced, and 2 tablespoons parsley.",
+      "amount": ""
+    },
+    {
+      "item": "Mix thoroughly.",
+      "amount": ""
+    },
+    {
+      "item": "Refrigerate, preferably overnight.",
+      "amount": ""
+    },
+    {
+      "item": "Garnish with remaining 3 olives, sliced, and chopped parsley.",
+      "amount": ""
+    },
+    {
+      "item": "Serve with crusty bread or crackers as an appetizer or over lettuce as salad.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat oven to 450 degrees.",
+    "Prick eggplants in a few places and put on a square of aluminum foil in pan.",
+    "Bake about 40 minutes, or until soft.",
+    "Remove stems and peel eggplants, scraping any flesh from skin.",
+    "Remove excess seeds, discard skin, and chop eggplant.",
+    "Place in a bowl.",
+    "Blend in olive oil and onion well with eggplant.",
+    "Add chopped tomato.",
+    "Season with lemon juice, salt, pepper, 3 pitted olives, sliced, and 2 tablespoons parsley.",
+    "Mix thoroughly.",
+    "Refrigerate, preferably overnight.",
+    "Garnish with remaining 3 olives, sliced, and chopped parsley.",
+    "Serve with crusty bread or crackers as an appetizer or over lettuce as salad."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

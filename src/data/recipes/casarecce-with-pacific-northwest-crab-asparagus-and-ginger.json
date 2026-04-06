@@ -1,0 +1,65 @@
+{
+  "id": "casarecce-with-pacific-northwest-crab-asparagus-and-ginger",
+  "name": "Casarecce with Pacific Northwest Crab, Asparagus, and Ginger",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Dungeness, king, red rock, shore, and box are the most common crab varieties to be found on the Pacific Northwest coast. Recreational crabbing is a very common summer activity, not to mention a very satisfying one. The crabmeat is delicate, sweet, and delicious, and each bite is all the sweeter when personally obtained from a crab pot. Here, the crabmeat is combined with fresh local asparagus and the peppery taste of grated ginger, mixed together with casarecce (cooked al dente, of course).",
+  "ingredients": [
+    {
+      "item": "asparagus, trimmed and cut into 1-inch pieces",
+      "amount": "4 to 5"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "salted butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "bunch green onions, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cooked crabmeat",
+      "amount": "½ pound"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "casarecce pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a large pot of boiling salted water, blanch the asparagus for 2 minutes. Drain and set aside, reserving the water for cooking the pasta.",
+    "In a medium-large skillet over medium-low heat, warm the olive oil and butter for 1 to 2 minutes. Add the green onions and sauté for 1 minute. Then add the crabmeat and asparagus and cook for 2 minutes.",
+    "Add the wine and continue cooking for another 4 to 5 minutes, until the alcohol has evaporated. Stir in the ginger and season with salt and pepper to taste.",
+    "Meanwhile, in the pot previously used for the asparagus, bring the blanching water back to a boil, and cook the casarecce until al dente, drain, and transfer to the skillet. Quickly sauté the pasta and crab-asparagus mixture, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with some pepper and a drizzle of oil. Enjoy!"
+  ],
+  "image": "/recipes/casarecce-with-pacific-northwest-crab-asparagus-and-ginger.jpg",
+  "time": {
+    "total": 90
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

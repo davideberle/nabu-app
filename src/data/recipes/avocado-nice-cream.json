@@ -1,0 +1,49 @@
+{
+  "id": "avocado-nice-cream",
+  "name": "Avocado Nice Cream",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Nice Cream"
+  },
+  "servings": "serves 4",
+  "intro": "Avocados, full of healthy fats, make the perfect base for nice cream. Their taste is pretty neutral, but their fat enhances the flavors of other ingredients. Black currants are acidic and characteristically Swedish, and have anti-inflammatory properties.",
+  "ingredients": [
+    {
+      "item": "avocados",
+      "amount": "2"
+    },
+    {
+      "item": "frozen black currants or cherries",
+      "amount": "½ lb (225 gr)"
+    },
+    {
+      "item": "yacon or maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "frozen or fresh black currants",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "yacon or maple syrup (optional)",
+      "amount": "",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "In a blender, mix the avocado, frozen berries, and syrup to a smooth nice cream. Serve in bowls topped with frozen black currants and bee pollen, and some extra syrup if you want more sweetener."
+  ],
+  "image": "/recipes/avocado-nice-cream.jpg",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

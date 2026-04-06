@@ -1,0 +1,55 @@
+{
+  "id": "lukewarm-avocado-soup-with-miso",
+  "name": "Lukewarm Avocado Soup with Miso",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "The word ‘soup’ conjures up something that is hot, and yet we usually don’t eat soup until it’s lukewarm. Here you don’t have to wait for the soup to cool down—it’s at the right temperature right from the start. If you’d like a more substantial meal, boost the soup with cooked or sprouted quinoa, which provides extra protein and carbohydrates. Garlic suppresses viruses and gives your immune system extra strength during flu season.",
+  "ingredients": [
+    {
+      "item": "sun-dried tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "warm water",
+      "amount": "1¼ cup (2½ dl)"
+    },
+    {
+      "item": "dark miso paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "clove garlic or scant ¼ tsp garlic powder",
+      "amount": "1"
+    },
+    {
+      "item": "bunch of cilantro",
+      "amount": "1",
+      "group": "TOPPING"
+    },
+    {
+      "item": "lime wedges",
+      "amount": "2",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Soak the tomatoes for 1 to 12 hours. Stir the miso into the warm water to dissolve it. Process the miso water together with the remaining ingredients—except the cilantro and lime—in a blender. Serve in bowls, and top each one with chopped fresh cilantro and a wedge of lime."
+  ],
+  "image": "/recipes/lukewarm-avocado-soup-with-miso.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

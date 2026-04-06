@@ -1,9 +1,10 @@
 {
   "id": "plain-short-grain-white-rice",
-  "name": "Plain short-grain white rice",
+  "name": "Plain Short-Grain White Rice",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "bai mi fan 白米饭",
   "intro": "In Jiangnan, and particularly in Shanghai, people like to eat a short-grain white rice similar to Japanese sushi rice, which absorbs less water than long-grain rice. I often serve sushi rice with Jiangnan food. One delicious and simple way of eating this rice, which was regarded as a treat in times when meat was expensive, is to stir a little lard and soy sauce into hot, freshly cooked rice and sprinkle with finely chopped spring onion greens. This recipe serves around 4.",
@@ -20,5 +21,13 @@
   "method": [
     "Put the rice in a bowl, cover with cold water and use your hand to swirl it around. Drain and repeat until the water is clear. Tip into a sieve and leave to drain completely. Put the rice in a heavy-bottomed pan with the measured water. Bring to the boil over a medium flame, stir, then turn the heat up high. Boil until holes open up in the surface of the rice. Cover, turn the heat down very low and cook for 20 minutes. Turn off the heat and leave the rice, covered and undisturbed, for 20 minutes, then remove the lid and fluff up the rice."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

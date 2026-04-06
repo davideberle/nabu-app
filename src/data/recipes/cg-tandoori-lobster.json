@@ -1,0 +1,116 @@
+{
+  "id": "cg-tandoori-lobster",
+  "name": "Tandoori Lobster",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Grilling, Barbecue and Roasting"
+  },
+  "servings": "serves 2",
+  "intro": "If you love lobster like I do, nothing more needs to be said. Just look at it! You will need a sharp pair of kitchen scissors.",
+  "ingredients": [
+    {
+      "item": "butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Retained cracked claw shells with remaining meat",
+      "amount": ""
+    },
+    {
+      "item": "onion – finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "250ml"
+    },
+    {
+      "item": "live lobsters",
+      "amount": "2 x 750g"
+    },
+    {
+      "item": "ghee",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "brown mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "fresh or frozen curry leaves",
+      "amount": "20"
+    },
+    {
+      "item": "onion, very finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "English mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "plain yoghurt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "double (heavy) cream",
+      "amount": "150ml"
+    },
+    {
+      "item": "of saffron threads (optional)",
+      "amount": "Pinch"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Juice of 2 limes or lemons",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook your lobsters in a large pot of salty boiling water for no more than 4 minutes. Remove to cool. Remove the top of the shells from the tail and body with your scissors. Twist off the claws. Transfer the tail meat to a clean bowl and remove and discard the black and green innards in the body. Place the hollowed shells on a baking tray, cover and place them and the tail meat in the fridge.",
+    "Now crack open the claw shells (messy job) and remove the meat from inside to another clean bowl. The small amount of meat you can’t get at easily will help flavour the stock.",
+    "To make the stock, melt the butter in a large saucepan over a medium heat and add the retained cracked lobster claw shells. Stir the shells around in the hot butter for about 10 minutes, then add the onion and bay leaves. Pour in the wine and just enough water to cover. Simmer for about 20 minutes, then strain through a sieve into a clean bowl.",
+    "Preheat your oven to its highest setting or prepare your barbecue for indirect cooking.",
+    "Melt the ghee in a pan over a high heat until bubbly hot and add the mustard seeds. When they begin to pop, turn down the heat to medium and add the curry leaves. Add the onion and fry for about 10 minutes until translucent and soft but not browned. Now add the garlic paste, cumin, chilli powder and mustard, and stir to combine.",
+    "Pour in 150ml (scant ⅔ cup) of the lobster stock and turn up the heat to bring the mixture to a boil. Reduce this sauce by half, then whisk in the yoghurt, cream and saffron. Simmer for another 5–10 minutes to thicken. Check for seasoning, add salt to taste and set aside to cool slightly.",
+    "Pour the warm sauce over each bowl of lobster meat and spoon the mixture back into the shells. I usually place the meat from the two claws in the body and the tail meat in the tails. You may not be able to use all the sauce. Sprinkle with the Parmesan and transfer to the oven or barbecue for 4–5 minutes, until the meat is just cooked through and hot. Watch closely so you don’t overcook!",
+    "Transfer each to a hot plate, garnish with coriander and serve with lemon or lime wedges."
+  ],
+  "image": "/recipes/curry-guy-cg-tandoori-lobster.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 55
+  }
+}

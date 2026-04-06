@@ -1,18 +1,18 @@
 {
   "id": "chard-lentil-and-preserved-lemon-soup",
-  "name": "Chard, lentil, and preserved lemon soup",
+  "name": "Chard, Lentil, and Preserved Lemon Soup",
   "subtitle": "Shorbet adass w sliq",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c04"
+    "chapter": "Soups"
   },
   "introduction": "If something is verging on the holier-than-thou in the kitchen, top with some crispy fried onions, we say. They work particularly well when paired with that most virtuous of all things—the lentil!—in something such as mjaddarat el burgul (see this page), rummaniyya (see this page), or, as here, this soup. For those happy feeling holy, though, the soup also works well as it is, without the onions. If you still want a crunch, then some pumpkin seeds (see this page for herb-salad ones or see this page for spicy ones), caramelized pistachios (this page), or croutons all go really well.\n\nGetting ahead: The soup can be made well ahead—up to three days if keeping in the fridge, or longer if you are going to freeze it—and the onions also keep well in a sealed container at room temperature for a couple of days. Make more of the onions than you need, if you like—they are lovely to have to sprinkle on all sorts of things: lentils and rice, oven-roasted veg, or grilled meat.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Soups"
   },
   "servings": "serves four",
   "time": {
@@ -129,5 +129,5 @@
   "tags": {
     "dietary": []
   },
-  "image": null
+  "image": "/recipes/chard-lentil-and-preserved-lemon-soup.jpg"
 }

@@ -4,13 +4,18 @@
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
     "author": "Various",
-    "chapter": "Sides"
+    "chapter": "Basics"
   },
-  "servings": "prep time: 5 minutes | cook time:10 minutes |serves 4",
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 10,
+    "total": 15
+  },
   "ingredients": [
     {
-      "item": "extra-virgin Greek olive oil",
-      "amount": "1 cup (240 ml)"
+      "item": "(240 ml) extra-virgin Greek olive oil",
+      "amount": "1 cup"
     },
     {
       "item": "fresh jalapeños, seeded and chopped",
@@ -25,22 +30,42 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "coarsely chopped fresh cilantro",
-      "amount": "2 cups (100 g)"
+      "item": "(100 g) coarsely chopped fresh cilantro",
+      "amount": "2 cups"
     },
     {
-      "item": "to 3 tablespoons good-quality honey, preferably raw Greek pine honey",
-      "amount": "2"
+      "item": "good-quality honey, preferably raw Greek pine honey",
+      "amount": "2 to 3 tbsp"
+    },
+    {
+      "item": "Several drops of hot sauce, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    },
+    {
+      "item": "Place all the ingredients in the bowl of a food processor and puree until smooth.",
+      "amount": ""
+    },
+    {
+      "item": "Taste and season with more lemon juice, hot sauce, and/or salt as needed.",
+      "amount": ""
+    },
+    {
+      "item": "Serve.",
+      "amount": ""
     }
   ],
   "method": [
     "Place all the ingredients in the bowl of a food processor and puree until smooth.",
     "Taste and season with more lemon juice, hot sauce, and/or salt as needed."
   ],
+  "image": "/recipes/greek-honey-hot-sauce.jpg",
   "category": {
     "dish_type": [
       "side"
     ]
-  },
-  "image": "/recipes/greek-honey-hot-sauce.jpg"
+  }
 }

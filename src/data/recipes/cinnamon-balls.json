@@ -1,0 +1,82 @@
+{
+  "id": "cinnamon-balls",
+  "name": "Cinnamon Balls",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "servings": "makes about 10 balls",
+  "intro": "The cinnamon bun is, after all, a classic coffee break treat, isn’t it? Personally, I just want the yummy inside of the bun, which is why I love this version.",
+  "ingredients": [
+    {
+      "item": "almonds, soaked or dry",
+      "amount": "1 cup (2 dl)",
+      "group": "DOUGH"
+    },
+    {
+      "item": "sulfate-free raisins",
+      "amount": "½ cup (1 dl)",
+      "group": "DOUGH"
+    },
+    {
+      "item": "coconut oil, softened (but not liquid)",
+      "amount": "1 tbsp",
+      "group": "DOUGH"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "1 tsp",
+      "group": "DOUGH"
+    },
+    {
+      "item": "ground cardamom",
+      "amount": "½ tsp",
+      "group": "DOUGH"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "½ tsp",
+      "group": "DOUGH"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of",
+      "group": "DOUGH"
+    },
+    {
+      "item": "dates",
+      "amount": "10",
+      "group": "FILLING"
+    },
+    {
+      "item": "coconut oil, softened (but not liquid)",
+      "amount": "1 tbsp",
+      "group": "FILLING"
+    },
+    {
+      "item": "ground cinnamon",
+      "amount": "3–4 tsp",
+      "group": "FILLING"
+    },
+    {
+      "item": "water",
+      "amount": "½ tbsp",
+      "group": "FILLING"
+    }
+  ],
+  "method": [
+    "Grind the almonds in a food processor until they are finely chopped. Add the remaining ingredients for the dough and process until everything is mixed. Shape the dough into balls.",
+    "Would you like to make something more sophisticated? Roll out the dough between two sheets of parchment paper to make a rectangle measuring about 4” x 8” (10 x 20 cm). Remove the pits from the dates that will make the filling. Mix the dates and coconut oil, cinnamon, and ½ tbsp water in the food processor. Spread the filling over the rectangle, leaving a border of about ¾” (2 cm) along the long sides. Use the parchment paper to help you roll up the rectangle. Put the roll in the refrigerator or in the freezer.",
+    "The roll will be softer if stored in the refrigerator and it will keep for about one week. The dough will harden in the freezer but the filling will remain soft. The roll will keep for several months in the freezer. You can also try drying it in the dehydrator for about 20 hours at 107°F–113°F (42°C–45°C). If you do this, slice the roll into pieces and transfer them into bun molds."
+  ],
+  "image": "/recipes/cinnamon-balls.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

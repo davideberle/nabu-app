@@ -1,0 +1,102 @@
+{
+  "id": "cg-ana-chingri-prawn-with-pineapple",
+  "name": "ANA Chingri (Prawn with Pineapple)",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Chef's Specials"
+  },
+  "servings": "serves 2 or more as part of a multi-course meal",
+  "intro": "This is a flavour combo not to be missed. The spicy pineapple chutney teamed with the prawn curry just plain gets it. I like to serve Ana Chingri in the hallowed-out pineapples just as Chef Eshan ‘Mo’ Miah suggested I do. I’m not one to pass up good advice and I’ve been serving this curry in pineapples ever since. Feel free to use bowls though.",
+  "ingredients": [
+    {
+      "item": "garlic cloves, unpeeled",
+      "amount": "6"
+    },
+    {
+      "item": "pineapple",
+      "amount": "1"
+    },
+    {
+      "item": "roasted cumin seeds Spice Blends",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "fresh green chillies, very finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "chopped coriander (cilantro), plus extra to serve",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "rapeseed oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mustard seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chilli powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tomato, chopped",
+      "amount": "1"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "raw prawns (shrimp), shelled and deveined",
+      "amount": "500g"
+    },
+    {
+      "item": "Juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roast the garlic cloves directly over a gas hob flame on a skewer or in a dry frying pan, turning them as they roast, until blackened all over. Set aside to cool.",
+    "Using a large, sharp knife, cut the pineapple in half lengthways and scoop out most of the flesh from the centre. Place the scooped-out pineapple in a blender, add the cumin seeds and ½ tsp salt, and squeeze the roasted garlic out of their skins into the blender. Blend to a paste then transfer to a bowl.",
+    "Add the fresh chillies and chopped coriander (cilantro) to the pineapple paste and mix well. Reserve 2 tbsp for the curry and store the rest in the fridge until ready to serve.",
+    "Heat the oil in a large saucepan over a high heat and add the mustard seeds. They will begin to pop. When they do, reduce the heat to medium-high and add the onion along with a pinch of salt. Fry until translucent and soft, then stir in the garlic paste and fry for a further 30 seconds.",
+    "Add 4 tbsp water, the bay leaves, cumin, chilli powder, turmeric and the reserved 2 tbsp pineapple paste. Cook for a further 2 minutes then add the chopped tomato and tomato purée.",
+    "Throw in the prawns (shrimp) and stir into the sauce until cooked through. Check for seasoning and spoon into the hollowed-out pineapples. Top with chopped coriander and a squeeze of lime juice, and serve with the spicy pineapple paste, and some homemade naans or chapatis."
+  ],
+  "image": "/recipes/curry-guy-cg-ana-chingri-prawn-with-pineapple.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  },
+  "time": {
+    "total": 2
+  }
+}

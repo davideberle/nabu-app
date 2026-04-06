@@ -1,0 +1,113 @@
+{
+  "id": "cocktail-shish-kebab",
+  "name": "Cocktail Shish Kebab",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ground cumin (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "bay leaves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped green pepper",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "port wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Cut leg of lamb into 1-inch cubes.",
+      "amount": ""
+    },
+    {
+      "item": "Combine all marinade ingredients.",
+      "amount": ""
+    },
+    {
+      "item": "Stir to blend.",
+      "amount": ""
+    },
+    {
+      "item": "Add lamb cubes and marinate several hours or overnight.",
+      "amount": ""
+    },
+    {
+      "item": "(The longer the ingredients marinate, the better the recipe will taste.)",
+      "amount": ""
+    },
+    {
+      "item": "Preheat oven to 375 degrees.",
+      "amount": ""
+    },
+    {
+      "item": "When ready to serve, thread meat on 5- or 6-inch-long wooden skewers.",
+      "amount": ""
+    },
+    {
+      "item": "Bake for 12 to 15 minutes, turning frequently, until nicely browned.",
+      "amount": ""
+    },
+    {
+      "item": "Serve the souvlakia on the skewers.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cut leg of lamb into 1-inch cubes.",
+    "Combine all marinade ingredients.",
+    "Stir to blend.",
+    "Add lamb cubes and marinate several hours or overnight.",
+    "(The longer the ingredients marinate, the better the recipe will taste.)",
+    "Preheat oven to 375 degrees.",
+    "When ready to serve, thread meat on 5- or 6-inch-long wooden skewers.",
+    "Bake for 12 to 15 minutes, turning frequently, until nicely browned.",
+    "Serve the souvlakia on the skewers."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

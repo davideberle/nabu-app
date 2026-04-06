@@ -1,0 +1,64 @@
+{
+  "id": "cg-garam-masala",
+  "name": "Garam Masala",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 170g, 18 tbsp, 1½ cups",
+  "intro": "Garam masala is a blend of warming, aromatic spices. In India, the ingredients used can vary greatly from region to region and even from family to family, and most home and professional chefs will have their own special recipe. This is one of mine, and in it I use the same spices that are popular in northern India, Bangladesh and Pakistan, essential for achieving that curry-house flavour.",
+  "ingredients": [
+    {
+      "item": "coriander seeds",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "5 tsp"
+    },
+    {
+      "item": "fennel seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "cloves",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "7.5cm (3in)"
+    },
+    {
+      "item": "dried Indian bay leaves (cassia leaves)",
+      "amount": "5"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "20"
+    },
+    {
+      "item": "large pieces of mace",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Roast all the spices in a dry frying pan over a medium-high heat until warm to the touch and fragrant, moving them around in the pan as they roast and being careful not to burn them. If they begin to smoke, take them off the heat.",
+    "Tip the warm spices onto a plate and leave to cool, then grind to a fine powder in a spice grinder or pestle and mortar.",
+    "Store in an airtight container in a cool, dark place and use within 2 months for optimal flavour."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "id": "sizzling-rice-crepes",
-  "name": "SIZZLING RICE crepes",
+  "name": "Sizzling Rice Crepes",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Rice and Noodles"
   },
   "servings": "makes 6 crepes, to serve 3 or 4",
   "time": "TAKES ABOUT 1½ HOURS",
@@ -83,7 +83,7 @@
     "To make the batter In a medium bowl, whisk together the rice flour, cornstarch, salt, and turmeric. Whisk in the water and then the coconut milk. Let the yellow batter sit, uncovered, for 30 to 45 minutes, to thicken to the consistency of half-and-half (it will be slightly gritty from the flour). Whisk in more water, 1 teaspoon at a time, to thin out the batter, if needed (when I have to add water, it’s usually no more than 1 tablespoon). The batter may be made up to 2 days ahead and stored, covered, in the refrigerator; bring to room temperature before using.",
     "To prep the filling In order to cook efficiently with less mess, pre-portion the filling components. Divide the pork, shrimp, mushrooms, and onion onto six small pieces of parchment paper, creating a pile of goodies for each crepe. Sprinkle each portion with a pinch of salt. Set on a tray or baking sheet and keep near the stove with the batter and bean sprouts."
   ],
-  "image": null,
+  "image": "/recipes/sizzling-rice-crepes.jpg",
   "category": {
     "dish_type": [
       "side"

@@ -1,9 +1,10 @@
 {
   "id": "sweet-ningbo-rice-cake-with-seaweed",
-  "name": "Sweet Ningbo rice cake with seaweed",
+  "name": "Sweet Ningbo Rice Cake with Seaweed",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Sweet Dishes"
   },
   "subtitle": "tai cai gui hua nian gao 苔菜桂花年糕",
   "intro": "This surprising and delightful sweet dish is a speciality of Ningbo. Sizzly strips of New Year’s rice cake are frosted in powdered sugar and seaweed flakes, with a fragrant hint of osmanthus blossom. This combination of umami savoriness and sweetness is one that often occurs in the region’s cooking, from the sweet biscuits laced with seaweed on sale in the delicatessens of Shanghai, to another Ningbo speciality: naturally fermented rice flour buns steamed and toasted with powdered sugar and seaweed. I first tasted this delicacy at the Zhuangyuanlou restaurant in Ningbo, where executive chef Chen Xiaoliang was kind enough to let me learn how to make it in the kitchen. Serve it at the end of a Chinese meal, or alongside savory dishes.",
@@ -33,5 +34,13 @@
     "Heat the oil in a seasoned wok over a high flame to 300°F (150°C). Carefully slide the pieces of rice cake into the oil and deep-fry for 2–3 minutes, until they are slightly puffy. While they fry, use a wok scoop to separate them. Remove the rice cake pieces from the oil with a slotted spoon and set aside. Carefully pour off the oil into a heatproof container.",
     "Return the wok to a high flame with the powdered sugar and osmanthus jam or blossoms. Immediately add the rice cake pieces and toss them in the sugar for 10–20 seconds, by which time the sugar will have melted and coated the slices. Sprinkle the seaweed all over the rice cake pieces and stir rapidly for another 10–20 seconds, until they are evenly coated and smell delicious. Serve immediately."
   ],
-  "image": "/recipes/sweet-ningbo-rice-cake-with-seaweed.jpg"
+  "image": "/recipes/sweet-ningbo-rice-cake-with-seaweed.jpg",
+  "time": {
+    "total": 3
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

@@ -1,0 +1,74 @@
+{
+  "id": "pasta-with-traditional-san-marzano-tomato-sauce",
+  "name": "Pasta with Traditional San Marzano Tomato Sauce",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Anytime"
+  },
+  "servings": "4 servings",
+  "intro": "Without any doubt, this is the quintessential pasta dish Italians love to eat and cook, north or south, all year round. Pomo-d’oro means “golden apple” in Italian, and tomato sauce is among the first recipes a child or teenager learns how to cook in an Italian kitchen. It was definitely my first. That said, there are countless recipes for a pomodoro sauce, all similar but not the same. San Marzano tomatoes are the ideal variety for the dish, but others can do the job as well. You can make a delicious sugo di pomodoro with fresh tomatoes, but since we want to make this recipe year-round, it calls for pelati, canned peeled tomatoes religiously made at the end of the summer and stored in the kitchen for the whole year.\n\nCooking times for the sauce can vary. If you want something lighter that leans into the fruity juiciness of the tomatoes, cook it for a shorter time. If you are seeking something heartier and denser, cook it for longer. But there is one thing everyone can agree on: adding sugar to tomato sauce is a sacrilege; it’s an old trick to correct the acidity of overripe tomatoes.\n\nIf you are using canned peeled tomatoes, look at the ingredients list and select a can that uses the fewest ingredients. High-fructose corn syrup, calcium chloride, garlic, and oregano should be avoided, while salt, basil, and citric acid (an acidity regulator) are acceptable.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "shallot, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "cloves garlic, gently crushed",
+      "amount": "2"
+    },
+    {
+      "item": "(28-ounces) can whole peeled San Marzano tomatoes, drained",
+      "amount": "1"
+    },
+    {
+      "item": "water",
+      "amount": "½ cup"
+    },
+    {
+      "item": "fresh basil sprig, stemmed",
+      "amount": "1"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of your favorite fresh or dried pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a medium pot over medium heat, warm the olive oil. Add the shallot and garlic, and sauté for 2 minutes, stirring to avoid burning.",
+    "Put the tomatoes in a medium mixing bowl and crush them with your hands. Add the crushed tomatoes to the pot. In the same mixing bowl, add the water and swirl. Add this tomato water to the pot and stir.",
+    "To the pot, add the basil, oregano, and salt and pepper to taste. Let the leaves wilt, then reduce the heat to low. Let the sugo simmer for 30 to 40 minutes, depending on the desired thickness.",
+    "In a large pot of boiling salted water, cook the pasta until al dente (following the package directions), drain, and transfer to the mixing bowl. Pour two-thirds of the pomodoro sauce over the pasta and stir with a large spoon. Add the Parmigiano and stir.",
+    "Plate in four bowls and finish each with a scoop of the remaining sauce, more Parmigiano, an additional good-looking basil leaf, and a drizzle of oil. Enjoy!"
+  ],
+  "tips": [
+    "The absolute best way of cooking sugo di pomodoro is in a terracotta pot, if you have one. The heat uniformly spreads from the bottom to the top and across the sides of the pot. Italians believe that it gives a unique, delicious taste to the sauce.",
+    "Instead of crushing the tomatoes by hand, you could use a blender, but take care to not liquefy the tomatoes.",
+    "Pasta al Pomodoro is one of the few dishes where it’s acceptable to use any pasta shape you like: long, short, wide, ridged, or smooth. Try a few different shapes to see which you prefer."
+  ],
+  "image": "/recipes/pasta-with-traditional-san-marzano-tomato-sauce.jpg",
+  "time": {
+    "total": 55
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

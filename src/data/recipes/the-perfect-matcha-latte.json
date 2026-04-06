@@ -1,0 +1,38 @@
+{
+  "id": "the-perfect-matcha-latte",
+  "name": "THE Perfect Matcha Latte",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 1 cup",
+  "intro": "You can make the perfect matcha latte at home with a blender; you’ll get a delicious, fluffy foam. Try it—I know you’ll like it! For best results, use the white almond butter, or replace it with unsalted cashew butter. You can use almond mylk or other vegetable-based milk, but then you should omit the nut butter and the water.",
+  "ingredients": [
+    {
+      "item": "matcha powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey for extra sweetness (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white almond butter",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water at 158°F (70°C) (or almond mylk)",
+      "amount": "1 cup (2 dl)"
+    }
+  ],
+  "method": [
+    "Put the matcha powder, honey, and almond butter in the blender. Add water, and mix."
+  ],
+  "image": "/recipes/the-perfect-matcha-latte.jpg",
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

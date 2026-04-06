@@ -3,36 +3,62 @@
   "name": "Egg-Lemon Soup with Chicken & Rice",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
   },
-  "servings": "prep time: 5 minutes | cook time:18 minutes |serves 6",
+  "servings": "serves 6",
+  "time": {
+    "prep": 5,
+    "cook": 18,
+    "total": 23
+  },
   "ingredients": [
     {
-      "item": "boneless, skinless chicken breast, about 3/4 pound",
+      "item": "boneless, skinless chicken breast, about",
       "amount": "1"
+    },
+    {
+      "item": "pound",
+      "amount": ""
     },
     {
       "item": "quart unsalted chicken stock",
       "amount": "1"
     },
     {
-      "item": "1/4 cup long-grain rice",
+      "item": "cup long-grain rice",
+      "amount": ""
+    },
+    {
+      "item": "Sea salt and freshly ground pepper",
       "amount": ""
     },
     {
       "item": "cornstarch dissolved in 3 tablespoons water",
-      "amount": "3 tablespoons"
+      "amount": "3 tbsp"
     },
     {
       "item": "large egg yolks",
       "amount": "3"
     },
     {
-      "item": "1/3 cup fresh lemon juice, plus more as needed",
-      "amount": ""
+      "item": "fresh lemon juice, plus more as needed",
+      "amount": "1/3 cup"
     },
     {
       "item": "Chopped fresh dill for garnish",
+      "amount": ""
+    },
+    {
+      "item": "Put the chicken breast in a medium pot with the stock and 2 cups of water. Bring to a simmer, add the rice and 1 teaspoon salt, cover, and reduce the heat to low. Cook until the rice is tender, about 18 minutes. Remove the chicken breast and, when cool enough to handle, shred the chicken by hand.",
+      "amount": ""
+    },
+    {
+      "item": "Return the broth to a simmer over medium-high heat. Whisk in the cornstarch mixture and return to a simmer.",
+      "amount": ""
+    },
+    {
+      "item": "In a medium bowl, whisk the egg yolks with the 1/3 cup lemon juice, then whisk in about half of the hot broth to warm the eggs. Return the mixture to the saucepan and bring to a boil, whisking constantly. Remove from the heat. Stir in the shredded chicken. Taste and adjust the salt and lemon. Divide among soup bowls, topping each portion with some chopped dill and pepper. Serve immediately.",
       "amount": ""
     }
   ],
@@ -41,5 +67,10 @@
     "Return the broth to a simmer over medium-high heat. Whisk in the cornstarch mixture and return to a simmer.",
     "In a medium bowl, whisk the egg yolks with the 1/3 cup lemon juice, then whisk in about half of the hot broth to warm the eggs. Return the mixture to the saucepan and bring to a boil, whisking constantly. Remove from the heat. Stir in the shredded chicken. Taste and adjust the salt and lemon. Divide among soup bowls, topping each portion with some chopped dill and pepper. Serve immediately."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

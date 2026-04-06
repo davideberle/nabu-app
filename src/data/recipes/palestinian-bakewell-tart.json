@@ -1,18 +1,18 @@
 {
   "id": "palestinian-bakewell-tart",
-  "name": "Palestinian Bakewell tart",
+  "name": "Palestinian Bakewell Tart",
   "subtitle": "Al mabroushy",
   "source": {
     "cookbook": "Falastin",
     "author": "Sami Tamimi & Tara Wigley",
-    "chapter": "c09"
+    "chapter": "Sweets"
   },
   "introduction": "This is our take on the Bakewell tart. Kids love these, adults love these, Mr. Kipling himself would have loved these, we’re sure!\n\nKeeping notes: Once baked, this keeps well in a sealed container for up to three days.",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Sweets"
   },
   "servings": "makes 12 bars",
   "time": {

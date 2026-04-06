@@ -1,10 +1,10 @@
 {
   "id": "baked-shrimp-and-celery-toasts",
-  "name": "BAKED SHRIMP AND celery toasts",
+  "name": "Baked Shrimp AND Celery Toasts",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Snacks"
   },
   "servings": "makes 16 toasts, to serve 4 to 6",
   "time": "TAKES 45 MINUTES",
@@ -77,7 +77,7 @@
     "Break up the egg yolk with a pastry brush. Brush the tops of the toasts with the egg and sprinkle on a touch of paprika for cheery color.",
     "Bake the toasts for about 10 minutes, until the shrimp paste has turned opaque and the toast bottoms are golden brown. Then, position a rack 4 or 5 inches from the broiler and broil the tops for 1 to 2 minutes, until slightly puffed. Let cool for 5 minutes, and serve."
   ],
-  "image": null,
+  "image": "/recipes/baked-shrimp-and-celery-toasts.jpg",
   "category": {
     "dish_type": [
       "main"

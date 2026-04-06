@@ -3,9 +3,10 @@
   "name": "Honey Loukoumades",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Sweet Ends"
   },
-  "servings": "prep. time 60–70 minutes | cooking time 25–30 minutes | serves 10",
+  "servings": "serves 10",
   "ingredients": [
     {
       "item": "water, lukewarm",
@@ -13,7 +14,7 @@
     },
     {
       "item": "active dry yeast",
-      "amount": "½ ounce"
+      "amount": "½ oz"
     },
     {
       "item": "milk, lukewarm",
@@ -21,7 +22,7 @@
     },
     {
       "item": "salt",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "olive oil",
@@ -33,11 +34,43 @@
     },
     {
       "item": "sugar",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Vegetable oil sufficient for frying",
+      "amount": ""
     },
     {
       "item": "honey",
       "amount": "¾ cup"
+    },
+    {
+      "item": "Ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "In a mixing bowl, combine the water and yeast and stir gently.",
+      "amount": ""
+    },
+    {
+      "item": "Add the remaining dough ingredients and combine to form a smooth batter.",
+      "amount": ""
+    },
+    {
+      "item": "Cover and set aside for an hour to rise.",
+      "amount": ""
+    },
+    {
+      "item": "In a large, heavy saucepan, heat the oil to 350°F over high heat. Try to maintain this temperature.",
+      "amount": ""
+    },
+    {
+      "item": "Spoon the dough in balls one by one into the hot oil, and fry them until they are golden brown from all sides, turning as needed.",
+      "amount": ""
+    },
+    {
+      "item": "Drain them on paper towel, and then arrange them on a large platter. Top with the honey and sprinkle with cinnamon and walnuts.",
+      "amount": ""
     }
   ],
   "method": [
@@ -48,5 +81,10 @@
     "Spoon the dough in balls one by one into the hot oil, and fry them until they are golden brown from all sides, turning as needed.",
     "Drain them on paper towel, and then arrange them on a large platter. Top with the honey and sprinkle with cinnamon and walnuts."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

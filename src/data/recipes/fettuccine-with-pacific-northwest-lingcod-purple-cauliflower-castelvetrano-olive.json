@@ -1,0 +1,69 @@
+{
+  "id": "fettuccine-with-pacific-northwest-lingcod-purple-cauliflower-castelvetrano-olive",
+  "name": "Fettuccine with Pacific Northwest Lingcod, Purple Cauliflower, Castelvetrano Olives, and Capers",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Fall"
+  },
+  "servings": "4 servings",
+  "intro": "Rockfish is one of the most underrated types of fish on the West Coast. They’re delicious. Lingcod belongs to the rockfish family and can be caught from spring through fall, depending on the year. This bottom-dwelling fish has a delightfully mild taste, cooks easily, and is fairly inexpensive.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "Castelvetrano olives, pitted and halved",
+      "amount": "20"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "bunch Italian parsley, minced",
+      "amount": "1"
+    },
+    {
+      "item": "brined capers, drained",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "small head purple cauliflower, cut into ½-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "lingcod fillet, cut into ½-inch strips",
+      "amount": "10 ounces"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "fettuccine pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a medium-large skillet over medium-low heat, warm the olive oil for 1 to 2 minutes. Add the olives, shallot, parsley, capers, and red pepper flakes, and cook for another couple of minutes.",
+    "Meanwhile, in a pot of boiling salted water, blanch the cauliflower for 2 minutes. Save the water for cooking the pasta.",
+    "Strain out the cauliflower and transfer it to the skillet. Increase the heat to medium and cook for 2 minutes. Reduce the heat to medium-low, add the lingcod, and cook for another 5 to 6 minutes. Season with salt and pepper to taste.",
+    "Return the pot with the blanching water to a boil, then cook the fettuccine until al dente, drain, and transfer to the skillet. Increase the heat to high, and quickly sauté, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with a drizzle of oil and more black pepper, and enjoy!"
+  ],
+  "image": "/recipes/fettuccine-with-pacific-northwest-lingcod-purple-cauliflower-castelvetrano-olive.jpg",
+  "time": {
+    "total": 21
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

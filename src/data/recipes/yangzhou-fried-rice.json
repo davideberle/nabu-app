@@ -1,9 +1,10 @@
 {
   "id": "yangzhou-fried-rice",
-  "name": "Yangzhou fried rice",
+  "name": "Yangzhou Fried Rice",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "yang zhou chao fan 扬州炒饭",
   "intro": "Late one night, I dropped into my friend Yang Bin’s restaurant in the old quarter of Yangzhou for a bowlful of noodles, and happened also to meet his cooking master, Huang Wanqi. Chef Huang started talking about a 2,000-year-old gastronomic text, “The Root of Tastes” (ben wei pian), and told me he thought Yangzhou cooking best represented the subtle magic it described. He went on to explain the mysteries of Yangzhou fried rice, the only dish from this ancient gastronomic capital that has so far achieved international fame. He told me how to cook the secondary ingredients in chicken broth, and discussed the different roles that beaten egg could play in the dish. “If you begin by frying the beaten egg, and then add the rice,” he said, “you will have ‘golden fragments’ of egg in the rice (sui jin fen). If, instead, you fry the rice and then pour in the egg, the golden liquid coats each grain of rice, so it’s like ‘silver wrapped in gold’ (jin guo yin).” Both, he said, were traditional methods. You don’t have to go into such detail to appreciate this dish, one of the finest variations on the fried rice theme. The rice is speckled with little nuggets of delicious ingredients and infused with the umami richness of chicken stock. The following is my version, which omits the hard-to-find luxuries of sea cucumber and freshwater crabmeat, but otherwise follows the traditional method. If you want to make the totally authentic version, add ¾ oz (25g) chopped, soaked dried sea cucumber and ¾ oz (25g) freshwater crabmeat, and substitute tiny freshwater shrimp for the saltwater shrimp.",
@@ -71,5 +72,13 @@
     "Rinse and dry the wok and return it to the heat with the remaining oil. When the oil is hot, add the beaten egg mixture and swirl it around the base of the wok. When the egg is half-cooked, add all the rice and stir-fry, breaking up any clumps. When the rice is very hot, smells delicious and makes a popping sound around the edges of the wok, add the reserved ingredients in their stock sauce. Mix well and continue to stir-fry for another 30 seconds or so, seasoning with salt or pepper if you wish. Stir in the spring onion greens and serve.",
     "This simple fried rice is popular in Jiangnan; simply stir-fry leftover rice and add soy sauce to taste. A rich, traditional Chinese soy sauce is ideal; otherwise add light soy for salt and flavor, and a little dark soy to provide a deep brown luster."
   ],
-  "image": "/recipes/yangzhou-fried-rice.jpg"
+  "image": "/recipes/yangzhou-fried-rice.jpg",
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

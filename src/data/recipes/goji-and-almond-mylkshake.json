@@ -1,0 +1,46 @@
+{
+  "id": "goji-and-almond-mylkshake",
+  "name": "Goji & Almond Mylkshake",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Smoothies, Mylkshakes & Drinks"
+  },
+  "servings": "makes 2 glasses",
+  "intro": "This is a mylkshake that you can easily freeze to turn it into delicious nice cream. If you want a cold shake, use frozen banana, or frozen strawberries. Goji berries are good for your eyesight, and strawberries counteract the harmful effects of cholesterol. By all means, boost with some bracing maca powder, too!",
+  "ingredients": [
+    {
+      "item": "almond mylk",
+      "amount": "1¼ (3 dl)"
+    },
+    {
+      "item": "goji berries",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "frozen strawberries",
+      "amount": "½ cup (1 dl)"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "maca powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "honey for added sweetness (optional)",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Run all the ingredients in a blender to a smooth consistency."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "drink"
+    ]
+  }
+}

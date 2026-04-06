@@ -1,10 +1,10 @@
 {
   "id": "wontons-in-gingery-broth",
-  "name": "WONTONS IN gingery broth",
+  "name": "Wontons IN Gingery Broth",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Soups"
   },
   "servings": "serves 4 to 6",
   "time": "TAKES ABOUT 1½ HOURS",
@@ -118,7 +118,7 @@
     "Rewarm the broth over medium-high heat and, as it heats up, add the fish sauce and season with the maple syrup and salt, if needed, to create a savory-sweet finish. Add the chicken, mushrooms, and noodles; as soon the soup returns to a boil, remove from the heat. The noodles will have become clear and plump. Taste again to recheck the seasonings, adding a glug of fish sauce or pinches of salt, as needed.",
     "Ladle the soup into individual bowls (use chopsticks or tongs to move slippery noodles into the ladle) and garnish with the green onion rings, cilantro, a generous sprinkling of pepper, and the fried onions, if desired. Serve immediately, passing the chile slices and lime wedges at the table."
   ],
-  "image": null,
+  "image": "/recipes/wontons-in-gingery-broth.jpg",
   "category": {
     "dish_type": [
       "soup"

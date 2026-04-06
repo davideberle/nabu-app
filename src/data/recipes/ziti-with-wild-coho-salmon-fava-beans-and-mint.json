@@ -1,0 +1,66 @@
+{
+  "id": "ziti-with-wild-coho-salmon-fava-beans-and-mint",
+  "name": "Ziti with Wild Coho Salmon, Fava Beans, and Mint",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "As summer approaches, the sun shines brightly and our palate desires nothing but the freshest ingredients, so here is a recipe that positively bursts with seasonal flavors. Wild coho salmon are well known to fishermen as “silvers” thanks to their gorgeous pearly color and are a quintessential summer catch in the Pacific Northwest. Mild and delicate, the fish fuses wonderfully with several seasonal greens, but I have to admit that the coho-fava-mint combination makes this a superb culinary ménage à trois.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "leaves spearmint, finely chopped, plus 4 whole leaves for finishing",
+      "amount": "8 to 10"
+    },
+    {
+      "item": "sprig wild fennel, minced",
+      "amount": "1"
+    },
+    {
+      "item": "fresh fava beans, shelled",
+      "amount": "1 pound"
+    },
+    {
+      "item": "water",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "wild coho salmon, shredded into small pieces",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a medium-large pan over medium-low heat, warm the olive oil for 1 minute. Add the shallot, mint, and wild fennel, and sauté for 2 minutes.",
+    "Stir in the fava beans and cook for a minute. Add the water and cook for another 3 to 4 minutes. Season with salt and pepper to taste. Turn off the heat.",
+    "In a blender or food processer, blend half the fava bean mixture until you obtain a creamy consistency. Set aside.",
+    "Turn the heat back on to medium, and add the salmon to the remaining fava bean mixture. Cook for 2 to 3 minutes, stirring occasionally.",
+    "Meanwhile, in a large pot of boiling salted water, cook the ziti until al dente, drain, and transfer to the pan along with the creamy fava bean mixture. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with a whole spearmint leaf and a drizzle of oil, then serve."
+  ],
+  "image": "/recipes/ziti-with-wild-coho-salmon-fava-beans-and-mint.jpg",
+  "time": {
+    "total": 19
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

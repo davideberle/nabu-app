@@ -1,0 +1,36 @@
+{
+  "id": "chia-seed-jam",
+  "name": "Chia Seed JAM",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Balls & Bars"
+  },
+  "ingredients": [
+    {
+      "item": "frozen or fresh berries or other fruit",
+      "amount": "½ lb (225 gr)"
+    },
+    {
+      "item": "apricots or dates",
+      "amount": "5"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "splash of freshly squeezed lemon juice",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "If you’re using apricots, you’ll need to soak the fruit first; if you’re using dates, remove the pits. Process all the ingredients in a blender or food processor; transfer the jam to a jar and store in the refrigerator."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

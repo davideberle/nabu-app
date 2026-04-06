@@ -40,5 +40,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ata-dindin-fried-pepper-stew.jpg"
+  "image": "/recipes/ata-dindin-fried-pepper-stew.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

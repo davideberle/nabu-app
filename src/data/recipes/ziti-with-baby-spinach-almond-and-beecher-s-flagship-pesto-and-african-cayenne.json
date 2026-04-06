@@ -1,0 +1,64 @@
+{
+  "id": "ziti-with-baby-spinach-almond-and-beecher-s-flagship-pesto-and-african-cayenne",
+  "name": "Ziti with Baby Spinach, Almond, and Beecher’s Flagship Pesto and African Cayenne",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "I have been in love with spinach in all its versions since I was a child, most likely because of my fascination with Braccio di Ferro, Popeye the Sailor Man. This dish highlights my lifelong obsession with spinach. While the recipe can be made year-round, fresh spinach can be found in the PNW during the warmer months of spring and summer. For those of you who love Pike Place Market (and really, who doesn’t?), this pesto can be made entirely from market ingredients. Beecher’s Flagship cheese does its part with its peculiar robust, nutty flavor, and the African cayenne adds a bit of spice (thanks to World Spice Merchants, a mecca for local and visiting spice lovers).",
+  "ingredients": [
+    {
+      "item": "fresh baby spinach, plus a few leaves for garnish",
+      "amount": "½ pound"
+    },
+    {
+      "item": "whole raw almonds",
+      "amount": "2 ounces"
+    },
+    {
+      "item": "crumbled Beecher’s Flagship cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "Pinch of African cayenne",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a blender, blend the spinach, almonds, cheese, olive oil, water, and salt and pepper to taste, taking care not to liquefy (the pesto should still have some texture).",
+    "In a medium-large pan over medium heat, warm the pesto for a couple of minutes.",
+    "Meanwhile, in a large pot of boiling salted water, cook the ziti until al dente, drain, and transfer to the pan with the pesto. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with more cheese, a pinch of cayenne, a few fresh spinach leaves, and a drizzle of oil."
+  ],
+  "tips": [
+    "Make the spinach pesto ahead of time and keep it in a container in the refrigerator for 3 to 4 days. Drizzle some extra-virgin olive oil on top to avoid oxidation.",
+    "You can substitute Beecher’s Flagship cheese with another cheddar or robust semihard cow’s milk cheese."
+  ],
+  "image": "/recipes/ziti-with-baby-spinach-almond-and-beecher-s-flagship-pesto-and-african-cayenne.jpg",
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "fruit-salad-with-chia-seeds",
+  "name": "Fruit Salad with Chia Seeds",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 1",
+  "intro": "You can sprinkle chia seeds over yogurt, cereal, or bowls. When you sprinkle them over fruit salad, the liquid from the fruit will soak and ‘dilute’ the seeds. However, don’t use more than 1 to 2 tablespoons of chia seeds per portion.",
+  "ingredients": [
+    {
+      "item": "a banana",
+      "amount": "",
+      "group": "SUGGESTED FRUITS"
+    },
+    {
+      "item": "a nectarine",
+      "amount": "",
+      "group": "SUGGESTED FRUITS"
+    },
+    {
+      "item": "a pear",
+      "amount": "",
+      "group": "SUGGESTED FRUITS"
+    },
+    {
+      "item": "¾” (2 cm) piece of fresh ginger, grated",
+      "amount": "",
+      "group": "SUGGESTED FRUITS"
+    }
+  ],
+  "method": [
+    "Cut the fruit into chunks, mix them together, and sprinkle with chia seeds."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
+}

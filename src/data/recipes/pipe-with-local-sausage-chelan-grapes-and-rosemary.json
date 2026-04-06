@@ -1,0 +1,69 @@
+{
+  "id": "pipe-with-local-sausage-chelan-grapes-and-rosemary",
+  "name": "Pipe with Local Sausage, Chelan Grapes, and Rosemary",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Pipe con salsiccia all’uva is inspired by a classic Italian recipe with a long history that can be found in La scienza in cucina e l’arte di mangiar bene, a famous recipe collection by Pellegrino Artusi published in 1891. This is a recipe firmly for late summer and early fall, when grapes are getting ready to be picked and are crunchy, sweet, and juicy. I am using Chelan grapes here from Succession Wines in Manson, Washington. Both white and red work equally, so choose whichever one you prefer.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sausage, casing removed",
+      "amount": "9 ounces"
+    },
+    {
+      "item": "grapes",
+      "amount": "5 ounces"
+    },
+    {
+      "item": "sprig rosemary, stemmed",
+      "amount": "1"
+    },
+    {
+      "item": "vegetable broth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "large grape leaves, julienned",
+      "amount": "2"
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    }
+  ],
+  "method": [
+    "In a large pan over medium heat, warm the olive oil. Add the shallot and sauté for 1 minute, stirring to avoid burning. Crumble in the sausage, cook for a couple of minutes, add the grapes, and stir. Add the rosemary and cook for 2 minutes more.",
+    "Pour in the broth, reduce the heat to low, cover, and cook for 5 minutes. Season with salt and pepper to taste.",
+    "In a small pan over high heat, add the canola oil, and fry the grape leaves until crispy. Remove leaves with a spider or slotted spoon, place on a paper towel, and sprinkle with salt.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pipe until al dente, drain, and transfer to the large pan. Increase the heat to medium-high, and sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls and finish with the fried grape leaves. Pair with a glass of wine from Succession Wines."
+  ],
+  "image": "/recipes/pipe-with-local-sausage-chelan-grapes-and-rosemary.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

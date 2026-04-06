@@ -22,7 +22,7 @@
     },
     {
       "item": "palm oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "vegetable stock cube",
@@ -30,7 +30,7 @@
     },
     {
       "item": "seaweed flakes (optional)",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "PORRIDGES",
@@ -44,5 +44,10 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

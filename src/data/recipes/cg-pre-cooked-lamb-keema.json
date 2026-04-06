@@ -1,0 +1,92 @@
+{
+  "id": "cg-pre-cooked-lamb-keema",
+  "name": "Pre-Cooked Lamb Keema",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes enough for 4–10 servings depending on use",
+  "intro": "You might wonder why you would want to pre-cook keema, as I did when I first started noticing the containers of prepared keema during my restaurant visits. Keema is, after all, ground meat, so it’s as tender as it’s going to get. This recipe takes about 30 minutes or longer to make, so you can understand why the chefs in a busy takeaway would want to get this job done before they get busy.",
+  "ingredients": [
+    {
+      "item": "rapeseed or seasoned oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Indian bay leaves (cassia leaves)",
+      "amount": "2"
+    },
+    {
+      "item": "piece of cinnamon stick or cassia bark",
+      "amount": "7.5cm (3 in)"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "green cardamom pods, lightly bruised",
+      "amount": "4"
+    },
+    {
+      "item": "onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "minced lamb or chicken",
+      "amount": "500–700g"
+    },
+    {
+      "item": "ml (1 cup) Spice stock or water",
+      "amount": "About 200"
+    },
+    {
+      "item": "dried fenugreek (methi) leaves",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "finely chopped coriander (cilantro)",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the oil over a medium-high heat until small bubbles appear, then add the bay leaves, cinnamon stick, cumin seeds and cardamom pods and mix them around in the oil. After about 30 seconds the oil will become fragrant and you will hear the spices begin to crackle. When this happens, toss in the onion and give it a good stir. Fry until soft and translucent but not browned.",
+    "Add the garlic and ginger paste and let it sizzle for another minute or so, then add the ground spices and tomato purée followed by the minced meat. You’ll know you’re doing something right because your kitchen will smell so good.",
+    "Allow the minced meat to cook through then pour in the spice stock or water and simmer over a low heat for about 20 minutes. You may need to add a little more water while the ingredients all get to know each other. The finished keema should be moist but not saucy, and if you’d like to cook it for longer for a more intense flavour, add more water accordingly to prevent it from drying out.",
+    "Remove the bay leaves, cinnamon stick and cardamom pods. Stir in the dried fenugreek leaves, fresh coriander (cilantro) and salt to taste. You’ll probably find it tastes great, so be careful not to snack on it before making your keema curry or using it in your samosas! I find this quite difficult at times."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  },
+  "time": {
+    "total": 20
+  }
+}

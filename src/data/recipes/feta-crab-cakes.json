@@ -1,0 +1,99 @@
+{
+  "id": "feta-crab-cakes",
+  "name": "Feta Crab Cakes",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Main Dishes"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
+  "ingredients": [
+    {
+      "item": "crabmeat",
+      "amount": "1 lb"
+    },
+    {
+      "item": "minced scallion, green parts only",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cup bread crumbs",
+      "amount": ""
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "eggs, beaten",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, minced",
+      "amount": "2"
+    },
+    {
+      "item": "small Anaheim or pasilla chile (if you want a little spice) or 1 small red bell pepper, seeded and cut into ⅛-inch pieces",
+      "amount": "1"
+    },
+    {
+      "item": "medium firm tomato, cut into ¼-inch pieces, drained of excess liquid",
+      "amount": "1"
+    },
+    {
+      "item": "minced fresh fennel",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "minced fresh parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried dill",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried Greek oregano",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "sea salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "ground nutmeg",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "In a large bowl, combine the crabmeat, scallion, bread crumbs, feta, eggs, garlic, chile, tomato, fennel, parsley, dill, oregano, salt, pepper, and nutmeg. Mix thoroughly. Divide the mixture into 8 equal portions and form each into a 2½-inch patty about ½ inch thick, creating a definitive edge for easier flipping when cooking.",
+      "amount": ""
+    },
+    {
+      "item": "In a large skillet over medium-high heat, heat the olive oil. Place the crab cakes in the heated pan and brown for 7 to 8 minutes per side.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, combine the crabmeat, scallion, bread crumbs, feta, eggs, garlic, chile, tomato, fennel, parsley, dill, oregano, salt, pepper, and nutmeg. Mix thoroughly. Divide the mixture into 8 equal portions and form each into a 2½-inch patty about ½ inch thick, creating a definitive edge for easier flipping when cooking.",
+    "In a large skillet over medium-high heat, heat the olive oil. Place the crab cakes in the heated pan and brown for 7 to 8 minutes per side."
+  ],
+  "image": "/recipes/feta-crab-cakes.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

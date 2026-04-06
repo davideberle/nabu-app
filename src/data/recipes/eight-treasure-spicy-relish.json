@@ -1,9 +1,10 @@
 {
   "id": "eight-treasure-spicy-relish",
-  "name": "Eight-treasure spicy relish",
+  "name": "Eight-Treasure Spicy Relish",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "ba bao la jiang 八宝辣酱",
   "intro": "This hearty relish, with its earthy fermented flavor and hint of chilli, is typical of Shanghai and Suzhou cooking. There are no hard-and-fast rules about what goes into it, except that it’s normally a mixture of meaty and vegetarian ingredients with a pleasing variety of textures. As a Shanghai market vendor once told me, it’s a “great hotchpotch” made from whatever bits and pieces you have to hand; the local equivalent, perhaps, of Cantonese chop suey. Some cooks add gingko nuts, chestnuts or sesame seeds; others cooked ham or tofu skin; crunchy chicken gizzard is another favorite. In Shanghai restaurants they usually finish the dish with a pretty garnish of pale, slippery river shrimp and bright green peas. The relish can be served straight as an appetizer, added to a wokful of stir-fried rice cake or eaten with rice or noodles. It’s known as an “on-the-road dish” because it keeps well and can easily be packed up and taken on a trip. The relish became well known in restaurants in the early twentieth century, but many people trace its ancestry back to the famous eggplant confection described in the eighteenth-century novel Dream of Red Mansions: a delectable medley of small cubes of fried eggplant, chicken breast, mushrooms, bamboo shoot, spiced tofu and dried fruit and nuts. Some recipes use a mixture of fermented wheat sauce and the darker, earthier Shanghainese soybean sauce, but I’ve simplified things by using the former alone. Purists would insist that each cubed ingredient is fried separately before they are mixed.",
@@ -84,5 +85,13 @@
     "Heat 1 tablespoon oil in a seasoned wok. Add the pork and chicken and stir-fry until cooked through; remove and set aside. Heat a little more oil, add the shiitake and shrimp and stir-fry until fragrant, then add the bamboo shoot, soybeans and tofu and stir-fry until piping hot. Remove and set aside.",
     "Heat another 2 tablespoons oil in the wok over a medium flame. Add the sweet fermented sauce and garlic and chilli sauce and stir-fry until wonderfully fragrant. Add the remaining Shaoxing wine, then all the pre-fried ingredients. Add the stock, sugar and dark soy sauce and turn up the heat to high. Stir until everything is piping hot and the liquid has reduced by about half. If you want to thicken the sauce, mix 1 teaspoon potato starch with 2 teaspoons water and add just enough of the mixture, in a couple of stages, to thicken the sauce to a lustrous gravy that clings to the ingredients. Serve hot or cool, as you please."
   ],
-  "image": "/recipes/eight-treasure-spicy-relish.jpg"
+  "image": "/recipes/eight-treasure-spicy-relish.jpg",
+  "time": {
+    "total": 20
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

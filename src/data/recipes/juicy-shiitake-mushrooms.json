@@ -1,9 +1,10 @@
 {
   "id": "juicy-shiitake-mushrooms",
-  "name": "Juicy shiitake mushrooms",
+  "name": "Juicy Shiitake Mushrooms",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "lu wei xiao xiang gu 卤味小香菇",
   "intro": "Versions of this delectable appetizer can be found all over the Jiangnan region. The juicy mushrooms look perfectly normal but are replete with secret invisible flavors that magnify their deliciousness. It’s one of the simpler examples of Kung Fu cooking, in which the effort, or gong fu, is hidden in the final dish, and you are just invited to enjoy the effect. In the main recipe the mushrooms are simmered in stock, then dressed in sesame oil, so they just taste like magically enhanced versions of themselves. I’ve included a little spice in the vegetarian variation, so that the mushrooms are more juicily aromatic. In some kitchens dried shrimp eggs are added to the seasoning broth; in others the mushrooms are garnished with a few bright gingko or pine nuts. Any leftovers can be sliced up and added to congee, soupy rice, fried rice or noodles. If you can, choose small, dainty dried mushrooms to make this dish. It keeps well in the fridge for a couple of days.",
@@ -56,5 +57,13 @@
     "Increase the heat to high to reduce the broth. When it has reduced to little more than a glaze, turn off the heat and stir in the sesame oil. Leave to cool, garnish with toasted pine nuts if desired, and serve.",
     "Follow the recipe above, but reserve and strain the mushroom-soaking water and use 2 cups (500ml) of it instead of the stock. Add an extra 1 tsp superfine sugar, 1 tbsp light soy sauce, ¼ tsp dark soy sauce, half a star anise and a small piece of cassia bark or cinnamon stick to the broth. This is also delicious."
   ],
-  "image": "/recipes/juicy-shiitake-mushrooms.jpg"
+  "image": "/recipes/juicy-shiitake-mushrooms.jpg",
+  "time": {
+    "total": 40
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

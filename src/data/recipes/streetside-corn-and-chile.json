@@ -1,10 +1,10 @@
 {
   "id": "streetside-corn-and-chile",
-  "name": "STREETSIDE CORN AND chile",
+  "name": "Streetside Corn AND Chile",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Snacks"
   },
   "servings": "serves 4",
   "time": "TAKES 15 MINUTES",
@@ -44,7 +44,7 @@
     "Remove the pan from the heat, add the green onion, and stir until softened. Let cool for 3 to 5 minutes, then transfer to a bowl and top with the furikake.",
     "Serve with spoons for each diner to mix things up, scoop, and eat."
   ],
-  "image": null,
+  "image": "/recipes/streetside-corn-and-chile.jpg",
   "category": {
     "dish_type": [
       "main"

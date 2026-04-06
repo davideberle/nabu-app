@@ -1,9 +1,10 @@
 {
   "id": "shanghai-golden-egg-dumplings-with-chinese-cabbage",
-  "name": "Shanghai golden egg dumplings with Chinese cabbage",
+  "name": "Shanghai Golden Egg Dumplings with Chinese Cabbage",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "shang hai dan jiao 上海蛋饺",
   "intro": "Golden egg dumplings are traditionally a New Year’s treat in Shanghai and the wider Jiangnan region. They are made by folding tiny omelets over little mounds of stuffing: somewhat fiddly, but fun. The dumplings may simply be steamed before eating, but more typically are added to a potful of ingredients to make a soupy stew crowned by their golden halo. On special occasions, such dishes can be complex compositions of different ingredients laid out in concentric circles in a great big pot, including perhaps meatballs, chunks of pork belly, hard-boiled quail eggs and stuffed wheat gluten or tofu. The following dish is a much simpler version than these festive extravaganzas, and is based on one I enjoyed at the Shunfeng Harbor restaurant in Shanghai. Do try to use a wonderfully rich and flavorful stock, since it needs to flavor the pale-tasting cabbage and sweet potato noodles. Traditionally, the dumplings are made using an oiled ladle held over a gas flame, and the cook tilts the ladle to spread the egg mixture easily. However, they can also be made in a flat pan, and if you want the skins to be as round as possible, you can use a 3 in (9cm) round metal biscuit cutter to keep them under control—ideally, use a biscuit cutter with a heatproof handle; otherwise, you will need a potholder. Many people add some chopped water chestnut to the pork mixture, for a little crunch.",
@@ -71,5 +72,13 @@
     "Drain the sweet potato noodles well, then put them in a heavy-bottomed pan with a lid that you can also use as a serving vessel. Put the sliced cabbage on top and add the stock, lard and soy sauces. Put the dumplings on the surface of the pot in an overlapping circle. Bring to the boil and season with salt and pepper. Cover and simmer over a medium flame for about 10 minutes, until the cabbage is silkily tender. Serve with a sprinkling of spring onion greens.",
     "At the Old Jesse restaurant in Shanghai they serve this delicious soup: place a few slices of blanched Chinese ham or salt pork (unsmoked bacon, gammon or pancetta work well) in a clay pot with plenty of sliced Chinese cabbage. Cover with stock, then crown with the egg dumplings. Bring to the boil, season with salt to taste and simmer for 8–10 minutes, until the cabbage is tender."
   ],
-  "image": "/recipes/shanghai-golden-egg-dumplings-with-chinese-cabbage.jpg"
+  "image": "/recipes/shanghai-golden-egg-dumplings-with-chinese-cabbage.jpg",
+  "time": {
+    "total": 145
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

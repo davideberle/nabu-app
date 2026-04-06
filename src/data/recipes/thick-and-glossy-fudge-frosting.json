@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes about 3½ cups / 360 ml",
   "intro": "While cocoa powder is bitter on its own, when used properly, it provides a strong chocolate flavor. Plus, in unsweetened cocoa powder seventy-five to eighty-five percent of the cocoa butter has been removed, making cocoa a valuable asset to a health-conscious chocolate chef. You’ll want to swirl this glossy frosting thickly on any of the cupcakes in Chapter Three.",
@@ -61,7 +61,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   }
 }

@@ -1,0 +1,64 @@
+{
+  "id": "chia-pudding-with-a-boost",
+  "name": "Chia Pudding with a Boost",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "Try making mylk from Brazil nuts; it goes extremely well with the other flavors. You can switch out or omit the lucuma powder. The topping will give you an extra boost.",
+  "ingredients": [
+    {
+      "item": "mylk, made from Brazil nuts",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup (2 dl)"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "blueberry powder",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "coconut palm sugar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "bananas",
+      "amount": "2",
+      "group": "TOPPING"
+    },
+    {
+      "item": "cacao nibs",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "dried mulberries",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Mix together all the ingredients for the pudding, and let it sit for at least 30 minutes. Mix it thoroughly before serving. Top the pudding with sliced banana, cacao nibs, and dried mulberries."
+  ],
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

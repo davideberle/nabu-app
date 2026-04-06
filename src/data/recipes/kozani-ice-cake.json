@@ -1,0 +1,71 @@
+{
+  "id": "kozani-ice-cake",
+  "name": "Kozani Ice Cake",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 3",
+  "time": {
+    "cook": 15
+  },
+  "ingredients": [
+    {
+      "item": "(16 ounce) package buttery round crackers, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "butter, melted",
+      "amount": "1 cup"
+    },
+    {
+      "item": "white sugar",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "gallon vanilla ice cream, softened",
+      "amount": "1/2"
+    },
+    {
+      "item": "milk",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "(3.4 ounce) packages instant vanilla pudding mix",
+      "amount": "2"
+    },
+    {
+      "item": "(12 ounce) container frozen whipped topping, thawed",
+      "amount": "1"
+    },
+    {
+      "item": "Combine crackers, butter and sugar in a 9x13 inch baking dish and press mixture into sides and bottom of the dish.",
+      "amount": ""
+    },
+    {
+      "item": "In a large bowl, combine milk and ice cream with mixer.",
+      "amount": ""
+    },
+    {
+      "item": "Blend in pudding mix, then pour the mixture into prepared crust.",
+      "amount": ""
+    },
+    {
+      "item": "Top with whipped topping and refrigerate for 3 hours before serving.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine crackers, butter and sugar in a 9x13 inch baking dish and press mixture into sides and bottom of the dish.",
+    "In a large bowl, combine milk and ice cream with mixer.",
+    "Blend in pudding mix, then pour the mixture into prepared crust.",
+    "Top with whipped topping and refrigerate for 3 hours before serving."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
+}

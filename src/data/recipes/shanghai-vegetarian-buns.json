@@ -1,9 +1,10 @@
 {
   "id": "shanghai-vegetarian-buns",
-  "name": "Shanghai vegetarian buns",
+  "name": "Shanghai Vegetarian Buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Dumplings and Snacks"
   },
   "subtitle": "xiang gu su cai bao 香菇素菜包",
   "intro": "These juicy vegetarian buns are a Shanghainese speciality, served not only in Buddhist vegetarian restaurants but also in mainstream establishments. They make a healthy and delectable breakfast, eaten on their own or with a bowlful of congee. At their simplest, they may be stuffed with just blanched greens and shiitake mushroom, but I like to add a little bamboo shoot or tofu. Some recipes suggest adding small amounts of fried wheat gluten, dried lily flower and wood-ear mushroom. Various kinds of vegetable may be used as the main ingredient, including shepherd’s purse and most types of cabbagey greens: I find curly kale works beautifully. Makes 12–14 buns.",
@@ -57,5 +58,13 @@
     "Put the shiitake mushrooms in a bowl and soak for at least half an hour in plenty of boiling water. Strip the kale leaves from the stalks, discarding the stalks. Bring a pan of water to the boil, add the kale leaves and boil for about 5 minutes, until tender. Drain and place in iced water until completely cooled, then squeeze out as much water as possible. Chop the kale finely. Bring another pan of water to the boil, add the bamboo shoot and blanch for 1 minute; refresh it under the cold tap, drain well and cut it into tiny cubes. Cut the tofu into tiny cubes too. Drain the mushrooms, retaining their soaking water. Discard the stalks, then cut the caps into tiny cubes.",
     "Heat the cooking oil in a seasoned wok over a high flame. Add the ginger, chopped mushrooms, bamboo shoot and tofu and stir-fry until the ginger and mushrooms smell delicious. Add 2 tablespoons of the mushroom-soaking water along with a pinch of sugar, and season with salt. Stir until the liquid has evaporated, then remove from the heat and add the kale. Add the remaining sugar, sesame oil and rapeseed or groundnut oil and mix thoroughly, seasoning with about 1¼ teaspoons salt; remember that the dough itself is unsalted, so the stuffing should be a bit saltier than if you were eating it alone. Use to fill and cook Basic steamed buns (see here)."
   ],
-  "image": "/recipes/shanghai-vegetarian-buns.jpg"
+  "image": "/recipes/shanghai-vegetarian-buns.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

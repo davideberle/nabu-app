@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "I love the spiciness of these Thai chicken noodles and often use chopsticks for a more immersive experience.",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": 11
   },
   "ingredients": [
     {
@@ -71,5 +72,10 @@
     "Stir in peanut butter mixture (Step 1). Let it boil. When it starts boiling, reduce heat and let it simmer for 3-5 mins.",
     "Serve the mixture (Step 4) with pasta. Top with green onions and peanuts."
   ],
-  "image": "/recipes/thai-chicken-peanut-noodles.jpg"
+  "image": "/recipes/thai-chicken-peanut-noodles.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

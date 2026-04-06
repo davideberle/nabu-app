@@ -1,0 +1,50 @@
+{
+  "id": "cg-mixed-powder",
+  "name": "Mixed Powder",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 17 generous tbsp",
+  "intro": "I have to emphasize how important this recipe is. It’s one of the secret ingredients that makes BIR curries what they are. You will use it in almost all of the classic curries in this book.",
+  "ingredients": [
+    {
+      "item": "ground cumin",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "curry powder",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Mix all the ingredients together, store in an airtight container in a cool, dark place, and use as needed. If you are using fresh, homemade garam masala and curry powder in your blend, your mixed powder should last for up to 2 months without losing much flavour."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

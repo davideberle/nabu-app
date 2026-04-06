@@ -1,9 +1,10 @@
 {
   "id": "yangzhou-slivered-radish-buns",
-  "name": "Yangzhou slivered radish buns",
+  "name": "Yangzhou Slivered Radish Buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Dumplings and Snacks"
   },
   "subtitle": "luo bo si bao 萝卜丝包",
   "intro": "The ritual of early-morning tea and dumplings is not just a Cantonese tradition. Every morning in Yangzhou, people flock to the Yechun Teahouse by the side of the canal for a feast of buns, dumplings and other delectable snacks. Outside, in the yard, retired people listen to performances of local opera, clutching jars of green tea. In the narrow pavilions by the water’s edge, the dark wooden tables are covered with bamboo steamers, tea cups and little plates of appetizers, pickles and relishes. I breakfasted there one morning on little dishes of wild rice stem with shrimp eggs, syrupy jujubes, Zhenjiang pork terrine, juicy shiitake mushrooms with gingko nuts and blanched tofu slivers—and those were just the starters. There were also steamers filled with open-mouthed shaomai dumplings, diamond-shaped cakes studded with candied fruits, “soup” dumplings so large their juices had to be sucked out with a straw, and a whole selection of exquisite steamed buns. This recipe, which makes 12–14 buns, is for one of my favorites, the slivered radish bun, a succulent mix of vegetable and fragrant pork. Yangzhou chef Zhang Hao told me how to make it.",
@@ -56,5 +57,10 @@
     "Make a basic pork stuffing using the ingredients of the Shanghai potsticker bun (see here), without the jellied stock. Stuff and cook as for Basic steamed buns (see here).",
     "Stir-fry plenty of snow vegetable with a little finely chopped firm tofu and bamboo shoot, and season to taste with salt and sugar. Stuff and cook as for Basic steamed buns (see here)."
   ],
-  "image": "/recipes/yangzhou-slivered-radish-buns.jpg"
+  "image": "/recipes/yangzhou-slivered-radish-buns.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

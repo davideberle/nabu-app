@@ -1,0 +1,201 @@
+{
+  "id": "molded-fish-roe-salad",
+  "name": "Molded Fish Roe Salad",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 12",
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "ingredients": [
+    {
+      "item": "unflavored gelatin",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cold water",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "boiling water",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tarama (4 ounces)",
+      "amount": "½ cup"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "fresh breadcrumbs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dash of cayenne",
+      "amount": ""
+    },
+    {
+      "item": "grated onion",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "4"
+    },
+    {
+      "item": "pimiento",
+      "amount": "4 oz"
+    },
+    {
+      "item": "cream cheese",
+      "amount": "8 oz"
+    },
+    {
+      "item": "chopped parsley, whole olives, and pickles for garnish",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Chill a metal 6-cup fish mold in the freezer.",
+      "amount": ""
+    },
+    {
+      "item": "Sprinkle gelatin over ¼ cup cold water to soften.",
+      "amount": ""
+    },
+    {
+      "item": "Add the boiling water and stir until gelatin dissolves.",
+      "amount": ""
+    },
+    {
+      "item": "Put in the refrigerator to cool, about 5 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "(Do not allow gelatin to set.)",
+      "amount": ""
+    },
+    {
+      "item": "Blend tarama, mayonnaise, lemon juice, breadcrumbs, cayenne, onion, and salt in a blender or electric mixer.",
+      "amount": ""
+    },
+    {
+      "item": "Mix 1 cup of gelatin liquid into tarama mixture and put in refrigerator.",
+      "amount": ""
+    },
+    {
+      "item": "Cut olives into slices and pimientos into narrow strips.",
+      "amount": ""
+    },
+    {
+      "item": "Pour ½ cup of gelatin liquid into fish mold and tip it to spread into all the crevices.",
+      "amount": ""
+    },
+    {
+      "item": "Arrange olive and pimiento slices as scales, eyes, and tail.",
+      "amount": ""
+    },
+    {
+      "item": "Place mold in freezer for 15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Pour ¼ cup more of gelatin mixture into mold and return to freezer.",
+      "amount": ""
+    },
+    {
+      "item": "Beat or blend cream cheese and add remaining ½ cup gelatin liquid to it.",
+      "amount": ""
+    },
+    {
+      "item": "Place in refrigerator for 15 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Do not let it set completely.",
+      "amount": ""
+    },
+    {
+      "item": "Spread cheese mixture over bottom and sides of mold.",
+      "amount": ""
+    },
+    {
+      "item": "Return to freezer for 15 minutes to set.",
+      "amount": ""
+    },
+    {
+      "item": "Fill mold with tarama mixture.",
+      "amount": ""
+    },
+    {
+      "item": "Refrigerate to set for 4 hours, or overnight.",
+      "amount": ""
+    },
+    {
+      "item": "Chill serving platter in refrigerator.",
+      "amount": ""
+    },
+    {
+      "item": "To serve, dip bottom of mold in hot water.",
+      "amount": ""
+    },
+    {
+      "item": "Place serving platter over mold and turn mold over quickly.",
+      "amount": ""
+    },
+    {
+      "item": "Garnish with chopped parsley, olives, pickles, and any other vegetables desired.",
+      "amount": ""
+    },
+    {
+      "item": "Serve with bread or crackers.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Chill a metal 6-cup fish mold in the freezer.",
+    "Sprinkle gelatin over ¼ cup cold water to soften.",
+    "Add the boiling water and stir until gelatin dissolves.",
+    "Put in the refrigerator to cool, about 5 minutes.",
+    "(Do not allow gelatin to set.)",
+    "Blend tarama, mayonnaise, lemon juice, breadcrumbs, cayenne, onion, and salt in a blender or electric mixer.",
+    "Mix 1 cup of gelatin liquid into tarama mixture and put in refrigerator.",
+    "Cut olives into slices and pimientos into narrow strips.",
+    "Pour ½ cup of gelatin liquid into fish mold and tip it to spread into all the crevices.",
+    "Arrange olive and pimiento slices as scales, eyes, and tail.",
+    "Place mold in freezer for 15 minutes.",
+    "Pour ¼ cup more of gelatin mixture into mold and return to freezer.",
+    "Beat or blend cream cheese and add remaining ½ cup gelatin liquid to it.",
+    "Place in refrigerator for 15 minutes.",
+    "Do not let it set completely.",
+    "Spread cheese mixture over bottom and sides of mold.",
+    "Return to freezer for 15 minutes to set.",
+    "Fill mold with tarama mixture.",
+    "Refrigerate to set for 4 hours, or overnight.",
+    "Chill serving platter in refrigerator.",
+    "To serve, dip bottom of mold in hot water.",
+    "Place serving platter over mold and turn mold over quickly.",
+    "Garnish with chopped parsley, olives, pickles, and any other vegetables desired.",
+    "Serve with bread or crackers."
+  ],
+  "image": "/recipes/molded-fish-roe-salad.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

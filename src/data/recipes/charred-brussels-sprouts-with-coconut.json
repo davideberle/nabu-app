@@ -1,10 +1,10 @@
 {
   "id": "charred-brussels-sprouts-with-coconut",
-  "name": "CHARRED BRUSSELS SPROUTS with coconut",
+  "name": "Charred Brussels Sprouts with Coconut",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
   "time": "TAKES 15 MINUTES",
@@ -34,7 +34,7 @@
     "Add the fish sauce, shake the pan and stir to distribute, and cook, uncovered, for about 1 minute longer to further develop the flavor and caramelize the brussels sprouts. If needed, raise the heat to coax the cooking. When the sprouts are lightly glazed, remove from the heat. Let rest for 1 minute.",
     "Serve the sprouts hot, warm, or at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/charred-brussels-sprouts-with-coconut.jpg",
   "category": {
     "dish_type": [
       "main"

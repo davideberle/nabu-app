@@ -1,0 +1,61 @@
+{
+  "id": "pipe-with-spring-radicchio-pancetta-walnuts-and-gorgonzola-dolce",
+  "name": "Pipe with Spring Radicchio, Pancetta, Walnuts, and Gorgonzola Dolce",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Spring"
+  },
+  "servings": "4 servings",
+  "intro": "I simply had to include radicchio in this book. This bittersweet beauty, which has its roots in Italy’s Veneto region, can be found in a hundred recipes back home, both cooked and raw. PNW farmers love to grow radicchio, and it’s always a joy to discover it at the farmers’ market in the spring.\n\nThe following recipe features the classic pairing of walnuts and Gorgonzola Dolce: you cannot go wrong with it. The pancetta makes things better because…pancetta.\n\nI have to give a shout-out to my dear friend Lucio Gomiero, winemaker of great Vignalta wines on the Italian Euganean Hills, who for fun started to introduce radicchio in the United States. His Salinas-based firm became the world’s largest producer in the ’80s with Trevisano, Chioggia, and Castelvetrano varieties. Here is my tribute to this visionary, humble human being and extraordinary cook.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pancetta, cut into ½-inch cubes",
+      "amount": "3 ounces"
+    },
+    {
+      "item": "walnuts halves, gently crushed",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Trevisano radicchio, cut into thin strips",
+      "amount": "1 pound"
+    },
+    {
+      "item": "Gorgonzola Dolce, shredded",
+      "amount": "½ pound"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pipe pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated Parmigiano-Reggiano",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "In a medium-large sauté pan over medium-low heat, warm the olive oil for 1 minute. Add the pancetta and walnuts, and sauté until the pancetta becomes crispy, 2 to 3 minutes.",
+    "Add two-thirds of the radicchio and sauté, stirring occasionally, for 3 to 4 minutes.",
+    "Reduce the heat to low, add the Gorgonzola Dolce, stirring, and allow it to melt almost completely. Season with salt and pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the pipe until al dente, drain, and transfer to the sauté pan. Quickly sauté for a minute, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Finish with the Parmigiano and the remaining radicchio."
+  ],
+  "image": "/recipes/pipe-with-spring-radicchio-pancetta-walnuts-and-gorgonzola-dolce.jpg",
+  "time": {
+    "total": 19
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

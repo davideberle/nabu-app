@@ -1,0 +1,67 @@
+{
+  "id": "ziti-with-arugula-ginger-and-walnut-pesto-ricotta-salata-and-red-habanero-chili-",
+  "name": "Ziti with Arugula, Ginger, and Walnut Pesto, Ricotta Salata, and Red Habanero Chili Oil",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Summer"
+  },
+  "servings": "4 servings",
+  "intro": "Rucola, or arugula, is an easy vegetable to grow in this region. It germinates fast, grows even faster, and has many uses in the kitchen. I love arugula mixed with ginger for a bitter yet spicy taste, and it can be toned down by blending in a boiled-and-cooled potato. Arugula was probably an overused ingredient in the ’80s and ’90s in Italy—it sounded very “modern” to add it everywhere and anywhere, like on top of pasta or pizza—but it never lost its appeal. When I think of rucola, my mind goes to the wild variety that grows spontaneously in the field—it’s made of darker, thinner leaves, and is incredibly pungent. During my childhood, I was told to go and pick it, so we could add a few of its bitter leaves to a salad or panino.",
+  "ingredients": [
+    {
+      "item": "baby arugula",
+      "amount": "4 cups"
+    },
+    {
+      "item": "raw walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "grated pecorino or Parmigiano-Reggiano",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "small Yukon Gold or other potato variety, boiled and cooled",
+      "amount": "1"
+    },
+    {
+      "item": "fresh ginger, grated",
+      "amount": "1 ounce"
+    },
+    {
+      "item": "Kosher salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "ziti pasta",
+      "amount": "12 ounces"
+    },
+    {
+      "item": "grated ricotta salata",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "red habanero chili oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "In a blender on the lowest speed, blend the arugula, walnuts, pecorino, olive oil, potato, and ginger, until combined but not liquefied (the pesto should still have some texture). Season with salt and pepper to taste.",
+    "Meanwhile, in a large pot of boiling salted water, cook the ziti until al dente, drain, and transfer to a mixing bowl with the pesto. Energetically stir the pasta and sauce, adding pasta water as necessary to bind the ingredients.",
+    "Plate in four bowls. Add the ricotta salata, some habanero chili oil, and a few arugula leaves on top. Enjoy!"
+  ],
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

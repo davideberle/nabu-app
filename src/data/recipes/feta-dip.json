@@ -1,0 +1,92 @@
+{
+  "id": "feta-dip",
+  "name": "Feta Dip",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "This recipe and the one that follows use it in new and interesting ways.",
+      "amount": ""
+    },
+    {
+      "item": "feta cheese",
+      "amount": "½ lb"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "milk",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "walnuts",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dash of cayenne",
+      "amount": ""
+    },
+    {
+      "item": "minced parsley",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Taste feta; if too salty, soak in cold water and cover; refrigerate for several hours.",
+      "amount": ""
+    },
+    {
+      "item": "Drain cheese and break into chunks.",
+      "amount": ""
+    },
+    {
+      "item": "Put 1 tablespoon oil and 4 tablespoons milk in blender.",
+      "amount": ""
+    },
+    {
+      "item": "Add half of the feta and half of the walnuts.",
+      "amount": ""
+    },
+    {
+      "item": "Blend to a smooth consistency.",
+      "amount": ""
+    },
+    {
+      "item": "Empty the blender container and repeat with the rest of the feta, oil, milk, and walnuts.",
+      "amount": ""
+    },
+    {
+      "item": "Combine the two batches in a large bowl, add cayenne, blend, and refrigerate several hours or overnight.",
+      "amount": ""
+    },
+    {
+      "item": "Sprinkle with parsley; serve with crackers.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Taste feta; if too salty, soak in cold water and cover; refrigerate for several hours.",
+    "Drain cheese and break into chunks.",
+    "Put 1 tablespoon oil and 4 tablespoons milk in blender.",
+    "Add half of the feta and half of the walnuts.",
+    "Blend to a smooth consistency.",
+    "Empty the blender container and repeat with the rest of the feta, oil, milk, and walnuts.",
+    "Combine the two batches in a large bowl, add cayenne, blend, and refrigerate several hours or overnight.",
+    "Sprinkle with parsley; serve with crackers."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "starter"
+    ]
+  }
+}

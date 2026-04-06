@@ -1,9 +1,10 @@
 {
   "id": "mrs-song-s-thick-fish-soup",
-  "name": "Mrs. Song’s thick fish soup",
+  "name": "Mrs. Song’s Thick Fish Soup",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Soups"
   },
   "subtitle": "song sao yu geng 宋嫂鱼羹",
   "intro": "This soup is a gentle miracle: a swirl of tender fish, golden wisps of egg yolk and slivers of bamboo shoot and mushroom, its savory flavors lifted by a final spritz of vinegar. Like many Hangzhou dishes, this one tells a story. It dates back to the time when the Song dynasty had been driven south to Hangzhou by Jurchen invaders. One day, the emperor took to the imperial boat for a leisurely tour of the West Lake. As he made his progress, he ordered his servants to summon the floating traders on the lake and ask for samples of their wares. One of them boldly introduced herself as “fifth sister-in-law Song,” and told the emperor she had followed his court south from the old northern capital Kaifeng, and was making her living by selling thick fish soup on the shores of the lake. The emperor tasted her soup and was overcome by nostalgia for his lost northern capital. Moved beyond words, he thanked Mrs. Song with a gift of rolls of silk shot with silver and gold. Afterwards, they say, local people flocked to Mrs. Song’s for a bowlful of soup, “half buying a taste of imperial favor, half buying fish.” The recipe is said to have been based on a northern-style sour-and-hot soup made with carp from the Yellow River, but adapted in Hangzhou to use the mandarin fish or Chinese perch. Sea bass also works like a dream. This recipe is adapted from one in Hangzhou Cuisine, with thanks also to chef Hu Zhongying of the Hangzhou Restaurant for his suggestions.",
@@ -84,5 +85,13 @@
     "Add the egg yolks and stir them into the soup; the yolks will set into flowery wisps. Finally, add the vinegar and heat for just a few moments to fuse the flavors of the soup.",
     "Pour the soup into a serving bowl. Sprinkle with a little pepper and garnish with the slivered ham, ginger and spring onion greens. Serve immediately. Invite your guests to add a tiny dash of vinegar at the table, if they wish."
   ],
-  "image": "/recipes/mrs-song-s-thick-fish-soup.jpg"
+  "image": "/recipes/mrs-song-s-thick-fish-soup.jpg",
+  "time": {
+    "total": 5
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
 }

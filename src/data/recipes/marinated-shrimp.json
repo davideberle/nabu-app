@@ -1,0 +1,93 @@
+{
+  "id": "marinated-shrimp",
+  "name": "Marinated Shrimp",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Appetizers"
+  },
+  "servings": "serves 16",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "large red onions, sliced thin",
+      "amount": "2"
+    },
+    {
+      "item": "capers, drained and rinsed",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "3"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "water",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "dried oregano",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "medium-sized shrimp, cooked, peeled, and deveined",
+      "amount": "3 lb"
+    },
+    {
+      "item": "small mushrooms, wiped clean",
+      "amount": "½ lb"
+    },
+    {
+      "item": "canned artichoke hearts, drained and cut into thirds",
+      "amount": "1 lb"
+    },
+    {
+      "item": "Combine all marinade ingredients.",
+      "amount": ""
+    },
+    {
+      "item": "Refrigerate overnight.",
+      "amount": ""
+    },
+    {
+      "item": "On the second day add cooked shrimp, mushrooms, and artichoke hearts.",
+      "amount": ""
+    },
+    {
+      "item": "Refrigerate overnight and serve on the third day.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine all marinade ingredients.",
+    "Refrigerate overnight.",
+    "On the second day add cooked shrimp, mushrooms, and artichoke hearts.",
+    "Refrigerate overnight and serve on the third day."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

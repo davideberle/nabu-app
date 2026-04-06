@@ -1,9 +1,10 @@
 {
   "id": "toothless-glutinous-rice-dumplings-with-pork-and-leafy-green",
-  "name": "“Toothless” glutinous rice dumplings with pork and leafy greens",
+  "name": "“toothless” Glutinous Rice Dumplings with Pork and Leafy Greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Rice"
   },
   "subtitle": "qing cai rou si bie zi tuan 青菜肉丝瘪子团",
   "intro": "The best-known glutinous rice dumplings are the sweet ones: wobbly spheres stuffed with sweet black sesame paste known as tang yuan that are traditionally eaten at the Lantern festival at the end of the Chinese New Year. In Jiangnan, however, they also like to eat them savory, stuffed perhaps with minced pork or some fragrant preserved vegetable or, as in this recipe, unstuffed but served in a savory soup. These glutinous rice dumplings bear some resemblance to gnocchi, with dimples that are thought to resemble the sunken cheeks of a toothless person—hence the extraordinary name of the dish. They can be eaten sweet or savory, and are a favorite Suzhou dish, particularly for breakfast; you can vary the vegetable ingredients as you please. Chef Jiang Meizhen taught me how to make them in the kitchens of the Wumen Renjia restaurant in Suzhou.",
@@ -47,5 +48,13 @@
     "Bring a pan of water to the boil. Add the dumplings, stir once to prevent sticking, then boil for about 2 minutes, until they float to the surface. Remove with a slotted spoon, place in a bowl of cold water and set aside.",
     "Bring the stock to the boil and keep warm. Heat 1 tablespoon of the oil in a seasoned wok over a high flame, add the pork and stir-fry until just cooked. Set aside. Heat the remaining oil in the wok, add the ginger and stir-fry until it smells delicious. Add the stock and the bok choy, bring to the boil and season with salt and white pepper (remember that the dumplings are unseasoned, so the soup should be well salted). Add the dumplings and pork strips, boil to heat through, then serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 2
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

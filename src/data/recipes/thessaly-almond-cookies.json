@@ -1,0 +1,96 @@
+{
+  "id": "thessaly-almond-cookies",
+  "name": "Thessaly Almond Cookies",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "Sweet Ends"
+  },
+  "servings": "serves 10",
+  "time": {
+    "prep": 20,
+    "cook": 10,
+    "total": 30
+  },
+  "ingredients": [
+    {
+      "item": "almond extract",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "butter (no substitutes), softened",
+      "amount": "1 cup"
+    },
+    {
+      "item": "packed brown sugar",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "2/3 cup"
+    },
+    {
+      "item": "baking cocoa",
+      "amount": "1/2 cup"
+    },
+    {
+      "item": "1/4 cups all-purpose flour",
+      "amount": "2"
+    },
+    {
+      "item": "baking soda",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "In a mixing bowl, beat the sugars, butter, cocoa and extracts until creamy.",
+      "amount": ""
+    },
+    {
+      "item": "Add eggs, one at a time, beating well after each addition.",
+      "amount": ""
+    },
+    {
+      "item": "Combine the baking soda and flour.",
+      "amount": ""
+    },
+    {
+      "item": "Gradually add to sugar mixture.",
+      "amount": ""
+    },
+    {
+      "item": "Drop by rounded teaspoonfuls 2 inch apart onto ungreased baking sheets.",
+      "amount": ""
+    },
+    {
+      "item": "Bake at 380 degrees F for 8-10 minutes or until edges are firm.",
+      "amount": ""
+    },
+    {
+      "item": "Remove to wire racks to cool.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a mixing bowl, beat the sugars, butter, cocoa and extracts until creamy.",
+    "Add eggs, one at a time, beating well after each addition.",
+    "Combine the baking soda and flour.",
+    "Gradually add to sugar mixture.",
+    "Drop by rounded teaspoonfuls 2 inch apart onto ungreased baking sheets.",
+    "Bake at 380 degrees F for 8-10 minutes or until edges are firm.",
+    "Remove to wire racks to cool."
+  ],
+  "image": "/recipes/thessaly-almond-cookies.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

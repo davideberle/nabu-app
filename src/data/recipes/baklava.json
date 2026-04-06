@@ -3,13 +3,14 @@
   "name": "Baklava",
   "source": {
     "cookbook": "The Authentic Greek Kitchen",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Sweet Ends"
   },
-  "servings": "prep. time 30–40 minutes | cooking time 60 minutes | serves 8–10",
+  "servings": "serves 8",
   "ingredients": [
     {
       "item": "filo pastry, at room temperature",
-      "amount": "1 pound"
+      "amount": "1 lb"
     },
     {
       "item": "butter, softened",
@@ -21,7 +22,7 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 teaspoon"
+      "amount": "1 tsp"
     },
     {
       "item": "walnuts, chopped",
@@ -38,6 +39,42 @@
     {
       "item": "honey",
       "amount": "¼ cup"
+    },
+    {
+      "item": "Preheat the oven to 325°F, and grease an 11x17 baking dish with some olive oil.",
+      "amount": ""
+    },
+    {
+      "item": "Layer half of the filo sheets in the greased dish, brushing each sheet with butter as you go.",
+      "amount": ""
+    },
+    {
+      "item": "In a bowl, combine ¼ cup of the sugar with the cinnamon, and mix in the walnuts.",
+      "amount": ""
+    },
+    {
+      "item": "Top the arranged sheets with the walnut mixture.",
+      "amount": ""
+    },
+    {
+      "item": "Top with the remaining filo after brushing each of them with more butter.",
+      "amount": ""
+    },
+    {
+      "item": "Using a very sharp knife, cut diagonally into squares or diamonds, cutting through all the layers.",
+      "amount": ""
+    },
+    {
+      "item": "Bake until golden and crisp, 55–60 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "Place a medium saucepan over medium-high heat. Add the remaining sugar, together with the water, lemon juice, and honey. Cook, stirring, until the sugar dissolves.",
+      "amount": ""
+    },
+    {
+      "item": "Pour the syrup over the hot baklava. Allow it to cool down, and serve.",
+      "amount": ""
     }
   ],
   "method": [
@@ -51,5 +88,13 @@
     "Place a medium saucepan over medium-high heat. Add the remaining sugar, together with the water, lemon juice, and honey. Cook, stirring, until the sugar dissolves.",
     "Pour the syrup over the hot baklava. Allow it to cool down, and serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

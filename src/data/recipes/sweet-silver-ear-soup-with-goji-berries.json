@@ -1,9 +1,10 @@
 {
   "id": "sweet-silver-ear-soup-with-goji-berries",
-  "name": "Sweet silver-ear soup with goji berries",
+  "name": "Sweet Silver-Ear Soup with Goji Berries",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Sweet Dishes"
   },
   "subtitle": "yin er geng 银耳羹",
   "intro": "Lightly sweetened soups are often eaten as snacks between meals or at the end of a banquet. Some are so exotic that they seem to me like something out of a fairytale. Once, when chef Zhu Yinfeng took me out foraging in southern Zhejiang, we gathered “bamboo bird’s nest,” a fluffy, sponge-like fungus that grows beneath certain types of bamboo. We washed it and picked it over, then made it into a soup with fresh coconut milk and crystal sugar; its delicate, strandy texture really did evoke the sensation of eating a bird’s nest. Other famous Jiangnan sweet soups are made from fresh chestnuts with scented osmanthus blossoms, and euryale seeds with peanuts and jujubes. It is hard to source some of these ingredients outside China, but this recipe offers the same kind of pleasure with ingredients that can be found in most Chinese food shops. It’s a sweet tonic soup dense with soft ripples of silver-ear fungus, scattered with fermented rice grains and scarlet berries, and fragrant with wine. It is magnificently soothing, and said to be beneficial for the lungs. It is sweet but not cloying, and refreshing drunk either hot or cool. Makes enough for about 8 small bowls.",
@@ -34,5 +35,13 @@
     "Put the cleaned silver-ear in a pan, cover with about 2 quarts (2 liters) cold water, bring to the boil and simmer over a very low flame for about 1½ hours, until soft and heavy. Add the rock sugar and stir to dissolve. Simmer for another 30 minutes or so, stirring frequently so the silver-ear doesn’t stick to the pan. Set aside, and for best results leave overnight to settle, by which time the silver-ear will be soft and voluptuous, the liquid sleepy and heavy.",
     "An hour or so before you wish to serve the soup, cover the goji berries in cold water and leave them to plump up. To serve, bring the soup just to the boil, stirring constantly. Add a little more hot water if it’s too thick. Finally, stir in the goji berries, fermented glutinous rice wine and candied osmanthus, if using, and serve."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ]
+  }
 }

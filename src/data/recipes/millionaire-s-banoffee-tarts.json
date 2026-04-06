@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes 4 large servings",
   "intro": "Created with the assistance of Clare Gray, an RD and Natural Gourmet grad from London, this dessert combines the best parts of two wildly popular UK desserts: the Banoffee Tart and Millionaire’s Pie. I saw banoffee-flavored tarts, truffles, and even ice cream all over London in the fall of 2011, but somehow neglected to learn more about it when I was there. So, I asked Clare when she interned with me and she explained that banoffee is traditionally made from shortbread, caramel, and bananas. I immediately understood the appeal and naturally wanted to incorporate at least one chocolate component. Clare suggested that the chocolate and caramel Millionaire’s Tart and Banoffe would make a brilliant hybrid, and she was right. In short order, thanks to the caramel-like Chocolate Dulce de Leche, the Chocolate Cake to Live For, and the ripe bananas on my counter, we had an over-the-top treat. For even more good news, know that the tarts can be assembled a day ahead and sit out at room temperature for hours, making them the perfect party dessert.",
@@ -46,7 +46,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   },
   "image": "/recipes/millionaire-s-banoffee-tarts.jpg"

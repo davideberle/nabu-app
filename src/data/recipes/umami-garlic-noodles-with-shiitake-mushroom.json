@@ -1,10 +1,10 @@
 {
   "id": "umami-garlic-noodles-with-shiitake-mushroom",
-  "name": "UMAMI GARLIC NOODLES with shiitake mushroom",
+  "name": "Umami Garlic Noodles with Shiitake Mushroom",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
   "time": "TAKES ABOUT 40 MINUTES",
@@ -68,7 +68,7 @@
     "When the sauce starts bubbling, add the noodles. Using tongs and a spoon, combine and coat the noodles in sauce. If the dish looks too thick or tastes too salty, add a tiny splash of water. Turn off the heat and let rest for a minute.",
     "Serve the noodles in individual pasta bowls."
   ],
-  "image": null,
+  "image": "/recipes/umami-garlic-noodles-with-shiitake-mushroom.jpg",
   "category": {
     "dish_type": [
       "main"

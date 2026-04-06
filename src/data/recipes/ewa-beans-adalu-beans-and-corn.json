@@ -22,7 +22,7 @@
     },
     {
       "item": "palm oil",
-      "amount": "2 tablespoons"
+      "amount": "2 tbsp"
     },
     {
       "item": "stew base (page 45) (optional)",
@@ -42,5 +42,13 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ewa-beans-adalu-beans-and-corn.jpg"
+  "image": "/recipes/ewa-beans-adalu-beans-and-corn.jpg",
+  "time": {
+    "total": 50
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

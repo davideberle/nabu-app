@@ -1,10 +1,10 @@
 {
   "id": "spicy-sweet-pomegranate-tofu",
-  "name": "SPICY SWEET POMEGRANATE tofu",
+  "name": "Spicy Sweet Pomegranate Tofu",
   "source": {
     "cookbook": "Vietnamese Food Any Day",
     "author": "Andrea Nguyen",
-    "chapter": "Recipes"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4",
   "time": "TAKES 35 MINUTES",
@@ -70,7 +70,7 @@
     "When the oil shimmers, add the tofu and cook for 5 to 6 minutes, turning frequently to brown on two or three sides. Remove from the pan and set aside on a plate.",
     "Add the mushrooms to the hot skillet and cook for 2 minutes, until slightly shrunken, a bit browned, and glistening. Swirl in the remaining 1½ tablespoons canola oil, add the shallot and garlic, and stir-fry for about 30 seconds, until fragrant. Add the chiles and stir-fry for about 1 minute, until slightly softened. Return the tofu to the pan and cook for about 2 minutes, until hot."
   ],
-  "image": null,
+  "image": "/recipes/spicy-sweet-pomegranate-tofu.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

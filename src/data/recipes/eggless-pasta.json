@@ -1,0 +1,38 @@
+{
+  "id": "eggless-pasta",
+  "name": "Eggless Pasta",
+  "source": {
+    "cookbook": "Pasta for All Seasons",
+    "author": "Michela Tartaglia",
+    "chapter": "Pasta Primer"
+  },
+  "servings": "4 servings",
+  "intro": "This is the pasta dough recipe that I grew up with, the one that my mother uses and that both my grandmothers used. It’s the classic southern Italian recipe where durum wheat flour is the star. One of my favorite durum flours is the Saragolla variety, the ancestor of modern durum wheats.\n\nThe way I have been taught is to measure the flour with your hands, using one handful of flour per guest. That means four handfuls if you have four people to serve, although five is better because you always need to be prepared to feed the potential extra guest, as my mom always says.\n\nFor the water, I never saw any of the women in my family measuring it out; their formula was to use as much as the flour needs, in order to have a dough that is not too wet and not too dry. Just pour it slowly and you will figure it out. Making pasta is about going by feel and trusting yourself. This lesson remains a fond memory of my childhood, but I can see the challenge for beginners, so here’s a slightly more precise recipe. After you’ve made it once or twice, I suspect you won’t need these instructions at all.",
+  "ingredients": [
+    {
+      "item": "durum wheat flour",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "lukewarm water",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "In a large mixing bowl, add the flour. Start slowly pouring in the water with one hand and mixing with the other one.",
+    "Keep kneading the flour using the heel of your hand, adding more water when necessary, aiming to have the flour absorb as much of the water as possible. Transfer the dough to a wooden cutting board or a flat surface.",
+    "Continue energetically kneading, folding, and rotating the dough. The process should take 15 to 20 minutes, depending on the power of your hand movements. At some point, the dough will transform under your hand and become elastic and silky smooth.",
+    "When you think you are done, cut the dough in half; you should not see any holes. If you see them, it means you didn’t knead enough, so continue to knead.",
+    "When the dough is ready, form it into a nice round ball and cover with a clean kitchen towel (no smelly laundry detergents, please) or plastic wrap. Let it rest for 20 minutes and then proceed to roll it out and craft your desired pasta shape.",
+    "You can either use a pasta machine or a rolling pin to make the pasta sheets. In a machine, start the dough in the widest setting (usually the smallest number). Roll the dough a couple of times on that setting, dusting with a little flour as needed to prevent sticking, then move to the next setting and so on. Proceed until you obtain the desired thickness, then cut or shape the pasta. When using a rolling pin, press and fold the dough several times until you obtain the correct thickness for the desired pasta shape."
+  ],
+  "image": "/recipes/eggless-pasta.jpg",
+  "time": {
+    "total": 35
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

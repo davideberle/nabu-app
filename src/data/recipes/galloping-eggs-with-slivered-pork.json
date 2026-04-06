@@ -1,9 +1,10 @@
 {
   "id": "galloping-eggs-with-slivered-pork",
-  "name": "Galloping eggs with slivered pork",
+  "name": "Galloping Eggs with Slivered Pork",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Poultry and Eggs"
   },
   "subtitle": "rou si pao dan 肉丝跑蛋",
   "intro": "This fluffy omelet laced with slivered pork and spring onion, a speciality of Hangzhou, is one of those Chinese supper dishes that is so much more delicious than the sum of its parts. It makes a fine supper with a green vegetable and rice. Omelets like these are sometimes described in cookery books as “roasted eggs” (pao dan), which sounds the same in Chinese as “galloping eggs” (pao dan), but the latter name, which is the one I was given by chef Zhu Yinfeng when he taught me the recipe, conjures up such a wonderfully appropriate image of rapid, bubbling movement that I had to use it. The same method can be used to make omelets with fresh shrimp, soaked and shredded dried scallop or slivered ham. And if you don’t fancy ladling around boiling hot oil, the omelet is fairly puffy and extremely delicious if simply cooked in very hot oil in a frying pan.",
@@ -47,5 +48,10 @@
     "Heat the remaining cooking oil in the wok over a high flame until the surface begins to shimmer. Take the bowl containing the egg mixture in your weaker hand. Scoop up a ladleful of hot oil from the wok with the other hand, pour the egg mixture into the wok and immediately pour the ladleful of hot oil into the center of the egg mixture, taking great care as you do this. The egg will bubble up dramatically.",
     "When the omelet is golden underneath, drain off the excess oil and turn it over to cook the other side. When the other side is golden, sprinkle over the remaining spring onions, flip it over briefly to give them a lick of heat, then slide the omelet onto a serving dish. Cut it up into slices like a pizza to serve."
   ],
-  "image": null
+  "image": null,
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

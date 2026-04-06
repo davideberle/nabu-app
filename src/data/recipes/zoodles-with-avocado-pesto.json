@@ -1,0 +1,67 @@
+{
+  "id": "zoodles-with-avocado-pesto",
+  "name": "Zoodles with Avocado Pesto",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Hearty Snacks"
+  },
+  "servings": "serves 2",
+  "intro": "Enjoy this dish for lunch, and save the leftovers for a snack. It will taste even better if it can sit for a while and let the zucchini strands soften a little.",
+  "ingredients": [
+    {
+      "item": "zucchinis or daikon radishes",
+      "amount": "2"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "½ cup (1 dl)",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "avocado",
+      "amount": "1",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "⅕ tsp garlic powder",
+      "amount": "",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "container fresh basil",
+      "amount": "½",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "salt",
+      "amount": "A pinch of",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "½–1 tbsp",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp",
+      "group": "AVOCADO PESTO"
+    },
+    {
+      "item": "Freshly ground black pepper",
+      "amount": "",
+      "group": "AVOCADO PESTO"
+    }
+  ],
+  "method": [
+    "Use a vegetable spiralizer to turn the zucchinis or ­radishes into noodles, or make tagliatelle using a root vegetable peeler.",
+    "AVOCADO PESTO: Grind the pumpkin seeds in a food processor. Add in the avocado, garlic powder, basil, and salt, then run the processor some more. While the machine is on, add in the lemon juice and olive oil, and blend until you have a smooth mixture. Season with more garlic, salt, or lemon juice, as needed. Finish it off with some freshly ground black pepper."
+  ],
+  "image": "/recipes/zoodles-with-avocado-pesto.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

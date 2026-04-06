@@ -1,0 +1,35 @@
+{
+  "id": "cg-garlic-and-ginger-paste",
+  "name": "Garlic AND Ginger Paste",
+  "source": {
+    "cookbook": "The Curry Guy",
+    "author": "Dan Toombs",
+    "chapter": "Base Recipes"
+  },
+  "servings": "makes 15 generous tbsp",
+  "intro": "Garlic and ginger paste is used in almost every curry. It’s so easy to make and tastes far better than any commercially available alternative. If you would like a little more control over the amount of garlic and ginger that go into your creations, make a separate garlic paste and/or a ginger paste in the same way.",
+  "ingredients": [
+    {
+      "item": "garlic, chopped",
+      "amount": "150g"
+    },
+    {
+      "item": "ginger, peeled and chopped",
+      "amount": "150g"
+    }
+  ],
+  "method": [
+    "Place the garlic and ginger in a food processor or pestle and mortar and blend with just enough water to make a smooth paste. Some chefs finely chop their garlic and ginger instead, which is a good alternative to making a paste. Store in an airtight container in the fridge for up to 3 days and use as needed. If you’re planning a curry party, go ahead and get this job ticked off early.",
+    "I often make larger batches of pastes and freeze them in ice cube trays. Frozen cubes can be transferred to airtight plastic bags in the freezer, ready for when you get that curry craving. Be sure to let them defrost a little first."
+  ],
+  "image": null,
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ],
+  "category": {
+    "dish_type": [
+      "base"
+    ]
+  }
+}

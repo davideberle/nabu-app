@@ -1,0 +1,129 @@
+{
+  "id": "meatball-avgolemono-soup",
+  "name": "Meatball Avgolemono Soup",
+  "source": {
+    "cookbook": "The Authentic Greek Kitchen",
+    "author": "Various",
+    "chapter": "More Than Greek Salad"
+  },
+  "servings": "serves 4",
+  "time": {
+    "prep": 5,
+    "cook": 20,
+    "total": 25
+  },
+  "ingredients": [
+    {
+      "item": "minced onion",
+      "amount": "1 cup"
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb"
+    },
+    {
+      "item": "raw converted rice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fresh lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "chopped fresh mint leaves or ½ teaspoon dried mint",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "flour for coating",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "5 cups"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "cold water",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Combine onion with ground beef.",
+      "amount": ""
+    },
+    {
+      "item": "Add raw rice, lemon juice, mint, parsley, salt, and pepper.",
+      "amount": ""
+    },
+    {
+      "item": "Make small meatballs and dip lightly in flour to coat.",
+      "amount": ""
+    },
+    {
+      "item": "Bring chicken stock to a boil.",
+      "amount": ""
+    },
+    {
+      "item": "Add meatballs and simmer for about 30 minutes.",
+      "amount": ""
+    },
+    {
+      "item": "(These can be made ahead of time.) Before serving, reheat broth and meatballs.",
+      "amount": ""
+    },
+    {
+      "item": "Beat eggs with water.",
+      "amount": ""
+    },
+    {
+      "item": "Add lemon juice slowly, stirring constantly.",
+      "amount": ""
+    },
+    {
+      "item": "Add all the hot broth from the meatballs, stirring constantly to avoid curdling.",
+      "amount": ""
+    },
+    {
+      "item": "When all the liquid has been added to egg-lemon mixture, return to the pot, pouring over meatballs.",
+      "amount": ""
+    },
+    {
+      "item": "Cook gently until sauce has thickened.",
+      "amount": ""
+    },
+    {
+      "item": "Serve at once in soup bowls.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine onion with ground beef.",
+    "Add raw rice, lemon juice, mint, parsley, salt, and pepper.",
+    "Make small meatballs and dip lightly in flour to coat.",
+    "Bring chicken stock to a boil.",
+    "Add meatballs and simmer for about 30 minutes.",
+    "(These can be made ahead of time.) Before serving, reheat broth and meatballs.",
+    "Beat eggs with water.",
+    "Add lemon juice slowly, stirring constantly.",
+    "Add all the hot broth from the meatballs, stirring constantly to avoid curdling.",
+    "When all the liquid has been added to egg-lemon mixture, return to the pot, pouring over meatballs.",
+    "Cook gently until sauce has thickened.",
+    "Serve at once in soup bowls."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": [
+      "soup"
+    ]
+  }
+}

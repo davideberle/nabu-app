@@ -1,0 +1,56 @@
+{
+  "id": "sams-bowl",
+  "name": "Sam’s Bowl",
+  "source": {
+    "cookbook": "Superfood Boost",
+    "author": "Erica Palmcrantz",
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "servings": "serves 2",
+  "intro": "My husband Sam is a great source of inspiration to me. He taste-tests everything I prepare. When he declares that something tastes healthy, I know that it’s more good-for-you than good to eat . . . but he still gamely finishes it! This is his own recipe for a bowl, and it is both healthy and tasty. Chlorophyll and sprouting life force from the pea sprouts, good fats from the avocado, and creamy sweetness from a banana will get you set for a busy day.",
+  "ingredients": [
+    {
+      "item": "bananas, frozen or fresh",
+      "amount": "3"
+    },
+    {
+      "item": "packet pea sprouts, approx. 3½ oz (100g)",
+      "amount": "1"
+    },
+    {
+      "item": "avocado",
+      "amount": "1"
+    },
+    {
+      "item": "vanilla powder",
+      "amount": "A pinch of"
+    },
+    {
+      "item": "goji berries",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "hemp seeds",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    },
+    {
+      "item": "bee pollen",
+      "amount": "2 tbsp",
+      "group": "TOPPING"
+    }
+  ],
+  "method": [
+    "Peel and slice the bananas—put them in a plastic bag and freeze them if you wish to use frozen bananas. You can blend the frozen bananas if you have a powerful blender. If not, defrost the fruit for 10 minutes first. Mix the bananas with the pea sprouts, avocado, and vanilla powder until you have a creamy consistency. Top with goji ­berries, hemp seeds, and bee pollen."
+  ],
+  "image": "/recipes/sams-bowl.jpg",
+  "time": {
+    "total": 10
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
+}

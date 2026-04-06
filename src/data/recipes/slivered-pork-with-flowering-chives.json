@@ -1,9 +1,10 @@
 {
   "id": "slivered-pork-with-flowering-chives",
-  "name": "Slivered pork with flowering chives",
+  "name": "Slivered Pork with Flowering Chives",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Meat"
   },
   "subtitle": "jiu cai hua chao rou si 韭菜花炒肉丝",
   "intro": "If you have supper in a Chinese home, you will very likely taste at least one dish like this: slivers of pork stir-fried with some kind of vegetable. Cooked in this manner, a little meat goes a long way, so it’s not only healthy and delicious, but also economical. Think of this as a master recipe for any stir-fry that follows the basic formula of slivered meat plus slivered vegetable. Instead of pork, you can use beef, lamb, chicken, pigeon breast, turkey … and instead of the flowering chives, you can use another vegetable of your choice, or a mixture of vegetables, or firm tofu, spiced or plain. Chunkier or more watery vegetables, such as celery, lotus root, snow peas or carrot, will benefit from blanching before you stir-fry them, to “break their rawness” (duan sheng) and speed up the cooking time. The pre-frying of the meat keeps it beautifully tender. Flowering chives are simply the flowering stems of Chinese garlic chives.",
@@ -57,5 +58,10 @@
     "Cut the pork into thin slices and then into thin slivers. Add the marinade ingredients and mix well. Remove the flower buds from the end of each chive, and cut the chives into 2–2½ in (5–6cm) lengths. (The buds can be used in other dishes, including omelets.)",
     "Heat 2 tablespoons oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked; remove from the wok and set aside. Return the wok to a high heat, with the remaining cooking oil if you need it. Add the ginger and stir-fry for a moment until fragrant; then add the chives and red bell pepper, if using, and stir-fry until piping hot and fragrant. Return the pork to the wok and season with salt. Remove from the heat, stir in the sesame oil and serve."
   ],
-  "image": "/recipes/slivered-pork-with-flowering-chives.jpg"
+  "image": "/recipes/slivered-pork-with-flowering-chives.jpg",
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }

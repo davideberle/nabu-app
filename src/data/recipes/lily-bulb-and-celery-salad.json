@@ -1,9 +1,10 @@
 {
   "id": "lily-bulb-and-celery-salad",
-  "name": "Lily bulb and celery salad",
+  "name": "Lily Bulb and Celery Salad",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Appetizers"
   },
   "subtitle": "bai he ban xi qin 百合拌西芹",
   "intro": "The Sunday market on the outskirts of Shanghai was like a rugby scrum. We pushed our way through the crowds and decibels. To one side, live crabs, gunmetal green, sidled around in their leggy way; to the other, shiny, dark eels seethed snakily in tubs of water. There were vegetable stalls piled with the season’s produce: tiny, clover-shaped leaves of alfalfa; the ivory ziggurats of peeled wild rice stem; slender, waif-like chives; dirty lily bulbs that would be washed and peeled apart into crystalline petals. Mrs. He charged ahead, greeting her neighbors in Shanghainese as she went. She had her eels weighed and gutted and picked out her lily bulbs and pickles, a winter bamboo shoot and a clutch of small yellow croakers. Back at her flat, one of the dishes she made was this salad of bright green celery and pearly wisps of lily bulb, with their starchy crispness and subtle hint of sweetness. It was an exquisite example of culinary minimalism, seasoned with nothing but a whisper of sesame oil and a hint of salt.",
@@ -33,5 +34,10 @@
     "Trim and de-string the celery sticks and cut them diagonally into bite-sized pieces. Pull the lily bulb into individual petal-like lobes. Use a small knife to trim off the base and any broken or discolored sections, so that you end up with pure whiteness.",
     "Bring a small pan of water to the boil and add the cooking oil. Tip in the celery and blanch for 30–60 seconds. Add the lily bulb and blanch for another 30 seconds or so: you just want to “break the rawness” of the vegetables, which should retain their crispness. Tip the vegetables into a colander and cool immediately under the cold tap. Shake them dry. Put them in a bowl, add the sesame oil and mix well. Season with salt, and serve."
   ],
-  "image": "/recipes/lily-bulb-and-celery-salad.jpg"
+  "image": "/recipes/lily-bulb-and-celery-salad.jpg",
+  "category": {
+    "dish_type": [
+      "side"
+    ]
+  }
 }

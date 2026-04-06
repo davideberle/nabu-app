@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Vegan Chocolate",
     "author": "Fran Costigan",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "servings": "makes about 1¾ cups / 420 ml",
   "intro": "Cashew Cream is a valuable base ingredient that stands in for dairy cream in a variety of ways, and is used both uncooked and cooked. Refrigerate Cashew Cream for up to two days, or freeze it in ice cube trays so that the right amount is always available for quick defrosting (see Note on keeping). It’s easy to thin the cream into cashew milk, as desired. A sweeter variation for making Cashew Cream follows.",
@@ -44,7 +44,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ]
   },
   "image": "/recipes/basic-thick-cashew-cream.jpg"

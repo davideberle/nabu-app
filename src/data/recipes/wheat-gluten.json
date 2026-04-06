@@ -1,9 +1,10 @@
 {
   "id": "wheat-gluten",
-  "name": "Wheat gluten",
+  "name": "Wheat Gluten",
   "source": {
     "cookbook": "Land of Fish and Rice",
-    "author": "Fuchsia Dunlop"
+    "author": "Fuchsia Dunlop",
+    "chapter": "Basic Recipes"
   },
   "subtitle": "mian jin 面筋",
   "intro": "In Chinese, gluten is known as the “muscle” of the flour (mian jin), which not only expresses perfectly its strong, stretchy qualities, but also hints at the labor required to make it, because transforming wheat flour into gluten—by hand, at least—demands a lot of muscle. It’s worth doing from time to time, however, because the taste and texture of homemade gluten tend to be far superior to those of the store-bought variety. Transforming a ball of dough into gluten, then boiling or frying it, is also great fun and rather amazing. You’ll find a colorful recipe for stir-fried gluten here, but feel free to use it in other dishes. Deep-fried gluten makes a delicious addition to red-braised pork, where it absorbs all the rich, meaty juices, and can also be stir-fried with bok choy and other greens. Make sure you knead the dough until it’s as smooth as possible, then extract as much starch as you can; this way, your gluten will be smooth, light and pillowy. A frugal tip: if you wish, you can keep the thick, milky liquid from the first few rinsings of the dough—perhaps 1¾–2 cups (400–500ml). Leave it to settle, then carefully discard the top layer of clear water, leaving a thick starchy liquid. Add to this an egg and a good handful of finely sliced spring onion greens and season with salt. Make this batter into thin pancakes, fried golden on both sides, and serve them alongside other dishes for breakfast, or at any other meal. (In northern China, they steam the thick starchy liquid in layers, and then cut the resulting sheets into the noodles known as “cold skin,” liang pi.)",
@@ -22,5 +23,13 @@
     "Put the dough in a large mixing bowl. Add about ½ cup (100ml) cold water and knead the dough vigorously by hand with the water. You will notice that the liquid quickly becomes milky: this is the starch leaching out of the dough. When the liquid has become thick and white, like light cream, strain it off and discard. Return the wet dough to the bowl and continue adding water in stages, kneading thoroughly between each addition to extract as much starch as possible, and straining off the milky liquid. Make sure you massage out any hard spots in the dough: this is where the starch is lurking.",
     "Keep kneading and rinsing until the water is running pretty clear and you are left with a soft, squishy mass of ivory-colored gluten. The whole process is likely to take around an hour, and you should be left with 2¼–3 cups (300–350g) gluten."
   ],
-  "image": null
+  "image": null,
+  "time": {
+    "total": 60
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ]
+  }
 }
