@@ -1,0 +1,51 @@
+{
+  "id": "artichoke-salad-with-lemon-juice",
+  "name": "Artichoke salad with lemon juice",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Freshly grown artichokes are a summer treat. For the rest of the year, you can always use prepared artichokes preserved in jars instead, and substitute the olive oil in the recipe for the preserving oil for added flavor.",
+  "ingredients": [
+    {
+      "item": "artichokes",
+      "amount": "4"
+    },
+    {
+      "item": "lemons",
+      "amount": "3"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "large handfuls of arugula",
+      "amount": "2"
+    },
+    {
+      "item": "scant 1oz (25g) Parmesan cheese",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Trim the artichoke stalks and hard outside leaves (about 5–6 layers), until you reach the paler, more tender ones. Cut about 1in (2.5cm) off the spiny tips and discard. Then slice in half and using a teaspoon, carefully remove the choke and discard. Place the artichoke hearts in a bowl and pour the juice of 2 lemons over them.",
+    "Bring a pot of water to a boil. Add 1 tsp salt and the juice of the remaining lemon. Place the artichokes into the pan and cook for 10 minutes, or until tender. Drain well and set aside to cool.",
+    "When the artichokes are cool enough to handle, carefully cut them into quarters.",
+    "Divide the arugula and artichokes between 4 individual plates. Using a vegetable peeler, shave pieces of Parmesan over each salad. Drizzle with olive oil and balsamic vinegar, and season to taste with salt and pepper."
+  ],
+  "image": null,
+  "time": {
+    "total": 35
+  }
+}

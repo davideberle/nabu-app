@@ -1,0 +1,53 @@
+{
+  "id": "gorgonzola-and-ciabatta-salad",
+  "name": "Gorgonzola and ciabatta salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Gorgonzola is a creamy blue-veined cheese made from unskimmed cow's milk. A little goes a long way in this panzanella-style Italian salad.",
+  "ingredients": [
+    {
+      "item": "ciabatta or other rustic country-style bread, toasted and cut into chunky, bite-sized cubes",
+      "amount": "3 slices"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "handful of basil, torn",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "jar roasted red peppers, drained and sliced",
+      "amount": "½ × 7oz (190g)"
+    },
+    {
+      "item": "tomatoes, roughly chopped",
+      "amount": "4"
+    },
+    {
+      "item": "handful of toasted pine nuts",
+      "amount": ""
+    },
+    {
+      "item": "gorgonzola or other mild blue cheese, cut into bite-sized cubes",
+      "amount": "2½ oz (70g)"
+    }
+  ],
+  "method": [
+    "Put the bread cubes in a large bowl and drizzle with the olive oil. Add the basil, and season with salt and black pepper. Toss together, and let stand for about 10 minutes to develop the flavors.",
+    "Add the peppers, tomatoes, pine nuts, and cheese, and toss gently until everything is evenly mixed. Serve with cold cooked meats."
+  ],
+  "image": "/recipes/gorgonzola-and-ciabatta-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

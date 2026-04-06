@@ -1,0 +1,78 @@
+{
+  "id": "chicken-lasagna",
+  "name": "Chicken Lasagna",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "uncooked lasagna noodles",
+      "amount": "6"
+    },
+    {
+      "item": "shredded cooked chicken",
+      "amount": "1 cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped mushrooms",
+      "amount": "½ lb."
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "chopped small onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "oz, cream cheese",
+      "amount": "8"
+    },
+    {
+      "item": "oregano",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "shredded mozzarella cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "tomato sauce – great, if homemade",
+      "amount": "3 cups"
+    }
+  ],
+  "method": [
+    "Boil the noodles in a pot of salted water for 10 minutes, until they are done. Drain the noodles and set aside.",
+    "Preheat the oven to 350 degrees F.",
+    "Heat the olive oil in a skillet and sauté the mushrooms, bell pepper, onion, and garlic for 5 minutes.",
+    "Combine the shredded chicken, broth, cream cheese, mushrooms, bell pepper, onion, garlic, and oregano in a bowl.",
+    "Stir in 1 cup mozzarella cheese and season with salt and pepper.",
+    "Pour 1 cup of tomato sauce into a 9x13 baking dish.",
+    "Create three layers of lasagna noodles, chicken mixture, and tomato sauce.",
+    "Top with the remaining cup of shredded mozzarella cheese.",
+    "Bake for 45 minutes."
+  ],
+  "image": "/recipes/chicken-lasagna.jpg",
+  "time": {
+    "total": 30
+  }
+}

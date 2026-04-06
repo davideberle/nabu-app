@@ -1,0 +1,86 @@
+{
+  "id": "spicy-chicken-salad-with-raw-vegetables",
+  "name": "Spicy chicken salad with raw vegetables",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "This colorful salad requires very little cooking. If you prefer, you can spiralize the vegetables instead of shaving them—this will give them a more noodlelike appearance. Toss with the dressing at the last minute to prevent wilting.",
+  "ingredients": [
+    {
+      "item": "boneless, skinless chicken breasts",
+      "amount": "14oz (400g)"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "Thai fish sauce",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pinch of red pepper flakes (optional)",
+      "amount": ""
+    },
+    {
+      "item": "small head lettuce, shredded",
+      "amount": "1"
+    },
+    {
+      "item": "ready-to-eat bean sprouts",
+      "amount": "¼lb (100g)"
+    },
+    {
+      "item": "large carrot, shaved using a vegetable peeler",
+      "amount": "1"
+    },
+    {
+      "item": "× 6in (15cm) piece of cucumber, seeded and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "yellow bell pepper, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "15"
+    },
+    {
+      "item": "handful of mint leaves, chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of cilantro, chopped",
+      "amount": ""
+    },
+    {
+      "item": "salted peanuts, chopped (optional)",
+      "amount": "5 tbsp"
+    }
+  ],
+  "method": [
+    "Poach the chicken in a large pot in plenty of simmering salted water for 7–10 minutes, depending on the thickness, until cooked through. Let cool, then thinly slice.",
+    "In a bowl, whisk the lime juice, fish sauce, sugar, a pinch of salt, and the red pepper flakes, if using, until the sugar dissolves.",
+    "In a serving bowl, mix together the salad vegetables, most of the herbs, and the chicken. Drizzle with the dressing and scatter with the remaining herbs and the peanuts, if using, to serve."
+  ],
+  "image": "/recipes/spicy-chicken-salad-with-raw-vegetables.jpg",
+  "time": {
+    "total": 17
+  }
+}

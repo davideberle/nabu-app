@@ -1,0 +1,57 @@
+{
+  "id": "curry-chicken-pasta-salad",
+  "name": "Curry Chicken Pasta Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "pasta shells",
+      "amount": "8 oz."
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sour cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cubed cooked chicken",
+      "amount": "3 cups"
+    },
+    {
+      "item": "chopped walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "curry powder",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3"
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of salted boiling water for 10 minutes. Drain and let cool.",
+    "Combine the mayonnaise, sour cream, chicken, walnuts, raisins, curry powder, salt, pepper, and scallions in a bowl.",
+    "Stir in the pasta.",
+    "Refrigerate the pasta for 3 hours."
+  ],
+  "image": "/recipes/curry-chicken-pasta-salad.jpg",
+  "time": {
+    "total": 10
+  }
+}

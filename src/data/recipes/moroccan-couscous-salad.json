@@ -1,0 +1,58 @@
+{
+  "id": "moroccan-couscous-salad",
+  "name": "Moroccan couscous salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Quick and simple, this delicious salad is full of fiber, low in fat, and makes a satisfying midweek meal. To add a little more color, fry a few chopped peppers along with the zucchini.",
+  "ingredients": [
+    {
+      "item": "couscous",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "hot vegetable stock, to cover",
+      "amount": ""
+    },
+    {
+      "item": "olive oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "zucchini, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "good pinch of paprika",
+      "amount": ""
+    },
+    {
+      "item": "juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of olives, pitted and chopped",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the couscous in a large bowl and pour over just enough hot vegetable stock to cover. Seal with plastic wrap and let sit for 5 minutes, or until the couscous has absorbed all the water, then fluff the grains up lightly with a fork.",
+    "Heat a little olive oil in a frying pan and cook the zucchini until golden. Add to the couscous, paprika, lemon juice, parsley, and olives.",
+    "Season well and stir to combine. Serve immediately, or allow to cool."
+  ],
+  "image": "/recipes/moroccan-couscous-salad.jpg",
+  "time": {
+    "total": 20
+  }
+}

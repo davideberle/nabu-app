@@ -1,0 +1,90 @@
+{
+  "id": "shepherd-s-salad",
+  "name": "Shepherd’s salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Also called Arabic salad, this dish is popular in Turkey and the Middle East. Laden with fresh herbs and spices, it’s a perfect complement to some grilled or barbecued lamb, or lemony chicken.",
+  "ingredients": [
+    {
+      "item": "large cucumber, peeled",
+      "amount": "1"
+    },
+    {
+      "item": "baby cherry tomatoes",
+      "amount": "15"
+    },
+    {
+      "item": "sweet romaine lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "black olives, pitted and chopped",
+      "amount": "12"
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped cilantro",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely chopped mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped purslane or arugula",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic clove, crushed",
+      "amount": "½"
+    },
+    {
+      "item": "(For the dressing) sweet paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) ground sumac",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) ground cumin",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) lemon juice and 1 tsp grated lemon zest",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) sea salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, mix together all the ingredients for the dressing, and season with salt and pepper to taste. Leave the mixture to rest while you prepare the salad ingredients.",
+    "Quarter the cucumber lengthwise, then scoop out and discard the seeds. Cut the flesh into small, neat chunks. Reserve on a plate. Halve the tomatoes, scoop out and discard some of the seeds, and add to the cucumber. Tear or chop the lettuce into bite-sized pieces.",
+    "Stir the dressing. Put a layer of lettuce in the bowl (do not toss), then scatter in some olives and scallions. Sprinkle over some parsley, cilantro, mint, and purslane or arugula. Add half the cucumber and tomatoes. Continue adding the ingredients until everything is in the bowl. Toss the salad just before serving."
+  ],
+  "image": null,
+  "time": {
+    "total": 50
+  }
+}

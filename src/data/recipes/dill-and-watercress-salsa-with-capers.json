@@ -1,0 +1,50 @@
+{
+  "id": "dill-and-watercress-salsa-with-capers",
+  "name": "Dill and watercress salsa with capers",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 6",
+  "intro": "This fresh and herbed salsa makes a perfect partner for salads containing fish or meat. Try tossing it into the Tuna, artichoke, and pasta salad to give the dish a citrus tang.",
+  "ingredients": [
+    {
+      "item": "chopped dill weed",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "picked watercress leaves, chopped",
+      "amount": "1¾ oz (50g)"
+    },
+    {
+      "item": "baby cherry tomatoes, halved",
+      "amount": "9"
+    },
+    {
+      "item": "heaping tbsp capers, drained",
+      "amount": "1"
+    },
+    {
+      "item": "juice and finely grated zest of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Put the dill and watercress in a bowl. Gently squeeze the halved cherry tomatoes to discard some of the seeds, then slice into quarters, and add to the bowl.",
+    "Chop the capers and stir into the tomato mixture, along with the lemon juice and zest. Stir, season with salt and pepper, and drizzle with olive oil.",
+    "Chill the salsa for at least 30 minutes to allow the flavors to blend. Stir again before serving."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

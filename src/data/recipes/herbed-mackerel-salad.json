@@ -1,0 +1,75 @@
+{
+  "id": "herbed-mackerel-salad",
+  "name": "Herbed mackerel salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Throw together this fragrant salad for a light meal packed with flavor—and then mop up the dressing with a crispy baguette. Smoked mackerel is great to have in the fridge because it’s quick, inexpensive, and high in protein.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "new potatoes, well scrubbed and chopped into bite-sized chunks",
+      "amount": "1¼ lb (550g)"
+    },
+    {
+      "item": "hot-smoked mackerel fillets, skinned",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "baby salad leaves",
+      "amount": "2oz (60g)"
+    },
+    {
+      "item": "chopped dill",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped chives",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cooked beets (not in vinegar), roughly chopped",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "baguette, to serve",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) whole-grain mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) honey",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) garlic clove, finely chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water to a boil. Add the potato chunks and cook for 10–15 minutes, or until tender. Drain and set aside.",
+    "Meanwhile, break the mackerel into bite-sized pieces, removing any bones you find as you go, and place in a large serving bowl. Add the salad leaves and herbs, and gently toss together.",
+    "Place the dressing ingredients in a small bowl, season, and whisk together with a fork.",
+    "Add the warm potatoes to the serving bowl, pour in the dressing, and stir gently. Add the beets and serve immediately with the baguette."
+  ],
+  "image": "/recipes/herbed-mackerel-salad.jpg",
+  "time": {
+    "total": 25
+  }
+}

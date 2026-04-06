@@ -1,0 +1,70 @@
+{
+  "id": "smoked-salmon-pasta",
+  "name": "Smoked Salmon Pasta",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "penne pasta",
+      "amount": "16 oz."
+    },
+    {
+      "item": "butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small, chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "flour",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "light cream",
+      "amount": "2 cups"
+    },
+    {
+      "item": "white wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "grated Romano cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped smoked salmon",
+      "amount": "¾ lb."
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of salted water for 10 minutes. Drain.",
+    "Melt butter in a skillet and sauté the onion and garlic for 5 minutes.",
+    "Stir the flour into the butter mixture and keep stirring for 2 minutes.",
+    "Gently add the light cream.",
+    "Bring the liquid just below the boiling point.",
+    "Stir in the cheese and keep stirring until the mixture is smooth, about 3 minutes.",
+    "Add the mushrooms and simmer for 5 minutes.",
+    "Transfer the salmon to the skillet and cook for 3 minutes.",
+    "Serve the salmon mixture over the penne pasta."
+  ],
+  "image": "/recipes/smoked-salmon-pasta.jpg",
+  "time": {
+    "total": 23
+  }
+}

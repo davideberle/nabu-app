@@ -1,0 +1,50 @@
+{
+  "id": "marinated-cucumber-and-dill-salad",
+  "name": "Marinated cucumber and dill salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This beautifully simple Scandinavian dish is an elegant accompaniment to a piece of grilled or cold poached salmon. The cooling cucumber adds color as well as crunch.",
+  "ingredients": [
+    {
+      "item": "cucumbers, thinly sliced using a mandoline",
+      "amount": "2"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "rice wine vinegar or white wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "handful of dill, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "juice of ½ lemon (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the sliced cucumbers in a colander and sprinkle over the sea salt. Place a slightly smaller bowl on top of the cucumber and weigh down with weights, or a few unopened cans of food. Leave the colander over a sink for 1 hour to allow the cucumbers to lose any excess water.",
+    "Remove the weights, wrap the cucumber carefully in a clean kitchen towel, and squeeze out the excess water. Transfer to a bowl, cover, and refrigerate for at least 1 hour, until completely chilled.",
+    "Meanwhile, put 2 tablespoons of boiling water into a bowl and stir in the sugar to dissolve. Then add the vinegar, a generous amount of black pepper, and the dill, and place the bowl in the fridge to cool. Once the dressing and cucumber are completely cold, mix the two together. Adjust the seasoning to taste before serving. If using rice wine vinegar, add the lemon juice to balance out the flavor."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "pearl-barley-squash-and-tomato-salad",
+  "name": "Pearl barley, squash, and tomato salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 2",
+  "intro": "Fiber-rich pearl barley makes a great addition to warm salads like this one. The chewy grains cling to the roasted squash and tomato, adding an extra textural dimension to the meal.",
+  "ingredients": [
+    {
+      "item": "small butternut squash, cut into ½ in (1cm) cubes (about 10oz/300g prepared weight)",
+      "amount": "½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "uncooked pearl barley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "2 cups"
+    },
+    {
+      "item": "plum tomatoes",
+      "amount": "4"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "arugula",
+      "amount": "2½ oz (75g)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400ºF (200ºC). Place the squash in a roasting pan and drizzle 1 tablespoon of the oil over it. Season with salt and black pepper, and scatter the red pepper flakes on top. Put in the oven and cook for 30–40 minutes, until the squash is soft and browning at the edges.",
+    "Place the barley in a small saucepan and pour in the stock. Bring to a boil, then reduce the heat, cover, and simmer for 20–30 minutes. Add a little more stock or water, if needed.",
+    "Slice the tomatoes into quarters and remove the seeds. Pat the flesh dry with paper towels and place the segments in a clean roasting pan. Drizzle with the remaining oil and cook in the oven for 20–30 minutes, until soft.",
+    "Allow the barley to cool for 10 minutes, then stir in the squash, tomatoes, scallions, and arugula."
+  ],
+  "image": "/recipes/pearl-barley-squash-and-tomato-salad.jpg",
+  "time": {
+    "total": 60
+  }
+}

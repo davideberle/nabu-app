@@ -1,0 +1,106 @@
+{
+  "id": "chicken-and-shrimp-carbonara",
+  "name": "Chicken and Shrimp Carbonara",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "olive oil, divided",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chicken cubes",
+      "amount": "1 lb."
+    },
+    {
+      "item": "minced garlic, divided",
+      "amount": "4 tbsp."
+    },
+    {
+      "item": "thyme",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "oregano",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "basil",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "peeled and deveined shrimp",
+      "amount": "1 lb."
+    },
+    {
+      "item": "linguine",
+      "amount": "16 oz."
+    },
+    {
+      "item": "sliced diced bacon",
+      "amount": "6"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "2 cup"
+    },
+    {
+      "item": "milk",
+      "amount": "1 cup"
+    },
+    {
+      "item": "½ cups grated Parmesan cheese",
+      "amount": "1"
+    },
+    {
+      "item": "egg yolks",
+      "amount": "2"
+    },
+    {
+      "item": "white wine.",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Heat 2 tbsp. olive in a large pan.",
+    "Sauté half the garlic and season with thyme, oregano, and basil.",
+    "Stir in the chicken and cook on low for 10 minutes.",
+    "Place the chicken on a platter and set aside.",
+    "Using the same pan, heat 2 tbsp. olive oil and sauté the remaining garlic for 2 minutes.",
+    "Stir in the shrimp and cook on low for 6 minutes.",
+    "Transfer the shrimp with the chicken.",
+    "Cook the linguine in a pot of salted water for 12 minutes.",
+    "Again, using the same pan, fry the bacon until done, about 5 minutes.",
+    "Drain the bacon on a paper towel and crumble. Set aside.",
+    "Sauté the onion, bell pepper, and mushroom in the pan with the bacon fat for 5 minutes.",
+    "Combine the heavy cream, milk, parmesan cheese, egg yolks, salt, and pepper in a bowl.",
+    "Add the wine to the onion, pepper, and mushroom in the pan and bring to a boil.",
+    "Cook on low for 5 minutes.",
+    "Stir in the heavy cream mixture and simmer for 5 minutes.",
+    "Return the shrimp and chicken to the pan and coat with the sauce.",
+    "Serve the shrimp and chicken with the pasta."
+  ],
+  "image": "/recipes/chicken-and-shrimp-carbonara.jpg",
+  "time": {
+    "total": 50
+  }
+}

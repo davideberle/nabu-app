@@ -1,0 +1,66 @@
+{
+  "id": "smoked-chicken-salad-with-papaya-salsa",
+  "name": "Smoked chicken salad with papaya salsa",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "With tropical fruits like papaya and mango now available all year round in most supermarkets, it has never been easier to bring a little bit of sunshine to your lunchtime, whatever the weather.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "large handfuls of fresh spinach leaves",
+      "amount": "2"
+    },
+    {
+      "item": "handful of fresh basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "smoked chicken, sliced",
+      "amount": "1lb (450g)"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) mango juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the salsa) ripe fresh papaya",
+      "amount": "1"
+    },
+    {
+      "item": "(For the salsa) fresh red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the salsa) juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "(For the salsa) pinch of sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Whisk together the oil, vinegar, and mango juice in a small bowl. Season well with salt and black pepper, and set aside.",
+    "Now make the salsa. Halve the papaya, and remove the seeds. Peel, then chop the flesh. In a bowl, toss together the papaya with the chile, lime juice, and sugar. Season to taste with the salt and black pepper.",
+    "In a large bowl, toss the spinach and basil with the dressing, then divide between 4 individual plates. Arrange the smoked chicken on top. Serve with the salsa spooned on top or on the side."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

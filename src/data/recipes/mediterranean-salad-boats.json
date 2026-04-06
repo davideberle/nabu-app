@@ -1,0 +1,69 @@
+{
+  "id": "mediterranean-salad-boats",
+  "name": "Mediterranean salad boats",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "The flavors of the Mediterranean come together in this quick and easy salad that is as colorful as it is satisfying. Its unusual presentation, inside romaine-leaf “boats,” also makes it a fun veggie-packed dish to serve to children.",
+  "ingredients": [
+    {
+      "item": "large tomato, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red bell pepper, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "Kalamata olives, pitted and halved",
+      "amount": "2¼oz (70g)"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "prepared quinoa",
+      "amount": "1 cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "chopped oregano",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "romaine heart, leaves separated",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the tomatoes, cucumber, red pepper, olives, feta, and quinoa in a large bowl and toss to combine. Place the oil, lemon juice, garlic, and oregano in a separate bowl and whisk to combine.",
+    "Pour the oil mixture over the salad and toss to coat. Season to taste. Divide the salad between 4 individual plates. Top the romaine leaves with equal amounts of the mixture and serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

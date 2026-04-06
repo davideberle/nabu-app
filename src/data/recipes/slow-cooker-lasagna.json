@@ -1,0 +1,81 @@
+{
+  "id": "slow-cooker-lasagna",
+  "name": "Slow Cooker Lasagna",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 8",
+  "ingredients": [
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "crumbled Italian spicy sausage meat",
+      "amount": "½ lb."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tomato sauce – homemade is good, and jarred is fine",
+      "amount": "3 cups"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "8 oz"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "oven-ready lasagna noodles (not the regular kind)",
+      "amount": "12 oz."
+    },
+    {
+      "item": "¼ cups ricotta cheese",
+      "amount": "1"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "shredded mozzarella cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "additional cup shredded mozzarella cheese",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Brown the beef, sausage, onion, garlic, and mushrooms in a large skillet for 5 minutes.",
+    "Drain any fat.",
+    "Stir in the sauce, water, tomato paste, Italian seasoning, and combine well.",
+    "Simmer for 5 minutes.",
+    "Combine the ricotta, parmesan, and 2 cups of mozzarella cheese in a bowl.",
+    "Create layers (2 to 3) of meat, sauce, double layer of noodles (break them in half), and cheese mixture.",
+    "Top with 1 cup of shredded mozzarella cheese.",
+    "Cook for 4 hours on low."
+  ],
+  "image": "/recipes/slow-cooker-lasagna.jpg",
+  "time": {
+    "total": 10
+  }
+}

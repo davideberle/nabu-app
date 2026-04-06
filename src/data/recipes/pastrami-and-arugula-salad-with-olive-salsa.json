@@ -1,0 +1,53 @@
+{
+  "id": "pastrami-and-arugula-salad-with-olive-salsa",
+  "name": "Pastrami and arugula salad with olive salsa",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 2",
+  "intro": "This is a sophisticated, minimalist salad, designed to accentuate the unmistakable flavor of pastrami with a salsa bursting with Italian flavors. Add a little spinach and a few tomatoes for a heartier meal.",
+  "ingredients": [
+    {
+      "item": "handful of fresh arugula",
+      "amount": ""
+    },
+    {
+      "item": "thinly sliced pastrami or other cooked sliced beef",
+      "amount": "6oz (175g)"
+    },
+    {
+      "item": "(For the dressing) green olives, pitted and sliced",
+      "amount": "8–10"
+    },
+    {
+      "item": "(For the dressing) handful of plump dark raisins",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) capers, rinsed and gently squeezed dry",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(For the dressing) drizzle of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) small handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the salsa. In a bowl, mix together the olives, raisins, capers, oil, and parsley. Taste, and season with a pinch of salt and some black pepper.",
+    "Arrange the arugula and pastrami or other sliced beef in a shallow serving bowl. Spoon over the salsa, and serve at room temperature."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "chicken-with-adzuki-beans-and-parsley",
+  "name": "Chicken with adzuki beans and parsley",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "Adzuki beans originally come from East Asia, where they are often sweetened and used in desserts. This simple recipe offers a sugar-free way to enjoy these pulses, pairing them with chicken and a simple vinaigrette dressing.",
+  "ingredients": [
+    {
+      "item": "large red onion, finely diced",
+      "amount": "½"
+    },
+    {
+      "item": "can adzuki beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "whole-grain mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "cooked skinless chicken breasts or thighs, shredded",
+      "amount": "12oz (350g)"
+    }
+  ],
+  "method": [
+    "Mix together the onion (reserving a little to garnish the salad), beans, and mustard in a bowl. Add a splash of vinegar and a drizzle of olive oil, and season with salt and black pepper. Stir in the parsley.",
+    "Spoon the bean mixture into a shallow serving bowl, then top with the shredded chicken. Sprinkle over the remaining red onion, and serve with some fresh crusty bread and arugula."
+  ],
+  "image": "/recipes/chicken-with-adzuki-beans-and-parsley.jpg",
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "chile-crab-and-avocado-salad",
+  "name": "Chile crab and avocado salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Fresh white crabmeat is a treat: here, it is pepped up with chiles and herbs and served with dressed salad leaves. Your fishmonger can shell the crab for you, but it will always be freshest if you prepare it yourself.",
+  "ingredients": [
+    {
+      "item": "fresh white crabmeat",
+      "amount": "10oz (300g)"
+    },
+    {
+      "item": "ripe avocados, peeled, pitted, and diced",
+      "amount": "2"
+    },
+    {
+      "item": "chives, finely chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dill, finely chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "parsley, finely chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red chile, seeded and finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "mixed salad leaves",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "lemon wedges, to serve",
+      "amount": "4"
+    },
+    {
+      "item": "(For the dressing) olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) capers, finely chopped",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(For the dressing) mayonnaise",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Put the crabmeat and avocados in a medium bowl along with the herbs and the chile, stir well, and season with salt and black pepper.",
+    "In a separate bowl, whisk together all the dressing ingredients. Taste the dressing and season, if necessary.",
+    "Lay the salad leaves on a serving plate or 4 individual plates and top with the crabmeat mixture. Drizzle with the dressing and serve with the lemon wedges."
+  ],
+  "image": null,
+  "time": {
+    "total": 35
+  }
+}

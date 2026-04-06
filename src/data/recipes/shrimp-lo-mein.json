@@ -1,0 +1,76 @@
+{
+  "id": "shrimp-lo-mein",
+  "name": "Shrimp Lo Mein",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "8 oz."
+    },
+    {
+      "item": "soy sauce",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "oyster sauce",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "honey",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "inch nob of grated ginger",
+      "amount": "½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "sliced small onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped water chestnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sliced cremini mushrooms",
+      "amount": "½ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "peeled and deveined fresh shrimp",
+      "amount": "1 lb."
+    },
+    {
+      "item": "beaten eggs",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Cook the spaghetti in a pot of salted water for 10 minutes. Drain the water.",
+    "Combine the soy sauce, oyster sauce, honey, and ginger in a bowl.",
+    "Heat the olive oil in a large skillet.",
+    "Sauté the bell pepper, onion, water chestnuts, mushrooms for 5 minutes.",
+    "Stir in the garlic and shrimp and stir for 2 more minutes.",
+    "Move the ingredients to one side of the skillet and scramble the eggs on the other side for 5 minutes.",
+    "Add the spaghetti and sauce and combine all ingredients for 2 minutes."
+  ],
+  "image": "/recipes/shrimp-lo-mein.jpg",
+  "time": {
+    "total": 24
+  }
+}

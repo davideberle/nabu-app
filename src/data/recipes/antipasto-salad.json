@@ -1,0 +1,87 @@
+{
+  "id": "antipasto-salad",
+  "name": "Antipasto salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "Combining lettuce varieties with spicy leaves really lifts this classic salad, but it is the inclusion of prosciutto that really makes it something special. Flavorful and delicate, you only need to add a few slices into the mix.",
+  "ingredients": [
+    {
+      "item": "green beans",
+      "amount": "3½ cups"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "choppedparsley",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lemon thyme leaves",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "chopped fennel",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mixed lettuce and spicy salad leaves",
+      "amount": "4½oz (125g)"
+    },
+    {
+      "item": "jar artichoke hearts",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "prosciutto",
+      "amount": "4 slices"
+    },
+    {
+      "item": "black olives, pitted and chopped",
+      "amount": "16"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "4½oz (125g)"
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "chopped chervil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) garlic clove, crushed",
+      "amount": "½"
+    },
+    {
+      "item": "(For the dressing) balsamic vinegar",
+      "amount": "1½ tbsp"
+    }
+  ],
+  "method": [
+    "Bring a pot of lightly salted water to a boil. Trim off the ends of the green beans and blanch in the boiling water for 5–7 minutes. Refresh in cold water and drain.",
+    "Place the beans in a wide, shallow salad bowl. Season lightly with salt and pepper and sprinkle in half the parsley, lemon thyme, and fennel. Drizzle with the olive oil, toss, and set aside.",
+    "Make the dressing by pouring the olive oil into a small bowl. Season with salt and pepper, and then whisk in the garlic and balsamic vinegar.",
+    "Scatter the salad leaves over the beans, followed by the drained and halved artichoke hearts, thinly shredded prosciutto, olives, halved tomatoes, and scallions. Whisk the dressing again and drizzle it over the salad. Toss, sprinkle over the chervil, and serve."
+  ],
+  "image": "/recipes/antipasto-salad.jpg",
+  "time": {
+    "total": 40
+  }
+}

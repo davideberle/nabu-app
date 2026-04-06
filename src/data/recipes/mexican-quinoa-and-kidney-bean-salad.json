@@ -1,0 +1,62 @@
+{
+  "id": "mexican-quinoa-and-kidney-bean-salad",
+  "name": "Mexican quinoa and kidney bean salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 2",
+  "intro": "This fun salad packs a real punch of flavor and texture. Great for kids and grown-ups alike, it makes an easily portable lunch—just take a bag of tortilla chips with you alongside the salad container.",
+  "ingredients": [
+    {
+      "item": "uncooked quinoa",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "can red kidney beans, drained",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "sweet corn",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "red bell pepper, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "pickled jalapeños, finely chopped",
+      "amount": "4–6 slices"
+    },
+    {
+      "item": "avocado, pitted and cut into cubes",
+      "amount": "1"
+    },
+    {
+      "item": "romaine lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "plain corn tortilla chips, crumbled, plus extra to serve",
+      "amount": "1¾ oz (50g)"
+    },
+    {
+      "item": "lime, halved, to serve",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Rinse the quinoa under running water, drain, and place in a lidded saucepan. Add 1 cup of water to cover and bring to a boil. Reduce the heat to a simmer, cover, and cook for 15–20 minutes or until almost all of the liquid has been absorbed and the quinoa is fluffy. Remove from the heat, drain any remaining water, and set aside to cool.",
+    "Mix together the quinoa, kidney beans, sweet corn, onion, bell pepper, and jalapeños in a large bowl. Then add the avocado and mix lightly to combine.",
+    "Roughly shred the lettuce and add to the bowl. Sprinkle the crumbled tortilla chips over the mixture and toss lightly. Transfer the salad to a serving plate. Serve with tortilla chips and lime halves to squeeze over the salad."
+  ],
+  "image": "/recipes/mexican-quinoa-and-kidney-bean-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

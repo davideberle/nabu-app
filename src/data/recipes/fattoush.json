@@ -1,0 +1,73 @@
+{
+  "id": "fattoush",
+  "name": "Fattoush",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "The lemony taste of sumac is hard to beat. The spice is an essential component of this traditional Middle Eastern dish, along with sweet pomegranate syrup and crisp toasted flatbread.",
+  "ingredients": [
+    {
+      "item": "handful of fresh lettuce leaves",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, skinned and sliced",
+      "amount": "2–3"
+    },
+    {
+      "item": "red or green bell pepper, seeded and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "scallions, trimmed and sliced",
+      "amount": "4–5"
+    },
+    {
+      "item": "small bunch of flat-leaf parsley, coarsely chopped",
+      "amount": ""
+    },
+    {
+      "item": "thin flatbreads, such as pita breads",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "1–2"
+    },
+    {
+      "item": "cumin seeds, crushed",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pomegranate syrup",
+      "amount": "1–2 tbsp"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Arrange the lettuce leaves, tomatoes, peppers, and scallions in a wide, shallow bowl and sprinkle over the parsley. Lightly toast the flatbreads, break them into bite-sized pieces, and scatter them over the salad.",
+    "In a small bowl, combine the oil and lemon juice with the garlic and cumin seeds. Season well and pour over the salad. Drizzle the salad with the pomegranate syrup and sprinkle over the sumac. Toss the salad gently just before serving."
+  ],
+  "image": "/recipes/fattoush.jpg",
+  "time": {
+    "total": 45
+  }
+}

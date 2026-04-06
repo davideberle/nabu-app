@@ -1,0 +1,66 @@
+{
+  "id": "tortellini-pesto-salad",
+  "name": "Tortellini Pesto Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "ingredients": [
+    {
+      "item": "cheese tortellini",
+      "amount": "9 oz."
+    },
+    {
+      "item": "chopped marinated artichoke hearts",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chopped roasted red pepper",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sliced kalamata olives",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "halved cherry tomatoes",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "prepared basil pesto",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "white vinegar",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Cook the tortellini in a pot of boiling salted water for 5 minutes.",
+    "Drain and set aside to cool.",
+    "Combine the tortellini, marinated artichoke hearts, roasted red pepper, kalamata olives, halved cherry tomatoes, and garlic in a large bowl.",
+    "In another bowl, combine the mayonnaise, pesto, parmesan cheese, olive oil, and vinegar.",
+    "Top the tortellini salad with the dressing and toss to coat.",
+    "Refrigerate for 1 hour."
+  ],
+  "image": "/recipes/tortellini-pesto-salad.jpg",
+  "time": {
+    "total": 5
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "goat-cheese-and-beans-with-chive-dressing",
+  "name": "Goat cheese and beans with chive dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Different types of goat cheese, or chèvre, have different textures, ranging from soft to firm. Semihard varieties are best for salads—not so soft that they cannot retain their shape, but still crumbly enough to scatter through the dish.",
+  "ingredients": [
+    {
+      "item": "can lima beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "can flageolet or navy beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pea shoots",
+      "amount": "1¾oz (50g)"
+    },
+    {
+      "item": "lemon juice, to taste",
+      "amount": ""
+    },
+    {
+      "item": "semihard goat cheese, broken up into pieces",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "extra-virgin olive oil, to drizzle",
+      "amount": ""
+    },
+    {
+      "item": "serrano ham, to serve (optional)",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) scant 1oz (25g) bunch of chives, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) fresh thyme",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of red pepper flakes",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing: combine the chives, vinegar, olive oil, thyme, and red pepper flakes in a large bowl and stir to combine. Add the lima and flageolet beans, season well with salt and pepper, and toss to coat.",
+    "Stir in the pea shoots, taste, and add a bit of lemon juice. Transfer to a shallow serving dish and top with the goat cheese, a drizzle of olive oil, and a bit of freshly ground black pepper. Serve with a little serrano ham on the side, if you wish."
+  ],
+  "image": "/recipes/goat-cheese-and-beans-with-chive-dressing.jpg",
+  "time": {
+    "total": 40
+  }
+}

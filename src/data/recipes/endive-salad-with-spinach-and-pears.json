@@ -1,0 +1,57 @@
+{
+  "id": "endive-salad-with-spinach-and-pears",
+  "name": "Endive salad with spinach and pears",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "The slight bitterness of the endive in this salad works well with the sweetness of the pears and the strong mustard dressing.",
+  "ingredients": [
+    {
+      "item": "baby spinach leaves",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "curly endive, core removed and leaves separated",
+      "amount": "2 heads"
+    },
+    {
+      "item": "firm, ripe pears, peeled and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "shallots, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "(For the dressing) honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) red wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the vinaigrette, place the honey, mustard, oil, and vinegar in a screw-top jar and shake well. Season to taste with salt and pepper. Alternatively, whisk the ingredients together in a bowl.",
+    "Place the spinach, endive, sliced pears, and shallots in a salad bowl. Drizzle with the vinaigrette, gently toss to coat, and serve."
+  ],
+  "image": "/recipes/endive-salad-with-spinach-and-pears.jpg",
+  "time": {
+    "total": 40
+  }
+}

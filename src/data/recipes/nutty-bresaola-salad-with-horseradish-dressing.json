@@ -1,0 +1,58 @@
+{
+  "id": "nutty-bresaola-salad-with-horseradish-dressing",
+  "name": "Nutty bresaola salad with horseradish dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "The sharpness of watercress is delicious with bresaola, a lean, air-dried salted beef from northern Italy. The citrus notes in the horseradish dressing beautifully round off this simple salad.",
+  "ingredients": [
+    {
+      "item": "of really fresh watercress, stalks trimmed",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "bresaola or prosciutto",
+      "amount": "8 slices"
+    },
+    {
+      "item": "fennel bulb, trimmed and finely shredded",
+      "amount": "1"
+    },
+    {
+      "item": "walnuts, roughly chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) juice of 1 orange",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) horseradish sauce (hot or cream)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Put all the ingredients in a small bowl and whisk until combined. Season well with salt and black pepper and set aside.",
+    "Scatter the watercress in a large, shallow serving bowl and top with the bresaola.",
+    "Add the fennel, toss to combine, and sprinkle over the walnuts. When ready to serve, drizzle with some of the dressing—you may not need it all."
+  ],
+  "image": "/recipes/nutty-bresaola-salad-with-horseradish-dressing.jpg",
+  "time": {
+    "total": 37
+  }
+}

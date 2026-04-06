@@ -1,0 +1,67 @@
+{
+  "id": "shiitake-mushrooms-with-wilted-spinach",
+  "name": "Shiitake mushrooms with wilted spinach",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 3",
+  "intro": "Baby spinach is quickly wilted in a flavorful dressing of shiitake mushrooms accented with walnuts, Dijon mustard, and tangy apple cider vinegar. Add some cooked quinoa for a hearty dinner.",
+  "ingredients": [
+    {
+      "item": "sesame oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pkg. shiitake mushrooms, stems removed and thinly sliced",
+      "amount": "1 × 4oz (115g)"
+    },
+    {
+      "item": "walnuts, finely chopped",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garlic, finely chopped",
+      "amount": "1 clove"
+    },
+    {
+      "item": "small red onion, halved and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "whole-grain Dijon mustard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baby spinach, washed and drained",
+      "amount": "12oz (360g)"
+    },
+    {
+      "item": "cooked quinoa, to serve (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the sesame oil in a medium frying pan over a medium-high heat. Add the shiitake mushrooms and stir for 2 minutes.",
+    "Add the walnuts and garlic to the pan, and stir for 2 minutes. Adjust the heat as needed.",
+    "Add the onion, salt, mustard, and apple cider vinegar, and bring to a boil. Remove from the heat.",
+    "Slowly stir in the extra-virgin olive oil. Add the baby spinach, toss with hot mushroom mixture until wilted, and season with black pepper. Serve with quinoa, if you wish."
+  ],
+  "image": null,
+  "time": {
+    "total": 15
+  }
+}

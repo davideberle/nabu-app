@@ -1,0 +1,54 @@
+{
+  "id": "chile-shrimp-with-cilantro-and-lime",
+  "name": "Chile shrimp with cilantro and lime",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "This dish may look delicate, but the cilantro and chiles pack a real punch. Serve it as it is for a quick starter or side, or toss with some extra salad leaves or diced bell peppers for something a little more substantial.",
+  "ingredients": [
+    {
+      "item": "cooked shrimp, peeled and deveined, tails left on",
+      "amount": "16"
+    },
+    {
+      "item": "handful of fresh cilantro, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "fresh red chiles, seeded and finely chopped",
+      "amount": "1–2"
+    },
+    {
+      "item": "can lima beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "of arugula",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "splash of hot-sweet chili sauce, such as sriracha",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the shrimp in a large bowl. Mix in half of the cilantro and the fresh chiles. Add in the lima beans, and toss to mix again.",
+    "Arrange the arugula in a large serving bowl or on 4 individual plates. Sprinkle over some of the lime juice, and season with pinch of salt and some black pepper. Stir the remaining lime juice into the shrimp mixture, then taste and adjust the seasoning as needed.",
+    "Spoon the shrimp mixture over the arugula, drizzle with the hot-sweet chili sauce, and sprinkle over the remaining cilantro. Serve immediately."
+  ],
+  "image": "/recipes/chile-shrimp-with-cilantro-and-lime.jpg",
+  "time": {
+    "total": 45
+  }
+}

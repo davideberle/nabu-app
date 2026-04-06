@@ -1,0 +1,74 @@
+{
+  "id": "couscous-with-pine-nuts-and-almonds",
+  "name": "Couscous with pine nuts and almonds",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This dish makes tasty alternative to rice, and is a low-fat source of protein. It can be enjoyed hot or cold, making it the perfect candidate for both evening meals and speedy leftover lunches.",
+  "ingredients": [
+    {
+      "item": "couscous",
+      "amount": "1 cup"
+    },
+    {
+      "item": "hot vegetable stock, to cover",
+      "amount": ""
+    },
+    {
+      "item": "red bell pepper, seeded and chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, seeded and diced",
+      "amount": "½"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "dried apricots, chopped",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "12"
+    },
+    {
+      "item": "blanched almonds, lightly toasted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pine nuts, lightly toasted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "light olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "chopped mint leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the couscous in a bowl and pour over enough hot vegetable stock to cover. Seal with plastic wrap and let sit for 5 minutes, or until the couscous has absorbed all the water, then fluff up the grains lightly with a fork.",
+    "Stir in the bell pepper, cucumber, raisins, apricots, olives, almonds, and pine nuts.",
+    "Whisk together the olive oil, lemon juice, and mint. Season to taste with salt and pepper and stir into the couscous. Serve at once while warm, or allow to cool."
+  ],
+  "image": "/recipes/couscous-with-pine-nuts-and-almonds.jpg",
+  "time": {
+    "total": 45
+  }
+}

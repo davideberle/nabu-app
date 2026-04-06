@@ -1,0 +1,50 @@
+{
+  "id": "orange-salad-with-olives",
+  "name": "Orange salad with olives",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Refreshing orange salads are popular in the southern Mediterranean. They are often served alongside stews and grilled meat or fish, but can easily be enjoyed as a fruity, light lunch, if you prefer.",
+  "ingredients": [
+    {
+      "item": "small–medium red onion, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "ripe oranges",
+      "amount": "2"
+    },
+    {
+      "item": "green olives",
+      "amount": "8–10"
+    },
+    {
+      "item": "juice and finely grated zest of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "handful of flat-leaf parsley, chopped, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the onion in a bowl of cold water. Using a sharp knife, remove the peel and pith from the oranges, and slice thinly.",
+    "Place the oranges in a shallow serving dish. Drain the onion slices, place on a double layer of paper towels, and pat dry. Arrange the slices on the oranges. Scatter the olives on top.",
+    "In a small cup, combine the lemon juice and zest and the olive oil. Season to taste and drizzle over the salad. If you like, scatter with the chopped parsley. Let stand for 5 minutes before serving."
+  ],
+  "image": "/recipes/orange-salad-with-olives.jpg",
+  "time": {
+    "total": 45
+  }
+}

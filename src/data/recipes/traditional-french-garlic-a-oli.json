@@ -1,0 +1,38 @@
+{
+  "id": "traditional-french-garlic-a-oli",
+  "name": "Traditional French garlic aïoli",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 10",
+  "intro": "Typically served alongside raw or lightly steamed baby vegetables and hard-boiled eggs, this rich sauce will make a wonderful addition to any French dish, such as the Bistro salad with frisée lettuce.",
+  "ingredients": [
+    {
+      "item": "large garlic cloves, smashed and peeled",
+      "amount": "2"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "large egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "light olive oil",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Using a mortar and pestle, pound the garlic with a small pinch of salt. Add the egg yolk and season with pepper. Beat for 1 minute, then let rest for 5 minutes.",
+    "Beat in the oil, a few drops at a time, to make the mayonnaise. Once the sauce has emulsified, pour in the olive oil in a thin trickle, beating continually with the pestle in the same direction. The sauce is ready once it has a very thick texture and the pestle almost stands up by itself in the bowl.",
+    "Cover and refrigerate for up to 24 hours, until ready to use."
+  ],
+  "image": null,
+  "time": {
+    "total": 50
+  }
+}

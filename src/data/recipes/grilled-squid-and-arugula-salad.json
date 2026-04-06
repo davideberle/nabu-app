@@ -1,0 +1,59 @@
+{
+  "id": "grilled-squid-and-arugula-salad",
+  "name": "Grilled squid and arugula salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "It is best to barbecue this chile squid to guarantee maximum flavor, but using a grill pan works well, too. If you don’t want to clean the squid yourself, ask your fishmonger to prepare it for you—although this may cost extra.",
+  "ingredients": [
+    {
+      "item": "5oz (600g) whole squid (choose small young squid, rather than one large one)",
+      "amount": "1lb"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "small fresh red chiles, seeded and finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "lemons",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "arugula",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "large handful of fresh flat-leaf parsley, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Clean the squid by grabbing the head and tentacles together in one hand, and pulling them out of the body. Cut the head from the tentacles and discard, making sure that the tentacles remain attached as one. Cut or pull out the small beak from inside the tentacles. Pull out and discard the strip of transparent cartilage from inside the body, and rinse the body (the thin outer skin should peel away) and tentacles thoroughly. Pat dry with paper towels.",
+    "Put the tentacles and bodies (tubes and wings attached) in a large bowl with the olive oil, chiles, and garlic, along with the grated zest and juice of 1 lemon. Season with salt and black pepper.",
+    "Heat the grill of a barbecue or charcoal grill until hot. Grill the squid bodies and tentacles over high heat for 1–2 minutes, turning halfway through cooking, until lightly charred on all sides. Transfer to a cutting board. Cut the tentacle clusters in half crosswise and put in a serving bowl. Slice the tubes into 1⁄8in (3mm) rings, slicing through the wings as you go, and place in the bowl with the tentacles.",
+    "Slice the remaining lemon in half. Put the arugula, parsley, olive oil, and juice of 1 lemon half in the bowl and toss gently with the squid. Serve with lemon wedges cut from the remaining lemon half."
+  ],
+  "image": null,
+  "time": {
+    "total": 17
+  }
+}

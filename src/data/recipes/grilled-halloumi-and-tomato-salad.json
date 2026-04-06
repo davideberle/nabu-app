@@ -1,0 +1,58 @@
+{
+  "id": "grilled-halloumi-and-tomato-salad",
+  "name": "Grilled halloumi and tomato salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Simple and satisfying, this light salad makes halloumi cheese the star. If you find halloumi a little salty, you can soak it in buttermilk before grilling.",
+  "ingredients": [
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "reduced-fat halloumi cheese, cut into ¼ in (5mm) thick slices",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "small handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "small handful of basil, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "baby spinach leaves",
+      "amount": "9oz (250g)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350ºF (180ºC). Place the tomatoes in a roasting pan, drizzle with 1 tablespoon of the oil, and season with salt and pepper. Toss to coat, then, with the tomatoes sitting skin side down, roast in the oven for 15 minutes.",
+    "While the tomatoes are cooking, put the halloumi, garlic, parsley, paprika, and the remaining oil into a bowl and combine well. Heat a griddle pan until hot, then, after letting it drain first, carefully add a slice of halloumi to the pan. Repeat, adding the halloumi slices one by one until they are all in the griddle pan. When you have added the last one, go back to the first one and begin turning them over to cook on the other side. They should be golden brown. When you have turned them all, go back to the first one and begin removing them from the griddle pan.",
+    "Put the halloumi slices back into the bowl with the garlic, herb, and spice mix and stir gently. Add the cooked tomatoes to the mix along with the basil and stir to combine. Add the spinach leaves, toss together, and serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 20
+  }
+}

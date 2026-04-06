@@ -1,0 +1,66 @@
+{
+  "id": "smoked-fish-fennel-and-mango-salad",
+  "name": "Smoked fish, fennel, and mango salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Fruit and fish might not immediately seem like the most obvious culinary combination, but it really does work. In this recipe, mango and pomegranate pair perfectly with the mix of mackerel and trout, creating a light, refreshing meal.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "smoked mackerel",
+      "amount": "10oz (300g)"
+    },
+    {
+      "item": "smoked trout",
+      "amount": "5½ oz (150g)"
+    },
+    {
+      "item": "fennel bulb, trimmed and peeled into thin strips",
+      "amount": "1"
+    },
+    {
+      "item": "mango, pitted, peeled, and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "seeds of 1 pomegranate",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic cloves, grated or finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) handful of fresh dill, finely chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Put all the ingredients in a small bowl, and whisk together until well blended. Season with salt and black pepper.",
+    "Flake the mackerel into bite-sized chunks, and slice the trout into chunky strips. Arrange the fish on a plate, add the fennel and mango slices, and sprinkle over the pomegranate seeds.",
+    "When ready to serve, drizzle with the dressing, and serve with slices of fresh whole-wheat or other dark bread."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

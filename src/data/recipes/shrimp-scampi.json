@@ -1,0 +1,69 @@
+{
+  "id": "shrimp-scampi",
+  "name": "Shrimp Scampi",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "peeled and deveined large shrimp",
+      "amount": "1 lb."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "Old Bay seasoning",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "angel hair pasta",
+      "amount": "8 oz."
+    },
+    {
+      "item": "butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "5"
+    },
+    {
+      "item": "white wine",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "half-and-half",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tsp."
+    }
+  ],
+  "method": [
+    "Place the shrimp in a bowl and toss with the garlic powder and Old Bay seasoning. Let sit for 10 minutes.",
+    "Cook the angel hair pasta in a pot of salted water for 5 minutes. It should be al dente. Drain the water.",
+    "Melt the butter in a skillet.",
+    "Add the garlic and sauté for 1 minute",
+    "Stir in the shrimp and sauté for 2 minutes each side – not any longer.",
+    "Add the butter, wine, lemon juice, and half and half and stir for 2 minutes.",
+    "Place the angel hair pasta in a bowl and top with the shrimp and sauce.",
+    "Drizzle with the red pepper flakes and chopped parsley before serving."
+  ],
+  "image": "/recipes/shrimp-scampi.jpg",
+  "time": {
+    "total": 12
+  }
+}

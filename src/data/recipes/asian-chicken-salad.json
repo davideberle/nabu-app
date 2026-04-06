@@ -1,0 +1,74 @@
+{
+  "id": "asian-chicken-salad",
+  "name": "Asian Chicken Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "brown sugar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "soy sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sesame oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "head chopped napa lettuce",
+      "amount": "1"
+    },
+    {
+      "item": "½ cups shredded chicken meat",
+      "amount": "1"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "4"
+    },
+    {
+      "item": "peeled and grated carrot",
+      "amount": "1"
+    },
+    {
+      "item": "sugar snap peas",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mandarin orange slices",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "toasted sesame seeds",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "canned fried noodles",
+      "amount": "8 oz."
+    }
+  ],
+  "method": [
+    "Combine the brown sugar, soy sauce, sesame oil, and rice vinegar and pour in a container.",
+    "Let sit for 30 minutes",
+    "Combine the napa lettuce, chicken, scallions, carrot, snap peas, and orange slices in a large bowl.",
+    "Toss with the salad dressing.",
+    "Top with the sesame seeds, slivered almonds, and canned fried noodles."
+  ],
+  "image": "/recipes/asian-chicken-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

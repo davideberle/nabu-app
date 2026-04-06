@@ -1,0 +1,57 @@
+{
+  "id": "macaroni-seafood-salad",
+  "name": "Macaroni Seafood Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "farfalle pasta",
+      "amount": "16 oz."
+    },
+    {
+      "item": "chopped hard-boiled eggs",
+      "amount": "3"
+    },
+    {
+      "item": "chopped celery sticks",
+      "amount": "2"
+    },
+    {
+      "item": "oz, cooked small shrimp",
+      "amount": "6"
+    },
+    {
+      "item": "real crab meat",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 cup"
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp."
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of salted boiling water for 10 minutes. Drain.",
+    "Transfer the pasta to a large bowl and stir in the remaining salad ingredients.",
+    "Combine the dressing ingredients and toss with the salad.",
+    "Cover and refrigerate for 1 hour."
+  ],
+  "image": "/recipes/macaroni-seafood-salad.jpg",
+  "time": {
+    "total": 10
+  }
+}

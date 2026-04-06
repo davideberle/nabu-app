@@ -1,0 +1,65 @@
+{
+  "id": "roasted-beet-and-orange-salad",
+  "name": "Roasted beet and orange salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Sweet beets combine with bright orange segments and toasted walnuts for a delicious and sophisticated salad that is packed with superfoods.",
+  "ingredients": [
+    {
+      "item": "large beets",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "walnut halves",
+      "amount": "1 cup"
+    },
+    {
+      "item": "seedless navel oranges",
+      "amount": "2"
+    },
+    {
+      "item": "shallot, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "baby salad leaves or torn lettuce",
+      "amount": "7oz (200g)"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (200°C). Scrub the beets but do not peel. Place in a baking dish, drizzle with the olive oil, and roast for 30–40 minutes or until easily pierced with a fork. Remove from the oven and set aside.",
+    "Reduce the oven temperature to 350°F (180°C). Spread the walnuts in a single layer on a baking sheet, and toast for 7 minutes or until golden, turning the nuts once. Allow to cool slightly, and chop coarsely.",
+    "Zest one orange and set aside. On a chopping board, carefully segment both oranges, stopping occasionally to pour juice from the board into a bowl. Set aside the orange segments.",
+    "In the bowl with the reserved orange juice, whisk together the orange zest, shallot, lemon juice, Dijon mustard, salt, and black pepper. Slowly drizzle in the remaining olive oil, whisking constantly.",
+    "Peel the beets, cut into 1⁄2 in (1cm) wedges, and toss with the orange segments and half of the vinaigrette.",
+    "Arrange the lettuce on 4 individual plates, drizzle with the remaining dressing, and divide the beet mixture evenly over the leaves. Sprinkle each salad with one-quarter of the walnuts, and serve immediately."
+  ],
+  "image": "/recipes/roasted-beet-and-orange-salad.jpg",
+  "time": {
+    "total": 40
+  }
+}

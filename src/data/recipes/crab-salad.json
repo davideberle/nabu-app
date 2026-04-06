@@ -1,0 +1,60 @@
+{
+  "id": "crab-salad",
+  "name": "Crab Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "elbow macaroni",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sour cream",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "flaked crab meat",
+      "amount": "12 oz."
+    },
+    {
+      "item": "chopped celery stalks",
+      "amount": "3"
+    },
+    {
+      "item": "thawed frozen pea",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Old Bay seasoning",
+      "amount": "¾ tsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "paprika - optional",
+      "amount": "½ tsp."
+    }
+  ],
+  "method": [
+    "Cook the macaroni in a pot of salted water for 10 minutes and drain. Let cool.",
+    "Combine the remaining ingredients and stir in the macaroni.",
+    "Top with paprika, if using."
+  ],
+  "image": "/recipes/crab-salad.jpg",
+  "time": {
+    "total": 10
+  }
+}

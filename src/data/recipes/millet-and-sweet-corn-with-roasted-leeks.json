@@ -1,0 +1,79 @@
+{
+  "id": "millet-and-sweet-corn-with-roasted-leeks",
+  "name": "Millet and sweet corn with roasted leeks",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 6",
+  "intro": "Packed with plenty of peppers and chiles, this fiery millet salad mix is certainly memorable­—not least of which is its presentation on a bed of leeks.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "uncooked millet",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small red onion, diced",
+      "amount": "1"
+    },
+    {
+      "item": "red bell peppers, seeded and diced",
+      "amount": "2"
+    },
+    {
+      "item": "fresh sweet corn kernels",
+      "amount": "3 cups"
+    },
+    {
+      "item": "jalapeño, diced",
+      "amount": "1"
+    },
+    {
+      "item": "large poblano chiles, roasted and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "smoked paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "plain yogurt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "leeks, trimmed, cleaned, and halved lengthwise",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Heat 1 tablespoon of the oil in a large, lidded saucepan over medium heat. Add the millet and cook for 2–3 minutes, stirring frequently. Add 2 cups of water, season, and bring to a boil. Reduce the heat, cover, and simmer for 15 minutes. Remove from the heat and set aside, covered, for 10 minutes, then fluff up the grains with a fork. Allow to cool.",
+    "Meanwhile, heat 1 tablespoon of the oil in a frying pan over medium heat. Fry the onion and bell peppers, season, and cook for 5 minutes. Add the sweet corn, jalapeño, chiles, and spices. Cook for 5–10 minutes, stirring occasionally.",
+    "Reduce the heat and add the scallions and yogurt. Cook for about 2 minutes, stirring, until the yogurt has melted. Add the lime juice and season. Transfer the mixture to a large bowl, add the millet, and stir to combine. Set aside.",
+    "Set the broiler to medium. Coat the leeks in the remaining oil and season well. Broil the leeks for 20 minutes, turning frequently. Transfer to a plate, cover with foil, and let sit for 5 minutes to steam. Place on 6 individual plates, spoon over the millet mix, and serve."
+  ],
+  "image": "/recipes/millet-and-sweet-corn-with-roasted-leeks.jpg",
+  "time": {
+    "total": 55
+  }
+}

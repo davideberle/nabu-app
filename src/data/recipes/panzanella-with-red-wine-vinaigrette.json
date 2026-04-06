@@ -1,0 +1,66 @@
+{
+  "id": "panzanella-with-red-wine-vinaigrette",
+  "name": "Panzanella with red wine vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Good-quality bread is a joy, and even when it is a bit stale, it can be used in this delectable Italian salad. The vinaigrette moistens and refreshes the bread, making it the perfect partner for fresh, juicy tomatoes.",
+  "ingredients": [
+    {
+      "item": "unsliced stale dense-textured bread, such as ciabatta or sourdough, roughly torn into bite-sized pieces",
+      "amount": "12oz (350g)"
+    },
+    {
+      "item": "5oz (600g) mixed tomatoes, roughly chopped into bite-sized chunks",
+      "amount": "1lb"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "capers in brine, drained",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of basil, roughly torn",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) mustard powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) sugar",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Place the bread, tomatoes, onion, garlic, and capers in a large serving bowl. Season well and stir to combine.",
+    "Place the dressing ingredients in a small bowl, season, and stir well. Pour over the bread and tomato mixture and stir to coat.",
+    "Set aside for at least 10 minutes, or up to 2 hours, at room temperature, to allow the flavors to mingle. Stir the basil leaves into the salad just before serving."
+  ],
+  "image": "/recipes/panzanella-with-red-wine-vinaigrette.jpg",
+  "time": {
+    "total": 45
+  }
+}

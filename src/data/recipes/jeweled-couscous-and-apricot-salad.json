@@ -1,0 +1,63 @@
+{
+  "id": "jeweled-couscous-and-apricot-salad",
+  "name": "Jeweled couscous and apricot salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 6",
+  "intro": "This simple yet stunning Middle Eastern salad needs no cooking at all. Dotted with pomegranate seeds and chewy dried apricots, it makes a wonderful sharing dish for a dinner party.",
+  "ingredients": [
+    {
+      "item": "couscous",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "hot vegetable stock, to cover",
+      "amount": ""
+    },
+    {
+      "item": "pine nuts",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "dried apricots, finely chopped",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "large handful of cilantro, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of 1 large lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pomegranate seeds, to serve",
+      "amount": "2–3 tbsp"
+    }
+  ],
+  "method": [
+    "Put the couscous in a bowl and drizzle with olive oil. Pour over the hot vegetable stock and stir briefly, so that the liquid just covers the couscous. Cover the bowl with plastic wrap and set aside for 5 mintues.",
+    "Test the grains: they should be nearly soft, with all the water soaked in. Fork over the couscous and allow it to cool, fluffing it up occasionally to separate the grains.",
+    "Meanwhile, dry-fry the pine nuts in a nonstick frying pan over medium heat, stirring, until they are golden brown. Be careful, as they can burn quickly. Set aside to cool.",
+    "Toss together the cooled couscous, pine nuts, apricots, and cilantro. Mix in the olive oil and lemon juice, then season to taste. Scatter over the pomegranate seeds and serve."
+  ],
+  "image": "/recipes/jeweled-couscous-and-apricot-salad.jpg",
+  "time": {
+    "total": 42
+  }
+}

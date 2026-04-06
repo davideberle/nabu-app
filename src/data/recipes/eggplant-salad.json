@@ -1,0 +1,69 @@
+{
+  "id": "eggplant-salad",
+  "name": "Eggplant salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "By steaming eggplants instead of roasting or frying them in oil, they remain incredibly tender—and far healthier, too. For a Greek-style salad bowl, try replacing the goat cheese and sesame seeds with feta cheese and pine nuts.",
+  "ingredients": [
+    {
+      "item": "medium eggplants, peeled and cut into ¾ in (2cm) cubes",
+      "amount": "2"
+    },
+    {
+      "item": "soft goat cheese, crumbled",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ripe tomatoes, seeded and diced",
+      "amount": "2"
+    },
+    {
+      "item": "small red onion, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "walnuts, lightly toasted and chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "sesame seeds, lightly toasted",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) walnut oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) juice of 1 lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the eggplant in a covered steamer basket placed over simmering water for 10 minutes. Let cool slightly and then gently squeeze the cubes to remove as much water as possible.",
+    "Combine all the salad ingredients in a mixing bowl and toss gently. Whisk together the dressing ingredients and toss with the salad. Season to taste with salt and pepper."
+  ],
+  "image": "/recipes/eggplant-salad.jpg",
+  "time": {
+    "total": 25
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "bean-thread-noodle-salad",
+  "name": "Bean thread noodle salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This light, Asian-inspired meal is a vibrant and refreshing summer salad with crunchy raw vegetables. Finely slicing vegetables is a test of good knife work, but you could also use a mandoline or spiralizer to do the job for you.",
+  "ingredients": [
+    {
+      "item": "dried Chinese bean thread noodles or thin rice noodles",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "large carrot, shaved using a vegetable peeler",
+      "amount": "1"
+    },
+    {
+      "item": "× 4in (10cm) cucumber, halved lengthwise, seeded, and thinly sliced diagonally",
+      "amount": "1"
+    },
+    {
+      "item": "scallions, white parts only, thinly sliced diagonally",
+      "amount": "4"
+    },
+    {
+      "item": "mango, not too ripe, finely julienned",
+      "amount": "1"
+    },
+    {
+      "item": "handful of mint leaves, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of cilantro, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) white wine vinegar or rice wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) pinch of salt",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the noodles in a large bowl and cover with boiling water. Stir and separate the strands with a fork, then leave for 4 minutes, or according to the package instructions, until they are soft but still have a bite to them. Stir once or twice during cooking to keep the strands loose. Drain and refresh under cold water, then drain thoroughly.",
+    "Meanwhile, assemble the rest of the salad ingredients in a bowl, leaving out a few herbs to serve. Pat the noodles completely dry with paper towels, then add them to the bowl.",
+    "Whisk together the dressing ingredients and toss with the salad to coat. Serve, scattered with the reserved herbs."
+  ],
+  "image": "/recipes/bean-thread-noodle-salad.jpg",
+  "time": {
+    "total": 50
+  }
+}

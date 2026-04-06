@@ -1,0 +1,82 @@
+{
+  "id": "chickpea-red-rice-and-artichoke-salad",
+  "name": "Chickpea, red rice, and artichoke salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This recipe features Camargue red rice, a chewy grain with a deep maroon color and nutty flavor. As well as being a great meal in itself, the salad also makes a wonderful side for chicken dishes.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Camargue red rice or long-grain brown rice",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "jar roasted artichokes, drained",
+      "amount": "1 × 10oz (280g)"
+    },
+    {
+      "item": "red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful of cilantro, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) juice of 1 large orange",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) coriander seeds, lightly crushed",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "For the dressing, place all the ingredients in a small bowl and mix well. Taste and adjust the seasoning as required.",
+    "Place the rice in a large pot of salted water and cook according to the package instructions until tender. Drain well and transfer to a serving bowl.",
+    "While the rice is still warm, stir in the chickpeas, artichokes, chile, and herbs, and mix well. Pour the dressing over the rice mixture and toss to coat. Taste and adjust the seasoning. Top with the pine nuts and feta cheese and serve."
+  ],
+  "image": "/recipes/chickpea-red-rice-and-artichoke-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

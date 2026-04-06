@@ -1,0 +1,62 @@
+{
+  "id": "chili-crumbed-spinach-salad",
+  "name": "Chili-crumbed spinach salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This simple spinach and tomato salad is elevated to another dimension with the addition of toasted chili breadcrumbs and pine nuts. It is the perfect accompaniment for lamb, or simply add some cheese for a vegetarian lunch.",
+  "ingredients": [
+    {
+      "item": "of bread, torn",
+      "amount": "2–3 slices"
+    },
+    {
+      "item": "pinch of red chili pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "baby spinach leaves",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "handful of juicy raisins (optional)",
+      "amount": ""
+    },
+    {
+      "item": "sun-dried tomatoes, roughly chopped",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) orange juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the dressing ingredients together in a bowl, taste, and season as needed. Set aside. Preheat the oven to 400°F (200°C).",
+    "To make the breadcrumb topping, put the bread in a food processor and pulse to form crumbs. Pour the crumbs into a roasting pan and bake for 5–10 minutes or until golden. Don’t let them brown. Stir the red pepper flakes and salt and pepper into the crumbs. Set aside.",
+    "To assemble the salad, pour the dressing into a large salad bowl and swirl it around. Add the spinach leaves and shake to coat. Add the raisins (if using) and sun-dried tomatoes, and toss gently. Top with the pine nuts, sprinkle over breadcrumbs, and serve."
+  ],
+  "image": null,
+  "time": {
+    "total": 25
+  }
+}

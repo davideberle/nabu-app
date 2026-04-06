@@ -1,0 +1,53 @@
+{
+  "id": "goat-cheese-stacks-with-toasted-spelt",
+  "name": "Goat cheese stacks with toasted spelt",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "intro": "Stacked salads are a showstopping way to present a healthy meal. This recipe layers goat cheese and watermelon rounds with spelt, an ancient grain.",
+  "ingredients": [
+    {
+      "item": "uncooked spelt, soaked",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "beef tomatoes, about 1¼ lb (550g) in total, sliced into 8 rounds",
+      "amount": "2"
+    },
+    {
+      "item": "goat cheese, sliced into thin rounds",
+      "amount": "8oz (225g)"
+    },
+    {
+      "item": "3oz (1½ kg) watermelon, seeded and sliced into rounds",
+      "amount": "3lb"
+    },
+    {
+      "item": "handful of basil leaves",
+      "amount": ""
+    },
+    {
+      "item": "a good drizzle of extra-virgin olive oil",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the spelt in a large bowl, cover with water, and let soak overnight or for about 8 hours. Then drain, rinse under running water, and drain well again.",
+    "Place the spelt in a lidded saucepan. Cover with 3 cups of water, add a pinch of salt, and bring to a boil. Then reduce the heat to a simmer and cover. Cook for about 40 minutes, until all the water has been absorbed. Remove from the heat and drain the remaining water. Heat the olive oil in a large nonstick frying pan over medium heat. Add the spelt and cook for about 10 minutes, stirring frequently, until golden brown. Remove from the heat and allow to cool.",
+    "To assemble the stacks, place a slice of tomato on each of 4 individual plates and season with salt and pepper. Top each one with a slice of goat’s cheese, a slice of watermelon, and a few basil leaves. Repeat to get one more layer of each, then sprinkle over a few spoonfuls of the toasted spelt. Drizzle with the extra-virgin olive oil and season to taste. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 70
+  }
+}

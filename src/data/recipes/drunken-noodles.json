@@ -1,0 +1,97 @@
+{
+  "id": "drunken-noodles",
+  "name": "Drunken Noodles",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "rice vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "fish sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "Juice of half a lemon",
+      "amount": ""
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "sriracha sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped chicken meat",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "wide rice noodles – cooked according to package instructions",
+      "amount": "16 oz."
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "small, diced onion",
+      "amount": "1"
+    },
+    {
+      "item": "oyster sauce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "peeled and grated carrots",
+      "amount": "3"
+    },
+    {
+      "item": "diced tomato",
+      "amount": "1"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "baby corn",
+      "amount": "½"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Combine the rice vinegar, fish sauce, lemon juice, brown sugar, and sriracha sauce in a bowl.",
+    "Add the chicken and coat well.",
+    "Marinade the chicken for 1 hour.",
+    "Heat the canola oil in a skillet",
+    "Sauté the garlic and onion for 5 minutes.",
+    "Add the chicken with the marinade and stir well.",
+    "Simmer for 10 minutes.",
+    "Stir in the remaining ingredients and keep stirring for 5 minutes."
+  ],
+  "image": "/recipes/drunken-noodles.jpg",
+  "time": {
+    "total": 20
+  }
+}

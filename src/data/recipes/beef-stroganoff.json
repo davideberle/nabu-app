@@ -1,0 +1,73 @@
+{
+  "id": "beef-stroganoff",
+  "name": "Beef Stroganoff",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "½ lb. ground beef",
+      "amount": "1"
+    },
+    {
+      "item": "small onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "(10.5 oz.) can condensed cream of mushroom soup",
+      "amount": "1"
+    },
+    {
+      "item": "(10.5 oz.) can beef broth",
+      "amount": "1"
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "sherry",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "dry Ranch dressing mix",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "sour cream – taste it and add more if you want",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cooked egg noodles",
+      "amount": "8 oz."
+    }
+  ],
+  "method": [
+    "Prepare the egg noodles in boiling salted water for 5 minutes and set aside.",
+    "Brown the beef in a large skillet or pot for 5 minutes.",
+    "Stir in the onion, garlic and mushrooms and sauté for another 5 minutes.",
+    "Drain any fat.",
+    "Pour in the cream of mushroom soup, broth, Worcestershire sauce, sherry, dry Ranch dressing and season with salt and pepper.",
+    "Simmer for 20 minutes.",
+    "Stir in the sour cream and simmer for 5 more minutes.",
+    "Place the egg noodles on a platter and top with the beef stroganoff."
+  ],
+  "image": "/recipes/beef-stroganoff.jpg",
+  "time": {
+    "total": 40
+  }
+}

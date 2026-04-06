@@ -1,0 +1,76 @@
+{
+  "id": "creme-fraiche-chicken-pasta",
+  "name": "Creme Fraiche Chicken Pasta",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chicken fillets",
+      "amount": "6"
+    },
+    {
+      "item": "white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "bow tie pasta",
+      "amount": "8 oz."
+    },
+    {
+      "item": "chopped shallots",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "creme fraiche",
+      "amount": "2 cups"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "1/3 cup"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet.",
+    "Brown the chicken for 5 minutes.",
+    "Pour in the wine and broth and season with salt and pepper.",
+    "Simmer for 20 minutes.",
+    "While the chicken is simmering, cook the pasta in a pot of salted water for 10 minutes and drain. Set aside.",
+    "Use a tong to transfer the chicken to a platter and cube the chicken.",
+    "Add the onion, garlic, and mushrooms to the skillet and sauté for 5 minutes.",
+    "Return the cubed chicken to the skillet and stir in the crème fraiche.",
+    "Simmer for 5 minutes.",
+    "Place the pasta in a serving bowl and pour the sauce over the pasta.",
+    "Top with parmesan cheese and chopped parsley."
+  ],
+  "image": "/recipes/creme-fraiche-chicken-pasta.jpg",
+  "time": {
+    "total": 35
+  }
+}

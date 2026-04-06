@@ -1,0 +1,58 @@
+{
+  "id": "celery-and-green-apple-salad-with-blue-cheese-dressing",
+  "name": "Celery and green apple salad with blue cheese dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "In this salad, the strong tastes of celery and bitter leaves more than hold their own against the pungency of a blue cheese dressing, with the walnuts adding crunch and texture.",
+  "ingredients": [
+    {
+      "item": "chopped walnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "celery sticks, trimmed and sliced diagonally into ½ in (1cm) slices",
+      "amount": "4"
+    },
+    {
+      "item": "green apples, cored and cut into thin wedges",
+      "amount": "2"
+    },
+    {
+      "item": "large handfuls of watercress or arugula",
+      "amount": "4"
+    },
+    {
+      "item": "blue cheese, to serve",
+      "amount": "1¾oz (50g)"
+    },
+    {
+      "item": "(For the dressing) blue cheese, plus extra for serving",
+      "amount": "10½oz (300g)"
+    },
+    {
+      "item": "(For the dressing) apple cider vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) hazelnut or olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a frying pan or wok, dry-fry the walnuts for 2–3 minutes until they are golden and crispy, then set aside to cool.",
+    "To make the dressing, combine the blue cheese, vinegar, oil, and a good amount of black pepper in a food processor. Pulse the mixture until it is a smooth, creamy dressing that has a thick pouring consistency. Add up to 1 tbsp of cold water to thin the dressing a little, if it is too thick.",
+    "In a large bowl, mix the celery, apples, and watercress. Coat the salad with the dressing and check the seasoning. Top with the walnut pieces and blue cheese, crumbled or diced into bite-sized pieces."
+  ],
+  "image": "/recipes/celery-and-green-apple-salad-with-blue-cheese-dressing.jpg",
+  "time": {
+    "total": 12
+  }
+}

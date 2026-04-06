@@ -1,0 +1,62 @@
+{
+  "id": "salmon-salad-with-raspberry-dressing",
+  "name": "Salmon salad with raspberry dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Using a tangy, fruity dressing adds a bit of unexpected pizzazz to this dish and cuts through the rich salmon. Try it in a variety of salads as a substitute for more common vinaigrettes.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "salmon fillets, about 14oz (400g) total",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "few stalks of fresh thyme, leaves only",
+      "amount": ""
+    },
+    {
+      "item": "fava beans, fresh (out of their pods) or frozen",
+      "amount": "½ cup"
+    },
+    {
+      "item": "baby spinach leaves",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "roasted hazelnuts, roughly chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "reduced-fat feta cheese, crumbled",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For dressing) olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For dressing) raspberry vinegar",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350ºF (180ºC). Whisk the dressing ingredients together, season well with salt and pepper, then set aside to develop the flavors.",
+    "Arrange the salmon fillets in a roasting pan, drizzle with the olive oil, and scatter the thyme leaves over top. Season with salt and pepper and bake in the oven for 15 minutes until the fish is cooked and flakes easily. Remove from the oven and set aside to cool.",
+    "Cook the fava beans in a pot of boiling salted water for 8 minutes or until tender, then drain, refresh with cold water, and drain again. Arrange the spinach leaves on a plate, and top with the flaked fish and fava beans. Sprinkle over the hazelnuts and feta and drizzle with the dressing when ready to serve."
+  ],
+  "image": "/recipes/salmon-salad-with-raspberry-dressing.jpg",
+  "time": {
+    "total": 35
+  }
+}

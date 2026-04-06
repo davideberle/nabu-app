@@ -1,0 +1,59 @@
+{
+  "id": "spring-rice-salad-with-smoked-salmon",
+  "name": "Spring rice salad with smoked salmon",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "In this salad, the freshness of the asparagus works well with the rich flavor and buttery texture of the salmon. The flavors develop when left to chill in the refrigerator, making it perfect for an office lunch.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "lemon, cut in half",
+      "amount": "1"
+    },
+    {
+      "item": "long-grain rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "asparagus spears",
+      "amount": "2 cups"
+    },
+    {
+      "item": "celery stalks, peeled and diced",
+      "amount": "3"
+    },
+    {
+      "item": "smoked salmon, cut into strips",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "(For the dressing) tarragon vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(For the dressing) vegetable oil",
+      "amount": "¾ cup"
+    }
+  ],
+  "method": [
+    "First, make the dressing. Whisk together the vinegar and mustard in a small bowl, and season. Gradually whisk in the oil in a thin stream to thicken and emulsify the dressing.",
+    "Bring a large pot of salted water to a boil. Squeeze the juice from one lemon half into the water, then drop in the squeezed lemon half. Add the rice, stir, and bring back to a boil. Simmer for 10–12 minutes, stirring occasionally, until the rice is tender. Drain the rice through a sieve, and discard the lemon half. Rinse the rice with cold water and thoroughly drain again, to wash away the starch. Transfer to a large bowl.",
+    "Bring another pot of salted water to a boil. Add the asparagus and simmer for 5–7 minutes, until tender. Drain and cut the stalks into chunky pieces.",
+    "Whisk the vinaigrette again and pour it over the rice. Stir well and add the asparagus, celery, salmon, and remaining lemon juice. Toss together and season. Cover and chill for at least 1 hour. Serve at room temperature."
+  ],
+  "image": "/recipes/spring-rice-salad-with-smoked-salmon.jpg",
+  "time": {
+    "total": 35
+  }
+}

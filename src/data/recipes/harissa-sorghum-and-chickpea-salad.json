@@ -1,0 +1,62 @@
+{
+  "id": "harissa-sorghum-and-chickpea-salad",
+  "name": "Harissa, sorghum, and chickpea salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Harissa spices are combined with light and chewy sorghum grains in this Middle Eastern–style salad. If sorghum is unavailable in your local supermarket, try using millet or buckwheat instead.",
+  "ingredients": [
+    {
+      "item": "uncooked sorghum",
+      "amount": "1 cup"
+    },
+    {
+      "item": "red bell peppers, seeded and cut into bite-sized pieces",
+      "amount": "2"
+    },
+    {
+      "item": "red onions, diced",
+      "amount": "2"
+    },
+    {
+      "item": "light olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "can chickpeas, drained",
+      "amount": "2 x 14oz (400g)"
+    },
+    {
+      "item": "harissa paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "arugula",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "roughly chopped flat-leaf parsley, to garnish",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Rinse the sorghum under running water and place in a large, lidded saucepan. Cover with water and bring to a boil. Then reduce the heat to a simmer and cook, covered, for 50–60 minutes, until tender. Remove from the heat, drain any remaining water, and transfer to a large bowl.",
+    "Meanwhile, preheat the oven to 400°F (200°C). Place the red bell peppers and onions on a baking sheet. Drizzle with the oil and toss to coat. Bake in the oven for 30–40 minutes, until softened. Remove from the heat. Add the red bell peppers and onions to the sorghum and mix well.",
+    "Add the chickpeas and harissa paste to the sorghum mixture. Toss to combine, making sure the vegetables and chickpeas are evenly covered with the paste. Pour in the lemon juice and season to taste. Divide the arugula between 4 individual plates and top with the sorghum salad. Garnish with parsley and serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 65
+  }
+}

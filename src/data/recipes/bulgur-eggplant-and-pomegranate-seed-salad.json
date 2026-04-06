@@ -1,0 +1,54 @@
+{
+  "id": "bulgur-eggplant-and-pomegranate-seed-salad",
+  "name": "Bulgur, eggplant, and pomegranate seed salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 5",
+  "intro": "This superfood salad has everything you need to power you through your day, including magnesium from the bulgur wheat, fiber and B-vitamins from the eggplant, and an antioxidant boost from the pomegranate seeds.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "eggplants, chopped into bite-sized pieces",
+      "amount": "2"
+    },
+    {
+      "item": "pinch of paprika",
+      "amount": ""
+    },
+    {
+      "item": "bulgur wheat",
+      "amount": "2 cups"
+    },
+    {
+      "item": "hot vegetable stock",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "hazelnuts, toasted",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Put 1 tablespoon of the oil in a large frying pan set over low heat, and toss the eggplant pieces in the oil. Cook on medium-high heat for 10–15 minutes, or until the eggplant starts to turn golden, adding the remaining oil, if needed (as the eggplant may soak it up quickly). Add the paprika, toss, and cook for a few more minutes. Remove from the heat and set aside.",
+    "Put the bulgur wheat into a large bowl and pour the stock over it so that it is just covered. Cover with plastic wrap and let sit for 8–10 minutes, then fluff up with a fork to separate the grains.",
+    "Stir the bulgur wheat into the pan with the eggplant and mix well. Taste and season as required. Stir in the hazelnuts and sprinkle over the pomegranate seeds."
+  ],
+  "image": "/recipes/bulgur-eggplant-and-pomegranate-seed-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "triple-grain-herbed-salad-bowl",
+  "name": "Triple-grain herbed salad bowl",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 6",
+  "intro": "This is a real good-for-you, wholesome salad mix. The combination of couscous, brown rice, and bulgur wheat creates a dish that is rich in B-vitamins, minerals, and fiber.",
+  "ingredients": [
+    {
+      "item": "brown rice",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "bulgur wheat",
+      "amount": "1 cup"
+    },
+    {
+      "item": "couscous",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "tomatoes, diced",
+      "amount": "4"
+    },
+    {
+      "item": "cucumber, peeled and diced",
+      "amount": "½"
+    },
+    {
+      "item": "fresh mint leaves, finely chopped",
+      "amount": "1¾ oz (50g)"
+    },
+    {
+      "item": "fresh parsley, finely chopped",
+      "amount": "1¾ oz (50g)"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the rice in a pot of salted water for about 35 minutes, until tender. Drain and rinse under cold water, then drain again and set aside to cool.",
+    "Meanwhile, put the bulgur wheat into a bowl and pour boiling water over it, until it is just covered. Let stand for 5 minutes while you prepare the couscous in another bowl in the same way; let this stand for 5 minutes as well. Fluff up both the grains with a fork and then mix them together with the rice.",
+    "Stir the tomatoes, cucumber, herbs, and raisins into the grain mixture. Taste and season, if needed."
+  ],
+  "image": "/recipes/triple-grain-herbed-salad-bowl.jpg",
+  "time": {
+    "total": 40
+  }
+}

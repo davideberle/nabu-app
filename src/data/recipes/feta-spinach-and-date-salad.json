@@ -1,0 +1,62 @@
+{
+  "id": "feta-spinach-and-date-salad",
+  "name": "Feta, spinach, and date salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 2",
+  "intro": "Sweet, chewy dates are an unusual salad ingredient, but when paired with salty feta and tangy preserved lemons, they make a wonderful Middle Eastern dish. They are also a great source of fiber, potassium, and iron.",
+  "ingredients": [
+    {
+      "item": "baby spinach leaves",
+      "amount": "5½ oz (150g)"
+    },
+    {
+      "item": "fresh dates, pitted and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "pine nuts, toasted",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "reduced-fat feta cheese, crumbled or cut into small cubes",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "preserved lemons, halved, pith removed, and skin finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) splash of white wine vinegar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) few stems of fresh dill, finely chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing: whisk together the oil and vinegar and season with salt and black pepper, then stir in the mustard and the dill. Taste and adjust the seasoning as needed, then set aside.",
+    "Put the spinach leaves into a bowl and add the dates, pine nuts, and feta. Season, if desired. (If you are using a salty feta, you may not need to add salt.)",
+    "When ready to serve, whisk the dressing, pour into an empty salad bowl, and swirl until the dressing coats the bowl. Add the leaf and feta mixture and very gently toss with your hands to lightly coat the leaves. Sprinkle over the chopped lemon and serve."
+  ],
+  "image": "/recipes/feta-spinach-and-date-salad.jpg",
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "easy-spaghetti",
+  "name": "Easy Spaghetti",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "12 oz."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "turmeric",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "tomato paste",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "2 cups"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "1 tsp."
+    }
+  ],
+  "method": [
+    "Prepare the pasta in a pot of boiling salted water for 10 minutes. Drain and set aside.",
+    "Heat the olive oil in a large skillet.",
+    "Sauté the onion and garlic for 5 minutes.",
+    "Stir in the ground beef, salt, pepper, and turmeric and combine well.",
+    "Add the tomato paste, tomato sauce, and Italian seasoning.",
+    "Simmer for 45 minutes.",
+    "Add the spaghetti and toss with the sauce."
+  ],
+  "image": "/recipes/easy-spaghetti.jpg",
+  "time": {
+    "total": 60
+  }
+}

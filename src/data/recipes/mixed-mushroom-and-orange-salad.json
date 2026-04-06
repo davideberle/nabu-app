@@ -1,0 +1,66 @@
+{
+  "id": "mixed-mushroom-and-orange-salad",
+  "name": "Mixed mushroom and orange salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Raw mushrooms are marinated in a delicate mustard vinaigrette to create a refreshing and unique light salad. If you do not like the texture of raw mushrooms, fry them for a few minutes beforehand to soften them.",
+  "ingredients": [
+    {
+      "item": "mixed mushrooms, sliced",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "pinch of red pepper flakes",
+      "amount": ""
+    },
+    {
+      "item": "of scallions, sliced",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "oranges, depending on size, segmented, and juice reserved",
+      "amount": "1–2"
+    },
+    {
+      "item": "of spinach leaves",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "handful of basil leaves, shredded",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) apple cider vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) whole-grain mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Pour the olive oil and vinegar in a small bowl, and whisk until combined. Add a little bit of the juice reserved from segmenting the oranges for the salad, along with the sugar and mustard. Season with salt and black pepper, whisk again, and taste. Add a little more of the orange juice, if needed. Let the dressing stand for a while, to develop the flavors",
+    "To make the salad, place the mushrooms in a large bowl. Add the pepper flakes, and drizzle with a little of the dressing. Toss to coat. Let stand for at least 10 minutes, then add the scallions and orange segments, and gently toss to combine.",
+    "When ready to serve, add the spinach and basil leaves, as well as more of the dressing. Taste, and season again, if needed. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

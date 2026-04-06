@@ -1,0 +1,69 @@
+{
+  "id": "confetti-pasta-salad",
+  "name": "Confetti Pasta Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "uncooked multi-colored rotini pasta",
+      "amount": "2 cups"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "package dried Italian dressing",
+      "amount": "½"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "chopped tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "peeled and sliced cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "½"
+    },
+    {
+      "item": "chopped green bell pepper",
+      "amount": "½"
+    },
+    {
+      "item": "sliced black olives",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cubed mozzarella cheese",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of salted boiling water for 10 minutes. Drain.",
+    "Combine the mayonnaise, dry Italian salad dressing, vinegar, salt, pepper, and garlic in a small bowl.",
+    "Using a large salad bowl, add the cooled pasta and remaining ingredients and toss with the dressing.",
+    "Refrigerate for 1 hour."
+  ],
+  "image": "/recipes/confetti-pasta-salad.jpg",
+  "time": {
+    "total": 10
+  }
+}

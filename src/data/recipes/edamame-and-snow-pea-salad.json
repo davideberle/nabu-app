@@ -1,0 +1,54 @@
+{
+  "id": "edamame-and-snow-pea-salad",
+  "name": "Edamame and snow pea salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Edamame beans (also known as soybeans) are usually bought frozen and are useful to have in reserve in the freezer. Here, they are dished up in a bright salad and drizzled with a tangy sweet chili dressing.",
+  "ingredients": [
+    {
+      "item": "frozen edamame beans (soybeans)",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "green beans, trimmed",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "snow peas",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "cherry tomatoes, sliced in half",
+      "amount": "8oz (225g)"
+    },
+    {
+      "item": "scallions, finely chopped",
+      "amount": "3"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) rice wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) sweet chili sauce",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Place the edamame beans in a large pot of boiling water for 3 minutes. Add the green beans and snow peas, and cook for 2 minutes. Drain, refresh under cold running water and then drain again well.",
+    "Place the cooked beans and peas in a large bowl. Add the cherry tomatoes, scallions, and cilantro.",
+    "Whisk together the vinegar and sweet chili sauce. Drizzle it over the vegetables, toss well, and serve."
+  ],
+  "image": "/recipes/edamame-and-snow-pea-salad.jpg",
+  "time": {
+    "total": 15
+  }
+}

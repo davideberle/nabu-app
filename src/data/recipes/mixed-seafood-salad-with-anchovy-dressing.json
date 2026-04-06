@@ -1,0 +1,77 @@
+{
+  "id": "mixed-seafood-salad-with-anchovy-dressing",
+  "name": "Mixed seafood salad with anchovy dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Most supermarkets offer packs of precooked seafood, which are handy when you need a quick family dinner. Simply throw this salad together in a large serving bowl, toss with the dressing, and let everybody help themselves.",
+  "ingredients": [
+    {
+      "item": "handful of mixed salad leaves, such as romaine",
+      "amount": ""
+    },
+    {
+      "item": "fennel bulb, thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "assorted cooked seafood, such as shelled shrimp, mussels, or squid rings, rinsed and dried",
+      "amount": "1lb (450g)"
+    },
+    {
+      "item": "whole anchovies in oil, drained",
+      "amount": "6"
+    },
+    {
+      "item": "fresh hot green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful of fresh cilantro, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "lemon wedges, to serve",
+      "amount": ""
+    },
+    {
+      "item": "rice noodles, to serve",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) whole anchovies in oil, drained and finely chopped",
+      "amount": "6"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. In a large bowl, whisk together the oil and vinegar. Add the anchovies, sugar, and parsley; season well with salt and black pepper; and whisk again.",
+    "In a bowl, toss together the salad leaves, fennel, seafood, anchovies, chile, and cilantro. Add the dressing, and toss again to coat. Place the salad into a shallow serving bowl, and serve with lemon wedges and rice noodles."
+  ],
+  "image": "/recipes/mixed-seafood-salad-with-anchovy-dressing.jpg",
+  "time": {
+    "total": 45
+  }
+}

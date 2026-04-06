@@ -1,0 +1,74 @@
+{
+  "id": "herb-tabbouleh-with-pomegranate-molasses",
+  "name": "Herb tabbouleh with pomegranate molasses",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "A fruity dressing adds a delightful lift to any salad. This recipe features pomegranate molasses, a concentrated syrup that adds a luxurious sweetness to any Middle Eastern dish.",
+  "ingredients": [
+    {
+      "item": "(For the salad) salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the salad) fine bulgur wheat",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the salad) chopped flat-leaf parsley",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "(For the salad) finely chopped mint leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the salad) chopped cilantro",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the salad) scallions, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "(For the salad) cherry tomatoes, chopped",
+      "amount": "4"
+    },
+    {
+      "item": "(For the dressing) garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) five-spice powder",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) finely grated lemon zest",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) pomegranate molasses",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "To make the dressing, combine the garlic, a little salt, the five-spice powder, the lemon juice and zest, and the pomegranate molasses in a bowl. Whisk in the olive oil and season with salt and pepper to taste. Let stand while you prepare the ingredients for the salad.",
+    "Put the bulgur in a shallow bowl, cover with boiling water, and allow to swell for 2 minutes. Place into a sieve, drain, and refresh with plenty of cold water. Fluff up the bulgur with a fork, then shake and drain it well.",
+    "Put the bulgur into the bowl with the dressing mixture. Add the parsley, mint, cilantro, scallions, and tomatoes. Toss just to coat and season again with salt and pepper just before serving."
+  ],
+  "image": "/recipes/herb-tabbouleh-with-pomegranate-molasses.jpg",
+  "time": {
+    "total": 55
+  }
+}

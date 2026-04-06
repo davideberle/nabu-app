@@ -1,0 +1,53 @@
+{
+  "id": "fennel-and-peach-salad",
+  "name": "Fennel and peach salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This pretty fennel and peach salad from the French Riviera makes a refreshing appetizer on a hot summer’s day. For a meat-free version of this recipe, replace the ham with shavings of Parmesan cheese.",
+  "ingredients": [
+    {
+      "item": "small fennel bulbs, trimmed at the bottom and very thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "juice and finely grated zest of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "ripe peaches or nectarines, halved, cored, and sliced",
+      "amount": "2"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped mint leaves",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "of cured ham about ¼ in/5mm thick, such as prosciutto crudo, Serrano, or smoked ham, diced",
+      "amount": "1 slice"
+    }
+  ],
+  "method": [
+    "In a shallow bowl, toss the fennel with the lemon juice and zest, oil, and a little salt. Add the peaches or nectarines, sprinkle over half the herbs, and season with pepper. Toss lightly.",
+    "Arrange on a serving plate. Scatter the ham and the remaining herbs over top. Serve immediately."
+  ],
+  "image": "/recipes/fennel-and-peach-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "chickpea-bulgur-and-cranberry-salad",
+  "name": "Chickpea, bulgur, and cranberry salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This is a hearty and filling salad with nuts, fruits, and grains. Canned chickpeas do not require soaking, as they soften in the water they are stored in. As a result, they make the perfect salad ingredient when time is short.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "sweet crisp apple, cored and diced",
+      "amount": "1"
+    },
+    {
+      "item": "handful of walnuts, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "paprika",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2–3 tbsp"
+    }
+  ],
+  "method": [
+    "Put the bulgur wheat in a bowl and pour over enough hot water to cover. Set aside and let stand for about 10 minutes, then fluff up the grains with a fork. Season with salt and pepper to taste.",
+    "Put the chickpeas in another bowl, then add the apple, walnuts, and cranberries, and stir to combine.",
+    "Add the bulgur wheat and lemon juice, sprinkle over the paprika, and stir. Drizzle with a little olive oil and serve."
+  ],
+  "image": "/recipes/chickpea-bulgur-and-cranberry-salad.jpg",
+  "time": {
+    "total": 40
+  }
+}

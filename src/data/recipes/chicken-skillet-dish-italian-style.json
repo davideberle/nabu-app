@@ -1,0 +1,80 @@
+{
+  "id": "chicken-skillet-dish-italian-style",
+  "name": "Chicken Skillet Dish Italian Style",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "½ cups cubed chicken",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "chopped green bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "red wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(28 oz.) can diced tomato with juices",
+      "amount": "1"
+    },
+    {
+      "item": "chicken broth",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Italian seasoning or to taste",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "small shell pasta",
+      "amount": "8 oz."
+    },
+    {
+      "item": "chopped spinach",
+      "amount": "6 oz."
+    },
+    {
+      "item": "grated parmesan cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped basil",
+      "amount": "2 tsp."
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large skillet and brown the chicken for 5 minutes.",
+    "Add the garlic, onion, and peppers and sauté for 5 more minutes.",
+    "Stir in the wine, tomatoes with juices, the broth, and Italian seasoning.",
+    "Bring the liquid to a boil and add the pasta to the skillet.",
+    "Cook the pasta on medium heat for 10 minutes, until they are done.",
+    "Add the spinach and parmesan cheese and simmer for 5 more minutes.",
+    "Serve topped with chopped basil."
+  ],
+  "image": "/recipes/chicken-skillet-dish-italian-style.jpg",
+  "time": {
+    "total": 25
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "classic-blue-cheese-vinaigrette",
+  "name": "Classic blue cheese vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 8",
+  "intro": "This rich dressing is a little thicker than most vinaigrettes, and should be used sparingly. It is traditionally drizzled over crisp leaf salads, such as the Endive salad with spinach and pears.",
+  "ingredients": [
+    {
+      "item": "white wine or apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "gorgonzola cheese, crumbled",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the vinegar and lemon juice in a bowl. Add the mayonnaise and oil to a separate bowl, then pour in the vinegar-lemon mixture, whisking constantly, until the dressing has emulsified.",
+    "Add the cheese to the bowl, and whisk again until smooth. Season to taste with salt and black pepper. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

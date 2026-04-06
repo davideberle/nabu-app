@@ -1,0 +1,77 @@
+{
+  "id": "hungarian-goulash",
+  "name": "Hungarian Goulash",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground beef",
+      "amount": "2 lbs."
+    },
+    {
+      "item": "chopped onions",
+      "amount": "2"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "½ tbsp. sweet paprika",
+      "amount": "1"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "canned diced tomatoes with juices",
+      "amount": "2 cups"
+    },
+    {
+      "item": "red wine",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "beef broth",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "cooked egg noodles",
+      "amount": "2 cups"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a skillet.",
+    "Brown the beef, onion, and garlic for 5 minutes.",
+    "Stir in the paprika, pepper and salt.",
+    "Add the Worcestershire sauce, diced tomatoes with juices, red wine, sugar, chili powder, and beef broth.",
+    "Combine well and bring the liquid to a boil.",
+    "Simmer uncovered for 35 minutes.",
+    "Check for desired thickness and add more liquid if needed.",
+    "Serve over the egg noodles."
+  ],
+  "image": "/recipes/hungarian-goulash.jpg",
+  "time": {
+    "total": 40
+  }
+}

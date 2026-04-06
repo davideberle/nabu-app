@@ -1,0 +1,58 @@
+{
+  "id": "avocado-cilantro-and-lime-tabbouleh",
+  "name": "Avocado, cilantro, and lime tabbouleh",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "The inclusion of lime and avocado in this tabbouleh gives a modern twist to a classic dish. The lime juice naturally preserves the avocado, keeping it fresh and appetizing while the flavors combine in the fridge.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, diced",
+      "amount": "2"
+    },
+    {
+      "item": "avocado, peeled, pitted, and diced",
+      "amount": "1"
+    },
+    {
+      "item": "small red bell pepper, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "red onion, diced",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "handful of cilantro, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "lime juice",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Place 11⁄2 cups of water in a small saucepan and bring to a boil. Place the bulgur wheat and a large pinch of salt in a large bowl. Pour the boiling water into the bowl, cover, and allow to soak for about 30 minutes.",
+    "Drain any excess water from the bulgur wheat and place it in a large bowl. Then add the tomatoes, avocado, bell pepper, onion, and cilantro. Mix well to combine. Transfer the mixture to a large serving bowl.",
+    "Drizzle the lime juice and oil over the mixture. Toss well to coat. Season to taste with salt and black pepper, if needed. Mix well and chill the tabbouleh in the fridge for about 20 minutes before serving."
+  ],
+  "image": "/recipes/avocado-cilantro-and-lime-tabbouleh.jpg",
+  "time": {
+    "total": 45
+  }
+}

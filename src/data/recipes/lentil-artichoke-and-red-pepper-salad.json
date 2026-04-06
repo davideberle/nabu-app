@@ -1,0 +1,65 @@
+{
+  "id": "lentil-artichoke-and-red-pepper-salad",
+  "name": "Lentil, artichoke, and red pepper salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "The use of pantry ingredients in this salad, such as French green lentils and artichoke hearts, allows you to build a filling meal in no time. You can try a jar of already-roasted red peppers if you don’t want to roast your own.",
+  "ingredients": [
+    {
+      "item": "can French green lentils, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "can artichoke hearts, drained and sliced",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "or 5 red peppers, roasted and sliced",
+      "amount": "4"
+    },
+    {
+      "item": "fresh thyme sprigs, leaves only",
+      "amount": "1–2"
+    },
+    {
+      "item": "handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "scallions, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "walnut oil",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "prosciutto slices, chopped",
+      "amount": "4–5"
+    },
+    {
+      "item": "handful of arugula",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the lentils, artichoke hearts, red peppers, herbs, and scallions in a large bowl. Drizzle with the oil and vinegar, season with salt and pepper to taste, and toss gently to mix.",
+    "Add the prosciutto and arugula to the salad, and toss gently. Divide between 4 plates, and serve."
+  ],
+  "image": "/recipes/lentil-artichoke-and-red-pepper-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

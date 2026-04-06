@@ -1,0 +1,65 @@
+{
+  "id": "bulgur-wheat-with-mixed-peppers-and-goat-cheese",
+  "name": "Bulgur wheat with mixed peppers and goat cheese",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Sweet, crunchy bell peppers and creamy goat cheese are a winning combination. Bulgur wheat is a great staple for your pantry—it’s a source of fiber and protein, and very easy to prepare.",
+  "ingredients": [
+    {
+      "item": "fine bulgur wheat",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "hot vegetable stock",
+      "amount": "1¼ cups"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of scallions, finely chopped",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "orange bell pepper, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "pinch of mild paprika",
+      "amount": ""
+    },
+    {
+      "item": "handful of fresh mint leaves, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "soft goat cheese, crumbled",
+      "amount": "½ cup"
+    },
+    {
+      "item": "extra-virgin olive oil, for drizzling",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the bulgur wheat in a large bowl, and pour over enough stock to just cover the bulgur. Let stand for 10 minutes, then stir with a fork to fluff up the grains. Season with salt and pepper to taste.",
+    "Add the scallions, orange and yellow bell peppers, paprika, mint, and lemon juice, and stir well. Taste, and season again, if needed. To serve, top with the goat cheese and a generous drizzle of olive oil."
+  ],
+  "image": "/recipes/bulgur-wheat-with-mixed-peppers-and-goat-cheese.jpg",
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "tomato-salad-with-balsamic-vinaigrette",
+  "name": "Tomato salad with balsamic vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Versatile and easy to prepare, this simple salad of tomatoes, red onion, and mozzarella bursts with vibrant colors and delicious Italian flavors.",
+  "ingredients": [
+    {
+      "item": "ripe plum tomatoes, sliced",
+      "amount": "8"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "6"
+    },
+    {
+      "item": "small red onion, peeled and sliced",
+      "amount": "1"
+    },
+    {
+      "item": "handful of fresh basil, torn",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil, to drizzle",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of arugula",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "balsamic vinegar, to drizzle",
+      "amount": ""
+    },
+    {
+      "item": "balls of reduced-fat mozzarella cheese, torn",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place the tomatoes, onion, and half of the basil in a bowl. Drizzle with plenty of olive oil, season well, and toss to coat.",
+    "Arrange the arugula on a serving plate and drizzle with a little oil and some balsamic vinegar. Season and spoon the tomato and basil mixture on top. Add the torn mozzarella. Sprinkle over the remaining basil, and drizzle again with a little oil and balsamic vinegar. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

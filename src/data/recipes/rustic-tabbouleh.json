@@ -1,0 +1,70 @@
+{
+  "id": "rustic-tabbouleh",
+  "name": "Rustic tabbouleh",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 6",
+  "intro": "Tabbouleh is a wonderful Middle Eastern dish of bulgur wheat, tomatoes, onions, and plenty of parsley. Enjoy with some warm pita bread for a satisfying dinner, or pack it up for lunch with crisp spears of romaine lettuce.",
+  "ingredients": [
+    {
+      "item": "fine bulgur wheat",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "hot water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "large tomatoes, cored, seeded, and finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "small red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "cucumber, peeled, seeded, and finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "4"
+    },
+    {
+      "item": "of curly parsley, finely chopped",
+      "amount": "3 bunches"
+    },
+    {
+      "item": "finely chopped mint leaves",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of 2 lemons",
+      "amount": ""
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "romaine lettuce and pita bread, to serve (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse the bulgur wheat. Add to a medium bowl with 1 tablespoon of the extra-virgin olive oil, cover with near-boiling water, and stir. Let it stand for 15 minutes, then strain in a fine-mesh sieve, pressing gently to remove all the liquid. Fluff with a fork.",
+    "In a large bowl, toss the bulgur with the tomatoes, red onion, cucumber, scallions, parsley, mint, lemon juice, and the remaining extra-virgin olive oil. Season to taste, cover, and set aside for 1 hour to develop the flavors.",
+    "Serve at room temperature or cold with lettuce and pita bread, if you like. Tabbouleh keeps in the fridge for 3 days."
+  ],
+  "image": "/recipes/rustic-tabbouleh.jpg",
+  "time": {
+    "total": 45
+  }
+}

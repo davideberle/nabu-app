@@ -1,0 +1,80 @@
+{
+  "id": "tabbouleh-with-cac-k",
+  "name": "Tabbouleh with cacık",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This tabbouleh recipe features cacık, a traditional yogurt dip flavored with cucumber, garlic, and herbs. It is similar to Greek tzatziki, and pairs well with any Middle Eastern salad dish.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "tomatoes, peeled, seeded, and chopped",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "scallions, trimmed and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "small bunch of curly parsley, chopped",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small bunch of mint, chopped",
+      "amount": ""
+    },
+    {
+      "item": "pita breads, to serve",
+      "amount": "3–4"
+    },
+    {
+      "item": "(For the dressing) small cucumber",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) large garlic clove, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) ground coriander",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "(For the dressing) ground cumin",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "(For the dressing) natural yogurt",
+      "amount": "1 cup"
+    }
+  ],
+  "method": [
+    "Put the bulgur wheat in a large bowl and pour over enough cold water to cover generously. Let it soak for 30 minutes, then drain through a sieve and squeeze out any remaining water with your fist.",
+    "Meanwhile, prepare the cucumber for the cacık: trim the ends, cut in half lengthwise, and scoop out the seeds with a teaspoon. Dice the cucumber halves, put in a colander, sprinkle over salt, and stir to mix. Let sit for 15–20 minutes to draw out the bitter juices, then rinse under cold running water and drain.",
+    "For the tabbouleh, in a large bowl, combine the bulgur, tomatoes, scallions, parsley, lemon juice, oil, two-thirds of the mint, and plenty of salt and pepper. Mix and taste for seasoning, then cover and chill in the fridge for at least 2 hours.",
+    "To make the cacık, put the preparedcucumber in a bowl and add the garlic, remaining mint, ground coriander, ground cumin, and salt and pepper. Pour in the yogurt. Stir to combine and taste for seasoning. Chill in the fridge for at least 2 hours, to blend the flavors.",
+    "Warm the pita breads in a low oven for 3–5 minutes, then remove and cut into strips. Take the salad and cacık out of the fridge and allow it to come to room temperature. Divide it into 4 servings with warm slices of pita bread alongside them."
+  ],
+  "image": "/recipes/tabbouleh-with-cac-k.jpg",
+  "time": {
+    "total": 60
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "caprese-farro-salad-with-traditional-pesto",
+  "name": "Caprese farro salad with traditional pesto",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Featuring fresh summer tomatoes, soft mozzarella, chewy farro grains, and a homemade pesto sauce, this colorful Italian salad makes a light yet satisfying lunch.",
+  "ingredients": [
+    {
+      "item": "uncooked farro",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mozzarella cheese, diced",
+      "amount": "8oz (225g)"
+    },
+    {
+      "item": "large tomatoes, cut into bite-sized pieces",
+      "amount": "3"
+    },
+    {
+      "item": "(For the dressing) basil, rinsed and dried, plus extra to garnish",
+      "amount": "1 cup"
+    },
+    {
+      "item": "(For the dressing) pine nuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rinse the farro under cold running water and place in a large saucepan. Cover with about 21⁄2 cups of water and bring to a boil. Then reduce the heat to a simmer and cook, stirring occasionally, for about 40 minutes or until softened. Remove from the heat, drain, and set aside to cool.",
+    "To make the pesto, place the basil, pine nuts, garlic, and oil in a food processor and pulse until smooth. Season to taste, if needed.",
+    "Place the mozzarella and tomatoes in a large bowl. Add the pesto and cooled farro and stir to mix. Chill the salad in the fridge until ready to serve, garnished with a few basil leaves."
+  ],
+  "image": "/recipes/caprese-farro-salad-with-traditional-pesto.jpg",
+  "time": {
+    "total": 60
+  }
+}

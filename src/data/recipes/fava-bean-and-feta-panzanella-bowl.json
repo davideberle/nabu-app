@@ -1,0 +1,71 @@
+{
+  "id": "fava-bean-and-feta-panzanella-bowl",
+  "name": "Fava bean and feta panzanella bowl",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Inspired by the classic Italian bread salad, this unique green version of panzanella is evocative of the fresh colors and flavors of spring, cut with the salty tang of crumbled feta.",
+  "ingredients": [
+    {
+      "item": "shelled fava beans",
+      "amount": "4 cups"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "ciabatta, diced into ¾ in (2cm) cubes (about 3 cups)",
+      "amount": "5½ oz (150g)"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "scallions, green parts removed and finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "feta cheese, roughly crumbled",
+      "amount": "1⅓ cups"
+    },
+    {
+      "item": "handful of chopped mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "chopped dill (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "of baby salad leaves",
+      "amount": "4 handfuls"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 425°F (220°C). Cook the beans in boiling salted water for 2–3 minutes until just cooked, plunge them into cold water to cool them, and peel off the skins.",
+    "Meanwhile, toss the diced bread in 1⁄4 cup of olive oil, sprinkle over a little salt and pepper, and place on a baking sheet. Cook at the top of the hot oven for about 8 minutes, turning once, until the bread is golden brown and crispy.",
+    "In a large serving bowl, whisk together the vinegar, garlic, and remaining olive oil, then season with plenty of pepper and just a little salt (as the feta is already salty). Add the fava beans, toasted bread, scallions, feta, and herbs, and toss well to coat.",
+    "Let the salad stand for 30 minutes to develop the flavors and soften the bread. Add the salad leaves and lemon juice, and serve."
+  ],
+  "image": "/recipes/fava-bean-and-feta-panzanella-bowl.jpg",
+  "time": {
+    "total": 35
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "smoked-trout-and-endive-with-dill-relish",
+  "name": "Smoked trout and endive with dill relish",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Also known as chicory, endive has a mild bitter taste and a crisp, crunchy texture. Drizzling lemon juice over the leaves not only adds extra flavor, but also prevents discoloration while you prepare the rest of the dish.",
+  "ingredients": [
+    {
+      "item": "horseradish cream",
+      "amount": "3–4 tsp"
+    },
+    {
+      "item": "curly endive, leaves separated and rinsed",
+      "amount": "1–2 heads"
+    },
+    {
+      "item": "large cold-smoked trout fillets, about 8oz (225g) each, flaked",
+      "amount": "2"
+    },
+    {
+      "item": "drizzle of olive oil",
+      "amount": ""
+    },
+    {
+      "item": "juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) apples",
+      "amount": "2–3"
+    },
+    {
+      "item": "(For the dressing) cooked bees (not in vinegar), chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) handful of fresh dill, finely chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, mix together the horseradish and half of the onion. Set aside.",
+    "Arrange the endive and flaked trout on a serving plate, and drizzle with the oil and lemon juice. Season with salt and some black pepper.",
+    "To make the relish, peel, core, and chop the apples into bite-sized pieces. Place in a separate bowl with the beets and dill, and mix together.",
+    "To serve, spoon the relish over the leaves and fish. Sprinkle over the remaining red onion, and serve with the horseradish-onion mixture on the side."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

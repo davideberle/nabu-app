@@ -1,0 +1,59 @@
+{
+  "id": "chicken-radicchio-and-asparagus-salad",
+  "name": "Chicken, radicchio, and asparagus salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "This French “salade tiède,” or warm salad, is easy to assemble and makes for a healthy dinner you can put together in minutes. You can buy jars of roasted bell peppers in most supermarkets, or prepare your own.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "skinless chicken breasts, about 5½ oz (150g) each, cut into thin strips",
+      "amount": "4"
+    },
+    {
+      "item": "garlic clove, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "roasted red bell peppers, thinly sliced",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small head radicchio, torn into small pieces",
+      "amount": "1"
+    },
+    {
+      "item": "asparagus spears, trimmed and cut into 3 pieces",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raspberry vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Heat 2 tablespoons of the oil in a large nonstick frying pan over medium-high heat. Add the chicken and garlic and cook, stirring, for 5−7 minutes, or until the chicken is tender and cooked through. Stir in the roasted red bell peppers, and season to taste with salt and pepper.",
+    "Meanwhile, put the radicchio in a large serving bowl. Remove the chicken from the pan using a slotted spoon and place in the bowl with the radicchio.",
+    "Add the asparagus to the fat remaining in the pan and fry, stirring constantly, for 1–2 minutes, or until just tender. Transfer to the bowl with the chicken.",
+    "Whisk together the remaining 2 tablespoons of the oil, the vinegar and sugar, then pour into the pan and stir over high heat until well combined. Pour this dressing over the salad and toss quickly so that all the ingredients are well mixed and coated with the dressing. Serve immediately."
+  ],
+  "image": "/recipes/chicken-radicchio-and-asparagus-salad.jpg",
+  "time": {
+    "total": 15
+  }
+}

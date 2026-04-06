@@ -1,0 +1,75 @@
+{
+  "id": "lentils-and-barley-with-sweet-potato",
+  "name": "Lentils and barley with sweet potato",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Warm green lentils, barley, and sweet potatoes are tossed in a pomegranate and Dijon mustard dressing, then sprinkled with bright, nutrient-packed pomegranate seeds for a delicious and filling “main dish” salad.",
+  "ingredients": [
+    {
+      "item": "French green lentils",
+      "amount": "½ cup"
+    },
+    {
+      "item": "pearl barley",
+      "amount": "½ cup"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "bay leaf",
+      "amount": "1"
+    },
+    {
+      "item": "large sweet potato, peeled and diced",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "seeds from 1 pomegranate",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) small shallot, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) pomegranate molasses",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "In a medium, lidded saucepan, combine the lentils, pearl barley, garlic, and bay leaf. Add water to cover by 2in (5cm). Bring to a boil, then reduce the heat to a simmer and cook for 40 minutes, or until tender. Drain, remove and discard the bay leaf, and cool slightly.",
+    "Meanwhile, preheat the oven to 400°F (200°C). On a baking sheet lined with parchment paper, toss the sweet potato with the oil. Roast for 30 minutes, then set aside to cool.",
+    "In a small bowl, whisk together the lemon juice, shallot, pomegranate molasses, mustard, salt, and black pepper. Pour in the extra-virgin olive oil, whisking continuously.",
+    "In a serving bowl, gently mix the lentils, barley, and sweet potatoes. Toss with three-quarters of the dressing. Sprinkle over the pomegranate seeds, drizzle with the remaining dressing, and serve warm."
+  ],
+  "image": "/recipes/lentils-and-barley-with-sweet-potato.jpg",
+  "time": {
+    "total": 50
+  }
+}

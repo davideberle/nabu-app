@@ -1,0 +1,46 @@
+{
+  "id": "cilantro-and-walnut-pesto",
+  "name": "Cilantro and walnut pesto",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 12",
+  "intro": "Try this tasty alternative to the more common basil and pine nut pesto, found in the Caprese farro salad. It can be used in the same way: stir it into pasta dishes, or use it top goat cheese rounds.",
+  "ingredients": [
+    {
+      "item": "small bunch of cilantro, approx. 1oz (30g), stems removed",
+      "amount": ""
+    },
+    {
+      "item": "large garlic clove, lightly crushed",
+      "amount": "1"
+    },
+    {
+      "item": "walnut pieces",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "freshly grated Parmesan cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Put the cilantro leaves in a blender or food processor with the garlic, walnuts, a generous amount of black pepper, a pinch of salt, the cheese, and 1 tablespoon of the oil. Blend the ingredients, stopping to scrape down the sides of the bowl as necessary.",
+    "With the machine still running, gradually add 3 tablespoons of the oil, a little at a time, until you have a glistening, thin paste.",
+    "Spoon the pesto into a sterilized jar, top with the remaining 1 tablespoon of oil to prevent air getting in, screw on the lid, and store in the fridge."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

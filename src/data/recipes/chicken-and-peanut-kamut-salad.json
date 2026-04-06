@@ -1,0 +1,55 @@
+{
+  "id": "chicken-and-peanut-kamut-salad",
+  "name": "Chicken and peanut kamut salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 2",
+  "intro": "Peanut butter in a salad—who would have thought it was possible? Together with kamut, an ancient Egyptian grain, the peanuts lend a nutty taste to this salad, which is balanced perfectly with zesty lime juice.",
+  "ingredients": [
+    {
+      "item": "uncooked kamut",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "cooked skinless chicken breasts or thighs, shredded",
+      "amount": "10oz (300g)"
+    },
+    {
+      "item": "scallions, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "salted peanuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped cilantro, to garnish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) smooth peanut butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) juice of 1 lime",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the kamut in a large bowl and cover with water. Let soak for 8 hours or for up to 24 hours. Then drain, rinse under running water, and drain well again.",
+    "Place the kamut in a large pot, cover with water, and bring to a boil. Then reduce the heat to a simmer and cook for 40–45 minutes. Remove from the heat and drain any remaining water. Set aside and keep warm.",
+    "For the dressing, place the peanut butter and lime juice in a small bowl. Add 2 tablespoons of water and whisk until well combined and thickened to the consistency of heavy cream.",
+    "Place the warm kamut in a large bowl. Add the chicken and scallions and toss lightly to mix. Then drizzle with the dressing, season to taste, and toss well to coat. Sprinkle over the peanuts, garnish with cilantro, and serve immediately."
+  ],
+  "image": "/recipes/chicken-and-peanut-kamut-salad.jpg",
+  "time": {
+    "total": 55
+  }
+}

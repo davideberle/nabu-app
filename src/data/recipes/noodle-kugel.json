@@ -1,0 +1,62 @@
+{
+  "id": "noodle-kugel",
+  "name": "Noodle Kugel",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "egg noodles",
+      "amount": "16 oz."
+    },
+    {
+      "item": "butter",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "beaten eggs",
+      "amount": "5"
+    },
+    {
+      "item": "sugar",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "½ cups applesauce",
+      "amount": "1"
+    },
+    {
+      "item": "raisins",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped pecans",
+      "amount": "½ cup"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "cinnamon",
+      "amount": "1 tbsp."
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 degrees.",
+    "Prepare the pasta in a pot of boiling salted water for 5 minutes. Drain.",
+    "Transfer the egg noodles to a large salad bowl.",
+    "Stir the butter into the warm/hot noodles until it is melted.",
+    "Add the remaining ingredients and combine thoroughly.",
+    "Place the mixture in a 9x13 inch baking dish.",
+    "Cover with aluminum foil.",
+    "Bake for 30 minutes.",
+    "Remove the foil and bake for 15 more minutes."
+  ],
+  "image": "/recipes/noodle-kugel.jpg",
+  "time": {
+    "total": 50
+  }
+}

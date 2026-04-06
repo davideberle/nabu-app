@@ -1,0 +1,97 @@
+{
+  "id": "lobster-mac-and-cheese",
+  "name": "Lobster Mac and Cheese",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "lobster tails, split in half lengthwise and deveined",
+      "amount": "3"
+    },
+    {
+      "item": "butter",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "flour",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "½ cups half and half",
+      "amount": "1"
+    },
+    {
+      "item": "milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "paprika",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "chili powder",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "Worcestershire sauce",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "grated Cheddar cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "tbsp, grated Gruyere cheese",
+      "amount": "3"
+    },
+    {
+      "item": "prepared elbow macaroni",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Panko breadcrumbs",
+      "amount": "½ cup"
+    },
+    {
+      "item": "melted butter",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Parmesan cheese",
+      "amount": "5 tbsp."
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400 degrees.",
+    "Coat two gratin dishes with non-stick spray",
+    "Heat the oil in a skillet and brown the lobster tails for 2 minutes on medium heat.",
+    "Let the lobsters cool and separate the meat from the shells.",
+    "Chop the meat and discard the shells.",
+    "Use the same skillet to melt the butter.",
+    "Create a roux by stirring in the flour and continue stirring for 1 minute.",
+    "Pour in the half and half and milk and continue stirring for 3 minutes.",
+    "Let the liquid simmer and add the paprika, chili powder, salt, and Worcestershire Sauce.",
+    "Let simmer for 4 minutes.",
+    "Add the cheddar and Gruyere cheeses and stir for 5 minutes, until the cheese is melted.",
+    "Add the macaroni to the cheese sauce and gently stir in the lobster chunks.",
+    "Fill both gratin dishes with the mac and cheese mixture.",
+    "Combine the Panko, melted butter, and parmesan cheese in a bowl.",
+    "Drizzle the mixture over the mac and cheese.",
+    "Bake the mac and cheese for 15 minutes."
+  ],
+  "image": "/recipes/lobster-mac-and-cheese.jpg",
+  "time": {
+    "total": 30
+  }
+}

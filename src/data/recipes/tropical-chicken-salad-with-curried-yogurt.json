@@ -1,0 +1,62 @@
+{
+  "id": "tropical-chicken-salad-with-curried-yogurt",
+  "name": "Tropical chicken salad with curried yogurt",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "Featuring fresh pineapple and mango, this is a protein-rich, fruity salad with a creamy, lightly curried dressing. It is low in saturated fat, and goes a long way to helping you reach your five a day.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "cooked skinless chicken, thickly shredded",
+      "amount": "12oz (350g)"
+    },
+    {
+      "item": "small head crisp lettuce (such as iceberg or romaine), shredded",
+      "amount": "1"
+    },
+    {
+      "item": "salted peanuts",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cashew nuts",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh pineapple, peeled, cored, and cut into segments",
+      "amount": "½"
+    },
+    {
+      "item": "mango, pitted and cut into bite-sized pieces",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) Greek-style yogurt",
+      "amount": "3–4 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of mild curry powder (add more according to your liking), plus extra to garnish",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) juice of ½ lime",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Mix the ingredients together in a small bowl and season with salt and black pepper. Set aside.",
+    "Put the chicken, lettuce, and nuts in a large bowl and toss gently to combine. Drizzle with the dressing and toss again to coat.",
+    "When ready to serve, combine the pineapple and mango with the salad and add a pinch of black pepper. Transfer to a serving bowl and sprinkle over a little curry powder."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

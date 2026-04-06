@@ -1,0 +1,54 @@
+{
+  "id": "swiss-chard-and-sweet-potato-bowl",
+  "name": "Swiss chard and sweet potato bowl",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "As the nights draw in and the temperature drops, enjoy this nutritious and perfect fall-weather salad bowl, featuring fiber-rich Swiss chard, which is high in vitamin K and antioxidant carotenoids.",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra to drizzle",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "shallots, peeled and finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "coriander seeds, crushed",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "large sweet potatoes, peeled and cut into cubes",
+      "amount": "2"
+    },
+    {
+      "item": "Swiss chard, stalks removed and finely chopped, and leaves thinly sliced",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the olive oil with 1 tablespoon of water over low heat in a medium saucepan with a lid. Add the shallots and coriander seeds and cook, stirring occasionally, until the shallots soften.",
+    "Add the chile and garlic, and cook for 1 minute. Add the sweet potatoes and cook over medium heat for about 5 minutes, adding a dash of water if necessary. Then add the chopped chard stalks, cover, and cook for 10 minutes.",
+    "When the sweet potatoes are almost cooked, add the shredded chard leaves, cover, and let wilt for about 3 minutes. Remove from the heat, season well, drizzle with a few drops of olive oil, and serve."
+  ],
+  "image": "/recipes/swiss-chard-and-sweet-potato-bowl.jpg",
+  "time": {
+    "total": 30
+  }
+}

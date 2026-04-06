@@ -1,0 +1,75 @@
+{
+  "id": "smoked-salmon-salad-with-spiced-yogurt",
+  "name": "Smoked salmon salad with spiced yogurt",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Salads are often accused of being bland and boring. However, no one will say that when you serve up this colorful creation, featuring red chile, capers, and a dash of five-spice powder.",
+  "ingredients": [
+    {
+      "item": "tomatoes",
+      "amount": "3"
+    },
+    {
+      "item": "capers, rinsed, gently squeezed dry, and chopped",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "handful of radishes, diced",
+      "amount": ""
+    },
+    {
+      "item": "orange bell pepper, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "scallions, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "fresh red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1 large orange",
+      "amount": ""
+    },
+    {
+      "item": "juice of 1 lime",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "smoked salmon, chopped into bite-sized pieces",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "(For the dressing) Greek-style yogurt",
+      "amount": "4–6 tbsp"
+    },
+    {
+      "item": "(For the dressing) juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) pinch of five-spice powder",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, peel the tomatoes. Cut each tomato in half and squeeze over a bowl to remove the seeds, then slice into cubes.",
+    "In a large bowl, mix together the tomatoes, capers, radishes, bell pepper, scallions, and chile. Add the orange and lime juices, and season with salt and black pepper. Toss gently to mix, and let stand for about 10 minutes to develop the flavors.",
+    "To make the spiced yogurt dressing, mix together the yogurt, lemon juice, and five-spice powder in a small bowl. Season to taste.",
+    "When ready to serve, add the smoked salmon pieces to the salad mixture, and toss again. Serve with the spiced yogurt on the side."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

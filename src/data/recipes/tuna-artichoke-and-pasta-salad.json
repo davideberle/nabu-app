@@ -1,0 +1,66 @@
+{
+  "id": "tuna-artichoke-and-pasta-salad",
+  "name": "Tuna, artichoke, and pasta salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "A hearty meal-in-one salad, this dish is enhanced by a few pantry ingredients and some fresh green beans. It’s packed with flavor and pretty enough to share. Prepare ahead for a tasty weekday packed lunch.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "pasta, such as penne or fusilli",
+      "amount": "7 ¾ oz (220g)"
+    },
+    {
+      "item": "thin green beans, trimmed and halved",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "can tuna in spring water, drained and flaked",
+      "amount": "1 × 7oz (200g)"
+    },
+    {
+      "item": "can cannellini beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "sun-dried tomatoes in oil, drained and roughly chopped (oil reserved)",
+      "amount": "10"
+    },
+    {
+      "item": "jar artichoke hearts in oil, drained (oil reserved)",
+      "amount": "1 × 9oz (250g)"
+    },
+    {
+      "item": "finely grated zest and juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "whole-grain mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "leaves from 3 sprigs of basil, torn",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a large pot of salted water to a boil. Cook the pasta according to the package instructions, adding the green beans 4–5 minutes before the end of the cooking time. Drain and rinse under cold running water until the pasta is cold. Drain well and place in a serving dish. Add the tuna, cannellini beans, sun-dried tomatoes, and artichokes and toss to combine.",
+    "Place 3 tablespoons of the oil from the sun-dried tomatoes and 3 tablespoons of the oil from the drained artichokes in a small bowl. Stir in the lemon zest, lemon juice, and mustard, along with any seasoning.",
+    "Pour the dressing over the pasta. Add the herbs and toss well to coat. Cover and chill until ready to serve."
+  ],
+  "image": "/recipes/tuna-artichoke-and-pasta-salad.jpg",
+  "time": {
+    "total": 25
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "flageolet-beans-with-smoked-cheese",
+  "name": "Flageolet beans with smoked cheese",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Dainty little flageolet beans are actually unripe navy beans. They have a delicate flavor, so do not overpower them with too much smoked cheese.",
+  "ingredients": [
+    {
+      "item": "can flageolet beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "of watercress, rinsed, drained, and roughly chopped",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "lemon, halved",
+      "amount": "1"
+    },
+    {
+      "item": "lightly smoked cheese, such as Gouda, cubed",
+      "amount": "4½ oz (125g)"
+    }
+  ],
+  "method": [
+    "Put the beans in a large bowl. Add the Dijon mustard and parsley, and stir to combine. Season with salt and black pepper. Add half of the chopped onion, and stir to combine.",
+    "Arrange the watercress on a large serving plate or 4 individual plates. Squeeze over the juice from the lemon, and sprinkle over a pinch of salt. Spoon the bean mixture on top of the leaves, then scatter over the remaining onion. Top with the smoked cheese, and serve."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "green-papaya-beef-and-noodle-salad",
+  "name": "Green papaya, beef, and noodle salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "A vibrant, Vietnamese-inspired noodle salad, this meal makes for a refreshing lunch. Green papayas are underripe fruit that feature in many Southeast Asian salads—if you can’t find papaya, green mango works just as well.",
+  "ingredients": [
+    {
+      "item": "fillet or flank steak",
+      "amount": "12oz (350g)"
+    },
+    {
+      "item": "rice vermicelli or mung bean noodles",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "medium green papaya or mango, peeled, seeded, and cut into matchsticks",
+      "amount": "1"
+    },
+    {
+      "item": "roasted unsalted peanuts, coarsely chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) lemongrass purée",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) finely grated fresh ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) chopped cilantro",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) Vietnamese nuoc mam or Thai fish sauce",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) chopped mint",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) brown sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) fresh red chiles, seeded and finely chopped",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat the broiler to high. Trim any fat from the steak and broil for 3–4 minutes on each side, or until browned but still pink in the center. Set aside for at least 15 minutes before slicing into thin strips.",
+    "Meanwhile, soak the vermicelli in boiling water until softened, or as directed on the package. Drain, rinse in cold water, then cut into manageable lengths with kitchen scissors. Set aside.",
+    "Mix together the lemongrass, ginger, cilantro, nuoc mam, mint, lime juice, sugar, and chiles.",
+    "Pile the noodles, papaya, and steak on a serving dish and add the dressing. Toss lightly together and scatter with peanuts before serving."
+  ],
+  "image": "/recipes/green-papaya-beef-and-noodle-salad.jpg",
+  "time": {
+    "total": 28
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "pad-thai",
+  "name": "Pad Thai",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "oz, rice noodles",
+      "amount": "12"
+    },
+    {
+      "item": "peanut oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "cubed chicken",
+      "amount": "½ cups"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "eggs",
+      "amount": "4"
+    },
+    {
+      "item": "sweet chili sauce",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "fish sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "tsp, lime juice",
+      "amount": "1"
+    },
+    {
+      "item": "peanut sauce",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "tbsp, sugar",
+      "amount": "2"
+    },
+    {
+      "item": "crushed peanuts",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Soak the rice noodles in a bowl of water for 5 minutes. Drain and set aside.",
+    "Heat the peanut oil in a large skillet.",
+    "Brown the garlic, scallions, and chicken for 5 minutes.",
+    "Transfer the chicken to a plate and set aside.",
+    "Heat the olive oil in the same skillet and crack the eggs into the skillet.",
+    "Scramble the eggs until they are firm, about 5 minutes.",
+    "Stir in the chili sauce, white wine vinegar, fish sauce, lime juice, peanut sauce, and sugar.",
+    "Stir well.",
+    "Return the chicken to the skillet and cook for 3 minutes.",
+    "Transfer the noodles into the skillet and toss well.",
+    "Top with the crushed peanuts."
+  ],
+  "image": "/recipes/pad-thai.jpg",
+  "time": {
+    "total": 18
+  }
+}

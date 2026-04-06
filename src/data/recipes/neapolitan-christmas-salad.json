@@ -1,0 +1,66 @@
+{
+  "id": "neapolitan-christmas-salad",
+  "name": "Neapolitan Christmas salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "This festive salad is known as “insalata di rinforzo” in Italian. It is traditionally made on Christmas Eve and replenished throughout the following days, but can be enjoyed at any time of year as a wholesome vegetarian dish.",
+  "ingredients": [
+    {
+      "item": "cauliflower, broken into small florets",
+      "amount": "1 head"
+    },
+    {
+      "item": "garlic clove, finely chopped, plus more to taste",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion, sliced paper thin",
+      "amount": "½"
+    },
+    {
+      "item": "roasted red peppers, thinly sliced",
+      "amount": "4"
+    },
+    {
+      "item": "pitted black olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "pitted green Cerignola olives",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salted capers, rinsed and drained",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "red wine vinegar, or to taste",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "freshly ground black pepper, plus more to taste",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "In a pot with a tight-fitting lid, bring 1in (2.5cm) of water to a boil over a medium-high heat. Place the cauliflower in a steamer basket, place in the pot, and steam for about 6 minutes or until tender. Transfer the cauliflower to a large bowl, and immediately toss with the garlic and red onion.",
+    "Using a silicone spatula, gently stir in the roasted red peppers, both types of olives, and capers. Drizzle with the extra-virgin olive oil, and toss gently.",
+    "Add the vinegar, flat-leaf parsley, and black pepper, and toss again. Taste and add more vinegar or black pepper, if desired. Serve immediately, or refrigerate for up to 1 week."
+  ],
+  "image": "/recipes/neapolitan-christmas-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

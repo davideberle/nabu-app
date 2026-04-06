@@ -1,0 +1,95 @@
+{
+  "id": "bolognese-sauce",
+  "name": "Bolognese Sauce",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "cut-up pancetta",
+      "amount": "3 oz."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "shredded carrots",
+      "amount": "2"
+    },
+    {
+      "item": "chopped celery stalks",
+      "amount": "2"
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "ground pork",
+      "amount": "¾ lb."
+    },
+    {
+      "item": "crushed canned tomatoes",
+      "amount": "28 oz."
+    },
+    {
+      "item": "tomato paste",
+      "amount": "6 oz."
+    },
+    {
+      "item": "dry white wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chicken stock",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "milk",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Italian seasoning or to taste",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "grated Pecorino Romano",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "prepared pasta",
+      "amount": "1 lb."
+    }
+  ],
+  "method": [
+    "Heat the oil in a large skillet and sauté the pancetta, onion, and garlic for 5 minutes.",
+    "Use the skillet the brown both meats for 5 minutes.",
+    "Drain off any fat.",
+    "Add the pancetta mixture back to the skillet and stir in the beef and pork.",
+    "Stir in the remaining ingredients and combine well.",
+    "Cover the skillet and simmer for 1 hour while frequently stirring.",
+    "Serve over the cooked pasta."
+  ],
+  "image": "/recipes/bolognese-sauce.jpg",
+  "time": {
+    "total": 10
+  }
+}

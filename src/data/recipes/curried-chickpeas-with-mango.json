@@ -1,0 +1,61 @@
+{
+  "id": "curried-chickpeas-with-mango",
+  "name": "Curried chickpeas with mango",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This salad is perfect for anyone looking for tropical flavors and spices without the heavy sauces typical of traditional curry. The freshness provided by the mango and mint makes this fruity salad perfect for summer.",
+  "ingredients": [
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "mango, cut into cubes",
+      "amount": "1"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "handful of whole almonds, halved",
+      "amount": ""
+    },
+    {
+      "item": "handful of mint leaves, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) pinch of mild curry powder",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. In a small bowl, whisk together the oil and vinegar. Add the sugar and curry powder, season with salt and black pepper, and whisk until blended.",
+    "Put the chickpeas, mango, red onion, and almonds in a bowl, and combine. Pour over the dressing, and toss to coat. Just before serving, stir in the fresh mint leaves."
+  ],
+  "image": "/recipes/curried-chickpeas-with-mango.jpg",
+  "time": {
+    "total": 50
+  }
+}

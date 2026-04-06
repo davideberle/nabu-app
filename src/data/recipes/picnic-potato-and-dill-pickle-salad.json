@@ -1,0 +1,71 @@
+{
+  "id": "picnic-potato-and-dill-pickle-salad",
+  "name": "Picnic potato and dill pickle salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 14",
+  "intro": "Tender new potatoes are bathed in a sauce of mayonnaise and herbs, as well as lots of crunchy celery and dill pickles, in this hard-to-beat potato salad. It is perfect for picnics or as a summery side dish.",
+  "ingredients": [
+    {
+      "item": "small new potatoes",
+      "amount": "3lb (1.35kg)"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "sticks celery, finely chopped",
+      "amount": "4"
+    },
+    {
+      "item": "dill pickle. finely chopped",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) mayonnaise",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) whole-grain Dijon mustard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) apple cider vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) dill, finely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) flat-leaf parsley, finely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) hot sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a pot with a tight-fitting lid, bring 2in (5cm) of water to a boil over medium-high heat. Place the new potatoes in a steamer basket, set in the pot, and steam for about 10 minutes or until tender and easily pierced with a fork. Transfer to a wide colander to drain and cool for 15 minutes.",
+    "Meanwhile, in a large bowl, whisk together the dressing ingredients until smooth and well combined. Transfer half of this dressing to a small bowl and set aside.",
+    "When the potatoes are cool enough to handle, cut into halves or quarters. Fold the red onion, celery, and dill pickle into the sauce in the large bowl, then gently fold in the potatoes. Refrigerate along with the reserved dressing for 1 hour or until chilled.",
+    "Fold in the reserved dressing and serve. This potato salad will keep in the fridge for up to 3 days."
+  ],
+  "image": "/recipes/picnic-potato-and-dill-pickle-salad.jpg",
+  "time": {
+    "total": 25
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "ramen-noodle-salad",
+  "name": "Ramen Noodle Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "of crushed ramen noodles",
+      "amount": "6 oz."
+    },
+    {
+      "item": "slivered almonds",
+      "amount": "1 cup"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "canola oil",
+      "amount": "¼"
+    },
+    {
+      "item": "white vinegar",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "ramen noodle flavor packet",
+      "amount": "1"
+    },
+    {
+      "item": "white sugar",
+      "amount": "½ cup"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "package slaw mix",
+      "amount": "2 cups"
+    },
+    {
+      "item": "chopped water chestnuts",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "4"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the ramen noodles, slivered almonds, and sesame seeds on a baking sheet and bake for 10 minutes at 350 degrees. Let cool.",
+    "Combine the oil, vinegar, sugar, ramen flavor packet, and vinegar in a small pan and boil for 1 minute.",
+    "Stir in the soy sauce.",
+    "Transfer the slaw mix, water chestnuts, and scallion to a salad bowl.",
+    "Stir in the noodle mixture and oil and vinegar mixture and toss well.",
+    "Season with salt and pepper, if needed."
+  ],
+  "image": "/recipes/ramen-noodle-salad.jpg",
+  "time": {
+    "total": 11
+  }
+}

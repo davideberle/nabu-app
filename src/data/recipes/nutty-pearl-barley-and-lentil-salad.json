@@ -1,0 +1,50 @@
+{
+  "id": "nutty-pearl-barley-and-lentil-salad",
+  "name": "Nutty pearl barley and lentil salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "The combination of hearty pearl barley and nutty, crunchy almonds and walnuts in this salad is well balanced by the contrasting tastes and textures of sweet, dried cranberries and salty goat cheese.",
+  "ingredients": [
+    {
+      "item": "uncooked pearl barley",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "can green lentils, drained",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "almonds, roughly chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "walnuts, roughly chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "soft goat cheese, crumbled",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "arugula leaves",
+      "amount": "3½ oz (100g)"
+    }
+  ],
+  "method": [
+    "Place the barley in a bowl, cover with water, and allow to soak overnight or for at least 8 hours. Then drain, rinse under running water, and drain well again.",
+    "Place the barley in a lidded saucepan and cover with plenty of water. Bring to a boil, then reduce the heat to a simmer, and cover. Cook for about 30 minutes or until the barley is tender. Remove from the heat, drain any remaining water, and allow to cool completely.",
+    "Once cooled, place the barley and lentils in a large bowl and mix lightly to combine. Add the almonds, walnuts, and cranberries, and mix to combine. Sprinkle over the goat cheese, add the arugula, and toss lightly. Divide the salad between 4 individual plates and serve immediately."
+  ],
+  "image": "/recipes/nutty-pearl-barley-and-lentil-salad.jpg",
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "thai-spiced-lamb-salad-with-lime-dressing",
+  "name": "Thai-spiced lamb salad with lime dressing",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "The vibrant colors of this spicy lamb salad really sing out, making it perfect for a summer lunch. Be sure not to overcook the lamb, or slice into it without letting it rest first, or you’ll risk losing those delicious meat juices.",
+  "ingredients": [
+    {
+      "item": "peanut oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "2oz (500g) boneless lamb leg or chump",
+      "amount": "1lb"
+    },
+    {
+      "item": "Thai glass noodles, cooked",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "shallots, thinly sliced",
+      "amount": "3"
+    },
+    {
+      "item": "handful of cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Thai basil leaves",
+      "amount": "12"
+    },
+    {
+      "item": "small handful of mint leaves",
+      "amount": ""
+    },
+    {
+      "item": "roasted peanuts, coarsely ground",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) grated zest and juice of 5 limes",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) palm sugar or brown sugar",
+      "amount": "3 tsp"
+    },
+    {
+      "item": "(For the dressing) red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) Thai fish sauce",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "(For the dressing) tamarind",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "For the dressing, place the lime zest and juice, sugar, chile, fish sauce, tamarind, and 1 tablespoon of peanut oil in a small bowl. Mix to combine all the ingredients and dissolve the sugar. Set aside.",
+    "Cut the lamb into eight equal strips. Heat a grill pan and add the remaining groundnut oil. Sear the lamb for about 2 minutes on each side. Do not overcook the lamb—it should be rare. Let rest for 3 minutes.",
+    "Slice the lamb thinly and place in a large bowl. Add the glass noodles, dressing, shallots, herbs, and peanuts, and toss to combine. Divide the salad between 4 individual plates and serve immediately."
+  ],
+  "image": "/recipes/thai-spiced-lamb-salad-with-lime-dressing.jpg",
+  "time": {
+    "total": 17
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "red-pepper-salad",
+  "name": "Red pepper salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "In this Spanish dish, sweet red bell peppers are gently stewed, and then served cold. It is wonderful as tapas, or as a side dish with a piece of grilled steak or meaty fish, such as tuna.",
+  "ingredients": [
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "red bell peppers, seeded and cut into large strips",
+      "amount": "6"
+    },
+    {
+      "item": "garlic cloves, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "ripe tomatoes, peeled, seeded, and chopped",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in a large frying pan, add the peppers and garlic, and fry over low heat for 5 minutes, stirring, then add the tomatoes. Increase the heat, bring to a simmer, then reduce the heat to low, cover, and cook for 12–15 minutes.",
+    "Stir in the parsley, season well with salt and pepper, and cook for 2 more minutes. Using a slotted spoon, remove the peppers, and arrange in a serving dish.",
+    "Add the vinegar to the pan, increase the heat, and simmer the sauce for 5–7 minutes, or until it has reduced and thickened. Pour the sauce over the peppers and allow to cool before serving."
+  ],
+  "image": null,
+  "time": {
+    "total": 35
+  }
+}

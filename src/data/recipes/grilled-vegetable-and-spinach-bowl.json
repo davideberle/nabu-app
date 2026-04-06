@@ -1,0 +1,82 @@
+{
+  "id": "grilled-vegetable-and-spinach-bowl",
+  "name": "Grilled vegetable and spinach bowl",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "When cooking barbecue, you don’t need to create endless variations of “meat on bread.” This salad bucks the trend with a rich, filling, and hearty dish that can be enjoyed by vegetarians and meat-eaters alike.",
+  "ingredients": [
+    {
+      "item": "large eggplants, cut into slices ½in (1mm) thick",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "mixed bell peppers, halved and seeded",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of fresh oregano",
+      "amount": "2 sprigs"
+    },
+    {
+      "item": "zucchini, about 10oz (300g), cut into diagonal slices ¼ in (5mm) thick",
+      "amount": "1"
+    },
+    {
+      "item": "fresh asparagus spears, trimmed and boiled",
+      "amount": "6"
+    },
+    {
+      "item": "canned artichoke hearts, cut into wedges",
+      "amount": "4"
+    },
+    {
+      "item": "of baby spinach leaves",
+      "amount": "4 handfuls"
+    },
+    {
+      "item": "black olives",
+      "amount": "12"
+    },
+    {
+      "item": "small red onion, sliced into thin rounds",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) freshly squeezed lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) chopped fresh dill",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) scallions, thinly sliced",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Preheat the grill. Place the eggplant slices in a colander, sprinkle over salt, and set aside for 15 minutes. Rinse and pat dry with paper towels. Meanwhile, toss the peppers in 4 tablespoons of oil, the oregano, and salt and pepper.",
+    "Grill the peppers for 10 minutes. Allow to cool, then peel and slice into strips. Set aside. Brush the eggplant and zucchini slices with oil, and grill for 2–3 minutes on each side, until starting to char. Set aside. Lower the temperature and brush the grill with a little oil. Add the asparagus and cook for 5 minutes, turning them as they char. Finally, add the artichokes, and cook for 2–3 minutes on each side.",
+    "Combine the grilled vegetables with the spinach, olives, and onion in a serving bowl. Whisk together the dressing ingredients, pour over the salad, and toss gently to coat."
+  ],
+  "image": "/recipes/grilled-vegetable-and-spinach-bowl.jpg",
+  "time": {
+    "total": 45
+  }
+}

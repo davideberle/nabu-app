@@ -1,0 +1,46 @@
+{
+  "id": "apple-cider-vinaigrette",
+  "name": "Apple cider vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 8",
+  "intro": "Whisk together this simple, tangy vinaigrette dressing in minutes to give your salads a flavor-packed punch. Nonalcoholic apple cider vinegar is available in health food stores and larger supermarkets.",
+  "ingredients": [
+    {
+      "item": "small shallot, finely minced",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped fresh herbs, such as chives, tarragon, or parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "In a small bowl, whisk together the shallot, herbs, apple cider vinegar, salt, and Dijon mustard.",
+    "Slowly whisk in the extra-virgin olive oil, a few drops at a time, until the dressing is smooth and all the oil has been incorporated.",
+    "Season with black pepper and use immediately, or refrigerate in a tightly sealed container for up to 3 days."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

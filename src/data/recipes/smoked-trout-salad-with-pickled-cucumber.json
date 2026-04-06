@@ -1,0 +1,67 @@
+{
+  "id": "smoked-trout-salad-with-pickled-cucumber",
+  "name": "Smoked trout salad with pickled cucumber",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "Homemade pickled cucumber is surprisingly quick and easy to make. Its refreshing tang adds a lift to any dish it is paired with—including this light salad of smoked fish and avocado.",
+  "ingredients": [
+    {
+      "item": "avocado, halved, pitted, and peeled",
+      "amount": "1"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Greek-style yogurt",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "handful of mint leaves, chopped",
+      "amount": ""
+    },
+    {
+      "item": "large handfuls of mixed salad leaves",
+      "amount": "2"
+    },
+    {
+      "item": "green olives, pitted",
+      "amount": "12"
+    },
+    {
+      "item": "cold-smoked trout fillets, flaked",
+      "amount": "2 × 7oz (200g)"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the pickled cucumber) white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the pickled cucumber) sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "(For the pickled cucumber) fresh red chile, seeded and finely chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "1⁄2 large cucumber, peeled and halved lengthwise, seeded, and sliced",
+    "Cut the avocado flesh into slices lengthwise, then sprinkle with the lemon juice to prevent discoloration. Set aside.",
+    "To make the pickled cucumber, whisk the vinegar, sugar, and chile in a small bowl until combined. Add the cucumber, and toss it all together. In a separate small bowl, stir together the yogurt and mint until well mixed.",
+    "Arrange the salad leaves and olives in a large bowl or on 4 individual plates. Top with the flaked trout and avocado, then season to taste. Spoon some of the pickled cucumber mixture over top, and keep the rest in a bowl to serve on the side along with the mint yogurt."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}

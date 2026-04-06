@@ -2,54 +2,52 @@
   "id": "hummus",
   "name": "Hummus",
   "source": {
-    "cookbook": "Persiana",
-    "author": "Sabrina Ghayour",
-    "chapter": "Mezze & sharing plates"
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
   },
-  "servings": "serves 8",
-  "intro": "Hummus… who doesn’t love it? Although this recipe deviates from the authentic Lebanese version, it allows you to make a pretty great hummus at home with a little help from a food processor. I also make a great lemon and coriander variation for when you are in need of something a little different or if, like me, you have friends and family who are hummus addicts, so you need to offer up more than one version of the good stuff.",
+  "servings": "serves 6",
+  "intro": "Rich, creamy, nutritious hummus is filled with the flavors of garlic, lemon, and tahini (sesame seed paste). Serve it with Fattoush, scooping up the dip with the toasted flatbread.",
   "ingredients": [
     {
-      "item": "cans chickpeas (reserve the liquid of 1¼ cans)",
-      "amount": "3 x 400g"
+      "item": "can chickpeas, drained",
+      "amount": "1 × 14oz (400g)"
     },
     {
-      "item": "about 4 tbsp olive oil, plus extra for drizzling",
-      "amount": ""
+      "item": "sea salt",
+      "amount": "2 tsp"
     },
     {
-      "item": "garlic oil",
-      "amount": "4 tbsp"
-    },
-    {
-      "item": "juice of 3 lemons",
-      "amount": ""
-    },
-    {
-      "item": "light tahini",
-      "amount": "4 tbsp"
-    },
-    {
-      "item": "crushed sea salt",
+      "item": "lemon juice",
       "amount": "2 tbsp"
     },
     {
-      "item": "sprinkling of paprika, to garnish",
-      "amount": ""
+      "item": "garlic, smashed and chopped",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "tahini",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "plus 2 tbsp extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "ground sumac",
+      "amount": "1 tsp"
     }
   ],
   "method": [
-    "First you need to mash the chickpeas, which I prefer to do by hand to give them a nice rough texture but, admittedly, it is a labour of love and whizzing them in a food processor gives them the smooth texture that we are more accustomed to. Use the chickpea liquid, a little at a time, and some olive oil to help the process and achieve an even texture. Add the garlic oil, lemon juice and tahini, followed by the bulk of the remaining olive oil and the sea salt. Mix (or blitz) thoroughly.",
-    "Add another thin drizzle of olive oil until you reach your desired consistency. Check the flavour to adjust the seasoning and/or add more lemon juice as required. Serve with a gentle drizzle of olive oil on top and a light sprinkling of paprika (if using) for colour."
+    "Pour the chickpeas into a colander. Rinse under running water, then drain.",
+    "Place the drained chickpeas in a large saucepan, reserving a few for garnish if wished. Add enough water to cover by 1in (2.5cm), and bring to a boil. Reduce the heat to low so that the chickpeas bubble at a gentle simmer, and cook for 30 minutes.",
+    "Add salt, and cook for 1 more hour, or until the chickpeas are soft and tender.",
+    "Drain the chickpeas thoroughly, reserving 3⁄4 cup of the cooking liquid.",
+    "Place the warm chickpeas in a food processor fitted with a metal blade. Add the lemon juice, garlic, and tahini, and pulse to combine. With the machine running, slowly drizzle in 1⁄2 cup extra-virgin olive oil, followed by the reserved cooking liquid.",
+    "Spread the hummus in a shallow bowl, and make a well in the center. Pour the remaining 2 tablespoons of extra-virgin olive oil into the well. Serve immediately, garnished with sumac and the reserved chickpeas, or refrigerate in a sealed container for up to 5 days."
   ],
   "image": "/recipes/hummus.jpg",
-  "dietary": [
-    "vegan",
-    "vegetarian"
-  ],
-  "category": {
-    "dish_type": [
-      "starter"
-    ]
+  "time": {
+    "total": 100
   }
 }

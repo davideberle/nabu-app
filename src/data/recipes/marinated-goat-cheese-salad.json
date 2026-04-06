@@ -1,0 +1,84 @@
+{
+  "id": "marinated-goat-cheese-salad",
+  "name": "Marinated goat cheese salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 8",
+  "intro": "A glass jar of little goat cheeses, herbs, and chiles in oil is an eye-catcher in any kitchen. For the best flavor, marinate it a week in advance of serving.",
+  "ingredients": [
+    {
+      "item": "small round semihard goat cheeses, each weighing about 2–3oz (60–90g)",
+      "amount": "4"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "of thyme",
+      "amount": "2–3 sprigs"
+    },
+    {
+      "item": "of rosemary",
+      "amount": "2–3 sprigs"
+    },
+    {
+      "item": "of oregano",
+      "amount": "2–3 sprigs"
+    },
+    {
+      "item": "small dried red chiles",
+      "amount": "2"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "olive oil, plus more if needed",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "of whole-wheat bread, trimmed into rounds with a pastry cutter",
+      "amount": "8 slices"
+    },
+    {
+      "item": "endive, leaves separated",
+      "amount": "2 heads"
+    },
+    {
+      "item": "butter leaf lettuce, leaves separated",
+      "amount": "1 head"
+    },
+    {
+      "item": "(For the dressing) red wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) chopped thyme",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Put the cheeses in a large glass jar with the herbs, chiles, and peppercorns. Add enough oil to cover generously. Seal the jar and let it marinade for at least 1 week.",
+    "Remove the cheeses from the marinade oil, draining off the excess. Strain the oil, setting aside at least 1⁄3 cup for the vinaigrette and a little more for the bread.",
+    "For the vinaigrette, combine the vinegar and mustard in a bowl. Gradually whisk in the reserved oil to emulsify the vinaigrette. Add the thyme and season to taste.",
+    "Preheat the oven to 400°F (200°C). Brush the bread rounds with a little of the strained oil and bake for 3–5 minutes, until lightly toasted. Heat the broiler. Cut each goat cheese in half horizontally and put a piece on top of each bread round. Broil for 2–3 minutes, until bubbling and golden.",
+    "Arrange the salad leaves on individual plates, drizzle with the vinaigrette, and place the cheese toasts on top."
+  ],
+  "image": null,
+  "time": {
+    "total": 25
+  }
+}

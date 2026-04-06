@@ -1,0 +1,54 @@
+{
+  "id": "lemongrass-and-chile-salsa",
+  "name": "Lemongrass and chile salsa",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 6",
+  "intro": "This is a fantastically fresh, spicy salsa. The combination of Asian flavors and vibrant colors will transform meat- and fish-based salads, such as the Thai-spiced lamb salad.",
+  "ingredients": [
+    {
+      "item": "of lemongrass, outer leaves discarded",
+      "amount": "2 stalks"
+    },
+    {
+      "item": "heaping tbsp chopped Thai or Italian basil, plus 6 whole leaves to finish",
+      "amount": "2"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "honey or 1 tbsp sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soy sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Thai fish sauce",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "⅓ cup"
+    }
+  ],
+  "method": [
+    "Slice off the tops of the lemongrass stalks and discard them. Bash down on the bulb ends with the flat side of a large knife or pound using a kitchen mallet. Chop very finely and place in a bowl.",
+    "Add the basil, ginger, and chile. Pour in the honey, soy sauce, Thai fish sauce, and lime juice, and stir well. Cover and chill for at least 1 hour to help develop the flavors.",
+    "Stir in the whole basil leaves just before serving. The salsa can be stored in the fridge for up to 2 days."
+  ],
+  "image": null,
+  "time": {
+    "total": 50
+  }
+}

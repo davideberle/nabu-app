@@ -1,0 +1,58 @@
+{
+  "id": "watermelon-and-feta-salad",
+  "name": "Watermelon and feta salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "This salad is a modern classic. The sweetness of the ripe melon contrasts wonderfully with the salty feta and the nuttiness of the pumpkin seeds—perfect for a refreshing summer lunch.",
+  "ingredients": [
+    {
+      "item": "pumpkin seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "chili powder",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "2oz (500g) watermelon, peeled, and cut into ¾ in (2cm) cubes",
+      "amount": "1lb"
+    },
+    {
+      "item": "red onion, thinly sliced",
+      "amount": "½"
+    },
+    {
+      "item": "large handfuls of mixed salad leaves, such as watercress, arugula, or baby spinach",
+      "amount": "4"
+    },
+    {
+      "item": "feta cheese, cut into ½ in (1cm) cubes",
+      "amount": "10oz (300g)"
+    }
+  ],
+  "method": [
+    "Dry-fry the pumpkin seeds for 2–3 minutes until they start to pop. Add a pinch of sea salt and the chili powder, stir, and cook for 1 more minute. Set aside to cool.",
+    "In a large bowl, whisk together the oil, lemon juice, and sea salt and pepper to taste. Add the watermelon, red onion, and salad leaves, and toss well to coat with the dressing.",
+    "Scatter the feta and the seeds over the top of the salad, and serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 15
+  }
+}

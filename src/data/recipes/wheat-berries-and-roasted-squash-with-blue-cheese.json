@@ -1,0 +1,46 @@
+{
+  "id": "wheat-berries-and-roasted-squash-with-blue-cheese",
+  "name": "Wheat berries and roasted squash with blue cheese",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "A great dish for cool fall days, this warm salad is an excellent combination of sweet, roasted butternut squash and chewy wheat berries that are given an added salty element from the blue cheese.",
+  "ingredients": [
+    {
+      "item": "uncooked wheat berries",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "butternut squash, seeded and cut into cubes",
+      "amount": "1¾ lb (800g)"
+    },
+    {
+      "item": "olive oil, plus extra for greasing",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "blue cheese, crumbled",
+      "amount": "1 cup"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "½ cup"
+    }
+  ],
+  "method": [
+    "Place the wheat berries in a large bowl, cover with water, and let soak overnight or for about 8 hours. Drain, rinse, and drain well again. Place in a large, lidded saucepan and cover with 4 cups of water. Bring to a boil, then reduce the heat and simmer, covered, for about 50 minutes. Remove from the heat, drain, and allow to cool slightly.",
+    "Meanwhile, preheat the oven to 400°F (200°C). Spread out the butternut squash on a greased baking sheet in an even layer, drizzle with oil, and season. Roast for 20 minutes, then remove from the oven, and stir to mix. Return the sheet to the oven and roast for 20 more minutes.",
+    "Place the wheat berries, squash, and cheese in a large bowl, drizzle with the balsamic vinegar, and toss to coat. Taste and adjust the seasoning, if needed, and serve."
+  ],
+  "image": "/recipes/wheat-berries-and-roasted-squash-with-blue-cheese.jpg",
+  "time": {
+    "total": 75
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "angel-hair-carbonara",
+  "name": "Angel Hair Carbonara",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "slices of bacon",
+      "amount": "4"
+    },
+    {
+      "item": "angel hair pasta",
+      "amount": "½ lb."
+    },
+    {
+      "item": "plain sour cream",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated Pecorino Romano",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "egg",
+      "amount": "1"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "garlic salt",
+      "amount": "½ tsp."
+    }
+  ],
+  "method": [
+    "Fry the bacon in a skill for 7 minutes.",
+    "Drain, let cool, and crumble.",
+    "Cook the angel hair in a pot of salted water for 5 minutes. Drain.",
+    "Combine the yogurt, sour cream, Pecorino Romano, egg, and all seasonings in a bowl.",
+    "Toss the pasta with the cheese mixture and top with the crumbled bacon."
+  ],
+  "image": "/recipes/angel-hair-carbonara.jpg",
+  "time": {
+    "total": 12
+  }
+}

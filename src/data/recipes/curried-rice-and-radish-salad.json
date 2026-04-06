@@ -1,0 +1,61 @@
+{
+  "id": "curried-rice-and-radish-salad",
+  "name": "Curried rice and radish salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Thinly sliced raw vegetables not only give this rice dish plenty of crunch, but also a nutritional boost: among other benefits, uncooked cabbage is full of potassium and iron, while radishes contain B-vitamins.",
+  "ingredients": [
+    {
+      "item": "white rice",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "handful of radishes, thinly sliced",
+      "amount": ""
+    },
+    {
+      "item": "red cabbage, finely shredded",
+      "amount": "½"
+    },
+    {
+      "item": "medium curry powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "mixed dried fruits, such as raisins and sultanas",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the rice in a pot of salted water for about 35 minutes until tender. Drain, and rinse under cold water. Drain again, and set aside to cool.",
+    "Put the rice in a large bowl with the radishes, cabbage, curry powder, cayenne pepper, dried fruit, lemon juice, olive oil, and parsley. Season well, stir to combine, and serve."
+  ],
+  "image": "/recipes/curried-rice-and-radish-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

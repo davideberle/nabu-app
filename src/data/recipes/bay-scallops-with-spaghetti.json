@@ -1,0 +1,65 @@
+{
+  "id": "bay-scallops-with-spaghetti",
+  "name": "Bay Scallops with Spaghetti",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "8 oz."
+    },
+    {
+      "item": "dry white wine",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "butter",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "bay scallops",
+      "amount": "1 lb."
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "pinch red pepper flakes",
+      "amount": "1"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of half a lemon",
+      "amount": ""
+    },
+    {
+      "item": "grated Pecorino-Romano",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Cook the spaghetti in a pot of salted water for 10 minutes. Drain and set aside.",
+    "Heat the butter in a large skillet.",
+    "Add the scallops in a single layer and brown for 2 minutes on medium heat.",
+    "Turn the scallops and brown the other side for 1 more minute.",
+    "Stir in the garlic, red pepper flakes, and wine and cook for 1 minute. Be sure not to overcook the scallops.",
+    "Season with salt, pepper, and the juice of half a lemon.",
+    "Stir the spaghetti into the skillet and combine it with the scallops.",
+    "Simmer for 2 minutes and top with the grated cheese."
+  ],
+  "image": "/recipes/bay-scallops-with-spaghetti.jpg",
+  "time": {
+    "total": 16
+  }
+}

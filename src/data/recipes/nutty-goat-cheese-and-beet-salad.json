@@ -1,0 +1,61 @@
+{
+  "id": "nutty-goat-cheese-and-beet-salad",
+  "name": "Nutty goat cheese and beet salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Cooked beets add a healthy, colorful boost to any salad. Make sure to avoid pickled beets, as they would overpower the other flavors in the dish.",
+  "ingredients": [
+    {
+      "item": "of arugula",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "large ready-cooked beets, roughly chopped",
+      "amount": "4–6"
+    },
+    {
+      "item": "semihard goat cheese, sliced",
+      "amount": "6oz (175g)"
+    },
+    {
+      "item": "handful of shelled pistachios, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) shallots, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) whole-grain mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the dressing, place the oil, vinegar, and shallots in a small bowl, and whisk together thoroughly. Add the mustard and sugar, and season well with salt and black pepper. Whisk again, then taste. Season again as needed—but remember to let the dressing stand for a while first, to develop the flavors.",
+    "Arrange the arugula on a large serving plate or 4 individual plates, then top with the beets and goat cheese. Drizzle with a little of the dressing, then sprinkle over the pistachios. Add more dressing, if you wish."
+  ],
+  "image": "/recipes/nutty-goat-cheese-and-beet-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

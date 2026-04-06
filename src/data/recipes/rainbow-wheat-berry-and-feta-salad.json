@@ -1,0 +1,59 @@
+{
+  "id": "rainbow-wheat-berry-and-feta-salad",
+  "name": "Rainbow wheat berry and feta salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 2",
+  "intro": "Despite what the name may suggest, wheat berries are not berries, but grains. They are whole kernels of wheat, with a creamy, nutty taste and a reddish-brown color—ideal for this bright, jewel-like salad.",
+  "ingredients": [
+    {
+      "item": "uncooked wheat berries",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "carrot, grated",
+      "amount": "1"
+    },
+    {
+      "item": "zucchini, grated",
+      "amount": "1"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "feta cheese, crumbled",
+      "amount": "⅔ cup"
+    },
+    {
+      "item": "chopped flat-leaf parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "seeds of 1 small pomegranate",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "juice of 1 lemon (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the wheat berries in a bowl, cover with water, and let soak overnight or for at least 8 hours. Then drain, rinse under running water, and drain well again.",
+    "Place the wheat berries in a lidded saucepan, cover with water, and bring to a boil, then reduce the heat to a simmer, and cover. Cook for 30 minutes, until tender. Remove from the heat, drain, and let cool completely.",
+    "Once cooled, place the wheat berries in a large bowl, along with the grated carrot and zucchini. Sprinkle over the pumpkin seeds and mix lightly to combine. Add the feta and parsley to the mixture and toss to combine.",
+    "Divide the salad equally between 2 salad bowls. Sprinkle over the pomegranate seeds and season to taste. Drizzle with lemon juice, if using, and serve immediately."
+  ],
+  "image": "/recipes/rainbow-wheat-berry-and-feta-salad.jpg",
+  "time": {
+    "total": 50
+  }
+}

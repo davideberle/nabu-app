@@ -1,0 +1,67 @@
+{
+  "id": "warm-potato-salad-with-mustard-vinaigrette",
+  "name": "Warm potato salad with mustard vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "The taste of these potatoes shouts loud as they are dressed quite simply, with plenty of shallots and a whole-grain mustard dressing, spooned over a bed of tender baby salad leaves.",
+  "ingredients": [
+    {
+      "item": "small fingerling potatoes, halved lengthwise",
+      "amount": "1lb (450g)"
+    },
+    {
+      "item": "salad leaves",
+      "amount": "14oz (400g)"
+    },
+    {
+      "item": "(For the dressing) shallot, halved and very thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) whole-grain Dijon mustard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) sherry vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) chervil, finely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) chives, finely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) flat-leaf parsley, finely chopped",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) freshly ground black pepper",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "In a pot with a tight-fitting lid, bring 2in (5cm) of water to a boil over medium-high heat. Place the potatoes in a steamer basket, set in the pot, and steam for about 8–10 minutes or until tender and easily pierced with a fork. Transfer the potatoes to a large bowl.",
+    "While the potatoes are steaming, in a small bowl, whisk together the shallots, mustard, vinegar, and salt. Slowly whisk in the extra-virgin olive oil in a thin stream, then whisk in the chopped herbs and black pepper.",
+    "Reserve 1⁄4 cup of dressing, and toss the potatoes with the remainder of the dressing.",
+    "Divide the salad leaves between 4 chilled individual plates, spoon one-quarter of the potato salad over the leaves, and drizzle each serving with 1 tablespoon of the reserved dressing. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 15
+  }
+}

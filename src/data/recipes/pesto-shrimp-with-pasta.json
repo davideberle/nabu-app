@@ -1,0 +1,68 @@
+{
+  "id": "pesto-shrimp-with-pasta",
+  "name": "Pesto Shrimp with Pasta",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "spaghetti",
+      "amount": "8 oz."
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "asparagus",
+      "amount": "8 oz."
+    },
+    {
+      "item": "sliced white mushrooms",
+      "amount": "1 cup"
+    },
+    {
+      "item": "peeled and deveined shrimp",
+      "amount": "¾ pound"
+    },
+    {
+      "item": "red pepper",
+      "amount": "⅛ tsp."
+    },
+    {
+      "item": "pesto – or prepare your own",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "grated parmesan cheese",
+      "amount": "2 tbsp."
+    }
+  ],
+  "method": [
+    "Place the spaghetti in a pot of boiling salted water and cook for 10 minutes.",
+    "Drain the spaghetti but keep some of the pasta water aside.",
+    "Heat the olive oil in a skillet.",
+    "Sauté the garlic, asparagus and mushrooms for 5 minutes or until they are tender.",
+    "Add the shrimp to the skillet and season with red pepper",
+    "Cook for 5 minutes.",
+    "If liquid is needed, add a few tablespoons of pasta water.",
+    "Combine the pesto sauce and the parmesan cheese.",
+    "Stir the pesto into the shrimp.",
+    "Cook for 5 minutes",
+    "Serve over the spaghetti."
+  ],
+  "image": "/recipes/pesto-shrimp-with-pasta.jpg",
+  "time": {
+    "total": 25
+  }
+}

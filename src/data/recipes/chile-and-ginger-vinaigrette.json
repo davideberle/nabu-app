@@ -1,0 +1,58 @@
+{
+  "id": "chile-and-ginger-vinaigrette",
+  "name": "Chile and ginger vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 10",
+  "intro": "This Asian-inspired dressing has a complex flavor; prepare a few hours ahead to allow the ginger and lemongrass to fully infuse. It is an excellent choice for noodle salads, such as the Mixed seafood salad.",
+  "ingredients": [
+    {
+      "item": "white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "juice of ½ lime",
+      "amount": ""
+    },
+    {
+      "item": "pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "red chile, seeded and finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "x 1in (2.5cm) piece of fresh ginger, peeled and grated",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, peeled and grated",
+      "amount": "2"
+    },
+    {
+      "item": "lemongrass stalks, ends trimmed and outer leaves discarded",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the vinegar, lime juice, and sugar in a small bowl. Add the oil in a steady stream and whisk until the mixture has emulsified.",
+    "Add the remaining ingredients, season to taste with salt and black pepper, and whisk to combine. Set aside for a few hours to develop the flavors.",
+    "Remove the lemongrass stalks just before serving. If the ingredients have separated, whisk again to re-emulsify."
+  ],
+  "image": null,
+  "time": {
+    "total": 35
+  }
+}

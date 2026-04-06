@@ -1,0 +1,86 @@
+{
+  "id": "penne-with-vodka-sauce",
+  "name": "Penne with Vodka Sauce",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "penne pasta",
+      "amount": "16 oz."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "diced onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "chopped prosciutto",
+      "amount": "¼ lb."
+    },
+    {
+      "item": "canned crushed tomatoes",
+      "amount": "28 oz."
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vodka",
+      "amount": "½ cup"
+    },
+    {
+      "item": "heavy cream",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Parmesan cheese",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped fresh basil leaves",
+      "amount": "½ cup"
+    },
+    {
+      "item": "thyme",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "Salt to taste",
+      "amount": ""
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp."
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of salted water for 10 minutes. Drain.",
+    "Heat the oil in a large skillet or another pot.",
+    "Sauté the onion, garlic, prosciutto for 2 minutes.",
+    "Add the crushed tomatoes and tomato sauce.",
+    "Stir and simmer for 5 minutes.",
+    "Add the vodka and heavy cream and simmer for 20 minutes.",
+    "Season with basil, thyme, parsley, salt, and sugar.",
+    "Taste and adjust seasoning.",
+    "Stir in the cooked pasta and parmesan cheese and simmer for 5 minutes."
+  ],
+  "image": "/recipes/penne-with-vodka-sauce.jpg",
+  "time": {
+    "total": 42
+  }
+}

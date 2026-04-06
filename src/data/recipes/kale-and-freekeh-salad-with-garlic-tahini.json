@@ -1,0 +1,84 @@
+{
+  "id": "kale-and-freekeh-salad-with-garlic-tahini",
+  "name": "Kale and freekeh salad with garlic tahini",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "Chopped salads are easy to throw together and a great way to use up surplus ingredients in the fridge. Beautifully summery, this salad is best served when zucchini and sweet corn are in their peak season.",
+  "ingredients": [
+    {
+      "item": "uncooked freekeh",
+      "amount": "1 cup"
+    },
+    {
+      "item": "vegetable stock",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "fresh sweet corn",
+      "amount": "1½ cups"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "almonds, chopped",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "kale leaves chopped",
+      "amount": "10–12"
+    },
+    {
+      "item": "can chickpeas, chopped",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "scallions, chopped",
+      "amount": "4–6"
+    },
+    {
+      "item": "zucchini, diced",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) tahini",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic clove, pressed",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) soy sauce",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) toasted sesame oil",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Rinse the freekeh under cold running water, drain well, and place in a lidded saucepan. Add the stock and bring to a boil. Reduce the heat to a simmer, cover, and cook for about 20 minutes. Remove from the heat and set aside for 5 minutes, then uncover and allow to cool.",
+    "Cook the sweet corn in a large saucepan of boiling salted water for 10 minutes or until tender. Remove from the pan and rinse under cold running water.",
+    "Place the dressing ingredients in a small bowl, add 2 tablespoons of water, and whisk until well combined. Taste, season as necessary, and set aside.",
+    "Heat the olive oil in a small nonstick frying pan over low heat. Add the almonds and toast for 2–3 minutes, or until the nuts are lightly browned. Remove from the heat and allow to cool.",
+    "Place the kale in a large bowl and drizzle with some of the dressing. Toss well to coat. Then add the sweet corn, almonds, chickpeas, scallions, and zucchini. Drizzle with more of the dressing and toss well to coat. Add the freekeh and the remaining dressing and toss well to coat. Serve immediately."
+  ],
+  "image": null,
+  "time": {
+    "total": 50
+  }
+}

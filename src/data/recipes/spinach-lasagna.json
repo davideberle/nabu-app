@@ -2,93 +2,79 @@
   "id": "spinach-lasagna",
   "name": "Spinach Lasagna",
   "source": {
-    "cookbook": "Zagami Family Cookbook",
-    "author": "Zagami Family",
-    "chapter": "Main Dishes"
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
   },
+  "servings": "serves 8",
   "ingredients": [
     {
-      "item": "chopped parsley",
-      "amount": "¼ cup"
+      "item": "olive oil",
+      "amount": "1 tbsp."
     },
     {
-      "item": "container ricotta",
-      "amount": "8 oz"
+      "item": "chopped frozen spinach",
+      "amount": "10 oz."
     },
     {
-      "item": "egg",
+      "item": "small, chopped onion",
       "amount": "1"
     },
     {
-      "item": "parmesan cheese",
-      "amount": "1/2 cup"
+      "item": "sliced mushrooms",
+      "amount": "1 cup"
     },
     {
-      "item": "mozzarella",
+      "item": "grated parmesan cheese",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "3"
+    },
+    {
+      "item": "Italian seasoning",
+      "amount": "¾ tsp."
+    },
+    {
+      "item": "shredded mozzarella cheese",
+      "amount": "12 oz."
+    },
+    {
+      "item": "of marinara sauce-preferably homemade",
+      "amount": "4 cups"
+    },
+    {
+      "item": "ricotta cheese",
       "amount": "2 cups"
     },
     {
-      "item": "1.5 cups cooked spinach",
+      "item": "beaten eggs",
+      "amount": "2"
+    },
+    {
+      "item": "Salt and pepper to taste",
       "amount": ""
     },
     {
-      "item": "salt",
-      "amount": "1 t"
-    },
-    {
-      "item": "pepper",
-      "amount": "1 t"
-    },
-    {
-      "item": "can San Marzano tomatoes, plus 1 can of water)",
-      "amount": "16 oz"
-    },
-    {
-      "item": "olive oil",
-      "amount": "2 T"
-    },
-    {
-      "item": "crushed garlic",
-      "amount": "1"
-    },
-    {
-      "item": "torn basil leaves",
-      "amount": "4-5"
-    },
-    {
-      "item": "salt",
-      "amount": "1 t"
-    },
-    {
-      "item": "pepper",
-      "amount": "1 t"
-    },
-    {
-      "item": "oregano",
-      "amount": "1 t"
-    },
-    {
-      "item": "mozzarella",
-      "amount": "1/2 cup"
-    },
-    {
-      "item": "parmesan",
-      "amount": "¼ cup"
+      "item": "cooked lasagna noodles",
+      "amount": "10 oz."
     }
   ],
   "method": [
-    "Lasagna noodles: I make mine fresh: see my fettuccine recipe. When you get to the pasta-making part, flatten the dough on 6 or 7, and work down to 3. Set the pieces you stretched to the side on a cutting board. Make sure that you flour your pieces really well so they don't stick. After you have stretched all the dough make about 8-inch long and 4-inch wide strips with a pizza cutter and let dry. Another option is you can either buy the boxed kind that you need to boil to al dente in salted water and set aside, or fresh lasagna noodles that you can find in the refrigerated section of the grocery store.",
-    "Prepare sauce: In a frying pan on medium heat, add 2 T olive oil. Add garlic and sauté for a minute, then add tomatoes, water, salt, pepper, oregano, and a couple of torn basil leaves on top. Cover and let simmer for about 20 minutes. While the sauce is simmering, prepare the filling. In a large bowl, add ricotta and beaten egg. Add mozzarella, parmesan, cooked spinach, (remove as much water as possible,) seasonings and chopped parsley. Mix well.",
-    "Preheat oven to 350°F. Assemble lasagna in an 8-inch square casserole dish. Spread a little sauce on the bottom,",
-    "then cover the bottom across with lasagna noodles, then add your first layer of spinach cheese filling, sauce, and lasagna noodles. Repeat until you reach the top of the casserole. Try to divide the cheese and sauce evenly. Add the top layer of lasagna noodles, a layer of sauce, and cover top with mozzarella and parmesan. Cover with aluminum and back for 30 minutes. Remove foil and bake an additional 15 minutes or until the top looks brown and bubbly. Serves 4. Serving suggestion: fresh salad and homemade bread. Olé"
+    "Preheat the oven to 350 degrees.",
+    "Heat the olive oil in a large pot.",
+    "Sauté the spinach, onion, mushrooms, garlic, and Italian seasoning for 5 minutes.",
+    "Cover with the marinara sauce and simmer for 30 minutes.",
+    "Combine the ricotta cheese, mozzarella cheese, parmesan cheese, and the eggs in a bowl.",
+    "Season with salt and pepper.",
+    "Pour 1 cup of sauce in the bottom of a lasagna pan.",
+    "Top with 4 noodles, half the remaining cheese and half the sauce.",
+    "Repeat the layering and end with the sauce.",
+    "Cover the pan with aluminum and bake for 55 minutes.",
+    "Remove the aluminum and cook for 15 more minutes."
   ],
+  "image": "/recipes/spinach-lasagna.jpg",
   "time": {
-    "total": 65
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ]
-  },
-  "image": "/recipes/spinach-lasagna.jpg"
+    "total": 15
+  }
 }

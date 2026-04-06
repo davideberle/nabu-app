@@ -1,0 +1,87 @@
+{
+  "id": "baked-ziti",
+  "name": "Baked Ziti",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "ziti pasta",
+      "amount": "1 lb."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "ground beef",
+      "amount": "1 lb."
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "garlic salt",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "garlic powder",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "6 cups"
+    },
+    {
+      "item": "oregano",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "basil",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "ricotta cheese",
+      "amount": "1 cups"
+    },
+    {
+      "item": "beaten egg",
+      "amount": "1"
+    },
+    {
+      "item": "shredded mozzarella cheese",
+      "amount": "1 cup."
+    },
+    {
+      "item": "grated pecorino cheese",
+      "amount": "¼ cup"
+    }
+  ],
+  "method": [
+    "Boil the ziti in a pot of salted water for 10 minutes. Drain the water.",
+    "Heat the olive oil in a pot.",
+    "Season the beef with salt, pepper, garlic salt, and garlic powder.",
+    "Brown the meat and the onion in the pot for 5 minutes.",
+    "Pour in the tomato sauce and season with oregano and basil.",
+    "Simmer for 25 minutes.",
+    "Preheat the oven to 350 degrees.",
+    "Whisk the egg and ricotta cheese together.",
+    "Sprinkle with the pecorino cheese.",
+    "Transfer half the pasta and half the sauce to a baking dish.",
+    "Add half the ricotta cheese.",
+    "Top with half the mozzarella cheese.",
+    "Create another layer of pasta, sauce, and mozzarella.",
+    "Bake for 25 minutes. The cheeses should be bubbly."
+  ],
+  "image": "/recipes/baked-ziti.jpg",
+  "time": {
+    "total": 60
+  }
+}

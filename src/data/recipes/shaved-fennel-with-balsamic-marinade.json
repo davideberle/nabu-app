@@ -1,0 +1,53 @@
+{
+  "id": "shaved-fennel-with-balsamic-marinade",
+  "name": "Shaved fennel with balsamic marinade",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "This fresh salad makes a fantastic side dish for grilled fish. Alternatively, the addition of crumbled goat cheese and a few slices of apple or pear can turn it into a light lunch in itself.",
+  "ingredients": [
+    {
+      "item": "fennel bulb, peeled and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "aged balsamic vinegar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "sea salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "mixed salad leaves, such as watercress, baby spinach, arugula, or mâche (lamb’s lettuce)",
+      "amount": "5½oz (150g)"
+    },
+    {
+      "item": "goat cheese (optional)",
+      "amount": ""
+    },
+    {
+      "item": "apple or pear slices (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a bowl, toss the fennel with a few drops of balsamic vinegar, 1 tablespoon of oil, and the garlic, then season with salt and pepper. Set aside to marinate for at least 1 hour before serving.",
+    "To serve, mix the salad leaves, marinated fennel, and the remaining oil and vinegar, then season to taste with salt and pepper. Divide between 6 individual serving plates. Scatter over goat cheese and fruit slices, if desired."
+  ],
+  "image": "/recipes/shaved-fennel-with-balsamic-marinade.jpg",
+  "time": {
+    "total": 40
+  }
+}

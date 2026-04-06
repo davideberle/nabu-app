@@ -1,0 +1,74 @@
+{
+  "id": "southwestern-lasagna",
+  "name": "Southwestern Lasagna",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "½ cups shredded Cheddar cheese",
+      "amount": "1"
+    },
+    {
+      "item": "chopped jalapeno pepper",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "4"
+    },
+    {
+      "item": "hot sausage meat",
+      "amount": "3 cups"
+    },
+    {
+      "item": "picante sauce",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Italian seasoning or to taste",
+      "amount": "1 tsp."
+    },
+    {
+      "item": "tomato sauce",
+      "amount": "4 cups"
+    },
+    {
+      "item": "shredded Pepper Jack cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "corn tortillas",
+      "amount": "15"
+    }
+  ],
+  "method": [
+    "Cook Time: 45 minutes",
+    "Servings Size: 6",
+    "Preheat your oven to 350 degrees F.",
+    "Heat the olive oil in a large skillet.",
+    "Sauté the garlic, jalapeno pepper, and onion for 5 minutes.",
+    "Add the sausage meat and season with the Italian seasoning.",
+    "Stir in the tomato sauce and picante sauce.",
+    "Combine all ingredients well.",
+    "Cover the skillet and simmer for 15 minutes.",
+    "Coat a 9x13 baking dish with non-stick spray.",
+    "Layer the baking dish with 1 tortilla, a layer of sausage and sauce, and a layer of pepper jack cheese.",
+    "Create 2 more layers.",
+    "Top the third layer with the cheddar cheese.",
+    "Bake for 45 minutes."
+  ],
+  "image": "/recipes/southwestern-lasagna.jpg",
+  "time": {
+    "total": 30
+  }
+}

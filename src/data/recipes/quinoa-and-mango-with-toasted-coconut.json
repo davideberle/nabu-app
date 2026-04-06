@@ -1,0 +1,71 @@
+{
+  "id": "quinoa-and-mango-with-toasted-coconut",
+  "name": "Quinoa and mango with toasted coconut",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This healthy salad is full of big, tropical flavors and bright colors. Toasted coconut is a delightfully unusual salad topping; try scattering a few over any grain-based salad for added crunch.",
+  "ingredients": [
+    {
+      "item": "unsweetened or flaked coconut",
+      "amount": "1¾ oz (50g)"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "uncooked quinoa",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "can lima beans, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "red onion, finely chopped",
+      "amount": "½"
+    },
+    {
+      "item": "large mango, peeled, pitted, and cut into bite-sized pieces",
+      "amount": "1"
+    },
+    {
+      "item": "lime, peeled, segmented, and segments halved",
+      "amount": "1"
+    },
+    {
+      "item": "handful of mint leaves, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Toast the coconut by dry-frying it in a pan over medium heat for 2–3 minutes until golden, stirring so that it doesn’t burn. Remove from the heat and set aside to cool.",
+    "To make the dressing, place all the ingredients in a small bowl and whisk. Taste and adjust the seasoning as needed.",
+    "Rinse the quinoa under running water, drain, and place in a lidded saucepan. Add enough water to cover, bring to a boil, and cook for 15–20 minutes or until almost all the water is absorbed. Remove from the heat, drain well, and pour into a large serving bowl.",
+    "While the quinoa is still warm, stir in the lima beans, onion, mango, lime, mint, and parsley, and season. Pour over the dressing and stir well. Sprinkle over the toasted coconut and serve immediately."
+  ],
+  "image": "/recipes/quinoa-and-mango-with-toasted-coconut.jpg",
+  "time": {
+    "total": 25
+  }
+}

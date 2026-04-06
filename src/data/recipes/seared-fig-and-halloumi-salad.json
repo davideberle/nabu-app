@@ -1,0 +1,54 @@
+{
+  "id": "seared-fig-and-halloumi-salad",
+  "name": "Seared fig and halloumi salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 4",
+  "intro": "Halloumi only melts at a high temperature, making it the perfect component for a warm salad. Paired with figs and drizzled with a vinaigrette reduction, this dish would make a sophisticated starter for a dinner party.",
+  "ingredients": [
+    {
+      "item": "halloumi cheese, cut into ¼ in (5mm) slices",
+      "amount": "10oz (300g)"
+    },
+    {
+      "item": "large ripe figs, cut into quarters lengthwise",
+      "amount": "8"
+    },
+    {
+      "item": "large handful of mixed salad leaves",
+      "amount": ""
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "small handful of cilantro, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "red chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat a large nonstick frying pan over medium heat. Add the halloumi and figs, and cook for 2–3 minutes on each side, until they start to brown. Once cooked, remove and place on a plate with the salad leaves.",
+    "Pour the red wine vinegar into the same pan and increase the heat slightly. Add the cilantro, chile, and garlic, and simmer over medium-high heat, until the sauce has reduced in volume by three-quarters.",
+    "Drizzle the dressing sparingly over the figs and cheese. Splash the salad with the oil and serve immediately."
+  ],
+  "image": "/recipes/seared-fig-and-halloumi-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

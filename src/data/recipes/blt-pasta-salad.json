@@ -1,0 +1,68 @@
+{
+  "id": "blt-pasta-salad",
+  "name": "BLT Pasta Salad",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "elbow macaroni",
+      "amount": "2 cups"
+    },
+    {
+      "item": "¼ cups mayonnaise",
+      "amount": "1"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "halved cherry tomatoes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "chopped red bell pepper",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "chopped scallions",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "shredded Cheddar cheese",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "dill",
+      "amount": "½ tsp."
+    },
+    {
+      "item": "bacon slices",
+      "amount": "10"
+    },
+    {
+      "item": "chopped romaine lettuce",
+      "amount": "8 oz."
+    }
+  ],
+  "method": [
+    "Cook the macaroni in a pot of salted water for 10 minutes. Drain and transfer to a salad bowl.",
+    "Add the mayonnaise, balsamic vinegar, tomatoes, bell pepper, scallions, cheese, salt, pepper, and dill to the macaroni and stir well to combine.",
+    "Chill for 3 hours.",
+    "Fry the bacon for 10 minutes, until crispy.",
+    "Drain the bacon and let cool, then crumble the bacon.",
+    "Top the salad with the crumbled bacon.",
+    "Serve on romaine lettuce."
+  ],
+  "image": "/recipes/blt-pasta-salad.jpg",
+  "time": {
+    "total": 20
+  }
+}

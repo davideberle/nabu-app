@@ -1,0 +1,74 @@
+{
+  "id": "freekeh-sweet-and-spicy-warm-salad",
+  "name": "Freekeh sweet and spicy warm salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "This warming and colorful salad combines freekeh, an ancient Middle Eastern grain, with spiced roasted squash and sweet, sticky dates, making it an utterly divine dinner idea for cold winter evenings.",
+  "ingredients": [
+    {
+      "item": "ground cinnamon",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "grated ginger",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "light olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "butternut squash, seeded and cut into ¾ in (2cm) cubes",
+      "amount": "1"
+    },
+    {
+      "item": "cracked freekeh",
+      "amount": "1 cup"
+    },
+    {
+      "item": "small head radicchio, roughly chopped",
+      "amount": "1"
+    },
+    {
+      "item": "dried pitted dates, about 1½ oz (40g) in total, roughly chopped",
+      "amount": "8"
+    },
+    {
+      "item": "roughly chopped flat-leaf parsley, to serve",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) honey",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F (200°C). Combine the spices and olive oil in a small bowl. Place the butternut squash on a baking sheet and coat with the spice mixture. Bake for 30–35 minutes, or until the squash is tender.",
+    "Meanwhile, rinse the freekeh and place in a large saucepan. Cover with 31⁄2 cups of water and bring to a boil. Reduce the heat to a simmer and cook for 15 minutes, or until almost all the water has been absorbed. Remove from the heat, drain any remaining water, and allow to cool slightly.",
+    "For the dressing, place all the ingredients in a bowl. Season to taste and whisk to combine. Place the radicchio and dates in a large serving dish. Add the squash and freekeh, pour over the dressing, season to taste, and toss until well combined. Serve warm, garnished with parsley."
+  ],
+  "image": "/recipes/freekeh-sweet-and-spicy-warm-salad.jpg",
+  "time": {
+    "total": 55
+  }
+}

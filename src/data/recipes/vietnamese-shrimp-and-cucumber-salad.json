@@ -1,0 +1,66 @@
+{
+  "id": "vietnamese-shrimp-and-cucumber-salad",
+  "name": "Vietnamese shrimp and cucumber salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "The classic Vietnamese flavors of lime, chiles, and mint combine here to produce a wonderful summer salad. Be sure to obtain fish sauce, as it is vital to the taste of the finished dish.",
+  "ingredients": [
+    {
+      "item": "large raw shrimp, peeled and deveined, with heads and tails removed",
+      "amount": "12"
+    },
+    {
+      "item": "vegetable oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "rice wine vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "red chile, seeded and very finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "Vietnamese fish sauce (nuac nam) or Thai fish sauce (nam pla)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chopped Vietnamese mint (rau ram) or other fresh mint leaves, plus a few sprigs to serve",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "green papaya, peeled, seeded, quartered lengthwise, and thinly sliced",
+      "amount": "1"
+    },
+    {
+      "item": "cucumber, seeded and cut into thin strips",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Spread the shrimp out on a foil-lined grill rack, brush with the oil, and grill over medium heat for 2–3 minutes, or until they turn pink.",
+    "Meanwhile, whisk the rice wine vinegar, sugar, chile, garlic, fish sauce, lime juice, and 21⁄2 fl oz (75ml) cold water together in a bowl until the sugar dissolves. Add the cooked shrimp to the bowl and stir until they are coated in the dressing. Let cool completely.",
+    "Add the chopped rau ram or mint, papaya, and cucumber, and toss together. Transfer the salad to a serving plate, with the shrimp on the top, and garnish with mint sprigs."
+  ],
+  "image": null,
+  "time": {
+    "total": 17
+  }
+}

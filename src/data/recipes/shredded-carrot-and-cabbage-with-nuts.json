@@ -1,0 +1,73 @@
+{
+  "id": "shredded-carrot-and-cabbage-with-nuts",
+  "name": "Shredded carrot and cabbage with nuts",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This no-cook salad packs plenty of crunch, as well as plenty of health benefits. Cabbage provides vitamins B6, C, and K, while carrots are packed with beta-carotene—and by serving them raw, you maximize the nutritional boost.",
+  "ingredients": [
+    {
+      "item": "sweet apples",
+      "amount": "2"
+    },
+    {
+      "item": "carrots, peeled and grated",
+      "amount": "4"
+    },
+    {
+      "item": "small white cabbage, shredded",
+      "amount": "1"
+    },
+    {
+      "item": "handful of sunflower seeds",
+      "amount": ""
+    },
+    {
+      "item": "handful of salted or dry-roasted peanuts",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) light soy sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) Thai fish sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) fresh green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) garlic clove, grated or finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) juice of 2 limes",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) sugar",
+      "amount": "1–2 tsp"
+    },
+    {
+      "item": "(For the dressing) handful of cilantro, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "First, make the dressing. Put all the dressing ingredients in a small bowl, and mix thoroughly until the sugar has dissolved. Taste and season with salt and black pepper as needed. If it needs sweetening, add more sugar; if it needs saltiness, add a little more fish sauce.",
+    "Quarter and core the apples, then chop into bite-sized pieces. Put in a bowl with the carrots, cabbage, and sunflower seeds. Toss well. Drizzle with the dressing, and toss to coat. Transfer to a serving dish, and scatter the peanuts over the top."
+  ],
+  "image": "/recipes/shredded-carrot-and-cabbage-with-nuts.jpg",
+  "time": {
+    "total": 45
+  }
+}

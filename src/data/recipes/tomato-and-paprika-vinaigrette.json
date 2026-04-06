@@ -1,0 +1,54 @@
+{
+  "id": "tomato-and-paprika-vinaigrette",
+  "name": "Tomato and paprika vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Sauces & Dressings"
+  },
+  "servings": "serves 6",
+  "intro": "The rich flavors and gentle heat of this chunky tomato vinaigrette makes it an ideal dressing for drizzling over a pasta or rice salad—try it with the Tomato and farfalle pasta salad.",
+  "ingredients": [
+    {
+      "item": "ripe tomatoes, peeled",
+      "amount": "3"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "hot paprika",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "finely chopped basil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Halve the peeled tomatoes, then scoop out and discard the seeds. Remove the tomato core, dice the flesh, and set aside.",
+    "Put the olive oil in a pan over very low heat, and add the garlic and paprika. Stir for 3–4 minutes. Add half the basil and parsley, and stir for 1 minute. Add the tomatoes and stir gently for 2–3 minutes, until hot.",
+    "Remove from the heat. Stir in the remaining basil and parsley, and then the sherry vinegar. Season with salt and black pepper to taste, and serve while still warm."
+  ],
+  "image": null,
+  "time": {
+    "total": 20
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "ni-oise-style-salad",
+  "name": "Niçoise-style salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "A culinary classic, the traditional “salade niçoise” is instantly recognizable thanks to its combination of olives, tuna, and tomatoes. Our version doesn’t include hard-boiled eggs, but you can throw a few in for extra protein if you wish.",
+  "ingredients": [
+    {
+      "item": "fava beans, fresh (out of their pods) or frozen",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "cans tuna in olive oil, drained",
+      "amount": "2 × 6oz (175g)"
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "10"
+    },
+    {
+      "item": "handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "bunch of fresh chives, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "black olives, pitted",
+      "amount": "12"
+    },
+    {
+      "item": "salt-packed anchovies, rinsed, or flat anchovies in oil, drained",
+      "amount": "12"
+    },
+    {
+      "item": "of crisp lettuce, such as romaine, leaves separated",
+      "amount": "1 head"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "2–3"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic cloves, grated or finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) Dijon mustard",
+      "amount": "1–2 tsp"
+    }
+  ],
+  "method": [
+    "If using frozen fava beans, soak them in hot water for 5 minutes, then drain.",
+    "To make the dressing, put all the dressing ingredients in a screw-top jar, season well with salt and black pepper, cover with the lid, and shake to blend.",
+    "Put the tuna and tomatoes in a bowl, and drizzle with half of the dressing. Sprinkle in half of the fresh herbs, and season generously with salt and black pepper. Toss together. Now add the drained fava beans, olives, and anchovies, and mix gently.",
+    "Line a bowl with the lettuce leaves, and arrange the tuna mixture on top. Drizzle with the remaining dressing, and sprinkle over the remaining herbs. Top with the scallions, and serve."
+  ],
+  "image": "/recipes/ni-oise-style-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

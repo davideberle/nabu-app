@@ -1,0 +1,61 @@
+{
+  "id": "celery-root-and-mustard-remoulade",
+  "name": "Celery root and mustard remoulade",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 10",
+  "intro": "Also known as celeriac, celery root has an earthy crunch that works well in remoulade: a quick, healthy, and delicious no-cook salad. Serve it over crisp lettuce or watercress, or spread on toast.",
+  "ingredients": [
+    {
+      "item": "mayonnaise",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "finely chopped cornichon pickles",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "finely grated onion",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "celery root, about 1½ lb (675g)",
+      "amount": "1"
+    },
+    {
+      "item": "lettuce leaves, to serve",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a large bowl, whisk together the mayonnaise, extra-virgin olive oil, Dijon mustard, lemon juice, cornichon pickles, grated onion, flat-leaf parsley, and salt, and black pepper. Set the remoulade sauce aside.",
+    "Wash and peel the celery root, then quarter it. Working quickly, grate each quarter into the bowl with the sauce. Toss and serve over lettuce leaves immediately. Once made, this dish will keep in the fridge for up to 2 days."
+  ],
+  "image": null,
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "lentil-salad-with-lemon-and-almonds",
+  "name": "Lentil salad with lemon and almonds",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 6",
+  "intro": "The crisp taste of French green lentils is enhanced in this salad by the mellow taste of preserved lemon, a refreshing Middle Eastern delicacy that can be found in most supermarkets.",
+  "ingredients": [
+    {
+      "item": "French green lentils",
+      "amount": "2 cups"
+    },
+    {
+      "item": "preserved lemons, rinsed and diced small",
+      "amount": "2"
+    },
+    {
+      "item": "chopped cilantro",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "scallions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "sliced almonds, toasted",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Bring a large pot of water to a boil and add the lentils. Return to a boil, reduce the heat, cover, and simmer for 15–20 minutes, or until the lentils are just tender. Drain, then rinse quickly in cold water and drain well.",
+    "Place the lentils in a large bowl and stir in the lemons, chopped cilantro, and half of the scallions. In a separate bowl, whisk together the vinegar and oil, season to taste with salt and pepper, and combine with the lentil mixture.",
+    "Cover the salad and let stand for 20 minutes to develop the flavors.",
+    "Mix the sliced almonds with the remaining scallions. Scatter the mixture over the salad, toss lightly, and serve, garnished with cilantro."
+  ],
+  "image": null,
+  "time": {
+    "total": 25
+  }
+}

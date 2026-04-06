@@ -1,0 +1,61 @@
+{
+  "id": "prosciutto-with-pear-and-nectarine",
+  "name": "Prosciutto with pear and nectarine",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 4",
+  "intro": "Prosciutto is dry-cured rather than cooked, which helps to cultivate its nutty flavor. It is served here with sweet fruits and bitter endive, creating a salad full of the tastes of Italy.",
+  "ingredients": [
+    {
+      "item": "endive, leaves separated and rinsed",
+      "amount": "2–3 heads"
+    },
+    {
+      "item": "firm but ripe pears",
+      "amount": "3"
+    },
+    {
+      "item": "firm but ripe nectarines",
+      "amount": "3"
+    },
+    {
+      "item": "thin slices prosciutto",
+      "amount": "12"
+    },
+    {
+      "item": "handful of almonds (skins on)",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "crusty bread, to serve",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) unsweetened apple juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) good-quality balsamic vinegar",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "First, make the dressing. Put the oil, apple juice, and balsamic vinegar in a small bowl, and whisk together. Season well with salt and black pepper. Arrange the endive leaves in a single layer on a large serving plate, and drizzle with a little of the dressing.",
+    "Core and slice the pears, and halve, pit, and slice the nectarines. Arrange over the endive leaves along with the prosciutto, and toss together gently. Sprinkle over the almonds, then drizzle with a little more dressing. Season again, then serve immediately with some fresh crusty bread."
+  ],
+  "image": "/recipes/prosciutto-with-pear-and-nectarine.jpg",
+  "time": {
+    "total": 45
+  }
+}

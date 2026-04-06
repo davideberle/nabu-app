@@ -1,0 +1,58 @@
+{
+  "id": "bulgur-wheat-with-shrimp-and-okra",
+  "name": "Bulgur wheat with shrimp and okra",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 8",
+  "intro": "This sensational dish can be eaten hot or cold. It would make a great addition to any buffet or dinner party—and any leftovers would make an excellent all-in-one portable lunch.",
+  "ingredients": [
+    {
+      "item": "bulgur wheat",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large onions, finely chopped",
+      "amount": "2"
+    },
+    {
+      "item": "okra, trimmed and cut into chunks",
+      "amount": "1lb (450g)"
+    },
+    {
+      "item": "garlic cloves, peeled and grated, or finely chopped",
+      "amount": "6"
+    },
+    {
+      "item": "shelled and deveined large shrimp",
+      "amount": "1½ lb (675g)"
+    },
+    {
+      "item": "dry white wine",
+      "amount": "½ cup"
+    },
+    {
+      "item": "large handful of dill, chopped",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 300°F (150°C). Put the bulgur wheat in a heatproof bowl, and pour in enough boiling water to cover. Cover the bowl with a kitchen towel, leave for 5 minutes, then stir.",
+    "Meanwhile, heat the oil in a large saucepan, add the onions, and cook over medium heat for 5 minutes, or until they start to soften. Add the okra and cook for 2 minutes, then add the garlic and shrimp and continue to cook, stirring frequently, for 2–3 minutes or until the shrimp have just started to turn pink.",
+    "Stir in the wine and dill, and cook for 2 minutes, then stir in the bulgur. Transfer to an ovenproof serving dish, season with salt and pepper, and cover with foil. Bake, stirring occasionally, for 20 minutes, or until heated through. Serve hot or cold."
+  ],
+  "image": "/recipes/bulgur-wheat-with-shrimp-and-okra.jpg",
+  "time": {
+    "total": 45
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "greek-olive-salad-with-herb-vinaigrette",
+  "name": "Greek olive salad with herb vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Cheese"
+  },
+  "servings": "serves 6",
+  "intro": "For this classic, deeply refreshing combination, choose tasty, pungent Kalamata olives and firm tomatoes, as well as an aromatic, strong extra-virgin olive oil for the vinaigrette.",
+  "ingredients": [
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "small cucumbers, peeled",
+      "amount": "2"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "2½ lb (1kg)"
+    },
+    {
+      "item": "red onion, peeled and trimmed",
+      "amount": "1"
+    },
+    {
+      "item": "green bell peppers, cored, seeded, and diced",
+      "amount": "2"
+    },
+    {
+      "item": "Kalamata or other Greek olives",
+      "amount": "4½ oz (125g)"
+    },
+    {
+      "item": "feta cheese, cut into cubes",
+      "amount": "1 cup"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) of mint, leaves picked and finely chopped",
+      "amount": "3–5 sprigs"
+    },
+    {
+      "item": "(For the dressing) of oregano, leaves picked and finely chopped",
+      "amount": "3–5 sprigs"
+    },
+    {
+      "item": "(For the dressing) of parsley, leaves picked and finely chopped",
+      "amount": "7–10 sprigs"
+    }
+  ],
+  "method": [
+    "To make the vinaigrette, gradually whisk the oil into the vinegar so that the mixture emulsifies and thickens slightly. Add the herbs, whisk again, and season to taste.",
+    "Cut each cucumber in half lengthwise. Scoop out the seeds with a teaspoon. Discard the seeds. Cut the cucumbers lengthwise into strips, then into 1⁄2 in (1cm) slices.",
+    "Core the tomatoes, cut each into 8 wedges, then cut each wedge in half. Slice the onion into very thin rings, then gently separate the concentric circles within each ring.",
+    "Put the cucumbers, tomatoes, onion rings, and peppers in a large bowl. Briskly whisk the dressing and pour it over. Add the olives and feta, toss to coat, and season. Allow the flavors to mellow for about 30 minutes before serving."
+  ],
+  "image": "/recipes/greek-olive-salad-with-herb-vinaigrette.jpg",
+  "time": {
+    "total": 55
+  }
+}

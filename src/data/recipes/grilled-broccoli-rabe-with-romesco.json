@@ -1,0 +1,72 @@
+{
+  "id": "grilled-broccoli-rabe-with-romesco",
+  "name": "Grilled broccoli rabe with romesco",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 6",
+  "intro": "A tasty vegetarian recipe, this salad can be served as a filling main meal or even an impressive side. The flavor of the broccoli is enhanced by grilling and is well paired with the spicy Spanish dressing and fluffy barley.",
+  "ingredients": [
+    {
+      "item": "uncooked barley",
+      "amount": "1 cup"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "5oz (600g) broccoli rabe",
+      "amount": "1lb"
+    },
+    {
+      "item": "extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "juice of ½ lemon",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) dried ancho chiles, seeded",
+      "amount": "1½"
+    },
+    {
+      "item": "(For the dressing) almonds, sliced",
+      "amount": "½ cup"
+    },
+    {
+      "item": "(For the dressing) roasted red peppers from a jar",
+      "amount": "3½ oz (100g)"
+    },
+    {
+      "item": "(For the dressing) can chopped tomatoes",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "(For the dressing) sherry vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of smoked paprika",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the barley in a large pot and cover with 3 cups of salted water. Bring to a boil, then reduce the heat to a simmer, cover, and cook for about 50 minutes or until almost all the water has been absorbed. Remove from the heat. Cover and set aside.",
+    "Meanwhile, for the dressing, place the chiles in a small bowl, and cover with water. Let soak for 10 minutes, then drain and discard the water. Dice the chiles and set them aside. In a nonstick frying pan, toast the almonds over medium-low heat for 3–4 minutes. Transfer to a food processor and pulse until they form a coarse flour.",
+    "Add the chiles, peppers, tomatoes, vinegar, oil, and paprika to the food processor. Season with salt and pepper. Pulse until the mixture is smooth, but retains a little texture. Transfer the dressing to a bowl and set aside.",
+    "Place the broccoli in a large bowl. Drizzle with the oil, season to taste, and toss to coat. Heat a griddle pan over medium–high heat. Grill the broccoli for 3–5 minutes on each side, until tender and starting to brown.",
+    "Remove the broccoli from the heat and drizzle with the lemon juice. On a large serving dish, spread out the barley and top with the broccoli. Pour over the desired amount of romesco dressing. Serve immediately with the remaining dressing on the side."
+  ],
+  "image": null,
+  "time": {
+    "total": 75
+  }
+}

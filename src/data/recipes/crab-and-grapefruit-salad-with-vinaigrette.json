@@ -1,0 +1,54 @@
+{
+  "id": "crab-and-grapefruit-salad-with-vinaigrette",
+  "name": "Crab and grapefruit salad with vinaigrette",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Fish & Seafood"
+  },
+  "servings": "serves 4",
+  "intro": "This is a wonderfully light and zesty salad. Fresh crabmeat is combined with the sweet-and-sour flavor of pink grapefruit, and finished with cilantro and a classic vinaigrette dressing.",
+  "ingredients": [
+    {
+      "item": "fresh white crabmeat, cooked and drained",
+      "amount": "12oz (350g)"
+    },
+    {
+      "item": "handful of baby salad leaves",
+      "amount": ""
+    },
+    {
+      "item": "handful of fresh cilantro",
+      "amount": ""
+    },
+    {
+      "item": "pink grapefruits, peeled, segmented, and pith removed",
+      "amount": "2"
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) sea salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a small bowl, whisk together the dressing ingredients. Season with salt and pepper.",
+    "In a separate bowl, mix the crabmeat with a drizzle of the dressing. Divide the salad leaves and half of the cilantro between 4 individual plates, and scatter over the grapefruit segments.",
+    "When ready to serve, drizzle the salad with the remaining dressing. Divide the crabmeat between the plates, spooning it neatly on top of the leaves. Scatter over the remaining cilantro and serve immediately."
+  ],
+  "image": "/recipes/crab-and-grapefruit-salad-with-vinaigrette.jpg",
+  "time": {
+    "total": 40
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "linguine-and-clam-sauce",
+  "name": "Linguine and Clam Sauce",
+  "source": {
+    "cookbook": "The Best Pasta Recipes",
+    "author": "Jaydon Mack"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "linguini",
+      "amount": "16 oz."
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp."
+    },
+    {
+      "item": "chopped onion",
+      "amount": "1"
+    },
+    {
+      "item": "minced garlic cloves",
+      "amount": "5"
+    },
+    {
+      "item": "butter",
+      "amount": "½ cup"
+    },
+    {
+      "item": "Salt and pepper to taste",
+      "amount": ""
+    },
+    {
+      "item": "dry white wine",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "clam juice",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "½ cups chopped clams",
+      "amount": "1"
+    },
+    {
+      "item": "red pepper flakes",
+      "amount": "1 tsp."
+    }
+  ],
+  "method": [
+    "Cook the linguini in a pot of salted water for 10 minutes. Drain.",
+    "Heat the olive oil in a skillet and sauté the onion and garlic for 5 minutes.",
+    "Add the butter, salt, pepper, wine, and clam juice.",
+    "Simmer for 25 minutes. The sauce should be reduced and thickened.",
+    "Stir in the clams and simmer for 5 minutes.",
+    "Place the linguini in a bowl and cover with the clam sauce.",
+    "Serve topped with red pepper flakes."
+  ],
+  "image": "/recipes/linguine-and-clam-sauce.jpg",
+  "time": {
+    "total": 45
+  }
+}

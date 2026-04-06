@@ -1,0 +1,54 @@
+{
+  "id": "waldorf-salad",
+  "name": "Waldorf salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Created at the Waldorf Astoria Hotel in New York, this creamy and crunchy salad has been a favorite for over 100 years. It goes well with grilled chicken if you need something a bit more filling.",
+  "ingredients": [
+    {
+      "item": "large apples",
+      "amount": "2"
+    },
+    {
+      "item": "celery sticks, thinly sliced",
+      "amount": "4"
+    },
+    {
+      "item": "red seedless grapes, halved",
+      "amount": "25"
+    },
+    {
+      "item": "toasted and crushed walnuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "mayonnaise",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "juice of 1 lemon, plus extra for serving",
+      "amount": ""
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "hearts romaine lettuce",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Remove the cores of the apples using a corer. Then, using a sharp knife, cut the apples into slices of an even thickness. Stack the slices, a few at a time, and cut lengthwise through the pile and then crosswise, making equal-sized cubes.",
+    "Put the apples, celery, grapes, and walnuts in a bowl. Add the mayonnaise and lemon juice and toss well to combine. Season with salt and pepper to taste.",
+    "Roughly chop the lettuce and divide between 4 individual plates. Serve the fruit and nut mixture on each bed of lettuce with a squeeze of lemon."
+  ],
+  "image": "/recipes/waldorf-salad.jpg",
+  "time": {
+    "total": 45
+  }
+}

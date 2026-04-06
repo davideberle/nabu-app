@@ -1,0 +1,49 @@
+{
+  "id": "tomato-and-farfalle-pasta-salad",
+  "name": "Tomato and farfalle pasta salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This is a simple, fresh salad that can be whipped up in minutes if you have leftover pasta on hand. It is perfect for children, and is endlessly adaptable—try adding peppers, red onion, or cooked zucchini.",
+  "ingredients": [
+    {
+      "item": "farfalle pasta",
+      "amount": "9oz (250g)"
+    },
+    {
+      "item": "tomatoes, peeled (p15)",
+      "amount": "5"
+    },
+    {
+      "item": "handful of fresh flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "handful of fresh basil leaves, torn",
+      "amount": ""
+    },
+    {
+      "item": "garlic cloves, grated",
+      "amount": "2"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "extra-virgin olive oil, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Cook the pasta in a pot of boiling salted water for 10 minutes, or until al dente. Drain, and return to the pot.",
+    "Coarsely chop the tomatoes and add to the pasta along with the parsley, basil leaves, and garlic. Season with salt and black pepper, and toss with some olive oil to coat before serving."
+  ],
+  "image": "/recipes/tomato-and-farfalle-pasta-salad.jpg",
+  "time": {
+    "total": 20
+  }
+}

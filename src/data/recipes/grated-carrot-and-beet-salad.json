@@ -1,0 +1,59 @@
+{
+  "id": "grated-carrot-and-beet-salad",
+  "name": "Grated carrot and beet salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "Richly colored and packed with beneficial antioxidants, this salad is a unique alternative to coleslaw. Try to source young, fresh produce if possible to maximize the taste and crunch of the raw grated vegetables.",
+  "ingredients": [
+    {
+      "item": "5oz (600g) carrots, trimmed and scrubbed",
+      "amount": "1lb"
+    },
+    {
+      "item": "5oz (600g) beets, peeled and halved",
+      "amount": "1lb"
+    },
+    {
+      "item": "small bunch of flat-leaf parsley, chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) extra-virgin olive oil, plus 1 tsp for toasting the seeds",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "(For the dressing) balsamic vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) garlic clove, crushed (optional)",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) sunflower or pumpkin seeds",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "(For the dressing) soy sauce (optional)",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "(For the dressing) salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Coarsely grate the raw vegetables and combine in a large bowl.",
+    "For the dressing, put the 1⁄3 cup of oil, vinegar, and garlic (if using) in a screw-top jar, put the lid on tightly, and shake.",
+    "Gently heat the remaining olive oil in a small frying pan and toast the seeds for 3–4 minutes over medium heat, stirring frequently to prevent burning. Add the soy sauce at the end of cooking (if using). Most of the soy sauce will evaporate, leaving a salty taste and extra browning for the seeds.",
+    "Add the parsley to the carrots and beets. Shake the vinaigrette again, pour over the vegetables, then season to taste. Toss the salad gently, scatter the toasted seeds over the top, and serve."
+  ],
+  "image": "/recipes/grated-carrot-and-beet-salad.jpg",
+  "time": {
+    "total": 33
+  }
+}

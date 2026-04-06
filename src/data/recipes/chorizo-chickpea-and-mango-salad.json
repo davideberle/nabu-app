@@ -1,0 +1,65 @@
+{
+  "id": "chorizo-chickpea-and-mango-salad",
+  "name": "Chorizo, chickpea, and mango salad",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Poultry & Meat"
+  },
+  "servings": "serves 2",
+  "intro": "The one-pan cooking method used for this warm salad allows the chickpeas to take on the flavor of the rich, gently spiced chorizo. Make an extra batch and let it cool—it makes a hearty on-the-go lunch.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "chorizo, roughly chopped",
+      "amount": "5½ oz (150g)"
+    },
+    {
+      "item": "can chickpeas, drained and rinsed",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "of garlic, finely chopped",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "dry sherry",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ripe mangoes, pitted and flesh diced",
+      "amount": "2"
+    },
+    {
+      "item": "small handful of fresh basil leaves, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "small handful of fresh mint leaves, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "small handful of fresh cilantro, roughly chopped",
+      "amount": ""
+    },
+    {
+      "item": "baby spinach leaves",
+      "amount": "9oz (250g)"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a frying pan. Add the chorizo and chickpeas, cook over low heat for 1 minute, then add the garlic and parsley and cook for 1 more minute. Finally, add the sherry and cook for 10 minutes, stirring occasionally.",
+    "Put the mango and remaining herbs in a bowl and toss together, then add the chickpea mixture and combine well. Spoon onto the spinach leaves to serve."
+  ],
+  "image": "/recipes/chorizo-chickpea-and-mango-salad.jpg",
+  "time": {
+    "total": 30
+  }
+}

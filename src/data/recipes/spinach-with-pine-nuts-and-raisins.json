@@ -1,0 +1,49 @@
+{
+  "id": "spinach-with-pine-nuts-and-raisins",
+  "name": "Spinach with pine nuts and raisins",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Vegetables"
+  },
+  "servings": "serves 4",
+  "intro": "This simple salad is a traditional Italian Jewish side dish, popular for its contrasting textures—from plump, juicy raisins to crunchy nuts.",
+  "ingredients": [
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "raisins",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dry sherry",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "fresh spinach, rinsed and roughly chopped",
+      "amount": "7oz (200g)"
+    },
+    {
+      "item": "paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Combine the oil, raisins, and pine nuts in a shallow frying pan over medium heat. When the raisins and pine nuts start to sizzle, cook for 2 minutes, stirring constantly. Carefully add the sherry and cook until the liquid has reduced by half.",
+    "Add the spinach and paprika and cook, stirring constantly, for 5 minutes, or until the spinach has wilted. Season with salt and black pepper and serve hot or cold."
+  ],
+  "image": null,
+  "time": {
+    "total": 15
+  }
+}

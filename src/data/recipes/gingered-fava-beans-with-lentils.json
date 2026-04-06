@@ -1,0 +1,66 @@
+{
+  "id": "gingered-fava-beans-with-lentils",
+  "name": "Gingered fava beans with lentils",
+  "source": {
+    "cookbook": "Salads & Dressings",
+    "author": "DK",
+    "chapter": "Grains & Pulses"
+  },
+  "servings": "serves 4",
+  "intro": "A fragrant ginger dressing lifts this pulse-based salad and, along with the inclusion of green chile, adds a gentle heat to the dish.",
+  "ingredients": [
+    {
+      "item": "frozen shelled fava beans",
+      "amount": "½ cup"
+    },
+    {
+      "item": "can green or brown lentils, drained",
+      "amount": "1 × 14oz (400g)"
+    },
+    {
+      "item": "salt and freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "of scallions, finely chopped",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "fresh green chile, seeded and finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "feta cheese, cut into cubes",
+      "amount": "6oz (175g)"
+    },
+    {
+      "item": "handful of flat-leaf parsley, finely chopped",
+      "amount": ""
+    },
+    {
+      "item": "(For the dressing) olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "(For the dressing) white wine vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(For the dressing) × 1in (2.5cm) piece fresh ginger, peeled and grated",
+      "amount": "1"
+    },
+    {
+      "item": "(For the dressing) pinch of sugar (optional)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak the fava beans in boiling water for 5 minutes, then drain.",
+    "Rinse the lentils, drain well, put into a serving bowl, and season. Add the scallions, chile, and drained fava beans, and stir well.",
+    "To make the dressing, put the oil, vinegar, and ginger in a small bowl. Season with salt and pepper, add a pinch of sugar (if using), and whisk until well combined. Drizzle over the salad and let stand for 10 minutes, to develop the flavors. When ready to serve, stir in the feta and parsley."
+  ],
+  "image": null,
+  "time": {
+    "total": 45
+  }
+}
