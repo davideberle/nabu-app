@@ -35,6 +35,14 @@ const tiles = [
     stats: "240+ items",
   },
   {
+    id: "meals",
+    name: "Meals",
+    emoji: "🍽️",
+    description: "Weekly meal planning",
+    href: "/meals",
+    stats: "Plan ahead",
+  },
+  {
     id: "system",
     name: "System",
     emoji: "🔧",
