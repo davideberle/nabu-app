@@ -1,9 +1,10 @@
 {
-  "id": "iraqi-mutabbaq-simachspiced-fish-and-rice",
-  "name": "Iraqi Mutabbaq SimachSPICED Fish & Rice",
+  "id": "iraqi-mutabbaq-simach",
+  "name": "Iraqi Mutabbaq Simach",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "6 servings",
   "intro": "Fish is commonly consumed in Iraq, due to its freshwater rivers, lakes, and marshes being home to a wide variety of fish. Mutabbaq simach is one of the most popular fish dishes, featuring heavily seasoned fish on top of layers of rice and onions, vermicelli noodles, and raisins. The different components are steamed together to infuse the flavors. Typically, bone-in fish pieces are seasoned, fried, and then layered with the rice. In this version, I have adapted the recipe to use boneless fillets, seared and pan-fried separately, and then served on top of the rice. The seasoning mix and the vermicelli topping make this dish truly special.",
@@ -130,5 +131,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "SPICED FISH & RICE"
 }

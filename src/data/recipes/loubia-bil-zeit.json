@@ -1,9 +1,10 @@
 {
-  "id": "loubia-bil-zeitolive-oil-braised-green-beans",
-  "name": "Loubia Bil ZeitOLIVE Oil–braised Green Beans",
+  "id": "loubia-bil-zeit",
+  "name": "Loubia Bil Zeit",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "4 servings",
   "intro": "This vegetarian main dish is made with green beans, long beans, or flat Romano beans and is common across Levantine countries. It can also be served as a cold appetizer. The beans are braised with lots of olive oil, garlic, and tomatoes and enjoyed scooped up with bread. The simplicity of this dish is what makes it special, and the simple ingredients make the green beans shine. This is a great light weeknight dinner, and I also love serving it cold the next day.",
@@ -72,5 +73,6 @@
     "dish_type": [
       "starter"
     ]
-  }
+  },
+  "subtitle": "OLIVE OIL–BRAISED GREEN BEANS"
 }

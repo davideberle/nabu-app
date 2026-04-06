@@ -1,9 +1,10 @@
 {
-  "id": "iraqi-tapsi-betenjaneggplant-casserole",
-  "name": "Iraqi Tapsi BetenjanEGGPLANT Casserole",
+  "id": "iraqi-tapsi-betenjan",
+  "name": "Iraqi Tapsi Betenjan",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: Worth the Effort"
   },
   "servings": "6 servings",
   "intro": "If you were to ask my husband and me what our last meal on Earth would be, you may get tapsi betenjan as the answer. This dish is quintessential Iraqi comfort food. Fans of eggplant will rejoice at its eggplant-centric flavor; it really would not be the same without it. This casserole is made by layering beef kofta, fried eggplant, and often fried potatoes, onions, and peppers and baking them in a rich tomato sauce laden with pomegranate molasses. The pomegranate molasses gives this dish the classic sweet-and-sour flavor that Iraqi dishes are known for. The result is a tangy and saucy casserole that is scooped over a plate of white rice or enjoyed with Iraqi bread. Traditionally, the beef is shaped into patties, but I usually just layer ground beef to save time. Also, instead of frying the eggplant and potatoes, I find roasting them until golden to be a lighter and quicker alternative without sacrificing flavor.",
@@ -138,5 +139,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "EGGPLANT CASSEROLE"
 }

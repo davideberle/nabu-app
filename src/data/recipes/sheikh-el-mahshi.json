@@ -1,9 +1,10 @@
 {
-  "id": "sheikh-el-mahshistuffed-eggplant-boats",
-  "name": "Sheikh el MahshiSTUFFED Eggplant Boats",
+  "id": "sheikh-el-mahshi",
+  "name": "Sheikh El Mahshi",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: Worth the Effort"
   },
   "servings": "6 servings",
   "intro": "The term sheikh is a title used to refer to a respected elder, and mahshi means “stuffed.” This dish translates to “the leader of all stuffed dishes,” and I am in full agreement, because this dish is absolutely superior! My mom also stuffs onions and zucchini. To cut time, I use only eggplant, but I do sometimes throw in a few stuffed onions (learn how to core and stuff an onion in the Onion Dolma recipe). The not-so-secret ingredient in the sauce is the pomegranate molasses.",
@@ -110,5 +111,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "STUFFED EGGPLANT BOATS"
 }

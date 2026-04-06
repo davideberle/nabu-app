@@ -1,9 +1,10 @@
 {
-  "id": "sheet-pan-iraqi-aroogbeef-patties",
-  "name": "Sheet-Pan Iraqi AroogBEEF Patties",
+  "id": "sheet-pan-iraqi-aroog",
+  "name": "Sheet-Pan Iraqi Aroog",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "25 to 30 pieces; 4 to 6 servings",
   "intro": "Aroog are an Iraqi pan-fried beef patty made with onions, garlic, parsley, and sometimes peppers or tomatoes. They are lightly seasoned and flavored mostly with tomato sauce. These crispy patties are often served as a light dinner or stuffed into Iraqi samoon (buns) with sliced veggies. My sisters and I would request aroog often, and we’d stand around my mom in the kitchen as she pan-fried them, with oil splattering all over the stove. As soon as she’d place the first few pieces on the plate, we would immediately dive in, rolling them up in bread, always with slices of tomato, parsley, and onions. And because the oil splattering is such a vivid memory, and I do not enjoy cleaning my stove, I came up with a sheet-pan version that mimics the pan frying in a cleaner, faster way, along with being great for making large batches.",
@@ -100,5 +101,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "BEEF PATTIES"
 }

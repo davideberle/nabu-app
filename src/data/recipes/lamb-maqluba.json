@@ -1,9 +1,10 @@
 {
-  "id": "lamb-maqlubaupside-down-rice",
-  "name": "Lamb MaqlubaUPSIDE-DOWN Rice",
+  "id": "lamb-maqluba",
+  "name": "Lamb Maqluba",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: Worth the Effort"
   },
   "servings": "6 to 8 servings",
   "intro": "Maqluba is a dish that you can make for guests and sort of sell like a “dinner and a show” type of evening, because flipping the maqluba pot is so much fun, especially with a crowd around cheering you on. We grew up on my mom’s delicious maqluba, a dish made across Iraq, but it is also known in Palestine, Syria, and other neighboring countries. The Iraqi version is slightly different than the Levantine one, but I’ve never had a maqluba I didn’t love. Every version is delicious, simply because of the technique—layers of meat (chicken or lamb) and vegetables underneath a bed of rice, left to simmer together for a while. The flavors all infuse, resulting in the most delicious rice dish you’ll ever taste.",
@@ -162,5 +163,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "UPSIDE-DOWN RICE"
 }

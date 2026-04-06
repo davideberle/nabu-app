@@ -1,9 +1,10 @@
 {
-  "id": "syrian-kousa-bi-labanunstuffed-zucchini-in-yogurt",
-  "name": "Syrian Kousa Bi LabanUNSTUFFED Zucchini IN Yogurt",
+  "id": "syrian-kousa-bi-laban",
+  "name": "Syrian Kousa Bi Laban",
   "source": {
     "cookbook": "Souk to Table",
-    "author": "Reem Kassis"
+    "author": "Reem Kassis",
+    "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "4 servings",
   "intro": "Kousa means “squash” or “zucchini” in Arabic, and it is one of the vegetables that is most commonly cored and stuffed with ground beef. The stuffed kousa are then either simmered in a rich tomato sauce or a yogurt sauce. I personally always gravitate to warm, cooked yogurt dishes, and this is one of my favorites. But instead of going through the process of coring and stuffing the zucchini, which can be very time-consuming, I make a deconstructed version on the advice of my Syrian friend Nadia (who is an excellent cook).",
@@ -109,5 +110,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "subtitle": "UNSTUFFED ZUCCHINI IN YOGURT"
 }
