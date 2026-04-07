@@ -1,0 +1,82 @@
+{
+  "id": "ungarisches-paprikahuhn",
+  "name": "Ungarisches Paprikahuhn",
+  "image": "/recipes/ungarisches-paprikahuhn.jpg",
+  "source": {
+    "cookbook": "My Recipes",
+    "publication": "Das Magazin",
+    "author": "Christian Seiler",
+    "chapter": "Main Dishes"
+  },
+  "cuisine": [
+    "Hungarian"
+  ],
+  "category": "Main",
+  "servings": "4 servings",
+  "time": {
+    "total": "1 hr 15 min",
+    "cook": "45 min"
+  },
+  "intro": "A classic Hungarian paprika chicken (paprikás csirke) from Das Magazin, with onions, sweet and rose paprika, broth, tomatoes, and sour cream.",
+  "ingredients": [
+    {
+      "amount": "1",
+      "item": "chicken, about 1.5 kg, cut into pieces"
+    },
+    {
+      "amount": "300 g",
+      "item": "onions, finely chopped"
+    },
+    {
+      "amount": "10 g",
+      "item": "garlic, pressed"
+    },
+    {
+      "amount": "40 ml",
+      "item": "pork or goose lard"
+    },
+    {
+      "amount": "10 g",
+      "item": "rose paprika powder"
+    },
+    {
+      "amount": "20 g",
+      "item": "sweet paprika powder"
+    },
+    {
+      "amount": "250 ml",
+      "item": "chicken broth"
+    },
+    {
+      "amount": "2",
+      "item": "tomatoes, chopped"
+    },
+    {
+      "amount": "250 g",
+      "item": "full-fat sour cream"
+    },
+    {
+      "amount": "10 g",
+      "item": "flour"
+    },
+    {
+      "amount": "5 g",
+      "item": "salt"
+    }
+  ],
+  "method": [
+    "Melt the lard in a large braising pot over medium heat and sauté the onions until golden.",
+    "Take the pot off the heat and let it cool slightly. Stir in the garlic and both paprika powders. Do not add paprika while the onions are too hot, or it can turn bitter.",
+    "Salt the chicken pieces and add them to the pot with the chopped tomatoes. Mix well, pour in the chicken broth, cover, and braise on the lowest heat for 45 minutes.",
+    "Near the end, whisk the sour cream with the flour and temper it with a little hot sauce from the pot. Stir it back into the chicken and bring briefly to a boil until the sauce turns creamy.",
+    "Serve immediately, ideally with nokedli or spätzli. Good white bread also works well."
+  ],
+  "dietary": [],
+  "tags": [
+    "Chicken",
+    "Paprika",
+    "Stew",
+    "Main Dish",
+    "Das Magazin"
+  ]
+}

@@ -160,6 +160,7 @@ const COOKBOOK_COVERS: Record<string, string> = {
   'Vegan Chocolate': '/cookbooks/vegan-chocolate.jpg',
   'The Authentic Greek Kitchen': '/cookbooks/the-authentic-greek-kitchen.jpg',
   'Zagami Family Cookbook': '/cookbooks/zagami-family-cookbook.jpg',
+  'My Recipes': '/cookbooks/my-recipes.jpg',
 };
 
 // Get all unique cookbooks with counts
