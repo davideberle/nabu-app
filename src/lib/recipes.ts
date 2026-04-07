@@ -19,6 +19,7 @@ export type Recipe = {
     cookbook: string;
     author: string;
     chapter?: string;
+    publication?: string;
   };
   introduction?: string | null;
   intro?: string;

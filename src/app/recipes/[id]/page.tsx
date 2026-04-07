@@ -169,12 +169,24 @@ export default async function RecipePage({
           <header className="px-8 pt-10 pb-6">
             {/* Source line with cuisine */}
             {recipe.source && (
-            <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
-              {getCuisineFromCookbook(recipe.source.cookbook) && (
-                <span className="text-stone-600 dark:text-stone-300">{getCuisineFromCookbook(recipe.source.cookbook)} · </span>
-              )}
-              {recipe.source.author} — {recipe.source.cookbook}
-            </p>
+              <div className="mb-4 space-y-2">
+                <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
+                  {getCuisineFromCookbook(recipe.source.cookbook) && (
+                    <span className="text-stone-600 dark:text-stone-300">{getCuisineFromCookbook(recipe.source.cookbook)} · </span>
+                  )}
+                  {recipe.source.author ? `${recipe.source.author} — ` : ''}{recipe.source.cookbook}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-200">
+                    {recipe.source.cookbook}
+                  </span>
+                  {recipe.source.publication && (
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                      {recipe.source.publication}
+                    </span>
+                  )}
+                </div>
+              </div>
             )}
             
             <h1 className="text-3xl md:text-4xl font-serif text-stone-800 dark:text-stone-100 leading-tight tracking-tight">
