@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 1 cup",
-  "time": "TAKES 10 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 24,
+    "total": 40
+  },
   "intro": "I’ve been making Vietnam’s ubiquitous nước chấm for decades but still prepare it in stages to dial in the flavor. Much like making a vinaigrette, taste, taste, taste. Follow this recipe, then create your own formula. With the optional additions, choose chile for heat, garlic for pungency, and/or carrot for texture.",
   "ingredients": [
     {
@@ -52,6 +56,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

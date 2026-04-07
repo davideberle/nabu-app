@@ -57,5 +57,12 @@
   "image": "/recipes/nutty-goat-cheese-and-beet-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

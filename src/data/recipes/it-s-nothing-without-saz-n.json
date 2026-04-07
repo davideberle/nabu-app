@@ -49,5 +49,11 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "time": {
+    "prep": 20,
+    "cook": 35,
+    "total": 55
+  },
+  "cuisine": "Caribbean"
 }

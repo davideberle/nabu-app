@@ -73,5 +73,12 @@
   "image": "/recipes/mixed-seafood-salad-with-anchovy-dressing.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

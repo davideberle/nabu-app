@@ -10,7 +10,8 @@
   "intro": "A while back, I was in California visiting my parents and met their friend Sharon Iyer. Sharon is married to a man from Tamil Nadu and this is her mother-in-law’s recipe. It’s her husband’s favourite pickle, so she made sure to learn the recipe. He likes it so much she makes huge batches of it, but it doesn’t last for long. You could of course scale it down, but as it takes about 90 minutes to make, why not make this large batch as I did when she showed me the recipe. Stored correctly, it keeps forever in the fridge. The spicy pickle is so good with papadams, samosas or simply stirred into rice. It is pictured.",
   "time": {
     "prep": "30 MINS",
-    "cook": "1 HOUR"
+    "cook": "1 HOUR",
+    "total": "30 MINS1 HOUR"
   },
   "ingredients": [
     {
@@ -58,6 +59,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

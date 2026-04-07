@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "20 cookies",
-  "time": "20 minutes",
+  "time": {
+    "prep": 18,
+    "cook": 56,
+    "total": 74
+  },
   "intro": "Moroccans serve an assortment of traditional cookies during celebrations like Eid, referred to as ghriba cookies. There are various types of ghriba: coconut, almond, pistachio, and rose-scented, among many others. They can be made with all-purpose flour or semolina, but this version uses only almond flour. The best part about this cookie is the crispiness on the outside and the chewiness on the inside, coupled with the hint of lemon. They are absolutely addictive. When my dad tasted one of my test batches, he immediately asked my mom to make a double batch and stash it in their freezer. They are one of the simplest cookies to make—just make sure you do not overbake them! Stick to the timing in this recipe, and they’ll be perfect.",
   "ingredients": [
     {
@@ -63,6 +67,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

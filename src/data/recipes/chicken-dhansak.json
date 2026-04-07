@@ -10,7 +10,8 @@
   "intro": "Chicken dhansak is one of the most popular curries served at curry houses around the UK. British dhansak is a play on a curry served by the Parsi community around Mumbai. There, it’s usually made with goat’s meat or mutton and it is a real party piece. It’s traditionally served with brown rice and usually has other nice vegetables thrown in like pumpkin, aubergine (eggplant) and potato. Four different lentils are used to make the sauce, along with a long list of spices. Our British version is a lot less complicated, although it is a sweet-and-sour curry like the original. Cooked red split lentils (try my tarka dhal) are added to the sauce, and it is usually sweetened with pineapple juice and chunks or rings of pineapple, with lemon juice used as a souring agent.",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN AND LENTILS",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN AND LENTILS10 MINS"
   },
   "ingredients": [
     {
@@ -79,6 +80,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

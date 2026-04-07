@@ -10,7 +10,8 @@
   "intro": "Hara bhara kebabs not only look great but they’re also delicious and good for you. These can be eaten on their own with a little mint and coriander sauce or mango pickle, or used as a filling for the kathi roll. I like to add small, hot hara bhara kebabs to tomato-based curries, or substitute them for the paneer in my butter paneer recipe. Be sure to add them at the end of cooking, though, so that they don’t fall apart. You really can’t beat a good burger, so that’s how I’ve done them here.",
   "time": {
     "prep": "15 MINS, PLUS CHILLING TIME",
-    "cook": "25 MINS"
+    "cook": "25 MINS",
+    "total": "15 MINS, PLUS CHILLING TIME25 MINS"
   },
   "ingredients": [
     {
@@ -111,6 +112,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Starters & Snacks"
+  },
+  "cuisine": "Indian"
 }

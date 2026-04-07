@@ -61,5 +61,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/cheddar-and-caraway-cheese-straws.jpg"
+  "image": "/recipes/cheddar-and-caraway-cheese-straws.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -105,5 +105,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/grilled-broccoli-with-chile-and-garlic.jpg"
+  "image": "/recipes/grilled-broccoli-with-chile-and-garlic.jpg",
+  "cuisine": "Middle Eastern"
 }

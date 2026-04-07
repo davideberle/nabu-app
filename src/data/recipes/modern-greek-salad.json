@@ -66,7 +66,14 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": null
+  "image": null,
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "cuisine": "Other"
 }

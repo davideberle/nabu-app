@@ -7,7 +7,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "4 cups (1 kg); 6 to 8 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 22,
+    "cook": 40,
+    "total": 62
+  },
   "intro": "Hummus is likely the gateway to Middle Eastern cuisine for many people. This chickpea and tahini dip needs no introduction, and you’ll likely find a tub of it at every supermarket. But let me state this: homemade hummus is always much better than anything you can buy, even if you follow my quick method below using canned chickpeas. You can make it extra lemony, or extra garlicky. My absolute favorite way to enjoy it is with seasoned and caramelized steak on top, which not only turns it into a satisfying meal but will also have you addicted. You can use ground beef or even throw leftover shawarma on top, as many restaurants do.",
   "ingredients": [
     {
@@ -68,6 +72,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

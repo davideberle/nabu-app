@@ -145,5 +145,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/hazelnut.jpg"
+  "image": "/recipes/hazelnut.jpg",
+  "cuisine": "Middle Eastern"
 }

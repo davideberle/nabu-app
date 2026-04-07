@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES 1 HOUR",
+  "time": {
+    "prep": 22,
+    "cook": 56,
+    "total": 78
+  },
   "intro": "If it’s Meatless Monday and I want wings, I coat snack-size cauliflower florets in batter and bake them until crisp on the outside and tender on the inside. As shown on this page, serving the sauce on the side preserves the just-baked texture well. The batter is a bit tricky, so weigh the flour for an exact measurement.",
   "ingredients": [
     {
@@ -72,6 +76,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

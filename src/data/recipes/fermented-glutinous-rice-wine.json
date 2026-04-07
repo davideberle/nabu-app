@@ -30,6 +30,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes"
+  },
+  "cuisine": "Chinese"
 }

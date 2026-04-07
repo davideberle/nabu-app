@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "2 cups (370 g)",
-  "time": "25 minutes",
+  "time": {
+    "prep": 22,
+    "cook": 40,
+    "total": 62
+  },
   "intro": "Harissa is a Tunisian chili paste that is traditionally made with rehydrated dried chili peppers pureed with olive oil, garlic, and a mix of spices. I went to a Tunisian primary school, and I have vivid memories of my sister and I treating ourselves to “tin hareesa” sandwiches, a soft bun smeared with harissa and filled with canned tuna. Looking back now, I’m not sure how eight-year-old me was able to handle the spice level. Nowadays, I like a slightly milder harissa, which is why I love adding roasted red peppers and sun-dried tomatoes. Neither are traditional additions, but they help to amp up the umami and tone down the spice level a bit. Use this recipe in marinades, add spoonfuls of it to stews and soups, smear it on sandwiches, and make harissa mayonnaise.",
   "ingredients": [
     {
@@ -70,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

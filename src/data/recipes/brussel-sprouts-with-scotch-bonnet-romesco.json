@@ -10,7 +10,8 @@
   "intro": "Brussels are finally getting the attention they deserve and I’m so happy about it. Most vegetables taste infinitely better once charred and roasted, but there’s something very magical about roasted Brussels sprouts, as their craggy, ribbon-like leaves allow for sauce to nestle in between them. People think they dislike Brussels sprouts, but they’re wrong. Most likely they have only had them after they have been steamed to death. This recipe serves them alongside a wonderfully pokey and warmly spiced romesco sauce, which they marry with perfectly. This is the dish to convince all the Brussels haters you know. Make this and change their minds.",
   "time": {
     "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
-    "cook": "20 MINUTES"
+    "cook": "20 MINUTES",
+    "total": "15 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -103,6 +104,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sides"
+  },
+  "cuisine": "Caribbean"
 }

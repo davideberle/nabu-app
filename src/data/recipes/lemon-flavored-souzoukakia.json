@@ -79,6 +79,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Appetizers"
+  },
+  "cuisine": "Greek"
 }

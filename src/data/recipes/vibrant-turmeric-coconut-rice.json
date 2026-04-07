@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
-  "time": "TAKES 40 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 32,
+    "total": 42
+  },
   "intro": "For decades I’ve been chasing this turmeric-stained rice perfumed with coconut, trying to figure out an unfussy way to make it well. Fancy versions of cơm nị call for frying the rice first and cooking it with coconut milk, clove, star anise, and cinnamon, but those additions tend to muddle the flavors. Plus, coconut milk can weigh down rice and turn it gummy.",
   "ingredients": [
     {
@@ -45,6 +49,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -103,6 +103,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Winter"
+  },
+  "cuisine": "Italian"
 }

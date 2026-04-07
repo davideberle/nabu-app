@@ -71,5 +71,12 @@
   ],
   "time": {
     "total": 48
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

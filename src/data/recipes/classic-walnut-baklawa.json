@@ -10,7 +10,8 @@
   "intro": "I always think that I can have one piece of baklawa as a little sweet treat and then be done. But something just happens when you bite into it and immediately hear the crunch. I personally can never resist another piece—they’re so small, after all. When I was thinking of including this recipe in this book, I wanted to get creative with my classic recipe, but my family would not hear of it. They demanded that I stick to this classic recipe and declared that it cannot be topped. Well, I listened to them. Baklawa (otherwise known as baklava) is an ancient dessert that can be traced back to the eighth century BCE, when people in the Assyrian Empire arranged unleavened flatbread in layers with nuts in between, though its exact origins are often debated. It is the main attraction at every Middle Eastern dessert spread. In Iraq, if you want to honor guests, you serve a large tray of baklawa. It comes in various shapes and can also be stuffed with pistachios or a thick cream filling. Store-bought baklawa is often too rich and too sweet, so I recommend making it yourself. I do have to give credit to my sister Sarra for perfecting the ingredient ratios in this family recipe: the cardamom-to-nuts ratio, the nuts-to-pastry ratio, and the syrup-to-baklawa ratio—everything has been perfected! And if you feel like it is too intimidating, trust me when I say that it is one of the easiest desserts to make.",
   "time": {
     "prep": "30 minutes, plus 1 hour cooling",
-    "cook": "55 minutes"
+    "cook": "55 minutes",
+    "total": "30 minutes, plus 1 hour cooling55 minutes"
   },
   "ingredients": [
     {
@@ -88,6 +89,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

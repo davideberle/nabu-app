@@ -78,7 +78,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/braised-tofu-with-pineapple-and-mushrooms.jpg"
+  "image": "/recipes/braised-tofu-with-pineapple-and-mushrooms.jpg",
+  "cuisine": "Southeast Asian"
 }

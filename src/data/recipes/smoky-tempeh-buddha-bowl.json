@@ -1503,6 +1503,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Soups & Stews"
+  },
+  "cuisine": "Other"
 }

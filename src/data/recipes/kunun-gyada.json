@@ -41,7 +41,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/kunun-gyada.jpg"
+  "image": "/recipes/kunun-gyada.jpg",
+  "cuisine": "Nigerian"
 }

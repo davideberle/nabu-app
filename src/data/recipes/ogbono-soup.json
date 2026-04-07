@@ -48,7 +48,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/ogbono-soup.jpg"
+  "image": "/recipes/ogbono-soup.jpg",
+  "cuisine": "Nigerian"
 }

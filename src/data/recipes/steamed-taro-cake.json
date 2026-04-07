@@ -67,7 +67,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/steamed-taro-cake.jpg"
+  "image": "/recipes/steamed-taro-cake.jpg",
+  "cuisine": "Southeast Asian"
 }

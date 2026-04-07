@@ -51,6 +51,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "Other"
 }

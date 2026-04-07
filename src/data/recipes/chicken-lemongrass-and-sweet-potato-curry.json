@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES ABOUT 45 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
   "intro": "Though Thailand, with its variety of curry pastes, is next door, Viet cooks prefer curry featuring Indian spice blends. The fragrant curry is enriched with coconut milk and served with baguette for dipping or with rice—either plain boiled rice or the vibrant turmeric rice on this page. Such seamless blending of cultures reflects the unique amalgam that is Vietnam.",
   "ingredients": [
     {
@@ -70,6 +74,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

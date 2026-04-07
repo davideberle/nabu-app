@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
-  "time": "TAKES 30 MINUTES",
+  "time": {
+    "prep": 30,
+    "cook": 32,
+    "total": 62
+  },
   "intro": "A deliciously quirky combo of warm cubes of seared steak atop a cool salad, this classic is traditionally considered a special-occasion dish in Vietnam, where beefsteak is a luxury. Given that, cooks cleverly cut the meat into smaller pieces to imbue it with flavor, cook it quickly, and serve it to a crowd. The name in Vietnamese, thịt bò lúc lắc, refers to the back-and-forth shaking (lúc lắc) of the skillet as the beef (thịt bò) cooks. Shaking beef is a Viet restaurant favorite, and a cinch to make at home.",
   "ingredients": [
     {
@@ -93,6 +97,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -58,7 +58,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/cream-puffs.jpg"
+  "image": "/recipes/cream-puffs.jpg",
+  "cuisine": "Italian"
 }

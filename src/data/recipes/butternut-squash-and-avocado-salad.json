@@ -70,5 +70,13 @@
   "image": "/recipes/butternut-squash-and-avocado-salad.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

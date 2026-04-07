@@ -10,7 +10,8 @@
   "intro": "Fried dumplings remind me of Sunday mornings. That was fried dumpling time for my mother, and waking up to that smell was heavenly. You wouldn’t make this full version on a weekly basis – often I would have the dumplings with steamed cabbage and salt fish, or even sausages and spicy baked beans. The recipe below is with all the bells and whistles. With ackee and salt fish being the national dish of Jamaica, it would feel strange to not include a recipe for it. It feels like a ‘I’m trying to impress my partner’s family’ kind of moment, or ‘it’s Easter and I’ve been put in charge of breakfast’.",
   "time": {
     "prep": "20 MINUTES",
-    "cook": "20 MINUTES"
+    "cook": "20 MINUTES",
+    "total": "20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -160,6 +161,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Dreams"
+  },
+  "cuisine": "Caribbean"
 }

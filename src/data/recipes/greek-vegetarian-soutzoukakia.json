@@ -163,5 +163,12 @@
   ],
   "time": {
     "total": 600
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

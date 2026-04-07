@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 to 8 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 14,
+    "cook": 40,
+    "total": 54
+  },
   "intro": "My favorite memory from my childhood is walking home from school, excited to open the door and smell what was for dinner that day. It was usually stew with rice, because that’s typical Arab home cooking. But I enjoyed guessing which type of stew it was based on the aroma I was hit with when I walked in. It was a happy day if it was fasolia yabsa! This is the stew most known across Iraq, especially when made from dried beans and bone-in lamb and scooped over a bowl of Roz Bi Shaariya—my definition of the ultimate comfort food. I do, however, often take the shortcut of using canned beans; they really do get the job done, and I am not one to judge!",
   "ingredients": [
     {
@@ -50,6 +54,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

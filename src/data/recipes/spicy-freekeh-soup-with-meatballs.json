@@ -123,6 +123,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Middle Eastern"
 }

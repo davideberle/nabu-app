@@ -81,5 +81,12 @@
   ],
   "time": {
     "total": 180
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

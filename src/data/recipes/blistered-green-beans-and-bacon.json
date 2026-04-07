@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 18,
+    "cook": 56,
+    "total": 74
+  },
   "intro": "One of my favorite ways to stir-fry vegetables is to flavor them with Chinese sausage (lap cheung in Cantonese; lạp xưởng in Vietnamese). The dry, sweet sausage isn’t sold at regular supermarkets so I conjure up its flavors with smoky bacon, five-spice powder, and maple syrup.",
   "ingredients": [
     {
@@ -60,6 +64,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

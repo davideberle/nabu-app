@@ -10,7 +10,8 @@
   "intro": "Back in my dark, blurry days, which was when I was working a full-time engineering job, commuting to the office every day, and juggling two little kids at home, I’d get home and rush to the kitchen, still in my work clothes, and quickly make this recipe. It was a go-to meal because it had protein, carbs, and vegetables all in one pot and required very easy sides: a bowl of plain yogurt and maybe a quick chopped salad, if I could swing it. This dish is called hashweh rice, which translates to “filling,” because the seasoned ground beef is used as a filling, in many traditional dishes. If my mom had leftover hashweh, she would always turn it into this rice dish with peas and carrots.",
   "time": {
     "prep": "10 minutes",
-    "cook": "40 minutes"
+    "cook": "40 minutes",
+    "total": "10 minutes40 minutes"
   },
   "ingredients": [
     {
@@ -93,6 +94,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

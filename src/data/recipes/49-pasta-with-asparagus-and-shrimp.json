@@ -1,6 +1,6 @@
 {
   "id": "49-pasta-with-asparagus-and-shrimp",
-  "name": "(49)     Pasta with Asparagus and Shrimp",
+  "name": "Pasta with Asparagus and Shrimp",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -99,5 +99,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

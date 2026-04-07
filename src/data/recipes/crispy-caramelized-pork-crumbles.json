@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 14,
+    "cook": 32,
+    "total": 46
+  },
   "intro": "My nephew Michael, currently a medical student, is more of an eater than a cook, but he loves these salty-sweet fried nubbins of pork so much that he mastered thịt heo băm to satisfy his cravings. It’s easy to make and great for a quick meal—simply put rice in a bowl, top with the crumbles, pickles (see this page), and stir-fried leafy greens (cook them in the pan after the pork is done).",
   "ingredients": [
     {
@@ -49,6 +53,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

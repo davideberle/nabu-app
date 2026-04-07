@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 6 as a side dish",
-  "time": "TAKES 1 HOUR",
+  "time": {
+    "prep": 16,
+    "cook": 32,
+    "total": 48
+  },
   "intro": "Chicken is pricey in Vietnam. When my family arrived in the United States and discovered a wealth of cheap chicken backs, we simmered them for stock, harvested the meat and fat (schmaltz), then used those elements for this delectable but humble rice. Even when I use oil and canned broth, the tasty results still embody the comforts of Viet cooking and our gratitude for being in America.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

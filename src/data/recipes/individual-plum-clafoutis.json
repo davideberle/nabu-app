@@ -109,5 +109,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/individual-plum-clafoutis.jpg"
+  "image": "/recipes/individual-plum-clafoutis.jpg",
+  "cuisine": "Middle Eastern"
 }

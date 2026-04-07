@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 40,
+    "total": 50
+  },
   "intro": "The first time my family had brussels sprouts was in 1975 at the Camp Pendleton refugee resettlement facilities in Southern California. They were overcooked, sickly green, and gassy. We didn’t eat them again until the early 2000s, when I served farm-fresh ones during the holiday season. My parents and siblings initially recoiled but changed their minds after the first bite. They liked and welcomed them to our table.",
   "ingredients": [
     {
@@ -38,6 +42,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -92,6 +92,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Appetizers"
+  },
+  "cuisine": "Chinese"
 }

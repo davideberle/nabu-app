@@ -65,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Dumplings and Snacks"
+  },
+  "cuisine": "Chinese"
 }

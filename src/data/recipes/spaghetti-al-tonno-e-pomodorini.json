@@ -53,7 +53,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/spaghetti-al-tonno-e-pomodorini.jpg"
+  "image": "/recipes/spaghetti-al-tonno-e-pomodorini.jpg",
+  "cuisine": "Italian"
 }

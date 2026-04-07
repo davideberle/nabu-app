@@ -68,6 +68,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basics"
+  },
+  "cuisine": "Greek"
 }

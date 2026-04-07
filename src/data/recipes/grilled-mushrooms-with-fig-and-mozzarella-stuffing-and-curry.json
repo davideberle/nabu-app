@@ -10,7 +10,8 @@
   "intro": "I have to say that this is one of my all-time favourite mushroom recipes. I first tried it at a local curry house that’s no longer around but I did get to watch the chef there make this. I later heard that a similar dish was being served at a tandoori restaurant in Camden called Namaaste Kitchen. Knowing the brilliant restaurant and its talented chef/owner, Sabbir Karim, my bet is that the dish originated there. I didn’t get Sabbir’s recipe in time for this cookbook but I think you are going to like this one. There really is so much amazing flavour in the grilled mushrooms and dressing that all you need is a little rice to go with it and you will be in food heaven. Sometimes I do add a nice raita or coriander (cilantro) chutney though.",
   "time": {
     "prep": "15 MINS",
-    "cook": "20 MINS"
+    "cook": "20 MINS",
+    "total": "15 MINS20 MINS"
   },
   "ingredients": [
     {
@@ -120,6 +121,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

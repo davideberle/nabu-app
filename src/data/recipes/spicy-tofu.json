@@ -90,7 +90,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/spicy-tofu.jpg"
+  "image": "/recipes/spicy-tofu.jpg",
+  "cuisine": "Southeast Asian"
 }

@@ -38,7 +38,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/italian-grissini.jpg"
+  "image": "/recipes/italian-grissini.jpg",
+  "cuisine": "Italian"
 }

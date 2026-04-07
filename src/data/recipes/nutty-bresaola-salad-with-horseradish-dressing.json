@@ -54,5 +54,12 @@
   "image": "/recipes/nutty-bresaola-salad-with-horseradish-dressing.jpg",
   "time": {
     "total": 37
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

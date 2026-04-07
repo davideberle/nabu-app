@@ -53,5 +53,12 @@
   ],
   "time": {
     "total": 35
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

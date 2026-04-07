@@ -106,6 +106,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Caribbean"
 }

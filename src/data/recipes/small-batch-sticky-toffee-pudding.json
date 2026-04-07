@@ -10,7 +10,8 @@
   "intro": "I spent most of lockdown thinking about sticky toffee pudding for some crazy reason. It is my favourite English dessert. Those notes of molasses and sticky date are something that I truly fantasise about. Often when you’re cooking for yourself, a proper dessert feels like mission impossible – especially a steamed or baked pudding like this, where you usually have tons of leftovers. To honour my lockdown craving, I wanted to write a small-batch sticky toffee pudding recipe. One for now, one for later. Or, if you’re having an intimate dinner with a friend or lover, this makes two perfect personal-sized puds.",
   "time": {
     "prep": "25 MINUTES",
-    "cook": "20 MINUTES"
+    "cook": "20 MINUTES",
+    "total": "25 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -110,6 +111,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Cooking for One"
+  },
+  "cuisine": "Caribbean"
 }

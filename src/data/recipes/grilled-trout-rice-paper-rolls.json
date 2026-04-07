@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 45 MINUTES",
+  "time": {
+    "prep": 24,
+    "cook": 56,
+    "total": 80
+  },
   "intro": "One of my favorite easy summertime meals is to buy whole trout, season it simply, and have my husband grill it to a crisp. While he’s outside, I’m setting out the ingredients for a roll-your-own meal of lettuce and rice paper wraps. The noodles were boiled earlier in the day (or maybe even days before), and the lettuce, herbs, dipping sauce, and rich green onions were prepared in advance too. When I’m short on time, I omit the green onions (mỡhành, which means “fatty onion” in Vietnamese) and substitute store-bought fried onions. To go over the top, I offer both.",
   "ingredients": [
     {
@@ -75,6 +79,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

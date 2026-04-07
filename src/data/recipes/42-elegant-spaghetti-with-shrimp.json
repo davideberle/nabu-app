@@ -1,6 +1,6 @@
 {
   "id": "42-elegant-spaghetti-with-shrimp",
-  "name": "(42)     Elegant Spaghetti with Shrimp",
+  "name": "Elegant Spaghetti with Shrimp",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -62,5 +62,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

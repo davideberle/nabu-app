@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 6 cups",
-  "time": "TAKES 1 HOUR",
+  "time": {
+    "prep": 18,
+    "cook": 40,
+    "total": 58
+  },
   "intro": "For excellent Viet dishes that require vegetable stock, make your own. The flavor of commercially sold vegetable stock or broth has been developed for Western dishes. You can use them in a pinch, but homemade stock yields clean, deep flavor. It’s easy to prepare and economical too. You can use vegetables that are past their prime. Flabby napa cabbage leaves boost flavor. I freeze asparagus trimmings and toss a handful into the pot to build umami depth. Using weight measurements for the vegetables ensures a good balance of flavors.",
   "ingredients": [
     {
@@ -62,6 +66,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

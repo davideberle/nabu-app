@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES ABOUT 1 HOUR",
+  "time": {
+    "prep": 22,
+    "cook": 56,
+    "total": 78
+  },
   "intro": "Sometimes translated as “Vietnamese meat loaf,” this dish is Viet comfort food—pork, shallot, seasonings, and plump glass noodles, suspended in eggy goodness. People enjoy trứng hấp (steamed eggs) as a main or side dish, at home as well as at restaurants—especially ones selling broken rice plates. It’s humble, popular fare.",
   "ingredients": [
     {
@@ -68,6 +72,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

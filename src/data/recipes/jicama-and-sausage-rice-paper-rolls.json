@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "makes 12 rolls, to serve 4 to 6",
-  "time": "TAKES ABOUT 1 HOUR",
+  "time": {
+    "prep": 30,
+    "cook": 48,
+    "total": 78
+  },
   "intro": "Loaded with a variety of textures and savory-sweet flavors, this Saigon street-food favorite is a close cousin of Malaysian and Singaporean popiah (think a colorful mu shu wrap). But instead of encasing the filling in a delicate wheat flour–based wrapper, Vietnamese cooks use rice paper for their rolls, which are called bò bía. (If rice paper seems challenging, see Rice Paper Rolls 101 on this page for pointers.)",
   "ingredients": [
     {
@@ -87,6 +91,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

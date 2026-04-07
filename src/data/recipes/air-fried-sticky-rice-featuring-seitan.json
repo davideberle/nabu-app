@@ -1627,6 +1627,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Main Courses"
+  },
+  "cuisine": "Other"
 }

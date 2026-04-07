@@ -60,7 +60,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/bittersweet-chocolate-truffles.jpg"
+  "image": "/recipes/bittersweet-chocolate-truffles.jpg",
+  "cuisine": "Other"
 }

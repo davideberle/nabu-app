@@ -69,7 +69,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/penne-alla-vodka.jpg"
+  "image": "/recipes/penne-alla-vodka.jpg",
+  "cuisine": "Italian"
 }

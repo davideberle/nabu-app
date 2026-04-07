@@ -61,5 +61,12 @@
   ],
   "time": {
     "total": 110
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

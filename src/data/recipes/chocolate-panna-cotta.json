@@ -78,7 +78,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-panna-cotta.jpg"
+  "image": "/recipes/chocolate-panna-cotta.jpg",
+  "cuisine": "Other"
 }

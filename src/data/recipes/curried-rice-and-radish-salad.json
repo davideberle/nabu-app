@@ -57,5 +57,12 @@
   "image": "/recipes/curried-rice-and-radish-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

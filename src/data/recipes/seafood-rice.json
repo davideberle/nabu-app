@@ -127,6 +127,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes"
+  },
+  "cuisine": "Greek"
 }

@@ -46,7 +46,14 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/carbonara-con-pancetta.jpg"
+  "image": "/recipes/carbonara-con-pancetta.jpg",
+  "time": {
+    "prep": 20,
+    "cook": 35,
+    "total": 55
+  },
+  "cuisine": "Italian"
 }

@@ -79,7 +79,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-chip-almond-biscotti.jpg"
+  "image": "/recipes/chocolate-chip-almond-biscotti.jpg",
+  "cuisine": "Other"
 }

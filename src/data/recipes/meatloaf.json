@@ -57,7 +57,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/meatloaf.jpg"
+  "image": "/recipes/meatloaf.jpg",
+  "cuisine": "Italian"
 }

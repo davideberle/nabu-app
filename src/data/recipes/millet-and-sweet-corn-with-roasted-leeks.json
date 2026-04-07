@@ -75,5 +75,12 @@
   "image": "/recipes/millet-and-sweet-corn-with-roasted-leeks.jpg",
   "time": {
     "total": 55
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

@@ -10,7 +10,8 @@
   "intro": "I love this simple chutney, pictured on the bottom right. It’s so good spooned over the lamb seekh kebabs – you will be amazed how the flavours work together. If you’re serving this to guests, they’ll probably be wondering what the heck went into it, it’s such an interesting flavour combo. Admittedly, the first time I tried a similar chutney, I couldn’t figure it out either. I’m usually quite good at recognizing ingredients but not with this one.",
   "time": {
     "prep": "5 MINS",
-    "cook": ""
+    "cook": "",
+    "total": "5 MINS0"
   },
   "ingredients": [
     {
@@ -53,6 +54,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

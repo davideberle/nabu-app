@@ -37,7 +37,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/fettuccine-alfredo.jpg"
+  "image": "/recipes/fettuccine-alfredo.jpg",
+  "cuisine": "Italian"
 }

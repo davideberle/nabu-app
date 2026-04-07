@@ -10,7 +10,8 @@
   "intro": "Growing up, my mother would eat sweetcorn with condensed milk and cream or milk for a quick and easy dessert. It’s such a simple combination, but it brings back so many memories. Panna cotta is my go-to dessert order if I see it on a menu. No bells and whistles, just bursting with vanilla flavour and served with something fruity.",
   "time": {
     "prep": "15 MINUTES",
-    "cook": "7 MINUTES"
+    "cook": "7 MINUTES",
+    "total": "15 MINUTES7 MINUTES"
   },
   "ingredients": [
     {
@@ -73,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "Caribbean"
 }

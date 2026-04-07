@@ -8,7 +8,8 @@
   "servings": "serves 8",
   "intro": "Thai food is rich in flavor, but dishes are heavy and time-consuming. My answer is a refreshing salad with mango, ginger root and jalapeño.",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": "30 minutes0"
   },
   "ingredients": [
     {
@@ -76,5 +77,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "cuisine": "Southeast Asian"
 }

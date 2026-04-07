@@ -94,5 +94,12 @@
   "image": "/recipes/chicken-tetrazzini.jpg",
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

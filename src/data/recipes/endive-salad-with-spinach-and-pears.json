@@ -53,5 +53,13 @@
   "image": "/recipes/endive-salad-with-spinach-and-pears.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

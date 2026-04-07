@@ -40,7 +40,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/acha-pudding.jpg"
+  "image": "/recipes/acha-pudding.jpg",
+  "cuisine": "Nigerian"
 }

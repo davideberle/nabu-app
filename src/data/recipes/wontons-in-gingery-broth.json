@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES ABOUT 1½ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "I’ve been making and eating wontons since I was a kid, and I loved them then as much as I do now. When served in broth they’re called súp hoành thánh and are slippery, cozy, and filled with a savory surprise. The beauty of wontons (and dumplings, in general) is that they can contain different things. If you want meat, go with the main recipe. If not, try the terrific tofu filling in the Notes.",
   "ingredients": [
     {
@@ -122,6 +126,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

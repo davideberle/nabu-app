@@ -70,5 +70,12 @@
   ],
   "time": {
     "total": 46
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

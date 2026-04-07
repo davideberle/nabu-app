@@ -48,7 +48,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chewy-date-candies.jpg"
+  "image": "/recipes/chewy-date-candies.jpg",
+  "cuisine": "Other"
 }

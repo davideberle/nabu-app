@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 1¼ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "Like the pork and rice noodle bowls on this page, turmeric-stained chảcá Hà Nội is a superb and iconic dish from Vietnam’s capital. Finding supermarket ingredients to make this treat required creativity, because it typically features pieces of freshwater fish fillet marinated in a creamy, umami-laden mixture of turmeric, galangal (an edgy cousin of ginger and turmeric), fermented shrimp sauce (mắm tôm, a toothpaste-textured, mauve-colored umami bomb), and mẻ (a mash of fermented cooked rice).",
   "ingredients": [
     {
@@ -113,6 +117,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

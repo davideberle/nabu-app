@@ -10,7 +10,8 @@
   "intro": "If it’s Indian takeaway-style pakora sauce you like, this is a good one. Usually this sweet-and-sour sauce is red from food colouring, and does look the part when bright red. The mango chutney and ketchup are already quite sweet but you might want to add a little sugar. The sour flavours come from the lemon and mint sauce. Just try it and adjust until you are happy with the flavour.",
   "time": {
     "prep": "5 MINS",
-    "cook": ""
+    "cook": "",
+    "total": "5 MINS0"
   },
   "ingredients": [
     {
@@ -72,6 +73,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

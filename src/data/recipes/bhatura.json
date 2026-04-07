@@ -10,7 +10,8 @@
   "intro": "These puffy breads are traditionally served with Punjabi chole. They are similar to puris, but puris are unleavened, whereas bhatura are leavened. There is also a slight difference in texture between the two, so I hope you try both to decide which you prefer. You could use bhatura instead of puris for dishes like prawn puris.",
   "time": {
     "prep": "15 MINS, PLUS SITTING TIME",
-    "cook": "ABOUT 2 MINS PER BHATURA"
+    "cook": "ABOUT 2 MINS PER BHATURA",
+    "total": "15 MINS, PLUS SITTING TIMEABOUT 2 MINS PER BHATURA"
   },
   "ingredients": [
     {
@@ -55,6 +56,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

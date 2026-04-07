@@ -10,7 +10,8 @@
   "intro": "You can’t beat a good prawn (shrimp) butterfly. They may not be good for you but they are quite moreish and worth every calorie. I recommend using the largest prawns (shrimp) you can find – they are easier to prepare and there is a lot more to them.\n\nIf you are serving these to friends as part of a multi-dish curry feast, heat the oven to about 150°C (300°F/Gas 2) and fry them a good 30 minutes before everyone arrives, placing them on a wire rack placed over a foil-lined dish in the oven. Then simply transfer them from the oven to a warm plate to serve.",
   "time": {
     "prep": "15 MINS",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "15 MINS10 MINS"
   },
   "ingredients": [
     {
@@ -65,6 +66,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

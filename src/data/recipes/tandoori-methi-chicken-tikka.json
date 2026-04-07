@@ -10,7 +10,8 @@
   "intro": "Like most of the recipes in this book, this methi chicken tikka is a mix of about ten different recipes I’ve seen prepared. I took the best ingredients and ideas from each and came up with this version that’s a big favourite at our family barbecues.",
   "time": {
     "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -112,6 +113,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

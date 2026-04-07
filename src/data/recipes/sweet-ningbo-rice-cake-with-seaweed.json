@@ -41,6 +41,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Sweet Dishes"
+  },
+  "cuisine": "Chinese"
 }

@@ -35,7 +35,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/ewedu.jpg"
+  "image": "/recipes/ewedu.jpg",
+  "cuisine": "Nigerian"
 }

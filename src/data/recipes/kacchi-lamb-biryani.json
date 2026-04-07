@@ -10,7 +10,8 @@
   "intro": "Order a biryani at a curry house and you are much more likely to be served something like the restaurant-style biryani. I first tried an authentic kacchi biryani back in 2013 at Sheba on Brick Lane in London, which they cook up for special occasions. This is my take on their delicious and hugely popular dish.",
   "time": {
     "prep": "25 MINS, PLUS MARINATING TIME",
-    "cook": "50 MINS"
+    "cook": "50 MINS",
+    "total": "25 MINS, PLUS MARINATING TIME50 MINS"
   },
   "ingredients": [
     {
@@ -143,6 +144,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

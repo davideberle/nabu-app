@@ -77,7 +77,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/braised-beans-in-coconut-milk-with-shiitake-mushrooms.jpg"
+  "image": "/recipes/braised-beans-in-coconut-milk-with-shiitake-mushrooms.jpg",
+  "cuisine": "Southeast Asian"
 }

@@ -10,7 +10,8 @@
   "intro": "This is how naans are made at most curry houses. The idea is to use bakers’ measures so that when getting started the amount of dry ingredients is equal to the amount of wet ingredients. Following this rule, it is easy to scale the recipe up or down. As self-raising flour is used, a large or small batch can be whipped up whenever necessary. So to double this recipe you would use 1kg (2lb 3oz) of flour, 500ml (2 cups) of milk and about 400ml (scant 1¾ cups) of water and an additional egg, for example. Then just scale up the sugar, salt and nigella seeds too. You really can wing it. When you make the first batch, you might think it has gone wrong – it hasn’t! Be sure to read the recipe to the end. I have a video on my YouTube channel that demonstrates this recipe cooked in a tandoor oven, but you can get outstanding results in a pan.",
   "time": {
     "prep": "20 MINS, PLUS OPTIONAL SITTING TIME",
-    "cook": "20 MINS"
+    "cook": "20 MINS",
+    "total": "20 MINS, PLUS OPTIONAL SITTING TIME20 MINS"
   },
   "ingredients": [
     {
@@ -59,6 +60,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

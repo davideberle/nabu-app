@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 22,
+    "cook": 40,
+    "total": 62
+  },
   "intro": "When you don’t have a traditional Chinese steamer for steaming fish, take a cue from the French and bake it in parchment paper. The en papillote method keeps fish moist, the way steaming does, making it great for seafood-shy cooks! Plus, it’s incredibly easy and fun. Each person gets their own packet to open up and release the fragrant vapors. I like to put my rice into the packet to let it soak up all the sauce.",
   "ingredients": [
     {
@@ -66,6 +70,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

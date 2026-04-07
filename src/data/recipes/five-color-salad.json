@@ -95,7 +95,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/five-color-salad.jpg"
+  "image": "/recipes/five-color-salad.jpg",
+  "cuisine": "Southeast Asian"
 }

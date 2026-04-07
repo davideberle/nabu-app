@@ -231,5 +231,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/ma-amoul-bars.jpg"
+  "image": "/recipes/ma-amoul-bars.jpg",
+  "cuisine": "Middle Eastern"
 }

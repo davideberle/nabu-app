@@ -81,7 +81,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/brownie-pudding-cakelettes.jpg"
+  "image": "/recipes/brownie-pudding-cakelettes.jpg",
+  "cuisine": "Other"
 }

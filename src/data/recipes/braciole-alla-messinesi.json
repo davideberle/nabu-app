@@ -54,7 +54,14 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/braciole-alla-messinesi.jpg"
+  "image": "/recipes/braciole-alla-messinesi.jpg",
+  "time": {
+    "prep": 20,
+    "cook": 35,
+    "total": 55
+  },
+  "cuisine": "Italian"
 }

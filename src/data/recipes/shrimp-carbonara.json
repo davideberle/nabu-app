@@ -102,5 +102,12 @@
   "image": "/recipes/shrimp-carbonara.jpg",
   "time": {
     "total": 50
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

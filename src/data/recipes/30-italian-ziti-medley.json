@@ -1,6 +1,6 @@
 {
   "id": "30-italian-ziti-medley",
-  "name": "(30)     Italian Ziti Medley",
+  "name": "Italian Ziti Medley",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -70,5 +70,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

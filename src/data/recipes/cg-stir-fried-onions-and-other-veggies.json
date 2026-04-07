@@ -46,9 +46,11 @@
   "category": {
     "dish_type": [
       "base"
-    ]
+    ],
+    "chapter": "Base Recipes"
   },
   "time": {
     "total": 10
-  }
+  },
+  "cuisine": "Indian"
 }

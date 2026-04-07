@@ -87,5 +87,12 @@
   ],
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "bread"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

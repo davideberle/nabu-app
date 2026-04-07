@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 24,
+    "total": 40
+  },
   "intro": "Brussels sprouts have a wonderful bittersweet edge that can take on big flavors. Here, the seasoning mixture of garlic, chile, and diluted vinegar echo a garlic vinegar that’s a popular condiment in Hanoi. After serving this mixture as a table condiment for pho, I began incorporating it into my repertoire to create a tangy-spicy-pungent undercurrent in sautés and stir-fries. The seasonings don’t hit you over the head but rather unite and synergize all the ingredients.",
   "ingredients": [
     {
@@ -52,6 +56,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

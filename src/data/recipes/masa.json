@@ -46,7 +46,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/masa.jpg"
+  "image": "/recipes/masa.jpg",
+  "cuisine": "Nigerian"
 }

@@ -10,7 +10,8 @@
   "intro": "Goa was the birthplace of vindaloo curry. In the 15th century, the Portuguese controlled what is now Goa and brought with them their Portuguese recipes and ingredients from the new world – the Americas. The name ‘vindaloo’ is believed to have come from the Portuguese dish carne de vinho e alho, or meat with wine and garlic. The Goans couldn’t pronounce vinho e alho and ended up calling it vindaloo. The name stuck.\n\nOne thing the Goans changed when making vinho e alho, or vindaloo, was that they added a lot of chillies and spices indigenous to the area. They loved spicy chillies, which had only recently made their way to the Indian subcontinent via the Portuguese.\n\nI learned this recipe from Chef Vivek Kashiwale, who has now moved on from the small restaurant near Leeds where I met him to share his culinary expertise in Dubai. I feel pretty lucky to have learned this delicious and authentic Goan pork vindaloo from him.",
   "time": {
     "prep": "20 MINS, PLUS MARINATING TIME",
-    "cook": "1½ HOURS"
+    "cook": "1½ HOURS",
+    "total": "20 MINS, PLUS MARINATING TIME1½ HOURS"
   },
   "ingredients": [
     {
@@ -139,6 +140,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

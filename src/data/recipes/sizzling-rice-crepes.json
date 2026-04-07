@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "makes 6 crepes, to serve 3 or 4",
-  "time": "TAKES ABOUT 1½ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 16,
+    "total": 46
+  },
   "intro": "These crepes are yellow and folded over like an omelet, but don’t contain eggs; they’re crisp like the bottom of a paella, but no rice grains are visible. Bánh xèo rice crepes are in a class of their own. The southern Viet charmers are named for the sizzling sound they make while cooking and typically contain pork, shrimp, mushroom, and bean sprouts. Snipped or broken into pieces and eaten as lettuce-and-herb wraps with nước chấm dipping sauce, the crepes hit all pleasure centers.",
   "ingredients": [
     {
@@ -87,6 +91,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -63,5 +63,12 @@
   "image": "/recipes/quinoa-fennel-and-pomegranate-salad.jpg",
   "time": {
     "total": 25
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

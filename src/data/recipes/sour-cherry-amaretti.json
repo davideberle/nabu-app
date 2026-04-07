@@ -96,5 +96,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/sour-cherry-amaretti.jpg"
+  "image": "/recipes/sour-cherry-amaretti.jpg",
+  "cuisine": "Middle Eastern"
 }

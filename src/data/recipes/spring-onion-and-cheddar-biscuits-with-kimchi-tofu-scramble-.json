@@ -10,7 +10,8 @@
   "intro": "As a Jamaican I grew up eating American-style biscuits. Nothing compares to a well-made, tender biscuit. They are dangerously buttery and salty. This recipe is bursting with savoury flavour. The biscuits use non-dairy yoghurt instead of buttermilk, offering a wonderful sharp flavour. This is a big brunch plate – it would be a perfect holiday or celebration breakfast if you’re cooking for your non-vegan family and want to quietly impress them.",
   "time": {
     "prep": "30 MINUTES",
-    "cook": "20 MINUTES"
+    "cook": "20 MINUTES",
+    "total": "30 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -197,6 +198,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Dreams"
+  },
+  "cuisine": "Caribbean"
 }

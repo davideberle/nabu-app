@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "4 to 6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 26,
+    "cook": 60,
+    "total": 86
+  },
   "intro": "Palestine is known for its high-quality olive oil, and musakhan is a dish that is centered around celebrating this ingredient. It is known to be Palestine’s national dish and consists of heavily seasoned, roasted chicken served atop layers of taboon bread smothered in sumac and onions that have been slowly caramelized in plenty of olive oil. It is traditionally served family-style on a large platter, with guests using their hands to rip off pieces of chicken and roll it up in the soft bread. The tartness of the sumac and sweetness of the onions are a perfect combination. The authentic way of making this dish requires slowly caramelizing the onions in a large pan with lots of olive oil. In this more streamlined version of musakhan, I roast the onions and chicken together on one sheet pan with enough olive oil to keep them moist. This method works really well and transforms the dish into a weeknight staple.",
   "ingredients": [
     {
@@ -77,6 +81,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

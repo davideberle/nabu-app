@@ -62,6 +62,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Summer"
+  },
+  "cuisine": "Italian"
 }

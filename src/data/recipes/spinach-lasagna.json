@@ -76,5 +76,12 @@
   "image": "/recipes/spinach-lasagna.jpg",
   "time": {
     "total": 15
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

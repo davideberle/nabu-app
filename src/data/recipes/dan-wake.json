@@ -57,7 +57,14 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/dan-wake.jpg"
+  "image": "/recipes/dan-wake.jpg",
+  "time": {
+    "prep": 20,
+    "cook": 35,
+    "total": 55
+  },
+  "cuisine": "Nigerian"
 }

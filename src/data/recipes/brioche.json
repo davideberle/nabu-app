@@ -82,5 +82,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/brioche.jpg"
+  "image": "/recipes/brioche.jpg",
+  "cuisine": "Middle Eastern"
 }

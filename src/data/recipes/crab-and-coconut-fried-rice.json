@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4 as a side dish",
-  "time": "TAKES 10 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 15,
+    "total": 30
+  },
   "intro": "I swooned the first time I tasted this rice, a specialty of Phu Quoc island, off the coast of Vietnam. It was presented as a dome of white grains seasoned with touches of garlic and crab. The dish had a mysterious tropical sweet note, which I later figured out was due to one stealth ingredient: Virgin coconut oil.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

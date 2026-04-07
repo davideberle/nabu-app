@@ -76,5 +76,12 @@
   "image": "/recipes/chicken-skillet-dish-italian-style.jpg",
   "time": {
     "total": 25
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

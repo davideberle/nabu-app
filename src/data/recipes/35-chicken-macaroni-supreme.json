@@ -1,6 +1,6 @@
 {
   "id": "35-chicken-macaroni-supreme",
-  "name": "(35)     Chicken-Macaroni Supreme",
+  "name": "Chicken-Macaroni Supreme",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -89,5 +89,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

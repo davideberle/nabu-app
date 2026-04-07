@@ -10,7 +10,8 @@
   "intro": "It’s no secret why one-pot meals are so popular: you get all the components of a well-balanced meal cooked up in one pot. I whip up this dish quite frequently on busy weeknights involving a lot of mom duties, and since my kids are huge fans of shrimp, it’s a dream. The shrimp is coated in a blend of warm Middle Eastern spices and cooked for just a few minutes before being removed. Once the rice is cooked in the same pot and ready to be steamed into its final fluffy form, the shrimp is added back in to finish cooking. This method guarantees extra-plump and -juicy shrimp.",
   "time": {
     "prep": "5 minutes",
-    "cook": "25 minutes"
+    "cook": "25 minutes",
+    "total": "5 minutes25 minutes"
   },
   "ingredients": [
     {
@@ -132,6 +133,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 30 Minutes"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -66,7 +66,14 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/chicken-cacciatore.jpg"
+  "image": "/recipes/chicken-cacciatore.jpg",
+  "time": {
+    "prep": 20,
+    "cook": 35,
+    "total": 55
+  },
+  "cuisine": "Italian"
 }

@@ -10,7 +10,8 @@
   "intro": "I make this popular vegetarian curry two ways, depending on my mood. You could blend the spinach and chillies with a little spice stock or water to make a smooth spinach purée as in the lamb saag recipe. Alternatively, you could make it as shown with blanched, roughly cut baby spinach leaves. I like to use coconut oil for this one, which is now widely available. It adds a nice, nutty flavour to the curry.",
   "time": {
     "prep": "10 MINS, PLUS THE TIME TO PRE-COOK THE POTATOES",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS THE TIME TO PRE-COOK THE POTATOES10 MINS"
   },
   "ingredients": [
     {
@@ -82,6 +83,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

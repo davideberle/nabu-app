@@ -65,7 +65,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/braised-ginger-mushrooms.jpg"
+  "image": "/recipes/braised-ginger-mushrooms.jpg",
+  "cuisine": "Southeast Asian"
 }

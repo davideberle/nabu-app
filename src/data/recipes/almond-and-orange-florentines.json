@@ -96,5 +96,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/almond-and-orange-florentines.jpg"
+  "image": "/recipes/almond-and-orange-florentines.jpg",
+  "cuisine": "Middle Eastern"
 }

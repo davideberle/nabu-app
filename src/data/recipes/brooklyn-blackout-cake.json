@@ -84,7 +84,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/brooklyn-blackout-cake.jpg"
+  "image": "/recipes/brooklyn-blackout-cake.jpg",
+  "cuisine": "Other"
 }

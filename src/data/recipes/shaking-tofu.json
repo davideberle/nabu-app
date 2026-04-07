@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 2 or 3",
-  "time": "TAKES 30 MINUTES",
+  "time": {
+    "prep": 30,
+    "cook": 48,
+    "total": 78
+  },
   "intro": "I love shaking beef (see this page), but when I want a meatless dish, I opt for this version. Cubes of tofu are first pan-seared, to enrich and build umami character, and then cooked in a peppery, salty-sweet sauce and presented atop lightly dressed salad greens. Bragg Liquid Aminos or Maggi Seasoning sauce lends a meaty flavor, but the color will be richer if you use soy sauce.",
   "ingredients": [
     {
@@ -103,6 +107,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

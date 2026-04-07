@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "serves 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 28,
+    "cook": 32,
+    "total": 60
+  },
   "intro": "When Vietnamese people eat crackers or chips, they often use them like utensils to scoop up crazy-delicious mixtures like this one, called hến xào xúc bánh đa in Hue, where it’s a favorite. Cooks in Vietnam use mild-tasting tiny fresh clams, and break up large rice crackers into shards for scooping. To replicate the dish with ease, I use canned clams (such as Bar Harbor and Crown Prince) and store-bought lightly salted crackers or chips. Chopped mushrooms make the clams go farther, while adding umami. Cilantro-like Vietnamese coriander (rau răm) is the go-to herb, but cilantro or mint work just fine at delivering the flavors of Vietnam. This fun snack is perfect with drinks.",
   "ingredients": [
     {
@@ -77,6 +81,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

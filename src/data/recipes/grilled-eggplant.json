@@ -118,7 +118,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/grilled-eggplant.jpg"
+  "image": "/recipes/grilled-eggplant.jpg",
+  "cuisine": "Southeast Asian"
 }

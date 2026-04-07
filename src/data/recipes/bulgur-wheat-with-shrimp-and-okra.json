@@ -54,5 +54,12 @@
   "image": "/recipes/bulgur-wheat-with-shrimp-and-okra.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

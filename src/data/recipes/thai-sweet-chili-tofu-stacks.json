@@ -768,6 +768,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Appetizers & Snacks"
+  },
+  "cuisine": "Other"
 }

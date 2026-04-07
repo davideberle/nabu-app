@@ -108,6 +108,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Beverages"
+  },
+  "cuisine": "African & Caribbean"
 }

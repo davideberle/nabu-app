@@ -10,7 +10,8 @@
   "intro": "I absolutely love this chaat! The tamarind sauce and the mint, coriander and mango chutney can be purchased from most good Asian grocers or online. If you fancy a go at making your own, I have included recipes. Phoa (rice flakes) are also available at Asian shops. You could leave them out, but they really do help give the aloo tikki an amazing crispy texture.",
   "time": {
     "prep": "10 MINS",
-    "cook": "20 MINS, PLUS THE TIME IT TAKES TO PAR-COOK POTATOES"
+    "cook": "20 MINS, PLUS THE TIME IT TAKES TO PAR-COOK POTATOES",
+    "total": "10 MINS20 MINS, PLUS THE TIME IT TAKES TO PAR-COOK POTATOES"
   },
   "ingredients": [
     {
@@ -107,6 +108,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

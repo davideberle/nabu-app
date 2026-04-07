@@ -58,5 +58,12 @@
   "image": "/recipes/mexican-quinoa-and-kidney-bean-salad.jpg",
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

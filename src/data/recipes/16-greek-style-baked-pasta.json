@@ -1,6 +1,6 @@
 {
   "id": "16-greek-style-baked-pasta",
-  "name": "(16)     Greek-style Baked Pasta",
+  "name": "Greek-style Baked Pasta",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -72,5 +72,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

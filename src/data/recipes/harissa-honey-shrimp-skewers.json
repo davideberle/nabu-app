@@ -10,7 +10,8 @@
   "intro": "Having a jar of Tunisian Harissa in your fridge means you can have a fancy meal on the dinner table in twenty minutes. A big part of the solution is also shrimp, the quickest-cooking protein! The marinade for these shrimp skewers couldn’t be simpler, because the work is already done for you with the harissa paste. I love mixing harissa with honey to balance the spiciness and help caramelize the shrimp. Use an indoor or outdoor grill, and while you’re at it, toss some onions in the marinade and throw them on the grill too. They’ll soften and become sweeter—and the perfect accompaniment to the shrimp.",
   "time": {
     "prep": "15 minutes, plus 15 minutes marinating",
-    "cook": "15 minutes"
+    "cook": "15 minutes",
+    "total": "15 minutes, plus 15 minutes marinating15 minutes"
   },
   "ingredients": [
     {
@@ -64,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 30 Minutes"
+  },
+  "cuisine": "Middle Eastern"
 }

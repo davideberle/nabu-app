@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 32,
+    "total": 48
+  },
   "intro": "When I first had this grilled chicken on Phu Quoc island (a hub for excellent fish sauce, located off the southern coast of Vietnam), a free-range chicken was chopped through the bone, marinated, and grilled as part of a feast of many dishes. About a dozen of us nibbled on the chicken with abandon as we guzzled cold beer. It was marvelous, and not because of the all the beer. Cutting up the chicken exposed more of it to the seasonings, which is what made it taste extra good. Plus, the small pieces cooked up quickly and evenly.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

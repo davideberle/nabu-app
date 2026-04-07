@@ -10,7 +10,8 @@
   "intro": "Carrots stand up well to quite aggressive spicing, and they really deepen in colour and change texture when roasted. In this dish I use my jerk seasoning, which is a wonderful blend of earthy spices. It’s really lovely as a sweet glaze with the salty and creamy texture of the vegan feta cheese. I’m a big fan of sweet and salty flavours in the same dish. This feels like it could be a good weekday dinner with a couple of other sides.",
   "time": {
     "prep": "5 MINUTESCOOK TIME: 45 MINUTES",
-    "cook": "45 MINUTES"
+    "cook": "45 MINUTES",
+    "total": "5 MINUTESCOOK TIME: 45 MINUTES45 MINUTES"
   },
   "ingredients": [
     {
@@ -64,6 +65,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Sides"
+  },
+  "cuisine": "Caribbean"
 }

@@ -72,7 +72,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/christys-wood-oven-style-pizza.jpg"
+  "image": "/recipes/christys-wood-oven-style-pizza.jpg",
+  "cuisine": "Italian"
 }

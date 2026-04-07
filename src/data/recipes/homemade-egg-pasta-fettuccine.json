@@ -36,7 +36,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/homemade-egg-pasta-fettuccine.jpg"
+  "image": "/recipes/homemade-egg-pasta-fettuccine.jpg",
+  "cuisine": "Italian"
 }

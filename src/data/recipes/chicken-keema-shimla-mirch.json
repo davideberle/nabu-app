@@ -10,7 +10,8 @@
   "intro": "Shimla mirch means bell pepper or capsicum and you get a lot of that in this one. You could try making this curry with tandoori chicken tikka but I prefer it with chicken keema. Both are really good. At restaurants, this popular keema curry is usually prepared with minced lamb. You could use your minced meat of choice. Turkey is nice too. The curry is often topped with julienned ginger, spring onions (scallions), coriander (cilantro) and freshly chopped green chillies, and that is exactly what you’ll be doing here. The toppings take a good curry and make it great!",
   "time": {
     "prep": "15 MINS, PLUS MAKING THE BASE CURRY SAUCE",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MAKING THE BASE CURRY SAUCE15 MINS"
   },
   "ingredients": [
     {
@@ -100,6 +101,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

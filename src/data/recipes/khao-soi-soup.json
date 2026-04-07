@@ -105,7 +105,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/khao-soi-soup.jpg"
+  "image": "/recipes/khao-soi-soup.jpg",
+  "cuisine": "Southeast Asian"
 }

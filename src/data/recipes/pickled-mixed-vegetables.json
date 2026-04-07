@@ -62,7 +62,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pickled-mixed-vegetables.jpg"
+  "image": "/recipes/pickled-mixed-vegetables.jpg",
+  "cuisine": "Southeast Asian"
 }

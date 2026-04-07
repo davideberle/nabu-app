@@ -10,7 +10,8 @@
   "intro": "This has to be one of the most-ordered side dishes at Indian restaurants. Personally, I feel the meal just isn’t complete without a good tarka dhal. A ‘tarka’ is a mixture of spices and/or aromatics that are tempered in oil or ghee. This mixture is then poured over the cooked dhal just before serving. So the chana dhal is actually a tarka dhal too.\n\nFor this quick and easy version, I use masoor dhal (split small red lentils), which, unlike other lentils, need only to be washed and rinsed under cold water before cooking. You can also use the finished tarka dhal in my chicken dhansak recipe instead of plain dhal.",
   "time": {
     "prep": "10 MINS",
-    "cook": "25 MINS"
+    "cook": "25 MINS",
+    "total": "10 MINS25 MINS"
   },
   "ingredients": [
     {
@@ -66,6 +67,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

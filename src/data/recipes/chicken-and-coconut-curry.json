@@ -10,7 +10,8 @@
   "intro": "If you like spicy curries, this one is for you. The soaked and blended Kashmiri chillies give this curry an eye-catching red hue. If you are not a spicy curry fan, you could remove the seeds from the chillies so that you still get the glow but without all the heat.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -99,6 +100,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

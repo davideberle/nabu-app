@@ -91,7 +91,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-orange-and-almond-olive-oil-cake.jpg"
+  "image": "/recipes/chocolate-orange-and-almond-olive-oil-cake.jpg",
+  "cuisine": "Other"
 }

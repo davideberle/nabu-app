@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "makes about 30 puffs, to serve 8 to 10",
-  "time": "TAKES ABOUT 1¼ HOURS",
+  "time": {
+    "prep": 22,
+    "cook": 60,
+    "total": 82
+  },
   "intro": "The French brought bánh pa-tê sô (from pâté chaud, “hot pastry pie,” a nineteenth-century French term) to Vietnam, where people went nuts for them. The dome-shaped savory hand pies are a country-style pâté or a meat loaf–like mixture encased in puff pastry. They were among my favorite childhood breakfast treats.",
   "ingredients": [
     {
@@ -73,6 +77,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

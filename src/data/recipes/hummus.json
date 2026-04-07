@@ -49,5 +49,12 @@
   "image": "/recipes/hummus.jpg",
   "time": {
     "total": 100
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Sauces & Dressings"
+  },
+  "cuisine": "Other"
 }

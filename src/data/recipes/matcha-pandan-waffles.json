@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "makes 2 waffles, to serve 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 32,
+    "total": 52
+  },
   "intro": "Grassy with hints of vanilla and tea, pandan (aka screw pine) is one of the most alluring ingredients in tropical Vietnam. Its vibrant color and flavor imbue a lot of foods, including the popular waffles sold at many Little Saigon bakeries. Crisp on the outside and tender on the inside, the waffles are eaten like a cookie (no syrup is used).",
   "ingredients": [
     {
@@ -64,6 +68,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

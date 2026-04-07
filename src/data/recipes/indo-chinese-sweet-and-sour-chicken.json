@@ -10,7 +10,8 @@
   "intro": "Put simply, Indo-Chinese fusion food just plain gets it and I love this Chinese–Indian combo. The cooking time for this one is a bit long, but there is really very little work to do. When we cooked these during the photo shoot for this book, they went down a treat! We were running short on time but they were so good we decided to make another batch. I’m telling you… this sweet-and-sour chicken is addictive!",
   "time": {
     "prep": "20 MINS",
-    "cook": "1 HOUR"
+    "cook": "1 HOUR",
+    "total": "20 MINS1 HOUR"
   },
   "ingredients": [
     {
@@ -74,6 +75,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

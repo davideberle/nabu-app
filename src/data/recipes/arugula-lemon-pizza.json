@@ -53,7 +53,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/arugula-lemon-pizza.jpg"
+  "image": "/recipes/arugula-lemon-pizza.jpg",
+  "cuisine": "Italian"
 }

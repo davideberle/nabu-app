@@ -89,7 +89,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/very-fudgy-chocolate-chip-brownies.jpg"
+  "image": "/recipes/very-fudgy-chocolate-chip-brownies.jpg",
+  "cuisine": "Other"
 }

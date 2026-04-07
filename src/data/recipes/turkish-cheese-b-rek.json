@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "20 minutes, plus 2 hours thawing",
+  "time": {
+    "prep": 14,
+    "cook": 60,
+    "total": 74
+  },
   "intro": "Börek is a popular Turkish side dish that features thin dough, usually thin yufka or phyllo pastry, layered with butter and stuffed with various fillings: cheese, meat, or vegetables. It is surprisingly easy to make using store-bought phyllo dough and the delicious cheese mixture found in this recipe. This pie will look impressive on your table when it bakes to golden perfection, its surface dotted with sesame and nigella seeds. This is quite possibly my favorite pie of all time; I can never just have one piece. The combination of herbs, the three types of cheese, and the chopped white onion in the filling make it irresistible! When making it, it’s important to make sure you cut it into pieces before you bake it.",
   "ingredients": [
     {
@@ -60,6 +64,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

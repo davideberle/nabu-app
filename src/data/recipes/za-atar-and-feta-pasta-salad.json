@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "4 servings",
-  "time": "10 minutes, plus 1 hour chilling",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "Pasta salads are not traditional to Middle Eastern cuisine, but like potato salad, my mom made them quite often when I was growing up. Her version would have chicken and a lot of mayonnaise, which I loved. But this version is the one I make the most often. The dressing has a base of olive oil and lemon juice combined with herby za’atar, Dijon mustard, and honey. You can use any pasta shape you like, but smaller ones work best, as they’ll be the same size as the other ingredients. I load it up with black olives, sun-dried tomatoes, herbs, and the most important component: salty feta cheese. This salad tastes even better after being refrigerated for a few hours.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -10,7 +10,8 @@
   "intro": "I cook a lot of chicken and rice at my home, and this is one of the ways I like to change it up using two condiments I typically have on hand: Tunisian Harissa and Toum. Skin-on, bone-in chicken thighs are marinated and then seared until golden. The rice is cooked in the same pot, along with chickpeas and spinach to bulk it up. The thighs then go back on top and the whole thing steams for twenty minutes before you’re ready to serve it. It’s a quick, weeknight-friendly favorite.",
   "time": {
     "prep": "15 minutes",
-    "cook": "45 minutes"
+    "cook": "45 minutes",
+    "total": "15 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -86,6 +87,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

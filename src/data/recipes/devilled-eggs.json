@@ -85,6 +85,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Autumn"
+  },
+  "cuisine": "Italian"
 }

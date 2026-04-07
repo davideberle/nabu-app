@@ -567,6 +567,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Breakfast"
+  },
+  "cuisine": "Other"
 }

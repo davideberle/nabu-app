@@ -1,6 +1,6 @@
 {
   "id": "18-italian-spaghetti-sauce",
-  "name": "(18)     Italian Spaghetti Sauce",
+  "name": "Italian Spaghetti Sauce",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -71,5 +71,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

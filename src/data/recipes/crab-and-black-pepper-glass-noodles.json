@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4 as a side dish",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 32,
+    "total": 52
+  },
   "intro": "Called miến xào cua in Vietnamese, this easy, though luxurious, noodle dish highlights the remarkable qualities of saifun, chewy-tender noodles made of mung bean starch. When soaked in water and then cooked with egg, fish sauce, and lots of black pepper—a combination that fabulously mimics the richness and brininess of crab tomalley—the noodles turn clear, like glass, and plump up as they become infused with crablike flavor. Cooked crab reinforces the briny richness that the noodles convey and celery adds delicate crunch and color.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

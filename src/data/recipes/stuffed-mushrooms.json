@@ -65,7 +65,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/stuffed-mushrooms.jpg"
+  "image": "/recipes/stuffed-mushrooms.jpg",
+  "cuisine": "Italian"
 }

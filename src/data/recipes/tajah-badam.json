@@ -10,7 +10,8 @@
   "intro": "I love bringing out this tasty snack of spicy Bangladeshi almonds when we have friends over. It is always devoured and only take a few minutes to throw together. It is pictured.",
   "time": {
     "prep": "5 MINS",
-    "cook": "2 MINS"
+    "cook": "2 MINS",
+    "total": "5 MINS2 MINS"
   },
   "ingredients": [
     {
@@ -54,6 +55,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

@@ -10,7 +10,8 @@
   "intro": "If you love lobster like I do, nothing more needs to be said. Just look at it! You will need a sharp pair of kitchen scissors for removing the shells.",
   "time": {
     "prep": "30 MINS, PLUS SEDATING THE LOBSTERS",
-    "cook": "45 MINS"
+    "cook": "45 MINS",
+    "total": "30 MINS, PLUS SEDATING THE LOBSTERS45 MINS"
   },
   "ingredients": [
     {
@@ -118,6 +119,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

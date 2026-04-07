@@ -548,6 +548,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Main Courses"
+  },
+  "cuisine": "Other"
 }

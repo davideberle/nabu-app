@@ -58,5 +58,12 @@
   "image": null,
   "time": {
     "total": 65
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

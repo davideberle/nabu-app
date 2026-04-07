@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "This recipe is tasty and delicious. It's also fun to put the salad together.",
   "time": {
-    "prep": "35 minutes"
+    "prep": "35 minutes",
+    "total": "35 minutes0"
   },
   "ingredients": [
     {
@@ -93,5 +94,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "cuisine": "Southeast Asian"
 }

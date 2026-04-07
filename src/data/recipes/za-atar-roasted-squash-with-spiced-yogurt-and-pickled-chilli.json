@@ -83,6 +83,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & vegetables"
+  },
+  "cuisine": "Persian"
 }

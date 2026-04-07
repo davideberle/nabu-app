@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "makes 16 toasts, to serve 4 to 6",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 28,
+    "cook": 60,
+    "total": 88
+  },
   "intro": "The original version of this deliciously fun snack is deep-fried. Unfortunately, it can be a grease bomb, so I prefer to bake mine for a lighter and equally delightful nibble. Shrimp toasts are terrific when prepared with sliced white sandwich bread (aka, a Pullman loaf), or rounds cut from a supermarket baguette about 2½ inches in diameter. Bread with a soft interior and crust that’s not too sturdy yields delicate, crispy results. Any leftover bread can be used for a banh mi (see this page) or Banana-Coconut Bread-Pudding Cake (this page). Salting the shrimp returns a bit of the sea to them.",
   "ingredients": [
     {
@@ -81,6 +85,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

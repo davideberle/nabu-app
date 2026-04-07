@@ -1,6 +1,6 @@
 {
   "id": "8-rotini-salad",
-  "name": "(8)     Rotini Salad",
+  "name": "Rotini Salad",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -90,5 +90,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 16,
+    "cook": 48,
+    "total": 64
+  },
   "intro": "Who doesn’t love a side of crispy potatoes? But this recipe has you skipping the bland seasoning and spicing them up, Lebanese-style. Batata harra is a common mezze dish served as an appetizer at Lebanese restaurants. Some versions are spicier than others, so I will leave the spice level for you to decide by adding more or less chili flakes. These are best enjoyed straight out of the pan, and I often struggle to get a full portion over to the dinner table!",
   "ingredients": [
     {
@@ -59,6 +63,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

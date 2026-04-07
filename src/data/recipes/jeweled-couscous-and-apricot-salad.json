@@ -59,5 +59,12 @@
   "image": "/recipes/jeweled-couscous-and-apricot-salad.jpg",
   "time": {
     "total": 42
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

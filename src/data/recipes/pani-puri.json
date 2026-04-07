@@ -10,7 +10,8 @@
   "intro": "I’ve loved pani puri for years, but it wasn’t until I met Pratik Master, owner of the excellent restaurant Lilu in Leicester, that it dawned on me how easily these delicious flavour bombs could be served at home. Pratik prepared a plate of puri shells with a variety of easy-to-make fillings and we sat, snacked and chatted for hours.\n\nMaking the small puri shells is difficult, so I would suggest that you purchase them ready-made at an Asian grocers or online. Good-quality black and green pani (water) can also be purchased, but I have included recipes for them if you want to make your own. The recipe also calls for fine sev or boondi. Fine sev is a fine, hair-like, crispy fried gram flour topping, and boondi is also a fried gram topping but looks like little balls. Both are available at Asian shops. Try to find them if you can, as they are both a nice, crunchy addition to pani puri, but you can leave them out if you must.\n\nYou can really get creative with pani puri. Try them with fried potatoes or perhaps a spoonful of yoghurt sauce. The sky’s the limit. Get everything prepared ahead of time and let your friends go wild on filling their puris.",
   "time": {
     "prep": "15 MINS",
-    "cook": "20 MINS (FOR THE POTATO)"
+    "cook": "20 MINS (FOR THE POTATO)",
+    "total": "15 MINS20 MINS (FOR THE POTATO)"
   },
   "ingredients": [
     {
@@ -90,6 +91,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Starters & Snacks"
+  },
+  "cuisine": "Indian"
 }

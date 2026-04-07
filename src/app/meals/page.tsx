@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
 // ----- types -----
@@ -13,6 +14,20 @@ type RecipeOption = {
   dietary: string[];
   cuisine: string;
   time: { prep: number; cook: number; total: number } | null;
+  category: string;
+};
+
+type WeekendMealCombo = {
+  main: RecipeOption;
+  sides: RecipeOption[];
+};
+
+type RecipeDetail = RecipeOption & {
+  introduction?: string | null;
+  tips?: string | null;
+  servings?: string;
+  ingredients: { item: string; amount: string; unit?: string; group?: string | null }[];
+  method: string[];
 };
 
 type DaySlot = {
@@ -89,6 +104,22 @@ function formatDateShort(dateStr: string): string {
   return `${parseInt(m)}/${parseInt(d)}`;
 }
 
+// ----- category colors -----
+
+const CATEGORY_COLORS: Record<string, string> = {
+  Pasta: "bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300",
+  Curry: "bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300",
+  Soup: "bg-sky-100 dark:bg-sky-900 text-sky-700 dark:text-sky-300",
+  Salad: "bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300",
+  Bowl: "bg-teal-100 dark:bg-teal-900 text-teal-700 dark:text-teal-300",
+  "Stir-Fry": "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300",
+  Tagine: "bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300",
+  Rice: "bg-lime-100 dark:bg-lime-900 text-lime-700 dark:text-lime-300",
+  Roast: "bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300",
+  Grill: "bg-fuchsia-100 dark:bg-fuchsia-900 text-fuchsia-700 dark:text-fuchsia-300",
+  Main: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
+};
+
 // ----- component -----
 
 export default function MealsPage() {
@@ -107,16 +138,18 @@ export default function MealsPage() {
   const [plan, setPlan] = useState<MealPlan | null>(null);
   const [weekdayOptions, setWeekdayOptions] = useState<RecipeOption[]>([]);
   const [weekendOptions, setWeekendOptions] = useState<RecipeOption[]>([]);
-  const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(
-    null
-  );
+  const [weekendMeals, setWeekendMeals] = useState<WeekendMealCombo[]>([]);
+  const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
   const [loading, setLoading] = useState(false);
-  const [ingredientGroups, setIngredientGroups] = useState<
-    IngredientGroup[] | null
-  >(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [ingredientGroups, setIngredientGroups] = useState<IngredientGroup[] | null>(null);
   const [showIngredients, setShowIngredients] = useState(false);
+  const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
+  const [quickViewLoading, setQuickViewLoading] = useState(false);
 
-  // Build an empty plan structure
+  // Track all shown recipe IDs for "Show More" exclusion
+  const [shownIds, setShownIds] = useState<Set<string>>(new Set());
+
   const buildEmptyPlan = useCallback((): MealPlan => {
     return {
       week: weekId,
@@ -135,9 +168,11 @@ export default function MealsPage() {
   useEffect(() => {
     setWeekdayOptions([]);
     setWeekendOptions([]);
+    setWeekendMeals([]);
     setSelectedRecipe(null);
     setIngredientGroups(null);
     setShowIngredients(false);
+    setShownIds(new Set());
 
     fetch(`/api/meals/plan?week=${weekId}`)
       .then((r) => r.json())
@@ -151,7 +186,7 @@ export default function MealsPage() {
       .catch(() => setPlan(null));
   }, [weekId]);
 
-  // Generate meal options
+  // Generate meal options (initial)
   async function handleGenerate() {
     setLoading(true);
     try {
@@ -159,6 +194,10 @@ export default function MealsPage() {
       const data = await res.json();
       setWeekdayOptions(data.weekday);
       setWeekendOptions(data.weekend);
+      setWeekendMeals(data.weekendMeals || []);
+      const ids = new Set<string>();
+      [...data.weekday, ...data.weekend].forEach((r: RecipeOption) => ids.add(r.id));
+      setShownIds(ids);
       if (!plan) {
         setPlan(buildEmptyPlan());
       }
@@ -166,6 +205,51 @@ export default function MealsPage() {
       console.error("Failed to generate options:", err);
     } finally {
       setLoading(false);
+    }
+  }
+
+  // Show More — appends 6 more options
+  async function handleShowMore() {
+    setLoadingMore(true);
+    try {
+      const excludeParam = [...shownIds].join(",");
+      const res = await fetch(`/api/meals/generate?exclude=${excludeParam}`);
+      const data = await res.json();
+      const newWeekday: RecipeOption[] = data.weekday || [];
+      const newWeekend: RecipeOption[] = data.weekend || [];
+      const newMeals: WeekendMealCombo[] = data.weekendMeals || [];
+
+      setWeekdayOptions((prev) => [...prev, ...newWeekday]);
+      setWeekendOptions((prev) => [...prev, ...newWeekend]);
+      setWeekendMeals((prev) => [...prev, ...newMeals]);
+
+      setShownIds((prev) => {
+        const updated = new Set(prev);
+        [...newWeekday, ...newWeekend].forEach((r: RecipeOption) => updated.add(r.id));
+        return updated;
+      });
+    } catch (err) {
+      console.error("Failed to load more options:", err);
+    } finally {
+      setLoadingMore(false);
+    }
+  }
+
+  // Quick View — fetch full recipe detail
+  async function handleQuickView(recipeId: string) {
+    setQuickViewLoading(true);
+    try {
+      const res = await fetch("/api/meals/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: recipeId }),
+      });
+      const data = await res.json();
+      setQuickViewRecipe(data);
+    } catch (err) {
+      console.error("Failed to load recipe:", err);
+    } finally {
+      setQuickViewLoading(false);
     }
   }
 
@@ -182,7 +266,6 @@ export default function MealsPage() {
     setSelectedRecipe(null);
   }
 
-  // Clear a slot
   function handleClearSlot(dayIndex: number) {
     if (!plan || plan.locked) return;
     const newDays = [...plan.days];
@@ -194,7 +277,6 @@ export default function MealsPage() {
     setPlan({ ...plan, days: newDays });
   }
 
-  // Lock plan
   async function handleLock() {
     if (!plan) return;
     const lockedPlan = { ...plan, locked: true };
@@ -210,7 +292,6 @@ export default function MealsPage() {
     }
   }
 
-  // Fetch ingredients
   async function handleViewIngredients() {
     if (!plan) return;
     const recipeIds = plan.days
@@ -341,17 +422,22 @@ export default function MealsPage() {
 
         {/* Action buttons */}
         <div className="flex gap-3 mb-6">
-          {!plan?.locked && (
+          {!plan?.locked && !hasOptions && (
             <button
               onClick={handleGenerate}
               disabled={loading}
               className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:opacity-50 transition-colors"
             >
-              {loading
-                ? "Generating..."
-                : hasOptions
-                  ? "Re-generate Options"
-                  : "Generate Plan"}
+              {loading ? "Generating..." : "Generate Options"}
+            </button>
+          )}
+          {!plan?.locked && hasOptions && (
+            <button
+              onClick={handleShowMore}
+              disabled={loadingMore}
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-500 dark:hover:border-zinc-500 disabled:opacity-50 transition-colors"
+            >
+              {loadingMore ? "Loading..." : "Show More"}
             </button>
           )}
           {allSlotsFilled && !plan?.locked && (
@@ -391,13 +477,14 @@ export default function MealsPage() {
 
         {/* Recipe option cards */}
         {hasOptions && !plan?.locked && (
-          <div className="space-y-6">
+          <div className="space-y-8">
+            {/* Weekday options */}
             {weekdayOptions.length > 0 && (
               <div>
                 <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
                   Weekday Options
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {weekdayOptions.map((r) => (
                     <RecipeCard
                       key={r.id}
@@ -411,17 +498,47 @@ export default function MealsPage() {
                           selectedRecipe?.id === r.id ? null : r
                         )
                       }
+                      onQuickView={() => handleQuickView(r.id)}
                     />
                   ))}
                 </div>
               </div>
             )}
-            {weekendOptions.length > 0 && (
+
+            {/* Weekend: Build a Meal */}
+            {weekendMeals.length > 0 && (
+              <div>
+                <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
+                  Weekend &mdash; Build a Meal
+                </h2>
+                <div className="space-y-4">
+                  {weekendMeals.map((combo) => (
+                    <WeekendMealCard
+                      key={combo.main.id}
+                      combo={combo}
+                      isSelected={selectedRecipe?.id === combo.main.id}
+                      isAssigned={
+                        plan?.days.some((d) => d.recipeId === combo.main.id) ?? false
+                      }
+                      onSelectMain={() =>
+                        setSelectedRecipe(
+                          selectedRecipe?.id === combo.main.id ? null : combo.main
+                        )
+                      }
+                      onQuickView={(id) => handleQuickView(id)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Fallback: plain weekend options if no combos */}
+            {weekendMeals.length === 0 && weekendOptions.length > 0 && (
               <div>
                 <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
                   Weekend Options
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {weekendOptions.map((r) => (
                     <RecipeCard
                       key={r.id}
@@ -435,6 +552,7 @@ export default function MealsPage() {
                           selectedRecipe?.id === r.id ? null : r
                         )
                       }
+                      onQuickView={() => handleQuickView(r.id)}
                     />
                   ))}
                 </div>
@@ -485,6 +603,18 @@ export default function MealsPage() {
           </div>
         )}
       </main>
+
+      {/* Quick View Modal */}
+      {(quickViewRecipe || quickViewLoading) && (
+        <QuickViewModal
+          recipe={quickViewRecipe}
+          loading={quickViewLoading}
+          onClose={() => {
+            setQuickViewRecipe(null);
+            setQuickViewLoading(false);
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -496,56 +626,415 @@ function RecipeCard({
   isSelected,
   isAssigned,
   onSelect,
+  onQuickView,
 }: {
   recipe: RecipeOption;
   isSelected: boolean;
   isAssigned: boolean;
   onSelect: () => void;
+  onQuickView: () => void;
 }) {
   const vegTags = recipe.dietary.filter(
     (t) => t === "vegan" || t === "vegetarian"
   );
+  const catColors = CATEGORY_COLORS[recipe.category] || CATEGORY_COLORS.Main;
+
   return (
-    <button
-      onClick={onSelect}
-      disabled={isAssigned}
-      className={`text-left p-3 rounded-lg border transition-colors ${
+    <div
+      className={`rounded-lg border overflow-hidden transition-colors ${
         isAssigned
-          ? "opacity-50 cursor-not-allowed bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700"
+          ? "opacity-50 border-zinc-200 dark:border-zinc-700"
           : isSelected
-            ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950 ring-2 ring-blue-500/30"
+            ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/30"
             : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600"
       }`}
     >
-      <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-1 line-clamp-2">
-        {recipe.name}
-      </p>
-      <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-        {recipe.source?.cookbook}
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        {recipe.cuisine && recipe.cuisine !== "Other" && (
-          <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-            {recipe.cuisine}
-          </span>
-        )}
-        {vegTags.map((t) => (
+      {/* Image */}
+      {recipe.image ? (
+        <div className="relative h-36 bg-zinc-100 dark:bg-zinc-800">
+          <Image
+            src={recipe.image}
+            alt={recipe.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
+      ) : (
+        <div className="h-20 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center">
+          <span className="text-3xl opacity-30">&#127869;</span>
+        </div>
+      )}
+
+      <div className="p-3">
+        {/* Category badge + cuisine */}
+        <div className="flex flex-wrap gap-1.5 mb-2">
           <span
-            key={t}
-            className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+            className={`text-xs px-2 py-0.5 rounded-full font-medium ${catColors}`}
           >
-            {t}
+            {recipe.category}
           </span>
-        ))}
-        {recipe.time && recipe.time.total > 0 && (
-          <span className="text-xs text-zinc-400 dark:text-zinc-500">
-            {recipe.time.total}min
-          </span>
+          {recipe.cuisine && recipe.cuisine !== "Other" && (
+            <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+              {recipe.cuisine}
+            </span>
+          )}
+          {vegTags.map((t) => (
+            <span
+              key={t}
+              className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Name */}
+        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-1 line-clamp-2">
+          {recipe.name}
+        </p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+          {recipe.source?.cookbook}
+        </p>
+
+        {/* Time + actions */}
+        <div className="flex items-center justify-between">
+          {recipe.time && recipe.time.total > 0 && (
+            <span className="text-xs text-zinc-400 dark:text-zinc-500">
+              {recipe.time.total}min
+            </span>
+          )}
+          <div className="flex gap-2 ml-auto">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView();
+              }}
+              className="text-xs px-2 py-1 rounded text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              Quick View
+            </button>
+            <button
+              onClick={onSelect}
+              disabled={isAssigned}
+              className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
+                isAssigned
+                  ? "text-zinc-400 cursor-not-allowed"
+                  : isSelected
+                    ? "bg-blue-500 text-white"
+                    : "text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950"
+              }`}
+            >
+              {isAssigned ? "Assigned" : isSelected ? "Selected" : "Select"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ----- Weekend Meal Card (Build a Meal) -----
+
+function WeekendMealCard({
+  combo,
+  isSelected,
+  isAssigned,
+  onSelectMain,
+  onQuickView,
+}: {
+  combo: WeekendMealCombo;
+  isSelected: boolean;
+  isAssigned: boolean;
+  onSelectMain: () => void;
+  onQuickView: (id: string) => void;
+}) {
+  const { main, sides } = combo;
+  const vegTags = main.dietary.filter(
+    (t) => t === "vegan" || t === "vegetarian"
+  );
+  const catColors = CATEGORY_COLORS[main.category] || CATEGORY_COLORS.Main;
+
+  return (
+    <div
+      className={`rounded-lg border overflow-hidden transition-colors ${
+        isAssigned
+          ? "opacity-50 border-zinc-200 dark:border-zinc-700"
+          : isSelected
+            ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/30"
+            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+      }`}
+    >
+      <div className="flex flex-col sm:flex-row">
+        {/* Main dish */}
+        <div className="flex-1 flex">
+          {main.image ? (
+            <div className="relative w-32 sm:w-40 shrink-0 bg-zinc-100 dark:bg-zinc-800">
+              <Image
+                src={main.image}
+                alt={main.name}
+                fill
+                className="object-cover"
+                sizes="160px"
+              />
+            </div>
+          ) : (
+            <div className="w-20 shrink-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center">
+              <span className="text-2xl opacity-30">&#127869;</span>
+            </div>
+          )}
+          <div className="p-3 flex-1 min-w-0">
+            <div className="flex flex-wrap gap-1.5 mb-1">
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${catColors}`}>
+                {main.category}
+              </span>
+              {main.cuisine && main.cuisine !== "Other" && (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                  {main.cuisine}
+                </span>
+              )}
+              {vegTags.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-2">
+              {main.name}
+            </p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              {main.source?.cookbook}
+            </p>
+            <div className="flex items-center gap-2 mt-2">
+              {main.time && main.time.total > 0 && (
+                <span className="text-xs text-zinc-400">{main.time.total}min</span>
+              )}
+              <button
+                onClick={() => onQuickView(main.id)}
+                className="text-xs px-2 py-1 rounded text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              >
+                Quick View
+              </button>
+              <button
+                onClick={onSelectMain}
+                disabled={isAssigned}
+                className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
+                  isAssigned
+                    ? "text-zinc-400 cursor-not-allowed"
+                    : isSelected
+                      ? "bg-blue-500 text-white"
+                      : "text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950"
+                }`}
+              >
+                {isAssigned ? "Assigned" : isSelected ? "Selected" : "Select"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Suggested sides */}
+        {sides.length > 0 && (
+          <div className="sm:w-56 border-t sm:border-t-0 sm:border-l border-zinc-200 dark:border-zinc-800 p-3 bg-zinc-50 dark:bg-zinc-950">
+            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2 uppercase tracking-wide">
+              Suggested sides
+            </p>
+            <ul className="space-y-1.5">
+              {sides.map((s) => (
+                <li key={s.id} className="flex items-start justify-between gap-1">
+                  <span className="text-xs text-zinc-700 dark:text-zinc-300 line-clamp-1">
+                    {s.name}
+                  </span>
+                  <button
+                    onClick={() => onQuickView(s.id)}
+                    className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 shrink-0"
+                  >
+                    view
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
-      {isAssigned && (
-        <p className="text-xs text-zinc-400 mt-1 italic">Assigned</p>
-      )}
-    </button>
+    </div>
+  );
+}
+
+// ----- Quick View Modal -----
+
+function QuickViewModal({
+  recipe,
+  loading,
+  onClose,
+}: {
+  recipe: RecipeDetail | null;
+  loading: boolean;
+  onClose: () => void;
+}) {
+  // Close on Escape
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-xl max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+        {loading ? (
+          <div className="p-8 text-center">
+            <p className="text-sm text-zinc-500">Loading recipe...</p>
+          </div>
+        ) : recipe ? (
+          <>
+            {/* Header with image */}
+            {recipe.image && (
+              <div className="relative h-48 sm:h-56">
+                <Image
+                  src={recipe.image}
+                  alt={recipe.name}
+                  fill
+                  className="object-cover rounded-t-xl"
+                  sizes="(max-width: 672px) 100vw, 672px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <button
+                  onClick={onClose}
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-3 left-4 right-4">
+                  <h2 className="text-lg font-semibold text-white drop-shadow-sm">
+                    {recipe.name}
+                  </h2>
+                  <p className="text-sm text-white/80">
+                    {recipe.source?.cookbook}
+                  </p>
+                </div>
+              </div>
+            )}
+            {!recipe.image && (
+              <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-start justify-between">
+                <div>
+                  <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    {recipe.name}
+                  </h2>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                    {recipe.source?.cookbook}
+                  </p>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-xl leading-none"
+                >
+                  &times;
+                </button>
+              </div>
+            )}
+
+            <div className="p-4 space-y-4">
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2">
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                    CATEGORY_COLORS[recipe.category] || CATEGORY_COLORS.Main
+                  }`}
+                >
+                  {recipe.category}
+                </span>
+                {recipe.cuisine && recipe.cuisine !== "Other" && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                    {recipe.cuisine}
+                  </span>
+                )}
+                {recipe.time && recipe.time.total > 0 && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                    {recipe.time.total}min
+                  </span>
+                )}
+                {recipe.servings && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                    {recipe.servings}
+                  </span>
+                )}
+              </div>
+
+              {/* Introduction */}
+              {recipe.introduction && (
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
+                  {recipe.introduction}
+                </p>
+              )}
+
+              {/* Ingredients */}
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+                  Ingredients
+                </h3>
+                <ul className="space-y-1">
+                  {recipe.ingredients.map((ing, idx) => (
+                    <li
+                      key={idx}
+                      className="text-sm text-zinc-600 dark:text-zinc-400 flex gap-2"
+                    >
+                      <span className="text-zinc-400 dark:text-zinc-500 shrink-0 w-16 text-right">
+                        {ing.amount}
+                      </span>
+                      <span>
+                        {ing.unit ? `${ing.unit} ` : ""}
+                        {ing.item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Method (preview — first 4 steps) */}
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+                  Method
+                </h3>
+                <ol className="space-y-2">
+                  {recipe.method.slice(0, 4).map((step, idx) => (
+                    <li
+                      key={idx}
+                      className="text-sm text-zinc-600 dark:text-zinc-400 flex gap-2"
+                    >
+                      <span className="text-zinc-400 dark:text-zinc-500 shrink-0 font-medium">
+                        {idx + 1}.
+                      </span>
+                      <span className="line-clamp-3">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                {recipe.method.length > 4 && (
+                  <p className="text-xs text-zinc-400 mt-2">
+                    +{recipe.method.length - 4} more steps...
+                  </p>
+                )}
+              </div>
+
+              {/* Tips */}
+              {recipe.tips && (
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800 rounded-lg p-3">
+                  <span className="font-medium">Tip:</span> {recipe.tips}
+                </div>
+              )}
+            </div>
+          </>
+        ) : null}
+      </div>
+    </div>
   );
 }

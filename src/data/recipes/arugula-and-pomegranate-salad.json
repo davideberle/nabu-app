@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "2 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "This salad is what I often throw together when I want a “no chopping” salad that I can make in just a few minutes. I first had it at an upscale restaurant in Kuwait, and I was pleasantly surprised by the combination of pomegranate and Parmesan cheese. The tartness and saltiness work so well together alongside the pepperiness of the arugula. Garnishing it with chopped pistachios adds texture and elevates it, but feel free to use any other seeds or nuts you have on hand.",
   "ingredients": [
     {
@@ -54,6 +58,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

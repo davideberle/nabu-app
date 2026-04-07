@@ -62,7 +62,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/leos-illuminati-pasta.jpg"
+  "image": "/recipes/leos-illuminati-pasta.jpg",
+  "cuisine": "Italian"
 }

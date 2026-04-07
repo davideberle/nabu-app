@@ -87,7 +87,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/gluten-free-chocolate-chunk-cookies.jpg"
+  "image": "/recipes/gluten-free-chocolate-chunk-cookies.jpg",
+  "cuisine": "Other"
 }

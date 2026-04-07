@@ -55,7 +55,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/plantain-porridge.jpg"
+  "image": "/recipes/plantain-porridge.jpg",
+  "cuisine": "Nigerian"
 }

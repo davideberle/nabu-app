@@ -10,7 +10,8 @@
   "intro": "If you like prawn (shrimp) curries, this is a straightforward one that my youngest daughter, Jennifer, makes all the time. One of her tips for getting extra flavour into the curry (that isn’t in the recipe method below) is to purchase your prawns unpeeled. Peel and clean them and then sauté the shells in the oil. The shells will turn pink as they cook. Press the shells down to extract every last bit of flavour and then remove and discard them, leaving as much oil in the pan as possible. Then, start the recipe as described below. This extra step really adds depth and flavour to the sauce.",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE10 MINS"
   },
   "ingredients": [
     {
@@ -92,6 +93,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

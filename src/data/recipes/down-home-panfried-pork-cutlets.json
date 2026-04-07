@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 18,
+    "cook": 40,
+    "total": 58
+  },
   "intro": "This unpretentious recipe dates back to 1944, when my mom first had it in Hai Duong, the town where she grew up. The original, thịt cốt lết, was made with beef, but since beef was a luxury item, Mom’s brother-in-law taught her how to make the dish with affordable pork. He seasoned it just like a beefsteak and quickly fried it up. It was delicious, and when Mom came to America and discovered supermarket bread crumbs, she began breading pork cutlets and panfrying them, much to our family’s delight. (The term cốt lết comes from côtelette, which is French for “cutlet” or “chop.”)",
   "ingredients": [
     {
@@ -58,6 +62,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

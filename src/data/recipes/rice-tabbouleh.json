@@ -144,5 +144,6 @@
       "vegan"
     ]
   },
-  "image": "/recipes/rice-tabbouleh.jpg"
+  "image": "/recipes/rice-tabbouleh.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -10,7 +10,8 @@
   "intro": "I love the deep green colour of these kebabs and the flavour is out of this world. Just look at the photograph! Be sure to keep some of the marinade aside to brush over the chicken pieces just before they’re cooked through. You can also cook these on a grill (broiler) if the barbecue isn’t set up, or even in the oven if you wish. See the note.",
   "time": {
     "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "20 MINS"
+    "cook": "20 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME20 MINS"
   },
   "ingredients": [
     {
@@ -105,6 +106,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

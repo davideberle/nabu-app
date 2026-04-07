@@ -8,7 +8,8 @@
   "servings": "serves 3",
   "intro": "A much-loved classic Thai curry that cooks very quickly: Panang Curry! Unlike other soupy Thai curries, this curry is a spicy curry with a thick, rich, flavorful, and delicious sauce. This recipe will also cover how to make \"semi-homemade\" curry paste based on store-bought red curry paste.",
   "time": {
-    "prep": "35 minutes"
+    "prep": "35 minutes",
+    "total": "35 minutes0"
   },
   "ingredients": [
     {
@@ -84,5 +85,6 @@
     "dish_type": [
       "main"
     ]
-  }
+  },
+  "cuisine": "Southeast Asian"
 }

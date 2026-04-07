@@ -63,7 +63,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/roasted-garlic-chili-peanuts.jpg"
+  "image": "/recipes/roasted-garlic-chili-peanuts.jpg",
+  "cuisine": "Southeast Asian"
 }

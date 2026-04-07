@@ -63,5 +63,12 @@
   ],
   "time": {
     "total": 6
-  }
+  },
+  "category": {
+    "dish_type": [
+      "breakfast"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

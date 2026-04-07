@@ -10,7 +10,8 @@
   "intro": "Onion bhajis and vegetable pakoras are best cooked in two stages. The first cooking is in oil that is hot enough to sizzle and cook them through. They are then removed to rest, the oil temperature is increased and they are fried again in the hotter oil to give them a darker and crispier exterior. The bhajis are pictured.\n\nMixing the onions with salt at the beginning of the recipe is key to making the perfect bhajis. If you were to bend a fresh onion slice, it would snap. The salt releases moisture from the onion slices so they become limp and no longer snap when bent, making it easier to form your bhajis.",
   "time": {
     "prep": "15 MINS, PLUS SITTING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS SITTING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -68,6 +69,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

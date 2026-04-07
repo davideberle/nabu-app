@@ -85,9 +85,11 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "The Classic British Curries"
   },
   "time": {
     "total": 3
-  }
+  },
+  "cuisine": "Indian"
 }

@@ -28,6 +28,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice"
+  },
+  "cuisine": "Chinese"
 }

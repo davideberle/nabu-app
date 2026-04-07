@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES 30 MINUTES, PLUS OVERNIGHT SOAKING",
+  "time": {
+    "prep": 14,
+    "cook": 24,
+    "total": 38
+  },
   "intro": "Creamy and comforting Asian rice porridges are prepared by gently simmering rice in liquid, such as water or stock, until the starches release. These soups are generically called cháo in Vietnamese, but in America, they’re better known as porridge or congee. The thrifty, versatile soups soothe stomachaches, colds, and hangovers. They’re a breakfast and lunch food, but don’t let this stop you from enjoying them for dinner.",
   "ingredients": [
     {
@@ -48,6 +52,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

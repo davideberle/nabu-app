@@ -119,9 +119,11 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Chef's Specials"
   },
   "time": {
     "total": 92
-  }
+  },
+  "cuisine": "Indian"
 }

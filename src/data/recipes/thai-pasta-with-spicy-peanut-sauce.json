@@ -8,7 +8,8 @@
   "servings": "serves 6",
   "intro": "Embrace the wholesome goodness of whole grain pasta paired with crisp green vegetables, all coated in a luscious and creamy peanut sauce. The addition of fresh lime juice adds a zesty and invigorating touch to this dish. While some prefer to enjoy it hot, you can also savor its flavors when it has cooled to room temperature. Either way, this dish promises a delightful and satisfying culinary experience.",
   "time": {
-    "prep": "30 minutes"
+    "prep": "30 minutes",
+    "total": "30 minutes0"
   },
   "ingredients": [
     {
@@ -58,5 +59,6 @@
     "dish_type": [
       "side"
     ]
-  }
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -10,7 +10,8 @@
   "intro": "I’ve found that keema naans are best cooked in a tandoor or very hot oven on a pizza stone. They are difficult to get right in a frying pan because of the meat inside. The trick is to roll them out while keeping the meat inside. With a little practice, you’ll roll out your naans and the minced meat inside will be thin and flavourful, just like at the best restaurants.\n\nI often substitute homemade tandoori masala for the mixed powder in the minced lamb. I like both versions, so you might like to give both a try.",
   "time": {
     "prep": "25 MINS, PLUS THE TIME TO PREPARE THE DOUGH",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "25 MINS, PLUS THE TIME TO PREPARE THE DOUGH10 MINS"
   },
   "ingredients": [
     {
@@ -73,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

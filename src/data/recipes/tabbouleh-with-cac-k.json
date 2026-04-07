@@ -76,5 +76,12 @@
   "image": "/recipes/tabbouleh-with-cac-k.jpg",
   "time": {
     "total": 60
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

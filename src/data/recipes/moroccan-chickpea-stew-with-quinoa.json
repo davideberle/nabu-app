@@ -114,6 +114,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups & Stews"
+  },
+  "cuisine": "Moroccan"
 }

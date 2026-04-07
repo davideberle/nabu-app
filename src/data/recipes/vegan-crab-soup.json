@@ -87,7 +87,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/vegan-crab-soup.jpg"
+  "image": "/recipes/vegan-crab-soup.jpg",
+  "cuisine": "Southeast Asian"
 }

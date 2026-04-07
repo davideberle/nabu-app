@@ -78,5 +78,13 @@
   "image": "/recipes/grilled-vegetable-and-spinach-bowl.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

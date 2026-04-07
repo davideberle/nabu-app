@@ -57,6 +57,13 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 0,
+    "total": 5
+  },
+  "cuisine": "Indian"
 }

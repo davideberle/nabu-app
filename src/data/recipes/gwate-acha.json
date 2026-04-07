@@ -76,7 +76,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/gwate-acha.jpg"
+  "image": "/recipes/gwate-acha.jpg",
+  "cuisine": "Nigerian"
 }

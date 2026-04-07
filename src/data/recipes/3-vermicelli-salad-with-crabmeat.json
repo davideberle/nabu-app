@@ -1,6 +1,6 @@
 {
   "id": "3-vermicelli-salad-with-crabmeat",
-  "name": "(3)     Vermicelli Salad with Crabmeat",
+  "name": "Vermicelli Salad with Crabmeat",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -70,5 +70,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

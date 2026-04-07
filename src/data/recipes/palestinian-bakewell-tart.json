@@ -149,5 +149,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/palestinian-bakewell-tart.jpg"
+  "image": "/recipes/palestinian-bakewell-tart.jpg",
+  "cuisine": "Middle Eastern"
 }

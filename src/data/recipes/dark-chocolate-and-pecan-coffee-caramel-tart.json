@@ -10,7 +10,8 @@
   "intro": "A pecan-flavoured dessert is right up there for me and paired with dark chocolate it really hits the mark. The base is baked, but the rest of it comes together really quickly and just needs to chill in the refrigerator to set.",
   "time": {
     "prep": "30 MINUTES",
-    "cook": "25 MINUTES"
+    "cook": "25 MINUTES",
+    "total": "30 MINUTES25 MINUTES"
   },
   "ingredients": [
     {
@@ -106,6 +107,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "Caribbean"
 }

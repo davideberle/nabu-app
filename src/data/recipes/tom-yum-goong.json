@@ -74,7 +74,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/tom-yum-goong.jpg"
+  "image": "/recipes/tom-yum-goong.jpg",
+  "cuisine": "Southeast Asian"
 }

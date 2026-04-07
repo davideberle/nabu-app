@@ -61,6 +61,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "African & Caribbean"
 }

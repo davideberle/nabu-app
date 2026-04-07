@@ -78,5 +78,12 @@
   ],
   "time": {
     "total": 120
-  }
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

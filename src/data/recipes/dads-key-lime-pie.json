@@ -60,7 +60,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/dads-key-lime-pie.jpg"
+  "image": "/recipes/dads-key-lime-pie.jpg",
+  "cuisine": "Italian"
 }

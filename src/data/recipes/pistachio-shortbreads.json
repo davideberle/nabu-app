@@ -96,5 +96,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/pistachio-shortbreads.jpg"
+  "image": "/recipes/pistachio-shortbreads.jpg",
+  "cuisine": "Middle Eastern"
 }

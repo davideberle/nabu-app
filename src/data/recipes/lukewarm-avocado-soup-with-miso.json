@@ -50,6 +50,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Hearty Snacks"
+  },
+  "cuisine": "Other"
 }

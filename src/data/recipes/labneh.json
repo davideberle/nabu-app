@@ -7,7 +7,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "1¾ cups (380 g)",
-  "time": "10 minutes, plus 24 hours straining",
+  "time": {
+    "prep": 10,
+    "cook": 32,
+    "total": 42
+  },
   "intro": "If you see the refrigerator light on at midnight, I am likely standing there with the door open, pita bread in hand, scooping up labneh as my midnight snack of choice. It’s too hard to resist and so easy to eat. Labneh (pronounced “lab-naa” in other Arabic dialects) is tangy and creamy strained yogurt, resembling the texture of cream cheese. It’s surprisingly easy to make at home; just mix yogurt with salt and strain it! But this simple process, typically done using a cheesecloth, allows all the whey to drain away, leaving behind a thicker and creamier product. The most traditional way of enjoying labneh is spread onto a plate, drizzled generously with olive oil, and sprinkled with za’atar. But I also love spooning it into warm cooked pasta for my picky six-year-old or using it as a canvas for grilled or roasted veggies (see Roasted Eggplant with Labneh). Make sure you don’t discard the protein-rich whey left behind; throw it into a smoothie or a bowl of oatmeal.",
   "ingredients": [
     {
@@ -40,6 +44,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

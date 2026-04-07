@@ -39,6 +39,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Essentials"
+  },
+  "cuisine": "Indian"
 }

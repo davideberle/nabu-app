@@ -57,5 +57,12 @@
   "image": "/recipes/curried-chickpeas-with-mango.jpg",
   "time": {
     "total": 50
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

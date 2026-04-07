@@ -93,7 +93,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": null
+  "image": null,
+  "cuisine": "Other"
 }

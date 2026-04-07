@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "25 to 30 buns",
-  "time": "1 hour, plus 1 hour rising",
+  "time": {
+    "prep": 20,
+    "cook": 60,
+    "total": 80
+  },
   "intro": "Churag is one of Iraq’s most iconic pastries, sold at all bakeries and by local street vendors. It’s a sweet bread topped with honey and sesame seeds and served with a cup of tea as an afternoon snack. The dough contains egg yolks, so it’s similar to brioche in texture. I’ve made many different types of dough before, and this is one of the easiest. It will rise into a very soft dough that’s easy to work with, and once baked, it will have a fluffy cloudlike texture. The traditional shape is that of a twisted braid shaped into a flower. It is often kept plain and drizzled with honey after baking or stuffed with dates. You can also make a savory version by brushing it with an herb butter after baking or stuffing it with cheese.",
   "ingredients": [
     {
@@ -70,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

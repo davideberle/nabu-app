@@ -60,5 +60,12 @@
   "image": "/recipes/linguine-and-clam-sauce.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

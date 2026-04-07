@@ -228,5 +228,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/freekeh-soup-with-chicken-meatballs.jpg"
+  "image": "/recipes/freekeh-soup-with-chicken-meatballs.jpg",
+  "cuisine": "Middle Eastern"
 }

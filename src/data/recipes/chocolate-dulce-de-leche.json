@@ -55,7 +55,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-dulce-de-leche.jpg"
+  "image": "/recipes/chocolate-dulce-de-leche.jpg",
+  "cuisine": "Other"
 }

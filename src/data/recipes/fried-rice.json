@@ -10,7 +10,8 @@
   "intro": "You can get really creative with fried rice. For onion fried rice, simply fry some onion in the oil and then stir in your cold, cooked rice. You could also make a fried rice version of the pilau rice above using this method. The following lemon rice recipe is the perfect accompaniment for fish curries.",
   "time": {
     "prep": "5 MINS",
-    "cook": "5 MINS"
+    "cook": "5 MINS",
+    "total": "5 MINS5 MINS"
   },
   "ingredients": [
     {
@@ -53,6 +54,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

@@ -69,5 +69,12 @@
   "image": "/recipes/goat-cheese-and-beans-with-chive-dressing.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

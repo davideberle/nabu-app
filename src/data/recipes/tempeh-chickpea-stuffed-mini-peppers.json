@@ -911,6 +911,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Appetizers & Snacks"
+  },
+  "cuisine": "Other"
 }

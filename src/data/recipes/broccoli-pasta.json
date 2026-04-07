@@ -49,7 +49,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/broccoli-pasta.jpg"
+  "image": "/recipes/broccoli-pasta.jpg",
+  "cuisine": "Italian"
 }

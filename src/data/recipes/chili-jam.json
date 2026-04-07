@@ -64,7 +64,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/chili-jam.jpg"
+  "image": "/recipes/chili-jam.jpg",
+  "cuisine": "Southeast Asian"
 }

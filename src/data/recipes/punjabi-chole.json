@@ -10,7 +10,8 @@
   "intro": "You might think that cooking chickpeas with teabags is a bit strange. Chickpeas are naturally quite dry, even after simmering for a long time, as they don’t naturally retain much moisture. Cooking them with teabags helps retain the moisture, which is important for Punjabi chole. The sauce does not taste at all like tea, but the teabags do give the curry its distinctive deep brown colour. This is delicious street food at its best that is usually served with freshly made bhatura. Punjabi chole bhatura is street food that simply must be tried!",
   "time": {
     "prep": "10 MINS, PLUS OVERNIGHT SOAKING",
-    "cook": "5 MINS"
+    "cook": "5 MINS",
+    "total": "10 MINS, PLUS OVERNIGHT SOAKING5 MINS"
   },
   "ingredients": [
     {
@@ -119,6 +120,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Starters & Snacks"
+  },
+  "cuisine": "Indian"
 }

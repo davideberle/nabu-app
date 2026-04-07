@@ -824,7 +824,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Appetizers"
   },
-  "image": "/recipes/crisp-seaweed-with-peanuts.jpg"
+  "image": "/recipes/crisp-seaweed-with-peanuts.jpg",
+  "cuisine": "Chinese"
 }

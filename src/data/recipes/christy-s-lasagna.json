@@ -87,7 +87,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/christy-s-lasagna.jpg"
+  "image": "/recipes/christy-s-lasagna.jpg",
+  "cuisine": "Italian"
 }

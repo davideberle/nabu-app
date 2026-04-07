@@ -145,5 +145,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/pear-and-amaretto-crumble-cake.jpg"
+  "image": "/recipes/pear-and-amaretto-crumble-cake.jpg",
+  "cuisine": "Middle Eastern"
 }

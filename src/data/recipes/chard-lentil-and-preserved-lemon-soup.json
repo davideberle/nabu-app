@@ -129,5 +129,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/chard-lentil-and-preserved-lemon-soup.jpg"
+  "image": "/recipes/chard-lentil-and-preserved-lemon-soup.jpg",
+  "cuisine": "Middle Eastern"
 }

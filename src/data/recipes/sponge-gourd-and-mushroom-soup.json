@@ -62,7 +62,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/sponge-gourd-and-mushroom-soup.jpg"
+  "image": "/recipes/sponge-gourd-and-mushroom-soup.jpg",
+  "cuisine": "Southeast Asian"
 }

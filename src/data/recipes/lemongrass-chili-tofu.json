@@ -119,7 +119,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/lemongrass-chili-tofu.jpg"
+  "image": "/recipes/lemongrass-chili-tofu.jpg",
+  "cuisine": "Southeast Asian"
 }

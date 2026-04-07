@@ -70,5 +70,12 @@
   "image": "/recipes/thai-spiced-lamb-salad-with-lime-dressing.jpg",
   "time": {
     "total": 17
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

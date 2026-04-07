@@ -89,7 +89,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/b-che-de-no-l.jpg"
+  "image": "/recipes/b-che-de-no-l.jpg",
+  "cuisine": "Other"
 }

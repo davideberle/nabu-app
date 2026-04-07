@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "20 minutes",
+  "time": {
+    "prep": 22,
+    "cook": 24,
+    "total": 46
+  },
   "intro": "I love shredded cabbage salads, but I shied away from them for so long, simply because I found hand-slicing a head of cabbage too tedious. But once I started to use a mandoline, which changed my life, my cabbage intake saw a huge spike. Nowadays, you can even find ready-shredded cabbage at most grocery stores, which would make this salad a breeze to make. I make this often to serve alongside grilled chicken or steak as a welcome change from our normal chopped salad, Salata. The green yogurt and tahini dressing alone is worth making—you’ll want to drizzle it on everything.",
   "ingredients": [
     {
@@ -67,6 +71,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

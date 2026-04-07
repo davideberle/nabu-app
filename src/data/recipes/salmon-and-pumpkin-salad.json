@@ -94,6 +94,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "More Than Greek Salad"
+  },
+  "cuisine": "Greek"
 }

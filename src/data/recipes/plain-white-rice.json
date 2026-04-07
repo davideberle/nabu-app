@@ -310,7 +310,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Rice"
   },
-  "image": "/recipes/plain-white-rice.jpg"
+  "image": "/recipes/plain-white-rice.jpg",
+  "cuisine": "Chinese"
 }

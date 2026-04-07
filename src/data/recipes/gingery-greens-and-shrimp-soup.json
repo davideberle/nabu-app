@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES 35 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 25,
+    "total": 40
+  },
   "intro": "Part of Vietnamese everyday meals, fragrant, wholesome, and fast soups like this one are called canh. Surprisingly, they’re typically made with water and rely on gently sautéed onion, salt, and fish sauce for foundational depth. What often defines canh is a ton of leafy greens, cooked in the pot to contribute their flavor and nutrients. A little protein is dropped in for savory flair. At the Viet table, canh is not just a first course—you can help yourself to it throughout a meal to refresh your palate. This nimble soup plays well with other dishes, but you can make a light meal of it too. Just add warm bread and butter.",
   "ingredients": [
     {
@@ -55,6 +59,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -74,6 +74,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Noodles"
+  },
+  "cuisine": "Chinese"
 }

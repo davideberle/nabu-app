@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "5 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 10,
+    "cook": 24,
+    "total": 34
+  },
   "intro": "Mint lemonade needs no introduction or explanation; it’s simply one of the most refreshing drinks on a hot summer day. It is served at every restaurant in the Middle East, sometimes in a completely liquified form and sometimes like a frozen slushie. You can vary the amount of sugar based on your preference and serve it garnished with beautiful fresh mint leaves.",
   "ingredients": [
     {
@@ -44,6 +48,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

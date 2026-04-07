@@ -10,7 +10,8 @@
   "intro": "Birthdays are bittersweet for me. As an introvert I get so anxious about the pressure to do something big and have lots of people around. However, I never fail to have cake on my birthday. All through my twenties, regardless of what I ended up planning, I would order myself cake or some cupcakes from my favourite vegan bakery. I wanted to make my ideal birthday cake recipe, not just so my friends would take the hint and make me this exact cake, but also for the girls like me who suck at decorating cakes. This sour cherry and hazelnut cake with dark chocolate cream cheese icing (frosting) is very forgiving as it all happens in one tray, but still feels very adult and sophisticated.",
   "time": {
     "prep": "25 MINUTES",
-    "cook": "35 MINUTES"
+    "cook": "35 MINUTES",
+    "total": "25 MINUTES35 MINUTES"
   },
   "ingredients": [
     {
@@ -110,6 +111,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Special Occasions"
+  },
+  "cuisine": "Caribbean"
 }

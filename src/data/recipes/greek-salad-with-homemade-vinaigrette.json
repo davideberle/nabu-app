@@ -47,5 +47,12 @@
   ],
   "time": {
     "total": 5
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

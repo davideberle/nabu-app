@@ -78,6 +78,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Starters & Appetizers"
+  },
+  "cuisine": "Moroccan"
 }

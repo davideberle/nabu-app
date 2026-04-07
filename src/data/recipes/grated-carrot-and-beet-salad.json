@@ -55,5 +55,13 @@
   "image": "/recipes/grated-carrot-and-beet-salad.jpg",
   "time": {
     "total": 33
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

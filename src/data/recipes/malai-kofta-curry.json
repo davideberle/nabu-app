@@ -10,7 +10,8 @@
   "intro": "I promise, you won’t miss the meat when you make these koftas. Served in the mildly spiced, creamy sauce, they are real crowd pleasers! The koftas could also be made smaller and flattened into patties so you don’t need to cook with as much oil.",
   "time": {
     "prep": "20 MINS",
-    "cook": "40 MINS"
+    "cook": "40 MINS",
+    "total": "20 MINS40 MINS"
   },
   "ingredients": [
     {
@@ -130,6 +131,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

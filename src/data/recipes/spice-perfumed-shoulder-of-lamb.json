@@ -55,6 +55,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Roasts & grills"
+  },
+  "cuisine": "Persian"
 }

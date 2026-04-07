@@ -78,5 +78,12 @@
   "image": "/recipes/chickpea-red-rice-and-artichoke-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "serves 6 to 8",
-  "time": "TAKES 30 MINUTES, PLUS 2½ HOURS TO BAKE AND COOL",
+  "time": {
+    "prep": 18,
+    "cook": 48,
+    "total": 66
+  },
   "intro": "Tons of bananas grow in Vietnam, which is why they appear in savories as well as sweets. This moist, fragrant, pudding-like cake is a great way to use overripe fruit or, in my case, a good reason to buy a big bunch at a good price and let some turn very dark and deliciously perfect for this treat.",
   "ingredients": [
     {
@@ -62,6 +66,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -67,9 +67,11 @@
   "category": {
     "dish_type": [
       "condiment"
-    ]
+    ],
+    "chapter": "Accompaniments"
   },
   "time": {
     "total": 180
-  }
+  },
+  "cuisine": "Indian"
 }

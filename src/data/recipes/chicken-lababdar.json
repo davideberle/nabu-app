@@ -10,7 +10,8 @@
   "intro": "Chicken lababdar is very similar to butter chicken and, for that matter, chicken tikka masala. I like to serve my lababdar curries a bit spicier than the others by adding more Kashmiri chilli powder and fresh chillies. Lababdar curries are a lot less fussy than butter chicken as the chicken isn’t marinated and is cooked from raw in the sauce. I use chicken on the bone in this recipe, which is the authentic way of cooking it. The bones add flavour, but you could use boneless cubed chicken thighs or breasts if that is more appealing to you.",
   "time": {
     "prep": "15 MINS, PLUS SOAKING TIME",
-    "cook": "30 MINS"
+    "cook": "30 MINS",
+    "total": "15 MINS, PLUS SOAKING TIME30 MINS"
   },
   "ingredients": [
     {
@@ -112,6 +113,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

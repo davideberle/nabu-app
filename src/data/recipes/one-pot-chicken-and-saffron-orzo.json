@@ -10,7 +10,8 @@
   "intro": "If it’s not already evident by the number of rice recipes in this cookbook, I cook rice a lot. But when I want a pleasant change, one of my favorite carbs to cook is orzo. It absorbs flavor like a sponge, and when cooked with the right liquid ratio, it can be silky smooth and pleasant to eat.",
   "time": {
     "prep": "10 minutes",
-    "cook": "20 minutes"
+    "cook": "20 minutes",
+    "total": "10 minutes20 minutes"
   },
   "ingredients": [
     {
@@ -147,6 +148,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 30 Minutes"
+  },
+  "cuisine": "Middle Eastern"
 }

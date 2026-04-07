@@ -88,6 +88,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Fish"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -1,6 +1,6 @@
 {
   "id": "37-baked-turkey-tetrazzini",
-  "name": "(37)     Baked Turkey Tetrazzini",
+  "name": "Baked Turkey Tetrazzini",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -91,5 +91,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

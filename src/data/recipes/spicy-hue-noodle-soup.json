@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 1½ HOURS",
+  "time": {
+    "prep": 15,
+    "cook": 25,
+    "total": 40
+  },
   "intro": "Want to go beyond pho? Make Vietnam’s second signature noodle soup—bún bò Huế (BBH), popular in the city of Hue and elsewhere in the central region. It’s a lusty bowl with lemongrass, chile, and fat round rice noodles. Reflecting the area’s gutsy spirit, the cooked beef and pork are just tender, not fork-tender. The classic broth owes its alluring color to annatto (a natural colorant common in cheese and snack foods), and its slight cloudiness and umami funk to fermented shrimp sauce (mắm tôm). Whereas pho is elegantly subtle, BBH looks like a wild party in a bowl.",
   "ingredients": [
     {
@@ -136,6 +140,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

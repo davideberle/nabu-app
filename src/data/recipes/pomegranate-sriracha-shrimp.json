@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 24,
+    "cook": 40,
+    "total": 64
+  },
   "intro": "Tangy, salty, and spicy tamarind shrimp is a southern Viet favorite, but tamarind isn’t available yet at many supermarkets. My work-around is to use pomegranate molasses for the sauce base. It totally works with the fish sauce and chile heat to create a quick modern take on a Vietnamese classic. Enjoy the shrimp with rice for soaking up the sauce. They’re also good tucked into a warm corn tortilla or plopped atop grits. To feature tamarind instead of pomegranate, substitute tamarind liquid, concentrate, or paste; see this page for details.",
   "ingredients": [
     {
@@ -70,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

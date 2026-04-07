@@ -1240,6 +1240,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Courses"
+  },
+  "cuisine": "Other"
 }

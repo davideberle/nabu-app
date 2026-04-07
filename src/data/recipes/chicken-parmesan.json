@@ -80,7 +80,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/chicken-parmesan.jpg"
+  "image": "/recipes/chicken-parmesan.jpg",
+  "cuisine": "Italian"
 }

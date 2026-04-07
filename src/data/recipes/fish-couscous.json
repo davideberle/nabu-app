@@ -102,6 +102,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Spring"
+  },
+  "cuisine": "Italian"
 }

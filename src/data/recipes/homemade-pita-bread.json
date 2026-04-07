@@ -91,5 +91,12 @@
   ],
   "time": {
     "total": 35
-  }
+  },
+  "category": {
+    "dish_type": [
+      "bread"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Other"
 }

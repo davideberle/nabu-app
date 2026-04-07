@@ -49,7 +49,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/bucatini-alla-amatriciana.jpg"
+  "image": "/recipes/bucatini-alla-amatriciana.jpg",
+  "cuisine": "Italian"
 }

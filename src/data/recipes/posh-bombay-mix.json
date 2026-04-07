@@ -10,7 +10,8 @@
   "intro": "Delicious served with drinks before a meal, you simply have to try this posh Bombay mix (shown on pictured). This one really packs a punch! Use the Bombay mix of your choice. You’ll find the best selection at Asian grocers, but it is also available in supermarkets. If eating gluten-free is important, be sure to check the bag, as some can contain gluten.",
   "time": {
     "prep": "10 MINS",
-    "cook": ""
+    "cook": "",
+    "total": "10 MINS0"
   },
   "ingredients": [
     {
@@ -57,6 +58,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

@@ -10,7 +10,8 @@
   "intro": "The flavour of marinated and chargrilled cauliflower is amazing. This mildly spiced marinade can be substantially spiced up by using more chilli powder and/or blended green chillies to taste. Although this recipe is fine as simple finger food, I like to wrap the cauliflower up into hot chapattis with a sloppy helping of mint and coriander sauce. It is photographed, next to the lamb raan.",
   "time": {
     "prep": "5 MINS, PLUS OPTIONAL MARINATING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "5 MINS, PLUS OPTIONAL MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -89,6 +90,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

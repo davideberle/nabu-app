@@ -64,5 +64,12 @@
   "image": "/recipes/blt-pasta-salad.jpg",
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

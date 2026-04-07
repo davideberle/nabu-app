@@ -77,7 +77,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/clear-mung-bean-dumplings.jpg"
+  "image": "/recipes/clear-mung-bean-dumplings.jpg",
+  "cuisine": "Southeast Asian"
 }

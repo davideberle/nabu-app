@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "2¼ cups (520 g); 6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 26,
+    "cook": 60,
+    "total": 86
+  },
   "intro": "Muhammara is an iconic Syrian mezze dip made primarily from roasted red peppers and walnuts. I find that it’s lesser known in the Western world but quite possibly one of the most delicious dips you’ll try. It is rich, sweet, tart, and slightly smoky, with a thick, spreadable consistency. It’s known for its vibrant red color, which is why it is called muhammara, meaning “reddened” in Arabic. Many versions will use bread crumbs to thicken the dip, as well as tomato paste for redness. I love to add a nontraditional ingredient to my recipe: sun-dried tomatoes. I find they add a concentrated and robust flavor, amping up the umami and sweetness. Make this dip ahead of time and store it in the fridge up to a week.",
   "ingredients": [
     {
@@ -81,6 +85,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

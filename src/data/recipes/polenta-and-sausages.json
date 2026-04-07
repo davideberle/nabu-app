@@ -65,7 +65,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/polenta-and-sausages.jpg"
+  "image": "/recipes/polenta-and-sausages.jpg",
+  "cuisine": "Italian"
 }

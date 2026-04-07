@@ -70,5 +70,12 @@
   "image": "/recipes/herb-tabbouleh-with-pomegranate-molasses.jpg",
   "time": {
     "total": 55
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

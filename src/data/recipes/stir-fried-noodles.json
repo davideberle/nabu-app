@@ -108,7 +108,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/stir-fried-noodles.jpg"
+  "image": "/recipes/stir-fried-noodles.jpg",
+  "cuisine": "Southeast Asian"
 }

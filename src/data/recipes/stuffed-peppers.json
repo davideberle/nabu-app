@@ -81,7 +81,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/stuffed-peppers.jpg"
+  "image": "/recipes/stuffed-peppers.jpg",
+  "cuisine": "Italian"
 }

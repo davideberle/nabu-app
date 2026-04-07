@@ -54,5 +54,12 @@
   "image": "/recipes/triple-grain-herbed-salad-bowl.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

@@ -44,7 +44,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/garden-egg-stew.jpg"
+  "image": "/recipes/garden-egg-stew.jpg",
+  "cuisine": "Nigerian"
 }

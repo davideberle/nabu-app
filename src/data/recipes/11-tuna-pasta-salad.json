@@ -1,6 +1,6 @@
 {
   "id": "11-tuna-pasta-salad",
-  "name": "(11)     Tuna Pasta Salad",
+  "name": "Tuna Pasta Salad",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -69,5 +69,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

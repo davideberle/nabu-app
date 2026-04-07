@@ -10,7 +10,8 @@
   "intro": "I was introduced to pav bhaji by my friend and award-winning chef Syed Ahmed, of Duke Bombay Café in Darlington. I love the food that comes out of his kitchen, and this buttery pav bhaji is one of my all-time favourites. Authentic pav bhaji is cooked with a lot of butter. If you aren’t keen on using the amount of butter I suggest here, you can of course reduce the quantity.\n\nPav bhajis are normally served with a top and bottom buttered bun with generous portions of the potato mixture and toppings. If you are serving these as part of a multi-course meal, you might want to give each person half a bun with the sauce. The bread and potato mixture, though delicious, can be quite filling.",
   "time": {
     "prep": "15 MINS",
-    "cook": "25 MINS"
+    "cook": "25 MINS",
+    "total": "15 MINS25 MINS"
   },
   "ingredients": [
     {
@@ -131,6 +132,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Starters & Snacks"
+  },
+  "cuisine": "Indian"
 }

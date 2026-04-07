@@ -142,7 +142,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/b-nh-m.jpg"
+  "image": "/recipes/b-nh-m.jpg",
+  "cuisine": "Southeast Asian"
 }

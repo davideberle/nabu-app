@@ -492,6 +492,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Salads"
+  },
+  "cuisine": "Other"
 }

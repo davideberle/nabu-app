@@ -10,7 +10,8 @@
   "intro": "This dish is a nod to an ancient Iraqi dish called torshana or qaysi, which is a sweet-and-sour stew made of apricots, prunes, and lamb. The stew is thick and jammy in consistency and served over rice. Growing up, I never really liked it because I always found it to be too sweet. But I am definitely in the minority; most Iraqis love this dish. I do, however, love the idea of using sweet and tangy apricots in savory applications, and given that chicken is a much quicker protein to cook than lamb, I developed this recipe. This dish is different and truly delicious.",
   "time": {
     "prep": "10 minutes",
-    "cook": "45 minutes"
+    "cook": "45 minutes",
+    "total": "10 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -103,6 +104,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

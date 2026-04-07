@@ -10,7 +10,8 @@
   "intro": "To be honest, I never knew how popular Kashmiri chicken was until I wrote a recipe for it that was in The Curry Guy Light. In that recipe, it was cooked from scratch without any base sauce, but here I give you the authentic curry-house version. Some people like to throw a few raisins into the mixture when adding the banana, and you could too. If it sounds good, why not?",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE CHICKEN",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE CHICKEN10 MINS"
   },
   "ingredients": [
     {
@@ -102,6 +103,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 4½ cups, to serve 4",
-  "time": "TAKES 40 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 24,
+    "total": 34
+  },
   "intro": "Fluffy grains of rice are essential to everyday Vietnamese eating, which is why rice was the first thing I learned to cook. You can prepare it in an electric rice cooker, a pressure cooker, or a multicooker, but you’re not going to get consistently good results or be able to troubleshoot unless you’ve practiced cooking rice in a pot on the stove top. Some people boil and drain rice like pasta, but to best express the grain’s flavor and texture, I stick with an easy, old-fashioned approach that involves a heavy saucepan and a gradual lowering of the heat. Make rice in the same pan on a regular basis, and soon, you’ll be eyeballing the level of the water instead of measuring it.",
   "ingredients": [
     {
@@ -32,6 +36,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

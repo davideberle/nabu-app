@@ -82,5 +82,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/shortbread-cookies.jpg"
+  "image": "/recipes/shortbread-cookies.jpg",
+  "cuisine": "Middle Eastern"
 }

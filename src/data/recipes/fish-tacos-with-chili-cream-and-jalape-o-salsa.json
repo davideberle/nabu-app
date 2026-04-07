@@ -49,5 +49,12 @@
   ],
   "time": {
     "total": 12
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mexican"
 }

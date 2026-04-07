@@ -67,5 +67,12 @@
   "image": "/recipes/quinoa-and-mango-with-toasted-coconut.jpg",
   "time": {
     "total": 25
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

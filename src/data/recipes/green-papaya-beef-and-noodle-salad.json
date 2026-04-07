@@ -67,5 +67,12 @@
   "image": "/recipes/green-papaya-beef-and-noodle-salad.jpg",
   "time": {
     "total": 28
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

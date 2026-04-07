@@ -73,7 +73,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pecan-twists.jpg"
+  "image": "/recipes/pecan-twists.jpg",
+  "cuisine": "Italian"
 }

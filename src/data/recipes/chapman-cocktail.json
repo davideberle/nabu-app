@@ -36,7 +36,14 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
+    ],
+    "chapter": "Drinks"
   },
-  "image": "/recipes/chapman-cocktail.jpg"
+  "image": "/recipes/chapman-cocktail.jpg",
+  "time": {
+    "prep": 5,
+    "cook": 0,
+    "total": 5
+  },
+  "cuisine": "Nigerian"
 }

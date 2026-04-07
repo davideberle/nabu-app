@@ -10,7 +10,8 @@
   "intro": "Goan semolina fried potatoes are traditionally served with xacuti curries, but I can assure you that they make a great side dish or snack anytime.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -70,6 +71,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

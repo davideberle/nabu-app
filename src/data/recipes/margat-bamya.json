@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 18,
+    "cook": 24,
+    "total": 42
+  },
   "intro": "Bamya means “okra” in Arabic, and it’s usually cooked in a tomato-based stew until the okra is soft and melts in your mouth. It’s a stew that I personally loved growing up, but I came to realize as an adult that many of my friends did not enjoy eating it because of the subtle sliminess okra can give off. But when okra is cooked right, there should not be any sliminess. The trick is to ensure it is not cut up before cooking; my mom would only trim the tops very slightly and leave it whole. I may be biased, but I think my family’s Iraqi-style okra stew is the most delicious because of the excessive use of two things: garlic, which complements the okra, and pomegranate molasses.",
   "ingredients": [
     {
@@ -56,6 +60,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -10,7 +10,8 @@
   "intro": "Once you learn how to spatchcock a chicken, it may be the only way you cook it going forward. Spatchcocking a chicken has so many benefits, including a much faster cooking time than a whole chicken, more even cooking (because the chicken lies flat), and crispier skin (because all the skin is exposed to the heat in a flat layer). This recipe uses a classic lemon-garlic flavor combination. And I really mean business when I say “lemon-garlic,” because this chicken will be extra lemony and extra garlicky. The technique used to roast the chicken yields extra juices on the bottom of the pan, perfect for scooping over the chicken and potatoes and mopping up with bread.",
   "time": {
     "prep": "10 minutes",
-    "cook": "45 minutes"
+    "cook": "45 minutes",
+    "total": "10 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -104,6 +105,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Worth the Effort"
+  },
+  "cuisine": "Middle Eastern"
 }

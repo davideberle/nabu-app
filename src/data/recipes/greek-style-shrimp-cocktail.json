@@ -81,6 +81,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes"
+  },
+  "cuisine": "Greek"
 }

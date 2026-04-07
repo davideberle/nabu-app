@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 1½ HOURS",
+  "time": {
+    "prep": 20,
+    "cook": 60,
+    "total": 80
+  },
   "intro": "I adore Chinese-style roast duck, with its brown lacquered skin, heady sweet sauce, and fragrant five-spice seasoning. But I rarely have time to prep and air-chill the duck for a couple of days. My default approach is to roast air-chilled chicken thighs, separating the skin from the flesh and brushing on a honey-soy glaze to a shiny, crisp effect. The result is an amazing rendition of gà quay mật ong (honey-roasted chicken). To build a meal, I roast vegetables in the oven too. Sweet potatoes and brussels sprouts or broccoli cook on a lower rack while the chicken sizzles above. It’s efficient, cozy cooking that is perfect for fall or winter.",
   "ingredients": [
     {
@@ -78,6 +82,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -83,6 +83,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Fish and Seafood"
+  },
+  "cuisine": "Chinese"
 }

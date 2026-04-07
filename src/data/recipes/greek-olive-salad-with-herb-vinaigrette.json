@@ -67,5 +67,12 @@
   "image": "/recipes/greek-olive-salad-with-herb-vinaigrette.jpg",
   "time": {
     "total": 55
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

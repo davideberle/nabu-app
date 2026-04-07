@@ -103,5 +103,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/roasted-eggplant-with-saffron-yogurt.jpg"
+  "image": "/recipes/roasted-eggplant-with-saffron-yogurt.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -66,7 +66,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/ikokore.jpg"
+  "image": "/recipes/ikokore.jpg",
+  "cuisine": "Nigerian"
 }

@@ -37,6 +37,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Kitchen Basics"
+  },
+  "cuisine": "African & Caribbean"
 }

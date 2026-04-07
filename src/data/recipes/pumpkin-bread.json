@@ -70,7 +70,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": null
+  "image": null,
+  "cuisine": "Other"
 }

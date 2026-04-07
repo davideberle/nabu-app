@@ -10,7 +10,8 @@
   "intro": "Fatayer are savory pies that are commonly served as appetizers for big dinners or as a light snack in the Middle East. They can be stuffed with cheese, meat, or a tangy spinach stuffing. Typically, they are made with yeast-leavened dough, but I love making them with store-bought puff pastry, which makes the process much quicker. The cheese mixture is made using three types of cheese and flavored with herbs. This recipe is often a go-to when I am hosting a dinner and would like a side dish that’s quick to prepare. Make sure you don’t skip the sprinkling of sesame and nigella seeds—not only do they look beautiful, but they elevate the flavor too.",
   "time": {
     "prep": "15 minutes, plus 1 hour thawing",
-    "cook": "20 minutes"
+    "cook": "20 minutes",
+    "total": "15 minutes, plus 1 hour thawing20 minutes"
   },
   "ingredients": [
     {
@@ -74,6 +75,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

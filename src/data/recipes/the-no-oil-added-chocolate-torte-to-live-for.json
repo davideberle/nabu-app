@@ -87,7 +87,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/the-no-oil-added-chocolate-torte-to-live-for.jpg"
+  "image": "/recipes/the-no-oil-added-chocolate-torte-to-live-for.jpg",
+  "cuisine": "Other"
 }

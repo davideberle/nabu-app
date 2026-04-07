@@ -85,7 +85,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/arancini-sicilian-rice-balls.jpg"
+  "image": "/recipes/arancini-sicilian-rice-balls.jpg",
+  "cuisine": "Italian"
 }

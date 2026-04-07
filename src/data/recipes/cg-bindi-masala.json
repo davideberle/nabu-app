@@ -79,6 +79,13 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Popular Vegetable and Side Dishes"
+  },
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "cuisine": "Indian"
 }

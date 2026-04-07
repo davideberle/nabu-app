@@ -164,7 +164,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pho.jpg"
+  "image": "/recipes/pho.jpg",
+  "cuisine": "Southeast Asian"
 }

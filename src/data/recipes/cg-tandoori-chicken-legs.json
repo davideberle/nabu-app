@@ -72,9 +72,11 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
+    ],
+    "chapter": "Starters"
   },
   "time": {
     "total": 180
-  }
+  },
+  "cuisine": "Indian"
 }

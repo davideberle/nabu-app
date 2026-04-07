@@ -46,7 +46,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/vegan-orange-blossom-honey.jpg"
+  "image": "/recipes/vegan-orange-blossom-honey.jpg",
+  "cuisine": "Other"
 }

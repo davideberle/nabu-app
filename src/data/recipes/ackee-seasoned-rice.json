@@ -10,7 +10,8 @@
   "intro": "This was my mother’s fridge-raid dinner. Ackee would always be involved, but otherwise the ingredients changed according to what was available. Somehow, though, every rendition still felt like home.",
   "time": {
     "prep": "5 MINUTES",
-    "cook": "30 MINUTES"
+    "cook": "30 MINUTES",
+    "total": "5 MINUTES30 MINUTES"
   },
   "ingredients": [
     {
@@ -82,6 +83,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "For Company"
+  },
+  "cuisine": "Caribbean"
 }

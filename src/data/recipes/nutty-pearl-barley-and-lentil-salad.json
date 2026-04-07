@@ -46,5 +46,12 @@
   "image": "/recipes/nutty-pearl-barley-and-lentil-salad.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

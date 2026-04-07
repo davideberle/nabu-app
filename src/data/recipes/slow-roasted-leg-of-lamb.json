@@ -10,7 +10,8 @@
   "intro": "When it comes to hospitality, Arabs are well known for being masters of the art. Ensuring guests are welcomed and honored in Arab households is an ancient practice—almost a ritual. And because lamb is one of the most expensive meats, serving it as the centerpiece of a dinner table is common when inviting friends and family to share a meal. Growing up, I watched my mom labor over huge spreads of food for large parties, and every single one of her menus had a lamb dish. This slow-roasted leg of lamb is my go-to dish when I am entertaining, simply because it is impressive yet requires hardly any effort on my part. The right seasoning mix, the right roasting technique, and a good quality leg of lamb are all it takes for my oven to do the work for me.",
   "time": {
     "prep": "10 minutes",
-    "cook": "5 hours"
+    "cook": "5 hours",
+    "total": "10 minutes5 hours"
   },
   "ingredients": [
     {
@@ -102,6 +103,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Worth the Effort"
+  },
+  "cuisine": "Middle Eastern"
 }

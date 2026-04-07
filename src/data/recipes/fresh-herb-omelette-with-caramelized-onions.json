@@ -132,5 +132,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/fresh-herb-omelette-with-caramelized-onions.jpg"
+  "image": "/recipes/fresh-herb-omelette-with-caramelized-onions.jpg",
+  "cuisine": "Middle Eastern"
 }

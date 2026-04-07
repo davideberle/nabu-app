@@ -54,5 +54,12 @@
   "image": "/recipes/celery-and-green-apple-salad-with-blue-cheese-dressing.jpg",
   "time": {
     "total": 12
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

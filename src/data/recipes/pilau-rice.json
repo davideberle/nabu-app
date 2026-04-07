@@ -10,7 +10,8 @@
   "intro": "Pilau rice is one of those dishes I insist on cooking with ghee. I also prefer to steam it, as the flavour of the spices infuses better with the rice. If cooking for a large group, you might be better off frying cold cooked basmati rice, as in the next recipe.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME COOKING TIME: 50 MINS",
-    "cook": "PREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS"
+    "cook": "PREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME COOKING TIME: 50 MINSPREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS"
   },
   "ingredients": [
     {
@@ -73,6 +74,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

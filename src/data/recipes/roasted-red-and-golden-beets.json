@@ -154,5 +154,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/roasted-red-and-golden-beets.jpg"
+  "image": "/recipes/roasted-red-and-golden-beets.jpg",
+  "cuisine": "Middle Eastern"
 }

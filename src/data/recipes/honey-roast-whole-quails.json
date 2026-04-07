@@ -10,7 +10,8 @@
   "intro": "Free-range quails have stronger skin than barn-reared birds, so source those if you can. This is my version of a unique Indian recipe that I learned on a trip to Mumbai. I was told it stems back to the days of the British Raj when wild quails or similar would be used on hunting days, though the recipe was presumably less spicy. It’s rare to cook poultry with the skin on in Indian cooking, but I’m sure you’ll agree, it’s worth every calorie. The quails are spicy, sweet, sour and savoury – all of my favourite taste sensations in one dish! I like to serve this with rice and mixed vegetable pickle or kachumber salad and a good chutney or hot sauce.",
   "time": {
     "prep": "30 MINS",
-    "cook": "40 MINS"
+    "cook": "40 MINS",
+    "total": "30 MINS40 MINS"
   },
   "ingredients": [
     {
@@ -117,6 +118,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

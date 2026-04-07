@@ -63,5 +63,12 @@
   ],
   "time": {
     "total": 75
-  }
+  },
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mediterranean"
 }

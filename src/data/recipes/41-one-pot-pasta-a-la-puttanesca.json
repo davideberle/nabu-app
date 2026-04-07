@@ -1,6 +1,6 @@
 {
   "id": "41-one-pot-pasta-a-la-puttanesca",
-  "name": "(41)     One-Pot Pasta a La Puttanesca",
+  "name": "One-Pot Pasta a La Puttanesca",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -72,5 +72,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

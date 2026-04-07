@@ -58,5 +58,12 @@
   "image": "/recipes/salmon-salad-with-raspberry-dressing.jpg",
   "time": {
     "total": 35
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

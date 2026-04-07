@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
-  "time": "TAKES 1¼ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "Whereas in and around Saigon, people love to dig into bodacious bowls of bún rice noodle salads (see this page), Hanoians adore leisurely meals of bún chả, which involves composing and enjoying smallish bowls of lettuce, herbs, rice noodles, and grilled pork. The former delivers convenience in a bowl, the latter coaxes conversation. They use the same ingredients, but Hanoi cooks do something quirky—they plunge the grilled meat into the dipping sauce, where it releases its juices to build extra umami depth. Thin slices of carrot and kohlrabi marinate in the sauce to add a pickled crunch.",
   "ingredients": [
     {
@@ -93,6 +97,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -10,7 +10,8 @@
   "intro": "Gola kebabs are usually pan-fried on wooden skewers so that they have a hole in the middle to look like a minced kebab should. Although the pan-frying method is very good, I like to cook them on the barbecue. What makes these kebabs really unique is the flavour of the allspice berries and mace. Unlike seekh kebabs, the meat is formed into small oblong balls, which makes them easier to thread onto the skewers. The finished kebabs can be eaten as they are with naans or rice and all the sauces and vegetables of your choice, or they could also be used as kofta in any of the curry house-style curries. I have served them here with rice and kachumber salad.",
   "time": {
     "prep": "15 MINS",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -76,6 +77,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

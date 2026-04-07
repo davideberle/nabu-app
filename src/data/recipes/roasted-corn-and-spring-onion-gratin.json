@@ -10,7 +10,8 @@
   "intro": "Corn and spring onions (scallions) go hand in hand for me. A marriage that can never be separated. This recipe feels like a BBQ kind of side dish as the charred corn flavour and smell just sing charcoal heaven.",
   "time": {
     "prep": "10 MINUTESCOOK TIME: 30 MINUTES",
-    "cook": "30 MINUTES"
+    "cook": "30 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 30 MINUTES30 MINUTES"
   },
   "ingredients": [
     {
@@ -76,6 +77,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sides"
+  },
+  "cuisine": "Caribbean"
 }

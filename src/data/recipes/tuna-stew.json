@@ -79,6 +79,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Winter"
+  },
+  "cuisine": "Italian"
 }

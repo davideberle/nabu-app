@@ -10,7 +10,8 @@
   "intro": "Here’s one of my favourites, which I hope you find the time to try. Although the meat is usually cooked well done, as it is in this recipe, I like to build a really hot fire so that the meat chars quickly. Doing this, you will still have some pink juicy meat in the centre if medium-cooked sirloin is more to your liking.",
   "time": {
     "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -113,6 +114,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

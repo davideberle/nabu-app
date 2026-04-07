@@ -48,5 +48,12 @@
   ],
   "time": {
     "total": 25
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -10,7 +10,8 @@
   "intro": "Dhansak curries are very popular at curry houses all over the UK, but like so many of the curries we know and love here, our dhansaks are totally different to what would be called a dhansak in India. Authentic dhansaks have both Persian and Gujarati influences. The Parsis brought with them the idea of cooking meat, vegetables and lentils together into a thick stew when they fled Iran. The Gujaratis added more spices to the rather mild Iranian version. These special dhansaks are normally served at family dinners on a Sunday and big events like weddings, and are usually made with goat or mutton on the bone and served with brown rice.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME",
-    "cook": "50 MINS"
+    "cook": "50 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME50 MINS"
   },
   "ingredients": [
     {
@@ -115,6 +116,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

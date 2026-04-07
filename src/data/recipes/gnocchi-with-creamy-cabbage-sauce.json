@@ -51,7 +51,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/gnocchi-with-creamy-cabbage-sauce.jpg"
+  "image": "/recipes/gnocchi-with-creamy-cabbage-sauce.jpg",
+  "cuisine": "Italian"
 }

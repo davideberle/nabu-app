@@ -10,7 +10,8 @@
   "intro": "Every culture has their own chicken noodle soup, and this Turkish version is the one I love. My mom always made us a simple vermicelli noodle soup with a tomato broth, and we devoured it. This soup reminds me of hers but with a bit more flair and body, using onions, carrots, spices, and a bit of flour to thicken everything. The flavor is made even better the longer you simmer the soup.",
   "time": {
     "prep": "10 minutes",
-    "cook": "45 minutes"
+    "cook": "45 minutes",
+    "total": "10 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -83,6 +84,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

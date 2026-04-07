@@ -77,7 +77,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/sweet-and-sour-seitan.jpg"
+  "image": "/recipes/sweet-and-sour-seitan.jpg",
+  "cuisine": "Southeast Asian"
 }

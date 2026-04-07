@@ -76,5 +76,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/labneh-balls.jpg"
+  "image": "/recipes/labneh-balls.jpg",
+  "cuisine": "Middle Eastern"
 }

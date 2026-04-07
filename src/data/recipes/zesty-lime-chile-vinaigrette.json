@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "makes ½ cup; enough to dress 2 salads",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 16,
+    "total": 32
+  },
   "intro": "Vietnamese salads get their inspiration from both East and West. There are tropical salads dressed with fish sauce, lime, and chile (beginning on this page), but also European-style salads dressed with tangy, slightly rich vinaigrettes too. This dressing straddles many cultures. I originally conceived it for a slaw, but over time, I realized that the lime zest–laden dressing was more than a one-trick wonder. Its zippy, fresh flavor is great for a wide range of salads.",
   "ingredients": [
     {
@@ -55,6 +59,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

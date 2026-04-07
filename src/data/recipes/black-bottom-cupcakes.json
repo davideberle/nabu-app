@@ -101,7 +101,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/black-bottom-cupcakes.jpg"
+  "image": "/recipes/black-bottom-cupcakes.jpg",
+  "cuisine": "Other"
 }

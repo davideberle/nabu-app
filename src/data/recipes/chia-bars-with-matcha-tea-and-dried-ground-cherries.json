@@ -53,6 +53,13 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Balls & Bars"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 0,
+    "total": 5
+  },
+  "cuisine": "Other"
 }

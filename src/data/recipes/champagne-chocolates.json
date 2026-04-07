@@ -96,5 +96,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/champagne-chocolates.jpg"
+  "image": "/recipes/champagne-chocolates.jpg",
+  "cuisine": "Middle Eastern"
 }

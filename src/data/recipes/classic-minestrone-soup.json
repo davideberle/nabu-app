@@ -77,7 +77,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/classic-minestrone-soup.jpg"
+  "image": "/recipes/classic-minestrone-soup.jpg",
+  "cuisine": "Italian"
 }

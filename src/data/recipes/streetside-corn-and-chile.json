@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "serves 4",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 14,
+    "cook": 24,
+    "total": 38
+  },
   "intro": "Even though corn is a New World food, it is beloved in Vietnam. There it is often spotlighted in velvety soups, or grilled and coated with rich green onions and oil (see this page). But one of the best ways to eat it is as a spoon-able street food called bắp xào: corn kernels stir-fried in butter with chiles and tiny dried shrimp. It’s a Viet version of esquites (Mexican corn salad), and it’s super-easy.",
   "ingredients": [
     {
@@ -48,6 +52,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

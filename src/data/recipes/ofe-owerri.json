@@ -50,7 +50,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/ofe-owerri.jpg"
+  "image": "/recipes/ofe-owerri.jpg",
+  "cuisine": "Nigerian"
 }

@@ -48,7 +48,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/edikang-ikong-soup.jpg"
+  "image": "/recipes/edikang-ikong-soup.jpg",
+  "cuisine": "Nigerian"
 }

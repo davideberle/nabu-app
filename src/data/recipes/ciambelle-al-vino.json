@@ -41,7 +41,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/ciambelle-al-vino.jpg"
+  "image": "/recipes/ciambelle-al-vino.jpg",
+  "cuisine": "Italian"
 }

@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "2 cups (470 g); 6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 16,
+    "cook": 60,
+    "total": 76
+  },
   "intro": "The name of this smoked eggplant dip has stumped many of us Arabs. When translated literally, the word baba means “daddy,” and the word ghanoush means “spoiled” or “indulged.” Put them together and you have “spoiled daddy,” which does very little to describe what this dip is. But, odd name aside, this dip has gained almost as much popularity as hummus, with its creamy texture and slightly smoked eggplant flavor. The eggplants are typically roasted on an open flame, either a gas stove or a grill. The charred skin is then peeled, and the soft flesh is scooped out and mixed with tahini, lemon juice, garlic, and seasoning. Many variations also add a bit of yogurt to the mix for extra creaminess and tartness. This is a dip that really doesn’t need precise measurements. You start adding your ingredients, mixing them up and tasting and adjusting until you reach your perfect flavor.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -194,5 +194,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/stuffed-sardines-with-spicy-tomato-dagga.jpg"
+  "image": "/recipes/stuffed-sardines-with-spicy-tomato-dagga.jpg",
+  "cuisine": "Middle Eastern"
 }

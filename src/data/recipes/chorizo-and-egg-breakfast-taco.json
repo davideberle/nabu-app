@@ -61,5 +61,12 @@
   ],
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "breakfast"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mexican"
 }

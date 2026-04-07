@@ -1,6 +1,6 @@
 {
   "id": "31-pasta-with-chicken-and-broccoli-pesto",
-  "name": "(31)     Pasta with Chicken and Broccoli Pesto",
+  "name": "Pasta with Chicken and Broccoli Pesto",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -57,5 +57,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

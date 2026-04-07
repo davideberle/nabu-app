@@ -52,7 +52,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/crispy-banana-spring-rolls.jpg"
+  "image": "/recipes/crispy-banana-spring-rolls.jpg",
+  "cuisine": "Southeast Asian"
 }

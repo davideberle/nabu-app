@@ -9,7 +9,8 @@
   "servings": "8 servings",
   "intro": "This is a subtly spiced, super easy slow cooker meal. A good introduction to Moroccan food. Serve with couscous.",
   "time": {
-    "prep": "50 mins"
+    "prep": "50 mins",
+    "total": "50 mins0"
   },
   "ingredients": [
     {
@@ -76,6 +77,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes"
+  },
+  "cuisine": "Moroccan"
 }

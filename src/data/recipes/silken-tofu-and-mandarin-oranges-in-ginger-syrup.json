@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "serves 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 12,
+    "cook": 24,
+    "total": 36
+  },
   "intro": "Warm tofu pudding served with zippy ginger syrup is one of my favorite cozy Asian desserts; it’s a popular street food and a mainstay at dim sum restaurants. When freshly made tofu isn’t available, I use store-bought silken tofu, available in the refrigerated section of the supermarket. Silken tofu, such as Nasoya brand that’s undrained and unpressed (there is no visible water in the tub), is custardy and easy to scoop into elegant thin pieces.",
   "ingredients": [
     {
@@ -48,6 +52,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

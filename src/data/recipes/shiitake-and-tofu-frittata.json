@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 2",
-  "time": "TAKES 30 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 48,
+    "total": 68
+  },
   "intro": "When I want a tasty blast from my childhood, I whip up one of these little frittatas—essentially an open-faced, flat omelet. Called chảtrứng chiên in Vietnamese, it’s great with rice or even slid into a banh mi (see this page). I grew up eating the classic version with ground pork, but nowadays I often make a tofu rendition. If you can’t decide between them, make both (see the Notes for the meaty version). The recipe makes one frittata, but you can always tinker and do a side-by-side taste test of vegetarian versus one made with ground pork, turkey, or chicken. Leftovers keep well for up to 3 days.",
   "ingredients": [
     {
@@ -66,6 +70,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

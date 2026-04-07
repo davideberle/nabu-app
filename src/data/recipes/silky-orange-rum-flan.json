@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "serves 4",
-  "time": "TAKES 1½ HOURS, PLUS AT LEAST 5 HOURS TO CHILL",
+  "time": {
+    "prep": 14,
+    "cook": 60,
+    "total": 74
+  },
   "intro": "Delicate and refreshing, this flan is a spin on one of my mom’s recipes—part of the personal collection she brought from Vietnam when we fled in 1975. (The handwritten notebook inspired my food-writing career.) Mom’s bánh flan recipe called for diluting a can of sweetened condensed milk with three cans of water, adding eggs, and cooking the custard mixture in a Chinese steamer. (“Fresh milk was hard to get in Vietnam,” she explained, “and ovens were rare.”) The result was light and silky. Although she didn’t drink alcohol, she poured rum on the flan for a boozy finish.",
   "ingredients": [
     {
@@ -58,6 +62,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

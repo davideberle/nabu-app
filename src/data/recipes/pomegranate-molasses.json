@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes a scant ½ cup",
-  "time": "TAKES 30 MINUTES, PLUS ABOUT 1 HOUR TO COOL",
+  "time": {
+    "prep": 10,
+    "cook": 32,
+    "total": 42
+  },
   "intro": "Why is this recipe for a Middle Eastern ingredient in a Vietnamese cookbook? Because I needed an accessible substitute for tamarind liquid, a fruity-tart seasoning for southern Vietnamese–style seafood stir-fries and soups. Having spied pomegranates (lựu) being sold by Hanoi street vendors in 2015, I pondered its use in Viet cooking. Turns out the Middle Eastern fruit pairs well with fish sauce and other Viet flavors to create newish dishes such as Pomegranate Sriracha Shrimp (this page) and Tangy Seafood Stew (this page). If your supermarket doesn’t stock pomegranate molasses (check the sweeteners and international foods sections), use this recipe to make it from bottled juice, such as Pom brand. For cooks who want to go old-school, the Notes offer tamarind tips.",
   "ingredients": [
     {
@@ -37,6 +41,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

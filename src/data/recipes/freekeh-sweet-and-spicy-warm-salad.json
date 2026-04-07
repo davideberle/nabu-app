@@ -70,5 +70,12 @@
   "image": "/recipes/freekeh-sweet-and-spicy-warm-salad.jpg",
   "time": {
     "total": 55
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

@@ -28,5 +28,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Southeast Asian"
 }

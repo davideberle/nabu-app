@@ -10,7 +10,8 @@
   "intro": "Don’t let the fact that there are a lot of ingredients in this one scare you off! This is one of my favourite seafood recipes and it’s actually quite easy to make.",
   "time": {
     "prep": "20 MINS, PLUS MARINATING TIME",
-    "cook": "30 MINS"
+    "cook": "30 MINS",
+    "total": "20 MINS, PLUS MARINATING TIME30 MINS"
   },
   "ingredients": [
     {
@@ -155,6 +156,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

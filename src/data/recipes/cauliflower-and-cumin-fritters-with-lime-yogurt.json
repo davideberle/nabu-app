@@ -160,5 +160,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/cauliflower-and-cumin-fritters-with-lime-yogurt.jpg"
+  "image": "/recipes/cauliflower-and-cumin-fritters-with-lime-yogurt.jpg",
+  "cuisine": "Middle Eastern"
 }

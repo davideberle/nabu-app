@@ -10,7 +10,8 @@
   "intro": "This vegetarian main dish is made with green beans, long beans, or flat Romano beans and is common across Levantine countries. It can also be served as a cold appetizer. The beans are braised with lots of olive oil, garlic, and tomatoes and enjoyed scooped up with bread. The simplicity of this dish is what makes it special, and the simple ingredients make the green beans shine. This is a great light weeknight dinner, and I also love serving it cold the next day.",
   "time": {
     "prep": "10 minutes",
-    "cook": "30 minutes"
+    "cook": "30 minutes",
+    "total": "10 minutes30 minutes"
   },
   "ingredients": [
     {
@@ -72,7 +73,9 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
+    ],
+    "chapter": "Main Dishes: 1 Hour"
   },
-  "subtitle": "OLIVE OIL–BRAISED GREEN BEANS"
+  "subtitle": "OLIVE OIL–BRAISED GREEN BEANS",
+  "cuisine": "Middle Eastern"
 }

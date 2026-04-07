@@ -66,6 +66,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Middle Eastern"
 }

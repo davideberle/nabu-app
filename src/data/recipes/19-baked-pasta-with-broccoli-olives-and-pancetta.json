@@ -1,6 +1,6 @@
 {
   "id": "19-baked-pasta-with-broccoli-olives-and-pancetta",
-  "name": "(19)     Baked Pasta with Broccoli, Olives and Pancetta",
+  "name": "Baked Pasta with Broccoli, Olives and Pancetta",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -76,5 +76,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

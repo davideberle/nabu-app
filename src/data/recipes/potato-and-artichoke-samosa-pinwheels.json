@@ -10,7 +10,8 @@
   "intro": "I’m a big fan of samosa pinwheels. Not only do they look great, they’re also a lot easier to prepare than regular samosas. This potato and artichoke combo is a good one, but feel free to experiment with other fillings. The black bean samosa filling works really well cooked this way. Unlike other samosas, these pinwheels do not freeze well, so it is best to make and fry them on the same day.",
   "time": {
     "prep": "30 MINS, PLUS RESTING TIME FOR THE DOUGH",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "30 MINS, PLUS RESTING TIME FOR THE DOUGH15 MINS"
   },
   "ingredients": [
     {
@@ -121,6 +122,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

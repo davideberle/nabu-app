@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "26 to 30 pieces",
-  "time": "15 minutes, plus 30 minutes cooling",
+  "time": {
+    "prep": 18,
+    "cook": 60,
+    "total": 78
+  },
   "intro": "This syrup-soaked semolina cake is one that is enjoyed in almost all countries in the Middle East and is often called different names, such as namoura in Lebanon, hareesa in Palestine, and revani in Turkey. Basbousa is the Egyptian name, and this particular recipe is Egyptian bakery–style: thinner and fudgy in texture. I’ve had a lot of basbousa in my lifetime, and many can verge on the sickly sweet and one-note end of the spectrum, or be quite dry in texture. But this recipe is none of those things. I use brown butter to add a delicious level of nuttiness that is further enhanced by the excessive amount of pistachios, which toast nicely in the oven as it bakes. There are two important steps to ensure you get this right: mixing the brown butter into the semolina to coat every grain until it’s the texture of sand (this process is called bas in Arabic, which is likely how this dessert got its name) and making sure you use cooled syrup when pouring it over the hot basbousa to maintain a soft texture. Follow the steps in this recipe, and I promise I won’t steer you wrong—but right into a possible basbousa overdose.",
   "ingredients": [
     {
@@ -65,6 +69,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

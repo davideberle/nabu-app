@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "6 servings",
-  "time": "20 minutes, plus 2 hours chilling",
+  "time": {
+    "prep": 10,
+    "cook": 56,
+    "total": 66
+  },
   "intro": "The name of this dessert translates to “palace bread” because of its decadence and beauty—it is often decorated with bright green pistachios and dried rosebuds. It consists of a layer of buttery bread soaked in syrup, topped with a rich ashta, which is a thickened cream. Any white bread can be used in this recipe, but my favorite bread to use is brioche, for an extra-rich flavor. It is a cold dessert, often served at celebrations or during Ramadan. It is usually made in a large dish, but individual servings are also a beautiful way to present it.",
   "ingredients": [
     {
@@ -44,6 +48,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

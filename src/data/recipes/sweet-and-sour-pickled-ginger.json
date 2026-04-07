@@ -38,6 +38,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes"
+  },
+  "cuisine": "Chinese"
 }

@@ -45,7 +45,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/bruschetta.jpg"
+  "image": "/recipes/bruschetta.jpg",
+  "cuisine": "Italian"
 }

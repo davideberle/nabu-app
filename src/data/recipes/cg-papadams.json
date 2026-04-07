@@ -30,6 +30,13 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Starters"
+  },
+  "time": {
+    "prep": 15,
+    "cook": 15,
+    "total": 30
+  },
+  "cuisine": "Indian"
 }

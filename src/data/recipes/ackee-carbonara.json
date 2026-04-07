@@ -10,7 +10,8 @@
   "intro": "Although I would never say that ackee is a replacement for eggs, it works so well in replacing the egg yolks in a carbonara. It is so wonderfully rich just blended on its own that it is the perfect ingredient to emulsify a sauce. Italians, please don’t come for me. But this just works on so many levels.",
   "time": {
     "prep": "15 MINUTESCOOK TIME: 10 MINUTES",
-    "cook": "10 MINUTES"
+    "cook": "10 MINUTES",
+    "total": "15 MINUTESCOOK TIME: 10 MINUTES10 MINUTES"
   },
   "ingredients": [
     {
@@ -82,6 +83,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Comfort Grub"
+  },
+  "cuisine": "Caribbean"
 }

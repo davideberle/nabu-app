@@ -1,6 +1,6 @@
 {
   "id": "28-easy-homemade-lasagna",
-  "name": "(28)     Easy Homemade Lasagna",
+  "name": "Easy Homemade Lasagna",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -90,5 +90,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

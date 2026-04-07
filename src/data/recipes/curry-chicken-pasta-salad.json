@@ -53,5 +53,12 @@
   "image": "/recipes/curry-chicken-pasta-salad.jpg",
   "time": {
     "total": 10
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

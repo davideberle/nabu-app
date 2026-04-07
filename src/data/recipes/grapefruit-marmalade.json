@@ -33,6 +33,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sweet Ends"
+  },
+  "cuisine": "Greek"
 }

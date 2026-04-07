@@ -45,6 +45,13 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "time": {
+    "prep": 5,
+    "cook": 0,
+    "total": 5
+  },
+  "cuisine": "Indian"
 }

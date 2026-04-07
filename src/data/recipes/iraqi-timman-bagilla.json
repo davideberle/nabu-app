@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 16,
+    "cook": 48,
+    "total": 64
+  },
   "intro": "This is one of the most quintessential Iraqi rice dishes. Beloved across the country, timman bagilla uses vibrant green fava beans and lots of fresh dill and is enjoyed mainly in the spring and summer, when fresh beans are abundant in the markets. I make this at least once every few weeks for my husband, as it is a dear favorite in our household. It creates a light and balanced meal, with protein from the beans, especially when served alongside a bowl of plain yogurt and Salata. It is mostly vegetarian, but sometimes bone-in chicken legs are crisped up and served on top of the rice. This rice dish is also common in Iran and known there as baghali polo.",
   "ingredients": [
     {
@@ -55,6 +59,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

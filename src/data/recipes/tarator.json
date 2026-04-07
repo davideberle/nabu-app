@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "1 cup (240 ml)",
-  "time": "10 minutes",
+  "time": {
+    "prep": 10,
+    "cook": 32,
+    "total": 42
+  },
   "intro": "This is probably the most common sauce you’ll find in the Middle East, usually referred to as tarator. This tahini sauce is drizzled on wraps, salads, and grilled vegetables, and more specifically, it is always drizzled on falafel and beef shawarma wraps. To make it, all you need is high-quality tahini paste, lemon juice, and crushed garlic. Whisk them together and season with salt and pepper and some water, and you’re ready to drizzle. It’s very nutty and lemony and will brighten up anything you add it to.",
   "ingredients": [
     {
@@ -45,6 +49,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

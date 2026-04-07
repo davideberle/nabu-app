@@ -73,5 +73,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/orange-polenta-cake.jpg"
+  "image": "/recipes/orange-polenta-cake.jpg",
+  "cuisine": "Middle Eastern"
 }

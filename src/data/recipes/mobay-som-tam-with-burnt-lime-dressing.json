@@ -10,7 +10,8 @@
   "intro": "This salad is inspired by the amazing som tam salad from Thailand, which uses green papaya and is viciously spicy and heady with salty brightness. I wanted to use mangoes instead. Green mangos are perfect for this salad. Their tart and slightly firmer flesh gives more of a bite to the dish. The flavours in this salad are bold: nori, roasted salted peanuts, crispy shallots, burnt limes. All the best things. It is a salad that will surprise you by how punchy it is.",
   "time": {
     "prep": "20 MINUTESCOOK TIME: 10 MINUTES",
-    "cook": "10 MINUTES"
+    "cook": "10 MINUTES",
+    "total": "20 MINUTESCOOK TIME: 10 MINUTES10 MINUTES"
   },
   "ingredients": [
     {
@@ -81,6 +82,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads"
+  },
+  "cuisine": "Caribbean"
 }

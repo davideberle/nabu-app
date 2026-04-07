@@ -1089,6 +1089,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Salads"
+  },
+  "cuisine": "Other"
 }

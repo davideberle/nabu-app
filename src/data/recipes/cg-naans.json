@@ -70,9 +70,11 @@
   "category": {
     "dish_type": [
       "bread"
-    ]
+    ],
+    "chapter": "Accompaniments"
   },
   "time": {
     "total": 180
-  }
+  },
+  "cuisine": "Indian"
 }

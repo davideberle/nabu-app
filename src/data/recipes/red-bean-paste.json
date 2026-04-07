@@ -35,6 +35,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes"
+  },
+  "cuisine": "Chinese"
 }

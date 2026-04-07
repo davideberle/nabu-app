@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 1½ HOURS",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "Like banh mi sandwiches, southern Viet rice noodle salad bowls are adaptable and great for healthful, impromptu meals. Often categorized at restaurants as rice vermicelli bowls or bún (the name of the noodles), they’re built on this blueprint: A large bowl filled with ribbons of lettuce and a thin, crunchy vegetable for texture; fresh herbs for pungency; and slippery rice noodles to convey flavors. You get to choose the toppings, which are inevitably garnished with roasted peanuts. A fancy bowl often has pickled radish and carrot for color and crunch, plus fried shallots for extra richness (canned fried onions are my lazy-day sub). You dress the bowl with nước chấm dipping sauce, toss it with chopsticks (or a fork) and spoon, and then dive in.",
   "ingredients": [
     {
@@ -98,6 +102,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

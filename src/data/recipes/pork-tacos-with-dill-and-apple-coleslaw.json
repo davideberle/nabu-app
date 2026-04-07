@@ -50,5 +50,12 @@
   ],
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mexican"
 }

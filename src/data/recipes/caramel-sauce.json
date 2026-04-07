@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about ½ cup",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 48,
+    "total": 58
+  },
   "intro": "This key Viet ingredient is simply nearly burnt sugar; it’s not at all the caramel sauce for topping ice cream. Vietnamese caramel sauce is stealthily employed in savory dishes to impart a lovely mahogany color and build savory-sweet depth. You’ve likely had caramel sauce in clay-pot (kho) dishes but didn’t know it. Like molasses, it can be added to grilled-meat marinades to enhance the appearance of the final dish.",
   "ingredients": [
     {
@@ -39,6 +43,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

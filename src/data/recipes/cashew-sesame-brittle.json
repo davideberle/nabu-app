@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "makes about 8 ounces, to serve 6",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 48,
+    "total": 64
+  },
   "intro": "Nut and seed brittles are a popular Vietnamese sweet, sold at bakeries and even airports. When I hanker for some, I make a small, fast batch to ensure its freshness. A candy thermometer doesn’t work well with such a modest quantity. Instead, I carefully monitor the sugar syrup (no texting!) during the 10 minutes of cooking. My brittle has always turned out great, and I’ve become a better cook too.",
   "ingredients": [
     {
@@ -59,6 +63,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

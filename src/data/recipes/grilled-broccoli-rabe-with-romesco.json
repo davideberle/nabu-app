@@ -68,5 +68,13 @@
   "image": null,
   "time": {
     "total": 75
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

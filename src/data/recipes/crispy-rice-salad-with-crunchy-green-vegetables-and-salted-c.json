@@ -10,7 +10,8 @@
   "intro": "This salad has a lot of character. It utilises leftover rice in the most wonderful way, creating a lively textural dynamic: spicy and crispy but with nourishing heart from the kale. I love a dish that uses leftovers – so often rice gets wasted, which is a shame. This application is a great way to whip up something new when you have a few friends over if you are lucky enough to have leftover rice.",
   "time": {
     "prep": "10 MINUTESCOOK TIME: 6 MINUTES",
-    "cook": "6 MINUTES"
+    "cook": "6 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 6 MINUTES6 MINUTES"
   },
   "ingredients": [
     {
@@ -79,6 +80,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads"
+  },
+  "cuisine": "Caribbean"
 }

@@ -82,7 +82,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/ji-mmanu.jpg"
+  "image": "/recipes/ji-mmanu.jpg",
+  "cuisine": "Nigerian"
 }

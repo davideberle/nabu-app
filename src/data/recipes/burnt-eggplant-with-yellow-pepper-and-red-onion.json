@@ -89,5 +89,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/burnt-eggplant-with-yellow-pepper-and-red-onion.jpg"
+  "image": "/recipes/burnt-eggplant-with-yellow-pepper-and-red-onion.jpg",
+  "cuisine": "Middle Eastern"
 }

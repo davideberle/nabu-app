@@ -10,7 +10,8 @@
   "intro": "This vibrant green curry sauce is herby and punchy from all the fresh aromatics. It goes brilliantly with panko-coated squash, which is one of my favourite ways to prepare squash. Preheating the baking tray (pan) with the oil provides maximum crispiness without having to use so much oil. Serve this with some cold thinly sliced cucumber or Pickled Cho Cho and freshly steamed rice.",
   "time": {
     "prep": "20 MINUTESCOOK TIME: 25 MINUTES",
-    "cook": "25 MINUTES"
+    "cook": "25 MINUTES",
+    "total": "20 MINUTESCOOK TIME: 25 MINUTES25 MINUTES"
   },
   "ingredients": [
     {
@@ -112,6 +113,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "For Company"
+  },
+  "cuisine": "Caribbean"
 }

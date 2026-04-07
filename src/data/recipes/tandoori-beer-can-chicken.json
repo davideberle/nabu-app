@@ -10,7 +10,8 @@
   "intro": "This is one you are very unlikely to find at a curry house but it was too good to leave out of the book. I’ve been making beer can chicken for many years and this Indian-inspired version is one of my current favourites. You could also easily make this in a conventional oven – see my tip.",
   "time": {
     "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "1–1½ HOURS"
+    "cook": "1–1½ HOURS",
+    "total": "10 MINS, PLUS MARINATING TIME1–1½ HOURS"
   },
   "ingredients": [
     {
@@ -78,6 +79,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

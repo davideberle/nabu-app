@@ -89,5 +89,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "breakfast"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Middle Eastern"
 }

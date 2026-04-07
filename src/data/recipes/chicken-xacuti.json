@@ -10,7 +10,8 @@
   "intro": "Chicken xacuti is one of Goa’s most famous curries. It is known for its spiciness and its subtle flavour of nutmeg, poppy seeds, coconut and star anise. Xacuti is usually cooked with skinless chicken on the bone, which is what I’ve done here. Lamb on the bone is also a popular main ingredient. The curry is normally served with plain rice or semolina fried potatoes like the recipe. Those potatoes are fantastic and I highly recommend giving them a try with your xacuti.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME",
-    "cook": "25 MINS"
+    "cook": "25 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME25 MINS"
   },
   "ingredients": [
     {
@@ -150,6 +151,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

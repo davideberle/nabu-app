@@ -10,7 +10,8 @@
   "intro": "Chicken legs are the juiciest part of the chicken, but there is one thing that stops them being the most popular cut: those six stringy tendons. Luckily they aren’t difficult to remove, and I think you will love serving these crispy chicken lollipops. The lollipops are also nice marinated in a chicken marinade, such the tandoori chicken tikka marinade, and then cooked over direct heat on the barbecue. These are delicious served simply with lime wedges or a good raita, or a hot sauce of your choice.",
   "time": {
     "prep": "45 MINS, PLUS MARINATING TIME",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "45 MINS, PLUS MARINATING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -76,6 +77,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

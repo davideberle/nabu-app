@@ -10,7 +10,8 @@
   "intro": "I tried smoked toor dhal samosas at a little street-food stall in Mumbai. They were so good I had to try making them at home. Samosa pastry is available at most Asian shops in the freezer section, but if you want to try making your own, look at my lamb or vegetable samosas recipe. If you would like to see how I fold them, watch my samosa video on my YouTube channel, Dan Toombs. To try these samosas smoked you will need to light charcoal, as described below, or use a home smoker for an easier and smokier process. They are pictured.",
   "time": {
     "prep": "1 HOUR, PLUS SOAKING AND RESTING TIME",
-    "cook": "35 MINS"
+    "cook": "35 MINS",
+    "total": "1 HOUR, PLUS SOAKING AND RESTING TIME35 MINS"
   },
   "ingredients": [
     {
@@ -99,6 +100,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

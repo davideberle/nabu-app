@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "4 to 6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 24,
+    "cook": 48,
+    "total": 72
+  },
   "intro": "Whenever I make kofta or meatballs, I always make sure to keep some in the fridge to make this soup the next day. Orzo is called lsan el asfour in Arabic, which translates to “bird’s tongue,” after the pasta shape. I remember how fun I used to think it was to pretend to be eating birds’ tongues when I was little. I make the meatballs for this soup extra small, because somehow they are more satisfying to eat that way in one bite, along with the orzo. This is my kids’ favorite soup.",
   "ingredients": [
     {
@@ -71,6 +75,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -10,7 +10,8 @@
   "intro": "Railway mutton curry is a lot like a traditional British stew. The original curry was served in the first-class cars of the Indian railways and stems back to the British Raj. The story goes that a British officer was served a lamb curry and found it to be too spicy so asked for the curry to be milder. The chef added some yoghurt and coconut milk to the sauce to cool it down and the officer loved it. Over time, this curry became much milder, with only a little chilli powder added; you could always add more to taste. Most of our curry house-style curries were developed here in the UK for the British palate. This famous curry was developed for the British as well, but most definitely has its origin in India. Although you could definitely cook the meat in the curry sauce, I cook it separately, as it would have been cooked back in the days when this curry was popular on Indian trains. The cooked meat would then have been used in a variety of curries served on the train, from mild to fiery hot, with the cooking stock used to flavour the curries. You might like to double or triple the meat part of the recipe and use the additional pre-cooked meat in one of the curry house-style curries in this book.",
   "time": {
     "prep": "15 MINS",
-    "cook": "2 HOURS"
+    "cook": "2 HOURS",
+    "total": "15 MINS2 HOURS"
   },
   "ingredients": [
     {
@@ -108,6 +109,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

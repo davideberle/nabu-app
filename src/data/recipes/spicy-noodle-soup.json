@@ -133,7 +133,9 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
+    ],
+    "chapter": "Soups & Stews"
   },
-  "image": "/recipes/spicy-noodle-soup.jpg"
+  "image": "/recipes/spicy-noodle-soup.jpg",
+  "cuisine": "Southeast Asian"
 }

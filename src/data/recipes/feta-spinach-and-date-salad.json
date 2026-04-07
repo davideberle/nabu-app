@@ -58,5 +58,12 @@
   "image": "/recipes/feta-spinach-and-date-salad.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

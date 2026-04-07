@@ -71,7 +71,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/black-bean-sticky-rice.jpg"
+  "image": "/recipes/black-bean-sticky-rice.jpg",
+  "cuisine": "Southeast Asian"
 }

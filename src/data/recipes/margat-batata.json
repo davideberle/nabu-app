@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 servings",
-  "time": "15 minutes",
+  "time": {
+    "prep": 22,
+    "cook": 48,
+    "total": 70
+  },
   "intro": "This stew was one of my dad’s favorites, so my mom made it often. Nowadays, it’s my husband’s favorite, so I also make it often. As I grew older, I was perplexed by the idea of scooping a carb-heavy stew on top of more carbs in the form of rice, but it just works, and it’s the perfect winter meal. The curry powder is what gives this stew its unique flavor, bringing to life all the other simple ingredients. You can make this stew with veal or lamb, but I recommend both cuts be bone-in, because the bones develop a lot of the flavor of the stew.",
   "ingredients": [
     {
@@ -67,6 +71,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

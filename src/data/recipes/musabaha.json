@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "2½ cups (570 g); 6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 16,
+    "cook": 32,
+    "total": 48
+  },
   "intro": "If you love hummus and a chunky texture, then you’ll love musabaha. It is another classic Levantine dip, very similar to hummus, but with one main difference: the chickpeas are left whole or slightly mashed. It’s also more heavily seasoned with cumin and paprika.",
   "ingredients": [
     {
@@ -57,6 +61,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 28,
+    "cook": 60,
+    "total": 88
+  },
   "intro": "During the 1980s, my uncle Thao regularly gifted our family with crawfish that he caught near his home in Southern California. We’d never seen the tiny lobster-like creatures but were undaunted: Viet people adore picking through piles of shellfish and crustaceans to savor the bits of flesh with muối tiêu chanh (salt, pepper, and lime dipping sauce). It’s a fun way to nosh, fueled by conversation and beer.",
   "ingredients": [
     {
@@ -81,6 +85,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

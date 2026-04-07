@@ -10,7 +10,8 @@
   "intro": "How hot you make your phall curries is really down to you. You could, for instance, use ghost chillies, which are the spiciest you can get. I don’t do that though. I do like a good spicy phall from time to time, but I also like to taste all the ingredients that are in it. If you make it too spicy, the spice overtakes the curry. Still, this phall will be too hot for most people, which is why I have only given a one- to two-person serving. I’m not allowed to cook this in the house anymore because it’s nearly impossible to breathe without coughing. This is one I have to cook outdoors. Mr Naga pickle is available from most Indian grocers and online. It’s spicy but also has a great flavour, so I recommend picking some up. As this is so hot, so you might want to serve with rice, naans, a few papadams and a couple of ice-cold lagers to help cool things down.",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE LAMB",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE LAMB10 MINS"
   },
   "ingredients": [
     {
@@ -84,6 +85,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

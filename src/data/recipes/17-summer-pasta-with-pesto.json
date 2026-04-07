@@ -1,6 +1,6 @@
 {
   "id": "17-summer-pasta-with-pesto",
-  "name": "(17)     Summer Pasta with Pesto",
+  "name": "Summer Pasta with Pesto",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -56,5 +56,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

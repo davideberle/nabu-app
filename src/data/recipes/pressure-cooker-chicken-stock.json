@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 6 cups",
-  "time": "TAKES ABOUT 1½ HOURS",
+  "time": {
+    "prep": 12,
+    "cook": 48,
+    "total": 60
+  },
   "intro": "I keep canned chicken broth in my pantry, and I also make my own. The pressure cooker makes excellent stock quickly, but you can take the more traditional route and simmer the stock in a stockpot, which takes longer (see the Notes). Chicken backs alone don’t yield super-tasty stock because, although they may be fatty, they aren’t meaty enough. Given that, combine the backs (ask for them at the meat counter if you don’t keep a frozen stash) with meaty parts like drumsticks, which are often well priced; wings aren’t as flavorful. If backs are unavailable, use more meaty parts.",
   "ingredients": [
     {
@@ -47,6 +51,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

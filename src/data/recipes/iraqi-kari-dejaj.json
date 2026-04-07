@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "4 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 24,
+    "cook": 56,
+    "total": 80
+  },
   "intro": "Iraqis love using curry powder. It’s made its way into many of our dishes, and we often rely on it to be the main seasoning blend. This kari is one example—a simple, quick, one-pan yellow curry made with chicken, potatoes, and peas and thickened with cornstarch. Using boneless chicken makes this recipe a fast one, but bone-in chicken will work wonderfully too, albeit with a slightly longer cook time. This dish is extremely comforting and excellent for weeknights. I love to make it extra saucy, with lots of potatoes, and serve it over a bowl of steaming Roz Bi Shaariya.",
   "ingredients": [
     {
@@ -72,6 +76,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

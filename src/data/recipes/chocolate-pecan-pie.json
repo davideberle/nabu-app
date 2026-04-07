@@ -79,7 +79,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-pecan-pie.jpg"
+  "image": "/recipes/chocolate-pecan-pie.jpg",
+  "cuisine": "Other"
 }

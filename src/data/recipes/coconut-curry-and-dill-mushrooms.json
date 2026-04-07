@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 30 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
   "intro": "This super-simple dish borrows a Viet cooking method called kho, which is traditionally done in a clay pot and often involves letting ingredients gently simmer in their natural juices. There is little fanfare or effort, but the method creates deep flavor. Recipes such as braised pork in coconut caramel sauce (see this page) reflect the influence of classic kho preparations.",
   "ingredients": [
     {
@@ -52,6 +56,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

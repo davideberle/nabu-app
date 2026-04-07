@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 10 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 32,
+    "total": 52
+  },
   "intro": "The go-to leafy green vegetable in Vietnam is water spinach (rau muống in Vietnamese; on choy in Cantonese). The spear-shaped leaves and tender stems have a delicate, grassy flavor and are often stir-fried with garlic and oyster sauce for a silky, earthy side dish reminiscent of creamed spinach.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

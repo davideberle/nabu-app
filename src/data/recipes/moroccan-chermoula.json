@@ -7,7 +7,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "1½ cups (360 g)",
-  "time": "10 minutes",
+  "time": {
+    "prep": 22,
+    "cook": 24,
+    "total": 46
+  },
   "intro": "There’s nothing that elevates a steak or grilled chicken dish quite like a zingy and herby chermoula. Chermoula is a North African condiment used across Morocco, Tunisia, Libya, and Algeria. It is similar to the Latin American chimichurri but distinguished by spices like cumin, coriander, and paprika, which turn it into more of a brownish-green sauce instead of bright green. It’s made slightly differently across these countries, with Libyan chermoula being very different, resembling more of a cucumber and tomato salad rather than a sauce. This recipe is closest to the Moroccan version, with parsley and cilantro forming the green backbone of the sauce. And if you’re not faint-hearted, feel free to kick up the heat by adding more cayenne (I’m still working on my heat tolerance). My favorite way to use chermoula is in Chermoula Meatballs (here).",
   "ingredients": [
     {
@@ -67,6 +71,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

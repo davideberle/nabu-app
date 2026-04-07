@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "makes about 2 cups",
-  "time": "TAKES 10 MINUTES, PLUS 5 TO 6 HOURS TO FREEZE",
+  "time": {
+    "prep": 12,
+    "cook": 24,
+    "total": 36
+  },
   "intro": "What can you make from sweetened condensed milk aside from Viet coffee drinks? Ice cream! I take a no-churn approach that involves whipping up the milk, heavy cream, and flavorings until fluffy and then freezing the mix for several hours. You don’t need an ice-cream maker, just an electric handheld mixer. (An immersion blender does not add enough air.)",
   "ingredients": [
     {
@@ -47,6 +51,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

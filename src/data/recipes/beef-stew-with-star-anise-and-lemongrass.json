@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES ABOUT 1¼ HOURS",
+  "time": {
+    "prep": 20,
+    "cook": 60,
+    "total": 80
+  },
   "intro": "Typically enjoyed with a baguette, bò kho is an iconic Viet-Franco dish. The traditional version requires a lengthy simmer, which has deterred me from making it more often. But I discovered that a pressure cooker shortens the cooking time to a good hour, and the traditional marinating period isn’t needed. Suddenly, the Vietnamese classic became doable for a weeknight.",
   "ingredients": [
     {
@@ -86,6 +90,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

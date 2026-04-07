@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 to 8 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 18,
+    "cook": 40,
+    "total": 58
+  },
   "intro": "This was one of my favorite stews growing up, but my mom would always make it with ground beef. I learned this vegetarian version from my sister, and it is perfect when I want to cook a vegetarian meal. It uses plenty of fresh dill and whole dried limes for a deep, earthy flavor. You don’t miss out on the meat: the onions, spinach, chickpeas, and dill all simmer together as the stew thickens and the flavors balance out. I serve it over rice for the family, but I also love having it as a soup.",
   "ingredients": [
     {
@@ -62,6 +66,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

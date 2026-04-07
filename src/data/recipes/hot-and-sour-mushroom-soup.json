@@ -105,5 +105,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Middle Eastern"
 }

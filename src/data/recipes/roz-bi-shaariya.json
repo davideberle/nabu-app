@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 10,
+    "cook": 40,
+    "total": 50
+  },
   "intro": "When there are no guests over or special occasions, everyday Middle Eastern home cooking is usually rice with some sort of vegetable and meat stew (more on those in the Soups & Stews section on this page). The most popular type of rice served is long-grain basmati rice, dotted with short golden vermicelli noodles. Not to be confused with the Asian thin rice noodles, the vermicelli used in this rice pilaf is wheat-based. The vermicelli is first toasted in oil or butter until golden brown, then the rice, broth, and seasoning are added. This fluffy rice is quite addictive and delicious even on its own with a side of Salata.",
   "ingredients": [
     {
@@ -42,6 +46,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

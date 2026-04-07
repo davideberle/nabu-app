@@ -122,7 +122,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/quang-noodles.jpg"
+  "image": "/recipes/quang-noodles.jpg",
+  "cuisine": "Southeast Asian"
 }

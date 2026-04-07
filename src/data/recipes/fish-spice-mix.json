@@ -59,5 +59,6 @@
       "vegan"
     ]
   },
-  "image": "/recipes/fish-spice-mix.jpg"
+  "image": "/recipes/fish-spice-mix.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -560,7 +560,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Poultry and Eggs"
   },
-  "image": "/recipes/chicken-with-young-ginger.jpg"
+  "image": "/recipes/chicken-with-young-ginger.jpg",
+  "cuisine": "Chinese"
 }

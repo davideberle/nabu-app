@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 14,
+    "cook": 48,
+    "total": 62
+  },
   "intro": "Iraqis are known for their wide variety of rice dishes. The word timman translates to “rice,” but only in the Iraqi dialect. The real Arabic word for “rice” is roz. So, you may be wondering why it is known as “timman” throughout the country. Legend has it that during the British occupation in the 1920s and ’30s, the British brought with them an Indian brand of rice called Ten Men. Iraqis would often hear rice being referred to as “ten men,” which led to the modern-day word timman. I’m not sure if this story is true, but I do love the sound of it. Red rice is one of many rice-based side dishes you’ll find served in Iraqi homes. It’s typically made with fresh chicken stock, tomato paste, and dried lime for an earthy and tart flavor. The chicken used to make the stock is also sometimes broiled and served on top of the rice, taking this from a side dish to a main (see Note), especially when served with Salata.",
   "ingredients": [
     {
@@ -51,6 +55,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

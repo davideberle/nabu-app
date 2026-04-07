@@ -56,6 +56,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Spring"
+  },
+  "cuisine": "Italian"
 }

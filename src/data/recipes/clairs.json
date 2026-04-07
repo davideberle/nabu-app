@@ -81,7 +81,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/clairs.jpg"
+  "image": "/recipes/clairs.jpg",
+  "cuisine": "Other"
 }

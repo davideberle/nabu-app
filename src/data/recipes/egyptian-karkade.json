@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "6 servings",
-  "time": "5 minutes, plus 2 hours chilling",
+  "time": {
+    "prep": 10,
+    "cook": 40,
+    "total": 50
+  },
   "intro": "When you’re in Egypt and you think of iced tea, you won’t find the familiar North American version using black tea. Instead, you’ll find this bright pink hibiscus iced tea, with a tart and fruity flavor somewhat resembling cranberries. It’s said to have been the preferred drink of the pharaohs. I’m not quite sure how it made its way to Iraq, but I grew up drinking karkade regularly, especially during Ramadan. It’s served ice cold and usually sweetened with sugar to balance the tartness. It’s important to use high-quality dried hibiscus petals to get optimal flavor. It’s easy to make ahead and beautiful to serve to guests, garnished with fresh mint leaves. Just be careful you don’t get any of it on your countertops—it can easily stain them!",
   "ingredients": [
     {
@@ -38,6 +42,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

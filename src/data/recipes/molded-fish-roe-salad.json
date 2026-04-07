@@ -196,6 +196,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "More Than Greek Salad"
+  },
+  "cuisine": "Greek"
 }

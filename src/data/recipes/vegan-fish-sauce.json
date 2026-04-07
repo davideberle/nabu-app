@@ -62,7 +62,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/vegan-fish-sauce.jpg"
+  "image": "/recipes/vegan-fish-sauce.jpg",
+  "cuisine": "Southeast Asian"
 }

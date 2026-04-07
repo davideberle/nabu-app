@@ -96,5 +96,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/white-chocolate-and-cranberry-cookies.jpg"
+  "image": "/recipes/white-chocolate-and-cranberry-cookies.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -10,7 +10,8 @@
   "intro": "I live for a one pot meal, but often I find most of them that I see work better if you just make them the traditional way. This bulgur dish is a treat. The way in which you cook everything together really benefits the cooking of the aubergine. At the base of the dish there are wonderful earthy lively flavours that have enough time to come together really well. This feels very do-able on a weekday, as it’s so low maintenance and just requires some chopping in the beginning.",
   "time": {
     "prep": "10 MINUTESCOOK TIME: 1 HOUR",
-    "cook": "1 HOUR"
+    "cook": "1 HOUR",
+    "total": "10 MINUTESCOOK TIME: 1 HOUR1 HOUR"
   },
   "ingredients": [
     {
@@ -100,6 +101,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Comfort Grub"
+  },
+  "cuisine": "Caribbean"
 }

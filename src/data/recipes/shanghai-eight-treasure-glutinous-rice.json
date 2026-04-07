@@ -132,7 +132,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sweet Dishes"
   },
-  "image": "/recipes/shanghai-eight-treasure-glutinous-rice.jpg"
+  "image": "/recipes/shanghai-eight-treasure-glutinous-rice.jpg",
+  "cuisine": "Chinese"
 }

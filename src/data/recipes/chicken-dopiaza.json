@@ -10,7 +10,8 @@
   "intro": "Dopiaza curries are big on flavour and can be mild or quite spicy, depending on the restaurant. Broken down, the word ‘do’ means two and ‘piaza’ means onions. So the authentic Indian version of this dish is a curry with onions cooked in two different ways. If you count the base curry sauce, and fried onion petals, this recipe is actually made with onions cooked in four different ways so the name doesn’t quite fit. That’s just being technical, though.",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN10 MINS"
   },
   "ingredients": [
     {
@@ -96,6 +97,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

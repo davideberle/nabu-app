@@ -44,7 +44,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/garau-garau.jpg"
+  "image": "/recipes/garau-garau.jpg",
+  "cuisine": "Nigerian"
 }

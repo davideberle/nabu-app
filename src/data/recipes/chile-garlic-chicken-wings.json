@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "serves 6 to 8",
-  "time": "TAKES 1 HOUR",
+  "time": {
+    "prep": 24,
+    "cook": 48,
+    "total": 72
+  },
   "intro": "Nibbling on chicken wings with an ice-cold beer is a great way to nosh Vietnamese style, but I don’t get out the fryer to make the wings. Instead, I coat them in flour, spices, and oil and roast them. Remarkably, they crisp up as if you’d deep-fried them. Rice flour yields slightly crisper results than wheat flour, but it’s a marginal difference so use what you like. If you don’t have cooking spray or a hand-pump oil mister, oil the foil and then tumble the flour-coated wings in 2 to 3 tablespoons of neutral oil before roasting.",
   "ingredients": [
     {
@@ -71,6 +75,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

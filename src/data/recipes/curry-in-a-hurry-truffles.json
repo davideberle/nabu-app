@@ -60,7 +60,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/curry-in-a-hurry-truffles.jpg"
+  "image": "/recipes/curry-in-a-hurry-truffles.jpg",
+  "cuisine": "Other"
 }

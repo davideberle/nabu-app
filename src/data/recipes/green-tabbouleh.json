@@ -110,5 +110,6 @@
       "vegan"
     ]
   },
-  "image": "/recipes/green-tabbouleh.jpg"
+  "image": "/recipes/green-tabbouleh.jpg",
+  "cuisine": "Middle Eastern"
 }

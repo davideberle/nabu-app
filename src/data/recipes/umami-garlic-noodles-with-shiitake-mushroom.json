@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 40 MINUTES",
+  "time": {
+    "prep": 24,
+    "cook": 56,
+    "total": 80
+  },
   "intro": "A cult favorite among Viet Americans, buttery garlic noodles are addictively good, but their garlicky flavor can linger the morning after. You don’t have to worry about that with this recipe. To prevent the garlic from ruining a date night (and from burning during cooking), let it hang out for a few minutes in a little water and then gently cook it.",
   "ingredients": [
     {
@@ -72,6 +76,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

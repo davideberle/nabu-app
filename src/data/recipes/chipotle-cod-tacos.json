@@ -46,5 +46,12 @@
   ],
   "time": {
     "total": 12
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mexican"
 }

@@ -46,5 +46,12 @@
   "image": null,
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Sauces & Dressings"
+  },
+  "cuisine": "Other"
 }

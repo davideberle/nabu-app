@@ -49,5 +49,13 @@
   "image": "/recipes/shaved-fennel-with-balsamic-marinade.jpg",
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

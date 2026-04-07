@@ -68,5 +68,12 @@
   ],
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "breakfast"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Other"
 }

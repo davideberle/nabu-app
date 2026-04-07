@@ -90,7 +90,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/party-jollof-rice.jpg"
+  "image": "/recipes/party-jollof-rice.jpg",
+  "cuisine": "Nigerian"
 }

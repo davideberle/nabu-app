@@ -61,5 +61,12 @@
   "image": "/recipes/bulgur-wheat-with-mixed-peppers-and-goat-cheese.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

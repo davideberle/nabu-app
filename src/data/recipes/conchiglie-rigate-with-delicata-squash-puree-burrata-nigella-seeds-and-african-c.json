@@ -67,6 +67,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Fall"
+  },
+  "cuisine": "Italian"
 }

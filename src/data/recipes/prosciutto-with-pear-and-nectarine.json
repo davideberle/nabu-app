@@ -57,5 +57,12 @@
   "image": "/recipes/prosciutto-with-pear-and-nectarine.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

@@ -48,7 +48,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-date-thick-shake.jpg"
+  "image": "/recipes/chocolate-date-thick-shake.jpg",
+  "cuisine": "Other"
 }

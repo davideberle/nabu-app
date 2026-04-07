@@ -10,7 +10,8 @@
   "intro": "A very good cookie trumps all baked goods for me. I’m not here to argue, just laying my sweet treat desires on the table. Sometimes the concept of baking big-batch desserts alone feels like a mountain to climb. However, if you crave a cookie and you live alone, or with one other person, you deserve to have a cookie. These cookies are crisp on the outside and gooey on the inside, with savoury respite from the black pepper, miso and brown butter. They’re an adult cookie that should be served with ice-cold milk and enjoyed warm straight from the oven.",
   "time": {
     "prep": "15 MINUTESCOOK TIME: 18 MINUTES",
-    "cook": "18 MINUTES"
+    "cook": "18 MINUTES",
+    "total": "15 MINUTESCOOK TIME: 18 MINUTES18 MINUTES"
   },
   "ingredients": [
     {
@@ -77,6 +78,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Cooking for One"
+  },
+  "cuisine": "Caribbean"
 }

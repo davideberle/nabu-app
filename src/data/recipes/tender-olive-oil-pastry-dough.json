@@ -55,7 +55,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/tender-olive-oil-pastry-dough.jpg"
+  "image": "/recipes/tender-olive-oil-pastry-dough.jpg",
+  "cuisine": "Other"
 }

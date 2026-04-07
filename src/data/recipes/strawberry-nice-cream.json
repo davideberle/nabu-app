@@ -40,6 +40,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Nice Cream"
+  },
+  "cuisine": "Other"
 }

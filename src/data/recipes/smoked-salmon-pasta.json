@@ -66,5 +66,12 @@
   "image": "/recipes/smoked-salmon-pasta.jpg",
   "time": {
     "total": 23
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -1104,6 +1104,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Soups & Stews"
+  },
+  "cuisine": "Other"
 }

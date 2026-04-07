@@ -101,7 +101,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/quang-noodle-salad.jpg"
+  "image": "/recipes/quang-noodle-salad.jpg",
+  "cuisine": "Southeast Asian"
 }

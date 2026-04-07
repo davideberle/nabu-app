@@ -67,6 +67,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Small Plates"
+  },
+  "cuisine": "Indian"
 }

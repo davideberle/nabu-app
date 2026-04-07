@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4",
-  "time": "TAKES 25 MINUTES",
+  "time": {
+    "prep": 26,
+    "cook": 32,
+    "total": 58
+  },
   "intro": "When my husband saw this on the counter, he mistook it for the caramelized porky crumbles on this page. Yes, they look alike, but these crumbles are vegan, with a citrusy and spicy edge. Tempeh isn’t a Viet ingredient, but I’ve used it in banh mi, pho, and here to mimic meat. When crumbled into small pieces in this recipe, tempeh absorbs the seasonings well and fries up nicely. Whether made from meat or tempeh, these sorts of crumbles are used the same way—to mix into and season rice, kind of like a condiment. Add a side of radish and carrot pickle (see this page) for refreshing crunch and tang. The crumbles will keep, covered, in the refrigerator, for up to 3 days (though they never last long in my house) and are good scooped up with tortilla chips.",
   "ingredients": [
     {
@@ -77,6 +81,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

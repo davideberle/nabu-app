@@ -57,7 +57,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pasta-allastice.jpg"
+  "image": "/recipes/pasta-allastice.jpg",
+  "cuisine": "Italian"
 }

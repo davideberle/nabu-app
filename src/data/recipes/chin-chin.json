@@ -54,7 +54,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/chin-chin.jpg"
+  "image": "/recipes/chin-chin.jpg",
+  "cuisine": "Nigerian"
 }

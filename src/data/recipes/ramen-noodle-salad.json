@@ -67,5 +67,12 @@
   "image": "/recipes/ramen-noodle-salad.jpg",
   "time": {
     "total": 11
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
-  "time": "TAKES 1½ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 56,
+    "total": 86
+  },
   "intro": "Like the Chinese pork belly enjoyed in steamed buns, this southern Vietnamese comfort dish is unctuous and dark mahogany in color. But, instead of relying on sugar, soy sauce, and rice wine, it employs caramel sauce, coconut water, and fish sauce to power its savory sweetness. I typically eat thịt heo kho trứng with rice, breaking the egg into chunks to mix with the pork, and drizzling the sauce over all. Add a simple vegetable like boiled green beans or broccoli, or the zucchini stir-fry on this page, to complete the meal. This is homey, everyday fare, but people love it for Tet Lunar New Year too.",
   "ingredients": [
     {
@@ -88,6 +92,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

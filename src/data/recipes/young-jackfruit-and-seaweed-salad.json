@@ -71,7 +71,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/young-jackfruit-and-seaweed-salad.jpg"
+  "image": "/recipes/young-jackfruit-and-seaweed-salad.jpg",
+  "cuisine": "Southeast Asian"
 }

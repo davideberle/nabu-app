@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 to 8 servings",
-  "time": "10 minutes, plus 2 hours chilling",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "This is not your average mayo-heavy potato salad; it’s jazzed up with plenty of fresh herbs and has a dressing that relies on a base of yogurt for tartness and lightness. Although not a salad that’s native to the Middle Eastern region, potato salads have quickly become favorites in many Arab households, especially those of us living in diaspora. We don’t say no to carbs in the form of potatoes. To add a Middle Eastern touch, I make this with lots of dill, parsley, and green onion. The dressing is a quick mix of yogurt, relish, mustard, a little bit of mayo, and Aleppo pepper. If you can find pink pickled turnips, use them to brighten up the salad and add some color. Make sure you chill this in the fridge for at least two hours before you serve it.",
   "ingredients": [
     {
@@ -57,6 +61,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

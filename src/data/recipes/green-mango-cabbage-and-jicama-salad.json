@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4 to 6",
-  "time": "TAKES 40 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "Many people assume that an unripe mango is not ready for prime time, but to me, it’s an opportunity to make gỏi xoài (mango salad). The traditional rendition includes cooked shrimp and fatty pork, but I’ve found that dropping the proteins not only makes the salad less fussy (read: faster to make) but also shifts the focus to the produce and highlights the tropical flavor combinations that are central to Vietnamese cooking. The decluttered version is lighter, brighter, and easily adapted for vegan diners.",
   "ingredients": [
     {
@@ -64,6 +68,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

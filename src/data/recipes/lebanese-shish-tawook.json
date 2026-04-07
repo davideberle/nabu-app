@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 30 Minutes"
   },
   "servings": "7 to 10 skewers",
-  "time": "10 minutes, plus 1 hour marinating",
+  "time": {
+    "prep": 30,
+    "cook": 56,
+    "total": 86
+  },
   "intro": "Shish tawook, although popularized as a classic Lebanese grilled chicken dish, actually gets its name from Turkish origins. The word shish comes from the Turkish word şiş, meaning “skewer,” and the word tawook comes from the Turkish word tavuk, meaning “chicken.” Grilled chicken skewers are another universal dish across the Middle East. In Iraq we call it chicken “tikka,” a word from Indian origin, and season it with more Eastern spices. The Lebanese marinade, which I make quite often, has a mix of tomato paste, yogurt, garlic, and lemon juice as the base, along with a few spices. These ingredients yield tender, juicy, and mild-flavored chicken, perfect for rolling into pita wraps. Although the skewers are typically grilled outdoors, don’t let winter stop you from enjoying it; it is perfectly delicious grilled on an indoor cast-iron pan. As with many Lebanese chicken dishes, it is often served with Toum or Tarator.",
   "ingredients": [
     {
@@ -92,6 +96,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 30 Minutes"
+  },
+  "cuisine": "Middle Eastern"
 }

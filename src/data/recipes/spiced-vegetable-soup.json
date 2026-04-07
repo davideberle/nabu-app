@@ -111,6 +111,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups, stews & tagines"
+  },
+  "cuisine": "Persian"
 }

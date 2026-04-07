@@ -50,5 +50,13 @@
   "image": "/recipes/swiss-chard-and-sweet-potato-bowl.jpg",
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

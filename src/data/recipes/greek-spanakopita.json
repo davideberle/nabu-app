@@ -101,5 +101,12 @@
   ],
   "time": {
     "total": 80
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mediterranean"
 }

@@ -39,7 +39,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/s-mores.jpg"
+  "image": "/recipes/s-mores.jpg",
+  "cuisine": "Other"
 }

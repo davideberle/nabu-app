@@ -82,5 +82,12 @@
   "image": "/recipes/penne-with-vodka-sauce.jpg",
   "time": {
     "total": 42
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

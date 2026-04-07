@@ -7,7 +7,11 @@
     "chapter": "Snacks"
   },
   "servings": "makes 16 empanadas, to serve 6 to 8",
-  "time": "TAKES ABOUT 1¼ HOURS",
+  "time": {
+    "prep": 26,
+    "cook": 48,
+    "total": 74
+  },
   "intro": "When I have a little leftover jicama or sweet potato from making rice paper rolls (see this page), chicken curry (see this page), or salad (see this page), I make these empanadas. The original rendition was deep-fried, but nowadays I often bake the filled pastries for less hassle. The filling of pork, shrimp, and jicama is classic, but I’ve also devised a wonderful vegetarian version (see the Notes).",
   "ingredients": [
     {
@@ -75,6 +79,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Snacks"
+  },
+  "cuisine": "Southeast Asian"
 }

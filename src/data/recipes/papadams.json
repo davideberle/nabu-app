@@ -1781,6 +1781,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Recipes"
+  },
+  "cuisine": "Indian"
 }

@@ -64,9 +64,11 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Grilling, Barbecue and Roasting"
   },
   "time": {
     "total": 25
-  }
+  },
+  "cuisine": "Indian"
 }

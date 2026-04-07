@@ -50,5 +50,13 @@
   "image": "/recipes/edamame-and-snow-pea-salad.jpg",
   "time": {
     "total": 15
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

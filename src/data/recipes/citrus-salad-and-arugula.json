@@ -51,5 +51,11 @@
     "dish_type": [
       "side"
     ]
-  }
+  },
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "cuisine": "African & Caribbean"
 }

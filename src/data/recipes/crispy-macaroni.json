@@ -57,7 +57,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/crispy-macaroni.jpg"
+  "image": "/recipes/crispy-macaroni.jpg",
+  "cuisine": "Southeast Asian"
 }

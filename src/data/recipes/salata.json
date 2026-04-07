@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "4 servings",
-  "time": "15 minutes",
+  "time": {
+    "prep": 16,
+    "cook": 32,
+    "total": 48
+  },
   "intro": "Middle Eastern food is known to be rich in vegetables; we consume them quite abundantly both in raw and cooked forms. When I was growing up, there wasn’t a single dinner we had without a bowl of this freshly chopped salata as a regular accompaniment to every dish. My sisters and I used to love it simply scooped on top of my mom’s Roz Bi Shaariya. The dressing and the mix of vegetables varies from family to family; you can even make it with just cucumbers and tomatoes if that’s all you have on hand, along with a simple squeeze of lemon juice and a drizzle of pomegranate molasses. This dressing, however, is my go-to. I often prepare it in a large jar and keep it in the fridge to use throughout the week.",
   "ingredients": [
     {
@@ -57,6 +61,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

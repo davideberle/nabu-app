@@ -1,6 +1,6 @@
 {
   "id": "45-scallops-and-shrimp-with-linguine",
-  "name": "(45)     Scallops and Shrimp with Linguine",
+  "name": "Scallops and Shrimp with Linguine",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -80,5 +80,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -46,7 +46,14 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/gorgonzola-cheese-salad.jpg"
+  "image": "/recipes/gorgonzola-cheese-salad.jpg",
+  "time": {
+    "prep": 10,
+    "cook": 20,
+    "total": 30
+  },
+  "cuisine": "Italian"
 }

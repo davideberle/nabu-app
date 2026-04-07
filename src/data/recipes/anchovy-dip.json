@@ -59,6 +59,13 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Summer"
+  },
+  "time": {
+    "prep": 15,
+    "cook": 15,
+    "total": 30
+  },
+  "cuisine": "Italian"
 }

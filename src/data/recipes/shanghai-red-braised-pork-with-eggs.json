@@ -552,7 +552,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Meat"
   },
-  "image": "/recipes/shanghai-red-braised-pork-with-eggs.jpg"
+  "image": "/recipes/shanghai-red-braised-pork-with-eggs.jpg",
+  "cuisine": "Chinese"
 }

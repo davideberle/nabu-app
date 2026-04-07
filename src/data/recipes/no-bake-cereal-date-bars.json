@@ -666,6 +666,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads"
+  },
+  "cuisine": "Other"
 }

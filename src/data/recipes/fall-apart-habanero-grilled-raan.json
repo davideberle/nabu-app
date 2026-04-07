@@ -10,7 +10,8 @@
   "intro": "I have experimented a lot with lamb raan recipes over the years, but this is my go-to recipe now, especially when cooking outdoors. Lamb raan simply doesn’t get any better. You could do the initial cooking in your oven if you wish, but I like to cook the whole recipe first over indirect heat on the barbecue and then flame-grill over intense direct heat to finish. This is great served with a green salad and naans or chapattis. In the picture here I have served it with lemon wedges and grilled cauliflower.",
   "time": {
     "prep": "20 MINS, PLUS MARINATING TIME",
-    "cook": "2 HOURS"
+    "cook": "2 HOURS",
+    "total": "20 MINS, PLUS MARINATING TIME2 HOURS"
   },
   "ingredients": [
     {
@@ -107,6 +108,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

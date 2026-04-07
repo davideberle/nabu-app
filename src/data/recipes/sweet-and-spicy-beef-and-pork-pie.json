@@ -160,5 +160,6 @@
   "tags": {
     "dietary": []
   },
-  "image": null
+  "image": null,
+  "cuisine": "Middle Eastern"
 }

@@ -61,7 +61,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/sunday-sauce.jpg"
+  "image": "/recipes/sunday-sauce.jpg",
+  "cuisine": "Italian"
 }

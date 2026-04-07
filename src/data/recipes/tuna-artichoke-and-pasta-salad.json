@@ -62,5 +62,12 @@
   "image": "/recipes/tuna-artichoke-and-pasta-salad.jpg",
   "time": {
     "total": 25
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

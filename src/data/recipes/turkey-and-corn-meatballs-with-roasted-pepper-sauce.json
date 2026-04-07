@@ -166,5 +166,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/turkey-and-corn-meatballs-with-roasted-pepper-sauce.jpg"
+  "image": "/recipes/turkey-and-corn-meatballs-with-roasted-pepper-sauce.jpg",
+  "cuisine": "Middle Eastern"
 }

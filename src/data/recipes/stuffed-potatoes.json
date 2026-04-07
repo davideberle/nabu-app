@@ -123,6 +123,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Stuffed Vegetables"
+  },
+  "cuisine": "Middle Eastern"
 }

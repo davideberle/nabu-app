@@ -10,7 +10,8 @@
   "intro": "Quite possibly the dish that has for so long defined Middle Eastern cuisine, chicken shawarma has a special place in every Arab household. Although so much of my work goes into showing people that there is a plethora of vibrant Middle Eastern recipes beyond just shawarma, I will never deny the true satisfaction a shawarma wrap smothered in Toum brings. Over the years, I have tweaked and perfected my shawarma marinade and cooking technique, optimizing for both efficiency and flavor. I’ve arrived at a few conclusions. Chicken thighs are the best cut of chicken to use to maintain moist and fatty shawarma. Also, the best way to cook large quantities quickly is using a pre-oiled and preheated sheet pan; spread the chicken out over the hot sheet pan, and twenty minutes later, you’ll have perfectly moist and tender chicken with dark crispy bits throughout. The most authentic way to enjoy shawarma is wrapped in Saj bread, a very thin flatbread. Smother the bread with toum, add the shawarma, followed by some pickles and french fries (yes, fries!), and then wrap it up and take a bite.",
   "time": {
     "prep": "10 minutes, plus 1 hour marinating",
-    "cook": "15 minutes"
+    "cook": "15 minutes",
+    "total": "10 minutes, plus 1 hour marinating15 minutes"
   },
   "ingredients": [
     {
@@ -104,6 +105,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 30 Minutes"
+  },
+  "cuisine": "Middle Eastern"
 }

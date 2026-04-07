@@ -55,7 +55,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/sachertorte.jpg"
+  "image": "/recipes/sachertorte.jpg",
+  "cuisine": "Other"
 }

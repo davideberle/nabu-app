@@ -82,5 +82,12 @@
   "image": "/recipes/spicy-chicken-salad-with-raw-vegetables.jpg",
   "time": {
     "total": 17
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

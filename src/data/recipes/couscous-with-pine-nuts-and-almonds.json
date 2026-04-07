@@ -70,5 +70,12 @@
   "image": "/recipes/couscous-with-pine-nuts-and-almonds.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

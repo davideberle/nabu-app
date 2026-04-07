@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "12 servings",
-  "time": "15 minutes",
+  "time": {
+    "prep": 10,
+    "cook": 60,
+    "total": 70
+  },
   "intro": "I’m confident enough to declare that kunafa (also pronounced knafa, or knafeh) is my favorite dessert of all time. It’s the combination of crispy, shredded dough drenched in syrup, plus warm, melty cheese that is absolutely magical. This is another crown jewel on the Middle Eastern dessert table. Its origins are not precisely known, but it may be traced back to Palestine, Syria, or Egypt in its earliest forms. It’s traditionally made with shredded phyllo dough that’s been generously rubbed with butter or ghee, then layered with sweet cheese, thick cream, or nuts, with the cheese version being the most popular. It’s made in very large circular trays, then, when fresh out of the oven while the cheese is still warm, drenched in sugar syrup and sprinkled with crushed pistachios. The dough can be one of two different varieties: khishna (meaning “rough”) or na’ama (meaning “soft”). Kunafa khishna is made with shredded phyllo dough; kunafa na’ama is specific to the region of Nablus, Palestine, and it’s made with a crumbly semolina and flour–based dough. The recipe I come back to time and again is this simple cheese kunafa stuffed with mozzarella cheese. That’s right: this recipe does not require you to go hunting for the specific sweet cheese used in the Middle East. I find high-moisture mozzarella to have just enough salt to create a lovely balance with the sweet syrup. I also love making it into mini servings using a muffin pan, but this recipe can also easily be made in a large, circular tray.",
   "ingredients": [
     {
@@ -40,6 +44,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

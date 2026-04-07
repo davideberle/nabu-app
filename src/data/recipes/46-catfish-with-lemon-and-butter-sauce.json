@@ -1,6 +1,6 @@
 {
   "id": "46-catfish-with-lemon-and-butter-sauce",
-  "name": "(46)     Catfish with Lemon and Butter Sauce",
+  "name": "Catfish with Lemon and Butter Sauce",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -69,5 +69,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

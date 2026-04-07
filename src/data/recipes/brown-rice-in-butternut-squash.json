@@ -88,7 +88,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/brown-rice-in-butternut-squash.jpg"
+  "image": "/recipes/brown-rice-in-butternut-squash.jpg",
+  "cuisine": "Southeast Asian"
 }

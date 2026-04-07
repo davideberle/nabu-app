@@ -10,7 +10,8 @@
   "intro": "You might wonder why you would want to pre-cook keema, as I did when I first started noticing the containers of prepared keema during my restaurant visits. Keema is, after all, ground meat, so it’s as tender as it’s going to get. This recipe takes about 30 minutes or longer to make, so you can understand why the chefs in a busy takeaway would want to get this job done before they get busy. That isn’t the only reason though. Just like a slowly cooked Bolognese sauce, the flavours in this keema will develop as they cook. If you have the time, cook it longer with a little more stock as the flavour will only get better. If you aren’t a big fan of biting into whole spices, be sure to count them in and remove them before using in your recipes. This keema is delicious stirred into almost any curry sauce or wrapped into samosas. Lamb is usually used for keema meat but if you prefer you could try chicken, beef or turkey mince.",
   "time": {
     "prep": "10 MINS",
-    "cook": "30 MINS"
+    "cook": "30 MINS",
+    "total": "10 MINS30 MINS"
   },
   "ingredients": [
     {
@@ -88,6 +89,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Accompaniments"
+  },
+  "cuisine": "Indian"
 }

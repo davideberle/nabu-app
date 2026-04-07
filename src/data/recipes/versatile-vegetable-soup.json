@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES 40 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 25,
+    "total": 40
+  },
   "intro": "When I’m lazy and want to eat light, I make this vegetable-laden soup. I serve it with rice, a quick protein—which may or may not involve meat—and if available, pickled daikon and carrot (see this page). Vegetables are the stars here, so there’s no need to prepare a separate vegetable side dish.",
   "ingredients": [
     {
@@ -76,6 +80,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

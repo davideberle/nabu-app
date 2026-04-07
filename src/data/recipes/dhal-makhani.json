@@ -10,7 +10,8 @@
   "intro": "Dhal makhani, when cooked correctly, is delicious. I’ve tried some amazing versions and also a few that just weren’t quite there yet. If you like a good dhal makhani, I think this recipe will get you the flavour and texture you’re looking for. Be warned, however, this isn’t one you can just whip up on a whim. The lentils need to soak in water for at least 12 hours, then be slowly cooked until fall-apart tender. This is where many chefs go wrong. They rush the cooking process and the dhal has just a bit too much bite to it. If time permits, I recommend cooking this for 4 hours, adding water when required.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING",
-    "cook": "3¼–4¼ HOURS"
+    "cook": "3¼–4¼ HOURS",
+    "total": "10 MINS, PLUS SOAKING3¼–4¼ HOURS"
   },
   "ingredients": [
     {
@@ -78,6 +79,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 to 8 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 24,
+    "cook": 48,
+    "total": 72
+  },
   "intro": "Iraqi cuisine is known to be quite meat-heavy—we savor and enjoy the umami from stewing bone-in meat, and this dish celebrates exactly that. Growing up, I used to always hear my meat-loving uncles say that if you did not have red meat and savor the bones, then you did not eat meat at all. Tashreeb is an Arabic word that means “to soak,” which is how this dish is served. Large loaves of thick Iraqi bread resembling lavash are torn into pieces and placed in serving bowls. A tomato-based meat stew with onions and chickpeas is ladled on top. The bread soaks up the broth, resulting in the most delicious and hearty bowl. There are other versions of tashreeb that are made with chicken and some that do not add tomato to the broth.",
   "ingredients": [
     {
@@ -71,6 +75,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -78,7 +78,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/eggplant-parmesan.jpg"
+  "image": "/recipes/eggplant-parmesan.jpg",
+  "cuisine": "Italian"
 }

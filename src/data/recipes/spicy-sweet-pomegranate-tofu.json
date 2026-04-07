@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4",
-  "time": "TAKES 35 MINUTES",
+  "time": {
+    "prep": 26,
+    "cook": 40,
+    "total": 66
+  },
   "intro": "This earthy, tangy main dish shares a sauce similar to the Pomegranate Sriracha Shrimp on this page, but the tofu, soy sauce, and vegetables turn it into something distinctively delicious. Tofu is typically deep-fried for dishes like this one, but panfrying is a healthier way to inject richness and character. The technique used here is the same as for Shaking Tofu on this page. For texture, complexity, and color, I add mushroom and mild-tasting chiles. Anaheims are my go-to but during the warmer months when chiles are in season, I love to use varieties such as Hatch and Corno di Toro. In a major pinch, half a large bell pepper will do.",
   "ingredients": [
     {
@@ -78,6 +82,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

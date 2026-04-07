@@ -62,5 +62,12 @@
   "image": "/recipes/tortellini-pesto-salad.jpg",
   "time": {
     "total": 5
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

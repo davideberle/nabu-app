@@ -82,5 +82,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/kosheri.jpg"
+  "image": "/recipes/kosheri.jpg",
+  "cuisine": "Middle Eastern"
 }

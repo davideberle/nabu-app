@@ -10,7 +10,8 @@
   "intro": "Never fill your pan more than one-third full or the rice will not cook correctly. If making a larger batch, remember the uncooked rice-to-water volume (not weight) ratio is always 1 measure of rice to 1½ measures of water.",
   "time": {
     "prep": "2 MINS, PLUS SOAKING TIME",
-    "cook": "40 MINS"
+    "cook": "40 MINS",
+    "total": "2 MINS, PLUS SOAKING TIME40 MINS"
   },
   "ingredients": [
     {
@@ -37,6 +38,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

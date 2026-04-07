@@ -7,7 +7,11 @@
     "chapter": "Basic Recipes and Know-How"
   },
   "servings": "makes about 3 cups",
-  "time": "TAKES 10 TO 30 MINUTES, PLUS 1 HOUR TO MATURE",
+  "time": {
+    "prep": 12,
+    "cook": 32,
+    "total": 44
+  },
   "intro": "Keep this flash pickle around to add color, crunch, and tang to Vietnamese dishes. Simply called đồ chua (“sour stuff”), the daikon and carrot pickle is a banh mi must-have and a perfect side for rice plates and grilled meats. You can substitute turnips or watermelon radish for the daikon; the Notes have more ideas. If the pickle turns stinky as it ages, open the jar and let it air out for 15 minutes before using.",
   "ingredients": [
     {
@@ -49,6 +53,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Basic Recipes and Know-How"
+  },
+  "cuisine": "Southeast Asian"
 }

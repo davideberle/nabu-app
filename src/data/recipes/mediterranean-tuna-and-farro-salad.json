@@ -74,5 +74,12 @@
   "image": "/recipes/mediterranean-tuna-and-farro-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

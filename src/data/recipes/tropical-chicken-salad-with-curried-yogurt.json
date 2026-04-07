@@ -58,5 +58,12 @@
   "image": null,
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

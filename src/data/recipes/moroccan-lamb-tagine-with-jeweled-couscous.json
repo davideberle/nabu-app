@@ -10,7 +10,8 @@
   "intro": "Tagine refers to both a common North African cone-shaped cooking vessel made of clay and also the slow-cooked savory stew that is cooked in it. The clay tagine is designed to contain the steam inside the vessel, keeping the stew moist as it slowly cooks for hours. You can easily replicate this technique using a heavy cast-iron Dutch oven.",
   "time": {
     "prep": "15 minutes",
-    "cook": "2 hours and 15 minutes"
+    "cook": "2 hours and 15 minutes",
+    "total": "15 minutes2 hours and 15 minutes"
   },
   "ingredients": [
     {
@@ -137,7 +138,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes: Worth the Effort"
   },
-  "subtitle": ""
+  "subtitle": "",
+  "cuisine": "Middle Eastern"
 }

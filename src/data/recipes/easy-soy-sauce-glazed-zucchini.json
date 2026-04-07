@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 15 MINUTES",
+  "time": {
+    "prep": 12,
+    "cook": 32,
+    "total": 44
+  },
   "intro": "Vietnamese cooks often salt, rinse, and squeeze vegetables for salads and pickles. Why? It concentrates flavors by removing excess liquid, which allows the vegetables to really absorb a dressing or brine. I use that same approach on zucchini (medium ones work great), which can get mushy and lifeless during the cooking process. Pre-salting results in tasty, tender-firm squash, which takes on seasonings well during a quick session in a hot pan. To apply this cooking method to sunburst (aka pattypan) squash, halve them and then cut into ¾-inch-thick wedges.",
   "ingredients": [
     {
@@ -49,6 +53,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

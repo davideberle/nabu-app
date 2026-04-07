@@ -1,6 +1,6 @@
 {
   "id": "26-skillet-pasta-with-sausage-and-vegetables",
-  "name": "(26)     Skillet Pasta with Sausage and Vegetables",
+  "name": "Skillet Pasta with Sausage and Vegetables",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -70,5 +70,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

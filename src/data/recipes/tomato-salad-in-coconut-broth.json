@@ -81,6 +81,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Small Plates"
+  },
+  "cuisine": "Indian"
 }

@@ -80,6 +80,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Dumplings and Snacks"
+  },
+  "cuisine": "Chinese"
 }

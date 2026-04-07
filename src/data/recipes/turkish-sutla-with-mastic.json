@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "8 to 10 small servings",
-  "time": "5 minutes",
+  "time": {
+    "prep": 12,
+    "cook": 40,
+    "total": 52
+  },
   "intro": "Rice pudding is one of those desserts that spans many cultures and countries, with each region having its own variation. One of the most impressive presentations is that of sutlaç, which is the Turkish version. It is traditionally cooked on the stovetop, then broiled for a few minutes to develop a beautifully browned and spotty top layer due to the caramelization of the milk. It’s served in individual ramekins, usually cold, but you can also serve it warm out of the oven (which is actually how I prefer it). You can flavor the pudding with vanilla, cardamom, cinnamon, rose water, or anything you prefer. But my favorite is definitely a small pinch of crushed mastic gum. If you can find it at a local Middle Eastern store, you must try it.",
   "ingredients": [
     {
@@ -49,6 +53,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -99,5 +99,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/cucumber-and-poppy-seed-salad.jpg"
+  "image": "/recipes/cucumber-and-poppy-seed-salad.jpg",
+  "cuisine": "Middle Eastern"
 }

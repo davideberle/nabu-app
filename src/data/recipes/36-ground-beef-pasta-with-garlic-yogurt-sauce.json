@@ -1,6 +1,6 @@
 {
   "id": "36-ground-beef-pasta-with-garlic-yogurt-sauce",
-  "name": "(36)     Ground Beef Pasta with Garlic-Yogurt Sauce",
+  "name": "Ground Beef Pasta with Garlic-Yogurt Sauce",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -62,5 +62,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

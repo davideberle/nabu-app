@@ -40,6 +40,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Summer"
+  },
+  "cuisine": "Italian"
 }

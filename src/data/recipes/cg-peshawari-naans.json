@@ -59,6 +59,13 @@
   "category": {
     "dish_type": [
       "bread"
-    ]
-  }
+    ],
+    "chapter": "Accompaniments"
+  },
+  "time": {
+    "prep": 30,
+    "cook": 30,
+    "total": 60
+  },
+  "cuisine": "Indian"
 }

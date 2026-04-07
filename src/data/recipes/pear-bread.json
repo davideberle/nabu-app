@@ -112,6 +112,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Winter"
+  },
+  "cuisine": "Italian"
 }

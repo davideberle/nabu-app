@@ -58,7 +58,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/plantain-chips.jpg"
+  "image": "/recipes/plantain-chips.jpg",
+  "cuisine": "Nigerian"
 }

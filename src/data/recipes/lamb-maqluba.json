@@ -10,7 +10,8 @@
   "intro": "Maqluba is a dish that you can make for guests and sort of sell like a “dinner and a show” type of evening, because flipping the maqluba pot is so much fun, especially with a crowd around cheering you on. We grew up on my mom’s delicious maqluba, a dish made across Iraq, but it is also known in Palestine, Syria, and other neighboring countries. The Iraqi version is slightly different than the Levantine one, but I’ve never had a maqluba I didn’t love. Every version is delicious, simply because of the technique—layers of meat (chicken or lamb) and vegetables underneath a bed of rice, left to simmer together for a while. The flavors all infuse, resulting in the most delicious rice dish you’ll ever taste.",
   "time": {
     "prep": "30 minutes",
-    "cook": "1 hour and 45 minutes"
+    "cook": "1 hour and 45 minutes",
+    "total": "30 minutes1 hour and 45 minutes"
   },
   "ingredients": [
     {
@@ -162,7 +163,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes: Worth the Effort"
   },
-  "subtitle": "UPSIDE-DOWN RICE"
+  "subtitle": "UPSIDE-DOWN RICE",
+  "cuisine": "Middle Eastern"
 }

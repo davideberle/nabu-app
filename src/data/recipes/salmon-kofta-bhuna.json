@@ -10,7 +10,8 @@
   "intro": "This recipe was sent to me by my friend Milon Miah, head chef at Spice Island in Barnard Castle. The recipe was taught to Milon by his mother, but he claims to have modernized it a bit. I’ve never tried the original but have to say his version, which he makes with chital (a freshwater Bangladeshi fish) is truly delicious. I’m not the only one who thinks so. Milon recently won first place with this dish on the reality TV show The Chef. The ingredients are all very simple but they work so well together. All you need is a little plain white rice and you’ve got yourself a masterpiece meal in minutes.",
   "time": {
     "prep": "15 MINS",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -112,6 +113,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

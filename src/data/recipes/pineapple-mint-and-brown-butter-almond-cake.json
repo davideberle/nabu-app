@@ -10,7 +10,8 @@
   "intro": "There’s very, very few things that brown butter won’t improve. It deepens and complements the sweet and floral qualities of pineapple and mint in this cake. As you’ll know by now, I’m not heavy on the iced (frosted) cakes. I tend to veer towards cakes that are based on some kind of nut or fruit, and which require very little decorative skills. I imagine this cake would be a great spring dinner party cake, something to take to a friend’s house to impress everyone. Also, it’s gluten free! So you get to say, ‘BTW this is gluten free’ and then bask in all the praise for your wizardry.",
   "time": {
     "prep": "25 MINUTESCOOK TIME: 1 HOUR",
-    "cook": "1 HOUR"
+    "cook": "1 HOUR",
+    "total": "25 MINUTESCOOK TIME: 1 HOUR1 HOUR"
   },
   "ingredients": [
     {
@@ -94,6 +95,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "Caribbean"
 }

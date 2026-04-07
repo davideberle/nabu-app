@@ -58,6 +58,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Cakes & Cookies"
+  },
+  "cuisine": "Middle Eastern"
 }

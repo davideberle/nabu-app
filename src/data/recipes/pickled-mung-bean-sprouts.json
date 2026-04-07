@@ -60,7 +60,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pickled-mung-bean-sprouts.jpg"
+  "image": "/recipes/pickled-mung-bean-sprouts.jpg",
+  "cuisine": "Southeast Asian"
 }

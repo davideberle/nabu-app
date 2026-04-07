@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 28,
+    "cook": 48,
+    "total": 76
+  },
   "intro": "This is a decadent pasta dish that is a constant go-to for dinner parties. It’s traditionally made in three layers: a layer of al dente pasta coated in a luscious, smooth, and buttery bechamel sauce; a layer of a meat-based ragù seasoned with warm spices; and a thick layer of bechamel. The layers are then baked until their flavors infuse together. My favorite thing about it is how it looks when the top is broiled and beautiful brown spots form. This dish is a result of the diversity in Egypt before the twentieth century. Think of it as a cross between the Greek pastitsio and Italian lasagna, using the classic recipe for French bechamel. And, of course, every Egyptian mother and grandmother adds her own special touch.",
   "ingredients": [
     {
@@ -79,6 +83,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

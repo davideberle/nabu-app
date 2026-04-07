@@ -54,5 +54,12 @@
   "image": null,
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

@@ -50,5 +50,12 @@
   "image": "/recipes/caprese-farro-salad-with-traditional-pesto.jpg",
   "time": {
     "total": 60
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

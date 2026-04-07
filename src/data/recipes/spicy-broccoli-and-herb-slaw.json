@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 32,
+    "total": 48
+  },
   "intro": "Mild-tasting, crunchy fruits and vegetables, such as unripe green papaya and kohlrabi, are often featured in popular Vietnamese salads. They’re cut into matchsticks and tossed with a protein of some sort, lots of fresh herbs, and a tangy dressing. Such salads dazzle with color, textures, and flavor.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

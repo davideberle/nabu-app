@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "20 minutes, plus 1 hour resting",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "This is one of my favorite recipes from my mom. This ground beef flatbread is common across many Middle Eastern countries, most notably in Turkey as lahmacun, in Iraq as lahm bi ajeen, and in Levantine countries as meat manakish. It’s made using ground lamb, beef, or a mix of the two, as well as onion, parsley, tomato paste, and pomegranate molasses. The distinguishing feature in my mom’s recipe is her ample use of warm spices that really take it to another level. She would serve it as a light dinner with a steaming cup of hot tea; it can also be served as an appetizer. We even turn leftovers into a breakfast treat by cracking an egg in the middle of a baked lahm bi ajeen and broiling it in the oven until the egg is set. If you’re intimidated by making dough from scratch, feel free to use ready-made pizza dough, or skip the dough altogether and use thin tortillas for a wonderful alternative, making for a weeknight-friendly version (see Note).",
   "ingredients": [
     {
@@ -86,6 +90,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

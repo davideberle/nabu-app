@@ -67,5 +67,12 @@
   "image": "/recipes/fava-bean-and-feta-panzanella-bowl.jpg",
   "time": {
     "total": 35
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

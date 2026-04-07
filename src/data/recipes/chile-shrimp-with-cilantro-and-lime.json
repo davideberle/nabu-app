@@ -50,5 +50,12 @@
   "image": "/recipes/chile-shrimp-with-cilantro-and-lime.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fish & Seafood"
+  },
+  "cuisine": "Other"
 }

@@ -8,7 +8,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 32,
+    "total": 52
+  },
   "intro": "Fragrant yellow rice is commonplace at Middle Eastern restaurants, often served as a side in shawarma platters. It gets its vibrant yellow color from the addition of turmeric or, in other variations, saffron. I love using an abundance of fragrant whole spices in the broth, which lend it a delicious flavor and inviting aroma. If you want to make it extra fancy for guests, toast some almonds and raisins and sprinkle them on top. Serve as a side to main dishes, such as Sheet-Pan Chicken Shawarma.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -70,7 +70,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/chicken-marsala.jpg"
+  "image": "/recipes/chicken-marsala.jpg",
+  "cuisine": "Italian"
 }

@@ -78,5 +78,12 @@
   ],
   "time": {
     "total": 80
-  }
+  },
+  "category": {
+    "dish_type": [
+      "bread"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mediterranean"
 }

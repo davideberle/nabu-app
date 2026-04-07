@@ -1,6 +1,6 @@
 {
   "id": "21-fettuccine-with-gorgonzola",
-  "name": "(21)     Fettuccine with Gorgonzola",
+  "name": "Fettuccine with Gorgonzola",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -61,5 +61,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -45,5 +45,13 @@
   "image": "/recipes/tomato-and-farfalle-pasta-salad.jpg",
   "time": {
     "total": 20
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

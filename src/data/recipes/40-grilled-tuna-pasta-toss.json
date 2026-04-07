@@ -1,6 +1,6 @@
 {
   "id": "40-grilled-tuna-pasta-toss",
-  "name": "(40)     Grilled Tuna Pasta Toss",
+  "name": "Grilled Tuna Pasta Toss",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -66,5 +66,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

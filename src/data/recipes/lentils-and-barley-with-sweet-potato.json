@@ -71,5 +71,12 @@
   "image": "/recipes/lentils-and-barley-with-sweet-potato.jpg",
   "time": {
     "total": 50
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

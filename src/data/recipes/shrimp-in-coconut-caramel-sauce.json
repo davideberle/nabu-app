@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 35 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 40,
+    "total": 60
+  },
   "intro": "My niece Paulina requested this savory-sweet comfort food from southern Vietnam, a region where cooks use coconut milk and coconut water for a sunny array of dishes. I happily obliged because it’s delicious and involves a nifty technique—coconut water is reduced with other ingredients until it caramelizes a bit to create a lovely syrupy sauce. Enjoy tôm rim nước dừa with rice and a simple vegetable, like the charred brussels sprouts on this page. Choose a skillet or sauteuse pan (think squat Dutch oven) with a light interior to easily monitor the color changes during cooking.",
   "ingredients": [
     {
@@ -62,6 +66,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

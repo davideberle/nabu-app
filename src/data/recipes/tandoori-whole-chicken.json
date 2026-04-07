@@ -10,7 +10,8 @@
   "intro": "Over the years, this tandoori whole roast chicken has been one of my family’s favourite Sunday night dinners. It is so easy to make and tastes amazing. The recipe calls for tandoori masala, which is commercially available, but I hope you try my homemade tandoori masala.\n\nThis is my recipe for cooking in the oven. If you prefer a smokier flavour, cook it on the barbecue using the indirect cooking method. Cooking times may vary. Just aim to get your barbecue to about 250°C (480°F). You could also use smoked instead of regular paprika.",
   "time": {
     "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "1 HOUR"
+    "cook": "1 HOUR",
+    "total": "10 MINS, PLUS MARINATING TIME1 HOUR"
   },
   "ingredients": [
     {
@@ -59,6 +60,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

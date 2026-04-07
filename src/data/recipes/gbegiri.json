@@ -48,7 +48,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/gbegiri.jpg"
+  "image": "/recipes/gbegiri.jpg",
+  "cuisine": "Nigerian"
 }

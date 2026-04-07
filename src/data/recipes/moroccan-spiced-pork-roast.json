@@ -140,6 +140,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes"
+  },
+  "cuisine": "Moroccan"
 }

@@ -55,5 +55,12 @@
   "image": "/recipes/rainbow-wheat-berry-and-feta-salad.jpg",
   "time": {
     "total": 50
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

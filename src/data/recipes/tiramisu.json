@@ -57,7 +57,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/tiramisu.jpg"
+  "image": "/recipes/tiramisu.jpg",
+  "cuisine": "Italian"
 }

@@ -54,7 +54,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/efo-egusi.jpg"
+  "image": "/recipes/efo-egusi.jpg",
+  "cuisine": "Nigerian"
 }

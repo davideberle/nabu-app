@@ -44,7 +44,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/pickled-carrots-and-daikon.jpg"
+  "image": "/recipes/pickled-carrots-and-daikon.jpg",
+  "cuisine": "Southeast Asian"
 }

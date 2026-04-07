@@ -42,5 +42,12 @@
   "image": "/recipes/wheat-berries-and-roasted-squash-with-blue-cheese.jpg",
   "time": {
     "total": 75
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

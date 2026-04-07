@@ -83,5 +83,12 @@
   "image": "/recipes/baked-ziti.jpg",
   "time": {
     "total": 60
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

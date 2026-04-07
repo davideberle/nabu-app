@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "4 servings",
-  "time": "10 minutes, plus 30 minutes chilling",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "This bean salad is a quick, filling, and nutritious lunch fix that I make quite regularly. Beans are a blank canvas for absorbing bright flavors. That’s why this lemony olive oil dressing works so well. I love using a medley of beans like red and white kidney beans, chickpeas, and black-eyed peas. Also, do not skip the onions; they are a necessary component. You can prepare the salad in advance, as it keeps quite well in the fridge and tastes even better the next day.",
   "ingredients": [
     {
@@ -40,6 +44,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

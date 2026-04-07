@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES ABOUT 1¼ HOURS",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "Vietnam’s national dish, pho noodle soup, is surprisingly flexible and democratic. There are many great renditions, in addition to the classic beef and chicken. This version is terrific because it’s not just for Thanksgiving, it’s deliciously convenient—smoked turkey parts are sold year-round at many grocery stores. They are fully cooked, with big flavor, so there’s less of a time commitment and hassle involved in making a batch of fabulous pho. A pressure cooker speeds things along, but there’s a stockpot option in the Notes. Weigh the ingredients to dial in flavors.",
   "ingredients": [
     {
@@ -197,6 +201,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

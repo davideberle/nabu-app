@@ -8,7 +8,11 @@
     "chapter": "Condiments & Dips"
   },
   "servings": "½ cup (65 g)",
-  "time": "10 minutes",
+  "time": {
+    "prep": 14,
+    "cook": 32,
+    "total": 46
+  },
   "intro": "Dukkah is a condiment or spice blend that is commonly made in Egyptian households. Each family has its own unique blend, but the most common components are nuts, sesame seeds, and warm spices like coriander and cumin, which are toasted to intensify their flavor and then ground into a coarse mixture using a mortar and pestle. Dukkah will quite easily transform anything it is sprinkled on. Egyptians enjoy it simply by dipping a piece of bread in olive oil and then into the dukkah. But it is also used to season fish, chicken, and meats, as well as grilled vegetables, dips, and salads. Make a batch of dukkah and keep it in a tightly covered jar on your counter. You’re sure to find creative ways to use it throughout the week. One of my favorites is in Roasted Dukkah-Crusted Trout. You can also mix it with olive oil and use it as a dipping sauce or slather the spiced oil onto pita breads and crisp them up for dukkah-spiced pita chips.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Condiments & Dips"
+  },
+  "cuisine": "Middle Eastern"
 }

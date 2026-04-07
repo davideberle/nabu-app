@@ -118,7 +118,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/oyster-mushroom-stir-fry-with-turmeric.jpg"
+  "image": "/recipes/oyster-mushroom-stir-fry-with-turmeric.jpg",
+  "cuisine": "Southeast Asian"
 }

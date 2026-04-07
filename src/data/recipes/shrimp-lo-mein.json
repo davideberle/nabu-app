@@ -72,5 +72,12 @@
   "image": "/recipes/shrimp-lo-mein.jpg",
   "time": {
     "total": 24
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

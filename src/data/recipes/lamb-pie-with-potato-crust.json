@@ -116,6 +116,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Winter"
+  },
+  "cuisine": "Italian"
 }

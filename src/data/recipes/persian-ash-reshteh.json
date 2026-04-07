@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Soups & Stews"
   },
   "servings": "6 to 8 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 30,
+    "cook": 40,
+    "total": 70
+  },
   "intro": "I love the flavors of Persian cuisine, with many of the dishes being similar to what I grew up eating in Iraq. Ash reshteh is a unique herby soup usually made to celebrate Persian New Year (Nowruz), due to its abundance of herbs to welcome spring. The soup is full of legumes and leafy greens and seasoned with turmeric, and has a unique tangy flavor that comes from a Persian ingredient called kashk, which is liquid whey from fermented yogurt. It can be tricky to find, so sour cream and Greek yogurt are both great substitutes. The final touch is dollops of mint oil when serving. This soup is perfect to make if you need to use up herbs you have in your fridge.",
   "ingredients": [
     {
@@ -89,6 +93,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Soups & Stews"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -49,5 +49,12 @@
   "image": "/recipes/gorgonzola-and-ciabatta-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Cheese"
+  },
+  "cuisine": "Other"
 }

@@ -10,7 +10,8 @@
   "intro": "This is a different way of making paneer kathi rolls. Usually the paneer is cubed and then wrapped in a chapatti. This is very good, but I like the paneer grated, as I saw them doing it at Zindiya Streatery & Bar in Birmingham. The cheese is heated through and mixed well with all the other ingredients, making the plain old paneer kathi roll a luxurious and mouthwatering wrap.",
   "time": {
     "prep": "10 MINS, PLUS OVERNIGHT SOAKING THE DHAL",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS OVERNIGHT SOAKING THE DHAL10 MINS"
   },
   "ingredients": [
     {
@@ -108,6 +109,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Starters & Snacks"
+  },
+  "cuisine": "Indian"
 }

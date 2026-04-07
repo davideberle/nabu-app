@@ -10,7 +10,8 @@
   "intro": "I made this famous Kashmiri meatball curry (lamb rista) the traditional way once. It took forever to make as the meat is pounded with a mallet until it looks like putty. I won’t be doing that again soon! Here I have simplified the recipe by using a food processor. The meatballs are delicious in this spicy sauce. In addition to the amazing flavour, the meatballs (rista) have a spongy texture that I really love. This recipe is usually made with mutton, but here I used lamb. Other minced (ground) meat such as venison, chicken or turkey work well too.",
   "time": {
     "prep": "20 MINS",
-    "cook": "1½ HOURS"
+    "cook": "1½ HOURS",
+    "total": "20 MINS1½ HOURS"
   },
   "ingredients": [
     {
@@ -146,6 +147,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

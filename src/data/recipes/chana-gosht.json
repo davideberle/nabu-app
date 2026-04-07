@@ -10,7 +10,8 @@
   "intro": "Chana gosht is a favourite staff curry behind the scenes at many restaurants. One of the best I’ve tried was at Lahore Kebab House in Shoreditch when I was researching recipes for my first book. I didn’t get the recipe from them at the time but wished that I had. This recipe came about by surprise. I was preparing shami kebabs, which are made with the same ingredients. It wasn’t until I tried the reduced mixture I was cooking, before blending it all up for the shamis, that I realized that the flavour was so close to that curry I enjoyed so much at Lahore! I make this curry all the time now. In the recipe, you pan-fry the lamb chops, which works well. I also like this curry with grilled lamb chops, cooked over hot coals on the barbecue. It adds an amazing smoky, charred flavour.",
   "time": {
     "prep": "20 MINS, PLUS MARINATING TIME",
-    "cook": "1 HOUR 15 MINS"
+    "cook": "1 HOUR 15 MINS",
+    "total": "20 MINS, PLUS MARINATING TIME1 HOUR 15 MINS"
   },
   "ingredients": [
     {
@@ -89,6 +90,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

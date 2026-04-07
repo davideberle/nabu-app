@@ -63,7 +63,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/japanese-style-savory-and-sweet-tofu.jpg"
+  "image": "/recipes/japanese-style-savory-and-sweet-tofu.jpg",
+  "cuisine": "Southeast Asian"
 }

@@ -160,5 +160,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/caramelized-endive-with-serrano-ham.jpg"
+  "image": "/recipes/caramelized-endive-with-serrano-ham.jpg",
+  "cuisine": "Middle Eastern"
 }

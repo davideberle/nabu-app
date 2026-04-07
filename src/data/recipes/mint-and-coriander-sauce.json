@@ -10,7 +10,8 @@
   "intro": "This is a sauce I make all the time. It is available at Asian shops but nothing beats taking it all up a notch with your own homemade version. You can adjust the recipe too. Vary the coriander-to-mint ratio, add more or fewer chillies, use yoghurt or leave it out… this sauce is a good’n! I store it in a squeezy bottle for convenience, but that isn’t essential. It is pictured.",
   "time": {
     "prep": "5 MINS",
-    "cook": "5 MINS"
+    "cook": "5 MINS",
+    "total": "5 MINS5 MINS"
   },
   "ingredients": [
     {
@@ -64,6 +65,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

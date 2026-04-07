@@ -1,6 +1,6 @@
 {
   "id": "29-chicken-and-peppers-over-pasta",
-  "name": "(29)     Chicken and Peppers over Pasta",
+  "name": "Chicken and Peppers over Pasta",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -88,5 +88,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

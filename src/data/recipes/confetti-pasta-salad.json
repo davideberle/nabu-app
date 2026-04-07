@@ -65,5 +65,12 @@
   "image": "/recipes/confetti-pasta-salad.jpg",
   "time": {
     "total": 10
-  }
+  },
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

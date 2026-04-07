@@ -10,7 +10,8 @@
   "intro": "Peshawari naans take some experimentation to get right. I don’t really have a sweet tooth, so if they’re too sweet, I just don’t like them. That is of course not the case with many people, who love them very sweet. Therefore, please use this recipe as a guide. Feel free to adjust it to your own tastes when making the paste. With a bit of practice, you will find a recipe that is exactly as you want your Peshawari naans to be.\n\nIf you have any leftover dough, it can be kept in the fridge for up to 3 days, or frozen. If you’re planning a curry evening with friends, why not make a selection of naans? Place a plate each of plain, keema and Peshawari naans on the table and you’ll be everyone’s best friend.",
   "time": {
     "prep": "2 MINS, PLUS THE TIME TO PREPARE THE DOUGH",
-    "cook": "10 MINS"
+    "cook": "10 MINS",
+    "total": "2 MINS, PLUS THE TIME TO PREPARE THE DOUGH10 MINS"
   },
   "ingredients": [
     {
@@ -68,6 +69,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Indian"
 }

@@ -85,5 +85,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/baked-artichokes-and-fava-beans.jpg"
+  "image": "/recipes/baked-artichokes-and-fava-beans.jpg",
+  "cuisine": "Middle Eastern"
 }

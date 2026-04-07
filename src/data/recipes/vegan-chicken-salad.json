@@ -71,7 +71,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/vegan-chicken-salad.jpg"
+  "image": "/recipes/vegan-chicken-salad.jpg",
+  "cuisine": "Southeast Asian"
 }

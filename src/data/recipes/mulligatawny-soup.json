@@ -10,7 +10,8 @@
   "intro": "There is no one recipe for Mulligatawny soup and it can vary greatly in flavour and colour. This recipe is up there with the best. It is delicious served with broken idlis. You can purchase instant idli mix at most Asian shops or follow my recipe.",
   "time": {
     "prep": "10 MINS",
-    "cook": "30 MINS"
+    "cook": "30 MINS",
+    "total": "10 MINS30 MINS"
   },
   "ingredients": [
     {
@@ -119,6 +120,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

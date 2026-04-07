@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "4 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 20,
+    "cook": 48,
+    "total": 68
+  },
   "intro": "A love for sweet-and-sour stews goes back to ancient times, when that flavor profile came to Middle Eastern cuisine. Pomegranate juice was one of the most common ways that tartness was infused into savory dishes, and this Persian fesenjoon is one of the most popular dishes that heavily uses pomegranate. It’s made in modern-day Iran as well as in the central and southern cities of Iraq. You can use red meat or chicken, in which the bone-in meat is simmered with onions and turmeric and then thickened with pulverized walnuts and flavored with a generous amount of pomegranate molasses. It is important to also add a bit of sugar to balance the tartness. The result is a thick, brown stew, and while not the most appealing in looks, it has an incredible amount of umami and depth for a stew that comes together surprisingly quick.",
   "ingredients": [
     {
@@ -63,6 +67,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

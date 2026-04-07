@@ -7,7 +7,11 @@
     "chapter": "Rice and Noodles"
   },
   "servings": "serves 4 as a side dish",
-  "time": "TAKES ABOUT 20 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 15,
+    "total": 30
+  },
   "intro": "Along with banh mi and tacos, fried rice is another go-to for repurposing leftovers. It’s easy to make a luxurious mound of cơm chiên, as long as you remember a few points: To ensure grains that don’t gum up, use dry-ish, cooked rice. Make the rice up to 5 days ahead, or prepare a fresh batch (see this page) and let it cool completely on a baking sheet.",
   "ingredients": [
     {
@@ -53,6 +57,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Rice and Noodles"
+  },
+  "cuisine": "Southeast Asian"
 }

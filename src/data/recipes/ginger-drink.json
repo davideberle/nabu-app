@@ -60,7 +60,14 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
+    ],
+    "chapter": "Drinks"
   },
-  "image": "/recipes/ginger-drink.jpg"
+  "image": "/recipes/ginger-drink.jpg",
+  "time": {
+    "prep": 5,
+    "cook": 0,
+    "total": 5
+  },
+  "cuisine": "Nigerian"
 }

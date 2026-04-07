@@ -98,7 +98,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/crispy-spring-rolls.jpg"
+  "image": "/recipes/crispy-spring-rolls.jpg",
+  "cuisine": "Southeast Asian"
 }

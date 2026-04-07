@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 22,
+    "cook": 32,
+    "total": 54
+  },
   "intro": "The availability of coconut water, which is so popular nowadays, makes this dish possible. It was inspired by a roasted game bird recipe in Làm Bếp Giỏi, the Vietnamese equivalent of the Joy of Cooking, published in the early 1940s by Van Dai, a Hanoi-born poetess and author. In that recipe, the birds were cooked on the stove top with fresh coconut water until the liquid reduced and coated them with a lovely, mildly sweet flavor.",
   "ingredients": [
     {
@@ -65,6 +69,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

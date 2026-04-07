@@ -69,5 +69,12 @@
   ],
   "time": {
     "total": 35
-  }
+  },
+  "category": {
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Southeast Asian"
 }

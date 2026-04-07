@@ -10,7 +10,8 @@
   "intro": "Chapli kebabs are, in my opinion, the king of all kebabs. They are traditionally cooked in beef dripping, but you could opt for a healthier oil such as rapeseed (canola) oil, if you wish. You can serve these on their own with a salad and some mint and coriander sauce, or wrap them up in homemade naans topped with salad, vegetables and chutney or raita.",
   "time": {
     "prep": "15 MINS",
-    "cook": "3 MINS"
+    "cook": "3 MINS",
+    "total": "15 MINS3 MINS"
   },
   "ingredients": [
     {
@@ -79,6 +80,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Basics & Breads"
+  },
+  "cuisine": "Indian"
 }

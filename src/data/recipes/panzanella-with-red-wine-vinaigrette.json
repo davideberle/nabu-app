@@ -62,5 +62,13 @@
   "image": "/recipes/panzanella-with-red-wine-vinaigrette.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "vegetable",
+      "side"
+    ],
+    "chapter": "Vegetables"
+  },
+  "cuisine": "Other"
 }

@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "4 to 6 servings",
-  "time": "15 minutes, plus overnight soaking",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "Falafel need no introduction. They have quickly gained popularity across the world for their distinctive taste and versatility. Falafel is considered a street food in Middle Eastern countries, often served in a wrap with tahini sauce and fresh vegetables. The idea for this crumbled falafel salad came to me when I was thinking about how street vendors squash the falafel into the bread when they assemble the wrap, breaking it up so that it’s easier to roll. So, why not make crumbled falafel as a “crouton” topping to salads? It also completely skips the shaping and deep-frying steps, which turns this into an easy and quick lunch. I found that spreading the falafel mixture in a sheet pan and baking it in intervals, flipping it in sections in between, results in a similar texture to “squashed falafel.” You’ll get lots of crispy bits and some soft fluffy bits and be snacking right from the pan. Please note that when making this recipe, always use dried chickpeas, never canned, as the latter have too much moisture to form a firm dough.",
   "ingredients": [
     {
@@ -103,6 +107,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

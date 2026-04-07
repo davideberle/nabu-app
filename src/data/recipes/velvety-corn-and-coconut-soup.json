@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 15,
+    "cook": 25,
+    "total": 40
+  },
   "intro": "One summer, I gave my neighbor, Dan, some Thai chiles for a recipe; in return, he piled six ears of homegrown yellow corn by my backdoor. It was late in the season, and he said he’d harvested “what the horses hadn’t eaten.” The mature kernels were super-sweet, reminiscent of the canned creamed corn that my mom used to make into a creamy corn and shiitake soup. This got me thinking about how corn, coconut, and chile make such good friends (sweet, fatty, and hot!). That is how I ended up with this simple, elegant soup. Chile oil, such as Lee Kum Kee brand, works fine.",
   "ingredients": [
     {
@@ -59,6 +63,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

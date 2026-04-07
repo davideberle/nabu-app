@@ -42,7 +42,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-crostini.jpg"
+  "image": "/recipes/chocolate-crostini.jpg",
+  "cuisine": "Other"
 }

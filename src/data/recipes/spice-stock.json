@@ -10,7 +10,8 @@
   "intro": "I usually make a batch of spice stock at the same time as I make the base curry sauce. This isn’t one you really need to watch closely while cooking so it’s a good way of getting two jobs done at once. The aromatic strained stock can be added to curries when a little more liquid is desired to thin the sauce. So could water, for that matter, but this stock does give curries more depth.",
   "time": {
     "prep": "5 MINS",
-    "cook": "35 MINS"
+    "cook": "35 MINS",
+    "total": "5 MINS35 MINS"
   },
   "ingredients": [
     {
@@ -57,6 +58,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Accompaniments"
+  },
+  "cuisine": "Indian"
 }

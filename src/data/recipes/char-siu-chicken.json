@@ -7,7 +7,11 @@
     "chapter": "Chicken and Seafood"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 16,
+    "cook": 24,
+    "total": 40
+  },
   "intro": "Savory-sweet and garlicky Chinese barbecued pork, called char siu in Cantonese and xá xíu in Vietnamese, is hard to resist. Since the classic porky version requires a good hour (better yet, overnight) to marinate, my weeknight approach is to make it with chicken thighs and grill it for a wonderful old-school flavor. You can use a stove-top grill pan as suggested here, or prepare a medium charcoal fire or preheat a gas grill to medium and cook the chicken for 10 to 12 minutes, basting during the last 3 minutes. Enjoy char siu chicken for dinner with rice and a quick stir-fried vegetable or a salad. Use leftovers (or make a double batch) for banh mi (see this page), a noodle soup, or fried rice (see this page).",
   "ingredients": [
     {
@@ -52,6 +56,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Chicken and Seafood"
+  },
+  "cuisine": "Southeast Asian"
 }

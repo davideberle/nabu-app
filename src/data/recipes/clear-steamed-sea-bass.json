@@ -557,7 +557,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Fish and Seafood"
   },
-  "image": "/recipes/clear-steamed-sea-bass.jpg"
+  "image": "/recipes/clear-steamed-sea-bass.jpg",
+  "cuisine": "Chinese"
 }

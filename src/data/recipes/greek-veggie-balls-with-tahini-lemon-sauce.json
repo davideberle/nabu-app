@@ -117,5 +117,12 @@
   ],
   "time": {
     "total": 60
-  }
+  },
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Greek"
 }

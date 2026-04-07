@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: Worth the Effort"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 30,
+    "cook": 60,
+    "total": 90
+  },
   "intro": "Koshari is Egypt’s national dish. And when I explain the components, you may be a bit perplexed, as I was when I first learned about it. How can one recipe have so many carbs? But once you get a taste, it will all make sense. This humble dish became widespread across Egypt due to its affordability. It combines lentils, rice, pasta, and chickpeas. The real magic happens when they are topped with a garlicky, tangy tomato sauce and then smothered with sweet and crispy fried onions. The oil that the onions are fried in is used to cook the other components, adding further flavor and depth. It is quite addictive! It’s also typically served with a side of dukkah, which in this case is a white vinegar sauce flavored with garlic, coriander, and cumin (as opposed to the nut, seed, and spice mix on this page). Most Egyptians also serve it with a spicier tomato sauce on the side for those who love additional heat. Although this dish has many components, it’s quite simple to make and truly unique. My obsession with koshari began when I had a taste of it at a local Egyptian restaurant. After that, it became a regular dish that I make at home, perfecting it over the years.",
   "ingredients": [
     {
@@ -104,6 +108,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: Worth the Effort"
+  },
+  "cuisine": "Middle Eastern"
 }

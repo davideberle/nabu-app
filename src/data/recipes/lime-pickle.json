@@ -10,7 +10,8 @@
   "intro": "There are a lot of outstanding lime pickles that can be purchased, from both small producers and big-name brands. This is my recipe that I have developed over the past few years. I wouldn’t say it is any better than many you can purchase but it is different and delicious. Sometimes different is good! You know you are at an outstanding restaurant if they place their own homemade pickles and chutneys on the table.",
   "time": {
     "prep": "5 MINS, PLUS FERMENTING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "5 MINS, PLUS FERMENTING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -72,6 +73,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

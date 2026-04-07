@@ -7,7 +7,11 @@
     "chapter": "Sweets and Coffee"
   },
   "servings": "makes a brimming ½ cup",
-  "time": "TAKES 5 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 15,
+    "total": 25
+  },
   "intro": "Don’t feel obligated to buy a traditional Vietnamese, metal coffee filter to make authentic Viet coffee. The phin filter is charming but slow, and not everyone in Vietnam uses it. The important thing to focus on is making inky, slightly bitter, very strong-tasting coffee. Use your favorite method. For a quick daily cup, I employ the Aeropress, which some people compare to a French press but I see it as a high-tech cousin of the phin filter.",
   "ingredients": [
     {
@@ -30,6 +34,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Sweets and Coffee"
+  },
+  "cuisine": "Southeast Asian"
 }

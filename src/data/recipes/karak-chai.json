@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "6 servings (4-ounce, or 120-ml, chai cups)",
-  "time": "10 minutes",
+  "time": {
+    "prep": 14,
+    "cook": 32,
+    "total": 46
+  },
   "intro": "Karak chai was popularized in the Middle East, especially in the Persian Gulf, due to the vast influence of South Asians in the region. My husband’s family lives in Kuwait, and when we visit, we often find little roadside shops selling this spiced milk tea, piping hot and with a delicious aroma. It’s so comforting, especially in the colder months, and you can adjust the whole spices to your taste. My family and I always make this when we are all gathered together and want a little something special to drink, aside from our regular black tea. The most important thing is not to forget the tea biscuits for dunking!",
   "ingredients": [
     {
@@ -52,6 +56,8 @@
   "category": {
     "dish_type": [
       "drink"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

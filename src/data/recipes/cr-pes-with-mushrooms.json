@@ -94,7 +94,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/cr-pes-with-mushrooms.jpg"
+  "image": "/recipes/cr-pes-with-mushrooms.jpg",
+  "cuisine": "Southeast Asian"
 }

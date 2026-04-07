@@ -1,6 +1,6 @@
 {
   "id": "22-linguine-carbonara",
-  "name": "(22)     Linguine Carbonara",
+  "name": "Linguine Carbonara",
   "source": {
     "cookbook": "More Than Carbonara",
     "author": "Various"
@@ -67,5 +67,12 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

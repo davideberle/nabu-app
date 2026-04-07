@@ -10,7 +10,8 @@
   "intro": "I’ve learned so much from my friend Chef Palash Mitra over the past few years. This recipe is one I simply had to share with you. The tender chunks of chicken are awesome served on their own with a tasty raita. It is equally as good added to a curry, such as the butter chicken.\n\nBefore I watched Palash prepare this marinade, I used to simply throw my marinades together in a couple of minutes. Palash took his time and blended the ingredients together by hand into a smooth emulsion. It is obvious he loves what he does, and his meticulous style and attention to detail really do make a big difference. These kebabs are featured in the photograph.",
   "time": {
     "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -95,6 +96,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

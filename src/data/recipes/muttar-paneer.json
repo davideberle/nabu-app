@@ -10,7 +10,8 @@
   "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK. It’s worth noting that this sauce is not limited to paneer and peas. It goes well with so many other main ingredients. Prawns (shrimp), chicken, bite-size pieces of seekh kebab… If you think it sounds good, it will be.",
   "time": {
     "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -146,6 +147,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

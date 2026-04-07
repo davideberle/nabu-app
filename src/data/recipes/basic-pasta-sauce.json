@@ -45,7 +45,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/basic-pasta-sauce.jpg"
+  "image": "/recipes/basic-pasta-sauce.jpg",
+  "cuisine": "Italian"
 }

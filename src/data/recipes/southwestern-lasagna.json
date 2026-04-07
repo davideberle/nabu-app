@@ -70,5 +70,12 @@
   "image": "/recipes/southwestern-lasagna.jpg",
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Italian"
 }

@@ -163,5 +163,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/eggplant-wrapped-ricotta-gnocchi-with-sage-butter.jpg"
+  "image": "/recipes/eggplant-wrapped-ricotta-gnocchi-with-sage-butter.jpg",
+  "cuisine": "Middle Eastern"
 }

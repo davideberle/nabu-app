@@ -10,7 +10,8 @@
   "intro": "I can’t get enough of this mildly spiced chutney, pictured.",
   "time": {
     "prep": "10 MINS, PLUS SOAKING TIME IF USING DRIED COCONUT FLAKES",
-    "cook": "2 MINS"
+    "cook": "2 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME IF USING DRIED COCONUT FLAKES2 MINS"
   },
   "ingredients": [
     {
@@ -86,6 +87,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Base Sauces"
+  },
+  "cuisine": "Indian"
 }

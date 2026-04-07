@@ -371,6 +371,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts"
+  },
+  "cuisine": "Other"
 }

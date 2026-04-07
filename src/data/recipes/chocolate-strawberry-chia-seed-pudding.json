@@ -432,6 +432,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Breakfast"
+  },
+  "cuisine": "Other"
 }

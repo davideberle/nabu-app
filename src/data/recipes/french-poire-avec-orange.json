@@ -47,5 +47,12 @@
   ],
   "time": {
     "total": 40
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": ""
+  },
+  "cuisine": "Mediterranean"
 }

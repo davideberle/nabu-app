@@ -8,7 +8,11 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "servings": "6 servings",
-  "time": "10 minutes",
+  "time": {
+    "prep": 24,
+    "cook": 40,
+    "total": 64
+  },
   "intro": "I spent five years of my childhood in Libya and have a deep fondness for Libyan people, for Benghazi (the city we lived in), and for Libyan food. I just had to introduce you to Libyan mbakbaka, which is a spicy pasta dish made with either chicken or red meat and plenty of hot peppers. It’s called mbakbaka because it is typically served with a lot of liquid, and as this liquid simmers in the final stages of cooking, it creates bubbles and makes a “bak bak bak” sound. The pasta is cooked in the same pot with the chicken, tomato paste, and spices, which helps the pasta absorb the umami from the chicken. Some versions use a common yellow Libyan spice mix called bzaar. Some Libyan families add potatoes or peas and carrots to increase the nutritional value.",
   "ingredients": [
     {
@@ -70,6 +74,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Main Dishes: 1 Hour"
+  },
+  "cuisine": "Middle Eastern"
 }

@@ -65,7 +65,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/white-chocolate-and-matcha-mousse-pudding.jpg"
+  "image": "/recipes/white-chocolate-and-matcha-mousse-pudding.jpg",
+  "cuisine": "Other"
 }

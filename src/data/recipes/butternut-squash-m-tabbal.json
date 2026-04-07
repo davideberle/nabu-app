@@ -112,5 +112,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/butternut-squash-m-tabbal.jpg"
+  "image": "/recipes/butternut-squash-m-tabbal.jpg",
+  "cuisine": "Middle Eastern"
 }

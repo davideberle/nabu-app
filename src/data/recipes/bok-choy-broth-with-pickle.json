@@ -339,7 +339,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Soups"
   },
-  "image": "/recipes/bok-choy-broth-with-pickle.jpg"
+  "image": "/recipes/bok-choy-broth-with-pickle.jpg",
+  "cuisine": "Chinese"
 }

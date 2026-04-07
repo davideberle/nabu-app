@@ -176,5 +176,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/meat-dumplings-in-yogurt-sauce.jpg"
+  "image": "/recipes/meat-dumplings-in-yogurt-sauce.jpg",
+  "cuisine": "Middle Eastern"
 }

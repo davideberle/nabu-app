@@ -45,7 +45,9 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "chapter": "Desserts"
   },
-  "image": "/recipes/chocolate-avocado-buttercream.jpg"
+  "image": "/recipes/chocolate-avocado-buttercream.jpg",
+  "cuisine": "Other"
 }

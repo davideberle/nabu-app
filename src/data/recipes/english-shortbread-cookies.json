@@ -33,7 +33,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/english-shortbread-cookies.jpg"
+  "image": "/recipes/english-shortbread-cookies.jpg",
+  "cuisine": "Italian"
 }

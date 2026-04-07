@@ -65,7 +65,9 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "chapter": "Main Dishes"
   },
-  "image": "/recipes/balsamic-chicken.jpg"
+  "image": "/recipes/balsamic-chicken.jpg",
+  "cuisine": "Italian"
 }

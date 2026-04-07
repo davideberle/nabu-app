@@ -7,7 +7,11 @@
     "chapter": "Pork and Beef"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 32,
+    "total": 52
+  },
   "intro": "Vietnamese cooks love thin pork chops because the chops pick up seasonings quickly, cook fast, and taste great—perfect for a weeknight meal. Sold at many supermarkets, the skinny chops have either a curved rib bone or T-shaped bone. An edge of fat and marbling signal good flavor. You can marinate the pork many ways, but lemongrass is a signature Viet flavor.",
   "ingredients": [
     {
@@ -61,6 +65,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Pork and Beef"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -378,6 +378,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Breakfast"
+  },
+  "cuisine": "Other"
 }

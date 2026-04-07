@@ -99,5 +99,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/marinated-eggplant-with-tahini-and-oregano.jpg"
+  "image": "/recipes/marinated-eggplant-with-tahini-and-oregano.jpg",
+  "cuisine": "Middle Eastern"
 }

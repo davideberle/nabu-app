@@ -67,9 +67,11 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Accompaniments"
   },
   "time": {
     "total": 100
-  }
+  },
+  "cuisine": "Indian"
 }

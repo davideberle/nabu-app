@@ -7,7 +7,11 @@
     "chapter": "Salads & Sides"
   },
   "servings": "4 servings",
-  "time": "10 minutes, plus 2 hours chilling",
+  "time": {
+    "prep": 15,
+    "cook": 0,
+    "total": 15
+  },
   "intro": "Bulgur is a common grain in Iraq and across the Middle East, often cooked into a pilaf as a replacement for rice. I absolutely love the nutty flavor of bulgur and believe that it is underrated in the Western world. It’s also a healthy grain: it’s more nutritious than rice and has a higher fiber content than even brown rice. Since it is what I call a “sturdy” grain (it’s hard to mess up and holds up quite well to moisture), it is perfect to use in salads. I make this salad on a regular rotation; my husband and I enjoy it as part of our meal-prepped lunches. The almonds and raisins are absolute musts. Make sure you let it chill in the fridge for a few hours if you can, so it’ll be extra delicious.",
   "ingredients": [
     {
@@ -66,6 +70,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
-  }
+    ],
+    "chapter": "Salads & Sides"
+  },
+  "cuisine": "Middle Eastern"
 }

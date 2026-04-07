@@ -58,6 +58,13 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "time": {
+    "prep": 15,
+    "cook": 30,
+    "total": 45
+  },
+  "cuisine": "Chinese"
 }

@@ -7,7 +7,11 @@
     "chapter": "Salads and Vegetable Sides"
   },
   "servings": "serves 4",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 14,
+    "cook": 32,
+    "total": 46
+  },
   "intro": "I typically roast whole eggplant on the stove top or an outdoor grill, remove the charred skin, and serve the soft, slightly smoky flesh with green onion oil and a dipping sauce of fish sauce and garlic, a Viet classic called cà tím nướng mỡhành. When I learned that eggplant skin is loaded with antioxidants, I began thinking about how I could tweak the popular side dish to retain the skin.",
   "ingredients": [
     {
@@ -49,6 +53,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Salads and Vegetable Sides"
+  },
+  "cuisine": "Southeast Asian"
 }

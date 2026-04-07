@@ -10,7 +10,8 @@
   "intro": "I grew up eating fish and bammy (cassava flatbreads) at the seafood restaurants at Hellshire Beach, on the south coast of Jamaica. This tribute isn’t fish and bammy, but it’s bammy fried and coated in a nori salt, which gives you that ocean flavour. Most vegetables taste better charred and aubergine (eggplant) is a true testament to that. This aubergine dip is truly something special and paired with the bammy, it’s a wonderful tribute indeed.",
   "time": {
     "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
-    "cook": "20 MINUTES"
+    "cook": "20 MINUTES",
+    "total": "15 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -110,6 +111,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Sides"
+  },
+  "cuisine": "Caribbean"
 }

@@ -10,7 +10,8 @@
   "intro": "I must make this recipe once a week in the summer. You only need to throw it on the barbecue for a few minutes and, voilà, you’ve got yourself a dinner that not only tastes great but looks amazing. My fishmonger gets wild sea bass and bream for me, which is a lot better than the farmed stuff. It’s a little more expensive, but when you’re making a fancy meal like this it’s worth every penny.",
   "time": {
     "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -74,6 +75,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Street Food"
+  },
+  "cuisine": "Indian"
 }

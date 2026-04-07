@@ -10,7 +10,8 @@
   "intro": "OK then… there’s bunny chow, that famous curry dish from South Africa, and then there’s this bunny chow, which I learned from the then-head chef at Scarfs Bar at the Rosewood London. My friend Palash Mitra has since moved on to chef at other restaurants around the world, but I bet he still makes this amazing bunny chow. It’s simply too good to leave off the menu. For best results, be sure to source some good French sourdough rolls. Any crusty rolls will do, but when I’m making a curry like this, I like to use the best I can find. I usually serve this with a simple green salad or sometimes I cook up some vegetable bhajis and serve them on the side on top of crisp chicory leaves.",
   "time": {
     "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "1¾ HOURS"
+    "cook": "1¾ HOURS",
+    "total": "15 MINS, PLUS MARINATING TIME1¾ HOURS"
   },
   "ingredients": [
     {
@@ -105,6 +106,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Curries"
+  },
+  "cuisine": "Indian"
 }

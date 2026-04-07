@@ -33,6 +33,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Bowls, Puddings & Grains"
+  },
+  "cuisine": "Other"
 }

@@ -7,7 +7,11 @@
     "chapter": "Eggs, Tofu, and Tempeh"
   },
   "servings": "serves 4",
-  "time": "TAKES 20 MINUTES",
+  "time": {
+    "prep": 10,
+    "cook": 32,
+    "total": 42
+  },
   "intro": "I grew up with tofu, but for people who are new to it, cooking with tofu can be challenging. What if it falls apart? What if it’s bland? Don’t worry, because tofu is forgiving. It takes on big flavors super-well, so season with abandon!",
   "ingredients": [
     {
@@ -45,6 +49,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Eggs, Tofu, and Tempeh"
+  },
+  "cuisine": "Southeast Asian"
 }

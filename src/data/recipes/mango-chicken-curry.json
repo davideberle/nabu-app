@@ -10,7 +10,8 @@
   "intro": "My friend Richard Sayce (AKA Misty Ricardo) records popular YouTube videos demonstrating his take on BIR cooking, and he sent me this recipe to try. This is my interpretation of it. It’s spicy and sweet. Kids love it too, but you might want to omit or reduce the amount of fresh chillies and chilli powder. Richard adds large chunks of fresh mango to this curry, but I opted for small chunks. It’s a personal thing, so do what you think will taste best.",
   "time": {
     "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
-    "cook": "15 MINS"
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN15 MINS"
   },
   "ingredients": [
     {
@@ -83,6 +84,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Biryanis & Rice"
+  },
+  "cuisine": "Indian"
 }

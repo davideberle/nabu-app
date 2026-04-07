@@ -83,6 +83,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
-  }
+    ],
+    "chapter": "Fish"
+  },
+  "cuisine": "Middle Eastern"
 }

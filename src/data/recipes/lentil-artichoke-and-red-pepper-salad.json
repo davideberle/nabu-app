@@ -61,5 +61,12 @@
   "image": "/recipes/lentil-artichoke-and-red-pepper-salad.jpg",
   "time": {
     "total": 45
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grains & Pulses"
+  },
+  "cuisine": "Other"
 }

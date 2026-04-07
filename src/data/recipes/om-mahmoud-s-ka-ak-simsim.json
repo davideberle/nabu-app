@@ -8,7 +8,11 @@
     "chapter": "Desserts & Drinks"
   },
   "servings": "25 cookies",
-  "time": "PREP TIME 30 minutes",
+  "time": {
+    "prep": 14,
+    "cook": 48,
+    "total": 62
+  },
   "intro": "Ka’ak are Iraqi cookies commonly served for guests at teatime. When I was writing this book, my sister Heba was a newlywed. That’s when Khala Om Mahmoud entered our lives (as my sister’s mother-in-law), and when we first tasted her delicious ka’ak simsim. Every time she would visit us or we would visit her, without fail, there would be a large platter of these cookies. And without fail, we would pour a cup of chai, then grab one. Then another. And another. When she sent me her recipe, I was so surprised at how simple they were to make, only requiring a few ingredients. These are the perfect tea cookies, slightly crispy, with a delicious depth of flavor from the sesame and a beautiful hint of cardamom.",
   "ingredients": [
     {
@@ -54,6 +58,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
-  }
+    ],
+    "chapter": "Desserts & Drinks"
+  },
+  "cuisine": "Middle Eastern"
 }

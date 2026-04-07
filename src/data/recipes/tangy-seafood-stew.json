@@ -7,7 +7,11 @@
     "chapter": "Soups"
   },
   "servings": "serves 4",
-  "time": "TAKES 45 MINUTES",
+  "time": {
+    "prep": 20,
+    "cook": 60,
+    "total": 80
+  },
   "intro": "Refreshing and loaded with seafood, vegetables, and herbs, canh chua is a classic that evokes the bounty and easygoing rhythm of the Mekong Delta region. I used to think of it as a soup but after sharing a hearty pot with fishermen, I realized that it was more like a Viet-style bouillabaisse seafood stew. It’s traditionally made with items such as tamarind, taro stem, and rice paddy herb (ngò om), which require a trip to an Asian market. But this streamlined version, prepared with supermarket ingredients, is a knockout.",
   "ingredients": [
     {
@@ -88,6 +92,8 @@
   "category": {
     "dish_type": [
       "soup"
-    ]
-  }
+    ],
+    "chapter": "Soups"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -74,5 +74,12 @@
   "image": "/recipes/chicken-caesar-salad-with-polenta-croutons.jpg",
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Poultry & Meat"
+  },
+  "cuisine": "Other"
 }

@@ -116,7 +116,9 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "chapter": "Sides"
   },
-  "image": "/recipes/grilled-seitan-vermicelli-noodle-salad.jpg"
+  "image": "/recipes/grilled-seitan-vermicelli-noodle-salad.jpg",
+  "cuisine": "Southeast Asian"
 }
