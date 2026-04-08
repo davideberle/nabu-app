@@ -34,6 +34,15 @@ const initialTodos: Todo[] = [
     completed: false,
     createdAt: "2026-04-04T14:39:00Z",
   },
+  {
+    id: "3",
+    title: "Review deeper backup strategy",
+    description: "Decide whether to back up nested project repos and other state beyond the nightly root-workspace backup.",
+    category: "work",
+    priority: "medium",
+    completed: false,
+    createdAt: "2026-04-08T06:10:00Z",
+  },
 ];
 
 const categoryEmoji = {
