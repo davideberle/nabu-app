@@ -43,6 +43,15 @@ const initialTodos: Todo[] = [
     completed: false,
     createdAt: "2026-04-08T06:10:00Z",
   },
+  {
+    id: "4",
+    title: "Document macOS Local Network permission root cause",
+    description: "Write down that denying Local Network access for Terminal/Homebrew Node on the Mac mini broke Node LAN access, Sonos discovery, and the voice assistant debugging path.",
+    category: "work",
+    priority: "medium",
+    completed: false,
+    createdAt: "2026-04-08T17:36:00Z",
+  },
 ];
 
 const categoryEmoji = {
