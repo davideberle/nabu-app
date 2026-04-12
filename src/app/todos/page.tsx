@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 type Todo = {
   id: string;
@@ -13,46 +13,6 @@ type Todo = {
   completed: boolean;
   createdAt: string;
 };
-
-// Initial todos from David
-const initialTodos: Todo[] = [
-  {
-    id: "1",
-    title: "Check kids' next doctor checkup",
-    description: "Find out when the next scheduled checkup is",
-    category: "family",
-    priority: "medium",
-    completed: false,
-    createdAt: "2026-04-04T14:39:00Z",
-  },
-  {
-    id: "2",
-    title: "Call Gundeli Velos to fix e-bike",
-    description: "E-bike needs repair",
-    category: "home",
-    priority: "medium",
-    completed: false,
-    createdAt: "2026-04-04T14:39:00Z",
-  },
-  {
-    id: "3",
-    title: "Review deeper backup strategy",
-    description: "Decide whether to back up nested project repos and other state beyond the nightly root-workspace backup.",
-    category: "work",
-    priority: "medium",
-    completed: false,
-    createdAt: "2026-04-08T06:10:00Z",
-  },
-  {
-    id: "4",
-    title: "Document macOS Local Network permission root cause",
-    description: "Write down that denying Local Network access for Terminal/Homebrew Node on the Mac mini broke Node LAN access, Sonos discovery, and the voice assistant debugging path.",
-    category: "work",
-    priority: "medium",
-    completed: false,
-    createdAt: "2026-04-08T17:36:00Z",
-  },
-];
 
 const categoryEmoji = {
   family: "👨‍👩‍👧‍👦",
@@ -68,15 +28,53 @@ const priorityColor = {
 };
 
 export default function TodosPage() {
-  const [todos, setTodos] = useState<Todo[]>(initialTodos);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const toggleTodo = (id: string) => {
+  const fetchTodos = useCallback(async () => {
+    try {
+      const res = await fetch("/api/todos");
+      if (!res.ok) throw new Error("Failed to load todos");
+      const data = await res.json();
+      setTodos(data);
+      setError(null);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTodos();
+  }, [fetchTodos]);
+
+  const toggleTodo = async (id: string) => {
+    const todo = todos.find((t) => t.id === id);
+    if (!todo) return;
+
+    // Optimistic update
     setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
+
+    try {
+      const res = await fetch(`/api/todos/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ completed: !todo.completed }),
+      });
+      if (!res.ok) throw new Error("Failed to update todo");
+    } catch {
+      // Revert on failure
+      setTodos((prev) =>
+        prev.map((t) =>
+          t.id === id ? { ...t, completed: todo.completed } : t
+        )
+      );
+    }
   };
 
   const filteredTodos = todos.filter((todo) => {
@@ -104,9 +102,11 @@ export default function TodosPage() {
               Todos
             </h1>
           </div>
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
-            {activeTodos} active
-          </span>
+          {!loading && (
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {activeTodos} active
+            </span>
+          )}
         </div>
       </header>
 
@@ -131,8 +131,18 @@ export default function TodosPage() {
 
       {/* Todo List */}
       <main className="max-w-5xl mx-auto px-4 py-6">
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-sm">
+            {error}
+          </div>
+        )}
+
         <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-          {filteredTodos.length === 0 ? (
+          {loading ? (
+            <div className="p-8 text-center text-zinc-500 dark:text-zinc-400">
+              Loading...
+            </div>
+          ) : filteredTodos.length === 0 ? (
             <div className="p-8 text-center text-zinc-500 dark:text-zinc-400">
               No todos
             </div>
