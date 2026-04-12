@@ -188,7 +188,12 @@ export function getCookbooks(): { name: string; slug: string; count: number; aut
       author: data.author,
       cover: COOKBOOK_COVERS[name]
     }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a, b) => {
+      // Pin "My Recipes" to the front
+      if (a.slug === 'my-recipes') return -1;
+      if (b.slug === 'my-recipes') return 1;
+      return b.count - a.count;
+    });
 }
 
 // Get all unique cuisines with counts

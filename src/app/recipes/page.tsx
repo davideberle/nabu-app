@@ -57,6 +57,31 @@ export default function RecipesPage() {
           <p className="text-xs text-stone-400 mt-2 text-center">Search coming soon</p>
         </div>
 
+        {/* My Recipes quick access */}
+        <Link
+          href="/recipes/cookbook/my-recipes"
+          className="group block mb-8 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="flex items-stretch">
+            <div className="relative w-28 sm:w-36 shrink-0">
+              <Image
+                src="/cookbooks/my-recipes.jpg"
+                alt="My Recipes"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="flex flex-col justify-center px-5 py-4">
+              <h2 className="font-serif text-lg text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300">
+                My Recipes
+              </h2>
+              <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                Your personal collection · {cookbooks.find(c => c.slug === 'my-recipes')?.count ?? 0} recipes
+              </p>
+            </div>
+          </div>
+        </Link>
+
         {/* Quick filter pills */}
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4">
           <Link
