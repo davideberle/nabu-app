@@ -40,5 +40,8 @@
     ],
     "chapter": "Soups"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "winter-saffron-gratin",
-  "name": "WINTER SAFFRON GRATIN",
+  "name": "Winter Saffron Gratin",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -79,5 +79,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

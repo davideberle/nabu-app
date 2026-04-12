@@ -90,5 +90,8 @@
     ],
     "chapter": "Starters & Snacks"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

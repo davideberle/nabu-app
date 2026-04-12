@@ -1,6 +1,6 @@
 {
   "id": "tomatoes-and-garlic",
-  "name": "TOMATOES AND GARLIC",
+  "name": "Tomatoes and Garlic",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

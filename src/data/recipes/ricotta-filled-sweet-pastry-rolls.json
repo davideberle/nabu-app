@@ -94,5 +94,8 @@
     ],
     "chapter": "Summer"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

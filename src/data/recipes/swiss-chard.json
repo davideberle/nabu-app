@@ -1,6 +1,6 @@
 {
   "id": "swiss-chard",
-  "name": "Swiss chard.",
+  "name": "Red Lentil and Swiss Chard Soup",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -58,5 +58,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

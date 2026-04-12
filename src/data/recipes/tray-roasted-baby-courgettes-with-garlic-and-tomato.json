@@ -45,6 +45,7 @@
   ],
   "image": "/recipes/tray-roasted-baby-courgettes-with-garlic-and-tomato.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -57,5 +58,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

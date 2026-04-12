@@ -116,5 +116,8 @@
     ],
     "chapter": "Main Dishes: 30 Minutes"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

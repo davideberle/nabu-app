@@ -1,6 +1,6 @@
 {
   "id": "chicken-fajitas-19-minutes",
-  "name": "CHICKEN FAJITAS (19 minutes)",
+  "name": "Chicken Fajitas",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -81,5 +81,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

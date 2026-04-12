@@ -68,5 +68,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/brooklyn-style-pizza.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

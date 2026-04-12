@@ -1,6 +1,6 @@
 {
   "id": "kale-and-cheese-pikelets",
-  "name": "KALE AND CHEESE PIKELETS",
+  "name": "Kale and Cheese Pikelets",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -79,5 +79,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

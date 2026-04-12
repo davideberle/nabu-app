@@ -130,5 +130,8 @@
     "dietary": []
   },
   "image": "/recipes/chard-lentil-and-preserved-lemon-soup.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -34,10 +34,6 @@
     {
       "item": "smoked salmon, cut into thin strips",
       "amount": "1/4 lb."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -60,5 +56,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

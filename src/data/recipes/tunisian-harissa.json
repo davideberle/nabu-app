@@ -68,6 +68,7 @@
     "Transfer the harissa to a 2-cup (480 ml) container with an airtight lid. Cover the top with an even layer of oil, seal the lid, and store in the refrigerator and use within 2 to 3 weeks. Always use a clean utensil when serving and replenish the olive oil layer with each use."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -77,5 +78,6 @@
     ],
     "chapter": "Condiments & Dips"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/tunisian-harissa.jpg"
 }

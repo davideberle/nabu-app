@@ -55,5 +55,10 @@
     ],
     "chapter": "More Than Greek Salad"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

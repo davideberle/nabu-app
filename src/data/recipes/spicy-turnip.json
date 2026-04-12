@@ -1,6 +1,6 @@
 {
   "id": "spicy-turnip",
-  "name": "SPICY TURNIP",
+  "name": "Spicy Turnip",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -81,5 +81,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "curd-and-currants",
-  "name": "CURD AND CURRANTS",
+  "name": "Curd and Currants",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -64,5 +64,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

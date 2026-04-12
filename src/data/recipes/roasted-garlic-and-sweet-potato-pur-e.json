@@ -50,6 +50,7 @@
   ],
   "image": "/recipes/roasted-garlic-and-sweet-potato-pur-e.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -61,5 +62,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

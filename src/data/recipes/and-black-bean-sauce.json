@@ -1,6 +1,6 @@
 {
   "id": "and-black-bean-sauce",
-  "name": "AND BLACK BEAN SAUCE",
+  "name": "Sizzling Beef with Scallions and Black Bean Sauce",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -81,5 +81,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian"
+  ]
 }

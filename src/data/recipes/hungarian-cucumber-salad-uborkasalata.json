@@ -1,0 +1,45 @@
+{
+  "id": "hungarian-cucumber-salad-uborkasalata",
+  "name": "Hungarian Cucumber Salad (Uborkasaláta)",
+  "source": {
+    "cookbook": "My Recipes",
+    "author": "Budapest Cooking Class",
+    "chapter": "Salads & Sides",
+    "publication": "budapestcookingclass.com"
+  },
+  "cuisine": "Hungarian",
+  "category": "Salad",
+  "servings": "4 servings",
+  "time": {
+    "prep": 5,
+    "total": 25
+  },
+  "intro": "A classic Hungarian side salad of paper-thin cucumber slices, salted and squeezed dry, then dressed in a light sweet-sour vinaigrette with garlic and paprika. The perfect cool accompaniment to rich mains like paprikás csirke.",
+  "ingredients": [
+    { "amount": "2", "item": "English cucumbers" },
+    { "amount": "1 tbsp", "item": "salt" },
+    { "amount": "1 cup", "item": "cold water" },
+    { "amount": "3 tbsp", "item": "sugar" },
+    { "amount": "4 tbsp", "item": "white vinegar (5%)" },
+    { "amount": "1", "item": "clove garlic, minced" },
+    { "amount": "1 pinch", "item": "sweet paprika powder" },
+    { "amount": "1 pinch", "item": "ground black pepper" }
+  ],
+  "method": [
+    "Using a mandoline slicer, slice both cucumbers as thinly as possible into a bowl. Add the salt and mix the cucumber slices to lightly and evenly coat them. Let sit for 15 minutes to draw out the water.",
+    "Take large handfuls of cucumbers and, with your hands clenched, squeeze out as much liquid as you can. Place the squeezed cucumbers in a clean bowl. Discard the liquid.",
+    "In a cup, combine the sugar, vinegar, and 1 cup of cold water. Stir until the sugar is dissolved. Pour this mixture over the squeezed cucumbers and mix thoroughly.",
+    "Add the minced garlic, sprinkle with paprika powder and ground black pepper. Serve chilled."
+  ],
+  "dietary": ["vegan", "vegetarian", "gluten-free"],
+  "tags": ["Salad", "Side Dish", "Hungarian", "Summer", "Quick"],
+  "mealRole": "salad",
+  "servingSuggestions": [
+    {
+      "name": "Ungarisches Paprikahuhn",
+      "recipeId": "ungarisches-paprikahuhn",
+      "role": "side",
+      "notes": "The traditional pairing — this salad cuts through the rich paprika sauce"
+    }
+  ]
+}

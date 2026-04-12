@@ -99,12 +99,15 @@
     "Heat the oil in a large frying pan over a medium–high heat. Add the cinnamon, cardamom seeds and cloves and let them infuse into the oil for about 30 seconds. Add the onion and fry for about 5 minutes until soft and translucent. Stir in the garlic and ginger paste and the ground almonds and stir it all up to simmer for about 30 seconds. Toss in the green (bell) pepper and cook for a further minute.",
     "Add the mixed powder and chilli powder and give it a good stir. Add the tomato purée and about half the base curry sauce and bring to a simmer, only stirring if it is sticking to the pan. Stir in the tamarind concentrate and simmer over a medium–high heat, adding more base sauce as it simmers down. Be sure to scrape any sauce that caramelizes to the sides of the pan into the sauce for even more flavour. Stir in the chicken tikka and cook until the chicken is heated through – this should take no more than about 2 minutes. Stir in the banana, raisins (if using) and smooth mango chutney and continue to simmer until you are happy with the consistency. If too saucy, let it cook down; if too dry, add a bit more sauce or stock. To finish, whisk in the yoghurt, 1 tablespoon at a time. Season with salt and garnish with the coriander (cilantro)."
   ],
-  "image": null,
+  "image": "/recipes/kashmiri-chicken.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Biryanis & Rice"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

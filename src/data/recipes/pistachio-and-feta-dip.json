@@ -55,6 +55,7 @@
   ],
   "image": "/recipes/pistachio-and-feta-dip.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -66,5 +67,5 @@
     ],
     "chapter": "Mezze & sharing plates"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

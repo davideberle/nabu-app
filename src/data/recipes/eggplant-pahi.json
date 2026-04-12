@@ -1,6 +1,6 @@
 {
   "id": "eggplant-pahi",
-  "name": "EGGPLANT PAHI",
+  "name": "Eggplant Pahi",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -88,5 +88,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

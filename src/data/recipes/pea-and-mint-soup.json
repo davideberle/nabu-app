@@ -1,6 +1,6 @@
 {
   "id": "pea-and-mint-soup",
-  "name": "PEA AND MINT SOUP",
+  "name": "Pea and Mint Soup",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -87,5 +87,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

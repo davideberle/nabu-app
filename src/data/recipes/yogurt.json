@@ -1,6 +1,6 @@
 {
   "id": "yogurt",
-  "name": "YOGURT",
+  "name": "Yogurt",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -63,5 +63,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

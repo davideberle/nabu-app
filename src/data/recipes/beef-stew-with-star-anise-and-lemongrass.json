@@ -93,5 +93,8 @@
     ],
     "chapter": "Pork and Beef"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "seaweed-ginger-and-carrot-salad",
-  "name": "SEAWEED, GINGER, AND CARROT SALAD",
+  "name": "Seaweed, Ginger, and Carrot Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

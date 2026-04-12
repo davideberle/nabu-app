@@ -1,6 +1,6 @@
 {
   "id": "results",
-  "name": "results.",
+  "name": "Curry Salmon with Mango Salsa",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -63,5 +63,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

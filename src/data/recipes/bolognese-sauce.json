@@ -1,6 +1,6 @@
 {
   "id": "bolognese-sauce",
-  "name": "BOLOGNESE SAUCE",
+  "name": "Bolognese Sauce",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -66,5 +66,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/bolognese-sauce.jpg"
 }

@@ -70,5 +70,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ],
+  "image": "/recipes/pasta-alla-norma.jpg"
 }

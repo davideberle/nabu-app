@@ -1,6 +1,6 @@
 {
   "id": "turn-off-the-heat-and-serve-in-a",
-  "name": "Turn off the heat and serve in a",
+  "name": "Khao Niew Mamuang (Mango Sticky Rice)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -57,5 +57,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "molasses-and-orange-zest",
-  "name": "MOLASSES AND ORANGE ZEST",
+  "name": "Molasses and Orange Zest",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -61,5 +61,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

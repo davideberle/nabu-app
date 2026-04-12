@@ -70,5 +70,8 @@
     "chapter": "Main Dishes"
   },
   "image": null,
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -61,5 +61,10 @@
     "cook": 30,
     "total": 45
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

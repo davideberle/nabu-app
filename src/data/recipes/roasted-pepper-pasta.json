@@ -38,10 +38,6 @@
     {
       "item": "Parmesan cheese, to serve",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -65,5 +61,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

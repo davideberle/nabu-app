@@ -100,5 +100,8 @@
     ],
     "chapter": "Biryanis & Rice"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

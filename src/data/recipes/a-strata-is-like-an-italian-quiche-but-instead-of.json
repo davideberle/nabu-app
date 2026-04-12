@@ -1,6 +1,6 @@
 {
   "id": "a-strata-is-like-an-italian-quiche-but-instead-of",
-  "name": "A strata is like an italian quiche, but instead of",
+  "name": "Asparagus, Ham, and Mushroom Strata",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -84,5 +84,6 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

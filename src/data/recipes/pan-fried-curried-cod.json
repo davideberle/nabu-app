@@ -1,6 +1,6 @@
 {
   "id": "pan-fried-curried-cod",
-  "name": "PAN-FRIED CURRIED COD",
+  "name": "Pan-fried Curried Cod",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -48,5 +48,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

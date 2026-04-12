@@ -1,6 +1,6 @@
 {
   "id": "this-is-what-s-in-them-the",
-  "name": "THIS IS WHAT’S IN THEM—THE",
+  "name": "This is What’s in Them—the",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -38,5 +38,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

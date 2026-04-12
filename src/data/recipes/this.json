@@ -1,6 +1,6 @@
 {
   "id": "this",
-  "name": "This",
+  "name": "Cherry Tomato Sauce with Cheat's Fresh Pasta",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -75,5 +75,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

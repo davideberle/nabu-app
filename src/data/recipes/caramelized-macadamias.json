@@ -1,6 +1,6 @@
 {
   "id": "caramelized-macadamias",
-  "name": "CARAMELIZED MACADAMIAS",
+  "name": "Caramelized Macadamias",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -64,5 +64,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "a-healthier-full-monty",
-  "name": "A HEALTHIER FULL MONTY",
+  "name": "A Healthier Full Monty",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -61,5 +61,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

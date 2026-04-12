@@ -57,5 +57,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/spaghetti-alla-nerano.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

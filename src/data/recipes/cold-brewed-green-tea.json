@@ -29,5 +29,10 @@
     ],
     "chapter": "Smoothies, Mylkshakes & Drinks"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

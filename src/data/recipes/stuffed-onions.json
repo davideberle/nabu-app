@@ -93,5 +93,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ],
+  "image": "/recipes/stuffed-onions.jpg"
 }

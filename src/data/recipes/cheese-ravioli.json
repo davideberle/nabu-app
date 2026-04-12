@@ -57,10 +57,6 @@
     {
       "item": "salt",
       "amount": "1 1/2 tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -98,5 +94,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ],
+  "image": "/recipes/cheese-ravioli.jpg"
 }

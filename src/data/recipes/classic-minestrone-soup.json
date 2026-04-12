@@ -81,5 +81,8 @@
     "chapter": "Soups & Stews"
   },
   "image": "/recipes/classic-minestrone-soup.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

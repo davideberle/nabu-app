@@ -85,12 +85,15 @@
     "Allow the minced meat to cook through, then pour in the spice stock or water and simmer over a low heat for about 20 minutes. You may need to add a little more water while the ingredients all get to know each other. The finished keema should be moist but not saucy, and if you’d like to cook it for longer for a more intense flavour, add more water accordingly to prevent it from drying out.",
     "Remove the bay leaves, cinnamon stick and cardamom pods. Stir in the dried fenugreek leaves (kasoori methi) and coriander (cilantro) and season with salt. You’ll probably find it tastes great, so be careful not to snack on it before making your keema curry or using it in your samosas! I find this quite difficult at times."
   ],
-  "image": null,
+  "image": "/recipes/pre-cooked-lamb-keema.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Accompaniments"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

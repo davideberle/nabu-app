@@ -1,6 +1,6 @@
 {
   "id": "this-dish-is-very-flexible",
-  "name": "This dish is very flexible.",
+  "name": "Coconut Curry Vegetable Stir-Fry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -80,5 +80,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

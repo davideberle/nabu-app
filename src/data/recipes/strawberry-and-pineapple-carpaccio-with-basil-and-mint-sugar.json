@@ -38,6 +38,7 @@
   ],
   "image": "/recipes/strawberry-and-pineapple-carpaccio-with-basil-and-mint-sugar.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -52,5 +53,5 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

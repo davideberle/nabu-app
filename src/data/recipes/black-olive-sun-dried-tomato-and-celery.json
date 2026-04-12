@@ -1,6 +1,6 @@
 {
   "id": "black-olive-sun-dried-tomato-and-celery",
-  "name": "BLACK OLIVE, SUN-DRIED TOMATO, AND CELERY",
+  "name": "Black Olive, Sun-dried Tomato, and Celery",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -120,5 +120,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

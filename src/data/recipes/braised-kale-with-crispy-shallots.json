@@ -1,6 +1,6 @@
 {
   "id": "braised-kale-with-crispy-shallots",
-  "name": "BRAISED KALE WITH CRISPY SHALLOTS",
+  "name": "Braised Kale with Crispy Shallots",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -65,5 +65,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

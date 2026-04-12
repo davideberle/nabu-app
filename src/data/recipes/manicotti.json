@@ -73,5 +73,9 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/manicotti.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

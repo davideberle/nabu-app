@@ -1,6 +1,6 @@
 {
   "id": "nut-tart",
-  "name": "NUT TART",
+  "name": "Nut Tart",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -124,5 +124,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian"
+  ]
 }

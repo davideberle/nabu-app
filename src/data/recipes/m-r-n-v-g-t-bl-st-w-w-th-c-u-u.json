@@ -121,5 +121,9 @@
     ],
     "chapter": "Main Dishes"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

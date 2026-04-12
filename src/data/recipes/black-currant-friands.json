@@ -1,6 +1,6 @@
 {
   "id": "black-currant-friands",
-  "name": "BLACK CURRANT FRIANDS",
+  "name": "Black Currant Friands",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -67,5 +67,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

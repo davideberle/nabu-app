@@ -1,6 +1,6 @@
 {
   "id": "pictured-on-this-page-bottom",
-  "name": "Pictured on this page, bottom",
+  "name": "Coconut Red Lentil Soup",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "lemon-and-curry-leaf-rice",
-  "name": "LEMON AND CURRY LEAF RICE",
+  "name": "Lemon and Curry Leaf Rice",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -43,5 +43,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

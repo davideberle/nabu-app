@@ -152,5 +152,8 @@
     "chapter": "Main Dishes: Worth the Effort"
   },
   "subtitle": "STUFFED ONIONS",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

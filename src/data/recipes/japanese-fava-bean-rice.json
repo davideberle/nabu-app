@@ -48,5 +48,8 @@
     ],
     "chapter": "Rice"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

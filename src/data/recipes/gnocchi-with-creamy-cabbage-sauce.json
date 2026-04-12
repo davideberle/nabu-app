@@ -55,5 +55,8 @@
     "chapter": "Sides"
   },
   "image": "/recipes/gnocchi-with-creamy-cabbage-sauce.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

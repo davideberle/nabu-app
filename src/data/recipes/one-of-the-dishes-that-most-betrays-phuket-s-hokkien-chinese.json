@@ -1,6 +1,6 @@
 {
   "id": "one-of-the-dishes-that-most-betrays-phuket-s-hokkien-chinese",
-  "name": "One of the dishes that most betrays Phuket’s Hokkien Chinese",
+  "name": "Moo Hong (Phuket-Style Braised Pork Belly)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -66,5 +66,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

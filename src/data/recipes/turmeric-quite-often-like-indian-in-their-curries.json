@@ -1,6 +1,6 @@
 {
   "id": "turmeric-quite-often-like-indian-in-their-curries",
-  "name": "turmeric quite often like Indian in their curries.",
+  "name": "Thai Mushroom and Vegetable Curry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -66,5 +66,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

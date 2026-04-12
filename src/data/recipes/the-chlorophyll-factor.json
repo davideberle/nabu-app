@@ -97,5 +97,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

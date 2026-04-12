@@ -111,5 +111,8 @@
     ],
     "chapter": "Savory Pitas and Pies"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegetarian"
+  ]
 }

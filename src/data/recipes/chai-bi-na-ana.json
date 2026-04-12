@@ -36,6 +36,7 @@
     "Serve with sugar for sweetening."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -45,5 +46,6 @@
     ],
     "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/chai-bi-na-ana.jpg"
 }

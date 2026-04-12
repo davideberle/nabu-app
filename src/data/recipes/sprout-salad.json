@@ -1,6 +1,6 @@
 {
   "id": "sprout-salad",
-  "name": "SPROUT SALAD",
+  "name": "Sprout Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -72,5 +72,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

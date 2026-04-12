@@ -100,5 +100,8 @@
     "dietary": []
   },
   "image": "/recipes/braised-fava-beans-with-olive-oil-and-lemon.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

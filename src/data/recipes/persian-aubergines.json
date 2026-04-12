@@ -40,6 +40,7 @@
   ],
   "image": "/recipes/persian-aubergines.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {
@@ -53,5 +54,5 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

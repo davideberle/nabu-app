@@ -1,6 +1,6 @@
 {
   "id": "chocolate-chip",
-  "name": "CHOCOLATE CHIP",
+  "name": "Chocolate Chip",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -72,5 +72,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

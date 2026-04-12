@@ -1,6 +1,6 @@
 {
   "id": "chicken-tikka-masala",
-  "name": "CHICKEN TIKKA MASALA",
+  "name": "Chicken Tikka Masala",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -88,5 +88,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/chicken-tikka-masala.jpg"
 }

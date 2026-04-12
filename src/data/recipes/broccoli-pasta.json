@@ -53,5 +53,9 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/broccoli-pasta.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

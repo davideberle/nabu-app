@@ -57,6 +57,7 @@
   ],
   "image": "/recipes/persian-herb-rice.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -68,5 +69,5 @@
     ],
     "chapter": "Breads & grains"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

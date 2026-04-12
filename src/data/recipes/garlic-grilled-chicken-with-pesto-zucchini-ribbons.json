@@ -102,5 +102,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "gluten-free"
+  ]
 }

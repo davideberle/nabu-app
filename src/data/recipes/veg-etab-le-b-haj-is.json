@@ -1,6 +1,6 @@
 {
   "id": "veg-etab-le-b-haj-is",
-  "name": "VEG ETAB LE B HAJ IS",
+  "name": "Vegetable Bhajis",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -62,5 +62,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -41,5 +41,9 @@
     ],
     "chapter": "Sauces & Dressings"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

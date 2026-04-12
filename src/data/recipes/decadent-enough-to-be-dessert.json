@@ -1,6 +1,6 @@
 {
   "id": "decadent-enough-to-be-dessert",
-  "name": "Decadent enough to be dessert,",
+  "name": "Chocolate-Stuffed French Toast",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -67,5 +67,9 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegetarian"
+  ]
 }

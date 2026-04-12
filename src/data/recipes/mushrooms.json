@@ -1,6 +1,6 @@
 {
   "id": "mushrooms",
-  "name": "MUSHROOMS",
+  "name": "Mushrooms",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -85,5 +85,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

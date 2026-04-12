@@ -1,6 +1,6 @@
 {
   "id": "parties-and-a-great-appetizer-serve-with-celery-and-enjoy",
-  "name": "parties and a great appetizer. Serve with celery and enjoy!",
+  "name": "Curried Cream Cheese Celery Bites",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -49,5 +49,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

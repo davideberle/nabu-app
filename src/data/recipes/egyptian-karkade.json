@@ -36,6 +36,7 @@
     "Serve with ice cubes (if using) and garnish with mint leaves."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -45,5 +46,6 @@
     ],
     "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/egyptian-karkade.jpg"
 }

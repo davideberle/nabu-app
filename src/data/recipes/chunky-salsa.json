@@ -1,6 +1,6 @@
 {
   "id": "chunky-salsa",
-  "name": "CHUNKY SALSA",
+  "name": "Chunky Salsa",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -51,5 +51,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

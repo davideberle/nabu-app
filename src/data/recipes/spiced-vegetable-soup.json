@@ -103,6 +103,7 @@
   ],
   "image": "/recipes/spiced-vegetable-soup.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -114,5 +115,5 @@
     ],
     "chapter": "Soups, stews & tagines"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

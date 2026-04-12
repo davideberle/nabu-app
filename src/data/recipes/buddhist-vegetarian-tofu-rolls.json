@@ -97,5 +97,9 @@
     ],
     "chapter": "Tofu"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

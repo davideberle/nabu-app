@@ -35,5 +35,8 @@
     ],
     "chapter": "Pasta Primer"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

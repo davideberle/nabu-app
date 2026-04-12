@@ -78,10 +78,6 @@
     {
       "item": "Salt and pepper",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -107,5 +103,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

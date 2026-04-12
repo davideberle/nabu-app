@@ -68,5 +68,10 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

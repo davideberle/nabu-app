@@ -1,6 +1,6 @@
 {
   "id": "textures",
-  "name": "textures.",
+  "name": "Italian Braised Dish",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -255,5 +255,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

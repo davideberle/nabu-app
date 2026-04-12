@@ -77,5 +77,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/pecan-twists.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

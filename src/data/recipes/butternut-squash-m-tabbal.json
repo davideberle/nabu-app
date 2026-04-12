@@ -113,5 +113,10 @@
     ]
   },
   "image": "/recipes/butternut-squash-m-tabbal.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegan",
+    "vegetarian"
+  ]
 }

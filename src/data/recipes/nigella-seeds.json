@@ -1,6 +1,6 @@
 {
   "id": "nigella-seeds",
-  "name": "NIGELLA SEEDS",
+  "name": "Nigella Seeds",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -83,5 +83,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

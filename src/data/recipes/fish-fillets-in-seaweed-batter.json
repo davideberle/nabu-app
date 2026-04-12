@@ -74,5 +74,9 @@
     ],
     "chapter": "Fish and Seafood"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegetarian",
+    "vegan"
+  ]
 }

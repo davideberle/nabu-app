@@ -1,6 +1,6 @@
 {
   "id": "your-bowl-of-steaming-hot-rice-you-will-eat-lots-of-that-with-this",
-  "name": "your bowl of steaming hot rice. You will eat lots of that with this!",
+  "name": "Red Curry Chicken Wings with Squash",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -63,5 +63,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

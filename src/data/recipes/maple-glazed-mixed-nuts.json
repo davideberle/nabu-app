@@ -39,9 +39,10 @@
   ],
   "image": "/recipes/maple-glazed-mixed-nuts.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

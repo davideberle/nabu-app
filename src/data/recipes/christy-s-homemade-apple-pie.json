@@ -41,5 +41,8 @@
     "chapter": "Desserts"
   },
   "image": "/recipes/christy-s-homemade-apple-pie.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

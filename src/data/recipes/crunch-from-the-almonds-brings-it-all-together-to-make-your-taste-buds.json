@@ -1,6 +1,6 @@
 {
   "id": "crunch-from-the-almonds-brings-it-all-together-to-make-your-taste-buds",
-  "name": "crunch from the almonds brings it all together to make your taste buds",
+  "name": "Curry Chicken Salad Lettuce Wraps",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -71,5 +71,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

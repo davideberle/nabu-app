@@ -1,6 +1,6 @@
 {
   "id": "very-zingy-ve-r-y-brilliant",
-  "name": "Very zingy, ve r y brilliant .",
+  "name": "Zingy Salad Dressing",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -53,5 +53,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

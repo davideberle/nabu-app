@@ -1,6 +1,6 @@
 {
   "id": "and-edamame",
-  "name": "AND EDAMAME",
+  "name": "And Edamame",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -65,5 +65,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

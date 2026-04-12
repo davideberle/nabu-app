@@ -138,5 +138,8 @@
     ],
     "chapter": "Main Dishes: Worth the Effort"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

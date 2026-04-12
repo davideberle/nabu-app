@@ -39,5 +39,10 @@
     ],
     "chapter": "Nice Cream"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

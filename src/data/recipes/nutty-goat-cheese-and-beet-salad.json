@@ -64,5 +64,8 @@
     ],
     "chapter": "Cheese"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "gluten-free"
+  ]
 }

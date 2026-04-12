@@ -97,5 +97,9 @@
       "main"
     ]
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

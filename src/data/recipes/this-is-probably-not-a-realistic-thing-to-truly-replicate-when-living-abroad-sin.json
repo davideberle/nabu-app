@@ -1,6 +1,6 @@
 {
   "id": "this-is-probably-not-a-realistic-thing-to-truly-replicate-when-living-abroad-sin",
-  "name": "This is probably not a realistic thing to truly replicate when living abroad, since even in Bangkok",
+  "name": "Gaeng Om (Northern Thai Herbal Soup)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -86,5 +86,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

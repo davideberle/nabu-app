@@ -1,6 +1,6 @@
 {
   "id": "tamarind-dipping-sauce",
-  "name": "TAMARIND DIPPING SAUCE",
+  "name": "Tamarind Dipping Sauce",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -105,5 +105,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

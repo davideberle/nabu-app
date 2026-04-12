@@ -1,6 +1,6 @@
 {
   "id": "red-onions-with-walnut-salsa",
-  "name": "RED ONIONS WITH WALNUT SALSA",
+  "name": "Red Onions with Walnut Salsa",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -64,5 +64,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

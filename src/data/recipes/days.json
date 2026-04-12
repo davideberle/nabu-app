@@ -1,6 +1,6 @@
 {
   "id": "days",
-  "name": "days.",
+  "name": "Curry Chicken Wings with Mango Chutney",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -81,5 +81,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "eggplant-kadaifi-nests",
-  "name": "EGGPLANT KADAIFI NESTS",
+  "name": "Eggplant Kadaifi Nests",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -101,5 +101,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

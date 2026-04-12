@@ -54,5 +54,8 @@
     ],
     "chapter": "Poultry and Eggs"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

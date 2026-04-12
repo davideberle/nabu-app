@@ -1,6 +1,6 @@
 {
   "id": "just-when-you-thought-we-had-enough-of-asian-flavors-to-pair-up-with",
-  "name": "Just when you thought we had enough of Asian flavors to pair up with",
+  "name": "Red Curry Chicken Wings with Squash and Chickpeas",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -64,5 +64,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

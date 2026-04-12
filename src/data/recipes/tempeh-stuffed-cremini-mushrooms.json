@@ -122,9 +122,10 @@
   ],
   "image": "/recipes/tempeh-stuffed-cremini-mushrooms.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

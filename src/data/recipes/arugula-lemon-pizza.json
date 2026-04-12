@@ -57,5 +57,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/arugula-lemon-pizza.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

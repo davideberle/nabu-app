@@ -1,6 +1,6 @@
 {
   "id": "withrosemary",
-  "name": "WITHROSEMARY",
+  "name": "Grilled Chicken with Rosemary",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -292,5 +292,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

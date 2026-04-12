@@ -1,6 +1,6 @@
 {
   "id": "fritter-roulette",
-  "name": "FRITTER ROULETTE",
+  "name": "Fritter Roulette",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

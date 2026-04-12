@@ -1,6 +1,6 @@
 {
   "id": "this-is-usually-eaten-with-pork-rinds-sticky-rice-hard-boiled-eggs-and-boiled-ve",
-  "name": "This is usually eaten with pork rinds, sticky rice, hard-boiled eggs and boiled veggies like pumpkin",
+  "name": "Gaeng Hang Lay (Northern Thai Pork Curry)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -79,5 +79,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

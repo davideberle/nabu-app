@@ -64,5 +64,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Mediterranean"
+  "cuisine": "Mediterranean",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

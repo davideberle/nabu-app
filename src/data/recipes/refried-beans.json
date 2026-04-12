@@ -66,5 +66,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Mexican"
+  "cuisine": "Mexican",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

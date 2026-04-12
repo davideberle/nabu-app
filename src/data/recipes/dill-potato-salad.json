@@ -55,6 +55,7 @@
     "Refrigerate for at least 2 hours before serving for best results."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -64,5 +65,6 @@
     ],
     "chapter": "Salads & Sides"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/dill-potato-salad.jpg"
 }

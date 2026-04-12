@@ -1,6 +1,6 @@
 {
   "id": "quick-start",
-  "name": "Quick start",
+  "name": "Quick-Start Baked Eggs",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -40,5 +40,10 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

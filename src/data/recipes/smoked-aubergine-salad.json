@@ -50,6 +50,7 @@
   ],
   "image": "/recipes/smoked-aubergine-salad.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -64,5 +65,5 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

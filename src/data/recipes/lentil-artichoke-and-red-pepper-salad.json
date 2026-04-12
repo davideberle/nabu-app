@@ -68,5 +68,8 @@
     ],
     "chapter": "Grains & Pulses"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "gluten-free"
+  ]
 }

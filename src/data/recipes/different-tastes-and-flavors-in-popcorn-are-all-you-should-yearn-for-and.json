@@ -1,6 +1,6 @@
 {
   "id": "different-tastes-and-flavors-in-popcorn-are-all-you-should-yearn-for-and",
-  "name": "Different tastes and flavors in popcorn are all you should yearn for and",
+  "name": "Thai Curry Popcorn",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -60,5 +60,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

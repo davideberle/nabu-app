@@ -1,6 +1,6 @@
 {
   "id": "turns-dinnertime-into-something-special-without-wearing-you-out",
-  "name": "turns dinnertime into something special without wearing you out.",
+  "name": "Coconut Curry Shrimp",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -79,5 +79,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

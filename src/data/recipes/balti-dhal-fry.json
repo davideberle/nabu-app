@@ -103,6 +103,7 @@
   "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
   "image": "/recipes/balti-dhal-fry.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {

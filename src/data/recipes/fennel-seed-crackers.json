@@ -1,6 +1,6 @@
 {
   "id": "fennel-seed-crackers",
-  "name": "FENNEL SEED CRACKERS",
+  "name": "Fennel Seed Crackers",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -77,5 +77,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

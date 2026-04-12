@@ -80,5 +80,8 @@
     ],
     "chapter": "Meat"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -45,6 +45,7 @@
   ],
   "image": "/recipes/fig-and-green-bean-salad-with-date-molasses-and-toasted-almo.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -57,5 +58,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

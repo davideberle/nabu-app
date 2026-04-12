@@ -36,5 +36,8 @@
     ],
     "chapter": "Desserts"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

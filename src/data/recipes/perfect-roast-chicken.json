@@ -1,6 +1,6 @@
 {
   "id": "perfect-roast-chicken",
-  "name": "PERFECT ROAST CHICKEN",
+  "name": "Perfect Roast Chicken",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -69,5 +69,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

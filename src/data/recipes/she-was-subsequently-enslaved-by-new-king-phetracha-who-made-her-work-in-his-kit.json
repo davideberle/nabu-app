@@ -1,6 +1,6 @@
 {
   "id": "she-was-subsequently-enslaved-by-new-king-phetracha-who-made-her-work-in-his-kit",
-  "name": "She was subsequently enslaved by new King Phetracha, who made her work in his kitchen until his",
+  "name": "Khanom Pui Fai (Thai Steamed Cupcakes)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -54,5 +54,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

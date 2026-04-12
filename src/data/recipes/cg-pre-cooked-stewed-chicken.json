@@ -88,5 +88,8 @@
   "time": {
     "total": 15
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

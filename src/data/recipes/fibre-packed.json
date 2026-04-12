@@ -1,6 +1,6 @@
 {
   "id": "fibre-packed",
-  "name": "Fibre-Packed",
+  "name": "Boiled Yam with Tofu Scramble",
   "source": {
     "cookbook": "Vegan Nigerian Kitchen",
     "author": "Tomi Makanjuola",
@@ -47,6 +47,7 @@
     "Heat the sunflower oil in a frying pan and crumble the tofu into it. Add the bell peppers, tomato and onion, and fry for 5 minutes on high heat, stirring often. Add the stew base, along with the curry, thyme, vegetable stock cube and salt to taste. Simmer on medium-high heat for another 5 minutes."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],

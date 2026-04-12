@@ -93,5 +93,8 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegetarian"
+  ]
 }

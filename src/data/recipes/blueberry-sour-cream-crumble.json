@@ -65,5 +65,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/blueberry-sour-cream-crumble.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

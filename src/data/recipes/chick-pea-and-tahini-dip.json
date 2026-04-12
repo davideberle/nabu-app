@@ -113,5 +113,10 @@
     ],
     "chapter": "Appetizers"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

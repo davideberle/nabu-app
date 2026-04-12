@@ -78,5 +78,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/tom-yum-goong.jpg",
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

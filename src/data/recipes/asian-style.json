@@ -1,6 +1,6 @@
 {
   "id": "asian-style",
-  "name": "ASIAN-STYLE",
+  "name": "Asian-style",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -124,5 +124,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

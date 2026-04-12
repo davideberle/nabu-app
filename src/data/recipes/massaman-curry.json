@@ -101,5 +101,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ],
+  "image": "/recipes/massaman-curry.jpg"
 }

@@ -1,6 +1,6 @@
 {
   "id": "flowers",
-  "name": "FLOWERS",
+  "name": "Flowers",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -84,5 +84,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

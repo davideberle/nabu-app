@@ -73,5 +73,9 @@
     "chapter": "Drinks"
   },
   "image": "/recipes/dragon-well-tea.jpg",
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

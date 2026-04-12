@@ -109,5 +109,8 @@
     "chapter": "Soups & Stews"
   },
   "image": "/recipes/khao-soi-soup.jpg",
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

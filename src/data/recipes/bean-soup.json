@@ -1,6 +1,6 @@
 {
   "id": "bean-soup",
-  "name": "BEAN SOUP",
+  "name": "Bean Soup",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -34,5 +34,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/bean-soup.jpg"
 }

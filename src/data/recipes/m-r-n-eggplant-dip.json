@@ -81,5 +81,10 @@
     ],
     "chapter": "Starters & Appetizers"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

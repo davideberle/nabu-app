@@ -1,6 +1,6 @@
 {
   "id": "tomato-and-bread-sauce",
-  "name": "TOMATO AND BREAD SAUCE",
+  "name": "Tomato and Bread Sauce",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -74,5 +74,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

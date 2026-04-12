@@ -1,6 +1,6 @@
 {
   "id": "you-can-make-this-refreshing-des",
-  "name": "You can make this refreshing des-",
+  "name": "Tropical Fruit Salad with Passionfruit",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -88,5 +88,11 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

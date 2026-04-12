@@ -1,6 +1,6 @@
 {
   "id": "place-the-mushrooms-in-a-medium-heatproof",
-  "name": "Place the mushrooms in a medium heatproof",
+  "name": "Pulled Pork Hash with Avocado",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -67,5 +67,9 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "gluten-free"
+  ]
 }

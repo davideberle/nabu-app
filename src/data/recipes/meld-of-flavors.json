@@ -1,6 +1,6 @@
 {
   "id": "meld-of-flavors",
-  "name": "meld of flavors.",
+  "name": "Curried Tofu with Vegetables",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -98,5 +98,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "boiled-egg",
-  "name": "BOILED EGG",
+  "name": "Boiled Egg",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -77,5 +77,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

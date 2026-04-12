@@ -48,5 +48,9 @@
     "chapter": "Desserts"
   },
   "image": null,
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

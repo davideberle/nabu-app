@@ -145,5 +145,10 @@
     ]
   },
   "image": "/recipes/rice-tabbouleh.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegan",
+    "vegetarian"
+  ]
 }

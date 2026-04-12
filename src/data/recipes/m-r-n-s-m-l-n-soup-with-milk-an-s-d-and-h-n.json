@@ -64,5 +64,9 @@
     ],
     "chapter": "Soups & Stews"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

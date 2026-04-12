@@ -92,12 +92,15 @@
     "Add the onions and fry for about 5 minutes until soft and translucent, then pour in the ground spices and the garlic and ginger paste. Add the green chillies and tomato paste, followed by the tamarind pulp and coconut milk. Mix well and add the pork with just enough water or stock to cover. Simmer for about 40 minutes, or until the pork is fork-tender.",
     "Season with salt and black pepper and sprinkle with the garam masala to serve."
   ],
-  "image": null,
+  "image": "/recipes/sri-lankan-pork-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Curries"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

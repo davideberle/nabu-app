@@ -1,6 +1,6 @@
 {
   "id": "walnut-salsa",
-  "name": "WALNUT SALSA",
+  "name": "Walnut Salsa",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -99,5 +99,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

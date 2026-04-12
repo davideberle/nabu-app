@@ -57,6 +57,7 @@
   ],
   "image": "/recipes/chargrilled-aubergines-with-saffron-yogurt-parsley-and-pickl.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -68,5 +69,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

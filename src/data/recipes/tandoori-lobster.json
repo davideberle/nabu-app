@@ -122,5 +122,8 @@
     ],
     "chapter": "Street Food"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

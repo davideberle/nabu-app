@@ -55,5 +55,9 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

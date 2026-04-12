@@ -48,6 +48,7 @@
     "Serve warm (my favorite), at room temperature, or cover with plastic wrap, refrigerate for 2 hours, and then serve cold."
   ],
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {
@@ -56,5 +57,6 @@
     ],
     "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/turkish-sutla-with-mastic.jpg"
 }

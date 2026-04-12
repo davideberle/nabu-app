@@ -88,5 +88,9 @@
     ]
   },
   "image": "/recipes/zucchini-garlic-and-yogurt.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegetarian"
+  ]
 }

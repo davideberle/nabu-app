@@ -41,6 +41,7 @@
   ],
   "image": "/recipes/harissa-marinated-asparagus.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -53,5 +54,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

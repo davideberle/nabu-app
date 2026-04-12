@@ -1,6 +1,6 @@
 {
   "id": "saffron-date-and-almond-rice",
-  "name": "SAFFRON, DATE, AND ALMOND RICE",
+  "name": "Saffron, Date, and Almond Rice",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -41,5 +41,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

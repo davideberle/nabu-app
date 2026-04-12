@@ -1,6 +1,6 @@
 {
   "id": "baked-apples",
-  "name": "BAKED APPLES",
+  "name": "Baked Apples",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -62,5 +62,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "perfect-roast-lamb",
-  "name": "PERFECT ROAST LAMB",
+  "name": "Perfect Roast Lamb",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -72,5 +72,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

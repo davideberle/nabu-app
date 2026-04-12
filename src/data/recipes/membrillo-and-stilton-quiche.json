@@ -1,6 +1,6 @@
 {
   "id": "membrillo-and-stilton-quiche",
-  "name": "MEMBRILLO AND STILTON QUICHE",
+  "name": "Membrillo and Stilton Quiche",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -60,5 +60,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

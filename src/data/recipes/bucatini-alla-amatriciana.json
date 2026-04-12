@@ -53,5 +53,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/bucatini-alla-amatriciana.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

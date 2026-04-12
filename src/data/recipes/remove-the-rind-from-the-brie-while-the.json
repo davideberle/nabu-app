@@ -1,6 +1,6 @@
 {
   "id": "remove-the-rind-from-the-brie-while-the",
-  "name": "Remove the rind from the brie while the",
+  "name": "Oven-Toasted Ham, Brie, and Apple Sandwiches",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -55,5 +55,9 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "gluten-free"
+  ]
 }

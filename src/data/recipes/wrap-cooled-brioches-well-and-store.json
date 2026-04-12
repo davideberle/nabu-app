@@ -1,6 +1,6 @@
 {
   "id": "wrap-cooled-brioches-well-and-store",
-  "name": "Wrap cooled brioches well and store",
+  "name": "Cottage Cheese Breakfast Pastries",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -159,5 +159,9 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -121,5 +121,8 @@
     ],
     "chapter": "Main Dishes"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "gluten-free"
+  ]
 }

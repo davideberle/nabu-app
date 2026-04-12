@@ -1,6 +1,6 @@
 {
   "id": "s-t-r-0-g-a-no-f-f-19-minutes",
-  "name": "S T R 0 G A NO F F (19 minutes)",
+  "name": "Chicken and Leek Stroganoff",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -51,5 +51,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

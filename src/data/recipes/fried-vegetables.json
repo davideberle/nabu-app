@@ -1,6 +1,6 @@
 {
   "id": "fried-vegetables",
-  "name": "fried vegetables.",
+  "name": "Curried Acorn Squash",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -39,5 +39,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

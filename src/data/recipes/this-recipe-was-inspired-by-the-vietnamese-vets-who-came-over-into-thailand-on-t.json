@@ -1,6 +1,6 @@
 {
   "id": "this-recipe-was-inspired-by-the-vietnamese-vets-who-came-over-into-thailand-on-t",
-  "name": "This recipe was inspired by the Vietnamese vets who came over into Thailand on their breaks and",
+  "name": "Vietnamese-Inspired Thai Spring Rolls",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -69,5 +69,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -54,5 +54,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Mediterranean"
+  "cuisine": "Mediterranean",
+  "dietary": [
+    "vegetarian"
+  ]
 }

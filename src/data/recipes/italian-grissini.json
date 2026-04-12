@@ -42,5 +42,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/italian-grissini.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

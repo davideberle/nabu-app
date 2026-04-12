@@ -1,6 +1,6 @@
 {
   "id": "iranian-style-pasta",
-  "name": "IRANIAN-STYLE PASTA",
+  "name": "Iranian-style Pasta",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -67,5 +67,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

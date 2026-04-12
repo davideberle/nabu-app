@@ -1,6 +1,6 @@
 {
   "id": "sometimes-all-you-want-is-something-sweet",
-  "name": "Sometimes, all you want is something sweet",
+  "name": "Chocolate Tartines",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -76,5 +76,6 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

@@ -1,6 +1,6 @@
 {
   "id": "salad",
-  "name": "SALAD",
+  "name": "Salad",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -71,5 +71,11 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ],
+  "image": "/recipes/salad.jpg"
 }

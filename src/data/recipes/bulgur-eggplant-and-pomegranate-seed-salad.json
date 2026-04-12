@@ -57,5 +57,9 @@
     ],
     "chapter": "Grains & Pulses"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

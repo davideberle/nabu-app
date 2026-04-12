@@ -40,6 +40,7 @@
   ],
   "image": "/recipes/harissa-and-preserved-lemon-roasted-poussins.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -52,5 +53,5 @@
     ],
     "chapter": "Roasts & grills"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

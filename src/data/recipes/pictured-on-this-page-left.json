@@ -1,6 +1,6 @@
 {
   "id": "pictured-on-this-page-left",
-  "name": "Pictured on this page, left",
+  "name": "Chickpeas and Swiss Chard with Carrots",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -79,5 +79,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

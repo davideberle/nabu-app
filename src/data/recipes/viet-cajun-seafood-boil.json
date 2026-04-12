@@ -88,5 +88,8 @@
     ],
     "chapter": "Chicken and Seafood"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

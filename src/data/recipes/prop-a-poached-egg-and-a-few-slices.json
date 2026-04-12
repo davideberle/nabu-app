@@ -1,6 +1,6 @@
 {
   "id": "prop-a-poached-egg-and-a-few-slices",
-  "name": "Prop a poached egg and a few slices",
+  "name": "Maple-Rum Glazed Pork Chops",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -71,5 +71,6 @@
       "breakfast"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

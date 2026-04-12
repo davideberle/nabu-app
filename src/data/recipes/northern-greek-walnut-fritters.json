@@ -78,5 +78,8 @@
     ],
     "chapter": "Basics"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegetarian"
+  ]
 }

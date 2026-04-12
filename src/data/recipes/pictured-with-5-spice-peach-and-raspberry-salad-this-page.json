@@ -1,6 +1,6 @@
 {
   "id": "pictured-with-5-spice-peach-and-raspberry-salad-this-page",
-  "name": "Pictured with 5-spice peach and raspberry salad (this page)",
+  "name": "Cucumber and Lamb's Lettuce Salad with Yogurt and Nigella Seeds",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -113,5 +113,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

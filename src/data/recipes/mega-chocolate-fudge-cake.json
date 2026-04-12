@@ -1,6 +1,6 @@
 {
   "id": "mega-chocolate-fudge-cake",
-  "name": "MEGA CHOCOLATE FUDGE CAKE",
+  "name": "Mega Chocolate Fudge Cake",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -76,5 +76,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian"
+  ]
 }

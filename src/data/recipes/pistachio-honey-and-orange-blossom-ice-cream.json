@@ -50,6 +50,7 @@
   ],
   "image": "/recipes/pistachio-honey-and-orange-blossom-ice-cream.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -61,5 +62,5 @@
     ],
     "chapter": "Desserts & sweet treats"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

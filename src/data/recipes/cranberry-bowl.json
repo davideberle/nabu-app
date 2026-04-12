@@ -62,5 +62,9 @@
     ],
     "chapter": "Bowls, Puddings & Grains"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

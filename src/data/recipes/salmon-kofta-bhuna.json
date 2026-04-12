@@ -116,5 +116,8 @@
     ],
     "chapter": "Curries"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

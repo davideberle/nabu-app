@@ -1,6 +1,6 @@
 {
   "id": "make-this-throughout-the-year-fresh-raspberries-are-great-when-they-re-in",
-  "name": "Make this throughout the year—fresh raspberries are great when they’re in",
+  "name": "Raspberry Semifreddo",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -71,5 +71,8 @@
     ],
     "chapter": "Appetizers"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

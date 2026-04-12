@@ -1,6 +1,6 @@
 {
   "id": "spanish-style-grilled-steak",
-  "name": "SPANISH-STYLE GRILLED STEAK",
+  "name": "Spanish-style Grilled Steak",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -60,5 +60,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

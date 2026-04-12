@@ -1,6 +1,6 @@
 {
   "id": "black-sesame-dressing",
-  "name": "BLACK SESAME DRESSING",
+  "name": "Black Sesame Dressing",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -90,5 +90,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

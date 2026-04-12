@@ -65,5 +65,9 @@
     ],
     "chapter": "Desserts"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

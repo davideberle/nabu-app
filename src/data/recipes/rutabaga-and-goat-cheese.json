@@ -1,6 +1,6 @@
 {
   "id": "rutabaga-and-goat-cheese",
-  "name": "RUTABAGA AND GOAT CHEESE",
+  "name": "Rutabaga and Goat Cheese",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -66,5 +66,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

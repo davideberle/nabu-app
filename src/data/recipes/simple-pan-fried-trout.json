@@ -1,6 +1,6 @@
 {
   "id": "simple-pan-fried-trout",
-  "name": "SIMPLE PAN-FRIED TROUT",
+  "name": "Simple Pan-fried Trout",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -50,5 +50,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "one-bottle-of-sparkling-wine-is-enough-to-make",
-  "name": "One bottle of sparkling wine is enough to make",
+  "name": "Pomegranate Sparkling Wine Cocktail",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -39,5 +39,11 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

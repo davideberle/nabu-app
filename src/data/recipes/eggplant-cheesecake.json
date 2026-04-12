@@ -1,6 +1,6 @@
 {
   "id": "eggplant-cheesecake",
-  "name": "EGGPLANT CHEESECAKE",
+  "name": "Eggplant Cheesecake",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -64,5 +64,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

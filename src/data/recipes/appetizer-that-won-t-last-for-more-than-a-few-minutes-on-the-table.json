@@ -1,6 +1,6 @@
 {
   "id": "appetizer-that-won-t-last-for-more-than-a-few-minutes-on-the-table",
-  "name": "appetizer that won’t last for more than a few minutes on the table.",
+  "name": "Curry Chicken Wings with Yogurt Dipping Sauce",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -83,5 +83,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "serves-four-to-six",
-  "name": "SERVES FOUR TO SIX",
+  "name": "Serves Four to Six",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -65,5 +65,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

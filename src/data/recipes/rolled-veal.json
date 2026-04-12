@@ -67,5 +67,8 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

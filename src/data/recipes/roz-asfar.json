@@ -68,5 +68,8 @@
     ],
     "chapter": "Salads & Sides"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

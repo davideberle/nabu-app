@@ -1,6 +1,6 @@
 {
   "id": "with-other-thai-foods-such-as-curries",
-  "name": "with other Thai foods such as curries.",
+  "name": "Thai Curry Pineapple Fried Rice with Chicken",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -73,5 +73,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

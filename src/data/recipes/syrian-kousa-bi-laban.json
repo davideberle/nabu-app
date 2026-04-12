@@ -114,5 +114,8 @@
     "chapter": "Main Dishes: 1 Hour"
   },
   "subtitle": "UNSTUFFED ZUCCHINI IN YOGURT",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

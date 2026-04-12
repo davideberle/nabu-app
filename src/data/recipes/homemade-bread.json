@@ -102,5 +102,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegetarian"
+  ]
 }

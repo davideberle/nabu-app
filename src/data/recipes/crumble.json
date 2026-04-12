@@ -1,6 +1,6 @@
 {
   "id": "crumble",
-  "name": "CRUMBLE",
+  "name": "Crumble",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -169,5 +169,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

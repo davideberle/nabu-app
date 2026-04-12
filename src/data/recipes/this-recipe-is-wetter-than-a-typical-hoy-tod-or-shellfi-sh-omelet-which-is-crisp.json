@@ -1,6 +1,6 @@
 {
   "id": "this-recipe-is-wetter-than-a-typical-hoy-tod-or-shellfi-sh-omelet-which-is-crisp",
-  "name": "This recipe is “wetter” than a typical hoy tod or shellfi sh omelet, which is crispy on the bottom",
+  "name": "Or Suan (Thai Oyster Omelet)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -106,5 +106,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

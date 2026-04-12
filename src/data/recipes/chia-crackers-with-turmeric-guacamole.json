@@ -72,5 +72,10 @@
     ],
     "chapter": "Hearty Snacks"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

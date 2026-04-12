@@ -35,5 +35,9 @@
     "chapter": "Sides"
   },
   "image": "/recipes/homemade-italian-bread.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "the-key-to-keeping-a-green-soup-as-green-and-vibrant-as-can-be-is-not-to",
-  "name": "The key to keeping a green soup as green and vibrant as can be is not to",
+  "name": "Pea, Zucchini, and Basil Soup",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -202,5 +202,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

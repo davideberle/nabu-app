@@ -67,9 +67,10 @@
   ],
   "image": "/recipes/slow-cooker-spiced-peanuts.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

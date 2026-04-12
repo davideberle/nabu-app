@@ -1,6 +1,6 @@
 {
   "id": "quinoa-and-fennel-salad",
-  "name": "QUINOA AND FENNEL SALAD",
+  "name": "Quinoa and Fennel Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -67,5 +67,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

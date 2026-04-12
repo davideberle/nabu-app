@@ -90,6 +90,7 @@
   ],
   "image": "/recipes/seafood-and-saffron-stew.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -102,5 +103,5 @@
     ],
     "chapter": "Soups, stews & tagines"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

@@ -45,5 +45,10 @@
     ],
     "chapter": "Sweet Dishes"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "artichokes",
-  "name": "ARTICHOKES",
+  "name": "Fried Artichokes",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -160,5 +160,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

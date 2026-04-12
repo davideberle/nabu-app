@@ -45,9 +45,10 @@
   ],
   "image": "/recipes/sprouted-grain-spicy-seitan-sandwich.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

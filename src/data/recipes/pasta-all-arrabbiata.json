@@ -57,5 +57,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/pasta-all-arrabbiata.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

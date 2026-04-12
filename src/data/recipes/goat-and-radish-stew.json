@@ -66,5 +66,8 @@
     ],
     "chapter": "Meat"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

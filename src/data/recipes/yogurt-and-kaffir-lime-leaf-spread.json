@@ -1,6 +1,6 @@
 {
   "id": "yogurt-and-kaffir-lime-leaf-spread",
-  "name": "YOGURT AND KAFFIR LIME LEAF SPREAD",
+  "name": "Yogurt and Kaffir Lime Leaf Spread",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -56,5 +56,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "tawa-chapatti-with-some-roughly-chopped-onion",
-  "name": "tawa chapatti with some roughly chopped onion.",
+  "name": "Curried Egg Masala",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -172,5 +172,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

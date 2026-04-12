@@ -1,6 +1,6 @@
 {
   "id": "green-chile-oil",
-  "name": "GREEN CHILE OIL",
+  "name": "Green Chile Oil",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -81,5 +81,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -124,5 +124,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

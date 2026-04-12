@@ -103,5 +103,10 @@
     ]
   },
   "image": "/recipes/charred-eggplant-with-tahini-and-herbs.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegan",
+    "vegetarian"
+  ]
 }

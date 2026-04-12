@@ -76,5 +76,9 @@
     ],
     "chapter": "Vegetables"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

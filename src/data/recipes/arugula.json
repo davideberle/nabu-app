@@ -1,6 +1,6 @@
 {
   "id": "arugula",
-  "name": "ARUGULA",
+  "name": "Arugula",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
@@ -50,5 +50,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

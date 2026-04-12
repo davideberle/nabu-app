@@ -57,5 +57,8 @@
     ],
     "chapter": "Vegetables"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "gluten-free"
+  ]
 }

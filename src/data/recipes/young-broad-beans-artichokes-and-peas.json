@@ -65,5 +65,9 @@
     ],
     "chapter": "Spring"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

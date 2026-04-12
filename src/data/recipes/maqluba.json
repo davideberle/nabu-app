@@ -111,5 +111,8 @@
     ],
     "chapter": "Pulses & Grains"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

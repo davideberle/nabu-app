@@ -59,6 +59,7 @@
     "Place in the oven on the middle rack and bake for 25 to 30 minutes, until the top is golden brown and the filling is heated through and melted. You may broil the top for a few minutes, if required, to achieve a golden color. Let cool for 10 minutes. Use a sharp knife to gently slice into the precut squares and serve."
   ],
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {
@@ -67,5 +68,6 @@
     ],
     "chapter": "Salads & Sides"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/turkish-cheese-b-rek.jpg"
 }

@@ -1,6 +1,6 @@
 {
   "id": "intheoven",
-  "name": "intheoven.",
+  "name": "Baked Penne",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -213,5 +213,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

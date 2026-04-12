@@ -82,5 +82,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/eggplant-parmesan.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -54,5 +54,8 @@
     ],
     "chapter": "Basic Recipes and Know-How"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

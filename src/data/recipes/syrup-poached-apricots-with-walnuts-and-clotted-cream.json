@@ -58,6 +58,7 @@
   ],
   "image": "/recipes/syrup-poached-apricots-with-walnuts-and-clotted-cream.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -69,5 +70,5 @@
     ],
     "chapter": "Desserts & sweet treats"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

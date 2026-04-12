@@ -47,5 +47,10 @@
     ],
     "chapter": "Sweet Ends"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

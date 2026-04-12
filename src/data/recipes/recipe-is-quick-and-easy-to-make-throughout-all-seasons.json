@@ -1,6 +1,6 @@
 {
   "id": "recipe-is-quick-and-easy-to-make-throughout-all-seasons",
-  "name": "recipe is quick and easy to make throughout all seasons.",
+  "name": "Red Curry Duck with Peanut Satay Sauce",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -90,5 +90,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

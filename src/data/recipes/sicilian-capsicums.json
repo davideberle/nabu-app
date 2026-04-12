@@ -73,5 +73,8 @@
     ],
     "chapter": "Autumn"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -37,5 +37,9 @@
     ],
     "chapter": "Drinks"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

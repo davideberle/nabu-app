@@ -60,5 +60,10 @@
     ]
   },
   "image": "/recipes/fish-spice-mix.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegan",
+    "vegetarian"
+  ]
 }

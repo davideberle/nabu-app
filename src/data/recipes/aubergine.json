@@ -75,6 +75,7 @@
   ],
   "image": "/recipes/aubergine.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -87,5 +88,5 @@
     ],
     "chapter": "Mezze & sharing plates"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

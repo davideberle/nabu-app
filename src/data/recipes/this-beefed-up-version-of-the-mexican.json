@@ -1,6 +1,6 @@
 {
   "id": "this-beefed-up-version-of-the-mexican",
-  "name": "This beefed-up version of the Mexican",
+  "name": "Steak and Eggs Huevos Rancheros",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -90,5 +90,6 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

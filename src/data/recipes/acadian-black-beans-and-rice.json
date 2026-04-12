@@ -85,9 +85,10 @@
   ],
   "image": "/recipes/acadian-black-beans-and-rice.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

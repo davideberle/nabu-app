@@ -41,5 +41,10 @@
     ],
     "chapter": "Basic Recipes"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

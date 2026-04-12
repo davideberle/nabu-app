@@ -85,5 +85,8 @@
     ],
     "chapter": "Appetizers"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "vegetarian"
+  ]
 }

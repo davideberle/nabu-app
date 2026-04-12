@@ -1,6 +1,6 @@
 {
   "id": "drizzle-both-sides-with-the-maple-syrup",
-  "name": "Drizzle both sides with the maple syrup",
+  "name": "Creamy Polenta with Mushroom Ragout",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -55,5 +55,11 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

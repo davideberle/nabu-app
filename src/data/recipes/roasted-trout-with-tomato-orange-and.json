@@ -1,6 +1,6 @@
 {
   "id": "roasted-trout-with-tomato-orange-and",
-  "name": "Roasted trout with tomato, orange, and",
+  "name": "Roasted Trout with Tomato, Orange, and Barberries",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -81,5 +81,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

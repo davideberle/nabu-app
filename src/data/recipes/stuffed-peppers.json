@@ -85,5 +85,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/stuffed-peppers.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

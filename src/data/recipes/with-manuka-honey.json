@@ -1,6 +1,6 @@
 {
   "id": "with-manuka-honey",
-  "name": "WITH MANUKA HONEY",
+  "name": "With Manuka Honey",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -71,5 +71,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

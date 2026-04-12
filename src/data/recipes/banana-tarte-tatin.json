@@ -1,6 +1,6 @@
 {
   "id": "banana-tarte-tatin",
-  "name": "BANANA TARTE TATIN",
+  "name": "Banana Tarte Tatin",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -103,5 +103,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian"
+  ]
 }

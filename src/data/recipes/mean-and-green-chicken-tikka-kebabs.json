@@ -102,12 +102,15 @@
     "Just before serving, baste with the marinade you set aside earlier."
   ],
   "tips": "You can also roast the chicken in the oven at 200°C (400°F/Gas 6) until cooked through. Once cooked, placing the meat under a grill (broiler) will give a nice charred finish.",
-  "image": null,
+  "image": "/recipes/mean-and-green-chicken-tikka-kebabs.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Street Food"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

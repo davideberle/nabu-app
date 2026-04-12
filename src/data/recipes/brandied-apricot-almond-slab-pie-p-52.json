@@ -1,6 +1,6 @@
 {
   "id": "brandied-apricot-almond-slab-pie-p-52",
-  "name": "Brandied Apricot-Almond Slab Pie, p. 52",
+  "name": "Black Bean Breakfast Burritos",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -79,5 +79,9 @@
       "dessert"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegetarian"
+  ]
 }

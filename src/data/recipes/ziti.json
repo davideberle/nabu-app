@@ -1,6 +1,6 @@
 {
   "id": "ziti",
-  "name": "ziti.",
+  "name": "Ziti with Tomato-Butter Sauce",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -1065,5 +1065,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -46,5 +46,8 @@
     ],
     "chapter": "Anytime"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -1,59 +1,69 @@
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
-
-const tiles = [
-  {
-    id: "todos",
-    name: "Todos",
-    emoji: "✅",
-    description: "Tasks, reminders, follow-ups",
-    href: "/todos",
-    stats: "2 active",
-  },
-  {
-    id: "shopping",
-    name: "Shopping",
-    emoji: "🛒",
-    description: "Kids list, David's list, Bulk",
-    href: "/shopping",
-    stats: "3 lists",
-  },
-  {
-    id: "recipes",
-    name: "Recipes",
-    emoji: "🍳",
-    description: "Browse, search, cook mode",
-    href: "/recipes",
-    stats: "5 recipes",
-  },
-  {
-    id: "music",
-    name: "Music",
-    emoji: "🎵",
-    description: "DJ, discoveries, history",
-    href: "/music",
-    stats: "240+ items",
-  },
-  {
-    id: "meals",
-    name: "Meals",
-    emoji: "🍽️",
-    description: "Weekly meal planning",
-    href: "/meals",
-    stats: "Plan ahead",
-  },
-  {
-    id: "system",
-    name: "System",
-    emoji: "🔧",
-    description: "Status, services, logs",
-    href: "/system",
-    stats: "All green",
-  },
-];
+import { getDb } from "@/lib/db";
+import { getAllRecipes } from "@/lib/recipes";
 
 export default async function Home() {
   const session = await auth();
+
+  // Live stats from real data sources
+  const db = await getDb();
+  const activeTodosResult = await db.execute(
+    "SELECT COUNT(*) as cnt FROM todos WHERE completed = 0"
+  );
+  const activeTodos = activeTodosResult.rows[0]["cnt"] as number;
+  const recipeCount = getAllRecipes().length;
+
+  const tiles = [
+    {
+      id: "todos",
+      name: "Todos",
+      emoji: "✅",
+      description: "Tasks, reminders, follow-ups",
+      href: "/todos",
+      stats: `${activeTodos} active`,
+    },
+    {
+      id: "shopping",
+      name: "Shopping",
+      emoji: "🛒",
+      description: "Kids list, David's list, Bulk",
+      href: "/shopping",
+      stats: "Open",
+    },
+    {
+      id: "recipes",
+      name: "Recipes",
+      emoji: "🍳",
+      description: "Browse, search, cook mode",
+      href: "/recipes",
+      stats: `${recipeCount} recipes`,
+    },
+    {
+      id: "music",
+      name: "Music",
+      emoji: "🎵",
+      description: "DJ, discoveries, history",
+      href: "/music",
+      stats: "Browse",
+    },
+    {
+      id: "meals",
+      name: "Meals",
+      emoji: "🍽️",
+      description: "Weekly meal planning",
+      href: "/meals",
+      stats: "Plan ahead",
+    },
+    {
+      id: "system",
+      name: "System",
+      emoji: "🔧",
+      description: "Status, services, logs",
+      href: "/system",
+      stats: "View",
+    },
+  ];
   
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">

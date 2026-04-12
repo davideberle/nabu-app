@@ -1,6 +1,6 @@
 {
   "id": "hot-and-sour-mushroom-soup",
-  "name": "HOT-AND-SOUR MUSHROOM SOUP",
+  "name": "Hot-and-sour Mushroom Soup",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -112,5 +112,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

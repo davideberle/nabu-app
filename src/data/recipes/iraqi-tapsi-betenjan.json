@@ -143,5 +143,8 @@
     "chapter": "Main Dishes: Worth the Effort"
   },
   "subtitle": "EGGPLANT CASSEROLE",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

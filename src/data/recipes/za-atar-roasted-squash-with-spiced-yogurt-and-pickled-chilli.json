@@ -75,6 +75,7 @@
   ],
   "image": "/recipes/za-atar-roasted-squash-with-spiced-yogurt-and-pickled-chilli.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -86,5 +87,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

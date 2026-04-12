@@ -1,6 +1,6 @@
 {
   "id": "withclaims",
-  "name": "WITHCLAIMS",
+  "name": "Spaghetti with Clams",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -236,5 +236,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

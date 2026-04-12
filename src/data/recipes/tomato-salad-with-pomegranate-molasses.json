@@ -49,6 +49,7 @@
   ],
   "image": "/recipes/tomato-salad-with-pomegranate-molasses.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -63,5 +64,5 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

@@ -315,6 +315,45 @@ export default async function RecipePage({
             </section>
           )}
 
+          {/* Serving suggestions (meal composition) */}
+          {recipe.servingSuggestions && recipe.servingSuggestions.length > 0 && (
+            <section className="px-8 py-6 border-t border-stone-100 dark:border-stone-800">
+              <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
+                Goes well with
+              </h2>
+              <ul className="space-y-3">
+                {recipe.servingSuggestions.map((suggestion, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 mt-1 w-5 h-5 rounded-full bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 flex items-center justify-center">
+                      <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">
+                        {suggestion.role === "side" ? "S" : suggestion.role === "salad" ? "Sa" : suggestion.role === "bread" ? "B" : suggestion.role === "sauce" ? "Sc" : suggestion.role === "drink" ? "D" : suggestion.role === "dessert" ? "De" : "B"}
+                      </span>
+                    </span>
+                    <div>
+                      {suggestion.recipeId ? (
+                        <Link
+                          href={`/recipes/${suggestion.recipeId}`}
+                          className="text-stone-700 dark:text-stone-300 font-medium hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                        >
+                          {suggestion.name}
+                        </Link>
+                      ) : (
+                        <span className="text-stone-700 dark:text-stone-300 font-medium">
+                          {suggestion.name}
+                        </span>
+                      )}
+                      {suggestion.notes && (
+                        <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">
+                          {suggestion.notes}
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Related recipes */}
           {recipe.related_recipes && recipe.related_recipes.length > 0 && (
             <section className="px-8 py-4 border-t border-stone-100 dark:border-stone-800">

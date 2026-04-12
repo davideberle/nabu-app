@@ -51,5 +51,8 @@
     ],
     "chapter": "Summer"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

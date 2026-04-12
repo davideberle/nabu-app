@@ -69,5 +69,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/polenta-and-sausages.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

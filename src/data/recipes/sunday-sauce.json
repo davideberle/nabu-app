@@ -65,5 +65,8 @@
     "chapter": "Sides"
   },
   "image": "/recipes/sunday-sauce.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

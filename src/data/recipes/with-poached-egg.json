@@ -1,6 +1,6 @@
 {
   "id": "with-poached-egg",
-  "name": "WITH POACHED EGG",
+  "name": "With Poached Egg",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -74,5 +74,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

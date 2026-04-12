@@ -1,6 +1,6 @@
 {
   "id": "used-as-a-sauce-for-beans-or-tofu",
-  "name": "used as a sauce for beans or tofu.",
+  "name": "Spicy Coconut Curry Lentil and Barley Stew",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -120,5 +120,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

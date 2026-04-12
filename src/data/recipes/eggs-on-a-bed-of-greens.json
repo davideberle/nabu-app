@@ -65,5 +65,8 @@
     ],
     "chapter": "Autumn"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

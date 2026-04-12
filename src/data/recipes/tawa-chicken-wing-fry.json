@@ -72,12 +72,15 @@
     "Add the water or spice stock and tomato, stirring continuously, then add half the coriander (cilantro) and the curry leaves. With this recipe it is really important to continue stirring so that the chicken cooks evenly. Fry until the water has almost evaporated but the chicken still looks nice and moist in a thick gravy.",
     "To serve, squeeze the lemon juice over the top and garnish with the remaining coriander. Check for seasoning, adding more salt or chilli powder if needed."
   ],
-  "image": null,
+  "image": "/recipes/tawa-chicken-wing-fry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Curries"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

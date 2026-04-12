@@ -1,6 +1,6 @@
 {
   "id": "a-lot-of-recipes-call-for-marinating-the-wings-but-the-best-ones-i-know-are-by-m",
-  "name": "A lot of recipes call for marinating the wings, but the best ones I know are by my housekeeper,",
+  "name": "Nam Prik Ong (Northern Thai Pork and Tomato Chili Dip)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -77,5 +77,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "serve-this-with-some-brown-rice-for-a-dish-that-manages-to-be-both-summery-and",
-  "name": "Serve this with some brown rice for a dish that manages to be both summery and",
+  "name": "Runner Beans in Tomato Sauce",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -73,5 +73,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

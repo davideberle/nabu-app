@@ -1,6 +1,6 @@
 {
   "id": "parmesancheese",
-  "name": "Parmesancheese.",
+  "name": "Pasta with Parmesan Cheese",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -269,5 +269,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

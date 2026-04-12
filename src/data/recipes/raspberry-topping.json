@@ -1,6 +1,6 @@
 {
   "id": "raspberry-topping",
-  "name": "RASPBERRY TOPPING",
+  "name": "Raspberry Topping",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -186,5 +186,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian"
+  ]
 }

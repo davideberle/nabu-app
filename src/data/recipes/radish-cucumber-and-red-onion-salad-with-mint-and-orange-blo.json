@@ -60,6 +60,7 @@
   ],
   "image": "/recipes/radish-cucumber-and-red-onion-salad-with-mint-and-orange-blo.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -74,5 +75,5 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

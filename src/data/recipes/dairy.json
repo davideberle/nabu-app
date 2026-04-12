@@ -1,6 +1,6 @@
 {
   "id": "dairy",
-  "name": "Dairy",
+  "name": "Homemade Soy Milk",
   "source": {
     "cookbook": "Vegan Nigerian Kitchen",
     "author": "Tomi Makanjuola",
@@ -28,6 +28,7 @@
     "Transfer the soy milk into a jug, jar or bottle with a tight seal. Store in the refrigerator and use within 4-5 days."
   ],
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],

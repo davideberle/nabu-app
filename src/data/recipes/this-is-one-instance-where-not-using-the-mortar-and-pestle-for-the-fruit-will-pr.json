@@ -1,6 +1,6 @@
 {
   "id": "this-is-one-instance-where-not-using-the-mortar-and-pestle-for-the-fruit-will-pr",
-  "name": "This is one instance where not using the mortar and pestle for the fruit will probably help",
+  "name": "Moo Tod (Thai Fried Pork)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -71,5 +71,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

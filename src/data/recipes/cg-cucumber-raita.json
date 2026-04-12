@@ -33,8 +33,9 @@
   "method": [
     "Put all the ingredients into a bowl and whisk them together with a fork. Place in the fridge for about an hour before serving."
   ],
-  "image": null,
+  "image": "/recipes/cg-cucumber-raita.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {

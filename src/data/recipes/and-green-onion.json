@@ -1,6 +1,6 @@
 {
   "id": "and-green-onion",
-  "name": "AND GREEN ONION",
+  "name": "And Green Onion",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -61,5 +61,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -49,5 +49,8 @@
     "chapter": "Sides"
   },
   "image": "/recipes/farmhouse-white-bread.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

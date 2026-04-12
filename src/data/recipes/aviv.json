@@ -1,6 +1,6 @@
 {
   "id": "aviv",
-  "name": "Aviv.",
+  "name": "Aviv's Nutella Babka Rolls",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -107,5 +107,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

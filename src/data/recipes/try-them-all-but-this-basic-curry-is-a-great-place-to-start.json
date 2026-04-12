@@ -1,6 +1,6 @@
 {
   "id": "try-them-all-but-this-basic-curry-is-a-great-place-to-start",
-  "name": "try them all—but this basic curry is a great place to start.",
+  "name": "Basic Vegetable Red Curry with Cauliflower Rice",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -71,5 +71,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

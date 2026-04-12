@@ -110,12 +110,15 @@
     "Place all the marinade ingredients in a large mixing bowl and whisk to combine. Add the meat and mix well with your hands so that it is thoroughly coated in the marinade. Cover and leave to marinate for at least 30 minutes or overnight – the longer the better.",
     "When ready to cook, set up the barbecue for direct heat cooking. Skewer the meat, preferably on flat skewers if you have them, and place over the hot coals. Grill for about 5 minutes on one side, then turn the skewers over and grill for another 5 minutes, or until the exterior is charred. Be sure to brush the meat from time to time with the melted ghee. Season with salt and serve with hot naans, a salad, your hot sauce of choice and perhaps a raita or two."
   ],
-  "image": null,
+  "image": "/recipes/beef-boti-kebabs.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Street Food"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

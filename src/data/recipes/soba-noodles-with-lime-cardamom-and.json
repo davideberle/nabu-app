@@ -1,6 +1,6 @@
 {
   "id": "soba-noodles-with-lime-cardamom-and",
-  "name": "Soba noodles with lime, cardamom, and",
+  "name": "Soba Noodles with Lime, Cardamom, and Avocado",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -69,5 +69,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -59,6 +59,7 @@
   ],
   "image": "/recipes/smoked-aubergines-with-garlic.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -70,5 +71,5 @@
     ],
     "chapter": "Mezze & sharing plates"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

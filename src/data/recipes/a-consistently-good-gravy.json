@@ -1,6 +1,6 @@
 {
   "id": "a-consistently-good-gravy",
-  "name": "A CONSISTENTLY GOOD GRAVY",
+  "name": "A Consistently Good Gravy",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -40,5 +40,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

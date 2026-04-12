@@ -1,6 +1,6 @@
 {
   "id": "noodle-salad",
-  "name": "NOODLE SALAD",
+  "name": "Noodle Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -80,5 +80,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

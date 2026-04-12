@@ -1,6 +1,6 @@
 {
   "id": "pappare-means-to-gobble-up-in-italian-which-is-the-destiny-of-this-dish",
-  "name": "Pappare means “to gobble up,” in Italian, which is the destiny of this dish",
+  "name": "Pappardelle with Rose Harissa, Olives, and Capers",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -72,5 +72,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

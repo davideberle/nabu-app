@@ -54,5 +54,10 @@
     ],
     "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

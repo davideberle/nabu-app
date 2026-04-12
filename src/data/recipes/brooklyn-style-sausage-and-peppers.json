@@ -61,5 +61,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/brooklyn-style-sausage-and-peppers.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

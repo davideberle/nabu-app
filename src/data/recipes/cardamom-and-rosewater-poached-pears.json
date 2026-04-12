@@ -37,6 +37,7 @@
   ],
   "image": "/recipes/cardamom-and-rosewater-poached-pears.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -49,5 +50,5 @@
     ],
     "chapter": "Desserts & sweet treats"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

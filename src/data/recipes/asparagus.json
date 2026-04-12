@@ -1,6 +1,6 @@
 {
   "id": "asparagus",
-  "name": "ASPARAGUS",
+  "name": "Grilled Tuna with Asparagus",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -53,5 +53,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

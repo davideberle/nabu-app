@@ -49,5 +49,8 @@
     ],
     "chapter": "Tofu"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

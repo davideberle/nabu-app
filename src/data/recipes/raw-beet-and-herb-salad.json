@@ -1,6 +1,6 @@
 {
   "id": "raw-beet-and-herb-salad",
-  "name": "RAW BEET AND HERB SALAD",
+  "name": "Raw Beet and Herb Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "with-candied-lemon",
-  "name": "WITH CANDIED LEMON",
+  "name": "With Candied Lemon",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -74,5 +74,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

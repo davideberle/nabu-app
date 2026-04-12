@@ -197,5 +197,10 @@
     ]
   },
   "image": "/recipes/butternut-squash-and-saffron-soup-with-caramelized-pistachio.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegan",
+    "vegetarian"
+  ]
 }

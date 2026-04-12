@@ -36,5 +36,9 @@
     "cook": 0,
     "total": 5
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

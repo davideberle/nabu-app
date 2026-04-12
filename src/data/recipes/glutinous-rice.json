@@ -1,6 +1,6 @@
 {
   "id": "glutinous-rice",
-  "name": "GLUTINOUS RICE",
+  "name": "Glutinous Rice",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -72,5 +72,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

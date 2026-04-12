@@ -136,5 +136,8 @@
     "chapter": "Sweet Dishes"
   },
   "image": "/recipes/shanghai-eight-treasure-glutinous-rice.jpg",
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegetarian"
+  ]
 }

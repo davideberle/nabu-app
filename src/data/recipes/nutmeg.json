@@ -1,6 +1,6 @@
 {
   "id": "nutmeg",
-  "name": "nutmeg",
+  "name": "Spinach with Nutmeg",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -871,5 +871,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

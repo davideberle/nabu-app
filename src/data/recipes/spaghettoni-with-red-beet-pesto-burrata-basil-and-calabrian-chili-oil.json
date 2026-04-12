@@ -70,5 +70,9 @@
     ],
     "chapter": "Winter"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "the-fi-lling-for-this-recipe-is-isaan-style-chicken-larb-which-i-was-surprised-t",
-  "name": "The fi lling for this recipe is Isaan-style chicken larb, which, I was surprised to learn, is not",
+  "name": "Chicken Larb Spring Rolls",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -91,5 +91,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

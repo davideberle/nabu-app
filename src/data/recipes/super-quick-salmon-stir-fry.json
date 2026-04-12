@@ -1,6 +1,6 @@
 {
   "id": "super-quick-salmon-stir-fry",
-  "name": "SUPER-QUICK SALMON STIR-FRY",
+  "name": "Super-quick Salmon Stir-fry",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -81,5 +81,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

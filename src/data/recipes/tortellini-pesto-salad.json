@@ -69,5 +69,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -76,5 +76,8 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "gluten-free"
+  ]
 }

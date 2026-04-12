@@ -40,5 +40,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/homemade-egg-pasta-fettuccine.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

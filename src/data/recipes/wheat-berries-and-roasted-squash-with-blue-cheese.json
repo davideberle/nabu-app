@@ -49,5 +49,8 @@
     ],
     "chapter": "Cheese"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -1446,5 +1446,8 @@
     ],
     "chapter": "Main Dishes"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegetarian"
+  ]
 }

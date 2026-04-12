@@ -1,6 +1,6 @@
 {
   "id": "with-lime-leaves-and-juice",
-  "name": "WITH LIME LEAVES AND JUICE",
+  "name": "With Lime Leaves and Juice",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -65,5 +65,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

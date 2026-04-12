@@ -49,5 +49,9 @@
     ],
     "chapter": "Dumplings and Snacks"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

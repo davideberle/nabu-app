@@ -167,5 +167,8 @@
     "chapter": "Main Dishes: Worth the Effort"
   },
   "subtitle": "UPSIDE-DOWN RICE",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

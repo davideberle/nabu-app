@@ -1,6 +1,6 @@
 {
   "id": "fennel-with-capers-and-olives",
-  "name": "FENNEL WITH CAPERS AND OLIVES",
+  "name": "Fennel with Capers and Olives",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -89,5 +89,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

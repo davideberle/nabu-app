@@ -49,6 +49,7 @@
   ],
   "image": "/recipes/marinated-feta.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -60,5 +61,5 @@
     ],
     "chapter": "Mezze & sharing plates"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

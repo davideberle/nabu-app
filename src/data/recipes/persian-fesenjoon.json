@@ -70,5 +70,9 @@
     ],
     "chapter": "Main Dishes: 1 Hour"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/persian-fesenjoon.jpg"
 }

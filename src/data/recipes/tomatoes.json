@@ -1,6 +1,6 @@
 {
   "id": "tomatoes",
-  "name": "TOMATOES",
+  "name": "Tomato Sauce",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -102,5 +102,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -74,5 +74,9 @@
     ],
     "chapter": "Main Dishes: Soups & Stews"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/margat-batata.jpg"
 }

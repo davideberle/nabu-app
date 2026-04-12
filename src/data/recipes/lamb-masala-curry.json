@@ -85,12 +85,15 @@
     "To finish, stir in the yoghurt, 1 tablespoon at a time. It will hardly be noticeable in the sauce, but it thickens and adds flavour to it. Season with salt and serve."
   ],
   "tips": "If you can’t find bassar, you might want to add a little more chilli powder, but I suggest adding it at the end of cooking, to taste. Bassar curry masala contains mustard oil and should always be cooked before consuming.",
-  "image": null,
+  "image": "/recipes/lamb-masala-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Curries"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

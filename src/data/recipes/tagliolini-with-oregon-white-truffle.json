@@ -50,5 +50,8 @@
     ],
     "chapter": "Fall"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

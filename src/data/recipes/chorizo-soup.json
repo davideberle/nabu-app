@@ -1,6 +1,6 @@
 {
   "id": "chorizo-soup",
-  "name": "CHORIZO SOUP",
+  "name": "Chorizo Soup",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -45,5 +45,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

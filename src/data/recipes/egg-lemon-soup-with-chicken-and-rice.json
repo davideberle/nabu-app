@@ -74,5 +74,8 @@
     ],
     "chapter": "More Than Greek Salad"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "gluten-free"
+  ]
 }

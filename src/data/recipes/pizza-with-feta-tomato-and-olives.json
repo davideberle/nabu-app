@@ -153,5 +153,9 @@
     ]
   },
   "image": "/recipes/pizza-with-feta-tomato-and-olives.jpg",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free",
+    "vegetarian"
+  ]
 }

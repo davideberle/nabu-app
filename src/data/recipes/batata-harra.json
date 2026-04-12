@@ -1,6 +1,6 @@
 {
   "id": "batata-harra",
-  "name": "BATATA HARRA",
+  "name": "Batata Harra",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -66,5 +66,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

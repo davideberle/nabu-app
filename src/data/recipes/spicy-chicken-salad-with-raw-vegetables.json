@@ -89,5 +89,8 @@
     ],
     "chapter": "Poultry & Meat"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "gluten-free"
+  ]
 }

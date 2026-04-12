@@ -88,7 +88,7 @@
     "Cook the potatoes with the turmeric in plenty of salted boiling water for 10 to 12 minutes, until cooked. Drain carefully, making sure none of the turmeric water spills (the stains are a pain to remove!), and place in a large mixing bowl. While the potatoes are still hot, add the anchovies, harissa, capers, preserved lemon, olives, 6 tbsp / 90 ml of the tuna preserving oil, and some of the peppercorns from the oil. Mix gently and leave to cool.",
     "Lift the tuna from the remaining oil, break it into bite-size chunks, and add to the salad. Add the lemon juice, peppers, eggs, lettuce, and parsley. Toss gently, taste, add salt if it needs it and possibly more oil, then serve."
   ],
-  "image": null,
+  "image": "/recipes/fricassee-salad.jpg",
   "time": {
     "total": 180
   },
@@ -98,5 +98,8 @@
     ],
     "chapter": "Fish"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

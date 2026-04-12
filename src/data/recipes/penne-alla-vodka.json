@@ -73,5 +73,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/penne-alla-vodka.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

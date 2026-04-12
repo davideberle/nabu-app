@@ -1,6 +1,6 @@
 {
   "id": "spice-stuffed-potato-cakes",
-  "name": "SPICE-STUFFED POTATO CAKES",
+  "name": "Spice-stuffed Potato Cakes",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -66,5 +66,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

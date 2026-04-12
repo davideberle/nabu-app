@@ -1,6 +1,6 @@
 {
   "id": "breadfriedinohve",
-  "name": "breadfriedinohve",
+  "name": "Panzanella (Tuscan Bread Salad)",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -130,5 +130,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

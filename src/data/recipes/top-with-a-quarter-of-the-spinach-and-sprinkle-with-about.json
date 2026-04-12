@@ -1,6 +1,6 @@
 {
   "id": "top-with-a-quarter-of-the-spinach-and-sprinkle-with-about",
-  "name": "Top with a quarter of the spinach, and sprinkle with about",
+  "name": "Gruyere, Ham, and Tarragon Grilled Cheese",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -83,5 +83,6 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

@@ -64,5 +64,8 @@
     "chapter": "Desserts"
   },
   "image": "/recipes/dads-key-lime-pie.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

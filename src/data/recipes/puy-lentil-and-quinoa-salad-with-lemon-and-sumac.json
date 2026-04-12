@@ -65,6 +65,7 @@
   ],
   "image": "/recipes/puy-lentil-and-quinoa-salad-with-lemon-and-sumac.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -77,5 +78,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

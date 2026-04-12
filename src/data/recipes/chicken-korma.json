@@ -1,6 +1,6 @@
 {
   "id": "chicken-korma",
-  "name": "CHICKEN KORMA",
+  "name": "Chicken Korma",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -101,5 +101,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/chicken-korma.jpg"
 }

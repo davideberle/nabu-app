@@ -1,6 +1,6 @@
 {
   "id": "serve-slightly-warm-or-at-room-tempera",
-  "name": "Serve slightly warm or at room tempera-",
+  "name": "Ham and Cheese Croissants",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -68,5 +68,6 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American"
 }

@@ -1,6 +1,6 @@
 {
   "id": "with-salbitxada-sauce",
-  "name": "WITH SALBITXADA SAUCE",
+  "name": "With Salbitxada Sauce",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -102,5 +102,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

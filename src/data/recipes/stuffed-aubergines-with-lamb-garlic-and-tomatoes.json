@@ -59,5 +59,8 @@
     ],
     "chapter": "Roasts & grills"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

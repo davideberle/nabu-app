@@ -1,6 +1,6 @@
 {
   "id": "it-gives-you-a-slightly-d-rier-dish-w-ith-loads-of-flavor-and-a-go-rgeous-crispy",
-  "name": "It gives you a slightly d rier dish w ith loads of flavor and a go rgeous, crispy texture.",
+  "name": "Crispy Roasted Chicken",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -80,5 +80,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

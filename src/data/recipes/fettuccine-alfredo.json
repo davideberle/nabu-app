@@ -41,5 +41,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/fettuccine-alfredo.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

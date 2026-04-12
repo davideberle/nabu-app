@@ -1,6 +1,6 @@
 {
   "id": "evolution-carrot-salad",
-  "name": "EVOLUTION CARROT SALAD",
+  "name": "Evolution Carrot Salad",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -64,5 +64,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

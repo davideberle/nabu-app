@@ -116,5 +116,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Mexican"
+  "cuisine": "Mexican",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "marrow-with-tomato-and-feta",
-  "name": "MARROW WITH TOMATO AND FETA",
+  "name": "Marrow with Tomato and Feta",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -60,5 +60,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

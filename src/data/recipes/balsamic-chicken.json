@@ -69,5 +69,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/balsamic-chicken.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

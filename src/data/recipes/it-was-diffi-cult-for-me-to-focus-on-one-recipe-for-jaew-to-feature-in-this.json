@@ -1,6 +1,6 @@
 {
   "id": "it-was-diffi-cult-for-me-to-focus-on-one-recipe-for-jaew-to-feature-in-this",
-  "name": "It was diffi cult for me to focus on one recipe for jaew to feature in this",
+  "name": "Jaew (Isaan Dipping Sauce)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -51,5 +51,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

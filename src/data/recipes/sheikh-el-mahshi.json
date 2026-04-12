@@ -115,5 +115,8 @@
     "chapter": "Main Dishes: Worth the Effort"
   },
   "subtitle": "STUFFED EGGPLANT BOATS",
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

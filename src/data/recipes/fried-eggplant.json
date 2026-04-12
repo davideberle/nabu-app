@@ -46,5 +46,10 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/fried-eggplant.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

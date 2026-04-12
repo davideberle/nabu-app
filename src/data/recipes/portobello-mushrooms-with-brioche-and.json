@@ -1,6 +1,6 @@
 {
   "id": "portobello-mushrooms-with-brioche-and",
-  "name": "Portobello mushrooms with brioche and",
+  "name": "Portobello Mushrooms with Brioche and Poached Eggs",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -70,5 +70,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

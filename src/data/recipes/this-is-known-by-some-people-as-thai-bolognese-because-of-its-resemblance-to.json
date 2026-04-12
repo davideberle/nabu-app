@@ -1,6 +1,6 @@
 {
   "id": "this-is-known-by-some-people-as-thai-bolognese-because-of-its-resemblance-to",
-  "name": "This is known by some people as “Thai Bolognese” because of its resemblance to",
+  "name": "Nam Prik Num (Northern Thai Green Chili Dip)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -54,5 +54,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

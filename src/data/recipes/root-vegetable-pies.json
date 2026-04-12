@@ -1,6 +1,6 @@
 {
   "id": "root-vegetable-pies",
-  "name": "ROOT VEGETABLE PIES",
+  "name": "Root Vegetable Pies",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -110,5 +110,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

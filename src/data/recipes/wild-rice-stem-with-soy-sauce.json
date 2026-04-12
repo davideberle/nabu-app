@@ -60,5 +60,9 @@
     ],
     "chapter": "Vegetables"
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "vegan",
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "yields-one-6x14-inch-jalousie-pastry",
-  "name": "Yields one 6x14-inch jalousie pastry;",
+  "name": "Apple Jalousie Pastry",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -82,5 +82,9 @@
       "main"
     ],
     "chapter": ""
-  }
+  },
+  "cuisine": "American",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -62,5 +62,9 @@
     ],
     "chapter": "Salads & Sides"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ],
+  "image": "/recipes/iraqi-timman-bagilla.jpg"
 }

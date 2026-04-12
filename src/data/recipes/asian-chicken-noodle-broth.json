@@ -1,6 +1,6 @@
 {
   "id": "asian-chicken-noodle-broth",
-  "name": "ASIAN CHICKEN NOODLE BROTH",
+  "name": "Asian Chicken Noodle Broth",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -63,5 +63,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

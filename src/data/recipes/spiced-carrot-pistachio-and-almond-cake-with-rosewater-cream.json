@@ -73,6 +73,7 @@
   ],
   "image": "/recipes/spiced-carrot-pistachio-and-almond-cake-with-rosewater-cream.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -84,5 +85,5 @@
     ],
     "chapter": "Desserts & sweet treats"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

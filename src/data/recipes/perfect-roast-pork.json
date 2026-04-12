@@ -1,6 +1,6 @@
 {
   "id": "perfect-roast-pork",
-  "name": "PERFECT ROAST PORK",
+  "name": "Perfect Roast Pork",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -61,5 +61,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

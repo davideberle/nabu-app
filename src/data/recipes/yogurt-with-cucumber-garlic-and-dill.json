@@ -41,6 +41,7 @@
   ],
   "image": "/recipes/yogurt-with-cucumber-garlic-and-dill.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "category": {
@@ -54,5 +55,5 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

@@ -12,6 +12,13 @@ export type Ingredient = {
   group?: string | null;
 };
 
+export type ServingSuggestion = {
+  name: string;
+  recipeId?: string;
+  role: "side" | "salad" | "bread" | "sauce" | "drink" | "dessert" | "base";
+  notes?: string;
+};
+
 export type Recipe = {
   id: string;
   name: string;
@@ -40,6 +47,8 @@ export type Recipe = {
   };
   dietary?: string[];
   image?: string | null;
+  mealRole?: "main" | "side" | "salad" | "bread" | "sauce" | "dessert" | "drink" | "base";
+  servingSuggestions?: ServingSuggestion[];
 };
 
 // Cookbook to cuisine mapping

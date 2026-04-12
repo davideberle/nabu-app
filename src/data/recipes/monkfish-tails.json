@@ -78,6 +78,7 @@
   ],
   "image": "/recipes/monkfish-tails.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -89,5 +90,5 @@
     ],
     "chapter": "Roasts & grills"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

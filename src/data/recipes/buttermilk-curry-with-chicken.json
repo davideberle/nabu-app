@@ -1,0 +1,54 @@
+{
+  "id": "buttermilk-curry-with-chicken",
+  "name": "Buttermilk Curry with Chicken",
+  "source": {
+    "cookbook": "My Recipes",
+    "publication": "Fooby",
+    "author": "Fooby",
+    "chapter": "Dinner"
+  },
+  "cuisine": "Indian",
+  "category": "dinner",
+  "servings": "4",
+  "time": {
+    "prep": 40,
+    "cook": 60,
+    "total": 100
+  },
+  "intro": "A tangy, aromatic buttermilk curry with coconut, spinach, and peas — marinated chicken seared and simmered in a vibrant sauce.",
+  "ingredients": [
+    { "item": "Coconut flakes", "amount": "30", "unit": "g", "group": "Marinade" },
+    { "item": "Buttermilk", "amount": "5", "unit": "dl", "group": "Marinade" },
+    { "item": "Ginger, finely grated", "amount": "2", "unit": "cm", "group": "Marinade" },
+    { "item": "Garlic cloves, finely chopped", "amount": "2", "group": "Marinade" },
+    { "item": "Red chillies, deseeded and finely chopped", "amount": "2", "group": "Marinade" },
+    { "item": "Ground coriander", "amount": "1", "unit": "tbsp", "group": "Marinade" },
+    { "item": "Ground cumin", "amount": "1", "unit": "tbsp", "group": "Marinade" },
+    { "item": "Turmeric", "amount": "1", "unit": "tsp", "group": "Marinade" },
+    { "item": "Skinless chicken steaks", "amount": "800", "unit": "g", "group": "Meat" },
+    { "item": "Oil", "amount": "a dash", "group": "Curry" },
+    { "item": "Onion, finely chopped", "amount": "1", "group": "Curry" },
+    { "item": "Frozen peas", "amount": "200", "unit": "g", "group": "Curry" },
+    { "item": "Leaf spinach", "amount": "200", "unit": "g", "group": "Curry" },
+    { "item": "Salt", "amount": "1.5", "unit": "tsp", "group": "Curry" }
+  ],
+  "method": [
+    "In a bowl, mix the buttermilk with the coconut flakes, ginger, garlic, chillies, coriander, cumin and turmeric. Set aside approx. 400 ml of the marinade.",
+    "Place the chicken in the remainder of the marinade, mix, cover and marinate in the fridge for approx. 1 hr.",
+    "Heat a dash of oil in a frying pan. Remove the chicken from the marinade, wipe off the marinade. Place the chicken in the pan in batches, brown for approx. 4 mins on each side. Remove, season with salt and set aside.",
+    "Wipe away the cooking fat. Sauté the onion and garlic in the same frying pan for approx. 3 mins. Pour in the reserved marinade, bring to the boil.",
+    "Reduce the heat. Add the peas, add the spinach in batches, allow to wilt, season with salt. Return the chicken to the pan, simmer for approx. 5 mins.",
+    "Plate up the curry, sprinkle with the coconut flakes."
+  ],
+  "dietary": ["gluten-free"],
+  "tags": [
+    "Curry",
+    "Chicken",
+    "Indian",
+    "Buttermilk",
+    "Gluten-Free",
+    "Fooby"
+  ],
+  "mealRole": "main",
+  "image": null
+}

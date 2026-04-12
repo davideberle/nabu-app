@@ -98,12 +98,15 @@
     "The pan should be going crazy over the heat. Swirl in the remaining base curry sauce and add the pre-cooked meat with a little of the cooking stock. Let the sauce simmer over the high heat until it cooks down to your desired consistency.",
     "To finish, add the vinegar, dried fenugreek leaves (kasoori methi), potatoes (if using) and the coriander (cilantro). Season with salt and black pepper."
   ],
-  "image": null,
+  "image": "/recipes/lamb-vindaloo.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Biryanis & Rice"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

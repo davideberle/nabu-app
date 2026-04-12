@@ -1,6 +1,6 @@
 {
   "id": "baked-camembert-pasta",
-  "name": "BAKED CAMEMBERT PASTA",
+  "name": "Baked Camembert Pasta",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -52,5 +52,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

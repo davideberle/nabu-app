@@ -68,5 +68,8 @@
     ],
     "chapter": "Salads and Vegetable Sides"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

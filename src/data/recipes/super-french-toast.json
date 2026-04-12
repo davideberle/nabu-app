@@ -1,6 +1,6 @@
 {
   "id": "super-french-toast",
-  "name": "SUPER FRENCH TOAST",
+  "name": "Super French Toast",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -72,5 +72,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

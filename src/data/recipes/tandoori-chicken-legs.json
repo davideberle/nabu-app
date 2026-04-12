@@ -82,12 +82,15 @@
     "When ready to cook, skewer the chicken legs onto flat skewers and heat the barbecue. Grill using the direct grilling method until the chicken is nicely charred and then turn. This is important when using skewers, as the meat needs to cook so that it expands and doesn’t move around on the skewers.",
     "If you can’t be bothered to fire up the barbecue? No worries! Preheat the oven to 200°C (400°F/Gas 6) and cook the chicken on a wire rack placed over a foil-lined oven tray for about 20 minutes, or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature for a minute or so."
   ],
-  "image": null,
+  "image": "/recipes/tandoori-chicken-legs.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Basics & Breads"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

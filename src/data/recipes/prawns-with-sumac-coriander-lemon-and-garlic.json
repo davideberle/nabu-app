@@ -45,6 +45,7 @@
   ],
   "image": "/recipes/prawns-with-sumac-coriander-lemon-and-garlic.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -57,5 +58,5 @@
     ],
     "chapter": "Roasts & grills"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

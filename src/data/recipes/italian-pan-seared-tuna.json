@@ -1,6 +1,6 @@
 {
   "id": "italian-pan-seared-tuna",
-  "name": "ITALIAN PAN-SEARED TUNA",
+  "name": "Italian Pan-seared Tuna",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -71,5 +71,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "British"
+  "cuisine": "British",
+  "dietary": [
+    "gluten-free"
+  ]
 }

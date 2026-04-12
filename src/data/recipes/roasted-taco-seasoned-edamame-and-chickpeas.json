@@ -90,9 +90,10 @@
   ],
   "image": "/recipes/roasted-taco-seasoned-edamame-and-chickpeas.jpg",
   "dietary": [
+    "gluten-free",
+    "high-protein",
     "vegan",
-    "vegetarian",
-    "high-protein"
+    "vegetarian"
   ],
   "category": {
     "dish_type": [

@@ -1,6 +1,6 @@
 {
   "id": "grang-om-is-something-the-workers-put-to-the-pot-after-work-when-they-are-hungry",
-  "name": "Grang om is something the workers put to the pot after work when they are hungry and need a",
+  "name": "Gang Om (Isaan Workers' Stew)",
   "source": {
     "cookbook": "Real Thai Cooking",
     "author": "Chawadee Nualkhair"
@@ -53,5 +53,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

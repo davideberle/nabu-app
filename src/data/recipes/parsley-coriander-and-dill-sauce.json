@@ -62,5 +62,9 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

@@ -73,6 +73,7 @@
   ],
   "image": "/recipes/spicy-prawn-rice.jpg",
   "dietary": [
+    "gluten-free",
     "vegetarian"
   ],
   "time": {
@@ -84,5 +85,5 @@
     ],
     "chapter": "Breads & grains"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

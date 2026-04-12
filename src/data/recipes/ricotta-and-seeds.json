@@ -1,6 +1,6 @@
 {
   "id": "ricotta-and-seeds",
-  "name": "RICOTTA, AND SEEDS",
+  "name": "Ricotta, and Seeds",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -82,5 +82,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "gluten-free"
+  ]
 }

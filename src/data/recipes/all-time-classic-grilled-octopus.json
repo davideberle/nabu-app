@@ -113,5 +113,8 @@
     ],
     "chapter": "Basics"
   },
-  "cuisine": "Greek"
+  "cuisine": "Greek",
+  "dietary": [
+    "gluten-free"
+  ]
 }

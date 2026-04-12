@@ -1,6 +1,6 @@
 {
   "id": "pea-and-mint-croquettes",
-  "name": "PEA AND MINT CROQUETTES",
+  "name": "Pea and Mint Croquettes",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -74,5 +74,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

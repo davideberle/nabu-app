@@ -1,6 +1,6 @@
 {
   "id": "rice-if-in-a-rush",
-  "name": "rice if in a rush.",
+  "name": "Chickpea Coconut Curry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -61,5 +61,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

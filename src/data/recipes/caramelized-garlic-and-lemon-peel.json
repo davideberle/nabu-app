@@ -1,6 +1,6 @@
 {
   "id": "caramelized-garlic-and-lemon-peel",
-  "name": "CARAMELIZED GARLIC AND LEMON PEEL",
+  "name": "Caramelized Garlic and Lemon Peel",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -56,5 +56,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

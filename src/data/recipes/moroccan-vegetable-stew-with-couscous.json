@@ -121,5 +121,8 @@
     ],
     "chapter": "Sides"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "taleggio-and-spinach-roulade",
-  "name": "TALEGGIO AND SPINACH ROULADE",
+  "name": "Taleggio and Spinach Roulade",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -85,5 +85,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

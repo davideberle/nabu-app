@@ -54,5 +54,8 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "dietary": [
+    "gluten-free"
+  ]
 }

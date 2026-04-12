@@ -1,6 +1,6 @@
 {
   "id": "spicy-scrambled-eggs",
-  "name": "SPICY SCRAMBLED EGGS",
+  "name": "Spicy Scrambled Eggs",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -80,5 +80,9 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

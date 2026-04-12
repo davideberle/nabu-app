@@ -1,6 +1,6 @@
 {
   "id": "cilantro-stems-can-all-too-often-be-thrown-away-but-they-shouldn-t-be-they",
-  "name": "Cilantro stems can all too often be thrown away, but they shouldn’t be—they",
+  "name": "Cilantro Stem and Red Lentil Soup",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -75,5 +75,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

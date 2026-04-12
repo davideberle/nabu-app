@@ -80,5 +80,10 @@
     ],
     "chapter": "Balls & Bars"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

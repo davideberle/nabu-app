@@ -105,5 +105,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Mexican"
+  "cuisine": "Mexican",
+  "dietary": [
+    "gluten-free"
+  ]
 }

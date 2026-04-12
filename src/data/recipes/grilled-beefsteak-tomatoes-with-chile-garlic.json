@@ -1,6 +1,6 @@
 {
   "id": "grilled-beefsteak-tomatoes-with-chile-garlic",
-  "name": "Grilled beefsteak tomatoes with chile, garlic,",
+  "name": "Grilled Beefsteak Tomatoes with Chile, Garlic, and Ginger",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -230,5 +230,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

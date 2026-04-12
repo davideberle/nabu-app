@@ -117,5 +117,9 @@
     ],
     "chapter": "Soups & Stews"
   },
-  "cuisine": "Moroccan"
+  "cuisine": "Moroccan",
+  "dietary": [
+    "vegetarian",
+    "gluten-free"
+  ]
 }

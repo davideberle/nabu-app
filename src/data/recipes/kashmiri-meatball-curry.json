@@ -143,12 +143,15 @@
     "Stir this well, then add about 500ml (2 cups) of the cooking liquid from the meatballs, along with the saffron water and the meatballs. Simmer until you are happy with the consistency. If you prefer a runnier sauce, you could add more cooking stock; for a thicker sauce, just cook it down.",
     "Season with salt and black pepper. You could also add more chilli powder if you prefer a spicier curry. Serve with rice, naans or chapattis."
   ],
-  "image": null,
+  "image": "/recipes/kashmiri-meatball-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
     "chapter": "Curries"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

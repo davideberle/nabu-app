@@ -1,6 +1,6 @@
 {
   "id": "rice-enjoy-with-friends-and-family",
-  "name": "rice. Enjoy with friends and family.",
+  "name": "Thai Curry Chicken",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
     "author": "Various"
@@ -80,5 +80,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

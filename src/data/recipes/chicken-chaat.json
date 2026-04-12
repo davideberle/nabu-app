@@ -87,5 +87,8 @@
     ],
     "chapter": "Basics & Breads"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

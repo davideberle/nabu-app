@@ -72,5 +72,8 @@
     "cook": 15,
     "total": 30
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

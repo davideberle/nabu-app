@@ -509,5 +509,6 @@
     ],
     "chapter": "Main Dishes"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/pickled-red-onions.jpg"
 }

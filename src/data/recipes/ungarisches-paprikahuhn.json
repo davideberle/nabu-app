@@ -8,9 +8,7 @@
     "author": "Christian Seiler",
     "chapter": "Main Dishes"
   },
-  "cuisine": [
-    "Hungarian"
-  ],
+  "cuisine": "Other",
   "category": "Main",
   "servings": "4 servings",
   "time": {
@@ -78,5 +76,24 @@
     "Stew",
     "Main Dish",
     "Das Magazin"
+  ],
+  "mealRole": "main",
+  "servingSuggestions": [
+    {
+      "name": "Spätzle / Nokedli",
+      "role": "side",
+      "notes": "The classic accompaniment — egg noodle dumplings that soak up the paprika sauce"
+    },
+    {
+      "name": "Hungarian Cucumber Salad (Uborkasaláta)",
+      "recipeId": "hungarian-cucumber-salad-uborkasalata",
+      "role": "salad",
+      "notes": "A cool, tangy counterpoint to the rich chicken"
+    },
+    {
+      "name": "Baguette or crusty white bread",
+      "role": "bread",
+      "notes": "For mopping up the creamy paprika sauce"
+    }
   ]
 }

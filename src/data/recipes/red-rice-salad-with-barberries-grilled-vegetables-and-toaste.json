@@ -79,6 +79,7 @@
   ],
   "image": "/recipes/red-rice-salad-with-barberries-grilled-vegetables-and-toaste.jpg",
   "dietary": [
+    "gluten-free",
     "vegan",
     "vegetarian"
   ],
@@ -91,5 +92,5 @@
     ],
     "chapter": "Salads & vegetables"
   },
-  "cuisine": "Persian"
+  "cuisine": "Middle Eastern"
 }

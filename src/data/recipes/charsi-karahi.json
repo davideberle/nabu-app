@@ -60,5 +60,8 @@
     ],
     "chapter": "Grills & Kebabs"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "dietary": [
+    "gluten-free"
+  ]
 }

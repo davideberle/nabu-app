@@ -1,6 +1,6 @@
 {
   "id": "spicy-chickpea-and-bulgur-soup",
-  "name": "SPICY CHICKPEA AND BULGUR SOUP",
+  "name": "Spicy Chickpea and Bulgur Soup",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -109,5 +109,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

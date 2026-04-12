@@ -22,7 +22,7 @@
     "Soak the prunes for about 8 hours. Mix the prunes and the blueberries in a food processor to make a fruit batter.",
     "Spread the batter onto waxed parchment paper, or pour a thin layer in molds. Let dry for about 15 hours. The leathers should be a bit chewy; cut them into strips and roll them up. Keep the leathers in an airtight jar."
   ],
-  "image": null,
+  "image": "/recipes/prune-and-blueberry-leather.jpg",
   "time": {
     "total": 180
   },
@@ -32,5 +32,10 @@
     ],
     "chapter": "Balls & Bars"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

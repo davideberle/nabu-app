@@ -49,5 +49,8 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/pecan-snowballs.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegetarian"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "mushrooms-and-sweet-spices",
-  "name": "MUSHROOMS AND SWEET SPICES",
+  "name": "Mushrooms and Sweet Spices",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -91,5 +91,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

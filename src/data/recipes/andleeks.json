@@ -1,6 +1,6 @@
 {
   "id": "andleeks",
-  "name": "ANDLEEKS",
+  "name": "Jerusalem Artichokes and Leeks",
   "source": {
     "cookbook": "The Classic Italian Cook Book",
     "author": "Marcella Hazan"
@@ -106,5 +106,10 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }

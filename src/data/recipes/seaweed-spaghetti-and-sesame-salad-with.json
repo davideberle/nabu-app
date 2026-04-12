@@ -1,6 +1,6 @@
 {
   "id": "seaweed-spaghetti-and-sesame-salad-with",
-  "name": "Seaweed spaghetti and sesame salad with",
+  "name": "Seaweed Spaghetti and Sesame Salad with Tahini Dressing",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi"
@@ -84,5 +84,8 @@
     ],
     "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "dietary": [
+    "vegetarian"
+  ]
 }

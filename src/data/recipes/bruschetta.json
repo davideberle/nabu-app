@@ -49,5 +49,10 @@
     "chapter": "Main Dishes"
   },
   "image": "/recipes/bruschetta.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "dietary": [
+    "vegan",
+    "vegetarian",
+    "gluten-free"
+  ]
 }
