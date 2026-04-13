@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { getAllTodos, createTodo } from "@/lib/db";
 
 export async function GET() {
-  const todos = getAllTodos();
+  const todos = await getAllTodos();
   return NextResponse.json(todos);
 }
 
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const todo = createTodo({
+  const todo = await createTodo({
     title: body.title,
     description: body.description,
     category: body.category,

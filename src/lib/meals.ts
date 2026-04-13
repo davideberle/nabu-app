@@ -89,7 +89,7 @@ function isLight(recipe: Recipe): boolean {
     )
   )
     return true;
-  if (recipe.time && recipe.time.total > 0 && recipe.time.total < 45)
+  if (recipe.time?.total && recipe.time.total > 0 && recipe.time.total < 45)
     return true;
   return false;
 }

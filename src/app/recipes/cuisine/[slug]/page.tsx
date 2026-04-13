@@ -8,21 +8,21 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function generateStaticParams() {
-  const cuisines = getCuisines();
+export async function generateStaticParams() {
+  const cuisines = await getCuisines();
   return cuisines.map((c) => ({ slug: c.slug }));
 }
 
 export default async function CuisinePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const cuisines = getCuisines();
+  const cuisines = await getCuisines();
   const cuisine = cuisines.find(c => c.slug === slug);
-  
+
   if (!cuisine) {
     notFound();
   }
-  
-  const recipes = getRecipesByCuisine(slug);
+
+  const recipes = await getRecipesByCuisine(slug);
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -51,7 +51,7 @@ export default async function CuisinePage({ params }: { params: Promise<{ slug: 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {recipes.map((recipe) => {
             const dietary = getDietary(recipe);
-            
+
             return (
               <Link
                 key={recipe.id}
@@ -76,7 +76,7 @@ export default async function CuisinePage({ params }: { params: Promise<{ slug: 
                   <h2 className="font-serif text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
                     {recipe.name}
                   </h2>
-                  
+
                   <div className="flex items-center gap-2 mt-2 text-xs text-stone-400 dark:text-stone-500">
                     {recipe.servings && <span>{capitalize(recipe.servings)}</span>}
                     {recipe.source?.cookbook && (

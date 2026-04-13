@@ -3,9 +3,10 @@ import { auth, signOut } from "@/auth";
 import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
 
-function getTiles() {
+async function getTiles() {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
-  const myRecipesCount = getRecipesByCookbook("my-recipes").length;
+  const myRecipes = await getRecipesByCookbook("my-recipes");
+  const myRecipesCount = myRecipes.length;
 
   return [
     {
@@ -61,7 +62,7 @@ function getTiles() {
 
 export default async function Home() {
   const session = await auth();
-  const tiles = getTiles();
+  const tiles = await getTiles();
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">

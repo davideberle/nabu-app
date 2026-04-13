@@ -25,7 +25,7 @@ function summarizeMealCombo(combo: WeekendMealOption) {
 }
 
 export async function GET(request: NextRequest) {
-  const allRecipes = getAllRecipes();
+  const allRecipes = await getAllRecipes();
 
   // Support "exclude" param to avoid re-showing already-seen recipes
   const excludeParam = request.nextUrl.searchParams.get("exclude");
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
 // POST — full recipe detail for Quick View
 export async function POST(request: NextRequest) {
   const { id } = (await request.json()) as { id: string };
-  const recipe = getRecipe(id);
+  const recipe = await getRecipe(id);
   if (!recipe) {
     return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
   }

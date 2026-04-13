@@ -1,0 +1,30 @@
+# Nabu — Companion App
+
+Personal household companion app for the Eberle family. Deployed on Vercel at
+https://app.davideberle.com.
+
+## Stack
+
+- **Framework**: Next.js 16 (App Router, Server Components)
+- **Auth**: NextAuth v5 (Google OAuth, single-user allow-list)
+- **Database**: Turso (libSQL) via `@libsql/client` — shared by todos and My Recipes
+- **Styling**: Tailwind CSS v4
+- **Hosting**: Vercel (auto-deploy from `main`)
+
+## Modules
+
+| Module   | Status | Notes |
+|----------|--------|-------|
+| Todos    | Live   | Full CRUD, Turso-backed |
+| Recipes  | Live   | ~3,800 cookbook recipes (static JSON) + My Recipes (Turso) |
+| Meals    | Live   | Weekly meal planner with cuisine diversity |
+| Music    | Live   | Sonos zone control |
+| Shopping | Stub   | Lists placeholder |
+| System   | Stub   | Status placeholder |
+
+## Environment Variables (Vercel)
+
+- `TURSO_DATABASE_URL` — Turso database URL
+- `TURSO_AUTH_TOKEN` — Turso auth token
+- `AUTH_SECRET` — NextAuth secret
+- `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials

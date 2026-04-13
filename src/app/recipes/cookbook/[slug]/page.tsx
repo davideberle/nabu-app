@@ -44,26 +44,26 @@ const DEFAULT_CHAPTER_ORDER = [
   'Starters & Appetizers', 'Soups & Stews', 'Sides', 'Main Dishes', 'Desserts', 'Drinks', 'Other'
 ];
 
-export function generateStaticParams() {
-  const cookbooks = getCookbooks();
+export async function generateStaticParams() {
+  const cookbooks = await getCookbooks();
   return cookbooks.map((c) => ({ slug: c.slug }));
 }
 
 export default async function CookbookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const cookbooks = getCookbooks();
+  const cookbooks = await getCookbooks();
   const cookbook = cookbooks.find(c => c.slug === slug);
-  
+
   if (!cookbook) {
     notFound();
   }
-  
-  const recipes = getRecipesByCookbook(slug);
-  
+
+  const recipes = await getRecipesByCookbook(slug);
+
   // Group recipes by chapter if chapters exist
   const chapters = new Map<string, typeof recipes>();
   let hasChapters = false;
-  
+
   for (const recipe of recipes) {
     const chapter = recipe.source?.chapter || recipe.category?.chapter || '';
     if (chapter) hasChapters = true;
@@ -71,11 +71,11 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
     if (!chapters.has(key)) chapters.set(key, []);
     chapters.get(key)!.push(recipe);
   }
-  
+
   const chapterCount = Array.from(chapters.keys()).filter(k => k !== '__uncategorized__').length;
   const uncategorizedCount = chapters.get('__uncategorized__')?.length || 0;
   const useChapterGrouping = hasChapters && chapterCount > 0 && (uncategorizedCount < recipes.length * 0.5);
-  
+
   // Sort chapters by book order
   const sortChapters = (a: string, b: string) => {
     const order = CHAPTER_ORDER[cookbook.name] || DEFAULT_CHAPTER_ORDER;
@@ -86,13 +86,13 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
     if (bIdx === -1) return -1;
     return aIdx - bIdx;
   };
-  
-  const groupedRecipes = useChapterGrouping 
+
+  const groupedRecipes = useChapterGrouping
     ? Array.from(chapters.entries())
         .filter(([k]) => k !== '__uncategorized__')
         .sort((a, b) => sortChapters(a[0], b[0]))
     : [];
-  
+
   // For sticky nav
   const chapterList = groupedRecipes.map(([name, recipes]) => ({ name, count: recipes.length }));
 
@@ -126,7 +126,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
         {useChapterGrouping ? (
           <div className="space-y-10">
             {groupedRecipes.map(([chapterName, chapterRecipes]) => (
-              <section 
+              <section
                 key={chapterName}
                 id={`chapter-${chapterName.replace(/\s+/g, '-').toLowerCase()}`}
               >

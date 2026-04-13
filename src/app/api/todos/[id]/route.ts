@@ -8,19 +8,19 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
   const { id } = await context.params;
   const body = await request.json();
 
-  const existing = getTodo(id);
+  const existing = await getTodo(id);
   if (!existing) {
     return NextResponse.json({ error: "Todo not found" }, { status: 404 });
   }
 
-  const updated = updateTodo(id, body);
+  const updated = await updateTodo(id, body);
   return NextResponse.json(updated);
 }
 
 export async function DELETE(_request: NextRequest, context: RouteContext) {
   const { id } = await context.params;
 
-  const deleted = deleteTodo(id);
+  const deleted = await deleteTodo(id);
   if (!deleted) {
     return NextResponse.json({ error: "Todo not found" }, { status: 404 });
   }

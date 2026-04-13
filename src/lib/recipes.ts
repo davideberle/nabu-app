@@ -1,8 +1,10 @@
 // Recipe types and data loading
-// Reads from extracted JSON files in src/data/recipes/
+// Static cookbook recipes from JSON + My Recipes from Turso
 
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+import { cache } from "react";
+import { getAllMyRecipes, getMyRecipe } from "./db";
 
 export type Ingredient = {
   item: string;
@@ -29,7 +31,7 @@ export type Recipe = {
     chapter: string;
   };
   servings: string;
-  time?: { prep: number; cook: number; total: number };
+  time?: { prep?: number; cook?: number; total?: number };
   ingredients: Ingredient[];
   method: string[];
   serving?: string;
@@ -40,134 +42,156 @@ export type Recipe = {
   };
   dietary?: string[];
   image?: string | null;
+  // Extra fields used by My Recipes
+  cuisine?: string | string[];
+  mealRole?: string;
+  madeHistory?: { date: string; note: string }[];
+  lastMade?: string;
 };
 
 // Cookbook to cuisine mapping
 const COOKBOOK_CUISINES: Record<string, string> = {
-  'Ottolenghi: The Cookbook': 'Middle Eastern',
-  'Jerusalem': 'Middle Eastern',
-  'Falastin': 'Middle Eastern',
-  'Persiana': 'Middle Eastern',
-  'Souk to Table': 'Middle Eastern',
-  'Plenty': 'Middle Eastern',
-  'Plenty More': 'Middle Eastern',
-  'Ottolenghi Simple': 'Middle Eastern',
-  'The Curry Guy': 'Indian',
-  'The Curry Guy Bible': 'Indian',
-  'The Indian Vegan': 'Indian',
-  'Vietnamese Food Any Day': 'Vietnamese',
-  'Vegan Vietnamese': 'Vietnamese',
-  'Afro-Vegan': 'African & Caribbean',
-  'Plentiful': 'Caribbean',
-  'Black Rican Vegan': 'Caribbean',
-  'The Vegan Korean': 'Korean',
-  'Mexican Home Cooking': 'Mexican',
-  'Land of Fish and Rice': 'Chinese',
-  'Four Seasons': 'Italian',
-  'Italian And Lebanese Cookbook': 'Mediterranean',
-  'More Than Carbonara': 'Italian',
-  'Pasta for All Seasons': 'Italian',
-  'The Best Pasta Recipes': 'Italian',
-  'The Classic Italian Cook Book': 'Italian',
-  'Zagami Family Cookbook': 'Italian',
-  'The Authentic Greek Kitchen': 'Greek',
-  'The Complete Greek Cookbook': 'Greek',
-  'The Complete and Authentic Thai Curry Cookbook 2': 'Thai',
-  'Real Thai Cooking': 'Thai',
-  'Thai Spice Recipes': 'Thai',
-  'Vegan Nigerian Kitchen': 'Nigerian',
-  'Tagine Cookbook': 'Moroccan',
-  'Jamie\'s Food Revolution': 'British',
+  "Ottolenghi: The Cookbook": "Middle Eastern",
+  Jerusalem: "Middle Eastern",
+  Falastin: "Middle Eastern",
+  Persiana: "Middle Eastern",
+  "Souk to Table": "Middle Eastern",
+  Plenty: "Middle Eastern",
+  "Plenty More": "Middle Eastern",
+  "Ottolenghi Simple": "Middle Eastern",
+  "The Curry Guy": "Indian",
+  "The Curry Guy Bible": "Indian",
+  "The Indian Vegan": "Indian",
+  "Vietnamese Food Any Day": "Vietnamese",
+  "Vegan Vietnamese": "Vietnamese",
+  "Afro-Vegan": "African & Caribbean",
+  Plentiful: "Caribbean",
+  "Black Rican Vegan": "Caribbean",
+  "The Vegan Korean": "Korean",
+  "Mexican Home Cooking": "Mexican",
+  "Land of Fish and Rice": "Chinese",
+  "Four Seasons": "Italian",
+  "Italian And Lebanese Cookbook": "Mediterranean",
+  "More Than Carbonara": "Italian",
+  "Pasta for All Seasons": "Italian",
+  "The Best Pasta Recipes": "Italian",
+  "The Classic Italian Cook Book": "Italian",
+  "Zagami Family Cookbook": "Italian",
+  "The Authentic Greek Kitchen": "Greek",
+  "The Complete Greek Cookbook": "Greek",
+  "The Complete and Authentic Thai Curry Cookbook 2": "Thai",
+  "Real Thai Cooking": "Thai",
+  "Thai Spice Recipes": "Thai",
+  "Vegan Nigerian Kitchen": "Nigerian",
+  "Tagine Cookbook": "Moroccan",
+  "Jamie's Food Revolution": "British",
 };
 
-// Load recipes from JSON files at build time
-function loadRecipes(): Recipe[] {
-  const recipesDir = path.join(process.cwd(), 'src/data/recipes');
-  
+// Load static cookbook recipes from JSON files (excluding My Recipes)
+function loadStaticRecipes(): Recipe[] {
+  const recipesDir = path.join(process.cwd(), "src/data/recipes");
+
   try {
     const files = fs.readdirSync(recipesDir);
     const recipes: Recipe[] = [];
-    
+
     for (const file of files) {
-      if (file.endsWith('.json') && file !== 'index.json') {
+      if (file.endsWith(".json") && file !== "index.json") {
         const filePath = path.join(recipesDir, file);
-        const content = fs.readFileSync(filePath, 'utf8');
+        const content = fs.readFileSync(filePath, "utf8");
         const recipe = JSON.parse(content);
+        // Skip My Recipes from static JSON — they come from Turso
+        if (recipe.source?.cookbook === "My Recipes") continue;
         recipes.push(recipe);
       }
     }
-    
-    // Sort by name
+
     recipes.sort((a, b) => a.name.localeCompare(b.name));
-    
     return recipes;
   } catch (err) {
-    console.error('Error loading recipes:', err);
+    console.error("Error loading recipes:", err);
     return [];
   }
 }
 
-// Cache recipes at module load
-const allRecipes = loadRecipes();
+// Cache static recipes at module load (they never change at runtime)
+const staticRecipes = loadStaticRecipes();
 
-export function getRecipe(id: string): Recipe | undefined {
-  return allRecipes.find(r => r.id === id);
+// Deduplicated fetch of all recipes (static + Turso My Recipes) per request
+export const getAllRecipes = cache(async (): Promise<Recipe[]> => {
+  const myRecipes = await getAllMyRecipes();
+  return [...staticRecipes, ...myRecipes].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+});
+
+export async function getRecipe(id: string): Promise<Recipe | undefined> {
+  // Check static first (fast path for the vast majority)
+  const staticHit = staticRecipes.find((r) => r.id === id);
+  if (staticHit) return staticHit;
+  // Fall back to Turso for My Recipes
+  return getMyRecipe(id);
 }
 
-export function getAllRecipes(): Recipe[] {
-  return allRecipes;
+export async function getRecipesByChapter(
+  chapter: string
+): Promise<Recipe[]> {
+  const all = await getAllRecipes();
+  return all.filter(
+    (r) => r.source?.chapter === chapter || r.category?.chapter === chapter
+  );
 }
 
-export function getRecipesByChapter(chapter: string): Recipe[] {
-  return allRecipes.filter(r => r.source?.chapter === chapter || r.category?.chapter === chapter);
+export async function getRecipesWithImages(): Promise<Recipe[]> {
+  const all = await getAllRecipes();
+  return all.filter((r) => r.image !== null);
 }
 
-export function getRecipesWithImages(): Recipe[] {
-  return allRecipes.filter(r => r.image !== null);
-}
-
-// Get cuisine for a recipe
+// Get cuisine for a recipe (sync — pure function)
 export function getCuisine(recipe: Recipe): string {
   const cookbook = recipe.source?.cookbook;
   if (cookbook && COOKBOOK_CUISINES[cookbook]) {
     return COOKBOOK_CUISINES[cookbook];
   }
-  return 'Other';
+  return "Other";
 }
 
-// Get dietary tags for a recipe (normalized)
+// Get dietary tags for a recipe (sync — pure function)
 export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
-// Cookbook cover images (extracted from EPUBs + Open Library)
+// Cookbook cover images
 const COOKBOOK_COVERS: Record<string, string> = {
-  'Ottolenghi: The Cookbook': '/cookbooks/ottolenghi-the-cookbook.jpg',
-  'Jerusalem': '/cookbooks/jerusalem.jpg',
-  'Falastin': '/cookbooks/falastin.jpg',
-  'Persiana': '/cookbooks/persiana.jpg',
-  'The Curry Guy': '/cookbooks/the-curry-guy.jpg',
-  'The Curry Guy Bible': '/cookbooks/the-curry-guy-bible.jpg',
-  'The Indian Vegan': '/cookbooks/the-indian-vegan.jpg',
-  'Vietnamese Food Any Day': '/cookbooks/vietnamese-food-any-day.jpg',
-  'Afro-Vegan': '/cookbooks/afro-vegan.jpg',
-  'Plentiful': '/cookbooks/plentiful.jpg',
-  'The Vegan Korean': '/cookbooks/the-vegan-korean.jpg',
-  'Black Rican Vegan': '/cookbooks/black-rican-vegan.jpg',
-  'Brunch Cookbook': '/cookbooks/brunch-cookbook.jpg',
-  'Four Seasons': '/cookbooks/four-seasons.jpg',
-  'The High-Protein Vegan Cookbook': '/cookbooks/the-high-protein-vegan-cookbook.jpg',
-  'Land of Fish and Rice': '/cookbooks/land-of-fish-and-rice.jpg',
-  'Vegan Chocolate': '/cookbooks/vegan-chocolate.jpg',
-  'The Authentic Greek Kitchen': '/cookbooks/the-authentic-greek-kitchen.jpg',
-  'Zagami Family Cookbook': '/cookbooks/zagami-family-cookbook.jpg',
-  'My Recipes': '/cookbooks/my-recipes.jpg',
+  "Ottolenghi: The Cookbook": "/cookbooks/ottolenghi-the-cookbook.jpg",
+  Jerusalem: "/cookbooks/jerusalem.jpg",
+  Falastin: "/cookbooks/falastin.jpg",
+  Persiana: "/cookbooks/persiana.jpg",
+  "The Curry Guy": "/cookbooks/the-curry-guy.jpg",
+  "The Curry Guy Bible": "/cookbooks/the-curry-guy-bible.jpg",
+  "The Indian Vegan": "/cookbooks/the-indian-vegan.jpg",
+  "Vietnamese Food Any Day": "/cookbooks/vietnamese-food-any-day.jpg",
+  "Afro-Vegan": "/cookbooks/afro-vegan.jpg",
+  Plentiful: "/cookbooks/plentiful.jpg",
+  "The Vegan Korean": "/cookbooks/the-vegan-korean.jpg",
+  "Black Rican Vegan": "/cookbooks/black-rican-vegan.jpg",
+  "Brunch Cookbook": "/cookbooks/brunch-cookbook.jpg",
+  "Four Seasons": "/cookbooks/four-seasons.jpg",
+  "The High-Protein Vegan Cookbook":
+    "/cookbooks/the-high-protein-vegan-cookbook.jpg",
+  "Land of Fish and Rice": "/cookbooks/land-of-fish-and-rice.jpg",
+  "Vegan Chocolate": "/cookbooks/vegan-chocolate.jpg",
+  "The Authentic Greek Kitchen": "/cookbooks/the-authentic-greek-kitchen.jpg",
+  "Zagami Family Cookbook": "/cookbooks/zagami-family-cookbook.jpg",
+  "My Recipes": "/cookbooks/my-recipes.jpg",
 };
 
-// Get all unique cookbooks with counts
-export function getCookbooks(): { name: string; slug: string; count: number; author?: string; cover?: string }[] {
+export async function getCookbooks(): Promise<
+  { name: string; slug: string; count: number; author?: string; cover?: string }[]
+> {
+  const allRecipes = await getAllRecipes();
   const cookbookMap = new Map<string, { count: number; author?: string }>();
-  
+
   for (const recipe of allRecipes) {
     const cookbook = recipe.source?.cookbook;
     if (cookbook) {
@@ -179,57 +203,64 @@ export function getCookbooks(): { name: string; slug: string; count: number; aut
       }
     }
   }
-  
+
   return Array.from(cookbookMap.entries())
     .map(([name, data]) => ({
       name,
       slug: slugify(name),
       count: data.count,
       author: data.author,
-      cover: COOKBOOK_COVERS[name]
+      cover: COOKBOOK_COVERS[name],
     }))
     .sort((a, b) => {
-      // Pin "My Recipes" to the front
-      if (a.slug === 'my-recipes') return -1;
-      if (b.slug === 'my-recipes') return 1;
+      if (a.slug === "my-recipes") return -1;
+      if (b.slug === "my-recipes") return 1;
       return b.count - a.count;
     });
 }
 
-// Get all unique cuisines with counts
-export function getCuisines(): { name: string; slug: string; count: number }[] {
+export async function getCuisines(): Promise<
+  { name: string; slug: string; count: number }[]
+> {
+  const allRecipes = await getAllRecipes();
   const cuisineMap = new Map<string, number>();
-  
+
   for (const recipe of allRecipes) {
     const cuisine = getCuisine(recipe);
     cuisineMap.set(cuisine, (cuisineMap.get(cuisine) || 0) + 1);
   }
-  
+
   return Array.from(cuisineMap.entries())
     .map(([name, count]) => ({
       name,
       slug: slugify(name),
-      count
+      count,
     }))
     .sort((a, b) => b.count - a.count);
 }
 
-// Get recipes by cookbook
-export function getRecipesByCookbook(cookbookSlug: string): Recipe[] {
-  return allRecipes.filter(r => {
+export async function getRecipesByCookbook(
+  cookbookSlug: string
+): Promise<Recipe[]> {
+  const allRecipes = await getAllRecipes();
+  return allRecipes.filter((r) => {
     const cookbook = r.source?.cookbook;
     return cookbook && slugify(cookbook) === cookbookSlug;
   });
 }
 
-// Get recipes by cuisine
-export function getRecipesByCuisine(cuisineSlug: string): Recipe[] {
-  return allRecipes.filter(r => slugify(getCuisine(r)) === cuisineSlug);
+export async function getRecipesByCuisine(
+  cuisineSlug: string
+): Promise<Recipe[]> {
+  const allRecipes = await getAllRecipes();
+  return allRecipes.filter((r) => slugify(getCuisine(r)) === cuisineSlug);
 }
 
-// Get recipes by dietary tag
-export function getRecipesByDietary(dietary: string): Recipe[] {
-  return allRecipes.filter(r => {
+export async function getRecipesByDietary(
+  dietary: string
+): Promise<Recipe[]> {
+  const allRecipes = await getAllRecipes();
+  return allRecipes.filter((r) => {
     const tags = getDietary(r);
     return tags.includes(dietary.toLowerCase());
   });
@@ -239,28 +270,32 @@ export function getRecipesByDietary(dietary: string): Recipe[] {
 function slugify(str: string): string {
   return str
     .toLowerCase()
-    .replace(/['']/g, '')
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+    .replace(/['']/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
-// Get dietary options with counts
-export function getDietaryOptions(): { name: string; slug: string; count: number }[] {
+export async function getDietaryOptions(): Promise<
+  { name: string; slug: string; count: number }[]
+> {
+  const allRecipes = await getAllRecipes();
   const dietaryMap = new Map<string, number>();
-  
+
   for (const recipe of allRecipes) {
     const tags = getDietary(recipe);
     for (const tag of tags) {
       dietaryMap.set(tag, (dietaryMap.get(tag) || 0) + 1);
     }
   }
-  
+
   return Array.from(dietaryMap.entries())
     .map(([name, count]) => ({
       name: name.charAt(0).toUpperCase() + name.slice(1),
       slug: name.toLowerCase(),
-      count
+      count,
     }))
     .sort((a, b) => b.count - a.count);
 }
+
+export { slugify as _slugify };

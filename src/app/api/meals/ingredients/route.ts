@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     }[] = [];
 
     for (const id of recipeIds) {
-      const recipe = getRecipe(id);
+      const recipe = await getRecipe(id);
       if (!recipe) continue;
       grouped.push({
         recipeName: recipe.name,

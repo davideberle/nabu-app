@@ -7,13 +7,13 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export default function RecipesPage() {
-  const recipes = getAllRecipes();
-  const cookbooks = getCookbooks();
-  const cuisines = getCuisines();
-  const dietaryOptions = getDietaryOptions();
+export default async function RecipesPage() {
+  const recipes = await getAllRecipes();
+  const cookbooks = await getCookbooks();
+  const cuisines = await getCuisines();
+  const dietaryOptions = await getDietaryOptions();
   const recipesWithImages = recipes.filter(r => r.image);
-  
+
   // Get 8 featured recipes with images
   const featuredRecipes = recipesWithImages.slice(0, 8);
 

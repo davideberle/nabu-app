@@ -3,8 +3,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipe, getAllRecipes } from "@/lib/recipes";
 
-export function generateStaticParams() {
-  return getAllRecipes().map((recipe) => ({
+export async function generateStaticParams() {
+  const recipes = await getAllRecipes();
+  return recipes.map((recipe) => ({
     id: recipe.id,
   }));
 }
@@ -87,9 +88,9 @@ function formatTime(time?: { prep?: string | number; cook?: string | number; tot
   } else {
     totalMins = extractMins(time.prep) + extractMins(time.cook);
   }
-  
+
   if (totalMins === 0) return null;
-  
+
   // Round to nice intervals
   if (totalMins <= 15) return `${Math.round(totalMins / 5) * 5} min`;
   if (totalMins <= 30) return `${Math.round(totalMins / 5) * 5} min`;
@@ -105,7 +106,7 @@ export default async function RecipePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const recipe = getRecipe(id);
+  const recipe = await getRecipe(id);
 
   if (!recipe) {
     notFound();
@@ -188,11 +189,11 @@ export default async function RecipePage({
                 </div>
               </div>
             )}
-            
+
             <h1 className="text-3xl md:text-4xl font-serif text-stone-800 dark:text-stone-100 leading-tight tracking-tight">
               {recipe.name}
             </h1>
-            
+
             {/* Info pills */}
             <div className="flex flex-wrap gap-2 mt-5">
               {/* Dish type */}
@@ -204,7 +205,7 @@ export default async function RecipePage({
                   {capitalize(type)}
                 </span>
               ))}
-              
+
               {/* Cooking time */}
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {formatTime(recipe.time as any) && (
@@ -216,7 +217,7 @@ export default async function RecipePage({
                   {formatTime(recipe.time as any)}
                 </span>
               )}
-              
+
               {/* Servings */}
               {recipe.servings && (
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300">
@@ -248,7 +249,7 @@ export default async function RecipePage({
             <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-6">
               Ingredients
             </h2>
-            
+
             {ingredientGroups.map((group, groupIndex) => (
               <div key={groupIndex} className={groupIndex > 0 ? "mt-6" : ""}>
                 {group.name && (

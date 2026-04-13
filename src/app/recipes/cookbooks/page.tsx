@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCookbooks } from "@/lib/recipes";
 
-export default function CookbooksPage() {
-  const cookbooks = getCookbooks();
+export default async function CookbooksPage() {
+  const cookbooks = await getCookbooks();
   const totalRecipes = cookbooks.reduce((sum, c) => sum + c.count, 0);
 
   return (
@@ -55,7 +55,7 @@ export default function CookbooksPage() {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              
+
               <div className="mt-3">
                 <h2 className="font-serif text-stone-800 dark:text-stone-100 text-sm leading-tight group-hover:text-stone-600 dark:group-hover:text-stone-300 line-clamp-2">
                   {cookbook.name}
