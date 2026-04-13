@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { initialTodos, type Todo } from "@/lib/todos";
+import { useState, useEffect, useCallback } from "react";
+import type { Todo } from "@/lib/todos";
 
 const categoryEmoji = {
   family: "👨‍👩‍👧‍👦",
@@ -18,15 +18,53 @@ const priorityColor = {
 };
 
 export default function TodosPage() {
-  const [todos, setTodos] = useState<Todo[]>(initialTodos);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const toggleTodo = (id: string) => {
+  const fetchTodos = useCallback(async () => {
+    try {
+      const res = await fetch("/api/todos");
+      if (!res.ok) throw new Error("Failed to load todos");
+      const data = await res.json();
+      setTodos(data);
+      setError(null);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTodos();
+  }, [fetchTodos]);
+
+  const toggleTodo = async (id: string) => {
+    const todo = todos.find((t) => t.id === id);
+    if (!todo) return;
+
+    // Optimistic update
     setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
+
+    try {
+      const res = await fetch(`/api/todos/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ completed: !todo.completed }),
+      });
+      if (!res.ok) throw new Error("Failed to update todo");
+    } catch {
+      // Revert on failure
+      setTodos((prev) =>
+        prev.map((t) =>
+          t.id === id ? { ...t, completed: todo.completed } : t
+        )
+      );
+    }
   };
 
   const filteredTodos = todos.filter((todo) => {
@@ -54,9 +92,11 @@ export default function TodosPage() {
               Todos
             </h1>
           </div>
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
-            {activeTodos} active
-          </span>
+          {!loading && (
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {activeTodos} active
+            </span>
+          )}
         </div>
       </header>
 
@@ -81,8 +121,18 @@ export default function TodosPage() {
 
       {/* Todo List */}
       <main className="max-w-5xl mx-auto px-4 py-6">
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-sm">
+            {error}
+          </div>
+        )}
+
         <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-          {filteredTodos.length === 0 ? (
+          {loading ? (
+            <div className="p-8 text-center text-zinc-500 dark:text-zinc-400">
+              Loading...
+            </div>
+          ) : filteredTodos.length === 0 ? (
             <div className="p-8 text-center text-zinc-500 dark:text-zinc-400">
               No todos
             </div>
