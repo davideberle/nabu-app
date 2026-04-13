@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getCookbooks, getRecipesByCookbook, getDietary } from "@/lib/recipes";
+import { getCookbooks, getRecipesByCookbook, getDietary, getCourseTags } from "@/lib/recipes";
 import { ChapterNav } from "./ChapterNav";
+
+export const revalidate = 60;
 
 function capitalize(str: string): string {
   if (!str) return '';
@@ -139,6 +141,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {chapterRecipes.map((recipe) => {
                     const dietary = getDietary(recipe);
+                    const courseTags = getCourseTags(recipe);
                     return (
                       <Link
                         key={recipe.id}
@@ -168,8 +171,16 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                               {capitalize(recipe.servings)}
                             </p>
                           )}
-                          {dietary.length > 0 && (
+                          {(courseTags.length > 0 || dietary.length > 0) && (
                             <div className="flex gap-1.5 mt-2">
+                              {courseTags.slice(0, 1).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="text-[10px] px-1.5 py-0.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded"
+                                >
+                                  {capitalize(tag)}
+                                </span>
+                              ))}
                               {dietary.slice(0, 2).map((tag: string) => (
                                 <span
                                   key={tag}
@@ -192,6 +203,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {recipes.map((recipe) => {
               const dietary = getDietary(recipe);
+              const courseTags = getCourseTags(recipe);
               return (
                 <Link
                   key={recipe.id}
@@ -221,8 +233,16 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                         {capitalize(recipe.servings)}
                       </p>
                     )}
-                    {dietary.length > 0 && (
+                    {(courseTags.length > 0 || dietary.length > 0) && (
                       <div className="flex gap-1.5 mt-2">
+                        {courseTags.slice(0, 1).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] px-1.5 py-0.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded"
+                          >
+                            {capitalize(tag)}
+                          </span>
+                        ))}
                         {dietary.slice(0, 2).map((tag: string) => (
                           <span
                             key={tag}

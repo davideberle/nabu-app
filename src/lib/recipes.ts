@@ -137,6 +137,23 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
+// Get course/category tags for a recipe (e.g. "Main", "Bread", "Dinner").
+// Cookbook recipes use category.dish_type (string[]), while My Recipes store
+// category as a plain string and optionally mealRole.
+export function getCourseTags(recipe: Recipe): string[] {
+  if (recipe.category && typeof recipe.category === "object" && recipe.category.dish_type) {
+    return recipe.category.dish_type;
+  }
+  const tags: string[] = [];
+  if (typeof recipe.category === "string" && recipe.category) {
+    tags.push(recipe.category);
+  }
+  if (recipe.mealRole && !tags.some((t) => t.toLowerCase() === recipe.mealRole!.toLowerCase())) {
+    tags.push(recipe.mealRole);
+  }
+  return tags;
+}
+
 // Cookbook cover images
 const COOKBOOK_COVERS: Record<string, string> = {
   "Ottolenghi: The Cookbook": "/cookbooks/ottolenghi-the-cookbook.jpg",

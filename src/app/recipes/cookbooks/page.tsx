@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCookbooks } from "@/lib/recipes";
 
+export const revalidate = 60;
+
 export default async function CookbooksPage() {
   const cookbooks = await getCookbooks();
   const totalRecipes = cookbooks.reduce((sum, c) => sum + c.count, 0);

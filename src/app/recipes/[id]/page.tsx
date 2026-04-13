@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getRecipe, getAllRecipes } from "@/lib/recipes";
+import { getRecipe, getAllRecipes, getCourseTags } from "@/lib/recipes";
+
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const recipes = await getAllRecipes();
@@ -172,9 +174,12 @@ export default async function RecipePage({
             {recipe.source && (
               <div className="mb-4 space-y-2">
                 <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
-                  {getCuisineFromCookbook(recipe.source.cookbook) && (
-                    <span className="text-stone-600 dark:text-stone-300">{getCuisineFromCookbook(recipe.source.cookbook)} · </span>
-                  )}
+                  {(() => {
+                    const cuisine = recipe.cuisine
+                      ? (Array.isArray(recipe.cuisine) ? recipe.cuisine[0] : recipe.cuisine)
+                      : getCuisineFromCookbook(recipe.source!.cookbook);
+                    return cuisine && <span className="text-stone-600 dark:text-stone-300">{cuisine} · </span>;
+                  })()}
                   {recipe.source.author ? `${recipe.source.author} — ` : ''}{recipe.source.cookbook}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -196,8 +201,8 @@ export default async function RecipePage({
 
             {/* Info pills */}
             <div className="flex flex-wrap gap-2 mt-5">
-              {/* Dish type */}
-              {recipe.category?.dish_type?.map((type) => (
+              {/* Dish type / course tags */}
+              {getCourseTags(recipe).map((type) => (
                 <span
                   key={type}
                   className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-800"

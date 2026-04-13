@@ -3,6 +3,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getDietaryOptions, getRecipesByDietary, getDietary } from "@/lib/recipes";
 
+export const revalidate = 60;
+
 function capitalize(str: string): string {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
