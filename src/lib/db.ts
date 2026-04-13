@@ -1,4 +1,5 @@
 import { createClient, type Client } from "@libsql/client";
+import { assertRecipeImageValid } from "./recipe-images";
 
 // ---------------------------------------------------------------------------
 // Connection
@@ -435,4 +436,42 @@ export async function getMyRecipe(id: string): Promise<Recipe | undefined> {
   });
   if (result.rows.length === 0) return undefined;
   return JSON.parse(result.rows[0]["data"] as string) as Recipe;
+}
+
+// Image validation is handled by assertRecipeImageValid from recipe-images.ts.
+// It accepts both Vercel Blob URLs (https://...) and local public/ paths.
+
+export async function createMyRecipe(recipe: Recipe): Promise<void> {
+  assertRecipeImageValid(recipe);
+
+  const client = await getDb();
+  await client.execute({
+    sql: "INSERT INTO recipes (id, data, created_at) VALUES (?, ?, ?)",
+    args: [recipe.id, JSON.stringify(recipe), new Date().toISOString()],
+  });
+}
+
+export async function updateMyRecipe(
+  id: string,
+  recipe: Recipe
+): Promise<void> {
+  assertRecipeImageValid(recipe);
+
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "UPDATE recipes SET data = ? WHERE id = ?",
+    args: [JSON.stringify(recipe), id],
+  });
+  if (result.rowsAffected === 0) {
+    throw new Error(`My Recipe "${id}" not found in database.`);
+  }
+}
+
+export async function deleteMyRecipe(id: string): Promise<boolean> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "DELETE FROM recipes WHERE id = ?",
+    args: [id],
+  });
+  return result.rowsAffected > 0;
 }
