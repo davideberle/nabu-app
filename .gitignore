@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# generated recipe bundle (built by scripts/bundle-recipes.mjs)
+src/data/recipes-bundle.json
+
 # database
 *.db
 *.db-wal

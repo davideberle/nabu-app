@@ -1,10 +1,9 @@
 // Recipe types and data loading
 // Static cookbook recipes from JSON + My Recipes from Turso
 
-import fs from "fs";
-import path from "path";
 import { cache } from "react";
 import { getAllMyRecipes, getMyRecipe } from "./db";
+import recipesBundle from "@/data/recipes-bundle.json";
 
 export type Ingredient = {
   item: string;
@@ -87,35 +86,12 @@ const COOKBOOK_CUISINES: Record<string, string> = {
   "Jamie's Food Revolution": "British",
 };
 
-// Load static cookbook recipes from JSON files (excluding My Recipes)
-function loadStaticRecipes(): Recipe[] {
-  const recipesDir = path.join(process.cwd(), "src/data/recipes");
-
-  try {
-    const files = fs.readdirSync(recipesDir);
-    const recipes: Recipe[] = [];
-
-    for (const file of files) {
-      if (file.endsWith(".json") && file !== "index.json") {
-        const filePath = path.join(recipesDir, file);
-        const content = fs.readFileSync(filePath, "utf8");
-        const recipe = JSON.parse(content);
-        // Skip My Recipes from static JSON — they come from Turso
-        if (recipe.source?.cookbook === "My Recipes") continue;
-        recipes.push(recipe);
-      }
-    }
-
-    recipes.sort((a, b) => a.name.localeCompare(b.name));
-    return recipes;
-  } catch (err) {
-    console.error("Error loading recipes:", err);
-    return [];
-  }
-}
-
-// Cache static recipes at module load (they never change at runtime)
-const staticRecipes = loadStaticRecipes();
+// Static cookbook recipes loaded from the pre-built bundle (see scripts/bundle-recipes.mjs).
+// Using a static import instead of fs.readdirSync avoids Turbopack bundling thousands
+// of individual JSON files into every serverless function that touches this module.
+const staticRecipes: Recipe[] = (recipesBundle as Recipe[])
+  .filter((r) => r.source?.cookbook !== "My Recipes")
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 // Deduplicated fetch of all recipes (static + Turso My Recipes) per request
 export const getAllRecipes = cache(async (): Promise<Recipe[]> => {
