@@ -1,5 +1,5 @@
 import { createClient, type Client } from "@libsql/client";
-import { assertRecipeImageValid } from "./recipe-images";
+import { assertRecipeImageValid } from "./recipe-image-validation";
 
 // ---------------------------------------------------------------------------
 // Connection
