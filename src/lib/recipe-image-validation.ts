@@ -1,14 +1,16 @@
-import fs from "fs";
-import path from "path";
-
 /**
  * Validate that a recipe has a usable image reference.
  *
  * Accepts either:
- * - A full https:// Blob URL (production)
- * - A local /recipes/slug.jpg path that exists in public/ (dev)
+ * - A full https:// Blob URL (production / Vercel)
+ * - A local /recipes/slug.jpg path (dev — format-checked only)
  *
- * Throws if the image field is missing or the reference is invalid.
+ * Throws if the image field is missing or the format is invalid.
+ *
+ * IMPORTANT: This module must NOT import Node `fs` or `path` — even a
+ * conditional `require("fs")` is traced by Turbopack and causes it to
+ * bundle the entire public/recipes directory (1 GB+) into every
+ * serverless function that transitively imports this file.
  */
 export function assertRecipeImageValid(recipe: {
   id: string;
@@ -25,11 +27,11 @@ export function assertRecipeImageValid(recipe: {
     return;
   }
 
-  // Local path — verify file exists on disk (dev only)
-  const imagePath = path.join(process.cwd(), "public", recipe.image);
-  if (!fs.existsSync(imagePath)) {
+  // Local path — validate format (must look like /recipes/<slug>.<ext>)
+  if (!/^\/recipes\/[\w-]+\.\w+$/.test(recipe.image)) {
     throw new Error(
-      `My Recipe "${recipe.id}" references image "${recipe.image}" but the file does not exist at ${imagePath}. Upload the image first.`
+      `My Recipe "${recipe.id}" has an invalid image path "${recipe.image}". ` +
+        `Expected a Blob URL (https://…) or a local path like /recipes/my-dish.jpg.`
     );
   }
 }

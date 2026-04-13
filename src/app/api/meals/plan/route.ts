@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { saveMealPlan, loadMealPlan, type MealPlan } from "@/lib/meals";
+import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
+import type { MealPlan } from "@/lib/meals";
 
 export async function GET(request: NextRequest) {
   const week = request.nextUrl.searchParams.get("week");
