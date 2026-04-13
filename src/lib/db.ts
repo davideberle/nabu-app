@@ -159,7 +159,7 @@ async function migrate(client: Client) {
           id: "ungarisches-paprikahuhn",
           name: "Ungarisches Paprikahuhn",
           image: "/recipes/ungarisches-paprikahuhn.jpg",
-          source: { cookbook: "My Recipes", publication: "Das Magazin", author: "Christian Seiler", chapter: "Main Dishes" },
+          source: { cookbook: "My Recipes", publication: "Das Magazin", author: "Christian Seiler" },
           cuisine: ["Hungarian"],
           category: "Main",
           servings: "4 servings",
@@ -192,7 +192,7 @@ async function migrate(client: Client) {
           id: "safran-honig-zopfkranz",
           name: "Safran-Honig-Zopfkranz",
           image: "/recipes/safran-honig-zopfkranz.jpg",
-          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby", chapter: "Baking" },
+          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby" },
           cuisine: "Swiss",
           category: "Bread",
           servings: "1 bread wreath (about 12 slices)",
@@ -232,7 +232,7 @@ async function migrate(client: Client) {
           id: "wild-garlic-and-barley-fritters",
           name: "Wild Garlic and Barley Fritters",
           image: "/recipes/wild-garlic-and-barley-fritters.jpg",
-          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby", chapter: "Dinner" },
+          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby" },
           cuisine: "Swiss",
           category: "dinner",
           servings: "4",
@@ -272,6 +272,25 @@ async function migrate(client: Client) {
           sql: "INSERT OR IGNORE INTO recipes (id, data, created_at) VALUES (?, ?, ?)",
           args: [recipe.id, JSON.stringify(recipe), new Date().toISOString()],
         });
+      }
+    },
+
+    // v2 -> v3: strip source.chapter from My Recipes — those values were
+    // informal category labels (e.g. "Main Dishes", "Dinner") that the
+    // cookbook page mistakenly displayed as chapter headings.
+    async () => {
+      const rows = await client.execute(
+        "SELECT id, data FROM recipes"
+      );
+      for (const row of rows.rows) {
+        const recipe = JSON.parse(row["data"] as string);
+        if (recipe.source?.cookbook === "My Recipes" && recipe.source?.chapter) {
+          delete recipe.source.chapter;
+          await client.execute({
+            sql: "UPDATE recipes SET data = ? WHERE id = ?",
+            args: [JSON.stringify(recipe), row["id"] as string],
+          });
+        }
       }
     },
   ];
