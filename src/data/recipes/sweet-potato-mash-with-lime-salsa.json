@@ -1,0 +1,58 @@
+{
+  "id": "sweet-potato-mash-with-lime-salsa",
+  "name": "Sweet potato mash with lime salsa",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "This is delicious alongside all sorts of things: grilled chops, for example, grilled",
+  "ingredients": [
+    {
+      "item": "2 oz/1kg sweet potatoes, unpeeled and cut in half lengthwise",
+      "amount": "2 lb"
+    },
+    {
+      "item": "cup/60ml olive oil salt",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/5g basil leaves,  nely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/5g cilantro,  nely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "½"
+    },
+    {
+      "item": "limes:  nely zest to get 2 tsp, then juice to get 1 tbsp black pepper",
+      "amount": "2"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Rub the sweet potatoes with 1 tbsp of oil and season with ¼ tsp of salt.",
+    "Place on a parchment-lined baking sheet, cut side down, and roast for 30–35 minutes, until very soft.",
+    "While the sweet potatoes are roasting, make the salsa. Put the remaining 3 tbsp of oil into a small bowl with the basil, cilantro, garlic, lime zest, lime juice, and a good pinch of salt and stir to combine.",
+    "Once cool enough to handle, remove the skins from the sweet potatoes.",
+    "They should slide off easily, but you can scoop the  esh out with a spoon if you prefer. Mash the  esh together with ⅛ tsp of salt and plenty of black pepper until smooth.",
+    "Transfer to a platter, create divots in the surface, and spoon the salsa evenly over it. Serve hot.",
+    "Spinach and Gorgonzola–stuffed baked potatoes",
+    "I love the strong blue cheese here, but use any other cheese that you have around or prefer—it’ll work just as well. This is either a meal in itself, to serve two, or works well to serve four, alongside a simple steak and fresh green salad. The walnuts are optional, but they do add a welcome crunch.",
+    "If Esme could have had her way, there would have been more recipes for baked potatoes here. With both apologies and thanks to Esme, this is for those that didn’t get in and the two winners that did."
+  ],
+  "time": {
+    "total": 30
+  }
+}

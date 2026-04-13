@@ -1,0 +1,72 @@
+{
+  "id": "quinoa-porridge-with-grilled-tomatoes-and-garlic",
+  "name": "Quinoa Porridge with Grilled Tomatoes and Garlic",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "lime half into each bowl. Serve at once.",
+  "ingredients": [
+    {
+      "item": "cups/250 g quinoa about 4⅔ cups/1.1 liters vegetable stock",
+      "amount": "1½"
+    },
+    {
+      "item": "tsp/20 g unsalted butter",
+      "amount": "4"
+    },
+    {
+      "item": "cup/10 g flat-leaf parsley leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "oz/100 g feta, broken into ¾-inch/2-cm chunks",
+      "amount": "3½"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cups/250 g baby plum tomatoes",
+      "amount": "1⅔"
+    },
+    {
+      "item": "garlic, thinly sliced",
+      "amount": "4 cloves"
+    },
+    {
+      "item": "cup/10 g mint leaves salt and black pepper",
+      "amount": "⅓"
+    },
+    {
+      "item": "green chile, seeded and coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g flat-leaf parsley leaves",
+      "amount": "½"
+    },
+    {
+      "item": "cup/15 g mint leaves",
+      "amount": "½"
+    },
+    {
+      "item": "tbsp/100 ml olive oil salt",
+      "amount": "7"
+    }
+  ],
+  "method": [
+    "To make the herb oil, place the chile, parsley, mint, oil, and ½ teaspoon salt in the bowl of a small food processor and process to form a smooth sauce with a thick pouring consistency.",
+    "Place the quinoa in a medium saucepan, add the stock, and bring to a boil.",
+    "Turn down the heat to medium and cook gently, uncovered, for about 25 minutes, stirring from time to time, until a porridge-like consistency is formed. You might need to add a bit more stock if the quinoa is sticking to the pan. At the very end, fold in the butter until it melts, followed by the parsley and then the feta, making sure the feta stays in chunks.",
+    "While the quinoa is cooking, place a large sauté pan over high heat and add the oil. When the oil is hot, add the tomatoes and cook for about 5 minutes, shaking the pan once or twice so that all sides get some good charred color.",
+    "Add the garlic and cook for 30 seconds, so that it turns golden brown without burning. Transfer to a bowl and sprinkle with ¼ teaspoon salt and some black pepper. Chop the mint and fold it into the tomatoes just before serving, as it will start to blacken once chopped.",
+    "Spoon the warm quinoa porridge into shallow bowls, top with the tomatoes, finish with a drizzle of the herb oil, and serve at once.",
+    "IRANIAN-STYLE PASTA"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "us Bangkokians). This recipe also works with ground pork.",
+  "intro": "to be spicy and salty. In any case, you have the option of adding lime juice at the end, (just like",
   "ingredients": [
     {
       "item": "MINUTES FOR SPRING ROLLS",
@@ -84,12 +84,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "bread"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

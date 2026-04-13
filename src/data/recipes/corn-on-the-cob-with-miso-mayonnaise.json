@@ -1,0 +1,62 @@
+{
+  "id": "corn-on-the-cob-with-miso-mayonnaise",
+  "name": "Corn on the Cob with Miso Mayonnaise",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "the pine nuts. Finish with a sprinkle of za’atar and serve at once.",
+  "ingredients": [
+    {
+      "item": "ears corn (1⅓ lb/600 g), husks removed and cut into 2-inch/5-cm segments",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "finely chopped flat-leaf parsley salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "tamarind paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "cup/250 ml sunflower oil scant 5 tbsp/80 g white miso paste (not a sweet variety)",
+      "amount": "1"
+    },
+    {
+      "item": "green chile, seeded and finely chopped",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "First make the mayonnaise. Place the egg yolk, mustard, garlic, vinegar, and tamarind in the bowl of a small food processor. Turn it on and slowly start adding the sunflower oil, continually pouring in a light stream until half the oil is incorporated. With the machine still running, add the miso and continue",
+    "with the last of the oil until the mayonnaise is thick. Add the chile and mix until combined.",
+    "Bring a large pan of water to a boil. Add the corn and blanch for 3 minutes.",
+    "Drain, pat dry, and mix with the olive oil and ¼ teaspoon salt. Place a ridged grill pan over very high heat. When it starts to smoke, add the corn and grill, turning often so that all sides get colored, for about 8 minutes. As soon as the corn comes off the grill pan, brush a layer of the mayonnaise all over the ear, so that it gets a light glaze, about 2 tablespoons for all the corn. Sprinkle with the parsley and serve right away, dipping the corn into the remaining mayonnaise as you go, or spreading on more with a knife.",
+    "MARROW WITH TOMATO AND FETA"
+  ],
+  "time": {
+    "total": 30
+  }
+}

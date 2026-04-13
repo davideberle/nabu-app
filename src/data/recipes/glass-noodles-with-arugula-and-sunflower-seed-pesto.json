@@ -1,0 +1,44 @@
+{
+  "id": "glass-noodles-with-arugula-and-sunflower-seed-pesto",
+  "name": "Glass Noodles with Arugula and Sunflower-Seed Pesto",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "heaping tbsp",
+      "amount": "4"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "⁄2 tsp salt",
+      "amount": ""
+    },
+    {
+      "item": "nests glass noodles",
+      "amount": "2"
+    },
+    {
+      "item": "Put 2 cups water in a pan, bring it to a boil, and boil briefly.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Soak the sunflower seeds overnight in cold water. Put a sieve",
+    "Remove the pan from the stove. When the water has stopped",
+    "Pour the pesto over the noodles, toss well to combine,",
+    "Pesto and garlic are thought to go together hand in"
+  ],
+  "time": {
+    "total": 30
+  }
+}

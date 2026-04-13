@@ -166,12 +166,5 @@
   ],
   "time": {
     "total": 50
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

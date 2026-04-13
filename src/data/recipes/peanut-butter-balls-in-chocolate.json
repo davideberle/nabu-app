@@ -1,0 +1,48 @@
+{
+  "id": "peanut-butter-balls-in-chocolate",
+  "name": "Peanut Butter Balls in Chocolate",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "chia seeds",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "coconut water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "carob powder (see tip)",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "drops vanilla extract",
+      "amount": "2–3"
+    },
+    {
+      "item": "raisins or chopped dates",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "mango",
+      "amount": "1"
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "You can easily make carob powder yourself from",
+    "With a bit of luck, from September onward, you might be able to get ahold of fresh carob pods,",
+    "Set aside to soak for 30 minutes,",
+    "Place the mango, coconut oil, and"
+  ],
+  "time": {
+    "total": 30
+  }
+}

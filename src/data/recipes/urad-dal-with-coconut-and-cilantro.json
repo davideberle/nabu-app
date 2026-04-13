@@ -1,0 +1,78 @@
+{
+  "id": "urad-dal-with-coconut-and-cilantro",
+  "name": "Urad Dal with Coconut and Cilantro",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "cups/250 g black urad dal, soaked overnight in plenty of water",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cup/60 g clarified butter or ghee",
+      "amount": "¼"
+    },
+    {
+      "item": "large onion, finely chopped (1⅓ cups/200 g)",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "4-inch/10-cm piece fresh ginger (2½ oz/75 g), peeled and coarsely grated",
+      "amount": ""
+    },
+    {
+      "item": "green chile, flesh and seeds finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium tomatoes, peeled and coarsely chopped (3½ cups/600 g)",
+      "amount": "5"
+    },
+    {
+      "item": "cup/160 g coconut cream",
+      "amount": "⅔"
+    },
+    {
+      "item": "lime juice, plus 1 lime, cut into wedges, to serve",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "black mustard seeds, toasted salt",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cups/100 g coarsely grated fresh coconut",
+      "amount": "1¼"
+    },
+    {
+      "item": "oz/50 g crispy fried shallots (store-bought)",
+      "amount": "1¾"
+    },
+    {
+      "item": "cups/30 g cilantro leaves, coarsely chopped",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Drain the dal, rinse under cold water, and set aside.",
+    "Place the butter in a large sauté pan over medium-high heat. When it starts to sizzle, add the onion and fry for 15 minutes, stirring from time to time, until soft and golden brown. Add the garlic, ginger, chile, and garam masala and fry for another 2 minutes, stirring constantly. Add the tomatoes and cook for a further 4 minutes. Add the dal, 4½ cups/1 liter water, and 1 teaspoon salt.",
+    "Turn down the heat to medium and simmer for 40 minutes, stirring every 5 minutes or so, until the sauce has the consistency of thick soup and the dal is cooked but still holding its shape. Bring to a rapid boil for a few minutes toward the end of cooking if the sauce needs reducing.",
+    "Turn the heat down to low, then stir in the coconut cream, lime juice, and black mustard seeds. Remove from the heat and serve, accompanied with the toppings in 3 separate bowls, for diners to sprinkle on top of their portion as they like.",
+    "LENTILS WITH MUSHROOM AND",
+    "PRESERVED LEMON RAGOUT"
+  ],
+  "time": {
+    "total": 30
+  }
+}

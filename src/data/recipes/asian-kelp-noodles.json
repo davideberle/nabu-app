@@ -1,0 +1,54 @@
+{
+  "id": "asian-kelp-noodles",
+  "name": "Asian Kelp Noodles",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "kelp noodles",
+      "amount": "12oz (340g)"
+    },
+    {
+      "item": "carrot",
+      "amount": "1"
+    },
+    {
+      "item": "small red onion",
+      "amount": "1"
+    },
+    {
+      "item": "scallions",
+      "amount": "3"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ripe avocado",
+      "amount": "1"
+    },
+    {
+      "item": "tamari",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "⁄2–1 tbsp ume vinegar",
+      "amount": ""
+    },
+    {
+      "item": "cold-pressed sesame oil",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Usually this Asian noodle dish tastes even better the",
+    "Sprinkle some sesame seeds over the"
+  ],
+  "time": {
+    "total": 30
+  }
+}

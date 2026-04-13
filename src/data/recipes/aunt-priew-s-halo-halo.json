@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "dessert at every big family gathering at her house. The very look of it makes me smile.",
+  "intro": "You’re right in thinking this is not a Thai dessert. In fact, it’s Filipino. My Aunt Priew learned this",
   "ingredients": [
     {
       "item": "147",
@@ -78,12 +78,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

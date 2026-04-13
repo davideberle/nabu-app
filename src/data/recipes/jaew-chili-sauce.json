@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "friends which they prefer, and they all chose my dad’s. Enjoy!",
+  "intro": "It was diffi cult for me to focus on one recipe for jaew to feature in this",
   "ingredients": [
     {
       "item": "ground dried red chilies (mildly roasted)",
@@ -44,12 +44,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

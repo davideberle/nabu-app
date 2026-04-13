@@ -1,6 +1,6 @@
 {
   "id": "lamb-rogan-josh",
-  "name": "LAMB ROGAN JOSH",
+  "name": "Lamb Rogan Josh",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -60,12 +60,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "British"
+  }
 }

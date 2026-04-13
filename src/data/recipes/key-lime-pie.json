@@ -1,0 +1,65 @@
+{
+  "id": "key-lime-pie",
+  "name": "Key Lime Pie",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "cashews",
+      "amount": "2 cups"
+    },
+    {
+      "item": "⁄4 cups shredded coconut",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cups dates (medjool",
+      "amount": ""
+    },
+    {
+      "item": "coconut oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "⁄4 cup cashews",
+      "amount": ""
+    },
+    {
+      "item": "large avocados",
+      "amount": "3"
+    },
+    {
+      "item": "organic Key limes",
+      "amount": "5"
+    },
+    {
+      "item": "⁄2 cup agave syrup",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 cup birch sugar (xylitol)",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup coconut oil",
+      "amount": ""
+    },
+    {
+      "item": "10in (26cm) springform cake",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Line the pan with parchment paper.",
+    "Press the dough evenly into the pan,",
+    "You can serve the Key lime pie either",
+    "Key limes and juice them. Place the",
+    "Slowly pour in the coconut oil and"
+  ],
+  "time": {
+    "total": 30
+  }
+}

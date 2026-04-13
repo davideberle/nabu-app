@@ -1,0 +1,73 @@
+{
+  "id": "grilled-prawn-corn-and-tomato-salad",
+  "name": "Grilled prawn, corn, and tomato salad",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "intact, which always looks great, but they work perfectly well. If you want to get",
+  "ingredients": [
+    {
+      "item": "¾-inch/2cm piece of ginger, peeled and  nely chopped (2 tbsp)",
+      "amount": ""
+    },
+    {
+      "item": "sriracha",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "lime:  nely zest to get 1 tsp, then juice to get 1½ tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "granulated sugar salt",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "oz/440g shell-on tiger prawns, peeled and deveined, tail on (or peeled tiger prawns) (8½ oz/240g)",
+      "amount": "15½"
+    },
+    {
+      "item": "olive oil salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "small red onion, cut into ½-inch/1½ cm wedges (mounded 1 cup/120g)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/100g frozen corn, defrosted",
+      "amount": "¾"
+    },
+    {
+      "item": "oz/250g cherry tomatoes",
+      "amount": "9"
+    },
+    {
+      "item": "marjoram leaves (or oregano)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "To make the dressing, mix together the ginger, sriracha, olive oil, lime, sugar, and ⅛ tsp salt. Set aside.",
+    "Place a grill pan over high heat and ventilate your kitchen well. While the grill pan is heating up, mix the shrimp with the oil and ⅛ tsp salt and set aside.",
+    "Place the onion on the grill pan for 5 minutes, turning over every so often until charred and cooked but still retaining a bite. Transfer to a large bowl, then add the corn to the grill pan. Cook for 2 minutes, until charred, then add to the onion.",
+    "Continue with the tomatoes, adding them to the grill pan for 3 minutes, turning throughout so that they are charred on all sides. Add to the bowl of onion and corn. Add the shrimp to the grill pan and grill for 4 minutes, turning after 2 minutes, until the shrimp are charred and cooked through.",
+    "Add to the vegetables, along with the marjoram and the dressing. Gently stir to combine and serve.",
+    "Squid and red bell pepper stew",
+    "This is a one-pot dish, big on avor, which simmers away for just 30 minutes while you get on with something else in the kitchen. It’s also delicious a day or two after you make it—just keep in the fridge and warm through before serving.",
+    "Serve with plain couscous or rice, or just some crusty bread to soak up the juices, along with a crisp green salad. Ask your shmonger to clean the fresh squid for you, if you don’t want to do it yourself; otherwise bags of frozen (and cleaned) squid are widely available."
+  ],
+  "time": {
+    "total": 30
+  }
+}

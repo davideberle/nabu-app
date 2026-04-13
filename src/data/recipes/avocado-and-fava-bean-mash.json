@@ -1,0 +1,50 @@
+{
+  "id": "avocado-and-fava-bean-mash",
+  "name": "Avocado and fava bean mash",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "music on. It’s also a job very easy to outsource, if anyone is offering to help. Either",
+  "ingredients": [
+    {
+      "item": "oz/250g podded fava beans, still in their shells but not in their pods (fresh or frozen)",
+      "amount": "9"
+    },
+    {
+      "item": "large avocado, peeled and roughly chopped (1¼ cups/190g)",
+      "amount": "1"
+    },
+    {
+      "item": "lemon:  nely shave to get 1 long strip, then juice to get 1½ tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "cup/60ml olive oil salt",
+      "amount": "¼"
+    },
+    {
+      "item": "green onions, thinly sliced",
+      "amount": "2"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Heat the remaining 2 tbsp of oil in a small frying pan over medium-high heat, then gently fry the green onions and lemon strip for 1 minute. Remove from the heat and stir in the reserved fava beans and a pinch of salt.",
+    "Spread the avocado and fava bean mash over a plate creating a natural rim around the edge. Spoon the green onion mix into the middle just before serving. The lemon strip does not normally get eaten, but it looks nice as a garnish.",
+    "Lima bean mash with muhammara",
+    "Muhammara is a spicy Levantine dip made from red peppers and walnuts. It keeps in the fridge for 3 days, so double the recipe, if you like—it’s as lovely spread on a cheese sandwich or served with grilled meat as it is as a dip. I’ve left the skins on the peppers for ease, but remove them if you don’t want the texture.",
+    "The mash can be made 3 days in advance; keep in the fridge in a separate container and bring back to room temperature before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 2",
-  "intro": "Thai nam prik: assertively spicy, salty, tart fl avors, paired well with plain vegetables and rice.",
+  "intro": "This recipe, when fi nished, looks a lot like tuna salad. However, it bears all the hallmarks of a good",
   "ingredients": [
     {
       "item": "Thai garlic cloves (preferably as they have better fl avor) or 3–4 regular cloves garlic",
@@ -58,12 +58,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

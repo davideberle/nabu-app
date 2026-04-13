@@ -1,0 +1,41 @@
+{
+  "id": "cucumber-and-avocado-pasta",
+  "name": "Cucumber and Avocado Pasta",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "sea salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "avocados",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "orange",
+      "amount": "1"
+    },
+    {
+      "item": "pomegranate seeds",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "Combine the cabbage and sea salt,",
+    "Put the cabbage into a colander",
+    "Slice the avocados lengthwise in half,",
+    "Cut out the orange segments. Dice",
+    "Unfortunately, I just learned about it only after"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "sparkling-pomegranate-cocktail",
+  "name": "Sparkling Pomegranate Cocktail",
+  "source": {
+    "cookbook": "The Best of Fine Cooking: Breakfast",
+    "author": "Fine Cooking"
+  },
+  "servings": "serves 6",
+  "intro": "about six cocktails. You can  easily double or",
+  "ingredients": [
+    {
+      "item": "plus 2 Tbs. unsweetened pure",
+      "amount": "1 cup"
+    },
+    {
+      "item": "Tbs. sugar syrup (recipe below), chilled",
+      "amount": "3"
+    },
+    {
+      "item": "bottle dry sparkling wine or",
+      "amount": "1 750ml"
+    }
+  ],
+  "method": [
+    "In a small pitcher, stir the pomegranate juice",
+    "and sugar syrup. Fill each flute about one-third",
+    "full with the pomegranate mixture. Top with the",
+    "sparkling wine, dividing it evenly among the flutes.",
+    "Serve immediately.",
+    "Yields a scant  cup, enough to make about",
+    "½ cup granulated sugar",
+    "In a small saucepan, bring the sugar and water",
+    "to a boil over high heat, stirring until the sugar is",
+    "dissolved. Boil for 1 minute. Let cool and then",
+    "refrigerate until ready to use.",
+    "If you find typical coffeehouse chai over powering, try",
+    "this version of the well-known Indian spiced tea. Its",
+    "judicious use of spices results in a kinder, gentler drink."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,6 +1,6 @@
 {
   "id": "carrot-and-mung-bean-salad",
-  "name": "CARROT AND MUNG BEAN SALAD",
+  "name": "Carrot and Mung Bean Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -67,12 +67,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

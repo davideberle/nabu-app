@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "That is because the oil they are cooking in is very hot. The sauce is a typical",
+  "intro": "Almost everyone knows how to fry an egg, but Thai eggs are crispy and frilled at the edges like lace.",
   "ingredients": [
     {
       "item": "75",
@@ -40,12 +40,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

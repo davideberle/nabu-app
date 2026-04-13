@@ -1,6 +1,6 @@
 {
   "id": "orange-and-date-salad",
-  "name": "ORANGE AND DATE SALAD",
+  "name": "Orange and Date Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -77,12 +77,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

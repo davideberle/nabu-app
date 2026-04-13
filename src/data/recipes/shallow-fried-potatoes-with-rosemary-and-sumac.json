@@ -1,0 +1,49 @@
+{
+  "id": "shallow-fried-potatoes-with-rosemary-and-sumac",
+  "name": "Shallow-fried potatoes with rosemary and sumac",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "very long time. Its color and kick means it’s a great way to shake up all sorts of",
+  "ingredients": [
+    {
+      "item": "tbsp/150ml olive oil",
+      "amount": "10"
+    },
+    {
+      "item": "10 oz/750g yellow fingerling potatoes, quartered lengthwise",
+      "amount": "1 lb"
+    },
+    {
+      "item": "garlic cloves, peeled salt",
+      "amount": "5"
+    },
+    {
+      "item": "rosemary sprigs",
+      "amount": "3"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "3"
+    },
+    {
+      "item": "sumac",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the oil into a large sauté pan and place over medium heat. Once hot, add the potatoes, garlic and ¾ tsp of salt. Fry gently for 30 minutes, stirring frequently, until the potatoes are golden brown and soft. Add the rosemary and thyme and fry for another 5 minutes, until the herbs are crisp and aromatic.",
+    "Use a slotted spoon—you want most of the oil to be drained off—to transfer the potatoes and rosemary and thyme to a serving bowl. Stir in the sumac and serve.",
+    "Harissa and confit garlic roasted potatoes",
+    "Any recipe with the word cont in it is enough to put some people off, but don’t be intimidated! All that it entails, in this context, is slow-cooking the garlic for so long that the oil becomes wonderfully infused and the cloves themselves become super soft. The cont garlic can be made up to 2 days in advance and the potatoes can be prepared up to the point of them going in the oven, about 6 hours in advance."
+  ],
+  "time": {
+    "total": 30
+  }
+}

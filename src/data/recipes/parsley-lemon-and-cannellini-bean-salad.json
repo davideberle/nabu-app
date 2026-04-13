@@ -1,0 +1,52 @@
+{
+  "id": "parsley-lemon-and-cannellini-bean-salad",
+  "name": "Parsley, Lemon, and Cannellini Bean Salad",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "aiming for a pungent, sweet-and-sour flavor.",
+  "ingredients": [
+    {
+      "item": "cup/100 g red quinoa",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/20 g flat-leaf parsley leaves, finely shredded",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/20 g mint leaves, finely shredded",
+      "amount": "⅔"
+    },
+    {
+      "item": "oz/50 g green onions (3 to 4), green and white parts, thinly sliced",
+      "amount": "1¾"
+    },
+    {
+      "item": "cups/250 g cooked cannellini beans, drained",
+      "amount": "1⅓"
+    },
+    {
+      "item": "large lemon, skin and seeds removed, flesh finely chopped (about ⅓ cup/70 g)",
+      "amount": "½"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cup/60 ml olive oil salt and black pepper",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "Bring a saucepan of water to a boil. Add the quinoa and simmer for 11 minutes. Drain, refresh under cold water, and set aside to dry completely.",
+    "Transfer the cooked quinoa to a large bowl. Add the parsley, mint, green onions, beans, lemon, allspice, olive oil, ¾ teaspoon salt, and some black pepper. Stir together and serve.",
+    "ORANGE AND DATE SALAD"
+  ],
+  "time": {
+    "total": 30
+  }
+}

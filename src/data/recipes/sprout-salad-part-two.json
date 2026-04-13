@@ -1,6 +1,6 @@
 {
   "id": "sprout-salad-part-two",
-  "name": "SPROUT SALAD, PART TWO",
+  "name": "Sprout Salad, Part Two",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -98,12 +98,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

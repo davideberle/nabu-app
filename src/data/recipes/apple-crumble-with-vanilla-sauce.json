@@ -1,0 +1,73 @@
+{
+  "id": "apple-crumble-with-vanilla-sauce",
+  "name": "Apple Crumble with Vanilla Sauce",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "juice, maple syrup, vanilla extract, and 3 tbsp water",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup cashews",
+      "amount": ""
+    },
+    {
+      "item": "juice of",
+      "amount": ""
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "⁄4 tsp vanilla extract",
+      "amount": ""
+    },
+    {
+      "item": "apples",
+      "amount": "4"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "juice of",
+      "amount": ""
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "⁄2 tsp ground cinnamon",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cups almonds and",
+      "amount": ""
+    },
+    {
+      "item": "date paste (see p.60),",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "appetizer ring molds",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Soak the cashews overnight in cold water. Drain",
+    "Cut the apples into quarters, remove the cores, and",
+    "In the meantime, make the crumble. Coarsely grind",
+    "To make the vanilla sauce, put the cashews, lemon",
+    "Carefully remove the metal molds. Decorate each"
+  ],
+  "time": {
+    "total": 30
+  }
+}

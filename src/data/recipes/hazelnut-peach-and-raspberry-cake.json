@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 10",
-  "intro": "cakes made with hazelnuts, which tend to dry out quickly) not much longer.",
+  "intro": "room temperature. It will keep for 1 day in an airtight container, but (as with all",
   "ingredients": [
     {
       "item": "sunflower oil",
@@ -64,12 +64,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

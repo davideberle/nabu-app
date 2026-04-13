@@ -1,0 +1,66 @@
+{
+  "id": "french-style-grilled-ham-and-gruy-re",
+  "name": "French-Style Grilled Ham And Gruyère",
+  "source": {
+    "cookbook": "The Best of Fine Cooking: Breakfast",
+    "author": "Fine Cooking"
+  },
+  "servings": "serves 4",
+  "intro": "and cheese gets a twist from Dijon mustard and tarragon.",
+  "ingredients": [
+    {
+      "item": "coarsely grated Gruyère",
+      "amount": "6 oz."
+    },
+    {
+      "item": "chopped fresh tarragon (or 1 tsp. dried)",
+      "amount": "2 tsp."
+    },
+    {
+      "item": "salted butter, at room temperature",
+      "amount": "4 tsp."
+    },
+    {
+      "item": "1/4-inch-thick slices egg bread, such as challah",
+      "amount": "8"
+    },
+    {
+      "item": "Tbs. Dijon mustard; more for serving",
+      "amount": "2"
+    },
+    {
+      "item": "thin slices (about 1/4 lb. total) Black Forest ham",
+      "amount": "4"
+    }
+  ],
+  "method": [
+    "In a small bowl, mix the cheese and tarragon. Butter all",
+    "the bread slices on one side only. Put four slices, buttered",
+    "side down, on a cutting board. Distribute the cheese over",
+    "the bread and top with the ham, folding the ham slices",
+    "if they’re large. Spread about 11/2 tsp. mustard on the",
+    "buttered side of the remaining bread slices and set",
+    "them, mustard side down, on t",
+    "Heat a large nonstick pan or griddle over medium-high",
+    "heat for 2 minutes. Put as many sandwiches as will fit in",
+    "the pan or on the griddle without crowding, co",
+    "until the cheese has just begun to melt and the",
+    "bread is golden brown, about 2 minutes. Remov",
+    "and turn the sandwiches, pressing each one firmly with a",
+    "spatula to flatten it slightly.",
+    "cook the sandwiches uncov-",
+    "bottom is golden brown, about 1 minute.",
+    "Turn them once more and press with the spa",
+    "to recrisp the bread, about 30 seconds.",
+    "serve immediately, with more must",
+    "ard on the side.",
+    "slab pies are like giant Pop-tarts designed",
+    "to feed a crowd.",
+    "as the pie cools, the filling—",
+    "made with apricots both fresh and dried—",
+    "firms up enough that the slices can be eaten"
+  ],
+  "time": {
+    "total": 30
+  }
+}

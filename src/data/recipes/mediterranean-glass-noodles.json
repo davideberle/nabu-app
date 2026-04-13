@@ -1,0 +1,85 @@
+{
+  "id": "mediterranean-glass-noodles",
+  "name": "Mediterranean Glass Noodles",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "nests of glass noodles",
+      "amount": "2"
+    },
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "⁄4 cup cherry tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cups brown mushrooms",
+      "amount": ""
+    },
+    {
+      "item": "scallions",
+      "amount": "2"
+    },
+    {
+      "item": "medium romaine lettuce leaves",
+      "amount": "4"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "sunflower seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "celery stick",
+      "amount": "1"
+    },
+    {
+      "item": "cherry tomatoes",
+      "amount": "5"
+    },
+    {
+      "item": "zucchini",
+      "amount": "1"
+    },
+    {
+      "item": "dried tomatoes soaking",
+      "amount": "2–3 tbsp"
+    },
+    {
+      "item": "To prepare the glass noodles, briefly boil 2 cups water in a pan, and",
+      "amount": ""
+    },
+    {
+      "item": "Peel the carrots. Thinly slice or dice the unpeeled cucumber, the",
+      "amount": ""
+    },
+    {
+      "item": "combine. Sprinkle the chopped cilantro, sesame and sunflower seeds,",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Peel the carrots. Thinly slice or dice the unpeeled cucumber, the",
+    "To make the sauce, place all the ingredients in a blender. Purée on a",
+    "Pour the sauce over the noodles and vegetables, and toss well to",
+    "You can, of course, make a smooth sauce, too. Put all the",
+    "Personally, I prefer the chunkier version for this dish."
+  ],
+  "time": {
+    "total": 30
+  }
+}

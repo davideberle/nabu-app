@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "are you’ve had it. The trick here is to use fresh galangal, not ginger.",
+  "intro": "This dish probably needs no introduction. If you have been to a Thai restaurant before, chances",
   "ingredients": [
     {
       "item": "fresh shrimp",
@@ -92,12 +92,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

@@ -1,0 +1,68 @@
+{
+  "id": "two-bean-and-two-lime-salad",
+  "name": "Two bean and two lime salad",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "you serve. It will keep for up to 6 hours in the fridge. If you can’t get hold of fresh",
+  "ingredients": [
+    {
+      "item": "large kaffir lime leaves (fresh or frozen), stems removed",
+      "amount": "6"
+    },
+    {
+      "item": "large limes:  nely zest to get 1½ tsp, then juice to get 2 tbsp",
+      "amount": "2"
+    },
+    {
+      "item": "cups/30g cilantro, roughly chopped",
+      "amount": "1½"
+    },
+    {
+      "item": "cup/10g mint leaves",
+      "amount": "½"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "cup/60ml olive oil",
+      "amount": "¼"
+    },
+    {
+      "item": "green chiles, seeded and thinly sliced salt",
+      "amount": "2"
+    },
+    {
+      "item": "5oz/600g haricots verts, trimmed",
+      "amount": "1 lb"
+    },
+    {
+      "item": "oz/150g frozen shelled edamame (or peas)",
+      "amount": "5¼"
+    },
+    {
+      "item": "black sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Roll up all the kaffir leaves into a thick cigar shape. Slice as thinly as possible, then  nely chop the strips. Place in the bowl of a food processor with the lime zest, 1 cup/20g of cilantro, the mint, garlic, olive oil, chile, and ½ tsp of salt. Blitz until smooth, then set aside.",
+    "Bring a large pan of salted water to a boil and add the green beans. Blanch for 3 minutes, then add the edamame and cook for 1 minute. Drain all together, refresh under cold water, and set aside to dry.",
+    "Spoon the lime paste over the beans, add the lime juice, and stir to combine.",
+    "Sprinkle with the sesame seeds, along with the remaining ½ cup/5g of cilantro, and serve at once.",
+    "Mushrooms and chestnuts with za’atar",
+    "These are lovely as an autumn or festive side. They are also great for breakfast, served with scrambled eggs. Use any mushrooms—or a mix of mushrooms— depending on what you see. Just keep the net weight the same. If you’ve got large shallots lying around, they are ne to use—just cut them in half or even into quarters.",
+    "If you want to get ahead, prepare this up to 4 hours in advance—just place everything on the baking sheet, minus the salt and pepper, ready to be seasoned before roasting."
+  ],
+  "time": {
+    "total": 30
+  }
+}

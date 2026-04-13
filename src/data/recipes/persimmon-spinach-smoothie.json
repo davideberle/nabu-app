@@ -1,0 +1,38 @@
+{
+  "id": "persimmon-spinach-smoothie",
+  "name": "Persimmon Spinach Smoothie",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "⁄3 cup water into a blender.",
+      "amount": ""
+    },
+    {
+      "item": "ripe persimmons",
+      "amount": "2"
+    },
+    {
+      "item": "⁄3 cups baby spinach",
+      "amount": ""
+    },
+    {
+      "item": "fresh mint leaves",
+      "amount": "2–3"
+    }
+  ],
+  "method": [
+    "Cut the stems off the persimmons and slice",
+    "Juice the lime. Place the persimmons,",
+    "Pour out equal amounts of the persimmon and",
+    "Put the grapes, spinach, mint, cayenne",
+    "Carefully pour out equal amounts of the puréed",
+    "Persimmon thickens fairly quickly, so if you want"
+  ],
+  "time": {
+    "total": 30
+  }
+}

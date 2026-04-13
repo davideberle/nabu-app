@@ -1,0 +1,67 @@
+{
+  "id": "aromatic-olive-oil-mash",
+  "name": "Aromatic olive oil mash",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Creamy mash is hard to beat, but I often prefer olive oil–based mashes, especially",
+  "ingredients": [
+    {
+      "item": "2 oz/1kg red-skinned potatoes, peeled and cut into 1¼-inch/3cm pieces",
+      "amount": "2 lb"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "6"
+    },
+    {
+      "item": "mint sprigs",
+      "amount": "3"
+    },
+    {
+      "item": "garlic cloves, peeled",
+      "amount": "4"
+    },
+    {
+      "item": "lemon:  nely shave the peel to get 5 strips salt",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/100ml olive oil black pepper",
+      "amount": "7"
+    },
+    {
+      "item": "cup/60ml olive oil",
+      "amount": "¼"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "thyme leaves,  nely chopped about 8 mint leaves,  nely chopped (to get 2 tsp)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lemon:  nely zest to get 1 tsp, then juice to get 1 tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the potatoes, thyme sprigs, mint sprigs, garlic, lemon strips, and 2 tsp of salt into a large saucepan. Cover with enough boiling water to rise ¾ inch/2cm above the potatoes. Simmer gently for about 25 minutes, or until the potatoes are soft enough to mash.",
+    "While the potatoes are boiling, make the topping. Put the oil, garlic, thyme leaves, mint leaves, lemon zest, and lemon juice into a small bowl with ⅛ tsp of salt, and a good grind of pepper. Stir to combine, and set aside.",
+    "Drain the potatoes into a colander set over a large bowl (you’ll use some of the cooking water later, so don’t throw it all away). Pick out and discard the thyme and mint sprigs, then return the potatoes to the saucepan (along with the garlic and lemon strips). Use a masher to mash the potatoes, adding the oil and about 10 tbsp/140ml of the cooking water slowly as you go, until you get a smooth mash.",
+    "Transfer the mash to a platter and use the back of a spoon to create divots in the surface. Drizzle the herb and garlic oil topping evenly over it,  nish with a good grind of black pepper, and serve.",
+    "Sweet potato mash with lime salsa",
+    "This is delicious alongside all sorts of things: grilled chops, for example, grilled sausages, pan-fried pork loin, or tofu. I like to keep the skins, brush them very lightly with olive oil, and roast them for about 8 minutes at 425°F, to eat as a chip-like snack."
+  ],
+  "time": {
+    "total": 30
+  }
+}

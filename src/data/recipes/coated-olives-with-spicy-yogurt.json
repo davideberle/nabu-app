@@ -1,6 +1,6 @@
 {
   "id": "coated-olives-with-spicy-yogurt",
-  "name": "COATED OLIVES WITH SPICY YOGURT",
+  "name": "Coated Olives with Spicy Yogurt",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -68,12 +68,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

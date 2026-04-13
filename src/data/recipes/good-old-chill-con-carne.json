@@ -1,6 +1,6 @@
 {
   "id": "good-old-chill-con-carne",
-  "name": "GOOD OLD CHILl CON CARNE",
+  "name": "Good Old Chili Con Carne",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -72,12 +72,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "British"
+  }
 }

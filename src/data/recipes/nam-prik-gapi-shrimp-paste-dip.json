@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "pea eggplants, are included below.",
+  "intro": "hungry. I love a good shrimp paste dip, and consider it one of my favorite Thai dishes ever, even if, as",
   "ingredients": [
     {
       "item": "good-quality shrimp paste (kapi). The best is known as kapi kuey, made from fermented krill",
@@ -67,12 +67,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

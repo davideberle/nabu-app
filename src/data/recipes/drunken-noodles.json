@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "without it. Less important but still nice to have: holy basil leaves, and shavings of wild ginger.",
+  "intro": "like a bullhorn in your face ... but much better than that, obviously. This recipe can be served with either",
   "ingredients": [
     {
       "item": "51",
@@ -105,12 +105,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

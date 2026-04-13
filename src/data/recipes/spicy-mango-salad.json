@@ -1,0 +1,53 @@
+{
+  "id": "spicy-mango-salad",
+  "name": "Spicy Mango Salad",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "mango",
+      "amount": "1"
+    },
+    {
+      "item": "kohlrabi",
+      "amount": "1"
+    },
+    {
+      "item": "large handfuls baby spinach",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 cup dried cranberries",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup pine nuts",
+      "amount": ""
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lime juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "orange juice",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "To make the salad, peel the mango. Cut the flesh from the pit,"
+  ],
+  "time": {
+    "total": 30
+  }
+}

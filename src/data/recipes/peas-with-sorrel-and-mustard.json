@@ -1,6 +1,6 @@
 {
   "id": "peas-with-sorrel-and-mustard",
-  "name": "PEAS WITH SORREL AND MUSTARD",
+  "name": "Peas with Sorrel and Mustard",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -60,12 +60,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

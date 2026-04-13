@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "allergic to cashew nuts like I am, substitute with peanuts.",
+  "intro": "leaves and lime, but if you don’t want to use them, it’s fi ne. The",
   "ingredients": [
     {
       "item": "81",
@@ -84,12 +84,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

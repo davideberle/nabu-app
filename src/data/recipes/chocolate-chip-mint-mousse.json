@@ -1,0 +1,71 @@
+{
+  "id": "chocolate-chip-mint-mousse",
+  "name": "Chocolate Chip Mint Mousse",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "dates (medjool are best)",
+      "amount": "4"
+    },
+    {
+      "item": "thick almond milk (see tip)",
+      "amount": "2 cups"
+    },
+    {
+      "item": "almond paste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coconut butter",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "cocoa butter",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "spirulina powder, plus a",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dried peppermint leaves",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "vanilla extract",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "heaped tbsp cocoa powder",
+      "amount": "1"
+    },
+    {
+      "item": "maple syrup or agave",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cacao nibs, plus a little",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "soak 1 cup almonds in cold water overnight. Drain the",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 cups water into a powerful blender or food processor.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "The almond milk used in this dessert",
+    "Pit the dates. Place them into a powerful blender.",
+    "Divide the chocolate chip mint mousse between"
+  ],
+  "time": {
+    "total": 30
+  }
+}

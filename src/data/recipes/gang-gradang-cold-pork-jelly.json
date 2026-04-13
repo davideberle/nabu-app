@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "complicated Chiang Rai version, which includes a spice paste.",
+  "intro": "family style with everything else, alongside stews, soups, salads, chili dips, fried pork and sticky rice.",
   "ingredients": [
     {
       "item": "95",
@@ -89,12 +89,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

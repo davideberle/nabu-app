@@ -1,0 +1,49 @@
+{
+  "id": "buckwheat-oatmeal",
+  "name": "Buckwheat Oatmeal",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "⁄2 cup raw buckwheat groats",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup fresh orange juice",
+      "amount": ""
+    },
+    {
+      "item": "apple",
+      "amount": "1"
+    },
+    {
+      "item": "⁄3 cup almond milk",
+      "amount": ""
+    },
+    {
+      "item": "chia seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "white sesame seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "chopped walnuts, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put the buckwheat groats and the orange juice into",
+    "Cut the apple into quarters and place into a blender,",
+    "Sprinkle the sesame seeds and cinnamon over",
+    "Soaked buckwheat groats make an excellent breakfast oatmeal. They taste even better if",
+    "The buckwheat oatmeal in this recipe is so"
+  ],
+  "time": {
+    "total": 30
+  }
+}

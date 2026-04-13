@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "of a meal with a side of steamed rice and can be topped with Sriracha Chili Sauce.",
+  "intro": "This recipe is “wetter” than a typical hoy tod or shellfi sh omelet, which is crispy on the bottom",
   "ingredients": [
     {
       "item": "55",
@@ -99,12 +99,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

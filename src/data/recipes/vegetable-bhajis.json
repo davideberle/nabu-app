@@ -1,0 +1,59 @@
+{
+  "id": "vegetable-bhajis",
+  "name": "Vegetable Bhajis",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large carrots",
+      "amount": "2"
+    },
+    {
+      "item": "medium red onions",
+      "amount": "2"
+    },
+    {
+      "item": "fresh red chiles, to your taste",
+      "amount": "2-3"
+    },
+    {
+      "item": "yellow mustard seeds",
+      "amount": "2 teaspoons"
+    },
+    {
+      "item": "teasp",
+      "amount": "2"
+    },
+    {
+      "item": "I heaped cup self-rising flour",
+      "amount": ""
+    },
+    {
+      "item": "limes",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "put them on some paper towels to drain. Sprinkle with a little salt and a squeeze of lemon juice. Lower",
+    "more tablespoonfuls into the oil until you have used up all the mixture",
+    "To serve your bhajis",
+    "Cut the limes into wedges and serve them on a big platter or plate with your bhajis • Eat at o nce!",
+    "LIGHT AND FLUFFY RICE",
+    "Rice has been an impor tant part of people's everyday diet for centuries, and it's still one of the most",
+    "important foods in many different cultures. T here are loads of varieties of rice available in our stores now,",
+    "but i n this chapter basmati is the king. I'm going to give you my basic recipe for getting perfect r ice every",
+    "well as a few of my favor ite ways t o fl avor it . Having said that, I want t o point out that the natural",
+    "nuttiness and fl avor of plain rice is not t o be underest imated. Have a go at mastering simple plain rice first",
+    "-you'll be amazed at t he light and fluffy results.",
+    "Once yo u've got the hang of that, you can give the other recipes a go. It's worth remembering that any",
+    "flavor ing you boil w ith the rice will infuse it with wonderful fragrances and flavors. So try boiling things",
+    "like fresh herbs, a ci nnamon sti ck, a few cardamom pods, a strip of lemon zest, or even a green tea bag in",
+    "the wat er with t he r ice. Just double t he recipe for 8 to 12 people."
+  ],
+  "time": {
+    "total": 30
+  }
+}

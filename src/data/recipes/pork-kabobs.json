@@ -1,6 +1,6 @@
 {
   "id": "pork-kabobs",
-  "name": "PORK KABOBS",
+  "name": "Pork Kabobs",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -41,12 +41,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "British"
+  }
 }

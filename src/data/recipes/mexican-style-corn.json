@@ -1,6 +1,6 @@
 {
   "id": "mexican-style-corn",
-  "name": "MEXICAN-STYLE CORN",
+  "name": "Mexican-Style Corn",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -81,12 +81,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "British"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "marrow-with-tomato-and-feta",
-  "name": "MARROW WITH TOMATO AND FETA",
+  "name": "Marrow with Tomato and Feta",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -53,12 +53,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "id": "tagliatelle-with-walnuts-and-lemon",
+  "name": "Tagliatelle with Walnuts and Lemon",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "cup/60 g walnuts, roughly broken up",
+      "amount": "⅔"
+    },
+    {
+      "item": "tbsp/30 g unsalted butter",
+      "amount": "2"
+    },
+    {
+      "item": "cup/10 g sage leaves, finely shredded",
+      "amount": "⅓"
+    },
+    {
+      "item": "grated zest of 1 medium lemon",
+      "amount": ""
+    },
+    {
+      "item": "heavy cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "oz/300 g tagliatelle or tagliolini",
+      "amount": "10½"
+    },
+    {
+      "item": "cups/50 g Parmesan, shaved",
+      "amount": "1¾"
+    },
+    {
+      "item": "cup/15 g flat-leaf parsley leaves, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "lemon juice salt and black pepper",
+      "amount": "2 tbsp"
+    }
+  ],
+  "method": [
+    "Spread out the walnuts on a baking sheet and toast in the oven for 15 minutes.",
+    "Remove and set aside to cool.",
+    "Place a sauté pan over high heat and add the butter. Cook for 1 minute, add the sage, and fry for about 2 minutes, until the butter starts to brown. Add the lemon zest, cream, ½ teaspoon salt, and plenty of black pepper and stir and cook for just a few seconds to thicken the sauce a little. Remove from the heat at once so the cream doesn’t separate. Set aside until ready to use.",
+    "Bring a large pan of salted water to a boil and add the pasta. Cook for 8 minutes, or according to the package instructions, until al dente. Drain, reserving a few tablespoons of the cooking liquid, and place in a large bowl.",
+    "Warm the sauce, adding some cooking liquid if it has become very thick, then add it to the pasta along with the walnuts, Parmesan, and parsley. Toss the mix, stir in the lemon juice, and serve at once.",
+    "BRUSSELS SPROUT RISOTTO"
+  ],
+  "time": {
+    "total": 30
+  }
+}

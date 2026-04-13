@@ -6,12 +6,8 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "at home version does not have cake emulsifi er in it, resulting in a slightly denser cupcake.",
+  "intro": "jasmine extract, but if that’s hard to fi nd, you can substitute with vanilla. This easy to make",
   "ingredients": [
-    {
-      "item": "CUPCAKES (DEPENDING ON SIZE OF CUPCAKE HOLDER/RAMEKIN)",
-      "amount": "10"
-    },
     {
       "item": "151",
       "amount": ""
@@ -52,12 +48,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

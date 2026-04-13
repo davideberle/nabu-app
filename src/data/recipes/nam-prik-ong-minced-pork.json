@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "rinds, boiled cabbage wedges and sticky rice.",
+  "intro": "the Italian meat ragu. It is not meant to be spicy and is most often eaten with pork",
   "ingredients": [
     {
       "item": "93",
@@ -47,12 +47,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

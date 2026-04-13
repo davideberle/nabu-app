@@ -1,0 +1,33 @@
+{
+  "id": "toasted-bread-with-chocolate",
+  "name": "Toasted Bread With Chocolate",
+  "source": {
+    "cookbook": "The Best of Fine Cooking: Breakfast",
+    "author": "Fine Cooking"
+  },
+  "servings": "serves 8",
+  "intro": "pinch of salt is a sophisticated touch.",
+  "ingredients": [
+    {
+      "item": "1/2-inch-thick slices good bread, such as",
+      "amount": "8"
+    },
+    {
+      "item": "best-quality bitterswee",
+      "amount": "4 oz."
+    },
+    {
+      "item": "very coarsely chopped (scant 1 cup)",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "melts the chocolate, about 1 minute. Smooth the",
+    "chocolate with a table knife, if you want. Sprinkle",
+    "a pinch of salt on each slice and serve.",
+    "topped with fruit and vegetables is a satisfying dish."
+  ],
+  "time": {
+    "total": 30
+  }
+}

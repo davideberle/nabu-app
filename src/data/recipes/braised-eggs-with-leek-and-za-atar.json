@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "eggs to be cracked in and braised.",
+  "intro": "short amount of time. It’s a dish as happily eaten for brunch, with coffee, as it is",
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -63,12 +63,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

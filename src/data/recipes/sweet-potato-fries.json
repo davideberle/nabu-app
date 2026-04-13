@@ -1,0 +1,62 @@
+{
+  "id": "sweet-potato-fries",
+  "name": "Sweet potato fries",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "These are lovely either as a side or a snack. If a snack, serve alongside some sour",
+  "ingredients": [
+    {
+      "item": "very large sweet potatoes, peeled and sliced into ½-inch/1½ cm-thick fries (2½ lb/1.2kg)",
+      "amount": "3"
+    },
+    {
+      "item": "sweet smoked paprika",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cayenne",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "3"
+    },
+    {
+      "item": "polenta",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "tbsp/100ml olive oil flaked sea salt",
+      "amount": "7"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the sweet potatoes in a large bowl with the paprika, cayenne, garlic, polenta, oil, and 1 tsp  aked salt. Once combined, tip the sweet potatoes (and all the oil) onto two large parchment-lined baking sheets and roast for",
+    "25–30 minutes, stirring gently once or twice, until the potatoes are cooked, crisp and golden brown.",
+    "Remove from the oven, sprinkle with the sumac and 1 tsp  aked salt, and serve at once.",
+    "Harissa–baked potato skins and crispy lettuce salad",
+    "Pictured on this page, left",
+    "The basis of this recipe is that you’ll be using up skins from potatoes you’ve already cooked and have sitting around. This is either because you’ve used the cooked esh to make mash or, in one of life’s great mysteries, your kids have eaten the inside of a baked potato and left the best bit (i.e., the cooked skins)!",
+    "Either way, don’t throw them away—they bring a great extra crunch to an already fresh and crunchy salad and they turn this into a dish you can get onto the table in less than 30 minutes. This is totally brilliant alongside the Slow- cooked chicken with a crisp corn crust (this page).",
+    "All the elements can be made in advance: the dressing up to 3 days and the potato skins can be kept in a sealed container for 1 day at room temperature.",
+    "Just assemble when ready to serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "baked-orzo-with-mozzarella-and-oregano",
+  "name": "Baked Orzo with Mozzarella and Oregano",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "tbsp/100 ml olive oil",
+      "amount": "7"
+    },
+    {
+      "item": "large eggplant, cut into ¾-inch/2-cm dice (3⅔ cups/300 g)",
+      "amount": "1"
+    },
+    {
+      "item": "medium carrots, peeled and cut into ⅔-inch/1.5-cm dice (2⅓ cups/300 g)",
+      "amount": "4"
+    },
+    {
+      "item": "celery stalks, cut into ⅔-inch/1.5-cm dice (2 cups/200 g)",
+      "amount": "4"
+    },
+    {
+      "item": "large onion, finely diced (scant 1¼ cups/170 g)",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "3 cloves"
+    },
+    {
+      "item": "oz/250 g orzo pasta, rinsed",
+      "amount": "9"
+    },
+    {
+      "item": "tomato paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cups/380 ml vegetable stock",
+      "amount": "1⅔"
+    },
+    {
+      "item": "fresh oregano, chopped, or 1½ tbsp thyme leaves grated zest of 1 lemon",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "oz/120 g firm mozzarella, cut into ⅜-inch/1-cm dice",
+      "amount": "4"
+    },
+    {
+      "item": "tbsp/40 g grated Parmesan",
+      "amount": "6½"
+    },
+    {
+      "item": "medium tomatoes, cut into slices ⅜-inch/1-cm thick (2¼ cups/400 g)",
+      "amount": "3"
+    },
+    {
+      "item": "dried oregano salt and black pepper",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Heat the olive oil in a large sauté pan over medium-high heat. Add the eggplant and cook for 8 minutes, stirring occasionally, until golden brown.",
+    "Remove with a slotted spoon to paper towels and set aside. Add the carrots and celery to the pan and fry for 8 minutes. Transfer to paper towels. Turn down the heat to medium and add the onion and garlic. Cook for 5 minutes, stirring often. Add the orzo and tomato paste and cook for a further 2 minutes.",
+    "Remove the pan from the heat and add the stock, fresh oregano, and lemon zest. Add the cooked vegetables, mozzarella, Parmesan, 1 teaspoon salt, and",
+    "½ teaspoon pepper. Mix well and transfer to a rectangular baking dish, 8½ by",
+    "10½-inches (21 by 27-cm) or a round one, 10.5 inches (27 cm) in diameter.",
+    "Arrange the tomatoes on top and sprinkle with the dried oregano, ¼ teaspoon salt, and a grind of black pepper.",
+    "Bake for 40 minutes, until all the liquid has been absorbed and the pasta is cooked through. Remove, leave to settle for 5 minutes, and serve.",
+    "Taleggio and Spinach Roulade",
+    "TALEGGIO AND SPINACH ROULADE"
+  ],
+  "time": {
+    "total": 30
+  }
+}

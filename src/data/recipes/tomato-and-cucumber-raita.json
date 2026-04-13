@@ -1,0 +1,71 @@
+{
+  "id": "tomato-and-cucumber-raita",
+  "name": "Tomato and cucumber raita",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "(or use your hands to better effect), scatter the chile and cilantro on top and",
+  "ingredients": [
+    {
+      "item": "small preserved lemons, seeds discarded, skin and  esh roughly chopped (¼ cup/50g)",
+      "amount": "1½"
+    },
+    {
+      "item": "green chiles, seeded and chopped",
+      "amount": "2"
+    },
+    {
+      "item": "garlic cloves, passed through a garlic press",
+      "amount": "2"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "cup/200g Greek-style yogurt",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/10g mint leaves,  nely shredded",
+      "amount": "½"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds, toasted and  nely crushed",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "English cucumber (or 3 or 4 small Lebanese cucumbers), quartered lengthwise, seeded, and  esh cut into ½-inch/1cm dice (2 cups/300g)",
+      "amount": "1"
+    },
+    {
+      "item": "onion,  nely chopped (½ cup/75g)",
+      "amount": "½"
+    },
+    {
+      "item": "oz/200g cherry tomatoes, quartered salt",
+      "amount": "7"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place all the ingredients for the chile paste in the bowl of a food processor, with ¼ tsp of salt. Blitz to form a rough paste and set aside.",
+    "Put the yogurt in a bowl and whisk with the mint, lemon juice, 1½ tsp of the cumin seeds, and rounded ¼ tsp salt. Add the cucumber, onion, and tomatoes and stir gently. Transfer to a shallow bowl and top with chile paste.",
+    "Swirl lightly, sprinkle with the remaining ½ tsp of cumin seeds and serve.",
+    "Zucchini, thyme, and walnut salad",
+    "The garlic oil can be made in advance and kept for 3 days at room temperature.",
+    "Zucchini become watery soon after the salt has been added, so if preparing these more than 4–6 hours in advance, hold back on the seasoning and lemon juice until just before serving."
+  ],
+  "time": {
+    "total": 30
+  }
+}

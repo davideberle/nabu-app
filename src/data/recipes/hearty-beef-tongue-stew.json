@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "so Lauren zhushed the recipe up by adding Asian aromatics to a classic European stew.",
+  "intro": "and old-fashioned, never cool, but strangely satisfying. The original dish is basically Portuguese",
   "ingredients": [
     {
       "item": "83",
@@ -47,12 +47,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

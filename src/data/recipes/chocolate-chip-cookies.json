@@ -1,0 +1,79 @@
+{
+  "id": "chocolate-chip-cookies",
+  "name": "Chocolate Chip Cookies",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 12",
+  "ingredients": [
+    {
+      "item": "organic lime",
+      "amount": "1"
+    },
+    {
+      "item": "⁄2 cups almond flour",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 cup almond paste",
+      "amount": ""
+    },
+    {
+      "item": "cacao nibs",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "poppy seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pure vanilla",
+      "amount": "1–2 tsp"
+    },
+    {
+      "item": "vanilla beans",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 tsp ground ginger",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 tsp dried rosemary",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 tsp sea salt",
+      "amount": ""
+    },
+    {
+      "item": "Finely grate the zest of the lime.",
+      "amount": ""
+    },
+    {
+      "item": "Other dried and coarsely grated",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Grind the dried mandarin oranges in a mortar.",
+    "Finely grate the zest of the lime.",
+    "Dip a tablespoon into water. Drop the dough in",
+    "Press down gently on each portion to flatten it a little.",
+    "Put the cookies into the refrigerator for 1 hour to harden.",
+    "Other dried and coarsely grated",
+    "Peel the fruit, cut it into thin slices, and dry it in a food"
+  ],
+  "time": {
+    "total": 30
+  }
+}

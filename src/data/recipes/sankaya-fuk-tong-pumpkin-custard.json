@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "ramekins at that time, de Pinha used a pumpkin. This is still served all over Thailand today.",
+  "intro": "a colorful life as the wife of a French merchant who was killed during the 1688 Siamese revolution.",
   "ingredients": [
     {
       "item": "eggs (duck eggs preferred, but chicken eggs are fi ne)",
@@ -47,12 +47,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "fried-upma-with-poached-egg",
-  "name": "FRIED UPMA WITH POACHED EGG",
+  "name": "Fried Upma with Poached Egg",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -73,12 +73,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

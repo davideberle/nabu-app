@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "you. The only thing that should be bruised here, besides the dressing, is the long bean.",
+  "intro": "This is one instance where not using the mortar and pestle for the fruit will probably help",
   "ingredients": [
     {
       "item": "1800s, is part of the reason why the food of Isaan is so vibrant and dynamic.",
@@ -64,12 +64,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

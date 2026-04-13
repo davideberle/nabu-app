@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 2",
-  "intro": "cook the omelet in, as well as a fi ne-meshed sieve. Two wooden cooking spoons are also recommended.",
+  "intro": "This recipe is inspired by the fl uffy, pork rind-strewn omelet served at Raya Restaurant in Phuket town,",
   "ingredients": [
     {
       "item": "unscented cooking oil (vegetable oil is best)",
@@ -26,12 +26,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

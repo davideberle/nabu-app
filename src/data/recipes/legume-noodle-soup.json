@@ -1,6 +1,6 @@
 {
   "id": "legume-noodle-soup",
-  "name": "LEGUME (NOODLE) SOUP",
+  "name": "Legume (Noodle) Soup",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -71,12 +71,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "tomato-and-almond-tart",
-  "name": "TOMATO AND ALMOND TART",
+  "name": "Tomato and Almond Tart",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -62,12 +62,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

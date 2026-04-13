@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "I love the grilled tendon-y ones best and think this recipe replicates that texture well.",
+  "intro": "One of my favorite street food spots is Luk Chin Anamai on Soonvijai Road, next to the hospital.",
   "ingredients": [
     {
       "item": "broth of your choice, or water",
@@ -104,12 +104,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

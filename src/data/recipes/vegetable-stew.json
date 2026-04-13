@@ -1,0 +1,52 @@
+{
+  "id": "vegetable-stew",
+  "name": "Vegetable Stew",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "dried tomatoes",
+      "amount": "2–3"
+    },
+    {
+      "item": "tomatoes",
+      "amount": "3–4"
+    },
+    {
+      "item": "scallions",
+      "amount": "2"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "⁄3 cups spinach",
+      "amount": ""
+    },
+    {
+      "item": "dried seaweed",
+      "amount": "4–5 tbsp"
+    },
+    {
+      "item": "ear of corn",
+      "amount": "1"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "4–5 tbsp"
+    }
+  ],
+  "method": [
+    "To make the stew, put the dried",
+    "To make the six toppings, first",
+    "Cover it with cold water, and let soak",
+    "This stew is especially suitable for guests or picky family members, since it allows them"
+  ],
+  "time": {
+    "total": 30
+  }
+}

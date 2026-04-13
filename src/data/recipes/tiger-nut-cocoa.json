@@ -1,0 +1,67 @@
+{
+  "id": "tiger-nut-cocoa",
+  "name": "Tiger Nut Cocoa",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "⁄4 cups water,",
+      "amount": ""
+    },
+    {
+      "item": "tiger nuts",
+      "amount": "2 cups"
+    },
+    {
+      "item": "raw cocoa powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dates",
+      "amount": "4"
+    },
+    {
+      "item": "recipe almond milk (see p.148)",
+      "amount": "1"
+    },
+    {
+      "item": "dates",
+      "amount": "2"
+    },
+    {
+      "item": "chia seeds",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey or agave syrup",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lucuma powder",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "maca powder",
+      "amount": "1–2 tsp"
+    },
+    {
+      "item": "raw cocoa powder",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "⁄2 tsp ground cinnamon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Contrary to general opinion, lunch in raw food cuisine is",
+    "When I have a bit of free time, I like to prepare a variety of",
+    "I rely on the fact that today there are many organic-food stores"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "tahini-date-paste",
+  "name": "Tahini Date Paste",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "Put the paste into a bowl, add the chopped parsley,",
+      "amount": ""
+    },
+    {
+      "item": "dates (medjool are best)",
+      "amount": "15"
+    },
+    {
+      "item": "⁄3 cups sesame seeds",
+      "amount": ""
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "⁄2 tbsp agave syrup",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 tsp coriander seeds",
+      "amount": ""
+    },
+    {
+      "item": "sumac or zest of",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "SUNFLOWER SEED PASTE",
+    "Sprouted pea hummus"
+  ],
+  "time": {
+    "total": 30
+  }
+}

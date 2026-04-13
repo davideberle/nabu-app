@@ -1,6 +1,6 @@
 {
   "id": "baked-rhubarb-with-sweet-labneh",
-  "name": "BAKED RHUBARB WITH SWEET LABNEH",
+  "name": "Baked Rhubarb with Sweet Labneh",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -49,12 +49,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

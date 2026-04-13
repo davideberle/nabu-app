@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "nanny Pong always buys this at the market as part of a big meaty spread for breakfast (!)",
+  "intro": "pounded to within an inch of its life and deep-fried. There is nothing better than this for sticky",
   "ingredients": [
     {
       "item": "105",
@@ -82,12 +82,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

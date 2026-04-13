@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 2",
-  "intro": "are listed below courtesy of thespruceeats.com.",
+  "intro": "is probably the most famous brand of tea mix in Thailand but if you can’t source it, substitutions",
   "ingredients": [
     {
       "item": "of water",
@@ -28,12 +28,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "drink"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

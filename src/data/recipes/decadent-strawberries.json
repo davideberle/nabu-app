@@ -1,0 +1,42 @@
+{
+  "id": "decadent-strawberries",
+  "name": "Decadent Strawberries",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "coconut oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "heaped tbsp cocoa powder",
+      "amount": "2"
+    },
+    {
+      "item": "level tsp lucuma powder",
+      "amount": "3"
+    },
+    {
+      "item": "or 1 tbsp agave syrup",
+      "amount": ""
+    },
+    {
+      "item": "2oz (500g) strawberries",
+      "amount": "1lb"
+    }
+  ],
+  "method": [
+    "Melt the coconut oil over a water bath. Add the",
+    "Rinse the strawberries and dry them thoroughly.",
+    "Let the chocolate harden for 5–10 minutes. If you would",
+    "The lucuma powder gives the chocolate",
+    "I make these chocolate strawberries for my son as an alternative to his beloved sugary snacks.",
+    "But this is also one of my favorite recipes to make when friends call ahead to say they are"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "id": "juicy-lucy-detox-juice",
+  "name": "Juicy Lucy Detox Juice",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "pear",
+      "amount": "1"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "mâche",
+      "amount": "4 cups"
+    },
+    {
+      "item": "⁄2 cup unsweetened coconut",
+      "amount": ""
+    },
+    {
+      "item": "pear",
+      "amount": "1"
+    },
+    {
+      "item": "banana",
+      "amount": "1"
+    },
+    {
+      "item": "mâche",
+      "amount": "4 cups"
+    },
+    {
+      "item": "⁄2 cup unsweetened coconut",
+      "amount": ""
+    },
+    {
+      "item": "mandarin orange",
+      "amount": "1"
+    },
+    {
+      "item": "romaine lettuce",
+      "amount": "2 handfuls"
+    },
+    {
+      "item": "(2",
+      "amount": "1 piece"
+    },
+    {
+      "item": "ice cubes",
+      "amount": "2–3"
+    },
+    {
+      "item": "unsweetened coconut",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mango",
+      "amount": "1"
+    },
+    {
+      "item": "maca powder (see p.152)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "(2",
+      "amount": "1 piece"
+    },
+    {
+      "item": "⁄2 cup unsweetened coconut",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "If you are able to buy",
+    "young coconut meat (and",
+    "more and more online",
+    "retailers are offering young",
+    "coconut), then it is worth",
+    "doing so to try out this",
+    "recipe. This is, for me, more",
+    "of a dessert than a drink,",
+    "but of course it still counts",
+    "as a smoothie."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "arugula-and-pear-salad",
+  "name": "Arugula and Pear Salad",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "pears",
+      "amount": "2"
+    },
+    {
+      "item": "arugula",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "large handful of baby spinach",
+      "amount": "1"
+    },
+    {
+      "item": "chopped walnuts",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "cold-pressed sesame oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "CUCUMBER SALAD",
+    "Tomatoes and seaweed complement each other well. This is",
+    "a light, fresh salad that I enjoy with crackers and a spread.",
+    "⁄4oz (50g) dried wakame or",
+    "arame seaweed",
+    "2 nori seaweed sheets, raw",
+    "⁄2in/1cm) piece of ginger",
+    "dash of tamari",
+    "2 tbsp ume vinegar",
+    "1–2 pinches of wasabi powder,",
+    "pinch of cayenne pepper",
+    "squeeze of lemon juice",
+    "1 tbsp white sesame seeds",
+    "1 tbsp black sesame seeds",
+    "¼oz (10g) wakame and arame",
+    "seaweed (mixed)",
+    "2 medium tomatoes",
+    "⁄2 red onion",
+    "2 tbsp cold-pressed sesame oil",
+    "1 tbsp neutral vegetable oil",
+    "3 tbsp tamari",
+    "1 tbsp ume vinegar",
+    "1 tsp sesame seeds"
+  ],
+  "time": {
+    "total": 30
+  }
+}

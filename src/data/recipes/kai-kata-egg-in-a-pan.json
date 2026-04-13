@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 2",
-  "intro": "have become popular all on their own in the Northeast, where this is a popular street food breakfast.",
+  "intro": "requested American-style breakfasts from local cooks. The cooks’ efforts, which utilized local ingredients,",
   "ingredients": [
     {
       "item": "123",
@@ -62,12 +62,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

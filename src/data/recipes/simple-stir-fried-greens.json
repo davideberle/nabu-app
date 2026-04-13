@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "pumpkin shoots, bok choy, Swiss chard, pea or sunfl ower sprouts, kale, and of course, spinach.",
+  "intro": "leaves than the Chinese version, but obviously the Chinese kind also works well. Other good options are",
   "ingredients": [
     {
       "item": "77",
@@ -42,12 +42,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

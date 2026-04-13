@@ -1,0 +1,66 @@
+{
+  "id": "stuffed-zucchini-with-pine-nut-salsa",
+  "name": "Stuffed zucchini with pine nut salsa",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "Traditionally, stuffing vegetables has always been a bit of a labor of love but, here,",
+  "ingredients": [
+    {
+      "item": "large zucchini, halved lengthwise (1 lb 2 oz/500g)",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove, crushed",
+      "amount": "½"
+    },
+    {
+      "item": "large egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "oz/40g Parmesan (or pecorino),  nely grated scant 1 cup/40g fresh sourdough breadcrumbs (from about 1 slice, crust left on if soft) salt",
+      "amount": "1½"
+    },
+    {
+      "item": "oz/100g cherry tomatoes, quartered",
+      "amount": "3½"
+    },
+    {
+      "item": "large lemon:  nely zest to get 2 tsp, then juice to get 1 tbsp",
+      "amount": "1"
+    },
+    {
+      "item": "cup/5g finely chopped oregano leaves, plus a few extra leaves to serve mounded ¼ cup/35g pine nuts, lightly toasted",
+      "amount": "¼"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    },
+    {
+      "item": "3.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "In a separate bowl, mix the lemon zest, oregano, and pine nuts. Stir half of this into the zucchini mixture and set the rest aside for the salsa.",
+    "Place the hollowed zucchini on a medium baking sheet or ovenproof dish, hollowed side facing up. Drizzle 1 tbsp of oil (in total) over the zucchini and season with ⅛ tsp of salt (in total). Spoon the zucchini mixture back into the hollows and bake for 15 minutes, until the  lling is set and golden brown.",
+    "While the zucchini are baking, make the salsa. Add the lemon juice, remaining 2 tbsp of oil, and ⅛ tsp of salt to the bowl of oregano and pine nuts. Let the zucchini cool a little. Spoon the salsa on top, sprinkle with oregano leaves, and serve.",
+    "Herby zucchini and peas with semolina porridge",
+    "The semolina porridge is a super-comforting base to all sorts of toppings. It works very well, for example, topped with a very simple beef ragout."
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "curried-chicken-meatballs-with-rice",
+  "name": "Curried Chicken Meatballs with Rice",
+  "source": {
+    "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
+    "author": "Various"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "of lean ground chicken",
+      "amount": "1 pound"
+    },
+    {
+      "item": "of yellow onion, minced",
+      "amount": "½ cup"
+    },
+    {
+      "item": "of cilantro, chopped",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "of low-fat plain yogurt",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of flour",
+      "amount": "3 tbsp."
+    },
+    {
+      "item": "of cumin",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "of turmeric",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "of ground coriander",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "of garam masala",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "small serrano chili, seeded and diced",
+      "amount": "1"
+    },
+    {
+      "item": "of garlic, minced",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "of egg substitute",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "recipe Coconut Curry Sauce",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Combine all ingredients and mix well. Scoop into 2-oz. portions and form",
+    "into balls.",
+    "Place meatballs on sprayed sheet pan and bake for 7 minutes.",
+    "Place curry sauce in saucepan over medium heat and bring to a simmer.",
+    "Coat cooked meatballs with curry sauce and serve over rice.",
+    "Recipe 17: Curried Chicken Salad"
+  ],
+  "time": {
+    "total": 30
+  }
+}

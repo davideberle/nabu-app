@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "reminiscent of what Chinese workers used to eat while doing construction jobs in Bangkok.",
+  "intro": "(chicken, pork, fi sh, shrimp—but I never see beef) or the plain rice porridge with the little side dishes",
   "ingredients": [
     {
       "item": "73",
@@ -40,12 +40,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

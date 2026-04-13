@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "days ahead and kept in the fridge.",
+  "intro": "the cavity. Roast in the oven for 18–20 minutes, basting once, until the  sh is",
   "ingredients": [
     {
       "item": "lb/800g halibut (or other  rm white  sh), either 4 steaks, on the bone, or 4  llets, skinless and boneless salt",
@@ -81,12 +81,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

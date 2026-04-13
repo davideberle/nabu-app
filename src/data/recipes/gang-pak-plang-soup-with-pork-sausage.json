@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "refreshing, even with the fermented pork sausage.",
+  "intro": "This is more of a soup and less of a curry. Scratch that: it’s not a curry at all. It’s light and",
   "ingredients": [
     {
       "item": "minutes, or until they become slightly translucent. Drain through a fi ne mesh sieve and place the sieve (with the rice grains) across a stock pot fi lled with an inch of water. Cover the pot with a lid.",
@@ -40,12 +40,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

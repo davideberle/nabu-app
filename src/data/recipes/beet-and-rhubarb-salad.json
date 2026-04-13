@@ -1,6 +1,6 @@
 {
   "id": "beet-and-rhubarb-salad",
-  "name": "BEET AND RHUBARB SALAD",
+  "name": "Beet and Rhubarb Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -53,12 +53,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

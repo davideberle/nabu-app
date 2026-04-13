@@ -67,12 +67,5 @@
   ],
   "time": {
     "total": 50
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

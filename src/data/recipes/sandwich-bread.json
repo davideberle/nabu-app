@@ -1,0 +1,71 @@
+{
+  "id": "sandwich-bread",
+  "name": "Sandwich Bread",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 10",
+  "ingredients": [
+    {
+      "item": "can be sliced. When it is dry enough",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cups dried tomatoes",
+      "amount": ""
+    },
+    {
+      "item": "ground flaxseed",
+      "amount": "1 cup"
+    },
+    {
+      "item": "⁄2 cups sunflower seeds",
+      "amount": ""
+    },
+    {
+      "item": "apple",
+      "amount": "1"
+    },
+    {
+      "item": "⁄2 cups chopped zucchini",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice",
+      "amount": "4–5 tbsp"
+    },
+    {
+      "item": "⁄4 cup cold-pressed olive oil",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup date paste (see p.60)",
+      "amount": ""
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried Herbes",
+      "amount": "7 tbsp"
+    },
+    {
+      "item": "dehydrating trays",
+      "amount": "4"
+    },
+    {
+      "item": "of tomatoes, 2 slices of cucumber, salad greens, and arugula to taste, a few",
+      "amount": "3 slices"
+    }
+  ],
+  "method": [
+    "Used to make sandwiches with a variety of sauces and several layers, this bread truly is very",
+    "When the surface of the bread is dry",
+    "The sandwich shown on the right is a creation of the Munich"
+  ],
+  "time": {
+    "total": 30
+  }
+}

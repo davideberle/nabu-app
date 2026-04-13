@@ -1,0 +1,79 @@
+{
+  "id": "savory-and-sweet-wild-rice",
+  "name": "Savory and Sweet Wild Rice",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "wild rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "celery sticks",
+      "amount": "4"
+    },
+    {
+      "item": "scallions",
+      "amount": "7"
+    },
+    {
+      "item": "carrots",
+      "amount": "2"
+    },
+    {
+      "item": "flat-leaf parsley",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "dried cranberries",
+      "amount": "8 tbsp"
+    },
+    {
+      "item": "onion powder",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "garlic powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "white-miso paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground chia seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "persimmons",
+      "amount": "2"
+    },
+    {
+      "item": "⁄2 tsp paprika",
+      "amount": ""
+    },
+    {
+      "item": "just takes longer. Soak 1 cup of rice in 3 cups or, even",
+      "amount": ""
+    },
+    {
+      "item": "better, 4 cups of water for about 3 days, or until the",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Dice the celery finely. Coarsely",
+    "Pick the parsley leaves and chop",
+    "Divide the rice dish between the"
+  ],
+  "time": {
+    "total": 30
+  }
+}

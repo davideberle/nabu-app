@@ -1,0 +1,49 @@
+{
+  "id": "cauliflower-grape-and-cheddar-salad",
+  "name": "Cauliflower, Grape, and Cheddar Salad",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Divide among shallow plates, spoon the remaining salsa over the top, and",
+  "ingredients": [
+    {
+      "item": "large cauliflower, broken into bite-size florets (2 lb/900 g)",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/90 ml canola oil",
+      "amount": "6"
+    },
+    {
+      "item": "sherry vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "honey scant ¼ cup/30 g raisins scant ⅓ cup/40 g hazelnuts, toasted and roughly crushed",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cup/100 g red grapes, halved and seeded scant 3 oz/80 g creamy, mature Cheddar, coarsely crumbled",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/20 g flat-leaf parsley leaves, coarsely chopped salt and black pepper",
+      "amount": "⅔"
+    }
+  ],
+  "method": [
+    "Toss the cauliflower florets with half the oil, ½ teaspoon salt, and some black pepper. Spread out on a baking sheet and roast for 20 to 25 minutes, stirring once or twice, until golden brown. Remove from the oven and set aside to cool.",
+    "To make the dressing, whisk together the remaining 3 tablespoons oil with the vinegar, mustard, honey, and ¼ teaspoon salt. Add the raisins and let them marinate for at least 10 minutes.",
+    "Just before serving, transfer the cauliflower to a large bowl and add the hazelnuts, grapes, Cheddar, and parsley. Pour the raisins and dressing over the top, toss together, transfer to a large platter, and serve.",
+    "EGGPLANTS WITH CRUSHED CHICKPEAS"
+  ],
+  "time": {
+    "total": 30
+  }
+}

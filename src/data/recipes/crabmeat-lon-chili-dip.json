@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "In either case, it’s something of a staple on Central Thai tables, served at households for decades.",
+  "intro": "coconut milk. Maybe these contradictions are why this particular dip is not often found on menus abroad.",
   "ingredients": [
     {
       "item": "41",
@@ -75,12 +75,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

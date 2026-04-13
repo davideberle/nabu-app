@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "of lime. This can be made up to the point of baking and stored in the fridge for 1",
+  "intro": "This is the ultimate comfort dish, looking for a roast chicken, some sausages, or a",
   "ingredients": [
     {
       "item": "large cauliflower, broken into roughly 1½ inch/4cm  orets (7 cups/700g)",
@@ -77,12 +77,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

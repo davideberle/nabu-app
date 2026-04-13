@@ -1,6 +1,6 @@
 {
   "id": "super-french-toast",
-  "name": "SUPER FRENCH TOAST",
+  "name": "Super French Toast",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -65,12 +65,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

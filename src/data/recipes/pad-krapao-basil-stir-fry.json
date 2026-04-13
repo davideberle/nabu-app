@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "vegetables, cooking time takes 3–5 minutes.",
+  "intro": "Thailand, but it’s really holy basil stir-fry that millions of Thais eat every day, all over the country.",
   "ingredients": [
     {
       "item": "large cloves garlic, peeled",
@@ -81,12 +81,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

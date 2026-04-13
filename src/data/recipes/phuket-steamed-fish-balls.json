@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "recipe as an example of an heirloom-quality Phuket dish that’s become increasingly harder to fi nd.",
+  "intro": "Little did I realize that big steamed fi sh balls were a thing in Phuket, particularly for breakfast or",
   "ingredients": [
     {
       "item": "pork shoulder, thinly sliced",
@@ -113,12 +113,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

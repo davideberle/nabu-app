@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "both salty and nutty. It’s rmer than standard ricotta and works really well",
+  "intro": "so that this is all ready to go. It keeps in the fridge for 5 days and also freezes",
   "ingredients": [
     {
       "item": "eggplants (2 lb/900g)",
@@ -63,12 +63,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

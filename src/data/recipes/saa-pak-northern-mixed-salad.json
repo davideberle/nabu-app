@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "dishes in the world, and can stand up to savvy substitutions relatively unscathed.",
+  "intro": "ingredients like these are hard to fi nd. I’m including it anyway because it is one of my very favorite",
   "ingredients": [
     {
       "item": "89",
@@ -79,12 +79,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

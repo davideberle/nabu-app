@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "ready to be poured into the pan.",
+  "intro": "I like to eat this either for brunch or for a speedy supper, with a fresh tomato and",
   "ingredients": [
     {
       "item": "plus 2 tsp/85ml olive oil",
@@ -63,12 +63,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

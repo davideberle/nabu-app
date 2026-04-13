@@ -1,0 +1,45 @@
+{
+  "id": "fennel-and-cilantro-salad",
+  "name": "Fennel and Cilantro Salad",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "medium fennel bulbs, with",
+      "amount": "2"
+    },
+    {
+      "item": "large tomato, or 2 small ones",
+      "amount": "1"
+    },
+    {
+      "item": "sesame seeds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cold-pressed sesame oil",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Reserve the fronds. Remove the tomato stem. Cut the",
+    "Chop the fennel fronds coarsely.",
+    "Place the agave syrup, lemon juice, vinegar, oil, salt,",
+    "You can serve the salad warm if you have a",
+    "When I make this recipe, I happily turn a blind eye and use"
+  ],
+  "time": {
+    "total": 30
+  }
+}

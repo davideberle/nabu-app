@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 10",
-  "intro": "before spreading it. Inspired by a similar pastry served at Landwer Cafe in Tel",
+  "intro": "all sorts of deliciousness is easier than it looks. The result is something between a",
   "ingredients": [
     {
       "item": "plus 3 tbsp/150g bread flour, plus a little extra to dust the work surface",
@@ -64,12 +64,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "bread"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

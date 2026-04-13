@@ -1,0 +1,59 @@
+{
+  "id": "masala-chai",
+  "name": "Masala Chai",
+  "source": {
+    "cookbook": "The Best of Fine Cooking: Breakfast",
+    "author": "Fine Cooking"
+  },
+  "servings": "serves 3",
+  "intro": "judicious use of spices results in a kinder, gentler drink.",
+  "ingredients": [
+    {
+      "item": "Tbs. loose black tea, such as",
+      "amount": "1"
+    },
+    {
+      "item": "green cardamom pods, gently",
+      "amount": "6"
+    },
+    {
+      "item": "whole cloves",
+      "amount": "5"
+    },
+    {
+      "item": "small cinnamon stick (about",
+      "amount": "1"
+    },
+    {
+      "item": "long)",
+      "amount": "1½ inches"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "¼ tsp."
+    },
+    {
+      "item": "whole milk",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "Tbs. granulated sugar; more to taste",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "In a small saucepan, bring 3½ cups water to a boil.",
+    "Remove from the heat and add the tea, cardamom,",
+    "cloves, cinnamon, and peppercorns. Let steep uncov-",
+    "ered for 4 minutes, stirring once or twice. Pour through",
+    "a fine strainer set over a bowl, rinse the saucepan, and",
+    "pour the tea back into the pan. Add the milk and sugar",
+    "and stir until the sugar is dissolved. Add more sugar to",
+    "taste. Reheat if necessary over low heat, but don’t boil.",
+    "this classic yeast bread, rich",
+    "and golden with butter and"
+  ],
+  "time": {
+    "total": 30
+  }
+}

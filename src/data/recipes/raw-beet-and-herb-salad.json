@@ -1,6 +1,6 @@
 {
   "id": "raw-beet-and-herb-salad",
-  "name": "RAW BEET AND HERB SALAD",
+  "name": "Raw Beet and Herb Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -68,12 +68,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

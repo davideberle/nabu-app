@@ -1,0 +1,43 @@
+{
+  "id": "nuea-dat-diew-salted-beef",
+  "name": "Nuea Dat Diew Salted Beef",
+  "source": {
+    "cookbook": "Real Thai Cooking",
+    "author": "Chawadee Nualkhair"
+  },
+  "servings": "serves 2",
+  "intro": "portable and keeps for a while. You need a dehydrator for it, though. Otherwise the meat",
+  "ingredients": [
+    {
+      "item": "79",
+      "amount": ""
+    },
+    {
+      "item": "unscented oil",
+      "amount": "2 cups (500 ml)"
+    },
+    {
+      "item": "cashew nuts",
+      "amount": "3 cups (350 g)"
+    },
+    {
+      "item": "kaffi r lime leaves, shredded",
+      "amount": "3–5"
+    },
+    {
+      "item": "bird’s eye chilies, sliced, any color",
+      "amount": "3–5"
+    },
+    {
+      "item": "sea salt",
+      "amount": "1 teaspoon"
+    }
+  ],
+  "method": [
+    "In a hot wok, heat the oil until smoking, then add the cashews and kaffi r lime leaves and fry until the lime leaves are crispy",
+    "A variation of this spicy nut salad is served wherever there is alcohol on the menu. Our version includes deep-fried kaffi r lime leaves and lime, but if you don’t want to use them, it’s fi ne. The important ingredients are the nuts, chilies and salt. If you are allergic to cashew nuts like I am, substitute with peanuts."
+  ],
+  "time": {
+    "total": 30
+  }
+}

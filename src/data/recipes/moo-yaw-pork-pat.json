@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "chilies, fi sh sauce and lime juice and making it into a salad.",
+  "intro": "the Vietnamese cha lua and put their own spins to it, like dressing it in",
   "ingredients": [
     {
       "item": "glass vermicelli (woon sen)",
@@ -71,12 +71,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

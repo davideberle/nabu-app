@@ -1,0 +1,86 @@
+{
+  "id": "rocher-torte",
+  "name": "Rocher Torte",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "hour plus chilling",
+      "amount": "1"
+    },
+    {
+      "item": "⁄4 cup cashews",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup hazelnut paste",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup maple syrup",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup birch sugar (xylitol)",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup cocoa powder",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup coconut oil",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup cocoa butter",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 cups hazelnuts",
+      "amount": ""
+    },
+    {
+      "item": "cacao nibs",
+      "amount": "1 cup"
+    },
+    {
+      "item": "dates (medjool are best)",
+      "amount": "8"
+    },
+    {
+      "item": "coconut nectar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "⁄2 cup hazelnuts",
+      "amount": ""
+    },
+    {
+      "item": "⁄3 cup cacao nibs",
+      "amount": ""
+    },
+    {
+      "item": "birch sugar (xylitol)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "10in (26cm) round",
+      "amount": ""
+    },
+    {
+      "item": "days in the refrigerator, or up to a",
+      "amount": "5"
+    }
+  ],
+  "method": [
+    "Purée until thick and creamy. Melt the",
+    "Sprinkle them over the torte before"
+  ],
+  "time": {
+    "total": 30
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "fava-beans-with-lemon-and-cilantro",
+  "name": "Fava Beans with Lemon and Cilantro",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "more black pepper, and the lemon zest.",
+  "ingredients": [
+    {
+      "item": "cup/60 ml olive oil",
+      "amount": "¼"
+    },
+    {
+      "item": "large onion, finely diced (1⅓ cups/190 g)",
+      "amount": "1"
+    },
+    {
+      "item": "garlic, crushed about 3⅓ cups/50 g cilantro leaves, chopped",
+      "amount": "5 cloves"
+    },
+    {
+      "item": "cups/600 g fresh or frozen shelled fava beans, thawed if frozen",
+      "amount": "5½"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "ground allspice",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "lemon juice salt and black pepper",
+      "amount": "2 tsp"
+    }
+  ],
+  "method": [
+    "Pour the oil into a large sauté pan and place over medium heat. Add the onion and cook for 8 minutes, stirring occasionally, until translucent. Add the garlic and about four-fifths of the cilantro and sauté for another minute. Add the fava beans, paprika, allspice, ½ teaspoon salt, plenty of black pepper, and a scant 1 cup/200 ml water and stir well. Cover the pan and simmer gently for about 25 minutes, stirring occasionally, until the beans are very soft. A lot of the water will have evaporated, but the mixture should be wet, with the beans still immersed in liquid. Remove from the heat, take off the lid, and leave to cool. Add the lemon juice, stir in the remaining cilantro, and serve.",
+    "BRAISED KALE WITH CRISPY SHALLOTS"
+  ],
+  "time": {
+    "total": 30
+  }
+}

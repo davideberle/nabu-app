@@ -1,0 +1,65 @@
+{
+  "id": "green-beans-with-freekeh-and-tahini",
+  "name": "Green Beans with Freekeh and Tahini",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "cup/70 g cracked freekeh, rinsed and drained",
+      "amount": "½"
+    },
+    {
+      "item": "lb/700 g haricots verts, trimmed",
+      "amount": "1½"
+    },
+    {
+      "item": "cup/20 g chervil leaves",
+      "amount": "1"
+    },
+    {
+      "item": "cup/50 g walnuts, coarsely chopped (optional)",
+      "amount": "½"
+    },
+    {
+      "item": "Aleppo chile flakes salt",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "tbsp/75 g tahini paste",
+      "amount": "5"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "dried mint",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "large clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "maple syrup salt",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Place all the ingredients for the sauce, along with ½ teaspoon salt, in a bowl.",
+    "Whisk until combined and set aside.",
+    "Fill a saucepan with plenty of water—it should be two-thirds full—a nd bring to a boil. Add the freekeh and ½ teaspoon salt, turn down the heat to medium, and simmer, uncovered, for 15 minutes, until the freekeh is cooked through but still retains a bite. Drain and refresh well under cold water.",
+    "Transfer the freekeh to a large bowl and set aside.",
+    "Fill a large saucepan with plenty of cold water and add 2 teaspoons salt. Place over high heat, bring to a boil, then add the beans. Boil rapidly for 4 minutes, until the beans are just cooked, then drain and refresh under cold water. Pat the beans dry well before adding them to the freekeh. Pour the tahini sauce over the freekeh and beans and mix gently so that the beans are completely coated. Just before serving, mix in the chervil and the walnuts along with the chile flakes."
+  ],
+  "time": {
+    "total": 30
+  }
+}

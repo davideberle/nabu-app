@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "in Thailand are a lot hotter during the dry “cool” season (December–February). This is his recipe.",
+  "intro": "This is usually eaten with pork rinds, sticky rice, hard-boiled eggs and boiled veggies like pumpkin",
   "ingredients": [
     {
       "item": "pig trotters (about 1 lb/450 g)",
@@ -72,12 +72,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

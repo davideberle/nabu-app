@@ -1,0 +1,71 @@
+{
+  "id": "globe-artichoke-and-mozzarella-with-candied-lemon",
+  "name": "Globe Artichoke and Mozzarella with Candied Lemon",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large globe artichokes (3½ lb/1.6 kg)",
+      "amount": "4"
+    },
+    {
+      "item": "lemons, halved",
+      "amount": "3"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "medium onion, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "oz/120 g Little Gem lettuce leaves, cut crosswise into strips ⅜-inch/1-cm wide",
+      "amount": "4"
+    },
+    {
+      "item": "oz/200 g buffalo mozzarella",
+      "amount": "7"
+    },
+    {
+      "item": "cup/10 g flat-leaf parsley leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/10 g mint leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/10 g basil leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/120 ml olive oil",
+      "amount": "½"
+    },
+    {
+      "item": "garlic, crushed salt and black pepper",
+      "amount": "1 clove"
+    },
+    {
+      "item": "lemon scant 3 tbsp/35 g superfine sugar",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Drain the artichokes and lemon, discarding the onion, bay, and thyme, and set aside to cool.",
+    "To prepare the candied lemon, use a vegetable peeler to shave off wide strips of lemon rind; avoid the white pith. Cut the rind into long, paper-thin strips and place them in a small saucepan. Squeeze the lemon, measure the juice, and add water as needed to total 7 tablespoons/100 ml. Pour over the lemon rind, add the sugar, and bring to a light simmer. Cook for about 15 minutes, until the syrup is reduced to about one-third of its original volume. Set aside to cool down.",
+    "To assemble the dish, cut the artichoke halves into wedges ¾ inch/2 cm thick and arrange them on a serving platter together with the lettuce. With your hands, break the mozzarella into large, uneven chunks and dot the salad with them. Stir together the herbs, olive oil, and garlic and season with ¼ teaspoon salt; spoon this over the vegetables and cheese. Use a fork to scatter some candied rind on top and drizzle with a tiny amount of the syrup. Finish with a sprinkle of black pepper."
+  ],
+  "time": {
+    "total": 30
+  }
+}

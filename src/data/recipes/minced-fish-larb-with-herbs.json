@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "This one is inspired by the larb I had at Raan Larb Pa Tan in Chiang Mai.",
+  "intro": "restaurant, I always end up ordering the fi sh larb, and it’s always incredibly delicious.",
   "ingredients": [
     {
       "item": "101",
@@ -49,12 +49,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

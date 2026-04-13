@@ -1,12 +1,11 @@
 {
   "id": "ravioli",
-  "name": "RAVIOLI",
+  "name": "Ravioli",
   "source": {
     "cookbook": "Raw Food",
     "author": "DK"
   },
   "servings": "serves 2",
-  "intro": "Sprinkle the sesame seeds over the spring rolls. Serve the ginger dip",
   "ingredients": [
     {
       "item": "⁄3 cup cashews",
@@ -21,7 +20,7 @@
       "amount": "1"
     },
     {
-      "item": "⁄2 tsp salt handful of basil leaves",
+      "item": "⁄2 tsp salt",
       "amount": ""
     },
     {
@@ -33,7 +32,7 @@
       "amount": "8–10"
     },
     {
-      "item": "onion powder (see p.152)",
+      "item": "onion powder",
       "amount": "1 tsp"
     },
     {
@@ -45,7 +44,7 @@
       "amount": ""
     },
     {
-      "item": "⁄3 cup cashews, to serve pinch of sea salt",
+      "item": "⁄3 cup cashews, to serve",
       "amount": ""
     },
     {
@@ -54,24 +53,9 @@
     }
   ],
   "method": [
-    "Soaking the zucchini and daikon radish in salted water makes them pliable and easy to work with. The daikon radish lends the dish a fresh, crisp note. If you don’t like its taste, just use the zucchini.",
-    "Soak the cashews overnight in cold water. Drain them just before using.",
-    "Peel the zucchini and radish as thinly as possible. Cut off the long radish tail. Cut the vegetables lengthwise into very fine slices. This will be easiest if you use a mandolin or vegetable slicer. Put the slices in lukewarm salted water for 1–2 hours.",
-    "In the meantime, place the cashews and the remaining ingredients for the filling into a blender or a food processor, and purée until the mixture has a creamy but still firm consistency. If needed, carefully add a bit of water a tablespoonful at a time.",
-    "Lay out the slices of zucchini and radish on the work surface.",
-    "Place a small dollop of the filling on the lower half of a slice, and then fold over the top half. Lightly press along the outside edges of the folded slices with your fingers. The purée will hold the vegetable slices together.",
-    "Finely grate the cashews or chop them in a mini food processor. They will stand in for",
-    "Parmesan cheese. Season with the sea salt, and stir to combine. Cut up the red radishes to serve on the side.",
-    "Divide the ravioli between two plates, sprinkle the grated cashews on top, and serve. Tomato sauce (see p.87) goes very well with the ravioli."
+    "Parmesan cheese. Season with the"
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Other"
+  }
 }

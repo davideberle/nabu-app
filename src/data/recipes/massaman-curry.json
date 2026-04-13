@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 6",
-  "intro": "stew fl avored with pomegranate molasses) to Siamese shores more than 400 years ago.",
+  "intro": "agrees on is that it isn’t typically Thai. Some people say it came from Persia; others say it came from",
   "ingredients": [
     {
       "item": "137",
@@ -94,12 +94,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

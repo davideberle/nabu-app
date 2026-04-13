@@ -1,0 +1,72 @@
+{
+  "id": "mediterranean-ratatouille",
+  "name": "Mediterranean Ratatouille",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 3",
+  "ingredients": [
+    {
+      "item": "lemon",
+      "amount": "1"
+    },
+    {
+      "item": "medium eggplant",
+      "amount": "1"
+    },
+    {
+      "item": "red sweet banana peppers",
+      "amount": "2"
+    },
+    {
+      "item": "beefsteak tomato",
+      "amount": "1"
+    },
+    {
+      "item": "thyme, plus a few",
+      "amount": "2 sprigs"
+    },
+    {
+      "item": "marjoram or",
+      "amount": "2 sprigs"
+    },
+    {
+      "item": "dried marjoram",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "beefsteak tomatoes",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "agave syrup",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Juice the lemon. Cut the eggplant into bite-size pieces, place it in",
+    "Cover the bowl and let marinate for 30 minutes.",
+    "Put all the ingredients for the vegetables into a large bowl, toss well",
+    "Toss the sauce and the sliced vegetables, and season with salt and"
+  ],
+  "time": {
+    "total": 30
+  }
+}

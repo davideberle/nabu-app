@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "on menus all over the globe. Serve this when you need a pick-me-up (or even when you don’t!).",
+  "intro": "Out of all the dishes to come out of Thailand in recent years, this one may well be the most popular, found",
   "ingredients": [
     {
       "item": "61",
@@ -62,12 +62,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

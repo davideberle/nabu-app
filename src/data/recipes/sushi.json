@@ -1,0 +1,84 @@
+{
+  "id": "sushi",
+  "name": "Sushi",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 1",
+  "ingredients": [
+    {
+      "item": "romaine lettuce",
+      "amount": "1 head"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "small garlic clove",
+      "amount": "1"
+    },
+    {
+      "item": "celery stick",
+      "amount": "1"
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pumpkin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tamari",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "white-miso paste",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "minutes to a make a creamy dressing.",
+      "amount": "2–3"
+    }
+  ],
+  "method": [
+    "When I started eating raw food, my biggest concern was that",
+    "I would no longer be able to eat pasta noodles! And when I first",
+    "saw raw zucchini noodles, I didn’t feel all that much better.",
+    "Dispirited, I thought, “Those vegetable spirals can never, ever,",
+    "replace my pasta!” But then I tried them, and now I don’t",
+    "feel like anything is lacking when I eat a lovely zucchini or",
+    "cucumber pasta with truffle pesto. I hope you will have exactly",
+    "the same experience!",
+    "In my opinion, one of the greatest raw food tools is the",
+    "spiralizer (see p.154), something that a really smart person",
+    "invented! Harder vegetables, such as carrots, kohlrabi, or red",
+    "beets are more difficult to spiralize and require a bit of practice.",
+    "My friend Irina is an absolute virtuoso at spiralizing. She’s an",
+    "exceptionally gifted raw food cook, and, every time I see her,",
+    "she turns something into spirals for me. Still, I continue to cut",
+    "certain types of harder vegetables, such as kohlrabi, into small",
+    "cubes, not spirals. If you succeed in spiralizing such",
+    "vegetables, even better!",
+    "The easiest way to catch the spirals is to",
+    "hold the salad bowl at an angle under the",
+    "spiralizer so that the noodles land right in the",
+    "bowl. Another good thing about the spiralizer",
+    "is that it spiralizes only the firm cucumber flesh and spits out the",
+    "seeds, ensuring the cucumber noodles are nice and firm."
+  ],
+  "time": {
+    "total": 30
+  }
+}

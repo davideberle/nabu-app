@@ -1,0 +1,49 @@
+{
+  "id": "exotic-fruit-snack",
+  "name": "Exotic Fruit Snack",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "a few sprigs thyme",
+      "amount": ""
+    },
+    {
+      "item": "tamari or dark",
+      "amount": "3–4 tbsp"
+    },
+    {
+      "item": "cold-pressed",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "tomato",
+      "amount": "1"
+    },
+    {
+      "item": "carrot",
+      "amount": "1"
+    },
+    {
+      "item": "apple",
+      "amount": "1"
+    },
+    {
+      "item": "dehydrating trays",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "To make the marinade, pick the thyme leaves and",
+    "Remove the green stem from the tomato and cut",
+    "Cut the sweet potato lengthwise in half and slice into",
+    "Put the pieces of fruit and vegetables into the",
+    "The dried fruit and vegetables keep best when they are"
+  ],
+  "time": {
+    "total": 30
+  }
+}

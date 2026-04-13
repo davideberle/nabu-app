@@ -1,6 +1,6 @@
 {
   "id": "fancy-coleslaw",
-  "name": "FANCY COLESLAW",
+  "name": "Fancy Coleslaw",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -95,12 +95,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

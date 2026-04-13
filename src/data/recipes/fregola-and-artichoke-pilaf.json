@@ -1,6 +1,6 @@
 {
   "id": "fregola-and-artichoke-pilaf",
-  "name": "FREGOLA AND ARTICHOKE PILAF",
+  "name": "Fregola and Artichoke Pilaf",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -85,12 +85,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "brussels-sprout-risotto",
-  "name": "BRUSSELS SPROUT RISOTTO",
+  "name": "Brussels Sprout Risotto",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -67,12 +67,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

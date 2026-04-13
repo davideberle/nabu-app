@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "are very understanding about that kind of thing when it comes to food.",
+  "intro": "we go there, hauling kilos of the stuff back on the plane home. Luckily, Thai customs offi cials",
   "ingredients": [
     {
       "item": "103",
@@ -52,12 +52,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

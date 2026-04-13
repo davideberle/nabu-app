@@ -1,0 +1,82 @@
+{
+  "id": "basil-pesto",
+  "name": "Basil Pesto",
+  "source": {
+    "cookbook": "Raw Food",
+    "author": "DK"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "almonds",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "⁄3 cups baby spinach",
+      "amount": ""
+    },
+    {
+      "item": "apple cider vinegar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "⁄2 cup cold-pressed olive oil",
+      "amount": ""
+    },
+    {
+      "item": "⁄2 tsp sea salt",
+      "amount": ""
+    },
+    {
+      "item": "⁄4 cup cashews",
+      "amount": ""
+    },
+    {
+      "item": "neutral vegetable oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "truffle oil",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cashews",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "⁄2 cup cold-pressed olive oil",
+      "amount": ""
+    },
+    {
+      "item": "squeezes lemon juice",
+      "amount": "2–3"
+    },
+    {
+      "item": "cashews",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "basil",
+      "amount": "1 bunch"
+    },
+    {
+      "item": "garlic cloves",
+      "amount": "2"
+    },
+    {
+      "item": "cold-pressed olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pine nuts",
+      "amount": "3 tbsp"
+    }
+  ],
+  "method": [
+    "GLASS NOODLES",
+    "MEDITERRANEAN"
+  ],
+  "time": {
+    "total": 30
+  }
+}

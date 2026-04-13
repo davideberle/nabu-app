@@ -1,0 +1,67 @@
+{
+  "id": "watermelon-green-apple-and-lime-salad",
+  "name": "Watermelon, green apple, and lime salad",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "This is delicious as it is—it screams summer, it screams virtuous and it denitely",
+  "ingredients": [
+    {
+      "item": "medium watermelon (2¾ lb/1.3kg), rind and seeds discarded and",
+      "amount": "½"
+    },
+    {
+      "item": "esh cut into 2¾-inch/7cm-long, ¼-inch/½ cm-wide batons (4¾ cups/600g)",
+      "amount": ""
+    },
+    {
+      "item": "Granny Smith apples, cored and cut into 2¾-inch/7cm-long, ¼-inch/",
+      "amount": "2"
+    },
+    {
+      "item": "cm-wide batons (2 cups/250g)",
+      "amount": "½"
+    },
+    {
+      "item": "limes:  nely zest to get 2 tsp, then juice to get 3 tbsp",
+      "amount": "3"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "lemongrass stalk, trimmed, woody outer leaves discarded, then  nely chopped (2 tbsp)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/5g mint leaves",
+      "amount": "¼"
+    },
+    {
+      "item": "cup/10g cilantro leaves flaked sea salt",
+      "amount": "½"
+    },
+    {
+      "item": "black mustard seeds, lightly toasted",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Mix the salad just before you’re ready to serve, otherwise it will get too soggy. In a large bowl, combine the watermelon, apples, lime zest, lime juice,",
+    "olive oil, and lemongrass with three-quarters of the herbs and ¾ tsp of",
+    "aked salt. Using your hands as a natural sieve, arrange the salad on a platter.",
+    "There will be quite a bit of juice at the bottom of the bowl; you don’t need it. Scatter with the remaining herbs, sprinkle with the mustard seeds and ¼ tsp of  aked salt, and serve.",
+    "5-spice peach and raspberry salad",
+    "You don’t want this salad to be too sweet, so for the best results start with peaches that are not too ripe. This looks so perfectly summery and also works really well at a barbecue, where the fruit complements and cuts through all sorts of meat. Some slow-cooked pork belly alongside is a particularly winning combination."
+  ],
+  "time": {
+    "total": 30
+  }
+}

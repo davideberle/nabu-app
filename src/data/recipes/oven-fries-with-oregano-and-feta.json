@@ -1,0 +1,54 @@
+{
+  "id": "oven-fries-with-oregano-and-feta",
+  "name": "Oven fries with oregano and feta",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "heard great things, but my high expectations were still exceeded. Eat these fries",
+  "ingredients": [
+    {
+      "item": "lb/2kg yellow potatoes, unpeeled and cut into ¾-inch/2cm-wide fries",
+      "amount": "4½"
+    },
+    {
+      "item": "tbsp/90ml sunflower oil flaked sea salt",
+      "amount": "6"
+    },
+    {
+      "item": "cup/60ml olive oil",
+      "amount": "¼"
+    },
+    {
+      "item": "garlic cloves, thinly sliced",
+      "amount": "6"
+    },
+    {
+      "item": "dried oregano (regular or Greek)",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "oz/150g feta, roughly crumbled",
+      "amount": "5¼"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    },
+    {
+      "item": "2.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place a large pot  lled with plenty of salted water over high heat. Once boiling, add the potatoes and cook for 7–8 minutes, until starting to soften at the edges but still holding their shape. Drain and set aside to dry out for 5 minutes, then transfer to a large bowl. Add the sunower oil along with 1 tbsp salt and mix well.",
+    "Tip the potatoes and sunower oil onto two large parchment-lined baking sheets (so that they are not overcrowded) and bake for 40–50 minutes, stirring a few times, until golden brown and crisp.",
+    "About 5 minutes before the fries are ready, heat the olive oil and garlic in a small saucepan over medium-high heat. Fry gently for 3–4 minutes, until the garlic is pale golden brown. Take the cooked fries out of the oven and pour the olive oil and garlic over them, then return to the oven for a further 4 minutes. Remove from the oven and, while piping hot, sprinkle with the oregano and feta. Serve at once.",
+    "Shallow-fried potatoes with rosemary and sumac",
+    "Sumac is a bright and astringent ground spice that I have been championing for a very long time. Its color and kick means it’s a great way to shake up all sorts of everyday dishes."
+  ],
+  "time": {
+    "total": 30
+  }
+}

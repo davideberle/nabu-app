@@ -1,6 +1,6 @@
 {
   "id": "candy-beets-with-lentils-and-yuzu",
-  "name": "CANDY BEETS WITH LENTILS AND YUZU",
+  "name": "Candy Beets with Lentils and Yuzu",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -56,12 +56,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

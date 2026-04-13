@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 8",
-  "intro": "original recipe, which calls for the making of a lid and oven-proof bowl from dough.",
+  "intro": "family gatherings. It’s quite labor-intensive, but has been simplifi ed considerably (!) from the",
   "ingredients": [
     {
       "item": "139",
@@ -44,12 +44,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

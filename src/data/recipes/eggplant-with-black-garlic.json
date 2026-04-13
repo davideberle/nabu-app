@@ -1,6 +1,6 @@
 {
   "id": "eggplant-with-black-garlic",
-  "name": "EGGPLANT WITH BLACK GARLIC",
+  "name": "Eggplant with Black Garlic",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -56,12 +56,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

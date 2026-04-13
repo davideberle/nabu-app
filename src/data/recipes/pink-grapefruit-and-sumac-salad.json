@@ -1,6 +1,6 @@
 {
   "id": "pink-grapefruit-and-sumac-salad",
-  "name": "PINK GRAPEFRUIT AND SUMAC SALAD",
+  "name": "Pink Grapefruit and Sumac Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -76,12 +76,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

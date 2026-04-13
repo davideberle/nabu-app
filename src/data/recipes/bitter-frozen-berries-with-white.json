@@ -1,6 +1,6 @@
 {
   "id": "bitter-frozen-berries-with-white",
-  "name": "BITTER FROZEN BERRIES WITH WHITE",
+  "name": "Bitter Frozen Berries with White",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -39,12 +39,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

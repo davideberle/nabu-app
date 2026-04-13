@@ -1,6 +1,6 @@
 {
   "id": "fig-and-goat-cheese-tart",
-  "name": "FIG AND GOAT CHEESE TART",
+  "name": "Fig and Goat Cheese Tart",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -75,12 +75,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

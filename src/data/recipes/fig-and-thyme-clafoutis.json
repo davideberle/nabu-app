@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "surprised how much everyone can eat. The gs can be made 2 days ahead and",
+  "intro": "This might seem like a lot to serve four, but it’s so light and uffy that you’ll be",
   "ingredients": [
     {
       "item": "tbsp/90g dark muscovado sugar",
@@ -73,12 +73,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

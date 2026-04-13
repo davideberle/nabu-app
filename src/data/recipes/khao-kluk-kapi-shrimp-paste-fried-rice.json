@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 4",
-  "intro": "formerly the head of food and beverage at the Royal Bangkok Sports Club.",
+  "intro": "preparation but the actual cooking is fairly simple. The fi nal fl avors are a melange of salty, sour,",
   "ingredients": [
     {
       "item": "71",
@@ -51,12 +51,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

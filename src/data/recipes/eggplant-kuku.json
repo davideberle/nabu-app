@@ -1,6 +1,6 @@
 {
   "id": "eggplant-kuku",
-  "name": "EGGPLANT KUKU",
+  "name": "Eggplant Kuku",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -55,12 +55,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

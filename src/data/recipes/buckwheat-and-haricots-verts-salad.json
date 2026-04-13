@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "can be made 1 day ahead and kept separately in the fridge, ready for the dish to",
+  "intro": "This is either lovely as it is or served with some pan-fried salmon. It’s quick to",
   "ingredients": [
     {
       "item": "small red onions, peeled and cut into ¾-inch/2cm wedges (3 cups/300g)",
@@ -76,12 +76,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Middle Eastern"
+  }
 }

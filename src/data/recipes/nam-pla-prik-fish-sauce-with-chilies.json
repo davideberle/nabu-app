@@ -6,7 +6,7 @@
     "author": "Chawadee Nualkhair"
   },
   "servings": "serves 1",
-  "intro": "spice level). You can eyeball this, or follow the recipe below, which serves",
+  "intro": "a Thai table. It’s basically fi sh sauce, fl avored with lime juice, some raw",
   "ingredients": [
     {
       "item": "fi sh sauce per person",
@@ -42,12 +42,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": ""
-  },
-  "cuisine": "Southeast Asian"
+  }
 }

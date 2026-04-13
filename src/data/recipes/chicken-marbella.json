@@ -1,0 +1,73 @@
+{
+  "id": "chicken-marbella",
+  "name": "Chicken Marbella",
+  "source": {
+    "cookbook": "Ottolenghi Simple",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "but it can also be cooked straightaway, if you don’t have the time. If you’re going",
+  "ingredients": [
+    {
+      "item": "chicken legs (skin on and bone in) skin scored a few times (3 lb/1.4g)",
+      "amount": "8"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "5"
+    },
+    {
+      "item": "cup/15g fresh oregano leaves, plus extra to serve",
+      "amount": "¾"
+    },
+    {
+      "item": "red wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "cup/100g pitted green olives",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/60g capers, plus 2 tbsp of their brine",
+      "amount": "6"
+    },
+    {
+      "item": "oz/120g Medjool dates, pitted and quartered lengthwise",
+      "amount": "4¼"
+    },
+    {
+      "item": "bay leaves salt and black pepper",
+      "amount": "2"
+    },
+    {
+      "item": "cup/120ml dry white wine",
+      "amount": "½"
+    },
+    {
+      "item": "date molasses (or standard molasses)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "1.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place the chicken in a large nonreactive bowl and add the garlic, oregano, vinegar, oil, olives, capers, dates, and bay leaves, along with 1 tsp salt and a good grind of black pepper. Gently mix everything together, cover the bowl, and leave in the fridge to marinate for 1–2 days, stirring the ingredients a few times during the process.",
+    "Preheat the oven to 400°F.",
+    "Spread out the chicken legs on a medium high-sided baking pan, along with all the marinade ingredients. Whisk together the wine and molasses and pour over the meat. Place in the oven and cook for 50 minutes, basting two or three times, until the meat is golden brown on top and cooked through.",
+    "Remove from the oven, transfer everything to a large platter, sprinkle with some oregano, and serve.",
+    "Chicken with miso, ginger, and lime",
+    "Pictured on this page, left",
+    "This dish is lovely either warm from the oven—served with sticky or basmati rice",
+    "—or at room temperature. If you want to get ahead, and are cooking it the day before, keep it in the fridge overnight and take it out a half hour before serving; you don’t want it fridge-cold."
+  ],
+  "time": {
+    "total": 30
+  }
+}
