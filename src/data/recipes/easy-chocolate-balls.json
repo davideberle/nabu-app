@@ -42,7 +42,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Balls & Bars"
+    "chapter": "Balls & Bars",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

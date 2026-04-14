@@ -99,7 +99,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Pulses & Grains"
+    "chapter": "Pulses & Grains",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

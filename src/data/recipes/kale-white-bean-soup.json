@@ -1507,7 +1507,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Main Courses"
+    "chapter": "Main Courses",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

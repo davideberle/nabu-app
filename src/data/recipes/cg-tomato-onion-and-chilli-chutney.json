@@ -42,7 +42,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Accompaniments"
+    "chapter": "Accompaniments",
+    "meal_role": "component"
   },
   "time": {
     "prep": 10,

@@ -48,7 +48,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments"
+    "chapter": "Condiments",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

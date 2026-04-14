@@ -87,7 +87,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

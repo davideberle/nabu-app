@@ -86,7 +86,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Mezze & sharing plates"
+    "chapter": "Mezze & sharing plates",
+    "meal_role": "side"
   },
   "cuisine": "Persian"
 }

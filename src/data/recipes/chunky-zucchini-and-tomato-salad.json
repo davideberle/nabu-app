@@ -77,7 +77,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

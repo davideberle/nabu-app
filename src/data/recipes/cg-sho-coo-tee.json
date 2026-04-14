@@ -95,7 +95,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Chef's Specials"
+    "chapter": "Chef's Specials",
+    "meal_role": "main"
   },
   "time": {
     "total": 75

@@ -81,7 +81,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

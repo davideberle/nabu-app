@@ -59,7 +59,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "side"
   },
   "cuisine": "Caribbean"
 }

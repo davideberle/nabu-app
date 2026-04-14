@@ -56,7 +56,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Drinks"
+    "chapter": "Drinks",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

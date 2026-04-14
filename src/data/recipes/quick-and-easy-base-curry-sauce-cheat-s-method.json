@@ -67,7 +67,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Accompaniments"
+    "chapter": "Accompaniments",
+    "meal_role": "side"
   },
   "cuisine": "Indian"
 }

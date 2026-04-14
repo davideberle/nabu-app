@@ -58,7 +58,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Basics & Breads"
+    "chapter": "Basics & Breads",
+    "meal_role": "drink"
   },
   "time": {
     "prep": 5,

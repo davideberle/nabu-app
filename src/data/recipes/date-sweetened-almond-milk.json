@@ -43,7 +43,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

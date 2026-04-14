@@ -102,7 +102,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/black-bottom-cupcakes.jpg",
   "cuisine": "Other"

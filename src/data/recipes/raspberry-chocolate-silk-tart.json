@@ -75,7 +75,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/raspberry-chocolate-silk-tart.jpg",
   "cuisine": "Other"

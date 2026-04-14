@@ -1387,7 +1387,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Main Courses"
+    "chapter": "Main Courses",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

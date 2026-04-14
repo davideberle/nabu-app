@@ -99,7 +99,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

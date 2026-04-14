@@ -74,7 +74,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "starter"
   },
   "subtitle": "OLIVE OIL–BRAISED GREEN BEANS",
   "cuisine": "Middle Eastern"

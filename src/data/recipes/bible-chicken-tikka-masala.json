@@ -14,34 +14,97 @@
     "total": 20
   },
   "ingredients": [
-    { "item": "ghee, rapeseed (canola) oil or seasoned oil", "amount": "4 tbsp" },
-    { "item": "garlic and ginger paste", "amount": "2 tbsp" },
-    { "item": "sugar, or to taste", "amount": "1 tbsp" },
-    { "item": "ground almonds", "amount": "2 tbsp" },
-    { "item": "coconut flour (optional)", "amount": "2 tbsp" },
-    { "item": "tomato pur\u00e9e", "amount": "6 tbsp" },
-    { "item": "mixed powder", "amount": "2 tbsp" },
-    { "item": "tandoori masala", "amount": "2 tbsp" },
-    { "item": "sweet paprika", "amount": "1 tbsp" },
-    { "item": "base curry sauce, heated", "amount": "700ml (3 cups)" },
-    { "item": "cooking stock or spice stock (optional)", "amount": "About 125ml (\u00bd cup)" },
-    { "item": "grilled chicken tikka", "amount": "800g (1lb 12oz)" },
-    { "item": "single (light) cream, plus a little more to finish", "amount": "200ml (generous \u00be cup)" },
-    { "item": "red food colouring powder (optional)", "amount": "1 tbsp" },
-    { "item": "Salt, to taste", "amount": "" },
-    { "item": "Juice of 1 lemon", "amount": "" },
-    { "item": "Small bunch of coriander (cilantro), chopped", "amount": "" },
-    { "item": "dried fenugreek leaves (kasoori methi)", "amount": "1 tbsp" },
-    { "item": "garam masala", "amount": "1 tsp" }
+    {
+      "item": "ghee, rapeseed (canola) oil or seasoned oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "garlic and ginger paste",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sugar, or to taste",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "ground almonds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "coconut flour (optional)",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tomato purée",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "mixed powder",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tandoori masala",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "sweet paprika",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "base curry sauce, heated",
+      "amount": "700ml (3 cups)"
+    },
+    {
+      "item": "cooking stock or spice stock (optional)",
+      "amount": "About 125ml (½ cup)"
+    },
+    {
+      "item": "grilled chicken tikka",
+      "amount": "800g (1lb 12oz)"
+    },
+    {
+      "item": "single (light) cream, plus a little more to finish",
+      "amount": "200ml (generous ¾ cup)"
+    },
+    {
+      "item": "red food colouring powder (optional)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "Salt, to taste",
+      "amount": ""
+    },
+    {
+      "item": "Juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Small bunch of coriander (cilantro), chopped",
+      "amount": ""
+    },
+    {
+      "item": "dried fenugreek leaves (kasoori methi)",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "garam masala",
+      "amount": "1 tsp"
+    }
   ],
   "method": [
-    "Heat the ghee or oil in a large pan over a medium\u2013high heat. When small bubbles begin to appear, stir in the garlic and ginger paste; it will sizzle. Add the sugar, ground almonds and coconut flour (if using) followed by the tomato pur\u00e9e. This will cool the pan slightly.",
+    "Heat the ghee or oil in a large pan over a medium–high heat. When small bubbles begin to appear, stir in the garlic and ginger paste; it will sizzle. Add the sugar, ground almonds and coconut flour (if using) followed by the tomato purée. This will cool the pan slightly.",
     "Swirl this all together into one big happy tomato party, then stir in the mixed powder, tandoori masala and paprika, followed by 250ml (1 cup) of the base curry sauce. When the sauce begins to bubble, add the rest of the base curry sauce and let it simmer nicely for a few minutes. As it simmers, the sauce will begin to brown on the side of the pan. Stir this in from time to time.",
     "If you have some cooking stock from pre-cooked stewed chicken or spice stock, you can add it for extra flavour. Add the grilled chicken to the simmering sauce to heat through.",
     "When the sauce has cooked down to your desired thickness, add the cream and food colouring (if using) and simmer for a further 2 minutes. If the sauce becomes too thick, you can add a little more base sauce, cooking stock or spice stock.",
     "To finish, taste and season with salt. If you like your CTMs sweet, add a little more sugar. Squeeze in the lemon juice and sprinkle with the chopped coriander (cilantro), dried fenugreek leaves (kasoori methi) and the garam masala. A swirl of cream on top adds a nice finishing touch."
   ],
   "image": "/recipes/bible-chicken-tikka-masala.jpg",
-  "category": { "dish_type": ["main"], "chapter": "Recipes" },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Recipes",
+    "meal_role": "main"
+  },
   "cuisine": "Indian"
 }

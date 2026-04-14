@@ -66,7 +66,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "dessert"
   },
   "cuisine": "Caribbean"
 }

@@ -164,7 +164,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: Worth the Effort"
+    "chapter": "Main Dishes: Worth the Effort",
+    "meal_role": "main"
   },
   "subtitle": "UPSIDE-DOWN RICE",
   "cuisine": "Middle Eastern"

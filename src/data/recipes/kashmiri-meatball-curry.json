@@ -148,7 +148,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries"
+    "chapter": "Curries",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

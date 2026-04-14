@@ -73,7 +73,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Eggs, Tofu, and Tempeh"
+    "chapter": "Eggs, Tofu, and Tempeh",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

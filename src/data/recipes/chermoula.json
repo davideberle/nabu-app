@@ -85,7 +85,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Spice Blends & Sauces"
+    "chapter": "Spice Blends & Sauces",
+    "meal_role": "main"
   },
   "cuisine": "African & Caribbean"
 }

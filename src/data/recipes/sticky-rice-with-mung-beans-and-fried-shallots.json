@@ -64,7 +64,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/sticky-rice-with-mung-beans-and-fried-shallots.jpg",
   "cuisine": "Southeast Asian"

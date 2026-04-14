@@ -156,6 +156,11 @@ function isDinnerWorthy(recipe: Recipe): boolean {
  * Returns true if a recipe works as a side dish for a weekend meal combo.
  */
 function isSideDish(recipe: Recipe): boolean {
+  // Prefer meal_role when available (backfilled on all cookbook recipes)
+  if (recipe.category?.meal_role === "side" || recipe.category?.meal_role === "starter") {
+    return true;
+  }
+  // Fallback for My Recipes or un-enriched records
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
   if (dishTypes.includes("side") || dishTypes.includes("vegetable") || dishTypes.includes("salad") || dishTypes.includes("starter")) {
     return true;

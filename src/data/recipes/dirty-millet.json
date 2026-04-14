@@ -92,7 +92,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Legumes"
+    "chapter": "Grains & Legumes",
+    "meal_role": "main"
   },
   "cuisine": "African & Caribbean"
 }

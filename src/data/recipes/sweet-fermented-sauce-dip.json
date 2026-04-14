@@ -30,7 +30,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

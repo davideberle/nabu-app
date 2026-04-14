@@ -73,7 +73,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/lotus-stem-and-seaweed-salad.jpg",
   "cuisine": "Southeast Asian"

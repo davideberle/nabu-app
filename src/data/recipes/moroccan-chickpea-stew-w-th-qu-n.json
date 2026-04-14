@@ -137,7 +137,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "cuisine": "Moroccan"
 }

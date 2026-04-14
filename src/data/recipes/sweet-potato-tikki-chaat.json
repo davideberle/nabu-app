@@ -95,7 +95,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Small Plates"
+    "chapter": "Small Plates",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

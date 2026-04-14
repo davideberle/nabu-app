@@ -695,7 +695,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "main"
   },
   "image": "/recipes/stir-fried-peas-with-ham.jpg",
   "cuisine": "Chinese"

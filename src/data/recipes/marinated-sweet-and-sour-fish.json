@@ -84,7 +84,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern"
 }

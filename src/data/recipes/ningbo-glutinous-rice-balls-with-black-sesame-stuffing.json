@@ -48,7 +48,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sweet Dishes"
+    "chapter": "Sweet Dishes",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

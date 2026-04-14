@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Snacks, Spreads, and Sauces"
+    "chapter": "Snacks, Spreads, and Sauces",
+    "meal_role": "main"
   },
   "servings": "makes 1 small jar",
   "time": {

@@ -38,7 +38,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

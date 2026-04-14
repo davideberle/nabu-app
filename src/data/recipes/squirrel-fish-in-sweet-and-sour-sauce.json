@@ -92,7 +92,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Fish and Seafood"
+    "chapter": "Fish and Seafood",
+    "meal_role": "dessert"
   },
   "cuisine": "Chinese"
 }

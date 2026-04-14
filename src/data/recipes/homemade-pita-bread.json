@@ -96,7 +96,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

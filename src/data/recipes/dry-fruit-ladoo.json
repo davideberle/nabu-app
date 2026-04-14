@@ -53,7 +53,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Pulp Meal Ideas"
+    "chapter": "Pulp Meal Ideas",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

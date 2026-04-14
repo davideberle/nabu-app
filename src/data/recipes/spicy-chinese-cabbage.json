@@ -41,7 +41,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

@@ -67,7 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Cakes & Cookies"
+    "chapter": "Cakes & Cookies",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

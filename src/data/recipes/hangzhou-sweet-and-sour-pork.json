@@ -75,7 +75,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "dessert"
   },
   "cuisine": "Chinese"
 }

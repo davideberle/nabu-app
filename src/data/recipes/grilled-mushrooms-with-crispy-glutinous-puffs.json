@@ -92,7 +92,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/grilled-mushrooms-with-crispy-glutinous-puffs.jpg",
   "cuisine": "Southeast Asian"

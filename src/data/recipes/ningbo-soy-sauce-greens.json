@@ -60,7 +60,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "side"
   },
   "cuisine": "Chinese"
 }

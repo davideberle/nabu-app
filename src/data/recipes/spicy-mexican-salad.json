@@ -47,7 +47,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "side"
   },
   "cuisine": "Mexican"
 }

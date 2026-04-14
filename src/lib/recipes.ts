@@ -28,6 +28,7 @@ export type Recipe = {
   category?: {
     dish_type: string[];
     chapter: string;
+    meal_role?: string; // main | side | starter | dessert | component | breakfast | drink
   };
   servings: string;
   time?: { prep?: number; cook?: number; total?: number };

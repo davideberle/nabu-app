@@ -33,7 +33,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Pasta Primer"
+    "chapter": "Pasta Primer",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

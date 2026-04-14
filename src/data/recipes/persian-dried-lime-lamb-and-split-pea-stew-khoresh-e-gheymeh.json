@@ -63,7 +63,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups, stews & tagines"
+    "chapter": "Soups, stews & tagines",
+    "meal_role": "main"
   },
   "cuisine": "Persian"
 }

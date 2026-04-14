@@ -126,7 +126,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Comfort Grub"
+    "chapter": "Comfort Grub",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

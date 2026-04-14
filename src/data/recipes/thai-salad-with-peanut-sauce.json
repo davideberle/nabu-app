@@ -95,7 +95,8 @@
   "category": {
     "dish_type": [
       "side"
-    ]
+    ],
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

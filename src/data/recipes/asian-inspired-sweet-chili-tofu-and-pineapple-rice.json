@@ -127,7 +127,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "dessert"
   },
   "cuisine": "Caribbean"
 }

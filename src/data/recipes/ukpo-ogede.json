@@ -54,7 +54,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/ukpo-ogede.jpg",
   "cuisine": "Nigerian"

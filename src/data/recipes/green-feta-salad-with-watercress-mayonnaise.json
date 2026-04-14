@@ -58,7 +58,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese"
+    "chapter": "Cheese",
+    "meal_role": "starter"
   },
   "cuisine": "Other"
 }

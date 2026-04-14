@@ -88,7 +88,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

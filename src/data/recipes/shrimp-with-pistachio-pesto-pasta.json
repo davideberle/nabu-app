@@ -78,7 +78,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/shrimp-with-pistachio-pesto-pasta.jpg",
   "cuisine": "Italian"

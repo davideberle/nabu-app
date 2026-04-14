@@ -47,7 +47,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "main"
   },
   "time": {
     "prep": 15,

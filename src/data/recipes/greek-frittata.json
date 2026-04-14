@@ -84,7 +84,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "breakfast"
   },
   "cuisine": "Greek"
 }

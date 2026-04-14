@@ -56,7 +56,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Autumn"
+    "chapter": "Autumn",
+    "meal_role": "starter"
   },
   "cuisine": "Italian"
 }

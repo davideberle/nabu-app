@@ -35,7 +35,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

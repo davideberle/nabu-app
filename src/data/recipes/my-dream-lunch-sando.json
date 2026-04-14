@@ -93,7 +93,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Cooking for One"
+    "chapter": "Cooking for One",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

@@ -78,7 +78,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Savory Pitas and Pies"
+    "chapter": "Savory Pitas and Pies",
+    "meal_role": "side"
   },
   "cuisine": "Greek"
 }

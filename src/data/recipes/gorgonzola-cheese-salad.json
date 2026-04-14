@@ -47,7 +47,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/gorgonzola-cheese-salad.jpg",
   "time": {

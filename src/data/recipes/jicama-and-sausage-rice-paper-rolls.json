@@ -92,7 +92,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Snacks"
+    "chapter": "Snacks",
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

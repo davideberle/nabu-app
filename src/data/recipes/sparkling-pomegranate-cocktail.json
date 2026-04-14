@@ -39,5 +39,12 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [
+      "drink"
+    ],
+    "chapter": "",
+    "meal_role": "drink"
   }
 }

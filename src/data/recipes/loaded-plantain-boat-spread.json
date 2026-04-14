@@ -89,7 +89,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "For Company"
+    "chapter": "For Company",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

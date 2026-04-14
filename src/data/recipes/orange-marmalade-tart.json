@@ -57,7 +57,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "dessert"
   },
   "cuisine": "Italian"
 }

@@ -92,7 +92,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food"
+    "chapter": "Street Food",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

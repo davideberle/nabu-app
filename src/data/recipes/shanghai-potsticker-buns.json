@@ -367,7 +367,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "main"
   },
   "image": "/recipes/shanghai-potsticker-buns.jpg",
   "time": {

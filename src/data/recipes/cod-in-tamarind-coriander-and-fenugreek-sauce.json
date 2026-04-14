@@ -76,7 +76,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Roasts & grills"
+    "chapter": "Roasts & grills",
+    "meal_role": "side"
   },
   "cuisine": "Persian"
 }

@@ -39,7 +39,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Balls & Bars"
+    "chapter": "Balls & Bars",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

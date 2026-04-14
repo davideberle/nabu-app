@@ -54,7 +54,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "component"
   },
   "cuisine": "Mexican"
 }

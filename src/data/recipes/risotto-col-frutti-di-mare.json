@@ -72,7 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/risotto-col-frutti-di-mare.jpg",
   "time": {

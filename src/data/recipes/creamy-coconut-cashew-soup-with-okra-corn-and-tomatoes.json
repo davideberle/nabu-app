@@ -81,7 +81,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Salads & Slaws"
+    "chapter": "Salads & Slaws",
+    "meal_role": "main"
   },
   "cuisine": "African & Caribbean"
 }

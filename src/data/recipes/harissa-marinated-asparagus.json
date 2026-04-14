@@ -51,7 +51,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads & vegetables"
+    "chapter": "Salads & vegetables",
+    "meal_role": "main"
   },
   "cuisine": "Persian"
 }

@@ -27,7 +27,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Smoothies, Mylkshakes & Drinks"
+    "chapter": "Smoothies, Mylkshakes & Drinks",
+    "meal_role": "drink"
   },
   "cuisine": "Other"
 }

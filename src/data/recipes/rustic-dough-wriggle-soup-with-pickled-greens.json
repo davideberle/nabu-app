@@ -56,7 +56,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Noodles"
+    "chapter": "Noodles",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

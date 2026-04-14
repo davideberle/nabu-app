@@ -55,7 +55,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breads & grains"
+    "chapter": "Breads & grains",
+    "meal_role": "main"
   },
   "cuisine": "Persian"
 }

@@ -64,7 +64,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern"
 }

@@ -66,7 +66,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/mocha-cr-me-br-l-e.jpg",
   "cuisine": "Other"

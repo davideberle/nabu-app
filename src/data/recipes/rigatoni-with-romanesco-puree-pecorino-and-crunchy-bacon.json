@@ -58,7 +58,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fall"
+    "chapter": "Fall",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

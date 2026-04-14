@@ -43,7 +43,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups"
+    "chapter": "Soups",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

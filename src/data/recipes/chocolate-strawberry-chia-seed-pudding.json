@@ -433,7 +433,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Breakfast"
+    "chapter": "Breakfast",
+    "meal_role": "dessert"
   },
   "cuisine": "Other"
 }

@@ -54,7 +54,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Beverages"
+    "chapter": "Beverages",
+    "meal_role": "main"
   },
   "cuisine": "African & Caribbean"
 }

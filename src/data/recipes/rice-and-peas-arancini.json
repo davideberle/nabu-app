@@ -103,7 +103,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Special Occasions"
+    "chapter": "Special Occasions",
+    "meal_role": "side"
   },
   "cuisine": "Caribbean"
 }

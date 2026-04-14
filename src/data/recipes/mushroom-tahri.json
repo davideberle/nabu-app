@@ -113,7 +113,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Large Plates"
+    "chapter": "Large Plates",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

@@ -97,7 +97,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

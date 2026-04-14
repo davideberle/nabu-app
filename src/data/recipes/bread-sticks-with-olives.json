@@ -78,7 +78,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Autumn"
+    "chapter": "Autumn",
+    "meal_role": "side"
   },
   "cuisine": "Italian"
 }

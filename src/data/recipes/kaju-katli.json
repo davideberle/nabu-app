@@ -47,7 +47,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks"
+    "chapter": "Desserts & Drinks",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

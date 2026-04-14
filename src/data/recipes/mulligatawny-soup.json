@@ -121,7 +121,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Basics & Breads"
+    "chapter": "Basics & Breads",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

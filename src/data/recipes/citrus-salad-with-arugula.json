@@ -52,7 +52,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

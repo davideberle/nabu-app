@@ -549,7 +549,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Main Courses"
+    "chapter": "Main Courses",
+    "meal_role": "dessert"
   },
   "cuisine": "Other"
 }

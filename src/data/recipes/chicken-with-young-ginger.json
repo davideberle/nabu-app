@@ -561,7 +561,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Eggs"
+    "chapter": "Poultry and Eggs",
+    "meal_role": "main"
   },
   "image": "/recipes/chicken-with-young-ginger.jpg",
   "cuisine": "Chinese"

@@ -61,7 +61,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/curry-in-a-hurry-truffles.jpg",
   "cuisine": "Other"

@@ -120,7 +120,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breakfast"
+    "chapter": "Breakfast",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

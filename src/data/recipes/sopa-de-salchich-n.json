@@ -107,7 +107,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

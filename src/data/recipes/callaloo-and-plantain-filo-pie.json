@@ -80,7 +80,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Special Occasions"
+    "chapter": "Special Occasions",
+    "meal_role": "dessert"
   },
   "cuisine": "Caribbean"
 }

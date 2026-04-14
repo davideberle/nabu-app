@@ -55,7 +55,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Bowls, Puddings & Grains"
+    "chapter": "Bowls, Puddings & Grains",
+    "meal_role": "dessert"
   },
   "cuisine": "Other"
 }

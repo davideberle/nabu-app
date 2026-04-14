@@ -54,7 +54,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads and Vegetable Sides"
+    "chapter": "Salads and Vegetable Sides",
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

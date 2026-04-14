@@ -90,7 +90,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Cooking for One"
+    "chapter": "Cooking for One",
+    "meal_role": "side"
   },
   "cuisine": "Caribbean"
 }

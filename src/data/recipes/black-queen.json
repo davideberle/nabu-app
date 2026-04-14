@@ -46,7 +46,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Kitchen Basics"
+    "chapter": "Kitchen Basics",
+    "meal_role": "main"
   },
   "cuisine": "African & Caribbean"
 }

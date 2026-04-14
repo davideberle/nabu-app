@@ -31,7 +31,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Nice Cream"
+    "chapter": "Nice Cream",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

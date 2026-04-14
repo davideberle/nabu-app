@@ -59,7 +59,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups"
+    "chapter": "Soups",
+    "meal_role": "main"
   },
   "time": {
     "prep": 15,

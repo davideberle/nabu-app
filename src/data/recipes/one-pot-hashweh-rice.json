@@ -95,7 +95,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

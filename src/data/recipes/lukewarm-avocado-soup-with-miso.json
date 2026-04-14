@@ -51,7 +51,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Hearty Snacks"
+    "chapter": "Hearty Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

@@ -114,7 +114,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "image": "/recipes/thick-noodle-soup.jpg",
   "cuisine": "Southeast Asian"

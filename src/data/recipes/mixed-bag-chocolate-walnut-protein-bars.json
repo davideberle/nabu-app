@@ -1146,7 +1146,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "dessert"
   },
   "cuisine": "Other"
 }

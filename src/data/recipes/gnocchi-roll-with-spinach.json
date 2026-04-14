@@ -81,7 +81,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Autumn"
+    "chapter": "Autumn",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

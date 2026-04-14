@@ -943,7 +943,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks"
+    "chapter": "Appetizers & Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

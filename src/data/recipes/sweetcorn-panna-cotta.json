@@ -75,7 +75,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

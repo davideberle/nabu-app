@@ -70,7 +70,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "image": "/recipes/pumpkin-and-peanut-soup.jpg",
   "cuisine": "Southeast Asian"

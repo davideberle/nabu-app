@@ -44,7 +44,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweet Dishes"
+    "chapter": "Sweet Dishes",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

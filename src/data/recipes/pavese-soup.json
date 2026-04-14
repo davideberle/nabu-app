@@ -52,7 +52,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "main"
   },
   "time": {
     "prep": 15,

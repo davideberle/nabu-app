@@ -55,7 +55,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood"
+    "chapter": "Fish & Seafood",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

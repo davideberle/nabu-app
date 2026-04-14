@@ -11,7 +11,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Basics"
+    "chapter": "Basics",
+    "meal_role": "component"
   },
   "servings": "makes 1 pint / 600 ml",
   "time": {

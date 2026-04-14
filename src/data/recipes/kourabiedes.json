@@ -96,7 +96,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweet Ends"
+    "chapter": "Sweet Ends",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

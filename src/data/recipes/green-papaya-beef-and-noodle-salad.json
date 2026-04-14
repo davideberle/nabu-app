@@ -72,7 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry & Meat"
+    "chapter": "Poultry & Meat",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

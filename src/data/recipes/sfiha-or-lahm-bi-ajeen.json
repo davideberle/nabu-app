@@ -122,7 +122,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Baking"
+    "chapter": "Baking",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

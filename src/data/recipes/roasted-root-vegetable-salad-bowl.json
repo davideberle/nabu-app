@@ -1374,7 +1374,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

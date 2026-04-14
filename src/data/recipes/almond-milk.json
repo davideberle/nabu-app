@@ -37,7 +37,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Essentials"
+    "chapter": "Essentials",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

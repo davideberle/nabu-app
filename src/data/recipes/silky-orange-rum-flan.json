@@ -63,7 +63,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweets and Coffee"
+    "chapter": "Sweets and Coffee",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

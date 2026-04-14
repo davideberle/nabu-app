@@ -824,7 +824,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Appetizers & Snacks"
+    "chapter": "Appetizers & Snacks",
+    "meal_role": "starter"
   },
   "cuisine": "Other"
 }

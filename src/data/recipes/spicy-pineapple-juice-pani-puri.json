@@ -115,7 +115,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Small Plates"
+    "chapter": "Small Plates",
+    "meal_role": "drink"
   },
   "cuisine": "Indian"
 }

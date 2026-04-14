@@ -80,7 +80,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Popular Vegetable and Side Dishes"
+    "chapter": "Popular Vegetable and Side Dishes",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

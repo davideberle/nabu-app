@@ -47,7 +47,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sweet Dishes"
+    "chapter": "Sweet Dishes",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

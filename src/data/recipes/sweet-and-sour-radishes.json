@@ -39,7 +39,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

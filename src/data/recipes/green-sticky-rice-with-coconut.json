@@ -50,7 +50,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/green-sticky-rice-with-coconut.jpg",
   "cuisine": "Southeast Asian"

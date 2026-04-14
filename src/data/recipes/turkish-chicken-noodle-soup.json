@@ -85,7 +85,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Main Dishes: Soups & Stews"
+    "chapter": "Main Dishes: Soups & Stews",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

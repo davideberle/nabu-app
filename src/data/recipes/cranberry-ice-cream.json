@@ -43,7 +43,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Nice Cream"
+    "chapter": "Nice Cream",
+    "meal_role": "dessert"
   },
   "cuisine": "Other"
 }

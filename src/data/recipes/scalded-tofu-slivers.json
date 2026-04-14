@@ -252,7 +252,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Tofu"
+    "chapter": "Tofu",
+    "meal_role": "main"
   },
   "image": "/recipes/scalded-tofu-slivers.jpg",
   "cuisine": "Chinese"

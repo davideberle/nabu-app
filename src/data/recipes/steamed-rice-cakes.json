@@ -105,7 +105,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/steamed-rice-cakes.jpg",
   "cuisine": "Southeast Asian"

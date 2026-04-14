@@ -98,7 +98,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: Worth the Effort"
+    "chapter": "Main Dishes: Worth the Effort",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

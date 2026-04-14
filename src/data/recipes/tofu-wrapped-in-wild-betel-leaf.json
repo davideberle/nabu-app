@@ -77,7 +77,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Starters & Appetizers"
+    "chapter": "Starters & Appetizers",
+    "meal_role": "starter"
   },
   "image": "/recipes/tofu-wrapped-in-wild-betel-leaf.jpg",
   "cuisine": "Southeast Asian"

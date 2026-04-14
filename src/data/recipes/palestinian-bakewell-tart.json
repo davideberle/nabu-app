@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweets"
+    "chapter": "Sweets",
+    "meal_role": "main"
   },
   "servings": "makes 12 bars",
   "time": {

@@ -50,7 +50,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Appetizers & Snacks"
+    "chapter": "Appetizers & Snacks",
+    "meal_role": "side"
   },
   "cuisine": "African & Caribbean"
 }

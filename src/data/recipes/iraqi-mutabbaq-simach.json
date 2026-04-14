@@ -132,7 +132,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "main"
   },
   "subtitle": "SPICED FISH & RICE",
   "cuisine": "Middle Eastern"

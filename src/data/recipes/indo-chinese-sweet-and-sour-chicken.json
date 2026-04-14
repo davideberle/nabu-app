@@ -76,7 +76,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Basics & Breads"
+    "chapter": "Basics & Breads",
+    "meal_role": "dessert"
   },
   "cuisine": "Indian"
 }

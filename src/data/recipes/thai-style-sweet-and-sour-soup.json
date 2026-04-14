@@ -84,7 +84,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/thai-style-sweet-and-sour-soup.jpg",
   "cuisine": "Southeast Asian"

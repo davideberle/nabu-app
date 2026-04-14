@@ -214,7 +214,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Savory Pitas and Pies"
+    "chapter": "Savory Pitas and Pies",
+    "meal_role": "dessert"
   },
   "cuisine": "Greek"
 }

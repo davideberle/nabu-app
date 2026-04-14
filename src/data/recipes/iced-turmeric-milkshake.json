@@ -54,7 +54,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks"
+    "chapter": "Desserts & Drinks",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

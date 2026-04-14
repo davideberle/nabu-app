@@ -75,7 +75,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/sticky-rice-dumplings-with-coconut-filling.jpg",
   "cuisine": "Southeast Asian"

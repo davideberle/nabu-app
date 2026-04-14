@@ -53,7 +53,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "More Than Greek Salad"
+    "chapter": "More Than Greek Salad",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

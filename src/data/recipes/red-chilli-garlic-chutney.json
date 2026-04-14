@@ -47,7 +47,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Essentials"
+    "chapter": "Essentials",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

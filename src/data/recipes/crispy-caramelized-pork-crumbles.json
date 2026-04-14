@@ -54,7 +54,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Pork and Beef"
+    "chapter": "Pork and Beef",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

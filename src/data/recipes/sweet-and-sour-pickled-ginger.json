@@ -39,7 +39,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "dessert"
   },
   "cuisine": "Chinese"
 }

@@ -85,7 +85,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Pulses"
+    "chapter": "Grains & Pulses",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

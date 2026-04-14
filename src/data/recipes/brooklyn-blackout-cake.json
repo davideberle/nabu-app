@@ -85,7 +85,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/brooklyn-blackout-cake.jpg",
   "cuisine": "Other"

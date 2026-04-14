@@ -33,5 +33,12 @@
   ],
   "time": {
     "total": 120
+  },
+  "category": {
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "",
+    "meal_role": "side"
   }
 }

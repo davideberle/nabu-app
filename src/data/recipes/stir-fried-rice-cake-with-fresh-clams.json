@@ -55,7 +55,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "dessert"
   },
   "cuisine": "Chinese"
 }

@@ -100,7 +100,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Main Dishes: 30 Minutes"
+    "chapter": "Main Dishes: 30 Minutes",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

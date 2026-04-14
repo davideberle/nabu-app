@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups"
+    "chapter": "Soups",
+    "meal_role": "main"
   },
   "servings": "serves four generously, or six as a starter",
   "time": {

@@ -62,7 +62,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

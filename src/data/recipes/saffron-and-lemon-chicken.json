@@ -61,7 +61,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Roasts & grills"
+    "chapter": "Roasts & grills",
+    "meal_role": "main"
   },
   "cuisine": "Persian"
 }

@@ -39,7 +39,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings"
+    "chapter": "Sauces & Dressings",
+    "meal_role": "component"
   },
   "cuisine": "Other"
 }

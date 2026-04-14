@@ -111,7 +111,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "main"
   },
   "subtitle": "UNSTUFFED ZUCCHINI IN YOGURT",
   "cuisine": "Middle Eastern"

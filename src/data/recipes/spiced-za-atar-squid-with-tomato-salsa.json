@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "main"
   },
   "servings": "serves four as a starter, or two as a light meal",
   "time": {

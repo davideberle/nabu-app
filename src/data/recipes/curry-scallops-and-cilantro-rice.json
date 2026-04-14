@@ -57,5 +57,12 @@
   ],
   "time": {
     "total": 25
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "",
+    "meal_role": "main"
   }
 }

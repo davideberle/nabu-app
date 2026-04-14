@@ -39,7 +39,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 15,

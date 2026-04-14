@@ -59,7 +59,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads & vegetables"
+    "chapter": "Salads & vegetables",
+    "meal_role": "dessert"
   },
   "cuisine": "Persian"
 }

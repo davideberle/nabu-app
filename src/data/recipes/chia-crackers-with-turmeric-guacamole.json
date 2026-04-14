@@ -70,7 +70,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Hearty Snacks"
+    "chapter": "Hearty Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

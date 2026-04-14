@@ -568,7 +568,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Breakfast"
+    "chapter": "Breakfast",
+    "meal_role": "drink"
   },
   "cuisine": "Other"
 }

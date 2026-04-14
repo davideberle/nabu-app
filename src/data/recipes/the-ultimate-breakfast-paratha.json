@@ -94,7 +94,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Dreams"
+    "chapter": "Dreams",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

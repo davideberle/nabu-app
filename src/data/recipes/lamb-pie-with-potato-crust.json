@@ -117,7 +117,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "dessert"
   },
   "cuisine": "Italian"
 }
