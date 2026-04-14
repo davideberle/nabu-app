@@ -19,7 +19,7 @@ const VALID_MEAL_ROLES = new Set([
 ]);
 
 const VALID_DISH_TYPES = new Set([
-  "main", "soup", "salad", "side", "vegetable", "bread", "starter",
+  "main", "soup", "stew", "salad", "side", "vegetable", "bread", "starter",
   "dessert", "baking", "condiment", "base", "breakfast", "drink",
 ]);
 
