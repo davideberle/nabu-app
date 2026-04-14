@@ -307,7 +307,7 @@ function isDinnerWorthy(recipe: Recipe): boolean {
 
   // Exclude meal_role mismatches
   const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  if (role === "breakfast" || role === "drink" || role === "snack") return false;
+  if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "snack") return false;
 
   // Must have a reasonable number of ingredients (not just a sauce/dip)
   if (recipe.ingredients.length < 3) return false;
@@ -555,6 +555,10 @@ export function selectMealOptions(
 
     const sides: Recipe[] = [];
     const usedBases = new Set<string>();
+
+    // Pre-seed with the main's dominant base so we never pair e.g. potato curry + roast potatoes
+    const mainBase = dominantBase(main);
+    if (mainBase) usedBases.add(mainBase);
 
     function canAddSide(s: Recipe): boolean {
       const base = dominantBase(s);
