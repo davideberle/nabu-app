@@ -1,5 +1,116 @@
 import { type Recipe, getCuisine, getDietary } from "./recipes";
 
+// ----- season helpers -----
+
+type Season = "spring" | "summer" | "fall" | "winter";
+
+/** Northern-hemisphere season from month (0-indexed). */
+function currentSeason(now = new Date()): Season {
+  const m = now.getMonth(); // 0=Jan
+  if (m >= 2 && m <= 4) return "spring";
+  if (m >= 5 && m <= 7) return "summer";
+  if (m >= 8 && m <= 10) return "fall";
+  return "winter";
+}
+
+const OPPOSITE_SEASON: Record<Season, Season> = {
+  spring: "fall",
+  summer: "winter",
+  fall: "spring",
+  winter: "summer",
+};
+
+/** Keywords that strongly signal a recipe belongs to a particular season. */
+const SEASON_SIGNALS: Record<Season, RegExp> = {
+  spring: /\b(spring|asparagus|fava bean|ramp|wild garlic|pea shoot|new potato|morel)\b/i,
+  summer: /\b(summer|watermelon|peach|grilled corn|zucchini|bbq|barbecue|gazpacho|ice pop|popsicle|sundried)\b/i,
+  fall: /\b(fall|autumn|squash|pumpkin|apple cider|wheat berr|cranberr|sweet potato)\b/i,
+  winter: /\b(winter|root vegetable|parsnip|turnip|braised|braise|hearty stew|mulled|warming)\b/i,
+};
+
+/**
+ * Intro phrases that signal a season. Use multi-word phrases or adjective+noun
+ * patterns to avoid false positives (e.g. "fall somewhere" ≠ autumn).
+ */
+const INTRO_SEASON_SIGNALS: Record<Season, RegExp> = {
+  spring: /\b(spring (dish|recipe|meal|brunch|dinner|lunch|salad|vegeta|cook|treat|favor)|(in|for|of) spring)\b/i,
+  summer: /\b(summer (dish|recipe|meal|salad|treat|favor|cook|grill|bbq)|(in|for|of) summer|hot day|warm[- ]weather)\b/i,
+  fall: /\b(fall (dish|recipe|meal|dinner|cook|treat|favor|day|evening)|(in|for|of) (fall|autumn)|autumn(al)?)\b/i,
+  winter: /\b(winter (dish|recipe|meal|dinner|cook|treat|favor|warm|stew)|(in|for|of) winter|cold day|cold[- ]weather|fireside)\b/i,
+};
+
+/**
+ * Returns the primary season a recipe belongs to, or null if season-neutral.
+ * Checks name first (strongest signal), then intro text.
+ */
+function recipeSeason(recipe: Recipe): Season | null {
+  const name = recipe.name;
+  for (const [season, re] of Object.entries(SEASON_SIGNALS) as [Season, RegExp][]) {
+    if (re.test(name)) return season;
+  }
+  const intro = recipe.introduction || recipe.intro || "";
+  if (intro) {
+    for (const [season, re] of Object.entries(INTRO_SEASON_SIGNALS) as [Season, RegExp][]) {
+      if (re.test(intro)) return season;
+    }
+  }
+  return null; // season-neutral
+}
+
+/**
+ * Filter out recipes whose season is the OPPOSITE of the current season.
+ * Season-neutral and adjacent-season recipes pass through.
+ */
+function filterBySeason<T extends Recipe>(recipes: T[], now?: Date): T[] {
+  const season = currentSeason(now);
+  const opposite = OPPOSITE_SEASON[season];
+  return recipes.filter((r) => {
+    const rs = recipeSeason(r);
+    return rs !== opposite;
+  });
+}
+
+// ----- protein-clash helpers for side pairing -----
+
+const PROTEIN_PATTERNS: { protein: string; re: RegExp }[] = [
+  { protein: "beef", re: /\b(beef|steak|brisket|short rib|ground beef|sirloin|ribeye)\b/i },
+  { protein: "chicken", re: /\b(chicken|poultry)\b/i },
+  { protein: "pork", re: /\b(pork|bacon|ham|pancetta|prosciutto|sausage|chorizo)\b/i },
+  { protein: "lamb", re: /\b(lamb|mutton)\b/i },
+  { protein: "fish", re: /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish)\b/i },
+  { protein: "seafood", re: /\b(shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i },
+  { protein: "duck", re: /\b(duck)\b/i },
+  { protein: "turkey", re: /\b(turkey)\b/i },
+];
+
+/** Returns the set of protein categories present in a recipe (by name + ingredients). */
+function detectProteins(recipe: Recipe): Set<string> {
+  const found = new Set<string>();
+  const text = recipe.name + " " + recipe.ingredients.map((i) => i.item).join(" ");
+  for (const { protein, re } of PROTEIN_PATTERNS) {
+    if (re.test(text)) found.add(protein);
+  }
+  // Treat fish and seafood as a single group for clash purposes
+  if (found.has("fish") || found.has("seafood")) {
+    found.add("fish");
+    found.add("seafood");
+  }
+  return found;
+}
+
+/** Returns true if a side's proteins would clash with the main's proteins. */
+function hasProteinClash(main: Recipe, side: Recipe): boolean {
+  const mainProteins = detectProteins(main);
+  if (mainProteins.size === 0) return false; // veg main — anything goes
+  const sideProteins = detectProteins(side);
+  if (sideProteins.size === 0) return false; // veg side — always fine
+  // Clash = side has a DIFFERENT protein than the main
+  for (const sp of sideProteins) {
+    if (!mainProteins.has(sp)) return true;
+  }
+  return false;
+}
+
 // ----- types -----
 
 export type MealSlot = {
@@ -256,6 +367,9 @@ export function selectMealOptions(
     dinnerRecipes = dinnerRecipes.filter((r) => !excludeIds.has(r.id));
   }
 
+  // Drop recipes from the opposite season (spring ≠ fall suggestions, etc.)
+  dinnerRecipes = filterBySeason(dinnerRecipes);
+
   // Prefer recipes with images — if we have enough, use only those
   const withImages = dinnerRecipes.filter((r) => !!r.image);
   let pool = withImages.length >= 40 ? withImages : dinnerRecipes;
@@ -309,15 +423,21 @@ export function selectMealOptions(
     ...weekendNonVegPicks,
   ]);
 
-  // Build weekend meal combos with complementary sides from same cuisine
-  const sideRecipes = allRecipes.filter(isSideDish);
+  // Build weekend meal combos with complementary sides from same cuisine.
+  // Filter sides: drop opposite-season sides and prevent protein clashes
+  // (e.g. no salmon side with a beef main).
+  const allSideRecipes = filterBySeason(allRecipes.filter(isSideDish));
   const weekendMeals: WeekendMealOption[] = weekend.map((main) => {
     const mainCuisine = getCuisine(main);
+    // Exclude sides whose protein clashes with the main's protein
+    const compatibleSides = allSideRecipes.filter(
+      (s) => s.id !== main.id && !hasProteinClash(main, s)
+    );
     const sameCuisineSides = shuffle(
-      sideRecipes.filter((s) => getCuisine(s) === mainCuisine && s.id !== main.id)
+      compatibleSides.filter((s) => getCuisine(s) === mainCuisine)
     );
     const otherSides = shuffle(
-      sideRecipes.filter((s) => getCuisine(s) !== mainCuisine && s.id !== main.id)
+      compatibleSides.filter((s) => getCuisine(s) !== mainCuisine)
     );
     const sides: Recipe[] = [];
     for (const s of sameCuisineSides) {
@@ -328,6 +448,7 @@ export function selectMealOptions(
       if (sides.length >= 3) break;
       sides.push(s);
     }
+    // Backfill same-cuisine if we didn't reach 2 earlier
     for (const s of sameCuisineSides) {
       if (sides.length >= 2) break;
       if (!sides.some((x) => x.id === s.id)) sides.push(s);
