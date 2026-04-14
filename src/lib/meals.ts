@@ -97,6 +97,8 @@ function isLight(recipe: Recipe): boolean {
     return true;
   if (recipe.time?.total && recipe.time.total > 0 && recipe.time.total < 45)
     return true;
+  const dietary = getDietary(recipe);
+  if (dietary.some((t) => t.toLowerCase() === "low-calorie")) return true;
   return false;
 }
 
