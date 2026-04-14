@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     );
   }
-  const plan = loadMealPlan(week);
+  const plan = await loadMealPlan(week);
   if (!plan) {
     return NextResponse.json(null);
   }
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    saveMealPlan(plan);
+    await saveMealPlan(plan);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

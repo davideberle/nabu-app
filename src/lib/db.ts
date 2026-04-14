@@ -234,7 +234,7 @@ async function migrate(client: Client) {
           image: "/recipes/wild-garlic-and-barley-fritters.jpg",
           source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby" },
           cuisine: "Swiss",
-          category: "dinner",
+          category: "Main",
           servings: "4",
           time: { prep: 25, cook: 20, total: 45 },
           intro: "Crispy wild garlic and barley fritters with a tangy mustard cream dip — a light, seasonal spring dinner.",
@@ -286,6 +286,38 @@ async function migrate(client: Client) {
         const recipe = JSON.parse(row["data"] as string);
         if (recipe.source?.cookbook === "My Recipes" && recipe.source?.chapter) {
           delete recipe.source.chapter;
+          await client.execute({
+            sql: "UPDATE recipes SET data = ? WHERE id = ?",
+            args: [JSON.stringify(recipe), row["id"] as string],
+          });
+        }
+      }
+    },
+
+    // v3 -> v4: create meal_plans table (replaces host-filesystem persistence)
+    // and normalize My Recipes category — replace generic meal-time labels
+    // like "dinner" with proper course values derived from mealRole.
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS meal_plans (
+          week       TEXT PRIMARY KEY,
+          data       TEXT NOT NULL,
+          updated_at TEXT NOT NULL
+        )
+      `);
+
+      const rows = await client.execute("SELECT id, data FROM recipes");
+      const OCCASION_TAGS = new Set(["dinner", "lunch", "supper", "brunch"]);
+      for (const row of rows.rows) {
+        const recipe = JSON.parse(row["data"] as string);
+        if (
+          recipe.source?.cookbook === "My Recipes" &&
+          typeof recipe.category === "string" &&
+          OCCASION_TAGS.has(recipe.category.toLowerCase())
+        ) {
+          // Derive a proper course label from mealRole, or default to "Main"
+          const role = recipe.mealRole || "main";
+          recipe.category = role.charAt(0).toUpperCase() + role.slice(1);
           await client.execute({
             sql: "UPDATE recipes SET data = ? WHERE id = ?",
             args: [JSON.stringify(recipe), row["id"] as string],
