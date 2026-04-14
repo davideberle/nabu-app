@@ -9,9 +9,11 @@
   "servings": "8 servings",
   "intro": "A North African casserole ideal for a small party. Just adjust the ingredients to your liking.",
   "time": {
-    "prep": "20 mins",
-    "total": 40
+    "prep": 20,
+    "cook": 40,
+    "total": 60
   },
+  "tips": "Store harissa in an airtight container and keep for a month in the refrigerator. Use any good-quality sausage you like.",
   "ingredients": [
     {
       "item": "dried red chile peppers",
@@ -54,8 +56,8 @@
       "group": "Stew"
     },
     {
-      "item": "⅓ pounds ground beef",
-      "amount": "1",
+      "item": "ground beef",
+      "amount": "1⅓ lbs",
       "group": "Stew"
     },
     {
@@ -112,16 +114,6 @@
       "item": "links Merguez sausage, cut into pieces",
       "amount": "3",
       "group": "Stew"
-    },
-    {
-      "item": "Store harissa in an airtight container and keep for a month in the refrigerator.",
-      "amount": "",
-      "group": "Notes"
-    },
-    {
-      "item": "Use any good-quality sausage you like .",
-      "amount": "",
-      "group": "Notes"
     }
   ],
   "method": [
@@ -133,7 +125,8 @@
   "image": "/recipes/moroccan-kofte-and-sausage-stew.jpg",
   "category": {
     "dish_type": [
-      "soup"
+      "stew",
+      "main"
     ],
     "chapter": "Soups & Stews",
     "meal_role": "main"

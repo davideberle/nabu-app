@@ -8,13 +8,14 @@
   "servings": "serves 6",
   "intro": "Indulge in the delightful flavors of this curry soup, inspired by your favorite Thai restaurant. While shiitake mushrooms are the preferred choice, you can use any fresh mushroom variety to create this delicious dish. Enhancing the soup's taste, fresh basil and lime infuse a vibrant and refreshing flavor profile.",
   "time": {
-    "prep": "30 minutes",
-    "total": 5
+    "prep": 30,
+    "cook": 15,
+    "total": 45
   },
   "ingredients": [
     {
-      "item": "Thin rice noodles - 8.8 ounces",
-      "amount": ""
+      "item": "Thin rice noodles",
+      "amount": "8.8 oz"
     },
     {
       "item": "Sesame oil",
@@ -41,16 +42,16 @@
       "amount": "14 oz"
     },
     {
-      "item": "Drained and halved whole baby corn - 8.75 ounces",
-      "amount": ""
+      "item": "Drained and halved whole baby corn",
+      "amount": "8.75 oz"
     },
     {
       "item": "Drained bamboo shoots",
       "amount": "5 oz"
     },
     {
-      "item": "Sliced fresh shiitake mushrooms - 1.5 cups",
-      "amount": ""
+      "item": "Sliced fresh shiitake mushrooms",
+      "amount": "1.5 cups"
     },
     {
       "item": "a sliced sweet red pepper",
