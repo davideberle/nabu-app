@@ -1,0 +1,89 @@
+{
+  "id": "style-lamb-leg-with-cumin-dipping-salt",
+  "name": "Mechouia-Style Lamb Leg with Cumin Dipping Salt",
+  "persianName": "Mechouia",
+  "source": {
+    "cookbook": "Persiana",
+    "author": "Sabrina Ghayour",
+    "chapter": "Roasts & grills"
+  },
+  "servings": "serves 8",
+  "intro": "While mechouia refers to the art of roasting a whole lamb, the mechouia style has often been interpreted for Western menus – you slow roast a joint of lamb but use the same traditional cumin dipping salt at the end to season every bite. I like slow cooking a whole leg of lamb, even though I usually prefer my lamb cooked rare, and while slow cooking cooks the meat through fully (which is authentic), it remains tender, juicy and sweet. Pick up the lamb and dip it in the cumin salt, although, if you prefer to be ‘civilized’, you can use a knife and fork.",
+  "ingredients": [
+    {
+      "item": "leg of lamb on the bone",
+      "amount": "2.5kg"
+    },
+    {
+      "item": "butter, softened",
+      "amount": "50g"
+    },
+    {
+      "item": "ground coriander",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "paprika",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cayenne pepper",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "dried thyme",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "garlic cloves, crushed and peeled",
+      "amount": "4"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "freshly ground black pepper",
+      "amount": ""
+    },
+    {
+      "item": "cumin seeds",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "crushed sea salt",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "pinch of ground cinnamon",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 150°C/fan 130°C/gas mark 2. Line a large roasting tin with nonstick baking paper.",
+    "Using a sharp knife, carefully make deep incisions all over the lamb leg so that it can absorb as much of the marinade flavouring as possible.",
+    "Put the butter into a small bowl, add the dry spices, thyme and crushed garlic and blend thoroughly until the mixture forms a paste. Rub this paste all over the lamb leg, pushing it into the incisions you made and working it into the leg as much as possible. Place the lamb leg on to the prepared roasting tin and roast for 5 hours, basting the lamb with its juices every 20–30 minutes or so to ensure it stays moist and hydrated.",
+    "Once cooked, remove the lamb from the oven, cover it with kitchen foil and allow the meat to rest for 15 minutes.",
+    "Meanwhile, make the cumin dipping salt. Put the cumin seeds in a dry frying pan over a medium-high heat and toast, shaking the pan now and then, until they release an aroma, then grind with a pestle and mortar. Combine the ground cumin seeds with the sea salt and cinnamon and place the mixture in a small dish that is suitable for dipping the meat into.",
+    "When rested, serve the lamb leg on a platter. The flesh will be moist and succulent and will literally fall off the bone. Serve with Turmeric & Cumin Roasted Potatoes."
+  ],
+  "image": "/recipes/style-lamb-leg-with-cumin-dipping-salt.jpg",
+  "time": {
+    "total": 180
+  },
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Roasts & grills"
+  },
+  "cuisine": "Persian"
+}
