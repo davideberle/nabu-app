@@ -146,7 +146,32 @@ export type MealPlan = {
 export type WeekendMealOption = {
   main: Recipe;
   sides: Recipe[];
+  rationale?: string;
 };
+
+/**
+ * Returns true if a recipe is too flimsy/simple to anchor a weekend dinner.
+ * Simple soups, light broths, and basic salads without substantial protein
+ * or body are not credible weekend mains.
+ */
+function isFlimsyForWeekend(recipe: Recipe): boolean {
+  const nameLower = recipe.name.toLowerCase();
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+
+  const isSoup = dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("broth");
+  const isBasicSalad = dishTypes.includes("salad") || nameLower.includes("salad");
+
+  if (!isSoup && !isBasicSalad) return false;
+
+  // Substantial soups/stews with protein or long cook times are fine
+  if (recipe.time?.total && recipe.time.total >= 60) return false;
+  const proteins = detectProteins(recipe);
+  if (proteins.size > 0) return false;
+  if (nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("goulash") || nameLower.includes("ramen") || nameLower.includes("pho") || nameLower.includes("laksa")) return false;
+
+  // Short/simple soups and basic salads are flimsy weekend mains
+  return true;
+}
 
 // ----- helpers -----
 
@@ -257,8 +282,21 @@ function isDinnerWorthy(recipe: Recipe): boolean {
 
   // Name-based exclusions for things that slipped through
   const nameLower = recipe.name.toLowerCase();
-  const breakfastWords = ["pancake", "waffle", "johnnycake", "french toast", "granola", "porridge", "oatmeal"];
+  const breakfastWords = [
+    "pancake", "waffle", "johnnycake", "french toast", "granola",
+    "porridge", "oatmeal", "breakfast", "brunch", "morning",
+    "cereal", "muesli", "smoothie", "juice", "milkshake",
+    "scramble", "scrambled egg",
+  ];
   if (breakfastWords.some((w) => nameLower.includes(w))) return false;
+
+  // Snack/lunch/non-dinner items
+  const snackWords = [
+    "snack", "bar ", "energy ball", "trail mix", "dip", "hummus",
+    "guacamole", "salsa", "cracker", "chip", "popcorn", "nut butter",
+    "lunch box", "lunchbox", "sandwich", "wrap",
+  ];
+  if (snackWords.some((w) => nameLower.includes(w))) return false;
 
   const dessertWords = ["cake", "brownie", "cookie", "muffin", "cupcake", "fudge", "ice cream", "sorbet", "pudding", "truffle", "macaron"];
   if (dessertWords.some((w) => nameLower.includes(w))) return false;
@@ -266,6 +304,10 @@ function isDinnerWorthy(recipe: Recipe): boolean {
   // Exclude sauces/dressings masquerading as recipes
   const sauceWords = ["dressing", "vinaigrette", "aioli", "mayonnaise", "ketchup"];
   if (sauceWords.some((w) => nameLower.includes(w))) return false;
+
+  // Exclude meal_role mismatches
+  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
+  if (role === "breakfast" || role === "drink" || role === "snack") return false;
 
   // Must have a reasonable number of ingredients (not just a sauce/dip)
   if (recipe.ingredients.length < 3) return false;
@@ -342,6 +384,66 @@ function pickWithoutCuisineRepeat(
   return picked;
 }
 
+// ----- adaptive side-count heuristic -----
+
+/** Dominant starch/base family in a side dish, used to prevent duplicate pairings. */
+function dominantBase(recipe: Recipe): string | null {
+  const text = (recipe.name + " " + recipe.ingredients.map((i) => i.item).join(" ")).toLowerCase();
+  const bases: [string, RegExp][] = [
+    ["potato", /\b(potato|roast potato|mash|fries|chips|rösti|hasselback)\b/],
+    ["rice", /\b(rice|pilaf|pilau|biryani|risotto)\b/],
+    ["bread", /\b(bread|flatbread|naan|pita|focaccia|ciabatta|rolls)\b/],
+    ["pasta", /\b(pasta|noodle|spaghetti|penne|orzo|couscous)\b/],
+    ["grain", /\b(quinoa|bulgur|freekeh|farro|polenta|grits|barley)\b/],
+    ["lentil", /\b(lentil|dal|dhal)\b/],
+    ["bean", /\b(bean|chickpea|cannellini|black bean|kidney bean)\b/],
+  ];
+  for (const [family, re] of bases) {
+    if (re.test(text)) return family;
+  }
+  return null;
+}
+
+/**
+ * Returns a sensible side-count range based on meal type and cuisine.
+ * Pasta/noodle dishes need 0-1 sides; standard mains 1-2; feast/mezze styles can have more.
+ */
+function getSideCountRange(main: Recipe): { min: number; max: number; rationale: string } {
+  const nameLower = main.name.toLowerCase();
+  const cuisine = getCuisine(main);
+
+  // Pasta & noodle dishes are complete — 0-1 sides (maybe a salad)
+  if (isPasta(main) || nameLower.includes("noodle") || nameLower.includes("ramen") || nameLower.includes("pho") || nameLower.includes("laksa")) {
+    return { min: 0, max: 1, rationale: "Complete dish — a simple salad at most." };
+  }
+
+  // Curries/stews served with rice/bread are fairly complete
+  if (nameLower.includes("curry") || nameLower.includes("stew") || nameLower.includes("tagine") || nameLower.includes("dal") || nameLower.includes("chili")) {
+    return { min: 0, max: 1, rationale: "Served with rice or bread — needs little else." };
+  }
+
+  // Bowls, biryanis, risottos are self-contained
+  if (nameLower.includes("bowl") || nameLower.includes("biryani") || nameLower.includes("risotto") || nameLower.includes("fried rice")) {
+    return { min: 0, max: 1, rationale: "A complete one-dish meal." };
+  }
+
+  // Mezze/Middle Eastern/feast-style meals benefit from more sides
+  const feastCuisines = ["Middle Eastern", "Lebanese", "Turkish", "Greek", "Indian", "Ethiopian"];
+  if (feastCuisines.includes(cuisine)) {
+    return { min: 1, max: 3, rationale: "Feast-style spread with complementary sides." };
+  }
+
+  // Standard mains: 1-2 sides
+  return { min: 1, max: 2, rationale: "Classic main with a side or two." };
+}
+
+/** Build a one-sentence rationale explaining the weekend side selection. */
+function buildRationale(main: Recipe, sides: Recipe[], baseRationale: string): string {
+  if (sides.length === 0) return baseRationale;
+  const sideNames = sides.map((s) => s.name).join(" and ");
+  return `${baseRationale.replace(/\.$/, "")} — paired with ${sideNames}.`;
+}
+
 // ----- main selection -----
 
 export type GenerationHints = {
@@ -394,8 +496,12 @@ export function selectMealOptions(
   // We want 3-4 vegetarian/vegan out of 10 total
   const vegCount = 3 + Math.round(Math.random()); // 3 or 4
 
+  // Weekend pool: exclude flimsy soups/salads that aren't credible anchor meals
+  const weekendVegRecipes = vegRecipes.filter((r) => !isFlimsyForWeekend(r));
+  const weekendNonVegRecipes = nonVegRecipes.filter((r) => !isFlimsyForWeekend(r));
+
   // Weekend picks. Include at least 1 pasta for Sunday suggestion.
-  const weekendPasta = shuffle(pastaRecipes).slice(0, 1);
+  const weekendPasta = shuffle(pastaRecipes.filter((r) => !isFlimsyForWeekend(r))).slice(0, 1);
   const weekendPastaIsVeg = weekendPasta.length > 0 && isVegetarianOrVegan(weekendPasta[0]);
 
   const weekendVegTarget = Math.min(2, vegCount);
@@ -403,7 +509,7 @@ export function selectMealOptions(
 
   const usedIds = new Set(weekendPasta.map((r) => r.id));
   const weekendVegPicks = pickWithoutCuisineRepeat(
-    shuffle(vegRecipes).filter((r) => !usedIds.has(r.id)),
+    shuffle(weekendVegRecipes).filter((r) => !usedIds.has(r.id)),
     Math.max(0, weekendVegNeeded),
     weekendPasta
   );
@@ -411,7 +517,7 @@ export function selectMealOptions(
 
   const weekendNonVegNeeded = weekendTarget - weekendPasta.length - weekendVegPicks.length;
   const weekendNonVegPicks = pickWithoutCuisineRepeat(
-    shuffle(nonVegRecipes).filter((r) => !usedIds.has(r.id)),
+    shuffle(weekendNonVegRecipes).filter((r) => !usedIds.has(r.id)),
     weekendNonVegNeeded,
     [...weekendPasta, ...weekendVegPicks]
   );
@@ -424,11 +530,18 @@ export function selectMealOptions(
   ]);
 
   // Build weekend meal combos with complementary sides from same cuisine.
-  // Filter sides: drop opposite-season sides and prevent protein clashes
-  // (e.g. no salmon side with a beef main).
+  // Filter sides: drop opposite-season sides and prevent protein clashes.
   const allSideRecipes = filterBySeason(allRecipes.filter(isSideDish));
   const weekendMeals: WeekendMealOption[] = weekend.map((main) => {
     const mainCuisine = getCuisine(main);
+
+    // Adaptive side count based on meal type/cuisine
+    const { min: minSides, max: maxSides, rationale } = getSideCountRange(main);
+
+    if (maxSides === 0) {
+      return { main, sides: [], rationale };
+    }
+
     // Exclude sides whose protein clashes with the main's protein
     const compatibleSides = allSideRecipes.filter(
       (s) => s.id !== main.id && !hasProteinClash(main, s)
@@ -439,21 +552,40 @@ export function selectMealOptions(
     const otherSides = shuffle(
       compatibleSides.filter((s) => getCuisine(s) !== mainCuisine)
     );
+
     const sides: Recipe[] = [];
-    for (const s of sameCuisineSides) {
-      if (sides.length >= 2) break;
+    const usedBases = new Set<string>();
+
+    function canAddSide(s: Recipe): boolean {
+      const base = dominantBase(s);
+      if (base && usedBases.has(base)) return false;
+      return true;
+    }
+
+    function addSide(s: Recipe) {
       sides.push(s);
+      const base = dominantBase(s);
+      if (base) usedBases.add(base);
+    }
+
+    // Prefer same-cuisine sides, then fill with others
+    for (const s of sameCuisineSides) {
+      if (sides.length >= maxSides) break;
+      if (canAddSide(s)) addSide(s);
     }
     for (const s of otherSides) {
-      if (sides.length >= 3) break;
-      sides.push(s);
+      if (sides.length >= maxSides) break;
+      if (canAddSide(s)) addSide(s);
     }
-    // Backfill same-cuisine if we didn't reach 2 earlier
-    for (const s of sameCuisineSides) {
-      if (sides.length >= 2) break;
-      if (!sides.some((x) => x.id === s.id)) sides.push(s);
+    // Relax base constraint if we haven't hit minimum
+    if (sides.length < minSides) {
+      for (const s of [...sameCuisineSides, ...otherSides]) {
+        if (sides.length >= minSides) break;
+        if (!sides.some((x) => x.id === s.id)) sides.push(s);
+      }
     }
-    return { main, sides };
+
+    return { main, sides, rationale: buildRationale(main, sides, rationale) };
   });
 
   // Weekday picks (reduced by skip count)

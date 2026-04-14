@@ -20,6 +20,7 @@ type RecipeOption = {
 type WeekendMealCombo = {
   main: RecipeOption;
   sides: RecipeOption[];
+  rationale?: string | null;
 };
 
 type RecipeDetail = RecipeOption & {
@@ -158,6 +159,20 @@ const CATEGORY_COLORS: Record<string, string> = {
   Grill: "bg-fuchsia-100 dark:bg-fuchsia-900 text-fuchsia-700 dark:text-fuchsia-300",
   Main: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
 };
+
+// ----- time display helper -----
+
+/** Round minutes to nearest 5, with a 10-min floor, for clean planner display. */
+function formatPlannerTime(totalMin: number | undefined | null): string | null {
+  if (!totalMin || totalMin <= 0) return null;
+  const rounded = Math.round(totalMin / 5) * 5;
+  const clamped = Math.max(10, rounded);
+  if (clamped >= 90) {
+    const hrs = clamped / 60;
+    return hrs === Math.floor(hrs) ? `${hrs} hr` : `${hrs.toFixed(1)} hrs`;
+  }
+  return `${clamped} min`;
+}
 
 // ----- autosave hook -----
 
@@ -1033,9 +1048,9 @@ function RecipeCard({
 
         {/* Time + actions */}
         <div className="flex items-center justify-between">
-          {recipe.time && recipe.time.total > 0 && (
+          {formatPlannerTime(recipe.time?.total) && (
             <span className="text-xs text-zinc-400 dark:text-zinc-500">
-              {recipe.time.total}min
+              {formatPlannerTime(recipe.time?.total)}
             </span>
           )}
           <div className="flex gap-2 ml-auto">
@@ -1083,7 +1098,7 @@ function WeekendMealCard({
   onSelectMain: () => void;
   onQuickView: (id: string) => void;
 }) {
-  const { main, sides } = combo;
+  const { main, sides, rationale } = combo;
   const vegTags = main.dietary.filter(
     (t) => t === "vegan" || t === "vegetarian"
   );
@@ -1143,8 +1158,8 @@ function WeekendMealCard({
               {main.source?.cookbook}
             </p>
             <div className="flex items-center gap-2 mt-2">
-              {main.time && main.time.total > 0 && (
-                <span className="text-xs text-zinc-400">{main.time.total}min</span>
+              {formatPlannerTime(main.time?.total) && (
+                <span className="text-xs text-zinc-400">{formatPlannerTime(main.time?.total)}</span>
               )}
               <button
                 onClick={() => onQuickView(main.id)}
@@ -1169,27 +1184,36 @@ function WeekendMealCard({
           </div>
         </div>
 
-        {/* Suggested sides */}
-        {sides.length > 0 && (
+        {/* Suggested sides + rationale */}
+        {(sides.length > 0 || rationale) && (
           <div className="sm:w-56 border-t sm:border-t-0 sm:border-l border-zinc-200 dark:border-zinc-800 p-3 bg-zinc-50 dark:bg-zinc-950">
-            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2 uppercase tracking-wide">
-              Suggested sides
-            </p>
-            <ul className="space-y-1.5">
-              {sides.map((s) => (
-                <li key={s.id} className="flex items-start justify-between gap-1">
-                  <span className="text-xs text-zinc-700 dark:text-zinc-300 line-clamp-1">
-                    {s.name}
-                  </span>
-                  <button
-                    onClick={() => onQuickView(s.id)}
-                    className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 shrink-0"
-                  >
-                    view
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {sides.length > 0 && (
+              <>
+                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2 uppercase tracking-wide">
+                  Suggested sides
+                </p>
+                <ul className="space-y-1.5">
+                  {sides.map((s) => (
+                    <li key={s.id} className="flex items-start justify-between gap-1">
+                      <span className="text-xs text-zinc-700 dark:text-zinc-300 line-clamp-1">
+                        {s.name}
+                      </span>
+                      <button
+                        onClick={() => onQuickView(s.id)}
+                        className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 shrink-0"
+                      >
+                        view
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {rationale && (
+              <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-2 italic">
+                {rationale}
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -1292,9 +1316,9 @@ function QuickViewModal({
                     {recipe.cuisine}
                   </span>
                 )}
-                {recipe.time && recipe.time.total > 0 && (
+                {formatPlannerTime(recipe.time?.total) && (
                   <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                    {recipe.time.total}min
+                    {formatPlannerTime(recipe.time?.total)}
                   </span>
                 )}
                 {recipe.servings && (

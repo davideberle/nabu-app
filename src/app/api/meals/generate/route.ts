@@ -21,6 +21,7 @@ function summarizeMealCombo(combo: WeekendMealOption) {
   return {
     main: summarize(combo.main),
     sides: combo.sides.map(summarize),
+    rationale: combo.rationale ?? null,
   };
 }
 
