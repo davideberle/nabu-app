@@ -137,6 +137,14 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
+// Normalize meal-time strings ("dinner", "lunch") to proper course labels.
+const COURSE_ALIASES: Record<string, string> = {
+  dinner: "main",
+  lunch: "main",
+  supper: "main",
+  brunch: "breakfast",
+};
+
 // Get course/category tags for a recipe (e.g. "Main", "Bread", "Dinner").
 // Cookbook recipes use category.dish_type (string[]), while My Recipes store
 // category as a plain string and optionally mealRole.
@@ -145,13 +153,38 @@ export function getCourseTags(recipe: Recipe): string[] {
     return recipe.category.dish_type;
   }
   const tags: string[] = [];
-  if (typeof recipe.category === "string" && recipe.category) {
-    tags.push(recipe.category);
+  const cat = recipe.category as unknown;
+  if (typeof cat === "string" && cat) {
+    const normalized = COURSE_ALIASES[cat.toLowerCase()] || cat;
+    tags.push(normalized);
   }
   if (recipe.mealRole && !tags.some((t) => t.toLowerCase() === recipe.mealRole!.toLowerCase())) {
     tags.push(recipe.mealRole);
   }
   return tags;
+}
+
+// Format servings for display. Normalizes inconsistent patterns like
+// "4 servings", "serves 4", bare "4" into a consistent "Serves N" style,
+// while leaving complex/descriptive strings (e.g. "1 bread wreath") intact.
+export function formatServings(raw: string): string {
+  if (!raw) return "";
+  const trimmed = raw.trim();
+
+  // "4 servings" / "4 to 6 servings" → "Serves 4" / "Serves 4 to 6"
+  const nServings = trimmed.match(/^(\d[\d\s–—\-to]*\d?)\s+servings?$/i);
+  if (nServings) return `Serves ${nServings[1]}`;
+
+  // Bare number like "4" or "6–8"
+  if (/^\d[\d–—\-\s]*$/.test(trimmed)) return `Serves ${trimmed}`;
+
+  // Already starts with "serves" — just capitalize
+  if (/^serves\s/i.test(trimmed)) {
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  }
+
+  // Complex strings ("makes 2 small loaves …") — capitalize first letter
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
 }
 
 // Cookbook cover images

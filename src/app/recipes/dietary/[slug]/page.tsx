@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getDietaryOptions, getRecipesByDietary, getDietary } from "@/lib/recipes";
+import { getDietaryOptions, getRecipesByDietary, getDietary, formatServings } from "@/lib/recipes";
 
 export const revalidate = 60;
 
@@ -70,8 +70,8 @@ export default async function DietaryPage({ params }: { params: Promise<{ slug: 
                     />
                   </div>
                 ) : (
-                  <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                    <span className="text-3xl opacity-30">🍽️</span>
+                  <div className="h-32 w-full bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
+                    <span className="font-serif text-4xl text-stone-300 dark:text-stone-600 select-none">{recipe.name.charAt(0)}</span>
                   </div>
                 )}
                 <div className="p-4">
@@ -80,7 +80,7 @@ export default async function DietaryPage({ params }: { params: Promise<{ slug: 
                   </h2>
 
                   <div className="flex items-center gap-2 mt-2 text-xs text-stone-400 dark:text-stone-500">
-                    {recipe.servings && <span>{capitalize(recipe.servings)}</span>}
+                    {recipe.servings && <span>{formatServings(recipe.servings)}</span>}
                     {recipe.source?.cookbook && (
                       <>
                         <span>·</span>

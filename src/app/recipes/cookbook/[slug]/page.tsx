@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getCookbooks, getRecipesByCookbook, getDietary, getCourseTags } from "@/lib/recipes";
+import { getCookbooks, getRecipesByCookbook, getDietary, getCourseTags, formatServings } from "@/lib/recipes";
 import { ChapterNav } from "./ChapterNav";
 
 export const revalidate = 60;
@@ -158,8 +158,8 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                             />
                           </div>
                         ) : (
-                          <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                            <span className="text-3xl opacity-30">🍽️</span>
+                          <div className="h-32 w-full bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
+                            <span className="font-serif text-4xl text-stone-300 dark:text-stone-600 select-none">{recipe.name.charAt(0)}</span>
                           </div>
                         )}
                         <div className="p-4">
@@ -168,7 +168,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                           </h3>
                           {recipe.servings && (
                             <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                              {capitalize(recipe.servings)}
+                              {formatServings(recipe.servings)}
                             </p>
                           )}
                           {(courseTags.length > 0 || dietary.length > 0) && (
@@ -220,8 +220,8 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                       />
                     </div>
                   ) : (
-                    <div className="h-32 w-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                      <span className="text-3xl opacity-30">🍽️</span>
+                    <div className="h-32 w-full bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
+                      <span className="font-serif text-4xl text-stone-300 dark:text-stone-600 select-none">{recipe.name.charAt(0)}</span>
                     </div>
                   )}
                   <div className="p-4">
@@ -230,7 +230,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                     </h2>
                     {recipe.servings && (
                       <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                        {capitalize(recipe.servings)}
+                        {formatServings(recipe.servings)}
                       </p>
                     )}
                     {(courseTags.length > 0 || dietary.length > 0) && (
