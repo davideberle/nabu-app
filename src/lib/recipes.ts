@@ -137,15 +137,10 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
-// Normalize meal-time strings ("dinner", "lunch") to proper course labels.
-const COURSE_ALIASES: Record<string, string> = {
-  dinner: "main",
-  lunch: "main",
-  supper: "main",
-  brunch: "breakfast",
-};
+// Generic occasion/meal-time strings that are not meaningful course labels.
+const OCCASION_TAGS = new Set(["dinner", "lunch", "supper", "brunch"]);
 
-// Get course/category tags for a recipe (e.g. "Main", "Bread", "Dinner").
+// Get course/category tags for a recipe (e.g. "Main", "Bread", "Salad").
 // Cookbook recipes use category.dish_type (string[]), while My Recipes store
 // category as a plain string and optionally mealRole.
 export function getCourseTags(recipe: Recipe): string[] {
@@ -154,9 +149,8 @@ export function getCourseTags(recipe: Recipe): string[] {
   }
   const tags: string[] = [];
   const cat = recipe.category as unknown;
-  if (typeof cat === "string" && cat) {
-    const normalized = COURSE_ALIASES[cat.toLowerCase()] || cat;
-    tags.push(normalized);
+  if (typeof cat === "string" && cat && !OCCASION_TAGS.has(cat.toLowerCase())) {
+    tags.push(cat);
   }
   if (recipe.mealRole && !tags.some((t) => t.toLowerCase() === recipe.mealRole!.toLowerCase())) {
     tags.push(recipe.mealRole);
