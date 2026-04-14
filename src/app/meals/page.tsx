@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 // ----- types -----
 
@@ -30,6 +30,14 @@ type RecipeDetail = RecipeOption & {
   method: string[];
 };
 
+type WeekContextItem = {
+  id: string;
+  date?: string;
+  kind: "restaurant" | "guests" | "quick" | "skip" | "leftovers" | "custom";
+  note: string;
+  effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
+};
+
 type DaySlot = {
   date: string;
   dayOfWeek: string;
@@ -40,8 +48,11 @@ type DaySlot = {
 type MealPlan = {
   week: string;
   days: DaySlot[];
+  context?: WeekContextItem[];
+  notes?: string;
   locked: boolean;
   createdAt: string;
+  updatedAt?: string;
 };
 
 type IngredientGroup = {
@@ -104,6 +115,34 @@ function formatDateShort(dateStr: string): string {
   return `${parseInt(m)}/${parseInt(d)}`;
 }
 
+// ----- context kind labels -----
+
+const CONTEXT_KIND_OPTIONS: { value: WeekContextItem["kind"]; label: string }[] = [
+  { value: "restaurant", label: "Restaurant" },
+  { value: "guests", label: "Guests" },
+  { value: "quick", label: "Quick meal" },
+  { value: "skip", label: "Skip" },
+  { value: "leftovers", label: "Leftovers" },
+  { value: "custom", label: "Other" },
+];
+
+const KIND_TO_EFFECT: Record<string, WeekContextItem["effect"]> = {
+  restaurant: "skip-meal",
+  skip: "skip-meal",
+  guests: "guest-friendly",
+  quick: "quick-meal",
+  leftovers: "skip-meal",
+};
+
+const KIND_COLORS: Record<string, string> = {
+  restaurant: "bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300",
+  guests: "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300",
+  quick: "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300",
+  skip: "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300",
+  leftovers: "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300",
+  custom: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
+};
+
 // ----- category colors -----
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -119,6 +158,42 @@ const CATEGORY_COLORS: Record<string, string> = {
   Grill: "bg-fuchsia-100 dark:bg-fuchsia-900 text-fuchsia-700 dark:text-fuchsia-300",
   Main: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
 };
+
+// ----- autosave hook -----
+
+function useAutosave(plan: MealPlan | null, delayMs = 1500) {
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastSavedRef = useRef<string>("");
+
+  const save = useCallback((p: MealPlan) => {
+    const serialized = JSON.stringify(p);
+    if (serialized === lastSavedRef.current) return;
+    lastSavedRef.current = serialized;
+    fetch("/api/meals/plan", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: serialized,
+    }).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (!plan || plan.locked) return;
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => save(plan), delayMs);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [plan, delayMs, save]);
+
+  // Reset last-saved ref when week changes
+  const weekRef = useRef(plan?.week);
+  useEffect(() => {
+    if (plan?.week !== weekRef.current) {
+      weekRef.current = plan?.week;
+      lastSavedRef.current = "";
+    }
+  }, [plan?.week]);
+}
 
 // ----- component -----
 
@@ -146,9 +221,13 @@ export default function MealsPage() {
   const [showIngredients, setShowIngredients] = useState(false);
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
+  const [showContextEditor, setShowContextEditor] = useState(false);
 
   // Track all shown recipe IDs for "Show More" exclusion
   const [shownIds, setShownIds] = useState<Set<string>>(new Set());
+
+  // Autosave drafts
+  useAutosave(plan);
 
   const buildEmptyPlan = useCallback((): MealPlan => {
     return {
@@ -159,6 +238,8 @@ export default function MealsPage() {
         recipeId: null,
         recipeName: null,
       })),
+      context: [],
+      notes: "",
       locked: false,
       createdAt: new Date().toISOString(),
     };
@@ -173,6 +254,7 @@ export default function MealsPage() {
     setIngredientGroups(null);
     setShowIngredients(false);
     setShownIds(new Set());
+    setShowContextEditor(false);
 
     fetch(`/api/meals/plan?week=${weekId}`)
       .then((r) => r.json())
@@ -190,7 +272,10 @@ export default function MealsPage() {
   async function handleGenerate() {
     setLoading(true);
     try {
-      const res = await fetch("/api/meals/generate");
+      const contextParam = plan?.context?.length
+        ? `&context=${encodeURIComponent(JSON.stringify(plan.context))}`
+        : "";
+      const res = await fetch(`/api/meals/generate?${contextParam}`);
       const data = await res.json();
       setWeekdayOptions(data.weekday);
       setWeekendOptions(data.weekend);
@@ -208,7 +293,7 @@ export default function MealsPage() {
     }
   }
 
-  // Show More — appends 6 more options
+  // Show More — appends more options
   async function handleShowMore() {
     setLoadingMore(true);
     try {
@@ -311,9 +396,41 @@ export default function MealsPage() {
     }
   }
 
+  // ----- context/notes helpers -----
+
+  function handleNotesChange(notes: string) {
+    if (!plan || plan.locked) return;
+    setPlan({ ...plan, notes });
+  }
+
+  function handleAddContext(item: Omit<WeekContextItem, "id">) {
+    if (!plan || plan.locked) return;
+    const newItem: WeekContextItem = {
+      ...item,
+      id: `ctx_${Date.now()}`,
+      effect: item.effect || KIND_TO_EFFECT[item.kind],
+    };
+    setPlan({ ...plan, context: [...(plan.context || []), newItem] });
+  }
+
+  function handleRemoveContext(id: string) {
+    if (!plan || plan.locked) return;
+    setPlan({
+      ...plan,
+      context: (plan.context || []).filter((c) => c.id !== id),
+    });
+  }
+
   const allSlotsFilled =
     plan !== null && plan.days.every((d) => d.recipeId !== null);
   const hasOptions = weekdayOptions.length > 0 || weekendOptions.length > 0;
+  const contextItems = plan?.context || [];
+  const hasContext = contextItems.length > 0 || (plan?.notes && plan.notes.trim().length > 0);
+
+  // Find context items for a specific date
+  function getContextForDate(date: string): WeekContextItem[] {
+    return contextItems.filter((c) => c.date === date);
+  }
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
@@ -362,31 +479,103 @@ export default function MealsPage() {
           </button>
         </div>
 
+        {/* Week context summary + toggle */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <button
+              onClick={() => {
+                if (!plan) setPlan(buildEmptyPlan());
+                setShowContextEditor(!showContextEditor);
+              }}
+              className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex items-center gap-1.5 transition-colors"
+            >
+              <span className="text-base">&#128221;</span>
+              {showContextEditor ? "Hide week notes" : "Week notes & context"}
+              {hasContext && !showContextEditor && (
+                <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+                  {contextItems.length + (plan?.notes?.trim() ? 1 : 0)}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Inline context badges on calendar days */}
+          {!showContextEditor && contextItems.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {contextItems.map((ctx) => (
+                <span
+                  key={ctx.id}
+                  className={`text-xs px-2 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
+                >
+                  {ctx.date ? `${formatDateShort(ctx.date)}: ` : ""}{ctx.note}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Context editor */}
+          {showContextEditor && (
+            <WeekContextEditor
+              plan={plan || buildEmptyPlan()}
+              weekDates={weekDates}
+              onNotesChange={handleNotesChange}
+              onAddContext={handleAddContext}
+              onRemoveContext={handleRemoveContext}
+              locked={plan?.locked ?? false}
+            />
+          )}
+        </div>
+
         {/* Calendar grid */}
         <div className="grid grid-cols-5 gap-3 mb-6">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
             const isFilled = slot?.recipeId !== null;
             const isSelectable = selectedRecipe && !plan?.locked;
+            const dayContext = getContextForDate(wd.date);
+            const isSkipped = dayContext.some(
+              (c) => c.effect === "skip-meal"
+            );
             return (
               <div
                 key={wd.date}
-                onClick={() => isSelectable && handleSlotClick(i)}
+                onClick={() => isSelectable && !isSkipped && handleSlotClick(i)}
                 className={`rounded-lg border p-3 min-h-[120px] flex flex-col transition-colors ${
-                  plan?.locked
-                    ? "bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
-                    : isSelectable
-                      ? "cursor-pointer border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
-                      : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+                  isSkipped
+                    ? "bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 opacity-60"
+                    : plan?.locked
+                      ? "bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+                      : isSelectable
+                        ? "cursor-pointer border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
+                        : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                 }`}
               >
                 <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
                   {wd.dayOfWeek.slice(0, 3)}
                 </div>
-                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-2">
+                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">
                   {formatDateShort(wd.date)}
                 </div>
-                {isFilled ? (
+                {/* Context badges for this day */}
+                {dayContext.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mb-1">
+                    {dayContext.map((ctx) => (
+                      <span
+                        key={ctx.id}
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
+                      >
+                        {CONTEXT_KIND_OPTIONS.find((o) => o.value === ctx.kind)?.label || ctx.kind}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {isSkipped ? (
+                  <div className="flex-1 flex items-center justify-center">
+                    <span className="text-xs text-zinc-400 dark:text-zinc-500 italic">
+                      Skipped
+                    </span>
+                  </div>
+                ) : isFilled ? (
                   <div className="flex-1 flex flex-col justify-between">
                     <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-3">
                       {slot?.recipeName}
@@ -614,6 +803,151 @@ export default function MealsPage() {
             setQuickViewLoading(false);
           }}
         />
+      )}
+    </div>
+  );
+}
+
+// ----- Week Context Editor -----
+
+function WeekContextEditor({
+  plan,
+  weekDates,
+  onNotesChange,
+  onAddContext,
+  onRemoveContext,
+  locked,
+}: {
+  plan: MealPlan;
+  weekDates: { date: string; dayOfWeek: string }[];
+  onNotesChange: (notes: string) => void;
+  onAddContext: (item: Omit<WeekContextItem, "id">) => void;
+  onRemoveContext: (id: string) => void;
+  locked: boolean;
+}) {
+  const [newKind, setNewKind] = useState<WeekContextItem["kind"]>("restaurant");
+  const [newDate, setNewDate] = useState("");
+  const [newNote, setNewNote] = useState("");
+
+  function handleAdd() {
+    if (!newNote.trim()) return;
+    onAddContext({
+      date: newDate || undefined,
+      kind: newKind,
+      note: newNote.trim(),
+    });
+    setNewNote("");
+    setNewDate("");
+  }
+
+  return (
+    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 space-y-4">
+      {/* Free-text notes */}
+      <div>
+        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-1">
+          Week Notes
+        </label>
+        <textarea
+          value={plan.notes || ""}
+          onChange={(e) => onNotesChange(e.target.value)}
+          disabled={locked}
+          placeholder="General notes for this week..."
+          rows={2}
+          className="w-full text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-3 py-2 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 disabled:opacity-50 resize-none"
+        />
+      </div>
+
+      {/* Existing context items */}
+      {(plan.context || []).length > 0 && (
+        <div>
+          <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-2">
+            Context Items
+          </label>
+          <div className="space-y-2">
+            {(plan.context || []).map((ctx) => (
+              <div
+                key={ctx.id}
+                className="flex items-center gap-2 text-sm"
+              >
+                <span
+                  className={`shrink-0 text-xs px-2 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
+                >
+                  {CONTEXT_KIND_OPTIONS.find((o) => o.value === ctx.kind)?.label || ctx.kind}
+                </span>
+                {ctx.date && (
+                  <span className="text-xs text-zinc-400 shrink-0">
+                    {formatDateShort(ctx.date)}
+                  </span>
+                )}
+                <span className="text-zinc-700 dark:text-zinc-300 flex-1 min-w-0 truncate">
+                  {ctx.note}
+                </span>
+                {ctx.effect && (
+                  <span className="text-[10px] text-zinc-400 shrink-0">
+                    {ctx.effect}
+                  </span>
+                )}
+                {!locked && (
+                  <button
+                    onClick={() => onRemoveContext(ctx.id)}
+                    className="shrink-0 text-xs text-zinc-400 hover:text-red-500 transition-colors"
+                  >
+                    &times;
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Add new context item */}
+      {!locked && (
+        <div>
+          <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-2">
+            Add Context
+          </label>
+          <div className="flex flex-wrap gap-2">
+            <select
+              value={newKind}
+              onChange={(e) => setNewKind(e.target.value as WeekContextItem["kind"])}
+              className="text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+            >
+              {CONTEXT_KIND_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+            <select
+              value={newDate}
+              onChange={(e) => setNewDate(e.target.value)}
+              className="text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+            >
+              <option value="">Any day</option>
+              {weekDates.map((wd) => (
+                <option key={wd.date} value={wd.date}>
+                  {wd.dayOfWeek.slice(0, 3)} {formatDateShort(wd.date)}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              value={newNote}
+              onChange={(e) => setNewNote(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+              placeholder="Note..."
+              className="flex-1 min-w-[120px] text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-3 py-1.5 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+            />
+            <button
+              onClick={handleAdd}
+              disabled={!newNote.trim()}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:opacity-30 transition-colors"
+            >
+              Add
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

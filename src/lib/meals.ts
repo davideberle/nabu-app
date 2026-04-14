@@ -7,6 +7,14 @@ export type MealSlot = {
   sides?: { id: string; name: string }[];
 };
 
+export type WeekContextItem = {
+  id: string;
+  date?: string; // optional day-specific context
+  kind: "restaurant" | "guests" | "quick" | "skip" | "leftovers" | "custom";
+  note: string;
+  effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
+};
+
 export type MealPlan = {
   week: string; // "2026-W15"
   days: {
@@ -17,8 +25,11 @@ export type MealPlan = {
     recipeName: string | null;
     meal?: MealSlot | null;
   }[];
+  context?: WeekContextItem[];
+  notes?: string; // free-text week notes
   locked: boolean;
   createdAt: string;
+  updatedAt?: string;
 };
 
 export type WeekendMealOption = {
@@ -156,11 +167,6 @@ function isDinnerWorthy(recipe: Recipe): boolean {
  * Returns true if a recipe works as a side dish for a weekend meal combo.
  */
 function isSideDish(recipe: Recipe): boolean {
-  // Prefer meal_role when available (backfilled on all cookbook recipes)
-  if (recipe.category?.meal_role === "side" || recipe.category?.meal_role === "starter") {
-    return true;
-  }
-  // Fallback for My Recipes or un-enriched records
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
   if (dishTypes.includes("side") || dishTypes.includes("vegetable") || dishTypes.includes("salad") || dishTypes.includes("starter")) {
     return true;
@@ -225,9 +231,16 @@ function pickWithoutCuisineRepeat(
 
 // ----- main selection -----
 
+export type GenerationHints = {
+  skipCount?: number;
+  preferQuick?: boolean;
+  preferGuestFriendly?: boolean;
+};
+
 export function selectMealOptions(
   allRecipes: Recipe[],
-  excludeIds?: Set<string>
+  excludeIds?: Set<string>,
+  hints?: GenerationHints
 ): {
   weekday: Recipe[];
   weekend: Recipe[];
@@ -243,7 +256,13 @@ export function selectMealOptions(
 
   // Prefer recipes with images — if we have enough, use only those
   const withImages = dinnerRecipes.filter((r) => !!r.image);
-  const pool = withImages.length >= 40 ? withImages : dinnerRecipes;
+  let pool = withImages.length >= 40 ? withImages : dinnerRecipes;
+
+  // If context requests quick/light meals, boost those in the pool
+  if (hints?.preferQuick) {
+    const quickPool = pool.filter(isLight);
+    if (quickPool.length >= 10) pool = quickPool;
+  }
 
   // Partition recipes
   const vegRecipes = pool.filter(isVegetarianOrVegan);
@@ -251,10 +270,15 @@ export function selectMealOptions(
   const lightRecipes = pool.filter(isLight);
   const pastaRecipes = pool.filter(isPasta);
 
+  // Reduce target counts when days are skipped
+  const skip = hints?.skipCount ?? 0;
+  const weekdayTarget = Math.max(2, 6 - skip);
+  const weekendTarget = Math.max(1, 4 - Math.max(0, skip - 2));
+
   // We want 3-4 vegetarian/vegan out of 10 total
   const vegCount = 3 + Math.round(Math.random()); // 3 or 4
 
-  // Weekend: 4 picks. Include at least 1 pasta for Sunday suggestion.
+  // Weekend picks. Include at least 1 pasta for Sunday suggestion.
   const weekendPasta = shuffle(pastaRecipes).slice(0, 1);
   const weekendPastaIsVeg = weekendPasta.length > 0 && isVegetarianOrVegan(weekendPasta[0]);
 
@@ -269,7 +293,7 @@ export function selectMealOptions(
   );
   weekendVegPicks.forEach((r) => usedIds.add(r.id));
 
-  const weekendNonVegNeeded = 4 - weekendPasta.length - weekendVegPicks.length;
+  const weekendNonVegNeeded = weekendTarget - weekendPasta.length - weekendVegPicks.length;
   const weekendNonVegPicks = pickWithoutCuisineRepeat(
     shuffle(nonVegRecipes).filter((r) => !usedIds.has(r.id)),
     weekendNonVegNeeded,
@@ -309,7 +333,7 @@ export function selectMealOptions(
     return { main, sides };
   });
 
-  // Weekday: 6 picks
+  // Weekday picks (reduced by skip count)
   const weekdayVegTarget = vegCount - weekendVegPicks.length - (weekendPastaIsVeg ? 1 : 0);
 
   const lightPool = shuffle(lightRecipes).filter((r) => !usedIds.has(r.id));
@@ -326,7 +350,7 @@ export function selectMealOptions(
   );
   moreVeg.forEach((r) => usedIds.add(r.id));
 
-  const moreNonVegNeeded = 6 - lightPicks.length - moreVeg.length;
+  const moreNonVegNeeded = weekdayTarget - lightPicks.length - moreVeg.length;
   const moreNonVeg = pickWithoutCuisineRepeat(
     shuffle(nonVegRecipes).filter((r) => !usedIds.has(r.id)),
     moreNonVegNeeded,
