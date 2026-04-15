@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Vegetable pakoras can be made in lots of ways with many different variations. In fact, if you have tried the onion bhaji recipe opposite, it can be made into vegetable pakoras too. Simply follow that recipe and add a few chopped vegetables of choice and voilà… you’ve got vegetable pakoras! Below is a recipe that is completely different to that one but just as delicious. If you want to make this recipe gluten-free, just leave out the panko breadcrumbs.",
   "time": {
-    "prep": "15 MINS",
-    "cook": "15 MINS",
-    "total": "15 MINS15 MINS"
+    "prep": 15,
+    "cook": 15,
+    "total": 30
   },
   "ingredients": [
     {

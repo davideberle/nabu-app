@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I’m a big fan of samosa pinwheels. Not only do they look great, they’re also a lot easier to prepare than regular samosas. This potato and artichoke combo is a good one, but feel free to experiment with other fillings. The black bean samosa filling works really well cooked this way. Unlike other samosas, these pinwheels do not freeze well, so it is best to make and fry them on the same day.",
   "time": {
-    "prep": "30 MINS, PLUS RESTING TIME FOR THE DOUGH",
-    "cook": "15 MINS",
-    "total": "30 MINS, PLUS RESTING TIME FOR THE DOUGH15 MINS"
+    "prep": 30,
+    "cook": 15,
+    "total": 30
   },
   "ingredients": [
     {
@@ -114,7 +114,7 @@
     "Mix the 4 tablespoons of flour with 100ml (scant ½ cup) of water in a bowl to make a thick paste.",
     "Dip one of the pinwheels in the flour paste so it is nicely coated and carefully lower it into the oil. Repeat with the rest of the pinwheels and fry for about 3 minutes per side until nicely browned all over. You may need to work in batches to avoid overcrowding the pan. I usually turn the pinwheels over in the oil a few times for more uniform cooking. Transfer to paper towel to soak up the excess oil, then serve with the sauces."
   ],
-  "tips": "For a lighter option, preheat the oven to 200°C (400°F/Gas 6), omit the flour paste and just brush each samosa pastry with a little oil, then bake for about 20 minutes, or until heated through and browned to your liking.",
+  "tips": "For a lighter option, preheat the oven to 200°C (400°F/Gas 6), omit the flour paste and just brush each samosa pastry with a little oil, then bake for about 20 minutes, or until heated through and browned to your liking. Note: RESTING TIME FOR THE DOUGH; RESTING TIME FOR THE DOUGH15 MINS.",
   "image": "/recipes/potato-and-artichoke-samosa-pinwheels.jpg",
   "dietary": [
     "vegetarian"

@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "A classic Moroccan tagine stew with warm spices, vegetables, and dried fruit adds leftover turkey for a twist on a traditional dish.",
   "time": {
-    "prep": "35 mins",
+    "prep": 35,
     "total": 40
   },
   "ingredients": [

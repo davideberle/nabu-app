@@ -9,9 +9,9 @@
   "servings": "makes just over 250ml (1 cup)",
   "intro": "This is a delicious dip for papadams, kebabs, samosas and chicken pakoras. I love to serve it with my tandoori-style king prawns.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "5 MINS",
-    "total": "5 MINS5 MINS"
+    "prep": 5,
+    "cook": 5,
+    "total": 10
   },
   "ingredients": [
     {

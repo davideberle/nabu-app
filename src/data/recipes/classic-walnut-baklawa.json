@@ -9,9 +9,9 @@
   "servings": "90 pieces",
   "intro": "I always think that I can have one piece of baklawa as a little sweet treat and then be done. But something just happens when you bite into it and immediately hear the crunch. I personally can never resist another piece—they’re so small, after all. When I was thinking of including this recipe in this book, I wanted to get creative with my classic recipe, but my family would not hear of it. They demanded that I stick to this classic recipe and declared that it cannot be topped. Well, I listened to them. Baklawa (otherwise known as baklava) is an ancient dessert that can be traced back to the eighth century BCE, when people in the Assyrian Empire arranged unleavened flatbread in layers with nuts in between, though its exact origins are often debated. It is the main attraction at every Middle Eastern dessert spread. In Iraq, if you want to honor guests, you serve a large tray of baklawa. It comes in various shapes and can also be stuffed with pistachios or a thick cream filling. Store-bought baklawa is often too rich and too sweet, so I recommend making it yourself. I do have to give credit to my sister Sarra for perfecting the ingredient ratios in this family recipe: the cardamom-to-nuts ratio, the nuts-to-pastry ratio, and the syrup-to-baklawa ratio—everything has been perfected! And if you feel like it is too intimidating, trust me when I say that it is one of the easiest desserts to make.",
   "time": {
-    "prep": "30 minutes, plus 1 hour cooling",
-    "cook": "55 minutes",
-    "total": "30 minutes, plus 1 hour cooling55 minutes"
+    "prep": 30,
+    "cook": 55,
+    "total": 30
   },
   "ingredients": [
     {
@@ -84,7 +84,7 @@
     "Bake for 45 to 50 minutes, until the baklawa is a light golden color. Remove from the oven and immediately pour the cooled simple syrup over the top; you will hear a splashing sound as the cooled syrup hits the hot baklawa. Garnish with the crushed pistachios and rose petals (if using).",
     "Let the baklawa cool for at least 1 hour in the pan before serving. If you plate it while hot, the baklawa will crumble."
   ],
-  "tips": "You can substitute pistachios for the walnuts, or use a mixture of half each of walnuts and pistachios.\n\nUsing egg in the filling helps hold the filling together, especially when cutting the baklava. However, you can omit the egg if necessary for dietary restrictions.\n\nStore leftovers in a container, uncovered, on the counter if you are consuming within a few days; otherwise, to maintain freshness, place in an airtight container and freeze. Thaw at room temperature for 1 hour before serving.",
+  "tips": "You can substitute pistachios for the walnuts, or use a mixture of half each of walnuts and pistachios.\n\nUsing egg in the filling helps hold the filling together, especially when cutting the baklava. However, you can omit the egg if necessary for dietary restrictions.\n\nStore leftovers in a container, uncovered, on the counter if you are consuming within a few days; otherwise, to maintain freshness, place in an airtight container and freeze. Thaw at room temperature for 1 hour before serving. Note: 1 hour cooling; 1 hour cooling55 minutes.",
   "image": "/recipes/classic-walnut-baklawa.jpg",
   "category": {
     "dish_type": [

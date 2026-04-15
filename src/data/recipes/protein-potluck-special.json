@@ -9,9 +9,9 @@
   "servings": "8 servings",
   "intro": "Comfort food for the whole party! Whether for your family or made as a dish to go, this high-protein meal is the whole package.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

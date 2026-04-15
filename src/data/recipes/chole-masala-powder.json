@@ -9,9 +9,9 @@
   "servings": "makes about 250ml",
   "intro": "Why would you want to go to the trouble of making a spice blend that is generally only used to make chole masala? Well, I want you to try the recipes in this book as they should taste and not just some quick imitation! That said, if you would like to give my Punjabi chole recipe a try but don’t want to go to the effort of making this very tasty spice blend, you can purchase ready-made chole masala at many Asian grocers and online. Once you try the Punjabi chole masala, however, I think you’ll be really happy you made a big batch of this unique spice blend. It will keep in an air-tight container for at least three months.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "3 MINS",
-    "total": "5 MINS3 MINS"
+    "prep": 5,
+    "cook": 3,
+    "total": 8
   },
   "ingredients": [
     {

@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "The key to this chicken curry is to get the complex flavors. For vegetables, I like to use peanuts, sweet red peppers, and water chestnuts",
   "time": {
-    "prep": "30 minutes",
+    "prep": 30,
     "total": 22
   },
   "ingredients": [

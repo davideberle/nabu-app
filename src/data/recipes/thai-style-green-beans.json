@@ -8,7 +8,7 @@
   "servings": "serves 2",
   "intro": "Peanut butter, soy sauce and hoisin sauce give this delicious bean dish a nice boost in flavor.",
   "time": {
-    "prep": "20 minutes",
+    "prep": 20,
     "total": 3
   },
   "ingredients": [

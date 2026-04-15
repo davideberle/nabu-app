@@ -9,9 +9,9 @@
   "servings": "makes 250ml (1 cup)",
   "intro": "You can purchase good-quality tamarind pani (water) at Asian shops and online. It is delicious served with pani puri. I often make my own and this is my go-to recipe. There are a lot more complicated and fussy recipes out there but the end results are about the same.\n\nBlock tamarind will achieve a superior flavour but tamarind concentrate works well too and it is a lot easier. Just stir it into 1 litre (4½ cups) of water with the other ingredients.",
   "time": {
-    "prep": "10 MINS, PLUS SOAKING TIME",
-    "cook": "15 MINS",
-    "total": "10 MINS, PLUS SOAKING TIME15 MINS"
+    "prep": 10,
+    "cook": 15,
+    "total": 10
   },
   "ingredients": [
     {
@@ -68,5 +68,6 @@
     "chapter": "Base Sauces",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SOAKING TIME; SOAKING TIME15 MINS."
 }

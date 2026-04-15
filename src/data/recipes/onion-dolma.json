@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This dish is one I came up with as my “cheat dolma.” Authentic Iraqi dolma, the way my mom makes it, uses an array of vegetables, such as grape leaves, Swiss chard, eggplant, zucchini, tomatoes, and peppers. All these vegetables are cored and stuffed, which takes hours. As a way of enjoying dolma more often, I decided to start making it using only onions, because they are the easiest to stuff by far! The results are nothing short of amazing, with the onions turning sweet and melting in your mouth, the tangy filling creating a perfect contrast to the sweetness. You won’t find me making authentic dolma more than maybe twice a year, but this dish—this I make monthly, at least!",
   "time": {
-    "prep": "30 minutes",
-    "cook": "1 hour and 30 minutes",
-    "total": "30 minutes1 hour and 30 minutes"
+    "prep": 30,
+    "cook": 90,
+    "total": 120
   },
   "ingredients": [
     {

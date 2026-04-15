@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "This dish has been a family favorite for a long time. I like to double the recipe and add extra veggies",
   "time": {
-    "prep": "30 minutes",
+    "prep": 30,
     "total": 4
   },
   "ingredients": [

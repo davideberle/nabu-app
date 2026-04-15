@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Many restaurants include potato in their vindaloo curries. ‘Aloo’ means potato in Hindi, so a lot of the original self-taught Bangladeshi and Pakistani chefs in the UK mistakenly added potatoes to this fiery curry, and it stuck. Vindaloo, however, owes its origins to Portuguese-controlled Goa in the 15th century, where the dish was usually served with pork. The name vindaloo was most likely a mispronunciation of the similar Portuguese dish carne de vinho e alho (meat with wine and garlic). So our vindaloo is completely different to the authentic Goan version other than it is quite spicy and often packs a vinegary punch. I don’t add potatoes, but if you would like to, I’ve included instructions. If you would like to try a recipe for the original Goan pork vindaloo, you’ll find it.",
   "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB AND POTATOES",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB AND POTATOES10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -106,5 +106,6 @@
     "chapter": "Biryanis & Rice",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB AND POTATOES; MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB AND POTATOES10 MINS."
 }

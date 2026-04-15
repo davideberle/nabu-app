@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s an eclectic mix of all the best and most popular vegetables. A tasty seitan is added, and all of the spices make this jumble pop with flavor.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s an updated version of that Southern classic, red beans and rice. This version is made with a variety of spices popular in Cajun country.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

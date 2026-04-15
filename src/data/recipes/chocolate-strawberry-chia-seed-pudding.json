@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Get your fruit and protein in this breakfast treat. Make this pudding recipe the night before for a simple fruit-filled breakfast that only takes a few minutes of prep time.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

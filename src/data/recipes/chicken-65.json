@@ -9,9 +9,9 @@
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "I’m asked often why this dish is called ‘Chicken 65’. There is no one definite answer, but there are two explanations I’ve heard that I think are better than most. One is that the original recipe had 65 ingredients in it. The more likely explanation is that in India, where the menus can be very long and people order by number, this dish began showing up as the sixty-fifth option on numerous menus, making it easy to go out and order the very popular number 65 without even looking at the menu.\n\nThe deep-frying in this recipe can be done ahead of time, so if you are serving this curry-house classic to dinner guests, you won’t need to be standing over hot oil when everyone arrives.",
   "time": {
-    "prep": "20 MINS, PLUS MARINATING TIME",
-    "cook": "10 MINS",
-    "total": "20 MINS, PLUS MARINATING TIME10 MINS"
+    "prep": 20,
+    "cook": 10,
+    "total": 20
   },
   "ingredients": [
     {
@@ -129,5 +129,6 @@
     "chapter": "Basics & Breads",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME10 MINS."
 }

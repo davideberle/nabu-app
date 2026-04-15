@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "This dinner dish is rich in taste with mushrooms, carrots, and seitan. It’s so simple to make, and you’ll be amazed at its depth of flavors.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

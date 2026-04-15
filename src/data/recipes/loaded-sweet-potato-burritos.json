@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "The spicy and sweet contrast in these burritos really hits the spot. This is an updated classic, and you can fill up your tortillas as full as you like.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

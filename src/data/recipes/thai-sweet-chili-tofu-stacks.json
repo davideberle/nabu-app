@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "In preparation for a party, make your life easier by using some prepackaged ingredients. You and your guests will love these beautiful skewers of marinated tofu, with lots of flavor in each bite.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

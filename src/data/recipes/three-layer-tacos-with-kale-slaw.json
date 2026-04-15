@@ -9,9 +9,9 @@
   "servings": "3 servings",
   "intro": "You’ll want taco night every night of the week with these overflowing tacos. The tofu gets marinated with the pinto beans, and a spicy-sweet slaw serves as a topping.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

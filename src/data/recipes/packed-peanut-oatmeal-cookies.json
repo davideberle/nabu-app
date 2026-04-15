@@ -9,9 +9,9 @@
   "servings": "12 servings",
   "intro": "Peanuts, oats, and dairy-free cream cheese are just the beginning of making a classic cookie that’s packed with protein. What’s more, they hardly take any time to make!",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

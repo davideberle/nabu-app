@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "This Moroccan chickpea stew is super flavorful, warm, hearty, easy to make, cheap, and to top it off, really good for you. Give it a try!",
   "time": {
-    "prep": "25 mins",
+    "prep": 25,
     "total": 75
   },
   "ingredients": [

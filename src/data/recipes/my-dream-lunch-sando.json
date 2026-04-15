@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "A good sando is one of my go-to solo lunches – this one takes a little bit more time than your standard sandwich, but it’s worth the extra effort. I think yuba (dried tofu skin) is highly underused; they are sold dry and you can find them easily at your local Asian supermarket. They have this wonderful texture when pan fried and caramelised in a sticky sauce. Feel free to add some pickled onions or jalapeños to the mix here.",
   "time": {
-    "prep": "15 MINUTESCOOK TIME: 20 MINUTES",
-    "cook": "20 MINUTES",
-    "total": "15 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
+    "prep": 15,
+    "cook": 20,
+    "total": 35
   },
   "ingredients": [
     {

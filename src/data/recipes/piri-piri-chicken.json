@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Piri piri dishes are now popular all over the world. Originally a Portuguese recipe that is believed to have been first made in the former Portuguese colony of Mozambique, piri piri was introduced to the native population of Goa during the Portuguese occupation. The sauce was made from red sweet (bell) peppers, paprika and red piri piri chillies, but many other varieties are used now.\n\nIt is believed that the red piri piri sauce was the inspiration behind chicken cafreal, which is made with similar ingredients but with additional green chillies, coriander (cilantro) and mint to make a green sauce. So it’s little wonder that this spicy Portuguese dish that was loved by the Goan population is now finding its way on to many Indian restaurant menus. Double the sauce recipe if you like a lot of sauce.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING AND CHILLING TIME",
-    "cook": "1–1¼ HOURS",
-    "total": "15 MINS, PLUS MARINATING AND CHILLING TIME1–1¼ HOURS"
+    "prep": 15,
+    "cook": 60,
+    "total": 15
   },
   "ingredients": [
     {
@@ -107,5 +107,6 @@
     "chapter": "Street Food",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING AND CHILLING TIME; MARINATING AND CHILLING TIME1–1¼ HOURS."
 }

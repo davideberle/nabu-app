@@ -9,9 +9,9 @@
   "servings": "serves 4–6",
   "intro": "There are no secrets or tricks here. Just a humble bowl of beans with wonderful sweet and crunchy bits. The base starts with olive oil, onions and whole garlic cloves that ooze a more subtle flavour into the pan. Beans can go a long way. They’re cheap, creamy and with a bit of care can be transformed into a glorious meal. They work so well in quick braises like this and soak up so much flavour.",
   "time": {
-    "prep": "15 MINUTESCOOK TIME: 30 MINUTES",
-    "cook": "30 MINUTES",
-    "total": "15 MINUTESCOOK TIME: 30 MINUTES30 MINUTES"
+    "prep": 15,
+    "cook": 30,
+    "total": 45
   },
   "ingredients": [
     {

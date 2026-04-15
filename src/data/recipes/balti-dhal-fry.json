@@ -9,9 +9,9 @@
   "servings": "serves 2",
   "intro": "This recipe is a balti so I only cook it to serve one or two people. Authentic British baltis are cooked in a stainless steel balti pan over a high heat and then served in the same pan they were cooked in. That’s how I hope you serve this too. There’s just something about dipping fresh naans into a flaming hot balti pan laden with delicious sizzling curry. If you don’t have a balti pan, do make this anyway!\n\nThe recipe calls for a cup of cooked chana dhal. I always make a good-size batch for ease, following the cooking instructions on the bag and freezing any leftovers; however if you just want to make enough for this recipe you will need to soak and cook 100g (½ cup) chana dhal as the lentils double in weight and size when cooked.",
   "time": {
-    "prep": "10 MINS, PLUS DHAL COOKING TIME IF USING HOME-COOKED",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS DHAL COOKING TIME IF USING HOME-COOKED10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -100,7 +100,7 @@
     "Melt the ghee or oil in another pan. When visibly hot, add the Kashmiri chillies, cumin seeds and asafoetida. Allow to sizzle for about 30 seconds, then pour it all over the dhal.",
     "Season to taste with salt and black pepper, and garnish with coriander (if using)."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. Note: DHAL COOKING TIME IF USING HOME-COOKED; DHAL COOKING TIME IF USING HOME-COOKED10 MINS.",
   "image": "/recipes/balti-dhal-fry.jpg",
   "dietary": [
     "vegetarian"

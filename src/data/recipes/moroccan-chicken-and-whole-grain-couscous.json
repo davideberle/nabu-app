@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "A flavorful chicken stew that uses exotic spices and nice vegetables served over whole-grain couscous. This recipe was actually a real chicken contest winner! Vegetables and even meat can vary according to taste, but I find squash, carrots, bell peppers, and lamb work well in this recipe. Even though the spices seem strange, the flavors are subtle but fragrant! A real favorite at home.",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 35
   },
   "ingredients": [

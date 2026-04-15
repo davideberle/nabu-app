@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Thick slices of special seitan and tender cauliflower make the best sandwich when combined with pesto and spinach. After all is encased in a folded flatbread, it simply begs for a bite.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

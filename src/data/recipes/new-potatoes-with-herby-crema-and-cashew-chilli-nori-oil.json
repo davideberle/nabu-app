@@ -9,9 +9,9 @@
   "servings": "serves 4–6",
   "intro": "This side is bold and punchy and has lots of lovely textures through it. New potatoes are perfect for smashing as they are waxy, so they hold their shape. As you will have discovered by now, I love nori and I will not stop until I’ve found a way to introduce it into most dishes.",
   "time": {
-    "prep": "25 MINUTESCOOK TIME: 45 MINUTES",
-    "cook": "45 MINUTES",
-    "total": "25 MINUTESCOOK TIME: 45 MINUTES45 MINUTES"
+    "prep": 25,
+    "cook": 45,
+    "total": 70
   },
   "ingredients": [
     {

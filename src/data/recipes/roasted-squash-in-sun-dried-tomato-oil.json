@@ -9,9 +9,9 @@
   "servings": "serves 6",
   "intro": "Never throw away the oil from a jar of sun-dried tomatoes. They are loaded with flavour, and the longer you have had them, the deeper that flavour gets. Red kuri squash is my favourite – super creamy, waxy and slightly starchier than the other squashes. In my opinion it holds up well to the the sun-dried tomato oil.",
   "time": {
-    "prep": "5 MINUTESCOOK TIME: 40 MINUTES",
-    "cook": "40 MINUTES",
-    "total": "5 MINUTESCOOK TIME: 40 MINUTES40 MINUTES"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

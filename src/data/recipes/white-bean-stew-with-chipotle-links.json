@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This stew is an all-time favorite. It has fresh carrots and corn off the cob, and the plant-based chipotle links give it a sensational taste and texture.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

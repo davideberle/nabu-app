@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "Fried chicken and rice is very nostalgic for me. My mother’s was famous in our house and she would always serve it with a slaw on the side. This recipe replaces the chicken with crispy oyster mushrooms that are similar to those I use in my fried ‘chicken’ burger. Oyster mushrooms have such a succulent and juicy texture, that when fried they are reminiscent of chicken. They are really in their green jackfruit circa 2016 era, and it is truly deserved. Mushrooms in general are so magical, and I could totally imagine this working really well with a vast variety of them. The burnt lime in the dressing is so deeply savoury and offers a slight bitterness.",
   "time": {
-    "prep": "30 MINUTES",
-    "cook": "40 MINUTES",
-    "total": "30 MINUTES40 MINUTES"
+    "prep": 30,
+    "cook": 40,
+    "total": 70
   },
   "ingredients": [
     {

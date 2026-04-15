@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "These spicy paneer kebabs (pictured) are a real treat, with a crispy, charred crust on the exterior and a deliciously soft centre. If you’re working ahead of time, you can marinate these early in the day and then simply skewer them up and grill just before serving. They are great served on their own or wrapped into hot homemade naans with the raita of your choice.",
   "time": {
-    "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS MARINATING TIME10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -83,5 +83,6 @@
     "chapter": "Street Food",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME10 MINS."
 }

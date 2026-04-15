@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Want a nice side dish and don't want to heat up the kitchen? Great dinner idea for those hot summer nights.",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 120
   },
   "ingredients": [

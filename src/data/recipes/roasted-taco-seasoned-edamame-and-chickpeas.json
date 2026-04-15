@@ -9,9 +9,9 @@
   "servings": "7 servings",
   "intro": "Get out a little container and fill it up with these easy-to-carry spicy protein nibbles. Baked to just the right crispness, they are made to enjoy on your day out.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

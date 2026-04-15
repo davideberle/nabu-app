@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "This rum punch screams summer and al fresco eating. It screams barbecue season, and, most of all, it screams strawb season – and when strawb season hits, I’m eating them in abundance.",
   "time": {
-    "prep": "10 MINUTES",
-    "cook": "",
-    "total": "10 MINUTES0"
+    "prep": 10,
+    "cook": 0,
+    "total": 10
   },
   "ingredients": [
     {

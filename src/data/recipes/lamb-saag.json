@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Good British lamb saag (saag gosht) is very close to the authentic Punjabi version. In the subcontinent, the meat is slowly cooked on the bone in a large karahi until the lamb almost falls off the bone into the rich spinach sauce. Some British Pakistani and Punjabi restaurants still prepare the curry in this way and promote it as one of their house special dishes. At most curry houses, however, it’s made in under 10 minutes using prepared ingredients and plenty of cooking stock from pre-cooked lamb. This recipe might be quick but when done correctly it will taste like it’s been gently simmering for hours. If you like buttery ghee, this is a good one to use it in. Lamb saag is delicious served with plain or pilau rice.",
   "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -105,5 +105,6 @@
     "chapter": "Biryanis & Rice",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB; MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS."
 }

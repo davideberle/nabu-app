@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "We love a dish that takes 30 minutes to cook and eat! Pesto can be such a wonderful foundation for veggies. The veg I’m using is callaloo, one of my favourite dark leafy greens. Although you can’t get it fresh in the UK, even the tinned variety is packed with flavour. Incorporating it into a pesto sauce creates a more substantial and earthy flavour. Traditionally, pesto is made with Parmesan, but here I’ve subbed that sharp and salty flavour with white miso, which works perfectly. This is very much a weeknight-friendly dish. Please enjoy with a glass of wine, or kombucha if we’re being good.",
   "time": {
-    "prep": "10 MINUTESCOOK TIME: 15 MINUTES",
-    "cook": "15 MINUTES",
-    "total": "10 MINUTESCOOK TIME: 15 MINUTES15 MINUTES"
+    "prep": 10,
+    "cook": 15,
+    "total": 25
   },
   "ingredients": [
     {

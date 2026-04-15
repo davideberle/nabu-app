@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "A delicious, creamy soup and enjoyed anytime. The soup is medium spicy. If you favor a less spicy soup, reduce the amount of peppers used. Vegetable stock may be used instead of water.",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 15
   },
   "ingredients": [

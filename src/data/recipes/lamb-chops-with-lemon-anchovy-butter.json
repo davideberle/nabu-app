@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The flavour and aroma of smoky lamb chops covered in lemon and anchovy butter is to die for. I make this recipe all the time during barbecue season and I think you might do the same once you’ve tried these chops. The salty flavour of the anchovies and tart lemon goes so well with the lamb.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "8 MINS",
-    "total": "15 MINS, PLUS MARINATING TIME8 MINS"
+    "prep": 15,
+    "cook": 8,
+    "total": 15
   },
   "ingredients": [
     {
@@ -120,5 +120,6 @@
     "chapter": "Street Food",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME8 MINS."
 }

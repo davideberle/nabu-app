@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "This easy dry rub blasts the fish with a unique Middle Eastern flair and is perfectly paired with other cold sides and salads. Roast it in the morning to enjoy cold with your guests that evening. Any variety of salmon, or even trout, works; cooking time remains the same as long as the cut is about one inch thick. It may seem like a lot of seasonings to use on one cut of meat, but cold meat can lose flavor, so the idea is to blast it with flavors from the beginning. If cold fish isn't your thing, refrigerate it and bring it to room temperature to serve .",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 180
   },
   "ingredients": [

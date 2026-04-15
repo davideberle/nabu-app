@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "This delicious healthy dish common to North Africa, particularly Morocco, is one of my favorites when entertaining guests. The wonderful spices blended with fresh vegetables and fish is a crowd-pleaser. The fish is marinated in a chermoula sauce to soak up all the wonderful spices before cooking. This dish is prepared in a traditional method in a ceramic tagine but can be prepared in a heavy-lidded pot. This dish, as it cooks, emits some of the most wonderful smells throughout the house. Serve with couscous or rice and crusty bread to mop up all the wonderful sauce!",
   "time": {
-    "prep": "50 mins",
+    "prep": 50,
     "total": 180
   },
   "ingredients": [

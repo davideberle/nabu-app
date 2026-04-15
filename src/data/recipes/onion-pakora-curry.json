@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Onion pakoras, or onion bhajis as they are usually referred to in the West, aren’t just served as a starter course. They are delicious in this yoghurt-based curry sauce. So next time you have a few homemade onion bhajis, give this one a try. Why wait though? Make my onion bhajis. You might just be surprised at how amazing onion bhajis can taste served in this mildly spicy sauce. If you live near an Indian snack shop, you could just purchase the onion pakoras, as I’ve never had a bad one.",
   "time": {
-    "prep": "10 MINS, PLUS THE TIME TO COOK THE ONION BHAJIS",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS THE TIME TO COOK THE ONION BHAJIS10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -96,5 +96,6 @@
     "chapter": "Curries",
     "meal_role": "starter"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: THE TIME TO COOK THE ONION BHAJIS; THE TIME TO COOK THE ONION BHAJIS10 MINS."
 }

@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This is one of those recipes that the slow cooker was made for. The sauce is best when cooked low and slow.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

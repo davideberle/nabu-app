@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Peanut sauce, red curry paste, and a little hot sauce are all added to make sweet and spicy a major component of this seitan and vegetable feast.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

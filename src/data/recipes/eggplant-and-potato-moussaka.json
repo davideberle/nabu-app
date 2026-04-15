@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This is not your typical Greek-style moussaka made with bechamel sauce. This moussaka has somehow evolved over time in my husband’s family and become a staple for us. It is a cross between moussaka and shepherd’s pie, bringing together the best of both dishes. It was one of the first recipes I shared on the blog that went viral.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "1 hour and 10 minutes",
-    "total": "20 minutes1 hour and 10 minutes"
+    "prep": 20,
+    "cook": 70,
+    "total": 90
   },
   "ingredients": [
     {

@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Paprika, fresh mint, and lemon make the best rub for this roast chicken. It roasts slowly under the foil and turns out so juicy and flavorful.",
   "time": {
-    "prep": "20 mins",
+    "prep": 20,
     "total": 130
   },
   "ingredients": [

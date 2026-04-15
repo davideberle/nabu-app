@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Tahini sauce pulls this rice-based bowl all together. Each vegetable can stand on its own, but when they mingle with each other, the result is memorable.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

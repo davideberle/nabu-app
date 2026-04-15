@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "When aubergine (eggplant) is cooked to perfection, it can be a wonderful thing. However, when it’s undercooked, there’s truly nothing worse. Generally speaking, I think aubergine cooks the best in the oven. It’s a very forgiving process this way and gives you that lush creamy aubergine texture you dream of!",
   "time": {
-    "prep": "10 MINUTES",
-    "cook": "45 MINUTES",
-    "total": "10 MINUTES45 MINUTES"
+    "prep": 10,
+    "cook": 45,
+    "total": 55
   },
   "ingredients": [
     {

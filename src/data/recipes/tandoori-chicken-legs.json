@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "One of the things about making Indian food daily and then blogging about it is that inevitably you come across recipes you want to make all the time. Tandoori chicken legs are a family favourite and my basic recipe has changed very little over the years. Red food colouring is often added to the chicken to give it that familiar appearance, but it is being used a lot less these days – it adds no flavour and is solely there for appearance.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS",
-    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
+    "prep": 15,
+    "cook": 15,
+    "total": 15
   },
   "ingredients": [
     {
@@ -90,5 +90,6 @@
     "chapter": "Basics & Breads",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME15 MINS."
 }

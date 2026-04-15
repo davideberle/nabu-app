@@ -9,9 +9,9 @@
   "servings": "6 to 8 servings",
   "intro": "One of the most delicious stuffed dishes cooked across the region is stuffed cabbage. The cabbage is stuffed with a mixture of rice, ground beef, and copious amounts of garlic, then simmered in a lemony broth until the cabbage melts in your mouth. But stuffing and rolling leaf after leaf is a labor of love. This soup is how I replicate the flavors of stuffed cabbage but in a fraction of the time. It’s hearty, vibrant, and nutritious, perfect for a cold winter night. Feel free to go wild with the garlic, lemon, and mint quantities—they are the magic trio!",
   "time": {
-    "prep": "15 minutes",
-    "cook": "50 minutes",
-    "total": "15 minutes50 minutes"
+    "prep": 15,
+    "cook": 50,
+    "total": 65
   },
   "ingredients": [
     {

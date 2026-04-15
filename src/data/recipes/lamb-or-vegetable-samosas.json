@@ -9,9 +9,9 @@
   "servings": "makes 18–20",
   "intro": "Shop-bought filo pastry or samosa wrappers are most often used at Indian restaurants. They do the job, but there’s nothing like homemade pastry, so I have included my pastry recipe here. If you want to make these samosas ahead of time, you can freeze them once shaped but not fried, on a plate, wrapped tightly in cling film (plastic wrap). Once frozen, transfer to a freezer bag and store until ready to fry, defrosting them first. You can see the lamb version pictured.",
   "time": {
-    "prep": "30 MINS",
-    "cook": "ABOUT 30 MINS",
-    "total": "30 MINSABOUT 30 MINS"
+    "prep": 30,
+    "cook": 30,
+    "total": 60
   },
   "ingredients": [
     {

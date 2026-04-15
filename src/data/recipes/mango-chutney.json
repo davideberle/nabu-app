@@ -9,9 +9,9 @@
   "servings": "makes about 1.5l (6¼ cups)",
   "intro": "Mango chutney is easy to prepare. You can make it either sweet, or sweet and spicy – adding a teaspoon or so of chilli powder really gives this chutney a kick. Once you have finished cooking the chutney, you can serve it chunky or blend it until smooth. I usually make both versions from one batch. The resulting chutney is great served with papadams and kebabs. The smooth version tastes amazing stirred into madras and jalfrezi curries at the end of cooking. Don’t add the chunky version to curries as the mango pieces will become hard and rubbery.",
   "time": {
-    "prep": "15 MINS, PLUS SITTING TIME",
-    "cook": "1 HOUR",
-    "total": "15 MINS, PLUS SITTING TIME1 HOUR"
+    "prep": 15,
+    "cook": 60,
+    "total": 15
   },
   "ingredients": [
     {
@@ -71,5 +71,6 @@
     "chapter": "Base Sauces",
     "meal_role": "side"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SITTING TIME; SITTING TIME1 HOUR."
 }

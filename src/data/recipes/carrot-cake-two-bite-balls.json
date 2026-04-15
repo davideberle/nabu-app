@@ -9,9 +9,9 @@
   "servings": "16 balls",
   "intro": "Carrot cake! I kid you not. Everything for a carrot cake is in here, all rolled up into perfect little balls. You can roll some in coconut and leave others plain. They are so pretty.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

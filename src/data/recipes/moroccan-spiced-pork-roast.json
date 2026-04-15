@@ -9,7 +9,7 @@
   "servings": "12 servings",
   "intro": "Serving a gorgeous, fancy-looking holiday roast doesn't have to be complicated, time-consuming, or expensive. This pork loin proves exactly that. This is fast, easy, and affordable, but it looks like a million dollars when you bring it to the table. The beautifully warming and aromatic spices really work so well with a pork roast - I hope you give it a try soon!",
   "time": {
-    "prep": "30 mins",
+    "prep": 30,
     "total": 180
   },
   "ingredients": [

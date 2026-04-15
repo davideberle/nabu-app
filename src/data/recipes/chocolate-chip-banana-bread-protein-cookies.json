@@ -9,9 +9,9 @@
   "servings": "12 servings",
   "intro": "These protein-rich cookies have a high fiber content that fills you up and helps keep you feeling satisfied. They taste delicious, too!",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

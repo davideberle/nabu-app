@@ -9,9 +9,9 @@
   "servings": "serves 2 or more as part of a multi-course meal",
   "intro": "This is a lip-smacking way to serve paneer. The sauce is sweet, savoury and just as spicy as you like it. Use your favourite hot sauce for this one. You can use less if you really don’t like your sauces spicy hot. I like to roll the seared, soft paneer with the fried veggies and sauce into chapattis. Of course, it’s also good served as a saucy curry over plain white rice.",
   "time": {
-    "prep": "10 MINS",
-    "cook": "10 MINS",
-    "total": "10 MINS10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 20
   },
   "ingredients": [
     {

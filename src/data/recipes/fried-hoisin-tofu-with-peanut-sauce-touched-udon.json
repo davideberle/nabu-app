@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "The marinated tofu is treated so well in this recipe—lightly crisp on the outside and tender on the inside. If you’ve never had udon noodles, then now’s your chance.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

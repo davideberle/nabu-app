@@ -9,9 +9,9 @@
   "servings": "makes about 200ml (generous ¾ cup)",
   "intro": "Good-quality tamarind sauce is commercially available. It is delicious squeezed over different chaats like my aloo tikki chaat. If you fancy having a go at making your own, this recipe gets great results.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "30 MINS",
-    "total": "5 MINS30 MINS"
+    "prep": 5,
+    "cook": 30,
+    "total": 35
   },
   "ingredients": [
     {

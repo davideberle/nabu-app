@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "You can cook a lot more rice using this method, and the water-to-rice ratio isn’t as important. You need to cook with enough water so that the grains of rice can float around freely as it simmers. This is my preferred method when I am preparing rice for a fried rice recipe.",
   "time": {
-    "prep": "2 MINS, PLUS SOAKING TIME",
-    "cook": "10 MINS",
-    "total": "2 MINS, PLUS SOAKING TIME10 MINS"
+    "prep": 2,
+    "cook": 10,
+    "total": 2
   },
   "ingredients": [
     {
@@ -43,5 +43,6 @@
     "chapter": "Desserts & Drinks",
     "meal_role": "side"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SOAKING TIME; SOAKING TIME10 MINS."
 }

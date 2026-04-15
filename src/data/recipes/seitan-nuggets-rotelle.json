@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "It’s always a good thing when you can get a family meal on the table in under 30 minutes, especially when you’re serving comfort food to the max.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

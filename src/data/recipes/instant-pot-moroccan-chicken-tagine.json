@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "Your Instant Pot replaces the traditional clay or ceramic cone-shaped cooking pot used in Moroccan cuisine (the tagine). The word 'tagine' also refers to the slow-cooked, stew-like dish that is prepared in it. This chicken tagine features the authentic flavors of preserved lemons and olives, with a delicious combination of spices typically used in Moroccan cooking.",
   "time": {
-    "prep": "25 mins",
+    "prep": 25,
     "total": 180
   },
   "ingredients": [

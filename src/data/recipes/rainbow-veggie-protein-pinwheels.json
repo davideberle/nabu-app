@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Julienned vegetables are laid across a bed of hummus and crumbled tempeh, and then all are wrapped up in the perfect holder: a green spinach tortilla. Even the pickiest of eaters will want to have one.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

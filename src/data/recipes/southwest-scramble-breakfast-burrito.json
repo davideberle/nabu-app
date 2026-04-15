@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "This recipe is one step beyond scrambled tofu. Take a little extra time to add the veggies and spices, then roll it all up snugly in a tortilla. The result is both filling and special.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

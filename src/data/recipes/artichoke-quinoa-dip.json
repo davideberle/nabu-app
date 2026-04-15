@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "This is a nice versatile dip. It also can be used as a spread on mini toasts or stuffed into a variety of vegetables, such as mini bell peppers. All are good appetizers in their own right.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

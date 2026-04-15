@@ -8,7 +8,7 @@
   "servings": "serves 8",
   "intro": "This delicious soup is ready in minutes and is a hit. Its ingredients are also available at most grocery store, big or small",
   "time": {
-    "prep": "40 minutes",
+    "prep": 40,
     "total": 6
   },
   "ingredients": [

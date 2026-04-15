@@ -9,9 +9,9 @@
   "servings": "makes enough for about 10 servings",
   "intro": "Whether the restaurant is a low-cost takeaway or an upmarket restaurant, the chefs will normally stew red meat for curries before service so that it is tender and ready to use. The reason for this is simple: if they didn’t, it would take too long to serve their delicious curries.\n\nLamb, mutton and hoofed game require about 1–1½ hours to cook and become tender using this method. These animals are very active, so their muscly flesh is naturally tough. Beef will be tender in about 40 minutes–1 hour. Cows are quite lazy, after all.\n\nWhatever you do, don’t rush things. Stew the meat until it is good and tender. By the way, this pre-cooked lamb recipe is actually a mouthwatering curry in its own right. Lamb is the most popular red meat used in curry houses, so I’ve used it here, but feel free to experiment with the red meat of your choice.",
   "time": {
-    "prep": "10 MINS",
-    "cook": "1–1½ HOURS, DEPENDING ON THE MEAT",
-    "total": "10 MINS1–1½ HOURS, DEPENDING ON THE MEAT"
+    "prep": 10,
+    "cook": 60,
+    "total": 70
   },
   "ingredients": [
     {

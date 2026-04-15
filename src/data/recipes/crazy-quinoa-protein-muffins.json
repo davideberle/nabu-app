@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "These cute little muffins are crispy on the outside and cake-like on the inside. Sweetened with raisins and maple syrup, they will tempt you whenever they’re around.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

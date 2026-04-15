@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "This delicious Moroccan-style recipe smells so good while cooking and tastes so yummy.",
   "time": {
-    "prep": "10 mins",
+    "prep": 10,
     "total": 180
   },
   "ingredients": [

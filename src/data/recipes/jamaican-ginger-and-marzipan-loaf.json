@@ -9,9 +9,9 @@
   "servings": "serves 8–10",
   "intro": "My favourite cakes to make are oil-based loaf cakes. They’re foolproof – always moist and never dry. So it made sense to create a ginger and marzipan loaf cake, one of my dream flavour combinations. Anything with a deep almondy flavour is a win for me. Sticky ginger cake, both fiery and deeply sweet – perfect.",
   "time": {
-    "prep": "25 MINUTES",
-    "cook": "1¼ HOURS",
-    "total": "25 MINUTES1¼ HOURS"
+    "prep": 25,
+    "cook": 75,
+    "total": 100
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "serves 4–6 as a snack",
   "intro": "I love bringing out this tasty snack of spicy Bangladeshi almonds when we have friends over. It is always devoured and only take a few minutes to throw together. It is pictured.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "2 MINS",
-    "total": "5 MINS2 MINS"
+    "prep": 5,
+    "cook": 2,
+    "total": 7
   },
   "ingredients": [
     {

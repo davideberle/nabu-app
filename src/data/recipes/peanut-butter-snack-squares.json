@@ -9,9 +9,9 @@
   "servings": "8 servings",
   "intro": "A double peanut whammy is served up in this recipe. All is sweetened with whipped coconut sugar and dates.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Fresh fenugreek leaves are, surprisingly, still difficult to come by at most supermarkets. You will almost definitely find them at Asian grocers. Last year I tried to grow some of my own and the plants actually thrived! I kill everything I plant, but for some reason my fenugreek just took off. So if you enjoy growing your own herbs, give it a try.",
   "time": {
-    "prep": "10 MINS, PLUS SOAKING, MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS SOAKING, MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -113,5 +113,6 @@
     "chapter": "Biryanis & Rice",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SOAKING, MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN; SOAKING, MAKING THE BASE CURRY SAUCE AND COOKING THE CHICKEN10 MINS."
 }

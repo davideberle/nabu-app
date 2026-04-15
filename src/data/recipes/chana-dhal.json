@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This recipe was inspired by a visit to Prashad in Bradford. The head chef Minal Patel showed me her recipe for chana dhal and it was amazing. She used four different types of lentils, cooked separately then blended together with all the other ingredients. Usually, the chana dhal you get at a curry house is made simply from chana lentils, so I’ve simplified Minal’s recipe a little for you here. If you like chana dhal, you’re going to love this one.",
   "time": {
-    "prep": "10 MINS, PLUS SOAKING THE CHANA DHAL",
-    "cook": "1 HOUR",
-    "total": "10 MINS, PLUS SOAKING THE CHANA DHAL1 HOUR"
+    "prep": 10,
+    "cook": 60,
+    "total": 10
   },
   "ingredients": [
     {
@@ -90,7 +90,7 @@
     "Returning to the dhal, reduce the heat to medium and stir in the chopped tomatoes, coriander and cumin, and bring to a happy simmer. Keep warm.",
     "You can leave the dhal as it is once cooked, or whisk or blend until creamy. Stir the onion and ghee mixture into the lentils and sprinkle with garam masala. To serve, season with salt and top with a little coriander (cilantro)."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. Note: SOAKING THE CHANA DHAL; SOAKING THE CHANA DHAL1 HOUR.",
   "image": null,
   "dietary": [
     "vegetarian"

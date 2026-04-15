@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Colorful mini bell peppers wrap these protein-packed appetizers into pretty little packages. Chickpeas and tempeh are just the start of a flavorful mix.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

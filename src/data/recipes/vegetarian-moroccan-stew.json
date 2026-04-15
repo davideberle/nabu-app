@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "A great vegetarian meal that's really easy to make. Serve over steamed couscous.",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 30
   },
   "ingredients": [

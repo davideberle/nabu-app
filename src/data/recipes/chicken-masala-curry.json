@@ -9,9 +9,9 @@
   "servings": "serves 8 or more as part of a multi-course meal",
   "intro": "This authentic Punjabi curry is such a good recipe to have as part of your repertoire. If you’ve ever ordered the ‘chicken curry’ off the menu at a home-style restaurant, there is a good chance it was just like this. Although this chicken curry is delicious served as described, you can do so much more with it if you want to get creative. You could add a few handfuls of freshly chopped or frozen spinach leaves and transform this into a mouthwatering chicken saag curry. Why not try adding some thick coconut milk or whisked plain yoghurt? You’ll get two different and equally tasty curries! If you like your curries spicy, add a few finely chopped green bird’s eye chillies and/or a couple of teaspoons of Mr Naga chilli paste – this is used at most curry houses and is available at Asian grocers and online. This will definitely turn up the heat.",
   "time": {
-    "prep": "10 MINS",
-    "cook": "30 MINS",
-    "total": "10 MINS30 MINS"
+    "prep": 10,
+    "cook": 30,
+    "total": 40
   },
   "ingredients": [
     {

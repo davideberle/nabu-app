@@ -9,9 +9,9 @@
   "servings": "16 bars",
   "intro": "A little miracle happens after these bars cool. They turn into a caramel-like bar that gives satisfaction to no end. Chocolaty and chewy!",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

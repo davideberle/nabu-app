@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This might look similar to the mild kormas you find at curry houses but British kormas are kormas in name only. This authentic dish is on the spicy side but the spice level can be adjusted to taste.",
   "time": {
-    "prep": "10 MINS",
-    "cook": "20 MINS",
-    "total": "10 MINS20 MINS"
+    "prep": 10,
+    "cook": 20,
+    "total": 30
   },
   "ingredients": [
     {

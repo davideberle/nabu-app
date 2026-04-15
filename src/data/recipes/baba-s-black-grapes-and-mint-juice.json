@@ -9,9 +9,9 @@
   "servings": "4 to 6 servings",
   "intro": "In Mosul, a city in northern Iraq where I was born, sharbat zbeeb is a very popular drink, made from plump black raisins and fragrant dried mint. The process is lengthy, usually requiring soaking of both the raisins and the mint for at least a day. My dad grew up with this drink, so he developed his own (very similar) version using fresh black grapes and fresh mint, simply blitzing them in a blender. He makes this drink for us often, especially during Ramadan. My kids absolutely love it. It needs no added sugar due to the natural sweetness of the grapes. He runs the blended juice through a fine-mesh strainer to get rid of all the grape peel bits. Black grapes are the preferred type for this drink due to their deeper flavor, but you can easily use purple grapes, since black ones are harder to find.",
   "time": {
-    "prep": "10 minutes",
-    "cook": "",
-    "total": "10 minutes0"
+    "prep": 10,
+    "cook": 0,
+    "total": 10
   },
   "ingredients": [
     {

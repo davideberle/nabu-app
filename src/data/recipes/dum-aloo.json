@@ -9,9 +9,9 @@
   "servings": "serves 2 or more as part of a multi-course meal",
   "intro": "I first tried dum aloo at a friend’s wedding. The catering company made it with small new potatoes and I loved it. It wasn’t until years later that I tried it again. That time I was on a stag do somewhere in London. It’s all a bit of a blur now, but I can remember that curry as if it was yesterday. A huge karahi was brought to our table filled with deep-fried whole potatoes in a thick red sauce. This is my version of that dish. I just wish I could remember where I had it.",
   "time": {
-    "prep": "20 MINS, PLUS SOAKING TIME",
-    "cook": "25 MINS",
-    "total": "20 MINS, PLUS SOAKING TIME25 MINS"
+    "prep": 20,
+    "cook": 25,
+    "total": 20
   },
   "ingredients": [
     {
@@ -104,7 +104,7 @@
     "In go the fried potatoes! Stir them into the sauce, then cover the pan to simmer for about 10 minutes. It’s really hard to overcook a potato, so just let them simmer in the sauce and become fall-apart gorgeous. When they are cooked to perfection, you should be able to cut into them with a fork and take a sneaky bite or two. Just don’t rush things. Your curry is ready when the potatoes are super-soft and the sauce has thickened. Check for seasoning.",
     "To serve, sprinkle with coriander (cilantro) and garam masala and add a twist or two of lemon juice."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.\n\nSubstitute soy or coconut yoghurt for the dairy yoghurt. The yoghurt is a sauce thickener, so whisking in about 1 generous teaspoon of cornflour (cornstarch) will help achieve a similar consistency.",
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.\n\nSubstitute soy or coconut yoghurt for the dairy yoghurt. The yoghurt is a sauce thickener, so whisking in about 1 generous teaspoon of cornflour (cornstarch) will help achieve a similar consistency. Note: SOAKING TIME; SOAKING TIME25 MINS.",
   "image": "/recipes/dum-aloo.jpg",
   "dietary": [
     "vegan",

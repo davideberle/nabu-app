@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "The slow cooker has never made life so easy. Here’s an unusual list of ingredients that sends these tacos off the chart. You would never guess what’s included.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

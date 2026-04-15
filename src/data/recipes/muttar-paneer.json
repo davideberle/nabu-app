@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This is an authentic Punjabi muttar paneer recipe but with a British twist. In this version, the sauce is blended until silky smooth. We do like our smooth sauces here in the UK. It’s worth noting that this sauce is not limited to paneer and peas. It goes well with so many other main ingredients. Prawns (shrimp), chicken, bite-size pieces of seekh kebab… If you think it sounds good, it will be.",
   "time": {
-    "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS",
-    "total": "10 MINS, PLUS MARINATING TIME15 MINS"
+    "prep": 10,
+    "cook": 15,
+    "total": 10
   },
   "ingredients": [
     {
@@ -139,7 +139,7 @@
     "Return the sauce to the pan and stir in the chilli powder and green chillies. Let this all come to a mild bubble, then add the paneer cubes and peas, and heat through for about 2 minutes (if you cook the cheese too long, it will begin to disintegrate into the sauce, so watch carefully).",
     "To finish, swirl in the cream and garam masala, then stir in the cold butter one piece at a time. Stir in the lemon juice and season with salt. Top with the dried fenugreek leaves (kasoori methi) and serve."
   ],
-  "tips": "My pan-fried paneer and grilled paneer can be substituted for the raw marinated paneer with equally tasty results.",
+  "tips": "My pan-fried paneer and grilled paneer can be substituted for the raw marinated paneer with equally tasty results. Note: MARINATING TIME; MARINATING TIME15 MINS.",
   "image": "/recipes/muttar-paneer.jpg",
   "dietary": [
     "vegetarian"

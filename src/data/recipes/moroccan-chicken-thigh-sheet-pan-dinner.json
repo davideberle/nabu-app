@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This Moroccan-inspired sheet pan dinner is packed with bold sweet and savory flavors and palate-pleasing textures. This is perfect for quick weeknight dinners or laid-back dinner parties. Ras el hanout is a North African seasoning available in specialty grocery stores, or if you'd like to make your own, there are many recipes available online.",
   "time": {
-    "prep": "30 mins",
+    "prep": 30,
     "total": 80
   },
   "ingredients": [

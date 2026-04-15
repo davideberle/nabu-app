@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Four huge roasted peppers are stuffed with veggies and spices. Line them up in a casserole for a Southwestern-style meal you won’t soon forget. You can soak the cashews the night before so you can dive right in to the preparation.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

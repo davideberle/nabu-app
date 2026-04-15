@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Small unformed nuggets with delectable flavors come from your pressure cooker with this recipe. They have an Asian flair and can be added to just about any recipe. Pictured in Broccoli Stir-Fry with Seitan and Cashews (page 267).",
   "time": {
-    "prep": "10 minutes",
-    "cook": "5 minutes",
-    "total": "1 hour 15 minutes"
+    "prep": 10,
+    "cook": 5,
+    "total": 75
   },
   "ingredients": [
     {

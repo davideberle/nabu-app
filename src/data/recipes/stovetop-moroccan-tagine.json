@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "An exotic warm stew that is loved by all and is very easy to make. Also delicious as a vegetarian dish, without chicken. Serve over couscous.",
   "time": {
-    "prep": "15 mins",
+    "prep": 15,
     "total": 45
   },
   "ingredients": [

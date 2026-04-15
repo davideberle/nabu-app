@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Broccoli and spinach are added to a warm gooey cashew cheese. Fill up a hollowed-out baguette and it’s a feast.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

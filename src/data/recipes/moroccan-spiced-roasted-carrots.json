@@ -9,8 +9,9 @@
   "servings": "6 servings",
   "intro": "Roasted carrots with the Moroccan spice blend. Fast and easy, and pairs well with any meat!",
   "time": {
-    "prep": "10 mins",
-    "total": "10 mins0"
+    "prep": 10,
+    "total": 10,
+    "cook": 0
   },
   "ingredients": [
     {

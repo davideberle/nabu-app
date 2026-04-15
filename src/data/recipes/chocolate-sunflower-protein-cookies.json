@@ -9,9 +9,9 @@
   "servings": "12 servings",
   "intro": "Sunflower seeds add a surprise texture to these softly crunchy chocolate chip cookies. Bake a few dozen for your cookie jar and your tummy.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

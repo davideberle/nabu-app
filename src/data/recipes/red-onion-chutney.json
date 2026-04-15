@@ -9,8 +9,7 @@
   "servings": "makes enough for 4–6 as an accompaniment",
   "intro": "This onion chutney is about as easy as it gets. It’s too simple for words, but then who said that delicious Indian dinners had to be complicated? Find yourself a nice, fresh red onion and it will do all the work for you. This is a very popular accompaniment, often served with papadams or piled high on kebabs and naans. It is essential to serve it very cold. It is pictured opposite on the top left.",
   "time": {
-    "prep": "5 MINS, PLUS SITTING TIME",
-    "cook": "",
+    "prep": 5,
     "total": 60
   },
   "ingredients": [
@@ -51,5 +50,6 @@
     "chapter": "Base Sauces",
     "meal_role": "side"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SITTING TIME."
 }

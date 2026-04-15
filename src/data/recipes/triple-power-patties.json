@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "These patties are full of so many tasty ingredients—but there’s more! There’s also a spicy vegan mayo dip.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

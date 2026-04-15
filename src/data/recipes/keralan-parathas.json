@@ -9,9 +9,9 @@
   "servings": "makes 6",
   "intro": "Keralan parathas take some practice to get right, but even if yours don’t look great at first, they will still taste delicious! It took me some time until I was completely happy with mine and I’ve enjoyed eating and serving my failed attempts. Just go for it and have fun. The preparation time is quite long, but you will get much faster if you make these often. If you would like to watch me make them, I’ve made a video on my YouTube channel, Dan Toombs. These parathas are good on their own or dipped into a curry.",
   "time": {
-    "prep": "1 HOUR, PLUS RESTING TIME",
-    "cook": "20 MINS",
-    "total": "1 HOUR, PLUS RESTING TIME20 MINS"
+    "prep": 60,
+    "cook": 20,
+    "total": 60
   },
   "ingredients": [
     {
@@ -60,5 +60,6 @@
     "chapter": "Desserts & Drinks",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: RESTING TIME; RESTING TIME20 MINS."
 }

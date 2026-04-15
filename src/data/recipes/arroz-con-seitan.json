@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Skillet cooking has never been easier. Jasmine rice is added to a pan of veggies and all is cooked together for a filling protein win.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

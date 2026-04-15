@@ -9,9 +9,9 @@
   "servings": "3 servings",
   "intro": "A little preparation and a food processor takes you a long way to this satisfying sandwich. Red quinoa has the same nutty taste and nutrition of its pearly cousin, and it’s just darn pretty.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

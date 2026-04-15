@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This goes great with hummus on the side!",
   "time": {
-    "prep": "20 mins",
+    "prep": 20,
     "total": 10
   },
   "ingredients": [

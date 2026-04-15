@@ -9,9 +9,9 @@
   "servings": "4 to 6 servings",
   "intro": "Beef short ribs are not commonly used in Middle Eastern cuisine. I wasn’t introduced to them until after I moved to Canada. When I first tried them, I was quite surprised that beef could yield such a meltingly delicious result resembling that of lamb. So naturally I loved experimenting with them. The key thing about great short ribs is to braise them at a low temperature for an extended period of time to allow the collagen to break down into gelatin, resulting in fall-off-the-bone texture. The marinade I use in this recipe is a mixture of ketchup and pomegranate molasses, a combination often used in Iraqi-style marinades, with a touch of soy sauce to balance the flavors. The result is sticky, sweet-and-sour short ribs that will please any crowd.",
   "time": {
-    "prep": "10 minutes",
-    "cook": "3 hours and 30 minutes",
-    "total": "10 minutes3 hours and 30 minutes"
+    "prep": 10,
+    "cook": 210,
+    "total": 220
   },
   "ingredients": [
     {

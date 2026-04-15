@@ -9,9 +9,9 @@
   "servings": "makes 4 tablespoons",
   "intro": "This is a thin purée of tomatoes used in many curries for flavour and colour. Here are two ways you can make it.",
   "time": {
-    "prep": "2 MINS",
-    "cook": "",
-    "total": "2 MINS0"
+    "prep": 2,
+    "cook": 0,
+    "total": 2
   },
   "ingredients": [
     {

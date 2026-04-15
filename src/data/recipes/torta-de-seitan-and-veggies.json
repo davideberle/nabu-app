@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "It will be hard to keep your fork out of the skillet when this spicy mix is being prepared. Fill up those rolls and have a great lunch.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

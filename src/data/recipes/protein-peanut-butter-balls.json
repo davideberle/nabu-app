@@ -9,9 +9,9 @@
   "servings": "24 balls",
   "intro": "Here’s an easy and healthy treat that you can pop in your mouth any time of the day. Energy-packed with only six ingredients!",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

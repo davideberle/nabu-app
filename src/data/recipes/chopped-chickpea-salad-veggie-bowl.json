@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "This is a delicious dish that incorporates chickpea salad. There’s lots of roughage, too, that just begs for the simple balsamic dressing.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

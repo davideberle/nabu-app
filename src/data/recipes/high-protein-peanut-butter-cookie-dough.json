@@ -9,9 +9,9 @@
   "servings": "45 balls",
   "intro": "Here’s a simple and delicious recipe. With a few ingredients and about 15 minutes you can satisfy your sweet tooth.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

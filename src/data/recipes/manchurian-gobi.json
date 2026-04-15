@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Put simply, cauliflower never tasted so good. The double-frying technique makes it easier to prepare ahead and gets those cauliflower nuggets extra crispy.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "20 MINS",
-    "total": "15 MINS, PLUS MARINATING TIME20 MINS"
+    "prep": 15,
+    "cook": 20,
+    "total": 15
   },
   "ingredients": [
     {
@@ -141,5 +141,6 @@
     "chapter": "Curries",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME20 MINS."
 }

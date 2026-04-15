@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Fresh vegetables and tender seitan fill up these pita pockets for a memorable lunch.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

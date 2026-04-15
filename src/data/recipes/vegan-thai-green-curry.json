@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "A vegetarian curry that will satisfy even the most die-hard meat eaters. Rich in umami and vegetables, which are chosen for its chewy, satisfying texture. Not forgetting the secret ingredient that adds firmness and bright color to store-bought curry. For a gluten-free curry, add gluten-free soy sauce.",
   "time": {
-    "prep": "40 minutes",
+    "prep": 40,
     "total": 19
   },
   "ingredients": [

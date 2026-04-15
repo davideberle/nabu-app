@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This super simple sandwich stars tender patties from an Instant Pot or pressure cooker. Premake the seitan and keep in the fridge or freezer for a super fast lunch.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

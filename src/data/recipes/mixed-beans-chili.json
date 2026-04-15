@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "How about some vegan chili that is comforting and full-flavored at the same time? It’s made from scratch to warm you, your family, and your home.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Chickpea flour tortillas have a crepe-like texture and feature just the right savory blend. Stacked with layers of spicy beans and mushrooms, these fajitas are fantastic. Who doesn’t like Mexican-style food?",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

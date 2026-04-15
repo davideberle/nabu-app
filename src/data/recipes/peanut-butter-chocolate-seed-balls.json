@@ -9,9 +9,9 @@
   "servings": "16 servings",
   "intro": "Here are some perfect little bites that only have five ingredients. The delicious result gives you a nice firm ball. Simple and fast!",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

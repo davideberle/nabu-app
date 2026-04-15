@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "You might think that cooking chickpeas with teabags is a bit strange. Chickpeas are naturally quite dry, even after simmering for a long time, as they don’t naturally retain much moisture. Cooking them with teabags helps retain the moisture, which is important for Punjabi chole. The sauce does not taste at all like tea, but the teabags do give the curry its distinctive deep brown colour. This is delicious street food at its best that is usually served with freshly made bhatura. Punjabi chole bhatura is street food that simply must be tried!",
   "time": {
-    "prep": "10 MINS, PLUS OVERNIGHT SOAKING",
-    "cook": "5 MINS",
-    "total": "10 MINS, PLUS OVERNIGHT SOAKING5 MINS"
+    "prep": 10,
+    "cook": 5,
+    "total": 10
   },
   "ingredients": [
     {
@@ -112,7 +112,7 @@
     "Heat the ghee in a large, high-sided frying pan over a medium–high heat. When it begins to shimmer, stir in the asafoetida and cumin seeds and let these infuse into the ghee for about 30 seconds. Add the blended onions and stir to combine. Reduce the temperature to medium and fry for about 10 minutes, or until the onions turn deep brown. Stir in the garlic and ginger paste and fry for a further 30 seconds before adding the tomatoes. Add the chole masala, pomegranate seeds (if using), ground coriander, chilli powder and turmeric. Simmer for about 5 minutes, then tip in the cooked chickpeas minus the teabags. Add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers and season with salt.",
     "Garnish with the onion rings, coriander (cilantro) and some green chillies, if liked, and serve with fresh bhatura."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. This recipe contains very little asafoetida, so it can easily be left out without much difference in flavour.",
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. This recipe contains very little asafoetida, so it can easily be left out without much difference in flavour. Note: OVERNIGHT SOAKING; OVERNIGHT SOAKING5 MINS.",
   "image": "/recipes/punjabi-chole.jpg",
   "dietary": [
     "vegetarian"

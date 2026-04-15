@@ -9,8 +9,7 @@
   "servings": "makes 500–550ml (2 cups)",
   "intro": "My favourite raita. Nothing more to be said.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "",
+    "prep": 5,
     "total": 30
   },
   "ingredients": [

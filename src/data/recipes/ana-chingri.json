@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This is a flavour combo not to be missed. The spicy pineapple chutney teamed with the prawn (shrimp) curry just plain gets it. I like to serve ana chingri in the hollowed-out pineapples, just as Chef Eshan ‘Mo’ Miah suggested I do. I’m not one to pass up good advice and I’ve been serving this curry in pineapples ever since. Feel free to use bowls though.",
   "time": {
-    "prep": "15 MINS",
-    "cook": "15 MINS",
-    "total": "15 MINS15 MINS"
+    "prep": 15,
+    "cook": 15,
+    "total": 30
   },
   "ingredients": [
     {

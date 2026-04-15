@@ -9,9 +9,9 @@
   "servings": "24 balls",
   "intro": "These perfect little bites are made with the best variety of ingredients. They are sweet, crunchy, and chocolaty.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

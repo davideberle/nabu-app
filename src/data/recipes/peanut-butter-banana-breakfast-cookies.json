@@ -9,9 +9,9 @@
   "servings": "24 servings",
   "intro": "You won’t believe the list of ingredients that make up these healthful protein cookies. They are rustic in looks and satisfying in quality.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

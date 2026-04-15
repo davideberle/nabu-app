@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "If you think you don’t like beetroot (beets), this salad will change your mind! Grating them offers a wonderful texture and retains that vibrant, deep purple colour. Olives are wonderful in savoury jams, as they are so abrasively salty (which is what I love about them). They hold up a fight in a jammy situation. This salad gives slaw vibes and would be perfect for a barbecue or even alongside a creamy, denser dish.",
   "time": {
-    "prep": "15 MINUTESCOOK TIME: 10 MINUTES",
-    "cook": "10 MINUTES",
-    "total": "15 MINUTESCOOK TIME: 10 MINUTES10 MINUTES"
+    "prep": 15,
+    "cook": 10,
+    "total": 25
   },
   "ingredients": [
     {

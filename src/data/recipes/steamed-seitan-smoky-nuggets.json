@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "These smoky, savory bites make for a flavorful addition to an endless number of recipes. Robust in flavor, this small-batch recipe is also great when used as a sandwich filler. This is a densly textured seitan. Pictured in Seitan Nuggets Rotelle (page 264).",
   "time": {
-    "prep": "10 minutes",
-    "cook": "5 minutes",
-    "total": "1 hour 15 minutes"
+    "prep": 10,
+    "cook": 5,
+    "total": 75
   },
   "ingredients": [
     {

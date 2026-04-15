@@ -9,7 +9,7 @@
   "servings": "2 servings",
   "intro": "High in omega-3s, these are a healthier alternative to regular meatballs!",
   "time": {
-    "prep": "10 mins",
+    "prep": 10,
     "total": 25
   },
   "ingredients": [

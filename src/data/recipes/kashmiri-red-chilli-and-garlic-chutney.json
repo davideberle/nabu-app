@@ -9,9 +9,9 @@
   "servings": "makes enough for 4–6 as an accompaniment",
   "intro": "This is a hot one! You only need to dab a bit on your papadam and you’ll see what I mean. As you can see from the ingredients list, there isn’t much to this chutney. It’s all about the chilli. Give it a go if you like it hot. Don’t if you don’t. It is pictured opposite, on the top right.",
   "time": {
-    "prep": "5 MINS, PLUS SOAKING TIME",
-    "cook": "1 MIN",
-    "total": "5 MINS, PLUS SOAKING TIME1 MIN"
+    "prep": 5,
+    "cook": 1,
+    "total": 5
   },
   "ingredients": [
     {
@@ -47,5 +47,6 @@
     "chapter": "Base Sauces",
     "meal_role": "side"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SOAKING TIME; SOAKING TIME1 MIN."
 }

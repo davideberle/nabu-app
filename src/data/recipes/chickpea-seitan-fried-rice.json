@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "You won’t break a sweat over this recipe. A little bit of preparation and heating in a skillet brings all the flavors together in no time.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

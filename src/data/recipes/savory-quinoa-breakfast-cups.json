@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Muffins are always a nice grab-and-go breakfast. Neat and filling. Another nice thing about them is that you can enjoy them at your leisure.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

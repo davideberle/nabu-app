@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Dining out with friends at a curry house right after I moved to the UK, I was told how to order from the menu by spice level. A simple lamb curry would be mild. A madras would be the same but with more chilli powder. The vindaloo would have substantially more chilli powder and the phal would be dangerously hot. That advice did me well back then, but nowadays the better chefs ensure each of these curries have a flavour all their own. It’s not just down to the spiciness anymore.\n\nI love this sweet-and-sour madras. The addition of smooth mango chutney and a twist or two of lime juice makes this the perfect blend that can take centre stage at any curry feast. Spicy curries like this are delicious served with rice and kachumber salad.",
   "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -92,7 +92,7 @@
     "Now add 250ml (1 cup) of the base curry sauce along with the lamb. Simmer for about 2 minutes, without stirring unless it is obviously catching on the pan, scraping back in any caramelized sauce from the sides of the pan. Pour in the rest of the base curry sauce and the stock, and let it simmer over a high heat until it has reduced down to your preferred consistency.",
     "To serve, stir in the mango chutney and lime juice. Season with salt, sprinkle with the garam masala and garnish with the coriander (cilantro)."
   ],
-  "tips": "If you are looking for a more savoury flavour, spicy lime pickle can be substituted for the mango chutney.",
+  "tips": "If you are looking for a more savoury flavour, spicy lime pickle can be substituted for the mango chutney. Note: MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB; MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS.",
   "image": "/recipes/lamb-madras.jpg",
   "category": {
     "dish_type": [

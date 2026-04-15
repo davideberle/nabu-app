@@ -9,9 +9,9 @@
   "servings": "serves 3–4",
   "intro": "As a person who thrives on a good dip with a crispy dip-delivery vehicle, this recipe is the perfect marriage of crunchy, sour, spicy, garlicky and sweet! Carrots are the perfect vegetable for dips like this as they have a touch of sweetness that isn’t too overwhelming. They’re also such a great vehicle for spices and really love to be roasted. Served with crispy tostones, this is the perfect little snack or side dish to whip up for a late-afternoon vibe.",
   "time": {
-    "prep": "15 MINUTESCOOK TIME: 40 MINUTES",
-    "cook": "40 MINUTES",
-    "total": "15 MINUTESCOOK TIME: 40 MINUTES40 MINUTES"
+    "prep": 15,
+    "cook": 40,
+    "total": 55
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "makes enough for 4–10 servings, depending on use",
   "intro": "Most British Indian restaurant-style curry sauces are very smooth. Sometimes though, the curry needs just a bit more crunch – curries such a dry bhunas and spicy jalfrezis, for example. Adding a spoonful of this pre-cooked onion and pepper mixture will do just that.\n\nIn many of the curry houses I’ve visited, there is a tub of cooked onions and other vegetables at the ready for when they are needed. As they are already cooked, they can be added to a curry at the end of cooking. The veggies can be stored in the fridge for up to 3 days.\n\nIs this necessary? I don’t think so for the home cook, since vegetables cook very quickly anyway, as many of my recipes demonstrate. If you’re cooking for a large group of people, however, you might like to have these fried veggies on hand. Add them to any curry you want even if not suggested in the recipe. If you like crunchy veggies in your curries, you really can’t go wrong.",
   "time": {
-    "prep": "5 MINS",
-    "cook": "10 MINS",
-    "total": "5 MINS10 MINS"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

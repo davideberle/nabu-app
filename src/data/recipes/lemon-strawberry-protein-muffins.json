@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "All you need is one of these big fat muffins to make you feel full and satisfied. Strawberries are added for that contrasting fruity touch that we all crave now and again.",
   "time": {
-    "prep": "40 minutes",
-    "cook": "40 minutes",
-    "total": "1 hour 20 minutes"
+    "prep": 40,
+    "cook": 40,
+    "total": 80
   },
   "ingredients": [
     {

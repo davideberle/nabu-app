@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I got to watch this curry being prepared at Imran’s in Birmingham by head chef Talib Hussain. It was drop-dead gorgeous and I’ve made it many times since. At Imran’s, the meat is cut into small pieces still on the bone. Boneless lamb can be substituted, but personally I like it their way. It may be messier to eat, but dipping your naan into this delicious sauce and trying to gnaw every last bit of meat off the bone is part of the experience. This curry is fun to serve and can be quite impressive when presented in a sizzling hot karahi at the table.",
   "time": {
-    "prep": "10 MINS, PLUS MARINATING TIME",
-    "cook": "1 HOUR",
-    "total": "10 MINS, PLUS MARINATING TIME1 HOUR"
+    "prep": 10,
+    "cook": 60,
+    "total": 10
   },
   "ingredients": [
     {
@@ -111,5 +111,6 @@
     "chapter": "Grills & Kebabs",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME1 HOUR."
 }

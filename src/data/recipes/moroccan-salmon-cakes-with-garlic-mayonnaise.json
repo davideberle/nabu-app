@@ -9,7 +9,7 @@
   "servings": "4 to 5 servings",
   "intro": "This is a great alternative to the standard salmon patty recipe using couscous, spinach, and cumin for an exotic flavor.",
   "time": {
-    "prep": "20 mins",
+    "prep": 20,
     "total": 10
   },
   "ingredients": [

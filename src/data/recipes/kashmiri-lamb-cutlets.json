@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Kashmiri lamb cutlets are irresistible; cooking the meat in the spiced milk makes them melt-in-the-mouth tender. The succulent pieces of lamb can be eaten by hand like chicken nuggets… I bet you can’t eat just one. I used boned lamb chops for this recipe, but any good meaty lamb cut will do. You could even cut the chops in half if you are serving a selection of starters to a group.",
   "time": {
-    "prep": "15 MINS",
-    "cook": "50 MINS",
-    "total": "15 MINS50 MINS"
+    "prep": 15,
+    "cook": 50,
+    "total": 65
   },
   "ingredients": [
     {

@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "I love the spiciness of these Thai chicken noodles and often use chopsticks for a more immersive experience.",
   "time": {
-    "prep": "30 minutes",
+    "prep": 30,
     "total": 11
   },
   "ingredients": [

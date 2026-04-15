@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "Delicious Moroccan-inspired chicken dish served with butternut squash noodles.",
   "time": {
-    "prep": "25 mins",
+    "prep": 25,
     "total": 7
   },
   "ingredients": [

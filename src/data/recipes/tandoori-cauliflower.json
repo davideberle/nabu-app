@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The flavour of marinated and chargrilled cauliflower is amazing. This mildly spiced marinade can be substantially spiced up by using more chilli powder and/or blended green chillies to taste. Although this recipe is fine as simple finger food, I like to wrap the cauliflower up into hot chapattis with a sloppy helping of mint and coriander sauce. It is photographed, next to the lamb raan.",
   "time": {
-    "prep": "5 MINS, PLUS OPTIONAL MARINATING TIME",
-    "cook": "15 MINS",
-    "total": "5 MINS, PLUS OPTIONAL MARINATING TIME15 MINS"
+    "prep": 5,
+    "cook": 15,
+    "total": 5
   },
   "ingredients": [
     {
@@ -82,7 +82,7 @@
     "When ready to cook, set up the barbecue for direct heat cooking. When your hand becomes very hot when held at skewer height above the coals, you’re ready to cook. Skewer the cauliflower florets through the stem and out through the top and place over the heat. Cook, turning regularly, for about 5 minutes, or until black marks appear on the cauliflower.",
     "To finish, baste lightly with the melted butter and season with flaky salt and black pepper."
   ],
-  "tips": "This recipe is great served with a good raita and it can also be used as a meat substitute in the curry of your choice. It will already be cooked, so add it to curries just before serving.",
+  "tips": "This recipe is great served with a good raita and it can also be used as a meat substitute in the curry of your choice. It will already be cooked, so add it to curries just before serving. Note: OPTIONAL MARINATING TIME; OPTIONAL MARINATING TIME15 MINS.",
   "image": null,
   "dietary": [
     "vegetarian"

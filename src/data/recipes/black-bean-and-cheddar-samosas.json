@@ -9,9 +9,9 @@
   "servings": "makes about 20",
   "intro": "These samosas, pictured, are great with tomato salsa or coriander sauce (as per the recipe but leaving out the mint and adding more coriander/cilantro). In this recipe I have used ready-made samosa wrappers – available at most Asian shops in the freezer section. If you want to make your own wrappers, I explain how to do this in the lamb or vegetable samosas recipe. I’ve also made a smoked toor dhal samosas video on my YouTube channel, Dan Toombs, where you can watch me folding the samosas. The wrapped (but unfried) samosas can easily be frozen: simply spread out on a baking tray, transfer to a freezer bag once frozen and thaw fully before frying.",
   "time": {
-    "prep": "25 MINS",
-    "cook": "20 MINS",
-    "total": "25 MINS20 MINS"
+    "prep": 25,
+    "cook": 20,
+    "total": 45
   },
   "ingredients": [
     {

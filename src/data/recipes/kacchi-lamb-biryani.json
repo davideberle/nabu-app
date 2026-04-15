@@ -9,9 +9,9 @@
   "servings": "serves 6–8",
   "intro": "Order a biryani at a curry house and you are much more likely to be served something like the restaurant-style biryani. I first tried an authentic kacchi biryani back in 2013 at Sheba on Brick Lane in London, which they cook up for special occasions. This is my take on their delicious and hugely popular dish.",
   "time": {
-    "prep": "25 MINS, PLUS MARINATING TIME",
-    "cook": "50 MINS",
-    "total": "25 MINS, PLUS MARINATING TIME50 MINS"
+    "prep": 25,
+    "cook": 50,
+    "total": 25
   },
   "ingredients": [
     {
@@ -139,7 +139,7 @@
     "Mix the flour with enough water to make a soft dough. Run it around the top of the pan and secure the lid tightly on top. Heat the biryani over a high heat for about 2 minutes. When you hear it simmering, reduce the heat to very low and cook for about 40 minutes. Don’t be tempted to lift the lid.",
     "After 40 minutes, your kitchen will smell amazing. Take your biryani to the table and unseal the lid. Lift it and enjoy the amazing aroma. Stir the meat from the bottom into the rice about three or four times and serve with your favourite raita."
   ],
-  "tips": "*Ask your butcher to cut your leg of lamb into pieces.",
+  "tips": "*Ask your butcher to cut your leg of lamb into pieces. Note: MARINATING TIME; MARINATING TIME50 MINS.",
   "image": "/recipes/kacchi-lamb-biryani.jpg",
   "category": {
     "dish_type": [

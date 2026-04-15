@@ -9,9 +9,9 @@
   "servings": "24 balls",
   "intro": "Take a gander down this list of ingredients. Every nut, grain, fruit, and seed included here just makes me happy. They blend so well together, and they freeze perfectly, too.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Big fat marinated portabellas are what dreams are made of. Dripping with flavor and nestled in spinach, just add the best white sauce ever.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

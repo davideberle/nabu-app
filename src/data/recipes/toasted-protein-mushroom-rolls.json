@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s something that you probably haven’t seen before. Roll some bread flat, spread with filling, roll up, and bake. Whoa!",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

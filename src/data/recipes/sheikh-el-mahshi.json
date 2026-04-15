@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "The term sheikh is a title used to refer to a respected elder, and mahshi means “stuffed.” This dish translates to “the leader of all stuffed dishes,” and I am in full agreement, because this dish is absolutely superior! My mom also stuffs onions and zucchini. To cut time, I use only eggplant, but I do sometimes throw in a few stuffed onions (learn how to core and stuff an onion in the Onion Dolma recipe). The not-so-secret ingredient in the sauce is the pomegranate molasses.",
   "time": {
-    "prep": "15 minutes",
-    "cook": "1 hour and 30 minutes",
-    "total": "15 minutes1 hour and 30 minutes"
+    "prep": 15,
+    "cook": 90,
+    "total": 105
   },
   "ingredients": [
     {

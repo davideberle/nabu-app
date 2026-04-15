@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "The vegetables can be cubed but will take longer to cook.",
   "time": {
-    "prep": "20 mins",
+    "prep": 20,
     "total": 22
   },
   "ingredients": [

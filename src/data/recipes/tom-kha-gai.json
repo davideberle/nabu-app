@@ -8,7 +8,7 @@
   "servings": "serves 1",
   "intro": "In this recipe, you will learn how to make Thai spices and use coconut milk to complement the flavors. Remember though, that it is worth the time and effort to make this bright cream soup! Serve this soup with cooked jasmine rice or rice noodles",
   "time": {
-    "prep": "25 minutes",
+    "prep": 25,
     "total": 11
   },
   "ingredients": [

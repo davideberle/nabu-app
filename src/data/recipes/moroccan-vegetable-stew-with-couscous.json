@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "This hearty vegetarian stew combines great fall/winter vegetables with a spicy Moroccan flair. Stands alone as a complete meal.",
   "time": {
-    "prep": "30 mins",
+    "prep": 30,
     "total": 40
   },
   "ingredients": [

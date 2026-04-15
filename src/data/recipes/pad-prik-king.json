@@ -8,7 +8,7 @@
   "servings": "serves 3",
   "intro": "This dish combines the special flavors of Thailand into a quick and easy stir-fry. Crispy chicken and long beans dipped in a sweet salty red curry paste and served with a creamy salted duck egg. Try a vegan version by using fried tofu!",
   "time": {
-    "prep": "35 minutes",
+    "prep": 35,
     "total": 15
   },
   "ingredients": [

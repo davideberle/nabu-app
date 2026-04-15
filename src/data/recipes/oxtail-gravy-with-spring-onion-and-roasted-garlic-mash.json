@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "Growing up in Jamaica, there was a small homestyle restaurant by a train line where my mum took me as a treat. I would order fried chicken with all the fixings (rice and peas, salads and plantain), and oxtail gravy on the rice. The rich oxtail gravy took the dish to the next level. This recipe honours that memory. Mash hits differently when you use baked potatoes. They retain all their deep potato flavour as they’re not cooked in water, which means no excess liquid.",
   "time": {
-    "prep": "15 MINUTESCOOK TIME: 1¼ HOURS",
-    "cook": "1¼ HOURS",
-    "total": "15 MINUTESCOOK TIME: 1¼ HOURS1¼ HOURS"
+    "prep": 15,
+    "cook": 75,
+    "total": 90
   },
   "ingredients": [
     {

@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "A succulent, savory, and sweet pork roast, ideally served over vegetable rice or couscous.",
   "time": {
-    "prep": "10 mins",
+    "prep": 10,
     "total": 125
   },
   "ingredients": [

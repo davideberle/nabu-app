@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "The preferred choice of protein in Iraq and across most of the Middle East is lamb. I grew up loving the smell and taste of lamb, so much so that when I realized some people don’t like how it smells and tastes, I was shocked! Lamb represents the protein of kings for us, and it’s served to guests as a way of honoring them. I find that lamb chops are probably the most accessible cut of lamb that almost everyone will love; they are known for their tenderness, succulence, and rich flavor. I would be happy to eat lamb chops simply seasoned with salt and pepper, but this Turkish-style marinade is easy to throw together and really elevates the chops. I serve them with a side of Turkish Bulgur Pilaf and a salad.",
   "time": {
-    "prep": "5 minutes, plus 1 hour marinating",
-    "cook": "25 minutes",
-    "total": "5 minutes, plus 1 hour marinating25 minutes"
+    "prep": 5,
+    "cook": 25,
+    "total": 5
   },
   "ingredients": [
     {
@@ -81,5 +81,6 @@
     "chapter": "Main Dishes: 30 Minutes",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "tips": "Note: 1 hour marinating; 1 hour marinating25 minutes."
 }

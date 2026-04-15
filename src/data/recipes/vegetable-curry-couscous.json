@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "A variety of veggies make this interesting side dish versatile. You can serve chicken in an apple, onion, and curry sauce over the top and sprinkle it with flaked coconut. It can also be made with quinoa; just adjust the cooking time.",
   "time": {
-    "prep": "30 mins",
+    "prep": 30,
     "total": 15
   },
   "ingredients": [

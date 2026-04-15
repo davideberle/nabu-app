@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Get your vegetables the fun way. These dippers are small patties that you can pick up with your fingers. Eat them plain or dip them into your favorite sauce. Party food!",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

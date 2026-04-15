@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Soaked in a delicious honey-soy marinade and paired with grilled vegetables, these kabobs will please both meat-eaters and vegetarians .",
   "time": {
-    "prep": "30 mins",
+    "prep": 30,
     "total": 120
   },
   "ingredients": [

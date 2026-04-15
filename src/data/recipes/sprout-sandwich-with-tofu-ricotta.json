@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "A nice thick layer of homemade tofu ricotta and sun-dried tomato pesto make a terrific sandwich. Add even more veggies for a unique and delicious lunch.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This simple Moroccan soup is easy to prepare and can be served in the evening or as a breakfast porridge. Serve warm, garnished with cinnamon, with honey for sweetening on the side.",
   "time": {
-    "prep": "10 mins",
+    "prep": 10,
     "total": 35
   },
   "ingredients": [

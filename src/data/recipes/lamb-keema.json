@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Now you get to put that pre-cooked keema to work. I’ve specified lamb keema here but any meat keema will do. Whenever I make this curry, I usually also prepare a selection of different samosas the same day using the pre-cooked keema. I just take out what I need for the samosas and use the rest in the curry. I would like to stress how much magnificent additional flavour you get by pre-cooking the keema meat. You could throw it in raw for this recipe, but you would be missing one of the flavour boosts that makes BIR dishes so amazing.\n\nTo make this dish even more exciting, try adding a few more complementary ingredients. Chickpeas, blended spinach, pre-cooked potatoes and/or tandoori prawns, for example, could be all that’s needed to take this popular curry and make it into a personal masterpiece. Thick curries like this are always nice scooped up with hot chapattis.",
   "time": {
-    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
-    "cook": "10 MINS",
-    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS"
+    "prep": 10,
+    "cook": 10,
+    "total": 10
   },
   "ingredients": [
     {
@@ -105,5 +105,6 @@
     "chapter": "Biryanis & Rice",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB; MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS."
 }

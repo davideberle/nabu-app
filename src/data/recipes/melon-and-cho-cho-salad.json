@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "In lockdown I got hooked on melon, and that’s melon of all kinds. I’m not sure why, but as the supermarket was the event of the week, I took my time to walk around and got hooked in melon season. This is a salad to be eaten seasonally, as it uses so few ingredients, so it’s important that each one has the best opportunity to shine. The melon could be cold and crisp if that’s your vibe!",
   "time": {
-    "prep": "5 MINUTES",
-    "cook": "",
-    "total": "5 MINUTES0"
+    "prep": 5,
+    "cook": 0,
+    "total": 5
   },
   "ingredients": [
     {

@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "A sweet and tangy sauce combined with veggies and cashews makes this an impressive dish. Serve over sticky jasmine rice for the perfect finish.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "40 minutes",
-    "total": "45 minutes"
+    "prep": 5,
+    "cook": 40,
+    "total": 45
   },
   "ingredients": [
     {

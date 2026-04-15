@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Along with Maqluba (here), Biryani (here), and Dolma (here), this is another one of my mom’s irresistible dishes. Stuffing chicken with a mixture of rice and ground beef and roasting it to perfection is a common way of presenting whole chicken across Middle Eastern countries. But this recipe is extra special because it has my mom’s specific blend of sauce and spices, and it really can’t be topped. My mom is a creative cook; she tends to stray every once in a while and do her own thing. Case in point: The addition of barbecue sauce to the marinade in this recipe. There’s no such thing as barbecue sauce in Middle Eastern cuisine! But it works so well here, along with an array of spices, including dried lime powder. While it may seem complex, this is a recipe I’d recommend for beginner cooks who want to make something impressive. It’s hard to mess up. The rice ends up absorbing all the chicken juices—I like it even more than the chicken. My mom would make this whenever we all gathered together, and we would be fighting over who gets more of the juicy rice from inside the chicken.",
   "time": {
-    "prep": "25 minutes",
-    "cook": "1 hour and 30 minutes",
-    "total": "25 minutes1 hour and 30 minutes"
+    "prep": 25,
+    "cook": 90,
+    "total": 115
   },
   "ingredients": [
     {

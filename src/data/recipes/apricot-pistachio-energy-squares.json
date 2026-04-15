@@ -9,9 +9,9 @@
   "servings": "16 squares",
   "intro": "Every good flavor you can think of is in these perfect little squares. Besides heavenly apricot and dates, you have the option of drizzling chocolate over the top.",
   "time": {
-    "prep": "20 minutes",
-    "cook": "5 minutes",
-    "total": "20 minutes"
+    "prep": 20,
+    "cook": 5,
+    "total": 20
   },
   "ingredients": [
     {

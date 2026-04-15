@@ -9,9 +9,8 @@
   "servings": "makes 600ml",
   "intro": "You really can’t go wrong with a nice podina. It is delicious served really cold with hot homemade bora. Or you can serve it with samosas, papadams, onion bhajis, on top of kebabs… anything really!",
   "time": {
-    "prep": "5 MINS, PLUS SITTING TIME",
-    "cook": "",
-    "total": "5 MINS, PLUS SITTING TIME0"
+    "prep": 5,
+    "total": 5
   },
   "ingredients": [
     {
@@ -50,5 +49,6 @@
     "chapter": "Base Sauces",
     "meal_role": "side"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SITTING TIME; SITTING TIME0."
 }

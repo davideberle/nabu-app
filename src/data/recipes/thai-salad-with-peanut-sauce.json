@@ -8,8 +8,9 @@
   "servings": "serves 8",
   "intro": "A fresh and delicious Thai salad accompanied with a satisfying crunch from the peanut sauce",
   "time": {
-    "prep": "25 minutes",
-    "total": "25 minutes0"
+    "prep": 25,
+    "total": 25,
+    "cook": 0
   },
   "ingredients": [
     {

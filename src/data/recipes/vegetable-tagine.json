@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "A flavorful and delicious meal. A must-try!",
   "time": {
-    "prep": "25 mins",
+    "prep": 25,
     "total": 50
   },
   "ingredients": [

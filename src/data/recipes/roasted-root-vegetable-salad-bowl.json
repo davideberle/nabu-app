@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Here’s the perfect bowl to get a good helping of vegetables. Simply roast a few root vegetables and then chop a few more veggies to create this healthy power bowl. It’s perfect with a nutty sweet tahini sauce.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "10 minutes",
-    "total": "15 minutes"
+    "prep": 5,
+    "cook": 10,
+    "total": 15
   },
   "ingredients": [
     {

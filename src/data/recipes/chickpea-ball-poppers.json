@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "There are so many tasty ingredients wrapped up in these little balls. Not only that! There’s also a spicy vegan mayo dip to go right alongside.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

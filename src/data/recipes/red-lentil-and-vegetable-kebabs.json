@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I find myself eating a lot less meat these days and I’m not all that crazy about meat substitutes. That’s why I love veggie kebabs like these. They are both filling and delicious. Serve as a snack with a good raita or chutney. Here I have served them with homemade mango pickle and garnished them with flaky salt and coriander (cilantro). If you form the kebabs into small bite-size balls, they are also good stirred into any of the sauces in the curry-house section of this book.",
   "time": {
-    "prep": "15 MINS, PLUS SOAKING TIME",
-    "cook": "20 MINS",
-    "total": "15 MINS, PLUS SOAKING TIME20 MINS"
+    "prep": 15,
+    "cook": 20,
+    "total": 15
   },
   "ingredients": [
     {
@@ -113,5 +113,6 @@
     "chapter": "Basics & Breads",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: SOAKING TIME; SOAKING TIME20 MINS."
 }

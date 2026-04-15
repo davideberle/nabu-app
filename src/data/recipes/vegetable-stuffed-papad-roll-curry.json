@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The papad rolls can be a bit fussy to make. Don’t worry! Just do your best. They tend to come out fine in the end. You could use cutlery but I like to pick up the papad rolls and dip them into the sauce by hand. It’s messy, mind! If you want to prepare ahead, you could make the sauce up to three days in advance, but frying the papad rolls and adding the extra cheese is best done just before serving. You can wrap anything you like into the papads – reduced potato curry, for example.",
   "time": {
-    "prep": "20 MINS",
-    "cook": "20 MINS",
-    "total": "20 MINS20 MINS"
+    "prep": 20,
+    "cook": 20,
+    "total": 40
   },
   "ingredients": [
     {

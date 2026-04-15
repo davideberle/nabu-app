@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Puffed tofu is a fun way to enjoy tofu. Seasoned and baked, the result is crispy on the outside and creamy on the inside.",
   "time": {
-    "prep": "5 minutes",
-    "cook": "15 minutes",
-    "total": "20 minutes"
+    "prep": 5,
+    "cook": 15,
+    "total": 20
   },
   "ingredients": [
     {

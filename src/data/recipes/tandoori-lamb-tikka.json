@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The marinade used in this recipe is good on any meat, not just lamb. The first time I made this I took it camping with my family. The meat had already been marinating for about 48 hours, but when we got there and I finally got my disaster of a tent put up, I was in no mood to start cooking. So we cooked the following evening, and I have to say that extra 24 hours of marinating really worked a treat! There is a lot of talk these days that meat doesn’t benefit from excessively long marinating times. All I know is that meal was amazing and one we all still talk about. You can see a tandoori lamb tikka skewer pictured.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "20 MINS",
-    "total": "15 MINS, PLUS MARINATING TIME20 MINS"
+    "prep": 15,
+    "cook": 20,
+    "total": 15
   },
   "ingredients": [
     {
@@ -101,5 +101,6 @@
     "chapter": "Street Food",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME20 MINS."
 }

@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "The soola marinade in this recipe is popular not just for chicken but red meat and vegetables too. Red meat such as venison, beef and lamb can be marinated for three days and the end result is so good. With chicken, duck and other poultry and feathered game, I usually marinate the meat for 24–48 hours. Seafood only needs about 20 minutes. These kebabs are pictured. I like to serve them with a simple green salad and coriander, garlic and chilli raita.\n\nFor me, mustard oil is a must with this recipe. You could substitute rapeseed (canola) oil but you will get a different flavour.",
   "time": {
-    "prep": "15 MINS, PLUS MARINATING TIME",
-    "cook": "15 MINS",
-    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
+    "prep": 15,
+    "cook": 15,
+    "total": 15
   },
   "ingredients": [
     {
@@ -105,5 +105,6 @@
     "chapter": "Street Food",
     "meal_role": "main"
   },
-  "cuisine": "Indian"
+  "cuisine": "Indian",
+  "tips": "Note: MARINATING TIME; MARINATING TIME15 MINS."
 }

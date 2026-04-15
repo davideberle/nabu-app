@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I think that one of the most valuable things I’ve learned during my visits to southern coastal India is the low-fat way they cook up amazing seafood curries. Hardly any oil is required as many of the aromatic ingredients are simply boiled in water to produce a delicious sauce. Although you can use tamarind concentrate instead of kokum for this recipe, it is traditionally made with kokum and that’s the way I like it most.",
   "time": {
-    "prep": "10 MINS",
-    "cook": "20 MINS",
-    "total": "10 MINS20 MINS"
+    "prep": 10,
+    "cook": 20,
+    "total": 30
   },
   "ingredients": [
     {

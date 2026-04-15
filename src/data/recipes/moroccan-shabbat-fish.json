@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "Prep time: 20 mins",
   "time": {
-    "prep": "20 mins",
+    "prep": 20,
     "total": 60
   },
   "ingredients": [

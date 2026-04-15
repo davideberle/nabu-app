@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "I am a strong advocate for warm salads. Roasting more vegetables brings out their flavour but something dramatic changes when you roast green beans and mangetout (snow peas). There’s something about their bitter sweetness that is amplified in the process. This salad comes together quickly, retaining some crunch in the green veggies.",
   "time": {
-    "prep": "5 MINUTESCOOK TIME: 20 MINUTES",
-    "cook": "20 MINUTES",
-    "total": "5 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
+    "prep": 5,
+    "cook": 20,
+    "total": 25
   },
   "ingredients": [
     {
