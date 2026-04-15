@@ -38,8 +38,34 @@
 | `89e28e8a` | fix(recipes): correct 5 recipe data quality issues |
 | `b1e169f9` | chore(recipes): rebundle after data fixes, add stew to valid dish_types |
 
-## Follow-ups for David
+## Follow-up Pass — 2026-04-15
 
-1. **Wrong images — source recovery**: The 3 nulled images (chicken-bastilla, casarecce, mocha-r-ghonto) need correct photos extracted from the source EPUBs. The Persiana EPUB is available at the Google Drive path in the brief. The other two cookbooks (Pasta for All Seasons, The Indian Vegan) should also be in nabu-share if available.
-2. **~546 recipes have `time.prep` as strings** (e.g. `"30 minutes"`, `"10 MINS, PLUS MARINATING TIME"`). Only the 2 recipes David flagged tonight were fixed. A parser script could normalize these corpus-wide, but that's a broader sweep best done with review.
-3. **Weekend main strength**: `isFlimsyForWeekend()` already filters simple soups/salads. If David still sees weak weekend mains, the threshold may need further tuning (e.g. minimum ingredient count or cook time).
+### D1 — Restore verified images from source EPUBs
+- [x] **Chicken Bastilla** (Persiana p.106, `images/00064.jpeg`): extracted correct photo showing golden filo pies. Caption in EPUB confirms "Chicken Bastilla".
+- [x] **Casarecce with Black Cod** (Pasta for All Seasons p.84, `Page_084_Image_0001.jpg`): replaced pasta shape illustration with actual dish photo. Index confirms this image belongs to the recipe.
+- [x] **Mocha'r Ghonto** (The Indian Vegan, `P95-1.jpg`): stays null. The source EPUB only has a decorative potato illustration next to this recipe — no recipe photo exists in the book. The existing file in `public/recipes/` is that same illustration (verified byte-identical).
+
+### D2 — Normalize all string time values to numeric minutes
+- [x] Converted 545+ prep, 452 cook, and 456 total time fields across 532+ recipes (6 cookbooks: Curry Guy Bible, High-Protein Vegan, Plentiful, Tagine, Souk to Table, Thai Spice)
+- Patterns handled: "30 minutes", "1¼ HOURS", ranges (lower bound), concatenated prep+cook, Cyrillic lookalike chars, parenthetical notes
+- "Plus ..." context notes (marinating, soaking, etc.) preserved in `tips` field
+- Zero remaining string time values in corpus
+
+### Commits (pushed to origin/main)
+
+| SHA | Description |
+|-----|-------------|
+| `a97d5ea7` | fix(recipes): restore verified images for chicken-bastilla and casarecce |
+| `93d0d45e` | fix(recipes): normalize all string time values to numeric minutes |
+| `7f921c7a` | chore(recipes): rebundle after image restore and time normalization |
+
+### Validation
+- `validate-recipes.mjs`: 0 errors, 1 pre-existing warning (long name)
+- `tsc --noEmit`: clean
+
+## Remaining Follow-ups
+
+1. **Mocha'r Ghonto image**: No recipe photo exists in the source EPUB. If David has a photo, manually add it to `public/recipes/mocha-r-ghonto.jpg` and set `"image": "/recipes/mocha-r-ghonto.jpg"` in the JSON.
+2. **Lamb Biryani image** (Persiana): JSON correctly has `null`, but `public/recipes/lamb-biryani.jpg` contains a chapter title page ("Soups, stews & tagines"), not a biryani photo. Could extract correct image from EPUB if desired.
+3. **Other wrong-image recipes**: A systematic audit comparing EPUB source images to `public/recipes/` could find more mismatches. The overnight pass only checked 5 recipes.
+4. **Weekend main strength**: `isFlimsyForWeekend()` may need tuning if David still sees weak weekend mains.
