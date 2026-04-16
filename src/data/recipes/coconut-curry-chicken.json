@@ -3,7 +3,8 @@
   "name": "Coconut Curry Chicken",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -69,5 +70,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/coconut-curry-chicken.jpg"
+  "image": "/recipes/coconut-curry-chicken.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

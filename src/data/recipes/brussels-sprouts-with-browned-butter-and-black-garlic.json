@@ -3,7 +3,8 @@
   "name": "Brussels sprouts with browned butter and black garlic",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "a dish. Get everything chopped and ready for this dish before you start, but don’t",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/brussels-sprouts-with-browned-butter-and-black-garlic.jpg"
+  "image": "/recipes/brussels-sprouts-with-browned-butter-and-black-garlic.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

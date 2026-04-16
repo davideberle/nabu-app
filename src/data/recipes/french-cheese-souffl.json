@@ -3,7 +3,8 @@
   "name": "French Cheese Soufflé",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Snack Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -49,9 +50,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
-    "chapter": ""
+    "chapter": "French Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

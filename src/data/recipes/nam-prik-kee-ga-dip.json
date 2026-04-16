@@ -3,7 +3,8 @@
   "name": "Nam Prik Kee Ga Dip",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Dips and Sauces"
   },
   "servings": "serves 2",
   "intro": "resembles crow poo apparently. It is not pulverized very fi nely",
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nam-prik-kee-ga-dip.jpg"
+  "image": "/recipes/nam-prik-kee-ga-dip.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dips and Sauces"
+  }
 }

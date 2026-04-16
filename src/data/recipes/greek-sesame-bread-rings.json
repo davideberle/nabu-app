@@ -3,7 +3,8 @@
   "name": "Greek Sesame Bread Rings",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Breakfast Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -54,9 +55,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

@@ -3,7 +3,8 @@
   "name": "Curried Celery",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -44,5 +45,9 @@
   "time": {
     "total": 10
   },
-  "image": "/recipes/curried-celery.jpg"
+  "image": "/recipes/curried-celery.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

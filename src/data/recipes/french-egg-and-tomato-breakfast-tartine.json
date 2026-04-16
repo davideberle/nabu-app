@@ -3,7 +3,8 @@
   "name": "French Egg and Tomato Breakfast Tartine",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Breakfast Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -62,7 +63,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "French Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

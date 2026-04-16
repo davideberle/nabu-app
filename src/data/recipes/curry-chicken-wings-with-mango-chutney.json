@@ -3,7 +3,8 @@
   "name": "Curry Chicken Wings with Mango Chutney",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -78,5 +79,9 @@
   "time": {
     "total": 300
   },
-  "image": "/recipes/curry-chicken-wings-with-mango-chutney.jpg"
+  "image": "/recipes/curry-chicken-wings-with-mango-chutney.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

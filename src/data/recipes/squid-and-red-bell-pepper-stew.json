@@ -3,7 +3,8 @@
   "name": "Squid and red bell pepper stew",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 2",
   "intro": "Serve with plain couscous or rice, or just some crusty bread to soak up the juices,",
@@ -70,5 +71,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
   }
 }

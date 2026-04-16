@@ -3,7 +3,8 @@
   "name": "Mushroom and Tarragon Pithivier",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "intro": "of the liquid. Sprinkle all the remaining cheese on top, cover with foil, and",
@@ -84,5 +85,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mushroom-and-tarragon-pithivier.jpg"
+  "image": "/recipes/mushroom-and-tarragon-pithivier.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

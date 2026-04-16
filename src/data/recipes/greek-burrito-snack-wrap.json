@@ -3,7 +3,8 @@
   "name": "Greek Burrito Snack Wrap",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Appetizers and Snacks"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -61,9 +62,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
-    "chapter": ""
+    "chapter": "Greek Appetizers and Snacks"
   },
   "cuisine": "Greek"
 }

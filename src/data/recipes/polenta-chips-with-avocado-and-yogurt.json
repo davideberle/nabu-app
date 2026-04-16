@@ -3,7 +3,8 @@
   "name": "Polenta Chips with Avocado and Yogurt",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -54,5 +55,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/polenta-chips-with-avocado-and-yogurt.jpg"
+  "image": "/recipes/polenta-chips-with-avocado-and-yogurt.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

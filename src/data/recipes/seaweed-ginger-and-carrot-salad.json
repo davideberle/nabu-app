@@ -3,7 +3,8 @@
   "name": "Seaweed, Ginger, and Carrot Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 6",
   "intro": "over high heat, stirring frequently, until the onions soften a little but don’t turn",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/seaweed-ginger-and-carrot-salad.jpg"
+  "image": "/recipes/seaweed-ginger-and-carrot-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
+  }
 }

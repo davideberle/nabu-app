@@ -3,7 +3,8 @@
   "name": "Curried Chicken in Coconut Milk",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -75,5 +76,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curried-chicken-in-coconut-milk.jpg"
+  "image": "/recipes/curried-chicken-in-coconut-milk.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

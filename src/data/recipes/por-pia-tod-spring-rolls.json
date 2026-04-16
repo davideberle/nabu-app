@@ -3,7 +3,8 @@
   "name": "Por Pia Tod Spring Rolls",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 6",
   "intro": "to be spicy and salty. In any case, you have the option of adding lime juice at the end, (just like",
@@ -85,5 +86,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/por-pia-tod-spring-rolls.jpg"
+  "image": "/recipes/por-pia-tod-spring-rolls.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

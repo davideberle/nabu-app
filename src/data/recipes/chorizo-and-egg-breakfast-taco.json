@@ -3,7 +3,8 @@
   "name": "Chorizo and Egg Breakfast Taco",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -66,7 +67,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes"
   },
   "cuisine": "Mexican"
 }

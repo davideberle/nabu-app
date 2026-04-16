@@ -3,7 +3,8 @@
   "name": "Greek Walnut Cake",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Dessert Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -88,7 +89,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "Greek Dessert Recipes"
   },
   "cuisine": "Mediterranean"
 }

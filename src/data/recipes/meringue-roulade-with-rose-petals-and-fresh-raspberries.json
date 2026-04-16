@@ -3,7 +3,8 @@
   "name": "Meringue Roulade with Rose Petals and Fresh Raspberries",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/meringue-roulade-with-rose-petals-and-fresh-raspberries.jpg"
+  "image": "/recipes/meringue-roulade-with-rose-petals-and-fresh-raspberries.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Greek Fried Cheese",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Snack Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -33,9 +34,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
-    "chapter": ""
+    "chapter": "Greek Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

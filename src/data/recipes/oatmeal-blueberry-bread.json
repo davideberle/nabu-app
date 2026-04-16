@@ -3,7 +3,8 @@
   "name": "Oatmeal Blueberry Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 9",
   "ingredients": [
@@ -73,7 +74,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/oatmeal-blueberry-bread.jpg"

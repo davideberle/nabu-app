@@ -3,7 +3,8 @@
   "name": "Brown rice with caramelized onions and black garlic",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
   "intro": "as it is, with a plate of fresh or steamed veg. It’s also a great introduction to black",
@@ -59,5 +60,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/brown-rice-with-caramelized-onions-and-black-garlic.jpg"
+  "image": "/recipes/brown-rice-with-caramelized-onions-and-black-garlic.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

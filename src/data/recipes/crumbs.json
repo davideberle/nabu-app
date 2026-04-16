@@ -3,7 +3,8 @@
   "name": "Crumbs",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "intro": "Brush the slices of bread with 2 tablespoons of the olive oil, place on a small",
@@ -52,5 +53,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/crumbs.jpg"
+  "image": "/recipes/crumbs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
+  }
 }

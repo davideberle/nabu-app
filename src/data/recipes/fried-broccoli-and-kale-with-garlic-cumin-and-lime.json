@@ -3,7 +3,8 @@
   "name": "Fried broccoli and kale with garlic, cumin, and lime",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "serving. Doing this little bit of prep turns the dish into one that can get to the",
@@ -57,5 +58,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fried-broccoli-and-kale-with-garlic-cumin-and-lime.jpg"
+  "image": "/recipes/fried-broccoli-and-kale-with-garlic-cumin-and-lime.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

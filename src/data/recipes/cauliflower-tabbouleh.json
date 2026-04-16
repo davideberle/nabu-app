@@ -3,7 +3,8 @@
   "name": "Cauliflower “tabbouleh”",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Raw Veg"
   },
   "servings": "serves 6",
   "intro": "If you’re doubling or tripling this recipe, break the cauliower into orets and pop",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cauliflower-tabbouleh.jpg"
+  "image": "/recipes/cauliflower-tabbouleh.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Raw Veg"
+  }
 }

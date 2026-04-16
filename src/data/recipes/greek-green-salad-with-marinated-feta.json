@@ -3,7 +3,8 @@
   "name": "Greek Green Salad with Marinated Feta",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Dinner Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -100,7 +101,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner Recipes"
   },
   "cuisine": "Mediterranean"
 }

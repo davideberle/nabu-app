@@ -3,7 +3,8 @@
   "name": "Eggplants With Crushed Chickpeas And Herb Yogurt",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Roasted"
   },
   "servings": "serves 4",
   "intro": "Toss the cauliflower florets with half the oil, ½ teaspoon salt, and some black",
@@ -52,5 +53,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Roasted"
   }
 }

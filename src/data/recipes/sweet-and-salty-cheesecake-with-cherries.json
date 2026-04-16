@@ -3,7 +3,8 @@
   "name": "Sweet and salty cheesecake with cherries",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 6",
   "intro": "the crumble (which keeps a good week or so) just needs to be kept in an airtight",
@@ -90,5 +91,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sweet-and-salty-cheesecake-with-cherries.jpg"
+  "image": "/recipes/sweet-and-salty-cheesecake-with-cherries.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

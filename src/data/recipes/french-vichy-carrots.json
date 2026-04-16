@@ -3,7 +3,8 @@
   "name": "French Vichy Carrots",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Vegetarian Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -70,7 +71,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "French Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

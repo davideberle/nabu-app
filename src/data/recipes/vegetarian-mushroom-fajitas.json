@@ -3,7 +3,8 @@
   "name": "Vegetarian Mushroom Fajitas",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "ingredients": [
     {
@@ -58,7 +59,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "cuisine": "Mexican"
 }

@@ -3,7 +3,8 @@
   "name": "Beet and Rhubarb Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Roasted"
   },
   "servings": "serves 4",
   "intro": "place in the oven to roast for 30 minutes, turning the vegetables once or twice",
@@ -54,5 +55,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/beet-and-rhubarb-salad.jpg"
+  "image": "/recipes/beet-and-rhubarb-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Roasted"
+  }
 }

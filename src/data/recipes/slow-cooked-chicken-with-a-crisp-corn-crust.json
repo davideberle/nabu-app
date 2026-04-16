@@ -3,7 +3,8 @@
   "name": "Slow-cooked chicken with a crisp corn crust",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat"
   },
   "servings": "serves 6",
   "intro": "and the corn, but the chicken also works well as it is, served on top of rice, in a",
@@ -87,5 +88,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/slow-cooked-chicken-with-a-crisp-corn-crust.jpg"
+  "image": "/recipes/slow-cooked-chicken-with-a-crisp-corn-crust.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Meat"
+  }
 }

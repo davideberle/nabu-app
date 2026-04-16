@@ -3,7 +3,8 @@
   "name": "Prawn and Chorizo Quesadilla",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Lunch Recipes"
   },
   "ingredients": [
     {
@@ -73,7 +74,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

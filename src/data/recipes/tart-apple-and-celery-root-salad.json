@@ -3,7 +3,8 @@
   "name": "Tart Apple And Celery Root Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "Cut down the side of each grapefruit, following its natural line, to remove the",
@@ -64,5 +65,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
   }
 }

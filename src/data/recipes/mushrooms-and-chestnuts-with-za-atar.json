@@ -3,7 +3,8 @@
   "name": "Mushrooms and chestnuts with za’atar",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "depending on what you see. Just keep the net weight the same. If you’ve got large",
@@ -62,5 +63,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mushrooms-and-chestnuts-with-za-atar.jpg"
+  "image": "/recipes/mushrooms-and-chestnuts-with-za-atar.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

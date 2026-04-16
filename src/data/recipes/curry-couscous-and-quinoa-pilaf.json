@@ -3,7 +3,8 @@
   "name": "Curry Couscous and Quinoa Pilaf",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -142,5 +143,9 @@
   "time": {
     "total": 540
   },
-  "image": "/recipes/curry-couscous-and-quinoa-pilaf.jpg"
+  "image": "/recipes/curry-couscous-and-quinoa-pilaf.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

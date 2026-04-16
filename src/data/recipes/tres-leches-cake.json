@@ -3,7 +3,8 @@
   "name": "Tres Leches Cake",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Desserts"
   },
   "ingredients": [
     {
@@ -75,7 +76,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "Mexican Desserts"
   },
   "cuisine": "Mexican"
 }

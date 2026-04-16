@@ -3,7 +3,8 @@
   "name": "Fish Tacos with Chili Cream and Jalapeño Salsa",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "servings": "serves 10",
   "ingredients": [
@@ -54,7 +55,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

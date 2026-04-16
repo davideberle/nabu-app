@@ -3,7 +3,8 @@
   "name": "Plum, blackberry, and bay friand",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 6",
   "intro": "well in the fridge up to 1 day. But don’t macerate the fruit for this amount of time",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/plum-blackberry-and-bay-friand.jpg"
+  "image": "/recipes/plum-blackberry-and-bay-friand.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

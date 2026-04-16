@@ -3,7 +3,8 @@
   "name": "Fritter Roulette",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 4",
   "intro": "Arrange the eggplant slices in the prepared baking pan; they should fill up the",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fritter-roulette.jpg"
+  "image": "/recipes/fritter-roulette.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

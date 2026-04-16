@@ -3,7 +3,8 @@
   "name": "Watercress Salad with Quail Eggs, Ricotta, and Seeds",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -77,5 +78,9 @@
     "total": 30
   },
   "image": "/recipes/watercress-salad-with-quail-eggs-ricotta-and-seeds.jpg",
-  "intro": "Add the lemon segments, celery leaves, parsley, cilantro, capers, chiles, olive"
+  "intro": "Add the lemon segments, celery leaves, parsley, cilantro, capers, chiles, olive",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

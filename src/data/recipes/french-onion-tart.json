@@ -3,7 +3,8 @@
   "name": "French Onion Tart",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Snack Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -62,7 +63,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "French Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

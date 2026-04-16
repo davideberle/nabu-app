@@ -3,7 +3,8 @@
   "name": "Eggplant Cheesecake",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 4",
   "intro": "to 14 minutes, until the eggplant is completely soft. Leave aside to cool down.",
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-cheesecake.jpg"
+  "image": "/recipes/eggplant-cheesecake.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Tuna and Mushroom Pasta Salad",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Salad Pasta Recipes"
   },
   "servings": "serves 5",
   "ingredients": [
@@ -56,7 +57,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Salad Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/tuna-and-mushroom-pasta-salad.jpg"

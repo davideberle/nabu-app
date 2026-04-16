@@ -3,7 +3,8 @@
   "name": "Curry with Cashews, Jackfruit",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -109,5 +110,9 @@
   "time": {
     "total": 10
   },
-  "image": "/recipes/curry-with-cashews-jackfruit.jpg"
+  "image": "/recipes/curry-with-cashews-jackfruit.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

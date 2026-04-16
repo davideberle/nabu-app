@@ -3,7 +3,8 @@
   "name": "Simple Stir-fried Greens",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Bangkok and Central Thai"
   },
   "servings": "serves 4",
   "intro": "leaves than the Chinese version, but obviously the Chinese kind also works well. Other good options are",
@@ -43,5 +44,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/simple-stir-fried-greens.jpg"
+  "image": "/recipes/simple-stir-fried-greens.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Bangkok and Central Thai"
+  }
 }

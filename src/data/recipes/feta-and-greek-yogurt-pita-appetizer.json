@@ -3,7 +3,8 @@
   "name": "Feta and Greek Yogurt Pita Appetizer",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Appetizers and Snacks"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -49,7 +50,7 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "Greek Appetizers and Snacks"
   },
   "cuisine": "Greek"
 }

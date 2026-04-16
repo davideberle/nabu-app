@@ -3,7 +3,8 @@
   "name": "Garden Pasta Salad",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Salad Pasta Recipes"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -77,7 +78,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Salad Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/garden-pasta-salad.jpg"

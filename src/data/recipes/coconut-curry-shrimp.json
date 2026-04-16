@@ -3,7 +3,8 @@
   "name": "Coconut Curry Shrimp",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 3",
   "ingredients": [
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/coconut-curry-shrimp.jpg"
+  "image": "/recipes/coconut-curry-shrimp.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

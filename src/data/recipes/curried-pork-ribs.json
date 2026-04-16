@@ -3,7 +3,8 @@
   "name": "Curried Pork Ribs",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -64,5 +65,9 @@
   "time": {
     "total": 120
   },
-  "image": "/recipes/curried-pork-ribs.jpg"
+  "image": "/recipes/curried-pork-ribs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

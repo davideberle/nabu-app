@@ -3,7 +3,8 @@
   "name": "Tomatoes with sumac shallots and pine nuts",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Raw Veg"
   },
   "servings": "serves 4",
   "intro": "and store in the fridge, ready for the oil, basil, and seasoning to be added when",
@@ -53,5 +54,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tomatoes-with-sumac-shallots-and-pine-nuts.jpg"
+  "image": "/recipes/tomatoes-with-sumac-shallots-and-pine-nuts.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Raw Veg"
+  }
 }

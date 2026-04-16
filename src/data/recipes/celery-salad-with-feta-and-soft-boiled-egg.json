@@ -3,7 +3,8 @@
   "name": "Celery Salad with Feta and Soft-Boiled Egg",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -72,5 +73,9 @@
     "total": 30
   },
   "image": "/recipes/celery-salad-with-feta-and-soft-boiled-egg.jpg",
-  "intro": "seeds and nuts, lemon juice, olive oil, ¼ teaspoon salt, and a grind of black"
+  "intro": "seeds and nuts, lemon juice, olive oil, ¼ teaspoon salt, and a grind of black",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

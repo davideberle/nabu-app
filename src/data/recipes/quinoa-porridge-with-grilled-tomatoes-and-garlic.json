@@ -3,7 +3,8 @@
   "name": "Quinoa Porridge With Grilled Tomatoes And Garlic",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "(the leaves can stay in the soup). Add the haricots verts, noodles, and half the",
@@ -68,5 +69,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
   }
 }

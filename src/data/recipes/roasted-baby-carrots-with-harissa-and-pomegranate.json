@@ -3,7 +3,8 @@
   "name": "Roasted baby carrots with harissa and pomegranate",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "baby carrots look lovely here, as ever, but if you are starting with regular carrots",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-baby-carrots-with-harissa-and-pomegranate.jpg"
+  "image": "/recipes/roasted-baby-carrots-with-harissa-and-pomegranate.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

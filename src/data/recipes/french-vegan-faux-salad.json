@@ -3,7 +3,8 @@
   "name": "French Vegan Faux Salad",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Vegetarian Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -63,7 +64,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "French Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

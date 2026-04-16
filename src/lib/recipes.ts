@@ -319,4 +319,16 @@ export async function getDietaryOptions(): Promise<
     .sort((a, b) => b.count - a.count);
 }
 
+// Check if a recipe is tagged as low-calorie
+export function isLowCalorie(recipe: Recipe): boolean {
+  const dietary = getDietary(recipe);
+  return dietary.some((t) => t.toLowerCase() === "low-calorie");
+}
+
+// Get the meal role for display (main, side, starter, dessert, component, breakfast, drink)
+export function getMealRole(recipe: Recipe): string | null {
+  const role = recipe.mealRole || recipe.category?.meal_role;
+  return role || null;
+}
+
 export { slugify as _slugify };

@@ -3,7 +3,8 @@
   "name": "Fig Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "Place the almonds in a small pan and toast for 1 minute, stirring all the time.",
@@ -51,5 +52,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fig-salad.jpg"
+  "image": "/recipes/fig-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

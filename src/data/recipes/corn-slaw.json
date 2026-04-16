@@ -3,7 +3,8 @@
   "name": "Corn Slaw",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 6",
   "intro": "broiler for 8 to 15 minutes (oven broilers tend to vary a lot), until the cheese",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/corn-slaw.jpg"
+  "image": "/recipes/corn-slaw.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
+  }
 }

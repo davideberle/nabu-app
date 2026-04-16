@@ -3,7 +3,8 @@
   "name": "French Smoked Salmon Nicoise Salad",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Dinner Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -62,7 +63,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "French Dinner Recipes"
   },
   "cuisine": "Mediterranean"
 }

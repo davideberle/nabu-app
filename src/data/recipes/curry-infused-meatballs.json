@@ -3,7 +3,8 @@
   "name": "Curry Infused Meatballs",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -55,5 +56,9 @@
   "time": {
     "total": 25
   },
-  "image": "/recipes/curry-infused-meatballs.jpg"
+  "image": "/recipes/curry-infused-meatballs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

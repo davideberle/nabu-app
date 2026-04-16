@@ -3,7 +3,8 @@
   "name": "Curried Chicken Salad",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -49,5 +50,9 @@
   "time": {
     "total": 25
   },
-  "image": "/recipes/curried-chicken-salad.jpg"
+  "image": "/recipes/curried-chicken-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

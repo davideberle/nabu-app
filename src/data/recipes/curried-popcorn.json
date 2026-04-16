@@ -3,7 +3,8 @@
   "name": "Curried Popcorn",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -54,5 +55,9 @@
   "time": {
     "total": 5
   },
-  "image": "/recipes/curried-popcorn.jpg"
+  "image": "/recipes/curried-popcorn.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Soba Noodles With Quick-pickled Mushrooms",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 4",
   "intro": "Place the ancho chile in a small heatproof bowl and pour in boiling water just",
@@ -78,5 +79,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
   }
 }

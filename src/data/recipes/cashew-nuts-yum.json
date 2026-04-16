@@ -3,7 +3,8 @@
   "name": "Cashew Nuts Yum",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Bangkok and Central Thai"
   },
   "servings": "serves 4",
   "intro": "leaves and lime, but if you don’t want to use them, it’s fi ne. The",
@@ -85,5 +86,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cashew-nuts-yum.jpg"
+  "image": "/recipes/cashew-nuts-yum.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Bangkok and Central Thai"
+  }
 }

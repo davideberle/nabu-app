@@ -3,7 +3,8 @@
   "name": "Coconut Curry Tofu",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -92,5 +93,9 @@
   "time": {
     "total": 20
   },
-  "image": "/recipes/coconut-curry-tofu.jpg"
+  "image": "/recipes/coconut-curry-tofu.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

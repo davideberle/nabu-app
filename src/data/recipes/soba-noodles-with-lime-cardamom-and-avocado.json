@@ -3,7 +3,8 @@
   "name": "Soba noodles with lime, cardamom, and avocado",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "I like to eat this either as it is, for a quick lunch or light supper, or with some",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/soba-noodles-with-lime-cardamom-and-avocado.jpg"
+  "image": "/recipes/soba-noodles-with-lime-cardamom-and-avocado.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Pasta with pecorino and pistachios",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "Troe is the traditional pasta to serve with pesto, but fusilli works just as well. For",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pasta-with-pecorino-and-pistachios.jpg"
+  "image": "/recipes/pasta-with-pecorino-and-pistachios.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

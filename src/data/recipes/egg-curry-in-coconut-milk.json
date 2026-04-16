@@ -3,7 +3,8 @@
   "name": "Egg Curry in Coconut Milk",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -167,5 +168,9 @@
   "time": {
     "total": 50
   },
-  "image": "/recipes/egg-curry-in-coconut-milk.jpg"
+  "image": "/recipes/egg-curry-in-coconut-milk.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

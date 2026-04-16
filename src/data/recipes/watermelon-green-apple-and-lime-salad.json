@@ -3,7 +3,8 @@
   "name": "Watermelon, green apple, and lime salad",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Raw Veg"
   },
   "servings": "serves 6",
   "intro": "This is delicious as it is—it screams summer, it screams virtuous and it denitely",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/watermelon-green-apple-and-lime-salad.jpg"
+  "image": "/recipes/watermelon-green-apple-and-lime-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Raw Veg"
+  }
 }

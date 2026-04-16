@@ -3,7 +3,8 @@
   "name": "Red Onions with Walnut Salsa",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Roasted"
   },
   "servings": "serves 4",
   "intro": "Transfer the carrots to a large serving platter or individual plates. Serve warm",
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/red-onions-with-walnut-salsa.jpg"
+  "image": "/recipes/red-onions-with-walnut-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Roasted"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Root Vegetable Pies",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "intro": "fry for 2 minutes, stirring often, to cook the onion just a little. You want it to",
@@ -104,5 +105,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/root-vegetable-pies.jpg"
+  "image": "/recipes/root-vegetable-pies.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

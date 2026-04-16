@@ -3,7 +3,8 @@
   "name": "French Scrambled Eggs",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Breakfast Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -64,9 +65,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "French Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

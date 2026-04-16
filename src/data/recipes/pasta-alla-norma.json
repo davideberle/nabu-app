@@ -3,7 +3,8 @@
   "name": "Pasta alla Norma",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "so that this is all ready to go. It keeps in the fridge for 5 days and also freezes",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pasta-alla-norma.jpg"
+  "image": "/recipes/pasta-alla-norma.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

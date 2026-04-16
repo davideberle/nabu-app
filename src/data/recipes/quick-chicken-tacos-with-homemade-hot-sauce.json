@@ -3,7 +3,8 @@
   "name": "Quick Chicken Tacos with Homemade Hot Sauce",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -69,7 +70,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "cuisine": "Mexican"
 }

@@ -3,7 +3,8 @@
   "name": "Kale And Cheese Pikelets",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 4",
   "intro": "for a further 8 to 10 minutes, until most of the liquid has evaporated. Add the",
@@ -72,5 +73,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
   }
 }

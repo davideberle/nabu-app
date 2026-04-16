@@ -3,7 +3,8 @@
   "name": "Sai Oua Chiang Mai Sausage",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 10",
   "intro": "herbal sausage in my freezer. I fi rst learned to make this with the help of my friends Chris",
@@ -95,5 +96,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sai-oua-chiang-mai-sausage.jpg"
+  "image": "/recipes/sai-oua-chiang-mai-sausage.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

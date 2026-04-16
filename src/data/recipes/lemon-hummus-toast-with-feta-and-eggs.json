@@ -3,7 +3,8 @@
   "name": "Lemon Hummus Toast with Feta & Eggs",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Breakfast"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -51,7 +52,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast"
   },
   "cuisine": "Greek"
 }

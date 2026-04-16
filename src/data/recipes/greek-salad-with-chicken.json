@@ -3,7 +3,8 @@
   "name": "Greek Salad with Chicken",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Salads"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -82,7 +83,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Salads"
   },
   "cuisine": "Greek"
 }

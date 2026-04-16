@@ -3,7 +3,8 @@
   "name": "Delicious Coconut Flavored Chicken Curry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -64,5 +65,9 @@
   "time": {
     "total": 180
   },
-  "image": "/recipes/delicious-coconut-flavored-chicken-curry.jpg"
+  "image": "/recipes/delicious-coconut-flavored-chicken-curry.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

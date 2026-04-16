@@ -3,7 +3,8 @@
   "name": "Curried Egg Noodle Soup with Beef",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -106,5 +107,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curried-egg-noodle-soup-with-beef.jpg"
+  "image": "/recipes/curried-egg-noodle-soup-with-beef.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

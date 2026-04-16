@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi",
     "chapter": "Vegetables"
   },
-  "introduction": null,
+  "introduction": "You either love it or hate it? Not totally so. This okra dish should convert some stubborn okra haters. Okra can be slimy but here that is minimized by removing the stalks carefully, without exposing the gloopy seeds, and by baking the okra whole rather than stewing it. The gingery sauce is light and clean.",
   "category": {
     "dish_type": [
       "vegetable",
@@ -14,49 +14,82 @@
     ],
     "chapter": "Vegetables"
   },
-  "servings": "serves 4",
+  "servings": "serves 2 to 4",
   "time": {
-    "prep": 20,
-    "cook": 30,
-    "total": 50
+    "prep": 15,
+    "cook": 25,
+    "total": 40
   },
   "ingredients": [
     {
-      "amount": "1½",
+      "amount": "1 lb / 500 g",
+      "unit": "",
+      "item": "okra",
+      "original": "1 lb / 500 g okra",
+      "group": null
+    },
+    {
+      "amount": "5",
+      "unit": "tbsp",
+      "item": "olive oil",
+      "original": "5 tbsp olive oil",
+      "group": null
+    },
+    {
+      "amount": "2",
+      "unit": "cloves",
+      "item": "garlic, crushed",
+      "original": "2 cloves garlic, crushed",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "knob",
+      "item": "fresh ginger (scant 1/2 oz / 12 g), finely chopped",
+      "original": "1 knob fresh ginger (scant 1/2 oz / 12 g), finely chopped",
+      "group": null
+    },
+    {
+      "amount": "1/4",
       "unit": "tsp",
-      "item": "pomegranate molasses",
-      "original": "1½ tsp pomegranate molasses",
+      "item": "red pepper flakes",
+      "original": "1/4 tsp red pepper flakes",
       "group": null
     },
     {
       "amount": "3",
-      "unit": "tbsp",
-      "item": "lemon juice",
-      "original": "3 tbsp lemon juice",
+      "unit": "large",
+      "item": "ripe tomatoes, finely chopped",
+      "original": "3 large ripe tomatoes, finely chopped",
       "group": null
     },
     {
-      "amount": "1",
-      "unit": "tbsp",
-      "item": "coarsely chopped flat-leaf parsley",
-      "original": "1 tbsp coarsely chopped flat-leaf parsley",
+      "amount": "2",
+      "unit": "tsp",
+      "item": "superfine sugar",
+      "original": "2 tsp superfine sugar",
       "group": null
     },
     {
-      "amount": "1",
-      "unit": "clove",
-      "item": "garlic, crushed",
-      "original": "1 clove garlic, crushed",
+      "amount": "1 1/2",
+      "unit": "tbsp",
+      "item": "cilantro leaves",
+      "original": "1 1/2 tbsp cilantro leaves",
+      "group": null
+    },
+    {
+      "amount": "",
+      "unit": "",
+      "item": "salt and freshly ground black pepper",
+      "original": "salt and freshly ground black pepper",
       "group": null
     }
   ],
   "method": [
-    "Preheat the oven to 220°C. Trim the top and bottom off the butternut squash and cut it in half lengthwise. Remove the seeds using a small knife or a spoon. Cut each half into wedges ¾ to 1¼ inches / 2 to 3 cm thick. Arrange the wedges on a baking sheet, standing them up with the skin underneath if possible. Brush with half the olive oil and season generously with salt and pepper. Place in the oven for 25 to 30 minutes, by which time the wedges should be tender and slightly browned. Leave to cool.",
-    "Reduce the oven temperature to 180°C. Scatter the seeds and almonds on a baking sheet and toast for 8 to 10 minutes, until lightly browned. Leave to cool.",
-    "For the sauce, place the eggplant directly on a medium flame on a gas burner or your stove top (you might want to cover the base of the burner with aluminum foil before you begin). Burn the eggplant for 12 to 15 minutes, until the skin dries and cracks and smoky aromas are released. Turn it around occasionally, using metal tongs. Remove from the heat and leave to cool slightly. (Alternatively, you can place the eggplant under a very hot broiler for about an hour, turning it around occasionally; continue until well shriveled on the outside, even if it bursts.)",
-    "Make a long cut through the eggplant. Using a spoon, scoop out the soft flesh while avoiding most of the burnt skin. Drain in a colander for 10 minutes, then transfer to a board and chop coarsely.",
-    "In a mixing bowl, stir together the eggplant flesh, yogurt, oil, pomegranate molasses, lemon juice, parsley, and garlic. Taste and season with salt and pepper. It should be sweetly sharp and highly flavorful.",
-    "Arrange the squash wedges on a serving platter, piling them up on top of one another. Drizzle with the remaining olive oil, sprinkle the nuts and seeds over the top, and garnish with the basil. Serve the sauce on the side."
+    "Preheat the oven to 400\u00b0F / 200\u00b0C. To prepare the okra, take a small, sharp knife and carefully remove the stalk end. Try not to cut very low; leave the end of the stalk to seal the main body of the fruit, so the seeds are not exposed.",
+    "Mix the okra with 3 tablespoons of the olive oil and some salt and pepper. Scatter on a baking sheet in a single layer, then place in the oven and bake for 15 to 20 minutes, until just tender.",
+    "Meanwhile, prepare the sauce. Heat the remaining 2 tablespoons oil in a large saucepan, add the garlic, ginger, and red pepper flakes, and fry for about a minute. Add the tomatoes, sugar, and some salt and pepper and cook, uncovered, over medium heat for 10 minutes, until the mixture thickens slightly.",
+    "When the okra is ready, stir it gently into the sauce and cook for 2 minutes. To serve warm, spoon the okra onto serving plates and scatter the cilantro on top. If serving at room temperature, adjust the seasoning again before serving and garnish with the cilantro."
   ],
   "tags": {
     "dietary": [
@@ -65,6 +98,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/baked-okra-with-tomato-and-ginger.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

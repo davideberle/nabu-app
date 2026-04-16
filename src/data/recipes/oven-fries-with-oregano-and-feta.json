@@ -3,7 +3,8 @@
   "name": "Oven fries with oregano and feta",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "heard great things, but my high expectations were still exceeded. Eat these fries",
@@ -51,5 +52,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/oven-fries-with-oregano-and-feta.jpg"
+  "image": "/recipes/oven-fries-with-oregano-and-feta.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

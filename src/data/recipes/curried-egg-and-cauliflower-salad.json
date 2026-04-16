@@ -3,7 +3,8 @@
   "name": "Curried egg and cauliflower salad",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "until you eat it for yourself. If you are missing the chicken side of the equation,",
@@ -78,5 +79,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curried-egg-and-cauliflower-salad.jpg"
+  "image": "/recipes/curried-egg-and-cauliflower-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

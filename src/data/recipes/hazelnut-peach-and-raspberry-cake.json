@@ -3,7 +3,8 @@
   "name": "Hazelnut, peach, and raspberry cake",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 10",
   "intro": "room temperature. It will keep for 1 day in an airtight container, but (as with all",
@@ -65,5 +66,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/hazelnut-peach-and-raspberry-cake.jpg"
+  "image": "/recipes/hazelnut-peach-and-raspberry-cake.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

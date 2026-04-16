@@ -3,7 +3,8 @@
   "name": "Braised eggs with leek and za’atar",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 6",
   "intro": "short amount of time. It’s a dish as happily eaten for brunch, with coffee, as it is",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/braised-eggs-with-leek-and-za-atar.jpg"
+  "image": "/recipes/braised-eggs-with-leek-and-za-atar.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Kingfish Ceviche Tacos with Tabasco",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -59,7 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "cuisine": "Mexican"
 }

@@ -3,7 +3,8 @@
   "name": "Gnocchi alla Romana",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 8",
   "intro": "Make this up to the point it goes in the oven if you like and keep in the fridge for",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/gnocchi-alla-romana.jpg"
+  "image": "/recipes/gnocchi-alla-romana.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

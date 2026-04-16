@@ -3,7 +3,8 @@
   "name": "Spicy Scrambled Eggs",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 4",
   "intro": "chile, cumin, sugar, 1 egg, ¾ teaspoon salt, and a good grind of black pepper.",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spicy-scrambled-eggs.jpg"
+  "image": "/recipes/spicy-scrambled-eggs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Orzo with shrimp, tomato, and marinated feta",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "feta is lovely dotted over salads, so I tend to make a batch to keep in the fridge",
@@ -75,5 +76,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/orzo-with-shrimp-tomato-and-marinated-feta.jpg"
+  "image": "/recipes/orzo-with-shrimp-tomato-and-marinated-feta.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

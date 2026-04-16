@@ -3,7 +3,8 @@
   "name": "Spring Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "before transferring them to a large bowl. Add the radishes, kohlrabi, carrot,",
@@ -61,5 +62,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spring-salad.jpg"
+  "image": "/recipes/spring-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

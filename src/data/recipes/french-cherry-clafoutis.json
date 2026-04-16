@@ -3,7 +3,8 @@
   "name": "French Cherry Clafoutis",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Dessert Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -72,9 +73,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
-    "chapter": ""
+    "chapter": "French Dessert Recipes"
   },
   "cuisine": "Mediterranean"
 }

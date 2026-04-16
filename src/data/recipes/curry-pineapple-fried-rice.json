@@ -3,7 +3,8 @@
   "name": "Curry Pineapple Fried Rice",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -68,5 +69,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curry-pineapple-fried-rice.jpg"
+  "image": "/recipes/curry-pineapple-fried-rice.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

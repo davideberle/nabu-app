@@ -3,7 +3,8 @@
   "name": "Moo Tod Fried Pork Cutlets",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 4",
   "intro": "pounded to within an inch of its life and deep-fried. There is nothing better than this for sticky",
@@ -83,5 +84,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/moo-tod-fried-pork-cutlets.jpg"
+  "image": "/recipes/moo-tod-fried-pork-cutlets.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

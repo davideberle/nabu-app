@@ -3,7 +3,8 @@
   "name": "Caramelized Brandy Pears with Fennel Seed Crackers",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/caramelized-brandy-pears-with-fennel-seed-crackers.jpg"
+  "image": "/recipes/caramelized-brandy-pears-with-fennel-seed-crackers.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

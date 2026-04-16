@@ -3,7 +3,8 @@
   "name": "Khao Thom Rice Porridge",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Bangkok and Central Thai"
   },
   "servings": "serves 4",
   "intro": "(chicken, pork, fi sh, shrimp—but I never see beef) or the plain rice porridge with the little side dishes",
@@ -41,5 +42,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/khao-thom-rice-porridge.jpg"
+  "image": "/recipes/khao-thom-rice-porridge.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Bangkok and Central Thai"
+  }
 }

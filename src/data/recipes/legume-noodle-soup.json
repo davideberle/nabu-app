@@ -3,7 +3,8 @@
   "name": "Legume (Noodle) Soup",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 8",
   "intro": "stirring often, until the rice is cooked but still retains a bite and all the stock is",
@@ -72,5 +73,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/legume-noodle-soup.jpg"
+  "image": "/recipes/legume-noodle-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

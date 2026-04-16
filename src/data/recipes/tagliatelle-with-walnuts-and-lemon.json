@@ -3,7 +3,8 @@
   "name": "Tagliatelle with Walnuts and Lemon",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -55,5 +56,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tagliatelle-with-walnuts-and-lemon.jpg"
+  "image": "/recipes/tagliatelle-with-walnuts-and-lemon.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

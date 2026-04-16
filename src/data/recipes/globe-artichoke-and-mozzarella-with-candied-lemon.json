@@ -3,7 +3,8 @@
   "name": "Globe Artichoke and Mozzarella with Candied Lemon",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -68,5 +69,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/globe-artichoke-and-mozzarella-with-candied-lemon.jpg"
+  "image": "/recipes/globe-artichoke-and-mozzarella-with-candied-lemon.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

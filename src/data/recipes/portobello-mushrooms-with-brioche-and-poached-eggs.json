@@ -3,7 +3,8 @@
   "name": "Portobello mushrooms with brioche and poached eggs",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 4",
   "intro": "then get the eggs poaching. This works as well as a starter late in the day as it",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/portobello-mushrooms-with-brioche-and-poached-eggs.jpg"
+  "image": "/recipes/portobello-mushrooms-with-brioche-and-poached-eggs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

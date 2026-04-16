@@ -3,7 +3,8 @@
   "name": "Baked mint rice with pomegranate and olive salsa",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 6",
   "intro": "be surprisingly difficult, for some, to get right. Baking it in the oven, on the other",
@@ -73,5 +74,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/baked-mint-rice-with-pomegranate-and-olive-salsa.jpg"
+  "image": "/recipes/baked-mint-rice-with-pomegranate-and-olive-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

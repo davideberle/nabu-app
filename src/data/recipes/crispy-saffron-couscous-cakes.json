@@ -3,7 +3,8 @@
   "name": "Crispy Saffron Couscous Cakes",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 20",
   "intro": "Cook the noodles as instructed on the package. While you do this, heat up the",
@@ -49,5 +50,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
   }
 }

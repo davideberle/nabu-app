@@ -3,7 +3,8 @@
   "name": "Horchata Cupcakes",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Desserts"
   },
   "ingredients": [
     {
@@ -105,9 +106,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
-    "chapter": ""
+    "chapter": "Mexican Desserts"
   },
   "cuisine": "Mexican"
 }

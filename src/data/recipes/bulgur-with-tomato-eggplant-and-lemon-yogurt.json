@@ -3,7 +3,8 @@
   "name": "Bulgur with tomato, eggplant, and lemon yogurt",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
   "intro": "though, it makes a satisfying vegetarian main. You can make all the elements up",
@@ -78,5 +79,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/bulgur-with-tomato-eggplant-and-lemon-yogurt.jpg"
+  "image": "/recipes/bulgur-with-tomato-eggplant-and-lemon-yogurt.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

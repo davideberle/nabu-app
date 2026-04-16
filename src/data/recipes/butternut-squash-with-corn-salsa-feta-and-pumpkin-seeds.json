@@ -3,7 +3,8 @@
   "name": "Butternut squash with corn salsa, feta, and pumpkin seeds",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "You’ll get more of a bite on your charred corn if you start with fresh kernels, as I",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds.jpg"
+  "image": "/recipes/butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Aunt Priew’s Halo Halo",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Drinks and Desserts"
   },
   "servings": "serves 6",
   "intro": "You’re right in thinking this is not a Thai dessert. In fact, it’s Filipino. My Aunt Priew learned this",
@@ -79,5 +80,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/aunt-priew-s-halo-halo.jpg"
+  "image": "/recipes/aunt-priew-s-halo-halo.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Drinks and Desserts"
+  }
 }

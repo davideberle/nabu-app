@@ -3,7 +3,8 @@
   "name": "Grilled Ziti With Feta",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 6",
   "intro": "Place a ridged grill pan over high heat and let it turn red-hot. Cook the squash",
@@ -82,5 +83,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
   }
 }

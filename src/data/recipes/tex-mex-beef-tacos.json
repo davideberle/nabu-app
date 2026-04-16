@@ -3,7 +3,8 @@
   "name": "Tex-Mex Beef Tacos",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -60,7 +61,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

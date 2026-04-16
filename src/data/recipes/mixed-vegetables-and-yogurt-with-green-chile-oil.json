@@ -3,7 +3,8 @@
   "name": "Mixed Vegetables and Yogurt with Green Chile Oil",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -75,5 +76,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mixed-vegetables-and-yogurt-with-green-chile-oil.jpg"
+  "image": "/recipes/mixed-vegetables-and-yogurt-with-green-chile-oil.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

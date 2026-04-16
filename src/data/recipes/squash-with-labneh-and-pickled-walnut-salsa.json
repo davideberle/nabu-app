@@ -3,7 +3,8 @@
   "name": "Squash With Labneh And Pickled Walnut Salsa",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "intro": "garlic. Fry for just 30 seconds, until the garlic is golden. With a slotted spoon,",
@@ -70,5 +71,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/squash-with-labneh-and-pickled-walnut-salsa.jpg"
+  "image": "/recipes/squash-with-labneh-and-pickled-walnut-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
+  }
 }

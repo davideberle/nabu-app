@@ -3,7 +3,8 @@
   "name": "Greek Salad with Lettuce and Lemon Garlic Dressing",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Salads"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -88,7 +89,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Salads"
   },
   "cuisine": "Greek"
 }

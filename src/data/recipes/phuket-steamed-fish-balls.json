@@ -3,7 +3,8 @@
   "name": "Phuket Steamed Fish Balls",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Southern Thai"
   },
   "servings": "serves 4",
   "intro": "Little did I realize that big steamed fi sh balls were a thing in Phuket, particularly for breakfast or",
@@ -114,5 +115,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/phuket-steamed-fish-balls.jpg"
+  "image": "/recipes/phuket-steamed-fish-balls.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Southern Thai"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Lime Slaw",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -58,7 +59,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Dinner Recipes"
   },
   "cuisine": "Mexican"
 }

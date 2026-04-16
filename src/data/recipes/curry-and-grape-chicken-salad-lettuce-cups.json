@@ -3,7 +3,8 @@
   "name": "Curry and Grape Chicken Salad Lettuce Cups",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -66,5 +67,9 @@
   "time": {
     "total": 15
   },
-  "image": "/recipes/curry-and-grape-chicken-salad-lettuce-cups.jpg"
+  "image": "/recipes/curry-and-grape-chicken-salad-lettuce-cups.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

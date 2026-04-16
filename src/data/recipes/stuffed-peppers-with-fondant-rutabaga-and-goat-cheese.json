@@ -3,7 +3,8 @@
   "name": "Stuffed Peppers with Fondant Rutabaga and Goat Cheese",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/stuffed-peppers-with-fondant-rutabaga-and-goat-cheese.jpg"
+  "image": "/recipes/stuffed-peppers-with-fondant-rutabaga-and-goat-cheese.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Scrambled harissa tofu",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 6",
   "intro": "salad alongside. It’s also lovely with a sprinkle of crispy fried shallots. If you think",
@@ -72,5 +73,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/scrambled-harissa-tofu.jpg"
+  "image": "/recipes/scrambled-harissa-tofu.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

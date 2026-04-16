@@ -3,7 +3,8 @@
   "name": "Green Beans with Freekeh and Tahini",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -62,5 +63,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/green-beans-with-freekeh-and-tahini.jpg"
+  "image": "/recipes/green-beans-with-freekeh-and-tahini.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

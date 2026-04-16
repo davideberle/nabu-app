@@ -3,7 +3,8 @@
   "name": "Fregola And Artichoke Pilaf",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "Cook for 20 minutes, stirring occasionally, until soft and golden brown. Stir",
@@ -85,5 +86,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
   }
 }

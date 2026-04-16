@@ -3,7 +3,8 @@
   "name": "Sankaya Fuk Tong Pumpkin Custard",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Drinks and Desserts"
   },
   "servings": "serves 4",
   "intro": "a colorful life as the wife of a French merchant who was killed during the 1688 Siamese revolution.",
@@ -48,5 +49,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sankaya-fuk-tong-pumpkin-custard.jpg"
+  "image": "/recipes/sankaya-fuk-tong-pumpkin-custard.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Drinks and Desserts"
+  }
 }

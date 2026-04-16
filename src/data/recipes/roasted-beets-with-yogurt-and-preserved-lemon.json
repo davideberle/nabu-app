@@ -3,7 +3,8 @@
   "name": "Roasted beets with yogurt and preserved lemon",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "before serving, even. If you do so, just hold back on the dill and the tahini yogurt",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-beets-with-yogurt-and-preserved-lemon.jpg"
+  "image": "/recipes/roasted-beets-with-yogurt-and-preserved-lemon.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

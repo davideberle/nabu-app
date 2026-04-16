@@ -3,7 +3,8 @@
   "name": "French Croque Madame",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Breakfast Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -69,9 +70,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "French Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

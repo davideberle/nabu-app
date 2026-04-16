@@ -3,7 +3,8 @@
   "name": "Curry Salmon with Broccoli",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -55,5 +56,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-salmon-with-broccoli.jpg"
+  "image": "/recipes/curry-salmon-with-broccoli.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

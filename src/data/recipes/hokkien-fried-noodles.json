@@ -3,7 +3,8 @@
   "name": "Hokkien Fried Noodles",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Southern Thai"
   },
   "servings": "serves 4",
   "intro": "version, we add a fried egg on top (sunny-side up with a runny yolk,",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/hokkien-fried-noodles.jpg"
+  "image": "/recipes/hokkien-fried-noodles.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Southern Thai"
+  }
 }

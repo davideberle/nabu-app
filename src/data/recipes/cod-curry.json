@@ -3,7 +3,8 @@
   "name": "Cod Curry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -86,5 +87,9 @@
   "time": {
     "total": 55
   },
-  "image": "/recipes/cod-curry.jpg"
+  "image": "/recipes/cod-curry.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

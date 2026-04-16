@@ -3,7 +3,8 @@
   "name": "Smoked Beets With Yogurt And Caramelized Macadamias",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Roasted"
   },
   "servings": "serves 4",
   "intro": "sprouts in two, lengthwise, and halve or quarter the shallots (so that they are",
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/smoked-beets-with-yogurt-and-caramelized-macadamias.jpg"
+  "image": "/recipes/smoked-beets-with-yogurt-and-caramelized-macadamias.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Roasted"
+  }
 }

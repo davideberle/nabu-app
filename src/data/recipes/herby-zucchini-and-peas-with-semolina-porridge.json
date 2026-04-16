@@ -3,7 +3,8 @@
   "name": "Herby zucchini and peas with semolina porridge",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "The semolina porridge is a super-comforting base to all sorts of toppings. It works",
@@ -75,5 +76,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/herby-zucchini-and-peas-with-semolina-porridge.jpg"
+  "image": "/recipes/herby-zucchini-and-peas-with-semolina-porridge.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Curry Salmon with Mango",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curry-salmon-with-mango.jpg"
+  "image": "/recipes/curry-salmon-with-mango.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

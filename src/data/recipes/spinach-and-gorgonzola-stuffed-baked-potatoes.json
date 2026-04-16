@@ -3,7 +3,8 @@
   "name": "Spinach and Gorgonzola–stuffed baked potatoes",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 2",
   "intro": "or prefer—it’ll work just as well. This is either a meal in itself, to serve two, or",
@@ -56,5 +57,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spinach-and-gorgonzola-stuffed-baked-potatoes.jpg"
+  "image": "/recipes/spinach-and-gorgonzola-stuffed-baked-potatoes.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

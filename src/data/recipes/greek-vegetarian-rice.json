@@ -3,7 +3,8 @@
   "name": "Greek Vegetarian Rice",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Vegetarian Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -82,7 +83,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

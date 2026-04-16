@@ -3,7 +3,8 @@
   "name": "Fava Beans With Lemon And Cilantro",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 6",
   "intro": "before spooning the vegetables over the rice. Finish with a drizzle of oil, a bit",
@@ -43,5 +44,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
   }
 }

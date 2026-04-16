@@ -3,7 +3,8 @@
   "name": "Curry Laksa",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "them. Stir together the herbs, olive oil, and garlic and season with ¼ teaspoon",
@@ -96,5 +97,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
   }
 }

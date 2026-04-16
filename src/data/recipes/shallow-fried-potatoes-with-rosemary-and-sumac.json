@@ -3,7 +3,8 @@
   "name": "Shallow-fried potatoes with rosemary and sumac",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "very long time. Its color and kick means it’s a great way to shake up all sorts of",
@@ -46,5 +47,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/shallow-fried-potatoes-with-rosemary-and-sumac.jpg"
+  "image": "/recipes/shallow-fried-potatoes-with-rosemary-and-sumac.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

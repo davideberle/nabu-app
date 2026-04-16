@@ -3,7 +3,8 @@
   "name": "Chicken Fajitas",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Dinner Recipes"
   },
   "ingredients": [
     {
@@ -109,5 +110,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Mexican Dinner Recipes"
   }
 }

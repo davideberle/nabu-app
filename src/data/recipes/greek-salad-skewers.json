@@ -3,7 +3,8 @@
   "name": "Greek Salad Skewers",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Appetizers and Snacks"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -68,7 +69,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Appetizers and Snacks"
   },
   "cuisine": "Greek"
 }

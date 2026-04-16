@@ -3,7 +3,8 @@
   "name": "Fried Upma with Poached Egg",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "Place all the ingredients for the basil oil and a pinch of salt in the bowl of a",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fried-upma-with-poached-egg.jpg"
+  "image": "/recipes/fried-upma-with-poached-egg.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

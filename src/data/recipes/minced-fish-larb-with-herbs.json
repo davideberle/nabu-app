@@ -3,7 +3,8 @@
   "name": "Minced Fish Larb with Herbs",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 4",
   "intro": "restaurant, I always end up ordering the fi sh larb, and it’s always incredibly delicious.",
@@ -50,5 +51,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/minced-fish-larb-with-herbs.jpg"
+  "image": "/recipes/minced-fish-larb-with-herbs.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

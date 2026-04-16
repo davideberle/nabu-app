@@ -3,7 +3,8 @@
   "name": "Greek Aborigine and Lamb Pasticcio",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Dinner Recipes"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -86,7 +87,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner Recipes"
   },
   "cuisine": "Mediterranean"
 }

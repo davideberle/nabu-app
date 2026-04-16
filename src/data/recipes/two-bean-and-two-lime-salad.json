@@ -3,7 +3,8 @@
   "name": "Two bean and two lime salad",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "you serve. It will keep for up to 6 hours in the fridge. If you can’t get hold of fresh",
@@ -65,5 +66,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/two-bean-and-two-lime-salad.jpg"
+  "image": "/recipes/two-bean-and-two-lime-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

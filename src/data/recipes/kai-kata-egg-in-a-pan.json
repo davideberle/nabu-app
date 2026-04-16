@@ -3,7 +3,8 @@
   "name": "Kai Kata Egg in a Pan",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 2",
   "intro": "requested American-style breakfasts from local cooks. The cooks’ efforts, which utilized local ingredients,",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/kai-kata-egg-in-a-pan.jpg"
+  "image": "/recipes/kai-kata-egg-in-a-pan.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

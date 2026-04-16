@@ -3,7 +3,8 @@
   "name": "Sweet potato mash with lime salsa",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "This is delicious alongside all sorts of things: grilled chops, for example, grilled",
@@ -55,5 +56,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sweet-potato-mash-with-lime-salsa.jpg"
+  "image": "/recipes/sweet-potato-mash-with-lime-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

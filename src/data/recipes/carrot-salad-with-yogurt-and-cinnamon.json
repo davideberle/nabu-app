@@ -3,7 +3,8 @@
   "name": "Carrot salad with yogurt and cinnamon",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "lovely colorful addition to all sorts of feasts: great served alongside the couscous",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/carrot-salad-with-yogurt-and-cinnamon.jpg"
+  "image": "/recipes/carrot-salad-with-yogurt-and-cinnamon.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

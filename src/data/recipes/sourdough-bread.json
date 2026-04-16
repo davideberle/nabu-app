@@ -3,7 +3,8 @@
   "name": "Sourdough Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -145,7 +146,7 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/sourdough-bread.jpg"

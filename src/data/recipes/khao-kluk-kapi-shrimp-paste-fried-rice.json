@@ -3,7 +3,8 @@
   "name": "Khao Kluk Kapi Shrimp Paste Fried Rice",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Bangkok and Central Thai"
   },
   "servings": "serves 4",
   "intro": "preparation but the actual cooking is fairly simple. The fi nal fl avors are a melange of salty, sour,",
@@ -52,5 +53,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/khao-kluk-kapi-shrimp-paste-fried-rice.jpg"
+  "image": "/recipes/khao-kluk-kapi-shrimp-paste-fried-rice.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Bangkok and Central Thai"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "French Coconut Pie",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Dessert Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -60,7 +61,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "French Dessert Recipes"
   },
   "cuisine": "Mediterranean"
 }

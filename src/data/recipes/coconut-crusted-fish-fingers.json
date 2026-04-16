@@ -3,7 +3,8 @@
   "name": "Coconut-crusted fish fingers",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 4",
   "intro": "let simmer for 15 minutes, stirring from time to time, until the sauce is thick.",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/coconut-crusted-fish-fingers.jpg"
+  "image": "/recipes/coconut-crusted-fish-fingers.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
+  }
 }

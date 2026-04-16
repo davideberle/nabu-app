@@ -3,7 +3,8 @@
   "name": "Sprout Salad (right), Sprout Salad, Part 2 (left)",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "Put the oranges, dates, radishes, onion, arugula, lettuce, cilantro, parsley, and",
@@ -65,5 +66,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
   }
 }

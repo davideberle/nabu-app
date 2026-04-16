@@ -3,7 +3,8 @@
   "name": "Pizza bianca with potato, anchovy, and sage",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 2",
   "intro": "Making your own pizza dough is easy, rolling it out is fun, and it’s a great thing to",
@@ -75,5 +76,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pizza-bianca-with-potato-anchovy-and-sage.jpg"
+  "image": "/recipes/pizza-bianca-with-potato-anchovy-and-sage.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

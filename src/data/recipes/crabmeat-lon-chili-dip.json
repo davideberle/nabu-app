@@ -3,7 +3,8 @@
   "name": "Crabmeat “Lon” Chili Dip",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Dips and Sauces"
   },
   "servings": "serves 4",
   "intro": "coconut milk. Maybe these contradictions are why this particular dip is not often found on menus abroad.",
@@ -76,5 +77,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/crabmeat-lon-chili-dip.jpg"
+  "image": "/recipes/crabmeat-lon-chili-dip.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dips and Sauces"
+  }
 }

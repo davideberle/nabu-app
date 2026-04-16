@@ -3,7 +3,8 @@
   "name": "Slow-Cooker Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -75,7 +76,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/slow-cooker-bread.jpg"

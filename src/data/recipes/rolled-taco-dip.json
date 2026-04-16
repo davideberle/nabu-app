@@ -3,7 +3,8 @@
   "name": "Rolled Taco Dip",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Snack Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -64,9 +65,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Snack Recipes"
   },
   "cuisine": "Mexican"
 }

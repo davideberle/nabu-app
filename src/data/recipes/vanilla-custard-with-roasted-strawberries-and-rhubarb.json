@@ -3,7 +3,8 @@
   "name": "Vanilla custard with roasted strawberries and rhubarb",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 8",
   "intro": "fridge until ready to assemble. Serve this with some shortbread alongside, if you’re",
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/vanilla-custard-with-roasted-strawberries-and-rhubarb.jpg"
+  "image": "/recipes/vanilla-custard-with-roasted-strawberries-and-rhubarb.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

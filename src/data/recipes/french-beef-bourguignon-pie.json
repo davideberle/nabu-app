@@ -3,7 +3,8 @@
   "name": "French Beef Bourguignon Pie",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Lunch Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -102,7 +103,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "French Lunch Recipes"
   },
   "cuisine": "Mediterranean"
 }

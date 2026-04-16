@@ -3,7 +3,8 @@
   "name": "Pomelo Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "when cool enough to handle, roughly crush with the flat side of a large knife.",
@@ -86,5 +87,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pomelo-salad.jpg"
+  "image": "/recipes/pomelo-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Brussels Sprout Risotto",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "the sage, and fry for about 2 minutes, until the butter starts to brown. Add the",
@@ -67,5 +68,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
   }
 }

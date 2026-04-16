@@ -3,7 +3,8 @@
   "name": "Hot-and-Sour Mushroom Soup",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 6",
   "intro": "Remove the lid, add the vinegar, olives, and almonds, and stir gently. Sprinkle",
@@ -106,5 +107,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/hot-and-sour-mushroom-soup.jpg"
+  "image": "/recipes/hot-and-sour-mushroom-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

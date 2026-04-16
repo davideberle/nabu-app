@@ -3,7 +3,8 @@
   "name": "Melitzanosalata Recipe (Greek Eggplant Dip)",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Lunch"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -82,7 +83,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Lunch"
   },
   "cuisine": "Greek"
 }

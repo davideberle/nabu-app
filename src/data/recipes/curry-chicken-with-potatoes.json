@@ -3,7 +3,8 @@
   "name": "Curry Chicken with Potatoes",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 5",
   "ingredients": [
@@ -97,5 +98,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-chicken-with-potatoes.jpg"
+  "image": "/recipes/curry-chicken-with-potatoes.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

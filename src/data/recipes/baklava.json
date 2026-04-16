@@ -3,7 +3,8 @@
   "name": "Baklava",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Desserts"
   },
   "servings": "serves 18",
   "ingredients": [
@@ -64,7 +65,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "Greek Desserts"
   },
   "cuisine": "Greek"
 }

@@ -3,7 +3,8 @@
   "name": "Greek Spanakopita Spring Rolls",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Snack Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -83,7 +84,7 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "Greek Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

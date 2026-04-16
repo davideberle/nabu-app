@@ -3,7 +3,8 @@
   "name": "Carrot and Mung Bean Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Roasted"
   },
   "servings": "serves 4",
   "intro": "To arrange, spread the eggplant slices out on a platter or individual plates.",
@@ -68,5 +69,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/carrot-and-mung-bean-salad.jpg"
+  "image": "/recipes/carrot-and-mung-bean-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Roasted"
+  }
 }

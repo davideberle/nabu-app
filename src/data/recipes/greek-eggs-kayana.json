@@ -3,7 +3,8 @@
   "name": "Greek Eggs Kayana",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Breakfast"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -68,7 +69,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast"
   },
   "cuisine": "Greek"
 }

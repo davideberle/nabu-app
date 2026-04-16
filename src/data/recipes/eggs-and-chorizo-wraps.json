@@ -3,7 +3,8 @@
   "name": "Eggs and Chorizo Wraps",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Breakfast Recipes"
   },
   "ingredients": [
     {
@@ -57,7 +58,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Mexican Breakfast Recipes"
   },
   "cuisine": "Mexican"
 }

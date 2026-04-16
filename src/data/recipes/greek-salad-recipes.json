@@ -3,7 +3,8 @@
   "name": "Greek Salad Recipes",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Lunch Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -106,7 +107,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Lunch Recipes"
   },
   "cuisine": "Mediterranean"
 }

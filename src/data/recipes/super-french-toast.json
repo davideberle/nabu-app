@@ -3,7 +3,8 @@
   "name": "Super French Toast",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 8",
   "intro": "brush with butter. Place under the broiler for up to 2 minutes, until lightly",
@@ -66,5 +67,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/super-french-toast.jpg"
+  "image": "/recipes/super-french-toast.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }
