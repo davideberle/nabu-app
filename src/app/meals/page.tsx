@@ -15,6 +15,7 @@ type RecipeOption = {
   cuisine: string;
   time: { prep: number; cook: number; total: number } | null;
   category: string;
+  lowCalorie?: boolean;
 };
 
 type WeekendMealCombo = {
@@ -174,6 +175,7 @@ function formatPlannerTime(totalMin: number | undefined | null): string | null {
   return `${clamped} min`;
 }
 
+
 // ----- autosave hook -----
 
 function useAutosave(plan: MealPlan | null, delayMs = 1500) {
@@ -237,6 +239,8 @@ export default function MealsPage() {
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
+  const [filterLowCal, setFilterLowCal] = useState(false);
+  const [planLoading, setPlanLoading] = useState(true);
 
   // Track all shown recipe IDs for "Show More" exclusion
   const [shownIds, setShownIds] = useState<Set<string>>(new Set());
@@ -262,6 +266,10 @@ export default function MealsPage() {
 
   // Load existing plan when tab changes
   useEffect(() => {
+    // Clear stale plan immediately to prevent autosave from writing
+    // old/empty data over a saved plan while the fetch is in flight.
+    setPlan(null);
+    setPlanLoading(true);
     setWeekdayOptions([]);
     setWeekendOptions([]);
     setWeekendMeals([]);
@@ -271,16 +279,24 @@ export default function MealsPage() {
     setShownIds(new Set());
     setShowContextEditor(false);
 
+    let cancelled = false;
     fetch(`/api/meals/plan?week=${weekId}`)
       .then((r) => r.json())
       .then((data: MealPlan | null) => {
+        if (cancelled) return;
         if (data && data.week) {
           setPlan(data);
         } else {
           setPlan(null);
         }
       })
-      .catch(() => setPlan(null));
+      .catch(() => {
+        if (!cancelled) setPlan(null);
+      })
+      .finally(() => {
+        if (!cancelled) setPlanLoading(false);
+      });
+    return () => { cancelled = true; };
   }, [weekId]);
 
   // Generate meal options (initial)
@@ -355,7 +371,7 @@ export default function MealsPage() {
 
   // Assign recipe to a day slot
   function handleSlotClick(dayIndex: number) {
-    if (!plan || plan.locked || !selectedRecipe) return;
+    if (!plan || plan.locked || !selectedRecipe || planLoading) return;
     const newDays = [...plan.days];
     newDays[dayIndex] = {
       ...newDays[dayIndex],
@@ -499,10 +515,12 @@ export default function MealsPage() {
           <div className="flex items-center gap-2 mb-2">
             <button
               onClick={() => {
+                if (planLoading) return;
                 if (!plan) setPlan(buildEmptyPlan());
                 setShowContextEditor(!showContextEditor);
               }}
-              className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex items-center gap-1.5 transition-colors"
+              disabled={planLoading}
+              className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
             >
               <span className="text-base">&#128221;</span>
               {showContextEditor ? "Hide week notes" : "Week notes & context"}
@@ -626,7 +644,7 @@ export default function MealsPage() {
 
         {/* Action buttons */}
         <div className="flex gap-3 mb-6">
-          {!plan?.locked && !hasOptions && (
+          {!plan?.locked && !hasOptions && !planLoading && (
             <button
               onClick={handleGenerate}
               disabled={loading}
@@ -682,6 +700,20 @@ export default function MealsPage() {
         {/* Recipe option cards */}
         {hasOptions && !plan?.locked && (
           <div className="space-y-8">
+            {/* Filter controls */}
+            <div className="flex gap-2">
+              <button
+                onClick={() => setFilterLowCal(!filterLowCal)}
+                className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
+                  filterLowCal
+                    ? "bg-cyan-600 text-white"
+                    : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+                }`}
+              >
+                Low-Calorie
+              </button>
+            </div>
+
             {/* Weekday options */}
             {weekdayOptions.length > 0 && (
               <div>
@@ -689,7 +721,9 @@ export default function MealsPage() {
                   Weekday Options
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {weekdayOptions.map((r) => (
+                  {weekdayOptions
+                    .filter((r) => !filterLowCal || r.lowCalorie)
+                    .map((r) => (
                     <RecipeCard
                       key={r.id}
                       recipe={r}
@@ -716,7 +750,9 @@ export default function MealsPage() {
                   Weekend &mdash; Build a Meal
                 </h2>
                 <div className="space-y-4">
-                  {weekendMeals.map((combo) => (
+                  {weekendMeals
+                    .filter((combo) => !filterLowCal || combo.main.lowCalorie)
+                    .map((combo) => (
                     <WeekendMealCard
                       key={combo.main.id}
                       combo={combo}
@@ -743,7 +779,9 @@ export default function MealsPage() {
                   Weekend Options
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {weekendOptions.map((r) => (
+                  {weekendOptions
+                    .filter((r) => !filterLowCal || r.lowCalorie)
+                    .map((r) => (
                     <RecipeCard
                       key={r.id}
                       recipe={r}
@@ -1036,6 +1074,11 @@ function RecipeCard({
               {t}
             </span>
           ))}
+          {recipe.lowCalorie && (
+            <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
+              low-cal
+            </span>
+          )}
         </div>
 
         {/* Name */}
@@ -1150,6 +1193,11 @@ function WeekendMealCard({
                   {t}
                 </span>
               ))}
+              {main.lowCalorie && (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
+                  low-cal
+                </span>
+              )}
             </div>
             <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-2">
               {main.name}
@@ -1324,6 +1372,11 @@ function QuickViewModal({
                 {recipe.servings && (
                   <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
                     {recipe.servings}
+                  </span>
+                )}
+                {recipe.lowCalorie && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
+                    low-cal
                   </span>
                 )}
               </div>
