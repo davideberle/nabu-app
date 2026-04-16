@@ -94,9 +94,15 @@ const staticRecipes: Recipe[] = (recipesBundle as Recipe[])
   .filter((r) => r.source?.cookbook !== "My Recipes")
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// On Vercel builds without Turso configured, the local SQLite fallback doesn't
+// exist.  Skip DB access in that case — static recipes are sufficient for
+// prerendering; My Recipes are fetched at runtime when the Turso URL is set.
+const canAccessDb =
+  !!process.env.TURSO_DATABASE_URL || !process.env.VERCEL;
+
 // Deduplicated fetch of all recipes (static + Turso My Recipes) per request
 export const getAllRecipes = cache(async (): Promise<Recipe[]> => {
-  const myRecipes = await getAllMyRecipes();
+  const myRecipes = canAccessDb ? await getAllMyRecipes() : [];
   return [...staticRecipes, ...myRecipes].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
@@ -106,8 +112,8 @@ export async function getRecipe(id: string): Promise<Recipe | undefined> {
   // Check static first (fast path for the vast majority)
   const staticHit = staticRecipes.find((r) => r.id === id);
   if (staticHit) return staticHit;
-  // Fall back to Turso for My Recipes
-  return getMyRecipe(id);
+  // Fall back to Turso for My Recipes (skip if DB unavailable at build time)
+  return canAccessDb ? getMyRecipe(id) : undefined;
 }
 
 export async function getRecipesByChapter(
