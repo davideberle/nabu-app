@@ -3,7 +3,8 @@
   "name": "Baked Pasta with Broccoli, Olives and Pancetta",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Breakfast Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -73,7 +74,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Breakfast Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/baked-pasta-with-broccoli-olives-and-pancetta.jpg"

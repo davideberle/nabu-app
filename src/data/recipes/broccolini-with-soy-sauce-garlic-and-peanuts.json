@@ -3,7 +3,8 @@
   "name": "Broccolini with soy sauce, garlic, and peanuts",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "This is also lovely with (an equal quantity of ) choy sum, if you prefer, instead of",
@@ -57,5 +58,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/broccolini-with-soy-sauce-garlic-and-peanuts.jpg"
+  "image": "/recipes/broccolini-with-soy-sauce-garlic-and-peanuts.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

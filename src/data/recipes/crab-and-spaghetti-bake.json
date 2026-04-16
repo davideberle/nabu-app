@@ -3,7 +3,8 @@
   "name": "Crab and Spaghetti Bake",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Breakfast Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -80,7 +81,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Breakfast Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/crab-and-spaghetti-bake.jpg"

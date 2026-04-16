@@ -3,7 +3,8 @@
   "name": "Protein Zucchini Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -84,7 +85,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/protein-zucchini-bread.jpg"

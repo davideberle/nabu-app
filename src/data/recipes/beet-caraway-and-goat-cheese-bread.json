@@ -3,7 +3,8 @@
   "name": "Beet, caraway, and goat cheese bread",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 1",
   "intro": "oven rather than in the toaster, as it’s quite crumbly. Once baked, it will keep in",
@@ -92,5 +93,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/beet-caraway-and-goat-cheese-bread.jpg"
+  "image": "/recipes/beet-caraway-and-goat-cheese-bread.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

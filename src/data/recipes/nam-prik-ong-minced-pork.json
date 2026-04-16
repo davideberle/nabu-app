@@ -3,7 +3,8 @@
   "name": "Nam Prik Ong Minced Pork",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 4",
   "intro": "the Italian meat ragu. It is not meant to be spicy and is most often eaten with pork",
@@ -48,5 +49,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nam-prik-ong-minced-pork.jpg"
+  "image": "/recipes/nam-prik-ong-minced-pork.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

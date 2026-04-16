@@ -3,7 +3,8 @@
   "name": "Parsley, Lemon, And Cannellini Bean Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are",
@@ -48,5 +49,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
   }
 }

@@ -3,7 +3,8 @@
   "name": "Crushed Puy Lentils with Tahini and Cumin",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Mashed"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -67,5 +68,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/crushed-puy-lentils-with-tahini-and-cumin.jpg"
+  "image": "/recipes/crushed-puy-lentils-with-tahini-and-cumin.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Mashed"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Zucchini and Cheese Quesadillas",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Dinner Recipes"
   },
   "ingredients": [
     {
@@ -65,7 +66,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Dinner Recipes"
   },
   "cuisine": "Mexican"
 }

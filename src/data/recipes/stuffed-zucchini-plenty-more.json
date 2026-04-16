@@ -3,7 +3,8 @@
   "name": "Stuffed Zucchini",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 6",
   "intro": "retaining a bite. Stir the remaining 2 tablespoons oil through the pasta, mix,",
@@ -95,5 +96,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
   }
 }

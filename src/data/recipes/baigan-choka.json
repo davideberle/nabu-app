@@ -3,7 +3,8 @@
   "name": "Baigan Choka",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 2",
   "intro": "or at room temperature, stirring in the remaining cilantro at the last minute.",
@@ -47,5 +48,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
   }
 }

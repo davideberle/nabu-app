@@ -3,7 +3,8 @@
   "name": "Mushrooms, Garlic, and Shallots with Lemon Ricotta",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mushrooms-garlic-and-shallots-with-lemon-ricotta.jpg"
+  "image": "/recipes/mushrooms-garlic-and-shallots-with-lemon-ricotta.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
+  }
 }

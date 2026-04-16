@@ -3,7 +3,8 @@
   "name": "Eggplant Kadaifi Nests",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "intro": "the edges together firmly to form a secure, decorative lip over the edge of the",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-kadaifi-nests.jpg"
+  "image": "/recipes/eggplant-kadaifi-nests.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

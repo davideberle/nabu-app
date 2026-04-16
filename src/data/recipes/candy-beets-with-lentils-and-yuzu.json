@@ -3,7 +3,8 @@
   "name": "Candy Beets with Lentils and Yuzu",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "Bring a large pot of water to a boil, throw in the cauliflower, and blanch for",
@@ -57,5 +58,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/candy-beets-with-lentils-and-yuzu.jpg"
+  "image": "/recipes/candy-beets-with-lentils-and-yuzu.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

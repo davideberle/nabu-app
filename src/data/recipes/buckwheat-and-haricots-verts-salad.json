@@ -3,7 +3,8 @@
   "name": "Buckwheat and haricots verts salad",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
   "intro": "This is either lovely as it is or served with some pan-fried salmon. It’s quick to",
@@ -77,5 +78,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/buckwheat-and-haricots-verts-salad.jpg"
+  "image": "/recipes/buckwheat-and-haricots-verts-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Eggplant Pahi",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "fry for 5 minutes, stirring frequently, until the onion is charred and soft. Add",
@@ -82,5 +83,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-pahi.jpg"
+  "image": "/recipes/eggplant-pahi.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

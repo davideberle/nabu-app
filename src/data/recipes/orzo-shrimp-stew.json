@@ -3,7 +3,8 @@
   "name": "Orzo Shrimp Stew",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Seafood Pasta Recipes"
   },
   "ingredients": [
     {
@@ -47,7 +48,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Seafood Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/orzo-shrimp-stew.jpg"

@@ -3,7 +3,8 @@
   "name": "Puy lentil and eggplant stew",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
   "intro": "though equally delicious, are completely different from one another. It’s one of the",
@@ -75,5 +76,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/puy-lentil-and-eggplant-stew.jpg"
+  "image": "/recipes/puy-lentil-and-eggplant-stew.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

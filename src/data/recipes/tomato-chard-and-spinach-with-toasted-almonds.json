@@ -3,7 +3,8 @@
   "name": "Tomato, chard, and spinach with toasted almonds",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "rice, or sprinkled with feta. It’s also good as an accompaniment to chicken or sh,",
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tomato-chard-and-spinach-with-toasted-almonds.jpg"
+  "image": "/recipes/tomato-chard-and-spinach-with-toasted-almonds.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

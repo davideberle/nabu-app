@@ -3,7 +3,8 @@
   "name": "Greek Breakfast Egg Skillet with Feta and Sautéed Veggies",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Breakfast"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -63,7 +64,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast"
   },
   "cuisine": "Greek"
 }

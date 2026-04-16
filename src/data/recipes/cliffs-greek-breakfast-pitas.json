@@ -3,7 +3,8 @@
   "name": "Cliff's Greek Breakfast Pitas",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Breakfast"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -99,9 +100,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast"
   },
   "cuisine": "Greek"
 }

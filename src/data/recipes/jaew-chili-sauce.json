@@ -3,7 +3,8 @@
   "name": "Jaew Chili Sauce",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Dips and Sauces"
   },
   "servings": "serves 4",
   "intro": "It was diffi cult for me to focus on one recipe for jaew to feature in this",
@@ -45,5 +46,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/jaew-chili-sauce.jpg"
+  "image": "/recipes/jaew-chili-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dips and Sauces"
+  }
 }

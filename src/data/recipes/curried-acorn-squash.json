@@ -3,7 +3,8 @@
   "name": "Curried Acorn Squash",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -34,5 +35,9 @@
   "time": {
     "total": 120
   },
-  "image": "/recipes/curried-acorn-squash.jpg"
+  "image": "/recipes/curried-acorn-squash.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

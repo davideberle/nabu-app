@@ -3,7 +3,8 @@
   "name": "Scallops and Shrimp with Linguine",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Seafood Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -78,7 +79,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Seafood Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/scallops-and-shrimp-with-linguine.jpg"

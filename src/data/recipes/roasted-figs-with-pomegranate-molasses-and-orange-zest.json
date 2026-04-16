@@ -3,7 +3,8 @@
   "name": "Roasted Figs with Pomegranate Molasses and Orange Zest",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -55,5 +56,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-figs-with-pomegranate-molasses-and-orange-zest.jpg"
+  "image": "/recipes/roasted-figs-with-pomegranate-molasses-and-orange-zest.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

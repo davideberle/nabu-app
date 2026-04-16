@@ -3,7 +3,8 @@
   "name": "Nutella, sesame, and hazelnut rolls",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 10",
   "intro": "all sorts of deliciousness is easier than it looks. The result is something between a",
@@ -65,5 +66,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nutella-sesame-and-hazelnut-rolls.jpg"
+  "image": "/recipes/nutella-sesame-and-hazelnut-rolls.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

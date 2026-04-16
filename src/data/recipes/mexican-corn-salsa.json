@@ -3,7 +3,8 @@
   "name": "Mexican Corn Salsa",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Lunch Recipes"
   },
   "ingredients": [
     {
@@ -51,7 +52,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Mexican Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

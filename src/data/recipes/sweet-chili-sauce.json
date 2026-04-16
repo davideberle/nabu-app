@@ -3,7 +3,8 @@
   "name": "Sweet Chili Sauce",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Street Eats"
   },
   "servings": "serves 4",
   "intro": "One of my favorite street food spots is Luk Chin Anamai on Soonvijai Road, next to the hospital.",
@@ -105,5 +106,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sweet-chili-sauce.jpg"
+  "image": "/recipes/sweet-chili-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Street Eats"
+  }
 }

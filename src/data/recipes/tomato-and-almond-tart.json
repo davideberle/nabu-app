@@ -3,7 +3,8 @@
   "name": "Tomato and Almond Tart",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 8",
   "intro": "vegetables and sauce into it. Don’t try to level out the mixture too much: it",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tomato-and-almond-tart.jpg"
+  "image": "/recipes/tomato-and-almond-tart.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

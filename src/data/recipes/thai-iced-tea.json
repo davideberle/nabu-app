@@ -3,7 +3,8 @@
   "name": "Thai Iced Tea",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Drinks and Desserts"
   },
   "servings": "serves 2",
   "intro": "is probably the most famous brand of tea mix in Thailand but if you can’t source it, substitutions",
@@ -29,5 +30,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/thai-iced-tea.jpg"
+  "image": "/recipes/thai-iced-tea.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Drinks and Desserts"
+  }
 }

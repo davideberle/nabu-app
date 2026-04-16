@@ -3,7 +3,8 @@
   "name": "Brussels Sprouts With Caramelized Garlic And Lemon Peel",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "Next, dip it into the egg and then, finally, into the spicy bread crumbs, turning",
@@ -49,5 +50,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
   }
 }

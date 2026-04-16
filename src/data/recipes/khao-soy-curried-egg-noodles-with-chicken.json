@@ -3,7 +3,8 @@
   "name": "Khao Soy Curried Egg Noodles with Chicken",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Street Eats"
   },
   "servings": "serves 4",
   "intro": "Out of all the dishes to come out of Thailand in recent years, this one may well be the most popular, found",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/khao-soy-curried-egg-noodles-with-chicken.jpg"
+  "image": "/recipes/khao-soy-curried-egg-noodles-with-chicken.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Street Eats"
+  }
 }

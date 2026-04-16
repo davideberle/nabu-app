@@ -3,7 +3,8 @@
   "name": "Ground Beef Pasta with Garlic-Yogurt Sauce",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Poultry and Meat Pasta Recipes"
   },
   "servings": "serves 5",
   "ingredients": [
@@ -59,7 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Poultry and Meat Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/ground-beef-pasta-with-garlic-yogurt-sauce.jpg"

@@ -3,7 +3,8 @@
   "name": "Roasted eggplant with anchovies and oregano",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "sourdough, but also works as a side to all sorts of things. Roast chicken leftovers",
@@ -55,5 +56,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-eggplant-with-anchovies-and-oregano.jpg"
+  "image": "/recipes/roasted-eggplant-with-anchovies-and-oregano.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

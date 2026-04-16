@@ -3,7 +3,8 @@
   "name": "Greek Orzo Pasta Salad with Vegan Feta",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Vegetarian Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -55,7 +56,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

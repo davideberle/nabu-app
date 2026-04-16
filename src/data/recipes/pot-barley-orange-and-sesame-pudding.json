@@ -3,7 +3,8 @@
   "name": "Pot Barley, Orange, and Sesame Pudding",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -52,5 +53,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pot-barley-orange-and-sesame-pudding.jpg"
+  "image": "/recipes/pot-barley-orange-and-sesame-pudding.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

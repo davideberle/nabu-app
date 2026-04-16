@@ -3,7 +3,8 @@
   "name": "Steamed Eggplant with Sesame and Green Onion",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Steamed"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -55,5 +56,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg"
+  "image": "/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Steamed"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Marrow With Tomato And Feta",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "intro": "so that it gets a light glaze, about 2 tablespoons for all the corn. Sprinkle with",
@@ -53,5 +54,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
   }
 }

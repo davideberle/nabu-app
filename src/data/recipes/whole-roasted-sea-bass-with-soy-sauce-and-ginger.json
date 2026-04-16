@@ -3,7 +3,8 @@
   "name": "Whole roasted sea bass with soy sauce and ginger",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 4",
   "intro": "This is the centerpiece for an Asian-style feast, served with some Thai sticky rice",
@@ -81,5 +82,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/whole-roasted-sea-bass-with-soy-sauce-and-ginger.jpg"
+  "image": "/recipes/whole-roasted-sea-bass-with-soy-sauce-and-ginger.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
+  }
 }

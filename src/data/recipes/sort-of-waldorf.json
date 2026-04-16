@@ -3,7 +3,8 @@
   "name": "Sort-of-Waldorf",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 6",
   "intro": "molasses, olive oil, and a scant ½ teaspoon salt until well combined. Pour this",
@@ -73,5 +74,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sort-of-waldorf.jpg"
+  "image": "/recipes/sort-of-waldorf.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

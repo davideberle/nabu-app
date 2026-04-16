@@ -3,7 +3,8 @@
   "name": "Avocado butter on toast with tomato salsa",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 2",
   "intro": "much of a good thing; the salsa does what all good salsas do, bringing freshness,",
@@ -67,5 +68,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/avocado-butter-on-toast-with-tomato-salsa.jpg"
+  "image": "/recipes/avocado-butter-on-toast-with-tomato-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Mieng Pla Pow Baked Fish",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 6",
   "intro": "to do the hot coals thing, Mark Wiens has a recipe on his website, eatingthaifood.com, for pla pao, the",
@@ -53,5 +54,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mieng-pla-pow-baked-fish.jpg"
+  "image": "/recipes/mieng-pla-pow-baked-fish.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

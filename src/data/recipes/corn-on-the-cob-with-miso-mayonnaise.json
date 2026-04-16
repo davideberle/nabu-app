@@ -3,7 +3,8 @@
   "name": "Corn On The Cob With Miso Mayonnaise",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "intro": "cook, stirring often, for 3 to 4 minutes, until the nuts turn golden brown. Stir",
@@ -58,5 +59,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
   }
 }

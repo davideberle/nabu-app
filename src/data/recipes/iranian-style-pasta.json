@@ -3,7 +3,8 @@
   "name": "Iranian-style Pasta",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "pepper. Chop the mint and fold it into the tomatoes just before serving, as it",
@@ -61,5 +62,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/iranian-style-pasta.jpg"
+  "image": "/recipes/iranian-style-pasta.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

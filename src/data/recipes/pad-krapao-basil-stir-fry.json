@@ -3,7 +3,8 @@
   "name": "Pad Krapao Basil Stir Fry",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Street Eats"
   },
   "servings": "serves 4",
   "intro": "Thailand, but it’s really holy basil stir-fry that millions of Thais eat every day, all over the country.",
@@ -82,5 +83,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pad-krapao-basil-stir-fry.jpg"
+  "image": "/recipes/pad-krapao-basil-stir-fry.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Street Eats"
+  }
 }

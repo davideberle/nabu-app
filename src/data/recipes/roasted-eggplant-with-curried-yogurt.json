@@ -3,7 +3,8 @@
   "name": "Roasted eggplant with curried yogurt",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "sprinkled on top with the pomegranate seeds before serving. If you’re going down",
@@ -80,5 +81,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-eggplant-with-curried-yogurt.jpg"
+  "image": "/recipes/roasted-eggplant-with-curried-yogurt.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Baked Penne with Spinach, Feta and Fontina",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Breakfast Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -63,5 +64,9 @@
   "time": {
     "total": 50
   },
-  "image": "/recipes/baked-penne-with-spinach-feta-and-fontina.jpg"
+  "image": "/recipes/baked-penne-with-spinach-feta-and-fontina.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Breakfast Pasta Recipes"
+  }
 }

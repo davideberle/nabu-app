@@ -3,7 +3,8 @@
   "name": "Avocado Quesadillas",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Breakfast Recipes"
   },
   "ingredients": [
     {
@@ -33,9 +34,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Mexican Breakfast Recipes"
   },
   "cuisine": "Mexican"
 }

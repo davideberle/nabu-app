@@ -3,7 +3,8 @@
   "name": "Eggplant Kuku",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 6",
   "intro": "then pour in half of the red mix to make a shallow omelet. Just before it sets",
@@ -56,5 +57,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-kuku.jpg"
+  "image": "/recipes/eggplant-kuku.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

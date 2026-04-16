@@ -3,7 +3,8 @@
   "name": "Grilled Eggplant Pita Pizzas",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Dinner"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -92,7 +93,7 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner"
   },
   "cuisine": "Greek"
 }

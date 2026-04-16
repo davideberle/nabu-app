@@ -3,7 +3,8 @@
   "name": "Gang Pak Plang Soup with Pork Sausage",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 4",
   "intro": "This is more of a soup and less of a curry. Scratch that: it’s not a curry at all. It’s light and",
@@ -41,5 +42,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/gang-pak-plang-soup-with-pork-sausage.jpg"
+  "image": "/recipes/gang-pak-plang-soup-with-pork-sausage.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

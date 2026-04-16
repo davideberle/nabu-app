@@ -3,7 +3,8 @@
   "name": "Nam Ngiew Pork and Tomato Sauce Noodles",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 10",
   "intro": "This is a great dish for a party or large family gathering.",
@@ -90,5 +91,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nam-ngiew-pork-and-tomato-sauce-noodles.jpg"
+  "image": "/recipes/nam-ngiew-pork-and-tomato-sauce-noodles.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

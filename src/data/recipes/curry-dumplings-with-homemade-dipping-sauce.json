@@ -3,7 +3,8 @@
   "name": "Curry Dumplings with Homemade Dipping Sauce",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -112,5 +113,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-dumplings-with-homemade-dipping-sauce.jpg"
+  "image": "/recipes/curry-dumplings-with-homemade-dipping-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

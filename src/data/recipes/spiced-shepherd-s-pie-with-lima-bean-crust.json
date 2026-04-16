@@ -3,7 +3,8 @@
   "name": "Spiced “shepherd’s pie” with lima bean crust",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat"
   },
   "servings": "serves 6",
   "intro": "where it goes in the oven. If baked straight from the fridge it will need an extra 5–",
@@ -91,5 +92,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Meat"
   }
 }

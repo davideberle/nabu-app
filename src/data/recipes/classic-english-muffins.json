@@ -3,7 +3,8 @@
   "name": "Classic English Muffins",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 15",
   "ingredients": [
@@ -100,7 +101,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/classic-english-muffins.jpg"

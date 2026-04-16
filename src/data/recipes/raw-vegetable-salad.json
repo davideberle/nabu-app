@@ -3,7 +3,8 @@
   "name": "Raw Vegetable Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "each portion, giving it as much height as possible. Carefully dot the salad with",
@@ -60,5 +61,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
   }
 }

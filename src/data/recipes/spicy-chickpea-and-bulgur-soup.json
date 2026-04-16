@@ -3,7 +3,8 @@
   "name": "Spicy Chickpea And Bulgur Soup",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "the lemongrass, prunes, chile, star anise, soy, lime leaves, and cilantro roots.",
@@ -84,5 +85,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spicy-chickpea-and-bulgur-soup.jpg"
+  "image": "/recipes/spicy-chickpea-and-bulgur-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

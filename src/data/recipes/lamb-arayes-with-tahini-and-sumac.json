@@ -3,7 +3,8 @@
   "name": "Lamb arayes with tahini and sumac",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat"
   },
   "servings": "serves 8",
   "intro": "ahead and kept in the fridge. You’re then all set to just ll and fry. Thanks to Sami",
@@ -75,5 +76,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Meat"
   }
 }

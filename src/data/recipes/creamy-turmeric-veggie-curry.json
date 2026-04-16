@@ -3,7 +3,8 @@
   "name": "Creamy Turmeric Veggie Curry",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -61,5 +62,9 @@
   "time": {
     "total": 10
   },
-  "image": "/recipes/creamy-turmeric-veggie-curry.jpg"
+  "image": "/recipes/creamy-turmeric-veggie-curry.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

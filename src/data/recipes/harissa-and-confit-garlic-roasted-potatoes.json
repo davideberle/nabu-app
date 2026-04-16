@@ -3,7 +3,8 @@
   "name": "Harissa and confit garlic roasted potatoes",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "be intimidated! All that it entails, in this context, is slow-cooking the garlic for so",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/harissa-and-confit-garlic-roasted-potatoes.jpg"
+  "image": "/recipes/harissa-and-confit-garlic-roasted-potatoes.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Chicken Enchilada Soup",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Soup Recipes"
   },
   "ingredients": [
     {
@@ -103,7 +104,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": ""
+    "chapter": "Mexican Soup Recipes"
   },
   "cuisine": "Mexican"
 }

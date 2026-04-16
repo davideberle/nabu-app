@@ -3,7 +3,8 @@
   "name": "Chickpea and Cauliflower Tacos",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Vegetarian Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -69,7 +70,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Vegetarian Recipes"
   },
   "cuisine": "Mexican"
 }

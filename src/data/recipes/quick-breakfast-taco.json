@@ -3,7 +3,8 @@
   "name": "Quick Breakfast Taco",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes"
   },
   "servings": "serves 1",
   "ingredients": [
@@ -34,9 +35,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes"
   },
   "cuisine": "Mexican"
 }

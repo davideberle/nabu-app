@@ -3,7 +3,8 @@
   "name": "Pink Grapefruit and Sumac Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "shallots, watercress, peanut oil, lime juice, and ¼ teaspoon salt. Gently toss,",
@@ -56,5 +57,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pink-grapefruit-and-sumac-salad.jpg"
+  "image": "/recipes/pink-grapefruit-and-sumac-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
+  }
 }

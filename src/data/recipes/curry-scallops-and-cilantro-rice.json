@@ -3,7 +3,8 @@
   "name": "Curry Scallops and Cilantro Rice",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -58,5 +59,9 @@
   "time": {
     "total": 25
   },
-  "image": "/recipes/curry-scallops-and-cilantro-rice.jpg"
+  "image": "/recipes/curry-scallops-and-cilantro-rice.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

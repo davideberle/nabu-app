@@ -3,7 +3,8 @@
   "name": "Mediterranean Orzo Salad",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Lunch"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -83,7 +84,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Lunch"
   },
   "cuisine": "Greek"
 }

@@ -3,7 +3,8 @@
   "name": "Tofu and haricots verts with chraimeh sauce",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "also be frozen and kept for 1 month), so make double or triple the quantities. It",
@@ -83,5 +84,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tofu-and-haricots-verts-with-chraimeh-sauce.jpg"
+  "image": "/recipes/tofu-and-haricots-verts-with-chraimeh-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

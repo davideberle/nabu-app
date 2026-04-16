@@ -3,7 +3,8 @@
   "name": "Phuket-style Fluffy Omelet (inspired by Raya Restaurant)",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Southern Thai"
   },
   "servings": "serves 2",
   "intro": "This recipe is inspired by the fl uffy, pork rind-strewn omelet served at Raya Restaurant in Phuket town,",
@@ -27,5 +28,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/phuket-style-fluffy-omelet-inspired-by-raya-restaurant.jpg"
+  "image": "/recipes/phuket-style-fluffy-omelet-inspired-by-raya-restaurant.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Southern Thai"
+  }
 }

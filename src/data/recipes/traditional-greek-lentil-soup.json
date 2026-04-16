@@ -3,7 +3,8 @@
   "name": "Traditional Greek Lentil Soup",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Soups and Sides"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -82,7 +83,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": ""
+    "chapter": "Greek Soups and Sides"
   },
   "cuisine": "Greek"
 }

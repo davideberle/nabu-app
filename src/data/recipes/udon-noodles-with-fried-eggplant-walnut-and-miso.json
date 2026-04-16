@@ -3,7 +3,8 @@
   "name": "Udon Noodles With Fried Eggplant, Walnut, And Miso",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "for 9 minutes, until tender but still with a bite. Drain in a fine sieve, refresh",
@@ -79,5 +80,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
   }
 }

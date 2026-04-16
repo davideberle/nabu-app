@@ -3,7 +3,8 @@
   "name": "Keto Seed Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 10",
   "ingredients": [
@@ -95,7 +96,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/keto-seed-bread.jpg"

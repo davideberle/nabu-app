@@ -3,7 +3,8 @@
   "name": "French Potato Salad",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Snack Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -67,7 +68,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "French Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

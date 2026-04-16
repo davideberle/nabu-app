@@ -3,7 +3,8 @@
   "name": "Coconut Shrimp Curry with Red Bell Peppers",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -78,5 +79,9 @@
   "time": {
     "total": 15
   },
-  "image": "/recipes/coconut-shrimp-curry-with-red-bell-peppers.jpg"
+  "image": "/recipes/coconut-shrimp-curry-with-red-bell-peppers.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

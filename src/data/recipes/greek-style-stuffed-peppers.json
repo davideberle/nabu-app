@@ -3,7 +3,8 @@
   "name": "Greek-Style Stuffed Peppers",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Dinner"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -93,7 +94,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner"
   },
   "cuisine": "Greek"
 }

@@ -3,7 +3,8 @@
   "name": "Greek Cheese Pie with Nuts and Honey",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Breakfast Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -58,7 +59,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

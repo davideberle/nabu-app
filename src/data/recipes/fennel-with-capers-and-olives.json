@@ -3,7 +3,8 @@
   "name": "Fennel with Capers and Olives",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 4",
   "intro": "Spread the vegetables out on a large baking sheet, sprinkle with the pumpkin",
@@ -64,5 +65,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fennel-with-capers-and-olives.jpg"
+  "image": "/recipes/fennel-with-capers-and-olives.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
+  }
 }

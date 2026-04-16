@@ -3,7 +3,8 @@
   "name": "Spiced apple cake",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Dessert"
   },
   "servings": "serves 10",
   "intro": "day it is baked, or the day after; store in an airtight container to keep it at its",
@@ -66,5 +67,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spiced-apple-cake.jpg"
+  "image": "/recipes/spiced-apple-cake.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dessert"
+  }
 }

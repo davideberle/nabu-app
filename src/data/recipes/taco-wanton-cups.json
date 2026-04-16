@@ -3,7 +3,8 @@
   "name": "Taco Wanton Cups",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Snack Recipes"
   },
   "ingredients": [
     {
@@ -53,9 +54,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Snack Recipes"
   },
   "cuisine": "Mexican"
 }

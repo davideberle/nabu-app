@@ -3,7 +3,8 @@
   "name": "Pik Gai Tod Baab Fried Chicken Wings",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Northern Thai"
   },
   "servings": "serves 4",
   "intro": "Somporn. She simply dips the wings in seasoned fl our briefl y and deep-fries them. This is her recipe.",
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pik-gai-tod-baab-fried-chicken-wings.jpg"
+  "image": "/recipes/pik-gai-tod-baab-fried-chicken-wings.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Northern Thai"
+  }
 }

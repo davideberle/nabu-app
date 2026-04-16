@@ -3,7 +3,8 @@
   "name": "Corn And Green Onion Pancakes",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 15",
   "intro": "pastry shell with parchment paper, fill it with dried beans or pie weights, and",
@@ -58,5 +59,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
   }
 }

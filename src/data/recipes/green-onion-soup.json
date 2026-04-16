@@ -3,7 +3,8 @@
   "name": "Green Onion Soup",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "minutes, until a smooth, creamy paste forms. Keep in the fridge until needed.",
@@ -62,5 +63,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/green-onion-soup.jpg"
+  "image": "/recipes/green-onion-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

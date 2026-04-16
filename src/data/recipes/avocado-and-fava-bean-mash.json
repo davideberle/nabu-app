@@ -3,7 +3,8 @@
   "name": "Avocado and fava bean mash",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "music on. It’s also a job very easy to outsource, if anyone is offering to help. Either",
@@ -47,5 +48,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/avocado-and-fava-bean-mash.jpg"
+  "image": "/recipes/avocado-and-fava-bean-mash.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

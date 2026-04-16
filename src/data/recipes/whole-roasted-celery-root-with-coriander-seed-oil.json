@@ -3,7 +3,8 @@
   "name": "Whole-roasted celery root with coriander seed oil",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "taste is even more wonderful than before. I like to eat it as it is as a starter, cut",
@@ -46,5 +47,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/whole-roasted-celery-root-with-coriander-seed-oil.jpg"
+  "image": "/recipes/whole-roasted-celery-root-with-coriander-seed-oil.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

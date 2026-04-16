@@ -3,7 +3,8 @@
   "name": "Miso Vegetables and Rice with Black Sesame Dressing",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Steamed"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -84,5 +85,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/miso-vegetables-and-rice-with-black-sesame-dressing.jpg"
+  "image": "/recipes/miso-vegetables-and-rice-with-black-sesame-dressing.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Steamed"
+  }
 }

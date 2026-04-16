@@ -3,7 +3,8 @@
   "name": "Greek Tzatziki Dip",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Snack Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -51,7 +52,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Greek Snack Recipes"
   },
   "cuisine": "Mediterranean"
 }

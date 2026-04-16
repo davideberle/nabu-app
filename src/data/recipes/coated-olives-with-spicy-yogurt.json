@@ -3,7 +3,8 @@
   "name": "Coated Olives with Spicy Yogurt",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "garlic, and a pinch of salt in a bowl and whisk until you have a thick, pourable",
@@ -69,5 +70,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/coated-olives-with-spicy-yogurt.jpg"
+  "image": "/recipes/coated-olives-with-spicy-yogurt.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Fried Cauliflower With Mint And Tamarind Dipping Sauce",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "water. Immediately remove the pan from the heat and set it aside. After about",
@@ -98,5 +99,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
   }
 }

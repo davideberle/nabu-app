@@ -3,7 +3,8 @@
   "name": "Cornbread with Cheddar, feta, and jalapeño",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 10",
   "intro": "This is such a nice thing to bring to the table, served hot from the oven, out of the",
@@ -103,5 +104,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cornbread-with-cheddar-feta-and-jalape-o.jpg"
+  "image": "/recipes/cornbread-with-cheddar-feta-and-jalape-o.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

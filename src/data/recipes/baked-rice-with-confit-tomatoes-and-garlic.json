@@ -3,7 +3,8 @@
   "name": "Baked rice with confit tomatoes and garlic",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 6",
   "intro": "a pan of simmering water strangely difficult, this will be a revelation. Just make",
@@ -65,5 +66,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/baked-rice-with-confit-tomatoes-and-garlic.jpg"
+  "image": "/recipes/baked-rice-with-confit-tomatoes-and-garlic.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Rice, Grains, and Pulses"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Zucchini and ciabatta frittata",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Brunch"
   },
   "servings": "serves 6",
   "intro": "be eaten on the day it is baked, but it will keep in the fridge for 1 day; just warm",
@@ -68,5 +69,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/zucchini-and-ciabatta-frittata.jpg"
+  "image": "/recipes/zucchini-and-ciabatta-frittata.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Brunch"
+  }
 }

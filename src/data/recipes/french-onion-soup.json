@@ -3,7 +3,8 @@
   "name": "French Onion Soup",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Lunch Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -98,7 +99,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": ""
+    "chapter": "French Lunch Recipes"
   },
   "cuisine": "Mediterranean"
 }

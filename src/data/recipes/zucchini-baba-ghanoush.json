@@ -3,7 +3,8 @@
   "name": "Zucchini “Baba Ghanoush”",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "intro": "half the ginger dressing, and set aside to cool, stirring gently once or twice.",
@@ -59,5 +60,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/zucchini-baba-ghanoush.jpg"
+  "image": "/recipes/zucchini-baba-ghanoush.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
+  }
 }

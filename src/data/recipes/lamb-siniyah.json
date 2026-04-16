@@ -3,7 +3,8 @@
   "name": "Lamb siniyah",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat"
   },
   "servings": "serves 4",
   "intro": "standing in for the layer of mashed potato. It’s a rich and comforting dish, making",
@@ -86,5 +87,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/lamb-siniyah.jpg"
+  "image": "/recipes/lamb-siniyah.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Meat"
+  }
 }

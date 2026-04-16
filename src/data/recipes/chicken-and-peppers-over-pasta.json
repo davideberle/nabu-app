@@ -3,7 +3,8 @@
   "name": "Chicken and Peppers over Pasta",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Poultry and Meat Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -85,7 +86,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Poultry and Meat Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/chicken-and-peppers-over-pasta.jpg"

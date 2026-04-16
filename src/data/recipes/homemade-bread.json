@@ -3,7 +3,8 @@
   "name": "Homemade Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 1",
   "ingredients": [
@@ -100,7 +101,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/homemade-bread.jpg"

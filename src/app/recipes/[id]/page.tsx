@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getRecipe, getAllRecipes, getCourseTags, formatServings } from "@/lib/recipes";
+import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole } from "@/lib/recipes";
 
 export const revalidate = 60;
 
@@ -230,6 +230,23 @@ export default async function RecipePage({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   {formatServings(recipe.servings)}
+                </span>
+              )}
+
+              {/* Meal role */}
+              {(() => {
+                const role = getMealRole(recipe);
+                return role && !getCourseTags(recipe).some(t => t.toLowerCase() === role.toLowerCase()) && (
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                    {capitalize(role)}
+                  </span>
+                );
+              })()}
+
+              {/* Low calorie */}
+              {isLowCalorie(recipe) && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800">
+                  Low calorie
                 </span>
               )}
             </div>

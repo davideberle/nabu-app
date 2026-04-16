@@ -3,7 +3,8 @@
   "name": "Curry Chicken and Rice",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -57,5 +58,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curry-chicken-and-rice.jpg"
+  "image": "/recipes/curry-chicken-and-rice.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

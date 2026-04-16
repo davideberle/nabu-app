@@ -3,7 +3,8 @@
   "name": "Trout tartare with browned butter and pistachios",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 4",
   "intro": "check for freshness), and the salt aked. If you can get hold of them, use slivered",
@@ -60,5 +61,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/trout-tartare-with-browned-butter-and-pistachios.jpg"
+  "image": "/recipes/trout-tartare-with-browned-butter-and-pistachios.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "French Roasted Chicken and Potatoes",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Lunch Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -88,7 +89,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "French Lunch Recipes"
   },
   "cuisine": "Mediterranean"
 }

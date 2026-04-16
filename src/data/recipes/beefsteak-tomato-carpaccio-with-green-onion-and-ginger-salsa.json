@@ -3,7 +3,8 @@
   "name": "Beefsteak tomato carpaccio with green onion and ginger salsa",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Raw Veg"
   },
   "servings": "serves 4",
   "intro": "Double or triple the salsa, if you like; it’s absolutely delicious spooned over all",
@@ -63,5 +64,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/beefsteak-tomato-carpaccio-with-green-onion-and-ginger-salsa.jpg"
+  "image": "/recipes/beefsteak-tomato-carpaccio-with-green-onion-and-ginger-salsa.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Raw Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Greek Salad with Homemade Vinaigrette",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Salads"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -52,7 +53,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Greek Salads"
   },
   "cuisine": "Greek"
 }

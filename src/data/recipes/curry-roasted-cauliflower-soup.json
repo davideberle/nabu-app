@@ -3,7 +3,8 @@
   "name": "Curry Roasted Cauliflower Soup",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -68,5 +69,9 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-roasted-cauliflower-soup.jpg"
+  "image": "/recipes/curry-roasted-cauliflower-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

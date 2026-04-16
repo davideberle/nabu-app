@@ -3,7 +3,8 @@
   "name": "Fried Greek Pastry with Honey and Nuts",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Desserts"
   },
   "servings": "serves 12",
   "ingredients": [
@@ -95,9 +96,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
-    "chapter": ""
+    "chapter": "Greek Desserts"
   },
   "cuisine": "Greek"
 }

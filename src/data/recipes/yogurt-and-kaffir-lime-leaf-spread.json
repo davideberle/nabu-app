@@ -3,7 +3,8 @@
   "name": "Yogurt and Kaffir Lime Leaf Spread",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Mashed"
   },
   "servings": "serves 4",
   "intro": "medium heat and fry the cakes for 5 to 8 minutes, turning once, until they are",
@@ -50,5 +51,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg"
+  "image": "/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Mashed"
+  }
 }

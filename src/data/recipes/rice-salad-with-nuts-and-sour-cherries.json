@@ -3,7 +3,8 @@
   "name": "Rice Salad with Nuts and Sour Cherries",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Steamed"
   },
   "servings": "serves 6",
   "intro": "vinegar, maple syrup, and ¼ teaspoon salt. Stir in the ginger and garlic and set",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/rice-salad-with-nuts-and-sour-cherries.jpg"
+  "image": "/recipes/rice-salad-with-nuts-and-sour-cherries.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Steamed"
+  }
 }

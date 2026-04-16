@@ -3,7 +3,8 @@
   "name": "Spicy Turnip",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 6",
   "intro": "mango, peanuts, sesame seeds, lime juice, oil, cilantro, and mint and stir to",
@@ -74,5 +75,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
   }
 }

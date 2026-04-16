@@ -3,7 +3,8 @@
   "name": "Sprout Salad, Part Two",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Tossed"
   },
   "servings": "serves 4",
   "intro": "Place the cumin seeds in a small sauté pan. Toast over high heat for a minute",
@@ -81,5 +82,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Tossed"
   }
 }

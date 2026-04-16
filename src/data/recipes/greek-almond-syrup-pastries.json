@@ -3,7 +3,8 @@
   "name": "Greek Almond Syrup Pastries",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Dessert Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -50,9 +51,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
-    "chapter": ""
+    "chapter": "Greek Dessert Recipes"
   },
   "cuisine": "Mediterranean"
 }

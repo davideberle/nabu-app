@@ -3,7 +3,8 @@
   "name": "Cinnamon Swirl Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -154,7 +155,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/cinnamon-swirl-bread.jpg"

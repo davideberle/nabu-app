@@ -3,7 +3,8 @@
   "name": "Farfalle with Salmon Sauce",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Seafood Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -48,7 +49,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Seafood Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/farfalle-with-salmon-sauce.jpg"

@@ -3,7 +3,8 @@
   "name": "Hominy Beef Chili",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Soup Recipes"
   },
   "ingredients": [
     {
@@ -83,7 +84,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Soup Recipes"
   },
   "cuisine": "Mexican"
 }

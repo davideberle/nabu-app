@@ -3,7 +3,8 @@
   "name": "Grilled Tuna Pasta Toss",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Seafood Pasta Recipes"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -64,7 +65,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Seafood Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/grilled-tuna-pasta-toss.jpg"

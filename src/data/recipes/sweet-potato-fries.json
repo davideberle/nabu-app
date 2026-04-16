@@ -3,7 +3,8 @@
   "name": "Sweet potato fries",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "These are lovely either as a side or a snack. If a snack, serve alongside some sour",
@@ -59,5 +60,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sweet-potato-fries.jpg"
+  "image": "/recipes/sweet-potato-fries.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

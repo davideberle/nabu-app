@@ -3,7 +3,8 @@
   "name": "Eggplant, Potato, Tomato",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "butter if needed. Cook each batch for 5 minutes, turning once, until crisp and",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-potato-tomato.jpg"
+  "image": "/recipes/eggplant-potato-tomato.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

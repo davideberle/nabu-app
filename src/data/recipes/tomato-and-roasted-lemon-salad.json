@@ -3,7 +3,8 @@
   "name": "Tomato and Roasted Lemon Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -53,5 +54,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tomato-and-roasted-lemon-salad.jpg"
+  "image": "/recipes/tomato-and-roasted-lemon-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
+  }
 }

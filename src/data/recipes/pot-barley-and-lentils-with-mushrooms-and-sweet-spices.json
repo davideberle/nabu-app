@@ -3,7 +3,8 @@
   "name": "Pot Barley and Lentils with Mushrooms and Sweet Spices",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -85,5 +86,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pot-barley-and-lentils-with-mushrooms-and-sweet-spices.jpg"
+  "image": "/recipes/pot-barley-and-lentils-with-mushrooms-and-sweet-spices.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Quinoa and Fennel Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Simmered"
   },
   "servings": "serves 4",
   "intro": "stirring occasionally, before adding the tomato, sugar, chickpeas, and a scant",
@@ -61,5 +62,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/quinoa-and-fennel-salad.jpg"
+  "image": "/recipes/quinoa-and-fennel-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Simmered"
+  }
 }

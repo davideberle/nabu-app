@@ -3,7 +3,8 @@
   "name": "Batata Harra",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 4",
   "intro": "pick up one of the longer sides of the dough and roll it all up into a neat spiral",
@@ -44,5 +45,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
   }
 }

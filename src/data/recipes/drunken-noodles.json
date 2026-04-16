@@ -3,7 +3,8 @@
   "name": "Drunken Noodles",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Street Eats"
   },
   "servings": "serves 4",
   "intro": "like a bullhorn in your face ... but much better than that, obviously. This recipe can be served with either",
@@ -106,5 +107,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/drunken-noodles.jpg"
+  "image": "/recipes/drunken-noodles.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Street Eats"
+  }
 }

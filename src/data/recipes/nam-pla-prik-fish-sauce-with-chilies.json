@@ -3,7 +3,8 @@
   "name": "Nam Pla Prik Fish Sauce with Chilies",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Dips and Sauces"
   },
   "servings": "serves 1",
   "intro": "a Thai table. It’s basically fi sh sauce, fl avored with lime juice, some raw",
@@ -43,5 +44,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nam-pla-prik-fish-sauce-with-chilies.jpg"
+  "image": "/recipes/nam-pla-prik-fish-sauce-with-chilies.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Dips and Sauces"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Indian Ratatouille",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 4",
   "intro": "while they are still hot, then leave to cool down a little, discarding the bay",
@@ -72,5 +73,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/indian-ratatouille.jpg"
+  "image": "/recipes/indian-ratatouille.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
+  }
 }

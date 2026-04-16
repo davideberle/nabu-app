@@ -3,7 +3,8 @@
   "name": "Crespéou",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -90,5 +91,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cresp-ou.jpg"
+  "image": "/recipes/cresp-ou.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

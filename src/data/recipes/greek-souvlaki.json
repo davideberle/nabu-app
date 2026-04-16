@@ -3,7 +3,8 @@
   "name": "Greek Souvlaki",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Lunch Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -72,7 +73,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Lunch Recipes"
   },
   "cuisine": "Mediterranean"
 }

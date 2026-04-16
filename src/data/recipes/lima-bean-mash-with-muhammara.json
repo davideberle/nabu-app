@@ -3,7 +3,8 @@
   "name": "Lima bean mash with muhammara",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "spread on a cheese sandwich or served with grilled meat as it is as a dip. I’ve left",
@@ -80,5 +81,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/lima-bean-mash-with-muhammara.jpg"
+  "image": "/recipes/lima-bean-mash-with-muhammara.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Thai-style Chicken Biryani",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Southern Thai"
   },
   "servings": "serves 8",
   "intro": "family gatherings. It’s quite labor-intensive, but has been simplifi ed considerably (!) from the",
@@ -45,5 +46,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/thai-style-chicken-biryani.jpg"
+  "image": "/recipes/thai-style-chicken-biryani.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Southern Thai"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "French Potato Dauphinoise",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Dinner Recipes"
   },
   "servings": "serves 3",
   "ingredients": [
@@ -70,7 +71,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "French Dinner Recipes"
   },
   "cuisine": "Mediterranean"
 }

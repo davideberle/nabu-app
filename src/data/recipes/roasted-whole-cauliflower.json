@@ -3,7 +3,8 @@
   "name": "Roasted whole cauliflower",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
   "intro": "fork! Either way, the tahini sauce is entirely optional. I love it, but just a squeeze",
@@ -51,5 +52,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-whole-cauliflower.jpg"
+  "image": "/recipes/roasted-whole-cauliflower.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

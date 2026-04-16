@@ -3,7 +3,8 @@
   "name": "Butternut Tataki and Udon Noodle Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Grilled"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/butternut-tataki-and-udon-noodle-salad.jpg"
+  "image": "/recipes/butternut-tataki-and-udon-noodle-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Grilled"
+  }
 }

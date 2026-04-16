@@ -3,7 +3,8 @@
   "name": "Greek Sheet Pan Chicken Dinner",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Dinner"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -96,7 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner"
   },
   "cuisine": "Greek"
 }

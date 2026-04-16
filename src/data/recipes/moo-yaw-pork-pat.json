@@ -3,7 +3,8 @@
   "name": "Moo Yaw Pork Paté",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 6",
   "intro": "the Vietnamese cha lua and put their own spins to it, like dressing it in",
@@ -72,5 +73,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/moo-yaw-pork-pat.jpg"
+  "image": "/recipes/moo-yaw-pork-pat.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

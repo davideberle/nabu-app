@@ -3,7 +3,8 @@
   "name": "Mexican Corn Salad",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Salad Recipes"
   },
   "ingredients": [
     {
@@ -83,7 +84,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Mexican Salad Recipes"
   },
   "cuisine": "Mexican"
 }

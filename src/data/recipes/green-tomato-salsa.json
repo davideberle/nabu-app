@@ -3,7 +3,8 @@
   "name": "Green Tomato Salsa",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "ingredients": [
     {
@@ -50,7 +51,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "cuisine": "Mexican"
 }

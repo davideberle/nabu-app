@@ -3,7 +3,8 @@
   "name": "Sprouting Broccoli with Sweet Tahini",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -67,5 +68,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sprouting-broccoli-with-sweet-tahini.jpg"
+  "image": "/recipes/sprouting-broccoli-with-sweet-tahini.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
+  }
 }

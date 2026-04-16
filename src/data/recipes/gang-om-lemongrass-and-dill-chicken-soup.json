@@ -3,7 +3,8 @@
   "name": "Gang Om Lemongrass and Dill Chicken Soup",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 4",
   "intro": "quick meal. You eat it with sticky rice. (Note: there is also a Northern Thai version of gang om which",
@@ -47,5 +48,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/gang-om-lemongrass-and-dill-chicken-soup.jpg"
+  "image": "/recipes/gang-om-lemongrass-and-dill-chicken-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

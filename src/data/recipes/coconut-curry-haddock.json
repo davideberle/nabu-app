@@ -3,7 +3,8 @@
   "name": "Coconut Curry Haddock",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -76,5 +77,9 @@
   "time": {
     "total": 38
   },
-  "image": "/recipes/coconut-curry-haddock.jpg"
+  "image": "/recipes/coconut-curry-haddock.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

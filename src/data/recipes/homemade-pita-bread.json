@@ -3,7 +3,8 @@
   "name": "Homemade Pita Bread",
   "source": {
     "cookbook": "Bread Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Bread Recipes"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -96,7 +97,7 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": ""
+    "chapter": "Bread Recipes"
   },
   "cuisine": "Other",
   "image": "/recipes/homemade-pita-bread.jpg"

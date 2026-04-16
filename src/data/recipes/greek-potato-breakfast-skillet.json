@@ -3,7 +3,8 @@
   "name": "Greek Potato Breakfast Skillet",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Breakfast"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -76,9 +77,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast"
   },
   "cuisine": "Greek"
 }

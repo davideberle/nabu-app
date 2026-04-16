@@ -3,7 +3,8 @@
   "name": "Central Thai-style Fruit Som Tum",
   "source": {
     "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair"
+    "author": "Chawadee Nualkhair",
+    "chapter": "Isaan"
   },
   "servings": "serves 4",
   "intro": "This is one instance where not using the mortar and pestle for the fruit will probably help",
@@ -65,5 +66,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/central-thai-style-fruit-som-tum.jpg"
+  "image": "/recipes/central-thai-style-fruit-som-tum.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Isaan"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "Beet, Avocado, And Pea Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 4",
   "intro": "Just before serving, add the lime juice, cilantro, and coconut. Give everything",
@@ -62,5 +63,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/beet-avocado-and-pea-salad.jpg"
+  "image": "/recipes/beet-avocado-and-pea-salad.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
+  }
 }

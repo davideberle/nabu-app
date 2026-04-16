@@ -3,7 +3,8 @@
   "name": "Iranian Vegetable Stew with Dried Lime",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -80,5 +81,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/iranian-vegetable-stew-with-dried-lime.jpg"
+  "image": "/recipes/iranian-vegetable-stew-with-dried-lime.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
+  }
 }

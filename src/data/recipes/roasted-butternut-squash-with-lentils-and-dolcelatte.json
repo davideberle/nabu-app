@@ -3,7 +3,8 @@
   "name": "Roasted butternut squash with lentils and dolcelatte",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
   "intro": "the dolcelatte and set aside for up to 6 hours. Add the nal elements just before",
@@ -72,5 +73,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-butternut-squash-with-lentils-and-dolcelatte.jpg"
+  "image": "/recipes/roasted-butternut-squash-with-lentils-and-dolcelatte.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cooked Veg"
+  }
 }

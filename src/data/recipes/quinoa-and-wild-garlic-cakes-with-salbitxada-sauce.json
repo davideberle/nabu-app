@@ -3,7 +3,8 @@
   "name": "Quinoa and Wild Garlic Cakes with Salbitxada Sauce",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 16",
   "ingredients": [
@@ -96,5 +97,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/quinoa-and-wild-garlic-cakes-with-salbitxada-sauce.jpg"
+  "image": "/recipes/quinoa-and-wild-garlic-cakes-with-salbitxada-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

@@ -3,7 +3,8 @@
   "name": "French Quiche Lorraine",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "French Vegetarian Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -96,7 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "French Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

@@ -3,7 +3,8 @@
   "name": "Revithia",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Soups and Sides"
   },
   "servings": "serves 5",
   "ingredients": [
@@ -66,7 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Soups and Sides"
   },
   "cuisine": "Greek"
 }

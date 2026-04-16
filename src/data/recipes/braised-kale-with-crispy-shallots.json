@@ -3,7 +3,8 @@
   "name": "Braised Kale With Crispy Shallots",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Braised"
   },
   "servings": "serves 4",
   "intro": "about 25 minutes, stirring occasionally, until the beans are very soft. A lot of",
@@ -58,5 +59,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Braised"
   }
 }

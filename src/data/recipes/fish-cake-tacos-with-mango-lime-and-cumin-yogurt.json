@@ -3,7 +3,8 @@
   "name": "Fish cake tacos with mango, lime, and cumin yogurt",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 12",
   "intro": "dish also works well without the tortillas, if you want to eat with a knife and fork.",
@@ -74,5 +75,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fish-cake-tacos-with-mango-lime-and-cumin-yogurt.jpg"
+  "image": "/recipes/fish-cake-tacos-with-mango-lime-and-cumin-yogurt.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
+  }
 }

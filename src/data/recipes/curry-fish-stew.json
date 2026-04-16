@@ -3,7 +3,8 @@
   "name": "Curry Fish Stew",
   "source": {
     "cookbook": "The Complete and Authentic Thai Curry Cookbook 2",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Thai Curries"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -61,5 +62,9 @@
   "time": {
     "total": 22
   },
-  "image": "/recipes/curry-fish-stew.jpg"
+  "image": "/recipes/curry-fish-stew.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Thai Curries"
+  }
 }

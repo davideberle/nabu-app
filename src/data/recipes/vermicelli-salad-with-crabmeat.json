@@ -3,7 +3,8 @@
   "name": "Vermicelli Salad with Crabmeat",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Salad Pasta Recipes"
   },
   "ingredients": [
     {
@@ -65,7 +66,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Salad Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/vermicelli-salad-with-crabmeat.jpg"

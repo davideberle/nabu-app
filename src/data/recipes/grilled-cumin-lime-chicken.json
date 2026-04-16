@@ -3,7 +3,8 @@
   "name": "Grilled Cumin Lime Chicken",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Lunch Recipes"
   },
   "ingredients": [
     {
@@ -57,7 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

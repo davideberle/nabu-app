@@ -3,7 +3,8 @@
   "name": "Greek Tomato Fritters",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Vegetarian Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -57,7 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Greek Vegetarian Recipes"
   },
   "cuisine": "Mediterranean"
 }

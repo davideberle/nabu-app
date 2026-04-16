@@ -3,7 +3,8 @@
   "name": "Chile fish with tahini",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Seafood"
   },
   "servings": "serves 4",
   "intro": "the cavity. Roast in the oven for 18–20 minutes, basting once, until the  sh is",
@@ -82,5 +83,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/chile-fish-with-tahini.jpg"
+  "image": "/recipes/chile-fish-with-tahini.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Seafood"
+  }
 }

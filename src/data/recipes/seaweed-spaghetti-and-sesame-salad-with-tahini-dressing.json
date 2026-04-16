@@ -3,7 +3,8 @@
   "name": "Seaweed spaghetti and sesame salad with tahini dressing",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "This is lovely as it is, for a light lunch or starter, or served alongside some sticky",
@@ -78,5 +79,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/seaweed-spaghetti-and-sesame-salad-with-tahini-dressing.jpg"
+  "image": "/recipes/seaweed-spaghetti-and-sesame-salad-with-tahini-dressing.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

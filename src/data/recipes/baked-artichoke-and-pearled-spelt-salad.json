@@ -3,7 +3,8 @@
   "name": "Baked Artichoke And Pearled Spelt Salad",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 4",
   "intro": "until needed. (The leftover butter can be used for cooking carrots or zucchini,",
@@ -64,5 +65,9 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
   }
 }

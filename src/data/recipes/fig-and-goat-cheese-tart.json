@@ -3,7 +3,8 @@
   "name": "Fig and Goat Cheese Tart",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 6",
   "intro": "the sugar, or just use store-bought vanilla sugar). Transfer to a large bowl, add",
@@ -76,5 +77,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fig-and-goat-cheese-tart.jpg"
+  "image": "/recipes/fig-and-goat-cheese-tart.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

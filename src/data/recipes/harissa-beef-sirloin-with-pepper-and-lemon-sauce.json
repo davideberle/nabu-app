@@ -3,7 +3,8 @@
   "name": "Harissa beef sirloin with pepper and lemon sauce",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Meat"
   },
   "servings": "serves 4",
   "intro": "This is a great dish to feed friends if you like knowing that all the work that needs",
@@ -71,5 +72,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg"
+  "image": "/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Meat"
+  }
 }

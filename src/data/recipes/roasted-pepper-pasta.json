@@ -3,7 +3,8 @@
   "name": "Roasted Pepper Pasta",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Breakfast Pasta Recipes"
   },
   "servings": "serves 5",
   "ingredients": [
@@ -54,7 +55,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Breakfast Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/roasted-pepper-pasta.jpg"

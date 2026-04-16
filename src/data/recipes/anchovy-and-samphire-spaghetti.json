@@ -3,7 +3,8 @@
   "name": "Anchovy and samphire spaghetti",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
   "intro": "Reserving 2 tbsp of water, drain the pasta and snow peas and place in a large",
@@ -58,5 +59,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/anchovy-and-samphire-spaghetti.jpg"
+  "image": "/recipes/anchovy-and-samphire-spaghetti.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

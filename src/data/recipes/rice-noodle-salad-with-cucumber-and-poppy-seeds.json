@@ -3,7 +3,8 @@
   "name": "Rice noodle salad with cucumber and poppy seeds",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Noodles and Pasta"
   },
   "servings": "serves 6",
   "intro": "For anyone who thinks that this list of ingredients looks suspiciously long for a",
@@ -81,5 +82,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/rice-noodle-salad-with-cucumber-and-poppy-seeds.jpg"
+  "image": "/recipes/rice-noodle-salad-with-cucumber-and-poppy-seeds.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Noodles and Pasta"
+  }
 }

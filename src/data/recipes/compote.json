@@ -3,7 +3,8 @@
   "name": "Compote",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Sweetened"
   },
   "servings": "serves 8",
   "intro": "until the berries are soft but still hold their shape and lots of liquid has come",
@@ -70,5 +71,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/compote.jpg"
+  "image": "/recipes/compote.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Sweetened"
+  }
 }

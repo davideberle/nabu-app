@@ -3,7 +3,8 @@
   "name": "Enchilada Pie",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "ingredients": [
     {
@@ -88,7 +89,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": ""
+    "chapter": "Vegetarian Mexican Recipes"
   },
   "cuisine": "Mexican"
 }

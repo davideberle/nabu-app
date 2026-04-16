@@ -3,7 +3,8 @@
   "name": "Huevos Rancheros with Tomatillo Sauce",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Breakfast Recipes"
   },
   "ingredients": [
     {
@@ -80,7 +81,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Mexican Breakfast Recipes"
   },
   "cuisine": "Mexican"
 }

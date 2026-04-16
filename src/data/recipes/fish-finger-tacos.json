@@ -3,7 +3,8 @@
   "name": "Fish Finger Tacos",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "servings": "serves 10",
   "ingredients": [
@@ -49,7 +50,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

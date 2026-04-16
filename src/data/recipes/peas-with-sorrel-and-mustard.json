@@ -3,7 +3,8 @@
   "name": "Peas with Sorrel and Mustard",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Blanched"
   },
   "servings": "serves 4",
   "intro": "verts for about 4 minutes, until just cooked but still retaining a bite. Using a",
@@ -61,5 +62,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/peas-with-sorrel-and-mustard.jpg"
+  "image": "/recipes/peas-with-sorrel-and-mustard.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Blanched"
+  }
 }

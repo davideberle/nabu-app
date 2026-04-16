@@ -3,7 +3,8 @@
   "name": "Greek Fried Eggs with Potato and Feta",
   "source": {
     "cookbook": "Italian And Lebanese Cookbook",
-    "author": "Maya Zein"
+    "author": "Maya Zein",
+    "chapter": "Greek Breakfast Recipes"
   },
   "servings": "serves 2",
   "ingredients": [
@@ -50,7 +51,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": ""
+    "chapter": "Greek Breakfast Recipes"
   },
   "cuisine": "Mediterranean"
 }

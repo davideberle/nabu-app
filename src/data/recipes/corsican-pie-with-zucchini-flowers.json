@@ -3,7 +3,8 @@
   "name": "Corsican Pie with Zucchini Flowers",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -78,5 +79,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/corsican-pie-with-zucchini-flowers.jpg"
+  "image": "/recipes/corsican-pie-with-zucchini-flowers.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

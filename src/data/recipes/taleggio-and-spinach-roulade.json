@@ -3,7 +3,8 @@
   "name": "Taleggio and Spinach Roulade",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "intro": "Bake for 40 minutes, until all the liquid has been absorbed and the pasta is",
@@ -79,5 +80,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/taleggio-and-spinach-roulade.jpg"
+  "image": "/recipes/taleggio-and-spinach-roulade.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

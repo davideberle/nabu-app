@@ -3,7 +3,8 @@
   "name": "Summer Pasta Salad",
   "source": {
     "cookbook": "More Than Carbonara",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Salad Pasta Recipes"
   },
   "servings": "serves 6",
   "ingredients": [
@@ -56,7 +57,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "Salad Pasta Recipes"
   },
   "cuisine": "Italian",
   "image": "/recipes/summer-pasta-salad.jpg"

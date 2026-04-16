@@ -3,7 +3,8 @@
   "name": "Membrillo and Stilton Quiche",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Cracked"
   },
   "servings": "serves 6",
   "intro": "they stick to the sides. Pour the cauliflower mixture into the pan, spreading it",
@@ -53,5 +54,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/membrillo-and-stilton-quiche.jpg"
+  "image": "/recipes/membrillo-and-stilton-quiche.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Cracked"
+  }
 }

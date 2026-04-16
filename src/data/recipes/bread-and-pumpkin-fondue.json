@@ -3,7 +3,8 @@
   "name": "Bread And Pumpkin “fondue”",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Baked"
   },
   "servings": "serves 6",
   "intro": "loosely around the filling into an airy ball, so all the filling is covered. Repeat",
@@ -66,5 +67,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/bread-and-pumpkin-fondue.jpg"
+  "image": "/recipes/bread-and-pumpkin-fondue.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Baked"
+  }
 }

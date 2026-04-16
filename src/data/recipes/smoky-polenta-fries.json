@@ -3,7 +3,8 @@
   "name": "Smoky Polenta Fries",
   "source": {
     "cookbook": "Plenty More",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Fried"
   },
   "servings": "serves 4",
   "intro": "Finally, in a bowl, stir together the yogurt, garlic, fresh and dried mint, lemon",
@@ -70,5 +71,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/smoky-polenta-fries.jpg"
+  "image": "/recipes/smoky-polenta-fries.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Fried"
+  }
 }

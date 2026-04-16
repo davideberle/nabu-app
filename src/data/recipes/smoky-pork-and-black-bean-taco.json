@@ -3,7 +3,8 @@
   "name": "Smoky Pork and Black Bean Taco",
   "source": {
     "cookbook": "Mexican Home Cooking",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "servings": "serves 4",
   "ingredients": [
@@ -68,7 +69,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "Mexican Taco Lunch Recipes"
   },
   "cuisine": "Mexican"
 }

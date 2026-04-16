@@ -3,7 +3,8 @@
   "name": "Chilled cucumber, cauliflower, and ginger soup",
   "source": {
     "cookbook": "Ottolenghi Simple",
-    "author": "Yotam Ottolenghi"
+    "author": "Yotam Ottolenghi",
+    "chapter": "Raw Veg"
   },
   "servings": "serves 4",
   "intro": "Gazpacho is so often the go-to for a chilled summer soup that it’s easy to forget",
@@ -66,5 +67,9 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/chilled-cucumber-cauliflower-and-ginger-soup.jpg"
+  "image": "/recipes/chilled-cucumber-cauliflower-and-ginger-soup.jpg",
+  "category": {
+    "dish_type": [],
+    "chapter": "Raw Veg"
+  }
 }

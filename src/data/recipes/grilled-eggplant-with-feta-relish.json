@@ -3,7 +3,8 @@
   "name": "Grilled Eggplant with Feta Relish",
   "source": {
     "cookbook": "The Complete Greek Cookbook",
-    "author": "Various"
+    "author": "Various",
+    "chapter": "Greek Dinner"
   },
   "servings": "serves 8",
   "ingredients": [
@@ -69,7 +70,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": ""
+    "chapter": "Greek Dinner"
   },
   "cuisine": "Greek"
 }
