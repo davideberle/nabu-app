@@ -1,6 +1,6 @@
 {
   "id": "smoked-duck-eggs",
-  "name": "Smoked Duck Eggs",
+  "name": "Smoked duck eggs",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -59,9 +59,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

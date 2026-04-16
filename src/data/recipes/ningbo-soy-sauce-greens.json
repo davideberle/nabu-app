@@ -1,6 +1,6 @@
 {
   "id": "ningbo-soy-sauce-greens",
-  "name": "Ningbo Soy Sauce Greens",
+  "name": "Ningbo soy sauce greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -58,9 +58,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

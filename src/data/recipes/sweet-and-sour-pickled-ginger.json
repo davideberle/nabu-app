@@ -1,6 +1,6 @@
 {
   "id": "sweet-and-sour-pickled-ginger",
-  "name": "Sweet-and-Sour Pickled Ginger",
+  "name": "Sweet-and-sour pickled ginger",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -37,9 +37,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }

@@ -27,9 +27,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "base"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }

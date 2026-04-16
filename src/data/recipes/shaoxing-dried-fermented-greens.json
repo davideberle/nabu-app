@@ -1,6 +1,6 @@
 {
   "id": "shaoxing-dried-fermented-greens",
-  "name": "Shaoxing Dried Fermented Greens",
+  "name": "Shaoxing dried fermented greens",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -27,9 +27,10 @@
   "image": "/recipes/shaoxing-dried-fermented-greens.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "time": {
     "prep": 20,

@@ -1,6 +1,6 @@
 {
   "id": "fried-hoisin-tofu-with-peanut-sauce-touched-udon",
-  "name": "Fried Hoisin Tofu with Peanut Sauce–touched Udon",
+  "name": "Fried Hoisin Tofu with Peanut Sauce–Touched Udon",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
     "author": "Ginny Kay McMeans",
@@ -135,7 +135,14 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses"
+    "chapter": "Main Courses",
+    "meal_role": "main"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

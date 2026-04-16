@@ -182,9 +182,16 @@
   ],
   "category": {
     "dish_type": [
-      "soup"
+      "main"
     ],
-    "chapter": "Main Courses"
+    "chapter": "Main Courses",
+    "meal_role": "main"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

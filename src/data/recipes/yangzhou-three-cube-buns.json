@@ -1,6 +1,6 @@
 {
   "id": "yangzhou-three-cube-buns",
-  "name": "Yangzhou “three-Cube” Buns",
+  "name": "Yangzhou “three-cube” buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -84,9 +84,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

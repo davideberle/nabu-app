@@ -370,9 +370,16 @@
   ],
   "category": {
     "dish_type": [
-      "dessert"
+      "breakfast"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "breakfast"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

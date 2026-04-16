@@ -1,6 +1,6 @@
 {
   "id": "yangzhou-slivered-radish-buns",
-  "name": "Yangzhou Slivered Radish Buns",
+  "name": "Yangzhou slivered radish buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -60,9 +60,10 @@
   "image": "/recipes/yangzhou-slivered-radish-buns.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

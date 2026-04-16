@@ -1,6 +1,6 @@
 {
   "id": "eight-treasure-spicy-relish",
-  "name": "Eight-Treasure Spicy Relish",
+  "name": "Eight-treasure spicy relish",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -91,9 +91,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "condiment"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }

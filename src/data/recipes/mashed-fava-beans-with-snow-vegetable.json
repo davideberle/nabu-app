@@ -1,6 +1,6 @@
 {
   "id": "mashed-fava-beans-with-snow-vegetable",
-  "name": "Mashed Fava Beans with Snow Vegetable",
+  "name": "Mashed fava beans with snow vegetable",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -33,9 +33,10 @@
   "image": "/recipes/mashed-fava-beans-with-snow-vegetable.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

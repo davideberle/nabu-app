@@ -78,9 +78,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "salad"
     ],
-    "chapter": "Fish & Seafood"
+    "chapter": "Fish & Seafood",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

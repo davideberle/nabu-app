@@ -1,6 +1,6 @@
 {
   "id": "spicy-chinese-cabbage",
-  "name": "Spicy Chinese Cabbage",
+  "name": "Spicy Chinese cabbage",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -39,9 +39,10 @@
   "image": "/recipes/spicy-chinese-cabbage.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

@@ -1,6 +1,6 @@
 {
   "id": "shanghainese-steamed-soup-dumplings",
-  "name": "Shanghainese Steamed “soup” Dumplings",
+  "name": "Shanghainese steamed “soup” dumplings",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -79,9 +79,10 @@
   },
   "category": {
     "dish_type": [
-      "soup"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

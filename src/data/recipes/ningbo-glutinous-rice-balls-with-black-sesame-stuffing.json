@@ -1,6 +1,6 @@
 {
   "id": "ningbo-glutinous-rice-balls-with-black-sesame-stuffing",
-  "name": "Ningbo Glutinous Rice Balls with Black Sesame Stuffing",
+  "name": "Ningbo glutinous rice balls with black sesame stuffing",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -46,9 +46,10 @@
   "image": "/recipes/ningbo-glutinous-rice-balls-with-black-sesame-stuffing.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "dessert"
     ],
-    "chapter": "Sweet Dishes"
+    "chapter": "Sweet Dishes",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 10,

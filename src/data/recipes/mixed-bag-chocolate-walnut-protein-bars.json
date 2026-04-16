@@ -1,6 +1,6 @@
 {
   "id": "mixed-bag-chocolate-walnut-protein-bars",
-  "name": "Mixed Bag Chocolate Walnut Protein Bars",
+  "name": "Mixed Bag Chocolate walnut Protein Bars",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
     "author": "Ginny Kay McMeans",
@@ -1146,7 +1146,14 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "dessert"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

@@ -767,9 +767,16 @@
   ],
   "category": {
     "dish_type": [
-      "dessert"
+      "starter"
     ],
-    "chapter": "Appetizers & Snacks"
+    "chapter": "Appetizers & Snacks",
+    "meal_role": "starter"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "spiced-wheat-gluten-with-four-delights",
-  "name": "Spiced Wheat Gluten with Four Delights",
+  "name": "Spiced wheat gluten with four delights",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -74,9 +74,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

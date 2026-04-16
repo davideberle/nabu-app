@@ -1,6 +1,6 @@
 {
   "id": "zhenjiang-crystal-pork-terrine",
-  "name": "Zhenjiang Crystal Pork Terrine",
+  "name": "Zhenjiang crystal pork terrine",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -47,7 +47,7 @@
     },
     {
       "item": "Chinkiang vinegar, to serve",
-      "amount": "3 tbsp"
+      "amount": "3 tablespoons"
     },
     {
       "item": "fresh ginger, cut into slivers, to serve",
@@ -67,9 +67,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

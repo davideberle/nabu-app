@@ -1,6 +1,6 @@
 {
   "id": "basic-steamed-buns",
-  "name": "Basic Steamed Buns",
+  "name": "Basic steamed buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -45,9 +45,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "side"
   },
   "cuisine": "Chinese"
 }

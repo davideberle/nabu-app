@@ -1,6 +1,6 @@
 {
   "id": "sichuan-pepper-salt",
-  "name": "Sichuan Pepper Salt",
+  "name": "Sichuan pepper salt",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -24,9 +24,10 @@
   "image": "/recipes/sichuan-pepper-salt.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "time": {
     "prep": 20,

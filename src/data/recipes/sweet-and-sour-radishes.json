@@ -1,6 +1,6 @@
 {
   "id": "sweet-and-sour-radishes",
-  "name": "Sweet-and-Sour Radishes",
+  "name": "Sweet-and-sour radishes",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -37,9 +37,10 @@
   "image": "/recipes/sweet-and-sour-radishes.jpg",
   "category": {
     "dish_type": [
-      "dessert"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

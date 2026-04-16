@@ -1,6 +1,6 @@
 {
   "id": "clear-steamed-sea-bass",
-  "name": "Clear-Steamed Sea Bass",
+  "name": "Clear-steamed sea bass",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -10,6 +10,10 @@
     {
       "item": "dried shiitake mushroom",
       "amount": "1"
+    },
+    {
+      "item": "A few rectangular slices of bamboo shoot",
+      "amount": ""
     },
     {
       "item": "fresh ginger, skin on",
@@ -22,6 +26,10 @@
     {
       "item": "sea bass (about 1½ lbs/650g), scaled and gutted",
       "amount": "1"
+    },
+    {
+      "item": "A few rectangular slices of Spanish or Chinese cured ham, steamed briefly",
+      "amount": ""
     },
     {
       "item": "Shaoxing wine",
@@ -48,508 +56,28 @@
       "amount": "1 tbsp"
     },
     {
+      "item": "Salt and ground white pepper",
+      "amount": ""
+    },
+    {
       "item": "finely chopped fresh ginger",
       "amount": "1 tbsp"
     },
     {
       "item": "Chinkiang vinegar",
       "amount": "2 tbsp"
-    },
-    {
-      "item": "sea bass (about 1 lb/500g), scaled and gutted",
-      "amount": "1"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "spring onions, white parts only",
-      "amount": "2"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "lard or cooking oil",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "snow vegetable",
-      "amount": "4 oz (100g)"
-    },
-    {
-      "item": "sliced spring onions, green parts only",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "sea bass or West Lake grass carp (about 2 lbs/850g), scaled and gutted",
-      "amount": "1"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "2½ tbsp"
-    },
-    {
-      "item": "finely chopped fresh ginger",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "4 tbsp"
-    },
-    {
-      "item": "Chinese red or rose vinegar",
-      "amount": "5½ tbsp"
-    },
-    {
-      "item": "potato starch mixed with 3 tbsp cold water",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "sea bream or sea bass (about 1¾ lbs/800g), scaled and gutted",
-      "amount": "1"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "¾ oz (20g)"
-    },
-    {
-      "item": "spring onion",
-      "amount": "1"
-    },
-    {
-      "item": "lard or cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "dark soy sauce",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "thinly sliced spring onions, green parts only",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "salt",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "dark soy sauce",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "fresh sea bass (about 1 lb/500g), filleted on the skin",
-      "amount": "1"
-    },
-    {
-      "item": "tomato paste",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "potato starch mixed with 2 tbsp cold water",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "⅓ oz (10g)"
-    },
-    {
-      "item": "spring onion",
-      "amount": "1"
-    },
-    {
-      "item": "salt",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "potato starch mixed with 2 tbsp cold water",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "dry potato starch",
-      "amount": "4 oz (100g)"
-    },
-    {
-      "item": "Chinese red vinegar",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "salt",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "stock or water",
-      "amount": "½ cup (100ml)"
-    },
-    {
-      "item": "pine nuts",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "frozen peas",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "skinless flounder or sea bass fillet",
-      "amount": "10 oz (300g)"
-    },
-    {
-      "item": "pine nuts",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "chicken stock",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "potato starch mixed with 2 tsp cold water",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "sesame oil",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "1¾ cups (400ml)"
-    },
-    {
-      "item": "salt",
-      "amount": "¾ tsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "egg white",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "potato starch",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "skinless flounder, sole or grouper fillet",
-      "amount": "9 oz (250g)"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "⅓ oz (10g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "salt",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "all-purpose flour",
-      "amount": "½ cup (60g)"
-    },
-    {
-      "item": "potato flour",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "baking powder",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "salt",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "seaweed flakes",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "cooked potatoes, peeled",
-      "amount": "9 oz (250g)"
-    },
-    {
-      "item": "ripe tomatoes (about 7 oz/200g)",
-      "amount": "2"
-    },
-    {
-      "item": "red snapper or grouper (about 1½–1¾ lbs/700–800g), fillets and backbone separated",
-      "amount": "1"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "spring onions, white parts only",
-      "amount": "2"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "fresh ginger, peeled and sliced",
-      "amount": "¾ oz (20g)"
-    },
-    {
-      "item": "thinly sliced spring onions, green parts only (optional)",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "yellow croaker or sea bass (about 1 lb/500g), scaled and gutted",
-      "amount": "1"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "spring onions",
-      "amount": "2"
-    },
-    {
-      "item": "sliced bamboo shoot",
-      "amount": "2 oz (50g)"
-    },
-    {
-      "item": "lard or cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "snow vegetable, chopped coarsely",
-      "amount": "3 oz (75g)"
-    },
-    {
-      "item": "fresh ginger, peeled and sliced",
-      "amount": "⅓ oz (10g)"
-    },
-    {
-      "item": "ribbonfish, fresh or frozen and defrosted",
-      "amount": "1 lb (450g)"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "½ oz (15g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "salt",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "live littleneck clams or similar",
-      "amount": "10 oz (300g)"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "½ oz (15g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "large or 3 medium eggs",
-      "amount": "2"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "dark soy sauce (optional)",
-      "amount": "¼ tsp"
-    },
-    {
-      "item": "thinly sliced spring onions, green parts only",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "lbs (800g) live littleneck clams",
-      "amount": "1¾"
-    },
-    {
-      "item": "spring onions, white parts only",
-      "amount": "2"
-    },
-    {
-      "item": "fresh ginger, peeled and sliced",
-      "amount": "⅓ oz (10g)"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "5 tbsp"
-    },
-    {
-      "item": "finely chopped garlic",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "thinly sliced spring onions, green parts only",
-      "amount": "7 tbsp"
-    },
-    {
-      "item": "Chinese chives 2 tbsp cooking oil 3½ oz (90g) shelled, cooked cockle meat 2 tbsp stock Salt",
-      "amount": "5 oz (150g)"
-    },
-    {
-      "item": "Chinese chives",
-      "amount": "5 oz (150g)"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "shelled, cooked cockle meat",
-      "amount": "3½ oz (90g)"
-    },
-    {
-      "item": "stock",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "uncooked unpeeled shrimp (a little more if you want to cook them without heads)",
-      "amount": "¾ lb (350g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "Chinkiang or red rice vinegar",
-      "amount": "2½ tsp"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "2 cups (500ml)"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "3 tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "5 tsp"
-    },
-    {
-      "item": "raw peeled shimp (about 1¾ lbs/750g unpeeled)",
-      "amount": "1 lb (450g)"
-    },
-    {
-      "item": "salt",
-      "amount": "¾ tsp"
-    },
-    {
-      "item": "egg white",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "potato starch",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "Dragon Well tea leaves or other green tea",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "1¾ cups (400ml)"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "potato starch mixed with 1 tbsp cold water",
-      "amount": "½ tsp"
     }
   ],
   "method": [
     "Cover the shiitake mushroom in boiling water and leave to soak for at least half an hour. Bring a pan of water to the boil and blanch the bamboo shoot slices, then drain them. Smack the ginger and spring onion whites with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
     "Put the fish on a chopping board. Holding your knife at an angle to the board, make a few parallel diagonal slashes into the thickest part of the flesh. Repeat on the other side. Rub the fish inside and out with a little salt and 1 tablespoon of the Shaoxing wine. Put half the ginger and one of the spring onion whites in its belly and set aside for 10–15 minutes.",
+    "When the mushroom has softened, remove the stalk and cut the cap in half. If you wish to be a bit fancy, make lots of tiny parallel cuts perpendicular to the cut edge, so you can fan out the mushroom on the fish. Mix the chopped ginger and vinegar for the dip in a dipping dish.",
     "Put the remaining spring onion whites in the base of a serving bowl deep enough to hold the fish and some liquid, but which will also fit into your steamer. (If a whole fish doesn’t fit in your steamer, hold your knife at a steep angle to the board and cut the fish in half. Place the two pieces parallel to each other in the dish.) Lay the fish across the spring onions. Arrange the bamboo shoot and ham slices along the center of the fish, with a shiitake half at either end.",
     "Mix together the remaining Shaoxing wine, stock, soy sauce and sugar and pour it around the fish. Spoon the fermented glutinous rice down the center of the fish. Place the ginger beside the fish and the chicken oil or lard on top of it. Steam over a medium flame for about 10 minutes, until you can push a blunt chopstick easily into the thickest part of the fish.",
     "Remove and discard the ginger. Strain the cooking juices into a bowl and season them with a little ground white pepper. Tidy up the sliced ham arrangement on the fish, then pour over the cooking juices. Serve with the vinegar-and-ginger dip.",
-    "Remove the ginger and spring onion from the marinade and pat the fish dry on paper towels. Place the fish in a bowl that will fit into your steamer, curling it around the inside of the bowl.",
-    "Heat the oil or lard in a seasoned wok over a high flame. Add the snow vegetable and stir-fry until it smells delicious. Stir in the remaining Shaoxing wine and 1 tablespoon water. Ladle the mixture over the fish. Put the remaining piece of ginger and spring onion on the fish, cover and steam over a medium flame for 8–9 minutes, until you can push a blunt chopstick easily into the thickest part of the flesh.",
-    "Remove the dish from the steamer and carefully pour the cooking juices into a small bowl. Remove and discard the ginger and spring onion. Scatter the spring onion greens over the fish, and then pour over the cooking juices, which will moisten the top of the fish and make it look most appetizing. Serve.",
-    "Bring 1½ quarts (1.5 liters) water to the boil in a wok over a high flame. Skin-side up, add the male head piece, the tail piece and finally the female piece of fish. Shake the wok very gently to prevent sticking. Cover and bring it back to the boil. Skim the liquid, then cover and boil for 2–3 minutes, until just cooked. It is ready when you can poke a blunt chopstick into the thickest part of the flesh.",
-    "Pour the sauce evenly over the fish. Sprinkle over the remaining ginger as a garnish and serve.",
-    "Make 3 or 4 parallel diagonal slashes through the thickest part of the fish, then a couple in the opposite direction, to make a broad crisscross pattern. Rub the fish inside and out with the marinade wine and salt and leave for a few minutes. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Tie the spring onion into a knot, if it’s long and slender enough to make this possible.",
-    "Transfer the fish to a serving plate, discarding the ginger and spring onions. Turn up the heat to reduce the sauce to a dark, glossy gravy. Pour the sauce over the fish, scatter with spring onion greens and serve.",
-    "Combine the sauce ingredients in a bowl and mix well. Put the pine nuts in a wok with enough oil to cover and heat gently to about 200–250°F (100–120°C), stirring, until the oil fizzes gently around the nuts. Fry until lightly golden and fragrant, taking care not to let them darken. Remove with a slotted spoon and set aside on paper towels. Blanch the peas in boiling water, then set them aside.",
-    "Heat the oil for deep-frying to 350°F (180°C). Hold each fish fillet up by the tail and dredge it in the dry potato starch, again making sure they are completely coated, deep into the cut frills—this ensures that the frills don’t stick together during cooking.",
-    "Stir-fried fish morsels with pine nuts",
-    "Put the pine nuts in a wok with enough of the oil to cover them and heat slowly to about 250°F (120°C), stirring often. Fry the nuts until golden, then remove and set aside on paper towels. Smack the spring onion white gently with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers. Cut the green and red bell pepper into tiny cubes.",
-    "Add 2 teaspoons cooking oil to the fish and mix well—this will help to prevent the pieces from sticking together. Pour the rest of the oil into the wok and heat to about 260°F (130°C). Add the fish and stir gently to separate the pieces. Fry for 1 minute or so, taking care not to let the oil get hotter than about 275°F (140°C). The oil should hiss very gently around the fish, which should remain uncolored and exquisitely tender. Remove from the oil with a slotted spoon and set aside.",
-    "Drain off all but 2 tablespoons of the oil. Add the spring onion and stir-fry over a high flame until you can smell its fragrance. Add the green and red bell pepper and turn briefly in the oil. Add the stock with a small pinch of salt, bring to the boil, then tip in the fish and pine nuts. Stir rapidly to mix. Give the starch mixture a quick stir and pour it into the wok. Stir swiftly as the juices thicken, then, off the heat, mix in the sesame oil. Serve.",
-    "Cut the fish evenly into small strips, 2–2½ in (5–6cm) long and ½–1 in (1–2cm) wide, and put them in a bowl. Smack the ginger and spring onion white lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers and add them to the fish with the other marinade ingredients. Mix well.",
-    "Mix together the flours, baking powder and salt for the batter in a bowl. Gradually stir in ½ cup (100ml) cold water to make a thick, smooth batter. Finally, stir in the seaweed flakes.",
-    "Heat the oil in a wok to 300°F (150°C). Trail the pieces of fish through the batter, ensuring they are evenly coated, and drop them into the hot oil, using chopsticks to separate them. The oil should fizz around the pieces. Fry for 1–2 minutes at this temperature, turning the strips from time to time, until the outside of the batter is firm. Remove the fish from the wok and set aside.",
-    "Cut the fish backbone into about 3 pieces. Smack the spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers. Boil the kettle.",
-    "Add the tomatoes and both mashed and sliced potatoes to the broth. Bring to the boil and simmer until the tomatoes are tender and the broth is a light orange color. Season with salt. Add the fish chunks, with a little more boiling water to cover if necessary, then return to the boil and simmer for 2 minutes, until the fish is just cooked. Season with pepper, pour into a serving tureen and garnish with the spring onion greens, if using.",
-    "Make diagonal cuts into the thickest part of the fish at 1 in (2cm) intervals, then cut it into 2–2½ in (5–6cm) sections. Put them in a bowl. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers, then add them to the fish, along with the Shaoxing wine and salt. Mix well and set aside in the fridge for 2–3 hours.",
-    "Boil the kettle. Beat the eggs with ¼ teaspoon salt until well blended. Pour ¾ cup (150ml) of the clam cooking liquid slowly into the egg mixture, leaving any sandy residue in the pan. Add the Shaoxing wine and dark soy sauce, if using, and mix well. Skim off and discard any froth on the surface. Stir in the shelled clams.",
-    "Wash the clams very thoroughly in cold water and discard any with cracked shells, or that do not close when you tap them briskly. Measure out the soy sauce into a small bowl. Smack the spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
-    "Heat the oil in a wok over a high flame. Add the garlic and stir-fry very briefly until it smells wonderful. Switch off the heat, tip in the green spring onion and stir into the sizzling oil. Pour the oil, with the spring onions and garlic, all over the clams, then pour over the soy sauce mixture and serve.",
-    "Stir-fried cockles with Chinese chives",
-    "Stir-fried fava beans with Chinese chives",
-    "Heat the oil in a seasoned wok over a high flame to 400°F (200°C). Have another pan or a heatproof container to hand. Carefully tip the shrimp into the hot oil and deep-fry for 10–20 seconds (depending on size), stirring constantly, until they have curled up and changed color. Remove with a slotted spoon and set aside.",
-    "Stir-fried shrimp with Dragon Well tea",
-    "Boil the kettle. Put the tea leaves in a bowl with 4 tablespoons hot water (Dragon Well tea is best infused with water just below boiling point, at 185–195°F/85–90°C). Leave to infuse for 1 minute, then strain out the tea leaves, retaining both them and the infused liquid.",
-    "Drain all but 1 tablespoon oil from the wok. Return it to a high flame and add the shrimp, Shaoxing wine, tea leaves and 2 tablespoons of the tea infusion, and stir rapidly to incorporate. Stir the starch mixture and pour it into the wok, stirring. As soon as the juices have thickened, remove the shrimp from the wok and serve with a dish of vinegar for dipping."
+    "Instead of a sea bass, use a whole Reeves shad or hilsa fish (2 lbs/850g before gutting). You will also need 2 shiitake mushrooms and double the amount of ham and bamboo shoot. Defrost the fish before you begin. Assuming you are dealing with a whole fish, do not remove its scales. Make a slit along its belly and pull out its guts. Lift up the gill flaps and pull out the gills, then insert a heavy chopping knife into the head and cut it in half lengthways, chopping through the top of the head. Starting at the head end, slice the whole fish in half, cutting close to the backbone, so you remove the top half of the fish, attached to half the head, and ending at the tail. You should now have two half fish, each with half a head, and one half with a tail. If you wish, you can also remove the backbone.",
+    "Rinse well and scrape away any black membrane inside the belly cavity. Blanch the fish in boiling water to clean it, then rinse in cold water. Place the two halves, head ends together, alongside each other on a dish and proceed according to the main recipe, except that you should steam the fish for 20 minutes over a low flame.",
+    "Traditionally, the entire fish is covered in a sheet of caul fat before steaming, instead of the lard or chicken oil."
   ],
   "time": {
     "total": 180
@@ -561,5 +89,6 @@
     "chapter": "Fish and Seafood"
   },
   "image": "/recipes/clear-steamed-sea-bass.jpg",
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "intro": "This recipe uses the techniques and seasonings traditionally applied to one of the most celebrated Jiangnan fish, the Reeves shad, to cook the more easily available sea bass. (If by any chance you can lay your hands on a true Reeves shad or its close relative the hilsa, please refer to the variation overleaf.) It’s a beautiful dish, in which chicken stock and other umami ingredients enhance the flavor of the fish. The Reeves shad itself is a glittering queen of a fish that was served to the Qianlong emperor when he visited Yangzhou in the eighteenth century. Traditionally, it was eaten during a short season from the fourth to the sixth lunar months and, steamed, was often the principal dish at Jiangnan banquets. Unusually, the fish is steamed in its oily scales, which partially melt in the heat of cooking, infusing the flesh with their luxurious fragrance. Chefs enhance its flavor with pickled cucumbers or a triumvirate of sliced ham, bamboo shoot and shiitake mushrooms, clothe it in luxurious caul fat and anoint it with Shaoxing wine and sweet, boozy glutinous rice. Inevitably, Chinese men of letters through the ages have been moved to poetry by the taste of this fish, including the Song dynasty poet Su Dongpo, who wrote: Much later, in the Qing dynasty, another writer, Xie Tang, compared the fish to Xi Shi, the legendary beauty of ancient times. Sadly, pollution and the construction of hydroelectric dams mean that it’s no longer possible to taste the fish fresh out of the Yangtze river at Zhenjiang and Yangzhou. The Reeves shad served in Jiangnan restaurants these days are mostly imported, frozen, from India. One can only dream of the taste of the native fish, freshly netted and steamed, but even the frozen one, cooked in the traditional manner, is exquisitely delicious. The fish has rich, oily flesh, rather like the Japanese amberjack or hamachi. At home in London I have made the classic recipe with frozen hilsa (or ilish), a similar variety of shad that I’ve found in the Bangladeshi quarter of Brick Lane, but I more commonly steam sea bass in the same manner, but without its scales. The juices of either are fabulous spooned over rice."
 }

@@ -1,6 +1,6 @@
 {
   "id": "sweet-fermented-sauce-dip",
-  "name": "Sweet Fermented Sauce Dip",
+  "name": "Sweet fermented sauce dip",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -28,9 +28,10 @@
   "image": "/recipes/sweet-fermented-sauce-dip.jpg",
   "category": {
     "dish_type": [
-      "dessert"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "time": {
     "prep": 20,

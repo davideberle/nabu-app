@@ -1,6 +1,6 @@
 {
   "id": "slivered-white-asian-radish-and-jellyfish-salad",
-  "name": "Slivered White Asian Radish and Jellyfish Salad",
+  "name": "Slivered white Asian radish and jellyfish salad",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -42,9 +42,10 @@
   "image": "/recipes/slivered-white-asian-radish-and-jellyfish-salad.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "salad"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 10,

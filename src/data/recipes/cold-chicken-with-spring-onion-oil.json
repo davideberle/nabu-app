@@ -1,6 +1,6 @@
 {
   "id": "cold-chicken-with-spring-onion-oil",
-  "name": "Cold Chicken with Spring Onion Oil",
+  "name": "Cold chicken with spring onion oil",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -65,9 +65,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

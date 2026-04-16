@@ -1,6 +1,6 @@
 {
   "id": "nanjing-new-year-s-salad",
-  "name": "Nanjing New Year’s Salad",
+  "name": "Nanjing New Year’s salad",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -76,9 +76,10 @@
   "image": "/recipes/nanjing-new-year-s-salad.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "salad"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 10,

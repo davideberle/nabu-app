@@ -1,6 +1,6 @@
 {
   "id": "white-chopped-chicken-with-soy-sauce",
-  "name": "White Chopped Chicken with Soy Sauce",
+  "name": "White chopped chicken with soy sauce",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -40,9 +40,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

@@ -68,10 +68,10 @@
   },
   "category": {
     "dish_type": [
-      "vegetable",
-      "side"
+      "salad"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

@@ -1,6 +1,6 @@
 {
   "id": "cool-steamed-eggplant-with-a-garlicky-dressing",
-  "name": "Cool Steamed Eggplant with a Garlicky Dressing",
+  "name": "Cool steamed eggplant with a garlicky dressing",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -52,9 +52,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "salad"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

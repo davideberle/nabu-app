@@ -62,9 +62,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "salad"
     ],
-    "chapter": "Grains & Pulses"
+    "chapter": "Grains & Pulses",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

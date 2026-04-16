@@ -1088,9 +1088,16 @@
   ],
   "category": {
     "dish_type": [
-      "starter"
+      "dessert"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "dessert"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

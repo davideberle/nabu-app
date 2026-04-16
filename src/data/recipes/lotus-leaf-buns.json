@@ -1,6 +1,6 @@
 {
   "id": "lotus-leaf-buns",
-  "name": "Lotus Leaf Buns",
+  "name": "Lotus leaf buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -29,9 +29,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

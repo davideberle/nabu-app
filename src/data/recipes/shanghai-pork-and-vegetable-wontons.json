@@ -1,6 +1,6 @@
 {
   "id": "shanghai-pork-and-vegetable-wontons",
-  "name": "Shanghai Pork and Vegetable Wontons",
+  "name": "Shanghai pork and vegetable wontons",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -91,9 +91,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

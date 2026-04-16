@@ -1,6 +1,6 @@
 {
   "id": "hangzhou-spiced-soy-sauce-duck",
-  "name": "Hangzhou Spiced Soy-Sauce Duck",
+  "name": "Hangzhou spiced soy-sauce duck",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -55,9 +55,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

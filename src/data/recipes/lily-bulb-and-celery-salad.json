@@ -1,6 +1,6 @@
 {
   "id": "lily-bulb-and-celery-salad",
-  "name": "Lily Bulb and Celery Salad",
+  "name": "Lily bulb and celery salad",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -37,9 +37,10 @@
   "image": "/recipes/lily-bulb-and-celery-salad.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "salad"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 10,

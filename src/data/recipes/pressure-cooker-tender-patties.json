@@ -131,9 +131,16 @@
   ],
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "main"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

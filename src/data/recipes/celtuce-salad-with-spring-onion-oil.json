@@ -1,6 +1,6 @@
 {
   "id": "celtuce-salad-with-spring-onion-oil",
-  "name": "Celtuce Salad with Spring Onion Oil",
+  "name": "Celtuce salad with spring onion oil",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -39,9 +39,10 @@
   "image": "/recipes/celtuce-salad-with-spring-onion-oil.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "salad"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 10,

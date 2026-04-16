@@ -1,6 +1,6 @@
 {
   "id": "hand-torn-mushrooms",
-  "name": "Hand-Torn Mushrooms",
+  "name": "Hand-torn mushrooms",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -42,9 +42,10 @@
   "image": "/recipes/hand-torn-mushrooms.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

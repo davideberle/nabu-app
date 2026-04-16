@@ -1,6 +1,6 @@
 {
   "id": "shanghai-potsticker-buns",
-  "name": "Shanghai Potsticker Buns",
+  "name": "Shanghai potsticker buns",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -34,6 +34,14 @@
     {
       "item": "cooking oil, plus extra for cooking",
       "amount": "½ tsp"
+    },
+    {
+      "item": "sliced spring onions, green parts only",
+      "amount": "3–4 tbsp"
+    },
+    {
+      "item": "Chinkiang vinegar, for dipping",
+      "amount": ""
     },
     {
       "item": "jellied stock (see here)",
@@ -74,300 +82,22 @@
     {
       "item": "sesame oil",
       "amount": "½ tsp"
-    },
-    {
-      "item": "Chinese high-gluten flour, plus extra for dusting",
-      "amount": "1¾ cups (200g)"
-    },
-    {
-      "item": "cooking oil, plus extra for the steamer",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "fresh ginger",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "jellied stock (see here)",
-      "amount": "7 oz (200g)"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "¾ oz (25g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "pork mince, preferably belly",
-      "amount": "7 oz (200g)"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "salt",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "ground white pepper",
-      "amount": "⅛ tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "sesame oil",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "oil or lard",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "papery dried shrimp",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "finely chopped preserved mustard tuber",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "thinly sliced spring onions",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "stock (or wonton cooking water)",
-      "amount": "3 cups (750ml)"
-    },
-    {
-      "item": "dried shiitake mushrooms",
-      "amount": "3"
-    },
-    {
-      "item": "curly green kale, or 5 oz (150g) bunched spinach or shepherd’s purse",
-      "amount": "9 oz (250g)"
-    },
-    {
-      "item": "fresh ginger, skin on",
-      "amount": "¾ oz (20g)"
-    },
-    {
-      "item": "spring onion, white part only",
-      "amount": "1"
-    },
-    {
-      "item": "minced pork",
-      "amount": "7 oz (200g)"
-    },
-    {
-      "item": "salt",
-      "amount": "1½ tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "1½ tsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "sesame oil",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "Chinese low-gluten flour",
-      "amount": "2 cups (250g)"
-    },
-    {
-      "item": "active dry yeast",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "baking powder",
-      "amount": "½ tsp"
-    },
-    {
-      "item": "groundnut oil or melted lard",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "quantity stuffing of your choice (see here)",
-      "amount": "1"
-    },
-    {
-      "item": "quantity Basic steamed bun dough (see here)",
-      "amount": "1"
-    },
-    {
-      "item": "white Asian radish, about 2 lbs (900g)",
-      "amount": "1"
-    },
-    {
-      "item": "skinless, boneless pork belly",
-      "amount": "5 oz (150g)"
-    },
-    {
-      "item": "lard or cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "finely chopped fresh ginger",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "finely chopped spring onion",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "4 tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "quantity Basic steamed bun dough (see here)",
-      "amount": "1"
-    },
-    {
-      "item": "dried shiitake mushrooms",
-      "amount": "3"
-    },
-    {
-      "item": "curly green kale",
-      "amount": "1½ oz (500g)"
-    },
-    {
-      "item": "fresh or brined bamboo shoot",
-      "amount": "1 lb (40g)"
-    },
-    {
-      "item": "firm tofu (plain, spiced or smoked)",
-      "amount": "1½ oz (40g)"
-    },
-    {
-      "item": "cooking oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "finely chopped fresh ginger",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "plus a pinch of superfine sugar",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "sesame oil",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "rapeseed or groundnut oil",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "quantity Basic steamed bun dough (see here)",
-      "amount": "1"
-    },
-    {
-      "item": "dried shiitake mushrooms",
-      "amount": "3"
-    },
-    {
-      "item": "chicken breast or thigh meat, with or without skin",
-      "amount": "4 oz (100g)"
-    },
-    {
-      "item": "skinless pork belly",
-      "amount": "6 oz (175g)"
-    },
-    {
-      "item": "fresh or brined bamboo shoot",
-      "amount": "3 oz (75g)"
-    },
-    {
-      "item": "lard or cooking oil",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "finely chopped fresh ginger",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "finely chopped spring onion, white part only",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "Shaoxing wine",
-      "amount": "½ tbsp"
-    },
-    {
-      "item": "stock",
-      "amount": "1 cup (225ml)"
-    },
-    {
-      "item": "light soy sauce",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "dark soy sauce",
-      "amount": "¾ tsp"
-    },
-    {
-      "item": "superfine sugar",
-      "amount": "1½ tsp"
-    },
-    {
-      "item": "potato starch mixed with 3 tbsp cold water",
-      "amount": "4 tsp"
-    },
-    {
-      "item": "sesame oil",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "quantity Basic steamed bun dough (see here) A little cooking oil",
-      "amount": "1"
-    },
-    {
-      "item": "quantity Basic steamed bun dough (see here)",
-      "amount": "1"
     }
   ],
   "method": [
+    "First, make the stuffing. Run a knife or fork repeatedly through the jellied pork stock to break it into small pieces. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers, put them in a small bowl and just cover with cold water. Put the pork mince in a bowl. Add the Shaoxing wine, soy sauce, salt, pepper, sugar and sesame oil and mix well, stirring in one direction. Gradually add 3 tablespoons of the ginger and spring onion soaking water, stirring as before. Finally, add the chopped jellied stock and mix thoroughly to incorporate. Chill until needed. Toast the sesame seeds in a dry wok or frying pan over a gentle flame until fragrant, then set aside.",
+    "Make the dough. Mix the flours, yeast and sugar together in a large bowl and make a well in the center. Gradually add about ¾ cup (150ml) lukewarm water, drawing in the flour as you go, adding just enough water to make a soft but not sticky dough. When the dough is nearly formed, add the baking powder and cooking oil. Mix thoroughly, then knead on a lightly floured surface for about 15 minutes until the dough is pale and smooth. (Alternatively, make the dough in a food processor and knead for a few minutes with a dough hook to achieve the same result.) Cover with a damp tea towel and leave to rest in a warm place for about 20 minutes.",
     "Make the wrappers. Lay out a sheet of parchment paper. Give the rested dough a quick knead, then cut it into two or three strips. Roll each strip into a long cylinder, then cut off pieces of dough the size of walnuts, about 1 oz (30g) each. Dust them lightly with flour. Stand them cut-side up and flatten them into discs with the palm of your hand. Roll the discs into circles about 3 in (9cm) in diameter, dusting with a little flour as required.",
-    "Make the wrappers. Cut the dough into strips about 1½ in (3cm) wide, then break off pieces the size of very large cherries, about ½ oz (15g) each. Dust these lightly with flour, stand them cut-side up on a board and flatten them into discs with the palm of your hand. Roll the discs into 4 in (10cm) diameter circles, dusting the board and rolling pin with flour as needed.",
-    "Make the dumplings. Brush the base of a bamboo steamer with oil. Holding a circle of dough in one hand, use a blunt knife or bamboo spatula to place about ¾ oz (20g) of stuffing in the center. Use your other hand to pinch the edge of the dough to enclose the stuffing (see here). Make sure the mouth of the dumpling is sealed, then pinch it up into a point. Put the finished dumplings in your oiled steamer, leaving gaps of at least 1½ in (3cm) between them.",
-    "Bring a large pan of water to the boil and fill a small dish with cold water. Place a dumpling wrapper in the palm of your hand and put a generous tablespoon (¾ oz/20–25g) of the pork mixture in the center, pressing it into the wrapper. Dip your finger in the dish of water and run it around the edgeof the wrapper. Wrap the wonton, sealing the edges tightly. Put the finished dumpling on a dry surface. Make the rest of the dumplings.",
-    "Peel the radish and cut it into 1½ in (3mm) slices, then into slivers. Add 1 tablespoon salt, mix well and set aside for at least half an hour. Cover the pork in cold water, bring to the boil, then simmer gently until cooked through. Remove from the water and leave to cool, then cut it into 2 in (5mm) dice. Drain the radish and squeeze it to get rid of as much water as possible.",
-    "Heat the lard or cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until it smells delicious and is tinged with gold. Add the ginger and spring onion and stir-fry briefly until fragrant. Tip the Shaoxing wine around the edges of the pan and let it sizzle. Remove from the heat, add the radish, light soy sauce and sugar, along with ¼ teaspoon salt, and mix well. Set aside to cool. Use to fill and cook Basic steamed buns (see here).",
-    "Make a basic pork stuffing using the ingredients of the Shanghai potsticker bun (see here), without the jellied stock. Stuff and cook as for Basic steamed buns (see here).",
-    "Stir-fry plenty of snow vegetable with a little finely chopped firm tofu and bamboo shoot, and season to taste with salt and sugar. Stuff and cook as for Basic steamed buns (see here).",
-    "Make the basic steamed bun dough and let it rest. Oil the layers of a steamer. Turn the dough out onto a lightly floured work surface. Knead it briefly, then cut or roll it into a 1½ in (3cm) thick cylinder. Use a knife to cut this into 1¾ in (4cm) sections weighing about ¾ oz (25g) each. Lightly dust your hands with flour, turn each section on its end and flatten it with the palm of your hand, then roll it out into an 3 in (8cm) circle. Repeat with the rest of the dough."
+    "Make the buns. Lay a disc of dough in one hand, then use a blunt knife or bamboo spatula to place a heaped tablespoon (¾–1 oz/25–30g) of stuffing in the center. Use your other hand to pinch the edge of the dough to enclose the stuffing (see here). Pinch hard to seal the dough, making sure the mouth of the bun is completely closed. Turn the filled bun upside down and place it on the parchment paper. Cover with a damp tea towel and repeat until you have used all the dough. Leave the buns to rise for 20 minutes.",
+    "To cook and serve the buns, pour 2 tablespoons cooking oil into a seasoned cast-iron or nonstick frying pan and swirl it around to coat the surface over a high flame. When the oil is hot, take the pan off the heat for a moment while you arrange the upside-down buns in the pan. They should touch each other, so that the surface is covered. Return the pan to the heat and fry for 2–4 minutes until they have toasty, golden bottoms, moving the pan around to ensure even coloring. When they have colored, take the pan off the heat and carefully pour 1¼ cups (250ml) boiling water around the edges of the pan, keeping your face out of the way as this will produce a burst of steam. Cover the pan, return to a high flame and cook for 6 minutes.",
+    "Remove the lid to allow any remaining steam to escape, then drizzle another tablespoon of cooking oil around the edges of the pan. Keep cooking the buns until the bottoms have crisped up again—a hearty sizzling sound will be the sign that they are ready. Sprinkle with the spring onion greens and cover the pan for 20 seconds or so. Turn the heat off and sprinkle with the toasted sesame seeds. You can serve them right side up in the pan, as pictured here, or turn them upside-down (pictured here) so your guests can admire their golden bottoms. Serve with dishes of Chinkiang vinegar to dip."
   ],
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Dumplings and Snacks"
+    "chapter": "Dumplings and Snacks",
+    "meal_role": "starter"
   },
   "image": "/recipes/shanghai-potsticker-buns.jpg",
   "time": {
@@ -375,5 +105,6 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "intro": "In the former French Concession of Shanghai, sunlight filters through the wutong trees that arch overhead, dappling the pavements. It’s breakfast time, and already the shops and restaurants of Urumqi Street are bustling. A small, hectic cafe is filled with people slurping hot soymilk and dunking deep-fried you tiao dough sticks into their bowls. Outside, a tower of bamboo steamers is filled with glutinous rice dumplings and fluffy buns stuffed with pork and radish, hazy in a cloud of steam. In the entrance to her tobacco shop, a woman is frying up sheng jian man tou, one of Shanghai’s most famous snacks. These golden-bottomed potsticker buns, often known in Chinese simply as “raw-fried” (sheng jian), are the heftier yet equally irresistible big brother of Shanghai’s dainty xiao long bao dumplings. They are made with a leavened dough enclosing a juicy pork stuffing and made by the “potsticker” (guo tie) method, in which the raw buns are part-fried and part-steamed in a covered pan. You’ll need a flat frying pan with a close-fitting lid; a heavy-bottomed cast-iron pan or a non-stick pan is best. Makes about 20 buns."
 }

@@ -1,6 +1,6 @@
 {
   "id": "chrysanthemum-leaves-with-pine-nuts",
-  "name": "Chrysanthemum Leaves with Pine Nuts",
+  "name": "Chrysanthemum leaves with pine nuts",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -42,9 +42,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

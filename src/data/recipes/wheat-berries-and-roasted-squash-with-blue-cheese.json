@@ -45,9 +45,10 @@
   },
   "category": {
     "dish_type": [
-      "starter"
+      "salad"
     ],
-    "chapter": "Cheese"
+    "chapter": "Cheese",
+    "meal_role": "side"
   },
   "cuisine": "Other"
 }

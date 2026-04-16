@@ -1,6 +1,6 @@
 {
   "id": "wheat-gluten",
-  "name": "Wheat Gluten",
+  "name": "Wheat gluten",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -29,9 +29,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "base"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }

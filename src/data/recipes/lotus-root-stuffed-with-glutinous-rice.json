@@ -1,6 +1,6 @@
 {
   "id": "lotus-root-stuffed-with-glutinous-rice",
-  "name": "Lotus Root Stuffed with Glutinous Rice",
+  "name": "Lotus root stuffed with glutinous rice",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -38,9 +38,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

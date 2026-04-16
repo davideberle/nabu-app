@@ -1,6 +1,6 @@
 {
   "id": "easy-jellied-stock",
-  "name": "Easy Jellied Stock",
+  "name": "Easy jellied stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -31,9 +31,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }

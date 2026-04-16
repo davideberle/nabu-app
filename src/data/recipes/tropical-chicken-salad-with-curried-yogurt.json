@@ -61,9 +61,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "salad"
     ],
-    "chapter": "Poultry & Meat"
+    "chapter": "Poultry & Meat",
+    "meal_role": "main"
   },
   "cuisine": "Other"
 }

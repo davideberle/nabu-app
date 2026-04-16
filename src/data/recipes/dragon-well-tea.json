@@ -1,16 +1,12 @@
 {
   "id": "dragon-well-tea",
-  "name": "Dragon Well Tea",
+  "name": "Dragon Well tea",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
     "chapter": "Drinks"
   },
   "ingredients": [
-    {
-      "item": "dried red jujubes ¾ oz (20g) fresh ginger Honey or rock sugar, to sweeten (optional)",
-      "amount": "4 oz (100g)"
-    },
     {
       "item": "dried red jujubes",
       "amount": "4 oz (100g)"
@@ -20,48 +16,14 @@
       "amount": "¾ oz (20g)"
     },
     {
-      "item": "Chinese dried black plums (10–15 fruits) 1 oz (30g) sliced dried Chinese hawthorn fruit 5 slices dried licorice root Rock sugar, to taste",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "Chinese dried black plums (10–15 fruits)",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "sliced dried Chinese hawthorn fruit",
-      "amount": "1 oz (30g)"
-    },
-    {
-      "item": "slices dried licorice root",
-      "amount": "5"
-    },
-    {
-      "item": "lbs (550g) pumpkin, peeled and deseeded About 4 tbsp honey, or to taste",
-      "amount": "1¼"
-    },
-    {
-      "item": "lbs (550g) pumpkin, peeled and deseeded",
-      "amount": "1¼"
-    },
-    {
-      "item": "dried yellow soybeans",
-      "amount": "6 oz (200g)"
-    },
-    {
-      "item": "drops vegetable oil, plus extra for greasing",
-      "amount": "2"
+      "item": "Honey or rock sugar, to sweeten (optional)",
+      "amount": ""
     }
   ],
   "method": [
-    "Put 1 tablespoon Dragon Well tea leaves in a mug or tea bowl. Cover with 1–1½ in (2–3cm) water just below boiling point, at 185–195°F (85–90°C) (if you don’t have a thermometer, pour boiling water into a cold, empty mug, leave for 30 seconds or so, then pour it onto your tea leaves). Leave to steep until the liquid has been colored by the leaves, then fill the mug or bowl with water at the same temperature.",
+    "Break open the jujubes and discard their stones. Put them in a pan with 1½ quarts (1.5 liters) water. Bring to the boil, then cover the pan and leave to steep for a few hours or overnight.",
     "Peel and slice the ginger and add it to the jujubes. Bring everything to the boil and simmer for 45 minutes. Season to taste with honey or rock sugar, if desired. Strain before drinking hot or cold.",
-    "Simmer generous amounts of peeled, sliced fresh ginger in water for at least 10 minutes until you have a peppery infusion. Season to taste with brown sugar. This is a wonderfully warming winter drink, and is particularly advised as a tonic for women during menstruation. Make it as gingery as you like.",
-    "Cover the plums, hawthorn fruit and licorice root with cold water and soak for 4 hours or overnight. After soaking, rinse the ingredients, then put them in a pan with 1½ quarts (1.5 liters) water, bring to the boil and simmer for 30 minutes. Sweeten with rock sugar to taste. Strain and chill before drinking.",
-    "Put the pumpkin in the basket of a stainless steel steamer and steam over a high flame until completely tender. When the pumpkin is cooked, remove it from the steamer. Put the honey in a small pan with an equal quantity of water from the steamer and stir as you heat it gently to dissolve.",
-    "Boil or steam sweetcorn cobs, then cut off the kernels and blend to a smooth, creamy juice. Sweeten with diluted honey, if desired.",
-    "Make it in the same way as the pumpkin juice, with just a hint of added sweetness from diluted honey.",
-    "Cover the soybeans with plenty of cold water and soak overnight in a cool place. Discard the soaking water and rinse the beans well.",
-    "Bring 1 quart (1 liter) water to the boil and add the vegetable oil (this will help to subdue the foaminess of the soymilk). Put the beans in a blender with about 2 cups (500ml) of the hot water and blitz until smooth."
+    "Simmer generous amounts of peeled, sliced fresh ginger in water for at least 10 minutes until you have a peppery infusion. Season to taste with brown sugar. This is a wonderfully warming winter drink, and is particularly advised as a tonic for women during menstruation. Make it as gingery as you like."
   ],
   "time": {
     "total": 180
@@ -73,5 +35,6 @@
     "chapter": "Drinks"
   },
   "image": "/recipes/dragon-well-tea.jpg",
-  "cuisine": "Chinese"
+  "cuisine": "Chinese",
+  "intro": "The sky shone brightly and the water glittered as I wandered down to the West Lake in Hangzhou one sunny morning. Peach trees and weeping willows lined the shores; cicadas sung amid the branches. Small, canopied wooden boats crossed the surface of the lake, the boatmen pushing through the water with their single oars. On the northern bank, two ladies were singing traditional Yue opera in a wooden gazebo, accompanied by a group of amateur musicians playing the Chinese lute and two-stringed violin. Elderly people sat around them, holding jars of tea and laughing at the witty repartee. I made my way to a teahouse in the garden of an old mansion and took a seat there, gazing out over a meadow of tilting lotus leaves towards the little bridges of the causeway. Around me, noisy pensioners sipped green tea and cracked sunflower seeds between their teeth. Dragon Well (or long jing) tea is the classic Hangzhou drink, and there’s no better place to enjoy it than by the side of the West Lake or on a wooden boat that rocks gently on the water. The tea is made only from the tenderest leaves plucked by hand from the tea bushes that run over the Longjing hills. Steeped in hot water, the spear-shaped leaves have a nutty aroma and a delicate, clean taste. Put 1 tablespoon Dragon Well tea leaves in a mug or tea bowl. Cover with 1–1½ in (2–3cm) water just below boiling point, at 185–195°F (85–90°C) (if you don’t have a thermometer, pour boiling water into a cold, empty mug, leave for 30 seconds or so, then pour it onto your tea leaves). Leave to steep until the liquid has been colored by the leaves, then fill the mug or bowl with water at the same temperature. The leaves will mostly settle at the base of the mug or bowl, so you can sip the clear liquid above them. Keep topping up with fresh hot water for as long as you like; the leaves can be infused several times before their flavor is exhausted."
 }

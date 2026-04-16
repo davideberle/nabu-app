@@ -1,6 +1,6 @@
 {
   "id": "nanjing-saltwater-duck",
-  "name": "Nanjing Saltwater Duck",
+  "name": "Nanjing saltwater duck",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -70,9 +70,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Chinese"
 }

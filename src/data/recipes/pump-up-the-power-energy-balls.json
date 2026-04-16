@@ -1,6 +1,6 @@
 {
   "id": "pump-up-the-power-energy-balls",
-  "name": "Pump up the Power Energy Balls",
+  "name": "Pump Up the Power Energy Balls",
   "source": {
     "cookbook": "The High-Protein Vegan Cookbook",
     "author": "Ginny Kay McMeans",
@@ -79,9 +79,16 @@
   ],
   "category": {
     "dish_type": [
-      "main"
+      "salad"
     ],
-    "chapter": "Salads"
+    "chapter": "Salads",
+    "meal_role": "side"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "tags": {
+    "dietary": [
+      "vegan",
+      "vegetarian"
+    ]
+  }
 }

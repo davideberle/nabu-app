@@ -1,6 +1,6 @@
 {
   "id": "traditional-jellied-stock",
-  "name": "Traditional Jellied Stock",
+  "name": "Traditional jellied stock",
   "source": {
     "cookbook": "Land of Fish and Rice",
     "author": "Fuchsia Dunlop",
@@ -45,9 +45,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "chapter": "Basic Recipes"
+    "chapter": "Basic Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Chinese"
 }
